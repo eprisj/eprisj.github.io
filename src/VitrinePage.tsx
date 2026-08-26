@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { getFuturoshock, subscribeContent, type FuturoshockWork } from './data';
+import { HALLS, type HallId } from './museum/halls';
 
 /* Собственный чанк: three и fiber весят больше самой страницы, а нужны только
    на пустой коллекции. Пока объектов нет, зал занимает само здание. */
@@ -19,7 +20,22 @@ const MUSEUM_COPY = {
     openLabel: 'Open the space',
     closeLabel: 'Close the space',
     insideLabel: 'Inside the EPRIS Museum building: atrium, balconies and the ramp',
-    legend: { atrium: 'Atrium', ramp: 'Ramp', oculus: 'Oculus', galleries: 'Galleries', entrance: 'Entrance' },
+    legend: { court: 'Court', collection: 'Collection', practice: 'Practice', archive: 'Archive', study: 'Study' },
+    hallsLabel: 'Halls',
+    hallsHint: 'Choose a volume to enter',
+    allHalls: 'All halls',
+    accessOpen: 'Open',
+    accessPassport: 'By EPRIS passport',
+    lockedHint: 'Opens with an EPRIS passport',
+    lockedNote: 'This hall opens with an EPRIS passport. Passports are issued as the collection opens.',
+    emptyHall: 'Nothing is installed here yet. The first objects arrive with the collection.',
+    hallCopy: {
+      court: 'The sunken court in front of the building: screenings, talks and the work that does not fit indoors.',
+      collection: 'The permanent collection of Ukrainian practice, held at the lowest and quietest level.',
+      practice: 'Changing shows: work in progress, studio material, things still being argued about.',
+      archive: 'Drawings, drafts, correspondence and everything a finished object leaves behind.',
+      study: 'The reading room inside the blind shaft: one desk, one window, the whole archive within reach.',
+    },
     collectionIntro: 'An evolving museum of Ukrainian practice. Each object belongs to a broader story of making, place and cultural memory.',
     object: 'Object',
     objectDossier: 'Object dossier',
@@ -48,7 +64,22 @@ const MUSEUM_COPY = {
     openLabel: 'Открыть пространство',
     closeLabel: 'Закрыть пространство',
     insideLabel: 'Внутри здания EPRIS Museum: атриум, балконы и пандус',
-    legend: { atrium: 'Атриум', ramp: 'Пандус', oculus: 'Окулюс', galleries: 'Залы', entrance: 'Вход' },
+    legend: { court: 'Двор', collection: 'Коллекция', practice: 'Практика', archive: 'Архив', study: 'Кабинет' },
+    hallsLabel: 'Залы',
+    hallsHint: 'Выберите объём, чтобы войти',
+    allHalls: 'Все залы',
+    accessOpen: 'Открыт',
+    accessPassport: 'По паспорту EPRIS',
+    lockedHint: 'Открывается по паспорту EPRIS',
+    lockedNote: 'Этот зал открывается по паспорту EPRIS. Паспорта выдаются по мере открытия коллекции.',
+    emptyHall: 'Здесь пока ничего не смонтировано. Первые объекты приходят вместе с коллекцией.',
+    hallCopy: {
+      court: 'Опущенный двор перед зданием: показы, разговоры и то, что не помещается внутрь.',
+      collection: 'Постоянная коллекция украинской практики на нижнем, самом тихом ярусе.',
+      practice: 'Сменные выставки: работа в процессе, материал мастерской, вещи, о которых ещё спорят.',
+      archive: 'Чертежи, черновики, переписка и всё, что остаётся после законченного объекта.',
+      study: 'Читальня внутри глухого ствола: один стол, одно окно, весь архив под рукой.',
+    },
     collectionIntro: 'Развивающийся музей украинской практики. Каждый объект связан с историей создания, местом и культурной памятью.',
     object: 'Объект',
     objectDossier: 'Паспорт объекта',
@@ -77,7 +108,22 @@ const MUSEUM_COPY = {
     openLabel: 'Відкрити простір',
     closeLabel: 'Закрити простір',
     insideLabel: 'Усередині будівлі EPRIS Museum: атріум, балкони та пандус',
-    legend: { atrium: 'Атріум', ramp: 'Пандус', oculus: 'Окулюс', galleries: 'Зали', entrance: 'Вхід' },
+    legend: { court: 'Двір', collection: 'Колекція', practice: 'Практика', archive: 'Архів', study: 'Кабінет' },
+    hallsLabel: 'Зали',
+    hallsHint: 'Оберіть об’єм, щоб увійти',
+    allHalls: 'Усі зали',
+    accessOpen: 'Відкритий',
+    accessPassport: 'За паспортом EPRIS',
+    lockedHint: 'Відкривається за паспортом EPRIS',
+    lockedNote: 'Цей зал відкривається за паспортом EPRIS. Паспорти видають у міру відкриття колекції.',
+    emptyHall: 'Тут ще нічого не змонтовано. Перші обʼєкти приходять разом із колекцією.',
+    hallCopy: {
+      court: 'Опущений двір перед будівлею: покази, розмови і те, що не вміщається всередині.',
+      collection: 'Постійна колекція української практики на нижньому, найтихішому ярусі.',
+      practice: 'Змінні виставки: робота в процесі, матеріал майстерні, речі, про які ще сперечаються.',
+      archive: 'Креслення, чернетки, листування і все, що лишається після завершеного обʼєкта.',
+      study: 'Читальня всередині глухого стовбура: один стіл, одне вікно, увесь архів під рукою.',
+    },
     collectionIntro: 'Музей української практики, що розвивається. Кожен об’єкт пов’язаний з історією створення, місцем і культурною пам’яттю.',
     object: 'Об’єкт',
     objectDossier: 'Паспорт об’єкта',
@@ -106,7 +152,22 @@ const MUSEUM_COPY = {
     openLabel: 'Raum öffnen',
     closeLabel: 'Raum schließen',
     insideLabel: 'Im Inneren des EPRIS-Museums: Atrium, Galerien und Rampe',
-    legend: { atrium: 'Atrium', ramp: 'Rampe', oculus: 'Okulus', galleries: 'Säle', entrance: 'Eingang' },
+    legend: { court: 'Hof', collection: 'Sammlung', practice: 'Praxis', archive: 'Archiv', study: 'Lesesaal' },
+    hallsLabel: 'Säle',
+    hallsHint: 'Ein Volumen wählen, um einzutreten',
+    allHalls: 'Alle Säle',
+    accessOpen: 'Offen',
+    accessPassport: 'Mit EPRIS-Pass',
+    lockedHint: 'Öffnet sich mit einem EPRIS-Pass',
+    lockedNote: 'Dieser Saal öffnet sich mit einem EPRIS-Pass. Die Pässe werden mit der Eröffnung der Sammlung ausgegeben.',
+    emptyHall: 'Hier ist noch nichts eingerichtet. Die ersten Objekte kommen mit der Sammlung.',
+    hallCopy: {
+      court: 'Der abgesenkte Hof vor dem Haus: Vorführungen, Gespräche und alles, was drinnen keinen Platz hat.',
+      collection: 'Die ständige Sammlung ukrainischer Praxis auf der untersten, ruhigsten Ebene.',
+      practice: 'Wechselnde Ausstellungen: Arbeit im Werden, Material aus dem Atelier, Umstrittenes.',
+      archive: 'Zeichnungen, Entwürfe, Korrespondenz und alles, was ein fertiges Objekt zurücklässt.',
+      study: 'Der Lesesaal im blinden Schacht: ein Tisch, ein Fenster, das ganze Archiv in Reichweite.',
+    },
     collectionIntro: 'Ein wachsendes Museum ukrainischer Praxis. Jedes Objekt gehört zu einer Geschichte von Herstellung, Ort und kulturellem Gedächtnis.',
     object: 'Objekt',
     objectDossier: 'Objektdossier',
@@ -162,15 +223,56 @@ function catalogueNumber(work: FuturoshockWork, index: number) {
   return `EPRIS ${year}.${position}`;
 }
 
-function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
+function HallPanel({ copy, hall, onClear }: { copy: MuseumCopy; hall: HallId; onClear: () => void }) {
+  const meta = HALLS.find((item) => item.id === hall);
+  const locked = meta?.access === 'passport';
+  return (
+    <div className="flex flex-col gap-5 p-5 sm:p-8 lg:p-12">
+      <div className="flex items-baseline justify-between gap-4">
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.hallsLabel}</p>
+        <button
+          type="button"
+          onClick={onClear}
+          className="min-h-11 font-mono text-[9px] uppercase tracking-[0.16em] underline decoration-1 underline-offset-4 transition hover:opacity-60"
+        >
+          {copy.allHalls}
+        </button>
+      </div>
+      <h2 className="font-display text-[clamp(2.4rem,5vw,3.8rem)] leading-[0.9] tracking-[-0.03em]">{copy.legend[hall]}</h2>
+      <p className="max-w-[34rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)]">{copy.hallCopy[hall]}</p>
+      <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">
+        {locked ? copy.accessPassport : copy.accessOpen}
+      </p>
+      {/* Замок объявлен, но не заперт: паспортов ещё нет, и делать вид, что
+          дверь заперта, значило бы обещать механику, которой нет. */}
+      <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)] pt-4 text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.62)]">
+        {locked ? copy.lockedNote : copy.emptyHall}
+      </p>
+    </div>
+  );
+}
+
+function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void }) {
   /* Пустая коллекция больше не объясняется абзацами о том, что её готовят.
      Вместо описания стоит здание: макет крутится сам и поворачивается мышью,
-     а заголовок лежит поверх него, как подпись на архитектурном планшете. */
+     а заголовок лежит поверх него, как подпись на архитектурном планшете.
+
+     Объёмы здания кликабельны: выбранный зал занимает правую колонку и
+     оказывается в адресе, поэтому на зал можно дать ссылку. */
   return (
     <section aria-labelledby="vitrine-title" className="grid flex-1 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
       <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#f6f4f1]" />}>
-          <MuseumModel label={copy.modelLabel} openLabel={copy.openLabel} closeLabel={copy.closeLabel} insideLabel={copy.insideLabel} labels={copy.legend} />
+        <Suspense fallback={<div className="absolute inset-0 bg-[#e9e6e1]" />}>
+          <MuseumModel
+            label={copy.modelLabel}
+            openLabel={copy.openLabel}
+            closeLabel={copy.closeLabel}
+            insideLabel={copy.insideLabel}
+            labels={copy.legend}
+            lockedHint={copy.lockedHint}
+            selectedHall={hall}
+            onSelectHall={onHall}
+          />
         </Suspense>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
@@ -178,10 +280,37 @@ function EmptyVitrine({ copy }: { copy: MuseumCopy }) {
         </div>
       </div>
       <div className="flex flex-col justify-between">
-        <div className="flex items-start justify-between gap-4 p-5 sm:p-8 lg:p-12">
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.museumLabel}</p>
-          <p className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.modelHint}</p>
-        </div>
+        {hall ? (
+          <HallPanel copy={copy} hall={hall} onClear={() => onHall(null)} />
+        ) : (
+          <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
+            <div className="flex items-start justify-between gap-4">
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.museumLabel}</p>
+              <p className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.modelHint}</p>
+            </div>
+            {/* Список залов дублирует клик по зданию: макет — не единственный
+                способ попасть внутрь, и с клавиатуры он недоступен. */}
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.hallsHint}</p>
+              <ul className="mt-4">
+                {HALLS.map((item) => (
+                  <li key={item.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)] last:border-b">
+                    <button
+                      type="button"
+                      onClick={() => onHall(item.id)}
+                      className="flex min-h-14 w-full items-baseline justify-between gap-4 py-3 text-left transition hover:opacity-60"
+                    >
+                      <span className="font-display text-2xl leading-tight">{copy.legend[item.id]}</span>
+                      <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+                        {item.access === 'passport' ? copy.accessPassport : copy.accessOpen}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
         <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-5 font-mono text-[9px] uppercase tracking-[0.15em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:px-8 lg:px-12">{copy.emptyFoot}</p>
       </div>
     </section>
@@ -245,10 +374,14 @@ function VitrineCollection({ works, selectedId, onSelect, copy }: { works: Futur
   );
 }
 
-export function VitrinePage({ lang = 'EN' }: { lang?: string }) {
+export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string; hall?: string; onHallChange?: (hall: string | null) => void }) {
   const [works, setWorks] = useState<FuturoshockWork[]>(() => orderWorks(getFuturoshock()));
   const [selectedId, setSelectedId] = useState<string | null>(() => works[0]?.id || null);
   const copy = getMuseumCopy(lang);
+  /* Зал живёт в адресе, а не в состоянии страницы: неизвестное имя в ссылке
+     не должно ломать экран — оно просто открывает музей целиком. */
+  const activeHall = (HALLS.find((item) => item.id === hall)?.id ?? null) as HallId | null;
+  const setHall = (next: HallId | null) => onHallChange?.(next);
 
   useEffect(() => subscribeContent(() => setWorks(orderWorks(getFuturoshock()))), []);
   useEffect(() => {
@@ -263,5 +396,5 @@ export function VitrinePage({ lang = 'EN' }: { lang?: string }) {
   /* Контейнер тянется на всю высоту экрана: иначе на большом мониторе разворот
      обрывается посреди страницы, боковые линейки заканчиваются в никуда, и под
      ними остаётся белое поле, которое читается как недогруженная страница. */
-  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
+  return <main className="flex min-h-screen flex-col bg-[var(--c-bg)] pt-16 text-[var(--c-accent)]"><div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-[rgb(var(--c-accent-rgb)_/_0.9)]"><header className="flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] px-5 py-3 sm:px-8 lg:px-12"><p className="font-mono text-[9px] uppercase tracking-[0.18em] sm:text-[10px]">{copy.museumLabel}</p><span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{String(works.length).padStart(2, '0')} {copy.objects}</span></header>{works.length === 0 ? <EmptyVitrine copy={copy} hall={activeHall} onHall={setHall} /> : <VitrineCollection works={works} selectedId={selectedId} onSelect={setSelectedId} copy={copy} />}</div></main>;
 }

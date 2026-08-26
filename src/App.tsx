@@ -966,7 +966,7 @@ function NavBar({
     { id: 'podcasts', label: t('nav.podcasts') },
   ].filter((tab) => isSectionInNavigation(tab.id));
 
-  const isMuseumRoute = /^\/(?:museum|vitrine|futuroshock)\/?$/.test(window.location.pathname);
+  const isMuseumRoute = /^\/(?:museum|vitrine|futuroshock)(?:\/[a-z-]{2,24})?\/?$/.test(window.location.pathname);
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
     // Keep native link behaviour for Cmd/Ctrl-click, middle click and new-tab
@@ -3813,7 +3813,7 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   } catch { /* нестандартный адрес — предпросмотра просто не будет */ }
 })();
 
-function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string; formInvite?: string } {
+function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string; formInvite?: string; museumHall?: string } {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!p) return {};
   if (p === 'search') {
@@ -3834,6 +3834,10 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
   /* Раздел назывался vitrine, на экране давно Museum. Адрес приведён к
      названию, а прежние ссылки продолжают открывать тот же раздел. */
   if (p === 'vitrine' || p === 'futuroshock') return { tab: 'museum' };
+  /* Зал музея — это адрес, а не состояние внутри страницы: ссылку на зал
+     присылают, открывают с телефона и возвращаются к ней кнопкой «назад». */
+  const hallMatch = p.match(/^museum\/([a-z-]{2,24})$/);
+  if (hallMatch) return { tab: 'museum', museumHall: hallMatch[1] };
   const numericMatch = p.match(/^article\/(\d+)$/);
   if (numericMatch) return { tab: 'articles', articleId: parseInt(numericMatch[1], 10) };
   const slugMatch = p.match(/^article\/(.+)$/);
@@ -4105,6 +4109,7 @@ export default function App() {
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
+  const [museumHall, setMuseumHall] = useState<string | undefined>(initialRoute.museumHall);
   /* Адрес анкеты и персональный токен приглашения читаются один раз при
      загрузке: страница анкеты не участвует в навигации по вкладкам, к ней
      приходят по прямой ссылке и уходят с неё на сайт. */
@@ -4505,6 +4510,7 @@ export default function App() {
         setSelectedReviewId(parsed.reviewId ?? null);
         setActiveTab(parsed.tab || 'gallery');
         setPassportCode(parsed.passportCode);
+        setMuseumHall(parsed.museumHall);
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -4580,7 +4586,15 @@ export default function App() {
           </LazyTab>
         ) : activeTab === 'museum' ? (
           <LazyTab>
-            <VitrinePage lang={currentLang} />
+            <VitrinePage
+              lang={currentLang}
+              hall={museumHall}
+              onHallChange={(next) => {
+                setMuseumHall(next);
+                const path = next ? `/museum/${next}` : '/museum';
+                if (window.location.pathname !== path) window.history.pushState(null, '', path);
+              }}
+            />
           </LazyTab>
         ) : activeTab === 'studio' ? (
           <LazyTab>

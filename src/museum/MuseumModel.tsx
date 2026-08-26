@@ -1,518 +1,486 @@
-import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, Html, OrbitControls } from '@react-three/drei';
-import { BufferAttribute, BufferGeometry, CatmullRomCurve3, DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector2, Vector3 } from 'three';
-import type { Group, MeshStandardMaterial, PerspectiveCamera } from 'three';
+import { DoubleSide, ExtrudeGeometry, Shape, Spherical, Vector3 } from 'three';
+import type { Group, PerspectiveCamera } from 'three';
+import { HALLS, type HallId } from './halls';
 
 /* ЗДАНИЕ МУЗЕЯ, СОБРАННОЕ КОДОМ, А НЕ ЗАГРУЖЕННОЕ ФАЙЛОМ.
  *
- * Коллекция пока пуста, и страница музея не должна быть пустым местом с
- * подписью «скоро». Здесь стоит сам музей — макет в духе органической
- * архитектуры, собранный из четырёх ходов:
+ * Это бетон, а не гипс: перевёрнутый зиккурат, где каждый следующий объём
+ * вылетает за предыдущий, глухой ствол лестницы, ров вокруг цоколя и мост ко
+ * входу. Брутализм держится на трёх вещах, и все три здесь заявлены:
  *
- *   1. низкое крыло со свободным планом — залы, лежащие по земле;
- *   2. второе крыло поменьше, повёрнутое относительно первого;
- *   3. ротонда с ленточным окном и окулюсом наверху;
- *   4. наружный пандус, который дважды обходит ротонду.
- *
- * Форма собрана из объёмов, а не из одного тела вращения: одиночный лате
- * читается как сосуд, а здание узнаётся по тому, что у него есть основание,
- * вертикаль и вход. Опоры под консолью крыла дают масштаб — без них макет
- * может быть чем угодно, от пепельницы до башни.
+ *   1. масса, которая нависает — консоль читается только вместе с тенью,
+ *      поэтому между ярусами оставлен зазор, а не стык;
+ *   2. следы опалубки — горизонтальные борозды по телу и вертикальные рёбра
+ *      по стволу: бетон показывает, как его лили, а не притворяется камнем;
+ *   3. один большой проём вместо ленты окон — трапеция смотрит с верхнего
+ *      яруса, остальное режут узкие щели.
  *
  * Геометрия параметрическая: ни одного .glb, ни одной текстуры, ни одного
- * внешнего запроса. Несколько килобайт кода вместо мегабайтов модели, и форму
- * правят числами, а не пересобирают в редакторе. three и fiber уже стоят в
- * проекте ради /stage, а страница грузится через lazy(), поэтому вес остаётся
- * в чанке музея и на главную не попадает.
+ * внешнего запроса. Борозды и кессоны — инстансы, поэтому их сотни, а вызовов
+ * отрисовки единицы. three и fiber уже стоят в проекте ради /stage, страница
+ * грузится через lazy(), поэтому вес остаётся в чанке музея.
+ *
+ * Объёмы здесь не декорация: каждый из них — зал, у которого есть имя, адрес
+ * и уровень доступа (см. HALLS). Клик по объёму выбирает зал, а не просто
+ * подсвечивает грань.
  */
 
-const PLASTER = '#f4f1ec';        // гипс: теплее фона страницы, иначе объём пропадает
-const PLASTER_DEEP = '#e8e3db';   // плиты и пандус — на полтона глубже тела
-const PLASTER_SHADE = '#ddd7cd';
+const CONCRETE = '#b9b4ac';        // тело: серый с тёплой ноткой, иначе уходит в синеву
+const CONCRETE_DEEP = '#a49f97';   // нижние ярусы и цоколь
+const CONCRETE_DARK = '#8d887f';   // подрезы и ров
+const SHADOW_GAP = '#3d3a36';      // зазор между ярусами: там всегда тень
 const GLASS = '#2b2a28';
 const GOLD = '#c9a690';
 
-export type MuseumLabels = { atrium: string; ramp: string; oculus: string; galleries: string; entrance: string };
+export type MuseumLabels = Record<HallId, string>;
 
-const WING_TOP = 5.0;             // верх нижнего крыла — на нём стоит всё остальное
-const UPPER_TOP = 8.6;            // верх второго крыла
-const DRUM_TOP = 19.4;
+/* Ярусы перевёрнутого зиккурата: снизу самый узкий. Зазор между ними — не
+   щель для красоты, а то, чем консоль доказывает, что она консоль. */
+const LEVELS = [
+  { id: 'collection' as HallId, w: 15.0, d: 11.6, h: 5.2, y: 1.2 },
+  { id: 'practice' as HallId,   w: 18.6, d: 14.2, h: 5.0, y: 6.8 },
+  { id: 'archive' as HallId,    w: 22.4, d: 17.0, h: 5.6, y: 12.2 },
+];
 
-/* Свободный план: радиусы по кругу, между ними — сглаживание. Именно неровный
-   контур отличает органическую архитектуру от цилиндра: план ведёт рельеф и
-   маршрут, а не циркуль. */
-function organicShape(radii: number[], steps = 128) {
-  const points: Vector2[] = [];
-  const n = radii.length;
-  for (let i = 0; i < steps; i += 1) {
-    const t = i / steps;
-    const position = t * n;
-    const i0 = Math.floor(position) % n;
-    const i1 = (i0 + 1) % n;
-    const k = position - Math.floor(position);
-    const smooth = (1 - Math.cos(k * Math.PI)) / 2;
-    const radius = radii[i0] * (1 - smooth) + radii[i1] * smooth;
-    const angle = t * Math.PI * 2;
-    points.push(new Vector2(Math.cos(angle) * radius, Math.sin(angle) * radius));
-  }
-  const shape = new Shape(points);
-  shape.closePath();
-  return shape;
-}
+const CORE = { w: 5.4, d: 5.4, h: 22.6, x: -12.6, z: -4.6 };
+const PODIUM_TOP = 1.2;
 
-function slabGeometry(radii: number[], height: number, bevel = 0.34) {
-  const geometry = new ExtrudeGeometry(organicShape(radii), {
-    depth: height - bevel * 2,
-    bevelEnabled: true,
-    bevelSize: bevel,
-    bevelThickness: bevel,
-    bevelSegments: 4,
-    curveSegments: 24,
-  });
-  // ExtrudeGeometry растёт по Z; кладём плиту на землю и поднимаем на толщину фаски
-  geometry.rotateX(-Math.PI / 2);
-  geometry.translate(0, height - bevel, 0);
-  return geometry;
-}
-
-/* Лента постоянной ширины вдоль кривой: пандус, а не труба. TubeGeometry даёт
-   круглое сечение и читается как провод, поэтому сечение прямоугольное и
-   собирается вручную — четыре угла на каждом шаге, сшитые в замкнутый профиль. */
-function ribbonGeometry(curve: CatmullRomCurve3, samples: number, width: number, thickness: number) {
-  const points = curve.getSpacedPoints(samples);
-  const positions: number[] = [];
-  const indices: number[] = [];
-  const up = new Vector3(0, 1, 0);
-  const tangent = new Vector3();
-  const side = new Vector3();
-
-  points.forEach((point, index) => {
-    const next = points[Math.min(index + 1, points.length - 1)];
-    const prev = points[Math.max(index - 1, 0)];
-    tangent.subVectors(next, prev).normalize();
-    side.crossVectors(tangent, up).normalize().multiplyScalar(width / 2);
-    const half = thickness / 2;
-    positions.push(
-      point.x + side.x, point.y + half, point.z + side.z,
-      point.x - side.x, point.y + half, point.z - side.z,
-      point.x - side.x, point.y - half, point.z - side.z,
-      point.x + side.x, point.y - half, point.z + side.z,
-    );
-  });
-
-  for (let i = 0; i < points.length - 1; i += 1) {
-    const a = i * 4;
-    const b = (i + 1) * 4;
-    for (let corner = 0; corner < 4; corner += 1) {
-      const nextCorner = (corner + 1) % 4;
-      indices.push(a + corner, b + corner, b + nextCorner, a + corner, b + nextCorner, a + nextCorner);
-    }
-  }
-
-  const geometry = new BufferGeometry();
-  geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
-  geometry.setIndex(indices);
-  geometry.computeVertexNormals();
-  return geometry;
-}
-
-/* Профиль ротонды: слегка утянут в поясе и раскрыт кверху. Радиус нужен и
-   пандусу, поэтому считается функцией, а не рисуется на глаз. */
-const DRUM_BASE = 3.55;
-function drumRadius(y: number) {
-  const t = Math.min(Math.max((y - WING_TOP) / (DRUM_TOP - WING_TOP), 0), 1);
-  return DRUM_BASE - Math.sin(t * Math.PI) * 0.42 + t * 0.55;
-}
-
-function drumProfile() {
-  const points: Vector2[] = [];
-  const steps = 48;
-  for (let i = 0; i <= steps; i += 1) {
-    const y = WING_TOP + ((DRUM_TOP - WING_TOP) * i) / steps;
-    points.push(new Vector2(drumRadius(y), y));
-  }
-  // мягкий завал кровли к окулюсу
-  points.push(new Vector2(drumRadius(DRUM_TOP) - 0.5, DRUM_TOP + 0.5));
-  points.push(new Vector2(drumRadius(DRUM_TOP) - 1.25, DRUM_TOP + 0.82));
-  return points;
-}
-
-function spiralAroundDrum(fromY: number, toY: number, turns: number, offset: number, steps = 220) {
-  const samples: Vector3[] = [];
-  for (let i = 0; i <= steps; i += 1) {
-    const t = i / steps;
-    const y = fromY + (toY - fromY) * t;
-    const angle = -0.4 + t * turns * Math.PI * 2;
-    const radius = drumRadius(y) + offset;
-    samples.push(new Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius));
-  }
-  return new CatmullRomCurve3(samples);
-}
-
-/* РАЗРЕЗ ПО НАЖАТИЮ.
- *
- * Снаружи здание закрыто, и это правильно: макет сначала должен читаться
- * объёмом. Но музей — это прежде всего внутреннее пространство, поэтому у
- * макета есть второе состояние: оболочка ротонды и верхнее крыло расступаются,
- * камера подходит ближе, и виден зал — пол, балконы, внутренняя сторона
- * пандуса и свет из окулюса.
- *
- * Управляет этим кнопка, а не угол камеры: подсказка «покрути и что-нибудь
- * произойдёт» не работает, а нажатие — договор, который видно. */
-/* РАЗБОРКА, А НЕ ПРОСВЕЧИВАНИЕ.
- *
- * Первый заход делал оболочку прозрачной, и это была ошибка: белый гипс сквозь
- * белый гипс превращается в кашу, где не видно ни стен, ни того, что за ними.
- * В архитектуре разрез показывают, СНИМАЯ материал, а не делая его призрачным.
- *
- * Поэтому объёмы расходятся: покрытие крыла и оболочка ротонды поднимаются над
- * зданием, открывая планы под собой, и слегка притухают, чтобы не спорить с
- * тем, ради чего поднялись. Приём известен как разнесённая аксонометрия, и
- * читается он мгновенно, без всякой подписи. */
-function useLift(target: React.MutableRefObject<Group | null>, open: boolean, height: number, speed = 3) {
-  useFrame((_, delta) => {
-    if (!target.current) return;
-    const want = open ? height : 0;
-    target.current.position.y += (want - target.current.position.y) * Math.min(delta * speed, 1);
-  });
-}
-
-function useShellReveal(materials: React.MutableRefObject<(MeshStandardMaterial | null)[]>, open: boolean, depth = 0.9) {
-  const value = useRef(0);
-  useFrame((_, delta) => {
-    const target = open ? 1 : 0;
-    value.current += (target - value.current) * Math.min(delta * 3.4, 1);
-    const opacity = 1 - value.current * depth;
-    materials.current.forEach((material) => {
-      if (!material) return;
-      /* Только opacity. Переключать сам флаг transparent на лету нельзя:
-         three пересобирает шейдер лишь по needsUpdate, и без него смена флага
-         молча не применяется — стены оставались глухими. Поэтому материалы
-         объявлены прозрачными сразу, а меняется прозрачность. */
-      material.opacity = opacity;
-      material.depthWrite = opacity > 0.6;
-    });
-  });
-}
-
-/* Внутреннее пространство ротонды: пол атриума, кольцевые балконы вдоль стены
-   и световой колодец под окулюсом. Балконы посажены на тот же радиус, что и
-   оболочка, поэтому пространство читается как одно, а не как набор дисков. */
-function Atrium({ open }: { open: boolean }) {
-  const balconies = useMemo(
-    () => [10.6, 13.4, 16.2].map((y) => ({ y, radius: drumRadius(y) - 0.12 })),
-    [],
-  );
+/* ── СЛЕДЫ ОПАЛУБКИ ──────────────────────────────────────────────────
+   Доска оставляет горизонтальный шов каждые тридцать сантиметров. Рисуем их
+   инстансами: тысяча тонких коробок одним вызовом дешевле, чем текстура,
+   которую пришлось бы грузить файлом. */
+function BoardMarks({ w, d, h, y, step = 0.62 }: { w: number; d: number; h: number; y: number; step?: number }) {
+  const rows = useMemo(() => {
+    const out: number[] = [];
+    for (let level = y + step; level < y + h - 0.1; level += step) out.push(level);
+    return out;
+  }, [w, d, h, y, step]);
 
   return (
     <group>
-      {/* Пол атриума */}
-      <mesh position={[0, WING_TOP + 0.12, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <circleGeometry args={[drumRadius(WING_TOP) - 0.15, 64]} />
-        <meshStandardMaterial color={PLASTER_SHADE} roughness={0.94} />
-      </mesh>
-
-      {/* Круг света под окулюсом — то, ради чего в музее делают верхний свет */}
-      <mesh position={[0, WING_TOP + 0.14, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[2.15, 48]} />
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.55} />
-      </mesh>
-
-      {/* Подиумы с экспонатами: пустой атриум читается вестибюлем, а с ними —
-          музеем. Ставим по дуге, а не по центру: центр держит свет из окулюса.
-          У каждого свой источник — в зале экспонат виден потому, что на него
-          направлен свет, а не потому, что вокруг светло. */}
-      {[0.4, 1.5, 2.6, 4.1].map((angle, index) => {
-        const distance = 2.9 + (index % 2) * 1.1;
-        const x = Math.cos(angle) * distance;
-        const z = Math.sin(angle) * distance;
-        return (
-          <group key={angle} position={[x, 0, z]}>
-            <mesh position={[0, WING_TOP + 0.55, 0]} castShadow receiveShadow>
-              <boxGeometry args={[0.9, 0.86, 0.9]} />
-              <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} />
-            </mesh>
-            <mesh position={[0, WING_TOP + 1.32, 0]} castShadow>
-              {index % 3 === 0
-                ? <torusKnotGeometry args={[0.24, 0.08, 64, 12]} />
-                : index % 3 === 1
-                  ? <icosahedronGeometry args={[0.34, 0]} />
-                  : <coneGeometry args={[0.3, 0.66, 5]} />}
-              <meshStandardMaterial color={PLASTER_SHADE} roughness={0.55} metalness={0.18} />
-            </mesh>
-            <spotLight
-              position={[0, WING_TOP + 4.4, 0]}
-              target-position={[0, WING_TOP + 1.2, 0]}
-              angle={0.42}
-              penumbra={0.75}
-              intensity={open ? 26 : 0}
-              distance={9}
-              decay={2}
-              color="#fff6ea"
-            />
-          </group>
-        );
-      })}
-
-      {balconies.map(({ y, radius }) => (
-        <group key={y}>
-          <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} castShadow receiveShadow>
-            <ringGeometry args={[radius - 1.5, radius, 64]} />
-            <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} side={DoubleSide} />
-          </mesh>
-          <mesh position={[0, y + 0.42, 0]} rotation={[Math.PI / 2, 0, 0]}>
-            <torusGeometry args={[radius - 1.5, 0.06, 6, 64]} />
-            <meshStandardMaterial color={PLASTER_SHADE} roughness={0.85} />
-          </mesh>
-        </group>
+      {rows.map((level) => (
+        <mesh key={level} position={[0, level, 0]}>
+          <boxGeometry args={[w + 0.04, 0.045, d + 0.04]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.97} />
+        </mesh>
       ))}
     </group>
   );
 }
 
-/* ЗАЛЫ НИЖНЕГО КРЫЛА.
- *
- * Ротонда — не всё здание: основная площадь музея лежит по земле. В раскрытом
- * состоянии крыло не растворяется полностью, как оболочка ротонды, а сохраняет
- * плотность: иначе от макета остаётся дым. Приглушается ровно настолько, чтобы
- * сквозь него читались перегородки, подиумы и антресоль. */
-function WingHalls() {
-  const partitions = useMemo(
-    () => [
-      { position: [-6.4, 0, 2.2] as const, rotation: 0.35, width: 6.2 },
-      { position: [-2.1, 0, 6.6] as const, rotation: -0.85, width: 5.0 },
-      { position: [4.8, 0, 5.4] as const, rotation: 0.62, width: 5.6 },
-      { position: [7.4, 0, -2.6] as const, rotation: -0.3, width: 4.4 },
-    ],
-    [],
-  );
-
-  const cases = useMemo(
-    () => [
-      [-4.6, 4.4] as const,
-      [-7.8, -1.2] as const,
-      [1.6, 7.4] as const,
-      [6.2, 2.2] as const,
-      [8.6, -4.4] as const,
-      [-1.4, -6.8] as const,
-    ],
-    [],
-  );
-
-  return (
-    <group>
-      {/* Пол зала */}
-      <mesh position={[0, 0.5, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <circleGeometry args={[12.4, 96]} />
-        <meshStandardMaterial color={PLASTER_SHADE} roughness={0.95} />
-      </mesh>
-
-      {partitions.map(({ position, rotation, width }) => (
-        <mesh key={`${position[0]}-${position[2]}`} position={[position[0], 2.3, position[2]]} rotation={[0, rotation, 0]} castShadow receiveShadow>
-          <boxGeometry args={[width, 3.4, 0.26]} />
-          <meshStandardMaterial color={PLASTER} roughness={0.92} />
-        </mesh>
-      ))}
-
-      {cases.map(([x, z]) => (
-        <mesh key={`${x}-${z}`} position={[x, 1.05, z]} castShadow receiveShadow>
-          <boxGeometry args={[1.5, 1.1, 0.8]} />
-          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} />
-        </mesh>
-      ))}
-
-      {/* Антресоль: второй уровень, с которого зал виден сверху */}
-      <mesh position={[0, 4.1, 0]} rotation={[-Math.PI / 2, 0, 0]} castShadow receiveShadow>
-        <ringGeometry args={[8.2, 11.8, 96, 1, 0.6, 3.5]} />
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.9} side={DoubleSide} />
-      </mesh>
-    </group>
-  );
-}
-
-function Building({ open, labels }: { open: boolean; labels: MuseumLabels }) {
-  const { size: canvasSize } = useThree();
-  const compactCanvas = canvasSize.width < 520;
-  /* Материалы, которые расступаются при взгляде сверху: оболочка ротонды,
-     её кровельное кольцо и верхнее крыло. Остальное здание остаётся плотным —
-     разрез должен открывать зал, а не разбирать макет на части. */
-  /* Поднимаются три части: покрытие нижнего крыла, верхнее крыло и оболочка
-     ротонды. Высоты разные — иначе разлёт читается одним движением лифта, а
-     не разбором здания по слоям. */
-  const lowerShell = useRef<Group | null>(null);
-  const upperShell = useRef<Group | null>(null);
-  const drumShell = useRef<Group | null>(null);
-  useLift(lowerShell, open, 4.2);
-  useLift(upperShell, open, 6.2, 2.6);
-  useLift(drumShell, open, 7.6, 2.2);
-
-  /* Поднятые части ещё и притухают: они уже сказали, что здесь была стена,
-     и дальше не должны спорить с планом, который открыли. */
-  const shell = useRef<(MeshStandardMaterial | null)[]>([]);
-  useShellReveal(shell, open, 0.42);
-
-  const lowerWing = useMemo(() => slabGeometry([13.8, 10.1, 12.7, 8.3, 11.5, 13.4, 9.4, 11.9], WING_TOP), []);
-  const upperWing = useMemo(() => slabGeometry([8.6, 6.2, 7.9, 5.6, 7.4, 8.3, 6.0, 7.1], UPPER_TOP - WING_TOP + 0.6, 0.3), []);
-  const drum = useMemo(() => drumProfile(), []);
-
-  // Пандус: два обхода ротонды с парапетом, вынесенным за плоскость стены
-  const ramp = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 1.4, DRUM_TOP - 1.6, 1.95, 0.95), 240, 2.0, 0.3), []);
-  const rampRail = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 0.45, DRUM_TOP - 0.65, 1.95, 1.85), 240, 0.16, 0.72), []);
-
-  // Ленточное окно ротонды идёт следом за пандусом, ниже его плиты
-  const drumWindow = useMemo(() => ribbonGeometry(spiralAroundDrum(UPPER_TOP - 2.3, DRUM_TOP - 2.5, 1.95, 0.03), 240, 0.5, 0.62), []);
-
-  /* Козырёк входа: плита, вынесенная от крыла и опирающаяся на две стойки.
-     Он и опоры дают человеческий масштаб — без них макет читается предметом. */
-  const canopy = useMemo(() => {
-    const samples: Vector3[] = [];
-    const steps = 36;
-    for (let i = 0; i <= steps; i += 1) {
-      const t = i / steps;
-      const angle = 0.42 + t * 0.92;
-      const radius = 10.4 + Math.sin(t * Math.PI) * 3.1;
-      samples.push(new Vector3(Math.cos(angle) * radius, 3.6, Math.sin(angle) * radius));
+/* Вертикальные рёбра ствола: та же опалубка, поставленная на попа. Ствол
+   глухой, и без рёбер он читается как коробка от лифта, а не как бетон. */
+function CoreRibs() {
+  const ribs = useMemo(() => {
+    const out: [number, number, number][] = [];
+    const count = 9;
+    for (let i = 0; i < count; i += 1) {
+      const t = (i + 0.5) / count - 0.5;
+      out.push([t * CORE.w, 0, CORE.d / 2 + 0.06]);
+      out.push([t * CORE.w, 0, -CORE.d / 2 - 0.06]);
     }
-    return ribbonGeometry(new CatmullRomCurve3(samples), 60, 3.4, 0.2);
+    for (let i = 0; i < count; i += 1) {
+      const t = (i + 0.5) / count - 0.5;
+      out.push([CORE.w / 2 + 0.06, 1, t * CORE.d]);
+      out.push([-CORE.w / 2 - 0.06, 1, t * CORE.d]);
+    }
+    return out;
   }, []);
 
-  const pilotis = useMemo(
-    () => [0.55, 0.78, 1.0, 1.22].map((angle) => [Math.cos(angle) * 12.1, Math.sin(angle) * 12.1] as const),
-    [],
-  );
-
   return (
-    <group position={[0, -9.2, 0]}>
-      {/* Залы лежат по земле и остаются на месте — поднимается оболочка над ними */}
-      <WingHalls />
-      <group ref={lowerShell}>
-        <mesh geometry={lowerWing} castShadow receiveShadow>
-          <meshStandardMaterial ref={(material) => { shell.current[3] = material; }} color={PLASTER} roughness={0.92} metalness={0.02} transparent />
-        </mesh>
-
-        {/* Ленточное остекление крыла — горизонталь, по которой читается этаж */}
-        <mesh position={[0, 2.5, 0]}>
-          <cylinderGeometry args={[11.35, 11.35, 0.62, 128, 1, true]} />
-          <meshStandardMaterial color={GLASS} roughness={0.34} metalness={0.14} opacity={0.72} transparent side={DoubleSide} />
-        </mesh>
-      </group>
-
-      {/* Второе крыло, повёрнутое к первому: слоистость вместо одного объёма */}
-      <group ref={upperShell}>
-      <group position={[2.6, WING_TOP - 0.6, -1.9]} rotation={[0, 0.62, 0]}>
-        <mesh geometry={upperWing} castShadow receiveShadow>
-          <meshStandardMaterial ref={(material) => { shell.current[2] = material; }} color={PLASTER_DEEP} roughness={0.9} metalness={0.02} transparent />
-        </mesh>
-      </group>
-      </group>
-
-      {/* Ротонда со всем, что к ней относится. Смещена с оси стилобата:
-          вертикаль, поставленная ровно в центр, складывает композицию в торт. */}
-      <group position={[-2.9, 0, 2.1]}>
-        <Atrium open={open} />
-
-        {/* Покрытие ротонды: сама оболочка и окулюс — одна деталь, поэтому
-            поднимаются вместе, а атриум под ними остаётся на месте. */}
-        <group ref={drumShell}>
-          <mesh castShadow receiveShadow>
-            <latheGeometry args={[drum, 128]} />
-            <meshStandardMaterial ref={(material) => { shell.current[0] = material; }} color={PLASTER} roughness={0.9} metalness={0.02} side={DoubleSide} transparent />
-          </mesh>
-          <mesh position={[0, DRUM_TOP + 0.78, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <meshStandardMaterial ref={(material) => { shell.current[1] = material; }} color={GLASS} roughness={0.26} metalness={0.12} opacity={0.7} transparent />
-            <circleGeometry args={[drumRadius(DRUM_TOP) - 1.25, 48]} />
-          </mesh>
-          {open && !compactCanvas && (
-            <Html position={[0, DRUM_TOP + 1.6, 0]} center zIndexRange={[8, 0]} style={{ pointerEvents: 'none' }}>
-              <span className="whitespace-nowrap border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-[var(--c-accent)]">
-                {labels.oculus}
-              </span>
-            </Html>
-          )}
-        </group>
-
-        <mesh geometry={drumWindow}>
-          <meshStandardMaterial color={GLASS} roughness={0.32} metalness={0.14} opacity={0.88} transparent />
-        </mesh>
-
-        <mesh geometry={ramp} castShadow receiveShadow>
-          <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} metalness={0.02} side={DoubleSide} />
-        </mesh>
-        <mesh geometry={rampRail} castShadow>
-          <meshStandardMaterial color={PLASTER_SHADE} roughness={0.86} />
-        </mesh>
-
-      </group>
-
-      <mesh geometry={canopy} castShadow receiveShadow>
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.88} metalness={0.02} side={DoubleSide} />
-      </mesh>
-
-      {pilotis.map(([x, z]) => (
-        <mesh key={`${x}-${z}`} position={[x, 1.8, z]} castShadow>
-          <cylinderGeometry args={[0.17, 0.17, 3.6, 16]} />
-          <meshStandardMaterial color={PLASTER_SHADE} roughness={0.85} />
+    <group position={[CORE.x, CORE.h / 2, CORE.z]}>
+      {ribs.map(([x, rotated, z], index) => (
+        <mesh key={index} position={[x, 0, z]} rotation={[0, rotated ? Math.PI / 2 : 0, 0]}>
+          <boxGeometry args={[0.22, CORE.h - 0.6, 0.16]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.98} />
         </mesh>
       ))}
+    </group>
+  );
+}
 
-      {/* Стилобат: здание стоит на своей площадке, а не висит над белым полем */}
-      <mesh position={[0, -0.24, 0]} receiveShadow castShadow>
-        <cylinderGeometry args={[15.4, 15.8, 0.48, 96]} />
-        <meshStandardMaterial color={PLASTER_DEEP} roughness={0.95} />
+/* Кессоны на изнанке консоли. Нависающая плита без кессонов выглядит фанерой:
+   в бетоне низ верхнего яруса всегда разбит на квадраты. */
+function Coffers({ w, d, y }: { w: number; d: number; y: number }) {
+  const cells = useMemo(() => {
+    const out: [number, number][] = [];
+    const cols = Math.floor(w / 2.1);
+    const rows = Math.floor(d / 2.1);
+    for (let i = 0; i < cols; i += 1) {
+      for (let j = 0; j < rows; j += 1) {
+        out.push([(i - (cols - 1) / 2) * 2.1, (j - (rows - 1) / 2) * 2.1]);
+      }
+    }
+    return out;
+  }, [w, d]);
+
+  return (
+    <group position={[0, y, 0]}>
+      {cells.map(([x, z]) => (
+        <mesh key={`${x}-${z}`} position={[x, 0.16, z]}>
+          <boxGeometry args={[1.62, 0.3, 1.62]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.98} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* Трапеция Бройера: единственный большой глаз на глухом фасаде. Выдвинута
+   наружу, потому что в бетоне окно — это коробка, вставленная в массу. */
+function TrapezoidEye({ y, z }: { y: number; z: number }) {
+  const geometry = useMemo(() => {
+    const shape = new Shape();
+    shape.moveTo(-2.6, -1.5);
+    shape.lineTo(2.6, -1.5);
+    shape.lineTo(1.5, 1.5);
+    shape.lineTo(-1.5, 1.5);
+    shape.closePath();
+    return new ExtrudeGeometry(shape, { depth: 1.1, bevelEnabled: false });
+  }, []);
+
+  return (
+    <group position={[3.4, y, z]}>
+      <mesh geometry={geometry} position={[0, 0, 0]}>
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.95} />
+      </mesh>
+      <mesh position={[0, 0, 1.14]}>
+        <planeGeometry args={[4.4, 2.6]} />
+        <meshStandardMaterial color={GLASS} roughness={0.22} metalness={0.2} />
       </mesh>
     </group>
   );
 }
 
-/* ЭКСПЛИКАЦИЯ.
- *
- * Раскрытый макет показывает устройство, но не называет его. Подписи привязаны
- * к точкам самого здания и висят только в открытом состоянии — в закрытом они
- * бы спорили с силуэтом. Текст не перехватывает мышь, иначе он мешал бы
- * вращению ровно там, где интереснее всего крутить. */
-function Legend({ open, labels }: { open: boolean; labels: MuseumLabels }) {
+/* Щели вместо ленты: узкое высокое отверстие держит массу, широкое её съедает. */
+function Slits({ y, z, count = 6 }: { y: number; z: number; count?: number }) {
+  const positions = useMemo(() => {
+    const out: number[] = [];
+    for (let i = 0; i < count; i += 1) out.push((i - (count - 1) / 2) * 1.5 - 4.2);
+    return out;
+  }, [count]);
+
+  return (
+    <group position={[0, y, z]}>
+      {positions.map((x) => (
+        <mesh key={x} position={[x, 0, 0]}>
+          <boxGeometry args={[0.34, 3.1, 0.24]} />
+          <meshStandardMaterial color={GLASS} roughness={0.3} metalness={0.16} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* Верхний свет: пилы фонарей над последним ярусом. В музее это не украшение,
+   а способ впустить ровный свет, не открывая стен. */
+function RoofMonitors({ y, w, d }: { y: number; w: number; d: number }) {
+  const bays = useMemo(() => {
+    const out: number[] = [];
+    // Три пилы с бетоном между ними: четыре сливались в одну тёмную ленту
+    // и снова превращали кровлю в чёрное поле.
+    const count = 3;
+    for (let i = 0; i < count; i += 1) out.push((i - (count - 1) / 2) * (d / 3.6));
+    return out;
+  }, [d]);
+
+  return (
+    <group position={[0, y, 0]}>
+      {/* Сначала кровля, потом фонари. Без плиты верх здания читался чёрным
+          полем: стекло занимало всю крышу и масса теряла верх. */}
+      <mesh position={[0, 0.22, 0]} receiveShadow castShadow>
+        <boxGeometry args={[w, 0.44, d]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.97} />
+      </mesh>
+      {bays.map((z) => (
+        <group key={z} position={[0, 0.44, z]}>
+          {/* Наклонная плоскость света узкая: пила, а не витраж */}
+          <mesh position={[0, 0.52, 0.16]} rotation={[-0.72, 0, 0]} castShadow>
+            <boxGeometry args={[w - 6.2, 1.06, 0.16]} />
+            <meshStandardMaterial color={GLASS} roughness={0.24} metalness={0.18} />
+          </mesh>
+          <mesh position={[0, 0.44, -0.42]} castShadow>
+            <boxGeometry args={[w - 6.2, 0.88, 0.42]} />
+            <meshStandardMaterial color={CONCRETE} roughness={0.96} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+/* Цоколь со рвом. Вырезать отверстие в плите нечем — CSG в проекте нет, — но
+   ров это и не отверстие: это четыре берега вокруг опущенного двора. */
+function PodiumAndCourt() {
+  const bank = 5.6;
+  const outer = { w: 40, d: 34 };
+  const court = { w: 40 - bank * 2, d: 12.4 };
+
+  return (
+    <group>
+      {/* берега */}
+      <mesh position={[0, PODIUM_TOP / 2 - 0.6, -(court.d / 2 + (outer.d - court.d) / 4) + 0]} receiveShadow castShadow>
+        <boxGeometry args={[outer.w, PODIUM_TOP + 1.2, outer.d - court.d]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.97} />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[side * (court.w / 2 + bank / 2), PODIUM_TOP / 2 - 0.6, court.d / 2]} receiveShadow castShadow>
+          <boxGeometry args={[bank, PODIUM_TOP + 1.2, court.d]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.97} />
+        </mesh>
+      ))}
+      {/* дно двора: ниже уровня земли, поэтому во рву всегда тень */}
+      <mesh position={[0, -1.9, court.d / 2 + 1.0]} receiveShadow>
+        <boxGeometry args={[court.w, 0.5, court.d]} />
+        <meshStandardMaterial color={CONCRETE_DARK} roughness={0.98} />
+      </mesh>
+      {/* лестница со дна двора наверх: масштаб человека на бетонной массе */}
+      {[0, 1, 2, 3, 4, 5].map((step) => (
+        <mesh key={step} position={[-court.w / 2 + 3.4, -1.62 + step * 0.42, court.d + 0.4 - step * 0.5]} receiveShadow castShadow>
+          <boxGeometry args={[5.2, 0.42, 0.5]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.97} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* Мост через ров. Вход в бруталистский музей — всегда переход: сначала
+   спускаешься мимо массы, потом входишь под неё. */
+function Bridge() {
+  return (
+    <group>
+      <mesh position={[3.4, 0.9, 9.6]} receiveShadow castShadow>
+        <boxGeometry args={[4.2, 0.5, 9.4]} />
+        <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.96} />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[3.4 + side * 2.1, 1.5, 9.6]}>
+          <boxGeometry args={[0.26, 0.9, 9.4]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.96} />
+        </mesh>
+      ))}
+      {/* портал входа: чёрный вырез в массе, единственная дверь на весь фасад */}
+      <mesh position={[3.4, 3.0, 5.86]}>
+        <boxGeometry args={[3.2, 3.4, 0.3]} />
+        <meshStandardMaterial color={SHADOW_GAP} roughness={0.9} />
+      </mesh>
+    </group>
+  );
+}
+
+/* ── ЯРУС КАК ЗАЛ ────────────────────────────────────────────────────
+   Каждый объём кликабелен: это дверь в зал, а не грань модели. Наведение
+   поднимает тон, выбор — обводит зазором света. */
+function Level({
+  level,
+  open,
+  selected,
+  hovered,
+  onSelect,
+  onHover,
+}: {
+  level: (typeof LEVELS)[number];
+  open: boolean;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: HallId) => void;
+  onHover: (id: HallId | null) => void;
+}) {
+  const group = useRef<Group>(null);
+  const lift = LEVELS.indexOf(level) * 1.9;
+
+  useFrame((_, delta) => {
+    if (!group.current) return;
+    const want = open ? lift : 0;
+    group.current.position.y += (want - group.current.position.y) * Math.min(delta * 3, 1);
+  });
+
+  const tone = selected ? '#cfc9bf' : hovered ? '#c5c0b7' : CONCRETE;
+
+  return (
+    <group ref={group}>
+      <mesh
+        position={[0, level.y + level.h / 2, 0]}
+        castShadow
+        receiveShadow
+        onPointerOver={(event) => { event.stopPropagation(); onHover(level.id); }}
+        onPointerOut={() => onHover(null)}
+        onClick={(event) => { event.stopPropagation(); onSelect(level.id); }}
+      >
+        <boxGeometry args={[level.w, level.h, level.d]} />
+        <meshStandardMaterial color={tone} roughness={0.96} metalness={0.02} />
+      </mesh>
+      <BoardMarks w={level.w} d={level.d} h={level.h} y={level.y} />
+      <Coffers w={level.w} d={level.d} y={level.y} />
+      {/* тёмная полка в зазоре: консоль видно по тени под ней, а не по краю */}
+      <mesh position={[0, level.y - 0.16, 0]}>
+        <boxGeometry args={[level.w - 4.2, 0.32, level.d - 4.2]} />
+        <meshStandardMaterial color={SHADOW_GAP} roughness={0.9} />
+      </mesh>
+    </group>
+  );
+}
+
+function Building({
+  open,
+  selected,
+  hovered,
+  onSelect,
+  onHover,
+}: {
+  open: boolean;
+  selected: HallId | null;
+  hovered: HallId | null;
+  onSelect: (id: HallId) => void;
+  onHover: (id: HallId | null) => void;
+}) {
+  const coreGroup = useRef<Group>(null);
+  useFrame((_, delta) => {
+    if (!coreGroup.current) return;
+    const want = open ? 1.1 : 0;
+    coreGroup.current.position.y += (want - coreGroup.current.position.y) * Math.min(delta * 3, 1);
+  });
+
+  const coreTone = selected === 'study' ? '#c6c1b8' : hovered === 'study' ? '#bdb8b0' : CONCRETE_DEEP;
+  const courtTone = selected === 'court' ? 0.5 : hovered === 'court' ? 0.34 : 0.0;
+
+  return (
+    <group position={[0, -7.4, 0]}>
+      <PodiumAndCourt />
+      <Bridge />
+
+      {LEVELS.map((level) => (
+        <Level
+          key={level.id}
+          level={level}
+          open={open}
+          selected={selected === level.id}
+          hovered={hovered === level.id}
+          onSelect={onSelect}
+          onHover={onHover}
+        />
+      ))}
+
+      {/* Двор кликается по своему дну, а не по берегам: берега — это земля */}
+      <mesh
+        position={[0, -1.6, 13.4]}
+        onPointerOver={(event) => { event.stopPropagation(); onHover('court'); }}
+        onPointerOut={() => onHover(null)}
+        onClick={(event) => { event.stopPropagation(); onSelect('court'); }}
+      >
+        <boxGeometry args={[28.4, 0.12, 12.0]} />
+        <meshStandardMaterial color={GOLD} transparent opacity={courtTone} roughness={0.9} />
+      </mesh>
+
+      <group ref={coreGroup}>
+        <mesh
+          position={[CORE.x, CORE.h / 2, CORE.z]}
+          castShadow
+          receiveShadow
+          onPointerOver={(event) => { event.stopPropagation(); onHover('study'); }}
+          onPointerOut={() => onHover(null)}
+          onClick={(event) => { event.stopPropagation(); onSelect('study'); }}
+        >
+          <boxGeometry args={[CORE.w, CORE.h, CORE.d]} />
+          <meshStandardMaterial color={coreTone} roughness={0.97} metalness={0.02} />
+        </mesh>
+        <CoreRibs />
+        {/* Фонарь на макушке ствола — щель между бетоном и парапетом:
+            сплошная стеклянная шапка превращала ствол в фонарный столб. */}
+        <mesh position={[CORE.x, CORE.h + 0.26, CORE.z]}>
+          <boxGeometry args={[CORE.w - 1.6, 0.5, CORE.d - 1.6]} />
+          <meshStandardMaterial color={GLASS} roughness={0.24} metalness={0.2} />
+        </mesh>
+        <mesh position={[CORE.x, CORE.h + 0.72, CORE.z]} castShadow>
+          <boxGeometry args={[CORE.w + 0.3, 0.42, CORE.d + 0.3]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.97} />
+        </mesh>
+      </group>
+
+      <TrapezoidEye y={15.2} z={8.6} />
+      <Slits y={9.3} z={7.2} />
+      <RoofMonitors y={LEVELS[2].y + LEVELS[2].h} w={LEVELS[2].w} d={LEVELS[2].d} />
+
+      {/* Перекрытия видно только в раскрытом состоянии: иначе это тёмные щели */}
+      {open && LEVELS.map((level) => (
+        <mesh key={`plate-${level.id}`} position={[0, level.y + LEVELS.indexOf(level) * 1.9 + 0.3, 0]} receiveShadow>
+          <boxGeometry args={[level.w - 1.2, 0.24, level.d - 1.2]} />
+          <meshStandardMaterial color="#d8d3ca" roughness={0.94} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/* Подписи залов стоят у своих объёмов и работают как двери: их можно нажать,
+   и это единственные подписи, которые перехватывают мышь. */
+function HallPins({
+  labels,
+  selected,
+  hovered,
+  onSelect,
+  onHover,
+  lockedHint,
+}: {
+  labels: MuseumLabels;
+  selected: HallId | null;
+  hovered: HallId | null;
+  onSelect: (id: HallId) => void;
+  onHover: (id: HallId | null) => void;
+  lockedHint: string;
+}) {
+  /* На узком холсте пять подписей сходятся в пятно: пины пропадают, а вход в
+     зал остаётся списком в колонке рядом — он и так дублирует клик по зданию.
+     Решает ширина холста, а не окна: панель бывает узкой и на десктопе. */
   const { size } = useThree();
-  if (!open) return null;
-  /* На телефоне макет мельче, и точки, разнесённые в пространстве, сходятся в
-     несколько пикселей: «Окулюс» садился прямо на «Пандус». Точку пандуса
-     увели наружу, а окулюс на узком холсте не показываем совсем — лучше четыре
-     читаемые подписи, чем пять слипшихся. Проверку держим здесь же, чтобы
-     размер холста, а не ширина окна, решал: панель бывает узкой и на десктопе. */
-  void size;
-  /* Подпись стоит у того, что называет, и в РАСКРЫТОМ состоянии: атриум и залы
-     видно только когда покрытие поднялось. Окулюса здесь нет — он часть кровли
-     и уезжает вместе с ней, поэтому подписан внутри её группы. */
-  const points: [string, [number, number, number]][] = [
-    [labels.ramp, [5.4, 9.4, 5.8]],
-    [labels.atrium, [-2.9, WING_TOP + 1.8, 2.1]],
-    [labels.galleries, [7.6, 1.6, -4.2]],
-    [labels.entrance, [12.6, 3.0, 6.8]],
-  ];
+  if (size.width < 520) return null;
 
   return (
     <>
-      {points.map(([text, position]) => (
-        <Html key={text} position={position} center zIndexRange={[8, 0]} style={{ pointerEvents: 'none' }}>
-          <span className="whitespace-nowrap border border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-[var(--c-accent)]">
-            {text}
-          </span>
-        </Html>
-      ))}
+      {HALLS.map((hall) => {
+        const active = selected === hall.id || hovered === hall.id;
+        return (
+          <Html
+            key={hall.id}
+            position={[hall.focus[0], hall.focus[1] - 7.4 + 1.6, hall.focus[2]]}
+            center
+            zIndexRange={[8, 0]}
+          >
+            <button
+              type="button"
+              onClick={() => onSelect(hall.id)}
+              onPointerOver={() => onHover(hall.id)}
+              onPointerOut={() => onHover(null)}
+              title={hall.access === 'passport' ? lockedHint : undefined}
+              className={`whitespace-nowrap border px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] transition ${
+                active
+                  ? 'border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)]'
+                  : 'border-[rgb(var(--c-accent-rgb)_/_0.28)] bg-[var(--c-bg)]/88 text-[var(--c-accent)]'
+              }`}
+            >
+              {labels[hall.id]}
+              {hall.access === 'passport' ? ' ·' : ''}
+            </button>
+          </Html>
+        );
+      })}
     </>
   );
 }
 
-/* Горизонтали участка — как на разрезе местности в проекте. Дают земле масштаб,
-   не превращая её в текстуру. */
+/* Горизонтали участка — как на разрезе местности в проекте. */
 function SiteContours() {
-  const rings = useMemo(() => [18.4, 22.6, 27.4, 33.0], []);
+  const rings = useMemo(() => [26.0, 31.0, 37.0, 44.0], []);
   return (
-    <group position={[0, -9.46, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+    <group position={[0, -7.66, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       {rings.map((radius, index) => (
         <mesh key={radius} position={[0, 0, index * 0.002]}>
           <ringGeometry args={[radius, radius + 0.06, 128]} />
-          <meshBasicMaterial color={GOLD} transparent opacity={0.4 - index * 0.075} side={DoubleSide} />
+          <meshBasicMaterial color={GOLD} transparent opacity={0.36 - index * 0.07} side={DoubleSide} />
         </mesh>
       ))}
     </group>
@@ -522,16 +490,16 @@ function SiteContours() {
 /* ПОСАДКА КАМЕРЫ СЧИТАЕТСЯ, А НЕ ПРОПИСЫВАЕТСЯ ЧИСЛОМ.
  *
  * fov у перспективной камеры вертикальный, и на узкой колонке телефона он
- * покрывает высоту, но не ширину: макет шириной в тридцать метров вылезал за
- * оба края, оставляя в кадре кусок крыла. Расстояние берётся по худшей из двух
- * осей, поэтому здание целиком помещается и в широкой панели, и в телефонной.
+ * покрывает высоту, но не ширину: макет шириной в сорок метров вылезал за оба
+ * края. Расстояние берётся по худшей из двух осей.
  *
- * Тот же расчёт обслуживает раскрытие: в открытом состоянии камера подходит
- * ближе, к масштабу зала. Меняется только длина вектора — направление остаётся
- * тем, которое зритель выбрал мышью, иначе нажатие сбрасывало бы его ракурс. */
-function CameraRig({ open, radius }: { open: boolean; radius: number }) {
+ * Выбранный зал добавляет к этому наклон и высоту точки взгляда: камера
+ * поднимается к ярусу, но не влетает внутрь — азимут остаётся тот, который
+ * зритель выбрал мышью. */
+function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; focusY: number }) {
   const { camera, size } = useThree();
   const distance = useRef(0);
+  const target = useRef(0);
 
   const fitted = useMemo(() => {
     const perspective = camera as PerspectiveCamera;
@@ -552,28 +520,15 @@ function CameraRig({ open, radius }: { open: boolean; radius: number }) {
   const spherical = useRef(new Spherical());
   useFrame((_, delta) => {
     const step = Math.min(delta * 2.6, 1);
-    /* Приближения нет намеренно. Посадка кадра выверена по габариту здания, а
-       здание стоит не по центру площадки: любой подлёт срезал крыло или пандус.
-       Раскрытие держится на том, что расступается оболочка, а не на том, что
-       камера лезет внутрь. */
-    /* В раскрытом состоянии композиция становится выше — поднятые части стоят
-       над зданием, — поэтому камера отходит. Приближения по-прежнему нет: оно
-       срезало крыло, потому что здание стоит не по центру площадки. */
-    const want = fitted * (open ? 1.34 : 1);
+    const want = fitted * (open ? 1.22 : 1);
     distance.current += (want - distance.current) * step;
+    target.current += (focusY - target.current) * step * 0.8;
 
-    /* Азимут остаётся тот, который выбрал зритель: нажатие не должно отбирать
-       у него ракурс. Меняются только длина вектора и наклон — камера опускается
-       почти на уровень зала. Сверху смотреть бесполезно: витки пандуса идут
-       снаружи ротонды и закрывают собой атриум, ради которого всё и делалось,
-       а сбоку сквозь растворённую стену читается разрез: пол, балконы, подиумы
-       и лестничная спираль перед ними. */
-    spherical.current.setFromVector3(camera.position);
-    if (open) {
-      spherical.current.phi += (1.16 - spherical.current.phi) * step * 0.6;
-    }
+    spherical.current.setFromVector3(camera.position.clone().sub(new Vector3(0, target.current, 0)));
+    if (open) spherical.current.phi += (1.2 - spherical.current.phi) * step * 0.6;
     spherical.current.radius = distance.current;
-    camera.position.setFromSpherical(spherical.current);
+    camera.position.setFromSpherical(spherical.current).add(new Vector3(0, target.current, 0));
+    camera.lookAt(0, target.current, 0);
   });
 
   return null;
@@ -582,11 +537,8 @@ function CameraRig({ open, radius }: { open: boolean; radius: number }) {
 function Turntable({ still, slow, children }: { still: boolean; slow: boolean; children: React.ReactNode }) {
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
-    if (still || !group.current) return;
-    // В раскрытом состоянии вращение останавливается совсем: подписи
-    // экспликации должны стоять на месте, а не уезжать из-под курсора.
-    if (slow) return;
-    group.current.rotation.y += delta * 0.075;
+    if (still || !group.current || slow) return;
+    group.current.rotation.y += delta * 0.06;
   });
   return <group ref={group}>{children}</group>;
 }
@@ -600,69 +552,109 @@ function hasWebGL() {
   }
 }
 
-export function MuseumModel({ label, openLabel, closeLabel, insideLabel, labels }: { label: string; openLabel: string; closeLabel: string; insideLabel: string; labels: MuseumLabels }) {
-  /* Автоповорот — украшение, а не содержание: при системной просьбе убрать
-     движение сцена замирает, но остаётся управляемой мышью. */
+export function MuseumModel({
+  label,
+  openLabel,
+  closeLabel,
+  insideLabel,
+  labels,
+  lockedHint,
+  selectedHall,
+  onSelectHall,
+}: {
+  label: string;
+  openLabel: string;
+  closeLabel: string;
+  insideLabel: string;
+  labels: MuseumLabels;
+  lockedHint: string;
+  selectedHall: HallId | null;
+  onSelectHall: (id: HallId | null) => void;
+}) {
   const still = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<HallId | null>(null);
+
+  /* Выбор зала раскрывает здание сам: смотреть на зал сквозь глухой бетон
+     бессмысленно, а требовать двух нажатий подряд — недружелюбно. */
+  const select = useCallback((id: HallId) => {
+    onSelectHall(id === selectedHall ? null : id);
+    if (id !== selectedHall) setOpen(true);
+  }, [onSelectHall, selectedHall]);
+
+  const focusY = useMemo(() => {
+    const hall = HALLS.find((item) => item.id === selectedHall);
+    return hall ? hall.focus[1] - 7.4 : 0;
+  }, [selectedHall]);
 
   if (typeof window !== 'undefined' && !hasWebGL()) {
-    return <div className="flex h-full w-full items-center justify-center bg-[#f6f4f1]" role="img" aria-label={label} />;
+    return <div className="flex h-full w-full items-center justify-center bg-[#e9e6e1]" role="img" aria-label={label} />;
   }
 
   return (
     <div className="relative h-full w-full">
       <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={open ? insideLabel : label}>
-        {/* flat — это NoToneMapping. По умолчанию fiber ставит ACES, и белый гипс
-            уезжает в ровный серый: тонмаппинг для фотореализма, а здесь макет. */}
         <Canvas
           flat
           shadows
-          camera={{ position: [42, 13, 37], fov: 30 }}
+          camera={{ position: [46, 16, 40], fov: 30 }}
           dpr={[1, 1.6]}
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+          onPointerMissed={() => onSelectHall(null)}
         >
-          <CameraRig open={open} radius={15.8} />
-          <hemisphereLight args={['#ffffff', '#d8d2c9', 0.95]} />
+          <CameraRig open={open} radius={21.5} focusY={focusY} />
+          <hemisphereLight args={['#ffffff', '#c9c4bb', 0.8]} />
+          {/* Одно жёсткое солнце: брутализм живёт тенью, рассеянный свет
+              съедает и консоль, и борозды опалубки. */}
           <directionalLight
-            position={[18, 26, 14]}
-            intensity={1.25}
+            position={[22, 30, 16]}
+            intensity={1.5}
             castShadow
             shadow-mapSize={[2048, 2048]}
             shadow-bias={-0.0006}
             shadow-normalBias={0.035}
-            shadow-camera-left={-32}
-            shadow-camera-right={32}
-            shadow-camera-top={32}
-            shadow-camera-bottom={-32}
+            shadow-camera-left={-40}
+            shadow-camera-right={40}
+            shadow-camera-top={40}
+            shadow-camera-bottom={-40}
           />
-          <directionalLight position={[-20, 10, -16]} intensity={0.34} />
-          {/* Свет из окулюса: в раскрытом зале он и есть главный источник */}
-          <pointLight position={[-2.9, 8.5, 2.1]} intensity={open ? 42 : 0} distance={26} decay={2} color="#fffaf2" />
+          <directionalLight position={[-24, 12, -18]} intensity={0.26} />
+          <pointLight position={[0, 6, 0]} intensity={open ? 46 : 0} distance={30} decay={2} color="#fff6ea" />
 
           <Suspense fallback={null}>
-            <Turntable still={still} slow={open}>
-              <Building open={open} labels={labels} />
-              <Legend open={open} labels={labels} />
+            <Turntable still={still} slow={open || selectedHall !== null}>
+              <Building
+                open={open}
+                selected={selectedHall}
+                hovered={hovered}
+                onSelect={select}
+                onHover={setHovered}
+              />
+              {(open || selectedHall) && (
+                <HallPins
+                  labels={labels}
+                  selected={selectedHall}
+                  hovered={hovered}
+                  onSelect={select}
+                  onHover={setHovered}
+                  lockedHint={lockedHint}
+                />
+              )}
               <SiteContours />
-              <ContactShadows position={[0, -9.48, 0]} opacity={0.32} scale={64} blur={2.8} far={20} resolution={512} color="#6f6a63" />
+              <ContactShadows position={[0, -7.68, 0]} opacity={0.4} scale={90} blur={2.6} far={24} resolution={512} color="#5d5850" />
             </Turntable>
           </Suspense>
 
-          {/* Колесо не перехватывается: страница должна прокручиваться под курсором,
-              а не масштабировать макет. Крутить можно перетаскиванием. */}
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            minPolarAngle={0.32}
+            minPolarAngle={0.3}
             maxPolarAngle={Math.PI / 2.15}
             rotateSpeed={0.55}
           />
         </Canvas>
       </div>
 
-      {/* Кнопка живёт над канвасом, а не в колонке рядом: действие относится к
-          макету, и рука не должна уходить от него через всю страницу. */}
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
