@@ -1567,7 +1567,7 @@ export function MuseumModel({
                Бетон живёт полутенями, и ACES с лёгкой недодержкой держит их
                в диапазоне вместо того, чтобы выбивать бок под солнцем. */
             toneMapping: ACESFilmicToneMapping,
-            toneMappingExposure: 1.08,
+            toneMappingExposure: 1.02,
           }}
         >
           <ContextGuard onLost={handleLost} onRestored={() => { setContextLost(false); setCanvasKey((n) => n + 1); }} />
@@ -1590,22 +1590,47 @@ export function MuseumModel({
                 остаётся ровным тёмным пятном. */}
             <Lightformer form="rect" intensity={2.2} color="#ffffff" position={[16, 3.2, 22]} scale={[26, 2.2, 1]} />
             <Lightformer form="rect" intensity={1.1} color="#cddbe8" position={[-18, 9, 20]} scale={[14, 6, 1]} />
+            {/* Диск солнца там же, где ключевой свет: в стекле и в воде должно
+                быть видно, ОТКУДА светит, иначе блики берутся ниоткуда. */}
+            <Lightformer form="circle" intensity={5} color="#fff0d8" position={[26, 12, 15]} scale={[7, 7, 1]} />
           </Environment>}
-          {!entered && <hemisphereLight args={['#eef2f6', '#9c8f80', 0.44]} />}
+          {/* СВЕТ.
+           *
+           * Солнце стояло почти за камерой: свет падал в лоб, все грани
+           * получали поровну, и бетон читался серым картоном. Здание из
+           * плоскостей держится не количеством света, а разницей между
+           * освещённой и теневой гранью, поэтому солнце ОПУЩЕНО: с двадцати
+           * пяти градусов свет идёт вскользь, фасады делятся на светлые и
+           * тёмные, а тени ложатся длинными поперёк цоколя и объясняют, что
+           * над чем нависает. Уводить ключ за здание нельзя: тогда камере
+           * достаётся одна теневая сторона.
+           *
+           * Заливка при этом СЛАБЕЕ, а не сильнее: чем ровнее рассеянный
+           * свет, тем быстрее он съедает разницу, ради которой ключ и
+           * ставили. */}
+          {!entered && <hemisphereLight args={['#e9eef5', '#a2917d', 0.34]} />}
           {!entered && <directionalLight
-            position={[24, 21, 17]}
-            intensity={2.35}
-            color="#fff5e6"
+            position={[26, 12, 15]}
+            intensity={2.9}
+            color="#fff2df"
             castShadow
-            shadow-mapSize={[1024, 1024]}
-            shadow-bias={-0.0005}
-            shadow-normalBias={0.03}
-            shadow-camera-left={-44}
-            shadow-camera-right={44}
-            shadow-camera-top={44}
-            shadow-camera-bottom={-44}
+            /* Карта теней раньше растягивалась на 88 единиц ради поля, которого
+               в сцене нет: тень от лопатки размазывалась в полосу. Рамка
+               сжата до реального пятна застройки, и на той же карте у тени
+               появился край. */
+            shadow-mapSize={degrade > 0 ? [1024, 1024] : [2048, 2048]}
+            shadow-bias={-0.0004}
+            shadow-normalBias={0.025}
+            shadow-camera-left={-34}
+            shadow-camera-right={34}
+            shadow-camera-top={34}
+            shadow-camera-bottom={-34}
           />}
-          {!entered && <directionalLight position={[-28, 14, -22]} intensity={0.4} color="#cfd8e6" />}
+          {/* Контровой сзади-справа: холодная кромка отделяет массу от фона,
+              иначе на светлом фоне здание сливается с ним верхним углом. */}
+          {!entered && <directionalLight position={[17, 11, -25]} intensity={0.85} color="#cfe0f2" />}
+          {/* Отражённый от земли тёплый: тени не должны быть дырами. */}
+          {!entered && <directionalLight position={[6, -8, 14]} intensity={0.3} color="#c8a98c" />}
           {!entered && <pointLight position={[0, 4, 0]} intensity={open ? 40 : 0} distance={34} decay={2} color="#fff3e2" />}
 
           <Suspense fallback={null}>
@@ -1619,7 +1644,7 @@ export function MuseumModel({
                 <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
               )}
               <Ground />
-              <ContactShadows position={[0, -6.72, 0]} opacity={0.5} scale={110} blur={2.2} far={28} resolution={384} color="#4a453e" />
+              <ContactShadows position={[0, -6.72, 0]} opacity={0.42} scale={110} blur={1.9} far={28} resolution={512} color="#4a453e" />
             </Turntable>
             )}
           </Suspense>
