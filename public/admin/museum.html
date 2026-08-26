@@ -116,6 +116,14 @@
         <label>Год<input id="year"></label>
         <label>Материал<input id="material"></label>
         <label>Габариты<input id="dimensions"></label>
+        <label class="wide">Изображение работы (для холста)
+          <input id="imageUrl" placeholder="https://…">
+        </label>
+        <div class="wide" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <label style="display:inline-block"><span style="border:1px solid var(--ink);padding:8px 12px;cursor:pointer;display:inline-block">Загрузить файл<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp" hidden></span></label>
+          <button id="imageClear" class="ghost" type="button">Убрать</button>
+        </div>
+        <img id="preview" class="wide" style="max-width:100%;max-height:150px;object-fit:contain;justify-self:start" hidden>
         <label class="wide">Заметка<textarea id="note" rows="4"></textarea></label>
         <label class="wide"><span><input id="draft" type="checkbox"> Черновик (не показывать на сайте)</span></label>
       </div>
@@ -132,6 +140,7 @@
 
 <script>
 const API = 'https://api.eprisjournal.com/content';
+const UPLOAD = 'https://api.eprisjournal.com/upload';
 
 /* Габариты залов ДУБЛИРУЮТ ROOMS из src/museum/Interior.tsx. Дублируют
    намеренно: админка — статическая страница, она не собирается вместе с
@@ -240,7 +249,7 @@ function renderList() {
 function renderForm() {
   const o = current();
   const on = !!o;
-  ['kind', 'stand', 'wall', 'tone', 'rot', 'scale', 'width', 'height', 'title', 'author', 'year', 'material', 'dimensions', 'note', 'draft'].forEach((id) => { $(id).disabled = !on; });
+  ['kind', 'stand', 'wall', 'tone', 'rot', 'scale', 'width', 'height', 'title', 'author', 'year', 'material', 'dimensions', 'note', 'draft', 'imageUrl', 'imageFile', 'imageClear'].forEach((id) => { $(id).disabled = !on; });
   $('dup').disabled = !on;
   $('del').disabled = !on;
   if (!o) { $('coords').textContent = 'Предмет не выбран.'; return; }
@@ -256,6 +265,9 @@ function renderForm() {
   $('width').value = o.width || 1.2;
   $('height').value = o.height || 0.9;
   ['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => { $(k).value = o[k] || ''; });
+  $('imageUrl').value = o.imageUrl || '';
+  $('preview').hidden = !o.imageUrl;
+  if (o.imageUrl) $('preview').src = o.imageUrl;
   $('draft').checked = !!o.draft;
 
   const canvas = o.kind === 'canvas';
@@ -391,6 +403,51 @@ bind('scale', (o, el) => { o.scale = Number(el.value) / 100; });
 bind('width', (o, el) => { o.width = Number(el.value) || 1.2; });
 bind('height', (o, el) => { o.height = Number(el.value) || 0.9; });
 ['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => bind(k, (o, el) => { o[k] = el.value; }));
+bind('imageUrl', (o, el) => {
+  o.imageUrl = el.value.trim() || undefined;
+  $('preview').hidden = !o.imageUrl;
+  if (o.imageUrl) $('preview').src = o.imageUrl;
+});
+
+/* ЗАГРУЗКА ИЗОБРАЖЕНИЯ. Тот же эндпоинт, что и у остальной админки: файл
+   уходит в base64, обратно приходит постоянный URL. Холст с картинкой
+   перестаёт быть цветным прямоугольником и становится работой. */
+async function upload(file) {
+  const o = current();
+  if (!o) return;
+  say('Загрузка изображения…');
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+  const response = await fetch(UPLOAD, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw() },
+    body: JSON.stringify({ filename: file.name, contentType: file.type, data: base64 }),
+  });
+  const result = await response.json();
+  if (!result.ok) throw new Error(result.error || ('HTTP ' + response.status));
+  o.imageUrl = result.url;
+  mark();
+  renderForm();
+  say('Изображение загружено. Не забудьте сохранить.');
+}
+
+$('imageFile').addEventListener('change', (event) => {
+  const file = event.target.files && event.target.files[0];
+  if (file) upload(file).catch((error) => say('Не удалось загрузить: ' + error.message, true));
+  event.target.value = '';
+});
+
+$('imageClear').addEventListener('click', () => {
+  const o = current();
+  if (!o) return;
+  delete o.imageUrl;
+  mark();
+  renderForm();
+});
 $('draft').addEventListener('change', () => { const o = current(); if (!o) return; o.draft = $('draft').checked; mark(); renderAll(); });
 
 async function load() {

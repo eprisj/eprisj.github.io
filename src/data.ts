@@ -1478,6 +1478,7 @@ export type MuseumObject = {
   material?: string;
   dimensions?: string;
   note?: string;
+  imageUrl?: string;
   draft?: boolean;
   publishAt?: string;
 };
