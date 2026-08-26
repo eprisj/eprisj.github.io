@@ -1,5 +1,5 @@
 import { Component, createContext, lazy, Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, Environment, Html, Lightformer, MeshReflectorMaterial, OrbitControls, RoundedBox } from '@react-three/drei';
 import {
   ACESFilmicToneMapping,
@@ -86,23 +86,46 @@ const TILE_METRES = 7;
  * от стяжных болтов регулярной сеткой, потёки от швов, сколы кромок и
  * раковины — то, что офлайн считается за секунды, а в браузере за минуты.
  * Триста шестьдесят килобайт на три карты, и только в чанке музея. */
-function useConcrete() {
-  const [normalMap, roughnessMap, map] = useLoader(TextureLoader, [
-    '/museum/concrete-normal.webp',
-    '/museum/concrete-rough.webp',
-    '/museum/concrete-albedo.webp',
-  ]);
-  useMemo(() => {
-    [normalMap, roughnessMap, map].forEach((texture) => {
-      texture.wrapS = RepeatWrapping;
-      texture.wrapT = RepeatWrapping;
-      texture.anisotropy = 8;
-    });
-    /* Цвет — в sRGB, рельеф и шероховатость — числа, а не цвет: перевод
-       испортил бы и то и другое. */
-    map.colorSpace = SRGBColorSpace;
-  }, [map, normalMap, roughnessMap]);
-  return { normalMap, roughnessMap, map };
+/* Карты грузятся императивно, а не через useLoader.
+ *
+ * useLoader подвешивает всё поддерево до готовности файла, и на треть
+ * мегабайта это несколько секунд пустого холста: здание не появлялось,
+ * пока не приедет его шкура. Теперь оно появляется сразу серым и
+ * одевается, когда карты доедут. */
+type Concrete = { normalMap: Texture; roughnessMap: Texture; map: Texture } | null;
+
+function useConcrete(): Concrete {
+  const [maps, setMaps] = useState<Concrete>(null);
+
+  useEffect(() => {
+    let alive = true;
+    const loader = new TextureLoader();
+    const load = (url: string) => new Promise<Texture>((resolve, reject) => loader.load(url, resolve, undefined, reject));
+
+    Promise.all([
+      load('/museum/concrete-normal.webp'),
+      load('/museum/concrete-rough.webp'),
+      load('/museum/concrete-albedo.webp'),
+    ])
+      .then(([normalMap, roughnessMap, map]) => {
+        if (!alive) return;
+        [normalMap, roughnessMap, map].forEach((texture) => {
+          texture.wrapS = RepeatWrapping;
+          texture.wrapT = RepeatWrapping;
+          texture.anisotropy = 8;
+        });
+        /* Цвет — в sRGB, рельеф и шероховатость — числа, а не цвет. */
+        map.colorSpace = SRGBColorSpace;
+        setMaps({ normalMap, roughnessMap, map });
+      })
+      /* Без текстур здание просто остаётся гладким: это хуже, но это
+         здание, а не пустой холст с ошибкой. */
+      .catch(() => {});
+
+    return () => { alive = false; };
+  }, []);
+
+  return maps;
 }
 
 function concreteRepeat(width: number, height: number) {
@@ -148,6 +171,7 @@ function Mass({
      клонируется, изображение остаётся общим. */
   const maps = useConcrete();
   const surface = useMemo(() => {
+    if (!maps) return null;
     const normalMap = maps.normalMap.clone();
     const roughnessMap = maps.roughnessMap.clone();
     const map = maps.map.clone();
@@ -176,10 +200,10 @@ function Mass({
         roughness={0.82}
         metalness={0.03}
         envMapIntensity={0.6}
-        map={surface.map}
-        normalMap={surface.normalMap}
+        map={surface?.map ?? null}
+        normalMap={surface?.normalMap ?? null}
         normalScale={NORMAL_SCALE}
-        roughnessMap={surface.roughnessMap}
+        roughnessMap={surface?.roughnessMap ?? null}
       />
     </RoundedBox>
   );
@@ -824,22 +848,11 @@ function HallPins({
   );
 }
 
-function SiteContours() {
-  const rings = useMemo(() => [27.0, 32.0, 38.0, 45.0], []);
-  return (
-    <group position={[0, -6.72, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      {rings.map((radius, index) => (
-        <mesh key={radius} position={[0, 0, index * 0.02]} renderOrder={1}>
-          <ringGeometry args={[radius, radius + 0.05, 128]} />
-          {/* Кольца лежали в двух миллиметрах друг от друга и от земли —
-              буфер глубины такую разницу не различает. Разносим и снимаем
-              их с записи глубины: это разметка, а не поверхность. */}
-          <meshBasicMaterial color={GOLD} transparent opacity={0.3 - index * 0.06} side={DoubleSide} depthWrite={false} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
+/* Горизонталей участка здесь больше нет. Они достались этой сцене от
+   прежнего вида «макет на планшете», где вокруг белого объёма нужна была
+   хоть какая-то земля. У здания появились цоколь, вода, деревья и люди —
+   и тонкие кольца перестали читаться разметкой: на пологом ракурсе они
+   ложатся поперёк кадра светлым овалом и спорят с композицией. */
 
 /* Внутри камера не облетает макет, а стоит в зале: точка глаза на высоте
    человека, разворот мышью вокруг себя. Тот же OrbitControls, но цель — не
@@ -1067,7 +1080,6 @@ export function MuseumModel({
               {(open || selectedHall) && (
                 <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
               )}
-              <SiteContours />
               <ContactShadows position={[0, -6.74, 0]} opacity={0.45} scale={96} blur={2.4} far={26} resolution={512} color="#4f4a43" />
             </Turntable>
             )}
