@@ -292,7 +292,16 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
      оказывается в адресе, поэтому на зал можно дать ссылку. */
   return (
     <section aria-labelledby="vitrine-title" className="grid flex-1 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.82fr)]">
-      <div className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r">
+      {/* Подложка под холстом: макет стоял на ровной белой плоскости, и кадр
+          выглядел не композицией, а вырезом. Мягкий радиальный переход даёт
+          свет за зданием и уводит углы в тень. */}
+      <div
+        className="relative min-h-[28rem] overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.9)] sm:min-h-[34rem] lg:min-h-[42rem] lg:border-b-0 lg:border-r"
+        style={{
+          background:
+            'radial-gradient(120% 85% at 50% 32%, #f6f2ec 0%, #ece6dd 46%, #ddd5ca 100%)',
+        }}
+      >
         <Suspense fallback={<div className="absolute inset-0 bg-[#e9e6e1]" />}>
           <MuseumModel
             label={copy.modelLabel}

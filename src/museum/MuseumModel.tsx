@@ -8,6 +8,7 @@ import {
   DoubleSide,
   ExtrudeGeometry,
   LinearMipmapLinearFilter,
+  CanvasTexture,
   RepeatWrapping,
   SRGBColorSpace,
   Shape,
@@ -254,6 +255,47 @@ function SceneReflection({ onReady }: { onReady: (texture: Texture) => void }) {
   });
 
   return null;
+}
+
+/* ЗЕМЛЯ, КОТОРАЯ РАСТВОРЯЕТСЯ.
+ *
+ * Здание висело на ровном белом поле: тень падала в пустоту, и объём читался
+ * вырезанным из бумаги. Простой диск эту беду меняет на другую — у него
+ * виден край, и кадр превращается в стол с макетом.
+ *
+ * Поэтому у земли есть прозрачность, спадающая к краю: под зданием она
+ * плотная и принимает тень, а к границе кадра сходит на нет и переходит в
+ * подложку страницы. Маска — радиальный градиент на canvas, сто двадцать
+ * восемь пикселей, считается мгновенно.
+ */
+function Ground() {
+  const alpha = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+    const gradient = ctx.createRadialGradient(64, 64, 6, 64, 64, 64);
+    gradient.addColorStop(0, 'rgba(255,255,255,1)');
+    gradient.addColorStop(0.55, 'rgba(255,255,255,0.85)');
+    gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 128, 128);
+    return new CanvasTexture(canvas);
+  }, []);
+
+  return (
+    <mesh position={[0, -6.76, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+      <circleGeometry args={[96, 64]} />
+      <meshStandardMaterial
+        color="#d8d1c7"
+        roughness={1}
+        transparent
+        alphaMap={alpha ?? undefined}
+        depthWrite={false}
+      />
+    </mesh>
+  );
 }
 
 /* ПРОЁМ С ОТКОСОМ.
@@ -934,6 +976,11 @@ function InteriorRig({ hall }: { hall: HallId }) {
 
 const EXTERIOR_FOV = 26;
 
+/* Куда смотрит камера снаружи. Прежде она целилась в начало координат —
+   точку у земли под зданием, — поэтому объём сидел в нижней трети кадра, а
+   над ним оставалось пустое поле. Цель поднята к середине массы. */
+const EXTERIOR_AIM = 2.8;
+
 function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; focusY: number }) {
   const { camera, size } = useThree();
   const distance = useRef(0);
@@ -966,9 +1013,9 @@ function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; fo
   useFrame((_, delta) => {
     const step = Math.min(delta * 2.6, 1);
     if (!distance.current) distance.current = fitted;
-    const want = fitted * (open ? 1.16 : 1);
+    const want = fitted * (open ? 1.14 : 0.98);
     distance.current += (want - distance.current) * step;
-    target.current += (focusY - target.current) * step * 0.8;
+    target.current += ((focusY || EXTERIOR_AIM) - target.current) * step * 0.8;
 
     spherical.current.setFromVector3(camera.position.clone().sub(new Vector3(0, target.current, 0)));
     if (open) spherical.current.phi += (1.24 - spherical.current.phi) * step * 0.6;
@@ -1007,7 +1054,7 @@ function Turntable({ still, slow, children }: { still: boolean; slow: boolean; c
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
     if (still || !group.current || slow) return;
-    group.current.rotation.y += delta * 0.05;
+    group.current.rotation.y += delta * 0.028;
   });
   return <group ref={group}>{children}</group>;
 }
@@ -1081,7 +1128,7 @@ export function MuseumModel({
       <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={open ? insideLabel : label}>
         <Canvas
           shadows
-          camera={{ position: [46, 14, 34], fov: 26 }}
+          camera={{ position: [38, 16, 30], fov: 26 }}
           dpr={[1, 1.8]}
           gl={{
             antialias: true,
@@ -1095,7 +1142,7 @@ export function MuseumModel({
           }}
         >
           <ReflectionContext.Provider value={reflection}>
-          {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={22.5} focusY={focusY} />}
+          {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={21} focusY={focusY} />}
 
           {/* Свет как в полдень над макетом: одно жёсткое солнце даёт тень,
               холодное небо сверху вынимает верхние грани, тёплый отражённый
@@ -1140,7 +1187,8 @@ export function MuseumModel({
               {(open || selectedHall) && (
                 <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
               )}
-              <ContactShadows position={[0, -6.74, 0]} opacity={0.45} scale={96} blur={2.4} far={26} resolution={512} color="#4f4a43" />
+              <Ground />
+              <ContactShadows position={[0, -6.72, 0]} opacity={0.5} scale={110} blur={2.2} far={28} resolution={512} color="#4a453e" />
             </Turntable>
             )}
           </Suspense>
