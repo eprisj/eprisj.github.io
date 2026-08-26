@@ -1013,12 +1013,20 @@ function CameraRig({ open, radius, focusY }: { open: boolean; radius: number; fo
   useFrame((_, delta) => {
     const step = Math.min(delta * 2.6, 1);
     if (!distance.current) distance.current = fitted;
-    const want = fitted * (open ? 1.14 : 0.98);
+    /* Раскрытый макет выше закрытого: поднятые объёмы уходят за кадр, если
+       не отойти. */
+    const want = fitted * (open ? 1.3 : 0.98);
     distance.current += (want - distance.current) * step;
-    target.current += ((focusY || EXTERIOR_AIM) - target.current) * step * 0.8;
+
+    /* Прицел ходит в узких пределах вокруг середины массы. Раньше он
+       уезжал на высоту выбранного зала, а посадка кадра считалась вокруг
+       начала координат — камера оказывалась вплотную к верхнему объёму и
+       заваливалась к горизонту. */
+    const aim = Math.max(EXTERIOR_AIM - 1.5, Math.min(EXTERIOR_AIM + 2.5, focusY || EXTERIOR_AIM));
+    target.current += (aim - target.current) * step * 0.8;
 
     spherical.current.setFromVector3(camera.position.clone().sub(new Vector3(0, target.current, 0)));
-    if (open) spherical.current.phi += (1.24 - spherical.current.phi) * step * 0.6;
+    if (open) spherical.current.phi += (1.05 - spherical.current.phi) * step * 0.6;
     spherical.current.radius = distance.current;
     camera.position.setFromSpherical(spherical.current).add(new Vector3(0, target.current, 0));
     camera.lookAt(0, target.current, 0);
@@ -1213,7 +1221,10 @@ export function MuseumModel({
               rotateSpeed={-0.35}
             />
           ) : (
-            <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.55} maxPolarAngle={Math.PI / 2.12} rotateSpeed={0.55} />
+            /* Нижний предел поднят: у горизонта в кадр попадали край земли и
+               белая пустота над ним — сцена не имеет неба, она стоит на
+               странице. Смотреть на макет полагается сверху вниз. */
+            <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={0.5} maxPolarAngle={1.16} rotateSpeed={0.55} />
           )}
         </Canvas>
       </div>
