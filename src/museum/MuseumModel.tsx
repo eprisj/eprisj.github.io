@@ -1159,6 +1159,21 @@ function hasWebGL() {
   }
 }
 
+const DEGRADE_KEY = 'epris-museum-degrade';
+
+function readDegrade() {
+  try {
+    const raw = Number(sessionStorage.getItem(DEGRADE_KEY));
+    return Number.isFinite(raw) ? Math.min(Math.max(raw, 0), 2) : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function writeDegrade(level: number) {
+  try { sessionStorage.setItem(DEGRADE_KEY, String(level)); } catch { /* приватный режим */ }
+}
+
 export function MuseumModel({
   label,
   fallbackLabel,
@@ -1204,10 +1219,41 @@ export function MuseumModel({
   /* Смена ключа пересобирает холст с нуля: после потери контекста старый
      рендерер уже мёртв, и оживить его нечем. */
   const [canvasKey, setCanvasKey] = useState(0);
+  /* Заглушка появлялась слишком часто: на этой машине браузер отбирает
+     контекст регулярно, а показывать вместо здания извинение — не решение.
+     Сцена сама спускается на ступень: сначала уходят отражение, куб-карта и
+     пост-обработка, потом тени и антиалиасинг. Ступень держится на вкладке,
+     иначе каждый переход в музей снова начинал с самой тяжёлой сцены и
+     снова ронял контекст. */
+  const [degrade, setDegrade] = useState(readDegrade);
+  const lostAt = useRef(0);
+
+  const handleLost = useCallback(() => {
+    const now = Date.now();
+    const since = now - lostAt.current;
+    /* Об одной и той же смерти контекста сообщают двое: слушатель холста и
+       граница, поймавшая бросок r3f. Это одно событие, а не два падения. */
+    if (since < 800) return;
+    /* Контекст падает снова сразу после пересборки — дальше спускаться
+       некуда, и цикл пересборок хуже честной заглушки. */
+    const looping = since < 6000;
+    lostAt.current = now;
+    setDegrade((level) => {
+      if (level >= 2 || looping) {
+        setContextLost(true);
+        return level;
+      }
+      const next = level + 1;
+      writeDegrade(next);
+      setCanvasKey((n) => n + 1);
+      return next;
+    });
+  }, []);
   const noWebGL = useMemo(() => typeof window !== 'undefined' && !hasWebGL(), []);
   /* Ширина холста известна только внутри Canvas, поэтому решение приходит
      оттуда через состояние: снаружи оно нужно и воде, и эффектам. */
-  const [heavy, setHeavy] = useState(false);
+  const [probeHeavy, setHeavy] = useState(false);
+  const heavy = probeHeavy && degrade === 0;
 
   const select = useCallback((id: HallId) => {
     /* Повторное нажатие по уже выбранному объёму — это вход, а не отмена:
@@ -1238,7 +1284,7 @@ export function MuseumModel({
         {contextLost && (
           <button
             type="button"
-            onClick={() => { setContextLost(false); setCanvasKey((n) => n + 1); }}
+            onClick={() => { setContextLost(false); lostAt.current = 0; setCanvasKey((n) => n + 1); }}
             className="inline-flex min-h-11 items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.5)] px-5 font-mono text-[9px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]"
           >
             {retryLabel}
@@ -1251,13 +1297,13 @@ export function MuseumModel({
   return (
     <div className="relative h-full w-full">
       <div className="h-full w-full cursor-grab active:cursor-grabbing" role="img" aria-label={open ? insideLabel : label}>
-        <CanvasBoundary key={canvasKey} onError={() => setContextLost(true)}>
+        <CanvasBoundary key={canvasKey} onError={handleLost}>
         <Canvas
-          shadows
+          shadows={degrade < 2}
           camera={{ position: [38, 16, 30], fov: 26 }}
-          dpr={[1, 1.5]}
+          dpr={degrade > 0 ? 1 : [1, 1.5]}
           gl={{
-            antialias: true,
+            antialias: degrade < 2,
             alpha: true,
             powerPreference: 'high-performance',
             /* Плоский тонмаппинг годился для гипса: белое здание на белом фоне.
@@ -1267,7 +1313,7 @@ export function MuseumModel({
             toneMappingExposure: 1.08,
           }}
         >
-          <ContextGuard onLost={() => setContextLost(true)} onRestored={() => { setContextLost(false); setCanvasKey((n) => n + 1); }} />
+          <ContextGuard onLost={handleLost} onRestored={() => { setContextLost(false); setCanvasKey((n) => n + 1); }} />
           <HeavyProbe onChange={setHeavy} />
           <ReflectionContext.Provider value={reflection}>
           {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={21} focusY={focusY} />}
