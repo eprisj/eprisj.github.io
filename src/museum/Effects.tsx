@@ -14,7 +14,7 @@ import { EffectComposer, N8AO, SMAA } from '@react-three/postprocessing';
 export default function Effects() {
   return (
     <EffectComposer multisampling={0} enableNormalPass>
-      <N8AO aoRadius={1.9} intensity={2.1} distanceFalloff={0.85} quality="medium" color="#2f2b25" />
+      <N8AO aoRadius={1.9} intensity={2.1} distanceFalloff={0.85} quality="performance" color="#2f2b25" />
       <SMAA />
     </EffectComposer>
   );
