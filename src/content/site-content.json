@@ -5626,11 +5626,11 @@
       "content": [
         {
           "type": "text",
-          "content": "Every souvenir shop sells the same promise: a small object that will remind you, years later, that you were somewhere. A magnet does this job better than almost anything else, which is exactly the problem. It remembers the fact of the trip and forgets everything that made the trip worth remembering — who you were laughing with on the ferry, what the light looked like on the last night, the wrong turn that became the best hour of the week. That richer material does not disappear. It is on your phone, buried a few thousand photographs deep, in the part of the camera roll nobody scrolls back to."
+          "content": "Every souvenir shop sells the same promise: a small object that will remind you, years later, that you were somewhere. A magnet does this job better than almost anything else, which is exactly the problem. It remembers the fact of the trip and forgets everything that made the trip worth remembering – who you were laughing with on the ferry, what the light looked like on the last night, the wrong turn that became the best hour of the week. That richer material does not disappear. It is on your phone, buried a few thousand photographs deep, in the part of the camera roll nobody scrolls back to."
         },
         {
           "type": "text",
-          "content": "<b>Souv</b>, a startup out of Zagreb, was built to close exactly that gap. Tap a physical card or magnet with your phone — no app to install — and it opens a personal space tied to that specific place and trip: your own photographs, a short recap video, a note for later. The object stays on the fridge, doing what a souvenir has always done. The memory it points to stays reachable, which is the part that used to get lost."
+          "content": "<b>Souv</b>, a startup out of Zagreb, was built to close exactly that gap. Tap a physical card or magnet with your phone – no app to install – and it opens a personal space tied to that specific place and trip: your own photographs, a short recap video, a note for later. The object stays on the fridge, doing what a souvenir has always done. The memory it points to stays reachable, which is the part that used to get lost."
         },
         {
           "type": "text",
@@ -5642,7 +5642,7 @@
         },
         {
           "type": "text",
-          "content": "<b>Take us back to the very beginning — was there a specific trip, a specific place, or a specific frustration that actually sparked the idea for Souv? Describe that moment in detail — where you were, what you were trying to do, and what wasn't working.</b>"
+          "content": "<b>Take us back to the very beginning – was there a specific trip, a specific place, or a specific frustration that actually sparked the idea for Souv? Describe that moment in detail – where you were, what you were trying to do, and what wasn't working.</b>"
         },
         {
           "type": "text",
@@ -5678,7 +5678,7 @@
         },
         {
           "type": "text",
-          "content": "<b>What did the very first version of Souv actually look like — the card, the app, the whole experience? Which parts of that first version survived into what's sold in stores today, and which parts got thrown out entirely, maybe even something you were sure would work?</b>"
+          "content": "<b>What did the very first version of Souv actually look like – the card, the app, the whole experience? Which parts of that first version survived into what's sold in stores today, and which parts got thrown out entirely, maybe even something you were sure would work?</b>"
         },
         {
           "type": "text",
@@ -5704,7 +5704,7 @@
         },
         {
           "type": "text",
-          "content": "<b>Walk us through the milestones that mattered most along the way — the first store, the first city outside your home base, Zagreb Design Week. For each one, what actually changed afterward — and was there a moment that felt bigger from the outside than it actually was on the inside, or the reverse?</b>"
+          "content": "<b>Walk us through the milestones that mattered most along the way – the first store, the first city outside your home base, Zagreb Design Week. For each one, what actually changed afterward – and was there a moment that felt bigger from the outside than it actually was on the inside, or the reverse?</b>"
         },
         {
           "type": "text",
@@ -5738,7 +5738,7 @@
         },
         {
           "type": "text",
-          "content": "<b>You call it 'not your typical souvenir.' Was there a particular souvenir — one you personally owned, bought, or were given — that you found genuinely disappointing, and did that specific object shape what Souv became?</b>"
+          "content": "<b>You call it 'not your typical souvenir.' Was there a particular souvenir – one you personally owned, bought, or were given – that you found genuinely disappointing, and did that specific object shape what Souv became?</b>"
         },
         {
           "type": "text",
@@ -5762,7 +5762,7 @@
         },
         {
           "type": "text",
-          "content": "<b>Each city — Zagreb, Dubrovnik, Split, Zadar, Brač, Korčula — has its own visual identity. Walk through how you actually decide what a new city's card should look and feel like, and has a local ever told you that you got their city wrong?</b>"
+          "content": "<b>Each city – Zagreb, Dubrovnik, Split, Zadar, Brač, Korčula – has its own visual identity. Walk through how you actually decide what a new city's card should look and feel like, and has a local ever told you that you got their city wrong?</b>"
         },
         {
           "type": "text",
@@ -5796,7 +5796,7 @@
         },
         {
           "type": "text",
-          "content": "<b>Tap. Save. Relive your trip. Describe, step by step, what actually happens in the seconds right after someone taps a card for the first time — and then what typically happens weeks or months later, once they're back home. Do you know of a moment when it genuinely surprised or moved someone?</b>"
+          "content": "<b>Tap. Save. Relive your trip. Describe, step by step, what actually happens in the seconds right after someone taps a card for the first time – and then what typically happens weeks or months later, once they're back home. Do you know of a moment when it genuinely surprised or moved someone?</b>"
         },
         {
           "type": "text",
@@ -5832,7 +5832,7 @@
         },
         {
           "type": "text",
-          "content": "<b>What's been the hardest part of building Souv so far? Pick one concrete example — a specific technical problem, a specific design decision, or a specific logistical headache — and walk through how you actually solved it, including anything you tried first that failed.</b>"
+          "content": "<b>What's been the hardest part of building Souv so far? Pick one concrete example – a specific technical problem, a specific design decision, or a specific logistical headache – and walk through how you actually solved it, including anything you tried first that failed.</b>"
         },
         {
           "type": "text",
@@ -5920,7 +5920,7 @@
       "authorId": "author-1784732936927-kw554",
       "draft": false,
       "previewToken": "60a95a90d21ef6c29acec8c9",
-      "updatedAt": "2026-08-25T21:32:49.000Z",
+      "updatedAt": "2026-08-26T05:24:17.056Z",
       "contributorId": "author-souv",
       "publishedAt": "2026-08-25T18:30:00.000Z"
     }
