@@ -71,6 +71,7 @@
     <div class="panel">
       <div class="plan">
         <p class="planhint" id="planhint">План зала</p>
+        <p class="planhint" style="margin:-6px 0 10px"><a id="viewHall" href="https://eprisjournal.com/museum" target="_blank" rel="noopener">Открыть зал на сайте ↗</a></p>
         <svg id="plan" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
       <div class="row">
@@ -124,6 +125,7 @@
           <button id="imageClear" class="ghost" type="button">Убрать</button>
         </div>
         <img id="preview" class="wide" style="max-width:100%;max-height:150px;object-fit:contain;justify-self:start" hidden>
+        <label class="wide">Ссылка на материал EPRIS<input id="link" placeholder="/articles/…"></label>
         <label class="wide">Заметка<textarea id="note" rows="4"></textarea></label>
         <label class="wide"><span><input id="draft" type="checkbox"> Черновик (не показывать на сайте)</span></label>
       </div>
@@ -186,7 +188,8 @@ function renderPlan() {
   const svg = $('plan');
   const pad = 1.2;
   svg.setAttribute('viewBox', `${-r.w / 2 - pad} ${-r.d / 2 - pad} ${r.w + pad * 2} ${r.d + pad * 2}`);
-  $('planhint').textContent = `${r.name} · ${r.w} × ${r.d} м · перетащите предмет`;
+  $('planhint').textContent = `${r.name} · ${r.w} × ${r.d} м · перетащите предмет, стрелки двигают на 25 см`;
+  $('viewHall').href = `https://eprisjournal.com/museum/${hall}`;
 
   const grid = [];
   for (let x = Math.ceil(-r.w / 2); x <= r.w / 2; x += 1) {
@@ -249,7 +252,7 @@ function renderList() {
 function renderForm() {
   const o = current();
   const on = !!o;
-  ['kind', 'stand', 'wall', 'tone', 'rot', 'scale', 'width', 'height', 'title', 'author', 'year', 'material', 'dimensions', 'note', 'draft', 'imageUrl', 'imageFile', 'imageClear'].forEach((id) => { $(id).disabled = !on; });
+  ['kind', 'stand', 'wall', 'tone', 'rot', 'scale', 'width', 'height', 'title', 'author', 'year', 'material', 'dimensions', 'note', 'link', 'draft', 'imageUrl', 'imageFile', 'imageClear'].forEach((id) => { $(id).disabled = !on; });
   $('dup').disabled = !on;
   $('del').disabled = !on;
   if (!o) { $('coords').textContent = 'Предмет не выбран.'; return; }
@@ -264,7 +267,7 @@ function renderForm() {
   $('scaleVal').textContent = $('scale').value + '%';
   $('width').value = o.width || 1.2;
   $('height').value = o.height || 0.9;
-  ['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => { $(k).value = o[k] || ''; });
+  ['title', 'author', 'year', 'material', 'dimensions', 'note', 'link'].forEach((k) => { $(k).value = o[k] || ''; });
   $('imageUrl').value = o.imageUrl || '';
   $('preview').hidden = !o.imageUrl;
   if (o.imageUrl) $('preview').src = o.imageUrl;
@@ -320,6 +323,27 @@ $('plan').addEventListener('pointermove', (event) => {
 const endDrag = () => { if (drag) { drag = null; renderList(); } };
 $('plan').addEventListener('pointerup', endDrag);
 $('plan').addEventListener('pointercancel', endDrag);
+
+/* Мышью точно не поставишь: шаг привязки виден, а четверть метра на плане
+   размером с ноготь. Стрелки двигают выбранный предмет на шаг сетки, с
+   Shift — на метр. */
+window.addEventListener('keydown', (event) => {
+  const o = current();
+  if (!o || !event.key.startsWith('Arrow')) return;
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement && document.activeElement.tagName)) return;
+  const step = event.shiftKey ? 1 : 0.25;
+  const r = room();
+  const clamp = (v, limit) => Math.max(-limit, Math.min(limit, Math.round(v * 4) / 4));
+  if (event.key === 'ArrowLeft') o.x = clamp(o.x - step, r.w / 2 - 0.4);
+  if (event.key === 'ArrowRight') o.x = clamp(o.x + step, r.w / 2 - 0.4);
+  if (event.key === 'ArrowUp') o.z = clamp(o.z - step, r.d / 2 - 0.4);
+  if (event.key === 'ArrowDown') o.z = clamp(o.z + step, r.d / 2 - 0.4);
+  event.preventDefault();
+  mark();
+  renderPlan();
+  renderList();
+  $('coords').textContent = `${o.x.toFixed(2)} / ${o.z.toFixed(2)} м от центра зала · id ${o.id}`;
+});
 
 $('halls').addEventListener('click', (event) => {
   const b = event.target.closest('[data-hall]');
@@ -402,7 +426,7 @@ bind('rot', (o, el) => { o.rot = (Number(el.value) * Math.PI) / 180; });
 bind('scale', (o, el) => { o.scale = Number(el.value) / 100; });
 bind('width', (o, el) => { o.width = Number(el.value) || 1.2; });
 bind('height', (o, el) => { o.height = Number(el.value) || 0.9; });
-['title', 'author', 'year', 'material', 'dimensions', 'note'].forEach((k) => bind(k, (o, el) => { o[k] = el.value; }));
+['title', 'author', 'year', 'material', 'dimensions', 'note', 'link'].forEach((k) => bind(k, (o, el) => { o[k] = el.value; }));
 bind('imageUrl', (o, el) => {
   o.imageUrl = el.value.trim() || undefined;
   $('preview').hidden = !o.imageUrl;

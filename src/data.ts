@@ -1479,6 +1479,9 @@ export type MuseumObject = {
   dimensions?: string;
   note?: string;
   imageUrl?: string;
+  /* Ссылка на материал EPRIS: у объекта в музее почти всегда есть текст,
+     который его объясняет, и вести к нему должен сам объект. */
+  link?: string;
   draft?: boolean;
   publishAt?: string;
 };
