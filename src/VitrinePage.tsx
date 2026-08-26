@@ -490,11 +490,15 @@ function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId |
             это подпись на планшете, изнутри — надпись на стене. */}
         {/* Подложка под заголовком: он лежит поверх макета, а макет бывает
             и светлым, и тёмным в одном и том же месте кадра. */}
+        {/* Выбран зал — камера подходит к зданию, и подписи объёмов уезжают
+            вниз кадра, прямо на слово «Museum» и на надпись над ним. Титул
+            принадлежит внешнему виду: как только зал выбран, его имя уже
+            стоит в колонке справа, и спорить двум заголовкам незачем. */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--c-bg)] via-[rgb(var(--c-bg-rgb)_/_0.55)] to-transparent transition-opacity duration-500 sm:h-48 ${entered ? 'opacity-0' : 'opacity-100'}`}
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--c-bg)] via-[rgb(var(--c-bg-rgb)_/_0.55)] to-transparent transition-opacity duration-500 sm:h-48 ${entered || hall ? 'opacity-0' : 'opacity-100'}`}
         />
-        <div className={`pointer-events-none absolute inset-x-0 bottom-0 p-5 transition-opacity duration-500 sm:p-8 lg:p-12 ${entered ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`pointer-events-none absolute inset-x-0 bottom-0 p-5 transition-opacity duration-500 sm:p-8 lg:p-12 ${entered || hall ? 'opacity-0' : 'opacity-100'}`}>
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">{copy.firstSelection}</p>
           <h1 id="vitrine-title" className="mt-5 max-w-[7ch] font-display text-[clamp(4rem,9vw,8.5rem)] leading-[0.83] tracking-[-0.05em]">Museum</h1>
         </div>
