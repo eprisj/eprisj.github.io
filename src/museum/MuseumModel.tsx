@@ -310,9 +310,10 @@ function Ground() {
     if (!ctx) return null;
     const gradient = ctx.createRadialGradient(256, 256, 24, 256, 256, 256);
     gradient.addColorStop(0, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.4, 'rgba(255,255,255,0.86)');
-    gradient.addColorStop(0.7, 'rgba(255,255,255,0.34)');
-    gradient.addColorStop(0.88, 'rgba(255,255,255,0.06)');
+    gradient.addColorStop(0.32, 'rgba(255,255,255,0.9)');
+    gradient.addColorStop(0.56, 'rgba(255,255,255,0.42)');
+    gradient.addColorStop(0.74, 'rgba(255,255,255,0.12)');
+    gradient.addColorStop(0.86, 'rgba(255,255,255,0.02)');
     gradient.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 512, 512);
@@ -321,7 +322,11 @@ function Ground() {
 
   return (
     <mesh position={[0, -6.76, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-      <circleGeometry args={[96, 128]} />
+      {/* Диск был 96 метров в радиусе при карте теней на 34: за её краем
+          three растягивает крайние тексели на всю оставшуюся землю, и по
+          горизонту шли концентрические дуги. Земля теперь целиком помещается
+          в карту, а дальше её и так нет — она гаснет прозрачностью. */}
+      <circleGeometry args={[40, 128]} />
       <meshStandardMaterial
         color="#d8d1c7"
         roughness={1}
@@ -1665,7 +1670,7 @@ export function MuseumModel({
         <Canvas
           shadows={degrade < 2}
           camera={{ position: [38, 16, 30], fov: 26 }}
-          dpr={degrade > 0 ? 1 : [1, 1.5]}
+          dpr={degrade > 0 ? 1 : [1, 1.75]}
           gl={{
             antialias: degrade < 2,
             alpha: true,
@@ -1751,12 +1756,19 @@ export function MuseumModel({
                ложиться на саму землю рябью: при скользящем свете глубина в
                карте теней и глубина сцены расходятся почти на всей площади.
                Нормальный сдвиг больше обычного именно поэтому. */
-            shadow-bias={-0.0018}
-            shadow-normalBias={0.05}
-            shadow-camera-left={-34}
-            shadow-camera-right={34}
-            shadow-camera-top={34}
-            shadow-camera-bottom={-34}
+            shadow-bias={-0.0012}
+            shadow-normalBias={0.045}
+            shadow-camera-left={-42}
+            shadow-camera-right={42}
+            shadow-camera-top={42}
+            shadow-camera-bottom={-42}
+            /* Ближняя и дальняя плоскости карты теней стояли по умолчанию:
+               полметра и пятьсот. Вся глубина сцены умещается в тридцати
+               метрах, и на такой растяжке точности не хватало ровно там, где
+               свет идёт вскользь, — землю затягивало рябью. Границы сжаты по
+               реальной сцене, и рябь уходит без грубых сдвигов. */
+            shadow-camera-near={6}
+            shadow-camera-far={78}
           />}
           {/* Контровой сзади-справа: холодная кромка отделяет массу от фона,
               иначе на светлом фоне здание сливается с ним верхним углом. */}
