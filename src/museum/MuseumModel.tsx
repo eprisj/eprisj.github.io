@@ -240,7 +240,7 @@ function SceneReflection({ onReady }: { onReady: (texture: Texture) => void }) {
   const done = useRef(false);
 
   const rig = useMemo(() => {
-    const target = new WebGLCubeRenderTarget(256, {
+    const target = new WebGLCubeRenderTarget(128, {
       generateMipmaps: true,
       minFilter: LinearMipmapLinearFilter,
     });
@@ -697,17 +697,18 @@ function Steps({ x, z, width = 9, count = 7 }: { x: number; z: number; width?: n
 
 /* Двор с водой. Отражение — единственное движение в кадре и главный повод
    смотреть на здание дольше двух секунд. */
-function Court({ tone }: { tone: number }) {
+function Court({ tone, mirror }: { tone: number; mirror: boolean }) {
   return (
     <group>
       <mesh position={[0, POOL.y, POOL.z]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[POOL.w, POOL.d]} />
+        {mirror ? (
         <MeshReflectorMaterial
           color={WATER}
-          resolution={512}
+          resolution={256}
           mixBlur={0.9}
           mixStrength={2.6}
-          blur={[240, 60]}
+          blur={[160, 40]}
           mirror={0.55}
           depthScale={0.6}
           minDepthThreshold={0.2}
@@ -715,6 +716,12 @@ function Court({ tone }: { tone: number }) {
           roughness={0.55}
           metalness={0.1}
         />
+        ) : (
+          /* Отражение — целый проход рендера. На узком холсте вода занимает
+             сантиметр экрана, и платить за неё нечем: там она просто
+             тёмное стекло. */
+          <meshStandardMaterial color={WATER} roughness={0.28} metalness={0.5} />
+        )}
       </mesh>
       {/* борт чаши */}
       <mesh position={[0, POOL.y - 0.55, POOL.z]}>
@@ -754,12 +761,14 @@ function Building({
   hovered,
   onSelect,
   onHover,
+  mirror,
 }: {
   open: boolean;
   selected: HallId | null;
   hovered: HallId | null;
   onSelect: (id: HallId) => void;
   onHover: (id: HallId | null) => void;
+  mirror: boolean;
 }) {
   const cross = useRef<Group>(null);
   const barLeftRoof = useRef<Group>(null);
@@ -782,7 +791,7 @@ function Building({
   return (
     <group position={[0, -6.4, 0]}>
       <Plinth />
-      <Court tone={selected === 'court' ? 0.34 : hovered === 'court' ? 0.2 : 0} />
+      <Court tone={selected === 'court' ? 0.34 : hovered === 'court' ? 0.2 : 0} mirror={mirror} />
       {/* Двор кликается по своей плоскости: вода материалом не реагирует */}
       <mesh
         position={[0, POOL.y + 0.04, POOL.z]}
@@ -1063,10 +1072,26 @@ class EffectsBoundary extends Component<{ children: React.ReactNode }, { failed:
   }
 }
 
-function EffectsGate() {
+/* Одно правило на все тяжёлые проходы: широкий холст и WebGL2. Раньше
+   каждое решение принималось само по себе, и на среднем экране совпадали
+   отражение воды, куб-карта, AO и тени — а это уже тот набор, на котором
+   браузер отбирает контекст. */
+function useHeavyScene() {
   const { size, gl } = useThree();
-  const heavyEnough = size.width >= 640 && gl.capabilities.isWebGL2;
-  if (!heavyEnough) return null;
+  return size.width >= 640 && gl.capabilities.isWebGL2;
+}
+
+function HeavyProbe({ onChange }: { onChange: (heavy: boolean) => void }) {
+  const heavy = useHeavyScene();
+  useEffect(() => onChange(heavy), [heavy, onChange]);
+  return null;
+}
+
+function EffectsGate({ ready }: { ready: boolean }) {
+  const heavy = useHeavyScene();
+  /* Эффекты включаются ПОСЛЕ съёмки куб-карты: композитор перехватывает
+     рендер, и делать шесть проходов куба одновременно с ним незачем. */
+  if (!heavy || !ready) return null;
   return <Effects />;
 }
 
@@ -1077,6 +1102,31 @@ function Turntable({ still, slow, children }: { still: boolean; slow: boolean; c
     group.current.rotation.y += delta * 0.028;
   });
   return <group ref={group}>{children}</group>;
+}
+
+/* ПОТЕРЯ КОНТЕКСТА.
+ *
+ * У сцены несколько проходов рендера: тени, отражение в воде, куб-карта,
+ * ambient occlusion. На слабой видеокарте или при переключении GPU браузер
+ * может отобрать контекст — и тогда холст гаснет целиком, а HTML-подписи над
+ * ним остаются висеть в пустоте. Выглядит это как исчезнувшее здание.
+ *
+ * Отменяем событие по умолчанию (иначе контекст не восстановят) и сообщаем
+ * наружу, чтобы страница показала честную заглушку вместо пустоты. */
+function ContextGuard({ onLost }: { onLost: () => void }) {
+  const { gl } = useThree();
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const lost = (event: Event) => {
+      event.preventDefault();
+      onLost();
+    };
+    canvas.addEventListener('webglcontextlost', lost);
+    return () => canvas.removeEventListener('webglcontextlost', lost);
+  }, [gl, onLost]);
+
+  return null;
 }
 
 function hasWebGL() {
@@ -1125,6 +1175,10 @@ export function MuseumModel({
   const [open, setOpen] = useState(() => selectedHall !== null);
   const [hovered, setHovered] = useState<HallId | null>(null);
   const [reflection, setReflection] = useState<Texture | null>(null);
+  const [contextLost, setContextLost] = useState(false);
+  /* Ширина холста известна только внутри Canvas, поэтому решение приходит
+     оттуда через состояние: снаружи оно нужно и воде, и эффектам. */
+  const [heavy, setHeavy] = useState(false);
 
   const select = useCallback((id: HallId) => {
     /* Повторное нажатие по уже выбранному объёму — это вход, а не отмена:
@@ -1143,8 +1197,12 @@ export function MuseumModel({
     return hall ? hall.focus[1] - 6.4 : 0;
   }, [selectedHall]);
 
-  if (typeof window !== 'undefined' && !hasWebGL()) {
-    return <div className="flex h-full w-full items-center justify-center bg-[#e9e6e1]" role="img" aria-label={label} />;
+  if ((typeof window !== 'undefined' && !hasWebGL()) || contextLost) {
+    return (
+      <div className="flex h-full w-full items-center justify-center px-6 text-center" role="img" aria-label={label}>
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</p>
+      </div>
+    );
   }
 
   return (
@@ -1153,7 +1211,7 @@ export function MuseumModel({
         <Canvas
           shadows
           camera={{ position: [38, 16, 30], fov: 26 }}
-          dpr={[1, 1.8]}
+          dpr={[1, 1.5]}
           gl={{
             antialias: true,
             alpha: true,
@@ -1165,6 +1223,8 @@ export function MuseumModel({
             toneMappingExposure: 1.08,
           }}
         >
+          <ContextGuard onLost={() => setContextLost(true)} />
+          <HeavyProbe onChange={setHeavy} />
           <ReflectionContext.Provider value={reflection}>
           {entered && selectedHall ? <InteriorRig hall={selectedHall} /> : <CameraRig open={open} radius={21} focusY={focusY} />}
 
@@ -1190,7 +1250,7 @@ export function MuseumModel({
             intensity={2.35}
             color="#fff5e6"
             castShadow
-            shadow-mapSize={[2048, 2048]}
+            shadow-mapSize={[1024, 1024]}
             shadow-bias={-0.0005}
             shadow-normalBias={0.03}
             shadow-camera-left={-44}
@@ -1202,24 +1262,24 @@ export function MuseumModel({
           {!entered && <pointLight position={[0, 4, 0]} intensity={open ? 40 : 0} distance={34} decay={2} color="#fff3e2" />}
 
           <Suspense fallback={null}>
-            {!entered && <SceneReflection onReady={setReflection} />}
+            {!entered && heavy && <SceneReflection onReady={setReflection} />}
             {entered && selectedHall ? (
               <Interior hall={selectedHall} />
             ) : (
             <Turntable still={still} slow={open || selectedHall !== null}>
-              <Building open={open} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} />
+              <Building open={open} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} mirror={heavy} />
               {(open || selectedHall) && (
                 <HallPins labels={labels} selected={selectedHall} hovered={hovered} onSelect={select} onHover={setHovered} lockedHint={lockedHint} />
               )}
               <Ground />
-              <ContactShadows position={[0, -6.72, 0]} opacity={0.5} scale={110} blur={2.2} far={28} resolution={512} color="#4a453e" />
+              <ContactShadows position={[0, -6.72, 0]} opacity={0.5} scale={110} blur={2.2} far={28} resolution={384} color="#4a453e" />
             </Turntable>
             )}
           </Suspense>
 
           <EffectsBoundary>
             <Suspense fallback={null}>
-              <EffectsGate />
+              <EffectsGate ready={reflection !== null} />
             </Suspense>
           </EffectsBoundary>
 
