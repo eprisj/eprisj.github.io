@@ -360,6 +360,21 @@ function Opening({
 }) {
   const reflection = useReflection();
 
+  /* Шаг переплёта постоянный в метрах, а не в долях проёма: иначе широкое
+     окно и узкое получают одинаковое число членений и перестают отличаться
+     размером. */
+  const mullions = useMemo(() => {
+    if (w < 1.6) return [] as number[];
+    const bays = Math.max(2, Math.round(w / 1.15));
+    return Array.from({ length: bays - 1 }, (_, i) => (i + 1) * (w / bays) - w / 2);
+  }, [w]);
+
+  const transoms = useMemo(() => {
+    if (h < 2.2 || w < 1.6) return [] as number[];
+    const rows = Math.max(1, Math.round(h / 1.7));
+    return Array.from({ length: rows - 1 }, (_, i) => (i + 1) * (h / rows) - h / 2);
+  }, [h, w]);
+
   return (
     <group position={position} rotation={rotation}>
       {/* Щёки и дно ниши: светлый бетон, чтобы тень на них читалась */}
@@ -381,6 +396,22 @@ function Opening({
           envMapIntensity={reflection ? 1.35 : 2.6}
         />
       </mesh>
+      {/* Переплёт. Широкий проём с одним сплошным стеклом не имеет масштаба:
+          по нему нельзя понять, два метра он или пять, и торец консоли
+          читался тёмной заплатой. Узкие щели переплёта не получают: там
+          членить нечего. */}
+      {mullions.map((offset) => (
+        <mesh key={`v${offset}`} position={[offset, 0, -depth + 0.14]} castShadow>
+          <boxGeometry args={[0.07, h - 0.16, 0.07]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.8} metalness={0.35} />
+        </mesh>
+      ))}
+      {transoms.map((offset) => (
+        <mesh key={`h${offset}`} position={[0, offset, -depth + 0.14]} castShadow>
+          <boxGeometry args={[w - 0.16, 0.07, 0.07]} />
+          <meshStandardMaterial color={CONCRETE_DARK} roughness={0.8} metalness={0.35} />
+        </mesh>
+      ))}
     </group>
   );
 }
@@ -761,6 +792,9 @@ function Trees() {
       { x: -17.0, z: 4.2, scale: 0.88, turn: 1.9 },
       { x: 16.6, z: 11.2, scale: 1.0, turn: 2.7 },
       { x: 17.4, z: 3.0, scale: 0.92, turn: 0.9 },
+      { x: 22.4, z: 9.6, scale: 0.84, turn: 2.2 },
+      { x: -15.2, z: 17.6, scale: 0.9, turn: 1.2 },
+      { x: 9.8, z: 17.2, scale: 0.8, turn: 3.4 },
     ],
     [],
   );
@@ -855,18 +889,23 @@ function Court({ tone, mirror }: { tone: number; mirror: boolean }) {
       <mesh position={[0, POOL.y, POOL.z]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[POOL.w, POOL.d]} />
         {mirror ? (
+        /* Отражение снималось в 256 пикселей и размывалось на 160: в воде
+           стояло серое пятно вместо здания. Вдвое больше разрешения и вдвое
+           меньше размытия — в воде читается силуэт, ради которого воду сюда
+           и положили. Зеркальность поднята, шероховатость опущена: стоячая
+           вода отражает сильнее, чем мокрый бетон. */
         <MeshReflectorMaterial
           color={WATER}
-          resolution={256}
-          mixBlur={0.9}
-          mixStrength={2.6}
-          blur={[160, 40]}
-          mirror={0.55}
-          depthScale={0.6}
+          resolution={512}
+          mixBlur={0.55}
+          mixStrength={3.2}
+          blur={[80, 24]}
+          mirror={0.75}
+          depthScale={0.7}
           minDepthThreshold={0.2}
-          maxDepthThreshold={1.2}
-          roughness={0.55}
-          metalness={0.1}
+          maxDepthThreshold={1.4}
+          roughness={0.38}
+          metalness={0.18}
         />
         ) : (
           /* Отражение — целый проход рендера. На узком холсте вода занимает
