@@ -19,11 +19,38 @@ import type { HallId } from './halls';
  * Всё той же параметрикой: ни моделей, ни текстур.
  */
 
-const WALL = '#c3beb5';
-const FLOOR = '#a9a49b';
-const PLINTH = '#d3cec5';
+const WALL = '#c6c0b6';
+const FLOOR = '#a5a099';
+const PLINTH = '#d6d1c8';
 const DARK = '#57534c';
 const LIGHT = '#fff6e8';
+
+/* ЦВЕТ ЗАЛА.
+ *
+ * Все залы были одного и того же тёплого серого, и разница между ними жила
+ * только в свете. Внутри это читалось одной комнатой, которую показывают с
+ * разных сторон. Каждый зал получает свой сдвиг: коллекция теплее и светлее,
+ * практика холоднее и жёстче, архив глуше и темнее, кабинет почти в цвете
+ * бумаги. Сдвиг маленький: это оттенок бетона, а не покраска стен. */
+const HALL_TONE: Partial<Record<HallId, { wall: string; floor: string }>> = {
+  collection: { wall: '#cbc4b7', floor: '#a8a297' },
+  practice:   { wall: '#bfc0bd', floor: '#9c9d9b' },
+  archive:    { wall: '#b2ada4', floor: '#918d86' },
+  study:      { wall: '#cdc7bb', floor: '#aaa49a' },
+  workshop:   { wall: '#c4c3bd', floor: '#a3a29c' },
+  auditorium: { wall: '#c8c1b6', floor: '#a6a096' },
+};
+
+/* МАТЕРИАЛЫ РАБОТ.
+ *
+ * Бетон в этой сцене один и тот же везде, и именно поэтому работы должны
+ * быть сделаны из другого: бронза с настоящей металличностью, полированный
+ * камень, стекло витрины и холст. Разница материалов — единственное, что
+ * отличает вещь от архитектуры, когда и то и другое собрано коробками. */
+const BRONZE = '#b78552';
+const STEEL = '#a7adb4';
+const STONE = '#6d6961';
+const CANVAS_TONES = ['#b84b2e', '#2f3f57', '#d9cdb4', '#6d7a58'];
 
 type Room = {
   w: number;
@@ -103,6 +130,144 @@ function Plinths({ room }: { room: Room }) {
   );
 }
 
+/* РАБОТЫ В ЗАЛАХ.
+ *
+ * Пустой зал честен ровно один раз: на второй он читается недоделанным. Пока
+ * каталог собирается, в двух открытых залах стоят вещи, сделанные тем же
+ * способом, что и здание, — числами. Их пять типов, и каждый отличается от
+ * соседа не формой, а материалом: бронза, камень, сталь, стекло и холст.
+ *
+ * Ни одна из них не подписана: подпись появится вместе с настоящим объектом
+ * и его паспортом, а придумывать авторов и даты в макете нельзя.
+ */
+function BronzeSheet({ position }: { position: [number, number, number] }) {
+  return (
+    <mesh position={position} rotation={[0, 0.6, 0]} castShadow receiveShadow>
+      <cylinderGeometry args={[0.62, 0.62, 1.7, 28, 1, true, 0.4, 3.6]} />
+      <meshStandardMaterial color={BRONZE} roughness={0.4} metalness={0.45} envMapIntensity={2.4} side={DoubleSide} />
+    </mesh>
+  );
+}
+
+function StoneBlock({ position }: { position: [number, number, number] }) {
+  return (
+    <mesh position={position} rotation={[0, 0.28, 0.05]} castShadow receiveShadow>
+      <boxGeometry args={[0.52, 1.25, 0.44]} />
+      <meshStandardMaterial color={STONE} roughness={0.5} metalness={0.04} envMapIntensity={1.4} />
+    </mesh>
+  );
+}
+
+/* Кольцо стояло почти плашмя и висело над подиумом непонятно на чём. Оно
+   СТОИТ: наклон в несколько градусов, низ на крышке подиума. */
+function SteelRing({ position }: { position: [number, number, number] }) {
+  return (
+    <mesh position={position} rotation={[0.12, 0.5, 0.06]} castShadow>
+      <torusGeometry args={[0.6, 0.075, 16, 42]} />
+      <meshStandardMaterial color={STEEL} roughness={0.3} metalness={0.5} envMapIntensity={2.4} />
+    </mesh>
+  );
+}
+
+function Vitrine({ position }: { position: [number, number, number] }) {
+  return (
+    <group position={position}>
+      {/* Стекло витрины: тонкая оболочка, а не сплошной куб. Прозрачность
+          дешёвая (без transmission), но с низкой шероховатостью и бликом. */}
+      <mesh castShadow>
+        <boxGeometry args={[0.78, 0.95, 0.78]} />
+        <meshPhysicalMaterial
+          color="#dfe6e8"
+          transparent
+          opacity={0.22}
+          roughness={0.04}
+          metalness={0.02}
+          clearcoat={1}
+          clearcoatRoughness={0.04}
+          side={DoubleSide}
+        />
+      </mesh>
+      <mesh position={[0, -0.24, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.3, 0.34, 0.3]} />
+        <meshStandardMaterial color="#e7e1d5" roughness={0.85} />
+      </mesh>
+      <mesh position={[0, 0.06, 0]} castShadow>
+        <sphereGeometry args={[0.19, 20, 16]} />
+        <meshStandardMaterial color="#efe9dd" roughness={0.78} />
+      </mesh>
+    </group>
+  );
+}
+
+/* Холсты на стене. Цвет здесь единственный во всём музее: бетон, стекло и
+   бронза дают только тон, и без этих четырёх пятен зал остаётся чертежом. */
+function Canvases({ room, wallX }: { room: Room; wallX: number }) {
+  const items = useMemo(() => {
+    const count = Math.min(4, Math.max(2, Math.floor(room.d / 3.2)));
+    return Array.from({ length: count }, (_, i) => ({
+      z: (i - (count - 1) / 2) * (room.d / (count + 0.5)),
+      tone: CANVAS_TONES[i % CANVAS_TONES.length],
+      h: i % 2 ? 1.5 : 1.05,
+      w: i % 3 ? 1.15 : 1.7,
+    }));
+  }, [room]);
+
+  const facing = wallX < 0 ? 1 : -1;
+
+  return (
+    <group>
+      {items.map((item) => (
+        <group key={item.z} position={[wallX + facing * 0.1, room.h * 0.52, item.z]} rotation={[0, facing * Math.PI / 2, 0]}>
+          {/* Подрамник глубже холста: картина висит НА стене, а не наклеена */}
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[item.w, item.h, 0.09]} />
+            <meshStandardMaterial color="#e6e0d4" roughness={0.92} />
+          </mesh>
+          <mesh position={[0, 0, 0.05]}>
+            <planeGeometry args={[item.w - 0.14, item.h - 0.14]} />
+            <meshStandardMaterial color={item.tone} roughness={0.86} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function Works({ room, hall }: { room: Room; hall: HallId }) {
+  /* Работы стоят на тех же подиумах, что уже расставлены по залу: сначала
+     подиум, потом вещь на нём, а не вещь, парящая рядом. */
+  const spots = useMemo(() => {
+    const out: { x: number; y: number; z: number; kind: number }[] = [];
+    const along = Math.max(2, Math.floor(room.d / 4.4));
+    for (let i = 0; i < along; i += 1) {
+      const z = (i - (along - 1) / 2) * (room.d / (along + 0.4));
+      out.push({ x: -room.w * 0.18, y: 0.45, z, kind: i % 4 });
+      out.push({ x: room.w * 0.2, y: 0.32, z: z + 1.4, kind: (i + 2) % 4 });
+    }
+    return out;
+  }, [room]);
+
+  return (
+    <group>
+      {spots.map((spot, index) => {
+        const base: [number, number, number] = [spot.x, spot.y, spot.z];
+        return (
+          <group key={index}>
+            {spot.kind === 0 && <BronzeSheet position={[base[0], base[1] + 0.85, base[2]]} />}
+            {spot.kind === 1 && <StoneBlock position={[base[0], base[1] + 0.63, base[2]]} />}
+            {spot.kind === 2 && <SteelRing position={[base[0], base[1] + 0.67, base[2]]} />}
+            {spot.kind === 3 && <Vitrine position={[base[0], base[1] + 0.5, base[2]]} />}
+            {/* Направленный свет на вещь: в музее светят на работу, а не на
+                зал. Дальность короткая, чтобы не спорить с фонарями. */}
+            <pointLight position={[base[0], room.h - 0.8, base[2]]} intensity={11} distance={6.2} decay={2} color={LIGHT} />
+          </group>
+        );
+      })}
+      <Canvases room={room} wallX={hall === 'practice' ? room.w / 2 - 0.06 : -room.w / 2 + 0.06} />
+    </group>
+  );
+}
+
 function Shelves({ room }: { room: Room }) {
   const racks = useMemo(() => {
     const out: number[] = [];
@@ -175,6 +340,7 @@ function Benches({ room }: { room: Room }) {
 
 export function Interior({ hall }: { hall: HallId }) {
   const room = ROOMS[hall];
+  const tone = HALL_TONE[hall] ?? { wall: WALL, floor: FLOOR };
 
   /* Свет входит там же, где в наружном объёме есть проём: иначе интерьер
      перестаёт быть интерьером этого здания и становится просто коробкой. */
@@ -193,11 +359,16 @@ export function Interior({ hall }: { hall: HallId }) {
   return (
     <group>
       {/* Пол общий для всех залов, включая двор */}
+      {/* Пол был абсолютно матовым, и свет на нём не оставлял ничего: ни
+          пятна под фонарём, ни отблеска от работы. Шлифованный бетон
+          отражает слабо, но отражает, и именно этим пол отличается от
+          картонки. */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[room.w, room.d]} />
         <meshStandardMaterial
-          color={FLOOR}
-          roughness={0.95}
+          color={tone.floor}
+          roughness={0.58}
+          metalness={0.05}
           polygonOffset
           polygonOffsetFactor={-1}
           polygonOffsetUnits={-1}
@@ -211,7 +382,7 @@ export function Interior({ hall }: { hall: HallId }) {
         <group>
           <mesh position={[0, room.h / 2 - 0.2, 0]} receiveShadow>
             <cylinderGeometry args={[room.w / 2, room.w / 2, room.h + 0.4, 48, 1, true]} />
-            <meshStandardMaterial color={WALL} roughness={0.94} side={BackSide} />
+            <meshStandardMaterial color={tone.wall} roughness={0.9} side={BackSide} />
           </mesh>
           <mesh position={[0, room.h - 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
             <circleGeometry args={[room.w / 2, 48]} />
@@ -274,7 +445,7 @@ export function Interior({ hall }: { hall: HallId }) {
               лишние сорок сантиметров прячутся под полом. */}
           <mesh position={[0, room.h / 2 - 0.2, 0]} receiveShadow>
             <boxGeometry args={[room.w, room.h + 0.4, room.d]} />
-            <meshStandardMaterial color={WALL} roughness={0.94} side={BackSide} />
+            <meshStandardMaterial color={tone.wall} roughness={0.9} side={BackSide} />
           </mesh>
 
           {room.light === 'side' && openings.map((z) => (
@@ -353,6 +524,9 @@ export function Interior({ hall }: { hall: HallId }) {
       )}
 
       {room.furniture === 'plinths' && <Plinths room={room} />}
+      {/* Коллекция и практика — единственные залы, где уже что-то стоит:
+          архив и кабинет по смыслу пустые, мастерская пока рабочая. */}
+      {(hall === 'collection' || hall === 'practice') && <Works room={room} hall={hall} />}
       {room.furniture === 'shelves' && <Shelves room={room} />}
       {room.furniture === 'desk' && <Desk />}
       {room.furniture === 'benches' && hall !== 'auditorium' && <Benches room={room} />}

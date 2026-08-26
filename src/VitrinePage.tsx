@@ -34,6 +34,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Opens with an EPRIS passport',
     lockedNote: 'This hall opens with an EPRIS passport. Passports are issued as the collection opens.',
     emptyHall: 'Nothing is installed here yet. The first objects arrive with the collection.',
+    partialHall: 'The first pieces are in place. Their records are still being written.',
     hallCopy: {
       court: 'The sunken court in front of the building: screenings, talks and the work that does not fit indoors.',
       collection: 'The permanent collection of Ukrainian practice, held at the lowest and quietest level.',
@@ -86,6 +87,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Открывается по паспорту EPRIS',
     lockedNote: 'Этот зал открывается по паспорту EPRIS. Паспорта выдаются по мере открытия коллекции.',
     emptyHall: 'Здесь пока ничего не смонтировано. Первые объекты приходят вместе с коллекцией.',
+    partialHall: 'Первые вещи уже стоят. Их паспорта ещё пишутся.',
     hallCopy: {
       court: 'Опущенный двор перед зданием: показы, разговоры и то, что не помещается внутрь.',
       collection: 'Постоянная коллекция украинской практики на нижнем, самом тихом ярусе.',
@@ -138,6 +140,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Відкривається за паспортом EPRIS',
     lockedNote: 'Цей зал відкривається за паспортом EPRIS. Паспорти видають у міру відкриття колекції.',
     emptyHall: 'Тут ще нічого не змонтовано. Перші обʼєкти приходять разом із колекцією.',
+    partialHall: 'Перші речі вже стоять. Їхні паспорти ще пишуться.',
     hallCopy: {
       court: 'Опущений двір перед будівлею: покази, розмови і те, що не вміщається всередині.',
       collection: 'Постійна колекція української практики на нижньому, найтихішому ярусі.',
@@ -190,6 +193,7 @@ const MUSEUM_COPY = {
     lockedHint: 'EPRIS pasaportuyla açılır',
     lockedNote: 'Bu salon EPRIS pasaportuyla açılır. Pasaportlar koleksiyon açıldıkça veriliyor.',
     emptyHall: 'Burada henüz hiçbir şey kurulmadı. İlk nesneler koleksiyonla birlikte gelecek.',
+    partialHall: 'İlk yapıtlar yerinde. Künyeleri hâlâ yazılıyor.',
     hallCopy: {
       court: 'Binanın önündeki çukur avlu: gösterimler, söyleşiler ve içeriye sığmayan işler.',
       collection: 'Ukrayna pratiğinin kalıcı koleksiyonu, en alttaki ve en sessiz katta.',
@@ -242,6 +246,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Si apre con un passaporto EPRIS',
     lockedNote: 'Questa sala si apre con un passaporto EPRIS. I passaporti vengono rilasciati man mano che la collezione apre.',
     emptyHall: 'Qui non è ancora allestito nulla. I primi oggetti arrivano con la collezione.',
+    partialHall: 'I primi pezzi sono al loro posto. Le schede si stanno ancora scrivendo.',
     hallCopy: {
       court: 'La corte ribassata davanti all’edificio: proiezioni, incontri e il lavoro che dentro non ci sta.',
       collection: 'La collezione permanente della pratica ucraina, al livello più basso e più silenzioso.',
@@ -294,6 +299,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Se abre con un pasaporte EPRIS',
     lockedNote: 'Esta sala se abre con un pasaporte EPRIS. Los pasaportes se entregan a medida que abre la colección.',
     emptyHall: 'Aquí todavía no hay nada montado. Los primeros objetos llegan con la colección.',
+    partialHall: 'Las primeras piezas ya están montadas. Sus fichas aún se están escribiendo.',
     hallCopy: {
       court: 'El patio hundido frente al edificio: proyecciones, conversaciones y el trabajo que no cabe dentro.',
       collection: 'La colección permanente de la práctica ucraniana, en el nivel más bajo y más silencioso.',
@@ -346,6 +352,7 @@ const MUSEUM_COPY = {
     lockedHint: 'Öffnet sich mit einem EPRIS-Pass',
     lockedNote: 'Dieser Saal öffnet sich mit einem EPRIS-Pass. Die Pässe werden mit der Eröffnung der Sammlung ausgegeben.',
     emptyHall: 'Hier ist noch nichts eingerichtet. Die ersten Objekte kommen mit der Sammlung.',
+    partialHall: 'Die ersten Stücke stehen. Ihre Katalogblätter entstehen noch.',
     hallCopy: {
       court: 'Der abgesenkte Hof vor dem Haus: Vorführungen, Gespräche und alles, was drinnen keinen Platz hat.',
       collection: 'Die ständige Sammlung ukrainischer Praxis auf der untersten, ruhigsten Ebene.',
@@ -441,7 +448,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
       {/* Замок объявлен, но не заперт: паспортов ещё нет, и делать вид, что
           дверь заперта, значило бы обещать механику, которой нет. */}
       <p className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)] pt-4 text-[14px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.62)]">
-        {locked ? copy.lockedNote : copy.emptyHall}
+        {locked ? copy.lockedNote : WORKS_INSTALLED.has(hall) ? copy.partialHall : copy.emptyHall}
       </p>
       {/* Зал — это место, а не абзац: отсюда в него входят. */}
       <button
@@ -454,6 +461,12 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave }: {
     </div>
   );
 }
+
+/* Залы, в которых уже что-то стоит. Список короткий и лежит рядом с текстом
+   намеренно: строчка «здесь пока ничего не смонтировано» под залом с
+   работами — это ровно то враньё, ради которого текст и правят. Сам состав
+   залов с работами задан в Interior.tsx. */
+const WORKS_INSTALLED = new Set<HallId>(['collection', 'practice']);
 
 function EmptyVitrine({ copy, hall, onHall }: { copy: MuseumCopy; hall: HallId | null; onHall: (id: HallId | null) => void }) {
   const [entered, setEntered] = useState(false);
