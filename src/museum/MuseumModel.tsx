@@ -158,6 +158,14 @@ const BAR_RIGHT = { x: 9.4, w: 11.0 };            // archive: дальняя т�
 /* Верхняя галерея нанизана на нижнюю под прямым углом и вылетает консолью
    вперёд, к воде: шесть метров над пустотой. Это и есть главный ход. */
 const CROSS = { w: 11.0, h: 6.6, d: 24.0, x: -6.0, y: 9.5, z: 2.0 };  // practice
+/* Верхняя галерея расщеплена на две плиты: западная во всю длину, восточная
+   короче, между ними световая щель. Числа вынесены наружу, потому что по ним
+   считаются и опалубка, и кессоны, и фонари. */
+const CROSS_SLOT = 1.9;
+const CROSS_W_SLAB = (11.0 - CROSS_SLOT) / 2;                          // 4.55
+const CROSS_WEST_X = -6.0 - (CROSS_SLOT + CROSS_W_SLAB) / 2;
+const CROSS_EAST_X = -6.0 + (CROSS_SLOT + CROSS_W_SLAB) / 2;
+const CROSS_EAST_D = 19.0;
 const TOWER = { w: 6.0, d: 6.0, h: 13.4, x: 11.6, z: -2.4 };          // study
 const POOL = { w: 26, d: 11, z: 17.0, y: -1.2 };                       // court
 /* Три объёма пристроены позже и намеренно другой природы: крест из двух
@@ -825,9 +833,12 @@ function Drum({ tone, onSelect, onHover }: { tone: string; onSelect: (id: HallId
         <cylinderGeometry args={[DRUM.r + 0.55, DRUM.r + 0.55, 0.56, 56]} />
         <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.92} />
       </mesh>
+      {/* Кольцо фонаря светилось само по себе и с дальнего ракурса читалось
+          белым бубликом на крышке. Теперь это стекло, а не лампа: оно берёт
+          свет со сцены и остаётся кольцом, а не пятном. */}
       <mesh position={[0, DRUM.base + DRUM.h + 0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[DRUM.r - 1.5, DRUM.r - 0.5, 48]} />
-        <meshBasicMaterial color="#f4ead9" />
+        <ringGeometry args={[DRUM.r - 1.35, DRUM.r - 0.62, 48]} />
+        <meshStandardMaterial color="#5c5f63" roughness={0.15} metalness={0.45} side={DoubleSide} />
       </mesh>
       <mesh position={[0, DRUM.base + DRUM.h + 0.66, 0]} castShadow>
         <cylinderGeometry args={[DRUM.r - 1.7, DRUM.r - 1.7, 0.34, 40]} />
@@ -1084,20 +1095,97 @@ function Building({
         <Opening w={4.6} h={3.4} depth={0.5} position={[CROSS.x + 1.6, BAR.y + 1.1 + 1.7, BAR.d / 2 - 1.6]} />
       </group>
 
-      {/* ВЕРХНЯЯ ГАЛЕРЕЯ — поперёк нижней, с консолью на обе стороны */}
+      {/* ВЕРХНЯЯ ГАЛЕРЕЯ.
+          Была одной длинной коробкой поперёк нижней, и с любой точки читалась
+          ровно этим: брусок, положенный на брусок. Теперь она РАСЩЕПЛЕНА на
+          две плиты со световой щелью между ними, а плиты разной длины:
+          восточная короче на пять метров, и план перестал быть прямоугольником.
+          Консоль на юге застеклена во всю высоту в глубоком откосе, чтобы у
+          вылета была причина, а не только вынос. */}
       <group ref={cross}>
         <Mass
-          size={[CROSS.w, CROSS.h, CROSS.d]}
-          position={[CROSS.x, CROSS.y + CROSS.h / 2, CROSS.z]}
+          size={[CROSS_W_SLAB, CROSS.h, CROSS.d]}
+          position={[CROSS_WEST_X, CROSS.y + CROSS.h / 2, CROSS.z]}
           color={tone('practice', CONCRETE_LIT)}
           hallId="practice"
           onSelect={onSelect}
           onHover={onHover}
         />
-        <BoardMarks w={CROSS.w} d={CROSS.d} h={CROSS.h} y={CROSS.y} x={CROSS.x} z={CROSS.z} step={1.1} />
-        <Coffers w={CROSS.w} d={CROSS.d} x={CROSS.x} y={CROSS.y} z={CROSS.z} />
-        <RoofMonitors x={CROSS.x} y={CROSS.y + CROSS.h} z={CROSS.z} w={CROSS.w} d={CROSS.d} />
-        <TrapezoidEye position={[CROSS.x - CROSS.w / 2 - 0.5, CROSS.y + CROSS.h / 2, CROSS.z + 6.2]} />
+        <Mass
+          size={[CROSS_W_SLAB, CROSS.h, CROSS_EAST_D]}
+          position={[CROSS_EAST_X, CROSS.y + CROSS.h / 2, CROSS.z + (CROSS.d - CROSS_EAST_D) / 2]}
+          color={tone('practice', CONCRETE)}
+          hallId="practice"
+          onSelect={onSelect}
+          onHover={onHover}
+        />
+
+        {/* Щель между плитами: тёмное дно и стеклянный мостик поверху. Без
+            дна щель светилась насквозь и плиты повисали порознь. */}
+        <mesh position={[CROSS.x, CROSS.y + CROSS.h / 2, CROSS.z]}>
+          <boxGeometry args={[CROSS_SLOT, CROSS.h - 0.6, CROSS.d - 0.8]} />
+          <meshStandardMaterial color={SHADOW} roughness={0.96} />
+        </mesh>
+        <mesh position={[CROSS.x, CROSS.y + CROSS.h - 0.12, CROSS.z + 1.4]}>
+          <boxGeometry args={[CROSS_SLOT + 0.5, 0.16, CROSS.d * 0.42]} />
+          <meshStandardMaterial color={GLASS} roughness={0.16} metalness={0.4} />
+        </mesh>
+        {/* Балки по краям щели: плита такой длины без подпорок читается доской */}
+        {[-1, 1].map((side) => (
+          <mesh key={side} position={[CROSS.x + side * (CROSS_SLOT / 2 + 0.2), CROSS.y + 0.05, CROSS.z]} castShadow>
+            <boxGeometry args={[0.44, 0.9, CROSS.d - 1.2]} />
+            <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.94} />
+          </mesh>
+        ))}
+
+        <BoardMarks w={CROSS_W_SLAB} d={CROSS.d} h={CROSS.h} y={CROSS.y} x={CROSS_WEST_X} z={CROSS.z} step={1.1} />
+        <BoardMarks w={CROSS_W_SLAB} d={CROSS_EAST_D} h={CROSS.h} y={CROSS.y} x={CROSS_EAST_X} z={CROSS.z + (CROSS.d - CROSS_EAST_D) / 2} step={1.1} />
+        <Coffers w={CROSS_W_SLAB} d={CROSS.d} x={CROSS_WEST_X} y={CROSS.y} z={CROSS.z} />
+        <Coffers w={CROSS_W_SLAB} d={CROSS_EAST_D} x={CROSS_EAST_X} y={CROSS.y} z={CROSS.z + (CROSS.d - CROSS_EAST_D) / 2} />
+        <RoofMonitors x={CROSS_EAST_X} y={CROSS.y + CROSS.h} z={CROSS.z + (CROSS.d - CROSS_EAST_D) / 2} w={CROSS_W_SLAB} d={CROSS_EAST_D} />
+
+        {/* Торец консоли: стекло сидит в откосе глубиной в полметра, поэтому
+            первое, что видно с земли, — тень откоса, а не блик. */}
+        <Opening
+          w={CROSS_W_SLAB - 0.9}
+          h={CROSS.h - 1.5}
+          depth={0.62}
+          position={[CROSS_WEST_X, CROSS.y + CROSS.h / 2, CROSS.z + CROSS.d / 2 + 0.02]}
+        />
+        {/* У короткой плиты на том же торце только щель: два одинаковых окна
+            уравняли бы плиты, которые нарочно неравны. */}
+        <Opening
+          w={0.7}
+          h={CROSS.h - 2.6}
+          depth={0.5}
+          position={[CROSS_EAST_X + 1.2, CROSS.y + CROSS.h / 2, CROSS.z + CROSS.d / 2 + 0.02]}
+        />
+        {/* Северный торец короткой плиты закрыт глухо, а под уступом ложится
+            тень: именно она и показывает, что плиты разной длины. */}
+        <mesh position={[CROSS_EAST_X, CROSS.y - 0.16, CROSS.z - CROSS.d / 2 + 2.2]}>
+          <boxGeometry args={[CROSS_W_SLAB - 0.6, 0.32, 3.6]} />
+          <meshStandardMaterial color={SHADOW} roughness={0.96} />
+        </mesh>
+
+        {/* Северный торец длинной плиты смотрел в поле голой стеной: с задних
+            ракурсов вся верхняя галерея читалась бруском. Узкая щель на всю
+            высоту и козырёк над ней дают торцу лицо. */}
+        <Opening
+          w={0.8}
+          h={CROSS.h - 2.2}
+          depth={0.55}
+          position={[CROSS_WEST_X, CROSS.y + CROSS.h / 2, CROSS.z - CROSS.d / 2 - 0.02]}
+          rotation={[0, Math.PI, 0]}
+        />
+        <mesh position={[CROSS_WEST_X, CROSS.y + CROSS.h - 0.9, CROSS.z - CROSS.d / 2 - 0.45]} castShadow>
+          <boxGeometry args={[CROSS_W_SLAB - 1.0, 0.28, 1.0]} />
+          <meshStandardMaterial color={CONCRETE_DEEP} roughness={0.93} />
+        </mesh>
+        {/* Парапет по длинной плите: у кровли появляется край, и сверху она
+            перестаёт быть пустой плоскостью. */}
+        <Parapet x={CROSS_WEST_X} z={CROSS.z} w={CROSS_W_SLAB} d={CROSS.d} y={CROSS.y + CROSS.h} />
+
+        <TrapezoidEye position={[CROSS_WEST_X - CROSS_W_SLAB / 2 - 0.5, CROSS.y + CROSS.h / 2, CROSS.z + 6.2]} />
         {/* Тень под консолью: тонкая тёмная полка вместо стыка */}
         <mesh position={[CROSS.x, CROSS.y - 0.18, CROSS.z]}>
           <boxGeometry args={[CROSS.w - 2.2, 0.36, CROSS.d - 2.2]} />
@@ -1619,8 +1707,12 @@ export function MuseumModel({
                сжата до реального пятна застройки, и на той же карте у тени
                появился край. */
             shadow-mapSize={degrade > 0 ? [1024, 1024] : [2048, 2048]}
-            shadow-bias={-0.0004}
-            shadow-normalBias={0.025}
+            /* Солнце опустилось, и на большой плоскости земли тень начала
+               ложиться на саму землю рябью: при скользящем свете глубина в
+               карте теней и глубина сцены расходятся почти на всей площади.
+               Нормальный сдвиг больше обычного именно поэтому. */
+            shadow-bias={-0.0018}
+            shadow-normalBias={0.05}
             shadow-camera-left={-34}
             shadow-camera-right={34}
             shadow-camera-top={34}
