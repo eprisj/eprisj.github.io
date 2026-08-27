@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EPRIS CRM</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#CDF940">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="crm.css?v=1">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <h2>EPRIS CRM</h2>
+    <p>Тот же пароль, что и у панели редакции.</p>
+    <input id="gate-pw" type="password" autocomplete="current-password" placeholder="Пароль" enterkeyhint="go">
+    <button class="btn primary" id="gate-go" style="width:100%">Войти</button>
+    <div class="err" id="gate-err"></div>
+  </div>
+</div>
+
+<div id="menubar">
+  <span class="wordmark">EPRIS</span>
+  <span class="dot"></span>
+  <span class="wordmark" style="font-weight:600">CRM</span>
+  <span class="spacer"></span>
+  <span class="meta" id="who"></span>
+  <button class="bar-btn" id="btn-refresh" title="Перечитать данные с сервера">Обновить</button>
+  <button class="bar-btn" id="btn-admin">Панель</button>
+  <button class="bar-btn" id="btn-exit">Выйти</button>
+</div>
+
+<div id="shell">
+  <div class="window">
+    <div class="titlebar">
+      <span class="lights"><i></i><i></i><i></i></span>
+      <h1 id="win-title">Обзор</h1>
+      <span class="sub" id="win-sub"></span>
+      <span class="spacer"></span>
+      <span class="sub" id="sync-state">—</span>
+    </div>
+
+    <nav class="rail" id="rail"></nav>
+    <main class="work" id="work"></main>
+  </div>
+</div>
+
+<div id="scrim"></div>
+<aside id="drawer">
+  <div class="head">
+    <strong id="drawer-title">Запись</strong>
+    <span class="spacer" style="flex:1"></span>
+    <button class="bar-btn" id="drawer-close">Закрыть</button>
+  </div>
+  <div class="body" id="drawer-body"></div>
+  <div class="foot">
+    <button class="btn primary" id="drawer-save">Сохранить</button>
+    <button class="btn danger" id="drawer-delete">Удалить</button>
+  </div>
+</aside>
+
+<div id="toast"></div>
+
+<script src="crm.js?v=1"></script>
+</body>
+</html>
