@@ -2137,16 +2137,24 @@
       "subtitle": "Russell Lee · 1940 · Caldwell, Idaho",
       "fig": "PICS 016",
       "description": "Russell Lee turns storage towers and a parked tractor into a quiet, almost abstract portrait of American infrastructure.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt6yiou5w8hzc9.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtbopsj4bhqim5.jpg",
       "picsOfWeek": true,
       "homeCategory": "photography",
-      "homeTitle": "#4 From Lake Series,",
-      "homeSubtitle": "Taras Perevarukha • 2026 • 10x15 cm",
+      "homeTitle": "Guy Bourdin for Charles Jourdan, 1970",
+      "homeSubtitle": "Guy Bourdin • 1970",
       "homeDescription": "Taras Perevarukha is a Ukrainian photographer based in London whose work explores stillness, memory, displacement, and the passage of time.",
       "picsId": "PICS-2026-016",
-      "updatedAt": "2026-08-24T08:22:50.330Z",
+      "updatedAt": "2026-08-27T15:38:03.638Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtbon5re4r3hx2.jpg",
+          "replacedAt": "2026-08-27T15:35:40.128Z"
+        },
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt6yiou5w8hzc9.jpg",
+          "replacedAt": "2026-08-27T15:33:37.279Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt45lf3ufscc8z.jpg",
           "replacedAt": "2026-08-24T08:11:13.917Z"
@@ -2156,8 +2164,8 @@
           "replacedAt": "2026-08-22T09:06:00.118Z"
         }
       ],
-      "homeCredit": "@tarasperevarukha",
-      "homeSourceUrl": "https://www.instagram.com/tarasperevarukha?igsi=MTIydXM3OGl1NGYwMg=="
+      "homeCredit": "@guybourdinofficial",
+      "homeSourceUrl": "https://www.instagram.com/p/DU-5JjnjHD-/?igsi=MWFiempjYjZ2NWY3Zw=="
     },
     {
       "id": 14,
@@ -5332,7 +5340,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-27T15:37:44.899Z",
+      "updatedAt": "2026-08-27T15:31:27.535Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
