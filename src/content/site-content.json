@@ -23040,20 +23040,24 @@
         {
           "id": 17,
           "title": "En Büyük On, No. 9, Yaşlılık",
-          "subtitle": "Hilma af Klint · 1907 · kağıt üzeri tempera",
+          "subtitle": "Hilma af Klint · 1907 · kağıt üzerine tempera",
           "fig": "PICS 013",
-          "description": "Hilma af Klint yaşlılığa canlı, yüzen bir dil veriyor: leylak tarlaları, döngüler ve koyu tohumlar tuvali büyümüş gibi hissettiriyor, boyanmış değil.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "description": "Hilma af Klint yaşlılığa canlı, yüzen bir dil kazandırıyor: leylak tarlaları, döngüler ve koyu tohumlar tuvali büyümüş gibi hissettiriyor, boyanmış değil.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Diver, Molly Brocklhurst, 2024",
-          "homeSubtitle": "Molly Brocklehurst · 2024 • tuval üzerine yağlı boya",
-          "homeDescription": "Molly Brocklehurst İngiliz bir ressamdır ve bulunan fotoğraflara dayanan rüya gibi yağlı boya tablolarıyla tanınır. Eseri hafıza, nostalji ve gerçeklik ile kurgu arasındaki bulanık çizgiyi keşfeder, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
-          "homeCredit": "@mollbrokenhurst",
+          "homeTitle": "Jim Thorell, Hyperion hummus havthorn, 2026",
+          "homeSubtitle": "Jim Thorel · 2026 • tuval üzerine yağlı boya",
+          "homeDescription": "Molly Brocklehurst İngiliz bir ressamdır ve bulunmuş fotoğraflara dayalı rüya gibi yağlı boya tablolarıyla tanınır. Eseri hafıza, nostalji ve gerçeklik ile kurgu arasındaki bulanık çizgiyi keşfeder, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
+          "homeCredit": "@jimthorel",
           "picsId": "PICS-2026-013",
-          "updatedAt": "2026-08-24T22:22:52.020Z",
+          "updatedAt": "2026-08-27T23:45:49.044Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+              "replacedAt": "2026-08-27T23:41:56.350Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
               "replacedAt": "2026-08-24T07:53:54.578Z"
@@ -23067,7 +23071,7 @@
               "replacedAt": "2026-08-22T08:55:10.700Z"
             }
           ],
-          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
+          "homeSourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ=="
         },
         {
           "id": 18,
@@ -27211,18 +27215,22 @@
           "title": "I Dieci Più Grandi, No. 9, Vecchiaia",
           "subtitle": "Hilma af Klint · 1907 · tempera su carta",
           "fig": "PICS 013",
-          "description": "Hilma af Klint dà alla vecchiaia un linguaggio vivido e fluttuante: campi lilla, anelli e semi scuri rendono la tela più cresciuta che dipinta.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "description": "Hilma af Klint dà alla vecchiaia un linguaggio vivido e fluttuante: campi di lilla, anelli e semi scuri rendono la tela più cresciuta che dipinta.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Diver, Molly Brocklhurst, 2024",
-          "homeSubtitle": "Molly Brocklehurst · 2024 • olio su tela",
+          "homeTitle": "Jim Thorell, Hyperion hummus havthorn, 2026",
+          "homeSubtitle": "Jim Thorel · 2026 • olio su tela",
           "homeDescription": "Molly Brocklehurst è una pittrice britannica nota per i suoi dipinti ad olio onirici basati su fotografie trovate. Il suo lavoro esplora memoria, nostalgia e la linea sfocata tra realtà e finzione, creando scene che sembrano frammenti di un passato dimenticato.",
-          "homeCredit": "@mollbrokenhurst",
+          "homeCredit": "@jimthorel",
           "picsId": "PICS-2026-013",
-          "updatedAt": "2026-08-24T22:22:56.183Z",
+          "updatedAt": "2026-08-27T23:45:52.516Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+              "replacedAt": "2026-08-27T23:41:56.350Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
               "replacedAt": "2026-08-24T07:53:54.578Z"
@@ -27236,7 +27244,7 @@
               "replacedAt": "2026-08-22T08:55:10.700Z"
             }
           ],
-          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
+          "homeSourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ=="
         },
         {
           "id": 18,
