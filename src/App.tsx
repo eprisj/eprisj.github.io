@@ -1960,8 +1960,15 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                             за канал с шрифтами наравне; теперь браузер знает,
                             какую тащить первой. decoding="async" — тот же
                             приём, что уже стоит на архивных превью ниже, не
-                            блокирует отрисовку раскодированием картинки. */}
-                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} decoding="async" fetchPriority={isCenter ? 'high' : undefined} />
+                            блокирует отрисовку раскодированием картинки.
+
+                            Одного приоритета виявилося мало. Пріоритет каже,
+                            яку тягнути першою, але тягнулися все одно всі
+                            п'ять — а бачить читач одну. На повільному 4G це
+                            і давало LCP 21,6 с при TBT 0: головна картинка
+                            стояла в черзі за тими, яких на екрані немає.
+                            Тому бічні слайди тепер lazy. */}
+                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} decoding="async" fetchPriority={isCenter ? 'high' : undefined} loading={isCenter ? 'eager' : 'lazy'} />
                       </div>
                     </button>
                     <div className="home-carousel-caption">
@@ -2494,11 +2501,16 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
             >
+              {/* Стрічка статей починається за межею першого екрана — від
+                  1100 px і нижче. Без lazy усі її картинки бралися одразу і
+                  ділили канал з тією єдиною, яку видно. */}
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
                 alt={article.title}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="text-center">
@@ -3100,6 +3112,8 @@ function EditorialListCard({
           className="w-full h-full object-cover"
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="flex flex-col p-4 sm:p-6">
