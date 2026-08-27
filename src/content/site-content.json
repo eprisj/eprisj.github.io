@@ -6307,17 +6307,21 @@
           "title": "Овал с точками",
           "subtitle": "Henry Moore · 1968–70 · бронза",
           "fig": "PICS 012",
-          "description": "Два пустоты превращают бронзовый овал в меняющийся горизонт: Henry Moore придает вес, пейзаж и человеческое тело ощущаются неразделимыми.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "description": "Два пустоты превращают бронзовый овал в меняющийся горизонт: Henry Moore придает вес, пейзаж и человеческое тело ощущение неразделимости.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc5w0yihz3v69.webp",
           "picsOfWeek": true,
           "homeCategory": "sculpture",
-          "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
-          "homeSubtitle": "Brandon Morris · 2025 ·Стекловолокно и смола",
-          "homeDescription": "Brandon Morris исследует границу между модой и скульптурой, создавая свою серию Ghost Dress из стекловолокна и смолы. Вдохновленный викторианской детской одеждой, фильмами ужасов такими как The Ring, а также художниками Martin Margiela, Hans Bellmer и Heidi Bucher, он представляет себе платья, существующие без тела.",
+          "homeTitle": "SWEDISH FISH WATER BAG NO 94 • DYLAN MARTINAZ • 2026",
+          "homeSubtitle": "Dylan Martinez · 2026 ·Стекло и керамика",
+          "homeDescription": "Brandon Morris исследует границу между модой и скульптурой, создавая свою серию Ghost Dress из стекловолокна и смолы. Вдохновленный викторианской детской одеждой, фильмами ужасов, такими как The Ring, и художниками Martin Margiela, Hans Bellmer и Heidi Bucher, он представляет себе платья, существующие без тела.",
           "picsId": "PICS-2026-012",
-          "updatedAt": "2026-08-24T22:22:21.866Z",
+          "updatedAt": "2026-08-27T23:45:21.500Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+              "replacedAt": "2026-08-27T23:36:24.703Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
               "replacedAt": "2026-08-24T07:34:13.220Z"
@@ -6335,8 +6339,8 @@
               "replacedAt": "2026-08-22T09:18:18.007Z"
             }
           ],
-          "homeCredit": "@codeunknown_",
-          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
+          "homeCredit": "Square One Gallery",
+          "homeSourceUrl": "https://www.squareonegallery.com/viewing-room/34-dylan-martinez-swedish-fish-water-bags-the-newest-iteration-of-the-water-bag-series/"
         },
         {
           "id": 17,
@@ -32059,13 +32063,13 @@
           "picsId": "PICS-2026-013",
           "category": "painting",
           "categoryLabel": "Painting",
-          "title": "Diver, Molly Brocklhurst, 2024",
-          "subtitle": "Molly Brocklhurst · 2024 • oil on canvas",
+          "title": "Jim Thorell, Hyperion hummus havthorn, 2026",
+          "subtitle": "Jim Thorel · 2026 • oil on canvas",
           "description": "Molly Brocklehurst is a British painter known for her dreamlike oil paintings based on found photographs. Her work explores memory, nostalgia, and the blurred line between reality and fiction, creating scenes that feel like fragments of a forgotten past.",
-          "credit": "@mollbrokenhurst",
-          "sourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA==",
+          "credit": "@jimthorel",
+          "sourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ==",
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
           "localized": {
             "RU": {
               "title": "Diver, Molly Brocklhurst, 2024",
