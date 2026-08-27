@@ -2057,17 +2057,21 @@
       "subtitle": "Hilma af Klint · 1907 · tempera on paper",
       "fig": "PICS 013",
       "description": "Hilma af Klint gives old age a vivid, floating language: lilac fields, loops and dark seeds make the canvas feel grown rather than painted.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
       "picsOfWeek": true,
       "homeCategory": "painting",
-      "homeTitle": "Diver, Molly Brocklhurst, 2024",
-      "homeSubtitle": "Molly Brocklhurst · 2024 • oil on canvas",
+      "homeTitle": "Jim Thorell, Hyperion hummus havthorn, 2026",
+      "homeSubtitle": "Jim Thorel · 2026 • oil on canvas",
       "homeDescription": "Molly Brocklehurst is a British painter known for her dreamlike oil paintings based on found photographs. Her work explores memory, nostalgia, and the blurred line between reality and fiction, creating scenes that feel like fragments of a forgotten past.",
-      "homeCredit": "@mollbrokenhurst",
+      "homeCredit": "@jimthorel",
       "picsId": "PICS-2026-013",
-      "updatedAt": "2026-08-24T07:59:26.045Z",
+      "updatedAt": "2026-08-27T23:44:03.195Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "replacedAt": "2026-08-27T23:41:56.350Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
           "replacedAt": "2026-08-24T07:53:54.578Z"
@@ -2081,7 +2085,7 @@
           "replacedAt": "2026-08-22T08:55:10.700Z"
         }
       ],
-      "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
+      "homeSourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ=="
     },
     {
       "id": 18,
@@ -5348,7 +5352,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-27T23:43:43.721Z",
+      "updatedAt": "2026-08-27T23:40:41.921Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
