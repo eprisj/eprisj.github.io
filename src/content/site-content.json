@@ -2093,23 +2093,31 @@
       "subtitle": "Louis I. Kahn · 1965 · La Jolla",
       "fig": "PICS 014",
       "description": "At the Salk Institute, concrete is not a backdrop but a precise instrument for light, sea air and silence.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt6zvjpsi8eh1m.jpg",
       "picsOfWeek": true,
       "homeCategory": "architecture",
-      "homeTitle": "Interior Wilson, Atelier MKD",
-      "homeSubtitle": "Louis I. Kahn · 1965 · La Jolla",
+      "homeTitle": "Studio APPA, Residential Complex Forum",
+      "homeSubtitle": "Studio APPA • Moscow",
       "homeDescription": "Parisian apartment interiors have a particular charm, and Wilson by Atelier MKD is a beautiful example of how a restrained, stable composition can still feel deeply personal. The character lies in the details — masks and figurines, vases and chairs.",
       "picsId": "PICS-2026-014",
-      "updatedAt": "2026-08-24T08:54:01.438Z",
+      "updatedAt": "2026-08-27T23:47:08.000Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtc67lly3c3b1s.jpg",
+          "replacedAt": "2026-08-27T23:47:02.309Z"
+        },
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt6zvjpsi8eh1m.jpg",
+          "replacedAt": "2026-08-27T23:45:25.471Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt2rjf2iptcgt2.jpg",
           "replacedAt": "2026-08-24T08:49:13.487Z"
         }
       ],
       "homeSourceUrl": "https://www.instagram.com/ateliermkd?igsi=YTRiaGRzM2oyZHRm",
-      "homeCredit": "@ateliermkd"
+      "homeCredit": "@studioappa",
+      "imageSeed": "pics-18"
     },
     {
       "id": 19,
@@ -5352,7 +5360,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-27T23:45:45.027Z",
+      "updatedAt": "2026-08-27T23:46:59.055Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
