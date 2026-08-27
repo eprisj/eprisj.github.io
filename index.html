@@ -39,6 +39,10 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest?v=2" />
 
+    <!-- Картинки лежат на другом origin, и до них идёт отдельное
+         TLS-рукопожатие уже после того, как разобран HTML. Для LCP-картинки
+         это чистая задержка на ровном месте. -->
+    <link rel="preconnect" href="https://api.eprisjournal.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Zeyada&display=swap" rel="stylesheet">
