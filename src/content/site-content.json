@@ -2017,16 +2017,20 @@
       "subtitle": "Henry Moore · 1968–70 · bronze",
       "fig": "PICS 012",
       "description": "Two voids turn a bronze oval into a shifting horizon: Henry Moore makes weight, landscape and the human body feel inseparable.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtc5w0yihz3v69.webp",
       "picsOfWeek": true,
       "homeCategory": "sculpture",
-      "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
-      "homeSubtitle": "Brandon Morris · 2025 ·Fiber Glass and Resin",
+      "homeTitle": "SWEDISH FISH WATER BAG NO 94 • DYLAN MARTINAZ • 2026",
+      "homeSubtitle": "Dylan Martinez · 2026 ·Glass and ceramic",
       "homeDescription": "Brandon Morris explores the boundary between fashion and sculpture, creating his Ghost Dress series from fiberglass and resin. Inspired by Victorian children’s clothing, horror films such as The Ring, and artists Martin Margiela, Hans Bellmer and Heidi Bucher, he imagines dresses existing without a body.",
       "picsId": "PICS-2026-012",
-      "updatedAt": "2026-08-24T07:43:39.279Z",
+      "updatedAt": "2026-08-27T23:39:50.993Z",
       "picsReleaseId": "PICS-WEEK-2026-001",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "replacedAt": "2026-08-27T23:36:24.703Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
           "replacedAt": "2026-08-24T07:34:13.220Z"
@@ -2044,8 +2048,8 @@
           "replacedAt": "2026-08-22T09:18:18.007Z"
         }
       ],
-      "homeCredit": "@codeunknown_",
-      "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
+      "homeCredit": "Square One Gallery",
+      "homeSourceUrl": "https://www.squareonegallery.com/viewing-room/34-dylan-martinez-swedish-fish-water-bags-the-newest-iteration-of-the-water-bag-series/"
     },
     {
       "id": 17,
@@ -5344,7 +5348,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-27T23:39:35.245Z",
+      "updatedAt": "2026-08-27T23:40:03.642Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
