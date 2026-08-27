@@ -273,6 +273,30 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
   return `https://picsum.photos/seed/${encodeURIComponent(normalized)}/${width}/${height}`;
 }
 
+/* Похiднi розмiри (сервер: /opt/deploy-webhook.js, generateDerivatives) лежать
+   поруч з оригiналом: /uploads/<stem>.jpg -> /uploads/sizes/<stem>-<w>w.webp.
+   Умова навмисно вузька — лише для api.eprisjournal.com/uploads/*.<jpg|jpeg|png|webp> —
+   бо тiльки цi файли сервер справдi обробляе. Зовнiшнi посилання (Wikimedia,
+   /images/hero-*) i плейсхолдери picsum лишаються без srcset — не наш файл,
+   немає що резати.
+
+   srcset-кандидат, якого немае на диску, браузер НЕ вiдкочуе на src: він
+   просто провалює запит. Тому ця функцiя вважае похiднi присутнiми лише
+   тому, що бекфiл (scripts/backfill вручну на сервері) вже прогнаний по
+   всiй бiблiотецi 27.08.2026 — до цього деплою фронта з srcset бути не могло. */
+const DERIVATIVE_WIDTHS = [480, 960, 1600] as const;
+const UPLOAD_HOST_RE = /^https:\/\/api\.eprisjournal\.com\/uploads\/([^/?#]+)\.(jpe?g|png|webp)$/i;
+
+function derivedSrcSet(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  const m = url.match(UPLOAD_HOST_RE);
+  if (!m) return undefined;
+  const stem = m[1];
+  return DERIVATIVE_WIDTHS
+    .map((w) => `https://api.eprisjournal.com/uploads/sizes/${stem}-${w}w.webp ${w}w`)
+    .join(', ');
+}
+
 // Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
 const HEART_PATTERN = [
   '.XX...XX.',
@@ -1968,7 +1992,18 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                             і давало LCP 21,6 с при TBT 0: головна картинка
                             стояла в черзі за тими, яких на екрані немає.
                             Тому бічні слайди тепер lazy. */}
-                        <img src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)} alt={title} className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]" referrerPolicy="no-referrer" draggable={false} decoding="async" fetchPriority={isCenter ? 'high' : undefined} loading={isCenter ? 'eager' : 'lazy'} />
+                        <img
+                          src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)}
+                          srcSet={derivedSrcSet(resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900))}
+                          sizes="(min-width: 640px) 360px, 45vw"
+                          alt={title}
+                          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                          referrerPolicy="no-referrer"
+                          draggable={false}
+                          decoding="async"
+                          fetchPriority={isCenter ? 'high' : undefined}
+                          loading={isCenter ? 'eager' : 'lazy'}
+                        />
                       </div>
                     </button>
                     <div className="home-carousel-caption">
@@ -2506,6 +2541,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   ділили канал з тією єдиною, яку видно. */}
               <img
                 src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
+                srcSet={derivedSrcSet(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143))}
+                sizes="100vw"
                 alt={article.title}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -3108,6 +3145,8 @@ function EditorialListCard({
       <div className="aspect-square overflow-hidden bg-[#E8DED5]">
         <motion.img
           src={card.imageSrc}
+          srcSet={derivedSrcSet(card.imageSrc)}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
           alt={card.title}
           className="w-full h-full object-cover"
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
