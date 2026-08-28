@@ -18847,15 +18847,15 @@
         },
         {
           "id": 28,
-          "title": "Zeitgenössischer Modernismus: Nick Dahlen",
+          "title": "Nick Dahlen - Eine zeitgenössische Interpretation des Modernismus",
           "author": "Maria Ivanova",
           "role": "Autor",
           "date": "28. Aug. 2026",
           "excerpt": "Ein Künstler, der die Schönheit des Alltags in auffällige Illustrationen innerhalb seiner eigenen visuellen Welt verwandelt.",
-          "category": "Kunst",
+          "category": "ESSAY",
           "subcategory": "Visuelle Geschichte",
           "tags": [
-            "Aufsatz",
+            "aufsatz",
             "zeitgenössische Kunst"
           ],
           "imageSeed": "",
@@ -18880,7 +18880,7 @@
             },
             {
               "type": "text",
-              "content": "Die Grundlage von Dahlen’s Stil ist bemerkenswert konsequent, und diese Konsistenz macht ihn nur noch überzeugender. Sobald Sie eines seiner Bilder sehen, möchten Sie sofort zum nächsten übergehen, angezogen vom Vergnügen an klaren, vereinfachten Formen, die sonst alltägliche, gewöhnliche Motive bedecken."
+              "content": "Die grundlage von Dahlen’s stil ist bemerkenswert konsequent, und diese konsequenz macht ihn nur noch ansprechender. Sobald man eines seiner bilder sieht, möchte man sofort zum nächsten übergehen, angezogen vom vergnügen an sauberen, vereinfachten formen, die sonst alltägliche, gewöhnliche themen bedecken."
             },
             {
               "type": "text",
@@ -18888,7 +18888,7 @@
             },
             {
               "type": "text",
-              "content": "Diese visuelle Zugänglichkeit – im besten Sinne des Wortes – wird hauptsächlich durch gesättigte, kontrastreiche Schatten geschaffen, die sofort die Konturen jeder Form festlegen. Wir können die Szene mühelos erfassen, und diese Klarheit macht sie instinktiv ansprechend."
+              "content": "Diese visuelle zugänglichkeit – im besten sinne des wortes – wird hauptsächlich durch gesättigte, kontrastreiche schatten geschaffen, die sofort die konturen jeder form festlegen. Wir können die szene mühelos erfassen, und diese klarheit macht sie instinktiv ansprechend."
             },
             {
               "type": "image",
@@ -18915,7 +18915,7 @@
             },
             {
               "type": "text",
-              "content": "Kraft wird durch eine gewisse Flüssigkeit ausgeglichen, die das Werk visuell einladend hält. All diese Elemente verbinden sich durch eine Palette gedämpfter Töne und verwandeln vertraute Motive in sofort fesselnde Kompositionen."
+              "content": "Kraft wird durch eine gewisse Flüssigkeit ausgeglichen, die das Werk visuell einladend hält. All diese Elemente fügen sich durch eine Palette gedämpfter Töne zusammen und verwandeln vertraute Motive in sofort fesselnde Kompositionen."
             },
             {
               "type": "text",
@@ -18932,11 +18932,11 @@
             },
             {
               "type": "text",
-              "content": "Themen"
+              "content": "Subjects"
             },
             {
               "type": "text",
-              "content": "Dahlen verwendet diese visuelle Sprache, um gewöhnliche Gegenstände und Alltagsszenen darzustellen: Essen zubereiten, Dominospiele spielen, mit Scheren schneiden, ein Puzzle zusammensetzen. Er hat eine besondere Faszination für Essen."
+              "content": "Dahlen verwendet diese visuelle Sprache, um gewöhnliche Gegenstände und Alltagsszenen darzustellen: Essen zubereiten, Dominospiele, Schneiden mit Schere, Puzzeln zusammenbauen. Er hat eine besondere Faszination für Essen."
             },
             {
               "type": "image",
@@ -18962,9 +18962,9 @@
               "caption": ""
             }
           ],
-          "updatedAt": "2026-08-28T14:46:05.438Z",
+          "updatedAt": "2026-08-28T15:01:06.899Z",
           "authorId": "author-1784896384236-4fokw",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
         }
       ],
