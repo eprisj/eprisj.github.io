@@ -5994,12 +5994,17 @@
         },
         {
           "type": "image",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mtd1xwmidgec86.jpg",
           "caption": ""
         },
         {
           "type": "text",
           "content": "The simplification of forms, combined with deliberate distortions and an authorial sense of proportion, recalls Cubism, particularly the work of Fernand Léger and Pablo Picasso. It is worth lingering on this idea of simplification because, in Dahlen’s work, it exists hand in hand with complexity. This dichotomy is rooted in the distortion of form and in a belief in its inherent plasticity."
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -6048,7 +6053,7 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:33:33.767Z",
+      "updatedAt": "2026-08-28T14:33:50.192Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
