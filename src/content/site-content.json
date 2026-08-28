@@ -5961,7 +5961,7 @@
         "essay",
         "visual"
       ],
-      "imageSeed": "contemporary-modernism-nick-dahlen",
+      "imageSeed": "",
       "content": [
         {
           "type": "text",
@@ -6034,8 +6034,9 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:25:03.223Z",
-      "authorId": "author-1784896384236-4fokw"
+      "updatedAt": "2026-08-28T14:30:22.982Z",
+      "authorId": "author-1784896384236-4fokw",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtd1tiir85y7g9.webp"
     }
   ],
   "reviews": [
