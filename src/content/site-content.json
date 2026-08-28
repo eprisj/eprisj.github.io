@@ -6041,6 +6041,11 @@
           "content": "Dahlen uses this visual language to depict ordinary objects and everyday scenes: preparing food, playing dominoes, cutting with scissors, assembling a puzzle. He has a particular fascination with food."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtd1xht1z7jkcw.jpg",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "There is something striking about the way we can look at the same object every day, while an artist can present it to us in a way that feels completely unfamiliar – beyond the limits of our imagination."
         },
@@ -6049,7 +6054,7 @@
           "content": "Dahlen’s work ultimately seeks to communicate a sense of positive energy while subtly reflecting certain tensions and difficulties, leaving their interpretation to the symbolism of form and colour.<br>"
         }
       ],
-      "updatedAt": "2026-08-28T14:36:30.190Z",
+      "updatedAt": "2026-08-28T14:37:22.333Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
