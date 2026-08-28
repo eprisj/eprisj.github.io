@@ -5950,8 +5950,8 @@
       "id": 28,
       "draft": true,
       "title": "Contemporary Modernism: Nick Dahlen",
-      "author": "Mariia Ivanova",
-      "role": "Editorial Desk",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Aug 28, 2026",
       "excerpt": "A visual story built around images, captions, and a concise narrative line.",
       "category": "Art",
@@ -6032,17 +6032,10 @@
             "contemporary-modernism-nick-dahlen-gallery-3"
           ],
           "caption": "Sequence"
-        },
-        {
-          "type": "quote",
-          "content": "A small quote or caption line that gives the sequence texture."
-        },
-        {
-          "type": "text",
-          "content": "Close with what the images reveal, not just what they show."
         }
       ],
-      "updatedAt": "2026-08-28T14:24:35.345Z"
+      "updatedAt": "2026-08-28T14:24:53.561Z",
+      "authorId": "author-1784896384236-4fokw"
     }
   ],
   "reviews": [
