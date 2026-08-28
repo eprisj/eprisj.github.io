@@ -5948,7 +5948,6 @@
     },
     {
       "id": 28,
-      "draft": true,
       "title": "Contemporary Modernism: Nick Dahlen",
       "author": "Maria Ivanova",
       "role": "Author",
@@ -6064,9 +6063,10 @@
           "caption": ""
         }
       ],
-      "updatedAt": "2026-08-28T14:41:14.495Z",
+      "updatedAt": "2026-08-28T14:41:32.655Z",
       "authorId": "author-1784896384236-4fokw",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg",
+      "publishAt": "2026-08-28T14:41:26.666Z"
     }
   ],
   "reviews": [
