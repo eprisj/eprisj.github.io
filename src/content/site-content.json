@@ -5967,6 +5967,11 @@
           "content": "Nick Dahlen is an artist and illustrator from Minneapolis whose work revives the spirit of modernism through a contemporary lens."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "With a background in graffiti and a degree in Graphic Design, Dahlen has developed a visual language that combines the strength of modernist aesthetics with a sense of nostalgia – perhaps for a visual era we instinctively long for without even realizing it."
         },
@@ -6033,7 +6038,7 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:32:36.583Z",
+      "updatedAt": "2026-08-28T14:32:53.968Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
