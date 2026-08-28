@@ -5950,8 +5950,8 @@
       "id": 28,
       "draft": true,
       "title": "Contemporary Modernism: Nick Dahlen",
-      "author": "Mariia Ivanova",
-      "role": "Editorial Desk",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Aug 28, 2026",
       "excerpt": "A focused opening paragraph for a new editorial story.",
       "category": "Art",
@@ -5966,50 +5966,10 @@
         {
           "type": "text",
           "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
-        },
-        {
-          "type": "image",
-          "content": "contemporary-modernism-nick-dahlen-2",
-          "caption": "Lead image"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
-      "updatedAt": "2026-08-28T14:20:20.066Z"
+      "updatedAt": "2026-08-28T14:20:52.809Z",
+      "authorId": "author-1784896384236-4fokw"
     }
   ],
   "reviews": [
