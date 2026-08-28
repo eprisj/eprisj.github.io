@@ -5977,7 +5977,7 @@
         },
         {
           "type": "image",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mtd1xht1z7jkcw.jpg",
           "caption": ""
         },
         {
@@ -5991,6 +5991,11 @@
         {
           "type": "text",
           "content": "This visual accessibility – in the best possible sense of the word – is largely created through saturated, contrasting shadows that immediately establish the contours of each form. We can read the scene effortlessly, and that clarity makes it instinctively appealing."
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -6043,7 +6048,7 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:33:10.855Z",
+      "updatedAt": "2026-08-28T14:33:33.767Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
