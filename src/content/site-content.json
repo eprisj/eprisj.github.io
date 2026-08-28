@@ -27446,15 +27446,15 @@
         },
         {
           "id": 28,
-          "title": "Çağdaş Modernizm: Nick Dahlen",
+          "title": "Nick Dahlen - Modernizme Güncel Bir Yaklaşım",
           "author": "Maria Ivanova",
           "role": "Yazar",
           "date": "28 Ağustos 2026",
-          "excerpt": "Günlük yaşamın güzelliğini kendi görsel dünyasında çarpıcı illüstrasyonlara dönüştüren bir sanatçı.",
-          "category": "Sanat",
+          "excerpt": "Gündelik hayatın güzelliğini kendi görsel dünyasında çarpıcı illüstrasyonlara dönüştüren bir sanatçı.",
+          "category": "MAKALE",
           "subcategory": "Görsel hikaye",
           "tags": [
-            "deneme",
+            "makale",
             "çağdaş sanat"
           ],
           "imageSeed": "",
@@ -27483,7 +27483,7 @@
             },
             {
               "type": "text",
-              "content": "Tarz &amp; Etkiler"
+              "content": "Stil &amp; Etkiler"
             },
             {
               "type": "text",
@@ -27514,11 +27514,11 @@
             },
             {
               "type": "text",
-              "content": "Cesaret, görsel olarak davetkar tutan belirli bir akışkanlıkla dengelenmiştir. Tüm bu unsurlar, soluk tonlardan oluşan bir palet aracılığıyla birleşerek tanıdık konuları anında çarpıcı kompozisyonlara dönüştürür."
+              "content": "Cesaret, görsel olarak davetkar tutan belirli bir akışkanlıkla dengelenmiştir. Tüm bu unsurlar, soluk tonlardan oluşan bir palet aracılığıyla birleşir, tanıdık konuları anında çarpıcı kompozisyonlara dönüştürür."
             },
             {
               "type": "text",
-              "content": "Görsel etki neredeyse hemen gerçekleşir. Zıt gölgeler ve basitleştirilmiş figürler, resmi kolayca okumamıza olanak tanırken, aynı zamanda figüratif resmin yeniden tasarlanmış bir biçimini sunar."
+              "content": "Görsel etki neredeyse hemen gerçekleşir. Zıt gölgeler ve basitleştirilmiş figürler, resmi kolayca okumamıza olanak tanır, aynı zamanda figüratif resmin yeniden hayal edilmiş bir biçimini sunar."
             },
             {
               "type": "text",
@@ -27561,9 +27561,9 @@
               "caption": ""
             }
           ],
-          "updatedAt": "2026-08-28T14:46:33.851Z",
+          "updatedAt": "2026-08-28T15:01:33.855Z",
           "authorId": "author-1784896384236-4fokw",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
         }
       ],
