@@ -23147,12 +23147,12 @@
         },
         {
           "id": 28,
-          "title": "Modernismo Contemporáneo: Nick Dahlen",
+          "title": "Nick Dahlen - Una interpretación contemporánea del modernismo",
           "author": "Maria Ivanova",
           "role": "Autor",
-          "date": "28 de agosto de 2026",
+          "date": "28 de ago de 2026",
           "excerpt": "Un artista que transforma la belleza de la vida cotidiana en ilustraciones impactantes dentro de su propio mundo visual.",
-          "category": "Arte",
+          "category": "ENSAYO",
           "subcategory": "Historia visual",
           "tags": [
             "ensayo",
@@ -23161,20 +23161,20 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "Nick Dahlen es un artista e ilustrador de Minneapolis cuyo trabajo revive el espíritu del modernismo a través de una lente contemporánea."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtd1x28og4jut9.jpg",
               "caption": ""
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Con una formación en graffiti y un título en Diseño Gráfico, Dahlen ha desarrollado un lenguaje visual que combina la fuerza de la estética modernista con un sentido de nostalgia – quizás por una era visual que instintivamente anhelamos sin siquiera darnos cuenta."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtd22zg50cmc2s.jpg",
               "caption": ""
             },
@@ -23197,7 +23197,7 @@
             },
             {
               "type": "text",
-              "content": "La simplificación de las formas, combinada con distorsiones deliberadas y un sentido autoral de la proporción, recuerda al Cubismo, particularmente la obra de Fernand Léger y Pablo Picasso. Vale la pena detenerse en esta idea de simplificación porque, en el trabajo de Dahlen, existe de la mano con la complejidad. Esta dicotomía está arraigada en la distorsión de la forma y en la creencia en su plasticidad inherente."
+              "content": "La simplificación de formas, combinada con distorsiones deliberadas y un sentido autoral de proporción, recuerda al Cubismo, particularmente la obra de Fernand Léger y Pablo Picasso. Vale la pena detenerse en esta idea de simplificación porque, en el trabajo de Dahlen, existe de la mano con la complejidad. Esta dicotomía está arraigada en la distorsión de la forma y en la creencia en su plasticidad inherente."
             },
             {
               "type": "image",
@@ -23206,7 +23206,7 @@
             },
             {
               "type": "text",
-              "content": "Las distorsiones – y particularmente las proporciones ampliadas – hacen que sus figuras parezcan monumentales, casi escultóricas. Aquí, se puede trazar una afinidad con la obra de la artista brasileña Tarsila do Amaral, cuyas figuras adquieren de manera similar una presencia poderosa, casi escultórica, a través de sus formas simplificadas y exageradas."
+              "content": "Las distorsiones – y particularmente las proporciones ampliadas – hacen que sus figuras parezcan monumentales, casi escultóricas. Aquí, se puede trazar una afinidad con la obra de la artista brasileña Tarsila do Amaral, cuyas figuras de manera similar adquieren una presencia poderosa, casi escultórica, a través de sus formas simplificadas y exageradas."
             },
             {
               "type": "image",
@@ -23215,7 +23215,7 @@
             },
             {
               "type": "texto",
-              "content": "La audacia se equilibra con una cierta fluidez, que mantiene la obra visualmente atractiva. Todos estos elementos se unen a través de una paleta de tonos apagados, transformando temas familiares en composiciones que capturan instantáneamente la atención."
+              "content": "Atrevimiento se equilibra con una cierta fluidez, que mantiene la obra visualmente atractiva. Todos estos elementos se unen a través de una paleta de tonos apagados, transformando temas familiares en composiciones que capturan la atención de inmediato."
             },
             {
               "type": "texto",
@@ -23223,7 +23223,7 @@
             },
             {
               "type": "texto",
-              "content": "El trasfondo de Dahlen en diseño gráfico – particularmente su atención al lenguaje visual de los carteles del siglo XX – parece haber jugado un papel importante aquí. Una fuerte conciencia de jerarquía, comunicación directa y la transmisión clara de tanto imagen como significado coexisten con su tratamiento distintivo de la forma."
+              "content": "El trasfondo de Dahlen en diseño gráfico – particularmente su atención al lenguaje visual de los carteles del siglo XX – parece haber jugado un papel importante aquí. Una fuerte conciencia de jerarquía, comunicación directa y la transmisión clara de imagen y significado coexisten con su tratamiento distintivo de la forma."
             },
             {
               "type": "imagen",
@@ -23262,9 +23262,9 @@
               "caption": ""
             }
           ],
-          "updatedAt": "2026-08-28T14:46:18.619Z",
+          "updatedAt": "2026-08-28T15:01:18.685Z",
           "authorId": "author-1784896384236-4fokw",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
         }
       ],
