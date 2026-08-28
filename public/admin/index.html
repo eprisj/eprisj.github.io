@@ -1301,6 +1301,85 @@
                   <div id="repoSummary" class="repo-summary"></div>
                 </div>
               </div>
+              <div class="settings-row settings-row-workbench">
+                <section class="card settings-card" aria-labelledby="workSafetyTitle">
+                  <div class="settings-card-head">
+                    <div>
+                      <p class="panel-kicker">Локальная страховка</p>
+                      <h2 id="workSafetyTitle" class="card-title">Черновики и автоснимки</h2>
+                    </div>
+                  </div>
+                  <div class="settings-fields">
+                    <label><span class="field-label">Интервал снимка</span>
+                      <select id="settingsAutosaveInterval">
+                        <option value="2">Каждые 2 минуты</option>
+                        <option value="5">Каждые 5 минут</option>
+                        <option value="10">Каждые 10 минут</option>
+                      </select>
+                    </label>
+                    <label><span class="field-label">Хранить снимков</span>
+                      <select id="settingsAutosaveHistoryLimit">
+                        <option value="10">10 последних</option>
+                        <option value="20">20 последних</option>
+                        <option value="30">30 последних</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label class="settings-toggle" for="settingsAutosaveToVps">
+                    <input id="settingsAutosaveToVps" type="checkbox" />
+                    <span><strong>Сохранять на VPS автоматически</strong><small>Изменения сразу становятся видны на сайте. По умолчанию выключено.</small></span>
+                  </label>
+                  <p class="settings-note">Автоснимки хранятся только на этом устройстве и не публикуют черновик.</p>
+                </section>
+                <section class="card settings-card" aria-labelledby="imagePolicyTitle">
+                  <div class="settings-card-head">
+                    <div>
+                      <p class="panel-kicker">Медиа</p>
+                      <h2 id="imagePolicyTitle" class="card-title">Передача изображений</h2>
+                    </div>
+                  </div>
+                  <label class="settings-toggle" for="settingsImageCompression">
+                    <input id="settingsImageCompression" type="checkbox" checked />
+                    <span><strong>Оптимизировать фото перед отправкой</strong><small>Большие JPEG и PNG будут уменьшены и сохранены как WebP, если файл станет легче.</small></span>
+                  </label>
+                  <label class="settings-field-wide"><span class="field-label">Максимальная сторона</span>
+                    <select id="settingsImageMaxDimension">
+                      <option value="1600">1600 px · лёгкие страницы</option>
+                      <option value="2000">2000 px · редакционный стандарт</option>
+                      <option value="2560">2560 px · крупные детали</option>
+                      <option value="0">Оригинал · без уменьшения</option>
+                    </select>
+                  </label>
+                  <p class="settings-note">GIF и SVG всегда отправляются без перекодирования, чтобы не потерять анимацию и вектор.</p>
+                </section>
+              </div>
+              <div class="settings-row settings-row-workbench">
+                <section class="card settings-card" aria-labelledby="connectionCheckTitle">
+                  <div class="settings-card-head">
+                    <div>
+                      <p class="panel-kicker">Проверка перед работой</p>
+                      <h2 id="connectionCheckTitle" class="card-title">Связка редакции</h2>
+                    </div>
+                    <button id="workspaceCheckBtn" class="btn btn-sm" type="button">Проверить</button>
+                  </div>
+                  <p class="card-desc">Проверяет контентный API, версию данных на VPS и доступность публичного сайта. Пароли и токены в отчёт не попадают.</p>
+                  <div id="workspaceCheckResult" class="settings-diagnostics" aria-live="polite">Проверка ещё не запускалась.</div>
+                </section>
+                <section class="card settings-card" aria-labelledby="recoveryToolsTitle">
+                  <div class="settings-card-head">
+                    <div>
+                      <p class="panel-kicker">Перенос и очистка</p>
+                      <h2 id="recoveryToolsTitle" class="card-title">Локальные копии</h2>
+                    </div>
+                  </div>
+                  <p class="card-desc">Скачайте страховочную копию черновика и автоснимков перед очисткой браузера или передачей работы другому редактору.</p>
+                  <div class="quick-actions-grid">
+                    <button id="exportRecoveryBtn" class="btn" type="button">Скачать копию</button>
+                    <button id="clearRecoveryBtn" class="btn btn-danger-text" type="button">Очистить локальные копии</button>
+                  </div>
+                  <p class="settings-note">Очистка не меняет опубликованный контент и не трогает текущий текст в открытом редакторе.</p>
+                </section>
+              </div>
             </div>
           </section>
 

@@ -1576,6 +1576,30 @@ textarea {
 /* Settings */
 .settings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .quick-actions-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.settings-row-workbench { align-items: stretch; }
+.settings-card { display: grid; align-content: start; gap: 14px; min-width: 0; }
+.settings-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.settings-card .panel-kicker { margin: 0 0 5px; }
+.settings-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.settings-fields label,
+.settings-field-wide { display: grid; gap: 6px; min-width: 0; }
+.settings-fields select,
+.settings-field-wide select { min-height: 42px; width: 100%; padding: 8px 30px 8px 10px; border: 1px solid var(--line-strong); border-radius: 0; background: var(--bg-card) var(--select-arrow) no-repeat right 10px center; color: var(--text); font: inherit; }
+.settings-toggle { display: flex; align-items: flex-start; gap: 10px; padding: 11px; border: 1px solid var(--line); border-radius: 0; background: var(--bg-soft); cursor: pointer; }
+.settings-toggle input { width: 18px; height: 18px; flex: 0 0 auto; margin-top: 1px; accent-color: var(--accent); }
+.settings-toggle > span { display: grid; gap: 3px; min-width: 0; }
+.settings-toggle strong { color: var(--text); font-size: .75rem; }
+.settings-toggle small,
+.settings-note { color: var(--text-muted); font-size: .67rem; line-height: 1.45; }
+.settings-note { margin: 0; }
+.settings-diagnostics { min-height: 54px; padding: 10px 11px; border: 1px dashed var(--line-strong); border-radius: 0; background: var(--bg-soft); color: var(--text-muted); font-size: .69rem; line-height: 1.45; }
+.settings-diagnostic-list { display: grid; gap: 7px; }
+.settings-diagnostic-row { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.settings-diagnostic-row span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.settings-diagnostic-row strong { flex: 0 0 auto; font-family: var(--font-mono); font-size: .59rem; letter-spacing: .06em; text-transform: uppercase; }
+.settings-diagnostic-row.is-ok strong { color: var(--ok); }
+.settings-diagnostic-row.is-error strong { color: var(--danger); }
+.settings-diagnostics .settings-diagnostic-meta { display: block; margin-top: 8px; color: var(--text-faint); font-family: var(--font-mono); font-size: .56rem; }
 
 /* ══════════════════════════════════════════════════════════
    STATUS / BADGES

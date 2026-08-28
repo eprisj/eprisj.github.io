@@ -7,7 +7,12 @@ const DEFAULTS = Object.freeze({
   message: 'chore(content): обновление контента через админку',
   rememberToken: false,
   token: '',
-  autoLoadOnStart: true
+  autoLoadOnStart: true,
+  autosaveInterval: 2,
+  autosaveHistoryLimit: 10,
+  autosaveToVps: false,
+  imageCompression: true,
+  imageMaxDimension: 2000
 });
 
 const STORAGE_KEY = 'epris-admin-settings-v3';
@@ -31,6 +36,15 @@ const tokenInput = byId('token');
 const rememberTokenInput = byId('rememberToken');
 const autoLoadOnStartInput = byId('autoLoadOnStart');
 const messageInput = byId('message');
+const settingsAutosaveIntervalInput = byId('settingsAutosaveInterval');
+const settingsAutosaveHistoryLimitInput = byId('settingsAutosaveHistoryLimit');
+const settingsAutosaveToVpsInput = byId('settingsAutosaveToVps');
+const settingsImageCompressionInput = byId('settingsImageCompression');
+const settingsImageMaxDimensionInput = byId('settingsImageMaxDimension');
+const workspaceCheckBtn = byId('workspaceCheckBtn');
+const workspaceCheckResult = byId('workspaceCheckResult');
+const exportRecoveryBtn = byId('exportRecoveryBtn');
+const clearRecoveryBtn = byId('clearRecoveryBtn');
 const editor = byId('editor');
 const statusEl = byId('status');
 const editorStateEl = byId('editorState');
@@ -830,6 +844,13 @@ function bindEvents() {
   applyDefaultsBtn.addEventListener('click', () => applyDefaults(true));
   resetSettingsBtn.addEventListener('click', resetSavedSettings);
   copySiteBtn.addEventListener('click', copyPagesUrl);
+  workspaceCheckBtn.addEventListener('click', () => { void runWorkspaceDiagnostics(); });
+  exportRecoveryBtn.addEventListener('click', () => { void exportLocalRecovery(); });
+  clearRecoveryBtn.addEventListener('click', () => { void clearLocalRecovery(); });
+  settingsAutosaveToVpsInput.addEventListener('change', () => {
+    setAutosavePublishPreference(settingsAutosaveToVpsInput.checked);
+    saveSettings();
+  });
 
   visualSectionSelect.addEventListener('change', () => {
     pendingVisualEntryId = null;
@@ -959,6 +980,10 @@ function bindEvents() {
     tokenInput,
     rememberTokenInput,
     autoLoadOnStartInput,
+    settingsAutosaveIntervalInput,
+    settingsAutosaveHistoryLimitInput,
+    settingsImageCompressionInput,
+    settingsImageMaxDimensionInput,
     messageInput
   ];
 
@@ -969,6 +994,10 @@ function bindEvents() {
       syncUploadHint();
       syncExternalLinks();
       queueMonitoringChecks(550, 'local');
+      if (input === settingsAutosaveIntervalInput || input === settingsAutosaveHistoryLimitInput) {
+        startAutosave();
+        setAutosaveNote(autosaveLocalNote());
+      }
     });
     input.addEventListener('input', () => {
       saveSettings();
@@ -1253,11 +1282,16 @@ async function idbGet(key) {
 
 async function idbDelete(key) {
   const db = await openDraftDb();
-  if (!db) return;
-  try {
-    const tx = db.transaction(IDB_STORE, 'readwrite');
-    tx.objectStore(IDB_STORE).delete(key);
-  } catch { /* нечего удалять */ }
+  if (!db) return false;
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+      tx.onabort = () => resolve(false);
+    } catch { resolve(false); }
+  });
 }
 
 async function packText(text) {
@@ -1389,7 +1423,17 @@ function applyConfig(config) {
   messageInput.value = config.message ?? DEFAULTS.message;
   rememberTokenInput.checked = Boolean(config.rememberToken);
   autoLoadOnStartInput.checked = Boolean(config.autoLoadOnStart);
+  settingsAutosaveIntervalInput.value = optionValue(settingsAutosaveIntervalInput, config.autosaveInterval, DEFAULTS.autosaveInterval);
+  settingsAutosaveHistoryLimitInput.value = optionValue(settingsAutosaveHistoryLimitInput, config.autosaveHistoryLimit, DEFAULTS.autosaveHistoryLimit);
+  settingsAutosaveToVpsInput.checked = Boolean(config.autosaveToVps);
+  settingsImageCompressionInput.checked = config.imageCompression !== false;
+  settingsImageMaxDimensionInput.value = optionValue(settingsImageMaxDimensionInput, config.imageMaxDimension, DEFAULTS.imageMaxDimension);
   tokenInput.value = config.token ?? '';
+}
+
+function optionValue(select, value, fallback) {
+  const candidate = String(value ?? fallback);
+  return [...select.options].some((option) => option.value === candidate) ? candidate : String(fallback);
 }
 
 function hydrateSettings() {
@@ -1399,7 +1443,8 @@ function hydrateSettings() {
     ...inferred,
     token: '',
     rememberToken: false,
-    autoLoadOnStart: true
+    autoLoadOnStart: true,
+    autosaveToVps: autosaveToVpsEnabled()
   };
 
   applyConfig(baseline);
@@ -1430,7 +1475,12 @@ function applyDefaults(showStatus) {
     ...inferred,
     rememberToken: current.rememberToken,
     token: current.token,
-    autoLoadOnStart: current.autoLoadOnStart
+    autoLoadOnStart: current.autoLoadOnStart,
+    autosaveInterval: current.autosaveInterval,
+    autosaveHistoryLimit: current.autosaveHistoryLimit,
+    autosaveToVps: current.autosaveToVps,
+    imageCompression: current.imageCompression,
+    imageMaxDimension: current.imageMaxDimension
   });
 
   currentSha = '';
@@ -1447,6 +1497,7 @@ function applyDefaults(showStatus) {
 function resetSavedSettings() {
   localStorage.removeItem(STORAGE_KEY);
   clearStoredDraft();
+  setAutosavePublishPreference(false, { announce: false });
   currentSha = '';
 
   applyConfig({
@@ -1513,6 +1564,11 @@ function saveSettings() {
         uploadDir: cfg.uploadDir,
         message: cfg.message,
         autoLoadOnStart: cfg.autoLoadOnStart,
+        autosaveInterval: cfg.autosaveInterval,
+        autosaveHistoryLimit: cfg.autosaveHistoryLimit,
+        autosaveToVps: cfg.autosaveToVps,
+        imageCompression: cfg.imageCompression,
+        imageMaxDimension: cfg.imageMaxDimension,
         rememberToken: cfg.rememberToken,
         token: cfg.rememberToken ? cfg.token : ''
       })
@@ -1532,6 +1588,11 @@ function getConfig() {
     token: tokenInput.value.trim(),
     rememberToken: rememberTokenInput.checked,
     autoLoadOnStart: autoLoadOnStartInput.checked,
+    autosaveInterval: Number(settingsAutosaveIntervalInput.value) || DEFAULTS.autosaveInterval,
+    autosaveHistoryLimit: Number(settingsAutosaveHistoryLimitInput.value) || DEFAULTS.autosaveHistoryLimit,
+    autosaveToVps: settingsAutosaveToVpsInput.checked,
+    imageCompression: settingsImageCompressionInput.checked,
+    imageMaxDimension: Number(settingsImageMaxDimensionInput.value) || 0,
     message: messageInput.value.trim() || DEFAULTS.message
   };
 }
@@ -1552,6 +1613,135 @@ function getPagesBaseUrl(owner, repo) {
   if (owner === 'eprisj' && repo === 'eprisj.github.io') return 'https://eprisjournal.com';
   if (repo.toLowerCase() === `${owner.toLowerCase()}.github.io`) return `https://${owner}.github.io`;
   return `https://${owner}.github.io/${repo}`;
+}
+
+function autosaveIntervalMinutes() {
+  const value = Number(settingsAutosaveIntervalInput.value);
+  return [2, 5, 10].includes(value) ? value : DEFAULTS.autosaveInterval;
+}
+
+function autosaveHistoryLimit() {
+  const value = Number(settingsAutosaveHistoryLimitInput.value);
+  return [10, 20, 30].includes(value) ? value : DEFAULTS.autosaveHistoryLimit;
+}
+
+function uploadMaxDimension() {
+  const value = Number(settingsImageMaxDimensionInput.value);
+  return [0, 1600, 2000, 2560].includes(value) ? value : DEFAULTS.imageMaxDimension;
+}
+
+function autosaveLocalNote() {
+  const interval = autosaveIntervalMinutes();
+  return autosaveToVpsEnabled()
+    ? `Правки уходят на сайт каждые ${interval} мин.`
+    : `Снимки в браузере каждые ${interval} мин.`;
+}
+
+function renderWorkspaceDiagnostics(checks, elapsedMs) {
+  workspaceCheckResult.innerHTML = `<div class="settings-diagnostic-list">${checks.map((check) => `
+    <div class="settings-diagnostic-row ${check.ok ? 'is-ok' : 'is-error'}">
+      <span>${escapeHtml(check.label)}${check.detail ? ` · ${escapeHtml(check.detail)}` : ''}</span>
+      <strong>${check.ok ? 'готово' : 'ошибка'}</strong>
+    </div>`).join('')}</div><span class="settings-diagnostic-meta">Проверено ${new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })} · ${elapsedMs} мс</span>`;
+}
+
+async function diagnosticFetch(url, timeoutMs = 6500) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { cache: 'no-store', signal: controller.signal });
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      throw new Error('нет ответа больше 6 сек.');
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+async function runWorkspaceDiagnostics() {
+  workspaceCheckBtn.disabled = true;
+  workspaceCheckResult.textContent = 'Проверяю редакционный контур…';
+  const startedAt = performance.now();
+  const cfg = getConfig();
+  const checks = await Promise.all([
+    (async () => {
+      try {
+        const response = await diagnosticFetch(CONTENT_API);
+        const data = await response.json().catch(() => null);
+        return { label: 'Контентный API', ok: response.ok && !!data && Array.isArray(data.articles), detail: response.ok ? `${Array.isArray(data?.articles) ? data.articles.length : 0} статей` : `HTTP ${response.status}` };
+      } catch (error) { return { label: 'Контентный API', ok: false, detail: getErrorMessage(error) }; }
+    })(),
+    (async () => {
+      try {
+        const response = await diagnosticFetch(CONTENT_META_API);
+        const data = await response.json().catch(() => null);
+        return { label: 'Версия на VPS', ok: response.ok && Boolean(data?.version), detail: data?.version ? String(data.version).slice(0, 12) : `HTTP ${response.status}` };
+      } catch (error) { return { label: 'Версия на VPS', ok: false, detail: getErrorMessage(error) }; }
+    })(),
+    (async () => {
+      try {
+        const response = await diagnosticFetch(`${getPagesBaseUrl(cfg.owner, cfg.repo)}/`);
+        return { label: 'Публичный сайт', ok: response.ok, detail: response.ok ? 'доступен' : `HTTP ${response.status}` };
+      } catch (error) { return { label: 'Публичный сайт', ok: false, detail: getErrorMessage(error) }; }
+    })(),
+  ]);
+  renderWorkspaceDiagnostics(checks, Math.round(performance.now() - startedAt));
+  workspaceCheckBtn.disabled = false;
+  setStatus(checks.every((check) => check.ok) ? 'success' : 'error', checks.every((check) => check.ok) ? 'Связка редакции готова к работе.' : 'Есть проблема со связкой. Детали в настройках.');
+}
+
+function downloadLocalJson(filename, data) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+async function exportLocalRecovery() {
+  try {
+    exportRecoveryBtn.disabled = true;
+    const snapshots = await loadAutosaveHistory();
+    const draft = await readStoredDraft();
+    downloadLocalJson(`epris-local-recovery-${new Date().toISOString().slice(0, 10)}.json`, {
+      exportedAt: new Date().toISOString(),
+      currentEditor: editor.value.trim() || null,
+      savedDraft: draft || null,
+      autosaves: snapshots,
+      discardedDrafts: listDraftTrash(),
+    });
+    setStatus('success', 'Локальная страховочная копия скачана.');
+  } catch (error) {
+    setStatus('error', `Не удалось собрать копию: ${getErrorMessage(error)}`);
+  } finally {
+    exportRecoveryBtn.disabled = false;
+  }
+}
+
+async function clearLocalRecovery() {
+  const confirmed = await showConfirmModal(
+    'Очистить локальные копии?',
+    'Будут удалены автоснимки, сохранённый черновик и корзина черновиков только на этом устройстве. Текущий текст в открытом редакторе и контент на VPS останутся без изменений.',
+    'Очистить локальные копии'
+  );
+  if (!confirmed) return;
+  try {
+    clearStoredDraft();
+    localStorage.removeItem(AUTOSAVE_HISTORY_KEY);
+    localStorage.removeItem(DRAFT_TRASH_KEY);
+    await idbDelete(AUTOSAVE_HISTORY_KEY);
+    autosaveHistoryCache = [];
+    refreshAutosaveHistoryButton();
+    setStatus('success', 'Локальные копии очищены. Текущий редактор не изменён.');
+  } catch (error) {
+    setStatus('error', `Не удалось очистить копии: ${getErrorMessage(error)}`);
+  }
 }
 
 function getRepoWebUrl(owner, repo) {
@@ -1584,7 +1774,12 @@ function syncRepoSummary() {
 
 function syncUploadHint() {
   const cfg = getConfig();
-  uploadHintEl.textContent = `Файл загрузится в "${cfg.uploadDir}". Быстрый URL работает сразу, URL сайта начнет работать после деплоя.`;
+  const compression = !cfg.imageCompression
+    ? 'Фото уйдёт в исходном виде.'
+    : cfg.imageMaxDimension
+      ? `Крупные фото оптимизируются до ${cfg.imageMaxDimension}px, только если это уменьшит файл.`
+      : 'Размер изображения не уменьшается.';
+  uploadHintEl.textContent = `Файл загрузится в "${cfg.uploadDir}". ${compression} Быстрый URL работает сразу, URL сайта начнёт работать после деплоя.`;
 }
 
 function syncExternalLinks() {
@@ -1874,19 +2069,22 @@ async function fetchViewsMap(force) {
 }
 
 // Web-size cap: photos straight from a camera are 4000px+ / 5-10 MB, which is
-// wasted bandwidth for readers. Downscale to max 2000px and re-encode as WebP
-// before upload. GIFs pass through untouched (canvas would kill the animation),
-// as does anything already small enough where re-encoding wouldn't pay off.
-const IMG_MAX_DIMENSION = 2000;
+// wasted bandwidth for readers. The maximum side comes from the editor setting;
+// the image is re-encoded as WebP only when this actually makes it lighter.
+// GIFs pass through untouched (canvas would kill the animation), as does
+// anything already small enough where re-encoding wouldn't pay off.
 const IMG_COMPRESS_THRESHOLD = 400 * 1024; // below this, upload as-is
 async function compressImageForUpload(file) {
   if (file.type === 'image/gif' || file.type === 'image/svg+xml') return file;
+  if (!settingsImageCompressionInput.checked) return file;
   if (file.size <= IMG_COMPRESS_THRESHOLD) return file;
+  const maxDimension = uploadMaxDimension();
+  if (!maxDimension) return file;
   let bitmap;
   try { bitmap = await createImageBitmap(file); }
   catch { return file; } // unreadable/exotic format — let the server take the original
   try {
-    const scale = Math.min(1, IMG_MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
+    const scale = Math.min(1, maxDimension / Math.max(bitmap.width, bitmap.height));
     const w = Math.max(1, Math.round(bitmap.width * scale));
     const h = Math.max(1, Math.round(bitmap.height * scale));
     const canvas = document.createElement('canvas');
@@ -2190,9 +2388,7 @@ async function loadFromGitHub() {
     setStatus('info', 'Загружаю контент с VPS...');
     saveSettings();
 
-    const res = await fetch(CONTENT_API, { cache: 'no-store' });
-    if (!res.ok) throw new Error('VPS вернул статус ' + res.status);
-    const parsed = await res.json();
+    const parsed = await requestLiveContent();
     validateShape(parsed);
 
     /* Загрузка с VPS перезаписывает всё, что не сохранено. Раньше она делала
@@ -2223,6 +2419,19 @@ async function loadFromGitHub() {
   } finally {
     setBusy(false);
   }
+}
+
+let liveContentRequest = null;
+async function requestLiveContent() {
+  if (!liveContentRequest) {
+    liveContentRequest = fetch(CONTENT_API, { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) throw new Error('VPS вернул статус ' + response.status);
+        return response.json();
+      })
+      .finally(() => { liveContentRequest = null; });
+  }
+  return liveContentRequest;
 }
 
 function parseEditorJson() {
@@ -4133,10 +4342,9 @@ function getErrorMessage(error) {
    без ведома редактора, поэтому галочка честно называется «сразу на сайт». */
 const AUTOSAVE_HISTORY_KEY = 'epris-admin-autosave-history-v1';
 const AUTOSAVE_PREF_KEY = 'epris-admin-autosave-to-vps';
-const AUTOSAVE_HISTORY_LIMIT = 10;
-const AUTOSAVE_INTERVAL_MS = 2 * 60 * 1000;
 let autosaveTimer = 0;
 let autosaveInFlight = false;
+let autosaveLifecycleBound = false;
 
 /* История снимков живёт в IndexedDB и держится в памяти для синхронного
    доступа из интерфейса. Раньше она делила пять мегабайт localStorage с самим
@@ -4171,7 +4379,7 @@ function pushAutosaveSnapshot() {
     /* История режется по количеству И по объёму: контент весит около двух
        мегабайт, десять копий переполнили бы хранилище браузера, и тогда мы
        потеряли бы даже обычный черновик. */
-    const trimmed = history.slice(0, AUTOSAVE_HISTORY_LIMIT);
+    const trimmed = history.slice(0, autosaveHistoryLimit());
     autosaveHistoryCache = trimmed;
     /* Пишем целиком: в IndexedDB десять снимков помещаются свободно, поэтому
        выбрасывать половину истории ради места больше не нужно. */
@@ -4192,6 +4400,14 @@ function setAutosaveNote(text, kind = 'muted') {
 
 function autosaveToVpsEnabled() {
   return localStorage.getItem(AUTOSAVE_PREF_KEY) === '1';
+}
+
+function setAutosavePublishPreference(enabled, { announce = true } = {}) {
+  try { localStorage.setItem(AUTOSAVE_PREF_KEY, enabled ? '1' : '0'); } catch { /* private storage */ }
+  const sidebarToggle = document.getElementById('autosaveVpsToggle');
+  if (sidebarToggle) sidebarToggle.checked = enabled;
+  settingsAutosaveToVpsInput.checked = enabled;
+  if (announce) setAutosaveNote(autosaveLocalNote());
 }
 
 async function runAutosave() {
@@ -4230,7 +4446,9 @@ async function runAutosave() {
 
 function startAutosave() {
   clearInterval(autosaveTimer);
-  autosaveTimer = setInterval(runAutosave, AUTOSAVE_INTERVAL_MS);
+  autosaveTimer = setInterval(runAutosave, autosaveIntervalMinutes() * 60 * 1000);
+  if (autosaveLifecycleBound) return;
+  autosaveLifecycleBound = true;
   /* Снимок при уходе со страницы — самый ценный из всех: именно на закрытии
      вкладки теряется работа, которую «сохраню потом». */
   window.addEventListener('beforeunload', () => { try { pushAutosaveSnapshot(); } catch {} });
@@ -4286,15 +4504,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggle) {
     toggle.checked = autosaveToVpsEnabled();
     toggle.addEventListener('change', () => {
-      localStorage.setItem(AUTOSAVE_PREF_KEY, toggle.checked ? '1' : '0');
-      setAutosaveNote(toggle.checked
-        ? 'Правки уходят на сайт каждые 2 минуты'
-        : 'Снимки в браузере каждые 2 минуты');
+      setAutosavePublishPreference(toggle.checked);
+      saveSettings();
     });
   }
-  setAutosaveNote(autosaveToVpsEnabled()
-    ? 'Правки уходят на сайт каждые 2 минуты'
-    : 'Снимки в браузере каждые 2 минуты');
+  setAutosavePublishPreference(autosaveToVpsEnabled(), { announce: false });
+  setAutosaveNote(autosaveLocalNote());
   startAutosave();
 });
 
