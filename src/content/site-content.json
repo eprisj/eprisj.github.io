@@ -5968,12 +5968,17 @@
         },
         {
           "type": "image",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mtd1x28og4jut9.jpg",
           "caption": ""
         },
         {
           "type": "text",
           "content": "With a background in graffiti and a degree in Graphic Design, Dahlen has developed a visual language that combines the strength of modernist aesthetics with a sense of nostalgia – perhaps for a visual era we instinctively long for without even realizing it."
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -6038,7 +6043,7 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:32:53.968Z",
+      "updatedAt": "2026-08-28T14:33:10.855Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
