@@ -6046,6 +6046,11 @@
           "caption": ""
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "There is something striking about the way we can look at the same object every day, while an artist can present it to us in a way that feels completely unfamiliar – beyond the limits of our imagination."
         },
@@ -6055,11 +6060,11 @@
         },
         {
           "type": "image",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mtd23kpm92lh8t.jpg",
           "caption": ""
         }
       ],
-      "updatedAt": "2026-08-28T14:37:53.137Z",
+      "updatedAt": "2026-08-28T14:38:13.808Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
