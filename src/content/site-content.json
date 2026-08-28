@@ -27446,94 +27446,125 @@
         },
         {
           "id": 28,
-          "draft": true,
           "title": "Çağdaş Modernizm: Nick Dahlen",
           "author": "Maria Ivanova",
           "role": "Yazar",
           "date": "28 Ağustos 2026",
-          "excerpt": "Görüntüler, başlıklar ve özlü bir anlatı çizgisi etrafında inşa edilmiş görsel hikaye.",
+          "excerpt": "Günlük yaşamın güzelliğini kendi görsel dünyasında çarpıcı illüstrasyonlara dönüştüren bir sanatçı.",
           "category": "Sanat",
           "subcategory": "Görsel hikaye",
           "tags": [
-            "fotoğraf",
             "deneme",
-            "görsel"
+            "çağdaş sanat"
           ],
-          "imageSeed": "contemporary-modernism-nick-dahlen",
+          "imageSeed": "",
           "content": [
             {
-              "type": "text",
-              "content": "Nick Dahlen Minneapolis'ten gelen bir sanatçı ve illüstratördür ve çalışmaları modernizmin ruhunu çağdaş bir bakış açısıyla yeniden canlandırır."
+              "type": "metin",
+              "content": "Nick Dahlen Minneapolis'ten bir sanatçı ve illüstratördür ve çalışmaları modernizmin ruhunu çağdaş bir bakış açısıyla yeniden canlandırır."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtd1x28og4jut9.jpg",
+              "caption": ""
+            },
+            {
+              "type": "metin",
+              "content": "Graffiti ve Grafik Tasarım alanında bir geçmişe sahip olan Dahlen, modernist estetiğin gücü ile nostalji duygusunu birleştiren görsel bir dil geliştirdi – belki de fark etmeden içgüdüsel olarak özlediğimiz görsel bir çağ için."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtd22zg50cmc2s.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Graffiti ve Grafik Tasarım alanında bir geçmişe sahip olan Dahlen, modernist estetiğin gücü ile nostalji duygusunu birleştiren görsel bir dil geliştirdi – belki de farkında olmadan içgüdüsel olarak özlediğimiz görsel bir döneme dair."
+              "content": "Dahlen’in tarzının temeli dikkate değer derecede tutarlıdır ve bu tutarlılık onu daha da çekici kılar. Bir görüntüsüne rastladığınızda, hemen bir sonraki görüntüye geçmek istersiniz, çünkü temiz, basitleştirilmiş formların sıradan, günlük konuları kaplamasının verdiği zevk sizi çeker."
             },
             {
               "type": "text",
-              "content": "Dahlen’in tarzının temelini oldukça tutarlı bir yapı oluşturur ve bu tutarlılık onu daha da etkileyici kılar. Bir görüntüsüne rastladığınızda, hemen bir sonrakine geçmek istersiniz, temiz, sade formların sıradan, günlük konuları kaplamasının verdiği zevk tarafından çekilirsiniz."
+              "content": "Tarz &amp; Etkiler"
             },
             {
               "type": "text",
-              "content": "Stil &amp; Etkiler"
+              "content": "Bu görsel erişilebilirlik – kelimenin en iyi anlamıyla – büyük ölçüde doygun, kontrast gölgeler aracılığıyla oluşturulur ve bu gölgeler her formun konturlarını hemen belirler. Sahneyi zahmetsizce okuyabiliriz ve bu açıklık içgüdüsel olarak çekicidir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1xwmidgec86.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Bu görsel erişilebilirlik – kelimenin en iyi anlamıyla – büyük ölçüde doygun, kontrastlı gölgeler aracılığıyla oluşturulur ve her formun konturlarını hemen belirler. Sahneyi zahmetsizce okuyabiliriz ve bu açıklık içgüdüsel olarak çekicidir."
+              "content": "Formların basitleştirilmesi, kasıtlı bozulmalar ve yazarın oran duygusuyla birleştiğinde, Kübizm'i, özellikle Fernand Léger ve Pablo Picasso'nun çalışmalarını hatırlatır. Bu basitleştirme fikrinde durmak değerli çünkü Dahlen’in eserinde, karmaşıklıkla el ele gider. Bu ikilik, formun bozulmasına ve onun doğuştan gelen plastisitesine olan inançta köklenmiştir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1y7ryriiac0.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Formların basitleştirilmesi, kasıtlı bozulmalar ve yazarın oran duygusuyla birleştiğinde, Kübizm'i, özellikle Fernand Léger ve Pablo Picasso'nun çalışmalarını hatırlatır. Bu basitleştirme fikrinde durmak değerli çünkü Dahlen'in eserinde, karmaşıklıkla el ele gider. Bu ikilik, formun bozulmasına ve onun doğuştan gelen plastisitesine olan inançta köklenmiştir."
+              "content": "Bozulmalar – ve özellikle büyütülmüş oranlar – onun figürlerini devasa, neredeyse heykelsi hissettirir. Burada, Brezilyalı sanatçı Tarsila do Amaral’ın çalışmalarına bir yakınlık izlenebilir, onun figürleri de benzer şekilde basitleştirilmiş ve abartılmış formlarıyla güçlü, neredeyse heykelsi bir varlık kazanır."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1zyascjdrr3.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Bozulmalar – ve özellikle büyütülmüş oranlar – onun figürlerini devasa, neredeyse heykelsi hissettirir. Burada, Brezilyalı sanatçı Tarsila do Amaral'ın çalışmalarına bir yakınlık izlenebilir; onun figürleri de benzer şekilde basitleştirilmiş ve abartılmış formlarıyla güçlü, neredeyse heykelsi bir varlık kazanır."
+              "content": "Cesaret, görsel olarak davetkar tutan belirli bir akışkanlıkla dengelenmiştir. Tüm bu unsurlar, soluk tonlardan oluşan bir palet aracılığıyla birleşerek tanıdık konuları anında çarpıcı kompozisyonlara dönüştürür."
             },
             {
               "type": "text",
-              "content": "Cesaret, belirli bir akışkanlıkla dengelenir, bu da eseri görsel olarak davetkar kılar. Tüm bu unsurlar, soluk tonlardan oluşan bir palet aracılığıyla birleşir ve tanıdık konuları anında çarpıcı kompozisyonlara dönüştürür."
-            },
-            {
-              "type": "text",
-              "content": "Görsel etki neredeyse hemen gerçekleşir. Zıt gölgeler ve basitleştirilmiş figürler, resmi zahmetsizce okumamıza olanak tanır, aynı zamanda figüratif resmin yeniden tasarlanmış bir biçimini sunar."
+              "content": "Görsel etki neredeyse hemen gerçekleşir. Zıt gölgeler ve basitleştirilmiş figürler, resmi kolayca okumamıza olanak tanırken, aynı zamanda figüratif resmin yeniden tasarlanmış bir biçimini sunar."
             },
             {
               "type": "text",
               "content": "Dahlen’in grafik tasarım geçmişi – özellikle yirminci yüzyıl afişlerinin görsel diline olan dikkati – burada önemli bir rol oynamış gibi görünüyor. Hiyerarşiye güçlü bir farkındalık, doğrudan iletişim ve hem görüntü hem de anlamın net iletimi, onun biçim üzerindeki ayırt edici yaklaşımıyla birlikte var olur."
             },
             {
-              "type": "text",
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd20y5thpnjgh.jpg",
+              "caption": ""
+            },
+            {
+              "type": "metin",
               "content": "Konu"
             },
             {
-              "type": "text",
-              "content": "Dahlen, bu görsel dili kullanarak sıradan nesneleri ve günlük sahneleri tasvir eder: yemek hazırlama, dominó oynama, makasla kesme, yapboz birleştirme. Yiyeceğe özel bir ilgisi vardır."
+              "type": "metin",
+              "content": "Dahlen bu görsel dili kullanarak sıradan nesneleri ve günlük sahneleri tasvir eder: yemek hazırlama, domino oynama, makasla kesme, bir bulmacayı birleştirme. Yiyeceğe özel bir ilgisi var."
             },
             {
-              "type": "text",
-              "content": "Her gün aynı nesneye bakabilme şeklimizde çarpıcı bir şey var, oysa bir sanatçı onu bize tamamen yabancı hissettiren bir şekilde sunabilir – hayal gücümüzün sınırlarının ötesinde."
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtd1xht1z7jkcw.jpg",
+              "caption": ""
             },
             {
-              "type": "text",
-              "content": "Dahlen’in çalışması nihayetinde olumlu bir enerji duygusunu iletmeyi amaçlar, aynı zamanda belirli gerilimleri ve zorlukları ince bir şekilde yansıtarak, yorumlarını biçim ve renk sembolizmine bırakır.<br>"
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtd23vnikc0w6o.jpg",
+              "caption": ""
             },
             {
-              "type": "image",
-              "content": "contemporary-modernism-nick-dahlen-2",
-              "caption": "Açılış çerçevesi"
+              "type": "metin",
+              "content": "Her gün aynı nesneye bakma şeklimizde çarpıcı bir şey var, oysa bir sanatçı onu bize tamamen yabancı hissettiren bir şekilde sunabilir – hayal gücümüzün sınırlarının ötesinde."
             },
             {
-              "type": "galeri",
-              "content": [
-                "contemporary-modernism-nick-dahlen-gallery-1",
-                "contemporary-modernism-nick-dahlen-gallery-2",
-                "contemporary-modernism-nick-dahlen-gallery-3"
-              ],
-              "caption": "Dizi"
+              "type": "metin",
+              "content": "Dahlen’in çalışması nihayetinde pozitif enerji duygusunu iletmeyi amaçlar, aynı zamanda belirli gerilimleri ve zorlukları ince bir şekilde yansıtarak, yorumlarını biçim ve renk sembolizmine bırakır.<br>"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtd23kpm92lh8t.jpg",
+              "caption": ""
             }
           ],
-          "updatedAt": "2026-08-28T14:31:25.789Z",
-          "authorId": "author-1784896384236-4fokw"
+          "updatedAt": "2026-08-28T14:46:33.851Z",
+          "authorId": "author-1784896384236-4fokw",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg",
+          "publishAt": "2026-08-28T14:41:26.666Z"
         }
       ],
       "reviews": [
