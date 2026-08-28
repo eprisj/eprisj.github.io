@@ -6028,6 +6028,11 @@
           "content": "Dahlen’s background in graphic design – particularly his attention to the visual language of twentieth-century posters – seems to have played an important role here. A strong awareness of hierarchy, direct communication, and the clear transmission of both image and meaning coexist with his distinctive treatment of form."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtd20y5thpnjgh.jpg",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "Subjects"
         },
@@ -6058,7 +6063,7 @@
           "caption": "Sequence"
         }
       ],
-      "updatedAt": "2026-08-28T14:35:25.746Z",
+      "updatedAt": "2026-08-28T14:36:06.201Z",
       "authorId": "author-1784896384236-4fokw",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtd1vvpoax3rcw.jpg"
     }
