@@ -4979,7 +4979,6 @@
     },
     {
       "id": 25,
-      "draft": true,
       "title": "\nWhere We Meet Ourselves - interview with Keisuke Azuma",
       "author": "Maria Ivanova",
       "role": "Editorial Desk",
@@ -5350,9 +5349,10 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-29T13:46:18.440Z",
+      "updatedAt": "2026-08-29T14:14:18.842Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
-      "previewToken": "7050d8a93e5a216872f5399c"
+      "previewToken": "7050d8a93e5a216872f5399c",
+      "publishAt": "2026-08-29T14:14:18.395Z"
     },
     {
       "id": 24,
