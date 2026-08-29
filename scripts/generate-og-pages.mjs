@@ -163,12 +163,13 @@ function articleKeywords(article) {
   ].filter(Boolean))).join(', ');
 }
 
-function alternateLinks(url) {
-  const languages = Object.keys(content.translations || {}).filter((lang) => HREFLANG[lang]);
-  return [
-    ...languages.map((lang) => `<link rel="alternate" hreflang="${HREFLANG[lang]}" href="${url}" />`),
-    `<link rel="alternate" hreflang="x-default" href="${url}" />`,
-  ].join('\n    ');
+function alternateLinks() {
+  /* Раніше сюди йшло сім тегів hreflang, і всі вели на ту саму адресу.
+     Анотація має пов'язувати РІЗНІ URL різними мовами; коли адреса одна,
+     Google групу просто відкидає. Переклад у журналі перемикається на
+     клієнті й окремих адрес не має, тому теги прибрані. Повернути їх
+     можна буде разом із маршрутами виду /ru/article/<slug>/. */
+  return '';
 }
 
 function breadcrumbSchema(items) {
@@ -247,6 +248,7 @@ for (const article of publicArticles) {
     author: { '@type': 'Person', name: article.author || 'EPRIS Editorial' },
     articleSection: article.category || undefined,
     keywords: articleKeywords(article),
+    articleBody: articleBody(article) || undefined,
     wordCount: articleBody(article).split(/\s+/).filter(Boolean).length || undefined,
     inLanguage: 'en',
     mainEntityOfPage: url,
@@ -264,12 +266,12 @@ for (const article of publicArticles) {
   ]);
 
   const headBlock = `<title>${article.title} \u2014 EPRIS Journal</title>
+    ${imageUrl ? `<link rel="preload" as="image" href="${escapeAttr(imageUrl)}" fetchpriority="high" />` : ''}
     <meta name="description" content="${excerpt}" />
     <meta name="keywords" content="${escapeAttr(articleKeywords(article))}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
-    ${alternateLinks(url)}
-    <meta property="og:title" content="${title}" />
+        <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${excerpt}" />
     <meta property="og:image" content="${imageUrl}" />
     <meta property="og:image:alt" content="${title}" />
@@ -356,8 +358,7 @@ for (const review of publicReviews) {
     <meta name="description" content="${excerpt}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
-    ${alternateLinks(url)}
-    <meta property="og:title" content="${title}" />
+        <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${excerpt}" />
     <meta property="og:image" content="${imageUrl}" />
     <meta property="og:image:alt" content="${title}" />
@@ -487,8 +488,7 @@ function routeHead(route, label) {
     <meta name="keywords" content="${escapeAttr(SITE_KEYWORDS.join(', '))}" />
     <meta name="robots" content="${ALIAS_ROUTES[route] || HIDDEN_PUBLIC_ROUTES.has(route) ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
-    ${alternateLinks(url)}
-    <meta property="og:title" content="${label} — EPRIS Journal" />
+        <meta property="og:title" content="${label} — EPRIS Journal" />
     <meta property="og:description" content="${escapeAttr(description)}" />
     <meta property="og:image" content="${DEFAULT_IMAGE}" />
     <meta property="og:type" content="website" />
