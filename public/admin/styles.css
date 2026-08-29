@@ -9938,32 +9938,47 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 }
 
 /* ── Аналитика ────────────────────────────────────────────────────────
-   Диаграммы собраны из div'ов, без графической библиотеки: панель
-   отдаётся статикой, и тянуть пакет ради четырёх графиков незачем. */
+   Графики нарисованы вручную: SVG для динамики, сетка div'ов для
+   тепловой карты. Панель отдаётся статикой, и тянуть графическую
+   библиотеку ради пяти диаграмм незачем. */
+/* Отступ панели такой же, как у «Обзора» (.dashboard-layout): раздел
+   вплотную упирался в боковое меню, потому что у .tab-panel своих
+   отступов нет, их задаёт внутренняя обёртка каждого раздела. */
+#tab-analytics{padding:24px 28px}
 .an-head{display:flex;align-items:flex-start;justify-content:space-between;
-  gap:16px;flex-wrap:wrap;margin-bottom:20px}
-.an-title{margin:0 0 4px;font-size:20px;font-weight:600}
-.an-sub{margin:0;font-size:13px;color:var(--muted,#8b8b8b);max-width:60ch}
-.an-actions{display:flex;align-items:center;gap:12px}
+  gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.an-title{margin:0 0 4px;font-size:21px;font-weight:600;letter-spacing:-.01em}
+.an-sub{margin:0;font-size:13px;color:var(--muted,#8b8b8b);max-width:70ch;line-height:1.5}
+.an-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .an-updated{font-size:12px;color:var(--muted,#8b8b8b)}
 
-.an-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;margin-bottom:22px}
-.an-card{border:1px solid var(--border,#e5e2dd);border-radius:8px;padding:14px 16px;
-  background:var(--card,#fff)}
-.an-card-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+.an-range{display:inline-flex;border:1px solid var(--border,#e5e2dd);border-radius:7px;
+  overflow:hidden}
+.an-range button{font:inherit;font-size:12px;padding:7px 13px;background:none;
+  border:0;cursor:pointer;color:var(--muted,#8b8b8b);
+  transition:background .15s ease,color .15s ease}
+.an-range button + button{border-left:1px solid var(--border,#e5e2dd)}
+.an-range button:hover{background:rgba(0,0,0,.03)}
+.an-range button.is-on{background:#2c3440;color:#fff}
+
+.an-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));
+  gap:12px;margin-bottom:16px}
+.an-card{position:relative;border:1px solid var(--border,#e5e2dd);border-radius:10px;
+  padding:14px 16px 12px;background:var(--card,#fff);overflow:hidden}
+.an-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.an-card-label{font-size:11px;letter-spacing:.07em;text-transform:uppercase;
   color:var(--muted,#8b8b8b)}
-.an-card-value{font-size:26px;line-height:1.2;margin-top:6px;
+.an-card-value{font-size:29px;line-height:1.15;margin-top:8px;letter-spacing:-.02em;
   font-variant-numeric:tabular-nums}
-.an-card-sub{font-size:12px;color:var(--muted,#8b8b8b);margin-top:2px}
-.an-card-delta{font-size:12px;margin-top:8px}
+.an-card-sub{font-size:12px;color:var(--muted,#8b8b8b);margin-top:3px}
+.an-card-delta{font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .an-card-delta.is-up{color:#2f7d4f}
 .an-card-delta.is-down{color:#9E3B2C}
+.an-spark{display:block;width:100%;height:26px;margin-top:10px;color:#c3cad2}
 
-.an-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.an-box{border:1px solid var(--border,#e5e2dd);border-radius:8px;padding:16px;
+.an-box{border:1px solid var(--border,#e5e2dd);border-radius:10px;padding:16px 18px;
   background:var(--card,#fff);min-width:0}
-.an-box--wide{grid-column:1 / -1}
+.an-box--hero{margin-bottom:16px}
 .an-box-head{display:flex;align-items:baseline;justify-content:space-between;
   gap:12px;margin-bottom:14px}
 .an-box-head h3{margin:0;font-size:14px;font-weight:600}
@@ -9973,36 +9988,68 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .an-dot--hits{background:#5b6b7a}
 .an-dot--uniq{background:#c8a15a}
 
-/* Столбик: заходы задают высоту, уникальные накладываются поверх более
-   светлой полосой, поэтому видно и объём, и долю живых людей в нём. */
+.an-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.an-box--wide{grid-column:1 / -1}
+
+.an-area{width:100%}
+.an-area-svg{display:block;width:100%;height:260px}
+.an-grid-line{stroke:var(--border,#e5e2dd);stroke-width:1}
+.an-axis{font-size:10px;fill:var(--muted,#8b8b8b)}
+.an-hit{cursor:default}
+
+/* Тепловая карта: подпись дня плюс 24 клетки в ряд. */
+.an-heat-grid{display:grid;grid-template-columns:26px repeat(24,1fr);gap:3px;
+  align-items:center}
+.an-heat-day{font-size:10px;color:var(--muted,#8b8b8b);text-align:right;
+  padding-right:4px}
+.an-heat-cell{display:block;width:100%;aspect-ratio:1;border-radius:2px;
+  background:var(--border,#eceae6)}
+.an-heat-cell.is-l1{background:#cfd7de}
+.an-heat-cell.is-l2{background:#9daebc}
+.an-heat-cell.is-l3{background:#6b8095}
+.an-heat-cell.is-l4{background:#3d5468}
+.an-heat-axis{display:flex;justify-content:space-between;margin:8px 0 0 26px;
+  font-size:10px;color:var(--muted,#8b8b8b)}
+
+.an-devices{display:grid;gap:14px}
+.an-dev-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.an-dev-top b{font-weight:600;font-variant-numeric:tabular-nums}
+.an-dev-track{height:7px;border-radius:4px;background:var(--border,#eceae6);overflow:hidden}
+.an-dev-track i{display:block;height:100%;border-radius:4px}
+.an-dev-track i.is-d0{background:#3d5468}
+.an-dev-track i.is-d1{background:#c8a15a}
+.an-dev-track i.is-d2{background:#9daebc}
+.an-dev-track i.is-d3{background:#d8d2c8}
+.an-dev-sub{display:block;margin-top:4px;font-size:11px;color:var(--muted,#8b8b8b)}
+
 .an-chart{display:flex;align-items:flex-end;gap:3px;height:150px;overflow-x:auto;
   padding-bottom:18px}
 .an-chart--hours{gap:2px}
-.an-bar{flex:1 0 14px;min-width:10px;display:flex;flex-direction:column;
+.an-bar{flex:1 0 10px;min-width:8px;display:flex;flex-direction:column;
   align-items:center;height:100%;position:relative}
-.an-bar-stack{position:relative;width:100%;height:100%;display:flex;
-  align-items:flex-end;justify-content:center}
+.an-bar-stack{position:relative;width:100%;height:100%;display:flex;align-items:flex-end}
 .an-bar-hits{position:absolute;bottom:0;width:100%;background:#5b6b7a;
   border-radius:2px 2px 0 0;min-height:2px}
-.an-bar-uniq{position:absolute;bottom:0;width:52%;background:#c8a15a;
+.an-bar-uniq{position:absolute;bottom:0;width:52%;left:24%;background:#c8a15a;
   border-radius:2px 2px 0 0;min-height:2px}
-.an-bar-label{position:absolute;bottom:-16px;font-size:10px;
+.an-bar-label{position:absolute;bottom:-16px;font-size:9px;
   color:var(--muted,#8b8b8b);white-space:nowrap}
 
-.an-list{display:grid;gap:10px;max-height:340px;overflow-y:auto}
+.an-list{display:grid;gap:11px;max-height:330px;overflow-y:auto}
 .an-row-main{display:flex;justify-content:space-between;gap:12px;
-  font-size:13px;margin-bottom:4px}
+  font-size:13px;margin-bottom:5px}
 .an-row-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .an-row-num{flex:none;font-variant-numeric:tabular-nums;color:var(--muted,#8b8b8b)}
 .an-row-num b{font-weight:400;color:#c8a15a}
-.an-row-track{height:4px;border-radius:2px;background:var(--border,#e5e2dd);
-  overflow:hidden}
-.an-row-track i{display:block;height:100%;background:#5b6b7a}
+.an-row-track{height:4px;border-radius:2px;background:var(--border,#eceae6);overflow:hidden}
+.an-row-track i{display:block;height:100%;background:#5b6b7a;border-radius:2px}
 .an-empty{margin:0;font-size:13px;color:var(--muted,#8b8b8b)}
 .an-foot{margin:20px 0 0;font-size:12px;line-height:1.6;color:var(--muted,#8b8b8b);
-  max-width:80ch}
+  max-width:86ch}
 
 @media (max-width:900px){
   .an-grid{grid-template-columns:1fr}
   .an-box--wide{grid-column:auto}
+  .an-area-svg{height:210px}
+  .an-heat-grid{grid-template-columns:22px repeat(24,1fr);gap:2px}
 }

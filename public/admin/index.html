@@ -490,9 +490,14 @@
             <div class="an-head">
               <div>
                 <h2 class="an-title">Посещаемость</h2>
-                <p class="an-sub" id="anSince">Свой счётчик на сервере: считает заходы и уникальных посетителей, без Google.</p>
+                <p class="an-sub" id="anSince">Свой счётчик на сервере журнала.</p>
               </div>
               <div class="an-actions">
+                <div class="an-range" id="anRange" role="group" aria-label="Период">
+                  <button type="button" data-days="7">7 дней</button>
+                  <button type="button" data-days="30" class="is-on">30 дней</button>
+                  <button type="button" data-days="90">90 дней</button>
+                </div>
                 <span class="an-updated" id="anUpdated"></span>
                 <button class="btn btn-secondary" type="button" id="anRefresh">Обновить</button>
               </div>
@@ -500,18 +505,23 @@
 
             <div class="an-cards" id="anCards"></div>
 
+            <section class="an-box an-box--hero">
+              <header class="an-box-head">
+                <h3>Динамика</h3>
+                <span class="an-legend"><i class="an-dot an-dot--hits"></i>просмотры <i class="an-dot an-dot--uniq"></i>посетители</span>
+              </header>
+              <div class="an-area" id="anArea"></div>
+            </section>
+
             <div class="an-grid">
-              <section class="an-box an-box--wide">
-                <header class="an-box-head">
-                  <h3>Заходы по дням</h3>
-                  <span class="an-legend"><i class="an-dot an-dot--hits"></i>заходы <i class="an-dot an-dot--uniq"></i>уникальные</span>
-                </header>
-                <div class="an-chart" id="anChartDays"></div>
+              <section class="an-box">
+                <header class="an-box-head"><h3>Ритм недели</h3><span class="an-note">день и час</span></header>
+                <div class="an-heat" id="anHeat"></div>
               </section>
 
               <section class="an-box">
-                <header class="an-box-head"><h3>По часам, сутки</h3></header>
-                <div class="an-chart an-chart--hours" id="anChartHours"></div>
+                <header class="an-box-head"><h3>С чего читают</h3></header>
+                <div class="an-devices" id="anDevices"></div>
               </section>
 
               <section class="an-box">
@@ -519,15 +529,21 @@
                 <div class="an-list" id="anRefs"></div>
               </section>
 
+              <section class="an-box">
+                <header class="an-box-head"><h3>Время суток</h3><span class="an-note">за сутки</span></header>
+                <div class="an-chart an-chart--hours" id="anChartHours"></div>
+              </section>
+
               <section class="an-box an-box--wide">
-                <header class="an-box-head"><h3>Какие страницы смотрят</h3><span class="an-note">за 30 дней</span></header>
+                <header class="an-box-head"><h3>Что читают</h3><span class="an-note" id="anPathsNote"></span></header>
                 <div class="an-list an-list--paths" id="anPaths"></div>
               </section>
             </div>
 
-            <p class="an-foot">Данные с собственного счётчика на сервере журнала. Адрес посетителя не хранится:
+            <p class="an-foot">Считает собственный счётчик на сервере журнала. Адрес посетителя не хранится:
               вместо него записывается необратимый отпечаток, по нему и считаются уникальные.
-              Параллельно работает Google Analytics (G-F3F5GCXFBF) — его отчёты в интерфейсе Google.</p>
+              История до 19 августа не сохранилась — логи сервера тогда хранились 10 дней.
+              Параллельно работает Google Analytics (G-F3F5GCXFBF), его отчёты в интерфейсе Google.</p>
           </section>
 
 
@@ -2512,7 +2528,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=6.57" type="module"></script>
+    <script src="./app.js?v=6.58" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
