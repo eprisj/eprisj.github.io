@@ -57,7 +57,7 @@
     <div>
       <p class="eyebrow">EPRIS Museum</p>
       <h1>Расстановка</h1>
-      <p class="lede">План зала сверху. Предмет ставится перетаскиванием, паспорт заполняется справа. Пока в зале нет ни одного предмета, сайт показывает заготовку зала; первый сохранённый предмет её заменяет.</p>
+      <p class="lede">Техническая заготовка 3D-музея. Она не публикуется на основном сайте и сохранена только для дальнейшей разработки.</p>
     </div>
     <a href="/admin/">← Админка</a>
   </div>
@@ -71,7 +71,7 @@
     <div class="panel">
       <div class="plan">
         <p class="planhint" id="planhint">План зала</p>
-        <p class="planhint" style="margin:-6px 0 10px"><a id="viewHall" href="https://eprisjournal.com/museum" target="_blank" rel="noopener">Открыть зал на сайте ↗</a></p>
+        <p class="planhint" style="margin:-6px 0 10px"><a id="viewHall" href="https://museum.eprisjournal.com/" target="_blank" rel="noopener">Открыть основной музей ↗</a></p>
         <svg id="plan" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
       <div class="row">
@@ -189,7 +189,7 @@ function renderPlan() {
   const pad = 1.2;
   svg.setAttribute('viewBox', `${-r.w / 2 - pad} ${-r.d / 2 - pad} ${r.w + pad * 2} ${r.d + pad * 2}`);
   $('planhint').textContent = `${r.name} · ${r.w} × ${r.d} м · перетащите предмет, стрелки двигают на 25 см`;
-  $('viewHall').href = `https://eprisjournal.com/museum/${hall}`;
+  $('viewHall').href = 'https://museum.eprisjournal.com/';
 
   const grid = [];
   for (let x = Math.ceil(-r.w / 2); x <= r.w / 2; x += 1) {

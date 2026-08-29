@@ -1006,7 +1006,6 @@ function NavBar({
     { id: 'podcasts', label: t('nav.podcasts') },
   ].filter((tab) => isSectionInNavigation(tab.id));
 
-  const isMuseumRoute = /^\/(?:museum|vitrine|futuroshock)(?:\/[a-z-]{2,24})?\/?$/.test(window.location.pathname);
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
     // Keep native link behaviour for Cmd/Ctrl-click, middle click and new-tab
@@ -1116,11 +1115,8 @@ function NavBar({
               </a>
             ))}
             <a
-              href="/museum"
-              aria-current={isMuseumRoute ? 'page' : undefined}
-              className={`relative flex h-full flex-col items-center justify-center overflow-hidden transition-colors duration-200 ${
-                isMuseumRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]'
-              }`}
+              href="https://museum.eprisjournal.com/"
+              className="relative flex h-full flex-col items-center justify-center overflow-hidden text-[var(--c-accent)] transition-colors duration-200 hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]"
             >
               <span className="relative z-10 font-bold">Museum</span>
             </a>
@@ -1355,16 +1351,13 @@ function NavBar({
                 </motion.a>
               ))}
               <motion.a
-                href="/museum"
+                href="https://museum.eprisjournal.com/"
                 variants={{
                   hidden: { opacity: 0, x: -14 },
                   show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
                 }}
                 onClick={() => setIsMenuOpen(false)}
-                aria-current={isMuseumRoute ? 'page' : undefined}
-                className={`min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99] ${
-                  isMuseumRoute ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
-                }`}
+                className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
               >
                 <span className="font-serif font-normal text-xl leading-tight">Museum</span>
               </motion.a>
@@ -4160,6 +4153,10 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
 }
 
 export default function App() {
+  if (/^\/(?:museum|vitrine|futuroshock)(?:\/|$)/.test(window.location.pathname)) {
+    window.location.replace('https://museum.eprisjournal.com/');
+    return null;
+  }
   if (/^\/(?:collaboation|collaboration|collab)\/?$/.test(window.location.pathname)) {
     if (!/^\/collaboration\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/collaboration');
@@ -4174,7 +4171,6 @@ export default function App() {
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
   }
-  if (/^\/(?:futuroshock|vitrine)\/?$/.test(window.location.pathname)) window.history.replaceState(null, '', '/museum');
   if (/^\/(?:showcase|works|set)\/?$/.test(window.location.pathname)) {
     if (!/^\/showcase\/?$/.test(window.location.pathname)) {
       window.history.replaceState(null, '', '/showcase');
