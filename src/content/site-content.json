@@ -6075,7 +6075,7 @@
       "role": "Editorial team",
       "date": "August 29, 2026",
       "publishedAt": "2026-08-29",
-      "excerpt": "Early functionalism did not have to mean straight lines. In Oslo, 1935, two architects wrapped a laboratory in red brick, ran a brass-railed spiral through its core and let Per Krohg paint the solar system across the vestibule wall.",
+      "excerpt": "Early functionalism did not have to mean straight lines. In Oslo, 1935, two architects wrapped a laboratory in red brick, ran a brass-railed stair through its core and let Per Krohg paint the solar system across the vestibule wall.",
       "category": "Architecture",
       "subcategory": "Essay",
       "tags": [
@@ -6085,25 +6085,47 @@
         "1930s"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mted5de5dq4xdd.jpg",
       "content": [
         {
           "type": "text",
-          "content": "The story modernism tells about itself is a story of the straight line. Flat white walls, the grid, the right angle as a moral position. Fysikkbygningen at Blindern, finished in 1935 for the University of Oslo by Finn Bryn and Johan Ellefsen, was built at the height of that argument and quietly declines to take part in it. It is a functionalist building that curves."
+          "content": "The story modernism tells about itself is a story of the straight line. Flat white walls, the grid, the right angle as a moral position. Fysikkbygningen at Blindern, finished in 1935 for the University of Oslo by Finn Bryn and Johan Ellefsen, was built at the height of that argument and quietly declines to take part in it. It is a functionalist building that curves, and it is made of brick the colour of dried blood."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
-          "caption": "Fysikkbygningen, Blindern campus, Oslo. Finn Bryn and Johan Ellefsen, 1935. Photograph: Kjetil Ree, CC BY-SA 3.0",
+          "content": "https://api.eprisjournal.com/uploads/mted5ffo3rs7kw.jpg",
+          "caption": "The physics building seen from the open field, Oslo, early 1950s. Photographer unknown, National Library of Norway, public domain",
           "align": "center"
         },
         {
           "type": "text",
-          "content": "The approach gives away the intent. A central tower rises out of a long horizontal block, its top floor cut open by a continuous band of glazing, and the brick is laid dark and warm rather than rendered white. Norwegian functionalism arrived through Sweden and Denmark rather than direct from Dessau, and it arrived softened: less manifesto, more craft, willing to keep the material a country already knew how to build with. Bryn and Ellefsen won the commission in a competition and delivered a laboratory that reads as civic architecture."
+          "content": "It helps to remember what Blindern was when the building arrived. Not a campus: a farm. The university had bought agricultural land north-west of the city and was moving out of its neoclassical quarter downtown, and the first three buildings stood in a meadow with a dirt track running past them. Bryn and Ellefsen won the commission in a competition and had no context to answer to, only a field, a brief and a decade that believed buildings should be honest about their purpose."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
+            "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
+          ],
+          "caption": "",
+          "alts": [
+            "The approach to the physics building, late 1940s. National Library of Norway, public domain",
+            "The same front in 2009, with the garden grown in. Photograph: Kjetil Ree, CC BY-SA 3.0"
+          ]
         },
         {
           "type": "text",
-          "content": "What makes the building worth the trip is that the compositional discipline stops at the door. A physics faculty in the 1930s needed vibration-free floors, long service runs, blackout rooms, and a lecture hall that could seat a generation of students. The plan solves that with the efficiency the period demanded. Then, at the point where circulation happens, where people actually meet the building, the geometry loosens: stairs sweep rather than turn, handrails are brass, ceilings lift, and colour appears where a purist would have left plaster."
+          "content": "What they built reads as civic architecture rather than as a laboratory. A central tower rises out of a long horizontal block, its top floor cut open by a continuous band of glazing, and the brick is laid dark and warm rather than rendered white. Norwegian functionalism arrived through Sweden and Denmark rather than direct from Dessau, and it arrived softened: less manifesto, more craft, willing to keep the material a country already knew how to build with."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
+          "caption": "Nedre Blindern from the air, around 1955. Photograph: Fjellanger-Wideroe, Oslo Museum, CC BY-SA 4.0",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "The plan is disciplined where discipline pays. A physics faculty in the 1930s needed vibration-free floors, long service runs, blackout rooms and a lecture hall that could seat a generation of students, and the building solves all of it with the efficiency the period demanded. Then, at the point where circulation happens, where people actually meet the building, the geometry loosens. Stairs sweep rather than turn. Handrails are brass. Ceilings lift. Colour appears where a purist would have left plaster."
         },
         {
           "type": "image",
@@ -6113,7 +6135,7 @@
         },
         {
           "type": "text",
-          "content": "The vestibule is the argument in miniature. Its floor is a black and white zigzag, closer to a 1930s ocean liner than to a laboratory, and a Foucault pendulum hangs through the double-height space, swinging in the plane the earth turns under. It is a working instrument and a piece of interior design at once: the one object in the building that demonstrates the discipline housed there without a single word of explanation."
+          "content": "The vestibule is the whole argument in miniature. Its floor is a black and white zigzag, closer to a 1930s ocean liner than to a laboratory, and a Foucault pendulum hangs through the double-height space, swinging in the plane the earth turns under. It is a working instrument and a piece of interior design at once: the one object in the building that demonstrates the discipline housed here without a single word of explanation."
         },
         {
           "type": "gallery",
@@ -6123,8 +6145,8 @@
           ],
           "caption": "",
           "alts": [
-            "The vestibule with its Foucault pendulum and zigzag floor.",
-            "Per Krohg's mural on the eastern wall, completed 1938."
+            "The vestibule, with the Foucault pendulum and the zigzag floor. Photograph: Mysteriumen, CC BY-SA 3.0",
+            "Per Krohg's mural on the eastern wall, completed 1938. Photograph: Bernt Rostad, CC BY 2.0"
           ]
         },
         {
@@ -6133,16 +6155,16 @@
         },
         {
           "type": "text",
-          "content": "That coexistence is the reason the building still teaches something. The heroic version of the 1930s asks a structure to be honest, and honesty is understood as bareness. Fysikkbygningen accepts every functional demand of its brief and then treats warmth, colour and curvature as functional demands too, on the grounds that the people inside are also part of the programme. Nearly a century on, with the creeper grown over the garden facade and the pendulum still swinging, it looks less like a compromise with modernism than a correction to it."
+          "content": "That coexistence is the reason the building still teaches something. The heroic version of the 1930s asks a structure to be honest, and honesty is understood as bareness. Fysikkbygningen accepts every functional demand of its brief and then treats warmth, colour and curvature as functional demands too, on the grounds that the people inside are also part of the programme. Nearly a century on, with the creeper turning scarlet over the entrance each October and the pendulum still swinging, it looks less like a compromise with modernism than a correction to it."
         },
         {
           "type": "text",
-          "content": "Photographs via Wikimedia Commons: exterior by Kjetil Ree (CC BY-SA 3.0); garden facade by Punkmorten (public domain); vestibule by Mysteriumen (CC BY-SA 3.0); mural wall by Bernt Rostad (CC BY 2.0), artwork by Per Lasson Krohg, 1938."
+          "content": "Photographs via Wikimedia Commons. Cover and autumn facade: Aasapaaske, CC BY-SA 4.0. Archive views of Blindern: National Library of Norway, public domain. Aerial view: Fjellanger-Wideroe for Oslo Museum, CC BY-SA 4.0. Exterior 2009: Kjetil Ree, CC BY-SA 3.0. Garden facade: Punkmorten, public domain. Vestibule: Mysteriumen, CC BY-SA 3.0. Mural wall: Bernt Rostad, CC BY 2.0; artwork by Per Lasson Krohg, 1938."
         }
       ],
       "order": 0,
-      "draft": false,
-      "updatedAt": "2026-08-29T12:29:20.425Z"
+      "draft": true,
+      "updatedAt": "2026-08-29T12:35:13.672Z"
     }
   ],
   "reviews": [
