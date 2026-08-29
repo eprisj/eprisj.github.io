@@ -278,12 +278,7 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
    Умова навмисно вузька — лише для api.eprisjournal.com/uploads/*.<jpg|jpeg|png|webp> —
    бо тiльки цi файли сервер справдi обробляе. Зовнiшнi посилання (Wikimedia,
    /images/hero-*) i плейсхолдери picsum лишаються без srcset — не наш файл,
-   немає що резати.
-
-   srcset-кандидат, якого немае на диску, браузер НЕ вiдкочуе на src: він
-   просто провалює запит. Тому ця функцiя вважае похiднi присутнiми лише
-   тому, що бекфiл (scripts/backfill вручну на сервері) вже прогнаний по
-   всiй бiблiотецi 27.08.2026 — до цього деплою фронта з srcset бути не могло. */
+   немає що резати. */
 const DERIVATIVE_WIDTHS = [480, 960, 1600] as const;
 const UPLOAD_HOST_RE = /^https:\/\/api\.eprisjournal\.com\/uploads\/([^/?#]+)\.(jpe?g|png|webp)$/i;
 
@@ -295,6 +290,27 @@ function derivedSrcSet(url: string | undefined): string | undefined {
   return DERIVATIVE_WIDTHS
     .map((w) => `https://api.eprisjournal.com/uploads/sizes/${stem}-${w}w.webp ${w}w`)
     .join(', ');
+}
+
+// Browsers do not retry `src` after a chosen srcset candidate fails. Retry the
+// original without srcset, so a partial media migration cannot break an article.
+function recoverOriginalImage(event: { currentTarget: HTMLImageElement }) {
+  const image = event.currentTarget;
+  const original = image.dataset.originalSrc || image.getAttribute('src') || '';
+
+  if (original && image.dataset.mediaRecovery !== 'original') {
+    image.dataset.mediaRecovery = 'original';
+    image.removeAttribute('srcset');
+    image.removeAttribute('sizes');
+    image.src = original;
+    return;
+  }
+
+  image.removeAttribute('srcset');
+  image.removeAttribute('sizes');
+  image.removeAttribute('src');
+  image.alt = '';
+  image.setAttribute('aria-hidden', 'true');
 }
 
 // Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
@@ -2424,6 +2440,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
     ? translateRole(resolvedAuthor?.role, currentLang)
     : (translateRole(article.role, currentLang) || (isMatchingProfile ? translateRole(resolvedAuthor?.role, currentLang) : undefined));
   const authorPhoto = isMatchingProfile ? resolvedAuthor?.photoUrl : undefined;
+  const heroSource = resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143);
   // Второй кредит: институция, вместе с которой сделан материал. Она не
   // перебивает подпись автора, а стоит отдельной карточкой под ней.
   const contributor = article.contributorId ? resolveAuthor({ authorId: article.contributorId }) : null;
@@ -2533,21 +2550,23 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               role="button"
               tabIndex={0}
               aria-label="View full image"
-              onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+              onClick={() => onImageClick(heroSource, article.title)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(heroSource, article.title)}
             >
               {/* Стрічка статей починається за межею першого екрана — від
                   1100 px і нижче. Без lazy усі її картинки бралися одразу і
                   ділили канал з тією єдиною, яку видно. */}
               <img
-                src={resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143)}
-                srcSet={derivedSrcSet(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143))}
+                src={heroSource}
+                srcSet={derivedSrcSet(heroSource)}
                 sizes="100vw"
+                data-original-src={heroSource}
                 alt={article.title}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 decoding="async"
+                onError={recoverOriginalImage}
               />
             </div>
             <div className="text-center">
@@ -2648,6 +2667,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                     <figure key={index} className={`${figureClass} relative`} style={figureStyle}>
                       <img
                         src={imageSource}
+                        data-original-src={imageSource}
                         alt={imageAlt}
                         className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
@@ -2655,6 +2675,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                            всегда и есть то, ради чего страницу открыли. */
                         loading={index === 0 ? 'eager' : 'lazy'}
                         decoding="async"
+                        onError={recoverOriginalImage}
                         onClick={() => onImageClick(imageSource, imageAlt)}
                       />
                       {isAnimatedImage && (
