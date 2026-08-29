@@ -23570,6 +23570,82 @@
           "authorId": "author-1784896384236-4fokw",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
+        },
+        {
+          "id": 29,
+          "title": "Modernismo Suave: Edificio de Física de Bryn y Ellefsen en Blindern",
+          "author": "EPRIS Journal",
+          "role": "Equipo editorial",
+          "date": "29 de agosto de 2026",
+          "publishedAt": "2026-08-29",
+          "excerpt": "El funcionalismo temprano no tenía que significar líneas rectas. En Oslo, 1935, dos arquitectos envolvieron un laboratorio con ladrillo rojo, atravesaron su núcleo con una espiral con barandilla de latón y dejaron que Per Krohg pintara el sistema solar en la pared del vestíbulo.",
+          "category": "Arquitectura",
+          "subcategory": "Ensayo",
+          "tags": [
+            "arquitectura",
+            "funcionalismo",
+            "oslo",
+            "años 1930"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+          "content": [
+            {
+              "type": "texto",
+              "content": "La historia que el modernismo cuenta sobre sí mismo es una historia de la línea recta. Paredes blancas planas, la cuadrícula, el ángulo recto como una posición moral. La Fysikkbygningen en Blindern, terminada en 1935 para la Universidad de Oslo por Finn Bryn y Johan Ellefsen, fue construida en la cima de ese argumento y se niega silenciosamente a participar en él. Es un edificio funcionalista que se curva."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+              "caption": "Fysikkbygningen, campus Blindern, Oslo. Finn Bryn y Johan Ellefsen, 1935. Fotografía: Kjetil Ree, CC BY-SA 3.0",
+              "align": "centro"
+            },
+            {
+              "type": "texto",
+              "content": "El enfoque revela la intención. Una torre central surge de un largo bloque horizontal, su piso superior abierto por una banda continua de acristalamiento, y el ladrillo está colocado oscuro y cálido en lugar de enlucido de blanco. El funcionalismo noruego llegó a través de Suecia y Dinamarca en lugar de directamente desde Dessau, y llegó suavizado: menos manifiesto, más artesanía, dispuesto a mantener el material con el que un país ya sabía construir. Bryn y Ellefsen ganaron la comisión en un concurso y entregaron un laboratorio que se lee como arquitectura cívica."
+            },
+            {
+              "type": "texto",
+              "content": "Lo que hace que el edificio valga la pena el viaje es que la disciplina compositiva se detiene en la puerta. Una facultad de física en los años 30 necesitaba pisos libres de vibraciones, largas instalaciones de servicio, salas de oscurecimiento y un auditorio que pudiera albergar a una generación de estudiantes. El plan resuelve eso con la eficiencia que exigía el período. Luego, en el punto donde ocurre la circulación, donde las personas realmente encuentran el edificio, la geometría se relaja: las escaleras barren en lugar de girar, las barandillas son de latón, los techos se elevan y el color aparece donde un purista habría dejado yeso."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
+              "caption": "El volumen de la escalera acristalada en el lado del jardín, sostenido por la hiedra de Virginia. Fotografía: Punkmorten, dominio público",
+              "align": "centro"
+            },
+            {
+              "type": "texto",
+              "content": "El vestíbulo es el argumento en miniatura. Su suelo es un zigzag en blanco y negro, más cercano a un transatlántico de los años 30 que a un laboratorio, y un péndulo de Foucault cuelga a través del espacio de doble altura, balanceándose en el plano que la tierra gira debajo. Es un instrumento de trabajo y una pieza de diseño interior a la vez: el único objeto en el edificio que demuestra la disciplina alojada allí sin una sola palabra de explicación."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+                "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "El vestíbulo con su péndulo de Foucault y suelo en zigzag.",
+                "El mural de Per Krohg en la pared este, terminado en 1938."
+              ]
+            },
+            {
+              "type": "texto",
+              "content": "Sobre él, en la pared este, Per Lasson Krohg pintó el sol y los planetas en 1938, rodeados por galaxias dibujadas como una mujer y un hombre, con la aurora boreal atravesando la composición. Krohg later pintaría el mural en la sala del Consejo de Seguridad de las Naciones Unidas en Nueva York. Aquí, tres años antes de la guerra, estaba haciendo algo que un programa estrictamente funcionalista no tiene espacio para: decorar un edificio de física con una cosmología. Las barras de acristalamiento de la ventana de la escalera atraviesan directamente la pintura, y los dos sistemas, la cuadrícula y la imagen, se sostienen mutuamente en lugar de competir."
+            },
+            {
+              "type": "texto",
+              "content": "Esa convivencia es la razón por la que el edificio todavía enseña algo. La versión heroica de los años 1930 pide a una estructura que sea honesta, y la honestidad se entiende como desnudez. Fysikkbygningen acepta cada demanda funcional de su brief y luego trata la calidez, el color y la curvatura como demandas funcionales también, sobre la base de que las personas dentro también forman parte del programa. Casi un siglo después, con la hiedra crecida sobre la fachada del jardín y el péndulo todavía balanceándose, parece menos un compromiso con el modernismo que una corrección a él."
+            },
+            {
+              "type": "texto",
+              "content": "Fotografías vía Wikimedia Commons: exterior por Kjetil Ree (CC BY-SA 3.0); fachada del jardín por Punkmorten (dominio público); vestíbulo por Mysteriumen (CC BY-SA 3.0); muro mural por Bernt Rostad (CC BY 2.0), obra de arte de Per Lasson Krohg, 1938."
+            }
+          ],
+          "order": 0,
+          "draft": false,
+          "updatedAt": "2026-08-29T12:31:25.133Z"
         }
       ],
       "reviews": [
