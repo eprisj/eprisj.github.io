@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://eprisjournal.com/sitemap.xml
+Sitemap: https://eprisjournal.com/rss.xml
