@@ -24153,51 +24153,129 @@ document.getElementById('formsList')?.addEventListener('click', (event) => {
    Данные берутся у собственного счётчика на сервере (служба hitcounter),
    а не у Google: его отчёты живут в чужом интерфейсе, а здесь нужно
    видеть цифры не выходя из панели. Авторизация тем же паролем, что и
-   остальные запросы к API, поэтому в этот файл не зашит никакой токен. */
+   остальные запросы к API, поэтому в этот файл не зашит никакой токен.
+   Графики рисуются вручную (SVG и сетка div'ов): панель отдаётся
+   статикой, тянуть ради неё графическую библиотеку незачем. */
 const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
+let anDays = 30;
 
-function anNum(n) {
-  return (n || 0).toLocaleString('ru-RU');
-}
+const anNum = (n) => (n || 0).toLocaleString('ru-RU');
+const anEsc = (s) => String(s).replace(/[<>&"]/g, (c) =>
+  ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
 
-/* Насколько изменилось против такого же прошлого периода. Без сравнения
-   само число ни о чём не говорит. */
+/* Насколько изменилось против такого же прошлого периода: само число
+   без сравнения не говорит, растём мы или падаем. */
 function anDelta(now, prev) {
-  if (!prev) return now ? { text: 'впервые', kind: 'up' } : { text: '', kind: '' };
+  if (!prev) return now ? { text: 'первые данные', kind: '' } : { text: '', kind: '' };
   const pct = Math.round((now - prev) / prev * 100);
   if (pct === 0) return { text: 'без изменений', kind: '' };
-  return { text: (pct > 0 ? '+' : '') + pct + '% к прошлому периоду',
-           kind: pct > 0 ? 'up' : 'down' };
+  return { text: (pct > 0 ? '▲ +' : '▼ ') + pct + '%', kind: pct > 0 ? 'up' : 'down' };
 }
 
-function anCard(label, value, sub, delta) {
+/* Микрографик в карточке: показывает форму периода, без осей и подписей. */
+function anSpark(values) {
+  if (!values.length) return '';
+  const w = 100, h = 26, max = Math.max(1, ...values);
+  const step = values.length > 1 ? w / (values.length - 1) : w;
+  const pts = values.map((v, i) => `${(i * step).toFixed(1)},${(h - v / max * (h - 3)).toFixed(1)}`);
+  return `<svg class="an-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="${pts.join(' ')}" fill="none" stroke="currentColor" stroke-width="1.5"
+      stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+}
+
+function anCard(label, value, sub, delta, spark) {
   const d = delta && delta.text
-    ? `<div class="an-card-delta is-${delta.kind}">${delta.text}</div>` : '';
+    ? `<span class="an-card-delta is-${delta.kind}">${delta.text}</span>` : '';
   return `<div class="an-card">
-    <div class="an-card-label">${label}</div>
+    <div class="an-card-top"><span class="an-card-label">${label}</span>${d}</div>
     <div class="an-card-value">${value}</div>
-    <div class="an-card-sub">${sub || ''}</div>${d}
+    <div class="an-card-sub">${sub || ''}</div>
+    ${spark || ''}
   </div>`;
 }
 
-/* Столбики рисуются div'ами, без графической библиотеки: панель грузится
-   как статика, и тянуть ради четырёх диаграмм отдельный пакет незачем. */
-function anBars(host, rows, opts) {
-  const o = opts || {};
+/* Площадной график: две линии с заливкой. Строится руками, потому что
+   ради одного графика подключать библиотеку в статичную панель незачем. */
+function anArea(host, rows) {
+  if (!rows.length) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const W = 1000, H = 260, padL = 44, padR = 12, padT = 14, padB = 30;
+  const max = Math.max(4, ...rows.map(r => r.hits));
+  const x = (i) => padL + (rows.length === 1 ? (W - padL - padR) / 2
+    : i * (W - padL - padR) / (rows.length - 1));
+  const y = (v) => H - padB - (v / max) * (H - padT - padB);
+
+  const line = (key) => rows.map((r, i) => `${x(i).toFixed(1)},${y(r[key]).toFixed(1)}`).join(' ');
+  const area = (key) => `${x(0).toFixed(1)},${(H - padB).toFixed(1)} ` + line(key) +
+    ` ${x(rows.length - 1).toFixed(1)},${(H - padB).toFixed(1)}`;
+
+  /* Четыре линии сетки: больше превращает график в бумагу в клетку. */
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => {
+    const v = Math.round(max * f);
+    return `<line class="an-grid-line" x1="${padL}" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}"/>
+            <text class="an-axis" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${anNum(v)}</text>`;
+  }).join('');
+
+  /* Подписи дат прореживаем: на 90 днях они иначе слипаются в полосу. */
+  const every = Math.max(1, Math.ceil(rows.length / 10));
+  const labels = rows.map((r, i) => (i % every === 0 || i === rows.length - 1)
+    ? `<text class="an-axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">${r.date.slice(8)}.${r.date.slice(5, 7)}</text>` : '').join('');
+
+  const dots = rows.map((r, i) =>
+    `<circle class="an-hit" cx="${x(i)}" cy="${y(r.hits)}" r="9" fill="transparent">
+       <title>${r.date}: ${r.hits} просмотров, ${r.unique} посетителей</title></circle>`).join('');
+
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="an-area-svg" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="anFillHits" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5b6b7a" stop-opacity=".28"/>
+        <stop offset="100%" stop-color="#5b6b7a" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="anFillUniq" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c8a15a" stop-opacity=".30"/>
+        <stop offset="100%" stop-color="#c8a15a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    ${ticks}
+    <polygon points="${area('hits')}" fill="url(#anFillHits)"/>
+    <polyline points="${line('hits')}" fill="none" stroke="#5b6b7a" stroke-width="2"
+      stroke-linejoin="round" stroke-linecap="round"/>
+    <polygon points="${area('unique')}" fill="url(#anFillUniq)"/>
+    <polyline points="${line('unique')}" fill="none" stroke="#c8a15a" stroke-width="2"
+      stroke-linejoin="round" stroke-linecap="round"/>
+    ${labels}${dots}
+  </svg>`;
+}
+
+/* Тепловая карта: день недели против часа. Показывает ритм чтения,
+   которого не видно ни в дневном, ни в часовом графике по отдельности. */
+function anHeat(host, grid) {
+  const flat = grid.flat();
+  const max = Math.max(1, ...flat);
+  if (!flat.some(Boolean)) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const wd = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+  const order = [1, 2, 3, 4, 5, 6, 0];            // неделя с понедельника
+  let html = '<div class="an-heat-grid">';
+  order.forEach((d) => {
+    html += `<span class="an-heat-day">${wd[d]}</span>`;
+    for (let h = 0; h < 24; h++) {
+      const v = grid[d][h];
+      const lvl = v === 0 ? 0 : Math.min(4, Math.ceil(v / max * 4));
+      html += `<i class="an-heat-cell is-l${lvl}" title="${wd[d]}, ${String(h).padStart(2, '0')}:00 — ${v}"></i>`;
+    }
+  });
+  html += '</div><div class="an-heat-axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>';
+  host.innerHTML = html;
+}
+
+function anBars(host, rows) {
   if (!rows.length) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
   const max = Math.max(1, ...rows.map(r => r.hits));
-  host.innerHTML = rows.map(r => {
-    const h = Math.round(r.hits / max * 100);
-    const u = Math.round((r.unique || 0) / max * 100);
-    return `<div class="an-bar" title="${r.label}: ${r.hits} заходов, ${r.unique || 0} уникальных">
+  host.innerHTML = rows.map(r => `<div class="an-bar" title="${r.label}: ${r.hits}">
       <div class="an-bar-stack">
-        <i class="an-bar-hits" style="height:${h}%"></i>
-        <i class="an-bar-uniq" style="height:${u}%"></i>
-      </div>
-      <span class="an-bar-label">${r.short}</span>
-    </div>`;
-  }).join('');
-  if (o.scroll) host.scrollLeft = host.scrollWidth;
+        <i class="an-bar-hits" style="height:${Math.round(r.hits / max * 100)}%"></i>
+        <i class="an-bar-uniq" style="height:${Math.round((r.unique || 0) / max * 100)}%"></i>
+      </div><span class="an-bar-label">${r.short}</span>
+    </div>`).join('');
 }
 
 function anList(host, rows, emptyText) {
@@ -24205,11 +24283,28 @@ function anList(host, rows, emptyText) {
   const max = Math.max(1, ...rows.map(r => r.hits));
   host.innerHTML = rows.map(r => `<div class="an-row">
       <div class="an-row-main">
-        <span class="an-row-name" title="${r.name}">${r.name}</span>
+        <span class="an-row-name" title="${anEsc(r.name)}">${anEsc(r.name)}</span>
         <span class="an-row-num">${anNum(r.hits)}${r.unique != null ? ' <b>/ ' + anNum(r.unique) + '</b>' : ''}</span>
       </div>
       <div class="an-row-track"><i style="width:${Math.round(r.hits / max * 100)}%"></i></div>
     </div>`).join('');
+}
+
+function anDevices(host, rows) {
+  const total = rows.reduce((a, r) => a + r.hits, 0);
+  if (!total) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const names = { mobile: 'Телефон', desktop: 'Компьютер', tablet: 'Планшет' };
+  host.innerHTML = rows.map((r, i) => {
+    const pct = Math.round(r.hits / total * 100);
+    return `<div class="an-dev">
+      <div class="an-dev-top">
+        <span>${names[r.device] || r.device}</span>
+        <b>${pct}%</b>
+      </div>
+      <div class="an-dev-track"><i class="is-d${i}" style="width:${pct}%"></i></div>
+      <span class="an-dev-sub">${anNum(r.hits)} просмотров, ${anNum(r.unique)} посетителей</span>
+    </div>`;
+  }).join('');
 }
 
 async function loadAnalytics() {
@@ -24218,7 +24313,7 @@ async function loadAnalytics() {
   cards.innerHTML = '<p class="an-empty">Загружаем…</p>';
   let data;
   try {
-    const res = await fetch(ANALYTICS_API, {
+    const res = await fetch(`${ANALYTICS_API}?days=${anDays}`, {
       headers: { 'X-Admin-Password': getAdminPassword() },
       cache: 'no-store',
     });
@@ -24226,39 +24321,45 @@ async function loadAnalytics() {
     if (!res.ok) throw new Error('Счётчик ответил ошибкой ' + res.status + '.');
     data = await res.json();
   } catch (err) {
-    cards.innerHTML = `<p class="an-empty">Не удалось получить статистику. ${err.message || ''}</p>`;
+    cards.innerHTML = `<p class="an-empty">Не удалось получить статистику. ${anEsc(err.message || '')}</p>`;
     return;
   }
 
   const s = data.summary;
+  const days = data.by_day_30d || [];
+  const sparkHits = days.map(d => d.hits);
+  const sparkUniq = days.map(d => d.unique);
+
   cards.innerHTML = [
-    anCard('Сегодня', anNum(s.today.hits), anNum(s.today.unique) + ' уникальных',
-           anDelta(s.today.hits, s.prev_day.hits)),
-    anCard('7 дней', anNum(s.d7.hits), anNum(s.d7.unique) + ' уникальных',
-           anDelta(s.d7.hits, s.prev_7d.hits)),
-    anCard('30 дней', anNum(s.d30.hits), anNum(s.d30.unique) + ' уникальных',
-           anDelta(s.d30.hits, s.prev_30d.hits)),
-    anCard('Новые за неделю', anNum(data.new_visitors_7d), 'впервые на сайте'),
-    anCard('Всего', anNum(s.all.hits), anNum(s.all.unique) + ' уникальных'),
+    anCard('Сегодня', anNum(s.today.hits), anNum(s.today.unique) + ' посетителей',
+           anDelta(s.today.hits, s.prev_day.hits), anSpark(sparkHits.slice(-14))),
+    anCard('За 7 дней', anNum(s.d7.hits), anNum(s.d7.unique) + ' посетителей',
+           anDelta(s.d7.hits, s.prev_7d.hits), anSpark(sparkUniq.slice(-14))),
+    anCard('Визитов', anNum(data.sessions),
+           data.pages_per_session + ' страниц за визит'),
+    anCard('Новых за неделю', anNum(data.new_visitors_7d), 'впервые на сайте'),
+    anCard('Всего за всё время', anNum(s.all.hits), anNum(s.all.unique) + ' посетителей'),
   ].join('');
 
   const since = byId('anSince');
   if (since && s.since) {
     const d = new Date(s.since * 1000);
-    since.textContent = 'Свой счётчик на сервере, ведёт запись с ' +
-      d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + '.';
+    const peak = data.peak_day
+      ? ` Самый людный день — ${new Date(data.peak_day.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}, ${data.peak_day.hits} просмотров.`
+      : '';
+    since.textContent = 'Записи с ' +
+      d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + '.' + peak;
   }
   const upd = byId('anUpdated');
   if (upd) upd.textContent = 'обновлено ' +
     new Date(data.generated_at).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  const note = byId('anPathsNote');
+  if (note) note.textContent = 'за ' + data.span_days + ' дней';
 
-  anBars(byId('anChartDays'), (data.by_day_30d || []).map(r => ({
-    hits: r.hits, unique: r.unique, label: r.date,
-    short: r.date.slice(8) + '.' + r.date.slice(5, 7),
-  })), { scroll: true });
+  anArea(byId('anArea'), days);
+  anHeat(byId('anHeat'), data.heatmap || []);
+  anDevices(byId('anDevices'), data.devices || []);
 
-  /* Сутки показываем все 24 часа, даже пустые: провал в графике это
-     тоже факт, а сжатый до непустых часов график врёт о ритме. */
   const byHour = {};
   (data.by_hour_24h || []).forEach(r => { byHour[r.hour] = r; });
   const hours = [];
@@ -24269,18 +24370,20 @@ async function loadAnalytics() {
   }
   anBars(byId('anChartHours'), hours);
 
-  anList(byId('anRefs'), (data.referrers_30d || []).map(r => ({
-    name: r.source, hits: r.hits,
-  })), 'Пока никто не приходил по ссылкам.');
-
+  anList(byId('anRefs'), (data.referrers_30d || []).map(r => ({ name: r.source, hits: r.hits })),
+         'Пока никто не приходил по ссылкам.');
   anList(byId('anPaths'), (data.top_paths_30d || []).map(r => ({
-    name: r.path, hits: r.hits, unique: r.unique,
-  })), 'Пока нет просмотров.');
+    name: r.path, hits: r.hits, unique: r.unique })), 'Пока нет просмотров.');
 }
 
 document.addEventListener('click', (e) => {
-  const btn = e.target.closest('#anRefresh');
-  if (btn) loadAnalytics();
-  const tab = e.target.closest('[data-tab="analytics"]');
-  if (tab) setTimeout(loadAnalytics, 50);
+  if (e.target.closest('#anRefresh')) loadAnalytics();
+  if (e.target.closest('[data-tab="analytics"]')) setTimeout(loadAnalytics, 50);
+  const range = e.target.closest('#anRange [data-days]');
+  if (range) {
+    anDays = parseInt(range.dataset.days, 10) || 30;
+    document.querySelectorAll('#anRange [data-days]').forEach(b =>
+      b.classList.toggle('is-on', b === range));
+    loadAnalytics();
+  }
 });
