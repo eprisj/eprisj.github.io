@@ -32661,39 +32661,71 @@
         {
           "id": 29,
           "title": "Soft Modernism: Bryn e Ellefsen's Physics Building at Blindern",
-          "author": "EPRIS Journal",
-          "role": "Equipe editoriale",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
           "date": "29 agosto 2026",
           "publishedAt": "2026-08-29",
-          "excerpt": "Il funzionalismo precoce non doveva significare linee rette. A Oslo, nel 1935, due architetti avvolsero un laboratorio in mattoni rossi, attraversarono il suo nucleo con una spirale con ringhiera in ottone e lasciarono che Per Krohg dipingesse il sistema solare sulla parete dell'atrio.",
+          "excerpt": "Hanno vinto il concorso con un tempio romano, sono andati a guardare cosa stava costruendo l'Europa, e sono tornati a svuotare il proprio disegno. Ciò che si trova a Blindern è funzionalismo che ha mantenuto il ottone, il colore e la curva.",
           "category": "Architettura",
           "subcategory": "Saggio",
           "tags": [
             "architettura",
             "funzionalismo",
             "oslo",
-            "anni 1930"
+            "1930s"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mted7t3wsdt6hw.jpg",
           "content": [
             {
               "type": "text",
-              "content": "La storia che il modernismo racconta di sé stessa è una storia della linea retta. Pareti bianche piatte, la griglia, l'angolo retto come posizione morale. Fysikkbygningen al Blindern, completata nel 1935 per l'Università di Oslo da Finn Bryn e Johan Ellefsen, fu costruita al culmine di quell'argomento e si rifiuta silenziosamente di parteciparvi. È un edificio funzionalista che si curva."
+              "content": "La storia che il modernismo racconta di sé stessa è una storia di conversione: il giovane architetto vede il nuovo lavoro, butta fuori gli stampi e non guarda mai indietro. Fysikkbygningen a Blindern è quella storia con le ricevute allegate, perché entrambe le metà di essa sopravvivono sulla carta. Finn Bryn e Johan Ellefsen vinsero il concorso dell'Università di Oslo nel 1926 con un tempio romano: una facciata con colonne al centro, un vestibolo rotondo circondato da gallerie, una cupola sopra, tutto in mattoni rossi e granito. Poi andarono in Germania, Francia e Paesi Bassi per vedere cosa veniva costruito, tornarono indietro e smontarono il loro disegno."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
-              "caption": "Fysikkbygningen, campus Blindern, Oslo. Finn Bryn e Johan Ellefsen, 1935. Fotografia: Kjetil Ree, CC BY-SA 3.0",
+              "content": "https://api.eprisjournal.com/uploads/mted5ffo3rs7kw.jpg",
+              "caption": "L'edificio di fisica visto dal campo aperto, Oslo, primi anni 1950. Fotografo sconosciuto, Biblioteca Nazionale della Norvegia, dominio pubblico",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "L'approccio rivela l'intento. Una torre centrale si erge da un lungo blocco orizzontale, il suo piano superiore aperto da una banda continua di vetrate, e il mattone è disposto scuro e caldo piuttosto che reso bianco. Il funzionalismo norvegese arrivò attraverso Svezia e Danimarca piuttosto che direttamente da Dessau, e arrivò ammorbidito: meno manifesto, più artigianato, disposto a mantenere il materiale che un paese già sapeva come costruire. Bryn e Ellefsen vinsero il concorso e consegnarono un laboratorio che si legge come architettura civica."
+              "content": "Ciò che conservarono fu la simmetria e i materiali. Ciò che andò via fu tutto ciò che faceva dell'edificio un argomento sulla Roma. Le finestre alte caddero, scomparvero la cupola e la fronte del tempio, e la facciata fu riorganizzata nella geometria più dura che si trova ora. L'edificio fu completato nel 1935 e aperto nel 1936, dieci anni dopo averlo vinto, il che significa che il progetto che rese loro fama fu silenziosamente demolito dai propri autori da qualche parte tra il concorso e le impalcature."
             },
             {
               "type": "text",
-              "content": "Ciò che rende l'edificio degno del viaggio è che la disciplina compositiva si ferma alla porta. Un corpo docente di fisica negli anni '30 aveva bisogno di pavimenti senza vibrazioni, lunghi percorsi di servizio, stanze oscurate e un'aula che potesse ospitare una generazione di studenti. Il piano risolve tutto con l'efficienza richiesta dal periodo. Poi, nel punto in cui avviene la circolazione, dove le persone incontrano effettivamente l'edificio, la geometria si allenta: le scale scorrono invece di girare, le ringhiere sono in ottone, i soffitti si alzano, e il colore appare dove un purista avrebbe lasciato intonaco."
+              "content": "Aiuta ricordare cosa fosse Blindern all'epoca. Non un campus: una fattoria. L'università aveva acquistato terreni agricoli a nord-ovest della città e si stava spostando dal quartiere neoclassico del centro città, e i primi edifici si trovavano in un prato con un sentiero di terra che passava accanto a loro. Non c'era un contesto a cui rispondere, solo un campo, un breve e un decennio che credeva che un edificio dovesse essere onesto riguardo al suo scopo."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
+                "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "L'approccio all'edificio di fisica, fine anni 1940. Biblioteca Nazionale della Norvegia, dominio pubblico",
+                "Lo stesso fronte nel 2009, con il giardino cresciuto. Fotografia: Kjetil Ree, CC BY-SA 3.0"
+              ]
+            },
+            {
+              "type": "testo",
+              "content": "Anche spoglio, l'edificio si legge come architettura civica piuttosto che come laboratorio. Una torre centrale si erge da un lungo blocco orizzontale, il suo piano superiore aperto da una banda continua di vetrate, e il mattone è posato scuro e caldo piuttosto che intonacato di bianco. Il funzionalismo norvegese arrivò attraverso Svezia e Danimarca piuttosto che direttamente da Dessau, e arrivò ammorbidito: meno manifesto, più artigianato, disposto a mantenere il materiale con cui un paese già sapeva costruire. Bryn ed Ellefsen erano in partnership dal 1922 e avrebbero poi progettato il padiglione norvegese per la Fiera Mondiale del 1939 a New York."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
+                "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Nedre Blindern dall'aria, intorno al 1955. Fotografia: Fjellanger-Wideroe, Oslo Museum, CC BY-SA 4.0",
+                "Lo stesso terreno nel 2015, con la città cresciuta intorno. Fotografia: GAD, CC BY-SA 4.0"
+              ]
+            },
+            {
+              "type": "testo",
+              "content": "Il piano è disciplinato dove la disciplina paga. Una facoltà di fisica negli anni '30 aveva bisogno di pavimenti senza vibrazioni, lunghi percorsi di servizio, stanze oscurate e un'aula che potesse ospitare una generazione di studenti, e l'edificio risolve tutto con l'efficienza richiesta dal periodo. Ospitava anche chimica, fino a quando quell'istituto si trasferì negli anni '60 e il nome fu abbreviato a quello attuale. Poi, nel punto in cui avviene la circolazione, dove le persone incontrano effettivamente l'edificio, la geometria si allenta. Le scale scorrono invece di girare. Le ringhiere sono in ottone. I soffitti si alzano. Il colore appare dove un purista avrebbe lasciato intonaco."
             },
             {
               "type": "immagine",
@@ -32703,36 +32735,57 @@
             },
             {
               "type": "testo",
-              "content": "Il vestibolo è l'argomento in miniatura. Il suo pavimento è un zigzag bianco e nero, più vicino a un transatlantico degli anni '30 che a un laboratorio, e un pendolo di Foucault pende attraverso lo spazio a doppia altezza, oscillando nel piano sotto cui si muove la terra. È uno strumento funzionante e un elemento di interior design allo stesso tempo: l'unico oggetto nell'edificio che dimostra la disciplina ospitata senza una singola parola di spiegazione."
+              "content": "Il vestibolo è l'intera argomentazione in miniatura, ed è l'unica stanza in cui ancora si vede il progetto demolito del 1926. Bryn ed Ellefsen avevano promesso una rotunda con cupola; ciò che hanno costruito invece è un atrio a doppia altezza con un pavimento a zigzag bianco e nero, più vicino a una nave da crociera degli anni '30 che a un laboratorio, aprendo su entrambi i lati affinché lo spazio funzioni come un passaggio pubblico tra Majorstuen e il campus piuttosto che come un ingresso."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+              "caption": "Il vestibolo, rivolto verso l'ingresso. Fotografia: Mysteriumen, CC BY-SA 3.0",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Al centro di esso pende un pendolo di Foucault: una sfera dorata di venti centimetri di diametro e peso di trentadue chilogrammi, su un filo di 14,1 metri. L'originale di Foucault a Parigi nel 1851 era un peso di 28 chilogrammi su 67 metri di filo, la prima dimostrazione in una stanza piuttosto che nel cielo che la Terra ruota. Alla latitudine di Oslo di sessanta gradi nord, il piano dell'oscillazione impiega 27 ore e 43 minuti per tornare a posizionarsi. È uno strumento funzionante e un elemento di interior design allo stesso tempo, l'unico oggetto qui che spiega la disciplina ospitata nell'edificio senza una singola parola."
             },
             {
               "type": "galleria",
               "content": [
-                "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
-                "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+                "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
+                "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
               ],
               "caption": "",
               "alts": [
-                "Il vestibolo con il suo pendolo di Foucault e il pavimento a zigzag.",
-                "Il murale di Per Krohg sulla parete orientale, completato nel 1938."
+                "Il pomello di ottone, la ringhiera di ottone e la piastra esplicativa, sopra il pavimento in pietra con stelle intagliate. Fotografia: Bernt Rostad, CC BY 2.0",
+                "Lo stesso pomello nel 2005, con l'anello che segna la altalena. Fotografia: Mads Bodker, CC BY 2.0"
               ]
             },
             {
               "type": "testo",
-              "content": "Sopra di esso, attraverso la parete orientale, Per Lasson Krohg dipinse il sole e i pianeti nel 1938, circondati da galassie disegnate come una donna e un uomo, con l'aurora che attraversa la composizione. Krohg avrebbe poi dipinto il murale nella sala del Consiglio di Sicurezza delle Nazioni Unite a New York. Qui, tre anni prima della guerra, stava facendo qualcosa che un programma strettamente funzionalista non prevede: decorare un edificio di fisica con una cosmologia. Le barre di vetro della finestra della scala tagliano direttamente il dipinto, e i due sistemi, la griglia e l'immagine, si sostengono a vicenda piuttosto che competere."
+              "content": "Sopra di esso, attraverso tre pareti intorno all'ingresso principale, Per Lasson Krohg dipinse 260 metri quadrati di affresco con intarsi di vetro e vetro dipinto. Vinse quella competizione nel 1935, l'anno in cui l'edificio fu completato, e il lavoro fu terminato nell'autunno del 1938, finanziato dal console generale Peter Krag. Si chiama Atomet i verdensrommet, l'atomo nello spazio: il sole e i pianeti circondati da galassie disegnate come una donna e un uomo, con l'aurora che attraversa la composizione. Krohg dipinse in seguito il murale nella sala del Consiglio di Sicurezza delle Nazioni Unite a New York."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
+              "caption": "Atomet i verdensrommet, Per Krohg, completato nel 1938, sulla parete orientale. Fotografia: Bernt Rostad, CC BY 2.0",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Nota cosa significa questo per la cronologia. Lo schema classico fu abbandonato alla fine degli anni venti come troppo decorativo per il nuovo secolo, e poi, con l'edificio funzionalista ormai finito, l'università organizzò un concorso per coprire il suo ingresso con cosmologia dipinta e appese un peso di ottone al centro. Le barre di vetro della finestra della scala tagliavano direttamente l'immagine. La griglia e il dipinto si sostenevano a vicenda piuttosto che competere, e i conservatori di NIKU che pulirono il lavoro nel 2015 stavano mantenendo qualcosa che nessuna lettura purista degli anni '30 può spiegare completamente."
             },
             {
               "type": "text",
-              "content": "Quella convivenza è la ragione per cui l'edificio insegna ancora qualcosa. La versione eroica degli anni 1930 chiede a una struttura di essere onesta, e l'onestà è intesa come nudità. Fysikkbygningen accetta ogni richiesta funzionale del suo brief e poi tratta calore, colore e curvatura come richieste funzionali anche, sulla base del fatto che le persone all'interno sono anch'esse parte del programma. Quasi un secolo dopo, con la rampicante cresciuta sul facciata del giardino e il pendolo ancora oscillante, sembra meno un compromesso con il modernismo che una sua correzione."
+              "content": "Ecco il motivo per cui l'edificio insegna ancora qualcosa. La versione eroica del decennio chiede a una struttura di essere onesta, e l'onestà viene interpretata come nudità. Fysikkbygningen accetta ogni richiesta funzionale del suo brief, ne abbandona le colonne per farlo, e poi tratta calore, colore e curvatura come richieste funzionali anche, sulla base del fatto che le persone all'interno sono anch'esse parte del programma. Quasi un secolo dopo, con la rampicante che diventa scarlatta sull'ingresso ogni ottobre e il pendolo ancora oscillante, sembra meno un compromesso con il modernismo che una sua correzione."
             },
             {
               "type": "text",
-              "content": "Fotografie via Wikimedia Commons: esterno di Kjetil Ree (CC BY-SA 3.0); facciata del giardino di Punkmorten (dominio pubblico); vestibolo di Mysteriumen (CC BY-SA 3.0); parete murale di Bernt Rostad (CC BY 2.0), opera di Per Lasson Krohg, 1938."
+              "content": "<hr><h4>Fonti</h4><ul class=\"sources\"><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – l'entrata vincente del 1926, il viaggio di studio e come la facciata del tempio fu rimossa – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – Bryn e Ellefsen a Nedre Blindern: la pratica e il piano del campus – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Store norske leksikon</strong> – Finn Bryn: la partnership dal 1922 e i lavori successivi – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Fysisk institutt, UiO</strong> – il pendolo nell'atrio: sfera dorata da 32 kg, filo da 14,1 m, 27 h 43 min a 60 gradi nord – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – L'atomo nello spazio: il concorso artistico del 1935, 260 metri quadrati, completato nell'autunno 1938, conservato da NIKU nel 2015 – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Nasjonalmuseet</strong> – Bryn e Ellefsen, disegni originali del concorso per l'edificio di fisica – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Fotografie: liberamente licenziate tramite Wikimedia Commons, ciascuna accreditata nella didascalia. Vedute d'archivio dalla Biblioteca Nazionale della Norvegia e dal Museo di Oslo.</span>"
             }
           ],
           "order": 0,
-          "draft": false,
-          "updatedAt": "2026-08-29T12:31:54.767Z"
+          "draft": true,
+          "previewToken": "VqyxUSuamqI0",
+          "updatedAt": "2026-08-29T12:47:49.586Z"
         }
       ],
       "reviews": [
