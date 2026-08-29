@@ -105,6 +105,7 @@ const PRERENDER_STYLE = `<style>
     .pre-doc ul{padding-left:1.1em}
     .pre-doc li{margin:0 0 .5em}
     .pre-doc a{color:#2b2b2b}
+    .pre-doc img{max-width:100%;height:auto;display:block;margin:0 0 1.4em}
   </style>`;
 
 function prerenderBody(html) {
@@ -126,9 +127,28 @@ function articleParagraphs(article) {
     .join('\n');
 }
 
+function escapeXml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+
+function relatedLinks(current) {
+  const same = publicArticles.filter((a) =>
+    a.id !== current.id && a.category && a.category === current.category);
+  const rest = publicArticles.filter((a) =>
+    a.id !== current.id && !same.includes(a));
+  const picked = [...same, ...rest].slice(0, 6);
+  if (!picked.length) return '';
+  return `<h2>Read next</h2><ul>${picked.map((a) =>
+    `<li><a href="${SITE_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a></li>`
+  ).join('')}</ul>`;
 }
 
 function articleKeywords(article) {
@@ -269,7 +289,9 @@ for (const article of publicArticles) {
       ${article.excerpt ? `<p>${escapeHtml(article.excerpt)}</p>` : ''}
       <p><small>${escapeHtml(article.author || 'EPRIS Editorial')}${
         formatDate(article.date) ? ` · ${String(formatDate(article.date)).slice(0, 10)}` : ''}</small></p>
+      ${imageUrl ? `<p><img src="${escapeAttr(imageUrl)}" alt="${title}" width="1200" height="800" /></p>` : ''}
       ${articleParagraphs(article)}
+      ${relatedLinks(article)}
       <nav><a href="${SITE_ORIGIN}/articles/">All articles</a> · <a href="${SITE_ORIGIN}/">EPRIS Journal</a></nav>
     </article>`);
   const pageHtml = template
@@ -536,6 +558,57 @@ const sitemapEntries = [
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
 console.log(`Generated: /sitemap.xml (${sitemapEntries.length} URLs)`);
+
+/* ── Стрічка ──────────────────────────────────────────────────────────
+   Повний текст у <content:encoded>, а не лише анонс: агрегатори й
+   читалки беруть матеріал цілком, і сторінка встигає розійтись раніше,
+   ніж її обійде пошуковик. */
+const feedItems = publicArticles.slice(0, 30).map((article) => {
+  const slug = generateSlug(article.title);
+  const link = `${SITE_ORIGIN}/article/${slug}/`;
+  const pub = formatDate(article.date) || formatDate(article.updatedAt);
+  const body = articleParagraphs(article);
+  const img = resolveImage(article);
+  return `  <item>
+    <title>${escapeXml(article.title)}</title>
+    <link>${link}</link>
+    <guid isPermaLink="true">${link}</guid>
+    ${pub ? `<pubDate>${new Date(pub).toUTCString()}</pubDate>` : ''}
+    <dc:creator>${escapeXml(article.author || 'EPRIS Editorial')}</dc:creator>
+    ${article.category ? `<category>${escapeXml(article.category)}</category>` : ''}
+    <description>${escapeXml(article.excerpt || '')}</description>
+    ${img ? `<enclosure url="${escapeAttr(img)}" type="image/jpeg" />` : ''}
+    <content:encoded><![CDATA[${img ? `<p><img src="${img}" alt="${escapeAttr(article.title)}" /></p>` : ''}${body}]]></content:encoded>
+  </item>`;
+}).join('\n');
+
+const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${escapeXml(SITE_NAME)}</title>
+  <link>${SITE_ORIGIN}/</link>
+  <atom:link href="${SITE_ORIGIN}/rss.xml" rel="self" type="application/rss+xml" />
+  <description>Independent international journal on contemporary art, architecture and interior design.</description>
+  <language>en</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <image><url>${DEFAULT_IMAGE}</url><title>${escapeXml(SITE_NAME)}</title><link>${SITE_ORIGIN}/</link></image>
+${feedItems}
+</channel>
+</rss>
+`;
+writeFileSync(join(distDir, 'rss.xml'), feedXml);
+writeFileSync(join(distDir, 'feed.xml'), feedXml);
+console.log(`Generated: /rss.xml (${publicArticles.slice(0, 30).length} items)`);
+
+/* IndexNow: Bing, Yandex, Seznam і Naver забирають адресу за хвилини,
+   а не чекають наступного обходу. Ключ лежить файлом у корені сайту,
+   інакше сервіс відмовляє. Сам список надсилає deploy-скрипт. */
+const INDEXNOW_KEY = 'b7f3d9a14c2e48f0b6d5a83e1c7f9024';
+writeFileSync(join(distDir, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
+writeFileSync(join(distDir, 'indexnow-urls.txt'),
+  sitemapEntries.map((e) => e.loc).join('\n') + '\n');
+console.log('Generated: IndexNow key + url list');
 
 // Catch-all 404 (also a copy of the shell) for any unmatched path.
 const notFoundHtml = template.replace('<!--TITLE-->', routeHead('', 'EPRIS Journal'));
