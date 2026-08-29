@@ -24148,3 +24148,139 @@ document.getElementById('formsList')?.addEventListener('click', (event) => {
   const button = event.target.closest('[data-form-open]');
   if (button) openFormEditor(button.dataset.formOpen);
 });
+
+/* ── Аналитика: посещаемость ──────────────────────────────────────────
+   Данные берутся у собственного счётчика на сервере (служба hitcounter),
+   а не у Google: его отчёты живут в чужом интерфейсе, а здесь нужно
+   видеть цифры не выходя из панели. Авторизация тем же паролем, что и
+   остальные запросы к API, поэтому в этот файл не зашит никакой токен. */
+const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
+
+function anNum(n) {
+  return (n || 0).toLocaleString('ru-RU');
+}
+
+/* Насколько изменилось против такого же прошлого периода. Без сравнения
+   само число ни о чём не говорит. */
+function anDelta(now, prev) {
+  if (!prev) return now ? { text: 'впервые', kind: 'up' } : { text: '', kind: '' };
+  const pct = Math.round((now - prev) / prev * 100);
+  if (pct === 0) return { text: 'без изменений', kind: '' };
+  return { text: (pct > 0 ? '+' : '') + pct + '% к прошлому периоду',
+           kind: pct > 0 ? 'up' : 'down' };
+}
+
+function anCard(label, value, sub, delta) {
+  const d = delta && delta.text
+    ? `<div class="an-card-delta is-${delta.kind}">${delta.text}</div>` : '';
+  return `<div class="an-card">
+    <div class="an-card-label">${label}</div>
+    <div class="an-card-value">${value}</div>
+    <div class="an-card-sub">${sub || ''}</div>${d}
+  </div>`;
+}
+
+/* Столбики рисуются div'ами, без графической библиотеки: панель грузится
+   как статика, и тянуть ради четырёх диаграмм отдельный пакет незачем. */
+function anBars(host, rows, opts) {
+  const o = opts || {};
+  if (!rows.length) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const max = Math.max(1, ...rows.map(r => r.hits));
+  host.innerHTML = rows.map(r => {
+    const h = Math.round(r.hits / max * 100);
+    const u = Math.round((r.unique || 0) / max * 100);
+    return `<div class="an-bar" title="${r.label}: ${r.hits} заходов, ${r.unique || 0} уникальных">
+      <div class="an-bar-stack">
+        <i class="an-bar-hits" style="height:${h}%"></i>
+        <i class="an-bar-uniq" style="height:${u}%"></i>
+      </div>
+      <span class="an-bar-label">${r.short}</span>
+    </div>`;
+  }).join('');
+  if (o.scroll) host.scrollLeft = host.scrollWidth;
+}
+
+function anList(host, rows, emptyText) {
+  if (!rows.length) { host.innerHTML = `<p class="an-empty">${emptyText}</p>`; return; }
+  const max = Math.max(1, ...rows.map(r => r.hits));
+  host.innerHTML = rows.map(r => `<div class="an-row">
+      <div class="an-row-main">
+        <span class="an-row-name" title="${r.name}">${r.name}</span>
+        <span class="an-row-num">${anNum(r.hits)}${r.unique != null ? ' <b>/ ' + anNum(r.unique) + '</b>' : ''}</span>
+      </div>
+      <div class="an-row-track"><i style="width:${Math.round(r.hits / max * 100)}%"></i></div>
+    </div>`).join('');
+}
+
+async function loadAnalytics() {
+  const cards = byId('anCards');
+  if (!cards) return;
+  cards.innerHTML = '<p class="an-empty">Загружаем…</p>';
+  let data;
+  try {
+    const res = await fetch(ANALYTICS_API, {
+      headers: { 'X-Admin-Password': getAdminPassword() },
+      cache: 'no-store',
+    });
+    if (res.status === 401) throw new Error('Счётчик не принял пароль администратора.');
+    if (!res.ok) throw new Error('Счётчик ответил ошибкой ' + res.status + '.');
+    data = await res.json();
+  } catch (err) {
+    cards.innerHTML = `<p class="an-empty">Не удалось получить статистику. ${err.message || ''}</p>`;
+    return;
+  }
+
+  const s = data.summary;
+  cards.innerHTML = [
+    anCard('Сегодня', anNum(s.today.hits), anNum(s.today.unique) + ' уникальных',
+           anDelta(s.today.hits, s.prev_day.hits)),
+    anCard('7 дней', anNum(s.d7.hits), anNum(s.d7.unique) + ' уникальных',
+           anDelta(s.d7.hits, s.prev_7d.hits)),
+    anCard('30 дней', anNum(s.d30.hits), anNum(s.d30.unique) + ' уникальных',
+           anDelta(s.d30.hits, s.prev_30d.hits)),
+    anCard('Новые за неделю', anNum(data.new_visitors_7d), 'впервые на сайте'),
+    anCard('Всего', anNum(s.all.hits), anNum(s.all.unique) + ' уникальных'),
+  ].join('');
+
+  const since = byId('anSince');
+  if (since && s.since) {
+    const d = new Date(s.since * 1000);
+    since.textContent = 'Свой счётчик на сервере, ведёт запись с ' +
+      d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + '.';
+  }
+  const upd = byId('anUpdated');
+  if (upd) upd.textContent = 'обновлено ' +
+    new Date(data.generated_at).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+  anBars(byId('anChartDays'), (data.by_day_30d || []).map(r => ({
+    hits: r.hits, unique: r.unique, label: r.date,
+    short: r.date.slice(8) + '.' + r.date.slice(5, 7),
+  })), { scroll: true });
+
+  /* Сутки показываем все 24 часа, даже пустые: провал в графике это
+     тоже факт, а сжатый до непустых часов график врёт о ритме. */
+  const byHour = {};
+  (data.by_hour_24h || []).forEach(r => { byHour[r.hour] = r; });
+  const hours = [];
+  for (let i = 0; i < 24; i++) {
+    const k = String(i).padStart(2, '0');
+    const r = byHour[k] || { hits: 0, unique: 0 };
+    hours.push({ hits: r.hits, unique: r.unique, label: k + ':00', short: k });
+  }
+  anBars(byId('anChartHours'), hours);
+
+  anList(byId('anRefs'), (data.referrers_30d || []).map(r => ({
+    name: r.source, hits: r.hits,
+  })), 'Пока никто не приходил по ссылкам.');
+
+  anList(byId('anPaths'), (data.top_paths_30d || []).map(r => ({
+    name: r.path, hits: r.hits, unique: r.unique,
+  })), 'Пока нет просмотров.');
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('#anRefresh');
+  if (btn) loadAnalytics();
+  const tab = e.target.closest('[data-tab="analytics"]');
+  if (tab) setTimeout(loadAnalytics, 50);
+});
