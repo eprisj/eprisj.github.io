@@ -64,7 +64,15 @@
       (function () {
         var send = function () {
           try {
-            var body = JSON.stringify({ path: location.pathname, ref: document.referrer || "" });
+            /* Заголовок страницы и ширина экрана нужны отчёту: путь вроде
+               /article/23 ничего не говорит редакции, а разбивка по
+               ширине показывает, с чего на самом деле читают. */
+            var body = JSON.stringify({
+              path: location.pathname,
+              ref: document.referrer || "",
+              title: (document.title || "").slice(0, 200),
+              w: window.screen ? window.screen.width : 0
+            });
             if (navigator.sendBeacon) {
               /* text/plain, а не application/json: sendBeacon шлёт запрос
                  с credentials и не умеет preflight, поэтому любой
