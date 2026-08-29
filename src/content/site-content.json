@@ -27945,6 +27945,82 @@
           "authorId": "author-1784896384236-4fokw",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
+        },
+        {
+          "id": 29,
+          "title": "Yumuşak Modernizm: Bryn ve Ellefsen'in Blindern'deki Fizik Binası",
+          "author": "EPRIS Journal",
+          "role": "Editör ekibi",
+          "date": "29 Ağustos 2026",
+          "publishedAt": "2026-08-29",
+          "excerpt": "Erken fonksiyonalizm dik çizgiler anlamına gelmek zorunda değildi. Oslo'da, 1935'te, iki mimar bir laboratuvarı kırmızı tuğla ile sardı, çekirdeği boyunca pirinç korkuluklu bir spiral çizdi ve Per Krohg'un giriş holü duvarına güneş sistemini boyamasına izin verdi.",
+          "category": "Mimarlık",
+          "subcategory": "Deneme",
+          "tags": [
+            "mimarlık",
+            "fonksiyonalizm",
+            "oslo",
+            "1930'lar"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "Modernizm hikayesini kendisi hakkında anlatırsa, bu doğru çizgi hikayesidir. Düz beyaz duvarlar, ızgara, ahlaki duruş olarak dik açı. Blindern'deki Fysikkbygningen, 1935 yılında Oslo Üniversitesi için Finn Bryn ve Johan Ellefsen tarafından tamamlandı, bu tartışmanın zirvesinde inşa edildi ve sessizce ona katılmaktan kaçınıyor. Bu, kıvrılan fonksiyonel bir yapıdır."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+              "caption": "Fysikkbygningen, Blindern kampüsü, Oslo. Finn Bryn ve Johan Ellefsen, 1935. Fotoğraf: Kjetil Ree, CC BY-SA 3.0",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Yaklaşım niyeti ortaya koyar. Merkezi bir kule, uzun yatay bir bloktan yükselir, en üst katı sürekli bir cam bandıyla açık bırakılmıştır ve tuğla, beyaz sıvanmış yerine koyu ve sıcak bir şekilde döşenmiştir. Norveç fonksiyonelliği, doğrudan Dessau'dan değil, İsveç ve Danimarka üzerinden geldi ve yumuşatılmıştı: daha az manifestoyla, daha çok zanaatla, zaten inşa etmeyi bilen bir ülkenin malzemesini kullanmaya istekliydi. Bryn ve Ellefsen, bir yarışmayı kazanarak, sivil mimari olarak okunan bir laboratuvar sundular."
+            },
+            {
+              "type": "text",
+              "content": "Binayı gezmeye değer kılan şey, yapısal disiplinin kapıya kadar gelmesidir. 1930'larda bir fizik fakültesi, titreşimden arındırılmış zeminler, uzun servis hatları, karartma odaları ve bir nesil öğrenciye yetecek bir konferans salonu gerekiyordu. Plan, dönemin talep ettiği verimlilikle bunu çözüyor. Sonra, dolaşımın gerçekleştiği noktada, insanların gerçekten binayla buluştuğu yerde, geometrik gevşer: merdivenler dönmek yerine süpürür, tutamaklar pirinç, tavanlar yükselir ve renk, bir safın sıva bırakacağı yerde belirir."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
+              "caption": "Bahçe tarafındaki camlı merdiven hacmi, Virginia sarmaşığıyla tutulmuş. Fotoğraf: Punkmorten, kamu malı",
+              "align": "merkez"
+            },
+            {
+              "type": "metin",
+              "content": "Giriş holü, minyatürdeki argümandır. Zemin kaplaması siyah-beyaz zikzak olup, 1930'lar okyanus yolcu gemisine daha yakındır ve bir Foucault sarkacı, çift yüksekliğindeki boşluktan asılmıştır, Dünya'nın döndüğü düzlemde sallanır. Bu, hem çalışan bir araç hem de iç tasarımın bir parçasıdır: binadaki tek nesne, orada barındırılan disiplini tek kelime açıklama olmadan gösterir."
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+                "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Foucault sarkacı ve zikzak zeminli giriş holü.",
+                "Per Krohg'un doğu duvarındaki freski, 1938'de tamamlandı."
+              ]
+            },
+            {
+              "type": "metin",
+              "content": "Üzerinde, doğu duvarının karşısında, Per Lasson Krohg 1938'de güneşi ve gezegenleri resmetti, kadın ve erkek olarak çizilmiş galaksilerle çevrili, kompozisyona aurora akıyor. Krohg daha sonra New York'taki Birleşmiş Milletler Güvenlik Konseyi odasında freski boyadı. Burada, savaş öncesi üç yıl içinde, katı bir fonksiyonelci programın yer olmadığı bir şeyi yapıyordu: bir fizik binasını kozmolojiyle süslemek. Merdiven penceresinin cam çerçeve çubukları doğrudan tabloyu kesiyor ve iki sistem, ızgara ve resim, birbirine rakip olmaktan çok birbirini tutuyor."
+            },
+            {
+              "type": "text",
+              "content": "Bu birlikte var olma, binanın hâlâ bir şeyler öğretiyor olmasının nedenidir. 1930'ların kahramanca versiyonu, bir yapıya dürüst olmasını ister ve dürüstlük, sadelik olarak anlaşılır. Fysikkbygningen, taslağının her fonksiyonel talebini kabul eder ve sonra sıcaklık, renk ve eğrilik gibi fonksiyonel talepleri de, içindekilerin de programın bir parçası olduğu gerekçesiyle, ele alır. Neredeyse bir yüzyıl sonra, bahçe cephesine sarmaşıklar sarılmış ve sarkaç hâlâ sallanırken, bu, modernizmle bir uzlaşmadan çok, ona bir düzeltme gibi görünür."
+            },
+            {
+              "type": "text",
+              "content": "Fotoğraflar Wikimedia Commons üzerinden: dış cephe Kjetil Ree (CC BY-SA 3.0); bahçe cephesi Punkmorten (kamu malı); antre Mysteriumen (CC BY-SA 3.0); duvar resmi Bernt Rostad (CC BY 2.0), sanat eseri Per Lasson Krohg, 1938."
+            }
+          ],
+          "order": 0,
+          "draft": false,
+          "updatedAt": "2026-08-29T12:31:37.757Z"
         }
       ],
       "reviews": [
