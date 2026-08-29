@@ -121,6 +121,13 @@
               </button>
               <button class="sb-pin" type="button" data-pin="dashboard" title="Закрепить в «Часто»" aria-label="Закрепить раздел «Обзор» в блоке «Часто»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
             </div>
+            <div class="sb-item" data-home="dashboard">
+              <button class="tab-btn" data-tab="analytics" data-nav-label="Аналитика" data-keywords="посещаемость статистика трафик визиты просмотры счётчик аудитория" type="button">
+                <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5h18"/><rect x="4.5" y="12" width="3.5" height="6" rx="1"/><rect x="10.2" y="7.5" width="3.5" height="10.5" rx="1"/><rect x="15.9" y="4" width="3.5" height="14" rx="1"/></svg>
+                <span class="sb-label">Аналитика</span>
+              </button>
+              <button class="sb-pin" type="button" data-pin="analytics" title="Закрепить в «Часто»" aria-label="Закрепить раздел «Аналитика» в блоке «Часто»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
+            </div>
             <div class="sb-item" data-home="edit">
               <button class="tab-btn" data-tab="content" data-nav-label="Публикации" data-keywords="статьи материалы тексты записи контент" type="button">
                 <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h9l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V5a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M14 3.5V9h5"/><path d="M8.5 13h7M8.5 17h4.5"/></svg>
@@ -479,6 +486,50 @@
               </div>
             </div>
           </section>
+          <section class="tab-panel" id="tab-analytics">
+            <div class="an-head">
+              <div>
+                <h2 class="an-title">Посещаемость</h2>
+                <p class="an-sub" id="anSince">Свой счётчик на сервере: считает заходы и уникальных посетителей, без Google.</p>
+              </div>
+              <div class="an-actions">
+                <span class="an-updated" id="anUpdated"></span>
+                <button class="btn btn-secondary" type="button" id="anRefresh">Обновить</button>
+              </div>
+            </div>
+
+            <div class="an-cards" id="anCards"></div>
+
+            <div class="an-grid">
+              <section class="an-box an-box--wide">
+                <header class="an-box-head">
+                  <h3>Заходы по дням</h3>
+                  <span class="an-legend"><i class="an-dot an-dot--hits"></i>заходы <i class="an-dot an-dot--uniq"></i>уникальные</span>
+                </header>
+                <div class="an-chart" id="anChartDays"></div>
+              </section>
+
+              <section class="an-box">
+                <header class="an-box-head"><h3>По часам, сутки</h3></header>
+                <div class="an-chart an-chart--hours" id="anChartHours"></div>
+              </section>
+
+              <section class="an-box">
+                <header class="an-box-head"><h3>Откуда приходят</h3></header>
+                <div class="an-list" id="anRefs"></div>
+              </section>
+
+              <section class="an-box an-box--wide">
+                <header class="an-box-head"><h3>Какие страницы смотрят</h3><span class="an-note">за 30 дней</span></header>
+                <div class="an-list an-list--paths" id="anPaths"></div>
+              </section>
+            </div>
+
+            <p class="an-foot">Данные с собственного счётчика на сервере журнала. Адрес посетителя не хранится:
+              вместо него записывается необратимый отпечаток, по нему и считаются уникальные.
+              Параллельно работает Google Analytics (G-F3F5GCXFBF) — его отчёты в интерфейсе Google.</p>
+          </section>
+
 
           <!-- ===== МАСТЕР СОЗДАНИЯ ЗАПИСИ =====
                Создание было разложено на два несвязанных пути: кнопка
@@ -2461,7 +2512,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=6.56" type="module"></script>
+    <script src="./app.js?v=6.57" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
