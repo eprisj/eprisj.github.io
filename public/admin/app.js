@@ -24345,10 +24345,12 @@ async function loadAnalytics() {
   if (since && s.since) {
     const d = new Date(s.since * 1000);
     const peak = data.peak_day
-      ? ` Самый людный день — ${new Date(data.peak_day.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}, ${data.peak_day.hits} просмотров.`
+      ? ` Самый людный день: ${new Date(data.peak_day.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}, ${anNum(data.peak_day.hits)} просмотров.`
       : '';
+    /* toLocaleDateString с year:'numeric' в русской локали уже добавляет
+       «г.», и своя точка после него давала «2026 г..». */
     since.textContent = 'Записи с ' +
-      d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + '.' + peak;
+      d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + peak;
   }
   const upd = byId('anUpdated');
   if (upd) upd.textContent = 'обновлено ' +
