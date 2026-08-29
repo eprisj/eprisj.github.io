@@ -5350,7 +5350,7 @@
           "content": "This interview has been edited and condensed for length and clarity."
         }
       ],
-      "updatedAt": "2026-08-29T12:30:56.463Z",
+      "updatedAt": "2026-08-29T13:19:46.723Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c"
     },
@@ -10516,25 +10516,25 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mted7t3wsdt6hw.jpg",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "История модернизма, рассказываемая о себе, — это история обращения: молодой архитектор видит новую работу, выбрасывает формы и больше не оглядывается назад. Fysikkbygningen at Blindern — это эта история с приложенными квитанциями, потому что обе её части сохраняются на бумаге. Finn Bryn и Johan Ellefsen выиграли конкурс Университета Осло в 1926 году с римским храмом: колоннадным фасадом в центре, круглым вестибюлем, окружённым галереями, куполом сверху, всё из красного кирпича и гранита. Затем они отправились в Германию, Францию и Нидерланды, чтобы увидеть, что строится, вернулись и разобрали свой собственный чертёж."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mted5ffo3rs7kw.jpg",
               "caption": "Физический корпус, вид с открытого поля, Осло, начало 1950-х. Неизвестный фотограф, Национальная библиотека Норвегии, общественное достояние",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Что они сохранили, — это симметрию и материалы. Что исчезло, — это всё, что делало здание аргументом о Риме. Высокие окна опустили, купол и фронтон храма исчезли, а фасад был переработан в более жёсткую геометрию, которая стоит там сейчас. Здание было завершено в 1935 году и открыто в 1936 году, через десять лет после их победы, что означает, что проект, сделавший их репутацию, тихо был разрушен его же авторами где-то между конкурсом и лесами."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Полезно помнить, что такое было Blindern в то время. Не кампус: ферма. Университет купил сельскохозяйственные земли к северо-западу от города и переезжал из своего неоклассического квартала в центре города, а первые здания стояли на лугу с грунтовой дорогой, проходящей мимо них. Не было контекста, на который можно было бы ответить, только поле, краткое и десятилетие, которое верило, что здание должно быть честным в отношении своей цели."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -10546,11 +10546,11 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Даже в минимальном виде, здание воспринимается как гражданская архитектура, а не как лаборатория. Центральная башня возвышается из длинного горизонтального блока, его верхний этаж прорезан непрерывной полосой остекления, а кирпич уложен темным и теплым, а не окрашен в белый. Норвежский функционализм пришел через Швецию и Данию, а не напрямую из Дессау, и он пришел смягченным: меньше манифеста, больше мастерства, готового сохранить материал, с которым страна уже знала, как строить. Bryn и Ellefsen работали вместе с 1922 года и впоследствии спроектировали норвежский павильон для Всемирной выставки 1939 года в Нью-Йорке."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -10562,31 +10562,31 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "План дисциплинирован там, где дисциплина оправдана. Физический факультет в 1930-х годах нуждался в вибрационно-устойчивых полах, длинных инженерных коммуникациях, затемняющих комнатах и лекционном зале, способном вместить целое поколение студентов, и здание решает все эти задачи с той эффективностью, которую требовал тот период. В нем также размещался химический институт, пока тот не переехал в 1960-х, и название сократилось до нынешнего. Тогда, в точке, где происходит циркуляция, где люди действительно встречаются с зданием, геометрия становится свободнее. Лестницы идут плавно, а не поворачивают. Перила из латуни. Потолки поднимаются. Цвет появляется там, где у пуриста осталась бы штукатурка."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "Объем застекленной лестницы со стороны сада, окруженный Virginia creeper. Фотография: Punkmorten, общественное достояние",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вестибюль — это вся аргументация в миниатюре, и это единственная комната, где всё ещё просвечивает разрушенная схема 1926 года. Bryn и Ellefsen обещали купольный ротонду; вместо этого они построили зал двойной высоты с черно-белым зигзагообразным полом, более похожий на океанский лайнер 1930-х годов, чем на лабораторию, открывающийся с обеих сторон, чтобы пространство функционировало как общественный проход между Majorstuen и кампусом, а не как лобби."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "Вестибюль, смотрящий в сторону входа. Фотография: Mysteriumen, CC BY-SA 3.0",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Посередине висит маятник Фуко: позолоченный шар диаметром двадцать сантиметров и весом тридцать два килограмма, на проволоке длиной 14,1 метра. Оригинал Фуко в Париже 1851 года был грузом весом 28 килограммов на 67 метрах проволоки, первая демонстрация в комнате, а не в небе, вращения Земли. На широте Осло в sixty градусов северной широты плоскость колебания занимает 27 часов и 43 минуты, чтобы вернуться обратно. Это рабочий инструмент и одновременно элемент интерьера, единственный объект здесь, который объясняет дисциплину, размещённую в здании, без единого слова."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -10598,25 +10598,25 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Выше, через три стены вокруг главного входа, Per Lasson Krohg расписал 260 квадратных метров фрески с вставками из стекла и расписным стеклом. Он выиграл тот конкурс в 1935 году, в год завершения здания, а работа была завершена осенью 1938 года, оплачена консулом-general Peter Krag. Она называется Atomet i verdensrommet, атом в космосе: солнце и планеты, окружённые галактиками, изображёнными как женщина и мужчина, с северным сиянием, проходящим через композицию. Krohg позже написал фреску в зале Совета Безопасности ООН в Нью-Йорке."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, завершено в 1938 году, на восточной стене. Фотография: Bernt Rostad, CC BY 2.0",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Обратите внимание, что это означает для хронологии. Классическая схема была отвергнута в конце двадцатых годов как слишком декоративная для нового века, а затем, с завершением функционалистского здания, университет провёл конкурс на покрытие его входа расписанной космологией и повесил латный груз посередине. Стеклянные перекладины окна лестницы прорезают картину прямо. Сетка и картина скорее держатся друг за друга, чем конкурируют, и консерваторы из NIKU, которые очистили работу в 2015 году, поддерживали что-то, что ни один пурист, читающий 1930-е, не может полностью объяснить."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вот почему здание всё ещё чему-то учит. Героическая версия десятилетия требует от конструкции честности, и честность воспринимается как голость. Fysikkbygningen принимает все функциональные требования своего задания, опускает свои собственные колонны, чтобы это сделать, а затем рассматривает тепло, цвет и кривизну как функциональные требования тоже, исходя из того, что люди внутри также являются частью программы. Почти век спустя, с вьющимся плющом, окрашивающимся в алый цвет у входа каждое октябрьское утро, и маятником, всё ещё качающимся, она выглядит скорее как исправление модернизма, чем как компромисс с ним."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "<hr><h4>Источники</h4><ul class=\"sources\"><li><strong>Музей истории университета и науки, UiO</strong> – победный проект 1926 года, учебная поездка и как была удалена фасад храма – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Музей истории университета и науки, UiO</strong> – Bryn и Ellefsen у Nedre Blindern: практика и план кампуса – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Store norske leksikon</strong> – Finn Bryn: партнерство с 1922 года и последующая работа – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Физический институт, UiO</strong> – маятник в вестибюле: 32 кг позолоченного шара, 14,1 м провода, 27 ч 43 мин на 60 градусах северной широты – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – Атом в космосе: художественный конкурс 1935 года, 260 квадратных метров, завершён осенью 1938 года, сохранён NIKU в 2015 году – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Национальный музей</strong> – Bryn и Ellefsen, оригинальные конкурсные эскизы для здания физики – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Фотографии: свободное использование через Wikimedia Commons, каждое указано в подписи. Архивные виды из Национальной библиотеки Норвегии и Oslo Museum.</span>"
             }
           ],
@@ -14945,25 +14945,25 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mted7t3wsdt6hw.jpg",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Історія модернізму, яку він розповідає про себе, — це історія перетворення: молодий архітектор бачить нову роботу, викидає форми і ніколи не озирається назад. Fysikkbygningen at Blindern — це ця історія з доданими квитанціями, оскільки обидві її половини збереглися на папері. Finn Bryn і Johan Ellefsen виграли конкурс університету Осло у 1926 році з римським храмом: колонадний фасад у центрі, круглий вестибюль оточений галереями, купол зверху, все це з червоної цегли та граніту. Потім вони поїхали до Німеччини, Франції та Нідерландів, щоб побачити, що там будують, повернулися і розібрали свій власний проект."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mted5ffo3rs7kw.jpg",
               "caption": "Фізична будівля, знята з відкритого поля, Осло, початок 1950-х. Автор невідомий, Національна бібліотека Норвегії, громадський домен",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Те, що вони зберегли, — це симетрія і матеріали. Те, що зникло, — це все, що робило будівлю аргументом про Рим. Високі вікна знизили, купол і фасад храму зникли, а фасад був переформований у більш жорстку геометрію, яка стоїть там зараз. Будівля була завершена у 1935 році і відкрита у 1936, через десять років після їх перемоги, що означає, що проект, який зробив їхню репутацію, тихо зруйнували його власні автори десь між конкурсом і scaffolding."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Це допомагає згадати, яким був Blindern у той час. Не кампус: ферма. Університет купив сільськогосподарські землі на північному заході від міста і виходив із неокласичного кварталу в центрі міста, а перші будівлі стояли на луці з ґрунтовою дорогою, що проходила поруч. Не було контексту, на який можна було б відповісти, лише поле, короткий період і десятиліття, які вірять, що будівля має бути чесною щодо своєї мети."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -14975,11 +14975,11 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Навіть у спрощеному вигляді, будівля читається як громадська архітектура, а не як лабораторія. Центральна вежа підноситься з довгого горизонтального блоку, її верхній поверх прорізаний безперервною смугою скління, а цегла викладена темною та теплою, а не оштукатуреною білою. Норвезький функціоналізм прийшов через Швецію та Данію, а не безпосередньо з Dessau, і прийшов м'якшим: менше маніфесту, більше ремесла, готовий зберегти матеріал, з яким країна вже знала, як будувати. Bryn та Ellefsen працювали разом з 1922 року і згодом спроектували норвезький павільйон для Всесвітньої виставки 1939 року в Нью-Йорку."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -14991,31 +14991,31 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "План дисциплінований там, де дисципліна виправдана. Фізичний факультет у 1930-х роках потребував підлоги без вібрацій, довгих сервісних коридорів, кімнат для затемнення та лекційної зали, яка могла б вмістити покоління студентів, і будівля вирішує все це з ефективністю, яку вимагав цей період. Тут також розміщувався хімічний інститут, доки він не переїхав у 1960-х роках, і назва скоротилася до нинішньої. Потім, у точці, де відбувається циркуляція, де люди фактично зустрічаються з будівлею, геометрія розслабляється. Лестниці йдуть хвилеподібно, а не повертаються. Поручні з латуні. Стелі піднімаються. Колір з'являється там, де пурист залишив би штукатурку."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "Заземлений об’єм сходів з боку саду, утримуваний у Virginia creeper. Фотографія: Punkmorten, публічний домен",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вестибюль — це вся аргументація в мініатюрі, і це єдина кімната, де все ще видно зруйновану схему 1926 року. Bryn та Ellefsen обіцяли куполоподібний ротонд; натомість вони побудували двоповерхову залу з чорним і білим зигзагоподібним підлогою, ближче до океанського лайнера 1930-х років, ніж до лабораторії, що відкривається з обох сторін, щоб простір працював як громадський прохід між Majorstuen і кампусом, а не як вестибюль."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "Вестибюль, дивлячись у напрямку до входу. Фотографія: Mysteriumen, CC BY-SA 3.0",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Посередині нього висить маятник Фуко: позолочений м’яч діаметром двадцять сантиметрів і вагою тридцять два кілограми, на дроті довжиною 14,1 метра. Оригінал Фуко у Парижі 1851 року був вагою 28 кілограмів на 67 метрах дроту, перша демонстрація в кімнаті, а не в небі, що Земля обертається. На широті Осло шістдесяти градусів північної широти площина коливання займає 27 годин і 43 хвилини, щоб повернутися назад. Це робочий інструмент і одночасно елемент інтер’єрного дизайну, єдиний об’єкт тут, що пояснює дисципліну, розміщену у будівлі, без жодного слова."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -15027,25 +15027,25 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Над ним, через три стіни навколо головного входу, Per Lasson Krohg намалював 260 квадратних метрів фрески з вставками зі скла та розписаного скла. Він виграв цей конкурс у 1935 році, у рік завершення будівлі, а робота була завершена восени 1938 року, оплачена консулом загалом Peter Krag. Вона називається Atomet i verdensrommet, атом у космосі: сонце та планети, оточені галактиками, намальованими у вигляді жінки та чоловіка, з авророю, що проходить через композицію. Krohg пізніше намалював мурал у залі Ради Безпеки ООН у Нью-Йорку."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, завершено 1938, на східній стіні. Фотографія: Bernt Rostad, CC BY 2.0",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Зверніть увагу, що це означає для хронології. Класична схема була відкинута наприкінці двадцятих років як занадто декоративна для нового століття, а потім, з завершенням функціоналістичної будівлі, університет провів конкурс на покриття її входу розписаною космологією і повісив латунну вагу посередині. Скляні решітки сходової вікна перерізають картину прямо. Сітка і картина тримаються один за одного, а не змагаються, і консерватори з NIKU, які очистили роботу у 2015 році, підтримували щось, що жоден пуристський погляд на 1930-ті роки не може цілком пояснити."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ось чому будівля досі навчає щось. Героїчна версія десятиліття вимагає від структури бути чесною, і чесність сприймається як оголеність. Fysikkbygningen приймає кожен функціональний вимір свого короткого завдання, знімає свої колони, щоб це зробити, а потім розглядає тепло, колір і кривизну як функціональні виміри також, на підставі того, що внутрішні люди також є частиною програми. Майже століття потому, з плющем, що стає яскраво-червоним над входом кожного жовтня, і маятником, що все ще коливається, він виглядає менш як компроміс із модернізмом, ніж як його корекція."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "<hr><h4>Джерела</h4><ul class=\"sources\"><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – переможний проект 1926 року, навчальна поїздка та як було знято фасад храму – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – Bryn та Ellefsen у Nedre Blindern: практика та план кампусу – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Store norske leksikon</strong> – Finn Bryn: партнерство з 1922 року та подальша робота – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Fysisk institutt, UiO</strong> – маятник у вестибюлі: 32 кг позолочена куля, 14.1 м дроту, 27 годин 43 хвилини на 60 градусів північної широти – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – Атом у космосі: конкурс мистецтва 1935 року, 260 квадратних метрів, завершено восени 1938 року, збережено NIKU у 2015 році – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Nasjonalmuseet</strong> – Bryn та Ellefsen, оригінальні креслення конкурсу для будівлі фізики – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Фотографії: вільне ліцензування через Wikimedia Commons, кожна з них зазначена у підписі. Архівні знімки з Національної бібліотеки Норвегії та Oslo Museum.</span>"
             }
           ],
@@ -19392,7 +19392,7 @@
               "content": "Es hilft, sich daran zu erinnern, was Blindern damals war. Kein Campus: eine Farm. Die Universität hatte landwirtschaftliches Land nordwestlich der Stadt gekauft und zog sich aus ihrem neoklassizistischen Viertel im Stadtzentrum zurück, und die ersten Gebäude standen auf einer Wiese mit einer Schotterpiste, die an ihnen vorbeiführte. Es gab keinen Kontext, auf den man antworten konnte, nur ein Feld, ein kurzer Zeitraum und ein Jahrzehnt, das glaubte, ein Gebäude sollte ehrlich über seinen Zweck sein."
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -19404,11 +19404,11 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Selbst entblößt liest sich das Gebäude eher als Bürgerarchitektur denn als Labor. Ein zentraler Turm erhebt sich aus einem langen horizontalen Block, dessen oberste Etage durch eine durchgehende Glasbahn geöffnet ist, und die Ziegel sind dunkel und warm verlegt, anstatt weiß verputzt zu sein. Norwegischer Funktionalismus kam durch Schweden und Dänemark und nicht direkt aus Dessau, und er kam abgeschwächt: weniger Manifest, mehr Handwerkskunst, bereit, das Material zu bewahren, mit dem ein Land bereits wusste, wie man bauen konnte. Bryn und Ellefsen waren seit 1922 partnerschaftlich verbunden und würden später den norwegischen Pavillon für die Weltausstellung 1939 in New York entwerfen."
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -19420,11 +19420,11 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Der Plan ist diszipliniert, wo Disziplin sich auszahlt. Eine Physikfakultät in den 1930er Jahren benötigte vibrationsfreie Böden, lange Versorgungswege, Verdunklungsräume und eine Vorlesungshalle, die eine Generation von Studierenden aufnehmen konnte, und das Gebäude löst all dies mit der Effizienz, die die Periode verlangte. Es beherbergte auch Chemie, bis dieses Institut in den 1960er Jahren auszog und der Name auf das verkürzt wurde, was er heute trägt. Dann, an dem Punkt, an dem die Zirkulation stattfindet, wo Menschen tatsächlich das Gebäude betreten, lockert sich die Geometrie. Treppen wischen eher als drehen. Handläufe sind Messing. Decken heben sich. Farbe erscheint, wo ein Purist Putz hinterlassen hätte."
             },
             {
-              "type": "bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "Der glasierte Treppenraum auf der Gartenseite, gehalten in Virginia creeper. Fotografie: Punkmorten, gemeinfrei",
               "align": "zentrum"
@@ -19434,7 +19434,7 @@
               "content": "Der Vorraum ist das ganze Argument im Miniaturformat, und es ist der eine Raum, in dem das abgerissene Schema von 1926 noch durchscheint. Bryn und Ellefsen hatten eine Kuppelrotunde versprochen; was sie stattdessen gebaut haben, ist eine zweistöckige Halle mit einem schwarz-weißen Zickzackboden, näher an einer 1930er-Ozeanliner als an einem Labor, die auf beiden Seiten öffnet, sodass der Raum als öffentlicher Durchgang zwischen Majorstuen und dem Campus dient, anstatt als Lobby."
             },
             {
-              "type": "bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "Der Vorraum, Blick in Richtung Eingang. Fotografie: Mysteriumen, CC BY-SA 3.0",
               "align": "zentrum"
@@ -19444,7 +19444,7 @@
               "content": "Durch die Mitte hängt ein Foucault-Pendel: eine vergoldete Kugel mit zwanzig Zentimetern Durchmesser und einem Gewicht von dreiundzwanzig Kilogramm, an einem Draht von 14,1 Metern. Foucaults Original in Paris von 1851 war ein 28-Kilogramm schweres Gewicht an 67 Metern Draht, die erste Demonstration in einem Raum anstelle des Himmels, dass die Erde sich dreht. Bei Oslogradt von sechzig Grad Nord dauert die Schwingungsebene 27 Stunden und 43 Minuten, um wieder umzukehren. Es ist ein funktionierendes Instrument und zugleich ein Stück Inneneinrichtung, das eine Sache hier erklärt, die die Disziplin im Gebäude beherbergt, ohne ein einziges Wort."
             },
             {
-              "type": "galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -19460,7 +19460,7 @@
               "content": "Darüber, über drei Wände um den Haupteingang, malte Per Lasson Krohg 260 Quadratmeter Fresko mit Glaseinlagen und bemaltem Glas. Er gewann diesen Wettbewerb im Jahr 1935, dem Jahr, in dem das Gebäude fertiggestellt wurde, und die Arbeit wurde im Herbst 1938 abgeschlossen, bezahlt vom Konsulgeneral Peter Krag. Es heißt Atomet i verdensrommet, das Atom im Weltraum: die Sonne und die Planeten, umringt von Galaxien, die als eine Frau und ein Mann gezeichnet sind, mit der Aurora, die durch die Komposition läuft. Krohg malte später das Wandbild im Sicherheitsratssaal der United Nations in New York."
             },
             {
-              "type": "bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, fertiggestellt 1938, an der östlichen Wand. Fotografie: Bernt Rostad, CC BY 2.0",
               "align": "zentrum"
@@ -23803,25 +23803,25 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mted7t3wsdt6hw.jpg",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "La historia que el modernismo cuenta sobre sí mismo es una historia de conversión: el joven arquitecto ve la nueva obra, desecha los moldes y nunca mira atrás. Fysikkbygningen en Blindern es esa historia con los recibos adjuntos, porque ambas mitades de ella sobreviven en papel. Finn Bryn y Johan Ellefsen ganaron la competencia de la Universidad de Oslo en 1926 con un templo romano: una fachada con columnas en el centro, un vestíbulo redondo rodeado de galerías, una cúpula en la parte superior, todo en ladrillo rojo y granito. Luego fueron a Alemania, Francia y los Países Bajos para ver qué se estaba construyendo, regresaron y desmontaron su propio dibujo."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mted5ffo3rs7kw.jpg",
               "caption": "El edificio de física visto desde el campo abierto, Oslo, principios de los años 1950. Fotógrafo desconocido, Biblioteca Nacional de Noruega, dominio público",
               "align": "centro"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Lo que conservaron fue la simetría y los materiales. Lo que desapareció fue todo lo que hacía del edificio un argumento sobre Roma. Las ventanas altas bajaron, la cúpula y la fachada del templo desaparecieron, y la fachada se reagrupó en la geometría más dura que ahora allí se encuentra. El edificio se terminó en 1935 y se inauguró en 1936, diez años después de que lo ganaran, lo que significa que el diseño que hizo su reputación fue demolido en silencio por sus propios autores en algún momento entre la competencia y el andamio."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Es útil recordar qué era Blindern en ese momento. No un campus: una granja. La universidad había comprado tierras agrícolas al noroeste de la ciudad y se estaba mudando de su barrio neoclásico en el centro, y los primeros edificios estaban en un prado con un camino de tierra que pasaba junto a ellos. No había contexto al que responder, solo un campo, un breve y una década que creían que un edificio debía ser honesto acerca de su propósito."
             },
             {
-              "type": "galería",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -23833,11 +23833,11 @@
               ]
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Incluso desnudo, el edificio se lee como arquitectura cívica más que como laboratorio. Una torre central surge de un bloque horizontal largo, su último piso abierto por una banda continua de acristalamiento, y el ladrillo está colocado oscuro y cálido en lugar de enlucido de blanco. El funcionalismo noruego llegó a través de Suecia y Dinamarca en lugar de directamente desde Dessau, y llegó suavizado: menos manifiesto, más artesanía, dispuesto a mantener el material con el que un país ya sabía construir. Bryn y Ellefsen habían estado en asociación desde 1922 y continuarían diseñando el pabellón noruego para la Feria Mundial de 1939 en Nueva York."
             },
             {
-              "type": "galería",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -23849,31 +23849,31 @@
               ]
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El plan es disciplinado donde la disciplina paga. Una facultad de física en los años 30 necesitaba pisos libres de vibraciones, largos recorridos de servicio, salas de oscurecimiento y un auditorio que pudiera albergar a una generación de estudiantes, y el edificio resuelve todo ello con la eficiencia que exigía el período. También albergaba química, hasta que ese instituto se mudó en los años 60 y el nombre se acortó al que lleva ahora. Luego, en el punto donde ocurre la circulación, donde las personas realmente encuentran el edificio, la geometría se afloja. Las escaleras barren en lugar de girar. Los pasamanos son de latón. Los techos se elevan. El color aparece donde un purista habría dejado yeso."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "El volumen de la escalera vidriada en el lado del jardín, sostenido por enredadera Virginia. Fotografía: Punkmorten, dominio público",
               "align": "centro"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El vestíbulo es todo el argumento en miniatura, y es la única habitación donde todavía se muestra el esquema demolido de 1926. Bryn y Ellefsen habían prometido una rotonda con cúpula; lo que construyeron en su lugar es un pasillo de doble altura con un suelo en zigzag en blanco y negro, más cercano a un transatlántico de los años 30 que a un laboratorio, abriéndose en ambos lados para que el espacio funcionara como un pasaje público entre Majorstuen y el campus en lugar de un vestíbulo."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "El vestíbulo, mirando hacia la entrada. Fotografía: Mysteriumen, CC BY-SA 3.0",
               "align": "centro"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "A través de su centro cuelga un péndulo de Foucault: una esfera dorada de veinte centímetros de diámetro y peso de treinta y dos kilogramos, en un cable de 14.1 metros. El original de Foucault en París en 1851 era un peso de 28 kilogramos en 67 metros de cable, la primera demostración en una habitación en lugar de en el cielo de que la tierra gira. En la latitud de Oslo de sesenta grados norte, el plano del oscilación tarda 27 horas y 43 minutos en volver a su posición. Es un instrumento funcional y una pieza de diseño interior a la vez, el único objeto aquí que explica la disciplina alojada en el edificio sin una sola palabra."
             },
             {
-              "type": "galería",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -23885,25 +23885,25 @@
               ]
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Sobre él, a lo largo de tres paredes alrededor de la entrada principal, Per Lasson Krohg pintó 260 metros cuadrados de fresco con incrustaciones de vidrio y vidrio pintado. Ganó esa competencia en 1935, el año en que se terminó el edificio, y el trabajo se completó en el otoño de 1938, financiado por el cónsul general Peter Krag. Se llama Atomet i verdensrommet, el átomo en el espacio: el sol y los planetas rodeados por galaxias dibujadas como una mujer y un hombre, con la aurora boreal atravesando la composición. Krohg pintaría más tarde el mural en la cámara del Consejo de Seguridad de las Naciones Unidas en Nueva York."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, terminado en 1938, en la pared este. Fotografía: Bernt Rostad, CC BY 2.0",
               "align": "centro"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Observa lo que eso significa para la cronología. El esquema clásico fue abandonado a finales de los años veinte por considerarlo demasiado decorativo para el nuevo siglo, y luego, con el edificio funcionalista ya terminado, la universidad organizó un concurso para cubrir su entrada con cosmología pintada y colgó un peso de latón en medio de ella. Las barras de acristalamiento de la ventana de la escalera atraviesan directamente la imagen. La cuadrícula y la pintura se sostienen mutuamente en lugar de competir, y los conservadores de NIKU que limpiaron la obra en 2015 estaban manteniendo algo que ninguna lectura purista de los años 1930 puede explicar completamente."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Esa es la razón por la que el edificio todavía enseña algo. La versión heroica de la década pide que una estructura sea honesta, y la honestidad se entiende como desnudez. Fysikkbygningen acepta cada demanda funcional de su brief, deja caer sus propias columnas para hacerlo, y luego trata la calidez, el color y la curvatura también como demandas funcionales, basándose en que las personas dentro también forman parte del programa. Casi un siglo después, con la hiedra volviéndose escarlata sobre la entrada cada octubre y el péndulo aún balanceándose, parece menos un compromiso con el modernismo que una corrección a él."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "<hr><h4>Fuentes</h4><ul class=\"sources\"><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – la entrada ganadora de 1926, el viaje de estudio y cómo se eliminó la fachada del templo – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – Bryn y Ellefsen en Nedre Blindern: la práctica y el plan del campus – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Store norske leksikon</strong> – Finn Bryn: la asociación desde 1922 y el trabajo posterior – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Fysisk institutt, UiO</strong> – el péndulo en el vestíbulo: bola dorada de 32 kg, cable de 14.1 m, 27 h 43 min en 60 grados norte – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – El átomo en el espacio: la competencia artística de 1935, 260 metros cuadrados, finalizada en otoño de 1938, conservada por NIKU en 2015 – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Nasjonalmuseet</strong> – Bryn y Ellefsen, dibujos originales de la competencia para el edificio de física – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Fotografías: libremente licenciadas a través de Wikimedia Commons, cada una acreditada en su pie de foto. Vistas del archivo de la Biblioteca Nacional de Noruega y del Museo de Oslo.</span>"
             }
           ],
@@ -28249,7 +28249,7 @@
               "content": "Blindern'in o zamanlar ne olduğunu hatırlamak faydalıdır. Bir kampüs değil: bir çiftlik. Üniversite, şehrin kuzeybatısında tarım arazisi satın almış ve şehir merkezindeki neo-klasik semtinden çıkıyordu, ilk yapılar bir çayırda duruyordu ve yanlarından toprak bir yol geçiyordu. Yanıt verecek bir bağlam yoktu, sadece bir alan, bir özet ve bir on yıl, bir binanın amacına dürüst olması gerektiğine inanan bir zaman dilimi."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -28261,11 +28261,11 @@
               ]
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Hatta soyulmuş olsa da, bina bir laboratuvar değil, sivil mimari olarak okunur. Merkezi bir kule, uzun yatay bir bloktan yükselir, en üst katı sürekli cam bandıyla açık bırakılmıştır ve tuğla, beyaz sıvanmış yerine koyu ve sıcak bir şekilde döşenmiştir. Norveç fonksiyonelliği, doğrudan Dessau'dan değil, İsveç ve Danimarka üzerinden gelmiştir ve yumuşatılmıştır: daha az manifesto, daha çok zanaat, malzemeyi zaten inşa etmeyi bilen bir ülkeyi tutmaya istekli. Bryn ve Ellefsen 1922'den beri ortaklık halindeydi ve 1939 New York Dünya Fuarı için Norveç pavilyonunu tasarlamaya devam ettiler."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -28277,31 +28277,31 @@
               ]
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Plan disiplinlidir, disiplin kazandığında. 1930'larda bir fizik fakültesi titreşimden arındırılmış zeminlere, uzun servis hatlarına, karartma odalarına ve bir nesil öğrenciye yetecek kadar büyük bir konferans salonuna ihtiyaç duyuyordu ve bina, dönemin gerektirdiği verimlilikle bunların hepsini çözüyor. Ayrıca kimya bölümü de vardı, ta ki o enstitü 1960'larda taşınana kadar ve ismi şu anki haline kısaldı. Sonra, dolaşımın gerçekleştiği noktada, insanların gerçekten buluştuğu yerde, geometrisi gevşer. Merdivenler dönmek yerine süpürür. Korkuluklar pirinçten. Tavanlar yükselir. Renk, bir katırcının alacağı alçı yerine ortaya çıkar."
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "Bahçe tarafındaki camlı merdiven hacmi, Virginia sarmaşığıyla tutulmuş. Fotoğraf: Punkmorten, kamu malı",
               "align": "merkez"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Vestiyer, küçük ölçekte bütün argümandır ve yıkılmış 1926 planının hala göründüğü tek odadır. Bryn ve Ellefsen bir kubbeli rotunda vaat etmişti; onun yerine inşa ettikleri, siyah-beyaz zikzak zeminli çift yüksekli bir salon, bir laboratuvara değil, 1930'lar okyanus yolcu gemisine daha yakın, her iki taraftan açılan ve alanın Majorstuen ile kampüs arasında bir halk geçidi olarak çalışmasını sağlayan bir alan."
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "Vestiyer, girişe doğru bakış. Fotoğraf: Mysteriumen, CC BY-SA 3.0",
               "align": "merkez"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Ortada bir Foucault sarkacı asılıdır: yirmi santimetre çapında ve otuz iki kilogram ağırlığında, 14.1 metre tel üzerinde altın kaplamalı bir top. Foucault'nun Paris'teki orijinali 1851'de, 67 metre tel üzerinde 28 kilogramlık bir ağırlıktı ve ilk kez gökyüzü yerine bir odada dünyanın dönmesini gösterdi. Oslo'nun kuzey enlemi olan altmış derecede, salınım düzlemi geri dönmek için 27 saat 43 dakika alır. Bu, çalışan bir alet ve aynı zamanda iç tasarımın bir parçasıdır; burada, binada barındırılan disiplini tek kelime olmadan açıklayan tek nesnedir."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -28313,25 +28313,25 @@
               ]
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Üstünde, ana girişin etrafındaki üç duvar boyunca, Per Lasson Krohg 260 metrekare freskayı cam işçiliği ve boyalı cam ile boyadı. Bu yarışmayı 1935 yılında kazandı, binanın tamamlandığı yıl ve çalışma 1938 sonbaharında tamamlandı, konsolos general Peter Krag tarafından finanse edildi. Buna Atomet i verdensrommet, uzayda atom denir: güneş ve gezegenler, bir kadın ve bir erkek olarak çizilmiş galaksilerle çevrili, ve aurora kompozisyon boyunca akıyor. Krohg daha sonra New York'taki Birleşmiş Milletler Güvenlik Konseyi odasında duvar resmi yaptı."
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, tamamlandı 1938, doğu duvarda. Fotoğraf: Bernt Rostad, CC BY 2.0",
               "align": "merkez"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Bu durumun kronolojiye ne anlama geldiğine dikkat edin. Klasik düzen, yeni yüzyıl için çok süslü olduğu gerekçesiyle yirmi dokuzuncu yılların sonunda terk edildi ve ardından, fonksiyonelist bina tamamlandıktan sonra, üniversite girişini boyalı kozmoloji ile kaplamak için bir yarışma düzenledi ve ortasına pirinç bir ağırlık asıldı. Merdiven penceresinin cam çerçevesi doğrudan resmi kesiyor. Izgara ve resim birbirini tutuyor, rekabet etmiyor ve 2015 yılında eseri temizleyen NIKU'nun konservatörleri, 1930'ların saf okuyuşuyla tam olarak açıklanamayacak bir şeyi koruyordu."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "İşte bu nedenle bina hâlâ bir şeyler öğretiyor. On yılın kahramanca versiyonu bir yapıya dürüst olmasını ister ve dürüstlük çıplaklık olarak anlaşılır. Fysikkbygningen, kısa metninin her fonksiyonel talebini kabul eder, bunu yapmak için kendi sütunlarını bırakır ve sonra içerdeki insanların da programa dahil olduğu gerekçesiyle sıcaklık, renk ve eğrilik gibi fonksiyonel talepleri de dikkate alır. Neredeyse bir yüzyıl sonra, sarmaşık her Ekim girişte kızıl renge dönerken ve sarkaç hâlâ sallanırken, bu yapı modernizmle bir uzlaşmadan çok onun bir düzeltmesine benziyor."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "<hr><h4>Kaynaklar</h4><ul class=\"sources\"><li><strong>Üniversite ve bilim tarihi Müzesi, UiO</strong> – 1926 kazanan tasarım, çalışma gezisi ve tapınak cephesinin nasıl kaldırıldığı – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Üniversite ve bilim tarihi Müzesi, UiO</strong> – Bryn ve Ellefsen Nedre Blindern’de: uygulama ve kampüs planı – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Norveç büyük sözlük</strong> – Finn Bryn: 1922’den itibaren ortaklık ve sonraki çalışmalar – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Fizik Enstitüsü, UiO</strong> – girişteki sarkaç: 32 kg altın kaplama top, 14.1 m tel, 60 kuzey enleminde 27 saat 43 dakika – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – Evrenin atomu: 1935 sanat yarışması, 260 metrekare, sonbahar 1938’de tamamlandı, 2015’te NIKU tarafından korundu – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Ulusal Müze</strong> – Bryn ve Ellefsen, fizik binası için orijinal yarışma çizimleri – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Fotoğraflar: Wikimedia Commons üzerinden serbestçe lisanslanmış, her biri başlıkta belirtilmiştir. Norveç Ulusal Kütüphanesi ve Oslo Müzesi arşiv görüntüleri.</span>"
             }
           ],
@@ -32696,7 +32696,7 @@
               "content": "Aiuta ricordare cosa fosse Blindern all'epoca. Non un campus: una fattoria. L'università aveva acquistato terreni agricoli a nord-ovest della città e si stava spostando dal quartiere neoclassico del centro città, e i primi edifici si trovavano in un prato con un sentiero di terra che passava accanto a loro. Non c'era un contesto a cui rispondere, solo un campo, un breve e un decennio che credeva che un edificio dovesse essere onesto riguardo al suo scopo."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5et3my1y27.jpg",
                 "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg"
@@ -32708,11 +32708,11 @@
               ]
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Anche spoglio, l'edificio si legge come architettura civica piuttosto che come laboratorio. Una torre centrale si erge da un lungo blocco orizzontale, il suo piano superiore aperto da una banda continua di vetrate, e il mattone è posato scuro e caldo piuttosto che intonacato di bianco. Il funzionalismo norvegese arrivò attraverso Svezia e Danimarca piuttosto che direttamente da Dessau, e arrivò ammorbidito: meno manifesto, più artigianato, disposto a mantenere il materiale con cui un paese già sapeva costruire. Bryn ed Ellefsen erano in partnership dal 1922 e avrebbero poi progettato il padiglione norvegese per la Fiera Mondiale del 1939 a New York."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
@@ -32724,31 +32724,31 @@
               ]
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Il piano è disciplinato dove la disciplina paga. Una facoltà di fisica negli anni '30 aveva bisogno di pavimenti senza vibrazioni, lunghi percorsi di servizio, stanze oscurate e un'aula che potesse ospitare una generazione di studenti, e l'edificio risolve tutto con l'efficienza richiesta dal periodo. Ospitava anche chimica, fino a quando quell'istituto si trasferì negli anni '60 e il nome fu abbreviato a quello attuale. Poi, nel punto in cui avviene la circolazione, dove le persone incontrano effettivamente l'edificio, la geometria si allenta. Le scale scorrono invece di girare. Le ringhiere sono in ottone. I soffitti si alzano. Il colore appare dove un purista avrebbe lasciato intonaco."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
               "caption": "Il volume della scala vetrata sul lato giardino, sostenuto dalla vite di Virginia. Fotografia: Punkmorten, dominio pubblico",
               "align": "centro"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Il vestibolo è l'intera argomentazione in miniatura, ed è l'unica stanza in cui ancora si vede il progetto demolito del 1926. Bryn ed Ellefsen avevano promesso una rotunda con cupola; ciò che hanno costruito invece è un atrio a doppia altezza con un pavimento a zigzag bianco e nero, più vicino a una nave da crociera degli anni '30 che a un laboratorio, aprendo su entrambi i lati affinché lo spazio funzioni come un passaggio pubblico tra Majorstuen e il campus piuttosto che come un ingresso."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
               "caption": "Il vestibolo, rivolto verso l'ingresso. Fotografia: Mysteriumen, CC BY-SA 3.0",
               "align": "centro"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Al centro di esso pende un pendolo di Foucault: una sfera dorata di venti centimetri di diametro e peso di trentadue chilogrammi, su un filo di 14,1 metri. L'originale di Foucault a Parigi nel 1851 era un peso di 28 chilogrammi su 67 metri di filo, la prima dimostrazione in una stanza piuttosto che nel cielo che la Terra ruota. Alla latitudine di Oslo di sessanta gradi nord, il piano dell'oscillazione impiega 27 ore e 43 minuti per tornare a posizionarsi. È uno strumento funzionante e un elemento di interior design allo stesso tempo, l'unico oggetto qui che spiega la disciplina ospitata nell'edificio senza una singola parola."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
                 "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
@@ -32760,17 +32760,17 @@
               ]
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Sopra di esso, attraverso tre pareti intorno all'ingresso principale, Per Lasson Krohg dipinse 260 metri quadrati di affresco con intarsi di vetro e vetro dipinto. Vinse quella competizione nel 1935, l'anno in cui l'edificio fu completato, e il lavoro fu terminato nell'autunno del 1938, finanziato dal console generale Peter Krag. Si chiama Atomet i verdensrommet, l'atomo nello spazio: il sole e i pianeti circondati da galassie disegnate come una donna e un uomo, con l'aurora che attraversa la composizione. Krohg dipinse in seguito il murale nella sala del Consiglio di Sicurezza delle Nazioni Unite a New York."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
               "caption": "Atomet i verdensrommet, Per Krohg, completato nel 1938, sulla parete orientale. Fotografia: Bernt Rostad, CC BY 2.0",
               "align": "centro"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Nota cosa significa questo per la cronologia. Lo schema classico fu abbandonato alla fine degli anni venti come troppo decorativo per il nuovo secolo, e poi, con l'edificio funzionalista ormai finito, l'università organizzò un concorso per coprire il suo ingresso con cosmologia dipinta e appese un peso di ottone al centro. Le barre di vetro della finestra della scala tagliavano direttamente l'immagine. La griglia e il dipinto si sostenevano a vicenda piuttosto che competere, e i conservatori di NIKU che pulirono il lavoro nel 2015 stavano mantenendo qualcosa che nessuna lettura purista degli anni '30 può spiegare completamente."
             },
             {
