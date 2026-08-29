@@ -32339,6 +32339,82 @@
           ],
           "updatedAt": "2026-08-28T14:31:37.992Z",
           "authorId": "author-1784896384236-4fokw"
+        },
+        {
+          "id": 29,
+          "title": "Soft Modernism: Bryn e Ellefsen's Physics Building at Blindern",
+          "author": "EPRIS Journal",
+          "role": "Equipe editoriale",
+          "date": "29 agosto 2026",
+          "publishedAt": "2026-08-29",
+          "excerpt": "Il funzionalismo precoce non doveva significare linee rette. A Oslo, nel 1935, due architetti avvolsero un laboratorio in mattoni rossi, attraversarono il suo nucleo con una spirale con ringhiera in ottone e lasciarono che Per Krohg dipingesse il sistema solare sulla parete dell'atrio.",
+          "category": "Architettura",
+          "subcategory": "Saggio",
+          "tags": [
+            "architettura",
+            "funzionalismo",
+            "oslo",
+            "anni 1930"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "La storia che il modernismo racconta di sé stessa è una storia della linea retta. Pareti bianche piatte, la griglia, l'angolo retto come posizione morale. Fysikkbygningen al Blindern, completata nel 1935 per l'Università di Oslo da Finn Bryn e Johan Ellefsen, fu costruita al culmine di quell'argomento e si rifiuta silenziosamente di parteciparvi. È un edificio funzionalista che si curva."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+              "caption": "Fysikkbygningen, campus Blindern, Oslo. Finn Bryn e Johan Ellefsen, 1935. Fotografia: Kjetil Ree, CC BY-SA 3.0",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "L'approccio rivela l'intento. Una torre centrale si erge da un lungo blocco orizzontale, il suo piano superiore aperto da una banda continua di vetrate, e il mattone è disposto scuro e caldo piuttosto che reso bianco. Il funzionalismo norvegese arrivò attraverso Svezia e Danimarca piuttosto che direttamente da Dessau, e arrivò ammorbidito: meno manifesto, più artigianato, disposto a mantenere il materiale che un paese già sapeva come costruire. Bryn e Ellefsen vinsero il concorso e consegnarono un laboratorio che si legge come architettura civica."
+            },
+            {
+              "type": "text",
+              "content": "Ciò che rende l'edificio degno del viaggio è che la disciplina compositiva si ferma alla porta. Un corpo docente di fisica negli anni '30 aveva bisogno di pavimenti senza vibrazioni, lunghi percorsi di servizio, stanze oscurate e un'aula che potesse ospitare una generazione di studenti. Il piano risolve tutto con l'efficienza richiesta dal periodo. Poi, nel punto in cui avviene la circolazione, dove le persone incontrano effettivamente l'edificio, la geometria si allenta: le scale scorrono invece di girare, le ringhiere sono in ottone, i soffitti si alzano, e il colore appare dove un purista avrebbe lasciato intonaco."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
+              "caption": "Il volume della scala vetrata sul lato giardino, sostenuto dalla vite di Virginia. Fotografia: Punkmorten, dominio pubblico",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Il vestibolo è l'argomento in miniatura. Il suo pavimento è un zigzag bianco e nero, più vicino a un transatlantico degli anni '30 che a un laboratorio, e un pendolo di Foucault pende attraverso lo spazio a doppia altezza, oscillando nel piano sotto cui si muove la terra. È uno strumento funzionante e un elemento di interior design allo stesso tempo: l'unico oggetto nell'edificio che dimostra la disciplina ospitata senza una singola parola di spiegazione."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+                "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Il vestibolo con il suo pendolo di Foucault e il pavimento a zigzag.",
+                "Il murale di Per Krohg sulla parete orientale, completato nel 1938."
+              ]
+            },
+            {
+              "type": "testo",
+              "content": "Sopra di esso, attraverso la parete orientale, Per Lasson Krohg dipinse il sole e i pianeti nel 1938, circondati da galassie disegnate come una donna e un uomo, con l'aurora che attraversa la composizione. Krohg avrebbe poi dipinto il murale nella sala del Consiglio di Sicurezza delle Nazioni Unite a New York. Qui, tre anni prima della guerra, stava facendo qualcosa che un programma strettamente funzionalista non prevede: decorare un edificio di fisica con una cosmologia. Le barre di vetro della finestra della scala tagliano direttamente il dipinto, e i due sistemi, la griglia e l'immagine, si sostengono a vicenda piuttosto che competere."
+            },
+            {
+              "type": "text",
+              "content": "Quella convivenza è la ragione per cui l'edificio insegna ancora qualcosa. La versione eroica degli anni 1930 chiede a una struttura di essere onesta, e l'onestà è intesa come nudità. Fysikkbygningen accetta ogni richiesta funzionale del suo brief e poi tratta calore, colore e curvatura come richieste funzionali anche, sulla base del fatto che le persone all'interno sono anch'esse parte del programma. Quasi un secolo dopo, con la rampicante cresciuta sul facciata del giardino e il pendolo ancora oscillante, sembra meno un compromesso con il modernismo che una sua correzione."
+            },
+            {
+              "type": "text",
+              "content": "Fotografie via Wikimedia Commons: esterno di Kjetil Ree (CC BY-SA 3.0); facciata del giardino di Punkmorten (dominio pubblico); vestibolo di Mysteriumen (CC BY-SA 3.0); parete murale di Bernt Rostad (CC BY 2.0), opera di Per Lasson Krohg, 1938."
+            }
+          ],
+          "order": 0,
+          "draft": false,
+          "updatedAt": "2026-08-29T12:31:54.767Z"
         }
       ],
       "reviews": [
