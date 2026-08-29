@@ -23099,12 +23099,11 @@
         },
         {
           "id": 25,
-          "draft": true,
-          "title": "Entrevista con Keisuke Azuma",
+          "title": "\nDónde Nos Encontramos - entrevista con Keisuke Azuma",
           "author": "Maria Ivanova",
-          "role": "Mesa de Redacción",
+          "role": "Mesa Editorial",
           "date": "21 de agosto de 2026",
-          "excerpt": "El artista Keisuke Azuma sobre lavar la pintura de vuelta del lienzo, la estética japonesa de la sombra y el vacío detrás de su trabajo, y por qué piensa que el arte no tiene derecho a ser exclusivo.",
+          "excerpt": "El artista Keisuke Azuma sobre lavar la pintura de nuevo del lienzo, la estética japonesa de la sombra y el vacío detrás de su trabajo, y por qué el arte no tiene derecho a ser exclusivo.",
           "category": "arte",
           "subcategory": "Artículo destacado",
           "tags": [
@@ -23112,286 +23111,368 @@
             "cultura",
             "editorial"
           ],
-          "imageSeed": "intwerview-with-keisuke-azuma",
+          "imageSeed": "",
           "content": [
             {
-              "type": "text",
-              "content": "Keisuke Azuma pinta la forma en que habla: cuidadosamente, luego de golpe. Nacido en Japón, formado en Londres, y ahora radicado en Lituania, Azuma construye sus lienzos quitando en lugar de añadiendo – lavando el pigmento hacia atrás, disolviendo el cuerpo hasta que solo sobreviven una mano, un pie, o un fragmento de gesto contra un lienzo crudo e inacabado. Su serie reciente, actualmente en exhibición en Kiaf en Seúl y Nueva York bajo los títulos <i>Metáforas humanas</i> y <i>Metamorfosis</i>, reduce la figura humana a sus partes más universales, dejando el resto como una invitación: un espacio en blanco que el espectador llena con su propia reflexión."
+              "type": "texto",
+              "content": "Nacido en Japón, formado en Londres, y ahora radicado en Lituania, Keisuke Azuma construye sus lienzos quitando en lugar de añadiendo – lavando el pigmento de vuelta, disolviendo el cuerpo hasta que solo una mano, un pie, o un fragmento de gesto sobreviven contra un lienzo crudo e inacabado. Su serie reciente, actualmente en exhibición en KIAF Seoul, y exhibida recientemente en exposiciones individuales en Nueva York y París, reduce la figura humana a sus partes más universales, dejando el resto como una invitación: un espacio en blanco que el espectador llena con su propia reflexión."
             },
             {
-              "type": "text",
-              "content": "EPRIS conoció a Azuma a través de una larga videollamada desde su estudio fuera de Vilnius, donde vive con su esposa y su perro y gato. A continuación, puedes encontrar nuestra conversación sobre la estética japonesa de la sombra y la deducción que moldearon su método, sobre por qué piensa que el arte no tiene derecho a ser exclusivo, y sobre la relación de ocho años, transcontinental, que lo llevó desde Tokio a Lituania a través de una aplicación de intercambio de idiomas."
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8oisq6xlwmv4.jpg",
+              "caption": "Keisuke Azuma en su estudio",
+              "credit": "Cortesía de Keisuke Azuma"
             },
             {
-              "type": "header",
+              "type": "texto",
+              "content": "Epris conoció a Azuma a través de una videollamada desde su estudio en Vilnius, donde vive con su esposa y su perro y gato. A continuación, puedes encontrar nuestra conversación sobre la estética japonesa de la deducción que moldeó su método y por qué piensa que el arte no tiene derecho a ser exclusivo."
+            },
+            {
+              "type": "encabezado",
               "level": 2,
-              "content": "<span class=\"kicker\">01 · Orígenes</span>Convertirse en pintor"
+              "content": "<span>01 · </span>Convertirse en pintor"
             },
             {
-              "type": "text",
-              "content": "<b>Maria Ivanova:</b> ¿Cuál fue el punto de partida para que te convirtieras en artista – estuviste inmerso en el arte desde la infancia, o la pasión surgió más tarde?"
+              "type": "texto",
+              "content": "<b>Maria Ivanova [MA]: ¿Cuál fue el punto de partida para convertirte en artista? ¿Estuviste inmersa en el arte desde pequeña o el deseo surgió más tarde?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>Keisuke Azuma:</b> Siempre es una historia divertida, porque en realidad nunca quise ser artista. Amaba el arte, obviamente – leía mucho sobre artistas del período Barroco, y siempre decía que eran pobres. Había excepciones, pero en general parecía una profesión tan difícil. Aún así, me encantaba, aunque en mi comunidad era bastante solo en eso. Nadie más en mi familia se interesaba por el arte."
+              "type": "texto",
+              "content": "<b>Keisuke Azuma [KA]:</b> Siempre es una historia divertida, porque en realidad nunca quise ser artista. Obviamente, amaba el arte; leí mucho sobre artistas del período barroco y siempre decía que eran pobres. Hubo excepciones, pero en general parecía una profesión muy difícil. Aún así, me encantó, a pesar de que estaba prácticamente solo en eso en mi comunidad. A nadie más en mi familia le importaba el arte."
             },
             {
-              "type": "text",
-              "content": "Comenzó pequeño – estaba haciendo trabajo de marketing en una tienda, y alguien preguntó si podía hacer una ilustración. Vi cómo reaccionaban los clientes, y me fascinó ese poder que tiene el arte para transmitir un concepto. También me gustaba el cine, así que por un tiempo pensé en combinar ambos a través de la ilustración. Por eso elegí la escuela de arte en primer lugar. Durante mis estudios encontré otro amor – expresar mis propias palabras, mi propio sentido de identidad. Así que fue algo gradual. Seguí intentando buscar excusas para no ser pintor, y seguía regresando a ello de todos modos. Todavía recuerdo que un profesor nos dijo que solo dos por ciento de los estudiantes en esa sala terminarían siendo artistas profesionales."
+              "type": "texto",
+              "content": "Estaba haciendo un trabajo de marketing en una tienda y alguien me preguntó si podía hacer una ilustración. Vi cómo reaccionaban los clientes y me fascinó el poder que tiene el arte para transmitir un concepto. A mí también me gustaba el cine, así que por un tiempo pensé en combinar ambos a través de la ilustración. Por eso elegí la escuela de arte en primer lugar. Durante mis estudios encontré este otro amor: expresar mis propias palabras, mi propio sentido de identidad. Entonces fue algo gradual. Seguí tratando de poner excusas para no ser pintor y de todos modos volvía a hacerlo."
             },
             {
-              "type": "text",
-              "content": "Finalmente empecé a exhibir en Londres mientras aún estudiaba, y tener una galería o dos que encargaran mi trabajo me convenció de que en realidad podría ser posible. El apoyo de mi esposa también fue enormemente importante – ella se casó conmigo sabiendo que quería ser artista. Así fue como me convertí en uno, si eso tiene sentido."
+              "type": "texto",
+              "content": "Con el tiempo, comencé a exponer en Londres mientras aún estudiaba, y que una o dos galerías consignaran mi trabajo me convenció de que realmente podría ser posible. El apoyo de mi esposa también fue muy importante: se casó conmigo sabiendo que yo quería ser artista. Así es como me convertí en uno. "
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Crees que esa atracción hacia el arte es algo innato, o algo que te dieron tus alrededores?"
+              "type": "cita",
+              "content": "Seguí intentando buscar excusas para no ser pintor, y seguí volviendo a ello de todos modos."
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Parece un poco atrevido decir simplemente “Nací así,” pero – mi madre es arquitecta. Mi hermana hace collages, solo para su propio diario. Mi padre no hace nada relacionado con el arte, y realmente nadie más en la familia, tampoco. Así que diría que es más innato que no, con quizás un pequeño toque en la línea de sangre. De hecho, intenté mucho <i>no</i> seguir este camino. En la secundaria, un profesor de arte me llamó personalmente para unirme a su club, y le dije que quería hacer música en su lugar. Siempre hubo una pequeña señal apuntando a ello, incluso cuando no la buscaba."
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8omin9z9m7tf.jpg",
+              "caption": "Soliloquio, Keisuke Azuma, 2026, óleo sobre lienzo"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Entonces, comprometerse con una educación artística, contra esas probabilidades, fue una decisión realmente difícil?"
+              "type": "texto",
+              "content": "<b>MI: ¿Crees que esa atracción hacia el arte es algo innato, o algo que te dieron tus alrededores?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Extremadamente difícil – tengo ansiedad social, y estudiar en un país extranjero ya era difícil por sí solo. Mi inglés era mayormente inglés americano antes de Londres, así que eso también requirió ajuste. No me gustan las multitudes, y las escuelas de arte en Londres son enormes. Además, la educación en sí me confundía tanto como me ayudaba – todavía no siento que sepa completamente cómo pintar. Todavía lucho con el medio, con el pigmento. Lo que hizo fue hacerme sentir ingenuo. Algunos de mis compañeros ya conocían la industria – mencionaban casualmente Pace, Gagosian – y no tenía idea de qué estaban hablando. Esa etapa, por confusa que fuera, importó."
+              "type": "texto",
+              "content": "<b>KA:</b> Parece un poco atrevido decir simplemente “Nací así”, pero – mi madre es arquitecta. Mi hermana hace collages, solo para su propio diario. Mi padre no hace nada relacionado con el arte, y realmente nadie más en la familia tampoco. Así que diría que es más innato que no, con quizás un pequeño indicio en la línea de sangre. De hecho, intenté mucho <i>no</i> seguir este camino. En la secundaria, un profesor de arte me llamó personalmente para unirme a su club, y le dije que quería hacer música en su lugar. Siempre hubo una pequeña señal apuntando a ello, incluso cuando no la buscaba."
             },
             {
-              "type": "header",
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8ooivc2dg67b.jpg",
+              "caption": "Anillo, Keisuke Azuma, 2025, óleo sobre lienzo"
+            },
+            {
+              "type": "encabezado",
               "level": 2,
-              "content": "<span>02 · Método</span>En alabanza de la sombra"
+              "content": "<span>02 ·</span> Método"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Naciste y creciste en Japón, luego te mudaste a Londres para estudiar. Has dicho que tu trabajo está enraizado en la cultura japonesa – ¿cómo se refleja eso en tu práctica?"
+              "type": "texto",
+              "content": "<b>MI: Naciste y te criaste en Japón, luego te mudaste a Londres para estudiar. Has dicho que tu trabajo está arraigado en la cultura japonesa – ¿cómo se refleja eso en tu práctica?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Hay un libro, <i>En Alabanza de las Sombras</i> – no recuerdo el nombre del autor – sobre cómo las casas tradicionales japonesas usan la luz y la sombra, con un fuerte énfasis en el espacio negativo. Una sola estantería con flores se convierte en el punto focal de una habitación precisamente porque todo lo que la rodea está vacío. Incluso un espacio habitable se trata como una expresión artística completa. Ya me interesaba el contraste de luz y sombra – solía tomar muchas fotografías – y en algún momento eso se fusionó con mi pintura."
+              "type": "texto",
+              "content": "<b>KA:</b> Hay un libro, <i>En Alabanza de las Sombras</i> – sobre cómo las casas tradicionales japonesas usan la luz y la sombra, con un fuerte énfasis en el espacio negativo. Una sola estantería con flores se convierte en el punto focal de una habitación precisamente porque todo lo que la rodea está vacío. Incluso un espacio vital se trata como una expresión artística completa. Ya me interesaba el contraste de luz y sombra – solía tomar muchas fotografías – y en algún momento eso se fusionó con mi pintura."
             },
             {
-              "type": "text",
-              "content": "Tomo pinturas clásicas como referencia, la mayoría de las veces, y las manipulo. En el proceso trato de eliminar elementos para poder centrarme en lo que realmente importa, en lo que quiero transmitir. Todas mis pinturas tienen espacio en blanco – ese es el lienzo en bruto. Lo lavo con pintura. No está perfectamente limpio; todavía se pueden ver líneas debajo. Lo hago porque amo el acto físico de quitar el color. En la cultura Zen japonesa, lo que importa es la expresión minimalista, y quería un proceso inmersivo y físico para mí, en parte porque creo que el arte contemporáneo se ha vuelto muy enfocado en las redes sociales – la gente pinta hacia lo que ya es popular allí. Sigo preguntándome por qué todavía pintamos en 2026."
+              "type": "texto",
+              "content": "Tomo pinturas clásicas como referencia, la mayoría de las veces, y las manipulo. En el proceso intento eliminar elementos para poder centrarme en lo que realmente importa, en lo que quiero transmitir. Todas mis pinturas tienen espacio en blanco – ese es el lienzo en bruto. Lavo la pintura. No está perfectamente limpio; todavía se pueden ver líneas debajo. Lo hago porque amo el acto físico de quitar el color. En la cultura Zen japonesa, lo que importa es la expresión minimalista, y quería un proceso inmersivo y físico para mí mismo."
             },
             {
-              "type": "quote",
-              "content": "Tengo esta estética de deducción. Así que fui en la dirección opuesta – raspando la pintura."
+              "type": "cita",
+              "content": "Todas mis pinturas tienen espacio en blanco – ese es el lienzo en bruto. Lavo la pintura."
             },
             {
-              "type": "text",
-              "content": "También me aburría cómo la gente pinta en Londres – siempre más pintura, más capas. Ir en la otra dirección parecía la respuesta más honesta, y la más japonesa."
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8o4qs3q9q7wi.jpg",
+              "caption": "Most Things in Between, Keisuke Azuma, 2026, Óleo sobre lienzo"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Cuando vi tus pinturas por primera vez, sentí inmediatamente esa influencia japonesa – ese énfasis en la esencia sobre el material, en cómo un espacio te hace sentir en lugar de lo que está colocado en él."
+              "type": "texto",
+              "content": "<b>MI: Cuando vi tus pinturas por primera vez, sentí inmediatamente esa influencia japonesa – ese énfasis en la esencia sobre el material, en cómo un espacio te hace sentir en lugar de lo que está colocado en él.</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Tienes razón. Una vez visité una iglesia de Tadao Ando – una caja de concreto con dos líneas delgadas de vidrio que representan una cruz. Al entrar, me sentí completamente seguro, precisamente porque no había nada allí. Ese tipo de vacío minimalista importa porque es uno de los pocos lugares donde realmente podemos ver quiénes somos – pasamos gran parte de nuestras vidas en nuestros teléfonos, inmersos en contenido en su lugar. Mantengo un fondo monocromático en la mayoría de mis pinturas por la misma razón: cuando quitas la pintura, hay rastros por todas partes, y cada uno de ellos importa. Y todavía me encanta cómo las pinturas barrocas usan la oscuridad – no como ausencia, sino como presencia en el marco."
+              "type": "texto",
+              "content": "<b>KA:</b> Tienes razón. Una vez visité una iglesia de Tadao Ando – una caja de concreto con dos líneas delgadas de vidrio que representan una cruz. Al entrar, me sentí completamente seguro, precisamente porque no había nada allí. Ese tipo de vacío minimalista importa porque es uno de los pocos lugares que quedan para realmente ver quiénes somos – pasamos gran parte de nuestras vidas en nuestros teléfonos, sumergidos en contenido en su lugar. Mantengo un fondo monótono en la mayoría de mis pinturas por la misma razón: cuando limpias la pintura, hay rastros por todas partes, y cada uno de ellos importa. Y todavía me encanta cómo las pinturas barrocas usan la oscuridad – no como ausencia, sino como presencia en el marco."
             },
             {
-              "type": "header",
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8o6ppz5cm8rs.jpg",
+              "caption": "Church of the Light, Tadao Ando, 1989",
+              "sourceUrl": "https://www.dezeen.com/2017/10/31/tadao-ando-full-scale-mock-up-church-of-the-light-exhibition-tokyo-national-art-center/",
+              "credit": "Dezeen"
+            },
+            {
+              "type": "encabezado",
               "level": 2,
-              "content": "<span class=\"kicker\">03 · La serie actual</span>Metáforas humanas y el cuerpo que desaparece"
+              "content": "<span>03 · Metamorfosis</span>"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Tu reciente conjunto de obras, <i>Metáforas humanas</i>, se mostró en París – trata sobre vulnerabilidad, identidad y cambio. ¿Es una respuesta a la presión de la constante auto-presentación en la que vivimos ahora?"
+              "type": "texto",
+              "content": "<b>MI: Tu reciente obra, <i>Metáforas humanas</i>, se mostró en París – trata sobre vulnerabilidad, identidad y cambio. ¿Es una respuesta a la presión de la constante auto-presentación en la que vivimos ahora?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Creo que sí. Esta serie es una declaración contra ese tipo de búsqueda de validación. En Londres sentí que tenía que ajustarme a un cierto formato – lo que está de moda, lo que es popular, lo que aparentemente es correcto. Vivir en Lituania cambió eso. Apenas veo a alguien – a mi esposa, a nuestro perro, a nuestro gato. Los lituanos, y en general los pueblos eslavos en mi experiencia, son muy fieles a sí mismos. Ni siquiera me saludan la mitad del tiempo, lo cual encuentro refrescante – no hay fingimiento. La gente persigue influencia y dinero, y eso importa, pero al final del día tú eres la persona más importante en tu propia vida, y es fácil olvidarlo. Esa es la pregunta que intento dejar en la pintura – por eso también dejo tanto espacio vacío. Tiene que convertirse en la propia experiencia del espectador."
+              "type": "texto",
+              "content": "<b>KA:</b> Creo que sí. Esta serie es una declaración en contra de ese tipo de búsqueda de validación. En Londres sentí que tenía que ajustarme a un cierto formato – qué está de moda, qué es popular, qué parece correcto. Vivir en Lituania cambió eso. Apenas veo a nadie – a mi esposa, a nuestro perro, a nuestro gato. Los lituanos, y en general los pueblos eslavos en mi experiencia, son muy fieles a sí mismos. Ni siquiera me saludan la mitad del tiempo, lo cual en realidad encuentro refrescante – no hay fingimiento. La gente persigue influencia y dinero, y eso importa, pero al final del día tú eres la persona más importante en tu propia vida, y es fácil olvidarlo. <i><u> Esa es la pregunta que intento dejar en la pintura – por eso también dejo tanto espacio vacío. Tiene que convertirse en la experiencia propia del espectador.</u></i>"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> A través de la abstracción, pero con manos y pies aún presentes, ¿estás gesticulando algo como conciencia o alma – un yo que puede ser separado del cuerpo?"
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8or0zl9nfedq.jpg",
+                "https://api.eprisjournal.com/uploads/mt8or2t281k9ci.jpg"
+              ],
+              "caption": "Detalles de “Soliloquio”, 2026"
             },
             {
-              "type": "text",
+              "type": "texto",
+              "content": "<b>MI: A través de la abstracción, pero con manos y pies aún presentes, ¿estás gesticulando algo como conciencia o alma – un yo que puede ser separado del cuerpo?</b>"
+            },
+            {
+              "type": "texto",
               "content": "<b>KA:</b> Exactamente. El título <i>Metáforas humanas</i> fue para la exposición en Nueva York; la de París se llamó <i>Metamorfosis</i>, que me gusta igual de mucho. Borro el cuerpo porque creo que hemos dejado de prestarle atención como una escala física – vivimos en nuestras cabezas, en nuestros teléfonos, y el cuerpo se vuelve casi incidental junto a la cara, que lleva la primera impresión. Sin embargo, las manos y los pies son extrañamente universales. Los cuerpos varían enormemente, pero una mano sigue siendo una mano. Así que las mantengo como una especie de ancla – algo que todos pueden reconocer – y borro el resto para que las personas puedan entrar en la pintura sin necesidad de permiso primero."
             },
             {
               "type": "text",
-              "content": "El arte contemporáneo se ha vuelto enfocado en la élite en algunos lugares, y no me gusta eso. Mi esposa, que es psicóloga, odia gran parte de la abstracción que amo – no se conecta con ella, y una vez quiso irse de Tate a mitad de una visita. Entiendo esa reacción. El arte debe ser accesible. Cuando veo a personas decir “Odio esta pintura,” me pone un poco triste, porque sigue siendo una creación humana, incluso las que personalmente no me gustan. Así que las manos y los pies también son una invitación – no quiero que nadie se quede frente a mi obra sintiendo que no pertenece allí."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">04 · Encontrando un lenguaje</span>De huevos a figuración"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Tienes una serie anterior titulada <i>Eggs</i>, más orientada a la figura – ¿algo sobre transformación, tal vez renacimiento?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Exactamente eso. Después de graduarme en Londres me mudé directamente a Lituania, a un estudio en un sótano, en invierno, sin nadie alrededor – se sentía como una prisión de arte, solo yo y el trabajo. De ahí vino la serie Egg. Antes de eso hacía pintura abstracta de paisajes, que amaba, pero seguía lo que la gente decía que era bueno sin entender completamente por qué – incluso escribí un libro una vez, tratando de explicar el paisaje abstracto a mí mismo, y honestamente no entendía mi propia explicación."
-            },
-            {
-              "type": "text",
-              "content": "Entonces vi una pintura de un pintor británico – nunca había oído hablar de ellos antes de vivir en Londres – por primera vez, solo en las redes sociales, y realmente me sorprendió. Me hizo sentir pequeño, y humilde, de una manera útil. Me di cuenta de que quería combinar abstracción con algo más figurativo, pero aún no sabía cómo. La serie Egg trataba de lograr eso – tomó aproximadamente ocho meses para construir la confianza para reintroducir elementos realistas. No siempre fue exitoso, pero fue necesario. Necesito un plan antes de pintar, y los Eggs eran donde construía uno."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Crees que la abstracción es la forma más pura de pintura – más poderosa porque obliga a la autorreflexión en lugar de leer una figura?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Estoy mayormente de acuerdo. Recuerdo una retrospectiva de Monet en Kyoto – él es técnicamente figurativo, muy pictórico, pero había un lienzo sin terminar de la serie Water Lilies en exhibición, apenas con color, solo unos pocos trazos. Me afectó más que su obra terminada. Esa es una de las pinturas que rompieron mi resistencia a la abstracción – solía odiarla porque no sabía cómo abordarla."
-            },
-            {
-              "type": "text",
-              "content": "La abstracción también tiene esta cualidad democrática – hace que las personas sientan que también podrían hacerlo, y creo que eso es valioso, incluso si suena ingenuo. Todavía creo en el poder del realismo alto, Caravaggio y ese tipo de trabajo – todavía vamos al cine por la escala y la artesanía – pero la abstracción llena un vacío entre el público y el realismo de élite. Tiene sus propias contradicciones – algunas obras abstractas son igual de excluyentes – pero en su mejor momento, abre las cosas."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">05 · Acceso</span>Por qué el arte debería ser para todos"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Has dicho que el arte debería tener una función. ¿Qué función, en tu opinión?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> El arte siempre ha tenido una, creo. Probablemente las pinturas más antiguas – pinturas rupestres en Francia, dibujos de ganado – ya tenían una función narrativa: esto es lo que vi hoy, aquí está el lugar de caza. Todavía usamos la ilustración de esa manera, en guías de campo y enciclopedias. Me encanta la pintura barroca en parte porque se alejó de los retratos de los poderosos y empezó a introducir la vida cívica ordinaria. Guernica es la versión extrema de eso – brutalmente honesta, y me entristece cada vez, porque es una función contra el mundo. Los libros pueden ser más eficientes en eso, honestamente, pero no leo mucho, y la pintura siempre me ha parecido más universal – quizás incluso más antigua que el propio lenguaje."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Crees que todos tienen una capacidad innata para entender el arte, o es algo aprendido?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Ambos, creo, pero me inclino por “aprendido.” Odiaba la abstracción cuando era niño – me encantaba el realismo, y cuando vi por primera vez el trabajo de un pintor abstracto conocido realmente no lo entendí. Ahora he llorado frente a un Rothko. Creo que esa capacidad debería estar disponible para todos, de la misma manera que todos pueden aprender a reconocer la belleza en una cara o en la ropa – no tiene que tratarse específicamente de pintura. Mi propia familia todavía no entiende realmente mi abstracción, pero son solidarios. El padre de mi esposa, un mecánico sin formación artística, una vez miró una pintura y dijo, “Oh, puede dibujar manos y pies – debe ser bueno.” Esa es una conexión, incluso si solo dura un segundo."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Cuál fue tu primer gran encuentro con una obra de arte – el momento en que pensaste, esto es?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Probablemente Rothko, en Tate Britain. Ya conocía su trabajo, pero verlo en persona, en una sala mucho más oscura que el resto del museo, fue diferente. Sentí algo más allá de la humanidad – como si la pintura hubiera sacado algo de mí. Todavía no recuerdo el título exacto – uno de los lienzos en negro y rojo, casi como una puerta a otro lugar. Probablemente esa sea la pintura que me hizo querer pintar."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">06 · Proceso</span>Práctica en estudio"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿pintas diariamente, o esperas a la inspiración?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Diariamente ahora – tengo muchas exposiciones este año, así que ya no tengo el lujo de esperar. Trabajo primero en un iPad, manipulando una pintura clásica, luego vengo al estudio alrededor de la hora del almuerzo para pintar. Tomo notas constantemente, principalmente ideas de títulos – cada vez que se me ocurre algo, lo escribo para que esté allí cuando lo necesite."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Entonces, el punto de partida ahora es la memoria o la emoción, recordada, en lugar de algo que estás viendo en el momento?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> En gran medida, sí. Todavía uso pinturas clásicas como inspiración cuando pueden ayudar a transmitir un concepto, pero recientemente he estado intentando alejarme un poco de la memoria puramente personal, hacia algo más genérico – he empezado a hacer trabajos más explícitamente políticos últimamente, pensando en lo que está sucediendo de manera más amplia en lugar de solo en mi propia vida."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Planeas meticulosamente, o dejas que el lienzo decida en el momento?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Diría que aproximadamente la mitad y mitad. Nada se repite exactamente – temperatura, textura, todo cambia entre el boceto en iPad y el lienzo real. La pintura que te mostré antes era originalmente azul oscuro; no me gustó, volví al iPad, hice un boceto más claro, y terminé amando el error – todavía se puede ver el azul debajo. En el iPad todo parece mate y controlado; en realidad se ensucia más, es más humano. Me gusta eso."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Mencionaste “ manipular” pinturas clásicas – ¿en qué consiste eso realmente?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> “Manipular” podría ser una palabra demasiado atrevida – lo veo más como pedir ayuda a esas pinturas. Pongo la imagen clásica en el iPad, trabajo sobre ella, a veces casi en su totalidad, y edito hasta lo que importa. Hay un pintor – sigo olvidando el nombre – conocido por usar fotos fijas de películas como referencia y extraer lo que importaba de una escena en lugar de toda la imagen [Luc Tuymans]. Eso se acerca a lo que hago: extraer, no reproducir."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Cuál es tu mayor fuente de inspiración no visual?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Honestamente, todo, pero especialmente la música y el cine. Incluso nuestro perro – no tiene capacidad para pensar demasiado, simplemente es feliz, y hay algo inspirador en esa expresión cruda y sin filtrar. En el cine me gustan las cosas que me confunden – David Lynch, trabajos que dejan una pregunta en lugar de responderla. En la música escucho principalmente piezas instrumentales o clásicas, y a una banda japonesa cuyas letras son deliberadamente misteriosas. Me atraen los escritores de una cierta época por la misma razón – el misterio hace más trabajo que una explicación."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">07 · Fuera de récord</span>Joyas ocultas"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Alguna joya oculta que recomendarías – no tiene que estar relacionada con el arte. Un bar, un banco, una calle."
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> No exactamente oculto, pero hay un bar en Londres, dentro de un antiguo edificio bancario cerca de la estación Bank, que vaciaron y reconstruyeron – parece un poco a Hogwarts por dentro. Muy oscuro, muy espacioso, más como un salón de hotel de lujo que un bar típico, y lo suficientemente oscuro como para que puedas tener una conversación privada. Solo me enteré de él cerca del final de mi tiempo en Londres, y volvería solo por eso."
-            },
-            {
-              "type": "text",
-              "content": "En Japón, señalaría a la gente hacia Nara – todos van por los ciervos y el Buda gigante, pero si subes más arriba en la montaña detrás del templo principal, quizás veinte minutos después de donde la mayoría de los turistas se detienen, hay un templo mucho más tranquilo con vista a toda la ciudad. Se siente como retroceder unos siglos. En general: cualquier templo pequeño y menor que encuentres en un mapa en lugar de una lista de “lo mejor” – en algún lugar donde realmente se te permite entrar. Kioto tiene miles de ellos. Si puedes tomar matcha allí después, aún mejor."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">08 · Cierre</span>Sobre la vida, la cultura y el amor"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Una última pregunta, no relacionada con el arte – si tuvieras que dar un consejo de vida, ¿cuál sería?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Deja de ser una persona que complace a los demás. Creo que muchas personas luchan con eso, en diferentes niveles, y yo también – con todos, incluidos extraños. Algo tan pequeño como decirle a mi esposa que en realidad no me gustó un pastel que ella me compró habría sido imposible hace cinco años. Importa, porque solo tenemos una vida, y he escuchado lo mismo de muchas personas mayores en entrevistas: simplemente haz lo que realmente quieres. Todavía complace a la gente más de lo que me gustaría, honestamente, y es una habilidad útil en pequeñas dosis – pero demasiado es demasiado. Conocer tu propia voz, incluso en decisiones pequeñas diarias, es todo."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Y para alguien joven que quiere ser artista pero tiene miedo de empezar?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Creo que cualquiera puede ser artista, en principio – sustentarse completamente con ello es una cuestión diferente, más difícil, y honestamente todavía no estoy completamente allí. Pero requiere verdadero coraje y compromiso, especialmente ahora, cuando la economía de esto es inestable y el arte no es algo que la sociedad considere esencial. Nadie te da la oportunidad – tú creas la tuya. Desde mi primer año en la universidad, estaba aplicando a cada convocatoria abierta que encontraba, porque tenía miedo de graduarme sin historial de exposiciones. Esa red, construida desde temprano, fue lo que me permitió seguir practicando una vez que me mudé al extranjero. Si el arte te parece opcional, quizás no sea el camino correcto – tiene que estar más cerca del centro de las cosas que eso. No importa si eres rico o pobre al comenzar. Solo tienes que mantener el espíritu."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Mencionaste antes cuánto te influyó la mudanza de Japón, pasando por Londres, hasta Lituania – ¿puedes decir más sobre eso?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Como japonés, nos criaron para no expresarnos demasiado abiertamente. Mi esposa es lo opuesto – muy eslava, muy fuerte, y hemos tenido peleas reales, pero hay mucho que aprender de esa franqueza. Los lituanos, como muchos pueblos eslavos en mi experiencia, aferran a su independencia con fuerza, y valoran tanto a la familia como un sentido de uno mismo muy sólido al mismo tiempo. Londres nunca realmente me tocó esa fibra – es demasiado mestizaje para dejar una sola marca. Lituania me enseñó a escucharme a mí mismo. Cuando vuelvo a Japón ahora, una vez al año, noto cuánto auto-represión está incrustada en la vida diaria allí, y se siente extraño de una manera en que no solía ser. Todavía amo profundamente la cultura, pero necesitaba la distancia."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> ¿Tienes un plato favorito de ese lado del mundo?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Sopa fría de remolacha, en verano, con patata cocida y huevo. Me negué a probarla la primera vez – el color solo me desanimó – y ahora me encanta. Eneldo, también; se ha convertido en uno de mis sabores favoritos. Me quejaba constantemente de la comida en Londres y en Europa Occidental en general, excepto la italiana – la pasta y la pizza son difíciles de discutir – pero la comida eslava podría ser la única cocina que realmente rivaliza con la japonesa para mí, lo cual no esperaba."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Una pregunta más personal, solo si te sientes cómodo – ¿dónde conociste a tu esposa?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Londres, técnicamente, pero habíamos estado hablando durante años antes de eso – en una plataforma de intercambio de idiomas. Estaba aprendiendo inglés, ella quería aprender japonés, y terminamos hablando principalmente en inglés de todos modos, lo cual me venía bien en ese momento. Éramos amigos en línea durante cinco o seis años antes de que ella viniera a Londres y empezáramos a salir en realidad, todavía a distancia por un tiempo después de eso. En total, nos conocemos desde hace unos ocho años. Primero éramos amigos, lo suficiente como para conocer las historias del otro – relaciones pasadas y todo – lo cual resultó importar. Es la base más sólida que he tenido, y todo lo demás ha surgido de ella."
+              "content": "El arte contemporáneo se ha vuelto elitista en algunos lugares. El arte debe ser accesible. Cuando veo a personas decir “Odio esta pintura,” me entristece un poco, porque sigue siendo una creación humana, incluso las que personalmente no me gustan. Así que las manos y los pies también son una invitación – no quiero que nadie se quede frente a mi obra sintiendo que no pertenece allí."
             },
             {
               "type": "quote",
-              "content": "Saber lo que te gusta, saber que tienes el poder de decidir algo por ti mismo – incluso en la vida diaria – creo que ese podría ser el consejo."
+              "content": "No quiero que nadie se quede frente a mi obra sintiendo que no pertenece allí."
             },
             {
-              "type": "note",
-              "content": "Esta entrevista ha sido editada y condensada para mayor extensión y claridad."
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8odjhem1x46j.jpg",
+                "https://api.eprisjournal.com/uploads/mt8odk8s8fcxbu.jpg"
+              ],
+              "caption": "Union, Keisuke Azuma, 2026, óleo sobre lienzo"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span>04 · Sobre la Serie de Huevos y un Viaje a la Abstracción</span>"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Tienes una serie anterior titulada <i>Eggs</i>, más centrada en el centro – ¿algo sobre transformación, quizás renacimiento?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Exactamente eso. Después de graduarme en Londres me mudé directamente a Lituania, a un estudio en un sótano, en invierno, sin nadie alrededor – se sentía como una prisión de arte, solo yo y mi arte. Ese fue el momento en que hice la serie Eggs. Antes de eso, hacía pintura abstracta de paisajes, que amaba, pero seguía lo que la gente decía que era bueno sin expresarme completamente."
+            },
+            {
+              "type": "text",
+              "content": "Comencé inicialmente a hacer arte a través de composiciones figurativas, trabajando en realismo. Quería combinar esto con mi expresión abstracta, estética japonesa, deducción. Para hacer esto, la serie Eggs fue muy importante. En este trabajo intenté crear algo a partir de mis paisajes - doblándolos o experimentando con su forma física."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8oujwbb5bo1t.jpg",
+              "caption": "Distant Plea, Keisuke Azuma, 2025, óleo sobre lienzo"
+            },
+            {
+              "type": "texto",
+              "content": "Después de la serie Eggs, tomó aproximadamente ocho meses volver a introducir elementos realistas - mano y pies. La serie Eggs fue una transformación para mí."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Crees que la abstracción es la forma más pura de pintura – más poderosa porque obliga a la autorreflexión en lugar de leer una figura?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Estoy mayormente de acuerdo. Recuerdo una retrospectiva de Monet en Kyoto – él es técnicamente figurativo, muy pictórico, pero había un lienzo sin terminar de la serie Water Lilies en exhibición, apenas con color, solo unos pocos trazos. Me afectó más que su obra terminada. Esa es una de las pinturas que rompieron mi resistencia a la abstracción."
+            },
+            {
+              "type": "texto",
+              "content": "La abstracción también tiene esta cualidad democrática – hace que las personas sientan que también podrían hacerlo, y creo que eso es valioso, incluso si suena ingenuo. Todavía creo en el poder del realismo alto, Caravaggio y ese tipo de trabajo – todavía vamos al cine por escala y artesanía – pero la abstracción llena un vacío entre el público y el realismo de élite. Tiene sus propias contradicciones – algunos trabajos abstractos son igual de excluyentes – pero en su mejor momento, abre las cosas."
+            },
+            {
+              "type": "cita",
+              "content": "Tiene sus propias contradicciones – algunos trabajos abstractos son igual de excluyentes – pero en su mejor momento, abre las cosas."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8ozb0tp97p2w.jpg",
+                "https://api.eprisjournal.com/uploads/mt8ozedd11xygj.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Cuna, Keisuke Azuma, 2025, óleo sobre lienzo",
+                "Marcha Estática, Keisuke Azuma, 2025, óleo sobre lienzo"
+              ]
+            },
+            {
+              "type": "encabezado",
+              "level": 2,
+              "content": "<span>05 · </span>Por qué el arte debería ser para todos"
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: Has dicho que el arte debería tener una función. ¿Qué función, en tu opinión?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> El arte siempre ha tenido uno, creo. Probablemente las pinturas más tempranas – las pinturas rupestres de Lascaux en Francia, dibujos de ganado – ya tenían una función narrativa: “esto es lo que vi hoy, aquí está el lugar de caza”. Todavía usamos la ilustración de esa manera, en guías y enciclopedias. Me encanta la pintura barroca especialmente porque se alejó de los retratos de los poderosos y empezó a introducir la vida cívica ordinaria. Siempre tiene una función para hablar de algo más allá de las palabras. Por ejemplo, el Guernica de Picasso es la versión extrema de eso – dolorosamente, brutalmente honesto, y me entristece cada vez, tiene una función de estar en contra del mundo."
+            },
+            {
+              "type": "texto",
+              "content": "El arte puede transmitir emociones más allá de las habilidades para entender - los libros pueden ser más eficientes, pero quizás algunas personas no saben leer - y la pintura puede ser más universal – es incluso más antigua que el propio lenguaje."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Crees que todos tienen una capacidad innata para entender el arte, o es algo aprendido?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Ambos, creo, pero me inclino hacia “aprendido”. Odiaba la abstracción cuando era niño – me encantaba el realismo, y cuando vi por primera vez el trabajo de un pintor abstracto conocido realmente no lo entendí. Ahora <i>sí</i> lloré frente a un Rothko."
+            },
+            {
+              "type": "texto",
+              "content": "Creo que todos tienen la capacidad de entender la estética y la belleza en general - todos pueden aprender a reconocer la belleza en un rostro o en la ropa – no tiene que ser específicamente sobre pintura."
+            },
+            {
+              "type": "texto",
+              "content": "Mi propia familia todavía no entiende realmente mi abstracción, pero son solidarios. El padre de mi esposa, que no tiene formación artística, una vez miró una pintura y dijo, “Oh, puede dibujar manos y pies – debe ser bueno.” [<i>risas</i>] Esa fue una reacción muy importante también - esta conexión con una obra - incluso si solo dura un segundo."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Cuál fue tu primer gran encuentro con una obra de arte – el momento en que pensaste, esto es?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Probablemente Rothko, en Tate Britain. Ya conocía su trabajo, pero verlo en persona, en una sala que era mucho más oscura que el resto del museo, fue diferente. Sentí algo más allá de la humanidad – como si la pintura hubiera sacado algo de mí. Uno de los lienzos en negro y rojo, casi como una puerta a otro lugar. Probablemente esa sea la pintura que me hizo querer pintar."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span>06 · En el estudio del artista</span>"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg",
+              "caption": "El estudio de Keisuke Azuma en Lituania",
+              "credit": "Cortesía de Keisuke Azuma"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Pintas a diario, o esperas la inspiración?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Ahora a diario – tengo muchas exposiciones este año, así que ya no tengo el lujo de esperar. Trabajo primero en un iPad, manipulando una pintura clásica, luego vengo al estudio alrededor de la hora del almuerzo para pintar. Tomo notas constantemente, principalmente ideas de títulos – siempre que se me ocurre algo, lo anoto para que esté allí cuando lo necesite."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: Entonces, ¿el punto de partida ahora es la memoria o la emoción, recordada, en lugar de algo que estás viendo en el momento?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> En gran medida, sí. Todavía uso pinturas clásicas como inspiración cuando pueden ayudar a transmitir un concepto, pero recientemente he estado intentando alejarme un poco de la memoria puramente personal, hacia algo más genérico – he empezado a hacer trabajos más explícitamente políticos últimamente, pensando en lo que está sucediendo de manera más amplia en lugar de solo en mi propia vida."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Planeas meticulosamente, o dejas que el lienzo decida en el momento?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Diría que aproximadamente a la mitad y mitad. Nada se repite exactamente – la temperatura, la textura, todo cambia entre el boceto en iPad y el lienzo real. La pintura que te mostré antes era originalmente azul oscuro; no me gustó, volví al iPad, hice un boceto más claro, y terminé amando el error – todavía se puede ver el azul debajo. En el iPad todo parece mate y controlado; en realidad se ensucia más, es más humano. Me gusta eso."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg",
+              "caption": "Estudio de Keisuke Azuma",
+              "credit": "Cortesía de Keisuke Azuma"
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Cuál es tu mayor fuente de inspiración no visual?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Honestamente, todo, pero especialmente la música y el cine. Incluso nuestro perro – ella no tiene capacidad para pensar demasiado, ella simplemente es feliz, y hay algo inspirador en esa expresión cruda y sin filtrar. En el cine me gustan las cosas que me confunden – David Lynch, trabajos que dejan una pregunta en lugar de responderla. En la música escucho principalmente piezas instrumentales o clásicas, y a una banda japonesa cuyas letras son deliberadamente misteriosas – <i>el misterio hace más trabajo que una explicación</i>."
+            },
+            {
+              "type": "encabezado",
+              "level": 2,
+              "content": "<span>07 · Lugares favoritos</span>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: ¿Tienes alguna joya oculta en Londres que puedas compartir con nosotros? No tiene que estar relacionada con el arte. Un bar, un banco, una calle.</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> No exactamente oculta, pero hay un bar en Londres, llamado Nickel Bar, dentro de un antiguo edificio bancario cerca de la estación Bank, que vaciaron y reconstruyeron – se parece un poco a Hogwarts por dentro. Muy oscuro, muy espacioso, más como un salón de hotel de lujo que un bar típico, y lo suficientemente oscuro como para que puedas tener una conversación privada. Solo me enteré de él cerca del final de mi tiempo en Londres, y volvería solo por eso."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg",
+              "caption": "El Nickel Bar, Londres",
+              "sourceUrl": "https://www.thened.com/london/restaurants/the-nickel-bar"
+            },
+            {
+              "type": "texto",
+              "content": "En Japón, señalaría a la gente hacia Nara – todos van por los ciervos y el gigante Buda, pero si subes más arriba de la montaña detrás del templo principal, quizás veinte minutos después de donde la mayoría de los turistas se detienen, hay un templo mucho más tranquilo con vista a toda la ciudad. Se siente como retroceder unos siglos. En general: cualquier pequeño templo menor que encuentres en un mapa en lugar de una lista de “lo mejor” – en algún lugar donde realmente se te permite entrar. Kioto tiene miles de ellos. Si después puedes tomar matcha allí, aún mejor."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span>08 · Sobre</span> vida"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Mencionaste anteriormente cuánto te influyó la mudanza de Japón, a través de Londres, a Lituania – ¿puedes decir más al respecto?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Como japoneses, nos criamos sin expresar demasiado abiertamente. Los lituanos, como muchos pueblos eslavos en mi experiencia, aferran su independencia con fuerza, y valoran tanto a la familia como un sentido de sí mismos muy sólido al mismo tiempo. Londres nunca realmente me tocó de esa manera – es demasiado diverso para dejar una sola marca. Lituania me enseñó a escucharme a mí mismo. Cuando vuelvo a Japón ahora, una vez al año, noto cuánto la auto-supresión está integrada en la vida diaria allí, y se siente extraña de una manera que no solía serlo. Todavía amo profundamente la cultura, pero necesitaba la distancia."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Y para alguien joven que quiere ser artista pero tiene miedo de empezar?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Creo que cualquiera puede ser artista, en principio – mantenerse completamente en ello es una cuestión diferente, más difícil. Pero se necesita verdadero coraje y compromiso, especialmente ahora, cuando la economía de ello es inestable y el arte no es algo que la sociedad considere esencial. <i><u>Nadie te da la oportunidad – tú creas la tuya</u></i>. Desde mi primer año en la universidad, estaba aplicando a cada convocatoria abierta que encontraba, porque me aterrorizaba graduarme sin historial de exposiciones. Esa red, construida desde temprano, es lo que me permitió seguir practicando una vez que me mudé al extranjero."
+            },
+            {
+              "type": "texto",
+              "content": "Si el arte te parece opcional, quizás no sea el camino correcto – tiene que estar más cerca del centro de las cosas que eso. No importa si eres rico o pobre al comenzar. Solo tienes que mantener el espíritu."
+            },
+            {
+              "type": "cita",
+              "content": "Si el arte te parece opcional, quizás no sea el camino correcto – tiene que estar más cerca del centro de las cosas que eso. No importa si eres rico o pobre al comenzar. Solo tienes que mantener el espíritu."
+            },
+            {
+              "type": "texto",
+              "content": "<b>MI: Si tuvieras que dar un consejo de vida, ¿cuál sería?</b>"
+            },
+            {
+              "type": "texto",
+              "content": "<b>KA:</b> Deja de ser una persona que complace a los demás. Creo que muchas personas luchan con eso, en diferentes niveles. Importa, porque solo tenemos una vida, y he escuchado lo mismo de muchas personas mayores en entrevistas: simplemente haz lo que realmente quieres. Conocer tu propia voz, incluso en pequeñas decisiones diarias, es todo."
+            },
+            {
+              "type": "cita",
+              "content": "...simplemente haz lo que realmente quieres. Conocer tu propia voz, incluso en pequeñas decisiones diarias, es todo."
+            },
+            {
+              "type": "nota",
+              "content": "Esta entrevista ha sido editada y condensada para extensión y claridad."
             }
           ],
-          "updatedAt": "2026-08-24T20:41:43.444Z"
+          "updatedAt": "2026-08-29T15:59:39.798Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
+          "previewToken": "7050d8a93e5a216872f5399c",
+          "publishAt": "2026-08-29T14:14:18.395Z"
         },
         {
           "id": 26,
