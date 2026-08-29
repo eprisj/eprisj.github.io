@@ -27608,12 +27608,11 @@
         },
         {
           "id": 25,
-          "draft": true,
-          "title": "Keisuke Azuma ile Röportaj",
+          "title": "\nKendimizle Buluştuğumuz Yer - Keisuke Azuma ile röportaj",
           "author": "Maria Ivanova",
           "role": "Editoryal Masası",
           "date": "21 Ağustos 2026",
-          "excerpt": "Sanatçı Keisuke Azuma tuvali boyadan geri yıkaması, eserinin arkasındaki Japon estetiği gölge ve boşluk ve sanatın neden ayrıcalıklı olmaması gerektiği hakkında",
+          "excerpt": "Sanatçı Keisuke Azuma tuvali yeniden boyayla temizlemek, eserinin arkasındaki Japon estetiği gölge ve boşluk ve neden sanatın ayrıcalıklı olmaya hakkı olmadığını anlatıyor.",
           "category": "sanat",
           "subcategory": "Özellik",
           "tags": [
@@ -27621,286 +27620,368 @@
             "kültür",
             "editoryal"
           ],
-          "imageSeed": "intwerview-with-keisuke-azuma",
+          "imageSeed": "",
           "content": [
             {
               "type": "text",
-              "content": "Keisuke Azuma konuştuğu yolu resmediyor: dikkatlice, sonra birden. Japonya'da doğmuş, Londra'da eğitim almış ve şimdi Litvanya'da yaşayan Azuma, tuvalini ekmek yerine almakla inşa eder – pigmenti geri yıkayarak, bedeni çözerek, sadece bir el, bir ayak veya bir jest parçası ham, tamamlanmamış tuval karşısında hayatta kalır. Son serisi, şu anda Seoul ve New York'taki Kiaf'ta <i>İnsan Metaforları</i> ve <i>Değişim</i> başlıklarıyla sergileniyor, insan figürünü en evrensel parçalarına indirger, gerisini bir davet olarak bırakır: izleyicinin kendi yansımasıyla doldurduğu boşluk."
+              "content": "Japonya'da doğdu, Londra'da eğitim aldı ve şimdi Litvanya'da bulunan Keisuke Azuma, tuvalini eklemek yerine çıkarmak suretiyle inşa ediyor – pigmenti geri yıkayarak, bedeni çözerek, sadece bir el, bir ayak veya bir jest parçası ham, tamamlanmamış tuvalin karşısında hayatta kalana kadar. Son serisi, şu anda KIAF Seoul'de sergilenmekte ve yakın zamanda New York ve Paris'teki solo sergilerinde gösterildi, insan figürünü en evrensel parçalarına indirger, gerisini bir davet olarak bırakır: izleyicinin kendi yansımasıyla doldurduğu boşluk."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8oisq6xlwmv4.jpg",
+              "caption": "Keisuke Azuma stüdyosunda",
+              "credit": "Courtesy of Keisuke Azuma"
             },
             {
               "type": "text",
-              "content": "EPRIS, Azuma ile Vilnius dışındaki stüdyosundan uzun bir video görüşmesi yaptı, burada eşi, köpeği ve kedisiyle yaşıyor. Aşağıda, onun yöntemini şekillendiren gölge ve çıkarımın Japon estetiği üzerine, sanatın neden ayrıcalıklı olma hakkı olmadığını düşündüğü ve Tokyo'dan Litvanya'ya onu getiren sekiz yıllık, kıtalararası ilişki üzerine yaptığımız sohbeti bulabilirsiniz, bu ilişki bir dil değişim uygulaması aracılığıyla gerçekleşti."
+              "content": "Epris, Vilnius'taki stüdyosundan eşi, köpeği ve kedisiyle birlikte yaşayan Azuma ile bir video görüşmesi yaptı. Aşağıda, onun metodunu şekillendiren çıkarımın Japon estetiği üzerine olan sohbetimizi ve neden sanatın ayrıcalıklı olmaya hakkı olmadığını düşündüğünü bulabilirsiniz."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">01 · Kökenler</span>Bir ressam olmak"
+              "content": "<span>01 · </span>Bir ressam olmaya başlamak"
             },
             {
               "type": "text",
-              "content": "<b>Maria Ivanova:</b> Sanatçı olmaya başlamanızın başlangıç noktası neydi – çocukluktan beri sanata mı daldınız, yoksa arzu daha sonra mı geldi?"
+              "content": "<b>Maria Ivanova [MA]: Sizin için sanatçı olmaya başlamanın başlangıç noktası neydi – çocukluktan beri sanata mı daldınız, yoksa arzu daha sonra mı geldi?</b>"
             },
             {
               "type": "text",
-              "content": "<b>Keisuke Azuma:</b> Bu her zaman komik bir hikaye, çünkü aslında hiç sanatçı olmak istememiştim. Sanatı seviyorum, açıkça – Barok döneminden sanatçılar hakkında çok okudum ve hep fakir olduklarını söylüyordu. İstisnalar vardı, ama genel olarak böyle zor bir meslek gibi görünüyordu. Yine de seviyordum, hatta topluluğumda bu konuda oldukça yalnızdım. Ailemde kimse sanata ilgilenmiyordu."
+              "content": "<b>Keisuke Azuma [KA]:</b> Her zaman komik bir hikayedir, çünkü aslında hiç gerçekten sanatçı olmak istemedim. Sanatı seviyorum, açıkça – Barok döneminden sanatçılar hakkında çok okudum ve hep fakir olduklarını söylüyordu. İstisnalar vardı, ama genel olarak çok zor bir meslek gibi görünüyordu. Yine de seviyordum, hatta topluluğumda bu konuda oldukça yalnızdım. Ailemde kimse sanata ilgilenmiyordu."
             },
             {
               "type": "text",
-              "content": "Küçük başladı – bir mağazada pazarlama işi yapıyordum ve biri bana bir illüstrasyon yapıp yapamayacağımı sordu. Müşterilerin nasıl tepki verdiğini gördüm ve sanatın bir kavramı iletme gücü beni büyüledi. Filmle de ilgileniyordum, bu yüzden bir süre iki şeyi illüstrasyon aracılığıyla birleştirmeyi düşündüm. Bu yüzden ilk etapta sanat okulunu seçtim. Eğitimim sırasında başka bir aşk keşfettim – kendi kelimelerimi, kendi kimlik duygumu ifade etmek. Yavaş yavaş gelişen bir şeydi bu. Ressam olmamak için bahaneler üretmeye devam ettim, ama yine de ona geri dönüyordum. Hâlâ hatırlıyorum, bir profesör bize bu odadaki öğrencilerin sadece yüzde iki'sinin çalışan sanatçı olacağını söylemişti."
+              "content": "Bir mağazada pazarlama işi yapıyordum ve biri bana bir illüstrasyon yapıp yapamayacağımı sordu. Müşterilerin tepkisini gördüm ve sanatın bir kavramı iletme gücü beni büyüledi. Filmle de ilgileniyordum, bu yüzden bir süre iki şeyi illüstrasyon aracılığıyla birleştirmeyi düşündüm. Bu yüzden ilk etapta sanat okulunu seçtim. Eğitimim sırasında başka bir aşk buldum – kendi kelimelerimi, kendi kimlik duygumu ifade etmek. Yavaş yavaş gelişen bir şeydi. Ressam olmamak için bahaneler üretmeye devam ettim, ama yine de ona geri dönüyordum."
             },
             {
               "type": "text",
-              "content": "Sonunda Londra'da sergiler göstermeye başladım, henüz öğrenciyken ve birkaç galeri eserlerimi satıyordu, bu bana gerçekten mümkün olabileceğine ikna etti. Eşimin desteği de çok önemliydi – beni sanatçı olmak istediğimi bilerek evlendi. Bu şekilde kendimi bir sanatçı haline getirdim, eğer anlamlıysa."
+              "content": "Sonunda Londra'da sergiler göstermeye başladım ve birkaç galeriye eserlerimi satmaya ikna oldum, bu gerçekten mümkün olabileceğine inanmama neden oldu. Eşimin desteği de çok önemliydi – beni sanatçı olmak istediğimi bilerek evlendi. İşte böyle kendimi bir sanatçıya dönüştürdüm."
+            },
+            {
+              "type": "alıntı",
+              "content": "Resim yapmam için bahane üretmeye çalışıyordum ve yine de ona geri dönüyordum."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mt8omin9z9m7tf.jpg",
+              "caption": "Soliloquy, Keisuke Azuma, 2026, yağlıboya tuval üzerinde"
+            },
+            {
+              "type": "metin",
+              "content": "<b>MI: Sanata olan bu çekilme doğuştan mı, yoksa çevrenizin size kazandırdığı bir şey mi?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>KA:</b> Sadece “Bu şekilde doğdum” demek biraz yüzeysel olur, ama – annem bir mimar. Kız kardeşim kolaj yapar, sadece kendi günlükleri için. Babam herhangi bir sanatla ilgilenmez, ailede de gerçekten kimse ilgilenmez. Yani, bu doğuştan daha fazla olduğunu söyleyebilirim, belki de kan hattında küçük bir ipucu vardır. Aslında bu yola <i>gitmemeye</i> çok çalıştım. Lise yıllarında bir sanat öğretmeni kişisel olarak beni kulübüne katılmaya çağırdı ve ona müzik yapmak istediğimi söyledim. Her zaman biraz işaret vardı, bakmadığım zamanlarda bile onu gösteriyordu."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mt8ooivc2dg67b.jpg",
+              "caption": "Ring, Keisuke Azuma, 2025, yağlı boya tuvali üzerinde"
+            },
+            {
+              "type": "başlık",
+              "level": 2,
+              "content": "<span>02 ·</span> Yöntem"
+            },
+            {
+              "type": "metin",
+              "content": "<b>MI: Japonya'da doğup büyüdünüz, sonra eğitim almak için Londra'ya taşındınız. Çalışmalarınızın Japon kültürüne kök saldığını söylediniz – bu, pratiğinizde nasıl ortaya çıkıyor?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>KA:</b> Bir kitap var, <i>Gölgelere Övgü</i> – geleneksel Japon evlerinin nasıl ışık ve gölge kullandığı, negatif alanlara güçlü vurgu yapıyor. Çiçekleri tutan tek bir raf, çevresindeki her şey boş olduğu için bir odanın tüm odak noktası haline gelir. Hatta bir yaşam alanı bile tam bir sanat ifadesi gibi muamele görür. Işık ve gölge kontrastına zaten ilgim vardı – çok fotoğraf çekerimdi – ve bir noktada bu, resimlerimle birleşti."
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Sanata olan bu çekiciliğin doğuştan mı yoksa çevrenin sana mı verdiği bir şey olduğunu düşünüyorsun?"
+              "content": "Genellikle klasik tabloları referans alırım ve onları manipüle ederim. Süreçte, gerçekten önemli olan, iletmek istediğim şeye odaklanabilmek için unsurları ortadan kaldırmaya çalışırım. Tüm tablolarımda boşluk vardır – bu, ham tuvalin kendisidir. Boyayı silerim. Bu mükemmel temiz değildir; altında çizgiler görebilirsiniz. Bunu yapıyorum çünkü renkleri tekrar çıkarmanın fiziksel eylemini seviyorum. Japon Zen kültüründe, önemli olan minimalist ifadedir ve kendim için içine dalabileceğim, fiziksel bir süreç istedim."
+            },
+            {
+              "type": "alıntı",
+              "content": "Tüm tablolarımda boşluk vardır – bu, ham tuvalin kendisidir. Boyayı silerim."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mt8o4qs3q9q7wi.jpg",
+              "caption": "Most Things in Between, Keisuke Azuma, 2026, Yağlı Boya Tuval üzerinde"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Sadece “Bu şekilde doğdum” demek biraz yüzeysel olur, ama – annem bir mimar. Kız kardeşim kendi günlükleri için kolaj yapar. Babam herhangi bir sanatla ilgilenmez, ve gerçekten ailede başka kimse de ilgilenmiyor. Yani, daha çok doğuştan gelen bir şey olduğunu söyleyebilirim, belki de kanında küçük bir ipucu var. Aslında bu yola gitmemeye çok çalıştım <i>çaba gösterdim</i>. Lise yıllarında bir sanat öğretmenim kişisel olarak beni kulübüne katılmaya çağırdı ve ona müzik yapmak istediğimi söyledim. Her zaman biraz işaret vardı, hatta ararken bile ona dikkat çekiyordum."
+              "content": "<b>MI: İlk kez tablolarını gördüğümde hemen Japon etkisini hissettim – bu, maddeden çok özüne vurgu yapması, bir mekanın size nasıl hissettirdiği yerine ne konulduğu üzerinde durması.</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Yani, bu zorluklara rağmen sanatsal bir eğitim almaya karar vermek gerçekten zor bir karar mıydı?"
+              "content": "<b>KA:</b> Haklısın. Bir zamanlar Tadao Ando'nun bir kilisesini ziyaret ettim – iki ince cam çizgisiyle temsil edilen bir haç bulunan beton bir kutu. İçeri girdiğimde tamamen güvende hissettim, tam da çünkü orada hiçbir şey yoktu. Bu tür minimalist boşluk önemlidir çünkü gerçekten kim olduğumuzu görebileceğimiz az sayıdaki yerden biridir – hayatımızın çok büyük bir bölümünü içeriklere gömülü olarak telefonlarımızda geçiriyoruz. Aynı nedenle çoğu resmimde monoton bir arka plan tutarım: boyayı silerken her yerde izler kalır ve her biri önemlidir. Ve hâlâ Barok tabloların karanlığı nasıl kullandığını seviyorum – yokluk olarak değil, çerçevede bir varlık olarak."
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Çok zordu – sosyal anksiyete sorunum var ve yabancı bir ülkede eğitim görmek zaten kendi başına zordu. İngilizcem Londra öncesinde çoğunlukla Amerikan İngilizcesiydi, bu da uyum sağlamamı gerektirdi. Kalabalıkları sevmem, ve Londra sanat okulları çok büyük. Üstüne üstlük, eğitim kendisi bana hem karmaşık hem de yardımcı oldu – hala nasıl resim yapacağımı tam anlamış değilim. Hala malzeme, pigment ile mücadele ediyorum. Bu bana safça hissettiriyordu. Bazı arkadaşlarım zaten sektörü biliyordu – Pace, Gagosian gibi isimleri sıradan bahsediyorlardı – ve ben onların ne hakkında konuştuklarını anlamıyordum. O aşama, karmaşık olsa da, önemliydi."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8o6ppz5cm8rs.jpg",
+              "caption": "Church of the Light, Tadao Ando, 1989",
+              "sourceUrl": "https://www.dezeen.com/2017/10/31/tadao-ando-full-scale-mock-up-church-of-the-light-exhibition-tokyo-national-art-center/",
+              "credit": "Dezeen"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span>02 · Yöntem</span> Gölgelerin övgüsü"
+              "content": "<span>03 · Metamorfoz</span>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Japonya'da doğup büyüdünüz, sonra eğitim almak için Londra'ya taşındınız. Çalışmalarınızın Japon kültürüne kök saldığını söylediniz – bu, pratiğinizde nasıl ortaya çıkıyor?"
+              "content": "<b>MI: Son çalışmalarınız, <i>İnsan Metaforları</i>, Paris'te sergilendi – kırılganlık, kimlik ve değişimle ilgilidir. Şimdi yaşadığımız sürekli kendini gösterme baskısına bir yanıt mı?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>KA:</b> Bence öyle. Bu seri, bu tür doğrulama peşinde koşmaya karşı bir bildiri. Londra'da belirli bir formata uymam gerektiğini hissettim – trend olan ne, popüler olan ne, görünüşte doğru olan ne. Litvanya'da yaşamak bunu değiştirdi. Neredeyse kimseyi görmüyorum – eşim, köpeğimiz, kedimiz. Litvanyalılar ve genel olarak Slav halkı, deneyimlerime göre, kendilerine çok sadıklar. Bana selam bile vermiyorlar çoğu zaman, bu gerçekten ferahlatıcı buluyorum – sahtecilik yok. İnsanlar etki ve para peşinde koşuyor, bu önemli, ama günün sonunda kendi hayatınızda en önemli kişi sizsiniz ve bunu unutmamak kolaydır. <i><u>Bu, resimde bırakmaya çalıştığım soru – bu yüzden çok boş alan bırakıyorum. Bu, izleyicinin kendi deneyimi haline gelmeli.</u></i>"
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8or0zl9nfedq.jpg",
+                "https://api.eprisjournal.com/uploads/mt8or2t281k9ci.jpg"
+              ],
+              "caption": "“Soliloquy” Detayları, 2026"
+            },
+            {
+              "type": "metin",
+              "content": "<b>MI: Soyutlama aracılığıyla, ama eller ve ayaklar hâlâ mevcutken, bilinç veya ruh gibi bir şeye – bedenden ayrılabilen bir benliğe – işaret ediyor musunuz?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>KA:</b> Tam olarak. <i>İnsan Mecazları</i> başlığı, New York gösterisi içindi; Paris gösterisi ise <i>Metamorfoz</i> adını taşıyordu, onu da aynı derecede seviyorum. Bedeni silerim çünkü onun fiziksel bir ölçek olarak dikkat edilmediğini düşünüyorum – kafamızda yaşıyoruz, telefonlarımızda, ve beden, ilk izlenimi taşıyan yüzeye kıyasla neredeyse önemsiz hale geliyor. Eller ve ayaklar ise garip bir şekilde evrensel. Vücutlar büyük ölçüde farklılık gösterir, ama bir el hep el kalır. Bu yüzden onları bir tür çapa olarak tutuyorum – herkesin tanıyabileceği bir şey – ve gerisini silerek insanların izin almadan resme girmesini sağlıyorum."
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Bir kitap var, <i>Gölgelere Övgü</i> – yazarın ilk adını hatırlamıyorum – geleneksel Japon evlerinin nasıl ışık ve gölge kullandığını anlatıyor, negatif alanlara güçlü vurgu yapıyor. Çiçekler tutan tek bir raf, çevresindeki her şey boş olduğu için odanın tüm odak noktası haline gelir. Hatta bir yaşam alanı bile tam anlamıyla bir sanat ifadesi gibi muamele görür. Işık ve gölge kontrastına zaten ilgim vardı – çok fotoğraf çekerim – ve bir noktada bu, resimlerimle birleşti."
-            },
-            {
-              "type": "text",
-              "content": "Çoğu zaman klasik tabloları referans alırım ve onları manipüle ederim. Süreçte, gerçekten önemli olan, iletmek istediğim unsurları odaklanabilmek için unsurları ortadan kaldırmaya çalışırım. Tüm tablolarımda beyaz alanlar vardır – bu, ham tuvalin kendisidir. Boyayı silerim. Bu tamamen temiz değildir; altında çizgiler görebilirsiniz. Bunu yapmamın nedeni, renkleri tekrar çıkarmanın fiziksel eylemini seviyor olmamdır. Japon Zen kültüründe önemli olan minimalist ifadedir ve kendim için sürükleyici, fiziksel bir süreç istedim, kısmen çünkü çağdaş sanatın çok sosyal medya odaklı hale geldiğini düşünüyorum – insanlar zaten popüler olanlara doğru resim yapıyorlar. Kendime sürekli neden hâlâ 2026'da resim yapıyoruz diye soruyorum."
+              "content": "Çağdaş sanat bazı yerlerde elit odaklı hale geldi. Sanat erişilebilir olmalı. İnsanların “Bu tabloyu sevmiyorum” dediğini gördüğümde biraz üzülüyorum, çünkü bu hala bir insan yapımı, hatta kişisel olarak sevmediğim eserler bile olsa. Bu yüzden eller ve ayaklar da bir davet – kimse eserimin önünde durup kendini ait hissetmiyormuş gibi hissetmek istemiyorum."
             },
             {
               "type": "quote",
-              "content": "Bu çıkarım estetiğim var. Bu yüzden tam tersi yönde gittim – boyayı kazıyarak."
+              "content": "Kimse eserimin önünde durup kendini ait hissetmiyormuş gibi hissetmek istemiyorum."
             },
             {
-              "type": "text",
-              "content": "Ben de Londra'da insanların nasıl resim yaptığıyla sıkıldım – her zaman daha fazla boya, daha fazla katman. Diğer yöne gitmek daha dürüst bir yanıt gibi geldi ve daha Japonca bir yaklaşımdı."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Resimlerinizi ilk gördüğümde hemen Japon etkisini hissettim – özneye, maddeden çok, bir mekanın sizi nasıl hissettirdiğine vurgu yapması."
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Haklısın. Bir zamanlar Tadao Ando'nun bir kilisesini ziyaret etmiştim – üzerinde çapraz yerine iki ince cam çizgisi olan beton bir kutu. İçeri girdiğimde tamamen güvende hissettim, tam olarak çünkü orada hiçbir şey yoktu. Bu tür minimalist boşluk önemlidir çünkü gerçekten kim olduğumuzu görebileceğimiz az sayıdaki yerden biridir – hayatımızın çok büyük bir bölümünü içeriklere gömülü telefonlarımızda geçiriyoruz. Aynı nedenle çoğu resmimde monoton bir arka plan tutarım: boya sildiğinizde her yerde izler kalır ve her biri önemlidir. Ve Barok tabloların karanlığı kullanışını hâlâ seviyorum – yokluk olarak değil, çerçevede bir varlık olarak."
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8odjhem1x46j.jpg",
+                "https://api.eprisjournal.com/uploads/mt8odk8s8fcxbu.jpg"
+              ],
+              "caption": "Union, Keisuke Azuma, 2026, yağlıboya tuval üzerinde"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">03 · Güncel seri</span>İnsan Mecazları ve kaybolan beden"
+              "content": "<span>04 · Yumurta Serisi ve Soyutlamaya Yolculuk</span>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Son çalışmalarınız, <i>İnsan Mecazları</i>, Paris'te sergilendi – kırılganlık, kimlik ve değişimle ilgilidir. Şimdi yaşadığımız sürekli kendini gösterme baskısına bir yanıt mı bu?"
+              "content": "<b>MI: Daha önce <i>Eggs</i> başlıklı, daha merkez odaklı bir seri vardı – dönüşümle ilgili bir şey, belki yeniden doğuş?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Bence öyle. Bu seri, bu tür doğrulama peşinde koşmaya karşı bir açıklama. Londra'da belirli bir formata uymam gerektiğini hissettim – trend olan, popüler olan, görünüşte doğru olan neyse. Litvanya'da yaşamak bu durumu değiştirdi. Neredeyse kimseyi görmüyorum – eşim, köpeğimiz, kedimiz. Litvanyalılar ve genel olarak Slav halkı, deneyimlerime göre, kendilerine çok sadıklar. Bana selam bile vermiyorlar çoğu zaman, bu da beni gerçekten ferahlatıyor – sahtecilik yok. İnsanlar etki ve para peşinde koşuyor, ve bu önemli, ama günün sonunda kendi hayatınızda en önemli kişi sizsiniz ve bunu unutmamak kolay değil. Bu, resme bırakmaya çalıştığım soru – bu yüzden çok boş alan bırakıyorum. Bu, izleyicinin kendi deneyimi haline gelmeli."
+              "content": "<b>KA:</b> Tam olarak öyle. Londra'da mezun olduktan sonra doğrudan Litvanya'ya, kışın, kimse yokken, bir bodrum stüdyosuna taşındım – bu bir sanat hapishanesi gibi hissettiriyordu, sadece ben ve sanatım. İşte o zaman Eggs serisini yaptım. Ondan önce soyut manzara resmi yapıyordum, çok seviyordum, ama kendimi tam anlamıyla ifade etmeden, insanların iyi dediği şeyleri takip ediyordum."
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Soyutlama aracılığıyla, ama eller ve ayaklar hâlâ mevcutken, bilinç veya ruh gibi bir şeye – bedenden koparılabilen bir benliğe – işaret ediyor musunuz? "
+              "content": "İlk başta, gerçekçilikle çalışan figüratif kompozisyonlar aracılığıyla sanat yapmaya başladım. Bunu soyut ifadem, Japon estetiğim, çıkarımım ile birleştirmek istedim. Bunu yapmak için Eggs serisi çok önemliydi. Bu çalışmada, manzaralarımdan bir şeyler yaratmaya çalıştım – onları katlayarak veya fiziksel formlarıyla deneme yaparak."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8oujwbb5bo1t.jpg",
+              "caption": "Uzakça İstek, Keisuke Azuma, 2025, yağlıboya tuval üzerinde"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Tam olarak. <i>İnsan Mecazları</i> başlığı, New York gösterisi içindi; Paris gösterisi ise <i>Metamorfoz</i> adını taşıyordu, ki bu ismi de çok seviyorum. Bedeni silerim çünkü onun fiziksel ölçü olarak dikkate alınmadığını düşünüyorum – kafamızda yaşıyoruz, telefonlarımızda, ve beden, ilk izlenimi taşıyan yüzeye göre neredeyse önemsiz hale geliyor. Eller ve ayaklar ise garip bir şekilde evrensel. Vücutlar büyük ölçüde farklılık gösterir, ama bir el hep el kalır. Bu yüzden onları bir tür çapa olarak tutuyorum – herkesin tanıyabileceği bir şey – ve gerisini silerek insanların izin almadan resme girmesine olanak tanıyorum."
+              "content": "Yumurta serisinden sonra yaklaşık sekiz ay sürdü gerçekçi unsurları yeniden tanıtmak - el ve ayaklar. Yumurta serisi benim için bir dönüşümdü."
             },
             {
               "type": "text",
-              "content": "Çağdaş sanat bazı yerlerde seçkin odaklı hale geldi ve bundan hoşlanmıyorum. Eşim, psikolog olan, sevdiğim soyutlamaların çoğundan nefret ediyor – onunla bağ kurmuyor ve bir ziyaret sırasında Tate'den ayrılmak istedi. Bu tepkiyi anlıyorum. Sanat erişilebilir olmalı. İnsanların “Bu tabloyu sevmiyorum” dediğini gördüğümde biraz üzülüyorum, çünkü bu hala bir insan yapımı, hatta kişisel olarak sevmediğim eserler bile. Bu yüzden eller ve ayaklar da bir davet – kimse benim eserimin önünde durup kendini ait hissetmiyor gibi hissetmek istemiyorum."
+              "content": "<b>MI: Soyutlamanın en saf resim biçimi olduğunu düşünüyor musunuz – daha güçlü çünkü kendini yansıtmayı zorunlu kılar, figür okumak yerine?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Çoğunlukla katılıyorum. Kyoto'da bir Monet retrospektifini hatırlıyorum – teknik olarak figüratif, çok resimsel, ama sergide Water Lilies serisinden tamamlanmamış bir tuval vardı, neredeyse hiç renk yoktu, sadece birkaç fırça darbesi. Bu beni onun tamamlanmış eserinden daha çok etkiledi. Bu, soyutlamaya direncimi kıran tablolardan biri."
+            },
+            {
+              "type": "text",
+              "content": "Soyutlamanın aynı zamanda bu demokratik niteliği de var – insanlara bunu da yapabileceklerini hissettiriyor ve bence bu değerli, hatta safça olsa da. Hala yüksek realizmin gücüne inanıyorum, Caravaggio ve o tarz işler – hala sinemaya ölçek ve zanaat için gidiyoruz – ama soyutlama, halk ve elit realizm arasında bir boşluğu dolduruyor. Kendi çelişkileri var – bazı soyut çalışmalar sadece dışlayıcı – ama en iyi halinde, şeyleri açıyor. "
+            },
+            {
+              "type": "alıntı",
+              "content": "Kendi çelişkileri var – bazı soyut çalışmalar sadece dışlayıcıdır – ama en iyi halinde, şeyleri açar."
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mt8ozb0tp97p2w.jpg",
+                "https://api.eprisjournal.com/uploads/mt8ozedd11xygj.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Beşik, Keisuke Azuma, 2025, tuval üzerine yağlıboya",
+                "Statik Mart, Keisuke Azuma, 2025, tuval üzerine yağlıboya"
+              ]
+            },
+            {
+              "type": "başlık",
+              "level": 2,
+              "content": "<span>05 · </span>Neden sanat herkes için olmalı"
+            },
+            {
+              "type": "metin",
+              "content": "<b>MI: Sanatın bir fonksiyonu olması gerektiğini söylediniz. Sizin görüşünüzde hangi fonksiyon?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Sanat her zaman bir şeye sahipti, sanırım. Muhtemelen en eski tablolar – Fransa'daki Lascaux mağara resimleri, sığır çizimleri – zaten anlatı işlevi görüyordu: “bugün ne gördüm, av yerinin nerede olduğu”. Hâlâ rehberlerde ve ansiklopedilerde bu şekilde kullanıyoruz, illüstrasyonu. Barok resimlerini özellikle seviyorum çünkü güç sahiplerinin portrelerinden uzaklaştı ve sıradan sivil yaşamı tanıtmaya başladı. Her zaman kelimelerin ötesinde bir şeyden bahsetmek için bir işlevi vardır. Örneğin, Picasso'nun Guernica'sı bunun aşırı versiyonudur – acımasızca, sertçe dürüst ve her seferinde beni üzmektedir, dünyaya karşı olmak için bir işlevi vardır."
+            },
+            {
+              "type": "text",
+              "content": "Sanat, anlamak için becerilerin ötesinde duyguları iletebilir – kitaplar daha verimli olabilir, ama belki bazı insanlar nasıl okunacağını bilmiyor – ve resim daha evrensel olabilir – dilden bile daha eski."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Sanatın anlaşılması için herkesin doğuştan bir yeteneği olduğunu mu düşünüyorsunuz, yoksa bu öğrenilen bir şey mi?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Her ikisi de olduğunu düşünüyorum, ama “öğrenilen”e eğilimliyim. Çocukken soyutlamadan nefret ederdim – gerçekçiliği severdim ve tanınmış bir soyut ressamın eserini ilk gördüğümde gerçekten anlamamıştım. Şimdi ise <i>anladım</i> ve Rothko'nun önünde ağladım."
+            },
+            {
+              "type": "text",
+              "content": "Bence herkesin genel olarak estetik ve güzelliği anlama kapasitesine sahip olduğunu düşünüyorum - herkes bir yüz veya kıyafetteki güzelliği tanımayı öğrenebilir – bu özellikle resimle ilgili olmak zorunda değil."
+            },
+            {
+              "type": "text",
+              "content": "Kendi ailem hala soyutlamamı gerçekten anlamıyor, ama destekliyorlar. Sanat geçmişi olmayan eşimin babası, bir tabloya baktı ve dedi ki, “Ah, o elleri ve ayakları çizebiliyor – iyi olmalı.” [<i>gülüşler</i>] Bu da çok önemli bir tepkiydi - bir eserle kurulan bu bağ - sadece bir saniye sürse bile."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Bir sanat eseriyle ilk büyük karşılaşmanız neydi – bu işte bu dediğiniz an?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Muhtemelen Tate Britain'da Rothko. Onun eserlerini zaten biliyordum, ama onu bizzat görmek, müzenin diğer bölümlerinden çok daha karanlık bir odada, farklıydı. İnsanlığın ötesinde bir şey hissettim – sanki tablo benden bir şeyler almıştı. Siyah-kırmızı tuvallerden biri, neredeyse başka bir yere açılan bir kapı gibi. Bu muhtemelen beni resim yapmaya teşvik eden tablo oldu."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">04 · Bir dil bulmak</span>Yumurtalardan figürasyona"
+              "content": "<span>06 · Sanatçı Atölyesinde</span>"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg",
+              "caption": "Keisuke Azuma’nın stüdyosu Litvanya’da",
+              "credit": "Keisuke Azuma’nın İzniyle"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Daha önce <i>Yumurtalar</i> adlı, daha figür odaklı bir seriniz var – dönüşümle ilgili, belki yeniden doğuş? "
+              "content": "<b>MI: Günlük mü resim yapıyorsunuz, yoksa ilhamı mı bekliyorsunuz?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Tam olarak öyle. Londra'da mezun olduktan sonra doğrudan Litvanya'ya, kışın, kimse olmadan bir bodrum stüdyosuna taşındım – bu bir sanat hapishanesi gibi hissettirdi, sadece ben ve eser. İşte oradan Yumurtalar serisi çıktı. Ondan önce soyut manzara resmi yapıyordum, sevdiğim bir şeydi, ama nedenini tam anlamadan, insanların iyi dediği şeyleri takip ediyordum – bir zamanlar soyut manzara hakkında kendime açıklama yapmaya çalıştığım bir kitap bile yazdım ve dürüstçe kendi açıklamamı anlamadım."
+              "content": "<b>KA:</b> Artık günlük – Bu yıl birçok gösterimim var, bu yüzden artık bekleme lüksüm yok. Önce bir iPad üzerinde çalışıyorum, klasik bir tabloyu manipüle ediyorum, sonra öğle yemeği saatinde stüdyoya geliyorum ve resim yapıyorum. Sürekli notlar alıyorum, çoğunlukla başlık fikirleri – aklıma bir şey geldiğinde, yazıyorum ki ihtiyaç duyduğumda orada olsun."
             },
             {
               "type": "text",
-              "content": "Sonra Londra'da yaşamadan önce hiç duymadığım bir İngiliz ressamın bir tablosunu ilk kez sadece sosyal medyada gördüm ve gerçekten beni şok etti. Beni küçük ve alçakgönüllü hissettirdi, faydalı bir şekilde. Soyutlamayı daha figüratif bir şeyle birleştirmek istediğimi fark ettim, ama henüz nasıl yapacağımı bilmiyordum. Yumurta serisi bunu kazanmakla ilgiliydi – gerçekçi unsurları yeniden tanıtmak için güveni kazanmak yaklaşık sekiz ay sürdü. Her zaman başarılı değildi, ama gerekliydi. Resim yapmadan önce bir plana ihtiyacım var ve Yumurta'lar bunun bir parçasını oluşturdular."
+              "content": "<b>MI: Yani şimdi başlangıç noktası hafıza mı yoksa duygu mu, hatırlanan, yoksa şu an gördüğünüz bir şey mi?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Sizce soyutlama en saf resim biçimi mi – daha güçlü çünkü kendini yansıtmayı zorunlu kılıyor, bir figürü okumak yerine?"
+              "content": "<b>KA:</b> Büyük ölçüde, evet. Hala kavramı taşıyabilen klasik tabloları ilham kaynağı olarak kullanıyorum, ama son zamanlarda tamamen kişisel hafızadan biraz uzaklaşıp daha genel bir şeye doğru adım attım – son zamanlarda daha açık politik işler yapmaya başladım, sadece kendi hayatımda olanlar yerine daha geniş çapta olanları düşünerek."
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Çoğunlukla katılıyorum. Kyoto'da bir Monet retrospektifini hatırlıyorum – teknik olarak figüratif, çok resimsel, ama sergilenmekte olan Water Lilies serisinden tamamlanmamış bir tuvali vardı, neredeyse hiç renk yoktu, sadece birkaç fırça darbesi. Bu beni onun tamamlanmış eserinden daha çok etkiledi. Bu, soyutlamaya karşı direncimi kıran tablolardan biri – ona karşı nefret ediyordum çünkü nasıl yaklaşacağımı bilmiyordum."
+              "content": "<b>MI: Titizlikle mi planlıyorsunuz, yoksa tuvali anlık mı karar veriyor?</b>"
             },
             {
               "type": "text",
-              "content": "Soyutlamanın aynı zamanda bu demokratik bir niteliği de var – insanlara da yapabilirlermiş gibi hissettiriyor ve bence bu değerli, hatta safça olsa bile. Hala yüksek realizmin gücüne inanıyorum, Caravaggio ve o tarz işler – ölçek ve zanaat için sinemaya gitmeye devam ediyoruz – ama soyutlama, halk ile elit realizm arasında bir boşluğu dolduruyor. Kendi çelişkileri var – bazı soyut çalışmalar sadece dışlayıcı – ama en iyi halinde, şeyleri açıyor."
+              "content": "<b>KA:</b> Yaklaşık yarı yarıyayım. Hiçbir şey tam anlamıyla tekrar etmez – sıcaklık, doku, her şey iPad eskiz ile gerçek tuval arasında değişir. Sana gösterdiğim tablo başlangıçta koyu maviydi; beğenmedim, tekrar iPad'e döndüm, daha açık bir şey tasarladım ve hatayı sevdiğimde buldum – altında hâlâ mavi görebilirsin. iPad'te her şey mat ve kontrollüdür; gerçekte daha kirli, daha insani hale gelir. Bunu seviyorum."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg",
+              "caption": "Keisuke Azuma’nın stüdyosu",
+              "credit": "Keisuke Azuma’nın İzniyle"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: En büyük görsel olmayan ilham kaynağınız nedir?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>KA:</b> Dürüst olmak gerekirse, her şey, ama özellikle müzik ve film. Hatta köpeğimiz bile – aşırı düşünme kapasitesi yok, sadece mutlu ve bu ham, filtrelenmemiş ifadede ilham verici bir şey var. Filmde beni şaşırtan şeyleri seviyorum – David Lynch, cevap yerine soru bırakan işler. Müzikte ise çoğunlukla enstrümantal veya klasik parçalar dinliyorum ve sözleri kasıtlı olarak gizemli olan bir Japon grubunu – <i>gizem, bir açıklamadan daha fazla iş yapar</i>."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">05 · Erişim</span>Sanat neden herkes için olmalı"
+              "content": "<span>07 · Favori Yerler</span>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Sanatın bir işlevi olması gerektiğini söylediniz. Sizin görüşünüzde hangi işlev?"
+              "content": "<b>MI: İngiltere'nin Londra şehrinde bizimle paylaşabileceğiniz gizli mücevherleriniz var mı? Sanatla ilgili olması gerekmez. Bir bar, bir bank, bir sokak.</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Sanatın her zaman bir işlevi olduğunu düşünüyorum. Muhtemelen en eski tablolar – Fransa'daki mağara resimleri, sığır çizimleri – zaten anlatımsal bir işlevi vardı: bugün ne gördüm, av alanı nerede. Hala bu şekilde illüstrasyon kullanıyoruz, saha kılavuzlarında ve ansiklopedilerde. Barok resimlerini seviyorum çünkü güç sahiplerinin portrelerinden uzaklaşıp sıradan sivil yaşamı tanıtmaya başladı. Guernica bunun aşırı versiyonudur – acımasızca dürüst ve her seferinde beni üzüyor, çünkü bu dünyaya karşı bir işlev. Kitaplar bu konuda daha verimli olabilir, dürüstçe, ama çok okumam ve resim her zaman daha evrensel hissettirdi – belki de dilden bile daha eski."
+              "content": "<b>KA:</b> Tam anlamıyla gizli değil, ama Londra'da Nickel Bar adında bir bar var, Bank istasyonunun yakınlarındaki eski bir banka binasında, içini boşaltıp yeniden inşa etmişler – içerisi biraz Hogwarts gibi görünüyor. Çok karanlık, çok geniş, tipik bir bar yerine büyük bir otel lobisi gibi ve öyle karanlık ki gerçekten özel bir sohbet yapabilirsiniz. Bunu Londra'daki zamanımın sonunda öğrendim ve sadece bunun için bile geri dönerdim."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg",
+              "caption": "The Nickel Bar, London",
+              "sourceUrl": "https://www.thened.com/london/restaurants/the-nickel-bar"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Herkesin sanatı anlama konusunda doğuştan bir yeteneği olduğunu mu düşünüyorsunuz, yoksa bu öğrenilen bir şey mi?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Her ikisi de, sanırım, ama «öğrenmiş»e eğilimliyim. Çocukken soyutlamadan nefret ederdim – gerçekçiliği severdim, ve tanınmış bir soyut ressamın eserini ilk gördüğümde gerçekten anlamamıştım. Şimdi Rothko önünde ağladım. Bu kapasitenin herkes tarafından erişilebilir olması gerektiğine inanıyorum, tıpkı herkesin bir yüz veya kıyafetteki güzelliği tanımayı öğrenebildiği gibi – bu özellikle resim yapmakla ilgili olmak zorunda değil. Kendi ailem bile benim soyutlamamı gerçekten anlamıyor, ama destek oluyorlar. Eşimle olan kayınpederim, sanatsal bir geçmişi olmayan bir tamirci, bir tabloya bakıp, “Ah, o elleri ve ayakları çizebiliyor – kesin iyi olmalı,” dedi. Bu bir bağlantı, hatta sadece bir saniye sürse bile."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Bir sanat eseriyle ilk büyük karşılaşmanız neydi – bu sizin için «işte bu» dediğiniz an mı?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Muhtemelen Rothko, Tate Britain'da. Onun eserlerini zaten biliyordum, ama onu bizzat görmek, müzenin diğer bölümlerinden çok daha karanlık bir odada, farklıydı. İnsanlığın ötesinde bir şey hissettim – sanki tablo benden bir şey almıştı. Hangi başlığını hatırlamıyorum bile – neredeyse başka bir yere açılan bir kapı gibi olan siyah-kırmızı tuvallerden biri. Bu muhtemelen beni resim yapmaya teşvik eden tablo oldu."
+              "content": "Japonya'da insanları Nara'ya yönlendirirdim – herkes geyikler ve dev Buddha için gider, ama ana tapınağın arkasındaki dağa daha yukarı tırmanırsanız, çoğu turistin durduğu noktadan yaklaşık yirmi dakika sonra, çok daha sessiz bir tapınak var ve tüm şehri gören bir manzarası var. Birkaç yüzyıl geriye adım atmış gibi hissediyorsunuz. Daha genel olarak: harita üzerinde bulduğunuz, “en iyi” listeleri yerine küçük, önemsiz bir tapınak – gerçekten içine girebileceğiniz bir yer. Kyoto'da binlerce tane var. Orada ardından matcha içebilirsiniz, bu bile daha iyi olur."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">06 · Süreç</span>Stüdyo uygulaması"
+              "content": "<span>08 · On</span> hayat"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Günlük mü boyuyorsunuz, yoksa ilhamı mı bekliyorsunuz?"
+              "content": "<b>MI: Daha önce Japonya'dan, Londra üzerinden, Litvanya'ya geçişin sizi ne kadar şekillendirdiğinden bahsetmiştiniz – bunun hakkında daha fazla söyleyebilir misiniz?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Artık günlük – bu yıl birçok serim var, bu yüzden artık bekleme lüksüm yok. Önce bir iPad üzerinde çalışıyorum, klasik bir tabloyu manipüle ediyorum, sonra öğle yemeği saatinde stüdyoya geliyorum ve resim yapıyorum. Sürekli notlar tutuyorum, çoğunlukla başlık fikirleri – aklıma bir şey geldiğinde, yazıyorum ki ihtiyaç duyduğumda orada olsun."
+              "content": "<b>KA:</b> Japonlar olarak, kendimizi fazla açıkça ifade etmememiz öğretilir. Litvanyalılar, deneyimlerime göre, birçok Slav halkı gibi, bağımsızlıklarına sıkı sıkıya bağlıdırlar ve hem aileyi hem de çok sağlam bir benlik duygusunu aynı anda değerli bulurlar. Londra hiç gerçekten o şekilde içime işlemedi – tek bir iz bırakacak kadar eriyip giden bir karışım değil. Litvanya bana kendimi dinlemeyi öğretti. Şimdi Japonya'ya yılda bir kez geri döndüğümde, orada günlük hayata ne kadar içselleştirilmiş olduğunu fark ediyorum ve bu bana biraz garip geliyor, eskisi gibi değil. Hala kültürü derinden seviyorum, ama mesafe gerekiyordu."
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Yani şimdi başlangıç noktası hafıza veya duygu, hatırlanan, yoksa anlık gördüğünüz bir şey mi?"
+              "content": "<b>MI: Ve sanatçı olmak isteyen, ama başlamaktan korkan genç biri için?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Büyük ölçüde, evet. Hala klasik tabloları ilham kaynağı olarak kullanıyorum, bir kavramı taşımaya yardımcı olabildikleri zaman, ama son zamanlarda tamamen kişisel hafızadan biraz uzaklaşmaya çalışıyorum, daha genel bir şeye doğru – son zamanlarda daha açık politik işler yapmaya başladım, sadece kendi hayatımda değil, daha geniş çapta olanları düşünerek."
+              "content": "<b>KA:</b> Bence herkes prensipte sanatçı olabilir – tamamen onunla geçinmek ise farklı, daha zor bir soru. Ama gerçekten cesaret ve bağlılık gerektirir, özellikle şimdi, ekonomisi istikrarsız ve sanat toplum tarafından temel olarak görülmeyen bir zamanda. <i><u>Kimse size fırsat vermez – siz kendi fırsatınızı yaratırsınız</u></i>. Üniversitedeki ilk yılımdan beri her açık çağrıya başvuruyordum, çünkü sergi geçmişi olmadan mezun olmaktan korkuyordum. Erken kurulan bu ağ, yurtdışına taşındıktan sonra da pratik yapmamı sağladı."
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Planlı mı çalışıyorsunuz yoksa tuvali anlık mı belirliyor?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Yaklaşık yarı yarıya diyebilirim. Hiçbir şey tam anlamıyla tekrar etmez – sıcaklık, doku, her şey iPad eskiz ile gerçek tuval arasında değişir. Size gösterdiğim tablo başlangıçta koyu maviydi; beğenmedim, tekrar iPad'e döndüm, daha açık bir şey tasarladım ve hatayı sonunda sevdim – altında hâlâ mavi görebilirsiniz. iPad'te her şey mat ve kontrollüdür; gerçekte daha kirli, daha insancıl olur. Bunu seviyorum."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> “Manipüle etmek” klasik tabloları kastettiğinizi söylediniz – bu gerçekten neyi içeriyor?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> “Manipüle etmek” belki de çok cesur bir kelime – ben onu daha çok bu tablolardan yardım istemek olarak düşünüyorum. Klasik resmi iPad'e koyarım, üzerinde çalışırım, bazen neredeyse tamamen, ve önemli olan noktaya indiririm. Bir ressam var – adını sürekli unutuyorum – film karelerini referans olarak kullanması ve bir sahneden önemli olanı çıkarmasıyla tanınıyor, bütün resmi değil [Luc Tuymans]. Bu yaptığım işe yakın: çıkarmak, çoğaltmak değil."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> En büyük görsel olmayan ilham kaynağınız nedir?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Dürüst olmak gerekirse, her şey, ama özellikle müzik ve film. Hatta köpeğimiz – aşırı düşünme kapasitesi yok, sadece mutlu ve bunun saf, filtrelenmemiş ifadesinde ilham verici bir şey var. Filmde beni şaşırtan şeyleri seviyorum – David Lynch, cevap yerine soru bırakan işler. Müzikte genellikle enstrümantal veya klasik parçalar dinliyorum ve kasıtlı olarak gizemli sözlere sahip bir Japon grubunu dinliyorum. Aynı nedenle belirli bir dönemin yazarlarına da çekiliyorum – gizem, bir açıklamadan daha fazla iş yapar."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">07 · Off the record</span>Gizli mücevherler"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Tavsiye edeceğiniz herhangi bir gizli mücevher – sanatla ilgili olması gerekmez. Bir bar, bir bank, bir sokak."
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Tam olarak gizli değil, ama Londra'da, Bank istasyonu yakınlarındaki eski bir banka binasında bulunan ve içi tamamen boşaltılıp yeniden inşa edilen bir bar var – içi Hogwarts gibi görünüyor. Çok karanlık, çok geniş, tipik bir bar yerine büyük bir otel lobisine benziyor ve öyle karanlık ki gerçekten özel bir sohbet yapabilirsiniz. Bunu Londra'daki zamanımın sonunda öğrendim ve sadece bunun için geri dönerdim."
-            },
-            {
-              "type": "text",
-              "content": "Japonya'da insanları Nara'ya yönlendirirdim – herkes geyik ve dev Buddha için gider, ama ana tapınağın arkasındaki dağa daha yukarı tırmanırsanız, çoğu turistin durduğu noktadan yaklaşık yirmi dakika sonra, çok daha sessiz bir tapınak var ve tüm şehri gören bir manzarası var. Birkaç yüzyıl geriye adım atmış gibi hissediyorsunuz. Daha genel olarak: harita üzerinde bulduğunuz, “en iyi” listeleri yerine küçük, önemsiz bir tapınak – gerçekten içine girebileceğiniz bir yer. Kyoto'da binlerce tane var. Orada sonra matcha içebilirsiniz, bu bile daha iyi olur."
-            },
-            {
-              "type": "header",
-              "level": 2,
-              "content": "<span class=\"kicker\">08 · Kapanış</span>Hayat, kültür ve aşk üzerine"
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Son bir, sanat dışı soru – eğer hayat hakkında tek bir tavsiye verecek olsaydınız, bu ne olurdu?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> İnsanları memnun etmeyi bırak. Bence birçok insan bununla mücadele ediyor, farklı seviyelerde, ve ben de ettim – herkesle, yabancılar dahil. Beş yıl önce, eşime onun bana aldığı bir hamur işini gerçekten beğenmediğimi söylemek gibi küçük bir şey bile imkansız olurdu. Bu önemli, çünkü sadece bir hayatımız var ve birçok yaşlı insanla röportajlarda aynı şeyi duydum: gerçekten istediğin şeyi yap. Açıkçası, hâlâ insanları istediğimden daha fazla memnun ediyorum ve bu küçük dozlarda faydalı bir beceri – ama çok fazla olmak fazla olur. Kendi sesini bilmek, hatta küçük günlük kararlarında bile, bütün mesele bu."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Ve genç biri olarak, bir sanatçı olmak isteyen ama başlamaktan korkan biri için?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Herkesin prensipte bir sanatçı olabileceğine inanıyorum – tamamen onunla geçinmek başka, daha zor bir soru ve dürüst olmak gerekirse, ben de henüz tam anlamıyla orada değilim. Ama bu gerçekten cesaret ve bağlılık gerektirir, özellikle şimdi, ekonomisi istikrarsızken ve sanat toplum tarafından temel olarak görülmediğinde. Kimse size fırsat vermez – siz kendi fırsatınızı yaratırsınız. Üniversitedeki ilk yılımda, bulabildiğim her açık çağrıya başvuruyordum, çünkü mezun olup sergi geçmişi olmadan mezun olmaktan korkuyordum. Bu erken kurulan ağ, yurtdışına taşındıktan sonra da pratik yapmaya devam etmemi sağladı. Eğer sanat sizin için isteğe bağlıysa, doğru yol olmayabilir – bunun daha çok şeylerin merkezine yakın olması gerekir. İster zengin olun ister fakir, önemli değil. Sadece ruhu korumanız gerek."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Daha önce Japonya'dan Londra'ya, oradan Litvanya'ya yaptığınız geçişin sizi nasıl şekillendirdiğini bahsetmiştiniz – bunun hakkında daha fazla söyleyebilir misiniz?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Japonlar olarak, kendimizi çok açıkça ifade etmememiz öğretilir. Eşim ise tam tersi – çok Slav, çok güçlü ve gerçekten kavga ettik, ama o doğrudanlıktan çok şey öğrenilebilir. Litvanyalılar, benim deneyimime göre, bağımsızlıklarını şiddetle korurlar ve hem aileyi hem de çok sağlam bir benlik duygusunu aynı anda değerli bulurlar. Londra hiç gerçekten içime işlemedi – çok fazla kaynaşmış bir şehir ki tek bir iz bırakmasın. Litvanya bana kendimi dinlemeyi öğretti. Şimdi Japonya'ya yılda bir kez döndüğümde, orada günlük yaşamın içine gömülü olan kendini bastırmayı fark ediyorum ve bu bana biraz garip geliyor, eskiden olmadığı kadar. Hala kültürü derinden seviyorum, ama mesafe gerekiyordu."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> O taraflardan favori bir yemeğiniz var mı?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Soğuk pancar çorbası, yazın, haşlanmış patates ve yumurta ile. İlk denediğimde reddettim – sadece rengi bile beni uzaklaştırdı – ve şimdi çok seviyorum. Dereotu da; o da en sevdiğim tatlardan biri haline geldi. Londra ve Batı Avrupa'daki yemekler hakkında sürekli şikayet ederdim, İtalya hariç – makarna ve pizza tartışılmaz – ama Slav yemekleri belki de benim için gerçekten Japon yemekleriyle yarışan tek mutfaktır, ki bunu beklemiyordum."
-            },
-            {
-              "type": "text",
-              "content": "<b>MI:</b> Bir kişisel soru daha, sadece rahat hissediyorsanız – eşinizle nerede tanıştınız?"
-            },
-            {
-              "type": "text",
-              "content": "<b>KA:</b> Londra, teknik olarak, ama bundan önce yıllarca bir dil değişim platformunda konuşuyorduk. İngilizce öğreniyordum, o Japonca öğrenmek istiyordu, ve sonuçta çoğunlukla İngilizce konuşuyorduk, bu da o zamanlar bana uygundu. Beş veya altı yıl çevrimiçi arkadaş olduk, sonra Londra'ya geldi ve gerçekten çıkmaya başladık, o zamana kadar uzun mesafeydi. Toplamda, yaklaşık sekiz yıldır tanışıyoruz. Önce arkadaş olduk, birbirimizin geçmişlerini – eski ilişkiler ve hepsi – bilmek için yeterince uzun süre, ki bu önemli çıktı. Bu, sahip olduğum en sağlam temel ve o zamandan beri her şey ondan büyüdü."
+              "content": "Eğer sanat sizin için isteğe bağlıysa, belki de doğru yol değildir – bunun daha çok şeylerin merkezine yakın olması gerekir. İçeri girerken zengin ya da fakir olmanız önemli değil. Sadece ruhu korumanız gerek."
             },
             {
               "type": "quote",
-              "content": "Ne sevdiğinizi bilmek, kendiniz için bir şey karar verme gücüne sahip olduğunuzu bilmek – hatta günlük hayatta bile – bence bu tavsiye olabilir."
+              "content": "Eğer sanat sizin için isteğe bağlıysa, belki de doğru yol değildir – bunun daha çok şeylerin merkezine yakın olması gerekir. İçeri girerken zengin ya da fakir olmanız önemli değil. Sadece ruhu korumanız gerek."
             },
             {
-              "type": "note",
+              "type": "text",
+              "content": "<b>MI: Eğer hayatınızda bir tavsiye verecek olsaydınız, bu ne olurdu?</b>"
+            },
+            {
+              "type": "metin",
+              "content": "<b>KA:</b> İnsanları memnun etmeyi bırak. Bence birçok insan bununla mücadele ediyor, farklı seviyelerde. Bu önemli, çünkü sadece bir hayatımız var ve birçok yaşlı insanla yapılan röportajlarda aynı şeyi duydum: gerçekten ne istiyorsan onu yap. Kendi sesini bilmek, küçük günlük kararlar dahil, tüm mesele bu."
+            },
+            {
+              "type": "alıntı",
+              "content": "…gerçekten ne istiyorsan onu yap. Kendi sesini bilmek, küçük günlük kararlar dahil, tüm mesele bu."
+            },
+            {
+              "type": "not",
               "content": "Bu röportaj, uzunluk ve açıklık için düzenlenmiş ve kısaltılmıştır."
             }
           ],
-          "updatedAt": "2026-08-24T21:12:54.786Z"
+          "updatedAt": "2026-08-29T16:00:44.790Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
+          "previewToken": "7050d8a93e5a216872f5399c",
+          "publishAt": "2026-08-29T14:14:18.395Z"
         },
         {
           "id": 26,
@@ -32036,12 +32117,11 @@
         },
         {
           "id": 25,
-          "draft": true,
-          "title": "Intervista con Keisuke Azuma",
+          "title": "\nDove Incontriamo Noi Stessi - intervista con Keisuke Azuma",
           "author": "Maria Ivanova",
           "role": "Redazione",
           "date": "21 ago 2026",
-          "excerpt": "L'artista Keisuke Azuma sul lavare via la vernice dalla tela, le estetiche giapponesi dell'ombra e del vuoto dietro il suo lavoro, e perché pensa che l'arte non abbia il diritto di essere esclusiva.",
+          "excerpt": "L'artista Keisuke Azuma sul lavare via la vernice dalla tela, le estetiche giapponesi dell'ombra e del vuoto dietro il suo lavoro, e perché l'arte non ha il diritto di essere esclusiva.",
           "category": "arte",
           "subcategory": "Inchiesta",
           "tags": [
@@ -32052,26 +32132,27 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "text",
-              "content": "Keisuke Azuma dipinge il modo in cui parla: con attenzione, poi tutto in una volta. Nato in Giappone, formato a Londra, e ora con base in Lituania, Azuma costruisce le sue tele togliendo piuttosto che aggiungendo – lavando il pigmento indietro, dissolvendo il corpo fino a quando solo una mano, un piede, o un frammento di gesto sopravvive contro una tela grezza e incompleta. La sua serie recente, attualmente in mostra a Kiaf a Seoul e New York sotto i titoli <i>Human Metaphors</i> e <i>Metamorphosis</i>, riduce la figura umana alle sue parti più universali, lasciando il resto come un invito: uno spazio vuoto che lo spettatore riempie con la propria riflessione."
+              "type": "testo",
+              "content": "Nato in Giappone, formato a Londra, e ora basato in Lituania, Keisuke Azuma costruisce le sue tele togliendo piuttosto che aggiungendo – lavando il pigmento indietro, dissolvendo il corpo fino a che solo una mano, un piede, o un frammento di gesto sopravvive contro una tela grezza e incompleta. La sua serie recente, attualmente in mostra a KIAF Seoul, e recentemente esposta in mostre personali a New York e Parigi, riduce la figura umana alle sue parti più universali, lasciando il resto come un invito: uno spazio vuoto che lo spettatore riempie con la propria riflessione."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mt8oisq6xlwmv4.jpg",
-              "caption": "Keisuke Azuma nel suo studio, foto: Viktorija Azuma"
+              "caption": "Keisuke Azuma nel suo studio",
+              "credit": "Gentilezza di Keisuke Azuma"
             },
             {
-              "type": "text",
-              "content": "Epris incontrò Azuma durante una lunga videochiamata dal suo studio fuori Vilnius, dove vive con sua moglie e il loro cane e gatto. Di seguito puoi trovare la nostra conversazione sull'estetica giapponese dell'ombra e della deduzione che ha plasmato il suo metodo e perché pensa che l'arte non abbia il diritto di essere esclusiva."
+              "type": "testo",
+              "content": "Epris ha incontrato Azuma tramite una videochiamata dal suo studio a Vilnius, dove vive con sua moglie e il loro cane e gatto. Di seguito puoi trovare la nostra conversazione sull'estetica giapponese della deduzione che ha plasmato il suo metodo e perché pensa che l'arte non abbia il diritto di essere esclusiva."
             },
             {
-              "type": "header",
+              "type": "intestazione",
               "level": 2,
               "content": "<span>01 · </span>Diventare un pittore"
             },
             {
               "type": "text",
-              "content": "<b>Maria Ivanova [MA]: Qual è stato il punto di partenza per diventare artista – sei stato immerso nell'arte fin da bambino, o il desiderio è arrivato più tardi?</b>"
+              "content": "<b>Maria Ivanova [MA]: Qual è stato il punto di partenza per te per diventare un artista – sei stato immerso nell'arte fin dall'infanzia, o il desiderio è arrivato più tardi?</b>"
             },
             {
               "type": "text",
@@ -32079,50 +32160,54 @@
             },
             {
               "type": "text",
-              "content": "È iniziato in piccolo – facevo marketing in un negozio, e qualcuno mi chiese se potevo fare un'illustrazione. Ho visto come reagivano i clienti, e sono stato affascinato da quel potere che l'arte ha di trasmettere un concetto. Mi piaceva anche il cinema, quindi per un po' ho pensato di combinare le due cose attraverso l'illustrazione. È per questo che ho scelto la scuola d'arte in primo luogo. Durante gli studi ho scoperto un altro amore – esprimere le mie parole, il mio senso di identità. Quindi è stato un processo graduale. Continuavo a cercare scuse per non essere un pittore, eppure tornavo sempre su questa strada. Ricordo ancora un professore che ci diceva che solo due percento degli studenti in quella stanza sarebbe finito come artista professionista."
+              "content": "Stavo facendo lavoro di marketing in un negozio, e qualcuno mi chiese se potevo fare un'illustrazione. Ho visto come reagivano i clienti, e sono stato affascinato da quel potere che l'arte ha di trasmettere un concetto. Mi piaceva anche il cinema, quindi per un po' ho pensato di combinare le due cose attraverso l'illustrazione. È per questo che ho scelto la scuola d'arte in primo luogo. Durante i miei studi ho scoperto un altro amore – esprimere le mie parole, il mio senso di identità. Quindi è stato un processo graduale. Continuavo a cercare scuse per non essere un pittore, eppure continuavo a tornare su questa strada."
             },
             {
               "type": "text",
-              "content": "Alla fine ho iniziato a esporre a Londra mentre studiavo ancora, e avere una o due gallerie che affidavano le mie opere mi ha convinto che potrebbe essere effettivamente possibile. Il supporto di mia moglie è stato anche estremamente importante – si è sposata con me sapendo che volevo diventare un artista. È così che mi sono costruito come tale, se ha senso."
+              "content": "Alla fine ho iniziato a esibirmi a Londra mentre studiavo ancora, e avere una o due gallerie che affidavano a me le mie opere mi ha convinto che potrebbe essere effettivamente possibile. Il supporto di mia moglie è stato anche enormemente importante – si è sposata con me sapendo che volevo diventare un artista. È così che mi sono costruito come tale."
+            },
+            {
+              "type": "quote",
+              "content": "Ho continuato a cercare scuse per non essere un pittore, e sono comunque tornato a farlo."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mt8omin9z9m7tf.jpg",
-              "caption": "Soliloquio, Keisuke Azuma, 2026, olio su tela"
+              "caption": "Soliloquy, Keisuke Azuma, 2026, olio su tela"
             },
             {
               "type": "text",
-              "content": "<b>MI: Pensi che quella spinta verso l'arte sia qualcosa innata, o qualcosa che ti hanno dato i tuoi dintorni?</b>"
+              "content": "<b>MI: Pensi che quella spinta verso l'arte sia qualcosa di innato, o qualcosa che ti hanno dato i tuoi dintorni?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Sembra un po' sfacciato dire \"Sono nato così,\" ma – mia madre è un'architetto. Mia sorella fa collage, solo per il suo diario. Mio padre non fa nulla di artistico, e nemmeno nessun altro in famiglia, davvero. Quindi direi che è più innato che no, con forse un piccolo accenno di ciò nel patrimonio genetico. In realtà ho cercato di <i>non</i> seguire questa strada. In liceo un insegnante d'arte mi chiamò personalmente per unirmi al suo club, e gli dissi che volevo fare musica invece. C'era sempre un piccolo segno che indicava questa direzione, anche quando non cercavo uno."
+              "content": "<b>KA:</b> Sembrerebbe un po' sfacciato dire “Sono nato così,” ma – mia madre è un architetto. Mia sorella fa collage, solo per il suo diario. Mio padre non fa nulla di artistico, e nemmeno nessun altro in famiglia, davvero. Quindi direi che è più innato che no, con forse un piccolo accenno di ciò nel patrimonio genetico. In realtà ho cercato molto <i>di non</i> seguire questa strada. In liceo un insegnante di arte mi chiamò personalmente per unirmi al suo club, e gli dissi che volevo fare musica invece. C'era sempre un piccolo segno che puntava in quella direzione, anche quando non lo cercavo."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mt8ooivc2dg67b.jpg",
               "caption": "Ring, Keisuke Azuma, 2025, olio su tela"
             },
             {
-              "type": "header",
+              "type": "intestazione",
               "level": 2,
               "content": "<span>02 ·</span> Metodo"
             },
             {
-              "type": "text",
+              "type": "testo",
               "content": "<b>MI: Sei nato e cresciuto in Giappone, poi ti sei trasferito a Londra per studiare. Hai detto che il tuo lavoro è radicato nella cultura giapponese – come si manifesta nella tua pratica?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> C'è un libro, <i>In Praise of Shadows</i> – non ricordo il nome di battesimo dell'autore – su come le case tradizionali giapponesi usano luce e ombra, con un forte accento sullo spazio negativo. Una singola mensola con fiori diventa il punto focale di una stanza proprio perché tutto intorno è vuoto. Anche uno spazio abitativo viene trattato come una completa espressione artistica. Ero già interessato al contrasto tra luce e ombra – solitamente scattavo molte fotografie – e a un certo punto questo si è fuso con la mia pittura."
+              "type": "testo",
+              "content": "<b>KA:</b> C'è un libro, <i>In Praise of Shadows</i> – su come le case tradizionali giapponesi usano luce e ombra, con un forte accento sullo spazio negativo. Una singola mensola con fiori diventa il punto focale di una stanza proprio perché tutto ciò che la circonda è vuoto. Anche uno spazio abitativo viene trattato come una completa espressione artistica. Ero già interessato al contrasto tra luce e ombra – solitamente scattavo molte fotografie – e a un certo punto questo si è fuso con la mia pittura."
             },
             {
               "type": "text",
-              "content": "Prendo come riferimento dipinti classici, nella maggior parte dei casi, e li manipolo. Nel processo cerco di eliminare elementi così da potermi concentrare su ciò che realmente conta, su ciò che voglio trasmettere. Tutti i miei dipinti hanno spazio bianco – quello è la tela grezza stessa. Sciolgo la vernice. Non è perfettamente pulita; si possono ancora vedere le linee sottostanti. Lo faccio perché amo l'atto fisico di togliere di nuovo il colore. Nella cultura Zen giapponese, ciò che conta è l'espressione minimalista, e volevo un processo immersivo e fisico per me stesso, in parte perché penso che l'arte contemporanea sia diventata molto focalizzata sui social media – le persone dipingono in base a ciò che è già popolare lì. Continuo a chiedermi perché ancora nel 2026 dipingiamo."
+              "content": "Prendo come riferimento dipinti classici, nella maggior parte dei casi, e li manipolo. Nel processo cerco di eliminare elementi così posso concentrarmi su ciò che realmente importa, ciò che voglio trasmettere. Tutti i miei dipinti hanno spazio bianco – quello è la tela grezza stessa. Sciolgo la vernice. Non è perfettamente pulita; si possono ancora vedere linee sottostanti. Lo faccio perché amo l'atto fisico di togliere di nuovo il colore. Nella cultura Zen giapponese, ciò che conta è l'espressione minimalista, e volevo un processo immersivo, fisico per me stesso."
             },
             {
               "type": "quote",
-              "content": "Ho questa estetica della deduzione. Così sono andato nella direzione opposta – raschiando via la vernice."
+              "content": "Tutti i miei dipinti hanno spazio bianco – quello è la tela grezza stessa. Sciolgo la vernice."
             },
             {
               "type": "image",
@@ -32131,11 +32216,11 @@
             },
             {
               "type": "text",
-              "content": "<b>MI: Quando ho visto per la prima volta i tuoi dipinti ho subito sentito quell'influenza giapponese – quella enfasi sull'essenza piuttosto che sul materiale, su come uno spazio ti fa sentire piuttosto che su cosa è collocato al suo interno.</b>"
+              "content": "<b>MI: Quando ho visto per la prima volta i tuoi dipinti ho immediatamente sentito quell'influenza giapponese – quell'enfasi sull'essenza piuttosto che sul materiale, su come uno spazio ti fa sentire piuttosto che cosa vi è collocato.</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Hai ragione. Una volta ho visitato una chiesa di Tadao Ando – una scatola di cemento con due sottili linee di vetro che fanno da croce. Entrando, mi sono sentito completamente sicuro, proprio perché non c'era niente. Quel tipo di vuoto minimalista conta perché è uno dei pochi posti rimasti per vedere davvero chi siamo – passiamo così tanto delle nostre vite sui telefoni, immersi nei contenuti invece. Mantengo uno sfondo monocromatico nella maggior parte dei miei dipinti per lo stesso motivo: quando si lava la vernice ci sono tracce ovunque, e ognuna di esse conta. E adoro ancora come i dipinti barocchi usino l'oscurità – non come assenza, ma come presenza nel quadro."
+              "content": "<b>KA:</b> Hai ragione. Una volta ho visitato una chiesa di Tadao Ando – una scatola di cemento con due sottili linee di vetro che sostituiscono una croce. Entrando, mi sono sentito completamente sicuro, proprio perché non c'era nulla lì. Quel tipo di vuoto minimalista conta perché è uno dei pochi posti rimasti per vedere davvero chi siamo – passiamo così tanto delle nostre vite sui telefoni, immersi nei contenuti invece. Mantengo uno sfondo monotono nella maggior parte dei miei dipinti per lo stesso motivo: quando si lavano via le vernici ci sono tracce ovunque, e ognuna di esse conta. E adoro ancora come i dipinti barocchi usino l'oscurità – non come assenza, ma come presenza nel quadro."
             },
             {
               "type": "image",
@@ -32147,18 +32232,18 @@
             {
               "type": "header",
               "level": 2,
-              "content": "<span>03 · Metamorfosi</span>"
+              "content": "<span>03 · Metamorphosis</span>"
             },
             {
               "type": "text",
-              "content": "<b>MI: La tua recente serie di lavori, <i>Human Metaphors</i>, mostrata a Parigi – tratta di vulnerabilità, identità e cambiamento. È una risposta alla pressione della costante auto-presentazione a cui viviamo ora?</b>"
+              "content": "<b>MI: La tua recente serie di opere, <i>Human Metaphors</i>, esposta a Parigi – tratta di vulnerabilità, identità e cambiamento. È una risposta alla pressione di costante auto-presentazione sotto cui viviamo ora?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Penso di sì. Questa serie è una dichiarazione contro quel tipo di ricerca di validazione. A Londra ho sentito di dover adattarmi a un certo formato – ciò che è di tendenza, ciò che è popolare, ciò che sembra corretto. Vivere in Lituania ha cambiato tutto. Raramente vedo qualcuno – mia moglie, il nostro cane, il nostro gatto. I lituani, e in generale le persone slave, nella mia esperienza, sono molto fedeli a se stessi. Non dicono nemmeno ciao a metà del tempo, cosa che trovo rinfrescante – non c'è finzione. Le persone inseguono influenza e denaro, e questo conta, ma alla fine della giornata sei la persona più importante nella tua vita, ed è facile dimenticarlo. Questa è la domanda che cerco di lasciare nel dipinto – ed è anche il motivo per cui lascio così tanto spazio vuoto. Deve diventare l'esperienza propria dello spettatore."
+              "content": "<b>KA:</b> Penso di sì. Questa serie è una dichiarazione contro quel tipo di ricerca di validazione. A Londra ho sentito di dover adattarmi a un certo formato – cosa è di tendenza, cosa è popolare, cosa sembra corretto. Vivere in Lituania ha cambiato tutto. Raramente vedo qualcuno – mia moglie, il nostro cane, il nostro gatto. I lituani, e in generale le persone slave, nella mia esperienza, sono molto fedeli a se stessi. Non dicono nemmeno ciao a volte, cosa che trovo davvero rinfrescante – non c’è finzione. Le persone inseguono influenza e denaro, e questo conta, ma alla fine della giornata sei la persona più importante nella tua vita, e spesso si dimentica. <i><u>Questa è la domanda che cerco di lasciare nel dipinto – ed è anche il motivo per cui lascio così tanto spazio vuoto. Deve diventare l’esperienza propria dello spettatore.</u></i>"
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mt8or0zl9nfedq.jpg",
                 "https://api.eprisjournal.com/uploads/mt8or2t281k9ci.jpg"
@@ -32167,15 +32252,19 @@
             },
             {
               "type": "text",
-              "content": "<b>MI: Attraverso l'astrazione, ma con mani e piedi ancora presenti, stai facendo un gesto verso qualcosa come coscienza o anima – un sé che può essere staccato dal corpo?</b>"
+              "content": "<b>MI: Attraverso l’astrazione, ma con mani e piedi ancora presenti, stai suggerendo qualcosa come coscienza o anima – un sé che può essere staccato dal corpo?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Esattamente. Il titolo <i>Metafore Umane</i> era per la mostra di New York; quella di Parigi si chiamava <i>Metamorfosi</i>, che adoro altrettanto. Cancello il corpo perché penso che abbiamo smesso di prestare attenzione ad esso come scala fisica – viviamo nelle nostre teste, sui nostri telefoni, e il corpo diventa quasi incidentale rispetto al volto, che porta la prima impressione. Le mani e i piedi, però, sono stranamente universali. I corpi variano enormemente, ma una mano rimane una mano. Quindi le tengo come una sorta di ancora – qualcosa che tutti possono riconoscere – e cancello il resto così le persone possono entrare nel dipinto senza bisogno di permesso prima."
+              "content": "<b>KA:</b> Esattamente. Il titolo <i>Metafore Umane</i> era per la mostra di New York; quella di Parigi si chiamava <i>Metamorfosi</i>, che amo altrettanto. Cancello il corpo perché penso che abbiamo smesso di prestare attenzione a esso come scala fisica – viviamo nelle nostre teste, sui nostri telefoni, e il corpo diventa quasi incidentale rispetto al volto, che trasmette la prima impressione. Le mani e i piedi, però, sono stranamente universali. I corpi variano enormemente, ma una mano rimane una mano. Quindi le tengo come una specie di ancora – qualcosa che tutti possono riconoscere – e cancello il resto così le persone possono entrare nel dipinto senza bisogno di permesso prima."
             },
             {
               "type": "text",
-              "content": "L'arte contemporanea è diventata elitista in alcuni luoghi, e non mi piace. Mia moglie, che è psicologa, odia molta dell'astrazione che amo – non si connette con essa, e una volta ha voluto lasciare la Tate a metà visita. Capisco quella reazione. L'arte dovrebbe essere accessibile. Quando vedo persone dire “Odio questo dipinto,” mi rende un po' triste, perché è comunque una creazione umana, anche quelle che personalmente non mi piacciono. Quindi le mani e i piedi sono anche un invito – non voglio che nessuno si trovi davanti al mio lavoro sentendosi come se non appartenesse lì."
+              "content": "L'arte contemporanea è diventata elitista in alcuni luoghi. L'arte dovrebbe essere accessibile. Quando vedo persone dire “Odio questo dipinto,” mi rattristo un po', perché è comunque una creazione umana, anche quelle che personalmente non mi piacciono. Quindi le mani e i piedi sono anche un invito – non voglio che nessuno si trovi davanti al mio lavoro sentendosi fuori luogo."
+            },
+            {
+              "type": "quote",
+              "content": "Non voglio che nessuno si trovi davanti al mio lavoro sentendosi fuori luogo."
             },
             {
               "type": "gallery",
@@ -32192,11 +32281,15 @@
             },
             {
               "type": "text",
-              "content": "<b>MI: Hai una serie precedente intitolata <i>Uova</i>, più orientata alla figura – qualcosa sulla trasformazione, forse sulla rinascita?</b>"
+              "content": "<b>MI: Hai una serie precedente intitolata <i>Eggs</i>, più orientata al centro – qualcosa sulla trasformazione, forse la rinascita?</b>"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Esattamente. Dopo aver conseguito la laurea a Londra sono passato direttamente in Lituania, in uno studio sotterraneo, in inverno, con nessuno intorno – sembrava una prigione d'arte, solo io e il lavoro. È da lì che è nata la serie delle Uova. Prima facevo pittura paesaggistica astratta, che amavo, ma seguivo ciò che le persone dicevano fosse buono senza capire appieno perché – ho anche scritto un libro una volta, cercando di spiegare il paesaggio astratto a me stesso, e onestamente non capivo la mia stessa spiegazione."
+              "content": "<b>KA:</b> Esattamente. Dopo aver conseguito la laurea a Londra sono passato direttamente in Lituania, in uno studio sotterraneo, d'inverno, con nessuno intorno – sembrava una prigione d'arte, solo io e la mia arte. Quello fu il momento in cui creai la serie Eggs. Prima di allora facevo pittura paesaggistica astratta, che amavo, ma seguivo ciò che le persone dicevano fosse buono senza esprimermi completamente."
+            },
+            {
+              "type": "text",
+              "content": "All'inizio ho iniziato a fare arte attraverso composizioni figurative, lavorando nel realismo. Volevo combinare questo con il mio espressionismo astratto, estetica giapponese, deduzione. Per farlo, la serie Eggs è stata molto importante. In questo lavoro ho cercato di creare qualcosa dai miei paesaggi - piegandoli o sperimentando con la loro forma fisica."
             },
             {
               "type": "image",
@@ -32204,20 +32297,20 @@
               "caption": "Distant Plea, Keisuke Azuma, 2025, olio su tela"
             },
             {
-              "type": "text",
-              "content": "Poi ho visto un dipinto di un pittore britannico – non ne avevo mai sentito parlare prima di vivere a Londra – per la prima volta, solo sui social media, e mi ha veramente scioccato. Ho capito che volevo combinare astrazione con qualcosa di più figurativo, ma ancora non sapevo come. La serie Egg riguardava il guadagnare questo – ci sono voluti circa otto mesi per costruire la fiducia per reintrodurre elementi realistici. Non sempre è stato un successo, ma era necessario. Ho bisogno di un piano prima di dipingere, e le Eggs erano il luogo in cui ne ho costruito uno."
+              "type": "testo",
+              "content": "Dopo la serie Eggs ci sono voluti circa otto mesi per reintrodurre elementi realistici: mani e piedi. La serie Eggs è stata una trasformazione per me. "
             },
             {
-              "type": "text",
-              "content": "<b>MI: Pensi che l'astrazione sia la forma più pura di pittura – più potente perché induce all'auto-riflessione piuttosto che leggere una figura?</b>"
+              "type": "testo",
+              "content": "<b>MI: Pensi che l'astrazione sia la forma più pura di pittura, più potente perché costringe all'autoriflessione piuttosto che alla lettura di una figura?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Sono per lo più d'accordo. Ricordo una retrospettiva di Monet a Kyoto – è tecnicamente figurativo, molto pittorico, ma c'era una tela incompleta della serie Water Lilies in mostra, quasi senza colore, solo alcuni tratti. Mi ha colpito più del suo lavoro finito. È uno dei dipinti che ha rotto la mia resistenza all'astrazione – prima la odiavo perché non sapevo come affrontarla."
+              "type": "testo",
+              "content": "<b>KA:</b> Sono sostanzialmente d'accordo. Ricordo una retrospettiva di Monet a Kyoto: tecnicamente è figurativo, molto pittorico, ma in mostra c'era una tela incompiuta della serie Water Lilies, quasi nessun colore, solo pochi tratti. Mi ha colpito più del suo lavoro finito. Questo è uno dei dipinti che ha spezzato la mia resistenza all'astrazione."
             },
             {
-              "type": "text",
-              "content": "L'astrazione ha anche questa qualità democratica – fa sentire le persone come se potessero farlo anche loro, e penso che sia prezioso, anche se suona ingenuo. Credo ancora nel potere dell'alta realismo, Caravaggio e quel tipo di lavoro – andiamo ancora al cinema per la scala e l'artigianato – ma l'astrazione colma un divario tra il pubblico e il realismo d'élite. Ha le sue contraddizioni – alcuni lavori astratti sono altrettanto esclusivi – ma al suo meglio, apre le cose."
+              "type": "testo",
+              "content": "L'astrazione ha anche questa qualità democratica: fa sentire le persone come se potessero farlo anche loro, e penso che sia prezioso, anche se sembra ingenuo. Credo ancora nel potere dell’alto realismo, di Caravaggio e di quel tipo di lavoro – andiamo ancora al cinema per la scala e l’artigianato – ma l’astrazione colma un divario tra il pubblico e il realismo d’élite. Ha le sue contraddizioni – alcuni lavori astratti sono altrettanto esclusivi – ma nella migliore delle ipotesi apre le cose."
             },
             {
               "type": "quote",
@@ -32231,14 +32324,14 @@
               ],
               "caption": "",
               "alts": [
-                "Cradle, Keisuke Azuma, 2025, oil on canvas",
-                "Static March, Keisuke Azuma, 2025, oil on canvas"
+                "Culla, Keisuke Azuma, 2025, olio su tela",
+                "Static March, Keisuke Azuma, 2025, olio su tela"
               ]
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span>05 · </span>Perché l'arte dovrebbe essere per tutti"
+              "content": "<span>05 · </span>Perché l'arte dovrebbe essere per tutti"
             },
             {
               "type": "text",
@@ -32246,7 +32339,11 @@
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> L'arte ne ha sempre avuta una, credo. Probabilmente le prime pitture – le pitture rupestri in Francia, disegni di bestiame – avevano già una funzione narrativa: questo è ciò che ho visto oggi, questo è dove si trova il terreno di caccia. Continuiamo a usare l'illustrazione in quel modo, nelle guide di campo e negli enciclopedie. Amo la pittura barocca in parte perché si allontanava dai ritratti dei potenti e iniziava a introdurre la vita civica comune. Guernica è la versione estrema di ciò – brutalmente onesta, e mi rende triste ogni volta, perché è una funzione contro il mondo. I libri possono essere più efficaci in questo, onestamente, ma non leggo molto, e la pittura ha sempre sembrato più universale – forse anche più antica del linguaggio stesso."
+              "content": "<b>KA:</b> L'arte ha sempre avuto una, credo. Probabilmente i dipinti più antichi – le pitture rupestri di Lascaux in Francia, disegni di bestiame – avevano già una funzione narrativa: “questo è ciò che ho visto oggi, questo è il luogo della caccia”. Continuiamo a usare l'illustrazione in questo modo, nelle guide e nelle enciclopedie. Mi piace particolarmente la pittura barocca perché si allontanava dai ritratti dei potenti e iniziava a introdurre la vita civica comune. Ha sempre una funzione di parlare di qualcosa oltre le parole. Per esempio, Guernica di Picasso è la versione estrema di ciò – dolorosamente, brutalmente onesto, e mi rende triste ogni volta, ha una funzione di essere contro il mondo."
+            },
+            {
+              "type": "text",
+              "content": "L'arte può trasmettere emozioni oltre le capacità di comprensione - i libri possono essere più efficaci, ma forse alcune persone non sanno leggere - e la pittura può essere più universale – è anche più antica del linguaggio stesso."
             },
             {
               "type": "text",
@@ -32254,7 +32351,15 @@
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Entrambi, credo, ma tendo verso “imparato”. Odiai l'astrazione da bambino – amavo il realismo, e quando vidi per la prima volta un'opera di un noto pittore astratto non l'ho davvero capita. Ora ho pianto davanti a un Rothko. Penso che questa capacità dovrebbe essere disponibile a tutti, allo stesso modo in cui tutti possono imparare a riconoscere la bellezza in un volto o in un abbigliamento – non deve riguardare specificamente la pittura. La mia stessa famiglia ancora non capisce davvero la mia astrazione, ma sono di supporto. Il padre di mia moglie, un meccanico senza background artistico, una volta guardò un dipinto e disse, “Oh, sa disegnare mani e piedi – deve essere bravo.” È una connessione, anche se dura solo un secondo."
+              "content": "<b>KA:</b> Entrambi, credo, ma tendo verso “imparato”. Da bambino odiavo l'astrazione – amavo il realismo, e quando vidi per la prima volta un'opera di un noto pittore astratto non l'ho proprio capita. Ora <i>ho</i> pianto davanti a un Rothko."
+            },
+            {
+              "type": "text",
+              "content": "Credo davvero che ognuno abbia una capacità di comprendere estetica e bellezza in generale - ognuno può imparare a riconoscere la bellezza in un volto o in un abbigliamento – non deve essere necessariamente riguardo alla pittura specificamente."
+            },
+            {
+              "type": "text",
+              "content": "La mia stessa famiglia ancora non comprende davvero la mia astrazione, ma sono di supporto. Il padre di mia moglie, che non ha un background artistico, una volta guardò un dipinto e disse, “Oh, sa disegnare mani e piedi – deve essere bravo.” [<i>risate</i>] Quella fu anche una reazione molto importante - questa connessione con un'opera - anche se dura solo un secondo."
             },
             {
               "type": "text",
@@ -32262,126 +32367,130 @@
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Probabilmente Rothko, alla Tate Britain. Conoscevo già il suo lavoro, ma vederlo di persona, in una stanza molto più buia del resto del museo, era diverso. Ho sentito qualcosa oltre l'umanità – come se il dipinto avesse preso qualcosa da me. Non ricordo ancora il titolo esatto – uno dei telai nero-rossi, quasi come un portale verso un altro luogo. Quello è probabilmente il dipinto che mi ha fatto desiderare di dipingere."
+              "content": "<b>KA:</b> Probabilmente Rothko, alla Tate Britain. Conoscevo già il suo lavoro, ma vederlo di persona, in una stanza molto più buia del resto del museo, era diverso. Ho sentito qualcosa oltre l'umanità – come se il dipinto avesse preso qualcosa da me. Uno dei telai nero-rossi, quasi come un portale verso un altro luogo. Quello è probabilmente il dipinto che mi ha fatto desiderare di dipingere."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span>06 · Studio</span>"
+              "content": "<span>06 · In Studio dell'Artista</span>"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg"
+              "content": "https://api.eprisjournal.com/uploads/mt8wi29ll76qp4.jpg",
+              "caption": "Lo studio di Keisuke Azuma in Lituania",
+              "credit": "Courtesy of Keisuke Azuma"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Quotidiano ora – ho molte mostre quest'anno, quindi non ho il lusso di aspettare più. Lavoro prima su un iPad, manipolando un dipinto classico, poi vengo in studio verso l'ora di pranzo per dipingere. Prendo appunti costantemente, principalmente idee per titoli – ogni volta che mi viene qualcosa in mente, lo scrivo, così è lì quando ne ho bisogno."
+              "content": "<b>MI: Dipingi quotidianamente, o aspetti l'ispirazione?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Quindi il punto di partenza ora è memoria o emozione, richiamata, piuttosto che qualcosa che stai vedendo in quel momento?"
+              "content": "<b>KA:</b> Quotidianamente ora – ho molte mostre quest'anno, quindi non ho più il lusso di aspettare. Lavoro prima su un iPad, manipolando un dipinto classico, poi vengo in studio verso l'ora di pranzo per dipingere. Prendo appunti costantemente, principalmente idee per i titoli – ogni volta che mi viene in mente qualcosa, lo scrivo, così è lì quando ne ho bisogno."
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> In gran parte, sì. Uso ancora dipinti classici come ispirazione quando possono aiutare a trasmettere un concetto, ma recentemente ho cercato di allontanarmi leggermente dalla memoria puramente personale, verso qualcosa di più generico – ho iniziato a fare lavori più esplicitamente politici ultimamente, pensando a ciò che sta accadendo più in generale piuttosto che solo nella mia vita."
+              "content": "<b>MI: Quindi il punto di partenza ora è memoria o emozione, richiamata, piuttosto che qualcosa che stai vedendo in quel momento?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Pianifichi meticolosamente, o lasci che la tela decida nel momento?"
+              "content": "<b>KA:</b> In gran parte, sì. Uso ancora dipinti classici come ispirazione quando possono aiutare a trasmettere un concetto, ma recentemente ho cercato di allontanarmi leggermente dalla memoria puramente personale, verso qualcosa di più generico – ho iniziato a creare lavori più esplicitamente politici ultimamente, pensando a ciò che sta succedendo in modo più ampio piuttosto che solo nella mia vita."
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Direi circa metà e metà. Nulla si ripete mai esattamente – temperatura, consistenza, tutto cambia tra lo schizzo su iPad e la tela reale. Il dipinto che ti ho mostrato prima era originariamente blu scuro; non mi piaceva, sono tornato su iPad, ho abbozzato qualcosa di più chiaro, e alla fine ho amato l'errore – si può ancora vedere il blu sotto. Su iPad tutto sembra opaco e controllato; in realtà diventa più sporco, più umano. Mi piace così."
+              "content": "<b>MI: Pianifichi meticolosamente, o lasci che la tela decida sul momento?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Hai menzionato “manipolare” dipinti classici – cosa comporta esattamente?"
+              "content": "<b>KA:</b> Direi circa metà e metà. Nulla si ripete esattamente – temperatura, consistenza, tutto cambia tra lo schizzo su iPad e la tela reale. Il dipinto che ti ho mostrato prima era originariamente blu scuro; non mi piaceva, sono tornato all'iPad, ho abbozzato qualcosa di più chiaro, e alla fine ho amato l'errore – si può ancora vedere il blu sotto. Su iPad tutto sembra opaco e controllato; in realtà diventa più sporco, più umano. Mi piace questo."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg"
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mt8wkn228zqy9o.jpg",
+              "caption": "Studio di Keisuke Azuma",
+              "credit": "Gentilezza di Keisuke Azuma"
             },
             {
-              "type": "text",
-              "content": "<b>MI:</b> Qual è la tua fonte di ispirazione non visiva più grande?"
+              "type": "testo",
+              "content": "<b>MI: Qual è la tua fonte di ispirazione non visiva più grande?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> Onestamente, tutto, ma musica e film in particolare. Anche il nostro cane – non ha capacità di pensare troppo, è semplicemente felice, e c'è qualcosa di ispirante in quella espressione cruda, non filtrata. Nei film adoro le cose che mi confondono – David Lynch, lavori che lasciano una domanda invece di rispondere. Nella musica ascolto principalmente pezzi strumentali o classici, e una band giapponese le cui liriche sono deliberatamente misteriose. Sono attratto da scrittori di una certa epoca per lo stesso motivo – il mistero fa più lavoro di una spiegazione."
+              "type": "testo",
+              "content": "<b>KA:</b> Onestamente, tutto, ma soprattutto musica e cinema. Anche il nostro cane – non ha capacità di pensare troppo, è semplicemente felice, e c'è qualcosa di ispirante in quell'espressione grezza, senza filtri. Nel cinema adoro le cose che mi confondono – David Lynch, lavori che lasciano una domanda invece di rispondere. Nella musica ascolto principalmente pezzi strumentali o classici, e una band giapponese i cui testi sono deliberatamente misteriosi – <i>il mistero fa più lavoro di una spiegazione</i>."
             },
             {
-              "type": "text",
+              "type": "intestazione",
               "level": 2,
               "content": "<span>07 · Luoghi Preferiti</span>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Hai qualche gioiello nascosto a Londra che puoi condividere con noi. non deve essere legato all'arte. Un bar, una panchina, una strada."
-            },
-            {
-              "type": "header",
-              "content": "<b>KA:</b> Non proprio nascosto, ma c'è un bar a Londra, all'interno di un ex edificio bancario vicino alla stazione di Bank, che hanno svuotato e ricostruito – sembra un po' come Hogwarts all'interno. Molto buio, molto spazioso, più simile a un salotto di un grande hotel che a un bar tipico, e abbastanza scuro da poter avere davvero una conversazione privata. L'ho scoperto solo verso la fine del mio tempo a Londra, e ci tornerei solo per quello."
+              "content": "<b>MI: Hai qualche gioiello nascosto a Londra che puoi condividere con noi. Non deve essere legato all'arte. Un bar, una panchina, una strada.</b>"
             },
             {
               "type": "text",
-              "content": "In Giappone, indicherei alle persone Nara – tutti vanno per i cervi e il Buddha gigante, ma se sali più in alto sulla montagna dietro il tempio principale, forse venti minuti oltre il punto in cui si fermano la maggior parte dei turisti, c'è un tempio molto più tranquillo con una vista sull'intera città. Sembra di fare un passo indietro di alcuni secoli. In generale: qualsiasi tempio piccolo e minore che trovi su una mappa piuttosto che in una lista dei \"migliori\" – da qualche parte in cui ti è effettivamente permesso entrare. Kyoto ne ha migliaia. Se poi riesci a prendere un matcha lì, ancora meglio."
-            },
-            {
-              "type": "text",
-              "level": 2,
-              "content": "<span class=\"kicker\">08 · Chiusura</span>Su vita, cultura e amore"
+              "content": "<b>KA:</b> Non proprio nascosto, ma c'è un bar a Londra, chiamato Nickel Bar, all'interno di un ex edificio bancario vicino alla stazione di Bank, che hanno svuotato e ricostruito – sembra un po' come Hogwarts all'interno. Molto buio, molto spazioso, più simile a un salone di un grande hotel che a un bar tipico, e abbastanza scuro da permettere davvero una conversazione privata. L'ho scoperto solo verso la fine del mio soggiorno a Londra, e ci tornerei solo per quello."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg"
+              "content": "https://api.eprisjournal.com/uploads/mt8vyjtgoszvir.jpg",
+              "caption": "The Nickel Bar, London",
+              "sourceUrl": "https://www.thened.com/london/restaurants/the-nickel-bar"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Smetti di essere un compiacente. Penso che molte persone abbiano difficoltà con questo, a diversi livelli, e anche io – con tutti, anche con gli sconosciuti. Qualcosa di piccolo come dire a mia moglie che in realtà non mi piaceva un pasticcino che aveva comprato per me sarebbe stato impossibile cinque anni fa. Conta, perché abbiamo una sola vita, e ho sentito la stessa cosa da molte persone più anziane in interviste: fai semplicemente quello che vuoi davvero. Sono ancora più propenso a compiacere le persone di quanto vorrei, onestamente, ed è una capacità utile in piccole dosi – ma troppo è troppo. Conoscere la propria voce, anche nelle piccole decisioni quotidiane, è tutto."
+              "content": "In Giappone, indirizzerei le persone verso Nara – tutti vanno per i cervi e il grande Buddha, ma se sali più in alto sulla montagna dietro il tempio principale, forse a venti minuti da dove si fermano la maggior parte dei turisti, c'è un tempio molto più tranquillo con una vista sull'intera città. Sembra di fare un passo indietro di alcuni secoli. In generale: qualsiasi piccolo, minore tempio che trovi su una mappa piuttosto che in una lista dei “migliori” – un posto in cui puoi effettivamente entrare. Kyoto ne ha migliaia. Se poi riesci a prendere del matcha lì, ancora meglio."
             },
             {
               "type": "header",
-              "content": "<b>MI:</b> E per qualcuno giovane che vuole essere un artista ma ha paura di iniziare?"
+              "level": 2,
+              "content": "<span>08 · Su</span> vita"
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Credo che chiunque possa essere un artista, in linea di principio – sostenersi completamente con questo è una domanda diversa, più difficile, e onestamente non sono ancora completamente lì. Ma ci vuole vero coraggio e impegno, soprattutto ora, quando l'economia di tutto ciò è instabile e l'arte non è qualcosa che la società considera essenziale. Nessuno ti dà l'opportunità – la crei tu stesso. Dal mio primo anno all'università, mi candidavo a ogni chiamata aperta che trovavo, perché avevo paura di laurearmi senza una storia di mostre. Quella rete, costruita presto, è ciò che mi ha permesso di continuare a praticare una volta trasferito all'estero. Se l'arte ti sembra opzionale, potrebbe non essere la strada giusta – deve essere più vicina al centro delle cose di così. Non importa se sei ricco o povero all'inizio. Devi solo mantenere lo spirito."
+              "content": "<b>MI: Hai menzionato in precedenza quanto il trasferimento dal Giappone, attraverso Londra, alla Lituania ti abbia plasmato – puoi dire di più a riguardo?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Hai menzionato prima quanto il trasferimento dal Giappone, attraverso Londra, alla Lituania ti abbia plasmato – puoi dire di più su questo?"
+              "content": "<b>KA:</b> Come giapponesi, siamo cresciuti a non esprimerci troppo apertamente. I lituani, come molti popoli slavi, nella mia esperienza, tengono molto alla loro indipendenza, e valorizzano sia la famiglia che un senso di sé molto solido allo stesso tempo. Londra non è mai entrata davvero sotto la mia pelle in quel modo – è troppo un crogiolo di culture per lasciare un solo segno. La Lituania mi ha insegnato ad ascoltare me stesso. Quando torno in Giappone ora, una volta all'anno, noto quanto la soppressione di sé sia radicata nella vita quotidiana lì, e sembra strano in un modo in cui non era prima. Amo ancora profondamente la cultura, ma avevo bisogno della distanza."
             },
             {
               "type": "text",
-              "content": "<b>KA:</b> Come giapponesi, siamo cresciuti a non esprimerci troppo apertamente. Mia moglie è l'opposto – molto slava, molto forte, e abbiamo avuto vere discussioni, ma c'è così tanto da imparare da quella franchezza. I lituani, come molti popoli slavi, tengono molto alla loro indipendenza, e valorizzano sia la famiglia che un senso di sé molto solido allo stesso tempo. Londra non mi ha mai veramente colpito in quel modo – è troppo un crogiolo per lasciare un segno singolo. La Lituania mi ha insegnato come ascoltare me stesso. Quando torno in Giappone ora, una volta all'anno, noto quanto la soppressione di sé sia radicata nella vita quotidiana lì, e sembra strano in un modo in cui non era prima. Amo ancora profondamente la cultura, ma avevo bisogno della distanza."
+              "content": "<b>MI: E per qualcuno giovane che vuole essere un artista ma ha paura di iniziare?</b>"
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Hai un piatto preferito di quel lato del mondo?"
+              "content": "<b>KA:</b> Credo che chiunque possa essere un artista, in linea di principio – sostenersi completamente con esso è una domanda diversa, più difficile. Ma ci vogliono vero coraggio e impegno, soprattutto ora, quando l'economia di esso è instabile e l'arte non è qualcosa che la società considera essenziale. <i><u>Nessuno ti dà l'opportunità – te la crei da solo</u></i>. Dal mio primo anno all'università ho fatto domanda a ogni chiamata aperta che riuscivo a trovare, perché avevo paura di laurearmi senza una storia di mostre. Quella rete, costruita presto, è ciò che mi ha permesso di continuare a praticare una volta trasferito all'estero."
+            },
+            {
+              "type": "text",
+              "content": "Se l'arte ti sembra opzionale, potrebbe non essere la strada giusta – deve essere più vicina al centro delle cose di così. Non importa se sei ricco o povero all'inizio. Devi solo mantenere lo spirito."
             },
             {
               "type": "quote",
-              "content": "<b>KA:</b> Zuppa fredda di barbabietola, in estate, con patata bollita e uovo. Ho rifiutato di provarla la prima volta – il colore da solo mi ha scoraggiato – e ora la adoro. Aneto, anche; è diventato uno dei miei gusti preferiti. Mi sono lamentato costantemente del cibo a Londra e in Europa occidentale in generale, tranne che per quello italiano – pasta e pizza sono difficili da discutere – ma il cibo slavo potrebbe essere l’unica cucina che ha veramente rivaleggiato con quella giapponese per me, cosa che non mi aspettavo."
+              "content": "Se l'arte ti sembra opzionale, potrebbe non essere la strada giusta – deve essere più vicina al centro delle cose di così. Non importa se sei ricco o povero all'inizio. Devi solo mantenere lo spirito."
             },
             {
               "type": "text",
-              "content": "<b>MI:</b> Un’altra domanda personale, solo se ti senti a tuo agio – dove hai incontrato tua moglie?"
+              "content": "<b>MI: Se dovessi dare un consiglio di vita, quale sarebbe?</b>"
             },
             {
-              "type": "text",
-              "content": "<b>KA:</b> A Londra, tecnicamente, ma avevamo parlato per anni prima – su una piattaforma di scambio linguistico. Stavo imparando l’inglese, lei voleva imparare il giapponese, e alla fine abbiamo parlato principalmente in inglese, cosa che mi andava bene all’epoca. Eravamo amici online per cinque o sei anni prima che lei venisse a Londra e iniziassimo a uscire, ancora a distanza per un po’ dopo. In totale, ci conosciamo da circa otto anni. Siamo stati amici prima, abbastanza a lungo da conoscere le storie dell’altro – relazioni passate e tutto – che si è rivelato importante. È la base più solida che abbia mai avuto, e tutto il resto è cresciuto da lì."
+              "type": "testo",
+              "content": "<b>KA:</b> Smetti di essere un compiacente. Penso che molte persone abbiano difficoltà con questo, a diversi livelli. Conta, perché abbiamo una sola vita, e ho sentito la stessa cosa da molte persone più anziane in interviste: fai semplicemente quello che vuoi davvero. Conoscere la propria voce, anche nelle piccole decisioni quotidiane, è tutto."
             },
             {
-              "type": "quote",
-              "content": "Sapere cosa ti piace, sapere di avere il potere di decidere qualcosa per te stesso – anche nella vita quotidiana – penso che potrebbe essere il consiglio."
+              "type": "citazione",
+              "content": "...fai semplicemente quello che vuoi davvero. Conoscere la propria voce, anche nelle piccole decisioni quotidiane, è tutto."
             },
             {
-              "type": "note",
+              "type": "nota",
               "content": "Questa intervista è stata modificata e condensata per lunghezza e chiarezza."
             }
           ],
-          "updatedAt": "2026-08-25T13:33:41.531Z",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt8oh2wuvblzxh.jpg"
+          "updatedAt": "2026-08-29T16:02:00.091Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
+          "previewToken": "7050d8a93e5a216872f5399c",
+          "publishAt": "2026-08-29T14:14:18.395Z"
         },
         {
           "id": 26,
