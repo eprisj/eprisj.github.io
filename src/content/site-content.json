@@ -19194,6 +19194,82 @@
           "authorId": "author-1784896384236-4fokw",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
           "publishAt": "2026-08-28T14:41:26.666Z"
+        },
+        {
+          "id": 29,
+          "title": "Soft Modernismus: Bryn und Ellefsen's Physics Building bei Blindern",
+          "author": "EPRIS Journal",
+          "role": "Redaktionsteam",
+          "date": "29. August 2026",
+          "publishedAt": "2026-08-29",
+          "excerpt": "Früher Funktionalismus musste keine geraden Linien bedeuten. In Oslo, 1935, umhüllten zwei Architekten ein Labor aus rotem Ziegelstein, führten eine spiralförmige Treppe mit Messinggeländer durch sein Zentrum und ließen Per Krohg das Sonnensystem an die Vestibülwand malen.",
+          "category": "Architektur",
+          "subcategory": "Aufsatz",
+          "tags": [
+            "architektur",
+            "funktionalismus",
+            "oslo",
+            "1930er"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "Die Geschichte, die der modernismus über sich selbst erzählt, ist eine Geschichte der geraden Linie. Flache weiße Wände, das Raster, der rechte Winkel als moralische Position. Fysikkbygningen am Blindern, fertiggestellt 1935 für die Universität Oslo von Finn Bryn und Johan Ellefsen, wurde in der Hochphase dieses Arguments gebaut und lehnt sich stillschweigend dagegen. Es ist ein funktionalistisches Gebäude, das sich krümmt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtectq7ok20uub.jpg",
+              "caption": "Fysikkbygningen, Blindern Campus, Oslo. Finn Bryn und Johan Ellefsen, 1935. Fotografie: Kjetil Ree, CC BY-SA 3.0",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Der Ansatz verrät die Absicht. Ein zentraler Turm erhebt sich aus einem langen horizontalen Block, dessen oberstes Stockwerk durch eine durchgehende Glasbahn geöffnet ist, und die Ziegel sind dunkel und warm gelegt, anstatt weiß verputzt zu sein. Norwegischer Funktionalismus kam durch Schweden und Dänemark und nicht direkt aus Dessau, und er kam abgeschwächt: weniger Manifest, mehr Handwerk, bereit, das Material zu bewahren, mit dem ein Land bereits wusste, wie man baut. Bryn und Ellefsen gewannen den Auftrag in einem Wettbewerb und lieferten ein Labor, das als bürgerliche Architektur gelesen werden kann."
+            },
+            {
+              "type": "text",
+              "content": "Was das Gebäude die Reise wert macht, ist, dass die kompositorische Disziplin an der Tür endet. Ein Physikfakultät in den 1930er Jahren brauchte vibrationsfreie Böden, lange Versorgungsleitungen, Verdunklungsräume und eine Vorlesungshalle, die eine Generation von Studierenden aufnehmen konnte. Der Plan löst das mit der Effizienz, die die Periode verlangte. Dann, an dem Punkt, an dem die Zirkulation stattfindet, wo Menschen tatsächlich das Gebäude treffen, lockert sich die Geometrie: Treppen wischen statt drehen, Handläufe sind Messing, Decken heben sich, und Farbe erscheint, wo ein Purist Putz hinterlassen hätte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtectqskblakpa.jpg",
+              "caption": "Das glasierte Treppenvolumen auf der Gartenseite, gehalten in Virginia creeper. Fotografie: Punkmorten, gemeinfrei",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Der Vorraum ist das Argument im Miniaturformat. Sein Boden ist ein schwarz-weißes Zickzackmuster, näher an einer Ozeandampfer der 1930er Jahre als an einem Labor, und ein Foucault-Pendel hängt durch den doppelt hohen Raum, schwingt in der Ebene, die die Erde darunter dreht. Es ist ein funktionierendes Instrument und ein Stück Inneneinrichtung zugleich: das eine Objekt im Gebäude, das die dort beherbergte Disziplin ohne ein einziges Wort der Erklärung demonstriert."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+                "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Der Vorraum mit seinem Foucault-Pendel und Zickzackboden.",
+                "Das Wandbild von Per Krohg an der östlichen Wand, fertiggestellt 1938."
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Darüber, an der östlichen Wand, malte Per Lasson Krohg 1938 die Sonne und die Planeten, umgeben von Galaxien, die als eine Frau und ein Mann gezeichnet sind, mit der Aurora, die durch die Komposition läuft. Krohg malte später das Wandbild im Sicherheitsratssaal der United Nations in New York. Hier, drei Jahre vor dem Krieg, tat er etwas, wofür ein strenger Funktionalismus-Programm keinen Platz hat: die Dekoration eines Physikgebäudes mit einer Kosmologie. Die Glasleisten des Treppenfensters schneiden direkt durch das Gemälde, und die beiden Systeme, das Gitter und das Bild, halten einander eher als konkurrieren."
+            },
+            {
+              "type": "text",
+              "content": "Dass diese Koexistenz der Grund ist, warum das Gebäude noch immer etwas lehrt. Die heroische Version der 1930er Jahre fordert von einer Struktur Ehrlichkeit, und Ehrlichkeit wird als Nacktheit verstanden. Fysikkbygningen akzeptiert jede funktionale Anforderung seines Briefings und behandelt dann Wärme, Farbe und Krümmung ebenfalls als funktionale Anforderungen, im Hinblick darauf, dass die Menschen im Inneren auch Teil des Programms sind. Fast ein Jahrhundert später, mit dem Efeu, der die Gartenfassade überwuchert hat, und dem Pendel, das noch immer schwingt, sieht es weniger wie ein Kompromiss mit dem Modernismus aus als eine Korrektur dazu."
+            },
+            {
+              "type": "text",
+              "content": "Fotografien via Wikimedia Commons: Außenansicht von Kjetil Ree (CC BY-SA 3.0); Gartenfassade von Punkmorten (gemeinfrei); Vorraum von Mysteriumen (CC BY-SA 3.0); Wandbild von Bernt Rostad (CC BY 2.0), Kunstwerk von Per Lasson Krohg, 1938."
+            }
+          ],
+          "order": 0,
+          "draft": false,
+          "updatedAt": "2026-08-29T12:31:14.333Z"
         }
       ],
       "reviews": [
