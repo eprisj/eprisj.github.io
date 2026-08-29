@@ -66,8 +66,12 @@
           try {
             var body = JSON.stringify({ path: location.pathname, ref: document.referrer || "" });
             if (navigator.sendBeacon) {
+              /* text/plain, а не application/json: sendBeacon шлёт запрос
+                 с credentials и не умеет preflight, поэтому любой
+                 несупростой Content-Type он молча роняет на CORS.
+                 Сервер разбирает тело как JSON независимо от заголовка. */
               navigator.sendBeacon("https://api.eprisjournal.com/analytics/hit",
-                new Blob([body], { type: "application/json" }));
+                new Blob([body], { type: "text/plain;charset=UTF-8" }));
             } else {
               fetch("https://api.eprisjournal.com/analytics/hit", {
                 method: "POST", body: body, keepalive: true,
