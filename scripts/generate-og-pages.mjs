@@ -82,6 +82,55 @@ function articleBody(article) {
   return (article.content || []).map(blockText).filter(Boolean).join('\n\n');
 }
 
+
+/* Пререндер бачив лише <title> і мету: у тілі сторінки не було ні тексту,
+   ні посилань, ні h1 — статтю індексувати було нічим. React під час
+   монтування вміст #root затирає, тому цей блок нічого не ламає, зате
+   краулер без JS бачить справжній матеріал, а користувач на повільному
+   зв'язку читає текст ще до завантаження застосунку. */
+const PRERENDER_STYLE = `<style>
+    /* Видно лише до монтування React (createRoot затирає вміст #root).
+       Мета не намалювати сторінку наново, а щоб ці півсекунди на
+       повільному зв'язку виглядали як текст, а не як зламана верстка. */
+    .pre-doc{max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
+      font-family:'PT Serif',Georgia,serif;line-height:1.65;color:#2b2b2b}
+    .pre-doc h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+      font-size:clamp(28px,4.6vw,44px);line-height:1.15;margin:0 0 .6em}
+    .pre-doc h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+      font-size:clamp(19px,2.4vw,25px);margin:2em 0 .5em}
+    .pre-doc p{margin:0 0 1.15em}
+    .pre-doc small{color:#777;font-family:'PT Sans',system-ui,sans-serif;font-size:14px}
+    .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;border-left:2px solid #ddd;
+      font-style:italic;color:#555}
+    .pre-doc ul{padding-left:1.1em}
+    .pre-doc li{margin:0 0 .5em}
+    .pre-doc a{color:#2b2b2b}
+  </style>`;
+
+function prerenderBody(html) {
+  return `<div id="root">${PRERENDER_STYLE}<div class="pre-doc">${html}</div></div>`;
+}
+
+function articleParagraphs(article) {
+  return (article.content || [])
+    .map((block) => {
+      if (!block || typeof block.content !== 'string') return '';
+      const text = stripHtml(block.content).trim();
+      if (!text) return '';
+      if (block.type === 'header') return `<h2>${escapeHtml(text)}</h2>`;
+      if (block.type === 'quote') return `<blockquote><p>${escapeHtml(text)}</p></blockquote>`;
+      if (['text', 'note'].includes(block.type)) return `<p>${escapeHtml(text)}</p>`;
+      return '';
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function articleKeywords(article) {
   return Array.from(new Set([
     ...(article.tags || []),
@@ -165,7 +214,7 @@ for (const article of publicArticles) {
   const imageUrl = resolveImage(article);
   const excerpt = escapeAttr(article.excerpt);
   const title = escapeAttr(article.title);
-  const url = `${SITE_ORIGIN}/article/${slug}`;
+  const url = `${SITE_ORIGIN}/article/${slug}/`;
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -214,7 +263,18 @@ for (const article of publicArticles) {
     <script type="application/ld+json">${safeJson(articleSchema)}</script>
     <script type="application/ld+json">${safeJson(breadcrumbs)}</script>`;
 
-  const pageHtml = template.replace('<!--TITLE-->', headBlock);
+  const bodyHtml = prerenderBody(`<article>
+      <h1>${escapeHtml(article.title)}</h1>
+      ${article.subcategory ? `<p><strong>${escapeHtml(article.subcategory)}</strong></p>` : ''}
+      ${article.excerpt ? `<p>${escapeHtml(article.excerpt)}</p>` : ''}
+      <p><small>${escapeHtml(article.author || 'EPRIS Editorial')}${
+        formatDate(article.date) ? ` · ${String(formatDate(article.date)).slice(0, 10)}` : ''}</small></p>
+      ${articleParagraphs(article)}
+      <nav><a href="${SITE_ORIGIN}/articles/">All articles</a> · <a href="${SITE_ORIGIN}/">EPRIS Journal</a></nav>
+    </article>`);
+  const pageHtml = template
+    .replace('<!--TITLE-->', headBlock)
+    .replace('<div id="root"></div>', bodyHtml);
 
   // Write slug-based path
   const slugDir = join(distDir, 'article', slug);
@@ -246,7 +306,7 @@ for (const review of publicReviews) {
   const summary = review.verdict || reviewPlainBody(review).slice(0, 200);
   const excerpt = escapeAttr(summary);
   const title = escapeAttr(review.title || '');
-  const url = `${SITE_ORIGIN}/review/${slug || review.id}`;
+  const url = `${SITE_ORIGIN}/review/${slug || review.id}/`;
   const reviewSchema = {
     '@context': 'https://schema.org',
     '@type': 'Review',
@@ -289,7 +349,18 @@ for (const review of publicReviews) {
     <script type="application/ld+json">${safeJson(reviewSchema)}</script>
     <script type="application/ld+json">${safeJson(breadcrumbs)}</script>`;
 
-  const pageHtml = template.replace('<!--TITLE-->', headBlock);
+  const bodyHtml = prerenderBody(`<article>
+      <h1>${escapeHtml(review.title || '')}</h1>
+      ${review.subject ? `<p><strong>${escapeHtml(review.subject)}</strong></p>` : ''}
+      ${review.verdict ? `<p>${escapeHtml(review.verdict)}</p>` : ''}
+      <p><small>${escapeHtml(review.author || 'EPRIS Editorial')}${
+        formatDate(review.date) ? ` · ${String(formatDate(review.date)).slice(0, 10)}` : ''}</small></p>
+      ${articleParagraphs(review)}
+      <nav><a href="${SITE_ORIGIN}/reviews/">All reviews</a> · <a href="${SITE_ORIGIN}/">EPRIS Journal</a></nav>
+    </article>`);
+  const pageHtml = template
+    .replace('<!--TITLE-->', headBlock)
+    .replace('<div id="root"></div>', bodyHtml);
 
   if (slug) {
     const slugDir = join(distDir, 'review', slug);
@@ -363,7 +434,7 @@ const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', w
 
 function routeHead(route, label) {
   const canonicalRoute = ALIAS_ROUTES[route] || route;
-  const url = canonicalRoute ? `${SITE_ORIGIN}/${canonicalRoute}` : `${SITE_ORIGIN}/`;
+  const url = canonicalRoute ? `${SITE_ORIGIN}/${canonicalRoute}/` : `${SITE_ORIGIN}/`;
   const description = ROUTE_DESCRIPTIONS[route] || 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.';
   const schema = {
     '@context': 'https://schema.org',
@@ -407,8 +478,34 @@ function routeHead(route, label) {
     ${breadcrumbs ? `<script type="application/ld+json">${safeJson(breadcrumbs)}</script>` : ''}`;
 }
 
+const articleLinks = publicArticles.map((a) =>
+  `<li><a href="${SITE_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a>` +
+  `${a.excerpt ? ` — ${escapeHtml(String(a.excerpt).slice(0, 140))}` : ''}</li>`).join('\n');
+const reviewLinks = publicReviews.map((r) => {
+  const sl = generateSlug(r.title || '');
+  return `<li><a href="${SITE_ORIGIN}/review/${sl || r.id}/">${escapeHtml(r.title || '')}</a></li>`;
+}).join('\n');
+const sectionLinks = Object.entries(ROUTES)
+  .filter(([r]) => !ALIAS_ROUTES[r] && !HIDDEN_PUBLIC_ROUTES.has(r) && r)
+  .map(([r, l]) => `<li><a href="${SITE_ORIGIN}/${r}/">${escapeHtml(l)}</a></li>`).join('\n');
+
+function routeBody(route, label) {
+  let list = sectionLinks;
+  if (route === 'articles') list = articleLinks;
+  else if (route === 'reviews') list = reviewLinks;
+  const heading = route ? label : SITE_NAME;
+  return prerenderBody(`<main>
+      <h1>${escapeHtml(heading)}</h1>
+      <p>${escapeAttr(ROUTE_DESCRIPTIONS[route] || '')}</p>
+      <ul>${list}</ul>
+      ${route !== 'articles' ? `<h2>Latest articles</h2><ul>${articleLinks}</ul>` : ''}
+    </main>`);
+}
+
 for (const [route, label] of Object.entries(ROUTES)) {
-  const pageHtml = template.replace('<!--TITLE-->', routeHead(route, label));
+  const pageHtml = template
+    .replace('<!--TITLE-->', routeHead(route, label))
+    .replace('<div id="root"></div>', routeBody(route, label));
   const routeDir = join(distDir, route);
   mkdirSync(routeDir, { recursive: true });
   writeFileSync(join(routeDir, 'index.html'), pageHtml);
@@ -426,9 +523,12 @@ console.log('Generated: /search');
 
 const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => !ALIAS_ROUTES[route] && !HIDDEN_PUBLIC_ROUTES.has(route))];
 const sitemapEntries = [
-  ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
-  ...publicArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
-  ...publicReviews.map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
+  // Слеш у кінці обов'язковий: сервер віддає сторінку саме так, а адреса
+  // без нього відповідає 301. Карта з редиректами марно витрачає обхід
+  // і світиться помилкою в Search Console.
+  ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}/` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
+  ...publicArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
+  ...publicReviews.map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}/`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
 ];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
