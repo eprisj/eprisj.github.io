@@ -24160,6 +24160,13 @@ const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
 let anDays = 30;
 
 const anNum = (n) => (n || 0).toLocaleString('ru-RU');
+/* Секунды читаются плохо: 515 с это «8 мин 35 с». */
+const anMin = (sec) => {
+  const s = Math.max(0, Math.round(sec));
+  if (s < 60) return s + ' с';
+  const m = Math.floor(s / 60);
+  return m + ' мин' + (s % 60 ? ' ' + (s % 60) + ' с' : '');
+};
 const anEsc = (s) => String(s).replace(/[<>&"]/g, (c) =>
   ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
 
@@ -24337,6 +24344,9 @@ async function loadAnalytics() {
            anDelta(s.d7.hits, s.prev_7d.hits), anSpark(sparkUniq.slice(-14))),
     anCard('Визитов', anNum(data.sessions),
            data.pages_per_session + ' страниц за визит'),
+    anCard('Дочитывают', (100 - (data.bounce_pct || 0)) + '%',
+           'смотрят больше одной страницы'),
+    anCard('Средний визит', anMin(data.avg_session_sec || 0), 'от первой до последней страницы'),
     anCard('Новых за неделю', anNum(data.new_visitors_7d), 'впервые на сайте'),
     anCard('Всего за всё время', anNum(s.all.hits), anNum(s.all.unique) + ' посетителей'),
   ].join('');
@@ -24374,8 +24384,21 @@ async function loadAnalytics() {
 
   anList(byId('anRefs'), (data.referrers_30d || []).map(r => ({ name: r.source, hits: r.hits })),
          'Пока никто не приходил по ссылкам.');
+  anList(byId('anEntries'), (data.entry_pages || []).map(r => ({ name: r.path, hits: r.hits })),
+         'Пока нет данных.');
+  /* Код языка сам по себе нечитаем: показываем название. */
+  const langNames = { en: 'Английский', uk: 'Украинский', ru: 'Русский', de: 'Немецкий',
+    fr: 'Французский', es: 'Испанский', it: 'Итальянский', pl: 'Польский',
+    nl: 'Нидерландский', pt: 'Португальский', ja: 'Японский', zh: 'Китайский' };
+  anList(byId('anLangs'), (data.languages || []).map(r => {
+    const base = String(r.lang).split('-')[0];
+    return { name: (langNames[base] || r.lang) + ' (' + r.lang + ')', hits: r.hits };
+  }), 'Соберётся за пару дней: сигнал появился только сейчас.');
+  const titleByPath = {};
+  (data.page_titles || []).forEach(t => { titleByPath[t.path] = t.title; });
   anList(byId('anPaths'), (data.top_paths_30d || []).map(r => ({
-    name: r.path, hits: r.hits, unique: r.unique })), 'Пока нет просмотров.');
+    name: titleByPath[r.path] ? titleByPath[r.path].replace(/ — EPRIS Journal$/, '') + '  ·  ' + r.path : r.path,
+    hits: r.hits, unique: r.unique })), 'Пока нет просмотров.');
 }
 
 document.addEventListener('click', (e) => {
