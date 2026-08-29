@@ -6071,11 +6071,11 @@
     {
       "id": 29,
       "title": "Soft Modernism: Bryn and Ellefsen's Physics Building at Blindern",
-      "author": "EPRIS Journal",
-      "role": "Editorial team",
+      "author": "Viacheslav Munister",
+      "role": "Author",
       "date": "August 29, 2026",
       "publishedAt": "2026-08-29",
-      "excerpt": "Early functionalism did not have to mean straight lines. In Oslo, 1935, two architects wrapped a laboratory in red brick, ran a brass-railed stair through its core and let Per Krohg paint the solar system across the vestibule wall.",
+      "excerpt": "They won the competition with a Roman temple, went to look at what Europe was building, and came home to strip their own drawing bare. What stands at Blindern is functionalism that kept the brass, the colour and the curve.",
       "category": "Architecture",
       "subcategory": "Essay",
       "tags": [
@@ -6089,7 +6089,7 @@
       "content": [
         {
           "type": "text",
-          "content": "The story modernism tells about itself is a story of the straight line. Flat white walls, the grid, the right angle as a moral position. Fysikkbygningen at Blindern, finished in 1935 for the University of Oslo by Finn Bryn and Johan Ellefsen, was built at the height of that argument and quietly declines to take part in it. It is a functionalist building that curves, and it is made of brick the colour of dried blood."
+          "content": "The story modernism tells about itself is a story of conversion: the young architect sees the new work, throws out the mouldings and never looks back. Fysikkbygningen at Blindern is that story with the receipts attached, because both halves of it survive on paper. Finn Bryn and Johan Ellefsen won the University of Oslo competition in 1926 with a Roman temple: a columned facade in the centre, a round vestibule ringed by galleries, a dome on top, all of it in red brick and granite. Then they went to Germany, France and the Netherlands to see what was being built, came back and took their own drawing apart."
         },
         {
           "type": "image",
@@ -6099,7 +6099,11 @@
         },
         {
           "type": "text",
-          "content": "It helps to remember what Blindern was when the building arrived. Not a campus: a farm. The university had bought agricultural land north-west of the city and was moving out of its neoclassical quarter downtown, and the first three buildings stood in a meadow with a dirt track running past them. Bryn and Ellefsen won the commission in a competition and had no context to answer to, only a field, a brief and a decade that believed buildings should be honest about their purpose."
+          "content": "What they kept was the symmetry and the materials. What went was everything that made the building an argument about Rome. The tall windows dropped, the dome and the temple front disappeared, and the facade was regrouped into the harder geometry that stands there now. The building was finished in 1935 and opened in 1936, ten years after they won it, which means the design that made their reputation was quietly demolished by its own authors somewhere between the competition and the scaffolding."
+        },
+        {
+          "type": "text",
+          "content": "It helps to remember what Blindern was at the time. Not a campus: a farm. The university had bought agricultural land north-west of the city and was moving out of its neoclassical quarter downtown, and the first buildings stood in a meadow with a dirt track running past them. There was no context to answer to, only a field, a brief and a decade that believed a building should be honest about its purpose."
         },
         {
           "type": "gallery",
@@ -6115,17 +6119,23 @@
         },
         {
           "type": "text",
-          "content": "What they built reads as civic architecture rather than as a laboratory. A central tower rises out of a long horizontal block, its top floor cut open by a continuous band of glazing, and the brick is laid dark and warm rather than rendered white. Norwegian functionalism arrived through Sweden and Denmark rather than direct from Dessau, and it arrived softened: less manifesto, more craft, willing to keep the material a country already knew how to build with."
+          "content": "Even stripped, the building reads as civic architecture rather than as a laboratory. A central tower rises out of a long horizontal block, its top floor cut open by a continuous band of glazing, and the brick is laid dark and warm rather than rendered white. Norwegian functionalism arrived through Sweden and Denmark rather than direct from Dessau, and it arrived softened: less manifesto, more craft, willing to keep the material a country already knew how to build with. Bryn and Ellefsen had been in partnership since 1922 and would go on to design the Norwegian pavilion for the 1939 World's Fair in New York."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
-          "caption": "Nedre Blindern from the air, around 1955. Photograph: Fjellanger-Wideroe, Oslo Museum, CC BY-SA 4.0",
-          "align": "center"
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mted5e8k8bdegx.jpg",
+            "https://api.eprisjournal.com/uploads/mtedi50uz71u8x.jpg"
+          ],
+          "caption": "",
+          "alts": [
+            "Nedre Blindern from the air, around 1955. Photograph: Fjellanger-Wideroe, Oslo Museum, CC BY-SA 4.0",
+            "The same ground in 2015, with the city grown around it. Photograph: GAD, CC BY-SA 4.0"
+          ]
         },
         {
           "type": "text",
-          "content": "The plan is disciplined where discipline pays. A physics faculty in the 1930s needed vibration-free floors, long service runs, blackout rooms and a lecture hall that could seat a generation of students, and the building solves all of it with the efficiency the period demanded. Then, at the point where circulation happens, where people actually meet the building, the geometry loosens. Stairs sweep rather than turn. Handrails are brass. Ceilings lift. Colour appears where a purist would have left plaster."
+          "content": "The plan is disciplined where discipline pays. A physics faculty in the 1930s needed vibration-free floors, long service runs, blackout rooms and a lecture hall that could seat a generation of students, and the building solves all of it with the efficiency the period demanded. It housed chemistry too, until that institute moved out in the 1960s and the name shortened to the one it carries now. Then, at the point where circulation happens, where people actually meet the building, the geometry loosens. Stairs sweep rather than turn. Handrails are brass. Ceilings lift. Colour appears where a purist would have left plaster."
         },
         {
           "type": "image",
@@ -6135,37 +6145,57 @@
         },
         {
           "type": "text",
-          "content": "The vestibule is the whole argument in miniature. Its floor is a black and white zigzag, closer to a 1930s ocean liner than to a laboratory, and a Foucault pendulum hangs through the double-height space, swinging in the plane the earth turns under. It is a working instrument and a piece of interior design at once: the one object in the building that demonstrates the discipline housed here without a single word of explanation."
+          "content": "The vestibule is the whole argument in miniature, and it is the one room where the demolished 1926 scheme still shows through. Bryn and Ellefsen had promised a domed rotunda; what they built instead is a double-height hall with a black and white zigzag floor, closer to a 1930s ocean liner than to a laboratory, opening on both sides so that the space worked as a public passage between Majorstuen and the campus rather than as a lobby."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
+          "caption": "The vestibule, looking towards the entrance. Photograph: Mysteriumen, CC BY-SA 3.0",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Through the middle of it hangs a Foucault pendulum: a gilded ball bearing twenty centimetres across and weighing thirty-two kilograms, on a wire of 14.1 metres. Foucault's original in Paris in 1851 was a 28-kilogram weight on 67 metres of wire, the first demonstration in a room rather than a sky that the earth turns. At Oslo's latitude of sixty degrees north the plane of the swing takes 27 hours and 43 minutes to come back round. It is a working instrument and a piece of interior design at once, the one object here that explains the discipline housed in the building without a single word."
         },
         {
           "type": "gallery",
           "content": [
-            "https://api.eprisjournal.com/uploads/mtectrdx02xngm.jpg",
-            "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg"
+            "https://api.eprisjournal.com/uploads/mtedi3t418593m.jpg",
+            "https://api.eprisjournal.com/uploads/mtedi4kn51fx72.jpg"
           ],
           "caption": "",
           "alts": [
-            "The vestibule, with the Foucault pendulum and the zigzag floor. Photograph: Mysteriumen, CC BY-SA 3.0",
-            "Per Krohg's mural on the eastern wall, completed 1938. Photograph: Bernt Rostad, CC BY 2.0"
+            "The brass bob, the brass rail and the explanatory plate, over the star-cut stone floor. Photograph: Bernt Rostad, CC BY 2.0",
+            "The same bob in 2005, with the ring marking the swing. Photograph: Mads Bodker, CC BY 2.0"
           ]
         },
         {
           "type": "text",
-          "content": "Above it, across the eastern wall, Per Lasson Krohg painted the sun and the planets in 1938, ringed by galaxies drawn as a woman and a man, with the aurora running through the composition. Krohg would later paint the mural in the United Nations Security Council chamber in New York. Here, three years before the war, he was doing something a strict functionalist programme has no room for: decorating a physics building with a cosmology. The glazing bars of the stair window cut straight through the painting, and the two systems, the grid and the picture, hold each other rather than compete."
+          "content": "Above it, across three walls around the main entrance, Per Lasson Krohg painted 260 square metres of fresco with glass inlays and painted glass. He won that competition in 1935, the year the building was finished, and the work was completed in the autumn of 1938, paid for by the consul general Peter Krag. It is called Atomet i verdensrommet, the atom in space: the sun and the planets ringed by galaxies drawn as a woman and a man, with the aurora running through the composition. Krohg would later paint the mural in the United Nations Security Council chamber in New York."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtectrtx0buv71.jpg",
+          "caption": "Atomet i verdensrommet, Per Krohg, completed 1938, on the eastern wall. Photograph: Bernt Rostad, CC BY 2.0",
+          "align": "center"
         },
         {
           "type": "text",
-          "content": "That coexistence is the reason the building still teaches something. The heroic version of the 1930s asks a structure to be honest, and honesty is understood as bareness. Fysikkbygningen accepts every functional demand of its brief and then treats warmth, colour and curvature as functional demands too, on the grounds that the people inside are also part of the programme. Nearly a century on, with the creeper turning scarlet over the entrance each October and the pendulum still swinging, it looks less like a compromise with modernism than a correction to it."
+          "content": "Note what that means for the chronology. The classical scheme was abandoned in the late twenties as too decorative for the new century, and then, with the functionalist building standing finished, the university ran a competition to cover its entrance in painted cosmology and hung a brass weight in the middle of it. The glazing bars of the stair window cut straight through the picture. The grid and the painting hold each other rather than compete, and the conservators from NIKU who cleaned the work in 2015 were maintaining something no purist reading of the 1930s can quite account for."
         },
         {
           "type": "text",
-          "content": "Photographs via Wikimedia Commons. Cover and autumn facade: Aasapaaske, CC BY-SA 4.0. Archive views of Blindern: National Library of Norway, public domain. Aerial view: Fjellanger-Wideroe for Oslo Museum, CC BY-SA 4.0. Exterior 2009: Kjetil Ree, CC BY-SA 3.0. Garden facade: Punkmorten, public domain. Vestibule: Mysteriumen, CC BY-SA 3.0. Mural wall: Bernt Rostad, CC BY 2.0; artwork by Per Lasson Krohg, 1938."
+          "content": "That is the reason the building still teaches something. The heroic version of the decade asks a structure to be honest, and honesty gets understood as bareness. Fysikkbygningen accepts every functional demand of its brief, drops its own columns to do so, and then treats warmth, colour and curvature as functional demands too, on the grounds that the people inside are also part of the programme. Nearly a century on, with the creeper turning scarlet over the entrance each October and the pendulum still swinging, it looks less like a compromise with modernism than a correction to it."
+        },
+        {
+          "type": "text",
+          "content": "<hr><h4>Sources</h4><ul class=\"sources\"><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – the 1926 winning entry, the study trip and how the temple facade was removed – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/visjon-1926-vinnerutkast-til-fys.html\">muv.uio.no</a></li><li><strong>Museum for universitets- og vitenskapshistorie, UiO</strong> – Bryn and Ellefsen at Nedre Blindern: the practice and the campus plan – <a href=\"https://www.muv.uio.no/uios-historie/bygninger/arkitektene-planene/bryn-og-ellefsen.html\">muv.uio.no</a></li><li><strong>Store norske leksikon</strong> – Finn Bryn: the partnership from 1922 and the later work – <a href=\"https://snl.no/Finn_Bryn\">snl.no</a></li><li><strong>Fysisk institutt, UiO</strong> – the pendulum in the vestibule: 32 kg gilded bob, 14.1 m wire, 27 h 43 min at 60 degrees north – <a href=\"https://www.mn.uio.no/fysikk/om/tall-og-fakta/fysikkbygningen/pendelen.html\">mn.uio.no</a></li><li><strong>Paragone</strong> – Atomet i verdensrommet: the 1935 art competition, 260 square metres, completed autumn 1938, conserved by NIKU in 2015 – <a href=\"https://paragone.no/vitenskap/2022/1/16/freskokunst-som-fomidler-fysikkens-misjon\">paragone.no</a></li><li><strong>Nasjonalmuseet</strong> – Bryn and Ellefsen, original competition drawings for the physics building – <a href=\"https://www.nasjonalmuseet.no/en/collection/object/NAMT.fbr033.011\">nasjonalmuseet.no</a></li></ul><span class=\"dek\">Photographs: freely licensed via Wikimedia Commons, each credited in its caption. Archive views from the National Library of Norway and Oslo Museum.</span>"
         }
       ],
       "order": 0,
-      "draft": false,
+      "draft": true,
       "previewToken": "VqyxUSuamqI0",
-      "updatedAt": "2026-08-29T12:39:37.733Z"
+      "updatedAt": "2026-08-29T12:45:06.950Z"
     }
   ],
   "reviews": [
