@@ -10141,3 +10141,24 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .tsys-run-out { padding: 0 14px 12px; font-size: .76rem; color: var(--text-muted); line-height: 1.5; }
 .tsys-run-out .bad { color: #b3261e; }
 .tsys-run-out .ok { color: #2f7d32; }
+
+/* Требуют решения / повторяющиеся ошибки / раскрытый язык покрытия */
+.tsys-decision, .tsys-err-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.tsys-decision:last-child, .tsys-err-row:last-child { border-bottom: 0; }
+.tsys-decision-title, .tsys-err-title { font-size: .84rem; font-weight: 650; color: var(--text); }
+.tsys-decision-sub, .tsys-err-sub { font-size: .72rem; color: var(--text-muted); margin-top: 3px; line-height: 1.45; }
+.tsys-decision-actions { display: flex; gap: 6px; }
+.tsys-err-count { font-family: var(--font-mono); font-size: .7rem; color: #b3261e; white-space: nowrap; }
+
+.tsys-cov-row { cursor: pointer; }
+.tsys-cov-row:hover { background: var(--bg-hover, rgba(0,0,0,.02)); }
+.tsys-cov-detail { padding: 0; border-bottom: 1px solid var(--line); background: var(--bg-subtle, rgba(0,0,0,.015)); }
+.tsys-cov-detail-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px 4px; }
+.tsys-cov-entry { display: grid; grid-template-columns: 62px minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 6px 14px; font-size: .78rem; }
+.tsys-cov-entry + .tsys-cov-entry { border-top: 1px dashed var(--line); }
+.tsys-cov-entry-state { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .06em; text-transform: uppercase; }
+.tsys-cov-entry-state.stale { color: #a86400; }
+.tsys-cov-entry-state.missing { color: #b3261e; }
+.tsys-cov-entry-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tsys-cov-entry-actions { display: flex; gap: 6px; }
+.tsys-cov-empty { padding: 8px 14px 12px; font-size: .76rem; color: var(--text-muted); }
