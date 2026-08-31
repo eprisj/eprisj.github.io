@@ -14,7 +14,6 @@ const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
-const VitrinePage = lazy(() => import('./VitrinePage').then((m) => ({ default: m.VitrinePage })));
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
   Article,
@@ -3808,9 +3807,6 @@ function SearchResults({
   );
 }
 
-/* Имена залов музея известны маршрутизатору: он должен отличать поправку
-   адреса от настоящего перехода. */
-const HALL_IDS = new Set(['court', 'collection', 'practice', 'archive', 'study']);
 
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
@@ -4183,7 +4179,6 @@ export default function App() {
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
   const [passportCode, setPassportCode] = useState<string | undefined>(initialRoute.passportCode);
-  const [museumHall, setMuseumHall] = useState<string | undefined>(initialRoute.museumHall);
   /* Адрес анкеты и персональный токен приглашения читаются один раз при
      загрузке: страница анкеты не участвует в навигации по вкладкам, к ней
      приходят по прямой ссылке и уходят с неё на сайт. */
@@ -4584,7 +4579,6 @@ export default function App() {
         setSelectedReviewId(parsed.reviewId ?? null);
         setActiveTab(parsed.tab || 'gallery');
         setPassportCode(parsed.passportCode);
-        setMuseumHall(parsed.museumHall);
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -4657,25 +4651,6 @@ export default function App() {
         ) : activeTab === 'design' ? (
           <LazyTab>
             <DesignPage lang={currentLang} />
-          </LazyTab>
-        ) : activeTab === 'museum' ? (
-          <LazyTab>
-            <VitrinePage
-              lang={currentLang}
-              hall={museumHall}
-              onHallChange={(next) => {
-                const previous = museumHall;
-                setMuseumHall(next ?? undefined);
-                const path = next ? `/museum/${next}` : '/museum';
-                if (window.location.pathname === path) return;
-                /* Возврат к разделу с несуществующего адреса — это поправка, а
-                   не переход: она не должна оставлять запись в истории, иначе
-                   «назад» возвращает на ту же битую ссылку. */
-                const known = HALL_IDS.has(previous || '');
-                if (!next && previous && !known) window.history.replaceState(null, '', path);
-                else window.history.pushState(null, '', path);
-              }}
-            />
           </LazyTab>
         ) : activeTab === 'studio' ? (
           <LazyTab>
