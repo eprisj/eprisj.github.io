@@ -10053,3 +10053,91 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .an-area-svg{height:210px}
   .an-heat-grid{grid-template-columns:22px repeat(24,1fr);gap:2px}
 }
+
+/* ══════════════════════════════════════════════════════════
+   TRANSLATIONS · SYSTEM PANEL
+   Очередь переводов работала на сервере без единого экрана в
+   панели: увидеть её можно было только всплывающей строкой
+   статуса после нажатия кнопки у одной записи. Здесь у неё
+   появляется приборная доска: состояние, очередь, покрытие,
+   запуск и стоп-кран.
+   ══════════════════════════════════════════════════════════ */
+.transl-mode-switch {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  width: fit-content;
+}
+.transl-mode-btn {
+  padding: 7px 16px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.transl-mode-btn + .transl-mode-btn { border-left: 1px solid var(--line); }
+.transl-mode-btn.active { background: var(--text); color: var(--bg-card); }
+
+.tsys-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.tsys-sub { margin: 4px 0 0; font-size: .78rem; color: var(--text-muted); max-width: 62ch; line-height: 1.5; }
+.tsys-head-actions { display: flex; align-items: center; gap: 8px; }
+.tsys-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); opacity: .35; transition: opacity .3s, background .3s; }
+.tsys-dot.live { background: #2f7d32; opacity: 1; }
+
+.tsys-card { padding: 0; margin-bottom: 14px; overflow: hidden; }
+.tsys-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.tsys-meta { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); letter-spacing: .04em; }
+.tsys-empty { padding: 16px 14px; margin: 0; font-size: .8rem; color: var(--text-muted); }
+
+.tsys-health { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.tsys-tile { border: 1px solid var(--line); background: var(--bg-card); padding: 11px 13px; box-shadow: var(--shadow-xs); }
+.tsys-tile-k { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.tsys-tile-v { font-size: 1.05rem; font-weight: 700; margin-top: 4px; color: var(--text); }
+.tsys-tile-v.ok { color: #2f7d32; }
+.tsys-tile-v.warn { color: #a86400; }
+.tsys-tile-v.bad { color: #b3261e; }
+.tsys-tile-sub { font-size: .68rem; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+
+.tsys-prov { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tsys-prov-chip { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; padding: 3px 7px; border: 1px solid var(--line); color: var(--text-muted); }
+.tsys-prov-chip.ok { border-color: #2f7d32; color: #2f7d32; }
+.tsys-prov-chip.bad { border-color: #b3261e; color: #b3261e; }
+
+.tsys-job { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.tsys-job:last-child { border-bottom: 0; }
+.tsys-job-title { font-size: .85rem; font-weight: 650; color: var(--text); }
+.tsys-job-line { font-size: .72rem; color: var(--text-muted); margin-top: 3px; line-height: 1.45; }
+.tsys-job-langs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.tsys-lang-chip { font-family: var(--font-mono); font-size: .58rem; padding: 2px 6px; border: 1px solid var(--line); color: var(--text-muted); }
+.tsys-lang-chip.done { border-color: #2f7d32; color: #2f7d32; }
+.tsys-lang-chip.failed { border-color: #b3261e; color: #b3261e; }
+.tsys-lang-chip.active { background: var(--text); color: var(--bg-card); border-color: var(--text); }
+.tsys-badge { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--line); color: var(--text-muted); white-space: nowrap; }
+.tsys-badge.running { border-color: #2f7d32; color: #2f7d32; }
+.tsys-badge.quota { border-color: #a86400; color: #a86400; }
+.tsys-badge.error { border-color: #b3261e; color: #b3261e; }
+
+.tsys-cov-row { display: grid; grid-template-columns: 104px minmax(0,1fr) 132px; gap: 12px; align-items: center; padding: 9px 14px; border-bottom: 1px solid var(--line); }
+.tsys-cov-row:last-child { border-bottom: 0; }
+.tsys-cov-lang { font-family: var(--font-mono); font-size: .72rem; font-weight: 700; letter-spacing: .06em; }
+.tsys-cov-track { display: flex; height: 12px; border: 1px solid var(--line); overflow: hidden; }
+.tsys-cov-seg { height: 100%; }
+.tsys-cov-seg.done { background: #2f7d32; }
+.tsys-cov-seg.stale { background: #d9a441; }
+.tsys-cov-seg.partial { background: #8a8a8a; }
+.tsys-cov-seg.missing { background: transparent; }
+.tsys-cov-num { font-family: var(--font-mono); font-size: .64rem; color: var(--text-muted); text-align: right; }
+.tsys-cov-legend { display: flex; gap: 14px; padding: 10px 14px; font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.tsys-cov-key { display: inline-flex; align-items: center; gap: 5px; }
+.tsys-cov-key i { width: 10px; height: 10px; display: inline-block; border: 1px solid var(--line); }
+
+.tsys-run { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; padding: 12px 14px; }
+.tsys-run-scope { min-width: 220px; }
+.tsys-run-out { padding: 0 14px 12px; font-size: .76rem; color: var(--text-muted); line-height: 1.5; }
+.tsys-run-out .bad { color: #b3261e; }
+.tsys-run-out .ok { color: #2f7d32; }

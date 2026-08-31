@@ -11987,6 +11987,351 @@ const translLangSelect = document.getElementById('translLangSelect');
 if (translLangSelect) translLangSelect.addEventListener('change', renderTranslationsTab);
 
 // Search
+
+/* ═══════════════════════════════════════════════════════════════════════
+   СИСТЕМА ПЕРЕВОДА — приборная доска очереди
+
+   Очередь переводов давно живёт на сервере (/translate/*) и продолжает
+   работу с закрытой вкладкой, но до сих пор её было видно только одной
+   строкой статуса после нажатия кнопки у конкретной записи. Отсюда две
+   привычные жалобы: «я не понимаю, переводится сейчас что-нибудь или
+   нет» и «квота кончилась, а узнал я об этом через два дня».
+
+   Панель показывает четыре вещи и ничего не переводит сама:
+     1. состояние службы и провайдеров (/translate/health) плюс стоп-кран;
+     2. очередь: что идёт прямо сейчас, с языком и шагом (/translate/status);
+     3. покрытие по языкам, посчитанное по загруженному документу:
+        перевод есть, устарел (оригинал новее) или его нет;
+     4. запуск: ставит задачи в ту же серверную очередь.
+
+   Покрытие считается на клиенте намеренно: сервер не знает, какие записи
+   редактор считает «своими» в этой сессии, а документ уже загружен.
+   ═══════════════════════════════════════════════════════════════════════ */
+const TSYS_SECTIONS = ['articles', 'reviews', 'items', 'libraryItems'];
+let _tsysTimer = null;
+let _tsysLastStatus = null;
+
+function tsysEl(id) { return document.getElementById(id); }
+
+async function tsysApi(path, options = {}) {
+  const pw = getAdminPassword();
+  if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
+  const res = await fetch(`${TRANSLATE_API}${path}`, {
+    cache: 'no-store',
+    ...options,
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw, ...(options.headers || {}) },
+  });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok || out.ok === false) throw new Error(out.error || `HTTP ${res.status}`);
+  return out;
+}
+
+/* Свежесть перевода: запись считается устаревшей, если оригинал правили
+   позже, чем перевод. Именно этот случай раньше не ловился глазами —
+   перевод есть, он просто отстал от текста. */
+function tsysEntryState(rootEntry, localEntry) {
+  if (!localEntry) return 'missing';
+  const a = Date.parse(rootEntry?.updatedAt || '') || 0;
+  const b = Date.parse(localEntry?.updatedAt || '') || 0;
+  if (a && b && a > b + 1000) return 'stale';
+  return 'done';
+}
+
+function tsysCoverage(data) {
+  const langs = getTranslationLanguages(data).filter((l) => l !== DEFAULT_LANGUAGE);
+  const rows = [];
+  for (const lang of langs) {
+    const row = { lang, done: 0, stale: 0, missing: 0, total: 0, bySection: {} };
+    for (const section of TSYS_SECTIONS) {
+      const root = Array.isArray(data[section]) ? data[section] : [];
+      if (!root.length) continue;
+      const local = data?.localizedCollections?.[lang]?.[section];
+      const byId = new Map((Array.isArray(local) ? local : []).map((e) => [String(e.id), e]));
+      const cell = { done: 0, stale: 0, missing: 0, total: root.length };
+      for (const entry of root) {
+        const state = tsysEntryState(entry, byId.get(String(entry.id)));
+        cell[state] += 1;
+      }
+      row.bySection[section] = cell;
+      row.done += cell.done; row.stale += cell.stale; row.missing += cell.missing; row.total += cell.total;
+    }
+    rows.push(row);
+  }
+  return rows;
+}
+
+function tsysRenderCoverage(data) {
+  const host = tsysEl('tsysCoverage');
+  if (!host) return;
+  if (!data || !Array.isArray(data.articles)) {
+    host.innerHTML = '<p class="tsys-empty">Загрузите контент, чтобы увидеть покрытие.</p>';
+    return;
+  }
+  const rows = tsysCoverage(data);
+  if (!rows.length) { host.innerHTML = '<p class="tsys-empty">Нет языков перевода.</p>'; return; }
+  const legend = `<div class="tsys-cov-legend">
+    <span class="tsys-cov-key"><i style="background:#2f7d32"></i>переведено</span>
+    <span class="tsys-cov-key"><i style="background:#d9a441"></i>устарело (оригинал новее)</span>
+    <span class="tsys-cov-key"><i></i>нет перевода</span>
+  </div>`;
+  host.innerHTML = legend + rows.map((r) => {
+    const pct = (n) => (r.total ? (n / r.total) * 100 : 0);
+    const detail = TSYS_SECTIONS
+      .filter((sec) => r.bySection[sec])
+      .map((sec) => `${getSectionLabel(sec)} ${r.bySection[sec].done}/${r.bySection[sec].total}`)
+      .join(' · ');
+    return `<div class="tsys-cov-row" title="${escapeHtml(detail)}">
+      <span class="tsys-cov-lang">${escapeHtml(r.lang)}</span>
+      <span class="tsys-cov-track">
+        <span class="tsys-cov-seg done" style="width:${pct(r.done)}%"></span>
+        <span class="tsys-cov-seg stale" style="width:${pct(r.stale)}%"></span>
+        <span class="tsys-cov-seg missing" style="width:${pct(r.missing)}%"></span>
+      </span>
+      <span class="tsys-cov-num">${r.done}/${r.total}${r.stale ? ` · ${r.stale} устар.` : ''}${r.missing ? ` · ${r.missing} нет` : ''}</span>
+    </div>`;
+  }).join('');
+}
+
+function tsysJobCard(job, isActive) {
+  const badgeClass = job.status === 'running' ? 'running'
+    : job.status === 'waiting-quota' ? 'quota'
+    : (job.status === 'error' || job.status === 'partial') ? 'error' : '';
+  const label = `${getSectionLabel(job.section)} #${job.entryId}`;
+  const step = job.progress ? `${job.progress.lang}: ${job.progress.step}` : '';
+  const when = job.updatedAt ? new Date(job.updatedAt).toLocaleString() : '';
+  const langs = [
+    ...(job.done || []).map((l) => `<span class="tsys-lang-chip done">${escapeHtml(l)}</span>`),
+    ...(job.failed || []).map((f) => `<span class="tsys-lang-chip failed" title="${escapeHtml(f.error || '')}">${escapeHtml(f.lang || f)}</span>`),
+    ...(job.progress ? [`<span class="tsys-lang-chip active">${escapeHtml(job.progress.lang)}</span>`] : []),
+  ].join('');
+  const note = job.status === 'waiting-quota'
+    ? `Дневная квота исчерпана. Очередь продолжит сама${job.waitingUntil ? ` после ${new Date(job.waitingUntil).toLocaleString()}` : ''}.`
+    : (job.error ? escapeHtml(job.error) : '');
+  return `<div class="tsys-job">
+    <div>
+      <div class="tsys-job-title">${escapeHtml(label)}</div>
+      <div class="tsys-job-line">${escapeHtml(step || note || when)}${job.origin ? ` · ${escapeHtml(job.origin)}` : ''}</div>
+      <div class="tsys-job-langs">${langs || '<span class="tsys-lang-chip">языки не отмечены</span>'}</div>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center">
+      <span class="tsys-badge ${badgeClass}">${escapeHtml(job.status)}</span>
+      ${isActive ? `<button class="btn btn-sm" type="button" data-tsys-cancel="${escapeHtml(job.id)}">Отменить</button>` : ''}
+    </div>
+  </div>`;
+}
+
+function tsysRenderQueue(status) {
+  const host = tsysEl('tsysQueue');
+  const meta = tsysEl('tsysQueueMeta');
+  if (!host) return;
+  const active = status?.active || [];
+  const history = (status?.jobs || []).slice(-6).reverse();
+  if (meta) meta.textContent = active.length ? `${active.length} в работе` : 'сейчас пусто';
+  host.innerHTML = (active.length ? active.map((j) => tsysJobCard(j, true)).join('') : '<p class="tsys-empty">Активных задач нет.</p>')
+    + (history.length ? `<div class="tsys-cov-legend" style="border-top:1px solid var(--line)">последние завершённые</div>` + history.map((j) => tsysJobCard(j, false)).join('') : '');
+  host.querySelectorAll('[data-tsys-cancel]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await tsysApi('/cancel', { method: 'POST', body: JSON.stringify({ jobId: btn.dataset.tsysCancel }) });
+        showToast('success', 'Задача отменена.');
+        tsysRefresh();
+      } catch (e) { showToast('error', getErrorMessage(e)); }
+    });
+  });
+}
+
+function tsysRenderHealth(health) {
+  const host = tsysEl('tsysHealth');
+  if (!host) return;
+  if (!health) { host.innerHTML = '<p class="tsys-empty">Состояние недоступно: нет пароля редакции или сервер не ответил.</p>'; return; }
+  const paused = !!health.paused;
+  const quota = health.quotaUntil ? new Date(health.quotaUntil).toLocaleString() : null;
+  const jobs = health.jobs || {};
+  const provs = Object.entries(health.providers || {}).map(([name, p]) =>
+    `<span class="tsys-prov-chip ${p.ok ? 'ok' : 'bad'}" title="${escapeHtml(p.ok ? `${p.ms} мс` : (p.error || 'недоступен'))}">${escapeHtml(name)}</span>`).join('');
+  const pauseBtn = tsysEl('tsysPauseBtn');
+  if (pauseBtn) pauseBtn.textContent = paused ? 'Снять паузу' : 'Пауза';
+  host.innerHTML = `
+    <div class="tsys-tile">
+      <div class="tsys-tile-k">Служба</div>
+      <div class="tsys-tile-v ${paused ? 'warn' : 'ok'}">${paused ? 'на паузе' : (health.workerBusy ? 'работает' : 'ждёт')}</div>
+      <div class="tsys-tile-sub">${paused ? escapeHtml(String(health.paused)) : (health.workerBusy ? 'воркер занят задачей' : 'очередь пуста')}</div>
+    </div>
+    <div class="tsys-tile">
+      <div class="tsys-tile-k">Квота</div>
+      <div class="tsys-tile-v ${quota ? 'warn' : 'ok'}">${quota ? 'исчерпана' : 'в норме'}</div>
+      <div class="tsys-tile-sub">${quota ? `продолжит после ${escapeHtml(quota)}` : 'лимиты провайдеров не достигнуты'}</div>
+    </div>
+    <div class="tsys-tile">
+      <div class="tsys-tile-k">Задачи</div>
+      <div class="tsys-tile-v">${Number(jobs.running || 0)} / ${Number(jobs.done || 0)}</div>
+      <div class="tsys-tile-sub">идут сейчас / завершены${jobs.error ? ` · ошибок ${jobs.error}` : ''}</div>
+    </div>
+    <div class="tsys-tile">
+      <div class="tsys-tile-k">Провайдеры</div>
+      <div class="tsys-prov">${provs || '<span class="tsys-prov-chip">нет данных</span>'}</div>
+      <div class="tsys-tile-sub">проверка живая, при каждом обновлении</div>
+    </div>`;
+}
+
+async function tsysRefresh() {
+  const dot = tsysEl('tsysAutoDot');
+  if (dot) dot.classList.add('live');
+  try {
+    const [status, health] = await Promise.all([
+      tsysApi('/status').catch(() => null),
+      tsysApi('/health').catch(() => null),
+    ]);
+    _tsysLastStatus = status;
+    tsysRenderHealth(health);
+    tsysRenderQueue(status);
+    tsysRenderCoverage(parseEditorJsonSafe());
+  } finally {
+    if (dot) setTimeout(() => dot.classList.remove('live'), 600);
+  }
+}
+
+function tsysStartWatch() {
+  tsysStopWatch();
+  /* Вежливый опрос: только пока вкладка открыта и видима. Очередь от этого
+     не зависит — это окно, а не мотор. */
+  _tsysTimer = setInterval(() => { if (!document.hidden) tsysRefresh(); }, 10000);
+  tsysRefresh();
+}
+function tsysStopWatch() { if (_tsysTimer) { clearInterval(_tsysTimer); _tsysTimer = null; } }
+
+function tsysFillRunSelects() {
+  const secSel = tsysEl('tsysRunSection');
+  const langSel = tsysEl('tsysRunLang');
+  const data = parseEditorJsonSafe();
+  if (secSel && !secSel.options.length) {
+    secSel.innerHTML = TSYS_SECTIONS.map((s) => `<option value="${s}">${escapeHtml(getSectionLabel(s))}</option>`).join('');
+  }
+  if (langSel && data) {
+    const langs = getTranslationLanguages(data).filter((l) => l !== DEFAULT_LANGUAGE);
+    const prev = langSel.value;
+    langSel.innerHTML = '<option value="">все языки</option>' + langs.map((l) => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`).join('');
+    if (prev) langSel.value = prev;
+  }
+}
+
+async function tsysRunQueue() {
+  const out = tsysEl('tsysRunOut');
+  const section = tsysEl('tsysRunSection')?.value;
+  const lang = tsysEl('tsysRunLang')?.value || '';
+  const scope = tsysEl('tsysRunScope')?.value || 'missing';
+  const data = parseEditorJsonSafe();
+  if (!data || !section) { showToast('error', 'Загрузите контент.'); return; }
+  const root = Array.isArray(data[section]) ? data[section] : [];
+  const langs = (lang ? [lang] : getTranslationLanguages(data).filter((l) => l !== DEFAULT_LANGUAGE));
+
+  const targets = [];
+  for (const entry of root) {
+    const need = langs.filter((l) => {
+      if (scope === 'all') return true;
+      const local = data?.localizedCollections?.[l]?.[section]?.find?.((e) => String(e.id) === String(entry.id));
+      return tsysEntryState(entry, local) !== 'done';
+    });
+    if (need.length) targets.push({ id: entry.id, langs: need });
+  }
+
+  if (!targets.length) {
+    if (out) out.innerHTML = '<span class="ok">Нечего ставить в очередь: всё переведено и ничего не устарело.</span>';
+    return;
+  }
+  const confirmed = await showConfirmModal(
+    'Поставить в очередь перевода?',
+    `Раздел <strong>${escapeHtml(getSectionLabel(section))}</strong>, записей: <strong>${targets.length}</strong>, языков: <strong>${escapeHtml(lang || langs.join(', '))}</strong>.` +
+    (scope === 'all' ? '<br><br><strong>Внимание:</strong> режим «всё заново» перезапишет существующие переводы.' : '<br><br>Переводится только недостающее и устаревшее.'),
+    'Поставить в очередь'
+  );
+  if (!confirmed) return;
+
+  let ok = 0; const failed = [];
+  for (const t of targets) {
+    try {
+      await tsysApi('/enqueue', { method: 'POST', body: JSON.stringify({ section, id: t.id, sourceLang: DEFAULT_LANGUAGE, targets: t.langs, force: scope === 'all' }) });
+      ok += 1;
+      if (out) out.innerHTML = `Ставлю в очередь: ${ok}/${targets.length}…`;
+    } catch (e) { failed.push(`#${t.id}: ${getErrorMessage(e)}`); }
+  }
+  if (out) {
+    out.innerHTML = `<span class="${failed.length ? 'bad' : 'ok'}">Поставлено задач: ${ok} из ${targets.length}.</span>`
+      + (failed.length ? `<br>Не приняты: ${escapeHtml(failed.slice(0, 4).join('; '))}${failed.length > 4 ? ' …' : ''}` : '')
+      + '<br>Очередь работает на сервере: вкладку можно закрыть.';
+  }
+  tsysRefresh();
+}
+
+async function tsysRunAudit() {
+  const out = tsysEl('tsysRunOut');
+  if (out) out.textContent = 'Проверяю блоки на сервере…';
+  try {
+    const res = await tsysApi('/audit');
+    const findings = res.findings || [];
+    if (!findings.length) { if (out) out.innerHTML = '<span class="ok">Непереведённых блоков не найдено.</span>'; return; }
+    const top = findings.slice(0, 6).map((f) => `${getSectionLabel(f.section)} #${f.id} ${f.lang}: ${f.untranslated} из ${f.blocks} блоков (${f.share}%)`);
+    if (out) {
+      out.innerHTML = `Найдено записей с недопереведёнными блоками: <strong>${findings.length}</strong>.<br>`
+        + escapeHtml(top.join('; ')) + (findings.length > 6 ? ' …' : '')
+        + '<br><button class="btn btn-sm" type="button" id="tsysAuditRepair">Починить их очередью</button>';
+      const btn = tsysEl('tsysAuditRepair');
+      if (btn) btn.addEventListener('click', async () => {
+        try {
+          const rep = await tsysApi('/audit', { method: 'POST', body: JSON.stringify({ repair: true }) });
+          out.innerHTML = `<span class="ok">Поставлено на переперевод: ${Number(rep.requeued || 0)}.</span>`;
+          tsysRefresh();
+        } catch (e) { out.innerHTML = `<span class="bad">${escapeHtml(getErrorMessage(e))}</span>`; }
+      });
+    }
+  } catch (e) {
+    if (out) out.innerHTML = `<span class="bad">${escapeHtml(getErrorMessage(e))}</span>`;
+  }
+}
+
+/* Переключатель режимов вкладки. Наблюдение включается только в режиме
+   системы: в словаре интерфейса опрос сервера ни к чему. */
+document.querySelectorAll('[data-transl-mode]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const mode = btn.dataset.translMode;
+    document.querySelectorAll('[data-transl-mode]').forEach((b) => {
+      const on = b === btn;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const ui = document.getElementById('translUiMode');
+    const sys = document.getElementById('translSystemMode');
+    if (ui) ui.hidden = mode !== 'ui';
+    if (sys) sys.hidden = mode !== 'system';
+    if (mode === 'system') { tsysFillRunSelects(); tsysStartWatch(); } else { tsysStopWatch(); }
+  });
+});
+
+const tsysRefreshBtn = document.getElementById('tsysRefreshBtn');
+if (tsysRefreshBtn) tsysRefreshBtn.addEventListener('click', () => tsysRefresh());
+
+const tsysPauseBtn = document.getElementById('tsysPauseBtn');
+if (tsysPauseBtn) {
+  tsysPauseBtn.addEventListener('click', async () => {
+    try {
+      const health = await tsysApi('/health').catch(() => null);
+      if (health && health.paused) {
+        await tsysApi('/resume', { method: 'POST', body: '{}' });
+        showToast('success', 'Очередь снова работает.');
+      } else {
+        await tsysApi('/pause', { method: 'POST', body: JSON.stringify({ reason: 'пауза из панели' }) });
+        showToast('info', 'Очередь остановлена. Начатая задача завершится, новые не стартуют.');
+      }
+      tsysRefresh();
+    } catch (e) { showToast('error', getErrorMessage(e)); }
+  });
+}
+
+const tsysRunBtn = document.getElementById('tsysRunBtn');
+if (tsysRunBtn) tsysRunBtn.addEventListener('click', () => tsysRunQueue());
+const tsysAuditBtn = document.getElementById('tsysAuditBtn');
+if (tsysAuditBtn) tsysAuditBtn.addEventListener('click', () => tsysRunAudit());
+
 const translSearch = document.getElementById('translSearch');
 if (translSearch) translSearch.addEventListener('input', renderTranslationsTab);
 

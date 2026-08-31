@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=6.82" />
+    <link rel="stylesheet" href="./styles.css?v=6.83" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -2027,7 +2027,15 @@
 
           <!-- ===== TRANSLATIONS ===== -->
           <section class="tab-panel" id="tab-translations">
-            <div class="translations-layout">
+            <!-- Два режима одной вкладки: словарь интерфейса (как было) и
+                 система перевода контента, которая до сих пор работала на
+                 сервере вслепую: очередь, покрытие, запуск, стоп-кран. -->
+            <div class="transl-mode-switch" role="tablist" aria-label="Режим переводов">
+              <button class="transl-mode-btn active" type="button" data-transl-mode="ui" role="tab" aria-selected="true">Интерфейс</button>
+              <button class="transl-mode-btn" type="button" data-transl-mode="system" role="tab" aria-selected="false">Система перевода</button>
+            </div>
+
+            <div class="translations-layout" id="translUiMode">
               <div id="translLangOverview" class="transl-lang-overview"></div>
               <div class="translations-toolbar">
                 <label class="toolbar-field">
@@ -2060,6 +2068,66 @@
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+
+            <!-- ===== СИСТЕМА ПЕРЕВОДА (контент) ===== -->
+            <div class="translations-layout" id="translSystemMode" hidden>
+              <div class="tsys-head">
+                <div>
+                  <h2 class="card-title" style="margin:0">Система перевода</h2>
+                  <p class="tsys-sub">Очередь живёт на сервере и продолжает работу с закрытой вкладкой. Здесь видно, чем она занята, что уже переведено и где застряло.</p>
+                </div>
+                <div class="tsys-head-actions">
+                  <span id="tsysAutoDot" class="tsys-dot" title="Автообновление"></span>
+                  <button id="tsysRefreshBtn" class="btn btn-sm" type="button">↻ Обновить</button>
+                  <button id="tsysPauseBtn" class="btn btn-sm" type="button">Пауза</button>
+                </div>
+              </div>
+
+              <div id="tsysHealth" class="tsys-health"><p class="tsys-empty">Загружаю состояние…</p></div>
+
+              <div class="card tsys-card">
+                <div class="tsys-card-head">
+                  <h3 class="card-title" style="margin:0">Очередь</h3>
+                  <span id="tsysQueueMeta" class="tsys-meta"></span>
+                </div>
+                <div id="tsysQueue" class="tsys-queue"><p class="tsys-empty">Загружаю…</p></div>
+              </div>
+
+              <div class="card tsys-card">
+                <div class="tsys-card-head">
+                  <h3 class="card-title" style="margin:0">Покрытие по языкам</h3>
+                  <span class="tsys-meta">Считается по загруженному контенту: есть перевод, устарел (оригинал новее) или его нет.</span>
+                </div>
+                <div id="tsysCoverage" class="tsys-coverage"><p class="tsys-empty">Загрузите контент, чтобы увидеть покрытие.</p></div>
+              </div>
+
+              <div class="card tsys-card">
+                <div class="tsys-card-head">
+                  <h3 class="card-title" style="margin:0">Запуск</h3>
+                  <span class="tsys-meta">Ставит задачи в серверную очередь. Ничего не переводится в этой вкладке.</span>
+                </div>
+                <div class="tsys-run">
+                  <label class="toolbar-field">
+                    <span class="toolbar-field-label">Раздел</span>
+                    <select id="tsysRunSection"></select>
+                  </label>
+                  <label class="toolbar-field">
+                    <span class="toolbar-field-label">Язык</span>
+                    <select id="tsysRunLang"><option value="">все языки</option></select>
+                  </label>
+                  <label class="toolbar-field tsys-run-scope">
+                    <span class="toolbar-field-label">Что переводить</span>
+                    <select id="tsysRunScope">
+                      <option value="missing">только недостающее и устаревшее</option>
+                      <option value="all">всё заново (перезапишет переводы)</option>
+                    </select>
+                  </label>
+                  <button id="tsysRunBtn" class="btn btn-primary btn-sm" type="button">Поставить в очередь</button>
+                  <button id="tsysAuditBtn" class="btn btn-sm" type="button" title="Найти записи, где часть блоков осталась на языке оригинала">Проверить блоки</button>
+                </div>
+                <div id="tsysRunOut" class="tsys-run-out"></div>
               </div>
             </div>
           </section>
@@ -2538,7 +2606,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
-    <script src="./app.js?v=6.60" type="module"></script>
+    <script src="./app.js?v=6.61" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
