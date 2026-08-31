@@ -477,7 +477,7 @@ const ROUTE_DESCRIPTIONS = {
   works: SHOWCASE_DESCRIPTION,
   set: SHOWCASE_DESCRIPTION,
   stage: 'Build a scene in metres — plan, section and volume driven by one model — and try the moves from EPRIS Bureau on it.',
-  codex: 'Мануал для тех, кто пишет и исследует: как формулировать просьбу, проверять цитаты, держать связность и кросс-валидировать. С библиотекой готовых запросов.',
+  codex: 'Мануал для тех, кто пишет и исследует искусство: как формулировать просьбу, проверять цитаты, держать связность, кросс-валидировать, собирать и чистить данные о собрании. С библиотекой готовых запросов.',
 };
 
 // Aliases that must not compete with their canonical route in search results.

@@ -103,7 +103,7 @@
   scroll-margin-top:80px;
 }
 .codex-entry > *{min-width:0}
-.codex-entry > *:not(.codex-side){grid-column:2}
+.codex-main{grid-column:2;min-width:0}
 .codex-side{grid-column:1;align-self:start}
 .codex-side h2{
   font-family:var(--font-head);font-weight:400;
@@ -113,8 +113,8 @@
   margin-top:12px;max-width:30ch;
   font-size:14.5px;line-height:1.45;color:var(--c-muted);
 }
-.codex-entry p.body{max-width:68ch;font-size:17px;line-height:1.62;color:var(--c-muted)}
-.codex-entry p.body + p.body{margin-top:16px}
+.codex-main p.body{max-width:68ch;font-size:17px;line-height:1.62;color:var(--c-muted)}
+.codex-main p.body + p.body{margin-top:16px}
 
 
 /* ПРИМЕР ЗАПРОСА. Главное на странице.
@@ -185,7 +185,7 @@
 
 @media (max-width:900px){
   .codex-entry{grid-template-columns:minmax(0,1fr);row-gap:14px}
-  .codex-entry > *:not(.codex-side){grid-column:1}
+  .codex-main{grid-column:1}
   .codex-side{grid-column:1}
   .codex-toc a{grid-template-columns:34px minmax(0,1fr)}
   .codex-toc .s{grid-column:1 / -1;margin-top:2px}
