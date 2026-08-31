@@ -1,0 +1,160 @@
+/* КОДЕКС набран языком munister.com.ua, а не журнала.
+ *
+ * Это сознательное расхождение с остальным EPRIS. Журнал говорит бордо по
+ * кремовому, антиквой Playfair, и этот голос принадлежит изданию. Кодекс же
+ * не издание: это рабочая книга практики, и набран он тем же, чем набраны
+ * разборы систем на munister.com.ua, откуда пришёл и материал. Читатель,
+ * пришедший оттуда, попадает в тот же документ, а не в чужую обложку.
+ *
+ * Токены скопированы, а не импортированы: сайты живут в разных репозиториях
+ * и на разных доменах, общего файла у них нет и заводить его ради одного
+ * раздела значит связать два деплоя навсегда.
+ *
+ * Всё под .codex-root, потому что вокруг Tailwind и переменные журнала:
+ * незакрытая область перекрасила бы страницы, к которым кодекс отношения
+ * не имеет.
+ */
+.codex-root{
+  --c-paper:#ffffff;
+  --c-paper-deep:#f4f3f1;
+  --c-ink:#121212;
+  --c-muted:rgba(18,18,18,.68);
+  --c-faint:#6e6e6e;
+  --c-rule:rgba(18,18,18,.11);
+  --c-rule-strong:rgba(18,18,18,.30);
+  /* Системные гарнитуры, без вебшрифтов: ровно как на munister.com.ua. */
+  --font-sans:'KTF Prima','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --font-serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --font-head:var(--font-serif);
+  --measure:1240px;
+
+  background:var(--c-paper);
+  color:var(--c-ink);
+  font-family:var(--font-sans);
+  font-size:17px;
+  line-height:1.55;
+  letter-spacing:-.004em;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+.codex-root *{box-sizing:border-box}
+.codex-root a{color:inherit;text-decoration:none}
+.codex-shell{max-width:var(--measure);margin-inline:auto;padding-inline:clamp(20px,4vw,54px)}
+
+.codex-mono{
+  font-family:var(--font-sans);font-size:9.5px;line-height:1.5;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--c-faint);
+}
+
+/* Шапка ячейками по волосяным линиям: приём шапки munister и музея EPRIS. */
+.codex-head{
+  display:flex;align-items:stretch;height:56px;
+  border-bottom:1px solid var(--c-rule);
+  margin-bottom:clamp(2.6rem,5vw,5rem);
+}
+.codex-head > *{display:flex;align-items:center}
+.codex-head .wm{
+  padding-inline:0 26px;border-right:1px solid var(--c-rule);
+  font-size:15px;letter-spacing:.19em;text-transform:uppercase;white-space:nowrap;
+}
+.codex-head .back{padding-inline:26px;border-right:1px solid var(--c-rule)}
+.codex-head .right{margin-left:auto;padding-inline:26px 0}
+
+/* Открытие. Заявление гротеском, как на первом экране munister. */
+.codex-open{padding-bottom:clamp(2rem,4vw,3.4rem);border-bottom:1px solid var(--c-ink)}
+.codex-open h1{
+  margin-top:14px;font-weight:400;
+  font-size:clamp(40px,6.4vw,74px);line-height:.94;letter-spacing:-.05em;
+  max-width:16ch;text-wrap:balance;
+}
+.codex-open .lead{
+  max-width:56ch;margin-top:22px;
+  font-size:clamp(19px,2vw,23px);line-height:1.42;color:var(--c-ink);
+}
+.codex-note{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:clamp(20px,3vw,52px);margin-top:clamp(1.8rem,3vw,2.6rem);
+}
+.codex-note p{max-width:56ch;font-size:16px;line-height:1.58;color:var(--c-muted)}
+
+/* Оглавление строками реестра: тот же приём, что у списка работ. */
+.codex-toc{margin-top:clamp(2.6rem,5vw,4rem)}
+.codex-toc ol{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--c-ink)}
+.codex-toc a{
+  display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1.35fr);
+  gap:6px clamp(16px,2.6vw,40px);align-items:baseline;
+  padding:15px 0;border-bottom:1px solid var(--c-rule-strong);
+  transition:background .16s ease;
+}
+.codex-toc a:hover{background:var(--c-paper-deep)}
+.codex-toc .n{font-size:9.5px;letter-spacing:.14em;color:var(--c-faint);font-variant-numeric:tabular-nums}
+.codex-toc .t{font-family:var(--font-head);font-size:clamp(20px,2.2vw,26px);line-height:1.1;letter-spacing:-.014em}
+.codex-toc .s{font-size:15px;line-height:1.45;color:var(--c-muted)}
+
+/* Статья: служебная подпись слева, текст справа. Раскладка разборов систем.
+   Каждая статья своя решётка, а не одна общая на книгу: в общей подпись и
+   текст соседней статьи попадают в одну строку и разъезжаются. */
+.codex-entry{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);
+  column-gap:clamp(20px,3vw,52px);row-gap:0;
+  padding-top:clamp(2.4rem,4.5vw,3.6rem);
+  margin-top:clamp(2.4rem,4.5vw,3.6rem);
+  border-top:1px solid var(--c-rule-strong);
+  scroll-margin-top:80px;
+}
+.codex-entry > *{min-width:0}
+.codex-entry > *:not(.codex-side){grid-column:2}
+.codex-side{grid-column:1;align-self:start}
+.codex-side h2{
+  font-family:var(--font-head);font-weight:400;
+  font-size:clamp(26px,3vw,34px);line-height:1.06;letter-spacing:-.018em;
+}
+.codex-side .sense{
+  margin-top:12px;max-width:30ch;
+  font-size:14.5px;line-height:1.45;color:var(--c-muted);
+}
+.codex-entry p.body{max-width:68ch;font-size:17px;line-height:1.62;color:var(--c-muted)}
+.codex-entry p.body + p.body{margin-top:16px}
+
+/* Доказательство. Другой род текста, чем рассуждение выше, поэтому отбито
+   плашкой, а не просто отступом. */
+.codex-evidence{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  padding:clamp(16px,2.2vw,22px);
+  border:1px solid var(--c-ink);background:var(--c-paper-deep);
+}
+.codex-evidence p{margin-top:9px;max-width:62ch;font-size:15.5px;line-height:1.55;color:var(--c-muted)}
+
+.codex-see{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-top:20px}
+.codex-see a{
+  font-size:15px;border-bottom:1px solid var(--c-rule-strong);
+  transition:border-color .18s ease;
+}
+.codex-see a:hover{border-color:var(--c-ink)}
+
+.codex-btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 18px;
+  border:1px solid var(--c-rule-strong);border-radius:999px;
+  font-size:12.5px;background:transparent;color:var(--c-ink);cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.codex-btn:hover{background:var(--c-ink);border-color:var(--c-ink);color:var(--c-paper)}
+
+.codex-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:clamp(3rem,6vw,5rem);padding:20px 0 40px;border-top:1px solid var(--c-ink);
+}
+
+.codex-root :focus-visible{outline:2px solid var(--c-ink);outline-offset:4px}
+
+@media (max-width:900px){
+  .codex-entry{grid-template-columns:minmax(0,1fr);row-gap:14px}
+  .codex-entry > *:not(.codex-side){grid-column:1}
+  .codex-side{grid-column:1}
+  .codex-toc a{grid-template-columns:34px minmax(0,1fr)}
+  .codex-toc .s{grid-column:1 / -1;margin-top:2px}
+}
+@media (max-width:760px){
+  .codex-root{font-size:16px}
+  .codex-head .back{display:none}
+}
