@@ -6199,12 +6199,12 @@
     },
     {
       "id": 30,
-      "title": "Where the Warmth Lives: Reading the Turn from Summer to Autumn in Paint",
+      "title": "Where the Warmth Lives: How Two Traditions Measured the Turn from Summer to Autumn",
       "author": "Viacheslav Munister",
       "authorId": "author-1784732936927-kw554",
       "role": "Author",
       "date": "Aug 31, 2026",
-      "excerpt": "Autumn does not make the light warmer. Measured region by region, two canvases of the same field show the sky staying where it was while the ground swings seventeen points warm, and the shadows, all summer filled with blue skylight, turn into the warmest passages in the picture. With three pastels in which the medium is held still and only the season moves.",
+      "excerpt": "Autumn does not make the light warmer. Measured region by region, two canvases of the same field show the sky staying where it was while the ground swings seventeen points warm, and the shadows, all summer filled with blue skylight, turn into the warmest passages in the picture. With three pastels in which the medium is held still and only the season moves. And a second half in which autumn is not a light at all: a calendar that declares it on the seventh of August, a season carried by one grass, and a moon with no horizon to rise from.",
       "category": "art",
       "subcategory": "Essay",
       "tags": [
@@ -6212,7 +6212,7 @@
         "light",
         "pastel",
         "seasons",
-        "colour"
+        "japan"
       ],
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
@@ -6429,12 +6429,97 @@
         },
         {
           "type": "header",
-          "content": "An autumn with no light in it at all",
+          "content": "Autumn begins on the seventh of August",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Everything above assumes that a season is a lighting condition. One tradition simply disagrees. Tosa Mitsuoki's screen of about 1675 has no atmosphere in it: no sun angle, no aerial perspective, no cast shadow anywhere. The ground is gold leaf, which is to say the light is a material rather than an event, identical in every part of the surface. Measured, the screen is 83.5 per cent yellow and ochre, the highest concentration in this set, with almost nothing neutral, and yet nobody would call it a study of light."
+          "content": "Everything above assumes that a season is a lighting condition, something you detect by looking at the sky and the ground. One tradition organises it the other way round, and holding the two side by side is the fastest way to see that the European nineteenth century made a choice rather than a discovery."
+        },
+        {
+          "type": "text",
+          "content": "In the Japanese calendar inherited from China, the year is divided into twenty-four solar terms, and the one called risshu, the beginning of autumn, falls around the seventh or eighth of August. Not the equinox, not the first cold night: the seventh of August, when the heat in Kyoto is at its worst. Autumn is declared. From that date onward a poem that mentions cicadas, dew, geese or the moon is an autumn poem, whatever the thermometer says, and a painter who signs a screen of grasses in September is working inside a season that officially began five weeks earlier."
+        },
+        {
+          "type": "text",
+          "content": "The terms are then subdivided again, into seventy-two ko of roughly five days each, every one named after a single natural event. The Japanese set was revised into its familiar form by the court astronomer Shibukawa Shunkai in the seventeenth century. The three that make up risshu are, in order: cool winds arrive, evening cicadas sing, thick fog descends. A month later, under white dew, comes the unit called dew glistens white on the grass."
+        },
+        {
+          "type": "text",
+          "content": "This deserves attention from anyone who has just read four thousand words of measurements. It is the same instinct, an attempt to resolve the turn at the finest grain available, but the instrument is a name rather than a number, and the resolution is five days rather than a hue percentage. The tradition that supposedly does not measure the season has divided it into units so short that most European calendars have no word for them at all."
+        },
+        {
+          "type": "header",
+          "content": "The season is a plant, not a light",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "If autumn is a date rather than a condition, then a picture cannot announce it by the angle of the sun, and it does not try to. It announces it with a plant. The Man'yoshu, the eighth-century anthology, fixes the seven grasses of autumn in a pair of poems by Yamanoue no Okura: bush clover, miscanthus, kudzu, pink, patrinia, boneset, bellflower. For the next twelve hundred years those seven, and above all the miscanthus called susuki, carry the season in poetry, on lacquer, on ceramics and across screens."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgt0vbnygt0f4.jpg",
+          "caption": "Susuki Grass, about 1525. One of a pair of six-panel folding screens; ink, colour and gold on paper, 150.4 by 349.2 cm. Cleveland Museum of Art, John L. Severance Fund, CC0.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "This screen is three and a half metres of one plant. There is no ground line, no horizon, no sky, no cast shadow, no hour of the day. Measured, the green pigment covers 2.4 per cent of the surface: the remaining ninety-seven and a half per cent is the prepared paper, doing exactly what Twachtman's tan board does in Connecticut three hundred and sixty years later, except that here it is a settled convention rather than a discovery, and the empty ground has a name and a theory behind it."
+        },
+        {
+          "type": "text",
+          "content": "Put the two next to each other and the rhyme is almost embarrassing. A Muromachi painter and an American Impressionist arrive at the same solution, that the support should carry the season and the pigment should only mark what departs from it. One got there through a tradition of negative space and the economics of gold leaf, the other by picking up a pastel stick and noticing what happened when he stopped filling the sheet."
+        },
+        {
+          "type": "header",
+          "content": "The moon rises out of the grass",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The other half of the Japanese autumn is not the sun at all. It is the moon. The full moon of the eighth lunar month is the autumn moon, viewed at parties held for the purpose, and the plain called Musashino, west of Edo, is the place-name attached to it: a plain so flat and so thick with susuki that in the poetic formula the moon has nowhere to rise from except the grass itself."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgt0tuvk952y9.jpg",
+          "caption": "Autumn Evening with Full Moon on Musashino Plain, early 1600s. One of a pair of six-fold screens; ink, colour, and gold and silver foil on gilded paper, 170.2 by 346.7 cm. Cleveland Museum of Art, John L. Severance Fund, CC0.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "The screen does what the formula says. A silver moon sits low in a field of miscanthus, and there is no horizon behind it, because the ground it would rise from has been replaced by gold leaf. Measured, the gold band reads plus 99.7 on the same warm-cool scale that gave Cazin's extreme European autumn plus 61. Nothing painted from observation in this article comes close to it."
+        },
+        {
+          "type": "text",
+          "content": "More telling is the direction of travel inside the picture. The gold at the top is plus 99.7, the grass band across the middle is plus 73.3, and the foreground is plus 25.6. The screen gets <em>cooler</em> as it comes forward, which is the exact inverse of Monet's autumn field, where the ground was the warm end and the sky stayed neutral. In Giverny the warmth had moved down into the stubble because that is what October does to a field. Here the warmth is at the top because the top is metal, and metal is warm regardless of the month."
+        },
+        {
+          "type": "text",
+          "content": "Two cautions on that number. Gold is a specular surface, so a photograph of it records one particular raking light in one gallery, and the figure describes a warm metallic ground rather than a colorimetric fact. And the silver of the moon has tarnished over four centuries, which is why it now reads as a dark grey disc rather than a bright one. As with the faded pastel papers, the object has aged in a direction that changes the reading: the picture was made with a bright moon and now has a dull one."
+        },
+        {
+          "type": "header",
+          "content": "Light you can wipe onto a block",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In the woodblock print the question of where the light comes from has an unusually literal answer. It comes from the printer's cloth. The graded washes in Hiroshige's skies are bokashi: ink is wiped onto the block by hand in a gradient before each impression, so no two sheets in an edition are identical and the entire atmosphere of a print is a manual gesture performed hundreds of times."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgt0vttzg2e9z.jpg",
+          "caption": "Utagawa Hiroshige. The Moon-Viewing Promontory, from One Hundred Views of Famous Places in Edo, 1857. Colour woodblock print, 33.9 by 22.8 cm. Cleveland Museum of Art, the Kelvin Smith Collection, given by Mrs. Kelvin Smith, CC0.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Sampled in strips down the sky, the ramp is unmistakably manufactured rather than observed. It runs from a saturated blue at the top, hue 214 with saturation 0.30, through hue 171 at saturation 0.12, to a near-neutral pale at hue 59 and saturation 0.07 by the horizon: one pigment, one wipe, saturation falling smoothly and value rising smoothly. Monet's sky over the stacks does not behave like that. It changes hue as it crosses the canvas, because it was matched to something being looked at."
+        },
+        {
+          "type": "text",
+          "content": "And the way this sheet says autumn is worth listing, because not one item on the list is a lighting effect. There is a moon, cropped by the eaves so that you register it as a fact rather than a spectacle. There is a line of geese, the standard autumn arrival. There is a room after the party: dishes pushed aside, a lantern, a shadow on the paper screen, the guests gone. The season is a date in the calendar, a bird, a plant and a social occasion, recorded in a print whose light was applied with a rag."
         },
         {
           "type": "image",
@@ -6444,7 +6529,15 @@
         },
         {
           "type": "text",
-          "content": "Autumn here is signalled by species and by custom: maple leaves, and slips of poetry paper tied to the branches by people who came out to look at them and wrote something down. The season is a social event recorded on a gold surface. Holding this against Monet is the fastest way to see that the European nineteenth century had made a choice, not discovered a fact, when it decided that to paint a season you paint the air."
+          "content": "Tosa Mitsuoki's maples close the argument. Measured across the whole surface the screen is 83.5 per cent yellow and ochre, the highest concentration of warm colour anywhere in this set, higher than Cazin, higher than Millet, and yet there is no sun angle in it, no aerial perspective, no cast shadow, nothing that could be called an observation of light. What there is instead is a species, and slips of poetry paper tied to the branches by people who came out to look at the leaves and wrote something down. Momijigari, leaf-hunting, is an outing with a literature attached."
+        },
+        {
+          "type": "text",
+          "content": "Even the colour vocabulary is codified rather than observed. Traditional Japanese colour names include kuchiba-iro, decayed-leaf colour, a specific brown-yellow with a fixed dye recipe and a fixed place in the wardrobe calendar. A European painter mixes a colour that matches what a leaf is doing this week. A court painter reaches for the colour the season is agreed to have."
+        },
+        {
+          "type": "text",
+          "content": "Neither system is more accurate. They answer different questions. The European tradition asks what the light is doing right now and builds an instrument, the canvas, sensitive enough to record it. The Japanese tradition asks what season it is according to the calendar and the poems, and then names the plant, the bird and the colour that belong to that answer. The first produces twenty-five wheat stacks in one field. The second produces three and a half metres of a single grass, and a moon with no horizon to rise from."
         },
         {
           "type": "header",
@@ -6484,7 +6577,7 @@
           "content": "Colour figures were computed from open-access reproductions, sampled at reduced resolution, with red-minus-blue used as a warm-cool proxy and pixels grouped into hue families reported as a share of surface. Regional figures come from fixed rectangles in each image, described in the text. These are measurements of photographs, not of paint: museum photography is colour-managed but interpretive, and century-old varnish shifts everything slightly warm. They are meant for comparison between images in the same set. Works from the Art Institute of Chicago, the Cleveland Museum of Art and the Metropolitan Museum of Art appear under their open-access programmes; Levitan's Golden Autumn is in the public domain. Medium and support descriptions, including the records of discoloration, are quoted from the holding institutions' own catalogue entries."
         }
       ],
-      "updatedAt": "2026-08-31T05:29:10.717Z"
+      "updatedAt": "2026-08-31T05:36:46.832Z"
     }
   ],
   "reviews": [
