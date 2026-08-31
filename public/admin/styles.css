@@ -10107,6 +10107,18 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .tsys-prov-chip { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; padding: 3px 7px; border: 1px solid var(--line); color: var(--text-muted); }
 .tsys-prov-chip.ok { border-color: #2f7d32; color: #2f7d32; }
 .tsys-prov-chip.bad { border-color: #b3261e; color: #b3261e; }
+/* Жёлтый — исчерпанный лимит: ожидаемое состояние бесплатных ступеней, а не
+   поломка. Красный оставлен настоящему отказу, иначе он перестаёт значить
+   что-либо: три чипа из пяти горели красным круглосуточно. */
+.tsys-prov-chip.warn { border-color: #a86400; color: #a86400; }
+.tsys-prov-chip.off { border-color: var(--line); color: var(--text-muted); opacity: .65; }
+
+/* Вердикт во всю ширину плиток: он отвечает на вопрос «переводит или нет»,
+   и читать его должны раньше, чем считать лампочки. */
+.tsys-verdict { grid-column: 1 / -1; border: 1px solid var(--line); border-left-width: 3px; background: var(--bg-card); padding: 10px 13px; font-size: .82rem; line-height: 1.45; }
+.tsys-verdict.ok { border-left-color: #2f7d32; }
+.tsys-verdict.warn { border-left-color: #a86400; }
+.tsys-verdict.bad { border-left-color: #b3261e; }
 
 .tsys-job { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--line); }
 .tsys-job:last-child { border-bottom: 0; }

@@ -12029,7 +12029,42 @@ async function tsysApi(path, options = {}) {
 /* Свежесть перевода: запись считается устаревшей, если оригинал правили
    позже, чем перевод. Именно этот случай раньше не ловился глазами —
    перевод есть, он просто отстал от текста. */
-function tsysEntryState(rootEntry, localEntry) {
+/* СОСТОЯНИЕ ПЕРЕВОДА СЧИТАЕТ СЕРВЕР, А НЕ ЧАСЫ.
+
+   Здесь сравнивались две даты: updatedAt оригинала против updatedAt
+   перевода, и что новее — то и правда. Правдой это не было. Сохранение в
+   админке переписывает updatedAt записи целиком, даже когда переводимого в
+   ней ничего не изменилось: поправили порядок на главной, сменили обложку,
+   просто открыли и нажали «Сохранить» — и все шесть языков разом уезжают в
+   «устарело». Ровно так статья «Where the Warmth Lives», переведённая на все
+   шесть языков в 09:42, к 10:15 выглядела непереведённой: EN сохранили ещё
+   раз, переводы никуда не делись.
+
+   У очереди для этого есть отпечаток переводимой части записи (updatedAt и
+   прочая служебка в него не входят). Она и отвечает теперь на /coverage:
+   ready — перевод соответствует нынешнему оригиналу, stale — оригинал
+   действительно правили, missing — перевода нет, manual — правлено руками.
+
+   Сравнение дат осталось запасным вариантом на случай, когда сервер не
+   ответил: лучше приблизительная картина, чем пустая вкладка. */
+let _tsysServerCoverage = null;
+
+function tsysServerStateOf(section, id, lang) {
+  const cov = _tsysServerCoverage;
+  if (!cov || !Array.isArray(cov.entries)) return null;
+  const entry = cov.entries.find((e) => e.section === section && String(e.id) === String(id));
+  if (!entry || !entry.langs) return null;
+  const state = entry.langs[lang];
+  if (!state) return null;
+  // «Правлено руками» очередь не трогает, и для покрытия это готовый перевод.
+  return state === 'ready' || state === 'manual' ? 'done' : state;
+}
+
+function tsysEntryState(rootEntry, localEntry, section, lang) {
+  const fromServer = section && lang && rootEntry
+    ? tsysServerStateOf(section, rootEntry.id, lang)
+    : null;
+  if (fromServer) return fromServer;
   if (!localEntry) return 'missing';
   const a = Date.parse(rootEntry?.updatedAt || '') || 0;
   const b = Date.parse(localEntry?.updatedAt || '') || 0;
@@ -12049,7 +12084,7 @@ function tsysCoverage(data) {
       const byId = new Map((Array.isArray(local) ? local : []).map((e) => [String(e.id), e]));
       const cell = { done: 0, stale: 0, missing: 0, total: root.length };
       for (const entry of root) {
-        const state = tsysEntryState(entry, byId.get(String(entry.id)));
+        const state = tsysEntryState(entry, byId.get(String(entry.id)), section, lang);
         cell[state] += 1;
       }
       row.bySection[section] = cell;
@@ -12155,11 +12190,55 @@ function tsysRenderHealth(health) {
   const paused = !!health.paused;
   const quota = health.quotaUntil ? new Date(health.quotaUntil).toLocaleString() : null;
   const jobs = health.jobs || {};
-  const provs = Object.entries(health.providers || {}).map(([name, p]) =>
-    `<span class="tsys-prov-chip ${p.ok ? 'ok' : 'bad'}" title="${escapeHtml(p.ok ? `${p.ms} мс` : (p.error || 'недоступен'))}">${escapeHtml(name)}</span>`).join('');
+  /* Чип красный только у настоящего отказа.
+
+     Раньше их было три красных почти всегда: месячный объём DeepL кончается
+     за неделю, у публичного Google лимит на адрес, у бесплатных моделей
+     OpenRouter — суточный. Перевод при этом идёт: цепочка начинается с
+     openai и до исчерпанных ступеней не доходит. Но панель показывала
+     ровно ту же красноту, что и при настоящей поломке, и читалась она
+     одинаково — «переводы сломаны». Жёлтый значит «лимит, само пройдёт». */
+  const CHIP_STATE = { ok: 'ok', quota: 'warn', unconfigured: 'off', down: 'bad' };
+  const CHIP_HINT = { quota: 'лимит исчерпан, восстановится сам', unconfigured: 'ключ не настроен', down: 'не отвечает' };
+  const provs = Object.entries(health.providers || {}).map(([name, p]) => {
+    const kind = p.ok ? 'ok' : (p.kind || 'down');
+    const title = p.ok ? `${p.ms} мс` : `${CHIP_HINT[kind] || 'недоступен'}: ${p.error || ''}`;
+    return `<span class="tsys-prov-chip ${CHIP_STATE[kind] || 'bad'}" title="${escapeHtml(title)}">${escapeHtml(name)}</span>`;
+  }).join('');
+  /* Одна строка, отвечающая на единственный вопрос редакции: переводит или
+     нет. Пять лампочек на него не отвечают — их приходится складывать в
+     голове, зная порядок цепочки, а порядок знает сервер. */
+  const verdict = health.verdict || null;
+  const verdictClass = !verdict ? 'warn' : (!verdict.ok ? 'bad' : (verdict.quality === 'stopgap' ? 'warn' : 'ok'));
+
+  /* ГОТОВНОСТЬ — ГЛАВНОЕ, ЗА ЧЕМ СЮДА ПРИХОДЯТ.
+
+     Вопрос редакции почти всегда один и тот же: «новую статью перевело или
+     ещё нет». Ответа в панели не было вовсе — были задачи, провайдеры и
+     проценты по языкам, из которых ответ надо собирать самому. Здесь он
+     один числом: сколько записей закрыты на всех языках. Незакрытые названы
+     поимённо, потому что «19 из 20» без имени двадцатой бесполезно. */
+  const cov = _tsysServerCoverage;
+  let readiness = '';
+  if (cov && Array.isArray(cov.entries) && cov.entries.length) {
+    const total = cov.entries.length;
+    const complete = cov.entries.filter((e) => e.complete).length;
+    const pending = cov.entries.filter((e) => !e.complete);
+    const inQueue = pending.filter((e) => e.inQueue).length;
+    const names = pending.slice(0, 3).map((e) => `${e.title} (${e.ready}/${e.total})`).join('; ');
+    readiness = `<div class="tsys-tile">
+      <div class="tsys-tile-k">Готовность</div>
+      <div class="tsys-tile-v ${complete === total ? 'ok' : 'warn'}">${complete} / ${total}</div>
+      <div class="tsys-tile-sub">${complete === total
+        ? 'все записи переведены на все языки'
+        : escapeHtml(`ждут: ${names}${pending.length > 3 ? ` и ещё ${pending.length - 3}` : ''}`)
+          + (inQueue ? ` · ${inQueue} уже в очереди` : '')}</div>
+    </div>`;
+  }
   const pauseBtn = tsysEl('tsysPauseBtn');
   if (pauseBtn) pauseBtn.textContent = paused ? 'Снять паузу' : 'Пауза';
   host.innerHTML = `
+    ${verdict ? `<div class="tsys-verdict ${verdictClass}">${escapeHtml(verdict.summary)}</div>` : ''}
     <div class="tsys-tile">
       <div class="tsys-tile-k">Служба</div>
       <div class="tsys-tile-v ${paused ? 'warn' : 'ok'}">${paused ? 'на паузе' : (health.workerBusy ? 'работает' : 'ждёт')}</div>
@@ -12175,10 +12254,11 @@ function tsysRenderHealth(health) {
       <div class="tsys-tile-v">${Number(jobs.running || 0)} / ${Number(jobs.done || 0)}</div>
       <div class="tsys-tile-sub">идут сейчас / завершены${jobs.error ? ` · ошибок ${jobs.error}` : ''}</div>
     </div>
+    ${readiness}
     <div class="tsys-tile">
       <div class="tsys-tile-k">Провайдеры</div>
       <div class="tsys-prov">${provs || '<span class="tsys-prov-chip">нет данных</span>'}</div>
-      <div class="tsys-tile-sub">проверка живая, при каждом обновлении</div>
+      <div class="tsys-tile-sub">зелёный — отвечает, жёлтый — исчерпан лимит (пройдёт сам), красный — сбой</div>
     </div>`;
 }
 
@@ -12249,11 +12329,16 @@ function tsysRenderErrors(status) {
   card.hidden = rows.length === 0;
   if (!rows.length) { host.innerHTML = ''; return; }
   host.innerHTML = rows.map((g) => {
+    /* Было: «очередь будет пытаться снова, пока задача висит». Неправда, и
+       вредная: редакция ждала, что оно само рассосётся, а рассасываться было
+       нечему — записи нет, повторять нечего. Теперь такие задачи чистятся на
+       сервере при старте и на каждом обходе, а строка говорит, что это
+       история, а не текущая беда. */
     const gone = /not found/i.test(g.error);
     return `<div class="tsys-err-row">
       <div>
         <div class="tsys-err-title">${escapeHtml(getSectionLabel(g.section))} #${escapeHtml(String(g.id))}</div>
-        <div class="tsys-err-sub">${escapeHtml(g.error)}${g.last ? ` · последний раз ${new Date(g.last).toLocaleString()}` : ''}${gone ? '. Записи нет в EN: очередь будет пытаться снова, пока задача висит.' : ''}</div>
+        <div class="tsys-err-sub">${escapeHtml(g.error)}${g.last ? ` · последний раз ${new Date(g.last).toLocaleString()}` : ''}${gone ? '. Записи больше нет в оригинале — задача снята, повторов не будет.' : ''}</div>
       </div>
       <span class="tsys-err-count">${g.count}×</span>
     </div>`;
@@ -12276,7 +12361,7 @@ function tsysRenderLangDetail(lang) {
     const local = data?.localizedCollections?.[lang]?.[section];
     const byId = new Map((Array.isArray(local) ? local : []).map((e) => [String(e.id), e]));
     for (const entry of root) {
-      const state = tsysEntryState(entry, byId.get(String(entry.id)));
+      const state = tsysEntryState(entry, byId.get(String(entry.id)), section, lang);
       if (state === 'done') continue;
       rows.push({ section, id: entry.id, title: getEntryTitle(section, entry), state });
     }
@@ -12340,11 +12425,13 @@ async function tsysRefresh() {
   const dot = tsysEl('tsysAutoDot');
   if (dot) dot.classList.add('live');
   try {
-    const [status, health] = await Promise.all([
+    const [status, health, coverage] = await Promise.all([
       tsysApi('/status').catch(() => null),
       tsysApi('/health').catch(() => null),
+      tsysApi('/coverage').catch(() => null),
     ]);
     _tsysLastStatus = status;
+    _tsysServerCoverage = coverage && coverage.ok ? coverage : null;
     tsysRenderHealth(health);
     tsysRenderQueue(status);
     tsysRenderDecisions(status);
