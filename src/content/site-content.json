@@ -30149,6 +30149,285 @@
           "draft": true,
           "previewToken": "VqyxUSuamqI0",
           "updatedAt": "2026-08-29T12:47:25.043Z"
+        },
+        {
+          "id": 30,
+          "title": "Dönüş: Ressamlar Yazdan Sonra Sonbahara Geçişi Nasıl Ölçtü",
+          "author": "Viacheslav Munister",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Yazar",
+          "date": "31 Ağu 2026",
+          "excerpt": "Işığın değiştiği üç hafta. Resimde mevsimin yakından okunması: alçak bir güneşin fiziği, Monet'nin buğday yığınlarının dönüş öncesi ve sonrası ölçülü karşılaştırması, neden sonbahar resmi en eski pigmentlerine geri getirir ve neden pastel, tüm medya arasında, bu ışığı taklit etmek yerine bu ışığı performe eder.",
+          "category": "sanat",
+          "subcategory": "Makale",
+          "tags": [
+            "resim",
+            "ışık",
+            "pastel",
+            "mevsimler"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
+          "showCover": true,
+          "order": 0,
+          "draft": true,
+          "previewToken": "a6ff891d6d8099613837af6b",
+          "publishedAt": "2026-08-31",
+          "content": [
+            {
+              "type": "text",
+              "content": "Her yıl ışık adres değiştirir. Bu yaklaşık üç hafta sürer ve bu, kimse bakmasa da olur: güneş gökyüzünde birkaç derece düşer, ışığı yere ulaşmak için havada daha uzak yol kat eder ve gölgelerde mavi olan her şey gri, sonra mor, sonra kahverengiye dönüşür. Ressamlar her zaman bu pencereyi bilmişlerdir. Bazıları tüm kariyerlerini içinde inşa etti."
+            },
+            {
+              "type": "text",
+              "content": "Bu, o dönüşü yakından okumaya çalışmak, bir ruh hali olarak değil, ölçülebilir olaylar dizisi olarak. Işık özellikle Ağustos sonundan Ekim sonuna kadar tam olarak ne yapar, bir tablonun paleti neden bu kadar daralır, bir gölgeye ne olur ve neden pastel, tüm medya arasında, mevsimi en iyi yakalar, yağla karışmış olanlardan daha iyi?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
+              "caption": "Claude Monet. Buğday Yığınları (Yaz Sonu), 1890 ile 1891. Tuval üzerine yağlı boya, 60 x 100.5 cm. Chicago Sanat Enstitüsü, Arthur M. Wood, Sr.'nin Pauline Palmer Wood anısına bağışı.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Fiziğin kısa özeti",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Üç şey aynı anda değişir ve sadece ilki açıktır. Güneşin maksimum yükselişi düşer: Paris enlemiyle yaz gündönümünde ufuk üzerinde yaklaşık 64 derece ve Ekim sonlarında yaklaşık 40 dereceye ulaşır. Daha düşük bir güneş, atmosferde daha uzun bir yol anlamına gelir ve daha uzun bir yol, kısa dalga boylarının doğrudan ışınlardan daha fazla saçılmasına neden olur. Yere inen ışık ölçülebilir şekilde daha sıcaktır ve dolaylı olarak, gökyüzünün tüm kubbesinden gelen ışık, Temmuz ayına göre orantısal olarak daha az mavi olur."
+            },
+            {
+              "type": "metin",
+              "content": "İkinci olarak, gün kısalır. Bu, takvimle ilgili bir gerçek gibi görünse de, dışarıda çalışan bir ressam için bu, malzemelerle ilgilidir. Uzun gölgeler ve sıcak renkler üreten düşük açı, Ekim ayında Temmuz ayına göre çalışma gününün daha büyük bir bölümünü kaplar. Aynı saatte, aynı boyalar kutusuyla dışarı çıkan bir ressam, sadece her seans daha fazla o ışıktan alır."
+            },
+            {
+              "type": "metin",
+              "content": "Üçüncü olarak, hava değişir. Daha serin geceler ve daha ılık toprak sabah sisi üretir; nem, parçacıkların askıda kalmasını sağlar. Sonuç, sıkıştırılmış bir ton aralığıdır: mesafeler soluklaşır, kontrast düşer ve gökyüzü doygun renk kaynağı olmaktan çıkar ve düzgün, gümüşi bir aydınlatma kaynağı haline gelir. Yaz aylarında üç veya dört düzlemi ayıran hava perspektifi, sonbaharda tüm bir vadiyi ikiye indirebilir."
+            },
+            {
+              "type": "başlık",
+              "content": "Aynı alan, iki mevsim",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "1890 ve 1891 yıllarında Monet, Giverny yakınlarındaki evinin yakınındaki tarladaki buğday yığınlarını boyadı, aynı şekillere farklı saatlerde ve farklı hava koşullarında tekrar döndü. Bu tuvallerden altısı Chicago Sanat Enstitüsü'nde bulunuyor, bu da iki konu değil, aynı konu üzerinde iki kez karşılaştırma yapmayı mümkün kılıyor, sezon hariç her şey sabit tutuldu: aynı tarla, aynı yığınlar, aynı ressam, aynı mesafe, aynı kutu."
+            },
+            {
+              "type": "text",
+              "content": "İki tanesinin yüksek çözünürlüklü reprodüksiyonlarının renklerini ölçtük. Bu, boyadan çok fotoğrafların okunmasıdır ve uyarı önemlidir: müze fotoğrafçılığı doğruluk yönünde renk yönetimiyle yapılır, ancak yine de bir yorumdur ve bir yüzyıl eski vernik tabakası her şeyi hafifçe sıcaklaştırır. Sayıların gösterebileceği şey, Monet'in pigmentinin mutlak rengi değil, aynı program altında fotoğraflanan iki tuval arasındaki farktır."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
+              "caption": "Öncesi. Buğday Yığınları (Yaz Sonu), 1890-1891, Chicago Sanat Enstitüsü",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg",
+              "caption": "Sonrası. Buğday Yığınları (Günün Sonu, Sonbahar), 1890-1891, Chicago Sanat Enstitüsü",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Yaz Sonu'nda, yüzey kabaca altıda biri yeşil, beşte biri sarı ve ochre, yedide biri turuncu ve kırmızı bandında, ve onda biri mavi ve mor olarak bölünür. Ortalama piksel, 255 ölçek üzerinde yaklaşık on üç puan daha sıcak veya soğuk olur. Bu, kelimenin tam anlamıyla dengeli bir resimdir: hiçbir renk ailesi ona sahip değildir."
+            },
+            {
+              "type": "text",
+              "content": "Gün Sonu'nda, Sonbahar'da, aynı ölçüm ayrışır. Turuncu ve kırmızı bandı yüzeyin yüzde on dörtünden yaklaşık yüzde otuz altısına yükselir. Yeşil düşer. Mavi ve mor üçte birden fazla oranla düşer. Ortalama pikselin sıcaklık eğilimi neredeyse iki katına çıkar, on üç puandan yirmi dört puana. Aynı alanın iki tuvali, ve sıcak kütle iki buçuk kat büyümüştür."
+            },
+            {
+              "type": "text",
+              "content": "O tek sayı mevsimdir. Bir ruh hali değil, okul tatillerinin bitişiyle ilgili bir anı değil: spektrumun bir parçasından diğerine yüzey alanının yeniden dağılımı, yalnızca ölçümle karanlıkta iki tuvali ayırt edebileceğiniz kadar büyük."
+            },
+            {
+              "type": "header",
+              "content": "Sarı nereden geliyor ve neden kırmızıyla aynı değil",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Botanik tam olarak ifade edilmeye değerdir, çünkü bu, ressamların hissettiği ama nadiren adını koyduğu farkı açıklar. Bir yeşil yaprak, yeşil eklenmiş olduğu için değil; klorofil baskın olduğu için yeşildir. Karotenoidler ve xantofil, sarılar ve sarı-turuncular, zaten tüm yaz boyunca yaprakta mevcuttur, maskelenmiştir. Ağaç besin maddelerini çekmeye başladığında ve klorofil üretimi durduğunda, maske kaldırılır ve sarı basitçe ortaya çıkar. Bu, çıkarma işlemiyle gelir."
+            },
+            {
+              "type": "text",
+              "content": "Kırmızılar farklı bir olaydır. Antosiyaninler, birçok türde, sonbaharda üretilir, yaprakta şekerler hapsedildiği gibi üretilirler. Bunlar yenidir. Yani, değişen yılın paleti aynı anda iki zıt süreçten oluşur: sarı ortaya çıkar, kırmızı üretilir. Tuvalde bu, davranış farkı olarak okunur. Sarılar, zaten her yerde oldukları için, yaprak kütlesi boyunca eşit şekilde yayılır; kırmızılar ise, belirli ağaçlarda, güneşli tarafta, taçta, tabandan önce lekeler halinde görünür."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb6am3359k5.jpg",
+              "caption": "Jean-Francois Millet. Saman yığınları: Sonbahar, yaklaşık 1874. Tuval üzerine yağlıboya. The Metropolitan Museum of Art, New York (Açık Erişim, CC0). Ölçümümüzde, bu yüzeyin %68.6'sı sarı ve ochre bandına düşerken, zemin gökyüzünden daha parlak görünür.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Tersine çevirme: zemin gökyüzünden daha parlak olduğunda",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Belirli bir sonbahar etkisi vardır ki yaz neredeyse hiç üretmez. Millet'in Haystacks'inin üst çeyreğini ölçün ve kırmızı, yeşil ve mavi olarak yaklaşık 105, 109, 97 ortalamasını alın. Alt yarısını ölçün ve 131, 104, 61 elde edin. Zemin gökyüzünden daha açık ve çok daha sıcaktır. Bir yaz manzarasında bu neredeyse imkansızdır: gökyüzü ışık kaynağıdır ve resimdeki en parlak şeydir. Sonbaharda, bir dağıtıcı gibi davranan kapalı bir hava altında, kesilmiş saman tarlası ve kuru saplar alanı en parlak yüzey haline gelir."
+            },
+            {
+              "type": "text",
+              "content": "Ressamlar bunu sessizce kullanır. Bu, onlara aşağıdan aydınlatılmış bir resim sağlar, aslında, gözlerin ufuk çizgisine tırmanmak yerine yere odaklanmasıyla. Ayrıca eski bir kompozisyonel sorunu çözer: figür artık parlak bir gökyüzüyle rekabet etmek zorunda değildir ve parlak bir zeminde koyu bir şekil olarak çizilebilir, parlak bir şekil yerine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb4hk0rr7fn.jpg",
+              "caption": "George Inness. After a Summer Shower, 1894. Yağlı boya tuval üzerine. Chicago Sanat Enstitüsü, Edward B. Butler Koleksiyonu. Yaz ölçüldü: yüzeyin %48.1'i yeşil bantta ve turuncu ve kırmızıda tek bir okuma yok.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Palet kapanıyor",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Jean-Charles Cazin'in Ekim Günü aşırı bir örnektir ve bu nedenle açıklayıcıdır. Aynı şekilde ölçüldüğünde, resim hiç yeşil içermemektedir: yüzeyin %54'ü sarı ve ochre bandında, %46'sı turuncu ve kırmızıda yer alır ve kalan kısım hiçbir şeye yuvarlanır. Sıcak eğilimi 61 puandır, Monet'in geç yazına neredeyse beş katıdır."
+            },
+            {
+              "type": "metin",
+              "content": "İşte kapanış paletinin nasıl göründüğüdür. Ve kapanırken hangi pigmentlerin ayakta kaldığını fark etmek değerli. Ochre, ham ve yakılmış sienna, umber, Hint kırmızısı: topraklar. Bunlar insan kaydındaki en eski pigmentlerdir, yerden öğütülmüş, on binlerce yıl önce kimsenin panelden daha pahalı olmayan maviye sahip olmadan önce kullanılmıştır. Başka bir deyişle, sonbahar, resmi ilk paletine geri getirir. Mevsim, tasvir ettiği malzemenin renkleriyle boyanmıştır."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb3eugamqxr.jpg",
+              "caption": "Jean-Charles Cazin. October Day, 1890 ile 1893 arasında. Tuval üzerine yağlıboya, 38.4 x 46.7 cm. Chicago Sanat Enstitüsü, Henry Field Anı Koleksiyonu. Ölçüldü: yüzeyde hiç yeşil yok.",
+              "align": "merkez"
+            },
+            {
+              "type": "başlık",
+              "content": "Pastel: tozdan yansıyan ışık",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Eğer bu üç haftalık pencereden bir ortam varsa, o pastel olur ve sebep duygusal değil, fiziksel olur. Yağlı boya, bir film içinde askıya alınmış pigmenttir. Işık filme girer, içinde zıplar ve geri çıkar, yol boyunca kısmen emilir: bu, yağa derinlik ve verniklenme kapasitesi kazandırır. Pastel, neredeyse hiç bağlayıcı içermeyen pigmenttir, biraz sakız, çubuğa sıkıştırılmıştır. Kağıt üzerinde, hava arasında serbest parçacıklar olarak durur. Işık bir ortamdan geçmez; kuru tanelerin yüzeylerinden saçılır ve hemen her yöne geri yansır."
+            },
+            {
+              "type": "text",
+              "content": "Sonuç, neredeyse hiç yansıtıcı bileşeni olmayan, dağınık, mat, hafif tozlu bir yansıma olur. Tam optik anlamda, bu, bir noktadan değil, bir dağıtıcıdan ziyade bir dağıtıcı olan kapalı bir sonbahar gökyüzüyle aynı davranıştır. Pastel o ışığı taklit etmez. Onu gerçekleştirir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb51pnu7jkt.jpg",
+              "caption": "Odilon Redon. Flower Clouds, yaklaşık 1903. Pastel, dokuma ve fırça darbeleriyle, mavi-gri dokuma kağıt üzerinde, çok renkli lifler kahverengiye dönüştürülmüş. Art Institute of Chicago, Bay ve Bayan Martin A. Ryerson Koleksiyonu'nun önceki vasiyetnamesiyle.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "İkinci, daha ince bir sebep daha var. Bir pastel, yağın üzerine boyama yaparak tamir edilemez. Bir vernik, kurumuş bir tabakanın üzerinde scumble, turpentin ile kaldırma yoktur. Geçişler, tozun tozun üzerine konması ve stumping, yani, pigmentin kağıdın dişine sürtülmesiyle inşa edilmelidir. Bir renkten diğerine geçiş, aşındırma ile yapılır. Bir konunun tüm karakteri iki paletin arasında kademeli bir geçiş ise, yöntem ve motif aynı jesttir."
+            },
+            {
+              "type": "metin",
+              "content": "Ve işte kağıt. Yağlı boya ile, zemin resmin altında kaybolur. Pastel ile, kağıdın kendi tonu fırça darbeleri arasında görünür ve orta değerin görevini görür, bu da sanatçının bir işaret yapmadan önce ışığın rengini seçtiği anlamına gelir. Sanat Enstitüsü'nün katalog girişleri bu seçimleri alışılmadık bir hassasiyetle kaydeder: Eugene Boudin'in Seaside, Port of Honfleur, yaklaşık 1860, mavi dokuma kağıt üzerinde pastel; Alfred Sisley'in A Corner of Moret-sur-Loing, 1895, gri dokuma kağıt üzerinde mavi liflerle pastel ve gölgelik; Mary Cassatt'ın Sleepy Nicolle, yaklaşık 1900, mavi-gri dokuma kağıt üzerinde pastel."
+            },
+            {
+              "type": "başlık",
+              "content": "İşlerin kendi sonbaharı vardır",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "O katalog satırlarını sonuna kadar oku ve sessizce olağanüstü bir şey ortaya çıkar. Sisley'in mavi lifli gri kağıdı, kahverengiye dönmüş olarak kaydedilmiştir. Cassatt'ın mavi-gri kağıdı solmuş ve kahverengiye dönmüş olarak kaydedilmiştir. Redon'un çok renkli liflerle mavi-gri kağıdı, kahverengiye dönmüş olarak kaydedilmiştir."
+            },
+            {
+              "type": "metin",
+              "content": "Resmin serin yarısı, sanatçının ışığın soğukluğunu taşıması için seçtiği kısım, gitmiş olan kısımdır. Kağıt sararır: lignin oksitlenir, boyut bozulur, mavi boyalar odadaki en az ışığa dayanıklı maddeler arasındadır. Bu nedenle bu eserler, aynı yönde, bir yüzyıl boyunca, arşivde yazdan sonbahara doğru hareket etmiştir. Bugün bir on dokuzuncu yüzyıl pastelini incelediğimizde, onun yapıldığından daha sıcak görüyoruz. Tanımladığımız mevsim, onu tanımlayan nesnelere de yansımıştır."
+            },
+            {
+              "type": "text",
+              "content": "Bu bir konservatör için küçük bir dipnot değildir. Resimlerin nasıl okunması gerektiğini değiştirir. Şimdi sıcak bir Ekim öğleden sonrası olarak okunan Sisley pastel bir zamanlar soğuk olarak çizilmiş olabilir, gri tonları artık var olmayan mavi bir destek tarafından tutuluyordu. Solmuş bir pastelin ölçüsü, aynı anda iki olayı ölçmektir: sanatçının gördüğü ışık ve yüzyıl."
+            },
+            {
+              "type": "header",
+              "content": "Altın sonbahar ve onu tutan şey",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Isaac Levitan'ın 1895 Altın Sonbaharı, Doğu Avrupa'daki çoğu kişinin aklında sonbahar kelimesiyle birlikte taşıdığı resimdir ve bu öğreticidir çünkü sadece sarı bir tablo değildir. Ölçümümüz, yüzeyin %52'sinin sarı ve ochre bandında olduğunu buluyor, beklendiği gibi, ancak aynı zamanda %11'inin mavi ve mor renklerde olduğunu, nehir ve üst gökyüzünde yoğunlaştığını ve ortalama 225, 233, 232 olan çok açık bir üst decil olduğunu, neredeyse nötr beyazdır."
+            },
+            {
+              "type": "text",
+              "content": "İşte formül bu. Bir ochre kütlesi, kahverengiden çok ochre olarak okunması için soğuk bir vurguya ihtiyaç duyar ve gündüz ışığı olarak okunması için yüksek, neredeyse nötr bir ışığa ihtiyaç duyar. Mavi nehir kaldırıldığında ve resim sıcak bir pus haline gelir. Bu yüzden mevsim kötü resmedilmesi çok kolaydır: sarılar çaba gerektirmeden gelir, ölçülü olmak ise gelmez."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb5o5ro1rmu.jpg",
+              "caption": "Isaac Levitan. Altın Sonbahar, 1895. Tuval üzerine yağlı boya. Tretyakov Devlet Galerisi, Moskova. Oker kütlesi hafif olarak okunur çünkü yüzeyin yüzde on birinde hâlâ soğukluk vardır.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Işık Olmadan Sonbahar",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Yukarıdaki her şey, sonbaharın bir aydınlatma durumu olduğunu varsayar. Bir gelenek buna karşı çıkar. Tosa Mitsuoki'nin Sonbahar Akçaağaçları ve Şiir Kağıtları, yaklaşık 1675, mürekkep, renkler, altın yaprak ve altın tozu ile ipek üzerine altı panelli bir ekran, hiç atmosfer içermez. Güneş açısı, hava perspektifi veya gölge yoktur. Zemin altındır, yani ışık bir olay değil, bir malzemedir ve resmin her yerinde aynıdır."
+            },
+            {
+              "type": "text",
+              "content": "Ölçüldüğünde, ekran yüzde 83.5 sarı ve oker içerir, bu tüm set içindeki en yüksek yoğunluktur, neredeyse hiçbir nötr yoktur. Yine de kimse buna ışık çalışması diyemez. Buradaki sonbahar, türler ve gelenekle sinyallenir: akçaağaç yaprakları ve dallara bağlanmış şiir kağıtları, onları görmek için gelen insanlar tarafından. Mevsim, gökyüzünün ölçümünden çok, altın bir yüzeyde kaydedilen bir sosyal etkinliktir."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb3zk5ljp9k.jpg",
+              "caption": "Tosa Mitsuoki. Sonbahar Akçaağaçlarıyla Şiir Yaprakları, yaklaşık 1675. Altı panelli ekran, bir çiftin biri. Mürekkep, renkler, altın yaprak ve altın tozu ipek üzerinde, 144 x 286 cm. Chicago Sanat Enstitüsü, Kate S. Buckingham Bağış.",
+              "align": "merkez"
+            },
+            {
+              "type": "metin",
+              "content": "Bu iki geleneği yan yana tutmak, Avrupa on dokuzuncu yüzyılın aslında ne yaptığını görmenin en hızlı yoludur. Bir mevsimin ışık kalitesi olduğunu ve mevsimi boyamak için havayı boyadığını kararlaştırmıştı. Bu bir seçimdir, gerçek değil, ve sadece yaklaşık iki yüz yaşındadır."
+            },
+            {
+              "type": "başlık",
+              "content": "Yol nereye gider",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Chicago grubundaki son yığın, ilk ikisinin sorduğu soruya cevap verir. Kar altında Buğday Yığını Ölç ve sıcak eğilim negatife gider: eksi dört puan, bu set içindeki tek resim, ortalama pikselin ısısından daha soğuk olduğu. Mavi ve mor yüzeyin dörtte birini kaplar. Yeşil tamamen gitmiş, yüzde birin onda biri seviyesine düşmüş. Turuncu ve kırmızı bant yüzde onbeş oranında hayatta kalmış ve neredeyse tamamen yığının içinde kalmıştır."
+            },
+            {
+              "type": "text",
+              "content": "İşte dizinin sonu: sıcaklık alandan çekilir ve içinde duran tek yapılmış nesneye yoğunlaşır. Sonbahar, bu çekilmenin görülebilir olduğu ve hâlâ tersine çevrilebilecekmiş gibi görünen aralıktır. Bir manzaranın her iki paleti aynı anda içerdiği tek yıl zamanıdır, bu yüzden tam da bu yüzden bir ressamın üç haftalık ilgisini ve bütün bir tuval serisini hak eder."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb2so4bi36s.jpg",
+              "caption": "Claude Monet. Buğday yığını, 1890 ile 1891. Tuval üzerine yağlı boya. Chicago Sanat Enstitüsü, Searle Family Trust tarafından sağlanan fonlarla satın alınmıştır. Sıcak kütle, yığının içine çekilmiştir.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Bu hafta nasıl bakmalı",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Herhangi bir sonbahar resmi ve dışarıdaki sokağa karşı kontrol edilmesi gereken dört şey. En parlak yüzey nerede: hâlâ gökyüzü mü, yoksa zaten yer mi? Gölgelerin rengi nedir: mavi, bu yüksek güneş ve güçlü gökyüzü dolumu anlamına mı geliyor, yoksa gri ve mor, bu ışığın daha alçak ve daha sıcak bir kaynaktan geldiğini mi gösteriyor? Kaç mesafe düzlemi hayatta kalmış: üç mü yoksa iki mi? Ve sarı kütleye eşit şekilde yayılmış mı, yoksa kırmızılar yamalar halinde mi geliyor, bu da ağaçların sürecin ne kadar ilerlediğini gösterir."
+            },
+            {
+              "type": "metin",
+              "content": "Mevsim kısadır ve ölçülebilir. Monet bunu tutmak için yirmi beş tuvali ihtiyaç duydu. Diğerlerimiz yürüyüş ve doğru sorularla idare edebilir."
+            },
+            {
+              "type": "başlık",
+              "content": "Yöntem ve kaynaklar hakkında not",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Burada alıntılanan renk oranları, yüksek çözünürlüklü açık erişimli çoğaltımlardan, azaltılmış boyutta örneklenmiş, renk ailesine gruplanmış piksellerle ve görüntü yüzeyinin payı olarak rapor edilmiştir. Şekiller, boyadan çok, çoğaltımları tanımlar ve aynı set içindeki görüntüler arasında karşılaştırma yapmak amacıyla tasarlanmıştır, mutlak renk verisi olarak değil. Chicago Sanat Enstitüsü ve Metropolitan Sanat Müzesi'nden eserler, açık erişim programları kapsamında çoğaltılmıştır; Levitan'ın Golden Autumn'ı kamu malıdır. Ortam ve destek tanımlamaları, solma kayıtları dahil olmak üzere, tutma kurumlarının kendi katalog girişlerinden alıntılanmıştır."
+            }
+          ],
+          "updatedAt": "2026-08-31T05:31:51.746Z"
         }
       ],
       "reviews": [
