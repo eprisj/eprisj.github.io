@@ -54,6 +54,27 @@ function escapeAttr(str) {
   return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
+/* Пошуковий сніпет — не те саме поле, що редакційний вступний абзац.
+ *
+ * article.excerpt пишеться як перший абзац під заголовком на самій сторінці:
+ * там йому природно бути на чотириста-п'ятсот символів. У <meta
+ * name="description">, og:description і twitter:description той самий
+ * текст лягав без жодного обрізання — Google різав його на середині слова
+ * десь у районі 155-160 символів (а частіше просто ігнорував і сам
+ * переписував сніпет з тіла статті, тобто вся ретельно написана фраза йшла
+ * в нікуди), а картка в Telegram/Twitter показувала абзац, обірваний на
+ * середині речення. Structured data (NewsArticle.description) лишає повний
+ * excerpt — там довжина не карається так само жорстко і опис справді описує
+ * статтю, а не намагається вміститись в один рядок видачі. */
+function metaDescription(text, max = 155) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const sentence = clean.slice(0, max + 1).match(/^.*[.!?](?=\s|$)/);
+  if (sentence && sentence[0].length >= max * 0.55) return sentence[0].trim();
+  const cut = clean.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(' '))}\u2026`;
+}
+
 function safeJson(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }
@@ -233,7 +254,9 @@ let template = indexHtml
 for (const article of publicArticles) {
   const slug = generateSlug(article.title);
   const imageUrl = resolveImage(article);
-  const excerpt = escapeAttr(article.excerpt);
+  // Повний текст іде тільки в structured data (нижче, articleSchema.description);
+  // усе, що показується як сніпет чи картка, обрізане metaDescription().
+  const excerpt = escapeAttr(metaDescription(article.excerpt));
   const title = escapeAttr(article.title);
   const url = `${SITE_ORIGIN}/article/${slug}/`;
   const articleSchema = {
@@ -328,7 +351,7 @@ for (const review of publicReviews) {
   const slug = generateSlug(review.title || '');
   const imageUrl = resolveImage(review);
   const summary = review.verdict || reviewPlainBody(review).slice(0, 200);
-  const excerpt = escapeAttr(summary);
+  const excerpt = escapeAttr(metaDescription(summary));
   const title = escapeAttr(review.title || '');
   const url = `${SITE_ORIGIN}/review/${slug || review.id}/`;
   const reviewSchema = {
