@@ -20874,32 +20874,31 @@
         },
         {
           "id": 30,
-          "title": "Wo die Wärme lebt: Wie zwei Traditionen den Übergang vom Sommer zum Herbst maßen",
+          "title": "Wo die Wärme lebt: Wie zwei Traditionen die Wende vom Sommer zum Herbst maßen",
           "author": "Viacheslav Munister",
           "authorId": "author-1784732936927-kw554",
           "role": "Autor",
-          "date": "31. Aug. 2026",
-          "excerpt": "Herbst macht das Licht nicht wärmer. Gemessen regionenweise zeigen zwei Leinwände desselben Feldes, dass der Himmel dort bleibt, wo er war, während der Boden sich um siebzehn Punkte erwärmt, und die Schatten, die den ganzen Sommer mit blauem Himmelslicht gefüllt waren, sich in die wärmsten Passagen im Bild verwandeln. Mit drei Pastellen, bei denen das Medium still gehalten wird und nur die Jahreszeit sich bewegt. Und eine zweite Hälfte, in der Herbst überhaupt kein Licht ist: ein Kalender, der es am siebten August erklärt, eine Jahreszeit, getragen von einem Gras, und einem Mond ohne Horizont, aus dem er aufsteigen kann.",
-          "category": "kunst",
+          "date": "31. August 2026",
+          "excerpt": "Der Herbst macht das Licht nicht wärmer. Region für Region gemessen, zeigen zwei Leinwände desselben Feldes, wie der Himmel dort bleibt, wo er war, während der Boden siebzehn Grad warm wird und die Schatten, die den ganzen Sommer über mit blauem Oberlicht gefüllt sind, zu den wärmsten Passagen im Bild werden. Mit drei Pastellen, in denen das Medium stillsteht und sich nur die Jahreszeit bewegt. Und eine zweite Hälfte, in der der Herbst überhaupt kein Licht ist: ein Kalender, der ihn am siebten August ankündigt, eine Jahreszeit, die von einem Gras getragen wird, und ein Mond ohne Horizont, über den er aufgehen kann.",
+          "category": "Kunst",
           "subcategory": "Aufsatz",
           "tags": [
-            "malerei",
-            "licht",
-            "pastell",
-            "jahreszeiten",
-            "japan"
+            "Malerei",
+            "Licht",
+            "Pastell",
+            "Jahreszeiten",
+            "Japan"
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
           "showCover": true,
           "order": 0,
-          "draft": true,
           "previewToken": "a6ff891d6d8099613837af6b",
           "publishedAt": "2026-08-31",
           "content": [
             {
               "type": "text",
-              "content": "Die übliche Art, den Herbst in der Malerei zu beschreiben, ist zu sagen, dass das Licht warm wird. Es ist die falsche Beschreibung, und eine Reihe von Messungen, die aus den Gemälden selbst genommen wurden, zeigt warum. Das Licht wird nicht warm. Der <em>Boden</em> tut es, und sobald er es tut, übernimmt er die Aufgabe, die der Himmel den ganzen Sommer über gemacht hatte. Was sich ändert, ist nicht die Farbe des Lichts, sondern die Adresse der Wärme im Bild."
+              "content": "Die übliche Art, den Herbst in der Malerei zu beschreiben, ist zu sagen, dass das Licht warm wird. Es ist die falsche Beschreibung, und eine Reihe von Messungen, die aus den Gemälden selbst genommen wurden, zeigen warum. Das Licht wird nicht warm. Der <em>Boden</em> tut es, und sobald er es tut, übernimmt er die Aufgabe, die der Himmel den ganzen Sommer über gemacht hatte. Was sich ändert, ist nicht die Farbe des Lichts, sondern die Adresse der Wärme im Bild."
             },
             {
               "type": "text",
@@ -20918,24 +20917,24 @@
             },
             {
               "type": "text",
-              "content": "Im Jahr 1890 und 1891 malte Monet die Getreidestapel auf einem Feld wenige Minuten von seinem Haus in Giverny entfernt, und kehrte zu denselben Formen zu unterschiedlichen Zeiten und bei unterschiedlichem Wetter zurück. Sechs dieser Leinwände befinden sich im Art Institute of Chicago. Das ermöglicht es, nicht zwei Motive zu vergleichen, sondern ein Motiv zweimal, wobei alles außer der Jahreszeit stillsteht: dasselbe Feld, dieselben Stapel, derselbe Maler, derselbe Abstand, derselbe Farbtopf."
+              "content": "Im Jahr 1890 und 1891 malte Monet die Getreideschober auf einem Feld wenige Minuten von seinem Haus in Giverny entfernt, und kehrte zu denselben Formen zu unterschiedlichen Zeiten und bei unterschiedlichem Wetter zurück. Sechs dieser Leinwände befinden sich im Art Institute of Chicago. Das ermöglicht es, nicht zwei Motive zu vergleichen, sondern ein Motiv zweimal, wobei alles außer der Jahreszeit stillsteht: dasselbe Feld, dieselben Schober, derselbe Maler, derselbe Abstand, derselbe Farbtopf."
             },
             {
               "type": "text",
-              "content": "Wir haben vier Bereiche in jeder Leinwand gemessen: einen Streifen Himmel oben, den Baumstreifen am Horizont, das Vordergrundfeld und den Körper des großen Stapels. Das Maß ist einfach, der rote Kanal minus der blaue Kanal, was ein brauchbarer Proxy dafür ist, ob eine Passage warm oder kühl wirkt. Positiv bedeutet warm."
+              "content": "Wir haben vier Bereiche in jeder Leinwand gemessen: einen Streifen Himmel oben, den Baumstreifen am Horizont, das Vordergrundfeld und den Körper des großen Schobers. Das Maß ist einfach, der rote Kanal minus der blaue Kanal, was ein brauchbarer Proxy dafür ist, ob eine Passage warm oder kühl tendiert. Positiv bedeutet warm."
             },
             {
               "type": "text",
-              "content": "<strong>Himmel:</strong> minus 3,9 im Spätsommer, plus 1,6 im Herbst. Fast keine Bewegung.<br><strong>Baumlinie:</strong> plus 22,4, dann plus 10,7. Die Entfernung wird <em>kühler</em>, nicht wärmer.<br><strong>Vordergrundfeld:</strong> plus 1,0, dann plus 18,2. Ein Schwung von siebzehn Punkten.<br><strong>Der große Stapel:</strong> plus 36,9, dann plus 47,6."
+              "content": "<strong>Himmel:</strong> minus 3,9 im Spätsommer, plus 1,6 im Herbst. Fast keine Bewegung.<br><strong>Baumlinie:</strong> plus 22,4, dann plus 10,7. Die Entfernung wird <em>kühler</em>, nicht wärmer.<br><strong>Vordergrundfeld:</strong> plus 1,0, dann plus 18,2. Ein Schwank von siebzehn Punkten.<br><strong>Der große Schober:</strong> plus 36,9, dann plus 47,6."
             },
             {
               "type": "text",
-              "content": "Der Himmel ist nicht die Variable. Das Feld ist es. Zwischen den beiden Leinwänden bewegt sich der Boden von neutral zu deutlich warm, während der Himmel dort bleibt, wo er war, und der Horizont tatsächlich blauer wird, da dicker Luft die entfernten Bäume zurückdrückt. Was auch immer die Jahreszeit tut, sie tut es auf Bodenhöhe."
+              "content": "Der Himmel ist nicht die Variable. Das Feld ist es. Zwischen den beiden Leinwänden bewegt sich der Boden von neutral zu deutlich warm, während der Himmel dort bleibt, wo er war, und der Horizont tatsächlich blauer wird, da dichtere Luft die entfernten Bäume zurückdrückt. Was auch immer die Jahreszeit tut, sie tut es auf Bodenhöhe."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg",
-              "caption": "Claude Monet. Stacks of Wheat (End of Day, Autumn), 1890 bis 1891. Öl auf Leinwand, 65,8 x 101 cm. Art Institute of Chicago, Mr. and Mrs. Lewis Larned Coburn Memorial Collection.",
+              "caption": "Claude Monet. Stacks of Wheat (End of Day, Autumn), 1890 bis 1891. Öl auf Leinwand, 65,8 mal 101 cm. Art Institute of Chicago, Mr. and Mrs. Lewis Larned Coburn Memorial Collection.",
               "align": "center"
             },
             {
@@ -20945,27 +20944,27 @@
             },
             {
               "type": "text",
-              "content": "Schneiden Sie den identischen Ausschnitt aus beiden Leinwänden aus, den Fuß der großen Heuhaufen und das Feld, das davon wegführt, und vergrößern Sie ihn. Hier hört die Argumentation auf, eine Tabelle von Zahlen zu sein."
+              "content": "Schneiden Sie den identischen Ausschnitt aus beiden Leinwänden aus, den Fuß des großen Haufens und das Feld, das davon wegführt, und vergrößern Sie ihn. Hier hört die Argumentation auf, eine Tabelle von Zahlen zu sein."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgssxdiwdvy1y.jpg",
-              "caption": "Ende des Sommers, Detail. Das Stoppelfeld ist aus blauen, violetten und türkisfarbenen Strichen gebaut, mit rosa und gelb-grünen Flecken zwischen ihnen.",
+              "caption": "Ende des Sommers, Detail. Das Stoppelfeld besteht aus blauen, violetten und türkisfarbenen Strichen mit rosa und gelbgrünen Flecken dazwischen.",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Im Sommer ist das Feld im Detail blau. Nicht bläulich: im unteren Streifen dieses Erntefeldes sitzen 26,5 Prozent der Oberfläche im blauen und violetten Bereich und nur 13,5 Prozent im rosa und roten Bereich. Das Stroh wird in kurzen gehackten Strichen dargestellt, die in drei oder vier Richtungen verlaufen, jede eine eigene Entscheidung, wobei die Leinwand zwischen ihnen atmet. Der Stapel sitzt auf diesem kühlen Boden als warmes Objekt, und der Kontrast zwischen ihnen ist das Thema."
+              "content": "Im Sommer ist das Feld im Detail blau. Nicht bläulich: im unteren Streifen dieses Erntefeldes sitzt 26,5 Prozent der Oberfläche im blauen und violetten Bereich und nur 13,5 Prozent im rosa und roten. Das Stroh wird in kurzen gehackten Strichen dargestellt, die in drei oder vier Richtungen verlaufen, jede eine eigene Entscheidung, wobei die Leinwand zwischen ihnen atmet. Der Stapel sitzt auf diesem kühlen Boden als warmes Objekt, und der Kontrast zwischen ihnen ist das Thema."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgssxxm2w54lw.jpg",
-              "caption": "Ende des Tages, Herbst, Detail desselben Abschnitts. Blau ist auf 0,6 Prozent des Streifens gefallen; rosa und rot sind auf 37,2 Prozent gestiegen.",
+              "caption": "Ende des Tages, Herbst, Detail desselben Abschnitts. Blau ist auf 0,6 Prozent des Streifens gefallen; rosa und rot sind auf 37,2 gestiegen.",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Im Herbst ist das Blau verschwunden. Sechs Zehntel eines Prozents dieses gleichen Streifens sind noch blau oder violett, gegenüber 37,2 Prozent rosa und rot. Die Handhabung hat sich mit ihr verändert: die Striche sind länger, mehr horizontal gezogen, und die Farbe ist zu einer kontinuierlichen Kruste geworden, anstatt eines Netzes aus einzelnen Markierungen. Der Stapel und das Feld haben jetzt die gleiche Temperatur, plus 47,6 gegenüber plus 18,6, und das Bild hat den Kontrast verloren, der die Sommerfassung organisierte. Es muss durch etwas anderes organisiert werden, und Monet organisiert es nach Wert, die dunkle Masse des Stapels gegen ein blasses Feld, und nach der einen verbleibenden kalten Note entlang des Baumhains."
+              "content": "Im Herbst ist das Blau verschwunden. Sechs Zehntel eines Prozents dieses gleichen Streifens sind noch blau oder violett, gegenüber 37,2 Prozent rosa und rot. Die Handhabung hat sich damit verändert: die Striche sind länger, mehr horizontal gezogen, und die Farbe ist zu einer kontinuierlichen Kruste geworden, anstatt eines Netzes aus einzelnen Markierungen. Der Stapel und das Feld haben jetzt die gleiche Temperatur, plus 47,6 gegen plus 18,6, und das Bild hat den Kontrast verloren, der die Sommerfassung organisierte. Es muss durch etwas anderes organisiert werden, und Monet organisiert es nach Wert, die dunkle Masse des Stapels gegen ein blasses Feld, und nach der einen verbleibenden kalten Note entlang des Baumhains."
             },
             {
               "type": "header",
@@ -20974,15 +20973,15 @@
             },
             {
               "type": "text",
-              "content": "Der Mechanismus ist nicht mysteriös, sobald die Zahlen auf den Boden zeigen. Jeder Schatten wird beleuchtet von dem, was der Himmel und die Umgebung hineinreflektieren. Im Hochsommer, mit einer hohen Sonne und einer großen Fläche klaren Himmels, ist das dominierende Fülllicht Tageslicht, das blau ist, und die Schatten werden blau. Das ist die physikalische Grundlage der ganzen impressionistischen Gewohnheit, violette Schatten auf einem grünen Feld zu malen. Es ist kein stilistischer Tick; es ist eine Messung."
+              "content": "Der Mechanismus ist nicht mysteriös, sobald die Zahlen auf den Boden zeigen. Jeder Schatten wird beleuchtet von dem, was der Himmel und die Umgebung hineinreflektieren. Im Hochsommer, mit einer hohen Sonne und einer großen Fläche klaren Himmels, ist das dominierende Fülllicht das Himmellicht, das blau ist, und die Schatten werden blau. Das ist die physikalische Grundlage der ganzen impressionistischen Gewohnheit, violette Schatten auf einem grünen Feld zu malen. Es ist kein stylistisches Tick; es ist eine Messung."
             },
             {
               "type": "text",
-              "content": "Bis Ende Oktober haben sich zwei Dinge verändert. Der Himmel ist häufiger ein Diffusor als eine Quelle, eine gleichmäßige graue Decke ohne starke Richtungsstrahlung und ohne starkes Blau. Und der Boden unter allem hat sich in einen enormen warmen Reflektor verwandelt: trockener Stoppeln, fallende Blätter, nackter Boden, alles ockerfarben. Das sekundäre Licht in der Landschaft hört auf, blau zu sein, und wird orange. Der Schatten, der nichts anderes als sekundäres Licht ist, wärmt sich entsprechend auf."
+              "content": "Bis Ende Oktober haben sich zwei Dinge verändert. Der Himmel ist häufiger ein Diffusor als eine Quelle, eine gleichmäßige graue Decke ohne starke Richtungsstrahlung und ohne starkes Blau. Und der Boden unter allem hat sich in einen enormen warmen Reflektor verwandelt: trockener Stoppeln, fallende Blätter, nackte Erde, alles ockerfarben. Das sekundäre Licht in der Landschaft hört auf, blau zu sein, und wird orange. Der Schatten, der nichts anderes als sekundäres Licht ist, wärmt sich entsprechend auf."
             },
             {
               "type": "text",
-              "content": "Gemessen über das gesamte Set ist diese Umkehrung das konsistenteste, was wir gefunden haben. In Boudins Sommerhimmel-Studie ist das dunkelste Fünftel des Bildes 24,8 Punkte <em>kühler</em> als neutral und das hellste Fünftel ist 11,4 Punkte wärmer: eine Lücke von 36 Punkten in der Lehrbuchrichtung. Im Oktober-Fluss von Lhermitte ist die Beziehung umgekehrt, die Schatten sind wärmer als die Lichter um 45 Punkte. Levitan's Golden Autumn: umgekehrt um 20. Monets eigene zwei Gemälde bewegen sich von einer Lücke von 0,4 zu einer Lücke von 7,6 in die gleiche Richtung."
+              "content": "Gemessen über das gesamte Set ist diese Umkehrung das konsistenteste, was wir gefunden haben. In Boudins Sommerhimmel-Studie ist das dunkelste Fünftel des Bildes 24,8 Punkte <em>kühler</em> als neutral und das hellste Fünftel ist 11,4 Punkte wärmer: eine Lücke von 36 Punkten in der Lehrbuchrichtung. Im Lhermitte-Fluss im Oktober ist die Beziehung umgekehrt, die Schatten sind 45 Punkte wärmer als die Lichter. Levitan's Golden Autumn: umgekehrt um 20. Monets eigene zwei Gemälde bewegen sich von einer Lücke von 0,4 zu einer Lücke von 7,6 in die gleiche Richtung."
             },
             {
               "type": "quote",
@@ -20995,16 +20994,16 @@
             },
             {
               "type": "text",
-              "content": "Herbst wird gewöhnlich als gedämpft bezeichnet, und die Gemälde widersprechen. Die mittlere Sättigung im späten Sommerbild von Monet beträgt 0.169; im Herbstbild sind es 0.204. Beim neunzehnten Perzentil, also im intensivsten zehnten des Oberflächenbereichs, sind die Figuren 0.312 und 0.372. Das Herbstbild ist das stärker gesättigte der beiden um ungefähr ein Fünftel."
+              "content": "Herbst wird gewöhnlich als gedämpft bezeichnet, und die Gemälde widersprechen. Mittlere Sättigung im Monet-Spätsommer-Leinwand ist 0.169; im Herbst-Leinwand ist sie 0.204. Beim neunzigsten Perzentil, das heißt im intensivsten zehnten des Oberflächenbereichs, sind die Figuren 0.312 und 0.372. Das Herbstbild ist das stärker gesättigte der beiden um ungefähr ein Fünftel."
             },
             {
               "type": "text",
-              "content": "Was tatsächlich eingeschränkt wird, ist der Farbtonbereich, nicht die Intensität. Die Palette schließt sich zu einem kleineren Bogen des Farbkreises und arbeitet dann härter darin. Jean-Charles Cazin's October Day ist der Grenzfall: gemessen über die gesamte Oberfläche enthält es kein Grün, 54 Prozent Gelb und Ocker, 46 Prozent Orange und Rot, und eine warme Tendenz von 61 Punkten, fünfmal so viel wie Monet's späten Sommer. Es ist kein ruhiges Bild. Es ist ein lautes Bild, gemacht aus drei Farben."
+              "content": "Was tatsächlich eingeschränkt wird, ist der Farbtonbereich, nicht die Intensität. Die Palette schließt sich zu einem kleineren Bogen des Farbkreises und arbeitet dann härter darin. Jean-Charles Cazin's October Day ist der Grenzfall: gemessen über die gesamte Oberfläche enthält es kein Grün, 54 Prozent Gelb und Ocker, 46 Prozent Orange und Rot, und eine warme Tendenz von 61 Punkten, fünfmal so viel wie Monet's Spätsommer. Es ist kein ruhiges Bild. Es ist ein lautes Bild, gemacht aus drei Farben."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgsb3eugamqxr.jpg",
-              "caption": "Jean-Charles Cazin. October Day, 1890 bis 1893. Öl auf Leinwand, 38,4 mal 46,7 cm. Art Institute of Chicago, Henry Field Memorial Collection. Überall auf der Oberfläche kein Grün.",
+              "caption": "Jean-Charles Cazin. October Day, 1890 bis 1893. Öl auf Leinwand, 38,4 mal 46,7 cm. Art Institute of Chicago, Henry Field Memorial Collection. Über die Oberfläche ist kein Grün zu sehen.",
               "align": "center"
             },
             {
@@ -21018,11 +21017,11 @@
             },
             {
               "type": "text",
-              "content": "Ein grünes Blatt ist nicht grün, weil Grün hinzugefügt wurde. Es ist grün, weil Chlorophyll dominant ist, und die Carotinoide und Xanthophylle, die die Gelben und Gelb-Orangen geben, den ganzen Sommer über im Inneren des Blattes sitzen, verdeckt. Wenn der Baum beginnt, Nährstoffe zurückzuziehen und die Chlorophyllproduktion stoppt, hebt sich die Maske und das Gelb wird sichtbar. Es entsteht durch Subtraktion."
+              "content": "Ein grünes Blatt ist nicht grün, weil Grün hinzugefügt wurde. Es ist grün, weil Chlorophyll dominant ist, und die Carotinoide und Xanthophylle, die die Gelb- und Gelb-Orange-Töne verleihen, den ganzen Sommer über im Blatt sitzen, maskiert. Wenn der Baum beginnt, Nährstoffe zurückzuziehen und die Chlorophyllproduktion stoppt, hebt sich die Maske und das Gelb wird sichtbar. Es entsteht durch Subtraktion."
             },
             {
               "type": "text",
-              "content": "Die Rottöne sind ein anderes Ereignis. Bei vielen Arten werden Anthocyane im Herbst hergestellt, neu im Blatt, während die Zucker dort durch das Schließen der Gefäßkanäle eingeschlossen werden. So stammen die beiden Hälften der Herbstpalette aus entgegengesetzten Prozessen, eine das Entmaskieren und die andere die Produktion, und das zeigt sich in ihrer Verteilung. Die Gelben verteilen sich gleichmäßig durch eine ganze Masse von Laub, weil sie bereits überall waren. Die Rottöne erscheinen in Flecken: auf bestimmten Bäumen, auf der sonnenbeschienenen Seite, im Kronenbereich vor dem Stamm. Ein Maler, der Rot gleichmäßig durch einen Wald verteilt, hat etwas gemalt, das so nicht passiert."
+              "content": "Die Rottöne sind ein anderes Ereignis. Bei vielen Arten werden Anthocyanine im Herbst hergestellt, neu im Blatt, da die Zucker dort durch das Schließen der Gefäßkanäle eingeschlossen werden. So stammen die beiden Hälften der Herbstpalette aus entgegengesetzten Prozessen, eine Entmaskung und eine Produktion, und das zeigt sich in ihrer Verteilung. Die Gelben verteilen sich gleichmäßig durch eine ganze Masse von Laub, weil sie bereits überall vorhanden waren. Die Rottöne erscheinen in Flecken: auf bestimmten Bäumen, auf der sonnenbeschienenen Seite, im Kronenbereich vor dem Stamm. Ein Maler, der Rot gleichmäßig durch einen Wald verteilt, hat etwas gemalt, das so nicht passiert."
             },
             {
               "type": "image",
@@ -21041,7 +21040,7 @@
             },
             {
               "type": "text",
-              "content": "Wenn ein Medium die drei Wochen des Wandels besitzt, dann ist es Pastell, und der Grund ist optisch und nicht sentimental. Ölfarbe ist Pigment, das in einem Film suspendiert ist: Licht dringt in den Film ein, wird teilweise darin absorbiert, und kommt nach außen zurück, nachdem es auf dem Weg verändert wurde. Das verleiht Öl seine Tiefe und seine Fähigkeit, glasiert zu werden. Pastell ist Pigment mit fast keinem Bindemittel, ein wenig Gummi, in einen Stab gepresst und dann auf eine gezahnte Oberfläche gerieben. Es sitzt dort als lockere Körner mit Luft dazwischen. Licht reist nicht durch ein Medium; es streut von den Oberflächen trockener Partikel ab und kehrt sofort zurück, in alle Richtungen, mit fast keinem spiegelnden Anteil."
+              "content": "Wenn ein Medium die drei Wochen des Wandels besitzt, dann ist es Pastell, und der Grund ist optisch und nicht sentimental. Ölfarbe ist Pigment, das in einem Film suspendiert ist: Licht dringt in den Film ein, wird teilweise darin absorbiert und kommt auf dem Weg wieder heraus, nachdem es verändert wurde. Das verleiht Öl seine Tiefe und seine Fähigkeit, glasiert zu werden. Pastell ist Pigment mit fast keinem Bindemittel, ein wenig Gummi, in einen Stab gepresst und dann auf eine gezahnte Oberfläche gerieben. Es sitzt dort als lockere Körner mit Luft dazwischen. Licht reist nicht durch ein Medium; es streut von den Oberflächen trockener Partikel ab und kehrt sofort zurück, in alle Richtungen, mit fast keinem spiegelnden Anteil."
             },
             {
               "type": "text",
@@ -21069,7 +21068,7 @@
             },
             {
               "type": "text",
-              "content": "Twachtman zeigt die zweite Sache, die Pastell tun kann, was Öl nicht kann. Hier ist fast nichts gezeichnet. Der Bräunton des Trägers <em>ist</em> das trockene Gras, das Licht und die Jahreszeit zugleich, und das Pastell wird nur auf das angewendet, was davon abweicht: die dunklen Bäume links, die blau-violetten Schatten, die sich über die mittlere Entfernung ziehen, einige Pinselstriche weißer Wolken, etwas überlebendes Grün. Der Künstler wählte die Farbe des Lichts, bevor er eine einzige Markierung machte, und machte dann so wenige Markierungen wie möglich. In Öl würde dieses Grundmaterial unter dem Bild verschwunden sein."
+              "content": "Twachtman zeigt die zweite Sache, die Pastell tun kann, die Öl nicht kann. Hier ist fast nichts gezeichnet. Das Bräunlich des Trägers <em>ist</em> das trockene Gras, das Licht und die Jahreszeit zugleich, und das Pastell wird nur auf das verwendet, was davon abweicht: die dunklen Bäume links, die blau-violetten Schatten, die sich über die mittlere Entfernung ziehen, einige Pinselstriche weißer Wolken, etwas überlebendes Grün. Der Künstler wählte die Farbe des Lichts, bevor er eine einzige Markierung machte, und machte dann so wenige Markierungen wie möglich. In Öl hätte sich dieser Untergrund unter dem Bild aufgelöst."
             },
             {
               "type": "image",
@@ -21083,7 +21082,7 @@
             },
             {
               "type": "text",
-              "content": "Es gibt eine weitere Konsequenz des Mediums, die es wert ist, erwähnt zu werden, weil sie erklärt, warum Pastell speziell für einen Übergang geeignet ist. Ein Pastell kann nicht repariert werden wie ein Öl. Es gibt keine Glasur, kein Lasieren über einer getrockneten Schicht, kein Lifting mit Terpentin, kein Übermalen. Ein Übergang von einer Farbe zur nächsten muss durch Auftragen von Staub auf Staub und durch Stumping erfolgen, das heißt, durch Reiben des Pigments in die Struktur des Papiers mit einem gerollten Papierrest, bis eine Farbe an die nächste übergibt. Der Übergang erfolgt durch Abrieb. Für ein Motiv, dessen ganzer Charakter ein allmähliches Übergeben zwischen zwei Paletten ist, sind Methode und Motiv die gleiche Geste."
+              "content": "Es gibt eine weitere Konsequenz des Mediums, die es wert ist, erwähnt zu werden, weil sie erklärt, warum Pastell speziell für einen Übergang geeignet ist. Ein Pastell kann nicht repariert werden wie ein Öl. Es gibt keine Glasur, kein Lasieren über einer getrockneten Schicht, kein Lifting mit Terpentin, kein Übermalen. Ein Übergang von einer Farbe zur nächsten muss durch Auftragen von Staub auf Staub und durch Stumping erfolgen, das heißt, durch Reiben des Pigments in die Struktur des Papiers mit einem gerollten Papierrest, bis eine Farbe zur nächsten übergibt. Der Übergang erfolgt durch Abrieb. Für ein Motiv, dessen ganzer Charakter ein allmähliches Übergeben zwischen zwei Paletten ist, sind Methode und Motiv die gleiche Geste."
             },
             {
               "type": "header",
@@ -21092,15 +21091,15 @@
             },
             {
               "type": "text",
-              "content": "Lies die Katalogbeschreibungen der neunzehnten Jahrhunderts Pastelle bis zum Ende und etwas still Bemerkenswertes erscheint. Das Art Institute verzeichnet Alfred Sisley's A Corner of Moret-sur-Loing, 1895, als Pastell mit Stumping auf grauem Gewebepapier mit blauen Fasern, verfärbt zu Tan. Mary Cassatt's Sleepy Nicolle, um 1900: blau-graues Gewebepapier, verblasst zu Tan. Odilon Redon's Flower Clouds, um 1903: blau-graues Gewebepapier mit mehrfarbigen Fasern, verändert zu Tan."
+              "content": "Lesen Sie die Katalogbeschreibungen der neunzehnten Jahrhunderts Pastelle bis zum Ende und etwas still Bemerkenswertes erscheint. Das Art Institute verzeichnet Alfred Sisley's A Corner of Moret-sur-Loing, 1895, als Pastell mit Stumping auf grauem Gewebepapier mit blauen Fasern, verfärbt zu Tan. Mary Cassatt's Sleepy Nicolle, um 1900: blau-graues Gewebepapier, verblasst zu Tan. Odilon Redon's Flower Clouds, um 1903: blau-graues Gewebepapier mit mehrfarbigen Fasern, verändert zu Tan."
             },
             {
               "type": "text",
-              "content": "Die kühle Hälfte jedes dieser Bilder, der Teil, den der Künstler genau deshalb gewählt hat, weil er die Kälte des Lichts tragen würde, ist der Teil, der verloren gegangen ist. Papier vergilbt: Lignin oxidiert, Size zerfällt, und blaue Farbstoffe gehören zu den lichtbeständigsten Materialien im Raum. Daher sind diese Werke selbst von Sommer zu Herbst gereist, in die gleiche Richtung wie ihr Motiv, über ein Jahrhundert, im Lager."
+              "content": "Der kühle Teil jedes dieser Bilder, der Teil, den der Künstler genau deshalb gewählt hat, weil er die Kälte des Lichts tragen würde, ist der Teil, der verloren gegangen ist. Papier verfärbt sich: Lignin oxidiert, Size zerfällt, und blaue Farbstoffe gehören zu den lichtempfindlichsten Materialien im Raum. Daher sind diese Werke selbst von Sommer zu Herbst gereist, in die gleiche Richtung wie ihr Motiv, über ein Jahrhundert, im Lager."
             },
             {
               "type": "text",
-              "content": "Dies ist kein Fußnotentext für Konservatoren. Es verändert die Lesart. Ein Sisley-Pastell, das heute wie ein warmer Oktobernachmittag aussieht, könnte als kalter Tag gezeichnet worden sein, seine Grautöne werden durch eine blaue Unterstützung getragen, die nicht mehr existiert. Wer ein verblasstes Pastell misst, misst zwei Ereignisse gleichzeitig: das Licht, das der Künstler sah, und die hundertundzwanzig Jahre seitdem."
+              "content": "Das ist kein Fußnotiz für Konservatoren. Es ändert die Lesart. Ein Sisley-Pastell, das heute wie ein warmer Oktobernachmittag aussieht, könnte als kalter Nachmittag gezeichnet worden sein, seine Grautöne gehalten von einer blauen Unterstützung, die nicht mehr existiert. Wer ein verblasstes Pastell misst, misst zwei Ereignisse gleichzeitig: das Licht, das der Künstler sah, und die hundertundzwanzig Jahre seitdem."
             },
             {
               "type": "header",
@@ -21109,7 +21108,7 @@
             },
             {
               "type": "text",
-              "content": "Alles oben Annahme, dass eine Jahreszeit eine Lichtbedingung ist, etwas, das man erkennt, indem man den Himmel und den Boden betrachtet. Eine Tradition ordnet sie anders, und die beiden nebeneinander zu halten, ist der schnellste Weg zu sehen, dass das europäische neunzehnte Jahrhundert eine Wahl traf, anstatt eine Entdeckung zu machen."
+              "content": "Alles oben Annahme, dass eine Jahreszeit eine Lichtbedingung ist, etwas, das man erkennt, indem man den Himmel und den Boden betrachtet. Eine Tradition organisiert es andersherum, und die beiden nebeneinander zu halten, ist der schnellste Weg zu sehen, dass das europäische neunzehnte Jahrhundert eine Entscheidung traf, anstatt eine Entdeckung zu machen."
             },
             {
               "type": "text",
@@ -21117,11 +21116,11 @@
             },
             {
               "type": "text",
-              "content": "Die Begriffe werden dann erneut unterteilt, in siebenundsechzig ko von ungefähr fünf Tagen each, jeder benannt nach einem einzelnen Naturereignis. Das japanische Set wurde im siebzehnten Jahrhundert vom Hofastronomen Shibukawa Shunkai in seine vertraute Form überarbeitet. Die drei, die risshu ausmachen, sind in der Reihenfolge: kühle Winde kommen, Abendzikaden singen, dichter Nebel zieht herab. Ein Monat später, unter weißem Tau, kommt die Einheit, genannt Tau glänzt weiß auf dem Gras."
+              "content": "Die Begriffe werden dann erneut unterteilt, in siebenundsechzig ko von ungefähr fünf Tagen each, jeder benannt nach einem einzelnen Naturereignis. Das japanische Set wurde im siebzehnten Jahrhundert vom Hofastronomen Shibukawa Shunkai in seine vertraute Form überarbeitet. Die drei, die aus risshu bestehen, sind in der Reihenfolge: kühle Winde kommen, abendliche Zikaden singen, dichter Nebel zieht herab. Einen Monat später, unter weißem Tau, kommt die Einheit, genannt Tau, das auf dem Gras weiß glänzt."
             },
             {
               "type": "text",
-              "content": "Dies verdient Aufmerksamkeit von jedem, der gerade viertausend Worte von Messungen gelesen hat. Es ist dasselbe Instinkt, ein Versuch, die Wendung im feinsten verfügbaren Korn zu lösen, aber das Instrument ist ein Name anstelle einer Zahl, und die Auflösung ist fünf Tage anstelle eines Farbtons. Die Tradition, die angeblich die Jahreszeit nicht misst, hat sie in so kurze Einheiten unterteilt, dass die meisten europäischen Kalender kein Wort dafür haben."
+              "content": "Dies verdient Aufmerksamkeit von jedem, der gerade viertausend Worte Messungen gelesen hat. Es ist derselbe Instinkt, ein Versuch, die Wendung auf dem feinsten verfügbaren Korn zu lösen, aber das Instrument ist ein Name und keine Zahl, und die Auflösung ist fünf Tage und keine Farbton-Prozentsatz. Die Tradition, die angeblich die Jahreszeit nicht misst, hat sie in so kurze Einheiten unterteilt, dass die meisten europäischen Kalender kein Wort dafür haben."
             },
             {
               "type": "header",
@@ -21130,7 +21129,7 @@
             },
             {
               "type": "text",
-              "content": "Wenn der Herbst ein Datum ist und keine Bedingung, dann kann ein Bild ihn nicht durch den Winkel der Sonne ankündigen, und es versucht es auch nicht. Es kündigt ihn mit einer Pflanze an. Das Man'yoshu, die achthundertjährige Anthologie, fixiert die sieben Gräser des Herbstes in einem Paar Gedichte von Yamanoue no Okura: Busch-Klee, Miscanthus, Kudzupflanze, Pink, Patrinia, Boneset, Glockenblume. Für die nächsten zweitausend Jahre tragen diese sieben, vor allem der Miscanthus namens susuki, die Jahreszeit in Poesie, auf Lack, auf Keramik und über Bildschirme."
+              "content": "Wenn der Herbst ein Datum ist und keine Bedingung, dann kann ein Bild ihn nicht durch den Winkel der Sonne ankündigen, und es versucht es auch nicht. Es kündigt ihn mit einer Pflanze an. Das Man'yoshu, die im achten Jahrhundert entstandene Anthologie, fixiert die sieben Gräser des Herbstes in einem Paar Gedichte von Yamanoue no Okura: Busch-Klee, Miscanthus, Kudzupflanze, Pink, Patrinia, Boneset, Glockenblume. Für die nächsten zweitausend Jahre tragen diese sieben, vor allem der Miscanthus namens susuki, die Jahreszeit in Poesie, auf Lack, auf Keramik und über Bildschirme."
             },
             {
               "type": "image",
@@ -21153,7 +21152,7 @@
             },
             {
               "type": "text",
-              "content": "Der andere Teil des japanischen Herbstes ist überhaupt nicht die Sonne. Es ist der Mond. Der Vollmond des achten Mondmonats ist der Herbstmond, betrachtet bei Festen zu diesem Zweck, und die Ebene namens Musashino, westlich von Edo, ist der Ortsname, der damit verbunden ist: eine Ebene so flach und so dicht mit Susuki, dass in der poetischen Formel der Mond nirgendwoher aufsteigen kann außer aus dem Gras selbst."
+              "content": "Der andere Teil des japanischen Herbstes ist überhaupt nicht die Sonne. Es ist der Mond. Der Vollmond des achten Mondmonats ist der Herbstmond, betrachtet bei Festen zu diesem Zweck, und die Ebene namens Musashino, westlich von Edo, ist der Ortsname, der damit verbunden ist: eine Ebene so flach und so dicht mit Susuki, dass in der poetischen Formel der Mond nirgendwo anders aufsteigen kann als aus dem Gras selbst."
             },
             {
               "type": "image",
@@ -21163,11 +21162,11 @@
             },
             {
               "type": "text",
-              "content": "Der Bildschirm tut, was die Formel sagt. Ein silberner Mond sitzt tief in einem Miscanthus-Feld, und es gibt keinen Horizont dahinter, weil der Boden, aus dem er aufsteigen würde, durch Goldblatt ersetzt wurde. Gemessen liest der Goldstreifen plus 99,7 auf der gleichen Warm-Kalt-Skala, die Cazins extremen europäischen Herbst plus 61 gab. Nichts, was in diesem Artikel aus Beobachtung gemalt wurde, kommt ihm nahe."
+              "content": "Der Bildschirm tut, was die Formel sagt. Ein silberner Mond sitzt tief in einem Miscanthus-Feld, und es gibt keinen Horizont dahinter, weil der Boden, aus dem er aufsteigen würde, durch Goldblatt ersetzt wurde. Gemessen liest das Goldband plus 99,7 auf der gleichen Warm-Kalt-Skala, die Cazins extremen europäischen Herbst plus 61 gab. Nichts, was in diesem Artikel aus Beobachtung gemalt wurde, kommt ihm nahe."
             },
             {
               "type": "text",
-              "content": "Aussagekräftiger ist die Richtung der Bewegung im Inneren des Bildes. Das Gold oben ist plus 99,7, der Grasstreifen in der Mitte ist plus 73,3, und der Vordergrund ist plus 25,6. Der Bildschirm wird <em>kühler</em>, je weiter er nach vorne kommt, was das genaue Gegenteil von Monets Herbstfeld ist, bei dem der Boden das warme Ende war und der Himmel neutral blieb. In Giverny hatte sich die Wärme in den Stoppeln nach unten bewegt, weil das im Oktober so ist, wenn ein Feld ist. Hier ist die Wärme oben, weil oben Metall ist, und Metall ist warm, unabhängig vom Monat."
+              "content": "Aussagekräftiger ist die Richtung der Bewegung im Inneren des Bildes. Das Gold oben ist plus 99,7, das Grasband in der Mitte ist plus 73,3, und der Vordergrund ist plus 25,6. Der Bildschirm wird <em>kühler</em>, je weiter nach vorne er kommt, was das genaue Gegenteil von Monets Herbstfeld ist, wo der Boden das warme Ende war und der Himmel neutral blieb. In Giverny hatte sich die Wärme in den Stoppeln nach unten bewegt, weil das im Oktober so ist, wenn es um ein Feld geht. Hier ist die Wärme oben, weil oben Metall ist, und Metall ist warm, unabhängig vom Monat."
             },
             {
               "type": "text",
@@ -21180,21 +21179,21 @@
             },
             {
               "type": "text",
-              "content": "Im Holzschnitt ist die Frage, woher das Licht kommt, ungewöhnlich wörtlich zu nehmen. Es kommt vom Druckerstoff. Die abgestuften Washes in Hiroshiges Himmeln sind bokashi: Tinte wird vor jeder Abdruck handgefertigt in einem Farbverlauf auf den Block gewischt, sodass keine zwei Blätter in einer Auflage identisch sind und die gesamte Atmosphäre eines Drucks eine manuelle Geste ist, die hunderte Male ausgeführt wird."
+              "content": "Im Holzschnitt ist die Frage, woher das Licht kommt, ungewöhnlich wörtlich zu nehmen. Es kommt vom Druckerstoff. Die abgestuften Washes in Hiroshiges Himmeln sind bokashi: Tinte wird vor jeder Abdruck manuell in einem Verlauf auf den Block gewischt, sodass keine zwei Blätter in einer Auflage identisch sind und die gesamte Atmosphäre eines Drucks eine manuelle Geste ist, die hunderte Male ausgeführt wird."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgt0vttzg2e9z.jpg",
-              "caption": "Utagawa Hiroshige. The Moon-Viewing Promontory, aus One Hundred Views of Famous Places in Edo, 1857. Farbholzschnitt, 33,9 mal 22,8 cm. Cleveland Museum of Art, die Kelvin Smith Collection, gestiftet von Mrs. Kelvin Smith, CC0.",
+              "caption": "Utagawa Hiroshige. The Moon-Viewing Promontory, from One Hundred Views of Famous Places in Edo, 1857. Farbholzschnitt, 33,9 mal 22,8 cm. Cleveland Museum of Art, die Kelvin Smith Collection, gestiftet von Mrs. Kelvin Smith, CC0.",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "In Streifen im Himmel abgetastet, ist die Rampe unmissverständlich hergestellt anstatt beobachtet. Sie verläuft von einem gesättigten Blau oben, Farbton 214 mit Sättigung 0.30, durch Farbton 171 bei Sättigung 0.12, bis zu einem nahezu neutralen Blass bei Farbton 59 und Sättigung 0.07 am Horizont: ein Pigment, ein Wisch, Sättigung fällt sanft ab und Wert steigt sanft an. Monets Himmel über den Stapeln verhält sich nicht so. Er ändert den Farbton, während er die Leinwand überquert, weil er auf etwas abgestimmt wurde, das betrachtet wurde."
+              "content": "In Streifen im Himmel abgetastet, ist die Rampe unmissverständlich hergestellt und nicht beobachtet. Sie verläuft von einem gesättigten Blau oben, Farbton 214 mit Sättigung 0,30, durch Farbton 171 bei Sättigung 0,12, bis zu einem nahezu neutralen Blass bei Farbton 59 und Sättigung 0,07 am Horizont: ein Pigment, ein Wisch, Sättigung fällt sanft ab und Wert steigt sanft an. Monets Himmel über den Stapeln verhält sich nicht so. Er ändert den Farbton, während er die Leinwand überquert, weil er auf etwas abgestimmt wurde, das betrachtet wurde."
             },
             {
               "type": "text",
-              "content": "Und die Art, wie dieses Blatt Herbst sagt, ist es wert, aufgelistet zu werden, weil kein Punkt auf der Liste ein Lichteffekt ist. Es gibt einen Mond, der von den Dachüberständen beschnitten ist, sodass man ihn als Fakt und nicht als Spektakel registriert. Es gibt eine Gänseformation, die typische Herbstankunft. Es gibt einen Raum nach der Party: Teller beiseite geschoben, eine Laterne, ein Schatten auf dem Papierschirm, die Gäste weg. Die Jahreszeit ist ein Datum im Kalender, ein Vogel, eine Pflanze und eine gesellschaftliche Gelegenheit, aufgezeichnet in einem Druck, dessen Licht mit einem Tuch aufgetragen wurde."
+              "content": "Und die Art, wie dieses Blatt den Herbst sagt, ist es wert, aufgelistet zu werden, weil kein Punkt auf der Liste ein Lichteffekt ist. Es gibt einen Mond, der von den Dachüberständen beschnitten ist, sodass man ihn als Tatsache und nicht als Spektakel registriert. Es gibt eine Gänseformation, die typische Herbstankunft. Es gibt einen Raum nach der Party: Teller beiseite geschoben, eine Laterne, ein Schatten auf dem Papierschirm, die Gäste weg. Die Saison ist ein Datum im Kalender, ein Vogel, eine Pflanze und eine gesellschaftliche Gelegenheit, festgehalten in einem Druck, dessen Licht mit einem Tuch aufgetragen wurde."
             },
             {
               "type": "image",
@@ -21204,7 +21203,7 @@
             },
             {
               "type": "text",
-              "content": "Tosa Mitsuokis Ahornbäume schließen das Argument. Gemessen über die gesamte Oberfläche ist der Bildschirm zu 83,5 Prozent gelb und ocker, die höchste Konzentration warmer Farben in diesem Set, höher als Cazin, höher als Millet, und doch gibt es keinen Sonnenwinkel darin, keine Luftperspektive, keinen Schattenwurf, nichts, was als Beobachtung des Lichts bezeichnet werden könnte. Was stattdessen vorhanden ist, ist eine Art, und Streifen von Poesiepapier, die an den Zweigen von Menschen gebunden sind, die herauskamen, um die Blätter zu betrachten und etwas aufzuschreiben. Momijigari, Blätterjagd, ist ein Ausflug mit Literaturbeigabe."
+              "content": "Tosa Mitsuokis Ahornbäume schließen das Argument. Gemessen über die gesamte Oberfläche ist der Bildschirm zu 83,5 Prozent gelb und ocker, die höchste Konzentration warmer Farben in diesem Set, höher als bei Cazin, höher als bei Millet, und doch gibt es keinen Sonnenstand darin, keine Luftperspektive, keinen Schattenwurf, nichts, was als Beobachtung des Lichts bezeichnet werden könnte. Was stattdessen vorhanden ist, ist eine Art, und Streifen von Poesiepapier, die an den Zweigen von Menschen gebunden sind, die herauskamen, um die Blätter zu betrachten, und etwas aufgeschrieben haben. Momijigari, Blätterjagd, ist ein Ausflug mit Literaturbeigabe."
             },
             {
               "type": "text",
@@ -21221,17 +21220,17 @@
             },
             {
               "type": "text",
-              "content": "Der letzte der Chicago-Stapel beantwortet die Frage, die die ersten beiden öffnen. Miss die Schneeleinwand und die warme Tendenz wird negativ, minus 4,3, das einzige Bild in diesem Set, dessen Durchschnitt kühler als neutral ist. Blau und Violett nehmen ein Viertel der Oberfläche ein. Grün ist auf ein Zehntel eines Prozents geschrumpft. Das orange und rote Band verbleibt bei 15,5 Prozent, und fast alles davon befindet sich innerhalb des Stapels selbst."
+              "content": "Der letzte der Chicago-Stapel beantwortet die Frage, die die ersten beiden öffnen. Miss die Schneeleinwand und die warme Tendenz wird negativ, minus 4,3, das einzige Bild in diesem Set, dessen Durchschnitt kühler als neutral ist. Blau und Violett nehmen ein Viertel der Oberfläche ein. Grün ist auf ein Zehntel eines Prozents geschrumpft. Das orange und rote Band bleibt bei 15,5 Prozent, und fast alles davon befindet sich innerhalb des Stapels selbst."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtgsb2so4bi36s.jpg",
-              "caption": "Claude Monet. Stack of Wheat, 1890 bis 1891. Öl auf Leinwand. Art Institute of Chicago, erworben mit Mitteln der Searle Family Trust. Die warme Masse hat sich in das einzelne gebaute Objekt im Feld zurückgezogen, und der Boden gibt das Licht an den Himmel zurück.",
+              "caption": "Claude Monet. Stack of Wheat, 1890 bis 1891. Öl auf Leinwand. Art Institute of Chicago, gekauft mit Mitteln der Searle Family Trust. Die warme Masse hat sich in das einzelne gebaute Objekt im Feld zurückgezogen, und der Boden gibt das Licht an den Himmel zurück.",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Das ist das Ende der Sequenz. Die Wärme zieht sich vom Feld zurück und konzentriert sich in dem einen gebauten Ding, das darin steht, und der Boden gibt das Licht an den Himmel zurück. Der Herbst ist das Intervall, in dem diese Übergabe sichtbar ist, weshalb es eine Serie ist und kein einzelnes Gemälde, und warum Monet fünfundzwanzig davon brauchte."
+              "content": "Das ist das Ende der Sequenz. Die Wärme zieht sich vom Feld zurück und konzentriert sich in dem einen gebauten Gegenstand, der darin steht, und der Boden gibt das Licht an den Himmel zurück. Der Herbst ist das Intervall, in dem diese Übergabe sichtbar ist, weshalb es eine Serie ist und kein einzelnes Gemälde, und warum Monet fünfundzwanzig davon brauchte."
             },
             {
               "type": "header",
@@ -21244,15 +21243,16 @@
             },
             {
               "type": "header",
-              "content": "Methode und Quellen",
+              "content": "Methodik und Quellen",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Die Farbzahlen wurden aus frei zugänglichen Reproduktionen berechnet, die mit reduzierter Auflösung abgetastet wurden, wobei Rot-Minus-Blau als Warm-Kalt-Proxy verwendet wurde und Pixel in Farbtonfamilien gruppiert wurden, die als Anteil der Oberfläche angegeben wurden. Regionale Figuren entstehen aus festen Rechtecken in jedem Bild, die im Text beschrieben werden. Dabei handelt es sich um Messungen von Fotografien, nicht von Farbe: Die Museumsfotografie ist farbkontrolliert, aber interpretativ, und jahrhundertealter Lack verschiebt alles leicht in die Wärme. Sie dienen dem Vergleich zwischen Bildern im selben Satz. Werke des Art Institute of Chicago, des Cleveland Museum of Art und des Metropolitan Museum of Art erscheinen im Rahmen ihrer Open-Access-Programme; Levitans Goldener Herbst ist gemeinfrei. Beschreibungen des Mediums und des Trägers, einschließlich der Aufzeichnungen über Verfärbungen, werden aus den eigenen Katalogeinträgen der Trägerinstitutionen zitiert."
+              "content": "Farbabbildungen wurden aus frei zugänglichen Reproduktionen berechnet, bei reduzierter Auflösung abgetastet, wobei rot-minus-blau als Warm-Kalt-Proxy verwendet wurde und Pixel in Farbfamilien gruppiert wurden, die als Anteil an der Oberfläche berichtet werden. Regionale Figuren stammen aus festen Rechtecken in jedem Bild, die im Text beschrieben werden. Dabei handelt es sich um Messungen von Fotografien, nicht von Farben: Museum-Fotografie ist farbverwaltet, aber interpretativ, und jahrhundertealtes Firnis macht alles leicht warm. Sie sind für den Vergleich zwischen Bildern im selben Satz gedacht. Werke vom Art Institute of Chicago, dem Cleveland Museum of Art und dem Metropolitan Museum of Art erscheinen unter ihren Open-Access-Programmen; Levitan's Golden Autumn ist gemeinfrei. Beschreibungen von Medium und Träger, einschließlich der Aufzeichnungen über Verfärbungen, sind aus den eigenen Katalogeinträgen der aufbewahrenden Institutionen zitiert."
             }
           ],
-          "updatedAt": "2026-08-31T05:46:16.167Z"
+          "updatedAt": "2026-08-31T09:38:05.878Z",
+          "publishAt": "2026-08-31T09:33:28.075Z"
         }
       ],
       "reviews": [
