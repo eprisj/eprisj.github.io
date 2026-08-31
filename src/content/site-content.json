@@ -6199,19 +6199,20 @@
     },
     {
       "id": 30,
-      "title": "The Turn: How Painters Measured the Passage from Summer to Autumn",
+      "title": "Where the Warmth Lives: Reading the Turn from Summer to Autumn in Paint",
       "author": "Viacheslav Munister",
       "authorId": "author-1784732936927-kw554",
       "role": "Author",
       "date": "Aug 31, 2026",
-      "excerpt": "Three weeks in which the light changes address. A close reading of the season in painting: the physics of a lower sun, a measured comparison of Monet's wheat stacks before and after the turn, why autumn returns painting to its oldest pigments, and why pastel, of all media, performs this light instead of imitating it.",
+      "excerpt": "Autumn does not make the light warmer. Measured region by region, two canvases of the same field show the sky staying where it was while the ground swings seventeen points warm, and the shadows, all summer filled with blue skylight, turn into the warmest passages in the picture. With three pastels in which the medium is held still and only the season moves.",
       "category": "art",
       "subcategory": "Essay",
       "tags": [
         "painting",
         "light",
         "pastel",
-        "seasons"
+        "seasons",
+        "colour"
       ],
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
@@ -6223,11 +6224,11 @@
       "content": [
         {
           "type": "text",
-          "content": "Every year the light changes address. It happens over about three weeks, and it happens whether or not anyone is looking: the sun drops a few degrees in the sky, its light travels further through the air to reach the ground, and everything that was blue in the shadows becomes grey, then violet, then brown. Painters have always known this window. Some of them built entire careers inside it."
+          "content": "The usual way to describe autumn in painting is to say that the light turns warm. It is the wrong description, and a series of measurements taken from the paintings themselves shows why. The light does not turn warm. The <em>ground</em> does, and once it does, it takes over the job the sky had been doing all summer. What changes is not the colour of the light but the address of the warmth in the picture."
         },
         {
           "type": "text",
-          "content": "This is an attempt to read that turn closely, not as a mood but as a set of measurable events. What exactly does the light do between late August and late October, why does the palette of a painting narrow the way it does, what happens to a shadow, and why pastel, of all media, catches the season better than anything mixed with oil."
+          "content": "This piece works through that claim on ten paintings and pastels, most of them measured region by region: two canvases of the same field before and after the turn, three pastels in which the medium is held constant and only the season moves, and a set of comparisons that ends somewhere useful for anyone who paints, photographs or simply looks."
         },
         {
           "type": "image",
@@ -6237,190 +6238,203 @@
         },
         {
           "type": "header",
-          "content": "The physics, briefly",
+          "content": "One field, twice",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Three things change at once, and only the first is obvious. The sun's maximum elevation falls: at the latitude of Paris it stands around 64 degrees above the horizon at the summer solstice and around 40 degrees by late October. A lower sun means a longer path through the atmosphere, and a longer path means more of the short wavelengths are scattered out of the direct beam before it reaches the field. The light that lands is measurably warmer, and the light that arrives indirectly, from the whole dome of the sky, is proportionally less blue than it was in July."
+          "content": "In 1890 and 1891 Monet painted the wheat stacks in a field a few minutes from his house at Giverny, returning to the same shapes at different hours and in different weather. Six of those canvases are in the Art Institute of Chicago. That makes it possible to compare not two subjects but one subject twice, with everything except the season held still: same field, same stacks, same painter, same distance, same box of colours."
         },
         {
           "type": "text",
-          "content": "Second, the day shortens. This sounds like a fact about schedules, but for a painter working outdoors it is a fact about materials. The low angle that produces long shadows and warm colour occupies a larger share of the working day in October than in July. A painter who goes out at the same hour with the same box of pigments simply gets more of that light per session."
+          "content": "We measured four regions in each canvas: a strip of sky across the top, the band of trees at the horizon, the foreground field, and the body of the large stack. The measure is simple, the red channel minus the blue channel, which is a serviceable proxy for whether a passage leans warm or cool. Positive means warm."
         },
         {
           "type": "text",
-          "content": "Third, the air changes. Cooler nights and warmer soil produce morning mist; humidity holds particles in suspension. The result is a compressed tonal range: distances go pale, contrast falls, and the sky stops being a source of saturated colour and becomes a source of even, silvery illumination. Aerial perspective, which in summer separates three or four planes, in autumn can flatten a whole valley into two."
-        },
-        {
-          "type": "header",
-          "content": "The same field, two seasons",
-          "level": 2
+          "content": "<strong>Sky:</strong> minus 3.9 in late summer, plus 1.6 in autumn. Almost no movement.<br><strong>Treeline:</strong> plus 22.4, then plus 10.7. The distance gets <em>cooler</em>, not warmer.<br><strong>Foreground field:</strong> plus 1.0, then plus 18.2. A swing of seventeen points.<br><strong>The large stack:</strong> plus 36.9, then plus 47.6."
         },
         {
           "type": "text",
-          "content": "In 1890 and 1891 Monet painted the wheat stacks in a field near his house at Giverny, returning to the same shapes at different hours and in different weather. Six of those canvases are in the Art Institute of Chicago, which makes it possible to compare not two subjects but one subject twice, with everything except the season held constant: same field, same stacks, same painter, same distance, same box."
-        },
-        {
-          "type": "text",
-          "content": "We measured the colour of high-resolution reproductions of two of them. This is a reading of photographs, not of paint, and the caveat matters: museum photography is colour-managed toward accuracy but it is still an interpretation, and a varnish layer a century old shifts everything slightly warm. What the numbers can show is not the absolute colour of Monet's pigment but the difference between two canvases photographed under the same programme."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
-          "caption": "Before the turn. Stacks of Wheat (End of Summer), 1890 to 1891, Art Institute of Chicago",
-          "align": "center"
+          "content": "The sky is not the variable. The field is. Between the two canvases the ground moves from neutral to distinctly warm while the sky stays where it was, and the horizon actually goes bluer as thicker air pushes the far trees back. Whatever the season is doing, it is doing it at ground level."
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg",
-          "caption": "After it. Stacks of Wheat (End of Day, Autumn), 1890 to 1891, Art Institute of Chicago",
+          "caption": "Claude Monet. Stacks of Wheat (End of Day, Autumn), 1890 to 1891. Oil on canvas, 65.8 by 101 cm. Art Institute of Chicago, Mr. and Mrs. Lewis Larned Coburn Memorial Collection.",
           "align": "center"
         },
         {
-          "type": "text",
-          "content": "In End of Summer, the surface divides roughly into a sixth green, a fifth yellow and ochre, a seventh in the orange and red band, and a tenth in blue and violet. The average pixel is warmer than it is cool by about thirteen points on a 255 scale. It is a balanced picture in the literal sense: no hue family owns it."
-        },
-        {
-          "type": "text",
-          "content": "In End of Day, Autumn, the same measurement comes apart. The orange and red band rises from fourteen per cent of the surface to nearly thirty-six. Green falls. Blue and violet fall by more than a third. The warm bias of the average pixel nearly doubles, from thirteen points to twenty-four. Two canvases of the same field, and the warm mass has grown two and a half times."
-        },
-        {
-          "type": "text",
-          "content": "That single number is the season. Not a mood, not a memory of school holidays ending: a redistribution of surface area from one part of the spectrum to another, large enough that you could sort the two canvases in the dark by measurement alone."
-        },
-        {
           "type": "header",
-          "content": "Where the yellow comes from, and why it is not the same as the red",
+          "content": "The same square metre, close up",
           "level": 2
         },
         {
           "type": "text",
-          "content": "The botany is worth stating precisely, because it explains a difference painters feel but rarely name. A green leaf is not green because green is added; it is green because chlorophyll dominates. Carotenoids and xanthophylls, the yellows and yellow-oranges, are already present in the leaf all summer, masked. When the tree begins to withdraw nutrients and chlorophyll production stops, the mask is removed and the yellow is simply revealed. It arrives by subtraction."
-        },
-        {
-          "type": "text",
-          "content": "The reds are a different event. Anthocyanins are, in many species, manufactured in autumn, produced in the leaf as sugars are trapped there. They are new. So the palette of the turning year is made of two opposite processes at once: yellow uncovered, red produced. On the canvas this reads as a difference in behaviour. The yellows spread evenly through a mass of foliage because they were everywhere already; the reds appear in patches, on particular trees, on the sunlit side, in the crown before the base."
+          "content": "Crop the identical patch out of both canvases, the foot of the large stack and the field running away from it, and enlarge it. This is where the argument stops being a table of numbers."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtgsb6am3359k5.jpg",
-          "caption": "Jean-Francois Millet. Haystacks: Autumn, about 1874. Oil on canvas. The Metropolitan Museum of Art, New York (Open Access, CC0). In our measurement, 68.6 per cent of this surface falls in the yellow and ochre band, and the ground reads brighter than the sky.",
+          "content": "https://api.eprisjournal.com/uploads/mtgssxdiwdvy1y.jpg",
+          "caption": "End of Summer, detail. The stubble is built from blue, violet and turquoise strokes with pink and yellow-green flecks laid between them.",
           "align": "center"
         },
         {
-          "type": "header",
-          "content": "The inversion: when the ground outshines the sky",
-          "level": 2
-        },
-        {
           "type": "text",
-          "content": "There is a specific autumn effect that summer almost never produces. Measure the top quarter of Millet's Haystacks and you get an average of roughly 105, 109, 97 in red, green and blue. Measure the lower half and you get 131, 104, 61. The ground is lighter than the sky, and much warmer. In a summer landscape this is close to impossible: the sky is the light source and the brightest thing in the picture. In autumn, under an overcast that acts as a diffuser, a field of cut stubble and dry stalks becomes the brightest surface in view."
-        },
-        {
-          "type": "text",
-          "content": "Painters exploit this quietly. It gives them a picture lit from below, in effect, where the eye rests on the earth rather than climbing to the horizon. It also solves an old compositional problem: the figure no longer has to compete with a brilliant sky, and can be drawn as a dark shape on a bright ground rather than a light shape against light."
+          "content": "In the summer detail the field is blue. Not blue-ish: in the lower strip of this crop, 26.5 per cent of the surface sits in the blue and violet band and only 13.5 per cent in the rose and red. The stubble is drawn in short chopped strokes running in three or four directions, each one a separate decision, with the canvas breathing between them. The stack sits on that cool ground as a warm object, and the contrast between them is the subject."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtgsb4hk0rr7fn.jpg",
-          "caption": "George Inness. After a Summer Shower, 1894. Oil on canvas. Art Institute of Chicago, Edward B. Butler Collection. Summer measured: 48.1 per cent of the surface in the green band, and not a single reading in the orange and red.",
+          "content": "https://api.eprisjournal.com/uploads/mtgssxxm2w54lw.jpg",
+          "caption": "End of Day, Autumn, detail of the same passage. Blue has fallen to 0.6 per cent of the strip; rose and red have risen to 37.2.",
           "align": "center"
         },
         {
+          "type": "text",
+          "content": "In the autumn detail the blue is gone. Six tenths of one per cent of that same strip is still blue or violet, against 37.2 per cent rose and red. The handling has changed with it: the strokes are longer, dragged more horizontally, and the paint has become a continuous crust rather than a mesh of separate marks. The stack and the field are now the same temperature, plus 47.6 against plus 18.6, and the picture has lost the contrast that organised the summer version. It has to be organised by something else, and Monet organises it by value, the dark mass of the stack against a pale field, and by the one surviving cold note along the treeline."
+        },
+        {
           "type": "header",
-          "content": "The palette closes",
+          "content": "Why the warmth moves",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Jean-Charles Cazin's October Day is an extreme case and therefore a clarifying one. Measured the same way, the picture contains no green at all: 54 per cent of the surface sits in the yellow and ochre band, 46 per cent in orange and red, and the remaining fraction rounds to nothing. Its warm bias is 61 points, nearly five times that of Monet's late summer."
+          "content": "The mechanism is not mysterious once the numbers point at the ground. Any shadow is lit by whatever the sky and the surroundings bounce into it. In high summer, with a high sun and a large area of clear sky, the dominant fill light is skylight, which is blue, and shadows go blue. That is the physical basis of the whole Impressionist habit of painting violet shadows on a green field. It is not a stylistic tic; it is a measurement."
         },
         {
           "type": "text",
-          "content": "This is what a closing palette looks like. And it is worth noticing which pigments are left standing when it closes. Ochre, raw and burnt sienna, umber, Indian red: earths. They are the oldest pigments in the human record, ground from the ground, in use tens of thousands of years before anyone had a blue that did not cost more than the panel it went on. Autumn, in other words, returns painting to its first palette. The season is painted in the colours of the material it depicts."
+          "content": "By late October two things have changed. The sky is more often a diffuser than a source, an even grey ceiling with no strong directional beam and no strong blue. And the ground under everything has turned into an enormous warm reflector: dry stubble, fallen leaves, bare soil, all of it ochre. The secondary light in the landscape stops being blue and becomes orange. The shadow, which is nothing but secondary light, warms up accordingly."
+        },
+        {
+          "type": "text",
+          "content": "Measured across the whole set, this reversal is the most consistent thing we found. In Boudin's summer sky study the darkest fifth of the picture is 24.8 points <em>cooler</em> than neutral and the lightest fifth is 11.4 points warmer: a gap of 36 points in the textbook direction. In Lhermitte's October river the relationship is inverted, the shadows warmer than the lights by 45 points. Levitan's Golden Autumn: inverted by 20. Monet's own two canvases move from a gap of 0.4 to a gap of 7.6 in the same direction."
+        },
+        {
+          "type": "quote",
+          "content": "Summer keeps its warmth in the light and its coolness in the shadow. Autumn does the opposite. The season is not a change of colour, it is a change of where the colour lives."
+        },
+        {
+          "type": "header",
+          "content": "Against the word muted",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Autumn is habitually called muted, and the paintings disagree. Mean saturation in Monet's late summer canvas is 0.169; in the autumn canvas it is 0.204. At the ninetieth percentile, that is, in the most intense tenth of the surface, the figures are 0.312 and 0.372. The autumn picture is the more saturated of the two by roughly a fifth."
+        },
+        {
+          "type": "text",
+          "content": "What actually narrows is the hue range, not the intensity. The palette closes toward a smaller arc of the colour wheel and then works harder inside it. Jean-Charles Cazin's October Day is the limit case: measured across its whole surface it contains no green at all, 54 per cent yellow and ochre, 46 per cent orange and red, and a warm bias of 61 points, five times Monet's late summer. It is not a quiet picture. It is a loud picture made of three colours."
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtgsb3eugamqxr.jpg",
-          "caption": "Jean-Charles Cazin. October Day, 1890 to 1893. Oil on canvas, 38.4 by 46.7 cm. Art Institute of Chicago, Henry Field Memorial Collection. Measured: no green anywhere on the surface.",
+          "caption": "Jean-Charles Cazin. October Day, 1890 to 1893. Oil on canvas, 38.4 by 46.7 cm. Art Institute of Chicago, Henry Field Memorial Collection. No green anywhere on the surface.",
           "align": "center"
         },
         {
+          "type": "text",
+          "content": "Which colours survive the closing is worth noticing. Ochre, raw and burnt sienna, umber, red earth. These are the oldest pigments in use anywhere, ground out of the ground, in the caves tens of thousands of years before anyone had a blue that did not cost more than the panel it went on. Autumn returns painting to its first palette, and paints the season in the colours of the material it is depicting."
+        },
+        {
           "type": "header",
-          "content": "Pastel: light reflected off dust",
+          "content": "Where the yellow comes from, and why the red behaves differently",
           "level": 2
         },
         {
           "type": "text",
-          "content": "If one medium belongs to this three-week window, it is pastel, and the reason is physical rather than sentimental. Oil paint is pigment suspended in a film. Light enters the film, bounces around inside it, and comes back out having been partly absorbed on the way: that is what gives an oil its depth and its capacity to be glazed. Pastel is pigment with barely any binder at all, a little gum, pressed into a stick. On the paper it sits as loose particles with air between them. Light does not travel through a medium; it scatters off the surfaces of dry grains and returns immediately in every direction."
+          "content": "A green leaf is not green because green has been added. It is green because chlorophyll is dominant, and the carotenoids and xanthophylls that give the yellows and yellow-oranges have been sitting inside the leaf all summer, masked. When the tree begins withdrawing nutrients and chlorophyll production stops, the mask lifts and the yellow is revealed. It arrives by subtraction."
         },
         {
           "type": "text",
-          "content": "The result is a diffuse, matte, slightly dusty reflection with almost no specular component. It is, in the exact optical sense, the same behaviour as an overcast autumn sky, which is a diffuser rather than a point source. Pastel does not imitate that light. It performs it."
+          "content": "The reds are a different event. In many species anthocyanins are manufactured in autumn, made new in the leaf as sugars are trapped there by the closing of the vascular channels. So the two halves of the autumn palette come from opposite processes, one an unmasking and one a production, and this shows up in how they distribute. The yellows spread evenly through a whole mass of foliage, because they were already everywhere. The reds appear in patches: on particular trees, on the sunlit side, in the crown before the base. A painter who spreads red evenly through a wood has painted something that does not happen."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtgsb51pnu7jkt.jpg",
-          "caption": "Odilon Redon. Flower Clouds, about 1903. Pastel, with touches of stumping, incising and brushwork, on blue-gray wove paper with multi-colored fibers altered to tan. Art Institute of Chicago, through prior bequest of the Mr. and Mrs. Martin A. Ryerson Collection.",
+          "content": "https://api.eprisjournal.com/uploads/mtgsb6am3359k5.jpg",
+          "caption": "Jean-Francois Millet. Haystacks: Autumn, about 1874. Oil on canvas. The Metropolitan Museum of Art, New York, Open Access. Measured here: the sky reads 105, 109, 97 and the ground 131, 104, 61. The field is brighter than the sky above it.",
           "align": "center"
         },
         {
           "type": "text",
-          "content": "There is a second, subtler reason. A pastel cannot be repaired by overpainting the way an oil can. There is no glaze, no scumble over a dried layer, no lifting with turpentine. Transitions have to be built by laying dust over dust and by stumping, that is, by rubbing pigment into the paper's tooth with a rolled paper stub. The turn from one colour to the next is made by abrasion. For a subject whose entire character is a gradual handover between two palettes, the method and the motif are the same gesture."
-        },
-        {
-          "type": "text",
-          "content": "And there is the paper. In oil, the ground disappears under the picture. In pastel, the paper's own tone is left showing between strokes and does the work of a middle value, which means the artist chooses the colour of the light before making a mark. The Art Institute's catalogue entries record those choices with unusual precision: Eugene Boudin's Seaside, Port of Honfleur, about 1860, is pastel on blue wove paper; Alfred Sisley's A Corner of Moret-sur-Loing, 1895, is pastel with stumping on gray wove paper with blue fibers; Mary Cassatt's Sleepy Nicolle, about 1900, is pastel on blue-gray wove paper."
+          "content": "Millet's picture contains the other autumn inversion, the one that follows from the first. Under a diffusing overcast, a field of cut stubble becomes the brightest surface in view and the sky above it goes dull. In a summer landscape this is close to impossible, because the sky is the source. Here the source has been spread out and the ground is doing the reflecting, so the picture is effectively lit from below. It also solves an old compositional problem: the figure no longer has to compete with a brilliant sky and can be drawn as a dark shape on a bright ground."
         },
         {
           "type": "header",
-          "content": "The works have their own autumn",
+          "content": "Pastel, and why this season belongs to it",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Read those catalogue lines to the end and something quietly extraordinary appears. Sisley's grey paper with blue fibers is recorded as discoloured to tan. Cassatt's blue-grey paper is recorded as faded to tan. Redon's blue-grey paper with multi-coloured fibres is recorded as altered to tan."
+          "content": "If one medium owns the three weeks of the turn, it is pastel, and the reason is optical rather than sentimental. Oil paint is pigment suspended in a film: light enters the film, is partly absorbed inside it, and comes back out having been changed on the way. That is what gives oil its depth and its capacity to be glazed. Pastel is pigment with almost no binder, a little gum, pressed into a stick and then abraded onto a toothed surface. It sits there as loose grains with air between them. Light does not travel through a medium; it scatters off the surfaces of dry particles and returns immediately, in all directions, with almost no specular component."
         },
         {
           "type": "text",
-          "content": "The cool half of the picture, the part the artist chose to carry the coldness of the light, is the part that has gone. Paper yellows: lignin oxidises, sizing degrades, blue dyes are among the least lightfast things in the room. So these works have themselves moved from summer to autumn, in the same direction, over a century, in the archive. When we look at a nineteenth-century pastel today we are seeing it warmer than it was made. The season we are describing has happened to the objects that describe it."
+          "content": "That is, in the exact optical sense, the same behaviour as an overcast autumn sky, which is a diffuser rather than a source. Pastel does not imitate the light of the season. It reproduces its physics."
         },
         {
           "type": "text",
-          "content": "This is not a small footnote for a conservator. It changes how the pictures should be read. A Sisley pastel that now reads as a warm October afternoon may have been drawn as a cold one, its greys held up by a blue support that no longer exists. The measurement of a faded pastel is a measurement of two events at once: the light the artist saw and the century since."
-        },
-        {
-          "type": "header",
-          "content": "Golden autumn, and what holds it up",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Isaac Levitan's Golden Autumn of 1895 is the picture most people in Eastern Europe carry in their head under the word autumn, and it is instructive because it is not simply a yellow painting. Our measurement finds 52 per cent of the surface in the yellow and ochre band, as expected, but also 11 per cent still held in blue and violet, concentrated in the river and the upper sky, and a very light top decile averaging 225, 233, 232, almost neutral white."
-        },
-        {
-          "type": "text",
-          "content": "That is the formula. A mass of ochre needs a cold accent to be read as ochre rather than as brown, and it needs a high, near-neutral light to be read as daylight rather than as lamplight. Remove the blue river and the picture collapses into a warm haze. This is why the season is so easy to paint badly: the yellows come without effort, the restraint does not."
+          "content": "Three pastels make the case better than any argument, because the medium is held constant and only the season moves. All three are drawn on toned paper, which is the second half of the story."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtgsb5o5ro1rmu.jpg",
-          "caption": "Isaac Levitan. Golden Autumn, 1895. Oil on canvas. State Tretyakov Gallery, Moscow. The ochre mass reads as light because eleven per cent of the surface is still cold.",
+          "content": "https://api.eprisjournal.com/uploads/mtgssyf5sub0kk.jpg",
+          "caption": "Eugene Boudin. Seascape with Open Sky, 1860. Pastel on grey wove paper mounted on board. Cleveland Museum of Art, CC0. Measured: the darkest fifth of this sheet is 24.8 points cooler than neutral, the widest cool-shadow gap in our entire set.",
           "align": "center"
         },
         {
+          "type": "text",
+          "content": "Boudin is the summer state of affairs in its purest form. He made hundreds of these sky studies on the Normandy coast, dated and timed on the sheet like meteorological records, and Corot called him the king of skies for it. What the measurement finds is exactly the summer signature: brilliant lights, and shadows filled with blue from an enormous open sky. The grey of the paper is doing the work of the middle tone, and the white chalk is spent only on the cloud tops."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgssyz6rhlac1.jpg",
+          "caption": "John Henry Twachtman. Pastures, Branchville, Connecticut, about 1888 to 1891. Pastel on composition board. Cleveland Museum of Art, CC0.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Twachtman shows the second thing pastel can do that oil cannot. Almost nothing here is drawn. The tan of the support <em>is</em> the dry grass, the light and the season all at once, and the pastel is spent only on what departs from it: the dark trees at the left, the blue-violet shadows raking across the middle distance, a few strokes of white cloud, some surviving green. The artist chose the colour of the light before making a single mark, and then made as few marks as possible. In oil that ground would have vanished under the picture."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgsszdax0jzq1.jpg",
+          "caption": "Leon Augustin Lhermitte. Quai au Sable, Chartèves, 1904. Pastel on grey wove paper. Cleveland Museum of Art, CC0. Shadows 52 points warm, lights 6.6: the reversal at its most extreme in our set.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "And Lhermitte is the autumn state, in the same medium, on the same kind of toned sheet. Yellow poplars, a bank of ochre mud, a cold river holding the last blue in the picture, and shadows that are the warmest passages on the sheet by a distance of 45 points. Put the Boudin and the Lhermitte side by side and the entire argument of this piece is visible in two objects made of the same dust."
+        },
+        {
+          "type": "text",
+          "content": "There is one more consequence of the medium worth stating, because it explains why pastel suits a transition specifically. A pastel cannot be repaired the way an oil can. There is no glaze, no scumble over a dried layer, no lifting with turpentine, no painting out. A passage from one colour to the next has to be built by laying dust over dust and by stumping, that is, by rubbing the pigment into the tooth of the paper with a rolled paper stub until one hue hands over to the next. The transition is made by abrasion. For a subject whose whole character is a gradual handover between two palettes, the method and the motif are the same gesture."
+        },
+        {
           "type": "header",
-          "content": "An autumn without light",
+          "content": "The sheets have had their own autumn",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Everything above assumes that autumn is a lighting condition. One tradition disagrees. Tosa Mitsuoki's Autumn Maples with Poem Slips, about 1675, a six-panel screen in ink, colours, gold leaf and gold powder on silk, has no atmosphere in it at all. There is no sun angle, no aerial perspective, no shadow. The ground is gold, which is to say the light is a material rather than an event, and it is the same in every part of the picture."
+          "content": "Read the catalogue descriptions of nineteenth-century pastels to the end and something quietly remarkable appears. The Art Institute records Alfred Sisley's A Corner of Moret-sur-Loing, 1895, as pastel with stumping on grey wove paper with blue fibers, discoloured to tan. Mary Cassatt's Sleepy Nicolle, about 1900: blue-grey wove paper, faded to tan. Odilon Redon's Flower Clouds, about 1903: blue-grey wove paper with multi-coloured fibres, altered to tan."
         },
         {
           "type": "text",
-          "content": "Measured, the screen is 83.5 per cent yellow and ochre, the highest concentration in this entire set, with almost nothing neutral. Yet nobody would call it a study of light. Autumn here is signalled by species and by custom: maple leaves, and slips of poetry paper tied to the branches by people who came to look at them. The season is a social event recorded on a gold surface, not a measurement of the sky."
+          "content": "The cool half of each of those pictures, the part the artist chose precisely because it would carry the coldness of the light, is the part that has gone. Paper yellows: lignin oxidises, sizing degrades, and blue dyes are among the least lightfast materials in the room. So these works have themselves travelled from summer to autumn, in the same direction as their subject, over a century, in storage."
+        },
+        {
+          "type": "text",
+          "content": "This is not a footnote for conservators. It changes the reading. A Sisley pastel that today looks like a warm October afternoon may have been drawn as a cold one, its greys held up by a blue support that no longer exists. Anyone measuring a faded pastel is measuring two events at once: the light the artist saw, and the hundred and twenty years since."
+        },
+        {
+          "type": "header",
+          "content": "An autumn with no light in it at all",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Everything above assumes that a season is a lighting condition. One tradition simply disagrees. Tosa Mitsuoki's screen of about 1675 has no atmosphere in it: no sun angle, no aerial perspective, no cast shadow anywhere. The ground is gold leaf, which is to say the light is a material rather than an event, identical in every part of the surface. Measured, the screen is 83.5 per cent yellow and ochre, the highest concentration in this set, with almost nothing neutral, and yet nobody would call it a study of light."
         },
         {
           "type": "image",
@@ -6430,51 +6444,47 @@
         },
         {
           "type": "text",
-          "content": "Holding these two traditions side by side is the fastest way to see what the European nineteenth century was actually doing. It had decided that a season is a quality of light, and that to paint the season you paint the air. That is a choice, not a fact, and it is only about two hundred years old."
+          "content": "Autumn here is signalled by species and by custom: maple leaves, and slips of poetry paper tied to the branches by people who came out to look at them and wrote something down. The season is a social event recorded on a gold surface. Holding this against Monet is the fastest way to see that the European nineteenth century had made a choice, not discovered a fact, when it decided that to paint a season you paint the air."
         },
         {
           "type": "header",
-          "content": "Where the road goes",
+          "content": "Where the road ends",
           "level": 2
         },
         {
           "type": "text",
-          "content": "The last stack in the Chicago group answers the question the first two raise. Measure Stack of Wheat under snow and the warm bias goes negative: minus four points, the only picture in this set where the average pixel is cooler than it is warm. Blue and violet occupy a quarter of the surface. Green is gone entirely, down to a tenth of one per cent. The orange and red band survives at fifteen per cent, and it survives almost entirely inside the stack itself."
-        },
-        {
-          "type": "text",
-          "content": "That is the end of the sequence: the warmth withdraws from the field and concentrates in the single made object standing in it. Autumn is the interval during which that withdrawal is visible and still looks as though it could be reversed. It is the only time of year when a landscape contains both palettes at once, which is precisely why it is worth three weeks of a painter's attention and a whole series of canvases."
+          "content": "The last of the Chicago stacks answers the question the first two open. Measure the snow canvas and the warm bias goes negative, minus 4.3, the only picture in this set whose average is cooler than neutral. Blue and violet take a quarter of the surface. Green is gone to a tenth of one per cent. The orange and red band survives at 15.5 per cent, and almost all of it is inside the stack itself."
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtgsb2so4bi36s.jpg",
-          "caption": "Claude Monet. Stack of Wheat, 1890 to 1891. Oil on canvas. Art Institute of Chicago, purchased with funds provided by the Searle Family Trust. The warm mass has retreated into the stack.",
+          "caption": "Claude Monet. Stack of Wheat, 1890 to 1891. Oil on canvas. Art Institute of Chicago, purchased with funds provided by the Searle Family Trust. The warm mass has retreated into the single made object in the field.",
           "align": "center"
         },
         {
+          "type": "text",
+          "content": "That is the end of the sequence. The warmth withdraws from the field and concentrates in the one built thing standing in it, and the ground hands the light back to the sky. Autumn is the interval in which that handover is visible, which is why it repays a series rather than a single canvas, and why Monet needed twenty-five of them."
+        },
+        {
           "type": "header",
-          "content": "How to look, this week",
+          "content": "Four questions to take outside",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Four things to check against any autumn picture, and against the street outside. Where is the brightest surface: still the sky, or already the ground? What colour is the shadow: blue, which means high sun and a strong sky fill, or grey and violet, which means the light is coming from a lower and warmer source? How many planes of distance survive, three or two? And is the yellow spread evenly through the mass, or are the reds arriving in patches, which tells you how far into the process the trees have gone."
-        },
-        {
-          "type": "text",
-          "content": "The season is short and it is measurable. Monet needed twenty-five canvases to hold it. The rest of us can manage with a walk and the right questions."
+          "content": "Which is brighter, the sky or the ground. Where is the warmth, in the light or in the shadow. How many planes of distance survive, three or two. And is the yellow spread through the mass while the red arrives in patches, which tells you how far the process has gone. The first two will date a landscape painting to within about six weeks, and they work equally well on the street outside."
         },
         {
           "type": "header",
-          "content": "Note on method and sources",
+          "content": "Method and sources",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Colour proportions quoted here were computed from high-resolution open-access reproductions, sampled at reduced size, with pixels grouped into hue families and reported as a share of image surface. Figures describe the reproductions, not the paint, and are meant for comparison between images in the same set rather than as absolute colour data. Works from the Art Institute of Chicago and the Metropolitan Museum of Art are reproduced under their open-access programmes; Levitan's Golden Autumn is in the public domain. Medium and support descriptions, including records of discoloration, are quoted from the holding institutions' own catalogue entries."
+          "content": "Colour figures were computed from open-access reproductions, sampled at reduced resolution, with red-minus-blue used as a warm-cool proxy and pixels grouped into hue families reported as a share of surface. Regional figures come from fixed rectangles in each image, described in the text. These are measurements of photographs, not of paint: museum photography is colour-managed but interpretive, and century-old varnish shifts everything slightly warm. They are meant for comparison between images in the same set. Works from the Art Institute of Chicago, the Cleveland Museum of Art and the Metropolitan Museum of Art appear under their open-access programmes; Levitan's Golden Autumn is in the public domain. Medium and support descriptions, including the records of discoloration, are quoted from the holding institutions' own catalogue entries."
         }
       ],
-      "updatedAt": "2026-08-31T05:21:04.104Z"
+      "updatedAt": "2026-08-31T05:29:10.717Z"
     }
   ],
   "reviews": [
