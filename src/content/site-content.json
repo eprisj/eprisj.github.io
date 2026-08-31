@@ -6266,16 +6266,16 @@
           "content": "We measured the colour of high-resolution reproductions of two of them. This is a reading of photographs, not of paint, and the caveat matters: museum photography is colour-managed toward accuracy but it is still an interpretation, and a varnish layer a century old shifts everything slightly warm. What the numbers can show is not the absolute colour of Monet's pigment but the difference between two canvases photographed under the same programme."
         },
         {
-          "type": "gallery",
-          "content": [
-            "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
-            "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg"
-          ],
-          "caption": "",
-          "alts": [
-            "Stacks of Wheat (End of Summer), 1890 to 1891, Art Institute of Chicago",
-            "Stacks of Wheat (End of Day, Autumn), 1890 to 1891, Art Institute of Chicago"
-          ]
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
+          "caption": "Before the turn. Stacks of Wheat (End of Summer), 1890 to 1891, Art Institute of Chicago",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg",
+          "caption": "After it. Stacks of Wheat (End of Day, Autumn), 1890 to 1891, Art Institute of Chicago",
+          "align": "center"
         },
         {
           "type": "text",
@@ -6474,7 +6474,7 @@
           "content": "Colour proportions quoted here were computed from high-resolution open-access reproductions, sampled at reduced size, with pixels grouped into hue families and reported as a share of image surface. Figures describe the reproductions, not the paint, and are meant for comparison between images in the same set rather than as absolute colour data. Works from the Art Institute of Chicago and the Metropolitan Museum of Art are reproduced under their open-access programmes; Levitan's Golden Autumn is in the public domain. Medium and support descriptions, including records of discoloration, are quoted from the holding institutions' own catalogue entries."
         }
       ],
-      "updatedAt": "2026-08-31T05:18:22.942Z"
+      "updatedAt": "2026-08-31T05:21:04.104Z"
     }
   ],
   "reviews": [
