@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CHAPTERS, bySlug, type Chapter } from './chapters';
+import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
 /**
@@ -73,6 +74,91 @@ function ChapterView({ ch }: { ch: Chapter }) {
   );
 }
 
+/* Одна заготовка с кнопкой копирования.
+   Кнопка тут не украшение: библиотеку открывают, чтобы взять текст в работу,
+   и выделять мышью многострочный блок с отступами неудобно. Состояние
+   «скопировано» держится две секунды и возвращается само: подтверждение
+   нужно в момент нажатия, а не навсегда. */
+function PromptCard({ p }: { p: Prompt }) {
+  const [state, setState] = useState<'idle' | 'copied' | 'selected'>('idle');
+  const pre = useRef<HTMLPreElement>(null);
+
+  /* Запись в буфер отказывает чаще, чем кажется: старый браузер, отказ в
+     правах, страница не в фокусе, открытие из другого приложения. Молчаливая
+     неудача тут худший исход: человек нажал и не понял, сработало или нет.
+     Поэтому у кнопки есть запасной путь: выделить текст заготовки целиком,
+     чтобы осталось нажать Cmd+C. Действие всегда заканчивается чем-то
+     видимым. */
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(p.text);
+      setState('copied');
+    } catch {
+      const node = pre.current;
+      if (node) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+        setState('selected');
+      }
+    }
+    setTimeout(() => setState('idle'), 2400);
+  };
+
+  const label = state === 'copied' ? 'Скопировано'
+    : state === 'selected' ? 'Выделено, нажмите Cmd+C'
+    : 'Копировать';
+
+  return (
+    <article className="codex-prompt">
+      <header>
+        <div>
+          <h3>{p.title}</h3>
+          <p className="when">{p.when}</p>
+        </div>
+        <button type="button" className="codex-btn" onClick={copy}>{label}</button>
+      </header>
+      <pre ref={pre}>{p.text}</pre>
+    </article>
+  );
+}
+
+function PromptLibrary() {
+  return (
+    <>
+      <section className="codex-open">
+        <span className="codex-mono">Приложение</span>
+        <h1>Библиотека запросов</h1>
+        <p className="lead">
+          Готовые заготовки под повторяющиеся задачи. Копируйте, заполняйте
+          квадратные скобки, отправляйте.
+        </p>
+      </section>
+
+      <div className="codex-note">
+        <p>
+          Квадратные скобки это места, которые надо заполнить перед отправкой.
+          Если заполнять нечего, это обычно значит, что не приложен материал,
+          а без материала работать нельзя: см. главу 02.
+        </p>
+        <p>
+          Заготовки повторяют примеры из глав, но без объяснений. Если непонятно,
+          почему запрос написан именно так, глава с разбором рядом.
+        </p>
+      </div>
+
+      {PROMPT_GROUPS.map((g) => (
+        <section key={g} className="codex-group">
+          <span className="codex-mono">{g}</span>
+          {byGroup(g).map((p) => <PromptCard key={p.id} p={p} />)}
+        </section>
+      ))}
+    </>
+  );
+}
+
 export function CodexPage() {
   const [single, setSingle] = useState<string | null>(slugFromPath());
 
@@ -91,13 +177,16 @@ export function CodexPage() {
     window.scrollTo(0, 0);
   };
 
-  const ch = single ? bySlug(single) : null;
+  const isLibrary = single === 'prompty';
+  const ch = single && !isLibrary ? bySlug(single) : null;
 
   useEffect(() => {
-    document.title = ch
+    document.title = isLibrary
+      ? 'Библиотека запросов · Как работать с машиной · EPRIS'
+      : ch
       ? `${ch.title} · Как работать с машиной · EPRIS`
       : 'Как работать с машиной · Мануал редакции EPRIS';
-  }, [ch]);
+  }, [ch, isLibrary]);
 
   return (
     <div className="codex-root">
@@ -110,7 +199,14 @@ export function CodexPage() {
           <span className="right codex-mono">{CHAPTERS.length} глав</span>
         </header>
 
-        {ch ? (
+        {isLibrary ? (
+          <>
+            <button type="button" className="codex-btn" onClick={() => go(null)}>
+              ← Все главы
+            </button>
+            <PromptLibrary />
+          </>
+        ) : ch ? (
           <>
             <button type="button" className="codex-btn" onClick={() => go(null)}>
               ← Все главы
@@ -165,6 +261,14 @@ export function CodexPage() {
                 ))}
               </ol>
             </nav>
+
+            <div className="codex-lib-link">
+              <a href="/codex/prompty" onClick={(e) => { e.preventDefault(); go('prompty'); }}>
+                <span className="codex-mono">Приложение</span>
+                <span className="t">Библиотека запросов</span>
+                <span className="s">{PROMPTS.length} готовых заготовок под повторяющиеся задачи. Копировать и заполнить.</span>
+              </a>
+            </div>
 
             {CHAPTERS.map((c) => <ChapterView key={c.slug} ch={c} />)}
           </>

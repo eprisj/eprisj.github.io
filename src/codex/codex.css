@@ -194,3 +194,43 @@
   .codex-root{font-size:16px}
   .codex-head .back{display:none}
 }
+
+/* ─── БИБЛИОТЕКА ЗАПРОСОВ ────────────────────────────────────────────────────
+   Другой жанр чтения, чем главы: сюда приходят взять текст в работу, а не
+   читать. Поэтому карточки идут сплошным списком без служебной колонки
+   слева, а заголовок группы стоит над ними отдельной строкой. */
+.codex-group{margin-top:clamp(2.4rem,4.5vw,3.6rem);padding-top:clamp(1.4rem,2.4vw,2rem);border-top:1px solid var(--c-ink)}
+.codex-group > .codex-mono{display:block;margin-bottom:14px}
+
+.codex-prompt{margin-top:16px;border:1px solid var(--c-rule-strong)}
+.codex-prompt header{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:13px 14px;border-bottom:1px solid var(--c-rule-strong);background:var(--c-paper-deep);
+}
+.codex-prompt h3{font-family:var(--font-head);font-weight:400;font-size:20px;line-height:1.15}
+.codex-prompt .when{margin-top:5px;max-width:52ch;font-size:14.5px;line-height:1.45;color:var(--c-muted)}
+/* Заготовку набираем моноширинным и с сохранением переносов: она попадёт в
+   поле ввода ровно в том виде, в каком тут лежит, и переносы в ней значимы. */
+.codex-prompt pre{
+  margin:0;padding:14px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;
+  font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  font-size:13.5px;line-height:1.55;color:var(--c-ink);
+}
+
+/* Ссылка на приложение в конце оглавления: строка того же реестра, но с
+   рамкой, потому что ведёт не в главу. */
+.codex-lib-link{margin-top:clamp(1.6rem,3vw,2.4rem)}
+.codex-lib-link a{
+  display:block;padding:clamp(16px,2.4vw,22px);border:1px solid var(--c-ink);
+  background:var(--c-paper-deep);transition:background .16s ease;
+}
+.codex-lib-link a:hover{background:var(--c-paper)}
+.codex-lib-link .t{
+  display:block;margin-top:8px;font-family:var(--font-head);
+  font-size:clamp(22px,2.4vw,28px);line-height:1.1;letter-spacing:-.014em;
+}
+.codex-lib-link .s{display:block;margin-top:7px;max-width:60ch;font-size:15px;line-height:1.5;color:var(--c-muted)}
+
+@media (max-width:640px){
+  .codex-prompt header{flex-direction:column;align-items:stretch}
+}
