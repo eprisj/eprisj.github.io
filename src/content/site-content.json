@@ -25766,19 +25766,20 @@
         },
         {
           "id": 30,
-          "title": "El Giro: Cómo los pintores midieron el paso del verano al otoño",
+          "title": "Dónde vive el calor: Cómo dos tradiciones midieron el giro del verano al otoño",
           "author": "Viacheslav Munister",
           "authorId": "author-1784732936927-kw554",
           "role": "Autor",
-          "date": "31 de ago, 2026",
-          "excerpt": "Tres semanas en las que la luz cambia dirección. Una lectura detallada de la temporada en la pintura: la física de un sol más bajo, una comparación medida de los montones de trigo de Monet antes y después del giro, por qué el otoño devuelve a la pintura a sus pigmentos más antiguos, y por qué el pastel, de todos los medios, realiza esta luz en lugar de imitarla.",
+          "date": "31 de ago de 2026",
+          "excerpt": "El otoño no hace que la luz sea más cálida. Medido región por región, dos lienzos del mismo campo muestran que el cielo permaneció donde estaba mientras el suelo se calienta diecisiete puntos, y las sombras, todo el verano llenas de luz azul del cielo, se convierten en los pasajes más cálidos de la imagen. Con tres pasteles en los que el medio se mantiene quieto y solo la temporada se mueve. Y una segunda mitad en la que el otoño no es una luz en absoluto: un calendario que lo declara el siete de agosto, una estación llevada por una hierba, y una luna sin horizonte del que surgir.",
           "category": "arte",
           "subcategory": "Ensayo",
           "tags": [
             "pintura",
             "luz",
             "pastel",
-            "estaciones"
+            "estaciones",
+            "japón"
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
@@ -25790,11 +25791,11 @@
           "content": [
             {
               "type": "texto",
-              "content": "Cada año la luz cambia de dirección. Ocurre en aproximadamente tres semanas, y sucede con o sin que nadie esté mirando: el sol cae unos grados en el cielo, su luz viaja más lejos a través del aire para alcanzar el suelo, y todo lo que era azul en las sombras se vuelve gris, luego violeta, luego marrón. Los pintores siempre han conocido esta ventana. Algunos de ellos construyeron carreras enteras dentro de ella."
+              "content": "La forma habitual de describir el otoño en la pintura es decir que la luz se vuelve cálida. Es la descripción equivocada, y una serie de mediciones tomadas de las propias pinturas muestra por qué. La luz no se vuelve cálida. El <em>suelo</em> sí, y una vez que lo hace, toma el control del trabajo que el cielo había estado haciendo durante todo el verano. Lo que cambia no es el color de la luz sino la dirección del calor en la imagen."
             },
             {
               "type": "texto",
-              "content": "Este es un intento de leer ese giro de cerca, no como un estado de ánimo sino como un conjunto de eventos medibles. ¿Qué hace exactamente la luz entre finales de agosto y finales de octubre, por qué la paleta de una pintura se estrecha de la manera en que lo hace, qué le sucede a una sombra, y por qué el pastel, de todos los medios, captura mejor la temporada que cualquier cosa mezclada con óleo."
+              "content": "Esta pieza trabaja a través de esa afirmación en diez pinturas y pasteles, la mayoría de ellas medidas región por región: dos lienzos del mismo campo antes y después del cambio, tres pasteles en los que el medio se mantiene constante y solo la estación se desplaza, y un conjunto de comparaciones que termina en algún lugar útil para cualquiera que pinte, fotografíe o simplemente observe."
             },
             {
               "type": "imagen",
@@ -25804,244 +25805,346 @@
             },
             {
               "type": "encabezado",
-              "content": "La física, brevemente",
+              "content": "Un campo, dos veces",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "Tres cosas cambian a la vez, y solo la primera es obvia. La elevación máxima del sol cae: en la latitud de París se encuentra alrededor de 64 grados sobre el horizonte en el solsticio de verano y alrededor de 40 grados a finales de octubre. Un sol más bajo significa un camino más largo a través de la atmósfera, y un camino más largo significa que más de las longitudes de onda cortas se dispersan fuera del haz directo antes de que llegue al campo. La luz que aterriza es medible más cálida, y la luz que llega indirectamente, desde toda la cúpula del cielo, es proporcionalmente menos azul que en julio."
+              "content": "En 1890 y 1891 Monet pintó las pilas de trigo en un campo a unos minutos de su casa en Giverny, volviendo a las mismas formas en diferentes horas y en diferentes condiciones climáticas. Seis de esos lienzos están en el Art Institute of Chicago. Eso hace posible comparar no dos sujetos sino un mismo sujeto dos veces, con todo lo demás en calma: mismo campo, mismas pilas, mismo pintor, misma distancia, misma caja de colores."
             },
             {
               "type": "texto",
-              "content": "En segundo lugar, el día se acorta. Esto suena como un hecho sobre horarios, pero para un pintor que trabaja al aire libre es un hecho sobre materiales. El ángulo bajo que produce sombras largas y color cálido ocupa una mayor parte del día de trabajo en octubre que en julio. Un pintor que sale a la misma hora con la misma caja de pigmentos simplemente recibe más de esa luz por sesión."
+              "content": "Medimos cuatro regiones en cada lienzo: una franja de cielo en la parte superior, la banda de árboles en el horizonte, el campo del primer plano y el cuerpo de la pila grande. La medida es sencilla, el canal rojo menos el canal azul, que es un proxy útil para determinar si un pasaje tiende a ser cálido o frío. Positivo significa cálido."
             },
             {
               "type": "texto",
-              "content": "En tercer lugar, el aire cambia. Noches más frescas y suelo más cálido producen niebla matutina; la humedad mantiene partículas en suspensión. El resultado es un rango tonal comprimido: las distancias se vuelven pálidas, el contraste cae, y el cielo deja de ser una fuente de color saturado y se convierte en una fuente de iluminación uniforme y plateada. La perspectiva aérea, que en verano separa tres o cuatro planos, en otoño puede aplanar todo un valle en dos."
-            },
-            {
-              "type": "encabezado",
-              "content": "El mismo campo, dos estaciones",
-              "level": 2
+              "content": "<strong>Cielo:</strong> menos 3.9 a finales de verano, más 1.6 en otoño. Casi sin movimiento.<br><strong>Línea de árboles:</strong> más 22.4, luego más 10.7. La distancia se vuelve <em>más fría</em>, no más cálida.<br><strong>Campo del primer plano:</strong> más 1.0, luego más 18.2. Un cambio de diecisiete puntos.<br><strong>La pila grande:</strong> más 36.9, luego más 47.6."
             },
             {
               "type": "texto",
-              "content": "En 1890 y 1891 Monet pintó las pilas de trigo en un campo cerca de su casa en Giverny, volviendo a las mismas formas en diferentes horas y en diferentes condiciones climáticas. Seis de esos lienzos están en el Art Institute of Chicago, lo que hace posible comparar no dos temas sino un tema dos veces, con todo lo demás excepto la estación mantenido constante: mismo campo, mismas pilas, mismo pintor, misma distancia, misma caja."
-            },
-            {
-              "type": "texto",
-              "content": "Medimos el color de reproducciones de alta resolución de dos de ellos. Esto es una lectura de fotografías, no de pintura, y la advertencia importa: la fotografía de museos está gestionada en color para la precisión, pero todavía es una interpretación, y una capa de barniz de un siglo de antigüedad desplaza todo ligeramente hacia el cálido. Lo que los números pueden mostrar no es el color absoluto del pigmento de Monet sino la diferencia entre dos lienzos fotografiados bajo el mismo programa."
-            },
-            {
-              "type": "imagen",
-              "content": "https://api.eprisjournal.com/uploads/mtgsb1705nao6y.jpg",
-              "caption": "Antes del cambio. Pilas de trigo (Final del verano), 1890 a 1891, Art Institute of Chicago",
-              "align": "centro"
+              "content": "El cielo no es la variable. La variable es el campo. Entre los dos lienzos, el suelo pasa de neutral a claramente cálido mientras el cielo permanece en su lugar, y el horizonte en realidad se vuelve más azul a medida que el aire más denso empuja los árboles lejanos hacia atrás. Sea lo que sea que esté haciendo la temporada, lo está haciendo a nivel del suelo."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtgsb1s5cdzb0h.jpg",
-              "caption": "Después de ello. Pilas de trigo (Final del día, otoño), 1890 a 1891, Art Institute of Chicago",
-              "align": "centro"
-            },
-            {
-              "type": "texto",
-              "content": "En Fin del Verano, la superficie se divide aproximadamente en una sexta verde, una quinta amarilla y ocre, una séptima en la banda naranja y roja, y una décima en azul y violeta. El píxel promedio es más cálido que frío en unos trece puntos en una escala de 255. Es una imagen equilibrada en el sentido literal: ninguna familia de matices la domina."
-            },
-            {
-              "type": "texto",
-              "content": "En Fin del Día, Otoño, la misma medición se descompone. La banda naranja y roja sube del catorce por ciento de la superficie a casi treinta y seis. El verde cae. El azul y violeta caen en más de un tercio. La inclinación cálida del píxel promedio casi se duplica, de trece puntos a veinticuatro. Dos lienzos del mismo campo, y la masa cálida ha crecido dos veces y media."
-            },
-            {
-              "type": "texto",
-              "content": "Ese número único es la temporada. No un estado de ánimo, no un recuerdo del fin de las vacaciones escolares: una redistribución de la superficie de un parte del espectro a otra, lo suficientemente grande como para que puedas ordenar los dos lienzos en la oscuridad solo por medición."
+              "caption": "Claude Monet. Pilas de trigo (Fin del día, Otoño), 1890 a 1891. Óleo sobre lienzo, 65.8 por 101 cm. Art Institute of Chicago, Colección conmemorativa del Sr. y la Sra. Lewis Larned Coburn.",
+              "align": "centrar"
             },
             {
               "type": "encabezado",
-              "content": "De dónde viene el amarillo, y por qué no es lo mismo que el rojo",
+              "content": "El mismo metro cuadrado, de cerca",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "La botánica vale la pena decirla con precisión, porque explica una diferencia que los pintores sienten pero rara vez nombran. Una hoja verde no es verde porque se añada verde; es verde porque domina la clorofila. Carotenoides y xantofilas, los amarillos y amarillos-anaranjados, ya están presentes en la hoja durante todo el verano, enmascarados. Cuando el árbol comienza a retirar nutrientes y la producción de clorofila se detiene, la máscara se quita y el amarillo simplemente se revela. Llega por sustracción."
+              "content": "Recorta el mismo fragmento de ambos lienzos, la base de la pila grande y el campo que se aleja de ella, y amplíalo. Aquí es donde el argumento deja de ser una tabla de números."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtgssxdiwdvy1y.jpg",
+              "caption": "Fin del verano, detalle. El rastro está construido con trazos azules, violetas y turquesas con destellos rosados y verde-amarillo colocados entre ellos.",
+              "align": "centrar"
             },
             {
               "type": "texto",
-              "content": "Los rojos son un evento diferente. Los antocianos, en muchas especies, se fabrican en otoño, producidos en la hoja a medida que los azúcares quedan atrapados allí. Son nuevos. Así que la paleta del año que cambia está formada por dos procesos opuestos a la vez: amarillo descubierto, rojo producido. En el lienzo esto se lee como una diferencia en el comportamiento. Los amarillos se extienden uniformemente a través de una masa de follaje porque ya estaban en todas partes; los rojos aparecen en parches, en árboles particulares, en el lado soleado, en la copa antes de la base."
+              "content": "En el verano el detalle del campo es azul. No azul-azulado: en la franja inferior de esta cosecha, el 26.5 por ciento de la superficie se encuentra en la banda azul y violeta y solo el 13.5 por ciento en el rosa y rojo. El rastrojo está dibujado con trazos cortos y picados que corren en tres o cuatro direcciones, cada uno una decisión separada, con el lienzo respirando entre ellos. La pila se asienta sobre ese suelo fresco como un objeto cálido, y el contraste entre ellos es el tema."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtgssxxm2w54lw.jpg",
+              "caption": "Fin del día, Otoño, detalle del mismo pasaje. El azul ha caído al 0.6 por ciento de la franja; rosa y rojo han subido al 37.2.",
+              "align": "centrar"
+            },
+            {
+              "type": "texto",
+              "content": "En el detalle de otoño el azul ha desaparecido. Seis décimos de un por ciento de esa misma franja todavía es azul o violeta, frente al 37.2 por ciento rosa y rojo. La forma de manejar ha cambiado con ello: los trazos son más largos, arrastrados más horizontalmente, y la pintura se ha convertido en una costra continua en lugar de una malla de marcas separadas. La pila y el campo ahora tienen la misma temperatura, más 47.6 frente a más 18.6, y la imagen ha perdido el contraste que organizaba la versión de verano. Tiene que ser organizado por otra cosa, y Monet lo organiza por valor, la masa oscura de la pila contra un campo pálido, y por la única nota fría que sobrevive a lo largo de la línea de árboles."
+            },
+            {
+              "type": "encabezado",
+              "content": "Por qué el calor se desplaza",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El mecanismo no es misterioso una vez que los números apuntan al suelo. Cualquier sombra es iluminada por lo que el cielo y los alrededores rebotan en ella. En pleno verano, con un sol alto y una gran área de cielo despejado, la luz de relleno dominante es la luz del cielo, que es azul, y las sombras se vuelven azules. Esa es la base física de todo el hábito impresionista de pintar sombras violetas en un campo verde. No es un tic estilístico; es una medición."
+            },
+            {
+              "type": "text",
+              "content": "A finales de octubre dos cosas han cambiado. El cielo es más a menudo un difusor que una fuente, un techo gris uniforme sin un haz direccional fuerte y sin un azul intenso. Y el suelo bajo todo se ha convertido en un reflector cálido enorme: paja seca, hojas caídas, suelo desnudo, todo de color ocre. La luz secundaria en el paisaje deja de ser azul y se vuelve naranja. La sombra, que no es más que luz secundaria, se calienta en consecuencia."
+            },
+            {
+              "type": "text",
+              "content": "Medido en todo el conjunto, este cambio es lo más consistente que encontramos. En el estudio del cielo de verano de Boudin, el quinto más oscuro de la imagen es 24.8 puntos <em>más frío</em> que neutral y el quinto más claro es 11.4 puntos más cálido: una diferencia de 36 puntos en la dirección del libro de texto. En el río de octubre de Lhermitte, la relación está invertida, las sombras más cálidas que las luces por 45 puntos. Golden Autumn de Levitan: invertido por 20. Las dos propias pinturas de Monet pasan de una diferencia de 0.4 a una diferencia de 7.6 en la misma dirección."
+            },
+            {
+              "type": "quote",
+              "content": "El verano mantiene su calidez en la luz y su frescura en la sombra. El otoño hace lo opuesto. La temporada no es un cambio de color, es un cambio de dónde vive el color."
+            },
+            {
+              "type": "header",
+              "content": "Contra la palabra apagado",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El otoño suele llamarse apagado, y las pinturas no están de acuerdo. La saturación media en el lienzo de verano tardío de Monet es 0.169; en el lienzo de otoño es 0.204. En el percentil noventa, es decir, en la décima más intensa de la superficie, las cifras son 0.312 y 0.372. La imagen de otoño es la más saturada de las dos en aproximadamente una quinta parte."
+            },
+            {
+              "type": "text",
+              "content": "Lo que realmente se estrecha es el rango de matiz, no la intensidad. La paleta se cierra hacia un arco más pequeño de la rueda de colores y luego trabaja más duro dentro de ella. October Day de Jean-Charles Cazin es el caso límite: medido en toda su superficie, no contiene verde en absoluto, 54 por ciento de amarillo y ocre, 46 por ciento de naranja y rojo, y una inclinación cálida de 61 puntos, cinco veces la de Monet en verano tardío. No es una imagen tranquila. Es una imagen ruidosa hecha de tres colores."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgsb3eugamqxr.jpg",
+              "caption": "Jean-Charles Cazin. October Day, 1890 a 1893. Óleo sobre lienzo, 38.4 por 46.7 cm. Art Institute of Chicago, Henry Field Memorial Collection. Sin verde en ninguna parte de la superficie.",
+              "align": "center"
+            },
+            {
+              "type": "texto",
+              "content": "Vale la pena notar qué colores sobreviven al cierre. Ocre, sienna cruda y quemada, umber, tierra roja. Estos son los pigmentos más antiguos en uso en cualquier parte, molidos de la tierra, en las cuevas decenas de miles de años antes de que alguien tuviera un azul que no costara más que el panel en el que se colocaba. El otoño devuelve la pintura a su primera paleta, y pinta la temporada con los colores del material que está representando."
+            },
+            {
+              "type": "encabezado",
+              "content": "De dónde proviene el amarillo, y por qué el rojo se comporta de manera diferente",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "Una hoja verde no es verde porque se haya añadido verde. Es verde porque la clorofila es dominante, y los carotenoides y xantofilas que dan los amarillos y amarillos anaranjados han estado dentro de la hoja todo el verano, enmascarados. Cuando el árbol comienza a retirar nutrientes y la producción de clorofila se detiene, la máscara se levanta y se revela el amarillo. Llega por sustracción."
+            },
+            {
+              "type": "texto",
+              "content": "Los rojos son un evento diferente. En muchas especies, las antocianinas se fabrican en otoño, hechas nuevas en la hoja a medida que los azúcares quedan atrapados allí por el cierre de los canales vasculares. Así, las dos mitades de la paleta de otoño provienen de procesos opuestos, uno un desenmascaramiento y otro una producción, y esto se refleja en cómo se distribuyen. Los amarillos se extienden uniformemente a través de toda una masa de follaje, porque ya estaban en todas partes. Los rojos aparecen en parches: en árboles particulares, en el lado soleado, en la copa antes de la base. Un pintor que distribuye rojo uniformemente por un bosque ha pintado algo que no sucede."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtgsb6am3359k5.jpg",
-              "caption": "Jean-Francois Millet. Haystacks: Otoño, aproximadamente 1874. Óleo sobre lienzo. El Museo Metropolitano de Arte, Nueva York (Acceso Abierto, CC0). En nuestra medición, el 68.6 por ciento de esta superficie cae en la banda amarilla y ocre, y el suelo se lee más brillante que el cielo.",
+              "caption": "Jean-Francois Millet. Haystacks: Otoño, aproximadamente 1874. Óleo sobre lienzo. El Museo Metropolitano de Arte, Nueva York, Acceso Abierto. Medido aquí: el cielo lee 105, 109, 97 y el suelo 131, 104, 61. El campo es más brillante que el cielo sobre él.",
               "align": "centrar"
             },
             {
+              "type": "texto",
+              "content": "La imagen de Millet contiene la otra inversión de otoño, la que sigue a la primera. Bajo un cielo nublado difuso, un campo de paja cortada se convierte en la superficie más brillante en vista y el cielo sobre él se vuelve opaco. En un paisaje de verano esto es casi imposible, porque el cielo es la fuente. Aquí la fuente se ha extendido y el suelo está haciendo el reflejo, por lo que la imagen está efectivamente iluminada desde abajo. También resuelve un viejo problema compositivo: la figura ya no tiene que competir con un cielo brillante y puede ser dibujada como una forma oscura sobre un fondo brillante."
+            },
+            {
               "type": "encabezado",
-              "content": "La inversión: cuando el suelo ilumina más que el cielo",
+              "content": "Pastel, y por qué esta temporada le pertenece",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "Hay un efecto otoñal específico que el verano casi nunca produce. Mida el cuarto superior de los Pajaros de Millet y obtendrá un promedio de aproximadamente 105, 109, 97 en rojo, verde y azul. Mida la mitad inferior y obtendrá 131, 104, 61. El suelo es más claro que el cielo, y mucho más cálido. En un paisaje de verano esto es casi imposible: el cielo es la fuente de luz y lo más brillante en la imagen. En otoño, bajo una nube que actúa como difusor, un campo de paja cortada y tallos secos se convierte en la superficie más brillante a la vista."
+              "content": "Si un medio domina las tres semanas del giro, es pastel, y la razón es óptica más que sentimental. La pintura al óleo es pigmento suspendido en una película: la luz entra en la película, se absorbe en parte dentro de ella, y vuelve a salir habiendo sido cambiada en el camino. Eso es lo que da al óleo su profundidad y su capacidad para ser glaseado. El pastel es pigmento con casi ningún aglutinante, un poco de goma, prensado en un bastón y luego abrasado sobre una superficie dentada. Se queda allí como granos sueltos con aire entre ellos. La luz no viaja a través de un medio; se dispersa en las superficies de partículas secas y regresa inmediatamente, en todas las direcciones, con casi ningún componente especular."
             },
             {
-              "type": "texto",
-              "content": "Los pintores explotan esto en silencio. Les da una imagen iluminada desde abajo, en efecto, donde el ojo descansa en la tierra en lugar de subir al horizonte. También resuelve un viejo problema compositivo: la figura ya no tiene que competir con un cielo brillante, y puede ser dibujada como una forma oscura sobre un fondo brillante en lugar de una forma clara contra la luz."
+              "type": "text",
+              "content": "Es decir, en el sentido óptico exacto, el mismo comportamiento que un cielo de otoño nublado, que es un difusor en lugar de una fuente. Pastel no imita la luz de la temporada. Reproduce su física."
+            },
+            {
+              "type": "text",
+              "content": "Tres pasteles explican mejor el caso que cualquier argumento, porque el medio se mantiene constante y solo la temporada se mueve. Los tres están dibujados en papel tonificado, que es la segunda mitad de la historia."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgssyf5sub0kk.jpg",
+              "caption": "Eugene Boudin. Paisaje marino con cielo abierto, 1860. Pastel sobre papel de trama gris montado en tabla. Cleveland Museum of Art, CC0. Medido: el quinto más oscuro de esta hoja es 24.8 puntos más frío que neutral, la brecha de sombra fría más ancha en todo nuestro conjunto.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Boudin es el estado de cosas del verano en su forma más pura. Hizo cientos de estos estudios del cielo en la costa de Normandía, fechados y cronometrados en la hoja como registros meteorológicos, y Corot lo llamó el rey de los cielos por ello. Lo que la medición encuentra es exactamente la firma del verano: luces brillantes, y sombras llenas de azul de un cielo abierto enorme. El gris del papel hace el trabajo del tono medio, y la tiza blanca se usa solo en las cimas de las nubes."
             },
             {
               "type": "imagen",
-              "content": "https://api.eprisjournal.com/uploads/mtgsb4hk0rr7fn.jpg",
-              "caption": "George Inness. Después de una tormenta de verano, 1894. Óleo sobre lienzo. Art Institute of Chicago, Colección Edward B. Butler. Medida del verano: 48.1 por ciento de la superficie en la banda verde, y ninguna lectura en naranja y rojo.",
+              "content": "https://api.eprisjournal.com/uploads/mtgssyz6rhlac1.jpg",
+              "caption": "John Henry Twachtman. Pastizales, Branchville, Connecticut, aproximadamente de 1888 a 1891. Pastel sobre tablero de composición. Cleveland Museum of Art, CC0.",
               "align": "centrar"
             },
             {
+              "type": "texto",
+              "content": "Twachtman muestra la segunda cosa que el pastel puede hacer que el óleo no puede. Casi nada aquí está dibujado. El tono del soporte <em>es</em> la hierba seca, la luz y la estación al mismo tiempo, y el pastel se gasta solo en lo que se aparta de ello: los árboles oscuros a la izquierda, las sombras azul-violeta rasgando a través de la distancia media, unos pocos trazos de nube blanca, algo de verde que aún sobrevive. El artista eligió el color de la luz antes de hacer una sola marca, y luego hizo la menor cantidad de marcas posible. En óleo, ese terreno habría desaparecido bajo la imagen."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtgsszdax0jzq1.jpg",
+              "caption": "Leon Augustin Lhermitte. Quai au Sable, Chartèves, 1904. Pastel sobre papel de trama gris. Cleveland Museum of Art, CC0. Sombras 52 puntos cálidos, luces 6.6: la inversión en su forma más extrema en nuestro conjunto.",
+              "align": "centrar"
+            },
+            {
+              "type": "texto",
+              "content": "Y Lhermitte es el estado de otoño, en el mismo medio, en el mismo tipo de hoja tonificada. Álamos amarillos, un banco de barro ocre, un río frío que sostiene el último azul en la imagen, y sombras que son los pasajes más cálidos en la hoja a una distancia de 45 puntos. Pon el Boudin y el Lhermitte uno al lado del otro y todo el argumento de esta pieza es visible en dos objetos hechos de la misma polvo."
+            },
+            {
+              "type": "text",
+              "content": "Hay una consecuencia más del medio que vale la pena mencionar, porque explica por qué el pastel se adapta específicamente a una transición. Un pastel no puede ser reparado de la misma manera que un óleo. No hay glaseado, ni veladura sobre una capa seca, ni levantamiento con trementina, ni pintura borrada. Un pasaje de un color al siguiente debe construirse colocando polvo sobre polvo y mediante estompeado, es decir, frotando el pigmento en la textura del papel con un trozo de papel enrollado hasta que un tono se transfiera al siguiente. La transición se realiza por abrasión. Para un tema cuyo carácter completo es una transferencia gradual entre dos paletas, el método y el motivo son el mismo gesto."
+            },
+            {
+              "type": "header",
+              "content": "Las hojas han tenido su propio otoño",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Lee las descripciones del catálogo de pasteles del siglo XIX hasta el final y aparece algo silenciosamente notable. El Art Institute registra Alfred Sisley's A Corner of Moret-sur-Loing, 1895, como pastel con estompeado en papel de trama gris con fibras azules, decolorado a tono marrón. Sleepy Nicolle de Mary Cassatt, alrededor de 1900: papel de trama gris azulado, desvanecido a tono marrón. Flower Clouds de Odilon Redon, alrededor de 1903: papel de trama gris azulado con fibras multicolores, alterado a tono marrón."
+            },
+            {
+              "type": "text",
+              "content": "La mitad fría de cada una de esas imágenes, la parte que el artista eligió precisamente porque llevaría la frialdad de la luz, es la parte que se ha ido. El papel amarillea: la lignina se oxida, el tamaño se degrada y los tintes azules están entre los materiales menos resistentes a la luz en la habitación. Así, estas obras han viajado ellas mismas del verano al otoño, en la misma dirección que su tema, durante más de un siglo, en almacenamiento."
+            },
+            {
+              "type": "texto",
+              "content": "Esto no es una nota al pie para conservadores. Cambia la lectura. Un pastel de Sisley que hoy parece una tarde cálida de octubre pudo haber sido dibujado como una fría, sus grises sostenidos por un soporte azul que ya no existe. Cualquier persona que mida un pastel desvanecido está midiendo dos eventos a la vez: la luz que vio el artista, y los ciento veinte años transcurridos."
+            },
+            {
               "type": "encabezado",
-              "content": "La paleta se cierra",
+              "content": "El otoño comienza el siete de agosto",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "El Día de Octubre de Jean-Charles Cazin es un caso extremo y por lo tanto uno esclarecedor. Medido de la misma manera, la imagen no contiene nada de verde: el 54 por ciento de la superficie se encuentra en la banda amarilla y ocre, el 46 por ciento en naranja y rojo, y la fracción restante se acerca a nada. Su sesgo cálido es de 61 puntos, casi cinco veces el de Monet en el verano tardío."
+              "content": "Todo lo anterior asume que una estación es una condición de iluminación, algo que detectas mirando el cielo y el suelo. Una tradición la organiza de la otra manera, y mantener las dos lado a lado es la forma más rápida de ver que el siglo XIX europeo hizo una elección en lugar de un descubrimiento."
             },
             {
               "type": "texto",
-              "content": "Así es como se ve una paleta de cierre. Y vale la pena notar qué pigmentos permanecen cuando se cierra. Ocre, sienas cruda y quemada, umber, rojo indio: tierras. Son los pigmentos más antiguos en el registro humano, molidos de la tierra, en uso decenas de miles de años antes de que alguien tuviera un azul que no costara más que el panel en el que se aplicaba. Otoño, en otras palabras, devuelve la pintura a su primera paleta. La temporada está pintada con los colores del material que representa."
+              "content": "En el calendario japonés heredado de China, el año se divide en veinticuatro términos solares, y el llamado risshu, el comienzo del otoño, cae alrededor del siete u ocho de agosto. No el equinoccio, no la primera noche fría: el siete de agosto, cuando el calor en Kyoto está en su peor momento. Se declara el otoño. Desde esa fecha en adelante, un poema que menciona cigarras, rocío, gansos o la luna es un poema de otoño, pase lo que pase con el termómetro, y un pintor que firma una pantalla de hierbas en septiembre está trabajando dentro de una estación que oficialmente comenzó cinco semanas antes."
+            },
+            {
+              "type": "texto",
+              "content": "Los términos se subdividen nuevamente, en setenta y dos ko de aproximadamente cinco días cada uno, cada uno nombrado después de un solo evento natural. El conjunto japonés fue revisado en su forma familiar por el astrónomo de la corte Shibukawa Shunkai en el siglo XVII. Los tres que componen risshu son, en orden: llegan vientos frescos, cantan cigarras por la tarde, desciende una niebla espesa. Un mes después, bajo el rocío blanco, llega la unidad llamada rocío brilla blanco en la hierba."
+            },
+            {
+              "type": "texto",
+              "content": "Esto merece la atención de cualquiera que haya leído solo cuatro mil palabras de mediciones. Es el mismo instinto, un intento de resolver el giro en la finísima escala disponible, pero el instrumento es un nombre en lugar de un número, y la resolución es de cinco días en lugar de un porcentaje de tono. La tradición que supuestamente no mide la temporada la ha dividido en unidades tan cortas que la mayoría de los calendarios europeos no tienen una palabra para ellas en absoluto."
+            },
+            {
+              "type": "encabezado",
+              "content": "La temporada es una planta, no una luz",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "Si el otoño es una fecha en lugar de una condición, entonces una imagen no puede anunciarlo por el ángulo del sol, y no intenta hacerlo. Lo anuncia con una planta. El Man'yoshu, la antología del siglo VIII, fija las siete hierbas del otoño en un par de poemas de Yamanoue no Okura: trébol, miscanthus, kudzu, rosa, patrinia, eupatorio, campanilla. Durante los siguientes docecientos años esas siete, y sobre todo el miscanthus llamado susuki, llevan la temporada en la poesía, en lacas, en cerámicas y en pantallas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgt0vbnygt0f4.jpg",
+              "caption": "Susuki Grass, alrededor de 1525. Uno de un par de biombos de seis paneles; tinta, color y oro sobre papel, 150.4 por 349.2 cm. Cleveland Museum of Art, John L. Severance Fund, CC0.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Esta pantalla es de tres metros y medio de una planta. No hay línea de tierra, no hay horizonte, no hay cielo, no hay sombra proyectada, no hay hora del día. Medido, el pigmento verde cubre el 2.4 por ciento de la superficie: el restante noventa y siete y medio por ciento es el papel preparado, haciendo exactamente lo que la tabla de bronce de Twachtman hace en Connecticut trescientos sesenta años después, excepto que aquí es una convención establecida en lugar de un descubrimiento, y la tierra vacía tiene un nombre y una teoría detrás de ella."
+            },
+            {
+              "type": "text",
+              "content": "Pon los dos uno al lado del otro y la rima es casi embarazosa. Un pintor de Muromachi y un impresionista estadounidense llegan a la misma solución, que el soporte debe llevar la estación y el pigmento solo debe marcar lo que se aparta de ella. Uno llegó allí a través de una tradición de espacio negativo y la economía de la hoja de oro, el otro levantando un pastel y notando qué pasaba cuando dejaba de llenar la hoja."
+            },
+            {
+              "type": "header",
+              "content": "La luna sale de la hierba",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La otra mitad del otoño japonés no es el sol en absoluto. Es la luna. La luna llena del octavo mes lunar es la luna de otoño, vista en fiestas celebradas con ese propósito, y la llanura llamada Musashino, al oeste de Edo, es el nombre del lugar asociado a ella: una llanura tan plana y tan llena de susuki que en la fórmula poética la luna no tiene más remedio que surgir del césped mismo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtgt0tuvk952y9.jpg",
+              "caption": "Atardecer de otoño con luna llena en la llanura de Musashino, principios de 1600. Una de un par de pantallas de seis paneles; tinta, color, y oro y plata en papel dorado, 170.2 por 346.7 cm. Museo de Arte de Cleveland, Fondo John L. Severance, CC0.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "La pantalla hace lo que dice la fórmula. Una luna plateada se encuentra baja en un campo de miscanthus, y no hay horizonte detrás de ella, porque el suelo del que surgiría ha sido reemplazado por hoja de oro. Medido, la banda de oro lee más 99.7 en la misma escala cálida-fría que dio a la caída europea extrema de Cazin más 61. Nada pintado desde la observación en este artículo se acerca a ello."
+            },
+            {
+              "type": "text",
+              "content": "Más revelador es la dirección del movimiento dentro de la imagen. El oro en la parte superior es más 99.7, la banda de hierba en el medio es más 73.3, y el primer plano es más 25.6. La pantalla se vuelve <em>más fría</em> a medida que avanza, lo cual es exactamente lo opuesto al campo de otoño de Monet, donde el suelo era el extremo cálido y el cielo permanecía neutral. En Giverny, el calor se había desplazado hacia abajo en la paja, porque eso es lo que hace octubre a un campo. Aquí, el calor está en la parte superior porque la parte superior es metal, y el metal es cálido independientemente del mes."
+            },
+            {
+              "type": "texto",
+              "content": "Dos advertencias sobre ese número. El oro es una superficie especular, por lo que una fotografía de él registra una luz rasante particular en una galería, y la figura describe un fondo metálico cálido en lugar de un hecho colorimétrico. Y la plata de la luna se ha ennegrecido en cuatro siglos, por eso ahora se lee como un disco gris oscuro en lugar de uno brillante. Como con los papeles pastel desvaídos, el objeto ha envejecido en una dirección que cambia la lectura: la imagen fue hecha con una luna brillante y ahora tiene una opaca."
+            },
+            {
+              "type": "encabezado",
+              "content": "Luz que puedes limpiar sobre un bloque",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "En la impresión en madera, la cuestión de dónde proviene la luz tiene una respuesta inusualmente literal. Proviene del paño del impresor. Los lavados graduados en los cielos de Hiroshige son bokashi: la tinta se limpia en el bloque a mano en un gradiente antes de cada impresión, por lo que ninguna hoja en una edición es idéntica y toda la atmósfera de una impresión es un gesto manual realizado cientos de veces."
             },
             {
               "type": "imagen",
-              "content": "https://api.eprisjournal.com/uploads/mtgsb3eugamqxr.jpg",
-              "caption": "Jean-Charles Cazin. Día de Octubre, 1890 a 1893. Óleo sobre lienzo, 38.4 por 46.7 cm. Art Institute of Chicago, Colección Memorial Henry Field. Medido: sin verde en ninguna parte de la superficie.",
+              "content": "https://api.eprisjournal.com/uploads/mtgt0vttzg2e9z.jpg",
+              "caption": "Utagawa Hiroshige. El Promontorio de la Vista de la Luna, de Cien vistas de lugares famosos en Edo, 1857. Grabado en madera a color, 33.9 por 22.8 cm. Museo de Arte de Cleveland, la Colección Kelvin Smith, donada por la Sra. Kelvin Smith, CC0.",
               "align": "centro"
             },
             {
-              "type": "encabezado",
-              "content": "Pastel: luz reflejada en el polvo",
-              "level": 2
+              "type": "texto",
+              "content": "Sampled en tiras en el cielo, la rampa es inconfundiblemente fabricada en lugar de observada. Corre desde un azul saturado en la parte superior, tono 214 con saturación 0.30, pasando por tono 171 con saturación 0.12, hasta un pálido casi neutral en tono 59 y saturación 0.07 en el horizonte: un pigmento, un trazo, saturación que cae suavemente y valor que sube suavemente. El cielo de Monet sobre las pilas no se comporta así. Cambia de tono a medida que cruza el lienzo, porque fue emparejado con algo que se estaba mirando."
             },
             {
               "type": "texto",
-              "content": "Si un medio pertenece a esta ventana de tres semanas, es pastel, y la razón es física más que sentimental. La pintura al óleo es pigmento suspendido en una película. La luz entra en la película, rebota dentro de ella y vuelve a salir habiendo sido parcialmente absorbida en el camino: eso es lo que da a un óleo su profundidad y su capacidad para ser glaseado. El pastel es pigmento con apenas ningún aglutinante, un poco de goma, prensado en un bastón. En el papel se asienta como partículas sueltas con aire entre ellas. La luz no viaja a través de un medio; se dispersa en las superficies de los granos secos y regresa inmediatamente en todas las direcciones."
-            },
-            {
-              "type": "texto",
-              "content": "El resultado es un reflejo difuso, mate, ligeramente polvoriento con casi ningún componente especular. Es, en el sentido óptico exacto, el mismo comportamiento que un cielo de otoño nublado, que es un difusor en lugar de una fuente puntual. El pastel no imita esa luz. La realiza."
-            },
-            {
-              "type": "imagen",
-              "content": "https://api.eprisjournal.com/uploads/mtgsb51pnu7jkt.jpg",
-              "caption": "Odilon Redon. Flower Clouds, aproximadamente 1903. Pastel, con toques de difuminado, incisión y pinceladas, en papel de trama azul-gris con fibras multicolores alteradas a tono. Art Institute of Chicago, por medio de la donación previa de la Colección Mr. y Mrs. Martin A. Ryerson.",
-              "align": "centrar"
-            },
-            {
-              "type": "texto",
-              "content": "Hay una segunda razón, más sutil. Un pastel no puede ser reparado pintando sobre él como un óleo. No hay glaseado, ni capa de escumble sobre una capa seca, ni levantamiento con trementina. Las transiciones deben construirse colocando polvo sobre polvo y difuminando, es decir, frotando pigmento en la textura del papel con un trozo de papel enrollado. La transición de un color a otro se realiza mediante abrasión. Para un tema cuyo carácter completo es una transferencia gradual entre dos paletas, el método y el motivo son el mismo gesto."
-            },
-            {
-              "type": "texto",
-              "content": "Y allí está el papel. En óleo, el fondo desaparece bajo la imagen. En pastel, el tono del propio papel queda visible entre trazos y hace la función de un valor medio, lo que significa que el artista elige el color de la luz antes de hacer una marca. Las entradas del catálogo del Art Institute registran esas elecciones con una precisión inusual: La playa de Eugene Boudin, Puerto de Honfleur, alrededor de 1860, es pastel sobre papel de trama azul; Un rincón de Moret-sur-Loing de Alfred Sisley, 1895, es pastel con difuminado sobre papel de trama gris con fibras azules; Nicolle soñolenta de Mary Cassatt, alrededor de 1900, es pastel sobre papel de trama azul-gris."
-            },
-            {
-              "type": "encabezado",
-              "content": "Las obras tienen su propio otoño",
-              "level": 2
-            },
-            {
-              "type": "texto",
-              "content": "Lee esas líneas del catálogo hasta el final y algo silenciosamente extraordinario aparece. El papel gris de Sisley con fibras azules se registra como decolorado a tono marrón. El papel azul-gris de Cassatt se registra como desvanecido a tono marrón. El papel azul-gris de Redon con fibras multicolores se registra como alterado a tono marrón."
-            },
-            {
-              "type": "texto",
-              "content": "La mitad fría de la imagen, la parte que el artista eligió para llevar la frialdad de la luz, es la parte que se ha ido. El papel amarillea: la lignina se oxida, el tamaño se degrada, los tintes azules están entre las cosas menos resistentes a la luz en la habitación. Así, estas obras se han movido ellas mismas del verano al otoño, en la misma dirección, durante más de un siglo, en el archivo. Cuando miramos un pastel del siglo XIX hoy, lo vemos más cálido de lo que fue hecho. La estación que estamos describiendo ha ocurrido a los objetos que la representan."
-            },
-            {
-              "type": "texto",
-              "content": "Esto no es una pequeña nota al pie para un conservador. Cambia la forma en que deben leerse las imágenes. Un pastel de Sisley que ahora se lee como una tarde cálida de octubre pudo haber sido dibujado como una fría, sus grises sostenidos por un soporte azul que ya no existe. La medición de un pastel desvanecido es una medición de dos eventos a la vez: la luz que vio el artista y el siglo transcurrido desde entonces."
-            },
-            {
-              "type": "encabezado",
-              "content": "Otoño dorado, y lo que lo sostiene",
-              "level": 2
-            },
-            {
-              "type": "texto",
-              "content": "El Otoño Dorado de Isaac Levitan de 1895 es la imagen que la mayoría de las personas en Europa del Este llevan en su cabeza bajo la palabra otoño, y es instructivo porque no es simplemente una pintura amarilla. Nuestra medición encuentra que el 52 por ciento de la superficie está en la banda amarilla y ocre, como se esperaba, pero también un 11 por ciento aún contenido en azul y violeta, concentrado en el río y el cielo superior, y un decil superior muy claro con un promedio de 225, 233, 232, casi blanco neutro."
-            },
-            {
-              "type": "texto",
-              "content": "Esa es la fórmula. Una masa de ocre necesita un acento frío para ser leída como ocre en lugar de marrón, y necesita una luz alta, casi neutra, para ser leída como luz del día en lugar de luz de lámpara. Quita el río azul y la imagen colapsa en una neblina cálida. Por eso la temporada es tan fácil de pintar mal: los amarillos vienen sin esfuerzo, la moderación no."
-            },
-            {
-              "type": "imagen",
-              "content": "https://api.eprisjournal.com/uploads/mtgsb5o5ro1rmu.jpg",
-              "caption": "Isaac Levitan. Otoño Dorado, 1895. Óleo sobre lienzo. Galería Tretyakov Estatal, Moscú. La masa ocre se lee como luz porque el once por ciento de la superficie todavía está fría.",
-              "align": "centrar"
-            },
-            {
-              "type": "encabezado",
-              "content": "Un otoño sin luz",
-              "level": 2
-            },
-            {
-              "type": "texto",
-              "content": "Todo lo anterior asume que el otoño es una condición de iluminación. Una tradición no está de acuerdo. El Otoño Maples con Poem Slips de Tosa Mitsuoki, alrededor de 1675, una pantalla de seis paneles en tinta, colores, hoja de oro y polvo de oro sobre seda, no tiene atmósfera en absoluto. No hay ángulo solar, no hay perspectiva aérea, no hay sombra. El suelo es dorado, lo que significa que la luz es un material en lugar de un evento, y es la misma en cada parte de la imagen."
-            },
-            {
-              "type": "texto",
-              "content": "Medido, la pantalla es 83.5 por ciento amarilla y ocre, la concentración más alta en todo este conjunto, con casi nada neutral. Sin embargo, nadie lo llamaría un estudio de la luz. El otoño aquí está señalado por especies y por costumbre: hojas de arce, y trozos de papel de poesía atados a las ramas por personas que vinieron a mirarlas. La temporada es un evento social registrado en una superficie dorada, no una medición del cielo."
+              "content": "Y la forma en que esta hoja dice otoño vale la pena enlistar, porque ni un solo elemento en la lista es un efecto de iluminación. Hay una luna, recortada por los aleros para que la registres como un hecho en lugar de un espectáculo. Hay una fila de gansos, la llegada estándar del otoño. Hay una habitación después de la fiesta: platos apartados, una linterna, una sombra en la pantalla de papel, los invitados se han ido. La temporada es una fecha en el calendario, un pájaro, una planta y una ocasión social, registrada en una impresión cuya luz fue aplicada con un trapo."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtgsb3zk5ljp9k.jpg",
-              "caption": "Tosa Mitsuoki. Arces de otoño con hojas de poema, alrededor de 1675. Pantalla de seis paneles, una de un par. Tinta, colores, hoja de oro y polvo de oro sobre seda, 144 por 286 cm. Art Institute of Chicago, Kate S. Buckingham Endowment.",
-              "align": "centrar"
+              "caption": "Tosa Mitsuoki. Maples de otoño con poemas en papel, alrededor de 1675. Pantalla de seis paneles, una de un par. Tinta, colores, hoja de oro y polvo de oro sobre seda, 144 por 286 cm. Art Institute of Chicago, Kate S. Buckingham Endowment.",
+              "align": "centro"
             },
             {
               "type": "texto",
-              "content": "Mantener estas dos tradiciones lado a lado es la forma más rápida de ver qué estaba haciendo realmente el siglo XIX europeo. Había decidido que una estación es una cualidad de la luz, y que para pintar la estación se pinta el aire. Esa es una elección, no un hecho, y tiene solo unos doscientos años de antigüedad."
+              "content": "Los maples de Tosa Mitsuoki cierran el argumento. Medido en toda la superficie, la pantalla es 83.5 por ciento amarilla y ocre, la mayor concentración de color cálido en cualquier parte de este conjunto, mayor que Cazin, mayor que Millet, y sin embargo no hay ángulo solar en ella, no hay perspectiva aérea, no hay sombra proyectada, nada que pueda llamarse una observación de la luz. Lo que hay en su lugar es una especie, y trozos de papel de poesía atados a las ramas por personas que salieron a mirar las hojas y escribieron algo. Momijigari, caza de hojas, es una excursión con literatura adjunta."
+            },
+            {
+              "type": "texto",
+              "content": "Incluso el vocabulario de colores está codificado en lugar de observado. Los nombres tradicionales de colores japoneses incluyen kuchiba-iro, color de hoja en descomposición, un marrón-amarillo específico con una receta de tinte fija y un lugar fijo en el calendario del armario. Un pintor europeo mezcla un color que coincide con lo que una hoja está haciendo esta semana. Un pintor de la corte busca el color que la temporada se ha acordado tener."
+            },
+            {
+              "type": "texto",
+              "content": "Ningún sistema es más preciso. Responden a diferentes preguntas. La tradición europea pregunta qué está haciendo la luz en este momento y construye un instrumento, el lienzo, lo suficientemente sensible para registrarlo. La tradición japonesa pregunta qué estación es según el calendario y los poemas, y luego nombra la planta, el pájaro y el color que pertenecen a esa respuesta. La primera produce veinticinco pilas de trigo en un campo. La segunda produce tres metros y medio de una sola hierba, y una luna sin horizonte para elevarse."
             },
             {
               "type": "encabezado",
-              "content": "Hacia dónde va el camino",
+              "content": "Donde termina el camino",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "La última pila en el grupo de Chicago responde a la pregunta que plantean las dos primeras. Medir la pila de trigo bajo la nieve y la inclinación cálida se vuelve negativa: menos cuatro puntos, la única imagen en este conjunto donde el píxel promedio es más frío de lo que es cálido. El azul y violeta ocupan una cuarta parte de la superficie. El verde ha desaparecido por completo, hasta una décima de un por ciento. La banda naranja y roja sobrevive en un quince por ciento, y sobrevive casi en su totalidad dentro de la pila misma."
-            },
-            {
-              "type": "texto",
-              "content": "Ese es el fin de la secuencia: el calor se retira del campo y se concentra en el objeto hecho en él. El otoño es el intervalo durante el cual esa retirada es visible y todavía parece que podría invertirse. Es la única época del año en la que un paisaje contiene ambas paletas a la vez, y precisamente por eso vale tres semanas de atención de un pintor y toda una serie de lienzos."
+              "content": "La última de las pilas de Chicago responde a la pregunta que las dos primeras abren. Mide el lienzo de nieve y la inclinación cálida se vuelve negativa, menos 4.3, la única imagen en este conjunto cuyo promedio es más frío que neutral. El azul y violeta ocupan una cuarta parte de la superficie. El verde ha desaparecido a una décima de uno por ciento. La banda naranja y roja sobrevive en un 15.5 por ciento, y casi todo está dentro de la pila misma."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtgsb2so4bi36s.jpg",
-              "caption": "Claude Monet. Stack of Wheat, 1890 a 1891. Óleo sobre lienzo. Art Institute of Chicago, comprado con fondos proporcionados por el Searle Family Trust. La masa cálida se ha retirado en la pila.",
+              "caption": "Claude Monet. Stack of Wheat, 1890 a 1891. Óleo sobre lienzo. Art Institute of Chicago, comprado con fondos proporcionados por el Searle Family Trust. La masa cálida se ha retirado en el único objeto construido en el campo.",
               "align": "centrar"
             },
             {
+              "type": "texto",
+              "content": "Ese es el fin de la secuencia. La calidez se retira del campo y se concentra en la única cosa construida que se encuentra en él, y el suelo devuelve la luz al cielo. El otoño es el intervalo en el que esa transferencia es visible, por eso recompensa una serie en lugar de un solo lienzo, y por eso Monet necesitó veinticinco de ellos."
+            },
+            {
               "type": "encabezado",
-              "content": "Cómo mirar, esta semana",
+              "content": "Cuatro preguntas para llevar afuera",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "Cuatro cosas a verificar en cualquier cuadro de otoño, y en la calle afuera. ¿Dónde está la superficie más brillante: todavía el cielo, o ya el suelo? ¿De qué color es la sombra: azul, lo que significa sol alto y un fuerte llenado del cielo, o gris y violeta, lo que indica que la luz proviene de una fuente más baja y cálida? ¿Cuántos planos de distancia sobreviven, tres o dos? ¿Y el amarillo se extiende uniformemente por toda la masa, o los rojos llegan en parches, lo que indica cuánto han avanzado los árboles en el proceso?"
+              "content": "¿Cuál es más brillante, el cielo o el suelo? ¿Dónde está la calidez, en la luz o en la sombra? ¿Cuántos planos de distancia sobreviven, tres o dos? ¿Y el amarillo se extiende por la masa mientras que el rojo llega en parches, lo que te dice qué tan avanzado está el proceso? Los dos primeros determinarán la antigüedad de una pintura de paisaje en aproximadamente seis semanas, y funcionan igual de bien en la calle afuera."
             },
             {
-              "type": "texto",
-              "content": "La temporada es corta y medible. Monet necesitó veinticinco lienzos para sostenerla. El resto de nosotros podemos manejarlo con un paseo y las preguntas correctas."
-            },
-            {
-              "type": "encabezado",
-              "content": "Nota sobre método y fuentes",
+              "type": "header",
+              "content": "Método y fuentes",
               "level": 2
             },
             {
               "type": "texto",
-              "content": "Las proporciones de color citadas aquí fueron calculadas a partir de reproducciones de alta resolución de acceso abierto, muestreadas en tamaño reducido, con píxeles agrupados en familias de matices y reportados como una proporción de la superficie de la imagen. Las cifras describen las reproducciones, no la pintura, y están destinadas a la comparación entre imágenes en el mismo conjunto en lugar de datos absolutos de color. Obras del Art Institute of Chicago y del Metropolitan Museum of Art se reproducen bajo sus programas de acceso abierto; Golden Autumn de Levitan está en dominio público. Las descripciones del medio y soporte, incluyendo registros de decoloración, se citan de las entradas del catálogo de las instituciones poseedoras."
+              "content": "Las figuras en color se calcularon a partir de reproducciones de acceso abierto, muestreadas a resolución reducida, con rojo menos azul utilizado como un proxy de cálido-frío y los píxeles agrupados en familias de matiz reportadas como una proporción de la superficie. Las figuras regionales provienen de rectángulos fijos en cada imagen, descritos en el texto. Estas son mediciones de fotografías, no de pintura: la fotografía de museo está gestionada en color pero es interpretativa, y el barniz de hace un siglo desplaza todo ligeramente hacia lo cálido. Están destinadas a la comparación entre imágenes en el mismo conjunto. Obras del Art Institute of Chicago, el Cleveland Museum of Art y el Metropolitan Museum of Art aparecen bajo sus programas de acceso abierto; Golden Autumn de Levitan está en dominio público. Las descripciones del medio y soporte, incluyendo los registros de decoloración, se citan de las entradas del catálogo de las propias instituciones poseedoras."
             }
           ],
-          "updatedAt": "2026-08-31T05:30:54.299Z"
+          "updatedAt": "2026-08-31T05:47:19.234Z"
         }
       ],
       "reviews": [
