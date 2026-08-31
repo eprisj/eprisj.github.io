@@ -56,20 +56,27 @@ function ChapterView({ ch }: { ch: Chapter }) {
         <p className="sense">{ch.sense}</p>
       </div>
 
-      {ch.body.map((p, i) => (
-        <p key={i} className="body">{p}</p>
-      ))}
+      {/* Весь текст главы это ОДНА ячейка решётки, а не строка на абзац.
+          Пока каждый абзац был отдельной строкой, высоту первой строки задавал
+          боковой блок с заголовком: он выше первого абзаца, строка тянулась по
+          нему, и между первым и вторым абзацем открывалась дыра. Одна ячейка
+          снимает вопрос совсем, а колонок по-прежнему две. */}
+      <div className="codex-main">
+        {ch.body.map((p, i) => (
+          <p key={i} className="body">{p}</p>
+        ))}
 
-      {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
+        {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
 
-      {ch.checklist?.length ? (
-        <div className="codex-check">
-          <span className="codex-mono">Коротко</span>
-          <ul>
-            {ch.checklist.map((c, i) => <li key={i}>{c}</li>)}
-          </ul>
-        </div>
-      ) : null}
+        {ch.checklist?.length ? (
+          <div className="codex-check">
+            <span className="codex-mono">Коротко</span>
+            <ul>
+              {ch.checklist.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
+          </div>
+        ) : null}
+      </div>
     </article>
   );
 }
