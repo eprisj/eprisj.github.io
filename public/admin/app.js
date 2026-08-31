@@ -12080,7 +12080,7 @@ function tsysRenderCoverage(data) {
       .filter((sec) => r.bySection[sec])
       .map((sec) => `${getSectionLabel(sec)} ${r.bySection[sec].done}/${r.bySection[sec].total}`)
       .join(' · ');
-    return `<div class="tsys-cov-row" title="${escapeHtml(detail)}">
+    return `<div class="tsys-cov-row" data-lang="${escapeHtml(r.lang)}" title="${escapeHtml(detail)} · нажмите, чтобы раскрыть">
       <span class="tsys-cov-lang">${escapeHtml(r.lang)}</span>
       <span class="tsys-cov-track">
         <span class="tsys-cov-seg done" style="width:${pct(r.done)}%"></span>
@@ -12088,8 +12088,16 @@ function tsysRenderCoverage(data) {
         <span class="tsys-cov-seg missing" style="width:${pct(r.missing)}%"></span>
       </span>
       <span class="tsys-cov-num">${r.done}/${r.total}${r.stale ? ` · ${r.stale} устар.` : ''}${r.missing ? ` · ${r.missing} нет` : ''}</span>
-    </div>`;
+    </div>` + (_tsysOpenLang === r.lang ? `<div class="tsys-cov-detail" data-detail="${escapeHtml(r.lang)}">${tsysRenderLangDetail(r.lang)}</div>` : '');
   }).join('');
+
+  host.querySelectorAll('.tsys-cov-row').forEach((row) => {
+    row.addEventListener('click', () => {
+      _tsysOpenLang = _tsysOpenLang === row.dataset.lang ? null : row.dataset.lang;
+      tsysRenderCoverage(parseEditorJsonSafe());
+    });
+  });
+  host.querySelectorAll('.tsys-cov-detail').forEach((d) => tsysBindLangDetail(d));
 }
 
 function tsysJobCard(job, isActive) {
@@ -12174,6 +12182,160 @@ function tsysRenderHealth(health) {
     </div>`;
 }
 
+/* ── Требуют решения ──────────────────────────────────────────────────
+   Очередь умеет останавливаться и спрашивать: оригинал изменился, но
+   перевод после этого правили руками, и молча перезаписать его нельзя.
+   Ответ живёт в /translate/decide (overwrite или keep). Спросить было
+   негде, поэтому пятнадцать таких пар просто копились в state. */
+function tsysEntryTitleOf(section, id) {
+  const data = parseEditorJsonSafe();
+  const arr = data && Array.isArray(data[section]) ? data[section] : [];
+  const entry = arr.find((e) => String(e.id) === String(id));
+  return entry ? getEntryTitle(section, entry) : `#${id}`;
+}
+
+function tsysRenderDecisions(status) {
+  const card = tsysEl('tsysDecisionsCard');
+  const host = tsysEl('tsysDecisions');
+  if (!card || !host) return;
+  const list = (status && status.needsDecision) || [];
+  card.hidden = list.length === 0;
+  if (!list.length) { host.innerHTML = ''; return; }
+  host.innerHTML = list.map((d, i) => `<div class="tsys-decision">
+    <div>
+      <div class="tsys-decision-title">${escapeHtml(getSectionLabel(d.section))} · ${escapeHtml(tsysEntryTitleOf(d.section, d.id))}</div>
+      <div class="tsys-decision-sub">Язык ${escapeHtml(d.lang)}. Перевод правили вручную после того, как поменялся оригинал.</div>
+    </div>
+    <div class="tsys-decision-actions">
+      <button class="btn btn-sm" type="button" data-tsys-decide="keep" data-i="${i}">Оставить как есть</button>
+      <button class="btn btn-sm btn-primary" type="button" data-tsys-decide="overwrite" data-i="${i}">Перевести заново</button>
+    </div>
+  </div>`).join('');
+  host.querySelectorAll('[data-tsys-decide]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const d = list[Number(btn.dataset.i)];
+      const action = btn.dataset.tsysDecide;
+      try {
+        await tsysApi('/decide', { method: 'POST', body: JSON.stringify({ section: d.section, id: d.id, lang: d.lang, action }) });
+        showToast('success', action === 'keep'
+          ? `${getSectionLabel(d.section)} #${d.id} ${d.lang}: перевод принят за эталон.`
+          : `${getSectionLabel(d.section)} #${d.id} ${d.lang}: поставлен на перевод заново.`);
+        tsysRefresh();
+      } catch (e) { showToast('error', getErrorMessage(e)); }
+    });
+  });
+}
+
+/* ── Повторяющиеся ошибки ─────────────────────────────────────────────
+   В журнале лежало 28 упавших задач из последних 40, и все они — две
+   записи, которых больше нет в EN: очередь месяцами долбилась в
+   удалённые #19 и #5. По одной карточке на задачу этого не видно, по
+   строке на причину — видно сразу. */
+function tsysRenderErrors(status) {
+  const card = tsysEl('tsysErrorsCard');
+  const host = tsysEl('tsysErrors');
+  if (!card || !host) return;
+  const jobs = (status && status.jobs) || [];
+  const groups = new Map();
+  for (const j of jobs) {
+    if (j.status !== 'error' || !j.error) continue;
+    const key = `${j.section}|${j.entryId}|${j.error}`;
+    const g = groups.get(key) || { section: j.section, id: j.entryId, error: j.error, count: 0, last: null };
+    g.count += 1;
+    if (!g.last || (j.updatedAt && j.updatedAt > g.last)) g.last = j.updatedAt;
+    groups.set(key, g);
+  }
+  const rows = Array.from(groups.values()).sort((a, b) => b.count - a.count);
+  card.hidden = rows.length === 0;
+  if (!rows.length) { host.innerHTML = ''; return; }
+  host.innerHTML = rows.map((g) => {
+    const gone = /not found/i.test(g.error);
+    return `<div class="tsys-err-row">
+      <div>
+        <div class="tsys-err-title">${escapeHtml(getSectionLabel(g.section))} #${escapeHtml(String(g.id))}</div>
+        <div class="tsys-err-sub">${escapeHtml(g.error)}${g.last ? ` · последний раз ${new Date(g.last).toLocaleString()}` : ''}${gone ? '. Записи нет в EN: очередь будет пытаться снова, пока задача висит.' : ''}</div>
+      </div>
+      <span class="tsys-err-count">${g.count}×</span>
+    </div>`;
+  }).join('');
+}
+
+/* ── Раскрытие языка: какие именно записи отстали ─────────────────────
+   Число «8 устаревших» само по себе не даёт ничего сделать. Здесь тот
+   же список поимённо, с переводом одной записи и откатом к предыдущей
+   версии перевода (undo-хранилище очереди, до сих пор доступное только
+   через ssh). */
+let _tsysOpenLang = null;
+
+function tsysRenderLangDetail(lang) {
+  const data = parseEditorJsonSafe();
+  if (!data) return '<div class="tsys-cov-empty">Контент не загружен.</div>';
+  const rows = [];
+  for (const section of TSYS_SECTIONS) {
+    const root = Array.isArray(data[section]) ? data[section] : [];
+    const local = data?.localizedCollections?.[lang]?.[section];
+    const byId = new Map((Array.isArray(local) ? local : []).map((e) => [String(e.id), e]));
+    for (const entry of root) {
+      const state = tsysEntryState(entry, byId.get(String(entry.id)));
+      if (state === 'done') continue;
+      rows.push({ section, id: entry.id, title: getEntryTitle(section, entry), state });
+    }
+  }
+  if (!rows.length) return '<div class="tsys-cov-empty">Всё переведено и ничего не устарело.</div>';
+  return `<div class="tsys-cov-detail-head">
+      <span class="tsys-meta">${rows.length} записей требуют внимания в ${escapeHtml(lang)}</span>
+      <button class="btn btn-sm" type="button" data-tsys-lang-all="${escapeHtml(lang)}">Перевести все</button>
+    </div>` + rows.map((r) => `<div class="tsys-cov-entry">
+      <span class="tsys-cov-entry-state ${r.state}">${r.state === 'stale' ? 'устарел' : 'нет'}</span>
+      <span class="tsys-cov-entry-title" title="${escapeHtml(r.title)}">${escapeHtml(getSectionLabel(r.section))} · ${escapeHtml(r.title)}</span>
+      <span class="tsys-cov-entry-actions">
+        <button class="btn btn-sm" type="button" data-tsys-one="${escapeHtml(r.section)}|${escapeHtml(String(r.id))}|${escapeHtml(lang)}">Перевести</button>
+        ${r.state === 'stale' ? `<button class="btn btn-sm" type="button" data-tsys-revert="${escapeHtml(r.section)}|${escapeHtml(String(r.id))}|${escapeHtml(lang)}" title="Вернуть предыдущую версию перевода из истории очереди">Откатить</button>` : ''}
+      </span>
+    </div>`).join('');
+}
+
+function tsysBindLangDetail(host) {
+  host.querySelectorAll('[data-tsys-one]').forEach((btn) => {
+    btn.addEventListener('click', async (ev) => {
+      ev.stopPropagation();
+      const [section, id, lang] = btn.dataset.tsysOne.split('|');
+      try {
+        await tsysApi('/enqueue', { method: 'POST', body: JSON.stringify({ section, id: Number(id), sourceLang: DEFAULT_LANGUAGE, targets: [lang], force: true }) });
+        showToast('success', `${getSectionLabel(section)} #${id} ${lang}: поставлено в очередь.`);
+        tsysRefresh();
+      } catch (e) { showToast('error', getErrorMessage(e)); }
+    });
+  });
+  host.querySelectorAll('[data-tsys-revert]').forEach((btn) => {
+    btn.addEventListener('click', async (ev) => {
+      ev.stopPropagation();
+      const [section, id, lang] = btn.dataset.tsysRevert.split('|');
+      const ok = await showConfirmModal('Откатить перевод?',
+        `Вернём предыдущую версию <strong>${escapeHtml(getSectionLabel(section))} #${escapeHtml(id)}</strong> на языке <strong>${escapeHtml(lang)}</strong> из истории очереди. Текущий текст будет заменён.`,
+        'Откатить');
+      if (!ok) return;
+      try {
+        const out = await tsysApi('/revert', { method: 'POST', body: JSON.stringify({ section, id: Number(id), lang }) });
+        showToast('success', `Откат выполнен${out.restoredFrom ? ` к версии от ${new Date(out.restoredFrom).toLocaleString()}` : ''}.`);
+        tsysRefresh();
+      } catch (e) { showToast('error', getErrorMessage(e)); }
+    });
+  });
+  host.querySelectorAll('[data-tsys-lang-all]').forEach((btn) => {
+    btn.addEventListener('click', async (ev) => {
+      ev.stopPropagation();
+      const lang = btn.dataset.tsysLangAll;
+      const sel = tsysEl('tsysRunLang');
+      const scope = tsysEl('tsysRunScope');
+      if (sel) sel.value = lang;
+      if (scope) scope.value = 'missing';
+      showToast('info', `Язык ${lang} подставлен в «Запуск»: выберите раздел и подтвердите.`);
+      tsysEl('tsysRunBtn')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  });
+}
+
 async function tsysRefresh() {
   const dot = tsysEl('tsysAutoDot');
   if (dot) dot.classList.add('live');
@@ -12185,6 +12347,8 @@ async function tsysRefresh() {
     _tsysLastStatus = status;
     tsysRenderHealth(health);
     tsysRenderQueue(status);
+    tsysRenderDecisions(status);
+    tsysRenderErrors(status);
     tsysRenderCoverage(parseEditorJsonSafe());
   } finally {
     if (dot) setTimeout(() => dot.classList.remove('live'), 600);
