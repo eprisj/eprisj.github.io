@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import { ENTRIES, bySlug, type Entry } from './entries';
+import { CHAPTERS, bySlug, type Chapter } from './chapters';
 import './codex.css';
 
 /**
- * КОДЕКС: энциклопедия того, как эти системы сделаны.
+ * МАНУАЛ по работе с машиной для редакции.
  *
- * Набран как книга, а не как лента. В справочник приходят за одной статьёй и
- * уходят, поэтому у каждой свой адрес (/codex/<slug>), оглавление стоит до
- * текста, а перекрёстные ссылки внизу статьи ведут дальше по книге, а не
- * «назад к списку».
+ * Адресат не программист, а архитектор и исследователь искусства, который
+ * ведёт издание. Отсюда всё устройство страницы: главы вместо словарных
+ * статей, примеры запросов вместо кода, список для самопроверки в конце
+ * каждой главы.
+ *
+ * Главное на странице это примеры. Абзацы объясняют, а работать читатель
+ * будет по образцу, поэтому образец набран так, чтобы его было видно с
+ * прокрутки, и так, чтобы его удобно было скопировать.
  *
  * Оформление намеренно не журнальное: см. codex.css, там объяснено почему.
  */
@@ -18,57 +22,52 @@ function slugFromPath(): string | null {
   return m ? decodeURIComponent(m[1]) : null;
 }
 
-/* Статья целиком. Один компонент и для сплошного чтения, и для отдельного
+/* Пример запроса. Пара «так не работает / так работает» там, где неудачный
+   вариант поучителен, и один хороший там, где показывать нечего. */
+function SampleBlock({ s }: { s: Chapter['samples'] extends (infer U)[] | undefined ? U : never }) {
+  return (
+    <figure className="codex-sample">
+      <figcaption className="codex-mono">{s.task}</figcaption>
+      {s.bad ? (
+        <div className="row bad">
+          <span className="codex-mono lbl">Так не работает</span>
+          <p>{s.bad}</p>
+        </div>
+      ) : null}
+      <div className="row good">
+        <span className="codex-mono lbl">Так работает</span>
+        <p>{s.good}</p>
+      </div>
+      <p className="why">{s.why}</p>
+    </figure>
+  );
+}
+
+/* Глава целиком. Один компонент и для сплошного чтения, и для отдельного
    адреса: расходиться этим двум видам незачем, а два набора вёрстки для
    одного текста разъедутся при первой же правке. */
-function Article({ entry, onGo }: { entry: Entry; onGo: (slug: string) => void }) {
+function ChapterView({ ch }: { ch: Chapter }) {
   return (
-    <article id={entry.slug} className="codex-entry">
+    <article id={ch.slug} className="codex-entry">
       <div className="codex-side">
-        <h2>{entry.term}</h2>
-        <p className="sense">{entry.sense}</p>
+        <span className="codex-mono num">Глава {ch.num}</span>
+        <h2>{ch.title}</h2>
+        <p className="sense">{ch.sense}</p>
       </div>
 
-      {entry.body.map((p, i) => (
+      {ch.body.map((p, i) => (
         <p key={i} className="body">{p}</p>
       ))}
 
-      {/* Правило. Отбито крупно и отдельно: это то, что читатель унесёт с
-          собой, когда забудет и пример, и код. */}
-      <p className="codex-rule">{entry.rule}</p>
+      {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
 
-      {/* Выдержка из работающей системы. Её нет там, где до исходника не
-          дотянуться: см. правило файла entries.ts. */}
-      {entry.mechanism ? (
-        <figure className="codex-code">
-          <figcaption className="codex-mono">{entry.mechanism.where}</figcaption>
-          <pre><code>{entry.mechanism.code.join('\n')}</code></pre>
-          {entry.mechanism.note ? <p className="note">{entry.mechanism.note}</p> : null}
-        </figure>
-      ) : null}
-
-      <div className="codex-evidence">
-        <span className="codex-mono">{entry.evidence.system}</span>
-        <p>{entry.evidence.text}</p>
-      </div>
-
-      {entry.see?.length ? (
-        <p className="codex-see">
-          <span className="codex-mono">Смотри также</span>
-          {entry.see.map((s) => {
-            const target = bySlug(s);
-            if (!target) return null;
-            return (
-              <a
-                key={s}
-                href={`/codex/${s}`}
-                onClick={(e) => { e.preventDefault(); onGo(s); }}
-              >
-                {target.term}
-              </a>
-            );
-          })}
-        </p>
+      {ch.checklist?.length ? (
+        <div className="codex-check">
+          <span className="codex-mono">Коротко</span>
+          <ul>
+            {ch.checklist.map((c, i) => <li key={i}>{c}</li>)}
+          </ul>
+        </div>
       ) : null}
     </article>
   );
@@ -77,8 +76,8 @@ function Article({ entry, onGo }: { entry: Entry; onGo: (slug: string) => void }
 export function CodexPage() {
   const [single, setSingle] = useState<string | null>(slugFromPath());
 
-  /* Кнопка «назад» обязана работать в справочнике: по нему ходят ссылками,
-     а не только сверху вниз. */
+  /* Кнопка «назад» обязана работать: по мануалу ходят ссылками, а не только
+     сверху вниз. */
   useEffect(() => {
     const onPop = () => setSingle(slugFromPath());
     window.addEventListener('popstate', onPop);
@@ -92,13 +91,13 @@ export function CodexPage() {
     window.scrollTo(0, 0);
   };
 
-  const entry = single ? bySlug(single) : null;
+  const ch = single ? bySlug(single) : null;
 
   useEffect(() => {
-    document.title = entry
-      ? `${entry.term} · Искусство создавать искусство · EPRIS`
-      : 'Искусство создавать искусство · EPRIS';
-  }, [entry]);
+    document.title = ch
+      ? `${ch.title} · Как работать с машиной · EPRIS`
+      : 'Как работать с машиной · Мануал редакции EPRIS';
+  }, [ch]);
 
   return (
     <div className="codex-root">
@@ -106,70 +105,73 @@ export function CodexPage() {
         <header className="codex-head">
           <a className="wm" href="/">EPRIS</a>
           <a className="back codex-mono" href="/codex" onClick={(e) => { e.preventDefault(); go(null); }}>
-            Кодекс
+            Мануал
           </a>
-          <span className="right codex-mono">{ENTRIES.length} статей</span>
+          <span className="right codex-mono">{CHAPTERS.length} глав</span>
         </header>
 
-        {entry ? (
+        {ch ? (
           <>
             <button type="button" className="codex-btn" onClick={() => go(null)}>
-              ← Все статьи
+              ← Все главы
             </button>
-            <Article entry={entry} onGo={go} />
+            <ChapterView ch={ch} />
+            <nav className="codex-see">
+              <span className="codex-mono">Дальше</span>
+              {CHAPTERS.filter((c) => c.slug !== ch.slug).slice(0, 3).map((c) => (
+                <a key={c.slug} href={`/codex/${c.slug}`} onClick={(e) => { e.preventDefault(); go(c.slug); }}>
+                  {c.title}
+                </a>
+              ))}
+            </nav>
           </>
         ) : (
           <>
             <section className="codex-open">
-              <span className="codex-mono">Кодекс практики</span>
-              <h1>Искусство создавать искусство</h1>
+              <span className="codex-mono">Мануал редакции</span>
+              <h1>Как работать с машиной</h1>
               <p className="lead">
-                Рабочая энциклопедия того, как на самом деле собраны полтора десятка живых
-                систем: в разговоре с машиной, за пару лет, по большей части через ошибки.
+                Практическое руководство для тех, кто пишет, исследует и ведёт издание.
+                Что ей поручать, как формулировать просьбу, как проверять результат и
+                чего от неё не бывает никогда.
               </p>
             </section>
 
             <div className="codex-note">
               <p>
-                Каждая статья это термин, который работа заставила появиться, и у каждой указана
-                система, откуда он взялся, и что там случилось. Ни одной выдуманной иллюстрации:
-                музеи, магазин, архив, радиостанция и учительская мастерская работают, а описанные
-                провалы стоили настоящего времени.
+                Здесь нет ни слова про устройство машины и ничего для программистов. Всё
+                написано под работу редакции: экспликация к выставке, каталожная запись,
+                подготовка к интервью, проверка цитаты, перевод на язык, которого вы не
+                знаете, сборка номера.
               </p>
               <p>
-                Это не руководство по запросам к модели и не доказательство, что машина умна.
-                Большинство статей о том, как устроить работу, чтобы беглость не сходила за знание.
-                В том числе беглость машины, и в том числе те разы, когда она объявляла победу,
-                померив по закэшированному файлу. Ради этой части книгу и стоит читать.
+                Главное в мануале это примеры запросов. Абзацы объясняют, но работать вы
+                будете по образцу, поэтому в каждой главе стоят настоящие формулировки:
+                как обычно пишут, почему так не выходит, и как написать, чтобы вышло.
               </p>
             </div>
 
             <nav className="codex-toc">
               <span className="codex-mono">Содержание</span>
               <ol>
-                {ENTRIES.map((e, i) => (
-                  <li key={e.slug}>
-                    <a
-                      href={`/codex/${e.slug}`}
-                      onClick={(ev) => { ev.preventDefault(); go(e.slug); }}
-                    >
-                      <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                      <span className="t">{e.term}</span>
-                      <span className="s">{e.sense}</span>
+                {CHAPTERS.map((c) => (
+                  <li key={c.slug}>
+                    <a href={`/codex/${c.slug}`} onClick={(ev) => { ev.preventDefault(); go(c.slug); }}>
+                      <span className="n">{c.num}</span>
+                      <span className="t">{c.title}</span>
+                      <span className="s">{c.sense}</span>
                     </a>
                   </li>
                 ))}
               </ol>
             </nav>
 
-            {ENTRIES.map((e) => (
-              <Article key={e.slug} entry={e} onGo={go} />
-            ))}
+            {CHAPTERS.map((c) => <ChapterView key={c.slug} ch={c} />)}
           </>
         )}
 
         <footer className="codex-foot">
-          <span className="codex-mono">EPRIS · Кодекс практики</span>
+          <span className="codex-mono">EPRIS · Мануал редакции</span>
           <a className="codex-btn" href="/">В журнал</a>
         </footer>
       </div>

@@ -447,7 +447,7 @@ const ROUTES = {
   works: 'Showcase — Set Design & Conceptual Art',
   set: 'Showcase — Set Design & Conceptual Art',
   stage: 'Stage — a scene-building tool by EPRIS Bureau',
-  codex: 'Кодекс · искусство создавать искусство',
+  codex: 'Как работать с машиной · мануал редакции',
 };
 
 const SHOWCASE_DESCRIPTION = 'A vitrine of set design, scenography and conceptual art by emerging authors worldwide, curated and open for submissions by EPRIS Journal.';
@@ -477,7 +477,7 @@ const ROUTE_DESCRIPTIONS = {
   works: SHOWCASE_DESCRIPTION,
   set: SHOWCASE_DESCRIPTION,
   stage: 'Build a scene in metres — plan, section and volume driven by one model — and try the moves from EPRIS Bureau on it.',
-  codex: 'Рабочая энциклопедия того, как собраны полтора десятка живых систем: проверка, отпечаток, идемпотентность, масштаб, отказ. Настоящие случаи.',
+  codex: 'Практический мануал для тех, кто пишет и исследует: как формулировать просьбу, как проверять цитаты и атрибуции, как переводить и чего не бывает никогда.',
 };
 
 // Aliases that must not compete with their canonical route in search results.
