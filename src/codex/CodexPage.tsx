@@ -33,6 +33,20 @@ function Article({ entry, onGo }: { entry: Entry; onGo: (slug: string) => void }
         <p key={i} className="body">{p}</p>
       ))}
 
+      {/* Правило. Отбито крупно и отдельно: это то, что читатель унесёт с
+          собой, когда забудет и пример, и код. */}
+      <p className="codex-rule">{entry.rule}</p>
+
+      {/* Выдержка из работающей системы. Её нет там, где до исходника не
+          дотянуться: см. правило файла entries.ts. */}
+      {entry.mechanism ? (
+        <figure className="codex-code">
+          <figcaption className="codex-mono">{entry.mechanism.where}</figcaption>
+          <pre><code>{entry.mechanism.code.join('\n')}</code></pre>
+          {entry.mechanism.note ? <p className="note">{entry.mechanism.note}</p> : null}
+        </figure>
+      ) : null}
+
       <div className="codex-evidence">
         <span className="codex-mono">{entry.evidence.system}</span>
         <p>{entry.evidence.text}</p>
