@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MODULES, AUTHOR, COURSE_TITLE, byModuleSlug, type Module, type Task } from './course';
+import { MODULES, AUTHOR, COURSE_TITLE, byModuleSlug, type Figure, type Module, type Task } from './course';
 import '../codex/codex.css';
 import './expertise.css';
 
@@ -66,6 +66,22 @@ function Body({ text }: { text: string }) {
       {m[3]}
       <Marked text={text.slice(m[0].length)} />
     </>
+  );
+}
+
+/* Иллюстрация. Тот же блок, что в мануале, включая обязательную атрибуцию
+   под каждым снимком: курс требует этого от слушателя в модуле про права и
+   не может нарушать собственное правило. */
+function FigureBlock({ f }: { f: Figure }) {
+  return (
+    <figure className="codex-figure">
+      <img src={f.src} alt={f.alt} loading="lazy" decoding="async" />
+      <figcaption>
+        <span className="cap"><Marked text={f.caption} /></span>
+        {f.crop ? <span className="crop codex-mono">Фрагмент: {f.crop}</span> : null}
+        <span className="credit codex-mono">{f.credit}</span>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -142,6 +158,7 @@ function ModuleView({ m }: { m: Module }) {
           <p key={i} className="body"><Body text={p} /></p>
         ))}
 
+        {m.figures?.map((f) => <FigureBlock key={f.src} f={f} />)}
         {m.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
         {m.never?.length ? <NeverList items={m.never} /> : null}
         {m.task ? <TaskBlock t={m.task} /> : null}
@@ -220,10 +237,10 @@ export function ExpertisePage() {
               <h1>{COURSE_TITLE}</h1>
               <p className="byline codex-mono">{AUTHOR}</p>
               <p className="lead">
-                Восемь модулей о том, что машина в экспертизе делает надёжно, чего
-                не делает никогда и почему граница между этим проходит там, где
-                проходит. Провенанс, атрибуция, датировка, лабораторные данные,
-                подделки, заключение, ответственность.
+                Девять модулей о том, что машина в экспертизе делает надёжно,
+                чего не делает никогда и почему граница между этим проходит там,
+                где проходит. Провенанс, атрибуция, тираж, датировка,
+                лабораторные данные, подделки, заключение, ответственность.
               </p>
             </section>
 
