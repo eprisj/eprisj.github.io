@@ -184,6 +184,35 @@
 .codex-diagram .branch.good .step{border-color:var(--c-ink);color:var(--c-ink)}
 .codex-diagram .arrow{text-align:center;font-size:13px;line-height:1;padding:4px 0;color:var(--c-faint)}
 
+/* МАРКЕР. Единственный цвет во всём мануале.
+   Он оправдан жанром: это рабочая книга практики, а рабочую книгу размечают
+   маркером. Поэтому и взят цвет маркера, а не «фирменный акцент», и лежит он
+   полосой под строкой, как настоящий след пера: заливка во всю высоту строки
+   рвёт межстрочный ритм на многострочных выделениях.
+   box-decoration-break обязателен, иначе на переносе строки полоса появится
+   только на первом куске. */
+.codex-root mark{
+  background:linear-gradient(transparent 12%, #ffe94a 12%, #ffe94a 88%, transparent 88%);
+  color:var(--c-ink);
+  font-weight:600;
+  padding:0 .06em;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+
+/* ИЛЛЮСТРАЦИЯ. Репродукция во всю ширину текстовой колонки, атрибуция под
+   ней. Тонкая рамка, потому что у светлых картин край иначе растворяется в
+   бумаге страницы и вещь теряет границу. */
+.codex-figure{margin-top:clamp(1.4rem,2.6vw,2rem)}
+.codex-figure img{
+  display:block;width:100%;height:auto;
+  border:1px solid var(--c-rule-strong);background:var(--c-paper-deep);
+}
+.codex-figure figcaption{margin-top:9px;max-width:70ch}
+.codex-figure .cap{display:block;font-size:15px;line-height:1.5;color:var(--c-ink)}
+.codex-figure .crop{display:block;margin-top:5px;line-height:1.6;color:var(--c-ink)}
+.codex-figure .credit{display:block;margin-top:5px;line-height:1.6}
+
 /* Столбики сравнения. Без осей и подписей значений: они сравнивают порядок
    величин, а точные числа стоят словами в примечании справа. Дорожка серая,
    заливка чёрная, ничего цветного: у мануала нет второго цвета. */
