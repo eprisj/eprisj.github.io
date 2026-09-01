@@ -94,11 +94,12 @@ function Body({ text }: { text: string }) {
    нарушать собственное правило. У фрагмента отдельно назван вырезанный
    участок, потому что фрагмент это утверждение о том, куда смотреть, и
    зритель должен видеть, что ему показали часть. */
-function FigureBlock({ f }: { f: Figure }) {
+function FigureBlock({ f, label }: { f: Figure; label?: string }) {
   return (
     <figure className="codex-figure">
       <img src={f.src} alt={f.alt} loading="lazy" decoding="async" />
       <figcaption>
+        {label ? <span className="fignum codex-mono">{label}</span> : null}
         <span className="cap"><Marked text={f.caption} /></span>
         {f.crop ? <span className="crop codex-mono">Фрагмент: {f.crop}</span> : null}
         <span className="credit codex-mono">{f.credit}</span>
@@ -196,10 +197,13 @@ function SourceTable({ rows }: { rows: SourceRow[] }) {
 
 /* Пример запроса. Пара «так не работает / так работает» там, где неудачный
    вариант поучителен, и один хороший там, где показывать нечего. */
-function SampleBlock({ s }: { s: Chapter['samples'] extends (infer U)[] | undefined ? U : never }) {
+function SampleBlock({ s, label }: { s: Chapter['samples'] extends (infer U)[] | undefined ? U : never; label?: string }) {
   return (
     <figure className="codex-sample">
-      <figcaption className="codex-mono">{s.task}</figcaption>
+      <figcaption className="codex-mono">
+        {label ? <span className="exnum">{label}</span> : null}
+        {s.task}
+      </figcaption>
       {s.bad ? (
         <div className="row bad">
           <span className="codex-mono lbl">Так не работает</span>
@@ -218,13 +222,34 @@ function SampleBlock({ s }: { s: Chapter['samples'] extends (infer U)[] | undefi
 /* Глава целиком. Один компонент и для сплошного чтения, и для отдельного
    адреса: расходиться этим двум видам незачем, а два набора вёрстки для
    одного текста разъедутся при первой же правке. */
-function ChapterView({ ch }: { ch: Chapter }) {
+function ChapterView({ ch, go }: { ch: Chapter; go?: (slug: string) => void }) {
+  /* Номер главы без ведущего нуля: в оглавлении «01» держит колонку ровной,
+     а в подписи «Пример 1.3» ноль читается как часть номера примера. */
+  const n = String(Number(ch.num));
+  const prereq = (ch.requires ?? []).map(bySlug).filter(Boolean) as Chapter[];
+
   return (
     <article id={ch.slug} className="codex-entry">
       <div className="codex-side">
         <span className="codex-mono num">Глава {ch.num}</span>
         <h2>{ch.title}</h2>
         <p className="sense">{ch.sense}</p>
+        {/* Предварительные требования стоят рядом с заголовком, а не в тексте:
+            решение, читать ли главу сейчас, принимается до чтения. */}
+        {prereq.length ? (
+          <p className="prereq codex-mono">
+            <span className="lbl">Предварительно</span>
+            {prereq.map((c) => (
+              <a
+                key={c.slug}
+                href={`/codex/${c.slug}`}
+                onClick={go ? (e) => { e.preventDefault(); go(c.slug); } : undefined}
+              >
+                Глава {c.num}. {c.title}
+              </a>
+            ))}
+          </p>
+        ) : null}
       </div>
 
       {/* Весь текст главы это ОДНА ячейка решётки, а не строка на абзац.
@@ -233,17 +258,45 @@ function ChapterView({ ch }: { ch: Chapter }) {
           нему, и между первым и вторым абзацем открывалась дыра. Одна ячейка
           снимает вопрос совсем, а колонок по-прежнему две. */}
       <div className="codex-main">
+        {/* Учебные цели открывают главу: заявленный результат это то, чем
+            пособие отличается от сборника заметок. Список набран мелко и
+            линиями, чтобы он читался как служебная часть, а не как начало
+            изложения. */}
+        {ch.objectives?.length ? (
+          <div className="codex-goals">
+            <span className="codex-mono">Цели главы</span>
+            <p className="codex-mono intro">После главы вы сможете</p>
+            <ul>
+              {ch.objectives.map((o, i) => <li key={i}>{o}</li>)}
+            </ul>
+          </div>
+        ) : null}
+
         {ch.body.map((p, i) => (
           <p key={i} className="body"><Body text={p} /></p>
         ))}
 
-        {ch.figures?.map((f) => <FigureBlock key={f.src} f={f} />)}
+        {ch.figures?.map((f, i) => <FigureBlock key={f.src} f={f} label={`Рис. ${n}.${i + 1}`} />)}
         {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
         {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
         {ch.bars ? <BarChart b={ch.bars} /> : null}
         {ch.sources?.length ? <SourceTable rows={ch.sources} /> : null}
 
-        {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
+        {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} label={`Пример ${n}.${i + 1}`} />)}
+
+        {/* Задание выполняется на своём материале: на учебном примере работа,
+            ради которой написана глава, не ставится. Строка проверки не
+            «правильный ответ», а признак, по которому автор задания узнаёт,
+            что задание выполнено не так. */}
+        {ch.task ? (
+          <div className="codex-task">
+            <span className="codex-mono">Задание {n}</span>
+            <p className="text">{ch.task.text}</p>
+            {ch.task.check ? (
+              <p className="check"><span className="codex-mono lbl">Проверка. </span>{ch.task.check}</p>
+            ) : null}
+          </div>
+        ) : null}
 
         {ch.checklist?.length ? (
           <div className="codex-check">
@@ -395,7 +448,7 @@ export function CodexPage() {
             <button type="button" className="codex-btn" onClick={() => go(null)}>
               ← Все главы
             </button>
-            <ChapterView ch={ch} />
+            <ChapterView ch={ch} go={go} />
             <nav className="codex-see">
               <span className="codex-mono">Дальше</span>
               {CHAPTERS.filter((c) => c.slug !== ch.slug).slice(0, 3).map((c) => (
@@ -472,7 +525,7 @@ export function CodexPage() {
               </a>
             </div>
 
-            {CHAPTERS.map((c) => <ChapterView key={c.slug} ch={c} />)}
+            {CHAPTERS.map((c) => <ChapterView key={c.slug} ch={c} go={go} />)}
           </>
         )}
 
