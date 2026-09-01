@@ -44,6 +44,7 @@
 .codex-mono{
   font-family:var(--font-sans);font-size:9.5px;line-height:1.5;
   letter-spacing:.2em;text-transform:uppercase;color:var(--c-faint);
+  hyphens:none;
 }
 
 /* Шапка ячейками по волосяным линиям: приём шапки munister и музея EPRIS. */
@@ -70,6 +71,7 @@
 .codex-open .lead{
   max-width:56ch;margin-top:22px;
   font-size:clamp(19px,2vw,23px);line-height:1.42;color:var(--c-ink);
+  text-wrap:pretty;
 }
 .codex-note{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -88,8 +90,8 @@
 }
 .codex-toc a:hover{background:var(--c-paper-deep)}
 .codex-toc .n{font-size:9.5px;letter-spacing:.14em;color:var(--c-faint);font-variant-numeric:tabular-nums}
-.codex-toc .t{font-family:var(--font-head);font-size:clamp(20px,2.2vw,26px);line-height:1.1;letter-spacing:-.014em}
-.codex-toc .s{font-size:15px;line-height:1.45;color:var(--c-muted)}
+.codex-toc .t{font-family:var(--font-head);font-size:clamp(20px,2.2vw,26px);line-height:1.1;letter-spacing:-.014em;text-wrap:balance}
+.codex-toc .s{font-size:15px;line-height:1.45;color:var(--c-muted);text-wrap:pretty}
 
 /* Статья: служебная подпись слева, текст справа. Раскладка разборов систем.
    Каждая статья своя решётка, а не одна общая на книгу: в общей подпись и
@@ -108,13 +110,46 @@
 .codex-side h2{
   font-family:var(--font-head);font-weight:400;
   font-size:clamp(26px,3vw,34px);line-height:1.06;letter-spacing:-.018em;
+  /* Заголовки в две-три строки: балансируем, чтобы последняя строка не
+     оставалась одиноким словом. */
+  text-wrap:balance;
+  hyphens:none;
 }
 .codex-side .sense{
   margin-top:12px;max-width:30ch;
   font-size:14.5px;line-height:1.45;color:var(--c-muted);
 }
-.codex-main p.body{max-width:68ch;font-size:17px;line-height:1.62;color:var(--c-muted)}
-.codex-main p.body + p.body{margin-top:16px}
+/* НАБОР ОСНОВНОГО ТЕКСТА.
+   Тон чернил здесь темнее, чем у подписей и врезок: мануал читают подряд и
+   целыми главами, а не проглядывают, и 68 процентов черноты, нормальные для
+   короткой сноски, на длинном чтении утомляют. Служебные строки остались
+   светлыми, поэтому иерархия не пострадала, а проза стала читаемой.
+
+   Переносы включены и работают только потому, что на разделе выставлен
+   lang="ru" (см. CodexPage.tsx): без объявленного языка браузеру нечем
+   переносить, а русские слова длинные и правый край рвётся клочьями.
+   limit-chars не даёт отрывать по две буквы и переносить короткие слова. */
+.codex-main p.body{
+  max-width:68ch;
+  font-size:17px;line-height:1.62;
+  color:rgba(18,18,18,.86);
+  hyphens:auto;-webkit-hyphens:auto;
+  hyphenate-limit-chars:7 4 3;
+  text-wrap:pretty;
+}
+/* Отбивка абзаца считается ОТ СТРОКИ, а не от кегля. Строка здесь 1.62 от
+   17px, то есть около 27px; доля от кегля даёт вдвое меньше нужного, и абзацы
+   слипаются. Три четверти строки дают воздух, не разбивая полосу на плитки. */
+.codex-main p.body + p.body{margin-top:calc(1.62em * .75)}
+
+/* Прописная врезка в начале абзаца. Разрядка обязательна: прописные набраны
+   вплотную и без неё слипаются в пятно. Тон полный, потому что врезка это
+   рубрика, а не примечание. */
+.codex-main .lead-in{
+  color:var(--c-ink);
+  font-weight:500;
+  letter-spacing:.055em;
+}
 
 
 /* ПРИМЕР ЗАПРОСА. Главное на странице.
@@ -140,7 +175,8 @@
 .codex-sample .good{border-left:3px solid var(--c-ink)}
 .codex-sample .why{
   margin:0;padding:12px 14px;background:var(--c-paper-deep);
-  font-size:15px;line-height:1.55;color:var(--c-muted);max-width:70ch;
+  font-size:15px;line-height:1.55;color:rgba(18,18,18,.84);max-width:70ch;
+  hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty;
 }
 
 /* Карточки понятий: термин и определение, когда глава вводит свою пару

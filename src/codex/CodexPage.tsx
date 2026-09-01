@@ -42,6 +42,27 @@ function Marked({ text }: { text: string }) {
   );
 }
 
+/* Прописная врезка в начале абзаца.
+   Абзацы книги начинаются с рубрики капителью: «ЛОВУШКА ПЯТАЯ, ГЛАВНАЯ.»,
+   «ЧТО ВИДНО ТОЛЬКО ВБЛИЗИ.». Набранные подряд прописные читаются как крик и
+   разбираются глазом медленнее строчных, поэтому врезка получает разрядку и
+   полный тон чернил, а размер остаётся прежним. Она НЕ выносится в отдельный
+   блок: часть врезок грамматически входит в предложение («МЕТАПРОМТИНГ, это
+   не более сложный вопрос»), и вынос порвал бы фразу. */
+const LEAD_IN = /^([А-ЯЁ][А-ЯЁ\s]*(?:,\s[А-ЯЁ][А-ЯЁ\s]*)*)([.,:])(\s)/;
+
+function Body({ text }: { text: string }) {
+  const m = text.match(LEAD_IN);
+  if (!m || m[1].trim().length < 4) return <Marked text={text} />;
+  return (
+    <>
+      <span className="lead-in">{m[1]}{m[2]}</span>
+      {m[3]}
+      <Marked text={text.slice(m[0].length)} />
+    </>
+  );
+}
+
 /* Иллюстрация: репродукция или её фрагмент.
    Атрибуция стоит под каждой картинкой отдельной строкой, а не собрана в
    конце главы: глава про права требует того же от читателя, и книга не может
@@ -188,7 +209,7 @@ function ChapterView({ ch }: { ch: Chapter }) {
           снимает вопрос совсем, а колонок по-прежнему две. */}
       <div className="codex-main">
         {ch.body.map((p, i) => (
-          <p key={i} className="body"><Marked text={p} /></p>
+          <p key={i} className="body"><Body text={p} /></p>
         ))}
 
         {ch.figures?.map((f) => <FigureBlock key={f.src} f={f} />)}
@@ -327,7 +348,7 @@ export function CodexPage() {
   }, [ch, isLibrary]);
 
   return (
-    <div className="codex-root">
+    <div className="codex-root" lang="ru">
       <div className="codex-shell">
         <header className="codex-head">
           <a className="wm" href="/">EPRIS</a>
