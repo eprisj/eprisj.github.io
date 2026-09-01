@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, type SourceRow } from './chapters';
+import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, type Figure, type SourceRow } from './chapters';
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
@@ -21,6 +21,44 @@ import './codex.css';
 function slugFromPath(): string | null {
   const m = window.location.pathname.match(/^\/codex\/([^/]+)\/?$/);
   return m ? decodeURIComponent(m[1]) : null;
+}
+
+/* Подсветка важного маркером.
+   В тексте главы пишется как ==важное==, здесь превращается в <mark>. Разметка
+   выбрана такая, чтобы автор главы не писал теги руками в строке данных.
+   Маркер это единственный цвет во всём мануале, и он оправдан жанром: рабочую
+   книгу практики размечают маркером, а не набирают вторым кеглем. Мера: две
+   или три несущие мысли на главу. Подсвечивается утверждение, на котором
+   глава держится, а не всё, что показалось важным, и одна и та же мысль не
+   подсвечивается дважды, даже если повторена в подписи под картинкой. */
+function Marked({ text }: { text: string }) {
+  const parts = text.split(/==([^=]+)==/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <mark key={i}>{part}</mark> : <span key={i}>{part}</span>
+      )}
+    </>
+  );
+}
+
+/* Иллюстрация: репродукция или её фрагмент.
+   Атрибуция стоит под каждой картинкой отдельной строкой, а не собрана в
+   конце главы: глава про права требует того же от читателя, и книга не может
+   нарушать собственное правило. У фрагмента отдельно назван вырезанный
+   участок, потому что фрагмент это утверждение о том, куда смотреть, и
+   зритель должен видеть, что ему показали часть. */
+function FigureBlock({ f }: { f: Figure }) {
+  return (
+    <figure className="codex-figure">
+      <img src={f.src} alt={f.alt} loading="lazy" decoding="async" />
+      <figcaption>
+        <span className="cap"><Marked text={f.caption} /></span>
+        {f.crop ? <span className="crop codex-mono">Фрагмент: {f.crop}</span> : null}
+        <span className="credit codex-mono">{f.credit}</span>
+      </figcaption>
+    </figure>
+  );
 }
 
 /* Карточки понятий. Термин и определение в одну фразу, не путать с примером
@@ -150,9 +188,10 @@ function ChapterView({ ch }: { ch: Chapter }) {
           снимает вопрос совсем, а колонок по-прежнему две. */}
       <div className="codex-main">
         {ch.body.map((p, i) => (
-          <p key={i} className="body">{p}</p>
+          <p key={i} className="body"><Marked text={p} /></p>
         ))}
 
+        {ch.figures?.map((f) => <FigureBlock key={f.src} f={f} />)}
         {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
         {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
         {ch.bars ? <BarChart b={ch.bars} /> : null}
