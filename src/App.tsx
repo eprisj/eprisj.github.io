@@ -14,6 +14,7 @@ const CollaborationPage = lazy(() => import('./pages/CollaborationPage').then((m
 const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({ default: m.ShowcasePage })));
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const CodexPage = lazy(() => import('./codex/CodexPage').then((m) => ({ default: m.CodexPage })));
+const ExpertisePage = lazy(() => import('./expertise/ExpertisePage').then((m) => ({ default: m.ExpertisePage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
@@ -4170,6 +4171,11 @@ export default function App() {
      напрямую, как и в бюро. */
   if (/^\/codex(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0eb]" />}><CodexPage /></Suspense>;
+  }
+  /* Курс по экспертизе. Оглавление и отдельный модуль по своему адресу, как
+     у мануала: глубокие адреса отдаёт SPA-заглушка 404.html. */
+  if (/^\/expertise(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#ffffff]" />}><ExpertisePage /></Suspense>;
   }
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
