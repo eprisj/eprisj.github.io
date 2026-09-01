@@ -95,6 +95,10 @@
 .codex-title .lead .abstract-label{
   display:inline;font-size:9.5px;letter-spacing:.2em;color:var(--c-ink);
 }
+.codex-title .terminology{
+  max-width:62ch;margin-top:16px;
+  font-size:9.5px;line-height:1.9;letter-spacing:.14em;
+}
 .codex-title .keywords{
   max-width:62ch;margin-top:22px;padding-top:14px;
   border-top:1px solid var(--c-rule);

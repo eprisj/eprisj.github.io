@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MODULES, AUTHOR, COURSE_TITLE, byModuleSlug, type Figure, type Module, type Task } from './course';
+import { MODULES, AUTHOR, COURSE_TITLE, byModuleSlug, type Figure, type Module, type SourceRow, type Table, type Task } from './course';
 import '../codex/codex.css';
 import './expertise.css';
 
@@ -72,11 +72,12 @@ function Body({ text }: { text: string }) {
 /* Иллюстрация. Тот же блок, что в мануале, включая обязательную атрибуцию
    под каждым снимком: курс требует этого от слушателя в модуле про права и
    не может нарушать собственное правило. */
-function FigureBlock({ f }: { f: Figure }) {
+function FigureBlock({ f, label }: { f: Figure; label?: string }) {
   return (
     <figure className="codex-figure">
       <img src={f.src} alt={f.alt} loading="lazy" decoding="async" />
       <figcaption>
+        {label ? <span className="fignum codex-mono">{label}</span> : null}
         <span className="cap"><Marked text={f.caption} /></span>
         {f.crop ? <span className="crop codex-mono">Фрагмент: {f.crop}</span> : null}
         <span className="credit codex-mono">{f.credit}</span>
@@ -86,10 +87,13 @@ function FigureBlock({ f }: { f: Figure }) {
 }
 
 /* Пример запроса. Тот же блок, что в мануале: слушатель узнаёт его в лицо. */
-function SampleBlock({ s }: { s: NonNullable<Module['samples']>[number] }) {
+function SampleBlock({ s, label }: { s: NonNullable<Module['samples']>[number]; label?: string }) {
   return (
     <figure className="codex-sample">
-      <figcaption className="codex-mono">{s.task}</figcaption>
+      <figcaption className="codex-mono">
+        {label ? <span className="exnum">{label}</span> : null}
+        {s.task}
+      </figcaption>
       {s.bad ? (
         <div className="row bad">
           <span className="codex-mono lbl">Так не работает</span>
@@ -137,7 +141,59 @@ function TaskBlock({ t }: { t: Task }) {
   );
 }
 
+/* Разметочная таблица и свод источников. Разметка и стили те же, что в
+   пособии: слушатель курса, пришедший из пособия, читает таблицу привычно, а
+   заводить ради этого общий модуль на два компонента незачем. */
+function MarkTable({ t, label }: { t: Table; label?: string }) {
+  return (
+    <figure className="codex-table">
+      <figcaption className="codex-mono">
+        {label ? <span className="tabnum">{label}</span> : null}
+        {t.caption}
+      </figcaption>
+      <div className="scroll">
+        <table>
+          <thead>
+            <tr>{t.head.map((h) => <th key={h} scope="col" className="codex-mono">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {t.rows.map((row, i) => (
+              <tr key={i}>
+                {row.map((cell, j) => (
+                  j === 0
+                    ? <th key={j} scope="row"><Marked text={cell} /></th>
+                    : <td key={j}><Marked text={cell} /></td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {t.note ? <p className="note codex-mono">{t.note}</p> : null}
+    </figure>
+  );
+}
+
+function SourceTable({ rows }: { rows: SourceRow[] }) {
+  return (
+    <div className="codex-sources">
+      <span className="codex-mono head">Где смотреть</span>
+      {rows.map((r) => (
+        <div key={r.url} className="src">
+          <a className="name" href={r.url} target="_blank" rel="noreferrer">{r.name}</a>
+          <p className="gives">{r.gives}</p>
+          <p className="access codex-mono">{r.access}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ModuleView({ m }: { m: Module }) {
+  /* Номер модуля без ведущего нуля: в подписи «Таблица 6.1» ноль читался бы
+     как часть номера таблицы. */
+  const n = String(Number(m.num));
+
   return (
     <article id={m.slug} className="codex-entry">
       <div className="codex-side">
@@ -158,8 +214,10 @@ function ModuleView({ m }: { m: Module }) {
           <p key={i} className="body"><Body text={p} /></p>
         ))}
 
-        {m.figures?.map((f) => <FigureBlock key={f.src} f={f} />)}
-        {m.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
+        {m.figures?.map((f, i) => <FigureBlock key={f.src} f={f} label={`Рис. ${n}.${i + 1}`} />)}
+        {m.tables?.map((t, i) => <MarkTable key={t.caption} t={t} label={`Таблица ${n}.${i + 1}`} />)}
+        {m.sources?.length ? <SourceTable rows={m.sources} /> : null}
+        {m.samples?.map((s, i) => <SampleBlock key={i} s={s} label={`Пример ${n}.${i + 1}`} />)}
         {m.never?.length ? <NeverList items={m.never} /> : null}
         {m.task ? <TaskBlock t={m.task} /> : null}
       </div>
