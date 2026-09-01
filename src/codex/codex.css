@@ -73,36 +73,55 @@
   font-size:clamp(19px,2vw,23px);line-height:1.42;color:var(--c-ink);
   text-wrap:pretty;
 }
-/* Титульный лист.
-   Заглавие крупно, подзаголовок строчными той же антиквой и вдвое мельче,
-   дальше две служебные строки волосяным гротеском: автор и выходные данные.
-   Аннотация начинается с рубрики «Аннотация.» в строку, как в пособии, а не
-   отдельной плашкой: плашка превратила бы её в анонс. Ключевые слова стоят
-   последними и отделены линией, потому что они конец титула, а не начало
-   текста. */
-.codex-title h1{max-width:22ch}
+/* ТИТУЛЬНЫЙ ЛИСТ.
+   Две колонки под заглавием: слева аннотация, справа выходные данные. Правая
+   колонка узкая и набрана служебно, поэтому она не спорит с чтением, но
+   держит правый край страницы, который в одноколонном наборе оставался
+   пустым. На узком экране колонки складываются в одну, и служебная часть
+   уходит вниз, как в печатной книге. */
+.codex-title h1{max-width:24ch}
 .codex-title .subtitle{
-  max-width:44ch;margin-top:18px;
+  max-width:46ch;margin-top:16px;
   font-family:var(--font-head);font-weight:400;
   font-size:clamp(19px,2.1vw,25px);line-height:1.22;letter-spacing:-.014em;
   color:var(--c-ink);text-wrap:pretty;
 }
-.codex-title .byline{
-  margin-top:26px;font-size:10.5px;letter-spacing:.19em;color:var(--c-ink);
-}
-.codex-title .imprint{margin-top:7px;font-size:9.5px}
-.codex-title .lead{margin-top:26px;font-size:clamp(17px,1.7vw,19.5px);line-height:1.5;color:var(--c-muted)}
-.codex-title .lead .abstract-label{
-  display:inline;font-size:9.5px;letter-spacing:.2em;color:var(--c-ink);
-}
-.codex-title .terminology{
-  max-width:62ch;margin-top:16px;
-  font-size:9.5px;line-height:1.9;letter-spacing:.14em;
-}
-.codex-title .keywords{
-  max-width:62ch;margin-top:22px;padding-top:14px;
+.codex-title .cols{
+  display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);
+  gap:clamp(20px,3vw,52px);
+  margin-top:clamp(1.8rem,3.4vw,2.8rem);
+  padding-top:clamp(1.2rem,2vw,1.8rem);
   border-top:1px solid var(--c-rule);
-  font-size:9.5px;line-height:1.9;letter-spacing:.16em;
+}
+.codex-title .cols > *{min-width:0}
+.codex-title .lead{
+  max-width:62ch;font-size:clamp(16.5px,1.6vw,18.5px);line-height:1.52;
+  color:var(--c-ink);text-wrap:pretty;
+}
+.codex-title .lead + .lead{margin-top:14px;color:var(--c-muted)}
+.codex-title .lead .abstract-label{display:inline;color:var(--c-ink)}
+
+/* Выходные данные строками реестра: подпись и значение, волосяная линия
+   между строками. Тот же приём, что в оглавлении, поэтому титул и содержание
+   читаются как один документ. */
+.codex-title .meta dl{margin:0;border-top:1px solid var(--c-rule-strong)}
+.codex-title .meta dt{padding-top:9px}
+.codex-title .meta dd{
+  margin:2px 0 0;padding-bottom:9px;border-bottom:1px solid var(--c-rule);
+  font-size:15px;line-height:1.4;color:var(--c-ink);
+}
+.codex-title .meta .terminology{
+  margin:16px 0 0;font-size:14px;line-height:1.5;color:var(--c-muted);
+}
+.codex-title .meta .terminology .lbl{display:inline;color:var(--c-ink)}
+.codex-title .meta .keywords{
+  margin-top:16px;padding-top:12px;border-top:1px solid var(--c-rule);
+  line-height:1.85;letter-spacing:.14em;
+}
+
+@media (max-width:860px){
+  .codex-title .cols{grid-template-columns:minmax(0,1fr)}
+  .codex-title .meta{margin-top:6px}
 }
 
 .codex-note{
