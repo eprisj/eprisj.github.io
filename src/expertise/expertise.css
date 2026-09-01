@@ -134,3 +134,6 @@
   .course-nav .fwd,
   .course-end{text-align:left}
 }
+
+/* Выходные данные курса: та же служебная строка, что на титуле пособия. */
+.course-root .codex-open .imprint{margin-top:7px;font-size:9.5px}
