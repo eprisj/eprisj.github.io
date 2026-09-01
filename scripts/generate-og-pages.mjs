@@ -448,6 +448,7 @@ const ROUTES = {
   set: 'Showcase — Set Design & Conceptual Art',
   stage: 'Stage — a scene-building tool by EPRIS Bureau',
   codex: 'Как работать с машиной · мануал редакции',
+  expertise: 'Машина в искусствоведческой экспертизе · курс',
 };
 
 const SHOWCASE_DESCRIPTION = 'A vitrine of set design, scenography and conceptual art by emerging authors worldwide, curated and open for submissions by EPRIS Journal.';
@@ -478,6 +479,7 @@ const ROUTE_DESCRIPTIONS = {
   set: SHOWCASE_DESCRIPTION,
   stage: 'Build a scene in metres — plan, section and volume driven by one model — and try the moves from EPRIS Bureau on it.',
   codex: 'Мануал для тех, кто ведёт исследование в искусстве: как превратить тему в вопрос, смотреть на вещь и работать с фрагментом, не смешать первоисточник с чужим выводом, разобрать корпус текстов, проверить цитаты, собрать и посчитать данные о собрании. Токены и цена простыми словами. Полные разборы на живых музейных данных, включая случай, где честный ответ это «по этим данным нельзя». С адресами источников и библиотекой запросов.',
+  expertise: 'Курс Вячеслава Мунистера для тех, кто подписывает экспертные заключения. Восемь модулей: провенанс и его разрывы, границы стилистической атрибуции, датировка по материалу и документам, чтение лабораторных отчётов, признаки сконструированной истории бытования, структура заключения и ответственность. С заданиями на собственном материале.',
 };
 
 // Aliases that must not compete with their canonical route in search results.

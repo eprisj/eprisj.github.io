@@ -1,0 +1,136 @@
+/* КУРС. Добавка к оформлению мануала, а не второй набор стилей.
+ *
+ * Всё общее (токены, шапка, решётка статьи, пример запроса, набор текста)
+ * приходит из codex.css, который импортирован рядом. Здесь только то, чего
+ * в мануале нет по жанру: авторская строка, цели модуля, красные флаги,
+ * задание и переход к следующему модулю.
+ *
+ * Область .course-root: курс живёт внутри .codex-root, поэтому собственные
+ * правила помечены отдельным классом и не могут протечь в мануал.
+ */
+
+/* Авторская строка под заголовком курса. Курс подписан, в отличие от
+   мануала: у него есть автор, и это часть его веса. */
+.course-root .codex-open .byline{
+  margin-top:14px;
+  letter-spacing:.16em;
+  color:var(--c-ink);
+}
+
+/* ЦЕЛИ МОДУЛЯ. Стоят до текста, потому что читатель должен знать, зачем
+   читает. Набраны светлее прозы: это оглавление к модулю, а не сам модуль. */
+.course-goals{
+  margin-bottom:clamp(1.2rem,2.2vw,1.8rem);
+  padding-bottom:clamp(1rem,2vw,1.4rem);
+  border-bottom:1px solid var(--c-rule);
+}
+.course-goals > .codex-mono{display:block;margin-bottom:9px}
+.course-goals ul{list-style:none;margin:0;padding:0}
+.course-goals li{
+  position:relative;padding-left:19px;margin-top:6px;
+  font-size:15px;line-height:1.5;color:var(--c-muted);max-width:62ch;
+}
+.course-goals li::before{
+  content:"";position:absolute;left:2px;top:.68em;
+  width:8px;height:1px;background:var(--c-rule-strong);
+}
+
+/* КРАСНЫЕ ФЛАГИ. Единственный блок курса с рамкой в полный тон: это запреты,
+   и они должны читаться как запреты. Цвета для тревоги нет намеренно, весь
+   мануал и курс чёрно-белые, и жёлтый маркер здесь тоже неуместен: он
+   выделяет мысль, а не команду. Вес даёт рамка и полная чернота текста. */
+.course-never{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  padding:clamp(15px,2.2vw,20px);
+  border:2px solid var(--c-ink);
+}
+.course-never > .codex-mono{display:block;color:var(--c-ink)}
+.course-never ul{list-style:none;margin:11px 0 0;padding:0}
+.course-never li{
+  position:relative;padding-left:22px;margin-top:8px;
+  font-size:15.5px;line-height:1.5;color:var(--c-ink);max-width:64ch;
+}
+/* Косой штрих вместо точки: список запретов, а не перечисление. */
+.course-never li::before{
+  content:"";position:absolute;left:3px;top:.34em;
+  width:9px;height:9px;
+  border-left:1px solid var(--c-ink);
+  transform:rotate(45deg);border-top:1px solid var(--c-ink);
+}
+
+/* ЗАДАНИЕ. Заливка вместо рамки: блок длинный, и рамка вокруг длинного
+   списка на телефоне превращается в коробку во весь экран. */
+.course-task{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  padding:clamp(16px,2.6vw,24px);
+  background:var(--c-paper-deep);
+  border-top:2px solid var(--c-ink);
+}
+.course-task > .codex-mono{display:block;color:var(--c-ink)}
+.course-task h3{
+  margin-top:8px;font-family:var(--font-head);font-weight:400;
+  font-size:clamp(20px,2.2vw,25px);line-height:1.15;letter-spacing:-.014em;
+  text-wrap:balance;
+}
+.course-task .mat{margin-top:10px;font-size:15px;line-height:1.5;color:var(--c-muted);max-width:64ch}
+/* Номера шагов нужны явно: сброс стилей вокруг (Tailwind preflight) гасит
+   маркеры у всех списков страницы, и без этой строки шаги задания идут
+   безымянными абзацами. Для инструкции, где порядок значим, это дефект,
+   а не оформление. */
+.course-task ol{margin:13px 0 0;padding-left:1.6em;list-style:decimal}
+.course-task li{
+  margin-top:7px;font-size:15.5px;line-height:1.52;
+  color:rgba(18,18,18,.86);max-width:62ch;
+}
+.course-task li::marker{color:var(--c-faint);font-size:13px}
+.course-task .done{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--c-rule-strong);
+  font-size:15px;line-height:1.5;color:var(--c-ink);max-width:64ch;
+}
+.course-task strong{font-weight:600}
+
+/* ПЕРЕХОД К СЛЕДУЮЩЕМУ МОДУЛЮ. В мануале внизу стоял список похожих глав,
+   здесь строго предыдущий и следующий: курс проходят по порядку, и
+   предлагать читателю разбегаться в стороны посреди прохождения незачем. */
+.course-nav{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:clamp(14px,2.4vw,28px);
+  margin-top:clamp(2rem,3.4vw,3rem);
+  padding-top:clamp(1rem,2vw,1.4rem);
+  border-top:1px solid var(--c-rule-strong);
+}
+.course-nav a{display:block}
+.course-nav .fwd{text-align:right}
+.course-nav .t{
+  display:block;margin-top:6px;
+  font-family:var(--font-head);font-size:clamp(18px,2vw,22px);
+  line-height:1.15;letter-spacing:-.012em;
+  border-bottom:1px solid var(--c-rule-strong);
+  transition:border-color .18s ease;
+}
+.course-nav a:hover .t{border-color:var(--c-ink)}
+.course-end{align-self:center;text-align:right}
+
+/* Ссылка на соседний мануал. Тот же приём, что у ссылки на библиотеку
+   запросов в мануале: рамка, потому что ведёт за пределы курса. */
+.course-related{margin-top:clamp(1.6rem,3vw,2.4rem)}
+.course-related a{
+  display:block;padding:clamp(16px,2.4vw,22px);border:1px solid var(--c-ink);
+  background:var(--c-paper-deep);transition:background .16s ease;
+}
+.course-related a:hover{background:var(--c-paper)}
+.course-related .t{
+  display:block;margin-top:8px;font-family:var(--font-head);
+  font-size:clamp(22px,2.4vw,28px);line-height:1.1;letter-spacing:-.014em;
+}
+.course-related .s{
+  display:block;margin-top:7px;max-width:60ch;
+  font-size:15px;line-height:1.5;color:var(--c-muted);text-wrap:pretty;
+}
+
+@media (max-width:640px){
+  /* На телефоне переход вперёд не прижимается вправо: в одну колонку это
+     читается как случайный сдвиг, а не как направление. */
+  .course-nav .fwd,
+  .course-end{text-align:left}
+}
