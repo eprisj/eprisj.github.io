@@ -278,9 +278,9 @@ export function ExpertisePage() {
             <div className="course-related">
               <a href="/codex">
                 <span className="codex-mono">Рядом</span>
-                <span className="t">Как работать с машиной</span>
+                <span className="t">Языковая модель в исследовательской работе</span>
                 <span className="s">
-                  Мануал редакции о том же инструменте, но для работы над текстом
+                  Методическое пособие о том же инструменте, но для работы над текстом
                   и исследованием. Курс опирается на него и местами прямо
                   ссылается.
                 </span>

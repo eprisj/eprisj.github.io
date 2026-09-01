@@ -3,6 +3,15 @@ import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, 
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
+/* Выходные данные пособия. Держатся здесь одной группой, потому что заглавие
+   уходит и в титул, и в <title> вкладки, и в подвал: разойдясь по трём местам,
+   они разъезжаются при первой же правке. */
+export const AUTHOR = 'Вячеслав Мунистер';
+export const CODEX_TITLE = 'Языковая модель в исследовательской работе';
+export const CODEX_SUBTITLE =
+  'Постановка задачи, обращение с источником, верификация результата и границы применимости';
+export const CODEX_EDITION = 'Издание второе, исправленное, 2026';
+
 /**
  * МАНУАЛ по работе с машиной для редакции.
  *
@@ -357,10 +366,10 @@ export function CodexPage() {
 
   useEffect(() => {
     document.title = isLibrary
-      ? 'Библиотека запросов · Как работать с машиной · EPRIS'
+      ? `Библиотека запросов · ${CODEX_TITLE} · EPRIS`
       : ch
-      ? `${ch.title} · Как работать с машиной · EPRIS`
-      : 'Как работать с машиной · Мануал редакции EPRIS';
+      ? `${ch.title} · ${CODEX_TITLE} · EPRIS`
+      : `${CODEX_TITLE} · Методическое пособие · EPRIS`;
   }, [ch, isLibrary]);
 
   return (
@@ -369,7 +378,7 @@ export function CodexPage() {
         <header className="codex-head">
           <a className="wm" href="/">EPRIS</a>
           <a className="back codex-mono" href="/codex" onClick={(e) => { e.preventDefault(); go(null); }}>
-            Мануал
+            Пособие
           </a>
           <span className="right codex-mono">{CHAPTERS.length} глав</span>
         </header>
@@ -398,13 +407,31 @@ export function CodexPage() {
           </>
         ) : (
           <>
-            <section className="codex-open">
-              <span className="codex-mono">Мануал редакции</span>
-              <h1>Как работать с машиной</h1>
+            {/* Титул набран как титульный лист издания, а не как шапка страницы:
+                заглавие, подзаголовок с предметом, автор, выходные данные,
+                аннотация и ключевые слова. Порядок и состав те же, что у
+                печатного методического пособия, потому что вещь по жанру
+                именно пособие, и читатель должен опознать её с первого экрана. */}
+            <section className="codex-open codex-title">
+              <span className="codex-mono">Методическое пособие</span>
+              <h1>{CODEX_TITLE}</h1>
+              <p className="subtitle">{CODEX_SUBTITLE}</p>
+              <p className="byline codex-mono">{AUTHOR} · Редакция EPRIS</p>
+              <p className="imprint codex-mono">
+                {CODEX_EDITION} · {CHAPTERS.length} глав · {PROMPTS.length} образцов запросов
+              </p>
               <p className="lead">
-                Практическое руководство для тех, кто пишет, исследует и ведёт издание.
-                Что ей поручать, как формулировать просьбу, как проверять результат и
-                чего от неё не бывает никогда.
+                <span className="abstract-label codex-mono">Аннотация. </span>
+                Пособие описывает работу исследователя и редактора с большой языковой
+                моделью как с инструментом, у которого есть точно очерченная область
+                применения. Рассматриваются постановка задачи, обращение с источниками
+                и цитатой, чтение изображения, работа с данными собраний, перевод и
+                связность длинного проекта. Отдельно разобраны границы применимости:
+                классы задач, где результат нельзя принимать ни при какой проверке.
+              </p>
+              <p className="keywords codex-mono">
+                Ключевые слова: методика исследования · верификация · источниковедение ·
+                искусствознание · редакционная практика · языковые модели
               </p>
             </section>
 
@@ -416,7 +443,7 @@ export function CodexPage() {
                 знаете, сборка номера.
               </p>
               <p>
-                Главное в мануале это примеры запросов. Абзацы объясняют, но работать вы
+                Главное в пособии это примеры запросов. Абзацы объясняют, но работать вы
                 будете по образцу, поэтому в каждой главе стоят настоящие формулировки:
                 как обычно пишут, почему так не выходит, и как написать, чтобы вышло.
               </p>
@@ -450,7 +477,7 @@ export function CodexPage() {
         )}
 
         <footer className="codex-foot">
-          <span className="codex-mono">EPRIS · Мануал редакции</span>
+          <span className="codex-mono">EPRIS · {CODEX_TITLE} · {AUTHOR}</span>
           <a className="codex-btn" href="/">В журнал</a>
         </footer>
       </div>

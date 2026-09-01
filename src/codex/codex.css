@@ -73,6 +73,34 @@
   font-size:clamp(19px,2vw,23px);line-height:1.42;color:var(--c-ink);
   text-wrap:pretty;
 }
+/* Титульный лист.
+   Заглавие крупно, подзаголовок строчными той же антиквой и вдвое мельче,
+   дальше две служебные строки волосяным гротеском: автор и выходные данные.
+   Аннотация начинается с рубрики «Аннотация.» в строку, как в пособии, а не
+   отдельной плашкой: плашка превратила бы её в анонс. Ключевые слова стоят
+   последними и отделены линией, потому что они конец титула, а не начало
+   текста. */
+.codex-title h1{max-width:22ch}
+.codex-title .subtitle{
+  max-width:44ch;margin-top:18px;
+  font-family:var(--font-head);font-weight:400;
+  font-size:clamp(19px,2.1vw,25px);line-height:1.22;letter-spacing:-.014em;
+  color:var(--c-ink);text-wrap:pretty;
+}
+.codex-title .byline{
+  margin-top:26px;font-size:10.5px;letter-spacing:.19em;color:var(--c-ink);
+}
+.codex-title .imprint{margin-top:7px;font-size:9.5px}
+.codex-title .lead{margin-top:26px;font-size:clamp(17px,1.7vw,19.5px);line-height:1.5;color:var(--c-muted)}
+.codex-title .lead .abstract-label{
+  display:inline;font-size:9.5px;letter-spacing:.2em;color:var(--c-ink);
+}
+.codex-title .keywords{
+  max-width:62ch;margin-top:22px;padding-top:14px;
+  border-top:1px solid var(--c-rule);
+  font-size:9.5px;line-height:1.9;letter-spacing:.16em;
+}
+
 .codex-note{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:clamp(20px,3vw,52px);margin-top:clamp(1.8rem,3vw,2.6rem);
