@@ -143,6 +143,47 @@
   font-size:15px;line-height:1.55;color:var(--c-muted);max-width:70ch;
 }
 
+/* Карточки понятий: термин и определение, когда глава вводит свою пару
+   слов (промт/метапромт, кросс-валидация/верификация). Решётка авто-fit,
+   а не фиксированные две колонки: на телефоне карточки просто встают в
+   один столбец сами, без медиа-запроса. */
+.codex-concepts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;margin-top:clamp(1.4rem,2.6vw,2rem);
+}
+.codex-concept{border:1px solid var(--c-rule-strong);padding:13px 14px}
+.codex-concept .term{font-family:var(--font-head);font-size:17px;letter-spacing:-.01em}
+.codex-concept .def{margin:6px 0 0;font-size:14.5px;line-height:1.5;color:var(--c-muted)}
+
+/* Схема алгоритма. Точка входа сверху, пути из неё бок о бок: тупиковый
+   путь пунктиром и приглушённым текстом, рабочий сплошной линией — тот же
+   язык, что у пары так-не-работает/так-работает в примере запроса, только
+   как путь шагов, а не одна пара реплик. */
+.codex-diagram{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  border:1px solid var(--c-rule-strong);
+  padding:clamp(16px,3vw,26px);
+}
+.codex-diagram .root{
+  text-align:center;font-family:var(--font-head);font-weight:400;
+  font-size:clamp(16px,1.8vw,19px);line-height:1.3;
+  padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--c-rule-strong);
+}
+.codex-diagram .branches{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:clamp(20px,3vw,40px);
+}
+.codex-diagram .branch{display:flex;flex-direction:column;align-items:stretch}
+.codex-diagram .branch .label{display:block;text-align:center;margin-bottom:10px}
+.codex-diagram .branch.bad .label{color:var(--c-faint)}
+.codex-diagram .step{
+  border:1px solid var(--c-rule-strong);padding:9px 12px;
+  font-size:13.5px;line-height:1.4;text-align:center;
+}
+.codex-diagram .branch.bad .step{border-style:dashed;color:var(--c-faint)}
+.codex-diagram .branch.good .step{border-color:var(--c-ink);color:var(--c-ink)}
+.codex-diagram .arrow{text-align:center;font-size:13px;line-height:1;padding:4px 0;color:var(--c-faint)}
+
 /* Коротко: список для самопроверки в конце главы. */
 .codex-check{
   margin-top:clamp(1.4rem,2.6vw,2rem);
