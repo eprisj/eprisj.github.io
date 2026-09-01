@@ -184,6 +184,24 @@
 .codex-diagram .branch.good .step{border-color:var(--c-ink);color:var(--c-ink)}
 .codex-diagram .arrow{text-align:center;font-size:13px;line-height:1;padding:4px 0;color:var(--c-faint)}
 
+/* Таблица источников. Строками реестра, как оглавление: сюда возвращаются
+   за адресом, а не читают подряд. Условия доступа набраны служебным
+   шрифтом, потому что это сноска к источнику, а не его описание. */
+.codex-sources{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  border-top:1px solid var(--c-ink);
+}
+.codex-sources .head{display:block;padding:12px 0 4px}
+.codex-sources .src{padding:13px 0;border-bottom:1px solid var(--c-rule)}
+.codex-sources .src:first-of-type{border-top:1px solid var(--c-rule)}
+.codex-sources .name{
+  font-family:var(--font-head);font-size:17px;letter-spacing:-.01em;
+  border-bottom:1px solid var(--c-rule-strong);transition:border-color .18s ease;
+}
+.codex-sources .name:hover{border-color:var(--c-ink)}
+.codex-sources .gives{margin:7px 0 0;font-size:14.5px;line-height:1.5;color:var(--c-muted);max-width:62ch}
+.codex-sources .access{margin:6px 0 0;letter-spacing:.09em;line-height:1.6;max-width:62ch}
+
 /* Коротко: список для самопроверки в конце главы. */
 .codex-check{
   margin-top:clamp(1.4rem,2.6vw,2rem);

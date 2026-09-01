@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS, bySlug, type Chapter, type Concept, type Diagram } from './chapters';
+import { CHAPTERS, bySlug, type Chapter, type Concept, type Diagram, type SourceRow } from './chapters';
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
@@ -65,6 +65,25 @@ function AlgorithmDiagram({ d }: { d: Diagram }) {
   );
 }
 
+/* Таблица источников: где брать данные по теме главы.
+   Адреса настоящие и кликабельные, потому что «поищите на сайте музея» это
+   не источник. Внешние ссылки с rel="noreferrer": уводить реферер издания
+   на чужие службы незачем. */
+function SourceTable({ rows }: { rows: SourceRow[] }) {
+  return (
+    <div className="codex-sources">
+      <span className="codex-mono head">Где брать</span>
+      {rows.map((r) => (
+        <div key={r.url} className="src">
+          <a className="name" href={r.url} target="_blank" rel="noreferrer">{r.name}</a>
+          <p className="gives">{r.gives}</p>
+          <p className="access codex-mono">{r.access}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* Пример запроса. Пара «так не работает / так работает» там, где неудачный
    вариант поучителен, и один хороший там, где показывать нечего. */
 function SampleBlock({ s }: { s: Chapter['samples'] extends (infer U)[] | undefined ? U : never }) {
@@ -110,6 +129,7 @@ function ChapterView({ ch }: { ch: Chapter }) {
 
         {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
         {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
+        {ch.sources?.length ? <SourceTable rows={ch.sources} /> : null}
 
         {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
 
