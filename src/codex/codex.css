@@ -147,6 +147,19 @@
   margin-top:12px;max-width:30ch;
   font-size:14.5px;line-height:1.45;color:var(--c-muted);
 }
+/* Предварительные требования: ссылки на главы, читаемые до этой. Стоят под
+   аннотацией волосяным гротеском и каждая своей строкой, потому что их
+   пробегают глазом, а не читают фразой. */
+.codex-side .prereq{margin-top:14px;padding-top:11px;border-top:1px solid var(--c-rule)}
+.codex-side .prereq .lbl{display:block;color:var(--c-ink);margin-bottom:6px}
+.codex-side .prereq a{
+  /* Название главы возвращается к строчным: три строки сплошных прописных
+     рядом с заголовком читаются дольше самого заголовка. */
+  display:block;margin-top:5px;max-width:30ch;
+  text-transform:none;letter-spacing:0;font-size:13.5px;line-height:1.4;
+  color:var(--c-muted);border-bottom:1px solid transparent;
+}
+.codex-side .prereq a:hover{color:var(--c-ink);border-bottom-color:var(--c-rule-strong)}
 /* НАБОР ОСНОВНОГО ТЕКСТА.
    Тон чернил здесь темнее, чем у подписей и врезок: мануал читают подряд и
    целыми главами, а не проглядывают, и 68 процентов черноты, нормальные для
@@ -346,6 +359,44 @@
 .codex-sources .name:hover{border-color:var(--c-ink)}
 .codex-sources .gives{margin:7px 0 0;font-size:14.5px;line-height:1.5;color:var(--c-muted);max-width:62ch}
 .codex-sources .access{margin:6px 0 0;letter-spacing:.09em;line-height:1.6;max-width:62ch}
+
+/* Цели главы. Открывают основную колонку и набраны служебно: тонкая рамка
+   слева, мелкий кегль, никакой заливки. Заливка сделала бы из них плашку,
+   а плашка в этом пособии значит «итог» (см. .codex-check ниже), и два
+   одинаковых блока в начале и в конце главы читались бы как повтор. */
+.codex-goals{
+  margin-bottom:clamp(1.4rem,2.6vw,2rem);
+  padding-left:clamp(14px,2vw,20px);
+  border-left:1px solid var(--c-rule-strong);
+}
+.codex-goals .intro{margin:9px 0 0;color:var(--c-ink)}
+.codex-goals ul{list-style:none;margin:9px 0 0;padding:0;counter-reset:goal}
+.codex-goals li{
+  counter-increment:goal;
+  position:relative;padding-left:26px;margin-top:6px;max-width:62ch;
+  font-size:15.5px;line-height:1.5;color:var(--c-muted);
+}
+.codex-goals li::before{
+  content:counter(goal);position:absolute;left:0;top:.2em;
+  font-size:9.5px;letter-spacing:.14em;color:var(--c-faint);
+  font-variant-numeric:tabular-nums;
+}
+
+/* Контрольное задание. Рамка волосяная, а не сплошная: задание это работа
+   читателя, а не вывод главы, и оно не должно спорить по весу с итогом. */
+.codex-task{
+  margin-top:clamp(1.4rem,2.6vw,2rem);
+  padding:clamp(15px,2.2vw,20px);
+  border:1px solid var(--c-rule-strong);
+}
+.codex-task .text{margin:10px 0 0;max-width:62ch;font-size:16px;line-height:1.55;color:var(--c-ink)}
+.codex-task .check{margin:11px 0 0;max-width:62ch;font-size:15px;line-height:1.55;color:var(--c-muted)}
+.codex-task .check .lbl{display:inline;color:var(--c-ink)}
+
+/* Сквозные номера примеров и иллюстраций: на них ссылаются из текста, поэтому
+   номер стоит перед подписью в строку, а не отдельным блоком. */
+.codex-sample figcaption .exnum{margin-right:12px;color:var(--c-ink)}
+.codex-figure .fignum{display:block;margin-bottom:4px;color:var(--c-ink)}
 
 /* Коротко: список для самопроверки в конце главы. */
 .codex-check{
