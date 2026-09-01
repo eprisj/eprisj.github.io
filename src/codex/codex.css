@@ -406,7 +406,10 @@
 .codex-table .tabnum{margin-right:12px;color:var(--c-ink)}
 .codex-table .scroll{overflow-x:auto;border:1px solid var(--c-rule-strong)}
 .codex-table table{width:100%;border-collapse:collapse;min-width:520px}
+/* Адреса и идентификаторы в ячейках длиннее любой разумной колонки, и без
+   разрешения рвать слово они распирают таблицу до ширины строки. */
 .codex-table th,.codex-table td{
+  overflow-wrap:anywhere;
   padding:10px 13px;text-align:left;vertical-align:top;
   border-bottom:1px solid var(--c-rule);
   font-size:15px;line-height:1.45;
