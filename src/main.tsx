@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import { startImageReveal } from './lib/imageReveal';
 
 // Last-resort safety net: App.tsx has its own boundary around each lazy tab
 // for the specific "stale JS chunk after a redeploy" case, but ANY other
@@ -72,6 +73,8 @@ class RootErrorBoundary extends React.Component<{ children: React.ReactNode }, {
     return this.props.children;
   }
 }
+
+startImageReveal();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

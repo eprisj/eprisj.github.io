@@ -149,11 +149,13 @@ select {
 
 .home-carousel-edge-arrow--prev { left: .45rem; }
 .home-carousel-edge-arrow--next { right: .45rem; }
+@media (hover: hover) {
 .home-carousel-edge-arrow:hover {
   border-color: var(--c-accent);
   background: var(--c-accent);
   color: var(--c-bg);
   transform: scale(1.04);
+}
 }
 .home-carousel-edge-arrow:active { transform: scale(.95); }
 
@@ -219,8 +221,10 @@ select {
 .home-carousel-card--center .home-carousel-artwork { cursor: zoom-in; }
 .home-carousel-artwork:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 4px; }
 
+@media (hover: hover) {
 .home-carousel-card--center:hover {
   opacity: .98;
+}
 }
 
 /* The centre work is a direct, full-screen image action. A zoom cursor makes
@@ -228,13 +232,17 @@ select {
 .home-carousel-card--center .home-carousel-media {
   transition: box-shadow .24s ease, border-color .24s ease;
 }
+@media (hover: hover) {
 .home-carousel-card--center:hover .home-carousel-media {
   border-color: color-mix(in srgb, var(--c-accent) 46%, transparent);
   box-shadow: 0 16px 36px color-mix(in srgb, var(--c-accent) 13%, transparent);
 }
+}
 
+@media (hover: hover) {
 .home-carousel-card--side:hover {
   opacity: .96;
+}
 }
 
 .home-carousel-card:focus-visible {
@@ -324,8 +332,10 @@ select {
   text-transform: uppercase;
   transition: border-color .18s ease, color .18s ease;
 }
+@media (hover: hover) {
 .home-carousel-caption-toggle:hover,
 .home-carousel-caption-toggle:focus-visible { border-color: var(--c-accent); color: var(--c-accent); outline: 0; }
+}
 .home-carousel-caption-details {
   margin-top: .7rem;
   padding-bottom: .95rem;
@@ -401,10 +411,12 @@ select {
   display: none;
 }
 
+@media (hover: hover) {
 .home-carousel-arrow:hover {
   background: var(--c-accent);
   border-color: var(--c-accent);
   color: var(--c-bg);
+}
 }
 
 .home-carousel-arrow:active {
@@ -554,59 +566,22 @@ select {
 
 }
 
-/* ── Aurora hero blobs ─────────────────────────────────────── */
-@keyframes aurora-1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33%      { transform: translate(70px,-50px) scale(1.18); }
-  66%      { transform: translate(-40px,60px) scale(0.90); }
-}
-@keyframes aurora-2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  40%      { transform: translate(-80px,35px) scale(1.12); }
-  70%      { transform: translate(50px,-60px) scale(0.93); }
-}
-@keyframes aurora-3 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  25%      { transform: translate(50px,70px) scale(1.10); }
-  75%      { transform: translate(-60px,-35px) scale(1.15); }
-}
-
-.hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(72px);
-  pointer-events: none;
-}
-.hero-blob-1 {
-  width: 650px; height: 650px;
-  left: -12%; top: -25%;
-  background: radial-gradient(circle, rgba(201,166,144,.22), rgba(80,26,44,.10) 55%, transparent 72%);
-  animation: aurora-1 13s ease-in-out infinite;
-}
-.hero-blob-2 {
-  width: 750px; height: 750px;
-  right: -18%; top: -15%;
-  background: radial-gradient(circle, rgba(80,26,44,.12), rgba(201,166,144,.16) 55%, transparent 72%);
-  animation: aurora-2 17s ease-in-out infinite;
-  filter: blur(90px);
-}
-.hero-blob-3 {
-  width: 520px; height: 520px;
-  left: 28%; bottom: -12%;
-  background: radial-gradient(circle, rgba(232,190,190,.18), rgba(80,26,44,.07) 55%, transparent 72%);
-  animation: aurora-3 21s ease-in-out infinite;
-  filter: blur(60px);
-}
 /* ── Smooth image loading ─────────────────────────────────── */
 img {
   image-rendering: auto;
 }
-img[loading="lazy"] {
-  animation: imgReveal .5s ease forwards;
+/* Пометку ставит src/lib/imageReveal.ts по событию load. Прячем ТОЛЬКО то,
+   что модуль явно пометил как ещё не пришедшее: если скрипт не отработал,
+   пометки нет и картинка непрозрачна. Невидимого кадра тут случиться не может. */
+img[data-reveal="pending"] {
+  opacity: 0;
+}
+img[data-reveal="done"] {
+  animation: imgReveal .42s cubic-bezier(.22,.61,.36,1) both;
 }
 @keyframes imgReveal {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; transform: scale(1.012); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* ── Focus ring ───────────────────────────────────────────── */
@@ -638,7 +613,9 @@ img[loading="lazy"] {
 
 /* Rich inline text rendered from the admin editor (bold/italic/links/marker/underline) */
 .rich-text a { color: #501a2c; text-decoration: underline; text-underline-offset: 2px; transition: color .15s; }
-.rich-text a:hover { color: #9c7b54; }
+@media (hover: hover) {
+  .rich-text a:hover { color: #9c7b54; }
+}
 .rich-text mark { background: rgba(201,166,144,.38); color: inherit; padding: 0 .12em; border-radius: 2px; }
 .rich-text code { font-family: 'IBM Plex Mono', monospace; background: rgba(80,26,44,.07); padding: .05em .35em; border-radius: 3px; font-size: .9em; }
 .rich-text strong, .rich-text b { font-weight: 700; }
@@ -717,4 +694,47 @@ img[loading="lazy"] {
 @media (prefers-reduced-motion: reduce) {
   .route-motion-enter { animation: route-enter-fade .18s ease both; }
   @keyframes route-enter-fade { from { opacity: 0; } to { opacity: 1; } }
+}
+
+/* ── Отклик на касание ─────────────────────────────────────────
+   Родную подсветку тапа выше уже погасили (-webkit-tap-highlight-color),
+   но замены ей не поставили: на телефоне нажатие не отзывалось ничем, и
+   между касанием и сменой экрана оставалась глухая пауза. Ни одного
+   правила :active в проекте не было — проверено обходом стилей в браузере.
+
+   Только там, где нет курсора: на десктопе роль отклика играет :hover. */
+@media (hover: none) {
+  .home-carousel-artwork,
+  .home-carousel-caption-toggle,
+  .home-carousel-arrow,
+  .home-carousel-edge-arrow {
+    transition: transform .16s cubic-bezier(.22,.61,.36,1), opacity .16s ease;
+  }
+  .home-carousel-artwork:active {
+    transform: scale(.988);
+  }
+  .home-carousel-caption-toggle:active,
+  .home-carousel-arrow:active,
+  .home-carousel-edge-arrow:active {
+    transform: scale(.94);
+    opacity: .62;
+    /* Быстрее, чем отпускание: нажатие должно читаться мгновенно, а
+       возврат может быть плавным. */
+    transition-duration: .06s;
+  }
+}
+
+/* ── Слои композитора ──────────────────────────────────────────
+   will-change держит слой в памяти постоянно, даже когда ничего не
+   движется. На карточках карусели и на поверхности перехода он стоял
+   всегда; на телефоне это лишняя память под каждый кадр. Поднимаем слой
+   только на время самого движения. */
+@media (hover: none) {
+  .home-carousel-card { will-change: auto; }
+  .home-carousel-card[data-carousel-position="center"],
+  .home-carousel-card:active { will-change: transform, opacity; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img[data-reveal="pending"] { opacity: 1; }
 }

@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // На тачі :hover спрацьовує від тапу й лишається аж до тапу деінде: кнопка
+  // виглядає натиснутою, картка підсвіченою. Прапорець переводить усі
+  // hover:-утиліти під @media (hover: hover), тобто на телефоні їх просто
+  // немає. У проєкті близько 300 таких утиліт, руками це не обійти.
+  future: { hoverOnlyWhenSupported: true },
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
