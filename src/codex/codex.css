@@ -184,6 +184,31 @@
 .codex-diagram .branch.good .step{border-color:var(--c-ink);color:var(--c-ink)}
 .codex-diagram .arrow{text-align:center;font-size:13px;line-height:1;padding:4px 0;color:var(--c-faint)}
 
+/* Столбики сравнения. Без осей и подписей значений: они сравнивают порядок
+   величин, а точные числа стоят словами в примечании справа. Дорожка серая,
+   заливка чёрная, ничего цветного: у мануала нет второго цвета. */
+.codex-bars{margin-top:clamp(1.4rem,2.6vw,2rem);border:1px solid var(--c-rule-strong);padding:clamp(15px,2.4vw,22px)}
+.codex-bars figcaption{margin-bottom:16px}
+.codex-bars .cap{
+  display:block;font-family:var(--font-head);font-size:clamp(16px,1.8vw,19px);
+  line-height:1.25;letter-spacing:-.012em;
+}
+.codex-bars .unit{display:block;margin-top:5px;line-height:1.6}
+.codex-bars .row{
+  display:grid;grid-template-columns:minmax(110px,1.1fr) minmax(0,2fr) minmax(0,1.2fr);
+  gap:6px 14px;align-items:center;padding:7px 0;
+}
+.codex-bars .lbl{font-size:14.5px;line-height:1.35}
+.codex-bars .track{display:block;height:11px;background:var(--c-paper-deep);border:1px solid var(--c-rule)}
+.codex-bars .fill{display:block;height:100%;background:var(--c-ink);min-width:2px}
+.codex-bars .note{font-size:13px;line-height:1.35;color:var(--c-muted)}
+@media (max-width:600px){
+  /* На телефоне подпись и примечание встают над дорожкой: три колонки на
+     375px дают дорожку в палец шириной, и сравнивать становится нечего. */
+  .codex-bars .row{grid-template-columns:minmax(0,1fr)}
+  .codex-bars .track{height:9px}
+}
+
 /* Таблица источников. Строками реестра, как оглавление: сюда возвращаются
    за адресом, а не читают подряд. Условия доступа набраны служебным
    шрифтом, потому что это сноска к источнику, а не его описание. */
