@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS, bySlug, type Chapter } from './chapters';
+import { CHAPTERS, bySlug, type Chapter, type Concept, type Diagram } from './chapters';
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
@@ -21,6 +21,48 @@ import './codex.css';
 function slugFromPath(): string | null {
   const m = window.location.pathname.match(/^\/codex\/([^/]+)\/?$/);
   return m ? decodeURIComponent(m[1]) : null;
+}
+
+/* Карточки понятий. Термин и определение в одну фразу, не путать с примером
+   запроса: здесь ничего не копируют, здесь сверяют, тем ли словом названа
+   вещь, о которой глава. */
+function ConceptCards({ items }: { items: Concept[] }) {
+  return (
+    <div className="codex-concepts">
+      {items.map((c) => (
+        <div key={c.term} className="codex-concept">
+          <span className="term">{c.term}</span>
+          <p className="def">{c.def}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* Схема алгоритма: одна точка входа, несколько путей из неё. Набрана
+   HTML-боксами и стрелками текстом, а не SVG-координатами: тот же список
+   шагов должен остаться читаемым и на телефоне без пересчёта геометрии, а
+   плашки решётки уже показали в этом мануале, к чему приводит точный расчёт
+   поверх текста, который сам решает, сколько ему занять строк. */
+function AlgorithmDiagram({ d }: { d: Diagram }) {
+  return (
+    <figure className="codex-diagram">
+      <div className="root">{d.root}</div>
+      <div className="branches">
+        {d.branches.map((b) => (
+          <div key={b.label} className={`branch ${b.kind}`}>
+            <span className="label codex-mono">{b.kind === 'bad' ? 'Тупик' : 'Работает'} · {b.label}</span>
+            {b.steps.map((s, i) => (
+              <div key={i}>
+                {i > 0 ? <div className="arrow" aria-hidden="true">↓</div> : null}
+                <div className="step">{s}</div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
 }
 
 /* Пример запроса. Пара «так не работает / так работает» там, где неудачный
@@ -65,6 +107,9 @@ function ChapterView({ ch }: { ch: Chapter }) {
         {ch.body.map((p, i) => (
           <p key={i} className="body">{p}</p>
         ))}
+
+        {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
+        {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
 
         {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
 
