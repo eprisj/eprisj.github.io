@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, type Figure, type SourceRow } from './chapters';
+import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, type Figure, type SourceRow, type Table } from './chapters';
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
@@ -7,10 +7,14 @@ import './codex.css';
    уходит и в титул, и в <title> вкладки, и в подвал: разойдясь по трём местам,
    они разъезжаются при первой же правке. */
 export const AUTHOR = 'Вячеслав Мунистер';
-export const CODEX_TITLE = 'Языковая модель в исследовательской работе';
+export const CODEX_TITLE = 'Машина в исследовательской работе';
 export const CODEX_SUBTITLE =
   'Постановка задачи, обращение с источником, верификация результата и границы применимости';
 export const CODEX_EDITION = 'Издание второе, исправленное, 2026';
+/* Общее имя для пособия и курса: две вещи об одном инструменте, написанные
+   одним человеком, и читатель должен видеть их как одну работу, а не как
+   два разных раздела сайта. */
+export const SERIES = 'Машина';
 
 /**
  * МАНУАЛ по работе с машиной для редакции.
@@ -176,6 +180,42 @@ function BarChart({ b }: { b: Bars }) {
   );
 }
 
+/* Разметочная таблица.
+   Настоящий <table> с областями заголовков, а не решётка из блоков: таблицу
+   читают и голосом, и глазами, и подмена разметки лишает читателя связи
+   ячейки с её заголовком. Обёртка со своей прокруткой обязательна: на
+   телефоне таблица в четыре колонки шире экрана, а горизонтально ехать
+   должна она, а не страница. */
+function MarkTable({ t, label }: { t: Table; label?: string }) {
+  return (
+    <figure className="codex-table">
+      <figcaption className="codex-mono">
+        {label ? <span className="tabnum">{label}</span> : null}
+        {t.caption}
+      </figcaption>
+      <div className="scroll">
+        <table>
+          <thead>
+            <tr>{t.head.map((h) => <th key={h} scope="col" className="codex-mono">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {t.rows.map((row, i) => (
+              <tr key={i}>
+                {row.map((cell, j) => (
+                  j === 0
+                    ? <th key={j} scope="row"><Marked text={cell} /></th>
+                    : <td key={j}><Marked text={cell} /></td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {t.note ? <p className="note codex-mono">{t.note}</p> : null}
+    </figure>
+  );
+}
+
 /* Таблица источников: где брать данные по теме главы.
    Адреса настоящие и кликабельные, потому что «поищите на сайте музея» это
    не источник. Внешние ссылки с rel="noreferrer": уводить реферер издания
@@ -280,6 +320,7 @@ function ChapterView({ ch, go }: { ch: Chapter; go?: (slug: string) => void }) {
         {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
         {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
         {ch.bars ? <BarChart b={ch.bars} /> : null}
+        {ch.tables?.map((t, i) => <MarkTable key={t.caption} t={t} label={`Таблица ${n}.${i + 1}`} />)}
         {ch.sources?.length ? <SourceTable rows={ch.sources} /> : null}
 
         {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} label={`Пример ${n}.${i + 1}`} />)}
@@ -471,7 +512,10 @@ export function CodexPage() {
               <p className="subtitle">{CODEX_SUBTITLE}</p>
               <p className="byline codex-mono">{AUTHOR} · Редакция EPRIS</p>
               <p className="imprint codex-mono">
-                {CODEX_EDITION} · {CHAPTERS.length} глав · {PROMPTS.length} образцов запросов
+                Серия «{SERIES}», выпуск первый · {CODEX_EDITION}
+              </p>
+              <p className="imprint codex-mono">
+                {CHAPTERS.length} глав · {PROMPTS.length} образцов запросов
               </p>
               <p className="lead">
                 <span className="abstract-label codex-mono">Аннотация. </span>
@@ -516,6 +560,21 @@ export function CodexPage() {
                 ))}
               </ol>
             </nav>
+
+            {/* Вторая часть серии. Стоит на титульной странице, а не в подвале:
+                читатель, которому нужна экспертиза, не должен доходить до конца
+                двадцати пяти глав, чтобы узнать о её существовании. */}
+            <div className="codex-lib-link">
+              <a href="/expertise">
+                <span className="codex-mono">Серия «{SERIES}», выпуск второй</span>
+                <span className="t">Машина в искусствоведческой экспертизе</span>
+                <span className="s">
+                  Курс из девяти модулей для тех, кто подписывает заключения:
+                  провенанс, атрибуция, тираж, датировка, лабораторные данные,
+                  подделки, ответственность.
+                </span>
+              </a>
+            </div>
 
             <div className="codex-lib-link">
               <a href="/codex/prompty" onClick={(e) => { e.preventDefault(); go('prompty'); }}>

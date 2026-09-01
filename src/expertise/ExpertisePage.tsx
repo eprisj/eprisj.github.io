@@ -277,8 +277,8 @@ export function ExpertisePage() {
 
             <div className="course-related">
               <a href="/codex">
-                <span className="codex-mono">Рядом</span>
-                <span className="t">Языковая модель в исследовательской работе</span>
+                <span className="codex-mono">Серия «Машина», выпуск первый</span>
+                <span className="t">Машина в исследовательской работе</span>
                 <span className="s">
                   Методическое пособие о том же инструменте, но для работы над текстом
                   и исследованием. Курс опирается на него и местами прямо
