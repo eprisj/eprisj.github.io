@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS, bySlug, type Chapter, type Concept, type Diagram, type SourceRow } from './chapters';
+import { CHAPTERS, bySlug, type Bars, type Chapter, type Concept, type Diagram, type SourceRow } from './chapters';
 import { PROMPTS, PROMPT_GROUPS, byGroup, type Prompt } from './prompts';
 import './codex.css';
 
@@ -61,6 +61,32 @@ function AlgorithmDiagram({ d }: { d: Diagram }) {
           </div>
         ))}
       </div>
+    </figure>
+  );
+}
+
+/* Столбики сравнения. Иллюстрация к СВЕРЕННЫМ числам, поэтому единица и дата
+   свода стоят в подписи, а не в примечании: величины вроде цен и размеров
+   окна стареют, и страница обязана показывать, когда на них смотрели.
+   Ширина в процентах от максимума в наборе, без осей и сетки: это сравнение
+   порядка величин, а не график, по которому снимают значения. */
+function BarChart({ b }: { b: Bars }) {
+  const max = Math.max(...b.items.map((i) => i.value));
+  return (
+    <figure className="codex-bars">
+      <figcaption>
+        <span className="cap">{b.caption}</span>
+        <span className="unit codex-mono">{b.unit}</span>
+      </figcaption>
+      {b.items.map((i) => (
+        <div key={i.label} className="row">
+          <span className="lbl">{i.label}</span>
+          <span className="track">
+            <span className="fill" style={{ width: `${(i.value / max) * 100}%` }} />
+          </span>
+          {i.note ? <span className="note">{i.note}</span> : null}
+        </div>
+      ))}
     </figure>
   );
 }
@@ -129,6 +155,7 @@ function ChapterView({ ch }: { ch: Chapter }) {
 
         {ch.concepts?.length ? <ConceptCards items={ch.concepts} /> : null}
         {ch.diagram ? <AlgorithmDiagram d={ch.diagram} /> : null}
+        {ch.bars ? <BarChart b={ch.bars} /> : null}
         {ch.sources?.length ? <SourceTable rows={ch.sources} /> : null}
 
         {ch.samples?.map((s, i) => <SampleBlock key={i} s={s} />)}
