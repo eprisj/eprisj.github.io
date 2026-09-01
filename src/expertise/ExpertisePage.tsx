@@ -235,7 +235,10 @@ export function ExpertisePage() {
             <section className="codex-open">
               <span className="codex-mono">Курс</span>
               <h1>{COURSE_TITLE}</h1>
-              <p className="byline codex-mono">{AUTHOR}</p>
+              <p className="byline codex-mono">{AUTHOR} · Редакция EPRIS</p>
+              {/* Курс и пособие это одна работа в двух частях, и серия названа
+                  на обеих титульных страницах одинаково. */}
+              <p className="imprint codex-mono">Серия «Машина», выпуск второй · {MODULES.length} модулей</p>
               <p className="lead">
                 Девять модулей о том, что машина в экспертизе делает надёжно,
                 чего не делает никогда и почему граница между этим проходит там,
