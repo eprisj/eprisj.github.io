@@ -6643,7 +6643,7 @@
           }
         }
       ],
-      "updatedAt": "2026-09-02T07:15:54.043Z",
+      "updatedAt": "2026-09-02T07:22:43.317Z",
       "authorId": "author-1784732936927-kw554"
     }
   ],
@@ -11556,24 +11556,24 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Начните с самой сильной сцены, факта или наблюдения. Держите этот первый блок коротким и конкретным."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Главное изображение"
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Добавьте здесь запоминающуюся строку."
             },
             {
-              "type": "заметка",
+              "type": "note",
               "content": "Редакционная заметка, контекст источника или короткое замечание."
             },
             {
-              "type": "чеклист",
+              "type": "checklist",
               "caption": "Что покрыть",
               "content": {
                 "items": [
@@ -11585,7 +11585,7 @@
               }
             },
             {
-              "type": "опрос",
+              "type": "poll",
               "content": {
                 "question": "Что нам следует исследовать дальше?",
                 "options": [
@@ -16514,24 +16514,24 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Почніть із найсильнішої сцени, факту або спостереження. Тримайте цей перший блок коротким і конкретним."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Головне зображення"
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Додайте тут рядок, який варто запам'ятати."
             },
             {
-              "type": "примітка",
+              "type": "note",
               "content": "Редакційна примітка, контекст джерела або короткий відступ."
             },
             {
-              "type": "список перевірки",
+              "type": "checklist",
               "caption": "Що висвітлити",
               "content": {
                 "items": [
@@ -16543,7 +16543,7 @@
               }
             },
             {
-              "type": "опитування",
+              "type": "poll",
               "content": {
                 "question": "Що нам слід дослідити далі?",
                 "options": [
@@ -21489,7 +21489,7 @@
               "content": "Redaktionshinweis, Quellkontext oder kurzer Einschub."
             },
             {
-              "type": "Checkliste",
+              "type": "checklist",
               "caption": "Was zu behandeln ist",
               "content": {
                 "items": [
@@ -21501,7 +21501,7 @@
               }
             },
             {
-              "type": "Umfrage",
+              "type": "poll",
               "content": {
                 "question": "Was sollten wir als Nächstes erkunden?",
                 "options": [
@@ -26430,24 +26430,24 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque compacto y específico."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Imagen principal"
             },
             {
-              "type": "cita",
+              "type": "quote",
               "content": "Agregue una línea que valga la pena recordar aquí."
             },
             {
-              "type": "nota",
+              "type": "note",
               "content": "Nota editorial, contexto de la fuente o una breve observación."
             },
             {
-              "type": "lista de verificación",
+              "type": "checklist",
               "caption": "Qué cubrir",
               "content": {
                 "items": [
@@ -26459,7 +26459,7 @@
               }
             },
             {
-              "type": "encuesta",
+              "type": "poll",
               "content": {
                 "question": "¿Qué deberíamos explorar a continuación?",
                 "options": [
@@ -31387,24 +31387,24 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
-              "type": "metin",
+              "type": "text",
               "content": "En güçlü sahne, gerçek veya gözlemlerle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
             },
             {
-              "type": "görüntü",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Başlık resmi"
             },
             {
-              "type": "alıntı",
+              "type": "quote",
               "content": "Buraya hatırlanacak bir satır ekleyin."
             },
             {
-              "type": "not",
+              "type": "note",
               "content": "Editoryal not, kaynak bağlamı veya kısa bir ara. "
             },
             {
-              "type": "kontrol listesi",
+              "type": "checklist",
               "caption": "Neleri kapsamalı",
               "content": {
                 "items": [
@@ -31416,7 +31416,7 @@
               }
             },
             {
-              "type": "oylama",
+              "type": "poll",
               "content": {
                 "question": "Bir sonraki neyi keşfetmeliyiz?",
                 "options": [
@@ -36310,24 +36310,24 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
-              "type": "testo",
+              "type": "text",
               "content": "Inizia con la scena, fatto o osservazione più forte. Mantieni questo primo blocco stretto e specifico."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Immagine principale"
             },
             {
-              "type": "citazione",
+              "type": "quote",
               "content": "Aggiungi una riga degna di essere ricordata qui."
             },
             {
-              "type": "nota",
+              "type": "note",
               "content": "Nota editoriale, contesto della fonte o una breve digressione."
             },
             {
-              "type": "lista di controllo",
+              "type": "checklist",
               "caption": "Cosa coprire",
               "content": {
                 "items": [
@@ -36339,7 +36339,7 @@
               }
             },
             {
-              "type": "sondaggio",
+              "type": "poll",
               "content": {
                 "question": "Cosa dovremmo esplorare dopo?",
                 "options": [
