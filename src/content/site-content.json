@@ -36289,6 +36289,72 @@
           ],
           "updatedAt": "2026-08-31T10:28:53.851Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "L'immagine è finita prima dello scatto - intervista con Roland M Schwerdtfeger",
+          "author": "EPRIS Journal",
+          "role": "Redazione",
+          "date": "2 set 2026",
+          "excerpt": "Fotografo architettonico Roland M Schwerdtfeger sulla pianificazione di un'immagine fino a quando non è finita prima che la fotocamera si sollevi, la nota monocromatica in una cornice in bianco e nero, e perché la marca della fotocamera è la domanda sbagliata.",
+          "category": "Fotografia",
+          "subcategory": "Inchiesta",
+          "tags": [
+            "storia",
+            "cultura",
+            "editoriale"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "testo",
+              "content": "Inizia con la scena, fatto o osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+            },
+            {
+              "type": "immagine",
+              "content": "la-immagine-e-finita-prima-della-otturatore-inter-2",
+              "caption": "Immagine principale"
+            },
+            {
+              "type": "citazione",
+              "content": "Aggiungi una riga degna di ricordare qui."
+            },
+            {
+              "type": "nota",
+              "content": "Nota editoriale, contesto della fonte o un breve commento."
+            },
+            {
+              "type": "lista di controllo",
+              "caption": "Cosa coprire",
+              "content": {
+                "items": [
+                  "Contesto",
+                  "Dettaglio chiave",
+                  "Angolo umano",
+                  "Cosa cambia dopo"
+                ]
+              }
+            },
+            {
+              "type": "sondaggio",
+              "content": {
+                "question": "Cosa dovremmo esplorare dopo?",
+                "options": [
+                  {
+                    "label": "Ulteriori contesti",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Guida pratica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:57:02.704Z"
         }
       ],
       "reviews": [
