@@ -37618,69 +37618,290 @@
         },
         {
           "id": 31,
-          "draft": true,
+          "draft": false,
           "title": "L'immagine è finita prima dello scatto - intervista con Roland M Schwerdtfeger",
-          "author": "EPRIS Journal",
-          "role": "Redazione",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
           "date": "2 set 2026",
-          "excerpt": "Fotografo architettonico Roland M Schwerdtfeger sulla pianificazione di una immagine fino a quando non è finita prima che la fotocamera si sollevi, la nota monocromatica in una cornice in bianco e nero, e perché la marca della fotocamera è la domanda sbagliata.",
+          "excerpt": "Fotografo architettonico Roland M Schwerdtfeger sulla pianificazione di un'immagine fino a quando non è finita prima che la fotocamera si sollevi, la nota monocromatica in una cornice in bianco e nero, e perché la marca della fotocamera è la domanda sbagliata.",
           "category": "Fotografia",
-          "subcategory": "Inchiesta",
+          "subcategory": "Caratteristica",
           "tags": [
-            "storia",
-            "cultura",
-            "editoriale"
+            "fotografia",
+            "architettura",
+            "intervista"
           ],
           "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
               "type": "text",
-              "content": "Inizia con la scena, fatto o osservazione più forte. Mantieni questo primo blocco stretto e specifico."
+              "content": "Roland M Schwerdtfeger fotografa edifici nel modo in cui altre persone compongono nature morte: rimuovendo tutto ciò che non è linea, forma, luce, colore e ritmo."
+            },
+            {
+              "type": "text",
+              "content": "Con sede in Germania e curatore su 1x, ha 442 immagini accettate da una piattaforma che rifiuta la maggior parte di ciò che riceve – e tre rifiuti in totale. Lavora prima con la ricerca e poi con la location, arrivando solo quando l'immagine esiste già nella sua testa. Quanto segue è una conversazione sulla parte del processo che avviene prima dell'otturatore, e sulla parte che avviene molto dopo."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
-              "caption": "Immagine principale"
+              "align": "center",
+              "width": 100,
+              "caption": "Chromatic Encounter, Roland M Schwerdtfeger, 2026. La Defense, Almere, Paesi Bassi"
+            },
+            {
+              "type": "header",
+              "content": "01 · Prima dello scatto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Viacheslav Munister [VM]: I tuoi titoli si dividono in due: alcuni mantengono il loro nome e restano se stessi, come Dreischeibenhaus o Schwebebahn; altri lo perdono e diventano pura forma, come Red Spiral o Cubic VII. Quando sollevi la fotocamera, sai già quale sarà questo?"
+            },
+            {
+              "type": "text",
+              "content": "Roland M Schwerdtfeger [RS]: È una domanda interessante. No, quando scatto una foto, non so ancora sotto quale titolo potrebbe essere pubblicata – una volta completate tutte le fasi di post-produzione. Di solito preparo molto accuratamente i luoghi in cui scatto le foto. Edifici impressionanti non sono esattamente una rarità, e prima devi trovare soggetti interessanti. Spesso scopro i miei soggetti attraverso ricerche online, ma anche attraverso ispirazioni da altri fotografi su 1X, su Instagram, alle mostre di fotografia e simili."
+            },
+            {
+              "type": "text",
+              "content": "Poi controllo Google Maps per determinare la posizione, i dintorni e l'orientamento del soggetto. È importante scegliere il momento giusto per scattare la foto, in modo che la luce sia perfetta. Per me, pianificazione e preparazione sono assolutamente essenziali. Le mie immagini di solito prendono forma nella mia mente e sono spesso già 'finite' prima ancora di aver scattato la fotografia. Ma il titolo mi viene solo quando l'immagine viene pubblicata."
             },
             {
               "type": "quote",
-              "content": "Aggiungi una riga degna di essere ricordata qui."
+              "content": "Le mie immagini di solito prendono forma nella mia mente e sono spesso già 'finite' prima ancora di aver scattato la fotografia."
             },
             {
-              "type": "note",
-              "content": "Nota editoriale, contesto della fonte o una breve digressione."
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqnd7cim5c7s.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Urban Lines, Roland M Schwerdtfeger, 2026. Trivago Sede Centrale, Düsseldorf"
             },
             {
-              "type": "checklist",
-              "caption": "Cosa coprire",
-              "content": {
-                "items": [
-                  "Contesto",
-                  "Dettaglio chiave",
-                  "Angolo umano",
-                  "Cosa cambia dopo"
-                ]
-              }
+              "type": "testo",
+              "content": "VM: Un numero implica una serie incompleta. Ciò che assegna un numero a una scala piuttosto che lasciarla come un fuori campo, e cosa ti dà una scala a chiocciola che una facciata non può mai dare?"
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Cosa dovremmo esplorare dopo?",
-                "options": [
-                  {
-                    "label": "Ulteriori contesti",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Guida pratica",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "testo",
+              "content": "RS: Il numero dopo il nome è incluso perché ci sono spesso diverse immagini con lo stesso nome, ad esempio 'Scala' o 'Composizione di Finestra'. Il numero serve semplicemente a distinguerle; non si riferisce a una serie. Per quanto riguarda i soggetti stessi, mentre rimango fedele alla mia passione per la fotografia architettonica, sono costantemente alla ricerca di nuovi edifici e dettagli. Sono interessato sia al soggetto stesso che al suo effetto: linee, forme, luce, colore e ritmo. A volte interi edifici, a volte una scala, a volte dettagli di una facciata."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpepeqboquo.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Scala, Roland M Schwerdtfeger, 2026. Edificio uffici Glashaus, Krefeld"
+            },
+            {
+              "type": "header",
+              "content": "02 · Un colore, e dove va",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Un spettatore su 1x ha confrontato il tuo rosso con il punto rosso di Turner. Gli hai ringraziato ma non hai mai detto se aveva ragione. Aveva, e c'è un colore che rifiuti di far entrare in un quadro del tutto?"
+            },
+            {
+              "type": "text",
+              "content": "RS: È fondamentalmente nel giusto. Il punto focale colorato nelle fotografie in bianco e nero serve uno scopo compositivo – attira l'occhio, fornisce un contrappunto a grandi aree di luce, cielo o paesaggio, e può così guidare lo sguardo dello spettatore. Tuttavia, non deve necessariamente essere un punto; le chiavi di colore, quando usate come aree più grandi, rendono anche molte immagini più attraenti. Né il rosso è l'unica opzione. Mi piacciono anche arancione, verde e blu – a seconda del soggetto. Se un edificio non offre affatto colore, una resa monocromatica è spesso migliore, anche se colori sottili, discreti e desaturati possono essere molto attraenti."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqp87h3zop02.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Panta Rhei, Roland M Schwerdtfeger, 2024. Edificio uffici, Düsseldorf"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpzgmjwque3.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Contrasti, Roland M Schwerdtfeger, 2025. Edifici alti a Frankfurt/Main"
+            },
+            {
+              "type": "intestazione",
+              "content": "03 · L'edificio dell'architetto, l'immagine del fotografo",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "VM: Un architetto progetta un edificio da entrare; lo mostri piatto, a volte come astrazione. Qualcuno si è mai opposto a ciò che hai fatto con il loro lavoro, o ti ha ringraziato per questo?"
+            },
+            {
+              "type": "testo",
+              "content": "RS: Finora non ci sono mai state obiezioni. Dopotutto, la fotografia artistica non è destinata a documentare, ma ad astrarre e permettere all'estetica di prendere il centro della scena. Attraverso semplificazione, prospettiva e post-elaborazione deliberata, cerco di rimuovere i soggetti dal loro contesto funzionale e trasformarli in un mondo indipendente di fotografia d'arte. Una buona fotografia artistica non dovrebbe spiegare, ma lasciare spazio all'interpretazione. Le mie immagini sono quindi un'interpretazione consapevole, estetica e personale di ciò che ho visto e sentito."
+            },
+            {
+              "type": "text",
+              "content": "Per me, fotografia è molto più di un semplice hobby. È realizzazione, una filosofia di vita, equilibrio tra lavoro e vita privata e, soprattutto, una passione. È una parte essenziale della mia vita. La fotografia mi porta gioia. A mio avviso, una buona fotografia è quella che trasmette un messaggio chiaro e suscita emozioni nello spettatore. La mia passione risiede nella fotografia artistica – l'aspetto artistico, non semplicemente razionalità e documentazione. Per me, la post-produzione è altrettanto importante quanto l'atto di scattare la fotografia stessa."
+            },
+            {
+              "type": "text",
+              "content": "La ricerca è di solito il punto di partenza. Vado sul luogo solo quando ho un'idea chiara di come voglio catturare il soggetto: la natura dell'edificio, come appare e cosa l'architetto intendeva esprimere. Per quanto riguarda le foto stesse, di solito impiego molto tempo per scegliere il posto giusto, l'angolazione giusta, la lunghezza focale corretta e così via. Tuttavia, di solito fotografo il soggetto da varie angolazioni, catturando sia la scena complessiva sia i dettagli più fini. A volte l'idea per una foto mi viene solo dopo."
+            },
+            {
+              "type": "quote",
+              "content": "Una buona fotografia d'arte non dovrebbe spiegare, ma lasciare spazio all'interpretazione."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqqzs9l79rp.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Guardando l'immagine, Roland M Schwerdtfeger, 2025. Museum of modern art, Münster"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpw8kp67wpw.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Neuer Zollhof, Roland M Schwerdtfeger, 2025. Frank O. Gehry edificio, Media Harbor, Düsseldorf"
+            },
+            {
+              "type": "intestazione",
+              "content": "04 · Chiedere permesso",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "VM: La Panoramafreiheit della Germania copre la strada, non un interno come la scala del MAK. Qual è la tua regola attuale per chiedere permesso, e ti è mai costato una foto?"
+            },
+            {
+              "type": "testo",
+              "content": "RS: Quando voglio scattare fotografie al chiuso, ad esempio nei musei, chiedo il permesso di farlo. Di solito non è un problema, soprattutto perché generalmente non fotografo persone in modo che siano riconoscibili. Negli edifici pubblici, di solito non è un problema nemmeno, a differenza, ad esempio, dei locali aziendali. Là, scattare fotografie al chiuso è spesso vietato. E sì, questo mi è costato una o due foto interessanti di tanto in tanto."
+            },
+            {
+              "type": "text",
+              "content": "Tuttavia, non ho mai avuto problemi finora; se chiedi cortesemente, di solito ottieni una risposta amichevole. In caso di edifici religiosi o siti particolarmente protetti, puoi anche informarti sui permessi fotografici online in anticipo e, se necessario, richiederli via email. In caso di dubbio, la regola è: chiedi cortesemente, indica che le foto sono per uso non commerciale, e poi scattare foto di solito non è un problema."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqx8n5dvu2s.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "St. Rochus III, Roland M Schwerdtfeger, 2024. Una piccola chiesa a Düsseldorf"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqu3k826uwn.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Natalini Tower, Roland M Schwerdtfeger, 2024. Edificio tradizionale a Roermond, Paesi Bassi"
+            },
+            {
+              "type": "header",
+              "content": "05 · Dopo lo scatto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Quanto di un'immagine avviene dopo che l'otturatore si chiude? Nomina la linea: cosa non rimuoveresti mai da un fotogramma, e cosa va senza pensarci due volte?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Varia davvero molto. Ogni immagine viene modificata in Lightroom e Photoshop. A volte aggiusto solo le luci e le ombre, ma di solito faccio di più: sostituisco il cielo e rimuovo elementi distraenti dall'immagine. In alcuni casi, aggiungo elementi come lampioni o anche persone. Tuttavia, il soggetto principale rimane sempre l'elemento più importante e non viene mai rimosso. Uso l'AI, ma principalmente per sostituire singoli elementi; non diventa mai il progettista dell'immagine."
+            },
+            {
+              "type": "quote",
+              "content": "Uso l'AI, ma principalmente per sostituire singoli elementi; non diventa mai il progettista dell'immagine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqp50v9n2ouy.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Padiglione, Roland M Schwerdtfeger, 2025. padiglione Porsche, Volkswagen Autostadt, Wolfsburg"
+            },
+            {
+              "type": "header",
+              "content": "06 · La giuria",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: 1x rifiuta la maggior parte di ciò che riceve; hai 442 accettate. Cosa ti hanno insegnato i rifiuti che gli accettati non ti hanno mai insegnato, e una giuria cambia davvero il modo in cui modifichi, onestamente?"
+            },
+            {
+              "type": "text",
+              "content": "RS: A dire il vero, ho avuto finora solo tre rifiuti, il che mi rende molto felice. Tuttavia, come curatore, vedo anche molti esempi negativi e sono felice che 1X sia una piattaforma così ben curata con standard molto elevati. E no, la giuria non cambia il modo in cui modifico le mie foto; scatto e modifico foto per passione, non per opportunismo. Detto questo, non invio mai foto che penso non verrebbero accettate. Non ho una singola foto alle pareti di casa. C'è solo arte moderna appesa lì, niente fotografia."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpbjeby9vr5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una nuvola bianca, Roland M Schwerdtfeger, 2025. Museum of modern Art, Münster"
+            },
+            {
+              "type": "header",
+              "content": "07 · La stampa su un muro di qualcuno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Una stampa diventa un oggetto fisico su un muro di qualcuno. Cosa guadagna un'immagine in quel movimento, e con chi immagini che viva realmente con essa?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Una fotografia stampata, inserita in una cornice di alta qualità con un passe-partout, diventa un oggetto a sé stante e assume un significato completamente diverso rispetto a una fotografia su uno schermo. In questo modo, l'immagine può essere elevata allo status di opera d'arte. Al contrario, lo schermo offre maggiore brillantezza, e i colori sono più vivaci. Una galleria fisica o un'apertura di mostra trasmette un'atmosfera molto diversa rispetto a una galleria online; l'impressione e l'esperienza sono completamente diverse. E entrambi hanno il loro posto."
+            },
+            {
+              "type": "text",
+              "content": "Con chi mi immagino con foto alle pareti? Questo è certamente più di un pubblico target; quando si tratta di foto architettoniche, forse persone con interni moderni, contemporanei piuttosto che tradizionalisti. Appassionati di design piuttosto che nostalgici. Sì, è successo che foto mi abbiano impressionato sullo schermo, solo per deludere quando viste come stampe. Anche la dimensione della stampa a volte gioca un ruolo. Ci sono foto che hanno un impatto maggiore man mano che la loro dimensione aumenta. Foto deboli, invece, non migliorano con un formato grande…"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq8wkgzubn1.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Sluishuis, Roland M Schwerdtfeger, 2025. Edificio residenziale vicino ad Amsterdam, Paesi Bassi"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq5t7g2zyfw.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Zaandam Facades, Roland M Schwerdtfeger, 2025. Composizione di edifici a Zaandam, Olanda Settentrionale"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq2o4hgertf.webp",
+              "align": "centro",
+              "width": 100,
+              "caption": "Zaandam V, Roland M Schwerdtfeger, 2025. Hotel a Zaandam, Olanda Settentrionale"
+            },
+            {
+              "type": "intestazione",
+              "content": "08 · Due lui avrebbe ripreso",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Di 442 immagini pubblicate, ce n'è una che vorresti riprendere indietro, e quale domanda sul tuo lavoro sei stanco di sentirti fare, che nessun altro fa invece?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Sì, ci sono davvero due foto che oggi non pubblicherei; sfortunatamente, non puoi eliminarle su 1X… Sono sempre felice di rispondere alle domande, e non mi stanco mai di farlo. Tuttavia, a volte, sento dire: 'Le tue foto sono brillanti – quale fotocamera usi?' Questo mi fa sempre sorridere. Ovviamente, hai bisogno di una fotocamera di sistema e dell'attrezzatura giusta; ci sono molte cose che semplicemente non puoi ottenere con un obiettivo standard. Ma alla fine, il marchio della fotocamera non importa. Non si può dire da una foto quale fotocamera è stata usata per scattarla."
+            },
+            {
+              "type": "quote",
+              "content": "Non si può dire da una foto quale fotocamera è stata usata per scattarla."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqnxivdjz2h.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Portikus, Roland M Schwerdtfeger, 2025. Un piccolo museo a Frankfurt/Main"
+            },
+            {
+              "type": "testo",
+              "content": "L'opera di Roland M Schwerdtfeger può essere vista su 1x.com/rolandmschwerdtfeger e su Instagram all'indirizzo @roland_m_schwerdtfeger. Tutte le immagini © Roland M Schwerdtfeger, pubblicate con il permesso dell'artista."
             }
           ],
-          "updatedAt": "2026-09-02T07:12:07.704Z"
+          "updatedAt": "2026-09-02T07:49:43.384Z",
+          "authorId": "author-1784732936927-kw554"
         }
       ],
       "reviews": [
