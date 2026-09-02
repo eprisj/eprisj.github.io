@@ -38664,12 +38664,12 @@
         "navigation": false
       },
       "radio": {
-        "page": true,
-        "navigation": true
+        "page": false,
+        "navigation": false
       },
       "podcasts": {
-        "page": true,
-        "navigation": true
+        "page": false,
+        "navigation": false
       }
     },
     "entities": {
@@ -38684,7 +38684,8 @@
       },
       "reviews": {},
       "authors": {},
-      "studioProjects": {}
+      "studioProjects": {},
+      "libraryItems": {}
     }
   },
   "homepage": {
