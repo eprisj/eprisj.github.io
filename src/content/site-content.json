@@ -36297,7 +36297,7 @@
           "author": "EPRIS Journal",
           "role": "Redazione",
           "date": "2 set 2026",
-          "excerpt": "Fotografo architettonico Roland M Schwerdtfeger sulla pianificazione di un'immagine fino a quando non è finita prima che la fotocamera si sollevi, la nota monocromatica in una cornice in bianco e nero, e perché la marca della fotocamera è la domanda sbagliata.",
+          "excerpt": "Fotografo architettonico Roland M Schwerdtfeger sulla pianificazione di una immagine fino a quando non è finita prima che la fotocamera si sollevi, la nota monocromatica in una cornice in bianco e nero, e perché la marca della fotocamera è la domanda sbagliata.",
           "category": "Fotografia",
           "subcategory": "Inchiesta",
           "tags": [
@@ -36314,16 +36314,16 @@
             },
             {
               "type": "immagine",
-              "content": "la-immagine-e-finita-prima-della-otturatore-inter-2",
+              "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Immagine principale"
             },
             {
               "type": "citazione",
-              "content": "Aggiungi una riga degna di ricordare qui."
+              "content": "Aggiungi una riga degna di essere ricordata qui."
             },
             {
               "type": "nota",
-              "content": "Nota editoriale, contesto della fonte o un breve commento."
+              "content": "Nota editoriale, contesto della fonte o una breve digressione."
             },
             {
               "type": "lista di controllo",
@@ -36354,7 +36354,7 @@
               }
             }
           ],
-          "updatedAt": "2026-09-02T06:57:02.704Z"
+          "updatedAt": "2026-09-02T07:12:07.704Z"
         }
       ],
       "reviews": [
