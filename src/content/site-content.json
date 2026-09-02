@@ -22160,11 +22160,19 @@
           "content": [
             {
               "type": "text",
-              "content": "Roland M Schwerdtfeger fotografiert Gebäude so, wie andere Menschen Stillleben komponieren: indem er alles entfernt, was keine Linie, Form, Licht, Farbe und Rhythmus ist."
+              "content": "Die meiste architektonische Fotografie argumentiert für ein Gebäude. Roland M Schwerdtfegers argumentiert darüber hinaus: eine Spiraltreppe wird zu Red Spiral, eine Brücke wird reine Form, und der Name des Architekten, der sie gebaut hat, hört auf, der Punkt zu sein. Linie, Form, Licht, Farbe, Rhythmus — das ist die fertige Liste dessen, was seine Bearbeitung überlebt, und alles andere, die Funktion, die Adresse, manchmal sogar der eigene Name des Gebäudes, wird entfernt, um dorthin zu gelangen."
             },
             {
               "type": "text",
-              "content": "Mit Sitz in Deutschland und Kurator bei 1x hat er 442 Bilder, die von einer Plattform akzeptiert wurden, die die meisten eingereichten Werke ablehnt – und insgesamt drei Ablehnungen. Er arbeitet zuerst aus Forschung und dann am Ort, und kommt erst, wenn das Bild bereits in seinem Kopf existiert. Was folgt, ist ein Gespräch über den Teil des Prozesses, der vor dem Verschluss passiert, und den Teil, der lange danach passiert."
+              "content": "Er arbeitet von der Recherche nach außen. Ein Ort wird auf Google Maps erkundet, bevor er überhaupt besucht wird, auf Ausrichtung und die Stunde geprüft, in der das Licht richtig sein wird, und das Bild, sagt er, ist normalerweise in seinem Kopf fertig, bevor der Verschluss überhaupt öffnet — der Titel kommt später, manchmal erst, wenn das Bild veröffentlicht wird. Es ist eine Disziplin, die auch außerhalb seines eigenen Urteils Anerkennung gefunden hat: ein EPA Platinum Award, ein IPA Gold, Ehrungen von Fineartphotoawards und ND Awards, und ein Kuratorensitz bei 1x, der Fotografieplattform, die 442 seiner Bilder akzeptiert hat und nur drei abgelehnt hat."
+            },
+            {
+              "type": "text",
+              "content": "Mit Sitz in Deutschland bewegt er sich zwischen Firmengeländen, auf denen eine Kamera oft einfach nicht erlaubt ist, Museen, die die Erlaubnis erteilen, wenn man richtig fragt, und Gebäuden, die außerhalb der Panoramafreiheit liegen, des Gesetzes des Landes, das nur das schützt, was von einer öffentlichen Straße aus fotografiert werden kann. Was von diesen Besuchen mit nach Hause kommt, wird in Lightroom und Photoshop stark bearbeitet — Himmel ersetzt, Ablenkungen entfernt, gelegentlich eine Straßenlaterne oder eine Figur wieder hinzugefügt — aber niemals, besteht er darauf, an KI übergeben, um zu komponieren."
+            },
+            {
+              "type": "text",
+              "content": "Wir haben mit Roland über den Punkt gesprochen, an dem die Planung endet und das Bild übernimmt, die eine Farbe, die er für alle anderen stehen lässt, und warum — nach 442 veröffentlichten Bildern — eine Kameramarke immer noch weniger über ein Foto aussagt, als die Leute annehmen."
             },
             {
               "type": "image",
@@ -22175,12 +22183,12 @@
             },
             {
               "type": "header",
-              "content": "01 · Vor dem Verschluss",
+              "content": "01 · Vor der Verschluss",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Viacheslav Munister [VM]: Deine Titel teilen sich in zwei: einige behalten ihren Namen und bleiben sie selbst, wie Dreischeibenhaus oder Schwebebahn; andere verlieren ihn und werden reine Form, wie Red Spiral oder Cubic VII. Wenn du die Kamera hebst, weißt du dann schon, welcher das sein wird?"
+              "content": "Viacheslav Munister [VM]: Ihre Titel sind in zwei Teile geteilt: einige behalten ihren Namen und bleiben sie selbst, wie Dreischeibenhaus oder Schwebebahn; andere verlieren ihn und werden reine Form, wie Red Spiral oder Cubic VII. Wenn Sie die Kamera heben, wissen Sie dann schon, welcher es sein wird?"
             },
             {
               "type": "text",
@@ -22188,11 +22196,11 @@
             },
             {
               "type": "text",
-              "content": "Dann überprüfe ich Google Maps, um den Standort, die Umgebung und die Ausrichtung des Motivs zu bestimmen. Es ist wichtig, den richtigen Moment für das Foto zu wählen, damit das Licht genau richtig ist. Für mich sind Planung und Vorbereitung absolut unerlässlich. Meine Bilder nehmen in meinem Kopf meist schon Gestalt an und sind oft bereits 'fertig', bevor ich das Foto überhaupt gemacht habe. Aber der Titel fällt mir erst ein, wenn das Bild veröffentlicht wird."
+              "content": "Dann überprüfe ich Google Maps, um den Standort, die Umgebung und die Ausrichtung des Subjekts zu bestimmen. Es ist wichtig, den richtigen Moment für das Foto zu wählen, damit das Licht genau richtig ist. Für mich sind Planung und Vorbereitung absolut unerlässlich. Meine Bilder nehmen in meinem Kopf meist Gestalt an und sind oft bereits 'fertig', bevor ich überhaupt das Foto gemacht habe. Aber der Titel fällt mir erst ein, wenn das Bild veröffentlicht wird."
             },
             {
               "type": "quote",
-              "content": "Meine Bilder nehmen in meinem Kopf meist schon Gestalt an und sind oft bereits 'fertig', bevor ich das Foto überhaupt gemacht habe."
+              "content": "Meine Bilder nehmen in meinem Kopf meist Gestalt an und sind oft bereits 'fertig', bevor ich überhaupt das Foto gemacht habe."
             },
             {
               "type": "image",
@@ -22203,7 +22211,7 @@
             },
             {
               "type": "text",
-              "content": "VM: Eine Zahl impliziert eine unvollständige Serie. Was verleiht einer Treppe ihre Nummer anstatt sie als Outtake zu belassen, und was gibt dir eine Wendeltreppe, was eine Fassade niemals kann?"
+              "content": "VM: Eine Zahl impliziert eine unfertige Serie. Was verleiht einer Treppe ihre Nummer, anstatt sie als Outtake zu belassen, und was gibt dir eine Spiraltreppe, was eine Fassade niemals kann?"
             },
             {
               "type": "text",
@@ -22227,7 +22235,7 @@
             },
             {
               "type": "text",
-              "content": "RS: Er hat im Grunde Recht. Der farbige Brennpunkt in Schwarz-Weiß-Fotografien dient einem kompositorischen Zweck – er zieht den Blick an, bietet einen Gegenpunkt zu großen Flächen von Licht, Himmel oder Landschaft und kann so den Blick des Betrachters lenken. Es muss jedoch nicht unbedingt ein Punkt sein; Farbenschlüssel, wenn sie als größere Flächen verwendet werden, machen viele Bilder ebenfalls ansprechender. Rot ist auch nicht die einzige Option. Ich mag auch Orange, Grün und Blau – je nach Motiv. Wenn ein Gebäude keine Farbe bietet, ist eine monochrome Darstellung oft besser, obwohl subtile, dezente und entsättigte Farben ebenfalls sehr attraktiv sein können."
+              "content": "RS: Er hat im Grunde recht. Der farbige Brennpunkt in Schwarz-Weiß-Fotografien dient einem kompositorischen Zweck – er zieht den Blick an, bietet einen Gegenpunkt zu großen Flächen von Licht, Himmel oder Landschaft, und kann so den Blick des Betrachters lenken. Es muss jedoch nicht unbedingt ein Punkt sein; Farbkennzeichnungen, wenn sie als größere Flächen verwendet werden, machen viele Bilder ebenfalls ansprechender. Rot ist auch nicht die einzige Option. Ich mag auch Orange, Grün und Blau – je nach Motiv. Wenn ein Gebäude keine Farbe bietet, ist eine monochrome Darstellung oft besser, obwohl subtile, zurückhaltende und entsättigte Farben ebenfalls sehr attraktiv sein können."
             },
             {
               "type": "image",
@@ -22250,54 +22258,54 @@
             },
             {
               "type": "text",
-              "content": "VM: Ein Architekt entwirft ein Gebäude, das betreten werden soll; du zeigst es flach, manchmal als Abstraktion. Hat jemals jemand Einwände gegen das, was du mit seinem Werk gemacht hast, erhoben oder dir dafür gedankt?"
+              "content": "VM: Ein Architekt entwirft ein Gebäude, das betreten werden soll; du zeigst es flach, manchmal als Abstraktion. Hat jemals jemand Einwände gegen das, was du mit seinem Werk gemacht hast, erhoben, oder hast du dich dafür bedankt?"
             },
             {
               "type": "text",
-              "content": "RS: Bisher gab es keine Einwände. Schließlich ist künstlerische Fotografie nicht dazu gedacht, zu dokumentieren, sondern zu abstrahieren und Ästhetik in den Mittelpunkt zu stellen. Durch Vereinfachung, Perspektive und bewusste Nachbearbeitung versuche ich, Subjekte aus ihrem funktionalen Kontext zu entfernen und sie in eine eigenständige Welt der Fine-Art-Fotografie zu verwandeln. Ein gutes Kunstfoto sollte nicht erklären, sondern Raum für Interpretation lassen. Meine Bilder sind daher eine bewusste, ästhetische und persönliche Interpretation dessen, was ich gesehen und gefühlt habe."
+              "content": "RS: Bisher gab es keine Einwände. Schließlich ist künstlerische Fotografie nicht dazu gedacht, zu dokumentieren, sondern zu abstrahieren und Ästhetik in den Mittelpunkt zu stellen. Durch Vereinfachung, Perspektive und bewusste Nachbearbeitung versuche ich, Subjekte aus ihrem funktionalen Kontext zu entfernen und sie in eine eigenständige Welt der Kunstfotografie zu verwandeln. Ein gutes Kunstfoto sollte nicht erklären, sondern Raum für Interpretation lassen. Meine Bilder sind daher eine bewusste, ästhetische und persönliche Interpretation dessen, was ich gesehen und gefühlt habe."
             },
             {
               "type": "text",
-              "content": "Für mich ist Fotografie viel mehr als nur ein Hobby. Es ist Erfüllung, eine Lebensphilosophie, Work-Life-Balance und vor allem eine Leidenschaft. Es ist ein wesentlicher Teil meines Lebens. Fotografie bringt mir Freude. Meiner Ansicht nach ist ein gutes Foto eines, das eine klare Botschaft vermittelt und die Emotionen des Betrachters anspricht. Meine Leidenschaft liegt in der Kunstfotografie – dem künstlerischen Aspekt, nicht nur Rationalität und Dokumentation. Für mich ist Nachbearbeitung genauso wichtig wie das eigentliche Fotografieren."
+              "content": "Für mich ist Fotografie viel mehr als nur ein Hobby. Es ist Erfüllung, eine Lebensphilosophie, Work-Life-Balance und vor allem eine Leidenschaft. Es ist ein wesentlicher Teil meines Lebens. Fotografie bringt mir Freude. Meiner Ansicht nach ist ein gutes Foto eines, das eine klare Botschaft vermittelt und die Emotionen des Betrachters anspricht. Meine Leidenschaft liegt in der Kunstfotografie – dem künstlerischen Aspekt, nicht nur Rationalität und Dokumentation. Für mich ist Nachbearbeitung genauso wichtig wie der Akt des Fotografierens selbst."
             },
             {
               "type": "text",
-              "content": "Forschung ist normalerweise der Ausgangspunkt. Ich fahre nur an den Ort, wenn ich eine klare Vorstellung davon habe, wie ich das Motiv einfangen möchte: die Natur des Gebäudes, wie es aussieht und was der Architekt ausdrücken wollte. Was die Fotos selbst betrifft, nehme ich mir in der Regel viel Zeit, um den richtigen Ort, den richtigen Winkel, die richtige Brennweite und so weiter zu wählen. Allerdings fotografiere ich das Motiv meist aus verschiedenen Blickwinkeln, um sowohl die Gesamtszene als auch die feinen Details festzuhalten. Manchmal kommt die Idee für ein Bild erst später zu mir."
+              "content": "Recherchen sind in der Regel der Ausgangspunkt. Ich gehe erst an den Ort, wenn ich eine klare Vorstellung davon habe, wie ich das Motiv einfangen möchte: die Natur des Gebäudes, wie es aussieht und was der Architekt ausdrücken wollte. Was die Fotos selbst betrifft, nehme ich mir in der Regel viel Zeit, um den richtigen Ort, den richtigen Winkel, die richtige Brennweite und so weiter auszuwählen. Allerdings fotografiere ich das Motiv meist aus verschiedenen Blickwinkeln, um sowohl die Gesamtszene als auch die feinen Details festzuhalten. Manchmal kommt die Idee für ein Bild erst im Nachhinein zu mir."
             },
             {
-              "type": "quote",
+              "type": "Zitat",
               "content": "Ein gutes Kunstfoto sollte nicht erklären, sondern Raum für Interpretation lassen."
             },
             {
-              "type": "image",
+              "type": "Bild",
               "content": "https://api.eprisjournal.com/uploads/mtjqqqzs9l79rp.webp",
-              "align": "center",
+              "align": "Zentrum",
               "width": 100,
               "caption": "Betrachtung des Bildes, Roland M Schwerdtfeger, 2025. Museum für moderne Kunst, Münster"
             },
             {
-              "type": "image",
+              "type": "Bild",
               "content": "https://api.eprisjournal.com/uploads/mtjqpw8kp67wpw.webp",
-              "align": "center",
+              "align": "Zentrum",
               "width": 100,
-              "caption": "Neuer Zollhof, Roland M Schwerdtfeger, 2025. Frank O. Gehry Gebäude, Media Harbor, Düsseldorf"
+              "caption": "Neuer Zollhof, Roland M Schwerdtfeger, 2025. Frank O. Gehry Gebäude, Media Harbour, Düsseldorf"
             },
             {
-              "type": "header",
+              "type": "Überschrift",
               "content": "04 · Erlaubnis einholen",
               "level": 2
             },
             {
               "type": "text",
-              "content": "VM: Deutschlands Panoramafreiheit deckt die Straße ab, nicht eine Inneneinrichtung wie die MAK-Treppe. Was ist deine eigentliche Regel, um Erlaubnis zu bitten, und hat es dich jemals ein Bild gekostet?"
+              "content": "VM: Deutschlands Panoramafreiheit deckt die Straße ab, nicht eine Inneneinrichtung wie die MAK-Treppe. Was ist deine eigentliche Regel, um um Erlaubnis zu bitten, und hat es dich jemals ein Bild gekostet?"
             },
             {
               "type": "text",
-              "content": "RS: Wenn ich drinnen fotografieren möchte, zum Beispiel in Museen, frage ich um Erlaubnis. Das ist normalerweise kein Problem, vor allem da ich im Allgemeinen keine Personen fotografiere, die erkennbar sind. In öffentlichen Gebäuden ist das normalerweise auch kein Problem, im Gegensatz zum Beispiel zu Firmengeländen. Dort ist das Fotografieren in Innenräumen oft verboten. Und ja, das hat mich gelegentlich ein interessantes Foto gekostet."
+              "content": "RS: Wenn ich drinnen fotografieren möchte, zum Beispiel in Museen, frage ich um Erlaubnis dazu. Das ist normalerweise kein Problem, vor allem da ich im Allgemeinen keine Menschen so fotografiere, dass sie erkennbar sind. In öffentlichen Gebäuden ist das normalerweise auch kein Problem, im Gegensatz zum Beispiel zu Firmengeländen. Dort ist das Fotografieren in Innenräumen oft verboten. Und ja, das hat mich gelegentlich ein interessantes Foto gekostet."
             },
             {
               "type": "text",
-              "content": "Allerdings hatte ich bisher nie Probleme; wenn Sie höflich fragen, erhalten Sie in der Regel eine freundliche Antwort. Bei religiösen Gebäuden oder besonders geschützten Stätten können Sie sich auch im Voraus online über Fotogenehmigungen informieren und diese bei Bedarf per E-Mail beantragen. Im Zweifelsfall gilt: höflich fragen, darauf hinweisen, dass die Fotos für nicht-kommerzielle Zwecke sind, und dann ist das Fotografieren in der Regel kein Problem."
+              "content": "Allerdings hatte ich bisher keine Probleme; wenn du höflich fragst, bekommst du in der Regel eine freundliche Antwort. Bei religiösen Gebäuden oder besonders geschützten Orten kannst du dich auch online im Voraus über Fotogenehmigungen informieren und sie bei Bedarf per E-Mail beantragen. Im Zweifelsfall gilt: höflich fragen, darauf hinweisen, dass die Fotos für nicht-kommerzielle Zwecke sind, und dann ist das Fotografieren in der Regel kein Problem."
             },
             {
               "type": "image",
@@ -22311,7 +22319,7 @@
               "content": "https://api.eprisjournal.com/uploads/mtjqqu3k826uwn.webp",
               "align": "center",
               "width": 100,
-              "caption": "Natalini Tower, Roland M Schwerdtfeger, 2024. Traditionelles Gebäude in Roermond, Niederlande"
+              "caption": "Natalini Turm, Roland M Schwerdtfeger, 2024. Traditionelles Gebäude in Roermond, Niederlande"
             },
             {
               "type": "header",
@@ -22320,42 +22328,42 @@
             },
             {
               "type": "text",
-              "content": "VM: Wie viel eines Bildes passiert nach dem Verschluss? Nennen Sie die Linie: was würden Sie niemals aus einem Rahmen entfernen, und was geht ohne zweiten Gedanken?"
+              "content": "VM: Wie viel eines Bildes passiert nach dem Schließen der Verschlusskappe? Nennen Sie die Linie: Was würden Sie niemals aus einem Rahmen entfernen, und was geht ohne zweiten Gedanken weg?"
             },
             {
               "type": "text",
               "content": "RS: Es variiert wirklich sehr. Jedes Bild wird in Lightroom und Photoshop bearbeitet. Manchmal justiere ich nur die Highlights und Schatten, aber meistens mache ich mehr: Ich ersetze den Himmel und entferne ablenkende Elemente aus dem Bild. In einigen Fällen füge ich Elemente wie Straßenlaternen oder sogar Menschen hinzu. Das Hauptmotiv bleibt jedoch immer das wichtigste Element und wird niemals entfernt. Ich verwende KI, aber hauptsächlich, um einzelne Elemente zu ersetzen; sie wird niemals zum Designer des Bildes."
             },
             {
-              "type": "quote",
-              "content": "Ich verwende KI, aber hauptsächlich, um einzelne Elemente zu ersetzen; sie wird niemals zum Designer des Bildes."
+              "type": "Zitat",
+              "content": "Ich benutze KI, aber hauptsächlich um einzelne Elemente zu ersetzen; sie wird niemals zum Designer des Bildes."
             },
             {
-              "type": "image",
+              "type": "Bild",
               "content": "https://api.eprisjournal.com/uploads/mtjqp50v9n2ouy.webp",
-              "align": "center",
+              "align": "Zentrum",
               "width": 100,
               "caption": "Pavillon, Roland M Schwerdtfeger, 2025. Porsche Pavillon, Volkswagen Autostadt, Wolfsburg"
             },
             {
-              "type": "header",
+              "type": "Kopfzeile",
               "content": "06 · Die Jury",
               "level": 2
             },
             {
-              "type": "text",
-              "content": "VM: 1x lehnt die meisten, was sie erhält, ab; du hast 442 akzeptiert. Was haben dir die Ablehnungen beigebracht, was die Annahmen nie getan haben, und ändert eine Jury ehrlich gesagt, wie du bearbeitest?"
+              "type": "Text",
+              "content": "VM: 1x lehnt die meisten, was sie erhält; Sie haben 442 akzeptiert. Was haben die Ablehnungen Ihnen beigebracht, was die Annahmen nie taten, und ändert eine Jury ehrlich gesagt, wie Sie bearbeiten?"
             },
             {
               "type": "text",
-              "content": "RS: Um ehrlich zu sein, hatte ich bisher nur drei Ablehnungen, worüber ich sehr froh bin. Als Kurator sehe ich jedoch auch viele negative Beispiele und bin froh, dass 1X eine so gut kuratierte Plattform mit sehr hohen Standards ist. Und nein, die Jury ändert nicht die Art, wie ich meine Fotos bearbeite; ich mache und bearbeite Fotos aus Leidenschaft, nicht aus Opportunismus. Das gesagt, reiche ich keine Fotos ein, von denen ich denke, dass sie nicht akzeptiert werden würden. Ich habe kein einziges Foto an den Wänden zu Hause. Dort hängen nur moderne Kunstwerke, keine Fotografie."
+              "content": "RS: Um ehrlich zu sein, hatte ich bisher nur drei Ablehnungen, worüber ich sehr glücklich bin. Als Kurator sehe ich jedoch auch viele negative Beispiele und bin froh, dass 1X eine so gut kuratierte Plattform mit sehr hohen Standards ist. Und nein, die Jury ändert nicht die Art und Weise, wie ich meine Fotos bearbeite; ich mache und bearbeite Fotos aus Leidenschaft, nicht aus Opportunismus. Das gesagt, reiche ich keine Fotos ein, von denen ich denke, dass sie nicht akzeptiert werden würden. Ich habe kein einziges Foto an den Wänden zu Hause. Dort hängen nur moderne Kunstwerke, keine Fotografie."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqpbjeby9vr5.webp",
               "align": "center",
               "width": 100,
-              "caption": "Eine weiße Cloud, Roland M Schwerdtfeger, 2025. Museum of modern Art, Münster"
+              "caption": "Eine weiße Cloud, Roland M Schwerdtfeger, 2025. Museum für moderne Kunst, Münster"
             },
             {
               "type": "header",
@@ -22364,27 +22372,27 @@
             },
             {
               "type": "text",
-              "content": "VM: Ein Druck wird zu einem physischen Objekt an der Wand von jemandem. Was gewinnt ein Bild bei diesem Schritt, und mit wem stellst du dir vor, lebt es tatsächlich zusammen?"
+              "content": "VM: Ein Druck wird zu einem physischen Objekt an der Wand von jemandem. Was gewinnt ein Bild in diesem Schritt, und mit wem stellst du dir vor, dass es tatsächlich lebt?"
             },
             {
               "type": "text",
-              "content": "RS: Ein gedrucktes Foto, in einem hochwertigen Rahmen mit Passepartout, wird zu einem eigenständigen Objekt und erhält eine völlig andere Bedeutung im Vergleich zu einem Foto auf einem Bildschirm. Auf diese Weise kann das Bild zum Status eines Kunstwerks erhoben werden. Im Gegensatz dazu bietet der Bildschirm größere Brillanz, und die Farben sind lebendiger. Eine physische Galerie oder eine Eröffnung einer Ausstellung vermittelt eine ganz andere Atmosphäre als eine Online-Galerie; der Eindruck und die Erfahrung sind völlig unterschiedlich. Und beide haben ihren Platz."
+              "content": "RS: Ein gedrucktes Foto, in einem hochwertigen Rahmen mit Passepartout gesetzt, wird zu einem eigenständigen Objekt und erhält eine völlig andere Bedeutung im Vergleich zu einem Foto auf einem Bildschirm. Auf diese Weise kann das Bild zum Status eines Kunstwerks erhoben werden. Im Gegensatz dazu bietet der Bildschirm größere Brillanz, und die Farben sind lebendiger. Eine physische Galerie oder eine Eröffnung einer Ausstellung vermittelt eine ganz andere Atmosphäre als eine Online-Galerie; der Eindruck und die Erfahrung sind völlig unterschiedlich. Und beide haben ihren Platz."
             },
             {
               "type": "text",
-              "content": "Wen stelle ich mir mit Fotos an der Wand vor? Das ist sicherlich mehr als eine Zielgruppe; wenn es um architektonische Fotos geht, vielleicht Menschen mit modernen, zeitgenössischen Interieurs anstelle von Traditionalisten. Design-Enthusiasten anstelle von Nostalgikern. Ja, es ist passiert, dass mich Fotos auf dem Bildschirm beeindruckt haben, nur um bei der Betrachtung als Druck zu enttäuschen. Die Größe des Drucks spielt manchmal auch eine Rolle. Es gibt Fotos, die mit zunehmender Größe eine größere Wirkung erzielen. Schwache Fotos hingegen verbessern sich bei einem großen Format nicht..."
+              "content": "Wen stelle ich mit Fotos an der Wand vor? Das ist sicherlich mehr als eine Zielgruppe; wenn es um architektonische Fotos geht, vielleicht Menschen mit modernen, zeitgenössischen Interieurs anstelle von Traditionalisten. Design-Enthusiasten anstelle von Nostalgikern. Ja, es ist passiert, dass mich Fotos auf dem Bildschirm beeindruckt haben, nur um bei der Betrachtung als Druck zu enttäuschen. Die Größe des Drucks spielt manchmal auch eine Rolle. Es gibt Fotos, die mit zunehmender Größe eine größere Wirkung erzielen. Schwache Fotos hingegen verbessern sich bei großem Format nicht…"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqq8wkgzubn1.webp",
-              "align": "Zentrum",
+              "align": "center",
               "width": 100,
               "caption": "Sluishuis, Roland M Schwerdtfeger, 2025. Wohngebäude in der Nähe von Amsterdam, Niederlande"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqq5t7g2zyfw.webp",
-              "align": "Zentrum",
+              "align": "center",
               "width": 100,
               "caption": "Zaandam Fassaden, Roland M Schwerdtfeger, 2025. Komposition von Gebäuden in Zaandam, Nordholland"
             },
@@ -22396,35 +22404,35 @@
               "caption": "Zaandam V, Roland M Schwerdtfeger, 2025. Hotel in Zaandam, Nordholland"
             },
             {
-              "type": "Überschrift",
-              "content": "08 · Zwei würde zurücknehmen",
+              "type": "Kopfzeile",
+              "content": "08 · Zwei würde er zurücknehmen",
               "level": 2
             },
             {
-              "type": "text",
-              "content": "VM: Von 442 veröffentlichten Bildern, gibt es eines, das du zurücknehmen würdest, und welche Frage zu deiner Arbeit hast du satt, dass niemand sonst stattdessen stellt?"
+              "type": "Text",
+              "content": "VM: Von 442 veröffentlichten Bildern, gibt es eines, das du zurücknehmen würdest, und welche Frage zu deiner Arbeit hast du leid, immer wieder gefragt zu werden, die sonst niemand stellt?"
             },
             {
-              "type": "text",
-              "content": "RS: Ja, es gibt tatsächlich zwei Fotos, die ich heute nicht mehr veröffentlichen würde; leider kannst du sie auf 1X nicht löschen… Ich beantworte Fragen immer gerne, und ich werde nie müde davon. Manchmal höre ich jedoch Leute sagen: 'Deine Fotos sind brillant – welche Kamera benutzt du?' Das bringt mich immer zum Lächeln. Natürlich brauchst du eine Systemkamera und das richtige Equipment; es gibt viele Dinge, die man mit nur einem Standardobjektiv einfach nicht erreichen kann. Aber letztlich spielt die Marke der Kamera keine Rolle. Man kann auf einem Foto nicht erkennen, welche Kamera dafür verwendet wurde."
+              "type": "Text",
+              "content": "RS: Ja, es gibt tatsächlich zwei Fotos, die ich heute nicht veröffentlichen würde; leider kannst du sie auf 1X nicht löschen… Ich beantworte Fragen immer gerne, und ich werde nie müde davon. Manchmal höre ich jedoch Leute sagen: 'Deine Fotos sind brillant – welche Kamera benutzt du?' Das bringt mich immer zum Lächeln. Natürlich brauchst du eine Systemkamera und das richtige Equipment; es gibt viele Dinge, die du mit nur einem Standardobjektiv einfach nicht erreichen kannst. Aber letztendlich spielt die Marke der Kamera keine Rolle. Man kann nicht anhand eines Fotos erkennen, welche Kamera dafür verwendet wurde."
             },
             {
-              "type": "zitat",
+              "type": "Zitat",
               "content": "Man kann auf einem Foto nicht erkennen, welche Kamera dafür verwendet wurde."
             },
             {
-              "type": "bild",
+              "type": "Bild",
               "content": "https://api.eprisjournal.com/uploads/mtjqqnxivdjz2h.webp",
-              "align": "zentriert",
+              "align": "Zentrum",
               "width": 100,
               "caption": "Portikus, Roland M Schwerdtfeger, 2025. Ein kleines Museum in Frankfurt/Main"
             },
             {
-              "type": "text",
-              "content": "Die Arbeit von Roland M Schwerdtfeger ist unter 1x.com/rolandmschwerdtfeger und auf Instagram unter @roland_m_schwerdtfeger zu sehen. Alle Bilder © Roland M Schwerdtfeger, veröffentlicht mit Erlaubnis des Künstlers."
+              "type": "Text",
+              "content": "Die Arbeiten von Roland M Schwerdtfeger sind auf 1x.com/rolandmschwerdtfeger und auf Instagram unter @roland_m_schwerdtfeger zu sehen. Alle Bilder © Roland M Schwerdtfeger, veröffentlicht mit Erlaubnis des Künstlers."
             }
           ],
-          "updatedAt": "2026-09-02T07:47:25.224Z",
+          "updatedAt": "2026-09-02T07:58:54.369Z",
           "authorId": "author-1784732936927-kw554"
         }
       ],
