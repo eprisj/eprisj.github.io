@@ -6578,6 +6578,72 @@
       ],
       "updatedAt": "2026-09-02T06:37:20.801Z",
       "publishAt": "2026-08-31T09:33:28.075Z"
+    },
+    {
+      "id": 31,
+      "draft": true,
+      "title": "The Picture Is Finished Before the Shutter - interview with Roland M Schwerdtfeger",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Sep 2, 2026",
+      "excerpt": "Architectural photographer Roland M Schwerdtfeger on planning a picture until it is finished before the camera comes up, the single coloured note in a black-and-white frame, and why the camera brand is the wrong question.",
+      "category": "Photography",
+      "subcategory": "Feature",
+      "tags": [
+        "story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+        },
+        {
+          "type": "image",
+          "content": "the-picture-is-finished-before-the-shutter-inter-2",
+          "caption": "Lead image"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line worth remembering here."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a short aside."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "Context",
+              "Key detail",
+              "Human angle",
+              "What changes next"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ],
+      "updatedAt": "2026-09-02T06:45:41.793Z"
     }
   ],
   "reviews": [
