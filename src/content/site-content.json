@@ -6872,7 +6872,8 @@
         }
       ],
       "updatedAt": "2026-09-02T07:56:21.758Z",
-      "authorId": "author-1784732936927-kw554"
+      "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-roland-schwerdtfeger"
     }
   ],
   "reviews": [
@@ -38605,6 +38606,19 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 11
+    },
+    {
+      "id": "author-roland-schwerdtfeger",
+      "name": "Roland M Schwerdtfeger",
+      "role": "Photographer, Germany",
+      "bio": "Roland M Schwerdtfeger is an architectural and fine art photographer based in Germany and a curator on 1x, where 442 of his images have been accepted. His work has been recognised with an EPA Platinum Award, an IPA Gold Award, and honours from Fineartphotoawards and ND Awards.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mtjsvd65lq54s8.jpg",
+      "website": "https://www.1x.com/rolandmschwerdtfeger",
+      "instagram": "@roland_m_schwerdtfeger",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 12
     }
   ],
   "manifest": {
