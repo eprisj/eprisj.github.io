@@ -26409,6 +26409,72 @@
           ],
           "updatedAt": "2026-08-31T09:39:28.445Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "La Imagen Está Terminada Antes del Obturador - entrevista con Roland M Schwerdtfeger",
+          "author": "EPRIS Journal",
+          "role": "Mesa Editorial",
+          "date": "2 de sep. de 2026",
+          "excerpt": "El fotógrafo arquitectónico Roland M Schwerdtfeger sobre planificar una imagen hasta que esté terminada antes de que la cámara se levante, la nota de color único en un marco en blanco y negro, y por qué la marca de la cámara es la pregunta equivocada.",
+          "category": "Fotografía",
+          "subcategory": "Característica",
+          "tags": [
+            "historia",
+            "cultura",
+            "editorial"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Comienza con la escena, hecho u observación más fuerte. Mantén este primer bloque compacto y específico."
+            },
+            {
+              "type": "imagen",
+              "content": "la-imagen-está-terminada-antes-del-obturador-inter-2",
+              "caption": "imagen principal"
+            },
+            {
+              "type": "cita",
+              "content": "Agrega una línea que valga la pena recordar aquí."
+            },
+            {
+              "type": "nota",
+              "content": "Nota editorial, contexto de la fuente o una breve observación."
+            },
+            {
+              "type": "lista de verificación",
+              "caption": "Qué cubrir",
+              "content": {
+                "items": [
+                  "Contexto",
+                  "Detalle clave",
+                  "Ángulo humano",
+                  "Qué cambia a continuación"
+                ]
+              }
+            },
+            {
+              "type": "encuesta",
+              "content": {
+                "question": "¿Qué deberíamos explorar a continuación?",
+                "options": [
+                  {
+                    "label": "Más contexto",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Guía práctica",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:56:52.045Z"
         }
       ],
       "reviews": [
@@ -31300,6 +31366,72 @@
           ],
           "updatedAt": "2026-08-31T09:40:52.029Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "Kare, Çekimden Önce Tamamlandı - Roland M Schwerdtfeger ile röportaj",
+          "author": "EPRIS Journal",
+          "role": "Editoryal Masası",
+          "date": "2 Eylül 2026",
+          "excerpt": "Mimari fotoğrafçı Roland M Schwerdtfeger, bir resmi kameranın çıkmadan önce planlaması, siyah-beyaz çerçevede tek renkli not ve neden kamera markasının yanlış soru olduğunu anlatıyor.",
+          "category": "Fotoğrafçılık",
+          "subcategory": "Özellik",
+          "tags": [
+            "hikaye",
+            "kültür",
+            "editoryal"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "metin",
+              "content": "En güçlü sahne, gerçek veya gözlemlerle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+            },
+            {
+              "type": "görüntü",
+              "content": "perde-öncesi-2-şekilde-bitmiş-resim",
+              "caption": "Öncü görüntü"
+            },
+            {
+              "type": "alıntı",
+              "content": "Buraya hatırlanacak bir satır ekleyin."
+            },
+            {
+              "type": "not",
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir ara."
+            },
+            {
+              "type": "kontrol listesi",
+              "caption": "Ne kapsamalı",
+              "content": {
+                "items": [
+                  "Bağlam",
+                  "Ana detay",
+                  "İnsan açısı",
+                  "Sonraki değişiklikler"
+                ]
+              }
+            },
+            {
+              "type": "oylama",
+              "content": {
+                "question": "Bir sonraki neyi keşfetmeliyiz?",
+                "options": [
+                  {
+                    "label": "Daha fazla bağlam",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Pratik rehber",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:56:57.078Z"
         }
       ],
       "reviews": [
