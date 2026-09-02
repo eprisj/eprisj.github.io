@@ -27333,13 +27333,13 @@
         {
           "id": 31,
           "draft": false,
-          "title": "La imagen está terminada antes del obturador - entrevista con Roland M Schwerdtfeger",
+          "title": "La Imagen Está Terminada Antes del Obturador - entrevista con Roland M Schwerdtfeger",
           "author": "Viacheslav Munister",
           "role": "Autor",
           "date": "2 de sep, 2026",
-          "excerpt": "El fotógrafo arquitectónico Roland M Schwerdtfeger sobre planificar una imagen hasta que esté terminada antes de que aparezca la cámara, la nota de color único en un marco en blanco y negro, y por qué la marca de la cámara es la pregunta equivocada.",
+          "excerpt": "El fotógrafo arquitectónico Roland M Schwerdtfeger sobre planificar una imagen hasta que esté terminada antes de que la cámara se levante, la nota de color único en un marco en blanco y negro, y por qué la marca de la cámara es la pregunta equivocada.",
           "category": "Fotografía",
-          "subcategory": "Artículo destacado",
+          "subcategory": "Artículo",
           "tags": [
             "fotografía",
             "arquitectura",
@@ -27358,7 +27358,7 @@
             },
             {
               "type": "texto",
-              "content": "Con sede en Alemania, se desplaza entre las instalaciones de la empresa donde a menudo simplemente no se permite una cámara, museos que otorgan permiso si se pide correctamente, y edificios que están fuera de Panoramafreiheit, la ley del país que protege solo lo que puede ser fotografiado desde una calle pública. Lo que regresa de esas visitas se edita con fuerza en Lightroom y Photoshop — cielos reemplazados, distracciones eliminadas, ocasionalmente una farola o una figura añadida de nuevo — pero nunca, insiste, entregado a la IA para componer."
+              "content": "Con sede en Alemania, se desplaza entre las instalaciones de la empresa donde a menudo simplemente no se permite una cámara, museos que otorgan permiso si se pide correctamente, y edificios que están fuera de Panoramafreiheit, la ley del país que protege solo lo que puede ser fotografiado desde una calle pública. Lo que regresa de esas visitas se edita intensamente en Lightroom y Photoshop — cielos reemplazados, distracciones eliminadas, ocasionalmente una farola o una figura añadida de nuevo — pero nunca, insiste, entregado a la IA para componer."
             },
             {
               "type": "texto",
@@ -27386,11 +27386,11 @@
             },
             {
               "type": "texto",
-              "content": "Luego verifico Google Maps para determinar la ubicación, los alrededores y la orientación del sujeto. Es importante elegir el momento adecuado para tomar la foto para que la luz sea perfecta. Para mí, la planificación y la preparación son absolutamente esenciales. Mis imágenes generalmente toman forma en mi mente y a menudo ya están 'terminadas' antes de que incluso haya tomado la fotografía. Pero el título solo me llega cuando la imagen se publica."
+              "content": "Luego verifico Google Maps para determinar la ubicación, los alrededores y la orientación del sujeto. Es importante elegir el momento adecuado para tomar la foto para que la luz sea perfecta. Para mí, la planificación y la preparación son absolutamente esenciales. Mis imágenes generalmente toman forma en mi mente y a menudo ya están 'terminadas' antes de que haya tomado la fotografía. Pero el título solo me llega cuando la imagen se publica."
             },
             {
               "type": "cita",
-              "content": "Mis imágenes generalmente toman forma en mi mente y a menudo ya están 'terminadas' antes de que incluso haya tomado la fotografía."
+              "content": "Mis imágenes generalmente toman forma en mi mente y a menudo ya están 'terminadas' antes de que haya tomado la fotografía."
             },
             {
               "type": "imagen",
@@ -27401,7 +27401,7 @@
             },
             {
               "type": "texto",
-              "content": "VM: Un número implica una serie inacabada. ¿Qué le otorga a una escalera su número en lugar de dejarla como una toma descartada, y qué te da una escalera de caracol que una fachada nunca puede?"
+              "content": "VM: Un número implica una serie inacabada. ¿Qué le da a una escalera su número en lugar de dejarla como una toma descartada, y qué te da una escalera de caracol que una fachada nunca puede?"
             },
             {
               "type": "texto",
@@ -27425,19 +27425,19 @@
             },
             {
               "type": "texto",
-              "content": "RS: Él básicamente tiene razón. El punto focal coloreado en fotografías en blanco y negro cumple una función compositiva – atrae la vista, proporciona un contrapunto a grandes áreas de luz, cielo o paisaje, y puede así guiar la mirada del espectador. Sin embargo, no tiene que ser necesariamente un punto; las claves de color, cuando se usan como áreas mayores, también hacen que muchas imágenes sean más atractivas. Tampoco el rojo es la única opción. También me gustan el naranja, el verde y el azul – dependiendo del tema. Si un edificio no ofrece color en absoluto, a menudo una representación en monocromo es mejor, aunque colores sutiles, discretos y desaturados también pueden ser muy atractivos."
+              "content": "RS: Él básicamente tiene razón. El punto focal coloreado en fotografías en blanco y negro cumple una función compositiva – atrae la vista, proporciona un contrapunto a grandes áreas de luz, cielo o paisaje, y puede así guiar la mirada del espectador. Sin embargo, no tiene que ser necesariamente un punto; las claves de color, cuando se usan como áreas mayores, también hacen que muchas imágenes sean más atractivas. Tampoco el rojo es la única opción. También me gustan el naranja, el verde y el azul – dependiendo del tema. Si un edificio no ofrece color en absoluto, a menudo es mejor una representación en monocromo, aunque colores sutiles, discretos y desaturados también pueden ser muy atractivos."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtjqp87h3zop02.webp",
-              "align": "centrar",
+              "align": "centro",
               "width": 100,
               "caption": "Panta Rhei, Roland M Schwerdtfeger, 2024. Edificio de oficinas, Düsseldorf"
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtjqpzgmjwque3.webp",
-              "align": "centrar",
+              "align": "centro",
               "width": 100,
               "caption": "Contrastes, Roland M Schwerdtfeger, 2025. Edificios altos en Frankfurt/Main"
             },
@@ -27452,15 +27452,15 @@
             },
             {
               "type": "texto",
-              "content": "RS: Hasta ahora nunca ha habido objeciones. Después de todo, la fotografía artística no está destinada a documentar, sino a abstraer y permitir que la estética ocupe el centro del escenario. A través de la simplificación, la perspectiva y el procesamiento deliberado, intento eliminar los sujetos de su contexto funcional y transformarlos en un mundo independiente de la fotografía de arte. Una buena fotografía artística no debe explicar, sino dejar espacio para la interpretación. Mis imágenes son, por tanto, una interpretación consciente, estética y personal de lo que he visto y sentido."
+              "content": "RS: Hasta ahora nunca ha habido objeciones. Después de todo, la fotografía artística no está destinada a documentar, sino a abstraer y permitir que la estética ocupe el centro del escenario. A través de simplificación, perspectiva y post-procesamiento deliberado, intento eliminar los sujetos de su contexto funcional y transformarlos en un mundo independiente de fotografía de arte. Una buena fotografía de arte no debe explicar, sino dejar espacio para la interpretación. Mis imágenes son, por tanto, una interpretación consciente, estética y personal de lo que he visto y sentido."
             },
             {
               "type": "texto",
-              "content": "Para mí, la fotografía es mucho más que un pasatiempo. Es realización, una filosofía de vida, equilibrio entre trabajo y vida y, sobre todo, una pasión. Es una parte esencial de mi vida. La fotografía me trae alegría. En mi opinión, una buena fotografía es aquella que transmite un mensaje claro y apela a las emociones del espectador. Mi pasión reside en la fotografía artística – el aspecto artístico, no meramente la racionalidad y la documentación. Para mí, el procesamiento posterior es tan importante como el acto de tomar la fotografía en sí."
+              "content": "Para mí, la fotografía es mucho más que un pasatiempo. Es realización, una filosofía de vida, equilibrio entre trabajo y vida y, sobre todo, una pasión. Es una parte esencial de mi vida. La fotografía me trae alegría. En mi opinión, una buena fotografía es aquella que transmite un mensaje claro y apela a las emociones del espectador. Mi pasión reside en la fotografía artística – el aspecto artístico, no meramente la racionalidad y la documentación. Para mí, el post-procesamiento es tan importante como el acto de tomar la fotografía en sí."
             },
             {
               "type": "texto",
-              "content": "La investigación suele ser el punto de partida. Solo me dirijo al lugar una vez que tengo una idea clara de cómo quiero capturar el sujeto: la naturaleza del edificio, cómo se ve y qué quiso expresar el arquitecto. En cuanto a las fotos mismas, generalmente tomo mucho tiempo para elegir el lugar correcto, el ángulo correcto, la distancia focal correcta y así sucesivamente. Sin embargo, generalmente fotografío el sujeto desde varios ángulos, capturando tanto la escena general como los detalles más finos. A veces, la idea para una imagen solo me llega después."
+              "content": "La investigación suele ser el punto de partida. Solo me dirijo al lugar una vez que tengo una idea clara de cómo quiero capturar el sujeto: la naturaleza del edificio, cómo se ve, y qué quiso expresar el arquitecto. En cuanto a las fotos mismas, generalmente tomo mucho tiempo para elegir el lugar correcto, el ángulo correcto, la distancia focal correcta y así sucesivamente. Sin embargo, generalmente fotografío el sujeto desde varios ángulos, capturando tanto la escena general como los detalles más finos. A veces, la idea para una imagen solo me llega después."
             },
             {
               "type": "cita",
@@ -27495,7 +27495,7 @@
             },
             {
               "type": "text",
-              "content": "Sin embargo, nunca he tenido problemas hasta ahora; si preguntas cortésmente, generalmente obtendrás una respuesta amistosa. En el caso de edificios religiosos o sitios especialmente protegidos, también puedes informarte sobre permisos de fotografía en línea con anticipación y, si es necesario, solicitarlos por correo electrónico. En caso de duda, la regla es: pregunta cortésmente, señala que las fotos son para uso no comercial, y entonces tomar fotos generalmente no es un problema."
+              "content": "Sin embargo, nunca he tenido problemas hasta ahora; si preguntas educadamente, generalmente obtendrás una respuesta amistosa. En el caso de edificios religiosos o sitios especialmente protegidos, también puedes informarte sobre permisos de fotografía en línea con anticipación y, si es necesario, solicitarlos por correo electrónico. En caso de duda, la regla es: pregunta educadamente, señala que las fotos son para uso no comercial, y entonces tomar fotos generalmente no es un problema."
             },
             {
               "type": "image",
@@ -27526,7 +27526,7 @@
             },
             {
               "type": "cita",
-              "content": "Yo sí uso IA, pero principalmente para reemplazar elementos individuales; nunca se convierte en el diseñadora de la imagen."
+              "content": "Yo sí uso IA, pero principalmente para reemplazar elementos individuales; nunca se convierte en el diseñador de la imagen."
             },
             {
               "type": "imagen",
@@ -27562,7 +27562,7 @@
             },
             {
               "type": "text",
-              "content": "VM: Una impresión se convierte en un objeto físico en la pared de alguien. ¿Qué gana una imagen en ese movimiento, y a quién imaginas viviendo realmente con ella?"
+              "content": "VM: Una impresión se convierte en un objeto físico en la pared de alguien. ¿Qué gana una imagen en ese movimiento, y con quién te imaginas que realmente vive con ella?"
             },
             {
               "type": "texto",
@@ -27570,7 +27570,7 @@
             },
             {
               "type": "texto",
-              "content": "¿Con quién me imagino con fotos en la pared? Esto ciertamente es más que un público objetivo; cuando se trata de fotos arquitectónicas, quizás personas con interiores modernos, contemporáneos en lugar de tradicionalistas. Entusiastas del diseño en lugar de nostálgicos. Sí, ha ocurrido que fotos me han impresionado en pantalla, solo para decepcionarme al verlas impresas. El tamaño de la impresión también a veces juega un papel. Hay fotos que tienen un mayor impacto a medida que aumenta su tamaño. Por otro lado, las fotos débiles no mejoran con un formato grande…"
+              "content": "¿Con quién me imagino con fotos en la pared? Esto ciertamente es más que un público objetivo; cuando se trata de fotos arquitectónicas, quizás personas con interiores modernos, contemporáneos en lugar de tradicionalistas. Entusiastas del diseño en lugar de nostálgicos. Sí, ha ocurrido que fotos me han impresionado en pantalla, solo para decepcionarme al verlas impresas. El tamaño de la impresión también a veces juega un papel. Hay fotos que tienen un impacto mayor a medida que aumentan de tamaño. Por otro lado, las fotos débiles no mejoran con un formato grande…"
             },
             {
               "type": "imagen",
@@ -27622,8 +27622,9 @@
               "content": "El trabajo de Roland M Schwerdtfeger se puede ver en 1x.com/rolandmschwerdtfeger y en Instagram en @roland_m_schwerdtfeger. Todas las imágenes © Roland M Schwerdtfeger, publicadas con el permiso del artista."
             }
           ],
-          "updatedAt": "2026-09-02T07:59:33.701Z",
-          "authorId": "author-1784732936927-kw554"
+          "updatedAt": "2026-09-02T08:07:58.434Z",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-roland-schwerdtfeger"
         }
       ],
       "reviews": [
