@@ -11535,6 +11535,72 @@
           ],
           "updatedAt": "2026-08-31T09:35:02.100Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "Картина завершена до затвора - интервью с Roland M Schwerdtfeger",
+          "author": "EPRIS Journal",
+          "role": "Редакционная коллегия",
+          "date": "2 сен 2026",
+          "excerpt": "Архитектурный фотограф Roland M Schwerdtfeger о планировании снимка до его завершения перед тем, как камера поднимется, однородной цветовой ноте в черно-белой рамке и почему бренд камеры — неправильный вопрос.",
+          "category": "Фотография",
+          "subcategory": "Материал",
+          "tags": [
+            "история",
+            "культура",
+            "редакционная"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "текст",
+              "content": "Начните с самой сильной сцены, факта или наблюдения. Держите этот первый блок коротким и конкретным."
+            },
+            {
+              "type": "изображение",
+              "content": "картина-завершена-прежде-чем-затвор-Inter-2",
+              "caption": "ведущее изображение"
+            },
+            {
+              "type": "цитата",
+              "content": "Добавьте здесь строку, которую стоит запомнить."
+            },
+            {
+              "type": "заметка",
+              "content": "Редакционная заметка, контекст источника или короткое замечание."
+            },
+            {
+              "type": "контрольный список",
+              "caption": "Что покрыть",
+              "content": {
+                "items": [
+                  "Контекст",
+                  "Ключевая деталь",
+                  "Человеческий аспект",
+                  "Что изменится дальше"
+                ]
+              }
+            },
+            {
+              "type": "опрос",
+              "content": {
+                "question": "Что нам следует исследовать дальше?",
+                "options": [
+                  {
+                    "label": "Больше контекста",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Практическое руководство",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:56:36.886Z"
         }
       ],
       "reviews": [
@@ -16427,6 +16493,72 @@
           ],
           "updatedAt": "2026-08-31T09:36:46.224Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "Зображення завершено перед затвором - інтерв'ю з Roland M Schwerdtfeger",
+          "author": "EPRIS Journal",
+          "role": "Редакційна команда",
+          "date": "2 вересня 2026",
+          "excerpt": "Архітектурний фотограф Roland M Schwerdtfeger про планування зображення до його завершення перед підняттям камери, одноколірну ноту в чорно-білій рамці та чому бренд камери — неправильне питання.",
+          "category": "Фотографія",
+          "subcategory": "Матеріал",
+          "tags": [
+            "історія",
+            "культура",
+            "редакційний"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "текст",
+              "content": "Почніть із найсильнішої сцени, факту або спостереження. Тримайте цей перший блок коротким і конкретним."
+            },
+            {
+              "type": "зображення",
+              "content": "зображення-завершено-до-затвора-інтер-2",
+              "caption": "головне зображення"
+            },
+            {
+              "type": "цитата",
+              "content": "Додайте рядок, який варто запам'ятати тут."
+            },
+            {
+              "type": "примітка",
+              "content": "Редакційна примітка, контекст джерела або короткий відступ."
+            },
+            {
+              "type": "список перевірки",
+              "caption": "Що висвітлити",
+              "content": {
+                "items": [
+                  "Контекст",
+                  "Ключова деталь",
+                  "Людський аспект",
+                  "Що зміниться далі"
+                ]
+              }
+            },
+            {
+              "type": "опитування",
+              "content": {
+                "question": "Що нам слід дослідити далі?",
+                "options": [
+                  {
+                    "label": "Більше контексту",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Практичний посібник",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:56:41.508Z"
         }
       ],
       "reviews": [
@@ -21319,6 +21451,72 @@
           ],
           "updatedAt": "2026-08-31T09:38:05.878Z",
           "publishAt": "2026-08-31T09:33:28.075Z"
+        },
+        {
+          "id": 31,
+          "draft": true,
+          "title": "Das Bild ist fertig, bevor der Verschluss geschlossen wird - Interview mit Roland M Schwerdtfeger",
+          "author": "EPRIS Journal",
+          "role": "Redaktionsbüro",
+          "date": "2. September 2026",
+          "excerpt": "Architekturfotograf Roland M Schwerdtfeger über die Planung eines Bildes, bis es vor der Kamera fertig ist, die einfarbige Note in einem Schwarz-Weiß-Rahmen und warum die Kameramarke die falsche Frage ist.",
+          "category": "Fotografie",
+          "subcategory": "Beitrag",
+          "tags": [
+            "Geschichte",
+            "Kultur",
+            "Editorial"
+          ],
+          "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
+          "content": [
+            {
+              "type": "text",
+              "content": "Beginnen Sie mit der stärksten Szene, Tatsache oder Beobachtung. Halten Sie diesen ersten Block knapp und spezifisch."
+            },
+            {
+              "type": "image",
+              "content": "das-bild-ist-vor-dem-verschluss-zu-beenden-inter-2",
+              "caption": "Leitbild"
+            },
+            {
+              "type": "Zitat",
+              "content": "Fügen Sie hier eine Zeile hinzu, die es wert ist, erinnert zu werden."
+            },
+            {
+              "type": "notiz",
+              "content": "Redaktionelle Anmerkung, Quellenkontext oder kurzer Einschub."
+            },
+            {
+              "type": "Checkliste",
+              "caption": "Was zu behandeln ist",
+              "content": {
+                "items": [
+                  "Kontext",
+                  "Wichtiges Detail",
+                  "Menschlicher Blickwinkel",
+                  "Was ändert sich als nächstes"
+                ]
+              }
+            },
+            {
+              "type": "Umfrage",
+              "content": {
+                "question": "Was sollten wir als Nächstes erkunden?",
+                "options": [
+                  {
+                    "label": "Mehr Kontext",
+                    "votes": 0
+                  },
+                  {
+                    "label": "Praktischer Leitfaden",
+                    "votes": 0
+                  }
+                ]
+              }
+            }
+          ],
+          "updatedAt": "2026-09-02T06:56:46.263Z"
         }
       ],
       "reviews": [
