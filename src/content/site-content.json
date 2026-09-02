@@ -32474,69 +32474,290 @@
         },
         {
           "id": 31,
-          "draft": true,
-          "title": "Kare, deklanşör öncesi tamamlandı - Roland M Schwerdtfeger ile röportaj",
-          "author": "EPRIS Journal",
-          "role": "Editoryal Masası",
+          "draft": false,
+          "title": "Perde Çekmeden Önce Resim Tamamlandı - Roland M Schwerdtfeger ile röportaj",
+          "author": "Viacheslav Munister",
+          "role": "Yazar",
           "date": "2 Eylül 2026",
           "excerpt": "Mimari fotoğrafçı Roland M Schwerdtfeger, bir resmi kameranın çıkmadan önce planlaması, siyah-beyaz çerçevede tek renkli not ve neden kamera markasının yanlış soru olduğunu anlatıyor.",
           "category": "Fotoğrafçılık",
           "subcategory": "Özellik",
           "tags": [
-            "hikaye",
-            "kültür",
-            "editoryal"
+            "fotoğrafçılık",
+            "mimarlık",
+            "röportaj"
           ],
           "imageSeed": "the-picture-is-finished-before-the-shutter-inter",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtjqf3rhu6lzh3.webp",
           "content": [
             {
               "type": "text",
-              "content": "En güçlü sahne, gerçek veya gözlemlerle başlayın. Bu ilk bloğu sıkı ve spesifik tutun."
+              "content": "Roland M Schwerdtfeger binaları diğer insanların still life düzenler gibi fotoğraflar: çizgi, şekil, ışık, renk ve ritim olmayan her şeyi kaldırarak."
+            },
+            {
+              "type": "text",
+              "content": "Almanya merkezli ve 1x'de küratör olan, aldığı çoğu şeyi reddeden bir platform tarafından kabul edilen 442 görüntüsü var – ve toplamda üç red aldı. Araştırmadan önce çalışır ve konum ikinci sıradadır, sadece görüntü zaten kafasında mevcut olduktan sonra gelir. Takip eden, deklanşörden önce gerçekleşen süreçle ilgili bir sohbet ve çok sonra gerçekleşen kısmıyla ilgilidir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
-              "caption": "Başlık resmi"
+              "align": "center",
+              "width": 100,
+              "caption": "Kromatik Karşılaşma, Roland M Schwerdtfeger, 2026. La Defense, Almere, Hollanda"
+            },
+            {
+              "type": "header",
+              "content": "01 · Deklanşörden Önce",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Viacheslav Munister [VM]: Başlıklarınız ikiye bölünmüş: bazıları isimlerini korur ve kendileri kalır, Dreischeibenhaus veya Schwebebahn gibi; diğerleri kaybeder ve saf şekil haline gelir, Red Spiral veya Cubic VII gibi. Kamerayı kaldırdığınızda, bunun hangisi olacağını zaten biliyor musunuz?"
+            },
+            {
+              "type": "text",
+              "content": "Roland M Schwerdtfeger [RS]: Bu ilginç bir soru. Hayır, fotoğraf çekerken, sonunda hangi başlık altında yayınlanacağını henüz bilmiyorum – tüm post-prodüksiyon aşamaları tamamlandıktan sonra. Genellikle fotoğraf çektiğim yerleri çok detaylı hazırlarım. Etkileyici binalar tam anlamıyla bir kuruşluk değil ve önce ilginç konuları bulmalısınız. Konularımı genellikle çevrimiçi araştırma yaparak keşfederim, ayrıca 1X, Instagram'daki diğer fotoğrafçılardan ilham alırım, fotoğraf sergilerinde ve benzeri yerlerde."
+            },
+            {
+              "type": "text",
+              "content": "Sonra Google Haritalar'ı kontrol ederim, konumu, çevresini ve konunun yönünü belirlemek için. Işığın tam doğru olduğu anı seçmek önemlidir. Benim için planlama ve hazırlık kesinlikle vazgeçilmezdir. Görüntülerim genellikle aklımda şekillenir ve çoğu zaman zaten 'tamamlanmış' olur, hatta fotoğrafı çekmeden önce. Ama başlık bana sadece görüntü yayınlandığında gelir."
             },
             {
               "type": "quote",
-              "content": "Buraya hatırlanacak bir satır ekleyin."
+              "content": "Görüntülerim genellikle aklımda şekillenir ve çoğu zaman zaten 'tamamlanmış' olur, hatta fotoğrafı çekmeden önce."
             },
             {
-              "type": "note",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir ara. "
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqnd7cim5c7s.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Kentsel Çizgiler, Roland M Schwerdtfeger, 2026. Trivago Genel Merkezi, Düsseldorf"
             },
             {
-              "type": "checklist",
-              "caption": "Neleri kapsamalı",
-              "content": {
-                "items": [
-                  "Bağlam",
-                  "Ana detay",
-                  "İnsan açısı",
-                  "Sonraki değişiklikler"
-                ]
-              }
+              "type": "text",
+              "content": "VM: Bir sayı, tamamlanmamış bir seriyi ifade eder. Bir merdivene sayısını kazandıran nedir, onu bir dışa aktarım olmaktan çıkaran nedir ve spiral merdiven size ne verir ki bir cephe asla veremez?"
             },
             {
-              "type": "poll",
-              "content": {
-                "question": "Bir sonraki neyi keşfetmeliyiz?",
-                "options": [
-                  {
-                    "label": "Daha fazla bağlam",
-                    "votes": 0
-                  },
-                  {
-                    "label": "Pratik rehber",
-                    "votes": 0
-                  }
-                ]
-              }
+              "type": "text",
+              "content": "RS: İsimden sonraki sayı, genellikle aynı isimle birkaç görüntü olduğu için eklenmiştir, örneğin 'Merdiven' veya 'Pencere Kompozisyonu'. Sayı, bunları ayırt etmek için basitçe kullanılır; bir seriye atıfta bulunmaz. Konulara gelince, mimari fotoğrafçılığa olan tutkumda sadık kalırken, yeni binalar ve detaylar için sürekli araştırma içindeyim. Hem konuya hem de onun etkisine ilgim var: çizgiler, şekiller, ışık, renk ve ritim. Bazen tüm binalar, bazen bir merdiven, bazen bir cephe detayları."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpepeqboquo.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Merdiven, Roland M Schwerdtfeger, 2026. Glashaus Ofis binası, Krefeld"
+            },
+            {
+              "type": "header",
+              "content": "02 · Bir renk, ve nereye gider",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Bir izleyici 1x'te kırmızınızı Turner's kırmızı noktasına kıyasladı. Ona teşekkür ettiniz ama onun doğru olup olmadığını hiç söylemediniz. O doğru muydu, ve hiç çerçeveye girmesine izin vermediğiniz bir renk var mı?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Temelde doğru. Siyah-beyaz fotoğraflardaki renkli odak noktası yapısal bir amaca hizmet eder – gözü çeker, büyük ışık, gökyüzü veya manzara alanlarına karşılık sağlar ve böylece izleyicinin bakışını yönlendirebilir. Ancak, bu mutlaka bir nokta olmak zorunda değil; renk anahtarları, daha büyük alanlar olarak kullanıldığında, birçok görüntüyü daha çekici hale getirir. Ayrıca, kırmızı tek seçenek değildir. Turuncu, yeşil ve mavi de hoşuma gider – konuya bağlı olarak. Bir bina hiç renk sunmuyorsa, tek renkli bir tasvir genellikle daha iyidir, ancak ince, az belirgin ve doygun olmayan renkler de çok çekici olabilir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqp87h3zop02.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Panta Rhei, Roland M Schwerdtfeger, 2024. Ofis binası, Düsseldorf"
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpzgmjwque3.webp",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Tezatlar, Roland M Schwerdtfeger, 2025. Frankfurt/Main'daki yüksek binalar"
+            },
+            {
+              "type": "başlık",
+              "content": "03 · Mimarın binası, fotoğrafçının resmi",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "VM: Bir mimar, girilecek bir bina tasarlar; onu düz olarak gösterirsiniz, bazen soyutlama olarak. Birisi hiç, yaptığınız şeyle ilgili itiraz etti mi, yoksa teşekkür etti mi?"
+            },
+            {
+              "type": "metin",
+              "content": "RS: Şu ana kadar hiç itiraz olmadı. Sonuçta, sanatsal fotoğrafçılık belgelemek değil, soyutlamak ve estetiğin ön plana çıkmasını sağlamak içindir. Basitleştirme, perspektif ve kasıtlı post-prodüksiyon aracılığıyla, konuları fonksiyonel bağlamlarından çıkarıp, bağımsız bir güzel sanatlar fotoğrafı dünyasına dönüştürmeye çalışıyorum. İyi bir sanat fotoğrafı açıklamalı olmamalı, yorum için alan bırakmalı. Bu nedenle, görüntülerim, gördüklerimin ve hissettiklerimin bilinçli, estetik ve kişisel bir yorumudur."
+            },
+            {
+              "type": "text",
+              "content": "Benim için, fotoğrafçılık sadece bir hobi değil. Bu bir tatmin, bir yaşam felsefesi, iş-yaşam dengesi ve her şeyden önemlisi bir tutku. Bu, hayatımın vazgeçilmez bir parçası. Fotoğrafçılık bana neşe getirir. Bana göre, iyi bir fotoğraf net bir mesaj ileten ve izleyicinin duygularına hitap eden bir fotoğraftır. Tutkum sanat fotoğrafçılığına – sanatsal yönüne, sadece mantık ve belgeleme değil – yatıyor. Benim için, post-prodüksiyon, fotoğraf çekme eylemi kadar önemlidir."
+            },
+            {
+              "type": "text",
+              "content": "Araştırma genellikle başlangıç noktasıdır. Konuyu nasıl yakalamak istediğime dair net bir fikrim olana kadar mekâna gitmem. Bina doğası, nasıl göründüğü ve mimarın neyi ifade etmeye çalıştığı gibi. Fotoğraflara gelince, genellikle doğru yeri, doğru açıyı, doğru odak uzaklığını seçmek için bol zaman ayırırım. Ancak, genellikle konuyu çeşitli açılardan fotoğraflarım, hem genel sahneyi hem de ince detayları yakalarım. Bazen bir resim fikri bana sadece sonra gelir."
+            },
+            {
+              "type": "quote",
+              "content": "İyi bir sanat fotoğrafı açıklama yapmamalı, ama yoruma alan bırakmalıdır."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqqzs9l79rp.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Resme Bakarken, Roland M Schwerdtfeger, 2025. modern sanat müzesi, Münster"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpw8kp67wpw.webp",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Neuer Zollhof, Roland M Schwerdtfeger, 2025. Frank O. Gehry bina, Media Harbor, Düsseldorf"
+            },
+            {
+              "type": "başlık",
+              "content": "04 · İzin istemek",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "VM: Almanya'nın Panoramafreiheit'i sokakları kapsar, MAK merdivenleri gibi iç mekanları değil. İzin istemek için gerçek kuralınız nedir ve bu size hiç bir fotoğraf maliyetine mal oldu mu?"
+            },
+            {
+              "type": "metin",
+              "content": "RS: İç mekanlarda fotoğraf çekmek istediğimde, örneğin müzelerde, izin isterim. Bu genellikle sorun olmaz, özellikle de genellikle insanları tanınabilir şekilde fotoğraflamıyorum. Kamu binalarında da bu genellikle sorun değildir, örneğin şirket binalarına kıyasla. Orada, iç mekanlarda fotoğraf çekmek genellikle yasaktır. Ve evet, bu bazen bana ilginç bir fotoğraf kaybettirdi."
+            },
+            {
+              "type": "text",
+              "content": "Ancak, şu ana kadar hiçbir sorunum olmadı; nazikçe sorarsanız, genellikle dostane bir yanıt alırsınız. Dini yapılar veya özel koruma altındaki alanlar söz konusu olduğunda, önceden çevrimiçi olarak fotoğrafçılık izinleri hakkında bilgi edinebilir ve gerekirse e-posta ile başvurabilirsiniz. Şüphede kalırsanız, kural şudur: nazikçe sorun, fotoğrafların ticari olmayan kullanım için olduğunu belirtin ve ardından fotoğraf çekmek genellikle sorun olmaz."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqx8n5dvu2s.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "St. Rochus III, Roland M Schwerdtfeger, 2024. Düsseldorf'taki küçük bir kilise"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqu3k826uwn.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Natalini Kulesi, Roland M Schwerdtfeger, 2024. Hollanda, Roermond'taki geleneksel bina"
+            },
+            {
+              "type": "header",
+              "content": "05 · Perde Sonrası",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Bir görüntünün kapanış perdesi kapandıktan sonra ne kadar kısmı gerçekleşir? Çizgiyi adlandır: bir kareden asla çıkarmazdın ve ne düşünmeden gider?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Bu gerçekten çok değişiyor. Her görüntü Lightroom ve Photoshop'ta düzenlenir. Bazen sadece parlaklık ve gölgeleri ayarlarım, ama genellikle daha fazlasını yaparım: Gökyüzünü değiştirir ve dikkat dağıtıcı unsurları kaldırırım. Bazı durumlarda, sokak lambaları veya hatta insan gibi unsurlar eklerim. Ancak, ana konu her zaman en önemli unsur olarak kalır ve asla kaldırılmaz. AI kullanıyorum, ama öncelikle bireysel unsurları değiştirmek için; asla görüntünün tasarımcısı haline gelmez."
+            },
+            {
+              "type": "quote",
+              "content": "AI kullanıyorum, ama öncelikle bireysel unsurları değiştirmek için; asla görüntünün tasarımcısı haline gelmez."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqp50v9n2ouy.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pavyon, Roland M Schwerdtfeger, 2025. Porsche pavyonu, Volkswagen Autostadt, Wolfsburg"
+            },
+            {
+              "type": "header",
+              "content": "06 · Jüri",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: 1x, aldığı çoğu şeyi reddediyor; 442 kabul etti. Reddetmeler size ne öğretti ki, kabul etmeler asla öğretmedi ve jüri dürüstçe nasıl düzenlemenizi değiştiriyor mu?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Dürüst olmak gerekirse, şu ana kadar sadece üç red aldım, bu da beni çok mutlu ediyor. Bir küratör olarak, aynı zamanda birçok olumsuz örnek de görüyorum ve 1X'in çok yüksek standartlara sahip iyi küratörlü bir platform olmasıyla gurur duyuyorum. Ve hayır, jüri fotoğraflarımı düzenleme biçimimi değiştirmiyor; fotoğrafları tutku ile çeker ve düzenlerim, fırsatçılık değil. Bu nedenle, kabul edilmeyeceğini düşündüğüm hiçbir fotoğrafı göndermiyorum. Evde duvarlarda tek bir fotoğrafım yok. Sadece modern sanat asılı, fotoğrafçılık yok."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqpbjeby9vr5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Beyaz Bir Bulut, Roland M Schwerdtfeger, 2025. Modern Sanatlar Müzesi, Münster"
+            },
+            {
+              "type": "header",
+              "content": "07 · Birinin duvarındaki baskı",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Bir baskı, birinin duvarında fiziksel bir nesne haline gelir. Bu hareketle bir görüntü ne kazanır ve onu gerçekten birlikte yaşayanı nasıl hayal edersiniz?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Yüksek kaliteli bir çerçeve ve passe-partout ile yerleştirilmiş basılı bir fotoğraf, kendi başına bir nesne haline gelir ve ekran üzerindeki bir fotoğrafa kıyasla tamamen farklı bir anlam kazanır. Bu şekilde, görüntü bir sanat eseri statüsüne yükseltilebilir. Buna karşılık, ekran daha parlak ve renkler daha canlıdır. Fiziksel bir galeri veya sergi açılışı, çevrimiçi bir galeriye çok farklı bir atmosfer sağlar; izlenim ve deneyim tamamen farklıdır. Ve ikisinin de kendine ait bir yeri vardır."
+            },
+            {
+              "type": "text",
+              "content": "Duvarlarda fotoğraflarla kimleri hayal ediyorum? Bu kesinlikle birden fazla hedef kitleye hitap eder; mimari fotoğraflar söz konusu olduğunda, belki de gelenekçilerden çok modern, çağdaş iç mekanlara sahip insanlar. Tasarım meraklıları, nostaljikler değil. Evet, ekran üzerinde beni etkileyen fotoğraflar oldu, ancak baskı olarak görüldüğünde hayal kırıklığına uğradım. Baskının boyutu da bazen rol oynar. Boyutu arttıkça daha büyük etki yaratan fotoğraflar vardır. Zayıf fotoğraflar ise, büyük formatla gelişmez…"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq8wkgzubn1.webp",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Sluishuis, Roland M Schwerdtfeger, 2025. Amsterdam yakınlarındaki apartman binası, Hollanda"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq5t7g2zyfw.webp",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Zaandam Cepheleri, Roland M Schwerdtfeger, 2025. Zaandam, Kuzey Hollanda'daki binaların kompozisyonu"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtjqq2o4hgertf.webp",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Zaandam V, Roland M Schwerdtfeger, 2025. Zaandam, Kuzey Hollanda'daki otel"
+            },
+            {
+              "type": "başlık",
+              "content": "08 · İki geri alacaktı",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Yayınlanan 442 görüntüden, geri almak istediğiniz biri var mı ve sizinle ilgili en sık sorulan, başka kimsenin sormadığı soru nedir?"
+            },
+            {
+              "type": "text",
+              "content": "RS: Evet, bugün yayınlamayacağım iki fotoğraf var; maalesef, 1X'te silmeniz mümkün değil… Her zaman soruları yanıtlamaktan mutluyum ve bunlardan sıkılmam. Ancak bazen insanlar şöyle der: 'Fotoğraflarınız harika – hangi kamerayı kullanıyorsunuz?' Bu her zaman beni güldürür. Tabii ki, bir sistem kameraya ve doğru ekipmana ihtiyacınız var; sadece standart bir lensle birçok şeyi başaramazsınız. Ama sonunda, kameranın markası önemli değil. Bir fotoğraftan, hangi kamerayla çekildiğini söyleyemezsiniz."
+            },
+            {
+              "type": "quote",
+              "content": "Bir fotoğraftan, hangi kamerayla çekildiğini söyleyemezsiniz."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtjqqnxivdjz2h.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Portikus, Roland M Schwerdtfeger, 2025. Frankfurt/Main'deki küçük bir müze"
+            },
+            {
+              "type": "metin",
+              "content": "Roland M Schwerdtfeger'in çalışması 1x.com/rolandmschwerdtfeger adresinde ve Instagram'da @roland_m_schwerdtfeger hesabında görülebilir. Tüm görseller © Roland M Schwerdtfeger, sanatçının izniyle yayınlanmıştır."
             }
           ],
-          "updatedAt": "2026-09-02T07:11:58.291Z"
+          "updatedAt": "2026-09-02T07:48:55.809Z",
+          "authorId": "author-1784732936927-kw554"
         }
       ],
       "reviews": [
