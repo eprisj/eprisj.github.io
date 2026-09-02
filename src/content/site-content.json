@@ -21476,16 +21476,16 @@
             },
             {
               "type": "image",
-              "content": "das-bild-ist-vor-dem-verschluss-zu-beenden-inter-2",
+              "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
               "caption": "Leitbild"
             },
             {
-              "type": "Zitat",
+              "type": "quote",
               "content": "Fügen Sie hier eine Zeile hinzu, die es wert ist, erinnert zu werden."
             },
             {
-              "type": "notiz",
-              "content": "Redaktionelle Anmerkung, Quellenkontext oder kurzer Einschub."
+              "type": "note",
+              "content": "Redaktionshinweis, Quellkontext oder kurzer Einschub."
             },
             {
               "type": "Checkliste",
@@ -21516,7 +21516,7 @@
               }
             }
           ],
-          "updatedAt": "2026-09-02T06:56:46.263Z"
+          "updatedAt": "2026-09-02T07:11:48.059Z"
         }
       ],
       "reviews": [
@@ -26416,7 +26416,7 @@
           "title": "La Imagen Está Terminada Antes del Obturador - entrevista con Roland M Schwerdtfeger",
           "author": "EPRIS Journal",
           "role": "Mesa Editorial",
-          "date": "2 de sep. de 2026",
+          "date": "2 de sep de 2026",
           "excerpt": "El fotógrafo arquitectónico Roland M Schwerdtfeger sobre planificar una imagen hasta que esté terminada antes de que la cámara se levante, la nota de color único en un marco en blanco y negro, y por qué la marca de la cámara es la pregunta equivocada.",
           "category": "Fotografía",
           "subcategory": "Característica",
@@ -26430,16 +26430,16 @@
           "content": [
             {
               "type": "texto",
-              "content": "Comienza con la escena, hecho u observación más fuerte. Mantén este primer bloque compacto y específico."
+              "content": "Comience con la escena, hecho u observación más fuerte. Mantenga este primer bloque compacto y específico."
             },
             {
               "type": "imagen",
-              "content": "la-imagen-está-terminada-antes-del-obturador-inter-2",
-              "caption": "imagen principal"
+              "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
+              "caption": "Imagen principal"
             },
             {
               "type": "cita",
-              "content": "Agrega una línea que valga la pena recordar aquí."
+              "content": "Agregue una línea que valga la pena recordar aquí."
             },
             {
               "type": "nota",
@@ -26474,7 +26474,7 @@
               }
             }
           ],
-          "updatedAt": "2026-09-02T06:56:52.045Z"
+          "updatedAt": "2026-09-02T07:11:53.502Z"
         }
       ],
       "reviews": [
@@ -31370,7 +31370,7 @@
         {
           "id": 31,
           "draft": true,
-          "title": "Kare, Çekimden Önce Tamamlandı - Roland M Schwerdtfeger ile röportaj",
+          "title": "Kare, deklanşör öncesi tamamlandı - Roland M Schwerdtfeger ile röportaj",
           "author": "EPRIS Journal",
           "role": "Editoryal Masası",
           "date": "2 Eylül 2026",
@@ -31391,8 +31391,8 @@
             },
             {
               "type": "görüntü",
-              "content": "perde-öncesi-2-şekilde-bitmiş-resim",
-              "caption": "Öncü görüntü"
+              "content": "https://api.eprisjournal.com/uploads/mtjqlklceiuxh0.webp",
+              "caption": "Başlık resmi"
             },
             {
               "type": "alıntı",
@@ -31400,11 +31400,11 @@
             },
             {
               "type": "not",
-              "content": "Editoryal not, kaynak bağlamı veya kısa bir ara."
+              "content": "Editoryal not, kaynak bağlamı veya kısa bir ara. "
             },
             {
               "type": "kontrol listesi",
-              "caption": "Ne kapsamalı",
+              "caption": "Neleri kapsamalı",
               "content": {
                 "items": [
                   "Bağlam",
@@ -31431,7 +31431,7 @@
               }
             }
           ],
-          "updatedAt": "2026-09-02T06:56:57.078Z"
+          "updatedAt": "2026-09-02T07:11:58.291Z"
         }
       ],
       "reviews": [
