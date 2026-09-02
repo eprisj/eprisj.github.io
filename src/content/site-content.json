@@ -6583,8 +6583,8 @@
       "id": 31,
       "draft": true,
       "title": "The Picture Is Finished Before the Shutter - interview with Roland M Schwerdtfeger",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
+      "author": "Viacheslav Munister",
+      "role": "Author",
       "date": "Sep 2, 2026",
       "excerpt": "Architectural photographer Roland M Schwerdtfeger on planning a picture until it is finished before the camera comes up, the single coloured note in a black-and-white frame, and why the camera brand is the wrong question.",
       "category": "Photography",
@@ -6643,7 +6643,8 @@
           }
         }
       ],
-      "updatedAt": "2026-09-02T07:10:15.154Z"
+      "updatedAt": "2026-09-02T07:15:31.305Z",
+      "authorId": "author-1784732936927-kw554"
     }
   ],
   "reviews": [
