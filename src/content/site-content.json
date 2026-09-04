@@ -7735,21 +7735,25 @@
         },
         {
           "id": 26,
-          "title": "Поцелуй",
-          "subtitle": "Густав Климт · 1908 · масло и золотое листо на холсте",
+          "title": "Интерьер, Strandgade 30",
+          "subtitle": "Vilhelm Hammershøi · 1900 · масло на холсте",
           "fig": "PICS 018",
-          "description": "Золото проглатывает влюблённых целиком и оставляет только два лица и пару рук: Климт позволяет орнаменту выполнять работу, которую обычно выполняет анатомия.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "description": "Серая комната, закрытая дверь, женщина, которая не поднимает взгляд: Hammershøi пишет тишину между людьми и делает её предметом.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Поцелуй",
-          "homeSubtitle": "Густав Климт · 1908 · масло и золотое листо на холсте",
-          "homeDescription": "Золото проглатывает влюблённых целиком и оставляет только два лица и пару рук: Климт позволяет орнаменту выполнять работу, которую обычно выполняет анатомия.",
-          "homeCredit": "Бельведер, Вена",
+          "homeTitle": "Интерьер, Strandgade 30",
+          "homeSubtitle": "Vilhelm Hammershøi · 1900 · масло на холсте",
+          "homeDescription": "Серая комната, закрытая дверь, женщина, которая не поднимает взгляд: Hammershøi пишет тишину между людьми и делает её предметом.",
+          "homeCredit": "Общественное достояние",
           "picsId": "PICS-2026-018",
-          "updatedAt": "2026-09-04T14:42:02.337Z",
+          "updatedAt": "2026-09-04T15:00:06.023Z",
           "picsReleaseId": "PICS-WEEK-2026-002",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+              "replacedAt": "2026-09-04T14:55:00.000Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
@@ -13042,21 +13046,25 @@
         },
         {
           "id": 26,
-          "title": "Поцілунок",
-          "subtitle": "Gustav Klimt · 1908 · олія та позолота на полотні",
+          "title": "Інтер'єр, Strandgade 30",
+          "subtitle": "Vilhelm Hammershøi · 1900 · олія на полотні",
           "fig": "PICS 018",
-          "description": "Золото поглинає закоханих цілком і залишає лише два обличчя та пару рук: Klimt дозволяє орнаменту виконувати роботу, яку зазвичай виконує анатомія.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "description": "Сіра кімната, зачинені двері, жінка, яка не підніме погляд: Hammershøi малює мовчання між людьми і робить його темою.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Поцілунок",
-          "homeSubtitle": "Gustav Klimt · 1908 · олія та позолота на полотні",
-          "homeDescription": "Золото поглинає закоханих цілком і залишає лише два обличчя та пару рук: Klimt дозволяє орнаменту виконувати роботу, яку зазвичай виконує анатомія.",
-          "homeCredit": "Belvedere, Vienna",
+          "homeTitle": "Інтер'єр, Strandgade 30",
+          "homeSubtitle": "Vilhelm Hammershøi · 1900 · олія на полотні",
+          "homeDescription": "Сіра кімната, зачинені двері, жінка, яка не підніме погляд: Hammershøi малює мовчання між людьми і робить його темою.",
+          "homeCredit": "Публічний домен",
           "picsId": "PICS-2026-018",
-          "updatedAt": "2026-09-04T14:42:06.230Z",
+          "updatedAt": "2026-09-04T15:00:08.127Z",
           "picsReleaseId": "PICS-WEEK-2026-002",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+              "replacedAt": "2026-09-04T14:55:00.000Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
