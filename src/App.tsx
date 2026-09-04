@@ -45,6 +45,8 @@ import {
   getPicsId,
   isSectionEnabled,
   isSectionInNavigation,
+  generalArticles,
+  musicArticles,
   loadLiveContent,
   subscribeContent
 } from './data';
@@ -886,7 +888,7 @@ const staggerItem = {
 
 // Shared motion tokens so interactions read as one system.
 const EASE = [0.22, 1, 0.36, 1] as const;
-const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'museum', 'studio', 'radio', 'podcasts', 'passport'];
+const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'design', 'museum', 'studio', 'radio', 'podcasts', 'passport'];
 /* Route transitions run in mode="wait", so the old page leaves BEFORE the new
    one arrives and the two durations add up. Symmetrical timings therefore read
    as a lag, not as grace: the eye is waiting on nothing for the whole exit.
@@ -998,6 +1000,9 @@ function NavBar({
   const tabs: { id: VisibilitySectionKey; label: string }[] = [
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
+    // Literal like Design above: the label is a proper noun in every locale
+    // the journal publishes in, so it needs no translation key.
+    { id: 'music', label: 'Music' },
     { id: 'about', label: t('nav.about') },
     { id: 'manifest', label: t('nav.manifest') },
     { id: 'issue', label: t('nav.issue') },
@@ -3816,8 +3821,8 @@ function SearchResults({
 }
 
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
-const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
+const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -3941,6 +3946,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
   articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
   reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
+  music: { title: 'Music — EPRIS Journal', description: 'Interviews and conversations with musicians and artists, on the work, the craft and the culture around it.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
   manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
@@ -4719,7 +4725,8 @@ export default function App() {
                     </SafePart>
                   ))}</>
                 )}
-                {activeTab === 'articles' && <ArticlesSection articles={articles} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                {activeTab === 'articles' && <ArticlesSection articles={generalArticles(articles)} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
+                {activeTab === 'music' && <ArticlesSection articles={musicArticles(articles)} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
                     {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
