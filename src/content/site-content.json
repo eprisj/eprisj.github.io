@@ -7777,6 +7777,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 29,
+          "title": "Earthrise",
+          "subtitle": "William Anders · 1968 · Apollo 8",
+          "fig": "PICS 021",
+          "description": "Команда, отправленная фотографировать Луну, повернула камеру: полученная фотография сделала больше для того, как мы видим эту планету, чем любая карта, когда-либо созданная.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "photography",
+          "homeTitle": "Earthrise",
+          "homeSubtitle": "William Anders · 1968 · Apollo 8",
+          "homeDescription": "Команда, отправленная фотографировать Луну, повернула камеру: полученная фотография сделала больше для того, как мы видим эту планету, чем любая карта, когда-либо созданная.",
+          "homeCredit": "NASA",
+          "picsId": "PICS-2026-021",
+          "updatedAt": "2026-09-04T14:43:21.483Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -13031,6 +13054,52 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "Лампа настільна з Вікторіанською глітерою",
+          "subtitle": "Clara Driscoll для Tiffany Studios · c. 1901 · вітражне скло та бронза",
+          "fig": "PICS 020",
+          "description": "Майже дві тисячі вирізаних шматків скла висіють як квіти без обідка, щоб їх утримувати: Driscoll зробила світло самим квітучим елементом.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Лампа настільна з Вікторіанською глітерою",
+          "homeSubtitle": "Clara Driscoll для Tiffany Studios · c. 1901 · вітражне скло та бронза",
+          "homeDescription": "Майже дві тисячі вирізаних шматків скла висіють як квіти без обідка, щоб їх утримувати: Driscoll зробила світло самим квітучим елементом.",
+          "homeCredit": "Музей мистецтв Cleveland",
+          "picsId": "PICS-2026-020",
+          "updatedAt": "2026-09-04T14:42:53.047Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "title": "Земляна сходина",
+          "subtitle": "William Anders · 1968 · Apollo 8",
+          "fig": "PICS 021",
+          "description": "Екіпаж, посланий фотографувати Місяць, повернув камеру: зображення, яке вийшло, зробило більше для нашого сприйняття цієї планети, ніж будь-яка карта, коли-небудь намальована.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "photography",
+          "homeTitle": "Земляна сходина",
+          "homeSubtitle": "William Anders · 1968 · Apollo 8",
+          "homeDescription": "Екіпаж, посланий фотографувати Місяць, повернув камеру: зображення, яке вийшло, зробило більше для нашого сприйняття цієї планети, ніж будь-яка карта, коли-небудь намальована.",
+          "homeCredit": "NASA",
+          "picsId": "PICS-2026-021",
+          "updatedAt": "2026-09-04T14:43:24.757Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
@@ -18291,6 +18360,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 28,
+          "title": "Wisteria Tischlampe",
+          "subtitle": "Clara Driscoll für Tiffany Studios · ca. 1901 · Buntglas und Bronze",
+          "fig": "PICS 020",
+          "description": "Fast zweitausend geschnittene Glasscheiben hängen als Blüten ohne Rand, um sie zu enthalten: Driscoll machte das Licht selbst zum blühenden Teil.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Wisteria Tischlampe",
+          "homeSubtitle": "Clara Driscoll für Tiffany Studios · ca. 1901 · Buntglas und Bronze",
+          "homeDescription": "Fast zweitausend geschnittene Glasscheiben hängen als Blüten ohne Rand, um sie zu enthalten: Driscoll machte das Licht selbst zum blühenden Teil.",
+          "homeCredit": "Cleveland Museum of Art",
+          "picsId": "PICS-2026-020",
+          "updatedAt": "2026-09-04T14:42:57.560Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -23545,6 +23637,29 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "Lámpara de mesa Wisteria",
+          "subtitle": "Clara Driscoll para Tiffany Studios · c. 1901 · vidrio emplomado y bronce",
+          "fig": "PICS 020",
+          "description": "Casi dos mil piezas de vidrio cortado cuelgan como flores sin borde que las contenga: Driscoll convirtió la luz en la parte floreciente.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Lámpara de mesa Wisteria",
+          "homeSubtitle": "Clara Driscoll para Tiffany Studios · c. 1901 · vidrio emplomado y bronce",
+          "homeDescription": "Casi dos mil piezas de vidrio cortado cuelgan como flores sin borde que las contenga: Driscoll convirtió la luz en la parte floreciente.",
+          "homeCredit": "Museo de Arte de Cleveland",
+          "picsId": "PICS-2026-020",
+          "updatedAt": "2026-09-04T14:43:00.539Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
@@ -28804,6 +28919,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 28,
+          "title": "Wisteria Masa Lambası",
+          "subtitle": "Clara Driscoll for Tiffany Studios · c. 1901 · kurşunlu cam ve bronz",
+          "fig": "PICS 020",
+          "description": "Neredeyse iki bin kesme cam parçası, onları tutacak bir kenarı olmadan çiçekler gibi asılı duruyor: Driscoll, ışığı kendisi çiçeklenmiş kısmı yaptı.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Wisteria Masa Lambası",
+          "homeSubtitle": "Clara Driscoll for Tiffany Studios · c. 1901 · kurşunlu cam ve bronz",
+          "homeDescription": "Neredeyse iki bin kesme cam parçası, onları tutacak bir kenarı olmadan çiçekler gibi asılı duruyor: Driscoll, ışığı kendisi çiçeklenmiş kısmı yaptı.",
+          "homeCredit": "Cleveland Sanat Müzesi",
+          "picsId": "PICS-2026-020",
+          "updatedAt": "2026-09-04T14:43:15.812Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -34057,6 +34195,29 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "Lampada da tavolo Wisteria",
+          "subtitle": "Clara Driscoll per Tiffany Studios · c. 1901 · vetro smaltato e bronzo",
+          "fig": "PICS 020",
+          "description": "Quasi duemila pezzi di vetro tagliato pendono come fiori senza un bordo che li contenga: Driscoll ha fatto della luce stessa la parte fiorita.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "design",
+          "homeTitle": "Lampada da tavolo Wisteria",
+          "homeSubtitle": "Clara Driscoll per Tiffany Studios · c. 1901 · vetro smaltato e bronzo",
+          "homeDescription": "Quasi duemila pezzi di vetro tagliato pendono come fiori senza un bordo che li contenga: Driscoll ha fatto della luce stessa la parte fiorita.",
+          "homeCredit": "Cleveland Museum of Art",
+          "picsId": "PICS-2026-020",
+          "updatedAt": "2026-09-04T14:43:18.108Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
