@@ -44,8 +44,17 @@ const SUPPORT_METHODS: { label: string; value: string; note?: string; icon: type
    картинкой — так ссылку видно прямо в коде и легко сменить одной строкой. */
 const PAYPAL_QR_TARGET = 'https://www.paypal.com/qrcodes/p2pqrc/UW4J64QUNFVUQ';
 
-export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string; className?: string }) {
-  const [open, setOpen] = useState(false);
+export function SupportJournal({
+  lang = 'EN',
+  className = '',
+  /* Формы анкет — единственное место, где читатель уже что-то отдал (полчаса
+     на ответы) и стоит на пороге ухода со страницы: тут уместно не тихое
+     подножие статьи, а заметный блок, раскрытый сразу, без клика «Support
+     the journal» вслепую. Остальные места (статьи, обзоры) вызывают
+     компонент без этого свойства и остаются как были. */
+  emphasized = false,
+}: { lang?: string; className?: string; emphasized?: boolean }) {
+  const [open, setOpen] = useState(emphasized);
   const [copied, setCopied] = useState('');
   const [qrOpen, setQrOpen] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
@@ -82,23 +91,46 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
   }, []);
 
   return (
-    <aside className={`border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-7 ${className}`}>
+    <aside
+      className={
+        emphasized
+          ? `rounded-3xl border-2 border-[rgb(var(--c-gold-rgb)_/_0.35)] bg-[rgb(var(--c-gold-rgb)_/_0.07)] px-6 py-8 sm:px-9 sm:py-9 ${className}`
+          : `border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-7 ${className}`
+      }
+    >
       {/* Раньше кнопка была единственным сигналом - гость мог её не заметить,
           прочитав только заголовок иконки. Строка приглашения теперь видна
           всегда, не только при разворачивании, и говорит не «мы бесплатны»
           (оправдание перед незаданным вопросом), а прямое, тёплое приглашение. */}
-      <p className="max-w-md font-serif text-[15px] italic leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)]">{t.lead}</p>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="group mt-4 inline-flex items-center gap-3 rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.4)] bg-[rgb(var(--c-gold-rgb)_/_0.12)] py-3 pl-[18px] pr-6 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_1px_2px_rgb(var(--c-gold-rgb)_/_0.15)] transition-all hover:-translate-y-px hover:border-[var(--c-gold)] hover:bg-[rgb(var(--c-gold-rgb)_/_0.22)] hover:shadow-[0_4px_14px_rgb(var(--c-gold-rgb)_/_0.3)]"
+      <p
+        className={
+          emphasized
+            ? 'max-w-md font-serif text-[19px] font-medium leading-snug text-[var(--c-accent)]'
+            : 'max-w-md font-serif text-[15px] italic leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)]'
+        }
       >
-        <span aria-hidden="true" className="animate-[pulse_2.4s_ease-in-out_infinite] text-[16px] leading-none text-[var(--c-gold)]">♥</span>
-        {open ? t.hide : t.show}
-      </button>
+        {t.lead}
+      </p>
+      {!emphasized && (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="group mt-4 inline-flex items-center gap-3 rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.4)] bg-[rgb(var(--c-gold-rgb)_/_0.12)] py-3 pl-[18px] pr-6 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--c-accent)] shadow-[0_1px_2px_rgb(var(--c-gold-rgb)_/_0.15)] transition-all hover:-translate-y-px hover:border-[var(--c-gold)] hover:bg-[rgb(var(--c-gold-rgb)_/_0.22)] hover:shadow-[0_4px_14px_rgb(var(--c-gold-rgb)_/_0.3)]"
+        >
+          <span aria-hidden="true" className="animate-[pulse_2.4s_ease-in-out_infinite] text-[16px] leading-none text-[var(--c-gold)]">♥</span>
+          {open ? t.hide : t.show}
+        </button>
+      )}
       {open && (
         <div className="mt-5 max-w-md">
-          <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
+          {emphasized ? (
+            <span className="inline-flex items-center gap-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--c-gold-rgb))]">
+              <span aria-hidden="true" className="animate-[pulse_2.4s_ease-in-out_infinite] text-[18px] leading-none">♥</span>
+              {t.invite}
+            </span>
+          ) : (
+            <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
+          )}
           {/* grid без явных колонок берёт auto-track, который сайзится по
               max-content детей - длинный IBAN внутри карточки растягивал
               трек шире родителя (max-w-md), и панель на телефоне вылезала
