@@ -93,7 +93,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       className={`rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-5 py-5 sm:px-6 sm:py-5 ${className}`}
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[30ch] font-serif text-[14.5px] italic leading-snug text-[rgb(var(--c-accent-rgb)_/_0.78)]">
+        <p className="max-w-[32ch] font-serif text-[19px] font-semibold italic leading-snug text-[var(--c-accent)]">
           {t.lead}
         </p>
         {/* Три узкие плашки в ряд вместо трёх карточек в столбик — тот самый
