@@ -7708,6 +7708,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 26,
+          "title": "Поцелуй",
+          "subtitle": "Густав Климт · 1908 · масло и золотое листо на холсте",
+          "fig": "PICS 018",
+          "description": "Золото проглатывает влюблённых целиком и оставляет только два лица и пару рук: Климт позволяет орнаменту выполнять работу, которую обычно выполняет анатомия.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Поцелуй",
+          "homeSubtitle": "Густав Климт · 1908 · масло и золотое листо на холсте",
+          "homeDescription": "Золото проглатывает влюблённых целиком и оставляет только два лица и пару рук: Климт позволяет орнаменту выполнять работу, которую обычно выполняет анатомия.",
+          "homeCredit": "Бельведер, Вена",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:02.337Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -12916,6 +12939,29 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "Поцілунок",
+          "subtitle": "Gustav Klimt · 1908 · олія та позолота на полотні",
+          "fig": "PICS 018",
+          "description": "Золото поглинає закоханих цілком і залишає лише два обличчя та пару рук: Klimt дозволяє орнаменту виконувати роботу, яку зазвичай виконує анатомія.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Поцілунок",
+          "homeSubtitle": "Gustav Klimt · 1908 · олія та позолота на полотні",
+          "homeDescription": "Золото поглинає закоханих цілком і залишає лише два обличчя та пару рук: Klimt дозволяє орнаменту виконувати роботу, яку зазвичай виконує анатомія.",
+          "homeCredit": "Belvedere, Vienna",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:06.230Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
@@ -33738,6 +33784,29 @@
           "subtitle": "Intervista",
           "description": "Matej Petrić e Antonio Šeparović su come trasformare un normale magnete per il frigorifero in l'ingresso alle proprie foto di viaggio, perché nessuno vuole davvero comprare tecnologia NFC, e cosa ci è voluto per mettere un'incisore laser in una startup nata come due amici e un terzo caffè a Zagreb.",
           "updatedAt": "2026-08-25T21:38:15.000Z"
+        },
+        {
+          "id": 25,
+          "title": "Victory alata di Samotracia",
+          "subtitle": "Scultore greco sconosciuto · ca. 190 a.C. · marmo pario",
+          "fig": "PICS 017",
+          "description": "Velo bagnato schiacciato contro un corpo rinforzato nel vento di mare: duemila anni dopo, senza testa, la figura si legge ancora come puro movimento in avanti.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22pjiamgxfl.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "Victory alata di Samotracia",
+          "homeSubtitle": "Scultore greco sconosciuto · ca. 190 a.C. · marmo pario",
+          "homeDescription": "Velo bagnato schiacciato contro un corpo rinforzato nel vento di mare: duemila anni dopo, senza testa, la figura si legge ancora come puro movimento in avanti.",
+          "homeCredit": "Musée du Louvre",
+          "picsId": "PICS-2026-017",
+          "updatedAt": "2026-09-04T14:41:58.920Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
