@@ -2365,88 +2365,118 @@
     },
     {
       "id": 25,
-      "title": "The Walking Man",
-      "subtitle": "Auguste Rodin · 1907 · bronze",
+      "title": "Winged Victory of Samothrace",
+      "subtitle": "Unknown Greek sculptor · c. 190 BC · Parian marble",
       "fig": "PICS 017",
-      "description": "No head, no arms, just a torso mid-stride: Rodin strips the figure down to the one gesture that matters and calls it finished.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+      "description": "Wet drapery pressed flat against a body braced into sea wind: two thousand years on, headless, the figure still reads as pure forward motion.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn22pjiamgxfl.jpg",
       "picsOfWeek": true,
       "homeCategory": "sculpture",
-      "homeTitle": "The Walking Man",
-      "homeSubtitle": "Auguste Rodin · 1907 · bronze",
-      "homeDescription": "No head, no arms, just a torso mid-stride: Rodin strips the figure down to the one gesture that matters and calls it finished.",
-      "homeCredit": "Art Institute of Chicago",
+      "homeTitle": "Winged Victory of Samothrace",
+      "homeSubtitle": "Unknown Greek sculptor · c. 190 BC · Parian marble",
+      "homeDescription": "Wet drapery pressed flat against a body braced into sea wind: two thousand years on, headless, the figure still reads as pure forward motion.",
+      "homeCredit": "Musée du Louvre",
       "picsId": "PICS-2026-017",
-      "updatedAt": "2026-09-04T00:00:00.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-002"
+      "updatedAt": "2026-09-04T14:40:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002",
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+          "replacedAt": "2026-09-04T14:40:00.000Z"
+        }
+      ]
     },
     {
       "id": 26,
-      "title": "Improvisation No. 30 (Cannons)",
-      "subtitle": "Wassily Kandinsky · 1913 · oil on canvas",
+      "title": "The Kiss",
+      "subtitle": "Gustav Klimt · 1908 · oil and gold leaf on canvas",
       "fig": "PICS 018",
-      "description": "Cannons dissolve into color the moment you look for them: Kandinsky paints a war he refuses to picture literally.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+      "description": "Gold swallows the lovers whole and leaves only two faces and a pair of hands: Klimt lets ornament do the work that anatomy usually does.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
       "picsOfWeek": true,
       "homeCategory": "painting",
-      "homeTitle": "Improvisation No. 30 (Cannons)",
-      "homeSubtitle": "Wassily Kandinsky · 1913 · oil on canvas",
-      "homeDescription": "Cannons dissolve into color the moment you look for them: Kandinsky paints a war he refuses to picture literally.",
-      "homeCredit": "Art Institute of Chicago",
+      "homeTitle": "The Kiss",
+      "homeSubtitle": "Gustav Klimt · 1908 · oil and gold leaf on canvas",
+      "homeDescription": "Gold swallows the lovers whole and leaves only two faces and a pair of hands: Klimt lets ornament do the work that anatomy usually does.",
+      "homeCredit": "Belvedere, Vienna",
       "picsId": "PICS-2026-018",
-      "updatedAt": "2026-09-04T00:00:00.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-002"
+      "updatedAt": "2026-09-04T14:40:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002",
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+          "replacedAt": "2026-09-04T14:40:00.000Z"
+        }
+      ]
     },
     {
       "id": 27,
-      "title": "Church of the Light",
-      "subtitle": "Tadao Ando · 1989 · Ibaraki",
+      "title": "Sagrada Família, nave vault",
+      "subtitle": "Antoni Gaudí · begun 1882 · Barcelona",
       "fig": "PICS 019",
-      "description": "A cross cut straight through concrete lets the wall itself become the window: Ando turns darkness into the material that makes the light visible.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+      "description": "Columns branch overhead into a stone canopy: Gaudí builds a forest first and calls the result a ceiling second.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn22rvd0vritg.jpg",
       "picsOfWeek": true,
       "homeCategory": "architecture",
-      "homeTitle": "Church of the Light",
-      "homeSubtitle": "Tadao Ando · 1989 · Ibaraki",
-      "homeDescription": "A cross cut straight through concrete lets the wall itself become the window: Ando turns darkness into the material that makes the light visible.",
-      "homeCredit": "Photo: Chun-Hung Eric Cheng, CC BY 2.0",
+      "homeTitle": "Sagrada Família, nave vault",
+      "homeSubtitle": "Antoni Gaudí · begun 1882 · Barcelona",
+      "homeDescription": "Columns branch overhead into a stone canopy: Gaudí builds a forest first and calls the result a ceiling second.",
+      "homeCredit": "Photo: SBA73, CC BY-SA 2.0",
       "picsId": "PICS-2026-019",
-      "updatedAt": "2026-09-04T00:00:00.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-002"
+      "updatedAt": "2026-09-04T14:40:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002",
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+          "replacedAt": "2026-09-04T14:40:00.000Z"
+        }
+      ]
     },
     {
       "id": 28,
-      "title": "Side Chair",
-      "subtitle": "Michael Thonet · 1859 · bentwood",
+      "title": "Wisteria Table Lamp",
+      "subtitle": "Clara Driscoll for Tiffany Studios · c. 1901 · leaded glass and bronze",
       "fig": "PICS 020",
-      "description": "Steam bent the wood into curves a saw could never cut: Thonet turned a factory process into a shape everyone now recognizes.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+      "description": "Almost two thousand cut pieces of glass hang as blossoms with no rim to contain them: Driscoll made light itself the flowering part.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
       "picsOfWeek": true,
       "homeCategory": "design",
-      "homeTitle": "Side Chair",
-      "homeSubtitle": "Michael Thonet · 1859 · bentwood",
-      "homeDescription": "Steam bent the wood into curves a saw could never cut: Thonet turned a factory process into a shape everyone now recognizes.",
-      "homeCredit": "Art Institute of Chicago",
+      "homeTitle": "Wisteria Table Lamp",
+      "homeSubtitle": "Clara Driscoll for Tiffany Studios · c. 1901 · leaded glass and bronze",
+      "homeDescription": "Almost two thousand cut pieces of glass hang as blossoms with no rim to contain them: Driscoll made light itself the flowering part.",
+      "homeCredit": "Cleveland Museum of Art",
       "picsId": "PICS-2026-020",
-      "updatedAt": "2026-09-04T00:00:00.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-002"
+      "updatedAt": "2026-09-04T14:40:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002",
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+          "replacedAt": "2026-09-04T14:40:00.000Z"
+        }
+      ]
     },
     {
       "id": 29,
-      "title": "Migrant Mother",
-      "subtitle": "Dorothea Lange · 1936 · gelatin silver print",
+      "title": "Earthrise",
+      "subtitle": "William Anders · 1968 · Apollo 8",
       "fig": "PICS 021",
-      "description": "She looks past the camera, not into it: Lange finds the whole Depression in one woman's face and two children turned away from the lens.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
+      "description": "A crew sent to photograph the Moon turned the camera around: the picture that resulted did more for how we see this planet than any map ever drew.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
       "picsOfWeek": true,
       "homeCategory": "photography",
-      "homeTitle": "Migrant Mother",
-      "homeSubtitle": "Dorothea Lange · 1936 · gelatin silver print",
-      "homeDescription": "She looks past the camera, not into it: Lange finds the whole Depression in one woman's face and two children turned away from the lens.",
-      "homeCredit": "Library of Congress",
+      "homeTitle": "Earthrise",
+      "homeSubtitle": "William Anders · 1968 · Apollo 8",
+      "homeDescription": "A crew sent to photograph the Moon turned the camera around: the picture that resulted did more for how we see this planet than any map ever drew.",
+      "homeCredit": "NASA",
       "picsId": "PICS-2026-021",
-      "updatedAt": "2026-09-04T00:00:00.000Z",
-      "picsReleaseId": "PICS-WEEK-2026-002"
+      "updatedAt": "2026-09-04T14:40:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002",
+      "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
+          "replacedAt": "2026-09-04T14:40:00.000Z"
+        }
+      ]
     }
   ],
   "articles": [
