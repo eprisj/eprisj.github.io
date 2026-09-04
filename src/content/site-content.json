@@ -2362,6 +2362,91 @@
       "articleId": 27,
       "draft": false,
       "updatedAt": "2026-08-25T21:32:49.000Z"
+    },
+    {
+      "id": 25,
+      "title": "The Walking Man",
+      "subtitle": "Auguste Rodin · 1907 · bronze",
+      "fig": "PICS 017",
+      "description": "No head, no arms, just a torso mid-stride: Rodin strips the figure down to the one gesture that matters and calls it finished.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "sculpture",
+      "homeTitle": "The Walking Man",
+      "homeSubtitle": "Auguste Rodin · 1907 · bronze",
+      "homeDescription": "No head, no arms, just a torso mid-stride: Rodin strips the figure down to the one gesture that matters and calls it finished.",
+      "homeCredit": "Art Institute of Chicago",
+      "picsId": "PICS-2026-017",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002"
+    },
+    {
+      "id": 26,
+      "title": "Improvisation No. 30 (Cannons)",
+      "subtitle": "Wassily Kandinsky · 1913 · oil on canvas",
+      "fig": "PICS 018",
+      "description": "Cannons dissolve into color the moment you look for them: Kandinsky paints a war he refuses to picture literally.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "painting",
+      "homeTitle": "Improvisation No. 30 (Cannons)",
+      "homeSubtitle": "Wassily Kandinsky · 1913 · oil on canvas",
+      "homeDescription": "Cannons dissolve into color the moment you look for them: Kandinsky paints a war he refuses to picture literally.",
+      "homeCredit": "Art Institute of Chicago",
+      "picsId": "PICS-2026-018",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002"
+    },
+    {
+      "id": 27,
+      "title": "Church of the Light",
+      "subtitle": "Tadao Ando · 1989 · Ibaraki",
+      "fig": "PICS 019",
+      "description": "A cross cut straight through concrete lets the wall itself become the window: Ando turns darkness into the material that makes the light visible.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wwke5r4fm1.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "architecture",
+      "homeTitle": "Church of the Light",
+      "homeSubtitle": "Tadao Ando · 1989 · Ibaraki",
+      "homeDescription": "A cross cut straight through concrete lets the wall itself become the window: Ando turns darkness into the material that makes the light visible.",
+      "homeCredit": "Photo: Chun-Hung Eric Cheng, CC BY 2.0",
+      "picsId": "PICS-2026-019",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002"
+    },
+    {
+      "id": 28,
+      "title": "Side Chair",
+      "subtitle": "Michael Thonet · 1859 · bentwood",
+      "fig": "PICS 020",
+      "description": "Steam bent the wood into curves a saw could never cut: Thonet turned a factory process into a shape everyone now recognizes.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "design",
+      "homeTitle": "Side Chair",
+      "homeSubtitle": "Michael Thonet · 1859 · bentwood",
+      "homeDescription": "Steam bent the wood into curves a saw could never cut: Thonet turned a factory process into a shape everyone now recognizes.",
+      "homeCredit": "Art Institute of Chicago",
+      "picsId": "PICS-2026-020",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002"
+    },
+    {
+      "id": 29,
+      "title": "Migrant Mother",
+      "subtitle": "Dorothea Lange · 1936 · gelatin silver print",
+      "fig": "PICS 021",
+      "description": "She looks past the camera, not into it: Lange finds the whole Depression in one woman's face and two children turned away from the lens.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "photography",
+      "homeTitle": "Migrant Mother",
+      "homeSubtitle": "Dorothea Lange · 1936 · gelatin silver print",
+      "homeDescription": "She looks past the camera, not into it: Lange finds the whole Depression in one woman's face and two children turned away from the lens.",
+      "homeCredit": "Library of Congress",
+      "picsId": "PICS-2026-021",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-002"
     }
   ],
   "articles": [
@@ -38883,7 +38968,7 @@
           "status": "published",
           "createdAt": "2026-08-11T13:24:50.299Z",
           "publishedAt": "2026-08-11T13:24:50.299Z",
-          "publicArchive": false,
+          "publicArchive": true,
           "picsIds": [
             "PICS-2026-012",
             "PICS-2026-013",
@@ -38891,9 +38976,24 @@
             "PICS-2026-015",
             "PICS-2026-016"
           ]
+        },
+        {
+          "id": "PICS-WEEK-2026-002",
+          "label": "Pics of the week · 4 вер. 2026 г.",
+          "status": "published",
+          "createdAt": "2026-09-04T00:00:00.000Z",
+          "publishedAt": "2026-09-04T00:00:00.000Z",
+          "publicArchive": true,
+          "picsIds": [
+            "PICS-2026-017",
+            "PICS-2026-018",
+            "PICS-2026-019",
+            "PICS-2026-020",
+            "PICS-2026-021"
+          ]
         }
       ],
-      "activeReleaseId": "PICS-WEEK-2026-001",
+      "activeReleaseId": "PICS-WEEK-2026-002",
       "centerCategory": "painting",
       "pastReleasesPublic": false
     },
