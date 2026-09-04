@@ -283,7 +283,9 @@
       "homepage.articlesDescription": "The latest writing from the journal, newest first.",
       "articles.readPreview": "Read preview",
       "articles.readFull": "Read full article",
-      "articles.closePreview": "Close preview"
+      "articles.closePreview": "Close preview",
+      "about.team.author-1788563282904-7a43p.role": "Director of Communications (USA)",
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov is EPRIS Journal's Director of Communications and the magazine's representative for the United States and Western Europe. He builds relationships with partners, institutions and contributors across those regions, connecting EPRIS to the people and stories that shape its international voice."
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -568,7 +570,9 @@
       "homepage.articlesDescription": "Последние материалы журнала, самые новые первыми.",
       "articles.readPreview": "Читать предварительный просмотр",
       "articles.readFull": "Читать полную статью",
-      "articles.closePreview": "Закрыть предварительный просмотр"
+      "articles.closePreview": "Закрыть предварительный просмотр",
+      "about.team.author-1788563282904-7a43p.role": "Директор по коммуникациям (США)",
+      "about.team.author-1788563282904-7a43p.bio": "Эдвард Нестеров — директор по коммуникациям журнала EPRIS и представитель журнала для Соединённых Штатов и Западной Европы. Он устанавливает отношения с партнёрами, учреждениями и участниками из этих регионов, связывая EPRIS с людьми и историями, формирующими его международный голос."
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -853,7 +857,9 @@
       "homepage.articlesDescription": "Останні публікації журналу, найновіші першими.",
       "articles.readPreview": "Читати попередній перегляд",
       "articles.readFull": "Читати повну статтю",
-      "articles.closePreview": "Закрити попередній перегляд"
+      "articles.closePreview": "Закрити попередній перегляд",
+      "about.team.author-1788563282904-7a43p.role": "Директор з комунікацій (США)",
+      "about.team.author-1788563282904-7a43p.bio": "Едвард Нестеров є директором з комунікацій журналу EPRIS та представником журналу для Сполучених Штатів та Західної Європи. Він налагоджує стосунки з партнерами, установами та авторами з цих регіонів, зв’язуючи EPRIS з людьми та історіями, які формують його міжнародний голос."
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -1138,7 +1144,9 @@
       "homepage.articlesDescription": "Derginin en yeni yazısı, en yenisi ilk sırada.",
       "articles.readPreview": "Önizlemeyi oku",
       "articles.readFull": "Tam makaleyi oku",
-      "articles.closePreview": "Önizlemeyi kapat"
+      "articles.closePreview": "Önizlemeyi kapat",
+      "about.team.author-1788563282904-7a43p.role": "İletişim Direktörü (ABD)",
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov, EPRIS Dergisi'nin İletişim Direktörü ve derginin Amerika Birleşik Devletleri ile Batı Avrupa temsilcisidir. O, bu bölgelerdeki ortaklar, kurumlar ve katkıda bulunanlarla ilişkiler kurar, EPRIS'i uluslararası sesini şekillendiren insanlar ve hikayelerle bağlar."
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1423,7 +1431,9 @@
       "homepage.articlesDescription": "Die neuesten Beiträge der Zeitschrift, neueste zuerst.",
       "articles.readPreview": "Vorschau lesen",
       "articles.readFull": "Vollständigen Artikel lesen",
-      "articles.closePreview": "Vorschau schließen"
+      "articles.closePreview": "Vorschau schließen",
+      "about.team.author-1788563282904-7a43p.role": "Leiter der Kommunikation (USA)",
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov ist der Leiter der Kommunikation des EPRIS Journal und der Vertreter der Zeitschrift für die Vereinigten Staaten und Westeuropa. Er baut Beziehungen zu Partnern, Institutionen und Mitwirkenden in diesen Regionen auf, verbindet EPRIS mit den Menschen und Geschichten, die seine internationale Stimme prägen."
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1708,7 +1718,9 @@
       "homepage.articlesDescription": "Le ultime scritture dalla rivista, le più recenti prima.",
       "articles.readPreview": "Leggi anteprima",
       "articles.readFull": "Leggi articolo completo",
-      "articles.closePreview": "Chiudi anteprima"
+      "articles.closePreview": "Chiudi anteprima",
+      "about.team.author-1788563282904-7a43p.role": "Direttore delle Comunicazioni (USA)",
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov è il Direttore delle Comunicazioni di EPRIS Journal e il rappresentante della rivista per gli Stati Uniti e l'Europa Occidentale. Costruisce relazioni con partner, istituzioni e collaboratori in quelle regioni, collegando EPRIS alle persone e alle storie che plasmano la sua voce internazionale."
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1993,7 +2005,9 @@
       "homepage.articlesDescription": "La escritura más reciente del diario, la más nueva primero.",
       "articles.readPreview": "Leer vista previa",
       "articles.readFull": "Leer artículo completo",
-      "articles.closePreview": "Cerrar vista previa"
+      "articles.closePreview": "Cerrar vista previa",
+      "about.team.author-1788563282904-7a43p.role": "Director de Comunicaciones (EE.UU.)",
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov es el Director de Comunicaciones de EPRIS Journal y el representante de la revista para los Estados Unidos y Europa Occidental. Él construye relaciones con socios, instituciones y colaboradores en esas regiones, conectando a EPRIS con las personas y las historias que dan forma a su voz internacional."
     }
   },
   "items": [
@@ -7006,7 +7020,7 @@
           "content": "Roland M Schwerdtfeger's work can be seen at 1x.com/rolandmschwerdtfeger and on Instagram at @roland_m_schwerdtfeger. All images © Roland M Schwerdtfeger, published with the artist's permission."
         }
       ],
-      "updatedAt": "2026-09-04T23:12:26.485Z",
+      "updatedAt": "2026-09-04T23:12:41.281Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-roland-schwerdtfeger"
     }
@@ -39618,6 +39632,18 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 12
+    },
+    {
+      "id": "author-1788563282904-7a43p",
+      "name": "Edward Nesterov",
+      "role": "Director of Communications (USA)",
+      "bio": "Edward Nesterov is EPRIS Journal's Director of Communications and the magazine's representative for the United States and Western Europe. He builds relationships with partners, institutions and contributors across those regions, connecting EPRIS to the people and stories that shape its international voice.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mtnk94y0iqz775.jpg",
+      "website": "",
+      "instagram": "",
+      "active": true,
+      "showOnTeam": true,
+      "teamOrder": 13
     }
   ],
   "manifest": {
