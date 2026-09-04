@@ -572,7 +572,7 @@
       "articles.readFull": "Читать полную статью",
       "articles.closePreview": "Закрыть предварительный просмотр",
       "about.team.author-1788563282904-7a43p.role": "Директор по коммуникациям (США)",
-      "about.team.author-1788563282904-7a43p.bio": "Эдвард Нестеров — директор по коммуникациям журнала EPRIS и представитель журнала для Соединённых Штатов и Западной Европы. Он устанавливает отношения с партнёрами, учреждениями и участниками из этих регионов, связывая EPRIS с людьми и историями, формирующими его международный голос."
+      "about.team.author-1788563282904-7a43p.bio": "Эдвард Нестеров — директор по коммуникациям журнала EPRIS и представитель журнала для Соединённых Штатов и Западной Европы. Он устанавливает отношения с партнёрами, учреждениями и участниками по этим регионам, связывая EPRIS с людьми и историями, формирующими его международный голос."
     },
     "UA": {
       "nav.gallery": "Галерея",
@@ -859,7 +859,7 @@
       "articles.readFull": "Читати повну статтю",
       "articles.closePreview": "Закрити попередній перегляд",
       "about.team.author-1788563282904-7a43p.role": "Директор з комунікацій (США)",
-      "about.team.author-1788563282904-7a43p.bio": "Едвард Нестеров є директором з комунікацій журналу EPRIS та представником журналу для Сполучених Штатів та Західної Європи. Він налагоджує стосунки з партнерами, установами та авторами з цих регіонів, зв’язуючи EPRIS з людьми та історіями, які формують його міжнародний голос."
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov є директором з комунікацій журналу EPRIS і представником журналу для Сполучених Штатів та Західної Європи. Він налагоджує стосунки з партнерами, установами та авторами з цих регіонів, зв’язуючи EPRIS з людьми та історіями, які формують його міжнародний голос."
     },
     "TR": {
       "nav.gallery": "Galeri",
@@ -1146,7 +1146,7 @@
       "articles.readFull": "Tam makaleyi oku",
       "articles.closePreview": "Önizlemeyi kapat",
       "about.team.author-1788563282904-7a43p.role": "İletişim Direktörü (ABD)",
-      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov, EPRIS Dergisi'nin İletişim Direktörü ve derginin Amerika Birleşik Devletleri ile Batı Avrupa temsilcisidir. O, bu bölgelerdeki ortaklar, kurumlar ve katkıda bulunanlarla ilişkiler kurar, EPRIS'i uluslararası sesini şekillendiren insanlar ve hikayelerle bağlar."
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov, EPRIS Dergisi'nin İletişim Direktörü ve derginin Amerika Birleşik Devletleri ve Batı Avrupa temsilcisidir. O, bu bölgelerdeki ortaklar, kurumlar ve katkıda bulunanlarla ilişkiler kurar, EPRIS'i uluslararası sesini şekillendiren insanlar ve hikayelerle bağlar."
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1433,7 +1433,7 @@
       "articles.readFull": "Vollständigen Artikel lesen",
       "articles.closePreview": "Vorschau schließen",
       "about.team.author-1788563282904-7a43p.role": "Leiter der Kommunikation (USA)",
-      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov ist der Leiter der Kommunikation des EPRIS Journal und der Vertreter der Zeitschrift für die Vereinigten Staaten und Westeuropa. Er baut Beziehungen zu Partnern, Institutionen und Mitwirkenden in diesen Regionen auf, verbindet EPRIS mit den Menschen und Geschichten, die seine internationale Stimme prägen."
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov ist Leiter der Kommunikation des EPRIS Journal und der Vertreter der Zeitschrift für die Vereinigten Staaten und Westeuropa. Er baut Beziehungen zu Partnern, Institutionen und Mitwirkenden in diesen Regionen auf, verbindet EPRIS mit den Menschen und Geschichten, die seine internationale Stimme prägen."
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -2007,7 +2007,7 @@
       "articles.readFull": "Leer artículo completo",
       "articles.closePreview": "Cerrar vista previa",
       "about.team.author-1788563282904-7a43p.role": "Director de Comunicaciones (EE.UU.)",
-      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov es el Director de Comunicaciones de EPRIS Journal y el representante de la revista para los Estados Unidos y Europa Occidental. Él construye relaciones con socios, instituciones y colaboradores en esas regiones, conectando a EPRIS con las personas y las historias que dan forma a su voz internacional."
+      "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov es el Director de Comunicaciones de EPRIS Journal y el representante de la revista para los Estados Unidos y Europa Occidental. Él construye relaciones con socios, instituciones y colaboradores en esas regiones, conectando EPRIS con las personas y las historias que dan forma a su voz internacional."
     }
   },
   "items": [
@@ -7020,7 +7020,7 @@
           "content": "Roland M Schwerdtfeger's work can be seen at 1x.com/rolandmschwerdtfeger and on Instagram at @roland_m_schwerdtfeger. All images © Roland M Schwerdtfeger, published with the artist's permission."
         }
       ],
-      "updatedAt": "2026-09-04T23:12:41.281Z",
+      "updatedAt": "2026-09-04T23:11:35.024Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-roland-schwerdtfeger"
     }
@@ -42366,6 +42366,18 @@
     "ES:homepage.articlesDescription": "50:-dkfji4",
     "ES:articles.readPreview": "12:-sm4882",
     "ES:articles.readFull": "17:woaftb",
-    "ES:articles.closePreview": "13:qimmio"
+    "ES:articles.closePreview": "13:qimmio",
+    "RU:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "RU:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl",
+    "UA:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "UA:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl",
+    "TR:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "TR:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl",
+    "DE:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "DE:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl",
+    "IT:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "IT:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl",
+    "ES:about.team.author-1788563282904-7a43p.role": "32:-9d463k",
+    "ES:about.team.author-1788563282904-7a43p.bio": "307:4cgjfl"
   }
 }
