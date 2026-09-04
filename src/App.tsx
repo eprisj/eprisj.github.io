@@ -2985,7 +2985,15 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               </div>
             )}
 
-            <div className="mt-10 pt-8 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] flex justify-center">
+            {/* Блок поддержки стоит перед кнопкой Share, не после: человек
+                ещё не ушёл делиться в другое приложение, он всё ещё здесь,
+                на странице. Своя рамка и подложка теперь у самого компонента
+                (это цельный баннер, не голый div под общим разделителем),
+                поэтому здесь только отступ, без border-t/pt дублем поверх
+                уже готовой карточки. */}
+            <SupportJournal lang={currentLang} className="mt-10" />
+
+            <div className="mt-8 flex justify-center">
               <button
                 type="button"
                 onClick={handleShare}
@@ -2996,8 +3004,6 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               </button>
             </div>
           </footer>
-
-          <SupportJournal lang={currentLang} className="mt-12 sm:mt-16" />
 
           {related.length > 0 && (
             <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
