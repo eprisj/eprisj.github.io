@@ -49,9 +49,13 @@ export function SupportJournal({
   className = '',
   /* Формы анкет — единственное место, где читатель уже что-то отдал (полчаса
      на ответы) и стоит на пороге ухода со страницы: тут уместно не тихое
-     подножие статьи, а заметный блок, раскрытый сразу, без клика «Support
-     the journal» вслепую. Остальные места (статьи, обзоры) вызывают
-     компонент без этого свойства и остаются как были. */
+     подножие статьи, а блок, раскрытый сразу, без клика «Support the
+     journal» вслепую. Первая версия этого добивалась отдельной золотой
+     карточкой с толстой рамкой и пульсирующим сердцем - получилось громче
+     остального сайта, а не заметнее. emphasized ничего не меняет в самом
+     оформлении, той же спокойной типографике блока: только раскрывает его
+     сразу и чуть увеличивает первую строку. Остальные места (статьи, обзоры)
+     вызывают компонент без этого свойства и остаются как были. */
   emphasized = false,
 }: { lang?: string; className?: string; emphasized?: boolean }) {
   const [open, setOpen] = useState(emphasized);
@@ -91,13 +95,7 @@ export function SupportJournal({
   }, []);
 
   return (
-    <aside
-      className={
-        emphasized
-          ? `rounded-3xl border-2 border-[rgb(var(--c-gold-rgb)_/_0.35)] bg-[rgb(var(--c-gold-rgb)_/_0.07)] px-6 py-8 sm:px-9 sm:py-9 ${className}`
-          : `border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-7 ${className}`
-      }
-    >
+    <aside className={`border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-7 ${className}`}>
       {/* Раньше кнопка была единственным сигналом - гость мог её не заметить,
           прочитав только заголовок иконки. Строка приглашения теперь видна
           всегда, не только при разворачивании, и говорит не «мы бесплатны»
@@ -105,7 +103,7 @@ export function SupportJournal({
       <p
         className={
           emphasized
-            ? 'max-w-md font-serif text-[19px] font-medium leading-snug text-[var(--c-accent)]'
+            ? 'max-w-md font-serif text-[18px] italic leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)]'
             : 'max-w-md font-serif text-[15px] italic leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)]'
         }
       >
@@ -123,14 +121,7 @@ export function SupportJournal({
       )}
       {open && (
         <div className="mt-5 max-w-md">
-          {emphasized ? (
-            <span className="inline-flex items-center gap-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--c-gold-rgb))]">
-              <span aria-hidden="true" className="animate-[pulse_2.4s_ease-in-out_infinite] text-[18px] leading-none">♥</span>
-              {t.invite}
-            </span>
-          ) : (
-            <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
-          )}
+          <p className="font-serif text-[15px] font-medium leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.75)]">{t.invite}</p>
           {/* grid без явных колонок берёт auto-track, который сайзится по
               max-content детей - длинный IBAN внутри карточки растягивал
               трек шире родителя (max-w-md), и панель на телефоне вылезала
