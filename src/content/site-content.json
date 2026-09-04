@@ -7006,7 +7006,7 @@
           "content": "Roland M Schwerdtfeger's work can be seen at 1x.com/rolandmschwerdtfeger and on Instagram at @roland_m_schwerdtfeger. All images © Roland M Schwerdtfeger, published with the artist's permission."
         }
       ],
-      "updatedAt": "2026-09-04T15:47:32.389Z",
+      "updatedAt": "2026-09-04T15:48:29.351Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-roland-schwerdtfeger"
     }
@@ -39917,6 +39917,362 @@
     "ogImage": ""
   },
   "homepageArchive": [
+    {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-002",
+      "releaseId": "PICS-WEEK-2026-002",
+      "label": "Pics of the week · 4 вер. 2026 г.",
+      "publishedAt": "2026-09-04T00:00:00.000Z",
+      "signature": "sculpture:PICS-2026-017|painting:PICS-2026-018|architecture:PICS-2026-019|design:PICS-2026-020|photography:PICS-2026-021",
+      "publicArchive": false,
+      "visibleOnSite": false,
+      "cards": [
+        {
+          "id": 25,
+          "picsId": "PICS-2026-017",
+          "category": "sculpture",
+          "categoryLabel": "Sculpture",
+          "title": "Cycladic Female Figure",
+          "subtitle": "Unknown Cycladic sculptor · c. 2400 BC · marble",
+          "description": "Shoulders squared, face left blank, everything inessential cut away: an anonymous islander arrived at pure abstraction four thousand years before anyone called it modern.",
+          "credit": "Photo: Zde, CC BY-SA 4.0",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg",
+          "localized": {
+            "RU": {
+              "title": "Кикладская женская фигура",
+              "subtitle": "Неизвестный кикладский скульптор · ок. 2400 до н.э. · мрамор",
+              "description": "Плечи квадратные, лицо слева пустое, всё несущественное срезано: анонимный островитянин пришёл к чистой абстракции за четыре тысячи лет до того, как кто-либо назвал это современным.",
+              "credit": "Фото: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            },
+            "UA": {
+              "title": "Цикладська жіноча фігура",
+              "subtitle": "Невідомий цикладський скульптор · бл. 2400 до н. е. · мармур",
+              "description": "Плечі рівні, обличчя зліва порожнє, все несуттєве зрізане: анонімний острів’янин прийшов до чистої абстракції за чотири тисячі років до того, як її назвали сучасною.",
+              "credit": "Фото: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            },
+            "DE": {
+              "title": "Cycladic Female Figure",
+              "subtitle": "Unbekannter Cycladic Bildhauer · ca. 2400 v. Chr. · Marmor",
+              "description": "Schultern quadratisch, Gesicht links leer, alles Unwesentliche weggeschnitten: ein anonymer Inselbewohner erreichte die reine Abstraktion viertausend Jahre bevor jemand es modern nannte.",
+              "credit": "Foto: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            },
+            "ES": {
+              "title": "Figura femenina cicládica",
+              "subtitle": "Escultor cicládico desconocido · c. 2400 a.C. · mármol",
+              "description": "Hombros cuadrados, rostro en blanco a la izquierda, todo lo innecesario eliminado: un isleño anónimo llegó a la pura abstracción cuatro mil años antes de que alguien la llamara moderna.",
+              "credit": "Foto: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            },
+            "TR": {
+              "title": "Kikladi Kadın Figürü",
+              "subtitle": "Bilinmeyen Kikladi heykeltıraş · M.Ö. yaklaşık 2400 · mermer",
+              "description": "Omuzlar kare, yüz sol boş, gereksiz her şey kesilmiş: anonim bir ada sakini, modern denilmeden dört bin yıl önce saf soyutlamaya ulaştı.",
+              "credit": "Fotoğraf: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            },
+            "IT": {
+              "title": "Figura Femminile Cycladica",
+              "subtitle": "Scultore Cycladico Sconosciuto · c. 2400 a.C. · marmo",
+              "description": "Spalle quadrate, volto a sinistra vuoto, tutto ciò che è inessenziale tagliato via: un isolano anonimo arrivò alla pura astrazione quattro millenni prima che qualcuno la chiamasse moderna.",
+              "credit": "Foto: Zde, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sml5gepaf3.jpg"
+            }
+          }
+        },
+        {
+          "id": 26,
+          "picsId": "PICS-2026-018",
+          "category": "painting",
+          "categoryLabel": "Painting",
+          "title": "Interior, Strandgade 30",
+          "subtitle": "Vilhelm Hammershøi · 1900 · oil on canvas",
+          "description": "A grey room, a closed door, a woman who will not look up: Hammershøi paints the silence between people and makes it the subject.",
+          "credit": "Public domain",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg",
+          "localized": {
+            "RU": {
+              "title": "Интерьер, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · масло на холсте",
+              "description": "Серая комната, закрытая дверь, женщина, которая не поднимает взгляд: Hammershøi пишет тишину между людьми и делает её предметом.",
+              "credit": "Общественное достояние",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            },
+            "UA": {
+              "title": "Інтер'єр, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · олія на полотні",
+              "description": "Сіра кімната, зачинені двері, жінка, яка не підніме погляд: Hammershøi малює мовчання між людьми і робить його темою.",
+              "credit": "Публічний домен",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            },
+            "DE": {
+              "title": "Innenraum, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · Öl auf Leinwand",
+              "description": "Ein grauer Raum, eine geschlossene Tür, eine Frau, die nicht aufblickt: Hammershøi malt die Stille zwischen Menschen und macht sie zum Thema.",
+              "credit": "Gemeinfrei",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            },
+            "ES": {
+              "title": "Interior, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · óleo sobre lienzo",
+              "description": "Una habitación gris, una puerta cerrada, una mujer que no levantará la vista: Hammershøi pinta el silencio entre las personas y lo convierte en el tema.",
+              "credit": "Dominio público",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            },
+            "TR": {
+              "title": "İç Mekan, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · tuval üzerine yağlı boya",
+              "description": "Gri bir oda, kapalı bir kapı, yukarı bakmayan bir kadın: Hammershøi, insanlar arasındaki sessizliği resmeder ve onu konu yapar.",
+              "credit": "Kamu malı",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            },
+            "IT": {
+              "title": "Interno, Strandgade 30",
+              "subtitle": "Vilhelm Hammershøi · 1900 · olio su tela",
+              "description": "Una stanza grigia, una porta chiusa, una donna che non alza lo sguardo: Hammershøi dipinge il silenzio tra le persone e lo rende il soggetto.",
+              "credit": "Dominio pubblico",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sn60eftcgd.jpg"
+            }
+          }
+        },
+        {
+          "id": 27,
+          "picsId": "PICS-2026-019",
+          "category": "architecture",
+          "categoryLabel": "Architecture",
+          "title": "Goetheanum",
+          "subtitle": "Rudolf Steiner · 1928 · Dornach",
+          "description": "Concrete pulled into curves and folds like something grown rather than poured: Steiner built in 1928 a language architecture would not attempt again for forty years.",
+          "credit": "Photo: Barbara Steinemann, CC BY-SA 4.0",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg",
+          "localized": {
+            "RU": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Бетон, вытянутый в кривые и складки, как что-то выросшее, а не залитое: Steiner построил в 1928 году архитектуру языка, которую он не пытался бы повторить еще сорок лет.",
+              "credit": "Фото: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            },
+            "UA": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Бетон витягнутий у криві та згини, ніби щось виросло, а не налито: Steiner побудував у 1928 році мовну архітектуру, яку не намагатиметься знову ще сорок років.",
+              "credit": "Фото: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            },
+            "DE": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Beton, der in Kurven und Falten gezogen wurde, als wäre er gewachsen und nicht gegossen: Steiner baute 1928 eine Spracharchitektur, die er in den nächsten vierzig Jahren nicht wieder versuchen würde.",
+              "credit": "Foto: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            },
+            "ES": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Hormigón estirado en curvas y pliegues como algo cultivado en lugar de vertido: Steiner construyó en 1928 una arquitectura del lenguaje que no intentaría de nuevo durante cuarenta años.",
+              "credit": "Foto: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            },
+            "TR": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Beton, dökülen yerine büyüyen bir şey gibi kıvrımlar ve katlar halinde çekildi: Steiner 1928'de bir dil mimarisi inşa etti ki, bu mimariyi kırk yıl boyunca tekrar denemedi.",
+              "credit": "Fotoğraf: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            },
+            "IT": {
+              "title": "Goetheanum",
+              "subtitle": "Rudolf Steiner · 1928 · Dornach",
+              "description": "Calcestruzzo tirato in curve e pieghe come qualcosa di cresciuto piuttosto che versato: Steiner costruì nel 1928 un'architettura linguistica che non avrebbe tentato di nuovo per quarant'anni.",
+              "credit": "Foto: Barbara Steinemann, CC BY-SA 4.0",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2snx56v0op9.jpg"
+            }
+          }
+        },
+        {
+          "id": 28,
+          "picsId": "PICS-2026-020",
+          "category": "design",
+          "categoryLabel": "Design",
+          "title": "Toast Rack",
+          "subtitle": "Christopher Dresser · c. 1881 · silver-plated metal",
+          "description": "Bars, spheres and nothing else, made under Queen Victoria: Dresser designed like a Bauhaus student half a century before the school opened.",
+          "credit": "Dallas Museum of Art",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg",
+          "localized": {
+            "RU": {
+              "title": "Подставка для тостов",
+              "subtitle": "Christopher Dresser · ок. 1881 · посеребрённый металл",
+              "description": "Планки, сферы и ничего больше, созданные при правлении королевы Виктории: Dresser спроектировал как студент Bauhaus за полвека до открытия школы.",
+              "credit": "Dallas Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            },
+            "UA": {
+              "title": "Тостерна решітка",
+              "subtitle": "Christopher Dresser · c. 1881 · срібло-покрите метал",
+              "description": "Палички, сфери та нічого більше, створені за часів королеви Вікторії: Dresser спроектував як студент Bauhaus за півстоліття до відкриття школи.",
+              "credit": "Dallas Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            },
+            "DE": {
+              "title": "Toast Rack",
+              "subtitle": "Christopher Dresser · ca. 1881 · versilbertes Metall",
+              "description": "Stangen, Kugeln und nichts anderes, hergestellt unter Königin Victoria: Dresser entwarf wie ein Bauhaus-Schüler ein halbes Jahrhundert bevor die Schule eröffnet wurde.",
+              "credit": "Dallas Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            },
+            "ES": {
+              "title": "Porta rebanadas",
+              "subtitle": "Christopher Dresser · c. 1881 · metal plateado",
+              "description": "Barras, esferas y nada más, hechas bajo la Reina Victoria: Dresser diseñó como un estudiante de Bauhaus medio siglo antes de que la escuela abriera.",
+              "credit": "Dallas Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            },
+            "TR": {
+              "title": "Tostluk Rafı",
+              "subtitle": "Christopher Dresser · c. 1881 · gümüş kaplamalı metal",
+              "description": "Çubuklar, küreler ve başka hiçbir şey, Kraliçe Victoria döneminde yapıldı: Dresser, okul açılmadan yarım yüzyıl önce Bauhaus öğrencisi gibi tasarladı.",
+              "credit": "Dallas Sanat Müzesi",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            },
+            "IT": {
+              "title": "Porta-toast",
+              "subtitle": "Christopher Dresser · c. 1881 · metallo placcato argento",
+              "description": "Barre, sfere e nient'altro, realizzati sotto Regina Vittoria: Dresser progettò come uno studente Bauhaus mezzo secolo prima dell'apertura della scuola.",
+              "credit": "Dallas Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg"
+            }
+          }
+        },
+        {
+          "id": 29,
+          "picsId": "PICS-2026-021",
+          "category": "photography",
+          "categoryLabel": "Photography",
+          "title": "Spiraea aruncus (Tyrol)",
+          "subtitle": "Anna Atkins · c. 1853 · cyanotype",
+          "description": "No camera, no lens: Atkins laid the plant straight onto sensitised paper and let the sun draw it, inventing the photographic book in the process.",
+          "credit": "The Metropolitan Museum of Art",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg",
+          "localized": {
+            "RU": {
+              "title": "Spiraea aruncus (Tyrol)",
+              "subtitle": "Anna Atkins · ок. 1853 · цианотип",
+              "description": "Без камеры, без объектива: Atkins положила растение прямо на чувствительную бумагу и позволила солнцу нарисовать его, изобретая фотокнигу в процессе.",
+              "credit": "Музей Метрополитен",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            },
+            "UA": {
+              "title": "Spiraea aruncus (Tyrol)",
+              "subtitle": "Anna Atkins · c. 1853 · cyanotype",
+              "description": "Без камери, без об'єктива: Atkins поклала рослину прямо на чутливий папір і дозволила сонцю намалювати її, винаходячи фотографічну книгу у процесі.",
+              "credit": "The Metropolitan Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            },
+            "DE": {
+              "title": "Spiraea aruncus (Tirol)",
+              "subtitle": "Anna Atkins · ca. 1853 · Cyanotypie",
+              "description": "Keine Kamera, kein Objektiv: Atkins legte die Pflanze direkt auf das sensibilisierte Papier und ließ die Sonne sie zeichnen, wobei sie dabei das fotografische Buch erfand.",
+              "credit": "The Metropolitan Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            },
+            "ES": {
+              "title": "Spiraea aruncus (Tyrol)",
+              "subtitle": "Anna Atkins · c. 1853 · cianotipo",
+              "description": "Sin cámara, sin lente: Atkins colocó la planta directamente sobre papel sensibilizado y dejó que el sol la dibujara, inventando el libro fotográfico en el proceso.",
+              "credit": "The Metropolitan Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            },
+            "TR": {
+              "title": "Spiraea aruncus (Tyrol)",
+              "subtitle": "Anna Atkins · c. 1853 · cyanotype",
+              "description": "Kamera yok, objektif yok: Atkins bitkiyi doğrudan duyarlı kağıda yerleştirdi ve güneşin onu çizmesine izin verdi, böylece fotoğraf kitabını icat etti.",
+              "credit": "The Metropolitan Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            },
+            "IT": {
+              "title": "Spiraea aruncus (Tirolo)",
+              "subtitle": "Anna Atkins · c. 1853 · cianotipo",
+              "description": "Nessuna fotocamera, nessuna lente: Atkins pose la pianta direttamente sulla carta sensibilizzata e lasciò che il sole la disegnasse, inventando il libro fotografico nel processo.",
+              "credit": "The Metropolitan Museum of Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg"
+            }
+          }
+        }
+      ]
+    },
     {
       "id": "PICS-ARCHIVE-PICS-WEEK-2026-001",
       "releaseId": "PICS-WEEK-2026-001",
