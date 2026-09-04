@@ -23318,6 +23318,29 @@
           "subtitle": "Entrevista",
           "description": "Matej Petrić y Antonio Šeparović sobre convertir un imán de nevera ordinario en la entrada a las propias fotos de un viajero, por qué nadie realmente quiere comprar tecnología NFC, y qué se necesitó para poner un grabador láser en una startup que comenzó como dos amigos y un tercer café en Zagreb.",
           "updatedAt": "2026-08-25T21:36:41.000Z"
+        },
+        {
+          "id": 25,
+          "title": "Victoria Alada de Samotracia",
+          "subtitle": "Escultor griego desconocido · c. 190 a.C. · mármol de Paros",
+          "fig": "PICS 017",
+          "description": "Velo húmedo presionado plano contra un cuerpo preparado para el viento del mar: dos mil años después, sin cabeza, la figura aún se lee como movimiento puro hacia adelante.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22pjiamgxfl.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "Victoria Alada de Samotracia",
+          "homeSubtitle": "Escultor griego desconocido · c. 190 a.C. · mármol de Paros",
+          "homeDescription": "Velo húmedo presionado plano contra un cuerpo preparado para el viento del mar: dos mil años después, sin cabeza, la figura aún se lee como movimiento puro hacia adelante.",
+          "homeCredit": "Musée du Louvre",
+          "picsId": "PICS-2026-017",
+          "updatedAt": "2026-09-04T14:41:47.909Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -28505,6 +28528,29 @@
           "subtitle": "Röportaj",
           "description": "Matej Petrić ve Antonio Šeparović, sıradan bir buzdolabı mıknatısını bir gezginin kendi fotoğraflarına giriş haline dönüştürmek, kimse gerçekten NFC teknolojisini satın almak istemediği için ve iki arkadaş ve üçüncü kahveyle başlayan bir girişimde lazer oymacısını kurmak için ne gerektiği hakkında.",
           "updatedAt": "2026-08-25T21:37:27.000Z"
+        },
+        {
+          "id": 25,
+          "title": "Samothrace Kanatlı Zaferi",
+          "subtitle": "Bilinmeyen Yunan heykeltıraşı · M.Ö. yaklaşık 190 · Parian mermeri",
+          "fig": "PICS 017",
+          "description": "Islak drapaj, deniz rüzgarına karşı dayanmış bir bedene yapışmış: iki bin yıl sonra, başsız, figür hâlâ saf ileri hareket olarak okunuyor.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22pjiamgxfl.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "sculpture",
+          "homeTitle": "Samothrace Kanatlı Zaferi",
+          "homeSubtitle": "Bilinmeyen Yunan heykeltıraşı · M.Ö. yaklaşık 190 · Parian mermeri",
+          "homeDescription": "Islak drapaj, deniz rüzgarına karşı dayanmış bir bedene yapışmış: iki bin yıl sonra, başsız, figür hâlâ saf ileri hareket olarak okunuyor.",
+          "homeCredit": "Musée du Louvre",
+          "picsId": "PICS-2026-017",
+          "updatedAt": "2026-09-04T14:41:56.225Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
