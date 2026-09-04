@@ -7816,21 +7816,25 @@
         },
         {
           "id": 29,
-          "title": "Earthrise",
-          "subtitle": "William Anders · 1968 · Apollo 8",
+          "title": "Spiraea aruncus (Tyrol)",
+          "subtitle": "Anna Atkins · ок. 1853 · цианотип",
           "fig": "PICS 021",
-          "description": "Команда, отправленная фотографировать Луну, повернула камеру: полученная фотография сделала больше для того, как мы видим эту планету, чем любая карта, когда-либо созданная.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+          "description": "Без камеры, без объектива: Atkins положила растение прямо на чувствительную бумагу и позволила солнцу нарисовать его, изобретая фотокнигу в процессе.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg",
           "picsOfWeek": true,
           "homeCategory": "photography",
-          "homeTitle": "Earthrise",
-          "homeSubtitle": "William Anders · 1968 · Apollo 8",
-          "homeDescription": "Команда, отправленная фотографировать Луну, повернула камеру: полученная фотография сделала больше для того, как мы видим эту планету, чем любая карта, когда-либо созданная.",
-          "homeCredit": "NASA",
+          "homeTitle": "Spiraea aruncus (Tyrol)",
+          "homeSubtitle": "Anna Atkins · ок. 1853 · цианотип",
+          "homeDescription": "Без камеры, без объектива: Atkins положила растение прямо на чувствительную бумагу и позволила солнцу нарисовать его, изобретая фотокнигу в процессе.",
+          "homeCredit": "Музей Метрополитен",
           "picsId": "PICS-2026-021",
-          "updatedAt": "2026-09-04T14:43:21.483Z",
+          "updatedAt": "2026-09-04T15:01:10.846Z",
           "picsReleaseId": "PICS-WEEK-2026-002",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+              "replacedAt": "2026-09-04T14:55:00.000Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
@@ -13135,21 +13139,25 @@
         },
         {
           "id": 29,
-          "title": "Земляна сходина",
-          "subtitle": "William Anders · 1968 · Apollo 8",
+          "title": "Spiraea aruncus (Tyrol)",
+          "subtitle": "Anna Atkins · c. 1853 · cyanotype",
           "fig": "PICS 021",
-          "description": "Екіпаж, посланий фотографувати Місяць, повернув камеру: зображення, яке вийшло, зробило більше для нашого сприйняття цієї планети, ніж будь-яка карта, коли-небудь намальована.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+          "description": "Без камери, без об'єктива: Atkins поклала рослину прямо на чутливий папір і дозволила сонцю намалювати її, винаходячи фотографічну книгу у процесі.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sozc7z6gxi.jpg",
           "picsOfWeek": true,
           "homeCategory": "photography",
-          "homeTitle": "Земляна сходина",
-          "homeSubtitle": "William Anders · 1968 · Apollo 8",
-          "homeDescription": "Екіпаж, посланий фотографувати Місяць, повернув камеру: зображення, яке вийшло, зробило більше для нашого сприйняття цієї планети, ніж будь-яка карта, коли-небудь намальована.",
-          "homeCredit": "NASA",
+          "homeTitle": "Spiraea aruncus (Tyrol)",
+          "homeSubtitle": "Anna Atkins · c. 1853 · cyanotype",
+          "homeDescription": "Без камери, без об'єктива: Atkins поклала рослину прямо на чутливий папір і дозволила сонцю намалювати її, винаходячи фотографічну книгу у процесі.",
+          "homeCredit": "The Metropolitan Museum of Art",
           "picsId": "PICS-2026-021",
-          "updatedAt": "2026-09-04T14:43:24.757Z",
+          "updatedAt": "2026-09-04T15:01:15.476Z",
           "picsReleaseId": "PICS-WEEK-2026-002",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn22t4k47rzed.jpg",
+              "replacedAt": "2026-09-04T14:55:00.000Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wx7xoupufv.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
@@ -34382,21 +34390,25 @@
         },
         {
           "id": 28,
-          "title": "Lampada da tavolo Wisteria",
-          "subtitle": "Clara Driscoll per Tiffany Studios · c. 1901 · vetro smaltato e bronzo",
+          "title": "Porta-toast",
+          "subtitle": "Christopher Dresser · c. 1881 · metallo placcato argento",
           "fig": "PICS 020",
-          "description": "Quasi duemila pezzi di vetro tagliato pendono come fiori senza un bordo che li contenga: Driscoll ha fatto della luce stessa la parte fiorita.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+          "description": "Barre, sfere e nient'altro, realizzati sotto Regina Vittoria: Dresser progettò come uno studente Bauhaus mezzo secolo prima dell'apertura della scuola.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn2sohzshtqeg.jpg",
           "picsOfWeek": true,
           "homeCategory": "design",
-          "homeTitle": "Lampada da tavolo Wisteria",
-          "homeSubtitle": "Clara Driscoll per Tiffany Studios · c. 1901 · vetro smaltato e bronzo",
-          "homeDescription": "Quasi duemila pezzi di vetro tagliato pendono come fiori senza un bordo che li contenga: Driscoll ha fatto della luce stessa la parte fiorita.",
-          "homeCredit": "Cleveland Museum of Art",
+          "homeTitle": "Porta-toast",
+          "homeSubtitle": "Christopher Dresser · c. 1881 · metallo placcato argento",
+          "homeDescription": "Barre, sfere e nient'altro, realizzati sotto Regina Vittoria: Dresser progettò come uno studente Bauhaus mezzo secolo prima dell'apertura della scuola.",
+          "homeCredit": "Dallas Museum of Art",
           "picsId": "PICS-2026-020",
-          "updatedAt": "2026-09-04T14:43:18.108Z",
+          "updatedAt": "2026-09-04T15:01:06.966Z",
           "picsReleaseId": "PICS-WEEK-2026-002",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn22slzojbk6m.jpg",
+              "replacedAt": "2026-09-04T14:55:00.000Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wvxhmhjb7i.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
