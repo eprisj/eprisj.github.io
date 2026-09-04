@@ -20521,6 +20521,10 @@ async function flushModernEditor() {
       row('URL обложки', 'imageUrl', _model.imageUrl, 'https://…') +
       `<label class="wys-meta-field"><span>Теги (через запятую)</span><input data-mfield="tags" value="${esc((_model.tags || []).join(', '))}"></label>` +
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
+      /* Материал музыкального раздела — то же самое, что статья, тем же
+         редактором: отличается только полкой, на которой лежит. Флаг уводит
+         его из /articles в /music, адрес самого материала не меняется. */
+      `<label class="wys-meta-check"><input type="checkbox" data-mdesk ${_model.desk === 'music' ? 'checked' : ''}><span>Раздел «Музыка» — материал уходит на /music</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
       `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
     const viewsEl = drawerBody.querySelector('[data-views]');
@@ -20538,6 +20542,11 @@ async function flushModernEditor() {
     draftInp && draftInp.addEventListener('change', () => {
       if (draftInp.checked) _model.draft = true; else delete _model.draft;
       updateDraftBadge();
+      scheduleCommit();
+    });
+    const deskInp = drawerBody.querySelector('[data-mdesk]');
+    deskInp && deskInp.addEventListener('change', () => {
+      if (deskInp.checked) _model.desk = 'music'; else delete _model.desk;
       scheduleCommit();
     });
     const pubInp = drawerBody.querySelector('[data-mpublishat]');

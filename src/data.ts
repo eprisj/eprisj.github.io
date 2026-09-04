@@ -257,6 +257,18 @@ export interface Article {
   hideOnHome?: boolean;
   /** The mirror image: on the homepage, absent from the /articles grid. */
   hideInList?: boolean;
+  /**
+   * Which editorial desk the piece belongs to. Absent (the default) means the
+   * general desk and the /articles grid; 'music' routes it to /music instead.
+   *
+   * Music interviews are articles in every way that matters — same editor,
+   * same block model, same /article/<slug> reader, same translation pipeline —
+   * so they are a facet of this collection rather than a parallel one. A
+   * separate `music` array would have meant a second copy of the reader, the
+   * slug map, the localisation merge and the preview-token flow, all to hold
+   * records with an identical shape.
+   */
+  desk?: 'music';
 }
 
 export interface Review {
@@ -594,7 +606,7 @@ export interface SiteSettings {
   ogImage?: string;
 }
 
-export type VisibilitySectionKey = 'gallery' | 'articles' | 'reviews' | 'about' | 'manifest' | 'issue' | 'design' | 'studio' | 'radio' | 'podcasts';
+export type VisibilitySectionKey = 'gallery' | 'articles' | 'reviews' | 'music' | 'about' | 'manifest' | 'issue' | 'design' | 'studio' | 'radio' | 'podcasts';
 export type VisibilityEntityKey = 'articles' | 'items' | 'reviews' | 'libraryItems' | 'authors' | 'studioProjects';
 
 export interface SectionVisibility {
@@ -777,6 +789,7 @@ const DEFAULT_SECTION_VISIBILITY: Record<VisibilitySectionKey, Required<SectionV
   gallery:   { page: true, navigation: true },
   articles:  { page: true, navigation: true },
   reviews:   { page: true, navigation: true },
+  music:     { page: true, navigation: true },
   about:     { page: true, navigation: true },
   manifest:  { page: true, navigation: false },
   issue:     { page: true, navigation: true },
@@ -916,8 +929,10 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // copy, and nothing else about the card.
   'previewImageUrl', 'previewFocus', 'previewHideExcerpt', 'previewHideAuthor',
   // Where a piece appears is an editorial decision about the whole article,
-  // taken once, not per language.
-  'hideOnHome', 'hideInList',
+  // taken once, not per language. `desk` included: a translation that could
+  // flip it would put the same piece under /articles in one language and
+  // /music in another.
+  'hideOnHome', 'hideInList', 'desk',
 ]);
 
 // Content-block types whose `content` field is translatable prose (a string).
@@ -1173,6 +1188,20 @@ export function getContentForLanguage(lang: string): LanguageContent {
     reviews: isPreview() ? reviews : reviews.filter((entry) => isEntityLive(entry) && isEntityVisible('reviews', entry.id)),
     libraryItems: isPreview() ? libraryItems : libraryItems.filter((entry) => isEntityLive(entry) && isEntityVisible('libraryItems', entry.id))
   };
+}
+
+/** Music-desk pieces: interviews with musicians and artists, shown at /music. */
+export function isMusicArticle(article: Article): boolean {
+  return article.desk === 'music';
+}
+
+/** Everything the general /articles grid shows — i.e. every desk but music. */
+export function generalArticles(articles: Article[]): Article[] {
+  return articles.filter((a) => !isMusicArticle(a));
+}
+
+export function musicArticles(articles: Article[]): Article[] {
+  return articles.filter(isMusicArticle);
 }
 
 /** Live-aware authors list (preview → live → bundled). Only active authors are returned. */

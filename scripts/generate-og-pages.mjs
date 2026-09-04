@@ -429,6 +429,7 @@ for (const review of publicReviews) {
 const ROUTES = {
   articles: 'Articles',
   reviews: 'Reviews',
+  music: 'Music',
   about: 'About',
   manifest: 'Manifesto',
   studio: 'Studio',
@@ -460,6 +461,7 @@ const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum']);
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
   reviews: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.',
+  music: 'Interviews and conversations with musicians and artists, on the work, the craft and the culture around it.',
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
   studio: 'Editorial, visual and cultural projects by EPRIS Studio.',
