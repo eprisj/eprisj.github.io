@@ -18176,6 +18176,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 26,
+          "title": "Der Kuss",
+          "subtitle": "Gustav Klimt · 1908 · Öl und Goldblatt auf Leinwand",
+          "fig": "PICS 018",
+          "description": "Gold verschlingt die Liebenden ganz und lässt nur zwei Gesichter und ein Paar Hände übrig: Klimt lässt Ornament die Arbeit erledigen, die normalerweise die Anatomie übernimmt.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Der Kuss",
+          "homeSubtitle": "Gustav Klimt · 1908 · Öl und Goldblatt auf Leinwand",
+          "homeDescription": "Gold verschlingt die Liebenden ganz und lässt nur zwei Gesichter und ein Paar Hände übrig: Klimt lässt Ornament die Arbeit erledigen, die normalerweise die Anatomie übernimmt.",
+          "homeCredit": "Belvedere, Wien",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:09.752Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -23384,6 +23407,29 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "El Beso",
+          "subtitle": "Gustav Klimt · 1908 · óleo y hoja de oro sobre lienzo",
+          "fig": "PICS 018",
+          "description": "El oro devora a los amantes por completo y solo deja dos rostros y un par de manos: Klimt deja que el adorno haga el trabajo que normalmente hace la anatomía.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "El Beso",
+          "homeSubtitle": "Gustav Klimt · 1908 · óleo y hoja de oro sobre lienzo",
+          "homeDescription": "El oro devora a los amantes por completo y solo deja dos rostros y un par de manos: Klimt deja que el adorno haga el trabajo que normalmente hace la anatomía.",
+          "homeCredit": "Belvedere, Viena",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:13.047Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
@@ -28597,6 +28643,29 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 26,
+          "title": "Öpücük",
+          "subtitle": "Gustav Klimt · 1908 · tuval üzerinde yağ ve altın yaprak",
+          "fig": "PICS 018",
+          "description": "Altın aşıkları tamamen yutar ve sadece iki yüz ve bir çift el bırakır: Klimt süslemeye, genellikle anatomi yapan işi yaptırır.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Öpücük",
+          "homeSubtitle": "Gustav Klimt · 1908 · tuval üzerinde yağ ve altın yaprak",
+          "homeDescription": "Altın aşıkları tamamen yutar ve sadece iki yüz ve bir çift el bırakır: Klimt süslemeye, genellikle anatomi yapan işi yaptırır.",
+          "homeCredit": "Belvedere, Viyana",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:15.872Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
         }
       ],
       "articles": [
@@ -33804,6 +33873,29 @@
           "imageHistory": [
             {
               "url": "https://api.eprisjournal.com/uploads/mtn1wu160gdphr.jpg",
+              "replacedAt": "2026-09-04T14:40:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "Il Bacio",
+          "subtitle": "Gustav Klimt · 1908 · olio e foglia d'oro su tela",
+          "fig": "PICS 018",
+          "description": "L'oro inghiotte gli amanti interamente e lascia solo due volti e una coppia di mani: Klimt lascia che l'ornamento faccia il lavoro che di solito fa l'anatomia.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtn22r25mtftla.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "painting",
+          "homeTitle": "Il Bacio",
+          "homeSubtitle": "Gustav Klimt · 1908 · olio e foglia d'oro su tela",
+          "homeDescription": "L'oro inghiotte gli amanti interamente e lascia solo due volti e una coppia di mani: Klimt lascia che l'ornamento faccia il lavoro che di solito fa l'anatomia.",
+          "homeCredit": "Belvedere, Vienna",
+          "picsId": "PICS-2026-018",
+          "updatedAt": "2026-09-04T14:42:20.212Z",
+          "picsReleaseId": "PICS-WEEK-2026-002",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mtn1wv4fy5mt9v.jpg",
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
