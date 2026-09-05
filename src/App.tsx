@@ -47,6 +47,7 @@ import {
   isSectionInNavigation,
   generalArticles,
   musicArticles,
+  isMusicArticle,
   loadLiveContent,
   subscribeContent
 } from './data';
@@ -2901,7 +2902,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         href={resolvedAuthor.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
                       >
                         Website
                       </a>
@@ -2911,7 +2912,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         href={`https://instagram.com/${resolvedAuthor.instagram.replace(/^@/, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                        className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
                       >
                         {resolvedAuthor.instagram}
                       </a>
@@ -2954,7 +2955,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             href={contributor.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
                           >
                             Website
                           </a>
@@ -2964,7 +2965,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             href={`https://instagram.com/${contributor.instagram.replace(/^@/, '')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors"
+                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
                           >
                             {contributor.instagram}
                           </a>
@@ -4015,6 +4016,13 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
     const canonicalUrl = `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
     const keywords = Array.from(new Set([...(article.tags || []), article.category, article.subcategory, publicationName, 'architecture', 'design', 'contemporary art'].filter(Boolean))).join(', ');
+    // `date` is free-typed editorial copy ("Jul 30, 2026", "15 серпня 2026") -
+    // schema.org wants ISO 8601 here. publishedAt is the machine-readable
+    // field this site already backfills/sets for exactly this reason; date
+    // is only a fallback for the handful of older records without it.
+    const isoPublished = article.publishedAt || article.date;
+    const isoModified = article.updatedAt || isoPublished;
+    const onMusicDesk = isMusicArticle(article);
     document.title = `${article.title} — ${publicationName}`;
     setMeta('og:title', article.title);
     setMeta('og:description', article.excerpt);
@@ -4039,8 +4047,8 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           headline: article.title,
           description: article.excerpt,
           image: [imageUrl],
-          datePublished: article.date,
-          dateModified: article.updatedAt || article.date,
+          datePublished: isoPublished,
+          dateModified: isoModified,
           author: { '@type': 'Person', name: article.author || 'EPRIS Editorial' },
           publisher: siteNode.publisher,
           articleSection: article.category,
@@ -4051,7 +4059,9 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
-            { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://eprisjournal.com/articles' },
+            onMusicDesk
+              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://eprisjournal.com/music' }
+              : { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://eprisjournal.com/articles' },
             { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
           ],
         },
