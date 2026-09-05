@@ -789,7 +789,9 @@ const DEFAULT_SECTION_VISIBILITY: Record<VisibilitySectionKey, Required<SectionV
   gallery:   { page: true, navigation: true },
   articles:  { page: true, navigation: true },
   reviews:   { page: true, navigation: true },
-  music:     { page: true, navigation: true },
+  // Hidden by default until there's actual content to show - flip both to
+  // true from the admin's visibility panel (or here) when ready to launch.
+  music:     { page: false, navigation: false },
   about:     { page: true, navigation: true },
   manifest:  { page: true, navigation: false },
   issue:     { page: true, navigation: true },
