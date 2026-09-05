@@ -2511,7 +2511,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[60] bg-[var(--c-bg)] overflow-y-auto overflow-x-hidden"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
+      {/* max-w-3xl (was 4xl): at the 20px body size this reads, 4xl gave
+          ~832px of column - about 80 characters per line, past the ~65-75
+          range comfortable for continuous reading. 3xl brings that to
+          roughly 68 on a 1440px desktop, flagged directly as too wide. */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
         <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
           <button
             type="button"
@@ -2663,7 +2667,14 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         ? 'my-6 sm:my-8 float-left mr-6 mb-2 max-w-[80%] sm:max-w-[55%] clear-left'
                         : align === 'right'
                           ? 'my-6 sm:my-8 float-right ml-6 mb-2 max-w-[80%] sm:max-w-[55%] clear-right'
-                          : 'my-8 sm:my-12 -mx-4 sm:mx-0';
+                          /* Matches the paragraph's own mb-6 sm:mb-8 below
+                             (adjacent margins collapse to the larger one,
+                             not the sum) so a paragraph-image transition
+                             reads the same as paragraph-paragraph, instead
+                             of the 32/48px jump my-8 sm:my-12 gave centred
+                             images specifically - flagged directly as
+                             uneven rhythm between text and photos. */
+                          : 'my-6 sm:my-8 -mx-4 sm:mx-0';
                   const figureStyle = widthPct && align !== 'full' && !stretched ? { width: `${widthPct}%`, maxWidth: '100%' } : undefined;
                   /* Гифка, вставленная картинкой (старые материалы и просто
                      вставленная ссылка), остаётся картинкой — иначе она
