@@ -7286,7 +7286,7 @@
           "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
         }
       ],
-      "updatedAt": "2026-09-05T15:58:41.562Z"
+      "updatedAt": "2026-09-05T15:55:27.530Z"
     }
   ],
   "reviews": [
@@ -7523,6 +7523,54 @@
       "authorId": "author-1784732936927-kw554",
       "role": "Guest Editor",
       "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+    },
+    {
+      "id": 7,
+      "draft": true,
+      "previewToken": "77c15678861f6b53068b3386",
+      "title": "Marrow Deep",
+      "subject": "Mastodon · Loma Vista Recordings · 2026",
+      "rating": 0,
+      "desk": "music",
+      "category": "METAL",
+      "author": "Viacheslav Munister",
+      "role": "Guest Editor",
+      "date": "Aug 2026",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+      "verdict": "Marrow Deep does not mourn quietly. It erects a structure large enough to hold grief, and then challenges you to walk through each of its rooms.",
+      "pros": [
+        "The five-song suite centered on Out Like a Lamb turns the epitaph into architecture, not spectacle.",
+        "New members Nick Johnston and João Nogueira are integrated into the band’s sound, rather than announced through it.",
+        "Golden Spires is built in literally ascending steps and earns the title."
+      ],
+      "cons": [
+        "Across its thirteen tracks, the album occasionally repeats a form it has already proven it can build.",
+        "The album urges you to read it as a continuous structure, offering no single transitional moment for those seeking one."
+      ],
+      "content": [
+        {
+          "type": "text",
+          "content": "Marrow Deep, released on August 28, 2026, is the first Mastodon album made without Brent Hinds, who left the band in March 2025 and died five months later in a motorcycle accident. The cover does not name this loss, but every review still reads the album through him, and so does this one: a band rebuilding publicly, with two new permanent members, guitarist Nick Johnston and keyboardist João Nogueira, who are integrated into the sound rather than announced by it."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+          "caption": "Mastodon live at Rock im Park, 2022. Photo: Mr. Rossi, CC BY-SA 4.0, via Wikimedia Commons."
+        },
+        {
+          "type": "text",
+          "content": "What holds the thirteen tracks together is less a theme than a construction method. Critics have already employed cathedral-like language to describe it: a song that winds upward like a snake, raises a tower, and combines towers, transepts, and buttresses as it ascends. Golden Spires earns its title under these conditions. It builds not so much toward a chorus as toward a ceiling, verse stacked on verse, until a coda appears like a vault closing overhead. This is an album that thinks in sections and heights, not just in riffs."
+        },
+        {
+          "type": "text",
+          "content": "The emotional heart of the album is a five‑song suite that begins with Out Like a Lamb, the eulogy by drummer and singer Brann Dailor for his mother, whose title is borrowed from the old proverb about March weather. It is the quietest structural gesture on the album, with the bass moving beneath the vocals rather than behind them, and it lays out the foundation on which the rest of the suite is built."
+        },
+        {
+          "type": "text",
+          "content": "With thirteen titles, Marrow Deep occasionally repeats a form it has already proven it can build, and an album that is so designed to be read as a continuous structure will frustrate anyone looking for a single crossover moment. It offers none. What it instead offers is a band that chooses architecture over spectacle to carry something so heavy, and mostly succeeds."
+        }
+      ],
+      "updatedAt": "2026-09-05T15:30:34.237Z"
     }
   ],
   "libraryItems": [
