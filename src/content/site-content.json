@@ -36371,6 +36371,139 @@
             }
           ],
           "updatedAt": "2026-09-05T16:02:08.905Z"
+        },
+        {
+          "id": 8,
+          "draft": false,
+          "title": "Bir Reklam İçinde Akşam Yemeği",
+          "subject": "Le Train Bleu · Gare de Lyon, Paris · Marius Toudoire",
+          "rating": 0,
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "ARCHITECTURE & DINING",
+          "date": "SEP 5, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+          "meta": "PARIS · MARIUS TOUDOIRE · 1900–1901 · MONUMENT HISTORIQUE 1972 · PHOTO: CC0 / WIKIMEDIA COMMONS",
+          "verdict": "Le Train Bleu nostalji sunmaz. 2003 yılında çalışmayı durduran bir tren için yüz yirmi beş yıllık satış konuşması sunar, Fransız devletinin yasal olarak dondurduğu bir odada — ve size tekrar duymanın ayrıcalığı için memnuniyetle ödeme yapmanızı ister.",
+          "pros": [
+            "On yedi sanatçıya ait kırk bir tablo, yemek odasını sadece süsleme olmayan, işlevsel bir 1900 seyahat reklamına dönüştürür",
+            "Monument Historique statüsü (1972), 2014 restorasyonunu disiplinli tutmuştur — ihtiyaç duyulmayan hiçbir şeyi modernize etmemiştir",
+            "Menü (Michel Rostang 2018'den beri) odanın yeniden yorumlanmasından çok destekleyici bir rol oynar, bu da bir anıt içinde doğru karardır",
+            "Sadece ticari, kurumsal mimarinin nadir bir örneği — bir demiryolu şirketi tarafından bilet satmak için inşa edilmiştir — aynı titizlikle korunmuştur gibi bir katedral kadar"
+          ],
+          "cons": [
+            "Mutfakın kasıtlı eski moda tarzı (arabadan kuzu, masanın yanında tartar) bazı müşterilere pahalı bir nostalji olarak okunacaktır",
+            "Aktif bir terminus içindeki çalışan istasyon büfesi olarak, oda bazı sessizliği değiştirir ve sürekli yaya trafiği ile turist yoğunluğunu artırır"
+          ],
+          "content": [
+            {
+              "type": "metin",
+              "content": "Gare de Lyon'daki çift merdiveni tırmanın ve demiryolundan çıkın. Aşağıda, platformlar dakikalarla ölçülen programlara göre çalışır; trenler ise binanın açıldığından beri dört veya beş kez şekil değiştirdi. Yukarıda ise hiçbir şeyin değiştirilmesine izin verilmedi. 1900 yılında, artık var olmayan bir tren satmak için inşa edilen, artık var olmayan bir şirket için ve bir yüzyıl boyunca ölü olan bir halka açık alan içinde duruyorsunuz. O oda tüm üçünü de hayatta tuttu. Adı Le Train Bleu, şarap listesi ve rezervasyon hattı olan çalışan bir restoran ve 1972'den beri Fransa'nın Bir Simgesi - devletin şimdi katedralleri koruduğu gibi koruduğu bir reklam metni."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton40n3v6m216.jpg",
+              "alt": "Gare de Lyon içindeki anıtsal merdivenin dönem kartpostalı, istasyon büfesine çıkan, yirminci yüzyılın başları",
+              "caption": "Gare de Lyon Büfe'sine çıkan merdiven, açıldıktan kısa bir süre sonra fotoğraflandı. Artık Le Train Bleu olarak adlandırılan restoran onun tepesinde yer alıyor.",
+              "credit": "Kamu alanı",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buffet_PLM_-_Le_train_Bleu_-_1900.jpg"
+            },
+            {
+              "type": "başlık",
+              "content": "İçinde oturabileceğiniz bir broşür",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Komisyon aslında hiç de bir restoran için değildi. 1900 yılında, Compagnie des chemins de fer de Paris à Lyon et à la Méditerranée - PLM - Paris terminini sıfırdan yeniden inşa ediyordu ve bu yeni istasyonun, yolcuları sadece bir bina içinde taşımaktan fazlasını yapması gerekiyordu. Onlara, çoğu hiç görmedikleri bir destinasyona geri gelmeye ikna etmeleri gerekiyordu: Provence, Riviera, Cezayir. İstasyonun cephesini ve Big Ben'e açık övgüyle inşa edilen 67 metre uzunluğundaki saat kulesini tasarlayan mimar Marius Toudoire, satışı yapacak bir yemek odası inşa etmesi istendi. 26 metre uzunluğunda, tavanı boyanmış bir gökyüzü gibi davranan bir oda inşa etti ve duvarlarını on yedi farklı sanatçının kırk bir tablosuyla kapladı - Albert Maignan, Henri Gervex, François Flameng, Eugène Burnand bunlar arasında - her biri aşağıdaki trenlerin ulaşması gereken bir şehrin reklamıydı. Turuncu, Marsilya, Nice, Monaco, Cezayir: akşam yemeğinizi yiyebilir ve tüm güzergahınızı planlayabilir, hiçbir zaman bir zaman çizelgesine bakmadan duvarlardan öğrenebilirsiniz."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton40ylg933pv.jpg",
+              "alt": "Le Train Bleu içindeki Belle Epoque duvar resmi detayları, Albert Maignan imzalı 1905, Roma tiyatrosunun üzerinde bir bahçe partisini tasvir eden Orange'daki durak olarak yüksek toplum sahnesi yerine bir stadyum sahnesi gibi gösterilen",
+              "caption": "Kırk bir duvar resminden biri, Albert Maignan imzalı ve 1905 tarihli, sadece Orange olarak etiketlenmiş - PLM hattındaki bir durak, bir istasyon fotoğrafı yerine yüksek toplum sahnesi olarak tasvir edilmiştir.",
+              "credit": "Fotoğraf: Mbzt / Wikimedia Commons, CC BY 3.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1120998_Paris_XII_gare_de_Lyon_train_bleu_fresque_Orange_rwk.JPG"
+            },
+            {
+              "type": "metin",
+              "content": "Bu durmaya değer, çünkü odanın 'süslemeli' olarak sınıflandırılması ve yemeklere geçilmesi kolaydır. Bir fotoğraf bir mekanı belgeliyor. Bir sipariş edilen yağlı boya tablosu, kırk tane, bir katedral ölçeğinde asılmış, biraz daha yakın bir şey yapar: size orada olanların hissettiklerini anlatır, bu da farklı ve çok daha ikna edici bir iddiadır. PLM bir bekleme odası dekore etmiyordu. On dokuzuncu yüzyılın tam sayfa yayınına benzeyen, parlak bir dergide tam sayfa yayını inşa ediyordu, sadece yayım on bir metre yüksekliğinde, altın varaklı, bronz avizelerle aydınlatılmış ve yapısal olarak yük taşıyan bir şekildeydi."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton41e22lwc01.jpg",
+              "alt": "Le Train Bleu'nun altın varaklı sıva tavanı, ön planda bronz bir avize ve Paris ile Lyon etiketli boyalı madalyonlar",
+              "caption": "Grande Salle'nin tavanı: sıva oyma içine yerleştirilmiş boyalı şehir madalyonları, orijinal bronz avizelerle aydınlatılmış.",
+              "credit": "CC0, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(2).jpg"
+            },
+            {
+              "type": "başlık",
+              "content": "Bir illüzyonun ölçüleri",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Odanın her parçası için bir adı vardır kurgu. Salle Dorée, Altın Oda, 11 metre tavan altında 18.5 metre uzunluğunda uzanır. Ana yemek odası, ilk düzenli müşterilerinden biri olan oyuncu Réjane'in adını taşır. Bir tarafta, Salons Tunisien ve Algérien - oyma koyu ahşap, geometrik Arap motifleri, doğu tarzı manzaralar - işadamları için Fransız Cezayiri'nin bir versiyonunu sahnelemek amacıyla inşa edilmiştir, tam da bu nedenle öğle yemeği toplantıları için favori odalardır. Bu alanların hiçbiri mütevazı olmaya çalışmaz. Binanın dekorasyon bütçesi, 1900 frank, kendi kasaba tren istasyonunu inşa edebilirdi. Bu, bir anlamda, noktaydı: PLM, rakip demiryolu şirketleriyle aynı zengin yolcular için yarışıyordu ve trenlerinizin değerli olduğunu kanıtlamanın en hızlı yolu, bekleme odanızın yaşanmaya değer olduğunu kanıtlmaktı."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton41s025cv5t.jpg",
+              "alt": "Le Train Bleu'daki bir kemerin üzerinde oyma plaka, Başkan Emile Loubet'in 7 Nisan 1901'de büfeyi açtığını kaydeder, iki oyma denizkızıyla çevrelenmiş",
+              "caption": "Duvar üzerinde hâlâ duruyor: “Emile Loubet, Fransa Cumhurbaşkanı, bu büfeyi 7 Nisan MDCCCCI'de açtı.” Devlet başkanı, bir tren istasyonu restoranını başka hükümetlerin köprüleri açtığı gibi açtı.",
+              "credit": "CC0, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(4).jpg"
+            },
+            {
+              "type": "metin",
+              "content": "Başkan Emile Loubet, 7 Nisan 1901'de kendisi kurdelesini kesti, bu detay odanın hâlâ iki denizkızıyla çevrili oyma bir plakada reklamını yapıyor, sanki bir istasyon büfesinin açılışı bir savaş anıtı kadar resmi bir tören gerektiriyormuş gibi. İlk birkaç on yılda oda sadece Buffet de la Gare de Lyon olarak adlandırılıyordu - fonksiyonel bir isim, fonksiyonel görünen bir iş için, bir istasyona bağlı yemek salonu. Sadece 1963'te Le Train Bleu oldu ve burada hikâye daha basit değil, daha garip hale geliyor: adını değiştirdiği gece ekspresi, Calais ile Riviera arasında çalışan koyu mavi uyku vagonlarıyla hâlâ hizmetteydi - başka bir deyişle, 2003 yılına kadar devam etti. Ama 1963'e gelindiğinde jet yolculuğu, trenin sahip olduğu cazibeyi zaten almıştı; Riviera artık birkaç saat uzaklıktaydı ve yirmi saatlik uyku vagonu, en hızlı varış yolundan en romantik gecikme yoluna sessizce kaymıştı. Restoran, adını aldığı anda, gerçek tren anlamını yitirmeye ve efsane olmaya başladı. Kendini adadığı şey bitmeden önce seyahat anısını satmaya başladı."
+            },
+            {
+              "type": "başlık",
+              "content": "Öğle yemeği servis etmeye devam eden bir anıt",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "1972 yılında Fransız devleti bu hafızayı resmi hale getirdi, restoranı, Salle Dorée'yi ve Tunus ve Cezayir salonlarını Monuments Historiques olarak listeledi - Notre-Dame ve Loire şatolarını koruyan aynı unvan. Bu, korumaya alınması alışılmadık bir şey: bir harabe değil, ip bariyerleri arkasında bir müze parçası değil, ama hâlâ çalışmaya devam eden ticari bir yemek odası, mutfaklara, yangın çıkışlarına ve şarap mahzenine ihtiyaç duyan bir yer. Paradoks kendi disiplinini yarattı. Restoran, 2014 yazında 4.5 milyon euro tutarında restorasyon için üç ay kapandığında - kırk bir tabloyu temizleyip onarmak, sıvaları yeniden altın kaplamak, elektrikle uyumlu hale getirilen avizeleri yeniden kablolamak - çalışma, TGV ağının istasyonlarından sorumlu olan Agence Duthilleul ve moderniteyi görünür kılmadan modernliği dokunduran bir Architecte des Monuments Historiques tarafından ortaklaşa yönetildi. Architecte Jean-Marie Duthilleul, binanın orijinal fikrini Paris içinde kurulmuş Akdeniz'e açılan bir kapı olarak tanımladı, ayrılan trenler egzotik bir yere giden gemiler gibi sahnelenmişti. 2014 restorasyonu, bu fikri yenilemek yerine korudu."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+              "alt": "Le Train Bleu'nun geniş iç görünümü, altın kaplamalı oval bar tezgahı, boyanmış karnıyarık tavan, avizeler ve beyaz örtülü masalarda yemek yiyenler gösteriliyor",
+              "caption": "Grande Salle Réjane, 26 metre boyunda boyanmış tavan, 1901'den beri hizmet vermeyi sürdüren bir odada.",
+              "credit": "CC0, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu_(vue_int%C3%A9rieure)_en_f%C3%A9vrier_2023.jpg"
+            },
+            {
+              "type": "metin",
+              "content": "Yüzyıldan kalan sadece sıva değil. Oda, hiç beklenmedik bir kültürel sonrası yaşamı özümsedi. Coco Chanel ve Jean Cocteau 1920'lerde orada masalar aldı; Colette hakkında yazdı; Salvador Dalí, Brigitte Bardot ve Jean Gabin daha sonra düzenli müşterilerdi. Yedi film, 1972'de <em>Travels with My Aunt</em>tan 2007'deki <em>Mr. Bean</em> tatil komedisine kadar, burada çekildi - kendini oynayan bir Belle Époque yemek odası, on yıl, on yıl, demeden, trenlerle ilgisi olmayan hikayelerde. Her nesil, aynı kırk bir tabloya biraz farklı bir kurgu yansıttı. İşte gerçekten başarılı bir reklamın yaptığı budur: satmak için kurulduğu ürün ihtiyacını durdurur ve her zaman orada olmuş hissetmeyi satmaya başlar."
+            },
+            {
+              "type": "başlık",
+              "content": "Aslında masada ne var",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Bunun hiçbiri önemli olmazdı eğer mutfak odanın hırsına uygun şekilde modernize edilmiş olsaydı ve bununla övünecek olursak, hiç olmamıştır. 2018'den beri restoran, işletmecisi SSP adına şef Michel Rostang tarafından işletiliyor ve onun yaptığı menü kasıtlı olarak modadan uzak: tezgah başında kesilen kuzu budu, eski tarzda peynir veya yumurta olmadan yapılan gratin dauphinois, tarhun kremalı Bresse tavuk, önünüzde karıştırılan steak tartare, masada bir kadeh rom ile tamamlanan rum baba. Mutfakta odanın kendi imajına yeniden yorumlama girişimi yoktur, çağdaş bir şefin bir anıt içinde yapmak zorunda hissedebileceği gibi. Yemek, tabloların yaptığı gibi aynı destekleyici rolü oynar: çoğunlukla hafızada var olan bir Fransa versiyonunun, bir yemek süresi boyunca, hala sipariş edilebilir olduğunu kanıtlar."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mton426yr3s0w9.jpg",
+              "alt": "Gare de Lyon cephesinin gündüz dış cephesi, oval tabelalar taşıyan kemerli pencereleriyle Le Train Bleu yazısı, istasyon girişlerinin üzerindeki tente üzerinde",
+              "caption": "İstasyon cephesi Toudoire tarafından restoranla birlikte tasarlandı, kemerli pencereleri hâlâ restoranın adını taşıyor ve meydanda dışarıya bakıyor.",
+              "credit": "Fotoğraf: APB11 / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Les_fen%C3%AAtres_du_Train_Bleu_vues_du_parvis_de_la_gare_de_Lyon.jpg"
+            },
+            {
+              "type": "metin",
+              "content": "Alt katta, odanın servetini kazanan trenler çoğunlukla yolculuğunu tamamladı. Riviera'ya giden hat artık daha hızlı ve daha az duruyor; sonunda orijinal Train Bleu'yi değiştiren TGV ismi taşımayan tren, ve bugün sahil istiyorsanız, bilet fiyatlarını telefonda karşılaştırmak daha olasıdır, bir yemek odasında oturup varış noktasını yağlı boya ile satmak yerine. Yani, reklam, ürünün tamamen ömrünü doldurdu. Kalan ise artık kimseyi ikna etmek zorunda olmayan, yasal olarak başka bir teklif denemekten korunan, sizi bir tren yolculuğunun varış gibi hissettirecek şekilde inşa edilmiş bir tavan altında masa kuran bir oda. Orada yerseniz, geçmişi ziyaret etmiyorsunuz. Yüz yirmi beş yıllık bir satış teklifinin içindesiniz ki, Fransız devleti bunun sonsuza dek anlatmaya değer olduğuna karar verdi ve tekrar duymanın ayrıcalığı için memnuniyetle ödedi."
+            }
+          ],
+          "featured": true,
+          "updatedAt": "2026-09-05T17:32:29.427Z"
         }
       ],
       "libraryItems": [
