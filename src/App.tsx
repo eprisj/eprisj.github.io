@@ -260,6 +260,9 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'music.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
   'music.reviewsDescription': { EN: 'What EPRIS has been listening to lately: albums, releases and live performances.', RU: 'Что EPRIS слушает в последнее время: альбомы, релизы и живые выступления.', UA: 'Що EPRIS слухає останнім часом: альбоми, релізи і живі виступи.', DE: 'Was EPRIS zuletzt gehört hat: Alben, Veröffentlichungen und Live-Auftritte.', IT: 'Cosa ha ascoltato di recente EPRIS: album, uscite ed esibizioni dal vivo.', ES: 'Lo que EPRIS ha estado escuchando últimamente: álbumes, lanzamientos y actuaciones en directo.', TR: 'EPRIS’in son zamanlarda dinledikleri: albümler, çıkışlar ve canlı performanslar.' },
   'music.empty': { EN: 'Nothing published here yet.', RU: 'Здесь пока ничего не опубликовано.', UA: 'Тут поки що нічого не опубліковано.', DE: 'Hier ist noch nichts veröffentlicht.', IT: 'Non è stato ancora pubblicato nulla qui.', ES: 'Aún no se ha publicado nada aquí.', TR: 'Burada henüz bir şey yayınlanmadı.' },
+  'music.heroEyebrow': { EN: 'EPRIS Journal', RU: 'EPRIS Journal', UA: 'EPRIS Journal', DE: 'EPRIS Journal', IT: 'EPRIS Journal', ES: 'EPRIS Journal', TR: 'EPRIS Journal' },
+  'music.heroTitle': { EN: 'Music', RU: 'Музыка', UA: 'Музика', DE: 'Musik', IT: 'Musica', ES: 'Música', TR: 'Müzik' },
+  'music.heroDescription': { EN: 'Interviews with musicians and artists, and EPRIS reviews of the albums, releases and live performances that move us.', RU: 'Разговоры с музыкантами и артистами и обзоры EPRIS на альбомы, релизы и живые выступления, которые нас трогают.', UA: 'Розмови з музикантами й митцями та огляди EPRIS на альбоми, релізи й живі виступи, які нас зворушують.', DE: 'Gespräche mit Musikern und Künstlern sowie EPRIS-Rezensionen zu Alben, Veröffentlichungen und Live-Auftritten, die uns bewegen.', IT: 'Conversazioni con musicisti e artisti, e le recensioni di EPRIS su album, uscite ed esibizioni dal vivo che ci emozionano.', ES: 'Conversaciones con músicos y artistas, y las reseñas de EPRIS sobre los álbumes, lanzamientos y actuaciones en directo que nos conmueven.', TR: 'Müzisyenler ve sanatçılarla söyleşiler, ve bizi etkileyen albümler, çıkışlar ve canlı performanslar üzerine EPRIS incelemeleri.' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -3555,14 +3558,20 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
 }
 
 /**
- * /music: the interview pieces and the reviews that use the same `desk`
- * flag, on one page. Two titled groups in the same eyebrow/title/description
- * language as the homepage's Articles/Reviews strips (renderHomepageSection
- * below) — a section a reader lands on directly should read like the rest of
- * the site, not like a bespoke page. Either group is skipped while empty
- * rather than shown as a bare, cardless header; if both are empty (the
- * section's state before anything is tagged for it) a plain notice replaces
- * the page instead of rendering nothing.
+ * /music: since it moved to its own subdomain, this is a front door in the
+ * same sense the homepage is - the first thing a visitor to
+ * music.eprisjournal.com sees, not one stop among many tabs. It gets the
+ * masthead treatment other single-page sections use (ManifestPage's eyebrow
+ * + oversized serif title), just inverted to dark: reusing the exact ink
+ * (#180D13) and warm cream (#F7F2EC) the site's own footer already stands
+ * on, so a second, unrelated dark palette isn't introduced for one section.
+ *
+ * Below the masthead: the interview pieces and reviews that share the same
+ * `desk` flag, as two titled groups in the eyebrow/title/description language
+ * of the homepage's Articles/Reviews strips (renderHomepageSection below).
+ * Either group is skipped while empty rather than shown as a bare, cardless
+ * header; if both are empty (the section's state before anything is tagged
+ * for it) a plain notice takes their place under the masthead instead.
  */
 function MusicSection({
   articles,
@@ -3579,17 +3588,28 @@ function MusicSection({
 }) {
   const pieces = musicArticles(articles);
   const notices = musicReviews(reviews);
-
-  if (!pieces.length && !notices.length) {
-    return (
-      <div className="py-16 text-center">
-        <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.6)]">{t('music.empty')}</p>
-      </div>
-    );
-  }
+  const isEmpty = !pieces.length && !notices.length;
 
   return (
     <>
+      <section className="-mx-4 sm:-mx-8 md:-mx-16 mb-12 sm:mb-16 bg-[#180D13] px-4 py-20 text-center sm:px-12 sm:py-28">
+        <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.35em] text-[#B8956E] sm:text-xs">
+          {t('music.heroEyebrow')}
+        </p>
+        <h1 className="mb-6 font-crimson text-5xl leading-[1.05] text-[#F7F2EC] sm:text-6xl md:text-7xl">
+          {t('music.heroTitle')}
+        </h1>
+        <p className="mx-auto max-w-xl font-serif text-base leading-relaxed text-[rgba(247,242,236,0.72)] sm:text-lg">
+          {t('music.heroDescription')}
+        </p>
+      </section>
+
+      {isEmpty && (
+        <div className="py-16 text-center">
+          <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.6)]">{t('music.empty')}</p>
+        </div>
+      )}
+
       {pieces.length > 0 && (
         <section aria-labelledby="music-articles-title">
           <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
