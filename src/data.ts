@@ -816,7 +816,23 @@ export function getSectionVisibility(key: VisibilitySectionKey): Required<Sectio
   };
 }
 
+/**
+ * music.eprisjournal.com is the section's own front door: it makes no sense
+ * for that domain to redirect a visitor away from the one thing it exists to
+ * show, whatever the CMS visibility toggle (meant for the eprisjournal.com
+ * nav/route) currently says. eprisjournal.com/music keeps obeying the toggle
+ * as before — this only widens what counts as "enabled" on the subdomain.
+ */
+export function isMusicHost(): boolean {
+  try {
+    return window.location.hostname === 'music.eprisjournal.com';
+  } catch {
+    return false;
+  }
+}
+
 export function isSectionEnabled(key: VisibilitySectionKey): boolean {
+  if (key === 'music' && isMusicHost()) return true;
   return getSectionVisibility(key).page;
 }
 
