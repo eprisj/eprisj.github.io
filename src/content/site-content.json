@@ -7202,7 +7202,7 @@
         }
       ],
       "previewToken": "nb-302ed07ee17bba27",
-      "updatedAt": "2026-09-05T07:49:35.842Z"
+      "updatedAt": "2026-09-05T08:08:53.529Z"
     }
   ],
   "reviews": [
@@ -7435,7 +7435,7 @@
       ],
       "meta": "BARCELONA · RCR ARQUITECTES + PAU LLIMONA · 514.78 M² · 2016 · PHOTO: HISAO SUZUKI / RCR ARQUITECTES",
       "date": "AUG 15, 2026",
-      "updatedAt": "2026-08-28T09:58:12.231Z",
+      "updatedAt": "2026-09-05T08:08:53.836Z",
       "authorId": "author-1784732936927-kw554",
       "role": "Guest Editor",
       "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
@@ -40975,6 +40975,10 @@
         "navigation": false
       },
       "podcasts": {
+        "page": false,
+        "navigation": false
+      },
+      "music": {
         "page": false,
         "navigation": false
       }
