@@ -24092,6 +24092,54 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Gastredakteur",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 7,
+          "draft": true,
+          "previewToken": "77c15678861f6b53068b3386",
+          "title": "Marrow Deep",
+          "subject": "Mastodon · Loma Vista Recordings · 2026",
+          "rating": 0,
+          "desk": "music",
+          "category": "METAL",
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "date": "Aug 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+          "verdict": "Marrow Deep trauert nicht leise. Es errichtet eine Struktur groß genug, um den Kummer zu halten, und fordert dich dann heraus, durch jeden Raum davon zu gehen.",
+          "pros": [
+            "Das fünf Songs umfassende Suite um Out Like a Lamb verwandelt das Epitaph in Architektur, nicht in Spektakel",
+            "Neue Mitglieder Nick Johnston und João Nogueira werden in den Klang der Band integriert, anstatt durch ihn angekündigt zu werden",
+            "Golden Spires ist in buchstäblich aufsteigenden Stufen gebaut und verdient den Titel"
+          ],
+          "cons": [
+            "Bei dreizehn Tracks wiederholt die Platte gelegentlich eine Form, die sie bereits bewiesen hat, bauen zu können",
+            "Das Album fordert dazu auf, es als eine durchgehende Struktur zu lesen, und bietet keinen einzelnen Übergangsmoment für diejenigen, die danach suchen"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "Marrow Deep, veröffentlicht am 28. August 2026, ist das erste Mastodon-Album, das ohne Brent Hinds gemacht wurde, der die Band im März 2025 verließ und fünf Monate später bei einem Motorradunfall starb. Das Cover nennt diesen Verlust nicht beim Namen, aber jede Rezension liest das Album trotzdem durch ihn hindurch, und so tut diese hier auch: eine Band, die in der Öffentlichkeit neu aufbaut, mit zwei neuen festen Mitgliedern, Gitarrist Nick Johnston und Keyboarder João Nogueira, die in den Klang integriert sind, anstatt durch ihn angekündigt zu werden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+              "caption": "Mastodon live bei Rock im Park, 2022. Foto: Mr. Rossi, CC BY-SA 4.0, via Wikimedia Commons."
+            },
+            {
+              "type": "text",
+              "content": "Was die dreizehn Tracks zusammenhält, ist weniger ein Thema als eine Konstruktionsmethode. Kritiker haben bereits kathedralenartige Sprache bemüht, um es zu beschreiben: ein Lied, das sich wie eine Schlange nach oben windet, einen Turm erhebt und Türme, Querschiffe und Strebepfeiler beim Aufstieg zusammenfügt. Golden Spires verdient seinen Titel unter diesen Bedingungen. Es baut nicht so sehr auf einen Refrain hin, sondern auf eine Decke, Vers auf Vers gestapelt, bis eine Coda wie ein Gewölbe, das über einem schließt, erscheint. Das ist ein Album, das in Sektionen und Höhen denkt, nicht nur in Riffs."
+            },
+            {
+              "type": "text",
+              "content": "Das emotionale Herzstück des Albums ist eine Fünf-Lieder-Suite, die mit Out Like a Lamb beginnt, dem Nachruf des Schlagzeugers und Sängers Brann Dailor auf seine Mutter, dessen Titel dem alten Sprichwort über das März-Wetter entlehnt ist. Es ist die leiseste strukturelle Geste auf dem Album, Bass bewegt sich unter dem Gesang statt dahinter, und es legt den Grundriss fest, auf dem der Rest der Suite aufgebaut ist."
+            },
+            {
+              "type": "text",
+              "content": "Bei dreizehn Titeln wiederholt Marrow Deep gelegentlich eine Form, die es bereits bewiesen hat, dass es sie bauen kann, und ein Album, das so sehr darauf ausgelegt ist, als eine kontinuierliche Struktur gelesen zu werden, wird jeden frustrieren, der nach einem einzelnen, crossover Moment sucht. Es bietet keinen. Was es stattdessen bietet, ist eine Band, die Architektur über Spektakel wählt, um etwas so Schweres zu tragen, und meistens Erfolg hat."
+            }
+          ],
+          "updatedAt": "2026-09-05T15:30:34.237Z"
         }
       ],
       "libraryItems": [
@@ -29594,6 +29642,54 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Editor invitado",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 7,
+          "draft": true,
+          "previewToken": "77c15678861f6b53068b3386",
+          "title": "Marrow Deep",
+          "subject": "Mastodon · Loma Vista Recordings · 2026",
+          "rating": 0,
+          "desk": "music",
+          "category": "METAL",
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "date": "Aug 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+          "verdict": "Marrow Deep no llora en silencio. Levanta una estructura lo suficientemente grande para contener el dolor, luego te desafía a caminar por cada habitación de ella.",
+          "pros": [
+            "La suite de cinco canciones alrededor de Out Like a Lamb convierte la elegía en arquitectura, no en espectáculo",
+            "Los nuevos miembros Nick Johnston y João Nogueira son absorbidos en el sonido de la banda en lugar de ser anunciados por él",
+            "Golden Spires está construido en niveles ascendentes literales, y gana el título"
+          ],
+          "cons": [
+            "Con trece pistas, el disco ocasionalmente repite una forma que ya ha demostrado que puede construir",
+            "El álbum pide ser leído como una estructura continua, y no ofrece ningún momento de cruce único para quienes buscan uno"
+          ],
+          "content": [
+            {
+              "type": "texto",
+              "content": "Marrow Deep, lanzado el 28 de agosto de 2026, es el primer álbum de Mastodon hecho sin Brent Hinds, quien dejó la banda en marzo de 2025 y murió en un accidente de motocicleta cinco meses después. El disco no nombra esa pérdida en la funda, pero cada reseña lo ha leído a través de ella de todos modos, y también esta: una banda reconstruyendo en público, con dos nuevos miembros permanentes, guitarrista Nick Johnston y tecladista João Nogueira, absorbidos en el sonido en lugar de ser anunciados por él."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+              "caption": "Mastodon en vivo en Rock im Park, 2022. Foto: Mr. Rossi, CC BY-SA 4.0, vía Wikimedia Commons."
+            },
+            {
+              "type": "texto",
+              "content": "Lo que mantiene unidos los trece temas es menos un tema que un método de construcción. Los críticos ya han recurrido al lenguaje catedralicio para describirlo: una canción que se enrosca hacia arriba como una serpiente, levantando una torre y ensamblando agujas, transeptos y contrafuertes a medida que asciende. Golden Spires gana su título en esos términos. No construye hacia un estribillo tanto como hacia un techo, verso apilado sobre verso hasta que llega una coda como una bóveda que se cierra por encima. Eso es un disco que piensa en secciones y elevaciones, no solo en riffs."
+            },
+            {
+              "type": "texto",
+              "content": "El núcleo emocional del álbum es una suite de cinco canciones que se abre con Out Like a Lamb, la elegía del batería y vocalista Brann Dailor a su madre, cuyo título se toma de la vieja expresión sobre el clima de marzo. Es el gesto estructural más silencioso del disco, el bajo moviéndose debajo de la voz en lugar de detrás de ella, y establece el plano del piso sobre el cual se construye el resto de la suite."
+            },
+            {
+              "type": "texto",
+              "content": "En trece pistas, Marrow Deep ocasionalmente repite una forma que ya ha demostrado que puede construir, y un disco tan comprometido con la lectura como una estructura continua frustrará a cualquiera que busque un solo momento, crossover. No ofrece uno. Lo que ofrece en cambio es una banda que elige la arquitectura sobre el espectáculo para llevar algo tan pesado, y en su mayoría con éxito."
+            }
+          ],
+          "updatedAt": "2026-09-05T15:30:42.832Z"
         }
       ],
       "libraryItems": [
