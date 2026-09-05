@@ -45,7 +45,6 @@ import {
   getPicsId,
   isSectionEnabled,
   isSectionInNavigation,
-  isMusicHost,
   generalArticles,
   musicArticles,
   isMusicArticle,
@@ -253,16 +252,6 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
   'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
   'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
-  'music.articlesEyebrow': { EN: 'EPRIS / music', RU: 'EPRIS / музыка', UA: 'EPRIS / музика', DE: 'EPRIS / Musik', IT: 'EPRIS / musica', ES: 'EPRIS / música', TR: 'EPRIS / müzik' },
-  'music.articlesTitle': { EN: 'Interviews', RU: 'Интервью', UA: 'Інтерв’ю', DE: 'Interviews', IT: 'Interviste', ES: 'Entrevistas', TR: 'Röportajlar' },
-  'music.articlesDescription': { EN: 'Conversations with musicians and artists, on the work, the craft and the culture around it.', RU: 'Разговоры с музыкантами и артистами — о работе, ремесле и культуре вокруг неё.', UA: 'Розмови з музикантами й митцями — про роботу, ремесло і культуру навколо неї.', DE: 'Gespräche mit Musikern und Künstlern über die Arbeit, das Handwerk und die Kultur dahinter.', IT: 'Conversazioni con musicisti e artisti sul lavoro, il mestiere e la cultura che lo circonda.', ES: 'Conversaciones con músicos y artistas sobre el trabajo, el oficio y la cultura que lo rodea.', TR: 'Müzisyenler ve sanatçılarla iş, zanaat ve onu çevreleyen kültür üzerine sohbetler.' },
-  'music.reviewsEyebrow': { EN: 'EPRIS / music reviews', RU: 'EPRIS / музыкальные обзоры', UA: 'EPRIS / музичні огляди', DE: 'EPRIS / Musikrezensionen', IT: 'EPRIS / recensioni musicali', ES: 'EPRIS / reseñas de música', TR: 'EPRIS / müzik incelemeleri' },
-  'music.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
-  'music.reviewsDescription': { EN: 'What EPRIS has been listening to lately: albums, releases and live performances.', RU: 'Что EPRIS слушает в последнее время: альбомы, релизы и живые выступления.', UA: 'Що EPRIS слухає останнім часом: альбоми, релізи і живі виступи.', DE: 'Was EPRIS zuletzt gehört hat: Alben, Veröffentlichungen und Live-Auftritte.', IT: 'Cosa ha ascoltato di recente EPRIS: album, uscite ed esibizioni dal vivo.', ES: 'Lo que EPRIS ha estado escuchando últimamente: álbumes, lanzamientos y actuaciones en directo.', TR: 'EPRIS’in son zamanlarda dinledikleri: albümler, çıkışlar ve canlı performanslar.' },
-  'music.empty': { EN: 'Nothing published here yet.', RU: 'Здесь пока ничего не опубликовано.', UA: 'Тут поки що нічого не опубліковано.', DE: 'Hier ist noch nichts veröffentlicht.', IT: 'Non è stato ancora pubblicato nulla qui.', ES: 'Aún no se ha publicado nada aquí.', TR: 'Burada henüz bir şey yayınlanmadı.' },
-  'music.heroEyebrow': { EN: 'EPRIS Journal', RU: 'EPRIS Journal', UA: 'EPRIS Journal', DE: 'EPRIS Journal', IT: 'EPRIS Journal', ES: 'EPRIS Journal', TR: 'EPRIS Journal' },
-  'music.heroTitle': { EN: 'Music', RU: 'Музыка', UA: 'Музика', DE: 'Musik', IT: 'Musica', ES: 'Música', TR: 'Müzik' },
-  'music.heroDescription': { EN: 'Interviews with musicians and artists, and EPRIS reviews of the albums, releases and live performances that move us.', RU: 'Разговоры с музыкантами и артистами и обзоры EPRIS на альбомы, релизы и живые выступления, которые нас трогают.', UA: 'Розмови з музикантами й митцями та огляди EPRIS на альбоми, релізи й живі виступи, які нас зворушують.', DE: 'Gespräche mit Musikern und Künstlern sowie EPRIS-Rezensionen zu Alben, Veröffentlichungen und Live-Auftritten, die uns bewegen.', IT: 'Conversazioni con musicisti e artisti, e le recensioni di EPRIS su album, uscite ed esibizioni dal vivo che ci emozionano.', ES: 'Conversaciones con músicos y artistas, y las reseñas de EPRIS sobre los álbumes, lanzamientos y actuaciones en directo que nos conmueven.', TR: 'Müzisyenler ve sanatçılarla söyleşiler, ve bizi etkileyen albümler, çıkışlar ve canlı performanslar üzerine EPRIS incelemeleri.' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -910,7 +899,7 @@ const staggerItem = {
 
 // Shared motion tokens so interactions read as one system.
 const EASE = [0.22, 1, 0.36, 1] as const;
-const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'design', 'museum', 'studio', 'radio', 'podcasts', 'passport'];
+const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'museum', 'studio', 'radio', 'podcasts', 'passport'];
 /* Route transitions run in mode="wait", so the old page leaves BEFORE the new
    one arrives and the two durations add up. Symmetrical timings therefore read
    as a lag, not as grace: the eye is waiting on nothing for the whole exit.
@@ -1022,9 +1011,6 @@ function NavBar({
   const tabs: { id: VisibilitySectionKey; label: string }[] = [
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
-    // Literal like Design above: the label is a proper noun in every locale
-    // the journal publishes in, so it needs no translation key.
-    { id: 'music', label: 'Music' },
     { id: 'about', label: t('nav.about') },
     { id: 'manifest', label: t('nav.manifest') },
     { id: 'issue', label: t('nav.issue') },
@@ -3557,90 +3543,6 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
   );
 }
 
-/**
- * /music: since it moved to its own subdomain, this is a front door in the
- * same sense the homepage is - the first thing a visitor to
- * music.eprisjournal.com sees, not one stop among many tabs. It gets the
- * masthead treatment other single-page sections use (ManifestPage's eyebrow
- * + oversized serif title), just inverted to dark: reusing the exact ink
- * (#180D13) and warm cream (#F7F2EC) the site's own footer already stands
- * on, so a second, unrelated dark palette isn't introduced for one section.
- *
- * Below the masthead: the interview pieces and reviews that share the same
- * `desk` flag, as two titled groups in the eyebrow/title/description language
- * of the homepage's Articles/Reviews strips (renderHomepageSection below).
- * Either group is skipped while empty rather than shown as a bare, cardless
- * header; if both are empty (the section's state before anything is tagged
- * for it) a plain notice takes their place under the masthead instead.
- */
-function MusicSection({
-  articles,
-  reviews,
-  t,
-  onArticleClick,
-  onReviewClick,
-}: {
-  articles: Article[];
-  reviews: Review[];
-  t: (key: string) => string;
-  onArticleClick: (article: Article) => void;
-  onReviewClick: (review: Review) => void;
-}) {
-  const pieces = musicArticles(articles);
-  const notices = musicReviews(reviews);
-  const isEmpty = !pieces.length && !notices.length;
-
-  return (
-    <>
-      <section className="-mx-4 sm:-mx-8 md:-mx-16 mb-12 sm:mb-16 bg-[#180D13] px-4 py-20 text-center sm:px-12 sm:py-28">
-        <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.35em] text-[#B8956E] sm:text-xs">
-          {t('music.heroEyebrow')}
-        </p>
-        <h1 className="mb-6 font-crimson text-5xl leading-[1.05] text-[#F7F2EC] sm:text-6xl md:text-7xl">
-          {t('music.heroTitle')}
-        </h1>
-        <p className="mx-auto max-w-xl font-serif text-base leading-relaxed text-[rgba(247,242,236,0.72)] sm:text-lg">
-          {t('music.heroDescription')}
-        </p>
-      </section>
-
-      {isEmpty && (
-        <div className="py-16 text-center">
-          <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.6)]">{t('music.empty')}</p>
-        </div>
-      )}
-
-      {pieces.length > 0 && (
-        <section aria-labelledby="music-articles-title">
-          <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('music.articlesEyebrow')}</p>
-              <h2 id="music-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('music.articlesTitle')}</h2>
-            </div>
-            <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('music.articlesDescription')}</p>
-          </div>
-          <ArticlesSection articles={pieces} onArticleClick={onArticleClick} t={t} />
-        </section>
-      )}
-      {notices.length > 0 && (
-        <section
-          className={pieces.length > 0 ? 'mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12' : undefined}
-          aria-labelledby="music-reviews-title"
-        >
-          <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('music.reviewsEyebrow')}</p>
-              <h2 id="music-reviews-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('music.reviewsTitle')}</h2>
-            </div>
-            <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('music.reviewsDescription')}</p>
-          </div>
-          <ReviewsSection reviews={notices} t={t} onReviewClick={onReviewClick} />
-        </section>
-      )}
-    </>
-  );
-}
-
 function Sidebar({ t }: { t: (key: string) => string }) {
   const labels = [t('sidebar.lifestyle'), t('sidebar.travel'), t('sidebar.taste'), t('sidebar.design'), t('sidebar.culture'), t('sidebar.lifestyle'), t('sidebar.travel')];
   return (
@@ -3952,8 +3854,8 @@ function SearchResults({
 }
 
 
-const VALID_TABS = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
-const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'music', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
+const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
+const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
   const allArticles = getContentForLanguage(DEFAULT_LANGUAGE).articles;
@@ -4077,7 +3979,6 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
   articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
   reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
-  music: { title: 'Music — EPRIS Journal', description: 'Interviews with musicians and artists, and EPRIS reviews of albums, releases and live performances.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
   manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
@@ -4144,7 +4045,13 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
 
   if (article) {
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
-    const canonicalUrl = `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
+    const onMusicDesk = isMusicArticle(article);
+    // A music-desk piece's real home is the standalone showcase now - this
+    // route still resolves here (only bare /music redirects at nginx), but
+    // it should never be what search engines treat as canonical.
+    const canonicalUrl = onMusicDesk
+      ? `https://music.eprisjournal.com/article/${getSlugForArticle(article)}/`
+      : `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
     const keywords = Array.from(new Set([...(article.tags || []), article.category, article.subcategory, publicationName, 'architecture', 'design', 'contemporary art'].filter(Boolean))).join(', ');
     // `date` is free-typed editorial copy ("Jul 30, 2026", "15 серпня 2026") -
     // schema.org wants ISO 8601 here. publishedAt is the machine-readable
@@ -4152,7 +4059,6 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     // is only a fallback for the handful of older records without it.
     const isoPublished = article.publishedAt || article.date;
     const isoModified = article.updatedAt || isoPublished;
-    const onMusicDesk = isMusicArticle(article);
     document.title = `${article.title} — ${publicationName}`;
     setMeta('og:title', article.title);
     setMeta('og:description', article.excerpt);
@@ -4190,7 +4096,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
             onMusicDesk
-              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://eprisjournal.com/music' }
+              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://music.eprisjournal.com/' }
               : { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://eprisjournal.com/articles' },
             { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
           ],
@@ -4201,9 +4107,11 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     // Without this the SPA overwrote the build-time review page's own title and
     // canonical with the generic /reviews ones as soon as it booted.
     const imageUrl = resolveMediaSource(review.imageUrl, 1200, 630);
-    const canonicalUrl = `https://eprisjournal.com/review/${getSlugForReview(review)}`;
-    const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
     const onMusicDesk = isMusicReview(review);
+    const canonicalUrl = onMusicDesk
+      ? `https://music.eprisjournal.com/review/${getSlugForReview(review)}/`
+      : `https://eprisjournal.com/review/${getSlugForReview(review)}`;
+    const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
     document.title = `${review.title} — ${publicationName}`;
     setMeta('og:title', review.title);
     setMeta('og:description', summary);
@@ -4237,7 +4145,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
             onMusicDesk
-              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://eprisjournal.com/music' }
+              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://music.eprisjournal.com/' }
               : { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
             { '@type': 'ListItem', position: 3, name: review.title, item: canonicalUrl },
           ],
@@ -4266,14 +4174,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     const routeMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
     const routeTitle = activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
     const routeDescription = activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
-    // Music has its own front door now: eprisjournal.com/music still exists
-    // as a route (redirects away while the section stays disabled there),
-    // but it is never the canonical location for this content anymore.
-    const canonicalUrl = activeTab === 'gallery'
-      ? 'https://eprisjournal.com/'
-      : activeTab === 'music'
-        ? 'https://music.eprisjournal.com/'
-        : `https://eprisjournal.com/${activeTab}`;
+    const canonicalUrl = activeTab === 'gallery' ? 'https://eprisjournal.com/' : `https://eprisjournal.com/${activeTab}`;
     document.title = routeTitle;
     setMeta('og:title', routeTitle);
     setMeta('og:description', routeDescription);
@@ -4349,11 +4250,7 @@ export default function App() {
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><ShowcasePage /></Suspense>;
   }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
-  // On its own subdomain, the site's front page IS the Music section - a
-  // bare '/' has no route of its own to fall back to (parsePath returns {}
-  // for it), so the host decides what 'home' means instead of always
-  // meaning gallery.
-  const [activeTab, setActiveTab] = useState(initialRoute.tab || (isMusicHost() ? 'music' : 'gallery'));
+  const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
@@ -4756,7 +4653,7 @@ export default function App() {
       } else {
         setSelectedArticleId(null);
         setSelectedReviewId(parsed.reviewId ?? null);
-        setActiveTab(parsed.tab || (isMusicHost() ? 'music' : 'gallery'));
+        setActiveTab(parsed.tab || 'gallery');
         setPassportCode(parsed.passportCode);
       }
     };
@@ -4880,7 +4777,6 @@ export default function App() {
                   ))}</>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={generalArticles(articles)} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-                {activeTab === 'music' && <MusicSection articles={articles} reviews={reviews} onArticleClick={(article) => handleSelectArticle(article.id, article)} onReviewClick={handleSelectReview} t={t} />}
                 {activeTab === 'reviews' && <ReviewsSection reviews={generalReviews(reviews)} t={t} onReviewClick={handleSelectReview} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
