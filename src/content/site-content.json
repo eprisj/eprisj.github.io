@@ -7205,88 +7205,135 @@
       "updatedAt": "2026-09-05T14:49:18.396Z"
     },
     {
-      "id": 33,
-      "draft": true,
-      "previewToken": "efc77a042906fe45008533dd",
-      "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
+      "title": "Le Train Bleu: Dinner Inside an Advertisement",
       "author": "Viacheslav Munister",
       "role": "Author",
       "date": "Sep 5, 2026",
+      "publishedAt": "2026-09-05T17:12:39.000Z",
+      "excerpt": "In 1900 a railway company built a restaurant to sell a trip nobody had taken yet. The train it later named itself after stopped running in 2003. The advertisement, protected by the French state since 1972, is still open for dinner.",
       "category": "Architecture",
       "subcategory": "Essay",
-      "desk": "music",
       "tags": [
         "architecture",
-        "music",
-        "iannis xenakis",
-        "le corbusier",
-        "herzog & de meuron",
-        "oma",
-        "acoustics"
+        "belle epoque",
+        "paris",
+        "restaurant",
+        "france",
+        "monument historique"
       ],
-      "imageSeed": "built-to-a-score",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
-      "excerpt": "Most buildings host music: a stage, walls, a program, good acoustics. A handful of buildings do something stranger, and let a piece of music design them outright, or let the problem of holding sound decide everything from the roof down to the seats. Three buildings, three different bargains between the two disciplines.",
+      "imageSeed": "le-train-bleu-dinner-inside-an-advertisement",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
       "content": [
         {
           "type": "text",
-          "content": "In 1958, Le Corbusier's studio built a pavilion for Philips at the Brussels World's Fair that had no straight walls at all: nine curved concrete shells, tent-like and pointed, standing over a single dark hall built for eight minutes of music. The shape did not come from a sketch of a building. It came from a piece of music."
+          "content": "Climb the double staircase at the Gare de Lyon and you leave the railway. Below, the platforms run on schedules measured in minutes; the trains themselves have changed shape four or five times since the building opened. Above, nothing has been allowed to change at all. You are standing inside a room built in 1900 to sell a train that no longer exists, for a company that no longer exists, to a public that has been dead for a century. The room outlived all three. It is called Le Train Bleu, it is a working restaurant with a wine list and a reservations line, and since 1972 it has also been a Monument Historique of France - a piece of advertising copy that the state now protects the way it protects cathedrals."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
-          "caption": "The Philips Pavilion under construction, Brussels World's Fair, 1958.",
-          "credit": "Photo: Herbert Behrens / Anefo, CC0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
+          "content": "https://api.eprisjournal.com/uploads/mton40n3v6m216.jpg",
+          "alt": "Period postcard of the monumental staircase inside the Gare de Lyon, leading up to the station buffet, early twentieth century",
+          "caption": "The staircase to the Buffet de la Gare de Lyon, photographed not long after it opened. The restaurant now called Le Train Bleu sits at the top of it.",
+          "credit": "Public domain",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buffet_PLM_-_Le_train_Bleu_-_1900.jpg"
+        },
+        {
+          "type": "header",
+          "content": "A brochure you can sit inside",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "The shells were the work of Iannis Xenakis, a composer working as an engineer in Le Corbusier's atelier, and their geometry traces back to his 1954 orchestral piece Metastaseis. Xenakis had scored a passage for forty-six string instruments sliding continuously between pitches, glissando lines drawn as straight lines on paper that, taken together, described curved surfaces: what a mathematician would call a ruled surface, and what an engineer would recognise as a hyperbolic paraboloid. Xenakis modelled the pavilion's walls the same way he had modelled the glissandi, string and stiff wire standing in for sound. The building is, in a fairly literal sense, a piece of music built at architectural scale."
-        },
-        {
-          "type": "video",
-          "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
-          "caption": "Iannis Xenakis, Metastaseis (1953-54), for 61 musicians. The glissandi behind the pavilion's shells.",
-          "credit": "via YouTube"
-        },
-        {
-          "type": "text",
-          "content": "Inside, some 350 loudspeakers set into those walls spatialised Edgard Varèse's Poème électronique, an eight-minute tape piece routed live around the audience by technicians at a control desk, timed to shifts of coloured light. The pavilion was demolished on 30 January 1959, five months after it opened, its purpose used up with the fair that paid for it. What survives is the method: music read not as a soundtrack for a room, but as a set of instructions for building one."
-        },
-        {
-          "type": "video",
-          "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
-          "caption": "Edgard Varèse, Poème électronique (1958). Composed for the Philips Pavilion's 350 loudspeakers.",
-          "credit": "via YouTube"
+          "content": "The commission was never really for a restaurant. In 1900 the Compagnie des chemins de fer de Paris à Lyon et à la Méditerranée - the PLM - was rebuilding its Paris terminus from scratch for the Exposition Universelle, and it needed the new station to do more than move passengers through a building. It needed to convince them to keep coming back for a destination most of them had never seen: Provence, the Riviera, Algiers. The architect Marius Toudoire, who had already drawn the station's facade and its 67-metre clock tower, built in open homage to Big Ben, was asked to build a dining room that would do the selling. He built a room 26 metres long with a ceiling that behaves like a painted sky, and he covered its walls in forty-one paintings by seventeen different artists - Albert Maignan, Henri Gervex, François Flameng, Eugène Burnand among them - each one an advertisement for a city the trains below were supposed to reach. Orange, Marseille, Nice, Monaco, Algiers: you could eat your dinner and plan your whole itinerary off the walls without ever consulting a timetable."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
-          "caption": "The Elbphilharmonie's glass crown rises over the converted Kaispeicher warehouse, Hamburg.",
-          "credit": "Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
+          "content": "https://api.eprisjournal.com/uploads/mton40ylg933pv.jpg",
+          "alt": "Detail of a Belle Epoque mural inside Le Train Bleu, signed Albert Maignan 1905, depicting a garden party above the Roman theatre at Orange",
+          "caption": "One of the forty-one wall paintings, signed by Albert Maignan and dated 1905, labelled simply Orange - a stop on the PLM line rendered as a scene from high society rather than a photograph of a station.",
+          "credit": "Photo: Mbzt / Wikimedia Commons, CC BY 3.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1120998_Paris_XII_gare_de_Lyon_train_bleu_fresque_Orange_rwk.JPG"
         },
         {
           "type": "text",
-          "content": "Nearly sixty years later, Herzog & de Meuron's Elbphilharmonie in Hamburg, opened 11 January 2017, made the opposite bargain: instead of letting music generate the building's form, it let the requirements of hearing music decide almost everything else. Acoustician Yasuhisa Toyota laid the main hall out as a vineyard, terraces of seating climbing around a central stage in the manner Hans Scharoun had used for the Berlin Philharmonie in 1963, so that no listener among 2,100 sits more than 30 metres from the conductor. The hall's inner surface, some 10,000 individually milled gypsum-fibre panels, is cut with a different profile at every point to scatter sound evenly rather than let it collect in one place. The whole structure floats on 362 spring bearings, mechanically isolated from the building around it so that a passing train never reaches the stage. Above a converted brick warehouse, the concert hall's glass upper storeys read from outside as a wave, or a crown. From inside the hall, that image is almost beside the point: the room's actual job is acoustic, and its shape is a diagram of that job."
+          "content": "This is worth pausing on, because it is easy to file the room under “ornate” and move on to the food. A photograph documents a place. A commissioned oil painting, forty of them, hung at the scale of a cathedral, does something closer to a pitch: it tells you what the place feels like to the people who can afford to be there, which is a different and much more persuasive claim. The PLM was not decorating a waiting room. It was building the nineteenth century's version of a full-page spread in a glossy magazine, except the spread was eleven metres tall, gilded, lit by bronze chandeliers, and structurally load-bearing."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
-          "caption": "Casa da Música's folded exterior, Porto.",
-          "credit": "Photo: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
+          "content": "https://api.eprisjournal.com/uploads/mton41e22lwc01.jpg",
+          "alt": "Gilded stucco ceiling of Le Train Bleu with a bronze chandelier in the foreground and painted medallions labelled Paris and Lyon",
+          "caption": "The ceiling of the Grande Salle: painted city medallions set into stucco scrollwork, lit by the original bronze chandeliers.",
+          "credit": "CC0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(2).jpg"
+        },
+        {
+          "type": "header",
+          "content": "The measurements of an illusion",
+          "level": 2
         },
         {
           "type": "text",
-          "content": "Rem Koolhaas and Ellen van Loon's OMA took a third position with Casa da Música in Porto, opened in 2005. The office wanted to avoid the concert hall's standard shoebox shape, tried alternatives, and measured them against the shoebox on acoustics it could not beat. So OMA kept the box and hid it: a rectangular hall for 1,300 seats, glazed at both ends, sits inside an irregular white polyhedron that looks folded rather than built, as if the shoebox had been quarried out of a single asymmetric block. The shape the building wears on the outside has no obvious logic until you know there is a straight, acoustically correct room sitting inside it, and that everything faceted and irregular on the exterior is the architecture finding a public form for a decision it was not free to make."
+          "content": "The room has a name for every part of the fiction. The Salle Dorée, the Golden Room, runs 18.5 metres long under an 11-metre ceiling. The main dining room carries the name Réjane, after the actress who was one of its first regulars. Off to one side, the Salons Tunisien and Algérien - carved dark wood, geometric Arab motifs, orientalist landscapes - were built to stage a version of French Algeria for businessmen who would never travel there, favourite rooms for lunch meetings for exactly that reason. None of these spaces pretend to be modest. The building's decoration budget alone, in 1900 francs, could have built a provincial train station of its own. That was, in a sense, the point: the PLM was competing with rival railway companies for the same wealthy passengers, and the fastest way to prove your trains were worth taking was to prove your waiting room was worth living in."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mton41s025cv5t.jpg",
+          "alt": "Sculpted plaque above an archway in Le Train Bleu recording that President Emile Loubet inaugurated the buffet on 7 April 1901, flanked by two carved mermaids",
+          "caption": "The dedication still on the wall: “Emile Loubet, Président de la République Française, inaugura ce buffet le VII avril MDCCCCI.” The head of state opened a train station restaurant the way other governments open bridges.",
+          "credit": "CC0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(4).jpg"
         },
         {
           "type": "text",
-          "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
+          "content": "President Emile Loubet cut the ribbon himself on 7 April 1901, a detail the room still advertises on a carved plaque flanked by two mermaids, as if the opening of a station buffet required the same ceremony as a war memorial. In its first decades the room was simply called the Buffet de la Gare de Lyon - a functional name for a functional-sounding job, dining hall attached to a station. It only became Le Train Bleu in 1963, and this is where the story gets stranger rather than simpler: the overnight express it renamed itself after, with its dark-blue sleeping cars running between Calais and the Riviera, was still in service at the time - it would keep running for another forty years, until 2003. But by 1963 jet travel had already taken the glamour the train used to own; the Riviera was now a few hours away by air, and the twenty-hour sleeper had quietly slid from the fastest way to arrive into the most romantic way to be delayed. The restaurant borrowed the name at exactly the moment the real train stopped being the point and started being the legend. It has been selling a memory of travel since before the thing it named itself after had finished happening."
+        },
+        {
+          "type": "header",
+          "content": "A monument that keeps serving lunch",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In 1972 the French state made that memory official, listing the restaurant, the Salle Dorée, and the Tunisian and Algerian salons as Monuments Historiques - the same designation that protects Notre-Dame and the châteaux of the Loire. It is an unusual thing to protect: not a ruin, not a museum piece behind rope barriers, but a functioning commercial dining room that still needs working kitchens, fire exits, and a wine cellar. The paradox produced its own discipline. When the restaurant closed for three months in the summer of 2014 for a 4.5 million euro restoration - cleaning and repairing all forty-one paintings, regilding the stucco, rewiring chandeliers that had been retrofitted for electricity a century earlier - the work was led jointly by Agence Duthilleul, the practice responsible for the TGV network's stations, and an Architecte des Monuments Historiques, whose job was to make sure modernity touched nothing anyone could see. Architect Jean-Marie Duthilleul described the building's original idea as a doorway to the Mediterranean set inside Paris, its departing trains staged like ships leaving for somewhere exotic. The 2014 renovation restored that idea rather than updating it."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+          "alt": "Wide interior view of Le Train Bleu, showing the gilded oval bar counter, painted barrel-vaulted ceiling, chandeliers, and diners at white-clothed tables",
+          "caption": "The Grande Salle Réjane, 26 metres of painted ceiling over a room that has not stopped serving dinner since 1901.",
+          "credit": "CC0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu_(vue_int%C3%A9rieure)_en_f%C3%A9vrier_2023.jpg"
+        },
+        {
+          "type": "text",
+          "content": "What survived the century is not only plaster. The room absorbed a cultural afterlife it was never built to expect. Coco Chanel and Jean Cocteau took tables there in the 1920s; Colette wrote about it; Salvador Dalí, Brigitte Bardot and Jean Gabin were regulars later on. Seven films have used it as a location, from <em>Travels with My Aunt</em> in 1972 to the <em>Mr. Bean</em> holiday comedy in 2007 - a Belle Époque dining room playing itself, decade after decade, in stories that had nothing to do with railways. Each generation found a slightly different fiction to project onto the same forty-one paintings. That is what a genuinely successful piece of advertising does: it stops needing the product it was built to sell, and starts selling the feeling of having always been there."
+        },
+        {
+          "type": "header",
+          "content": "What is actually on the table",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "None of this would matter if the kitchen had modernised to match the ambition of the room, and to its credit it never has. Since 2018 the restaurant has been run for its operator, SSP, by the chef Michel Rostang, and the menu he built is deliberately unfashionable: leg of lamb carved tableside from a trolley, a gratin dauphinois made without cheese or egg in the old style, Bresse chicken with tarragon cream, steak tartare mixed in front of you, rum baba finished with a pour of rum at the table. There is no attempt to reinterpret the room in the kitchen's own image, the way a contemporary chef might feel obliged to do inside a monument. The food plays the same supporting role the paintings do: proof that a version of France existing mostly in memory is, for the length of a meal, still available to order."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mton426yr3s0w9.jpg",
+          "alt": "Daytime exterior of the Gare de Lyon facade, with arched windows carrying oval signs reading Le Train Bleu, above the station's entrance canopies",
+          "caption": "The station facade Toudoire designed alongside the restaurant, its arched windows still carrying the restaurant's name to the square outside.",
+          "credit": "Photo: APB11 / Wikimedia Commons, CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Les_fen%C3%AAtres_du_Train_Bleu_vues_du_parvis_de_la_gare_de_Lyon.jpg"
+        },
+        {
+          "type": "text",
+          "content": "Downstairs, the trains that made the room's fortune have mostly moved on. The line to the Riviera runs faster now and stops less; the TGV that eventually replaced the original Train Bleu does not carry its name, and passengers who want the coast today are more likely to compare fares on a phone than to sit down in a dining room and be sold the destination in oil paint. The advertisement, in other words, has completely outlived the product. What is left is a room that no longer has to persuade anyone of anything, protected by law from ever having to try a different pitch, still setting a table under a ceiling built to make you believe a train ride could feel like arriving somewhere before you had left. Eat there and you are not visiting the past. You are sitting inside a hundred-and-twenty-five-year-old sales pitch that the French state decided was worth telling forever, and paying, gladly, for the privilege of hearing it again."
         }
       ],
-      "updatedAt": "2026-09-05T16:02:50.522Z"
+      "draft": true,
+      "id": 33,
+      "authorId": "author-1784732936927-kw554",
+      "previewToken": "ltb-580a4a067d1a68d2",
+      "updatedAt": "2026-09-05T17:13:24.537Z"
     }
   ],
   "reviews": [
