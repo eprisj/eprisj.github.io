@@ -247,7 +247,9 @@ document.addEventListener('beforeinput', (event) => {
     { key: 'gallery',  label: 'Главная / Галерея', path: '/',          page: true, navigation: true },
     { key: 'articles', label: 'Статьи',             path: '/articles',  page: true, navigation: true },
     { key: 'reviews',  label: 'Reviews',            path: '/reviews',   page: true, navigation: true },
-    { key: 'music',    label: 'Music',              path: '/music',     page: true, navigation: true },
+    // Music moved to its own subdomain (music.eprisjournal.com) - it is
+    // always live there regardless of this panel, so a page/navigation
+    // toggle here would just be a control that visibly does nothing.
     { key: 'about',    label: 'About / Команда',    path: '/about',     page: true, navigation: true },
     { key: 'manifest', label: 'Манифест',           path: '/manifest',  page: true, navigation: false },
     { key: 'issue',    label: 'Текущий выпуск',     path: '/issue',     page: true, navigation: true },
