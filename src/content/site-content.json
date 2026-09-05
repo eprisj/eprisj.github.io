@@ -12863,45 +12863,45 @@
           "excerpt": "Большинство зданий принимают музыку: сцену, стены, программу, хорошую акустику. Немного зданий делают что-то более странное, позволяя музыкальному произведению проектировать их напрямую, или позволяя проблеме удержания звука решать всё — от крыши до сидений. Три здания, три разных соглашения между двумя дисциплинами.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "В 1958 году студия Le Corbusier построила павильон для Philips на Брюссельской всемирной выставке, который не имел ни одной прямой стены: девять изогнутых бетонных оболочек, похожих на палатки и остроконечных, возвышались над одним тёмным залом, предназначенным для восьми минут музыки. Форма не возникла из эскиза здания. Она возникла из музыкального произведения."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
               "caption": "Павильон Philips во время строительства, Брюссельская всемирная выставка, 1958.",
               "credit": "Фото: Herbert Behrens / Anefo, CC0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Оболочки были созданы Ианнисом Ксенакисом, композитором, работавшим инженером в ателье Le Corbusier, и их геометрия восходит к его оркестровой пьесе 1954 года Metastaseis. Ксенакис написал партию для сорока шести струнных инструментов, которые непрерывно скользили между нотами, глиссандо линий, нарисованных как прямые на бумаге, которые вместе описывали изогнутые поверхности: то, что математик назвал бы правиленной поверхностью, а инженер — гиперболическим параболоидом. Ксенакис моделировал стены павильона так же, как он моделировал глиссандо, струны и жесткую проволоку, заменяющие звук. Здание, в довольно буквальном смысле, — это музыкальное произведение, построенное в архитектурном масштабе."
             },
             {
-              "type": "видео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
               "caption": "Ианнис Ксенакис, Metastaseis (1953-54), для 61 музыканта. Глиссандо за оболочками павильона.",
               "credit": "через YouTube"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Внутри, около 350 динамиков, встроенных в эти стены, пространственно расположили Poème électronique Эдгара Варèse, восьмиминутную кассетную композицию, которая транслировалась вживую вокруг аудитории техникой на пульте управления, синхронизированной с изменениями цветного света. Павильон был снесён 30 января 1959 года, через пять месяцев после открытия, его назначение исчерпалось с проведением ярмарки, которая его финансировала. Что осталось — это метод: музыка воспринимается не как саундтрек к комнате, а как набор инструкций для её построения."
             },
             {
-              "type": "видео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
               "caption": "Эдгар Варèse, Poème électronique (1958). Написано для 350 динамиков павильона Philips.",
               "credit": "через YouTube"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "Стеклянная корона Elbphilharmonie возвышается над переделанным складом Kaispeicher, Гамбург.",
               "credit": "Фото: Dietmar Rabich, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Почти шестьдесят лет спустя, Elbphilharmonie от Herzog & de Meuron в Гамбурге, открытая 11 января 2017 года, сделала противоположную сделку: вместо того чтобы позволить музыке формировать здание, она позволила требованиям прослушивания музыки определять почти всё остальное. Акустик Юсухиса Тойота спроектировал главный зал как виноградник, террасы сидений поднимаются вокруг центральной сцены в стиле, который использовал Ханс Шарун для Berliner Philharmonie в 1963 году, так что ни один слушатель из 2100 не сидит более чем в 30 метрах от дирижёра. Внутренняя поверхность зала, состоящая из около 10 000 индивидуально фрезерованных гипсопрофильных панелей, вырезана с разным профилем в каждой точке, чтобы равномерно рассеивать звук, а не позволять ему скапливаться в одном месте. Вся структура плавает на 362 пружинных опорах, механически изолированных от окружающего здания, чтобы проходящий поезд никогда не достигал сцену. Над переделанным кирпичным складом стеклянные верхние этажи концертного зала выглядят снаружи как волна или корона. Изнутри зал, этот образ почти не важен: фактическая задача комнаты — акустика, а её форма — диаграмма этой задачи."
             },
             {
@@ -13184,24 +13184,24 @@
           ],
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Marrow Deep, выпущенный 28 августа 2026 года, является первым альбомом Mastodon, созданным без Brent Hinds, который покинул группу в марте 2025 года и умер пять месяцев спустя в результате мотоциклетной аварии. Обложка не упоминает эту потерю, но каждый обзор всё равно рассматривает альбом через него, и этот тоже: группа, которая восстанавливается публично, с двумя новыми постоянными участниками, гитаристом Nick Johnston и клавишником João Nogueira, которые интегрированы в звук, а не объявлены им."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
               "caption": "Mastodon вживую на Rock im Park, 2022. Фото: Mr. Rossi, CC BY-SA 4.0, через Wikimedia Commons."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Что связывает тринадцать треков, так это скорее метод построения, чем тема. Критики уже использовали язык, похожий на описание собора: песня, которая извивается вверх, как змея, возводит башню и объединяет башни, трансепты и контрфорсы по мере подъёма. Golden Spires оправдывает своё название в этих условиях. Он строится не столько к припеву, сколько к потолку, куплет за куплетом, пока кода не появится, как свод, закрывающийся сверху. Это альбом, который думает по разделам и высотам, а не только в рифах."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Эмоциональное сердце альбома — это пятичастный блок из песен, начинающийся с Out Like a Lamb, панегирика барабанщика и вокалиста Brann Dailor своей матери, название которого заимствовано из старой пословицы о мартовской погоде. Это самый тихий структурный жест на альбоме, с басом, движущимся под вокалом, а не за ним, и он закладывает основу, на которой построена остальная часть блока. "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "С тринадцатью названиями, Marrow Deep иногда повторяет форму, которую он уже доказал, что может построить, и альбом, который спроектирован так, чтобы читаться как непрерывная структура, разочарует любого, кто ищет один переходный момент. Его не предлагает. Вместо этого он предлагает группу, которая выбирает архитектуру вместо зрелища, чтобы нести что-то такое тяжелое, и в основном добивается успеха."
             }
           ],
@@ -18498,60 +18498,60 @@
           "excerpt": "Більшість будівель приймають музику: сцену, стіни, програму, хорошу акустику. Декілька будівель роблять щось дивніше, і дозволяють шматку музики проектувати їх напряму, або дозволяють проблемі утримання звуку визначати все від даху до сидінь. Три будівлі, три різні угоди між двома дисциплінами.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "У 1958 році студія Le Corbusier побудувала павільйон для Philips на Брюссельській всесвітній виставці, який не мав зовсім прямих стін: дев’ять кривих бетонних оболонок, схожих на намети і гострих, що стояли над однією темною залою, створеною для восьми хвилин музики. Форма не походила з ескізу будівлі. Вона виникла з музичного твору."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
               "caption": "Павільйон Philips під час будівництва, Брюссельська всесвітня виставка, 1958.",
               "credit": "Фото: Herbert Behrens / Anefo, CC0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Оболонки були роботою Іанніса Ксенакиса, композитора, який працював інженером в ательє Le Corbusier, і їхня геометрія простежується до його оркестрової композиції 1954 року Metastaseis. Ксенакис написав частину для сорока шести струнних інструментів, що безперервно ковзали між нотами, глісандо, намальовані як прямі лінії на папері, які разом описували криві поверхні: те, що математик назвав би керованою поверхнею, а інженер — гіперболічною параболоїдою. Ксенакис моделював стіни павільйону так само, як і глісандо, струни і жорсткі дроти, що виступали замість звуку. Будівля, в досить буквальному сенсі, є музичним твором, побудованим у архітектурному масштабі."
             },
             {
-              "type": "відео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
               "caption": "Іанніс Ксенакис, Metastaseis (1953-54), для 61 музиканта. Глісандо за оболонками павільйону.",
               "credit": "через YouTube"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Всередині, деякі 350 гучномовців вбудовані у ці стіни просторово розмістили Poème électronique Едгара Варезе, восьмихвилинний касетний твір, який транслювався в реальному часі навколо аудиторії техніками на пульту керування, синхронізований із змінами кольорового світла. Павільйон був зруйнований 30 січня 1959 року, через п’ять місяців після відкриття, його мета вичерпалася разом із ярмаркою, яка його фінансувала. Те, що залишилось — це метод: музику сприймати не як саундтрек до кімнати, а як набір інструкцій для її побудови."
             },
             {
-              "type": "відео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
               "caption": "Едгар Варезе, Poème électronique (1958). Скомпоновано для 350 гучномовців Pavilion Philips.",
               "credit": "через YouTube"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "Скляна корона Elbphilharmonie підноситься над переробленим складом Kaispeicher, Гамбург.",
               "credit": "Фото: Dietmar Rabich, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Майже через шістдесят років, Elbphilharmonie від Herzog & de Meuron у Гамбурзі, відкритий 11 січня 2017 року, зробив протилежну угоду: замість дозволяти музиці формувати будівлю, він дозволив вимогам прослуховування музики визначати майже все інше. Акустик Юсухіса Тойота спроектував головний зал у вигляді виноградника, тераси сидінь піднімалися навколо центральної сцени у стилі, який використовував Ганс Шарун для Berliner Philharmonie у 1963 році, щоб жоден слухач із 2100 не сидів більше ніж за 30 метрів від диригента. Внутрішня поверхня залу, близько 10 000 індивідуально оброблених гіпсофібрових панелей, кожна з яких має різний профіль, щоб рівномірно розсіювати звук, а не дозволяти йому збиратися в одному місці. Вся структура плаває на 362 пружинних опорах, механічно ізольованих від навколишньої будівлі, щоб проїжджаючий поїзд ніколи не досягав сцени. Над переробленим цегляним складом, скляні верхні поверхи концертної зали ззовні виглядають як хвиля або корона. Зсередини залу цей образ майже не має значення: фактичне завдання кімнати — акустика, а її форма — діаграма цього завдання."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
               "caption": "Згорнутий зовнішній вигляд Casa da Música, Порту.",
               "credit": "Фото: John Samuel, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Rem Koolhaas та Ellen van Loon's OMA зайняли третю позицію з Casa da Música у Порту, відкриту у 2005 році. Офіс хотів уникнути стандартної форми концертної зали у вигляді коробки, спробував альтернативи і порівняв їх із коробкою за акустикою, яку не міг перевершити. Тому OMA залишили коробку і сховали її: прямокутна зала на 1300 місць, засклена з обох кінців, розташована всередині нерегулярного білого полігону, що здається згорнутим, а не збудованим, ніби коробка була вирізана з одного асиметричного блоку. Форма, яку має зовнішній вигляд будівлі, не має очевидної логіки, поки не зрозумієш, що всередині знаходиться пряма, акустично правильна кімната, і що все фасетне і нерегулярне зовні — це архітектура, яка шукає публічну форму для рішення, яке вона не могла вільно прийняти."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Три будівлі, три різні відносини до однієї й тієї ж проблеми. Xenakis дозволив музичному твору стати дахом. Toyota та Herzog & de Meuron дозволили фізиці слуху диктувати кімнату, а потім обгорнули будівлю навколо результату. Koolhaas зберіг ту форму, яку наполягають акустика, і весь решту будівлі сперечався з нею. Жодна з трьох не стосується безпосередньо музики в архітектурі. Вони про те, що трапляється, коли дисципліна, яка працює на послідовності та пропорції, дозволяється давати накази тій, що працює на навантаженні та матеріалі, або змушена відповідати їй."
             }
           ],
@@ -18819,24 +18819,24 @@
           ],
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Marrow Deep, випущений 28 серпня 2026 року, є першим альбомом Mastodon, створеним без Brent Hinds, який залишив гурт у березні 2025 року і помер п’ять місяців потому в автокатастрофі на мотоциклі. Обкладинка не називає цю втрату, але кожен огляд все одно читає альбом через нього, і цей теж: гурт, що відновлюється публічно, з двома новими постійними учасниками, гітаристом Nick Johnston і клавішником João Nogueira, які інтегровані у звук, а не оголошені ним."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
               "caption": "Mastodon виступає на Rock im Park, 2022. Фото: Mr. Rossi, CC BY-SA 4.0, через Wikimedia Commons."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Що тримає разом тринадцять треків, менше тема, ніж метод побудови. Критики вже використовували катедральну мову для опису цього: пісня, що піднімається вгору, як змія, піднімає вежу і поєднує вежі, трансепти та контрфорси під час підйому. Golden Spires заслужує свою назву за цих умов. Вона будується не так до хору, як до стелі, ряд за рядком, доки кода не з’явиться, як склепіння, що закриває зверху. Це альбом, який думає у секціях і висотах, а не лише у рифах."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Емоційне серце альбому — п’ятичастий блок пісень, що починається з Out Like a Lamb, еулогії барабанщика і вокаліста Brann Dailor для його матері, назва якої запозичена з старого прислів’я про березневу погоду. Це найтихіший структурний жест на альбомі, з басом, що рухається під вокалом, а не позаду нього, і він закладає основу, на якій побудовано решту блоку. "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "З дванадцятьма тривіршами, Marrow Deep іноді повторює форму, яку він уже довів, що може побудувати, і альбом, який спроектований так, щоб його можна було читати як безперервну структуру, розчарує будь-кого, хто шукає один перехідний момент. Його не пропонує. Замість цього він пропонує гурт, який обирає архітектуру замість видовища, щоб нести щось таке важке, і здебільшого досягає успіху."
             }
           ],
@@ -29768,18 +29768,18 @@
           "excerpt": "La mayoría de los edificios albergan música: un escenario, paredes, un programa, buena acústica. Un puñado de edificios hace algo más extraño, y dejan que una pieza de música los diseñe directamente, o dejan que el problema de sostener el sonido decida todo desde el techo hasta los asientos. Tres edificios, tres acuerdos diferentes entre las dos disciplinas.",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "En 1958, el estudio de Le Corbusier construyó un pabellón para Philips en la Exposición Universal de Bruselas que no tenía paredes rectas en absoluto: nueve conchas de concreto curvado, en forma de tienda y puntiagudas, que se levantaban sobre un solo vestíbulo oscuro construido para ocho minutos de música. La forma no provino de un boceto de un edificio. Provino de una pieza de música."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
               "caption": "El Pabellón Philips en construcción, Exposición Universal de Bruselas, 1958.",
               "credit": "Foto: Herbert Behrens / Anefo, CC0, vía Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Las conchas fueron obra de Iannis Xenakis, un compositor que trabajaba como ingeniero en el taller de Le Corbusier, y su geometría remite a su pieza orquestal de 1954 Metastaseis. Xenakis había puntuado un pasaje para cuarenta y seis instrumentos de cuerda que deslizaban continuamente entre tonos, líneas de glissando dibujadas como líneas rectas en papel que, tomadas en conjunto, describían superficies curvas: lo que un matemático llamaría una superficie reglada, y lo que un ingeniero reconocería como un paraboloide hiperbólico. Xenakis modeló las paredes del pabellón de la misma manera que modeló los glissandi, cuerdas y alambres rígidos que representaban el sonido. El edificio es, en un sentido bastante literal, una pieza de música construida a escala arquitectónica."
             },
             {
@@ -29789,7 +29789,7 @@
               "credit": "vía YouTube"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "En el interior, unos 350 altavoces integrados en esas paredes espacializaron el Poème électronique de Edgard Varèse, una pieza de cinta de ocho minutos enrutada en vivo alrededor del público por técnicos en un escritorio de control, sincronizada con cambios de luz de colores. El pabellón fue demolido el 30 de enero de 1959, cinco meses después de su apertura, su propósito cumplido con la feria que lo financió. Lo que queda es el método: la música no se lee como una banda sonora para una habitación, sino como un conjunto de instrucciones para construir una."
             },
             {
@@ -29799,29 +29799,29 @@
               "credit": "a través de YouTube"
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "La corona de cristal de la Elbphilharmonie se eleva sobre el almacén Kaispeicher convertido, Hamburgo.",
               "credit": "Foto: Dietmar Rabich, CC BY-SA 4.0, a través de Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Casi sesenta años después, la Elbphilharmonie de Herzog & de Meuron en Hamburgo, inaugurada el 11 de enero de 2017, hizo la oferta opuesta: en lugar de dejar que la música genere la forma del edificio, permitió que los requisitos de escuchar música decidieran casi todo lo demás. El acústico Yasuhisa Toyota diseñó la sala principal como una viña, terrazas de asientos que suben alrededor de un escenario central al estilo que Hans Scharoun utilizó para la Berliner Philharmonie en 1963, de modo que ningún oyente entre 2,100 se siente a más de 30 metros del director. La superficie interior de la sala, compuesta por unos 10,000 paneles de fibra de yeso tallados individualmente, está cortada con un perfil diferente en cada punto para dispersar el sonido de manera uniforme en lugar de dejar que se acumule en un solo lugar. Toda la estructura flota sobre 362 cojinetes de resorte, aislada mecánicamente del edificio que la rodea para que un tren en paso nunca llegue al escenario. Sobre un almacén de ladrillos convertido, los pisos superiores de cristal del auditorio parecen desde afuera una ola, o una corona. Desde dentro de la sala, esa imagen casi no importa: el trabajo real de la habitación es acústico, y su forma es un diagrama de ese trabajo."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
               "caption": "Exterior plegado de Casa da Música, Porto.",
               "credit": "Foto: John Samuel, CC BY-SA 4.0, vía Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Rem Koolhaas y Ellen van Loon's OMA ocupó la tercera posición con Casa da Música en Porto, inaugurada en 2005. La oficina quería evitar la forma estándar de la sala de conciertos, probó alternativas y las midió contra la caja de zapatos en acústica que no podía superar. Así que OMA mantuvo la caja y la escondió: una sala rectangular para 1,300 asientos, acristalada en ambos extremos, se encuentra dentro de un poliedro blanco irregular que parece doblado en lugar de construido, como si la caja de zapatos hubiera sido extraída de un solo bloque asimétrico. La forma que el edificio lleva en el exterior no tiene una lógica obvia hasta que sabes que hay una habitación recta, acústicamente correcta, en su interior, y que todo lo facetado e irregular en el exterior es la arquitectura encontrando una forma pública para una decisión que no podía tomar libremente."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Tres edificios, tres relaciones diferentes con el mismo problema. Xenakis dejó que una pieza de música se convirtiera en un techo. Toyota y Herzog & de Meuron dejaron que la física de la audición dictara una habitación, luego envolvieron un edificio alrededor del resultado. Koolhaas mantuvo la forma que la acústica insiste y pasó el resto del edificio discutiendo con ella. Ninguno de los tres trata realmente sobre música en arquitectura. Se trata de lo que sucede cuando una disciplina que funciona con secuencia y proporción se le permite dar órdenes a otra que funciona con carga y material, o se le hace responder a ella en su lugar."
             }
           ],
@@ -30088,24 +30088,24 @@
           ],
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "Marrow Deep, lanzado el 28 de agosto de 2026, es el primer álbum de Mastodon hecho sin Brent Hinds, quien dejó la banda en marzo de 2025 y murió cinco meses después en un accidente de motocicleta. La portada no menciona esta pérdida, pero cada reseña aún lee el álbum a través de él, y también esta: una banda reconstruyéndose públicamente, con dos nuevos miembros permanentes, guitarrista Nick Johnston y tecladista João Nogueira, que están integrados en el sonido en lugar de ser anunciados por él."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
               "caption": "Mastodon en vivo en Rock im Park, 2022. Foto: Mr. Rossi, CC BY-SA 4.0, vía Wikimedia Commons."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Lo que mantiene unidos los trece temas es menos un tema que un método de construcción. Los críticos ya han empleado un lenguaje similar al de una catedral para describirlo: una canción que se enrosca hacia arriba como una serpiente, levanta una torre y combina torres, transeptos y contrafuertes a medida que asciende. Golden Spires gana su título bajo estas condiciones. Construye no tanto hacia un estribillo como hacia un techo, verso apilado sobre verso, hasta que una coda aparece como una bóveda que se cierra sobre la cabeza. Este es un álbum que piensa en secciones y alturas, no solo en riffs."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El corazón emocional del álbum es una suite de cinco canciones que comienza con Out Like a Lamb, la elegía del baterista y cantante Brann Dailor para su madre, cuyo título se toma del viejo proverbio sobre el clima de marzo. Es el gesto estructural más silencioso del álbum, con el bajo moviéndose debajo de las voces en lugar de detrás de ellas, y establece la base sobre la cual se construye el resto de la suite."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Con trece títulos, Marrow Deep ocasionalmente repite una forma que ya ha demostrado que puede construir, y un álbum que está diseñado para ser leído como una estructura continua frustrará a cualquiera que busque un solo momento de cruce. No ofrece ninguno. Lo que en cambio ofrece es una banda que elige la arquitectura sobre el espectáculo para llevar algo tan pesado, y en su mayoría tiene éxito."
             }
           ],
@@ -35423,7 +35423,7 @@
               "credit": "via YouTube"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "<p>İçeride, yaklaşık 350 yüksek sesli hoparlör, Edgard Varèse'nin <em>Poème électronique</em> adlı sekiz dakikalık bant parçasını mekânsal hale getirdi, bu parça, ışıkların renkli geçişlerine göre zamanlanmış, kontrol masasında teknisyenler tarafından canlı olarak seyirci etrafında yönlendirilmişti. Pavilion, açıldıktan beş ay sonra, 30 Ocak 1959'da yıkıldı, amacı, onu finanse eden fuarla birlikte kullanıldı. Hayatta kalan şey yöntemdir: müzik, bir oda için bir fon müziği olarak değil, bir oda inşa etme talimatları seti olarak okunur.</p>"
             },
             {
@@ -35433,29 +35433,29 @@
               "credit": "via YouTube"
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "<p>Elbphilharmonie'nin cam tacı, Hamburg'daki dönüştürülmüş Kaispeicher deposunun üzerinde yükseliyor.</p>",
               "credit": "<p>Fotoğraf: Dietmar Rabich, CC BY-SA 4.0, Wikimedia Commons aracılığıyla</p>",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "<p>Neredeyse altmış yıl sonra, Herzog & de Meuron'un Hamburg'daki Elbphilharmonie'si, 11 Ocak 2017'de açıldı, tersini yaptı: müziğin binanın şeklini oluşturmasına izin vermek yerine, müzik dinleme gereksinimlerinin neredeyse her şeyi belirlemesine izin verdi. Akustik uzmanı Yasuhisa Toyota, ana salonu bir bağ bahçesi gibi düzenledi, oturma terasları merkezi bir sahne etrafında yükseliyor, Hans Scharoun'un 1963'te Berlin Filarmoni için kullandığı tarzda, böylece 2.100 dinleyiciden hiçbiri şeften 30 metreden fazla uzaklıkta oturmuyor. Salonun iç yüzeyi, yaklaşık 10.000 bireysel olarak frezelenmiş alçıtaşı-lif paneli, sesi tek bir noktada toplamak yerine eşit şekilde dağıtmak için her noktada farklı bir profil ile kesilmiştir. Tüm yapı, 362 yaylı yatak üzerinde yüzüyor, çevresindeki bina ile mekanik olarak izole edilmiştir, böylece geçen bir tren sahneye asla ulaşamaz. Dönüştürülmüş bir tuğla deposunun üzerinde, konser salonunun cam üst katları dışarıdan bir dalga veya taç gibi görünür. Salondan içeriye bakıldığında, bu görüntü neredeyse önemli değildir: odanın gerçek görevi akustiktir ve şekli bu görevin diyagramıdır.</p>"
             },
             {
-              "type": "görüntü",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
               "caption": "Casa da Música'nın katlanmış dış cephesi, Porto.",
               "credit": "Fotoğraf: John Samuel, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Rem Koolhaas ve Ellen van Loon'un OMA'sı, Porto'daki Casa da Música ile üçüncü sırayı aldı, 2005'te açıldı. Ofis, konser salonunun standart kutu şeklinin önüne geçmek istedi, alternatifler denedi ve bunları akustik açısından karşılaştırdı; kutuyu yenemedi. Bu yüzden OMA kutuyu korudu ve gizledi: hem uçlarda camlı, 1.300 koltuk kapasiteli dikdörtgen bir salon, eğri olmayan beyaz bir çokgenin içinde yer alır, sanki katlanmış gibi görünen, inşa edilmemiş, tek bir asimetrik bloktan çıkarılmış gibi. Binanın dışarıdan görünen şekli, içinde düzgün akustik bir oda olduğunu ve dışarıdaki her şeyin çokgen ve düzensiz olmasının, mimarlığın, karar vermek için özgür olmadığı bir kamu formu bulmaya çalışması olduğunu bilene kadar belirgin bir mantık taşımaz."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Üç bina, aynı probleme üç farklı ilişki. Xenakis, bir müzik parçasını bir çatı haline getirdi. Toyota ve Herzog & de Meuron, işitme fiziğinin bir odayı belirlemesine izin verdi, sonra sonucu bir bina ile sardı. Koolhaas, akustiklerin ısrar ettiği bir şekli korudu ve binanın geri kalanında onunla tartıştı. Hiçbiri gerçekten mimaride müzikle ilgili değil. Bunlar, bir disiplinin sıralama ve oran üzerinde çalışırken, yük ve malzeme üzerinde çalışan bir disipline emir vermesine veya onun yerine cevap vermesine izin verildiğinde olanlar hakkında."
             }
           ],
@@ -35722,24 +35722,24 @@
           ],
           "content": [
             {
-              "type": "metin",
+              "type": "text",
               "content": "Marrow Deep, 28 Ağustos 2026'da yayınlandı, Brent Hinds olmadan yapılan ilk Mastodon albümüdür, ki kendisi Mart 2025'te gruptan ayrılmış ve beş ay sonra motosiklet kazasında ölmüştür. Kapak bu kaybı adlandırmaz, ancak her inceleme yine de albümü onun üzerinden okur, ve bu da öyle: halka açık bir şekilde yeniden inşa edilen bir grup, iki yeni kalıcı üye ile, gitarist Nick Johnston ve klavyeci João Nogueira, sesle entegre olmuş, duyurulmak yerine."
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
               "caption": "Mastodon Rock im Park'ta canlı, 2022. Fotoğraf: Mr. Rossi, CC BY-SA 4.0, Wikimedia Commons aracılığıyla."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "On üç parçayı bir arada tutan şey, bir tema değil, daha çok bir inşa yöntemi. Eleştirmenler zaten onu katedral benzeri bir dil kullanarak tanımladı: yılan gibi yukarı doğru kıvrılan, bir kule yükselten ve kuleleri, transeptleri ve payandaları birleştiren bir şarkı. Golden Spires, bu koşullar altında unvanını hak ediyor. Bir nakarata değil, bir tavana doğru inşa eder, dize dize dizilmiş, ta ki bir coda, yukarıda kapanan bir tonoz gibi ortaya çıkana kadar. Bu, sadece riffler değil, bölümler ve yükseklikler içinde düşünen bir albümdür."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Albümün duygusal kalbi, Out Like a Lamb ile başlayan beş şarkılık bir suite'dir; davulcu ve şarkıcı Brann Dailor'un annesine ithaf ettiği, eski atasözünden alınmış Mart havası hakkında. Albümdeki en sessiz yapısal jesttir, bas vokallerin arkasında değil, altında hareket eder ve suite'in geri kalanının inşa edildiği temeli atar."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "On üç başlıkla, Marrow Deep bazen daha önce inşa edebileceğini kanıtladığı bir formu tekrar eder ve sürekli yapı olarak okunmak üzere tasarlanmış bir albüm, tek bir geçiş anı arayanları hayal kırıklığına uğratacaktır. Hiçbirini sunmaz. Onun yerine sunduğu şey, bir şeyleri taşımak için gösteri yerine mimariyi tercih eden ve çoğunlukla başaran bir grup."
             }
           ],
@@ -41023,7 +41023,7 @@
               "credit": "via YouTube"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Dentro, circa 350 altoparlanti inseriti in quelle pareti spazializzarono Edgard Varèse's Poème électronique, un pezzo su nastro di otto minuti instradato dal vivo intorno al pubblico da tecnici a una consolle di controllo, sincronizzato con cambi di luci colorate. Il padiglione fu demolito il 30 gennaio 1959, cinque mesi dopo la sua apertura, il suo scopo esaurito con la fiera che lo finanziò. Ciò che sopravvive è il metodo: musica letta non come colonna sonora di una stanza, ma come un insieme di istruzioni per costruirne una."
             },
             {
@@ -41033,14 +41033,14 @@
               "credit": "via YouTube"
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "La corona di vetro dell'Elbphilharmonie si erge sopra il magazzino Kaispeicher riconvertito, Amburgo.",
               "credit": "Foto: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Quasi sessant'anni dopo, l'Elbphilharmonie di Herzog & de Meuron ad Amburgo, inaugurata l'11 gennaio 2017, fece l'opposto: invece di lasciare che la musica generasse la forma dell'edificio, lasciò che i requisiti di ascoltare la musica decidesse quasi tutto il resto. L'acustico Yasuhisa Toyota progettò la sala principale come un vigneto, terrazze di sedili che si arrampicano intorno a un palco centrale nel modo in cui Hans Scharoun aveva usato per la Berlin Philharmonie nel 1963, così che nessun ascoltatore tra 2.100 si trovi a più di 30 metri dal direttore d'orchestra. La superficie interna della sala, circa 10.000 pannelli di fibra di gesso lavorati singolarmente, è tagliata con un profilo diverso in ogni punto per diffondere il suono in modo uniforme piuttosto che lasciarlo raccogliere in un punto. L'intera struttura galleggia su 362 molle a molla, meccanicamente isolata dall'edificio circostante in modo che un treno in transito non raggiunga mai il palco. Sopra un magazzino di mattoni riconvertito, i piani superiori in vetro della sala da concerto si leggono dall'esterno come un'onda, o una corona. Dall'interno della sala, quell'immagine è quasi irrilevante: il vero compito della stanza è acustico, e la sua forma è un diagramma di quel compito."
             },
             {
@@ -41339,7 +41339,7 @@
               "content": "Il cuore emotivo dell'album è una suite di cinque canzoni che inizia con Out Like a Lamb, l'elogio del batterista e cantante Brann Dailor per sua madre, il cui titolo è preso dal vecchio proverbio sul tempo di marzo. È il gesto strutturale più silenzioso dell'album, con il basso che si muove sotto le voci piuttosto che dietro di esse, e traccia le fondamenta su cui si costruisce il resto della suite."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Con tredici titoli, Marrow Deep ripete occasionalmente una forma che ha già dimostrato di poter costruire, e un album che è così progettato per essere letto come una struttura continua deluderà chi cerca un singolo momento di crossover. Non ne offre nessuno. Ciò che invece offre è una band che sceglie l'architettura rispetto allo spettacolo per portare qualcosa di così pesante, e in gran parte riesce."
             }
           ],
