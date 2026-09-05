@@ -30604,6 +30604,139 @@
             }
           ],
           "updatedAt": "2026-09-05T16:01:59.579Z"
+        },
+        {
+          "id": 8,
+          "draft": false,
+          "title": "Cena Dentro de un Anuncio",
+          "subject": "Le Train Bleu · Gare de Lyon, París · Marius Toudoire",
+          "rating": 0,
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "ARCHITECTURE & DINING",
+          "date": "SEP 5, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+          "meta": "PARIS · MARIUS TOUDOIRE · 1900–1901 · MONUMENT HISTORIQUE 1972 · PHOTO: CC0 / WIKIMEDIA COMMONS",
+          "verdict": "Le Train Bleu no sirve nostalgia. Sirve una propuesta de venta de ciento veinticinco años de antigüedad para un tren que dejó de funcionar en 2003, dentro de una sala que el estado francés ha congelado legalmente desde 1972 — y te pide que pagues, con gusto, por el privilegio de volver a escucharlo.",
+          "pros": [
+            "Cuarenta y una pinturas de diecisiete artistas convierten el comedor en un anuncio de viaje de 1900 en funcionamiento, no mera decoración",
+            "El estatus de Monumento Histórico (1972) ha mantenido la restauración de 2014 disciplinada — nada modernizado que no fuera necesario",
+            "El menú (Michel Rostang desde 2018) cumple un papel secundario en lugar de reinterpretar la sala, lo cual es la decisión correcta dentro de un monumento",
+            "Caso raro de una pieza de arquitectura puramente comercial, corporativa — construida por una compañía ferroviaria para vender boletos — preservada con el mismo rigor que una catedral"
+          ],
+          "cons": [
+            "El registro deliberadamente anticuado de la cocina (cordero de la carreta, tartar en la mesa) será leído como nostalgia costosa en lugar de gastronomía por algunos comensales",
+            "Como una estación de buffet en una terminal activa, la sala intercambia algo de tranquilidad por un flujo constante de peatones y volumen de turistas"
+          ],
+          "content": [
+            {
+              "type": "texto",
+              "content": "Sube la doble escalera en la Gare de Lyon y sales del ferrocarril. Abajo, las plataformas funcionan con horarios medidos en minutos; los trenes en sí han cambiado de forma cuatro o cinco veces desde que se inauguró el edificio. Arriba, nada ha sido permitido cambiar en absoluto. Estás de pie dentro de una sala construida en 1900 para vender un tren que ya no existe, para una compañía que ya no existe, a un público que ha estado muerto durante un siglo. La sala sobrevivió a los tres. Se llama Le Train Bleu, es un restaurante en funcionamiento con una carta de vinos y una línea de reservas, y desde 1972 también ha sido un Monumento Histórico de Francia - un fragmento de publicidad que el estado ahora protege como protege las catedrales."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton40n3v6m216.jpg",
+              "alt": "Postal de época de la monumental escalera dentro de la Gare de Lyon, que conduce al buffet de la estación, principios del siglo XX",
+              "caption": "La escalera al Buffet de la Gare de Lyon, fotografiada poco después de su apertura. El restaurante ahora llamado Le Train Bleu se encuentra en la parte superior de ella.",
+              "credit": "dominio público",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buffet_PLM_-_Le_train_Bleu_-_1900.jpg"
+            },
+            {
+              "type": "encabezado",
+              "content": "Un folleto en el que puedes sentarte",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "La comisión nunca fue realmente para un restaurante. En 1900, la Compagnie des chemins de fer de Paris à Lyon et à la Méditerranée - la PLM - estaba reconstruyendo su terminal de París desde cero para la Exposition Universelle, y necesitaba que la nueva estación hiciera más que mover pasajeros a través de un edificio. Necesitaba convencerles de que siguieran regresando a un destino que la mayoría de ellos nunca había visto: Provenza, la Riviera, Argel. El arquitecto Marius Toudoire, que ya había dibujado la fachada de la estación y su torre del reloj de 67 metros, construida en homenaje abierto a Big Ben, fue llamado a construir un comedor que hiciera la venta. Construyó una sala de 26 metros de largo con un techo que se comporta como un cielo pintado, y cubrió sus paredes con cuarenta y una pinturas de diecisiete artistas diferentes - Albert Maignan, Henri Gervex, François Flameng, Eugène Burnand entre ellos - cada una una publicidad de una ciudad que los trenes de abajo se suponía que debían alcanzar. Naranja, Marsella, Niza, Mónaco, Argel: podías comer tu cena y planear toda tu itinerario en las paredes sin consultar nunca un horario."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton40ylg933pv.jpg",
+              "alt": "Detalle de un mural de Belle Époque dentro de Le Train Bleu, firmado por Albert Maignan 1905, que representa una fiesta en un jardín sobre el teatro romano en Orange",
+              "caption": "Uno de los cuarenta y una pinturas murales, firmado por Albert Maignan y fechado en 1905, etiquetado simplemente Orange - una parada en la línea PLM representada como una escena de alta sociedad en lugar de una fotografía de una estación.",
+              "credit": "Foto: Mbzt / Wikimedia Commons, CC BY 3.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1120998_Paris_XII_gare_de_Lyon_train_bleu_fresque_Orange_rwk.JPG"
+            },
+            {
+              "type": "texto",
+              "content": "Esto vale la pena detenerse, porque es fácil clasificar la habitación como “ornamentada” y pasar a la comida. Una fotografía documenta un lugar. Una pintura al óleo encargada, cuarenta de ellas, colgadas a la escala de una catedral, hace algo más cercano a una declaración: te dice cómo se siente el lugar para las personas que pueden permitirse estar allí, lo cual es una afirmación diferente y mucho más persuasiva. El PLM no estaba decorando una sala de espera. Estaba construyendo la versión del siglo XIX de una página completa en una revista de moda, excepto que la página era de once metros de altura, dorada, iluminada por candelabros de bronce y estructuralmente portante."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton41e22lwc01.jpg",
+              "alt": "Techo de estuco dorado de Le Train Bleu con un candelabro de bronce en primer plano y medallones pintados etiquetados París y Lyon",
+              "caption": "El techo de la Grande Salle: medallones de ciudad pintados incrustados en trabajos de estuco en espiral, iluminados por los candelabros de bronce originales.",
+              "credit": "CC0, vía Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(2).jpg"
+            },
+            {
+              "type": "encabezado",
+              "content": "Las medidas de una ilusión",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "La habitación tiene un nombre para cada parte de la ficción. La Salle Dorée, la Sala Dorada, mide 18.5 metros de largo bajo un techo de 11 metros. La sala principal de comedor lleva el nombre Réjane, en honor a la actriz que fue una de sus primeras clientas habituales. A un lado, los Salons Tunisien y Algérien - tallados en madera oscura, motivos árabes geométricos, paisajes orientalistas - fueron construidos para representar una versión de la Argelia francesa para empresarios que nunca viajarían allí, habitaciones favoritas para almuerzos de reuniones por esa misma razón. Ninguno de estos espacios pretende ser modesto. El presupuesto de decoración del edificio, solo en francos de 1900, podría haber construido una estación de tren provincial por sí misma. Eso era, en cierto sentido, el punto: el PLM competía con compañías ferroviarias rivales por los mismos pasajeros adinerados, y la forma más rápida de demostrar que tus trenes valía la pena tomar era demostrar que tu sala de espera valía la pena vivir en ella."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton41s025cv5t.jpg",
+              "alt": "Placa esculpida sobre un arco en Le Train Bleu que registra que el presidente Emile Loubet inauguró el buffet el 7 de abril de 1901, flanqueada por dos sirenas talladas",
+              "caption": "La dedicación todavía en la pared: “Emile Loubet, Président de la République Française, inauguró este buffet el VII de abril MDCCCCI.” El jefe de estado inauguró un restaurante en una estación de tren de la misma manera en que otros gobiernos abren puentes.",
+              "credit": "CC0, vía Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(4).jpg"
+            },
+            {
+              "type": "texto",
+              "content": "El presidente Emile Loubet cortó la cinta él mismo el 7 de abril de 1901, un detalle que la habitación todavía anuncia en una placa tallada flanqueada por dos sirenas, como si la apertura de un buffet en la estación requiriera la misma ceremonia que un monumento a la guerra. En sus primeras décadas, la habitación simplemente se llamaba el Buffet de la Gare de Lyon - un nombre funcional para un trabajo de sonido funcional, comedor adjunto a una estación. Solo se convirtió en Le Train Bleu en 1963, y aquí la historia se vuelve más extraña en lugar de más simple: el expreso nocturno en el que se renombró, con sus coches cama azul oscuro que circulaban entre Calais y la Riviera, todavía estaba en servicio en ese momento - seguiría funcionando otros cuarenta años, hasta 2003. Pero en 1963, los viajes en jet ya habían quitado el glamour que solía tener el tren; la Riviera ahora estaba a unas pocas horas en avión, y el sleeper de veinte horas había desaparecido silenciosamente de la forma más rápida de llegar a la forma más romántica de retrasarse. El restaurante tomó el nombre exactamente en el momento en que el tren real dejó de ser el punto y empezó a ser la leyenda. Ha estado vendiendo una memoria de viaje desde antes de que lo que se nombró a sí mismo terminara de suceder."
+            },
+            {
+              "type": "cabecera",
+              "content": "Un monumento que sigue sirviendo almuerzo",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "En 1972 el estado francés hizo esa memoria oficial, listando el restaurante, la Salle Dorée, y los salones tunecino y argelino como Monuments Historiques - la misma designación que protege Notre-Dame y los castillos del Loira. Es una cosa inusual de proteger: no una ruina, no una pieza de museo detrás de barreras de cuerda, sino un comedor comercial en funcionamiento que aún necesita cocinas operativas, salidas de incendios y una bodega de vinos. La paradoja produjo su propia disciplina. Cuando el restaurante cerró durante tres meses en el verano de 2014 para una restauración de 4.5 millones de euros - limpiando y reparando las cuarenta y una pinturas, dorando de nuevo el estuco, reenchufando los candelabros que habían sido adaptados para electricidad un siglo antes - el trabajo fue dirigido conjuntamente por Agence Duthilleul, la práctica responsable de las estaciones de la red TGV, y un Architecte des Monuments Historiques, cuyo trabajo era asegurarse de que la modernidad no tocara nada visible. El arquitecto Jean-Marie Duthilleul describió la idea original del edificio como una puerta de entrada al Mediterráneo situada dentro de París, sus trenes de salida escenificados como barcos que parten hacia algún lugar exótico. La renovación de 2014 restauró esa idea en lugar de actualizarla."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+              "alt": "Vista interior amplia de Le Train Bleu, mostrando la barra ovalada dorada, techo de bóveda pintada, candelabros y comensales en mesas con manteles blancos",
+              "caption": "La Grande Salle Réjane, 26 metros de techo pintado sobre una sala que no ha dejado de servir cena desde 1901.",
+              "credit": "CC0, vía Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu_(vue_int%C3%A9rieure)_en_f%C3%A9vrier_2023.jpg"
+            },
+            {
+              "type": "texto",
+              "content": "Lo que sobrevivió al siglo no es solo yeso. La sala absorbió un posfondo cultural que nunca fue construido para esperar. Coco Chanel y Jean Cocteau tomaron mesas allí en los años 1920; Colette escribió sobre ello; Salvador Dalí, Brigitte Bardot y Jean Gabin fueron habituales más tarde. Siete películas la han utilizado como escenario, desde <em>Travels with My Aunt</em> en 1972 hasta la comedia navideña <em>Mr. Bean</em> en 2007 - una sala de época Belle Époque interpretándose a sí misma, década tras década, en historias que no tenían nada que ver con ferrocarriles. Cada generación encontró una ficción ligeramente diferente para proyectar sobre las mismas cuarenta y una pinturas. Eso es lo que hace una pieza de publicidad verdaderamente exitosa: deja de necesitar el producto para el que fue creada y comienza a vender la sensación de haber estado siempre allí."
+            },
+            {
+              "type": "encabezado",
+              "content": "Lo que realmente está en la mesa",
+              "level": 2
+            },
+            {
+              "type": "texto",
+              "content": "Nada de esto importaría si la cocina se hubiera modernizado para coincidir con la ambición de la sala, y en su crédito nunca lo ha hecho. Desde 2018 el restaurante ha sido gestionado para su operador, SSP, por el chef Michel Rostang, y el menú que construyó es deliberadamente anticuado: pierna de cordero tallada junto a la mesa desde un carrito, un gratín dauphinois hecho sin queso ni huevo al estilo antiguo, pollo de Bresse con crema de estragón, steak tartare mezclado frente a ti, baba de ron terminada con un chorro de ron en la mesa. No hay intento de reinterpretar la sala a la imagen de la cocina, como un chef contemporáneo podría sentirse obligado a hacer dentro de un monumento. La comida juega el mismo papel secundario que las pinturas: prueba de que una versión de Francia que existe principalmente en la memoria, durante la duración de una comida, todavía está disponible para ordenar."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mton426yr3s0w9.jpg",
+              "alt": "Exterior diurno de la fachada de Gare de Lyon, con ventanas arqueadas que llevan carteles ovalados que leen Le Train Bleu, sobre los toldos de la entrada de la estación",
+              "caption": "La fachada de la estación diseñada por Toudoire junto al restaurante, sus ventanas arqueadas aún llevan el nombre del restaurante hacia la plaza exterior.",
+              "credit": "Foto: APB11 / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Les_fen%C3%AAtres_du_Train_Bleu_vues_du_parvis_de_la_gare_de_Lyon.jpg"
+            },
+            {
+              "type": "texto",
+              "content": "Abajo, los trenes que hicieron la fortuna de la sala en su mayoría se han ido. La línea a la Riviera ahora es más rápida y hace menos paradas; el TGV que finalmente reemplazó al original Train Bleu no lleva su nombre, y los pasajeros que desean la costa hoy en día probablemente comparen tarifas en un teléfono en lugar de sentarse en un comedor y que les vendan el destino en óleo. El anuncio, en otras palabras, ha superado completamente al producto. Lo que queda es una sala que ya no tiene que persuadir a nadie de nada, protegida por la ley de tener que probar un argumento diferente, aún poniendo una mesa bajo un techo construido para hacerte creer que un viaje en tren podría sentirse como llegar a algún lugar antes de haberte ido. Come allí y no estás visitando el pasado. Estás sentado dentro de un argumento de ventas de ciento veinticinco años que el estado francés decidió que valía la pena contar para siempre, y pagar, con gusto, por el privilegio de escucharlo de nuevo."
+            }
+          ],
+          "featured": true,
+          "updatedAt": "2026-09-05T17:31:55.985Z"
         }
       ],
       "libraryItems": [
