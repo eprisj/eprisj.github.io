@@ -20912,17 +20912,25 @@ async function flushModernEditor() {
   const contentTab = document.getElementById('tab-content');
 
   // ── metadata drawer (draft / scheduled publish) ────────────────────────────
-  // Reviews only need draft+publishAt here — category/author/etc are already
-  // inline-editable directly on the canvas, unlike articles.
+  // Reviews only need draft+publishAt+desk here — category/author/etc are
+  // already inline-editable directly on the canvas, unlike articles.
   function renderReviewDrawer() {
     if (!_model) return;
     drawerBody.innerHTML =
       `<label class="wys-meta-check"><input type="checkbox" data-mdraft ${_model.draft ? 'checked' : ''}><span>Черновик — скрыт с сайта</span></label>` +
+      /* Тот же флаг, что у статьи (app.js:20528) — тот же смысл: обзор не
+         меняет адрес и редактор, просто уходит с /reviews на /music. */
+      `<label class="wys-meta-check"><input type="checkbox" data-mdesk ${_model.desk === 'music' ? 'checked' : ''}><span>Раздел «Музыка» — обзор уходит на /music</span></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
     const draftInp = drawerBody.querySelector('[data-mdraft]');
     draftInp && draftInp.addEventListener('change', () => {
       if (draftInp.checked) _model.draft = true; else delete _model.draft;
       updateDraftBadge();
+      scheduleCommit();
+    });
+    const deskInp = drawerBody.querySelector('[data-mdesk]');
+    deskInp && deskInp.addEventListener('change', () => {
+      if (deskInp.checked) _model.desk = 'music'; else delete _model.desk;
       scheduleCommit();
     });
     const pubInp = drawerBody.querySelector('[data-mpublishat]');

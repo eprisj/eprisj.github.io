@@ -291,6 +291,12 @@ export interface Review {
   link?: string;
   date?: string;
   featured?: boolean;
+  /**
+   * Which editorial desk the piece belongs to. Absent (the default) means the
+   * general desk and the /reviews grid; 'music' routes it to /music instead —
+   * same flag, same meaning as Article.desk.
+   */
+  desk?: 'music';
   /** Hidden from the public site until unset. */
   draft?: boolean;
   /** Токен ссылки предпросмотра: открывает этот черновик по адресу ?preview=… */
@@ -1204,6 +1210,20 @@ export function generalArticles(articles: Article[]): Article[] {
 
 export function musicArticles(articles: Article[]): Article[] {
   return articles.filter(isMusicArticle);
+}
+
+/** Music-desk reviews: albums, releases, live performances, shown at /music. */
+export function isMusicReview(review: Review): boolean {
+  return review.desk === 'music';
+}
+
+/** Everything the general /reviews grid shows — every desk but music. */
+export function generalReviews(reviews: Review[]): Review[] {
+  return reviews.filter((r) => !isMusicReview(r));
+}
+
+export function musicReviews(reviews: Review[]): Review[] {
+  return reviews.filter(isMusicReview);
 }
 
 /** Live-aware authors list (preview → live → bundled). Only active authors are returned. */

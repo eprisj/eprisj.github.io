@@ -465,7 +465,7 @@ const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum', 'mus
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
   reviews: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.',
-  music: 'Interviews and conversations with musicians and artists, on the work, the craft and the culture around it.',
+  music: 'Interviews with musicians and artists, and EPRIS reviews of albums, releases and live performances.',
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
   studio: 'Editorial, visual and cultural projects by EPRIS Studio.',
