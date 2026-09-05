@@ -45,6 +45,7 @@ import {
   getPicsId,
   isSectionEnabled,
   isSectionInNavigation,
+  isMusicHost,
   generalArticles,
   musicArticles,
   isMusicArticle,
@@ -4245,7 +4246,14 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     const routeMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
     const routeTitle = activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
     const routeDescription = activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
-    const canonicalUrl = activeTab === 'gallery' ? 'https://eprisjournal.com/' : `https://eprisjournal.com/${activeTab}`;
+    // Music has its own front door now: eprisjournal.com/music still exists
+    // as a route (redirects away while the section stays disabled there),
+    // but it is never the canonical location for this content anymore.
+    const canonicalUrl = activeTab === 'gallery'
+      ? 'https://eprisjournal.com/'
+      : activeTab === 'music'
+        ? 'https://music.eprisjournal.com/'
+        : `https://eprisjournal.com/${activeTab}`;
     document.title = routeTitle;
     setMeta('og:title', routeTitle);
     setMeta('og:description', routeDescription);
@@ -4321,7 +4329,11 @@ export default function App() {
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><ShowcasePage /></Suspense>;
   }
   const initialRoute = parsePath(window.location.pathname, window.location.search);
-  const [activeTab, setActiveTab] = useState(initialRoute.tab || 'gallery');
+  // On its own subdomain, the site's front page IS the Music section - a
+  // bare '/' has no route of its own to fall back to (parsePath returns {}
+  // for it), so the host decides what 'home' means instead of always
+  // meaning gallery.
+  const [activeTab, setActiveTab] = useState(initialRoute.tab || (isMusicHost() ? 'music' : 'gallery'));
   const [selectedArticleId, setSelectedArticleId] = useState<number | null>(initialRoute.articleId ?? null);
   const [previewArticleId, setPreviewArticleId] = useState<number | null>(null);
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(initialRoute.reviewId ?? null);
@@ -4724,7 +4736,7 @@ export default function App() {
       } else {
         setSelectedArticleId(null);
         setSelectedReviewId(parsed.reviewId ?? null);
-        setActiveTab(parsed.tab || 'gallery');
+        setActiveTab(parsed.tab || (isMusicHost() ? 'music' : 'gallery'));
         setPassportCode(parsed.passportCode);
       }
     };
