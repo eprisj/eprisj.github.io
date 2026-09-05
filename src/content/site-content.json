@@ -35192,6 +35192,54 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Konuk editör",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 7,
+          "draft": true,
+          "previewToken": "77c15678861f6b53068b3386",
+          "title": "Marrow Deep",
+          "subject": "Mastodon · Loma Vista Recordings · 2026",
+          "rating": 0,
+          "desk": "music",
+          "category": "METAL",
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "date": "Aug 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+          "verdict": "Marrow Deep sessizce yas tutmaz. Üzüntüyü tutacak kadar büyük bir yapı inşa eder, sonra sizi onun her odasından geçmeye cesaretlendirir.",
+          "pros": [
+            "Out Like a Lamb etrafındaki beş şarkılık bölüm, övgüyü gösteri değil mimariye dönüştürür",
+            "Yeni üyeler Nick Johnston ve João Nogueira, bandın sesiyle bütünleşir, duyurulmak yerine",
+            "Golden Spires, kelimesi kelimesine yükselen katlar halinde inşa edilmiştir ve unvanı hak eder"
+          ],
+          "cons": [
+            "On üç parçada albüm bazen daha önce inşa edebileceğini kanıtladığı bir şekli tekrar eder",
+            "Albüm, tek bir sürekli yapı olarak okunmasını ister ve bir geçiş anı sunmaz"
+          ],
+          "content": [
+            {
+              "type": "metin",
+              "content": "Marrow Deep, 28 Ağustos 2026'da yayınlandı, Brent Hinds olmadan yapılan ilk Mastodon albümüdür, ki kendisi Mart 2025'te gruptan ayrılmış ve beş ay sonra motosiklet kazasında ölmüştür. Albüm kapakta bu kaybı adlandırmaz, ancak onun hakkında yapılan her inceleme albümü onun üzerinden okumuştur ve bu da öyle: halka açık bir şekilde yeniden inşa edilen bir grup, iki yeni kalıcı üye ile, gitarist Nick Johnston ve klavyeci João Nogueira, ses içine emilmiş, duyuru yapılmadan."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+              "caption": "Mastodon Rock im Park'ta canlı, 2022. Fotoğraf: Mr. Rossi, CC BY-SA 4.0, Wikimedia Commons aracılığıyla."
+            },
+            {
+              "type": "metin",
+              "content": "On üç parçayı bir arada tutan şey, bir tema değil, daha çok bir inşa yöntemi. Eleştirmenler zaten onu tanımlamak için katedral diline başvurdu: yılan gibi yukarı kıvrılan bir şarkı, bir kule yükseltiyor ve sivri uçlar, transeptler ve payandalar inşa ediyor. Golden Spires, bu terimlerle unvanını hak ediyor. Bir nakarata değil, bir tavana, dizeden dizeye yığılmış bir yapıya inşa eder, ta ki bir coda yukarıdan kapanan bir kemer gibi gelene kadar. Bu, sadece rifflerde değil, bölüm ve yükseklik düşüncesiyle bir kayıt."
+            },
+            {
+              "type": "metin",
+              "content": "Albümün duygusal çekirdeği, Out Like a Lamb ile açılan beş şarkılık bir suite'dir; davulcu ve vokalist Brann Dailor'un annesine ithaf ettiği, Mart ayı havası hakkında eski bir deyimden ödünç alınmış bir başsağlığı. Albümdeki en sessiz yapısal jesttir, bas vokalin altında hareket eder, arkasında değil, ve geri kalan suite'in inşa edildiği zemin planını belirler."
+            },
+            {
+              "type": "metin",
+              "content": "On üç parçada, Marrow Deep bazen zaten inşa edebileceğini kanıtladığı bir şekli tekrarlar ve bu kadar bağlı bir kaydı, tek bir sürekli yapı olarak okumaya çalışan herkesi hayal kırıklığına uğratacaktır. Bir tane sunmaz. Onun yerine sunduğu şey, bu kadar ağır bir şeyi taşımak için gösteri yerine mimariyi seçen bir grup ve çoğunlukla başarılı oluyor."
+            }
+          ],
+          "updatedAt": "2026-09-05T15:30:52.978Z"
         }
       ],
       "libraryItems": [
@@ -40660,6 +40708,54 @@
           "authorId": "author-1784732936927-kw554",
           "role": "Redattore ospite",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+        },
+        {
+          "id": 7,
+          "draft": true,
+          "previewToken": "77c15678861f6b53068b3386",
+          "title": "Marrow Deep",
+          "subject": "Mastodon · Loma Vista Recordings · 2026",
+          "rating": 0,
+          "desk": "music",
+          "category": "METAL",
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "date": "Aug 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+          "verdict": "Marrow Deep non piange silenziosamente. Solleva una struttura abbastanza grande da contenere il dolore, poi ti sfida a attraversare ogni stanza di essa.",
+          "pros": [
+            "La suite di cinque canzoni intorno a Out Like a Lamb trasforma l'elogio in architettura, non in spettacolo",
+            "I nuovi membri Nick Johnston e João Nogueira sono assorbiti nel suono della band piuttosto che annunciati da esso",
+            "Golden Spires è costruito in livelli letterali ascendenti, e merita il titolo"
+          ],
+          "cons": [
+            "A tredici tracce il disco ripete occasionalmente una forma che ha già dimostrato di poter costruire",
+            "L'album chiede di essere letto come una struttura continua, e non offre un singolo momento di incrocio per chi cerca uno"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "Marrow Deep, pubblicato il 28 agosto 2026, è il primo album di Mastodon realizzato senza Brent Hinds, che ha lasciato la band nel marzo 2025 e è morto in un incidente motociclistico cinque mesi dopo. Il disco non nomina quella perdita sulla copertina, ma ogni recensione lo ha letto attraverso di essa comunque, e anche questa: una band che si ricostruisce in pubblico, con due nuovi membri permanenti, il chitarrista Nick Johnston e il tastierista João Nogueira, assorbiti nel suono piuttosto che annunciati da esso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtojbvohbhfu1j.jpg",
+              "caption": "Mastodon dal vivo a Rock im Park, 2022. Foto: Mr. Rossi, CC BY-SA 4.0, via Wikimedia Commons."
+            },
+            {
+              "type": "text",
+              "content": "Ciò che tiene insieme le tredici tracce è meno un tema che un metodo di costruzione. I critici hanno già usato il linguaggio delle cattedrali per descriverlo: una canzone che si avvolge verso l'alto come un serpente, sollevando una torre e assemblando guglie, transetti e contrafforti mentre si eleva. Golden Spires merita il suo titolo in questi termini. Non costruisce tanto verso un ritornello quanto verso un soffitto, verso un verso impilato sull'altro fino a quando una coda arriva come una volta che si chiude sopra la testa. Questo è un disco che pensa in sezioni e in elevazione, non solo in riff."
+            },
+            {
+              "type": "text",
+              "content": "Il cuore emotivo dell'album è una suite di cinque canzoni che si apre con Out Like a Lamb, l'elogio di Brann Dailor, batterista e cantante, per sua madre, il cui titolo è preso dal vecchio detto sul tempo di marzo. È il gesto strutturale più silenzioso del disco, il basso che si muove sotto la voce invece che dietro di essa, e stabilisce il piano di base su cui si costruisce il resto della suite."
+            },
+            {
+              "type": "testo",
+              "content": "A tredici tracce, Marrow Deep ripete occasionalmente una forma che ha già dimostrato di poter costruire, e un disco così impegnato a leggere come una struttura continua deluderà chiunque cerchi un singolo momento di transizione. Non ne offre uno. Ciò che offre invece è una band che sceglie l'architettura rispetto allo spettacolo per portare qualcosa di così pesante, e con successo nella maggior parte dei casi."
+            }
+          ],
+          "updatedAt": "2026-09-05T15:31:02.135Z"
         }
       ],
       "libraryItems": [
