@@ -7244,8 +7244,20 @@
           "content": "The shells were the work of Iannis Xenakis, a composer working as an engineer in Le Corbusier's atelier, and their geometry traces back to his 1954 orchestral piece Metastaseis. Xenakis had scored a passage for forty-six string instruments sliding continuously between pitches, glissando lines drawn as straight lines on paper that, taken together, described curved surfaces: what a mathematician would call a ruled surface, and what an engineer would recognise as a hyperbolic paraboloid. Xenakis modelled the pavilion's walls the same way he had modelled the glissandi, string and stiff wire standing in for sound. The building is, in a fairly literal sense, a piece of music built at architectural scale."
         },
         {
+          "type": "video",
+          "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
+          "caption": "Iannis Xenakis, Metastaseis (1953-54), for 61 musicians. The glissandi behind the pavilion's shells.",
+          "credit": "via YouTube"
+        },
+        {
           "type": "text",
           "content": "Inside, some 350 loudspeakers set into those walls spatialised Edgard Varèse's Poème électronique, an eight-minute tape piece routed live around the audience by technicians at a control desk, timed to shifts of coloured light. The pavilion was demolished on 30 January 1959, five months after it opened, its purpose used up with the fair that paid for it. What survives is the method: music read not as a soundtrack for a room, but as a set of instructions for building one."
+        },
+        {
+          "type": "video",
+          "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
+          "caption": "Edgard Varèse, Poème électronique (1958). Composed for the Philips Pavilion's 350 loudspeakers.",
+          "credit": "via YouTube"
         },
         {
           "type": "image",
@@ -7274,7 +7286,7 @@
           "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
         }
       ],
-      "updatedAt": "2026-09-05T15:43:10.932Z"
+      "updatedAt": "2026-09-05T15:55:27.530Z"
     }
   ],
   "reviews": [
