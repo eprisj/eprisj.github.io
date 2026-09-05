@@ -771,6 +771,23 @@ body {
   .sb-label { padding-right: 0 !important; }
   .sb-copy small, .sb-badge { display: none; }
   .sb-ico { width: 17px; height: 17px; }
+
+  /* The dock sits right under .main-content's own scroll edge (a flex
+     sibling, not an overlay - there's no real DOM overlap), but whatever
+     the scroll happens to stop on gets clipped with zero warning: a card's
+     label with no value under it reads as broken, not as "scroll for
+     more". A sticky fade at the scroll boundary is the standard fix for
+     exactly this - it says "there's more" instead of just clipping. */
+  .main-content::after {
+    content: '';
+    position: sticky;
+    bottom: 0;
+    display: block;
+    height: 28px;
+    margin-top: -28px;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -10035,10 +10052,21 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .an-bar-label{position:absolute;bottom:-16px;font-size:9px;
   color:var(--muted,#8b8b8b);white-space:nowrap}
 
-.an-list{display:grid;gap:11px;max-height:330px;overflow-y:auto}
+/* grid-template-columns:minmax(0,1fr) rather than the implicit auto track:
+   a grid track's default min sizing is also "don't shrink below content",
+   the same trap .an-row-name had one level down - needed here too or a
+   long row still pushes the whole box wide regardless of the fix below. */
+.an-list{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;max-height:330px;overflow-y:auto}
 .an-row-main{display:flex;justify-content:space-between;gap:12px;
   font-size:13px;margin-bottom:5px}
-.an-row-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* min-width:0 is load-bearing: a flex item's default min-width:auto means
+   "never shrink below content's own size", and white-space:nowrap makes
+   that size the full unwrapped line - so without this, ellipsis never
+   actually triggers and a long real article path (routine at this box's
+   own "Что читают" - real slugs run 50-70+ chars) just pushes the row,
+   and the whole card, past the edge of the screen. Short strings like a
+   referrer domain never exposed this because they never needed to shrink. */
+.an-row-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .an-row-num{flex:none;font-variant-numeric:tabular-nums;color:var(--muted,#8b8b8b)}
 .an-row-num b{font-weight:400;color:#c8a15a}
 .an-row-track{height:4px;border-radius:2px;background:var(--border,#eceae6);overflow:hidden}
@@ -10052,6 +10080,15 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .an-box--wide{grid-column:auto}
   .an-area-svg{height:210px}
   .an-heat-grid{grid-template-columns:22px repeat(24,1fr);gap:2px}
+  #tab-analytics{padding:16px}
+  /* .an-bar had flex:1 0 10px - grow:1 let 24 bars stretch to fill the
+     narrow box instead of overflowing it, so the already-present
+     overflow-x:auto on .an-chart never triggered. Each two-digit hour
+     label then had less width than its own text needed and ran into its
+     neighbour. Fixing the width to something a label actually fits in
+     makes the total wider than the box on a phone, so it scrolls instead
+     of squeezing. */
+  .an-chart--hours .an-bar{flex:0 0 22px;min-width:22px}
 }
 
 /* ══════════════════════════════════════════════════════════
