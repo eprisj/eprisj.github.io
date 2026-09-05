@@ -7203,6 +7203,78 @@
       ],
       "previewToken": "nb-302ed07ee17bba27",
       "updatedAt": "2026-09-05T14:49:18.396Z"
+    },
+    {
+      "id": 33,
+      "draft": true,
+      "previewToken": "efc77a042906fe45008533dd",
+      "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "date": "Sep 5, 2026",
+      "category": "Architecture",
+      "subcategory": "Essay",
+      "desk": "music",
+      "tags": [
+        "architecture",
+        "music",
+        "iannis xenakis",
+        "le corbusier",
+        "herzog & de meuron",
+        "oma",
+        "acoustics"
+      ],
+      "imageSeed": "built-to-a-score",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+      "excerpt": "Most buildings host music: a stage, walls, a program, good acoustics. A handful of buildings do something stranger, and let a piece of music design them outright, or let the problem of holding sound decide everything from the roof down to the seats. Three buildings, three different bargains between the two disciplines.",
+      "content": [
+        {
+          "type": "text",
+          "content": "In 1958, Le Corbusier's studio built a pavilion for Philips at the Brussels World's Fair that had no straight walls at all: nine curved concrete shells, tent-like and pointed, standing over a single dark hall built for eight minutes of music. The shape did not come from a sketch of a building. It came from a piece of music."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+          "caption": "The Philips Pavilion under construction, Brussels World's Fair, 1958.",
+          "credit": "Photo: Herbert Behrens / Anefo, CC0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
+        },
+        {
+          "type": "text",
+          "content": "The shells were the work of Iannis Xenakis, a composer working as an engineer in Le Corbusier's atelier, and their geometry traces back to his 1954 orchestral piece Metastaseis. Xenakis had scored a passage for forty-six string instruments sliding continuously between pitches, glissando lines drawn as straight lines on paper that, taken together, described curved surfaces: what a mathematician would call a ruled surface, and what an engineer would recognise as a hyperbolic paraboloid. Xenakis modelled the pavilion's walls the same way he had modelled the glissandi, string and stiff wire standing in for sound. The building is, in a fairly literal sense, a piece of music built at architectural scale."
+        },
+        {
+          "type": "text",
+          "content": "Inside, some 350 loudspeakers set into those walls spatialised Edgard Varèse's Poème électronique, an eight-minute tape piece routed live around the audience by technicians at a control desk, timed to shifts of coloured light. The pavilion was demolished on 30 January 1959, five months after it opened, its purpose used up with the fair that paid for it. What survives is the method: music read not as a soundtrack for a room, but as a set of instructions for building one."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
+          "caption": "The Elbphilharmonie's glass crown rises over the converted Kaispeicher warehouse, Hamburg.",
+          "credit": "Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
+        },
+        {
+          "type": "text",
+          "content": "Nearly sixty years later, Herzog & de Meuron's Elbphilharmonie in Hamburg, opened 11 January 2017, made the opposite bargain: instead of letting music generate the building's form, it let the requirements of hearing music decide almost everything else. Acoustician Yasuhisa Toyota laid the main hall out as a vineyard, terraces of seating climbing around a central stage in the manner Hans Scharoun had used for the Berlin Philharmonie in 1963, so that no listener among 2,100 sits more than 30 metres from the conductor. The hall's inner surface, some 10,000 individually milled gypsum-fibre panels, is cut with a different profile at every point to scatter sound evenly rather than let it collect in one place. The whole structure floats on 362 spring bearings, mechanically isolated from the building around it so that a passing train never reaches the stage. Above a converted brick warehouse, the concert hall's glass upper storeys read from outside as a wave, or a crown. From inside the hall, that image is almost beside the point: the room's actual job is acoustic, and its shape is a diagram of that job."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
+          "caption": "Casa da Música's folded exterior, Porto.",
+          "credit": "Photo: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
+        },
+        {
+          "type": "text",
+          "content": "Rem Koolhaas and Ellen van Loon's OMA took a third position with Casa da Música in Porto, opened in 2005. The office wanted to avoid the concert hall's standard shoebox shape, tried alternatives, and measured them against the shoebox on acoustics it could not beat. So OMA kept the box and hid it: a rectangular hall for 1,300 seats, glazed at both ends, sits inside an irregular white polyhedron that looks folded rather than built, as if the shoebox had been quarried out of a single asymmetric block. The shape the building wears on the outside has no obvious logic until you know there is a straight, acoustically correct room sitting inside it, and that everything faceted and irregular on the exterior is the architecture finding a public form for a decision it was not free to make."
+        },
+        {
+          "type": "text",
+          "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
+        }
+      ],
+      "updatedAt": "2026-09-05T15:43:10.932Z"
     }
   ],
   "reviews": [
