@@ -456,7 +456,11 @@ const SHOWCASE_DESCRIPTION = 'A vitrine of set design, scenography and conceptua
 // «museum» на цьому хості лише перенаправляє на museum.eprisjournal.com
 // (правило в nginx), тож у карті сайту йому не місце: адреса, яка
 // відповідає редиректом, марно витрачає обхід і світиться помилкою.
-const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum']);
+// «music» тим самим: DEFAULT_SECTION_VISIBILITY в src/data.ts тримає
+// page:false, доки немає реального контенту - SPA миттєво відкидає
+// відвідувача з /music на запасну вкладку. Прибрати звідси, коли розділ
+// увімкнуть (переставити visibility на true в data.ts чи через адмінку).
+const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum', 'music']);
 
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
