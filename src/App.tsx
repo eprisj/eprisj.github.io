@@ -426,8 +426,15 @@ function applySiteTheme(theme: SiteTheme) {
   setColor('--c-accent', '--c-accent-rgb', theme.accent);
   setColor('--c-gold', '--c-gold-rgb', theme.gold);
   setColor('--c-bg', '--c-bg-rgb', theme.bg);
-  if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', serif`); }
-  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', serif`); }
+  // Same Cyrillic-fallback gap as the CSS default (see index.css): an
+  // admin-picked display/body font that lacks Cyrillic glyphs (many
+  // display serifs on Google Fonts do) would otherwise drop straight to
+  // the generic keyword, breaking step with Latin headings on the same
+  // page. PT Serif/PT Sans are this site's own Cyrillic-native pair -
+  // not a guarantee the chosen font's *style* matches, but a real font
+  // instead of whatever the browser's default serif happens to be.
+  if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', 'PT Serif', serif`); }
+  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', 'PT Sans', sans-serif`); }
   if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
   /* Фоновая картинка тянется во весь экран только когда она есть. Постоянный
      background-attachment: fixed на iOS оставляет неокрашенную полосу у нижней

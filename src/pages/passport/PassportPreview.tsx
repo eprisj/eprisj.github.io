@@ -362,7 +362,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
             </div>
             <div style={{ padding: '5% 6%', background: 'rgba(74,23,40,0.06)' }}>
               <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 0.9cqw, 8px)', color: '#4a1728', opacity: 0.6, letterSpacing: '0.1em', lineHeight: 1.3, textAlign: 'center', textTransform: 'uppercase' }}>Membership<br/>Type</div>
-              <div style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontSize: 'clamp(8px, 1.6cqw, 13px)', color: '#4a1728', textAlign: 'center', marginTop: 3, lineHeight: 1 }}>{fields.membershipType || 'Author'}</div>
+              <div style={{ fontFamily: '"Playfair Display", "PT Serif", serif', fontWeight: 700, fontSize: 'clamp(8px, 1.6cqw, 13px)', color: '#4a1728', textAlign: 'center', marginTop: 3, lineHeight: 1 }}>{fields.membershipType || 'Author'}</div>
             </div>
           </div>
 
@@ -504,7 +504,7 @@ export function PassportStampPage({ sheet, stamps = [] }: { sheet: PassportStamp
             <header style={{ height: '17%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '0.6px solid rgba(74,23,40,.3)', paddingBottom: '2%' }}>
               <div>
                 <p style={{ margin: 0, fontFamily: 'monospace', fontSize: 'clamp(4.5px, .8cqw, 6.5px)', letterSpacing: '.22em', color: '#4a1728', opacity: 0.55, textTransform: 'uppercase' }}>EPRIS Journal · Stamp Register {sheet.editionMark}</p>
-                <h2 style={{ margin: '1.8% 0 0', fontFamily: '"Playfair Display", serif', fontSize: 'clamp(10px, 2.5cqw, 20px)', color: '#3a1520', fontWeight: 600, lineHeight: 1 }}>{sheet.title}</h2>
+                <h2 style={{ margin: '1.8% 0 0', fontFamily: '"Playfair Display", "PT Serif", serif', fontSize: 'clamp(10px, 2.5cqw, 20px)', color: '#3a1520', fontWeight: 600, lineHeight: 1 }}>{sheet.title}</h2>
                 <p style={{ margin: '1.8% 0 0', fontFamily: 'monospace', fontSize: 'clamp(4px, .72cqw, 6px)', letterSpacing: '.15em', color: '#4a1728', opacity: 0.48, textTransform: 'uppercase' }}>{sheet.subtitle}</p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8%' }}>
