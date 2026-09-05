@@ -48,6 +48,9 @@ import {
   generalArticles,
   musicArticles,
   isMusicArticle,
+  generalReviews,
+  musicReviews,
+  isMusicReview,
   loadLiveContent,
   subscribeContent
 } from './data';
@@ -249,6 +252,13 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
   'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
   'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
+  'music.articlesEyebrow': { EN: 'EPRIS / music', RU: 'EPRIS / музыка', UA: 'EPRIS / музика', DE: 'EPRIS / Musik', IT: 'EPRIS / musica', ES: 'EPRIS / música', TR: 'EPRIS / müzik' },
+  'music.articlesTitle': { EN: 'Interviews', RU: 'Интервью', UA: 'Інтерв’ю', DE: 'Interviews', IT: 'Interviste', ES: 'Entrevistas', TR: 'Röportajlar' },
+  'music.articlesDescription': { EN: 'Conversations with musicians and artists, on the work, the craft and the culture around it.', RU: 'Разговоры с музыкантами и артистами — о работе, ремесле и культуре вокруг неё.', UA: 'Розмови з музикантами й митцями — про роботу, ремесло і культуру навколо неї.', DE: 'Gespräche mit Musikern und Künstlern über die Arbeit, das Handwerk und die Kultur dahinter.', IT: 'Conversazioni con musicisti e artisti sul lavoro, il mestiere e la cultura che lo circonda.', ES: 'Conversaciones con músicos y artistas sobre el trabajo, el oficio y la cultura que lo rodea.', TR: 'Müzisyenler ve sanatçılarla iş, zanaat ve onu çevreleyen kültür üzerine sohbetler.' },
+  'music.reviewsEyebrow': { EN: 'EPRIS / music reviews', RU: 'EPRIS / музыкальные обзоры', UA: 'EPRIS / музичні огляди', DE: 'EPRIS / Musikrezensionen', IT: 'EPRIS / recensioni musicali', ES: 'EPRIS / reseñas de música', TR: 'EPRIS / müzik incelemeleri' },
+  'music.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
+  'music.reviewsDescription': { EN: 'What EPRIS has been listening to lately: albums, releases and live performances.', RU: 'Что EPRIS слушает в последнее время: альбомы, релизы и живые выступления.', UA: 'Що EPRIS слухає останнім часом: альбоми, релізи і живі виступи.', DE: 'Was EPRIS zuletzt gehört hat: Alben, Veröffentlichungen und Live-Auftritte.', IT: 'Cosa ha ascoltato di recente EPRIS: album, uscite ed esibizioni dal vivo.', ES: 'Lo que EPRIS ha estado escuchando últimamente: álbumes, lanzamientos y actuaciones en directo.', TR: 'EPRIS’in son zamanlarda dinledikleri: albümler, çıkışlar ve canlı performanslar.' },
+  'music.empty': { EN: 'Nothing published here yet.', RU: 'Здесь пока ничего не опубликовано.', UA: 'Тут поки що нічого не опубліковано.', DE: 'Hier ist noch nichts veröffentlicht.', IT: 'Non è stato ancora pubblicato nulla qui.', ES: 'Aún no se ha publicado nada aquí.', TR: 'Burada henüz bir şey yayınlanmadı.' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -2070,7 +2080,10 @@ function homepageArticleFeed(articles: Article[]): Article[] {
   if (settings.enabled === false) return [];
   // hideOnHome is per article and separate from `draft`: the piece is
   // published and reachable, it just does not belong on the front page.
-  const sorted = orderArticles(articles).filter((article) => !article.hideOnHome);
+  // Music-desk pieces belong to /music, same as they're excluded from
+  // /articles (generalArticles) — otherwise a music interview could appear
+  // on the front page while remaining invisible on the general grid.
+  const sorted = orderArticles(generalArticles(articles)).filter((article) => !article.hideOnHome);
   const limit = Number(settings.limit);
   const effective = Number.isFinite(limit) && limit > 0
     ? Math.max(1, Math.floor(limit))
@@ -2079,9 +2092,11 @@ function homepageArticleFeed(articles: Article[]): Article[] {
 }
 
 /* Сколько статей вообще годится для главной — нужно, чтобы понять, прячет ли
-   превью что-то ещё. Кнопка «все материалы» имеет смысл только тогда. */
+   превью что-то ещё. Кнопка «все материалы» имеет смысл только тогда, и ведёт
+   на /articles — тот же generalArticles, что и там, иначе лишний музыкальный
+   материал обещал бы «ещё» то, чего на /articles никогда не появится. */
 function homepageArticlePoolSize(articles: Article[]): number {
-  return orderArticles(articles).filter((article) => !article.hideOnHome).length;
+  return orderArticles(generalArticles(articles)).filter((article) => !article.hideOnHome).length;
 }
 
 function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { archive: HomepageArchiveEntry[]; items: Item[]; onImageClick: (src: string, alt: string, description?: string, title?: string) => void; currentLang: string; t: (key: string) => string }) {
@@ -3538,6 +3553,73 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
   );
 }
 
+/**
+ * /music: the interview pieces and the reviews that use the same `desk`
+ * flag, on one page. Two titled groups in the same eyebrow/title/description
+ * language as the homepage's Articles/Reviews strips (renderHomepageSection
+ * below) — a section a reader lands on directly should read like the rest of
+ * the site, not like a bespoke page. Either group is skipped while empty
+ * rather than shown as a bare, cardless header; if both are empty (the
+ * section's state before anything is tagged for it) a plain notice replaces
+ * the page instead of rendering nothing.
+ */
+function MusicSection({
+  articles,
+  reviews,
+  t,
+  onArticleClick,
+  onReviewClick,
+}: {
+  articles: Article[];
+  reviews: Review[];
+  t: (key: string) => string;
+  onArticleClick: (article: Article) => void;
+  onReviewClick: (review: Review) => void;
+}) {
+  const pieces = musicArticles(articles);
+  const notices = musicReviews(reviews);
+
+  if (!pieces.length && !notices.length) {
+    return (
+      <div className="py-16 text-center">
+        <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.6)]">{t('music.empty')}</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {pieces.length > 0 && (
+        <section aria-labelledby="music-articles-title">
+          <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('music.articlesEyebrow')}</p>
+              <h2 id="music-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('music.articlesTitle')}</h2>
+            </div>
+            <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('music.articlesDescription')}</p>
+          </div>
+          <ArticlesSection articles={pieces} onArticleClick={onArticleClick} t={t} />
+        </section>
+      )}
+      {notices.length > 0 && (
+        <section
+          className={pieces.length > 0 ? 'mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12' : undefined}
+          aria-labelledby="music-reviews-title"
+        >
+          <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('music.reviewsEyebrow')}</p>
+              <h2 id="music-reviews-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('music.reviewsTitle')}</h2>
+            </div>
+            <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('music.reviewsDescription')}</p>
+          </div>
+          <ReviewsSection reviews={notices} t={t} onReviewClick={onReviewClick} />
+        </section>
+      )}
+    </>
+  );
+}
+
 function Sidebar({ t }: { t: (key: string) => string }) {
   const labels = [t('sidebar.lifestyle'), t('sidebar.travel'), t('sidebar.taste'), t('sidebar.design'), t('sidebar.culture'), t('sidebar.lifestyle'), t('sidebar.travel')];
   return (
@@ -3974,7 +4056,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
   articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
   reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
-  music: { title: 'Music — EPRIS Journal', description: 'Interviews and conversations with musicians and artists, on the work, the craft and the culture around it.' },
+  music: { title: 'Music — EPRIS Journal', description: 'Interviews with musicians and artists, and EPRIS reviews of albums, releases and live performances.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
   manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
   issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
@@ -4100,6 +4182,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     const imageUrl = resolveMediaSource(review.imageUrl, 1200, 630);
     const canonicalUrl = `https://eprisjournal.com/review/${getSlugForReview(review)}`;
     const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
+    const onMusicDesk = isMusicReview(review);
     document.title = `${review.title} — ${publicationName}`;
     setMeta('og:title', review.title);
     setMeta('og:description', summary);
@@ -4132,7 +4215,9 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
-            { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
+            onMusicDesk
+              ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://eprisjournal.com/music' }
+              : { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
             { '@type': 'ListItem', position: 3, name: review.title, item: canonicalUrl },
           ],
         },
@@ -4340,7 +4425,7 @@ export default function App() {
      а не раздел. Главный обзор всегда среди них, иначе «Featured» на вкладке и
      на главной означали бы разное. */
   const homepageReviews = useMemo(
-    () => [...reviews]
+    () => generalReviews(reviews)
       .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
       .slice(0, HOMEPAGE_ARTICLE_PREVIEW_COUNT),
     [reviews],
@@ -4503,7 +4588,7 @@ export default function App() {
           <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.reviewsDescription')}</p>
         </div>
         <ReviewsSection reviews={homepageReviews} t={t} onReviewClick={handleSelectReview} />
-        {reviews.length > homepageReviews.length && (
+        {generalReviews(reviews).length > homepageReviews.length && (
           <div className="mt-10 flex justify-center">
             <button
               type="button"
@@ -4763,8 +4848,8 @@ export default function App() {
                   ))}</>
                 )}
                 {activeTab === 'articles' && <ArticlesSection articles={generalArticles(articles)} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-                {activeTab === 'music' && <ArticlesSection articles={musicArticles(articles)} onArticleClick={(article) => handleSelectArticle(article.id, article)} t={t} />}
-                    {activeTab === 'reviews' && <ReviewsSection reviews={reviews} t={t} onReviewClick={handleSelectReview} />}
+                {activeTab === 'music' && <MusicSection articles={articles} reviews={reviews} onArticleClick={(article) => handleSelectArticle(article.id, article)} onReviewClick={handleSelectReview} t={t} />}
+                {activeTab === 'reviews' && <ReviewsSection reviews={generalReviews(reviews)} t={t} onReviewClick={handleSelectReview} />}
                 {activeTab === 'about' && <AboutSection t={t} currentLang={currentLang} onOpenManifest={() => handleSetTab('manifest')} />}
                 {activeTab === 'manifest' && <ManifestPage t={t} currentLang={currentLang} />}
               </>
