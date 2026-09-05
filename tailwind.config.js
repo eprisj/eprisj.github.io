@@ -21,7 +21,17 @@ export default {
       },
       fontFamily: {
         mono: ['OCR-B 10 BT', 'OCR-B', 'Courier New', 'monospace'],
-        crimson: ['Crimson Text', 'serif'],
+        // Crimson Text ships zero Cyrillic glyphs (same check as Playfair
+        // Display below: no unicode-range:cyrillic block in its css2
+        // response), so every UK/RU heading fell through past it to the
+        // browser's bare generic serif - Georgia or Times, depending on the
+        // OS - while any Latin word in the same headline stayed in Crimson
+        // Text. A title like "Neobarocco: Пять зданий..." rendered in two
+        // visibly different serifs side by side. PT Serif is already loaded
+        // (see index.html's font link) and is the site's designated
+        // Cyrillic-serif partner - `display` below uses it for exactly the
+        // same reason.
+        crimson: ['Crimson Text', 'PT Serif', 'serif'],
         display: ['Playfair Display', 'PT Serif', 'serif'],
         sans: ['PT Sans', 'sans-serif'],
       },

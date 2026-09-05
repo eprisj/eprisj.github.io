@@ -3089,7 +3089,7 @@ function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }:
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 12, scale: .985 }}
         transition={{ duration: .24, ease: [0.22, 1, 0.36, 1] }}
-        className="relative max-h-[min(90dvh,48rem)] w-full max-w-3xl overflow-y-auto bg-[var(--c-bg)] text-[var(--c-accent)] shadow-2xl"
+        className="relative flex max-h-[min(90dvh,48rem)] w-full max-w-3xl flex-col overflow-hidden bg-[var(--c-bg)] text-[var(--c-accent)] shadow-2xl"
       >
         <button
           type="button"
@@ -3099,32 +3099,41 @@ function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }:
         >
           <X size={18} />
         </button>
-        <button
-          type="button"
-          onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
-          className="group block w-full cursor-zoom-in text-left"
-          aria-label={`${t('homepage.openImage')}: ${article.title}`}
-        >
-          <div className="aspect-[16/8] overflow-hidden bg-[#E8DED5]">
-            <img src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 600)} alt={article.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" referrerPolicy="no-referrer" />
+        {/* Картинка и текст растут произвольно (заголовок в три строки,
+            вводка на полдесятка предложений), а кнопка «Читать полностью» -
+            единственное, ради чего открыли окно. Раньше она была последней
+            строкой в общей прокрутке и на длинной вводке уезжала за нижний
+            край без намёка на скролл - см. скриншот. Теперь прокручивается
+            только эта область, а кнопка стоит отдельной панелью снизу и видна
+            всегда, независимо от длины текста над ней. */}
+        <div className="flex-1 overflow-y-auto">
+          <button
+            type="button"
+            onClick={() => onImageClick(resolveMediaSource(article.imageUrl || article.imageSeed, 2000, 1143), article.title)}
+            className="group block w-full cursor-zoom-in text-left"
+            aria-label={`${t('homepage.openImage')}: ${article.title}`}
+          >
+            <div className="aspect-[16/8] overflow-hidden bg-[#E8DED5]">
+              <img src={resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 600)} alt={article.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" referrerPolicy="no-referrer" />
+            </div>
+          </button>
+          <div className="px-6 pb-8 pt-7 sm:px-10 sm:pb-8 sm:pt-8">
+            <div className="mb-4 flex flex-wrap items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+              {article.category && <span>{article.category}</span>}
+              {article.date && <><span className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.35)]" /><span>{article.date}</span></>}
+            </div>
+            <h2 id="article-preview-title" className="max-w-2xl font-crimson text-3xl leading-tight sm:text-5xl">{article.title}</h2>
+            <p className="mt-5 max-w-2xl font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)] sm:text-lg">{article.excerpt}</p>
           </div>
-        </button>
-        <div className="px-6 pb-8 pt-7 sm:px-10 sm:pb-10 sm:pt-8">
-          <div className="mb-4 flex flex-wrap items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">
-            {article.category && <span>{article.category}</span>}
-            {article.date && <><span className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.35)]" /><span>{article.date}</span></>}
-          </div>
-          <h2 id="article-preview-title" className="max-w-2xl font-crimson text-3xl leading-tight sm:text-5xl">{article.title}</h2>
-          <p className="mt-5 max-w-2xl font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.76)] sm:text-lg">{article.excerpt}</p>
-          <div className="mt-8 flex justify-center border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-7">
-            <button
-              type="button"
-              onClick={onReadFull}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--c-accent)] px-6 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
-            >
-              {t('articles.readFull')} <ArrowUpRight size={15} />
-            </button>
-          </div>
+        </div>
+        <div className="flex shrink-0 justify-center border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[var(--c-bg)] px-6 py-5 sm:px-10">
+          <button
+            type="button"
+            onClick={onReadFull}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--c-accent)] px-6 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
+          >
+            {t('articles.readFull')} <ArrowUpRight size={15} />
+          </button>
         </div>
       </motion.div>
     </motion.div>
