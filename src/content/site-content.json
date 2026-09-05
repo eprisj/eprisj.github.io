@@ -40904,6 +40904,78 @@
           ],
           "previewToken": "nb-302ed07ee17bba27",
           "updatedAt": "2026-09-05T07:48:22.574Z"
+        },
+        {
+          "id": 33,
+          "draft": true,
+          "previewToken": "efc77a042906fe45008533dd",
+          "title": "Costruito su una Partitura: Tre Edifici Dove la Musica Ha Scrittto l'Architettura",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "date": "5 set 2026",
+          "category": "Architettura",
+          "subcategory": "Saggio",
+          "desk": "music",
+          "tags": [
+            "architettura",
+            "musica",
+            "iannis xenakis",
+            "le corbusier",
+            "herzog & de meuron",
+            "oma",
+            "acustica"
+          ],
+          "imageSeed": "built-to-a-score",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+          "excerpt": "La maggior parte degli edifici ospita musica: un palco, pareti, un programma, buone acustiche. Una manciata di edifici fa qualcosa di più strano, e lascia che un pezzo di musica li progetti direttamente, o lascia che il problema di contenere il suono decida tutto dal tetto ai sedili. Tre edifici, tre diversi accordi tra le due discipline.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Nel 1958, lo studio di Le Corbusier costruì un padiglione per Philips all'Esposizione Universale di Bruxelles che non aveva affatto pareti dritte: nove conchiglie di cemento curve, simili a tende e appuntite, che si ergevano sopra un'unica sala oscura costruita per otto minuti di musica. La forma non derivava da uno schizzo di un edificio. derivava da un pezzo di musica."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+              "caption": "Il Padiglione Philips in costruzione, Esposizione Universale di Bruxelles, 1958.",
+              "credit": "Foto: Herbert Behrens / Anefo, CC0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:In_aanbouw_zijnde_Philipspaviljoen_van_architect_Le_Corbusier_op_het_terrein_van,_Bestanddeelnr_909-1104.jpg"
+            },
+            {
+              "type": "text",
+              "content": "Le conchiglie erano opera di Iannis Xenakis, un compositore che lavorava come ingegnere nello studio di Le Corbusier, e la loro geometria risale al suo brano orchestrale del 1954 Metastaseis. Xenakis aveva scritto una parte per quarantasei strumenti a corda che scivolavano continuamente tra le altezze, linee di glissando disegnate come linee rette su carta che, prese insieme, descrivevano superfici curve: ciò che un matematico chiamerebbe una superficie regolata, e ciò che un ingegnere riconoscerebbe come un paraboloide iperbolico. Xenakis modellò le pareti del padiglione allo stesso modo in cui aveva modellato i glissando, corde e fili rigidi che sostituivano il suono. L'edificio è, in un senso abbastanza letterale, un pezzo di musica costruito su scala architettonica."
+            },
+            {
+              "type": "text",
+              "content": "All'interno, circa 350 altoparlanti inseriti in quelle pareti spazializzavano Poème électronique di Edgard Varèse, un brano di otto minuti su nastro trasportato dal vivo intorno al pubblico da tecnici a una consolle di controllo, sincronizzato con cambi di luci colorate. Il padiglione fu demolito il 30 gennaio 1959, cinque mesi dopo la sua apertura, il suo scopo esaurito con l'esposizione che lo aveva finanziato. Ciò che sopravvive è il metodo: la musica letta non come colonna sonora di una stanza, ma come un insieme di istruzioni per costruirne una."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
+              "caption": "La corona di vetro dell'Elbphilharmonie si erge sopra il magazzino Kaispeicher riconvertito, Hamburg.",
+              "credit": "Foto: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
+            },
+            {
+              "type": "testo",
+              "content": "Quasi sessant'anni dopo, l'Elbphilharmonie di Herzog & de Meuron a Hamburg, inaugurata l'11 gennaio 2017, fece l'opposto: invece di lasciare che la musica generasse la forma dell'edificio, lasciò che i requisiti dell'ascolto musicale decidesse quasi tutto il resto. L'acustico Yasuhisa Toyota progettò la sala principale come un vigneto, terrazze di sedili che si arrampicano attorno a un palco centrale nel modo in cui Hans Scharoun aveva usato per la Berliner Philharmonie nel 1963, in modo che nessun ascoltatore tra 2.100 sedili si trovi a più di 30 metri dal direttore d'orchestra. La superficie interna della sala, composta da circa 10.000 pannelli di fibra di gesso lavorati singolarmente, è tagliata con un profilo diverso in ogni punto per diffondere il suono in modo uniforme piuttosto che lasciarlo raccogliere in un solo punto. L'intera struttura galleggia su 362 supporti a molla, meccanicamente isolati dall'edificio circostante in modo che un treno in transito non raggiunga mai il palco. Sopra un magazzino di mattoni riconvertito, i piani superiori in vetro dell'auditorium si leggono dall'esterno come un'onda, o una corona. Dall'interno della sala, quell'immagine è quasi secondaria: il vero compito della stanza è acustico, e la sua forma è un diagramma di quel compito."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
+              "caption": "L'esterno ripiegato della Casa da Música, Porto.",
+              "credit": "Foto: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
+            },
+            {
+              "type": "testo",
+              "content": "Rem Koolhaas ed Ellen van Loon di OMA hanno preso una terza posizione con Casa da Música a Porto, aperta nel 2005. L'ufficio voleva evitare la forma standard di scatola da concerto, ha provato alternative e le ha confrontate con la scatola in termini di acustica che non poteva superare. Così OMA ha mantenuto la scatola e l'ha nascosta: una sala rettangolare per 1.300 posti, vetrata alle estremità, si trova all'interno di un poliedro bianco irregolare che sembra piegato piuttosto che costruito, come se la scatola fosse stata estratta da un singolo blocco asimmetrico. La forma che l'edificio indossa all'esterno non ha una logica ovvia finché non si sa che all'interno c'è una stanza rettilinea e acusticamente corretta, e che tutto ciò che è sfaccettato e irregolare all'esterno è l'architettura che trova una forma pubblica per una decisione che non era libera di prendere."
+            },
+            {
+              "type": "text",
+              "content": "Tre edifici, tre relazioni diverse con lo stesso problema. Xenakis lasciò che un pezzo di musica diventasse un tetto. Toyota e Herzog & de Meuron lasciarono che la fisica dell'udito dictatesse una stanza, poi avvolsero un edificio intorno al risultato. Koolhaas mantenne la forma che l'acustica insisteva e trascorse il resto dell'edificio a discutere con essa. Nessuno dei tre riguarda davvero la musica in architettura. Si tratta di ciò che accade quando una disciplina che si basa su sequenza e proporzione viene autorizzata a dare ordini a quella che si basa su carico e materiale, o viene fatta rispondere ad essa invece."
+            }
+          ],
+          "updatedAt": "2026-09-05T15:46:24.762Z"
         }
       ],
       "reviews": [
