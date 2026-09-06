@@ -13275,53 +13275,53 @@
           "excerpt": "Большинство зданий принимают музыку: сцену, стены, программу, хорошую акустику. Немного зданий делают что-то более странное, позволяя музыкальному произведению напрямую проектировать их, или позволяя проблеме удержания звука решать всё — от крыши до сидений. Три здания, три разных соглашения между двумя дисциплинами.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "В 1958 году студия Le Corbusier построила павильон для Philips на Брюссельской Всемирной выставке, который не имел ни одной прямой стены: девять изогнутых бетонных оболочек, похожих на палатки и остроконечных, возвышались над одним тёмным залом, предназначенным для восьми минут музыки. Его форма не возникла из эскиза здания. Она возникла из музыкального произведения."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Оболочки были работой Ианниса Ксенакиса, композитора, работающего инженером в ателье Le Corbusier, и их геометрия восходит к его оркестровой пьесе 1954 года Metastaseis. Ксенакис написал фрагмент для сорока шести струнных инструментов, которые непрерывно скользили между нотами, глиссандо линий, нарисованных как прямые на бумаге, которые вместе описывали изогнутые поверхности: то, что математик назвал бы правиленной поверхностью, а инженер — гиперболическим параболоидом. Ксенакис моделировал стены павильона так же, как он моделировал глиссандо, струны и жесткую проволоку, заменяющие звук. Здание, в довольно буквальном смысле, — это музыкальное произведение, построенное в архитектурном масштабе."
             },
             {
-              "type": "видео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
               "caption": "Ианнис Ксенакис, Metastaseis (1953-54), для 61 музыканта. Глиссандо за оболочками павильона.",
               "credit": "через YouTube"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Внутри около 350 динамиков, встроенных в эти стены, пространственно воспроизводили Poème électronique Эдгара Варèse, восьмиминутную магнитофонную композицию, которая транслировалась вживую вокруг аудитории техникой на пульте, синхронизированной с изменениями цветного света. Павильон был снесён 30 января 1959 года, через пять месяцев после открытия, его назначение исчерпалось с завершением выставки, которая его финансировала. Что осталось — это метод: музыка воспринимается не как саундтрек к комнате, а как набор инструкций по её созданию."
             },
             {
-              "type": "видео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
               "caption": "Эдгар Варèse, Poème électronique (1958). Сочинено для 350 динамиков павильона Philips.",
               "credit": "через YouTube"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "Стеклянная корона Elbphilharmonie возвышается над переделанным складом Kaispeicher, Гамбург.",
               "credit": "Фото: Dietmar Rabich, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Почти шестьдесят лет спустя, Elbphilharmonie от Herzog & de Meuron в Гамбурге, открытая 11 января 2017 года, сделала противоположную сделку: вместо того чтобы позволить музыке формировать здание, она позволила требованиям прослушивания музыки решать почти все остальное. Акустик Юсухиса Тойота спроектировал главный зал как виноградник, террасы сидений поднимаются вокруг центральной сцены в манере, которую использовал Ханс Шарун для Berliner Philharmonie в 1963 году, так что ни один слушатель из 2100 не сидит более чем в 30 метрах от дирижера. Внутренняя поверхность зала, состоящая из около 10 000 индивидуально фрезерованных гипсоплитных панелей, вырезана с разным профилем в каждой точке, чтобы равномерно рассеивать звук, а не позволять ему собираться в одном месте. Вся структура плавает на 362 пружинных опорах, механически изолированных от окружающего здания, чтобы проходящий поезд никогда не достигал сцену. Над переделанным кирпичным складом, стеклянные верхние этажи концертного зала выглядят снаружи как волна или корона. Изнутри зал, этот образ почти не важен: фактическая задача комнаты — акустика, и ее форма — это диаграмма этой задачи."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
               "caption": "Фасад Casa da Música, сложенный, Порту.",
               "credit": "Фото: John Samuel, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Рем Кулхаас и Эллен ван Лонн OMA заняли третье место с Casa da Música в Порту, открытым в 2005 году. Офис хотел избежать стандартной формы концертного зала, попробовал альтернативы и сравнил их с акустикой шкоубокса, которую не смог превзойти. Поэтому OMA сохранили коробку и спрятали её: прямоугольный зал на 1300 мест, с обеих концов застеклённый, расположен внутри неправильного белого многогранника, который кажется сложенным, а не построенным, как будто шкоубокс был вырезан из одного асимметричного блока. Форма, которую здание носит снаружи, не имеет очевидной логики, пока не узнаешь, что внутри находится прямой, акустически правильный зал, и что всё фасетное и неправильное снаружи — это архитектура, ищущая общественную форму для решения, которое она не могла свободно принять."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Три здания, три разных отношения к одной и той же проблеме. Xenakis позволил музыкальному произведению стать крышей. Toyota и Herzog & de Meuron позволили физике слуха диктовать комнату, а затем обернули здание вокруг этого результата. Koolhaas сохранил ту форму, на которую настаивают акустика, и весь остальной проект спорил с ней. Ни одно из трёх не о музыке в архитектуре. Они о том, что происходит, когда дисциплина, основанная на последовательности и пропорции, получает возможность отдавать приказы другой, основанной на нагрузке и материале, или вынуждена ей подчиняться."
             }
           ],
@@ -15371,29 +15371,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фінська художниця Sandra Kantanen підходить до фотографії як до воріт у уявний світ, а не як до інструменту для захоплення об'єктивної реальності. Її робота розкриває унікальну, безмежну технічну філософію, яка виходить за межі обмежень об'єктива, кидаючи виклик глядачеві поставити під сумнів, де закінчується фотографія і починається картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "З першого погляду можна припустити, що її ефірні пейзажі є результатом змішаних олійних фарб і традиційного накладання шарів. Насправді це фотографії природних середовищ — від лісів її рідної Фінляндії до гір Азії — піддані глибокій цифровій і фізичній маніпуляції."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Квіти 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Народжена в Гельсінкі у 1974 році, Sandra Kantanen стала ключовою фігурою в рамках міжнародно відомої Helsinki School of Photography. Її академічну основу заклала школа мистецтв, дизайну та архітектури Aalto University у Гельсінкі, але поворотний момент у її художній траєкторії стався приблизно у 2000 році, коли вона переїхала до Китаю як студент за обміном."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": " Вивчаючи традиційний китайський пейзажний живопис у Центральній академії образотворчих мистецтв у Пекіні, Kantanen глибоко вплинула східною філософією. Вона була вражена тим, як давні майстри не прагнули задокументувати пейзаж, а ідеалізувати та сублімувавши його. "
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -15405,33 +15405,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Під час своїх подорожей по священних горах Китаю вона стала свідком різкої напруги між чистою, духовною природою, зображеною на давніх шовкових свитках, і жорсткими реаліями сучасного промислового забруднення та туризму. Ця дисонанс стала каталізатором її практики: довічного прагнення зафіксувати \"неможливий\" пейзаж – простір, що існує десь між пам’яттю, міфом і оптичним спотворенням."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без назви (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Хоча піксельно спотворені пейзажі є її найвідомішою підписом, широка фотографічна практика Kantanen вражає своєю різноманітністю. Вона не покладається на один технічний трюк; навпаки, вона експериментує з різними серіями, постійно переосмислюючи, як може поводитися фотографічне зображення: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "The Smoke Works and Pixel Manipulation: У своїй найвідомішій серії Kantanen фізично втручається у природу ще до того, як клацне затвор. Випускаючи кольорові димові бомби у віддалені ліси – такі як ті поблизу її дому в Hango, Finland – вона створює сюрреалістичну, психоделічну атмосферу, яка порушує буденний пейзаж. Потім вона обробляє ці цифрові файли та піддає їх глибокій маніпуляції: розмиває горизонти, розтягує дані та вручну змушує пікселі текти так, щоб фотографія імітувала текучість рідкої фарби."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанічні дослідження та сканери: Відходячи від величезних пейзажів і розтягування пікселів повністю, її натюрморти з квітами та ботанічні роботи досліджують органічний розпад зблизька. Для цього вона часто використовує великомасштабні формати, довгі експозиції або навіть плоскі сканери замість традиційних об'єктивів камери. Ці методи викликають багатство, алегоричну глибину голландського Золотого віку живопису, зосереджуючись на інтимних текстурах і повільному проходженні часу в природі."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -15443,16 +15443,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Переміщуючись плавно між фізичним сценічним оформленням, scanner art, прямим захопленням та цифровою дисторсією, Kantanen постійно дестабілізує наше сприйняття того, що може бути фотографією."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -19036,53 +19036,53 @@
           "excerpt": "Більшість будівель приймають музику: сцену, стіни, програму, хорошу акустику. Декілька будівель роблять щось дивніше, і дозволяють шматку музики проектувати їх напряму, або дозволяють проблемі утримання звуку визначати все від даху до сидінь. Три будівлі, три різні угоди між двома дисциплінами.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "У 1958 році студія Le Corbusier побудувала павільйон для Philips на Брюссельській світовій виставці, який не мав зовсім прямих стін: дев’ять кривих бетонних оболонок, схожих на намети і гострих, що стояли над однією темною залою, створеною для восьми хвилин музики. Форма не походила з ескізу будівлі. Вона виникла з музичного твору."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Оболонки були роботою Іанніса Ксенакиса, композитора, який працював інженером в ательє Le Corbusier, і їхня геометрія простежується до його оркестрової композиції 1954 року Metastaseis. Ксенакис написав фрагмент для сорока шести струнних інструментів, що безперервно ковзали між нотами, глісандо, намальовані як прямі лінії на папері, які разом описували криві поверхні: те, що математик назвав би правилом поверхні, а інженер — гіперболічною параболоїдою. Ксенакис моделював стіни павільйону так само, як і глісандо, струни і жорсткі дроти, що виступали замість звуку. Це будівля, в досить буквальному сенсі, — музичний твір, створений у архітектурному масштабі."
             },
             {
-              "type": "відео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
               "caption": "Іанніс Ксенакис, Metastaseis (1953-54), для 61 музиканта. Глісандо за оболонками павільйону.",
               "credit": "через YouTube"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Всередині близько 350 динаміків, вбудованих у ці стіни, просторово розмістили Poème électronique Едгара Варèse, восьмихвильовий магнітофонний твір, який транслювався в реальному часі навколо аудиторії техніками з пульту керування, синхронізований із змінами кольорового освітлення. Павільйон був зруйнований 30 січня 1959 року, через п’ять місяців після відкриття, його мета була досягнута з виставкою, яка його профінансувала. Те, що залишилось — це метод: музика, сприйнята не як саундтрек до кімнати, а як набір інструкцій для її побудови."
             },
             {
-              "type": "відео",
+              "type": "video",
               "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
               "caption": "Edgard Varèse, Poème électronique (1958). Складено для 350 гучномовців Pavilion Philips.",
               "credit": "через YouTube"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
               "caption": "скляна корона Elbphilharmonie підноситься над переробленим складом Kaispeicher, Гамбург.",
               "credit": "Фото: Dietmar Rabich, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Майже через шістдесят років, Elbphilharmonie від Herzog & de Meuron у Гамбурзі, відкритий 11 січня 2017 року, зробив протилежну угоду: замість дозволити музиці формувати будівлю, він дозволив вимогам слухати музику визначати майже все інше. Акустик Юсухіса Тойота спланував головний зал у вигляді виноградника, тераси сидінь піднімалися навколо центральної сцени у стилі, який використовував Ганс Шарун для Berliner Philharmonie у 1963 році, щоб жоден слухач із 2100 не сидів більше ніж за 30 метрів від диригента. Внутрішня поверхня залу, близько 10 000 індивідуально оброблених гіпс-фібрових панелей, вирізана з різним профілем у кожній точці, щоб рівномірно розсіювати звук, а не дозволяти йому збиратися в одному місці. Вся структура плаває на 362 пружинних опорах, механічно ізольованих від навколишньої будівлі, щоб проїжджаючий поїзд ніколи не досягав сцени. Над переробленим цегляним складом, скляні верхні поверхи концертної зали ззовні виглядають як хвиля або корона. Зсередини залу цей образ майже не має значення: фактичне завдання кімнати — акустика, а її форма — діаграма цього завдання."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
               "caption": "згорнутий зовнішній вигляд Casa da Música, Порто.",
               "credit": "Фото: John Samuel, CC BY-SA 4.0, через Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Rem Koolhaas та Ellen van Loon's OMA зайняли третю позицію з Casa da Música у Порту, відкриту у 2005 році. Бюро хотіло уникнути стандартної форми концертної зали у вигляді коробки, спробувало альтернативи та порівняло їх із коробкою за акустикою, яку не могли побити. Тому OMA залишили коробку і сховали її: прямокутна зала на 1300 місць, засклена з обох кінців, розташована всередині нерегулярного білого полігону, що здається згорнутим, а не збудованим, ніби коробка вирізана з одного асиметричного блоку. Форма, яку носить будівля зовні, не має очевидної логіки, поки не дізнаєшся, що всередині знаходиться пряма, акустично правильна кімната, і що все фасетне та нерегулярне зовні — це архітектура, яка шукає публічну форму для рішення, яке вона не могла вільно прийняти."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Три будівлі, три різні стосунки до однієї й тієї ж проблеми. Xenakis дозволив музичному твору стати дахом. Toyota та Herzog & de Meuron дозволили фізиці слуху визначати кімнату, а потім обгорнули будівлю навколо результату. Koolhaas зберіг ту форму, яку наполягають акустика, і весь решту будівлі сперечався з нею. Жодна з трьох насправді не про музику в архітектурі. Вони про те, що трапляється, коли дисципліна, яка працює на послідовності та пропорції, дозволяє давати накази тій, що працює на навантаженні та матеріалі, або змушена відповідати їй."
             }
           ],
@@ -20909,7 +20909,7 @@
               "content": "Alles zu ernst zu nehmen ist eine Sackgasse – und es sollte dir auf keinen Fall in den Sinn kommen, wenn du ein neues Stück für dein Zuhause auswählst. Letztendlich ist die Grundlinie deine persönliche Vorliebe. Wenn du nur strenge beige und schwarze Formen magst oder konventionelle Medien und Motive, ist das wunderbar! Mein einziges Anliegen ist, wenn Menschen sich nicht einmal erlauben, ein Stück in Betracht zu ziehen, das einen Moment der Freude auslösen könnte. Wir hören ständig: „Es sieht so großartig aus, es passt wunderbar zu meinen Wänden und meinen anderen Gemälden.“ Aber beim nächsten Mal solltest du dir eine andere Frage stellen: Macht es mich lächeln? Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die andere nicht haben – sie bringen reines Glück in einen Raum. Wir denken darüber nicht oft genug nach, sondern konzentrieren uns stattdessen darauf, wie trendy ein Stück ist oder wie es unser Zuhause aussehen lässt. Aber wie fühlt es uns? "
             },
             {
-              "type": "Zitat",
+              "type": "quote",
               "content": "Bunte und verspielte Objekte besitzen eine einzigartige Qualität, die andere nicht haben - sie bringen reines Glück in einen Raum."
             },
             {
@@ -20917,7 +20917,7 @@
               "content": "Innenarchitektur ist nicht nur eine Umgebung, ein statisches Bild, eine Komposition oder eine Farbpalette. Es ist eine lebendige Umgebung, die dich umarmt und umhüllt. Wir sind es gewohnt, ein Interieur als eine äußere Komponente unserer Existenz zu betrachten, uns lediglich als Zuschauer zu positionieren. In Wirklichkeit, sobald wir einen Raum betreten, werden wir von ihm absorbiert, nehmen seine Stimmung unsichtbar an und ergeben uns dem unwiderstehlichen Einfluss seiner Atmosphäre. Es gibt sogar einen speziellen Zweig der Wissenschaft - Neuroarchitektur - der untersucht, wie die Umgebung unsere kognitive Leistung sowie unser psychisches und physisches Wohlbefinden beeinflusst. Meistens werden diese Effekte durch räumliche Eigenschaften, Farbpsychologie und die taktilen Eigenschaften der Materialien ausgelöst. Es gibt jedoch ein Element, das oft auf dieser wissenschaftlichen Liste fehlt, aber dennoch einen großen Einfluss darauf hat, wie wir einen Raum erleben: <i>mit Ironie und Spaß gefüllte Details.</i>"
             },
             {
-              "type": "Zitat",
+              "type": "quote",
               "content": " In Wirklichkeit, sobald wir einen Raum betreten, werden wir von ihm absorbiert, nehmen seine Stimmung unsichtbar an und ergeben uns dem unwiderstehlichen Einfluss seiner Atmosphäre."
             },
             {
@@ -20963,21 +20963,21 @@
               "content": "Kürzlich hat sie ihre Praxis erweitert, um mit Metall und Textilien zu arbeiten. Wenn Sie nach einzigartiger Bettwäsche suchen, können Sie das Set “It’s a Mess” bestellen, das einen Trompe-l'œil-Druck von verstreuten Kleidern zeigt. Die unbeschwerte Essenz ihrer Objekte, zusammen mit der gewählten Farbpalette, ist tief von ihrer Kindheit im Süden Frankreichs inspiriert, wo das Genießen eines sonnengefüllten Lebens eine tägliche Routine war."
             },
             {
-              "type": "Zitat",
+              "type": "quote",
               "content": "Die unbeschwerte Essenz ihrer Objekte, zusammen mit der gewählten Farbpalette, ist tief von ihrer Kindheit im Süden Frankreichs inspiriert, wo das genussvolle Leben in der Sonne eine tägliche Routine war."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mrp9xqom3fudfj.webp",
               "stretched": true
             },
             {
-              "type": "Kopfzeile",
+              "type": "header",
               "content": "Erwin Wurm",
               "level": 2
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Erwin Wurms Arbeit ist ein Paradebeispiel für verspielte Ironie, die ernsthafte soziale Themen verschleiert – Botschaften, die auf den ersten Blick schwer zu lesen sind, aber nach dem Enthüllen ein untrennbarer Teil der Erfahrung werden.<br>"
             },
             {
@@ -20989,11 +20989,11 @@
               "content": "Letztendlich dient die Absurdität in Wurms Kunst als scharfe Reaktion auf den Druck der zeitgenössischen Gesellschaft, wie Überkonsum, das überwältigende Gewicht der öffentlichen Meinung und unsere Obsession mit Selbstrepräsentation durch die Dinge, die wir besitzen. Unter der fröhlichen Verpackung liegt ein tiefgründiger Kommentar zum modernen menschlichen Zustand. Doch die Präsenz dieser verborgenen Tiefe beeinträchtigt niemals den reinen, freudigen Eindruck seiner Werke – sie bleiben mühelos bezaubernde Objekte, zu denen man immer wieder zurückkehren möchte."
             },
             {
-              "type": "zitat",
+              "type": "quote",
               "content": "Doch die Präsenz dieser verborgenen Tiefe beeinträchtigt niemals den reinen, freudigen Eindruck seiner Werke – sie bleiben mühelos bezaubernde Objekte, zu denen man immer wieder zurückkehren möchte."
             },
             {
-              "type": "galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mrpa6tqpmljolk.jpg",
                 "https://api.eprisjournal.com/uploads/mrpa77rpsjpc66.jpg",
@@ -30560,11 +30560,11 @@
           "excerpt": "La mayoría de los edificios albergan música: un escenario, paredes, un programa, buena acústica. Un puñado de edificios hace algo más extraño, y dejan que una pieza de música los diseñe directamente, o dejan que el problema de sostener el sonido decida todo desde el techo hasta los asientos. Tres edificios, tres acuerdos diferentes entre las dos disciplinas.",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "En 1958, el estudio de Le Corbusier construyó un pabellón para Philips en la Exposición Universal de Bruselas que no tenía paredes rectas en absoluto: nueve conchas de concreto curvado, en forma de tienda y puntiagudas, que se levantaban sobre un solo vestíbulo oscuro construido para ocho minutos de música. La forma no provino de un boceto de un edificio. Provino de una pieza de música."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Las conchas fueron obra de Iannis Xenakis, un compositor que trabajaba como ingeniero en el atelier de Le Corbusier, y su geometría remonta a su pieza orquestal de 1954 Metastaseis. Xenakis había compuesto un pasaje para cuarenta y seis instrumentos de cuerda que deslizaban continuamente entre tonos, líneas de glissando dibujadas como líneas rectas en papel que, tomadas en conjunto, describían superficies curvas: lo que un matemático llamaría una superficie reglada, y lo que un ingeniero reconocería como un paraboloide hiperbólico. Xenakis modeló las paredes del pabellón de la misma manera que modeló los glissandi, cuerdas y alambres rígidos que representaban el sonido. El edificio es, en un sentido bastante literal, una pieza de música construida a escala arquitectónica."
             },
             {
@@ -30574,7 +30574,7 @@
               "credit": "vía YouTube"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "En el interior, unos 350 altavoces integrados en esas paredes espacializaron Poème électronique de Edgard Varèse, una pieza en cinta de ocho minutos enrutada en vivo alrededor del público por técnicos en un escritorio de control, sincronizada con cambios de luz de colores. El pabellón fue demolido el 30 de enero de 1959, cinco meses después de su apertura, su propósito se agotó con la feria que lo financió. Lo que queda es el método: la música no se lee como una banda sonora para una habitación, sino como un conjunto de instrucciones para construir una."
             },
             {
@@ -30602,11 +30602,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Rem Koolhaas y Ellen van Loon de OMA ocuparon la tercera posición con Casa da Música en Porto, inaugurada en 2005. La oficina quería evitar la forma estándar de la sala de conciertos en caja, probó alternativas y las midió contra la caja en acústica que no podía superar. Así que OMA mantuvo la caja y la ocultó: una sala rectangular para 1,300 asientos, acristalada en ambos extremos, se encuentra dentro de un poliedro blanco irregular que parece doblado en lugar de construido, como si la caja en caja hubiera sido extraída de un solo bloque asimétrico. La forma que lleva el edificio en el exterior no tiene una lógica obvia hasta que sabes que hay una habitación recta, acústicamente correcta, en su interior, y que todo lo facetado e irregular en el exterior es la arquitectura encontrando una forma pública para una decisión que no podía tomar libremente."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Tres edificios, tres relaciones diferentes con el mismo problema. Xenakis dejó que una pieza de música se convirtiera en un techo. Toyota y Herzog & de Meuron dejaron que la física de la audición dictara una habitación, luego envolvieron un edificio alrededor del resultado. Koolhaas mantuvo la forma que la acústica insiste y pasó el resto del edificio discutiendo con ella. Ninguno de los tres trata realmente sobre música en arquitectura. Se trata de lo que sucede cuando una disciplina que funciona con secuencia y proporción se le permite dar órdenes a otra que funciona con carga y material, o se le hace responder a ella en su lugar."
             }
           ],
@@ -41029,20 +41029,20 @@
               "caption": ""
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Soggetti"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Dahlen utilizza questo linguaggio visivo per rappresentare oggetti ordinari e scene quotidiane: preparare cibo, giocare a domino, tagliare con le forbici, assemblare un puzzle. Ha una particolare fascinazione per il cibo."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtd1xht1z7jkcw.jpg",
               "caption": ""
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtd23vnikc0w6o.jpg",
               "caption": ""
             },
