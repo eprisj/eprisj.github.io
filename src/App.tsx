@@ -962,7 +962,8 @@ const LANG_LABELS: Record<string, string> = {
   TR: 'Türkçe',
   DE: 'Deutsch',
   IT: 'Italiano',
-  ES: 'Español'
+  ES: 'Español',
+  FR: 'Français'
 };
 
 function NavBar({
@@ -2097,7 +2098,7 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
     ...(getHomepageSettings().picsOfWeek?.categories || []),
     ...DEFAULT_HOMEPAGE_PICS_CATEGORIES,
   ].filter((category, index, all) => category?.id && all.findIndex((candidate) => candidate?.id === category.id) === index);
-  const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
+  const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es', FR: 'fr' };
   const formatDate = (value: string) => {
     const date = new Date(value);
     return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString(languageTags[currentLang] || 'en', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -4343,7 +4344,7 @@ export default function App() {
   const languageOptions = getAvailableLanguages();
   useEffect(() => {
     try { localStorage.setItem('epris_language', currentLang); } catch { /* storage may be unavailable */ }
-    const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es' };
+    const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es', FR: 'fr' };
     document.documentElement.lang = languageTags[currentLang] || currentLang.toLowerCase();
   }, [currentLang]);
   const { items, articles, reviews } = getContentForLanguage(currentLang);
