@@ -7619,32 +7619,6 @@
         }
       ],
       "updatedAt": "2026-09-06T07:51:58.601Z"
-    },
-    {
-      "title": "Test Review Delete Me",
-      "author": "Test Author",
-      "role": "",
-      "date": "Sep 6, 2026",
-      "category": "TEST",
-      "desk": "music",
-      "draft": true,
-      "subject": "Test Artist · Test Label · 2026",
-      "rating": 0,
-      "content": [
-        {
-          "type": "text",
-          "content": "First paragraph of the test review."
-        },
-        {
-          "type": "text",
-          "content": "Second paragraph, still testing."
-        }
-      ],
-      "verdict": "A test verdict.",
-      "pros": [],
-      "cons": [],
-      "id": 9,
-      "updatedAt": "2026-09-06T07:52:39.560Z"
     }
   ],
   "libraryItems": [
