@@ -108,24 +108,33 @@ function articleBody(article) {
    ні посилань, ні h1 — статтю індексувати було нічим. React під час
    монтування вміст #root затирає, тому цей блок нічого не ламає, зате
    краулер без JS бачить справжній матеріал, а користувач на повільному
-   зв'язку читає текст ще до завантаження застосунку. */
+   зв'язку читає текст ще до завантаження застосунку.
+
+   Кольори й шрифти беремо змінними (--c-accent, --font-body, --font-display),
+   а не своїми значеннями: index.css вже підключений у <head> цієї ж сторінки,
+   тож змінні реально є на момент рендеру. Раніше тут стояли захардкожені
+   PT Serif/#2b2b2b — сіро-серифний плейсхолдер на бежевому тлі сайту, що на
+   секунду-дві (помітніше на мобільному, де гідратація повільніша) виглядав
+   як зовсім інший дизайн, поки React не змонтувався і не підмінив розмітку. */
 const PRERENDER_STYLE = `<style>
     /* Видно лише до монтування React (createRoot затирає вміст #root).
        Мета не намалювати сторінку наново, а щоб ці півсекунди на
-       повільному зв'язку виглядали як текст, а не як зламана верстка. */
+       повільному зв'язку виглядали як текст сайту, а не як чужа верстка. */
     .pre-doc{max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
-      font-family:'PT Serif',Georgia,serif;line-height:1.65;color:#2b2b2b}
-    .pre-doc h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+      font-family:var(--font-body,'PT Sans',sans-serif);line-height:1.65;
+      color:var(--c-accent,#4a1728)}
+    .pre-doc h1{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
       font-size:clamp(28px,4.6vw,44px);line-height:1.15;margin:0 0 .6em}
-    .pre-doc h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+    .pre-doc h2{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
       font-size:clamp(19px,2.4vw,25px);margin:2em 0 .5em}
     .pre-doc p{margin:0 0 1.15em}
-    .pre-doc small{color:#777;font-family:'PT Sans',system-ui,sans-serif;font-size:14px}
-    .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;border-left:2px solid #ddd;
-      font-style:italic;color:#555}
+    .pre-doc small{color:var(--c-accent,#4a1728);opacity:.6;
+      font-family:var(--font-body,'PT Sans',sans-serif);font-size:14px}
+    .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;
+      border-left:2px solid var(--c-gold,#b8956e);font-style:italic;opacity:.85}
     .pre-doc ul{padding-left:1.1em}
     .pre-doc li{margin:0 0 .5em}
-    .pre-doc a{color:#2b2b2b}
+    .pre-doc a{color:var(--c-accent,#4a1728)}
     .pre-doc img{max-width:100%;height:auto;display:block;margin:0 0 1.4em}
   </style>`;
 
