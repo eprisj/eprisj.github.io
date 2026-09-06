@@ -40973,32 +40973,40 @@
         },
         {
           "id": 28,
-          "draft": true,
-          "title": "Modernismo Contemporaneo: Nick Dahlen",
+          "title": "Nick Dahlen - Una interpretazione contemporanea del modernismo",
           "author": "Maria Ivanova",
           "role": "Autore",
           "date": "28 ago 2026",
-          "excerpt": "Una storia visiva costruita intorno a immagini, didascalie e una linea narrativa concisa.",
-          "category": "Arte",
+          "excerpt": "Un artista che trasforma la bellezza della vita quotidiana in illustrazioni sorprendenti all'interno del suo mondo visivo.",
+          "category": "SAGGIO",
           "subcategory": "Storia visiva",
           "tags": [
-            "foto",
             "saggio",
-            "visivo"
+            "arte contemporanea"
           ],
-          "imageSeed": "contemporary-modernism-nick-dahlen",
+          "imageSeed": "",
           "content": [
             {
               "type": "text",
               "content": "Nick Dahlen è un artista e illustratore di Minneapolis il cui lavoro rivive lo spirito del modernismo attraverso una lente contemporanea."
             },
             {
-              "type": "text",
-              "content": "Con un background nel graffiti e una laurea in Graphic Design, Dahlen ha sviluppato un linguaggio visivo che combina la forza dell'estetica modernista con un senso di nostalgia – forse per un'epoca visiva a cui instinctivamente aspiriamo senza nemmeno rendersene conto."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1x28og4jut9.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "La base dello stile di Dahlen è sorprendentemente coerente, e questa coerenza rende il suo lavoro ancora più coinvolgente. Una volta incontrata una delle sue immagini, si desidera immediatamente passare alla successiva, attratti dal piacere di forme pulite e semplificate che coprono soggetti altrimenti ordinari e quotidiani."
+              "content": "Con un background nel graffiti e una laurea in Graphic Design, Dahlen ha sviluppato un linguaggio visivo che combina la forza dell'estetica modernista con un senso di nostalgia – forse per un'epoca visiva a cui instinctivamente aneliamo senza nemmeno rendersene conto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd22zg50cmc2s.jpg",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "La fondazione dello stile di Dahlen è sorprendentemente coerente, e quella coerenza rende tutto ancora più coinvolgente. Una volta incontrata una delle sue immagini, si desidera immediatamente passare alla successiva, attratti dal piacere di forme pulite e semplificate che coprono soggetti altrimenti ordinari e quotidiani."
             },
             {
               "type": "text",
@@ -41006,35 +41014,65 @@
             },
             {
               "type": "text",
-              "content": "Questa accessibilità visiva – nel miglior senso possibile della parola – è creata in gran parte attraverso ombre saturate e contrastanti che stabiliscono immediatamente i contorni di ogni forma. Possiamo leggere la scena senza sforzo, e quella chiarezza la rende istintivamente attraente."
+              "content": "Questa accessibilità visiva – nel miglior senso possibile della parola – è in gran parte creata attraverso ombre saturate e contrastanti che stabiliscono immediatamente i contorni di ogni forma. Possiamo leggere la scena senza sforzo, e quella chiarezza la rende istintivamente attraente."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1xwmidgec86.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "La semplificazione delle forme, combinata con distorsioni deliberate e un senso autorale di proporzione, richiama il Cubismo, in particolare il lavoro di Fernand Léger e Pablo Picasso. Vale la pena soffermarsi su questa idea di semplificazione perché, nel lavoro di Dahlen, esiste fianco a fianco con la complessità. Questa dicotomia è radicata nella distorsione della forma e in una fede nella sua plasticità intrinseca."
+              "content": "La semplificazione delle forme, combinata con distorsioni deliberate e un senso autorale di proporzione, richiama il Cubismo, in particolare il lavoro di Fernand Léger e Pablo Picasso. Vale la pena soffermarsi su questa idea di semplificazione perché, nel lavoro di Dahlen, esiste di pari passo con la complessità. Questa dicotomia è radicata nella distorsione della forma e in una fede nella sua plasticità intrinseca."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1y7ryriiac0.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Le distorsioni – e in particolare le proporzioni ingrandite – rendono le sue figure monumentali, quasi scultoree. Qui, si può rintracciare un'affinità con il lavoro dell'artista brasiliana Tarsila do Amaral, le cui figure acquisiscono altrettanto una presenza potente, quasi scultorea, attraverso forme semplificate ed esagerate."
+              "content": "Le distorsioni – e in particolare le proporzioni ingrandite – rendono le sue figure monumentali, quasi scultoree. Qui, si può rintracciare un'affinità con il lavoro dell'artista brasiliana Tarsila do Amaral, le cui figure acquisiscono altrettanto potere, quasi scultoreo, attraverso le loro forme semplificate ed esagerate."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd1zyascjdrr3.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "L'audacia è bilanciata da una certa fluidità, che mantiene l'opera visivamente invitante. Tutti questi elementi si uniscono attraverso una tavolozza di toni smorzati, trasformando soggetti familiari in composizioni immediatamente affascinanti."
+              "content": "L'audacia è equilibrata da una certa fluidità, che mantiene il lavoro visivamente invitante. Tutti questi elementi si uniscono attraverso una palette di toni smorzati, trasformando soggetti familiari in composizioni immediatamente affascinanti."
             },
             {
               "type": "text",
-              "content": "L'impatto visivo avviene quasi immediatamente. Ombre contrastanti e figure semplificate ci permettono di leggere l'immagine senza sforzo, mentre contemporaneamente presentano una forma reimmaginata della pittura figurativa."
+              "content": "L'impatto visivo avviene quasi immediatamente. Ombre contrastanti e figure semplificate ci permettono di leggere l'immagine senza sforzo, presentando allo stesso tempo una forma reimmaginata di pittura figurativa."
             },
             {
               "type": "text",
-              "content": "Lo background di Dahlen nel design grafico – in particolare la sua attenzione al linguaggio visivo dei manifesti del ventesimo secolo – sembra aver giocato un ruolo importante qui. Una forte consapevolezza della gerarchia, della comunicazione diretta e della trasmissione chiara sia dell'immagine che del significato coesistono con il suo trattamento distintivo della forma."
+              "content": "Il background di Dahlen nel graphic design – in particolare la sua attenzione al linguaggio visivo dei poster del ventesimo secolo – sembra aver giocato un ruolo importante qui. Una forte consapevolezza della gerarchia, della comunicazione diretta e della trasmissione chiara sia dell'immagine che del significato coesistono con il suo trattamento distintivo della forma."
             },
             {
-              "type": "text",
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtd20y5thpnjgh.jpg",
+              "caption": ""
+            },
+            {
+              "type": "testo",
               "content": "Soggetti"
             },
             {
-              "type": "text",
+              "type": "testo",
               "content": "Dahlen utilizza questo linguaggio visivo per rappresentare oggetti ordinari e scene quotidiane: preparare cibo, giocare a domino, tagliare con le forbici, assemblare un puzzle. Ha una particolare fascinazione per il cibo."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtd1xht1z7jkcw.jpg",
+              "caption": ""
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtd23vnikc0w6o.jpg",
+              "caption": ""
             },
             {
               "type": "text",
@@ -41046,21 +41084,14 @@
             },
             {
               "type": "image",
-              "content": "contemporary-modernism-nick-dahlen-2",
-              "caption": "Opening frame"
-            },
-            {
-              "type": "gallery",
-              "content": [
-                "contemporary-modernism-nick-dahlen-gallery-1",
-                "contemporary-modernism-nick-dahlen-gallery-2",
-                "contemporary-modernism-nick-dahlen-gallery-3"
-              ],
-              "caption": "Sequence"
+              "content": "https://api.eprisjournal.com/uploads/mtd23kpm92lh8t.jpg",
+              "caption": ""
             }
           ],
-          "updatedAt": "2026-08-28T14:31:37.992Z",
-          "authorId": "author-1784896384236-4fokw"
+          "updatedAt": "2026-09-06T19:00:02.200Z",
+          "authorId": "author-1784896384236-4fokw",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtd2eyxvfyt24z.jpg",
+          "publishAt": "2026-08-28T14:41:26.666Z"
         },
         {
           "id": 29,
