@@ -9610,29 +9610,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "финский художник Sandra Kantanen рассматривает фотографию как ворота в воображаемое, а не как инструмент для захвата объективной реальности. Ее работы раскрывают уникальную, безграничную техническую философию, которая выводит медиа за пределы ограничений объектива, вызывая у зрителя вопрос о том, где заканчивается фотография и начинается картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "На первый взгляд можно предположить, что ее эфирные пейзажи являются результатом смешанных масляных красок и традиционного наложения слоев. На самом деле, это фотографии природных окружений — от лесов ее родной Финляндии до гор Азии — подвергнутых глубокому цифровому и физическому манипулированию."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Цветы 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Родилась в Хельсинки в 1974 году, Sandra Kantanen стала ключевой фигурой в рамках международно признанной Helsinki School of Photography. Ее академическая база была заложена в Aalto University School of Arts, Design and Architecture в Хельсинки, но поворотным моментом в ее художественной карьере стал 2000 год, когда она переехала в Китай в качестве студента по обмену."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Изучая традиционную китайскую пейзажную живопись в Центральной академии изобразительных искусств в Пекине, Кантанен глубоко повлиял на нее Восточной философией. Её поразило, как древние мастера не стремились задокументировать пейзаж, а идеализировать и сублимировать его."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -9644,33 +9644,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Во время своих путешествий по священным горам Китая она стала свидетелем резкого напряжения между чистой, духовной природой, изображенной на древних шелковых свитках, и суровой реальностью современной промышленной загрязненности и туризма. Эта диссонанс стал катализатором ее практики: пожизненного стремления запечатлеть \"невозможный\" пейзаж – пространство, существующее где-то между памятью, мифом и оптическим искажением."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без названия (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "В то время как пейзажи с пиксельными искажениями являются её самой известной подписью, более широкая фотографическая практика Kantanen удивительно разнообразна. Она не полагается на один технический трюк; скорее, она экспериментирует с разными сериями, постоянно переопределяя, как может вести себя фотографический образ: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "The Smoke Works и Pixel Manipulation: В своей самой известной серии Kantanen физически вмешивается в природу еще до щелчка затвора. Выпуская цветные дымовые шашки в отдаленные леса – такие как те, что возле её дома в Hango, Финляндия – она создает сюрреалистическую, психоделическую атмосферу, которая разрушает обыденный пейзаж. Затем она берет эти цифровые файлы и подвергает их глубокому редактированию: размывает горизонты, растягивает данные и вручную заставляет пиксели течь так, чтобы фотография имитировала текучесть жидкой краски."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанические исследования и сканеры: Удаляясь от обширных пейзажей и растягивания пикселей полностью, её натюрморты с цветами и ботанические работы исследуют органический разложение вблизи. Для этого она часто использует крупномасштабные форматы, длительные экспозиции или даже плоские сканеры вместо традиционных объективов камеры. Эти методы вызывают богатую аллегорическую глубину голландской живописи Золотого века, сосредотачиваясь на интимных текстурах и медленном течении времени в природе."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -9682,16 +9682,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Путем плавного перехода между физической постановкой, скан-артом, прямым захватом и цифровой искажением, Kantanen постоянно дестабилизирует наше восприятие того, что может быть фотографией."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -15371,29 +15371,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фінська художниця Sandra Kantanen підходить до фотографії як до воріт у уявне, а не як до інструменту для фіксації об'єктивної реальності. Її робота розкриває унікальну, безмежну технічну філософію, яка виходить за межі обмежень об'єктива, кидаючи виклик глядачеві поставити питання, де закінчується фотографія і починається картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "З першого погляду можна припустити, що її ефірні пейзажі є результатом змішаних олійних фарб і традиційного накладання шарів. Насправді це фотографії природних середовищ — від лісів її рідної Фінляндії до гір Азії — піддані глибокій цифровій та фізичній маніпуляції."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Квіти 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Народжена в Гельсінкі у 1974 році, Sandra Kantanen стала ключовою фігурою в рамках міжнародно відомої Helsinki School of Photography. Її академічну основу заклала школа мистецтв, дизайну та архітектури Aalto University у Гельсінкі, але поворотний момент у її художній траєкторії стався приблизно у 2000 році, коли вона переїхала до Китаю як студент за обміном."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вивчаючи традиційний китайський пейзажний живопис у Центральній академії образотворчих мистецтв у Пекіні, Kantanen глибоко під впливом східної філософії. Вона була вражена тим, як давні майстри не прагнули задокументувати пейзаж, а ідеалізувати та сублімувавши його."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -15405,33 +15405,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Під час своїх подорожей по священних горах Китаю вона стала свідком різкої напруги між чистою, духовною природою, зображеною на давніх шовкових свитках, і жорсткими реаліями сучасного промислового забруднення та туризму. Ця дисонанс стала каталізатором її практики: довічного прагнення зафіксувати \"неможливий\" пейзаж – простір, що існує десь між пам’яттю, міфом і оптичним спотворенням."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без назви (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Хоча піксельно спотворені пейзажі є її найвідомішою підписом, широка фотографічна практика Kantanen вражає своєю різноманітністю. Вона не покладається на один технічний трюк; навпаки, вона експериментує з різними серіями, постійно переосмислюючи, як може поводитися фотографічне зображення: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "The Smoke Works and Pixel Manipulation: У своїй найвідомішій серії Kantanen фізично втручається у природу ще до того, як затвор натискається. Випускаючи кольорові димові бомби у віддалені ліси – такі як ті поблизу її дому в Hango, Finland – вона створює сюрреалістичну, психоделічну атмосферу, яка порушує буденний пейзаж. Потім вона обробляє ці цифрові файли глибокою маніпуляцією: розмиває горизонти, розтягує дані та вручну змушує пікселі текти, щоб фотографія імітувала текучість рідкої фарби."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанічні дослідження та сканери: Відходячи від величезних пейзажів і розтягування пікселів повністю, її натюрморти з квітами та ботанічні роботи досліджують органічний розпад зблизька. Для цього вона часто використовує великомасштабні формати, довгі експозиції або навіть плоскі сканери замість традиційних об'єктивів камери. Ці методи викликають багатство алегоричної глибини голландського Золотого віку живопису, зосереджуючись на інтимних текстурах і повільному проходженні часу в природі."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -15443,16 +15443,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Переміщаючись плавно між фізичним сценічним оформленням, scanner art, прямим захопленням і цифровим спотворенням, Kantanen постійно дестабілізує наше сприйняття того, що може бути фотографією."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -21194,7 +21194,7 @@
               "content": "Botanische Studien und Scanner: Abseits von weiten Landschaften und Pixelstreckung erkunden ihre Blumenstillleben und botanischen Werke organischen Zerfall aus nächster Nähe. Für diese nutzt sie oft großformatige Formate, lange Belichtungszeiten oder sogar Flachbettscanner anstelle traditioneller Kameraobjektive. Diese Methoden rufen die reiche, allegorische Tiefe der niederländischen Goldenen Ära der Malerei hervor, wobei der Fokus auf den intimen Texturen und dem langsamen Verlauf der Zeit in der Natur liegt."
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -21206,16 +21206,16 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Indem sie sich fließend zwischen physischer Inszenierung, Scanner-Kunst, gerader Aufnahme und digitaler Verzerrung bewegt, destabilisiert Kantanen ständig unsere Wahrnehmung dessen, was ein Foto sein kann."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, „Horizon“, 2005"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, „Rain“, 2005"
             },
