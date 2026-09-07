@@ -25621,6 +25621,77 @@
             }
           ],
           "updatedAt": "2026-09-06T12:00:00.272Z"
+        },
+        {
+          "id": 34,
+          "draft": true,
+          "title": "Der Naht, die nicht da ist: Anish Kapoors Cloud Gate",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "date": "7. Sep. 2026",
+          "category": "zeitgenössische Kunst",
+          "subcategory": "Kritischer Aufsatz",
+          "tags": [
+            "skulptur",
+            "anish kapoor",
+            "öffentliche Kunst",
+            "chicago",
+            "zeitgenössische kunst",
+            "materialien"
+          ],
+          "imageSeed": "cloud-gate-anish-kapoor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+          "excerpt": "Anish Kapoors Cloud Gate hat keine Vorderseite, keine Naht und, so besteht der Hersteller darauf, kein festes Subjekt jenseits der Skyline und der Menge, die derzeit in seiner Oberfläche gefangen ist. Ein genauer Blick auf das technische Problem, das zwei zusätzliche Jahre zur Lösung benötigte, und warum die Lösung auch zwei Jahrzehnte später noch funktioniert.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Cloud Gate hat keine Vorderseite. Gehen Sie den Millennium Park von jeder Richtung aus und die Skulptur, die Chicago den Bean nennt, dreht sich, um Sie zu treffen: eine ununterbrochene, torlose Schleife aus poliertem Stahl, 20 Meter lang und 13 Meter breit, die auf der Michigan Avenue-Wiese sitzt wie ein fallender Quecksilbertröpfchen, bevor es sich ausbreiten kann. Anish Kapoor's Auftrag im Jahr 1999 forderte ein Wahrzeichen. Was er lieferte, ist näher an einem Instrument: ein Stück öffentliche Skulptur, dessen gesamter Inhalt die Stadt ist, die sich selbst betrachtet, gebeugt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+              "caption": "Cloud Gate vor der Skyline der Michigan Avenue. Das Nierenbohnenprofil, das der Skulptur ihren Spitznamen gab, ist nur von außen lesbar; das Werk selbst hat keinen einzigen richtigen Betrachtungswinkel.",
+              "credit": "Photo: EightySixFilms, CC BY 2.0",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Eine Oberfläche ohne Naht, die sich verstecken lässt"
+            },
+            {
+              "type": "text",
+              "content": "Das ingenieurtechnische Problem war das gesamte Projekt. Kapos Entwurf sah eine spiegelpolierte Oberfläche ohne sichtbare Fugen an ihrer Oberfläche vor, was bedeutete, dass 168 Edelstahlplatten rand an rand verschweißt werden mussten, dann von Hand geschliffen und poliert, bis die Schweißnähte vollständig verschwunden waren. Es gibt keinen Rand, keine Dichtung, keine Nahtformung, um die Reflexion zu unterbrechen und den Betrachter daran zu erinnern, dass das Objekt vor ihm zusammengebaut wurde und nicht gegossen. Die Herstellung dauerte zwei Jahre länger als geplant, und die Skulptur wurde 2006 eröffnet, ein Jahr nach dem Millennium Park selbst, weil eine sichtbare Naht ein anderes, viel kleineres Werk gewesen wäre: ein zusammengebautes Ding, anstatt eines einzigen ununterbrochenen Ereignisses."
+            },
+            {
+              "type": "text",
+              "content": "Diese Entscheidung ist das eigentliche Thema des Stücks. Eine genähte Oberfläche wirkt wie Konstruktion: ein Objekt, das von Menschen gebaut wurde, in der Zeit, aus Teilen. Eine nahtlose wirkt wie ein Phänomen, weniger eine Skulptur von etwas als ein Loch in der Welt, durch das der Himmel, das Aon Center und mehrere hundert Touristen täglich ununterbrochen strömen. Kapoor hatte den größten Teil der vorherigen zwei Jahrzehnte damit verbracht, diesen Effekt im Galerienmaßstab zu verfolgen, in den konkaven Leerräumen und Pigmentarbeiten der 1980er Jahre und den spiegelnden Scheiben, die folgten. Cloud Gate ist der Moment, in dem die Idee auf ein bürgerschaftliches Budget und eine Skyline traf, die groß genug war, um es wert zu sein, verschluckt zu werden."
+            },
+            {
+              "type": "text",
+              "content": "Darunter wölben sich die Platten nach innen und bilden, was der Künstler den omphalos nennt, eine acht Meter tiefe konkave Kammer, die die Reflexionen auf sich selbst zurückwirft und sie vervielfacht: Stehen Sie darunter, und der umliegende Stahl reflektiert Dutzende von komprimierten, sich windenden Versionen Ihres eigenen Bildes, zusammen mit der Unterseite der Wolkendecke Chicagos, auf einmal. Es ist der eine Teil der Skulptur, bei dem der Spiegel aufhört, sich höflich zu verhalten. Überall sonst schmeichelt Cloud Gate seiner Umgebung, dehnt die Skyline zu etwas Höherem und Fremdartigerem aus, als sie ist. Unter dem Bogen hinterfragt es den Betrachter stattdessen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+              "caption": "Der Blick von unter dem omphalos: Skyline, Himmel und Menschenmenge, die zu einer einzigen kontinuierlichen Oberfläche gefaltet sind, ohne festen Blickpunkt.",
+              "credit": "Photo: orangemania, CC BY 2.0",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Öffentliche Skulptur als Infrastruktur"
+            },
+            {
+              "type": "text",
+              "content": "Was macht Cloud Gate zu einem ungewöhnlich erfolgreichen Kunstwerk im öffentlichen Raum, anstatt nur einem beliebten, ist wie wenig es von jemandem verlangt, der nicht gekommen ist, um Skulptur zu betrachten. Es hat kein Plakate-Argument, das es zu absorbieren gilt, keinen festen Betrachtungsabstand, keine richtige Tageszeit. Ein Tourist, der sein eigenes Spiegelbild fotografiert, und ein Kritiker, der Kapoor's Schulden bei Brancusi's polierten Bronzen nachzeichnet, verwenden dasselbe Objekt aus demselben Grund: weil seine Oberfläche sich mit jedem ändert, der davor steht, und sich nicht in ein festes Bild auflöst. Das ist ein schwierig zu konstruierender Trick als der nahtlose Stahl. Die meisten großen städtischen Aufträge beschränken sich auf Lesbarkeit aus einem Busfenster; dieser hier ist so gestaltet, dass er die zwei Minuten belohnt, die jemand damit verbringt, um ihn herumzugehen, viel mehr als die zwei Sekunden, die jemand damit verbringt, daran vorbeizufahren."
+            },
+            {
+              "type": "text",
+              "content": "Zwei Jahrzehnte später hat die Skulptur einen Spitznamen aufgenommen, den ihr Schöpfer nie gegeben hat, ist in mehr Amateurfotos erschienen als fast jedes andere Werk der zeitgenössischen Kunst und bleibt, unter all dieser Zirkulation, ein wirklich schwieriges Objekt: ein Festkörper mit dem visuellen Verhalten einer Flüssigkeit, ein Denkmal ohne festes Subjekt außer der Menge, die gerade darin gespiegelt wird. Cloud Gate brauchte keinen Jahrestag oder eine Retrospektive, um zu beweisen, dass die nahtlose Oberfläche die zusätzlichen zwei Jahre wert war. Jeder klare Nachmittag auf dem Platz tut das stattdessen."
+            }
+          ],
+          "updatedAt": "2026-09-07T16:40:21.745Z",
+          "previewToken": "22284ad663190d7ab69b66a7"
         }
       ],
       "reviews": [
