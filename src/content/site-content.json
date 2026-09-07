@@ -10037,29 +10037,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "финский художник Sandra Kantanen рассматривает фотографию как ворота в воображаемое, а не как инструмент для захвата объективной реальности. Ее работы раскрывают уникальную, безграничную техническую философию, которая выводит медиа за пределы ограничений объектива, вызывая у зрителя вопрос о том, где заканчивается фотография и начинается картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "На первый взгляд можно предположить, что ее эфирные пейзажи являются результатом смешанных масляных красок и традиционного наложения слоев. На самом деле, это фотографии природных окружений — от лесов ее родной Финляндии до гор Азии — подвергнутых глубокому цифровому и физическому манипулированию."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Цветы 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Родилась в Хельсинки в 1974 году, Sandra Kantanen стала ключевой фигурой в рамках международно признанной Helsinki School of Photography. Ее академическая база была заложена в Школе искусств, дизайна и архитектуры Aalto University в Хельсинки, но поворотным моментом в ее художественной карьере стал 2000 год, когда она переехала в Китай в качестве студента по обмену."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Изучая традиционную китайскую пейзажную живопись в Центральной академии изобразительных искусств в Пекине, Kantanen глубоко повлияла на восточную философию. Её поразило, что древние мастера не стремились задокументировать пейзаж, а идеализировать и сублимировать его."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -10071,33 +10071,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Во время своих путешествий по священным горам Китая она стала свидетелем резкого противоречия между нетронутой, духовной природой, изображенной на древних шелковых свитках, и суровой реальностью современной промышленной загрязненности и туризма. Эта диссонанс стал катализатором её практики: пожизненного стремления запечатлеть \"невозможный\" пейзаж – пространство, существующее где-то между памятью, мифом и оптическим искажением."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без названия (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "В то время как пиксельно искажённые пейзажи являются её самой известной подписью, более широкая фотографическая практика Кантанен удивительно разнообразна. Она не полагается на один технический трюк; скорее, она экспериментирует с разными сериями, постоянно переопределяя, как может вести себя фотографический образ: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Дымовые работы и пиксельная манипуляция: В своей самой известной серии Кантанен физически вмешивается в природу ещё до щелчка затвора. Выпуская цветные дымовые шашки в отдалённые леса – такие как те, что возле её дома в Hango, Финляндия – она создает сюрреалистическую, психоделическую атмосферу, которая нарушает обыденный пейзаж. Затем она берёт эти цифровые файлы и подвергает их глубокой манипуляции: размывает горизонты, растягивает данные и вручную заставляет пиксели течь так, чтобы фотография имитировала текучесть жидкой краски."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Без названия (Лес 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанические исследования и сканеры: Удаляясь от обширных пейзажей и растягивания пикселей полностью, её натюрморты с цветами и ботанические работы исследуют органический разложение вблизи. Для этого она часто использует крупномасштабные форматы, длительные экспозиции или даже плоские сканеры вместо традиционных объективов камеры. Эти методы вызывают богатую аллегорическую глубину голландской Золотой эпохи живописи, сосредотачиваясь на интимных текстурах и медленном течении времени в природе."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -10109,16 +10109,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Путем плавного перехода между физической постановкой, scanner art, прямым захватом и цифровой искаженностью, Kantanen постоянно дестабилизирует наше восприятие того, что может быть фотографией."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -13776,41 +13776,41 @@
           "excerpt": "Cloud Gate от Anish Kapoor не имеет передней стороны, шва и, по словам его создателя, не имеет фиксированного субъекта за пределами горизонта и толпы, запечатленной на его поверхности. О инженерной проблеме, которая потребовала дополнительных двух лет и 23 миллиона долларов для решения, о омфалосе под ним, который удивляет зрителя, и почему решение все еще работает два десятилетия спустя.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Cloud Gate не имеет передней стороны. Пройдите по Millennium Park с любой стороны, и скульптура, которую Чикаго называет Bean, повернется навстречу вам: непрерывный, беззамковый цикл из отполированной стали, длиной 20 метров и шириной 13 метров, расположенный на лужайке Michigan Avenue, как капля ртути, застывшая в падении, прежде чем она сможет распространиться. Городская программа общественного искусства в 1999 году попросила создать ориентир для новой площади на вершине железнодорожного двора. Что она получила после того, как жюри рассмотрело международный шорт-лист и дизайн Anish Kapoor был выбран вместо более традиционных предложений, — это его первая постоянная уличная работа, построенная в Соединенных Штатах, и часть скульптуры, все содержание которой — это город, смотрящий на себя, изгибаясь."
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Поверхность без шва, чтобы скрыться за ней"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Инженерная задача заключалась во всем проекте. Дизайн Kapoor требовал зеркально отполированную поверхность без видимых соединений в любой точке, что означало, что 168 стальных листов должны были быть сварены край к краю, а затем отшлифованы и отполированы вручную до полного исчезновения швов. Нет отделки, нет уплотнителя, нет шовного формования, чтобы разрушить отражение и напомнить зрителю, что объект перед ним собран, а не залит. Под этой поверхностью находится независимая стальная рама, спроектированная так, чтобы дышать с погодой Чикаго: вся структура расширяется и сжимается на несколько сантиметров между июльской жарой и январским холодом, и отполированные листы должны двигаться вместе с ней, не показывая складки на поверхности. Достижение этого стандарта заняло на два года больше, чем планировалось. Millennium Park открылся в 2004 году; Cloud Gate, все еще скрытая за строительной оградой, открылась для публики в 2006 году, а примерно 23 миллиона долларов, потраченных на скульптуру и ее площадь, значительно превысили первоначальную оценку, почти полностью из-за полировки."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Это решение — настоящая тема произведения. Поверхность с швами воспринимается как конструкция: объект, созданный людьми, со временем, из частей. Бесшовная же воспринимается как феномен, скорее как отверстие, вырезанное в мире, где должно быть 110-тонное твердое тело, через которое непрерывно льется небо, Aon Center и несколько тысяч туристов в день. Kapoor потратил большую часть предыдущих двух десятилетий на достижение этого эффекта в галерейных масштабах, в пигментных пустотах 1980-х и последующих вогнутых зеркальных дисках, работах, где отражение зрителя искажается, а не лежит плоско на поверхности. Cloud Gate — это момент, когда этот язык встретился с гражданским бюджетом и горизонтом, достаточно большим, чтобы его стоило проглотить, и он задал образец для зеркальных общественных заказов, которые Kapoor впоследствии создаст в других местах: Sky Mirror в Лондоне и Нью-Йорке, C-Curve в Kensington Gardens, Turning the World Upside Down в Иерусалиме. Ни одна из последующих работ не пытается повторить тот же трюк в таком же масштабе."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
               "caption": "Sky Mirror (для Hendrik), 2017, в Museum de Pont, Tilburg: одна из нескольких поздних заказов Kapoor на зеркала, которые работают в меньшем масштабе и бюджете, чем Cloud Gate, и ни один из них не стремится к его бесшовной, обхватывающей целостности.",
               "credit": "Фото: Peter Cox, любезно предоставлено Museum De Pont, CC BY-SA 4.0",
               "align": "полный"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
               "caption": "Cloud Gate на фоне горизонта Michigan Avenue, на AT&T Plaza. Почечное бобовидное профилирование, которое дало скульптуре прозвище, никогда не было собственным названием Kapoor, и читается только снаружи; сама работа не имеет единственного правильного угла обзора.",
               "credit": "Фото: EightySixFilms, CC BY 2.0",
               "align": "полный"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Внизу пластины изгибаются внутрь, образуя то, что художник называет омфалосом, восьмиметровую вогнутую камеру, которая собирает отражения обратно на себя и умножает их в сжатый, закручивающийся вихрь из плитки, неба и толпы. Это единственная часть скульптуры, где зеркало перестает вести себя вежливо. Везде остальное Cloud Gate подчеркивает окружающее пространство, растягивая горизонт в нечто более высокое и странное, чем есть на самом деле. Под аркой та же поверхность обращается к зрителю, складывая десятки людей в один круглый кадр без горизонта и без фиксированной точки обзора, с которой можно было бы считать ее правильной."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
               "caption": "Смотрит прямо вверх в омфалос: вогнутая нижняя часть сжимает площадь, толпу и небо в один непрерывный круг без горизонта.",
               "credit": "Фото: Kevin Dooley, CC BY 2.0",
@@ -16051,29 +16051,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фінська художниця Sandra Kantanen підходить до фотографії як до воріт у уявне, а не як до інструменту для захоплення об'єктивної реальності. Її робота розкриває унікальну, безмежну технічну філософію, яка виходить за межі обмежень об'єктива, кидаючи виклик глядачеві поставити під сумнів, де закінчується фотографія і починається картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "З першого погляду можна припустити, що її ефірні пейзажі є результатом змішаних олійних фарб і традиційного накладання шарів. Насправді це фотографії природних середовищ — від лісів її рідної Фінляндії до гір Азії — піддані глибокій цифровій і фізичній маніпуляції."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Квіти 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Народжена в Гельсінкі у 1974 році, Sandra Kantanen стала ключовою фігурою в рамках міжнародно відомої Helsinki School of Photography. Її академічну основу заклала школа мистецтв, дизайну та архітектури Aalto University у Гельсінкі, але поворот у її художній траєкторії стався приблизно у 2000 році, коли вона переїхала до Китаю як студент-обмінник."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вивчаючи традиційний китайський пейзажний живопис у Центральній академії образотворчих мистецтв у Пекіні, Kantanen глибоко під впливом східної філософії. Вона була вражена тим, як давні майстри не прагнули задокументувати пейзаж, а ідеалізувати та сублімувавши його."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -16085,33 +16085,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Під час своїх подорожей по священних горах Китаю вона стала свідком різкої напруги між чистою, духовною природою, зображеною на давніх шовкових свитках, та жорсткими реаліями сучасного промислового забруднення і туризму. Ця дисонанс стала каталізатором її практики: довічного прагнення зафіксувати \"неможливий\" пейзаж – простір, що існує десь між пам’яттю, міфом і оптичним спотворенням."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без назви (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Хоча піксельно спотворені пейзажі є її найвідомішою підписом, широка фотографічна практика Кантанен надзвичайно різноманітна. Вона не покладається на один технічний трюк; швидше, вона експериментує з різними серіями, постійно переосмислюючи, як може поводитися фотографічне зображення: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Димові роботи та піксельна маніпуляція: у своїй найвідомішій серії Кантанен фізично втручається у природу ще до того, як клацне затвор. Випускаючи кольорові димові бомби у віддалені ліси – такі як ті поблизу її дому в Ханго, Фінляндія – вона створює сюрреалістичну, психоделічну атмосферу, яка порушує буденний пейзаж. Потім вона бере ці цифрові файли і піддає їх глибокій маніпуляції: розмиває горизонти, розтягує дані і вручну змушує пікселі текти так, щоб фотографія імітувала текучість рідкої фарби."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанічні дослідження та сканери: відходячи від масштабних пейзажів і піксельного розтягування зовсім, її флористичні натюрморти та ботанічні роботи досліджують органічний розпад зблизька. Для цього вона часто використовує великомасштабні формати, довгі експозиції або навіть плоскі сканери замість традиційних об'єктивів камери. Ці методи викликають багатство, алегоричну глибину голландського Золотого віку живопису, зосереджуючись на інтимних текстурах і повільному проходженні часу в природі."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -16123,16 +16123,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Переміщаючись плавно між фізичним сценічним оформленням, scanner art, прямим захопленням та цифровою дисторсією, Kantanen постійно дестабілізує наше сприйняття того, що може бути фотографією."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -19790,41 +19790,41 @@
           "excerpt": "Cloud Gate Anish Kapoor не має переду, шва і, наполягає його творець, не має фіксованого об'єкта окрім горизонту та натовпу, що зараз потрапляє на його поверхню. Про інженерну проблему, яка зайняла додаткові два роки та 23 мільйони доларів для розв'язання, омфалос під ним, що дивує глядача, і чому рішення досі працює два десятиліття потому.",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Cloud Gate не має переду. Прогуляйтеся Millennium Park з будь-якого напрямку, і скульптура, яку Чикаго називає Bean, повернеться, щоб зустріти вас: безперервний, бездверний цикл з поліруваної сталі, довжиною 20 метрів і шириною 13 метрів, що сидить на газоні Michigan Avenue, як крапля ртуті, зловлена посеред падіння, перш ніж вона зможе розповсюдитися. Програма громадського мистецтва міста у 1999 році запитала про орієнтир для нової площі на верху залізничного двору. Що вона отримала, після того, як журі розглянуло міжнародний короткий список і дизайн Anish Kapoor був обраний замість більш традиційних пропозицій, — це його перша постійна зовнішня робота, побудована в Сполучених Штатах, і частина скульптури, весь зміст якої — це місто, що дивиться на себе, зігнуте."
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Поверхня без шва, щоб ховатися за нею"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Інженерна проблема була у всьому проекті. Дизайн Kapoor вимагав дзеркально поліруваної оболонки без видимих з'єднань на всій її поверхні, що означало, що 168 листів нержавіючої сталі потрібно було зварити край до краю, а потім шліфувати та полірувати вручну, поки зварні шви повністю не зникнуть. Немає обробки, немає ущільнювача, немає шовного формування, щоб зламати відображення і нагадати глядачеві, що об'єкт перед ним зібраний, а не залитий. Під цією оболонкою знаходиться незалежна сталевий каркас, спроектований так, щоб дихати разом із погодою Чикаго: вся структура зростає і зменшується на кілька сантиметрів між липневою хвилею спеки і січневою холодною хвилею, і полірувані плити повинні рухатися разом з нею, не створюючи жодних складок на поверхні. Досягнення цього стандарту зайняло на два роки більше, ніж планувалося. Millennium Park відкрився у 2004 році; Cloud Gate, ще прихована за будівельним огорожею, відкрилася для публіки у 2006 році, і приблизна вартість скульптури та її площі у близько 23 мільйони доларів значно перевищила початкову оцінку, майже цілком через полірування."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Це рішення є справжньою темою цієї роботи. Поверхня з швами сприймається як конструкція: об'єкт, створений людьми, у часі, з частин. Безшовна ж — сприймається як явище, менше скульптура чогось, ніж дірка, вирізана у світі там, де має бути 110-тонний моноліт, через яку безперервно заливаються небо, Aon Center і кілька тисяч туристів на день. Kapoor витратив більшу частину попередніх двох десятиліть, переслідуючи цей ефект у масштабі галереї, у пігментованих порожнинах 1980-х і у конкавних дзеркальних дисках, що слідували за ними, роботах, де власне відображення глядача згинається назад і спотворюється, а не сидить рівно на поверхні. Cloud Gate — це момент, коли ця лексика зустрілася з громадським бюджетом і горизонтом міста, достатньо великим, щоб його було варто поглинути, і він встановив шаблон для дзеркальних громадських замовлень, які Kapoor згодом побудував у інших місцях: Sky Mirror у Лондоні та Нью-Йорку, C-Curve у Kensington Gardens, Turning the World Upside Down у Єрусалимі. Жодна з пізніших робіт не намагається повторити той самий трюк у тому ж масштабі."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
               "caption": "Sky Mirror (для Hendrik), 2017, у Museum de Pont, Tilburg: один із кількох пізніх замовлень Kapoor на дзеркала, що працюють у частині масштабу та бюджету Cloud Gate, і жоден з них не прагне до його безшовної, обхідної цілісності.",
               "credit": "Фото: Peter Cox, за згодою Museum De Pont, CC BY-SA 4.0",
               "align": "повний"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
               "caption": "Cloud Gate проти силуету Michigan Avenue, на AT&T Plaza. Профіль у вигляді квасолі, що дав скульптурі прізвисько, ніколи не був власною назвою Kapoor, його можна розпізнати лише ззовні; сама робота не має єдиного правильного кута огляду.",
               "credit": "Фото: EightySixFilms, CC BY 2.0",
               "align": "повний"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Знизу плити згинаються всередину, утворюючи те, що художник називає омфалосом, восьмиметрову увігнуту камеру, яка збирає відображення назад у себе і множить їх у стиснутий, закручений вир із плитки, неба та натовпу. Це єдина частина скульптури, де дзеркало перестає поводитися ввічливо. В усіх інших випадках Cloud Gate підкреслює навколишнє середовище, розтягує силует міста у щось вищого і дивнішого, ніж воно є насправді. Під аркою та сама поверхня повертається до глядача, складаючи десятки людей у єдину колову рамку без горизонту і без фіксованої точки огляду, з якої можна стати і вважати її правильною."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
               "caption": "Дивлячись прямо в омфалос: увігнута нижня частина стискає площу, натовп і небо у єдине безперервне кільце без горизонту.",
               "credit": "Фото: Kevin Dooley, CC BY 2.0",
@@ -22127,7 +22127,7 @@
               "content": "Botanische Studien und Scanner: Abweichend von weiten Landschaften und Pixel-Dehnung erkunden ihre Blumenstillleben und botanischen Werke organischen Verfall aus nächster Nähe. Für diese nutzt sie oft großformatige Formate, lange Belichtungszeiten oder sogar Flachbettscanner anstelle traditioneller Kameraobjektive. Diese Methoden rufen die reiche, allegorische Tiefe der niederländischen Goldenen Ära der Malerei hervor, wobei der Fokus auf den intimen Texturen und dem langsamen Verlauf der Zeit in der Natur liegt."
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -22139,16 +22139,16 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Durch fließendes Wechseln zwischen physischer Inszenierung, Scanner-Kunst, gerader Aufnahme und digitaler Verzerrung destabilisiert Kantanen ständig unsere Wahrnehmung dessen, was ein Fotograf sein kann."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, „Horizon“, 2005"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, „Regen“, 2005"
             },
@@ -25822,25 +25822,25 @@
               "content": "Diese Entscheidung ist das eigentliche Thema des Stücks. Eine nahtlose Oberfläche wirkt wie Konstruktion: ein Objekt, das von Menschen gebaut wurde, in der Zeit, aus Teilen. Eine nahtlose wirkt wie ein Phänomen, weniger eine Skulptur von etwas als ein Loch in der Welt, wo ein 110 Tonnen schwerer Fels sein sollte, durch das der Himmel, das Aon Center und mehrere Tausend Touristen täglich ununterbrochen strömen. Kapoor hatte den Großteil der vorherigen zwei Jahrzehnte damit verbracht, diesen Effekt im Galeriebereich zu verfolgen, in den pigmentgefüllten Leerräumen der 1980er Jahre und den konkaven spiegelnden Scheiben, die darauf folgten, Werke, bei denen die eigene Reflexion des Betrachters verzerrt zurückkrümmt, anstatt flach auf einer Oberfläche zu sitzen. Cloud Gate ist der Moment, in dem dieses Vokabular auf ein städtisches Budget und eine Skyline traf, die groß genug war, um es wert zu sein, verschlungen zu werden, und es setzte das Muster für die spiegelnden öffentlichen Aufträge, die Kapoor anderswo bauen würde: Sky Mirror in London und New York, die C-Curve in Kensington Gardens, Turning the World Upside Down in Jerusalem. Keines der späteren Stücke versucht den gleichen Trick im gleichen Maßstab."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
               "caption": "Sky Mirror (für Hendrik), 2017, im Museum de Pont, Tilburg: eine der mehreren späteren Kapoor-Spiegelkommissionen, die in einem Bruchteil der Größe und des Budgets von Cloud Gate arbeiten, und keine streben nach seiner nahtlosen, umhergehenden Kontinuität.",
               "credit": "Foto: Peter Cox, courtesy Museum De Pont, CC BY-SA 4.0",
               "align": "voll"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
               "caption": "Cloud Gate gegen die Skyline der Michigan Avenue, auf AT&T Plaza. Das Nierenbohnenprofil, das der Skulptur ihren Spitznamen gab, nie Kapoor's eigener Name dafür, ist nur von außen lesbar; das Werk selbst hat keinen einzigen richtigen Betrachtungswinkel.",
               "credit": "Foto: EightySixFilms, CC BY 2.0",
               "align": "voll"
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Darunter wölben sich die Platten nach innen, um das zu bilden, was der Künstler Omphalos nennt, eine achttausend Meter tiefe konkave Kammer, die die Reflexionen auf sich selbst zurückwirft und sie in einen komprimierten, sich windenden Wirbel aus Fliese, Himmel und Menschenmenge multipliziert. Es ist der eine Teil der Skulptur, an dem der Spiegel sich nicht mehr höflich verhält. Überall sonst schmeichelt Cloud Gate seiner Umgebung, dehnt die Skyline zu etwas Höherem und Fremdartigerem aus, als sie tatsächlich ist. Unter dem Bogen verwandelt sich die gleiche Oberfläche stattdessen in den Betrachter, faltet Dutzende von Menschen in einen einzigen kreisförmigen Rahmen ohne Horizont und ohne festen Aussichtspunkt, an dem man stehen und ihn für richtig halten kann."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
               "caption": "Direkt nach oben in den Omphalos schauen: die konkave Unterseite komprimiert den Platz, die Menschenmenge und den Himmel zu einem einzigen kontinuierlichen Ring ohne Horizont.",
               "credit": "Foto: Kevin Dooley, CC BY 2.0",
@@ -31820,41 +31820,41 @@
           "excerpt": "Cloud Gate de Anish Kapoor no tiene frente, ni costura y, insiste su creador, no tiene sujeto fijo más allá del horizonte y la multitud actualmente atrapada en su superficie. Sobre el problema de ingeniería que tomó dos años adicionales y 23 millones de dólares para resolver, el omphalos debajo que hace la magia en el espectador, y por qué la solución todavía funciona dos décadas después.",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "Cloud Gate no tiene frente. Camina por Millennium Park desde cualquier dirección y la escultura que Chicago llama el Bean se vuelve a ti: un bucle continuo, sin cerradura, de acero pulido, de 20 metros de largo y 13 metros de ancho, sentado en el césped de Michigan Avenue como una gota de mercurio atrapada en caída antes de poder extenderse. El programa de arte público de la ciudad pidió, en 1999, un monumento para una nueva plaza en la parte superior de un patio de ferrocarril. Lo que recibió, después de que un jurado revisara una lista internacional y el diseño de Anish Kapoor fuera elegido sobre propuestas más convencionales, fue su primera obra permanente al aire libre construida en los Estados Unidos, y una pieza de escultura cuyo contenido completo es la ciudad mirándose a sí misma, doblada."
             },
             {
-              "type": "encabezado",
+              "type": "header",
               "content": "Una superficie sin costura para esconderse"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El problema de ingeniería fue todo el proyecto. El diseño de Kapoor requería una piel pulida como un espejo sin juntas visibles en ninguna parte de su superficie, lo que significaba que 168 placas de acero inoxidable tenían que ser soldadas de borde a borde y luego lijadas y pulidas a mano hasta que las soldaduras desaparecieran por completo. No hay moldura, junta, ni perfil de costura que rompa el reflejo y recuerde al espectador que el objeto frente a él fue ensamblado en lugar de vertido. Debajo de esa piel se encuentra un marco de acero independiente diseñado para respirar con el clima de Chicago: toda la estructura crece y se encoge en varios centímetros entre una ola de calor de julio y una ola de frío de enero, y las placas pulidas deben moverse con ella sin nunca marcar una arruga en la superficie. Alcanzar ese estándar tomó dos años más de lo previsto. Millennium Park se inauguró en 2004; Cloud Gate, aún oculta detrás de una valla de construcción, se inauguró al público en 2006, y los aproximadamente 23 millones de dólares que la escultura y su plaza finalmente costaron superaron con creces la estimación original, casi en su totalidad debido al pulido."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Esa decisión es el verdadero tema de la pieza. Una superficie con costuras se lee como construcción: un objeto construido por personas, en el tiempo, a partir de partes. Una sin costuras se lee como un fenómeno, menos una escultura de algo que un agujero cortado en el mundo donde debería estar una masa de 110 toneladas, a través del cual el cielo, el Aon Center y varios miles de turistas al día fluyen continuamente. Kapoor había pasado gran parte de las dos décadas anteriores persiguiendo este efecto a escala de galería, en los vacíos llenos de pigmento de los años 80 y los discos cóncavos de espejo que siguieron, obras donde el propio reflejo del espectador se curva de forma distorsionada en lugar de asentarse plano en una superficie. Cloud Gate es el momento en que ese vocabulario se encontró con un presupuesto cívico y un horizonte lo suficientemente grande como para valer la pena tragar, y estableció el patrón para las comisiones públicas de espejos que Kapoor construiría en otros lugares: Sky Mirror en Londres y Nueva York, la C-Curve en Kensington Gardens, Turning the World Upside Down en Jerusalén. Ninguna de las piezas posteriores intenta la misma trampa a la misma escala."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
               "caption": "Sky Mirror (para Hendrik), 2017, en Museum de Pont, Tilburg: una de varias comisiones posteriores de Kapoor para espejos que trabajan a una fracción de la escala y presupuesto de Cloud Gate, y ninguna busca su continuidad sin costuras, de paseo. ",
               "credit": "Foto: Peter Cox, cortesía de Museum De Pont, CC BY-SA 4.0",
               "align": "completo"
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
               "caption": "Cloud Gate contra el horizonte de Michigan Avenue, en AT&T Plaza. El perfil en forma de frijol que le dio el apodo a la escultura, nunca el propio Kapoor, solo es legible desde afuera; la obra en sí no tiene un ángulo de vista correcto único.",
               "credit": "Foto: EightySixFilms, CC BY 2.0",
               "align": "completo"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Debajo, las placas se curvan hacia adentro para formar lo que la artista llama el omphalos, una cámara cóncava de ocho metros que recoge los reflejos y los multiplica en un vórtice comprimido y enroscado de azulejos, cielo y multitud. Es la única parte de la escultura donde el espejo deja de comportarse educadamente. En todas partes, Cloud Gate halaga su entorno, estirando el horizonte en algo más alto y extraño de lo que realmente es. Bajo el arco, la misma superficie se vuelve hacia el espectador en su lugar, doblando a docenas de personas en un solo marco circular sin horizonte y sin un punto de vista fijo desde el cual estar y llamar correcto."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
               "caption": "Mirando directamente hacia arriba en el omphalos: la parte cóncava de abajo comprime la plaza, la multitud y el cielo en un solo anillo continuo sin horizonte.",
               "credit": "Foto: Kevin Dooley, CC BY 2.0",
@@ -43606,25 +43606,25 @@
               "content": "Quella decisione è il vero soggetto del pezzo. Una superficie con cuciture si legge come costruzione: un oggetto costruito dalle persone, nel tempo, con parti. Una senza cuciture si legge come un fenomeno, meno una scultura di qualcosa che un buco nel mondo dove dovrebbe esserci un solido di 110 tonnellate, attraverso il quale il cielo, l'Aon Center e diverse migliaia di turisti al giorno scorrono continuamente. Kapoor aveva trascorso gran parte delle due decenni precedenti inseguendo questo effetto a livello di galleria, negli spazi pieni di pigmenti degli anni '80 e nei dischi concavi a specchio che seguirono, opere in cui il riflesso dello spettatore si curva distorto piuttosto che sedersi piatto su una superficie. Cloud Gate è il momento in cui quel vocabolario ha incontrato un budget civico e uno skyline abbastanza grande da valere la pena di inghiottire, e ha stabilito il modello per le commissioni pubbliche a specchio che Kapoor avrebbe continuato a costruire altrove: Sky Mirror a Londra e New York, la C-Curve a Kensington Gardens, Turning the World Upside Down a Gerusalemme. Nessuna delle opere successive tenta lo stesso trucco alla stessa scala."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
               "caption": "Sky Mirror (per Hendrik), 2017, al Museum de Pont, Tilburg: una delle diverse commissioni successive di Kapoor che lavorano a una frazione della scala e del budget di Cloud Gate, e nessuna mira alla sua continuità senza soluzione di continuità e a 360 gradi.",
               "credit": "Foto: Peter Cox, cortesemente del Museum De Pont, CC BY-SA 4.0",
               "align": "pieno"
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
               "caption": "Cloud Gate contro lo skyline di Michigan Avenue, su AT&T Plaza. Il profilo a fagiolo che ha dato alla scultura il suo soprannome, mai usato da Kapoor stesso, è leggibile solo dall'esterno; l'opera stessa non ha un angolo di visualizzazione corretto unico.",
               "credit": "Foto: EightySixFilms, CC BY 2.0",
               "align": "pieno"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Sotto, le piastre si curvano verso l'interno formando quello che l'artista chiama omphalos, una camera concava di otto metri che raccoglie i riflessi e li moltiplica in un vortice compresso e arricciato di piastrelle, cielo e folla. È l'unica parte della scultura in cui lo specchio smette di comportarsi educatamente. Ovunque altrove, Cloud Gate lusinga i suoi dintorni, allungando lo skyline in qualcosa di più alto e più strano di quanto non sia in realtà. Sotto l'arco, la stessa superficie si rivolta invece verso lo spettatore, piegando decine di persone in un singolo quadro circolare senza orizzonte e senza un punto di vista fisso da cui osservare e chiamare corretto."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
               "caption": "Guardando dritto verso l'omphalos: il lato concavo inferiore comprime la piazza, la folla e il cielo in un unico anello continuo senza orizzonte.",
               "credit": "Foto: Kevin Dooley, CC BY 2.0",
