@@ -8910,6 +8910,24 @@
           "picsId": "PICS-2026-030",
           "updatedAt": "2026-09-07T16:11:40.048Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
+        },
+        {
+          "id": 39,
+          "title": "Upper East Side",
+          "subtitle": "Studio Nicholas Obeid · Нью-Йорк",
+          "fig": "PICS 031",
+          "description": "Штукатурка, травертин и отбелённый дуб поддерживаются при одной температуре, с резным грузинским камином, оставленным на месте: комната утверждает, что сдержанность и орнамент могут сосуществовать по одному адресу.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "brutalism",
+          "homeTitle": "Upper East Side",
+          "homeSubtitle": "Studio Nicholas Obeid · Нью-Йорк",
+          "homeDescription": "Штукатурка, травертин и отбелённый дуб поддерживаются при одной температуре, с резным грузинским камином, оставленным на месте: комната утверждает, что сдержанность и орнамент могут сосуществовать по одному адресу.",
+          "homeCredit": "Studio Nicholas Obeid",
+          "sourceUrl": "https://www.nicholasobeid.com/upper-east-side",
+          "picsId": "PICS-2026-031",
+          "updatedAt": "2026-09-07T16:11:59.650Z",
+          "picsReleaseId": "PICS-WEEK-2026-004"
         }
       ],
       "articles": [
@@ -14827,6 +14845,24 @@
           "sourceUrl": "https://reloft.art/product/lyubov-k-granatam-i-shelku/",
           "picsId": "PICS-2026-030",
           "updatedAt": "2026-09-07T16:11:35.145Z",
+          "picsReleaseId": "PICS-WEEK-2026-004"
+        },
+        {
+          "id": 39,
+          "title": "Upper East Side",
+          "subtitle": "Студія Nicholas Obeid · Нью-Йорк",
+          "fig": "PICS 031",
+          "description": "Штукатурка, травертин і знебарвлений дуб зберігалися при одній температурі, з вирізаним грузинським каміном, залишеним на місці: кімната стверджує, що стриманість і орнамент можуть поділити адресу.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "brutalism",
+          "homeTitle": "Upper East Side",
+          "homeSubtitle": "Студія Nicholas Obeid · Нью-Йорк",
+          "homeDescription": "Штукатурка, травертин і знебарвлений дуб зберігалися при одній температурі, з вирізаним грузинським каміном, залишеним на місці: кімната стверджує, що стриманість і орнамент можуть поділити адресу.",
+          "homeCredit": "Студія Nicholas Obeid",
+          "sourceUrl": "https://www.nicholasobeid.com/upper-east-side",
+          "picsId": "PICS-2026-031",
+          "updatedAt": "2026-09-07T16:11:57.139Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
         }
       ],
