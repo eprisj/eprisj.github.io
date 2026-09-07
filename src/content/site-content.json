@@ -7781,7 +7781,7 @@
         },
         {
           "type": "text",
-          "content": "The engineering problem was the whole project. Kapoor's design called for a mirror-polished skin with no visible joints anywhere on its surface, which meant 168 stainless steel plates had to be welded edge to edge and then ground and buffed by hand until the welds disappeared entirely. There is no trim, no gasket, no seam moulding to break the reflection and remind a viewer that the object in front of them was assembled rather than poured. The fabrication took two years longer than scheduled and the sculpture opened in 2006, a year after Millennium Park itself, because a visible seam would have been a different, much smaller work: a assembled thing, rather than a single unbroken event."
+          "content": "The engineering problem was the whole project. Kapoor's design called for a mirror-polished skin with no visible joints anywhere on its surface, which meant 168 stainless steel plates had to be welded edge to edge and then ground and buffed by hand until the welds disappeared entirely. There is no trim, no gasket, no seam moulding to break the reflection and remind a viewer that the object in front of them was assembled rather than poured. The fabrication took two years longer than scheduled and the sculpture opened in 2006, a year after Millennium Park itself, because a visible seam would have been a different, much smaller work: an assembled thing, rather than a single unbroken event."
         },
         {
           "type": "text",
@@ -7811,7 +7811,7 @@
           "content": "Two decades on, the sculpture has absorbed a nickname it was never given by its maker, appeared in more amateur photographs than almost any other work of contemporary art, and remained, underneath all of that circulation, a genuinely difficult object: a solid with the visual behaviour of a liquid, a monument with no fixed subject except the crowd currently reflected in it. Cloud Gate did not need an anniversary or a retrospective to prove the seamless surface was worth the extra two years. Every clear afternoon in the plaza does that instead."
         }
       ],
-      "updatedAt": "2026-09-07T16:37:46.892Z",
+      "updatedAt": "2026-09-07T16:41:35.383Z",
       "previewToken": "22284ad663190d7ab69b66a7"
     }
   ],
@@ -19683,6 +19683,77 @@
             }
           ],
           "updatedAt": "2026-09-06T19:01:10.628Z"
+        },
+        {
+          "id": 34,
+          "draft": true,
+          "title": "Шов, якого немає: Cloud Gate Anish Kapoor",
+          "author": "Viacheslav Munister",
+          "role": "Автор",
+          "date": "7 вер. 2026",
+          "category": "сучасне мистецтво",
+          "subcategory": "Критичний есей",
+          "tags": [
+            "скульптура",
+            "anish kapoor",
+            "публічне мистецтво",
+            "chicago",
+            "сучасне мистецтво",
+            "матеріали"
+          ],
+          "imageSeed": "cloud-gate-anish-kapoor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+          "excerpt": "Cloud Gate Anish Kapoor не має переду, шва і, наполягає його творець, не має фіксованого об'єкта окрім горизонту і натовпу, що зараз потрапляє на його поверхню. Близький погляд на інженерну проблему, яка зайняла додаткові два роки для розв'язання, і чому рішення досі працює через два десятиліття.",
+          "content": [
+            {
+              "type": "текст",
+              "content": "Cloud Gate не має переду. Прогуляйтеся Millennium Park з будь-якого напрямку, і скульптура, яку Чикаго називає Bean, повернеться, щоб зустріти вас: безперервний, безшовний цикл з поліруваної сталі, довжиною 20 метрів і шириною 13 метрів, що сидить на газоні Michigan Avenue, як крапля ртуті, зловлена на півшляху падіння, перш ніж вона зможе розповсюдитися. Короткий запит Anish Kapoor у 1999 році був про створення орієнтира. Те, що він створив, ближче до інструменту: частини громадської скульптури, весь її зміст — це місто, що дивиться на себе, зігнуте."
+            },
+            {
+              "type": "зображення",
+              "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+              "caption": "Cloud Gate на тлі горизонту Michigan Avenue. Профіль у вигляді ниркоподібної бобової форми, що дала скульптурі її прізвисько, читається лише ззовні; сама робота не має єдиного правильного кута огляду.",
+              "credit": "Фото: EightySixFilms, CC BY 2.0",
+              "align": "повний"
+            },
+            {
+              "type": "заголовок",
+              "content": "Поверхня без шва, щоб ховатися за нею"
+            },
+            {
+              "type": "текст",
+              "content": "Інженерна проблема була у всьому проекті. Дизайн Kapoor передбачав дзеркально полірувану шкіру без видимих з'єднань на всій її поверхні, що означало, що 168 листів нержавіючої сталі потрібно було зварити край до краю, а потім шліфувати та полірувати вручну, поки зварні шви повністю не зникнуть. Немає обробки, ущільнювача або шовного формування, щоб зламати відбиття і нагадати глядачеві, що об'єкт перед ним зібраний, а не залитий. Виготовлення зайняло на два роки більше, ніж планувалося, і скульптура була відкритою у 2006 році, через рік після самого Millennium Park, оскільки видимий шов був би іншим, набагато меншим твором: зібраною річчю, а не єдиною неперервною подією."
+            },
+            {
+              "type": "текст",
+              "content": "Це рішення є справжньою темою твору. Шовована поверхня сприймається як конструкція: об'єкт, створений людьми, у часі, з частин. Безшовна ж сприймається як явище, менше скульптура чогось, ніж дірка, вирізана у світі, де має бути 110-тонний моноліт, через яку безперервно ллється небо, Aon Center і кілька сотень туристів на день. Kapoor витратив більшу частину попередніх двох десятиліть на пошук цього ефекту у масштабі галереї, у ввігнутих порожнинах і пигментних роботах 1980-х років та дзеркальних дисках, що їх слідували. Cloud Gate — це момент, коли ідея зустріла громадський бюджет і горизонт досить великий, щоб його варто було ковтати."
+            },
+            {
+              "type": "текст",
+              "content": "Знизу пластини згинаються всередину, утворюючи те, що художник називає омфалосом, восьмиметрову ввігнуту камеру, яка збирає відображення назад на себе і множить їх: станьте під нею, і навколишня сталь поверне десятки стиснених, згорткових версій вашого власного образу, разом із нижньою частиною хмарного покриву Чикаго, одночасно. Це єдина частина скульптури, де дзеркало перестає поводитися ввічливо. У всьому іншому Cloud Gate підкреслює навколишнє середовище, розтягує горизонт у щось вищого і дивнішого, ніж воно є. Під аркою вона допитує глядача."
+            },
+            {
+              "type": "зображення",
+              "content": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+              "caption": "Вид з-під омфалоса: горизонт, небо і натовп згорнуті у єдину безперервну поверхню без фіксованої точки зору.",
+              "credit": "Фото: orangemania, CC BY 2.0",
+              "align": "повний"
+            },
+            {
+              "type": "заголовок",
+              "content": "Публічна скульптура як інфраструктура"
+            },
+            {
+              "type": "текст",
+              "content": "Що робить Cloud Gate надзвичайно успішним твором громадського мистецтва, а не просто популярним, — це наскільки мало він вимагає від тих, хто не прийшов дивитися на скульптуру. У нього немає довгого аргументу на табличці, немає фіксованої відстані для сприйняття, немає правильного часу доби. Турист, фотографуючи своє відображення, і критик, простежуючи борг Kapoor перед полірованими бронзами Brancusi, використовують один і той самий об’єкт з однієї й тієї ж причини: тому що його поверхня змінюється з кожним, хто стоїть перед ним, і не перетворюється у фіксоване зображення. Це складніше зробити, ніж безшовна сталь. Більшість великих громадських замовлень влаштовуються на зрозумілість з вікна автобуса; цей же спроектований так, щоб винагородити дві хвилини, які хтось витрачає, прогулюючись навколо нього, набагато більше, ніж дві секунди, які хтось витрачає, проїжджаючи повз."
+            },
+            {
+              "type": "текст",
+              "content": "Два десятиліття потому, скульптура отримала прізвисько, яке ніколи не дав їй її творець, з’явилася у більшості аматорських фотографій, ніж майже будь-яка інша робота сучасного мистецтва, і залишилася, під усім цим обігом, справжньо складним об’єктом: твердим тілом із візуальною поведінкою рідини, пам’ятником без фіксованої теми, окрім натовпу, що відображається в ньому. Cloud Gate не потребував ювілею чи ретроспективи, щоб довести, що безшовна поверхня варта додаткових двох років. Кожен ясний післяобід у площі робить це замість того."
+            }
+          ],
+          "updatedAt": "2026-09-07T16:41:31.021Z",
+          "previewToken": "22284ad663190d7ab69b66a7"
         }
       ],
       "reviews": [
