@@ -45089,6 +45089,362 @@
   },
   "homepageArchive": [
     {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-004",
+      "releaseId": "PICS-WEEK-2026-004",
+      "label": "Daily Picks · 7 вер. 2026 г.",
+      "publishedAt": "2026-09-07T16:08:21Z",
+      "signature": "gothic:PICS-2026-027|baroque:PICS-2026-028|avant-garde:PICS-2026-029|post-constructivism:PICS-2026-030|brutalism:PICS-2026-031",
+      "publicArchive": false,
+      "visibleOnSite": false,
+      "cards": [
+        {
+          "id": 35,
+          "picsId": "PICS-2026-027",
+          "category": "gothic",
+          "categoryLabel": "Gothic",
+          "title": "Kholodets No. 12",
+          "subtitle": "2025 · mixed media · 34.5 × 26.5 × 8.5 cm",
+          "description": "An enamel meat tray of the Soviet kitchen, filled to the brim with a set aspic that will never melt: the most perishable dish in the repertoire held permanently at the moment before it is eaten.",
+          "credit": "Tikhaya Gallery, Nizhny Novgorod",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg",
+          "localized": {
+            "RU": {
+              "title": "Kholodets No. 12",
+              "subtitle": "2025 · смешанные материалы · 34.5 × 26.5 × 8.5 см",
+              "description": "Эмалированный мясной поднос советской кухни, наполненный до краев заливным, который никогда не растает: самый скоропортящийся блюдо в репертуаре, постоянно удерживаемое в момент перед его съеданием.",
+              "credit": "Tikhaya Gallery, Nizhny Novgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            },
+            "UA": {
+              "title": "Kholodets No. 12",
+              "subtitle": "2025 · змішані медіа · 34.5 × 26.5 × 8.5 см",
+              "description": "Емалевий м’ясний піднос із радянської кухні, наповнений до краю застиглим желе, яке ніколи не розтане: найпротерміновніша страва у репертуарі, що постійно тримається в момент перед тим, як її з’їсти.",
+              "credit": "Tikhaya Gallery, Nizhny Novgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            },
+            "DE": {
+              "title": "Kholodets Nr. 12",
+              "subtitle": "2025 · Mischtechnik · 34,5 × 26,5 × 8,5 cm",
+              "description": "Eine Emaille-Fleischschale aus der sowjetischen Küche, randvoll gefüllt mit einem festen Aspik, das niemals schmelzen wird: das verderblichste Gericht im Repertoire, dauerhaft gehalten im Moment bevor es gegessen wird.",
+              "credit": "Tikhaya Galerie, Nischni Nowgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            },
+            "ES": {
+              "title": "Kholodets No. 12",
+              "subtitle": "2025 · medios mixtos · 34.5 × 26.5 × 8.5 cm",
+              "description": "Una bandeja de carne esmaltada de la cocina soviética, llena hasta el borde con un aspic fijo que nunca se derretirá: el plato más perecedero del repertorio mantenido permanentemente en el momento justo antes de ser comido.",
+              "credit": "Tikhaya Gallery, Nizhny Novgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            },
+            "IT": {
+              "title": "Kholodets No. 12",
+              "subtitle": "2025 · media misti · 34.5 × 26.5 × 8.5 cm",
+              "description": "Un vassoio di carne smaltato della cucina sovietica, riempito fino all'orlo con un aspic fisso che non si scioglierà mai: il piatto più deperibile del repertorio tenuto permanentemente nel momento prima di essere mangiato.",
+              "credit": "Tikhaya Gallery, Nizhny Novgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            },
+            "FR": {
+              "title": "Kholodets No. 12",
+              "subtitle": "2025 · médias mixtes · 34,5 × 26,5 × 8,5 cm",
+              "description": "Un plateau de viande en émail de la cuisine soviétique, rempli à ras bord d'un aspic figé qui ne fondra jamais : le plat le plus périssable du répertoire conservé en permanence au moment juste avant qu'il ne soit mangé.",
+              "credit": "Tikhaya Gallery, Nizhny Novgorod",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg"
+            }
+          }
+        },
+        {
+          "id": 36,
+          "picsId": "PICS-2026-028",
+          "category": "baroque",
+          "categoryLabel": "Baroque",
+          "title": "Moonlit Night",
+          "subtitle": "Pasha Bumazhny · 2025 · ink on album paper · 39 × 26 cm",
+          "description": "A star in sunglasses hangs over two dinosaurs and a line of handwriting explaining that one of them once worded his wish badly: the joke is drawn with the same economy as the horizon it sits on.",
+          "credit": "Tiho Gallery · Kontur 25",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg",
+          "localized": {
+            "RU": {
+              "title": "Лунная ночь",
+              "subtitle": "Pasha Bumazhny · 2025 · чернила на альбомной бумаге · 39 × 26 см",
+              "description": "Звезда в солнечных очках висит над двумя динозаврами и линией рукописи, объясняющей, что один из них когда-то неправильно сформулировал свое желание: шутка нарисована с такой же экономией, как и горизонт, на котором она расположена.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            },
+            "UA": {
+              "title": "Місячна ніч",
+              "subtitle": "Pasha Bumazhny · 2025 · чорнила на альбомному папері · 39 × 26 см",
+              "description": "зірка у сонцезахисних окулярах висить над двома динозаврами та рядком рукопису, що пояснює, що один з них колись неправильно сформулював своє бажання: жарт намальований з такою ж економією, як і горизонт, на якому він сидить.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            },
+            "DE": {
+              "title": "Mondnacht",
+              "subtitle": "Pasha Bumazhny · 2025 · Tinte auf Albumpapier · 39 × 26 cm",
+              "description": "Ein Stern in Sonnenbrille hängt über zwei Dinosauriern und einer Handschrift, die erklärt, dass einer von ihnen einmal seinen Wunsch schlecht formuliert hat: Der Witz ist mit derselben Ökonomie gezeichnet wie der Horizont, auf dem er sitzt.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            },
+            "ES": {
+              "title": "Noche iluminada por la luna",
+              "subtitle": "Pasha Bumazhny · 2025 · tinta sobre papel de álbum · 39 × 26 cm",
+              "description": "Una estrella con gafas de sol cuelga sobre dos dinosaurios y una línea de escritura a mano que explica que uno de ellos una vez formuló su deseo mal: la broma está dibujada con la misma economía que el horizonte en el que se encuentra.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            },
+            "IT": {
+              "title": "Notte al chiaro di luna",
+              "subtitle": "Pasha Bumazhny · 2025 · inchiostro su carta da album · 39 × 26 cm",
+              "description": "Una stella con occhiali da sole pende sopra due dinosauri e una linea di scrittura a mano che spiega che uno di loro una volta ha formulato male il suo desiderio: la battuta è disegnata con la stessa economia dell'orizzonte su cui si trova.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            },
+            "FR": {
+              "title": "Nuit au clair de lune",
+              "subtitle": "Pasha Bumazhny · 2025 · encre sur papier d'album · 39 × 26 cm",
+              "description": "Une étoile en lunettes de soleil suspendue au-dessus de deux dinosaures et d'une ligne d'écriture expliquant que l'un d'eux a une fois formulé son souhait maladroitement : la blague est dessinée avec la même économie que l'horizon sur lequel elle repose.",
+              "credit": "Tiho Gallery · Kontur 25",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg"
+            }
+          }
+        },
+        {
+          "id": 37,
+          "picsId": "PICS-2026-029",
+          "category": "avant-garde",
+          "categoryLabel": "Avant-garde",
+          "title": "Broken Toys",
+          "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, edition 1/5",
+          "description": "Glass ornaments caught mid-shatter, tinsel and confetti still airborne: a Christmas tree photographed at the one second of its life nobody keeps a picture of.",
+          "credit": "Joy Gallery",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg",
+          "localized": {
+            "RU": {
+              "title": "Ломанные игрушки",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, издание 1/5",
+              "description": "Стеклянные украшения, застывшие в момент разрушения, мишура и конфетти всё ещё в воздухе: рождественская ёлка, сфотографированная в ту секунду её жизни, которую никто не сохраняет в снимке.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            },
+            "UA": {
+              "title": "Зламані іграшки",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, видання 1/5",
+              "description": "Скляні прикраси, зловлені в момент розбиття, мішура та конфетті ще в повітрі: ялинка, сфотографована за одну секунду її життя, яку ніхто не зберігає у фотографії.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            },
+            "DE": {
+              "title": "Broken Toys",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, Auflage 1/5",
+              "description": "Glasornamente, die mitten im Zerbrechen gefangen sind, Lametta und Konfetti noch in der Luft: ein Weihnachtsbaum, fotografiert in der einen Sekunde seines Lebens, von der niemand ein Bild aufbewahrt.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            },
+            "ES": {
+              "title": "Juguetes rotos",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, edición 1/5",
+              "description": "Adornos de vidrio atrapados a medio romper, guirnaldas y confeti aún en el aire: un árbol de Navidad fotografiado en el segundo de su vida en el que nadie toma una foto.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            },
+            "IT": {
+              "title": "Giocattoli rotti",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, edizione 1/5",
+              "description": "Ornamenti di vetro catturati nel mezzo della rottura, festoni e coriandoli ancora in aria: un albero di Natale fotografato nel secondo della sua vita di cui nessuno conserva una foto.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            },
+            "FR": {
+              "title": "Jouets cassés",
+              "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, édition 1/5",
+              "description": "Ornements en verre pris en plein éclat, guirlandes et confettis encore en suspension : un arbre de Noël photographié à la seconde de sa vie que personne ne garde en photo.",
+              "credit": "Joy Gallery",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg"
+            }
+          }
+        },
+        {
+          "id": 38,
+          "picsId": "PICS-2026-030",
+          "category": "post-constructivism",
+          "categoryLabel": "Post-constructivism",
+          "title": "Love for Pomegranates and Silk",
+          "subtitle": "Ksenia Berestova · painting",
+          "description": "Striped drapery falls across the whole canvas while the pomegranates roll out from under it, from a series built entirely on the folded stripe as a motif.",
+          "credit": "Reloft Art",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg",
+          "localized": {
+            "RU": {
+              "title": "Любовь к гранатам и шелку",
+              "subtitle": "Ксения Берестова · картина",
+              "description": "Полосатая драпировка падает по всему холсту, в то время как гранаты выкатываются из-под нее, из серии, полностью построенной на сложенной полосе как мотиве.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            },
+            "UA": {
+              "title": "Любов до гранатів і шовку",
+              "subtitle": "Ksenia Berestova · живопис",
+              "description": "Полосата драпіровка падає по всьому полотну, тоді як гранати котяться з-під неї, з серії, побудованої цілком на складеній смузі як мотив.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            },
+            "DE": {
+              "title": "Liebe zu Granatäpfeln und Seide",
+              "subtitle": "Ksenia Berestova · Gemälde",
+              "description": "Gestreifter Vorhang fällt über die ganze Leinwand, während die Granatäpfel darunter hervortreten, aus einer Serie, die vollständig auf dem gefalteten Streifen als Motiv basiert.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            },
+            "ES": {
+              "title": "Amor por las granadas y la seda",
+              "subtitle": "Ksenia Berestova · pintura",
+              "description": "El cortinaje a rayas cae a lo largo de todo el lienzo mientras las granadas se despliegan desde debajo, de una serie construida completamente sobre la franja doblada como motivo.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            },
+            "IT": {
+              "title": "Amore per Melograni e Seta",
+              "subtitle": "Ksenia Berestova · pittura",
+              "description": "Il drappeggio a righe cade sull'intera tela mentre i melograni si srotolano da sotto, da una serie costruita interamente sul motivo della striscia ripiegata.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            },
+            "FR": {
+              "title": "Amour pour la grenade et la soie",
+              "subtitle": "Ksenia Berestova · peinture",
+              "description": "Un drapé rayé tombe sur toute la toile tandis que les grenades roulent dessous, d'une série entièrement construite sur la rayure pliée comme motif.",
+              "credit": "Reloft Art",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg"
+            }
+          }
+        },
+        {
+          "id": 39,
+          "picsId": "PICS-2026-031",
+          "category": "brutalism",
+          "categoryLabel": "Brutalism",
+          "title": "Upper East Side",
+          "subtitle": "Studio Nicholas Obeid · New York",
+          "description": "Plaster, travertine and bleached oak kept to one temperature, with a carved Georgian mantel left in place: the room argues that restraint and ornament can share an address.",
+          "credit": "Studio Nicholas Obeid",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg",
+          "localized": {
+            "RU": {
+              "title": "Upper East Side",
+              "subtitle": "Студия Nicholas Obeid · Нью-Йорк",
+              "description": "Штукатурка, травертин и отбелённый дуб поддерживаются при одной температуре, с резным грузинским камином, оставленным на месте: комната утверждает, что сдержанность и орнамент могут сосуществовать по одному адресу.",
+              "credit": "Студия Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            },
+            "UA": {
+              "title": "Upper East Side",
+              "subtitle": "Студія Nicholas Obeid · Нью-Йорк",
+              "description": "Штукатурка, травертин і знебарвлений дуб зберігалися при одній температурі, з вирізаним грузинським каміном, залишеним на місці: кімната стверджує, що стриманість і орнамент можуть поділити адресу.",
+              "credit": "Студія Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            },
+            "DE": {
+              "title": "Upper East Side",
+              "subtitle": "Studio Nicholas Obeid · New York",
+              "description": "Gips, Travertin und gebleichter Eiche bei einer Temperatur gehalten, mit einem geschnitzten Georgian-Kamin, der an Ort und Stelle bleibt: der Raum argumentiert, dass Zurückhaltung und Ornament eine Adresse teilen können.",
+              "credit": "Studio Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            },
+            "ES": {
+              "title": "Upper East Side",
+              "subtitle": "Studio Nicholas Obeid · Nueva York",
+              "description": "Yeso, travertino y roble blanqueado mantenidos a una temperatura, con una repisa georgiana tallada dejada en su lugar: la habitación argumenta que la moderación y el adorno pueden compartir una dirección.",
+              "credit": "Studio Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            },
+            "IT": {
+              "title": "Upper East Side",
+              "subtitle": "Studio Nicholas Obeid · New York",
+              "description": "Stucchi, travertino e rovere sbiancato mantenuti a una temperatura, con un camino georgiano scolpito lasciato al suo posto: la stanza sostiene che la moderazione e l'ornamento possano condividere un indirizzo.",
+              "credit": "Studio Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            },
+            "FR": {
+              "title": "Upper East Side",
+              "subtitle": "Studio Nicholas Obeid · New York",
+              "description": "Plâtre, travertin et chêne blanchi maintenus à une température, avec une cheminée géorgienne sculptée laissée en place : la pièce soutient que la retenue et l'ornement peuvent partager une adresse.",
+              "credit": "Studio Nicholas Obeid",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg"
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "PICS-ARCHIVE-PICS-WEEK-2026-003",
       "releaseId": "PICS-WEEK-2026-003",
       "label": "Daily Picks · movements · 7 вер. 2026 г.",
