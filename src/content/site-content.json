@@ -20185,6 +20185,23 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 30,
+          "title": "Heiliger Nikolaus beschuldigt den Konsul",
+          "subtitle": "Unbekannter französischer Glasmaler · ca. 1200–1210 · Bleiglas",
+          "fig": "PICS 022",
+          "description": "Gotische Farbe ist strukturell: Bleiruten tragen die Zeichnung, und das Blau hinter den Figuren ist keine Farbe, sondern Licht, das bereits durch die Wand gegangen ist.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "gothic",
+          "homeTitle": "Heiliger Nikolaus beschuldigt den Konsul",
+          "homeSubtitle": "Unbekannter französischer Glasmaler · ca. 1200–1210 · Bleiglas",
+          "homeDescription": "Gotische Farbe ist strukturell: Bleiruten tragen die Zeichnung, und das Blau hinter den Figuren ist keine Farbe, sondern Licht, das bereits durch die Wand gegangen ist.",
+          "homeCredit": "The Metropolitan Museum of Art, The Cloisters Collection, 1980",
+          "picsId": "PICS-2026-022",
+          "updatedAt": "2026-09-07T07:55:06.158Z",
+          "picsReleaseId": "PICS-WEEK-2026-003"
         }
       ],
       "articles": [
@@ -25948,6 +25965,23 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 30,
+          "title": "San Nicolás Acusa al Cónsul",
+          "subtitle": "Vidriero francés desconocido · c. 1200–1210 · vidrio de plomo y pota",
+          "fig": "PICS 022",
+          "description": "El color gótico es estructural: las líneas de plomo llevan el dibujo, y el azul detrás de las figuras no es pintura sino luz que ya ha pasado a través de la pared.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "gothic",
+          "homeTitle": "San Nicolás Acusa al Cónsul",
+          "homeSubtitle": "Vidriero francés desconocido · c. 1200–1210 · vidrio de plomo y pota",
+          "homeDescription": "El color gótico es estructural: las líneas de plomo llevan el dibujo, y el azul detrás de las figuras no es pintura sino luz que ya ha pasado a través de la pared.",
+          "homeCredit": "El Museo Metropolitano de Arte, Colección The Cloisters, 1980",
+          "picsId": "PICS-2026-022",
+          "updatedAt": "2026-09-07T07:55:08.505Z",
+          "picsReleaseId": "PICS-WEEK-2026-003"
         }
       ],
       "articles": [
@@ -37468,6 +37502,23 @@
               "replacedAt": "2026-09-04T14:40:00.000Z"
             }
           ]
+        },
+        {
+          "id": 30,
+          "title": "San Nicola Accusa il Console",
+          "subtitle": "Vetraio francese sconosciuto · ca. 1200–1210 · vetro a piombo",
+          "fig": "PICS 022",
+          "description": "Il colore gotico è strutturale: le linee di piombo sostengono il disegno, e il blu dietro le figure non è vernice ma luce che ha già attraversato il parete.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "gothic",
+          "homeTitle": "San Nicola Accusa il Console",
+          "homeSubtitle": "Vetraio francese sconosciuto · ca. 1200–1210 · vetro a piombo",
+          "homeDescription": "Il colore gotico è strutturale: le linee di piombo sostengono il disegno, e il blu dietro le figure non è vernice ma luce che ha già attraversato il parete.",
+          "homeCredit": "The Metropolitan Museum of Art, The Cloisters Collection, 1980",
+          "picsId": "PICS-2026-022",
+          "updatedAt": "2026-09-07T07:55:11.752Z",
+          "picsReleaseId": "PICS-WEEK-2026-003"
         }
       ],
       "articles": [
@@ -42748,7 +42799,25 @@
       ]
     },
     "FR": {
-      "items": [],
+      "items": [
+        {
+          "id": 30,
+          "title": "Saint Nicolas accuse le Consul",
+          "subtitle": "Vitrailliste français inconnu · vers 1200–1210 · verre à plomb coloré",
+          "fig": "PICS 022",
+          "description": "La couleur gothique est structurelle : les lignes de plomb portent le dessin, et le bleu derrière les figures n'est pas de la peinture mais de la lumière qui a déjà traversé le mur.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg",
+          "picsOfWeek": true,
+          "homeCategory": "gothic",
+          "homeTitle": "Saint Nicolas accuse le Consul",
+          "homeSubtitle": "Vitrailliste français inconnu · vers 1200–1210 · verre à plomb coloré",
+          "homeDescription": "La couleur gothique est structurelle : les lignes de plomb portent le dessin, et le bleu derrière les figures n'est pas de la peinture mais de la lumière qui a déjà traversé le mur.",
+          "homeCredit": "Le Metropolitan Museum of Art, Collection The Cloisters, 1980",
+          "picsId": "PICS-2026-022",
+          "updatedAt": "2026-09-07T07:55:15.519Z",
+          "picsReleaseId": "PICS-WEEK-2026-003"
+        }
+      ],
       "articles": [],
       "reviews": [],
       "libraryItems": []
