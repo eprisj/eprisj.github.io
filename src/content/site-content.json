@@ -44538,9 +44538,10 @@
         "archive"
       ],
       "visibility": {},
-      "pics": {},
-      "articles": {},
-      "showCategory": false
+      "pics": {
+        "showCategory": false
+      },
+      "articles": {}
     },
     "articleOrder": {
       "mode": "manual",
