@@ -44174,7 +44174,79 @@
           "picsReleaseId": "PICS-WEEK-2026-004"
         }
       ],
-      "articles": [],
+      "articles": [
+        {
+          "id": 34,
+          "draft": true,
+          "title": "La couture qui n'est pas là : Cloud Gate d'Anish Kapoor",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "date": "7 sept. 2026",
+          "category": "art contemporain",
+          "subcategory": "Essai critique",
+          "tags": [
+            "sculpture",
+            "anish kapoor",
+            "art public",
+            "chicago",
+            "art contemporain",
+            "matériaux"
+          ],
+          "imageSeed": "cloud-gate-anish-kapoor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+          "excerpt": "Cloud Gate d'Anish Kapoor n'a pas de devant, pas de couture et, selon son créateur, pas de sujet fixe au-delà de la ligne d'horizon et de la foule actuellement capturée dans sa surface. Un regard approfondi sur le problème d'ingénierie qui a pris deux années supplémentaires à résoudre, et pourquoi la solution fonctionne toujours deux décennies plus tard.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Cloud Gate n'a pas de face avant. Parcourez Millennium Park dans n'importe quelle direction et la sculpture que Chicago appelle le Bean se tourne pour vous rencontrer : une boucle continue sans porte ni joint en acier poli, longue de 20 mètres et large de 13 mètres, reposant sur la pelouse de Michigan Avenue comme une goutte de mercure en chute libre avant de se répandre. La demande d'Anish Kapoor en 1999 était un point de repère. Ce qu'il a livré est plus proche d'un instrument : une œuvre d'art publique dont tout le contenu est la ville se regardant elle-même, pliée."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+              "caption": "Cloud Gate contre la ligne d'horizon de Michigan Avenue. Le profil en haricot qui a donné à la sculpture son surnom n'est lisible que de l'extérieur ; l'œuvre elle-même n'a pas d'angle de vue unique correct.",
+              "credit": "Photo : EightySixFilms, CC BY 2.0",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Une surface sans couture à cacher"
+            },
+            {
+              "type": "text",
+              "content": "Le problème d'ingénierie était tout le projet. La conception de Kapoor nécessitait une peau polie miroir sans joints visibles nulle part sur sa surface, ce qui signifiait que 168 plaques d'acier inoxydable devaient être soudées bout à bout, puis meulées et polies à la main jusqu'à ce que les soudures disparaissent complètement. Il n'y a pas de bordure, pas de joint d'étanchéité, pas de moulage de joint pour briser la réflexion et rappeler au spectateur que l'objet devant lui a été assemblé plutôt que coulé. La fabrication a pris deux ans de plus que prévu et la sculpture a été inaugurée en 2006, un an après Millennium Park lui-même, car une couture visible aurait été une œuvre différente, beaucoup plus petite : une chose assemblée, plutôt qu'un événement unique sans interruption."
+            },
+            {
+              "type": "texte",
+              "content": "Cette décision est le véritable sujet de la pièce. Une surface cousue se lit comme une construction : un objet construit par des gens, dans le temps, à partir de pièces. Une sans couture se lit comme un phénomène, moins une sculpture de quelque chose qu’un trou coupé dans le monde où un solide de 110 tonnes devrait être, à travers lequel le ciel, le Aon Center et plusieurs centaines de touristes par jour coulent en continu. Kapoor avait passé la majeure partie des deux décennies précédentes à poursuivre cet effet à l’échelle de la galerie, dans les vides concaves et les œuvres pigmentaires des années 1980 et les disques miroir qui ont suivi. Cloud Gate est le moment où l’idée a rencontré un budget civique et une ligne d’horizon suffisamment grande pour valoir la peine d’être avalée."
+            },
+            {
+              "type": "texte",
+              "content": "En dessous, les plaques se courbent vers l’intérieur pour former ce que l’artiste appelle l’omphalos, une chambre concave de huit mètres qui rassemble les réflexions sur elles-mêmes et les multiplie : se tenir dessous et l’acier environnant renvoie des dizaines de versions compressées et enroulées de votre propre image, ainsi que le dessous de la couverture nuageuse de Chicago, en même temps. C’est la seule partie de la sculpture où le miroir cesse de se comporter poliment. Partout ailleurs, Cloud Gate flatte ses environs, étirant la ligne d’horizon en quelque chose de plus haut et plus étrange qu’elle ne l’est. Sous l’arche, il interroge le spectateur à la place."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+              "caption": "La vue d’en dessous de l’omphalos : ligne d’horizon, ciel et foule pliés en une seule surface continue sans point de vue fixe.",
+              "credit": "Photo : orangemania, CC BY 2.0",
+              "align": "complet"
+            },
+            {
+              "type": "en-tête",
+              "content": "Sculpture publique comme infrastructure"
+            },
+            {
+              "type": "texte",
+              "content": "Ce qui rend Cloud Gate une œuvre d'art publique exceptionnellement réussie, plutôt qu'une œuvre populaire, c'est à quel point elle ne demande rien à quiconque ne vient pas pour regarder la sculpture. Elle n'a pas d'argument de la longueur d'une plaque à absorber, pas de distance de lecture fixe, pas de moment de la journée correct. Un touriste photographiant son propre reflet et un critique retraçant la dette de Kapoor envers les bronzes polis de Brancusi utilisent le même objet pour la même raison : parce que sa surface change avec celui qui se tient devant et ne se résout pas en une image fixe. C'est un tour plus difficile à réaliser que l'acier sans couture. La plupart des grandes commandes civiques se contentent d'une lisibilité depuis une fenêtre de bus ; celle-ci est conçue pour récompenser les deux minutes que quelqu'un passe à la contourner bien plus que les deux secondes que quelqu'un passe à la dépasser en voiture."
+            },
+            {
+              "type": "texte",
+              "content": "Deux décennies plus tard, la sculpture a absorbé un surnom qu'elle n'a jamais reçu de son créateur, est apparue dans plus de photographies amateurs que presque toute autre œuvre d'art contemporain, et est restée, sous toute cette circulation, un objet véritablement difficile : un solide avec le comportement visuel d'un liquide, un monument sans sujet fixe sauf la foule actuellement reflétée en lui. Cloud Gate n'avait pas besoin d'un anniversaire ou d'une rétrospective pour prouver que la surface sans couture valait les deux années supplémentaires. Chaque après-midi clair dans la place le fait à la place."
+            }
+          ],
+          "updatedAt": "2026-09-07T16:41:10.584Z",
+          "previewToken": "22284ad663190d7ab69b66a7"
+        }
+      ],
       "reviews": [],
       "libraryItems": []
     }
