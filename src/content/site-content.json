@@ -2883,6 +2883,96 @@
       "picsId": "PICS-2026-026",
       "updatedAt": "2026-09-07T08:00:00.000Z",
       "picsReleaseId": "PICS-WEEK-2026-003"
+    },
+    {
+      "id": 35,
+      "title": "Kholodets No. 12",
+      "subtitle": "2025 · mixed media · 34.5 × 26.5 × 8.5 cm",
+      "fig": "PICS 027",
+      "description": "An enamel meat tray of the Soviet kitchen, filled to the brim with a set aspic that will never melt: the most perishable dish in the repertoire held permanently at the moment before it is eaten.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp3vckds4xn.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "gothic",
+      "homeTitle": "Kholodets No. 12",
+      "homeSubtitle": "2025 · mixed media · 34.5 × 26.5 × 8.5 cm",
+      "homeDescription": "An enamel meat tray of the Soviet kitchen, filled to the brim with a set aspic that will never melt: the most perishable dish in the repertoire held permanently at the moment before it is eaten.",
+      "homeCredit": "Tikhaya Gallery, Nizhny Novgorod",
+      "sourceUrl": "https://tikhaya.org/gallery",
+      "picsId": "PICS-2026-027",
+      "updatedAt": "2026-09-07T16:08:21Z",
+      "picsReleaseId": "PICS-WEEK-2026-004"
+    },
+    {
+      "id": 36,
+      "title": "Moonlit Night",
+      "subtitle": "Pasha Bumazhny · 2025 · ink on album paper · 39 × 26 cm",
+      "fig": "PICS 028",
+      "description": "A star in sunglasses hangs over two dinosaurs and a line of handwriting explaining that one of them once worded his wish badly: the joke is drawn with the same economy as the horizon it sits on.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4f88ncf7g.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "baroque",
+      "homeTitle": "Moonlit Night",
+      "homeSubtitle": "Pasha Bumazhny · 2025 · ink on album paper · 39 × 26 cm",
+      "homeDescription": "A star in sunglasses hangs over two dinosaurs and a line of handwriting explaining that one of them once worded his wish badly: the joke is drawn with the same economy as the horizon it sits on.",
+      "homeCredit": "Tiho Gallery · Kontur 25",
+      "sourceUrl": "https://tihogallery.ru/contur25/tproduct/941005015322-pasha-bumazhnii-lunnaya-noch",
+      "picsId": "PICS-2026-028",
+      "updatedAt": "2026-09-07T16:08:21Z",
+      "picsReleaseId": "PICS-WEEK-2026-004"
+    },
+    {
+      "id": 37,
+      "title": "Broken Toys",
+      "subtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, edition 1/5",
+      "fig": "PICS 029",
+      "description": "Glass ornaments caught mid-shatter, tinsel and confetti still airborne: a Christmas tree photographed at the one second of its life nobody keeps a picture of.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4psdu4fok.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "avant-garde",
+      "homeTitle": "Broken Toys",
+      "homeSubtitle": "Stepan Chubaev · 2018 · Fujicolor Crystal Archive Silk, edition 1/5",
+      "homeDescription": "Glass ornaments caught mid-shatter, tinsel and confetti still airborne: a Christmas tree photographed at the one second of its life nobody keeps a picture of.",
+      "homeCredit": "Joy Gallery",
+      "sourceUrl": "http://joygallery.ru/tproduct/512006806142-broken-toys",
+      "picsId": "PICS-2026-029",
+      "updatedAt": "2026-09-07T16:08:21Z",
+      "picsReleaseId": "PICS-WEEK-2026-004"
+    },
+    {
+      "id": 38,
+      "title": "Love for Pomegranates and Silk",
+      "subtitle": "Ksenia Berestova · painting",
+      "fig": "PICS 030",
+      "description": "Striped drapery falls across the whole canvas while the pomegranates roll out from under it, from a series built entirely on the folded stripe as a motif.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp4wq64h560.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "post-constructivism",
+      "homeTitle": "Love for Pomegranates and Silk",
+      "homeSubtitle": "Ksenia Berestova · painting",
+      "homeDescription": "Striped drapery falls across the whole canvas while the pomegranates roll out from under it, from a series built entirely on the folded stripe as a motif.",
+      "homeCredit": "Reloft Art",
+      "sourceUrl": "https://reloft.art/product/lyubov-k-granatam-i-shelku/",
+      "picsId": "PICS-2026-030",
+      "updatedAt": "2026-09-07T16:08:21Z",
+      "picsReleaseId": "PICS-WEEK-2026-004"
+    },
+    {
+      "id": 39,
+      "title": "Upper East Side",
+      "subtitle": "Studio Nicholas Obeid · New York",
+      "fig": "PICS 031",
+      "description": "Plaster, travertine and bleached oak kept to one temperature, with a carved Georgian mantel left in place: the room argues that restraint and ornament can share an address.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "brutalism",
+      "homeTitle": "Upper East Side",
+      "homeSubtitle": "Studio Nicholas Obeid · New York",
+      "homeDescription": "Plaster, travertine and bleached oak kept to one temperature, with a carved Georgian mantel left in place: the room argues that restraint and ornament can share an address.",
+      "homeCredit": "Studio Nicholas Obeid",
+      "sourceUrl": "https://www.nicholasobeid.com/upper-east-side",
+      "picsId": "PICS-2026-031",
+      "updatedAt": "2026-09-07T16:08:21Z",
+      "picsReleaseId": "PICS-WEEK-2026-004"
     }
   ],
   "articles": [
@@ -43877,9 +43967,24 @@
             "PICS-2026-025",
             "PICS-2026-026"
           ]
+        },
+        {
+          "id": "PICS-WEEK-2026-004",
+          "label": "Daily Picks · 7 вер. 2026 г.",
+          "status": "published",
+          "createdAt": "2026-09-07T16:08:21Z",
+          "publishedAt": "2026-09-07T16:08:21Z",
+          "publicArchive": false,
+          "picsIds": [
+            "PICS-2026-027",
+            "PICS-2026-028",
+            "PICS-2026-029",
+            "PICS-2026-030",
+            "PICS-2026-031"
+          ]
         }
       ],
-      "activeReleaseId": "PICS-WEEK-2026-003",
+      "activeReleaseId": "PICS-WEEK-2026-004",
       "centerCategory": "avant-garde",
       "pastReleasesPublic": false
     },
@@ -43943,6 +44048,82 @@
     "ogImage": ""
   },
   "homepageArchive": [
+    {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-003",
+      "releaseId": "PICS-WEEK-2026-003",
+      "label": "Daily Picks · movements · 7 вер. 2026 г.",
+      "publishedAt": "2026-09-07T08:00:00.000Z",
+      "signature": "PICS-2026-022,PICS-2026-023,PICS-2026-024,PICS-2026-025,PICS-2026-026",
+      "publicArchive": false,
+      "visibleOnSite": false,
+      "cards": [
+        {
+          "id": 30,
+          "picsId": "PICS-2026-022",
+          "category": "gothic",
+          "categoryLabel": "Gothic",
+          "title": "Saint Nicholas Accuses the Consul",
+          "subtitle": "Unknown French glazier · c. 1200–1210 · pot-metal glass",
+          "description": "Gothic colour is structural: lead lines carry the drawing, and the blue behind the figures is not paint but light that has already passed through the wall.",
+          "credit": "The Metropolitan Museum of Art, The Cloisters Collection, 1980",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg"
+        },
+        {
+          "id": 31,
+          "picsId": "PICS-2026-023",
+          "category": "baroque",
+          "categoryLabel": "Baroque",
+          "title": "Bust of a Youth (Saint John the Baptist)",
+          "subtitle": "Francesco Mochi · 1630–40 · marble",
+          "description": "The mouth is open, the hair is still moving, the glance goes past you. Mochi cut the moment before speech and left the marble to hold it.",
+          "credit": "Art Institute of Chicago, Gentili di Giuseppe collection",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpr1gpydlps.jpg"
+        },
+        {
+          "id": 32,
+          "picsId": "PICS-2026-024",
+          "category": "avant-garde",
+          "categoryLabel": "Avant-garde",
+          "title": "Suprematism (Abstract Composition)",
+          "subtitle": "Kazimir Malevich · 1915 · oil on canvas",
+          "description": "Malevich, born in Kyiv, threw out the horizon along with the subject: the planes are weightless, and the only gravity left in the picture is the diagonal.",
+          "credit": "Public domain via Wikimedia Commons",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxps247yzpe9.jpg"
+        },
+        {
+          "id": 33,
+          "picsId": "PICS-2026-025",
+          "category": "post-constructivism",
+          "categoryLabel": "Post-constructivism",
+          "title": "Government Building, Kyiv",
+          "subtitle": "Ivan Fomin and Pavlo Abrosimov · 1934–38 · Kyiv",
+          "description": "Post-constructivism is constructivism that lost its nerve: the ribbon window becomes a colonnade, the curved wing keeps the modernist plan, and the order is glued on top.",
+          "credit": "Photo: KyivMax, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpt5309fpp0.jpg"
+        },
+        {
+          "id": 34,
+          "picsId": "PICS-2026-026",
+          "category": "brutalism",
+          "categoryLabel": "Brutalism",
+          "title": "Boston City Hall",
+          "subtitle": "Kallmann, McKinnell & Knowles · 1968 · Boston",
+          "description": "Concrete used as an argument: the offices are pushed out over the plaza so the building shows its plan from the street, whether the street likes it or not.",
+          "credit": "Photo: Daderot, CC0, via Wikimedia Commons",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpu18629yvj.jpg"
+        }
+      ]
+    },
     {
       "id": "PICS-ARCHIVE-PICS-WEEK-2026-002",
       "releaseId": "PICS-WEEK-2026-002",
