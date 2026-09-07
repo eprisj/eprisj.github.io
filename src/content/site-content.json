@@ -7742,6 +7742,76 @@
         }
       ],
       "updatedAt": "2026-09-07T05:30:21.091Z"
+    },
+    {
+      "id": 34,
+      "draft": true,
+      "title": "The Seam That Isn't There: Anish Kapoor's Cloud Gate",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "date": "Sep 7, 2026",
+      "category": "contemporary art",
+      "subcategory": "Critical Essay",
+      "tags": [
+        "sculpture",
+        "anish kapoor",
+        "public art",
+        "chicago",
+        "contemporary art",
+        "materials"
+      ],
+      "imageSeed": "cloud-gate-anish-kapoor",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+      "excerpt": "Anish Kapoor's Cloud Gate has no front, no seam and, its maker insists, no fixed subject beyond the skyline and the crowd currently caught in its surface. A close look at the engineering problem that took two extra years to solve, and why the solution still works two decades on.",
+      "content": [
+        {
+          "type": "text",
+          "content": "Cloud Gate has no front. Walk Millennium Park from any direction and the sculpture that Chicago calls the Bean turns to meet you: a continuous, gateless loop of polished steel, 20 metres long and 13 metres wide, sitting on the Michigan Avenue lawn like a drop of mercury caught mid-fall before it can spread. Anish Kapoor's brief in 1999 asked for a landmark. What he delivered is closer to an instrument: a piece of public sculpture whose entire content is the city looking at itself, bent."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+          "caption": "Cloud Gate against the Michigan Avenue skyline. The kidney-bean profile that gave the sculpture its nickname is legible only from the outside; the work itself has no single correct viewing angle.",
+          "credit": "Photo: EightySixFilms, CC BY 2.0",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "A surface with no seam to hide behind"
+        },
+        {
+          "type": "text",
+          "content": "The engineering problem was the whole project. Kapoor's design called for a mirror-polished skin with no visible joints anywhere on its surface, which meant 168 stainless steel plates had to be welded edge to edge and then ground and buffed by hand until the welds disappeared entirely. There is no trim, no gasket, no seam moulding to break the reflection and remind a viewer that the object in front of them was assembled rather than poured. The fabrication took two years longer than scheduled and the sculpture opened in 2006, a year after Millennium Park itself, because a visible seam would have been a different, much smaller work: a assembled thing, rather than a single unbroken event."
+        },
+        {
+          "type": "text",
+          "content": "That decision is the piece's real subject. A seamed surface reads as construction: an object built by people, in time, out of parts. A seamless one reads as a phenomenon, less a sculpture of something than a hole cut in the world where a 110-tonne solid ought to be, through which the sky, the Aon Center and several hundred tourists a day pour continuously. Kapoor had spent much of the previous two decades chasing this effect at gallery scale, in the concave voids and pigment works of the 1980s and the mirrored discs that followed. Cloud Gate is the moment the idea met a civic budget and a skyline large enough to be worth swallowing."
+        },
+        {
+          "type": "text",
+          "content": "Underneath, the plates curve inward to form what the artist calls the omphalos, an eight-metre concave chamber that gathers the reflections back on themselves and multiplies them: stand under it and the surrounding steel returns dozens of compressed, curling versions of your own image, along with the underside of Chicago's cloud cover, at once. It is the one part of the sculpture where the mirror stops behaving politely. Everywhere else, Cloud Gate flatters its surroundings, stretching the skyline into something taller and stranger than it is. Under the arch, it interrogates the viewer instead."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+          "caption": "The view from beneath the omphalos: skyline, sky and crowd folded into a single continuous surface with no fixed vantage point.",
+          "credit": "Photo: orangemania, CC BY 2.0",
+          "align": "full"
+        },
+        {
+          "type": "header",
+          "content": "Public sculpture as infrastructure"
+        },
+        {
+          "type": "text",
+          "content": "What makes Cloud Gate an unusually successful piece of public art, rather than merely a popular one, is how little it asks of anyone who did not come to look at sculpture. It has no plaque-length argument to absorb, no fixed reading distance, no correct time of day. A tourist photographing their own reflection and a critic tracing Kapoor's debt to Brancusi's polished bronzes are using the same object for the same reason: because its surface changes with whoever is standing in front of it and does not resolve into a fixed image. That is a harder trick to engineer than the seamless steel. Most large civic commissions settle for legibility from a bus window; this one is designed to reward the two minutes someone spends walking around it far more than the two seconds someone spends driving past."
+        },
+        {
+          "type": "text",
+          "content": "Two decades on, the sculpture has absorbed a nickname it was never given by its maker, appeared in more amateur photographs than almost any other work of contemporary art, and remained, underneath all of that circulation, a genuinely difficult object: a solid with the visual behaviour of a liquid, a monument with no fixed subject except the crowd currently reflected in it. Cloud Gate did not need an anniversary or a retrospective to prove the seamless surface was worth the extra two years. Every clear afternoon in the plaza does that instead."
+        }
+      ],
+      "updatedAt": "2026-09-07T16:37:23.810Z"
     }
   ],
   "reviews": [
