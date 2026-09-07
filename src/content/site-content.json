@@ -31628,6 +31628,77 @@
             }
           ],
           "updatedAt": "2026-09-06T19:00:25.488Z"
+        },
+        {
+          "id": 34,
+          "draft": true,
+          "title": "La costura que no está allí: Cloud Gate de Anish Kapoor",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "date": "7 sep, 2026",
+          "category": "arte contemporáneo",
+          "subcategory": "Ensayo crítico",
+          "tags": [
+            "escultura",
+            "anish kapoor",
+            "arte público",
+            "chicago",
+            "arte contemporáneo",
+            "materiales"
+          ],
+          "imageSeed": "cloud-gate-anish-kapoor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+          "excerpt": "Cloud Gate de Anish Kapoor no tiene frente, ni costura y, insiste su creador, no tiene sujeto fijo más allá del horizonte y la multitud actualmente atrapada en su superficie. Una mirada cercana al problema de ingeniería que tomó dos años adicionales en resolver, y por qué la solución aún funciona dos décadas después.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Cloud Gate no tiene frente. Camina por Millennium Park desde cualquier dirección y la escultura que Chicago llama el Bean se vuelve para encontrarte: un bucle continuo sin cerradura de acero pulido, de 20 metros de largo y 13 metros de ancho, sentado en el césped de Michigan Avenue como una gota de mercurio atrapada en caída antes de poder extenderse. La instrucción de Anish Kapoor en 1999 pedía un punto de referencia. Lo que entregó es más cercano a un instrumento: una pieza de escultura pública cuyo contenido completo es la ciudad mirándose a sí misma, doblada."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+              "caption": "Cloud Gate contra el horizonte de Michigan Avenue. El perfil en forma de frijol que le dio el apodo a la escultura solo es legible desde el exterior; la obra en sí no tiene un ángulo de vista correcto único.",
+              "credit": "Photo: EightySixFilms, CC BY 2.0",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Una superficie sin costura para esconderse"
+            },
+            {
+              "type": "text",
+              "content": "El problema de ingeniería fue todo el proyecto. El diseño de Kapoor requería una piel pulida como un espejo sin juntas visibles en ninguna parte de su superficie, lo que significaba que 168 placas de acero inoxidable tenían que ser soldadas de borde a borde y luego lijadas y pulidas a mano hasta que las soldaduras desaparecieran por completo. No hay moldura, no hay junta, no hay moldura de costura para romper el reflejo y recordar al espectador que el objeto frente a él fue ensamblado en lugar de vertido. La fabricación tomó dos años más de lo previsto y la escultura se inauguró en 2006, un año después de Millennium Park en sí, porque una costura visible habría sido una obra diferente, mucho más pequeña: una cosa ensamblada, en lugar de un evento único e ininterrumpido."
+            },
+            {
+              "type": "texto",
+              "content": "Esa decisión es el verdadero tema de la pieza. Una superficie cosida se lee como construcción: un objeto construido por personas, en el tiempo, a partir de partes. Una sin costuras se lee como un fenómeno, menos una escultura de algo que un agujero cortado en el mundo donde debería estar un sólido de 110 toneladas, a través del cual el cielo, el Aon Center y varios cientos de turistas al día fluyen continuamente. Kapoor había pasado gran parte de las dos décadas anteriores persiguiendo este efecto a escala de galería, en los vacíos cóncavos y obras de pigmento de los años 1980 y los discos espejados que siguieron. Cloud Gate es el momento en que la idea se encontró con un presupuesto cívico y un horizonte lo suficientemente grande como para valer la pena tragar."
+            },
+            {
+              "type": "texto",
+              "content": "Debajo, las placas se curvan hacia adentro para formar lo que la artista llama el omphalos, una cámara cóncava de ocho metros que recoge los reflejos y los multiplica: párate debajo y el acero circundante devuelve docenas de versiones comprimidas y enroscadas de tu propia imagen, junto con la parte inferior de la cubierta de nubes de Chicago, al mismo tiempo. Es la única parte de la escultura donde el espejo deja de comportarse educadamente. En todas partes, Cloud Gate halaga su entorno, estirando el horizonte hacia algo más alto y extraño de lo que es. Bajo el arco, interroga al espectador en su lugar."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mtrgod6h4c0lkl.jpg",
+              "caption": "La vista desde debajo del omphalos: horizonte, cielo y multitud plegados en una sola superficie continua sin un punto de vista fijo.",
+              "credit": "Foto: orangemania, CC BY 2.0",
+              "align": "completo"
+            },
+            {
+              "type": "encabezado",
+              "content": "Escultura pública como infraestructura"
+            },
+            {
+              "type": "texto",
+              "content": "Lo que hace que Cloud Gate sea una pieza de arte público inusualmente exitosa, en lugar de simplemente popular, es lo poco que pide a cualquiera que no vino a mirar la escultura. No tiene un argumento de la longitud de una placa para absorber, ninguna distancia de lectura fija, ninguna hora correcta del día. Un turista fotografiando su propio reflejo y un crítico rastreando la deuda de Kapoor con los bronces pulidos de Brancusi están usando el mismo objeto por la misma razón: porque su superficie cambia con quien esté frente a ella y no se resuelve en una imagen fija. Ese es un truco más difícil de diseñar que el acero sin costuras. La mayoría de las grandes comisiones cívicas se conforman con la legibilidad desde la ventana de un autobús; esta está diseñada para recompensar los dos minutos que alguien pasa caminando a su alrededor mucho más que los dos segundos que alguien pasa conduciendo junto a ella."
+            },
+            {
+              "type": "texto",
+              "content": "Dos décadas después, la escultura ha absorbido un apodo que nunca le fue dado por su creador, apareció en más fotografías amateur que casi cualquier otra obra de arte contemporáneo, y permaneció, debajo de toda esa circulación, como un objeto verdaderamente difícil: un sólido con el comportamiento visual de un líquido, un monumento sin sujeto fijo excepto la multitud que actualmente se refleja en él. Cloud Gate no necesitó un aniversario ni una retrospectiva para demostrar que la superficie sin costuras valía los dos años adicionales. Cada tarde clara en la plaza hace eso en su lugar."
+            }
+          ],
+          "updatedAt": "2026-09-07T16:40:35.288Z",
+          "previewToken": "22284ad663190d7ab69b66a7"
         }
       ],
       "reviews": [
