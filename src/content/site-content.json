@@ -8908,7 +8908,7 @@
           "homeCredit": "Reloft Art",
           "sourceUrl": "https://reloft.art/product/lyubov-k-granatam-i-shelku/",
           "picsId": "PICS-2026-030",
-          "updatedAt": "2026-09-07T16:11:40.048Z",
+          "updatedAt": "2026-09-07T16:15:45.037Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
         },
         {
@@ -14844,7 +14844,7 @@
           "homeCredit": "Reloft Art",
           "sourceUrl": "https://reloft.art/product/lyubov-k-granatam-i-shelku/",
           "picsId": "PICS-2026-030",
-          "updatedAt": "2026-09-07T16:11:35.145Z",
+          "updatedAt": "2026-09-07T16:15:42.314Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
         },
         {
@@ -20788,17 +20788,17 @@
           "title": "Upper East Side",
           "subtitle": "Studio Nicholas Obeid · New York",
           "fig": "PICS 031",
-          "description": "Gips, Travertin und gebleichter Eiche bei einer Temperatur gehalten, mit einem geschnitzten georgianischen Kamin, der an Ort und Stelle bleibt: der Raum argumentiert, dass Zurückhaltung und Ornament eine Adresse teilen können.",
+          "description": "Gips, Travertin und gebleichter Eiche bei einer Temperatur gehalten, mit einem geschnitzten Georgian-Kamin, der an Ort und Stelle bleibt: der Raum argumentiert, dass Zurückhaltung und Ornament eine Adresse teilen können.",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtrfp5asmsitrk.jpg",
           "picsOfWeek": true,
           "homeCategory": "brutalism",
           "homeTitle": "Upper East Side",
           "homeSubtitle": "Studio Nicholas Obeid · New York",
-          "homeDescription": "Gips, Travertin und gebleichter Eiche bei einer Temperatur gehalten, mit einem geschnitzten georgianischen Kamin, der an Ort und Stelle bleibt: der Raum argumentiert, dass Zurückhaltung und Ornament eine Adresse teilen können.",
+          "homeDescription": "Gips, Travertin und gebleichter Eiche bei einer Temperatur gehalten, mit einem geschnitzten Georgian-Kamin, der an Ort und Stelle bleibt: der Raum argumentiert, dass Zurückhaltung und Ornament eine Adresse teilen können.",
           "homeCredit": "Studio Nicholas Obeid",
           "sourceUrl": "https://www.nicholasobeid.com/upper-east-side",
           "picsId": "PICS-2026-031",
-          "updatedAt": "2026-09-07T16:11:43.697Z",
+          "updatedAt": "2026-09-07T16:15:48.332Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
         }
       ],
@@ -26736,7 +26736,7 @@
           "homeCredit": "Studio Nicholas Obeid",
           "sourceUrl": "https://www.nicholasobeid.com/upper-east-side",
           "picsId": "PICS-2026-031",
-          "updatedAt": "2026-09-07T16:11:47.079Z",
+          "updatedAt": "2026-09-07T16:15:51.191Z",
           "picsReleaseId": "PICS-WEEK-2026-004"
         }
       ],
@@ -44539,7 +44539,8 @@
       ],
       "visibility": {},
       "pics": {},
-      "articles": {}
+      "articles": {},
+      "showCategory": false
     },
     "articleOrder": {
       "mode": "manual",
