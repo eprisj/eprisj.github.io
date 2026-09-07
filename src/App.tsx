@@ -23,6 +23,7 @@ import {
   ContentBlock,
   DEFAULT_LANGUAGE,
   getAvailableLanguages,
+  getAvailableLanguagesForEntity,
   getAuthors,
   getManifest,
   getContentForLanguage,
@@ -2425,6 +2426,14 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Only offer languages this article actually has a translation for — a
+  // language that would silently fall back to the base text still shows as
+  // "selected" afterwards, which reads as a broken translation rather than
+  // an absent one.
+  const availableLanguages = useMemo(() => {
+    const translated = new Set(getAvailableLanguagesForEntity('articles', article.id));
+    return languages.filter((lang) => translated.has(lang));
+  }, [languages, article.id]);
 
   // Resolve the linked author record (by authorId or name) so the byline can
   // show a real photo + bio; falls back to the plain author/role strings.
@@ -2543,7 +2552,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
             </button>
             {isArticleLangOpen && (
               <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-xl shadow-lg overflow-hidden min-w-[170px] max-h-[70dvh] overflow-y-auto z-50">
-                {languages.map(lang => (
+                {availableLanguages.map(lang => (
                   <button
                     type="button"
                     key={lang}
