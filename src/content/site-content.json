@@ -2798,6 +2798,91 @@
           "replacedAt": "2026-09-04T14:40:00.000Z"
         }
       ]
+    },
+    {
+      "id": 30,
+      "title": "Saint Nicholas Accuses the Consul",
+      "subtitle": "Unknown French glazier · c. 1200–1210 · pot-metal glass",
+      "fig": "PICS 022",
+      "description": "Gothic colour is structural: lead lines carry the drawing, and the blue behind the figures is not paint but light that has already passed through the wall.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpq8cym8vqj.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "gothic",
+      "homeTitle": "Saint Nicholas Accuses the Consul",
+      "homeSubtitle": "Unknown French glazier · c. 1200–1210 · pot-metal glass",
+      "homeDescription": "Gothic colour is structural: lead lines carry the drawing, and the blue behind the figures is not paint but light that has already passed through the wall.",
+      "homeCredit": "The Metropolitan Museum of Art, The Cloisters Collection, 1980",
+      "picsId": "PICS-2026-022",
+      "updatedAt": "2026-09-07T08:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-003"
+    },
+    {
+      "id": 31,
+      "title": "Bust of a Youth (Saint John the Baptist)",
+      "subtitle": "Francesco Mochi · 1630–40 · marble",
+      "fig": "PICS 023",
+      "description": "The mouth is open, the hair is still moving, the glance goes past you. Mochi cut the moment before speech and left the marble to hold it.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpr1gpydlps.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "baroque",
+      "homeTitle": "Bust of a Youth (Saint John the Baptist)",
+      "homeSubtitle": "Francesco Mochi · 1630–40 · marble",
+      "homeDescription": "The mouth is open, the hair is still moving, the glance goes past you. Mochi cut the moment before speech and left the marble to hold it.",
+      "homeCredit": "Art Institute of Chicago, Gentili di Giuseppe collection",
+      "picsId": "PICS-2026-023",
+      "updatedAt": "2026-09-07T08:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-003"
+    },
+    {
+      "id": 32,
+      "title": "Suprematism (Abstract Composition)",
+      "subtitle": "Kazimir Malevich · 1915 · oil on canvas",
+      "fig": "PICS 024",
+      "description": "Malevich, born in Kyiv, threw out the horizon along with the subject: the planes are weightless, and the only gravity left in the picture is the diagonal.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtqxps247yzpe9.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "avant-garde",
+      "homeTitle": "Suprematism (Abstract Composition)",
+      "homeSubtitle": "Kazimir Malevich · 1915 · oil on canvas",
+      "homeDescription": "Malevich, born in Kyiv, threw out the horizon along with the subject: the planes are weightless, and the only gravity left in the picture is the diagonal.",
+      "homeCredit": "Public domain via Wikimedia Commons",
+      "picsId": "PICS-2026-024",
+      "updatedAt": "2026-09-07T08:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-003"
+    },
+    {
+      "id": 33,
+      "title": "Government Building, Kyiv",
+      "subtitle": "Ivan Fomin and Pavlo Abrosimov · 1934–38 · Kyiv",
+      "fig": "PICS 025",
+      "description": "Post-constructivism is constructivism that lost its nerve: the ribbon window becomes a colonnade, the curved wing keeps the modernist plan, and the order is glued on top.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpt5309fpp0.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "post-constructivism",
+      "homeTitle": "Government Building, Kyiv",
+      "homeSubtitle": "Ivan Fomin and Pavlo Abrosimov · 1934–38 · Kyiv",
+      "homeDescription": "Post-constructivism is constructivism that lost its nerve: the ribbon window becomes a colonnade, the curved wing keeps the modernist plan, and the order is glued on top.",
+      "homeCredit": "Photo: KyivMax, CC BY-SA 4.0, via Wikimedia Commons",
+      "picsId": "PICS-2026-025",
+      "updatedAt": "2026-09-07T08:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-003"
+    },
+    {
+      "id": 34,
+      "title": "Boston City Hall",
+      "subtitle": "Kallmann, McKinnell & Knowles · 1968 · Boston",
+      "fig": "PICS 026",
+      "description": "Concrete used as an argument: the offices are pushed out over the plaza so the building shows its plan from the street, whether the street likes it or not.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtqxpu18629yvj.jpg",
+      "picsOfWeek": true,
+      "homeCategory": "brutalism",
+      "homeTitle": "Boston City Hall",
+      "homeSubtitle": "Kallmann, McKinnell & Knowles · 1968 · Boston",
+      "homeDescription": "Concrete used as an argument: the offices are pushed out over the plaza so the building shows its plan from the street, whether the street likes it or not.",
+      "homeCredit": "Photo: Daderot, CC0, via Wikimedia Commons",
+      "picsId": "PICS-2026-026",
+      "updatedAt": "2026-09-07T08:00:00.000Z",
+      "picsReleaseId": "PICS-WEEK-2026-003"
     }
   ],
   "articles": [
@@ -43136,109 +43221,103 @@
       "ordering": "lifo",
       "categories": [
         {
-          "id": "sculpture",
-          "label": "Sculpture",
+          "id": "gothic",
+          "label": "Gothic",
           "matches": [
-            "sculpture",
-            "sculptural",
-            "statue",
-            "object",
-            "installation",
-            "ceramic",
-            "vase"
+            "gothic",
+            "stained glass",
+            "cathedral",
+            "medieval",
+            "reliquary"
           ],
           "labels": {
-            "EN": "Sculpture",
-            "RU": "Скульптура",
-            "UA": "Скульптура",
-            "DE": "Skulptur",
-            "IT": "Scultura",
-            "ES": "Escultura",
-            "TR": "Heykel"
+            "EN": "Gothic",
+            "RU": "Готика",
+            "UA": "Готика",
+            "DE": "Gotik",
+            "IT": "Gotico",
+            "ES": "Gótico",
+            "TR": "Gotik"
           }
         },
         {
-          "id": "painting",
-          "label": "Painting",
+          "id": "baroque",
+          "label": "Baroque",
           "matches": [
-            "painting",
-            "paint",
-            "canvas",
-            "portrait",
-            "art",
-            "culture",
-            "history",
-            "restoration"
+            "baroque",
+            "marble",
+            "bust",
+            "chiaroscuro",
+            "seventeenth"
           ],
           "labels": {
-            "EN": "Painting",
-            "RU": "Живопись",
-            "UA": "Живопис",
-            "DE": "Malerei",
-            "IT": "Pittura",
-            "ES": "Pintura",
-            "TR": "Resim"
+            "EN": "Baroque",
+            "RU": "Барокко",
+            "UA": "Бароко",
+            "DE": "Barock",
+            "IT": "Barocco",
+            "ES": "Barroco",
+            "TR": "Barok"
           }
         },
         {
-          "id": "architecture",
-          "label": "Architecture",
+          "id": "avant-garde",
+          "label": "Avant-garde",
           "matches": [
-            "architecture",
-            "building",
-            "urban",
-            "space",
-            "city"
+            "avant-garde",
+            "suprematism",
+            "malevich",
+            "abstraction",
+            "constructivism"
           ],
           "labels": {
-            "EN": "Architecture",
-            "RU": "Архитектура",
-            "UA": "Архітектура",
-            "DE": "Architektur",
-            "IT": "Architettura",
-            "ES": "Arquitectura",
-            "TR": "Mimarlık"
+            "EN": "Avant-garde",
+            "RU": "Авангард",
+            "UA": "Авангард",
+            "DE": "Avantgarde",
+            "IT": "Avanguardia",
+            "ES": "Vanguardia",
+            "TR": "Avangart"
           }
         },
         {
-          "id": "design",
-          "label": "Design",
+          "id": "post-constructivism",
+          "label": "Post-constructivism",
           "matches": [
-            "design",
-            "interior",
-            "furniture",
-            "travel",
-            "material"
+            "post-constructivism",
+            "postconstructivism",
+            "colonnade",
+            "1930s",
+            "order"
           ],
           "labels": {
-            "EN": "Design",
-            "RU": "Дизайн",
-            "UA": "Дизайн",
-            "DE": "Design",
-            "IT": "Design",
-            "ES": "Diseño",
-            "TR": "Tasarım"
+            "EN": "Post-constructivism",
+            "RU": "Постконструктивизм",
+            "UA": "Постконструктивізм",
+            "DE": "Postkonstruktivismus",
+            "IT": "Postcostruttivismo",
+            "ES": "Postconstructivismo",
+            "TR": "Post-konstrüktivizm"
           }
         },
         {
-          "id": "photography",
-          "label": "Photography",
+          "id": "brutalism",
+          "label": "Brutalism",
           "matches": [
-            "photography",
-            "photograph",
-            "photo",
-            "lens",
-            "camera",
-            "visual"
+            "brutalism",
+            "brutalist",
+            "concrete",
+            "beton",
+            "megastructure"
           ],
           "labels": {
-            "EN": "Photography",
-            "RU": "Фотография",
-            "UA": "Фотографія",
-            "DE": "Fotografie",
-            "IT": "Fotografia",
-            "ES": "Fotografía",
-            "TR": "Fotoğraf"
+            "EN": "Brutalism",
+            "RU": "Брутализм",
+            "UA": "Бруталізм",
+            "DE": "Brutalismus",
+            "IT": "Brutalismo",
+            "ES": "Brutalismo",
+            "TR": "Brütalizm"
           }
         }
       ],
@@ -43272,10 +43351,25 @@
             "PICS-2026-020",
             "PICS-2026-021"
           ]
+        },
+        {
+          "id": "PICS-WEEK-2026-003",
+          "label": "Daily Picks · movements · 7 вер. 2026 г.",
+          "status": "published",
+          "createdAt": "2026-09-07T08:00:00.000Z",
+          "publishedAt": "2026-09-07T08:00:00.000Z",
+          "publicArchive": true,
+          "picsIds": [
+            "PICS-2026-022",
+            "PICS-2026-023",
+            "PICS-2026-024",
+            "PICS-2026-025",
+            "PICS-2026-026"
+          ]
         }
       ],
-      "activeReleaseId": "PICS-WEEK-2026-002",
-      "centerCategory": "painting",
+      "activeReleaseId": "PICS-WEEK-2026-003",
+      "centerCategory": "avant-garde",
       "pastReleasesPublic": false
     },
     "articles": {},
