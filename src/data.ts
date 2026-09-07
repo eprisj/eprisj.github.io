@@ -1150,6 +1150,25 @@ export function getAvailableLanguages(): string[] {
 }
 
 /**
+ * Which of the site's languages actually have a real translation for one
+ * article/review, so the per-piece language switcher can hide options that
+ * would silently fall back to English rather than offer a language that
+ * looks selected but changes nothing on screen. The base language is always
+ * available; every other language needs a non-placeholder localized entry
+ * for this id (the same signal `getContentForLanguage` already merges on).
+ */
+export function getAvailableLanguagesForEntity(section: 'articles' | 'reviews', id: number): string[] {
+  const c = src();
+  const localized = c.localizedCollections || {};
+  return getAvailableLanguages().filter((lang) => {
+    if (lang === DEFAULT_LANGUAGE) return true;
+    const bucket = localized[lang]?.[section];
+    const entry = Array.isArray(bucket) ? bucket.find((e) => Number(e.id) === Number(id)) : undefined;
+    return hasLocalizedPayload(entry);
+  });
+}
+
+/**
  * True when an entity (article, review, item, library item) should be
  * visible to readers: not a draft, and its publishAt moment (if any) has
  * passed. The admin preview bypasses this so drafts can be proofread on
