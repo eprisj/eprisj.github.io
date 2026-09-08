@@ -7819,6 +7819,245 @@
         }
       ],
       "updatedAt": "2026-09-08T07:09:14.589Z"
+    },
+    {
+      "id": 35,
+      "title": "Abbie Downey: Collected, Not Coordinated",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "September 8, 2026",
+      "excerpt": "The founder of Feather & Fossil on visual rhythm, the difference between layered and chaotic, and why a home should read as continued rather than preserved.",
+      "category": "interview",
+      "subcategory": "Interview",
+      "tags": [
+        "interior design",
+        "maximalism",
+        "craft"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
+      "showCover": true,
+      "content": [
+        {
+          "type": "text",
+          "content": "Abbie Downey works from a Georgian house she is still renovating, which is a useful thing to know before looking at her rooms. Feather & Fossil, the practice she founded, deals in striped walls and blue fireplaces, kachina-figure wallpaper above a sink of hand-glazed tile, a gallery wall assembled over years rather than an afternoon. It reads as abundance. It is, on closer inspection, a set of decisions."
+        },
+        {
+          "type": "text",
+          "content": "Recognised this year through Next in Design, Downey belongs to a generation of British designers rehabilitating pattern and colour after two decades in which restraint was treated as the only adult position. Her argument is not that more is better. It is that a room should be able to hold the people who live in it, including the parts of them that do not photograph neatly. We sent her seven questions."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
+          "caption": "A sitting room in the designer’s own Georgian house: hand-painted stripes, a fireplace in soft blue, and a cabinet holding the collections of a family rather than a display.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Your interiors are expressive, but they never feel accidental. When you build up layers of colour, pattern and objects, what tells you that they belong together rather than simply competing for attention?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I think the difference between a room that feels layered and one that feels chaotic is usually intention. For me, maximalism isn’t about simply putting more things into a room; it’s about creating relationships between them. Colour, pattern, texture and objects can all be quite bold individually, but there needs to be something that connects them, a commonality. This could be a repeated colour, a shared undertone, a shape or material that appears more than once."
+        },
+        {
+          "type": "text",
+          "content": "I also believe there is an element of instinct to bringing maximalist schemes together. We shouldn’t feel afraid of elements competing for attention because I personally quite like a room that gives you something new to notice each time you look at it. But there needs to be a visual rhythm to it. I tend to stand back and look at the room as a whole rather than judging every element individually. There need to be elements of loud and quiet, light and shade, to allow a room to feel cohesive and successful."
+        },
+        {
+          "type": "text",
+          "content": "Ultimately, I want a room to feel collected rather than coordinated. I’m much more interested in creating a sense that things have found their way together over time than making everything look like it came from the same collection."
+        },
+        {
+          "type": "quote",
+          "content": "I want a room to feel collected rather than coordinated."
+        },
+        {
+          "type": "header",
+          "content": "When you begin a room, what tends to pull everything else into place? Is it usually one object, a colour, a fabric, or is it more of a gut feeling at the start?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "For me, there isn’t really one formula, which is probably why I find the process so enjoyable. Sometimes it’s one element that starts everything — a piece of fabric, a piece of art, a vintage find. Sometimes it’s a client’s must-have piece that starts the process, and often it will be centred around essentials such as the room layout or the practicalities of modern family life."
+        },
+        {
+          "type": "text",
+          "content": "Quite often, though, it’s a feeling. I’ll have an instinct about the direction I want to take something before I can necessarily articulate exactly why. I think that comes from constantly absorbing interiors, architecture, travel, art and the world around me. You build up this visual library without necessarily realising it, and eventually you start making connections almost instinctively."
+        },
+        {
+          "type": "text",
+          "content": "I also like to let a room evolve rather than trying to decide everything at once. I might know the colour palette and have one or two key pieces, but I want there to be room for the unexpected. Some of my favourite elements are the things that weren’t necessarily part of the original plan."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
+          "caption": "The kitchen: kachina-figure wallpaper above hand-glazed tile, with brass taps and a copper sink. Pattern is allowed to sit against pattern.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Older homes carry traces of the lives that came before us, in the architecture, the materials, the alterations, even the small imperfections. How much do you try to uncover that history before making new decisions, and do you see your role as preserving the story or continuing it?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I think older homes tell you a lot if you’re willing to listen to them. I’m particularly drawn to Georgian, Victorian and Edwardian properties because they have a sense of identity before you’ve even put anything in them. The proportions, fireplaces, floors, mouldings and little imperfections all contribute to that."
+        },
+        {
+          "type": "text",
+          "content": "I’m interested in understanding a building’s history, but I don’t think that means trying to turn it into a museum. Homes are meant to evolve. There will always be layers of different lives within them, and I think the most successful interiors acknowledge those layers rather than trying to erase them or preserve them to the point that it becomes impractical for modern family life."
+        },
+        {
+          "type": "text",
+          "content": "That’s something I’ve become particularly conscious of through renovating my own Georgian home. You start noticing all the evidence of the people who have lived there before you — the changes they made, the things they repaired, the things that have survived through good craftsmanship. I find that incredibly interesting."
+        },
+        {
+          "type": "text",
+          "content": "So I’d say my role is less about preserving a story exactly as it was and more about continuing it. I want new interventions to feel like they belong in the conversation with what was already there."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsirn5pg44cw9.jpg",
+          "caption": "A worn tabletop and a woven runner, photographed close. Much of the house is like this: surfaces that record use rather than conceal it.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "The domestic interior has always been a form of self-representation, shaped by taste, memory and the objects people choose to live with. Do you see a home almost as a personal archive, and how do you translate something that private into a room?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Absolutely. The best homes, to me, are the ones where you can learn something about the people who live there simply by looking around."
+        },
+        {
+          "type": "text",
+          "content": "I think our homes contain so much more of us than we sometimes realise. The objects we keep, the colours we gravitate towards, the things we inherit, the places we’ve travelled to and even the things we refuse to get rid of all tell a story."
+        },
+        {
+          "type": "text",
+          "content": "That’s one of the reasons I love working with clients. I’m not interested in imposing a particular version of what I think their home should look like. I want to understand what makes them feel at home. Sometimes that comes through in obvious ways — a collection, a piece of furniture or something with sentimental value — and sometimes it’s much more subtle."
+        },
+        {
+          "type": "text",
+          "content": "I see the design process as a kind of translation. A client might know that they want their home to feel warm, joyful, grown-up or slightly eccentric without knowing exactly how to achieve that visually. My job is to take those very personal, sometimes quite intangible things and turn them into colour, pattern, texture, furniture and objects."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsiry9sr2frcb.jpg",
+          "caption": "The gallery wall, built up over years. Prints, mirrors, postcards and a Vogue cover, hung against painted stripes.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Maximalism has long existed in tension with restraint, order and the idea of \"good taste\". Do you see contemporary maximalism partly as a reaction against those hierarchies?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I think there has been a long-standing idea that good taste means knowing when to stop — that restraint, simplicity and minimalism are somehow more sophisticated. Maximalism challenges that idea because it allows people to enjoy things simply because they love them."
+        },
+        {
+          "type": "text",
+          "content": "I don’t think that means minimalism is wrong, or that every room needs to be filled with pattern and colour. It’s more about questioning the idea that there is one correct way for a home to look. Why shouldn’t a room be joyful? Why shouldn’t you display a slightly ridiculous collection simply because it makes you happy?"
+        },
+        {
+          "type": "text",
+          "content": "That freedom is a big part of what attracted me to maximalism. I love colour, pattern, vintage pieces, things with history and interiors that have a little bit of eccentricity to them. I’m much more interested in whether something feels meaningful than whether it fits neatly into an accepted definition of good taste."
+        },
+        {
+          "type": "text",
+          "content": "For me, contemporary maximalism isn’t really about rebellion for the sake of it. It’s about giving people permission to trust their own instincts and to live in a space that represents them, feels like home and embraces who they are."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
+          "caption": "A sunburst panel over the fireplace, framed by wallpaper that refuses to recede. Nothing here is trying to be quiet.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Our sense of taste often comes from things we absorb almost without noticing: the homes we grew up in, places we visit, family objects. What do you think has shaped your own visual taste the most?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Probably a combination of places, buildings and the things I’ve collected along the way. I’ve always been drawn to older buildings and interiors with a sense of history, and I love the way colour and pattern are used in places like Morocco, Mexico, Spain and Italy. There’s something about those spaces that feels incredibly instinctive — pattern sitting alongside pattern, strong colour, texture, craftsmanship and objects with a sense of age."
+        },
+        {
+          "type": "text",
+          "content": "I’m also very influenced by the idea of things being collected rather than perfectly matched. Vintage and reclaimed pieces have always appealed to me because they bring a sense of history and individuality that you simply can’t get from buying everything at once."
+        },
+        {
+          "type": "text",
+          "content": "And then there are the homes I’ve lived in. Throughout my childhood, my dad would constantly be reinventing our home and rooms. He was never constrained by the style of house we lived in, but was led more by what he loved — crafting, making and experimenting. Then, living in rented, minimal new-builds through my twenties made me yearn for a home that was full of character, personality and history. This led me to renovate my first home and now my second. Both are period properties, and both have been approached with a maximalist mindset that celebrates our style as a family — the things we love, little moments of joy in everyday life, and a home that feels designed to be lived in, not just to look good in a photograph."
+        },
+        {
+          "type": "text",
+          "content": "I think a lot of our visual taste develops almost unconsciously. You absorb things from childhood, travel, books, films, buildings, people and places, and eventually all those little influences start to emerge in your own work."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsis1c266ocsm.jpg",
+          "caption": "A rattan chair in a small room papered floor to ceiling. Pattern used as an argument for staying rather than passing through.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Being recognised through Next in Design has brought your work into a much wider conversation. As your practice grows, is there anything about the way you work that you feel especially determined to protect?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Probably the freedom to follow my instincts."
+        },
+        {
+          "type": "text",
+          "content": "Being recognised through Next in Design has been such an exciting moment for Feather&Fossil and has opened the door to opportunities I could never have imagined when I started. It’s incredibly validating."
+        },
+        {
+          "type": "text",
+          "content": "But I don’t want growth to make the work feel less personal. I want to keep that sense of curiosity and playfulness, and I want to continue designing spaces that have personality rather than simply following whatever happens to be considered fashionable."
+        },
+        {
+          "type": "text",
+          "content": "I also want to protect the belief that a home should feel like the people who live there. I don’t want to create interiors that are perfect but interchangeable. I want to keep championing colour, pattern, vintage pieces, individuality and the slightly unexpected."
+        },
+        {
+          "type": "text",
+          "content": "If anything, being recognised through Next in Design has given me more confidence to trust that instinct rather than less. I think the thing I’m most determined to protect is that feeling of freedom — the freedom to experiment, to be a little bit bold, and to make decisions because they feel right rather than seeking approval from others."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
+          "caption": "A working corner: an antique desk, a red glass-fronted cabinet, hanging jute baskets. Rooms are designed to be lived in, not photographed once.",
+          "align": "center"
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
+            "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
+            "https://api.eprisjournal.com/uploads/mtsirv11wmy38r.jpg"
+          ],
+          "caption": "Feather & Fossil, details.",
+          "alts": [
+            "A brass pendant and a sunburst panel above a papered chimney breast.",
+            "Brass taps against blue hand-glazed tile.",
+            "Mantelpiece with painted mirror, patterned vessels and a green glass lamp."
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Photography: Paul Secker, Secker Studios. Interview conducted in writing for EPRIS Journal, September 2026."
+        }
+      ],
+      "draft": true,
+      "previewToken": "c2prGsB36VSXmwe9",
+      "order": 0,
+      "updatedAt": "2026-09-08T10:24:25.782Z"
     }
   ],
   "reviews": [
