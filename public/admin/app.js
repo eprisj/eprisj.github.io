@@ -15212,6 +15212,7 @@ function bindStudioMediaActions() {
     }
   }
 
+  let _lastHomepageAuditToast = null;
   function renderHomepageTab() {
     const list = document.getElementById('homepageGalleryList');
     const meta = document.getElementById('homepageGalleryMeta');
@@ -15273,9 +15274,18 @@ function bindStudioMediaActions() {
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-up'), -1)));
     list.querySelectorAll('[data-home-down]').forEach((button) =>
       button.addEventListener('click', () => moveItem(button.getAttribute('data-home-down'), 1)));
-    if (audit.errors.length) {
-      showToast?.('info', `Главная требует внимания: ${audit.errors[0]}`);
+    /* renderHomepageTab перерисовывается на КАЖДОЕ изменение раздела - сохранил
+       карточку, поднял её стрелкой, переключил язык - десятки раз за сессию.
+       Тост внутри неё стрелял при каждом вызове, пока ошибка не устранена:
+       редактор открывал вкладку и видел два одинаковых уведомления друг под
+       другом (иногда больше), потому что за секунду успевало пройти два
+       рендера. Тост нужен один раз на сообщение - фиксируем текст и не
+       повторяем его, пока он не сменится на другой или не исчезнет вовсе. */
+    const firstError = audit.errors[0] || null;
+    if (firstError && firstError !== _lastHomepageAuditToast) {
+      showToast?.('info', `Главная требует внимания: ${firstError}`);
     }
+    _lastHomepageAuditToast = firstError;
   }
 
   async function publishHomepage({ silent = false } = {}) {
