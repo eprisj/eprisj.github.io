@@ -9864,6 +9864,13 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .tab-panel a.btn { min-height: 44px; }
   .btn, .btn-sm, .sb-save, a.btn { min-height: 44px; }
   .btn-help { min-width: 44px; min-height: 44px; }
+  /* Кнопка выросла до 44px ради пальца, а подпись внутри осталась
+     десктопным .64-.7rem (10-11px) - на пустой 44-точечной плите слово
+     плавает мелкой точкой посередине, и кнопка читается как заготовка,
+     а не как готовое действие. Текст подтянут к размеру плиты, а не
+     наоборот: форма уже не меняется. */
+  .btn, .tab-panel .btn { font-size: .76rem; }
+  .btn-sm, .tab-panel .btn-sm { font-size: .72rem; }
   /* Док исключён намеренно: плитка 74x56 уже выше порога, а min-height
      на .tab-btn разъехался бы с высотой самого дока. */
   .sb-nav .tab-btn { min-height: 0; }
