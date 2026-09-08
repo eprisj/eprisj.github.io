@@ -2348,9 +2348,8 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
   const totalVotes = displayedOptions.reduce((acc, curr) => acc + curr.votes, 0);
 
   return (
-    <div className="my-12 p-8 bg-[var(--c-accent)] text-[var(--c-bg)] rounded-xl">
-      <h4 className="font-serif text-2xl mb-8 flex items-center gap-3">
-        <BarChart size={24} className="opacity-60" />
+    <div className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.22)] py-8">
+      <h4 className="mb-8 font-serif text-[24px] leading-[1.3] sm:text-[28px]">
         {question}
       </h4>
       <div className="space-y-4">
@@ -2362,13 +2361,13 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
                 <span>{opt.label}</span>
                 {votedIndex !== null && <span>{percentage}% · {opt.votes}</span>}
               </div>
-              <div className="h-12 border border-[rgb(var(--c-bg-rgb)_/_0.2)] relative overflow-hidden group">
-                <motion.div 
+              <div className="relative h-11 overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.22)] group">
+                <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: votedIndex !== null ? `${percentage}%` : '0%' }}
-                  className="absolute top-0 left-0 h-full bg-[rgb(var(--c-gold-rgb)_/_0.4)]"
+                  className="absolute left-0 top-0 h-full bg-[rgb(var(--c-accent-rgb)_/_0.1)]"
                 />
-                <div className={`absolute inset-0 flex items-center px-4 transition-colors ${votedIndex === index ? 'bg-[rgb(var(--c-gold-rgb)_/_0.2)]' : 'group-hover:bg-[rgb(var(--c-bg-rgb)_/_0.05)]'}`}>
+                <div className={`absolute inset-0 flex items-center px-4 transition-colors ${votedIndex === index ? 'bg-[rgb(var(--c-accent-rgb)_/_0.06)]' : 'group-hover:bg-[rgb(var(--c-accent-rgb)_/_0.04)]'}`}>
                 </div>
               </div>
             </div>
@@ -2396,12 +2395,11 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
 
 function NoteBlock({ content }: { content: string }) {
   return (
-    <div className="my-12 p-6 bg-[rgb(var(--c-gold-rgb)_/_0.1)] border-l-4 border-[var(--c-gold)] flex gap-4">
-      <Lightbulb className="w-6 h-6 text-[var(--c-gold)] shrink-0" />
-      <p className="font-serif text-lg text-[var(--c-accent)] italic">
+    <aside className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.18)] py-7">
+      <p className="mx-auto max-w-[46ch] font-serif text-[17px] leading-[1.6] text-[rgb(var(--c-accent-rgb)_/_0.82)]">
         {content}
       </p>
-    </div>
+    </aside>
   );
 }
 
@@ -2660,8 +2658,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (
-                    <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-4 sm:pl-6 my-8 sm:my-12 italic text-lg sm:text-xl md:text-2xl text-[var(--c-accent)]">
-                      <Quote className="inline-block w-5 h-5 sm:w-6 sm:h-6 text-[var(--c-gold)] mb-2 mr-2 opacity-50" />
+                    <blockquote key={index} className="my-10 sm:my-14 font-serif text-[22px] leading-[1.35] text-[var(--c-accent)] sm:text-[30px] sm:leading-[1.3]">
                       <span className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />
                     </blockquote>
                   );
@@ -3239,7 +3236,7 @@ function EditorialListCard({
           </p>
         )}
         {showDescription && card.verdict && (
-          <p className="font-serif text-sm italic text-[var(--c-accent)] leading-snug mb-3 border-l-2 border-[var(--c-gold)] pl-3">
+          <p className="font-serif text-[15px] leading-[1.45] text-[rgb(var(--c-accent-rgb)_/_0.9)] mb-3">
             {card.verdict}
           </p>
         )}
@@ -3334,27 +3331,23 @@ function ArticlesSection({
 function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key: string) => string }) {
   if ((!pros || !pros.length) && (!cons || !cons.length)) return null;
   return (
-    <div className="grid grid-cols-2 gap-4 mt-6">
+    <div className="mt-12 grid gap-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-8 sm:grid-cols-2 sm:gap-12">
       {pros && pros.length > 0 && (
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#4A7C59] mb-2">{t('reviews.pros')}</p>
-          <ul className="space-y-1.5">
+          <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('reviews.pros')}</p>
+          <ul className="mt-4 space-y-3">
             {pros.map((p, i) => (
-              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">
-                <span className="text-[#4A7C59] text-[10px] shrink-0">+</span>{p}
-              </li>
+              <li key={i} className="font-serif text-[15px] leading-[1.5] text-[rgb(var(--c-accent-rgb)_/_0.85)]">{p}</li>
             ))}
           </ul>
         </div>
       )}
       {cons && cons.length > 0 && (
-        <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8B3A3A] mb-2">{t('reviews.cons')}</p>
-          <ul className="space-y-1.5">
+        <div className="sm:border-l sm:border-[rgb(var(--c-accent-rgb)_/_0.14)] sm:pl-12">
+          <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('reviews.cons')}</p>
+          <ul className="mt-4 space-y-3">
             {cons.map((c, i) => (
-              <li key={i} className="flex items-baseline gap-2 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">
-                <span className="text-[#8B3A3A] text-[10px] shrink-0">−</span>{c}
-              </li>
+              <li key={i} className="font-serif text-[15px] leading-[1.5] text-[rgb(var(--c-accent-rgb)_/_0.85)]">{c}</li>
             ))}
           </ul>
         </div>
@@ -3408,7 +3401,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
     if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-3xl sm:text-4xl leading-tight">{text}</h2>;
-    if (block.type === 'quote' && text) return <blockquote key={index} className="border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{text}</blockquote>;
+    if (block.type === 'quote' && text) return <blockquote key={index} className="my-10 font-serif text-[22px] leading-[1.35] sm:text-[30px] sm:leading-[1.3]">{text}</blockquote>;
     if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-serif italic text-xl">{text}</aside>;
     if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
     if (block.type === 'gallery' && Array.isArray(block.content)) return <figure key={index} className="grid grid-cols-2 gap-2">{block.content.map((src, i) => <img key={i} src={src} alt={block.alts?.[i] || ''} className="aspect-square w-full object-cover" />)}</figure>;
@@ -3450,7 +3443,13 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
           <span>{authorName}</span>
           {authorRole && <><span aria-hidden="true" className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.3)]" /><span className="text-[var(--c-gold)]">{authorRole}</span></>}
         </div>
-        {review.verdict && <p className="mt-8 border-l-2 border-[var(--c-gold)] pl-5 font-serif text-2xl italic leading-snug">{review.verdict}</p>}
+        {review.verdict && (
+          <div className="mt-10">
+            <span aria-hidden="true" className="block h-px w-10 bg-[rgb(var(--c-accent-rgb)_/_0.35)]" />
+            <p className="mt-4 font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('reviews.verdict')}</p>
+            <p className="mt-3 font-serif text-[26px] leading-[1.32] sm:text-[32px] sm:leading-[1.28]">{review.verdict}</p>
+          </div>
+        )}
       </header>
       <div className="mx-auto max-w-3xl">
         <ReviewBody content={review.content} t={t} />
