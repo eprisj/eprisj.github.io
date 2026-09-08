@@ -7687,7 +7687,7 @@
         "acoustics"
       ],
       "imageSeed": "built-to-a-score",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtskaws3pef1bg.jpg",
       "excerpt": "Most buildings host music: a stage, walls, a program, good acoustics. A handful of buildings do something stranger, and let a piece of music design them outright, or let the problem of holding sound decide everything from the roof down to the seats. Three buildings, three different bargains between the two disciplines.",
       "content": [
         {
@@ -7700,8 +7700,8 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
-          "caption": "The Philips Pavilion under construction, Brussels, 1958: the ruled surfaces of Metastaseis in timber formwork. Photo: Anefo, CC0, via Wikimedia Commons.",
+          "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
+          "caption": "The Philips Pavilion at Expo 58, Brussels: nine concrete shells, each one a ruled surface of the kind Xenakis had drawn as glissandi. Photo: Anefo, CC0, via Wikimedia Commons.",
           "align": "center"
         },
         {
@@ -7745,9 +7745,13 @@
         {
           "type": "text",
           "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
+        },
+        {
+          "type": "text",
+          "content": "Photographs: cover, Elbphilharmonie on its opening night, 11 January 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie facade, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). All via Wikimedia Commons."
         }
       ],
-      "updatedAt": "2026-09-08T10:39:21.533Z",
+      "updatedAt": "2026-09-08T11:04:39.130Z",
       "showCover": true
     },
     {
