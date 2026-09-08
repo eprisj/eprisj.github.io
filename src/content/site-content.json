@@ -7833,7 +7833,7 @@
     {
       "id": 35,
       "title": "Abbie Downey: Collected, Not Coordinated",
-      "author": "EPRIS Journal",
+      "author": "Munister",
       "role": "Editorial Desk",
       "date": "September 8, 2026",
       "excerpt": "The founder of Feather & Fossil on visual rhythm, the difference between layered and chaotic, and why a home should read as continued rather than preserved.",
@@ -7850,7 +7850,11 @@
       "content": [
         {
           "type": "text",
-          "content": "Abbie Downey is renovating a Georgian house, her second period property, and that is a useful thing to know before looking at her rooms. Feather & Fossil, the practice she founded, deals in painted stripes and blue fireplaces, figured wallpaper above blue patterned tile, a wall of framed prints and mirrors hung close. It reads as abundance. It is, on closer inspection, a set of decisions."
+          "content": "EPRIS Journal's interview series turns this month to Abbie Downey, founder of the London studio Feather & Fossil and one of the designers credited with pulling colour and pattern back into British interiors after a long stretch of restraint. Her rooms are dense, layered and unmistakably lived-in — which is where our conversation begins."
+        },
+        {
+          "type": "text",
+          "content": "She is renovating a Georgian house, her second period property, and that is a useful thing to know before looking at her rooms. Feather & Fossil deals in painted stripes and blue fireplaces, figured wallpaper above blue patterned tile, a wall of framed prints and mirrors hung close. It reads as abundance. It is, on closer inspection, a set of decisions."
         },
         {
           "type": "text",
@@ -8067,7 +8071,7 @@
       "draft": true,
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
-      "updatedAt": "2026-09-08T10:31:46.121Z"
+      "updatedAt": "2026-09-08T12:12:26.764Z"
     }
   ],
   "reviews": [
