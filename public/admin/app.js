@@ -4805,7 +4805,16 @@ function describeEntryReach(data, section, entry) {
   if (isAuditPlaceholderEntity(entry)) {
     blockers.push('текст-заготовка — сайт прячет такие записи даже опубликованными');
   }
-  if (section === 'articles' && !entry.draft) {
+  /* Материал со стола «Музыка» уходит на music.eprisjournal.com и в общий
+     список журнала не попадает: сайт делит статьи на музыкальные и все
+     остальные (generalArticles в src/data.ts). Панель об этом молчала, и
+     редактор, нажав «Опубликовать», шёл смотреть eprisjournal.com/articles,
+     не находил материал и считал, что публикация не сработала. */
+  if (entry.desk === 'music' && !entry.draft) {
+    notes.push('раздел «Музыка»: материал на music.eprisjournal.com, в общем списке журнала его нет');
+  }
+
+  if (section === 'articles' && !entry.draft && entry.desk !== 'music') {
     const items = Array.isArray(data.items) ? data.items : [];
     const linked = items.some((it) => it && Number(it.articleId) === Number(entry.id));
     const byTitle = items.some((it) => {
