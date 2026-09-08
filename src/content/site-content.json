@@ -8072,6 +8072,30 @@
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
       "updatedAt": "2026-09-08T12:12:26.764Z"
+    },
+    {
+      "id": 91,
+      "title": "QA: music desk publish check",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "September 8, 2026",
+      "excerpt": "Temporary entry created to verify that a music-desk article publishes and reaches the subdomain.",
+      "category": "Culture",
+      "subcategory": "Feature",
+      "tags": [
+        "music"
+      ],
+      "imageSeed": "",
+      "desk": "music",
+      "draft": false,
+      "publishAt": "2026-09-08T00:00:00.000Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "Temporary QA entry. If you are reading this on the site, delete it."
+        }
+      ],
+      "updatedAt": "2026-09-08T12:29:23.978Z"
     }
   ],
   "reviews": [
@@ -10290,29 +10314,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "финский художник Sandra Kantanen рассматривает фотографию как ворота в воображаемое, а не как инструмент для захвата объективной реальности. Ее работы раскрывают уникальную, безграничную техническую философию, которая выводит медиа за пределы ограничений объектива, вызывая у зрителя вопрос о том, где заканчивается фотография и начинается картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "На первый взгляд можно предположить, что ее эфирные пейзажи являются результатом смешанных масляных красок и традиционного наложения слоев. На самом деле, это фотографии природных окружений — от лесов ее родной Финляндии до гор Азии — подвергнутых глубокому цифровому и физическому манипулированию."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Цветы 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Родилась в Хельсинки в 1974 году, Sandra Kantanen стала ключевой фигурой в рамках международно признанной Helsinki School of Photography. Ее академическая база была заложена в Школе искусств, дизайна и архитектуры Aalto University в Хельсинки, но поворотным моментом в ее художественной карьере стал 2000 год, когда она переехала в Китай в качестве студента по обмену."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Изучая традиционную китайскую пейзажную живопись в Центральной академии изобразительных искусств в Пекине, Кантанен глубоко повлиял на нее Восточной философией. Её поразило, как древние мастера не стремились задокументировать пейзаж, а идеализировать и сублимировать его."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -10324,33 +10348,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Во время своих путешествий по священным горам Китая она стала свидетелем резкого противоречия между нетронутой, духовной природой, изображенной на древних шелковых свитках, и суровой реальностью современной промышленной загрязненности и туризма. Этот диссонанс стал катализатором ее практики: пожизненного поиска запечатлеть \"невозможный\" пейзаж – пространство, существующее где-то между памятью, мифом и оптическим искажением."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без названия (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Хотя пиксельно искажённые пейзажи являются её самой известной подписью, более широкая фотографическая практика Кантанен удивительно разнообразна. Она не полагается на один технический трюк; скорее, она экспериментирует с разными сериями, постоянно переопределяя, как может вести себя фотографический образ: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Дымовые работы и пиксельная манипуляция: В своей самой известной серии Кантанен физически вмешивается в природу ещё до щелчка затвора. Выпуская цветные дымовые шашки в отдалённые леса – такие как те, что возле её дома в Hango, Финляндия – она создает сюрреалистическую, психоделическую атмосферу, которая нарушает обыденный пейзаж. Затем она берёт эти цифровые файлы и подвергает их глубокой манипуляции: размывает горизонты, растягивает данные и вручную заставляет пиксели течь так, чтобы фотография имитировала текучесть жидкой краски."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Без названия (Лес 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанические исследования и сканеры: Удаляясь от обширных пейзажей и растягивания пикселей полностью, её натюрморты с цветами и ботанические работы исследуют органический разложение вблизи. Для этого она часто использует крупномасштабные форматы, длительные экспозиции или даже плоские сканеры вместо традиционных объективов камеры. Эти методы вызывают богатую аллегорическую глубину голландской живописи Золотого века, сосредотачиваясь на интимных текстурах и медленном течении времени в природе."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -10362,16 +10386,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Путем плавного перехода между физической постановкой, скан-артом, прямым захватом и цифровой искажением, Kantanen постоянно дестабилизирует наше восприятие того, что может быть фотографией."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -16543,29 +16567,29 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фінська художниця Sandra Kantanen підходить до фотографії як до воріт у уявне, а не як до інструменту для захоплення об'єктивної реальності. Її робота розкриває унікальну, безмежну технічну філософію, яка виходить за межі обмежень об'єктива, кидаючи виклик глядачеві поставити питання, де закінчується фотографія і починається картина."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "З першого погляду можна припустити, що її ефірні пейзажі є результатом змішаних олійних фарб і традиційного накладання шарів. Насправді це фотографії природних середовищ — від лісів її рідної Фінляндії до гір Азії — піддані глибокій цифровій і фізичній маніпуляції."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Квіти 3), 2020",
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Народжена в Гельсінкі у 1974 році, Sandra Kantanen стала ключовою фігурою в рамках міжнародно відомої Helsinki School of Photography. Її академічну основу заклала школа мистецтв, дизайну та архітектури Aalto University у Гельсінкі, але поворотний момент у її художній траєкторії стався приблизно у 2000 році, коли вона переїхала до Китаю як студент за обміном."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": " Вивчаючи традиційний китайський пейзажний живопис у Центральній академії образотворчих мистецтв у Пекіні, Kantanen глибоко під впливом східної філософії. Вона була вражена тим, як давні майстри не прагнули задокументувати пейзаж, а ідеалізувати та сублімувавши його. "
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
@@ -16577,33 +16601,33 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Під час своїх подорожей по священних горах Китаю вона стала свідком різкої напруги між чистою, духовною природою, зображеною на давніх шовкових свитках, і жорсткими реаліями сучасного промислового забруднення та туризму. Ця дисонанс стала каталізатором її практики: довічного прагнення зафіксувати \"неможливий\" пейзаж – простір, що існує десь між пам’яттю, міфом і оптичним спотворенням."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без назви (Гора 7)”, 2010"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Хоча піксельно спотворені пейзажі є її найвідомішою підписом, широка фотографічна практика Kantanen вражає різноманітністю. Вона не покладається на один технічний трюк; навпаки, вона експериментує з різними серіями, постійно переосмислюючи, як може поводитися фотографічне зображення: "
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "The Smoke Works and Pixel Manipulation: У своїй найвідомішій серії Kantanen фізично втручається у природу ще до того, як затвор натискається. Випускаючи кольорові димові бомби у віддалені ліси – такі як ті поблизу її дому в Hango, Finland – вона створює сюрреалістичну, психоделічну атмосферу, яка порушує буденний пейзаж. Потім вона обробляє ці цифрові файли та піддає їх глибокій маніпуляції: розмиває горизонти, розтягує дані та вручну змушує пікселі текти, щоб фотографія імітувала текучість рідкої фарби."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
               "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Ботанічні дослідження та сканери: Відходячи від величезних пейзажів і розтягування пікселів, її флористичні натюрморти та ботанічні роботи досліджують органічний розпад зблизька. Для цього вона часто використовує великомасштабні формати, довгі експозиції або навіть сканери плоского типу замість традиційних об'єктивів камери. Ці методи викликають багатство алегоричної глибини голландського Золотого віку живопису, зосереджуючись на інтимних текстурах і повільному проходженні часу в природі."
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -16615,16 +16639,16 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Переміщаючись плавно між фізичним сценічним оформленням, scanner art, прямим захопленням і цифровим спотворенням, Kantanen постійно дестабілізує наше сприйняття того, що може бути фотографією."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -22858,7 +22882,7 @@
               "content": "Botanische Studien und Scanner: Abgewandt von weiten Landschaften und Pixelstreckung erkunden ihre Blumenstillleben und botanischen Werke organischen Verfall aus nächster Nähe. Für diese nutzt sie oft großformatige Formate, lange Belichtungszeiten oder sogar Flachbettscanner anstelle traditioneller Kameraobjektive. Diese Methoden rufen die reiche, allegorische Tiefe der niederländischen Goldenen Ära der Malerei hervor, wobei der Fokus auf den intimen Texturen und dem langsamen Verlauf der Zeit in der Natur liegt."
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -22870,16 +22894,16 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Indem sie sich fließend zwischen physischer Inszenierung, Scanner-Kunst, gerader Aufnahme und digitaler Verzerrung bewegt, destabilisiert Kantanen ständig unsere Wahrnehmung dessen, was ein Foto sein kann."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, „Horizon“, 2005"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, „Rain“, 2005"
             },
@@ -26503,7 +26527,7 @@
               "content": "Fast sechzig Jahre später machte die Elbphilharmonie in Hamburg, eröffnet am 11. Januar 2017, von Herzog & de Meuron, den entgegengesetzten Handel: Statt die Musik die Form des Gebäudes bestimmen zu lassen, ließ sie die Anforderungen des Musikhörens fast alles andere entscheiden. Akustiker Yasuhisa Toyota gestaltete den Hauptsaal als Weinberg, Terrassen mit Sitzplätzen, die um eine zentrale Bühne ansteigen, in der Weise, die Hans Scharoun 1963 für die Berliner Philharmonie verwendet hatte, sodass kein Zuhörer unter 2.100 mehr als 30 Meter vom Dirigenten entfernt sitzt. Die innere Oberfläche des Saals, etwa 10.000 individuell gefräste Gipsfaserplatten, ist an jedem Punkt mit einem anderen Profil geschnitten, um den Klang gleichmäßig zu streuen, anstatt ihn an einem Ort zu sammeln. Die ganze Struktur schwebt auf 362 Federlagern, mechanisch vom umgebenden Gebäude isoliert, sodass ein vorbeifahrender Zug niemals die Bühne erreicht. Über einem umgebauten Ziegel-Lagerhaus erscheinen die Glas-Obergeschosse des Konzertsaals von außen wie eine Welle oder eine Krone. Von innen ist dieses Bild fast nebensächlich: Die eigentliche Aufgabe des Raumes ist akustisch, und seine Form ist ein Diagramm dieser Aufgabe."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
               "caption": "Casa da Música, Porto: eine der gefalteten Betonebenen, mit dem Wellglas, das die Halle dahinter beleuchtet. Foto: Dale Cruse, CC BY 4.0, via Wikimedia Commons.",
               "credit": "Foto: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
@@ -38824,7 +38848,7 @@
               "credit": "via YouTube"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "İçeride, o duvarlara yerleştirilmiş yaklaşık 350 yüksek sesli hoparlör, Edgard Varèse'nin Poème électronique'ini mekânsal hale getirdi, sekiz dakikalık bant parçası, renkli ışıkların değişimine göre zamanlanmış, izleyiciler etrafında canlı olarak yönlendirilmiş teknisyenler tarafından. Pavilion, 30 Ocak 1959'da, fuar kapandıktan üç ay sonra yıkıldı, amacı, onu finanse eden etkinlikle kullanıldı. Hayatta kalan şey yöntemdir: müzik, bir oda için bir fon müziği olarak değil, bir oda inşa etmek için talimatlar seti olarak okunur."
             },
             {
@@ -38834,33 +38858,33 @@
               "credit": "via YouTube"
             },
             {
-              "type": "görüntü",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjcyljd4lptv.jpg",
               "caption": "Elbphilharmonie, Hamburg: cam üst katlar, her biri eğrilmiş veya kesilmiş cam panel, Kaispeicher deposunun tuğlasının üzerinde doğrudan oturuyor. Fotoğraf: Dietmar Rabich, CC BY-SA 4.0, Wikimedia Commons aracılığıyla.",
               "credit": "Fotoğraf: Dietmar Rabich, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Yaklaşık altmış yıl sonra, Herzog & de Meuron'un Hamburg'daki Elbphilharmonie'si, 11 Ocak 2017'de açıldı, tersini yaptı: müziğin binanın şeklini oluşturmasına izin vermek yerine, müzik dinleme gereksinimlerinin neredeyse her şeyi belirlemesine izin verdi. Akustik uzmanı Yasuhisa Toyota, ana salonu bir bağ gibi düzenledi, oturma terasları, 1963'te Hans Scharoun'un Berlin Filarmoni Orkestrası için kullandığı tarzda, merkezi bir sahne etrafında yükseliyor, böylece 2.100 izleyiciden hiçbiri orkestra şefinden 30 metreden fazla uzaklıkta oturmuyor. Salonun iç yüzeyi, yaklaşık 10.000 bireysel olarak frezelenmiş alçıtaşı-lif paneli, sesi tek bir noktada toplamak yerine eşit şekilde dağıtmak için her noktada farklı bir profil ile kesilmiştir. Tüm yapı, 362 yaylı yatak üzerinde yüzüyor, çevresindeki bina ile mekanik olarak izole edilmiştir, böylece geçen bir tren sahneye asla ulaşamaz. Dönüştürülmüş bir tuğla deposunun üzerinde, konser salonunun cam üst katları dışarıdan bir dalga veya taç gibi görünür. Salondan içeriye bakıldığında, bu görüntü neredeyse önemli değil: odanın gerçek görevi akustiktir ve şekli bu görevin diyagramıdır."
             },
             {
-              "type": "görüntü",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
               "caption": "Casa da Música, Porto: katlanmış beton düzlemlerden biri, arkasındaki salonu aydınlatan oluklu cam ile. Fotoğraf: Dale Cruse, CC BY 4.0, Wikimedia Commons aracılığıyla.",
               "credit": "Fotoğraf: John Samuel, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Rem Koolhaas ve Ellen van Loon'un OMA'sı, Porto'daki Casa da Música ile üçüncü sırayı aldı, 2005'te açıldı. Ofis, konser salonunun standart kutu şeklinin önüne geçmek istedi, alternatifler denedi ve bunları akustik açısından karşılaştırdı ve yenemediği kutu ile ölçtü. Böylece OMA kutuyu korudu ve gizledi: yaklaşık 1.200 oturma kapasitesine sahip dikdörtgen bir salon, her iki uçta camlı, yapılış yerine katlanmış gibi görünen düzensiz beyaz bir çokyüzlü içinde yer alır, sanki kutu tek bir asimetrik bloktan çıkarılmıştır. Binanın dışındaki şekil, içinde düzgün akustik bir oda olduğunu ve dışarıdaki her şeyin çokgen ve düzensiz olmasının, mimarlığın bir karar için kamuya uygun bir biçim bulması olduğunu bilene kadar belirgin bir mantık taşımaz."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Üç bina, aynı probleme üç farklı ilişki. Xenakis bir müzik parçasını bir çatı haline getirdi. Toyota ve Herzog & de Meuron, işitme fiziğinin bir odayı belirlemesine izin verdi, sonra sonucu etrafına bir bina sardı. Koolhaas, akustiklerin ısrar ettiği tek şekli korudu ve binanın geri kalanında onunla tartıştı. Üçü de gerçekten mimaride müzikle ilgili değil. Bunlar, bir disiplinin sıralama ve oranla çalışırken, yük ve malzeme üzerine çalışan bir disipline emir vermesine veya onun yerine cevap vermesine izin verildiğinde olanlar hakkında."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Fotoğraflar: kapak, Elbphilharmonie'nin açılış gecesi, 11 Ocak 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie cephesi, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Hepsi Wikimedia Commons aracılığıyla."
             }
           ],
@@ -44789,22 +44813,22 @@
               "content": "Quasi sessant'anni dopo, l'Elbphilharmonie di Herzog & de Meuron a Hamburg, inaugurata l'11 gennaio 2017, fece l'opposto: invece di lasciare che la musica generasse la forma dell'edificio, lasciò che i requisiti di ascolto della musica decidesse quasi tutto il resto. L'acustico Yasuhisa Toyota progettò la sala principale come un vigneto, terrazze di sedili che salgono intorno a un palco centrale nello stile di Hans Scharoun usato per la Berlin Philharmonie nel 1963, in modo che nessun ascoltatore tra 2.100 seduti si trovi a più di 30 metri dal direttore d'orchestra. La superficie interna della sala, circa 10.000 pannelli di fibra di gesso lavorati singolarmente, è tagliata con un profilo diverso in ogni punto per diffondere il suono in modo uniforme piuttosto che lasciarlo raccogliere in un punto. L'intera struttura galleggia su 362 supporti a molla, meccanicamente isolati dall'edificio circostante in modo che un treno in transito non raggiunga mai il palco. Sopra un magazzino di mattoni convertito, i piani superiori di vetro del teatro si leggono dall'esterno come un'onda, o una corona. Dall'interno della sala, quell'immagine è quasi irrilevante: il vero compito della stanza è acustico, e la sua forma è un diagramma di quel compito."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
               "caption": "Casa da Música, Porto: uno dei piani di cemento piegato, con il vetro ondulato che illumina l'atrio dietro di esso. Foto: Dale Cruse, CC BY 4.0, via Wikimedia Commons.",
               "credit": "Foto: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Rem Koolhaas e Ellen van Loon's OMA hanno ottenuto una terza posizione con Casa da Música a Porto, aperta nel 2005. Lo studio voleva evitare la forma standard della sala da concerto a scatola, ha provato alternative, e le ha confrontate con la scatola sulla acustica che non poteva superare. Così OMA ha mantenuto la scatola e l'ha nascosta: una sala rettangolare che ospita circa 1.200 persone, vetrata alle estremità, si trova all'interno di un poliedro bianco irregolare che sembra piegato piuttosto che costruito, come se la scatola fosse stata estratta da un singolo blocco asimmetrico. La forma che l'edificio indossa all'esterno non ha una logica ovvia finché non si sa che c'è una stanza rettilinea, acusticamente corretta, all'interno, e che tutto ciò che è sfaccettato e irregolare all'esterno è l'architettura che trova una forma pubblica per una decisione che non poteva prendere liberamente."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Tre edifici, tre relazioni diverse con lo stesso problema. Xenakis ha lasciato che un pezzo di musica diventasse un tetto. Toyota e Herzog & de Meuron hanno lasciato che la fisica dell'udito dettasse una stanza, poi hanno avvolto un edificio intorno al risultato. Koolhaas ha mantenuto la forma che l'acustica insiste e ha passato il resto della costruzione a discutere con essa. Nessuno dei tre riguarda davvero la musica in architettura. Si tratta di ciò che accade quando una disciplina che si basa su sequenza e proporzione viene autorizzata a dare ordini a quella che si basa su carico e materiale, o viene fatta rispondere ad essa invece."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Fotografie: copertina, Elbphilharmonie alla sua serata di apertura, 11 gennaio 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); facciata di Elbphilharmonie, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Tutto via Wikimedia Commons."
             }
           ],
