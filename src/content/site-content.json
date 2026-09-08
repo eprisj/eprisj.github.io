@@ -7673,7 +7673,7 @@
       "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
       "author": "Viacheslav Munister",
       "role": "Author",
-      "date": "Sep 5, 2026",
+      "date": "September 5, 2026",
       "category": "Architecture",
       "subcategory": "Essay",
       "desk": "music",
@@ -7687,7 +7687,7 @@
         "acoustics"
       ],
       "imageSeed": "built-to-a-score",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
       "excerpt": "Most buildings host music: a stage, walls, a program, good acoustics. A handful of buildings do something stranger, and let a piece of music design them outright, or let the problem of holding sound decide everything from the roof down to the seats. Three buildings, three different bargains between the two disciplines.",
       "content": [
         {
@@ -7696,7 +7696,13 @@
         },
         {
           "type": "text",
-          "content": "The shells were the work of Iannis Xenakis, a composer working as an engineer in Le Corbusier's atelier, and their geometry traces back to his 1954 orchestral piece Metastaseis. Xenakis had scored a passage for forty-six string instruments sliding continuously between pitches, glissando lines drawn as straight lines on paper that, taken together, described curved surfaces: what a mathematician would call a ruled surface, and what an engineer would recognise as a hyperbolic paraboloid. Xenakis modelled the pavilion's walls the same way he had modelled the glissandi, string and stiff wire standing in for sound. The building is, in a fairly literal sense, a piece of music built at architectural scale."
+          "content": "The shells were the work of Iannis Xenakis, a composer working as an engineer in Le Corbusier's atelier, and their geometry traces back to his orchestral piece Metastaseis (1953-54). Xenakis had scored a passage for forty-six string instruments sliding continuously between pitches, glissando lines drawn as straight lines on paper that, taken together, described curved surfaces: what a mathematician would call a ruled surface, and what an engineer would recognise as a hyperbolic paraboloid. Xenakis modelled the pavilion's walls the same way he had modelled the glissandi, string and stiff wire standing in for sound. The building is, in a fairly literal sense, a piece of music built at architectural scale."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
+          "caption": "The Philips Pavilion under construction, Brussels, 1958: the ruled surfaces of Metastaseis in timber formwork. Photo: Anefo, CC0, via Wikimedia Commons.",
+          "align": "center"
         },
         {
           "type": "video",
@@ -7706,7 +7712,7 @@
         },
         {
           "type": "text",
-          "content": "Inside, some 350 loudspeakers set into those walls spatialised Edgard Varèse's Poème électronique, an eight-minute tape piece routed live around the audience by technicians at a control desk, timed to shifts of coloured light. The pavilion was demolished on 30 January 1959, five months after it opened, its purpose used up with the fair that paid for it. What survives is the method: music read not as a soundtrack for a room, but as a set of instructions for building one."
+          "content": "Inside, some 350 loudspeakers set into those walls spatialised Edgard Varèse's Poème électronique, an eight-minute tape piece routed live around the audience by technicians at a control desk, timed to shifts of coloured light. The pavilion was demolished on 30 January 1959, three months after the fair closed, its purpose used up with the event that paid for it. What survives is the method: music read not as a soundtrack for a room, but as a set of instructions for building one."
         },
         {
           "type": "video",
@@ -7716,8 +7722,8 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwxjudv4plh.jpg",
-          "caption": "The Elbphilharmonie's glass crown rises over the converted Kaispeicher warehouse, Hamburg.",
+          "content": "https://api.eprisjournal.com/uploads/mtsjcyljd4lptv.jpg",
+          "caption": "Elbphilharmonie, Hamburg: the glass upper storeys, each pane curved or cut, sitting directly on the brick of the Kaispeicher warehouse. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons.",
           "credit": "Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
           "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
         },
@@ -7727,21 +7733,22 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtojwy74hv6bzc.jpg",
-          "caption": "Casa da Música's folded exterior, Porto.",
+          "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
+          "caption": "Casa da Música, Porto: one of the folded concrete planes, with the corrugated glass that lights the hall behind it. Photo: Dale Cruse, CC BY 4.0, via Wikimedia Commons.",
           "credit": "Photo: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
           "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
         },
         {
           "type": "text",
-          "content": "Rem Koolhaas and Ellen van Loon's OMA took a third position with Casa da Música in Porto, opened in 2005. The office wanted to avoid the concert hall's standard shoebox shape, tried alternatives, and measured them against the shoebox on acoustics it could not beat. So OMA kept the box and hid it: a rectangular hall for 1,300 seats, glazed at both ends, sits inside an irregular white polyhedron that looks folded rather than built, as if the shoebox had been quarried out of a single asymmetric block. The shape the building wears on the outside has no obvious logic until you know there is a straight, acoustically correct room sitting inside it, and that everything faceted and irregular on the exterior is the architecture finding a public form for a decision it was not free to make."
+          "content": "Rem Koolhaas and Ellen van Loon's OMA took a third position with Casa da Música in Porto, opened in 2005. The office wanted to avoid the concert hall's standard shoebox shape, tried alternatives, and measured them against the shoebox on acoustics it could not beat. So OMA kept the box and hid it: a rectangular hall seating around 1,200, glazed at both ends, sits inside an irregular white polyhedron that looks folded rather than built, as if the shoebox had been quarried out of a single asymmetric block. The shape the building wears on the outside has no obvious logic until you know there is a straight, acoustically correct room sitting inside it, and that everything faceted and irregular on the exterior is the architecture finding a public form for a decision it was not free to make."
         },
         {
           "type": "text",
           "content": "Three buildings, three different relationships to the same problem. Xenakis let a piece of music become a roof. Toyota and Herzog & de Meuron let the physics of hearing dictate a room, then wrapped a building around the result. Koolhaas kept the one shape acoustics insists on and spent the rest of the building arguing with it. None of the three is really about music in architecture. They are about what happens when a discipline that runs on sequence and proportion is allowed to give orders to one that runs on load and material, or is made to answer to it instead."
         }
       ],
-      "updatedAt": "2026-09-07T05:30:21.091Z"
+      "updatedAt": "2026-09-08T10:39:21.533Z",
+      "showCover": true
     },
     {
       "id": 34,
