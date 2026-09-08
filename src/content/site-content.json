@@ -44740,12 +44740,12 @@
             "acustica"
           ],
           "imageSeed": "built-to-a-score",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
-          "excerpt": "La maggior parte degli edifici ospita musica: un palco, pareti, un programma, buona acustica. Una manciata di edifici fa qualcosa di più strano, e lascia che un pezzo di musica li progetti direttamente, o lascia che il problema di contenere il suono decida tutto, dal tetto ai sedili. Tre edifici, tre diversi accordi tra le due discipline.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtskaws3pef1bg.jpg",
+          "excerpt": "La maggior parte degli edifici ospita musica: un palco, pareti, un programma, buona acustica. Una manciata di edifici fa qualcosa di più strano, e lascia che un pezzo di musica li progetti direttamente, o lascia che il problema di contenere il suono decida tutto dal tetto ai sedili. Tre edifici, tre diversi accordi tra le due discipline.",
           "content": [
             {
               "type": "text",
-              "content": "Nel 1958, lo studio di Le Corbusier costruì un padiglione per Philips alla Fiera di Bruxelles che non aveva affatto pareti dritte: nove conchiglie di cemento curvo, simili a tende e appuntite, che si ergevano sopra un'unica sala oscura costruita per otto minuti di musica. La forma non derivava da uno schizzo di un edificio. derivava da un pezzo di musica."
+              "content": "Nel 1958, lo studio di Le Corbusier costruì un padiglione per Philips alla Fiera di Bruxelles che non aveva affatto pareti dritte: nove conchiglie di cemento curve, simili a tende e appuntite, che si ergevano sopra un'unica sala oscura costruita per otto minuti di musica. La forma non derivava da uno schizzo di un edificio. Proveniva da un pezzo di musica."
             },
             {
               "type": "text",
@@ -44753,8 +44753,8 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mtojwwtu7s8abp.jpg",
-              "caption": "Il Padiglione Philips in costruzione, Bruxelles, 1958: le superfici regolate di Metastaseis in forma di legno. Foto: Anefo, CC0, via Wikimedia Commons.",
+              "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
+              "caption": "Il Philips Pavilion all'Expo 58, Bruxelles: nove conchiglie di cemento, ciascuna una superficie regolata del tipo che Xenakis aveva disegnato come glissandi. Foto: Anefo, CC0, via Wikimedia Commons.",
               "align": "center"
             },
             {
@@ -44782,7 +44782,7 @@
             },
             {
               "type": "text",
-              "content": "Quasi sessant'anni dopo, l'Elbphilharmonie di Herzog & de Meuron a Hamburg, inaugurata l'11 gennaio 2017, fece l'opposto: invece di lasciare che la musica generasse la forma dell'edificio, lasciò che i requisiti di ascoltare musica decidesse quasi tutto il resto. L'acustico Yasuhisa Toyota progettò la sala principale come un vigneto, terrazze di sedili che salgono intorno a un palco centrale nel modo in cui Hans Scharoun aveva usato per la Berlin Philharmonie nel 1963, così che nessun ascoltatore tra 2.100 si trovi a più di 30 metri dal direttore d'orchestra. La superficie interna della sala, circa 10.000 pannelli di fibra di gesso lavorati singolarmente, è tagliata con un profilo diverso in ogni punto per diffondere il suono in modo uniforme piuttosto che lasciarlo raccogliere in un punto. L'intera struttura galleggia su 362 supporti a molla, meccanicamente isolati dall'edificio circostante in modo che un treno in passaggio non raggiunga mai il palco. Sopra un magazzino di mattoni convertito, i piani superiori di vetro del teatro si leggono dall'esterno come un'onda, o una corona. Dall'interno della sala, quell'immagine è quasi irrilevante: il vero compito della stanza è acustico, e la sua forma è un diagramma di quel compito."
+              "content": "Quasi sessant'anni dopo, l'Elbphilharmonie di Herzog & de Meuron a Hamburg, inaugurata l'11 gennaio 2017, fece l'opposto: invece di lasciare che la musica generasse la forma dell'edificio, lasciò che i requisiti di ascolto della musica decidesse quasi tutto il resto. L'acustico Yasuhisa Toyota progettò la sala principale come un vigneto, terrazze di sedili che salgono intorno a un palco centrale nello stile di Hans Scharoun usato per la Berlin Philharmonie nel 1963, in modo che nessun ascoltatore tra 2.100 seduti si trovi a più di 30 metri dal direttore d'orchestra. La superficie interna della sala, circa 10.000 pannelli di fibra di gesso lavorati singolarmente, è tagliata con un profilo diverso in ogni punto per diffondere il suono in modo uniforme piuttosto che lasciarlo raccogliere in un punto. L'intera struttura galleggia su 362 supporti a molla, meccanicamente isolati dall'edificio circostante in modo che un treno in transito non raggiunga mai il palco. Sopra un magazzino di mattoni convertito, i piani superiori di vetro del teatro si leggono dall'esterno come un'onda, o una corona. Dall'interno della sala, quell'immagine è quasi irrilevante: il vero compito della stanza è acustico, e la sua forma è un diagramma di quel compito."
             },
             {
               "type": "immagine",
@@ -44793,14 +44793,18 @@
             },
             {
               "type": "testo",
-              "content": "Rem Koolhaas e Ellen van Loon's OMA hanno ottenuto una terza posizione con Casa da Música a Porto, aperta nel 2005. L'ufficio voleva evitare la forma standard della sala da concerto a scatola, ha provato alternative, e le ha confrontate con la scatola a cui non poteva battere in acustica. Così OMA ha mantenuto la scatola e l'ha nascosta: una sala rettangolare che ospita circa 1.200 persone, vetrata alle estremità, si trova all'interno di un poliedro bianco irregolare che sembra piegato piuttosto che costruito, come se la scatola fosse stata estratta da un singolo blocco asimmetrico. La forma che l'edificio indossa all'esterno non ha una logica ovvia finché non si sa che c'è una stanza rettilinea, acusticamente corretta, all'interno, e che tutto ciò che è sfaccettato e irregolare all'esterno è l'architettura che trova una forma pubblica per una decisione che non poteva prendere liberamente."
+              "content": "Rem Koolhaas e Ellen van Loon's OMA hanno ottenuto una terza posizione con Casa da Música a Porto, aperta nel 2005. Lo studio voleva evitare la forma standard della sala da concerto a scatola, ha provato alternative, e le ha confrontate con la scatola sulla acustica che non poteva superare. Così OMA ha mantenuto la scatola e l'ha nascosta: una sala rettangolare che ospita circa 1.200 persone, vetrata alle estremità, si trova all'interno di un poliedro bianco irregolare che sembra piegato piuttosto che costruito, come se la scatola fosse stata estratta da un singolo blocco asimmetrico. La forma che l'edificio indossa all'esterno non ha una logica ovvia finché non si sa che c'è una stanza rettilinea, acusticamente corretta, all'interno, e che tutto ciò che è sfaccettato e irregolare all'esterno è l'architettura che trova una forma pubblica per una decisione che non poteva prendere liberamente."
             },
             {
               "type": "testo",
-              "content": "Tre edifici, tre relazioni diverse con lo stesso problema. Xenakis ha lasciato che un pezzo di musica diventasse un tetto. Toyota e Herzog & de Meuron hanno lasciato che la fisica dell'udito dettasse una stanza, poi hanno avvolto un edificio intorno al risultato. Koolhaas ha mantenuto la forma che l'acustica insisteva e ha passato il resto della costruzione a discutere con essa. Nessuno dei tre riguarda davvero la musica in architettura. Si tratta di ciò che accade quando una disciplina che si basa su sequenza e proporzione viene autorizzata a dare ordini a quella che si basa su carico e materiale, o viene fatta rispondere ad essa invece."
+              "content": "Tre edifici, tre relazioni diverse con lo stesso problema. Xenakis ha lasciato che un pezzo di musica diventasse un tetto. Toyota e Herzog & de Meuron hanno lasciato che la fisica dell'udito dettasse una stanza, poi hanno avvolto un edificio intorno al risultato. Koolhaas ha mantenuto la forma che l'acustica insiste e ha passato il resto della costruzione a discutere con essa. Nessuno dei tre riguarda davvero la musica in architettura. Si tratta di ciò che accade quando una disciplina che si basa su sequenza e proporzione viene autorizzata a dare ordini a quella che si basa su carico e materiale, o viene fatta rispondere ad essa invece."
+            },
+            {
+              "type": "testo",
+              "content": "Fotografie: copertina, Elbphilharmonie alla sua serata di apertura, 11 gennaio 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); facciata di Elbphilharmonie, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Tutto via Wikimedia Commons."
             }
           ],
-          "updatedAt": "2026-09-08T10:40:59.085Z",
+          "updatedAt": "2026-09-08T11:10:53.709Z",
           "showCover": true
         },
         {
