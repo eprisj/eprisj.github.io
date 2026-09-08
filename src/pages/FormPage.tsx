@@ -99,7 +99,7 @@ function copyFor(language?: string) {
    про попадание пальцем: высокая строка ввода, крупные варианты ответа,
    заметный фокус. */
 const inputClass =
-  'w-full rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-accent-rgb)_/_0.02)] ' +
+  'w-full rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[rgb(var(--c-accent-rgb)_/_0.02)] ' +
   'px-4 py-3.5 font-serif text-[16px] leading-relaxed text-[var(--c-accent)] outline-none transition-all ' +
   'placeholder:text-[rgb(var(--c-accent-rgb)_/_0.35)] ' +
   'focus:border-[var(--c-accent)] focus:bg-transparent focus:ring-4 focus:ring-[rgb(var(--c-accent-rgb)_/_0.07)]';
@@ -110,7 +110,7 @@ const choiceClass = (selected: boolean) =>
   'flex cursor-pointer items-start gap-3 rounded-[2px] border px-4 py-3 font-serif text-[16px] leading-snug transition-all ' +
   (selected
     ? 'border-[var(--c-accent)] bg-[rgb(var(--c-accent-rgb)_/_0.06)] text-[var(--c-accent)]'
-    : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] text-[rgb(var(--c-accent-rgb)_/_0.8)] hover:border-[rgb(var(--c-accent-rgb)_/_0.45)]');
+    : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] text-[rgb(var(--c-accent-rgb)_/_0.8)] hover:border-[rgb(var(--c-accent-rgb)_/_0.45)]');
 
 
 
@@ -375,7 +375,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         ? (closedReason === 'deadline' ? t.closedDeadline : closedReason === 'limit' ? t.closedLimit : t.closed)
         : t.invite;
     return shell(
-      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8">
+      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
         <h1 className="mt-3 font-crimson text-3xl text-[var(--c-accent)]">{message}</h1>
         <a href="/" className="mt-6 inline-block font-mono text-[11px] uppercase tracking-[0.2em] underline">eprisjournal.com</a>
@@ -389,7 +389,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
        обратно в журнал. */
     return (
       <main className="mx-auto flex min-h-[80vh] w-full max-w-[560px] flex-col items-center justify-center px-6 py-20 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.3)]">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
           <Check className="h-6 w-6 text-[var(--c-accent)]" />
         </span>
         <p className="mt-7 font-mono text-[10px] uppercase tracking-[0.24em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
@@ -416,19 +416,19 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
   return shell(
     <form onSubmit={submit} noValidate>
-      <header className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-8">
+      <header className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">EPRIS / form</p>
         <h1 className="mt-3 font-crimson text-[32px] leading-[1.12] text-[var(--c-accent)] sm:text-[40px]">{form!.title}</h1>
         {form!.description && (
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.7] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{form!.description}</p>
         )}
         {previewMode && (
-          <p className="mt-5 border border-[rgb(var(--c-accent-rgb)_/_0.3)] bg-[rgb(var(--c-accent-rgb)_/_0.04)] px-4 py-3 font-mono text-[10px] uppercase leading-[1.6] tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
+          <p className="mt-5 border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[rgb(var(--c-accent-rgb)_/_0.04)] px-4 py-3 font-mono text-[10px] uppercase leading-[1.6] tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
             {t.previewBanner}
           </p>
         )}
         {inviteLabel && (
-          <p className="mt-5 inline-block border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">
+          <p className="mt-5 inline-block border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.6)]">
             {t.invitedAs}: {inviteLabel}
           </p>
         )}
@@ -453,7 +453,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           </div>
         )}
         {restoredNotice && (
-          <p className="mt-5 border-l-2 border-[rgb(var(--c-accent-rgb)_/_0.3)] pl-3 font-serif text-[14px] leading-[1.6] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
+          <p className="mt-5 border-l-2 border-[rgb(var(--c-accent-rgb)_/_0.24)] pl-3 font-serif text-[14px] leading-[1.6] text-[rgb(var(--c-accent-rgb)_/_0.7)]">
             {t.restored}
           </p>
         )}
@@ -480,7 +480,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           }
           if (field.type === 'section') {
             return (
-              <div key={field.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-8">
+              <div key={field.id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-8">
                 <h2 className="font-crimson text-[26px] leading-tight text-[var(--c-accent)]">{field.label}</h2>
                 {field.hint && <p className="mt-2 font-serif text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.65)]">{field.hint}</p>}
               </div>
@@ -617,7 +617,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                         className={'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-[2px] border border-dashed px-5 py-8 text-center transition-colors '
                           + (dragging
                             ? 'border-[var(--c-accent)] bg-[rgb(var(--c-accent-rgb)_/_0.06)]'
-                            : 'border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[rgb(var(--c-accent-rgb)_/_0.55)]')}>
+                            : 'border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:border-[rgb(var(--c-accent-rgb)_/_0.55)]')}>
                         {busy
                           ? <Loader2 className="h-5 w-5 animate-spin text-[var(--c-accent)]" />
                           : <Paperclip className="h-5 w-5 text-[rgb(var(--c-accent-rgb)_/_0.55)]" />}
@@ -634,7 +634,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                       {list.length > 0 && (
                         <ul className="mt-3 space-y-2">
                           {list.map((file) => (
-                            <li key={file.fileId} className="flex items-center gap-3 rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.16)] p-2.5">
+                            <li key={file.fileId} className="flex items-center gap-3 rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.14)] p-2.5">
                               {/* У картинки — её собственный кадр: так видно,
                                   что приложили именно ту работу. */}
                               {previews[file.fileId]
@@ -699,7 +699,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       {/* Кнопка прилипает к низу экрана на телефоне: анкета длиннее экрана, и
           «Отправить» не должно требовать прокрутки в конец после того, как
           человек всё заполнил. На широком экране она остаётся обычной. */}
-      <div className="sticky bottom-0 z-10 mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] pb-[max(12px,env(safe-area-inset-bottom))] pt-5">
+      <div className="sticky bottom-0 z-10 mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] pb-[max(12px,env(safe-area-inset-bottom))] pt-5">
         <div className="flex flex-wrap items-center gap-4">
           <button type="submit" disabled={sending || previewMode}
             className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[var(--c-accent)] bg-[var(--c-accent)] px-8 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-bg)] transition-opacity hover:opacity-85 disabled:opacity-60">

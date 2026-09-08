@@ -169,14 +169,14 @@ function RoomsList({ rooms, onJoin, t }: { rooms: ActiveRoom[]; onJoin: (slug: s
   const filtered = rooms.filter(r => r.slug.startsWith(CHANNEL))
   if (!filtered.length) return null
   return (
-    <div className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] pt-8">
+    <div className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-8">
       <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4">{t('radio.active_rooms')}</p>
       <ul className="space-y-0">
         {filtered.map(r => {
           const raw = stripChannel(r.slug)
           const display = r.title === r.slug ? raw : r.title
           return (
-            <li key={r.slug} className="border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:border-[rgb(var(--c-accent-rgb)_/_0.3)] transition-colors">
+            <li key={r.slug} className="border border-[rgb(var(--c-accent-rgb)_/_0.14)] hover:border-[rgb(var(--c-accent-rgb)_/_0.24)] transition-colors">
               <button onClick={() => onJoin(raw, display)}
                 className="w-full flex items-center justify-between px-5 py-4 text-left group">
                 <span className="flex items-center gap-4">
@@ -201,12 +201,12 @@ function CreateRoomPanel({ onStart, t }: { onStart: (slug: string, title: string
   const [name, setName] = useState('')
   const slug = name.trim() ? toSlug(name) : ''
   return (
-    <div className="mt-6 border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.2)] p-6 max-w-sm">
+    <div className="mt-6 border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.24)] p-6 max-w-sm">
       <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4">{t('radio.create_room')}</p>
       <input type="text" value={name} onChange={e => setName(e.target.value)}
         onKeyDown={e => e.key === 'Enter' && slug && onStart(slug, name.trim())}
         placeholder={t('radio.room_name_placeholder')} maxLength={50}
-        className="w-full bg-transparent border-b border-[rgb(var(--c-accent-rgb)_/_0.3)] font-serif text-lg text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.2)] focus:outline-none pb-2 mb-4 focus:border-[var(--c-accent)]" autoFocus />
+        className="w-full bg-transparent border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] font-serif text-lg text-[var(--c-accent)] placeholder-[rgb(var(--c-accent-rgb)_/_0.2)] focus:outline-none pb-2 mb-4 focus:border-[var(--c-accent)]" autoFocus />
       {slug && <p className="font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.3)] mb-4 truncate">/radio?room={slug}</p>}
       <button onClick={() => slug && onStart(slug, name.trim())} disabled={!slug}
         className="w-full border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest py-3 hover:bg-[#3d1220] transition-colors disabled:opacity-30">
@@ -263,7 +263,7 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
       <AnimatePresence>
         {showPicker && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)] overflow-hidden bg-[var(--c-bg)]">
+            className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] overflow-hidden bg-[var(--c-bg)]">
             <div className="flex flex-wrap gap-1.5 px-4 py-3">
               {REACTIONS.map(e => (
                 <button key={e} onClick={() => { onSendReaction(callId, e); setShowPicker(false) }}
@@ -314,7 +314,7 @@ function ChatPanel({ messages, callId, myNick, onSendText, onSendReaction, compa
       </div>
 
       {/* Composer */}
-      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] bg-white/60 backdrop-blur-sm">
+      <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white/60 backdrop-blur-sm">
         <form onSubmit={handleSubmit} className="flex items-center gap-2 px-3 py-2.5">
           <button type="button" onClick={() => setShowPicker(p => !p)}
             className={`text-base shrink-0 transition-all w-7 h-7 flex items-center justify-center rounded-lg ${showPicker ? 'bg-[rgb(var(--c-accent-rgb)_/_0.1)]' : 'opacity-40 hover:opacity-80'}`}>
@@ -400,7 +400,7 @@ function MusicPanel({ onPlay, isPlaying }: { onPlay: (id: number, title: string,
           </div>
           <button onClick={() => onPlay(tr.id, tr.title, tr.artist)}
             disabled={isPlaying}
-            className="shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors disabled:opacity-30 group-hover:border-[rgb(var(--c-accent-rgb)_/_0.6)]">
+            className="shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors disabled:opacity-30 group-hover:border-[rgb(var(--c-accent-rgb)_/_0.6)]">
             ▶ Запустити
           </button>
         </div>
@@ -641,7 +641,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
         <AnimatePresence>
           {showEndedNotice && !joined && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-              className="mb-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[rgb(var(--c-accent-rgb)_/_0.05)] p-4 flex items-center justify-between">
+              className="mb-6 border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[rgb(var(--c-accent-rgb)_/_0.05)] p-4 flex items-center justify-between">
               <span className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.7)] uppercase tracking-widest">{t('radio.broadcast_ended')}</span>
               <button onClick={() => setShowEndedNotice(false)} className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)] uppercase hover:text-[var(--c-accent)]">✕</button>
             </motion.div>
@@ -663,15 +663,15 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       {connecting ? t('radio.connecting') : t('radio.join_cta')}
                     </button>
                     <button onClick={() => setShowCreateRoom(true)}
-                      className="border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
+                      className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] text-[rgb(var(--c-accent-rgb)_/_0.6)] font-mono text-xs uppercase tracking-widest px-6 py-4 hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                       {t('radio.create_room')}
                     </button>
                   </div>
                 </div>
                 <div className="space-y-0">
                   {[t('radio.feat1'), t('radio.feat2'), t('radio.feat3'), t('radio.feat4')].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)] py-4 first:pt-0">
-                      <div className="w-7 h-7 border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center justify-center text-[rgb(var(--c-accent-rgb)_/_0.3)] font-mono text-[10px] shrink-0">
+                    <div key={i} className="flex items-start gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] py-4 first:pt-0">
+                      <div className="w-7 h-7 border border-[rgb(var(--c-accent-rgb)_/_0.24)] flex items-center justify-center text-[rgb(var(--c-accent-rgb)_/_0.3)] font-mono text-[10px] shrink-0">
                         {String(i + 1).padStart(2, '0')}
                       </div>
                       <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.6)] mt-0.5 leading-snug">{item}</p>
@@ -711,12 +711,12 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                     {connecting ? t('radio.connecting') : t('radio.join_active')}
                   </button>
                 </div>
-                <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                <div className="border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
                   <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">
                     {t('radio.participants')} · {members.length}
                   </div>
                   {members.map(m => (
-                    <div key={m.user_id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] px-4 py-3 flex items-center gap-3">
+                    <div key={m.user_id} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] px-4 py-3 flex items-center gap-3">
                       <span className="w-2 h-2 rounded-full" style={{ background: m.color }} />
                       <span className="font-serif text-[var(--c-accent)]">{m.nickname}</span>
                       <span className="ml-auto font-mono text-[9px] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{m.mic_on ? 'MIC' : 'MUTE'}</span>
@@ -769,8 +769,8 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   </div>
 
                   {/* Mobile tab bar */}
-                  <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
-                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                  <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
+                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                       {([
                         { id: 'members' as const, label: t('radio.participants'), Icon: UsersIcon },
                         { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
@@ -792,7 +792,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
                     <div className="min-h-[200px]">
                       {mobileTab === 'members' && (
-                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                           <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest">
                             {t('radio.participants')} · {total + 1}
                           </div>
@@ -809,7 +809,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         </div>
                       )}
                       {mobileTab === 'music' && (
-                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                        <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                           {isHost ? (
                             <>
                               <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] flex items-center gap-2">
@@ -831,7 +831,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
 
                   {/* Controls */}
                   <div className="flex gap-2 pt-4">
-                    <button onClick={leave} className="flex-1 border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
+                    <button onClick={leave} className="flex-1 border border-[rgb(var(--c-accent-rgb)_/_0.24)] text-[rgb(var(--c-accent-rgb)_/_0.6)] py-3.5 font-mono text-[10px] uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                       {t('radio.leave')}
                     </button>
                     {isHost && (
@@ -867,7 +867,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                         </button>
                       </div>
                       <button onClick={leave}
-                        className="border border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.6)] px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
+                        className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] text-[rgb(var(--c-accent-rgb)_/_0.6)] px-6 py-3.5 font-mono text-xs uppercase tracking-widest hover:border-[var(--c-accent)] hover:text-[var(--c-accent)] transition-colors">
                         {t('radio.leave')}
                       </button>
                       {isHost && (
@@ -891,7 +891,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       <div className="flex gap-2 flex-wrap">
                         {REACTIONS.map(e => (
                           <button key={e} onClick={() => sendReaction(callId!, e)}
-                            className="text-lg w-9 h-9 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.1)] hover:border-[rgb(var(--c-accent-rgb)_/_0.4)] hover:scale-110 active:scale-95 transition-all">
+                            className="text-lg w-9 h-9 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.14)] hover:border-[rgb(var(--c-accent-rgb)_/_0.4)] hover:scale-110 active:scale-95 transition-all">
                             {e}
                           </button>
                         ))}
@@ -900,16 +900,16 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                   </div>
 
                   {/* Right: tabbed sidebar */}
-                  <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex flex-col" style={{ minHeight: 420 }}>
+                  <div className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] flex flex-col" style={{ minHeight: 420 }}>
                     {/* Tab bar */}
-                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                    <div className="grid grid-cols-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                       {([
                         { id: 'members' as const, label: t('radio.participants').slice(0, 8), Icon: UsersIcon },
                         { id: 'chat' as const, label: 'Чат', Icon: ChatIcon, badge: unreadChat },
                         { id: 'music' as const, label: 'Музика', Icon: MusicIcon, dot: isMusicOn },
                       ]).map(tab => (
                         <button key={tab.id} onClick={() => { setDesktopTab(tab.id); if (tab.id === 'chat') switchToChat('desktop') }}
-                          className={`relative py-2.5 flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-widest border-r border-[rgb(var(--c-accent-rgb)_/_0.1)] last:border-r-0 transition-colors ${
+                          className={`relative py-2.5 flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-widest border-r border-[rgb(var(--c-accent-rgb)_/_0.14)] last:border-r-0 transition-colors ${
                             desktopTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'
                           }`}>
                           <tab.Icon />
@@ -948,7 +948,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
                       <div className="flex-1 overflow-y-auto">
                         {isHost ? (
                           <>
-                            <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] flex items-center gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                            <div className="bg-[rgb(var(--c-accent-rgb)_/_0.05)] px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] flex items-center gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                               <MusicIcon /> Треки для трансляції
                             </div>
                             <MusicPanel onPlay={startMusicBroadcast} isPlaying={isMusicOn} />
@@ -970,7 +970,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           )}
         </AnimatePresence>
 
-        {error && <div className="mt-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[#E8DED5] p-4 font-mono text-xs text-[var(--c-accent)]">{error}</div>}
+        {error && <div className="mt-6 border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[#E8DED5] p-4 font-mono text-xs text-[var(--c-accent)]">{error}</div>}
       </div>
 
       <ToastStack toasts={toasts} />

@@ -137,12 +137,12 @@ function UploadZone({ onFile, label }: { onFile: (s: UploadState) => void; label
 
   return (
     <div
-      className="border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.3)] flex flex-col items-center justify-center gap-4 py-20 cursor-pointer hover:border-[var(--c-accent)] hover:bg-[#E8DED5]/40 transition-all group"
+      className="border border-dashed border-[rgb(var(--c-accent-rgb)_/_0.24)] flex flex-col items-center justify-center gap-4 py-20 cursor-pointer hover:border-[var(--c-accent)] hover:bg-[#E8DED5]/40 transition-all group"
       onClick={() => ref.current?.click()}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
     >
-      <div className="w-12 h-12 border border-[rgb(var(--c-accent-rgb)_/_0.2)] group-hover:border-[var(--c-accent)] flex items-center justify-center transition-colors">
+      <div className="w-12 h-12 border border-[rgb(var(--c-accent-rgb)_/_0.24)] group-hover:border-[var(--c-accent)] flex items-center justify-center transition-colors">
         <Upload size={20} className="text-[rgb(var(--c-accent-rgb)_/_0.4)] group-hover:text-[var(--c-accent)] transition-colors" />
       </div>
       <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</p>
@@ -354,7 +354,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
 
             {/* Material composition */}
             {report?.materials && report.materials.length > 0 && (
-              <div className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] p-4 space-y-3">
+              <div className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] p-4 space-y-3">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">Material Composition</p>
                 {report.materials.map((m, i) => (
                   <div key={i}>
@@ -389,7 +389,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
               <div className="font-mono text-sm tracking-wider">{report?.title ?? 'MATTER LAB REPORT'}</div>
             </div>
             {error && (
-              <div className="p-4 flex items-start gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+              <div className="p-4 flex items-start gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)]">
                 <AlertCircle size={14} className="text-[var(--c-accent)] mt-0.5 shrink-0" />
                 <p className="font-mono text-xs text-[var(--c-accent)]">{error}</p>
               </div>
@@ -416,7 +416,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
                     </button>
                   ))}
                 </div>
-                <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[var(--c-bg)]">
+                <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)]">
                   <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-2">Summary</p>
                   <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.8)] leading-relaxed">{report.summary}</p>
                 </div>
@@ -457,7 +457,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
                   ))}
                 </div>
                 {deepAnalysis && (
-                  <div className="bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] p-4">
+                  <div className="bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.24)] p-4">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-3">Analysis Result</p>
                     <div className="space-y-2">
                       {deepAnalysis.split('\n').filter(Boolean).map((line, i) => (
@@ -632,7 +632,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Lighting</p>
                     <p className="font-mono text-xs text-[var(--c-accent)] mb-1">{report.lighting.mood} — {report.lighting.sources.join(', ')}</p>
                     <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] italic">{report.lighting.suggestion}</p>
@@ -641,14 +641,14 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
               )}
               {report && activeTab === 'palette' && (
                 <div className="space-y-4">
-                  <div className="h-5 flex overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                  <div className="h-5 flex overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                     {report.palette.map((item, i) => (
                       <div key={i} style={{ backgroundColor: item.hex, flex: 1 }} title={item.name} />
                     ))}
                   </div>
                   {report.palette.map((item, i) => (
                     <div key={i} className="flex items-center gap-4">
-                      <div className="w-12 h-10 shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.1)]" style={{ backgroundColor: item.hex }} />
+                      <div className="w-12 h-10 shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.14)]" style={{ backgroundColor: item.hex }} />
                       <div>
                         <div className="font-mono text-xs uppercase tracking-wider text-[var(--c-accent)]">{item.name}</div>
                         <div className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{item.hex}</div>
@@ -680,7 +680,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+                  <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-3">Opportunities</p>
                     <ul className="space-y-2.5">
                       {report.critique.opportunities.map((s, i) => (
@@ -870,7 +870,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
                 {/* Tags */}
                 <div className="px-6 py-5 flex flex-wrap gap-2">
                   {report.tags.map(tag => (
-                    <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+                    <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
                       {tag}
                     </span>
                   ))}
@@ -878,7 +878,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
               </>
             )}
 
-            <div className="mt-auto px-6 pb-5 pt-2 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+            <div className="mt-auto px-6 pb-5 pt-2 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
               <button type="button"
                 onClick={() => { setUpload(null); setReport(null); }}
                 className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] hover:text-[var(--c-accent)] transition-colors flex items-center gap-2">
@@ -961,7 +961,7 @@ export function MateriePage({ t }: { t: T }) {
           className="min-h-[calc(100vh-4rem)] bg-[var(--c-bg)]">
 
           {/* ── Hero ── */}
-          <div className="relative overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+          <div className="relative overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.24)]">
             <img src={MATERIE_BG} alt="" aria-hidden="true"
               className="absolute inset-0 w-full h-full object-cover object-center opacity-30 pointer-events-none select-none" />
             <div className="relative z-10 px-6 sm:px-10 md:px-16 pt-14 pb-12 sm:pt-20 sm:pb-16">
@@ -1023,7 +1023,7 @@ export function MateriePage({ t }: { t: T }) {
           </div>
 
           {/* ── How it works ── */}
-          <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)] pt-10 max-w-6xl">
+          <div className="px-6 sm:px-10 md:px-16 pb-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-10 max-w-6xl">
             <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[rgb(var(--c-accent-rgb)_/_0.35)] mb-8">{t('materie.how')}</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
               {[
@@ -1040,7 +1040,7 @@ export function MateriePage({ t }: { t: T }) {
                 </div>
               ))}
             </div>
-            <div className="mt-10 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.1)]">
+            <div className="mt-10 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
               <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.25)]">{t('materie.powered')}</p>
             </div>
           </div>

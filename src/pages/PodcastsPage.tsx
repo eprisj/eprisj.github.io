@@ -69,7 +69,7 @@ function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
-      className="group cursor-pointer border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors"
+      className="group cursor-pointer border border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:border-[var(--c-accent)] transition-colors"
       onClick={onClick} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick()}
     >
       <div className="aspect-square overflow-hidden bg-[#E8DED5] relative">
@@ -83,7 +83,7 @@ function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: 
           </div>
         )}
       </div>
-      <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+      <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)]">
         <h3 className="font-serif text-lg text-[var(--c-accent)] mb-1 leading-tight">{ep.title}</h3>
         <div className="flex items-center justify-between mt-2">
           <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
@@ -120,7 +120,7 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
           <button onClick={onClose} className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] hover:text-[var(--c-accent)] transition-colors">
             {t('podcasts.back')}
           </button>
-          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:border-[var(--c-accent)] transition-colors text-[var(--c-accent)]">
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center border border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:border-[var(--c-accent)] transition-colors text-[var(--c-accent)]">
             <X size={14} />
           </button>
         </div>
@@ -161,7 +161,7 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
             {ep.tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {ep.tags.map(tag => (
-                  <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">{tag}</span>
+                  <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)]">{tag}</span>
                 ))}
               </div>
             )}
@@ -179,7 +179,7 @@ function AnnouncementCard({ ann }: { ann: Announcement }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}
-      className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-[#E8DED5] overflow-hidden hover:border-[var(--c-accent)] transition-colors"
+      className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[#E8DED5] overflow-hidden hover:border-[var(--c-accent)] transition-colors"
     >
       <div className="aspect-[3/2] overflow-hidden">
         <img src={cover} alt={ann.title} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
@@ -196,7 +196,7 @@ function AnnouncementCard({ ann }: { ann: Announcement }) {
         {ann.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {ann.tags.map(tag => (
-              <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{tag}</span>
+              <span key={tag} className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">{tag}</span>
             ))}
           </div>
         )}
@@ -279,7 +279,7 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
         ) : view === 'podcasts' ? (
           podcasts.length === 0 ? (
             <div className="text-center py-24">
-              <div className="w-16 h-16 border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 border border-[rgb(var(--c-accent-rgb)_/_0.24)] flex items-center justify-center mx-auto mb-6">
                 <Play size={24} className="text-[rgb(var(--c-accent-rgb)_/_0.3)]" />
               </div>
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.3)]">{t('podcasts.empty_episodes')}</p>

@@ -117,7 +117,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                   className={`flex items-center gap-2 rounded-full border py-2 pl-3 pr-3.5 text-left transition-colors ${
                     isCopied
                       ? 'border-[var(--c-gold)] bg-[rgb(var(--c-gold-rgb)_/_0.16)]'
-                      : 'border-[rgb(var(--c-accent-rgb)_/_0.18)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
+                      : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
                   }`}
                 >
                   <Icon size={13} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
@@ -140,7 +140,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                     className={`absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border transition-colors ${
                       qrOpen
                         ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-white'
-                        : 'border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[var(--c-bg)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
+                        : 'border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
                     }`}
                   >
                     <QrCode size={10} strokeWidth={2.2} aria-hidden="true" />
@@ -159,10 +159,10 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
               alt={t.qr}
               width={132}
               height={132}
-              className="h-[132px] w-[132px] rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-white p-1.5"
+              className="h-[132px] w-[132px] rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-white p-1.5"
             />
           ) : (
-            <div className="flex h-[132px] w-[132px] items-center justify-center rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.2)] bg-white/40">
+            <div className="flex h-[132px] w-[132px] items-center justify-center rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-white/40">
               <span className="h-5 w-5 animate-spin rounded-full border-2 border-[var(--c-gold)] border-t-transparent" aria-hidden="true" />
             </div>
           )}
