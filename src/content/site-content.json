@@ -8072,30 +8072,6 @@
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
       "updatedAt": "2026-09-08T12:12:26.764Z"
-    },
-    {
-      "id": 91,
-      "title": "QA: music desk publish check",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
-      "date": "September 8, 2026",
-      "excerpt": "Temporary entry created to verify that a music-desk article publishes and reaches the subdomain.",
-      "category": "Culture",
-      "subcategory": "Feature",
-      "tags": [
-        "music"
-      ],
-      "imageSeed": "",
-      "desk": "music",
-      "draft": false,
-      "publishAt": "2026-09-08T00:00:00.000Z",
-      "content": [
-        {
-          "type": "text",
-          "content": "Temporary QA entry. If you are reading this on the site, delete it."
-        }
-      ],
-      "updatedAt": "2026-09-08T12:31:11.631Z"
     }
   ],
   "reviews": [
