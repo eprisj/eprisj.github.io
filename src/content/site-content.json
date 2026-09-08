@@ -26438,12 +26438,11 @@
         },
         {
           "id": 33,
-          "draft": true,
           "previewToken": "efc77a042906fe45008533dd",
           "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
           "author": "Viacheslav Munister",
           "role": "Autor",
-          "date": "5. September 2026",
+          "date": "8. September 2026",
           "category": "Architektur",
           "subcategory": "Aufsatz",
           "desk": "music",
@@ -26454,7 +26453,7 @@
             "le corbusier",
             "herzog & de meuron",
             "oma",
-            "akustik"
+            "Akustik"
           ],
           "imageSeed": "built-to-a-score",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtskaws3pef1bg.jpg",
@@ -26462,7 +26461,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Im Jahr 1958 baute Le Corbusiers Studio ein Pavillon für Philips auf der Weltausstellung in Brüssel, der überhaupt keine geraden Wände hatte: neun gewölbte Betonschalen, zeltartig und spitz, die über einer einzigen dunklen Halle standen, die für acht Minuten Musik gebaut wurde. Die Form stammte nicht von einer Skizze eines Gebäudes. Sie kam von einem Musikstück."
+              "content": "Im Jahr 1958 baute Le Corbusiers Studio einen Pavillon für Philips auf der Weltausstellung in Brüssel, der überhaupt keine geraden Wände hatte: neun gewölbte Betonschalen, zeltartig und spitz, die über einer einzigen dunklen Halle standen, die für acht Minuten Musik gebaut wurde. Die Form stammte nicht von einer Skizze eines Gebäudes. Sie kam von einem Musikstück."
             },
             {
               "type": "text",
@@ -26471,7 +26470,7 @@
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
-              "caption": "Der Philips Pavillon auf der Expo 58, Brüssel: neun Betonschalen, jede eine gezogene Fläche der Art, die Xenakis als Glissandi gezeichnet hatte. Foto: Anefo, CC0, über Wikimedia Commons.",
+              "caption": "Der Philips Pavillon auf Expo 58, Brüssel: neun Betonschalen, jede eine gezogene Fläche der Art, die Xenakis als Glissandi gezeichnet hatte. Foto: Anefo, CC0, über Wikimedia Commons.",
               "align": "center"
             },
             {
@@ -26482,7 +26481,7 @@
             },
             {
               "type": "text",
-              "content": "Innen, einige 350 Lautsprecher in diese Wände eingebaut, spatialisierten Edgard Varèse's Poème électronique, ein achtminütiges Tonbandstück, das live um das Publikum herum von Technikern an einem Kontrollpult gesteuert wurde, zeitlich abgestimmt auf Farbwechsel des Lichts. Der Pavillon wurde am 30. Januar 1959 abgerissen, drei Monate nachdem die Messe geschlossen hatte, sein Zweck war mit dem Ereignis, das ihn finanziert hatte, erschöpft. Was bleibt, ist die Methode: Musik wird nicht als Soundtrack für einen Raum gelesen, sondern als eine Reihe von Anweisungen zum Bau eines solchen."
+              "content": "Innen, einige 350 Lautsprecher in diese Wände eingebaut, räumten Edgard Varèse's Poème électronique ein, ein achtminütiges Tonbandstück, das live um das Publikum herum von Technikern an einem Kontrollpult gesteuert wurde, zeitlich abgestimmt auf Farbwechsel des Lichts. Der Pavillon wurde am 30. Januar 1959 abgerissen, drei Monate nachdem die Messe geschlossen hatte, sein Zweck war mit dem Ereignis, das ihn finanziert hatte, erschöpft. Was bleibt, ist die Methode: Musik wird nicht als Soundtrack für einen Raum gelesen, sondern als eine Reihe von Anweisungen zum Bau eines solchen."
             },
             {
               "type": "video",
@@ -26510,19 +26509,21 @@
             },
             {
               "type": "text",
-              "content": "Rem Koolhaas und Ellen van Loon's OMA belegten den dritten Platz mit Casa da Música in Porto, eröffnet im Jahr 2005. Das Büro wollte die Standardform des Konzertsaals, die Schachtel, vermeiden, suchte nach Alternativen und verglich sie mit der Schachtel hinsichtlich Akustik, die es nicht übertreffen konnte. Also behielt OMA die Schachtel und versteckte sie: Ein rechteckiger Saal mit rund 1.200 Sitzplätzen, an beiden Enden verglast, sitzt innerhalb eines unregelmäßigen weißen Polyeders, das eher gefaltet als gebaut aussieht, als ob die Schachtel aus einem einzigen asymmetrischen Block ausgegraben worden wäre. Die Form, die das Gebäude außen trägt, folgt keiner offensichtlichen Logik, bis man weiß, dass sich darin ein gerader, akustisch korrekter Raum befindet, und dass alles Facettierte und Unregelmäßige an der Außenseite die Architektur ist, die eine öffentliche Form für eine Entscheidung sucht, die sie nicht frei treffen konnte."
+              "content": "Rem Koolhaas und Ellen van Loon's OMA belegten den dritten Platz mit Casa da Música in Porto, eröffnet im Jahr 2005. Das Büro wollte die Standardform des Konzertsaals, die Schachtel, vermeiden, suchte nach Alternativen und verglich sie mit der Schachtel hinsichtlich Akustik, die es nicht übertreffen konnte. Also behielt OMA die Schachtel und versteckte sie: Ein rechteckiger Saal mit rund 1.200 Sitzplätzen, an beiden Enden verglast, sitzt innerhalb eines unregelmäßigen weißen Polyeders, das eher gefaltet als gebaut aussieht, als ob die Schachtel aus einem einzigen asymmetrischen Block ausgegraben worden wäre. Die Form, die das Gebäude außen trägt, folgt keiner offensichtlichen Logik, bis man weiß, dass sich darin ein gerader, akustisch korrekter Raum befindet, und dass alles Facettierte und Unregelmäßige auf der Außenseite die Architektur ist, die eine öffentliche Form für eine Entscheidung sucht, die sie nicht frei treffen konnte."
             },
             {
               "type": "text",
-              "content": "Drei Gebäude, drei unterschiedliche Beziehungen zum selben Problem. Xenakis ließ ein Musikstück zu einem Dach werden. Toyota und Herzog & de Meuron ließen die Physik des Hörens einen Raum diktieren, und umhüllten dann ein Gebäude mit dem Ergebnis. Koolhaas behielt die eine Form, auf die die Akustik besteht, und stritt den Rest des Gebäudes mit ihr aus. Keines der drei ist wirklich über Musik in der Architektur. Es geht darum, was passiert, wenn eine Disziplin, die auf Sequenz und Proportion läuft, befugt wird, Befehle an eine andere zu erteilen, die auf Last und Material basiert, oder stattdessen dazu gebracht wird, ihr zu antworten."
+              "content": "Drei Gebäude, drei unterschiedliche Beziehungen zum selben Problem. Xenakis ließ ein Musikstück zu einem Dach werden. Toyota und Herzog & de Meuron ließen die Physik des Hörens einen Raum diktieren, dann umhüllten sie das Ergebnis mit einem Gebäude. Koolhaas behielt die eine Form, auf die die Akustik besteht, und stritt den Rest des Gebäudes mit ihr aus. Keines der drei ist wirklich über Musik in der Architektur. Es geht darum, was passiert, wenn eine Disziplin, die auf Sequenz und Proportion läuft, befugt wird, Befehle an eine zu erteilen, die auf Last und Material basiert, oder stattdessen dazu gebracht wird, ihr zu antworten."
             },
             {
               "type": "text",
               "content": "Fotografien: Cover, Elbphilharmonie bei ihrer Eröffnung am 11. Januar 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie Fassade, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Alle via Wikimedia Commons."
             }
           ],
-          "updatedAt": "2026-09-08T11:10:19.678Z",
-          "showCover": true
+          "updatedAt": "2026-09-08T11:55:22.010Z",
+          "showCover": true,
+          "authorId": "author-1784732936927-kw554",
+          "publishAt": "2026-09-08T11:50:24.806Z"
         },
         {
           "id": 34,
