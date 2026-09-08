@@ -34,6 +34,15 @@ export default {
         crimson: ['Crimson Text', 'PT Serif', 'serif'],
         display: ['Playfair Display', 'PT Serif', 'serif'],
         sans: ['PT Sans', 'sans-serif'],
+        /* `font-serif` was left at Tailwind's default stack, which resolves to
+           whatever serif the OS keeps in ui-serif: Iowan Old Style on a Mac,
+           Georgia elsewhere. It is also the most used type class on the site
+           (64 places in App.tsx against 7 for font-crimson), so most of the
+           journal was being set in a system face while the brand serif showed
+           up in a handful of spots and Playfair in the headings. Three serifs
+           on one page, none of them chosen. Pointing `serif` at the same stack
+           as `crimson` harmonises all of it without touching the markup. */
+        serif: ['Crimson Text', 'PT Serif', 'serif'],
       },
     },
   },

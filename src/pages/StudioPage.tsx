@@ -110,7 +110,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
             ]
               .filter(([, v]) => !!v)
               .map(([labelKey, value]) => (
-                <div key={labelKey} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-3">
+                <div key={labelKey} className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-3">
                   <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t(labelKey as string)}</p>
                   <p className="font-serif text-lg text-[var(--c-accent)]">{value}</p>
                 </div>
@@ -142,7 +142,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
                 <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-4">{t('studio.case.materials')}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.materials.map((m, i) => (
-                    <span key={i} className="border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-3 py-1.5 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">{m}</span>
+                    <span key={i} className="border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-3 py-1.5 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">{m}</span>
                   ))}
                 </div>
               </Reveal>
@@ -237,7 +237,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
     } catch { /* clipboard unavailable */ }
   };
 
-  const field = 'w-full bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.25)] px-4 py-3 font-serif text-[var(--c-accent)] focus:border-[var(--c-accent)] focus:outline-none transition-colors placeholder:text-[rgb(var(--c-accent-rgb)_/_0.35)]';
+  const field = 'w-full bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-4 py-3 font-serif text-[var(--c-accent)] focus:border-[var(--c-accent)] focus:outline-none transition-colors placeholder:text-[rgb(var(--c-accent-rgb)_/_0.35)]';
   const label = 'font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.45)] mb-2 block';
 
   return (
@@ -356,7 +356,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
   return (
     <div className="min-h-screen bg-[var(--c-bg)]">
       {/* ── 1. Cinematic hero ── */}
-      <section ref={heroRef} className="relative pt-16 overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+      <section ref={heroRef} className="relative pt-16 overflow-hidden border-b border-[rgb(var(--c-accent-rgb)_/_0.24)]">
         <motion.img
           src={studio.heroImage}
           alt={studio.name}
@@ -415,7 +415,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
             {[1, 2, 3].map((n, i) => (
               <Reveal key={n} delay={i * 0.08}>
-                <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] pt-5">
+                <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-5">
                   <span className="font-mono text-[10px] text-[var(--c-gold)]">0{n}</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mt-3 mb-4">{t(`studio.principle.${n}.title`)}</h3>
                   <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.65)] leading-relaxed">{t(`studio.principle.${n}.desc`)}</p>
@@ -526,7 +526,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                       className={`px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${
                         activeCategory === cat
                           ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]'
-                          : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.3)] hover:border-[var(--c-accent)]'
+                          : 'text-[var(--c-accent)] border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:border-[var(--c-accent)]'
                       }`}
                     >
                       {cat}
@@ -650,7 +650,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
             <div>
               {studio.availability && (
-                <p className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4 px-3 py-1.5 border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                <p className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4 px-3 py-1.5 border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
                   {t(studio.availability)}
                 </p>

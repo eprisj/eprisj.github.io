@@ -96,7 +96,7 @@ export function IssuePage({
           зажатый трекинг титула (-0.045em), подзаголовок в отрыве от него и
           две кнопки с рамками разной насыщенности, из-за чего вторая читалась
           как отключённая. */}
-      <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+      <div className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-16 grid gap-10 sm:gap-14 sm:grid-cols-[1fr_minmax(190px,240px)] sm:items-center">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -104,7 +104,7 @@ export function IssuePage({
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-6">
-              <span className="w-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.35)]" aria-hidden="true" />
+              <span className="w-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)]" aria-hidden="true" />
               {issue.season || t('issue.edition')}
             </p>
             <h1
@@ -141,7 +141,7 @@ export function IssuePage({
                прятать его на самом ходовом экране странно. */
             className="order-first sm:order-none w-40 sm:w-auto"
           >
-            <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.25)]">
+            <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
               <img
                 src={issue.coverUrl}
                 alt={`${issue.name} — ${issue.season}`}
@@ -185,7 +185,7 @@ export function IssuePage({
       <div className="max-w-4xl mx-auto px-5 sm:px-8 py-9 md:py-12">
 
         {/* Материалы выпуска */}
-        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.18)] pb-4 mb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-8">
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-2xl md:text-4xl tracking-[-0.03em] text-[var(--c-accent)]">
             {t('issue.inThisIssue')}
           </h2>
@@ -260,7 +260,7 @@ export function IssuePage({
         </div>
 
         {/* Оглавление PDF и загрузка */}
-        <div id="issue-contents" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-8">
+        <div id="issue-contents" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-8">
           <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5 flex items-center gap-2">
             <BookOpen size={12} aria-hidden="true" />
             {t('issue.contents')}
@@ -288,7 +288,7 @@ export function IssuePage({
 
         {/* Прошлые выпуски */}
         {otherIssues.length > 0 && (
-          <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-8 mt-12">
+          <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-8 mt-12">
             <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-5">
               {t('issue.archive')}
             </p>
@@ -300,7 +300,7 @@ export function IssuePage({
                   onClick={() => setSelectedId(pastIssue.id)}
                   className="text-left group"
                 >
-                  <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.35)] transition-colors group-hover:border-[var(--c-accent)]">
+                  <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)] transition-colors group-hover:border-[var(--c-accent)]">
                     <img
                       src={pastIssue.coverUrl}
                       alt={`${pastIssue.name} — ${pastIssue.season}`}
@@ -340,7 +340,7 @@ function DownloadButton({
 
   if (status === 'loading') {
     return (
-      <div className={`${base} border-[rgb(var(--c-accent-rgb)_/_0.3)] text-[rgb(var(--c-accent-rgb)_/_0.4)] cursor-not-allowed`}>
+      <div className={`${base} border-[rgb(var(--c-accent-rgb)_/_0.24)] text-[rgb(var(--c-accent-rgb)_/_0.4)] cursor-not-allowed`}>
         <span className="inline-block w-3 h-3 border border-[rgb(var(--c-accent-rgb)_/_0.4)] border-t-[var(--c-accent)] rounded-full animate-spin" />
         {t('issue.generating')}
       </div>

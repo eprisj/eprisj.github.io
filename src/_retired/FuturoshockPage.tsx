@@ -143,7 +143,7 @@ export function FuturoshockPage() {
         </div>
       </header>
 
-      <section aria-labelledby="vitrine-title" className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+      <section aria-labelledby="vitrine-title" className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
         <div className="mx-auto max-w-[1700px] px-5 pb-8 pt-10 sm:px-8 sm:pb-10 lg:px-12">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)]">EPRIS Vitrine</p>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -157,15 +157,15 @@ export function FuturoshockPage() {
       <section id="shelf-inventory" aria-labelledby="on-view-title" className="mx-auto max-w-[1700px] px-5 py-10 sm:px-8 sm:py-14 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(19rem,.65fr)] lg:items-start lg:gap-12">
           <div>
-            <div className="flex items-baseline justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.22)] pb-4">
+            <div className="flex items-baseline justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-4">
               <h2 id="on-view-title" className="font-display text-3xl sm:text-4xl">On view</h2>
               <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{works.length} works</span>
             </div>
-            <div className="mt-4 grid border-l border-t border-[rgb(var(--c-accent-rgb)_/_0.16)] sm:grid-cols-2">
+            <div className="mt-4 grid border-l border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] sm:grid-cols-2">
               {works.map((work, index) => {
                 const slot = work.shelfSlot || index + 1;
                 const active = selected?.id === work.id;
-                return <button key={work.id} type="button" onClick={() => selectWork(work.id)} aria-pressed={active} aria-controls="object-details" className={`group flex min-h-24 items-center gap-4 border-b border-r border-[rgb(var(--c-accent-rgb)_/_0.16)] p-4 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--c-gold)] sm:p-5 ${active ? 'bg-[rgb(var(--c-gold-rgb)_/_0.14)]' : 'hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'}`}>
+                return <button key={work.id} type="button" onClick={() => selectWork(work.id)} aria-pressed={active} aria-controls="object-details" className={`group flex min-h-24 items-center gap-4 border-b border-r border-[rgb(var(--c-accent-rgb)_/_0.14)] p-4 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--c-gold)] sm:p-5 ${active ? 'bg-[rgb(var(--c-gold-rgb)_/_0.14)]' : 'hover:bg-[rgb(var(--c-accent-rgb)_/_0.05)]'}`}>
                   <span className="font-mono text-[10px] tracking-[0.12em] text-[var(--c-gold)]">{String(slot).padStart(2, '0')}</span>
                   <span className="min-w-0"><span className="block font-display text-xl leading-tight">{work.title}</span><span className="mt-1 block truncate font-mono text-[9px] uppercase tracking-[0.12em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{work.materials?.join(' / ') || work.medium}</span></span>
                 </button>;
@@ -177,8 +177,8 @@ export function FuturoshockPage() {
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)]">Selected work</p>
             <h2 className="mt-4 font-display text-[clamp(2.25rem,4vw,4rem)] leading-[0.92]">{selected.title}</h2>
             <p className="mt-4 text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{selected.author} · {selected.year}</p>
-            <p className="mt-5 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-5 text-sm leading-relaxed">{selected.materials?.join(', ') || selected.medium}</p>
-            {selected.statement && <details className="group mt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-4"><summary className="cursor-pointer list-none font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-accent)] transition hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-gold)]"><span className="group-open:hidden">Read curatorial note</span><span className="hidden group-open:inline">Close curatorial note</span></summary><p className="mt-4 text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{selected.statement}</p></details>}
+            <p className="mt-5 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-5 text-sm leading-relaxed">{selected.materials?.join(', ') || selected.medium}</p>
+            {selected.statement && <details className="group mt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-4"><summary className="cursor-pointer list-none font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-accent)] transition hover:text-[var(--c-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-gold)]"><span className="group-open:hidden">Read curatorial note</span><span className="hidden group-open:inline">Close curatorial note</span></summary><p className="mt-4 text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.74)]">{selected.statement}</p></details>}
           </aside>}
         </div>
       </section>

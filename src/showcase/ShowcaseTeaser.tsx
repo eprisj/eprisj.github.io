@@ -63,7 +63,7 @@ export function ShowcaseTeaser() {
   if (!enabled || works.length < 2) return null;
 
   return (
-    <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.25)] bg-[var(--c-bg)] px-4 py-16 sm:px-8 md:px-16 md:py-24">
+    <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] px-4 py-16 sm:px-8 md:px-16 md:py-24">
       <div className="mx-auto max-w-[1600px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -79,7 +79,7 @@ export function ShowcaseTeaser() {
           </div>
           <a
             href={ctaUrl}
-            className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
+            className="inline-flex min-h-12 w-fit shrink-0 items-center gap-3 border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-6 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-accent)]"
           >
             {ctaLabel} <ArrowUpRight size={15} />
           </a>

@@ -21,7 +21,10 @@
      tailwind.config.js's `display` stack - this var had drifted from
      that and dropped it. */
   --font-display: 'Playfair Display', 'PT Serif', serif;       /* headings */
-  --font-body: 'PT Sans', sans-serif; /* body - PT Sans already covers Cyrillic natively */
+  /* Основной текст журнала набирается антиквой: заголовки, цитаты и врезки
+     уже Crimson Text / PT Serif, и гротеск в основном тексте ломал строй
+     страницы. PT Serif держит кириллицу, которой у Crimson Text нет. */
+  --font-body: 'Crimson Text', 'PT Serif', serif;
   --bg-image: none;          /* optional page background image (admin Appearance) */
 
   font-family: var(--font-body);

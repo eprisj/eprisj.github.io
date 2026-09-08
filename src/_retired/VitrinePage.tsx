@@ -459,7 +459,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave, items, onOp
       {items.length > 0 && (
         <ul className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)]">
           {items.map((item) => (
-            <li key={item.id} className="border-b border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+            <li key={item.id} className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
               <button
                 type="button"
                 onClick={() => onOpenObject(item.id)}
@@ -524,7 +524,7 @@ function ObjectPanel({ copy, item, onClose }: { copy: MuseumCopy; item: MuseumOb
       )}
       <dl className="border-t border-[rgb(var(--c-accent-rgb)_/_0.28)]">
         {rows.filter(([, value]) => value).map(([label, value]) => (
-          <div key={label} className="flex justify-between gap-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.18)] py-3">
+          <div key={label} className="flex justify-between gap-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] py-3">
             <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{label}</dt>
             <dd className="text-right text-[14px]">{value}</dd>
           </div>
@@ -706,7 +706,7 @@ function VitrineCollection({ works, selectedId, onSelect, copy }: { works: Futur
             <h2 className="mt-3 font-display text-[clamp(2rem,3.8vw,3.7rem)] leading-[0.92]">{selected.title}</h2>
             <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.62)]">{catalogueNumber(selected, selectedIndex)}</p>
             {selected.statement && <p className="mt-5 max-w-[37rem] text-[15px] leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)]">{selected.statement}</p>}
-            <dl className="mt-6 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-5 font-mono text-[9px] uppercase tracking-[0.13em] sm:grid-cols-3">
+            <dl className="mt-6 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-5 font-mono text-[9px] uppercase tracking-[0.13em] sm:grid-cols-3">
               <div><dt className="text-[rgb(var(--c-accent-rgb)_/_0.5)]">{copy.creator}</dt><dd className="mt-2 leading-relaxed">{selected.author || copy.pending}</dd></div>
               <div><dt className="text-[rgb(var(--c-accent-rgb)_/_0.5)]">{copy.place}</dt><dd className="mt-2 leading-relaxed">{selected.location || copy.pending}</dd></div>
               <div><dt className="text-[rgb(var(--c-accent-rgb)_/_0.5)]">{copy.date}</dt><dd className="mt-2 leading-relaxed">{selected.year || copy.pending}</dd></div>

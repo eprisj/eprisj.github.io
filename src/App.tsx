@@ -438,7 +438,13 @@ function applySiteTheme(theme: SiteTheme) {
   // not a guarantee the chosen font's *style* matches, but a real font
   // instead of whatever the browser's default serif happens to be.
   if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', 'PT Serif', serif`); }
-  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', 'PT Sans', sans-serif`); }
+  /* Фолбэк за выбранным шрифтом должен быть той же природы, что и сам выбор,
+     иначе сайт выглядит по-разному на разных машинах. Тема стоит на «Iowan
+     Old Style»: на Mac это антиква, а везде ещё, где такого шрифта нет,
+     страница проваливалась в PT Sans, то есть в гротеск. Один и тот же текст
+     читался антиквой у одного посетителя и гротеском у другого. Теперь за
+     выбором идут загруженные шрифты журнала. */
+  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', 'Crimson Text', 'PT Serif', serif`); }
   if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
   /* Фоновая картинка тянется во весь экран только когда она есть. Постоянный
      background-attachment: fixed на iOS оставляет неокрашенную полосу у нижней
@@ -873,7 +879,7 @@ class SafePart extends Component<{ children: ReactNode; label?: string; silent?:
     if (!this.state.hasError) return this.props.children;
     if (this.props.silent) return null;
     return (
-      <div className="my-6 border border-[rgb(var(--c-accent-rgb)_/_0.2)] px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
+      <div className="my-6 border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
         Этот фрагмент не удалось показать
       </div>
     );
@@ -1044,7 +1050,7 @@ function NavBar({
   return (
     <>
       {/* ── Mobile header: menu · centred wordmark · language + issue ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] border-b border-[rgb(var(--c-accent-rgb)_/_0.25)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -1173,7 +1179,7 @@ function NavBar({
                     type="button"
                     key={lang}
                     onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
-                    className="w-full py-2 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors block text-center border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] last:border-0"
+                    className="w-full py-2 hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors block text-center border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] last:border-0"
                   >
                     {lang}
                   </button>
@@ -1221,7 +1227,7 @@ function NavBar({
                   type="button"
                   onClick={() => setIsLangOpen(false)}
                   aria-label="Close language selector"
-                  className="h-11 w-11 inline-flex items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.25)] active:scale-95 transition"
+                  className="h-11 w-11 inline-flex items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] active:scale-95 transition"
                 >
                   <X size={20} />
                 </button>
@@ -1235,7 +1241,7 @@ function NavBar({
                       key={lang}
                       onClick={() => { setCurrentLang(lang); setIsLangOpen(false); }}
                       aria-pressed={active}
-                      className={`min-h-14 px-4 rounded-2xl border flex items-center justify-between gap-4 text-left transition active:scale-[0.98] ${active ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.2)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)]'}`}
+                      className={`min-h-14 px-4 rounded-2xl border flex items-center justify-between gap-4 text-left transition active:scale-[0.98] ${active ? 'bg-[var(--c-accent)] text-[var(--c-bg)] border-[var(--c-accent)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.07)]'}`}
                     >
                       <span className="font-serif text-[17px]">{LANG_LABELS[lang] || lang}</span>
                       <span className="flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.14em] opacity-70">
@@ -1280,7 +1286,7 @@ function NavBar({
               exit={{ opacity: 0, y: -10, scale: 0.99 }}
               transition={{ duration: 0.28, ease: EASE }}
               onSubmit={handleSearch}
-              className="w-full max-w-3xl rounded-[28px] border border-[rgb(var(--c-accent-rgb)_/_0.16)] bg-[rgb(var(--c-bg-rgb)_/_0.68)] p-5 shadow-[0_24px_80px_-52px_rgb(var(--c-accent-rgb)_/_0.72)] sm:p-8"
+              className="w-full max-w-3xl rounded-[28px] border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-bg-rgb)_/_0.68)] p-5 shadow-[0_24px_80px_-52px_rgb(var(--c-accent-rgb)_/_0.72)] sm:p-8"
             >
               <label id="site-search-title" htmlFor="site-search-input" className="sr-only">{t('search.dialogTitle')}</label>
               <input 
@@ -1389,7 +1395,7 @@ function NavBar({
                 <span className="font-mono text-xs font-bold tracking-widest">{currentLang}</span>
               </button>
               <div className="p-4 flex justify-center">
-                <button type="button" aria-label="Open search" className="h-12 min-w-12 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.25)] inline-flex items-center justify-center" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
+                <button type="button" aria-label="Open search" className="h-12 min-w-12 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] inline-flex items-center justify-center" onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}>
                   <Search size={24} />
                 </button>
               </div>
@@ -1481,7 +1487,7 @@ function TeamMemberCard({
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
       {author.photoUrl && (
-        <div className={`w-32 h-32 sm:w-40 sm:h-40 overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.2)] ${isLogo ? 'rounded-2xl bg-white p-4' : 'rounded-full'}`}>
+        <div className={`w-32 h-32 sm:w-40 sm:h-40 overflow-hidden shrink-0 border border-[rgb(var(--c-accent-rgb)_/_0.24)] ${isLogo ? 'rounded-2xl bg-white p-4' : 'rounded-full'}`}>
           <img src={author.photoUrl} alt={author.name} className={`w-full h-full ${isLogo ? 'object-contain' : 'object-cover'}`} />
         </div>
       )}
@@ -1915,7 +1921,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
   return (
     <section className="home-pics-section" aria-labelledby="pics-of-week-title">
       <Reveal>
-        <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-4">
+        <div className="mb-7 flex items-center justify-between gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-4">
           <h1 id="pics-of-week-title" className="font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.picsTitle')}</h1>
         </div>
         {showNavigation && <div className="home-carousel-mobile-controls" aria-label={t('homepage.carouselLabel')}>
@@ -2106,8 +2112,8 @@ function DailyPicksArchive({ archive, items, onImageClick, currentLang, t }: { a
   };
 
   return (
-    <section id="daily-picks" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-12 sm:pt-16 md:pt-24" aria-labelledby="daily-picks-title">
-      <div className="flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+    <section id="daily-picks" className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-12 sm:pt-16 md:pt-24" aria-labelledby="daily-picks-title">
+      <div className="flex flex-col gap-4 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t('homepage.archiveEyebrow')}</p>
           <h2 id="daily-picks-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.archiveTitle')}</h2>
@@ -2180,7 +2186,7 @@ function ChecklistBlock({ items, caption }: { items: string[], caption?: string 
   };
 
   return (
-    <div className="my-12 p-8 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-xl">
+    <div className="my-12 p-8 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-xl">
       {caption && (
         <h4 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-6 flex items-center gap-2">
           <CheckSquare size={14} /> {caption}
@@ -2348,7 +2354,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
   const totalVotes = displayedOptions.reduce((acc, curr) => acc + curr.votes, 0);
 
   return (
-    <div className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.22)] py-8">
+    <div className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.24)] py-8">
       <h4 className="mb-8 font-serif text-[24px] leading-[1.3] sm:text-[28px]">
         {question}
       </h4>
@@ -2361,7 +2367,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
                 <span>{opt.label}</span>
                 {votedIndex !== null && <span>{percentage}% · {opt.votes}</span>}
               </div>
-              <div className="relative h-11 overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.22)] group">
+              <div className="relative h-11 overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)] group">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: votedIndex !== null ? `${percentage}%` : '0%' }}
@@ -2395,7 +2401,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
 
 function NoteBlock({ content }: { content: string }) {
   return (
-    <aside className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.18)] py-7">
+    <aside className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.14)] py-7">
       <p className="mx-auto max-w-[46ch] font-serif text-[17px] leading-[1.6] text-[rgb(var(--c-accent-rgb)_/_0.82)]">
         {content}
       </p>
@@ -2533,7 +2539,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           <button
             type="button"
             onClick={onClose}
-            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:opacity-60 transition-opacity bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.1)]"
+            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:opacity-60 transition-opacity bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.14)]"
           >
             <ArrowLeft size={16} /> {t('back')}
           </button>
@@ -2543,13 +2549,13 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
               aria-label="Select language"
-              className="min-h-11 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.18)] hover:opacity-60 transition-opacity"
+              className="min-h-11 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.14)] hover:opacity-60 transition-opacity"
             >
               <Globe size={14} />
               {currentLang}
             </button>
             {isArticleLangOpen && (
-              <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.2)] rounded-xl shadow-lg overflow-hidden min-w-[170px] max-h-[70dvh] overflow-y-auto z-50">
+              <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-xl shadow-lg overflow-hidden min-w-[170px] max-h-[70dvh] overflow-y-auto z-50">
                 {availableLanguages.map(lang => (
                   <button
                     type="button"
@@ -2727,7 +2733,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   const lat = block.coordinates?.lat;
                   const lng = block.coordinates?.lng;
                   return (
-                    <div key={index} className="my-12 p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+                    <div key={index} className="my-12 p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
                       <div className="flex items-center gap-3 mb-4 text-[var(--c-accent)]">
                         <MapPin size={20} />
                         <span className="font-mono text-sm uppercase tracking-widest">{block.content}</span>
@@ -2775,7 +2781,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   return <VideoBlock key={index} content={typeof block.content === 'string' ? block.content : ''} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
                 case 'audio':
                   return (
-                    <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.2)] flex items-center gap-3 sm:gap-4">
+                    <figure key={index} className="my-8 sm:my-12 p-4 sm:p-6 bg-[#E8DED5] border border-[rgb(var(--c-accent-rgb)_/_0.24)] flex items-center gap-3 sm:gap-4">
                       <div className="w-12 h-12 rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)]">
                         <Music size={20} />
                       </div>
@@ -2903,14 +2909,14 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               блок-подвал статьи. Единый вес: border-t-2 на разделителях,
               border-[1.5px] на пилюлях, тексты на ступень темнее и жирнее -
               подвал читается одним куском, а не остатком после статьи. */}
-          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.18)]">
+          <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.14)]">
             <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
               {authorPhoto ? (
                 <img
                   src={authorPhoto}
                   alt={authorName}
                   loading="lazy"
-                  className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full object-cover shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.22)]"
+                  className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full object-cover shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)]"
                 />
               ) : (
                 <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
@@ -2963,7 +2969,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       loading="lazy"
                       /* Логотип института — не портрет: круглая обрезка режет
                          вордмарк, поэтому квадрат со скруглением и contain. */
-                      className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl object-contain bg-white p-1.5 shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.22)]"
+                      className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl object-contain bg-white p-1.5 shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)]"
                     />
                   ) : (
                     <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
@@ -3013,7 +3019,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                     type="button"
                     key={i}
                     onClick={() => onTagClick(tag)}
-                    className="px-3.5 py-1.5 rounded-full border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-accent-rgb)_/_0.03)] font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.75)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] hover:text-[var(--c-accent)] transition-colors cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-full border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[rgb(var(--c-accent-rgb)_/_0.03)] font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.75)] hover:border-[var(--c-accent)] hover:bg-[rgb(var(--c-accent-rgb)_/_0.06)] hover:text-[var(--c-accent)] transition-colors cursor-pointer"
                   >
                     {tag}
                   </button>
@@ -3033,7 +3039,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               <button
                 type="button"
                 onClick={handleShare}
-                className="flex items-center gap-3 px-7 py-3.5 border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.3)] rounded-full font-mono text-xs font-bold uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+                className="flex items-center gap-3 px-7 py-3.5 border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-full font-mono text-xs font-bold uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               >
                 {copied ? <Check size={16} /> : <Share2 size={16} />}
                 {copied ? t('share.copied') : t('share')}
@@ -3042,7 +3048,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           </footer>
 
           {related.length > 0 && (
-            <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)]">
+            <section className="mt-12 sm:mt-20 pt-10 sm:pt-14 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)]">
               <h2 className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-8">
                 {t('article.related')}
               </h2>
@@ -3107,7 +3113,7 @@ function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }:
           type="button"
           onClick={onClose}
           aria-label={t('articles.closePreview')}
-          className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.22)] bg-[rgb(var(--c-bg-rgb)_/_0.84)] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
+          className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[rgb(var(--c-bg-rgb)_/_0.84)] text-[var(--c-accent)] backdrop-blur-sm transition hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c-accent)]"
         >
           <X size={18} />
         </button>
@@ -3331,7 +3337,7 @@ function ArticlesSection({
 function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key: string) => string }) {
   if ((!pros || !pros.length) && (!cons || !cons.length)) return null;
   return (
-    <div className="mt-12 grid gap-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.18)] pt-8 sm:grid-cols-2 sm:gap-12">
+    <div className="mt-12 grid gap-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-8 sm:grid-cols-2 sm:gap-12">
       {pros && pros.length > 0 && (
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('reviews.pros')}</p>
@@ -3454,14 +3460,14 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
       <div className="mx-auto max-w-3xl">
         <ReviewBody content={review.content} t={t} />
         <ProsCons pros={review.pros} cons={review.cons} t={t} />
-        <footer className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-8 sm:mt-16 sm:pt-12">
+        <footer className="mt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-8 sm:mt-16 sm:pt-12">
           <div className="flex items-start gap-4 sm:gap-6">
             {authorPhoto ? (
               <img
                 src={authorPhoto}
                 alt={authorName}
                 loading="lazy"
-                className="h-12 w-12 shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.2)] object-cover sm:h-16 sm:w-16"
+                className="h-12 w-12 shrink-0 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.24)] object-cover sm:h-16 sm:w-16"
               />
             ) : (
               <div aria-hidden="true" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--c-accent)] font-serif text-lg text-[var(--c-bg)] sm:h-16 sm:w-16 sm:text-xl">
@@ -3794,7 +3800,7 @@ function SearchResults({
           maxLength={120}
           autoComplete="off"
           enterKeyHint="search"
-          className="min-h-12 flex-1 bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.35)] px-4 font-serif text-lg placeholder:opacity-45 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+          className="min-h-12 flex-1 bg-transparent border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-4 font-serif text-lg placeholder:opacity-45 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
           placeholder={t('search.inputHint')}
         />
         <button
@@ -3805,7 +3811,7 @@ function SearchResults({
           {t('search.submit')}
         </button>
       </form>
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)]" aria-live="polite">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)]" aria-live="polite">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('search.results')}</p>
           <h2 className="font-serif text-2xl text-[var(--c-accent)]">
@@ -3815,7 +3821,7 @@ function SearchResults({
         <button
           type="button"
           onClick={onClear}
-          className="min-h-11 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.3)] px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+          className="min-h-11 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.65)] hover:text-[var(--c-accent)] transition-colors border border-[rgb(var(--c-accent-rgb)_/_0.24)] px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
         >
           <X size={12} /> {t('search.clear')}
         </button>
@@ -3833,7 +3839,7 @@ function SearchResults({
               key={hit.key}
               type="button"
               onClick={hit.onOpen}
-              className="min-h-24 flex items-center gap-5 text-left border border-[rgb(var(--c-accent-rgb)_/_0.25)] hover:border-[var(--c-accent)] transition-colors p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
+              className="min-h-24 flex items-center gap-5 text-left border border-[rgb(var(--c-accent-rgb)_/_0.24)] hover:border-[var(--c-accent)] transition-colors p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-gold)]"
             >
               {hit.imageUrl ? (
                 <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-[#E8DED5] overflow-hidden">
@@ -4476,8 +4482,8 @@ export default function App() {
     }
     if (section === 'articles') {
       if (!homepageArticles.length) return null;
-      return <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
-        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+      return <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
+        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
             <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.articlesTitle')}</h2>
@@ -4517,8 +4523,8 @@ export default function App() {
        обзоры — главная читается как оглавление номера, а не как одна лента. */
     if (section === 'reviews') {
       if (!homepageReviews.length) return null;
-      return <section className="homepage-reviews mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.2)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-reviews-title">
-        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.2)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+      return <section className="homepage-reviews mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-reviews-title">
+        <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.reviewsEyebrow')}</p>
             <h2 id="homepage-reviews-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.reviewsTitle')}</h2>
@@ -4883,7 +4889,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { window.history.replaceState(null, '', '/articles'); setSelectedArticleId(null); setActiveTab('articles'); }}
-                  className="font-mono text-xs uppercase tracking-widest border border-[rgb(var(--c-accent-rgb)_/_0.3)] rounded-full px-6 py-3 hover:border-[var(--c-accent)] transition-colors"
+                  className="font-mono text-xs uppercase tracking-widest border border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-full px-6 py-3 hover:border-[var(--c-accent)] transition-colors"
                 >
                   {t('article.backToArticles')}
                 </button>
