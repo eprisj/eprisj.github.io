@@ -14104,19 +14104,19 @@
           "showCover": true,
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Интервью серии журнала EPRIS переходит в этом месяце к Abbie Downey, основательнице студии Feather & Fossil в Лондоне и одной из дизайнеров, ответственных за возвращение цвета и узора в британские интерьеры после долгого периода сдержанности. Ее комнаты насыщенные, слоистые и безошибочно жилые – именно с этого начинается наш разговор."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Она ремонтирует дом эпохи Георга, ее второй исторический объект, и это полезно знать перед тем, как смотреть на ее комнаты. Feather & Fossil занимается окрашенными полосами и голубыми каминами, узорчатыми обоями над голубой плиткой, стеной с рамками и зеркалами, висящими близко друг к другу. Это кажется изобилием. На более пристальном рассмотрении это набор решений."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Признанная через Next in Design, Downey принадлежит к поколению британских дизайнеров, реабилитирующих узор и цвет после лет, когда сдержанность рассматривалась как единственная взрослая позиция. Ее аргумент не в том, что больше — лучше. В том, что комната должна уметь вместить людей, которые в ней живут, включая те части их, которые не фотографируются аккуратно. Мы задали ей семь вопросов."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
               "caption": "Гостиная от Feather & Fossil: ручная роспись полос, камин в мягком голубом, и шкаф, вмещающий коллекции семьи, а не экспозицию.",
               "align": "центр"
@@ -14156,57 +14156,57 @@
               "content": "Мне также нравится позволять комнате развиваться сама, а не пытаться решить всё сразу. Я могу знать цветовую палитру и иметь один или два ключевых элемента, но я хочу оставить место для неожиданного. Некоторые мои любимые элементы — это те, которые не обязательно были частью первоначального плана."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
               "caption": "Кухня: изображённые обои над синим узорчатым кафелем, с латунными кранками над металлической раковиной. Узор допускается сочетать с узором.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Старые дома несут следы жизни, которая была до нас, в архитектуре, материалах, изменениях, даже в мелких дефектах. Насколько вы стараетесь раскрыть эту историю, прежде чем принимать новые решения, и видите ли вы свою роль в сохранении истории или её продолжении?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я считаю, что старые дома многое рассказывают, если вы готовы их слушать. Особенно меня привлекают георгианские, викторианские и эдвардианские здания, потому что у них есть ощущение идентичности ещё до того, как вы что-то в них добавите. Пропорции, камины, полы, лепнина и маленькие дефекты всё это способствует этому ощущению."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Меня интересует понимание истории здания, но я не считаю, что это означает превращение его в музей. Дома предназначены для эволюции. В них всегда будут слои разных жизней, и я считаю, что самые удачные интерьеры признают эти слои, а не пытаются стереть их или сохранить до такой степени, что это становится непрактично для современной семейной жизни."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Это что-то, о чем я стал особенно осознавать, ремонтируя свой собственный грузинский дом. Вы начинаете замечать все свидетельства людей, которые жили там до вас: изменения, которые они внесли, вещи, которые они починили, вещи, которые сохранились благодаря хорошему мастерству. Мне это кажется невероятно интересным."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Так что я бы сказал, что моя роль скорее заключается не в точном сохранении истории, а в ее продолжении. Я хочу, чтобы новые вмешательства казались частью диалога с уже существующим."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirn5pg44cw9.jpg",
               "caption": "Изношенный стол и плетеный дорожка, сфотографированные вблизи: поверхность, которая фиксирует использование, а не скрывает его.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Домашний интерьер всегда был формой самовыражения, сформированной вкусом, памятью и предметами, с которыми люди выбирают жить. Видите ли вы дом почти как личный архив, и как вы переводите что-то такое приватное в комнату?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Абсолютно. Лучшие дома, по моему мнению, те, где вы можете узнать что-то о людях, которые там живут, просто оглянувшись вокруг."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я считаю, что наши дома содержат в себе гораздо больше нас, чем мы иногда осознаём. Предметы, которые мы храним, цвета, к которым мы тяготеем, унаследованные вещи, места, куда мы путешествовали, и даже вещи, от которых мы отказываемся избавляться — всё это рассказывает историю."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Это одна из причин, почему я люблю работать с клиентами. Меня не интересует навязывание определённой версии того, как, по моему мнению, должен выглядеть их дом. Я хочу понять, что заставляет их чувствовать себя как дома. Иногда это проявляется очевидными способами (коллекция, предмет мебели или что-то с сентиментальной ценностью), а иногда — гораздо более тонко."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я вижу процесс дизайна как своего рода перевод. Клиент может знать, что он хочет, чтобы его дом ощущался тёплым, радостным, взрослым или немного эксцентричным, не зная точно, как этого добиться визуально. Моя задача — взять эти очень личные, иногда довольно неосязаемые вещи и превратить их в цвет, узор, текстуру, мебель и предметы."
             },
             {
@@ -14229,19 +14229,19 @@
               "content": "Я не думаю, что это означает, что минимализм неправильный, или что каждая комната должна быть заполнена узором и цветом. Это скорее вопрос о том, чтобы поставить под вопрос идею о том, что существует один правильный способ для дома выглядеть. Почему комната не должна быть радостной? Почему вы не должны выставлять немного смешную коллекцию просто потому, что она делает вас счастливым?"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Эта свобода — большая часть того, что привлекло меня к максимализму. Я люблю цвет, узор, винтажные предметы, вещи с историей и интерьеры, в которых есть немного эксцентричности. Меня гораздо больше интересует, ощущается ли что-то значимым, чем то, насколько оно вписывается в принятую дефиницию хорошего вкуса."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Для меня современный максимализм не совсем о бунте ради бунта. Это о том, чтобы дать людям разрешение доверять своим собственным инстинктам и жить в пространстве, которое их представляет, ощущается как дом и принимает их такими, какие они есть."
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Я хочу, чтобы комната казалась собранной, а не скоординированной."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
               "caption": "Панель с солнечными лучами над камином, обрамленная обоями, которые отказываются исчезать. Ничего здесь не пытается быть тихим.",
               "align": "центр"
@@ -14264,48 +14264,48 @@
               "content": "А ещё есть дома, в которых я жил. В течение всего детства мой папа постоянно переосмысливал наш дом и комнаты. Он никогда не ограничивался стилем дома, в котором мы жили, а руководствовался тем, что он любит: ремеслом, созданием и экспериментами. Тогда, живя в арендованных, минималистичных новых зданиях в двадцатые годы, я жаждал дома, полного характера, индивидуальности и истории. Это побудило меня отремонтировать свой первый дом, а теперь и второй. Оба — это исторические здания, и оба были созданы с максималистским подходом, который отмечает наш семейный стиль: вещи, которые мы любим, маленькие моменты радости в повседневной жизни и дом, созданный для жизни, а не только для хорошей фотографии."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я думаю, что наш визуальный вкус развивается почти подсознательно. Вы впитываете вещи с детства, путешествий, книг, фильмов, зданий, людей и мест, и в конечном итоге все эти маленькие влияния начинают проявляться в вашей собственной работе."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis1c266ocsm.jpg",
               "caption": "Ратановое кресло в небольшой комнате, обклеенной обоями от пола до потолка, с другой обклеенной обоями комнатой за ней.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Быть признанным через Next in Design привело вашу работу к гораздо более широкой дискуссии. По мере роста вашей практики, есть ли что-то в вашем подходе, что вы особенно решительно хотите защитить?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Наверное, свобода следовать своим инстинктам."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Быть признанным через Next in Design было таким захватывающим моментом для Feather & Fossil и открыло дверь к возможностям, о которых я никогда не мог бы мечтать, когда начинал. Это невероятно подтверждает ценность моей работы."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Но я не хочу, чтобы рост делал работу менее личной. Я хочу сохранить это чувство любопытства и игривости, и я хочу продолжать проектировать пространства, которые имеют индивидуальность, а не просто следовать тому, что считается модным."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я также хочу защитить убеждение, что дом должен ощущаться как люди, которые там живут. Я не хочу создавать интерьеры, которые идеальны, но взаимозаменяемы. Я хочу продолжать поддерживать цвет, узор, винтажные предметы, индивидуальность и немного неожиданные элементы."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Если что, признание через Next in Design дало мне больше уверенности доверять этому инстинкту, а не меньше. Думаю, самое важное, что я хочу защитить, — это ощущение свободы: свободу экспериментировать, быть немного смелее и принимать решения, потому что они кажутся правильными, а не ради одобрения других."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "Рабочий уголок: антикварный письменный стол, красный шкаф с стеклянной дверцей, висящие джутовые корзины.",
               "align": "центр"
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -14319,7 +14319,7 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фотография: Paul Secker, Secker Studios. Интервью проведено в письменной форме для EPRIS Journal, сентябрь 2026."
             }
           ],
@@ -20361,19 +20361,19 @@
           "showCover": true,
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Серія інтерв’ю журналу EPRIS переходить цього місяця до Abbie Downey, засновниці студії Feather & Fossil у Лондоні та однієї з дизайнерів, які повернули колір і візерунок у британські інтер’єри після тривалого періоду стриманості. Її кімнати щільні, багатошарові і безсумнівно житлові – саме з цього починається наша розмова."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вона ремонтує георгіанський будинок, її другий періодний об’єкт, і це корисно знати перед тим, як дивитися на її кімнати. Feather & Fossil займається розписаними смугами і синіми камінами, обробленим шпалерами над синьою візерунковою плиткою, стіною з рамками з принтами і дзеркалами, що висіли близько. Це виглядає як достаток. Насправді, при ближчому розгляді, це набір рішень."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Визнана через Next in Design, Downey належить до покоління британських дизайнерів, які реабілітують візерунок і колір після років, коли стриманість вважалася єдиною дорослою позицією. Її аргумент полягає не в тому, що більше — краще. Це в тому, що кімната має здатність вмістити людей, які в ній живуть, включаючи ті частини їх, які не фотографуються акуратно. Ми надіслали їй сім питань."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
               "caption": "Гостьова кімната від Feather & Fossil: рукописні смуги, камін у м’якому синьому кольорі та шафа, що тримає колекції сім’ї, а не виставку.",
               "align": "центр"
@@ -20413,22 +20413,22 @@
               "content": "Мені також подобається дозволити кімнаті еволюціонувати, а не намагатися вирішити все одразу. Можливо, я знаю палітру кольорів і маю один або два ключові елементи, але я хочу, щоб залишався простір для несподіваного. Деякі з моїх улюблених елементів — це речі, які не обов’язково були частиною початкового плану."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
               "caption": "Кухня: уявний шпалер над синьою візерунковою плиткою, з латунними кранами над металевою раковиною. Візерунок дозволено сидіти проти візерунка.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Старі будинки несуть сліди життів, що були до нас, у архітектурі, матеріалах, змінах, навіть у дрібних недоліках. Наскільки ви намагаєтеся розкрити цю історію перед тим, як приймати нові рішення, і чи бачите ви свою роль у збереженні історії чи її продовженні?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я вважаю, що старі будинки багато розповідають, якщо ви готові їх слухати. Мене особливо приваблюють готичні, вікторіанські та едуардіанські об'єкти, оскільки вони мають відчуття ідентичності ще до того, як ви щось у них додали. Пропорції, каміни, підлоги, молдинги та дрібні недоліки всі сприяють цьому."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Мене цікавить розуміння історії будівлі, але я не вважаю, що це означає намагатися перетворити її на музей. Дім має еволюціонувати. У ньому завжди будуть шари різних життів, і я вважаю, що найуспішніші інтер'єри визнають ці шари, а не намагаються їх стерти або зберегти настільки, що це стане невигідним для сучасного сімейного життя."
             },
             {
@@ -20451,54 +20451,54 @@
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Абсолютно. Найкращі домівки, на мою думку, ті, де ви можете дізнатися щось про людей, які там живуть, просто оглянувши навколо."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я вважаю, що наші домівки містять у собі набагато більше нас, ніж ми іноді усвідомлюємо. Предмети, які ми зберігаємо, кольори, до яких тягнемося, речі, які ми успадкували, місця, куди ми подорожували, і навіть речі, від яких відмовляємося позбавитися — все це розповідає історію."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Одна з причин, чому я люблю працювати з клієнтами. Мене не цікавить нав'язувати певну версію того, яким має бути їхній дім. Я хочу зрозуміти, що робить їх відчувати себе як удома. Іноді це проявляється очевидними способами (колекція, меблі або щось із сентиментальною цінністю), а іноді — набагато тонше."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я бачу процес дизайну як своєрідний переклад. Клієнт може знати, що він хоче, щоб його дім був теплим, радісним, дорослим або трохи ексцентричним, не знаючи точно, як досягти цього візуально. Моя робота — взяти ці дуже особисті, іноді досить невловимі речі і перетворити їх у колір, візерунок, текстуру, меблі та предмети."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsiry9sr2frcb.jpg",
               "caption": "Галерейна стіна. Відбитки, дзеркала, листівки та обкладинка Vogue, повішані на пофарбовані смуги.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Максималізм давно існує у напрузі з стриманістю, порядком і ідеєю «гарного смаку». Чи бачите ви сучасний максималізм частково як реакцію проти цих ієрархій?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я вважаю, що існувала довготривала ідея, що хороший смак означає знати, коли зупинитися: що стриманість, простота і мінімалізм якимось чином є більш вишуканими. Максималізм кидає виклик цій ідеї, оскільки дозволяє людям насолоджуватися речами просто тому, що вони їх люблять."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я не думаю, що це означає, що мінімалізм неправильний, або що кожна кімната повинна бути заповнена візерунками і кольорами. Це більше про ставлення до ідеї, що існує один правильний спосіб вигляду дому. Чому кімната не може бути радісною? Чому не показати трохи смішну колекцію просто тому, що вона робить вас щасливими?"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Що свобода є великою частиною того, що приваблює мене до максималізму. Я люблю колір, візерунок, вінтажні речі, речі з історією та інтер’єри, які мають трохи ексцентричності. Мене набагато більше цікавить, чи відчувається щось значущим, ніж чи воно гармонійно вписується у прийняте визначення гарного смаку."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Для мене сучасний максималізм насправді не про бунт заради бунту. Це про те, щоб дати людям дозвіл довіряти своїм інстинктам і жити у просторі, який їх представляє, відчувається як дім і приймає їх такими, якими вони є."
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Я хочу, щоб кімната відчувалася зібраною, а не скоординованою."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
               "caption": "Панель з сонячним променем над каміном, обрамлена шпалерами, які відмовляються зникати. Тут нічого не намагається бути тихим.",
               "align": "центр"
@@ -20521,48 +20521,48 @@
               "content": "А ще є домівки, у яких я жив. Протягом усього дитинства мій тато постійно переосмислював наш дім і кімнати. Він ніколи не обмежувався стилем будинку, у якому ми жили, а керувався тим, що любив: ремеслом, створенням і експериментами. Потім, живучи у орендованих, мінімалістичних новобудовах у свої двадцяті, я почав прагнути до дому, наповненого характером, особистістю та історією. Це спонукало мене оновити мій перший дім, а тепер і другий. Обидва — історичні будівлі, і обидва були підходжені з максималістським підходом, що святкує наш стиль як сім’ї: речі, які ми любимо, маленькі моменти радості у повсякденному житті, і дім, який створений для життя, а не просто для гарного вигляду на фотографії."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я вважаю, що багато з нашого візуального смаку розвивається майже несвідомо. Ви засвоюєте речі з дитинства, подорожей, книг, фільмів, будівель, людей і місць, і зрештою всі ці маленькі впливи починають проявлятися у вашій власній роботі."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis1c266ocsm.jpg",
               "caption": "Ратанове крісло у маленькій кімнаті, обклеєній папером від підлоги до стелі, з другою кімнатою, обклеєною папером, за ним.",
               "align": "центр"
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "content": "Бути визнаним через Next in Design привело вашу роботу до набагато ширшої розмови. Оскільки ваша практика зростає, чи є щось у вашій роботі, що ви особливо прагнете захистити?",
               "level": 3
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Мабуть, свобода слідувати своїм інстинктам."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Бути визнаним через Next in Design було таким захоплюючим моментом для Feather & Fossil і відкрило двері до можливостей, яких я ніколи не міг уявити, коли починав. Це неймовірно підтверджує цінність моєї роботи."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Але я не хочу, щоб зростання змусило роботу здаватися менш особистою. Я хочу зберегти це відчуття допитливості та грайливості, і я хочу продовжувати проектувати простори, які мають особистість, а не просто слідувати тому, що вважається модним."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Я також хочу захистити віру в те, що дім має відчуватися як люди, які там живуть. Я не хочу створювати інтер’єри, які ідеальні, але взаємозамінні. Я хочу продовжувати підтримувати колір, візерунок, вінтажні речі, індивідуальність і трохи несподіване."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Якщо щось, то визнання через Next in Design дало мені більше впевненості довіряти цьому інстинкту, а не менше. Я думаю, що найбільше я прагну захистити — це відчуття свободи: свободу експериментувати, бути трохи сміливішим і приймати рішення, тому що вони здаються правильними, а не шукати схвалення інших."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "робочий куток: антикварний стіл, червоний шафа з склом, підвішені джутові кошики.",
               "align": "центр"
             },
             {
-              "type": "галерея",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -20576,7 +20576,7 @@
               ]
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фотографія: Paul Secker, Secker Studios. Інтерв'ю проведено у письмовій формі для EPRIS Journal, вересень 2026."
             }
           ],
@@ -26827,13 +26827,13 @@
               "content": "Wenn überhaupt, hat mir die Anerkennung durch Next in Design mehr Selbstvertrauen gegeben, diesem Instinkt zu vertrauen, anstatt weniger. Ich denke, das, was ich am meisten schützen möchte, ist dieses Gefühl der Freiheit: die Freiheit zu experimentieren, ein bisschen mutig zu sein und Entscheidungen zu treffen, weil sie sich richtig anfühlen, anstatt die Zustimmung anderer zu suchen."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "Ein Arbeitsbereich: ein antiker Schreibtisch, ein roßer Glaskasten, hängende Jutetaschen.",
               "align": "zentrum"
             },
             {
-              "type": "Galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -26847,7 +26847,7 @@
               ]
             },
             {
-              "type": "Text",
+              "type": "text",
               "content": "Fotografie: Paul Secker, Secker Studios. Interview schriftlich geführt für EPRIS Journal, September 2026."
             }
           ],
@@ -32889,19 +32889,19 @@
           "showCover": true,
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "La serie de entrevistas de EPRIS Journal se vuelve este mes a Abbie Downey, fundadora del estudio Feather & Fossil en Londres y una de las diseñadoras acreditadas con devolver el color y el patrón a los interiores británicos después de un largo período de contención. Sus habitaciones son densas, superpuestas e inconfundiblemente habitadas – que es donde comienza nuestra conversación."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Ella está renovando una casa georgiana, su segunda propiedad de época, y eso es una cosa útil de saber antes de mirar sus habitaciones. Feather & Fossil se dedica a rayas pintadas y chimeneas azules, papel tapiz con patrones sobre azulejos azules, una pared de grabados y espejos colgados cerca. Se lee como abundancia. Es, al inspeccionarlo más de cerca, un conjunto de decisiones."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Reconocida a través de Next in Design, Downey pertenece a una generación de diseñadores británicos que rehabilitan el patrón y el color después de años en los que la contención se trataba como la única posición adulta. Su argumento no es que más sea mejor. Es que una habitación debe poder contener a las personas que viven en ella, incluyendo las partes de ellas que no se fotografían de manera ordenada. Le enviamos siete preguntas."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
               "caption": "Una sala de estar por Feather & Fossil: rayas pintadas a mano, una chimenea en suave azul, y un armario que contiene las colecciones de una familia en lugar de una exhibición.",
               "align": "centro"
@@ -32941,40 +32941,40 @@
               "content": "También me gusta dejar que una habitación evolucione en lugar de tratar de decidir todo de una vez. Podría conocer la paleta de colores y tener una o dos piezas clave, pero quiero que haya espacio para lo inesperado. Algunos de mis elementos favoritos son las cosas que no formaban necesariamente parte del plan original."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
               "caption": "La cocina: papel tapiz con figuras sobre azulejo azul con patrón, con grifos de latón sobre un fregadero de metal. Se permite que el patrón se apoye contra el patrón.",
               "align": "centro"
             },
             {
-              "type": "encabezado",
+              "type": "header",
               "content": "Las casas antiguas llevan rastros de las vidas que nos precedieron, en la arquitectura, los materiales, las alteraciones, incluso las pequeñas imperfecciones. ¿Cuánto intentas descubrir esa historia antes de tomar decisiones nuevas, y ves tu papel como preservar la historia o continuarla?",
               "level": 3
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Creo que las casas antiguas te dicen mucho si estás dispuesto a escucharlas. Me atraen particularmente las propiedades georgianas, victorianas y edwardianas porque tienen un sentido de identidad incluso antes de que pongas algo en ellas. Las proporciones, chimeneas, pisos, molduras y pequeñas imperfecciones contribuyen a eso."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Estoy interesado en entender la historia de un edificio, pero no creo que eso signifique tratar de convertirlo en un museo. Las casas están destinadas a evolucionar. Siempre habrá capas de diferentes vidas dentro de ellas, y creo que los interiores más exitosos reconocen esas capas en lugar de tratar de borrarlas o preservarlas hasta el punto de que se vuelvan imprácticas para la vida familiar moderna."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Eso es algo de lo que me he vuelto particularmente consciente a través de la renovación de mi propia casa georgiana. Comienzas a notar toda la evidencia de las personas que han vivido allí antes que tú: los cambios que hicieron, las cosas que repararon, las cosas que han sobrevivido gracias a una buena artesanía. Encuentro eso increíblemente interesante."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Así que diría que mi papel es menos preservar una historia exactamente como era y más continuarla. Quiero que las nuevas intervenciones parezcan que pertenecen a la conversación con lo que ya estaba allí."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirn5pg44cw9.jpg",
               "caption": "Una mesa de superficie desgastada y un tapiz tejido, fotografiados de cerca: una superficie que registra el uso en lugar de ocultarlo.",
               "align": "centro"
             },
             {
-              "type": "encabezado",
+              "type": "header",
               "content": "El interior doméstico siempre ha sido una forma de autorrepresentación, moldeada por el gusto, la memoria y los objetos con los que las personas eligen vivir. ¿Ves un hogar casi como un archivo personal, y cómo traduces algo tan privado en una habitación?",
               "level": 3
             },
@@ -32995,38 +32995,38 @@
               "content": "Veo el proceso de diseño como una especie de traducción. Un cliente puede saber que quiere que su hogar se sienta cálido, alegre, maduro o ligeramente excéntrico sin saber exactamente cómo lograrlo visualmente. Mi trabajo es tomar esas cosas muy personales, a veces bastante intangibles, y convertirlas en color, patrón, textura, muebles y objetos."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsiry9sr2frcb.jpg",
               "caption": "La pared de la galería. Impresiones, espejos, postales y una portada de Vogue, colgados contra rayas pintadas.",
               "align": "centro"
             },
             {
-              "type": "encabezado",
+              "type": "header",
               "content": "El maximalismo ha existido durante mucho tiempo en tensión con la moderación, el orden y la idea de “buen gusto”. ¿Ves el maximalismo contemporáneo en parte como una reacción contra esas jerarquías?",
               "level": 3
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Creo que ha existido una idea arraigada de que el buen gusto significa saber cuándo detenerse: que la moderación, la simplicidad y el minimalismo son de alguna manera más sofisticados. El maximalismo desafía esa idea porque permite a las personas disfrutar las cosas simplemente porque las aman."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "No creo que eso signifique que el minimalismo esté mal, o que cada habitación deba llenarse de patrones y colores. Se trata más de cuestionar la idea de que hay una forma correcta para que un hogar luzca. ¿Por qué no debería una habitación ser alegre? ¿Por qué no deberías exhibir una colección ligeramente ridícula simplemente porque te hace feliz?"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Esa libertad es una gran parte de lo que me atrajo al maximalismo. Me encanta el color, el patrón, las piezas vintage, las cosas con historia y los interiores que tienen un poco de excentricidad. Estoy mucho más interesado en si algo se siente significativo que en si encaja perfectamente en una definición aceptada de buen gusto."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Para mí, el maximalismo contemporáneo no se trata realmente de rebelión por el simple hecho de hacerlo. Se trata de dar permiso a las personas para confiar en sus propios instintos y vivir en un espacio que los represente, que se sienta como en casa y que abrace quiénes son."
             },
             {
-              "type": "cita",
+              "type": "quote",
               "content": "Quiero que una habitación se sienta recopilada en lugar de coordinada."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
               "caption": "Un panel de ráfaga de sol sobre la chimenea, enmarcado por papel tapiz que se niega a retroceder. Nada aquí intenta ser silencioso.",
               "align": "centro"
@@ -33068,29 +33068,29 @@
               "content": "Probablemente la libertad de seguir mis instintos."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Ser reconocido a través de Next in Design ha sido un momento tan emocionante para Feather & Fossil y ha abierto la puerta a oportunidades que nunca podría haber imaginado cuando empecé. Es increíblemente validante."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Pero no quiero que el crecimiento haga que el trabajo se sienta menos personal. Quiero mantener ese sentido de curiosidad y juego, y quiero seguir diseñando espacios que tengan personalidad en lugar de simplemente seguir lo que se considere de moda."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "También quiero proteger la creencia de que un hogar debe sentirse como las personas que viven allí. No quiero crear interiores que sean perfectos pero intercambiables. Quiero seguir defendiendo el color, el patrón, las piezas vintage, la individualidad y lo ligeramente inesperado."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Si acaso, ser reconocido a través de Next in Design me ha dado más confianza para confiar en ese instinto en lugar de menos. Creo que lo que más quiero proteger es esa sensación de libertad: la libertad de experimentar, de ser un poco audaz, y de tomar decisiones porque se sienten correctas en lugar de buscar la aprobación de otros."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "Un rincón de trabajo: un escritorio antiguo, un armario de vidrio rojo, cestas de yute colgantes.",
               "align": "centro"
             },
             {
-              "type": "galería",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -33104,7 +33104,7 @@
               ]
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Fotografía: Paul Secker, Secker Studios. Entrevista realizada por escrito para EPRIS Journal, septiembre de 2026."
             }
           ],
@@ -44978,22 +44978,22 @@
               "content": "Mi piace anche lasciare che una stanza si evolva piuttosto che cercare di decidere tutto in una volta. Potrei conoscere la palette di colori e avere uno o due pezzi chiave, ma voglio che ci sia spazio per l’inaspettato. Alcuni dei miei elementi preferiti sono le cose che non facevano necessariamente parte del piano originale."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
               "caption": "La cucina: carta da parati figurata sopra piastrelle blu a motivo, con rubinetti in ottone sopra un lavandino in metallo. Il motivo è permesso di sedersi contro il motivo.",
               "align": "centro"
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "content": "Le case più vecchie portano tracce delle vite che sono venute prima di noi, nell'architettura, nei materiali, nelle modifiche, anche nelle piccole imperfezioni. Quanto cerchi di scoprire quella storia prima di prendere nuove decisioni, e vedi il tuo ruolo come preservare la storia o continuarla?",
               "level": 3
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Penso che le case più vecchie ti raccontino molto se sei disposto ad ascoltarle. Sono particolarmente attratto da proprietà Georgian, Victorian e Edwardian perché hanno un senso di identità prima ancora di averci messo qualcosa. Le proporzioni, i caminetti, i pavimenti, le modanature e le piccole imperfezioni contribuiscono tutti a questo."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Sono interessato a capire la storia di un edificio, ma non penso che questo significhi cercare di trasformarlo in un museo. Le case sono fatte per evolversi. Ci saranno sempre strati di vite diverse al loro interno, e penso che gli interni più riusciti riconoscano quegli strati piuttosto che cercare di cancellarli o preservarli al punto che diventi impraticabile per la vita familiare moderna."
             },
             {
@@ -45121,13 +45121,13 @@
               "content": "Se proprio, essere riconosciuto attraverso Next in Design mi ha dato più fiducia nel fidarmi di quell'istinto piuttosto che meno. Penso che la cosa che sono più determinato a proteggere sia quella sensazione di libertà: la libertà di sperimentare, di essere un po' audace, e di prendere decisioni perché si sentono giuste piuttosto che cercare l'approvazione degli altri."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "Un angolo di lavoro: una scrivania antica, un mobile con ante in vetro rosso, cesti di juta appesi.",
               "align": "centro"
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -45141,7 +45141,7 @@
               ]
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Fotografia: Paul Secker, Secker Studios. Intervista condotta per iscritto per EPRIS Journal, settembre 2026."
             }
           ],
@@ -45959,15 +45959,15 @@
           "showCover": true,
           "content": [
             {
-              "type": "texte",
+              "type": "text",
               "content": "La série d'entretiens du Journal EPRIS se tourne ce mois-ci vers Abbie Downey, fondatrice du studio Feather & Fossil à Londres et l'une des designers créditées pour avoir ramené la couleur et le motif dans les intérieurs britanniques après une longue période de retenue. Ses pièces sont denses, superposées et indéniablement habitées – c'est là que notre conversation commence."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Elle rénove une maison géorgienne, sa deuxième propriété d'époque, et c'est une chose utile à savoir avant de regarder ses pièces. Feather & Fossil se spécialise dans les rayures peintes et les cheminées bleues, le papier peint à motifs au-dessus de carreaux bleus, un mur de gravures encadrées et de miroirs suspendus de près. Cela donne l'impression d'abondance. C'est, à y regarder de plus près, un ensemble de décisions."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Reconnaissante par le biais de Next in Design, Downey appartient à une génération de designers britanniques réhabilitant le motif et la couleur après des années où la retenue était considérée comme la seule position adulte. Son argument n'est pas que plus c'est mieux. C'est qu'une pièce doit pouvoir accueillir les personnes qui y vivent, y compris les parties d'elles-mêmes qui ne se photographient pas proprement. Nous lui avons posé sept questions."
             },
             {
@@ -46084,15 +46084,15 @@
               "content": "Je ne pense pas que cela signifie que le minimalisme soit faux, ou que chaque pièce doive être remplie de motifs et de couleurs. Il s'agit plutôt de remettre en question l'idée qu'il existe une seule façon correcte pour une maison d'être. Pourquoi une pièce ne serait-elle pas joyeuse ? Pourquoi ne pas exposer une collection légèrement ridicule simplement parce qu'elle vous rend heureux ?"
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Cette liberté est une grande partie de ce qui m'a attiré vers le maximalisme. J'adore la couleur, le motif, les pièces vintage, les choses avec de l'histoire et des intérieurs qui ont un peu d'excentricité. Je suis beaucoup plus intéressé à savoir si quelque chose semble significatif qu'à savoir s'il s'intègre proprement dans une définition acceptée du bon goût."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Pour moi, le maximalisme contemporain n'est pas vraiment une rébellion pour la rébellion. Il s'agit de donner aux gens la permission de faire confiance à leurs propres instincts et de vivre dans un espace qui les représente, qui ressemble à une maison et qui embrasse qui ils sont."
             },
             {
-              "type": "citation",
+              "type": "quote",
               "content": "Je veux qu'une pièce se sente collectionnée plutôt que coordonnée."
             },
             {
