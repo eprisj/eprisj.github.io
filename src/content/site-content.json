@@ -45935,7 +45935,7 @@
         {
           "id": 35,
           "title": "Abbie Downey : Collecté, Non Coordonné",
-          "author": "EPRIS Journal",
+          "author": "Munister",
           "role": "Rédaction",
           "date": "8 septembre 2026",
           "excerpt": "La fondatrice de Feather & Fossil sur le rythme visuel, la différence entre superposé et chaotique, et pourquoi une maison doit se lire comme une continuité plutôt que comme une préservation.",
@@ -45951,12 +45951,16 @@
           "showCover": true,
           "content": [
             {
-              "type": "text",
-              "content": "Abbie Downey rénove une maison géorgienne, sa deuxième propriété de période, et c'est une chose utile à savoir avant de regarder ses pièces. Feather & Fossil, la pratique qu'elle a fondée, traite de rayures peintes et cheminées bleues, de papier peint à motifs au-dessus de carreaux bleus, d'un mur de tirages encadrés et de miroirs suspendus de près. Cela se lit comme une abondance. C'est, à y regarder de plus près, un ensemble de décisions."
+              "type": "texte",
+              "content": "La série d'entretiens du Journal EPRIS se tourne ce mois-ci vers Abbie Downey, fondatrice du studio Feather & Fossil à Londres et l'une des designers créditées pour avoir ramené la couleur et le motif dans les intérieurs britanniques après une longue période de retenue. Ses pièces sont denses, superposées et indéniablement habitées – c'est là que notre conversation commence."
             },
             {
-              "type": "text",
-              "content": "Reconnu par Next in Design, Downey appartient à une génération de designers britanniques réhabilitant le motif et la couleur après des années où la retenue était considérée comme la seule position adulte. Son argument n'est pas que plus c'est mieux. C'est qu'une pièce doit pouvoir accueillir les personnes qui y vivent, y compris les parties d'elles-mêmes qui ne photographient pas proprement. Nous lui avons posé sept questions."
+              "type": "texte",
+              "content": "Elle rénove une maison géorgienne, sa deuxième propriété d'époque, et c'est une chose utile à savoir avant de regarder ses pièces. Feather & Fossil se spécialise dans les rayures peintes et les cheminées bleues, le papier peint à motifs au-dessus de carreaux bleus, un mur de gravures encadrées et de miroirs suspendus de près. Cela donne l'impression d'abondance. C'est, à y regarder de plus près, un ensemble de décisions."
+            },
+            {
+              "type": "texte",
+              "content": "Reconnaissante par le biais de Next in Design, Downey appartient à une génération de designers britanniques réhabilitant le motif et la couleur après des années où la retenue était considérée comme la seule position adulte. Son argument n'est pas que plus c'est mieux. C'est qu'une pièce doit pouvoir accueillir les personnes qui y vivent, y compris les parties d'elles-mêmes qui ne se photographient pas proprement. Nous lui avons posé sept questions."
             },
             {
               "type": "image",
@@ -45966,12 +45970,12 @@
             },
             {
               "type": "header",
-              "content": "Vos intérieurs sont expressifs, mais ils ne semblent jamais accidentels. Lorsque vous superposez des couches de couleur, de motif et d'objets, qu'est-ce qui vous indique qu'ils appartiennent ensemble plutôt que de simplement rivaliser pour l'attention?",
+              "content": "Vos intérieurs sont expressifs, mais ils ne semblent jamais accidentels. Lorsque vous superposez des couches de couleur, de motif et d'objets, qu'est-ce qui vous indique qu'ils appartiennent ensemble plutôt que de simplement rivaliser pour l'attention ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Je pense que la différence entre une pièce qui semble stratifiée et une qui semble chaotique est généralement l'intention. Pour moi, le maximalisme ne consiste pas simplement à mettre plus de choses dans une pièce ; il s'agit de créer des relations entre elles. La couleur, le motif, la texture et les objets peuvent tous être assez audacieux individuellement, mais il doit y avoir quelque chose qui les relie, une similarité. Cela pourrait être une couleur répétée, une tonalité partagée, une forme ou un matériau qui apparaît plus d'une fois."
+              "content": "Je pense que la différence entre une pièce qui semble superposée et une qui semble chaotique est généralement l'intention. Pour moi, le maximalisme ne consiste pas simplement à mettre plus de choses dans une pièce ; il s'agit de créer des relations entre elles. La couleur, le motif, la texture et les objets peuvent tous être assez audacieux individuellement, mais il doit y avoir quelque chose qui les relie, une similarité. Cela pourrait être une couleur répétée, une tonalité partagée, une forme ou un matériau qui apparaît plus d'une fois."
             },
             {
               "type": "text",
@@ -45979,29 +45983,29 @@
             },
             {
               "type": "text",
-              "content": "En fin de compte, je veux qu'une pièce se sente collectionnée plutôt que coordonnée. Je suis beaucoup plus intéressé à créer un sentiment que les choses ont trouvé leur chemin ensemble au fil du temps plutôt que de faire en sorte que tout ressemble à venir de la même collection."
+              "content": "En fin de compte, je veux qu'une pièce semble collectionnée plutôt que coordonnée. Je suis beaucoup plus intéressé à créer un sentiment que les choses ont trouvé leur chemin ensemble au fil du temps plutôt que de faire en sorte que tout ressemble à venir de la même collection."
             },
             {
               "type": "header",
-              "content": "Lorsque vous commencez une pièce, qu'est-ce qui tend à tout mettre en place ? Est-ce généralement un objet, une couleur, un tissu, ou est-ce plus un sentiment instinctif au début ?",
+              "content": "Lorsque vous commencez une pièce, qu'est-ce qui tend à tout mettre en place ? Est-ce généralement un objet, une couleur, un tissu, ou est-ce plutôt une sensation instinctive au début ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Pour moi, il n’y a pas vraiment de formule, ce qui explique probablement pourquoi je trouve le processus si agréable. Parfois, c’est un élément qui déclenche tout : un morceau de tissu, une œuvre d’art, une trouvaille vintage. Parfois, c’est une pièce incontournable d’un client qui lance le processus, et souvent cela tournera autour d’éléments essentiels tels que la disposition de la pièce ou les aspects pratiques de la vie de famille moderne."
+              "content": "Pour moi, il n'y a pas vraiment de formule unique, ce qui explique probablement pourquoi je trouve le processus si agréable. Parfois, c'est un élément qui lance tout : un morceau de tissu, une œuvre d'art, une trouvaille vintage. Parfois, c'est une pièce incontournable du client qui démarre le processus, et souvent cela tourne autour d'éléments essentiels tels que la disposition de la pièce ou les aspects pratiques de la vie de famille moderne."
             },
             {
               "type": "text",
-              "content": "Très souvent, cependant, c’est un sentiment. J’aurai une intuition sur la direction que je veux donner à quelque chose avant de pouvoir nécessairement l’articuler précisément pourquoi. Je pense que cela vient de l’absorption constante d’intérieurs, d’architecture, de voyages, d’art et du monde qui m’entoure. Vous constituez cette bibliothèque visuelle sans forcément vous en rendre compte, et finalement vous commencez à faire des connexions presque instinctivement."
+              "content": "Souvent, cependant, c'est un sentiment. J'aurai une intuition sur la direction que je veux donner à quelque chose avant de pouvoir nécessairement l'exprimer précisément. Je pense que cela vient de l'absorption constante d'intérieurs, d'architecture, de voyages, d'art et du monde qui m'entoure. Vous constituez cette bibliothèque visuelle sans forcément vous en rendre compte, et finalement vous commencez à faire des connexions presque instinctivement."
             },
             {
               "type": "text",
-              "content": "J’aime aussi laisser une pièce évoluer plutôt que d’essayer de tout décider en même temps. Je peux connaître la palette de couleurs et avoir une ou deux pièces clés, mais je veux qu’il y ait de la place pour l’inattendu. Certains de mes éléments préférés sont ceux qui n’étaient pas nécessairement prévus dans le plan initial."
+              "content": "J'aime aussi laisser une pièce évoluer plutôt que d'essayer de tout décider en même temps. Je peux connaître la palette de couleurs et avoir une ou deux pièces clés, mais je veux qu'il y ait de la place pour l'inattendu. Certains de mes éléments préférés sont ceux qui n'étaient pas nécessairement prévus dans le plan initial."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
-              "caption": "La cuisine : papier peint à motifs au-dessus de carreaux bleus à motif, avec des robinets en laiton au-dessus d’un évier en métal. Le motif est autorisé à se juxtaposer au motif.",
+              "caption": "La cuisine : papier peint figuré au-dessus de carreaux bleus à motif, avec des robinets en laiton au-dessus d'un évier en métal. Le motif est autorisé à s'appuyer contre le motif.",
               "align": "center"
             },
             {
@@ -46011,7 +46015,7 @@
             },
             {
               "type": "text",
-              "content": "Je pense que les maisons anciennes vous racontent beaucoup si vous êtes prêt à les écouter. Je suis particulièrement attiré par les propriétés géorgiennes, victoriennes et edwardiennes parce qu'elles ont un sens de l'identité avant même que vous n'y ajoutiez quoi que ce soit. Les proportions, cheminées, planchers, moulures et petites imperfections contribuent toutes à cela."
+              "content": "Je pense que les maisons anciennes vous racontent beaucoup si vous êtes prêt à les écouter. Je suis particulièrement attiré par les propriétés géorgiennes, victoriennes et edwardiennes parce qu'elles ont un sens de l'identité avant même que vous n'y ajoutiez quoi que ce soit. Les proportions, cheminées, sols, moulures et petites imperfections contribuent toutes à cela."
             },
             {
               "type": "text",
@@ -46019,26 +46023,26 @@
             },
             {
               "type": "text",
-              "content": "C'est quelque chose dont je suis devenu particulièrement conscient en rénovant ma propre maison géorgienne. Vous commencez à remarquer toutes les preuves des personnes qui y ont vécu avant vous : les changements qu'elles ont apportés, les choses qu'elles ont réparées, les choses qui ont survécu grâce à un bon artisanat. Je trouve cela incroyablement intéressant."
+              "content": "C’est quelque chose dont je suis devenu particulièrement conscient en rénovant ma propre maison géorgienne. Vous commencez à remarquer toutes les preuves des personnes qui y ont vécu avant vous : les changements qu’elles ont apportés, les choses qu’elles ont réparées, les choses qui ont survécu grâce à un bon artisanat. Je trouve cela incroyablement intéressant."
             },
             {
               "type": "text",
-              "content": "Donc je dirais que mon rôle consiste moins à préserver une histoire exactement telle qu'elle était et plus à la continuer. Je veux que de nouvelles interventions aient l'impression d'appartenir à la conversation avec ce qui était déjà là."
+              "content": "Donc je dirais que mon rôle consiste moins à préserver une histoire exactement telle qu’elle était et plus à la continuer. Je veux que les nouvelles interventions aient l’impression d’appartenir à la conversation avec ce qui était déjà là."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirn5pg44cw9.jpg",
-              "caption": "Une table usée et un tapis tissé, photographiés de près : une surface qui enregistre l'usage plutôt que de le dissimuler.",
-              "align": "centre"
+              "caption": "Une table usée et un tapis tissé, photographiés de près : une surface qui enregistre l’usage plutôt que de le dissimuler.",
+              "align": "center"
             },
             {
               "type": "header",
-              "content": "L'intérieur domestique a toujours été une forme d'auto-représentation, façonnée par le goût, la mémoire et les objets que les gens choisissent pour vivre avec. Vois-tu une maison presque comme une archive personnelle, et comment traduis-tu quelque chose de si privé en une pièce ?",
+              "content": "L’intérieur domestique a toujours été une forme d’auto-représentation, façonnée par le goût, la mémoire et les objets avec lesquels les gens choisissent de vivre. Considérez-vous une maison presque comme une archive personnelle, et comment traduisez-vous quelque chose d’aussi privé en une pièce ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Absolument. Les meilleures maisons, pour moi, sont celles où l'on peut apprendre quelque chose sur les personnes qui y vivent simplement en regardant autour."
+              "content": "Absolument. Les meilleures maisons, pour moi, sont celles où vous pouvez apprendre quelque chose sur les personnes qui y vivent simplement en regardant autour."
             },
             {
               "type": "text",
@@ -46050,7 +46054,7 @@
             },
             {
               "type": "text",
-              "content": "Je vois le processus de conception comme une sorte de traduction. Un client peut savoir qu’il veut que sa maison se sente chaleureuse, joyeuse, adulte ou légèrement excentrique sans savoir exactement comment y parvenir visuellement. Mon travail consiste à prendre ces choses très personnelles, parfois assez intangibles, et à les transformer en couleur, motif, texture, mobilier et objets."
+              "content": "Je vois le processus de conception comme une sorte de traduction. Un client pourrait savoir qu’il veut que sa maison se sente chaleureuse, joyeuse, adulte ou légèrement excentrique sans savoir exactement comment y parvenir visuellement. Mon travail consiste à prendre ces choses très personnelles, parfois assez intangibles, et à les transformer en couleur, motif, texture, mobilier et objets."
             },
             {
               "type": "image",
@@ -46065,60 +46069,60 @@
             },
             {
               "type": "text",
-              "content": "Je pense qu'il existe depuis longtemps une idée selon laquelle le bon goût consiste à savoir quand s'arrêter : que la retenue, la simplicité et le minimalisme sont d'une certaine manière plus sophistiqués. Le maximalisme remet en question cette idée parce qu'il permet aux gens d'apprécier les choses simplement parce qu'ils les aiment."
+              "content": "Je pense qu'il existe depuis longtemps une idée selon laquelle le bon goût signifie savoir quand s'arrêter : que la retenue, la simplicité et le minimalisme sont d'une certaine manière plus sophistiqués. Le maximalisme remet en question cette idée car il permet aux gens d'apprécier les choses simplement parce qu'ils les aiment."
             },
             {
               "type": "text",
               "content": "Je ne pense pas que cela signifie que le minimalisme soit faux, ou que chaque pièce doive être remplie de motifs et de couleurs. Il s'agit plutôt de remettre en question l'idée qu'il existe une seule façon correcte pour une maison d'être. Pourquoi une pièce ne serait-elle pas joyeuse ? Pourquoi ne pas exposer une collection légèrement ridicule simplement parce qu'elle vous rend heureux ?"
             },
             {
-              "type": "text",
-              "content": "Cette liberté fait partie intégrante de ce qui m'a attiré vers le maximalisme. J'adore la couleur, les motifs, les pièces vintage, les choses avec une histoire et des intérieurs qui ont un peu d'excentricité. Je suis bien plus intéressé à savoir si quelque chose a du sens qu'à savoir s'il s'intègre parfaitement dans une définition acceptée du bon goût."
+              "type": "texte",
+              "content": "Cette liberté est une grande partie de ce qui m'a attiré vers le maximalisme. J'adore la couleur, le motif, les pièces vintage, les choses avec de l'histoire et des intérieurs qui ont un peu d'excentricité. Je suis beaucoup plus intéressé à savoir si quelque chose semble significatif qu'à savoir s'il s'intègre proprement dans une définition acceptée du bon goût."
             },
             {
-              "type": "text",
-              "content": "Pour moi, le maximalisme contemporain n’est pas vraiment une question de rébellion pour la rébellion. Il s’agit de donner aux gens la permission de faire confiance à leurs propres instincts et de vivre dans un espace qui les représente, qui ressemble à une maison et qui embrasse qui ils sont."
+              "type": "texte",
+              "content": "Pour moi, le maximalisme contemporain n'est pas vraiment une rébellion pour la rébellion. Il s'agit de donner aux gens la permission de faire confiance à leurs propres instincts et de vivre dans un espace qui les représente, qui ressemble à une maison et qui embrasse qui ils sont."
             },
             {
-              "type": "quote",
-              "content": "Je veux qu’une pièce se sente recueillie plutôt que coordonnée."
+              "type": "citation",
+              "content": "Je veux qu'une pièce se sente collectionnée plutôt que coordonnée."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
-              "caption": "Un panneau en forme d’éclat de soleil au-dessus de la cheminée, encadré par du papier peint qui refuse de reculer. Rien ici n’essaie d’être discret.",
+              "caption": "Un panneau en forme de rayon de soleil au-dessus de la cheminée, encadré par du papier peint qui refuse de reculer. Rien ici n'essaie d'être discret.",
               "align": "centre"
             },
             {
               "type": "header",
-              "content": "Notre sens du goût provient souvent de choses que nous absorbons presque sans y prêter attention : les maisons dans lesquelles nous avons grandi, les endroits que nous visitons, les objets familiaux. Qu’est-ce qui, selon vous, a le plus façonné votre propre goût visuel ?",
+              "content": "Notre sens du goût provient souvent de choses que nous absorbons presque sans y prêter attention : les maisons dans lesquelles nous avons grandi, les endroits que nous visitons, les objets familiaux. Qu'est-ce qui, selon vous, a le plus façonné votre propre goût visuel ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Probablement une combinaison d'endroits, de bâtiments et des choses que j’ai collectées en chemin. J’ai toujours été attiré par les bâtiments anciens et les intérieurs avec un sens de l’histoire, et j’aime la façon dont la couleur et le motif sont utilisés dans des endroits comme Maroc, Mexique, Espagne et Italie. Il y a quelque chose dans ces espaces qui semble incroyablement instinctif : motif à côté de motif, couleur vive, texture, artisanat et objets avec un sens de l’âge."
+              "content": "Probablement une combinaison d'endroits, de bâtiments et des choses que j'ai collectées en chemin. J'ai toujours été attiré par des bâtiments et des intérieurs plus anciens avec un sens de l'histoire, et j'adore la façon dont la couleur et le motif sont utilisés dans des endroits comme le Maroc, le Mexique, l'Espagne et l'Italie. Il y a quelque chose dans ces espaces qui semble incroyablement instinctif : motif côte à côte avec motif, couleur vive, texture, artisanat et objets avec un sens de l'âge."
             },
             {
               "type": "text",
-              "content": "Je suis aussi très influencé par l’idée que les choses soient collectionnées plutôt que parfaitement assorties. Les pièces vintage et récupérées m’ont toujours plu parce qu’elles apportent un sens de l’histoire et de l’individualité que l’on ne peut tout simplement pas obtenir en achetant tout en même temps."
+              "content": "Je suis aussi très influencé par l'idée que les choses sont collectionnées plutôt que parfaitement assorties. Les pièces vintage et récupérées m'ont toujours plu parce qu'elles apportent un sens de l'histoire et de l'individualité que l'on ne peut tout simplement pas obtenir en achetant tout en même temps."
             },
             {
               "type": "text",
-              "content": "Et puis il y a les maisons dans lesquelles j’ai vécu. Tout au long de mon enfance, mon père réinventait constamment notre maison et nos pièces. Il n’était jamais limité par le style de la maison dans laquelle nous vivions, mais était davantage guidé par ce qu’il aimait : l’artisanat, la création et l’expérimentation. Ensuite, vivre dans des constructions neuves minimalistes louées pendant mes vingt ans m’a fait aspirer à une maison pleine de caractère, de personnalité et d’histoire. Cela m’a conduit à rénover ma première maison et maintenant ma deuxième. Les deux sont des propriétés d’époque, et les deux ont été abordées avec une mentalité maximaliste qui célèbre notre style en tant que famille : les choses que nous aimons, de petits moments de joie dans la vie quotidienne, et une maison conçue pour être habitée, pas seulement pour bien paraître sur une photographie."
+              "content": "Et puis il y a les maisons dans lesquelles j'ai vécu. Tout au long de mon enfance, mon père ne cessait de réinventer notre maison et nos pièces. Il n'était jamais limité par le style de la maison dans laquelle nous vivions, mais était davantage guidé par ce qu'il aimait : l'artisanat, la création et l'expérimentation. Ensuite, vivre dans des constructions neuves minimalistes louées pendant mes vingt ans m'a fait aspirer à une maison pleine de caractère, de personnalité et d'histoire. Cela m'a conduit à rénover ma première maison et maintenant ma deuxième. Les deux sont des propriétés d'époque, et les deux ont été abordées avec une mentalité maximaliste qui célèbre notre style en tant que famille : les choses que nous aimons, de petits moments de joie dans la vie quotidienne, et une maison conçue pour être habitée, pas seulement pour être belle en photographie."
             },
             {
               "type": "text",
-              "content": "Je pense qu’une grande partie de notre goût visuel se développe presque inconsciemment. Tu absorbes des choses de l’enfance, des voyages, des livres, des films, des bâtiments, des personnes et des lieux, et finalement toutes ces petites influences commencent à émerger dans ton propre travail."
+              "content": "Je pense que beaucoup de notre goût visuel se développe presque inconsciemment. Vous absorbez des choses depuis l'enfance, voyagez, livres, films, bâtiments, personnes et lieux, et finalement toutes ces petites influences commencent à émerger dans votre propre travail."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis1c266ocsm.jpg",
-              "caption": "Une chaise en rotin dans une petite pièce tapissée du sol au plafond, avec une seconde pièce tapissée au-delà.",
+              "caption": "Une chaise en rotin dans une petite pièce tapissée au sol et au plafond, avec une seconde pièce tapissée au-delà.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "Être reconnu par Next in Design a porté votre travail dans une conversation beaucoup plus large. À mesure que votre pratique grandit, y a-t-il quelque chose dans votre façon de travailler que vous vous sentez particulièrement déterminé à protéger ?",
+              "content": "Être reconnu par Next in Design a permis à votre travail d'entrer dans une conversation beaucoup plus large. À mesure que votre pratique grandit, y a-t-il quelque chose dans votre façon de travailler que vous vous sentez particulièrement déterminé à protéger ?",
               "level": 3
             },
             {
@@ -46127,7 +46131,7 @@
             },
             {
               "type": "text",
-              "content": "Être reconnu par Next in Design a été un moment tellement excitant pour Feather & Fossil et a ouvert la porte à des opportunités que je n'aurais jamais pu imaginer lorsque j'ai commencé. C’est incroyablement valorisant."
+              "content": "Être reconnu grâce à Next in Design a été un moment tellement excitant pour Feather & Fossil et a ouvert la porte à des opportunités que je n'aurais jamais pu imaginer lorsque j'ai commencé. C'est incroyablement valorisant."
             },
             {
               "type": "text",
@@ -46135,16 +46139,16 @@
             },
             {
               "type": "text",
-              "content": "Je veux aussi protéger la conviction qu’une maison doit ressembler aux personnes qui y vivent. Je ne veux pas créer des intérieurs parfaits mais interchangeables. Je veux continuer à défendre la couleur, le motif, les pièces vintage, l’individualité et le légèrement inattendu."
+              "content": "Je veux aussi protéger la conviction qu'une maison doit ressembler aux personnes qui y vivent. Je ne veux pas créer des intérieurs parfaits mais interchangeables. Je veux continuer à défendre la couleur, le motif, les pièces vintage, l'individualité et le légèrement inattendu."
             },
             {
               "type": "text",
-              "content": "Si quelque chose, être reconnu par Next in Design m’a donné plus de confiance pour faire confiance à cet instinct plutôt que moins. Je pense que la chose que je suis le plus déterminé à protéger est ce sentiment de liberté : la liberté d’expérimenter, d’être un peu audacieux, et de prendre des décisions parce qu’elles semblent justes plutôt que de chercher l’approbation des autres."
+              "content": "Si quelque chose, être reconnu grâce à Next in Design m'a donné plus de confiance pour faire confiance à cet instinct plutôt que moins. Je pense que la chose que je suis le plus déterminé à protéger est ce sentiment de liberté : la liberté d'expérimenter, d'être un peu audacieux, et de prendre des décisions parce qu'elles semblent justes plutôt que de chercher l'approbation des autres."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
-              "caption": "Un coin de travail : un bureau antique, une armoire en verre rouge, des paniers en jute suspendus.",
+              "caption": "Un coin de travail : un bureau antique, une vitrine en verre rouge, des paniers en jute suspendus.",
               "align": "center"
             },
             {
@@ -46156,8 +46160,8 @@
               ],
               "caption": "Feather & Fossil, détails.",
               "alts": [
-                "Un pendentif en laiton et un panneau en forme de rayon de soleil au-dessus d'une cheminée tapissée.",
-                "Robinet en laiton contre une carreaux bleus à motifs.",
+                "Un pendentif en laiton et un panneau en rayons de soleil au-dessus d'une cheminée tapissée.",
+                "Robinet en laiton contre une carreaux bleus à motif.",
                 "Une cheminée avec un miroir peint, deux vases à motifs et une lampe avec un abat-jour vert."
               ]
             },
@@ -46169,7 +46173,7 @@
           "draft": true,
           "previewToken": "c2prGsB36VSXmwe9",
           "order": 0,
-          "updatedAt": "2026-09-08T10:43:43.115Z"
+          "updatedAt": "2026-09-08T13:33:13.509Z"
         }
       ],
       "reviews": [],
