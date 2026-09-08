@@ -32865,7 +32865,7 @@
         {
           "id": 35,
           "title": "Abbie Downey: Recopilado, No Coordinado",
-          "author": "EPRIS Journal",
+          "author": "Munister",
           "role": "Mesa Editorial",
           "date": "8 de septiembre de 2026",
           "excerpt": "La fundadora de Feather & Fossil sobre ritmo visual, la diferencia entre apilado y caótico, y por qué un hogar debe leerse como continuado en lugar de preservado.",
@@ -32881,17 +32881,21 @@
           "showCover": true,
           "content": [
             {
-              "type": "text",
-              "content": "Abbie Downey está renovando una casa georgiana, su segunda propiedad de época, y eso es una cosa útil de saber antes de mirar sus habitaciones. Feather & Fossil, la práctica que fundó, trata de rayas pintadas y chimeneas azules, papel tapiz con motivos sobre azulejos azules con patrón, una pared de impresiones enmarcadas y espejos colgados cerca. Parece abundancia. Es, al inspeccionarlo más de cerca, un conjunto de decisiones."
+              "type": "texto",
+              "content": "La serie de entrevistas de EPRIS Journal se vuelve este mes a Abbie Downey, fundadora del estudio Feather & Fossil en Londres y una de las diseñadoras acreditadas con devolver el color y el patrón a los interiores británicos después de un largo período de contención. Sus habitaciones son densas, superpuestas e inconfundiblemente habitadas – que es donde comienza nuestra conversación."
             },
             {
-              "type": "text",
-              "content": "Reconocida a través de Next in Design, Downey pertenece a una generación de diseñadores británicos que rehabilitan el patrón y el color después de años en los que la moderación se trataba como la única posición adulta. Su argumento no es que más sea mejor. Es que una habitación debe poder contener a las personas que viven en ella, incluyendo las partes de ellas que no se fotografían de manera ordenada. Le enviamos siete preguntas."
+              "type": "texto",
+              "content": "Ella está renovando una casa georgiana, su segunda propiedad de época, y eso es una cosa útil de saber antes de mirar sus habitaciones. Feather & Fossil se dedica a rayas pintadas y chimeneas azules, papel tapiz con patrones sobre azulejos azules, una pared de grabados y espejos colgados cerca. Se lee como abundancia. Es, al inspeccionarlo más de cerca, un conjunto de decisiones."
             },
             {
-              "type": "image",
+              "type": "texto",
+              "content": "Reconocida a través de Next in Design, Downey pertenece a una generación de diseñadores británicos que rehabilitan el patrón y el color después de años en los que la contención se trataba como la única posición adulta. Su argumento no es que más sea mejor. Es que una habitación debe poder contener a las personas que viven en ella, incluyendo las partes de ellas que no se fotografían de manera ordenada. Le enviamos siete preguntas."
+            },
+            {
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsirxbwsvcgzu.png",
-              "caption": "Una sala de estar por Feather & Fossil: rayas pintadas a mano, una chimenea en azul suave, y un armario que contiene las colecciones de una familia en lugar de una exhibición.",
+              "caption": "Una sala de estar por Feather & Fossil: rayas pintadas a mano, una chimenea en suave azul, y un armario que contiene las colecciones de una familia en lugar de una exhibición.",
               "align": "centro"
             },
             {
@@ -32905,116 +32909,116 @@
             },
             {
               "type": "text",
-              "content": "También creo que hay un elemento de instinto al juntar esquemas maximalistas. No deberíamos sentir miedo de que los elementos compitan por la atención porque personalmente me gusta una habitación que te da algo nuevo que notar cada vez que la miras. Pero debe haber un ritmo visual. Tiendo a alejarme y mirar la habitación en su conjunto en lugar de juzgar cada elemento individualmente. Debe haber elementos de ruido y silencio, luz y sombra, para permitir que una habitación se sienta cohesionada y exitosa."
+              "content": "También creo que hay un elemento de instinto al unir esquemas maximalistas. No deberíamos tener miedo de que los elementos compitan por la atención porque personalmente me gusta una habitación que te da algo nuevo para notar cada vez que la miras. Pero debe haber un ritmo visual. Tiende a alejarme y mirar la habitación en su conjunto en lugar de juzgar cada elemento individualmente. Deben existir elementos de ruido y silencio, luz y sombra, para permitir que una habitación se sienta cohesionada y exitosa."
             },
             {
               "type": "text",
-              "content": "En última instancia, quiero que una habitación se sienta coleccionada en lugar de coordinada. Estoy mucho más interesado en crear una sensación de que las cosas han encontrado su camino juntas con el tiempo que en hacer que todo parezca que proviene de la misma colección."
+              "content": "En última instancia, quiero que una habitación se sienta recopilada en lugar de coordinada. Estoy mucho más interesado en crear una sensación de que las cosas han encontrado su camino juntas con el tiempo que en hacer que todo parezca que proviene de la misma colección."
             },
             {
               "type": "header",
-              "content": "Cuando comienzas una habitación, ¿qué tiende a juntar todo lo demás en su lugar? ¿Es generalmente un objeto, un color, una tela, o es más una sensación instintiva al principio?",
+              "content": "¿Cuando comienzas una habitación, qué tiende a poner todo lo demás en su lugar? ¿Es generalmente un objeto, un color, una tela, o es más una sensación instintiva al principio?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Para mí, realmente no hay una fórmula, que probablemente sea la razón por la que encuentro el proceso tan agradable. A veces es un elemento que inicia todo: un trozo de tela, una obra de arte, un hallazgo vintage. A veces es la pieza imprescindible de un cliente que inicia el proceso, y a menudo girará en torno a elementos esenciales como la distribución de la habitación o las prácticas de la vida familiar moderna."
+              "content": "Para mí, realmente no hay una fórmula, lo cual probablemente explica por qué encuentro el proceso tan agradable. A veces es un elemento que inicia todo: un trozo de tela, una obra de arte, un hallazgo vintage. A veces es una pieza imprescindible del cliente que inicia el proceso, y a menudo girará en torno a elementos esenciales como la distribución de la habitación o las prácticas de la vida familiar moderna."
             },
             {
               "type": "text",
-              "content": "Con bastante frecuencia, sin embargo, es un sentimiento. Tendré un instinto sobre la dirección que quiero tomar con algo antes de poder articular exactamente por qué. Creo que eso proviene de absorber constantemente interiores, arquitectura, viajes, arte y el mundo que me rodea. Construyes esta biblioteca visual sin necesariamente darte cuenta, y eventualmente comienzas a hacer conexiones casi instintivamente."
+              "content": "Sin embargo, muy a menudo, es una sensación. Tendré un instinto sobre la dirección en la que quiero llevar algo antes de poder articular exactamente por qué. Creo que eso proviene de absorber constantemente interiores, arquitectura, viajes, arte y el mundo que me rodea. Construyes esta biblioteca visual sin necesariamente darte cuenta, y eventualmente comienzas a hacer conexiones casi instintivamente."
             },
             {
               "type": "text",
               "content": "También me gusta dejar que una habitación evolucione en lugar de tratar de decidir todo de una vez. Podría conocer la paleta de colores y tener una o dos piezas clave, pero quiero que haya espacio para lo inesperado. Algunos de mis elementos favoritos son las cosas que no formaban necesariamente parte del plan original."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsirtd5vrdsml.jpg",
-              "caption": "La cocina: papel tapiz con figuras encima de azulejos azules con patrón, con grifos de latón sobre un fregadero de metal. Se permite que el patrón se asiente contra el patrón.",
+              "caption": "La cocina: papel tapiz con figuras sobre azulejo azul con patrón, con grifos de latón sobre un fregadero de metal. Se permite que el patrón se apoye contra el patrón.",
               "align": "centro"
             },
             {
-              "type": "header",
-              "content": "Las casas antiguas llevan rastros de las vidas que nos precedieron, en la arquitectura, los materiales, las alteraciones, incluso las pequeñas imperfecciones. ¿Cuánto intentas descubrir esa historia antes de tomar nuevas decisiones, y ves tu papel como preservar la historia o continuarla?",
+              "type": "encabezado",
+              "content": "Las casas antiguas llevan rastros de las vidas que nos precedieron, en la arquitectura, los materiales, las alteraciones, incluso las pequeñas imperfecciones. ¿Cuánto intentas descubrir esa historia antes de tomar decisiones nuevas, y ves tu papel como preservar la historia o continuarla?",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Creo que las casas antiguas te dicen mucho si estás dispuesto a escucharlas. Me atraen particularmente las propiedades georgianas, victoriana y edwardiana porque tienen un sentido de identidad incluso antes de que pongas algo en ellas. Las proporciones, chimeneas, suelos, molduras y pequeñas imperfecciones contribuyen a eso."
+              "type": "texto",
+              "content": "Creo que las casas antiguas te dicen mucho si estás dispuesto a escucharlas. Me atraen particularmente las propiedades georgianas, victorianas y edwardianas porque tienen un sentido de identidad incluso antes de que pongas algo en ellas. Las proporciones, chimeneas, pisos, molduras y pequeñas imperfecciones contribuyen a eso."
             },
             {
-              "type": "text",
-              "content": "Estoy interesado en entender la historia de un edificio, pero no creo que eso signifique intentar convertirlo en un museo. Los hogares están destinados a evolucionar. Siempre habrá capas de diferentes vidas dentro de ellos, y creo que los interiores más exitosos reconocen esas capas en lugar de intentar borrarlas o preservarlas hasta el punto de que se vuelvan imprácticas para la vida familiar moderna."
+              "type": "texto",
+              "content": "Estoy interesado en entender la historia de un edificio, pero no creo que eso signifique tratar de convertirlo en un museo. Las casas están destinadas a evolucionar. Siempre habrá capas de diferentes vidas dentro de ellas, y creo que los interiores más exitosos reconocen esas capas en lugar de tratar de borrarlas o preservarlas hasta el punto de que se vuelvan imprácticas para la vida familiar moderna."
             },
             {
-              "type": "text",
-              "content": "Eso es algo de lo que me he vuelto particularmente consciente a través de la renovación de mi propia casa georgiana. Comienzas a notar toda la evidencia de las personas que han vivido allí antes que tú: los cambios que hicieron, las cosas que repararon, las cosas que han sobrevivido gracias a una buena artesanía. Me parece increíblemente interesante."
+              "type": "texto",
+              "content": "Eso es algo de lo que me he vuelto particularmente consciente a través de la renovación de mi propia casa georgiana. Comienzas a notar toda la evidencia de las personas que han vivido allí antes que tú: los cambios que hicieron, las cosas que repararon, las cosas que han sobrevivido gracias a una buena artesanía. Encuentro eso increíblemente interesante."
             },
             {
-              "type": "text",
-              "content": "Así que diría que mi papel tiene menos que ver con preservar una historia exactamente como fue y más con continuarla. Quiero que las nuevas intervenciones parezcan que pertenecen a la conversación con lo que ya estaba allí."
+              "type": "texto",
+              "content": "Así que diría que mi papel es menos preservar una historia exactamente como era y más continuarla. Quiero que las nuevas intervenciones parezcan que pertenecen a la conversación con lo que ya estaba allí."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsirn5pg44cw9.jpg",
               "caption": "Una mesa de superficie desgastada y un tapiz tejido, fotografiados de cerca: una superficie que registra el uso en lugar de ocultarlo.",
               "align": "centro"
             },
             {
-              "type": "header",
+              "type": "encabezado",
               "content": "El interior doméstico siempre ha sido una forma de autorrepresentación, moldeada por el gusto, la memoria y los objetos con los que las personas eligen vivir. ¿Ves un hogar casi como un archivo personal, y cómo traduces algo tan privado en una habitación?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Absolutamente. Los mejores hogares, para mí, son aquellos donde puedes aprender algo sobre las personas que viven allí simplemente mirando alrededor."
+              "content": "Absolutamente. Las mejores casas, para mí, son aquellas donde puedes aprender algo sobre las personas que viven allí simplemente mirando alrededor."
             },
             {
               "type": "text",
-              "content": "Creo que nuestros hogares contienen mucho más de nosotros de lo que a veces nos damos cuenta. Los objetos que conservamos, los colores hacia los que nos inclinamos, las cosas que heredamos, los lugares a los que hemos viajado e incluso las cosas de las que nos negamos a deshacernos, todos cuentan una historia."
+              "content": "Creo que nuestras casas contienen mucho más de nosotros de lo que a veces nos damos cuenta. Los objetos que conservamos, los colores a los que nos inclinamos, las cosas que heredamos, los lugares a los que hemos viajado e incluso las cosas que nos negamos a deshacernos, todos cuentan una historia."
             },
             {
               "type": "text",
-              "content": "Esa es una de las razones por las que me encanta trabajar con clientes. No me interesa imponer una versión particular de cómo creo que debería ser su hogar. Quiero entender qué les hace sentirse en casa. A veces eso se refleja de manera obvia (una colección, un mueble o algo con valor sentimental), y otras veces es mucho más sutil."
+              "content": "Esa es una de las razones por las que me encanta trabajar con clientes. No me interesa imponer una versión particular de cómo creo que debería ser su hogar. Quiero entender qué los hace sentirse en casa. A veces eso se refleja de manera obvia (una colección, un mueble o algo con valor sentimental), y a veces es mucho más sutil."
             },
             {
               "type": "text",
               "content": "Veo el proceso de diseño como una especie de traducción. Un cliente puede saber que quiere que su hogar se sienta cálido, alegre, maduro o ligeramente excéntrico sin saber exactamente cómo lograrlo visualmente. Mi trabajo es tomar esas cosas muy personales, a veces bastante intangibles, y convertirlas en color, patrón, textura, muebles y objetos."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsiry9sr2frcb.jpg",
-              "caption": "La pared de galería. Impresiones, espejos, postales y una portada de Vogue, colgados contra rayas pintadas.",
-              "align": "center"
+              "caption": "La pared de la galería. Impresiones, espejos, postales y una portada de Vogue, colgados contra rayas pintadas.",
+              "align": "centro"
             },
             {
-              "type": "header",
+              "type": "encabezado",
               "content": "El maximalismo ha existido durante mucho tiempo en tensión con la moderación, el orden y la idea de “buen gusto”. ¿Ves el maximalismo contemporáneo en parte como una reacción contra esas jerarquías?",
               "level": 3
             },
             {
-              "type": "text",
+              "type": "texto",
               "content": "Creo que ha existido una idea arraigada de que el buen gusto significa saber cuándo detenerse: que la moderación, la simplicidad y el minimalismo son de alguna manera más sofisticados. El maximalismo desafía esa idea porque permite a las personas disfrutar las cosas simplemente porque las aman."
             },
             {
-              "type": "text",
-              "content": "No creo que eso signifique que el minimalismo esté mal, o que cada habitación necesite estar llena de patrones y colores. Se trata más de cuestionar la idea de que hay una forma correcta para que un hogar luzca. ¿Por qué no debería una habitación ser alegre? ¿Por qué no deberías exhibir una colección ligeramente ridícula simplemente porque te hace feliz?"
+              "type": "texto",
+              "content": "No creo que eso signifique que el minimalismo esté mal, o que cada habitación deba llenarse de patrones y colores. Se trata más de cuestionar la idea de que hay una forma correcta para que un hogar luzca. ¿Por qué no debería una habitación ser alegre? ¿Por qué no deberías exhibir una colección ligeramente ridícula simplemente porque te hace feliz?"
             },
             {
-              "type": "text",
-              "content": "Esa libertad es una gran parte de lo que me atrajo del maximalismo. Me encanta el color, los patrones, las piezas vintage, las cosas con historia y los interiores que tienen un poco de excentricidad. Estoy mucho más interesado en si algo se siente significativo que en si encaja perfectamente en una definición aceptada de buen gusto."
+              "type": "texto",
+              "content": "Esa libertad es una gran parte de lo que me atrajo al maximalismo. Me encanta el color, el patrón, las piezas vintage, las cosas con historia y los interiores que tienen un poco de excentricidad. Estoy mucho más interesado en si algo se siente significativo que en si encaja perfectamente en una definición aceptada de buen gusto."
             },
             {
-              "type": "text",
-              "content": "Para mí, el maximalismo contemporáneo no se trata realmente de rebelión por el simple hecho. Se trata de dar a las personas permiso para confiar en sus propios instintos y vivir en un espacio que los represente, que se sienta como en casa y que abrace quiénes son."
+              "type": "texto",
+              "content": "Para mí, el maximalismo contemporáneo no se trata realmente de rebelión por el simple hecho de hacerlo. Se trata de dar permiso a las personas para confiar en sus propios instintos y vivir en un espacio que los represente, que se sienta como en casa y que abrace quiénes son."
             },
             {
-              "type": "quote",
+              "type": "cita",
               "content": "Quiero que una habitación se sienta recopilada en lugar de coordinada."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsirrrfz5p0nu.jpg",
               "caption": "Un panel de ráfaga de sol sobre la chimenea, enmarcado por papel tapiz que se niega a retroceder. Nada aquí intenta ser silencioso.",
               "align": "centro"
@@ -33026,7 +33030,7 @@
             },
             {
               "type": "text",
-              "content": "Probablemente una combinación de lugares, edificios y las cosas que he coleccionado a lo largo del camino. Siempre me han atraído los edificios antiguos e interiores con un sentido de historia, y me encanta la forma en que se usa el color y el patrón en lugares como Marruecos, México, España e Italia. Hay algo en esos espacios que se siente increíblemente instintivo: patrón junto a patrón, color fuerte, textura, artesanía y objetos con un sentido de antigüedad."
+              "content": "Probablemente una combinación de lugares, edificios y las cosas que he coleccionado a lo largo del camino. Siempre me han atraído los edificios antiguos y los interiores con un sentido de historia, y me encanta la forma en que se usa el color y el patrón en lugares como Marruecos, México, España e Italia. Hay algo en esos espacios que se siente increíblemente instintivo: patrón junto a patrón, color fuerte, textura, artesanía y objetos con un sentido de antigüedad."
             },
             {
               "type": "text",
@@ -33034,17 +33038,17 @@
             },
             {
               "type": "text",
-              "content": "Y luego están las casas en las que he vivido. Durante mi infancia, mi padre reinventaba constantemente nuestro hogar y habitaciones. Nunca estuvo limitado por el estilo de la casa en la que vivíamos, sino que se guiaba más por lo que amaba: crear, hacer y experimentar. Luego, vivir en alquiler en construcciones nuevas y minimalistas durante mis veinte años me hizo anhelar un hogar lleno de carácter, personalidad e historia. Esto me llevó a renovar mi primera casa y ahora mi segunda. Ambas son propiedades de época, y ambas han sido abordadas con una mentalidad maximalista que celebra nuestro estilo como familia: las cosas que amamos, pequeños momentos de alegría en la vida cotidiana, y un hogar que parece diseñado para ser vivido, no solo para lucir bien en una fotografía."
+              "content": "Y luego están los hogares en los que he vivido. A lo largo de mi infancia, mi papá reinventaba constantemente nuestro hogar y habitaciones. Nunca estuvo limitado por el estilo de la casa en la que vivíamos, sino más bien guiado por lo que amaba: crear, hacer y experimentar. Luego, vivir en alquileres, construcciones nuevas minimalistas durante mis veinte años me hizo anhelar un hogar lleno de carácter, personalidad e historia. Esto me llevó a renovar mi primera casa y ahora mi segunda. Ambas son propiedades de época, y ambas han sido abordadas con una mentalidad maximalista que celebra nuestro estilo como familia: las cosas que amamos, pequeños momentos de alegría en la vida cotidiana, y un hogar que se siente diseñado para ser vivido, no solo para lucir bien en una fotografía."
             },
             {
               "type": "text",
-              "content": "Creo que mucho de nuestro gusto visual se desarrolla casi de manera inconsciente. Absorbes cosas desde la infancia, viajes, libros, películas, edificios, personas y lugares, y eventualmente todas esas pequeñas influencias comienzan a surgir en tu propio trabajo."
+              "content": "Creo que mucho de nuestro gusto visual se desarrolla casi de manera inconsciente. Absorbes cosas desde la infancia, viajes, libros, películas, edificios, personas y lugares, y eventualmente todas esas pequeñas influencias comienzan a emerger en tu propio trabajo."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsis1c266ocsm.jpg",
-              "caption": "Una silla de ratán en una pequeña habitación empapelada de suelo a techo, con otra habitación empapelada más allá.",
-              "align": "centro"
+              "caption": "Una silla de ratán en una pequeña habitación empapelada de piso a techo, con otra habitación empapelada más allá.",
+              "align": "center"
             },
             {
               "type": "header",
@@ -33056,29 +33060,29 @@
               "content": "Probablemente la libertad de seguir mis instintos."
             },
             {
-              "type": "text",
-              "content": "Ser reconocido a través de Next in Design ha sido un momento tan emocionante para Feather & Fossil y ha abierto la puerta a oportunidades que nunca podría haber imaginado cuando comencé. Es increíblemente validante."
+              "type": "texto",
+              "content": "Ser reconocido a través de Next in Design ha sido un momento tan emocionante para Feather & Fossil y ha abierto la puerta a oportunidades que nunca podría haber imaginado cuando empecé. Es increíblemente validante."
             },
             {
-              "type": "text",
+              "type": "texto",
               "content": "Pero no quiero que el crecimiento haga que el trabajo se sienta menos personal. Quiero mantener ese sentido de curiosidad y juego, y quiero seguir diseñando espacios que tengan personalidad en lugar de simplemente seguir lo que se considere de moda."
             },
             {
-              "type": "text",
+              "type": "texto",
               "content": "También quiero proteger la creencia de que un hogar debe sentirse como las personas que viven allí. No quiero crear interiores que sean perfectos pero intercambiables. Quiero seguir defendiendo el color, el patrón, las piezas vintage, la individualidad y lo ligeramente inesperado."
             },
             {
-              "type": "text",
+              "type": "texto",
               "content": "Si acaso, ser reconocido a través de Next in Design me ha dado más confianza para confiar en ese instinto en lugar de menos. Creo que lo que más quiero proteger es esa sensación de libertad: la libertad de experimentar, de ser un poco audaz, y de tomar decisiones porque se sienten correctas en lugar de buscar la aprobación de otros."
             },
             {
-              "type": "image",
+              "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mtsis04peqgigs.jpg",
               "caption": "Un rincón de trabajo: un escritorio antiguo, un armario de vidrio rojo, cestas de yute colgantes.",
               "align": "centro"
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mtsiro3fmzktzd.jpg",
                 "https://api.eprisjournal.com/uploads/mtsirpzukuwagm.jpg",
@@ -33087,19 +33091,19 @@
               "caption": "Feather & Fossil, detalles.",
               "alts": [
                 "Un colgante de latón y un panel de ráfaga de sol sobre un pecho de chimenea empapelado.",
-                "Llaves de latón contra azulejo de patrón azul.",
-                "Un repisa con un espejo pintado, dos vasijas con patrón y una lámpara con pantalla verde."
+                "Grifos de latón contra azulejo de patrón azul.",
+                "Una repisa con un espejo pintado, dos vasijas con patrón y una lámpara con pantalla verde."
               ]
             },
             {
-              "type": "text",
+              "type": "texto",
               "content": "Fotografía: Paul Secker, Secker Studios. Entrevista realizada por escrito para EPRIS Journal, septiembre de 2026."
             }
           ],
           "draft": true,
           "previewToken": "c2prGsB36VSXmwe9",
           "order": 0,
-          "updatedAt": "2026-09-08T10:42:23.930Z"
+          "updatedAt": "2026-09-08T13:31:15.142Z"
         }
       ],
       "reviews": [
