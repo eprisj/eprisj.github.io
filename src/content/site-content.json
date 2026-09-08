@@ -7707,7 +7707,8 @@
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtskkw6ktt47sz.jpg",
           "align": "center",
-          "caption": "The method in two drawings: a fan of glissandi on the left, the same rulings given depth on the right. Diagram: EPRIS Journal."
+          "caption": "The method in two drawings: a fan of glissandi on the left, the same rulings given depth on the right.",
+          "credit": "Diagram: EPRIS Journal"
         },
         {
           "type": "text",
@@ -7716,8 +7717,10 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
-          "caption": "The Philips Pavilion at Expo 58, Brussels: nine concrete shells, each one a ruled surface of the kind Xenakis had drawn as glissandi. Photo: Anefo, CC0, via Wikimedia Commons.",
-          "align": "center"
+          "caption": "The Philips Pavilion at Expo 58, Brussels: nine concrete shells, each one a ruled surface of the kind Xenakis had drawn as glissandi.",
+          "align": "center",
+          "credit": "Photo: Anefo, CC0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Expo_58,_Philips_paviljoen_foto_2.jpg"
         },
         {
           "type": "video",
@@ -7743,9 +7746,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtsjcyljd4lptv.jpg",
-          "caption": "Elbphilharmonie, Hamburg: the glass upper storeys, each pane curved or cut, sitting directly on the brick of the Kaispeicher warehouse. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons.",
+          "caption": "Elbphilharmonie, Hamburg: the glass upper storeys, each pane curved or cut, sitting directly on the brick of the Kaispeicher warehouse.",
           "credit": "Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6569.jpg"
         },
         {
           "type": "text",
@@ -7759,9 +7762,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
-          "caption": "Casa da Música, Porto: one of the folded concrete planes, with the corrugated glass that lights the hall behind it. Photo: Dale Cruse, CC BY 4.0, via Wikimedia Commons.",
-          "credit": "Photo: John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
+          "caption": "Casa da Música, Porto: one of the folded concrete planes, with the corrugated glass that lights the hall behind it.",
+          "credit": "Photo: Dale Cruse, CC BY 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Angular_Facade_of_Casa_da_M%C3%BAsica,_Porto,_Portugal_(54831648382).jpg"
         },
         {
           "type": "text",
@@ -7771,7 +7774,8 @@
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtskkwj2g1d662.jpg",
           "align": "center",
-          "caption": "The same three buildings in plan: a tent of ruled surfaces, terraces climbing around a stage, a straight hall hidden in a folded block. Diagram: EPRIS Journal."
+          "caption": "The same three buildings in plan: a tent of ruled surfaces, terraces climbing around a stage, a straight hall hidden in a folded block.",
+          "credit": "Diagram: EPRIS Journal"
         },
         {
           "type": "text",
@@ -7782,7 +7786,7 @@
           "content": "Photographs: cover, Elbphilharmonie on its opening night, 11 January 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie facade, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). All via Wikimedia Commons. Diagrams drawn for EPRIS Journal."
         }
       ],
-      "updatedAt": "2026-09-08T11:12:43.459Z",
+      "updatedAt": "2026-09-08T11:14:49.090Z",
       "showCover": true
     },
     {
