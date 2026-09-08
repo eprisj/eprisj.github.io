@@ -38780,12 +38780,11 @@
         },
         {
           "id": 33,
-          "draft": true,
           "previewToken": "efc77a042906fe45008533dd",
           "title": "Bir Skora Göre İnşa Edilen: Müzik Mimariyi Yazdığı Üç Bina",
           "author": "Viacheslav Munister",
           "role": "Yazar",
-          "date": "5 Eylül 2026",
+          "date": "8 Eylül 2026",
           "category": "Mimarlık",
           "subcategory": "Deneme",
           "desk": "music",
@@ -38800,7 +38799,7 @@
           ],
           "imageSeed": "built-to-a-score",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtskaws3pef1bg.jpg",
-          "excerpt": "Çoğu bina müzik barındırır: bir sahne, duvarlar, bir program, iyi akustik. Bir avuç bina ise daha garip bir şey yapar ve bir müzik parçasına doğrudan tasarım yaptırır veya ses tutma sorununa karar vermesine izin verir, her şey çatısından koltuklara kadar. Üç bina, iki disiplin arasında üç farklı pazarlık.",
+          "excerpt": "Çoğu bina müzik barındırır: bir sahne, duvarlar, bir program, iyi akustikler. Bir avuç bina ise daha garip bir şey yapar ve bir müzik parçasına doğrudan tasarım yaptırır veya sesi tutma sorununa her şeyden, çatısından koltuklara kadar karar vermesine izin verir. Üç bina, iki disiplin arasında üç farklı pazarlık.",
           "content": [
             {
               "type": "text",
@@ -38808,12 +38807,12 @@
             },
             {
               "type": "text",
-              "content": "Kabuklar, Le Corbusier'in atölyesinde mühendis olarak çalışan besteci Iannis Xenakis'in eseriydi ve geometrisi, onun orkestra parçası Metastaseis (1953-54) ile geriye uzanır. Xenakis, sürekli kaydıran kırk altı telli enstrüman için bir pasaj yazmıştı, kağıt üzerinde düz çizgiler olarak çizilen glissando çizgileri, birlikte alındığında eğrilmiş yüzeyleri tanımlıyordu: bir matematikçinin tabiriyle bir çizgisel yüzey ve bir mühendisin tanıyacağı şekilde hiperbolik paraboloid. Xenakis, pavilion'un duvarlarını, ses yerine duran telli ve sert tel ile modellediği gibi, aynı şekilde modelledi. Bina, oldukça kelimesiyle, mimari ölçekle inşa edilmiş bir müzik parçasıdır."
+              "content": "Kabuklar, Le Corbusier'in atölyesinde mühendis olarak çalışan besteci Iannis Xenakis'in eseriydi ve geometrisi, onun orkestra parçası Metastaseis (1953-54) ile geriye uzanır. Xenakis, sürekli kaydıran kırk altı telli enstrüman için bir pasaj yazmıştı, kağıt üzerinde düz çizgiler olarak çizilen glissando çizgileri, birlikte alındığında eğrilmiş yüzeyleri tanımlıyordu: bir matematikçinin ruled yüzey diye adlandıracağı ve bir mühendisin hiperbolik paraboloid olarak tanıyacağı. Xenakis, pavilion'un duvarlarını, ses yerine duran tel ve sert telin modelleriyle aynı şekilde modelledi. Bina, oldukça kelime anlamıyla, mimari ölçekle inşa edilmiş bir müzik parçasıdır."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
-              "caption": "Expo 58, Brüksel'deki Philips Pavilion: her biri Xenakis'in glissandi olarak çizdiği bir çizgisel yüzey olan dokuz beton kabuk. Fotoğraf: Anefo, CC0, Wikimedia Commons aracılığıyla.",
+              "caption": "Expo 58, Brüksel'deki Philips Pavilion: her biri Xenakis'in glissandi olarak çizdiği ruled yüzey olan dokuz beton kabuk. Fotoğraf: Anefo, CC0, Wikimedia Commons aracılığıyla.",
               "align": "center"
             },
             {
@@ -38824,7 +38823,7 @@
             },
             {
               "type": "metin",
-              "content": "İçeride, o duvarlara yerleştirilmiş yaklaşık 350 yüksek sesli hoparlör, Edgard Varèse'nin Poème électronique'ini mekânsal hale getirdi, sekiz dakikalık bant parçası, renkli ışıkların değişimine göre zamanlanmış, izleyiciler etrafında canlı olarak yönlendirilmiş teknisyenler tarafından. Sergi, 30 Ocak 1959'da, fuar kapandıktan üç ay sonra yıkıldı, amacı, onu finanse eden etkinlikle kullanıldı. Hayatta kalan şey yöntemdir: müzik, bir oda için bir fon müziği olarak değil, bir oda inşa etme talimatları seti olarak okunur."
+              "content": "İçeride, o duvarlara yerleştirilmiş yaklaşık 350 yüksek sesli hoparlör, Edgard Varèse'nin Poème électronique'ini mekânsal hale getirdi, sekiz dakikalık bant parçası, renkli ışıkların değişimine göre zamanlanmış, izleyiciler etrafında canlı olarak yönlendirilmiş teknisyenler tarafından. Pavilion, 30 Ocak 1959'da, fuar kapandıktan üç ay sonra yıkıldı, amacı, onu finanse eden etkinlikle kullanıldı. Hayatta kalan şey yöntemdir: müzik, bir oda için bir fon müziği olarak değil, bir oda inşa etmek için talimatlar seti olarak okunur."
             },
             {
               "type": "video",
@@ -38841,7 +38840,7 @@
             },
             {
               "type": "metin",
-              "content": "Yaklaşık altmış yıl sonra, Herzog & de Meuron'un Hamburg'daki Elbphilharmonie'si, 11 Ocak 2017'de açıldı, tersini yaptı: müziğin binanın şeklini oluşturmasına izin vermek yerine, müzik dinleme gereksinimlerinin neredeyse her şeyi belirlemesine izin verdi. Akustikçi Yasuhisa Toyota, ana salonu bir bağ evi gibi düzenledi, oturma terasları merkezi bir sahne etrafında tırmanıyor, Hans Scharoun'un 1963'te Berlin Philharmonie için kullandığı tarzda, böylece 2.100 dinleyiciden hiçbiri orkestra şefinden 30 metreden fazla uzaklıkta oturmuyor. Salonun iç yüzeyi, yaklaşık 10.000 bireysel olarak frezelenmiş alçıtaşı-lif paneli, sesi tek bir noktada toplamak yerine eşit şekilde dağıtmak için her noktada farklı bir profil ile kesilmiştir. Tüm yapı, 362 yaylı yatak üzerinde yüzüyor, çevresindeki bina ile mekanik olarak izole edilmiştir, böylece geçen bir tren sahneye asla ulaşamaz. Dönüştürülmüş bir tuğla deposunun üzerinde, konser salonunun cam üst katları dışarıdan bir dalga veya taç gibi görünür. İçerden bakıldığında, bu görüntü neredeyse önemli değil: odanın gerçek görevi akustiktir ve şekli bu görevin diyagramıdır."
+              "content": "Yaklaşık altmış yıl sonra, Herzog & de Meuron'un Hamburg'daki Elbphilharmonie'si, 11 Ocak 2017'de açıldı, tersini yaptı: müziğin binanın şeklini oluşturmasına izin vermek yerine, müzik dinleme gereksinimlerinin neredeyse her şeyi belirlemesine izin verdi. Akustik uzmanı Yasuhisa Toyota, ana salonu bir bağ gibi düzenledi, oturma terasları, 1963'te Hans Scharoun'un Berlin Filarmoni Orkestrası için kullandığı tarzda, merkezi bir sahne etrafında yükseliyor, böylece 2.100 izleyiciden hiçbiri orkestra şefinden 30 metreden fazla uzaklıkta oturmuyor. Salonun iç yüzeyi, yaklaşık 10.000 bireysel olarak frezelenmiş alçıtaşı-lif paneli, sesi tek bir noktada toplamak yerine eşit şekilde dağıtmak için her noktada farklı bir profil ile kesilmiştir. Tüm yapı, 362 yaylı yatak üzerinde yüzüyor, çevresindeki bina ile mekanik olarak izole edilmiştir, böylece geçen bir tren sahneye asla ulaşamaz. Dönüştürülmüş bir tuğla deposunun üzerinde, konser salonunun cam üst katları dışarıdan bir dalga veya taç gibi görünür. Salondan içeriye bakıldığında, bu görüntü neredeyse önemli değil: odanın gerçek görevi akustiktir ve şekli bu görevin diyagramıdır."
             },
             {
               "type": "görüntü",
@@ -38852,19 +38851,21 @@
             },
             {
               "type": "metin",
-              "content": "Rem Koolhaas ve Ellen van Loon'un OMA'sı, Porto'daki Casa da Música ile üçüncü sırayı aldı, 2005'te açıldı. Ofis, konser salonunun standart kutu şeklinin önüne geçmek istedi, alternatifler denedi ve bunları akustik açısından karşılaştırdı ve yenemediği kutu ile ölçtü. Böylece OMA kutuyu korudu ve gizledi: yaklaşık 1.200 oturma kapasitesine sahip dikdörtgen bir salon, her iki uçta camlı, yapılış yerine katlanmış gibi görünen düzensiz beyaz bir çokyüzlü içinde yer alır, sanki kutu tek bir asimetrik bloktan çıkarılmıştır. Binanın dışındaki şekil, içinde düzgün, akustik olarak doğru bir oda olduğunu bilene kadar belirgin bir mantık taşımıyor ve dışarıdaki her şey, karar verme özgürlüğü olmayan veya ona cevap vermek zorunda kalan mimarlık için bir kamu formu bulmaya çalışan, yüzeyli ve düzensizdir."
+              "content": "Rem Koolhaas ve Ellen van Loon'un OMA'sı, Porto'daki Casa da Música ile üçüncü sırayı aldı, 2005'te açıldı. Ofis, konser salonunun standart kutu şeklinin önüne geçmek istedi, alternatifler denedi ve bunları akustik açısından karşılaştırdı ve yenemediği kutu ile ölçtü. Böylece OMA kutuyu korudu ve gizledi: yaklaşık 1.200 oturma kapasitesine sahip dikdörtgen bir salon, her iki uçta camlı, yapılış yerine katlanmış gibi görünen düzensiz beyaz bir çokyüzlü içinde yer alır, sanki kutu tek bir asimetrik bloktan çıkarılmıştır. Binanın dışındaki şekil, içinde düzgün akustik bir oda olduğunu ve dışarıdaki her şeyin çokgen ve düzensiz olmasının, mimarlığın bir karar için kamuya uygun bir biçim bulması olduğunu bilene kadar belirgin bir mantık taşımaz."
             },
             {
               "type": "metin",
-              "content": "Üç bina, aynı probleme üç farklı ilişki. Xenakis bir müzik parçasını bir çatı haline getirdi. Toyota ve Herzog & de Meuron, işitme fiziğinin bir odayı belirlemesine izin verdi, sonra sonucu etrafına bir bina sardı. Koolhaas, akustiklerin ısrar ettiği tek şekli korudu ve binanın geri kalanında onunla tartıştı. Üçü de aslında mimaride müzikle ilgili değil. Bunlar, bir disiplinin sıralama ve oran üzerinde çalışırken, yük ve malzeme üzerinde çalışan bir disipline emir vermesine veya onun yerine cevap vermesine izin verildiğinde olanlar hakkında."
+              "content": "Üç bina, aynı probleme üç farklı ilişki. Xenakis bir müzik parçasını bir çatı haline getirdi. Toyota ve Herzog & de Meuron, işitme fiziğinin bir odayı belirlemesine izin verdi, sonra sonucu etrafına bir bina sardı. Koolhaas, akustiklerin ısrar ettiği tek şekli korudu ve binanın geri kalanında onunla tartıştı. Üçü de gerçekten mimaride müzikle ilgili değil. Bunlar, bir disiplinin sıralama ve oranla çalışırken, yük ve malzeme üzerine çalışan bir disipline emir vermesine veya onun yerine cevap vermesine izin verildiğinde olanlar hakkında."
             },
             {
               "type": "metin",
-              "content": "Fotoğraflar: kapak, Elbphilharmonie'nin açılış gecesinde, 11 Ocak 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie cephesi, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Hepsi Wikimedia Commons aracılığıyla."
+              "content": "Fotoğraflar: kapak, Elbphilharmonie'nin açılış gecesi, 11 Ocak 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie cephesi, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Hepsi Wikimedia Commons aracılığıyla."
             }
           ],
-          "updatedAt": "2026-09-08T11:10:36.656Z",
-          "showCover": true
+          "updatedAt": "2026-09-08T11:55:43.294Z",
+          "showCover": true,
+          "authorId": "author-1784732936927-kw554",
+          "publishAt": "2026-09-08T11:50:24.806Z"
         }
       ],
       "reviews": [
