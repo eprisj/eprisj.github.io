@@ -1238,7 +1238,12 @@ body {
   min-width: 30px;
   padding: 3px 7px;
   text-align: center;
-  font-family: var(--font-mono);
+  /* Не var(--font-mono) (Orbit): в нём заглавная N нарисована двумя
+     вертикальными палочками без диагонали, и «EN» на глаз читается как
+     кириллическое «ЕП» - подловлено на реальном выборе языка в «Публикациях».
+     IBM Plex Mono рисует N как положено, а сама плашка остаётся
+     моноширинной, тот же характер шрифта, не смена стиля. */
+  font-family: 'IBM Plex Mono', system-ui, sans-serif;
   font-size: .6rem;
   letter-spacing: .08em;
   border: 1px solid var(--line-strong);
@@ -1716,6 +1721,14 @@ textarea {
   letter-spacing: .12em;
   color: var(--text-muted);
 }
+/* Селектор языка отдаёт двухбуквенные коды - EN, RU, UA... - заглавными
+   латинскими буквами без ничего вокруг, что могло бы подсказать контекст.
+   В Orbit (шрифт панели) заглавная N рисуется двумя палочками без
+   диагонали, и «EN» на глаз читается как кириллическое «ЕП» - редактор
+   не может понять, какой язык выбран, не открывая список. IBM Plex Mono
+   рисует N как положено; шрифт остаётся моноширинным, меняется не стиль,
+   а конкретная неоднозначная буква. */
+#visualLang { font-family: 'IBM Plex Mono', system-ui, sans-serif; }
 .toolbar-publication-row {
   display: flex;
   align-items: center;
@@ -10191,7 +10204,7 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .tsys-job-title { font-size: .85rem; font-weight: 650; color: var(--text); }
 .tsys-job-line { font-size: .72rem; color: var(--text-muted); margin-top: 3px; line-height: 1.45; }
 .tsys-job-langs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.tsys-lang-chip { font-family: var(--font-mono); font-size: .58rem; padding: 2px 6px; border: 1px solid var(--line); color: var(--text-muted); }
+.tsys-lang-chip { font-family: 'IBM Plex Mono', system-ui, sans-serif; font-size: .58rem; padding: 2px 6px; border: 1px solid var(--line); color: var(--text-muted); }
 .tsys-lang-chip.done { border-color: #2f7d32; color: #2f7d32; }
 .tsys-lang-chip.failed { border-color: #b3261e; color: #b3261e; }
 .tsys-lang-chip.active { background: var(--text); color: var(--bg-card); border-color: var(--text); }
