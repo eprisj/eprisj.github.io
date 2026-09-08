@@ -7668,14 +7668,12 @@
     },
     {
       "id": 33,
-      "previewToken": "efc77a042906fe45008533dd",
       "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
       "author": "Viacheslav Munister",
       "role": "Author",
       "date": "September 8, 2026",
       "category": "Architecture",
       "subcategory": "Essay",
-      "desk": "music",
       "tags": [
         "architecture",
         "music",
@@ -7750,7 +7748,7 @@
           "content": "Photographs: cover, Elbphilharmonie on its opening night, 11 January 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); Elbphilharmonie facade, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). All via Wikimedia Commons."
         }
       ],
-      "updatedAt": "2026-09-08T11:51:04.108Z",
+      "updatedAt": "2026-09-08T11:56:58.293Z",
       "showCover": true,
       "authorId": "author-1784732936927-kw554",
       "publishAt": "2026-09-08T11:50:24.806Z"
