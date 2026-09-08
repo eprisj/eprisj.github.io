@@ -10211,3 +10211,55 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 .tsys-cov-entry-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tsys-cov-entry-actions { display: flex; gap: 6px; }
 .tsys-cov-empty { padding: 8px 14px 12px; font-size: .76rem; color: var(--text-muted); }
+
+/* ───────────────────────────────────────────────────────────────────────
+   ВВОД С ТЕЛЕФОНА
+
+   Поля редактора Daily Picks набраны 10.5-11.5px: `.homepage-field`
+   наследует свой лейбловый кегль (.66rem, жирный моно), а
+   `.homepage-card-editor-fields` задаёт .72rem напрямую. На вид это
+   компактно, на телефоне неработоспособно: Safari на iOS увеличивает
+   страницу при фокусе в любое поле мельче 16px, поэтому экран прыгает,
+   поле уезжает под клавиатуру и остаётся увеличенным после ввода.
+   Отсюда «невозможно нормально вводить описание».
+
+   16px здесь не про красоту, а про порог автозума. Заодно снимаем
+   лейбловую жирность с самого поля и даём описанию высоту, в которую
+   видно больше одной строки. */
+@media (max-width: 860px) {
+  .admin-page input[type="text"],
+  .admin-page input[type="url"],
+  .admin-page input[type="email"],
+  .admin-page input[type="search"],
+  .admin-page input[type="number"],
+  .admin-page input:not([type]),
+  .admin-page select,
+  .admin-page textarea,
+  .homepage-field input,
+  .homepage-field select,
+  .homepage-field textarea,
+  .homepage-card-editor-fields input,
+  .homepage-card-editor-fields select,
+  .homepage-card-editor-fields textarea,
+  .visual-form input,
+  .visual-form select,
+  .visual-form textarea {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
+    min-height: 46px;
+  }
+
+  .homepage-field textarea,
+  .homepage-card-editor-fields textarea,
+  .visual-form textarea {
+    min-height: 132px;
+    padding: 11px 12px;
+  }
+
+  /* Подпись поля остаётся мелкой: читать её не набирают. */
+  .homepage-field > span,
+  .homepage-card-editor-fields .homepage-field > span {
+    font-size: 10px;
+  }
+}
