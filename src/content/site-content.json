@@ -44724,12 +44724,11 @@
         },
         {
           "id": 33,
-          "draft": true,
           "previewToken": "efc77a042906fe45008533dd",
           "title": "Costruito su una Partitura: Tre Edifici Dove la Musica Ha Scrittto l'Architettura",
           "author": "Viacheslav Munister",
           "role": "Autore",
-          "date": "5 settembre 2026",
+          "date": "8 settembre 2026",
           "category": "Architettura",
           "subcategory": "Saggio",
           "desk": "music",
@@ -44744,11 +44743,11 @@
           ],
           "imageSeed": "built-to-a-score",
           "imageUrl": "https://api.eprisjournal.com/uploads/mtskaws3pef1bg.jpg",
-          "excerpt": "La maggior parte degli edifici ospita musica: un palco, pareti, un programma, buona acustica. Una manciata di edifici fa qualcosa di più strano, e lascia che un pezzo di musica li progetti direttamente, o lascia che il problema di contenere il suono decida tutto dal tetto ai sedili. Tre edifici, tre diversi accordi tra le due discipline.",
+          "excerpt": "La maggior parte degli edifici ospita musica: un palco, pareti, un programma, buona acustica. Una manciata di edifici fa qualcosa di più strano, e lascia che un pezzo di musica li progetti direttamente, o lascia che il problema di contenere il suono decida tutto, dal tetto ai sedili. Tre edifici, tre diversi accordi tra le due discipline.",
           "content": [
             {
               "type": "text",
-              "content": "Nel 1958, lo studio di Le Corbusier costruì un padiglione per Philips alla Fiera di Bruxelles che non aveva affatto pareti dritte: nove conchiglie di cemento curve, simili a tende e appuntite, che si ergevano sopra un'unica sala oscura costruita per otto minuti di musica. La forma non derivava da uno schizzo di un edificio. Proveniva da un pezzo di musica."
+              "content": "Nel 1958, lo studio di Le Corbusier costruì un padiglione per Philips alla Fiera di Bruxelles che non aveva affatto pareti dritte: nove conchiglie di cemento curve, simili a tende e appuntite, che si ergevano sopra un'unica sala oscura costruita per otto minuti di musica. La forma non derivava da uno schizzo di un edificio. derivava da un pezzo di musica."
             },
             {
               "type": "text",
@@ -44807,8 +44806,10 @@
               "content": "Fotografie: copertina, Elbphilharmonie alla sua serata di apertura, 11 gennaio 2017, Alexander Svensson (CC BY 2.0); Philips Pavilion, Anefo (CC0); facciata di Elbphilharmonie, Dietmar Rabich (CC BY-SA 4.0); Casa da Música, Dale Cruse (CC BY 4.0). Tutto via Wikimedia Commons."
             }
           ],
-          "updatedAt": "2026-09-08T11:10:53.709Z",
-          "showCover": true
+          "updatedAt": "2026-09-08T11:56:04.475Z",
+          "showCover": true,
+          "authorId": "author-1784732936927-kw554",
+          "publishAt": "2026-09-08T11:50:24.806Z"
         },
         {
           "id": 34,
