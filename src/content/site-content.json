@@ -7833,8 +7833,8 @@
     {
       "id": 35,
       "title": "Abbie Downey: Collected, Not Coordinated",
-      "author": "Munister",
-      "role": "Editorial Desk",
+      "author": "Viacheslav Munister",
+      "role": "Author",
       "date": "September 8, 2026",
       "excerpt": "The founder of Feather & Fossil on visual rhythm, the difference between layered and chaotic, and why a home should read as continued rather than preserved.",
       "category": "interview",
@@ -8068,10 +8068,11 @@
           "content": "Photography: Paul Secker, Secker Studios. Interview conducted in writing for EPRIS Journal, September 2026."
         }
       ],
-      "draft": true,
+      "draft": false,
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
-      "updatedAt": "2026-09-08T18:46:34.198Z"
+      "updatedAt": "2026-09-09T08:42:42.055Z",
+      "authorId": "author-1784732936927-kw554"
     }
   ],
   "reviews": [
