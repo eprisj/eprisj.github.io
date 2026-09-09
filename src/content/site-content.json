@@ -7833,7 +7833,7 @@
     {
       "id": 35,
       "title": "Abbie Downey: Collected, Not Coordinated",
-      "author": "Viacheslav Munister",
+      "author": "Viacheslav Munister & Abbie Downey",
       "role": "Author",
       "date": "September 8, 2026",
       "excerpt": "The founder of Feather & Fossil on visual rhythm, the difference between layered and chaotic, and why a home should read as continued rather than preserved.",
@@ -46575,6 +46575,19 @@
       "active": true,
       "showOnTeam": true,
       "teamOrder": 13
+    },
+    {
+      "id": "author-abbie-downey",
+      "name": "Abbie Downey",
+      "role": "Interior Designer, London",
+      "bio": "Abbie Downey is the founder of Feather and Fossil, a London-based interior design studio specialising in maximalist schemes for historic properties. She is the recipient of the Homes and Gardens Next in Design 2026 award. Her practice is documented through the ongoing renovation of her own Georgian house, her second period property, with a focus on the layering of colour, pattern and collected objects within a historic domestic interior.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mtu0499hmq3zw9.jpg",
+      "website": "https://linktr.ee/featherandfossilinteriordesign",
+      "instagram": "@featherandfossil_interiors",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 14
     }
   ],
   "manifest": {
