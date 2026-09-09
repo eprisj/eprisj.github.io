@@ -46536,7 +46536,8 @@
       "active": true,
       "showOnTeam": true,
       "teamOrder": 10,
-      "collaborator": true
+      "collaborator": true,
+      "photoIsLogo": true
     },
     {
       "id": "author-souv",
@@ -46549,7 +46550,8 @@
       "active": true,
       "showOnTeam": true,
       "collaborator": true,
-      "teamOrder": 11
+      "teamOrder": 11,
+      "photoIsLogo": true
     },
     {
       "id": "author-roland-schwerdtfeger",
@@ -46594,7 +46596,7 @@
       "name": "Chora Practice",
       "role": "Decor Studio, Lisbon",
       "bio": "Chora Practice is a decor studio founded by Elena Kuzmina and Xenia Bunina and based in Lisbon, Portugal. The practice develops handmade drapery, textile objects and custom installations, with Bunina's training at Arco, the Lisbon school of contemporary art, informing the studio's approach to material and form. Their work has been commissioned for weddings and private events across Europe.",
-      "photoUrl": "https://api.eprisjournal.com/uploads/mtu1nk2869n3jq.jpg",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mt5yuvvra38x2n.jpg",
       "instagram": "@chora.practice",
       "website": "https://chorapractice.com",
       "active": true,
