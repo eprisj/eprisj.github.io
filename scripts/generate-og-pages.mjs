@@ -115,26 +115,34 @@ function articleBody(article) {
    тож змінні реально є на момент рендеру. Раніше тут стояли захардкожені
    PT Serif/#2b2b2b — сіро-серифний плейсхолдер на бежевому тлі сайту, що на
    секунду-дві (помітніше на мобільному, де гідратація повільніша) виглядав
-   як зовсім інший дизайн, поки React не змонтувався і не підмінив розмітку. */
+   як зовсім інший дизайн, поки React не змонтувався і не підмінив розмітку.
+
+   09.09.2026: сам var()-фолбек тут теж встиг застаріти (#4a1728/#b8956e -
+   стара бордово-золота палітра) і повторив ту саму ваду іншим шляхом: коли
+   реальний --c-accent з index.css :root ЩЕ не оновлений під живу тему
+   (applySiteTheme з App.tsx б'є по цій змінній лише ПІСЛЯ монтування й
+   завантаження теми), сюди все одно підставлялось старе значення. Тепер
+   фолбек = живі кольори з content.theme, той самий факт синхронізовано в
+   src/index.css :root - обидва місця треба правити разом. */
 const PRERENDER_STYLE = `<style>
     /* Видно лише до монтування React (createRoot затирає вміст #root).
        Мета не намалювати сторінку наново, а щоб ці півсекунди на
        повільному зв'язку виглядали як текст сайту, а не як чужа верстка. */
     .pre-doc{max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
       font-family:var(--font-body,'PT Sans',sans-serif);line-height:1.65;
-      color:var(--c-accent,#4a1728)}
+      color:var(--c-accent,#111111)}
     .pre-doc h1{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
       font-size:clamp(28px,4.6vw,44px);line-height:1.15;margin:0 0 .6em}
     .pre-doc h2{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
       font-size:clamp(19px,2.4vw,25px);margin:2em 0 .5em}
     .pre-doc p{margin:0 0 1.15em}
-    .pre-doc small{color:var(--c-accent,#4a1728);opacity:.6;
+    .pre-doc small{color:var(--c-accent,#111111);opacity:.6;
       font-family:var(--font-body,'PT Sans',sans-serif);font-size:14px}
     .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;
-      border-left:2px solid var(--c-gold,#b8956e);font-style:italic;opacity:.85}
+      border-left:2px solid var(--c-gold,#c9a690);font-style:italic;opacity:.85}
     .pre-doc ul{padding-left:1.1em}
     .pre-doc li{margin:0 0 .5em}
-    .pre-doc a{color:var(--c-accent,#4a1728)}
+    .pre-doc a{color:var(--c-accent,#111111)}
     .pre-doc img{max-width:100%;height:auto;display:block;margin:0 0 1.4em}
   </style>`;
 

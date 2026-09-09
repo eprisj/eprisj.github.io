@@ -3,14 +3,28 @@
 @tailwind utilities;
 
 :root {
-  /* Theme tokens — overridable from the admin Appearance panel (content.theme).
-     Defaults reproduce the original EPRIS palette exactly (no visual change). */
-  --c-accent: #4a1728;       /* text + accent (burgundy) */
-  --c-accent-rgb: 74 23 40;
-  --c-gold: #b8956e;         /* gold */
-  --c-gold-rgb: 184 149 110;
-  --c-bg: #f5f0eb;           /* page background */
-  --c-bg-rgb: 245 240 235;
+  /* Theme tokens — overridable from the admin Appearance panel (content.theme),
+     which does so at RUNTIME (applySiteTheme in App.tsx sets these same custom
+     properties on document.documentElement AFTER the theme loads over the
+     network). These defaults are what paints BEFORE that call lands: every
+     first frame, and the .pre-doc prerender block (generate-og-pages.mjs),
+     which is gone by the time applySiteTheme would even run.
+
+     09.09.2026: these were the ORIGINAL EPRIS palette (burgundy/gold/cream) -
+     comment said so outright - while the Appearance panel had long since been
+     switched to near-black on white. Every page load flashed the old brand
+     for one frame (worse on the prerender text, which a slow connection could
+     hold for a second or two) before applySiteTheme corrected it - exactly
+     the "renders another design for a second" a reader would notice. Kept in
+     sync with content.theme's live values now; if the panel changes the
+     theme again, update this block too, or the flash returns for whatever
+     the new gap is. */
+  --c-accent: #111111;       /* text + accent */
+  --c-accent-rgb: 17 17 17;
+  --c-gold: #c9a690;         /* gold */
+  --c-gold-rgb: 201 166 144;
+  --c-bg: #ffffff;           /* page background */
+  --c-bg-rgb: 255 255 255;
   /* Playfair Display ships no Cyrillic glyphs at all (checked against
      Google Fonts directly - zero unicode-range:cyrillic blocks in its
      css2 response), so every UK/RU heading silently fell through past it
