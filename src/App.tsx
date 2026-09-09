@@ -1699,6 +1699,20 @@ function resolveBylineAuthor(entity: BylineEntity): Author | null {
   return null;
 }
 
+// A co-credited byline reads "Name A & Name B" (there is no multi-author
+// array — see authors[] in data.ts). An exact-string match against the full
+// byline therefore fails for the second, third, ... name even though their
+// profile is exactly who the reader is looking at: check the profile's name
+// as a whole word inside the byline instead of requiring an exact equality.
+function bylineMentionsAuthor(byline: string, authorName: string): boolean {
+  const haystack = byline.trim().toLocaleLowerCase();
+  const needle = authorName.trim().toLocaleLowerCase();
+  if (!haystack || !needle) return false;
+  if (haystack === needle) return true;
+  const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, 'u').test(haystack);
+}
+
 function displayArticleAuthor(article: BylineEntity): string {
   const namedAuthor = article.author?.trim() || '';
   // The text stored on the material is the publication credit. An author card
@@ -2450,7 +2464,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   const hasEditorialFallback = !explicitAuthor || /^epris\s+journal$/i.test(explicitAuthor);
   const isMatchingProfile = Boolean(
     resolvedAuthor
-      && (hasEditorialFallback || resolvedAuthor.name.trim().toLocaleLowerCase() === authorName.toLocaleLowerCase())
+      && (hasEditorialFallback || bylineMentionsAuthor(authorName, resolvedAuthor.name))
   );
   // article.role is per-language (each locale bucket carries its own translated
   // string, e.g. "Arts Desk" vs "Arts Desk" translated); the Author record's
@@ -3429,7 +3443,7 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
   const hasEditorialFallback = !explicitAuthor || /^epris\s+journal$/i.test(explicitAuthor);
   const isMatchingProfile = Boolean(
     resolvedAuthor
-      && (hasEditorialFallback || resolvedAuthor.name.trim().toLocaleLowerCase() === authorName.toLocaleLowerCase())
+      && (hasEditorialFallback || bylineMentionsAuthor(authorName, resolvedAuthor.name))
   );
   const authorProfile = isMatchingProfile ? resolvedAuthor : null;
   const authorRole = translateRole(review.role || authorProfile?.role, currentLang);
