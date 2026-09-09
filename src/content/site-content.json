@@ -5238,7 +5238,7 @@
     {
       "id": 23,
       "title": "In Conversation with Chora Practice:",
-      "author": "Maria Ivanova",
+      "author": "Maria Ivanova & Chora Practice",
       "role": "Author",
       "date": "Aug 17, 2026",
       "excerpt": "Founders of a Lisbon-based decor studio on the art of listening to your inner self, importance of resilience and favorite places in the city",
@@ -5591,7 +5591,7 @@
     {
       "id": 25,
       "title": "\nWhere We Meet Ourselves - interview with Keisuke Azuma",
-      "author": "Maria Ivanova",
+      "author": "Maria Ivanova & Keisuke Azuma",
       "role": "Editorial Desk",
       "date": "Aug 21, 2026",
       "excerpt": "Artist Keisuke Azuma on washing paint back off the canvas, the Japanese aesthetics of shadow and emptiness behind his work, and why art has no right to be exclusive.",
@@ -6043,7 +6043,7 @@
     {
       "id": 26,
       "title": "Museo Nivola: A Museum, a Village and the Memory They Share",
-      "author": "Viacheslav Munister",
+      "author": "Viacheslav Munister & Museo Nivola",
       "role": "Author",
       "date": "Aug 25, 2026",
       "excerpt": "Costantino Nivola left a Sardinian village of masons for New York, worked with Le Corbusier, Sert and Saarinen, and never stopped coming back. The team of his museum, on the hill above Orani, on where a museum ends and a village begins, on the method he left behind, and on what a monographic museum can still become.",
@@ -6241,7 +6241,7 @@
     {
       "id": 27,
       "title": "Souv: The Souvenir That Doesn't Forget",
-      "author": "Viacheslav Munister",
+      "author": "Viacheslav Munister & Souv",
       "role": "Author",
       "date": "Aug 25, 2026",
       "excerpt": "Matej Petrić and Antonio Šeparović on turning an ordinary fridge magnet into the entrance to a traveler's own photos, why nobody actually wants to buy NFC technology, and what it took to put a laser engraver in a startup that started as two friends and a third coffee in Zagreb.",
@@ -7194,7 +7194,7 @@
       "id": 31,
       "draft": false,
       "title": "The Picture Is Finished Before the Shutter - interview with Roland M Schwerdtfeger",
-      "author": "Viacheslav Munister",
+      "author": "Viacheslav Munister & Roland M Schwerdtfeger",
       "role": "Author",
       "date": "Sep 2, 2026",
       "excerpt": "Architectural photographer Roland M Schwerdtfeger on planning a picture until it is finished before the camera comes up, the single coloured note in a black-and-white frame, and why camera brand is the wrong question.",
@@ -46588,6 +46588,30 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 14
+    },
+    {
+      "id": "author-chora-practice",
+      "name": "Chora Practice",
+      "role": "Decor Studio, Lisbon",
+      "bio": "Chora Practice is a decor studio founded by Elena Kuzmina and Xenia Bunina and based in Lisbon, Portugal. The practice develops handmade drapery, textile objects and custom installations, with Bunina's training at Arco, the Lisbon school of contemporary art, informing the studio's approach to material and form. Their work has been commissioned for weddings and private events across Europe.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mtu1nk2869n3jq.jpg",
+      "instagram": "@chora.practice",
+      "website": "https://chorapractice.com",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 15
+    },
+    {
+      "id": "author-keisuke-azuma",
+      "name": "Keisuke Azuma",
+      "role": "Painter, Vilnius",
+      "bio": "Keisuke Azuma is a painter born in Japan, trained in London, and based in Vilnius, Lithuania. His practice proceeds by subtraction: pigment is washed back from the canvas until a hand, a foot or a fragment of gesture remains against the raw surface, a method he traces to the Japanese aesthetics of negative space. His recent series, shown under the titles Human Metaphors and Metamorphosis, has been exhibited at KIAF Seoul and in solo presentations in New York and Paris.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mt8oisq6xlwmv4.jpg",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 16
     }
   ],
   "manifest": {
