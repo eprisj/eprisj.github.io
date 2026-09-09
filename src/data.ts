@@ -176,6 +176,14 @@ export interface Author {
    * with the logo fitted whole rather than cropped into a portrait circle.
    */
   collaborator?: boolean;
+  /**
+   * Forces the square "logo fitted whole" treatment instead of the round
+   * portrait crop, regardless of `collaborator`. Only for institutions
+   * credited by wordmark (a museum, a brand) — a real person, even an
+   * external collaborator, still gets the round photo like the rest of
+   * the team.
+   */
+  photoIsLogo?: boolean;
 }
 
 export interface Article {

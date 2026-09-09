@@ -1483,7 +1483,7 @@ function TeamMemberCard({
   /* Портрет обрезается в круг, логотип — нет: круглая маска съедает вордмарк
      по краям, а институция узнаётся именно по нему. Тот же размер, тот же
      ритм колонки, разная маска. */
-  const isLogo = author.collaborator === true;
+  const isLogo = author.photoIsLogo === true;
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 max-w-2xl mx-auto">
       {author.photoUrl && (
