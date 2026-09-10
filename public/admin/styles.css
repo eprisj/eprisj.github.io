@@ -10614,6 +10614,13 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .homepage-published-card-category,
   .homepage-preview-badge,
   .hp-slot-order,
+  .dash-audit-chip,
+  .form-hint,
+  .settings-note,
+  .step-badge,
+  .issue-pipeline-num,
+  .issue-status-badge,
+  .issue-map-label,
   .homepage-published-card-media > span,
   .homepage-layout-copy-grid label small,
   .homepage-category-locale-grid label small { font-size: var(--fs-micro); }
@@ -10703,4 +10710,21 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   #tab-studio .studio-section-head { flex-wrap: wrap; }
   #tab-studio .studio-section-head .card-title { flex: 1 1 100%; }
   #tab-studio .studio-section-head .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: ПОЛОСА ДЕЙСТВИЙ «ВЫПУСКА»
+   ──────────────────────────────────────────────────────────
+   .issue-statusbar-actions уже переведена в grid 2×N на ≤820px
+   (строка ~9956), но сетка задаёт только ширину ТРЕКА. У грид-
+   элемента по умолчанию min-width:auto, то есть предел по
+   содержимому, а .btn держит white-space:nowrap — текст кнопки
+   игнорирует ширину трека и вылезает за счёт правого края
+   экрана («Открыть текущий /issue» обрезалось прямо по рамке).
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  .issue-statusbar-actions .btn,
+  .issue-statusbar-actions a {
+    min-width: 0; white-space: normal; line-height: 1.3; text-align: center;
+  }
 }
