@@ -137,30 +137,61 @@ function articleBody(article) {
    з ним. Три місця тепер тримають один факт вручну: тут, src/index.css
    :root, і сам ланцюжок у applySiteTheme - жодне з них не тягне за собою
    інші. */
-const PRERENDER_STYLE = `<style>
-    /* Видно лише до монтування React (createRoot затирає вміст #root).
-       Мета не намалювати сторінку наново, а щоб ці півсекунди на
-       повільному зв'язку виглядали як текст сайту, а не як чужа верстка. */
-    .pre-doc{max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
-      font-family:var(--font-body,'Crimson Text','PT Serif',serif);line-height:1.65;
-      color:var(--c-accent,#111111)}
-    .pre-doc h1{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
+/* Стиль дорисовывается из живой темы, а не переписывается руками.
+   Выше в комментарии описаны три круга одной и той же ошибки: цвет, потом
+   шрифт, потом снова шрифт. Каждый раз ломалось одно и то же место -
+   значение, продублированное здесь вручную, отставало от content.theme.
+   Теперь значения берутся из самого content.theme при сборке, так что
+   отставать больше нечему: снимок контента с VPS попадает в репозиторий и
+   пересобирает сайт вместе с этим блоком. */
+function prerenderStyle() {
+  const theme = (content && content.theme) || {};
+  const accent = theme.accent || '#111111';
+  const gold = theme.gold || '#c9a690';
+  const bg = theme.bg || '#ffffff';
+  const display = `'${theme.fontDisplay || 'Playfair Display'}', 'PT Serif', serif`;
+  const body = `'${theme.fontBody || 'Crimson Text'}', 'PT Serif', serif`;
+  return `<style>
+    /* Виден только до монтирования React (createRoot затирает содержимое
+       #root), и с задержкой.
+
+       Задержка - и есть починка того, на что жаловались: при обычном
+       обновлении страницы этот блок успевал нарисоваться, и полсекунды был
+       виден другой шаблон - другая сетка, другой список, другая типографика.
+       Сколько ни синхронизируй цвета и шрифты, это остаётся другой вёрсткой,
+       поэтому вопрос не в оттенке, а в том, чтобы на нормальном соединении
+       блок не рисовался вовсе.
+
+       1.2 с выбраны так: гидратация на обычном канале укладывается заметно
+       раньше, и React снимает блок до того, как тот проявится. Если не
+       уложилась - медленная сеть, упавший бандл, выключенный JS - текст
+       появляется, ровно ради этого случая блок и написан. */
+    .pre-doc{
+      --c-accent:${accent};--c-gold:${gold};--c-bg:${bg};
+      --font-display:${display};--font-body:${body};
+      opacity:0;animation:pre-doc-reveal .2s ease 1.2s forwards;
+      max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
+      font-family:var(--font-body);line-height:1.65;color:var(--c-accent)}
+    @keyframes pre-doc-reveal{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.pre-doc{animation-duration:0s}}
+    .pre-doc h1{font-family:var(--font-display);font-weight:600;
       font-size:clamp(28px,4.6vw,44px);line-height:1.15;margin:0 0 .6em}
-    .pre-doc h2{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
+    .pre-doc h2{font-family:var(--font-display);font-weight:600;
       font-size:clamp(19px,2.4vw,25px);margin:2em 0 .5em}
     .pre-doc p{margin:0 0 1.15em}
-    .pre-doc small{color:var(--c-accent,#111111);opacity:.6;
-      font-family:var(--font-body,'Crimson Text','PT Serif',serif);font-size:14px}
+    .pre-doc small{color:var(--c-accent);opacity:.6;
+      font-family:var(--font-body);font-size:14px}
     .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;
-      border-left:2px solid var(--c-gold,#c9a690);font-style:italic;opacity:.85}
+      border-left:2px solid var(--c-gold);font-style:italic;opacity:.85}
     .pre-doc ul{padding-left:1.1em}
     .pre-doc li{margin:0 0 .5em}
-    .pre-doc a{color:var(--c-accent,#111111)}
+    .pre-doc a{color:var(--c-accent)}
     .pre-doc img{max-width:100%;height:auto;display:block;margin:0 0 1.4em}
   </style>`;
+}
 
 function prerenderBody(html) {
-  return `<div id="root">${PRERENDER_STYLE}<div class="pre-doc">${html}</div></div>`;
+  return `<div id="root">${prerenderStyle()}<div class="pre-doc">${html}</div></div>`;
 }
 
 function articleParagraphs(article) {
