@@ -8078,7 +8078,7 @@
       "title": "Eighteen Inches of Sky: The Interiors of the World Trade Center",
       "author": "Viacheslav Munister",
       "role": "Author",
-      "date": "September 11, 2026",
+      "date": "September 10, 2026",
       "category": "Architecture",
       "subcategory": "Essay",
       "tags": [
@@ -8092,7 +8092,7 @@
       ],
       "imageSeed": "eighteen-inches-of-sky",
       "excerpt": "Twenty five years on, the towers are remembered as a silhouette. Inside they were three buildings stacked on each other, a lobby seventy four feet high, an office floor of nearly an acre, and a window eighteen inches wide that decided how the city was allowed to be looked at.",
-      "draft": true,
+      "draft": false,
       "content": [
         {
           "type": "text",
@@ -8234,7 +8234,7 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
       "id": 2,
       "previewToken": "46c53ed1d82ee2ec2d",
-      "updatedAt": "2026-09-10T12:18:14.368Z"
+      "updatedAt": "2026-09-10T12:20:53.364Z"
     }
   ],
   "reviews": [
