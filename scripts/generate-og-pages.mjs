@@ -123,13 +123,26 @@ function articleBody(article) {
    (applySiteTheme з App.tsx б'є по цій змінній лише ПІСЛЯ монтування й
    завантаження теми), сюди все одно підставлялось старе значення. Тепер
    фолбек = живі кольори з content.theme, той самий факт синхронізовано в
-   src/index.css :root - обидва місця треба правити разом. */
+   src/index.css :root - обидва місця треба правити разом.
+
+   10.09.2026: та сама вада третій раз, тепер про ШРИФТ, а не колір.
+   --font-body тут фолбечив на 'PT Sans',sans-serif, а живий content.theme
+   (і дефолт у src/index.css :root) вже давно 'Crimson Text' - серифний.
+   На головному бандлі (~1.3 МБ гзип, бо весь текст сайту зашитий у JS,
+   див. src/data.ts) це вікно до гідратації розтягується на секунди на
+   мобільній мережі, і різниця sans-serif → serif читається як заміна
+   шаблону, не просто відтінку. applySiteTheme (App.tsx) ставить
+   --font-body з тим самим ланцюжком фолбеків
+   ('${theme.fontBody}','Crimson Text','PT Serif',serif) - синхронізовано
+   з ним. Три місця тепер тримають один факт вручну: тут, src/index.css
+   :root, і сам ланцюжок у applySiteTheme - жодне з них не тягне за собою
+   інші. */
 const PRERENDER_STYLE = `<style>
     /* Видно лише до монтування React (createRoot затирає вміст #root).
        Мета не намалювати сторінку наново, а щоб ці півсекунди на
        повільному зв'язку виглядали як текст сайту, а не як чужа верстка. */
     .pre-doc{max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
-      font-family:var(--font-body,'PT Sans',sans-serif);line-height:1.65;
+      font-family:var(--font-body,'Crimson Text','PT Serif',serif);line-height:1.65;
       color:var(--c-accent,#111111)}
     .pre-doc h1{font-family:var(--font-display,'Playfair Display',serif);font-weight:600;
       font-size:clamp(28px,4.6vw,44px);line-height:1.15;margin:0 0 .6em}
@@ -137,7 +150,7 @@ const PRERENDER_STYLE = `<style>
       font-size:clamp(19px,2.4vw,25px);margin:2em 0 .5em}
     .pre-doc p{margin:0 0 1.15em}
     .pre-doc small{color:var(--c-accent,#111111);opacity:.6;
-      font-family:var(--font-body,'PT Sans',sans-serif);font-size:14px}
+      font-family:var(--font-body,'Crimson Text','PT Serif',serif);font-size:14px}
     .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;
       border-left:2px solid var(--c-gold,#c9a690);font-style:italic;opacity:.85}
     .pre-doc ul{padding-left:1.1em}
