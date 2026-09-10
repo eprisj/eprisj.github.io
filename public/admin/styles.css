@@ -10605,15 +10605,25 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .reach-chip,
   .wys-tag,
   .wys-save-state,
-  .order-card-num { font-size: var(--fs-micro); }
+  .order-card-num,
+  .field-label { font-size: var(--fs-micro); }
 
   .order-hint,
   .order-card-title,
   .wys-figcap,
-  .wys-meta-item { font-size: var(--fs-meta); }
+  .wys-meta-item,
+  .card-desc { font-size: var(--fs-meta); }
 
+  /* .btn/.btn-sm повторены как .tab-panel .btn/.tab-panel .btn-sm: на
+     760px эти же классы заданы с двойной специфичностью (0,2,0) ради
+     44pt-плиты, и голое .btn (0,1,0) им проигрывает молча — тот же
+     трюк, что и с min-height чуть выше по файлу. */
   .btn,
   .btn-sm,
+  a.btn,
+  .tab-panel .btn,
+  .tab-panel .btn-sm,
+  .tab-panel a.btn,
   .order-move-btn,
   .order-expand,
   .order-preview-tab,
