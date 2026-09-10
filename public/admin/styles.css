@@ -124,6 +124,7 @@
    ══════════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; }
 
+html { overscroll-behavior: none; }
 body {
   margin: 0;
   background: var(--bg);
@@ -133,6 +134,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
   height: 100vh;
+  overscroll-behavior: none;
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -377,6 +379,7 @@ body {
 }
 .sidebar.is-collapsed .sb-item { position: relative; }
 
+.tab-btn { touch-action: manipulation; }
 .tab-btn:hover { background: rgba(255,255,255,.055); color: var(--sidebar-text-hover); }
 .tab-btn:hover .sb-ico { opacity: 1; }
 .tab-btn:focus-visible {
@@ -1274,6 +1277,13 @@ body {
   min-height: 0;
   scrollbar-width: thin;
   scrollbar-color: rgba(45,45,45,.10) transparent;
+  /* На iOS вложенный скролл без этого прокидывает избыточный жест на
+     document: потянув список до упора, читатель раскачивает всю
+     страницу вместе с закреплённым доком, и в момент этой резинки
+     фиксированные элементы у WebKit временно перестают попадать под
+     палец — тап по доку не долетает до обработчика. contain держит
+     резину внутри этого блока и не пускает её выше. */
+  overscroll-behavior: contain;
 }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
@@ -9398,6 +9408,7 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     letter-spacing: .05em;
     text-transform: uppercase;
     cursor: pointer;
+    touch-action: manipulation;
   }
   .sb-sheet-btn .sb-ico { width: 22px; height: 22px; }
   .sb-sheet-btn[aria-expanded="true"] { background: rgba(255,255,255,.16); color: #fff; }
