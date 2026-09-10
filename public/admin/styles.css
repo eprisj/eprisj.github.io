@@ -10606,13 +10606,30 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .wys-tag,
   .wys-save-state,
   .order-card-num,
-  .field-label { font-size: var(--fs-micro); }
+  .field-label,
+  .homepage-admin-kicker,
+  .hp-step-num,
+  .hp-step-copy > small,
+  .homepage-publish-feedback,
+  .homepage-published-card-category,
+  .homepage-preview-badge,
+  .hp-slot-order,
+  .homepage-published-card-media > span,
+  .homepage-layout-copy-grid label small,
+  .homepage-category-locale-grid label small { font-size: var(--fs-micro); }
 
   .order-hint,
   .order-card-title,
   .wys-figcap,
   .wys-meta-item,
-  .card-desc { font-size: var(--fs-meta); }
+  .card-desc,
+  .hp-step-copy > span,
+  .hp-step-count,
+  .homepage-field > span,
+  .homepage-category-locales > span { font-size: var(--fs-meta); }
+
+  .hp-tools-settings-label,
+  .homepage-published-card-title { font-size: var(--fs-ui); }
 
   /* .btn/.btn-sm повторены как .tab-panel .btn/.tab-panel .btn-sm: на
      760px эти же классы заданы с двойной специфичностью (0,2,0) ради
