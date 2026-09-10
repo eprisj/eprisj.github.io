@@ -10305,3 +10305,66 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     font-size: 10px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: «ПОРЯДОК СТАТЕЙ» — ПАНЕЛЬ ДЕЙСТВИЙ И СТРОКА
+   ──────────────────────────────────────────────────────────
+   Снято на живой панели с телефона (390 точек), не на макете.
+
+   Было: панель действий 194 точки, то есть четверть экрана
+   уходила до первой статьи; три её ряда шли разной ширины с
+   рваным правым краем; строка списка 192 точки, потому что
+   заголовок разворачивался на пять строк; строка состояния
+   занимала целый ряд серой плашкой.
+
+   Стало: панель 165, строка 124, на экран помещается три
+   статьи вместо полутора.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  /* Состояние. Ошибку по-прежнему разворачиваем целиком (правило
+     выше это делает намеренно), а рабочее «контент загружен» и
+     «сохранено» это сноска, а не сообщение: одна строка с
+     обрезкой, полный текст остаётся в атрибуте title. */
+  .topbar-left #status.status.success,
+  .topbar-left #status.status.info {
+    flex: 0 1 auto; max-width: 100%; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+    font-size: .56rem; padding: 3px 8px; line-height: 1.4;
+  }
+
+  /* Панель действий в две колонки: выборы сверху, «Применить» под
+     своим выбором, обе кнопки записи внизу парой.
+
+     display: contents на .order-bar-left и .order-bar-right нужен
+     именно здесь: «Применить» лежит в левом контейнере, а счётчик
+     и кнопки записи в правом, и без этого они не могут встать в
+     одну сетку. С ним дети обоих контейнеров попадают в сетку
+     .order-bar напрямую, и правый край наконец выравнивается. */
+  .order-bar { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px 8px; margin-bottom: 12px; }
+  .order-bar-left, .order-bar-right { display: contents; }
+  .order-field select { width: 100%; }
+  .order-bar-left > #orderSortByDateBtn { grid-column: 1; min-height: 40px; justify-content: center; }
+  /* Отступ справа у счётчика: остальные элементы ряда это поля со
+     своими внутренними полями, а голый текст, прижатый к самому
+     краю экрана, читается как обрезанный. */
+  .order-bar-right > .order-count { grid-column: 2; justify-self: end; align-self: center; padding: 0 12px 0 0; }
+  .order-bar-right > #orderApplyBtn { grid-column: 1; }
+  .order-bar-right > #orderSaveBtn { grid-column: 2; }
+  .order-bar-right > .btn { min-height: 42px; justify-content: center; }
+
+  /* Заголовок: две строки и обрезка. Правило для 860 специально
+     сняло nowrap, чтобы не оставалось «In Conversat…», но без
+     потолка длинный заголовок разворачивался на пять строк и
+     выдавливал соседние статьи за экран. Две строки узнать статью
+     хватает, а список остаётся списком. */
+  .order-row { padding: 9px 10px; row-gap: 8px; column-gap: 8px; }
+  .order-title {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; font-size: .88rem; line-height: 1.25;
+  }
+  .order-thumb { width: 40px; height: 40px; }
+  /* Каретка прижата к верху строки: по центру она уезжала к дате,
+     то есть к другой строке управления, и читалась как её часть. */
+  .order-expand { align-self: start; }
+  .order-status { font-size: .56rem; }
+}
