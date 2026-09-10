@@ -10639,3 +10639,41 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     min-height: 36px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: «СТУДИЯ»
+   ──────────────────────────────────────────────────────────
+   Тот же приём, что и в «Порядке статей» / «Контенте»: пять
+   действий (Открыть /studio, Предпросмотр, Применить, Сохранить
+   на VPS, Загрузить свежую версию) были пятью отдельными
+   рамками в столбик — десктопный .studio-toolbar на мобильном
+   просто растягивал каждую кнопку на всю ширину. Здесь это
+   один блок с волосяными линиями внутри, бортом заподлицо с
+   карточкой-шапкой.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  #tab-studio .card-highlight { padding: 16px; }
+  #tab-studio .studio-toolbar {
+    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 1px; background: var(--line);
+    margin: 14px -16px -16px; border-top: 1px solid var(--line);
+  }
+  #tab-studio .studio-toolbar > * {
+    background: var(--bg-card); border: 0; border-radius: 0; margin: 0;
+    min-height: 46px; justify-content: center; text-align: center;
+    font-size: var(--fs-ui); padding-inline: 6px;
+    white-space: normal; line-height: 1.3;
+  }
+  /* .btn-primary красит текст в белый — на общей белой ячейке слово
+     пропадает целиком, та же ловушка, что и с «Опубликовать» в «Контенте». */
+  #tab-studio .studio-toolbar .btn-primary { color: var(--text); }
+  #tab-studio #studioRefreshBtn { grid-column: 1 / -1; }
+
+  /* Длинный заголовок секции («3. Услуги в одну строку») переносился
+     на вторую строку рядом с кнопкой «+ Добавить» — заголовок стал
+     занимать только половину ширины. На телефоне кнопка уходит под
+     заголовок и растягивается на всю ширину. */
+  #tab-studio .studio-section-head { flex-wrap: wrap; }
+  #tab-studio .studio-section-head .card-title { flex: 1 1 100%; }
+  #tab-studio .studio-section-head .btn { flex: 1 1 100%; justify-content: center; }
+}
