@@ -10404,3 +10404,36 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     width: 32px; min-width: 32px; min-height: 32px; color: var(--text-muted);
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: НИЖНИЙ ДОК
+   ──────────────────────────────────────────────────────────
+   Активный раздел отмечался серым прямоугольником поверх
+   чёрной плашки. На чёрном такая заливка читается не как
+   отметка, а как дырка в панели, и она же единственное пятно
+   на весь экран, которое ничего не значит.
+
+   Отметка теперь тонкой белой чертой сверху, как закладка на
+   вкладке, а разницу между активным и остальными держит
+   прозрачность значка. Значки заодно чуть тише: пять чёрно
+   белых иконок в полную силу спорили с содержимым страницы.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  .sidebar.is-collapsed .sb-nav { border-top: 1px solid rgba(255,255,255,.14); }
+  .sidebar.is-collapsed .tab-btn { position: relative; }
+  .sidebar.is-collapsed .sb-ico { opacity: .5; }
+  .sidebar.is-collapsed .tab-btn.active { background: transparent; }
+  .sidebar.is-collapsed .tab-btn.active::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    width: 24px; height: 2px; margin-left: -12px; background: #ffffff;
+  }
+  .sidebar.is-collapsed .tab-btn.active .sb-ico,
+  .sidebar.is-collapsed .tab-btn:hover .sb-ico { opacity: 1; }
+  /* Кнопка «Разделы» той же природы: рамка слева тише, значок в том
+     же тоне, что и соседние, иначе она выглядит отдельной кнопкой
+     поверх дока, а не его частью. */
+  .sb-sheet-btn { border-left-color: rgba(255,255,255,.14); color: rgba(255,255,255,.6); }
+  .sb-sheet-btn .sb-ico { width: 20px; height: 20px; opacity: .6; }
+  .sb-sheet-btn[aria-expanded="true"] { background: transparent; color: #fff; }
+  .sb-sheet-btn[aria-expanded="true"] .sb-ico { opacity: 1; }
+}
