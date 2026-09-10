@@ -10529,3 +10529,25 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   #tab-content .entry-langs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
   #tab-content .entry-langs .btn { min-height: 42px; justify-content: center; border: 0; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: СЧЁТЧИКИ ВИДИМОСТИ
+   ──────────────────────────────────────────────────────────
+   «8/10 открытых разделов», «5 пунктов в меню», «92/92 видимых
+   материалов» шли столбиком по карточке на строку и занимали
+   треть экрана до первого раздела. Цифры короткие, три в ряд
+   помещаются свободно, и это тот же приём с одной рамкой и
+   волосяными линиями, что и на соседних экранах.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  #tab-visibility .visibility-summary {
+    display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1px; padding: 0; background: var(--line); border: 1px solid var(--line);
+  }
+  #tab-visibility .visibility-summary-card {
+    background: var(--bg-card); border: 0; border-radius: 0;
+    padding: 10px 8px; min-width: 0;
+  }
+  #tab-visibility .visibility-summary-value { font-size: 1.35rem; line-height: 1.1; }
+  #tab-visibility .visibility-summary-label { font-size: .5rem; letter-spacing: .07em; line-height: 1.35; }
+}
