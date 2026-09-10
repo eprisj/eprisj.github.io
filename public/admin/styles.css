@@ -10630,4 +10630,12 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   #tab-order .order-bar-right > .btn { font-size: var(--fs-ui); }
   #tab-order .order-home-controls span,
   #tab-order .order-home-controls label { font-size: var(--fs-meta); }
+
+  /* Переключатели периода в «Аналитике» и режима в «Переводах» были
+     30-32pt — ниже пола в 36pt, который держат остальные контролы панели. */
+  .an-range button,
+  .transl-mode-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 36px;
+  }
 }
