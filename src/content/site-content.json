@@ -8124,6 +8124,22 @@
           "content": "There was one exception, and it proves the rule. On the observation deck near the top of the South Tower the columns were narrowed so the glass could open to twenty eight inches. Ten inches is the entire difference between a place where people work and a place where people come to look."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
+          "caption": "The open deck on the roof of the South Tower in 1984, with the North Tower and its mast beyond. Here the parapet is chest high and the view is the point.",
+          "credit": "Photo: Lars Plougmann, CC BY-SA 2.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_2_-_observation_deck_anti-suicide_fence_-_1984.jpg",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
+          "caption": "Coin telescopes and a queue for them. Two floors below, the same building gave its office tenants eighteen inches of glass and no railing to lean on.",
+          "credit": "Photo: Tequask, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Two_World_Trade_Center_Observation_Deck-01.jpg",
+          "align": "center"
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "<span class=\"kicker\">02</span>A nave at the door"
@@ -8201,6 +8217,22 @@
           "content": "Art was distributed through the interiors as deliberately as the elevators. In the lobby of the South Tower hung a tapestry made by Joan Miro with Josep Royo, wool and hemp, twenty feet by thirty five and four tons of it, in place from 1974. On the mezzanine of the North Tower stood Louise Nevelson's Sky Gate, New York, black painted wood, finished in 1978. Alexander Calder's red stabile stood outside on the north side of the site. At the centre of the plaza fountain, Fritz Koenig's bronze Sphere turned once every twenty four hours, slowly enough that you could not watch it move and surely enough that it was never quite where you had left it."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtvi6zcaxgbauu.jpg",
+          "caption": "Austin J. Tobin Plaza from above, with Fritz Koenig’s Sphere at the centre of the fountain. The bronze turned a full circle every twenty four hours.",
+          "credit": "Photo: Balthazar Korab, public domain, via the Library of Congress and Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Plaza._Aerial_view_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636620.jpg",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtvi70bwhbgbsp.jpg",
+          "caption": "Masayuki Nagare’s Cloud Fortress on the plaza, with the perimeter columns rising behind it.",
+          "credit": "Photo: Balthazar Korab, public domain, via the Library of Congress and Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Single_tower_with_Cloud_Fortress_and_Sphere_at_Plaza_Fountain_sculptures_-_LCCN2021636622.jpg",
+          "align": "center"
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "<span class=\"kicker\">07</span>The street underneath"
@@ -8234,7 +8266,7 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
       "id": 2,
       "previewToken": "46c53ed1d82ee2ec2d",
-      "updatedAt": "2026-09-10T12:20:53.364Z"
+      "updatedAt": "2026-09-10T12:28:30.732Z"
     }
   ],
   "reviews": [
