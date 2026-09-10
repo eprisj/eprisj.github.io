@@ -10352,19 +10352,19 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   }
   #tab-order .order-bar-left, #tab-order .order-bar-right { display: contents; }
   #tab-order .order-field { background: var(--bg-card); padding: 7px 12px 8px; gap: 2px; }
-  #tab-order .order-field > span { font-size: .55rem; letter-spacing: .12em; }
+  #tab-order .order-field > span { font-size: var(--fs-micro); letter-spacing: .12em; }
   #tab-order .order-field select {
     border: 0; background-color: transparent; padding: 0 20px 0 0;
-    min-height: 26px; font-size: 15px; background-position: right 2px center;
+    min-height: 26px; font-size: var(--fs-form); background-position: right 2px center;
   }
   #tab-order #orderSortByDateBtn {
     grid-column: 1; border: 0; background: var(--bg-card); min-height: 44px;
-    justify-content: center; font-size: .62rem;
+    justify-content: center; font-size: var(--fs-ui);
   }
   #tab-order .order-count {
     grid-column: 2; align-self: stretch; justify-self: stretch; background: var(--bg-card);
     margin: 0; padding: 0 12px 0 0;
-    display: flex; align-items: center; justify-content: flex-end; font-size: .62rem;
+    display: flex; align-items: center; justify-content: flex-end; font-size: var(--fs-micro);
   }
   #tab-order #orderApplyBtn { grid-column: 1; border: 0; background: var(--bg-card); min-height: 46px; justify-content: center; }
   #tab-order #orderSaveBtn { grid-column: 2; border: 0; min-height: 46px; justify-content: center; }
@@ -10389,16 +10389,16 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     font-family: var(--font-serif); font-weight: 500; font-size: 1rem; line-height: 1.22;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  #tab-order .order-meta { font-size: .58rem; margin-top: 4px; }
+  #tab-order .order-meta { font-size: var(--fs-meta); margin-top: 4px; }
   #tab-order .order-thumb { width: 40px; height: 40px; }
-  #tab-order .order-num { font-size: .62rem; }
+  #tab-order .order-num { font-size: var(--fs-micro); }
 
   /* Стрелки одним сегментом, дата без коробки, статус точкой со словом. */
   #tab-order .order-move { gap: 0; }
   #tab-order .order-move-btn { min-width: 42px; min-height: 38px; }
   #tab-order .order-move-btn + .order-move-btn { border-left: 0; }
   #tab-order .order-date { border: 0; border-bottom: 1px solid var(--line); min-height: 38px; padding-inline: 8px; }
-  #tab-order .order-status { font-size: .55rem; }
+  #tab-order .order-status { font-size: var(--fs-micro); }
   #tab-order .order-expand {
     border: 0; background: transparent; align-self: start;
     width: 32px; min-width: 32px; min-height: 32px; color: var(--text-muted);
@@ -10464,11 +10464,11 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   }
   #tab-content .toolbar-field { background: var(--bg-card); padding: 7px 12px 8px; gap: 2px; min-width: 0; }
   #tab-content .toolbar-field-grow { grid-column: 1 / -1; }
-  #tab-content .toolbar-field-label { font-size: .55rem; letter-spacing: .12em; }
+  #tab-content .toolbar-field-label { font-size: var(--fs-micro); letter-spacing: .12em; }
   #tab-content .toolbar-field select,
   #tab-content .toolbar-field input {
     border: 0; background-color: transparent; padding: 0 20px 0 0;
-    min-height: 28px; font-size: 15px; width: 100%;
+    min-height: 28px; font-size: var(--fs-form); width: 100%;
   }
   #tab-content .toolbar-field select { background-position: right 2px center; }
 
@@ -10481,11 +10481,11 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   }
   #tab-content .toolbar-publication-summary {
     grid-column: 1 / -1; background: var(--bg-card); margin: 0;
-    padding: 8px 12px; font-size: .58rem; line-height: 1.55;
+    padding: 8px 12px; font-size: var(--fs-meta); line-height: 1.55;
   }
   #tab-content .toolbar-publication-row .btn {
     border: 0; background: var(--bg-card); min-height: 44px;
-    justify-content: center; font-size: .58rem; padding-inline: 6px;
+    justify-content: center; font-size: var(--fs-ui); padding-inline: 6px;
   }
   #tab-content #previewLinkBtn { grid-column: 1 / -1; }
 
@@ -10508,7 +10508,7 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   }
   #tab-content .toolbar-sync-panel .btn {
     border: 0; background: var(--bg-card); min-height: 42px;
-    justify-content: center; font-size: .58rem;
+    justify-content: center; font-size: var(--fs-ui);
   }
   #tab-content .toolbar-sync-panel .btn:only-of-type,
   #tab-content .toolbar-sync-panel .btn:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; }
@@ -10549,11 +10549,74 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     padding: 10px 8px; min-width: 0;
   }
   #tab-visibility .visibility-summary-value { font-size: 1.35rem; line-height: 1.1; }
-  #tab-visibility .visibility-summary-label { font-size: .5rem; letter-spacing: .07em; line-height: 1.35; }
+  #tab-visibility .visibility-summary-label { font-size: var(--fs-micro); letter-spacing: .07em; line-height: 1.35; }
 }
 
 /* Пустой ряд чипов переводов рисовал полосу без содержимого: у записи,
    которую ещё не переводили, список языков пуст, а ячейка остаётся. */
 @media (max-width: 560px) {
   #tab-content .entry-langs-chips:empty { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: ШКАЛА КЕГЛЕЙ
+   ──────────────────────────────────────────────────────────
+   Замерено на живой панели: на «Порядке статей» одиннадцать
+   разных кеглей в диапазоне 8.3–16px, на «Контенте» двадцать
+   два. Значения накопились по одному на правку, каждое само
+   по себе разумное, а вместе это рябь: подпись поля 8.8,
+   номер строки 9.9, описание 9.3, кнопка 11.5, соседняя
+   кнопка 9.3.
+
+   Здесь их четыре, и они названы. Пол в 11 пикселей взят не
+   на глаз: всё, что мельче, на телефоне читается щурясь, а
+   таких мест было больше половины. Форменные поля держатся
+   на 16: ниже этого Safari на iOS увеличивает страницу при
+   касании поля, и потом её приходится отматывать руками.
+
+   Заголовки разделов (24–35px) сюда не входят намеренно:
+   иерархию страницы держат они, и подтягивать их под общую
+   шкалу означало бы её сплющить.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  :root {
+    --fs-micro: 11px;   /* моно-подписи капсом, номера, статусы */
+    --fs-meta: 12.5px;  /* пояснения, вторичный текст */
+    --fs-ui: 12.5px;    /* кнопки и переключатели */
+    --fs-form: 16px;    /* поля ввода и выбора */
+  }
+
+  .panel-kicker,
+  .toolbar-sync-label,
+  .toolbar-sync-scope,
+  .entry-langs-label,
+  .raw-shortcuts,
+  .reach-chip,
+  .wys-tag,
+  .wys-save-state,
+  .order-card-num { font-size: var(--fs-micro); }
+
+  .order-hint,
+  .order-card-title,
+  .wys-figcap,
+  .wys-meta-item { font-size: var(--fs-meta); }
+
+  .btn,
+  .btn-sm,
+  .order-move-btn,
+  .order-expand,
+  .order-preview-tab,
+  .wys-fig-align-btn,
+  .wys-gal-add,
+  .wys-gal-x,
+  .wys-gal-move { font-size: var(--fs-ui); }
+
+  input, select, textarea { font-size: var(--fs-form); }
+
+  /* Точечно там, где кегль стоял с большей специфичностью и общее
+     правило до него не доставало: кнопки записи в «Порядке статей»
+     и подписи в колонке предпросмотра. */
+  #tab-order .order-bar-right > .btn { font-size: var(--fs-ui); }
+  #tab-order .order-home-controls span,
+  #tab-order .order-home-controls label { font-size: var(--fs-meta); }
 }
