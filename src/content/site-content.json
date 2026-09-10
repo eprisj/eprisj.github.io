@@ -27105,7 +27105,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Jeder kennt die Umrisslinie. Zwei flach oben endende Vertikalen, Aluminium, das am Ende eines Nachmittags rosa wird, gedruckt auf mehr Plakaten als jedes andere Gebäudepaar der Welt. Was fast niemand beschreibt, zwanzigfünf Jahre später, ist, wie es war, inside sie zu sein. Etwa fünfzigtausend Menschen arbeiteten an einem gewöhnlichen Tag im World Trade Center und Zehntausende passierten es. Ihr Thema war nie die Silhouette. Es war eine Lobby, ein Aufzugswechsel, ein Boden mit grauem Teppich, auf dem die Aussicht in Scheiben ankam."
+              "content": "Jeder kennt die Umrisslinie. Zwei flach oben abschließende Vertikalen, Aluminium, das am Ende eines Nachmittags rosa wird, auf mehr Plakaten gedruckt als jedes andere Gebäudepaar der Welt. Was fast niemand beschreibt, fünfundzwanzig Jahre später, ist, wie es war, inside sie zu sein. Etwa fünfzigtausend Menschen arbeiteten an einem gewöhnlichen Tag im World Trade Center und Zehntausende passierten es. Ihr Thema war nie die Silhouette. Es war eine Lobby, ein Aufzugswechsel, ein Boden mit grauem Teppich, auf dem die Aussicht in Scheiben ankam."
             },
             {
               "type": "header",
@@ -27114,38 +27114,50 @@
             },
             {
               "type": "text",
-              "content": "Beginnen Sie mit dem Fenster, denn der Rest des Innenraums folgt daraus. Minoru Yamasaki umhüllte die Türme mit eng beieinander stehenden Stahlpfeilern, und das Glas zwischen ihnen ist achtzehn Zoll breit, schmaler als die Schultern der Person, die hindurchblickt. Der angegebene Grund ist erstaunlich persönlich. Yamasaki hatte Höhenangst, und er glaubte nicht, dass ein Mieter an einer reinen Glasswand tausend Fuß in der Luft stehen sollte. Der strukturelle Grund lief parallel dazu, da dieselben Pfeiler das Gebäude stützten."
+              "content": "Beginnen Sie mit dem Fenster, denn der Rest des Innenraums folgt daraus. Minoru Yamasaki umhüllte die Türme mit eng beieinander stehenden Stahlkolonnen, und das Glas zwischen ihnen ist achtzehn Zoll breit, schmaler als die Schultern der Person, die hindurchblickt. Der angegebene Grund ist erstaunlich persönlich. Yamasaki hatte Höhenangst, und er hielt es nicht für angemessen, dass ein Mieter an einer reinen Glasscheibe tausend Fuß in der Luft stehen sollte. Der strukturelle Grund lief parallel dazu, da dieselben Säulen das Gebäude stützten."
             },
             {
               "type": "text",
-              "content": "Von innen ist der Effekt präzise und seltsam. Man kann den Raum und die Aussicht nicht gleichzeitig erfassen. Die Stadt erscheint in vertikalen Streifen, geschnitten von Aluminium. Um nach unten zu schauen, muss man direkt an das Glas herantreten und das Gesicht in die Öffnung stecken, und die Säule trägt das Gewicht, während man es tut. Das Gebäude bringt einen dazu, sich auf das Ansehen einzulassen."
-            },
-            {
-              "type": "Bild",
-              "content": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
-              "caption": "Die 107. Etage des North Tower, fotografiert im Jahr 1979. Das Glas ist achtzehn Zoll breit und die verkleideten Säulen stehen etwa einen Meter auseinander, so dass eine Person in die Öffnung treten muss, um den Boden zu sehen.",
-              "credit": "Foto: Guerinf, CC BY-SA 3.0, via Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:107e_%C3%A9tage_du_World_Trade_Center_(10-12-1979)_(1).JPG",
-              "align": "zentrum"
+              "content": "Von innen wirkt es präzise und seltsam. Man kann den Raum und die Aussicht nicht gleichzeitig erfassen. Die Stadt erscheint in vertikalen Streifen, geschnitten von Aluminium. Um nach unten zu schauen, muss man direkt an das Glas herantreten und das Gesicht in die Öffnung stecken, und die Säule trägt das Gewicht, während man es tut. Das Gebäude bringt einen dazu, sich auf das Ansehen einzulassen."
             },
             {
               "type": "text",
-              "content": "Es gab eine Ausnahme, und sie bestätigt die Regel. Auf der Aussichtsplattform in der Nähe der Spitze des South Tower wurden die Säulen verengt, sodass das Glas auf achtundzwanzig Zoll geöffnet werden konnte. Zehn Zoll sind der gesamte Unterschied zwischen einem Ort, an dem Menschen arbeiten, und einem Ort, an dem Menschen kommen, um zu schauen."
+              "content": "Es gab eine Ausnahme, und sie bestätigt die Regel. Auf der Beobachtungsebene in der Nähe der Spitze des South Tower wurden die Säulen so verengt, dass das Glas auf achtundzwanzig Zoll geöffnet werden konnte. Zehn Zoll sind der gesamte Unterschied zwischen einem Ort, an dem Menschen arbeiten, und einem Ort, an dem Menschen kommen, um zu schauen."
             },
             {
-              "type": "kopfzeile",
+              "type": "text",
+              "content": "Die Plattform war eine gestaltete Attraktion und kein Fenster, das jemand zufällig offen gelassen hatte. Top of the World, wie die Port Authority es nannte, wurde im Dezember 1975 mit einem Innenboden auf der hundert- und siebten Ebene und einer offenen Dachterrasse darüber eröffnet, die mit einem Aufzug erreicht wurde. Es beherbergte zwei Dutzend Videomonitore, einen Film namens Manhattan Magic, ein Modell der Stadt mit siebenhundertfünfzig Gebäuden und eine Essenshalle mit einem Sbarro und einem Nathan's Famous. Ein Besucher wurde die Aussicht so verkauft, wie ein Museum eine Sammlung verkauft, mit einer Interpretation dazu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
+              "caption": "Die offene Plattform auf dem Dach des South Tower im Jahr 1984, mit dem North Tower und seiner Mast im Hintergrund. Hier ist die Brüstung knöchelhoch und der Blick ist der Punkt.",
+              "credit": "Foto: Lars Plougmann, CC BY-SA 2.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_2_-_observation_deck_anti-suicide_fence_-_1984.jpg",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
+              "caption": "Münz-Teleskope und eine Schlange dafür. Zwei Etagen darunter gab das gleiche Gebäude seinen Büro-Mietern achtzehn Zoll Glas und kein Geländer zum Anlehnen.",
+              "credit": "Foto: Tequask, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Two_World_Trade_Center_Observation_Deck-01.jpg",
+              "align": "center"
+            },
+            {
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">02</span>Eine Nave an der Tür"
             },
             {
               "type": "text",
-              "content": "Unten tun die gleichen Säulen etwas ganz anderes. In der Nähe des Bodens verschmelzen jede Gruppe von drei zu einer, was das Lobby-Glas zwischen ihnen breit und hoch laufen lässt und die Aufzugsschächte oben wirtschaftlich stapelt. Die Lobbys waren siebenundsiebzig Fuß hoch. Der Effekt war eine spitzbogige Arkade, und Kritiker griffen manchmal nach dem Wort Gotik, bewundernd und oft nicht. Was für das Innere zählt, ist die Abfolge. Das Gebäude verengt die Welt auf achtzehn Zoll oben und begrüßt Sie mit etwas, das wie eine Nave an der Tür ist."
+              "content": "Am unteren Ende tun die gleichen Säulen etwas ganz anderes. In Bodennähe verschmelzen jede Gruppe von drei zu einer, die die Lobby-Glasfront zwischen ihnen breit und hoch fließen lässt und die Aufzugsschächte darüber wirtschaftlich stapeln lässt. Die Lobbys waren siebzig vier Fuß hoch. Der Effekt war eine spitzbogige Arkade, und Kritiker griffen manchmal nach dem Wort Gotik, manchmal bewundernd und oft nicht. Was für das Innere zählt, ist die Abfolge. Das Gebäude verengt die Welt auf achtzehn Zoll oben und begrüßt Sie mit etwas wie einer Nave an der Tür."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhptzo49xs0a.jpg",
-              "caption": "Wo drei Perimeter-Säulen zu einer verschmelzen, öffnet sich die Wand. Fritz Koenigs Bronze-Kugel steht im Platzbrunnen dahinter.",
-              "credit": "Photo: Balthazar Korab, gemeinfrei, via die Library of Congress und Wikimedia Commons",
+              "caption": "Wo drei Perimeter-Säulen zu einer verschmelzen, öffnet sich die Wand. Fritz Koenigs Bronze-Kugel steht im Brunnen der Plaza dahinter.",
+              "credit": "Foto: Balthazar Korab, gemeinfrei, über die Library of Congress und Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636619.jpg",
               "align": "center"
             },
@@ -27156,32 +27168,36 @@
             },
             {
               "type": "text",
-              "content": "Innen war jeder Turm nicht nur ein Gebäude, sondern drei, die übereinander lagen. Etagen eins bis vierunddreißig, vierundvierzig bis siebenundsiebzig, siebenundachtzig bis einhundertzehn: drei Zonen, jede mit eigenen lokalen Aufzügen, erreicht durch Expresswagen, die zu Sky-Lobbys in den vierundvierzigsten und siebenundachtzigsten Etagen fahren. Die Expresswagen transportierten fünfundfünfzig Personen mit sechzehnhundert Fuß pro Minute, ungefähr siebenundzwanzig Fuß pro Sekunde."
+              "content": "Innen war jeder Turm kein einzelnes Gebäude, sondern drei übereinander liegende. Etagen eins bis vierunddreißig, vierundvierzig bis siebenundsiebzig, siebenundachtzig bis einhundertzehn: drei Zonen, jede mit eigenen lokalen Aufzügen, erreicht durch Schnellaufzüge, die zu Sky-Lobbys in den vierundvierzigsten und siebenundachtzigsten Etagen fahren. Die Schnellaufzüge transportierten fünfundfünfzig Personen mit sechzehnhundert Fuß pro Minute, ungefähr siebenundzwanzig Fuß pro Sekunde."
             },
             {
               "type": "text",
-              "content": "Das war Arithmetik, bevor es Architektur war. In einem herkömmlichen Schema verbringt ein Turm dieser Höhe seine unteren Etagen in Aufzugsschächten, und die vermietbare Fläche kollabiert. Die Reise zu splitten, wie eine U-Bahn-Linie in Express und Lokal, erhöhte die nutzbare Bodenfläche von sechsundsechzig auf fünfundsiebzig Prozent. Dreizehn Prozent von einhundertzehn Etagen ist eine Menge Gebäude. Die Folge war sozial. Ein Sky-Lobby verhielt sich wie ein Bahnhof: Menschen wechselten dort, standen dort in der Schlange, liefen sich dort über den Weg, und der Turm erhielt zwei innere Adressen, die weder die Straße noch ein Büro waren."
+              "content": "Das war Arithmetik, bevor es Architektur wurde. In einem herkömmlichen Schema verbringt ein Turm dieser Höhe seine unteren Etagen in Aufzugsschächten, und die vermietbare Fläche bricht zusammen. Die Reise zu teilen, wie eine U-Bahn-Linie in Express- und Lokalzüge, erhöhte die nutzbare Etagenfläche von sechsundsechzig auf siebenundachtzig Prozent. Dreizehn Prozent von einhundertzehn Etagen ist eine Menge Gebäude. Die Folge war sozial. Ein Sky-Lobby verhielt sich wie ein Bahnhof: Menschen wechselten dort, standen dort in der Schlange, liefen sich dort über den Weg, und der Turm erhielt zwei innere Adressen, die weder die Straße noch ein Büro waren."
             },
             {
-              "type": "bild",
+              "type": "text",
+              "content": "Acht der einhundertzehn Etagen wurden niemals an jemanden vermietet. Sie gingen an Maschinen, in vier zweistöckigen Bändern, die im Gebäude verteilt sind, weil ein Turm dieser Größe ein Versorgungsunternehmen ist, das zufällig Mieter hat: sein eigenes Wasser, seine eigene Luft, seine eigene Stromverteilung, seine eigene Entwässerung, die wieder nach unten geführt wird. Der Komplex hatte sogar eigene Postleitzahlen, 10048 und 10047, was die einfachste mögliche Aussage darüber ist, was er war. Kein Gebäude an einer Straße, eine Siedlung mit einer Adresse."
+            },
+            {
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
-              "caption": "Ein Turm-Lobby im Bau im Jahr 1971. Zwei Jahre später enthielt dasselbe Volumen Stein, Glas und eine Schlange für die Schnellaufzüge.",
-              "credit": "Foto: Warren K. Leffler, U.S. News & World Report Sammlung, gemeinfrei, via die Library of Congress",
+              "caption": "Ein Turmlobby im Bau 1971. Zwei Jahre später enthielt dasselbe Volumen Stein, Glas und eine Schlange für die Schnellaufzüge.",
+              "credit": "Photo: Warren K. Leffler, U.S. News & World Report Sammlung, gemeinfrei, via die Library of Congress",
               "sourceUrl": "https://www.loc.gov/pictures/item/2016649943/",
-              "align": "zentrum"
+              "align": "center"
             },
             {
-              "type": "kopfzeile",
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">04</span>Ein Hektar Gewöhnliches"
             },
             {
               "type": "text",
-              "content": "Die Böden selbst waren schlicht und enorm. Jede Platte ist ein Quadrat von zweihundertacht Fuß mit einem Servicekern von achtundachtzig mal einhundertfünfunddreißig in der Mitte, und der Ring des Raumes zwischen Kern und Fassade verläuft ununterbrochen, was das ganze kommerzielle Argument war: fast ein Hektar pro Etage ohne Hindernisse. Was Mieter damit machten, ist das, was Mieter tun. Trennwände, Teppichfliesen, eine Aktenwand, Besprechungsräume, die in die Ecken gedrängt wurden, wo zwei Aussichten aufeinandertreffen."
+              "content": "Die Böden selbst waren schlicht und riesig. Jede Platte ist ein Quadrat von zweihundertacht Fuß mit einem Servicekern von achtundachtzig mal einhundertfünfunddreißig in der Mitte, und der Ring des Raumes zwischen Kern und Fassade verläuft ununterbrochen, was das ganze kommerzielle Argument war: fast ein Hektar pro Etage ohne Hindernisse. Was Mieter damit machten, ist das, was Mieter tun. Trennwände, Teppichfliesen, eine Aktenwand, Besprechungsräume, die in die Ecken gedrängt wurden, wo zwei Aussichten aufeinandertreffen."
             },
             {
               "type": "text",
-              "content": "Es ist es wert, klar zu sagen, dass der Großteil des Inneren des World Trade Center gewöhnlich war. Das ist keine Beschwerde, es ist die Tatsache, die am schwersten festzuhalten ist. Ein Gebäude, das nur durch Katastrophe in Erinnerung bleibt, verliert seine Dienstage."
+              "content": "Es ist wert, klar zu sagen, dass der Großteil des Inneren des World Trade Center gewöhnlich war. Das ist keine Beschwerde, es ist die Tatsache, die am schwersten festzuhalten ist. Ein Gebäude, das nur durch Katastrophe in Erinnerung bleibt, verliert seine Dienstage."
             },
             {
               "type": "header",
@@ -27190,24 +27206,44 @@
             },
             {
               "type": "text",
-              "content": "Ein Interieur war überhaupt nicht gewöhnlich. Windows on the World öffnete sich am hundertsechsten und hundertsiebten Stock des North Tower am 19. April 1976, über fünfzigtausend Quadratfuß gestaltet von Warren Platner. Platner arbeitete mit Messing, Spiegel und stoffbedeckten Wänden, mit gepolsterten Bänken, Scheiben in den Säulen und messingfarbenen, schalenförmigen Lichtern darüber. Milton Glaser entwarf alles, was ein Gast berührte oder las: das Geschirr, die Teppiche, die Lichtinstallationen, die Menüs. Paul Goldberger nannte das Ergebnis sinnlichen Modernismus, was zutreffend war und damals leicht missbilligend klang."
+              "content": "Ein Innenraum war überhaupt nicht gewöhnlich. Windows on the World öffnete sich am hundertsechsten und hundertsiebten Stock des North Tower am 19. April 1976, über fünfzigtausend Quadratfuß gestaltet von Warren Platner. Platner arbeitete mit Messing, Spiegel und stoffbedeckten Wänden, mit gepolsterten Bänken, Scheiben in den Säulen und messingfarbenen Lichtern in Form von Schalen darüber. Milton Glaser entwarf alles, was ein Gast berührte oder las: das Geschirr, die Teppiche, die Lichtinstallationen, die Menüs. Paul Goldberger nannte das Ergebnis sinnlichen Modernismus, was genau war und damals leicht missbilligend klang."
             },
             {
               "type": "text",
-              "content": "Der clevere Schachzug war strukturell statt dekorativ. Platner schichtete den Speisesaal in Stufen, sodass die Aussicht durch das achtzehn Zoll große Glas jedem Tisch gehörte, anstatt zur Reihe neben dem Fenster. Eine Jacke war erforderlich, und das Restaurant hielt einen Ständer für Männer bereit, die ohne kamen. Auf der Südseite befand sich der Cellar in the Sky, ein kleiner Raum mit festem Menü und eigener Weinkarte. Nach dem Bombenanschlag 1993 wurde der Raum für zwölf Millionen fünfhunderttausend Dollar neu gebaut und am 26. Juni 1996 wiedereröffnet. Im letzten vollen Jahr erzielte es dreißig Millionen siebenhunderttausend Dollar und war das umsatzstärkste Restaurant in den Vereinigten Staaten."
+              "content": "Der clevere Schachzug war eher strukturell als dekorativ. Platner schichtete den Speisesaal in Stufen, sodass die Aussicht durch das achtzehn Zoll große Glas jedem Tisch gehörte, anstatt zur Reihe neben dem Fenster. Eine Jacke war erforderlich, und das Restaurant hielt eine Garderobe für Männer bereit, die ohne kamen. Auf der Südseite befand sich der Cellar in the Sky, ein kleiner Raum mit festem Menü und eigener Weinkarte. Nach dem Bombenanschlag von 1993 wurde der Raum für zwölf Millionen fünfhunderttausend Dollar neu gebaut und am 26. Juni 1996 wiedereröffnet. Im letzten vollen Jahr erzielte es dreißig Millionen siebenhunderttausend Dollar und war das höchstumsatzstärkste Restaurant in den Vereinigten Staaten."
+            },
+            {
+              "type": "text",
+              "content": "Rund um den Speisesaal saß der Rest: eine Weinschule, die jahrzehntelang unter Kevin Zraly lief, und auf dem hundertsiebten Stock die Hors d'Oeuvrerie, die in den Neunzigern zum Greatest Bar on Earth wurde, mit Vollfenstern und einer Tanzfläche. Die Bombe vom Februar 1993 explodierte in der Garage sechs Ebenen tiefer, und es war der Untergrund, der getroffen wurde, der Durchgang und der Bahnhof und die Anlage. Die Türme standen, aber das Restaurant an der Spitze blieb drei Jahre lang geschlossen."
             },
             {
               "type": "quote",
-              "content": "Die Stufen waren das Design. Ein so schmales Fenster gibt die Aussicht an den, der am nächsten sitzt, es sei denn, der Boden selbst ist so gestaltet, dass er sie zurückgibt."
+              "content": "Die Stufen waren das Design. Ein so schmales Fenster gibt die Aussicht an denjenigen weiter, der am nächsten sitzt, es sei denn, der Boden selbst ist so angeordnet, dass er sie zurückgibt."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">06</span>Was in den Lobbys hing"
+              "content": "<span class=\"kicker\">06</span>Was in den Eingängen hing"
             },
             {
               "type": "text",
-              "content": "Kunst wurde durch die Innenräume so absichtlich verteilt wie die Aufzüge. Im Lobby der South Tower hing ein Wandteppich, hergestellt von Joan Miro mit Josep Royo, Wolle und Hanf, zwanzig Fuß mal fünfunddreißig und vier Tonnen davon, seit 1974 an Ort und Stelle. Im Mezzanin der North Tower stand Louise Nevelsons Sky Gate, New York, schwarz gestrichenes Holz, fertiggestellt 1978. Alexander Calders rote Stabile stand draußen auf der Nordseite des Geländes. Im Zentrum des Platzbrunnens drehte sich Fritz Koenigs Bronze-Sphäre alle vierundzwanzig Stunden, langsam genug, um sie nicht beim Bewegen beobachten zu können, und doch schnell genug, um nie genau dort zu sein, wo man sie verlassen hatte."
+              "content": "Kunst wurde durch die Innenräume so absichtlich verteilt wie die Aufzüge. Im Eingangsbereich des South Tower hing ein Wandteppich, hergestellt von Joan Miro mit Josep Royo, Wolle und Hanf, zwanzig Fuß mal fünfunddreißig und vier Tonnen davon, seit 1974 an Ort und Stelle. Auf dem Mezzanin des North Tower stand Louise Nevelsons Sky Gate, New York, schwarz lackiertes Holz, fertiggestellt 1978. Alexander Calders rotes Stabiles stand draußen auf der Nordseite des Geländes, und Masayuki Nagare’s Cloud Fortress saß auf dem Platz selbst, eine niedrige schwarze Granitmasse, die die Leute als Wand zum Sitzen nutzten. Im Zentrum des Platzbrunnens drehte Fritz Koenigs Bronze-Kugel alle vierundzwanzig Stunden, langsam genug, um sie nicht beim Bewegen beobachten zu können, und doch schnell genug, dass sie nie ganz dort war, wo man sie verlassen hatte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6zcaxgbauu.jpg",
+              "caption": "Austin J. Tobin Platz von oben, mit Fritz Koenigs Sphere im Zentrum des Brunnens. Die Bronze drehte sich alle vierundzwanzig Stunden eine volle Runde.",
+              "credit": "Foto: Balthazar Korab, gemeinfrei, via Library of Congress und Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Plaza._Aerial_view_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636620.jpg",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi70bwhbgbsp.jpg",
+              "caption": "Masayuki Nagare’s Cloud Fortress auf dem Platz, mit den Perimeter-Säulen, die dahinter aufsteigen.",
+              "credit": "Foto: Balthazar Korab, gemeinfrei, via Library of Congress und Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Single_tower_with_Cloud_Fortress_and_Sphere_at_Plaza_Fountain_sculptures_-_LCCN2021636622.jpg",
+              "align": "center"
             },
             {
               "type": "header",
@@ -27216,34 +27252,42 @@
             },
             {
               "type": "text",
-              "content": "Darunter lag der Teil des Komplexes, den die meisten Menschen tatsächlich nutzten. Sechs Ebenen der Unterkonstruktion beherbergten eine Einkaufshalle, die PATH-Station, Parkplätze und die Anlage, die die Türme betrieb. Der Platz darüber war offen und in Wind oft unfreundlich, sodass das Einkaufszentrum zur eigentlichen Straße des World Trade Center wurde. Für viele Menschen wurde das Gebäude von unten betreten, ohne jemals das offene Gelände zu überqueren, für das es berühmt war."
+              "content": "Unten all dessen lag der Teil des Komplexes, den die meisten Menschen tatsächlich nutzten. Sechs Ebenen Unterbau hielten eine Einkaufshalle, die PATH-Station, Parkplätze und die Anlage, die die Türme betrieb. Der Platz oben war offen und häufig unfreundlich im Wind, so wurde das Einkaufszentrum zur eigentlichen Straße des World Trade Center. Für sehr viele Menschen wurde das Gebäude von unten betreten, ohne jemals den offenen Boden zu überqueren, für den es berühmt war."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">08</span>Was ist übrig"
+              "content": "<span class=\"kicker\">08</span>Was übrig bleibt"
             },
             {
               "type": "text",
-              "content": "Morgen ist der fünfundzwanzigste Jahrestag. Alles hier Beschriebene, mit einer Ausnahme, existiert jetzt nur noch als Beschreibung: die siebzig vier Fuß großen Eingänge, die zwei Sky-Lobbys, die Acre-Böden, das Messing und die Ebenen von Windows on the World, das Wandteppich, die Nevelson. Koenigs Sphere kam durch, eingedellt und aufgerissen, und steht heute im Liberty Park, nur einen kurzen Spaziergang von dem Ort entfernt, an dem sie früher war."
+              "content": "Morgen ist der fünfundzwanzigste Jahrestag. Alles, was hier beschrieben wird, mit einer Ausnahme, existiert jetzt nur noch als Beschreibung: die siebzig vier Fuß großen Lobbys, die zwei Sky-Lobbys, die Acre-Böden, die Messing- und die Windows on the World-Stufen, das Wandteppich, die Nevelson. Koenigs Sphere kam durch, eingedellt und aufgerissen, und steht heute im Liberty Park, nur einen kurzen Spaziergang von dem Ort entfernt, an dem sie früher drehte."
             },
             {
-              "type": "image",
+              "type": "bild",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
-              "caption": "Die Sphere stand im Zentrum des Platzbrunnens und drehte sich einmal am Tag. Beschädigt und absichtlich nie repariert, steht sie jetzt im Liberty Park.",
-              "credit": "Photo: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
+              "caption": "Die Kugel stand im Zentrum des Platzbrunnens und drehte sich einmal am Tag. Beschädigt und absichtlich nie repariert, steht sie jetzt im Liberty Park.",
+              "credit": "Foto: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sphere_in_Battery_Park_(4662282799).jpg",
-              "align": "center"
+              "align": "zentrum"
             },
             {
               "type": "text",
-              "content": "Es gibt die Angewohnheit, Gebäude nach ihren Umrissen zu erinnern, und es ist praktisch, weil ein Umriss keine Räume hat und daher niemand darin. Das World Trade Center war ein Ort, an den die Menschen morgens gingen, um zu arbeiten: durch den Durchgang, in einem Expresswagen nach oben, in einer Sky-Lobby, in einen Boden mit einem Fenster achtzehn Zoll breit. Das Festhalten daran ist keine Nostalgie an Architektur. Es ist der einzige Weg, wie die Beschreibung bei den Menschen bleibt."
+              "content": "Es gibt eine Gewohnheit, Gebäude nach ihren Umrissen zu erinnern, und es ist praktisch, weil ein Umriss keine Zimmer hat und daher niemand darin ist. Das World Trade Center war ein Ort, an den Menschen morgens zur Arbeit gingen: durch den Durchgang, in einem Expresswagen nach oben, in einer Himmel-Lobby, in einen Boden mit einem Fenster achtzehn Zoll breit. Das Festhalten daran ist keine Nostalgie an Architektur. Es ist der einzige Weg, wie die Beschreibung bei den Menschen bleibt."
+            },
+            {
+              "type": "text",
+              "content": "Fotografien, in Reihenfolge: der 107. Stock des North Tower im Jahr 1979 (Guerinf, CC BY-SA 3.0); das Dachdeck des South Tower im Jahr 1984 (Lars Plougmann, CC BY-SA 2.0); die Teleskope des Decks (Tequask, CC BY-SA 4.0); die Eingangsbögen, die Lobby im Bau 1971, der Platz von oben und Cloud Fortress (Balthazar Korab und Warren K. Leffler, gemeinfrei, Library of Congress); die Sphere im Liberty Park (Bernt Rostad, CC BY 2.0). Alle via Wikimedia Commons."
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
           "id": 2,
           "previewToken": "46c53ed1d82ee2ec2d",
-          "updatedAt": "2026-09-10T12:21:39.497Z"
+          "updatedAt": "2026-09-10T12:40:44.068Z",
+          "skipLangs": [
+            "UA",
+            "RU"
+          ]
         }
       ],
       "reviews": [
