@@ -10437,3 +10437,95 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   .sb-sheet-btn[aria-expanded="true"] { background: transparent; color: #fff; }
   .sb-sheet-btn[aria-expanded="true"] .sb-ico { opacity: 1; }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: «КОНТЕНТ»
+   ──────────────────────────────────────────────────────────
+   Тот же приём, что и в «Порядке статей»: рамка одна на группу,
+   внутри волосяные линии. Здесь это важнее всего, потому что
+   панель записи это шесть полей, четыре кнопки состояния, пять
+   кнопок записи и две панели синхронизации: пятнадцать
+   отдельных коробок в столбик, прежде чем начнётся сам текст.
+
+   Заодно чинятся две вещи, которые были поломаны и до этого:
+   панели «Языки» и «Медиа» наезжали друг на друга (span в
+   строке, которая не переносилась), а отключённая кнопка
+   «Опубликовать» показывалась белым по светло-серому, то есть
+   не показывалась вовсе.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  #tab-content .entry-toolbar { border: 0; background: transparent; padding: 10px 12px 0; }
+
+  #tab-content .toolbar-selects {
+    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 1px; padding: 0; background: var(--line);
+    border: 1px solid var(--line); margin-bottom: 10px;
+  }
+  #tab-content .toolbar-field { background: var(--bg-card); padding: 7px 12px 8px; gap: 2px; min-width: 0; }
+  #tab-content .toolbar-field-grow { grid-column: 1 / -1; }
+  #tab-content .toolbar-field-label { font-size: .55rem; letter-spacing: .12em; }
+  #tab-content .toolbar-field select,
+  #tab-content .toolbar-field input {
+    border: 0; background-color: transparent; padding: 0 20px 0 0;
+    min-height: 28px; font-size: 15px; width: 100%;
+  }
+  #tab-content .toolbar-field select { background-position: right 2px center; }
+
+  /* padding: 0 обязателен: у контейнера фон цвета линии, и любые
+     собственные поля превращаются в серую рамку вокруг ячеек. */
+  #tab-content .toolbar-publication-row {
+    display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1px; padding: 0; background: var(--line);
+    border: 1px solid var(--line); margin-bottom: 10px;
+  }
+  #tab-content .toolbar-publication-summary {
+    grid-column: 1 / -1; background: var(--bg-card); margin: 0;
+    padding: 8px 12px; font-size: .58rem; line-height: 1.55;
+  }
+  #tab-content .toolbar-publication-row .btn {
+    border: 0; background: var(--bg-card); min-height: 44px;
+    justify-content: center; font-size: .58rem; padding-inline: 6px;
+  }
+  #tab-content #previewLinkBtn { grid-column: 1 / -1; }
+
+  #tab-content .toolbar-entry-reach { padding: 0 0 10px; gap: 6px; }
+
+  #tab-content .toolbar-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  #tab-content #addEntryBtn { flex: 1 1 100%; min-height: 46px; justify-content: center; }
+  #tab-content #moveEntryUpBtn,
+  #tab-content #moveEntryDownBtn { flex: 0 0 46px; min-height: 42px; justify-content: center; }
+  #tab-content #duplicateEntryBtn,
+  #tab-content #deleteEntryBtn { flex: 1 1 auto; min-height: 42px; justify-content: center; }
+
+  #tab-content .toolbar-sync-panel {
+    flex: 1 1 100%; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line); padding: 0; margin: 0;
+  }
+  #tab-content .toolbar-sync-label,
+  #tab-content .toolbar-sync-scope {
+    grid-column: 1 / -1; background: var(--bg-card); padding: 7px 12px; margin: 0;
+  }
+  #tab-content .toolbar-sync-panel .btn {
+    border: 0; background: var(--bg-card); min-height: 42px;
+    justify-content: center; font-size: .58rem;
+  }
+  #tab-content .toolbar-sync-panel .btn:only-of-type,
+  #tab-content .toolbar-sync-panel .btn:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; }
+
+  /* Отключённая кнопка «Опубликовать» на светлой ячейке оставалась
+     белым текстом на светло-сером: слово исчезало целиком. */
+  #tab-content .toolbar-publication-row .btn:disabled,
+  #tab-content .toolbar-publication-row .btn[disabled] {
+    background: var(--bg); color: var(--text-muted); opacity: 1;
+  }
+  /* Полоса переводов записи тем же блоком, а не серой лентой без края. */
+  #tab-content .entry-langs {
+    display: grid; grid-template-columns: minmax(0,1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    padding: 0; margin-bottom: 10px;
+  }
+  #tab-content .entry-langs > * { background: var(--bg-card); margin: 0; padding: 7px 12px; }
+  #tab-content .entry-langs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  #tab-content .entry-langs .btn { min-height: 42px; justify-content: center; border: 0; }
+}
