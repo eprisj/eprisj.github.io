@@ -8112,16 +8112,12 @@
           "content": "From inside, the effect is precise and strange. You cannot take in the room and the view at the same time. The city arrives in vertical strips, edited by aluminium. To look down you have to walk right up to the glass and put your face into the opening, and the column takes your weight while you do it. The building makes you commit to looking."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
-          "caption": "The 107th floor of the North Tower, photographed in 1979. The glass is eighteen inches wide and the clad columns stand about a metre apart, so a person has to step into the opening to see the ground.",
-          "credit": "Photo: Guerinf, CC BY-SA 3.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:107e_%C3%A9tage_du_World_Trade_Center_(10-12-1979)_(1).JPG",
-          "align": "center"
+          "type": "text",
+          "content": "There was one exception, and it proves the rule. On the observation deck near the top of the South Tower the columns were narrowed so the glass could open to twenty eight inches. Ten inches is the entire difference between a place where people work and a place where people come to look."
         },
         {
           "type": "text",
-          "content": "There was one exception, and it proves the rule. On the observation deck near the top of the South Tower the columns were narrowed so the glass could open to twenty eight inches. Ten inches is the entire difference between a place where people work and a place where people come to look."
+          "content": "The deck was a designed attraction rather than a window someone happened to leave open. Top of the World, as the Port Authority called it, opened in December 1975 with an indoor floor at the hundred and seventh level and an open roof deck above it, reached by escalator. It held two dozen video monitors, a film called Manhattan Magic, a model of the city with seven hundred and fifty buildings in it, and a food court with a Sbarro and a Nathan's Famous. A visitor was sold the view in the way a museum sells a collection, with an interpretation attached."
         },
         {
           "type": "image",
@@ -8170,6 +8166,10 @@
           "content": "This was arithmetic before it was architecture. In a conventional scheme a tower of this height spends its lower floors on elevator shafts and the rentable area collapses. Splitting the journey the way a subway line splits into express and local raised usable floor area from sixty two to seventy five percent. Thirteen percent of a hundred and ten floors is a great deal of building. The consequence was social. A sky lobby behaved like a station: people changed there, queued there, ran into each other there, and the tower acquired two interior addresses that were neither the street nor an office."
         },
         {
+          "type": "text",
+          "content": "Eight of the hundred and ten floors were never let to anyone. They went to machinery, in four two floor bands spaced up the building, because a tower this size is a utility company that happens to have tenants: its own water, its own air, its own power distribution, its own drainage lifted back down. The complex even had postcodes of its own, 10048 and 10047, which is the plainest possible statement of what it was. Not a building on a street, a settlement with an address."
+        },
+        {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
           "caption": "A tower lobby under construction in 1971. Two years later the same volume held stone, glass and a queue for the express elevators.",
@@ -8202,6 +8202,10 @@
         {
           "type": "text",
           "content": "The clever move was structural rather than decorative. Platner stepped the dining room in tiers, so that the view through that eighteen inch glass belonged to every table instead of to the row beside the window. A jacket was required and the restaurant kept a rack of them for men who arrived without one. On the south side sat the Cellar in the Sky, a small room with a fixed menu and its own wine list. After the 1993 bombing the space was rebuilt for twelve and a half million dollars and reopened on 26 June 1996. In its last full year it took thirty seven million dollars and was the highest grossing restaurant in the United States."
+        },
+        {
+          "type": "text",
+          "content": "Around the dining room sat the rest of it: a wine school that ran for decades under Kevin Zraly, and on the hundred and seventh floor the Hors d'Oeuvrerie, which in the nineties became the Greatest Bar on Earth, full length windows and a dance floor. The bomb of February 1993 went off in the garage six levels down, and it was the underground that took it, the concourse and the station and the plant. The towers stood, but the restaurant at the top stayed shut for three years."
         },
         {
           "type": "quote",
@@ -8261,12 +8265,16 @@
         {
           "type": "text",
           "content": "There is a habit of remembering buildings by their outlines, and it is convenient, because an outline has no rooms in it and therefore nobody inside. The World Trade Center was a place people went to work in the morning: through the concourse, up in an express car, out at a sky lobby, into a floor with a window eighteen inches wide. Keeping hold of that is not nostalgia about architecture. It is the only way the description stays about people."
+        },
+        {
+          "type": "text",
+          "content": "Photographs, in order: the 107th floor of the North Tower in 1979 (Guerinf, CC BY-SA 3.0); the roof deck of the South Tower in 1984 (Lars Plougmann, CC BY-SA 2.0); the deck telescopes (Tequask, CC BY-SA 4.0); the entrance arches, the lobby under construction in 1971, the plaza from above and Cloud Fortress (Balthazar Korab and Warren K. Leffler, public domain, Library of Congress); the Sphere in Liberty Park (Bernt Rostad, CC BY 2.0). All via Wikimedia Commons."
         }
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
       "id": 2,
       "previewToken": "46c53ed1d82ee2ec2d",
-      "updatedAt": "2026-09-10T12:29:32.526Z"
+      "updatedAt": "2026-09-10T12:36:28.469Z"
     }
   ],
   "reviews": [
