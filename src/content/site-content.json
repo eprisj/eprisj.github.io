@@ -46851,6 +46851,168 @@
           "previewToken": "c2prGsB36VSXmwe9",
           "order": 0,
           "updatedAt": "2026-09-08T13:33:13.509Z"
+        },
+        {
+          "title": "Dix-huit pouces de ciel : Les intérieurs du World Trade Center",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "date": "10 septembre 2026",
+          "category": "Architecture",
+          "subcategory": "Essai",
+          "tags": [
+            "architecture",
+            "world trade center",
+            "minoru yamasaki",
+            "intérieurs",
+            "new york",
+            "warren platner",
+            "mémoire"
+          ],
+          "imageSeed": "eighteen-inches-of-sky",
+          "excerpt": "Vingt-cinq ans plus tard, les tours sont rappelées comme une silhouette. À l'intérieur, elles étaient trois bâtiments empilés, un hall de soixante-quatorze pieds de haut, un étage de bureau d nearly un acre, et une fenêtre de dix-huit pouces de large qui décidait comment la ville pouvait être regardée.",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Tout le monde connaît la silhouette. Deux verticales à sommet plat, l'aluminium devenant rose à la fin d'un après-midi, imprimées sur plus d'affiches que toute autre paire de bâtiments dans le monde. Ce que presque personne ne décrit, vingt-cinq ans plus tard, c'est ce que c'était que d'être à l'intérieur. Environ cinquante mille personnes travaillaient dans le World Trade Center un jour ordinaire et des dizaines de milliers d'autres y passaient. Leur sujet n'a jamais été la silhouette. C'était un hall, un transfert d'ascenseur, un étage de tapis gris où la vue arrivait par tranches."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">01</span>Dix-huit pouces"
+            },
+            {
+              "type": "text",
+              "content": "Commencez par la fenêtre, car le reste de l'intérieur en découle. Minoru Yamasaki a enveloppé les tours de colonnes en acier rapprochées, et le verre entre elles fait dix-huit pouces de large, plus étroit que les épaules de la personne qui regarde à travers. La raison invoquée est étonnamment personnelle. Yamasaki avait peur des hauteurs, et il ne pensait pas qu'un locataire devrait être invité à se tenir devant un mur de verre à mille pieds dans l'air. La raison structurelle allait de pair, puisque ces mêmes colonnes soutenaient le bâtiment."
+            },
+            {
+              "type": "text",
+              "content": "De l'intérieur, l'effet est précis et étrange. Vous ne pouvez pas saisir la pièce et la vue en même temps. La ville arrive en bandes verticales, éditées par l'aluminium. Pour regarder en bas, vous devez vous approcher du verre et mettre votre visage dans l'ouverture, et la colonne supporte votre poids pendant que vous le faites. Le bâtiment vous oblige à vous engager à regarder."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
+              "caption": "Le 107ème étage de la North Tower, photographié en 1979. Le verre fait dix-huit pouces de large et les colonnes revêtues sont espacées d'environ un mètre, donc une personne doit s'installer dans l'ouverture pour voir le sol.",
+              "credit": "Photo : Guerinf, CC BY-SA 3.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:107e_%C3%A9tage_du_World_Trade_Center_(10-12-1979)_(1).JPG",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Il y avait une exception, et cela prouve la règle. Sur la plateforme d'observation près du sommet de la South Tower, les colonnes ont été rétrécies pour que le verre puisse s'ouvrir à vingt-huit pouces. Dix pouces est toute la différence entre un endroit où les gens travaillent et un endroit où les gens viennent regarder."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">02</span>Une nef à la porte"
+            },
+            {
+              "type": "text",
+              "content": "En bas, les mêmes colonnes font quelque chose de complètement différent. Près du sol, chaque groupe de trois se fusionne en un seul, ce qui permet au verre du hall d'être large et haut entre eux et permet aux puits d'ascenseur de s'empiler économiquement au-dessus. Les halls faisaient soixante-quatorze pieds de haut. L'effet était une arcade pointue, et les critiques ont utilisé le mot Gothique, parfois avec admiration et souvent non. Ce qui importe pour l'intérieur, c'est la séquence. Le bâtiment réduit le monde à dix-huit pouces à l'étage supérieur et vous accueille avec quelque chose comme une nef à la porte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvhptzo49xs0a.jpg",
+              "caption": "Où trois colonnes périmétriques se fusionnent en une, le mur s'ouvre. La sphère en bronze de Fritz Koenig se dresse dans la fontaine de la place au-delà.",
+              "credit": "Photo : Balthazar Korab, domaine public, via la Library of Congress et Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636619.jpg",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">03</span>Trois bâtiments, empilés"
+            },
+            {
+              "type": "text",
+              "content": "À l'intérieur, chaque tour n'était pas un seul bâtiment mais trois superposés. Étages un à quarante-trois, quarante-quatre à soixante-dix-sept, soixante-dix-huit à cent dix : trois zones, chacune avec ses propres ascenseurs locaux, accessibles par des voitures express menant à des sky lobbies aux quarante-quatrième et soixante-dix-huitième étages. Les voitures express transportaient cinquante-cinq personnes à mille six cents pieds par minute, environ vingt-sept pieds par seconde."
+            },
+            {
+              "type": "text",
+              "content": "C'était de l'arithmétique avant que ce ne soit de l'architecture. Dans un schéma conventionnel, une tour de cette hauteur consacre ses étages inférieurs aux cages d'ascenseur et la surface locative se réduit. Diviser le trajet comme une ligne de métro se divise en express et local augmentait la surface utilisable de soixante-deux à soixante-quinze pour cent. Treize pour cent de cent dix étages représente beaucoup de bâtiment. La conséquence était sociale. Un sky lobby se comportait comme une station : les gens y changeaient, y faisaient la queue, se croisaient, et la tour acquérait deux adresses intérieures qui n'étaient ni la rue ni un bureau."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
+              "caption": "Une entrée de tour en construction en 1971. Deux ans plus tard, le même volume contenait pierre, verre et une file d'attente pour les ascenseurs express.",
+              "credit": "Photo : Warren K. Leffler, collection U.S. News & World Report, domaine public, via la Library of Congress",
+              "sourceUrl": "https://www.loc.gov/pictures/item/2016649943/",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">04</span>Un acre d'ordinaire"
+            },
+            {
+              "type": "text",
+              "content": "Les étages eux-mêmes étaient simples et énormes. Chaque plaque est un carré de deux cent huit pieds avec un noyau de service de quatre-vingt sept par cent trente-cinq au centre, et la boucle d'espace entre le noyau et la façade reste ininterrompue, ce qui était tout l'argument commercial : près d'un acre par étage sans obstacle. Ce que les locataires en faisaient, c'était ce que font les locataires. Cloisons, carreaux de moquette, un mur de classement, des salles de réunion poussées dans les coins où deux vues se rencontrent."
+            },
+            {
+              "type": "text",
+              "content": "Il vaut la peine de dire franchement que la plupart de l'intérieur du World Trade Center était ordinaire. Ce n'est pas une plainte, c'est le fait qui a été le plus difficile à garder. Un bâtiment rappelé uniquement par la catastrophe perd ses mardis."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">05</span>La pièce en haut"
+            },
+            {
+              "type": "text",
+              "content": "Un intérieur n'était pas du tout ordinaire. Windows on the World s'ouvrait sur les cent sixième et cent septième étages de la North Tower le 19 avril 1976, sur cinquante mille pieds carrés conçus par Warren Platner. Platner travaillait avec du laiton, du miroir et des murs recouverts de tissu, avec des banquettes capitonnées, des disques insérés dans les colonnes et des lumières en laiton en forme de plat au-dessus d'eux. Milton Glaser a conçu tout ce qu'un invité touchait ou lisait : la vaisselle, les tapis, les luminaires, les menus. Paul Goldberger a appelé le résultat modernisme sensuel, ce qui était précis et, à l'époque, légèrement désapprobateur."
+            },
+            {
+              "type": "text",
+              "content": "Le coup de génie était structurel plutôt que décoratif. Platner a décalé la salle à manger en gradins, de sorte que la vue à travers cette vitre de dix-huit pouces appartenait à chaque table plutôt qu'à la rangée à côté de la fenêtre. Une veste était requise et le restaurant conservait un porte-manteau pour les hommes arrivant sans. Sur le côté sud se trouvait le Cellar in the Sky, une petite salle avec un menu fixe et sa propre carte des vins. Après l'attentat de 1993, l'espace a été reconstruit pour douze millions et demi de dollars et a rouvert le 26 juin 1996. Lors de sa dernière année complète, il a rapporté trente-sept millions de dollars et était le restaurant le plus rentable des États-Unis."
+            },
+            {
+              "type": "quote",
+              "content": "Les gradins étaient la conception. Une fenêtre aussi étroite donne la vue à celui qui est assis le plus près, à moins que le sol lui-même ne soit organisé pour la lui rendre."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">06</span>Ce qui était suspendu dans les halls"
+            },
+            {
+              "type": "text",
+              "content": "L'art était distribué à travers les intérieurs aussi délibérément que les ascenseurs. Dans le hall de la South Tower était suspendu une tapisserie réalisée par Joan Miro avec Josep Royo, laine et chanvre, vingt pieds sur trente-cinq et quatre tonnes de cela, en place depuis 1974. Sur la mezzanine de la North Tower se trouvait Sky Gate de Louise Nevelson, New York, bois peint noir, terminé en 1978. La stabile rouge d'Alexander Calder se tenait dehors, sur le côté nord du site. Au centre de la fontaine de la place se trouvait la Sphere en bronze de Fritz Koenig, qui tournait une fois toutes les vingt-quatre heures, lentement au point que vous ne pouviez pas la regarder bouger et suffisamment lentement pour qu'elle ne soit jamais tout à fait à l'endroit où vous l'aviez laissée."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">07</span>La rue en dessous"
+            },
+            {
+              "type": "text",
+              "content": "En dessous de tout cela se trouvait la partie du complexe que la plupart des gens utilisaient réellement. Six niveaux de sous-structure abritaient un centre commercial, la station PATH, un parking et l'usine qui alimentait les tours. La place au-dessus était exposée et souvent impitoyable face au vent, ainsi le centre commercial devenait la véritable rue du World Trade Center. Pour beaucoup de personnes, le bâtiment était accessible par en dessous, sans jamais traverser le terrain ouvert pour lequel il était célèbre."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<span class=\"kicker\">08</span>Ce qui reste"
+            },
+            {
+              "type": "text",
+              "content": "Demain est le vingt-cinqième anniversaire. Tout ce qui est décrit ici, à une exception près, n'existe maintenant qu'en description : les halls de soixante-quatorze pieds, les deux sky halls, les étages d'un acre, le laiton et les rangées de Windows on the World, la tapisserie, la Nevelson. La Sphere de Koenig est passée, bosselée et déchirée, et se tient aujourd'hui dans Liberty Park à une courte distance de l'endroit où elle tournait autrefois."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
+              "caption": "La Sphere se tenait au centre de la fontaine de la place et tournait une fois par jour. Endommagée et délibérément jamais réparée, elle se tient maintenant dans Liberty Park.",
+              "credit": "Photo : Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sphere_in_Battery_Park_(4662282799).jpg",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Il y a une habitude de se souvenir des bâtiments par leurs contours, et c'est pratique, parce qu'un contour n'a pas de pièces à l'intérieur et donc personne à l'intérieur. Le World Trade Center était un endroit où les gens allaient travailler le matin : à travers le concourse, dans une voiture express, dans un sky lobby, dans un étage avec une fenêtre de dix-huit pouces de large. S'accrocher à cela n'est pas de la nostalgie pour l'architecture. C'est la seule façon dont la description reste centrée sur les gens."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
+          "id": 2,
+          "previewToken": "46c53ed1d82ee2ec2d",
+          "updatedAt": "2026-09-10T12:23:25.611Z"
         }
       ],
       "reviews": [],
