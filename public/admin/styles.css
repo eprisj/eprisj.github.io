@@ -10551,3 +10551,9 @@ html.epris-signed-in .auth-overlay { display: none !important; }
   #tab-visibility .visibility-summary-value { font-size: 1.35rem; line-height: 1.1; }
   #tab-visibility .visibility-summary-label { font-size: .5rem; letter-spacing: .07em; line-height: 1.35; }
 }
+
+/* Пустой ряд чипов переводов рисовал полосу без содержимого: у записи,
+   которую ещё не переводили, список языков пуст, а ячейка остаётся. */
+@media (max-width: 560px) {
+  #tab-content .entry-langs-chips:empty { display: none; }
+}
