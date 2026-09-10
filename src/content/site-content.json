@@ -45806,7 +45806,7 @@
             "memoria"
           ],
           "imageSeed": "eighteen-inches-of-sky",
-          "excerpt": "Venticinque anni dopo, le torri sono ricordate come una silhouette. All'interno erano tre edifici sovrapposti, un atrio alto settantaquattro piedi, un piano ufficio di quasi un ettaro, e una finestra larga diciotto pollici che decideva come la città poteva essere guardata.",
+          "excerpt": "Venticinque anni dopo, le torri sono ricordate come una silhouette. All'interno erano tre edifici sovrapposti, un atrio alto settantaquattro piedi, un piano ufficio di quasi un ettaro, e una finestra di diciotto pollici di larghezza che decideva come la città poteva essere guardata.",
           "draft": false,
           "content": [
             {
@@ -45827,66 +45827,82 @@
               "content": "Dall’interno, l’effetto è preciso e strano. Non puoi cogliere la stanza e la vista contemporaneamente. La città arriva in strisce verticali, modificate dall’alluminio. Per guardare in basso devi avvicinarti al vetro e mettere il volto nell’apertura, e la colonna sostiene il tuo peso mentre lo fai. L’edificio ti fa impegnarti a guardare."
             },
             {
-              "type": "immagine",
-              "content": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
-              "caption": "Il 107° piano della North Tower, fotografato nel 1979. Il vetro è largo diciotto pollici e le colonne rivestite sono distanti circa un metro, quindi una persona deve entrare nell'apertura per vedere il terreno.",
-              "credit": "Foto: Guerinf, CC BY-SA 3.0, via Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:107e_%C3%A9tage_du_World_Trade_Center_(10-12-1979)_(1).JPG",
-              "align": "centro"
+              "type": "text",
+              "content": "C'era un'eccezione, e questa dimostra la regola. Sulla piattaforma di osservazione vicino alla sommità della South Tower le colonne erano state assottigliate in modo che il vetro potesse aprirsi fino a ventotto pollici. Dieci pollici sono la differenza totale tra un luogo di lavoro e un luogo dove le persone vengono a guardare."
             },
             {
-              "type": "testo",
-              "content": "C'era un'eccezione, e questa conferma la regola. Sulla terrazza di osservazione vicino alla sommità della South Tower le colonne erano state assottigliate in modo che il vetro potesse aprirsi a ventotto pollici. Dieci pollici è tutta la differenza tra un luogo di lavoro e un luogo dove le persone vengono a guardare."
+              "type": "text",
+              "content": "La piattaforma era un'attrazione progettata piuttosto che una finestra lasciata aperta da qualcuno. Top of the World, come la chiamava la Port Authority, aprì nel dicembre 1975 con un piano interno al livello centosette e una terrazza sul tetto aperta sopra di esso, raggiungibile con un tapis roulant. Ospitava due dozzine di monitor video, un film chiamato Manhattan Magic, un modello della città con settecentocinquanta edifici, e un'area ristorazione con un Sbarro e un Nathan's Famous. Un visitatore veniva venduto la vista come un museo vende una collezione, con un'interpretazione allegata."
             },
             {
-              "type": "intestazione",
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
+              "caption": "La piattaforma aperta sul tetto della South Tower nel 1984, con la North Tower e il suo pennone oltre. Qui il parapetto è all'altezza del petto e la vista è il punto.",
+              "credit": "Foto: Lars Plougmann, CC BY-SA 2.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_2_-_observation_deck_anti-suicide_fence_-_1984.jpg",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
+              "caption": "Telescopi a moneta e una fila per essi. Due piani sotto, lo stesso edificio dava ai suoi inquilini degli uffici diciotto pollici di vetro e nessuna ringhiera su cui appoggiarsi.",
+              "credit": "Foto: Tequask, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Two_World_Trade_Center_Observation_Deck-01.jpg",
+              "align": "center"
+            },
+            {
+              "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">02</span>Una navata alla porta"
+              "content": "<span class=\"kicker\">02</span>Una nave alla porta"
             },
             {
-              "type": "testo",
-              "content": "In basso le stesse colonne fanno qualcos'altro completamente. Vicino al suolo ogni gruppo di tre si unisce in uno solo, che permette al vetro del atrio di essere ampio e alto tra di loro e permette alle torri degli ascensori di impilarsi in modo economico sopra. Gli atri avevano settantaquattro piedi di altezza. L'effetto era un'arcata appuntita, e i critici arrivavano a usare la parola gotico, a volte ammirati e spesso no. Ciò che importa per l'interno è la sequenza. L'edificio restringe il mondo a diciotto pollici al piano superiore e ti accoglie con qualcosa come una navata alla porta."
+              "type": "text",
+              "content": "In fondo le stesse colonne fanno qualcosa di completamente diverso. Vicino al suolo ogni gruppo di tre si unisce in uno, che permette al vetro del lobby di scorrere ampio e alto tra di loro e permette alle torri degli ascensori di impilarsi in modo economico sopra. I lobby erano alti settantaquattro piedi. L'effetto era un'arcata appuntita, e i critici arrivavano a usare la parola Gotico, a volte ammirandola e spesso no. Ciò che importa per l'interno è la sequenza. L'edificio restringe il mondo a diciotto pollici al piano superiore e ti accoglie con qualcosa come una navata alla porta."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhptzo49xs0a.jpg",
-              "caption": "Dove tre colonne perimetrali si fondono in una, il muro si apre. La sfera di bronzo di Fritz Koenig si trova nella fontana della piazza oltre.",
-              "credit": "Foto: Balthazar Korab, dominio pubblico, via la Biblioteca del Congresso e Wikimedia Commons",
+              "caption": "Dove tre colonne perimetrali si uniscono in una, il muro si apre. La Sfera di bronzo di Fritz Koenig si trova nella fontana della piazza oltre.",
+              "credit": "Foto: Balthazar Korab, dominio pubblico, tramite la Library of Congress e Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636619.jpg",
-              "align": "centro"
+              "align": "center"
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">03</span>Tre edifici, impilati"
             },
             {
               "type": "testo",
-              "content": "All'interno, ogni torre non era un edificio ma tre sovrapposti. Piani uno a quarantatré, quarantiquattro a settantasette, settantotto a centodieci: tre zone, ciascuna con ascensori locali, raggiunte da vetture espresse che arrivano alle sky lobby al quarantiquattresimo e settantottesimo piano. Le vetture espresse trasportavano cinquantacinque persone a mille seicento piedi al minuto, circa ventisette piedi ogni secondo."
+              "content": "Dentro, ogni torre non era un edificio ma tre sovrapposti. Piani uno a quarantatre, quarantiquattro a settantasette, settantotto a centodieci: tre zone, ognuna con i propri ascensori locali, raggiunte da vetture espresse che arrivavano alle sky lobby al quarantiquattro e settantotto piani. Le vetture espresse trasportavano cinquantacinque persone a mille seicento piedi al minuto, circa ventisette piedi ogni secondo."
             },
             {
               "type": "testo",
-              "content": "Questo era aritmetica prima che architettura. In uno schema convenzionale, una torre di questa altezza dedica i piani inferiori ai vani ascensore e l'area affittabile si riduce. Dividere il viaggio come una linea della metropolitana si divide in espresse e locali aumentava l'area di pavimento utilizzabile dal sessantadue al settantacinque percento. Tredici percento di cento e dieci piani è un sacco di edificio. La conseguenza era sociale. Una sky lobby si comportava come una stazione: le persone vi cambiavano, facevano la fila, si incontravano lì, e la torre acquisiva due indirizzi interni che non erano né la strada né un ufficio."
+              "content": "Questo era aritmetica prima che architettura. In uno schema convenzionale una torre di questa altezza dedica i piani inferiori ai vani ascensore e l'area commerciale si riduce. Dividere il viaggio come una linea della metropolitana si divide in espresse e locali aumentava l'area utile da sessantadue a settantacinque percento. Tredici percento di cento e dieci piani è un grande edificio. La conseguenza era sociale. Una sky lobby si comportava come una stazione: le persone vi cambiavano, facevano la fila, si incontravano, e la torre acquisiva due indirizzi interni che non erano né la strada né un ufficio."
+            },
+            {
+              "type": "testo",
+              "content": "Otto dei cento e dieci piani non furono mai affittati a nessuno. Andavano alle macchine, in quattro bande di due piani disposte lungo l'edificio, perché una torre di questa dimensione è una società di servizi pubblici che ha come inquilini: la propria acqua, la propria aria, la propria distribuzione di energia, il proprio sistema di scarico che risale verso il basso. Il complesso aveva anche i propri codici postali, 10048 e 10047, che sono la dichiarazione più semplice di cosa fosse. Non un edificio su una strada, un insediamento con un indirizzo."
             },
             {
               "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
-              "caption": "Una hall dell'ascensore in costruzione nel 1971. Due anni dopo lo stesso volume conteneva pietra, vetro e una fila per gli ascensori espressi.",
-              "credit": "Foto: Warren K. Leffler, collezione U.S. News & World Report, dominio pubblico, via la Library of Congress",
+              "caption": "Una lobby di una torre in costruzione nel 1971. Due anni dopo lo stesso volume conteneva pietra, vetro e una fila per gli ascensori espresse.",
+              "credit": "Foto: Warren K. Leffler, collezione U.S. News & World Report, dominio pubblico, tramite la Library of Congress",
               "sourceUrl": "https://www.loc.gov/pictures/item/2016649943/",
               "align": "centro"
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">04</span>Un acro di ordinario"
             },
             {
-              "type": "testo",
-              "content": "Le pavimentazioni stesse erano semplici e enormi. Ogni piatto è un quadrato di duecento e otto piedi con un nucleo di servizio di ottantasette per centotrentacinque al centro, e l'anello di spazio tra il nucleo e la facciata corre senza interruzioni, che era tutto l'argomento commerciale: vicino a un acro di pavimento con niente in mezzo. Ciò che gli inquilini facevano con quello era ciò che fanno gli inquilini. Partizioni, piastrelle di moquette, una parete di archivi, sale riunioni spinte negli angoli dove si incontrano due viste."
+              "type": "text",
+              "content": "Le pavimentazioni stesse erano semplici e enormi. Ogni piatto è un quadrato di duecento e otto piedi con un nucleo di servizio di ottantasette per centotrentacinque al centro, e l'anello di spazio tra il nucleo e la facciata corre senza interruzioni, che era tutto l'argomento commerciale: vicino a un acro di pavimento con niente in mezzo. Ciò che gli inquilini facevano con quello era ciò che fanno gli inquilini. Partizioni, piastrelle di moquette, una parete di archivi, sale riunioni spinte negli angoli dove due viste si incontrano."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Vale la pena dire chiaramente che la maggior parte dell'interno del World Trade Center era ordinario. Non è una lamentela, è il fatto più difficile da mantenere. Un edificio ricordato solo attraverso la catastrofe perde i suoi martedì."
             },
             {
@@ -45896,15 +45912,19 @@
             },
             {
               "type": "text",
-              "content": "Un interno non era affatto ordinario. Windows on the World si apriva ai centoseiesimi e centosettesimi piani della North Tower il 19 aprile 1976, attraverso cinquantamila piedi quadrati progettati da Warren Platner. Platner lavorava con pareti rivestite di ottone, specchio e tessuto, con banquette trapuntate, dischi inseriti nelle colonne e luci di ottone a forma di piatto sopra di esse. Milton Glaser progettò tutto ciò che un ospite toccava o leggeva: la stoviglie, i tappeti, le lampade, i menu. Paul Goldberger chiamò il risultato modernismo sensuale, che era preciso e, all'epoca, leggermente disapprovato."
+              "content": "Un interno non era affatto ordinario. Windows on the World si aprì al centoseiesimo e centosettesimo piano della North Tower il 19 aprile 1976, attraverso cinquantamila piedi quadrati progettati da Warren Platner. Platner lavorò con pareti rivestite in ottone, specchio e tessuto, con banquette trapuntate, dischi inseriti nelle colonne e luci in ottone a forma di piatto sopra di esse. Milton Glaser progettò tutto ciò che un ospite toccava o leggeva: la stoviglie, i tappeti, le lampade, i menu. Paul Goldberger chiamò il risultato modernismo sensuale, che era accurato e, all'epoca, leggermente disapprovato."
             },
             {
               "type": "text",
-              "content": "La mossa intelligente era strutturale piuttosto che decorativa. Platner suddivise la sala da pranzo in livelli, in modo che la vista attraverso quel vetro da diciotto pollici appartenesse a ogni tavolo invece che alla fila accanto alla finestra. Era richiesto un giacca e il ristorante teneva un appendiabiti per gli uomini che arrivavano senza. Sul lato sud si trovava il Cellar in the Sky, una piccola stanza con un menu fisso e la propria carta dei vini. Dopo l'attentato del 1993, lo spazio fu ricostruito per dodici milioni e mezzo di dollari e riaperto il 26 giugno 1996. Nel suo ultimo anno completo, incassò trenta sette milioni di dollari ed era il ristorante con il maggior incasso negli Stati Uniti."
+              "content": "La mossa intelligente era strutturale piuttosto che decorativa. Platner scalò la sala da pranzo a livelli, in modo che la vista attraverso quel vetro da diciotto pollici appartenesse a ogni tavolo invece che alla fila accanto alla finestra. Era richiesto un giacca e il ristorante teneva un appendiabiti per gli uomini che arrivavano senza. Sul lato sud si trovava il Cellar in the Sky, una piccola stanza con un menu fisso e la propria carta dei vini. Dopo l'attentato del 1993, lo spazio fu ricostruito per dodici milioni e mezzo di dollari e riaperto il 26 giugno 1996. Nel suo ultimo anno completo, incassò trenta sette milioni di dollari ed era il ristorante con il maggior incasso negli Stati Uniti."
+            },
+            {
+              "type": "text",
+              "content": "Intorno alla sala da pranzo si trovava il resto: una scuola di vini che durò decenni sotto Kevin Zraly, e al centosettesimo piano l'Hors d'Oeuvrerie, che negli anni novanta divenne il Greatest Bar on Earth, con finestre a tutta altezza e una pista da ballo. La bomba di febbraio 1993 esplose nel garage sei livelli sotto, ed era il sottosuolo a subirlo, il passaggio e la stazione e l'impianto. Le torri rimasero in piedi, ma il ristorante in cima rimase chiuso per tre anni."
             },
             {
               "type": "quote",
-              "content": "Le terrazze erano il design. Una finestra così stretta dà la vista a chi si siede più vicino, a meno che il pavimento stesso non sia disposto per restituirla."
+              "content": "Le piani erano il design. Una finestra così stretta dà la vista a chi si siede più vicino, a meno che il pavimento stesso non sia disposto per restituirla."
             },
             {
               "type": "header",
@@ -45913,7 +45933,23 @@
             },
             {
               "type": "text",
-              "content": "L'arte era distribuita attraverso gli interni con la stessa intenzione degli ascensori. Nella hall della South Tower pendeva un arazzo realizzato da Joan Miro con Josep Royo, lana e canapa, venti piedi per trentacinque e quattro tonnellate di esso, in posizione dal 1974. Sul mezzanino della North Tower si trovava Sky Gate di Louise Nevelson, New York, legno dipinto di nero, completato nel 1978. La stabile rossa di Alexander Calder si trovava all'esterno sul lato nord del sito. Al centro della fontana della piazza, la Sfera di bronzo di Fritz Koenig ruotava una volta ogni ventiquattro ore, lentamente abbastanza da non poterla osservare muoversi e sicuramente abbastanza da non essere mai esattamente dove l'avevi lasciata."
+              "content": "L'arte era distribuita attraverso gli interni con la stessa intenzionalità degli ascensori. Nella hall della South Tower pendeva un arazzo realizzato da Joan Miro con Josep Royo, lana e canapa, venti piedi per trentacinque e quattro tonnellate di esso, in posizione dal 1974. Sul mezzanino della North Tower si trovava Sky Gate di Louise Nevelson, New York, legno dipinto di nero, completato nel 1978. La stabile rossa di Alexander Calder si trovava all'esterno sul lato nord del sito, e Cloud Fortress di Masayuki Nagare si trovava sulla piazza stessa, una massa di granito nero bassa che le persone usavano come muro su cui sedersi. Al centro della fontana della piazza, la Sfera di bronzo di Fritz Koenig ruotava una volta ogni ventiquattro ore, lentamente abbastanza da non poterla osservare muoversi e sicuramente abbastanza da non essere mai esattamente dove l'avevi lasciata."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi6zcaxgbauu.jpg",
+              "caption": "Piazza Austin J. Tobin dall'alto, con la Sfera di Fritz Koenig al centro della fontana. Il bronzo compiva un giro completo ogni ventiquattro ore.",
+              "credit": "Foto: Balthazar Korab, dominio pubblico, tramite la Library of Congress e Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Plaza._Aerial_view_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021636620.jpg",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtvi70bwhbgbsp.jpg",
+              "caption": "Cloud Fortress di Masayuki Nagare sulla piazza, con le colonne perimetrali che si elevano dietro di essa.",
+              "credit": "Foto: Balthazar Korab, dominio pubblico, tramite la Library of Congress e Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York._Exterior._Single_tower_with_Cloud_Fortress_and_Sphere_at_Plaza_Fountain_sculptures_-_LCCN2021636622.jpg",
+              "align": "center"
             },
             {
               "type": "header",
@@ -45922,34 +45958,42 @@
             },
             {
               "type": "text",
-              "content": "Sotto tutto questo si trovava la parte del complesso che la maggior parte delle persone effettivamente usava. Sei livelli di sotto struttura ospitavano un centro commerciale, la stazione PATH, il parcheggio e l'impianto che gestiva le torri. La piazza sopra era esposta e frequentemente impietosa con il vento, così il centro commerciale divenne la vera strada del World Trade Center. Per molte persone l'edificio veniva attraversato dall underneath, senza mai attraversare il terreno aperto per cui era famoso."
+              "content": "Sotto tutto questo si trovava la parte del complesso che la maggior parte delle persone usava effettivamente. Sei livelli di sotto-struttura ospitavano un centro commerciale, la stazione PATH, il parcheggio e l'impianto che gestiva le torri. La piazza sopra era esposta e frequentemente impietosa con il vento, quindi il centro commerciale divenne la vera strada del World Trade Center. Per molte persone l'edificio veniva attraversato dall'inferno, senza mai attraversare il terreno aperto per cui era famoso."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "<span class=\"kicker\">08</span>Cosa rimane"
+              "content": "<span class=\"kicker\">08</span>Ciò che resta"
             },
             {
               "type": "text",
-              "content": "Domani è il venticinquesimo anniversario. Tutto ciò descritto qui, con un'eccezione, ora esiste solo come descrizione: i settantaquattro piedi di lobby, le due sky lobby, i piani di un acro, il ottone e le file di Windows on the World, il tappeto, la Nevelson. La Sphere di Koenig è passata, ammaccata e aperta, e si trova oggi in Liberty Park a pochi passi da dove si trovava."
+              "content": "Domani è il venticinquesimo anniversario. Tutto ciò che è descritto qui, con una eccezione, ora esiste solo come descrizione: i lobby di settantaquattro piedi, i due sky lobby, i piani di un acro, il ottone e le file di Windows on the World, il tappeto, la Nevelson. La Sfera di Koenig è passata, ammaccata e aperta, e si trova oggi a Liberty Park, a pochi passi da dove si girava una volta."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
-              "caption": "La Sphere si trovava al centro della fontana della piazza e girava una volta al giorno. Danneggiata e deliberatamente mai riparata, si trova ora in Liberty Park.",
-              "credit": "Photo: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
+              "caption": "La Sfera si trovava al centro della fontana della piazza e girava una volta al giorno. Danneggiata e deliberatamente mai riparata, ora si trova in Liberty Park.",
+              "credit": "Foto: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sphere_in_Battery_Park_(4662282799).jpg",
-              "align": "center"
+              "align": "centro"
             },
             {
-              "type": "text",
-              "content": "C'è l'abitudine di ricordare gli edifici per i loro contorni, ed è conveniente, perché un contorno non ha stanze e quindi nessuno dentro. Il World Trade Center era un luogo dove le persone andavano a lavorare al mattino: attraverso il passaggio, su in un'auto espressa, fuori in una sky lobby, in un piano con una finestra di diciotto pollici di larghezza. Tenere a mente questo non è nostalgia dell'architettura. È l'unico modo in cui la descrizione riguarda le persone."
+              "type": "testo",
+              "content": "C'è l'abitudine di ricordare gli edifici per i loro contorni, ed è conveniente, perché un contorno non ha stanze e quindi nessuno dentro. Il World Trade Center era un luogo dove le persone andavano a lavorare al mattino: attraverso il passaggio, su in un'auto espressa, fuori in una sky lobby, in un piano con una finestra larga diciotto pollici. Tenere a mente questo non è nostalgia dell'architettura. È l'unico modo in cui la descrizione riguarda le persone."
+            },
+            {
+              "type": "testo",
+              "content": "Fotografie, in ordine: il 107° piano della North Tower nel 1979 (Guerinf, CC BY-SA 3.0); la terrazza del tetto della South Tower nel 1984 (Lars Plougmann, CC BY-SA 2.0); i telescopi della piattaforma (Tequask, CC BY-SA 4.0); gli archi d'ingresso, il lobby in costruzione nel 1971, la piazza dall'alto e Cloud Fortress (Balthazar Korab e Warren K. Leffler, pubblico dominio, Library of Congress); la Sfera in Liberty Park (Bernt Rostad, CC BY 2.0). Tutto via Wikimedia Commons."
             }
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mtvhpt852a277t.jpg",
           "id": 2,
           "previewToken": "46c53ed1d82ee2ec2d",
-          "updatedAt": "2026-09-10T12:22:47.151Z"
+          "updatedAt": "2026-09-10T12:42:30.831Z",
+          "skipLangs": [
+            "UA",
+            "RU"
+          ]
         }
       ],
       "reviews": [
