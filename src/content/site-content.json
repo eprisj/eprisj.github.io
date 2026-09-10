@@ -8071,7 +8071,7 @@
       "draft": false,
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
-      "updatedAt": "2026-09-10T13:00:56.455Z",
+      "updatedAt": "2026-09-10T13:29:00.667Z",
       "authorId": "author-1784732936927-kw554"
     },
     {
@@ -14566,32 +14566,32 @@
           "draft": false,
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Все знают контур. Два плоских вертикальных элемента с плоскими крышами, алюминий, который становится розовым к концу дня, напечатаны на большем количестве плакатов, чем любые другие здания в мире. То, что почти никто не описывает, через двадцать пять лет, — это каково было находиться внутри них. Около пятидесяти тысяч человек работали в World Trade Center в обычный день, и десятки тысяч проходили через него. Их предметом никогда не была силуэт. Это было лобби, лифтовая зона, этаж с серым ковром, где вид приходил по частям."
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">01</span>Восемнадцать дюймов"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Начинайте с окна, потому что остальная часть интерьера следует из него. Минору Yamasaki обернул башни плотно расположенными стальными колоннами, а стекло между ними имеет ширину восемнадцать дюймов, уже чем плечи человека, смотрящего через него. Заявленная причина кажется откровенно личной. Yamasaki боялся высоты, и он считал, что арендатору не следует просить стоять у отвесной стеклянной стены на тысяче футов в воздухе. Структурная причина шла параллельно, поскольку те же самые колонны поддерживали здание."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Изнутри эффект точен и странен. Вы не можете одновременно охватить комнату и вид. Город появляется в вертикальных полосах, отредактированных алюминием. Чтобы посмотреть вниз, нужно подойти прямо к стеклу и вложить лицо в отверстие, а колонна принимает ваш вес, пока вы это делаете. Здание заставляет вас решиться на взгляд."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Было одно исключение, и оно подтверждает правило. На смотровой площадке возле вершины Южной Башни колонны были сужены, чтобы стекло могло открываться на двадцать восемь дюймов. Десять дюймов — это вся разница между местом, где работают люди, и местом, куда приходят смотреть."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Площадка была спроектированной достопримечательностью, а не окном, которое случайно оставили открытым. Top of the World, как называла его Port Authority, открылся в декабре 1975 года с внутренним этажом на сотом седьмом уровне и открытой крышей над ним, доступной по эскалатору. Там было два десятка видеомониторов, фильм под названием Manhattan Magic, модель города с семьюстами пятьюдесятью зданиями и фуд-корт с Sbarro и Nathan's Famous. Посетителю продавали вид так же, как музей продает коллекцию, с интерпретацией."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
               "caption": "Открытая площадка на крыше Южной Башни в 1984 году, с Северной Башней и её мачтой за горизонтом. Здесь парапет достигает уровня груди, и вид — это точка.",
               "credit": "Фото: Lars Plougmann, CC BY-SA 2.0, через Wikimedia Commons",
@@ -14599,7 +14599,7 @@
               "align": "центр"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
               "caption": "Телескопы-коин и очередь за ними. Два этажа ниже, то же здание предоставляло своим офисным арендаторам восемнадцать дюймов стекла и без перил, на которые можно было опереться.",
               "credit": "Фото: Tequask, CC BY-SA 4.0, через Wikimedia Commons",
@@ -14629,19 +14629,19 @@
               "content": "<span class=\"kicker\">03</span>Три здания, сложенные друг на друга"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Внутри каждая башня была не одним зданием, а тремя, расположенными друг на друге. Этажи с одного по сорок третий, с сорок четвертого по семьдесят седьмой, с семнадцатого по сотый десятый: три зоны, каждая со своими местными лифтами, достигавшимися экспресс-карами, ведущими в sky лобби на сорок четвертом и семидесят восьмом этажах. Экспресс-карами перевозили пятьдесят пять человек со скоростью шестнадцать сотен футов в минуту, примерно двадцать семь футов в секунду."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Это было арифметикой до того, как стало архитектурой. В обычной схеме башня такой высоты использует нижние этажи под лифтовые шахты, и арендная площадь сокращается. Разделение пути, как линия метро делится на экспресс и локальные маршруты, увеличило используемую площадь с шестидесяти двух до семидесяти пяти процентов. Тринадцать процентов сотого десятиэтажных этажей — это много зданий. Последствием было социальное. Sky лобби функционировало как станция: люди там менялись, стояли в очереди, сталкивались друг с другом, и башня приобрела два внутренних адреса, которые не были ни улицей, ни офисом."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Восемь из сотого десятиэтажных этажей никогда никому не сдавались. Они предназначались для техники, в четырех двухэтажных зонах, расположенных по всему зданию, потому что башня такого размера — это коммунальная компания, которая случайно имеет арендаторов: свою воду, свой воздух, свою электроснабжение, свою канализацию, которая спускалась обратно вниз. Комплекс даже имел свои почтовые индексы, 10048 и 10047, что является самым простым заявлением о том, чем он был. Не здание на улице, а поселение с адресом."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
               "caption": "Лобби башни в стадии строительства в 1971 году. Через два года тот же объем содержал камень, стекло и очередь к экспресс-лифту.",
               "credit": "Фотография: Warren K. Leffler, коллекция U.S. News & World Report, общественное достояние, через Библиотеку Конгресса",
@@ -14667,19 +14667,19 @@
               "content": "<span class=\"kicker\">05</span>Комната наверху"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Один интерьер был вовсе не обычным. Windows on the World открылся на сотом и сотом седьмом этажах Северной Башни 19 апреля 1976 года, на пятьдесят тысячах квадратных футов, спроектированных Warren Platner. Platner работал с латунью, зеркалами и тканевыми стенами, с мягкими банкетами, дисками, вставленными в колонны, и латунными светильниками в форме блюд над ними. Milton Glaser спроектировал всё, что касалось гостя: посуду, ковры, светильники, меню. Paul Goldberger назвал результат чувственным модернизмом, что было точно и, в то время, слегка неодобрительно."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Умный ход был скорее структурным, чем декоративным. Platner ступенчато разделил обеденный зал, чтобы вид через восемнадцатидюймовое стекло принадлежал каждому столу, а не только ряду у окна. Требовалась куртка, и ресторан держал стойку с ними для мужчин, пришедших без нее. На южной стороне располагался Cellar in the Sky, небольшая комната с фиксированным меню и собственным винным списком. После взрыва 1993 года пространство было перестроено за двенадцать с половиной миллионов долларов и открылось 26 июня 1996 года. В последний полный год оно заработало тридцать семь миллионов долларов и было самым прибыльным рестораном в Соединенных Штатах."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вокруг обеденного зала располагалась остальная часть: винная школа, которая работала десятилетиями под руководством Kevin Zraly, а на сотом седьмом этаже — Hors d'Oeuvrerie, которая в девяностых стала Greatest Bar on Earth, с панорамными окнами и танцполом. Взрыв февраля 1993 года произошел в гараже на шести уровнях ниже, и именно подземное пространство его приняло — в вестибюле, станции и на заводе. Башни стояли, но ресторан на вершине оставался закрытым три года."
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Уровни были частью дизайна. Окно, такое узкое, дает вид тому, кто сидит ближе всего, если только сам этаж не устроен так, чтобы возвращать его обратно."
             },
             {
@@ -14726,7 +14726,7 @@
               "content": "Завтра исполняется двадцать пятый юбилей. Всё, что описано здесь, за исключением одного, теперь существует только как описание: семидесятичетырехфутовые лобби, два небесных лобби, акровые этажи, латунь и уровни Windows on the World, гобелены, Nevelson. Sphere Koenig прошла, вмятая и разорванная, и сегодня стоит в Liberty Park недалеко от того места, где она раньше поворачивала."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
               "caption": "Сфера стояла в центре фонтана площади и вращалась один раз в день. Повреждена и сознательно никогда не отремонтирована, сейчас она стоит в Liberty Park.",
               "credit": "Фото: Bernt Rostad, CC BY 2.0, через Wikimedia Commons",
@@ -14734,11 +14734,11 @@
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Существует привычка запоминать здания по их очертаниям, и это удобно, потому что в очертании нет комнат, и следовательно, внутри никого нет. Всемирный торговый центр был местом, куда люди шли работать по утрам: через коридор, в экспресс-вагоне, на небесном лобби, в этаж с окном шириной восемнадцать дюймов. Удерживать это в памяти — не ностальгия по архитектуре. Это единственный способ, при котором описание остается о людях."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фотографии, по порядку: 107-й этаж Северной башни в 1979 году (Guerinf, CC BY-SA 3.0); крыша Южной башни в 1984 году (Lars Plougmann, CC BY-SA 2.0); телескопические площадки (Tequask, CC BY-SA 4.0); арки входа, лобби в стадии строительства в 1971 году, площадь сверху и Cloud Fortress (Balthazar Korab и Warren K. Leffler, общественное достояние, Библиотека Конгресса); Сфера в Liberty Park (Bernt Rostad, CC BY 2.0). Все через Wikimedia Commons."
             }
           ],
@@ -21039,32 +21039,32 @@
           "draft": false,
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "Усі знають контур. Два вертикальні обрису з плоским верхом, алюміній, що стає рожевим наприкінці післяобіднього часу, надруковані на більше плакатів, ніж будь-яка інша пара будівель у світі. Те, що майже ніхто не описує, через двадцять п’ять років, — це те, яким було перебувати всередині них. Близько п’ятдесяти тисяч людей працювали у World Trade Center у звичайний день, і ще десятки тисяч проходили через нього. Їхня тема ніколи не була силуетом. Це був хол, ліфтова передача, підлога з сірим килимом, де з’являвся вигляд у скисках."
             },
             {
-              "type": "заголовок",
+              "type": "header",
               "level": 2,
               "content": "<span class=\"kicker\">01</span>Вісімнадцять дюймів"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Почніть із вікна, бо решта інтер’єру слідує за ним. Мінорі Yamasaki обгорнув вежі щільно розташованими сталевими колонками, а скло між ними має ширину вісімнадцять дюймів, вже ніж плечі людини, що дивиться крізь нього. Зазначена причина є досить особистою. Yamasaki боявся висоти, і він не вважав, що орендар має стояти перед кришталево чистою стіною скла на тисячу футів у повітрі. Структурна причина йшла поруч із цим, оскільки ті самі колонки тримали будівлю."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Зсередини ефект є точним і дивним. Ви не можете одночасно сприймати кімнату і вигляд. Місто з’являється у вертикальних смугах, відредагованих алюмінієм. Щоб подивитися вниз, потрібно підійти прямо до скла і вставити обличчя у отвір, і колонка тримає вашу вагу, поки ви це робите. Будівля змушує вас зобов’язатися дивитися."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Була одна винятковість, і вона доводить правило. На оглядовій майданчику біля вершини Північної вежі колони були звужені так, щоб скло могло відкриватися до двадцяти восьми дюймів. Десять дюймів — це вся різниця між місцем, де працюють люди, і місцем, куди приходять дивитися."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Майданчик був спроектованою атракцією, а не вікном, яке випадково залишили відкритим. Top of the World, як його називала Port Authority, відкрився у грудні 1975 року з внутрішнім підлогою на сотому і сьомому рівні та відкритим даховим майданчиком над ним, до якого можна було дістатися ескалатором. Там розміщувалися два десятки відеомоніторів, фільм під назвою Manhattan Magic, модель міста з сімсот п’ятдесятома будівлями та їдальня з Sbarro і Nathan's Famous. Відвідувачам пропонували вид так, ніби музей продає колекцію, з доданою інтерпретацією."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
               "caption": "Відкритий майданчик на даху Північної вежі у 1984 році, з Північною вежою та її мачтою за нею. Тут парапет досягає рівня грудей, і саме вид є точкою.",
               "credit": "Фото: Lars Plougmann, CC BY-SA 2.0, через Wikimedia Commons",
@@ -21072,7 +21072,7 @@
               "align": "центр"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
               "caption": "Телескопи-монети та черга за ними. Два поверхи нижче, та сама будівля давала своїм орендарям офісів вісімнадцять дюймів скла і жодних огорож для опертя.",
               "credit": "Фото: Tequask, CC BY-SA 4.0, через Wikimedia Commons",
@@ -21102,19 +21102,19 @@
               "content": "<span class=\"kicker\">03</span>Три будівлі, складені"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Всередині кожна вежа була не одним будинком, а трьома, що розташовані один на одному. Поверхи з одного по сорок третій, з сорок четвертого по сімдесят сьомий, з сімдесят восьмого по сто десятий: три зони, кожна з яких має свої місцеві ліфти, до яких можна дістатися швидкісними вагонами, що їдуть до небо-вестибюлів на сорок четвертому та сімдесят восьмому поверхах. Швидкісні вагони перевозили п’ятдесят п’ять людей зі швидкістю шістнадцять сотень футів на хвилину, приблизно двадцять сім футів за секунду."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Це була арифметика до того, як з’явилася архітектура. У звичайній схемі вежа такої висоти витрачає нижні поверхи на шахти ліфтів, і орендована площа зменшується. Розділяючи подорож так, як лінія метро ділиться на швидкісну та місцеву, збільшилася корисна площа з шістдесят двох до сімдесят п’яти відсотків. Тринадцять відсотків від ста десяти поверхів — це багато будівель. Наслідком було соціальне. Небесний вестибюль поводився як станція: люди там змінювалися, стояли у чергах, натикалися один на одного, і вежа отримала дві внутрішні адреси, які не були ні вулицею, ні офісом."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Вісім з ста десяти поверхів ніколи нікому не здавалися. Вони були відведені під механізми, у чотирьох двоповерхових зонах, розташованих по всьому будівлі, оскільки така вежа — це енергетична компанія, яка випадково має орендарів: свою воду, свій повітря, своє розподілення електроенергії, своє зливання назад вниз. Комплекс навіть мав свої поштові індекси, 10048 і 10047, що є найпростішим вираженням того, що він був. Не будівля на вулиці, а поселення з адресою."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
               "caption": "Вестибюль вежі під час будівництва у 1971 році. Через два роки той самий об’єм містив камінь, скло і чергу до швидкісних ліфтів.",
               "credit": "Фото: Warren K. Leffler, колекція U.S. News & World Report, публічний домен, через Бібліотеку Конгресу",
@@ -21140,19 +21140,19 @@
               "content": "<span class=\"kicker\">05</span>Кімната на верху"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Один інтер’єр був зовсім не звичайним. Windows on the World відкрився на сотому й сотому сьомому поверсі Північної вежі 19 квітня 1976 року, на п’ятдесяти тисячах квадратних футів, спроектованих Warren Platner. Platner працював у мідних, дзеркальних і тканинних стінах, з м’якими банкетами, дисками, вставленими у колони, і мідними світильниками у формі тарілки над ними. Milton Glaser спроектував усе, що гість торкався або читав: посуд, килими, світильники, меню. Paul Goldberger назвав результат сенсуальним модернізмом, що було точно і, на той час, трохи засуджувало."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Розумний хід був структурним, а не декоративним. Platner зробив обідню зону сходинками, щоб вид з того вісімнадцятидюймового скла належав кожному столику, а не рядку біля вікна. Потрібен був піджак, і ресторан тримав вішалку для чоловіків, які прибували без нього. На південній стороні розташовувався Cellar in the Sky, невелика кімната з фіксованим меню та власним винним списком. Після вибуху 1993 року простір був перебудований за дванадцять з половиною мільйонів доларів і відкрився 26 червня 1996 року. У свій останній повний рік він заробив тридцять сім мільйонів доларів і був найприбутковішим рестораном у Сполучених Штатах."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Навколо обідньої зони розташовувалася решта: винна школа, яка існувала десятиліттями під керівництвом Kevin Zraly, а на сотому сьомому поверсі — Hors d'Oeuvrerie, яка у дев’яностих стала Greatest Bar on Earth, з панорамними вікнами та танцполом. Вибух у лютому 1993 року стався у гаражі на шостому рівні вниз, і саме підземний рівень його прийняв — конкорс, станція та завод. Вежі стояли, але ресторан на верху залишався закритим три роки."
             },
             {
-              "type": "цитата",
+              "type": "quote",
               "content": "Сходинки були дизайном. Вікно такої вузькості дає вид тому, хто сидить найближче, якщо сама підлога не налаштована так, щоб повернути його назад."
             },
             {
@@ -21199,7 +21199,7 @@
               "content": "Завтра двадцять п’ятиріччя. Все, що описано тут, за одним винятком, тепер існує лише як опис: сімдесят чотири фути вестибюлів, два небо-вестибюлі, акрові поверхи, латунь і яруси Windows on the World, гобелен, Nevelson. Sphere Koenig пройшла, вм’ята і розірвана, і сьогодні стоїть у Liberty Park недалеко від місця, де вона раніше оберталася."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
               "caption": "Сфера стояла в центрі фонтану площі і оберталася один раз на день. Пошкоджена і навмисно ніколи не відновлена, тепер вона стоїть у Liberty Park.",
               "credit": "Фото: Bernt Rostad, CC BY 2.0, через Wikimedia Commons",
@@ -21207,11 +21207,11 @@
               "align": "центр"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Існує звичка запам'ятовувати будівлі за їхніми контурами, і це зручно, тому що контур не має кімнат у ньому і тому нікому всередині. Світовий торговий центр був місцем, куди люди йшли працювати вранці: через коридор, у швидкісному вагоні, у хмарному лобі, у поверсі з вікном вісімнадцять дюймів шириною. Триматися за це — не ностальгія за архітектурою. Це єдиний спосіб, щоб опис залишався про людей."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Фотографії, у порядку: 107-й поверх Північної вежі у 1979 році (Guerinf, CC BY-SA 3.0); дахова палуба Південної вежі у 1984 році (Lars Plougmann, CC BY-SA 2.0); телескопи на палубі (Tequask, CC BY-SA 4.0); арки входу, лобі під час будівництва у 1971 році, площа з висоти та Cloud Fortress (Balthazar Korab і Warren K. Leffler, громадський домен, Бібліотека Конгресу); Сфера у Liberty Park (Bernt Rostad, CC BY 2.0). Всі через Wikimedia Commons."
             }
           ],
@@ -27676,7 +27676,7 @@
               "content": "Morgen ist der fünfundzwanzigste Jahrestag. Alles, was hier beschrieben wird, mit einer Ausnahme, existiert jetzt nur noch als Beschreibung: die siebzig vier Fuß großen Lobbys, die zwei Sky-Lobbys, die Acre-Böden, die Messing- und die Windows on the World-Stufen, das Wandteppich, die Nevelson. Koenigs Sphere kam durch, eingedellt und aufgerissen, und steht heute im Liberty Park, nur einen kurzen Spaziergang von dem Ort entfernt, an dem sie früher drehte."
             },
             {
-              "type": "bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
               "caption": "Die Kugel stand im Zentrum des Platzbrunnens und drehte sich einmal am Tag. Beschädigt und absichtlich nie repariert, steht sie jetzt im Liberty Park.",
               "credit": "Foto: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
@@ -33996,15 +33996,15 @@
               "content": "Desde dentro, el efecto es preciso y extraño. No puedes captar la habitación y la vista al mismo tiempo. La ciudad llega en tiras verticales, editadas por aluminio. Para mirar hacia abajo, tienes que acercarte mucho al vidrio y poner la cara en la abertura, y la columna soporta tu peso mientras lo haces. El edificio te hace comprometerte a mirar."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Hubo una excepción, y prueba la regla. En la plataforma de observación cerca de la parte superior de la Torre Sur, las columnas estaban estrechadas para que el vidrio pudiera abrirse a veintiocho pulgadas. Diez pulgadas es toda la diferencia entre un lugar donde las personas trabajan y un lugar donde las personas vienen a mirar."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "La plataforma era una atracción diseñada en lugar de una ventana que alguien dejó abierta por casualidad. Top of the World, como lo llamaba la Port Authority, se inauguró en diciembre de 1975 con un piso interior en el nivel ciento séptimo y una terraza abierta en la azotea por encima, accesible por escalera mecánica. Tenía dos docenas de monitores de video, una película llamada Manhattan Magic, un modelo de la ciudad con setecientos cincuenta edificios, y un patio de comidas con un Sbarro y un Nathan's Famous. A un visitante se le vendía la vista como si fuera una colección de un museo, con una interpretación adjunta."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6y32h5uqwm.jpg",
               "caption": "La plataforma abierta en la azotea de la Torre Sur en 1984, con la Torre Norte y su mástil al fondo. Aquí, el parapeto está a la altura del pecho y la vista es el punto.",
               "credit": "Foto: Lars Plougmann, CC BY-SA 2.0, vía Wikimedia Commons",
@@ -34012,7 +34012,7 @@
               "align": "centro"
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvi6yu5yjoer3.jpg",
               "caption": "Telescopios de monedas y una fila para ellos. Dos pisos debajo, el mismo edificio entregaba a sus inquilinos de oficina dieciocho pulgadas de vidrio y sin barandilla para apoyarse.",
               "credit": "Foto: Tequask, CC BY-SA 4.0, vía Wikimedia Commons",
@@ -34042,19 +34042,19 @@
               "content": "<span class=\"kicker\">03</span>Tres edificios, apilados"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "En el interior, cada torre no era un edificio sino tres apilados uno sobre otro. Pisos uno a cuarenta y tres, cuarenta y cuatro a setenta y siete, setenta y ocho a ciento diez: tres zonas, cada una con sus propios ascensores locales, alcanzados por coches exprés que van a vestíbulos en el cielo en los pisos cuarenta y cuatro y setenta y ocho. Los coches exprés llevaban cincuenta y cinco personas a mil seiscientos pies por minuto, aproximadamente veintisiete pies por segundo."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Esto era aritmética antes que arquitectura. En un esquema convencional, una torre de esta altura dedica sus pisos inferiores a los huecos de los ascensores y el área rentable colapsa. Dividiendo el recorrido de la forma en que una línea de metro se divide en exprés y local, se aumentó el área de piso usable del sesenta y dos al setenta y cinco por ciento. El trece por ciento de ciento diez pisos es una gran cantidad de construcción. La consecuencia fue social. Un vestíbulo en el cielo se comportaba como una estación: la gente cambiaba allí, hacía fila allí, se topaba con otros allí, y la torre adquirió dos direcciones interiores que no eran ni la calle ni una oficina."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Ocho de los ciento diez pisos nunca fueron alquilados a nadie. Fueron para maquinaria, en cuatro bandas de dos pisos distribuidas a lo largo del edificio, porque una torre de este tamaño es una compañía de servicios públicos que resulta tener inquilinos: su propia agua, su propio aire, su propia distribución de energía, su propio drenaje que se eleva de regreso hacia abajo. El complejo incluso tenía códigos postales propios, 10048 y 10047, lo cual es la declaración más simple posible de lo que era. No un edificio en una calle, sino un asentamiento con una dirección."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
               "caption": "Un vestíbulo de torre en construcción en 1971. Dos años después, el mismo volumen contenía piedra, vidrio y una fila para los ascensores exprés.",
               "credit": "Foto: Warren K. Leffler, colección U.S. News & World Report, dominio público, vía la Biblioteca del Congreso",
@@ -34080,19 +34080,19 @@
               "content": "<span class=\"kicker\">05</span>La habitación en la cima"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Una interior no era en absoluto ordinaria. Windows on the World abrió en el centésimo sexto y centésimo séptimo piso de la Torre Norte el 19 de abril de 1976, a lo largo de cincuenta mil pies cuadrados diseñados por Warren Platner. Platner trabajó en paredes cubiertas de latón, espejo y tela, con banquetas acolchadas, discos incrustados en las columnas y luces de latón en forma de plato sobre ellas. Milton Glaser diseñó todo lo que un huésped tocaba o leía: la vajilla, las alfombras, las luminarias, los menús. Paul Goldberger llamó al resultado modernismo sensorial, lo cual era preciso y, en ese momento, ligeramente desaprobatorio."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El movimiento inteligente fue estructural en lugar de decorativo. Platner escalonó el comedor en niveles, de modo que la vista a través de ese cristal de dieciocho pulgadas pertenecía a cada mesa en lugar de a la fila junto a la ventana. Se requería una chaqueta y el restaurante mantenía un perchero de ellas para los hombres que llegaban sin una. En el lado sur se encontraba el Cellar in the Sky, una pequeña sala con un menú fijo y su propia carta de vinos. Después del atentado de 1993, el espacio fue reconstruido por doce millones quinientos mil dólares y reabierto el 26 de junio de 1996. En su último año completo, recaudó treinta y siete millones de dólares y fue el restaurante con mayor recaudación en los Estados Unidos."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Alrededor del comedor se encontraba el resto: una escuela de vinos que funcionó durante décadas bajo Kevin Zraly, y en el centésimo séptimo piso la Hors d'Oeuvrerie, que en los noventa se convirtió en el Greatest Bar on Earth, con ventanas de piso a techo y una pista de baile. La bomba de febrero de 1993 explotó en el garaje seis niveles abajo, y fue el subsuelo el que la soportó, el vestíbulo, la estación y la planta. Las torres permanecieron en pie, pero el restaurante en la cima permaneció cerrado durante tres años."
             },
             {
-              "type": "cita",
+              "type": "quote",
               "content": "Las terrazas eran el diseño. Una ventana tan estrecha da la vista a quien se sienta más cerca, a menos que el mismo piso esté dispuesto para devolverla."
             },
             {
@@ -34139,7 +34139,7 @@
               "content": "Mañana es el vigésimo quinto aniversario. Todo lo que se describe aquí, con una excepción, ahora existe solo como descripción: los vestíbulos de setenta y cuatro pies, los dos vestíbulos en el cielo, los pisos de una hectárea, el bronce y los niveles de Windows on the World, el tapiz, la Nevelson. La esfera de Koenig pasó, abollada y rasgada, y hoy se encuentra en Liberty Park, a poca distancia de donde solía girar."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
               "caption": "La Esfera se encontraba en el centro de la fuente de la plaza y giraba una vez al día. Dañada y deliberadamente nunca reparada, ahora se encuentra en Liberty Park.",
               "credit": "Foto: Bernt Rostad, CC BY 2.0, vía Wikimedia Commons",
@@ -34147,11 +34147,11 @@
               "align": "centro"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Existe una costumbre de recordar los edificios por sus contornos, y es conveniente, porque un contorno no tiene habitaciones y por lo tanto nadie en su interior. El World Trade Center era un lugar al que la gente iba a trabajar por la mañana: a través del vestíbulo, en un coche expreso, fuera en un vestíbulo en el cielo, en un piso con una ventana de dieciocho pulgadas de ancho. Aferrarse a eso no es nostalgia por la arquitectura. Es la única forma en que la descripción se mantiene sobre las personas."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Fotografías, en orden: el piso 107 de la North Tower en 1979 (Guerinf, CC BY-SA 3.0); la cubierta del techo de la South Tower en 1984 (Lars Plougmann, CC BY-SA 2.0); los telescopios de la cubierta (Tequask, CC BY-SA 4.0); los arcos de entrada, el vestíbulo en construcción en 1971, la plaza desde arriba y Cloud Fortress (Balthazar Korab y Warren K. Leffler, dominio público, Biblioteca del Congreso); la Esfera en Liberty Park (Bernt Rostad, CC BY 2.0). Todo vía Wikimedia Commons."
             }
           ],
@@ -46285,19 +46285,19 @@
               "content": "<span class=\"kicker\">03</span>Tre edifici, impilati"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Dentro, ogni torre non era un edificio ma tre sovrapposti. Piani uno a quarantatré, quarantiquattro a settantasette, settantotto a centodieci: tre zone, ognuna con i propri ascensori locali, raggiunte da vetture espresse che arrivavano alle sky lobby ai piani quarantiquattro e settantotto. Le vetture espresse trasportavano cinquantacinque persone a mille seicento piedi al minuto, circa ventisette piedi ogni secondo."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Questo era aritmetica prima che fosse architettura. In uno schema convenzionale una torre di questa altezza dedica i piani inferiori ai vani ascensore e l'area commerciale si riduce. Dividere il viaggio come una linea della metropolitana che si divide in espresse e locali aumentava l'area utilizzabile da pavimento da sessantadue a settantacinque percento. Tredici percento di cento e dieci piani è un grande edificio. La conseguenza era sociale. Una sky lobby si comportava come una stazione: le persone cambiavano lì, facevano la fila lì, si incontravano lì, e la torre acquisiva due indirizzi interni che non erano né la strada né un ufficio."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Otto dei cento e dieci piani non furono mai affittati a nessuno. Andavano alle macchine, in quattro bande di due piani disposte lungo l'edificio, perché una torre di questa dimensione è una società di servizi pubblici che ha per caso degli inquilini: la propria acqua, la propria aria, la propria distribuzione di energia, il proprio sistema di scarico che viene riportato giù. Il complesso aveva anche i propri codici postali, 10048 e 10047, che sono la dichiarazione più semplice di cosa fosse. Non un edificio su una strada, un insediamento con un indirizzo."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpuu00mgxnj.jpg",
               "caption": "Una lobby di una torre in costruzione nel 1971. Due anni dopo lo stesso volume conteneva pietra, vetro e una fila per gli ascensori espresse.",
               "credit": "Foto: Warren K. Leffler, collezione U.S. News & World Report, dominio pubblico, tramite la Library of Congress",
@@ -46382,7 +46382,7 @@
               "content": "Domani è il venticinquesimo anniversario. Tutto ciò che è descritto qui, con un'eccezione, ora esiste solo come descrizione: i lobby di settantaquattro piedi, i due sky lobby, i piani di un acro, il ottone e le file di Windows on the World, il tappeto, la Nevelson. La Sfera di Koenig è passata, ammaccata e aperta, e si trova oggi a Liberty Park, a pochi passi da dove si girava una volta."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mtvhpvfnn9mjj4.jpg",
               "caption": "La Sfera si trovava al centro della fontana della piazza e girava una volta al giorno. Danneggiata e deliberatamente mai riparata, ora si trova in Liberty Park.",
               "credit": "Foto: Bernt Rostad, CC BY 2.0, via Wikimedia Commons",
@@ -46390,11 +46390,11 @@
               "align": "centro"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "C'è l'abitudine di ricordare gli edifici per i loro contorni, ed è conveniente, perché un contorno non ha stanze e quindi nessuno dentro. Il World Trade Center era un luogo dove le persone andavano a lavorare al mattino: attraverso il passaggio, su in un'auto espressa, fuori in una sky lobby, in un piano con una finestra larga diciotto pollici. Tenere a mente questo non è nostalgia dell'architettura. È l'unico modo in cui la descrizione riguarda le persone."
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Fotografie, in ordine: il 107° piano della North Tower nel 1979 (Guerinf, CC BY-SA 3.0); la terrazza del tetto della South Tower nel 1984 (Lars Plougmann, CC BY-SA 2.0); i telescopi della piattaforma (Tequask, CC BY-SA 4.0); gli archi d'ingresso, il lobby in costruzione nel 1971, la piazza dall'alto e Cloud Fortress (Balthazar Korab e Warren K. Leffler, pubblico dominio, Library of Congress); la Sfera in Liberty Park (Bernt Rostad, CC BY 2.0). Tutto via Wikimedia Commons."
             }
           ],
@@ -47478,11 +47478,11 @@
               "content": "De l'intérieur, l'effet est précis et étrange. Vous ne pouvez pas saisir la pièce et la vue en même temps. La ville arrive en bandes verticales, éditées par l'aluminium. Pour regarder en bas, vous devez vous approcher du verre et mettre votre visage dans l'ouverture, et la colonne supporte votre poids pendant que vous le faites. Le bâtiment vous oblige à vous engager à regarder."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Il y avait une exception, et cela prouve la règle. Sur la plateforme d'observation près du sommet de la South Tower, les colonnes étaient rétrécies pour que le verre puisse s'ouvrir à vingt-huit pouces. Dix pouces est la différence totale entre un endroit où les gens travaillent et un endroit où les gens viennent regarder."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "La plateforme était une attraction conçue plutôt qu'une fenêtre laissée accidentellement ouverte. Top of the World, comme l'appelait la Port Authority, a été inauguré en décembre 1975 avec un étage intérieur au cent-septième niveau et une terrasse ouverte au-dessus, accessible par escalator. Elle abritait deux douzaines de moniteurs vidéo, un film appelé Manhattan Magic, un modèle de la ville avec sept cent cinquante bâtiments, et une aire de restauration avec un Sbarro et un Nathan's Famous. Un visiteur achetait la vue comme un musée vend une collection, avec une interprétation attachée."
             },
             {
@@ -47524,15 +47524,15 @@
               "content": "<span class=\"kicker\">03</span>Trois bâtiments, empilés"
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "À l'intérieur, chaque tour n'était pas un seul bâtiment mais trois superposés. Étages un à quarante-trois, quarante-quatre à soixante-dix-sept, soixante-dix-huit à cent dix : trois zones, chacune avec ses propres ascenseurs locaux, accessibles par des voitures express menant aux sky lobbies aux quarante-quatrième et soixante-dix-huitième étages. Les voitures express transportaient cinquante-cinq personnes à mille six cents pieds par minute, environ vingt-sept pieds par seconde."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "C'était de l'arithmétique avant d'être de l'architecture. Dans un schéma conventionnel, une tour de cette hauteur consacre ses étages inférieurs aux puits d'ascenseur et la surface locative se réduit. Diviser le trajet de cette manière qu'une ligne de métro se divise en express et local augmentait la surface utilisable du sol de soixante-deux à soixante-quinze pour cent. Treize pour cent de cent dix étages représente beaucoup de bâtiment. La conséquence était sociale. Un sky lobby se comportait comme une station : les gens y changeaient, y faisaient la queue, se croisaient, et la tour acquérait deux adresses intérieures qui n'étaient ni la rue ni un bureau."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Huit des cent dix étages n'ont jamais été loués à personne. Ils étaient consacrés à la machinerie, dans quatre bandes de deux étages espacées dans le bâtiment, car une tour de cette taille est une compagnie de services publics qui a des locataires : sa propre eau, son propre air, sa propre distribution d'électricité, son propre drainage remonté en dessous. Le complexe avait même ses propres codes postaux, 10048 et 10047, ce qui est la déclaration la plus simple de ce qu'il était. Pas un bâtiment dans une rue, un établissement avec une adresse."
             },
             {
