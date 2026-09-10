@@ -10307,64 +10307,100 @@ html.epris-signed-in .auth-overlay { display: none !important; }
 }
 
 /* ══════════════════════════════════════════════════════════
-   ТЕЛЕФОН: «ПОРЯДОК СТАТЕЙ» — ПАНЕЛЬ ДЕЙСТВИЙ И СТРОКА
+   ТЕЛЕФОН: «ПОРЯДОК СТАТЕЙ»
    ──────────────────────────────────────────────────────────
    Снято на живой панели с телефона (390 точек), не на макете.
 
-   Было: панель действий 194 точки, то есть четверть экрана
-   уходила до первой статьи; три её ряда шли разной ширины с
-   рваным правым краем; строка списка 192 точки, потому что
-   заголовок разворачивался на пять строк; строка состояния
-   занимала целый ряд серой плашкой.
+   Первая правка была про размеры: панель действий занимала 194
+   точки, четверть экрана до первой статьи, а строка списка 192,
+   потому что длинный заголовок разворачивался на пять строк.
+   Размеры она поправила (150 и 123), но экран остался некрасивым,
+   и причина не в размерах.
 
-   Стало: панель 165, строка 124, на экран помещается три
-   статьи вместо полутора.
+   Причина в том, что каждый элемент был отдельной коробкой в
+   рамку, во всю ширину, от края до края экрана: три поля панели,
+   три поля фильтра, каждая строка списка. Десяток одинаковых
+   рамок подряд читается как форма, а не как раздел, и никакой
+   иерархии в нём нет.
+
+   Поэтому здесь другой приём. Рамка одна на группу, а внутри
+   волосяные линии: фон контейнера красится в цвет линии, зазор
+   сетки ставится в 1 пиксель, ячейки остаются белыми. Панель
+   действий, фильтры и список становятся тремя блоками вместо
+   десятка коробок, и у страницы появляются поля по бокам.
+
+   И заголовок статьи набирается антиквой, как на самом сайте:
+   это содержание, а не код. Моноширинный шрифт панели остаётся
+   там, где он и уместен, на служебных подписях.
    ══════════════════════════════════════════════════════════ */
 @media (max-width: 560px) {
-  /* Состояние. Ошибку по-прежнему разворачиваем целиком (правило
-     выше это делает намеренно), а рабочее «контент загружен» и
-     «сохранено» это сноска, а не сообщение: одна строка с
-     обрезкой, полный текст остаётся в атрибуте title. */
   .topbar-left #status.status.success,
   .topbar-left #status.status.info {
-    flex: 0 1 auto; max-width: 100%; white-space: nowrap;
-    overflow: hidden; text-overflow: ellipsis;
-    font-size: .56rem; padding: 3px 8px; line-height: 1.4;
+    flex: 0 1 auto; max-width: 100%; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; font-size: .54rem; padding: 3px 8px; line-height: 1.4;
+    background: transparent; border-color: transparent; color: var(--text-muted);
   }
 
-  /* Панель действий в две колонки: выборы сверху, «Применить» под
-     своим выбором, обе кнопки записи внизу парой.
+  #tab-order { padding-inline: 12px; padding-top: 10px; }
 
-     display: contents на .order-bar-left и .order-bar-right нужен
-     именно здесь: «Применить» лежит в левом контейнере, а счётчик
-     и кнопки записи в правом, и без этого они не могут встать в
-     одну сетку. С ним дети обоих контейнеров попадают в сетку
-     .order-bar напрямую, и правый край наконец выравнивается. */
-  .order-bar { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px 8px; margin-bottom: 12px; }
-  .order-bar-left, .order-bar-right { display: contents; }
-  .order-field select { width: 100%; }
-  .order-bar-left > #orderSortByDateBtn { grid-column: 1; min-height: 40px; justify-content: center; }
-  /* Отступ справа у счётчика: остальные элементы ряда это поля со
-     своими внутренними полями, а голый текст, прижатый к самому
-     краю экрана, читается как обрезанный. */
-  .order-bar-right > .order-count { grid-column: 2; justify-self: end; align-self: center; padding: 0 12px 0 0; }
-  .order-bar-right > #orderApplyBtn { grid-column: 1; }
-  .order-bar-right > #orderSaveBtn { grid-column: 2; }
-  .order-bar-right > .btn { min-height: 42px; justify-content: center; }
-
-  /* Заголовок: две строки и обрезка. Правило для 860 специально
-     сняло nowrap, чтобы не оставалось «In Conversat…», но без
-     потолка длинный заголовок разворачивался на пять строк и
-     выдавливал соседние статьи за экран. Две строки узнать статью
-     хватает, а список остаётся списком. */
-  .order-row { padding: 9px 10px; row-gap: 8px; column-gap: 8px; }
-  .order-title {
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-    overflow: hidden; font-size: .88rem; line-height: 1.25;
+  /* Панель действий одной рамкой, внутри волосяные линии (фон
+     контейнера = цвет линии, зазор 1px, ячейки белые). */
+  #tab-order .order-bar {
+    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin-bottom: 10px;
   }
-  .order-thumb { width: 40px; height: 40px; }
-  /* Каретка прижата к верху строки: по центру она уезжала к дате,
-     то есть к другой строке управления, и читалась как её часть. */
-  .order-expand { align-self: start; }
-  .order-status { font-size: .56rem; }
+  #tab-order .order-bar-left, #tab-order .order-bar-right { display: contents; }
+  #tab-order .order-field { background: var(--bg-card); padding: 7px 12px 8px; gap: 2px; }
+  #tab-order .order-field > span { font-size: .55rem; letter-spacing: .12em; }
+  #tab-order .order-field select {
+    border: 0; background-color: transparent; padding: 0 20px 0 0;
+    min-height: 26px; font-size: 15px; background-position: right 2px center;
+  }
+  #tab-order #orderSortByDateBtn {
+    grid-column: 1; border: 0; background: var(--bg-card); min-height: 44px;
+    justify-content: center; font-size: .62rem;
+  }
+  #tab-order .order-count {
+    grid-column: 2; align-self: stretch; justify-self: stretch; background: var(--bg-card);
+    margin: 0; padding: 0 12px 0 0;
+    display: flex; align-items: center; justify-content: flex-end; font-size: .62rem;
+  }
+  #tab-order #orderApplyBtn { grid-column: 1; border: 0; background: var(--bg-card); min-height: 46px; justify-content: center; }
+  #tab-order #orderSaveBtn { grid-column: 2; border: 0; min-height: 46px; justify-content: center; }
+
+  /* Фильтры тем же приёмом: один блок, а не три отдельные коробки. */
+  #tab-order .order-filters {
+    display: grid; grid-template-columns: minmax(0,1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 12px;
+  }
+  #tab-order .order-filters input,
+  #tab-order .order-filters select { border: 0; min-height: 44px; padding-inline: 12px; }
+  #tab-order .order-filters select { background-position: right 12px center; }
+
+  /* Список: одна рамка на всё, строки разделены линией. */
+  #tab-order .order-list { gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  #tab-order .order-row { border: 0; padding: 10px 12px; row-gap: 8px; column-gap: 8px; }
+  #tab-order .order-row:hover { box-shadow: none; }
+
+  /* Заголовок статьи антиквой: это содержание, а не код. Моноширинный
+     шрифт панели остаётся на служебных подписях. */
+  #tab-order .order-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: 1rem; line-height: 1.22;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  #tab-order .order-meta { font-size: .58rem; margin-top: 4px; }
+  #tab-order .order-thumb { width: 40px; height: 40px; }
+  #tab-order .order-num { font-size: .62rem; }
+
+  /* Стрелки одним сегментом, дата без коробки, статус точкой со словом. */
+  #tab-order .order-move { gap: 0; }
+  #tab-order .order-move-btn { min-width: 42px; min-height: 38px; }
+  #tab-order .order-move-btn + .order-move-btn { border-left: 0; }
+  #tab-order .order-date { border: 0; border-bottom: 1px solid var(--line); min-height: 38px; padding-inline: 8px; }
+  #tab-order .order-status { font-size: .55rem; }
+  #tab-order .order-expand {
+    border: 0; background: transparent; align-self: start;
+    width: 32px; min-width: 32px; min-height: 32px; color: var(--text-muted);
+  }
 }
