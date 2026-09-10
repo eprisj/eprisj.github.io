@@ -2549,6 +2549,10 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           range comfortable for continuous reading. 3xl brings that to
           roughly 68 on a 1440px desktop, flagged directly as too wide. */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-24 relative">
+        {/* Back/lang pills stay fixed over the scrolling article, so whatever
+            title or tag chip happens to pass under them needs to fade out
+            first rather than crowd right up against the pill borders. */}
+        <div className="fixed top-0 left-0 right-0 h-20 sm:h-28 z-40 bg-gradient-to-b from-[var(--c-bg)] via-[rgb(var(--c-bg-rgb)_/_0.75)] to-transparent pointer-events-none" />
         <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
           <button
             type="button"
