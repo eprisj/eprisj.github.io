@@ -47499,6 +47499,117 @@
             }
           ],
           "updatedAt": "2026-09-12T09:09:20.522Z"
+        },
+        {
+          "id": 37,
+          "title": "Architettura Che Ascolta",
+          "author": "Viacheslav Munister & US Architecture Studio",
+          "role": "Autore",
+          "date": "12 set 2026",
+          "excerpt": "Come il contesto a più livelli plasma l'identità ucraina attraverso tre progetti di US Architecture Studio, dalla città steppa di Svatove, attraverso le colline di Ternopil, fino a un caffè a Kyiv.",
+          "category": "architettura",
+          "subcategory": "Profilo studio",
+          "tags": [
+            "Architettura",
+            "Ucraina",
+            "US Architecture Studio"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "showCover": true,
+          "previewToken": "5b1c8e4a9f2d7036c8a1e4f0",
+          "content": [
+            {
+              "type": "text",
+              "content": "L'architettura è qualcosa di considerevolmente più grande di muri fisici. È la capacità di dare forma materiale alla memoria di un luogo, al suo clima, alle sue abitudini, alle rotte che le persone percorrono ogni giorno senza pensarci. Un edificio che sa ascoltare il suo ambiente diventa un'estensione naturale del terreno su cui si trova. Dalla steppa aperta dell'est, attraverso le colline testurizzate della Galicia, fino al centro inquieto della capitale, la pratica ucraina US Architecture Studio lavora da un contesto stratificato piuttosto che da uno stile applicato, arrivando a tre risposte diverse alla stessa domanda fondamentale. Tre geografie, tre progetti."
+            },
+            {
+              "type": "text",
+              "content": "L'identità di un edificio non è una decorazione aggiunta successivamente. È una risposta spaziale precisa al carattere di un luogo, che raccoglie significati già latenti in un sito e li rende visibili. Prima di disegnare una singola parete, lo studio lavora attraverso una serie di domande deliberatamente semplici: cos'è questa parcella? Cosa dice la strada su cui si trova? Qual è la città, la regione, la cultura che la circonda? Il risultato si legge come parte dell'identità stessa del paese? Le risposte, un clima arido, un'abitudine domestica locale, il transito costante di un isolato cittadino, finiscono per modellare un edificio in modo molto più convincente di qualsiasi decorazione applicata successivamente. Come appare questo metodo nella pratica può essere tracciato attraverso tre progetti che attraversano parti molto diverse del paese: la steppa orientale, il paesaggio occidentale e il centro pulsante della capitale."
+            },
+            {
+              "type": "header",
+              "content": "Svatove: la memoria di una forma",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Una casa privata alle periferie di Svatove è nata da uno studio approfondito della logica sottostante, piuttosto che dell'immagine letterale, dell'abitazione tradizionale nella regione di Luhansk. La forma stretta del lotto, insieme alle usanze locali, al clima e alle proporzioni storiche degli edifici circostanti, ha dettato un volume compatto bianco posizionato indietro rispetto alla strada. Per dare al piano una scala vivibile e contemporanea, la composizione è completata da un blocco scuro a contrasto sul lato nord, il suo tetto spiovente mantenuto visivamente unificato da una singola membrana di copertura. La forma complessiva è ulteriormente modellata da due nicchie scolpite, una per una terrazza, una per il parcheggio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtyatjnabh3tw0.jpg",
+              "caption": "La forma della casa, sviluppata passo dopo passo dalle proporzioni delle abitazioni vernacolari locali e di un insediamento storico vicino. Courtesy US Architecture Studio.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Tradizione e continuità della forma si manifestano qui in dettagli facili da perdere. Le sottili colonne di metallo della terrazza e la pensilina del parcheggio ripropongono, in un nuovo materiale, l'idea dell'antico palo del portico in legno. Tre finestre di dimensioni diverse sulla facciata bianca reinterpretano un tradizionale schema locale, e la loro disposizione crea un ritmo ondulato che richiama il corso di un fiume vicino. All'interno, il piano evita corridoi convenzionali a favore di uno spazio continuo e fluido: la cucina e il soggiorno si aprono verso l'alto nel corridoio del secondo piano e nella sua loggia. Lavorando con la pendenza del sito, la casa mantiene la superficie pavimentata su un unico accesso che conduce al parcheggio, lasciando il resto del lotto libero per un giardino più in alto sulla collina."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtyatkdqe592c6.jpg",
+              "caption": "Pianta del piano terra e del secondo piano, Svatove. Courtesy US Architecture Studio.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Regione di Ternopil: costruire da ciò che era già presente",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "Il contesto non è solo culturale o naturale. Su un terreno nella regione di Ternopil, era una restrizione letterale: un plinto di pietra esistente e una fondazione lasciata da una casa generica degli anni 2000. Quello dato è diventato il punto di partenza per una casa deliberatamente razionale, costruita per una famiglia che ha scelto di trasferirsi nella campagna circostante. Ogni finestra e ogni metro quadrato qui risponde direttamente alla funzione. La restrizione e la palette delle facciate attingono direttamente dalla tradizione edilizia vernacolare, e il tetto, una forma a mezza falda con una serie di interruzioni nella sua pendenza, svolge la maggior parte del lavoro formale."
+            },
+            {
+              "type": "testo",
+              "content": "Quella silhouette è radicata profondamente nella cultura visiva della Galizia e si legge come istintivamente familiare a chiunque della regione. Produce anche un volume molto più articolato di quello che permetterebbe un semplice spiovente o tetto a falda, risolvendo allo stesso tempo un problema puramente pratico: mantiene l'attico utilizzabile a piena altezza senza ricorrere a lucernari. Lavorando con la pendenza pronunciata del sito, la rigorosa praticità della casa si stabilizza in qualcosa di più vicino al comfort, e il suo carattere locale nasce direttamente dalla funzione piuttosto che essere applicato sopra di essa."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
+              "caption": "Pianta del piano terra e del sottotetto, una casa nella regione di Ternopil costruita su una fondazione esistente. Cortesia di US Architecture Studio.",
+              "align": "centro"
+            },
+            {
+              "type": "intestazione",
+              "content": "Kyiv: progettare per una città in movimento",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "In una grande città, il terreno naturale e la storia si uniscono a qualcos'altro: movimento costante. Un progetto di caffè nel distretto Solomianskyi di Kyiv si trova all'interno di una striscia verde lungo l'Avenue Povitrianykh Syl, incastrato tra dormitori studenteschi e edifici universitari che vedono un flusso costante di passanti tra di loro. L'edificio risponde a quel transito con un muro ondulato, isolante, che protegge l'interno dalla strada, rompendo la sua superficie solo una volta, per una singola finestra rotonda. L'elemento visivo principale del caffè è un tetto pesante a sbalzo con un motivo a onde che si dirige verso l'interno, trasformandosi in una serie di volte a botte convessa sopra la testa. Le linee verticali dinamiche del soffitto collegano la terrazza all'interno, correndo lungo tutta la stanza e tagliando nel muro dietro il bar. La stessa forma struttura anche lo spazio esterno, stabilendo un ritmo di tre archi attraverso le vetrate della facciata."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+              "caption": "Soloma, un caffè per il distretto Solomianskyi di Kyiv, situato all'interno di una striscia verde lungo l'Avenue Povitrianykh Syl. Cortesia US Architecture Studio.",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "All'interno, il volume senza colonne si divide visivamente in una zona intima e una sala principale che offre cinque modi distinti di sedersi: angoli semi-privati, un lungo tavolo comune, una fila di sedili lungo le finestre panoramiche e un'isola centrale di tavoli più piccoli. Dall'esterno, la geometria complessiva dell'edificio risponde al ritmo del traffico e dei pedoni che passano, mentre una schermatura di alberi esistenti lo separa delicatamente dall'avenue. All'interno, la sala principale si affaccia sull'angolo opposto del lotto, mantenendo la sua calma e la vista panoramica aperta sulla piazza dall'altra parte della strada."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtyatihdm4zjzr.jpg",
+              "caption": "Isolando il lotto dai terreni dell'università, poi aprendo una linea visiva verso la piazza e il verde oltre, prima che il tetto a sbalzo si stabilizzi nella sua forma finale. Cortesia US Architecture Studio.",
+              "align": "centro"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mtyatirfl7dv8y.jpg",
+              "caption": "Pianta del piano terra, Soloma. Cortesia US Architecture Studio.",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Un edificio che è veramente vivo cresce sempre da una profonda lettura del suo luogo, della sua cultura, del suo contesto spaziale, diventando un'estensione naturale del terreno sottostante. È proprio quella connessione che dà all'architettura un vero contenuto, le conferisce un valore che non invecchia, e rende lo spazio intorno più facile da notare e comprendere."
+            }
+          ],
+          "updatedAt": "2026-09-12T11:28:20.875Z"
         }
       ],
       "reviews": [
