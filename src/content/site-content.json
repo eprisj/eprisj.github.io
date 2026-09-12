@@ -9073,6 +9073,80 @@
       ],
       "updatedAt": "2026-09-12T10:55:26.007Z",
       "locked": true
+    },
+    {
+      "id": 9,
+      "draft": true,
+      "previewToken": "8f4b21ad0e6c937510dfa382",
+      "title": "Sleeping Inside a Printing Press",
+      "subject": "Stamba Hotel · Kostava Street, Tbilisi · Adjara Arch Group",
+      "rating": 0,
+      "author": "Viacheslav Munister",
+      "role": "Guest Editor",
+      "authorId": "author-1784732936927-kw554",
+      "category": "ARCHITECTURE & DINING",
+      "date": "SEP 12, 2026",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtyc2vc0icektb.jpg",
+      "meta": "TBILISI · ADJARA ARCH GROUP · 1930s / 2018 · PHOTO: PHYREXIAN, WIKIMEDIA COMMONS, CC BY-SA 4.0",
+      "verdict": "Stamba does not hide what it used to be. It hangs the old drying rack from the ceiling and lets a tree climb it, puts a swimming pool directly over the shaft where the news once dried, and asks the water up there to let the light through to the lobby five floors down.",
+      "pros": [
+        "The printing house's own drying beam is kept in place and repurposed as the structural trellis for the trees growing through the five storey atrium",
+        "A glass bottomed pool sits directly on the roof above that atrium, turning bathers into a moving ceiling and letting daylight filter down through water into the lobby below",
+        "At fifty two square metres average, the rooms are closer to Tbilisi apartments than standard hotel rooms, a scale the brutalist concrete grid was built to carry rather than one squeezed into it",
+        "Cafe Stamba treats its structural concrete columns as display cases, wrapping them in salvaged Soviet mosaic tile rather than hiding them behind a finish"
+      ],
+      "cons": [
+        "The building's decades as a newspaper plant produced genuinely enormous structural bays, and not every guest room inherits daylight or a window with real presence",
+        "The reuse is emphatically photogenic, and a space this quotable risks being remembered as a backdrop before it is read as a working piece of adaptive reuse"
+      ],
+      "content": [
+        {
+          "type": "text",
+          "content": "For most of the twentieth century, a five storey concrete block on Kostava Street printed the newspaper that told Soviet Georgia what to think. Kommunist, the Georgian Communist Party's main mouthpiece, came off presses inside a building raised in the 1930s in the bare, structural language the era reserved for factories rather than monuments: a concrete frame with nothing added to soften it, built to hold heavy machinery and to be believed rather than admired. In 2018 the developer Adjara Group reopened it as Stamba, a hotel of a hundred and fifty rooms designed by the company's own in house architecture team, and the building's old job turns out to have left it exactly the right shape for its new one."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyc2vc0icektb.jpg",
+          "alt": "Exposed concrete beams and a suspended drying rack inside the central atrium of Stamba Hotel, Tbilisi, with trees growing up through the shaft",
+          "caption": "Inside the atrium: the printing house's concrete frame, kept bare, now carries trees instead of newsprint.",
+          "credit": "Photo: Phyrexian, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_-_%E1%83%A1%E1%83%A2%E1%83%90%E1%83%9B%E1%83%91%E1%83%90_4757.JPG",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "A trellis that used to dry newsprint",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The building's most useful inherited object is a beam. Newsprint, once printed, had to hang somewhere to dry, and the printing house's drying rack ran the height of an internal shaft that has become the hotel's central atrium, five storeys of open air lit from a skylight far above. The architects kept the beam and gave it a second job: it now holds up the trees. Vines and small trunks climb the old drying frame and lean out over the internal balconies that ring the shaft, so that the structure once built to carry paper now carries branches, and a machine made to dry the printed word grows leaves instead."
+        },
+        {
+          "type": "header",
+          "content": "A pool that lets the light through",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Above the atrium, on the roof, Stamba added the one genuinely new architectural gesture in the building: a swimming pool with a glass bottom, set directly over the top of the shaft. Daylight has to pass through a moving layer of water and swimmers before it reaches the lobby five floors down, which turns an ordinary hotel amenity into the building's only real skylight, and turns anyone doing laps into a piece of moving ceiling for the guests drinking coffee underneath them. It is a genuinely odd instrument for an old printing house to have gained, the kind of insertion that respects a heavy structure most by asking it to hold up something entirely unlike itself."
+        },
+        {
+          "type": "header",
+          "content": "The columns keep their old clothes",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Cafe Stamba, the double height ground floor room built into the same shaft, treats its own structure the same way the atrium does: nothing about the original concrete grid is disguised, only added to. The columns keep patches of vintage mosaic tile rather than a uniform finish, booths salvaged from elsewhere in the building's past life are reupholstered in mint green leather, and Art Deco chandeliers hang next to the sort of bare pendant lamp a Soviet factory floor would have used without irony. Topiary fills in the gaps. None of it is coordinated in the usual hotel sense, and that is closer to the point: a printing press, unlike a hotel restaurant, was never designed to look like one thing."
+        },
+        {
+          "type": "text",
+          "content": "What makes Stamba work as adaptive reuse rather than as theming is how literally its new functions grow out of its old ones. A drying rack becomes a trellis. A print shop's harsh daylight becomes a skylight filtered through a swimming pool. A structural grid built to carry industrial floor loads turns out to be exactly generous enough to carry fifty two square metre rooms and a five storey stand of actual trees. The building was never asked to forget what it used to make. It was only asked to keep making something, and it does, three floors of concrete and vines at a time."
+        }
+      ],
+      "featured": false,
+      "updatedAt": "2026-09-12T12:01:20.398Z"
     }
   ],
   "libraryItems": [
