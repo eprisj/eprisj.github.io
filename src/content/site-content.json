@@ -47156,6 +47156,256 @@
             "UA",
             "RU"
           ]
+        },
+        {
+          "id": 36,
+          "title": "Il Paese che Porta",
+          "author": "Viacheslav Munister & Nataliia Maloh",
+          "role": "Autore",
+          "date": "12 set 2026",
+          "excerpt": "Pittrice e curatrice Nataliia Maloh sull'esposizione che celebra trentacinque anni di indipendenza ucraina a ArtLab, lo spazio che ha costruito dal nulla sulle sponde del Lago Maggiore, e perché crede che il ponte più profondo tra Ucraina e Italia sia che nessuna delle due è mai stata culturalmente una cosa sola.",
+          "category": "intervista",
+          "subcategory": "Intervista",
+          "tags": [
+            "Intervista",
+            "arte",
+            "Italia",
+            "Verbania",
+            "Ucraina",
+            "ArtLab"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mty3jymse1h1uu.jpg",
+          "authorId": "author-1784732936927-kw554",
+          "draft": true,
+          "showCover": true,
+          "content": [
+            {
+              "type": "text",
+              "content": "Verbania si trova sulla riva del Lago Maggiore, in Piemonte, all'ombra delle Alpi. In Via Baiettini 53, in uno spazio che non esisteva diciotto mesi fa, ora sono appese trentacinque opere di trentacinque artisti ucraini sotto il titolo <i>Ukraine. A Memory That Continues</i>, un'opera per ogni anno di indipendenza dell'Ucraina, in mostra dal 24 agosto al 30 settembre 2026. Lo spazio si chiama ArtLab, ed è di proprietà di Nataliia Maloh, pittrice e curatrice ucraina arrivata in Italia come emigrante, ha trovato lavoro stagionale, ha perso un inverno a causa della disoccupazione, e ha usato i quattro mesi di inattività successivi per fare finalmente ciò che aveva trascorso anni a rimandare in un ufficio di Kyiv durante le pause pranzo: dipingere."
+            },
+            {
+              "type": "text",
+              "content": "La mostra non è iniziata con le opere. È iniziata con una storia che Maloh voleva raccontare, di terra, di madri, di gru che si alzano sopra città lasciate indietro, e solo dopo ha cercato le opere che potessero portare avanti ciascuna parte di essa. Il risultato si legge meno come un sondaggio che come un libro, una tela per pagina: una sezione chiamata <i>Madre Terra</i>, Mother Earth, sui campi che hanno nutrito generazioni e che ora sono estratti o occupati; una madre che dà l'ultimo bacio ai suoi figli prima che le loro anime si sollevino come gru; paesaggi italiani che si stagliano, nella mostra, come un ringraziamento silenzioso al paese che ha accolto gli ucraini."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3jymse1h1uu.jpg",
+              "caption": "Vista dell'installazione, ArtLab, Verbania, 2026. Cortesia ArtLab",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Abbiamo parlato con Maloh della stanza seminterrata in Italia dove ha ripreso a usare un pennello, dello sconosciuto a un mercato di Natale che le ha indicato l'associazione artistica locale, e del motivo per cui crede che il ponte culturale più profondo tra Ucraina e Italia non abbia nulla a che fare con i due paesi, e tutto a che fare con il fatto che nessuno dei due è mai stato culturalmente una cosa sola."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3jzi0fnn5sb.jpg",
+              "caption": "Visitatori ad ArtLab durante una visita guidata della mostra. Cortesia ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "<b>Iniziamo con la tua storia. Come si è formato il tuo percorso nell'arte, dai tuoi primi istinti creativi alla tua pratica, al tuo lavoro curatoriale e alla tua vita in Italia? C'è stato un momento dopo il quale hai smesso di vederti solo come pittore, e hai iniziato a vederti come qualcuno che poteva creare uno spazio per altri artisti?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Posso indicare tre momenti che probabilmente descrivono meglio il mio percorso."
+            },
+            {
+              "type": "text",
+              "content": "Il primo è ancora in Ucraina. Avevo un lavoro normale in un ufficio nel centro città, dalle nove alle sei, e durante le pause pranzo mi trovavo sempre in un negozio di forniture artistiche, comprando colori, pennelli e taccuini che portavo a casa e mettevo in un armadio, dicendomi che prima o poi ci sarei arrivato. Spoiler: in Ucraina, non l'ho mai fatto."
+            },
+            {
+              "type": "text",
+              "content": "Il secondo è già in Italia. Ho lavorato durante la stagione estiva, e quando è finita mi sono registrato per l'indennità di disoccupazione. A un certo punto mi sono reso conto, molto semplicemente, che mi stavano pagando e avevo quattro mesi liberi davanti a me, il che significava che finalmente potevo fare la cosa che desideravo da anni. Ho allestito un piccolo angolo per me nel seminterrato della casa in cui vivevamo. C'erano circa tredici gradi lì dentro, quindi lavoravo con un cappotto, ma dopo non c'era più modo di tornare indietro."
+            },
+            {
+              "type": "text",
+              "content": "Il terzo momento è stato il mio ingresso nella scena artistica italiana locale, e è successo quasi per caso. Per molto tempo ho pensato che non succedesse nulla nella nostra città, nessun annuncio, nessun poster per qualcosa di interessante, a parte i mercatini di Natale. Così ho scoperto, ostinatamente, chi li organizzava, quale documentazione mi serviva, ho anche preso in prestito una tenda da mercato vera e propria poiché tutte dovevano essere uguali. Sono arrivato al mercato di Natale 2024 sul lungolago con un cartello di cinquanta per cinquanta, in italiano: “Cerco un posto per esporre i miei dipinti di fiori.” A un certo punto si è avvicinato l’eccentrico del paese, mi ha dato il nome e l’indirizzo di un’associazione, e mi ha detto di andare lì. Quel caso fortuito è, in effetti, come sono entrato nel mondo dell’arte locale."
+            },
+            {
+              "type": "text",
+              "content": "Il desiderio e la capacità di costruire qualcosa per altri artisti, credo, derivano in gran parte dalla mia precedente vita professionale. In Ucraina ho organizzato eventi per progetti di assistenza tecnica internazionale, quindi gestire un evento, connettere le persone, portare un’idea dal concetto all’esecuzione, era un mestiere che conoscevo già bene prima ancora di pensare all’arte come professione. A un certo punto quelle due metà della mia vita si sono semplicemente incontrate: il bisogno di creare, e l’esperienza di organizzare e mettere insieme le persone. È allora che ho capito che mi interessava non solo fare il mio lavoro, ma creare uno spazio in cui altri artisti potessero essere visti."
+            },
+            {
+              "type": "text",
+              "content": "<b>Quale ruolo ha occupato l’Italia nella tua storia? Cosa è cambiato nella tua comprensione dell’arte una volta incontrata la cultura italiana: il suo rapporto con la storia, la bellezza, lo spazio urbano, il patrimonio locale e la vita quotidiana? E quell’esperienza ha cambiato il modo in cui guardi all’Ucraina?</b>"
+            },
+            {
+              "type": "text",
+              "content": "L'Italia, letteralmente, mi ha riscaldato. Questo è probabilmente il modo più accurato in cui posso esprimerlo."
+            },
+            {
+              "type": "text",
+              "content": "Il sole qui è così caldo e c'è così tanta luce che a un certo punto è diventato impossibile continuare a vivere e lavorare come prima. Quando sono arrivato, ho continuato, per un po', con il tipo di lavoro che avevo portato con me dall'Ucraina. Ma ho iniziato a sentire una vera dissonanza: sole, un lago, montagne, bellezza straordinaria, un ritmo di vita completamente diverso tutto intorno a me, e io ero ancora seduto davanti a un computer, sul vecchio copione. A un certo punto mi sono semplicemente chiesto: perché continuare a fare qualcosa che non mi dà più gioia, quando la vita stessa sembra spingermi verso la cosa che ho sempre desiderato fare? Così ho consapevolmente abbandonato il mio vecchio lavoro, e l'arte è arrivata molto naturalmente al suo posto, prima il desiderio di dipingere, e poi il desiderio di aiutare altri artisti a trovare il loro modo nel mondo dell'arte italiano."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k1va66tjx1.jpg",
+              "caption": "“Inizio di marzo,” una delle trenta cinque opere in mostra, acrilico su tela. Cortesia ArtLab",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "L'Italia ha anche cambiato il mio modo di vedere l'arte stessa. Qui non esiste separata dalla vita quotidiana. È nell'architettura, per le strade, nelle piccole chiese, negli edifici antichi, nelle piazze. Quello che mi ha colpito di più, però, è quante persone comuni praticano l'arte in una forma o nell'altra. Un infermiere, un dottore, un commesso può lavorare tutto il giorno nella propria professione e tornare a casa la sera per dipingere, lavorare in ceramica, scattare fotografie, fare musica, creare qualcosa con le mani, e nessuno chiede se sono un vero artista. La creatività è intrecciata nella vita qui in modo molto naturale. Penso che questo mi abbia dato una sorta di libertà interiore: l'arte non deve iniziare con il permesso, un diploma, o il giorno in cui decidi di chiamarti artista. Puoi semplicemente iniziare, perché è un bisogno, e vedere dove ti porta il percorso."
+            },
+            {
+              "type": "text",
+              "content": "Sono anche attratto da come attentamente le persone qui trattano la storia e il patrimonio locale. Anche una piccola città o una piccola associazione può avere una propria tradizione culturale che le persone mantengono e considerano importante. E probabilmente è per questo che ho iniziato a guardare l'Ucraina in modo diverso. Quando vivi lontano da essa, inizi a vedere, più nitidamente, il valore delle cose che una volta sembravano ordinarie: la nostra cultura, la nostra storia, le nostre tradizioni locali. E inizi a desiderare non solo di parlare dell'Ucraina, ma di creare opportunità affinché le persone possano vederla attraverso l'arte. Ciò che mi importa è che questo non dovrebbe andare in una sola direzione, non solo mostrare l'arte ucraina all'interno del mio spazio, ma che gli artisti ucraini entrino gradualmente nell'ambiente culturale italiano stesso, incontrando artisti locali, associazioni e curatori, partecipando a mostre oltre ArtLab. Un esempio semplice: oggi, 11 settembre, si apre un'altra mostra con un artista il cui lavoro è attualmente in mostra a ArtLab come parte di questa esposizione. Questo, per me, è uno dei risultati più importanti di questo lavoro: quando una conoscenza iniziata nel mio spazio continua ad avere una vita propria nella scena artistica italiana più ampia."
+            },
+            {
+              "type": "text",
+              "content": "Quindi, quando dico che l'Italia mi ha riscaldato, non è solo una metafora. A volte penso che siano state letteralmente il sole e la luce qui a tirarmi fuori dalla mia vecchia vita e a farmi chiedere una domanda molto semplice: se sei finito da qualche parte di buono, perché non lasciarti fare ciò che ami davvero? Per me, la risposta era l'arte."
+            },
+            {
+              "type": "text",
+              "content": "<b>ArtLab in Verbania unisce la tua iniziativa con il lavoro curatoriale e pubblico. Quale bisogno culturale mancava quando ti è venuta l'idea di ArtLab? E cosa vuoi che il progetto diventi nel lungo termine: uno spazio espositivo, un laboratorio di scambio, un punto di incontro tra culture, o un mediatore tra artista, città e comunità?</b>"
+            },
+            {
+              "type": "text",
+              "content": "È semplice e complicato allo stesso tempo. Quando sono arrivato a Verbania, uno dei miei primi impulsi è stato trovare una galleria e vedere l'arte contemporanea italiana. Con mia sorpresa, una ricerca su Google Maps per tutta la città non ha prodotto quasi nulla. Successivamente, una volta conosciuta meglio la scena locale, ho trovato le mostre annuali, gli annunci per progetti collettivi, gli artisti e le associazioni. La vita artistica qui esiste, è solo un po' frammentata. Quello che mancava veramente era uno spazio permanente e aperto dove l'arte contemporanea e il pubblico potessero incontrarsi regolarmente. E si è scoperto che non ero l'unico a sentire così. Dopo che la prima mostra di ArtLab si è aperta a luglio, molti visitatori mi hanno detto quasi la stessa cosa: alla città mancava esattamente questo tipo di luogo."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
+              "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Cortesia ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Quindi non vorrei limitare ArtLab alla parola “galleria”. Per me è prima di tutto uno spazio vivo, uno in cui l'arte può essere mostrata, ma dove è altrettanto importante introdurre le persone tra loro, costruire nuove connessioni, dare agli artisti la possibilità di essere visti e ascoltati. A lungo termine, vorrei che ArtLab diventasse un vero punto di incontro: tra artista e spettatore, tra la città e l'arte contemporanea, tra diversi ambienti culturali, e, per me personalmente, soprattutto tra Ucraina e Italia. Mi piace l'idea che ArtLab non debba essere un punto finale per un artista, ma piuttosto un luogo dove qualcosa inizia per loro: una nuova conoscenza, partecipazione a un'altra mostra, una collaborazione con un'associazione locale o un curatore, un nuovo progetto. Quando ciò accade, ArtLab fa esattamente quello per cui l'ho costruito: non solo appendere arte a una parete, ma costruire un ambiente intorno ad essa."
+            },
+            {
+              "type": "testo",
+              "content": "<b>L'Italia è difficile da comprendere attraverso l'idea di una singola cultura nazionale. Piemonte, Lombardia, Veneto, Toscana, Sardegna e Sicilia portano ciascuna la propria memoria storica e linguaggio visivo. Anche l'Ucraina è composta da molte esperienze culturali locali. Vedi un modello condiviso tra i due paesi, in cui l'identità nazionale nasce non dall'appiattimento delle differenze regionali, ma dalla loro conservazione?</b>"
+            },
+            {
+              "type": "testo",
+              "content": "Oh, assolutamente, ed è una delle cose che mi affascinano di più dell'Italia. L'identità locale qui è straordinariamente forte. I dialetti differiscono da regione a regione, a volte intere lingue regionali differiscono, insieme a tradizione, cucina e architettura. Una persona può sentirsi profondamente piemontese, siciliana, veneziana o sarda, eppure essere completamente italiana. Ci sono anche altri paralleli interessanti. Molti italiani del sud si sono trasferiti a nord da tempo per lavoro e migliori prospettive economiche, quindi all'interno di un paese ci sono esperienze storiche, sociali ed economiche molto diverse."
+            },
+            {
+              "type": "text",
+              "content": "Eppure, accanto a tutto ciò, “italianità” è ovunque. Made in Italy, il tricolore, li vedi sui vestiti, prodotti, imballaggi, segnaletica, anche, absurdamente, su una scatola di uova. Dietro c'è un messaggio molto chiaro: questo è nostro, fatto qui, e ne siamo orgogliosi. La differenza regionale non mina l'identità nazionale qui. Se qualcosa, sembra, la riempie. Gli italiani sono profondamente consapevoli dell'enorme patrimonio storico della loro terra, dall'antichità e Roma alle tradizioni di ogni regione, e trattano tutto ciò come capitale culturale condivisa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
+              "caption": "«Madre Terra», l'opera che dà il nome alla sezione centrale della mostra. Cortesia ArtLab",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "È lì che vedo davvero un parallelo con l'Ucraina. Anche noi non siamo mai stati culturalmente uniformi, e non credo che dobbiamo diventarlo. Hutsulshchyna non deve assomigliare a Slobozhanshchyna, Odesa non deve assomigliare a Poltava, Zakarpattia non deve assomigliare a Donetsk. Ogni regione ha la sua storia, intonazione, architettura, cucina, musica, tradizione, anche il suo senso dello spazio. Penso che la forza di una cultura nazionale risieda non nel rendere tutti uguali, ma nel imparare a vedere quella differenza come ricchezza condivisa. Forse questo è ciò che l'Italia mi ha insegnato in più: si può amare profondamente il proprio angolo di paese, proteggere il suo dialetto, le sue tradizioni, la sua storia, e questo non contraddice affatto una forte identità nazionale. Al contrario, quando una persona sa esattamente cosa porta alla cultura condivisa, quella cultura condivisa diventa più forte. Vorrei che guardassimo all'Ucraina allo stesso modo: non cercando di cancellare le nostre differenze per il bene dell'unità, ma comprendendo che l'Ucraina è proprio fatta di esse."
+            },
+            {
+              "type": "text",
+              "content": "<b>L'idea italiana di territorio unisce geografia, architettura, artigianato, paesaggio, memoria familiare e uno stile di vita. Per l'Ucraina, dopo occupazione, sfollamento e distruzione delle città, il legame tra una persona e un luogo specifico ha assunto un peso particolare. Potrebbe questa categoria diventare una delle lingue attraverso cui uno spettatore italiano può comprendere più profondamente l'arte contemporanea ucraina?</b>"
+            },
+            {
+              "type": "testo",
+              "content": "Sì, assolutamente. La mostra ha una sezione chiamata Madre Terra, Mother Earth, e attraverso essa cerco di spiegare ai visitatori italiani che per un ucraino, la terra è molto più di un territorio nel senso geografico. Parlo dei nostri campi, della fertilità del suolo ucraino, del simbolismo dei colori della nostra bandiera, il cielo blu sopra campi di grano dorato, e poi spiego che oggi parte di quei campi è occupata, parte minata, parte contaminata dalla guerra. La terra che ha nutrito generazioni diventa, letteralmente, pericolosa per la vita umana. Penso che gli italiani comprendano questo molto bene attraverso territorio, perché qui c’è anche un legame emotivo molto forte tra una persona e la sua terra, la sua città, la sua casa, il suo paesaggio locale."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
+              "caption": "“Madre Ucraina,” appesa nella sezione Madre Terra della mostra. Cortesia ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Ma in questa mostra cerco di parlare meno nel linguaggio dei fatti che nel linguaggio dei simboli e dell’emozione umana universale. Parlo della guerra attraverso l’immagine di una madre che dà l’ultimo bacio ai suoi figli, le loro anime che si sollevano come gru verso l’eternità. Non è necessario essere ucraini per capire quell’immagine, o anche conoscere nei dettagli la storia di questa guerra. Quasi tutti, nella propria vita, hanno perso qualcuno, e sanno cosa si prova nel dolore della perdita, e così possono avvicinarsi, almeno emotivamente, a ciò che le madri ucraine che perdono i loro figli stanno vivendo oggi."
+            },
+            {
+              "type": "testo",
+              "content": "Un momento della mostra mi è rimasto impresso. Una donna italiana è entrata con i suoi tre figli, e mentre le parlavo di quest’opera, delle gru, della madre, dell’ultimo bacio, ho visto i suoi occhi riempirsi di lacrime. In quel momento ho capito di averle dato qualcosa di molto più grande delle informazioni sulla guerra in Ucraina."
+            },
+            {
+              "type": "text",
+              "content": "Ecco perché credo così fermamente nel simbolismo. I simboli non hanno bisogno di essere tradotti come fanno le parole. Terra, casa, madre, bambino, strada, acqua, uccello, addio, ritorno: queste sono immagini che esistono in quasi ogni cultura. Non credo di poter trasmettere l'esperienza ucraina a un pubblico italiano altrettanto bene attraverso date, cifre e cronologia quanto attraverso l'immagine della terra che ami e potresti perdere, una casa a cui non puoi tornare, una madre che si congeda dal suo bambino. Attraverso queste, la distanza tra l'esperienza ucraina e quella italiana diventa improvvisamente molto più piccola. Quindi sì, territorio può essere una di queste lingue. Ma più in generale, direi che l'arte ti permette di parlare di un'esperienza ucraina molto specifica attraverso sentimenti umani universali. E questo è il momento in cui uno spettatore smette di considerare l'Ucraina come qualcosa di distante di cui sente parlare nelle notizie, e inizia a sentirla attraverso la propria vita."
+            },
+            {
+              "type": "text",
+              "content": "<b>Il titolo stesso della mostra tratta la memoria non come un passato finito ma come un processo. Quando presenti artisti ucraini a un pubblico italiano, come affronti il difficile problema curatoriale di parlare della guerra e dell'esperienza ucraina contemporanea, senza lasciare che la guerra diventi l'unico obiettivo attraverso cui l'Europa legge la cultura ucraina?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Cerco di parlare attraverso simboli ed emozioni accessibili a chiunque, indipendentemente dalla nazionalità. Tutti hanno perso qualcuno, quindi tutti possono capire il dolore delle migliaia di madri ucraine che oggi dicono addio ai loro figli. Parlo della terra ucraina attraverso l'immagine di una donna in un campo, la terra come madre, come fonte di vita, come parte della nostra identità. Parlo di emigrazione forzata attraverso gru che si elevano sopra città e campi, lasciando indietro luoghi familiari e partendo alla ricerca di una nuova casa. Attraverso paesaggi italiani ringrazio l'Italia e gli italiani per l'ospitalità che ci hanno dato, e racconto come molti di noi abbiano trovato una seconda casa qui. Ma accanto a questo rimane il ricordo della prima. Nella nostra memoria vive l'eco dei nostri edifici residenziali, le nostre strade familiari, le luci delle nostre città, tutta la vita quotidiana che un giorno abbiamo lasciato alle spalle."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k38ptzsk00.jpg",
+              "caption": "Senza titolo, una delle opere incentrate sul tema dell'ultimo addio di una madre. Cortesia ArtLab",
+              "align": "center"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3k3ljbej1yp.jpg",
+              "caption": "Sulla sofferenza delle donne, media misti su legno. Cortesia ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3k41xhakw8q.jpg",
+              "caption": "Sulla emigrazione: una cicogna sopra la città lasciata indietro. Cortesia ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "Quindi la guerra è presente in questa mostra, e sarebbe disonesto cercare di evitarla. Fa parte oggi dell'esperienza ucraina. Ma per me è essenziale che l'Ucraina non sia rappresentata solo attraverso guerra, distruzione e morte. L'Ucraina in questa esposizione è anche terra, casa, maternità, amore, memoria, la strada, la ricerca di una nuova casa, la capacità di ricominciare la vita. È il desiderio di ciò che è stato lasciato indietro, e la gratitudine verso coloro che ci hanno accolto. È un paese che vive attraverso la guerra, la cui cultura non è iniziata con quella guerra e non finirà con essa."
+            },
+            {
+              "type": "testo",
+              "content": "La mostra stessa è stata costruita in modo piuttosto insolito. Prima avevo la storia che volevo raccontare, e solo dopo ho iniziato a scegliere le opere da inserire, passando dal concetto alla pittura piuttosto che viceversa. Ogni opera è diventata qualcosa come un'illustrazione di una parte di quella storia, quasi come un'immagine in un libro: una parla di terra, un'altra di perdita, la successiva di emigrazione, della ricerca di casa, di memoria, di speranza. Insieme formano una narrazione continua. Probabilmente per questo il titolo porta le parole “una memoria che continua”. La memoria, per me, non è solo ciò che è rimasto nel passato. Continua a plasmare il nostro presente: come vediamo i nuovi luoghi, come costruiamo una nuova casa, come percepiamo le persone intorno a noi, e come raccontiamo la nostra storia agli altri. Vorrei che un visitatore italiano lasciasse non semplicemente pensando, “Ho visto una mostra sulla guerra in Ucraina,” ma sentendo: “Capisco un po' meglio le persone che vivono questa esperienza, e il paese che portano con sé.”"
+            },
+            {
+              "type": "text",
+              "content": "<b>Ucraina e Italia condividono inaspettatamente molte parallele strutturali: forti tradizioni artigianali, un culto del materiale, scuole locali, arte sacra, conoscenza tramandata attraverso le famiglie, un particolare peso dato alla casa e alla terra. Allo stesso tempo, l'arte italiana del ventesimo secolo, in particolare Arte Povera, ha insegnato agli artisti a trattare materiali semplici come portatori di memoria e significato. Dove vedi personalmente il terreno più interessante per un autentico dialogo artistico tra Ucraina e Italia, che vada oltre la diplomazia culturale formale e la somiglianza superficiale?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Penso che il dialogo più interessante inizi esattamente dove smettiamo deliberatamente di cercare somiglianze tra Ucraina e Italia. La diplomazia culturale spesso funziona secondo una formula familiare: portare l'arte ucraina, mostrarla a un pubblico italiano, parlare dell'Ucraina, e l'incontro tra le due culture più o meno si conclude lì. Questo non è abbastanza per me. Sono molto più interessato a creare una situazione in cui un artista ucraino e uno italiano finiscano nello stesso spazio e inizino a parlare di cose che contano per entrambi, ma ciascuno dalla propria esperienza culturale. Potrebbe essere il tema della casa, della terra, della memoria, della famiglia, della migrazione, della perdita, dell'acqua, del paesaggio. Anche lo stesso materiale può portare una memoria completamente diversa in due culture. La terra significa qualcosa di diverso per un artista piemontese e per uno ucraino, ed è proprio questa differenza che crea un vero dialogo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k4fktfogrc.jpg",
+              "caption": "“In Memory, the Echo of Our Homes,” uno dei lavori che affrontano direttamente territorio e perdita. Cortesia ArtLab",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Trovo particolarmente interessante lavorare non solo con le grandi categorie nazionali di “Ucraina” e “Italia,” ma scendere a un livello locale. Per esempio, mettere fianco a fianco l'esperienza di un artista ucraino per cui la steppa, il campo o una città industriale sono importanti, e di un artista delle sponde del Lago Maggiore, per cui le immagini formative dell'infanzia sono montagne, acqua, pietra, piccoli paesi antichi, e vedere cosa emerge tra queste due esperienze. Lo stesso vale per l'artigianato e il materiale. Sono profondamente attratto dall'idea che una cosa ordinaria, legno, stoffa, metallo, pietra, terra, un oggetto antico, possa essere non solo materiale con cui lavorare, ma portatore di memoria. C'è molto terreno comune tra le tradizioni ucraina e italiana qui, senza bisogno di forzare la somiglianza. Per questo mi importa che ArtLab diventi gradualmente più di un luogo dove gli italiani vedono artisti ucraini. Vorrei costruire autentici progetti ucraino-italiani, dove gli artisti lavorano attorno a un tema unico ma ne parlano ciascuno nella propria lingua. Un vero dialogo culturale, per me, non è quando diciamo “guarda quanto siamo simili,” e non è nemmeno una cultura che si spiega a un'altra. Inizia quando due culture diverse si pongono domande a vicenda, e ciascuna finisce per vedersi un po' diversamente come risultato."
+            },
+            {
+              "type": "text",
+              "content": "<b>Gran parte della connessione culturale europea ucraina di oggi è, comprensibilmente, costruita intorno al supporto e alla solidarietà. Ma cosa dovrebbe seguire? Se immaginassi un percorso culturale permanente tra Ucraina e Italia, tra artisti, piccoli paesi, laboratori, spazi indipendenti e comunità locali, su quali domande condivise la costruiresti? E quale ruolo potrebbe giocare ArtLab in quel dialogo a lungo termine?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Penso che il prossimo passo importante sia il passaggio dal supporto e dalla solidarietà a uno scambio professionale completo. Oggi, abbastanza comprensibilmente, molti progetti culturali ucraini in Europa nascono nel contesto della guerra e del desiderio di supportare l'Ucraina, e siamo infinitamente grati per quel supporto. Ma a lungo termine, vorrei che un artista ucraino fosse invitato non perché rappresenta un paese in guerra, ma perché è interessante come artista: per il suo linguaggio, le sue idee, la sua tecnica, il suo modo di vedere il mondo."
+            },
+            {
+              "type": "text",
+              "content": "Ecco perché vedo un vero potenziale nello scambio continuo: residenze, mostre congiunte, scambi tra artisti, workshop, spazi indipendenti e comunità locali. Sono particolarmente interessato al livello dei piccoli paesi. Lo scambio culturale non deve avvenire solo tra Kyiv, Milano o Roma. I piccoli paesi hanno la propria memoria, energia culturale, i propri artisti e il proprio pubblico. Costruirei un percorso del genere attorno a domande molto semplici e universali: cosa significa casa per noi? Come il luogo in cui siamo nati o viviamo plasma chi siamo? Come conserviamo la memoria? Cosa succede a una persona quando cambia paese? Come può la tradizione vivere all’interno dell’arte contemporanea? Come può una cultura locale diventare parte di una cultura globale senza perdere la propria voce?"
+            },
+            {
+              "type": "text",
+              "content": "In quel sistema, vedo ArtLab come un piccolo punto su un percorso culturale molto più ampio. A lungo termine, vorrei espandere il formato di ArtLab in una residenza artistica, così da poter invitare artisti da tutto il mondo, e soprattutto dall'Ucraina, a vivere e lavorare qui per un certo periodo, incontrare artisti e istituzioni culturali locali, scambiare esperienze e creare progetti congiunti. E ho un ulteriore obiettivo: fare in modo che ArtLab diventi una sorta di trampolino di lancio per gli artisti ucraini nel mondo dell’arte internazionale. Non un luogo dove un artista mostra un’opera una volta, ma un luogo dopo il quale seguono il prossimo contatto, la prossima mostra, la prossima collaborazione. Quel lavoro, in effetti, è già in corso. Col tempo, vorrei che parlassimo meno di “supportare l’arte ucraina” e più della sua presenza naturale nello spazio culturale europeo. Per me, quello sarà il vero segno che siamo passati dalla solidarietà a un dialogo culturale autentico e a lungo termine."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mty3k15n2d6hdg.jpg",
+              "caption": "Visitatori durante un tour guidato di “Ukraine. A Memory That Continues.” Courtesy ArtLab",
+              "align": "centro"
+            },
+            {
+              "type": "testo",
+              "content": "<i>Ukraine. A Memory That Continues (35. Ucraina. Una memoria che continua) è in mostra presso ArtLab, Via Baiettini 53, Verbania (VB), Italia, dal 24 agosto al 30 settembre 2026. Visite guidate disponibili su appuntamento.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-12T08:13:45.000Z",
+          "previewToken": "9736db8a160512830d9dbc5f",
+          "contributorId": "author-nataliia-maloh"
         }
       ],
       "reviews": [
