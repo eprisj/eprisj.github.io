@@ -1739,6 +1739,9 @@ textarea {
    рисует N как положено; шрифт остаётся моноширинным, меняется не стиль,
    а конкретная неоднозначная буква. */
 #visualLang { font-family: 'IBM Plex Mono', system-ui, sans-serif; }
+/* Same Orbit-N confusion as above, same fix — the EN/RU/UA interface-language
+   switcher is exactly this two/three-letter-code case. */
+.i18n-lang-toggle .auth-role-btn { font-family: 'IBM Plex Mono', system-ui, sans-serif; }
 .toolbar-publication-row {
   display: flex;
   align-items: center;
@@ -3765,6 +3768,14 @@ code {
 .dash-issue-num { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); width: 36px; flex-shrink: 0; }
 .dash-issue-title { flex: 1; font-weight: 600; color: var(--text); }
 .dash-issue-date { font-family: var(--font-mono); font-size: .58rem; color: var(--text-muted); }
+
+.restricted-note {
+  padding: 10px 16px;
+  font-size: .78rem;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-bottom: 1px solid var(--line);
+}
 
 /* ══════════════════════════════════════════════════════════
    OVERVIEW STRIP (top of content tab)
