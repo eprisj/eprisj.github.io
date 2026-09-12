@@ -9141,12 +9141,25 @@
           "content": "Cafe Stamba, the double height ground floor room built into the same shaft, treats its own structure the same way the atrium does: nothing about the original concrete grid is disguised, only added to. The columns keep patches of vintage mosaic tile rather than a uniform finish, booths salvaged from elsewhere in the building's past life are reupholstered in mint green leather, and Art Deco chandeliers hang next to the sort of bare pendant lamp a Soviet factory floor would have used without irony. Topiary fills in the gaps. None of it is coordinated in the usual hotel sense, and that is closer to the point: a printing press, unlike a hotel restaurant, was never designed to look like one thing."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyczb5hxwz0q7.jpg",
+          "alt": "Baristas and staff working behind a mint tiled counter at Stamba Hotel's chocolaterie and roastery, with industrial pendant lamps and a coffee roaster in view",
+          "caption": "The hotel's chocolaterie and roastery, roasting and tempering behind the counter rather than out of sight.",
+          "credit": "Photo: Adjara Group, CC BY 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chocolaterie_%26_Roastery_-_Stamba_Hotel.jpg",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "The ground floor keeps expanding on that same logic elsewhere in the building. A bean to bar chocolate workshop and a coffee roastery share one long mint tiled counter behind their own wall of industrial pendant lamps, roasting and tempering in full view of the stools instead of behind a service door, so that a hotel amenity ends up doing the same job the print shop once did: turning raw material into something finished, in public, on the ground floor."
+        },
+        {
           "type": "text",
           "content": "What makes Stamba work as adaptive reuse rather than as theming is how literally its new functions grow out of its old ones. A drying rack becomes a trellis. A print shop's harsh daylight becomes a skylight filtered through a swimming pool. A structural grid built to carry industrial floor loads turns out to be exactly generous enough to carry fifty two square metre rooms and a five storey stand of actual trees. The building was never asked to forget what it used to make. It was only asked to keep making something, and it does, three floors of concrete and vines at a time."
         }
       ],
       "featured": false,
-      "updatedAt": "2026-09-12T12:01:41.910Z",
+      "updatedAt": "2026-09-12T12:26:06.537Z",
       "locked": true
     }
   ],
