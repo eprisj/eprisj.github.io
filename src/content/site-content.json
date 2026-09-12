@@ -50061,7 +50061,130 @@
           "contributorId": "author-us-architecture-studio"
         }
       ],
-      "reviews": [],
+      "reviews": [
+        {
+          "id": 9,
+          "draft": false,
+          "previewToken": "8f4b21ad0e6c937510dfa382",
+          "title": "Le Restaurant Qui a Peint une Maison du XVIIIe Siècle en Rose",
+          "subject": "croquis, La Galerie · 9 Conduit Street, Mayfair, Londres · India Mahdavi",
+          "rating": 0,
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "ARCHITECTURE & DINING",
+          "date": "SEP 12, 2026",
+          "imageUrl": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_1.jpg",
+          "meta": "LONDON · INDIA MAHDAVI, DAVID SHRIGLEY · 1779 / 2014 · PHOTO: FLODEAU",
+          "verdict": "croquis prend une maison géorgienne classée Grade II construite par James Wyatt en 1779 et peint une de ses pièces en rose exact d'une robe de bal des années 1980, accroche deux cent trente-neuf dessins de David Shrigley sur les murs en grille, et met une chambre éclairée arc-en-ciel de cabines de toilettes en forme d'œuf un étage en dessous, et demande aux convives de se déplacer entre les trois sans jamais expliquer la blague.",
+          "pros": [
+            "Le schéma monochrome rose de La Galerie par India Mahdavi couvre murs, banquettes, tapis et éclairage dans une seule teinte continue plutôt que de traiter le rose comme un accent, ce qui fait que la pièce se lit comme une œuvre d'art unique plutôt qu'une salle à manger à thème",
+            "Les 239 dessins de David Shrigley sont accrochés en style salon, encadrés uniformément et disposés en grille sur chaque mur, de sorte que les croquis volontairement enfantins et deadpan se lisent comme du papier peint de l'autre côté de la pièce et comme des blagues individuelles de près",
+            "Le bâtiment lui-même, une maison du XVIIIe siècle à Mayfair qui a passé 220 ans en tant que domicile de clubs de cyclistes, sociétés de montgolfières et réunions de suffragettes avant de devenir un restaurant, reste lisible sous la refonte plutôt que d'être vidé pour cela",
+            "Les cabines de toilettes blanches en forme d'œuf, placées sous un plafond en voûte de baril carrelé de dizaines de couleurs de vitrail, s'engagent dans la même logique absurde que la salle à manger plutôt que de revenir à un design ordinaire une fois que la blague aurait pu s'arrêter en toute sécurité",
+            "Les banquettes en velours à dossier tulipe, rembourrées dans le même rose que les murs, ont été conçues comme un mobilier sur mesure pour la pièce plutôt que provenant d'un catalogue, de sorte que le siège se lit comme une sculpture qui sert aussi à asseoir des gens",
+            "Même la nourriture est intégrée à la blague : les plats arrivent sur de la vaisselle calligraphiée à la main avec l'adresse du restaurant, de sorte que la vaisselle continue de faire le même point que les murs sur un bâtiment qui ne cesse jamais d'être conscient de lui-même"
+          ],
+          "cons": [
+            "Une pièce d'une seule couleur que cette photographie célèbre mieux qu'elle ne peut accueillir : les banquettes en cabine profonde et l'éclairage tamisé qui font briller le rose en photo sont moins confortables pour un dîner long qu'une chaise de salle à manger conventionnelle",
+            "La Galerie a été repeinte auparavant, échangée contre un jaune soleil pour une refonte de Yinka Shonibare en 2022 avant que le rose ne revienne, ce qui signifie que la pièce que voient les convives aujourd'hui est une renaissance plutôt que le schéma original de 2014",
+            "Les cabines de toilettes, aussi frappantes soient-elles, fonctionnent comme une file d'attente pour une seule personne aux heures de pointe, et l'éclairage théâtral qui se photographie si bien de près apparaît comme légèrement clinique une fois que la nouveauté de la première visite s'estompe"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "Nine Conduit Street a été bien des choses depuis que James Wyatt l'a conçue comme une résidence privée à Mayfair en 1779 : une maison de ville, une maison pour une société de cyclistes et un club de ballons, un lieu de rencontre pour le mouvement suffragette, et pendant longtemps simplement un bâtiment pour lequel personne n'avait une bonne utilisation. En 2002, le restaurateur Mourad Mazouz l'a achetée sans plan clair au-delà de la conviction qu'une maison géorgienne classée Grade II méritait mieux que de rester vide, et l'a transformée en sketch, une seule adresse contenant plusieurs pièces avec presque rien en commun sauf la conviction qu'un restaurant peut aussi être une critique de design."
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/DSGallery2.jpg",
+              "alt": "Gros plan d'une table dressée pour le dîner à The Gallery, sketch, Londres, avec un serveur flou ajustant les réglages de place contre un mur de dessins encadrés de David Shrigley",
+              "caption": "Une table dressée à l'intérieur de la Gallery, avec le mur de Shrigley et l'une des lampes de table en cuivre de la pièce suffisamment proches pour lire individuellement.",
+              "credit": "Photo : flodeau.com",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Une couleur, aucune exception",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La décision la plus disciplinée de The Gallery est celle qui semble la plus frivole. La refonte de 2014 par India Mahdavi s'engage dans un seul rose millénaire sur les murs, le plafond, la moquette et les banquettes en velours en forme de tulipe qui entourent la pièce, refusant l'instinct habituel du designer de briser une couleur forte avec un contrepoids neutre. L'effet est moins une pièce à thème qu'un Rothko habitable : depuis la porte, le rose apparaît comme une surface continue, et ce n'est qu'en s'approchant qu'il se résout en tissu, plâtre, sol en marbre en chevron et deux cent trente-neuf dessins encadrés individuellement. Mahdavi a eu trois mois pour achever la refonte en 2014 ; ce qui était initialement prévu comme une installation de deux ans a duré huit."
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_3.jpg",
+              "alt": "Vue grand-angle de The Gallery at sketch montrant des cabines en forme de tulipe rose et un sol en marbre à motif chevron contre des murs de dessins encadrés de David Shrigley",
+              "caption": "Le coin de la pièce, où le sol en marbre à chevrons rencontre un mur de deux cent trente-neuf dessins encadrés de manière identique.",
+              "credit": "Photo : flodeau.com",
+              "align": "centre"
+            },
+            {
+              "type": "en-tête",
+              "content": "Deux cent trente-neuf punchlines",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Ces dessins sont de l'artiste David Shrigley, dont le style délibérément grossier et impassible a toujours fonctionné en refusant de paraître coûteux, ce qui est précisément ce qui lui permet de survivre lorsqu'il est accroché dans une pièce aussi ornementale. Disposés en grille dans un style salon sur chaque mur dans des cadres identiques, les dessins fonctionnent d'abord comme texture, un motif uniforme qui complète la pièce rose comme le ferait un papier peint, et ne se décomposent en deux cent trente-neuf petites blagues absurdes sur l'échec, l'ennui et les mauvais conseils qu'à la fois la plus grande collection de son œuvre jamais exposée en un seul endroit. Sketch a fait défiler des artistes dans l'espace depuis, y compris une refonte en 2022 avec Yinka Shonibare qui a remplacé les murs par du jaune soleil, mais le schéma rose de Shrigley a été rétabli, preuve que la combinaison se lit comme la véritable identité de la pièce plutôt qu'un simple look parmi plusieurs."
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/10352033_782860698414809_2642669337727875817_n.jpg",
+              "alt": "Deux tables habillées de rose prêtes pour le dîner sous une rangée de dessins de David Shrigley à sketch, Londres, avec des lampes de table en cuivre et des œuvres d'art textuelles encadrées",
+              "caption": "Les dessins individuels de Shrigley lus de près : des blagues textuelles accrochées à la hauteur exacte d'une table.",
+              "credit": "Photo : flodeau.com",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Une pièce conçue pour être parcourue, pas seulement vue",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Photographiée vide, la Galerie peut ressembler à un décor de scène attendant sa distribution. Ce pour quoi la pièce est en réalité construite apparaît une fois que le personnel et les convives la traversent : le rose absorbe et reflète la faible lumière de manière si cohérente que les gens deviennent une partie de la même surface continue que les murs et les banquettes, vêtus d'uniformes gris qui se lisent comme un contrepoint délibéré et atténué plutôt qu'une erreur. Même la vaisselle continue cette idée, écrite à la main dans le même style ironique et auto-référentiel que les dessins, imprimant l'adresse de Mayfair du restaurant sur l'assiette sur laquelle une terrine de foie gras est servie, de sorte que la blague sur la conscience de soi atteint la nourriture avant d'atteindre la table."
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/10440911_10152451935579526_3818090046985810586_n.jpg",
+              "alt": "Terrine de foie gras servie avec pomme verte et noisettes sur une assiette écrite à la main avec les adresses de Regent Street et Conduit Street de sketch",
+              "caption": "Une terrine de foie gras servie sur de la vaisselle écrite à la main avec la propre adresse du restaurant.",
+              "credit": "Photo : flodeau.com",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "La blague qui vous suit en bas des escaliers",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Ce qui distingue un croquis d'une simple salle à manger photogénique, c'est que la logique de conception ne s'arrête pas à la porte. Un étage en dessous, sous un plafond en voûte en berceau carrelé d'une edge à edge dans des dizaines de couleurs de vitrail, une rangée de capsules blanches élégantes en forme d'œuf abrite les toilettes du restaurant, chacune une capsule privée brillant faiblement sous la lumière colorée qui se déverse d'en haut. Un restaurant plus faible traiterait la salle de bain comme une pensée après coup une fois que la salle à manger aurait déjà fait le travail d'être mémorable ; le croquis la considère comme une pièce supplémentaire dans le même argument, qu'un bâtiment peut être historique, coûteux, légèrement ridicule et complètement sérieux à propos des trois en même temps."
+            },
+            {
+              "type": "image",
+              "content": "https://images.squarespace-cdn.com/content/v1/630811a6ad34367560213cfa/2e47cdca-3fdd-42de-93b7-89c8885ad613/Coolest+Bathroom_Sketch+London.jpg",
+              "alt": "Rangée de capsules de toilettes blanches en forme d'œuf au sketch London sous un plafond en voûte en berceau carrelé dans des dizaines de couleurs de vitrail",
+              "caption": "Les capsules de toilettes en forme d'œuf, éclairées d'en haut par un plafond en voûte en berceau carrelé d'une edge à edge en vitrail.",
+              "credit": "Photo via NJ in LA",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/Staff_Uniform.jpg",
+              "alt": "Deux membres du personnel en uniformes gris se tenant parmi les capsules de toilettes en forme d'œuf au sketch London, sous un plafond en voûte en berceau en vitrail",
+              "caption": "Uniformes du personnel conçus pour la même pièce : gris contre les coquilles blanc perle des œufs et le plafond arc-en-ciel au-dessus.",
+              "credit": "Photo : flodeau.com",
+              "align": "center"
+            }
+          ],
+          "featured": false,
+          "updatedAt": "2026-09-12T14:21:59.996Z",
+          "locked": true
+        }
+      ],
       "libraryItems": []
     }
   },
