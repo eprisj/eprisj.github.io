@@ -9076,7 +9076,7 @@
     },
     {
       "id": 9,
-      "draft": true,
+      "draft": false,
       "previewToken": "8f4b21ad0e6c937510dfa382",
       "title": "The Restaurant That Painted an 18th-Century House Pink",
       "subject": "sketch, The Gallery · 9 Conduit Street, Mayfair, London · India Mahdavi",
@@ -9193,7 +9193,7 @@
         }
       ],
       "featured": false,
-      "updatedAt": "2026-09-12T14:14:37.876Z",
+      "updatedAt": "2026-09-12T14:19:02.074Z",
       "locked": true
     }
   ],
