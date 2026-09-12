@@ -8282,7 +8282,7 @@
     },
     {
       "id": 36,
-      "title": "Ukraine. A Memory That Continues: Nataliia Maloh on ArtLab, Verbania, and Thirty Five Years of Independence",
+      "title": "The Country She Carries",
       "author": "Viacheslav Munister & Nataliia Maloh",
       "role": "Author",
       "date": "Sep 12, 2026",
@@ -8527,7 +8527,8 @@
         }
       ],
       "updatedAt": "2026-09-12T08:04:52.103Z",
-      "previewToken": "9736db8a160512830d9dbc5f"
+      "previewToken": "9736db8a160512830d9dbc5f",
+      "contributorId": "author-nataliia-maloh"
     }
   ],
   "reviews": [
@@ -48305,6 +48306,19 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 16
+    },
+    {
+      "id": "author-nataliia-maloh",
+      "name": "Nataliia Maloh",
+      "role": "Painter & Curator, ArtLab, Verbania",
+      "bio": "Nataliia Maloh is a Ukrainian painter and curator based in Verbania, on the shore of Lake Maggiore. In 2026 she founded ArtLab, an independent exhibition space at Via Baiettini 53, where she curates shows that bring Ukrainian and Italian artists into the same room. Her own painting practice began after she moved to Italy, and her curatorial work now centres on building lasting exchange between Ukrainian artists and the Italian art world beyond her own space.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mty3viju0a9gc0.jpg",
+      "website": "https://linktr.ee/nataliiamaloh",
+      "instagram": "@nataliia.maloh",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 17
     }
   ],
   "manifest": {
