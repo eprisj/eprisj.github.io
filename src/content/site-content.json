@@ -8648,7 +8648,7 @@
           "content": "<i>US Architecture Studio is a Ukrainian practice working across architecture and identity consulting, and also runs the media project UkrArchStyle. More of their work: <a href=\"https://us-arch-studio.framer.website/\" target=\"_blank\" rel=\"noopener\">us-arch-studio.framer.website</a>.</i>"
         }
       ],
-      "updatedAt": "2026-09-12T11:53:50.729Z",
+      "updatedAt": "2026-09-12T14:14:29.879Z",
       "locked": true,
       "contributorId": "author-us-architecture-studio"
     }
@@ -9094,7 +9094,8 @@
         "David Shrigley's 239 drawings are hung salon-style, uniformly framed and gridded across every wall, so the deliberately childish, deadpan sketches read as wallpaper from across the room and as individual jokes up close",
         "The building itself, an 18th-century Mayfair house that spent 220 years as a home to cyclists' clubs, balloonist societies and suffragette meetings before becoming a restaurant, is left legible under the redesign rather than gutted for it",
         "The egg-shaped white toilet pods, set beneath a barrel-vaulted ceiling tiled in dozens of stained-glass colours, commit to the same absurdist logic as the dining room instead of reverting to ordinary design once the joke could have safely stopped",
-        "The tulip-backed velvet banquettes, upholstered in the same pink as the walls, were built as bespoke furniture for the room rather than sourced off a catalogue, so the seating reads as sculpture that happens to also seat people"
+        "The tulip-backed velvet banquettes, upholstered in the same pink as the walls, were built as bespoke furniture for the room rather than sourced off a catalogue, so the seating reads as sculpture that happens to also seat people",
+        "Even the food is drawn into the joke: dishes arrive on crockery hand-lettered with the restaurant's own street address, so the tableware keeps making the same point the walls do about a building that never stops being aware of itself"
       ],
       "cons": [
         "A single-color room this famous photographs better than it seats: the deep booth banquettes and low lighting that make the pink glow in pictures are less comfortable for a long dinner than a conventional dining chair",
@@ -9108,9 +9109,9 @@
         },
         {
           "type": "image",
-          "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_1.jpg",
-          "alt": "Symmetrical view down the length of The Gallery at sketch, London, showing the pink tulip banquettes, chevron marble floor, a domed skylight and the bar at the far end",
-          "caption": "The Gallery seen end to end: original 1779 dome, bar, and the pink scheme running the full length of the room.",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/DSGallery2.jpg",
+          "alt": "Close-up of a table set for dinner at The Gallery, sketch, London, with a blurred waiter adjusting place settings against a wall of framed David Shrigley drawings",
+          "caption": "A table set inside the Gallery, with the Shrigley wall and one of the room's copper table lamps close enough to read individually.",
           "credit": "Photo: flodeau.com",
           "align": "center"
         },
@@ -9121,12 +9122,12 @@
         },
         {
           "type": "text",
-          "content": "The Gallery's most disciplined decision is the one that looks the most frivolous. India Mahdavi's 2014 redesign commits to a single millennial pink across walls, ceiling, carpet and the tulip-shaped velvet banquettes that ring the room, refusing the usual designer's instinct to break up a strong colour with a neutral counterweight. The effect is less a themed room than a habitable Rothko: from the doorway, the pink reads as one continuous surface, and only up close does it resolve into fabric, plaster, marble chevron flooring and two hundred and thirty-nine individually framed drawings."
+          "content": "The Gallery's most disciplined decision is the one that looks the most frivolous. India Mahdavi's 2014 redesign commits to a single millennial pink across walls, ceiling, carpet and the tulip-shaped velvet banquettes that ring the room, refusing the usual designer's instinct to break up a strong colour with a neutral counterweight. The effect is less a themed room than a habitable Rothko: from the doorway, the pink reads as one continuous surface, and only up close does it resolve into fabric, plaster, marble chevron flooring and two hundred and thirty-nine individually framed drawings. Mahdavi had three months to complete the redesign in 2014; what was originally planned as a two-year installation ran for eight."
         },
         {
           "type": "image",
-          "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_2.jpg",
-          "alt": "Corner view of The Gallery at sketch showing pink tulip-shaped booths and chevron-patterned marble floor against walls of framed David Shrigley drawings",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_3.jpg",
+          "alt": "Wide-angle view of The Gallery at sketch showing pink tulip-shaped booths and chevron-patterned marble floor against walls of framed David Shrigley drawings",
           "caption": "The room's corner, where the herringbone marble floor meets a wall of two hundred and thirty-nine identically framed drawings.",
           "credit": "Photo: flodeau.com",
           "align": "center"
@@ -9138,13 +9139,13 @@
         },
         {
           "type": "text",
-          "content": "Those drawings are by the artist David Shrigley, whose deliberately crude, deadpan style has always worked by refusing to look expensive, which is exactly what makes it survive being hung in a room this ornamental. Gridded salon-style across every wall in identical frames, the drawings function first as texture, a uniform pattern that completes the pink room the way wallpaper would, and only on closer inspection break apart into two hundred and thirty-nine separate, absurd little jokes. Sketch has cycled artists through the space since, including a 2022 redesign with Yinka Shonibare that swapped the walls to sunshine yellow, but the pink Shrigley scheme was reinstated, evidence that the combination reads as the room's real identity rather than one look among several."
+          "content": "Those drawings are by the artist David Shrigley, whose deliberately crude, deadpan style has always worked by refusing to look expensive, which is exactly what makes it survive being hung in a room this ornamental. Gridded salon-style across every wall in identical frames, the drawings function first as texture, a uniform pattern that completes the pink room the way wallpaper would, and only on closer inspection break apart into two hundred and thirty-nine separate, absurd little jokes about failure, boredom and bad advice, the largest single body of his work ever exhibited in one place. Sketch has cycled artists through the space since, including a 2022 redesign with Yinka Shonibare that swapped the walls to sunshine yellow, but the pink Shrigley scheme was reinstated, evidence that the combination reads as the room's real identity rather than one look among several."
         },
         {
           "type": "image",
-          "content": "https://flodeau.com/wp-content/uploads/2014/07/DSGallery2.jpg",
-          "alt": "Close-up of a table set for dinner at The Gallery, sketch, London, with a blurred waiter adjusting place settings against a wall of framed David Shrigley drawings",
-          "caption": "Table settings against the Shrigley wall: from this distance the drawings resolve into individual jokes.",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/10352033_782860698414809_2642669337727875817_n.jpg",
+          "alt": "Two pink-clothed tables set for dinner beneath a row of David Shrigley drawings at sketch, London, with copper table lamps and framed text-based artworks",
+          "caption": "Individual Shrigley drawings read up close: text-based jokes hung at exactly table height.",
           "credit": "Photo: flodeau.com",
           "align": "center"
         },
@@ -9155,13 +9156,13 @@
         },
         {
           "type": "text",
-          "content": "Photographed empty, the Gallery can look like a stage set waiting for its cast. What the room is actually built for shows up once staff and diners are moving through it: the pink absorbs and reflects the low light so consistently that people become part of the same continuous surface as the walls and banquettes, dressed in grey uniforms that read as a deliberate, muted counterpoint rather than an oversight. The effect is a room that photographs beautifully both full and empty, which is a harder trick than committing to one striking colour in the first place."
+          "content": "Photographed empty, the Gallery can look like a stage set waiting for its cast. What the room is actually built for shows up once staff and diners are moving through it: the pink absorbs and reflects the low light so consistently that people become part of the same continuous surface as the walls and banquettes, dressed in grey uniforms that read as a deliberate, muted counterpoint rather than an oversight. Even the crockery keeps the bit going, hand-lettered in the same wry, self-referential type as the drawings, printing the restaurant's own Mayfair address onto the plate a foie gras terrine is served on, so that the joke about self-awareness reaches the food before it reaches the table."
         },
         {
           "type": "image",
-          "content": "https://flodeau.com/wp-content/uploads/2014/07/10476126_10152456439484526_7330369836376005449_o.jpg",
-          "alt": "Staff in grey uniforms preparing tables inside a corner of The Gallery at sketch, London, surrounded by pink tulip booths and framed David Shrigley drawings",
-          "caption": "Staff in muted grey uniforms move through the pink room as a deliberate counterpoint, not an afterthought.",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/10440911_10152451935579526_3818090046985810586_n.jpg",
+          "alt": "Foie gras terrine plated with green apple and hazelnuts on a hand-lettered plate printed with sketch's Regent Street and Conduit Street addresses",
+          "caption": "A foie gras terrine served on crockery hand-lettered with the restaurant's own street address.",
           "credit": "Photo: flodeau.com",
           "align": "center"
         },
@@ -9181,10 +9182,18 @@
           "caption": "The egg-shaped toilet pods, lit from above by a ceiling tiled edge to edge in stained glass.",
           "credit": "Photo via NJ in LA",
           "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/Staff_Uniform.jpg",
+          "alt": "Two staff members in grey uniforms standing among the egg-shaped toilet pods at sketch London, beneath a stained-glass barrel-vaulted ceiling",
+          "caption": "Staff uniforms designed for the same room: grey against the eggs' pearl-white shells and the rainbow ceiling above.",
+          "credit": "Photo: flodeau.com",
+          "align": "center"
         }
       ],
       "featured": false,
-      "updatedAt": "2026-09-12T14:04:34.195Z",
+      "updatedAt": "2026-09-12T14:14:37.876Z",
       "locked": true
     }
   ],
