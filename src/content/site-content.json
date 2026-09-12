@@ -49622,6 +49622,20 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 17
+    },
+    {
+      "id": "author-us-architecture-studio",
+      "name": "US Architecture Studio",
+      "role": "Architecture Studio, Ukraine",
+      "bio": "US Architecture Studio is a Ukrainian practice working at the intersection of architecture and identity consulting. Its projects are built from layered local context rather than applied style, and the studio also runs the media project UkrArchStyle.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mtybtlnpk8zgbn.jpg",
+      "website": "https://us-arch-studio.framer.website/",
+      "instagram": "",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "photoIsLogo": true,
+      "teamOrder": 18
     }
   ],
   "manifest": {
