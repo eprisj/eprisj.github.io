@@ -8668,7 +8668,9 @@
           "content": "Downstairs, the trains that made the room's fortune have mostly moved on. The line to the Riviera runs faster now and stops less; the TGV that eventually replaced the original Train Bleu does not carry its name, and passengers who want the coast today are more likely to compare fares on a phone than to sit down in a dining room and be sold the destination in oil paint. The advertisement, in other words, has completely outlived the product. What is left is a room that no longer has to persuade anyone of anything, protected by law from ever having to try a different pitch, still setting a table under a ceiling built to make you believe a train ride could feel like arriving somewhere before you had left. Eat there and you are not visiting the past. You are sitting inside a hundred-and-twenty-five-year-old sales pitch that the French state decided was worth telling forever, and paying, gladly, for the privilege of hearing it again."
         }
       ],
-      "featured": true
+      "featured": true,
+      "locked": true,
+      "updatedAt": "2026-09-12T10:55:26.956Z"
     },
     {
       "id": 1,
@@ -8749,7 +8751,9 @@
       "pros": [],
       "cons": [],
       "authorId": "author-1784896384236-4fokw",
-      "role": "Author"
+      "role": "Author",
+      "locked": true,
+      "updatedAt": "2026-09-12T10:55:23.657Z"
     },
     {
       "id": 6,
@@ -8899,10 +8903,11 @@
       ],
       "meta": "BARCELONA · RCR ARQUITECTES + PAU LLIMONA · 514.78 M² · 2016 · PHOTO: HISAO SUZUKI / RCR ARQUITECTES",
       "date": "AUG 15, 2026",
-      "updatedAt": "2026-09-05T14:49:18.874Z",
+      "updatedAt": "2026-09-12T10:55:25.022Z",
       "authorId": "author-1784732936927-kw554",
       "role": "Guest Editor",
-      "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp"
+      "imageUrl": "https://api.eprisjournal.com/uploads/msu2shhacwwanq.webp",
+      "locked": true
     },
     {
       "id": 7,
@@ -8950,7 +8955,8 @@
           "content": "With thirteen titles, Marrow Deep occasionally repeats a form it has already proven it can build, and an album that is so designed to be read as a continuous structure will frustrate anyone looking for a single crossover moment. It offers none. What it instead offers is a band that chooses architecture over spectacle to carry something so heavy, and mostly succeeds."
         }
       ],
-      "updatedAt": "2026-09-06T10:13:51.925Z"
+      "updatedAt": "2026-09-12T10:55:26.007Z",
+      "locked": true
     }
   ],
   "libraryItems": [
