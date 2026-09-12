@@ -1,3 +1,341 @@
+// ── i18n: admin panel interface language (EN default; RU/UK selectable) ────
+// Scope is deliberately the shell only: navigation, login, sidebar actions,
+// and the handful of system messages shown on every visit (auth errors,
+// the logout confirm, the article autosave indicator). Article/content text
+// is authored by editors in whatever language they wrote it in and is not
+// touched here.
+const I18N_LANG_KEY = 'epris_admin_lang';
+const I18N_STRINGS = {
+  en: {
+    'auth.editionLabel': 'Editorial',
+    'auth.langGroupAria': 'Interface language',
+    'auth.roleGroupAria': 'Sign-in role',
+    'auth.role.admin': 'Admin',
+    'auth.role.editor': 'Editor',
+    'auth.field.login': 'Username',
+    'auth.field.loginPlaceholder': 'Username…',
+    'auth.field.password': 'Password',
+    'auth.field.passwordPlaceholder': 'Enter password…',
+    'auth.remember': 'Remember on this browser',
+    'auth.loginBtn': 'Sign in',
+    'auth.loading': 'Checking…',
+    'auth.err.enterLogin': 'Enter your username',
+    'auth.err.enterPassword': 'Enter your password',
+    'auth.err.roleMismatch': 'This password is not valid for the “%role%” role — check the tab selected above.',
+    'auth.err.invalidLoginPassword': 'Invalid username or password',
+    'auth.err.connectionOrWrongPassword': 'Connection error or wrong password',
+    'auth.err.loginErrorPrefix': 'Sign-in error: ',
+    'sidebar.collapseTitle': 'Collapse menu (key [)',
+    'sidebar.collapseSr': 'Collapse menu',
+    'sidebar.expandTitle': 'Expand menu (key [)',
+    'sb.brandOpenAria': 'Open EPRIS Journal site',
+    'sb.edition': 'Journal · Editorial',
+    'sb.navAriaLabel': 'Editorial sections',
+    'sb.group.pinned': 'Pinned',
+    'sb.pinHint': 'Hover a section and click the pin to add it here.',
+    'sb.group.edit': 'Editing',
+    'sb.group.media': 'Media',
+    'sb.group.journal': 'Journal',
+    'sb.group.brand': 'Brand & design',
+    'sb.group.system': 'System',
+    'sb.pinTitle': 'Pin to Pinned',
+    'sb.unpinTitle': 'Unpin',
+    'sb.pinAria': 'Pin section “%s” to Pinned',
+    'nav.dashboard': 'Overview',
+    'nav.analytics': 'Analytics',
+    'nav.content': 'Publications',
+    'nav.order': 'Article order',
+    'nav.reviews-shortcut': 'Reviews',
+    'nav.issues': 'Issues',
+    'nav.homepage': 'Homepage / Gallery',
+    'nav.visibility': 'Visibility',
+    'nav.studio': 'Studio',
+    'nav.transcripts': 'Transcription',
+    'nav.transcriptsSub': 'Audio & video to text',
+    'nav.radio': 'Radio',
+    'nav.podcasts': 'Podcasts',
+    'nav.upload': 'Photo upload',
+    'nav.translations': 'Translations',
+    'nav.polls': 'Polls',
+    'nav.authors': 'About / Team',
+    'nav.manifest': 'Manifesto',
+    'nav.forms': 'Forms',
+    'nav.crm': 'CRM',
+    'nav.passports': 'Passports',
+    'nav.showcase': 'Showcase',
+    'nav.design': 'Design',
+    'nav.appearance': 'Appearance',
+    'nav.monitor': 'Monitoring',
+    'nav.history': 'Version history',
+    'nav.settings': 'Settings',
+    'nav.sectionsSheet': 'Sections',
+    'sidebar.autosave': 'Autosave',
+    'sidebar.noChanges': 'No changes',
+    'sidebar.save': 'Save',
+    'sidebar.loadTitle': 'Load data from server',
+    'sidebar.load': 'Load',
+    'sidebar.deployTitle': 'Push changes to server',
+    'sidebar.deploy': 'Deploy',
+    'sidebar.siteTitle': 'Open site',
+    'sidebar.site': 'Site',
+    'sidebar.more': 'More',
+    'sidebar.autopublishHint': 'Push edits to the VPS every 2 minutes. The site updates immediately.',
+    'sidebar.autopublish': 'Auto-publish',
+    'sidebar.draftTitle': 'Restore draft from trash',
+    'sidebar.draft': 'Draft',
+    'sidebar.snapshotsTitle': 'Autosave history',
+    'sidebar.snapshots': 'Snapshots',
+    'sidebar.darkTheme': 'Dark theme',
+    'sidebar.logout': 'Log out',
+    'confirm.logoutTitle': 'Log out of the editorial panel?',
+    'confirm.logoutBody': "You'll need to enter your password again.",
+    'confirm.logoutBtn': 'Log out',
+    'autosave.editing': 'Editing…',
+    'autosave.saved': 'Saved locally',
+    'autosave.publishing': 'Saving to VPS…',
+    'autosave.published': 'Saved to VPS ✓',
+    'autosave.error': 'Save failed — retrying…',
+    'autosave.errorFinal': 'Could not save to VPS (local copy kept)',
+    'autosave.nopw': 'Saved locally (no editorial password)',
+    'content.restrictedNote': 'You can edit and publish only the articles you created yourself.',
+  },
+  ru: {
+    'auth.editionLabel': 'Редакция',
+    'auth.langGroupAria': 'Язык интерфейса',
+    'auth.roleGroupAria': 'Роль для входа',
+    'auth.role.admin': 'Админ',
+    'auth.role.editor': 'Редактор',
+    'auth.field.login': 'Логин',
+    'auth.field.loginPlaceholder': 'Логин…',
+    'auth.field.password': 'Пароль',
+    'auth.field.passwordPlaceholder': 'Введите пароль…',
+    'auth.remember': 'Запомнить в этом браузере',
+    'auth.loginBtn': 'Войти',
+    'auth.loading': 'Проверка…',
+    'auth.err.enterLogin': 'Введите логин',
+    'auth.err.enterPassword': 'Введите пароль',
+    'auth.err.roleMismatch': 'Этот пароль не подходит для роли «%role%» — проверьте выбор вкладки выше.',
+    'auth.err.invalidLoginPassword': 'Неверный логин или пароль',
+    'auth.err.connectionOrWrongPassword': 'Ошибка соединения или неверный пароль',
+    'auth.err.loginErrorPrefix': 'Ошибка входа: ',
+    'sidebar.collapseTitle': 'Свернуть меню (клавиша [)',
+    'sidebar.collapseSr': 'Свернуть меню',
+    'sidebar.expandTitle': 'Развернуть меню (клавиша [)',
+    'sb.brandOpenAria': 'Открыть сайт EPRIS Journal',
+    'sb.edition': 'Journal · редакция',
+    'sb.navAriaLabel': 'Разделы редакции',
+    'sb.group.pinned': 'Часто',
+    'sb.pinHint': 'Наведите на раздел и нажмите булавку, чтобы закрепить его здесь.',
+    'sb.group.edit': 'Редакция',
+    'sb.group.media': 'Медиа',
+    'sb.group.journal': 'Журнал',
+    'sb.group.brand': 'Бренд и дизайн',
+    'sb.group.system': 'Система',
+    'sb.pinTitle': 'Закрепить в «Часто»',
+    'sb.unpinTitle': 'Открепить',
+    'sb.pinAria': 'Закрепить раздел «%s» в блоке «Часто»',
+    'nav.dashboard': 'Обзор',
+    'nav.analytics': 'Аналитика',
+    'nav.content': 'Публикации',
+    'nav.order': 'Порядок статей',
+    'nav.reviews-shortcut': 'Обзоры',
+    'nav.issues': 'Выпуски',
+    'nav.homepage': 'Главная / Галерея',
+    'nav.visibility': 'Видимость',
+    'nav.studio': 'Студия',
+    'nav.transcripts': 'Транскрипция',
+    'nav.transcriptsSub': 'Аудио и видео в текст',
+    'nav.radio': 'Радио',
+    'nav.podcasts': 'Подкасты',
+    'nav.upload': 'Загрузка фото',
+    'nav.translations': 'Переводы',
+    'nav.polls': 'Опросы',
+    'nav.authors': 'About / Команда',
+    'nav.manifest': 'Манифест',
+    'nav.forms': 'Анкеты',
+    'nav.crm': 'CRM',
+    'nav.passports': 'Паспорта',
+    'nav.showcase': 'Витрина',
+    'nav.design': 'Дизайн',
+    'nav.appearance': 'Оформление',
+    'nav.monitor': 'Мониторинг',
+    'nav.history': 'История версий',
+    'nav.settings': 'Настройки',
+    'nav.sectionsSheet': 'Разделы',
+    'sidebar.autosave': 'Автосохранение',
+    'sidebar.noChanges': 'Нет изменений',
+    'sidebar.save': 'Сохранить',
+    'sidebar.loadTitle': 'Загрузить данные с сервера',
+    'sidebar.load': 'Загрузить',
+    'sidebar.deployTitle': 'Отправить изменения на сервер',
+    'sidebar.deploy': 'Деплой',
+    'sidebar.siteTitle': 'Открыть сайт',
+    'sidebar.site': 'Сайт',
+    'sidebar.more': 'Ещё',
+    'sidebar.autopublishHint': 'Каждые 2 минуты отправлять правки на VPS. Сайт обновляется сразу.',
+    'sidebar.autopublish': 'Авто-публикация',
+    'sidebar.draftTitle': 'Вернуть черновик из корзины',
+    'sidebar.draft': 'Черновик',
+    'sidebar.snapshotsTitle': 'История автоснимков',
+    'sidebar.snapshots': 'Снимки',
+    'sidebar.darkTheme': 'Тёмная тема',
+    'sidebar.logout': 'Выйти',
+    'confirm.logoutTitle': 'Выйти из редакции?',
+    'confirm.logoutBody': 'Потребуется снова ввести пароль.',
+    'confirm.logoutBtn': 'Выйти',
+    'autosave.editing': 'Изменяю…',
+    'autosave.saved': 'Сохранено локально',
+    'autosave.publishing': 'Сохраняю на VPS…',
+    'autosave.published': 'Сохранено на VPS ✓',
+    'autosave.error': 'Ошибка сохранения — повторяю…',
+    'autosave.errorFinal': 'Не удалось сохранить на VPS (есть локальная копия)',
+    'autosave.nopw': 'Сохранено локально (нет пароля редакции)',
+    'content.restrictedNote': 'Вы можете редактировать и публиковать только те статьи, которые создали сами.',
+  },
+  uk: {
+    'auth.editionLabel': 'Редакція',
+    'auth.langGroupAria': 'Мова інтерфейсу',
+    'auth.roleGroupAria': 'Роль для входу',
+    'auth.role.admin': 'Адмін',
+    'auth.role.editor': 'Редактор',
+    'auth.field.login': 'Логін',
+    'auth.field.loginPlaceholder': 'Логін…',
+    'auth.field.password': 'Пароль',
+    'auth.field.passwordPlaceholder': 'Введіть пароль…',
+    'auth.remember': "Запам'ятати в цьому браузері",
+    'auth.loginBtn': 'Увійти',
+    'auth.loading': 'Перевірка…',
+    'auth.err.enterLogin': 'Введіть логін',
+    'auth.err.enterPassword': 'Введіть пароль',
+    'auth.err.roleMismatch': 'Цей пароль не підходить для ролі «%role%» — перевірте вибір вкладки вище.',
+    'auth.err.invalidLoginPassword': 'Невірний логін або пароль',
+    'auth.err.connectionOrWrongPassword': "Помилка з'єднання або невірний пароль",
+    'auth.err.loginErrorPrefix': 'Помилка входу: ',
+    'sidebar.collapseTitle': 'Згорнути меню (клавіша [)',
+    'sidebar.collapseSr': 'Згорнути меню',
+    'sidebar.expandTitle': 'Розгорнути меню (клавіша [)',
+    'sb.brandOpenAria': 'Відкрити сайт EPRIS Journal',
+    'sb.edition': 'Journal · редакція',
+    'sb.navAriaLabel': 'Розділи редакції',
+    'sb.group.pinned': 'Часто',
+    'sb.pinHint': 'Наведіть на розділ і натисніть булавку, щоб закріпити його тут.',
+    'sb.group.edit': 'Редакція',
+    'sb.group.media': 'Медіа',
+    'sb.group.journal': 'Журнал',
+    'sb.group.brand': 'Бренд і дизайн',
+    'sb.group.system': 'Система',
+    'sb.pinTitle': 'Закріпити в «Часто»',
+    'sb.unpinTitle': 'Відкріпити',
+    'sb.pinAria': 'Закріпити розділ «%s» у блоці «Часто»',
+    'nav.dashboard': 'Огляд',
+    'nav.analytics': 'Аналітика',
+    'nav.content': 'Публікації',
+    'nav.order': 'Порядок статей',
+    'nav.reviews-shortcut': 'Огляди',
+    'nav.issues': 'Випуски',
+    'nav.homepage': 'Головна / Галерея',
+    'nav.visibility': 'Видимість',
+    'nav.studio': 'Студія',
+    'nav.transcripts': 'Транскрипція',
+    'nav.transcriptsSub': 'Аудіо і відео в текст',
+    'nav.radio': 'Радіо',
+    'nav.podcasts': 'Подкасти',
+    'nav.upload': 'Завантаження фото',
+    'nav.translations': 'Переклади',
+    'nav.polls': 'Опитування',
+    'nav.authors': 'About / Команда',
+    'nav.manifest': 'Маніфест',
+    'nav.forms': 'Анкети',
+    'nav.crm': 'CRM',
+    'nav.passports': 'Паспорти',
+    'nav.showcase': 'Вітрина',
+    'nav.design': 'Дизайн',
+    'nav.appearance': 'Оформлення',
+    'nav.monitor': 'Моніторинг',
+    'nav.history': 'Історія версій',
+    'nav.settings': 'Налаштування',
+    'nav.sectionsSheet': 'Розділи',
+    'sidebar.autosave': 'Автозбереження',
+    'sidebar.noChanges': 'Без змін',
+    'sidebar.save': 'Зберегти',
+    'sidebar.loadTitle': 'Завантажити дані з сервера',
+    'sidebar.load': 'Завантажити',
+    'sidebar.deployTitle': 'Надіслати зміни на сервер',
+    'sidebar.deploy': 'Деплой',
+    'sidebar.siteTitle': 'Відкрити сайт',
+    'sidebar.site': 'Сайт',
+    'sidebar.more': 'Ще',
+    'sidebar.autopublishHint': 'Кожні 2 хвилини надсилати правки на VPS. Сайт оновлюється одразу.',
+    'sidebar.autopublish': 'Автопублікація',
+    'sidebar.draftTitle': 'Повернути чернетку з кошика',
+    'sidebar.draft': 'Чернетка',
+    'sidebar.snapshotsTitle': 'Історія автознімків',
+    'sidebar.snapshots': 'Знімки',
+    'sidebar.darkTheme': 'Темна тема',
+    'sidebar.logout': 'Вийти',
+    'confirm.logoutTitle': 'Вийти з редакції?',
+    'confirm.logoutBody': 'Знадобиться знову ввести пароль.',
+    'confirm.logoutBtn': 'Вийти',
+    'autosave.editing': 'Змінюю…',
+    'autosave.saved': 'Збережено локально',
+    'autosave.publishing': 'Зберігаю на VPS…',
+    'autosave.published': 'Збережено на VPS ✓',
+    'autosave.error': 'Помилка збереження — повторюю…',
+    'autosave.errorFinal': 'Не вдалося зберегти на VPS (є локальна копія)',
+    'autosave.nopw': 'Збережено локально (немає пароля редакції)',
+    'content.restrictedNote': 'Ви можете редагувати й публікувати лише ті статті, які створили самі.',
+  },
+};
+function getLang() {
+  try {
+    const stored = localStorage.getItem(I18N_LANG_KEY);
+    if (stored && I18N_STRINGS[stored]) return stored;
+  } catch { /* private mode */ }
+  return 'en';
+}
+function t(key) {
+  const lang = getLang();
+  return I18N_STRINGS[lang]?.[key] ?? I18N_STRINGS.en[key] ?? key;
+}
+function applyI18n() {
+  const lang = getLang();
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.getAttribute('data-i18n')); });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder'))); });
+  document.querySelectorAll('[data-i18n-title]').forEach((el) => { el.setAttribute('title', t(el.getAttribute('data-i18n-title'))); });
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
+  // Pin buttons interpolate the section label that was just translated above
+  // rather than carrying their own per-tab key; their pinned/unpinned title
+  // text is finished off separately by the sidebar's own applyPins().
+  document.querySelectorAll('.sb-pin[data-pin]').forEach((btn) => {
+    const label = document.querySelector(`.tab-btn[data-tab="${btn.dataset.pin}"] .sb-label`)?.textContent || '';
+    btn.setAttribute('aria-label', t('sb.pinAria').replace('%s', label));
+    const tabBtn = document.querySelector(`.tab-btn[data-tab="${btn.dataset.pin}"]`);
+    if (tabBtn) tabBtn.dataset.navLabel = label;
+  });
+  document.querySelectorAll('.i18n-lang-toggle').forEach((group) => {
+    group.querySelectorAll('.auth-role-btn[data-lang]').forEach((btn) => {
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+  });
+}
+function setLang(lang) {
+  if (!I18N_STRINGS[lang]) return;
+  try { localStorage.setItem(I18N_LANG_KEY, lang); } catch { /* private mode */ }
+  applyI18n();
+}
+window.eprisT = t;
+document.querySelectorAll('.i18n-lang-toggle').forEach((group) => {
+  group.addEventListener('click', (e) => {
+    const btn = e.target.closest('.auth-role-btn[data-lang]');
+    if (!btn) return;
+    setLang(btn.dataset.lang);
+  });
+});
+applyI18n();
+
 const DEFAULTS = Object.freeze({
   owner: 'eprisj',
   repo: 'eprisj.github.io',
@@ -642,6 +980,7 @@ async function tryAutoLogin() {
         applyRadioToken(data.radio_token);
         applyShowcaseToken(data.showcase_token);
         setSessionRole(data.role);
+        setSessionRestricted(data.restricted);
         applyRoleVisibility(data.role);
         rememberTokenInput.checked = true;
         hideAuthOverlay();
@@ -697,6 +1036,20 @@ function setSessionRole(role) {
     else localStorage.removeItem(AUTH_ROLE_STORAGE_KEY);
   } catch { /* */ }
 }
+// A restricted editor (see ACCOUNTS in deploy-webhook.js) can only edit or
+// publish articles/reviews it created itself — enforced server-side on every
+// /content save. This flag only drives the client-side heads-up (a note in
+// Публикации); it is never the actual gate.
+const AUTH_RESTRICTED_STORAGE_KEY = 'epris_admin_restricted';
+function getSessionRestricted() {
+  try { return localStorage.getItem(AUTH_RESTRICTED_STORAGE_KEY) === '1'; } catch { return false; }
+}
+function setSessionRestricted(flag) {
+  try {
+    if (flag) localStorage.setItem(AUTH_RESTRICTED_STORAGE_KEY, '1');
+    else localStorage.removeItem(AUTH_RESTRICTED_STORAGE_KEY);
+  } catch { /* */ }
+}
 // Tabs a plain editor password cannot act on, for two different reasons:
 //   - radio, passports: the server rejects these routes outright for a
 //     non-admin password (see resolveRole()/per-route checks in
@@ -729,6 +1082,8 @@ function applyRoleVisibility(role) {
   // image picker) is gated separately, at render time in renderGrid — that
   // grid re-renders on every picker open, so a one-time sweep here wouldn't
   // reach buttons drawn after login.
+  const restrictedNote = byId('restrictedEditorNote');
+  if (restrictedNote) restrictedNote.hidden = !(isEditor && getSessionRestricted());
 }
 
 function applyRadioToken(rt) {
@@ -741,8 +1096,8 @@ function applyRadioToken(rt) {
 async function handlePasswordLogin() {
   const login = (authLoginInput?.value || '').trim();
   const pw = (authPasswordInput?.value || '').trim();
-  if (selectedLoginRole === 'editor' && !login) { showAuthError('Введите логин'); return; }
-  if (!pw) { showAuthError('Введите пароль'); return; }
+  if (selectedLoginRole === 'editor' && !login) { showAuthError(t('auth.err.enterLogin')); return; }
+  if (!pw) { showAuthError(t('auth.err.enterPassword')); return; }
   authError.hidden = true;
   setAuthBusy(true);
   try {
@@ -752,10 +1107,11 @@ async function handlePasswordLogin() {
       body: JSON.stringify({ login, password: pw, role: selectedLoginRole }),
     });
     const data = await res.json();
-    if (!data.ok || !data.token) throw new Error(data.error || 'Неверный пароль');
+    if (!data.ok || !data.token) throw new Error(data.error || 'invalid password');
     applyRadioToken(data.radio_token);
     applyShowcaseToken(data.showcase_token);
     setSessionRole(data.role);
+    setSessionRestricted(data.restricted);
     applyRoleVisibility(data.role);
     // Password is already validated by the VPS — log in immediately. The
     // GitHub PAT is only carried along for optional GitHub-dependent features
@@ -775,13 +1131,13 @@ async function handlePasswordLogin() {
     hideAuthOverlay();
     await initAfterLogin();
   } catch (e) {
-    const roleLabel = selectedLoginRole === 'admin' ? 'Админ' : 'Редактор';
+    const roleLabel = selectedLoginRole === 'admin' ? t('auth.role.admin') : t('auth.role.editor');
     if (/not valid for the .* role/i.test(e.message)) {
-      showAuthError(`Этот пароль не подходит для роли «${roleLabel}» — проверьте выбор вкладки выше.`);
+      showAuthError(t('auth.err.roleMismatch').replace('%role%', roleLabel));
     } else if (/invalid login or password/i.test(e.message)) {
-      showAuthError('Неверный логин или пароль');
+      showAuthError(t('auth.err.invalidLoginPassword'));
     } else {
-      showAuthError(e.message === 'Неверный пароль' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? 'Ошибка соединения или неверный пароль' : 'Ошибка входа: ' + e.message);
+      showAuthError(e.message === 'invalid password' || /invalid/i.test(e.message) || /fetch/i.test(e.message) ? t('auth.err.connectionOrWrongPassword') : t('auth.err.loginErrorPrefix') + e.message);
     }
   }
 }
@@ -792,6 +1148,7 @@ function logout() {
   localStorage.removeItem(AUTH_LOGIN_STORAGE_KEY);
   localStorage.removeItem('epris_radio_admin_pw');
   setSessionRole(null);
+  setSessionRestricted(false);
   window.location.reload();
 }
 
@@ -800,7 +1157,7 @@ authLoginPwBtn?.addEventListener('click', handlePasswordLogin);
 authLoginInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 authPasswordInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handlePasswordLogin(); });
 byId('logoutBtn')?.addEventListener('click', async () => {
-  if (await showConfirmModal('Выйти из редакции?', 'Потребуется снова ввести пароль.', 'Выйти')) logout();
+  if (await showConfirmModal(t('confirm.logoutTitle'), t('confirm.logoutBody'), t('confirm.logoutBtn'))) logout();
 });
 
 // Bootstrap: auth gate first, then init
@@ -19314,13 +19671,13 @@ async function flushModernEditor() {
   function setSave(s) {
     if (!saveState) return;
     const labels = {
-      editing: 'Изменяю…',
-      saved: 'Сохранено локально',
-      publishing: 'Сохраняю на VPS…',
-      published: 'Сохранено на VPS ✓',
-      error: 'Ошибка сохранения — повторяю…',
-      'error-final': 'Не удалось сохранить на VPS (есть локальная копия)',
-      nopw: 'Сохранено локально (нет пароля редакции)',
+      editing: t('autosave.editing'),
+      saved: t('autosave.saved'),
+      publishing: t('autosave.publishing'),
+      published: t('autosave.published'),
+      error: t('autosave.error'),
+      'error-final': t('autosave.errorFinal'),
+      nopw: t('autosave.nopw'),
     };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
@@ -21090,7 +21447,7 @@ async function flushModernEditor() {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && _model) publishSilently(); });
   function setSave(s) {
     if (!saveState) return;
-    const labels = { editing: 'Изменяю…', saved: 'Сохранено локально', publishing: 'Сохраняю на VPS…', published: 'Сохранено на VPS ✓', error: 'Ошибка сохранения — повторяю…', 'error-final': 'Не удалось сохранить на VPS (есть локальная копия)', nopw: 'Сохранено локально (нет пароля редакции)' };
+    const labels = { editing: t('autosave.editing'), saved: t('autosave.saved'), publishing: t('autosave.publishing'), published: t('autosave.published'), error: t('autosave.error'), 'error-final': t('autosave.errorFinal'), nopw: t('autosave.nopw') };
     saveState.textContent = labels[s] || labels.saved;
     saveState.className = 'wys-save-state ' + s;
   }
