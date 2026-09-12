@@ -8535,6 +8535,117 @@
       ],
       "locked": true,
       "publishedAt": "2026-09-12T09:15:00.000Z"
+    },
+    {
+      "id": 37,
+      "title": "Architecture That Listens",
+      "author": "Viacheslav Munister & US Architecture Studio",
+      "role": "Author",
+      "date": "Sep 12, 2026",
+      "excerpt": "How multi-layered context shapes Ukrainian identity across three projects by US Architecture Studio, from the steppe town of Svatove, through the hills of Ternopil, to a cafe in Kyiv.",
+      "category": "architecture",
+      "subcategory": "Studio profile",
+      "tags": [
+        "Architecture",
+        "Ukraine",
+        "US Architecture Studio"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+      "authorId": "author-1784732936927-kw554",
+      "draft": true,
+      "showCover": true,
+      "previewToken": "5b1c8e4a9f2d7036c8a1e4f0",
+      "content": [
+        {
+          "type": "text",
+          "content": "Architecture is something considerably larger than physical walls. It is the ability to give material form to a place's memory, its climate, its habits, the routes people walk every day without thinking about them. A building that knows how to listen to its surroundings becomes a natural extension of the ground it stands on. From the open steppe of the east, through the textured hills of Galicia, to the restless center of the capital, the Ukrainian practice US Architecture Studio works from layered context rather than applied style, arriving at three different answers to the same underlying question. Three geographies, three projects."
+        },
+        {
+          "type": "text",
+          "content": "A building's identity is not decoration added afterward. It is a precise spatial answer to the character of a place, one that gathers up meanings already latent in a site and makes them visible. Before drawing a single wall, the studio works through a set of deliberately basic questions: what is this plot? What does the street it sits on say? What is the town, the region, the culture around it? Does the result read as part of the country's own identity? The answers, an arid climate, a local domestic habit, the constant transit of a city block, end up shaping a building far more convincingly than any decoration laid on top of it afterward. What that method looks like in practice can be traced across three projects spanning very different parts of the country: the eastern steppe, the western landscape, and the pulsing center of the capital."
+        },
+        {
+          "type": "header",
+          "content": "Svatove: the memory of a form",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A private house on the outskirts of Svatove grew out of close study of the underlying logic, rather than the literal image, of traditional housing in the Luhansk region. The plot's narrow shape, together with local custom, climate and the historical proportions of the surrounding buildings, dictated a compact white volume set back from the road. To give the plan a livable, contemporary scale, the composition is completed by a contrasting dark block on the north side, its pitched roof kept visually unified by a single membrane covering. The overall form is further shaped by two carved out niches, one for a terrace, one for parking."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyatjnabh3tw0.jpg",
+          "caption": "The house's form, developed step by step from the proportions of local vernacular housing and a nearby historic settlement. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Tradition and continuity of form show up here in details easy to miss. The slender metal columns of the terrace and the parking canopy restate, in a new material, the idea of the old wooden porch post. Three differently sized windows on the white facade reinterpret a traditional local arrangement, and their placement sets up a wavelike rhythm that echoes the course of a nearby river. Inside, the plan avoids conventional corridors in favor of one continuous, flowing space: the kitchen and living room open upward into the second floor hall and its loggia. Working with the site's own slope, the house keeps its paved surface to a single driveway leading to the parking spot, leaving the rest of the plot free for a garden further up the hill."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyatkdqe592c6.jpg",
+          "caption": "Ground and second floor plans, Svatove. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Ternopil region: building from what was already there",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Context is not only cultural or natural. On a plot in the Ternopil region, it was a literal constraint: an existing stone plinth and foundation left over from a generic house of the 2000s. That given became the starting point for a deliberately rational home, built for a family who chose to move out into the surrounding countryside. Every window and every square meter here answers directly to function. The restraint and the palette of the facades draw straight from vernacular building tradition, and the roof, a half hip form with a series of breaks in its slope, does most of the formal work."
+        },
+        {
+          "type": "text",
+          "content": "That silhouette runs deep in the visual culture of Galicia and reads as instinctively familiar to anyone from the region. It also produces a far more articulated volume than a plain gable or hip roof would allow, while solving a purely practical problem: it keeps the attic usable at full height without resorting to dormer windows. Working with the site's pronounced slope, the house's strict practicality settles into something closer to comfort, and its local character grows directly out of function rather than being applied over it."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
+          "caption": "Ground and attic floor plans, a house in the Ternopil region built on an existing foundation. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Kyiv: designing for a city in motion",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In a large city, natural terrain and history are joined by something else: constant movement. A cafe project in Kyiv's Solomianskyi district sits inside a green strip along Povitrianykh Syl Avenue, wedged between student dormitories and university buildings that see a steady flow of foot traffic between them. The building answers that transit with a wavelike, insulating wall that shields the interior from the street, breaking its surface only once, for a single round window. The cafe's main visual draw is a heavy cantilevered roof whose wave motif carries inward, turning into a series of convex vaults overhead. The ceiling's dynamic vertical lines tie the terrace to the interior, running the length of the room and cutting into the wall behind the bar. That same shape structures the space outside too, setting a rhythm of three arches across the facade's glazing."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+          "caption": "Soloma, a cafe for Kyiv's Solomianskyi district, set inside a green strip along Povitrianykh Syl Avenue. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "Inside, the column free volume splits visually into an intimate zone and a main hall offering five distinct ways to sit: half private nooks, a long communal table, a run of seats along the panoramic windows, and a central island of smaller tables. From outside, the building's overall geometry answers to the rhythm of traffic and pedestrians passing by, while a screen of existing trees gently separates it from the avenue. Inside, the main hall faces the opposite corner of the plot, keeping its calm and its open, panoramic view of the square across the street."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyatihdm4zjzr.jpg",
+          "caption": "Isolating the plot from the university grounds, then opening a visual line toward the square and the green beyond, before the cantilevered roof settles into its final form. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mtyatirfl7dv8y.jpg",
+          "caption": "Ground floor plan, Soloma. Courtesy US Architecture Studio.",
+          "align": "center"
+        },
+        {
+          "type": "text",
+          "content": "A building that is genuinely alive always grows out of a deep reading of its place, its culture, its spatial surroundings, becoming a natural extension of the ground beneath it. It is exactly that connection that gives architecture real content, gives it a value that does not date, and makes the space around it easier to notice and understand."
+        }
+      ],
+      "updatedAt": "2026-09-12T11:26:42.961Z"
     }
   ],
   "reviews": [
