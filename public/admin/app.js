@@ -974,7 +974,9 @@ async function tryAutoLogin() {
         body: JSON.stringify({ login, password: pw }),
       });
       const data = await res.json();
-      if (data.ok && data.token) {
+      // Editor accounts never get a GitHub PAT back (see /token on the VPS) —
+      // token is deliberately "" for them, so only admin logins require it.
+      if (data.ok && (data.token || data.role !== 'admin')) {
         tokenInput.value = data.token;
         localStorage.setItem(AUTH_STORAGE_KEY, data.token);
         applyRadioToken(data.radio_token);
@@ -1107,7 +1109,9 @@ async function handlePasswordLogin() {
       body: JSON.stringify({ login, password: pw, role: selectedLoginRole }),
     });
     const data = await res.json();
-    if (!data.ok || !data.token) throw new Error(data.error || 'invalid password');
+    // Editor accounts never get a GitHub PAT back (see /token on the VPS) —
+    // token is deliberately "" for them, so only admin logins require it.
+    if (!data.ok || (data.role === 'admin' && !data.token)) throw new Error(data.error || 'invalid password');
     applyRadioToken(data.radio_token);
     applyShowcaseToken(data.showcase_token);
     setSessionRole(data.role);
