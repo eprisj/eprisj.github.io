@@ -9086,8 +9086,8 @@
       "authorId": "author-1784732936927-kw554",
       "category": "ARCHITECTURE & DINING",
       "date": "SEP 12, 2026",
-      "imageUrl": "https://hellojetlag.com/wp-content/uploads/2017/06/Sketch-London-4.jpg",
-      "meta": "LONDON · INDIA MAHDAVI, DAVID SHRIGLEY · 1779 / 2014 · PHOTO: HELLO JETLAG",
+      "imageUrl": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_1.jpg",
+      "meta": "LONDON · INDIA MAHDAVI, DAVID SHRIGLEY · 1779 / 2014 · PHOTO: FLODEAU",
       "verdict": "sketch takes a Grade II listed Georgian townhouse built by James Wyatt in 1779 and paints one of its rooms the exact pink of a 1980s prom dress, hangs two hundred and thirty-nine David Shrigley drawings on the walls in a grid, and puts a rainbow-lit chamber of egg-shaped toilet pods one floor below it, and asks diners to move between all three without once explaining the joke.",
       "pros": [
         "The Gallery's monochrome pink scheme by India Mahdavi covers walls, banquettes, carpet and lighting in one continuous hue rather than treating pink as an accent, which is what makes the room read as a single artwork instead of a themed dining room",
@@ -9108,10 +9108,10 @@
         },
         {
           "type": "image",
-          "content": "https://hellojetlag.com/wp-content/uploads/2017/06/Sketch-London-6e.jpg",
-          "alt": "Tulip-shaped pink velvet banquettes and marble chevron floor inside The Gallery at sketch, London, with David Shrigley drawings on the walls",
-          "caption": "The Gallery's tulip banquettes and chevron marble floor, all inside India Mahdavi's single pink palette.",
-          "credit": "Photo: Hello Jetlag",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_1.jpg",
+          "alt": "Symmetrical view down the length of The Gallery at sketch, London, showing the pink tulip banquettes, chevron marble floor, a domed skylight and the bar at the far end",
+          "caption": "The Gallery seen end to end: original 1779 dome, bar, and the pink scheme running the full length of the room.",
+          "credit": "Photo: flodeau.com",
           "align": "center"
         },
         {
@@ -9125,10 +9125,10 @@
         },
         {
           "type": "image",
-          "content": "https://hellojetlag.com/wp-content/uploads/2017/06/Sketch-London-1e.jpg",
-          "alt": "Close-up of scalloped pink velvet tulip-backed chairs surrounding white-clothed tables at sketch restaurant, London",
-          "caption": "The tulip-backed chairs are bespoke to the room, upholstered in the same pink as the walls behind them.",
-          "credit": "Photo: Hello Jetlag",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_2.jpg",
+          "alt": "Corner view of The Gallery at sketch showing pink tulip-shaped booths and chevron-patterned marble floor against walls of framed David Shrigley drawings",
+          "caption": "The room's corner, where the herringbone marble floor meets a wall of two hundred and thirty-nine identically framed drawings.",
+          "credit": "Photo: flodeau.com",
           "align": "center"
         },
         {
@@ -9142,27 +9142,27 @@
         },
         {
           "type": "image",
-          "content": "https://hellojetlag.com/wp-content/uploads/2017/06/Sketch-London-8.jpg",
-          "alt": "Wide view of The Gallery dining room at sketch, London, showing the full grid of David Shrigley drawings covering the pink walls and diners seated at white-clothed tables",
-          "caption": "The full Shrigley grid: 239 identically framed drawings reading as one continuous pattern from across the room.",
-          "credit": "Photo: Hello Jetlag",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/DSGallery2.jpg",
+          "alt": "Close-up of a table set for dinner at The Gallery, sketch, London, with a blurred waiter adjusting place settings against a wall of framed David Shrigley drawings",
+          "caption": "Table settings against the Shrigley wall: from this distance the drawings resolve into individual jokes.",
+          "credit": "Photo: flodeau.com",
           "align": "center"
         },
         {
           "type": "header",
-          "content": "The bar, in the same key",
+          "content": "A room built to be walked through, not just seen",
           "level": 2
         },
         {
           "type": "text",
-          "content": "The discipline extends past the dining room and into the bar, where the pink upholstery, chrome bar front and oversized globe lamps repeat the Gallery's material language rather than shifting into a separate, moodier register the way most restaurants split their bar and dining spaces. The consistency is what keeps sketch from reading as a stunt: nothing about the pink is confined to the one room people photograph, which is the difference between a design gimmick and an actual design position."
+          "content": "Photographed empty, the Gallery can look like a stage set waiting for its cast. What the room is actually built for shows up once staff and diners are moving through it: the pink absorbs and reflects the low light so consistently that people become part of the same continuous surface as the walls and banquettes, dressed in grey uniforms that read as a deliberate, muted counterpoint rather than an oversight. The effect is a room that photographs beautifully both full and empty, which is a harder trick than committing to one striking colour in the first place."
         },
         {
           "type": "image",
-          "content": "https://hellojetlag.com/wp-content/uploads/2017/06/Sketch-London-9.jpg",
-          "alt": "Waiter serving drinks at the pink marble bar inside sketch restaurant in London, with spherical white lamps and mirrored bar front",
-          "caption": "The bar at sketch, carrying the same pink logic into service furniture and lighting.",
-          "credit": "Photo: Hello Jetlag",
+          "content": "https://flodeau.com/wp-content/uploads/2014/07/10476126_10152456439484526_7330369836376005449_o.jpg",
+          "alt": "Staff in grey uniforms preparing tables inside a corner of The Gallery at sketch, London, surrounded by pink tulip booths and framed David Shrigley drawings",
+          "caption": "Staff in muted grey uniforms move through the pink room as a deliberate counterpoint, not an afterthought.",
+          "credit": "Photo: flodeau.com",
           "align": "center"
         },
         {
@@ -9184,7 +9184,7 @@
         }
       ],
       "featured": false,
-      "updatedAt": "2026-09-12T13:58:39.671Z",
+      "updatedAt": "2026-09-12T14:04:34.195Z",
       "locked": true
     }
   ],
