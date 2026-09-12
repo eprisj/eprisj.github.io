@@ -8300,7 +8300,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mty3jymse1h1uu.jpg",
       "authorId": "author-1784732936927-kw554",
-      "draft": true,
+      "draft": false,
       "showCover": true,
       "content": [
         {
@@ -8533,7 +8533,8 @@
         "UA",
         "IT"
       ],
-      "locked": true
+      "locked": true,
+      "publishedAt": "2026-09-12T09:15:00.000Z"
     }
   ],
   "reviews": [
@@ -48906,7 +48907,8 @@
         "22": true,
         "23": true,
         "26": true,
-        "27": true
+        "27": true,
+        "36": true
       },
       "items": {
         "24": true
