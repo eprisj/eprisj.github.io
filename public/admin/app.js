@@ -1052,34 +1052,37 @@ function setSessionRestricted(flag) {
     else localStorage.removeItem(AUTH_RESTRICTED_STORAGE_KEY);
   } catch { /* */ }
 }
-// Tabs a plain editor password cannot act on, for two different reasons:
-//   - radio, passports: the server rejects these routes outright for a
-//     non-admin password (see resolveRole()/per-route checks in
-//     deploy-webhook.js) — an editor landing here would hit a wall of 401s.
-//   - the whole "Система" group (monitor, history, settings) PLUS
-//     appearance: settings' "Подключение к GitHub" card holds the raw
-//     GitHub PAT in a plain input. That token is shared across roles today
-//     (there is no separate, narrower editor credential to issue), so
-//     leaving Settings reachable would let an editor read out full
-//     repo-write access and use it directly with curl — completely
-//     outside anything the server-side role check can stop. Hiding the
-//     tab is the actual boundary here, not a courtesy. History (backups)
-//     and appearance (site-wide theme, not per-article content) are
-//     grouped in for the same "not an editor's job" reason even though
-//     history is also independently enforced server-side.
-const ADMIN_ONLY_TABS = ['radio', 'passports', 'appearance', 'monitor', 'history', 'settings', 'showcase'];
+// An editor's job is writing and publishing — everything else (taxonomy,
+// site design, homepage placement, system/infra tabs) is an owner decision.
+// Публикации already covers both articles and reviews via its own "Раздел"
+// dropdown, and the article/block editor has its own inline image upload,
+// so no other tab is actually needed to write and publish a piece — hence
+// a whitelist, not a growing blacklist. (radio/passports/showcase also
+// reject a non-admin password outright server-side; monitor/history/
+// settings/appearance hold the raw GitHub PAT and site-wide config — an
+// editor reaching Settings could read out full repo-write access.)
+const EDITOR_VISIBLE_TABS = ['content'];
 function applyRoleVisibility(role) {
   const isEditor = role === 'editor';
   document.body.classList.toggle('role-editor', isEditor);
-  ADMIN_ONLY_TABS.forEach((key) => {
-    const btn = document.querySelector(`.tab-btn[data-tab="${key}"]`);
-    if (btn) btn.hidden = isEditor;
-    // If an editor session had one of these open from a prior admin
+  document.querySelectorAll('.tab-btn[data-tab]').forEach((btn) => {
+    const hide = isEditor && !EDITOR_VISIBLE_TABS.includes(btn.dataset.tab);
+    const item = btn.closest('.sb-item') || btn;
+    item.hidden = hide;
+    // If an editor session had a now-hidden tab open from a prior admin
     // session sharing the same browser, don't leave it selected-but-hidden.
-    if (isEditor && btn?.classList.contains('active')) {
+    if (hide && btn.classList.contains('active')) {
       document.querySelector('.tab-btn[data-tab="content"]')?.click();
     }
   });
+  // Collapse sidebar groups left with nothing visible in them (every group
+  // except Публикации's own, once an editor is signed in) rather than
+  // showing empty collapsible headers.
+  document.querySelectorAll('.sb-group').forEach((group) => {
+    const anyVisible = Array.from(group.querySelectorAll('.sb-item')).some((item) => !item.hidden);
+    group.hidden = isEditor && !anyVisible;
+  });
+  if (isEditor) document.querySelector('.tab-btn[data-tab="content"]')?.click();
   // The media-library delete button (Upload tab, shared with the article
   // image picker) is gated separately, at render time in renderGrid — that
   // grid re-renders on every picker open, so a one-time sweep here wouldn't
