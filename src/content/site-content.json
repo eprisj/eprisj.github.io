@@ -53252,6 +53252,325 @@
           "showCover": true,
           "contributorId": "author-museo-nivola",
           "publishedAt": "2026-08-25T13:00:00.000Z"
+        },
+        {
+          "id": 27,
+          "title": "Souv : Le souvenir qui n'oublie pas",
+          "author": "Viacheslav Munister & Souv",
+          "role": "Auteur",
+          "date": "25 août 2026",
+          "excerpt": "Matej Petrić et Antonio Šeparović sur la transformation d'une simple magnete de réfrigérateur en entrée pour les propres photos d'un voyageur, pourquoi personne ne veut réellement acheter la technologie NFC, et ce qu'il a fallu pour installer un graveur laser dans une startup qui a commencé comme deux amis et un troisième café à Zagreb.",
+          "category": "entretien",
+          "subcategory": "Article",
+          "tags": [
+            "Entretien",
+            "design",
+            "voyage",
+            "croatie",
+            "startup"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mt919szqnaqxwe.jpg",
+          "content": [
+            {
+              "type": "texte",
+              "content": "Chaque boutique de souvenirs vend la même promesse : un petit objet qui vous rappellera, des années plus tard, que vous étiez quelque part. Un aimant remplit cette fonction mieux que presque tout autre, ce qui est précisément le problème. Il se souvient du fait du voyage et oublie tout ce qui a rendu le voyage digne d'être rappelé – avec qui vous riez sur le ferry, à quoi ressemblait la lumière la dernière nuit, le mauvais tournant qui est devenu la meilleure heure de la semaine. Ce matériau plus riche ne disparaît pas. Il est sur votre téléphone, enfoui à quelques milliers de photographies, dans la partie du rouleau de la caméra que personne ne fait défiler en arrière."
+            },
+            {
+              "type": "texte",
+              "content": "<b>Souv</b>, une startup née de Zagreb, a été créée pour combler précisément cette lacune. Touchez une carte physique ou un aimant avec votre téléphone – pas besoin d'installer d'application – et cela ouvre un espace personnel lié à cet endroit et à ce voyage spécifiques : vos propres photographies, une courte vidéo récapitulative, une note pour plus tard. L'objet reste sur le réfrigérateur, faisant ce qu'un souvenir a toujours fait. La mémoire à laquelle il fait référence reste accessible, ce qui était la partie qui se perdait auparavant."
+            },
+            {
+              "type": "texte",
+              "content": "L'entreprise a commencé avec deux amis à l'université. Depuis un premier pilote lors d'un événement cycliste sur l'île de Brač, Souv s'est répandu le long de la côte croate, dans les boutiques de musées et la grande distribution, et a été nommée finaliste dans la catégorie Conception de Communication Numérique de Zagreb Design Week 2026, où elle sera présentée à l'Académie des Beaux-Arts en septembre."
+            },
+            {
+              "type": "texte",
+              "content": "Nous avons parlé avec les co-fondateurs Matej Petrić et Antonio Šeparović du troisième café à Zagreb qui a lancé tout cela, de la version de l'idée dont ils étaient certains qu'elle fonctionnerait et qu'ils ont dû abandonner de toute façon, et de ce qu'il a réellement fallu pour mettre en production de l'acier inoxydable gravé en couleur."
+            },
+            {
+              "type": "text",
+              "content": "<b>Ramenez-nous au tout début – y avait-il un voyage spécifique, un endroit précis, ou une frustration particulière qui a réellement déclenché l'idée de Souv ? Décrivez ce moment en détail – où vous étiez, ce que vous essayiez de faire, et ce qui ne fonctionnait pas.</b>"
+            },
+            {
+              "type": "text",
+              "content": "Ce qui est drôle, c'est que Souv n'est pas né sur une plage, dans un aéroport, ou lors d'un voyage particulièrement dramatique. Il a commencé autour d’un café à Zagreb."
+            },
+            {
+              "type": "text",
+              "content": "Antonio et moi étions assis à WESPA, déjà lors de ce que il se souvient comme notre troisième café, en parlant de combien de photographies nous prenons lorsque nous voyageons et à quel point nous y revenons rarement par la suite. En même temps, nos maisons étaient pleines de rappels physiques des endroits que nous avions visités, surtout des magnets. La chose étrange était que l'objet physique survivait, tandis que l'expérience réelle était enterrée quelque part parmi des milliers de photographies sur un téléphone."
+            },
+            {
+              "type": "text",
+              "content": "Ce décalage est devenu le point de départ. Nous avons posé une question très simple : et si le souvenir physique pouvait d'une manière ou d'une autre transporter les souvenirs numériques avec lui ?"
+            },
+            {
+              "type": "texte",
+              "content": "Au début, cela semblait presque évident. Touchez un souvenir, ouvrez vos photographies, ajoutez quelque chose sur l'endroit. Ensuite, nous avons commencé à poser des questions plus difficiles : à quoi devrait réellement ressembler l'objet physique, pourquoi quelqu'un l'achèterait-il, comment rendre la technologie invisible, et comment faire en sorte que quelque chose de numérique ressemble à un véritable souvenir plutôt qu'à une autre application ?"
+            },
+            {
+              "type": "texte",
+              "content": "<b>Qui faisait partie de l'équipe fondatrice, et comment avez-vous réparti le travail initial entre vous ? En regardant en arrière, dont l'idée a fini par façonner le plus le produit, et le rôle de cette personne a-t-il changé une fois que l'entreprise a grandi ?</b>"
+            },
+            {
+              "type": "texte",
+              "content": "Souv a été fondée par nous deux, Matej Petrić et Antonio Šeparović. Nous étions amis et collègues universitaires avant de devenir partenaires commerciaux, et tous deux venions du domaine du logiciel et des produits numériques. Cela signifiait que la répartition initiale du travail était beaucoup moins nette que « un fondateur technique et un fondateur commercial ». Au début, nous faisions tous les deux tout ce dont le produit avait besoin."
+            },
+            {
+              "type": "texte",
+              "content": "Je ne attribuerais honnêtement pas Souv à l'idée d'une seule personne. La question initiale est sortie d'une conversation entre nous, et le produit a été façonné par itération par la suite. Si un principe a influencé le plus le produit, c'était quelque chose que nous avons appris lors des tests : les gens ne sont pas intéressés à acheter la technologie NFC."
+            },
+            {
+              "type": "text",
+              "content": "Ils s'intéressent à préserver une expérience. Une fois que nous avons compris cela, la technologie est devenue plus silencieuse et la mémoire est devenue le centre du produit."
+            },
+            {
+              "type": "text",
+              "content": "<b>À quoi ressemblait en réalité la toute première version de Souv – la carte, l'application, toute l'expérience ? Quelles parties de cette première version ont survécu dans ce qui est vendu dans les magasins aujourd'hui, et quelles parties ont été complètement jetées, peut-être même quelque chose dont vous étiez sûr que cela fonctionnerait ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Les premières versions étaient bien plus proches de preuves de concept que du Souv que vous pouvez acheter aujourd'hui. L'idée de base était déjà là : une carte physique ou un aimant avec une connexion NFC ou QR qui ouvrait un espace numérique associé à cet objet particulier. Nous devions prouver que la connexion entre un objet sur votre bureau ou réfrigérateur et une mémoire numérique personnelle pouvait sembler naturelle."
+            },
+            {
+              "type": "text",
+              "content": "Ce qui a survécu est en réalité la partie la plus fondamentale de l'idée. Vous touchez toujours un objet physique, rien n'a besoin d'être téléchargé, et cet objet devient l'entrée vers vos propres photographies, vidéos, notes et parcours."
+            },
+            {
+              "type": "text",
+              "content": "Presque tout autour de ce noyau est devenu plus raffiné. L'intégration est devenue plus simple, l'expérience numérique est devenue beaucoup moins axée sur la technologie, et le produit physique s'est développé en deux expressions très différentes : une version Eco imprimée accessible et un objet Premium en acier inoxydable brossé avec gravure laser en couleur."
+            },
+            {
+              "type": "text",
+              "content": "Une chose que nous avons initialement surestimée était le « wow » de la technologie elle-même. Nous supposions que toucher un objet avec un téléphone serait la partie que les gens trouveraient la plus intéressante. C'est utile, mais ce n'est pas la raison pour laquelle ils s'en soucient. Le moment important est lorsqu'ils comprennent ce qui se trouve de l'autre côté du tapotement. Cela a changé la façon dont nous avons conçu et expliqué l'ensemble du produit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sg821bqcm.jpg",
+              "caption": "Premiers croquis, un dépliant « Souvenirs avec des super-pouvoirs » et un présentoir en magasin. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<b>Parlez-nous des jalons qui ont compté le plus en cours de route – le premier magasin, la première ville en dehors de votre base, Zagreb Design Week. Pour chacun, qu'est-ce qui a réellement changé par la suite – et y a-t-il eu un moment qui a semblé plus important de l'extérieur que ce qu'il était en réalité de l'intérieur, ou inversement ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Il y avait plusieurs jalons, mais ils comptaient pour des raisons très différentes."
+            },
+            {
+              "type": "text",
+              "content": "La première fois que Souv a été utilisé dans un environnement réel était particulièrement importante. Lors de l'événement cycliste Uvati Vitar sur Brač, les participants ont reçu un Souv personnalisé dans le cadre de l'expérience de l'événement. Environ 70 % des Souv distribués ont été activés et remplis de souvenirs personnels, et presque un participant sur cinq a partagé l'expérience. Les chiffres étaient basés sur un petit pilote, mais en interne ce moment était bien plus important qu'un article de presse ou une présentation car des inconnus utilisaient enfin le produit sans que nous soyons à côté pour l'expliquer."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919s9royx1r6.jpg",
+              "caption": "La première utilisation réelle de Souv : une carte personnalisée distribuée lors de l'événement cycliste Uvati Vitar sur Brač. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Le premier point de vente à Zagreb a été un autre changement psychologique. Jusqu'alors, Souv était quelque chose que nous avions conçu, testé et présenté. Le mettre dans une boutique réelle signifiait qu'une personne qui ne nous avait jamais rencontré pouvait le voir sur une étagère, le comprendre et décider s'il méritait leur argent."
+            },
+            {
+              "type": "texte",
+              "content": "Il n'y a pas vraiment eu de « deuxième ville » nette par la suite. La progression s'est déplacée assez rapidement de Zagreb vers la côte, avec Souv apparaissant dans des endroits tels que Split, Zadar, Dubrovnik, Šibenik, Pula, Poreč, Korčula et Brač. D'ici août, le réseau de vente au détail comprenait des magasins indépendants, des lieux de musées et des points de vente en chaîne."
+            },
+            {
+              "type": "texte",
+              "content": "Et maintenant il y a Zagreb Design Week. Souv a été sélectionné comme finaliste dans la catégorie Conception de Communication Numérique et Conception d'Interaction en 2026 et sera exposé à l'Académie des Beaux-Arts du 15 au 20 septembre. Cette exposition est encore devant nous, donc nous ne pouvons pas prétendre savoir ce qu'elle changera encore. Mais la sélection elle-même signifie beaucoup car elle reconnaît Souv non seulement comme une startup touristique, mais comme une pièce de conception d'interaction et de communication."
+            },
+            {
+              "type": "texte",
+              "content": "Fait intéressant, certains des moments qui semblaient petits de l'extérieur, comme regarder les gens utiliser Souv lors du premier événement, se sont révélés énormes en interne. L'exposition médiatique fonctionne parfois dans l'autre sens : cela ressemble à une étape majeure publiquement, alors qu'à l'intérieur de l'entreprise, vous pensez encore au prochain lot de production, à un bug logiciel ou à la position de l'affichage dans un magasin."
+            },
+            {
+              "type": "texte",
+              "content": "<b>Vous l'appelez 'pas votre souvenir typique'. Y avait-il un souvenir particulier – que vous possédiez personnellement, achetiez ou receviez – que vous avez trouvé vraiment décevant, et cet objet spécifique a-t-il façonné ce que Souv est devenu ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Il n'y avait pas un seul souvenir terrible qui nous ait fait dire, « nous devons réparer cette industrie. »"
+            },
+            {
+              "type": "text",
+              "content": "C'était presque le contraire. Nous aimons en fait les souvenirs, et particulièrement les magnets, c'est pourquoi le magnet est devenu notre premier format. Ils fonctionnent remarquablement bien comme déclencheurs physiques. Vous en voyez un sur le réfrigérateur et vous vous souvenez immédiatement de Dubrovnik, Paris ou de l'île que vous avez visitée il y a cinq ans."
+            },
+            {
+              "type": "text",
+              "content": "La déception était que l'objet ne pouvait vous emmener que si loin. Il pouvait vous dire, « j'étais là », mais pas ce qui s'y est passé, avec qui vous voyageiez, ce qui vous a fait rire, ou ce que l'endroit ressentait réellement."
+            },
+            {
+              "type": "text",
+              "content": "Pendant ce temps, tout ce matériel plus riche existait. Il se trouvait simplement quelque part sur la chronologie de 23 000 photos d'un téléphone."
+            },
+            {
+              "type": "text",
+              "content": "Donc l'objet qui a influencé Souv n'était pas un souvenir particulièrement mauvais. C'était probablement l'aimant très ordinaire qui fait bien son travail, placé à côté d'un téléphone contenant une histoire bien meilleure mais presque jamais racontée à nouveau. Nous voulions relier ces deux choses."
+            },
+            {
+              "type": "text",
+              "content": "<b>Chaque ville – Zagreb, Dubrovnik, Split, Zadar, Brač, Korčula – a sa propre identité visuelle. Parcourez comment vous décidez réellement à quoi devrait ressembler et se sentir la carte d'une nouvelle ville, et un local vous a-t-il déjà dit que vous aviez mal compris leur ville ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Nous essayons de ne pas commencer par la question, « Quel monument devons-nous mettre sur cette carte ? »"
+            },
+            {
+              "type": "text",
+              "content": "Nous commençons par ce qui rend l'endroit reconnaissable pour les personnes qui le connaissent réellement. Cela inclut l'architecture et les monuments, bien sûr, mais aussi la couleur, les codes visuels locaux, le paysage, les petits détails, les histoires et la façon dont la destination se présente elle-même. Ensuite, nous réduisons ce matériel à quelque chose qui peut fonctionner comme un objet plutôt que d'essayer d'adapter toute une brochure touristique sur un aimant."
+            },
+            {
+              "type": "text",
+              "content": "Le design doit également survivre au matériau. Quelque chose qui semble magnifique sur un écran peut se comporter complètement différemment lorsqu'il est imprimé UV sur la version Eco ou gravé en couleur dans l'acier inoxydable, donc le processus oscille continuellement entre conception visuelle et test physique."
+            },
+            {
+              "type": "text",
+              "content": "Notre directeur artistique Antonija a été central dans le développement de ce langage visuel, tandis que les partenaires de destination nous donnent des retours locaux avant que les éditions ne passent en production."
+            },
+            {
+              "type": "text",
+              "content": "Et oui, les locaux ont contesté certains détails. Habituellement, ce n'est pas un moment dramatique « vous avez complètement mal compris notre ville », mais de petites corrections sont extrêmement précieuses. Un motif peut être techniquement reconnaissable et pourtant sembler incorrect à quelqu'un qui voit cet endroit tous les jours."
+            },
+            {
+              "type": "text",
+              "content": "Nous préférerions de loin avoir cette conversation lors du développement plutôt que de produire un objet magnifiquement conçu que les locaux eux-mêmes ne croient pas représenter leur identité."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919s1merprdg.jpg",
+              "caption": "Le langage visuel d'une carte Souv commence par ce que les locaux reconnaissent, pas par le point de repère le plus proche. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<b>Appuyez. Enregistrez. Revivez votre voyage. Décrivez, étape par étape, ce qui se passe réellement dans les secondes qui suivent qu'une personne appuie pour la première fois sur une carte – et ce qui se passe généralement des semaines ou des mois plus tard, une fois de retour chez soi. Connaissez-vous un moment où cela a vraiment surpris ou ému quelqu'un ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "La première pression est délibérément simple."
+            },
+            {
+              "type": "text",
+              "content": "Vous touchez la Souv avec un téléphone compatible NFC, ou scannez le code QR à l'arrière. L'expérience s'ouvre directement dans le navigateur, il n'y a donc pas d'application à installer. Lors de la première visite, vous vous connectez, choisissez si vous gardez la Souv pour vous ou si vous la préparez comme un cadeau, et réclamez cette Souv particulière. À partir de là, vous pouvez ajouter vos premières photographies, vidéos ou messages."
+            },
+            {
+              "type": "text",
+              "content": "Une fois qu'il a été revendiqué, il devient votre espace mémoire personnel. Vous pouvez organiser le voyage à travers une chronologie, continuer à ajouter du matériel, créer une vidéo récapitulative et explorer le contenu sélectionné lié à la destination."
+            },
+            {
+              "type": "text",
+              "content": "La partie la plus intéressante se produit plus tard. Des semaines, des mois ou même des années après le voyage, l'objet physique est toujours là. Vous le voyez sur votre bureau ou votre réfrigérateur et vous le touchez à nouveau. Au lieu d'ouvrir une page de destination générique, vous revenez à vos propres photographies et à votre propre version de cet endroit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sukn6i5qq.jpg",
+              "caption": "À l'intérieur du tap : une chronologie du voyage, des souvenirs partagés et la carte d'où un Souv a été fabriqué. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sl1cg9g0o.jpg",
+              "caption": "Premier travail d'interface pour le flux de revendication et l'écran de collection personnelle. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<i>La prochaine question concerne la seule partie du produit qui ne pouvait pas être résolue en itérant sur l'application : un objet physique, fabriqué en lots, qui doit avoir la même apparence la cinquième-centième fois que la première.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Quelle a été la partie la plus difficile de la construction de Souv jusqu'à présent ? Choisissez un exemple concret – un problème technique spécifique, une décision de conception précise, ou un casse-tête logistique particulier – et expliquez comment vous l'avez réellement résolu, y compris tout ce que vous avez essayé en premier qui a échoué.</b>"
+            },
+            {
+              "type": "text",
+              "content": "Un exemple très concret est le Souv en acier inoxydable Premium."
+            },
+            {
+              "type": "text",
+              "content": "Sur le papier, l'idée semblait simple : prendre de l'acier inoxydable et graver l'œuvre d'art de la destination en couleur. En réalité, produire cet objet de manière cohérente est devenu l'une des parties les plus difficiles du projet."
+            },
+            {
+              "type": "text",
+              "content": "Nous avons testé différents matériaux, paramètres de gravure, finitions, vitesses de production et méthodes de préparation de l'œuvre d'art. La difficulté n'était pas de produire un bel échantillon. Vous pouvez passer un temps déraisonnable à faire en sorte qu'une pièce ait l'air bonne. Le vrai problème est de créer la cinquantième ou la cinq-centième pièce avec la même qualité, dans un délai de production et un coût qui ont du sens pour un produit de détail."
+            },
+            {
+              "type": "text",
+              "content": "Nous sommes rencontrés à plusieurs reprises des compromis entre qualité visuelle, durabilité, répétabilité et vitesse. Finalement, nous avons réalisé que nous n'obtiendrions pas le niveau de contrôle que nous souhaitions si nous traitions la production comme une boîte noire totalement externe."
+            },
+            {
+              "type": "text",
+              "content": "Alors nous avons amené une partie importante du processus en interne et construit notre propre petite installation de production à Zagreb. Ce n'était pas prévu dans le plan initial de la startup. Nous venions du logiciel. Soudain, nous apprenions le stainless steel, lasers, tolérances de matériaux, finitions et flux de travail de production."
+            },
+            {
+              "type": "text",
+              "content": "Rétrospectivement, cette difficulté a amélioré Souv. Nous comprenons maintenant l'objet physique à un niveau beaucoup plus profond parce que nous avons été forcés d'apprendre comment le fabriquer nous-mêmes."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919sqhdw818b.jpg",
+              "caption": "L'édition Premium : gravure laser couleur sur acier inoxydable brossé. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919t7s2uwlyf.jpg",
+              "caption": "Une première version du produit Souv, de l'œuvre urbaine à la banc de gravure. Courtesy Souv",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "<i>La dernière question concerne l'échelle, et la réponse s'avère être moins à propos de nouvelles villes que de ce que Souv est réellement : un objet, ou une couche que tout objet pourrait porter.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Où voyez-vous Souv dans quelques années ? S'agit-il principalement de plus de villes et de pays, d'une fonctionnalité spécifique sur laquelle vous travaillez déjà, ou de quelque chose concernant le produit lui-même que vous aimeriez vraiment changer si vous pouviez recommencer ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "Dans quelques années, nous aimerions que Souv soit bien plus qu'une collection d'aimants de ville croates."
+            },
+            {
+              "type": "text",
+              "content": "La Croatie est l'endroit idéal pour nous de prouver le modèle parce que le tourisme est une partie si importante de la vie quotidienne ici, mais le comportement sous-jacent est universel. Les gens voyagent, prennent des centaines de photographies, achètent quelque chose pour se souvenir du voyage et puis rarement retournent à la plupart du matériel numérique qu'ils ont créé."
+            },
+            {
+              "type": "text",
+              "content": "Ainsi, l'expansion internationale fait définitivement partie de l'ambition, mais l'expansion la plus importante est celle d'un seul produit vers une plateforme."
+            },
+            {
+              "type": "text",
+              "content": "Cela signifie continuer à développer nos propres objets de collection Souv, mais aussi permettre à l'expérience Souv de vivre sur d'autres produits physiques. Une direction que nous développons déjà est une petite couche NFC/QR Souv qui peut être intégrée dans un souvenir existant ou son emballage. Un objet en céramique, un livre, un produit de musée ou un cadeau fabriqué localement ne devrait pas devenir « un produit Souv » ; il pourrait conserver son identité existante tout en gagnant l'expérience de mémoire personnelle qui l'accompagne."
+            },
+            {
+              "type": "text",
+              "content": "Le côté numérique continuera également de croître : des façons plus riches d'organiser des voyages, des cadeaux, des collections, des expériences de récapitulation et du contenu de destination qui peuvent évoluer après le voyage."
+            },
+            {
+              "type": "text",
+              "content": "Si nous pouvions recommencer, la plus grande chose que nous changerions est que nous commencerions par la proposition émotionnelle beaucoup plus tôt et testerions le comportement de vente au détail dans le monde réel plus tôt."
+            },
+            {
+              "type": "text",
+              "content": "Au début, nous avons passé trop de temps à penser comme des technologues. Aujourd'hui, nous savons que la NFC, le code QR et les logiciels devraient presque disparaître."
+            },
+            {
+              "type": "text",
+              "content": "Le produit ne concerne pas vraiment le fait de toucher quelque chose avec votre téléphone. Il s'agit de donner à une expérience un lieu physique pour vivre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mt919t3r3yquvm.jpg",
+              "caption": "Souvenirs qui maintiennent les souvenirs vivants : voyager, connecter, revivre. Courtesy Souv",
+              "align": "center"
+            }
+          ],
+          "authorId": "author-1784732936927-kw554",
+          "draft": false,
+          "previewToken": "60a95a90d21ef6c29acec8c9",
+          "updatedAt": "2026-09-13T19:30:42.385Z",
+          "contributorId": "author-souv",
+          "publishedAt": "2026-08-25T18:30:00.000Z"
         }
       ],
       "reviews": [
