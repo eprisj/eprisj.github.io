@@ -51960,6 +51960,135 @@
           "order": 10,
           "updatedAt": "2026-09-13T19:26:47.455Z",
           "publishedAt": "2026-05-20"
+        },
+        {
+          "id": 8,
+          "title": "Chez soi loin de chez soi",
+          "author": "Maria Ivanova",
+          "role": "Auteur",
+          "date": "14 mars 2026",
+          "excerpt": "Un pied-à-terre capte toujours la lumière irremplaçable dans vos yeux, mais cela peut aussi les faire briller.",
+          "category": "Voyage",
+          "subcategory": "Essai",
+          "tags": [
+            "Voyage",
+            "Architecture",
+            "Paris"
+          ],
+          "imageUrl": "/images/article-img-1.png",
+          "content": [
+            {
+              "type": "image",
+              "content": "/images/article-img-1.png",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Choisir un endroit où séjourner dans une nouvelle destination signifie lui confier les moments importants de votre vie. Tomber dans le lit après une longue promenade dans des rues inconnues, des conversations nocturnes remplies des pensées et des émotions de la journée, planifier le prochain petit-déjeuner dans votre boulangerie voisine préférée, partager des sourires sincères et l'excitation pure de l'exploration.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "Un pied-à-terre capte toujours la lumière irremplaçable dans vos yeux, mais peut aussi la faire jaillir. Un appartement en ville vous mêle naturellement à ceux qui vivent à proximité. Vous n'êtes plus un touriste, mais quelqu'un qui agit comme si c'était la chose la plus naturelle d'acheter du lait sans lactose pour votre café du matin dans la boutique en bas.<br>Et ce n'est pas un désir unilatéral lorsque nous parlons de résidences pied-à-terre à Paris - la collection d'appartements architecturaux dans l'emplacement privilégié de The Moveable Feast."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-3.png",
+              "caption": "Tuileries",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "Chacun des appartements est un petit voyage au sein d’un plus grand. Lorsqu’un espace est soigneusement conçu, on vous offre respectueusement tant à découvrir.<br>"
+            },
+            {
+              "type": "texte",
+              "content": "Quels sentiments ces murs évoquent-ils en vous, à quel point les textures sont chaudes, à quel point l’organisation spatiale semble fluide, à quel point les rayons du soleil sont doux dans cet appartement, à quel point les planchers craquent bruyamment, ou peut-être la rénovation les a-t-elle rendus complètement silencieux. Toutes ces questions ne surgiront jamais consciemment dans votre esprit, mais elles seront répondues silencieusement dans votre corps."
+            },
+            {
+              "type": "texte",
+              "content": "Ce que j’aime dans les appartements Pied-à-terre, c’est leur complexité. Les intérieurs sont riches et confiants. Il n’y a aucune tentative de réduire l’expérience de l’espace au minimum dans votre perception cognitive et émotionnelle. Au contraire, l’espace vous aide à comprendre que parfois, le repos précieux n’est pas une introduction au vide, mais un processus agréable d’exploration. C’est exactement ce que nous recherchons lorsque nous réservons des billets d’avion et anticipons le moment d’atterrissage dans un lieu lointain."
+            },
+            {
+              "type": "texte",
+              "content": "Être exposé à de nouveaux souvenirs avec une richesse spirituelle et matérielle est nourrissant pour l’âme et le cœur. Je souligne cette dualité parce que le design est construit à partir d’éléments physiques, mais tout en lui contribue à l’expérience mentale. La perception des interconnexions est plus importante que la simple existence des choses.<br>En d’autres termes, nous apprécions comment le lys nous fait sentir à l’intérieur, plutôt que le fait de son existence tangible."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-4.png",
+              "caption": "Tuileries",
+              "align": "centre"
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-6.png",
+              "caption": "Tuileries",
+              "align": "centre"
+            },
+            {
+              "type": "texte",
+              "content": "Chaque appartement est exclusif, vous offrant l'opportunité de choisir ce que vous souhaitez vivre.<br><br>"
+            },
+            {
+              "type": "texte",
+              "content": "La maison de ville à deux étages sur les Tuileries par Necchi Architecture est un sanctuaire dichromatique, doucement enrichi de détails d'une manière qui vous fait sentir calme. La densité visuelle élaborée est créée par la superposition et la juxtaposition de formes. Les ombres jouant à travers les volumes monochromatiques créent une toile texturée pour des éléments exquis en noir et acier."
+            },
+            {
+              "type": "text",
+              "content": "<br>Chaises 212 par Petite Furniture recréent la collection Sandows de René Herbst de 1929, se tenant à côté de la lampe Cello des années 1980 de Jan Wickelgren pour IKEA. Le bureau intégré devant les fenêtres est accompagné de la lampe Memmi de Modenature."
+            },
+            {
+              "type": "text",
+              "content": "<br>La maison de ville n'est pas le seul projet conçu par Charlotte Albert et Alexis Lamesta de Necchi Architecture. Le Superior Loft sur Oberkampf attire l'attention dès la toute première seconde."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-7.png",
+              "caption": "Oberkampf - Superior Loft",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-8.png",
+              "caption": "Oberkampf - Superior Loft",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrmixdvyzqad6p.avif",
+              "caption": "Oberkampf - Loft Supérieur",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Des motifs provocateurs, couleur rouge, chrome, et miroirs nous transportent immédiatement à une soirée joyeuse dans un appartement parisien des années 1970. L'intérieur est composé d'accents qui soutiennent la flamboyance des uns et des autres, ancrés par des touches de noir.<br>Vous pouvez presque voir comment la lumière du soleil se diffuse, passant d'un coin de la pièce à un autre, frappant les surfaces laquées et glissant au-delà des coins aigus.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "L'une des qualités les plus captivantes ici est son imprévisibilité. Vous tournez légèrement votre regard et voyez une scène complètement différente, intacte par la perspective que vous venez de quitter."
+            },
+            {
+              "type": "image",
+              "content": "/images/article-img-9.png",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "J'ai une association entre un pied-à-terre et une boîte de chocolats exquis. L'un porte du zeste d'orange, un autre de la crème de citron ; le suivant révèle du romarin, tandis qu'un autre contient de délicates notes de jasmin.<br><br>"
+            },
+            {
+              "type": "text",
+              "content": "La liste continue, mais une fois que vous connaissez toutes les saveurs, l'étincelle de la découverte s'est en partie estompée."
+            },
+            {
+              "type": "text",
+              "content": "<br>Explorez-le par vous-même."
+            }
+          ],
+          "imageSeed": "",
+          "updatedAt": "2026-09-13T19:27:02.488Z",
+          "order": 11,
+          "authorId": "author-1784896384236-4fokw",
+          "publishedAt": "2026-03-14"
         }
       ],
       "reviews": [
