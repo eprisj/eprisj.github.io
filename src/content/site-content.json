@@ -50612,18 +50612,19 @@
         },
         {
           "id": 38,
-          "title": "Due Settembre: Come la Francia Legge e l'Italia Guarda",
+          "title": "Niente Fallow A proposito: Il raccolto dietro i romanzi della Francia e il Leone d'Oro d'Italia",
           "author": "EPRIS Journal",
-          "role": "Redazione Editoriale",
+          "role": "Redazione",
           "date": "13 set 2026",
-          "excerpt": "Quattrocentosessantuno romanzi arrivano nelle librerie francesi questo mese. Al Lido, la ottantatreesima Mostra assegna il suo Leone d'Oro. Nessuno dei due paesi aspetta l'autunno per ricominciare.",
+          "excerpt": "Un mosaico romano sapeva già a cosa serviva settembre. Due mila anni dopo la Francia ancora sincronizza la sua industria del libro con esso, e l'Italia ancora sincronizza il suo cinema con esso. Nessuno coinvolto lo chiamerebbe una coincidenza.",
           "category": "Cultura",
           "subcategory": "Note sulla Cultura",
           "tags": [
             "Letteratura",
             "Cinema",
             "Francia",
-            "Italia"
+            "Italia",
+            "Storia dell'Arte"
           ],
           "imageSeed": "",
           "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
@@ -50632,48 +50633,80 @@
           "content": [
             {
               "type": "text",
-              "content": "Ogni settembre, prima che l'anno scolastico si sia nemmeno stabilito, due paesi riavviano i loro calendari creativi a pochi giorni di distanza l'uno dall'altro. In Francia, centinaia di nuovi romanzi arrivano nelle librerie in un'unica ondata coordinata. In Italia, un festival cinematografico in attività dal 1932 riapre le sue porte sul Lido. Nessuno dei due rituali è nuovo, e nessuno mostra segni di rallentamento."
-            },
-            {
-              "type": "header",
-              "content": "France: quattrocentosessantuno romanzi in una stagione"
+              "content": "C'è un mese che la cultura europea non lascia mai inattivo. Molto prima che qualcuno pubblicasse un romanzo o proiettasse un film, settembre era già prenotato: è il momento in cui le vigne del sud Italia scendono dai tralci, quando i mosaici del calendario romano mostrano due uomini che pigiano l'uva invece di riposare, quando un intero emisfero di lavoro agricolo si concentra in sei o sette settimane prima che il tempo cambi. Nulla di ciò che riguarda le versioni moderne di quell'istinto è nuovo; solo il raccolto è cambiato. La Francia ora raccoglie i romanzi a settembre. L'Italia raccoglie i film. Entrambi chiamano ancora il risultato una stagione."
             },
             {
               "type": "text",
-              "content": "La rentrée littéraire è una consuetudine editoriale francese senza un equivalente diretto altrove: quasi ogni grande editore pubblica i suoi titoli più seri entro lo stesso finestra di otto settimane, dalla fine di agosto ad ottobre, competendo per lo stesso spazio sugli scaffali, le stesse recensioni e gli stessi premi letterari autunnali. L'edizione del 2026 conta 461 romanzi, in calo rispetto ai 484 dell'anno precedente. Di questi, 344 sono scritti in francese e 117 sono traduzioni, e 68 sono romanzi d'esordio, cinque in meno rispetto al 2025. Il volume è in calo da un decennio, una tendenza che gli editori attribuiscono alla diminuzione delle abitudini di lettura e a budget domestici più ristretti, ma il rituale stesso non è stato messo in discussione: la stagione decide ancora quali nomi entreranno nelle liste del Prix Goncourt e del Prix Renaudot due mesi dopo."
+              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">romanzi nella rentrée littéraire 2026</span></li><li><span class=\"stat-figure\">83ª</span><span class=\"stat-label\">edizione del Festival del Cinema di Venezia</span></li><li><span class=\"stat-figure\">1.800</span><span class=\"stat-label\">anni da quando Roma scolpì il raccolto nella pietra</span></li></ul>"
             },
             {
-              "type": "image",
+              "type": "header",
+              "content": "Un mese che non è mai stato veramente libero"
+            },
+            {
+              "type": "text",
+              "content": "L'abitudine è più antica di entrambe le case editrici o delle giurie dei festival. Un mosaico romano del III secolo da El Djem, in quello che oggi è la Tunisia, assegna a settembre un proprio pannello in un calendario dei mesi, e il pannello mostra due uomini che pigiano l'uva, non che si riposano dopo l'estate. Il tributo era a Bacco, dio del vino e, non incidentalmente, del teatro: lo stesso dio che i Romani attribuivano sia alla vendemmia che alla performance che la celebrava. Nel sud Italia, dove il caldo si attenua prima, la vendemmia si svolge ancora a settembre; nel nord, i viticoltori aspettano fino a novembre. Il raccolto e il calendario non si sono mai veramente separati."
+            },
+            {
+              "type": "immagine",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/9/92/Grape_harvesting_time_%281887%29%2C_by_Francesco_Gioli.jpg",
+              "caption": "Tempo di Vendemmia, Francesco Gioli, 1887 — contadini toscani alla vendemmia, dipinto un decennio prima che il cinema esistesse per competere con esso.",
+              "credit": "Francesco Gioli (1846–1922), dominio pubblico, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grape_harvesting_time_(1887),_by_Francesco_Gioli.jpg",
+              "alt": "Dipinto di contadini toscani che raccolgono uva, 1887"
+            },
+            {
+              "type": "testo",
+              "content": "Caravaggio dipinse lo stesso debito in modo più diretto, un decennio prima del 1600: il suo Bacchus, ora agli Uffizi, si reclina con un bicchiere di vino in una mano e una corona di foglie di vite già allentata nei capelli, senza fretta proprio come la vendemmia reale non lo è mai. Il dipinto ha superato l'impero che venerava il suo soggetto di oltre mille anni. La vendemmia è più antica sia dell'impero che del dipinto, e non ha mai avuto bisogno del permesso di nessuno per continuare ad arrivare ogni settembre."
+            },
+            {
+              "type": "immagine",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bacchus-Caravaggio_%281598%29.jpg",
+              "caption": "Bacco, Caravaggio, circa 1598, Galleria degli Uffizi, Firenze.",
+              "credit": "Michelangelo Merisi da Caravaggio, dominio pubblico, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacchus-Caravaggio_(1598).jpg",
+              "alt": "Il dipinto di Caravaggio di Bacco che si reclina con vino e foglie di vite"
+            },
+            {
+              "type": "intestazione",
+              "content": "Francia: la vendemmia si spostò dalla vite alla mensola"
+            },
+            {
+              "type": "testo",
+              "content": "La Francia gestisce il suo raccolto di settembre due volte, e raramente nota la sovrapposizione. I coltivatori di Champagne chiamano ancora il loro vendemmia; nel 2026 un inverno insolitamente mite e tre ondate di calore estive lo hanno anticipato più di quanto chiunque potesse ricordare, terminando entro il 4 settembre invece di trascinare nel mese come di consueto. L'altro raccolto, la rentrée littéraire, mantiene il suo calendario ostinato. L'idea era già nell'aria negli anni 1880, quando il filosofo Ernest Renan per primo chiamò il modello, e la creazione del Prix Goncourt nel 1903 diede agli editori il loro primo vero motivo per programmare il rilascio di un libro intorno ad esso. Ma la rentrée come la si riconosce oggi è un'invenzione postbellica: gli editori hanno iniziato a raggruppare le uscite in una singola finestra autunnale solo alla fine degli anni 1950, una volta che abbastanza premi letterari competivano per le stesse comunicazioni di novembre per rendere agosto un mese sprecato. La rentrée 2026 conta 461 romanzi, 344 scritti in francese, 117 tradotti e 68 primi romanzi, cinque in meno rispetto all'anno precedente. Il volume si è ridotto di dimensioni da un decennio, ma la scadenza non si è spostata, perché la scadenza non è mai stata davvero sui libri. Si tratta di quale di quei 461 titoli possa presentarsi davanti alla giuria dell'Académie Goncourt a novembre, e un libro che arriva in ottobre è già troppo tardi per essere considerato."
+            },
+            {
+              "type": "immagine",
               "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
               "caption": "La Mouette Rieuse, una libreria nel quartiere Marais di Parigi, durante una stagione di rentrée littéraire.",
-              "credit": "Photo: ActuaLitté, CC BY-SA 2.0, via Wikimedia Commons",
+              "credit": "Foto: ActuaLitté, CC BY-SA 2.0, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
-              "alt": "Vetrina della libreria parigina La Mouette Rieuse"
+              "alt": "Vetrina della libreria La Mouette Rieuse a Parigi"
             },
             {
-              "type": "header",
-              "content": "Italia: un festival abbastanza antico da aver superato diverse epoche del cinema"
+              "type": "intestazione",
+              "content": "Italia: lo stesso istinto, vestito come un festival"
             },
             {
-              "type": "text",
-              "content": "La Mostra del Cinema di Venezia, la Mostra, si svolge sul Lido dal 1932, rendendola il più antico festival cinematografico al mondo. La sua 83ª edizione si è aperta il 2 settembre 2026 e si è chiusa dieci giorni dopo con il Leone d'Oro per il Miglior Film andato a Woman Unknown, il dramma danese di May el-Toukhy sulla relazione di una domestica durante la guerra, con la giuria guidata da Maggie Gyllenhaal. Ilya Khrzhanovsky ha vinto il Leone d'Argento per il Miglior Regista per DAU, e i Leone d'Oro onorari per il riconoscimento della carriera sono andati a George Clooney e Ellen Burstyn. La sede stessa del festival, il Palazzo del Cinema, si trova nello stesso tratto del Lido dal 1937, un punto fisso intorno a cui si ricostruisce ogni anno il resto dell'industria."
+              "type": "testo",
+              "content": "Il rituale di settembre del cinema è più giovane della vendemmia di circa duemila anni e più giovane della rentrée littéraire di circa tre decenni, ma è stato costruito con lo stesso appetito per lo spettacolo che Bacchus originariamente ricevette in omaggio. La Mostra del Cinema di Venezia si è aperta nel 1932 come evento all'interno della Biennale di quell'anno, ideata da tre uomini, Giuseppe Volpi, Luciano de Feo e Antonio Maraini, che compresero l'uso del cinema come proiezione di un'Italia moderna e attenta alle immagini sotto il governo di Mussolini, tanto quanto capivano il suo successo al botteghino. Il primo premio, introdotto nel 1934, si chiamava Coppa Mussolini; il festival rimase completamente inattivo dal 1943 al 1945, poi tornò e, nel 1949, sostituì il suo vecchio premio con il Leone d'Oro. L'83ª edizione si svolse dal 2 al 12 settembre 2026, e consegnò quel Leone a Woman Unknown, il dramma danese di May el-Toukhy su una tresca di guerra di una domestica, sotto una giuria guidata da Maggie Gyllenhaal. Ilya Khrzhanovsky ha vinto il Leone d'Argento come Miglior Regista per DAU. George Clooney ed Ellen Burstyn hanno ricevuto ciascuno un Leone d'Oro onorario per il contributo alla carriera, lo stesso onore che il festival ha conferito a Werner Herzog l'anno precedente."
             },
             {
-              "type": "image",
-              "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-              "caption": "Il Palazzo del Cinema sul Lido di Venezia, sede della Mostra del Cinema di Venezia dal 1937.",
-              "credit": "Photo: Derbrauni, CC BY 4.0, via Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
-              "alt": "L'edificio del Palazzo del Cinema sul Lido di Venezia"
+              "type": "immagine",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Werner_Herzog_Venice_Film_Festival_2025.jpg",
+              "caption": "Werner Herzog con il suo Leone d'Oro alla Carriera al 82º Festival del Cinema di Venezia, 2025.",
+              "credit": "Foto: Colleen Sturtevant, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Werner_Herzog_Venice_Film_Festival_2025.jpg",
+              "alt": "Werner Herzog con il suo trofeo Leone d'Oro"
             },
             {
-              "type": "text",
-              "content": "Parigi conta romanzi; Venezia conta minuti sul tappeto rosso. Ma entrambe le città trattano settembre allo stesso modo: non come la fine dell'estate, ma come il mese in cui l'intera produzione creativa di un anno viene ordinata in ciò che avrà importanza e ciò che no."
+              "type": "testo",
+              "content": "Parigi passerà i prossimi due mesi a decidere quali tra quattrocentosessantuno romanzi avranno importanza. Venezia ha già trascorso i suoi dieci giorni a decidere la stessa cosa per un pool di film più piccolo e più lento. Nessuna delle due città descriverebbe ciò che sta facendo come un raccolto, e nessuna ne ha bisogno: la metafora era già scolpita in un mosaico nell'Africa Romana circa diciassette secoli prima che esistessero entrambe le istituzioni, e nessuno dei tre, l'uva, il romanzo o il film, è mai riuscito a rendere opzionale settembre."
             }
           ],
           "createdBy": "admin",
           "previewToken": "a4036338d5bc3bb47895e084",
-          "updatedAt": "2026-09-13T20:07:43.883Z"
+          "updatedAt": "2026-09-13T20:22:31.185Z"
         }
       ],
       "reviews": [
