@@ -1304,12 +1304,12 @@ export function resolveAuthor(article: { authorId?: string; author?: string }): 
    немецкой, и в итальянской версии. Теперь ключом служит ЛЮБОЕ написание из
    строки: ищем по нижнему регистру среди всех вариантов набора. */
 const ROLE_SETS: Record<string, string>[] = [
-  { EN: 'Author', RU: 'Автор', UA: 'Автор', DE: 'Autor', ES: 'Autor', TR: 'Yazar', IT: 'Autore' },
-  { EN: 'Guest Editor', RU: 'Приглашённый редактор', UA: 'Запрошений редактор', DE: 'Gastredakteur', ES: 'Editor invitado', TR: 'Konuk editör', IT: 'Redattore ospite' },
-  { EN: 'Editorial Desk', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione' },
-  { EN: 'Editorial team', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione' },
-  { EN: 'Contributing Editor', RU: 'Редактор-корреспондент', UA: 'Редактор-кореспондент', DE: 'Mitarbeitender Redakteur', ES: 'Editor colaborador', TR: 'Katkıda bulunan editör', IT: 'Redattore collaboratore' },
-  { EN: 'Editor-in-Chief', RU: 'Главный редактор', UA: 'Головний редактор', DE: 'Chefredakteurin', ES: 'Editora jefa', TR: 'Genel yayın yönetmeni', IT: 'Direttrice' },
+  { EN: 'Author', RU: 'Автор', UA: 'Автор', DE: 'Autor', ES: 'Autor', TR: 'Yazar', IT: 'Autore', FR: 'Auteur' },
+  { EN: 'Guest Editor', RU: 'Приглашённый редактор', UA: 'Запрошений редактор', DE: 'Gastredakteur', ES: 'Editor invitado', TR: 'Konuk editör', IT: 'Redattore ospite', FR: 'Rédacteur invité' },
+  { EN: 'Editorial Desk', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione', FR: 'Rédaction' },
+  { EN: 'Editorial team', RU: 'Редакция', UA: 'Редакція', DE: 'Redaktion', ES: 'Redacción', TR: 'Yayın kurulu', IT: 'Redazione', FR: 'Rédaction' },
+  { EN: 'Contributing Editor', RU: 'Редактор-корреспондент', UA: 'Редактор-кореспондент', DE: 'Mitarbeitender Redakteur', ES: 'Editor colaborador', TR: 'Katkıda bulunan editör', IT: 'Redattore collaboratore', FR: 'Rédacteur collaborateur' },
+  { EN: 'Editor-in-Chief', RU: 'Главный редактор', UA: 'Головний редактор', DE: 'Chefredakteurin', ES: 'Editora jefa', TR: 'Genel yayın yönetmeni', IT: 'Direttrice', FR: 'Rédactrice en chef' },
 ];
 
 const ROLE_INDEX: Record<string, Record<string, string>> = (() => {
