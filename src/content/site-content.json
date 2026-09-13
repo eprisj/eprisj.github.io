@@ -29850,10 +29850,10 @@
         {
           "id": 38,
           "title": "Nichts Fallow darüber: Die Ernte hinter Frankreichs Romanen und Italiens Goldener Löwe",
-          "author": "EPRIS Journal",
-          "role": "Redaktionsbüro",
-          "date": "13. Sep. 2026",
-          "excerpt": "Ein römisches Mosaik wusste bereits, wofür der September war. Zweitausend Jahre später stimmt Frankreich seine Buchbranche noch immer darauf ab, und Italien stimmt sein Kino noch immer darauf ab. Niemand, der beteiligt ist, würde das als Zufall bezeichnen.",
+          "author": "Viacheslav Munister",
+          "role": "Gasteditor",
+          "date": "13. Sep 2026",
+          "excerpt": "Ein römisches Mosaik wusste bereits, wofür September war. Zweitausend Jahre später stimmt Frankreich seine Buchbranche immer noch darauf ab, und Italien stimmt sein Kino immer noch darauf ab. Niemand, der beteiligt ist, würde das als Zufall bezeichnen.",
           "category": "Kultur",
           "subcategory": "Kulturnotizen",
           "tags": [
@@ -29865,12 +29865,12 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-          "draft": true,
+          "draft": false,
           "publishedAt": "2026-09-13",
           "content": [
             {
               "type": "text",
-              "content": "Es gibt einen Monat, den europäische Kultur niemals brachliegen lässt. Lange bevor jemand einen Roman veröffentlichte oder einen Film plante, war September bereits verplant: Es ist die Zeit, in der die Weinberge Süditaliens von den Reben herabsteigen, wenn die Mosaike des römischen Kalenders zwei Männer zeigen, die Trauben treten, anstatt sich auszuruhen, wenn eine ganze Hemisphäre landwirtschaftlicher Arbeit in sechs oder sieben Wochen vor dem Wetterumschwung zusammengefasst wird. Nichts an den modernen Versionen dieses Instinkts ist neu; nur die Ernte hat sich verändert. Frankreich erntet jetzt Romane im September. Italien erntet Filme. Beide nennen das Ergebnis immer noch eine Saison."
+              "content": "Es gibt einen Monat, den europäische Kultur niemals ungenutzt lässt. Lange bevor jemand einen Roman veröffentlichte oder einen Film plante, war September bereits verplant: Es ist die Zeit, in der die Weinberge Süditaliens von den Reben herabkommen, wenn die eigenen Monats-Mosaike des römischen Kalenders zwei Männer zeigen, die Trauben treten, anstatt sich auszuruhen, wenn eine ganze Hemisphäre landwirtschaftlicher Arbeit in sechs oder sieben Wochen vor dem Wetterumschwung zusammengefasst wird. Nichts an den modernen Versionen dieses Instinkts ist neu; nur die Ernte hat sich verändert. Frankreich erntet jetzt Romane im September. Italien erntet Filme. Beide nennen das Ergebnis immer noch eine Saison."
             },
             {
               "type": "text",
@@ -29882,19 +29882,19 @@
             },
             {
               "type": "text",
-              "content": "Die Gewohnheit ist älter als der Verlag oder die Jury eines Festivals in beiden Ländern. Ein römisches Mosaik aus dem dritten Jahrhundert aus El Djem, im heutigen Tunesien, gibt dem September sein eigenes Panel in einem Kalender der Monate, und das Panel zeigt zwei Männer, die Trauben treten, nicht nach dem Sommer ruhen. Die Hommage galt Bacchus, dem Gott des Weins und, nicht zufällig, des Theaters: dem gleichen Gott, den die Römer sowohl für die Weinlese als auch für die Aufführung, die sie feierte, verantwortlich machten. Im Süden Italiens, wo die Hitze früher nachlässt, dauert die vendemmia noch bis September; im Norden warten die Winzer bis November. Die Ernte und der Kalender haben sich einfach nie darauf geeinigt, sich zu trennen."
+              "content": "Die Gewohnheit ist älter als sowohl das Verlagshaus eines jeden Landes als auch die Jury eines Festivals. Ein römisches Mosaik aus dem dritten Jahrhundert aus El Djem, im heutigen Tunesien, gibt dem September sein eigenes Panel in einem Kalender der Monate, und das Panel zeigt zwei Männer, die Trauben treten, nicht nach dem Sommer ruhen. Die Hommage galt Bacchus, dem Gott des Weins und, nicht zufällig, des Theaters: dem gleichen Gott, den die Römer sowohl für die Weinlese als auch für die Aufführung, die sie feierte, verantwortlich machten. Im Süden Italiens, wo die Hitze früher nachlässt, dauert die vendemmia noch bis September; im Norden warten die Winzer bis November. Die Ernte und der Kalender haben sich einfach nie darauf geeinigt, sich zu trennen."
             },
             {
               "type": "Bild",
               "content": "https://upload.wikimedia.org/wikipedia/commons/9/92/Grape_harvesting_time_%281887%29%2C_by_Francesco_Gioli.jpg",
-              "caption": "Weinlesezeit, Francesco Gioli, 1887 — toskanische Bauern bei der vendemmia, gemalt ein Jahrzehnt bevor das Kino existierte, um damit zu konkurrieren.",
+              "caption": "Traubenlesezeit, Francesco Gioli, 1887 — toskanische Bauern bei der vendemmia, gemalt ein Jahrzehnt bevor das Kino existierte, um damit zu konkurrieren.",
               "credit": "Francesco Gioli (1846–1922), gemeinfrei, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grape_harvesting_time_(1887),_by_Francesco_Gioli.jpg",
-              "alt": "Gemälde von toskanischen Bauern beim Weinlesen, 1887"
+              "alt": "Gemälde von toskanischen Bauern beim Traubenlesen, 1887"
             },
             {
               "type": "text",
-              "content": "Caravaggio malte denselben Schuldenbetrag direkter, ein Jahrzehnt vor 1600: sein Bacchus, jetzt in den Uffizien, lehnt mit einem Weinglas in der Hand und einem Weingirlande, die bereits in seinem Haar lockert, entspannt, genau so, wie die tatsächliche Ernte es niemals ist. Das Gemälde hat das Imperium überdauert, das sein Thema verehrte, um mehr als tausend Jahre. Die vendemmia ist älter als sowohl das Imperium als auch das Gemälde und hat nie die Erlaubnis beider benötigt, um jeden September weiterzukommen."
+              "content": "Caravaggio malte denselben Schuldenbetrag direkter, ein Jahrzehnt vor 1600: sein Bacchus, jetzt in den Uffizien, lehnt mit einem Weinglas in der Hand und einem Weingirlande, die bereits in seinem Haar lockert, entspannt, genau so, wie die tatsächliche Ernte niemals ist. Das Gemälde hat das Imperium überdauert, das sein Thema verehrte, um mehr als tausend Jahre. Die vendemmia ist älter als sowohl das Imperium als auch das Gemälde und hat nie die Erlaubnis beider benötigt, um jeden September weiterzukommen."
             },
             {
               "type": "Bild",
@@ -29910,7 +29910,7 @@
             },
             {
               "type": "text",
-              "content": "Frankreich führt seine eigene Septemberernte doppelt durch, und bemerkt selten die Überschneidung. Champagners Winzer nennen ihre Ernte immer noch die vendange; im Jahr 2026 trieb ein ungewöhnlich milder Winter und drei Sommer-Hitzeperioden sie früher als jeder lebende Mensch erinnern konnte, und beendete sie bis zum 4. September, anstatt wie üblich in den Monat zu ziehen. Die andere Ernte, die rentrée littéraire, behält ihren eigenen, starren Kalender bei. Die Idee war bereits in den 1880er Jahren in der Luft, als der Philosoph Ernest Renan das Muster erstmals benannte, und die Schaffung des Prix Goncourt im Jahr 1903 gab den Verlegern ihren ersten echten Grund, die Veröffentlichung eines Buches darum herum zu timen. Aber die rentrée, wie sie heute jeder erkennen würde, ist eine Nachkriegs-Erfindung: Verlage begannen erst Ende der 1950er Jahre, Veröffentlichungen in ein einziges Herbstfenster zu bündeln, nachdem genügend Literaturpreise um die gleichen November-Ankündigungen konkurrierten, um den August zu einem verschwendeten Monat zu machen. Die rentrée 2026 zählt 461 Romane, davon 344 auf Französisch geschrieben, 117 übersetzt und 68 Erstausgaben, fünf weniger als im Jahr zuvor. Das Volumen schrumpft seit einem Jahrzehnt, aber die Frist hat sich nicht verschoben, weil die Frist nie wirklich um die Bücher ging. Es geht darum, welches dieser 461 Titel im November vor die Jury der Académie Goncourt tritt, und ein im Oktober eintreffendes Buch ist bereits zu spät, um berücksichtigt zu werden."
+              "content": "Frankreich führt seine eigene Septemberernte doppelt durch, und bemerkt selten die Überschneidung. Champagners Winzer nennen ihre Ernte immer noch die vendange; im Jahr 2026 trieben ein ungewöhnlich milder Winter und drei Sommer-Hitzeperioden sie früher als jeder lebende Mensch sich erinnern konnte, und beendeten sie bis zum 4. September, anstatt wie üblich bis in den Monat hinein zu dauern. Die andere Ernte, die rentrée littéraire, behält ihren eigenen, starren Kalender bei. Die Idee war bereits in den 1880er Jahren in der Luft, als der Philosoph Ernest Renan das Muster erstmals benannte, und die Schaffung des Prix Goncourt im Jahr 1903 gab den Verlagen ihren ersten echten Grund, die Veröffentlichung eines Buches darum herum zu timen. Aber die rentrée, wie man sie heute kennt, ist eine Nachkriegs-Erfindung: Verlage begannen erst Ende der 1950er Jahre, Veröffentlichungen in ein einziges Herbstfenster zu bündeln, nachdem genügend Literaturpreise um die gleichen November-Ankündigungen konkurrierten, um den August zu einem verschwendeten Monat zu machen. Die rentrée 2026 zählt 461 Romane, davon 344 auf Französisch geschrieben, 117 übersetzt und 68 Erstausgaben, fünf weniger als im Vorjahr. Das Volumen schrumpft seit einem Jahrzehnt, aber die Frist hat sich nicht verschoben, weil die Frist nie wirklich um die Bücher ging. Es geht darum, welches dieser 461 Titel im November vor die Jury der Académie Goncourt tritt, und ein im Oktober eintreffendes Buch ist bereits zu spät, um berücksichtigt zu werden."
             },
             {
               "type": "image",
@@ -29918,7 +29918,7 @@
               "caption": "La Mouette Rieuse, eine Buchhandlung im Marais-Viertel von Paris, während einer saison der rentrée littéraire.",
               "credit": "Foto: ActuaLitté, CC BY-SA 2.0, über Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
-              "alt": "Schaufenster der Buchhandlung La Mouette Rieuse in Paris"
+              "alt": "Schaufenster der Pariser Buchhandlung La Mouette Rieuse"
             },
             {
               "type": "header",
@@ -29926,7 +29926,7 @@
             },
             {
               "type": "text",
-              "content": "Das Ritual des Septembers im Kino ist etwa zweitausend Jahre jünger als die vendemmia und ungefähr drei Jahrzehnte jünger als die rentrée littéraire, aber es wurde mit demselben Appetit auf Spektakel gebaut, für das Bacchus ursprünglich die Ehrung erhielt. Das Internationale Filmfestival von Venedig wurde 1932 als Veranstaltung innerhalb der Biennale dieses Jahres eröffnet, inszeniert von drei Männern, Giuseppe Volpi, Luciano de Feo und Antonio Maraini, die die Nutzung des Kinos als Projektion eines modernen, bildbewussten Italiens unter Mussolinis Regierung ebenso klar verstanden wie seine Kinokassen. Der erste Preis, eingeführt 1934, wurde die Coppa Mussolini genannt; das Festival wurde von 1943 bis 1945 vollständig eingestellt, kehrte dann zurück und ersetzte 1949 seinen alten Preis durch den Goldenen Löwen. Die 83. Ausgabe fand vom 2. bis 12. September 2026 statt und vergab den Löwen an Woman Unknown, May el-Toukhy's dänisches Drama über eine Hausangestellte während des Krieges, unter einer Jury unter Leitung von Maggie Gyllenhaal. Ilya Khrzhanovsky erhielt den Silbernen Löwen für die beste Regie für DAU. George Clooney und Ellen Burstyn erhielten jeweils einen Ehren-Goldenen Löwen für lebenslange Verdienste, die gleiche Ehre, die das Festival im Jahr zuvor Werner Herzog zuteilwerden ließ."
+              "content": "Das Ritual des Septembers im Kino ist etwa zweitausend Jahre jünger als die vendemmia und ungefähr drei Jahrzehnte jünger als die rentrée littéraire, aber es wurde mit demselben Appetit auf Spektakel gebaut, für das Bacchus ursprünglich die Ehrung erhielt. Das Internationale Filmfestival von Venedig wurde 1932 als Veranstaltung innerhalb der Biennale dieses Jahres eröffnet, inszeniert von drei Männern, Giuseppe Volpi, Luciano de Feo und Antonio Maraini, die die Nutzung des Kinos als Projektion eines modernen, bildbewussten Italiens unter Mussolinis Regierung ebenso klar verstanden wie seine Kinokassen. Der erste Preis, eingeführt 1934, wurde Coppa Mussolini genannt; das Festival wurde von 1943 bis 1945 vollständig eingestellt, kehrte dann zurück und ersetzte 1949 seinen alten Preis durch den Goldenen Löwen. Die 83. Ausgabe fand vom 2. bis 12. September 2026 statt, und dieser Löwe ging an Woman Unknown, May el-Toukhy's dänisches Drama über eine Hausangestellte während des Krieges, unter einer Jury unter Leitung von Maggie Gyllenhaal. Ilya Khrzhanovsky erhielt den Silbernen Löwen für die beste Regie für DAU. George Clooney und Ellen Burstyn erhielten jeweils einen Ehren-Goldenen Löwen für ihr Lebenswerk, die gleiche Ehre, die das Festival im Jahr zuvor Werner Herzog zuteilwerden ließ."
             },
             {
               "type": "image",
@@ -29938,12 +29938,13 @@
             },
             {
               "type": "text",
-              "content": "Paris wird die nächsten zwei Monate darüber entscheiden, welche der vierhundertsechzigundereinstigen Romane Bedeutung erlangen. Venedig hat bereits seine zehn Tage damit verbracht, dasselbe für einen kleineren, langsameren Pool von Filmen zu entscheiden. Keine der Städte würde das, was sie tun, als Ernte bezeichnen, und keine braucht es: Die Metapher war bereits in einem Mosaik in römischem Afrika eingraviert, etwa siebzehn Jahrhunderte bevor beide Institutionen existierten, und keiner der drei, die Traube, der Roman oder der Film, hat es jemals geschafft, den September optional zu machen."
+              "content": "Paris wird die nächsten zwei Monate darüber entscheiden, welche der vierhundertsechzigund-ein Romane Bedeutung erlangen. Venedig hat bereits seine zehn Tage damit verbracht, dasselbe für einen kleineren, langsameren Pool von Filmen zu entscheiden. Keine der Städte würde das, was sie tun, als Ernte bezeichnen, und keine braucht es: Die Metapher war bereits in einem Mosaik in römischem Afrika eingraviert, etwa siebzehn Jahrhunderte bevor beide Institutionen existierten, und keiner der drei, die Traube, der Roman oder der Film, hat es jemals geschafft, den September optional zu machen."
             }
           ],
           "createdBy": "admin",
           "previewToken": "a4036338d5bc3bb47895e084",
-          "updatedAt": "2026-09-13T20:21:57.712Z"
+          "authorId": "author-1784732936927-kw554",
+          "updatedAt": "2026-09-13T20:28:38.011Z"
         }
       ],
       "reviews": [
