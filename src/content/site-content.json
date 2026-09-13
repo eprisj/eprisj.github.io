@@ -8651,6 +8651,69 @@
       "locked": true,
       "contributorId": "author-us-architecture-studio",
       "publishAt": "2026-09-13T06:44:28.607Z"
+    },
+    {
+      "id": 38,
+      "title": "Two Septembers: How France Reads and Italy Watches",
+      "author": "EPRIS Journal",
+      "role": "Editorial Desk",
+      "date": "Sep 13, 2026",
+      "excerpt": "Four hundred and sixty-one novels land in French bookshops this month. On the Lido, the eighty-third Mostra hands out its Golden Lion. Neither country waits for autumn to restart.",
+      "category": "Culture",
+      "subcategory": "Culture Notes",
+      "tags": [
+        "Literature",
+        "Film",
+        "France",
+        "Italy"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+      "draft": true,
+      "publishedAt": "2026-09-13",
+      "content": [
+        {
+          "type": "text",
+          "content": "Every September, before the school year has even settled in, two countries restart their creative calendars within days of each other. In France, hundreds of new novels arrive in bookshops in a single coordinated wave. In Italy, a film festival that has run since 1932 reopens its doors on the Lido. Neither ritual is new, and neither shows signs of slowing down."
+        },
+        {
+          "type": "header",
+          "content": "France: four hundred and sixty-one novels in one season"
+        },
+        {
+          "type": "text",
+          "content": "The rentrée littéraire is a French publishing custom with no direct equivalent elsewhere: nearly every major publisher releases its most serious titles within the same eight-week window, from late August through October, competing for the same shelf space, the same reviews, and the same autumn literary prizes. The 2026 edition counts 461 novels, down from 484 the year before. Of those, 344 are written in French and 117 are translations, and 68 are debut novels, five fewer than in 2025. The volume has been falling for a decade, a trend publishers attribute to shrinking reading habits and tighter household budgets, but the ritual itself has not been questioned: the season still decides which names carry into the Prix Goncourt and Prix Renaudot shortlists two months later."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
+          "caption": "La Mouette Rieuse, a bookshop in Paris's Marais district, during a rentrée littéraire season.",
+          "credit": "Photo: ActuaLitté, CC BY-SA 2.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
+          "alt": "Storefront of the Paris bookshop La Mouette Rieuse"
+        },
+        {
+          "type": "header",
+          "content": "Italy: a festival old enough to have outlived several eras of cinema"
+        },
+        {
+          "type": "text",
+          "content": "The Venice International Film Festival, the Mostra, has run on the Lido since 1932, making it the oldest film festival in the world. Its 83rd edition opened on September 2, 2026, and closed ten days later with the Golden Lion for Best Film going to Woman Unknown, May el-Toukhy's Danish drama about a housemaid's wartime affair, with the jury led by Maggie Gyllenhaal. Ilya Khrzhanovsky won the Silver Lion for Best Director for DAU, and honorary Golden Lions for lifetime achievement went to George Clooney and Ellen Burstyn. The festival's own venue, the Palazzo del Cinema, has stood on the same stretch of the Lido since 1937, a fixed point the rest of the industry rebuilds itself around every year."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+          "caption": "The Palazzo del Cinema on the Lido di Venezia, home of the Venice Film Festival since 1937.",
+          "credit": "Photo: Derbrauni, CC BY 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
+          "alt": "The Palazzo del Cinema building on the Venice Lido"
+        },
+        {
+          "type": "text",
+          "content": "Paris counts novels; Venice counts red-carpet minutes. But both cities treat September the same way: not as the end of summer, but as the one month when an entire year's creative output gets sorted into what will matter and what will not."
+        }
+      ],
+      "createdBy": "admin"
     }
   ],
   "reviews": [
