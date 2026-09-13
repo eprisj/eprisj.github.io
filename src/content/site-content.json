@@ -51400,6 +51400,329 @@
           "updatedAt": "2026-09-13T19:25:25.941Z",
           "order": 7,
           "publishedAt": "2026-07-11"
+        },
+        {
+          "id": 12,
+          "title": "Le Spring Sacré : un portrait de la Vienna Secession",
+          "author": "Viacheslav Munister",
+          "role": "Arts Desk",
+          "date": "8 juil. 2026",
+          "excerpt": "En 1897, une poignée d'artistes viennois ont quitté l'establishment, élevé un temple blanc couronné d'un dôme de feuilles dorées, et ont déclaré à une ville stupéfaite que chaque époque mérite un art qui lui est propre. Voici l'histoire de la Secession – et de ces personnes brillantes et insatiables qui l'ont créée.",
+          "category": "Culture",
+          "subcategory": "La Lecture Longue",
+          "tags": [
+            "vienna secession",
+            "art nouveau",
+            "gustav klimt",
+            "architecture",
+            "histoire"
+          ],
+          "imageUrl": "/images/secession/dome.jpg",
+          "imageSeed": "vienna-secession",
+          "draft": false,
+          "content": [
+            {
+              "type": "text",
+              "content": "Imaginez Vienne dans les dernières années du XIXe siècle : une ville ivre de sa propre réflexion. La Ringstrasse scintillait de palais habillés d'histoire empruntée – un parlement grec ici, une mairie gothique là, un opéra Renaissance entre les deux. C'était magnifique, et c'était épuisé. Derrière la dorure, toute une génération de jeunes peintres et architectes avait commencé à suspecter que leur ville construisait des musées pour un passé qui ne lui avait jamais vraiment appartenu, tandis que le présent – électrique, anxieux, vivant – restait non peint."
+            },
+            {
+              "type": "text",
+              "content": "Le troisième avril 1897, un groupe d'entre eux a cessé d'attendre la permission. Dirigés par un peintre de trente-quatre ans nommé Gustav Klimt, ils ont démissionné en bloc du Künstlerhaus, l'association officielle des artistes qui contrôlait chaque exposition importante en ville. Ils ont appelé leur nouveau mouvement la Vereinigung bildender Künstler Österreichs – l'Union des artistes autrichiens – mais l'histoire se souvient d'eux par le mot qu'ils ont choisi pour la rupture elle-même : Secession."
+            },
+            {
+              "type": "text",
+              "content": "Ils n'étaient pas une école. Ils ne partageaient aucun style unique, aucun manifeste commun de technique. Ce qui les unissait était une conviction – féroce, simple, et impossible à compromettre – et ils l'ont gravée en or au-dessus de la porte du bâtiment qu'ils allaient bientôt élever. Il était écrit : à chaque époque son art, à l'art sa liberté."
+            },
+            {
+              "type": "header",
+              "content": "À chaque époque son art",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secession s'est annoncée comme un coup de tonnerre annonçant une tempête – avec une affiche. Pour la première exposition en 1898, Klimt a dessiné Theseus tuant le Minotaure, le jeune héros d'un nouvel art mettant le vieux monstre à l'épée, tandis que Pallas Athene, déesse de la sagesse et de la guerre juste, veillait au bord. Les censeurs lui ont fait ajouter un écran d'arbres pour cacher la nudité de Theseus. Ce fut la première de nombreuses querelles que la Secession aurait avec un public qui ne savait pas encore qu'il voulait être provoqué."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-poster.jpg",
+              "caption": "Affiche de Gustav Klimt pour la première exposition de la Secession, 1898. Theseus affronte le Minotaure ; Athene veille à droite.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Leur credo portait aussi un nom – Ver Sacrum, le 'printemps sacré'. Dans l'Italie antique, c'était le rite par lequel un peuple, en période de crise, consacrait la génération à venir à un nouveau départ. Les sécessionnistes ont emprunté cette expression pour leur magazine, une revue carrée, exquise, dans laquelle texte et image étaient conçus comme une seule surface vivante. Ouvrir un numéro de Ver Sacrum, c'était tenir la philosophie du mouvement entre ses mains : qu'un verre de vin, une typographie, une chaise et une peinture étaient tous de l'art, et tous également dignes d'être perfectionnés."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/versacrum.jpg",
+              "caption": "Le premier numéro de Ver Sacrum, janvier 1898 – le magazine du mouvement, et son manifeste en version imprimée.",
+              "align": "full"
+            },
+            {
+              "type": "quote",
+              "content": "Der Zeit ihre Kunst. Der Kunst ihre Freiheit. – À chaque époque son art. À l'art sa liberté."
+            },
+            {
+              "type": "header",
+              "content": "Le Temple Blanc",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un mouvement a besoin d'une maison, et la Secession en a construit une différente de tout ce que Vienne avait vu. La commande est revenue à Joseph Maria Olbrich, à peine trente ans, élève du grand Otto Wagner. Ce qu'il a produit en 1898 était moins un bâtiment qu'une déclaration : un temple cubique aux murs blancs de géométrie pure, dépouillé de tout ornement historique, couronné d'une coupole ajourée de trois mille feuilles de laurier dorées. Vienne, à moitié scandalisée et à moitié ravie, l'a surnommé « le chou doré »."
+            },
+            {
+              "type": "text",
+              "content": "Regardez attentivement la façade et vous trouverez l'esprit du mouvement écrit en plâtre : trois chouettes solennelles, sacrées pour Athéna, et au-dessus de l'entrée ces mots dorés défiant. Même les détails décoratifs ont été conçus par des membres du groupe – les chouettes et le feuillage par Koloman Moser – de sorte que le bâtiment lui-même devienne une œuvre d'art totale, un Gesamtkunstwerk, dans lequel l'architecture, la sculpture et l'ornement parlaient une seule langue."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hero.jpg",
+              "caption": "Les hiboux de Koloman Moser et la laurier sur la façade de la Secession – les oiseaux d'Athène, gardant un temple du nouvel art.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "Les Gens",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La Secession n'a jamais été un mouvement d'un seul homme, mais elle a commencé, indubitablement, avec un homme. Gustav Klimt était le fils d'un graveur en or, et l'or ne quitterait jamais son travail. Il s'était fait un nom – et sa fortune – en peignant des allégories décents sur les plafonds des palais de la Ringstrasse que la Secession allait rejeter. Puis, au sommet de sa respectabilité, il se tourna. Son art devint étrange, érotique, ornemental et sans peur ; ses mécènes devinrent nerveux ; et Klimt, sereinement, continua."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-portrait.jpg",
+              "caption": "Gustav Klimt dans sa blouse de peintre, photographié en 1914. Le premier président de la Secession.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Dans Pallas Athene de 1898, vous pouvez déjà voir l'avenir arriver. La déesse est armée d'or martelé, son regard froid et frontal, et dans sa main elle tient une petite figure nue – Nuda Veritas, vérité nue, tenant un miroir à une société qui préférait ne pas regarder. C'était la devise privée de Klimt rendue visible : l'artiste doit à l'époque non flatterie, mais honnêteté."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/pallas.jpg",
+              "caption": "Klimt, Pallas Athene, 1898 – la déesse en or martelé, tenant la Vérité nue dans sa paume.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Si Klimt était le cœur du mouvement, Otto Wagner était sa conscience transformée en pierre et en fer. Déjà célèbre, déjà passé la cinquantaine, le professeur aurait pu se contenter d'une vieillesse confortable de commandes néo-barroques. Au lieu de cela, il a misé sur ses propres étudiants, déclarant que « quelque chose d'impraticable ne peut pas être beau » et que l'architecture d'une nouvelle ère doit naître d'une nouvelle vie, de nouveaux matériaux, de nouveaux besoins."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-portrait.jpg",
+              "caption": "Otto Wagner – le maître aîné qui a choisi le camp des jeunes.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Les bâtiments de Wagner continuent de surprendre. Sur la Linke Wienzeile, il a habillé toute une maison d'appartements de carreaux de majolique en fleurs, les fleurs grimpant cinq étages dans le ciel viennois – pratique, étanche aux intempéries, et glorieux de vie. Et à Karlsplatz, il a construit une paire de pavillons de chemin de fer si élégants que les navetteurs de la ville passaient chaque jour à travers des œuvres d'art, en fer vert et en marbre blanc cousus de tournesols dorés."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-majolica.jpg",
+              "caption": "Maison Majolica de Wagner (1898) – un immeuble habillé de carreaux de céramique en fleurs.",
+              "align": "full"
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/wagner-station.jpg",
+              "caption": "Le pavillon de la Stadtbahn de Karlsplatz (1898) – une gare comme un joyau de vert et d'or.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Koloman Moser était l'univers silencieux du mouvement. Formé comme peintre, il concevait tout : timbres, vitraux, couvertures de livres, meubles, les chouettes sur le mur de la Secession, les pages mêmes de Ver Sacrum. Si la Secession croyait que l'art devait saturer la vie ordinaire, Moser en était la preuve – un homme capable de rendre une boîte aux lettres aussi belle qu'un retable."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/moser.jpg",
+              "caption": "Koloman Moser – peintre, génie graphique, et l'homme qui a conçu presque tout.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Josef Hoffmann a pris cette croyance et a construit un empire dessus. En 1903, avec Moser et le banquier Fritz Wärndorfer, il a fondé la Wiener Werkstätte – les Ateliers de Vienne – une coopérative d'artisans déterminés à fabriquer des objets de qualité totale, de la coutellerie aux maisons entières. Ses grilles et carrés étaient si rigoureux que ses collègues l'ont surnommé 'Quadratl-Hoffmann', Petit-Carreau Hoffmann. Le surnom était une blague ; l'influence ne l'était pas. Sa pureté de ligne traverse le vingtième siècle jusqu'au langage du design dans lequel nous vivons encore."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/hoffmann.jpg",
+              "caption": "Josef Hoffmann – co-fondateur de la Wiener Werkstätte, apôtre du carré parfait.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Et Joseph Maria Olbrich, le jeune architecte du temple lui-même, a donné au mouvement son visage. Il ne resta pas longtemps à Vienne – le Grand-Duc de Hesse l'a appelé à Darmstadt pour construire une colonie d'artistes entière à partir de zéro – mais le dôme doré qu'il a laissé derrière lui couronne toujours la ville, et tient toujours sa promesse, un siècle et un quart plus tard."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/olbrich.jpg",
+              "caption": "Joseph Maria Olbrich – l'architecte qui avait à peine trente ans lorsqu'il a construit le temple de la Secession.",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "L'Exposition Beethoven",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Tout ce que la Secession croyait s'est réuni, une fois, dans une seule pièce. En 1902, la quatorzième exposition a été conçue comme un temple dans le temple : un sanctuaire à Ludwig van Beethoven, l'artiste en héros et prophète. Au centre se trouvait la statue polychrome de Max Klinger du compositeur en throne comme un dieu ; autour des murs, vingt-et-un membres ont contribué avec des œuvres destinées à être vues ensemble, comme un seul acte de dévotion. Et le long de trois murs, Klimt a peint la Frise de Beethoven – trente-quatre mètres de désir, de souffrance et de délivrance."
+            },
+            {
+              "type": "text",
+              "content": "Elle commence par le désir de l'humanité, dérive à travers les tentations et les terreurs du monde – le géant Typhoeus, un singe monstrueux, et les Gorgones de la maladie, de la folie et de la mort – et se résout, enfin, dans l'art et l'amour. La frise a été peinte directement sur le mur, destinée à être détruite lorsque l'exposition a fermé. Elle a survécu par accident, et aujourd'hui, c'est l'une des réalisations suprêmes de la peinture européenne."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-frieze.jpg",
+              "caption": "Le Frise de Beethoven, 1902 – 'Les Puissances Hostiles' : le géant Typhée et les Gorgones de la maladie, de la folie et de la mort.",
+              "align": "full"
+            },
+            {
+              "type": "text",
+              "content": "Mais la frise ne se termine pas dans l'obscurité. Elle grimpe vers un chœur d'anges et se clôt sur une étreinte – un couple nu enlacé sous un ciel doré, et au-dessus d'eux les mots de Schiller que Beethoven a mis en musique dans sa Neuvième Symphonie : ce baiser au monde entier. C'est la conviction la plus profonde de la Sécession, peinte en grand : que l'art, en fin de compte, est une forme d'amour, et l'amour une forme de délivrance."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/beethoven-kiss.jpg",
+              "caption": "Le final de la frise – le chœur du paradis et l'étreinte : 'Ce baiser au monde entier.'",
+              "align": "full"
+            },
+            {
+              "type": "header",
+              "content": "La Rupture, et l'Or",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Les mouvements sont mortels, et l'unité de la Secession n'a pas survécu à son succès. En 1905, une fracture s'était ouverte entre les 'stylistes' autour de Klimt, qui voulaient que l'art, l'artisanat et le commerce fusionnent complètement, et les 'naturalistes' qui craignaient que le mouvement ne devienne une boutique. Klimt et son cercle – Moser, Hoffmann, Wagner parmi eux – ont démissionné. Le groupe qu'ils avaient fondé huit ans plus tôt a continué sans eux ; ainsi, glorieux, l'ont fait aussi."
+            },
+            {
+              "type": "text",
+              "content": "Car c'est dans les années juste après la rupture que Klimt a entamé sa phase dorée, et peint le tableau qui eclipsera tout le reste : Le Baiser. Deux figures s'agenouillent au bord d'une prairie en fleurs, enveloppées dans une seule robe d'or scintillant, les motifs de l'homme durs et rectangulaires, ceux de la femme doux et circulaires, le monde entier dissous en ornement autour d'eux. Tout ce que la Secession avait défendu – l'union de la peinture et de la décoration, l'audace face à la beauté, l'or hérité de l'atelier d'un père – arrive ici, complet."
+            },
+            {
+              "type": "image",
+              "content": "/images/secession/klimt-kiss.jpg",
+              "caption": "Gustav Klimt, Le Baiser, 1907–1908 – le sommet doré de tout ce que la Secession a mis en mouvement.",
+              "align": "full"
+            },
+            {
+              "type": "note",
+              "content": "Le bâtiment de la Secession se dresse toujours sur la Friedrichstrasse, son dôme toujours doré, la Frise Beethoven toujours lumineuse dans le sous-sol en dessous. Les mots au-dessus de la porte n'ont pas changé depuis cent vingt-huit ans : à chaque époque son art, à l'art sa liberté. Il reste, peut-être, la plus belle chose qu'un groupe de jeunes artistes ait jamais osé promettre – et l'une des très rares promesses que le monde a continué à tenir."
+            }
+          ],
+          "order": 8,
+          "publishedAt": "2026-07-08",
+          "updatedAt": "2026-09-13T19:25:56.114Z"
+        },
+        {
+          "id": 11,
+          "title": "Le Cœur d'EPRIS : Maria est maintenant une Licence en Architecture",
+          "author": "EPRIS Journal",
+          "role": "Bureau de la Rédaction",
+          "date": "7 juil. 2026",
+          "excerpt": "Le 7 juillet, Mariia Ivanova, la rédactrice en chef d'EPRIS, est officiellement devenue une Licence en Architecture. Pour marquer cette journée – un cœur construit à partir de l'architecture et de l'art qui l'inspirent.",
+          "category": "Culture",
+          "subcategory": "Par la Rédaction",
+          "tags": [
+            "architecture",
+            "mariia ivanova",
+            "célébration"
+          ],
+          "imageUrl": "/images/heart-hero.jpg",
+          "imageSeed": "maria-graduation-heart",
+          "draft": false,
+          "content": [
+            {
+              "type": "texte",
+              "content": "Hier, le 7 juillet 2026, quelque chose de spécial est arrivé dans la vie de l'équipe éditoriale d'EPRIS. Mariia Ivanova – notre rédactrice en chef, et la personne dont cette revue est l'idée – est officiellement devenue Bachelor en Architecture. Des années de croquis, de modèles, et de nuits blanches avant sa soutenance de mémoire sont derrière elle maintenant. Un nouveau chapitre commence – et nous ne pouvions pas le laisser passer sans le marquer ici, sur les pages d'EPRIS."
+            },
+            {
+              "type": "texte",
+              "content": "Ce n'est un secret pour personne qu'un œil d'architecte traverse chaque numéro d'EPRIS – dans la façon dont nous parlons d'espace, de lumière, et de détail. Aujourd'hui, cet œil a obtenu ses credentials officiels."
+            },
+            {
+              "type": "texte",
+              "content": "Ceux qui ont travaillé à ses côtés sur ce numéro connaissent bien le rituel : lumières du studio tard dans la nuit, papier calque couvert de révisions, une tasse de café devenue froide à côté du modèle qu'elle a continué à reconstruire jusqu'à ce qu'il semble enfin parfait. Cette même agitation – le refus de se contenter de ‘suffisamment bien’ – est ce qui a façonné cette revue depuis sa toute première page."
+            },
+            {
+              "type": "entête",
+              "content": "Un cœur fait de ce qui l'a inspirée",
+              "level": 3
+            },
+            {
+              "type": "mosaïque",
+              "content": [
+                "/images/heart-tiles/tile-01.jpg",
+                "/images/heart-tiles/tile-02.jpg",
+                "/images/heart-tiles/tile-03.jpg",
+                "/images/heart-tiles/tile-04.jpg",
+                "/images/heart-tiles/tile-05.jpg",
+                "/images/heart-tiles/tile-06.jpg",
+                "/images/heart-tiles/tile-07.jpg",
+                "/images/heart-tiles/tile-08.jpg",
+                "/images/heart-tiles/tile-09.jpg",
+                "/images/heart-tiles/tile-10.jpg",
+                "/images/heart-tiles/tile-11.jpg",
+                "/images/heart-tiles/tile-12.jpg",
+                "/images/heart-tiles/tile-13.jpg",
+                "/images/heart-tiles/tile-14.jpg",
+                "/images/heart-tiles/tile-15.jpg",
+                "/images/heart-tiles/tile-16.jpg",
+                "/images/heart-tiles/tile-17.jpg",
+                "/images/heart-tiles/tile-18.jpg",
+                "/images/heart-tiles/tile-19.jpg",
+                "/images/heart-tiles/tile-20.jpg",
+                "/images/heart-tiles/tile-21.jpg",
+                "/images/heart-tiles/tile-22.jpg",
+                "/images/heart-tiles/tile-23.jpg",
+                "/images/heart-tiles/tile-24.jpg",
+                "/images/heart-tiles/tile-25.jpg",
+                "/images/heart-tiles/tile-26.jpg",
+                "/images/heart-tiles/tile-27.jpg",
+                "/images/heart-tiles/tile-28.jpg",
+                "/images/heart-tiles/tile-29.jpg",
+                "/images/heart-tiles/tile-30.jpg",
+                "/images/heart-tiles/tile-31.jpg",
+                "/images/heart-tiles/tile-32.jpg",
+                "/images/heart-tiles/tile-33.jpg",
+                "/images/heart-tiles/tile-34.jpg",
+                "/images/heart-tiles/tile-35.jpg",
+                "/images/heart-tiles/tile-36.jpg",
+                "/images/heart-tiles/tile-37.jpg",
+                "/images/heart-tiles/tile-38.jpg",
+                "/images/heart-tiles/tile-39.jpg",
+                "/images/heart-tiles/tile-40.jpg",
+                "/images/heart-tiles/tile-41.jpg",
+                "/images/heart-tiles/tile-42.jpg",
+                "/images/heart-tiles/tile-43.jpg",
+                "/images/heart-tiles/tile-44.jpg",
+                "/images/heart-tiles/tile-45.jpg",
+                "/images/heart-tiles/tile-46.jpg",
+                "/images/heart-tiles/tile-47.jpg"
+              ],
+              "caption": "Quarante-sept lieux et œuvres d'art qui ont façonné la façon dont Mariia voit le monde – de la Sagrada Família à David de Michelangelo. Un peu de chacun d'eux trouve son chemin dans chaque numéro d'EPRIS."
+            },
+            {
+              "type": "texte",
+              "content": "Certaines de ces bâtiments qu'elle a visités en personne, carnet de croquis à la main. D'autres qu'elle n'a vus qu'en photographies. Nous espérons qu'un jour, elle pourra voir chacun d'eux de ses propres yeux."
+            },
+            {
+              "type": "citation",
+              "content": "L'architecture m'a appris à voir la structure derrière la beauté. EPRIS m'a appris à en parler aux autres. Pour moi, ce sont deux langages pour le même sentiment."
+            },
+            {
+              "type": "note",
+              "content": "L'équipe éditoriale d'EPRIS félicite Mariia pour son diplôme, et la remercie pour l'inspiration qui vit dans chaque numéro de la revue. Ce diplôme marque un nouveau chapitre – et nous soupçonnons que ce ne sera pas le dernier à mériter d'être célébré. Nous sommes heureux que vous le lisiez avec nous."
+            }
+          ],
+          "order": 9,
+          "publishedAt": "2026-07-07",
+          "updatedAt": "2026-09-13T19:26:03.972Z"
         }
       ],
       "reviews": [
