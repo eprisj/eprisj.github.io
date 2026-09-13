@@ -10739,3 +10739,128 @@ html.epris-signed-in .auth-overlay { display: none !important; }
     min-width: 0; white-space: normal; line-height: 1.3; text-align: center;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ТЕЛЕФОН: РОЛЬ, ПЛОТНОСТЬ, РЕДАКТОР СТАТЬИ (13.09.2026)
+   ──────────────────────────────────────────────────────────
+   Замерено на живой панели с вьюпорта 375×812 под учёткой
+   редактора: до первой строки статьи было 1147 точек прокрутки
+   при экране 812, контролов мельче 44 точек — 203, подписей
+   ниже пола 11px — 50, а рабочая кнопка «Опубликовать» шла
+   белым по белому, то есть её на экране не было вовсе.
+   ══════════════════════════════════════════════════════════ */
+
+/* Роль важнее слоя вёрстки. Разделы, скрытые ролью, всплывали
+   в мобильном листе «Разделы» целиком: `body.nav-sheet-open
+   .sidebar .sb-item` весит три класса и молча перебивал
+   `[hidden]` (ровно та ловушка, что описана выше для
+   `.sidebar.is-collapsed`). На телефоне редактор мог открыть
+   любой раздел, включая «Настройки», где GitHub-токен лежит
+   открытым полем. Видимость роли не должна зависеть от того,
+   какой слой вёрстки сейчас сверху. */
+body.nav-sheet-open .sidebar .sb-item[hidden],
+body.nav-sheet-open .sidebar .sb-group[hidden],
+body.nav-sheet-open .sidebar .tab-btn[hidden] { display: none; }
+
+@media (max-width: 560px) {
+  /* Главное действие должно быть видно. Приём «одна рамка на
+     группу» красит ячейки в белый, а `.btn-primary` держит
+     белый текст — слово пропадает целиком. У студии эту же
+     ловушку закрыли тёмным текстом на белой ячейке; здесь
+     кнопка остаётся залитой: «Опубликовать» — главное действие
+     раздела и должно читаться как главное. */
+  #tab-content .toolbar-publication-row .btn-primary:not(:disabled):not([disabled]) {
+    background: var(--text); color: var(--bg-card);
+  }
+
+  /* Статья выше инструментов. `display: contents` снимает
+     коробку тулбара, и его блоки становятся элементами сетки
+     `.content-layout` — только так редактор (соседний элемент
+     той же сетки) поднимается выше переводов, синхронизации и
+     кнопок записи. Порядок на телефоне: что открыто → статус →
+     текст → всё остальное. Нижнее поле оставляем с запасом под
+     home indicator, оно задано на ≤760px и потерялось бы. */
+  #tab-content .content-layout {
+    padding: 10px 12px calc(20px + env(safe-area-inset-bottom));
+  }
+  #tab-content .entry-toolbar { display: contents; }
+  #tab-content .toolbar-selects { order: 1; }
+  #tab-content .toolbar-publication-row { order: 2; }
+  #tab-content #wysShell,
+  #tab-content #revWysShell { order: 3; }
+  #tab-content #articleInsertGroup { order: 4; }
+  #tab-content .entry-langs { order: 5; }
+  #tab-content .toolbar-entry-reach { order: 6; }
+  #tab-content .toolbar-buttons { order: 7; }
+  #tab-content .raw-panel { order: 8; }
+
+  /* Поле записи: метка 11 и значение 16 — это две строки по
+     самой своей природе (16px на полях обязателен, иначе iOS
+     увеличивает страницу при фокусе). Экономить можно только
+     на полях коробки. */
+  #tab-content .toolbar-field { padding: 4px 12px 5px; }
+  #tab-content .toolbar-field-label { line-height: 1.2; }
+  #tab-content .toolbar-field select,
+  #tab-content .toolbar-field input { min-height: 30px; }
+
+  .restricted-note { padding: 7px 12px; font-size: var(--fs-meta); line-height: 1.35; }
+
+  /* Панель редактора обрезалась правым краем — «На сайте»
+     уезжала за экран, потому что ряд не переносился. */
+  #tab-content .wys-bar { flex-wrap: wrap; row-gap: 6px; }
+  #tab-content .wys-bar > *,
+  #tab-content .wys-bar-left,
+  #tab-content .wys-bar-right { min-width: 0; flex-wrap: wrap; }
+  #tab-content .wys-bar .btn { white-space: normal; line-height: 1.25; }
+
+  /* Пол кегля 11px по остатку, до которого шкала не достала:
+     служебные подписи набирались 7.5–10.9 и читались мружачись.
+     Метки полей картинки заданы на самих label/span, поэтому
+     размера на контейнере мало — нужен потомок. */
+  .sb-label,
+  .topbar-left #status.status.success,
+  .topbar-left #status.status.info,
+  .entry-lang-chip, .entry-langs-auto, .entry-inserts-label,
+  .wys-live-badge, .wys-draft-badge, .wys-hero-edit,
+  .wys-fig-width-val, .wys-tag-add,
+  .wys-media-details, .wys-shell summary, .raw-panel > summary,
+  .wys-media-details-grid :is(label, span),
+  .registry-author-block :is(label, span),
+  .btn-help, .player-time { font-size: var(--fs-micro); }
+}
+
+@media (hover: none) and (max-width: 560px) {
+  /* Панель блока висела над блоком (`top: -14px`) и закрывала
+     последнюю строку предыдущего: ради перестановки абзаца
+     текст становился нечитаемым. На телефоне она уходит вниз
+     экрана полосой над доком — перекрывать там нечего, кнопки
+     влезают в палец целиком, а какой блок правится, видно по
+     метке слева. Одновременно активен ровно один блок (класс
+     ставит `pointerdown` на холсте), поэтому фиксированная
+     полоса не может размножиться. Запас снизу у холста уже
+     есть (132px на ≤760px), добавлять не нужно. */
+  .wys-block.is-touch-active .wys-bc {
+    position: fixed; left: 0; right: 0; top: auto;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    transform: none; justify-content: center; gap: 4px;
+    padding: 6px 8px; z-index: 60;
+    background: var(--bg-card); border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, .10);
+  }
+  .wys-block.is-touch-active { box-shadow: inset 3px 0 0 var(--text); }
+
+  /* Пол 44 точки. Прошлый проход остановился на 32–36, но это
+     размер под курсор, а не под палец. */
+  .wys-bc-btn, .wys-insert-btn { width: 44px; height: 44px; }
+  .wys-fig-align-btn,
+  .wys-tag-x, .wys-tag-add,
+  .wys-gal-x, .wys-gal-alt, .wys-gal-move { min-width: 44px; min-height: 44px; }
+  .wys-inline-input, .wys-fig-width { min-height: 44px; }
+  .player-btn { min-width: 44px; min-height: 44px; }
+  .tab-panel .btn-sm, .tab-panel .btn-primary { min-height: 44px; }
+
+  /* Кнопки выравнивания в 44 точки перестали влезать в ряд
+     панели картинки: ряд должен переноситься, а не уезжать за
+     правый край. */
+  .wys-fig-toolbar { flex-wrap: wrap; min-width: 0; }
+}
