@@ -52,6 +52,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* PT Serif-as-fallback (above) fixes readability — a whole Cyrillic run no
+   longer drops to the browser's generic serif — but Crimson Text and
+   Playfair Display still win every Latin *run* inside that same text, since
+   font-family fallback resolves per character, not per element. A review
+   full of English proper nouns (a person's name, a building, a brand) reads
+   in RU/UK as two visibly different serifs alternating mid-sentence — the
+   Cyrillic words in PT Serif, "David Shrigley" or "sketch" in Crimson Text
+   right next to them. Overriding both variables to PT Serif alone for these
+   two languages removes the seam: everything, Latin included, renders in
+   the one typeface that actually has both scripts. English pages are
+   untouched — the fallback chain up top still applies there. */
+:root:lang(ru), :root:lang(uk) {
+  --font-display: 'PT Serif', serif;
+  --font-body: 'PT Serif', serif;
+}
+
+/* The variables above don't reach `font-serif`/`font-crimson`/`font-display`
+   — Tailwind bakes those into static, hardcoded `font-family` rules at build
+   time (tailwind.config.js), so they can't read a CSS custom property.
+   `font-serif` alone is the single most-used type class in App.tsx (64
+   places), so this is the majority of the site's Cyrillic body copy left
+   out of the fix above. Higher specificity than the plain utility (two
+   selectors against one) wins without `!important`. */
+:lang(ru) .font-serif, :lang(uk) .font-serif,
+:lang(ru) .font-crimson, :lang(uk) .font-crimson,
+:lang(ru) .font-display, :lang(uk) .font-display {
+  font-family: 'PT Serif', serif;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -649,13 +678,14 @@ img[data-reveal="done"] {
 .rich-text u { text-decoration: underline; }
 .rich-text p { margin: 0 0 1em; }
 .rich-text p:last-child { margin-bottom: 0; }
-/* PT Serif fallback: these two headings sit inside translated article
-   bodies, exactly where a UK/RU h2/h3 is most likely to appear - see the
-   --font-display comment above for why Playfair Display alone silently
-   drops to the browser's generic serif for Cyrillic. */
-.rich-text h2 { font-family: 'Playfair Display', 'PT Serif', serif; font-size: 1.5em; line-height: 1.25; letter-spacing: .02em; color: var(--c-accent); margin: 1.6em 0 .6em; }
+/* var(--font-display), not a hardcoded stack: these two headings sit inside
+   translated article bodies, exactly where a UK/RU h2/h3 is most likely to
+   appear, and the variable is what carries the :lang(ru)/:lang(uk) override
+   above that keeps a Latin proper noun in the same typeface as the
+   Cyrillic around it. */
+.rich-text h2 { font-family: var(--font-display); font-size: 1.5em; line-height: 1.25; letter-spacing: .02em; color: var(--c-accent); margin: 1.6em 0 .6em; }
 .rich-text h2:first-child { margin-top: 0; }
-.rich-text h3 { font-family: 'Playfair Display', 'PT Serif', serif; font-size: 1.15em; line-height: 1.3; color: var(--c-accent); margin: 1.3em 0 .5em; }
+.rich-text h3 { font-family: var(--font-display); font-size: 1.15em; line-height: 1.3; color: var(--c-accent); margin: 1.3em 0 .5em; }
 .rich-text h4 { font-size: .95em; text-transform: uppercase; letter-spacing: .08em; opacity: .75; margin: 1.1em 0 .4em; }
 .rich-text ul, .rich-text ol { margin: 0 0 1em; padding-left: 1.35em; }
 .rich-text ul { list-style: disc; }
@@ -676,7 +706,7 @@ img[data-reveal="done"] {
 }
 .rich-text ul.stats li { margin: 0; padding: 1.15em 1.05em; background: var(--c-bg); }
 .rich-text .stat-figure {
-  display: block; font-family: 'Playfair Display', 'PT Serif', serif; font-weight: 400;
+  display: block; font-family: var(--font-display); font-weight: 400;
   font-size: 1.85em; line-height: 1.02; letter-spacing: -.015em; color: var(--c-accent);
 }
 .rich-text .stat-label {
