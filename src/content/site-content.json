@@ -41628,6 +41628,83 @@
           "showCover": true,
           "authorId": "author-1784732936927-kw554",
           "publishAt": "2026-09-08T11:50:24.806Z"
+        },
+        {
+          "id": 34,
+          "draft": false,
+          "title": "Orada Olmayan Dikiş: Anish Kapoor'un Cloud Gate",
+          "author": "Viacheslav Munister",
+          "role": "Yazar",
+          "date": "Eyl 7, 2026",
+          "category": "çağdaş sanat",
+          "subcategory": "Eleştirel Makale",
+          "tags": [
+            "heykel",
+            "anish kapoor",
+            "kamu sanatı",
+            "chicago",
+            "çağdaş sanat",
+            "malzemeler"
+          ],
+          "imageSeed": "cloud-gate-anish-kapoor",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtvgwkabzfjm6j.jpg",
+          "excerpt": "Anish Kapoor'un Cloud Gate'inde ön yok, dikiş yok ve yapımcısı ısrar ediyor, ufuk çizgisi ve şu anda yüzeyinde yakalanan kalabalık dışında sabit bir konu yok. İki ekstra yıl ve 23 milyon dolar harcanarak çözülen mühendislik sorunu üzerinde, bu numarayı izleyicinin önüne çıkaran omphalos ve neden çözümün yirmi yıl sonra bile işe yaradığı.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Cloud Gate önüne sahip değildir. Herhangi bir yönden Millennium Park'ta yürüyün ve Chicago'nun Fasulyesini dediği heykel size doğru döner: parlak çelikten sürekli, kapısız bir döngü, 20 metre uzunluğunda ve 13 metre genişliğinde, Michigan Avenue çayırında bir düşmüş cıva damlasini yakalamış gibi duruyor. Şehrin kamusal sanat programı, 1999 yılında, bir ray deposunun üstüne yeni bir meydan için bir simge talep etti. Uluslararası kısa listeyi bir jüri inceledikten ve Anish Kapoor'un tasarımı daha geleneksel tekliflerin önüne geçtikten sonra aldığı şey, Amerika Birleşik Devletleri'nde inşa edilen ilk kalıcı açık hava eseri ve tüm içeriği şehrin kendine bakması olan, eğilmiş bir heykeldi."
+            },
+            {
+              "type": "header",
+              "content": "Bir dikişsiz yüzey, saklanacak bir yüzey"
+            },
+            {
+              "type": "text",
+              "content": "Mühendislik sorunu tüm projeydi. Kapoor'un tasarımı, yüzeyinde hiçbir görünür dikişi olmayan ayna parlaklığında bir deri gerektiriyordu, bu da 168 paslanmaz çelik levhanın kenarından kenarına kaynak yapılması ve ardından tamamen kaybolana kadar elle taşlanması ve parlatılması anlamına geliyordu. Bir süsleme, conta veya dikiş kalıbı yoktu; yansımayı kırmak ve önlerindeki nesnenin döküm değil, monte edildiğini hatırlatmak için. O derinin altında, Chicago'nun hava durumuyla nefes alacak şekilde tasarlanmış bağımsız bir çelik iskelet bulunuyor: tüm yapı, Temmuz sıcak dalgası ile Ocak soğuk dalgası arasında birkaç santimetre büyüyüp küçülüyor ve parlak levhalar, yüzeye kırışıklık sinyali vermeden onunla hareket etmek zorunda. Bu standarda ulaşmak, planlanan süreden iki yıl daha uzun sürdü. Millennium Park 2004 yılında açıldı; Cloud Gate, inşaat çitleri arkasında hâlâ gizliydi, 2006 yılında halka açıldı ve heykel ile meydanın toplam maliyeti yaklaşık 23 milyon dolar, ilk tahminin çok üzerinde, neredeyse tamamen parlatma nedeniyle."
+            },
+            {
+              "type": "text",
+              "content": "Bu karar, eserin gerçek konusu. Bir dikişsiz yüzey, inşaat olarak okunur: insanlar tarafından, zaman içinde, parçalardan inşa edilmiş bir nesne. Bir dikişli yüzey ise bir fenomen olarak okunur, bir şeyin heykeli değil, 110 tonluk katı olması gereken bir delik gibi, gökyüzü, Aon Center ve birkaç bin turistin sürekli aktığı bir delik. Kapoor, önceki yirmi yılını bu etkiyi galeri ölçeğinde yakalamaya çalışarak geçirdi, 1980'lerin pigment dolu boşluklarında ve ardından gelen konveks aynalı disklerde, izleyicinin kendi yansımasının bozuk şekilde kıvrıldığı, yüzeye düz oturmak yerine. Cloud Gate, bu kelime dağarcığının bir kent bütçesi ve yutmaya değer bir gökyüzü çizgisiyle buluştuğu an ve Kapoor'un başka yerlerde inşa edeceği aynalı kamusal siparişler için bir model oluşturdu: Londra ve New York'taki Sky Mirror, Kensington Gardens'taki C-curve, Jerusalem'daki Turning the World Upside Down. Sonraki hiçbir parça aynı ölçekle aynı numarayı denemiyor."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtrhfed6qreyhx.jpg",
+              "caption": "Sky Mirror (Hendrik için), 2017, Museum de Pont, Tilburg: Cloud Gate'in ölçeği ve bütçesinin çok altında çalışan birkaç Kapoor aynası siparişinden biri ve hiçbiri onun kusursuz, dolaşılabilir sürekliliği hedeflemiyor.",
+              "credit": "Fotoğraf: Peter Cox, Museum De Pont'e saygı, CC BY-SA 4.0",
+              "align": "tam"
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtrgodyquzi3fq.jpg",
+              "caption": "Michigan Avenue silüeti karşısında Cloud Gate, AT&T Meydanı'nda. Heykele takma adını veren böbrek şekli profili, Kapoor'un kendi adıyla hiç anılmamış, sadece dışarıdan okunabilir; eser kendisi tek bir doğru bakış açısına sahip değil.",
+              "credit": "Fotoğraf: EightySixFilms, CC BY 2.0",
+              "align": "tam"
+            },
+            {
+              "type": "metin",
+              "content": "Altında, levhalar içe doğru kıvrılarak sanatçının omphalos dediği, sekiz metre derinlikte bir çukur oluşturur; bu içbükey oda, yansımaları kendi üzerine toplar ve onları sıkıştırılmış, kıvrılan bir vortex haline getirir; karo, gökyüzü ve kalabalık. Bu, aynanın nazikçe davranmayı bıraktığı tek kısımdır. Her yerde, Cloud Gate çevresini övüyor, silüeti daha uzun ve daha garip bir şeye doğru uzatıyor. Kemerin altında, aynı yüzey izleyiciyi tersine çevirir, onlarca insanı tek bir dairesel çerçeveye, ufuk ve sabit bir bakış noktası olmadan, katlar ve doğruyu söyleyen bir duruş noktası olmadan katlar."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/mtrh4o4bclo49h.jpg",
+              "caption": "Omphalos'a doğru dik bakış: içbükey alt yüzey, meydanı, kalabalığı ve gökyüzünü tek bir sürekli halka haline getirir, ufuk olmadan.",
+              "credit": "Fotoğraf: Kevin Dooley, CC BY 2.0",
+              "align": "tam"
+            },
+            {
+              "type": "header",
+              "content": "Kamu heykeli altyapı olarak"
+            },
+            {
+              "type": "text",
+              "content": "Cloud Gate'i sıradan bir halk sanatı parçası olmaktan ayıran ve daha çok popüler olmasını sağlayan şey, onun heykeli görmek için gelmeyen herkesten çok az şey istemesidir. Üzerinde emilecek bir plaka uzunluğunda bir argüman, sabit bir okuma mesafesi, doğru bir gün zamanı yoktur. Kendi yansımasını fotoğraflayan bir turist ve Kapoor'un Brancusi'nin parlatılmış bronzlarına ve Jean Arp'ın biyomorfik soyutlamasına olan borcunu izleyen bir eleştirmen aynı nesneyi aynı nedenle kullanıyor: çünkü yüzeyi önünde duran kişiye göre değişir ve asla tek bir sabit görüntüye dönüşüp işaretlenip bırakılmaz. Bu, kusursuz çeliği tasarlamaktan daha zor bir numaradır. En büyük kentsel komisyonların çoğu, otobüs penceresinden okunabilirlik ile yetinir; bu ise, birinin etrafında yürüyerek geçirdiği iki dakikayı, birinin hızla geçtiği iki saniyeden çok daha fazla ödüllendirmek üzere inşa edilmiştir, bu yüzden de yılda birkaç milyon kez fotoğraflanmasına rağmen, durağan bir anıt gibi yıpranmadan bir deneyim olarak varlığını sürdürebilir."
+            },
+            {
+              "type": "text",
+              "content": "İki on yıl sonra, heykel, yapımcısı tarafından hiç verilmemiş bir takma adı benimsemiş, neredeyse tüm çağdaş sanat eserlerinden daha fazla amatör fotoğrafta yer almış ve tüm bu dolaşımın altında, gerçekten zor bir nesne olarak kalmıştır: sıvı davranışına sahip bir katı, yüzeyinde şu an yakalanmış kalabalıktan başka sabit bir konusu olmayan bir anıt. Cloud Gate, kusursuz bitişin iki yıl ve ek maliyetin karşılığını verdiğini kanıtlamak için bir yıldönümüne veya retrospektife ihtiyaç duymadı. Her açık hava meydanındaki güzel bir öğleden sonra bunun yerine bunu yapar."
+            }
+          ],
+          "updatedAt": "2026-09-13T19:34:42.583Z"
         }
       ],
       "reviews": [
