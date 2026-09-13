@@ -54500,6 +54500,186 @@
           "updatedAt": "2026-09-13T19:33:20.713Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-roland-schwerdtfeger"
+        },
+        {
+          "id": 32,
+          "title": "Neobarocco : Cinq bâtiments qui confessent ce qu'ils veulent que vous croyiez",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "5 sept. 2026",
+          "publishedAt": "2026-09-05T12:00:00.000Z",
+          "excerpt": "Aucun architecte du XVIIe siècle n'a jamais eu à défendre la légitimité absolue. Le pouvoir était déjà absolu, et l'architecture n'avait qu'à le rendre beau. Les mécènes d'aujourd'hui n'ont pas cette chance. Un État qui n'est pas sûr de sa propre légitimité, une marque qui vend un patrimoine qu'elle n'a jamais eu, une ville qui a besoin que le monde cesse de se moquer d'elle : chacun a engagé un architecte très différent pour faire le vieux travail de Bernini. Cinq bâtiments, cinq confessions.",
+          "category": "Architecture",
+          "subcategory": "Essai",
+          "tags": [
+            "architecture",
+            "baroque",
+            "zaha hadid",
+            "calatrava",
+            "mad architects",
+            "peter marino"
+          ],
+          "imageSeed": "necobarocco-five-buildings-that-confess",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mto1rxoi2er3sb.jpg",
+          "content": [
+            {
+              "type": "texte",
+              "content": "Personne à Hambourg n'a demandé que l'Elbphilharmonie soit belle. Pendant la majeure partie d'une décennie, ils ont demandé, bruyamment et par écrit, que cela cesse. Une salle de concert budgétisée en 2001 à 77 millions d'euros et destinée à ouvrir en 2010 est passée à 114 millions d'euros en 2005, à 241 millions d'euros lorsque le calendrier a encore glissé en 2007, à plus de 450 millions d'euros après que le contrat de construction ait été renégocié en 2008, à plus de 500 millions d'euros en 2012, et a finalement été inaugurée en janvier 2017 à un montant confirmé de 866 millions d'euros, surplombant un entrepôt en briques des années 1960 qui avait été vidé jusqu'à ses quatre murs extérieurs pendant ces mêmes années alors que le chiffre ne cessait de grimper. La réponse de Herzog & de Meuron à une décennie de colère civique n'était pas des excuses. C'était une couronne de verre courbée, facettée comme la glace de mer, qui capte le port et le ciel dans la lumière qui passe, et fait la seule chose qu'un bâtiment public hors budget ne devrait jamais réussir à faire. Il fait disparaître l'argument de l'argent au moment où vous le regardez réellement. En moins d'un an, la même ville qui voulait que quelqu'un soit licencié publiait des photographies du coucher de soleil de la chose."
+            },
+            {
+              "type": "texte",
+              "content": "Ce n'est pas la résilience. C'est une astuce très ancienne, utilisant du nouveau matériel, et cela a fonctionné exactement comme prévu. Un bâtiment qui vous fait ressentir quelque chose avant que vous n'ayez eu le temps de vous demander si c'était une bonne idée : Bernini aurait reconnu la manœuvre au premier coup d'œil, et n'aurait pas été du tout surpris que cela fonctionne deux fois."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1ry50b1aw12.jpg",
+              "alt": "Visiteurs montant le long tube d'escalator courbe à l'intérieur de l'Elbphilharmonie vers la Grande Salle",
+              "caption": "À l'intérieur de l'Elbphilharmonie : le tube d'escalator courbe montant vers le Großer Saal.",
+              "credit": "Photo : Arths-at / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_the_Elbphilharmonie_05.jpg"
+            },
+            {
+              "type": "en-tête",
+              "content": "Ce que le mot signifiait avant qu'il ne devienne un compliment",
+              "level": 2
+            },
+            {
+              "type": "texte",
+              "content": "« Baroque » est maintenant utilisé comme synonyme d'orné, courbé, coûteux : un adjectif pour un sentiment, non une affirmation sur le fonctionnement réel d'un bâtiment. Le style historique était beaucoup plus précis, et beaucoup plus utile comme lentille que l'usage moderne vague ne le suggère."
+            },
+            {
+              "type": "texte",
+              "content": "Prenez la démonstration la plus claire : la Chapelle Cornaro de Bernini à Santa Maria della Vittoria, achevée en 1652. Au centre, le marbre <em>Extase de Sainte Thérèse</em> montre la sainte en pleine vision, un ange sur le point de lui enfoncer une flèche dorée, tout son corps devenu flasque d'une douleur qu'elle décrivait comme indiscernable de l'amour de Dieu. Bernini n'a pas simplement sculpté une sculpture et l'a placée dans une niche. Il a coupé une fenêtre cachée dans le mur au-dessus du groupe et a fait passer des tiges en bronze doré à travers le marbre comme un soleil gelé, de sorte que la lumière du jour réelle et la lumière sculptée arrivent à la même figure en même temps. De chaque côté, des membres de la famille Cornaro sont sculptés en train de se pencher hors de ce qui sont indubitablement des loges de théâtre, regardant l'extase comme un public regarde une scène. L'architecture, la sculpture, l'ingénierie cachée et l'éclairage de scène sont fusionnés en un seul événement continu sans couture entre l'artisanat et la persuasion. Les historiens de l'art ont un terme pour cette ambition précise, <em>bel composto</em>, le beau tout, et il décrit quelque chose de beaucoup plus discipliné que « orné ». "
+            },
+            {
+              "type": "texte",
+              "content": "Donc, la question utile à propos de tout ce qui s'appelle néo-baroque aujourd'hui n'a rien à voir avec les courbes. C'est : qui a commandé le numéro de disparition, et qu'espéraient exactement que le public ressentir avant d'avoir la chance d'examiner l'argument sous-jacent."
+            },
+            {
+              "type": "en-tête",
+              "content": "Zaha Hadid, Bakou : l'argument est le pays",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1ryrutoiold.jpg",
+              "alt": "Le Centre Heydar Aliyev à Bakou, sa forme courbe blanche s'élève continuellement du parvis",
+              "caption": "Centre Heydar Aliyev, Bakou. Zaha Hadid Architects avec Werner Sobek, 2012.",
+              "credit": "Photo : Robot8A / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baku_15_06_14_216000.jpeg"
+            },
+            {
+              "type": "text",
+              "content": "Le Centre Heydar Aliyev n'a pas de façade, pas de ligne de toit, pas de mur au sens ordinaire : le parvis et le bâtiment forment une seule peau blanche continue, environ 39 100 mètres carrés, plus 9 000 mètres carrés de parvis, qui s'élève du sol, se plie à travers l'intérieur et se repose de l'autre côté. Le bureau de Werner Sobek a conçu toute l'enveloppe à partir d'environ 15 000 panneaux en fibre renforcée, chacun courbé individuellement, aucun deux identiques, certains aussi longs que sept mètres, sans une seule ligne structurelle droite supportant réellement la structure. Zaha Hadid l'a construit en opposition ouverte au béton soviétique encore présent à Bakou : bloc après bloc honnête et sans humour affirmant la permanence par la masse. Le Centre affirme le contraire : un jeune pétro-État disant au monde, en un seul geste ininterrompu, qu'il a tourné la page. La verdict de l'Architectural Review lors du premier contact était que le bâtiment est « une secousse pour le système », ce qui est précisément l'effet qu'un bâtiment persuasif doit produire."
+            },
+            {
+              "type": "text",
+              "content": "Le Centre était initialement budgété à environ 250 millions de dollars pour 57 500 mètres carrés, un chiffre qui le place encore parmi les bâtiments les plus coûteux jamais construits par pied carré, sur un site dégagé, selon Human Rights Watch, par la force : environ 250 maisons enlevées pour faire place au geste. Mettez ces deux faits à côté de la courbe blanche sur n'importe quelle photographie et le bâtiment cesse d'être perçu comme de l'architecture et commence à ressembler à ce qu'il est réellement : un reçu de combien un pays dépensera, et qui il déplacera, pour s'assurer que le monde le regarde courber plutôt que de se demander pourquoi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1rz1c52q7fy.jpg",
+              "alt": "Une orchestre jouant à l'intérieur de la salle de concert du Centre Heydar Aliyev, ses murs en bois courbés enveloppant la scène",
+              "caption": "À l'intérieur du Centre : la même courbe ininterrompue se poursuit dans la salle de concert.",
+              "credit": "Photo : Eminn / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heydar_Aliyev_Center_1.3.jpg"
+            },
+            {
+              "type": "header",
+              "content": "Calatrava, Valence : le squelette jouant l'innocence",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1rzbnkh313h.jpg",
+              "alt": "La Cité des Arts et des Sciences à Valence, structures à nervures blanches sur des bassins réfléchissants",
+              "caption": "Cité des Arts et des Sciences, Valence. Santiago Calatrava, 1998–2005.",
+              "credit": "Photo : Cateecatee / Wikimedia Commons, CC BY-SA 3.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:City_of_Arts_and_Science_-_Valencia,_Spain.JPG"
+            },
+            {
+              "type": "text",
+              "content": "Rien dans la Cité des Arts et des Sciences n'a besoin de ressembler à ce qu'il ressemble. Un planétarium ne nécessite pas de côtes. Un musée des sciences n'a pas besoin de ressembler au squelette nettoyé d'une baleine, ce à quoi ressemble exactement le Museu de les Ciències de Calatrava, intentionnellement, sur deux kilomètres du lit asséché de la Turia à Valence. C'est de l'ingénierie qui fait le travail d'un plafond peint : créer une illusion de nécessité structurelle là où il n'y avait que le choix, de la même manière qu'une fresque baroque crée un trou dans une surface plate s'ouvrant sur le ciel ouvert."
+            },
+            {
+              "type": "text",
+              "content": "C'est magnifique. C'est aussi, au sens le plus littéral, un tour de magie qui a commencé à se désagréger. Un projet complexe estimé à environ 300 millions d'euros a atteint près de 1,1 milliard d'euros, avec les honoraires de Calatrava pour le projet supposés autour de 100 millions d'euros en plus, un schéma qui se répète de près tout au long de sa carrière, de Valence à Venise en passant par un centre de transit construit sur les ruines du World Trade Center, si bien que la presse l'a rapidement surnommé « l'architecte le plus détesté du monde ». En 2013, des carreaux de céramique ont commencé à se détacher du toit et de la façade en mosaïque de l'opéra Palau de les Arts au centre du complexe ; à la mi-2014, le gouvernement régional avait déposé une plainte contre la société de Calatrava pour les défauts. Le squelette, il s'avère, perdait sa peau. Quelqu'un paie toujours un supplément pour que le ciel ait l'air aussi ouvert : d'abord dans la facture, et plus tard, semble-t-il, dans le toit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1rzn2676c54.jpg",
+              "alt": "Escalier en spirale blanc sculptural à l'intérieur du Palau de les Arts, en porte-à-faux sous un plafond en béton courbe",
+              "caption": "À l'intérieur du Palau de les Arts : le même drame structurel, à l'intérieur et non peint.",
+              "credit": "Photo : Kippelboy / Wikimedia Commons, CC BY-SA 3.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palau_de_les_Arts_Reina_Sofia-_interiors.JPG"
+            },
+            {
+              "type": "citation",
+              "content": "L'architecture néo-baroque n'est pas un style. C'est ce pour quoi un client paie lorsque la seule vérité ne suffit pas à provoquer la réaction qu'il souhaite."
+            },
+            {
+              "type": "entête",
+              "content": "Ma Yansong, Harbin : le seul bâtiment ici qui ne doit rien à Rome",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1rzxi9wupf2.jpg",
+              "alt": "La salle d'opéra de Harbin, sa forme blanche en aluminium balayante contrastant avec les zones humides",
+              "caption": "Salle d'opéra de Harbin. MAD Architects (Ma Yansong), 2015.",
+              "credit": "Photo : EditQ / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harbin_Grand_Theatre_1.jpg"
+            },
+            {
+              "type": "text",
+              "content": "Chaque essai comme celui-ci risque de faire passer une supposition non déclarée : que l'appétit pour le mouvement et l'illusion en discussion est un héritage européen, attendant quelque part à être exporté. La Harbin Opera House refuse catégoriquement cette prémisse. Ma Yansong a décrit le bâtiment comme façonné par le vent et l'eau plutôt que par un précédent italien : des panneaux en aluminium blanc balayés par les zones humides à côté de la rivière Songhua à l'extérieur, une masse chaude, érodée par le vent de frênes mandchous à l'intérieur de la salle principale, le tout plus proche d'une chaîne de montagnes se dissolvant dans la brume dans un rouleau de la dynastie Song que de quoi que ce soit touché par Bernini. MAD a remporté le concours international pour l'île culturelle de Harbin environnante en 2010 ; la maison d'opéra elle-même, d'environ 850 000 pieds carrés, a été inaugurée en décembre 2015 dans une ville mieux connue internationalement, jusqu'alors, pour ses festivals de sculptures de glace d'hiver plutôt que pour son architecture."
+            },
+            {
+              "type": "text",
+              "content": "Elle appartient de toute façon à cette compagnie, et c'est là le point qui vaut la peine d'être médité. L'instinct que cet essai suit, fusionner un bâtiment en une sensation continue, argumenter à travers le corps avant que l'esprit ne prenne une décision, n'est pas une exportation romaine. Il apparaît partout où un architecte a les outils, un client prêt à financer la merveille plutôt que simplement l'abri, et une tradition visuelle propre à dépenser ce financement. Harbin ne doit rien au Vatican. Il parle toujours la même langue sous-jacente, couramment, avec un accent entièrement propre."
+            },
+            {
+              "type": "header",
+              "content": "Peter Marino : celui qui a arrêté de faire semblant",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Hadid, Calatrava et Ma arrivent chacun à un effet baroque par d'autres moyens et d'autres matériaux, traduisant les outils de persuasion du XVIIe siècle en fibre de verre, acier structurel, aluminium. Peter Marino saute la traduction et importe directement le texte source. Depuis le début des années 1980, ses boutiques phares pour Chanel et Dior ont mis en contraste de véritables bronzes du XVIIIe siècle et de véritables miroirs vénitiens contre des coquilles architecturales brutes et contemporaines, intentionnellement, et selon ses propres dires avec un certain plaisir : il a parlé de la rareté avec laquelle quelqu'un ose mettre quelque chose de totalement moderne à côté de quelque chose de totalement baroque, et du fait que la collision est tout l'exercice, pas un simple accident de goût. La tour Chanel de 2004 dans le district de Ginza à Tokyo reprend le tweed noir et blanc signature de la maison et le fait exploser à travers une façade vitrée entière à l'échelle architecturale. La boutique Dior remaniée sur l'Avenue Montaigne à Paris enveloppe la boutique elle-même dans un musée de deux mille mètres carrés et trois jardins privés, au cas où le message ne serait pas déjà bien compris."
+            },
+            {
+              "type": "text",
+              "content": "Ceci est le cas qui rend la véritable question de l'essai impossible à esquiver poliment. Un sac à main n'a pas besoin d'une provenance du XVIIIe siècle pour fonctionner comme un sac à main. Les bronzes et les miroirs sont là pour argumenter, silencieusement et à grand coût, que l'objet en vente hérite d'une grandeur que la marque derrière n'a pas réellement héritée : elle a acheté les accessoires et les a installés sous un éclairage de galerie, comme un musée installe une salle d'époque. Marino est le seul architecte dans cet ensemble qui ne cache pas que c'est ce qu'il fait. Que cette honnêteté soit la chose la plus respectable de son travail, ou la plus cynique, ne semble pas être une question laissant place à une troisième réponse."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mto1s0al7n32z0.jpg",
+              "alt": "Le flagship Dior au 30 Avenue Montaigne, Paris, sa façade haussmannienne éclairée avec une installation de lustre illuminé surdimensionnée",
+              "caption": "30 Avenue Montaigne, Paris, 2016, avant la rénovation de Marino en 2022, la même adresse déjà en train de mettre en scène son propre excès directement dans la rue.",
+              "credit": "Photo : Frédéric BISSON / Wikimedia Commons, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christian_Dior,_30_Avenue_Montaigne,_Paris_2016.jpg"
+            },
+            {
+              "type": "header",
+              "content": "Là où le mot cesse d'être utile",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Tout ce qui est courbé et cher n'a pas mérité la comparaison, et il vaut la peine de refuser la version paresseuse de celle-ci par principe. Un bâtiment mérite le terme « néo-baroque » lorsque son mouvement et son illusion accomplissent un véritable travail rhétorique : défendre la légitimité d'un État, ou le poids hérité d'une marque, ou le droit d'une ville à ne plus être la risée. Un bâtiment qui se contente d'exécuter un logiciel paramétrique pour obtenir une silhouette inhabituelle, sans que rien ne repose sur la forme au-delà de la nouveauté, n'est pas néo-baroque. Il est simplement courbé, et le qualifier de baroque revient au même que de faire subir au mot la même dévalorisation qu'il subit déjà partout, des annonces immobilières aux légendes Instagram."
+            },
+            {
+              "type": "text",
+              "content": "Ce qui donne à ces cinq leur place n'est pas une ressemblance familiale de surface. C'est que chacun essaie de faire ressentir à un spectateur un argument avant qu'il n'ait eu la chance de l'interroger, dans la grammaire visuelle exacte que le XVIIe siècle a inventée à cette fin précise, que trois siècles et demi d'architecture intervenante ont principalement essayé, et en grande partie échoué, à déjouer."
+            },
+            {
+              "type": "text",
+              "content": "Bernini n'a jamais eu à construire un cas pour l'autorité du Pape. L'autorité était déjà absolue ; l'architecture n'avait qu'à la rendre belle. Personne qui commande un bâtiment aujourd'hui n'a ce luxe, ce qui explique précisément pourquoi la liberté de forme bon marché empruntée par la fabrication numérique continue de finir entre les mains de clients qui ont besoin qu'un public ressente quelque chose avant de commencer à poser des questions : un état sans histoire établie sur lui-même, une marque vendant une histoire qu'elle a achetée plutôt que vécue, une ville qui préfère être photographiée plutôt qu'interrogée. Le style a survécu à l'effondrement du pouvoir absolu en survivant à la chose qu'il était destiné à défendre. Ce qui reste debout, c'est la technique, et la technique, il s'avère, n'a pas besoin de croire en quoi que ce soit pour fonctionner."
+            }
+          ],
+          "previewToken": "nb-302ed07ee17bba27",
+          "updatedAt": "2026-09-13T19:34:12.051Z"
         }
       ],
       "reviews": [
