@@ -50852,6 +50852,218 @@
           "authorId": "author-1784896384236-4fokw",
           "publishedAt": "2026-07-24",
           "updatedAt": "2026-09-13T19:23:57.056Z"
+        },
+        {
+          "id": 15,
+          "title": "Tadao Ando",
+          "author": "Maria Ivanova",
+          "role": "Auteur",
+          "date": "19 juil. 2026",
+          "excerpt": "Architecture sous le tangible",
+          "category": "Architecture",
+          "subcategory": "Article",
+          "tags": [
+            "architecture",
+            "design",
+            "japon"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt3zzweaxc7gh.jpg",
+              "align": "left",
+              "width": 30
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando est l'un des architectes les plus influents du 21e siècle, \nqui remet en question la définition conventionnelle et les frontières de l'architecture. \nSon approche unique a mis en valeur la réinterprétation des principes japonais traditionnels \nà travers des formes audacieuses, des matériaux et des organisations spatiales. Dans cet article, nous allons révéler les principes fondamentaux de sa philosophie et ses indications."
+            },
+            {
+              "type": "header",
+              "content": "Contexte et Influences",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando est né à Osaka (autrefois appelée la « Ville d'Eau ») en 1941. Il est né en tant que premier \nfrère jumeau, mais ses parents ont ensuite décidé de les séparer. Tadao Ando a été élevé par sa grand-mère maternelle dans un quartier simple avec une variété d'artisans, de menuisiers, et d'autres. Il a passé des jours \ndans leurs ateliers \n travaillant avec des matériaux, construisant des avions et des navires. Il serait juste \nde dire que cet environnement a servi de fondation pour l'apprentissage de la vie que poursuit le célèbre architecte."
+            },
+            {
+              "type": "text",
+              "content": "Depuis l'âge de 17 ans, étant influencé par son jumeau, Ando a commencé à pratiquer la boxe. Ce sport a \nfaçonné son esprit combatif, ce qui l'aide dans la vie future.  "
+            },
+            {
+              "type": "text",
+              "content": "Au début des années 20, durant la période de 1962-1969, après la levée de l'interdiction japonaise, Tadao Ando a fait un \nvoyage en Europe, aux États-Unis et en Afrique. Il a pris un bateau du Japon vers l'Union soviétique, où il \nest allé à Moscou avec un Transsibérien d'une semaine. Pendant ce voyage, il a vu de nombreux pays \net a vécu une expérience architecturale indiscutable, qui deviendrait plus tard la base de sa célèbre \ncitation :"
+            },
+            {
+              "type": "quote",
+              "content": "« L'architecture englobe des choses qui ne peuvent pas être capturées par les médias. C'est pourquoi les architectes doivent voyager ; les architectes se forment en voyageant »"
+            },
+            {
+              "type": "text",
+              "content": "Malgré une connaissance de nombreux bâtiments dans différents pays, sa destination souhaitée pour \ncette aventure était le patrimoine de Le Corbusier, qui a nourri son intérêt pour l'architecture."
+            },
+            {
+              "type": "text",
+              "content": "Il a fait la connaissance d'un architecte français emblématique par hasard, trouvant son manuscrit dans une vieille librairie d'occasion. La valeur de ce livre ne réside pas dans son prix réel mais entièrement dans l'empreinte qu'il a laissée sur la vie et la carrière de Tadao Ando. L'architecte était fasciné par les projets et se rappelait qu'il avait tracé les premiers croquis de Corbusier tellement de fois que le papier était devenu presque noir. De plus, il admit que, en pensant à ses propres projets, il pense à ce que Le Corbusier aurait dit à leur sujet et comment il l'évaluerait."
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando n'a reçu aucune formation formelle dans aucun domaine, mais a ouvert son cabinet, « Tadao Ando \nArchitect &amp;amp; Associates », en 1969 à Osaka, après son retour d'une longue « étude de terrain » dans divers \npays, qui, avec la philosophie spatiale japonaise et des livres sur l'architecture, ont façonné \nsa façon de penser. Ando n'a pas poursuivi une méthode empirique d'apprentissage en étant étudiant d'autres \narchitectes, car sa ténacité et son tempérament conduisaient toujours à un renvoi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt41vsy86q9zs.jpg",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Les premières tentatives en conception étaient avec de petites maisons en bois, intérieurs, et meubles. Cependant, il a fallu \n6 ans de pratique avant qu'il ne termine la Row House (Azuma House), qui lui a valu des éloges \net une reconnaissance par le prix de l'Association architecturale japonaise."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mrt47rwzfga3cn.jpg",
+                "https://api.eprisjournal.com/uploads/mrt489ocgjozyx.jpg",
+                "https://api.eprisjournal.com/uploads/mrt48qw4rf26l2.jpg"
+              ],
+              "caption": "Row House, 1976"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt4d5ef1m1idz.jpg",
+              "caption": "Rokko Housing, 1981-1998",
+              "align": "gauche",
+              "width": 45
+            },
+            {
+              "type": "texte",
+              "content": "Un autre projet réalisé à la fin des années 1970, le complexe Rokko Housing, a été largement publié et a souligné son importance dans le domaine architectural au-delà du contexte local. Il est inséré dans une pente au pied des montagnes Rokko, offrant des vues panoramiques. Fidèle à la grille rigide et à la géométrie, Tadao Ando a néanmoins travaillé dans une forme et une composition plus élaborées, prouvant que la simplicité est un <i>choix conscient, mais non limitatif, pour son incarnation philosophique.</i>"
+            },
+            {
+              "type": "texte",
+              "content": "Les projets suivants ont renforcé la tendance à la reconnaissance transfrontalière. De tels bâtiments \ncomme Church on the Water (1988) à Tomamu, Hokkaido ou Church of the Light (1988-89) à Ibaraki, \nOsaka, promeuvent leur auteur comme un architecte avec \nune compréhension spirituelle profonde de l'espace et de la connexion avec la nature. Malgré le fait que le Japon soit le seul \npays à accueillir ses projets à la fin des années 1980, l'influence a changé le statu quo, et en \n1991, le Modern Museum of Modern Art a organisé une exposition dédiée à Tadao Ando, l'étiquetant indirectement \ncomme « l'un des architectes vivants les plus éminents au monde »."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt4lpc2fr80ye.jpg",
+              "caption": "Church sur l'eau (1988)",
+              "stretched": true
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrt5ophk1v5q4j.webp",
+              "caption": "Church of the Light (1988-89)",
+              "stretched": true
+            },
+            {
+              "type": "text",
+              "content": "Tout au long de sa carrière jusqu'à aujourd'hui, Tadao Ando concepteur de plus de 300 projets construits \npartout dans le monde."
+            },
+            {
+              "type": "text",
+              "content": "<b>Nous pouvons nommer trois piliers principaux de son approche, influencés par le contexte :</b>"
+            },
+            {
+              "type": "texte",
+              "content": "<b><i><u>Architecture japonaise traditionnelle.</u></i></b> En grandissant au Japon dans des habitations résidentielles communes, cela influence inévitablement la perception et l'idée initiale sur certains aspects. Cependant, selon les mots de Tadao Ando dans l'interview avec Toshio Okumana, il n'utilise aucun élément architectural traditionnel, mais veut évoquer le sentiment de celui-ci, par l'adaptation de la sensibilité émotionnelle, plutôt que par des éléments physiques directs. Ce dernier est un ajout artificiel au bâtiment, qui néanmoins le maintient standardisé sans renforcer la profondeur perceptive et la signification, qui sont placées entre la présence évidente d'éléments. L'approche n'est pas une imitation de la forme, mais l'imitation du sentiment."
+            },
+            {
+              "type": "texte",
+              "content": "<b><i><u>Éphémère et intangible sur le physique.</u></i></b> Tadao Ando est enclin à donner un rôle prédominant aux éléments éphémères en architecture, qui est communément reconnu comme matière solide et structurelle. Cependant, la présence constante et la monumentalité agissent comme un fond pour des facteurs importants, tels que la lumière, qui traitent de la susceptibilité subtile. Très probablement, cette intention est dirigée par l'expérience à laquelle l'architecte s'est exposé à l'adolescence : vers l'âge de 15 ans, il est allé étudier de anciennes maisons rurales pour s'imprégner de l'espace japonais traditionnel."
+            },
+            {
+              "type": "texte",
+              "content": "<b><i><u>Étude de l'architecture à travers le voyage et l'expérience de l'espace.</u></i></b> Comme cela faisait partie intégrante de sa formation architecturale autodidacte, la concentration sur le sentiment et les émotions dans ses propres projets conserve la même importance."
+            },
+            {
+              "type": "entête",
+              "content": "Philosophie architecturale et principes de conception",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i><b><u>« Tension dans l'acceptation »</u></b></i>"
+            },
+            {
+              "type": "text",
+              "content": "Il existe une forte croyance qui pénètre le cadre de l'architecture japonaise, concernant le mélange de \nl'environnement extérieur et de l'espace intérieur. Les frontières entre les définitions duales mentionnées ci-dessus \nont pour but d'être adoucies, visuellement et physiquement, se fondant l'une dans l'autre pour éviter la \ndivision rigide. Cette idée de coexistence harmonieuse des espaces antagonistes trouve sa base dans \nla philosophie et la relation historique avec la nature, et elle est soutenue par de nombreuses stratégies dans le \nNippon Koku."
+            },
+            {
+              "type": "text",
+              "content": "Cependant, Tadao Ando a directement défini, à la fois verbalement et dans ses projets, que son état d'esprit est \noccupé par l'idée de la nécessité du rejet. Selon ses mots, l'acceptation signifie \nabaisser ses gardes, permettant un flux excessif vers l'intérieur, ce qui, par ces moyens, \nperd sa certitude. <i>La raison réside dans l'absence de tension dans l'acte de rejet.</i> Ainsi, le \ncélèbre architecte est convaincu que la tension doit être une partie indiscutable de l'acceptation aussi \nqu'en contexte architectural, la tension signifie la confrontation entre l'extérieur et l'intérieur, \nsoulignant l'importance des lieux dans un bâtiment de leur contestation."
+            },
+            {
+              "type": "text",
+              "content": "Les murs, en tant que frontière la plus forte entre l'intrinsèque et l'extrinsèque, jouent un rôle significatif dans \nl'approche de Tadao Ando — il travaille avec une matérialité fine et, par des positions spécifiques avec des intervalles, crée \ndes ouvertures pour permettre à la structure d'accepter même dans l'acte de rejet primordial. Les murs sont perçus comme une \n« épée », qui coupe le paysage, le ciel, le vent et la lumière du soleil afin de promouvoir une nouvelle révélation. \nCet acte de manifestation n'est pas considéré comme une cruauté envers l'extérieur, mais comme une cérémonie et un acte sacré, \navec l'assimilation de la nature comme une partie égale de l'architecture."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>« Essentiels de la vie humaine »</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando est connu pour son approche minimaliste, reflétée par l'audace et la finesse de ses \nidées. Elle touche aux murs et à l'agencement spatial. Cependant, la simplicité des murs et \nleurs formes brutes et finitions ne repose pas uniquement sur des considérations esthétiques ; sa fondation est profondément \nancrée dans la philosophie de vie d'Ando. Il croit que la culture contemporaine est caractérisée par une \nboucle de désirs satisfaits, sans contrainte et sans fin, il a donc posé une question silencieuse sur ce qui \ncontribue à la richesse de la vie et ce qui est essentiel. À travers ses projets, il transmet une \nréponse supposée avec la signification sous-jacente de la véritable abondance, qui se traduit \ndans la simplification, l'élimination de la décoration de surface, et l'emploi de compositions symétriques. "
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>Silence architecturale </u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "La tranquillité frappante des projets de l'architecte est définie par sa foi que l'architecture devrait \nrester silencieuse et laisser la présence de la nature changeante dominer, restant tolérante au passage \ndu temps, transformations horaires, quotidiennes et saisonnières, qui nourrissent une sensibilité plus fine chez l'humain."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>Revitalisation du lien avec la nature</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Selon Tadao Ando, la croissance démographique et l'urbanisation après la Seconde Guerre mondiale ont rendu impossible la préservation de la base centrale de l'architecture résidentielle japonaise traditionnelle – le lien avec la nature et son ouverture. Dans ses projets, ce principe va au-delà du simple hommage à la valeur historique, mais est plutôt réalisé comme le principal constructeur du concept, de la forme et de la répartition des masses."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>« Vides comme une partie de l'architecture »</u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Si l'architecture peut être comparée à la sculpture, alors il est juste d'établir une corrélation avec la relation entre la masse vide et la masse pleine. Même si l'observation de ces deux médias est sans importance, cela aide à réduire l'échelle de la structure du bâtiment et à commencer à la percevoir principalement en termes de masses. Tadao Ando était convaincu qu'il est essentiel de laisser des espaces vides dans la conception du projet, et de leur donner la même importance que l'intervention humaine. Les interstices doivent porter leur logique intrinsèque au sein de la structure, et cette approche renforce la valeur et l'individualité de l'architecture."
+            },
+            {
+              "type": "text",
+              "content": "<b><i><u>La lumière est un facteur spatial de contrôle important </u></i></b>"
+            },
+            {
+              "type": "text",
+              "content": "Tadao Ando a une focalisation sur le rôle de la lumière \ndans l'environnement construit. Il croit que l'architecture ne concerne pas les murs, le sol et le plafond, mais \nconcernant le monde contenu à l'extérieur. Cet espace peut être modifié non seulement par la forme, mais aussi par \nles moyens de lumière dirigée. Si une corrélation plus ancrée doit être faite,<i> la façon dont la lumière définit \nle caractère des pièces ressemble à la cheminée dans une maison traditionnelle</i>. La lumière peut être \nmanipulée de différentes manières pour créer un environnement doux pour les habitats. "
+            },
+            {
+              "type": "text",
+              "content": "<i><u><b>Vocabulaire restreint </b></u></i>"
+            },
+            {
+              "type": "text",
+              "content": "Ce principe des œuvres de Tadao Ando est perçu directement par chaque observateur, même celui sans \nexpérience en architecture ou dans un domaine connexe. Le paradoxe de l'utilisation limitée dans différentes \ncatégories de structures construites est la corrélation entre le niveau de limitations et l'effet visuel et \nsensoriel. Une palette de matériaux modérée, la rigueur des formes, et la simplicité digne des relations spatiales \naboutissent à un objet visuellement attrayant, également par la différence avec l'environnement naturel \net artificiel."
+            },
+            {
+              "type": "texte",
+              "content": "Un des exemples les plus remarquables, qui, selon les mots de l'architecte, encapsule tous \nde ses principes et met en évidence l'essence de l'ensemble de l'œuvre, est une Row House Sumiyoshi \n(Azuma House) à Osaka, Japon, construite en 1976. Le module résidentiel est \nsitué dans un environnement urbain dense, et sa forme rectangulaire est divisée en trois parties égales, \noù la partie centrale est consacrée à la cour ouverte, connectant habitats et nature, leur exposant \naux conditions météorologiques changeantes chaque fois qu'ils veulent passer d'une partie de la maison à l'autre, \net soulignant la priorité de la nature même dans des conditions difficiles. L'égalité de \nla partie ouverte et sa fonction de liaison obligatoire encapsulent l'approche de Tadao Ando pour \nincorporer la vacuité.  "
+            },
+            {
+              "type": "texte",
+              "content": "Le matériau choisi est le béton non fini, qui est également une caractéristique importante de l' \narchitecte éminent. Il crée une apparence modérée de la maison, ne cherchant pas à évoquer des sentiments plus chauds, \nmais restant fidèle au matériau et orientant l'attention vers les valeurs et significations intrinsèques. <i>L'enveloppe de la Azuma House n'est pas conçue pour impressionner ; les façades des bâtiments de Tadao \nAndo ne répondent pas aux attentes modernes de satisfaction superficielle dans tous les aspects. </i>"
+            },
+            {
+              "type": "texte",
+              "content": "La philosophie de Tadao Ando est unique, et elle ne peut être transmise plus précisément que par ses \nmots. Dans son essai “A Wedge in Circumstances,” il expliquait son approche de l'espace résidentiel – la maison est une scène pour vivre ; \npar conséquent, la manière de recevoir et les chemins sont très \nimportants. Il est convaincu que le plan architectural ne doit pas être perçu de l'intérieur – \nune fois qu'un visiteur entre dans l'espace, il/elle n'a pas besoin de comprendre la disposition, il/elle \ndoit cognitivement comprendre l'espace embrassé. C’est la raison des relations spatiales asymétriques, variables, \net imprévisibles dans ses projets. "
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mrt4jakod3agex.jpg",
+          "order": 5,
+          "authorId": "author-1784896384236-4fokw",
+          "publishedAt": "2026-07-19",
+          "updatedAt": "2026-09-13T19:24:34.608Z"
         }
       ],
       "reviews": [
