@@ -3422,10 +3422,10 @@ const reviewPlainText = (content: Review['content']) => typeof content === 'stri
   : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
 function ReviewBody({ content, t }: { content: Review['content']; t: (key: string) => string }) {
-  if (typeof content === 'string') return <p className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
+  if (typeof content === 'string') return <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
-    if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-3xl sm:text-4xl leading-tight">{text}</h2>;
+    if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight">{text}</h2>;
     if (block.type === 'quote' && text) return <blockquote key={index} className="my-10 font-serif text-[22px] leading-[1.35] sm:text-[30px] sm:leading-[1.3]">{text}</blockquote>;
     if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-serif italic text-xl">{text}</aside>;
     if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
@@ -3436,12 +3436,19 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
        браузер не проигрывает видеофайл внутри iframe. */
     if (block.type === 'video' && text) return <VideoBlock key={index} content={text} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
     if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
-    if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
-    return text ? <p key={index} className="font-serif text-lg leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
+    if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-base sm:text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
+    return text ? <p key={index} className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
   })}</div>;
 }
 
-function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (key: string) => string; onClose: () => void; currentLang: string }) {
+function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages }: { review: Review; t: (key: string) => string; onClose: () => void; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
+  const [isReviewLangOpen, setIsReviewLangOpen] = useState(false);
+  // Same rule as ArticleView: only offer languages this review actually has a
+  // translation for, so switching never silently falls back to the base text.
+  const availableLanguages = useMemo(() => {
+    const translated = new Set(getAvailableLanguagesForEntity('reviews', review.id));
+    return languages.filter((lang) => translated.has(lang));
+  }, [languages, review.id]);
   const resolvedAuthor = resolveAuthor(review);
   const authorName = review.author?.trim() || resolvedAuthor?.name?.trim() || 'EPRIS Journal';
   const explicitAuthor = review.author?.trim() || '';
@@ -3476,11 +3483,50 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
   useLockedPageScroll();
 
   return <motion.article initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} className="fixed inset-0 z-[90] overflow-y-auto bg-[var(--c-bg)]">
-    <div className="mx-auto max-w-5xl px-5 py-6 sm:px-10 sm:py-10"><button onClick={onClose} className="mb-12 inline-flex min-h-11 items-center gap-2 font-mono text-[10px] uppercase tracking-widest"><ArrowLeft size={15} /> {t('nav.reviews')}</button>
+    {/* Same fixed back/lang bar as ArticleView, so the reviews section stops
+        reading as a different site under the same header. */}
+    <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 md:left-16 md:right-16 z-50 flex items-center justify-between">
+      <button
+        type="button"
+        onClick={onClose}
+        className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] hover:opacity-60 transition-opacity bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 py-2 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.14)]"
+      >
+        <ArrowLeft size={16} /> {t('nav.reviews')}
+      </button>
+      {availableLanguages.length > 1 && (
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setIsReviewLangOpen(!isReviewLangOpen)}
+            aria-label="Select language"
+            className="min-h-11 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] bg-[rgb(var(--c-bg-rgb)_/_0.8)] backdrop-blur-sm px-3 sm:px-4 rounded-full border border-[rgb(var(--c-accent-rgb)_/_0.14)] hover:opacity-60 transition-opacity"
+          >
+            <Globe size={14} />
+            {currentLang}
+          </button>
+          {isReviewLangOpen && (
+            <div className="absolute top-full right-0 mt-1 bg-[var(--c-bg)] border border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-xl shadow-lg overflow-hidden min-w-[170px] max-h-[70dvh] overflow-y-auto z-50">
+              {availableLanguages.map(lang => (
+                <button
+                  type="button"
+                  key={lang}
+                  onClick={() => { setCurrentLang(lang); setIsReviewLangOpen(false); }}
+                  className={`w-full min-h-11 px-4 py-2 text-left font-mono text-xs tracking-wider hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors flex items-center justify-between gap-3 ${currentLang === lang ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'text-[var(--c-accent)]'}`}
+                >
+                  <span>{LANG_LABELS[lang] || lang}</span>
+                  <span className="opacity-50">{lang}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+    <div className="mx-auto max-w-5xl px-5 pt-20 pb-6 sm:px-10 sm:pt-28 sm:pb-10">
       {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
       <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10">
         <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p>
-        <h1 className="mt-4 font-serif text-5xl leading-[.94] sm:text-7xl">{review.title}</h1>
+        <h1 className="mt-4 font-serif text-3xl sm:text-4xl md:text-7xl leading-tight md:leading-[.94]">{review.title}</h1>
         <p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>
         <div className="mt-5 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">
           {review.date && <><span>{review.date}</span><span aria-hidden="true" className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.3)]" /></>}
@@ -4900,7 +4946,7 @@ export default function App() {
           <ArticleView article={selectedArticle} related={relatedArticles} onArticleClick={(a) => handleSelectArticle(a.id, a)} onTagClick={handleSearch} onClose={handleCloseArticle} onImageClick={handleImageClick} t={t} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />
         )}
       </AnimatePresence>
-      <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} currentLang={currentLang} />}</AnimatePresence>
+      <AnimatePresence>{selectedReview && <ReviewView review={selectedReview} t={t} onClose={handleCloseReview} currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languageOptions} />}</AnimatePresence>
 
       {/* Материал ещё едет: адрес указывает на статью, живой контент не ответил.
           Без этого экрана читатель видел список статей и решал, что ссылка
