@@ -43102,6 +43102,122 @@
           ],
           "locked": true,
           "publishedAt": "2026-09-12T09:15:00.000Z"
+        },
+        {
+          "id": 37,
+          "title": "Mimleyen Mimarlık",
+          "author": "US Architecture Studio",
+          "role": "Mimarlık Stüdyosu",
+          "date": "12 Eylül 2026",
+          "excerpt": "Çok katmanlı bağlamın Ukrayna kimliğini, US Architecture Studio'nun üç projede, Svatove bozkır kasabasından Ternopil tepelerine, Kiev'deki bir kafeye kadar şekillendirmesi.",
+          "category": "mimarlık",
+          "subcategory": "Stüdyo profili",
+          "tags": [
+            "Mimarlık",
+            "Ukrayna",
+            "US Architecture Studio"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+          "showCover": true,
+          "previewToken": "5b1c8e4a9f2d7036c8a1e4f0",
+          "content": [
+            {
+              "type": "metin",
+              "content": "Mimari, maddi duvarlardan çok daha büyük bir şeydir. Bir mekanın hafızasına, iklimine, alışkanlıklarına, insanların her gün düşünmeden yürüdüğü güzergâhlara maddi biçim verme yeteneğidir. Çevresini dinlemeyi bilen bir bina, üzerinde durduğu zeminin doğal bir uzantısı haline gelir. Doğu'nun açık bozkırından, Galicia'nın dokulu tepelerine, başkentin huzursuz merkezine kadar, Ukrainian practice US Architecture Studio, uygulanan tarzdan çok katmanlı bağlamdan çalışarak, aynı temel soruya üç farklı yanıt ulaşır. Üç coğrafya, üç proje."
+            },
+            {
+              "type": "metin",
+              "content": "Bir binanın kimliği, sonradan eklenen süsleme değildir. Bir mekanın karakterine kesin bir mekansal yanıt verir, zaten altta yatan anlamları toplar ve görünür kılar. Bir duvar çizmeye başlamadan önce, stüdyo kasıtlı olarak temel sorularla çalışır: Bu parsel nedir? Üzerinde bulunduğu cadde ne söylüyor? Kasaba, bölge, çevresindeki kültür nedir? Sonuç, ülkenin kendi kimliğinin bir parçası olarak okunuyor mu? Cevaplar, kurak iklim, yerel ev alışkanlığı, bir şehir bloğunun sürekli transit geçişi, sonunda bir binayı, sonradan üzerine eklenen herhangi bir süsle kıyaslandığında çok daha ikna edici biçimde şekillendirir. Bu yöntemin pratikte nasıl göründüğü, ülkenin çok farklı bölgelerini kapsayan üç projede izlenebilir: doğu bozkırı, batı manzarası ve başkentin atımlı merkezi."
+            },
+            {
+              "type": "başlık",
+              "content": "Svatove: bir formun hafızası",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Svatove dışındaki özel bir ev, Luhansk bölgesindeki geleneksel konutların kelime anlamı yerine, temel mantığını yakından inceleyerek ortaya çıktı. Parselin dar şekli, yerel gelenekler, iklim ve çevredeki yapıların tarihsel oranlarıyla birlikte, yolu geride kalan kompakt beyaz bir hacim belirledi. Planı yaşanabilir, çağdaş bir ölçeğe getirmek için, kompozisyon kuzey tarafında kontrast oluşturan koyu renkli bir blokla tamamlandı; eğimli çatısı, tek bir membranla kaplanarak görsel olarak bütünleştirildi. Genel form, bir teras için oyulmuş iki niş ve bir park yeri için oyulmuş iki niş ile daha da şekillendirildi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtyatjnabh3tw0.jpg",
+              "caption": "Ev'in formu, yerel halk konutlarının oranlarından ve yakındaki tarihi bir yerleşimden adım adım geliştirilmiş. US Architecture Studio'nun izniyle.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Gelenek ve formun sürekliliği burada fark edilmesi kolay olmayan detaylarda kendini gösterir. Terasın ince metal sütunları ve otopark gölgelik, eski ahşap sundurma direğinin fikrini yeni bir malzemede tekrar eder. Beyaz cephedeki üç farklı boyuttaki pencere, geleneksel yerel düzenlemeyi yeniden yorumlar ve konumları, yakındaki bir nehrin akışını yansıtan dalgalı bir ritim oluşturur. İçeride, plan geleneksel koridorlardan kaçınır ve yerine sürekli, akışkan bir alan tercih eder: mutfak ve oturma odası, ikinci kat holüne ve loggiasına yukarı doğru açılır. Sitenin eğimiyle çalışarak, ev, sadece bir giriş yoluna sahip olan ve otoparka giden tek bir asfalt yüzeyini korur, diğer alanı ise tepenin yukarısındaki bir bahçe için serbest bırakır."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtyatkdqe592c6.jpg",
+              "caption": "Zemin ve ikinci kat planları, Svatove. US Architecture Studio'nun izniyle.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Ternopil bölgesi: zaten var olan şeyden inşa edilmiştir",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Bağlam sadece kültürel veya doğal değildir. Ternopil bölgesinde bir arsada, kelimenin tam anlamıyla bir kısıtlama vardı: 2000'lerin genel bir evinden kalan mevcut taş kaide ve temel. Bu verilen, kasabaya taşınmayı tercih eden bir aile için inşa edilen kasıtlı olarak rasyonel bir evin başlangıç noktası oldu. Buradaki her pencere ve her metrekare doğrudan fonksiyona cevap verir. Cephelerin kısıtlaması ve paleti, yerel yapı geleneğinden doğrudan alınmış olup, çatı, eğiminde bir dizi kırıkla yarım kalça formunda, çoğu biçimsel işi yapar."
+            },
+            {
+              "type": "metin",
+              "content": "O siluet, Galicia'nın görsel kültüründe derinlemesine yer alır ve bölgeden gelen herkes için içgüdüsel olarak tanıdık görünür. Ayrıca, düz bir çatı veya kalça çatısından çok daha belirgin bir hacim üretir ve tamamen pratik bir sorunu çözer: çatı katını, çatı pencerelerine başvurmadan tam yükseklikte kullanılabilir tutar. Sitenin belirgin eğimiyle çalışırken, evin katı pratikliği, konfora daha yakın bir hale yerleşir ve yerel karakteri doğrudan fonksiyondan büyür, üzerine uygulanmaz."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
+              "caption": "Zemin ve çatı katı planları, Ternopil bölgesinde mevcut bir temel üzerine inşa edilmiş bir ev. US Architecture Studio tarafından sağlanmıştır.",
+              "align": "merkez"
+            },
+            {
+              "type": "başlık",
+              "content": "Kyiv: hareket halindeki bir şehir için tasarım",
+              "level": 2
+            },
+            {
+              "type": "metin",
+              "content": "Büyük bir şehirde, doğal arazi ve tarih başka bir şeyle birleşir: sürekli hareket. Kyiv'in Solomianskyi bölgesinde bir kafe projesi, Povitrianykh Syl Bulvarı boyunca uzanan yeşil bir şeridin içinde yer alır, öğrenci yurtları ve üniversite binalarının arasında sıkışmış, bunlar arasında sürekli yaya trafiği gözlemlenir. Bina bu geçişi, iç mekanı sokaktan koruyan dalga şeklinde, yalıtıcı bir duvarla karşılık verir; yüzeyini yalnızca bir kez kırar, tek bir yuvarlak pencere için. Kafenin ana görsel çekiciliği, içeri doğru kıvrılan dalga motifine sahip ağır bir çıkıntılı çatı olup, bu motif yukarıda bir dizi konveks kemere dönüşür. Tavanın dinamik dikey çizgileri, terası iç mekana bağlar, odanın uzunluğunda uzanır ve barın arkasındaki duvara kesilir. Aynı şekil, dış mekânı da yapılandırır, cephedeki üç kemerden oluşan bir ritim belirler."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtyathy1w4we2s.jpg",
+              "caption": "Soloma, Kyiv'in Solomianskyi bölgesi için tasarlanmış, Povitrianykh Syl Bulvarı boyunca uzanan yeşil bir şeridin içinde yer alan bir kafe. US Architecture Studio'nun izniyle.",
+              "align": "merkez"
+            },
+            {
+              "type": "metin",
+              "content": "İçeride, kolonlardan arındırılmış hacim, görsel olarak samimi bir bölgeye ve beş farklı oturma seçeneği sunan ana salona bölünür: yarı özel köşeler, uzun bir ortak masa, panoramik pencereler boyunca sıralanmış oturma alanları ve daha küçük masalardan oluşan merkezi bir ada. Dışarıdan, binanın genel geometrisi, yanından geçen trafik ve yayaların ritmine cevap verirken, mevcut ağaçların bir ekranı onu yoldan nazikçe ayırır. İçeride, ana salon, arsa köşesine karşılık gelir, sakinliğini ve karşıdaki meydanın açık, panoramik manzarasını korur."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mtyatihdm4zjzr.jpg",
+              "caption": "Arsa ile üniversite alanını izole ederek, ardından meydan ve ötesindeki yeşil alanlara doğru görsel bir hat açar, çıkıntılı çatı ise nihai formuna yerleşmeden önce. US Architecture Studio'nun izniyle.",
+              "align": "merkez"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtyatirfl7dv8y.jpg",
+              "caption": "Zemin kat planı, Soloma. US Architecture Studio'nun izniyle.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Gerçekten canlı bir bina her zaman yerinin, kültürünün, mekânsal çevresinin derin bir okumasından büyür, altında yatan zeminin doğal bir uzantısı haline gelir. İşte bu bağlantı mimarinin gerçek içeriğini sağlar, ona zamanla değer katmaz ve çevresindeki alanı daha kolay fark edilip anlaşılır kılar."
+            },
+            {
+              "type": "text",
+              "content": "<i>US Architecture Studio, mimarlık ve kimlik danışmanlığı alanında çalışan Ukraynalı bir uygulamadır ve aynı zamanda UkrArchStyle medya projesini yürütmektedir. Daha fazla çalışmaları için: <a href=\"https://us-arch-studio.framer.website/\" target=\"_blank\" rel=\"noopener\">us-arch-studio.framer.website</a>.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-13T19:41:41.800Z",
+          "locked": true,
+          "contributorId": "author-us-architecture-studio",
+          "publishAt": "2026-09-13T06:44:28.607Z"
         }
       ],
       "reviews": [
