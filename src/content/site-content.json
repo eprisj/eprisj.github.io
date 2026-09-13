@@ -36637,6 +36637,71 @@
           ],
           "locked": true,
           "publishedAt": "2026-09-12T09:15:00.000Z"
+        },
+        {
+          "id": 38,
+          "title": "Dos Septiembres: Cómo Francia lee e Italia mira",
+          "author": "EPRIS Journal",
+          "role": "Mesa Editorial",
+          "date": "13 de sep de 2026",
+          "excerpt": "Cuatrocientos sesenta y una novelas llegan a las librerías francesas este mes. En el Lido, la ochenta y tercera Mostra entrega su León de Oro. Ningún país espera al otoño para reiniciar.",
+          "category": "Cultura",
+          "subcategory": "Notas de Cultura",
+          "tags": [
+            "Literatura",
+            "Cine",
+            "Francia",
+            "Italia"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+          "draft": true,
+          "publishedAt": "2026-09-13",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Cada septiembre, antes de que el año escolar se asiente, dos países reinician sus calendarios creativos en días uno del otro. En Francia, cientos de nuevas novelas llegan a las librerías en una sola ola coordinada. En Italia, un festival de cine que ha funcionado desde 1932 reabre sus puertas en el Lido. Ningún ritual es nuevo, y ninguno muestra signos de desaceleración."
+            },
+            {
+              "type": "encabezado",
+              "content": "Francia: cuatrocientos sesenta y un novelas en una temporada"
+            },
+            {
+              "type": "texto",
+              "content": "La rentrée littéraire es una costumbre editorial francesa sin equivalente directo en otros lugares: casi todos los principales editores lanzan sus títulos más serios dentro de la misma ventana de ocho semanas, desde finales de agosto hasta octubre, compitiendo por el mismo espacio en estanterías, las mismas reseñas y los mismos premios literarios de otoño. La edición de 2026 cuenta con 461 novelas, menos que las 484 del año anterior. De esas, 344 están escritas en francés y 117 son traducciones, y 68 son novelas debut, cinco menos que en 2025. El volumen ha estado disminuyendo durante una década, una tendencia que los editores atribuyen a hábitos de lectura en disminución y presupuestos familiares más ajustados, pero el ritual en sí no ha sido cuestionado: la temporada aún decide qué nombres pasan a las listas cortas del Prix Goncourt y Prix Renaudot dos meses después."
+            },
+            {
+              "type": "imagen",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
+              "caption": "La Mouette Rieuse, una librería en el distrito del Marais en París, durante una temporada de rentrée littéraire.",
+              "credit": "Foto: ActuaLitté, CC BY-SA 2.0, vía Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
+              "alt": "Fachada de la librería La Mouette Rieuse en París"
+            },
+            {
+              "type": "header",
+              "content": "Italia: un festival lo suficientemente antiguo como para haber superado varias eras del cine"
+            },
+            {
+              "type": "text",
+              "content": "El Festival Internacional de Cine de Venecia, la Mostra, ha funcionado en el Lido desde 1932, convirtiéndolo en el festival de cine más antiguo del mundo. Su 83ª edición se inauguró el 2 de septiembre de 2026 y cerró diez días después con el León de Oro a la Mejor Película que fue Woman Unknown, el drama danés de May el-Toukhy sobre un amorío durante la guerra de una criada, con el jurado liderado por Maggie Gyllenhaal. Ilya Khrzhanovsky ganó el León de Plata a Mejor Director por DAU, y los Leones de Oro honorarios por logros de toda la vida fueron para George Clooney y Ellen Burstyn. El propio lugar del festival, el Palazzo del Cinema, ha estado en el mismo tramo del Lido desde 1937, un punto fijo en torno al cual toda la industria se reconstruye cada año."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+              "caption": "El Palazzo del Cinema en el Lido di Venezia, hogar del Festival de Cine de Venecia desde 1937.",
+              "credit": "Foto: Derbrauni, CC BY 4.0, vía Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
+              "alt": "El edificio Palazzo del Cinema en el Lido de Venecia"
+            },
+            {
+              "type": "text",
+              "content": "París cuenta novelas; Venecia cuenta minutos en la alfombra roja. Pero ambas ciudades tratan septiembre de la misma manera: no como el fin del verano, sino como el mes en el que toda la producción creativa del año se clasifica en lo que importará y lo que no."
+            }
+          ],
+          "createdBy": "admin",
+          "previewToken": "a4036338d5bc3bb47895e084",
+          "updatedAt": "2026-09-13T20:07:35.654Z"
         }
       ],
       "reviews": [
@@ -50315,6 +50380,71 @@
           ],
           "updatedAt": "2026-09-12T11:53:55.972Z",
           "contributorId": "author-us-architecture-studio"
+        },
+        {
+          "id": 38,
+          "title": "Due Settembre: Come la Francia Legge e l'Italia Guarda",
+          "author": "EPRIS Journal",
+          "role": "Redazione Editoriale",
+          "date": "13 set 2026",
+          "excerpt": "Quattrocentosessantuno romanzi arrivano nelle librerie francesi questo mese. Al Lido, la ottantatreesima Mostra assegna il suo Leone d'Oro. Nessuno dei due paesi aspetta l'autunno per ricominciare.",
+          "category": "Cultura",
+          "subcategory": "Note sulla Cultura",
+          "tags": [
+            "Letteratura",
+            "Cinema",
+            "Francia",
+            "Italia"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+          "draft": true,
+          "publishedAt": "2026-09-13",
+          "content": [
+            {
+              "type": "text",
+              "content": "Ogni settembre, prima che l'anno scolastico si sia nemmeno stabilito, due paesi riavviano i loro calendari creativi a pochi giorni di distanza l'uno dall'altro. In Francia, centinaia di nuovi romanzi arrivano nelle librerie in un'unica ondata coordinata. In Italia, un festival cinematografico in attività dal 1932 riapre le sue porte sul Lido. Nessuno dei due rituali è nuovo, e nessuno mostra segni di rallentamento."
+            },
+            {
+              "type": "header",
+              "content": "France: quattrocentosessantuno romanzi in una stagione"
+            },
+            {
+              "type": "text",
+              "content": "La rentrée littéraire è una consuetudine editoriale francese senza un equivalente diretto altrove: quasi ogni grande editore pubblica i suoi titoli più seri entro lo stesso finestra di otto settimane, dalla fine di agosto ad ottobre, competendo per lo stesso spazio sugli scaffali, le stesse recensioni e gli stessi premi letterari autunnali. L'edizione del 2026 conta 461 romanzi, in calo rispetto ai 484 dell'anno precedente. Di questi, 344 sono scritti in francese e 117 sono traduzioni, e 68 sono romanzi d'esordio, cinque in meno rispetto al 2025. Il volume è in calo da un decennio, una tendenza che gli editori attribuiscono alla diminuzione delle abitudini di lettura e a budget domestici più ristretti, ma il rituale stesso non è stato messo in discussione: la stagione decide ancora quali nomi entreranno nelle liste del Prix Goncourt e del Prix Renaudot due mesi dopo."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
+              "caption": "La Mouette Rieuse, una libreria nel quartiere Marais di Parigi, durante una stagione di rentrée littéraire.",
+              "credit": "Photo: ActuaLitté, CC BY-SA 2.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
+              "alt": "Vetrina della libreria parigina La Mouette Rieuse"
+            },
+            {
+              "type": "header",
+              "content": "Italia: un festival abbastanza antico da aver superato diverse epoche del cinema"
+            },
+            {
+              "type": "text",
+              "content": "La Mostra del Cinema di Venezia, la Mostra, si svolge sul Lido dal 1932, rendendola il più antico festival cinematografico al mondo. La sua 83ª edizione si è aperta il 2 settembre 2026 e si è chiusa dieci giorni dopo con il Leone d'Oro per il Miglior Film andato a Woman Unknown, il dramma danese di May el-Toukhy sulla relazione di una domestica durante la guerra, con la giuria guidata da Maggie Gyllenhaal. Ilya Khrzhanovsky ha vinto il Leone d'Argento per il Miglior Regista per DAU, e i Leone d'Oro onorari per il riconoscimento della carriera sono andati a George Clooney e Ellen Burstyn. La sede stessa del festival, il Palazzo del Cinema, si trova nello stesso tratto del Lido dal 1937, un punto fisso intorno a cui si ricostruisce ogni anno il resto dell'industria."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+              "caption": "Il Palazzo del Cinema sul Lido di Venezia, sede della Mostra del Cinema di Venezia dal 1937.",
+              "credit": "Photo: Derbrauni, CC BY 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
+              "alt": "L'edificio del Palazzo del Cinema sul Lido di Venezia"
+            },
+            {
+              "type": "text",
+              "content": "Parigi conta romanzi; Venezia conta minuti sul tappeto rosso. Ma entrambe le città trattano settembre allo stesso modo: non come la fine dell'estate, ma come il mese in cui l'intera produzione creativa di un anno viene ordinata in ciò che avrà importanza e ciò che no."
+            }
+          ],
+          "createdBy": "admin",
+          "previewToken": "a4036338d5bc3bb47895e084",
+          "updatedAt": "2026-09-13T20:07:43.883Z"
         }
       ],
       "reviews": [
