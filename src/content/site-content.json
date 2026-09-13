@@ -8654,18 +8654,19 @@
     },
     {
       "id": 38,
-      "title": "Two Septembers: How France Reads and Italy Watches",
+      "title": "Nothing Fallow About It: The Harvest Behind France's Novels and Italy's Golden Lion",
       "author": "EPRIS Journal",
       "role": "Editorial Desk",
       "date": "Sep 13, 2026",
-      "excerpt": "Four hundred and sixty-one novels land in French bookshops this month. On the Lido, the eighty-third Mostra hands out its Golden Lion. Neither country waits for autumn to restart.",
+      "excerpt": "A Roman mosaic already knew what September was for. Two thousand years later France still times its book industry to it, and Italy still times its cinema to it. Nobody involved would call that a coincidence.",
       "category": "Culture",
       "subcategory": "Culture Notes",
       "tags": [
         "Literature",
         "Film",
         "France",
-        "Italy"
+        "Italy",
+        "Art History"
       ],
       "imageSeed": "",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
@@ -8674,15 +8675,43 @@
       "content": [
         {
           "type": "text",
-          "content": "Every September, before the school year has even settled in, two countries restart their creative calendars within days of each other. In France, hundreds of new novels arrive in bookshops in a single coordinated wave. In Italy, a film festival that has run since 1932 reopens its doors on the Lido. Neither ritual is new, and neither shows signs of slowing down."
+          "content": "There is a month European culture never lets lie fallow. Long before anyone published a novel or projected a film, September was already booked: it is when southern Italy's vineyards come down off the vines, when the Roman calendar's own month-mosaics show two men treading grapes rather than resting, when an entire hemisphere's worth of agricultural labor gets crammed into six or seven weeks before the weather turns. Nothing about the modern versions of that instinct is new, only the crop. France now harvests novels in September. Italy harvests films. Both still call the result a season."
         },
         {
           "type": "header",
-          "content": "France: four hundred and sixty-one novels in one season"
+          "content": "A month that was never really free"
         },
         {
           "type": "text",
-          "content": "The rentrée littéraire is a French publishing custom with no direct equivalent elsewhere: nearly every major publisher releases its most serious titles within the same eight-week window, from late August through October, competing for the same shelf space, the same reviews, and the same autumn literary prizes. The 2026 edition counts 461 novels, down from 484 the year before. Of those, 344 are written in French and 117 are translations, and 68 are debut novels, five fewer than in 2025. The volume has been falling for a decade, a trend publishers attribute to shrinking reading habits and tighter household budgets, but the ritual itself has not been questioned: the season still decides which names carry into the Prix Goncourt and Prix Renaudot shortlists two months later."
+          "content": "The habit is older than either country's publishing house or festival jury. A third-century Roman mosaic from El Djem, in what is now Tunisia, gives September its own panel in a calendar of the months, and the panel shows two men treading grapes, not resting after summer. The tribute was to Bacchus, god of wine and, not incidentally, of the theater: the same god the Romans credited with both the vintage and the performance that celebrated it. In the south of Italy, where the heat breaks earlier, the vendemmia still runs through September; in the north, growers wait until November. The harvest and the calendar have simply never agreed to separate."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/9/92/Grape_harvesting_time_%281887%29%2C_by_Francesco_Gioli.jpg",
+          "caption": "Grape Harvesting Time, Francesco Gioli, 1887 — Tuscan peasants at the vendemmia, painted a decade before cinema existed to compete with it.",
+          "credit": "Francesco Gioli (1846–1922), public domain, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grape_harvesting_time_(1887),_by_Francesco_Gioli.jpg",
+          "alt": "Painting of Tuscan peasants harvesting grapes, 1887"
+        },
+        {
+          "type": "text",
+          "content": "Caravaggio painted the same debt more directly, a decade before 1600: his Bacchus, now in the Uffizi, reclines with a wine glass in one hand and a wreath of vine leaves already loosening in his hair, unhurried in exactly the way the actual harvest never is. The painting has outlasted the empire that worshipped its subject by over a thousand years; the vendemmia has outlasted the painting by roughly the same margin again, still arriving on schedule every September without needing anyone's permission."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bacchus-Caravaggio_%281598%29.jpg",
+          "caption": "Bacchus, Caravaggio, c. 1598, Uffizi Gallery, Florence.",
+          "credit": "Michelangelo Merisi da Caravaggio, public domain, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacchus-Caravaggio_(1598).jpg",
+          "alt": "Caravaggio's painting of Bacchus reclining with wine and grape leaves"
+        },
+        {
+          "type": "header",
+          "content": "France: the harvest moved from the vine to the shelf"
+        },
+        {
+          "type": "text",
+          "content": "France runs its own September harvest twice over, and rarely notices the overlap. Champagne's growers still call theirs the vendange; in 2026 an unusually mild winter and three summer heat waves pushed it earlier than anyone alive could remember, finishing by September 4 instead of dragging into the month as usual. The other harvest, the rentrée littéraire, keeps its own, stubborn calendar. The idea was already in the air by the 1880s, when the philosopher Ernest Renan first named the pattern, and the creation of the Prix Goncourt in 1903 gave publishers their first real reason to time a book's release around it. But the rentrée as anyone would recognize it today is a postwar invention: publishers only started clustering releases into a single autumn window in the late 1950s, once enough literary prizes were competing for the same November announcements to make August a wasted month. The 2026 rentrée counts 461 novels, 344 of them written in French, 117 translated, and 68 first novels, five fewer than the year before. The volume has been shrinking for a decade, but the deadline has not moved, because the deadline was never really about the books. It is about which of those 461 titles gets to stand in front of the Académie Goncourt's jury in November, and a book that arrives in October is already too late to be considered."
         },
         {
           "type": "image",
@@ -8694,23 +8723,23 @@
         },
         {
           "type": "header",
-          "content": "Italy: a festival old enough to have outlived several eras of cinema"
+          "content": "Italy: the same instinct, dressed as a festival"
         },
         {
           "type": "text",
-          "content": "The Venice International Film Festival, the Mostra, has run on the Lido since 1932, making it the oldest film festival in the world. Its 83rd edition opened on September 2, 2026, and closed ten days later with the Golden Lion for Best Film going to Woman Unknown, May el-Toukhy's Danish drama about a housemaid's wartime affair, with the jury led by Maggie Gyllenhaal. Ilya Khrzhanovsky won the Silver Lion for Best Director for DAU, and honorary Golden Lions for lifetime achievement went to George Clooney and Ellen Burstyn. The festival's own venue, the Palazzo del Cinema, has stood on the same stretch of the Lido since 1937, a fixed point the rest of the industry rebuilds itself around every year."
+          "content": "Cinema's September ritual is younger than the vendemmia by about two thousand years and younger than the rentrée littéraire by roughly three decades, but it was built with the same appetite for spectacle Bacchus originally got the tribute for. The Venice International Film Festival opened in 1932 as an event within that year's Biennale, engineered by three men, Giuseppe Volpi, Luciano de Feo, and Antonio Maraini, who understood cinema's use as a projection of a modern, image-conscious Italy under Mussolini's government as clearly as they understood its box office. The first prize, introduced in 1934, was named the Coppa Mussolini; the festival went dark entirely from 1943 to 1945, then returned and, in 1949, replaced its old prize with the Golden Lion. The 83rd edition ran September 2 to 12, 2026, and gave that Lion to Woman Unknown, May el-Toukhy's Danish drama about a housemaid's wartime affair, under a jury led by Maggie Gyllenhaal. Ilya Khrzhanovsky took the Silver Lion for Best Director for DAU. George Clooney and Ellen Burstyn each received an honorary Golden Lion for lifetime achievement, the same honor the festival gave Werner Herzog the year before."
         },
         {
           "type": "image",
-          "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-          "caption": "The Palazzo del Cinema on the Lido di Venezia, home of the Venice Film Festival since 1937.",
-          "credit": "Photo: Derbrauni, CC BY 4.0, via Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
-          "alt": "The Palazzo del Cinema building on the Venice Lido"
+          "content": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Werner_Herzog_Venice_Film_Festival_2025.jpg",
+          "caption": "Werner Herzog with his Golden Lion for Lifetime Achievement at the 82nd Venice Film Festival, 2025.",
+          "credit": "Photo: Colleen Sturtevant, CC BY-SA 4.0, via Wikimedia Commons",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Werner_Herzog_Venice_Film_Festival_2025.jpg",
+          "alt": "Werner Herzog holding his Golden Lion trophy"
         },
         {
           "type": "text",
-          "content": "Paris counts novels; Venice counts red-carpet minutes. But both cities treat September the same way: not as the end of summer, but as the one month when an entire year's creative output gets sorted into what will matter and what will not."
+          "content": "Paris will spend the next two months deciding which of four hundred and sixty-one novels get to matter. Venice has already spent its ten days deciding the same thing for a smaller, slower pool of films. Neither city would describe what it is doing as a harvest, and neither needs to: the metaphor was already carved into a mosaic in Roman Africa a thousand years before either institution existed, and none of the three, the grape, the novel, or the film, has ever managed to make September optional."
         }
       ],
       "createdBy": "admin",
