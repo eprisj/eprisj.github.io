@@ -43721,6 +43721,105 @@
           "locked": true,
           "contributorId": "author-us-architecture-studio",
           "publishAt": "2026-09-13T06:44:28.607Z"
+        },
+        {
+          "id": 38,
+          "title": "Hiçbir Şey Fallow Değil: Fransa'nın Romanlarının ve İtalya'nın Altın Aslanının Ardındaki Hasat",
+          "author": "Viacheslav Munister",
+          "role": "Misafir Editör",
+          "date": "13 Eylül 2026",
+          "excerpt": "Bir Roma mozaği zaten Eylül'ün ne için olduğunu biliyordu. İki bin yıl sonra Fransa hâlâ kitap endüstrisini ona göre ayarlıyor, İtalya hâlâ sinemasını ona göre ayarlıyor. Bu konuda kimse bunu tesadüf olarak adlandırmazdı.",
+          "category": "Kültür",
+          "subcategory": "Kültür Notları",
+          "tags": [
+            "Edebiyat",
+            "Sinema",
+            "Fransa",
+            "İtalya",
+            "Sanat Tarihi"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+          "draft": false,
+          "publishedAt": "2026-09-13",
+          "content": [
+            {
+              "type": "text",
+              "content": "Avrupa kültürünün asla boş bırakmadığı bir ay vardır. Birisi roman yayımlamadan veya film planlamadan çok önce, Eylül zaten rezerve edilmiştir: Güney İtalya'nın bağlarının asmalarından indiği zaman, Roma takviminin kendi ay-mozaiği iki adamın üzüm çiğnediğini gösterir, dinlenmek yerine, tüm bir yarımküreye ait tarımsal emek, hava değişmeden önce altı veya yedi hafta içine sıkıştırılır. Bu içgüdünün modern versiyonlarıyla ilgili hiçbir şey yenilik değildir; sadece ürün değişmiştir. Fransa şimdi Eylül ayında romanları hasat ediyor. İtalya filmleri topluyor. Her ikisi de sonucu hâlâ bir sezon olarak adlandırıyor."
+            },
+            {
+              "type": "text",
+              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">2026 rentrée littéraire'de roman</span></li><li><span class=\"stat-figure\">83.</span><span class=\"stat-label\">Venedik Film Festivali'nin 83. baskısı</span></li><li><span class=\"stat-figure\">1.800</span><span class=\"stat-label\">Roma'nın hasadı taşa oymasının üzerinden geçen yıl</span></li></ul>"
+            },
+            {
+              "type": "header",
+              "content": "Hiç gerçekten özgür olmamış bir ay"
+            },
+            {
+              "type": "text",
+              "content": "Alışkanlık, her iki ülkenin yayınevi veya festival jürisinden daha eskiye dayanır. Şimdi Tunus'taki El Djem'den üçüncü yüzyıl Roma mozaiği, Eylül'e takvimde kendi panelini verir ve panel, yaz sonrası dinlenmek yerine iki adamın üzüm çiğnediğini gösterir. Bu anıt, şarap tanrısı Bacchus'a adanmıştı ve aynı zamanda tiyatronun tanrısıdır: Romalıların hem bağcılığı hem de onu kutlayan performansı ona atfettiği tanrı. Güney İtalya'da, sıcaklık daha erken kırılırken, vendemmia hâlâ Eylül ayı boyunca devam eder; kuzeyde, üreticiler Kasım ayını bekler. Hasat ve takvim asla ayrılmaya razı olmamıştır."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/9/92/Grape_harvesting_time_%281887%29%2C_by_Francesco_Gioli.jpg",
+              "caption": "Üzüm Hasadı Zamanı, Francesco Gioli, 1887 — Tuscan köylüleri vendemmia sırasında, on yıl önce sinema var olmadan önce onu rekabet etmek için boyanmış.",
+              "credit": "Francesco Gioli (1846–1922), kamu malı, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grape_harvesting_time_(1887),_by_Francesco_Gioli.jpg",
+              "alt": "Tuscan köylülerinin üzüm toplaması tablosu, 1887"
+            },
+            {
+              "type": "metin",
+              "content": "Caravaggio aynı borcu daha doğrudan çizdi, 1600’den on yıl önce: onun Bacchus’u, şu anda Uffizi’de, bir elinde şarap kadehi ve saçında zaten gevşeyen asma yaprağı çelengiyle uzanmış, tam anlamıyla gerçek hasadın asla yapmadığı gibi, acele etmeden. Tablo, konusunu tapmış imparatorluktan bin yıldan fazla bir süre sonra ayakta kaldı. vendemmia, hem imparatorluktan hem de tablodan daha eski ve her Eylül gelmeye devam etmek için hiçbir zaman ikisinin iznine ihtiyaç duymadı."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bacchus-Caravaggio_%281598%29.jpg",
+              "caption": "Bacchus, Caravaggio, c. 1598, Uffizi Galerisi, Floransa.",
+              "credit": "Michelangelo Merisi da Caravaggio, kamu malı, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacchus-Caravaggio_(1598).jpg",
+              "alt": "Caravaggio'nun şarap ve üzüm yapraklarıyla uzanmış Bacchus tablosu"
+            },
+            {
+              "type": "başlık",
+              "content": "Fransa: hasat asmadan rafta taşındı"
+            },
+            {
+              "type": "metin",
+              "content": "Fransa kendi Eylül hasadını iki kez gerçekleştirir ve nadiren örtüşmeyi fark eder. Champagne üreticileri hâlâ kendi hasadını vendange olarak adlandırır; 2026 yılında alışılmadık derecede hafif bir kış ve üç yaz sıcak dalgası, onu yaşayan herkesin hatırlayabileceğinden daha erken, genellikle ay boyunca sürüklenmeden 4 Eylül'de tamamladı. Diğer hasat, rentrée littéraire, kendi inatçı takvimini korur. Fikir zaten 1880'lerde havadaydı, filozof Ernest Renan ilk kez bu düzeni adlandırdığında ve 1903'te Prix Goncourt'un oluşturulması, yayıncıların ilk gerçek nedenlerini kitaplarını onun etrafında zamanlamaya itti. Ama bugün herkesin tanıyacağı şekilde rentrée, bir savaş sonrası icattır: yayıncılar, yeterince edebi ödülün aynı Kasım duyuruları için yarışmaya başlamasıyla, Ağustos'un boşa geçen bir ay olmasını engellemek için, 1950'lerin sonlarında tek bir sonbahar penceresine yayınları toplamaya başladı. 2026 rentrée, 461 roman içeriyor, bunlardan 344'ü Fransızca yazılmış, 117'si çevrilmiş ve 68'i ilk roman, bir önceki yıldan beş az. Hacim on yıldır küçülüyor, ama son tarih değişmedi, çünkü son tarih aslında kitaplarla ilgili değildi. Bu, 461 başlıktan hangisinin Kasım ayında Académie Goncourt jürisinin önünde duracağıyla ilgilidir ve Ekim'de gelen bir kitap, zaten değerlendirilmek için çok geçtir."
+            },
+            {
+              "type": "resim",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
+              "caption": "La Mouette Rieuse, Paris'in Marais bölgesindeki bir kitapçı, bir rentrée littéraire sezonu sırasında.",
+              "credit": "Fotoğraf: ActuaLitté, CC BY-SA 2.0, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
+              "alt": "Paris kitapçısı La Mouette Rieuse'nin vitrin önü"
+            },
+            {
+              "type": "başlık",
+              "content": "İtalya: aynı içgüdü, festival gibi giydirilmiş"
+            },
+            {
+              "type": "metin",
+              "content": "Sinema Eylül ritüeli, vendemmia'dan yaklaşık iki bin yıl daha genç ve yaklaşık otuz yıl daha gençtir, ama aynı gösteri arzusu ile inşa edilmiştir. Bacchus'un başlangıçta övgü aldığı gösteri, Venice Uluslararası Film Festivali 1932'de o yılın Biennale'si içinde bir etkinlik olarak açıldı, üç adam tarafından tasarlandı: Giuseppe Volpi, Luciano de Feo ve Antonio Maraini, sinemanın, Mussolini hükümeti altında modern, görüntüye odaklı bir İtalya'nın yansıması olarak kullanılmasını, gişe başarısını da anladılar. 1934'te tanıtılan ilk ödül, Coppa Mussolini adını aldı; festival 1943'ten 1945'e tamamen kapandı, sonra geri döndü ve 1949'da eski ödülünü Altın Aslan ile değiştirdi. 83. edisyon, 2-12 Eylül 2026 tarihleri arasında gerçekleşti ve bu Aslan'ı, Maggie Gyllenhaal liderliğindeki jürinin karar verdiği, May el-Toukhy'nin Danimarka yapımı, bir hizmetçinin savaş zamanı ilişkisini anlatan drama filmi Woman Unknown'a verdi. Ilya Khrzhanovsky, DAU filmiyle En İyi Yönetmen için Gümüş Aslan kazandı. George Clooney ve Ellen Burstyn, yaşam boyu başarı onuruna verilen onursal Altın Aslan'ı aldı; bu onur, festivalin Werner Herzog'a verdiği yıl ile aynıdır."
+            },
+            {
+              "type": "resim",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Werner_Herzog_Venice_Film_Festival_2025.jpg",
+              "caption": "Werner Herzog Altın Aslanını Yaşam Boyu Başarı Ödülü ile 82. Venedik Film Festivali, 2025.",
+              "credit": "Fotoğraf: Colleen Sturtevant, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Werner_Herzog_Venice_Film_Festival_2025.jpg",
+              "alt": "Werner Herzog Altın Aslan ödülünü tutarken"
+            },
+            {
+              "type": "metin",
+              "content": "Paris önümüzdeki iki ayı, dört yüz altmış bir romanın hangisinin önemli olacağına karar vermekle geçirecek. Venedik ise, daha küçük ve daha yavaş bir film havuzunda aynı şeyi kararlaştırmak için zaten on gününü harcadı. Hiçbir şehir, yaptığı işi bir hasat olarak tanımlamaz ve ikisi de ihtiyaç duymaz: mecaz, Roma Afrika'da yaklaşık on yedi yüzyıl önce bir mozaikte oyulmuştu ve ne üçü, üzüm, roman ya da film, ne de Eylül'ü isteğe bağlı hale getirmeyi başardı."
+            }
+          ],
+          "createdBy": "admin",
+          "previewToken": "a4036338d5bc3bb47895e084",
+          "authorId": "author-1784732936927-kw554",
+          "updatedAt": "2026-09-13T20:29:11.584Z"
         }
       ],
       "reviews": [
