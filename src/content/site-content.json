@@ -8784,7 +8784,7 @@
           "content": "Downstairs, the trains that made the room's fortune have mostly moved on. The line to the Riviera runs faster now and stops less; the TGV that eventually replaced the original Train Bleu does not carry its name, and passengers who want the coast today are more likely to compare fares on a phone than to sit down in a dining room and be sold the destination in oil paint. The advertisement, in other words, has completely outlived the product. What is left is a room that no longer has to persuade anyone of anything, protected by law from ever having to try a different pitch, still setting a table under a ceiling built to make you believe a train ride could feel like arriving somewhere before you had left. Eat there and you are not visiting the past. You are sitting inside a hundred-and-twenty-five-year-old sales pitch that the French state decided was worth telling forever, and paying, gladly, for the privilege of hearing it again."
         }
       ],
-      "featured": true,
+      "featured": false,
       "locked": true,
       "updatedAt": "2026-09-12T10:55:26.956Z"
     },
@@ -8860,7 +8860,7 @@
       ],
       "author": "Maria Ivanova",
       "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
-      "featured": true,
+      "featured": false,
       "category": "Food",
       "verdict": "",
       "meta": "paris · restaurant · €€€",
@@ -9192,7 +9192,7 @@
           "align": "center"
         }
       ],
-      "featured": false,
+      "featured": true,
       "updatedAt": "2026-09-13T06:21:23.932Z",
       "locked": true
     }
