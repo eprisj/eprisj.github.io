@@ -36906,13 +36906,13 @@
         },
         {
           "id": 38,
-          "title": "Nada que Fallow: La cosecha detrás de las novelas de Francia y el León de Oro de Italia",
-          "author": "EPRIS Journal",
-          "role": "Mesa Editorial",
-          "date": "13 de sep de 2026",
+          "title": "Nada que Fallar: La Cosecha Detrás de las Novelas de Francia y el León de Oro de Italia",
+          "author": "Viacheslav Munister",
+          "role": "Editor Invitado",
+          "date": "13 de sep. de 2026",
           "excerpt": "Un mosaico romano ya sabía para qué era septiembre. Dos mil años después, Francia todavía sincroniza su industria del libro con ello, e Italia todavía sincroniza su cine con ello. Nadie involucrado lo llamaría una coincidencia.",
           "category": "Cultura",
-          "subcategory": "Notas de Cultura",
+          "subcategory": "Notas Culturales",
           "tags": [
             "Literatura",
             "Cine",
@@ -36922,16 +36922,16 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-          "draft": true,
+          "draft": false,
           "publishedAt": "2026-09-13",
           "content": [
             {
               "type": "text",
-              "content": "Nunca hay un mes en la cultura europea que deje la tierra en barbecho. Mucho antes de que alguien publicara una novela o proyectara una película, ya septiembre estaba reservado: es cuando las viñas del sur de Italia bajan de las vides, cuando los propios mosaicos del calendario romano muestran a dos hombres pisando uvas en lugar de descansar, cuando una cantidad de trabajo agrícola de todo un hemisferio se acumula en seis o siete semanas antes de que cambie el clima. Nada de lo que hay en las versiones modernas de ese instinto es nuevo; solo ha cambiado la cosecha. Francia ahora cosecha novelas en septiembre. Italia cosecha películas. Ambos todavía llaman al resultado una temporada."
+              "content": "Hay un mes que la cultura europea nunca deja en barbecho. Mucho antes de que alguien publicara una novela o proyectara una película, ya septiembre estaba reservado: es cuando los viñedos del sur de Italia bajan de las vides, cuando los mosaicos del propio calendario romano muestran a dos hombres pisando uvas en lugar de descansar, cuando una cantidad de trabajo agrícola de todo un hemisferio se acumula en seis o siete semanas antes de que cambie el tiempo. Nada de lo que hay en las versiones modernas de ese instinto es nuevo; solo ha cambiado la cosecha. Francia ahora cosecha novelas en septiembre. Italia cosecha películas. Ambos todavía llaman a ese resultado una temporada."
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">novelas en la rentrée littéraire 2026</span></li><li><span class=\"stat-figure\">83ª</span><span class=\"stat-label\">edición del Festival de Cine de Venecia</span></li><li><span class=\"stat-figure\">1,800</span><span class=\"stat-label\">años desde que Roma talló la cosecha en piedra</span></li></ul>"
+              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">novelas en la rentrée littéraire de 2026</span></li><li><span class=\"stat-figure\">83ª</span><span class=\"stat-label\">edición del Festival de Cine de Venecia</span></li><li><span class=\"stat-figure\">1,800</span><span class=\"stat-label\">años desde que Roma talló la cosecha en piedra</span></li></ul>"
             },
             {
               "type": "header",
@@ -36939,7 +36939,7 @@
             },
             {
               "type": "text",
-              "content": "El hábito es anterior tanto a la editorial de cada país como al jurado del festival. Un mosaico romano del siglo III de El Djem, en lo que ahora es Túnez, da a septiembre su propio panel en un calendario de los meses, y el panel muestra a dos hombres pisando uvas, no descansando después del verano. El tributo era a Baco, dios del vino y, no incidentalmente, del teatro: el mismo dios que los romanos acreditaban tanto con la vendimia como con la actuación que la celebraba. En el sur de Italia, donde el calor se rompe antes, la vendimia todavía se extiende por septiembre; en el norte, los agricultores esperan hasta noviembre. La cosecha y el calendario simplemente nunca han acordado separarse."
+              "content": "El hábito es más antiguo que la editorial de cualquiera de los dos países o que el jurado del festival. Un mosaico romano del siglo III de El Djem, en lo que ahora es Túnez, da a septiembre su propio panel en un calendario de meses, y el panel muestra a dos hombres pisando uvas, no descansando después del verano. El tributo era a Baco, dios del vino y, no incidentalmente, del teatro: el mismo dios al que los romanos atribuían tanto la vendimia como la actuación que la celebraba. En el sur de Italia, donde el calor se rompe antes, la vendimia todavía pasa por septiembre; en el norte, los agricultores esperan hasta noviembre. La cosecha y el calendario simplemente nunca han acordado separarse."
             },
             {
               "type": "imagen",
@@ -36951,7 +36951,7 @@
             },
             {
               "type": "texto",
-              "content": "Caravaggio pintó la misma deuda de manera más directa, una década antes de 1600: su Bacchus, ahora en la Uffizi, se reclina con una copa de vino en una mano y una corona de hojas de vid ya aflojándose en su cabello, sin prisa en exactamente la forma en que la cosecha real nunca lo está. La pintura ha perdurado más que el imperio que adoraba su tema por más de mil años. La vendimia es más antigua que tanto el imperio como la pintura, y nunca ha necesitado el permiso de ninguno de los dos para seguir llegando cada septiembre."
+              "content": "Caravaggio pintó la misma deuda de manera más directa, una década antes de 1600: su Bacchus, ahora en los Uffizi, se reclina con una copa de vino en una mano y una corona de hojas de vid ya soltándose en su cabello, sin prisa en exactamente la forma en que la cosecha real nunca lo está. La pintura ha perdurado más que el imperio que adoraba su tema por más de mil años. La vendimia es más antigua que tanto el imperio como la pintura, y nunca ha necesitado permiso de ninguno de los dos para seguir llegando cada septiembre."
             },
             {
               "type": "imagen",
@@ -36967,7 +36967,7 @@
             },
             {
               "type": "texto",
-              "content": "Francia realiza su propia cosecha de septiembre dos veces, y rara vez nota la superposición. Los cultivadores de Champagne todavía llaman a la suya la vendange; en 2026, un invierno inusualmente suave y tres olas de calor de verano la adelantaron más allá de lo que cualquiera vivo podía recordar, terminando el 4 de septiembre en lugar de prolongarse en el mes como de costumbre. La otra cosecha, la rentrée littéraire, mantiene su propio calendario obstinado. La idea ya estaba en el aire en los años 80, cuando el filósofo Ernest Renan nombró por primera vez el patrón, y la creación del Prix Goncourt en 1903 dio a los editores su primera verdadera razón para programar el lanzamiento de un libro en torno a ella. Pero la rentrée como la reconocerían hoy en día es una invención de posguerra: los editores solo comenzaron a agrupar lanzamientos en una sola ventana de otoño a finales de los años 50, una vez que suficientes premios literarios competían por los mismos anuncios de noviembre para hacer de agosto un mes desperdiciado. La rentrée de 2026 cuenta con 461 novelas, 344 de ellas escritas en francés, 117 traducidas, y 68 primeras novelas, cinco menos que el año anterior. El volumen ha estado reduciéndose durante una década, pero la fecha límite no se ha movido, porque la fecha límite nunca fue realmente sobre los libros. Se trata de cuál de esos 461 títulos logra presentarse ante el jurado de la Académie Goncourt en noviembre, y un libro que llega en octubre ya es demasiado tarde para ser considerado."
+              "content": "Francia realiza su propia cosecha de septiembre dos veces, y rara vez nota la superposición. Los cultivadores de Champagne todavía llaman a la suya la vendange; en 2026 un invierno inusualmente suave y tres olas de calor de verano la adelantaron más allá de lo que cualquiera vivo pudiera recordar, terminando para el 4 de septiembre en lugar de extenderse en el mes como de costumbre. La otra cosecha, la rentrée littéraire, mantiene su propio calendario obstinado. La idea ya estaba en el aire en los años 1880, cuando el filósofo Ernest Renan nombró por primera vez el patrón, y la creación del Prix Goncourt en 1903 dio a los editores su primera verdadera razón para programar el lanzamiento de un libro en torno a ella. Pero la rentrée como la reconocerían hoy en día es una invención de posguerra: los editores solo comenzaron a agrupar lanzamientos en una sola ventana de otoño a finales de los años 1950, una vez que suficientes premios literarios competían por los mismos anuncios de noviembre para hacer de agosto un mes desperdiciado. La rentrée de 2026 cuenta con 461 novelas, 344 de ellas escritas en francés, 117 traducidas, y 68 primeras novelas, cinco menos que el año anterior. El volumen ha estado reduciéndose durante una década, pero la fecha límite no se ha movido, porque la fecha límite nunca fue realmente sobre los libros. Se trata de cuál de esos 461 títulos logra presentarse ante el jurado de la Académie Goncourt en noviembre, y un libro que llega en octubre ya es demasiado tarde para ser considerado."
             },
             {
               "type": "imagen",
@@ -36983,7 +36983,7 @@
             },
             {
               "type": "texto",
-              "content": "El ritual de septiembre del cine es más joven que la vendemmia por unos dos mil años y más joven que la rentrée littéraire por aproximadamente tres décadas, pero fue construido con el mismo apetito por el espectáculo por el que Bacchus originalmente recibió tributo. El Festival Internacional de Cine de Venecia se inauguró en 1932 como un evento dentro de la Bienal de ese año, ideado por tres hombres, Giuseppe Volpi, Luciano de Feo y Antonio Maraini, quienes entendieron el uso del cine como una proyección de una Italia moderna y consciente de la imagen bajo el gobierno de Mussolini tan claramente como entendieron su taquilla. El primer premio, introducido en 1934, se llamó la Coppa Mussolini; el festival estuvo en silencio completamente desde 1943 hasta 1945, luego regresó y, en 1949, reemplazó su antiguo premio con el León de Oro. La 83ª edición se realizó del 2 al 12 de septiembre de 2026, y otorgó ese León a Woman Unknown, el drama danés de May el-Toukhy sobre un amorío durante la guerra de una sirvienta, bajo un jurado liderado por Maggie Gyllenhaal. Ilya Khrzhanovsky obtuvo el León de Plata a Mejor Director por DAU. George Clooney y Ellen Burstyn recibieron cada uno un León de Oro honorario por logros de toda la vida, el mismo honor que el festival otorgó a Werner Herzog el año anterior."
+              "content": "El ritual de septiembre del cine es más joven que la vendemmia por unos dos mil años y más joven que la rentrée littéraire por aproximadamente tres décadas, pero fue construido con el mismo apetito por el espectáculo que Bacchus originalmente recibió en tributo. El Festival Internacional de Cine de Venecia se inauguró en 1932 como un evento dentro de la Bienal de ese año, ideado por tres hombres, Giuseppe Volpi, Luciano de Feo y Antonio Maraini, quienes entendieron el uso del cine como una proyección de una Italia moderna y consciente de la imagen bajo el gobierno de Mussolini tan claramente como entendían su taquilla. El primer premio, introducido en 1934, se llamó la Coppa Mussolini; el festival estuvo en silencio completamente desde 1943 hasta 1945, luego regresó y, en 1949, reemplazó su antiguo premio con el Golden Lion. La 83ª edición se realizó del 2 al 12 de septiembre de 2026, y entregó ese León a Woman Unknown, el drama danés de May el-Toukhy sobre un amorío durante la guerra de una sirvienta, bajo un jurado liderado por Maggie Gyllenhaal. Ilya Khrzhanovsky obtuvo el León de Plata a Mejor Director por DAU. George Clooney y Ellen Burstyn recibieron cada uno un Golden Lion honorario por logros de toda una vida, el mismo honor que el festival otorgó a Werner Herzog el año anterior."
             },
             {
               "type": "imagen",
@@ -37000,7 +37000,8 @@
           ],
           "createdBy": "admin",
           "previewToken": "a4036338d5bc3bb47895e084",
-          "updatedAt": "2026-09-13T20:22:14.383Z"
+          "authorId": "author-1784732936927-kw554",
+          "updatedAt": "2026-09-13T20:28:53.180Z"
         }
       ],
       "reviews": [
