@@ -50177,6 +50177,102 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
           "updatedAt": "2026-09-13T19:21:50.599Z",
           "publishedAt": "2026-07-18"
+        },
+        {
+          "id": 17,
+          "title": "Emily Kraus : Rythme du Moment",
+          "author": "Maria Ivanova",
+          "role": "Auteur",
+          "date": "30 juil. 2026",
+          "excerpt": "À l'intérieur du Cube de la Toile, Emily Kraus peint le Rythme du Moment Présent",
+          "category": "art contemporain",
+          "subcategory": "Article",
+          "tags": [
+            "art",
+            "art contemporain"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "texte",
+              "content": "les œuvres d'Emily Kraus (New York, 1995) m'ont laissé indifférent à tout ce qui existe extérieurement. Je suis figé, piégé et stupéfait par l'inconnu. C'est presque comme tomber amoureux – vous n'étiez pas préparé, vous ne l'avez pas demandé, et pourtant c'est l'un des meilleurs sentiments qui puissent arriver à l'être humain."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmgso0atp099.jpg",
+              "caption": "Emily Kraus, Chacun dans l'autre ce que chacun a à donner, 2026. Photo par Ollie Hammick",
+              "align": "centre"
+            },
+            {
+              "type": "texte",
+              "content": "Lorsque l'art fait partie de l'esprit, du corps et de l'âme de l'artiste – vous pouvez le ressentir à partir de la dévotion la plus profonde à la pratique. Cette forme de connexion peut être comparée aux milliards de fils invisibles et fins qui restent intacts entre l'artiste et l'œuvre d'art, même lorsqu'ils sont éloignés. Ils se nourrissent mutuellement et ne seront jamais à nouveau indépendants."
+            },
+            {
+              "type": "texte",
+              "content": "Lorsque vous regardez la peinture et que vous pouvez presque physiquement ressentir la présence de l'auteur - c'est alors que la forme la plus pure de révélation se déploie devant vous."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmzzvhzg92s2.webp",
+              "caption": "Emily Kraus, Stochastic 20, 2023. Photo par Ollie Hammick",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "La première impression n'a pas été suivie par la question « Comment ? ». J'étais trop occupé à gérer les tremblements. La deuxième m'a ramené à la conscience, prêt à être curieux de comment cela a été réalisé."
+            },
+            {
+              "type": "text",
+              "content": "Le manque de curiosité immédiate pour la technique correspond à la croyance de l'artiste que l'œuvre doit vivre par elle-même – la communication avec le spectateur repose sur une réflexion individuelle comme le traducteur le plus clair des visuels."
+            },
+            {
+              "type": "text",
+              "content": "Emily Kraus travaille en tandem avec une structure auto-inventée, faite d'une échafaudage avec des planches et des poteaux tournants, sur laquelle la toile est tendue. Cette approche offre une opportunité unique de faire pivoter la surface et en même temps crée un espace clos semblable à un cube. De l'intérieur, l'artiste applique les peintures à l'huile, puis fait pivoter la toile avant que la peinture ne sèche – à mesure qu'elle passe à travers les poteaux, la peinture devient floue. Les étapes répétées aboutissent au code visuel signature glitchy."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msjmlmp1yo7kfr.jpg",
+                "https://api.eprisjournal.com/uploads/msjmln6mxu4ycf.jpg",
+                "https://api.eprisjournal.com/uploads/msjmmyamb6ai3j.jpg"
+              ]
+            },
+            {
+              "type": "texte",
+              "content": "Alors que la toile est géométriquement structurée, le résultat de toute l'image est inconnu jusqu'à la fin de l'œuvre, qui dure environ un mois."
+            },
+            {
+              "type": "texte",
+              "content": "Il y a une beauté dans l'incontrôlable. La nature de chaque peinture n'est pas dans la recherche d'un attrait visuel, mais dans une décision momentanée, si le geste suivant appartient à cette œuvre émergente ou non. À travers cette signification profonde du processus, basé purement sur les sentiments de l'artiste, la peinture accumule une mémoire puissante et spirituelle."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msjmraxbowmo4w.webp",
+              "caption": "Emily Kraus, Fwooooop, 2024",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "Ce mécanisme a été influencé par le moment où Kraus étudiait en deuxième année au Royal College of Art, qui coïncidait avec COVID-19 et le confinement. Elle s'était vu attribuer un studio cube 2,5 par 2,5 mètres. La surface limitée de la pièce entravait l'intention de Kraus de peindre avec de grands gestes, en expérimentant avec son corps et l'espace. Pour élargir les possibilités de sa pratique dans des conditions existantes, elle a étiré la toile le long de tous les murs en utilisant des barres de douche et des supports en bois. La toile pouvait être tournée, effaçant les frontières de l'espace contenu."
+            },
+            {
+              "type": "texte",
+              "content": "Le concept de confinement en tant que partie d'une perception plus large de l'espace était à l'agenda de l'artiste auparavant. Emily Kraus a exploré les limites des objets, des lieux, et les relations entre eux. De plus, elle pratiquait la méditation, qui reconfigure finalement tout le monde existant, le rendant sans couture large et possible à intégrer totalement dans l'esprit en même temps. L'accumulation de réflexions ainsi que d'un petit espace de studio soulève une question sur comment on peut trouver la liberté lorsque l'on est physiquement confiné et comment l'espace ne peut pas nous libérer de la cage de l'esprit."
+            },
+            {
+              "type": "texte",
+              "content": "Comme l'a déclaré Lucian Freud – « Tout est un autoportrait ». Ces mots ne peuvent pas être plus précis lorsqu'il s'agit d'art. L'essence sublime de l'œuvre d'Emily Kraus est définitive, plutôt que chaotiquement formée – elle détient un BA en Études Religieuses du Kenyon College. Le choix a été influencé par l'auto-questionnement de Kraus sur le sens de la vie."
+            },
+            {
+              "type": "texte",
+              "content": "L'influence profonde d'Emily Kraus sur le monde de l'art contemporain est renforcée par la reconnaissance par de grandes institutions : en tant que l'une des Artsy Vanguard 2026, lauréate du Hopper Prize, et shortlistée pour le Hopper Prize ainsi que le John Moores Painting Prize, elle continue de faire des découvertes à chaque nouvelle œuvre, établissant son chemin solide."
+            }
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/msjmeablnesew5.jpg",
+          "order": 2,
+          "authorId": "author-1784896384236-4fokw",
+          "publishedAt": "2026-07-30",
+          "updatedAt": "2026-09-13T19:22:04.975Z"
         }
       ],
       "reviews": [
