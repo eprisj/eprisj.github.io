@@ -50059,6 +50059,124 @@
           ],
           "updatedAt": "2026-09-12T11:53:57.115Z",
           "contributorId": "author-us-architecture-studio"
+        },
+        {
+          "id": 14,
+          "title": "Sandra Kantanen : Au-delà de l'objectif de la photographie traditionnelle",
+          "author": "EPRIS Journal",
+          "role": "Équipe éditoriale",
+          "date": "18 juillet 2026",
+          "excerpt": "L'artiste finlandaise Sandra Kantanen aborde la photographie comme une passerelle vers l'imaginaire, plutôt qu'un outil pour capturer la réalité objective. Son travail révèle une technique unique, sans frontières…",
+          "category": "art",
+          "subcategory": "Dossier spécial",
+          "tags": [
+            "photographie"
+          ],
+          "imageSeed": "",
+          "content": [
+            {
+              "type": "text",
+              "content": "L'artiste finlandaise Sandra Kantanen aborde la photographie comme une passerelle vers l'imaginaire, plutôt qu'un outil pour capturer la réalité objective. Son travail révèle une philosophie technique unique, sans frontières, qui pousse le médium au-delà des contraintes de l'objectif, défiant le spectateur de questionner où la photographie se termine et où la peinture commence."
+            },
+            {
+              "type": "text",
+              "content": "À première vue, on pourrait supposer que ses paysages éthérés sont le résultat de mélanges de peintures à l'huile et de superpositions traditionnelles. En réalité, ce sont des photographies d'environnements naturels - allant des forêts de sa Finlande natale aux montagnes d'Asie - soumises à une manipulation numérique et physique profonde."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
+              "caption": "Sandra Kantanen, Nature morte (Fleurs 3), 2020",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Née à Helsinki en 1974, Sandra Kantanen est devenue une figure clé de l'École de photographie de Helsinki, reconnue internationalement. Sa formation académique a été construite à l'École d'art, de design et d'architecture Aalto à Helsinki, mais le tournant pivotal de sa trajectoire artistique s'est produit vers l'an 2000, lorsqu'elle a déménagé en Chine en tant qu'étudiante en échange."
+            },
+            {
+              "type": "text",
+              "content": "Étudiant la peinture paysagère traditionnelle chinoise à la Central Academy of Fine Arts à Beijing, Kantanen a été profondément influencée par la philosophie orientale. Elle a été frappée par la façon dont les maîtres anciens n'avaient pas pour but de documenter le paysage, mais de l'idéaliser et de le sublimiser."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
+                "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Sandra Kantanen, \"Sans titre (fleurs roses) , 2013\"",
+                "Sandra Kantanen, \"Sans titre (Sakura 3)\", 2011"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Lors de ses voyages à travers les montagnes sacrées de Chine, elle a été témoin de la tension brutale entre la nature pristine, spiritualisée représentée dans les anciens rouleaux de soie, et les dures réalités de la pollution industrielle moderne et du tourisme. Cette dissonance est devenue le catalyseur de sa pratique : une quête lifelong pour capturer un paysage \"impossible\" – un espace existant quelque part entre mémoire, mythe et distorsion optique."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
+              "caption": "Sandra Kantanen, “Sans titre (Montagne 7)”, 2010"
+            },
+            {
+              "type": "text",
+              "content": "Alors que les paysages déformés par pixels sont sa signature la plus célèbre, la pratique photographique plus large de Kantanen est remarquablement diversifiée. Elle ne s'appuie pas sur un seul truc technique ; au contraire, elle expérimente à travers différentes séries, redéfinissant constamment la façon dont une image photographique peut se comporter :"
+            },
+            {
+              "type": "text",
+              "content": "Les Works de Fumée et la Manipulation de Pixels : Dans sa série la plus renommée, Kantanen intervient physiquement dans la nature avant même que l'obturateur ne clique. En libérant des bombes de fumée colorée dans des forêts reculées – comme celles près de chez elle à Hango, Finlande – elle crée une atmosphère surréaliste, psychédélique qui perturbe le décor banal. Elle prend ensuite ces fichiers numériques et les soumet à une manipulation profonde : floutant les horizons, étirant les données, et forçant manuellement les pixels à couler afin que la photographie imite la fluidité de la peinture liquide."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
+              "caption": "Sandra Kantanen, “Sans titre (Forêt 21)”, 2021"
+            },
+            {
+              "type": "text",
+              "content": "Études Botaniques et Scanners : S'éloignant complètement des vastes paysages et de l'étirement de pixels, ses natures mortes florales et ses œuvres botaniques explorent la décomposition organique de près. Pour cela, elle utilise souvent des formats à grande échelle, de longues expositions, ou même des scanners à plat au lieu d'objectifs de caméra traditionnels. Ces méthodes évoquent la richesse et la profondeur allégorique de la peinture de l'âge d'or néerlandais, en se concentrant sur les textures intimes et le passage lent du temps dans la nature."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
+                "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Sandra Kantanen, “Sans titre (Distorsion 9)”, 2016",
+                "Sandra Kantanen, “Sans titre (Distorsion 6)”, 2017"
+              ]
+            },
+            {
+              "type": "texte",
+              "content": "En passant fluidement entre mise en scène physique, art du scanner, capture directe et distorsion numérique, Kantanen déstabilise constamment notre perception de ce qu'une photographie peut être."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
+              "caption": "Sandra Kantanen, “Horizon”, 2005"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
+              "caption": "Sandra Kantanen, “Pluie”, 2005"
+            },
+            {
+              "type": "text",
+              "content": "Au cours d'une carrière s'étendant sur plus de deux décennies, Sandra Kantanen a reçu une reconnaissance internationale largement répandue pour ses contributions innovantes aux arts visuels contemporains."
+            },
+            {
+              "type": "text",
+              "content": "Son travail a été présenté dans le monde entier, avec des expositions majeures dans des lieux comme la Purdy Hicks Gallery à Londres, Paris Photo, et une rétrospective complète au Turku Art Museum."
+            },
+            {
+              "type": "text",
+              "content": "L'influence de Kantanen est consolidée par son inclusion dans les collections permanentes de certaines des institutions les plus respectées au monde, y compris le J. Paul Getty Museum à Los Angeles, le Brooklyn Museum, le Los Angeles County Museum of Art (LACMA), et le Kiasma Museum of Contemporary Art à Helsinki. Ses monographies, publiées par Hatje Cantz, témoignent d'une artiste qui n'utilise pas simplement la technologie, mais la plie au service éternel de la beauté."
+            }
+          ],
+          "order": 1,
+          "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
+          "updatedAt": "2026-09-13T19:21:50.599Z",
+          "publishedAt": "2026-07-18"
         }
       ],
       "reviews": [
