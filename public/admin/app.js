@@ -15645,8 +15645,13 @@ function bindStudioMediaActions() {
        другом (иногда больше), потому что за секунду успевало пройти два
        рендера. Тост нужен один раз на сообщение - фиксируем текст и не
        повторяем его, пока он не сменится на другой или не исчезнет вовсе. */
+    /* Аудит идёт и тогда, когда «Главная» скрыта ролью: тост звал
+       нажать «Синхронизировать» на вкладке, которой у редактора нет,
+       и на телефоне закрывал собой всю шапку. Спрашиваем саму
+       вкладку, а не роль, — правило переживёт смену списка ролей. */
+    const homepageReachable = !document.querySelector('.tab-btn[data-tab="homepage"]')?.closest('.sb-item')?.hidden;
     const firstError = audit.errors[0] || null;
-    if (firstError && firstError !== _lastHomepageAuditToast) {
+    if (firstError && firstError !== _lastHomepageAuditToast && homepageReachable) {
       showToast?.('info', `Главная требует внимания: ${firstError}`);
     }
     _lastHomepageAuditToast = firstError;
