@@ -54680,6 +54680,93 @@
           ],
           "previewToken": "nb-302ed07ee17bba27",
           "updatedAt": "2026-09-13T19:34:12.051Z"
+        },
+        {
+          "id": 33,
+          "title": "Construit selon une partition : Trois bâtiments où la musique a écrit l'architecture",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "date": "8 septembre 2026",
+          "category": "Architecture",
+          "subcategory": "Essai",
+          "tags": [
+            "architecture",
+            "musique",
+            "iannis xenakis",
+            "le corbusier",
+            "herzog & de meuron",
+            "oma",
+            "acoustique"
+          ],
+          "imageSeed": "built-to-a-score",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtvgwim9qvtvjk.jpg",
+          "excerpt": "La plupart des bâtiments accueillent la musique : une scène, des murs, un programme, une bonne acoustique. Une poignée de bâtiments font quelque chose de plus étrange, et laissent une pièce de musique les concevoir directement, ou laissent le problème de contenir le son décider de tout, du toit jusqu'aux sièges. Trois bâtiments, trois accords différents entre les deux disciplines.",
+          "content": [
+            {
+              "type": "text",
+              "content": "En 1958, le studio de Le Corbusier a construit un pavillon pour Philips à l'Exposition universelle de Bruxelles qui n'avait pas du tout de murs droits : neuf coquilles en béton courbes, en forme de tente et pointues, surmontant une seule salle sombre conçue pour huit minutes de musique. La forme ne provenait pas d'un croquis de bâtiment. Elle venait d'une pièce de musique."
+            },
+            {
+              "type": "text",
+              "content": "Les coquilles étaient l'œuvre d'Iannis Xenakis, un compositeur travaillant comme ingénieur dans l'atelier de Le Corbusier, et leur géométrie remonte à sa pièce orchestrale Metastaseis (1953-54). Xenakis avait noté une passage pour quarante-six instruments à cordes glissant en continu entre les notes, des lignes de glissando tracées comme des lignes droites sur du papier qui, prises ensemble, décrivaient des surfaces courbes : ce qu'un mathématicien appellerait une surface régie, et ce qu'un ingénieur reconnaîtrait comme un paraboloïde hyperbolique. Xenakis a modélisé les murs du pavillon de la même manière qu'il avait modélisé les glissandi, des cordes et des fils rigides représentant le son. Le bâtiment est, dans un sens assez littéral, une pièce de musique construite à l'échelle architecturale."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtsjcy0zh4fu43.jpg",
+              "caption": "Le Pavillon Philips à Expo 58, Bruxelles : neuf coquilles en béton, chacune une surface régie du type que Xenakis avait tracé comme des glissandi. Photo : Anefo, CC0, via Wikimedia Commons.",
+              "align": "center"
+            },
+            {
+              "type": "video",
+              "content": "https://www.youtube.com/watch?v=Jjpq2Y4tUGI",
+              "caption": "Iannis Xenakis, Metastaseis (1953-54), pour 61 musiciens. Les glissandi derrière les coquilles du pavillon.",
+              "credit": "via YouTube"
+            },
+            {
+              "type": "texte",
+              "content": "À l'intérieur, environ 350 haut-parleurs intégrés dans ces murs spatialisaient le Poème électronique d'Edgard Varèse, une pièce sur bande de huit minutes dirigée en direct autour du public par des techniciens à un pupitre de contrôle, synchronisée avec des changements de lumière colorée. Le pavillon a été démoli le 30 janvier 1959, trois mois après la fermeture de l'exposition, son but épuisé avec l'événement qui l'avait financé. Ce qui subsiste, c'est la méthode : la musique n'est pas l'accompagnement d'une pièce, mais une série d'instructions pour en construire une."
+            },
+            {
+              "type": "vidéo",
+              "content": "https://www.youtube.com/watch?v=MmrchX7qYpU",
+              "caption": "Edgard Varèse, Poème électronique (1958). Composé pour les 350 haut-parleurs du Pavillon Philips.",
+              "credit": "via YouTube"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtsjcyljd4lptv.jpg",
+              "caption": "Elbphilharmonie, Hambourg : les étages supérieurs en verre, chaque panneau courbé ou taillé, reposant directement sur la brique de l'entrepôt Kaispeicher. Photo : Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons.",
+              "credit": "Photo : Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamburg,_Elbphilharmonie_--_2023_--_6602.jpg"
+            },
+            {
+              "type": "texte",
+              "content": "Près de soixante ans plus tard, l'Elbphilharmonie de Herzog & de Meuron à Hambourg, inaugurée le 11 janvier 2017, a fait le pari inverse : au lieu de laisser la musique générer la forme du bâtiment, elle a laissé les exigences d'écouter la musique décider de presque tout le reste. L'acousticien Yasuhisa Toyota a conçu la salle principale comme un vignoble, des terrasses de sièges montant autour d'une scène centrale à la manière dont Hans Scharoun avait utilisé pour la Philharmonie de Berlin en 1963, de sorte qu'aucun auditeur parmi 2 100 ne soit à plus de 30 mètres du chef d'orchestre. La surface intérieure de la salle, composée d'environ 10 000 panneaux en fibres de gypse usinés individuellement, est taillée avec un profil différent à chaque point pour disperser le son uniformément plutôt que de le laisser se concentrer en un seul endroit. Toute la structure repose sur 362 ressorts, isolés mécaniquement du bâtiment qui l'entoure, de sorte qu'un train passant ne parvienne jamais à la scène. Au-dessus d'un entrepôt en brique converti, les étages supérieurs en verre du hall de concert ressemblent de l'extérieur à une vague, ou une couronne. Depuis l'intérieur de la salle, cette image est presque hors de propos : la véritable fonction de la pièce est acoustique, et sa forme en est le diagramme."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mtsjczm6llszor.jpg",
+              "caption": "Casa da Música, Porto : l'un des plans en béton plié, avec le verre ondulé qui illumine le hall derrière. Photo : Dale Cruse, CC BY 4.0, via Wikimedia Commons.",
+              "credit": "Photo : John Samuel, CC BY-SA 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_Casa_da_M%C3%BAsica_01.jpg"
+            },
+            {
+              "type": "text",
+              "content": "Rem Koolhaas et Ellen van Loon's OMA ont pris la troisième place avec Casa da Música à Porto, ouverte en 2005. Le bureau voulait éviter la forme standard de la salle de concert en boîte, a essayé des alternatives, et les a mesurées par rapport à la boîte en acoustique qu'il ne pouvait pas surpasser. Donc OMA a conservé la boîte et l'a cachée : une salle rectangulaire pouvant accueillir environ 1 200 personnes, vitrée aux deux extrémités, se trouve à l'intérieur d'un polyèdre blanc irrégulier qui semble plié plutôt que construit, comme si la boîte en carton avait été extraite d'un seul bloc asymétrique. La forme que le bâtiment porte à l'extérieur n'a pas de logique évidente jusqu'à ce que vous sachiez qu'il y a une pièce droite, acoustiquement correcte, à l'intérieur, et que tout ce qui est facetté et irrégulier à l'extérieur est l'architecture trouvant une forme publique pour une décision qu'elle n'était pas libre de prendre."
+            },
+            {
+              "type": "text",
+              "content": "Trois bâtiments, trois relations différentes avec le même problème. Xenakis a laissé une pièce de musique devenir un toit. Toyota et Herzog & de Meuron ont laissé la physique de l'audition dicter une pièce, puis ont enveloppé un bâtiment autour du résultat. Koolhaas a conservé la forme que l'acoustique insiste et a passé le reste de la construction à en discuter. Aucun des trois ne concerne vraiment la musique en architecture. Ils concernent ce qui se passe lorsqu'une discipline qui fonctionne par séquence et proportion est autorisée à donner des ordres à une autre qui fonctionne par charge et matériau, ou est contrainte d'y répondre à la place."
+            },
+            {
+              "type": "text",
+              "content": "Photographies : couverture, Elbphilharmonie lors de sa soirée d'ouverture, 11 janvier 2017, Alexander Svensson (CC BY 2.0) ; Philips Pavilion, Anefo (CC0) ; façade de l'Elbphilharmonie, Dietmar Rabich (CC BY-SA 4.0) ; Casa da Música, Dale Cruse (CC BY 4.0). Tous via Wikimedia Commons."
+            }
+          ],
+          "updatedAt": "2026-09-13T19:34:27.186Z",
+          "showCover": true,
+          "authorId": "author-1784732936927-kw554",
+          "publishAt": "2026-09-08T11:50:24.806Z"
         }
       ],
       "reviews": [
