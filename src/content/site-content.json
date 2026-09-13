@@ -55792,6 +55792,223 @@
           "featured": false,
           "updatedAt": "2026-09-12T14:21:59.996Z",
           "locked": true
+        },
+        {
+          "id": 8,
+          "draft": false,
+          "title": "Dîner à l'intérieur d'une publicité",
+          "subject": "Le Train Bleu · Gare de Lyon, Paris · Marius Toudoire",
+          "rating": 0,
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "ARCHITECTURE & DINING",
+          "date": "SEP 5, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+          "meta": "PARIS · MARIUS TOUDOIRE · 1900–1901 · MONUMENT HISTORIQUE 1972 · PHOTO: CC0 / WIKIMEDIA COMMONS",
+          "verdict": "Le Train Bleu ne sert pas la nostalgie. Il sert un argument de vente vieux de cent vingt-cinq ans pour un train qui a cessé de circuler en 2003, dans une salle que l'État français a légalement gelée depuis 1972 — et vous demande de payer, volontiers, pour le privilège de l'entendre à nouveau.",
+          "pros": [
+            "Quarante et une peintures de dix-sept artistes transforment la salle à manger en une publicité de voyage des années 1900 fonctionnelle, pas une simple décoration",
+            "Le statut de Monument Historique (1972) a maintenu la restauration de 2014 disciplinée — rien de modernisé qui n'ait besoin de l'être",
+            "Le menu (Michel Rostang depuis 2018) joue un rôle de soutien plutôt que de réinterpréter la pièce, ce qui est le bon choix dans un monument",
+            "Cas rare d'une architecture purement commerciale, d'entreprise — construite par une compagnie de chemin de fer pour vendre des billets — préservée avec la même rigueur qu'une cathédrale"
+          ],
+          "cons": [
+            "Le registre délibérément désuet de la cuisine (agneau du chariot, tartare à la table) sera perçu comme une nostalgie coûteuse plutôt que comme une cuisine par certains convives",
+            "En tant que buffet de station de travail dans une gare active, la salle échange un peu de calme contre un flux constant de passants et de touristes"
+          ],
+          "content": [
+            {
+              "type": "texte",
+              "content": "Montez l'escalier double à la Gare de Lyon et vous quittez le chemin de fer. En dessous, les quais fonctionnent selon des horaires mesurés en minutes ; les trains eux-mêmes ont changé de forme quatre ou cinq fois depuis l'ouverture du bâtiment. Au-dessus, rien n'a été autorisé à changer du tout. Vous vous tenez à l'intérieur d'une salle construite en 1900 pour vendre un train qui n'existe plus, pour une compagnie qui n'existe plus, à un public qui est mort depuis un siècle. La salle a survécu à tous les trois. Elle s'appelle Le Train Bleu, c'est un restaurant en activité avec une carte des vins et une ligne de réservations, et depuis 1972 elle est aussi un Monument Historique de France - un morceau de texte publicitaire que l'État protège maintenant comme il protège les cathédrales."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton40n3v6m216.jpg",
+              "alt": "Carte postale d'époque de l'escalier monumental à l'intérieur de la Gare de Lyon, menant au buffet de la station, début du XXe siècle",
+              "caption": "L'escalier menant au Buffet de la Gare de Lyon, photographié peu après son ouverture. Le restaurant maintenant appelé Le Train Bleu se trouve au sommet.",
+              "credit": "domaine public",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buffet_PLM_-_Le_train_Bleu_-_1900.jpg"
+            },
+            {
+              "type": "entête",
+              "content": "Une brochure dans laquelle vous pouvez vous asseoir",
+              "level": 2
+            },
+            {
+              "type": "texte",
+              "content": "La commande n'a jamais vraiment été pour un restaurant. En 1900, la Compagnie des chemins de fer de Paris à Lyon et à la Méditerranée - la PLM - reconstruisait son terminus parisien de zéro pour l'Exposition Universelle, et elle avait besoin que la nouvelle station fasse plus que faire passer des passagers à travers un bâtiment. Elle devait les convaincre de revenir pour une destination que la plupart d'entre eux n'avaient jamais vue : Provence, la Riviera, Alger. L'architecte Marius Toudoire, qui avait déjà dessiné la façade de la station et sa tour d'horloge de 67 mètres, construite en hommage ouvert à Big Ben, a été chargé de construire une salle à manger qui ferait la vente. Il a construit une salle de 26 mètres de long avec un plafond qui se comporte comme un ciel peint, et il a recouvert ses murs de quarante et une peintures de dix-sept artistes différents - Albert Maignan, Henri Gervex, François Flameng, Eugène Burnand parmi eux - chacune une publicité pour une ville que les trains en dessous étaient censés atteindre. Orange, Marseille, Nice, Monaco, Alger : vous pouviez dîner et planifier tout votre itinéraire sur les murs sans jamais consulter un horaire."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton40ylg933pv.jpg",
+              "alt": "Détail d'une fresque Belle Époque à l'intérieur de Le Train Bleu, signé Albert Maignan 1905, représentant une fête dans un jardin au-dessus du théâtre romain à Orange",
+              "caption": "L'une des quarante et une peintures murales, signée par Albert Maignan et datée de 1905, simplement étiquetée Orange - une étape sur la ligne PLM représentée comme une scène de haute société plutôt qu'une photographie d'une gare.",
+              "credit": "Photo : Mbzt / Wikimedia Commons, CC BY 3.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1120998_Paris_XII_gare_de_Lyon_train_bleu_fresque_Orange_rwk.JPG"
+            },
+            {
+              "type": "text",
+              "content": "Cela vaut la peine de s'arrêter dessus, car il est facile de classer la pièce sous « orné » et de passer à la nourriture. Une photographie documente un lieu. Une peinture à l'huile commandée, quarante d'entre elles, accrochée à l'échelle d'une cathédrale, fait quelque chose de plus proche d'une promesse : elle vous dit ce que le lieu ressent pour les personnes qui peuvent se permettre d'y être, ce qui est une affirmation différente et beaucoup plus persuasive. La PLM ne décorait pas une salle d'attente. Elle construisait la version du XIXe siècle d'une page entière dans un magazine glossy, sauf que la page faisait onze mètres de haut, était dorée, éclairée par des lustres en bronze, et structurellement porteuse."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton41e22lwc01.jpg",
+              "alt": "Plafond en stuc doré de Le Train Bleu avec un lustre en bronze au premier plan et des médaillons peints étiquetés Paris et Lyon",
+              "caption": "Le plafond de la Grande Salle : médaillons de ville peints intégrés dans des volutes de stuc, éclairés par les lustres en bronze d'origine.",
+              "credit": "CC0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(2).jpg"
+            },
+            {
+              "type": "header",
+              "content": "Les mesures d'une illusion",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La salle a un nom pour chaque partie de la fiction. La Salle Dorée, la Salle d'Or, fait 18,5 mètres de long sous un plafond de 11 mètres. La salle à manger principale porte le nom de Réjane, après l'actrice qui était l'une de ses premières habituées. Sur un côté, les Salons Tunisien et Algérien - bois sombre sculpté, motifs arabes géométriques, paysages orientalistes - ont été construits pour mettre en scène une version de l'Algérie française pour les hommes d'affaires qui n'y voyageraient jamais, salles favorites pour les déjeuners d'affaires pour cette raison précise. Aucun de ces espaces ne prétend être modeste. Le budget de décoration du bâtiment seul, en 1900 francs, aurait pu construire une gare provinciale à lui seul. C'était, en un sens, le but : la PLM rivalisait avec d'autres compagnies ferroviaires pour les mêmes passagers riches, et le moyen le plus rapide de prouver que vos trains valaient la peine d'être pris était de prouver que votre salle d'attente valait la peine d'y vivre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton41s025cv5t.jpg",
+              "alt": "Plaque sculptée au-dessus d'une arche dans Le Train Bleu enregistrant que le Président Emile Loubet a inauguré le buffet le 7 avril 1901, flanquée de deux sirènes sculptées",
+              "caption": "La dédicace toujours sur le mur : « Emile Loubet, Président de la République Française, inaugura ce buffet le VII avril MDCCCCI. » Le chef de l'État a ouvert un restaurant de gare comme d'autres gouvernements ouvrent des ponts.",
+              "credit": "CC0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu,_novembre_2019_(4).jpg"
+            },
+            {
+              "type": "text",
+              "content": "Le Président Emile Loubet a coupé le ruban lui-même le 7 avril 1901, un détail que la salle affiche encore sur une plaque sculptée flanquée de deux sirènes, comme si l'ouverture d'un buffet de gare nécessitait la même cérémonie qu'un monument aux morts. Dans ses premières décennies, la salle s'appelait simplement le Buffet de la Gare de Lyon - un nom fonctionnel pour un travail à sonner fonctionnel, une salle à manger attachée à une gare. Elle n'est devenue Le Train Bleu qu'en 1963, et c'est là que l'histoire devient plus étrange qu'elle ne devient plus simple : l'express de nuit dont elle a pris le nom, avec ses voitures-lits bleu foncé roulant entre Calais et la Riviera, était encore en service à l'époque - il continuerait à circuler pendant encore quarante ans, jusqu'en 2003. Mais en 1963, le voyage en jet avait déjà enlevé le glamour que le train possédait autrefois ; la Riviera était maintenant à quelques heures en avion, et le wagon-lit de vingt heures était silencieusement passé de la façon la plus rapide d'arriver à la façon la plus romantique d'être retardé. Le restaurant a emprunté ce nom précisément au moment où le vrai train a cessé d'être le point et a commencé à être la légende. Il vend une mémoire du voyage depuis avant que la chose dont il s'est nommé ne cesse de se produire."
+            },
+            {
+              "type": "header",
+              "content": "Un monument qui continue de servir le déjeuner",
+              "level": 2
+            },
+            {
+              "type": "texte",
+              "content": "En 1972 l'État français a officialisé cette mémoire, listant le restaurant, la Salle Dorée, et les salons tunisiens et algériens comme Monuments Historiques - la même désignation qui protège Notre-Dame et les châteaux de la Loire. C'est une chose inhabituelle à protéger : pas une ruine, pas une pièce de musée derrière des barrières de corde, mais une salle à manger commerciale fonctionnelle qui a encore besoin de cuisines en activité, de sorties de secours, et d'une cave à vin. Le paradoxe a produit sa propre discipline. Lorsque le restaurant a fermé pendant trois mois à l'été 2014 pour une restauration de 4,5 millions d'euros - nettoyage et réparation des quarante-et-un tableaux, dorure du stuc, réélectricité des lustres qui avaient été adaptés à l'électricité un siècle plus tôt - le travail a été mené conjointement par Agence Duthilleul, la pratique responsable des stations du réseau TGV, et un Architecte des Monuments Historiques, dont le rôle était de s'assurer que la modernité ne touche à rien de visible. L'architecte Jean-Marie Duthilleul a décrit l'idée originale du bâtiment comme une porte d'entrée vers la Méditerranée située à l'intérieur de Paris, ses trains partants mis en scène comme des navires quittant pour un endroit exotique. La rénovation de 2014 a restauré cette idée plutôt que de la mettre à jour."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton3zskryhe6c.jpg",
+              "alt": "Vue intérieure large de Le Train Bleu, montrant le comptoir de bar ovale doré, plafond voûté peint, lustres, et convives à des tables drapées de blanc",
+              "caption": "La Grande Salle Réjane, 26 mètres de plafond peint au-dessus d'une salle qui n'a cessé de servir le dîner depuis 1901.",
+              "credit": "CC0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_Train_Bleu_(vue_int%C3%A9rieure)_en_f%C3%A9vrier_2023.jpg"
+            },
+            {
+              "type": "texte",
+              "content": "Ce qui a survécu au siècle n'est pas seulement du plâtre. La pièce a absorbé une postérité culturelle qu'elle n'était jamais censée attendre. Coco Chanel et Jean Cocteau y ont pris des tables dans les années 1920 ; Colette en a écrit ; Salvador Dalí, Brigitte Bardot et Jean Gabin en étaient des habitués plus tard. Sept films l'ont utilisée comme lieu de tournage, de <em>Travels with My Aunt</em> en 1972 à la comédie de vacances <em>Mr. Bean</em> en 2007 - une salle à manger Belle Époque jouant son propre rôle, décennie après décennie, dans des histoires qui n'avaient rien à voir avec les chemins de fer. Chaque génération a trouvé une fiction légèrement différente à projeter sur les quarante-et-un tableaux. C'est ce que fait une publicité véritablement réussie : elle cesse d'avoir besoin du produit qu'elle a été conçue pour vendre, et commence à vendre la sensation d'avoir toujours été là."
+            },
+            {
+              "type": "header",
+              "content": "Ce qui est réellement sur la table",
+              "level": 2
+            },
+            {
+              "type": "texte",
+              "content": "Aucun de cela n'aurait d'importance si la cuisine s'était modernisée pour correspondre à l'ambition de la salle, et à son crédit, cela n'a jamais été le cas. Depuis 2018, le restaurant est géré pour son opérateur, SSP, par le chef Michel Rostang, et le menu qu'il a élaboré est délibérément démodé : gigot d'agneau découpé à la table à partir d'un chariot, un gratin dauphinois sans fromage ni œuf à l'ancienne, poulet de Bresse à la crème de estragon, steak tartare mélangé devant vous, baba au rhum fini avec un verre de rhum à la table. Il n'y a aucune tentative de réinterpréter la salle à l'image de la cuisine, comme un chef contemporain pourrait se sentir obligé de faire à l'intérieur d'un monument. La nourriture joue le même rôle de soutien que les peintures : la preuve qu'une version de la France existant principalement dans la mémoire est, pendant la durée d'un repas, toujours disponible à commander."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton426yr3s0w9.jpg",
+              "alt": "Extérieur de jour de la façade de la Gare de Lyon, avec des fenêtres en arc portant des panneaux ovales indiquant Le Train Bleu, au-dessus des auvents de l'entrée de la station",
+              "caption": "La façade de la station que Toudoire a conçue aux côtés du restaurant, ses fenêtres en arc portant encore le nom du restaurant vers la place extérieure.",
+              "credit": "Photo : APB11 / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Les_fen%C3%AAtres_du_Train_Bleu_vues_du_parvis_de_la_gare_de_Lyon.jpg"
+            },
+            {
+              "type": "texte",
+              "content": "En bas, les trains qui ont fait la fortune de la salle ont en grande partie disparu. La ligne vers la Riviera est plus rapide maintenant et s'arrête moins ; le TGV qui a finalement remplacé le Train Bleu d'origine ne porte pas son nom, et les passagers qui veulent la côte aujourd'hui sont plus susceptibles de comparer les tarifs sur un téléphone que de s'asseoir dans une salle à manger et de se faire vendre la destination à la peinture à l'huile. La publicité, en d'autres termes, a complètement survécu au produit. Ce qui reste, c'est une salle qui n'a plus besoin de convaincre personne de quoi que ce soit, protégée par la loi de devoir jamais essayer une autre approche, dressant toujours une table sous un plafond construit pour vous faire croire qu'un voyage en train pourrait ressembler à arriver quelque part avant même d'être parti. Mangez-y et vous ne visitez pas le passé. Vous êtes assis à l'intérieur d'une campagne de vente vieille de cent vingt-cinq ans que l'État français a décidé de raconter pour toujours, et de payer, volontiers, pour le privilège de l'entendre à nouveau."
+            }
+          ],
+          "featured": false,
+          "locked": true,
+          "updatedAt": "2026-09-13T19:42:04.027Z"
+        },
+        {
+          "id": 1,
+          "title": "Le Dauphine",
+          "subject": "131 Avenue Parmentier, Paris",
+          "rating": 4.5,
+          "content": [
+            {
+              "type": "text",
+              "content": "Bistronomie de qualité. Le Dauphine, situé dans le 11ème arrondissement de Paris, est une perle visible, plutôt qu'un joyau caché de la ville. Grâce aux architectes Rem Koolhaas et Clément Blanchet, qui ont travaillé sur la restauration de l'espace de restauration, l'entrée du restaurant brillant et minuscule présente un cadre blanc massif, embrassant la façade en verre et offrant une vue ouverte sur l'intérieur magnifique."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpdtwm8fm1zc.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Le duo de chefs étoilés – Fred Péneau et Inaki Aizpitarte – a commandé au bureau OMA et à Clément Blanchet de transformer moins de 60 mètres carrés en un espace de bistro-gastronomie de qualité. En 2010, Le Dauphine a ouvert ses portes, attirant immédiatement l'attention et l'amour du public, tant pour son design que pour sa cuisine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpfodp7mc2k6.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Surprenamment, les architectes ont vu l'endroit à travers le prisme d'un ancien temple – caractérisé par une hiérarchie forte et des fonctions, qui ont été empruntées et délicatement mises en œuvre. Le Naos est typifié par le comptoir central – le cœur de l'espace, recouvert de bois de chêne. Quatre piliers encerclés amplifient sa relation avec l'ancien temple. Le comptoir central est le cœur, dont la chaleur contraste avec le revêtement total en marbre des murs. Le matériau généralement associé aux salles de bain défie les conventions des intérieurs de restauration et le réalise avec grand succès. Tout l'espace – du plafond au sol – est posé en grandes dalles de pierre avec des veines graphiques restraintes. Simple mais chic – c’est un fond parfait pour un déjeuner de goût en vitesse, ou un dîner sans hâte, lorsque les lumières de la rue parisienne transforment l’extérieur en un hommage à l'une des peintures d'Edouard Leon Cortes."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpw1txo5dnn1.webp",
+              "caption": ""
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpjad387xo0q.webp",
+              "caption": ""
+            },
+            {
+              "type": "text",
+              "content": "Le cadre extérieur, décrit au début, poursuit la narration du Sanctuaire hellénistique avec le dû honneur. Servant de transition entre l'intérieur exalté et la rue, il contient la magie d'une expérience immersive. Passer du banal au sanctuaire des goûts – où chaque choix délibéré élève votre expérience de la qualité – revient à réinterpréter le pronaos classique, séparant le monde extérieur du sacré."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpuvht9d8y4o.webp",
+              "caption": ""
+            },
+            {
+              "type": "texte",
+              "content": "Malgré la superficie modeste, le restaurant ne semble pas compressé – les murs ne sont pas perçus comme restrictifs grâce aux panneaux de miroir reflétant le marbre brillant, les tables et les invités heureux qui partagent le plaisir d’être dans un sanctuaire urbain moderne."
+            },
+            {
+              "type": "texte",
+              "content": "L’élément le plus distinctif adopté du Temple hellénistique est la sensation de monumentalité – l’intérieur dégage une confiance solide en son indépendance du temps et des tendances."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbptvabvc2ngx.webp",
+              "caption": ""
+            },
+            {
+              "type": "texte",
+              "content": "Il s'est avéré vrai – 16 ans après son ouverture en 2010, vous pouvez toujours visiter Le Dauphine et rejoindre la joie au comptoir central sur un tabouret de bar, ou réserver une table pour un dîner bohème moderne et convivial avec votre plus proche."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/msbpxbq4cbdynt.webp",
+              "caption": ""
+            }
+          ],
+          "author": "Maria Ivanova",
+          "imageUrl": "https://api.eprisjournal.com/uploads/ms7zbp2w1tw6jx.webp",
+          "featured": false,
+          "category": "Food",
+          "verdict": "",
+          "meta": "paris · restaurant · €€€",
+          "pros": [],
+          "cons": [],
+          "authorId": "author-1784896384236-4fokw",
+          "role": "Author",
+          "locked": true,
+          "updatedAt": "2026-09-13T19:42:13.733Z"
         }
       ],
       "libraryItems": []
