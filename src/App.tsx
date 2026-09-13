@@ -28,6 +28,7 @@ import {
   getManifest,
   getContentForLanguage,
   orderArticles,
+  articleTimestamp,
   getHomepageArchive,
   getIssueArchive,
   getStudio,
@@ -3533,9 +3534,15 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
    и он набран так же, как был: курсив с золотой линейкой слева. Композиция общая,
    голос раздела — свой. */
 function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
-  // Главный обзор — первым в полосе, остальные в своём порядке.
+  // Главный обзор — первым в полосе, остальные — от нового к старому: без
+  // второго ключа .sort() лишь стабильно сохраняет порядок записей в CMS
+  // (обычно порядок создания, то есть старые сверху), а не порядок публикации.
   const ordered = useMemo(
-    () => [...reviews].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))),
+    () => [...reviews].sort((a, b) =>
+      Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+      || articleTimestamp(b) - articleTimestamp(a)
+      || Number(b.id) - Number(a.id)
+    ),
     [reviews],
   );
 
@@ -4388,7 +4395,11 @@ export default function App() {
      на главной означали бы разное. */
   const homepageReviews = useMemo(
     () => generalReviews(reviews)
-      .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+      .sort((a, b) =>
+        Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+        || articleTimestamp(b) - articleTimestamp(a)
+        || Number(b.id) - Number(a.id)
+      )
       .slice(0, HOMEPAGE_ARTICLE_PREVIEW_COUNT),
     [reviews],
   );
