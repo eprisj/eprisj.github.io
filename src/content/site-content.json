@@ -8675,7 +8675,11 @@
       "content": [
         {
           "type": "text",
-          "content": "There is a month European culture never lets lie fallow. Long before anyone published a novel or projected a film, September was already booked: it is when southern Italy's vineyards come down off the vines, when the Roman calendar's own month-mosaics show two men treading grapes rather than resting, when an entire hemisphere's worth of agricultural labor gets crammed into six or seven weeks before the weather turns. Nothing about the modern versions of that instinct is new, only the crop. France now harvests novels in September. Italy harvests films. Both still call the result a season."
+          "content": "There is a month European culture never lets lie fallow. Long before anyone published a novel or projected a film, September was already booked: it is when southern Italy's vineyards come down off the vines, when the Roman calendar's own month-mosaics show two men treading grapes rather than resting, when an entire hemisphere's worth of agricultural labor gets crammed into six or seven weeks before the weather turns. Nothing about the modern versions of that instinct is new; only the crop has changed. France now harvests novels in September. Italy harvests films. Both still call the result a season."
+        },
+        {
+          "type": "text",
+          "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">novels in the 2026 rentrée littéraire</span></li><li><span class=\"stat-figure\">83rd</span><span class=\"stat-label\">edition of the Venice Film Festival</span></li><li><span class=\"stat-figure\">1,800</span><span class=\"stat-label\">years since Rome carved the harvest into stone</span></li></ul>"
         },
         {
           "type": "header",
@@ -8695,7 +8699,7 @@
         },
         {
           "type": "text",
-          "content": "Caravaggio painted the same debt more directly, a decade before 1600: his Bacchus, now in the Uffizi, reclines with a wine glass in one hand and a wreath of vine leaves already loosening in his hair, unhurried in exactly the way the actual harvest never is. The painting has outlasted the empire that worshipped its subject by over a thousand years; the vendemmia has outlasted the painting by roughly the same margin again, still arriving on schedule every September without needing anyone's permission."
+          "content": "Caravaggio painted the same debt more directly, a decade before 1600: his Bacchus, now in the Uffizi, reclines with a wine glass in one hand and a wreath of vine leaves already loosening in his hair, unhurried in exactly the way the actual harvest never is. The painting has outlasted the empire that worshipped its subject by well over a thousand years. The vendemmia is older than both the empire and the painting, and has never needed either one's permission to keep arriving every September."
         },
         {
           "type": "image",
@@ -8739,7 +8743,7 @@
         },
         {
           "type": "text",
-          "content": "Paris will spend the next two months deciding which of four hundred and sixty-one novels get to matter. Venice has already spent its ten days deciding the same thing for a smaller, slower pool of films. Neither city would describe what it is doing as a harvest, and neither needs to: the metaphor was already carved into a mosaic in Roman Africa a thousand years before either institution existed, and none of the three, the grape, the novel, or the film, has ever managed to make September optional."
+          "content": "Paris will spend the next two months deciding which of four hundred and sixty-one novels get to matter. Venice has already spent its ten days deciding the same thing for a smaller, slower pool of films. Neither city would describe what it is doing as a harvest, and neither needs to: the metaphor was already carved into a mosaic in Roman Africa some seventeen centuries before either institution existed, and none of the three, the grape, the novel, or the film, has ever managed to make September optional."
         }
       ],
       "createdBy": "admin",
