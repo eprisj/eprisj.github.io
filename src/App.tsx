@@ -3453,6 +3453,25 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
   const authorProfile = isMatchingProfile ? resolvedAuthor : null;
   const authorRole = translateRole(review.role || authorProfile?.role, currentLang);
   const authorPhoto = authorProfile?.photoUrl;
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = review.title;
+    const text = review.verdict || review.subject || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {}
+    }
+  };
 
   useLockedPageScroll();
 
@@ -3505,6 +3524,16 @@ function ReviewView({ review, t, onClose, currentLang }: { review: Review; t: (k
               )}
               {(review.date || review.meta) && <p className="font-mono text-xs text-[rgb(var(--c-accent-rgb)_/_0.5)]">{[review.date, review.meta].filter(Boolean).join(' · ')}</p>}
             </div>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={handleShare}
+              className="flex items-center gap-3 px-7 py-3.5 border-[1.5px] border-[rgb(var(--c-accent-rgb)_/_0.24)] rounded-full font-mono text-xs font-bold uppercase tracking-widest text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
+            >
+              {copied ? <Check size={16} /> : <Share2 size={16} />}
+              {copied ? t('share.copied') : t('share')}
+            </button>
           </div>
         </footer>
         <SupportJournal lang={currentLang} className="mt-10 sm:mt-16" />
