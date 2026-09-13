@@ -14119,7 +14119,7 @@ function bindStudioMediaActions() {
     { id: 'archiveTitle', key: 'homepage.archiveTitle', label: 'Daily picks', hint: 'Заголовок архива' },
     { id: 'archiveDescription', key: 'homepage.archiveDescription', label: 'Archive description', hint: 'Пояснение к накоплению' },
   ];
-  const HOMEPAGE_LAYOUT_LANGUAGES = ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
+  const HOMEPAGE_LAYOUT_LANGUAGES = ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR', 'FR'];
 
   function ensureHomepageSettings(data) {
     if (!data.homepage || typeof data.homepage !== 'object' || Array.isArray(data.homepage)) data.homepage = {};
@@ -14691,7 +14691,7 @@ function bindStudioMediaActions() {
       if (item.draft) warnings.push(`${group.label}: первое изображение — черновик.`);
       if (item.publishAt && Date.parse(item.publishAt) > Date.now()) warnings.push(`${group.label}: первое изображение запланировано на будущее.`);
       const localized = data?.localizedCollections && typeof data.localizedCollections === 'object' ? data.localizedCollections : {};
-      const missingDescriptions = (typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'])
+      const missingDescriptions = (typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR', 'FR'])
         .filter((lang) => {
           if (lang === DEFAULT_LANGUAGE) return !String(item.description || '').trim();
           const localizedItem = Array.isArray(localized[lang]?.items) ? localized[lang].items.find((candidate) => Number(candidate?.id) === Number(item.id)) : null;
@@ -15354,7 +15354,7 @@ function bindStudioMediaActions() {
     const editorEl = document.getElementById('homepageCategoryEditor');
     if (!editorEl || !data) return;
     const categories = homepageCategories(data);
-    const languages = typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR'];
+    const languages = typeof getTranslationLanguages === 'function' ? getTranslationLanguages(data) : ['EN', 'RU', 'UA', 'DE', 'IT', 'ES', 'TR', 'FR'];
     const wasOpen = Boolean(editorEl.querySelector('.homepage-category-details')?.open);
     const categoryFields = `<div class="homepage-category-editor-head"><strong>Названия и авторазбор</strong><span>Название показывается на сайте. Ключевые слова помогают автоматически разложить новые фото; подписи ниже — отдельные переводы для 7 языков.</span></div>${categories.map((category, index) => `
       <div class="homepage-category-row">

@@ -219,41 +219,41 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
 // overwritten; shipping the fallback here keeps new labels translated in every
 // locale until an editor overrides them in the admin.
 const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
-  'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa' },
-  'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku' },
-  'homepage.picsTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks' },
-  'homepage.previous': { EN: 'Previous images', RU: 'Предыдущие изображения', UA: 'Попередні зображення', DE: 'Vorherige Bilder', IT: 'Immagini precedenti', ES: 'Imágenes anteriores', TR: 'Önceki görseller' },
-  'homepage.next': { EN: 'Next images', RU: 'Следующие изображения', UA: 'Наступні зображення', DE: 'Nächste Bilder', IT: 'Immagini successive', ES: 'Imágenes siguientes', TR: 'Sonraki görseller' },
-  'homepage.openImage': { EN: 'Open image', RU: 'Открыть изображение', UA: 'Відкрити зображення', DE: 'Bild öffnen', IT: 'Apri immagine', ES: 'Abrir imagen', TR: 'Görseli aç' },
-  'homepage.carouselLabel': { EN: 'Daily Picks categories', RU: 'Категории Daily Picks', UA: 'Категорії Daily Picks', DE: 'Daily Picks Kategorien', IT: 'Categorie Daily Picks', ES: 'Categorías de Daily Picks', TR: 'Daily Picks kategorileri' },
-  'homepage.archiveEyebrow': { EN: 'Archive', RU: 'Архив', UA: 'Архів', DE: 'Archiv', IT: 'Archivio', ES: 'Archivo', TR: 'Arşiv' },
-  'homepage.archiveTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks' },
-  'homepage.archiveDescription': { EN: 'Every past composition stays here after the next one takes its place.', RU: 'Каждая предыдущая подборка остаётся здесь после выхода следующей.', UA: 'Кожна попередня добірка залишається тут після виходу наступної.', DE: 'Jede frühere Komposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione precedente resta qui quando arriva la successiva.', ES: 'Cada composición anterior permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her önceki kompozisyon burada kalır.' },
-  'homepage.descriptionUnavailable': { EN: 'Short description coming soon.', RU: 'Краткое описание появится скоро.', UA: 'Короткий опис з’явиться незабаром.', DE: 'Eine kurze Beschreibung folgt in Kürze.', IT: 'Una breve descrizione arriverà presto.', ES: 'La breve descripción llegará pronto.', TR: 'Kısa açıklama yakında eklenecek.' },
-  'homepage.showDetails': { EN: 'Show description', RU: 'Показать описание', UA: 'Показати опис', DE: 'Beschreibung zeigen', IT: 'Mostra descrizione', ES: 'Mostrar descripción', TR: 'Açıklamayı göster' },
-  'homepage.hideDetails': { EN: 'Hide description', RU: 'Скрыть описание', UA: 'Сховати опис', DE: 'Beschreibung ausblenden', IT: 'Nascondi descrizione', ES: 'Ocultar descripción', TR: 'Açıklamayı gizle' },
-  'homepage.articlesEyebrow': { EN: 'EPRIS / editorial', RU: 'EPRIS / редакция', UA: 'EPRIS / редакція', DE: 'EPRIS / Redaktion', IT: 'EPRIS / redazione', ES: 'EPRIS / editorial', TR: 'EPRIS / editoryal' },
-  'homepage.articlesTitle': { EN: 'Articles', RU: 'Статьи', UA: 'Статті', DE: 'Artikel', IT: 'Articoli', ES: 'Artículos', TR: 'Makaleler' },
-  'homepage.discoverAll': { EN: 'Discover all stories', RU: 'Все материалы', UA: 'Усі матеріали', DE: 'Alle Beiträge entdecken', IT: 'Scopri tutte le storie', ES: 'Descubrir todas las historias', TR: 'Tüm yazıları keşfet' },
-  'homepage.reviewsEyebrow': { EN: 'EPRIS / reviews', RU: 'EPRIS / обзоры', UA: 'EPRIS / огляди', DE: 'EPRIS / Rezensionen', IT: 'EPRIS / recensioni', ES: 'EPRIS / reseñas', TR: 'EPRIS / incelemeler' },
-  'homepage.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler' },
-  'homepage.reviewsDescription': { EN: 'What we have been reading, watching and wearing lately.', RU: 'Что мы читаем, смотрим и носим в последнее время.', UA: 'Що ми читаємо, дивимось і носимо останнім часом.', DE: 'Was wir zuletzt gelesen, gesehen und getragen haben.', IT: 'Cosa abbiamo letto, visto e indossato di recente.', ES: 'Lo que hemos leído, visto y llevado últimamente.', TR: 'Son zamanlarda okuduklarımız, izlediklerimiz ve giydiklerimiz.' },
-  'homepage.allReviews': { EN: 'All reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Rezensionen', IT: 'Tutte le recensioni', ES: 'Todas las reseñas', TR: 'Tüm incelemeler' },
-  'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.' },
-  'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku' },
-  'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku' },
-  'articles.closePreview': { EN: 'Close preview', RU: 'Закрыть превью', UA: 'Закрити прев’ю', DE: 'Vorschau schließen', IT: 'Chiudi anteprima', ES: 'Cerrar vista previa', TR: 'Önizlemeyi kapat' },
-  'articles.by': { EN: 'By', RU: 'Автор', UA: 'Автор', DE: 'Von', IT: 'Di', ES: 'Por', TR: 'Yazan' },
-  'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç' },
-  'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil' },
-  'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç' },
-  'article.notFound': { EN: 'Article not found', RU: 'Статья не найдена', UA: 'Статтю не знайдено', DE: 'Artikel nicht gefunden', IT: 'Articolo non trovato', ES: 'Artículo no encontrado', TR: 'Makale bulunamadı' },
-  'article.loading': { EN: 'Opening the article', RU: 'Открываем статью', UA: 'Відкриваємо статтю', DE: 'Artikel wird geöffnet', IT: 'Apertura dell\'articolo', ES: 'Abriendo el artículo', TR: 'Makale açılıyor' },
-  'article.loading.body': { EN: 'Fetching the latest content. On a slow connection this can take a few seconds.', RU: 'Загружаем свежий материал. На медленной связи это занимает несколько секунд.', UA: 'Завантажуємо свіжий матеріал. На повільному зв\'язку це триває кілька секунд.', DE: 'Wir laden die neuesten Inhalte. Bei langsamer Verbindung dauert das einige Sekunden.', IT: 'Stiamo caricando i contenuti più recenti. Con una connessione lenta può richiedere qualche secondo.', ES: 'Cargando el contenido más reciente. Con una conexión lenta puede tardar unos segundos.', TR: 'En güncel içerik yükleniyor. Yavaş bağlantıda bu birkaç saniye sürebilir.' },
-  'article.retry': { EN: 'Try again', RU: 'Попробовать снова', UA: 'Спробувати ще раз', DE: 'Erneut versuchen', IT: 'Riprova', ES: 'Intentar de nuevo', TR: 'Tekrar dene' },
-  'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.' },
-  'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön' },
-  'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun' },
+  'nav.home': { EN: 'Home', RU: 'Главная', UA: 'Головна', DE: 'Startseite', IT: 'Home', ES: 'Inicio', TR: 'Ana sayfa', FR: 'Accueil' },
+  'reviews.read': { EN: 'Read', RU: 'Читать', UA: 'Читати', DE: 'Lesen', IT: 'Leggi', ES: 'Leer', TR: 'Oku', FR: 'Lire' },
+  'homepage.picsTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks', FR: 'Daily Picks' },
+  'homepage.previous': { EN: 'Previous images', RU: 'Предыдущие изображения', UA: 'Попередні зображення', DE: 'Vorherige Bilder', IT: 'Immagini precedenti', ES: 'Imágenes anteriores', TR: 'Önceki görseller', FR: 'Images précédentes' },
+  'homepage.next': { EN: 'Next images', RU: 'Следующие изображения', UA: 'Наступні зображення', DE: 'Nächste Bilder', IT: 'Immagini successive', ES: 'Imágenes siguientes', TR: 'Sonraki görseller', FR: 'Images suivantes' },
+  'homepage.openImage': { EN: 'Open image', RU: 'Открыть изображение', UA: 'Відкрити зображення', DE: 'Bild öffnen', IT: 'Apri immagine', ES: 'Abrir imagen', TR: 'Görseli aç', FR: 'Ouvrir l\'image' },
+  'homepage.carouselLabel': { EN: 'Daily Picks categories', RU: 'Категории Daily Picks', UA: 'Категорії Daily Picks', DE: 'Daily Picks Kategorien', IT: 'Categorie Daily Picks', ES: 'Categorías de Daily Picks', TR: 'Daily Picks kategorileri', FR: 'Catégories Daily Picks' },
+  'homepage.archiveEyebrow': { EN: 'Archive', RU: 'Архив', UA: 'Архів', DE: 'Archiv', IT: 'Archivio', ES: 'Archivo', TR: 'Arşiv', FR: 'Archives' },
+  'homepage.archiveTitle': { EN: 'Daily Picks', RU: 'Daily Picks', UA: 'Daily Picks', DE: 'Daily Picks', IT: 'Daily Picks', ES: 'Daily Picks', TR: 'Daily Picks', FR: 'Daily Picks' },
+  'homepage.archiveDescription': { EN: 'Every past composition stays here after the next one takes its place.', RU: 'Каждая предыдущая подборка остаётся здесь после выхода следующей.', UA: 'Кожна попередня добірка залишається тут після виходу наступної.', DE: 'Jede frühere Komposition bleibt hier, wenn die nächste erscheint.', IT: 'Ogni composizione precedente resta qui quando arriva la successiva.', ES: 'Cada composición anterior permanece aquí cuando llega la siguiente.', TR: 'Bir sonraki yayınlandığında her önceki kompozisyon burada kalır.', FR: 'Chaque composition précédente reste ici une fois remplacée par la suivante.' },
+  'homepage.descriptionUnavailable': { EN: 'Short description coming soon.', RU: 'Краткое описание появится скоро.', UA: 'Короткий опис з’явиться незабаром.', DE: 'Eine kurze Beschreibung folgt in Kürze.', IT: 'Una breve descrizione arriverà presto.', ES: 'La breve descripción llegará pronto.', TR: 'Kısa açıklama yakında eklenecek.', FR: 'Une brève description arrive bientôt.' },
+  'homepage.showDetails': { EN: 'Show description', RU: 'Показать описание', UA: 'Показати опис', DE: 'Beschreibung zeigen', IT: 'Mostra descrizione', ES: 'Mostrar descripción', TR: 'Açıklamayı göster', FR: 'Afficher la description' },
+  'homepage.hideDetails': { EN: 'Hide description', RU: 'Скрыть описание', UA: 'Сховати опис', DE: 'Beschreibung ausblenden', IT: 'Nascondi descrizione', ES: 'Ocultar descripción', TR: 'Açıklamayı gizle', FR: 'Masquer la description' },
+  'homepage.articlesEyebrow': { EN: 'EPRIS / editorial', RU: 'EPRIS / редакция', UA: 'EPRIS / редакція', DE: 'EPRIS / Redaktion', IT: 'EPRIS / redazione', ES: 'EPRIS / editorial', TR: 'EPRIS / editoryal', FR: 'EPRIS / éditorial' },
+  'homepage.articlesTitle': { EN: 'Articles', RU: 'Статьи', UA: 'Статті', DE: 'Artikel', IT: 'Articoli', ES: 'Artículos', TR: 'Makaleler', FR: 'Articles' },
+  'homepage.discoverAll': { EN: 'Discover all stories', RU: 'Все материалы', UA: 'Усі матеріали', DE: 'Alle Beiträge entdecken', IT: 'Scopri tutte le storie', ES: 'Descubrir todas las historias', TR: 'Tüm yazıları keşfet', FR: 'Découvrir tous les articles' },
+  'homepage.reviewsEyebrow': { EN: 'EPRIS / reviews', RU: 'EPRIS / обзоры', UA: 'EPRIS / огляди', DE: 'EPRIS / Rezensionen', IT: 'EPRIS / recensioni', ES: 'EPRIS / reseñas', TR: 'EPRIS / incelemeler', FR: 'EPRIS / critiques' },
+  'homepage.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler', FR: 'Critiques' },
+  'homepage.reviewsDescription': { EN: 'What we have been reading, watching and wearing lately.', RU: 'Что мы читаем, смотрим и носим в последнее время.', UA: 'Що ми читаємо, дивимось і носимо останнім часом.', DE: 'Was wir zuletzt gelesen, gesehen und getragen haben.', IT: 'Cosa abbiamo letto, visto e indossato di recente.', ES: 'Lo que hemos leído, visto y llevado últimamente.', TR: 'Son zamanlarda okuduklarımız, izlediklerimiz ve giydiklerimiz.', FR: 'Ce que nous avons lu, regardé et porté récemment.' },
+  'homepage.allReviews': { EN: 'All reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Rezensionen', IT: 'Tutte le recensioni', ES: 'Todas las reseñas', TR: 'Tüm incelemeler', FR: 'Toutes les critiques' },
+  'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.', FR: 'Les derniers textes du journal, du plus récent au plus ancien.' },
+  'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku', FR: 'Lire l\'aperçu' },
+  'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku', FR: 'Lire l\'article complet' },
+  'articles.closePreview': { EN: 'Close preview', RU: 'Закрыть превью', UA: 'Закрити прев’ю', DE: 'Vorschau schließen', IT: 'Chiudi anteprima', ES: 'Cerrar vista previa', TR: 'Önizlemeyi kapat', FR: 'Fermer l\'aperçu' },
+  'articles.by': { EN: 'By', RU: 'Автор', UA: 'Автор', DE: 'Von', IT: 'Di', ES: 'Por', TR: 'Yazan', FR: 'Par' },
+  'video.openVideo': { EN: 'Open video', RU: 'Открыть видео', UA: 'Відкрити відео', DE: 'Video öffnen', IT: 'Apri video', ES: 'Abrir vídeo', TR: 'Videoyu aç', FR: 'Ouvrir la vidéo' },
+  'lang.title': { EN: 'Language', RU: 'Язык', UA: 'Мова', DE: 'Sprache', IT: 'Lingua', ES: 'Idioma', TR: 'Dil', FR: 'Langue' },
+  'lang.chooseEdition': { EN: 'Choose edition', RU: 'Выберите версию', UA: 'Виберіть версію', DE: 'Ausgabe wählen', IT: 'Scegli edizione', ES: 'Elegir edición', TR: 'Baskı seç', FR: 'Choisir l\'édition' },
+  'article.notFound': { EN: 'Article not found', RU: 'Статья не найдена', UA: 'Статтю не знайдено', DE: 'Artikel nicht gefunden', IT: 'Articolo non trovato', ES: 'Artículo no encontrado', TR: 'Makale bulunamadı', FR: 'Article introuvable' },
+  'article.loading': { EN: 'Opening the article', RU: 'Открываем статью', UA: 'Відкриваємо статтю', DE: 'Artikel wird geöffnet', IT: 'Apertura dell\'articolo', ES: 'Abriendo el artículo', TR: 'Makale açılıyor', FR: 'Ouverture de l\'article' },
+  'article.loading.body': { EN: 'Fetching the latest content. On a slow connection this can take a few seconds.', RU: 'Загружаем свежий материал. На медленной связи это занимает несколько секунд.', UA: 'Завантажуємо свіжий матеріал. На повільному зв\'язку це триває кілька секунд.', DE: 'Wir laden die neuesten Inhalte. Bei langsamer Verbindung dauert das einige Sekunden.', IT: 'Stiamo caricando i contenuti più recenti. Con una connessione lenta può richiedere qualche secondo.', ES: 'Cargando el contenido más reciente. Con una conexión lenta puede tardar unos segundos.', TR: 'En güncel içerik yükleniyor. Yavaş bağlantıda bu birkaç saniye sürebilir.', FR: 'Récupération du contenu le plus récent. Sur une connexion lente, cela peut prendre quelques secondes.' },
+  'article.retry': { EN: 'Try again', RU: 'Попробовать снова', UA: 'Спробувати ще раз', DE: 'Erneut versuchen', IT: 'Riprova', ES: 'Intentar de nuevo', TR: 'Tekrar dene', FR: 'Réessayer' },
+  'article.notFound.body': { EN: 'This link may be broken, or the article has moved.', RU: 'Ссылка могла устареть, либо статья была перемещена.', UA: 'Посилання могло застаріти, або статтю було переміщено.', DE: 'Dieser Link ist möglicherweise defekt oder der Artikel wurde verschoben.', IT: 'Questo link potrebbe essere non valido o l\'articolo è stato spostato.', ES: 'Este enlace puede estar roto o el artículo se ha movido.', TR: 'Bu bağlantı bozuk olabilir veya makale taşınmış olabilir.', FR: 'Ce lien est peut-être rompu, ou l\'article a été déplacé.' },
+  'article.backToArticles': { EN: 'Back to Articles', RU: 'Назад к статьям', UA: 'Назад до статей', DE: 'Zurück zu Artikeln', IT: 'Torna agli articoli', ES: 'Volver a artículos', TR: 'Makalelere dön', FR: 'Retour aux articles' },
+  'article.related': { EN: 'Read also', RU: 'Читать также', UA: 'Читати також', DE: 'Auch lesen', IT: 'Leggi anche', ES: 'Leer también', TR: 'Ayrıca okuyun', FR: 'À lire aussi' },
 };
 
 function getTranslation(lang: string, key: string) {
@@ -463,11 +463,21 @@ function applySiteTheme(theme: SiteTheme) {
 }
 
 function Reveal({ children, delay = 0, y = 28, className = '' }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
+  // whileInView + viewport:{once:true} used to gate this: fine on a stable
+  // page, but WebKit has a known IntersectionObserver bug where the initial
+  // "is this in view" check can come back wrong while an ancestor still
+  // carries a transform - exactly what routeVariants applies to the whole
+  // page during its enter animation (scale: 0.99). A false "not visible" on
+  // that first check, combined with once:true, means the content is stuck
+  // at opacity:0 forever unless the reader scrolls enough to re-cross the
+  // boundary. Reported live on iOS Safari as sections rendering blank.
+  // animate fires unconditionally on mount - no observer, no failure mode -
+  // at the cost of the scroll-triggered choreography for anything below the
+  // fold, which is the right trade: a missing flourish beats missing content.
   return (
     <motion.div
       initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-8%' }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.42, delay: Math.min(delay, 0.24), ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
@@ -1660,11 +1670,11 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
 }
 
 const HOMEPAGE_CATEGORY_LABEL_TRANSLATIONS: Record<string, Record<string, string>> = {
-  sculpture: { EN: 'Sculpture', RU: 'Скульптура', UA: 'Скульптура', DE: 'Skulptur', IT: 'Scultura', ES: 'Escultura', TR: 'Heykel' },
-  painting: { EN: 'Painting', RU: 'Живопись', UA: 'Живопис', DE: 'Malerei', IT: 'Pittura', ES: 'Pintura', TR: 'Resim' },
-  architecture: { EN: 'Architecture', RU: 'Архитектура', UA: 'Архітектура', DE: 'Architektur', IT: 'Architettura', ES: 'Arquitectura', TR: 'Mimarlık' },
-  design: { EN: 'Design', RU: 'Дизайн', UA: 'Дизайн', DE: 'Design', IT: 'Design', ES: 'Diseño', TR: 'Tasarım' },
-  photography: { EN: 'Photography', RU: 'Фотография', UA: 'Фотографія', DE: 'Fotografie', IT: 'Fotografia', ES: 'Fotografía', TR: 'Fotoğraf' },
+  sculpture: { EN: 'Sculpture', RU: 'Скульптура', UA: 'Скульптура', DE: 'Skulptur', IT: 'Scultura', ES: 'Escultura', TR: 'Heykel', FR: 'Sculpture' },
+  painting: { EN: 'Painting', RU: 'Живопись', UA: 'Живопис', DE: 'Malerei', IT: 'Pittura', ES: 'Pintura', TR: 'Resim', FR: 'Peinture' },
+  architecture: { EN: 'Architecture', RU: 'Архитектура', UA: 'Архітектура', DE: 'Architektur', IT: 'Architettura', ES: 'Arquitectura', TR: 'Mimarlık', FR: 'Architecture' },
+  design: { EN: 'Design', RU: 'Дизайн', UA: 'Дизайн', DE: 'Design', IT: 'Design', ES: 'Diseño', TR: 'Tasarım', FR: 'Design' },
+  photography: { EN: 'Photography', RU: 'Фотография', UA: 'Фотографія', DE: 'Fotografie', IT: 'Fotografia', ES: 'Fotografía', TR: 'Fotoğraf', FR: 'Photographie' },
 };
 
 function localizedHomepageCategoryLabel(category: HomepagePicsCategory, lang: string): string {
@@ -2435,6 +2445,7 @@ const CONTRIBUTOR_LABELS: Record<string, string> = {
   DE: 'In Zusammenarbeit mit',
   ES: 'En colaboración con',
   TR: 'İş birliğiyle',
+  FR: 'En collaboration avec',
 };
 
 function contributorLabel(lang: string): string {
@@ -3294,10 +3305,15 @@ function EditorialList({ children, columns = 1 }: { children: React.ReactNode; c
     : columns === 2
       ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
       : 'space-y-10 sm:space-y-14';
+  // Same fix as Reveal (see its comment): whileInView + viewport:{once:true}
+  // depends on IntersectionObserver firing correctly on first mount, and
+  // WebKit can get that wrong while an ancestor still carries the route
+  // transition's transform - the article/review cards mount permanently at
+  // opacity:0. animate fires on mount regardless, no observer involved.
   return (
     <div>
       <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-5%' }} className={listClass}>
+        <motion.div variants={staggerContainer} initial="hidden" animate="show" className={listClass}>
           {children}
         </motion.div>
       </div>
