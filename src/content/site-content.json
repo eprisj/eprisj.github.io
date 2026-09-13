@@ -29614,6 +29614,71 @@
           ],
           "locked": true,
           "publishedAt": "2026-09-12T09:15:00.000Z"
+        },
+        {
+          "id": 38,
+          "title": "Zwei Septembere: Wie Frankreich liest und Italien schaut",
+          "author": "EPRIS Journal",
+          "role": "Redaktionsbüro",
+          "date": "13. Sep. 2026",
+          "excerpt": "Vierhundertsechsundsechzig Romane landen diesen Monat in französischen Buchhandlungen. Auf dem Lido vergibt die dreiundachtzigste Mostra ihren Goldenen Löwen. Kein Land wartet auf den Herbst, um neu zu starten.",
+          "category": "Kultur",
+          "subcategory": "Kulturhinweise",
+          "tags": [
+            "Literatur",
+            "Film",
+            "Frankreich",
+            "Italien"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+          "draft": true,
+          "publishedAt": "2026-09-13",
+          "content": [
+            {
+              "type": "text",
+              "content": "Jeden September, bevor das Schuljahr sich überhaupt eingelebt hat, starten zwei Länder ihre kreativen Kalender innerhalb weniger Tage voneinander neu. In Frankreich erscheinen hunderte neuer Romane in Buchhandlungen in einer einzigen koordinierten Welle. In Italien öffnet ein Filmfestival, das seit 1932 läuft, seine Türen am Lido wieder. Keiner dieser Riten ist neu, und keiner zeigt Anzeichen einer Verlangsamung."
+            },
+            {
+              "type": "header",
+              "content": "Frankreich: vierhundertsechzig eins Romane in einer Saison"
+            },
+            {
+              "type": "text",
+              "content": "Die rentrée littéraire ist eine französische Verlagsgewohnheit ohne direkte Entsprechung anderswo: Fast jeder große Verlag veröffentlicht seine ernsthaftesten Titel innerhalb desselben achtwöchigen Fensters, von Ende August bis Oktober, konkurrierend um denselben Regalplatz, dieselben Rezensionen und dieselben Herbstliteraturpreise. Die Ausgabe 2026 zählt 461 Romane, gegenüber 484 im Vorjahr. Davon sind 344 auf Französisch geschrieben und 117 Übersetzungen, und 68 sind Debütromane, fünf weniger als 2025. Das Volumen ist seit einem Jahrzehnt rückläufig, ein Trend, den Verlage auf schrumpfende Lesengewohnheiten und engere Haushaltsbudgets zurückführen, aber das Ritual selbst wurde nicht in Frage gestellt: Die Saison entscheidet immer noch, welche Namen zwei Monate später in die Shortlists für den Prix Goncourt und den Prix Renaudot aufgenommen werden."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Librairie_La_Mouette_Rieuse_-_Paris_%2835176711825%29.jpg",
+              "caption": "La Mouette Rieuse, eine Buchhandlung im Marais-Viertel von Paris, während einer rentrée littéraire Saison.",
+              "credit": "Photo: ActuaLitté, CC BY-SA 2.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Librairie_La_Mouette_Rieuse_-_Paris_(35176711825).jpg",
+              "alt": "Storefront der Buchhandlung La Mouette Rieuse in Paris"
+            },
+            {
+              "type": "header",
+              "content": "Italien: ein Festival alt genug, um mehrere Epochen des Kinos überlebt zu haben"
+            },
+            {
+              "type": "text",
+              "content": "Das Internationale Filmfestival von Venedig, die Mostra, findet seit 1932 auf dem Lido statt und ist damit das älteste Filmfestival der Welt. Seine 83. Ausgabe wurde am 2. September 2026 eröffnet und zehn Tage später mit dem Goldenen Löwen für den besten Film geschlossen, der an Woman Unknown, das dänische Drama von May el-Toukhy über eine Hausangestellte während des Krieges, ging, mit der Jury unter Leitung von Maggie Gyllenhaal. Ilya Khrzhanovsky gewann den Silbernen Löwen für die beste Regie für DAU, und Ehren-Goldene Löwen für Lebenswerk gingen an George Clooney und Ellen Burstyn. Der eigene Veranstaltungsort des Festivals, der Palazzo del Cinema, steht seit 1937 auf derselben Strecke des Lido, ein fester Punkt, um den sich die Branche jedes Jahr neu orientiert."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
+              "caption": "Der Palazzo del Cinema auf dem Lido di Venezia, Heimat des Venice Film Festival seit 1937.",
+              "credit": "Photo: Derbrauni, CC BY 4.0, via Wikimedia Commons",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palazzo_del_Cinema_(Lido_di_Venezia)_02.jpg",
+              "alt": "Das Gebäude des Palazzo del Cinema auf dem Venice Lido"
+            },
+            {
+              "type": "text",
+              "content": "Paris zählt Romane; Venedig zählt Minuten auf dem roten Teppich. Aber beide Städte behandeln September auf die gleiche Weise: nicht als das Ende des Sommers, sondern als den Monat, in dem die gesamte kreative Produktion eines Jahres in das sortiert wird, was wichtig ist und was nicht."
+            }
+          ],
+          "createdBy": "admin",
+          "previewToken": "a4036338d5bc3bb47895e084",
+          "updatedAt": "2026-09-13T20:07:27.815Z"
         }
       ],
       "reviews": [
@@ -45969,15 +46034,15 @@
             },
             {
               "type": "text",
-              "content": "Per comprendere questa precisione attuale, bisogna guardare indietro al movimento Young Poland (Młoda Polska) degli anni 1890. Emerso in un momento in cui la Polonia era politicamente cancellata dalla mappa, il movimento ha agito come un atto vitale di resistenza culturale. Gli artisti polacchi, molto simili ai loro pari nel movimento Arts and Crafts britannico, rifiutavano la standardizzazione senza anima dell'Età Industriale. Invece, cercavano di costruire un'identità nazionale attraverso le arti, fondendo architettura, mobili e tessuti in un \"opera d'arte totale\" fortemente impregnata di folklore locale, simbolismo e di un legame romanticizzato con la terra. Era un movimento nato da un disperato bisogno di preservare una cultura sotto minaccia esistenziale."
+              "content": "Per comprendere questa precisione attuale, bisogna guardare indietro al movimento Young Poland (Młoda Polska) degli anni 1890. Emerso in un momento in cui la Polonia era politicamente cancellata dalla mappa, il movimento ha agito come un atto vitale di resistenza culturale. Gli artisti polacchi, molto simili ai loro pari nel movimento Arts and Crafts britannico, rifiutavano la standardizzazione senza anima dell'Età Industriale. Invece, cercavano di costruire un'identità nazionale attraverso le arti, fondendo architettura, mobili e tessuti in un \"opera d'arte totale\" fortemente radicata nel folklore locale, simbolismo e in un legame romanticizzato con la terra. Era un movimento nato da un disperato bisogno di preservare una cultura sotto minaccia esistenziale."
             },
             {
               "type": "text",
-              "content": "Il design polacco moderno ha ereditato questa profonda etica artigianale, ma ha subito un'evoluzione sorprendente nella sua esecuzione. Dove un tempo gli artisti di Young Poland si affidavano a ornamenti intricati e pesanti per affermare il loro patrimonio, oggi i designer hanno scelto la strada della sottrazione. Hanno sistematicamente eliminato la vernice romantica del passato per rivelare lo scheletro strutturale sottostante."
+              "content": "Il design polacco moderno ha ereditato questa profonda etica dell'integrità artigianale, ma ha subito un'evoluzione sorprendente nella sua esecuzione. Dove gli artisti di Young Poland una volta si affidavano a ornamenti intricati e pesanti per affermare il loro patrimonio, i designer di oggi hanno scelto la strada della sottrazione. Hanno sistematicamente eliminato la vernice romantica del passato per rivelare lo scheletro strutturale sottostante."
             },
             {
               "type": "text",
-              "content": "Il risultato è un linguaggio di design che si sente inconfondibilmente polacco, non attraverso la ripetizione del folklore, ma attraverso un impegno incrollabile alla disciplina architettonica. In questi spazi contemporanei, il calore della tradizione si esprime ora attraverso la qualità intrinseca dei materiali – la venatura del legno, il peso della pietra e la geometria ponderata di una forma. È una transizione dal decorativo all'essenziale."
+              "content": "Il risultato è un linguaggio di design che si sente inconfondibilmente polacco, non attraverso la ripetizione del folklore, ma attraverso un impegno incrollabile alla disciplina architettonica. In questi spazi contemporanei, il calore della tradizione si esprime ora attraverso la qualità intrinseca dei materiali – la venatura del legno, il peso della pietra e la geometria riflessiva di una forma. È una transizione dal decorativo all'essenziale."
             },
             {
               "type": "text",
@@ -45994,7 +46059,7 @@
             },
             {
               "type": "text",
-              "content": "La prima vista sui loro armadi ci dà un enigma. La superficie convessa delle porte nasconde più di forme astratte - il gioco di luci e ombre incornicia il cast di rami, foglie, ceppi, tronchi e muschi che sono disposti in una composizione caotica. Successivamente, l'intersezione di oggetti naturali viene scannerizzata in 3D per ulteriori formature incrementali di fogli di alluminio da parte del robot KUKA."
+              "content": "La prima vista sui loro armadi ci dà un enigma. La superficie convessa delle porte nasconde più di forme astratte - il gioco di luci e ombre incornicia la sagoma di rami, foglie, ceppi, tronchi e muschi che sono disposti in una composizione caotica. Successivamente, l'intersezione di oggetti naturali viene scannerizzata in 3D per ulteriori formature incrementali di fogli di alluminio da parte del robot KUKA."
             },
             {
               "type": "galleria",
@@ -46022,7 +46087,7 @@
             },
             {
               "type": "text",
-              "content": "Progetti sotto la firma di Zofia Wyganowska Studio sono eseguiti con una rigorosa attenzione al patrimonio polacco, colmando il divario tra l'artigianato storico e la restrizione contemporanea. Gli interni sono caratterizzati da una qualità leggera e ariosa, dove materiali tattili e volumi contrastanti esistono in uno stato di equilibrio deliberato. Operando all'interno di una palette di colori strettamente curata, Wyganowska enfatizza la chiarezza, permettendo ai mobili autoesplicativi - spesso realizzati con materiali grezzi e naturali - di dettare l'umore dello spazio."
+              "content": "Progetti sotto la firma di Zofia Wyganowska Studio sono eseguiti con una rigorosa attenzione al patrimonio polacco, colmando il divario tra l'artigianato storico e la restrizione contemporanea. Gli interni sono caratterizzati da una qualità leggera e ariosa, dove materiali tattili e volumi contrastanti esistono in uno stato di equilibrio deliberato. Operando all'interno di una palette di colori strettamente curata, Wyganowska enfatizza la chiarezza, permettendo a mobili autoesplicativi - spesso realizzati con materiali grezzi e naturali - di dettare l'umore dello spazio."
             },
             {
               "type": "gallery",
@@ -46038,7 +46103,7 @@
             },
             {
               "type": "text",
-              "content": "Questa sintesi di tradizione e modernismo è forse più evidente nella sua collaborazione con il negozio di profumi di nicchia, Mood Scent Bar. All'interno di questo ambiente commerciale, Wyganowska integra pajaki come contropunti ritmici all'architettura minimalista del negozio. Sospendendo queste strutture intricate e geometriche contro le linee eleganti e spoglie delle mensole espositive, re-contestualizza l'arte popolare in un'installazione scultorea sorprendente."
+              "content": "Questa sintesi di tradizione e modernismo è forse più evidente nella sua collaborazione con il negozio di profumi di nicchia, Mood Scent Bar. All'interno di questo ambiente commerciale, Wyganowska integra pajaki come contrappunto ritmico all'architettura minimalista del negozio. Sospendendo queste strutture intricate e geometriche contro le linee eleganti e spoglie delle mensole espositive, re-contestualizza l'arte popolare in un'installazione scultorea sorprendente."
             },
             {
               "type": "gallery",
@@ -46056,7 +46121,7 @@
             },
             {
               "type": "text",
-              "content": "Menziando \"pajaki\" è inseparabile dall' storica dell'arte Karolina Merska, che dà una rinascita a questo elemento tradizionale polacco. Pajaki (<i>da pl.</i> ragno) è un tradizionale pendente decorativo fatto di paglia e carta, che pendeva dal soffitto nelle case del villaggio. Si crede che portino fortuna, proteggano dal male e portino prosperità."
+              "content": "Menziando \"pajaki\" è inseparabile dalla storica dell'arte Karolina Merska, che dà una rinascita a questo elemento tradizionale polacco. Pajaki (<i>dal pl.</i> ragno) è un tradizionale pendente decorativo realizzato con paglia e carta, che pendeva dal soffitto nelle case del villaggio. Si crede che portino fortuna, proteggano dal male e portino prosperità."
             },
             {
               "type": "text",
@@ -46064,7 +46129,7 @@
             },
             {
               "type": "text",
-              "content": "Eppure, oltre questo vibrante esterno si cela una disciplina architettonica profonda. Merska non si limita a replicare il passato; lo perfeziona, distillando la complessa, cosmica geometria dei pajaki in una forma che risuona con il silenzio e la luce contemporanei. Isolando queste silhouette intricate, lei forza una riconciliazione tra la natura effimera dei materiali – paglia e carta – e il peso duraturo della memoria culturale."
+              "content": "Eppure, oltre questo vibrante esterno si cela una disciplina architettonica profonda. Merska non si limita a replicare il passato; lo perfeziona, distillando la complessa geometria cosmica dei pajaki in una forma che risuona con il silenzio e la luce contemporanei. Isolando queste silhouette intricate, lei forza una riconciliazione tra la natura effimera dei materiali – paglia e carta – e il peso duraturo della memoria culturale."
             },
             {
               "type": "gallery",
@@ -46081,11 +46146,11 @@
             },
             {
               "type": "text",
-              "content": "Le opere tessute a mano di Ala Savashevich operano come una subversione stark, intellettuale del calore tattile che tipicamente associamo alle tradizioni basate sul telaio. Mentre la sua scelta di tecnica è profondamente radicata nella discendenza della tessitura popolare polacca, lei sistematicamente rimuove la gioia decorativa dell'artigianato per esporre la sua logica strutturale sottostante."
+              "content": "Le opere tessute a mano di Ala Savashevich operano come una subversione intellettuale e netta del calore tattile che tipicamente associamo alle tradizioni basate sull'uso dell'ordito. Mentre la sua scelta tecnica è profondamente radicata nella discendenza della tessitura popolare polacca, lei sistematicamente rimuove la gioia decorativa dell'artigianato per esporre la sua logica strutturale sottostante."
             },
             {
               "type": "text",
-              "content": "In questi pezzi, l'atto di tessere non è più una ricerca di morbidezza estetica o ornamentazione domestica. Invece, diventa un metodo di mappatura della tensione. Utilizzando materiali grezzi, a volte industriali, o palette monocromatiche, trasforma il movimento fluido della mano in una griglia statica, architettonica."
+              "content": "In questi pezzi, l'atto di tessere non è più una ricerca di morbidezza estetica o ornamento domestico. Invece, diventa un metodo di mappatura della tensione. Utilizzando materiali grezzi, a volte industriali, o palette monocromatiche, trasforma il movimento fluido della mano in una griglia statica, architettonica."
             },
             {
               "type": "text",
@@ -46118,7 +46183,7 @@
             },
             {
               "type": "text",
-              "content": "Il suo linguaggio di design è un esercizio intellettuale nell'equilibrare giocoso con profonda disciplina strutturale. La pratica di Jaworska è una testimonianza del fatto che quando la forma è eseguita con assoluta chiarezza, smette di essere solo un oggetto e diventa una dichiarazione spaziale deliberata."
+              "content": "Il suo linguaggio di design è un esercizio intellettuale nel bilanciare giocoso con profonda disciplina strutturale. La pratica di Jaworska è una testimonianza del fatto che quando la forma è eseguita con assoluta chiarezza, smette di essere solo un oggetto e diventa una dichiarazione spaziale deliberata."
             },
             {
               "type": "gallery",
@@ -46162,7 +46227,7 @@
           "order": 4,
           "authorId": "author-1784896384236-4fokw",
           "publishedAt": "2026-07-24",
-          "updatedAt": "2026-09-13T19:52:13.508Z"
+          "updatedAt": "2026-09-13T20:07:18.630Z"
         },
         {
           "id": 18,
