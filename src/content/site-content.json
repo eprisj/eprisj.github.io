@@ -51307,6 +51307,99 @@
           "authorId": "author-1784896384236-4fokw",
           "publishedAt": "2026-07-17",
           "updatedAt": "2026-09-13T19:25:06.181Z"
+        },
+        {
+          "id": 10,
+          "title": "Cinq pièces, une signature",
+          "author": "EPRIS Journal",
+          "role": "Rédaction",
+          "date": "11 juil. 2026",
+          "excerpt": "Une tache dalmatienne, une plaque de burl, trois portraits du même chien peint, et un petit cône qui réapparaît toujours là où on s'y attend le moins – le vocabulaire discipliné qu'un appartement utilise de cinq manières différentes sans jamais se répéter.",
+          "category": "Culture",
+          "subcategory": "Étude de conception",
+          "tags": [
+            "Conception",
+            "Motif",
+            "Matériaux",
+            "Intérieur"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://eprisjournal.com/images/article-polkadot-bedroom.jpg",
+          "content": [
+            {
+              "type": "texte",
+              "content": "Parcourez cet appartement une fois et vous remarquerez la polka, la placage en noyer, la paire de chiens peints regardant depuis trois murs différents. Parcourez-le deux fois et vous remarquerez qu'aucun d'eux n'apparaît jamais de la même manière deux fois – la tache change d'échelle sur chaque surface qu'elle touche, le placage passe du dessus de table à la façade d'armoire à un carré encadré unique de la taille d'une carte postale, et les chiens passent du gris au noir et blanc à un portrait bleu recadré, comme si la même idée continuait d'être traduite plutôt que répétée. C'est le vrai sujet ici : pas un regard, mais un petit ensemble discipliné de décisions qu'une maison peut apparemment soutenir à travers cinq pièces très différentes sans jamais se répéter complètement."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dfmpqmyrg.jpg",
+              "caption": "La tache à sa plus grande échelle : un canapé sectionnel complet, rembourré d'un bord à l'autre, le motif lisant presque comme une texture avant de lire comme un motif.",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "De près, ce n'est pas une polka imprimée – c'est dessinée, chaque marque étant une tache irrégulière avec son propre poids et sa propre bordure, le genre de variation qui se produit lorsqu'une main répète un geste plutôt qu'une machine qui répète une découpe. À l'échelle du canapé, cette irrégularité fait un vrai travail : une tache parfaitement régulière de cette taille serait perçue comme un tissu d'ameublement se comportant comme du papier peint, décoratif et légèrement bon marché. Une irrégulière se lit comme une texture – plus proche de la fourrure qu'elle cite clairement que d'une impression. La table basse à jupe en dessous, dans la même tache à une échelle plus petite et plus dense, est le seul meuble dans la pièce habillé plutôt qu'upholstered – un disque en bois sur une jupe en tissu, une chose délibérément étrange à placer à côté d'un canapé aussi architectural. Un petit cône en métal repose sur cette table à côté d'une pile de livres – la même silhouette que la lampe de chambre à coucher répète plus tard, à une échelle complètement différente, dans un matériau complètement différent, bien que rien dans cette pièce n'annonce encore cela."
+            },
+            {
+              "type": "citation",
+              "content": "La même idée, traduite cinq fois, est une collection. La même idée, copiée cinq fois, est un thème."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dpaojhrg2.jpg",
+              "caption": "La même placage de burl de trois manières en une seule prise : un meuble bas, une étagère flottante, un carré encadré unique contenant une photographie au lieu d'une vue.",
+              "align": "center"
+            },
+            {
+              "type": "text",
+              "content": "Burl est le bois à son moins géométrique – le motif provient de la réponse au stress d'un arbre, d'un nœud qu'il a essayé et échoué à faire pousser autour, donc aucun panneau ne peut jamais être assorti comme le placage à grain droit. Utiliser autant de ce matériau, à cette échelle, ne fonctionne que parce que tout ce qui le touche est si simple : un meuble bas aux lignes épurées, une étagère en porte-à-faux sans support visible, un fauteuil floral avec des bras doux, sans os. Ce fauteuil est le seul objet courbé, à motif, intégré dans une pièce autrement construite avec des lignes droites et un grain sauvage, irrécupérable – la même astuce que le pois dans le voisinage de la table de nuit en burl dans la chambre, simplement dans un matériau différent. Un second cône apparaît aussi ici, captant la lumière sur la même petite table ronde – assez petite pour être manquée, mais suffisamment insistante pour que, une fois que vous l'avez vue, vous commenciez à la chercher partout ailleurs dans l'appartement."
+            },
+            {
+              "type": "quote",
+              "content": "Répétez un objet suffisamment de fois, dans différentes tailles et matériaux, et il cesse d'être une décoration pour devenir une signature."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dj90g3ij9.jpg",
+              "caption": "Un troisième chien, un troisième registre : noir et blanc au lieu de bleu-gris, posé au lieu d'être capturé en plein mouvement, suspendu au-dessus d'un console en burl au lieu d'un mur recouvert de panneaux de bois.",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "Trois peintures du même sujet, trois traitements de couleur différents, et aucune d'entre elles n'est accrochée en ensemble assorti – c'est le signe que c'est une collection construite à l'œil, et non ordonnée comme un triptyque. Les chaises ici font le même travail discret que le point du canapé : un tissu floral, bleu sur blanc, enveloppant un cadre avec presque pas d'angles droits, de sorte que le motif se lit comme un mouvement plutôt que comme une tapisserie. En dessous, la même planche de burl provenant du salon réapparaît comme un bord de table, suffisamment épaisse pour se lire comme du bois massif plutôt que comme du placage sur contreplaqué – le seul endroit dans l'appartement où le matériau devient l'objet entier plutôt qu'une surface dessus. Les jambes de la table sont polies jusqu'à un miroir complet, ce qui fait quelque chose que le burl ne peut pas : il double la pièce au lieu de simplement la décorer, pliant les chaises et leur tissu floral dans le reflet comme une seconde salle à manger, légèrement plus bleue, sous la vraie."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dn3pl70qq.jpg",
+              "caption": "Le point à l'échelle du linge de lit, plus dense et plus petit encore, avec le rideau derrière comme une quatrième échelle toujours.",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "C'est la même logique de tissu que le canapé, appliquée à toute une gamme d'échelles dans une seule pièce : un point sur le rideau, un point de poids différent sur la couverture, une troisième échelle entièrement dans la rayure tissée en dessous, et une quatrième avec un chien ton bleu qui veille sur tout cela depuis un seul portrait coupé plutôt qu'une pose complète. Rien ici ne cherche à faire correspondre – le point du rideau et le point du linge de lit sont assez proches pour appartenir à la même famille et suffisamment différents pour que l'œil continue à travailler pour les placer, ce qui est la plupart du temps la raison pour laquelle la pièce paraît superposée plutôt que thématique. Reculez et le lit lui-même fait la même astuce de superposition que la pièce autour : une couverture brune côtelée, une couverture en gaufre rayée, et la couverture à points par-dessus, trois textures différentes empilées comme les trois portraits de chiens empilés dans trois pièces différentes – répétition déguisée en variété, ou peut-être l'inverse."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mrgg0dhfp07cpi.jpg",
+              "caption": "Le seul coin de l'appartement où tout le vocabulaire s'effondre en une seule petite composition : point, burl, bois, une diagonale délibérée.",
+              "align": "center"
+            },
+            {
+              "type": "texte",
+              "content": "Un cône s'amincit jusqu'à un point sans couture, généré par rien d'autre qu'une ligne droite tournant autour d'un axe. En dessous, un hexagone construit à partir de deux prismes empilés, six plans plats chacun, se fermant sur lui-même parce que six est le seul nombre inférieur à dix qui divise 360 sans reste. Une forme n'a pas du tout de arêtes ; l'autre est presque rien d'autre que des arêtes – et placer le point du cône directement au-dessus du centre de l'hexagone est ce qui permet à deux familles de géométrie non liées de lire comme un seul objet. Derrière les deux, la grille de points est la géométrie la plus stricte dans l'appartement, intervalle fixe, aucun point plus important que son voisin – sauf qu'à proximité chaque marque est tracée, non estampée, la même irrégularité disciplinée tenant l'ensemble de la maison ensemble à chaque échelle où elle apparaît. Au moment où le cône atteint cette table de nuit, il est déjà apparu deux fois comme un petit objet sur deux tables basses différentes – ce qui signifie que la lampe n'introduit pas une nouvelle forme dans l'appartement autant qu'elle donne enfin à l'une de ses formes récurrentes un endroit sérieux pour se tenir. La lampe est la seule ligne dans le cadre qui refuse la grille : son abat-jour penche vers l'oreiller à presque exactement l'angle où une personne se penche pour dire une dernière chose avant qu'une pièce ne devienne sombre – le seul objet ici autorisé à se comporter comme s'il avait quelque part où aller."
+            },
+            {
+              "type": "citation",
+              "content": "Trois cônes de table basse et une lampe ne sont pas une coïncidence. Ils sont la chose la plus proche que cet appartement ait d'une signature."
+            },
+            {
+              "type": "note",
+              "content": "Aucun de cela n'explique pourquoi l'appartement semble calme plutôt que stylé – la retenue le fait, et aussi résister à l'envie de faire correspondre exactement quoi que ce soit. Mais compter combien de fois la même point, le même burl, le même cône, et le même chien peint apparaissent dans cinq pièces, à cinq échelles différentes, est une façon décente de commencer à remarquer pourquoi certains foyers se lisent comme collectionnés et la plupart simplement comme décorés."
+            }
+          ],
+          "updatedAt": "2026-09-13T19:25:25.941Z",
+          "order": 7,
+          "publishedAt": "2026-07-11"
         }
       ],
       "reviews": [
