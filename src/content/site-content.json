@@ -56375,11 +56375,11 @@
         },
         {
           "id": 38,
-          "title": "Rien à voir avec cela : La récolte derrière les romans de France et le Lion d'Or d'Italie",
-          "author": "EPRIS Journal",
-          "role": "Rédaction",
+          "title": "Rien à voir : La récolte derrière les romans de France et le Lion d'Or d'Italie",
+          "author": "Viacheslav Munister",
+          "role": "Rédacteur invité",
           "date": "13 sept. 2026",
-          "excerpt": "Une mosaïque romaine savait déjà à quoi servait septembre. Deux mille ans plus tard, la France la synchronise encore avec son industrie du livre, et l'Italie synchronise encore son cinéma avec elle. Personne impliqué ne qualifierait cela de coïncidence.",
+          "excerpt": "Une mosaïque romaine savait déjà à quoi servait septembre. Deux mille ans plus tard, la France synchronise encore son industrie du livre avec lui, et l'Italie synchronise encore son cinéma avec lui. Personne impliqué ne qualifierait cela de coïncidence.",
           "category": "Culture",
           "subcategory": "Notes culturelles",
           "tags": [
@@ -56391,29 +56391,29 @@
           ],
           "imageSeed": "",
           "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-          "draft": true,
+          "draft": false,
           "publishedAt": "2026-09-13",
           "content": [
             {
               "type": "text",
-              "content": "Il y a un mois que la culture européenne ne laisse jamais en friche. Bien avant que quiconque publie un roman ou projette un film, septembre était déjà réservé : c’est le moment où les vignobles du sud de l’Italie descendent des vignes, où le propre mois-mosaïque du calendrier romain montre deux hommes foulant les raisins plutôt que se reposant, lorsque tout un hémisphère de travail agricole est comprimé en six ou sept semaines avant que le temps ne change. Rien dans les versions modernes de cet instinct n’est nouveau ; seule la récolte a changé. La France récolte maintenant des romans en septembre. L’Italie récolte des films. Les deux appellent toujours le résultat une saison."
+              "content": "Il y a un mois que la culture européenne ne laisse jamais en friche. Bien avant que quiconque publie un roman ou projette un film, septembre était déjà réservé : c'est le moment où les vignobles du sud de l'Italie descendent des vignes, où le propre mois-mosaïque du calendrier romain montre deux hommes foulant les raisins plutôt que se reposant, lorsque tout un hémisphère de travail agricole est comprimé en six ou sept semaines avant que le temps ne change. Rien dans les versions modernes de cet instinct n'est nouveau ; seule la récolte a changé. La France récolte maintenant des romans en septembre. L'Italie récolte des films. Les deux appellent toujours le résultat une saison."
             },
             {
               "type": "text",
-              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">romans dans la rentrée littéraire 2026</span></li><li><span class=\"stat-figure\">83ème</span><span class=\"stat-label\">édition du Festival de Venise</span></li><li><span class=\"stat-figure\">1 800</span><span class=\"stat-label\">années depuis que Rome a gravé la récolte dans la pierre</span></li></ul>"
+              "content": "<ul class=\"stats\"><li><span class=\"stat-figure\">461</span><span class=\"stat-label\">romans dans la rentrée littéraire 2026</span></li><li><span class=\"stat-figure\">83ème</span><span class=\"stat-label\">édition du Festival du film de Venise</span></li><li><span class=\"stat-figure\">1 800</span><span class=\"stat-label\">années depuis que Rome a gravé la récolte dans la pierre</span></li></ul>"
             },
             {
               "type": "header",
-              "content": "Un mois qui n’a jamais vraiment été libre"
+              "content": "Un mois qui n'a jamais vraiment été libre"
             },
             {
               "type": "text",
-              "content": "L’habitude est plus ancienne que la maison d’édition de l’un ou le jury du festival de l’autre. Une mosaïque romaine du troisième siècle d’El Djem, dans ce qui est maintenant la Tunisie, donne à septembre son propre panneau dans un calendrier des mois, et le panneau montre deux hommes foulant les raisins, non pas se reposant après l’été. L’hommage était à Bacchus, dieu du vin et, incidemment, du théâtre : le même dieu que les Romains créditaient à la fois pour la vendange et pour la performance qui la célébrait. Dans le sud de l’Italie, où la chaleur se brise plus tôt, la vendemmia court encore en septembre ; dans le nord, les viticulteurs attendent jusqu’en novembre. La récolte et le calendrier n’ont tout simplement jamais accepté de se séparer."
+              "content": "L'habitude est plus ancienne que la maison d'édition de chaque pays ou le jury du festival. Une mosaïque romaine du troisième siècle d'El Djem, dans ce qui est maintenant la Tunisie, donne à septembre son propre panneau dans un calendrier des mois, et le panneau montre deux hommes foulant les raisins, non pas se reposant après l'été. L'hommage était à Bacchus, dieu du vin et, incidemment, du théâtre : le même dieu que les Romains créditaient à la fois pour la vendange et pour la performance qui la célébrait. Dans le sud de l'Italie, où la chaleur se brise plus tôt, la vendemmia dure encore jusqu'en septembre ; dans le nord, les viticulteurs attendent jusqu'en novembre. La récolte et le calendrier n'ont tout simplement jamais accepté de se séparer."
             },
             {
               "type": "image",
               "content": "https://upload.wikimedia.org/wikipedia/commons/9/92/Grape_harvesting_time_%281887%29%2C_by_Francesco_Gioli.jpg",
-              "caption": "Temps de vendange, Francesco Gioli, 1887 — paysans toscans à la vendemmia, peinte une décennie avant l'existence du cinéma pour lui faire concurrence.",
+              "caption": "Temps de vendange, Francesco Gioli, 1887 — paysans toscans à la vendemmia, peint une décennie avant que le cinéma n'existe pour lui faire concurrence.",
               "credit": "Francesco Gioli (1846–1922), domaine public, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grape_harvesting_time_(1887),_by_Francesco_Gioli.jpg",
               "alt": "Peinture de paysans toscans récoltant des raisins, 1887"
@@ -56425,7 +56425,7 @@
             {
               "type": "image",
               "content": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bacchus-Caravaggio_%281598%29.jpg",
-              "caption": "Bacchus, Caravaggio, c. 1598, Galerie des Uffizi, Florence.",
+              "caption": "Bacchus, Caravaggio, vers 1598, Galerie des Uffizi, Florence.",
               "credit": "Michelangelo Merisi da Caravaggio, domaine public, via Wikimedia Commons",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacchus-Caravaggio_(1598).jpg",
               "alt": "Peinture de Caravaggio de Bacchus s'allongeant avec du vin et des feuilles de vigne"
@@ -56436,7 +56436,7 @@
             },
             {
               "type": "texte",
-              "content": "La France mène sa propre récolte de septembre deux fois, et remarque rarement le chevauchement. Les viticulteurs de Champagne appellent encore la leur la vendange ; en 2026, un hiver exceptionnellement doux et trois vagues de chaleur estivales l'ont avancée plus tôt que n'importe qui de vivant ne pouvait s'en souvenir, se terminant le 4 septembre au lieu de s'étendre dans le mois comme d'habitude. L'autre récolte, la rentrée littéraire, conserve son propre calendrier obstiné. L'idée était déjà dans l'air dans les années 1880, lorsque le philosophe Ernest Renan a d'abord nommé ce schéma, et la création du Prix Goncourt en 1903 a donné aux éditeurs leur première véritable raison de synchroniser la sortie d'un livre autour de celui-ci. Mais la rentrée telle que tout le monde la reconnaîtrait aujourd'hui est une invention d'après-guerre : les éditeurs n'ont commencé à regrouper les sorties en une seule fenêtre d'automne qu'à la fin des années 1950, une fois que suffisamment de prix littéraires rivalisaient pour les mêmes annonces de novembre pour faire de août un mois perdu. La rentrée 2026 compte 461 romans, dont 344 écrits en français, 117 traduits, et 68 premiers romans, cinq de moins que l'année précédente. Le volume diminue depuis une décennie, mais la date limite n'a pas bougé, car la date limite n'a jamais vraiment concerné les livres. Il s'agit de savoir lequel de ces 461 titres pourra se tenir devant le jury de l'Académie Goncourt en novembre, et un livre qui arrive en octobre est déjà trop tard pour être considéré."
+              "content": "La France mène sa propre récolte de septembre deux fois, et remarque rarement le chevauchement. Les viticulteurs de Champagne appellent encore la leur la vendange ; en 2026, un hiver exceptionnellement doux et trois vagues de chaleur estivale l'ont avancée plus tôt que n'importe qui de vivant ne pouvait s'en souvenir, se terminant le 4 septembre au lieu de s'étendre dans le mois comme d'habitude. L'autre récolte, la rentrée littéraire, conserve son propre calendrier obstiné. L'idée était déjà dans l'air dans les années 1880, lorsque le philosophe Ernest Renan a d'abord nommé ce schéma, et la création du Prix Goncourt en 1903 a donné aux éditeurs leur première véritable raison de synchroniser la sortie d'un livre autour de celui-ci. Mais la rentrée telle que tout le monde la reconnaîtrait aujourd'hui est une invention d'après-guerre : les éditeurs n'ont commencé à regrouper les sorties en une seule fenêtre d'automne qu'à la fin des années 1950, une fois que suffisamment de prix littéraires rivalisaient pour les mêmes annonces de novembre pour faire de août un mois perdu. La rentrée 2026 compte 461 romans, dont 344 écrits en français, 117 traduits, et 68 premiers romans, cinq de moins que l'année précédente. Le volume diminue depuis une décennie, mais la date limite n'a pas bougé, car la date limite n'a jamais vraiment concerné les livres. Il s'agit de savoir lequel de ces 461 titres pourra se tenir devant le jury de l'Académie Goncourt en novembre, et un livre arrivé en octobre est déjà trop tard pour être considéré."
             },
             {
               "type": "image",
@@ -56452,7 +56452,7 @@
             },
             {
               "type": "texte",
-              "content": "Le rituel de septembre du cinéma est plus jeune d'environ deux mille ans que la vendemmia et d'environ trois décennies que la rentrée littéraire, mais il a été construit avec le même appétit pour le spectacle que Bacchus recevait à l'origine en hommage. Le Festival international du film de Venise a été lancé en 1932 en tant qu'événement dans la Biennale de cette année-là, orchestré par trois hommes, Giuseppe Volpi, Luciano de Feo, et Antonio Maraini, qui comprenaient aussi bien l'utilisation du cinéma comme projection d'une Italie moderne et soucieuse d'image sous le gouvernement de Mussolini que son succès au box-office. Le premier prix, introduit en 1934, s'appelait la Coppa Mussolini ; le festival a été totalement interrompu de 1943 à 1945, puis a repris et, en 1949, a remplacé son ancien prix par le Lion d'Or. La 83e édition s'est déroulée du 2 au 12 septembre 2026, et a attribué ce Lion à Woman Unknown, le drame danois de May el-Toukhy sur une liaison d'une femme de ménage pendant la guerre, sous un jury dirigé par Maggie Gyllenhaal. Ilya Khrzhanovsky a remporté le Lion d'Argent du meilleur réalisateur pour DAU. George Clooney et Ellen Burstyn ont chacun reçu un Lion d'Or honorifique pour l'ensemble de leur carrière, la même distinction que le festival a décernée à Werner Herzog l'année précédente."
+              "content": "Le rituel de septembre du cinéma est plus jeune d'environ deux mille ans que la vendemmia et d'environ trois décennies que la rentrée littéraire, mais il a été construit avec le même appétit pour le spectacle que Bacchus a initialement reçu en hommage. Le Festival international du film de Venise a été lancé en 1932 en tant qu'événement dans la Biennale de cette année-là, orchestré par trois hommes, Giuseppe Volpi, Luciano de Feo, et Antonio Maraini, qui comprenaient aussi bien l'utilisation du cinéma comme projection d'une Italie moderne et soucieuse d'image sous le gouvernement de Mussolini que son succès au box-office. Le premier prix, introduit en 1934, s'appelait la Coppa Mussolini ; le festival a été totalement interrompu de 1943 à 1945, puis a repris et, en 1949, a remplacé son ancien prix par le Lion d'Or. La 83e édition s'est déroulée du 2 au 12 septembre 2026, et a attribué ce Lion à Woman Unknown, le drame danois de May el-Toukhy sur une liaison d'une femme de ménage pendant la guerre, sous un jury dirigé par Maggie Gyllenhaal. Ilya Khrzhanovsky a remporté le Lion d'Argent du meilleur réalisateur pour DAU. George Clooney et Ellen Burstyn ont chacun reçu un Lion d'Or honorifique pour l'ensemble de leur carrière, la même distinction que le festival a décernée à Werner Herzog l'année précédente."
             },
             {
               "type": "image",
@@ -56464,12 +56464,13 @@
             },
             {
               "type": "texte",
-              "content": "Paris passera les deux prochains mois à décider lequel des quatre cent soixante et un romans pourra compter. Venise a déjà passé ses dix jours à décider la même chose pour un bassin de films plus petit et plus lent. Aucune des deux villes ne décrirait ce qu'elle fait comme une récolte, et aucune n'en a besoin : la métaphore était déjà gravée dans une mosaïque en Afrique romaine il y a une dizaine de siècles avant que l'une ou l'autre institution n'existe, et ni le raisin, ni le roman, ni le film, n'ont jamais réussi à rendre septembre optionnel."
+              "content": "Paris passera les deux prochains mois à décider lequel des quatre cent soixante et un romans pourra compter. Venise a déjà passé ses dix jours à décider la même chose pour un bassin de films plus petit et plus lent. Aucune des deux villes ne décrirait ce qu'elle fait comme une récolte, et aucune n'en a besoin : la métaphore était déjà gravée dans une mosaïque en Afrique romaine il y a une dizaine de siècles avant que l'une ou l'autre institution n'existe, et ni la vigne, ni le roman, ni le film, n'ont jamais réussi à rendre septembre optionnel."
             }
           ],
           "createdBy": "admin",
           "previewToken": "a4036338d5bc3bb47895e084",
-          "updatedAt": "2026-09-13T20:22:46.714Z"
+          "authorId": "author-1784732936927-kw554",
+          "updatedAt": "2026-09-13T20:29:42.833Z"
         }
       ],
       "reviews": [
