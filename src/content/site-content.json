@@ -8655,8 +8655,8 @@
     {
       "id": 38,
       "title": "Nothing Fallow About It: The Harvest Behind France's Novels and Italy's Golden Lion",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
+      "author": "Viacheslav Munister",
+      "role": "Guest Editor",
       "date": "Sep 13, 2026",
       "excerpt": "A Roman mosaic already knew what September was for. Two thousand years later France still times its book industry to it, and Italy still times its cinema to it. Nobody involved would call that a coincidence.",
       "category": "Culture",
@@ -8670,7 +8670,7 @@
       ],
       "imageSeed": "",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Palazzo_del_Cinema_%28Lido_di_Venezia%29_02.jpg",
-      "draft": true,
+      "draft": false,
       "publishedAt": "2026-09-13",
       "content": [
         {
@@ -8747,7 +8747,8 @@
         }
       ],
       "createdBy": "admin",
-      "previewToken": "a4036338d5bc3bb47895e084"
+      "previewToken": "a4036338d5bc3bb47895e084",
+      "authorId": "author-1784732936927-kw554"
     }
   ],
   "reviews": [
