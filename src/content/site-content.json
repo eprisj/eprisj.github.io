@@ -8541,7 +8541,7 @@
       "title": "Architecture That Listens",
       "author": "US Architecture Studio",
       "role": "Architecture Studio",
-      "date": "Sep 12, 2026",
+      "date": "Sep 15, 2026",
       "excerpt": "How multi-layered context shapes Ukrainian identity across three projects by US Architecture Studio, from the steppe town of Svatove, through the hills of Ternopil, to a cafe in Kyiv.",
       "category": "architecture",
       "subcategory": "Studio profile",
@@ -8589,6 +8589,14 @@
           "align": "center"
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu1iry08xjk5xr.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu1iryo9kiantx.jpg"
+        },
+        {
           "type": "header",
           "content": "Ternopil region: building from what was already there",
           "level": 2
@@ -8606,6 +8614,10 @@
           "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
           "caption": "Ground and attic floor plans, a house in the Ternopil region built on an existing foundation. Courtesy US Architecture Studio.",
           "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu1irz9egabeg1.jpg"
         },
         {
           "type": "header",
@@ -8639,6 +8651,10 @@
           "align": "center"
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu1irzvfo8mttc.jpg"
+        },
+        {
           "type": "text",
           "content": "A building that is genuinely alive always grows out of a deep reading of its place, its culture, its spatial surroundings, becoming a natural extension of the ground beneath it. It is exactly that connection that gives architecture real content, gives it a value that does not date, and makes the space around it easier to notice and understand."
         },
@@ -8650,7 +8666,7 @@
       "updatedAt": "2026-09-14T09:25:16.056Z",
       "locked": true,
       "contributorId": "author-us-architecture-studio",
-      "publishAt": "2026-09-13T06:44:28.607Z"
+      "publishAt": "2026-09-15T06:44:28.607Z"
     },
     {
       "id": 38,
@@ -15402,6 +15418,14 @@
               "align": "center"
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1iry08xjk5xr.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1iryo9kiantx.jpg"
+            },
+            {
               "type": "header",
               "content": "Тернопольщина: строить из того, что уже было",
               "level": 2
@@ -15419,6 +15443,10 @@
               "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
               "caption": "Планы первого этажа и мансарды, дом в Тернопольской области, построенный на существующем фундаменте. Предоставлено US Architecture Studio.",
               "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1irz9egabeg1.jpg"
             },
             {
               "type": "header",
@@ -15450,6 +15478,10 @@
               "content": "https://api.eprisjournal.com/uploads/mtyatirfl7dv8y.jpg",
               "caption": "План первого этажа, «Солома». Предоставлено US Architecture Studio.",
               "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1irzvfo8mttc.jpg"
             },
             {
               "type": "text",
@@ -22715,6 +22747,14 @@
               "align": "center"
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1iry08xjk5xr.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1iryo9kiantx.jpg"
+            },
+            {
               "type": "header",
               "content": "Тернопільщина: будувати з того, що вже було",
               "level": 2
@@ -22732,6 +22772,10 @@
               "content": "https://api.eprisjournal.com/uploads/mtyatj6xyl1ris.jpg",
               "caption": "Плани першого поверху та мансарди, будинок на Тернопільщині, збудований на наявному фундаменті. Надано US Architecture Studio.",
               "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1irz9egabeg1.jpg"
             },
             {
               "type": "header",
@@ -22763,6 +22807,10 @@
               "content": "https://api.eprisjournal.com/uploads/mtyatirfl7dv8y.jpg",
               "caption": "План першого поверху, «Солома». Надано US Architecture Studio.",
               "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu1irzvfo8mttc.jpg"
             },
             {
               "type": "text",
