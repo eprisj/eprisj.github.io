@@ -31207,6 +31207,294 @@
           "previewToken": "a4036338d5bc3bb47895e084",
           "authorId": "author-1784732936927-kw554",
           "updatedAt": "2026-09-13T20:28:38.011Z"
+        },
+        {
+          "id": 39,
+          "role": "Autor",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Diana Aleshchenko: Sicherheit kommt von Offenheit",
+          "author": "Viacheslav Munister & Diana Aleshchenko",
+          "date": "15. September 2026",
+          "excerpt": "Ein neuer KNUBA-Absolvent über ein Rehabilitationszentrum ohne rechte Winkel, einen Studierenden-Campus für das Kriegszeit-Kharkiv und einen Innenhof, der die Erinnerung an Juli 1917 im Bahnknoten bewahrt.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "architektur",
+            "Ukraine",
+            "Kyiv",
+            "Kharkiv",
+            "bildung"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+          "previewToken": "JbWDyMUOvqmgHQEa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Diana Aleshchenko kommt aus Kyiv. Dieses Jahr schloss sie ihren Master-Abschluss in Architektur und Stadtplanung an der Kyiv National University of Construction and Architecture (KNUBA) ab, und ihr Studentenportfolio umfasst bereits drei sehr unterschiedliche Aufträge: ein Rehabilitationszentrum in Zhytomyr für Menschen, die sich von schweren Verletzungen und Traumata erholen, einen Campus mit Studentenwohnheimen in Kharkiv, und einen Gewächshauskomplex am Kyiv-Volynskyi Eisenbahnknotenpunkt."
+            },
+            {
+              "type": "text",
+              "content": "Was sie verbindet, ist die Beharrlichkeit, dass jede formale Entscheidung ihren Platz verdienen muss. Die abgerundeten Wände in ihrem Rehabilitationszentrum sind mehr über Rollstühle und Angst, bevor sie über Weichheit sprechen; die Lamellen an seiner Fassade sind mehr darüber, wer wen sehen kann. EPRIS Journal hat sie nach den Überlegungen hinter diesen Projekten gefragt und darüber, was es bedeutet, jetzt für ukrainische Städte zu entwerfen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq1ka8wjapn.jpg",
+              "caption": "Diana Aleshchenko mit ihren Projekttafeln.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Erzählen Sie uns ein wenig über sich: Woher kommen Sie, wo haben Sie studiert, und wie sind Sie zur Architektur gekommen?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Ich komme aus Kyiv, und in diesem Jahr habe ich meinen Master-Abschluss in Architektur und Stadtplanung an KNUBA in Kyiv erhalten. Ich habe keine einzigartige Geschichte über eine plötzliche Kindheitsenthüllung, nach der ich beschlossen habe, mein Leben der Architektur zu widmen. Wie ich sehe, nahm der Weg ziemlich natürlich und konsequent Gestalt an: durch eine Kette eigener Entscheidungen, ein allmählich wachsendes Interesse an Raum und spezifische Lebensereignisse, die mich Schritt für Schritt dorthin brachten, wo ich jetzt bin."
+            },
+            {
+              "type": "header",
+              "content": "Was in deiner Kindheit oder Jugend hat dich besonders zur Architektur gedrängt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Es gab keinen einzigen Kindheitsauslöser, der alles entschieden hat. Es war eher eine allmähliche Kombination von Interessen am Zeichnen, Geometrie und kreativer Arbeit, die mit dem Alter einfach zu einer bewussten Berufswahl wurde."
+            },
+            {
+              "type": "header",
+              "content": "Wie sehr haben deine Studien an KNUBA deinen Ansatz zum Design geprägt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Meine Studien gaben mir ein klares Verständnis dafür, dass Lernen tatsächlich nie endet. Von Projekt zu Projekt kehrst du immer wieder zu dem Punkt zurück, an dem du nach Informationen suchen, forschen, Inspiration finden und Entscheidungen endlos überarbeiten musst, um die Form zu finden, alles unter engen Fristen. Du beginnst mit einem Bild in deinem Kopf und versuchst genau das umzusetzen, aber auf dem Weg verwandelt sich alles, und am Ende entsteht etwas ganz anderes, etwas viel Tieferes. Die Universität lehrte mich, mit diesem Tempo Schritt zu halten, schnell Entscheidungen zu treffen und keine Angst davor zu haben, erste Ideen zugunsten eines stärkeren Endergebnisses aufzugeben."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq40vwfi92h.jpg",
+              "caption": "Mit einem Präsentationsmodell eines ihrer Projekte.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "In deinem Rehabilitationszentrum in Zhytomyr hast du bionische Formen und abgerundete Ecken gewählt, damit sich die Patienten sicher fühlen. Wie hast du entschieden, welche architektonischen Mittel wirklich ein Gefühl des Schutzes schaffen, anstatt nur weich auszusehen?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Zunächst einmal sind glatte, abgerundete, radiale Wände viel komfortabler für eine Person im Rollstuhl oder mit Prothese, da jede Ecke ein potenzielles Hindernis ist. Angesichts der Besonderheiten der Einrichtung und nach Analyse typischer Krankenhauspläne mit ihren 90-Grad-Ecken haben wir auch den psycho-emotionalen Faktor berücksichtigt. Für eine Person mit akuter Belastungsstörung oder PTSD wird jemand, der plötzlich um eine Ecke erscheint, zu einem zusätzlichen Auslöser für Angstzustände."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4e2kin3v3.jpg",
+              "caption": "Das Rehabilitationszentrum in Zhytomyr. Gekantete Metalljalousien bieten den Patienten Privatsphäre vor der Straße, während die Aussicht offen bleibt.",
+              "align": "zentrum"
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Die Metalljalousien im selben Projekt sind so geneigt, dass die Patienten den Innenhof sehen können, während Passanten auf der Straße sie nicht sehen können. Wie kam diese Lösung zustande, und gab es Optionen, die nicht funktionierten?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Von Anfang an beabsichtigten wir, offene Balkone zu schaffen, damit ein Patient frische Luft schnappen kann, ohne sein eigenes Zimmer zu verlassen. Nach Konsultationen mit Fachleuten wurde jedoch klar, dass dies für Menschen mit psychischem Trauma eine gefährliche Lösung ist. Das Team führte eine Brainstorming-Sitzung durch, um einen Weg zu finden, die ursprüngliche Idee, Kontakt mit der Luft und dem Wald, beizubehalten, während sie gleichzeitig vollständig sicher gemacht wird. Wir testeten Vollverglasung und gewöhnliche Jalousien, aber sie erzeugten entweder das Gefühl einer geschlossenen Zelle oder blockierten die Sicht auf die Natur vollständig. Drehbare Lamellen, die in einem Winkel eingestellt sind, erwiesen sich als die beste Lösung. Sie bieten die notwendige Privatsphäre vor der Straße, lassen den Patienten einen direkten Blick auf den Innenhof und den Kiefernwald, und ermöglichen gleichzeitig eine komfortable Belüftung des Raumes ohne das Gefühl der Isolation. Am Ende wurde diese funktionale Sicherheitsmaßnahme zum wichtigsten visuellen Merkmal der gesamten Fassade."
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Das Projekt wurde durch Konsultationen mit medizinischem Personal in Rehabilitationszentren entwickelt. Welcher ihrer Ratschläge hat das ursprüngliche Konzept am stärksten verändert?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Natürlich wurden die anfänglichen konzeptionellen Entscheidungen stark von den Besonderheiten des Gebäudes und der Forschung zu seinen zukünftigen Nutzern beeinflusst. Wir analysierten verschiedene Gruppen im Detail, ihre besonderen Bedürfnisse und die tatsächliche Praxis, wie solche Einrichtungen gestaltet werden. Während einer der Beratungen konnten wir mit einer Person sprechen, die in der Praxis Rehabilitationszentren geschaffen und verbessert hatte. Die wichtigste Erkenntnis dieses Gesprächs war das Verständnis des psychologischen Zustands der Patienten und der Besonderheiten ihrer Sicherheit, und deshalb haben wir offene Balkone vollständig aufgegeben. Für gewöhnliche Wohnungen oder ein Hotel erscheint ein Balkon eine natürliche Wahl, aber für Menschen, die sich nach schweren Verletzungen rehabilitieren, schaffen offene auskragende Räume unnötige Angst und Risiko."
+            },
+            {
+              "type": "header",
+              "content": "Ihr Diplomprojekt, ein Campus und Studentenwohnheim in Kharkiv, basiert auf einem hybriden Modell: Das Erdgeschoss wird zu offenem öffentlichen Raum, und die darüber liegenden Wohnungen sind modular. Warum diese Typologie anstelle des bekannten Korridor-Hostels?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Das gewöhnliche Korridor-Hostel ist längst veraltet und bietet den heutigen jungen Menschen keine neuen räumlichen Erfahrungen. Es sperrt Menschen in enge dunkle Korridore ein, nimmt das Gleichgewicht zwischen Geselligkeit und Privatsphäre weg und wirkt vom Leben abgeschnitten. Aktive Erdgeschosse sind seit langem ein absolutes Muss in gutem Wohnraum, und auf einem Studenten-Campus sind sie noch entscheidender. Hier entsteht eine offene öffentliche Umgebung mit Coworking-Bereichen, Gemeinschaftsräumen und Dienstleistungen, in denen Studierende leicht neue Kontakte knüpfen, Kommilitonen treffen, Ideen austauschen und Gleichgesinnte finden können. Die oberen Wohngeschosse sind modular, sodass jeder Studierende einen geeigneten persönlichen Platz für konzentriertes Lernen und Erholung hat. Diese hybride Typologie funktioniert als lebendiges Studenten-Co-Living: aktive Geselligkeit und Integration ins Stadtleben unten, sowie ein geschützter, ergonomischer Privatbereich oben."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+              "caption": "Campus und Studentenwohnheim in Kharkiv, Masterprojekt: ein offenes, aktives Erdgeschoss mit modularen Wohnungen darüber.",
+              "align": "center"
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq5dldnfdbz.jpg",
+              "caption": "Konzeptdiagramm: der gemeinsame öffentliche Kern des Campus unter den umliegenden Blocks.",
+              "align": "zentrum"
+            },
+            {
+              "type": "kopfzeile",
+              "content": "In einer Einheit platzieren Sie einen Schlafboden, um Platz für das Studium freizumachen; in einer anderen schaffen Sie mit einem erhöhten Bett „vertikale Privatsphäre“. Wie suchen Sie das Gleichgewicht zwischen persönlichem Raum und gemeinsamem Leben in einer studentischen Umgebung?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Das Gleichgewicht zwischen gemeinsamem Leben und Privatsphäre beginnt damit, zu verstehen, dass eine Person ihr eigenes psychologisches Territorium braucht, in dem ihr Blickfeld und persönlicher Raum nicht ständig mit anderen kreuzen. In einem typischen Wohnheim stehen die Betten auf einer horizontalen Ebene, sodass eine Person immer im Sichtfeld ihres Nachbarn ist, und das ermüdet schnell. Vertikale Zonierung und der Schlafbalkon, der das Markenzeichen des Grundrisses des Wohnheims ist, lösen dieses Problem. Das Anheben des Bettes auf eine zweite Ebene schafft eine individuelle Kapsel der Ruhe, in der man vollständig abschalten kann von dem, was im Raum passiert. In einem Einzelzimmer befreit dies die untere Ebene für einen vollständigen Arbeitsplatz und für ein clutterfreies Wohnen, und in einem Doppelzimmer bietet es die gleiche vertikale Privatsphäre, sodass Mitbewohner sich selbst innerhalb eines Raumes nicht stören."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq5rkp21eka.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq6cquwuuau.jpg"
+              ],
+              "caption": "Einzel- und Doppel-Einheiten mit erhöhtem Schlafniveau."
+            },
+            {
+              "type": "header",
+              "content": "Dies ist ein Diplomprojekt über Kharkiv, eine Stadt, die jetzt unter ständigem Kriegslastdruck lebt. Wie sehr hat diese Realität Entscheidungen im Projekt direkt oder indirekt geprägt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Ohne Zweifel hat die Realität des Krieges die Arbeit erheblich geprägt, sowohl im Sinne als auch in der Planung. Trotz ständiger Beschießungen und Gefahr bleibt Kharkiv selbstbewusst unter den drei wichtigsten Städten in der Ukraine nach Anzahl der Universitätsbewerber, was nur bestätigt, wie relevant die Wahl des Standorts ist. Die Stadt lebt, und junge Menschen wollen hier studieren. Aber das Entwerfen für einen solchen Kontext mit alten Ansätzen ist nicht mehr möglich. Sicherheit wurde zum entscheidenden Faktor für die gesamte Struktur des Komplexes, sodass ein obligatorischer und grundlegender Teil des Masterprojekts die Planung und Berechnung eines geräumigen Schutzraums war. Nicht nur ein technischer Keller, um eine Häkchen zu setzen, sondern ein vollständiger unterirdischer Raum, der in die Funktionen des Campus integriert ist."
+            },
+            {
+              "type": "Galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq6ycmb9jy5.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq7fi4lxa0k.jpg"
+              ],
+              "caption": "Illustration und axonometrisches Detail aus dem Kharkiv-Campus-Projekt."
+            },
+            {
+              "type": "Kopfzeile",
+              "content": "In Ihrem Gewächshausprojekt am Kyiv-Volynskyi-Hub schreiben Sie über einen Übergang vom schnellen, lauten Transit zu Ruhe und Konzentration. Wie haben Sie diesen Übergang architektonisch erreicht, anstatt ihn nur auf einem Plan zu markieren?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Der Übergang vom Transit zur Ruhe wird vor allem durch eine klare Abfolge physischer Barrieren erreicht. Zwischen der lauten Eisenbahn und der Ruhe, für die das Gewächshaus steht, besteht nicht nur Distanz. Zuerst kommt ein separater Gebäudeblock und ein offener Raum davor, die die erste Welle aufnehmen und den Hauptlärm der Züge physisch dämpfen. Erst nach dem Passieren dieses Puffers gerät eine Person in den Rhythmus von Pergolen und überdachten Galerien, wo die Form des Komplexes selbst beginnt, als schützender Kontur zu wirken. Niedrige horizontale Volumen und dichte Bepflanzung verdecken die zentrale Zone vollständig vor Stadtlärm und visuellem Chaos. Der Wechsel des Maßstabs, der Schatten der Pergola und die grüne Masse lenken die Aufmerksamkeit vom Trubel des Transits auf die Stille und schaffen eine natürliche Isolierung um das Gewächshaus, noch bevor eine Person seine Schwelle überschreitet."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq83blkiea1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq8kau171hy.jpg"
+              ],
+              "caption": "Der Komplex am Kyiv-Volynskyi-Knotenpunkt: funktionale Zonierung und Masterplan."
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Der Innenhof desselben Projekts ist dem Gedenken an die Ereignisse von 1917 gewidmet. Woher kam diese Idee, und wie haben Sie mit einem so sensiblen Thema in einem Raum gearbeitet, der weiterhin ein Verkehrsknotenpunkt ist?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Jedes Design beginnt für mich mit einer gründlichen Vor-Design-Analyse. Nicht nur des Geländes oder der Umgebung, sondern auch des historischen Erbes des Standorts. Sobald ich die Aufgabenstellung erhielt, begann ich meine Recherche genau mit diesem Teil der urbanen Analyse, um einen ersten Anknüpfungspunkt zu finden, von dem aus sich das Konzept und die Idee des Projekts entwickeln konnten. Wenige Passagiere realisieren es, aber hier, am Post-Volynskyi-Bahnhof, eröffneten am 26. Juli 1917 russische Militäreinheiten das Maschinengewehrfeuer auf den Zug des Bohdan Khmelnytsky-Regiments, als er sich auf den Weg an die Front machte. Es war ein tragischer und symbolischer Ausgangspunkt des ukrainischen Befreiungskampfes, und es geschah genau auf diesen Gleisen."
+            },
+            {
+              "type": "text",
+              "content": "Arbeiten mit einem solchen Thema in einem Verkehrsknotenpunkt ist eine äußerst komplexe und verantwortungsvolle Aufgabe. Ein Bahnhof lebt vom Transit, Trubel und Geschwindigkeit. Daher sind die Erinnerung an diese Ereignisse und die Idee der Resilienz im Herzen des Komplexes verankert: der Innenhof mit dem Gewächshaus und der rhythmischen Struktur der Pergolen. Dieser grüne Kern ist die wichtigste räumliche und akustische Pufferzone. Wenn man hier vom dynamischen Transit kommt, befindet man sich in einem geschützten Raum der Ruhe, in dem das Rumpeln der Eisenbahn abgeschaltet ist. Das Gewächshaus und die lebendige Natur unter der Pergola sprechen von Erinnerung in der Sprache des Lebens, Lichts und der Erneuerung und geben den Passagieren die Wahl, sich vom Lärm der Stadt zu erholen, langsamer zu werden oder über das historische Gewicht des Ortes unter ihren Füßen nachzudenken."
+            },
+            {
+              "type": "bild",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
+              "caption": "Axonometrie des Komplexes neben der Eisenbahn, mit dem Innenhof im Zentrum.",
+              "align": "zentrum"
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Die meisten Ihrer Projekte verfügen über sehr expressive Grafiken und atmosphärische Renderings. Wo sehen Sie für sich die Grenze zwischen überzeugender Architekturvisualisierung und dem Bild, das zu einem eigenständigen Kunstwerk wird?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Für mich ist architektonische Visualisierung vor allem fotografische Kunst. Ich sehe sie nicht als Computergrafik um der Spezialeffekte willen, sondern so, wie ein Fotograf es tut, der an ein Gebäude kommt und nach dem richtigen Winkel sucht, das Licht, die Luft, die Tastbarkeit der Materialien und die Stimmung spürt."
+            },
+            {
+              "type": "text",
+              "content": "Die Linie zwischen Überzeugungskraft und einem Bild, das um seiner selbst willen existiert, verläuft dort, wo die Ehrlichkeit gegenüber dem Projekt beginnt. Ein Photograph kann tiefgründig, atmosphärisch und künstlerisch sein, aber seine Aufgabe ist es, den echten Charakter der Umgebung einzufangen und zu offenbaren. Wenn eine Renderings als ehrlicher Rahmen aus dem Leben eines zukünftigen Gebäudes funktioniert, hilft sie einer Person, den Raum zu fühlen, noch bevor er gebaut ist."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq9nudzgq53.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqah3bli06u.jpg"
+              ],
+              "caption": "Visualisierungen aus Diana Aleshchenko's Portfolio."
+            },
+            {
+              "type": "header",
+              "content": "Wenn du eines dieser Projekte vor einer Jury verteidigen müsstest, die unangenehme Fragen stellt, welche Entscheidung würdest du am heftigsten verteidigen, und welche würdest du als schwach eingestehen?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Wenn ich den Kharkiv-Campus erneut vor einer kritischen Jury verteidigen müsste, würde ich die Entscheidung am heftigsten verteidigen, das Erdgeschoss zu einem vollständig aktiven, offenen, multifunktionalen Raum für alle Bewohner der Stadt zu machen. Damit ein Gebäude mit einem Sportkomplex oder einem Schwimmbad nicht nur in der ersten Tageshälfte während des Unterrichts lebt, sondern auch abends und während der Feiertage. Die Jury würde wahrscheinlich auf traditionelle Vorstellungen von Sicherheit verweisen: dass eine Studenten-Umgebung isoliert sein sollte, hinter einem Zaun. Aber ich bin überzeugt, dass Geschlossenheit keinen Ort sicher macht. Sicherheit entsteht durch Offenheit, durch lebendigen Kontakt mit der Nachbarschaft, durch soziale Kontrolle und die ständige Präsenz von Menschen auf der Straße."
+            },
+            {
+              "type": "text",
+              "content": "Die Entscheidung, die ich bereit bin, offen kritisiert zu sehen, ist die räumliche Optimierung der kompakten Einheiten mit einem erhöhten Schlafplatz. Obwohl sie das Problem der Privatsphäre auf begrenzter Grundfläche löst, ist sie immer ein Kompromiss in Bezug auf universelle Inklusivität: eine Schlafgalerie eignet sich für junge, mobile Menschen, schafft aber eine Barriere für Studierende mit eingeschränkter Mobilität."
+            },
+            {
+              "type": "header",
+              "content": "Was unterscheidet Ihrer Ansicht nach die ukrainische architektonische Ausbildung und die junge architektonische Gemeinschaft gerade jetzt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Vor allem eine auffällige Kohäsion und die Bereitschaft, weiterhin Ideen zu generieren und etwas Neues zu schaffen, egal unter welchen äußeren Umständen. Wenn ich die heutigen Studierenden, Absolventen, meine Klassenkameraden und Kollegen beobachte, sehe ich enorme innere Widerstandskraft und beruflichen Mut. Unsere Generation wird unter außergewöhnlich schwierigen Bedingungen geformt, aber das hat unser Interesse am Beruf nicht gebrochen; im Gegenteil, es hat unser Verantwortungsbewusstsein und die Qualität der Projekte geschärft. Gerade jetzt bildet die ukrainische architektonische Gemeinschaft sehr starke, wettbewerbsfähige und durchdachte Spezialisten aus, die bereit sind, mit den komplexesten räumlichen und sozialen Herausforderungen zu arbeiten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
+              "caption": "Absolventen mit ihren Projekttafeln.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Erzählen Sie uns von etwas, das Sie kürzlich inspiriert hat: ein Projekt, ein Ort, eine Person.",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Für mich sind Musik, Film und Fotografie nicht nur eine Quelle der Emotion, sondern eine echte Grundlage für architektonische Entscheidungen. Jede kreative Arbeit um Sie herum kann zu einem unerwarteten Impuls für einen Raum werden. Ein kürzliches Beispiel war das Konzept eines meiner Masterprojekte, inspiriert vom Album von Ariana Grande und dem gleichnamigen Film, Eternal Sunshine of the Spotless Mind. Ich liebe diesen Prozess wirklich, wenn eine aufrichtige persönliche Leidenschaft sich in eine unkonventionelle architektonische Idee verwandelt."
+            },
+            {
+              "type": "header",
+              "content": "Wie sehen Sie Ihre architektonische Karriere von hier aus?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Ich sehe meine zukünftige Entwicklung definitiv innerhalb der ukrainischen Architekturgemeinschaft. Ich möchte schaffen, wiederaufbauen und alles tun, damit Raum in unseren Heimatstädten inspirierend, lebendig und sicher für die Menschen ist. Es ist mir wichtig, meine Erfahrung und Vision in eine Umgebung zu investieren, die wirklich zählt und hier und jetzt echte Veränderungen braucht."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqcksjlhy9h.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqddv13xv8d.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq301oe6fph.jpg"
+              ],
+              "caption": "Diana Aleshchenko mit ihrer Arbeit."
+            },
+            {
+              "type": "header",
+              "content": "Welchen Rat würdest du dir zu Beginn deines Studiums geben?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Behalte dein Auge im Training, halte bei der ersten erfolgreichen Option nicht an und generiere weiter, denn die besten Lösungen erscheinen oft, nachdem du gedacht hast, die Suche sei vorbei. Und ein rein praktischer Ratschlag: Wechsle so früh wie möglich zu digitalen Werkzeugen und Computergrafik, und entdecke ständig die neuen Funktionen und Tricks der Software. Je freier du die Software handhabst, desto präziser und schneller kannst du jede räumliche Idee umsetzen."
+            },
+            {
+              "type": "text",
+              "content": "<i>Visualisierungen und Zeichnungen: Diana Aleshchenko. Interview schriftlich geführt für EPRIS Journal, September 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:37:54.439Z"
         }
       ],
       "reviews": [
