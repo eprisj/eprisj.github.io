@@ -8765,6 +8765,613 @@
       "createdBy": "admin",
       "previewToken": "a4036338d5bc3bb47895e084",
       "authorId": "author-1784732936927-kw554"
+    },
+    {
+      "id": 39,
+      "role": "Author",
+      "imageSeed": "",
+      "showCover": true,
+      "draft": true,
+      "order": 0,
+      "authorId": "author-1784732936927-kw554",
+      "title": "Diana Aleshchenko: Safety Comes From Openness",
+      "author": "Viacheslav Munister & Diana Aleshchenko",
+      "date": "September 15, 2026",
+      "excerpt": "A new KNUBA graduate on a rehabilitation centre without right angles, a student campus for wartime Kharkiv, and a courtyard that keeps the memory of July 1917 inside a railway hub.",
+      "category": "interview",
+      "subcategory": "Interview",
+      "tags": [
+        "Interview",
+        "architecture",
+        "Ukraine",
+        "Kyiv",
+        "Kharkiv",
+        "education"
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+      "previewToken": "JbWDyMUOvqmgHQEa",
+      "content": [
+        {
+          "type": "text",
+          "content": "Diana Aleshchenko is from Kyiv. This year she completed her master's degree in architecture and urban planning at the Kyiv National University of Construction and Architecture (KNUBA), and her student portfolio already spans three very different briefs: a rehabilitation centre in Zhytomyr for people recovering from severe injury and trauma, a campus with student housing in Kharkiv, and a greenhouse complex at the Kyiv-Volynskyi railway hub."
+        },
+        {
+          "type": "text",
+          "content": "What connects them is an insistence that every formal decision has to earn its place. The rounded walls in her rehabilitation centre are about wheelchairs and anxiety before they are about softness; the louvres on its façade are about who can see whom. EPRIS Journal asked her about the reasoning behind these projects, and about what it means to design for Ukrainian cities now."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq1ka8wjapn.jpg",
+          "caption": "Diana Aleshchenko with her project boards.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Tell us a little about yourself: where are you from, where did you study, and how did you come to architecture?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I'm from Kyiv, and this year I received my master's degree in architecture and urban planning at KNUBA in Kyiv. I don't have a unique story about a sudden childhood revelation after which I decided to tie my life to architecture. As I see it, the path took shape quite naturally and consistently: through a chain of my own decisions, a gradually growing interest in space, and specific life events that step by step brought me to where I am now."
+        },
+        {
+          "type": "header",
+          "content": "What in your childhood or youth pushed you towards architecture in particular?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "There wasn't a single childhood trigger that decided everything. It was more a gradual combination of interests in drawing, geometry and creative work, which with age simply turned into a conscious choice of profession."
+        },
+        {
+          "type": "header",
+          "content": "How much did your studies at KNUBA shape your approach to design?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "My studies gave me a clear understanding that learning never actually ends. From project to project you keep coming back to the point where you have to look for information again, research, find inspiration and endlessly rework decisions in search of form, all of it under tight deadlines. You start with one picture in your head and try to realise exactly that, but along the way everything transforms, and in the end something quite different is born, something much deeper. University taught me to keep up with that pace, to make decisions quickly and not to be afraid to let go of first ideas for the sake of a stronger final result."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq40vwfi92h.jpg",
+          "caption": "With a presentation model of one of her projects.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "In your rehabilitation centre in Zhytomyr you chose bionic forms and rounded corners so that patients would feel safe. How did you decide which architectural devices genuinely create a sense of protection, rather than simply looking soft?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "First of all, smooth, rounded, radial walls are far more comfortable to move along for a person in a wheelchair or with a prosthesis, where every corner is a potential obstacle. Given the specifics of the facility, and after analysing typical hospital plans with their 90-degree corners, we also took the psycho-emotional factor into account. For a person with acute stress disorder or PTSD, someone suddenly appearing from around a corner becomes an additional trigger for anxiety."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq4e2kin3v3.jpg",
+          "caption": "The rehabilitation centre in Zhytomyr. Angled metal louvres give patients privacy from the street while keeping the view open.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "The metal louvres in the same project are angled so that patients can see the courtyard while passers-by on the street cannot see them. How did this solution come about, and were there options that didn't work?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "From the very beginning we intended to make open balconies, so that a patient could get some fresh air without leaving their own room. But after consultations with specialists it became clear that for people with psychological trauma this is a dangerous solution. So the team held a brainstorm, looking for a way to keep the original idea, contact with the air and the forest, while making it completely safe. We tested full glazing and ordinary blinds, but they either created the feeling of a closed cell or blocked the view of nature entirely. Rotating louvres set at an angle turned out to be the best answer. They give the necessary privacy from the street, leave the patient a direct view of the courtyard and the pine forest, and at the same time allow the room to be aired comfortably without a sense of isolation. In the end this functional safety measure became the main visual feature of the whole façade."
+        },
+        {
+          "type": "header",
+          "content": "The project was developed through consultations with medical staff at rehabilitation centres. Which of their advice changed the original concept the most?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Of course, the initial conceptual decisions were strongly influenced by the specifics of the building and research into its future users. We analysed different groups in detail, their particular needs and the real practice of how such facilities are arranged. During one of the consultations we were able to talk to a person who had created and improved rehabilitation centres in practice. The main insight of that conversation was an understanding of patients' psychological state and the specifics of their safety, and as a result we abandoned open balconies entirely. For ordinary housing or a hotel a balcony seems a natural choice, but for people undergoing rehabilitation after severe injuries, open cantilevered spaces create unnecessary anxiety and risk."
+        },
+        {
+          "type": "header",
+          "content": "Your diploma project, a campus and student housing in Kharkiv, is built on a hybrid model: the ground floor becomes open public space, and the housing above is modular. Why this typology rather than the familiar corridor dormitory?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The ordinary corridor dormitory is long outdated and offers today's young people no new spatial experience. It shuts people away in narrow dark corridors, takes away the balance between socialising and privacy, and feels cut off from life. Active ground floors have long been an absolute must in good housing, and on a student campus they are even more critical. This is where an open public environment forms, with coworking spaces, shared areas and services, where students can easily make new contacts, meet classmates, exchange ideas and find like-minded people. The upper residential floors, meanwhile, are modular, so that every student has a proper personal place for focused study and rest. This hybrid typology works as a living student co-living: active socialising and integration into city life below, and a protected, ergonomic private space above."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+          "caption": "Campus and student housing in Kharkiv, master's project: an open, active ground floor with modular housing above.",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq5dldnfdbz.jpg",
+          "caption": "Concept diagram: the shared public core of the campus among the surrounding blocks.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "In one unit you place a sleeping loft to free up space for study; in another, a double, you create “vertical privacy” with a raised bed. How do you look for the balance between personal space and shared life in a student environment?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The balance between shared life and privacy starts with understanding that a person needs their own psychological territory, where their gaze and personal space do not constantly cross with others'. In a typical dormitory the beds stand on one horizontal plane, so a person is always in their neighbour's field of view, and that quickly wears you out. Vertical zoning and the sleeping mezzanine, which is the signature of the dormitory's layout, solve this problem. Raising the bed to a second level creates an individual capsule of quiet where you can completely switch off from what is happening in the room. In a single room this frees the lower level for a full workplace and for living without clutter, and in a double it gives the same vertical privacy, so that roommates don't disturb each other even within one space."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eq5rkp21eka.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eq6cquwuuau.jpg"
+          ],
+          "caption": "Single and double units with a raised sleeping level."
+        },
+        {
+          "type": "header",
+          "content": "This is a diploma project about Kharkiv, a city that now lives under constant wartime pressure. How much did that reality shape decisions in the project, directly or indirectly?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Without question, the reality of war significantly shaped the work, both in meaning and in planning. Despite constant shelling and danger, Kharkiv confidently remains among the top three cities in Ukraine by number of university applicants, which only confirms how relevant the choice of site is. The city lives, and young people want to study here. But designing for such a context using the old approaches is no longer possible. Safety became the defining factor for the whole structure of the complex, so a mandatory and fundamental part of the master's project was designing and calculating a spacious shelter. Not just a technical basement to tick a box, but a full underground space integrated into the functions of the campus."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eq6ycmb9jy5.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eq7fi4lxa0k.jpg"
+          ],
+          "caption": "Illustration and axonometric detail from the Kharkiv campus project."
+        },
+        {
+          "type": "header",
+          "content": "In your greenhouse project at the Kyiv-Volynskyi hub, you write about a transition from fast, noisy transit to calm and focus. How did you achieve that transition architecturally, rather than just marking it on a plan?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "The transition from transit to calm is achieved above all through a clear sequence of physical barriers. Between the noisy railway and the calm that the greenhouse stands for there is not just distance. First comes a separate block of the building and an open space in front of it, which take the first wave and physically damp the main sound from the trains. Only after passing this buffer does a person come under the rhythm of pergolas and covered galleries, where the form of the complex itself begins to work as a protective contour. Low horizontal volumes and dense planting fully screen the central zone from city noise and visual chaos. The change of scale, the shade of the pergola and the green mass shift attention from the bustle of transit to quiet, creating a natural insulation around the greenhouse before a person even crosses its threshold."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eq83blkiea1.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eq8kau171hy.jpg"
+          ],
+          "caption": "The complex at the Kyiv-Volynskyi hub: functional zoning and master plan."
+        },
+        {
+          "type": "header",
+          "content": "The inner courtyard of the same project is dedicated to the memory of the events of 1917. Where did this idea come from, and how did you work with such a sensitive subject in a space that remains a transport hub?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Any design for me begins with thorough pre-design analysis. Not only of the terrain or the surroundings, but also of the historical heritage of the site. Once I received the brief, I began my research with exactly this part of the urban analysis, looking for an initial hook from which the concept and idea of the project could develop. Few passengers realise it, but it was here, at Post-Volynskyi station, that on 26 July 1917 Russian military units opened machine-gun fire on the train of the Bohdan Khmelnytsky Regiment as it was leaving for the front. It was a tragic and symbolic starting point of the Ukrainian struggle for liberation, and it happened on these very tracks."
+        },
+        {
+          "type": "text",
+          "content": "Working with such a subject inside a transport hub is an extremely complex and responsible task. A station lives by transit, bustle and speed. So the memory of these events and the idea of resilience are built into the heart of the complex: the inner courtyard with the greenhouse and the rhythmic structure of pergolas. This green core is the main spatial and acoustic buffer. Coming here from dynamic transit, a person finds themselves in a protected space of calm where the rumble of the railway is cut off. The greenhouse and living nature under the pergola speak of memory in the language of life, light and renewal, giving passengers the choice to rest from the noise of the city, to slow down, or to reflect on the historical weight of the place beneath their feet."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
+          "caption": "Axonometry of the complex beside the railway, with the inner courtyard at its centre.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Most of your projects have very expressive graphics and atmospheric renders. Where, for you, is the line between showing architecture convincingly and letting the image become a work in its own right?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "For me architectural visualisation is first of all photographic art. I don't look at it as computer graphics for the sake of special effects, but the way a photographer does who arrives at a building and looks for the right angle, feels the light, the air, the tactility of materials and the mood."
+        },
+        {
+          "type": "text",
+          "content": "The line between being convincing and a picture that exists for its own sake runs where honesty towards the project begins. A photograph can be deep, atmospheric and artistic, but its task is to capture and reveal the real character of the environment. When a render works as an honest frame from the life of a future building, it helps a person feel the space before it is even built."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eq9nudzgq53.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqah3bli06u.jpg"
+          ],
+          "caption": "Visualisations from Diana Aleshchenko's portfolio."
+        },
+        {
+          "type": "header",
+          "content": "If you had to defend one of these projects before a jury asking uncomfortable questions, which decision would you defend most fiercely, and which would you admit is weak?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "If I had to defend the Kharkiv campus again before a critical jury, I would most fiercely defend the decision to make the ground floor a fully active, open, multifunctional space for all residents of the city. So that a building with a sports complex or a swimming pool lives not only in the first half of the day during classes, but also in the evenings and during the holidays. The jury would probably appeal to traditional ideas about safety: that a student environment should be isolated, behind a fence. But I am convinced that closedness does not make a place safe. Safety comes from openness, from living contact with the neighbourhood, from social control and the constant presence of people on the street."
+        },
+        {
+          "type": "text",
+          "content": "The decision I am ready to see openly criticised is the spatial optimisation of the compact units with a raised sleeping place. Although it solves the problem of privacy on a limited floor area, it is always a compromise in terms of universal inclusivity: a sleeping mezzanine suits young, mobile people, but creates a barrier for students with limited mobility."
+        },
+        {
+          "type": "header",
+          "content": "What, in your view, distinguishes Ukrainian architectural education and the young architectural community right now?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Above all, a striking cohesion and a readiness to keep generating ideas and creating something new, whatever the external circumstances. Watching today's students, graduates, my classmates and colleagues, I see enormous inner resilience and professional courage. Our generation is being formed in exceptionally difficult conditions, but this has not broken our interest in the profession; on the contrary, it has sharpened our sense of responsibility and the quality of the projects. Right now the Ukrainian architectural community is raising very strong, competitive and thoughtful specialists who are ready to work with the most complex spatial and social challenges."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
+          "caption": "Graduates with their project boards.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Tell us about something that has inspired you recently: a project, a place, a person.",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "For me music, film and photography are not just a source of emotion but a real foundation for architectural decisions. Any creative work around you can become an unexpected impulse for a space. One recent example was the concept of one of my master's projects, inspired by Ariana Grande's album and the film of the same name, Eternal Sunshine of the Spotless Mind. I really love that process, when a sincere personal passion turns into an unconventional architectural idea."
+        },
+        {
+          "type": "header",
+          "content": "How do you see your architectural career from here?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I definitely see my future development within the Ukrainian architectural community. I want to create, to rebuild, and to do everything possible so that space in our home cities is inspiring, alive and safe for people. It matters to me to invest my experience and vision in an environment that truly matters and needs real change here and now."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqcksjlhy9h.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqddv13xv8d.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eq301oe6fph.jpg"
+          ],
+          "caption": "Diana Aleshchenko with her work."
+        },
+        {
+          "type": "header",
+          "content": "What advice would you give yourself at the start of your studies?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Keep training your eye, don't stop at the first successful option and keep generating, because the best solutions often appear after you thought the search was over. And a purely practical piece of advice: move to digital tools and computer graphics as early as possible, and keep figuring out the new functions and tricks of the software. The more freely you handle the software, the more precisely and quickly you can realise any spatial idea."
+        },
+        {
+          "type": "text",
+          "content": "<i>Visualisations and drawings: Diana Aleshchenko. Interview conducted in writing for EPRIS Journal, September 2026.</i>"
+        }
+      ],
+      "updatedAt": "2026-09-15T08:33:16.438Z"
+    },
+    {
+      "id": 40,
+      "role": "Author",
+      "imageSeed": "",
+      "showCover": true,
+      "draft": true,
+      "order": 0,
+      "authorId": "author-1784732936927-kw554",
+      "title": "Oksana Dzhuman: A Self-Portrait in 5,500 Sticks",
+      "author": "Viacheslav Munister & Oksana Dzhuman",
+      "date": "September 15, 2026",
+      "excerpt": "The Ukrainian artist, now based in Valencia, on turning used tobacco sticks into mosaic portraits, painting every one by hand, and the first time strangers saw the work up close at Russafa Art.",
+      "category": "interview",
+      "subcategory": "Interview",
+      "tags": [
+        "Interview",
+        "art",
+        "mosaic",
+        "Valencia",
+        "Spain",
+        "Ukraine"
+      ],
+      "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+      "previewToken": "g4zlDeB7WEtiywVa",
+      "content": [
+        {
+          "type": "text",
+          "content": "Oksana Dzhuman trained as an interior designer, then studied graphic design, then spent several years as a tattoo artist. Today she lives in Valencia and works as an artist, and the material she keeps returning to is one nobody else wanted: used tobacco sticks, disinfected, painted by hand one at a time and set into large mosaic portraits."
+        },
+        {
+          "type": "text",
+          "content": "The series began at the end of 2024 with a small box on her table. Her largest work so far, a self-portrait, holds 5,500 of them. In 2026 the mosaics were shown publicly for the first time, at Russafa Art in Valencia. EPRIS Journal spoke with her about the long road to this material, the process behind a single portrait, and the painting she calls La Guerra."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+          "caption": "Oksana Dzhuman with one of her mosaics.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "You trained as an interior designer, then studied graphic design, and today you work as an artist in Valencia. How did these different stages of study and experience shape the way you see composition, form and space in your work?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "To be honest, I don't think it was my education that shaped the way I see composition, form and space today. At university I was a rather unserious student: I realised quite quickly that interior design itself didn't really interest me, and if an assignment didn't grab me, I did it simply because it had to be done."
+        },
+        {
+          "type": "text",
+          "content": "But some things I genuinely loved. I loved drawing, inventing, working with colour and making things with my hands. One assignment in particular stayed with me: we had to dye paper ourselves in different shades, cut it into small squares and rectangles and assemble an image from them. That process really captivated me. Only now do I realise how close it was to what I do today, just with a completely different material."
+        },
+        {
+          "type": "text",
+          "content": "Later I went to study graphic design. That was already part of searching for what I wanted to do, but in the end that wasn't mine either. After that I came to tattooing and worked in that field for several years. I think that experience influenced me much more strongly. Tattooing definitely taught me patience, attention to detail and how to work with composition."
+        },
+        {
+          "type": "header",
+          "content": "Looking back, your path in art reads like several different chapters: drawing, tattoo, and now portraits from recycled materials. How do you connect these chapters into one story for yourself?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "For a long time I didn't see it as one story at all. I was constantly trying something new: I could get absorbed in one thing, then switch to something completely different, and after a while come back to something again."
+        },
+        {
+          "type": "text",
+          "content": "Only when the mosaics appeared did I start looking back and noticing things that repeat. I have always loved details, long manual work, colour, and the process itself, when a whole gradually emerges from separate elements."
+        },
+        {
+          "type": "text",
+          "content": "And that pull appeared even before university. At school, I remember spending a whole night covering my phone by hand with hundreds of tiny rhinestones, inventing the pattern as I went and not noticing the time at all. Later the phone was, fittingly, stolen. Perhaps all that sparkle did its job after all."
+        },
+        {
+          "type": "text",
+          "content": "So now I see it all as a rather chaotic path, in which only after years did I begin to listen to myself more and understand what I actually love."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+          "caption": "The phone she covered in rhinestones over one night as a schoolgirl.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Do you remember the moment you first thought that an ordinary used stick could become something more than rubbish? What caught your attention then?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "It all began at the end of 2024, unfortunately, with smoking. I put out a small box where I started collecting used sticks, and that was when I first began to notice how many there were. When it's not one or two sticks you simply throw away, but how many pile up in just a few days, you arrive at a rather unpleasant awareness of the scale of your own habit."
+        },
+        {
+          "type": "text",
+          "content": "That same evening I began looking at the sticks themselves, and at some point something just clicked: what if I tried to make something out of them? The idea came very suddenly, literally like a light bulb over my head. They are waste, there are a lot of them, they are small, light and the same shape. I immediately wanted to know whether all of this could be turned into a material to work with."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+          "caption": "The first box of used sticks.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "At first your works were made only from your own sticks, but over time other people began to join the project. How did that happen naturally, and what changed for you personally when the material stopped being only yours?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Until 2026 I used only my own sticks, so collecting material took a very long time. The first person to help me was a Spanish friend of mine, and I'm very grateful to her for the support. Then other people gradually joined in, and there was noticeably more material."
+        },
+        {
+          "type": "text",
+          "content": "Later I posted on social media that I was collecting used sticks for my work, and unexpectedly quite a lot of people responded. People even gave me whole cartons of new sticks. It changed the pace of the work a great deal: before, I had to wait for months until enough material piled up for one piece, and now several thousand sticks can be collected much faster."
+        },
+        {
+          "type": "text",
+          "content": "And I now see the works themselves a little differently. I look at them and understand that they no longer carry only my “DNA”. In a sense, many people take part in making each of them, and I'm very grateful to everyone who helps me collect material."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+          ],
+          "caption": "Material arrives from friends and followers: packs, bags and whole collections."
+        },
+        {
+          "type": "header",
+          "content": "If we take our time and describe the whole journey of one work, from the first stick to the finished portrait, which part of the process gives you the most pleasure, and which demands the most patience?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "It all starts with collecting. Then comes a rather long preparation: several stages of disinfection and treatment against the smell."
+        },
+        {
+          "type": "text",
+          "content": "While the sticks are being treated, I prepare the canvas in parallel: I do the layout and a colour map, so I understand which shades I'll need and roughly how the work will look."
+        },
+        {
+          "type": "text",
+          "content": "Then I dye the sticks in the shades I need. Many people are surprised that I paint every stick by hand, but for me this is the most meditative part of the process. After that, assembling the image on the canvas begins."
+        },
+        {
+          "type": "text",
+          "content": "The whole work requires patience, but probably the most goes into preparing the material. It takes quite a lot of time."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+          ],
+          "caption": "From sorted material to painted rows: stages of a work in progress."
+        },
+        {
+          "type": "header",
+          "content": "You assembled your self-portrait from 5,500 painted sticks; it is the largest work in the series. If it isn't too personal a question: what did you feel as you gradually recognised your own face in this unusual technique?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "While I work, I almost can't see the image. The canvases are large, and you work with them however you can: from the side, from above, sometimes almost lying down. Up close it all looks like a set of separate shades, and the image simply doesn't come together. You can only understand what's emerging by stepping back. With the self-portrait it was even harder, because it is practically black and white."
+        },
+        {
+          "type": "text",
+          "content": "And when the work was finished, the emotions were very mixed. I was glad I'd finished it, I was proud of myself, and at the same time I wanted to cry and not show it to anyone at all. I think the realisation hit me: this is my face, made of sticks that I smoked myself. It all began with a small box that didn't even hold fifty sticks, and now there were 5,500 of them in front of me."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "caption": "Self-portrait, 5,500 hand-painted sticks.",
+          "align": "center"
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+          ],
+          "caption": "Self-portrait, details. Up close the face dissolves into separate shades."
+        },
+        {
+          "type": "header",
+          "content": "One of your works refers to Vermeer's Girl with a Pearl Earring, a very recognisable image. What brought you to this portrait in particular, and did your relationship with it change while you were working on it?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "I had liked Girl with a Pearl Earring for a long time. Back in Ukraine I painted my own version with a cat, and in Spain the image kept turning up everywhere. At some point I decided that she would be my first portrait made of sticks. A familiar image, familiar colours."
+        },
+        {
+          "type": "text",
+          "content": "Before her I had made only two works from sticks, both abstract and with a fairly simple palette, so a portrait with so many shades was a big step for me."
+        },
+        {
+          "type": "text",
+          "content": "When I finished the layout and realised how many shades and thousands of sticks I would have to paint by hand, I thought I had overestimated my strength. I even considered leaving it as elongated coloured pixels. It stayed in that state for quite a long time, until I finally talked myself into finishing what I'd started."
+        },
+        {
+          "type": "text",
+          "content": "That is probably why I have a special love for this work. It was my first work on such a scale and over such a long time, and in the end it became my favourite."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+          "caption": "After Vermeer's Girl with a Pearl Earring, her first portrait made of sticks.",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+          "caption": "Girl with a Pearl Earring, detail.",
+          "align": "center"
+        },
+        {
+          "type": "header",
+          "content": "Besides mosaic, you work in oil painting, graphite studies and the series Elongated Pixels. Do you feel these languages as different voices in the same conversation, or does each one lead you somewhere else entirely?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "In general I try not to divide my work into separate directions or tie everything together into one story. I simply like switching between different materials and techniques. I can finish a work in sticks, pick up watercolour or go back to oils, and then return to the sticks again."
+        },
+        {
+          "type": "text",
+          "content": "Sometimes one thing grows directly out of another. Elongated Pixels, for example, were born while I was working on Girl with a Pearl Earring. At the layout stage I saw that the image looked interesting even without the sticks, and later I made Frida in this technique."
+        },
+        {
+          "type": "text",
+          "content": "But it's still the sticks that I keep coming back to. Right now this is the material and the process I like most of all."
+        },
+        {
+          "type": "header",
+          "content": "Among your works there is a canvas called La Guerra. I understand this may be a difficult subject, so I ask carefully: if you feel comfortable talking about it now, what stood behind this work?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "For me this work is probably about the pain that stays inside because of the war. Life goes on, you do ordinary things, but it doesn't go anywhere."
+        },
+        {
+          "type": "text",
+          "content": "At first I wanted to leave hope in this work, the thought that after darkness light always comes. That was meant to be the sun. But in the process, instead of a ray of light, it began to bleed."
+        },
+        {
+          "type": "text",
+          "content": "Even now I look at this work and feel everything tighten inside. For me, La Guerra is probably that very wound, the one that stays inside even when life around you goes on."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+          "caption": "La Guerra.",
+          "align": "center"
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+          ],
+          "caption": "La Guerra, details."
+        },
+        {
+          "type": "header",
+          "content": "In 2026 your works were shown to the public for the first time at Russafa Art in Valencia. What was it like when people stood next to your mosaics and looked at them in person, rather than on a screen?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "At Russafa Art I caught myself feeling a little out of place. There was a lot of painting around, and here I was with my used sticks. I felt awkward, and at the same time I was glad to finally be showing them, and afraid: how would people even take this?"
+        },
+        {
+          "type": "text",
+          "content": "The most interesting part was watching the reactions. Many people didn't understand what the works were made of. Some guessed pastel or chalk, but practically no one guessed used sticks."
+        },
+        {
+          "type": "text",
+          "content": "The images themselves were also read in different ways. Girl with a Pearl Earring was recognised immediately, because almost everyone knows that image. The self-portrait was harder: people could look at it for a long time without understanding what was in front of them, but as soon as I showed them a photograph, the portrait became visible."
+        },
+        {
+          "type": "text",
+          "content": "For me it was a very valuable experience. I saw live reactions to my work, received a lot of support and met new people. It's much easier for me to make works than to show them and talk about myself. Even keeping up social media isn't easy for me, so taking part in Russafa Art was quite a big step. And I'm very grateful to everyone who supported me."
+        },
+        {
+          "type": "header",
+          "content": "Allow me one last, slightly dreamy question: is there an image, a theme or a material you would like to take on one day, but for now lack the courage or the time?",
+          "level": 3
+        },
+        {
+          "type": "text",
+          "content": "One day I would like to try making a large-scale portrait out of much smaller elements. For now the complexity, the number of elements and the time it would take scare me a little. But once, a few thousand sticks also seemed far too complicated, and now with every new work the process becomes clearer and more precise for me."
+        },
+        {
+          "type": "text",
+          "content": "In parallel I collect various materials that should have ended up in the rubbish but caught my attention for some reason. I don't know myself yet what they will become, or when. My ideas usually appear quite unexpectedly."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+            "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+          ],
+          "caption": "In the studio with the portraits."
+        },
+        {
+          "type": "text",
+          "content": "<i>Photographs courtesy of Oksana Dzhuman. Interview conducted in writing for EPRIS Journal, September 2026.</i>"
+        }
+      ],
+      "updatedAt": "2026-09-15T08:33:20.769Z"
     }
   ],
   "reviews": [
@@ -22922,6 +23529,613 @@
           "previewToken": "a4036338d5bc3bb47895e084",
           "authorId": "author-1784732936927-kw554",
           "updatedAt": "2026-09-13T20:28:21.458Z"
+        },
+        {
+          "id": 39,
+          "role": "Автор",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Діана Алещенко: безпеку формує відкритість",
+          "author": "Viacheslav Munister & Diana Aleshchenko",
+          "date": "15 вересня 2026",
+          "excerpt": "Випускниця КНУБА про реабілітаційний центр без прямих кутів, студентський кампус для Харкова, що живе під обстрілами, і внутрішній двір, який зберігає пам'ять про липень 1917 року посеред залізничного вузла.",
+          "category": "інтерв'ю",
+          "subcategory": "Інтерв'ю",
+          "tags": [
+            "Інтерв'ю",
+            "архітектура",
+            "Україна",
+            "Київ",
+            "Харків",
+            "освіта"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+          "previewToken": "JbWDyMUOvqmgHQEa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Діана Алещенко з Києва. Цього року вона здобула ступінь магістра з архітектури та містобудування в Київському національному університеті будівництва і архітектури (КНУБА), і в її студентському портфоліо вже три зовсім різні завдання: реабілітаційний центр у Житомирі для людей, які відновлюються після важких травм, кампус зі студентським житлом у Харкові та комплекс з оранжереєю на залізничному вузлі Київ-Волинський."
+            },
+            {
+              "type": "text",
+              "content": "Об'єднує їх вимога, щоб кожне формальне рішення мало причину. Округлі стіни реабілітаційного центру насамперед про крісло колісне і тривогу, а вже потім про м'якість форми; ламелі на фасаді про те, хто кого бачить. EPRIS Journal розпитав її про логіку цих проєктів і про те, що означає проєктувати для українських міст сьогодні."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq1ka8wjapn.jpg",
+              "caption": "Діана Алещенко зі своїми проєктними планшетами.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Розкажіть трохи про себе: звідки Ви, де навчаєтесь і як прийшли в архітектуру?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Я з Києва, цього року здобула ступінь магістра з архітектури та містобудування в київському університеті КНУБА. У мене немає унікальної історії про раптове дитяче осяяння, після якого я вирішила пов'язати життя з архітектурою. Цей шлях, як на мене, складався абсолютно природно й послідовно: через ланцюжок власних рішень, поступове накопичення інтересу до простору та конкретні життєві події, які крок за кроком привели мене туди, де я є зараз."
+            },
+            {
+              "type": "header",
+              "content": "Що в дитинстві чи юності підштовхнуло Вас обрати саме архітектуру?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "У мене не було окремого тригера в дитинстві, який би все визначив. Це радше поступове поєднання інтересу до малювання, геометрії та креативу, яке з віком просто природно перетворилося на усвідомлений вибір професії."
+            },
+            {
+              "type": "header",
+              "content": "Наскільки навчання в КНУБА сформувало Ваш підхід до проєктування?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Навчання дало чітке усвідомлення, що насправді навчання ніколи не закінчується. Від проєкту до проєкту ти щоразу повертаєшся в точку, де треба знову шукати інформацію, досліджувати, надихатися та безкінечно переробляти рішення в пошуках форми, і все це в умовах стислих термінів та жорстких дедлайнів. Ти починаєш з однієї картинки в голові, намагаєшся втілити саме її, але в процесі роботи все трансформується, і в результаті народжується щось зовсім інше, набагато глибше. Університет навчив витримувати цей темп, швидко ухвалювати рішення та не боятися відмовлятися від первинних ідей заради сильнішого фінального результату."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq40vwfi92h.jpg",
+              "caption": "З презентаційним макетом одного з проєктів.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "У проєкті реабілітаційного центру в Житомирі Ви обрали біонічні форми й округлені кути, щоб пацієнти почувалися в безпеці. Як Ви визначали, які саме архітектурні прийоми справді викликають відчуття захищеності, а не просто виглядають м'яко?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Насамперед округлі плавні радіусні стіни набагато комфортніші для пересування людини на кріслі колісному або з протезом, де кожен кут потенційно стає перешкодою. Зважаючи на специфіку закладу, який ми проєктували, та аналізуючи типові лікарняні плани з кутами під 90 градусів, ми врахували також психоемоційний фактор. Для людини з гострим стресовим розладом або ПТСР раптова поява зустрічного потоку стає додатковим тривожним тригером."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4e2kin3v3.jpg",
+              "caption": "Реабілітаційний центр у Житомирі. Металеві ламелі під кутом приховують пацієнтів від поглядів з вулиці й залишають відкритим огляд.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Металеві ламелі в тому ж проєкті розвернуті під кутом так, що пацієнти бачать двір, а перехожі з вулиці їх не бачать. Розкажіть, як народилося це рішення і чи були варіанти, які не спрацювали?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Із самого початку ми мали на меті зробити відкриті балкони, щоб за потреби пацієнт міг подихати свіжим повітрям, не виходячи з власної кімнати. Проте після консультацій із фахівцями стало зрозуміло, що для людей із психологічними травмами це небезпечне рішення. Тоді ми командою влаштували брейншторм, шукаючи спосіб зберегти первинну ідею, а саме контакт із повітрям і лісом, але зробити її абсолютно безпечною. Тестували варіанти суцільного скління, класичних жалюзі, але вони або створювали відчуття закритої камери, або повністю блокували огляд на природу. Поворотні ламелі під кутом стали найкращою відповіддю на цей виклик. Вони забезпечують необхідну приватність від поглядів з вулиці, залишають пацієнту прямий огляд на двір та сосновий масив і водночас дають змогу комфортно провітрювати кімнату без відчуття ізоляції. Зрештою це функціональне рішення безпеки переросло в головну візуальну фішку всього фасадного образу реабілітаційного центру."
+            },
+            {
+              "type": "header",
+              "content": "Проєкт створювався на основі консультацій із медичними працівниками реабілітаційних центрів. Що з їхніх порад найбільше змінило початковий задум?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Звісно, на початкові концептуальні рішення значно вплинули специфіка об'єкта та дослідження майбутніх користувачів простору. Ми детально аналізували різні групи, їхні конкретні потреби та реальну практику облаштування подібних закладів. Під час однієї з консультацій нам вдалося поспілкуватися з людиною, яка безпосередньо створювала та вдосконалювала реабілітаційні центри на практиці. Головним інсайтом цієї розмови стало усвідомлення психологічного стану пацієнтів та специфіки їхньої безпеки, внаслідок чого ми повністю відмовилися від відкритих балконів. Для звичайного житла чи готелю балкон здається природним рішенням, проте для людей, які проходять реабілітацію після важких травм, відкриті консольні простори створюють зайву тривожність та ризики."
+            },
+            {
+              "type": "header",
+              "content": "Дипломна робота про кампус і гуртожиток у Харкові побудована на гібридній моделі: перший поверх стає відкритим громадським простором, а житло вище модульне. Чому саме ця типологія, а не звичний коридорний гуртожиток?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Звичайний коридорний гуртожиток давно застарів і не дає сучасній молоді жодного нового просторового досвіду. Він закриває людей у вузьких темних коридорах, позбавляє балансу між спілкуванням і приватністю та виглядає відірваним від життя. Активні перші поверхи вже давно стали безумовним мастхевом у якісному житлі, а на території студентського кампусу це ще більш критична необхідність. Саме тут формується відкрите громадське середовище з коворкінгами, спільними зонами та сервісами, де студенти можуть легко встановлювати нові контакти, знайомитися з однокурсниками, обмінюватися ідеями та знаходити однодумців. Водночас вищі житлові поверхи вирішені модульно, щоб забезпечити кожному студенту власне якісне персональне місце для фокусованого навчання й відпочинку. Така гібридна типологія працює як живий студентський колівінг: активна соціалізація та інтеграція в міське життя внизу і захищений, ергономічний приватний простір угорі."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+              "caption": "Кампус і студентське житло в Харкові, магістерський проєкт: відкритий активний перший поверх і модульне житло над ним.",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq5dldnfdbz.jpg",
+              "caption": "Концептуальна схема: спільне громадське ядро кампусу серед навколишньої забудови.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "В одному з юнітів Ви закладаєте спальну мансарду, щоб звільнити простір для навчання, в іншому, двомісному, «вертикальну приватність» через підняте ліжко. Як Ви шукаєте баланс між особистим простором і спільним життям у студентському середовищі?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Баланс між спільним життям і приватністю починається з розуміння того, що людині необхідна власна психологічна територія, де її погляд і особистий простір не перетинаються постійно з іншими. У типовому гуртожитку ліжка стоять в одній горизонтальній площині, тому людина завжди перебуває в полі зору сусіда, що швидко виснажує. Вертикальне зонування та спальна антресоль, яка є фішкою планування гуртожитку, вирішують цю проблему. Піднімаючи ліжко на другий рівень, створюємо індивідуальну капсулу тиші, де можна повністю відключитися від того, що відбувається в кімнаті. В одномісній кімнаті це дозволяє кардинально звільнити нижній ярус під повноцінне робоче місце та життя без відчуття захаращеності, а у двомісній дарує ту саму вертикальну приватність, коли сусіди не заважають один одному навіть у межах одного простору."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq5rkp21eka.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq6cquwuuau.jpg"
+              ],
+              "caption": "Одномісний і двомісний юніти з піднятим спальним рівнем."
+            },
+            {
+              "type": "header",
+              "content": "Це дипломна робота про Харків, місто, яке зараз живе під постійним тиском війни. Наскільки ця реальність впливала на рішення в проєкті, прямо чи опосередковано?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Беззаперечно реальність війни суттєво вплинула на роботу над проєктом як на сенсовому, так і на планувальному рівні. Попри постійні обстріли та небезпеку, Харків продовжує впевнено триматися в трійці лідерів за кількістю вступників в Україні, що лише підтверджує актуальність вибору ділянки. Місто живе, і молодь хоче тут навчатися. Проте проєктувати для такого контексту за старими підходами вже неможливо. Безпековий фактор став визначальним для всієї структури комплексу, тому обов'язковим і принциповим пунктом під час роботи над магістерським проєктом було створення та розрахунок місткого укриття. Це не просто технічний підвал для галочки, а повноцінний підземний простір, інтегрований у функціонал кампусу."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq6ycmb9jy5.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq7fi4lxa0k.jpg"
+              ],
+              "caption": "Ілюстрація та аксонометрична деталь проєкту харківського кампусу."
+            },
+            {
+              "type": "header",
+              "content": "У проєкті оранжереї на Київ-Волинському вузлі Ви пишете про перехід від швидкого шумного транзиту до спокою й фокусу. Як Ви домагалися цього переходу архітектурно, а не просто позначили його на плані?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Перехід від транзиту до спокою досягається насамперед чіткою послідовністю фізичних бар'єрів. Між галасливою залізницею та спокоєм, за який відповідає оранжерея, стоїть не просто відстань: там спочатку розташовані окремий блок будівлі та відкритий простір перед ним, які беруть на себе першу хвилю і фізично гасять головну звукову хвилю від потягів. Лише подолавши цей буфер, людина потрапляє під ритм пергол і критих галерей, де форма самого комплексу починає працювати як захисний контур. Низькі горизонтальні об'єми та щільне озеленення повністю відгороджують центральну зону від міського шуму та візуального хаосу. Зміна масштабу, тінь від перголи й зелений масив перемикають увагу з транзитної метушні на тишу, створюючи природну ізоляцію навколо оранжереї ще до того, як людина переступить її поріг."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq83blkiea1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq8kau171hy.jpg"
+              ],
+              "caption": "Комплекс на вузлі Київ-Волинський: функціональне зонування та генплан."
+            },
+            {
+              "type": "header",
+              "content": "Внутрішній двір того ж проєкту присвячений пам'яті подій 1917 року. Розкажіть, звідки з'явилося це рішення і як Ви працювали з такою чутливою темою в просторі, що водночас лишається транспортним вузлом?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Будь-яке проєктування для мене починається з ретельного передпроєктного аналізу. Не лише рельєфу чи навколишнього середовища, а й історичної спадщини локації. Отримавши завдання на проєктування, я почала ресерч саме з цієї частини містобудівного аналізу в пошуках початкової зачіпки, з якої можна розвивати подальшу концепцію та ідею для проєкту. Мало хто з пасажирів здогадується, але саме тут, на станції Пост-Волинський, 26 липня 1917 року російські військові частини з кулеметів розстріляли ешелон полку імені Богдана Хмельницького, який вирушав на фронт. Це була трагічна й знакова точка відліку української визвольної боротьби, що сталася буквально на цих самих коліях."
+            },
+            {
+              "type": "text",
+              "content": "Працювати з такою темою всередині транспортного хабу надзвичайно складне та відповідальне завдання. Станція живе транзитом, метушнею та швидкістю. Тому пам'ять про ці події та ідея стійкості інтегровані в серце комплексу: внутрішній двір з оранжереєю та ритмічною структурою пергол. Це зелене ядро виступає головним просторовим і акустичним буфером. Потрапляючи сюди з динамічного транзиту, людина опиняється в захищеному просторі спокою, де відсікається гул залізниці. Оранжерея та жива природа під перголою говорять про пам'ять мовою життя, світла й відновлення, даючи пасажирам вибір: перепочити від міського шуму, сповільнити темп чи замислитися над історичною вагою місця під ногами."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
+              "caption": "Аксонометрія комплексу біля залізниці з внутрішнім двором у центрі.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "У більшості Ваших проєктів дуже виразна графіка й атмосферні рендери. Де для Вас межа між тим, щоб показати архітектуру переконливо, і тим, щоб картинка сама стала окремим твором?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Для мене архітектурна візуалізація це передусім фотомистецтво. Я дивлюся на неї не як на комп'ютерну графіку заради спецефектів, а саме як фотограф, який приходить на об'єкт і шукає правильний ракурс, відчуває світло, повітря, тактильність матеріалів і настрій."
+            },
+            {
+              "type": "text",
+              "content": "Межа між переконливістю та самоцінною картинкою проходить там, де починається чесність перед проєктом. Фотографія може бути глибокою, атмосферною й художньою, але її завдання зафіксувати й розкрити реальний характер середовища. Коли рендер працює як чесний кадр із життя майбутньої будівлі, він допомагає людині відчути простір ще до його реалізації."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq9nudzgq53.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqah3bli06u.jpg"
+              ],
+              "caption": "Візуалізації з портфоліо Діани Алещенко."
+            },
+            {
+              "type": "header",
+              "content": "Якби довелося захищати один із цих проєктів перед журі, яке ставить незручні запитання, яке рішення в ньому Ви захищали б найзавзятіше, а яке визнали б слабким?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Якби мені довелося ще раз захищати кампус у Харкові перед критично налаштованим журі, найзавзятіше я б відстоювала рішення зробити перший поверх повністю активним та відкритим багатофункціональним простором для всіх містян. Щоб будівля зі спорткомплексом чи басейном жила не лише в першу половину дня під час занять, а й увечері та в період канікул. Напевно, журі апелювало б до традиційних уявлень про безпеку, мовляв, студентське середовище має бути ізольованим і за парканом. Але я переконана, що закритість не дає безпеки. Безпеку формує відкритість, живий контакт із районом, соціальний контроль і постійна активність людей на вулиці."
+            },
+            {
+              "type": "text",
+              "content": "Натомість рішенням, щодо якого я готова до відкритої критики, є просторова оптимізація в компактних юнітах із піднятим спальним місцем. Хоча це вирішує проблему приватності на обмеженій площі, це завжди компроміс у питаннях універсальної інклюзивності: спальна антресоль підходить молодим, мобільним людям, але створює бар'єр для маломобільних студентів."
+            },
+            {
+              "type": "header",
+              "content": "Що, на Вашу думку, вирізняє українську архітектурну освіту чи молоду архітектурну спільноту зараз?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Насамперед це разюча згуртованість і готовність безупинно генерувати ідеї та створювати нове, попри будь-які зовнішні обставини. Спостерігаючи за сучасними студентами, випускниками, своїми однокурсниками й колегами, я бачу колосальну внутрішню стійкість і професійну сміливість. Наше покоління формується у винятково складних реаліях, але це не зламало інтерес до професії, а навпаки загострило відчуття відповідальності та якісний рівень проєктів. Українська архітектурна спільнота просто зараз виховує дуже сильних, конкурентних і глибоких спеціалістів, які готові працювати з найскладнішими просторовими та соціальними викликами."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
+              "caption": "Випускники зі своїми проєктними планшетами.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Розкажіть про щось, що останнім часом Вас надихнуло: проєкт, місце, людину.",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Музика, кіно та фотографія для мене не просто джерело емоцій, а реальне підґрунтя для архітектурних рішень. Будь-яка творчість навколо може стати несподіваним імпульсом для простору. Одним із нещодавніх прикладів була концепція одного з моїх магістерських проєктів, на яку надихнули альбом Аріани Ґранде та однойменний фільм Eternal Sunshine of the Spotless Mind. Мені дуже подобається цей процес, коли щире особисте захоплення трансформується в неординарну архітектурну ідею."
+            },
+            {
+              "type": "header",
+              "content": "Якою Ви бачите свою архітектурну кар'єру далі?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Безперечно, свій майбутній розвиток я бачу саме в українській архітектурній спільноті. Хочеться створювати, відновлювати та робити все можливе, аби простір у наших рідних містах був надихаючим, живим і безпечним для людей. Для мене важливо вкладати свій досвід і бачення в середовище, яке справді має значення і потребує якісних змін тут і зараз."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqcksjlhy9h.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqddv13xv8d.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq301oe6fph.jpg"
+              ],
+              "caption": "Діана Алещенко зі своїми роботами."
+            },
+            {
+              "type": "header",
+              "content": "Яку пораду Ви дали б собі на початку навчання?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Постійно тренувати надивленість, не зупинятися на першому вдалому варіанті й генерувати далі, бо найкращі рішення часто з'являються після того, як ти думав, що пошук завершено. І суто практична порада: якомога раніше переходити на цифрові інструменти та комп'ютерну графіку, постійно розбиратися в нових функціях і фішках програм. Що вільніше володієш софтом, то точніше й швидше можеш втілити будь-яку просторову ідею."
+            },
+            {
+              "type": "text",
+              "content": "<i>Візуалізації та креслення: Діана Алещенко. Інтерв'ю записане письмово для EPRIS Journal, вересень 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:33:19.921Z"
+        },
+        {
+          "id": 40,
+          "role": "Автор",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Оксана Джуман: автопортрет із 5500 стіків",
+          "author": "Viacheslav Munister & Oksana Dzhuman",
+          "date": "15 вересня 2026",
+          "excerpt": "Українська художниця з Валенсії про те, як використані стіки стають мозаїчними портретами, чому кожен із них вона фарбує вручну і як люди вперше побачили ці роботи наживо на Russafa Art.",
+          "category": "інтерв'ю",
+          "subcategory": "Інтерв'ю",
+          "tags": [
+            "Інтерв'ю",
+            "мистецтво",
+            "мозаїка",
+            "Валенсія",
+            "Іспанія",
+            "Україна"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "previewToken": "g4zlDeB7WEtiywVa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Оксана Джуман навчалася на дизайнерку інтер'єру, потім здобула освіту в графічному дизайні, а згодом кілька років працювала татуювальницею. Сьогодні вона живе у Валенсії і працює як художниця, і матеріал, до якого вона постійно повертається, нікому більше не був потрібен: використані стіки, продезінфіковані, пофарбовані вручну по одному і складені у великі мозаїчні портрети."
+            },
+            {
+              "type": "text",
+              "content": "Серія почалася наприкінці 2024 року з маленької коробочки на столі. Найбільша робота на сьогодні, автопортрет, складається з 5500 стіків. У 2026 році мозаїки вперше показали публіці на Russafa Art у Валенсії. EPRIS Journal поговорив із нею про довгий шлях до цього матеріалу, про те, як народжується один портрет, і про картину «La Guerra»."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+              "caption": "Оксана Джуман поруч з однією зі своїх мозаїк.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Ви навчалися на дизайнера інтер'єру, потім здобули освіту в графічному дизайні, а сьогодні працюєте як художниця у Валенсії. Як ці різні етапи навчання й досвіду сформували те, як Ви сьогодні бачите композицію, форму та простір у своїх роботах?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Якщо чесно, я не думаю, що саме освіта сформувала те, як я сьогодні бачу композицію, форму і простір. В інституті я була доволі несерйозною студенткою: досить швидко зрозуміла, що сам дизайн інтер'єру мені не дуже цікавий, і якщо завдання не захоплювало, робила його просто тому, що треба було робити."
+            },
+            {
+              "type": "text",
+              "content": "Але окремі речі мені справді подобалися. Я любила малювати, вигадувати, працювати з кольором і робити щось руками. Особливо запам'яталося одне завдання: потрібно було самостійно фарбувати папір у різні відтінки, розрізати його на маленькі квадрати й прямокутники та складати з них зображення. Цей процес мене справді захопив. І лише зараз я розумію, наскільки це було близько до того, що я роблю сьогодні, тільки вже із зовсім іншим матеріалом."
+            },
+            {
+              "type": "text",
+              "content": "Пізніше я пішла вчитися графічного дизайну. Це вже було пошуком того, чим я хочу займатися, але зрештою і він виявився не моїм. А після нього я прийшла в татуювання і пропрацювала в цій сфері кілька років. Думаю, цей досвід вплинув на мене значно сильніше. Татуювання точно навчило мене терпінню, увазі до деталей і роботі з композицією."
+            },
+            {
+              "type": "header",
+              "content": "Якщо озирнутися назад, Ваш шлях у мистецтві виглядає як кілька різних розділів: малюнок, тату, тепер портрети з перероблених матеріалів. Як Ви самі, для себе, пов'язуєте ці розділи в одну історію?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Раніше я взагалі не сприймала все це як одну історію. Я постійно пробувала щось нове, могла захопитися одним, потім переключитися на щось зовсім інше, а через якийсь час знову до чогось повернутися."
+            },
+            {
+              "type": "text",
+              "content": "Лише коли з'явилися мозаїки, я почала озиратися назад і помічати речі, які повторюються. Мені завжди подобалися деталі, тривала ручна робота, колір і сам процес, коли з окремих елементів поступово з'являється ціле."
+            },
+            {
+              "type": "text",
+              "content": "Причому ця тяга з'явилася ще до інституту. У школі, я пам'ятаю, всю ніч вручну обклеювала телефон сотнями маленьких стразів, вигадуючи малюнок просто в процесі й зовсім не помічаючи часу. Пізніше телефон благополучно вкрали. Можливо, надмірний блиск усе-таки зробив свою справу."
+            },
+            {
+              "type": "text",
+              "content": "Тому зараз я скоріше бачу все це як доволі хаотичний шлях, у якому лише через роки почала більше прислухатися до себе й розуміти, що мені насправді подобається."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+              "caption": "Телефон, який вона ще школяркою за одну ніч обклеїла стразами.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Чи пам'ятаєте Ви момент, коли вперше подумали, що зі звичайного використаного стіка може вийти щось більше, ніж сміття? Що саме тоді привернуло Вашу увагу?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Усе почалося наприкінці 2024 року, на жаль, із куріння. Я поставила невелику коробочку, куди почала складати використані стіки, і саме тоді вперше стала помічати їхню кількість. Коли бачиш не один-два стіки, які просто викидаєш, а те, скільки їх накопичується всього за кілька днів, приходить доволі неприємне усвідомлення масштабу власної звички."
+            },
+            {
+              "type": "text",
+              "content": "Того ж вечора я почала розглядати самі стіки, і в якийсь момент у голові просто клацнуло: а що, як спробувати зробити з них щось? Ідея з'явилася дуже раптово, буквально як та лампочка над головою. Це відходи, їх багато, вони невеликі, легкі й однакової форми. Мені одразу стало цікаво, чи можна перетворити все це на матеріал для роботи."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+              "caption": "Перша коробочка з використаними стіками.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Спершу роботи складалися лише з Ваших власних стіків, а з часом до проєкту почали долучатися й інші люди. Як це відбулося природним чином, і що для Вас особисто змінилося, коли матеріал перестав бути тільки Вашим?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "До 2026 року я використовувала лише власні стіки, тому збір матеріалу займав дуже багато часу. Першою мені почала допомагати моя знайома іспанка, і я їй дуже вдячна за підтримку. Потім до збору поступово долучилися й інші люди, і матеріалу стало помітно більше."
+            },
+            {
+              "type": "text",
+              "content": "Пізніше я написала в соцмережах, що збираю використані стіки для своїх робіт, і несподівано відгукнулося доволі багато людей. Мені навіть віддавали цілі блоки нових стіків. Це дуже змінило темп роботи: раніше мені доводилося місяцями чекати, поки назбирається достатньо матеріалу для однієї роботи, а тепер кілька тисяч стіків можна зібрати значно швидше."
+            },
+            {
+              "type": "text",
+              "content": "І самі роботи я тепер сприймаю трохи інакше. Я дивлюся на них і розумію, що в них уже не лише моє «ДНК». У певному сенсі у створенні кожної з них бере участь багато людей, і я дуже вдячна всім, хто допомагає мені збирати матеріал."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+              ],
+              "caption": "Матеріал приносять знайомі й підписники: пачки, пакети й цілі збірки."
+            },
+            {
+              "type": "header",
+              "content": "Якщо не поспішати й описати весь шлях однієї роботи, від першого стіка до готового портрета, яка частина цього процесу приносить Вам найбільше задоволення, а яка вимагає від Вас найбільше терпіння?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Усе починається зі збору. Потім іде доволі тривала підготовка: кілька етапів дезінфекції та обробка від запаху."
+            },
+            {
+              "type": "text",
+              "content": "Поки стіки проходять обробку, я паралельно готую полотно: роблю розмітку й кольорову карту, щоб розуміти, які відтінки мені знадобляться і як приблизно виглядатиме робота."
+            },
+            {
+              "type": "text",
+              "content": "Далі я фарбую стіки в потрібні відтінки. Багато хто дивується, що я фарбую кожен стік вручну, а для мене це найбільш медитативна частина процесу. Після цього починається складання зображення на полотні."
+            },
+            {
+              "type": "text",
+              "content": "Загалом уся робота потребує терпіння, але найбільше, мабуть, підготовка матеріалу. Вона займає доволі багато часу."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+              ],
+              "caption": "Від розсортованого матеріалу до пофарбованих рядів: етапи роботи."
+            },
+            {
+              "type": "header",
+              "content": "Свій автопортрет Ви зібрали з 5500 розписаних стіків, це найбільша робота серії. Якщо це не занадто особисте питання, що Ви відчували, коли поступово впізнавали власне обличчя в цій незвичній техніці?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Під час роботи я майже не бачу зображення. Полотна великі, працюєш із ними як виходить: збоку, зверху, іноді мало не лежачи. Зблизька все виглядає як набір окремих відтінків, і зображення просто не складається. Зрозуміти, що виходить, можна лише відійшовши на відстань. З автопортретом було ще складніше, тому що він практично чорно-білий."
+            },
+            {
+              "type": "text",
+              "content": "А коли робота була закінчена, емоції були дуже змішані. Я раділа, що закінчила, пишалася собою, а водночас хотілося плакати й узагалі нікому її не показувати. Мабуть, мене накрило усвідомлення: це моє обличчя, складене зі стіків, які викурила я сама. Усе починалося з маленької коробочки, у якій не назбиралося й п'ятдесяти стіків, а тепер переді мною їх було 5500."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+              "caption": "Автопортрет, 5500 розписаних вручну стіків.",
+              "align": "center"
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+              ],
+              "caption": "Автопортрет, деталі. Зблизька обличчя розпадається на окремі відтінки."
+            },
+            {
+              "type": "header",
+              "content": "Одна з Ваших робіт звертається до «Дівчини з перловою сережкою» Вермеєра, дуже впізнаваного образу. Що привело Вас саме до цього портрета, і чи змінилося Ваше ставлення до нього, поки Ви над ним працювали?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "«Дівчина з перловою сережкою» подобалася мені давно. Ще в Україні я написала свою версію з котом, а вже в Іспанії цей образ продовжував постійно мені траплятися. У якийсь момент я вирішила, що саме вона стане моїм першим портретом зі стіків. Знайомий образ, знайомі кольори."
+            },
+            {
+              "type": "text",
+              "content": "До неї я зробила лише дві роботи зі стіків, обидві абстрактні й із доволі простою палітрою, тому портрет із такою кількістю відтінків був для мене великим кроком."
+            },
+            {
+              "type": "text",
+              "content": "Коли закінчила розмітку й зрозуміла, скільки відтінків і тисяч стіків доведеться пофарбувати вручну, подумала, що переоцінила свої сили. Я навіть розглядала варіант залишити її у вигляді витягнутих кольорових пікселів. У такому вигляді робота залишалася доволі довго, поки я все-таки не вмовила себе закінчити розпочате."
+            },
+            {
+              "type": "text",
+              "content": "Мабуть, тому до цієї роботи в мене й з'явилася особлива любов. Вона була моєю першою настільки масштабною і тривалою роботою й зрештою стала улюбленою."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+              "caption": "За мотивами «Дівчини з перловою сережкою» Вермеєра, її перший портрет зі стіків.",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+              "caption": "«Дівчина з перловою сережкою», деталь.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Окрім мозаїки, у Вас є олійний живопис, графітні студії, серія «Elongated Pixels». Чи відчуваєте Ви ці мови як різні голоси однієї й тієї самої розмови, чи кожна з них веде Вас у зовсім інший бік?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Я взагалі намагаюся не розділяти свою роботу на окремі напрями й не пов'язувати все однією історією. Мені просто подобається переключатися між різними матеріалами й техніками. Я можу закінчити роботу зі стіків, взяти акварель або повернутися до олії, а потім знову повернутися до стіків."
+            },
+            {
+              "type": "text",
+              "content": "Іноді одне взагалі з'являється з іншого. Наприклад, Elongated Pixels народилися під час роботи над «Дівчиною з перловою сережкою». На етапі розмітки я побачила, що зображення цікаво виглядає і без стіків, а пізніше зробила в цій техніці Фріду."
+            },
+            {
+              "type": "text",
+              "content": "Але все-таки саме до стіків я постійно повертаюся. Зараз це матеріал і процес, які подобаються мені найбільше."
+            },
+            {
+              "type": "header",
+              "content": "Серед Ваших робіт є полотно під назвою «La Guerra». Розумію, що це може бути непроста тема, тож питаю обережно: якщо Вам зараз комфортно про це говорити, що стояло за цією роботою?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Мабуть, для мене ця робота про біль, який залишається всередині через війну. Життя продовжується, ти займаєшся звичайними речами, але це нікуди не зникає."
+            },
+            {
+              "type": "text",
+              "content": "Спочатку я хотіла залишити в цій роботі надію, думку про те, що після темряви завжди приходить світло. Таким мало стати сонце. Але в процесі замість променя світла воно стало кровоточити."
+            },
+            {
+              "type": "text",
+              "content": "Навіть зараз я дивлюся на цю роботу й відчуваю, як усе стискається всередині. Мабуть, для мене «La Guerra» і є цією раною, яка залишається всередині навіть тоді, коли життя навколо продовжується."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+              "caption": "«La Guerra».",
+              "align": "center"
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+              ],
+              "caption": "«La Guerra», деталі."
+            },
+            {
+              "type": "header",
+              "content": "2026 року Ваші роботи вперше показали публіці на Russafa Art у Валенсії. Яким для Вас був цей досвід, коли люди стояли поруч і наживо розглядали Ваші мозаїки, а не бачили їх лише на екрані?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "На Russafa Art я зловила себе на відчутті, що трохи не на своєму місці. Навколо було багато живопису, а тут я зі своїми використаними стіками. Мені було ніяково, і водночас я раділа, що нарешті їх показую, і боялася: як узагалі люди це сприймуть?"
+            },
+            {
+              "type": "text",
+              "content": "Найцікавіше було спостерігати за реакціями. Багато хто не розумів, із чого зроблені роботи. Хтось припускав, що це пастель або крейда, але використані стіки практично ніхто не вгадував."
+            },
+            {
+              "type": "text",
+              "content": "І самі зображення теж сприймалися по-різному. «Дівчину з перловою сережкою» впізнавали одразу, тому що цей образ знайомий майже всім. З автопортретом було складніше: люди могли довго дивитися й не розуміти, що саме перед ними, але варто було показати фотографію, і портрет ставав видимим."
+            },
+            {
+              "type": "text",
+              "content": "Для мене це був дуже цінний досвід. Я побачила живі реакції на свої роботи, отримала багато підтримки й познайомилася з новими людьми. Мені набагато простіше робити роботи, ніж показувати їх і розповідати про себе. Навіть ведення соцмереж дається мені непросто, тому участь у Russafa Art стала для мене доволі великим кроком. І я дуже вдячна всім, хто мене підтримав."
+            },
+            {
+              "type": "header",
+              "content": "Дозвольте останнє, трохи мрійливе питання: чи є образ, тема або матеріал, до яких Вам би хотілося колись підступитися, але поки що бракує сміливості чи часу?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Мені хотілося б одного дня спробувати зробити масштабний портрет із набагато дрібніших елементів. Поки мене трохи лякають складність, кількість елементів і час, який на це знадобиться. Але колись і кілька тисяч стіків здавалися мені чимось надто складним, а тепер із кожною новою роботою процес стає для мене все зрозумілішим і точнішим."
+            },
+            {
+              "type": "text",
+              "content": "Паралельно я збираю різні матеріали, які мали б опинитися у смітті, але чимось привернули мою увагу. Поки я й сама не знаю, на що і коли вони перетворяться. У мене ідеї зазвичай з'являються доволі несподівано."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+              ],
+              "caption": "У майстерні поруч із портретами."
+            },
+            {
+              "type": "text",
+              "content": "<i>Фотографії надала Оксана Джуман. Інтерв'ю записане письмово для EPRIS Journal, вересень 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:33:21.484Z"
         }
       ],
       "reviews": [
