@@ -60130,6 +60130,325 @@
             }
           ],
           "updatedAt": "2026-09-15T08:40:12.833Z"
+        },
+        {
+          "id": 40,
+          "role": "Auteur",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Oksana Dzhuman : Un autoportrait en 5 500 bâtons",
+          "author": "Viacheslav Munister & Oksana Dzhuman",
+          "date": "15 septembre 2026",
+          "excerpt": "L'artiste ukrainienne, désormais basée à Valencia, sur la transformation de bâtons de tabac usagés en portraits en mosaïque, peignant chacun à la main, et la première fois que des étrangers ont vu l'œuvre de près à Russafa Art.",
+          "category": "entretien",
+          "subcategory": "Entretien",
+          "tags": [
+            "Entretien",
+            "art",
+            "mosaïque",
+            "Valencia",
+            "Espagne",
+            "Ukraine"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "previewToken": "g4zlDeB7WEtiywVa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Oksana Dzhuman s'est formée en tant que designer d'intérieur, puis a étudié le design graphique, puis a passé plusieurs années en tant que tatoueuse. Aujourd'hui elle vit à Valencia et travaille en tant qu'artiste, et le matériau auquel elle revient sans cesse est celui que personne d'autre ne voulait : des bâtons de tabac usagés, désinfectés, peints à la main un par un et intégrés dans de grands portraits en mosaïque."
+            },
+            {
+              "type": "text",
+              "content": "La série a commencé à la fin de 2024 avec une petite boîte sur sa table. Sa plus grande œuvre à ce jour, un autoportrait, en contient 5 500. En 2026, les mosaïques ont été exposées publiquement pour la première fois, à Russafa Art à Valencia. Le journal EPRIS a discuté avec elle du long chemin menant à ce matériau, du processus derrière un seul portrait, et de la peinture qu'elle appelle La Guerra."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+              "caption": "Oksana Dzhuman avec une de ses mosaïques.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Vous vous êtes formée en tant que designer d'intérieur, puis avez étudié le design graphique, et aujourd'hui vous travaillez en tant qu'artiste à Valencia. Comment ces différentes étapes d'études et d'expériences ont-elles façonné votre façon de voir la composition, la forme et l'espace dans votre travail?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Pour être honnête, je ne pense pas que ce soit mon éducation qui ait façonné ma façon de voir la composition, la forme et l'espace aujourd'hui. À l'université, j'étais un étudiant plutôt peu sérieux : je me suis rendu compte assez rapidement que le design d'intérieur lui-même ne m'intéressait pas vraiment, et si une tâche ne m'attirait pas, je la faisais simplement parce qu'il fallait la faire."
+            },
+            {
+              "type": "text",
+              "content": "Mais certaines choses, je les ai vraiment aimées. J'aimais dessiner, inventer, travailler avec la couleur et faire des choses de mes mains. Une tâche en particulier m'est restée en mémoire : nous devions teindre nous-mêmes du papier dans différentes nuances, le couper en petits carrés et rectangles et assembler une image à partir d'eux. Ce processus m'a vraiment captivé. Ce n'est que maintenant que je réalise à quel point cela ressemblait à ce que je fais aujourd'hui, simplement avec un matériau complètement différent."
+            },
+            {
+              "type": "text",
+              "content": "Plus tard, je suis allé étudier le design graphique. Cela faisait déjà partie de la recherche de ce que je voulais faire, mais finalement ce n'était pas non plus le mien. Après cela, je suis venu au tatouage et j'ai travaillé dans ce domaine pendant plusieurs années. Je pense que cette expérience m'a influencé beaucoup plus fortement. Le tatouage m'a définitivement appris la patience, l'attention aux détails et comment travailler avec la composition."
+            },
+            {
+              "type": "header",
+              "content": "En regardant en arrière, votre parcours dans l'art ressemble à plusieurs chapitres différents : dessin, tatouage, et maintenant portraits à partir de matériaux recyclés. Comment reliez-vous ces chapitres en une seule histoire pour vous-même?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Pendant longtemps je ne l'ai pas considéré comme une seule histoire du tout. Je tentais constamment quelque chose de nouveau : je pouvais m'absorber dans une chose, puis passer à quelque chose de complètement différent, et après un certain temps revenir à quelque chose à nouveau."
+            },
+            {
+              "type": "text",
+              "content": "Ce n'est que lorsque les mosaïques sont apparues que j'ai commencé à regarder en arrière et à remarquer des choses qui se répètent. J'ai toujours aimé les détails, le travail manuel long, la couleur, et le processus lui-même, quand un tout émerge progressivement d'éléments séparés."
+            },
+            {
+              "type": "text",
+              "content": "Et cette attraction est apparue même avant l'université. À l'école, je me souviens avoir passé toute une nuit à couvrir mon téléphone à la main avec des centaines de petits strass, inventant le motif au fur et à mesure et ne remarquant pas du tout le temps qui passait. Plus tard, le téléphone a été, à juste titre, volé. Peut-être que tout ce scintillement a finalement fait son travail."
+            },
+            {
+              "type": "text",
+              "content": "Alors maintenant je le vois comme un chemin plutôt chaotique, dans lequel ce n'est qu'après des années que j'ai commencé à m'écouter davantage et à comprendre ce que j'aime réellement."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+              "caption": "Le téléphone qu'elle a couvert de strass en une nuit en tant qu'élève.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Te souviens-tu du moment où tu as d'abord pensé qu'un bâton usagé ordinaire pouvait devenir quelque chose de plus que des déchets ? Qu'est-ce qui a attiré ton attention alors ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Tout a commencé à la fin de 2024, malheureusement, avec le tabac. J'ai mis de côté une petite boîte où j'ai commencé à collecter des bâtons usagés, et c'est à ce moment-là que j'ai commencé à remarquer combien il y en avait. Lorsqu'il ne s'agit pas d'un ou deux bâtons que tu jettes simplement, mais de combien ils s'accumulent en quelques jours, tu prends conscience d'une manière plutôt désagréable de l'ampleur de ta propre habitude."
+            },
+            {
+              "type": "text",
+              "content": "Ce même soir, j'ai commencé à regarder les bâtons eux-mêmes, et à un moment donné, quelque chose a simplement cliqué : et si j'essayais de faire quelque chose avec eux ? L'idée est venue très soudainement, littéralement comme une ampoule au-dessus de ma tête. Ce sont des déchets, il y en a beaucoup, ils sont petits, légers et de la même forme. J'ai immédiatement voulu savoir si tout cela pouvait être transformé en un matériau avec lequel travailler."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+              "caption": "La première boîte de bâtons usagés.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Au début, vos œuvres étaient faites uniquement avec vos propres bâtons, mais avec le temps, d'autres personnes ont commencé à rejoindre le projet. Comment cela s'est-il fait naturellement, et qu'est-ce qui a changé pour vous personnellement lorsque le matériau n'a plus été uniquement le vôtre ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Jusqu'en 2026, je n'utilisais que mes propres bâtons, donc la collecte de matériel prenait très longtemps. La première personne à m'aider était une amie espagnole, et je lui suis très reconnaissant pour son soutien. Ensuite, d'autres personnes ont progressivement rejoint, et il y avait nettement plus de matériel."
+            },
+            {
+              "type": "text",
+              "content": "Plus tard, j'ai publié sur les réseaux sociaux que je collectais des bâtons usagés pour mon travail, et à ma grande surprise, beaucoup de gens ont répondu. Des gens m'ont même donné des cartons entiers de bâtons neufs. Cela a considérablement changé le rythme du travail : avant, je devais attendre des mois jusqu'à ce qu'une quantité suffisante de matériel s'accumule pour une pièce, et maintenant, plusieurs milliers de bâtons peuvent être collectés beaucoup plus rapidement."
+            },
+            {
+              "type": "texte",
+              "content": "Et je vois maintenant les œuvres elles-mêmes un peu différemment. Je les regarde et comprends qu'elles ne portent plus seulement mon « ADN ». En un sens, beaucoup de personnes participent à leur création, et je suis très reconnaissant à tous ceux qui m'aident à collecter du matériel."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+              ],
+              "caption": "Le matériel arrive des amis et des followers : paquets, sacs et collections entières."
+            },
+            {
+              "type": "en-tête",
+              "content": "Si nous prenons notre temps et décrivons tout le parcours d'une œuvre, du premier bâton au portrait terminé, quelle partie du processus vous donne le plus de plaisir, et laquelle demande le plus de patience ?",
+              "level": 3
+            },
+            {
+              "type": "texte",
+              "content": "Tout commence par la collecte. Ensuite vient une préparation assez longue : plusieurs étapes de désinfection et de traitement contre l'odeur."
+            },
+            {
+              "type": "text",
+              "content": "Pendant que les bâtons sont traités, je prépare la toile en parallèle : je fais la mise en page et une carte des couleurs, afin de comprendre quelles nuances j'aurai besoin et à peu près à quoi ressemblera le travail."
+            },
+            {
+              "type": "text",
+              "content": "Ensuite, je teins les bâtons dans les nuances dont j'ai besoin. Beaucoup de gens sont surpris que je peigne chaque bâton à la main, mais pour moi c'est la partie la plus méditative du processus. Après cela, l'assemblage de l'image sur la toile commence."
+            },
+            {
+              "type": "text",
+              "content": "Tout le travail demande de la patience, mais probablement la plus grande partie consiste à préparer le matériel. Cela prend pas mal de temps."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+              ],
+              "caption": "Du matériel trié aux rangées peintes : étapes d'une œuvre en cours."
+            },
+            {
+              "type": "header",
+              "content": "Vous avez assemblé votre autoportrait à partir de 5 500 bâtons peints ; c'est la plus grande œuvre de la série. Si ce n'est pas une question trop personnelle : qu'avez-vous ressenti en reconnaissant peu à peu votre propre visage dans cette technique inhabituelle ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Pendant que je travaille, je ne peux presque pas voir l'image. Les toiles sont grandes, et vous travaillez avec elles comme vous pouvez : de côté, d'en haut, parfois presque allongé. De près, tout ressemble à un ensemble de nuances séparées, et l'image ne se rassemble tout simplement pas. Vous ne pouvez comprendre ce qui émerge qu'en prenant du recul. Avec l'autoportrait, c'était encore plus difficile, car il est pratiquement en noir et blanc."
+            },
+            {
+              "type": "text",
+              "content": "Et quand l'œuvre était terminée, les émotions étaient très mitigées. J'étais content de l'avoir fini, j'étais fier de moi, et en même temps je voulais pleurer et ne le montrer à personne du tout. Je pense que la réalisation m'a frappé : c'est mon visage, fait de bâtons que j'ai fumés moi-même. Tout a commencé avec une petite boîte qui ne contenait même pas cinquante bâtons, et maintenant il y en avait 5 500 devant moi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+              "caption": "Autoportrait, 5 500 bâtons peints à la main.",
+              "align": "center"
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+              ],
+              "caption": "Autoportrait, détails. De près, le visage se dissout en nuances séparées."
+            },
+            {
+              "type": "en-tête",
+              "content": "Une de vos œuvres fait référence à Girl with a Pearl Earring de Vermeer, une image très reconnaissable. Qu'est-ce qui vous a amené à ce portrait en particulier, et votre relation avec lui a-t-elle changé pendant que vous travailliez dessus ?",
+              "level": 3
+            },
+            {
+              "type": "texte",
+              "content": "J'avais aimé Girl with a Pearl Earring depuis longtemps. En Ukraine, j'ai peint ma propre version avec un chat, et en Espagne, l'image apparaissait partout. À un moment donné, j'ai décidé qu'elle serait mon premier portrait fait de bâtons. Une image familière, des couleurs familières."
+            },
+            {
+              "type": "texte",
+              "content": "Avant elle, je n'avais réalisé que deux œuvres en bâtons, toutes deux abstraites et avec une palette assez simple, donc un portrait avec autant de nuances était une grande étape pour moi."
+            },
+            {
+              "type": "text",
+              "content": "Lorsque j'ai terminé la mise en page et réalisé combien de nuances et de milliers de bâtons je devrais peindre à la main, j'ai pensé avoir surestimé ma force. J'ai même envisagé de laisser cela comme des pixels colorés allongés. Il est resté dans cet état pendant assez longtemps, jusqu'à ce que je me persuade enfin de finir ce que j'avais commencé."
+            },
+            {
+              "type": "text",
+              "content": "C'est probablement pourquoi j'ai un amour particulier pour cette œuvre. C'était ma première œuvre à une telle échelle et sur une si longue période, et à la fin elle est devenue ma préférée."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+              "caption": "Après La Jeune Fille à la Perle de Vermeer, son premier portrait réalisé en bâtons.",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+              "caption": "La Jeune Fille à la Perle, détail.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "En plus de la mosaïque, vous travaillez à la peinture à l'huile, aux études au graphite et à la série Elongated Pixels. Ressentez-vous ces langages comme des voix différentes dans la même conversation, ou chacun vous mène-t-il ailleurs complètement ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "En général, j'essaie de ne pas diviser mon travail en directions séparées ou de tout relier en une seule histoire. J'aime simplement alterner entre différents matériaux et techniques. Je peux finir une œuvre avec des bâtons, prendre de l'aquarelle ou revenir à l'huile, puis revenir aux bâtons encore une fois."
+            },
+            {
+              "type": "text",
+              "content": "Parfois, une chose découle directement d'une autre. Elongated Pixels, par exemple, est née pendant que je travaillais sur Girl with a Pearl Earring. Lors de la phase de mise en page, j'ai vu que l'image semblait intéressante même sans les bâtons, et plus tard j'ai réalisé Frida avec cette technique."
+            },
+            {
+              "type": "text",
+              "content": "Mais ce sont toujours les bâtons auxquels je reviens. En ce moment, c'est le matériau et le processus que j'aime le plus de tous."
+            },
+            {
+              "type": "header",
+              "content": "Parmi vos œuvres il y a une toile appelée La Guerra. Je comprends que cela peut être un sujet difficile, alors je demande avec précaution : si vous vous sentez à l'aise pour en parler maintenant, qu'est-ce qui se cachait derrière cette œuvre ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Pour moi cette œuvre concerne probablement la douleur qui reste à l'intérieur à cause de la guerre. La vie continue, vous faites des choses ordinaires, mais cela ne mène nulle part."
+            },
+            {
+              "type": "text",
+              "content": "Au début je voulais laisser l'espoir dans cette œuvre, l'idée que après l'obscurité la lumière revient toujours. C'était censé être le soleil. Mais dans le processus, au lieu d'un rayon de lumière, il a commencé à saigner."
+            },
+            {
+              "type": "text",
+              "content": "Même maintenant je regarde cette œuvre et je ressens tout se contracter à l'intérieur. Pour moi, La Guerra est probablement cette blessure même, celle qui reste à l'intérieur même lorsque la vie autour de vous continue."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+              "caption": "La Guerre.",
+              "align": "center"
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+              ],
+              "caption": "La Guerre, détails."
+            },
+            {
+              "type": "header",
+              "content": "En 2026, vos œuvres ont été présentées au public pour la première fois à Russafa Art à Valencia. Comment était-ce lorsque les gens se tenaient à côté de vos mosaïques et les regardaient en personne, plutôt que sur un écran ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "À Russafa Art, je me suis surpris à me sentir un peu déplacé. Il y avait beaucoup de peinture autour, et moi, avec mes bâtons usés. Je me sentais maladroit, et en même temps j'étais heureux de les montrer enfin, et effrayé : comment les gens allaient-ils réagir ?"
+            },
+            {
+              "type": "text",
+              "content": "La partie la plus intéressante était d'observer les réactions. Beaucoup de gens ne comprenaient pas de quoi étaient faites les œuvres. Certains ont deviné pastel ou craie, mais pratiquement personne n'a deviné des bâtons usés."
+            },
+            {
+              "type": "text",
+              "content": "Les images elles-mêmes étaient aussi interprétées de différentes manières. Girl with a Pearl Earring a été reconnue immédiatement, parce que presque tout le monde connaît cette image. Le autoportrait était plus difficile : les gens pouvaient le regarder longtemps sans comprendre ce qui était devant eux, mais dès que je leur montrais une photographie, le portrait devenait visible."
+            },
+            {
+              "type": "text",
+              "content": "Pour moi, c'était une expérience très précieuse. J'ai vu des réactions en direct à mon travail, reçu beaucoup de soutien et rencontré de nouvelles personnes. Il est beaucoup plus facile pour moi de créer des œuvres que de les montrer et de parler de moi-même. Même maintenir les réseaux sociaux n'est pas facile pour moi, donc participer à Russafa Art était une étape assez importante. Et je suis très reconnaissant à tous ceux qui m'ont soutenu."
+            },
+            {
+              "type": "header",
+              "content": "Permettez-moi une dernière question, un peu rêveuse : y a-t-il une image, un thème ou un matériau que vous aimeriez aborder un jour, mais pour l'instant vous manquez de courage ou de temps ?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un jour je voudrais essayer de faire un portrait à grande échelle à partir de éléments beaucoup plus petits. Pour l'instant la complexité, le nombre d'éléments et le temps que cela prendrait me font un peu peur. Mais une fois, quelques milliers de bâtons semblaient aussi trop compliqués, et maintenant avec chaque nouvelle œuvre le processus devient plus clair et plus précis pour moi."
+            },
+            {
+              "type": "text",
+              "content": "en parallèle je collecte divers matériaux qui auraient dû finir dans la poubelle mais ont attiré mon attention pour une raison ou une autre. Je ne sais pas encore moi-même ce qu'ils deviendront, ou quand. Mes idées apparaissent généralement de manière assez inattendue."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+              ],
+              "caption": "Dans le studio avec les portraits."
+            },
+            {
+              "type": "text",
+              "content": "<i>Photographies gracieuseté d'Oksana Dzhuman. Entretien réalisé par écrit pour EPRIS Journal, septembre 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:45:27.140Z"
         }
       ],
       "reviews": [
