@@ -8542,12 +8542,11 @@
       "author": "US Architecture Studio",
       "role": "Architecture Studio",
       "date": "Sep 15, 2026",
-      "excerpt": "How multi-layered context shapes Ukrainian identity across three projects by US Architecture Studio, from the steppe town of Svatove, through the hills of Ternopil, to a cafe in Kyiv.",
+      "excerpt": "How multi-layered context shapes identity across three projects by US Architecture Studio, from the steppe town of Svatove, through the hills of Ternopil, to a cafe in Kyiv.",
       "category": "architecture",
       "subcategory": "Studio profile",
       "tags": [
         "Architecture",
-        "Ukraine",
         "US Architecture Studio"
       ],
       "imageSeed": "",
@@ -8783,7 +8782,6 @@
       "tags": [
         "Interview",
         "architecture",
-        "Ukraine",
         "Kyiv",
         "Kharkiv",
         "education"
@@ -9066,7 +9064,7 @@
       "title": "Oksana Dzhuman: A Self-Portrait in 5,500 Sticks",
       "author": "Viacheslav Munister & Oksana Dzhuman",
       "date": "September 16, 2026",
-      "excerpt": "The Ukrainian artist, now based in Valencia, on turning used tobacco sticks into mosaic portraits, painting every one by hand, and the first time strangers saw the work up close at Russafa Art.",
+      "excerpt": "The Valencia based artist, on turning used tobacco sticks into mosaic portraits, painting every one by hand, and the first time strangers saw the work up close at Russafa Art.",
       "category": "interview",
       "subcategory": "Interview",
       "tags": [
@@ -9074,8 +9072,7 @@
         "art",
         "mosaic",
         "Valencia",
-        "Spain",
-        "Ukraine"
+        "Spain"
       ],
       "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
       "previewToken": "g4zlDeB7WEtiywVa",
@@ -9381,15 +9378,14 @@
       "author": "Viacheslav Munister & DIHLUST",
       "role": "Author",
       "date": "September 18, 2026",
-      "excerpt": "A family workshop in Ukraine on turning mosaic, a material invented never to move, into furniture that ships across oceans, and why a table with a cow on it is, they insist, mostly about the glass of milk you got after a day outside.",
+      "excerpt": "A family workshop on turning mosaic, a material invented never to move, into furniture that ships across oceans, and why a table with a cow on it is, they insist, mostly about the glass of milk you got after a day outside.",
       "category": "interview",
       "subcategory": "Interview",
       "tags": [
         "Interview",
         "craft",
         "furniture",
-        "design",
-        "Ukraine"
+        "design"
       ],
       "imageSeed": "",
       "content": [
@@ -11843,7 +11839,7 @@
           "author": "EPRIS Journal",
           "role": "Редакционная команда",
           "date": "18 июля 2026",
-          "excerpt": "Финский художник Sandra Kantanen рассматривает фотографию как портал в воображаемое, а не как инструмент для запечатления объективной реальности. Ее работа раскрывает уникальную, безграничную техническую…",
+          "excerpt": "Финская художница Sandra Kantanen рассматривает фотографию как портал в воображаемое, а не как инструмент для запечатления объективной реальности. Ее работы раскрывают уникальную, безграничную техническую…",
           "category": "искусство",
           "subcategory": "Специальная статья",
           "tags": [
@@ -11852,67 +11848,67 @@
           "imageSeed": "",
           "content": [
             {
-              "type": "text",
-              "content": "финский художник Sandra Kantanen рассматривает фотографию как портал в воображаемое, а не как инструмент для захвата объективной реальности. Ее работа раскрывает уникальную, безграничную техническую философию, которая выводит медиа за пределы ограничений объектива, вызывая у зрителя вопрос о том, где заканчивается фотография и начинается картина."
+              "type": "текст",
+              "content": "финский художник Sandra Kantanen рассматривает фотографию как ворота в воображаемое, а не как инструмент для захвата объективной реальности. Ее работы раскрывают уникальную, безграничную техническую философию, которая выводит медиа за пределы объектива, вызывая у зрителя вопрос о том, где заканчивается фотография и начинается картина."
             },
             {
-              "type": "text",
+              "type": "текст",
               "content": "На первый взгляд можно предположить, что ее эфирные пейзажи являются результатом смешанных масляных красок и традиционного наложения слоев. На самом деле, это фотографии природных окружений — от лесов ее родной Финляндии до гор Азии — подвергнутых глубокому цифровому и физическому манипулированию."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msma9wvbe77qf8.jpg",
               "caption": "Sandra Kantanen, Натюрморт (Цветы 3), 2020",
               "align": "центр"
             },
             {
-              "type": "text",
-              "content": "Родилась в Хельсинки в 1974 году, Sandra Kantanen стала ключевой фигурой в рамках международно признанной Helsinki School of Photography. Ее академическая база была заложена в Aalto University School of Arts, Design and Architecture в Хельсинки, но поворот в ее художественной траектории произошел примерно в 2000 году, когда она переехала в Китай в качестве студента по обмену."
+              "type": "текст",
+              "content": "Родилась в Хельсинки в 1974 году, Sandra Kantanen стала ключевой фигурой в рамках международно признанной Helsinki School of Photography. Ее академическая база была заложена в Aalto University School of Arts, Design and Architecture в Хельсинки, но поворотным моментом в ее художественной карьере стал 2000 год, когда она переехала в Китай в качестве студента по обмену."
             },
             {
-              "type": "text",
-              "content": "Изучая традиционную китайскую пейзажную живопись в Центральной академии изобразительных искусств в Пекине, Kantanen глубоко повлияла на восточную философию. Её поразило, что древние мастера не стремились задокументировать пейзаж, а идеализировать и сублимировать его."
+              "type": "текст",
+              "content": "Изучая традиционную китайскую пейзажную живопись в Центральной академии изобразительных искусств в Пекине, Кантанен глубоко повлиял на восточную философию. Её поразило, как древние мастера не стремились задокументировать пейзаж, а идеализировать и сублимировать его."
             },
             {
-              "type": "gallery",
+              "type": "галерея",
               "content": [
                 "https://api.eprisjournal.com/uploads/msng2e11f1ygrd.jpg",
                 "https://api.eprisjournal.com/uploads/msng2nwle8sctg.jpg"
               ],
               "caption": "",
               "alts": [
-                "Sandra Kantanen, \"Без названия (розовые цветы)\", 2013",
+                "Sandra Kantanen, \"Без названия (розовые цветы) , 2013",
                 "Sandra Kantanen, \"Без названия (Sakura 3)\", 2011"
               ]
             },
             {
-              "type": "text",
-              "content": "Во время своих путешествий по священным горам Китая она стала свидетелем резкого противоречия между нетронутой, духовной природой, изображенной на древних шелковых свитках, и суровой реальностью современной промышленной загрязненности и туризма. Эта диссонанс стал катализатором её практики: пожизненного стремления запечатлеть \"невозможный\" пейзаж – пространство, существующее где-то между памятью, мифом и оптическим искажением."
+              "type": "текст",
+              "content": "Во время своих путешествий по священным горам Китая она стала свидетелем резкого противоречия между чистой, духовной природой, изображенной на древних шелковых свитках, и суровой реальностью современной промышленной загрязненности и туризма. Этот диссонанс стал катализатором её практики: пожизненного стремления запечатлеть \"невозможный\" пейзаж – пространство, существующее где-то между памятью, мифом и оптическим искажением."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msng6eycsbjvv4.jpg",
               "caption": "Sandra Kantanen, “Без названия (Гора 7)”, 2010"
             },
             {
-              "type": "text",
-              "content": "В то время как пиксельно искажённые пейзажи являются её самой известной подписью, более широкая фотографическая практика Kantanen удивительно разнообразна. Она не полагается на один технический трюк; скорее, она экспериментирует с разными сериями, постоянно переопределяя, как может вести себя фотографический образ: "
+              "type": "текст",
+              "content": "В то время как пиксельно искажённые пейзажи являются её самой известной подписью, более широкая фотографическая практика Кантанен удивительно разнообразна. Она не полагается на один технический трюк; скорее, она экспериментирует с разными сериями, постоянно переопределяя, как может вести себя фотографический образ: "
             },
             {
-              "type": "text",
-              "content": "Дымовые работы и пиксельная манипуляция: В своей самой известной серии Kantanen физически вмешивается в природу ещё до щелчка затвора. Выпуская цветные дымовые шашки в отдалённые леса – такие как те, что возле её дома в Hango, Финляндия – она создает сюрреалистическую, психоделическую атмосферу, которая нарушает обыденный пейзаж. Затем она берёт эти цифровые файлы и подвергает их глубокой манипуляции: размывает горизонты, растягивает данные и вручную заставляет пиксели течь, чтобы фотография имитировала текучесть жидкой краски."
+              "type": "текст",
+              "content": "Дымовые работы и пиксельная манипуляция: В своей самой известной серии Кантанен физически вмешивается в природу ещё до щелчка затвора. Выпуская цветные дымовые шашки в отдалённые леса – такие как те, что возле её дома в Ханго, Финляндия – она создает сюрреалистическую, психоделическую атмосферу, которая нарушает обыденный пейзаж. Затем она берёт эти цифровые файлы и подвергает их глубокой манипуляции: размывает горизонты, растягивает данные и вручную заставляет пиксели течь так, чтобы фотография имитировала текучесть жидкой краски."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msng9ejlxxhcjp.jpg",
-              "caption": "Sandra Kantanen, “Untitled (Forest 21)”, 2021"
+              "caption": "Sandra Kantanen, “Без названия (Лес 21)”, 2021"
             },
             {
-              "type": "text",
-              "content": "Ботанические исследования и сканеры: Удаляясь от обширных пейзажей и растягивания пикселей полностью, её натюрморты с цветами и ботанические работы исследуют органический разложение вблизи. Для этого она часто использует крупномасштабные форматы, длительные экспозиции или даже сканеры со стеклянной пластиной вместо традиционных объективов камеры. Эти методы вызывают богатую аллегорическую глубину голландской Золотой эпохи живописи, сосредотачиваясь на интимных текстурах и медленном течении времени в природе."
+              "type": "текст",
+              "content": "Ботанические исследования и сканеры: Удаляясь от обширных пейзажей и растягивания пикселей полностью, её натюрморты с цветами и ботанические работы исследуют органический разложение вблизи. Для этого она часто использует крупномасштабные форматы, длительные экспозиции или даже плоские сканеры вместо традиционных объективов камеры. Эти методы вызывают богатую аллегорическую глубину голландской Золотой эпохи живописи, сосредотачиваясь на интимных текстурах и медленном течении времени в природе."
             },
             {
-              "type": "gallery",
+              "type": "галерея",
               "content": [
                 "https://api.eprisjournal.com/uploads/msngeewiyj0mpq.jpg",
                 "https://api.eprisjournal.com/uploads/msnggtehsie62i.jpg"
@@ -11924,16 +11920,16 @@
               ]
             },
             {
-              "type": "text",
-              "content": "Путем плавного перехода между физической постановкой, скан-артом, прямым захватом и цифровой искажением, Kantanen постоянно дестабилизирует наше восприятие того, что может быть фотографией."
+              "type": "текст",
+              "content": "Путем плавного перехода между физической постановкой, скан-артом, прямым захватом и цифровой искаженностью, Kantanen постоянно дестабилизирует наше восприятие того, что может быть фотографией."
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msngme9x0lctgn.jpg",
               "caption": "Sandra Kantanen, “Horizon” , 2005"
             },
             {
-              "type": "image",
+              "type": "изображение",
               "content": "https://api.eprisjournal.com/uploads/msngn7mg1xk589.jpg",
               "caption": "Sandra Kantanen, “Rain” , 2005"
             },
@@ -11943,16 +11939,16 @@
             },
             {
               "type": "text",
-              "content": "Ее работы демонстрировались по всему миру, с крупными выставками в таких местах, как Purdy Hicks Gallery в Лондоне, Paris Photo и всесторонний ретроспективный показ в Turku Art Museum."
+              "content": "Ее работы демонстрировались по всему миру, с крупными выставками в таких местах, как Purdy Hicks Gallery в Лондоне, Paris Photo и всесторонняя ретроспектива в Turku Art Museum."
             },
             {
               "type": "text",
-              "content": "Влияние Kantanen закреплено её включением в постоянные коллекции некоторых из самых уважаемых учреждений мира, включая J. Paul Getty Museum в Лос-Анджелесе, Brooklyn Museum, Los Angeles County Museum of Art (LACMA) и Kiasma Museum of Contemporary Art в Хельсинки. Ее монографии, изданные Hatje Cantz, служат свидетельством художника, который не просто использует технологии, а изгибает их к вечной службе красоты."
+              "content": "Влияние Kantanen закреплено её включением в постоянные коллекции некоторых из самых уважаемых учреждений мира, включая J. Paul Getty Museum в Лос-Анджелесе, Brooklyn Museum, Los Angeles County Museum of Art (LACMA) и Kiasma Museum of Contemporary Art в Хельсинки. Ее монографии, опубликованные Hatje Cantz, служат свидетельством художника, который не просто использует технологии, а изгибает их к вечной службе красоты."
             }
           ],
           "order": 1,
           "imageUrl": "https://api.eprisjournal.com/uploads/msm9xi2uysm3fm.jpg",
-          "updatedAt": "2026-09-15T17:52:43.233Z",
+          "updatedAt": "2026-09-15T19:12:12.225Z",
           "publishedAt": "2026-07-18"
         },
         {
@@ -16112,12 +16108,11 @@
           "author": "US Architecture Studio",
           "role": "Архитектурная студия",
           "date": "Sep 12, 2026",
-          "excerpt": "Как многослойный контекст формирует украинскую идентичность в трёх проектах студии US Architecture Studio: от степного Сватова через Тернопольщину до кафе в Киеве.",
+          "excerpt": "Как многослойный контекст формирует идентичность в трёх проектах студии US Architecture Studio: от степного Сватова через Тернопольщину до кафе в Киеве.",
           "category": "архитектура",
           "subcategory": "Профиль студии",
           "tags": [
             "Архитектура",
-            "Украина",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -16608,7 +16603,6 @@
           "tags": [
             "Интервью",
             "архитектура",
-            "Украина",
             "Киев",
             "Харьков",
             "образование"
@@ -16891,7 +16885,7 @@
           "title": "Оксана Джуман: автопортрет в 5 500 палочках",
           "author": "Viacheslav Munister & Oksana Dzhuman",
           "date": "16 сентября 2026",
-          "excerpt": "Украинский художник, ныне базирующийся в Валенсии, о превращении использованных табачных палочек в мозаичные портреты, раскрашивая каждую вручную, и о первом случае, когда незнакомцы увидели работу вблизи на Russafa Art.",
+          "excerpt": "Художница из Валенсии, о превращении использованных табачных палочек в мозаичные портреты, раскрашивая каждую вручную, и о первом случае, когда незнакомцы увидели работу вблизи на Russafa Art.",
           "category": "интервью",
           "subcategory": "Интервью",
           "tags": [
@@ -16899,8 +16893,7 @@
             "искусство",
             "мозаика",
             "Валенсия",
-            "Испания",
-            "Украина"
+            "Испания"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -17206,15 +17199,14 @@
           "author": "Viacheslav Munister & DIHLUST",
           "role": "Автор",
           "date": "18 сентября 2026",
-          "excerpt": "Семейная мастерская в Украине по превращению мозаики, материала, созданного никогда не двигаться, в мебель, которая отправляется через океаны, и почему, по их утверждению, стол с коровой на нем в основном о стакане молока, который вы получили после дня на улице.",
+          "excerpt": "Семейная мастерская о превращению мозаики, материала, созданного никогда не двигаться, в мебель, которая отправляется через океаны, и почему, по их утверждению, стол с коровой на нем в основном о стакане молока, который вы получили после дня на улице.",
           "category": "интервью",
           "subcategory": "Интервью",
           "tags": [
             "Интервью",
             "ремесло",
             "мебель",
-            "дизайн",
-            "Украина"
+            "дизайн"
           ],
           "imageSeed": "",
           "content": [
@@ -24183,12 +24175,11 @@
           "author": "US Architecture Studio",
           "role": "Архітектурна студія",
           "date": "Sep 12, 2026",
-          "excerpt": "Як багаторівневий контекст формує українську ідентичність у трьох проєктах студії US Architecture Studio: від степового Сватового через Тернопільщину до кафе в Києві.",
+          "excerpt": "Як багаторівневий контекст формує ідентичність у трьох проєктах студії US Architecture Studio: від степового Сватового через Тернопільщину до кафе в Києві.",
           "category": "архітектура",
           "subcategory": "Профіль студії",
           "tags": [
             "Архітектура",
-            "Україна",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -24423,7 +24414,6 @@
           "tags": [
             "Інтерв’ю",
             "архітектура",
-            "Україна",
             "Київ",
             "Харків",
             "освіта"
@@ -24706,7 +24696,7 @@
           "title": "Оксана Джуман: автопортрет у 5500 паличках",
           "author": "Viacheslav Munister & Oksana Dzhuman",
           "date": "16 вересня 2026",
-          "excerpt": "Українська художниця, тепер базується у Валенсії, про перетворення використаних тютюнових паличок у мозаїчні портрети, малювання кожної вручну, і перший раз незнайомці побачили роботу зблизька у Russafa Art.",
+          "excerpt": "Художниця з Валенсії, про перетворення використаних тютюнових паличок у мозаїчні портрети, малювання кожної вручну, і перший раз незнайомці побачили роботу зблизька у Russafa Art.",
           "category": "інтерв’ю",
           "subcategory": "Інтерв’ю",
           "tags": [
@@ -24714,8 +24704,7 @@
             "мистецтво",
             "мозаїка",
             "Валенсія",
-            "Іспанія",
-            "Україна"
+            "Іспанія"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -25021,15 +25010,14 @@
           "author": "Viacheslav Munister & DIHLUST",
           "role": "Автор",
           "date": "18 вересня 2026",
-          "excerpt": "Сімейна майстерня в Україні з перетворення мозаїки, матеріалу, винайденого ніколи не рухатися, у меблі, що перевозиться через океани, і чому стіл із коровою на ньому, наполягають, здебільшого стосується склянки молока, яку ви отримали після дня на вулиці.",
+          "excerpt": "Сімейна майстерня про перетворення мозаїки, матеріалу, винайденого ніколи не рухатися, у меблі, що перевозиться через океани, і чому стіл із коровою на ньому, наполягають, здебільшого стосується склянки молока, яку ви отримали після дня на вулиці.",
           "category": "інтерв’ю",
           "subcategory": "Інтерв’ю",
           "tags": [
             "Інтерв’ю",
             "ремесло",
             "меблі",
-            "дизайн",
-            "Україна"
+            "дизайн"
           ],
           "imageSeed": "",
           "content": [
@@ -31756,12 +31744,11 @@
           "author": "US Architecture Studio",
           "role": "Architekturstudio",
           "date": "Sep 12, 2026",
-          "excerpt": "Wie ein vielschichtiger Kontext die ukrainische Identität in drei Projekten von US Architecture Studio prägt: von der Steppenstadt Swatowe über die Region Ternopil bis zu einem Café in Kyjiw.",
+          "excerpt": "Wie ein vielschichtiger Kontext die Identität in drei Projekten von US Architecture Studio prägt: von der Steppenstadt Swatowe über die Region Ternopil bis zu einem Café in Kyjiw.",
           "category": "Architektur",
           "subcategory": "Studioporträt",
           "tags": [
             "Architektur",
-            "Ukraine",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -32236,7 +32223,6 @@
           "tags": [
             "Interview",
             "architektur",
-            "Ukraine",
             "Kyiv",
             "Kharkiv",
             "bildung"
@@ -32519,7 +32505,7 @@
           "title": "Oksana Dzhuman: Ein Selbstporträt in 5.500 Stäbchen",
           "author": "Viacheslav Munister & Oksana Dzhuman",
           "date": "16. September 2026",
-          "excerpt": "Die ukrainische Künstlerin, jetzt in Valencia ansässig, über das Umwandeln gebrauchter Tabakstäbchen in Mosaikporträts, das handgemalte Malen jedes einzelnen, und die erste Begegnung Fremder mit der Arbeit aus nächster Nähe bei Russafa Art.",
+          "excerpt": "Die in Valencia lebende Künstlerin, über das Umwandeln gebrauchter Tabakstäbchen in Mosaikporträts, das handgemalte Malen jedes einzelnen, und die erste Begegnung Fremder mit der Arbeit aus nächster Nähe bei Russafa Art.",
           "category": "interview",
           "subcategory": "Interview",
           "tags": [
@@ -32527,8 +32513,7 @@
             "kunst",
             "mosaik",
             "Valencia",
-            "Spanien",
-            "Ukraine"
+            "Spanien"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -32834,15 +32819,14 @@
           "author": "Viacheslav Munister & DIHLUST",
           "role": "Autor",
           "date": "18. September 2026",
-          "excerpt": "Eine Familienwerkstatt in der Ukraine über die Verwandlung von Mosaik, einem Material, das nie bewegt werden sollte, in Möbel, die über Ozeane verschifft werden, und warum ein Tisch mit einer Kuh darauf, so bestehen sie, hauptsächlich über das Glas Milch handelt, das man nach einem Tag draußen bekommen hat.",
+          "excerpt": "Eine Familienwerkstatt über die Verwandlung von Mosaik, einem Material, das nie bewegt werden sollte, in Möbel, die über Ozeane verschifft werden, und warum ein Tisch mit einer Kuh darauf, so bestehen sie, hauptsächlich über das Glas Milch handelt, das man nach einem Tag draußen bekommen hat.",
           "category": "interview",
           "subcategory": "Interview",
           "tags": [
             "Interview",
             "handwerk",
             "möbel",
-            "design",
-            "Ukraine"
+            "design"
           ],
           "imageSeed": "",
           "content": [
@@ -39555,12 +39539,11 @@
           "author": "US Architecture Studio",
           "role": "Estudio de arquitectura",
           "date": "Sep 12, 2026",
-          "excerpt": "Cómo un contexto multicapa moldea la identidad ucraniana en tres proyectos de US Architecture Studio, desde la estepa de Svatove, pasando por la región de Ternopil, hasta una cafetería en Kiev.",
+          "excerpt": "Cómo un contexto multicapa moldea la identidad en tres proyectos de US Architecture Studio, desde la estepa de Svatove, pasando por la región de Ternopil, hasta una cafetería en Kiev.",
           "category": "arquitectura",
           "subcategory": "Perfil de estudio",
           "tags": [
             "Arquitectura",
-            "Ucrania",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -40035,7 +40018,6 @@
           "tags": [
             "Entrevista",
             "arquitectura",
-            "Ucrania",
             "Kyiv",
             "Kharkiv",
             "educación"
@@ -40326,8 +40308,7 @@
             "arte",
             "mosaico",
             "Valencia",
-            "España",
-            "Ucrania"
+            "España"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -40640,8 +40621,7 @@
             "Entrevista",
             "artesanía",
             "muebles",
-            "diseño",
-            "Ucrania"
+            "diseño"
           ],
           "imageSeed": "",
           "content": [
@@ -47369,12 +47349,11 @@
           "author": "US Architecture Studio",
           "role": "Mimarlık Stüdyosu",
           "date": "12 Eylül 2026",
-          "excerpt": "Çok katmanlı bağlamın Ukrayna kimliğini, US Architecture Studio'nun üç projede, Svatove bozkır kasabasından Ternopil tepelerine, Kiev'deki bir kafeye kadar şekillendirmesi.",
+          "excerpt": "Çok katmanlı bağlamın kimliği, US Architecture Studio'nun üç projede, Svatove bozkır kasabasından Ternopil tepelerine, Kiev'deki bir kafeye kadar şekillendirmesi.",
           "category": "mimarlık",
           "subcategory": "Stüdyo profili",
           "tags": [
             "Mimarlık",
-            "Ukrayna",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -54429,12 +54408,11 @@
           "author": "US Architecture Studio",
           "role": "Studio di architettura",
           "date": "Sep 12, 2026",
-          "excerpt": "Come un contesto stratificato plasma l'identità ucraina in tre progetti di US Architecture Studio, dalla steppa di Svatove, passando per la regione di Ternopil, fino a un caffè a Kyiv.",
+          "excerpt": "Come un contesto stratificato plasma l'identità in tre progetti di US Architecture Studio, dalla steppa di Svatove, passando per la regione di Ternopil, fino a un caffè a Kyiv.",
           "category": "architettura",
           "subcategory": "Profilo dello studio",
           "tags": [
             "Architettura",
-            "Ucraina",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -54653,7 +54631,6 @@
           "tags": [
             "Intervista",
             "architettura",
-            "Ucraina",
             "Kyiv",
             "Kharkiv",
             "istruzione"
@@ -54936,7 +54913,7 @@
           "title": "Oksana Dzhuman: Un autoritratto in 5.500 stecche",
           "author": "Viacheslav Munister & Oksana Dzhuman",
           "date": "16 settembre 2026",
-          "excerpt": "L'artista ucraina, ora con sede a Valencia, sulla trasformazione delle stecche di tabacco usate in ritratti a mosaico, dipingendo ognuna a mano, e la prima volta che gli sconosciuti hanno visto l'opera da vicino a Russafa Art.",
+          "excerpt": "L'artista di base a Valencia, sulla trasformazione delle stecche di tabacco usate in ritratti a mosaico, dipingendo ognuna a mano, e la prima volta che gli sconosciuti hanno visto l'opera da vicino a Russafa Art.",
           "category": "intervista",
           "subcategory": "Intervista",
           "tags": [
@@ -54944,8 +54921,7 @@
             "arte",
             "mosaico",
             "Valencia",
-            "Spagna",
-            "Ucraina"
+            "Spagna"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -55251,15 +55227,14 @@
           "author": "Viacheslav Munister & DIHLUST",
           "role": "Autore",
           "date": "18 settembre 2026",
-          "excerpt": "Un laboratorio familiare in Ucraina sulla trasformazione del mosaico, un materiale inventato per non muoversi mai, in mobili che attraversano gli oceani, e perché un tavolo con una mucca sopra è, insistono, principalmente riguardo al bicchiere di latte che hai ottenuto dopo una giornata all'aperto.",
+          "excerpt": "Un laboratorio familiare sulla trasformazione del mosaico, un materiale inventato per non muoversi mai, in mobili che attraversano gli oceani, e perché un tavolo con una mucca sopra è, insistono, principalmente riguardo al bicchiere di latte che hai ottenuto dopo una giornata all'aperto.",
           "category": "intervista",
           "subcategory": "Intervista",
           "tags": [
             "Intervista",
             "artigianato",
             "mobili",
-            "design",
-            "Ucraina"
+            "design"
           ],
           "imageSeed": "",
           "content": [
@@ -56745,12 +56720,11 @@
           "author": "US Architecture Studio",
           "role": "Agence d'architecture",
           "date": "Sep 12, 2026",
-          "excerpt": "Comment un contexte à plusieurs strates façonne l'identité ukrainienne dans trois projets de US Architecture Studio, de la steppe de Svatove à un café à Kyiv, en passant par la région de Ternopil.",
+          "excerpt": "Comment un contexte à plusieurs strates façonne l'identité dans trois projets de US Architecture Studio, de la steppe de Svatove à un café à Kyiv, en passant par la région de Ternopil.",
           "category": "architecture",
           "subcategory": "Portrait d'agence",
           "tags": [
             "Architecture",
-            "Ukraine",
             "US Architecture Studio"
           ],
           "imageSeed": "",
@@ -60988,7 +60962,6 @@
           "tags": [
             "Entretien",
             "architecture",
-            "Ukraine",
             "Kyiv",
             "Kharkiv",
             "éducation"
@@ -61271,7 +61244,7 @@
           "title": "Oksana Dzhuman : Un autoportrait en 5 500 bâtons",
           "author": "Viacheslav Munister & Oksana Dzhuman",
           "date": "16 septembre 2026",
-          "excerpt": "L'artiste ukrainienne, désormais basée à Valencia, sur la transformation de bâtons de tabac usagés en portraits en mosaïque, peignant chacun à la main, et la première fois que des étrangers ont vu l'œuvre de près à Russafa Art.",
+          "excerpt": "L'artiste installée à Valencia, sur la transformation de bâtons de tabac usagés en portraits en mosaïque, peignant chacun à la main, et la première fois que des étrangers ont vu l'œuvre de près à Russafa Art.",
           "category": "entretien",
           "subcategory": "Entretien",
           "tags": [
@@ -61279,8 +61252,7 @@
             "art",
             "mosaïque",
             "Valencia",
-            "Espagne",
-            "Ukraine"
+            "Espagne"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
           "previewToken": "g4zlDeB7WEtiywVa",
@@ -61586,15 +61558,14 @@
           "author": "Viacheslav Munister & DIHLUST",
           "role": "Auteur",
           "date": "18 septembre 2026",
-          "excerpt": "Un atelier familial en Ukraine sur la transformation de la mosaïque, un matériau inventé pour ne jamais bouger, en meubles qui traversent les océans, et pourquoi une table avec une vache dessus est, ils insistent, principalement une question de verre de lait que vous avez obtenu après une journée dehors.",
+          "excerpt": "Un atelier familial sur la transformation de la mosaïque, un matériau inventé pour ne jamais bouger, en meubles qui traversent les océans, et pourquoi une table avec une vache dessus est, ils insistent, principalement une question de verre de lait que vous avez obtenu après une journée dehors.",
           "category": "entretien",
           "subcategory": "Entretien",
           "tags": [
             "Entretien",
             "artisanat",
             "meubles",
-            "design",
-            "Ukraine"
+            "design"
           ],
           "imageSeed": "",
           "content": [
@@ -62685,8 +62656,8 @@
     {
       "id": "author-us-architecture-studio",
       "name": "US Architecture Studio",
-      "role": "Architecture Studio, Ukraine",
-      "bio": "US Architecture Studio is a Ukrainian practice working at the intersection of architecture and identity consulting. Its projects are built from layered local context rather than applied style, and the studio also runs the media project UkrArchStyle.",
+      "role": "Architecture Studio",
+      "bio": "US Architecture Studio is a practice working at the intersection of architecture and identity consulting. Its projects are built from layered local context rather than applied style, and the studio also runs the media project UkrArchStyle.",
       "photoUrl": "https://api.eprisjournal.com/uploads/mtybtlnpk8zgbn.jpg",
       "website": "https://us-arch-studio.framer.website/",
       "instagram": "",
@@ -62695,6 +62666,46 @@
       "collaborator": true,
       "photoIsLogo": true,
       "teamOrder": 18
+    },
+    {
+      "id": "author-oksana-dzhuman",
+      "name": "Oksana Dzhuman",
+      "role": "Artist, Valencia (Spain)",
+      "bio": "Oksana Dzhuman is an artist based in Valencia. After training as an interior and graphic designer and working for years as a tattoo artist, she began building large mosaic portraits out of used tobacco sticks, disinfected and painted by hand one at a time. Her work was shown publicly for the first time in 2026, at Russafa Art in Valencia.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+      "website": "",
+      "instagram": "",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 19
+    },
+    {
+      "id": "author-diana-aleshchenko",
+      "name": "Diana Aleshchenko",
+      "role": "Architect",
+      "bio": "Diana Aleshchenko is an architect from Kyiv. She completed her master's degree in architecture and urban planning at the Kyiv National University of Construction and Architecture (KNUBA) in 2026, with a student portfolio spanning a rehabilitation centre in Zhytomyr, a wartime student campus in Kharkiv, and a greenhouse complex at the Kyiv-Volynskyi railway hub.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mu2eq1ka8wjapn.jpg",
+      "website": "",
+      "instagram": "",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 20
+    },
+    {
+      "id": "author-dihlust",
+      "name": "DIHLUST",
+      "role": "Furniture Workshop",
+      "bio": "DIHLUST is a family workshop run by a brother and sister who build cube shaped side tables entirely out of glazed mosaic tile, most often patterned with their signature pixellated cow. Every piece is unique and made by hand, then shipped worldwide.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/reidnol8cx8kzw.jpg",
+      "website": "",
+      "instagram": "",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "photoIsLogo": true,
+      "teamOrder": 21
     }
   ],
   "manifest": {
