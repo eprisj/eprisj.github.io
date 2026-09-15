@@ -32114,13 +32114,13 @@
           "role": "Autor",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Oksana Dzhuman: Ein Selbstporträt in 5.500 Stäbchen",
           "author": "Viacheslav Munister & Oksana Dzhuman",
-          "date": "15. September 2026",
-          "excerpt": "Die ukrainische Künstlerin, jetzt in Valencia ansässig, über das Umwandeln gebrauchter Tabakstäbchen in Mosaikporträts, das Malen jedes einzelnen von Hand, und die erste Begegnung von Fremden mit dem Werk aus nächster Nähe bei Russafa Art.",
+          "date": "16. September 2026",
+          "excerpt": "Die ukrainische Künstlerin, jetzt in Valencia ansässig, über das Umwandeln gebrauchter Tabakstäbchen in Mosaikporträts, das handgemalte Malen jedes einzelnen, und die erste Begegnung Fremder mit der Arbeit aus nächster Nähe bei Russafa Art.",
           "category": "interview",
           "subcategory": "Interview",
           "tags": [
@@ -32136,7 +32136,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Oksana Dzhuman ausgebildet als Innenarchitektin, dann studierte sie Grafikdesign, dann verbrachte sie mehrere Jahre als Tätowiererin. Heute lebt sie in Valencia und arbeitet als Künstlerin, und das Material, zu dem sie immer wieder zurückkehrt, ist eines, das sonst niemand wollte: gebrauchte Tabakstängel, desinfiziert, von Hand bemalt, eins nach dem anderen, und in große Mosaikporträts eingesetzt."
+              "content": "Oksana Dzhuman ausgebildet als Innenarchitektin, dann studierte sie Grafikdesign, dann verbrachte sie mehrere Jahre als Tätowiererin. Heute lebt sie in Valencia und arbeitet als Künstlerin, und das Material, zu dem sie immer wieder zurückkehrt, ist eines, das sonst niemand wollte: gebrauchte Tabakstangen, desinfiziert, von Hand bemalt, eine nach der anderen, und in große Mosaikporträts eingesetzt."
             },
             {
               "type": "text",
@@ -32155,11 +32155,11 @@
             },
             {
               "type": "text",
-              "content": "Um ehrlich zu sein, ich glaube nicht, dass meine Ausbildung die Art und Weise geprägt hat, wie ich heute Komposition, Form und Raum sehe. An der Universität war ich ein ziemlich unernster Student: Ich erkannte ziemlich schnell, dass Innendesign selbst mich nicht wirklich interessierte, und wenn eine Aufgabe mich nicht packte, machte ich sie einfach, weil sie erledigt werden musste."
+              "content": "Um ehrlich zu sein, ich glaube nicht, dass meine Ausbildung die Art und Weise geprägt hat, wie ich heute Komposition, Form und Raum sehe. An der Universität war ich ein eher unernster Student: Ich erkannte ziemlich schnell, dass Innendesign selbst mich nicht wirklich interessierte, und wenn eine Aufgabe mich nicht packte, machte ich sie einfach, weil sie erledigt werden musste."
             },
             {
               "type": "text",
-              "content": "Aber einige Dinge habe ich wirklich geliebt. Ich liebte es zu zeichnen, zu erfinden, mit Farben zu arbeiten und Dinge mit meinen Händen zu machen. Eine Aufgabe ist mir besonders im Gedächtnis geblieben: Wir mussten Papier selbst in verschiedenen Schattierungen färben, es in kleine Quadrate und Rechtecke schneiden und ein Bild daraus zusammensetzen. Dieser Prozess hat mich wirklich fasziniert. Erst jetzt erkenne ich, wie nah das an dem ist, was ich heute mache, nur mit einem völlig anderen Material."
+              "content": "Aber einige Dinge habe ich wirklich geliebt. Ich liebte es zu zeichnen, zu erfinden, mit Farbe zu arbeiten und Dinge mit meinen Händen zu machen. Eine Aufgabe ist mir besonders im Gedächtnis geblieben: Wir mussten Papier selbst in verschiedenen Farbtönen färben, es in kleine Quadrate und Rechtecke schneiden und daraus ein Bild zusammensetzen. Dieser Prozess hat mich wirklich fasziniert. Erst jetzt erkenne ich, wie nah das an dem ist, was ich heute mache, nur mit einem völlig anderen Material."
             },
             {
               "type": "text",
@@ -32180,17 +32180,17 @@
             },
             {
               "type": "text",
-              "content": "Und dieser Drang tauchte sogar vor der Universität auf. An der Schule erinnere ich mich, dass ich eine ganze Nacht damit verbrachte, mein Telefon von Hand mit Hunderten winziger Strasssteine zu bedecken, das Muster beim Gehen zu erfinden und die Zeit überhaupt nicht zu bemerken. Später wurde das Telefon, passend dazu, gestohlen. Vielleicht hat all das Funkeln doch seine Wirkung gezeigt."
+              "content": "Und dieser Drang tauchte sogar vor der Universität auf. An der Schule erinnere ich mich, dass ich eine ganze Nacht damit verbrachte, mein Telefon von Hand mit Hunderten winziger Strasssteine zu bedecken, das Muster beim Gehen zu erfinden und die Zeit überhaupt nicht zu bemerken. Später wurde das Telefon, passend dazu, gestohlen. Vielleicht hat all dieser Glanz doch seine Wirkung gezeigt."
             },
             {
               "type": "text",
-              "content": "Also sehe ich jetzt alles als einen ziemlich chaotischen Weg, bei dem ich erst nach Jahren begann, mehr auf mich selbst zu hören und zu verstehen, was ich tatsächlich liebe."
+              "content": "Also sehe ich jetzt alles als einen ziemlich chaotischen Weg, in dem ich erst nach Jahren begann, mehr auf mich selbst zu hören und zu verstehen, was ich tatsächlich liebe."
             },
             {
               "type": "bild",
               "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
               "caption": "Das telefon, das sie über eine Nacht mit Strasssteinen bedeckte, als Schulmädchen.",
-              "align": "zentrum"
+              "align": "zentriert"
             },
             {
               "type": "kopfzeile",
@@ -32199,7 +32199,7 @@
             },
             {
               "type": "text",
-              "content": "Alles begann Ende 2024, leider mit Rauchen. Ich stellte eine kleine Schachtel auf, in der ich beginnend, gebrauchte Stöcke zu sammeln, und da begann ich zum ersten Mal zu bemerken, wie viele es gab. Wenn es nicht nur ein oder zwei Stöcke sind, die man einfach wegwirft, sondern wie viele sich in nur wenigen Tagen ansammeln, kommt man zu einem ziemlich unangenehmen Bewusstsein für das Ausmaß der eigenen Gewohnheit."
+              "content": "Alles begann Ende 2024, leider mit Rauchen. Ich stellte eine kleine Schachtel auf, in der ich begann, gebrauchte Stöcke zu sammeln, und da begann ich zum ersten Mal zu bemerken, wie viele es gab. Wenn es nicht nur ein oder zwei Stöcke sind, die man einfach wegwirft, sondern wie viele sich in nur wenigen Tagen anhäufen, kommt man zu einem ziemlich unangenehmen Bewusstsein für das Ausmaß der eigenen Gewohnheit."
             },
             {
               "type": "text",
@@ -32213,20 +32213,20 @@
             },
             {
               "type": "header",
-              "content": "Zuerst wurden deine Arbeiten nur aus deinen eigenen Stöcken gemacht, aber im Laufe der Zeit begannen andere Leute, sich dem Projekt anzuschließen. Wie ist das auf natürliche Weise passiert, und was hat sich für dich persönlich geändert, als das Material nicht mehr nur dein eigenes war?",
+              "content": "Zunächst wurden Ihre Arbeiten nur aus Ihren eigenen Stöcken gefertigt, aber im Laufe der Zeit begannen andere Menschen, sich dem Projekt anzuschließen. Wie geschah das auf natürliche Weise, und was hat sich für Sie persönlich verändert, als das Material nicht mehr nur Ihnen gehörte?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Bis 2026 verwendete ich nur meine eigenen Stöcke, daher dauerte das Sammeln des Materials sehr lange. Die erste Person, die mir half, war eine spanische Freundin von mir, und ich bin ihr sehr dankbar für die Unterstützung. Dann schlossen sich nach und nach andere Leute an, und es gab deutlich mehr Material."
+              "content": "Bis 2026 verwendete ich nur meine eigenen Stöcke, daher dauerte das Sammeln des Materials sehr lange. Die erste Person, die mir half, war eine spanische Freundin von mir, und ich bin ihr sehr dankbar für die Unterstützung. Dann schlossen sich nach und nach weitere Menschen an, und es gab deutlich mehr Material."
             },
             {
               "type": "text",
-              "content": "Später postete ich in den sozialen Medien, dass ich gebrauchte Stöcke für meine Arbeit sammle, und unerwartet meldeten sich ziemlich viele Leute. Menschen gaben mir sogar ganze Kartons mit neuen Stöcken. Das änderte das Tempo der Arbeit erheblich: Früher musste ich Monate warten, bis genug Material für ein Stück zusammenkam, und jetzt können mehrere tausend Stöcke viel schneller gesammelt werden."
+              "content": "Später postete ich in den sozialen Medien, dass ich gebrauchte Stöcke für meine Arbeit sammle, und unerwartet meldeten sich ziemlich viele Leute. Menschen gaben mir sogar ganze Kartons mit neuen Stöcken. Das änderte das Tempo der Arbeit erheblich: Früher musste ich Monate warten, bis genug Material für ein Werk zusammenkam, und jetzt können mehrere tausend Stöcke viel schneller gesammelt werden."
             },
             {
               "type": "text",
-              "content": "Und ich sehe die Werke selbst jetzt etwas anders. Ich schaue sie an und verstehe, dass sie nicht mehr nur meinen “DNA” tragen. In gewisser Weise nehmen viele Menschen an der Herstellung jedes einzelnen teil, und ich bin sehr dankbar an alle, die mir helfen, Material zu sammeln."
+              "content": "Und ich sehe die Werke selbst jetzt etwas anders. Ich schaue sie an und verstehe, dass sie nicht mehr nur meinen “DNA” tragen. In gewissem Sinne nehmen viele Menschen an der Herstellung jedes einzelnen teil, und ich bin sehr dankbar an alle, die mir helfen, Material zu sammeln."
             },
             {
               "type": "gallery",
@@ -32305,7 +32305,7 @@
             },
             {
               "type": "text",
-              "content": "Ich mochte Girl with a Pearl Earring schon lange. In der Ukraine malte ich meine eigene Version mit einer Katze, und in Spanien tauchte das Bild überall auf. Irgendwann beschloss ich, dass sie mein erstes Porträt aus Stöcken sein würde. Ein vertrautes Bild, vertraute Farben."
+              "content": "Ich mochte Girl with a Pearl Earring schon lange. Damals in der Ukraine malte ich meine eigene Version mit einer Katze, und in Spanien tauchte das Bild überall auf. Irgendwann beschloss ich, dass sie mein erstes Porträt aus Stöcken sein würde. Ein vertrautes Bild, vertraute Farben."
             },
             {
               "type": "text",
@@ -32313,11 +32313,11 @@
             },
             {
               "type": "text",
-              "content": "Als ich das Layout fertiggestellt hatte und realisierte, wie viele Schattierungen und Tausende von Stäben ich von Hand malen müsste, dachte ich, ich hätte meine Stärke überschätzt. Ich erwog sogar, es als verlängerte farbige Pixel zu belassen. Es blieb ziemlich lange in diesem Zustand, bis ich mich schließlich dazu überredete, das zu beenden, was ich begonnen hatte."
+              "content": "Als ich das Layout fertiggestellt hatte und realisierte, wie viele Schattierungen und Tausende von Stäben ich von Hand malen müsste, dachte ich, ich hätte meine Kraft überschätzt. Ich erwog sogar, es als verlängerte farbige Pixel zu belassen. Es blieb ziemlich lange in diesem Zustand, bis ich mich schließlich dazu überredete, das zu beenden, was ich begonnen hatte."
             },
             {
               "type": "text",
-              "content": "Das ist wahrscheinlich der Grund, warum ich eine besondere Liebe zu diesem Werk habe. Es war mein erstes Werk in solch großem Maßstab und über so lange Zeit, und am Ende wurde es mein Favorit."
+              "content": "Das ist wahrscheinlich der Grund, warum ich eine besondere Liebe zu diesem Werk habe. Es war mein erstes Werk in solch großem Maßstab und über so eine lange Zeit, und am Ende wurde es mein Favorit."
             },
             {
               "type": "image",
@@ -32350,12 +32350,12 @@
             },
             {
               "type": "header",
-              "content": "Unter Ihren Werken gibt es eine Leinwand namens La Guerra. Ich verstehe, dass dies ein schwieriges Thema sein kann, daher frage ich vorsichtig: Wenn Sie sich jetzt wohl fühlen, darüber zu sprechen, was stand hinter diesem Werk?",
+              "content": "Unter deinen Werken gibt es eine Leinwand namens La Guerra. Ich verstehe, dass dies ein schwieriges Thema sein kann, deshalb frage ich vorsichtig: Wenn du dich jetzt wohl fühlst, darüber zu sprechen, was stand hinter diesem Werk?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Für mich ist dieses Werk wahrscheinlich über den Schmerz, der wegen des Krieges im Inneren bleibt. Das Leben geht weiter, du machst gewöhnliche Dinge, aber es führt nirgendwohin."
+              "content": "Für mich ist dieses Werk wahrscheinlich über den Schmerz, der wegen des Krieges im Inneren bleibt. Das Leben geht weiter, du machst gewöhnliche Dinge, aber es geht nirgendwo hin."
             },
             {
               "type": "text",
@@ -32426,7 +32426,8 @@
               "content": "<i>Fotografien mit freundlicher Genehmigung von Oksana Dzhuman. Interview schriftlich geführt für EPRIS Journal, September 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:43:02.927Z"
+          "publishAt": "2026-09-16T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:56:36.609Z"
         }
       ],
       "reviews": [
