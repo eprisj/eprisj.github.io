@@ -38552,6 +38552,294 @@
           "previewToken": "a4036338d5bc3bb47895e084",
           "authorId": "author-1784732936927-kw554",
           "updatedAt": "2026-09-13T20:28:53.180Z"
+        },
+        {
+          "id": 39,
+          "role": "Autor",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Diana Aleshchenko: La seguridad proviene de la apertura",
+          "author": "Viacheslav Munister & Diana Aleshchenko",
+          "date": "15 de septiembre de 2026",
+          "excerpt": "Una nueva graduada de KNUBA en un centro de rehabilitación sin ángulos rectos, un campus estudiantil para el Kharkiv en tiempos de guerra, y un patio que mantiene la memoria de julio de 1917 dentro de un centro ferroviario.",
+          "category": "entrevista",
+          "subcategory": "Entrevista",
+          "tags": [
+            "Entrevista",
+            "arquitectura",
+            "Ucrania",
+            "Kyiv",
+            "Kharkiv",
+            "educación"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+          "previewToken": "JbWDyMUOvqmgHQEa",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Diana Aleshchenko es de Kyiv. Este año completó su maestría en arquitectura y planificación urbana en la Kyiv National University of Construction and Architecture (KNUBA), y su portafolio estudiantil ya abarca tres encargos muy diferentes: un centro de rehabilitación en Zhytomyr para personas que se recuperan de lesiones graves y trauma, un campus con viviendas estudiantiles en Kharkiv, y un complejo de invernaderos en el centro ferroviario Kyiv-Volynskyi."
+            },
+            {
+              "type": "texto",
+              "content": "Lo que los conecta es una insistencia en que cada decisión formal debe ganar su lugar. Las paredes redondeadas en su centro de rehabilitación son sobre sillas de ruedas y ansiedad antes que sobre suavidad; las persianas en su fachada son sobre quién puede ver a quién. La revista EPRIS le preguntó sobre el razonamiento detrás de estos proyectos, y sobre qué significa diseñar para las ciudades ucranianas ahora."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq1ka8wjapn.jpg",
+              "caption": "Diana Aleshchenko con sus paneles de proyecto.",
+              "align": "centrar"
+            },
+            {
+              "type": "encabezado",
+              "content": "Cuéntanos un poco sobre ti: de dónde eres, dónde estudiaste, y cómo llegaste a la arquitectura?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Soy de Kyiv, y este año obtuve mi título de maestría en arquitectura y planificación urbana en KNUBA en Kyiv. No tengo una historia única sobre una revelación infantil repentina después de la cual decidí dedicar mi vida a la arquitectura. Como lo veo, el camino tomó forma de manera bastante natural y coherente: a través de una cadena de mis propias decisiones, un interés que crecía gradualmente en el espacio, y eventos específicos de la vida que paso a paso me llevaron a donde estoy ahora."
+            },
+            {
+              "type": "header",
+              "content": "¿Qué en tu infancia o juventud te impulsó hacia la arquitectura en particular?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "No hubo un único desencadenante infantil que decidiera todo. Fue más una combinación gradual de intereses en el dibujo, la geometría y el trabajo creativo, que con la edad simplemente se convirtió en una elección consciente de profesión."
+            },
+            {
+              "type": "header",
+              "content": "¿Cuánto influyeron tus estudios en KNUBA en tu enfoque del diseño?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Mis estudios me dieron una comprensión clara de que el aprendizaje nunca termina realmente. De proyecto en proyecto vuelves a la misma idea donde tienes que buscar información nuevamente, investigar, encontrar inspiración y rehacer decisiones sin fin en busca de forma, todo ello bajo plazos estrictos. Comienzas con una imagen en tu cabeza y tratas de realizar exactamente eso, pero en el camino todo se transforma, y al final nace algo bastante diferente, algo mucho más profundo. La universidad me enseñó a mantener ese ritmo, a tomar decisiones rápidamente y no tener miedo de dejar de lado las ideas iniciales en favor de un resultado final más fuerte."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq40vwfi92h.jpg",
+              "caption": "Con un modelo de presentación de uno de sus proyectos.",
+              "align": "centrar"
+            },
+            {
+              "type": "encabezado",
+              "content": "En su centro de rehabilitación en Zhytomyr eligieron formas biónicas y esquinas redondeadas para que los pacientes se sintieran seguros. ¿Cómo decidieron qué dispositivos arquitectónicos crean genuinamente una sensación de protección, en lugar de simplemente parecer suaves?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "En primer lugar, las paredes lisas, redondeadas y radiales son mucho más cómodas de recorrer para una persona en silla de ruedas o con una prótesis, donde cada esquina es un posible obstáculo. Dadas las características de la instalación y después de analizar planos típicos de hospitales con sus esquinas de 90 grados, también tuvimos en cuenta el factor psicoemocional. Para una persona con trastorno de estrés agudo o PTSD, que alguien aparezca de repente alrededor de una esquina se convierte en un desencadenante adicional de ansiedad."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4e2kin3v3.jpg",
+              "caption": "El centro de rehabilitación en Zhytomyr. Persianas metálicas en ángulo ofrecen privacidad a los pacientes desde la calle mientras mantienen la vista abierta.",
+              "align": "centro"
+            },
+            {
+              "type": "encabezado",
+              "content": "Las persianas metálicas en el mismo proyecto están en ángulo para que los pacientes puedan ver el patio mientras los transeúntes en la calle no puedan verlos. ¿Cómo surgió esta solución, y hubo opciones que no funcionaron?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Desde el principio tuvimos la intención de hacer balcones abiertos, para que un paciente pudiera tomar aire fresco sin salir de su propia habitación. Pero tras consultas con especialistas quedó claro que para personas con trauma psicológico esto es una solución peligrosa. Así que el equipo realizó una lluvia de ideas, buscando una forma de mantener la idea original, el contacto con el aire y el bosque, mientras se hacía completamente segura. Probamos acristalamiento completo y persianas normales, pero o bien creaban la sensación de una celda cerrada o bloqueaban completamente la vista de la naturaleza. Las persianas giratorias en ángulo resultaron ser la mejor respuesta. Ofrecen la privacidad necesaria desde la calle, dejan al paciente una vista directa del patio y el bosque de pinos, y al mismo tiempo permiten ventilar la habitación cómodamente sin sensación de aislamiento. Al final, esta medida de seguridad funcional se convirtió en la principal característica visual de toda la fachada."
+            },
+            {
+              "type": "encabezado",
+              "content": "El proyecto se desarrolló a través de consultas con el personal médico en centros de rehabilitación. ¿Cuál de sus consejos cambió más el concepto original?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Por supuesto, las decisiones conceptuales iniciales fueron fuertemente influenciadas por las especificidades del edificio y la investigación sobre sus futuros usuarios. Analizamos diferentes grupos en detalle, sus necesidades particulares y la práctica real de cómo se disponen dichas instalaciones. Durante una de las consultas pudimos hablar con una persona que había creado y mejorado centros de rehabilitación en la práctica. La principal percepción de esa conversación fue una comprensión del estado psicológico de los pacientes y las especificidades de su seguridad, y como resultado abandonamos por completo los balcones abiertos. Para una vivienda común o un hotel, un balcón parece una elección natural, pero para las personas que se someten a rehabilitación después de lesiones graves, los espacios abiertos en voladizo crean ansiedad y riesgo innecesarios."
+            },
+            {
+              "type": "encabezado",
+              "content": "Tu proyecto de diploma, un campus y vivienda estudiantil en Kharkiv, se basa en un modelo híbrido: la planta baja se convierte en un espacio público abierto, y la vivienda arriba es modular. ¿Por qué esta tipología en lugar del familiar dormitorio con pasillo?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "El dormitorio con pasillo tradicional está completamente desactualizado y no ofrece a los jóvenes de hoy una nueva experiencia espacial. Encierra a las personas en pasillos estrechos y oscuros, quita el equilibrio entre socializar y la privacidad, y parece desconectado de la vida. Los pisos bajos activos han sido durante mucho tiempo una necesidad absoluta en una buena vivienda, y en un campus estudiantil son aún más críticos. Aquí se forma un entorno público abierto, con espacios de coworking, áreas compartidas y servicios, donde los estudiantes pueden hacer fácilmente nuevos contactos, conocer compañeros, intercambiar ideas y encontrar personas afines. Los pisos residenciales superiores, por su parte, son modulares, de modo que cada estudiante tenga un lugar personal adecuado para estudiar con concentración y descansar. Esta tipología híbrida funciona como una convivencia estudiantil activa: socialización activa e integración en la vida de la ciudad abajo, y un espacio privado protegido y ergonómico arriba."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
+              "caption": "Campus y vivienda estudiantil en Kharkiv, proyecto de maestría: una planta baja abierta y activa con vivienda modular arriba.",
+              "align": "centro"
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq5dldnfdbz.jpg",
+              "caption": "Diagrama conceptual: el núcleo público compartido del campus entre los bloques circundantes.",
+              "align": "centro"
+            },
+            {
+              "type": "encabezado",
+              "content": "En una unidad colocas un altillo para dormir para liberar espacio para estudiar; en otra, un doble, creas “privacidad vertical” con una cama elevada. ¿Cómo buscas el equilibrio entre espacio personal y vida compartida en un entorno estudiantil?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "El equilibrio entre vida compartida y privacidad comienza con entender que una persona necesita su propio territorio psicológico, donde su mirada y espacio personal no se crucen constantemente con los de otros. En una residencia típica, las camas están en un mismo plano horizontal, por lo que una persona siempre está en el campo de visión de su vecino, y eso rápidamente te agota. La zonificación vertical y el altillo para dormir, que es la firma del diseño de la residencia, resuelven este problema. Elevar la cama a un segundo nivel crea una cápsula individual de tranquilidad donde puedes desconectarte completamente de lo que sucede en la habitación. En una habitación individual, esto libera el nivel inferior para un espacio de trabajo completo y para vivir sin desorden, y en un doble, proporciona la misma privacidad vertical, para que los compañeros de cuarto no se molesten incluso dentro de un mismo espacio."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq5rkp21eka.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq6cquwuuau.jpg"
+              ],
+              "caption": "Unidades simples y dobles con un nivel de descanso elevado."
+            },
+            {
+              "type": "header",
+              "content": "Este es un proyecto de diploma sobre Kharkiv, una ciudad que ahora vive bajo una presión constante de guerra. ¿Cuánto influyó esa realidad en las decisiones del proyecto, directa o indirectamente?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Sin duda, la realidad de la guerra influyó significativamente en el trabajo, tanto en el significado como en la planificación. A pesar de los bombardeos constantes y el peligro, Kharkiv sigue siendo con confianza una de las tres principales ciudades de Ucrania en número de solicitantes universitarios, lo que solo confirma lo relevante que es la elección del sitio. La ciudad vive, y los jóvenes quieren estudiar aquí. Pero diseñar para un contexto así usando los enfoques antiguos ya no es posible. La seguridad se convirtió en el factor definitorio para toda la estructura del complejo, por lo que una parte obligatoria y fundamental del proyecto de maestría fue diseñar y calcular un refugio espacioso. No solo un sótano técnico para marcar una casilla, sino un espacio subterráneo completo integrado en las funciones del campus."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq6ycmb9jy5.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq7fi4lxa0k.jpg"
+              ],
+              "caption": "Ilustración y detalle axonométrico del proyecto del campus de Kharkiv."
+            },
+            {
+              "type": "header",
+              "content": "En tu proyecto de invernadero en el centro Kyiv-Volynskyi, escribes sobre una transición de tránsito rápido y ruidoso a calma y concentración. ¿Cómo lograste esa transición arquitectónicamente, en lugar de simplemente marcarla en un plano?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "La transición de tránsito a calma se logra sobre todo a través de una secuencia clara de barreras físicas. Entre la ruidosa vía del ferrocarril y la calma que representa el invernadero no solo hay distancia. Primero viene un bloque separado del edificio y un espacio abierto frente a él, que absorben la primera ola y amortiguan físicamente el sonido principal de los trenes. Solo después de pasar este búfer, una persona entra en el ritmo de pérgolas y galerías cubiertas, donde la forma del complejo mismo comienza a funcionar como un contorno protector. Volúmenes horizontales bajos y plantaciones densas enmascaran completamente la zona central del ruido de la ciudad y el caos visual. El cambio de escala, la sombra de la pérgola y la masa verde desvían la atención del bullicio del tránsito hacia la tranquilidad, creando un aislamiento natural alrededor del invernadero antes de que una persona cruce su umbral."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq83blkiea1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq8kau171hy.jpg"
+              ],
+              "caption": "El complejo en el centro Kyiv-Volynskyi: zonificación funcional y plan maestro."
+            },
+            {
+              "type": "encabezado",
+              "content": "El patio interior del mismo proyecto está dedicado a la memoria de los eventos de 1917. ¿De dónde surgió esta idea y cómo trabajaste con un tema tan sensible en un espacio que sigue siendo un centro de transporte?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Cualquier diseño para mí comienza con un análisis previo exhaustivo. No solo del terreno o los alrededores, sino también del patrimonio histórico del sitio. Una vez que recibí el brief, comencé mi investigación con exactamente esta parte del análisis urbano, buscando un gancho inicial desde el cual el concepto y la idea del proyecto pudieran desarrollarse. Pocos pasajeros lo saben, pero fue aquí, en la estación Post-Volynskyi, donde el 26 de julio de 1917, unidades militares rusas abrieron fuego de ametralladora contra el tren del Regimiento Bohdan Khmelnytsky mientras salía hacia el frente. Fue un punto de partida trágico y simbólico de la lucha ucraniana por la liberación, y ocurrió en estas mismas vías."
+            },
+            {
+              "type": "texto",
+              "content": "Trabajar con un tema así dentro de un centro de transporte es una tarea extremadamente compleja y responsable. Una estación vive del tránsito, el bullicio y la velocidad. Por eso, la memoria de estos eventos y la idea de resiliencia están integradas en el corazón del complejo: el patio interior con el invernadero y la estructura rítmica de las pérgolas. Este núcleo verde es el principal amortiguador espacial y acústico. Al venir aquí desde un tránsito dinámico, una persona se encuentra en un espacio protegido de calma donde el estruendo del ferrocarril se corta. El invernadero y la naturaleza viva bajo la pérgola hablan de memoria en el lenguaje de la vida, la luz y la renovación, dando a los pasajeros la opción de descansar del ruido de la ciudad, de reducir la velocidad o de reflexionar sobre el peso histórico del lugar bajo sus pies."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
+              "caption": "Axonometría del complejo junto a la vía férrea, con el patio interior en su centro.",
+              "align": "centro"
+            },
+            {
+              "type": "encabezado",
+              "content": "La mayoría de tus proyectos tienen gráficos muy expresivos y renders atmosféricos. ¿Dónde, para ti, está la línea entre mostrar la arquitectura de manera convincente y dejar que la imagen se convierta en una obra por derecho propio?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Para mí, la visualización arquitectónica es ante todo arte fotográfico. No la veo como gráficos por computadora solo por efectos especiales, sino como lo hace un fotógrafo que llega a un edificio y busca el ángulo correcto, siente la luz, el aire, la tactilidad de los materiales y el estado de ánimo."
+            },
+            {
+              "type": "texto",
+              "content": "La línea entre ser convincente y una imagen que existe por sí misma se encuentra donde comienza la honestidad hacia el proyecto. Una fotografía puede ser profunda, atmosférica y artística, pero su tarea es capturar y revelar el carácter real del entorno. Cuando una renderización funciona como un marco honesto de la vida de un edificio futuro, ayuda a una persona a sentir el espacio incluso antes de que esté construido."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eq9nudzgq53.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqah3bli06u.jpg"
+              ],
+              "caption": "Visualizaciones del portafolio de Diana Aleshchenko."
+            },
+            {
+              "type": "encabezado",
+              "content": "Si tuvieras que defender uno de estos proyectos ante un jurado que hace preguntas incómodas, ¿qué decisión defenderías con más vehemencia y cuál admitirías que es débil?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Si tuviera que defender nuevamente el campus de Kharkiv ante un jurado crítico, defendería con más vehemencia la decisión de hacer que la planta baja sea un espacio completamente activo, abierto y multifuncional para todos los residentes de la ciudad. Para que un edificio con un complejo deportivo o una piscina no solo viva en la primera mitad del día durante las clases, sino también en las tardes y durante las vacaciones. El jurado probablemente apelaría a ideas tradicionales sobre seguridad: que un entorno estudiantil debe estar aislado, detrás de una cerca. Pero estoy convencido de que el cierre no hace que un lugar sea seguro. La seguridad proviene de la apertura, del contacto vivo con el vecindario, del control social y de la presencia constante de personas en la calle."
+            },
+            {
+              "type": "text",
+              "content": "La decisión que estoy listo para ver criticada abiertamente es la optimización espacial de las unidades compactas con un lugar de dormir elevado. Aunque resuelve el problema de la privacidad en una superficie limitada, siempre es un compromiso en términos de inclusividad universal: un entrepiso para dormir se adapta a personas jóvenes y móviles, pero crea una barrera para estudiantes con movilidad limitada."
+            },
+            {
+              "type": "header",
+              "content": "¿Qué, en tu opinión, distingue la educación arquitectónica ucraniana y a la joven comunidad arquitectónica en este momento?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Por encima de todo, una cohesión llamativa y una disposición a seguir generando ideas y creando algo nuevo, cualesquiera que sean las circunstancias externas. Al observar a los estudiantes de hoy, graduados, mis compañeros y colegas, veo una enorme resiliencia interior y coraje profesional. Nuestra generación se está formando en condiciones excepcionalmente difíciles, pero esto no ha roto nuestro interés en la profesión; al contrario, ha agudizado nuestro sentido de responsabilidad y la calidad de los proyectos. En este momento, la comunidad arquitectónica ucraniana está formando especialistas muy fuertes, competitivos y reflexivos que están listos para trabajar con los desafíos espaciales y sociales más complejos."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
+              "caption": "Graduados con sus tableros de proyectos.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Cuéntanos sobre algo que te haya inspirado recientemente: un proyecto, un lugar, una persona.",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Para mí la música, el cine y la fotografía no son solo una fuente de emoción sino una verdadera base para decisiones arquitectónicas. Cualquier trabajo creativo a tu alrededor puede convertirse en un impulso inesperado para un espacio. Un ejemplo reciente fue el concepto de uno de mis proyectos de maestría, inspirado en el álbum de Ariana Grande y en la película del mismo nombre, Eternal Sunshine of the Spotless Mind. Realmente me encanta ese proceso, cuando una pasión personal sincera se convierte en una idea arquitectónica poco convencional."
+            },
+            {
+              "type": "header",
+              "content": "¿Cómo ves tu carrera arquitectónica desde aquí?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Definitivamente veo mi desarrollo futuro dentro de la comunidad arquitectónica ucraniana. Quiero crear, reconstruir y hacer todo lo posible para que el espacio en nuestras ciudades natales sea inspirador, vibrante y seguro para las personas. Me importa invertir mi experiencia y visión en un entorno que realmente importa y necesita un cambio real aquí y ahora."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqcksjlhy9h.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqddv13xv8d.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eq301oe6fph.jpg"
+              ],
+              "caption": "Diana Aleshchenko con su trabajo."
+            },
+            {
+              "type": "encabezado",
+              "content": "¿Qué consejo te darías al comienzo de tus estudios?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Sigue entrenando tu ojo, no te detengas en la primera opción exitosa y sigue generando, porque las mejores soluciones a menudo aparecen después de que pensaste que la búsqueda había terminado. Y un consejo puramente práctico: pasa a las herramientas digitales y gráficos por computadora lo antes posible, y sigue descubriendo las nuevas funciones y trucos del software. Cuanto más libre manejes el software, más precisamente y rápidamente podrás realizar cualquier idea espacial."
+            },
+            {
+              "type": "texto",
+              "content": "<i>Visualizaciones y dibujos: Diana Aleshchenko. Entrevista realizada por escrito para EPRIS Journal, septiembre de 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:38:39.469Z"
         }
       ],
       "reviews": [
