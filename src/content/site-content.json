@@ -8771,12 +8771,12 @@
       "role": "Author",
       "imageSeed": "",
       "showCover": true,
-      "draft": true,
+      "draft": false,
       "order": 0,
       "authorId": "author-1784732936927-kw554",
       "title": "Diana Aleshchenko: Safety Comes From Openness",
       "author": "Viacheslav Munister & Diana Aleshchenko",
-      "date": "September 15, 2026",
+      "date": "September 17, 2026",
       "excerpt": "A new KNUBA graduate on a rehabilitation centre without right angles, a student campus for wartime Kharkiv, and a courtyard that keeps the memory of July 1917 inside a railway hub.",
       "category": "interview",
       "subcategory": "Interview",
@@ -9052,19 +9052,20 @@
           "content": "<i>Visualisations and drawings: Diana Aleshchenko. Interview conducted in writing for EPRIS Journal, September 2026.</i>"
         }
       ],
-      "updatedAt": "2026-09-15T08:33:16.438Z"
+      "publishAt": "2026-09-17T01:00:00.000Z",
+      "updatedAt": "2026-09-15T08:47:42.459Z"
     },
     {
       "id": 40,
       "role": "Author",
       "imageSeed": "",
       "showCover": true,
-      "draft": true,
+      "draft": false,
       "order": 0,
       "authorId": "author-1784732936927-kw554",
       "title": "Oksana Dzhuman: A Self-Portrait in 5,500 Sticks",
       "author": "Viacheslav Munister & Oksana Dzhuman",
-      "date": "September 15, 2026",
+      "date": "September 16, 2026",
       "excerpt": "The Ukrainian artist, now based in Valencia, on turning used tobacco sticks into mosaic portraits, painting every one by hand, and the first time strangers saw the work up close at Russafa Art.",
       "category": "interview",
       "subcategory": "Interview",
@@ -9371,7 +9372,8 @@
           "content": "<i>Photographs courtesy of Oksana Dzhuman. Interview conducted in writing for EPRIS Journal, September 2026.</i>"
         }
       ],
-      "updatedAt": "2026-09-15T08:33:20.769Z"
+      "publishAt": "2026-09-16T01:00:00.000Z",
+      "updatedAt": "2026-09-15T08:47:39.983Z"
     }
   ],
   "reviews": [
@@ -24142,12 +24144,12 @@
           "role": "Автор",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Diana Aleshchenko: Безпека походить від відкритості",
           "author": "Viacheslav Munister & Diana Aleshchenko",
-          "date": "15 вересня 2026",
+          "date": "17 вересня 2026",
           "excerpt": "Новий випускник KNUBA про реабілітаційний центр без правих кутів, студентський кампус для воєнного Харкова та двір, що зберігає пам’ять про липень 1917 року всередині залізничного вузла.",
           "category": "інтерв’ю",
           "subcategory": "Інтерв’ю",
@@ -24423,19 +24425,20 @@
               "content": "<i>Візуалізації та малюнки: Diana Aleshchenko. Інтерв’ю проведено у письмовій формі для EPRIS Journal, вересень 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:41:21.580Z"
+          "publishAt": "2026-09-17T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:47:43.879Z"
         },
         {
           "id": 40,
           "role": "Автор",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Оксана Джуман: автопортрет у 5500 паличках",
           "author": "Viacheslav Munister & Oksana Dzhuman",
-          "date": "15 вересня 2026",
+          "date": "16 вересня 2026",
           "excerpt": "Українська художниця, тепер базується у Валенсії, про перетворення використаних тютюнових паличок у мозаїчні портрети, малювання кожної вручну, і перший раз незнайомці побачили роботу зблизька у Russafa Art.",
           "category": "інтерв’ю",
           "subcategory": "Інтерв’ю",
@@ -24742,7 +24745,8 @@
               "content": "<i>Фотографії надані Оксаною Джуман. Інтерв’ю проведено у письмовій формі для журналу EPRIS, вересень 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:46:20.905Z"
+          "publishAt": "2026-09-16T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:47:41.403Z"
         }
       ],
       "reviews": [
