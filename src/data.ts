@@ -1476,6 +1476,13 @@ export function getAllIssues(): Issue[] {
 /**
  * Returns the issue to show by default: the published one, or the most
  * recent one if none is marked published.
+ *
+ * More than one issue can carry status "published" at once (the admin panel
+ * doesn't enforce exclusivity), and .find() used to just grab whichever one
+ * happened to sit first in the array — meaning the oldest published issue
+ * could silently outrank a newer one published the same day. Picking the
+ * highest id among the published ones instead always favours the
+ * most-recently-created issue, since ids are assigned in creation order.
  */
 export function getLiveIssue(): Issue {
   const issues = getAllIssues();
@@ -1483,7 +1490,11 @@ export function getLiveIssue(): Issue {
     const target = issues.find((i) => i.id === previewIssueId);
     if (target) return target;
   }
-  return issues.find((i) => i.status === 'published') || issues[issues.length - 1] || DEFAULT_ISSUE;
+  const published = issues.filter((i) => i.status === 'published');
+  if (published.length) {
+    return published.reduce((latest, i) => (i.id > latest.id ? i : latest), published[0]);
+  }
+  return issues[issues.length - 1] || DEFAULT_ISSUE;
 }
 
 /**
