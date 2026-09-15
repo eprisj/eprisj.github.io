@@ -53930,6 +53930,325 @@
             }
           ],
           "updatedAt": "2026-09-15T08:39:29.603Z"
+        },
+        {
+          "id": 40,
+          "role": "Autore",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Oksana Dzhuman: Un autoritratto in 5.500 stecche",
+          "author": "Viacheslav Munister & Oksana Dzhuman",
+          "date": "15 settembre 2026",
+          "excerpt": "L'artista ucraina, ora con sede a Valencia, sulla trasformazione delle stecche di tabacco usate in ritratti a mosaico, dipingendo ognuna a mano, e la prima volta che gli sconosciuti hanno visto l'opera da vicino a Russafa Art.",
+          "category": "intervista",
+          "subcategory": "Intervista",
+          "tags": [
+            "Intervista",
+            "arte",
+            "mosaico",
+            "Valencia",
+            "Spagna",
+            "Ucraina"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "previewToken": "g4zlDeB7WEtiywVa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Oksana Dzhuman si è formata come interior designer, poi ha studiato graphic design, e ha trascorso diversi anni come tatuatrice. Oggi vive a Valencia e lavora come artista, e il materiale a cui torna più spesso è uno che nessun altro voleva: bastoncini di tabacco usati, disinfettati, dipinti a mano uno alla volta e inseriti in grandi ritratti a mosaico."
+            },
+            {
+              "type": "text",
+              "content": "La serie è iniziata alla fine del 2024 con una piccola scatola sul suo tavolo. La sua opera più grande finora, un autoritratto, ne contiene 5.500. Nel 2026 i mosaici sono stati mostrati pubblicamente per la prima volta, a Russafa Art a Valencia. EPRIS Journal ha parlato con lei del lungo percorso verso questo materiale, del processo dietro a un singolo ritratto, e del dipinto che chiama La Guerra."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+              "caption": "Oksana Dzhuman con uno dei suoi mosaici.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Hai studiato come interior designer, poi hai studiato graphic design, e oggi lavori come artista a Valencia. Come hanno plasmato queste diverse tappe di studio ed esperienza il modo in cui vedi composizione, forma e spazio nel tuo lavoro?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Onestamente, non credo che sia stata la mia educazione a plasmare il modo in cui vedo composizione, forma e spazio oggi. All'università ero uno studente piuttosto poco serio: mi sono reso conto abbastanza rapidamente che il design d'interni in sé non mi interessava davvero, e se un compito non mi coinvolgeva, lo facevo semplicemente perché dovevo farlo."
+            },
+            {
+              "type": "text",
+              "content": "Ma alcune cose le amavo davvero. Amavo disegnare, inventare, lavorare con il colore e fare cose con le mani. Un compito in particolare mi è rimasto impresso: dovevamo tingere la carta da soli in diverse tonalità, tagliarla in piccoli quadrati e rettangoli e assemblare un'immagine da essi. Quel processo mi ha davvero affascinato. Solo ora realizzo quanto fosse vicino a quello che faccio oggi, solo con un materiale completamente diverso."
+            },
+            {
+              "type": "text",
+              "content": "Più tardi sono andato a studiare graphic design. Quello faceva già parte della ricerca di ciò che volevo fare, ma alla fine anche quello non era il mio percorso. Dopo sono passato al tatuaggio e ho lavorato in quel campo per diversi anni. Penso che quell'esperienza mi abbia influenzato molto più profondamente. Il tatuaggio mi ha sicuramente insegnato pazienza, attenzione ai dettagli e come lavorare con la composizione."
+            },
+            {
+              "type": "header",
+              "content": "Guardando indietro, il tuo percorso nell'arte si legge come diversi capitoli: disegno, tatuaggio e ora ritratti da materiali riciclati. Come colleghi questi capitoli in una sola storia per te?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Per molto tempo non l'ho vista come una storia affatto. Cercavo costantemente qualcosa di nuovo: potevo immergermi in una cosa, poi passare a qualcosa di completamente diverso, e dopo un po' tornare di nuovo a qualcosa."
+            },
+            {
+              "type": "text",
+              "content": "Solo quando sono apparsi i mosaici ho iniziato a guardare indietro e a notare cose che si ripetono. Ho sempre amato i dettagli, il lavoro manuale lungo, il colore e il processo stesso, quando un intero emerge gradualmente da elementi separati."
+            },
+            {
+              "type": "text",
+              "content": "E quella spinta è apparsa anche prima dell'università. A scuola, ricordo di aver passato una notte intera a coprire il mio telefono a mano con centinaia di minuscoli strass, inventando il motivo mentre andavo e senza notare il tempo affatto. Più tardi il telefono è stato, opportunamente, rubato. Forse tutto quello scintillio ha fatto il suo lavoro dopo tutto."
+            },
+            {
+              "type": "text",
+              "content": "Quindi ora lo vedo tutto come un percorso piuttosto caotico, in cui solo dopo anni ho iniziato ad ascoltare di più me stesso e a capire cosa amo davvero."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+              "caption": "Il telefono che ha coperto di strass in una notte come una studentessa.",
+              "align": "centro"
+            },
+            {
+              "type": "intestazione",
+              "content": "Ricordi il momento in cui hai pensato per la prima volta che un comune bastoncino usato poteva diventare qualcosa di più di spazzatura? Cosa ti ha colpito allora?",
+              "level": 3
+            },
+            {
+              "type": "testo",
+              "content": "Tutto è iniziato alla fine del 2024, sfortunatamente, con il fumo. Ho messo fuori una piccola scatola dove ho iniziato a raccogliere bastoncini usati, ed è stato allora che ho iniziato a notare quanti ce ne fossero. Quando non si tratta di uno o due bastoncini che si gettano semplicemente via, ma di quanti si accumulano in pochi giorni, si arriva a una consapevolezza piuttosto sgradevole della scala della propria abitudine."
+            },
+            {
+              "type": "testo",
+              "content": "Quella stessa sera ho iniziato a guardare i bastoncini stessi, e a un certo punto qualcosa è scattato: e se provassi a farne qualcosa? L'idea è arrivata molto improvvisamente, letteralmente come una lampadina sopra la testa. Sono rifiuti, ce ne sono molti, sono piccoli, leggeri e della stessa forma. Ho immediatamente voluto sapere se tutto questo potesse essere trasformato in un materiale con cui lavorare."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+              "caption": "La prima scatola di bastoncini usati.",
+              "align": "centro"
+            },
+            {
+              "type": "intestazione",
+              "content": "All'inizio i tuoi lavori erano fatti solo con i tuoi bastoncini, ma col tempo altre persone hanno iniziato a unirsi al progetto. Come è successo in modo naturale, e cosa è cambiato per te personalmente quando il materiale ha smesso di essere solo tuo?",
+              "level": 3
+            },
+            {
+              "type": "testo",
+              "content": "Fino al 2026 ho usato solo i miei bastoncini, quindi raccogliere il materiale richiedeva molto tempo. La prima persona ad aiutarmi è stata una mia amica spagnola, e le sono molto grato per il supporto. Poi altre persone si sono gradualmente unite, e c'era visibilmente più materiale."
+            },
+            {
+              "type": "testo",
+              "content": "Più tardi ho pubblicato sui social media che stavo raccogliendo bastoncini usati per il mio lavoro, e inaspettatamente molte persone hanno risposto. Persone mi hanno anche dato interi cartoni di bastoncini nuovi. È cambiato molto il ritmo del lavoro: prima, dovevo aspettare mesi finché non si accumulava abbastanza materiale per un pezzo, e ora si possono raccogliere molte più migliaia di bastoncini molto più velocemente."
+            },
+            {
+              "type": "text",
+              "content": "E ora vedo le opere stesse un po' diversamente. Le guardo e capisco che non portano più solo il mio “DNA”. In un certo senso, molte persone partecipano alla realizzazione di ciascuna di esse, e sono molto grato a tutti coloro che mi aiutano a raccogliere materiale."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+              ],
+              "caption": "Il materiale arriva da amici e follower: pacchetti, borse e intere collezioni."
+            },
+            {
+              "type": "header",
+              "content": "Se prendiamo il nostro tempo e descriviamo l'intero viaggio di un'opera, dalla prima stecca al ritratto finito, quale parte del processo ti dà più piacere, e quale richiede più pazienza?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Tutto inizia con la raccolta. Poi arriva una preparazione piuttosto lunga: diverse fasi di disinfezione e trattamento contro l'odore."
+            },
+            {
+              "type": "text",
+              "content": "Mentre i bastoncini vengono trattati, preparo la tela in parallelo: faccio il layout e una mappa dei colori, così capisco quali tonalità mi serviranno e più o meno come sarà il lavoro."
+            },
+            {
+              "type": "text",
+              "content": "Poi tingo i bastoncini nelle tonalità di cui ho bisogno. Molte persone sono sorprese che dipingo ogni bastoncino a mano, ma per me questa è la parte più meditativa del processo. Dopo di che, inizia l'assemblaggio dell'immagine sulla tela."
+            },
+            {
+              "type": "text",
+              "content": "L'intero lavoro richiede pazienza, ma probabilmente la maggior parte del tempo viene dedicata alla preparazione del materiale. Ci vuole abbastanza tempo."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+              ],
+              "caption": "Dal materiale ordinato alle righe dipinte: fasi di un lavoro in corso."
+            },
+            {
+              "type": "header",
+              "content": "Hai assemblato il tuo autoritratto con 5.500 bastoncini dipinti; è l'opera più grande della serie. Se non è troppo personale una domanda: cosa hai provato mentre riconoscevi gradualmente il tuo volto in questa tecnica insolita?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Mentre lavoro, quasi non riesco a vedere l'immagine. Le tele sono grandi, e lavori con esse come puoi: di lato, dall'alto, a volte quasi sdraiato. Da vicino sembra tutto un insieme di sfumature separate, e l'immagine semplicemente non si compone. Puoi capire cosa sta emergendo solo facendo un passo indietro. Con l'autoritratto è stato ancora più difficile, perché è praticamente in bianco e nero."
+            },
+            {
+              "type": "text",
+              "content": "E quando l'opera è stata finita, le emozioni erano molto contrastanti. Ero felice di averla terminata, ero orgoglioso di me stesso, e allo stesso tempo volevo piangere e non mostrarlo a nessuno. Penso che la consapevolezza mi abbia colpito: questo è il mio volto, fatto di bastoncini che ho fumato io stesso. Tutto è iniziato con una piccola scatola che non conteneva nemmeno cinquanta bastoncini, e ora ce n'erano 5.500 di fronte a me."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+              "caption": "Autoritratto, 5.500 bastoncini dipinti a mano.",
+              "align": "center"
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+              ],
+              "caption": "Autoritratto, dettagli. Da vicino il volto si dissolve in sfumature separate."
+            },
+            {
+              "type": "intestazione",
+              "content": "Una delle tue opere si riferisce a Girl with a Pearl Earring di Vermeer, un'immagine molto riconoscibile. Cosa ti ha portato a questo ritratto in particolare, e il tuo rapporto con esso è cambiato mentre lavoravi su di esso?",
+              "level": 3
+            },
+            {
+              "type": "testo",
+              "content": "Mi era piaciuto molto Girl with a Pearl Earring per molto tempo. In Ucraina ho dipinto la mia versione con un gatto, e in Spagna l'immagine continuava a comparire ovunque. A un certo punto ho deciso che sarebbe stato il mio primo ritratto fatto di bastoncini. Un'immagine familiare, colori familiari."
+            },
+            {
+              "type": "testo",
+              "content": "Prima di lei avevo realizzato solo due opere di bastoncini, entrambe astratte e con una palette abbastanza semplice, quindi un ritratto con così tante sfumature è stato un grande passo per me."
+            },
+            {
+              "type": "text",
+              "content": "Quando ho finito il layout e mi sono reso conto di quanti sfumature e migliaia di bastoncini avrei dovuto dipingere a mano, ho pensato di aver sopravvalutato la mia forza. Ho anche considerato di lasciarlo come pixel colorati allungati. È rimasto in quello stato per molto tempo, fino a quando non mi sono convinto a finire ciò che avevo iniziato."
+            },
+            {
+              "type": "text",
+              "content": "Probabilmente è per questo che ho un amore speciale per questo lavoro. È stato il mio primo lavoro su una scala così grande e per così tanto tempo, e alla fine è diventato il mio preferito."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+              "caption": "Dopo Girl with a Pearl Earring di Vermeer, il suo primo ritratto fatto di bastoncini.",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+              "caption": "Girl with a Pearl Earring, dettaglio.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Oltre al mosaico, lavori ad olio, studi a grafite e alla serie Elongated Pixels. Senti queste lingue come voci diverse nella stessa conversazione, o ognuna ti porta da qualche altra parte completamente?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "In generale cerco di non dividere il mio lavoro in direzioni separate o di collegare tutto in una sola storia. Mi piace semplicemente passare da materiali e tecniche diverse. Posso finire un'opera con i bastoncini, riprendere l'acquerello o tornare agli oli, e poi tornare di nuovo ai bastoncini."
+            },
+            {
+              "type": "text",
+              "content": "A volte una cosa nasce direttamente da un'altra. Elongated Pixels, ad esempio, sono nati mentre lavoravo su Girl with a Pearl Earring. Nella fase di layout ho visto che l'immagine sembrava interessante anche senza i bastoncini, e più tardi ho realizzato Frida con questa tecnica."
+            },
+            {
+              "type": "text",
+              "content": "Ma sono ancora i bastoncini a cui torno sempre. In questo momento questo è il materiale e il processo che mi piace di più."
+            },
+            {
+              "type": "header",
+              "content": "Tra le tue opere c'è una tela chiamata La Guerra. Capisco che questo possa essere un soggetto difficile, quindi chiedo con attenzione: se ti senti a tuo agio a parlarne ora, cosa c'era dietro a questa opera?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Per me questa opera riguarda probabilmente il dolore che rimane dentro a causa della guerra. La vita continua, fai cose ordinarie, ma non va da nessuna parte."
+            },
+            {
+              "type": "text",
+              "content": "All'inizio volevo lasciare speranza in questa opera, il pensiero che dopo l'oscurità la luce arrivi sempre. Quella doveva essere il sole. Ma nel processo, invece di un raggio di luce, ha iniziato a sanguinare."
+            },
+            {
+              "type": "text",
+              "content": "Anche ora guardo questa opera e sento tutto stringersi dentro. Per me, La Guerra è probabilmente quella stessa ferita, quella che rimane dentro anche quando la vita intorno a te continua."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+              "caption": "La Guerra.",
+              "align": "center"
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+              ],
+              "caption": "La Guerra, dettagli."
+            },
+            {
+              "type": "header",
+              "content": "Nel 2026 le tue opere sono state mostrate al pubblico per la prima volta a Russafa Art a Valencia. Com'era quando le persone si sono fermate accanto ai tuoi mosaici e li hanno osservati di persona, invece che su uno schermo?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "A Russafa Art mi sono trovato a sentirmi un po' fuori luogo. C'era molta pittura intorno, e qui ero con i miei bastoni usati. Mi sono sentito a disagio, e allo stesso tempo sono stato felice di mostrarli finalmente, e spaventato: come avrebbe preso tutto questo la gente?"
+            },
+            {
+              "type": "text",
+              "content": "La parte più interessante è stata osservare le reazioni. Molte persone non capivano di cosa fossero fatte le opere. Alcuni indovinavano pastello o gesso, ma praticamente nessuno ha indovinato bastoncini usati."
+            },
+            {
+              "type": "text",
+              "content": "Le immagini stesse sono state interpretate in modi diversi. Girl with a Pearl Earring è stata riconosciuta immediatamente, perché quasi tutti conoscono quell'immagine. Il autoritratto è stato più difficile: le persone potevano guardarlo a lungo senza capire cosa fosse davanti a loro, ma non appena ho mostrato loro una fotografia, il ritratto diventava visibile."
+            },
+            {
+              "type": "text",
+              "content": "Per me è stata un'esperienza molto preziosa. Ho visto reazioni dal vivo alle mie opere, ho ricevuto molto supporto e ho incontrato nuove persone. È molto più facile per me creare opere che mostrarle e parlare di me stesso. Anche mantenere i social media non è facile per me, quindi partecipare a Russafa Art è stato un passo abbastanza grande. E sono molto grato a tutti coloro che mi hanno supportato."
+            },
+            {
+              "type": "header",
+              "content": "Permettimi un'ultima domanda, leggermente sognante: c'è un'immagine, un tema o un materiale che vorresti affrontare un giorno, ma per ora ti manca il coraggio o il tempo?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un giorno vorrei provare a creare un ritratto su larga scala con elementi molto più piccoli. Per ora la complessità, il numero di elementi e il tempo che ci vorrebbe mi spaventano un po'. Ma una volta, anche alcuni migliaia di bastoncini sembravano troppo complicati, e ora con ogni nuovo lavoro il processo diventa più chiaro e più preciso per me."
+            },
+            {
+              "type": "text",
+              "content": "In parallelo raccolgo vari materiali che avrebbero dovuto finire nella spazzatura ma hanno attirato la mia attenzione per qualche motivo. Non so ancora cosa diventeranno, o quando. Le mie idee di solito appaiono abbastanza inaspettatamente."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+              ],
+              "caption": "Nel studio con i ritratti."
+            },
+            {
+              "type": "text",
+              "content": "<i>Fotografie a cura di Oksana Dzhuman. Intervista condotta per iscritto per EPRIS Journal, settembre 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:44:37.394Z"
         }
       ],
       "reviews": [
