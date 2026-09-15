@@ -39489,12 +39489,12 @@
           "role": "Autor",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Diana Aleshchenko: La seguridad proviene de la apertura",
           "author": "Viacheslav Munister & Diana Aleshchenko",
-          "date": "15 de septiembre de 2026",
+          "date": "17 de septiembre de 2026",
           "excerpt": "Una nueva graduada de KNUBA en un centro de rehabilitación sin ángulos rectos, un campus estudiantil para el Kharkiv en tiempos de guerra, y un patio que mantiene la memoria de julio de 1917 dentro de un centro ferroviario.",
           "category": "entrevista",
           "subcategory": "Entrevista",
@@ -39515,7 +39515,7 @@
             },
             {
               "type": "texto",
-              "content": "Lo que los conecta es una insistencia en que cada decisión formal debe ganar su lugar. Las paredes redondeadas en su centro de rehabilitación son sobre sillas de ruedas y ansiedad antes que sobre suavidad; las persianas en su fachada son sobre quién puede ver a quién. La revista EPRIS le preguntó sobre el razonamiento detrás de estos proyectos, y sobre qué significa diseñar para las ciudades ucranianas ahora."
+              "content": "Lo que los conecta es una insistencia en que cada decisión formal debe ganarse su lugar. Las paredes redondeadas en su centro de rehabilitación son sobre sillas de ruedas y ansiedad antes que sobre suavidad; las persianas en su fachada son sobre quién puede ver a quién. La revista EPRIS le preguntó sobre el razonamiento detrás de estos proyectos, y sobre qué significa diseñar para las ciudades ucranianas ahora."
             },
             {
               "type": "imagen",
@@ -39525,7 +39525,7 @@
             },
             {
               "type": "encabezado",
-              "content": "Cuéntanos un poco sobre ti: de dónde eres, dónde estudiaste, y cómo llegaste a la arquitectura?",
+              "content": "Cuéntanos un poco sobre ti: de dónde eres, dónde estudiaste y cómo llegaste a la arquitectura?",
               "level": 3
             },
             {
@@ -39563,7 +39563,7 @@
             },
             {
               "type": "texto",
-              "content": "En primer lugar, las paredes lisas, redondeadas y radiales son mucho más cómodas de recorrer para una persona en silla de ruedas o con una prótesis, donde cada esquina es un posible obstáculo. Dadas las características de la instalación y después de analizar planos típicos de hospitales con sus esquinas de 90 grados, también tuvimos en cuenta el factor psicoemocional. Para una persona con trastorno de estrés agudo o PTSD, que alguien aparezca de repente alrededor de una esquina se convierte en un desencadenante adicional de ansiedad."
+              "content": "En primer lugar, las paredes lisas, redondeadas y radiales son mucho más cómodas de recorrer para una persona en silla de ruedas o con una prótesis, donde cada esquina es un posible obstáculo. Dadas las características de la instalación, y después de analizar planos típicos de hospitales con sus esquinas de 90 grados, también tuvimos en cuenta el factor psicoemocional. Para una persona con trastorno de estrés agudo o TEPT, que alguien aparezca de repente de una esquina se convierte en un desencadenante adicional de ansiedad."
             },
             {
               "type": "imagen",
@@ -39578,7 +39578,7 @@
             },
             {
               "type": "texto",
-              "content": "Desde el principio tuvimos la intención de hacer balcones abiertos, para que un paciente pudiera tomar aire fresco sin salir de su propia habitación. Pero tras consultas con especialistas quedó claro que para personas con trauma psicológico esto es una solución peligrosa. Así que el equipo realizó una lluvia de ideas, buscando una forma de mantener la idea original, el contacto con el aire y el bosque, mientras se hacía completamente segura. Probamos acristalamiento completo y persianas normales, pero o bien creaban la sensación de una celda cerrada o bloqueaban completamente la vista de la naturaleza. Las persianas giratorias en ángulo resultaron ser la mejor respuesta. Ofrecen la privacidad necesaria desde la calle, dejan al paciente una vista directa del patio y el bosque de pinos, y al mismo tiempo permiten ventilar la habitación cómodamente sin sensación de aislamiento. Al final, esta medida de seguridad funcional se convirtió en la principal característica visual de toda la fachada."
+              "content": "Desde el principio tuvimos la intención de hacer balcones abiertos, para que un paciente pudiera tomar aire fresco sin salir de su propia habitación. Pero tras consultas con especialistas quedó claro que para personas con trauma psicológico esto es una solución peligrosa. Así que el equipo realizó una lluvia de ideas, buscando una forma de mantener la idea original, el contacto con el aire y el bosque, mientras se hacía completamente segura. Probamos acristalamiento completo y persianas comunes, pero o creaban la sensación de una celda cerrada o bloqueaban completamente la vista de la naturaleza. Las persianas giratorias en ángulo resultaron ser la mejor respuesta. Ofrecen la privacidad necesaria desde la calle, dejan al paciente una vista directa del patio y el bosque de pinos, y al mismo tiempo permiten ventilar la habitación cómodamente sin sensación de aislamiento. Al final, esta medida de seguridad funcional se convirtió en la principal característica visual de toda la fachada."
             },
             {
               "type": "encabezado",
@@ -39587,7 +39587,7 @@
             },
             {
               "type": "texto",
-              "content": "Por supuesto, las decisiones conceptuales iniciales fueron fuertemente influenciadas por las especificidades del edificio y la investigación sobre sus futuros usuarios. Analizamos diferentes grupos en detalle, sus necesidades particulares y la práctica real de cómo se disponen dichas instalaciones. Durante una de las consultas pudimos hablar con una persona que había creado y mejorado centros de rehabilitación en la práctica. La principal percepción de esa conversación fue una comprensión del estado psicológico de los pacientes y las especificidades de su seguridad, y como resultado abandonamos por completo los balcones abiertos. Para una vivienda común o un hotel, un balcón parece una elección natural, pero para las personas que se someten a rehabilitación después de lesiones graves, los espacios abiertos en voladizo crean ansiedad y riesgo innecesarios."
+              "content": "Por supuesto, las decisiones conceptuales iniciales fueron fuertemente influenciadas por las especificidades del edificio y la investigación sobre sus futuros usuarios. Analizamos diferentes grupos en detalle, sus necesidades particulares y la práctica real de cómo se disponen dichas instalaciones. Durante una de las consultas pudimos hablar con una persona que había creado y mejorado centros de rehabilitación en la práctica. La principal percepción de esa conversación fue una comprensión del estado psicológico de los pacientes y las especificidades de su seguridad, y como resultado abandonamos por completo los balcones abiertos. Para una vivienda común o un hotel, un balcón parece una elección natural, pero para las personas que se someten a rehabilitación después de lesiones graves, los espacios en voladizo abiertos generan ansiedad y riesgo innecesarios."
             },
             {
               "type": "encabezado",
@@ -39596,12 +39596,12 @@
             },
             {
               "type": "texto",
-              "content": "El dormitorio con pasillo tradicional está completamente desactualizado y no ofrece a los jóvenes de hoy una nueva experiencia espacial. Encierra a las personas en pasillos estrechos y oscuros, quita el equilibrio entre socializar y la privacidad, y parece desconectado de la vida. Los pisos bajos activos han sido durante mucho tiempo una necesidad absoluta en una buena vivienda, y en un campus estudiantil son aún más críticos. Aquí se forma un entorno público abierto, con espacios de coworking, áreas compartidas y servicios, donde los estudiantes pueden hacer fácilmente nuevos contactos, conocer compañeros, intercambiar ideas y encontrar personas afines. Los pisos residenciales superiores, por su parte, son modulares, de modo que cada estudiante tenga un lugar personal adecuado para estudiar con concentración y descansar. Esta tipología híbrida funciona como una convivencia estudiantil activa: socialización activa e integración en la vida de la ciudad abajo, y un espacio privado protegido y ergonómico arriba."
+              "content": "El dormitorio con pasillo tradicional está completamente desactualizado y no ofrece a los jóvenes de hoy una nueva experiencia espacial. Encierra a las personas en pasillos estrechos y oscuros, elimina el equilibrio entre socializar y la privacidad, y se siente desconectado de la vida. Los pisos bajos activos han sido durante mucho tiempo una necesidad absoluta en una buena vivienda, y en un campus estudiantil son aún más críticos. Aquí se forma un entorno público abierto, con espacios de coworking, áreas compartidas y servicios, donde los estudiantes pueden hacer fácilmente nuevos contactos, conocer a sus compañeros, intercambiar ideas y encontrar personas afines. Los pisos residenciales superiores, por su parte, son modulares, de modo que cada estudiante tenga un lugar personal adecuado para el estudio enfocado y el descanso. Esta tipología híbrida funciona como una convivencia estudiantil activa: socialización activa e integración en la vida de la ciudad abajo, y un espacio privado protegido y ergonómico arriba."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mu2eq4v6xtka94.jpg",
-              "caption": "Campus y vivienda estudiantil en Kharkiv, proyecto de maestría: una planta baja abierta y activa con vivienda modular arriba.",
+              "caption": "Campus y vivienda estudiantil en Kharkiv, proyecto de maestría: un piso bajo abierto y activo con vivienda modular arriba.",
               "align": "centro"
             },
             {
@@ -39617,7 +39617,7 @@
             },
             {
               "type": "texto",
-              "content": "El equilibrio entre vida compartida y privacidad comienza con entender que una persona necesita su propio territorio psicológico, donde su mirada y espacio personal no se crucen constantemente con los de otros. En una residencia típica, las camas están en un mismo plano horizontal, por lo que una persona siempre está en el campo de visión de su vecino, y eso rápidamente te agota. La zonificación vertical y el altillo para dormir, que es la firma del diseño de la residencia, resuelven este problema. Elevar la cama a un segundo nivel crea una cápsula individual de tranquilidad donde puedes desconectarte completamente de lo que sucede en la habitación. En una habitación individual, esto libera el nivel inferior para un espacio de trabajo completo y para vivir sin desorden, y en un doble, proporciona la misma privacidad vertical, para que los compañeros de cuarto no se molesten incluso dentro de un mismo espacio."
+              "content": "El equilibrio entre vida compartida y privacidad comienza con entender que una persona necesita su propio territorio psicológico, donde su mirada y su espacio personal no se crucen constantemente con los de otros. En una residencia típica, las camas están en un mismo plano horizontal, por lo que una persona siempre está en el campo de visión de su vecino, y eso rápidamente te agota. La zonificación vertical y el altillo para dormir, que es la firma del diseño de la residencia, resuelven este problema. Elevar la cama a un segundo nivel crea una cápsula individual de tranquilidad donde puedes desconectarte completamente de lo que sucede en la habitación. En una habitación individual, esto libera el nivel inferior para un espacio de trabajo completo y para vivir sin desorden, y en un doble, proporciona la misma privacidad vertical, para que los compañeros de cuarto no se molesten incluso dentro de un mismo espacio."
             },
             {
               "type": "galería",
@@ -39634,7 +39634,7 @@
             },
             {
               "type": "text",
-              "content": "Sin duda, la realidad de la guerra influyó significativamente en el trabajo, tanto en el significado como en la planificación. A pesar de los bombardeos constantes y el peligro, Kharkiv sigue siendo con confianza una de las tres principales ciudades de Ucrania en número de solicitantes universitarios, lo que solo confirma lo relevante que es la elección del sitio. La ciudad vive, y los jóvenes quieren estudiar aquí. Pero diseñar para un contexto así usando los enfoques antiguos ya no es posible. La seguridad se convirtió en el factor definitorio para toda la estructura del complejo, por lo que una parte obligatoria y fundamental del proyecto de maestría fue diseñar y calcular un refugio espacioso. No solo un sótano técnico para marcar una casilla, sino un espacio subterráneo completo integrado en las funciones del campus."
+              "content": "Sin duda, la realidad de la guerra influyó significativamente en el trabajo, tanto en el significado como en la planificación. A pesar de los bombardeos constantes y el peligro, Kharkiv sigue siendo, con confianza, una de las tres principales ciudades de Ucrania en número de solicitantes universitarios, lo que solo confirma cuán relevante es la elección del sitio. La ciudad vive, y los jóvenes quieren estudiar aquí. Pero diseñar para un contexto así usando los enfoques antiguos ya no es posible. La seguridad se convirtió en el factor determinante para toda la estructura del complejo, por lo que una parte obligatoria y fundamental del proyecto de maestría fue diseñar y calcular un refugio espacioso. No solo un sótano técnico para marcar una casilla, sino un espacio subterráneo completo integrado en las funciones del campus."
             },
             {
               "type": "gallery",
@@ -39672,26 +39672,26 @@
             },
             {
               "type": "texto",
-              "content": "Trabajar con un tema así dentro de un centro de transporte es una tarea extremadamente compleja y responsable. Una estación vive del tránsito, el bullicio y la velocidad. Por eso, la memoria de estos eventos y la idea de resiliencia están integradas en el corazón del complejo: el patio interior con el invernadero y la estructura rítmica de las pérgolas. Este núcleo verde es el principal amortiguador espacial y acústico. Al venir aquí desde un tránsito dinámico, una persona se encuentra en un espacio protegido de calma donde el estruendo del ferrocarril se corta. El invernadero y la naturaleza viva bajo la pérgola hablan de memoria en el lenguaje de la vida, la luz y la renovación, dando a los pasajeros la opción de descansar del ruido de la ciudad, de reducir la velocidad o de reflexionar sobre el peso histórico del lugar bajo sus pies."
+              "content": "Trabajar con un tema así dentro de un centro de transporte es una tarea extremadamente compleja y responsable. Una estación vive por el tránsito, el bullicio y la velocidad. Así que la memoria de estos eventos y la idea de resiliencia están integradas en el corazón del complejo: el patio interior con el invernadero y la estructura rítmica de las pérgolas. Este núcleo verde es el principal amortiguador espacial y acústico. Al venir aquí desde un tránsito dinámico, una persona se encuentra en un espacio protegido de calma donde el estruendo del ferrocarril se corta. El invernadero y la naturaleza viva bajo la pérgola hablan de memoria en el lenguaje de la vida, la luz y la renovación, dando a los pasajeros la opción de descansar del ruido de la ciudad, de reducir la velocidad o de reflexionar sobre el peso histórico del lugar bajo sus pies."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
-              "caption": "Axonometría del complejo junto a la vía férrea, con el patio interior en su centro.",
+              "caption": "Axonometría del complejo junto a la vía del ferrocarril, con el patio interior en su centro.",
               "align": "centro"
             },
             {
-              "type": "encabezado",
-              "content": "La mayoría de tus proyectos tienen gráficos muy expresivos y renders atmosféricos. ¿Dónde, para ti, está la línea entre mostrar la arquitectura de manera convincente y dejar que la imagen se convierta en una obra por derecho propio?",
+              "type": "cabecera",
+              "content": "La mayoría de tus proyectos tienen gráficos muy expresivos y renders atmosféricos. ¿Dónde, para ti, está la línea entre mostrar la arquitectura de manera convincente y dejar que la imagen se convierta en una obra en sí misma?",
               "level": 3
             },
             {
               "type": "texto",
-              "content": "Para mí, la visualización arquitectónica es ante todo arte fotográfico. No la veo como gráficos por computadora solo por efectos especiales, sino como lo hace un fotógrafo que llega a un edificio y busca el ángulo correcto, siente la luz, el aire, la tactilidad de los materiales y el estado de ánimo."
+              "content": "Para mí, la visualización arquitectónica es ante todo arte fotográfico. No la veo como gráficos por computadora por el simple hecho de efectos especiales, sino como lo hace un fotógrafo que llega a un edificio y busca el ángulo correcto, siente la luz, el aire, la tactilidad de los materiales y el estado de ánimo."
             },
             {
               "type": "texto",
-              "content": "La línea entre ser convincente y una imagen que existe por sí misma se encuentra donde comienza la honestidad hacia el proyecto. Una fotografía puede ser profunda, atmosférica y artística, pero su tarea es capturar y revelar el carácter real del entorno. Cuando una renderización funciona como un marco honesto de la vida de un edificio futuro, ayuda a una persona a sentir el espacio incluso antes de que esté construido."
+              "content": "La línea entre ser convincente y una imagen que existe por sí misma se encuentra donde comienza la honestidad hacia el proyecto. Una fotografía puede ser profunda, atmosférica y artística, pero su tarea es capturar y revelar el carácter real del entorno."
             },
             {
               "type": "galería",
@@ -39726,7 +39726,7 @@
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
-              "caption": "Graduados con sus tableros de proyectos.",
+              "caption": "Graduados con sus tableros de proyecto.",
               "align": "center"
             },
             {
@@ -39758,7 +39758,7 @@
             },
             {
               "type": "encabezado",
-              "content": "¿Qué consejo te darías al comienzo de tus estudios?",
+              "content": "¿Qué consejo te darías al inicio de tus estudios?",
               "level": 3
             },
             {
@@ -39770,7 +39770,8 @@
               "content": "<i>Visualizaciones y dibujos: Diana Aleshchenko. Entrevista realizada por escrito para EPRIS Journal, septiembre de 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:38:39.469Z"
+          "publishAt": "2026-09-17T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:53:21.164Z"
         },
         {
           "id": 40,
