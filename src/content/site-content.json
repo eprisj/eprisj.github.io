@@ -39447,6 +39447,325 @@
             }
           ],
           "updatedAt": "2026-09-15T08:38:39.469Z"
+        },
+        {
+          "id": 40,
+          "role": "Autor",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Oksana Dzhuman: Un autorretrato en 5.500 palillos",
+          "author": "Viacheslav Munister & Oksana Dzhuman",
+          "date": "15 de septiembre de 2026",
+          "excerpt": "La artista ucraniana, ahora radicada en Valencia, sobre convertir palillos de tabaco usados en retratos de mosaico, pintar cada uno a mano, y la primera vez que desconocidos vieron la obra de cerca en Russafa Art.",
+          "category": "entrevista",
+          "subcategory": "Entrevista",
+          "tags": [
+            "Entrevista",
+            "arte",
+            "mosaico",
+            "Valencia",
+            "España",
+            "Ucrania"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "previewToken": "g4zlDeB7WEtiywVa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Oksana Dzhuman se formó como diseñadora de interiores, luego estudió diseño gráfico, y luego pasó varios años como artista del tatuaje. Hoy vive en Valencia y trabaja como artista, y el material al que sigue regresando es uno que nadie más quería: palitos de tabaco usados, desinfectados, pintados a mano uno por uno y colocados en grandes retratos de mosaico."
+            },
+            {
+              "type": "text",
+              "content": "La serie comenzó a finales de 2024 con una pequeña caja en su mesa. Su obra más grande hasta ahora, un autorretrato, contiene 5,500 de ellos. En 2026, los mosaicos se mostraron públicamente por primera vez, en Russafa Art en Valencia. La revista EPRIS habló con ella sobre el largo camino hacia este material, el proceso detrás de un solo retrato, y la pintura que ella llama La Guerra."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+              "caption": "Oksana Dzhuman con uno de sus mosaicos.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Te formaste como diseñadora de interiores, luego estudiaste diseño gráfico, y hoy trabajas como artista en Valencia. ¿Cómo influyeron estas diferentes etapas de estudio y experiencia en la forma en que ves la composición, la forma y el espacio en tu trabajo?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Para ser honesto, no creo que haya sido mi educación la que moldeó la forma en que veo la composición, la forma y el espacio hoy en día. En la universidad era un estudiante bastante poco serio: me di cuenta bastante rápido de que el diseño de interiores en sí mismo realmente no me interesaba, y si una tarea no me atrapaba, simplemente la hacía porque tenía que hacerse."
+            },
+            {
+              "type": "texto",
+              "content": "Pero algunas cosas las amaba genuinamente. Amaba dibujar, inventar, trabajar con color y hacer cosas con mis manos. Una tarea en particular se quedó conmigo: teníamos que teñir papel nosotros mismos en diferentes tonos, cortarlo en pequeños cuadrados y rectángulos y ensamblar una imagen con ellos. Ese proceso realmente me cautivó. Solo ahora me doy cuenta de lo cerca que estuvo de lo que hago hoy, solo con un material completamente diferente."
+            },
+            {
+              "type": "texto",
+              "content": "Luego fui a estudiar diseño gráfico. Eso ya formaba parte de la búsqueda de lo que quería hacer, pero al final eso tampoco era lo mío. Después de eso, llegué al tatuaje y trabajé en ese campo durante varios años. Creo que esa experiencia me influyó mucho más. El tatuaje definitivamente me enseñó paciencia, atención al detalle y cómo trabajar con la composición."
+            },
+            {
+              "type": "encabezado",
+              "content": "Mirando hacia atrás, tu camino en el arte parece leer como varios capítulos diferentes: dibujo, tatuaje y ahora retratos con materiales reciclados. ¿Cómo conectas estos capítulos en una sola historia para ti?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Durante mucho tiempo no lo vi como una historia en absoluto. Estaba constantemente probando algo nuevo: podía absorberme en una cosa, luego cambiar a algo completamente diferente, y después de un tiempo volver a algo otra vez."
+            },
+            {
+              "type": "texto",
+              "content": "Solo cuando aparecieron los mosaicos empecé a mirar hacia atrás y a notar cosas que se repiten. Siempre me han gustado los detalles, el trabajo manual largo, el color, y el proceso en sí, cuando un todo surge gradualmente de elementos separados."
+            },
+            {
+              "type": "texto",
+              "content": "Y esa atracción apareció incluso antes de la universidad. En la escuela, recuerdo pasar toda una noche cubriendo mi teléfono a mano con cientos de pequeños cristales de strass, inventando el patrón sobre la marcha y sin notar el tiempo en absoluto. Más tarde, el teléfono fue, apropiadamente, robado. Quizás todo ese brillo hizo su trabajo después de todo."
+            },
+            {
+              "type": "texto",
+              "content": "Así que ahora lo veo todo como un camino bastante caótico, en el que solo después de años empecé a escucharme más a mí mismo y a entender qué es lo que realmente amo."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+              "caption": "El teléfono que cubrió de strass en una noche como una escolar.",
+              "align": "centro"
+            },
+            {
+              "type": "encabezado",
+              "content": "¿Recuerdas el momento en que pensaste por primera vez que un palo usado ordinario podría convertirse en algo más que basura? ¿Qué llamó tu atención entonces?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Todo comenzó a finales de 2024, desafortunadamente, con fumar. Puse una pequeña caja donde empecé a recolectar palos usados, y fue entonces cuando comencé a notar cuántos había. Cuando no es uno o dos palos que simplemente tiras, sino cuántos se acumulan en solo unos días, llegas a una conciencia bastante desagradable de la escala de tu propio hábito."
+            },
+            {
+              "type": "texto",
+              "content": "Esa misma noche empecé a mirar los palos en sí, y en algún momento simplemente hizo clic: ¿y si intentara hacer algo con ellos? La idea surgió muy de repente, literalmente como una bombilla sobre mi cabeza. Son desechos, hay muchos, son pequeños, ligeros y de la misma forma. Inmediatamente quise saber si todo esto podría convertirse en un material con el que trabajar."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+              "caption": "La primera caja de palos usados.",
+              "align": "centro"
+            },
+            {
+              "type": "encabezado",
+              "content": "Al principio tus obras estaban hechas solo con tus propios palos, pero con el tiempo otras personas comenzaron a unirse al proyecto. ¿Cómo sucedió eso de manera natural, y qué cambió para ti personalmente cuando el material dejó de ser solo tuyo?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Hasta 2026 solo usé mis propios palos, por lo que recolectar material tomó mucho tiempo. La primera persona que me ayudó fue una amiga mía de España, y estoy muy agradecido con ella por el apoyo. Luego otras personas se unieron gradualmente, y hubo notablemente más material."
+            },
+            {
+              "type": "texto",
+              "content": "Luego publiqué en redes sociales que estaba recolectando palos usados para mi trabajo, y sorprendentemente muchas personas respondieron. Incluso me dieron cajas enteras de palos nuevos. Esto cambió mucho el ritmo del trabajo: antes, tenía que esperar meses hasta que se acumulaba suficiente material para una pieza, y ahora se pueden recolectar varios miles de palos mucho más rápido."
+            },
+            {
+              "type": "texto",
+              "content": "Y ahora veo las obras en sí un poco diferente. Las miro y entiendo que ya no llevan solo mi “ADN”. En cierto sentido, muchas personas participan en la creación de cada una de ellas, y estoy muy agradecido a todos los que me ayudan a recopilar material."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+              ],
+              "caption": "El material llega de amigos y seguidores: paquetes, bolsas y colecciones completas."
+            },
+            {
+              "type": "cabecera",
+              "content": "Si tomamos nuestro tiempo y describimos todo el recorrido de una obra, desde la primera rama hasta el retrato terminado, ¿qué parte del proceso te da más placer, y cuál requiere más paciencia?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Todo comienza con la recopilación. Luego viene una preparación bastante larga: varias etapas de desinfección y tratamiento contra el olor."
+            },
+            {
+              "type": "text",
+              "content": "Mientras las varillas están siendo tratadas, preparo el lienzo en paralelo: hago el diseño y un mapa de colores, así entiendo qué tonos necesitaré y aproximadamente cómo se verá la obra."
+            },
+            {
+              "type": "text",
+              "content": "Luego tiño las varillas en los tonos que necesito. Muchas personas se sorprenden de que pinte cada varilla a mano, pero para mí esta es la parte más meditativa del proceso. Después, comienza el ensamblaje de la imagen en el lienzo."
+            },
+            {
+              "type": "text",
+              "content": "Toda la obra requiere paciencia, pero probablemente lo que más lleva es preparar el material. Toma bastante tiempo."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+              ],
+              "caption": "De material ordenado a filas pintadas: etapas de una obra en progreso."
+            },
+            {
+              "type": "header",
+              "content": "Construiste tu autorretrato con 5,500 palitos pintados; es la obra más grande de la serie. Si no es una pregunta demasiado personal: ¿qué sentiste al reconocer gradualmente tu propia cara en esta técnica inusual?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Mientras trabajo, casi no puedo ver la imagen. Los lienzos son grandes, y trabajas con ellos como puedes: de lado, desde arriba, a veces casi acostado. De cerca todo parece un conjunto de tonos separados, y la imagen simplemente no se forma. Solo puedes entender lo que está emergiendo dando un paso atrás. Con el autorretrato fue aún más difícil, porque es prácticamente en blanco y negro."
+            },
+            {
+              "type": "text",
+              "content": "Y cuando la obra estuvo terminada, las emociones eran muy mezcladas. Me alegré de haberla terminado, estaba orgulloso de mí mismo, y al mismo tiempo quería llorar y no mostrárselo a nadie en absoluto. Creo que me golpeó la realización: esta es mi cara, hecha de palitos que fumé yo mismo. Todo comenzó con una pequeña caja que ni siquiera contenía cincuenta palitos, y ahora había 5,500 de ellos frente a mí."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+              "caption": "Autorretrato, 5,500 palitos pintados a mano.",
+              "align": "center"
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+              ],
+              "caption": "Autorretrato, detalles. De cerca la cara se disuelve en tonos separados."
+            },
+            {
+              "type": "encabezado",
+              "content": "Una de tus obras hace referencia a La joven de la perla de Vermeer, una imagen muy reconocible. ¿Qué te llevó a este retrato en particular, y cambió tu relación con él mientras trabajabas en ello?",
+              "level": 3
+            },
+            {
+              "type": "texto",
+              "content": "Me había gustado La joven de la perla durante mucho tiempo. En Ucrania pinté mi propia versión con un gato, y en España la imagen seguía apareciendo en todas partes. En algún momento decidí que sería mi primer retrato hecho con palitos. Una imagen familiar, colores familiares."
+            },
+            {
+              "type": "texto",
+              "content": "Antes de ella solo había hecho dos obras con palitos, ambas abstractas y con una paleta bastante simple, así que un retrato con tantos tonos fue un gran paso para mí."
+            },
+            {
+              "type": "texto",
+              "content": "Cuando terminé el diseño y me di cuenta de cuántos tonos y miles de palillos tendría que pintar a mano, pensé que había sobreestimado mi fuerza. Incluso consideré dejarlo como píxeles coloreados alargados. Se quedó en ese estado durante bastante tiempo, hasta que finalmente me convencí de terminar lo que había empezado."
+            },
+            {
+              "type": "texto",
+              "content": "Eso es probablemente la razón por la que tengo un amor especial por este trabajo. Fue mi primer trabajo en una escala tan grande y durante tanto tiempo, y al final se convirtió en mi favorito."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+              "caption": "Después de La joven de la perla de Vermeer, su primer retrato hecho con palillos.",
+              "align": "centro"
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+              "caption": "La joven de la perla, detalle.",
+              "align": "centro"
+            },
+            {
+              "type": "header",
+              "content": "Además de mosaico, trabajas en pintura al óleo, estudios de grafito y la serie Elongated Pixels. ¿Sientes que estos lenguajes son voces diferentes en la misma conversación, o cada uno te lleva a otro lugar completamente diferente?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "En general trato de no dividir mi trabajo en direcciones separadas ni de unir todo en una sola historia. Simplemente me gusta cambiar entre diferentes materiales y técnicas. Puedo terminar una obra con palillos, recoger acuarela o volver a los óleos, y luego regresar a los palillos otra vez."
+            },
+            {
+              "type": "text",
+              "content": "A veces una cosa crece directamente de otra. Elongated Pixels, por ejemplo, nació mientras trabajaba en Girl with a Pearl Earring. En la etapa de diseño vi que la imagen parecía interesante incluso sin los palillos, y más tarde hice Frida en esta técnica."
+            },
+            {
+              "type": "text",
+              "content": "Pero todavía son los palillos a los que sigo regresando. Ahora mismo este es el material y el proceso que más me gustan."
+            },
+            {
+              "type": "header",
+              "content": "Entre tus obras hay un lienzo llamado La Guerra. Entiendo que este puede ser un tema difícil, así que pregunto con cuidado: si te sientes cómodo hablando de ello ahora, ¿qué había detrás de esta obra?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Para mí, esta obra probablemente trata sobre el dolor que permanece dentro debido a la guerra. La vida continúa, haces cosas ordinarias, pero no va a ningún lado."
+            },
+            {
+              "type": "text",
+              "content": "Al principio quería dejar esperanza en esta obra, la idea de que después de la oscuridad siempre llega la luz. Eso estaba destinado a ser el sol. Pero en el proceso, en lugar de un rayo de luz, comenzó a sangrar."
+            },
+            {
+              "type": "text",
+              "content": "Incluso ahora, miro esta obra y siento que todo se aprieta por dentro. Para mí, La Guerra es probablemente esa misma herida, la que permanece dentro incluso cuando la vida a tu alrededor continúa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+              "caption": "La Guerra.",
+              "align": "center"
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+              ],
+              "caption": "La Guerra, detalles."
+            },
+            {
+              "type": "header",
+              "content": "En 2026 tus obras fueron mostradas al público por primera vez en Russafa Art en Valencia. ¿Cómo fue cuando la gente se paró junto a tus mosaicos y los miró en persona, en lugar de en una pantalla?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "En Russafa Art me encontré sintiéndome un poco fuera de lugar. Había mucha pintura por todas partes, y aquí estaba yo con mis palos usados. Me sentí incómodo, y al mismo tiempo me alegré de finalmente mostrarlos, y tuve miedo: ¿cómo lo tomaría la gente siquiera?"
+            },
+            {
+              "type": "text",
+              "content": "La parte más interesante fue observar las reacciones. Muchas personas no entendían de qué estaban hechas las obras. Algunos adivinaron pastel o tiza, pero prácticamente nadie adivinó palos usados."
+            },
+            {
+              "type": "text",
+              "content": "Las imágenes en sí también se interpretaron de diferentes maneras. La joven con un pendiente de perla fue reconocida inmediatamente, porque casi todos conocen esa imagen. El autorretrato fue más difícil: la gente podía mirarlo durante mucho tiempo sin entender qué había frente a ellos, pero en cuanto les mostré una fotografía, el retrato se volvió visible."
+            },
+            {
+              "type": "text",
+              "content": "Para mí fue una experiencia muy valiosa. Vi reacciones en vivo a mi trabajo, recibí mucho apoyo y conocí gente nueva. Es mucho más fácil para mí hacer obras que mostrarlas y hablar de mí mismo. Incluso mantener las redes sociales no es fácil para mí, así que participar en Russafa Art fue un paso bastante grande. Y estoy muy agradecido a todos los que me apoyaron."
+            },
+            {
+              "type": "header",
+              "content": "Permítame una última pregunta, ligeramente soñadora: ¿hay una imagen, un tema o un material que le gustaría abordar algún día, pero por ahora le falta el valor o el tiempo?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Un día me gustaría intentar hacer un retrato a gran escala con elementos mucho más pequeños. Por ahora, la complejidad, el número de elementos y el tiempo que tomaría me asustan un poco. Pero una vez, unos pocos miles de palos también parecían demasiado complicados, y ahora con cada nueva obra el proceso se vuelve más claro y más preciso para mí."
+            },
+            {
+              "type": "text",
+              "content": "En paralelo recolecto varios materiales que deberían haber terminado en la basura pero llamaron mi atención por alguna razón. Aún no sé qué serán, ni cuándo. Mis ideas suelen aparecer de manera bastante inesperada."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+              ],
+              "caption": "En el estudio con los retratos."
+            },
+            {
+              "type": "text",
+              "content": "<i>Fotografías cortesía de Oksana Dzhuman. Entrevista realizada por escrito para EPRIS Journal, septiembre de 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:43:49.830Z"
         }
       ],
       "reviews": [
