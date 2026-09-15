@@ -53973,12 +53973,12 @@
           "role": "Autore",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Diana Aleshchenko: La sicurezza deriva dall'apertura",
           "author": "Viacheslav Munister & Diana Aleshchenko",
-          "date": "15 settembre 2026",
+          "date": "17 settembre 2026",
           "excerpt": "Una nuova laureata KNUBA su un centro di riabilitazione senza angoli retti, un campus studentesco per Kharkiv durante la guerra, e un cortile che custodisce la memoria di luglio 1917 all'interno di un nodo ferroviario.",
           "category": "intervista",
           "subcategory": "Intervista",
@@ -54014,7 +54014,7 @@
             },
             {
               "type": "text",
-              "content": "Sono di Kyiv, e quest'anno ho conseguito la laurea magistrale in architettura e pianificazione urbana presso KNUBA a Kyiv. Non ho una storia unica su una rivelazione improvvisa durante l'infanzia dopo la quale ho deciso di legare la mia vita all'architettura. Come la vedo, il percorso si è formato abbastanza naturalmente e coerentemente: attraverso una catena di mie decisioni, un interesse che cresceva gradualmente per lo spazio, e eventi specifici della vita che passo dopo passo mi hanno portato dove sono ora."
+              "content": "Sono di Kyiv, e quest'anno ho conseguito la laurea magistrale in architettura e pianificazione urbana presso KNUBA a Kyiv. Non ho una storia unica su una rivelazione improvvisa dell'infanzia dopo la quale ho deciso di legare la mia vita all'architettura. Come la vedo, il percorso ha preso forma in modo abbastanza naturale e coerente: attraverso una catena delle mie decisioni, un interesse che cresceva gradualmente nello spazio, e eventi specifici della vita che passo dopo passo mi hanno portato dove sono ora."
             },
             {
               "type": "header",
@@ -54023,7 +54023,7 @@
             },
             {
               "type": "text",
-              "content": "Non c'era un singolo stimolo dell'infanzia che abbia deciso tutto. Era più una combinazione graduale di interessi per il disegno, la geometria e il lavoro creativo, che con l'età si sono semplicemente trasformati in una scelta consapevole della professione."
+              "content": "Non c'era un singolo stimolo dell'infanzia che decidesse tutto. Era più una combinazione graduale di interessi nel disegno, nella geometria e nel lavoro creativo, che con l'età si sono semplicemente trasformati in una scelta consapevole della professione."
             },
             {
               "type": "header",
@@ -54062,7 +54062,7 @@
             },
             {
               "type": "text",
-              "content": "Fin dall'inizio abbiamo intenzione di realizzare balconi aperti, in modo che un paziente possa prendere un po' d'aria fresca senza lasciare la propria stanza. Ma dopo consultazioni con specialisti è diventato chiaro che per le persone con traumi psicologici questa è una soluzione pericolosa. Così il team ha tenuto una sessione di brainstorming, cercando un modo per mantenere l'idea originale, il contatto con l'aria e la foresta, pur rendendola completamente sicura. Abbiamo testato vetrate complete e tapparelle ordinarie, ma o creavano la sensazione di una cella chiusa o bloccavano completamente la vista sulla natura. Le lamelle rotanti impostate ad angolo si sono rivelate la soluzione migliore. Offrono la privacy necessaria dalla strada, lasciano al paziente una vista diretta sul cortile e sulla pineta, e allo stesso tempo permettono di aerare la stanza comodamente senza senso di isolamento. Alla fine questa misura di sicurezza funzionale è diventata la principale caratteristica visiva dell'intera facciata."
+              "content": "Fin dall'inizio abbiamo intenzione di realizzare balconi aperti, in modo che un paziente possa prendere un po' d'aria fresca senza lasciare la propria stanza. Ma dopo consultazioni con specialisti è diventato chiaro che per le persone con traumi psicologici questa è una soluzione pericolosa. Così il team ha tenuto una sessione di brainstorming, cercando un modo per mantenere l'idea originale, il contatto con l'aria e la foresta, pur rendendola completamente sicura. Abbiamo testato vetrate complete e tapparelle ordinarie, ma o creavano la sensazione di una cella chiusa o bloccavano completamente la vista sulla natura. Le lamelle rotanti impostate ad angolo si sono rivelate la soluzione migliore. Offrono la privacy necessaria dalla strada, lasciano all'ospite una vista diretta sul cortile e sulla pineta, e allo stesso tempo permettono di aerare la stanza comodamente senza senso di isolamento. Alla fine questa misura di sicurezza funzionale è diventata la principale caratteristica visiva dell'intera facciata."
             },
             {
               "type": "header",
@@ -54080,7 +54080,7 @@
             },
             {
               "type": "text",
-              "content": "Il dormitorio a corridoio tradizionale è ormai superato e non offre ai giovani di oggi una nuova esperienza spaziale. Isola le persone in corridoi stretti e bui, toglie l'equilibrio tra socializzazione e privacy, e sembra tagliato fuori dalla vita. I piani terra attivi sono da tempo un requisito assoluto in un buon alloggio, e in un campus studentesco sono ancora più critici. Qui si forma un ambiente pubblico aperto, con spazi di coworking, aree condivise e servizi, dove gli studenti possono facilmente fare nuovi contatti, incontrare compagni di corso, scambiare idee e trovare persone con interessi simili. I piani residenziali superiori, nel frattempo, sono modulari, così che ogni studente abbia un proprio spazio personale per lo studio concentrato e il riposo. Questa tipologia ibrida funziona come una co-living studentesca vivente: socializzazione attiva e integrazione nella vita cittadina sotto, e uno spazio privato protetto ed ergonomico sopra."
+              "content": "Il dormitorio a corridoio tradizionale è ormai superato e non offre ai giovani di oggi una nuova esperienza spaziale. Isola le persone in corridoi stretti e bui, toglie l'equilibrio tra socializzazione e privacy, e sembra scollegato dalla vita. I piani terra attivi sono da tempo un requisito assoluto in un buon alloggio, e in un campus studentesco sono ancora più critici. Qui si forma un ambiente pubblico aperto, con spazi di coworking, aree condivise e servizi, dove gli studenti possono facilmente fare nuovi contatti, incontrare compagni di corso, scambiare idee e trovare persone con interessi simili. I piani residenziali superiori, nel frattempo, sono modulari, così che ogni studente abbia un proprio spazio personale per lo studio concentrato e il riposo. Questa tipologia ibrida funziona come una co-living studentesca vivente: socializzazione attiva e integrazione nella vita cittadina sotto, e uno spazio privato protetto ed ergonomico sopra."
             },
             {
               "type": "image",
@@ -54101,7 +54101,7 @@
             },
             {
               "type": "testo",
-              "content": "L'equilibrio tra vita condivisa e privacy inizia con la comprensione che una persona ha bisogno del proprio territorio psicologico, dove il suo sguardo e il suo spazio personale non si incrociano costantemente con quelli degli altri. In un dormitorio tipico i letti sono su un piano orizzontale, quindi una persona è sempre nel campo visivo del vicino, e questo ti stanca rapidamente. La zonizzazione verticale e il soppalco, che è il tratto distintivo della disposizione del dormitorio, risolvono questo problema. Sollevare il letto a un secondo livello crea una capsula individuale di tranquillità in cui puoi completamente disconnetterti da ciò che accade nella stanza. In una stanza singola questo libera il livello inferiore per un intero spazio di lavoro e per vivere senza ingombri, e in un doppio dà la stessa privacy verticale, in modo che i coinquilini non si disturbino a vicenda anche all'interno di uno spazio."
+              "content": "L'equilibrio tra vita condivisa e privacy inizia con la comprensione che una persona ha bisogno del proprio territorio psicologico, dove il suo sguardo e il suo spazio personale non si incrociano costantemente con quelli degli altri. In un dormitorio tipico i letti sono su un piano orizzontale, quindi una persona è sempre nel campo visivo del vicino, e questo ti stanca rapidamente. La zonizzazione verticale e il soppalco, che è il tratto distintivo della disposizione del dormitorio, risolvono questo problema. Sollevare il letto a un secondo livello crea una capsula individuale di tranquillità in cui puoi completamente disconnetterti da ciò che accade nella stanza. In una stanza singola questo libera il livello inferiore per un intero spazio di lavoro e per vivere senza ingombri, e in un doppio dà la stessa privacy verticale, in modo che i coinquilini non si disturbino a vicenda anche all’interno di uno spazio."
             },
             {
               "type": "galleria",
@@ -54156,26 +54156,26 @@
             },
             {
               "type": "text",
-              "content": "Lavorare con un soggetto così all'interno di un hub di trasporto è un compito estremamente complesso e responsabile. Una stazione vive di transito, frastuono e velocità. Quindi la memoria di questi eventi e l'idea di resilienza sono incorporate nel cuore del complesso: il cortile interno con la serra e la struttura ritmica delle pergole. Questo nucleo verde è il principale buffer spaziale e acustico. Arrivando qui dal transito dinamico, una persona si trova in uno spazio protetto di calma dove il rombo della ferrovia viene tagliato fuori. La serra e la natura vivente sotto la pergola parlano di memoria nel linguaggio della vita, della luce e del rinnovamento, offrendo ai passeggeri la possibilità di riposarsi dal rumore della città, di rallentare o di riflettere sul peso storico del luogo sotto i loro piedi."
+              "content": "Lavorare con un soggetto così all'interno di un hub di trasporto è un compito estremamente complesso e responsabile. Una stazione vive di transito, frenesia e velocità. Quindi la memoria di questi eventi e l'idea di resilienza sono incorporate nel cuore del complesso: il cortile interno con la serra e la struttura ritmica delle pergole. Questo nucleo verde è il principale buffer spaziale e acustico. Arrivando qui dal transito dinamico, una persona si trova in uno spazio protetto di calma dove il rombo della ferrovia viene tagliato fuori. La serra e la natura vivente sotto la pergola parlano di memoria nel linguaggio della vita, della luce e del rinnovamento, offrendo ai passeggeri la possibilità di riposarsi dal rumore della città, di rallentare o di riflettere sul peso storico del luogo sotto i loro piedi."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
-              "caption": "Axonometria del complesso accanto alla ferrovia, con il cortile interno al centro.",
-              "align": "center"
+              "caption": "Assonometria del complesso accanto alla ferrovia, con il cortile interno al centro.",
+              "align": "centro"
             },
             {
-              "type": "header",
-              "content": "La maggior parte dei tuoi progetti ha grafica molto espressiva e rendering atmosferici. Dove, per te, si trova la linea tra mostrare l'architettura in modo convincente e lasciare che l'immagine diventi un'opera a sé stante?",
+              "type": "intestazione",
+              "content": "La maggior parte dei tuoi progetti ha grafica molto espressiva e rendering atmosferici. Dove, per te, si traccia la linea tra mostrare l'architettura in modo convincente e lasciare che l'immagine diventi un'opera a sé stante?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Per me la visualizzazione architettonica è prima di tutto arte fotografica. Non la vedo come grafica computerizzata per effetti speciali, ma come fa un fotografo che arriva davanti a un edificio e cerca l'angolo giusto, percepisce la luce, l'aria, la tattilità dei materiali e l'umore."
+              "content": "Per me la visualizzazione architettonica è prima di tutto arte fotografica. Non la vedo come grafica computerizzata per effetti speciali, ma come fa un fotografo che arriva davanti a un edificio e cerca l'angolo giusto, percepisce la luce, l'aria, la tattilità dei materiali e l'atmosfera."
             },
             {
               "type": "text",
-              "content": "La linea tra essere convincente e un'immagine che esiste per se stessa si trova dove inizia l'onestà verso il progetto. Una fotografia può essere profonda, atmosferica e artistica, ma il suo compito è catturare e rivelare il vero carattere dell'ambiente."
+              "content": "La linea tra essere convincente e un'immagine che esiste per il suo stesso scopo si trova dove inizia l'onestà verso il progetto. Una fotografia può essere profonda, atmosferica e artistica, ma il suo compito è catturare e rivelare il vero carattere dell'ambiente. Quando un rendering funziona come un quadro onesto dalla vita di un edificio futuro, aiuta una persona a sentire lo spazio prima ancora che sia costruito."
             },
             {
               "type": "gallery",
@@ -54192,7 +54192,7 @@
             },
             {
               "type": "text",
-              "content": "Se dovessi difendere di nuovo il campus di Kharkiv davanti a una giuria critica, difenderei più ferocemente la decisione di rendere il piano terra uno spazio completamente attivo, aperto, multifunzionale per tutti i residenti della città. In modo che un edificio con un complesso sportivo o una piscina non viva solo nella prima metà della giornata durante le lezioni, ma anche nelle sere e durante le festività. La giuria probabilmente si appellerebbe a idee tradizionali sulla sicurezza: che un ambiente studentesco dovrebbe essere isolato, dietro una recinzione. Ma sono convinto che la chiusura non renda un luogo sicuro. La sicurezza deriva dall'apertura, dal contatto vivo con il quartiere, dal controllo sociale e dalla presenza costante di persone in strada."
+              "content": "Se dovessi difendere di nuovo il campus di Kharkiv davanti a una giuria critica, difenderei più ferocemente la decisione di rendere il piano terra uno spazio completamente attivo, aperto, multifunzionale per tutti i residenti della città. In modo che un edificio con un complesso sportivo o una piscina non viva solo nella prima metà della giornata durante le lezioni, ma anche nelle sere e durante le vacanze. La giuria probabilmente si appellerebbe a idee tradizionali sulla sicurezza: che un ambiente studentesco dovrebbe essere isolato, dietro una recinzione. Ma sono convinto che la chiusura non renda un luogo sicuro. La sicurezza deriva dall'apertura, dal vivere a contatto con il quartiere, dal controllo sociale e dalla presenza costante di persone per strada."
             },
             {
               "type": "text",
@@ -54210,7 +54210,7 @@
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu2eqbnzspfrsx.jpg",
-              "caption": "Laureati con le loro tavole di progetto.",
+              "caption": "Diplomati con le loro tavole di progetto.",
               "align": "center"
             },
             {
@@ -54254,7 +54254,8 @@
               "content": "<i>Visualizzazioni e disegni: Diana Aleshchenko. Intervista condotta per iscritto per EPRIS Journal, settembre 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:39:29.603Z"
+          "publishAt": "2026-09-17T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:54:17.989Z"
         },
         {
           "id": 40,
