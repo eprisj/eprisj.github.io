@@ -31783,6 +31783,325 @@
             }
           ],
           "updatedAt": "2026-09-15T08:37:54.439Z"
+        },
+        {
+          "id": 40,
+          "role": "Autor",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": true,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "Oksana Dzhuman: Ein Selbstporträt in 5.500 Stäbchen",
+          "author": "Viacheslav Munister & Oksana Dzhuman",
+          "date": "15. September 2026",
+          "excerpt": "Die ukrainische Künstlerin, jetzt in Valencia ansässig, über das Umwandeln gebrauchter Tabakstäbchen in Mosaikporträts, das Malen jedes einzelnen von Hand, und die erste Begegnung von Fremden mit dem Werk aus nächster Nähe bei Russafa Art.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "kunst",
+            "mosaik",
+            "Valencia",
+            "Spanien",
+            "Ukraine"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+          "previewToken": "g4zlDeB7WEtiywVa",
+          "content": [
+            {
+              "type": "text",
+              "content": "Oksana Dzhuman ausgebildet als Innenarchitektin, dann studierte sie Grafikdesign, dann verbrachte sie mehrere Jahre als Tätowiererin. Heute lebt sie in Valencia und arbeitet als Künstlerin, und das Material, zu dem sie immer wieder zurückkehrt, ist eines, das sonst niemand wollte: gebrauchte Tabakstängel, desinfiziert, von Hand bemalt, eins nach dem anderen, und in große Mosaikporträts eingesetzt."
+            },
+            {
+              "type": "text",
+              "content": "Die Serie begann Ende 2024 mit einer kleinen Schachtel auf ihrem Tisch. Ihr bisher größtes Werk, ein Selbstporträt, enthält 5.500 davon. Im Jahr 2026 wurden die Mosaike erstmals öffentlich gezeigt, bei Russafa Art in Valencia. EPRIS Journal sprach mit ihr über den langen Weg zu diesem Material, den Prozess hinter einem einzelnen Porträt und das Gemälde, das sie La Guerra nennt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqr2issf2px.jpg",
+              "caption": "Oksana Dzhuman mit einem ihrer Mosaike.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Sie haben eine Ausbildung als Innenarchitektin gemacht, dann Grafikdesign studiert, und heute arbeiten Sie als Künstlerin in Valencia. Wie haben diese verschiedenen Studien- und Erfahrungsetappen Ihre Sichtweise auf Komposition, Form und Raum in Ihrer Arbeit geprägt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Um ehrlich zu sein, ich glaube nicht, dass meine Ausbildung die Art und Weise geprägt hat, wie ich heute Komposition, Form und Raum sehe. An der Universität war ich ein ziemlich unernster Student: Ich erkannte ziemlich schnell, dass Innendesign selbst mich nicht wirklich interessierte, und wenn eine Aufgabe mich nicht packte, machte ich sie einfach, weil sie erledigt werden musste."
+            },
+            {
+              "type": "text",
+              "content": "Aber einige Dinge habe ich wirklich geliebt. Ich liebte es zu zeichnen, zu erfinden, mit Farben zu arbeiten und Dinge mit meinen Händen zu machen. Eine Aufgabe ist mir besonders im Gedächtnis geblieben: Wir mussten Papier selbst in verschiedenen Schattierungen färben, es in kleine Quadrate und Rechtecke schneiden und ein Bild daraus zusammensetzen. Dieser Prozess hat mich wirklich fasziniert. Erst jetzt erkenne ich, wie nah das an dem ist, was ich heute mache, nur mit einem völlig anderen Material."
+            },
+            {
+              "type": "text",
+              "content": "Später studierte ich Grafikdesign. Das war bereits Teil der Suche nach dem, was ich machen wollte, aber letztendlich war das auch nicht meins. Danach kam ich zum Tätowieren und arbeitete mehrere Jahre in diesem Bereich. Ich denke, diese Erfahrung hat mich viel stärker beeinflusst. Tätowieren hat mir definitiv Geduld, Aufmerksamkeit fürs Detail und den Umgang mit Komposition beigebracht."
+            },
+            {
+              "type": "header",
+              "content": "Rückblickend liest sich dein Weg in der Kunst wie mehrere verschiedene Kapitel: Zeichnen, Tätowieren und jetzt Porträts aus recycelten Materialien. Wie verbindest du diese Kapitel zu einer Geschichte für dich?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Seit langem sah ich es überhaupt nicht als eine Geschichte. Ich versuchte ständig etwas Neues: Ich konnte mich in eine Sache vertiefen, dann zu etwas völlig anderem wechseln und nach einer Weile wieder zu etwas zurückkehren."
+            },
+            {
+              "type": "text",
+              "content": "Erst als die Mosaike erschienen, begann ich zurückzublicken und Dinge zu bemerken, die sich wiederholen. Ich habe immer Details geliebt, lange manuelle Arbeit, Farbe und den Prozess selbst, wenn sich allmählich ein Ganzes aus einzelnen Elementen bildet."
+            },
+            {
+              "type": "text",
+              "content": "Und dieser Drang tauchte sogar vor der Universität auf. An der Schule erinnere ich mich, dass ich eine ganze Nacht damit verbrachte, mein Telefon von Hand mit Hunderten winziger Strasssteine zu bedecken, das Muster beim Gehen zu erfinden und die Zeit überhaupt nicht zu bemerken. Später wurde das Telefon, passend dazu, gestohlen. Vielleicht hat all das Funkeln doch seine Wirkung gezeigt."
+            },
+            {
+              "type": "text",
+              "content": "Also sehe ich jetzt alles als einen ziemlich chaotischen Weg, bei dem ich erst nach Jahren begann, mehr auf mich selbst zu hören und zu verstehen, was ich tatsächlich liebe."
+            },
+            {
+              "type": "bild",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqe6c7s109s.jpg",
+              "caption": "Das telefon, das sie über eine Nacht mit Strasssteinen bedeckte, als Schulmädchen.",
+              "align": "zentrum"
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Erinnerst du dich an den Moment, als du zum ersten Mal dachtest, dass ein gewöhnlicher gebrauchter Stock mehr als Müll sein könnte? Was hat damals deine Aufmerksamkeit erregt?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Alles begann Ende 2024, leider mit Rauchen. Ich stellte eine kleine Schachtel auf, in der ich beginnend, gebrauchte Stöcke zu sammeln, und da begann ich zum ersten Mal zu bemerken, wie viele es gab. Wenn es nicht nur ein oder zwei Stöcke sind, die man einfach wegwirft, sondern wie viele sich in nur wenigen Tagen ansammeln, kommt man zu einem ziemlich unangenehmen Bewusstsein für das Ausmaß der eigenen Gewohnheit."
+            },
+            {
+              "type": "text",
+              "content": "An diesem Abend begann ich, die Stöcke selbst zu betrachten, und irgendwann klickte es einfach: Was wäre, wenn ich versuchen würde, etwas daraus zu machen? Die Idee kam sehr plötzlich, buchstäblich wie eine Glühbirne über meinem Kopf. Sie sind Abfall, es gibt viele davon, sie sind klein, leicht und haben die gleiche Form. Ich wollte sofort wissen, ob all das in ein Material verwandelt werden könnte, mit dem man arbeiten kann."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqeipslkuyn.jpg",
+              "caption": "Die erste Box mit gebrauchten Stöcken.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Zuerst wurden deine Arbeiten nur aus deinen eigenen Stöcken gemacht, aber im Laufe der Zeit begannen andere Leute, sich dem Projekt anzuschließen. Wie ist das auf natürliche Weise passiert, und was hat sich für dich persönlich geändert, als das Material nicht mehr nur dein eigenes war?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Bis 2026 verwendete ich nur meine eigenen Stöcke, daher dauerte das Sammeln des Materials sehr lange. Die erste Person, die mir half, war eine spanische Freundin von mir, und ich bin ihr sehr dankbar für die Unterstützung. Dann schlossen sich nach und nach andere Leute an, und es gab deutlich mehr Material."
+            },
+            {
+              "type": "text",
+              "content": "Später postete ich in den sozialen Medien, dass ich gebrauchte Stöcke für meine Arbeit sammle, und unerwartet meldeten sich ziemlich viele Leute. Menschen gaben mir sogar ganze Kartons mit neuen Stöcken. Das änderte das Tempo der Arbeit erheblich: Früher musste ich Monate warten, bis genug Material für ein Stück zusammenkam, und jetzt können mehrere tausend Stöcke viel schneller gesammelt werden."
+            },
+            {
+              "type": "text",
+              "content": "Und ich sehe die Werke selbst jetzt etwas anders. Ich schaue sie an und verstehe, dass sie nicht mehr nur meinen “DNA” tragen. In gewisser Weise nehmen viele Menschen an der Herstellung jedes einzelnen teil, und ich bin sehr dankbar an alle, die mir helfen, Material zu sammeln."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqes6br0k9r.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqff5kglhwu.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqg2sfjvt4r.jpg"
+              ],
+              "caption": "Material kommt von Freunden und Followern: Pakete, Taschen und ganze Sammlungen."
+            },
+            {
+              "type": "header",
+              "content": "Wenn wir uns Zeit nehmen und die ganze Reise eines Werks beschreiben, vom ersten Stock bis zum fertigen Porträt, welcher Teil des Prozesses bereitet dir die meiste Freude, und welcher erfordert die meiste Geduld?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Alles beginnt mit dem Sammeln. Dann folgt eine ziemlich lange Vorbereitung: mehrere Phasen der Desinfektion und Behandlung gegen den Geruch."
+            },
+            {
+              "type": "text",
+              "content": "Während die Stäbe behandelt werden, bereite ich parallel die Leinwand vor: Ich mache das Layout und eine Farbkarte, damit ich verstehe, welche Farbtöne ich brauche und wie die Arbeit ungefähr aussehen wird."
+            },
+            {
+              "type": "text",
+              "content": "Dann färbe ich die Stäbe in den Tönen, die ich benötige. Viele Menschen sind überrascht, dass ich jeden Stab von Hand male, aber für mich ist das der meditative Teil des Prozesses. Danach beginnt das Zusammenstellen des Bildes auf der Leinwand."
+            },
+            {
+              "type": "text",
+              "content": "Die ganze Arbeit erfordert Geduld, aber wahrscheinlich wird am meisten in die Materialvorbereitung investiert. Es dauert ziemlich viel Zeit."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqh0sva8uw3.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqhseul6sir.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqiez2gkr3b.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqj9d8s3484.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqk51napyho.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqkvmtywvjf.jpg"
+              ],
+              "caption": "Vom sortierten Material zu bemalten Reihen: Phasen eines laufenden Werks."
+            },
+            {
+              "type": "header",
+              "content": "Du hast dein Selbstporträt aus 5.500 bemalten Stöcken zusammengesetzt; es ist das größte Werk in der Serie. Falls es keine zu persönliche Frage ist: Was hast du gefühlt, als du allmählich dein eigenes Gesicht in dieser ungewöhnlichen Technik erkannt hast?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Während ich arbeite, kann ich das Bild fast nicht sehen. Die Leinwände sind groß, und du arbeitest mit ihnen, wie du kannst: von der Seite, von oben, manchmal fast liegend. Nah dran sieht alles aus wie eine Reihe von einzelnen Schattierungen, und das Bild fügt sich einfach nicht zusammen. Man kann nur verstehen, was entsteht, wenn man einen Schritt zurücktritt. Beim Selbstporträt war es noch schwieriger, weil es praktisch schwarz-weiß ist."
+            },
+            {
+              "type": "text",
+              "content": "Und als das Werk fertig war, waren die Gefühle sehr gemischt. Ich war froh, dass ich es fertiggestellt hatte, war stolz auf mich selbst, und gleichzeitig wollte ich weinen und es niemandem zeigen. Ich glaube, die Erkenntnis traf mich: Das ist mein Gesicht, gemacht aus Stöcken, die ich selbst geraucht habe. Alles begann mit einer kleinen Schachtel, die nicht einmal fünfzig Stöcke fasste, und jetzt standen 5.500 davon vor mir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqlj1e2x572.jpg",
+              "caption": "Selbstporträt, 5.500 handbemalte Stöcke.",
+              "align": "center"
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqm2eghtnd1.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqmsghnpy4w.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqncqljq87v.jpg"
+              ],
+              "caption": "Selbstporträt, details. Nahaufnahme, das Gesicht löst sich in einzelne Schattierungen auf."
+            },
+            {
+              "type": "kopfzeile",
+              "content": "Eines Ihrer Werke bezieht sich auf Vermeers Girl with a Pearl Earring, ein sehr bekanntes Bild. Was hat Sie zu diesem Porträt besonders geführt, und hat sich Ihre Beziehung dazu während der Arbeit daran verändert?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Ich mochte Girl with a Pearl Earring schon lange. In der Ukraine malte ich meine eigene Version mit einer Katze, und in Spanien tauchte das Bild überall auf. Irgendwann beschloss ich, dass sie mein erstes Porträt aus Stöcken sein würde. Ein vertrautes Bild, vertraute Farben."
+            },
+            {
+              "type": "text",
+              "content": "Vor ihr hatte ich nur zwei Werke aus Stöcken gemacht, beide abstrakt und mit einer ziemlich einfachen Farbpalette, also war ein Porträt mit so vielen Schattierungen ein großer Schritt für mich."
+            },
+            {
+              "type": "text",
+              "content": "Als ich das Layout fertiggestellt hatte und realisierte, wie viele Schattierungen und Tausende von Stäben ich von Hand malen müsste, dachte ich, ich hätte meine Stärke überschätzt. Ich erwog sogar, es als verlängerte farbige Pixel zu belassen. Es blieb ziemlich lange in diesem Zustand, bis ich mich schließlich dazu überredete, das zu beenden, was ich begonnen hatte."
+            },
+            {
+              "type": "text",
+              "content": "Das ist wahrscheinlich der Grund, warum ich eine besondere Liebe zu diesem Werk habe. Es war mein erstes Werk in solch großem Maßstab und über so lange Zeit, und am Ende wurde es mein Favorit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqnywo8h9s9.jpg",
+              "caption": "Nach Vermeers Girl with a Pearl Earring, ihrem ersten Porträt aus Stäben.",
+              "align": "center"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqolect31v7.jpg",
+              "caption": "Girl with a Pearl Earring, Detail.",
+              "align": "center"
+            },
+            {
+              "type": "header",
+              "content": "Neben Mosaik arbeitest du in Ölgemälden, Graphitstudien und der Serie Elongated Pixels. Fühlst du diese Sprachen als unterschiedliche Stimmen im selben Gespräch, oder führt dich jede an einen ganz anderen Ort?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Im Allgemeinen versuche ich nicht, meine Arbeit in separate Richtungen zu unterteilen oder alles zu einer Geschichte zu verbinden. Ich mag es einfach, zwischen verschiedenen Materialien und Techniken zu wechseln. Ich kann ein Werk in Stöcken fertigstellen, Aquarell aufnehmen oder zu Ölen zurückkehren, und dann wieder zu den Stöcken zurückkehren."
+            },
+            {
+              "type": "text",
+              "content": "Manchmal wächst eine Sache direkt aus einer anderen heraus. Elongated Pixels wurden zum Beispiel geboren, während ich an Girl with a Pearl Earring arbeitete. In der Layout-Phase sah ich, dass das Bild auch ohne die Stöcke interessant aussah, und später machte ich Frida in dieser Technik."
+            },
+            {
+              "type": "text",
+              "content": "Aber es sind immer noch die Stöcke, zu denen ich immer wieder zurückkehre. Im Moment ist dies das Material und der Prozess, die mir am meisten gefallen."
+            },
+            {
+              "type": "header",
+              "content": "Unter Ihren Werken gibt es eine Leinwand namens La Guerra. Ich verstehe, dass dies ein schwieriges Thema sein kann, daher frage ich vorsichtig: Wenn Sie sich jetzt wohl fühlen, darüber zu sprechen, was stand hinter diesem Werk?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Für mich ist dieses Werk wahrscheinlich über den Schmerz, der wegen des Krieges im Inneren bleibt. Das Leben geht weiter, du machst gewöhnliche Dinge, aber es führt nirgendwohin."
+            },
+            {
+              "type": "text",
+              "content": "Zuerst wollte ich in diesem Werk Hoffnung lassen, den Gedanken, dass nach Dunkelheit immer Licht kommt. Das sollte die Sonne sein. Aber im Prozess begann es, anstelle eines Lichtstrahls zu bluten."
+            },
+            {
+              "type": "text",
+              "content": "Selbst jetzt schaue ich auf dieses Werk und fühle, wie alles sich im Inneren zusammenzieht. Für mich ist La Guerra wahrscheinlich genau diese Wunde, die im Inneren bleibt, auch wenn das Leben um dich herum weitergeht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu2eqpcycqu7fm.jpg",
+              "caption": "La Guerra.",
+              "align": "center"
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqpkz4syen4.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqqe35jam6u.jpg"
+              ],
+              "caption": "La Guerra, details."
+            },
+            {
+              "type": "header",
+              "content": "Im Jahr 2026 wurden Ihre Werke zum ersten Mal der Öffentlichkeit bei Russafa Art in Valencia gezeigt. Wie war es, als die Menschen neben Ihren Mosaiken standen und sie persönlich betrachteten, anstatt auf einem Bildschirm?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Bei Russafa Art merkte ich, dass ich mich ein bisschen fehl am Platz fühlte. Es gab viel Malerei um mich herum, und hier war ich mit meinen gebrauchten Stöcken. Ich fühlte mich unbeholfen, und gleichzeitig war ich froh, sie endlich zu zeigen, und hatte Angst: Wie würden die Leute das überhaupt aufnehmen?"
+            },
+            {
+              "type": "text",
+              "content": "Der interessanteste Teil war die Beobachtung der Reaktionen. Viele Menschen verstanden nicht, woraus die Werke gemacht waren. Einige vermuteten Pastell oder Kreide, aber praktisch niemand vermutete gebrauchte Stäbchen."
+            },
+            {
+              "type": "text",
+              "content": "Die Bilder selbst wurden auch auf unterschiedliche Weise interpretiert. Girl with a Pearl Earring wurde sofort erkannt, weil fast jeder dieses Bild kennt. Das Selbstporträt war schwieriger: Die Leute konnten lange darauf schauen, ohne zu verstehen, was vor ihnen war, aber sobald ich ihnen ein Foto zeigte, wurde das Porträt sichtbar."
+            },
+            {
+              "type": "text",
+              "content": "Für mich war es eine sehr wertvolle Erfahrung. Ich sah Live-Reaktionen auf meine Arbeit, erhielt viel Unterstützung und traf neue Menschen. Es ist viel einfacher für mich, Werke zu machen, als sie zu zeigen und über mich selbst zu sprechen. Selbst die Pflege sozialer Medien ist für mich nicht einfach, daher war die Teilnahme an Russafa Art ein ziemlich großer Schritt. Und ich bin sehr dankbar an alle, die mich unterstützt haben."
+            },
+            {
+              "type": "header",
+              "content": "Erlauben Sie mir eine letzte, leicht träumerische Frage: Gibt es ein Bild, ein Thema oder ein Material, das Sie eines Tages angehen möchten, aber vorerst den Mut oder die Zeit dafür fehlen?",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Eines Tages möchte ich versuchen, ein großformatiges Porträt aus viel kleineren Elementen zu erstellen. Für den Moment schreckt mich die Komplexität, die Anzahl der Elemente und die Zeit, die es dauern würde, ein wenig ab. Aber einmal schienen auch ein paar tausend Stöcke viel zu kompliziert, und jetzt wird mit jedem neuen Werk der Prozess für mich klarer und präziser."
+            },
+            {
+              "type": "text",
+              "content": "Parallel sammle ich verschiedene Materialien, die eigentlich in den Müll gehören sollten, aber aus irgendeinem Grund meine Aufmerksamkeit erregt haben. Ich weiß noch nicht, was sie werden oder wann. Meine Ideen tauchen meistens ziemlich unerwartet auf."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mu2eqri1howwwv.jpg",
+                "https://api.eprisjournal.com/uploads/mu2eqs62hqocbz.jpg"
+              ],
+              "caption": "Im Studio mit den Porträts."
+            },
+            {
+              "type": "text",
+              "content": "<i>Fotografien mit freundlicher Genehmigung von Oksana Dzhuman. Interview schriftlich geführt für EPRIS Journal, September 2026.</i>"
+            }
+          ],
+          "updatedAt": "2026-09-15T08:43:02.927Z"
         }
       ],
       "reviews": [
