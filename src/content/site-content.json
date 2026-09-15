@@ -60174,13 +60174,13 @@
           "role": "Auteur",
           "imageSeed": "",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
           "title": "Diana Aleshchenko : La sécurité vient de l'ouverture",
           "author": "Viacheslav Munister & Diana Aleshchenko",
-          "date": "15 septembre 2026",
-          "excerpt": "Un nouveau diplômé de KNUBA sur un centre de réhabilitation sans angles droits, un campus étudiant pour Kharkiv en temps de guerre, et une cour qui garde la mémoire de juillet 1917 à l'intérieur d'un centre ferroviaire.",
+          "date": "17 septembre 2026",
+          "excerpt": "Un nouveau diplômé de KNUBA sur un centre de réhabilitation sans angles droits, un campus étudiant pour Kharkiv en temps de guerre, et une cour qui garde la mémoire de juillet 1917 à l'intérieur d'une gare ferroviaire.",
           "category": "entretien",
           "subcategory": "Entretien",
           "tags": [
@@ -60196,7 +60196,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Diana Aleshchenko est de Kyiv. Cette année, elle a obtenu son master en architecture et urbanisme à l'Université nationale de construction et d'architecture de Kyiv (KNUBA), et son portfolio étudiant couvre déjà trois cahiers des charges très différents : un centre de réhabilitation à Zhytomyr pour les personnes en récupération après une blessure grave et un traumatisme, un campus avec logement étudiant à Kharkiv, et un complexe de serres à la gare Kyiv-Volynskyi."
+              "content": "Diana Aleshchenko est de Kyiv. Cette année, elle a obtenu son master en architecture et urbanisme à l'Université nationale de construction et d'architecture de Kyiv (KNUBA), et son portfolio étudiant couvre déjà trois cahiers des charges très différents : un centre de réhabilitation à Zhytomyr pour les personnes en récupération après de graves blessures et traumatismes, un campus avec logement étudiant à Kharkiv, et un complexe de serres à la gare Kyiv-Volynskyi."
             },
             {
               "type": "text",
@@ -60215,16 +60215,16 @@
             },
             {
               "type": "text",
-              "content": "Je viens de Kyiv, et cette année j'ai obtenu mon diplôme de master en architecture et urbanisme à KNUBA à Kyiv. Je n'ai pas d'histoire unique sur une révélation soudaine durant l'enfance après laquelle j'ai décidé de lier ma vie à l'architecture. Comme je le vois, le chemin a pris forme de manière assez naturelle et cohérente : à travers une chaîne de mes propres décisions, un intérêt qui grandit progressivement pour l'espace, et des événements de vie spécifiques qui m'ont amené étape par étape là où je suis maintenant."
+              "content": "Je suis de Kyiv, et cette année j'ai obtenu mon diplôme de maîtrise en architecture et urbanisme à KNUBA à Kyiv. Je n'ai pas d'histoire unique sur une révélation soudaine durant l'enfance après laquelle j'ai décidé de lier ma vie à l'architecture. Comme je le vois, le chemin a pris forme de manière assez naturelle et cohérente : à travers une chaîne de mes propres décisions, un intérêt progressivement croissant pour l'espace, et des événements de vie spécifiques qui m'ont amené étape par étape là où je suis maintenant."
             },
             {
               "type": "header",
-              "content": "Qu'est-ce qui, dans votre enfance ou votre jeunesse, vous a poussé en particulier vers l'architecture ?",
+              "content": "Qu'est-ce dans votre enfance ou jeunesse qui vous a poussé en particulier vers l'architecture ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Il n'y avait pas de déclencheur unique dans l'enfance qui ait tout décidé. C'était plutôt une combinaison progressive d'intérêts pour le dessin, la géométrie et le travail créatif, qui avec l'âge s'est simplement transformée en un choix conscient de profession."
+              "content": "Il n'y avait pas un seul déclencheur d'enfance qui ait tout décidé. C'était plutôt une combinaison progressive d'intérêts pour le dessin, la géométrie et le travail créatif, qui avec l'âge s'est simplement transformée en un choix conscient de profession."
             },
             {
               "type": "header",
@@ -60233,7 +60233,7 @@
             },
             {
               "type": "texte",
-              "content": "Mes études m'ont donné une compréhension claire que l'apprentissage ne se termine jamais réellement. D'un projet à l'autre, vous revenez toujours au point où vous devez rechercher des informations à nouveau, faire des recherches, trouver de l'inspiration et retravailler sans cesse des décisions à la recherche de la forme, tout cela sous des délais serrés. Vous commencez avec une image dans votre tête et essayez de réaliser exactement cela, mais en cours de route, tout se transforme, et à la fin, quelque chose de tout à fait différent naît, quelque chose de beaucoup plus profond. L'université m'a appris à suivre ce rythme, à prendre des décisions rapidement et à ne pas avoir peur de laisser tomber les premières idées au profit d'un résultat final plus fort."
+              "content": "Mes études m'ont donné une compréhension claire que l'apprentissage ne se termine jamais réellement. D'un projet à l'autre, vous revenez toujours au point où vous devez rechercher des informations à nouveau, faire des recherches, trouver de l'inspiration et retravailler sans cesse des décisions à la recherche de la forme, tout cela sous des délais serrés. Vous commencez avec une image dans votre tête et essayez de réaliser exactement cela, mais en cours de route, tout se transforme, et à la fin, quelque chose de tout à fait différent naît, quelque chose de beaucoup plus profond. L'université m'a appris à suivre ce rythme, à prendre des décisions rapidement et à ne pas avoir peur de lâcher les premières idées au profit d'un résultat final plus fort."
             },
             {
               "type": "image",
@@ -60258,12 +60258,12 @@
             },
             {
               "type": "header",
-              "content": "Les lames métalliques dans le même projet sont inclinées de manière à ce que les patients puissent voir la cour intérieure alors que les passants dans la rue ne peuvent pas les voir. Comment cette solution a-t-elle été envisagée, et y avait-il des options qui n'ont pas fonctionné ?",
+              "content": "Les lames métalliques dans le même projet sont inclinées de manière à ce que les patients puissent voir la cour intérieure alors que les passants dans la rue ne peuvent pas les voir. Comment cette solution a-t-elle été trouvée, et y avait-il des options qui n'ont pas fonctionné ?",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Dès le début, nous avions l'intention de créer des balcons ouverts, afin qu'un patient puisse prendre l'air sans quitter sa propre chambre. Mais après consultation avec des spécialistes, il est devenu clair que pour les personnes ayant un traumatisme psychologique, c'était une solution dangereuse. L'équipe a donc organisé une séance de remue-méninges, cherchant un moyen de conserver l'idée originale, le contact avec l'air et la forêt, tout en rendant cela totalement sûr. Nous avons testé le vitrage complet et les stores ordinaires, mais ils donnaient soit l'impression d'une cellule fermée, soit bloquaient complètement la vue sur la nature. Des lames rotatives inclinées se sont avérées être la meilleure solution. Elles offrent l'intimité nécessaire depuis la rue, laissent au patient une vue directe sur la cour intérieure et la forêt de pins, tout en permettant une aération confortable de la pièce sans sensation d'isolement. Finalement, cette mesure de sécurité fonctionnelle est devenue la principale caractéristique visuelle de toute la façade."
+              "content": "Dès le début, nous avions l'intention de créer des balcons ouverts, afin qu'un patient puisse prendre l'air sans quitter sa propre chambre. Mais après des consultations avec des spécialistes, il est devenu clair que pour les personnes ayant un traumatisme psychologique, c'est une solution dangereuse. L'équipe a donc organisé une séance de remue-méninges, cherchant un moyen de conserver l'idée originale, le contact avec l'air et la forêt, tout en rendant cela totalement sûr. Nous avons testé des vitrages complets et des stores ordinaires, mais ils créaient soit la sensation d'une cellule fermée, soit bloquaient complètement la vue sur la nature. Des lames rotatives inclinées se sont avérées être la meilleure solution. Elles offrent l'intimité nécessaire depuis la rue, laissent au patient une vue directe sur la cour intérieure et la forêt de pins, tout en permettant de ventiler la pièce confortablement sans sensation d'isolement. Finalement, cette mesure de sécurité fonctionnelle est devenue la principale caractéristique visuelle de toute la façade."
             },
             {
               "type": "header",
@@ -60281,7 +60281,7 @@
             },
             {
               "type": "texte",
-              "content": "Le dortoir en couloir ordinaire est complètement dépassé et n'offre aucune nouvelle expérience spatiale aux jeunes d'aujourd'hui. Il enferme les gens dans des couloirs étroits et sombres, enlève l'équilibre entre socialisation et vie privée, et donne l'impression d'être coupé du reste de la vie. Les rez-de-chaussée actifs ont longtemps été un impératif absolu dans un bon logement, et sur un campus étudiant, ils sont encore plus cruciaux. C'est ici qu'un environnement public ouvert se forme, avec des espaces de coworking, des zones partagées et des services, où les étudiants peuvent facilement établir de nouveaux contacts, rencontrer des camarades, échanger des idées et trouver des personnes partageant les mêmes idées. Les étages résidentiels supérieurs, quant à eux, sont modulaires, afin que chaque étudiant ait un espace personnel adéquat pour l'étude concentrée et le repos. Cette typologie hybride fonctionne comme une cohabitation étudiante vivante : socialisation active et intégration dans la vie urbaine en dessous, et un espace privé protégé et ergonomique au-dessus."
+              "content": "Le dortoir en couloir ordinaire est complètement dépassé et n'offre aucune nouvelle expérience spatiale aux jeunes d'aujourd'hui. Il enferme les gens dans des couloirs étroits et sombres, enlève l'équilibre entre socialisation et vie privée, et donne l'impression d'être coupé du reste de la vie. Les rez-de-chaussée actifs ont longtemps été un impératif absolu dans un bon logement, et sur un campus étudiant, ils sont encore plus cruciaux. C'est ici qu'une environnement public ouvert se forme, avec des espaces de coworking, des zones partagées et des services, où les étudiants peuvent facilement établir de nouveaux contacts, rencontrer des camarades, échanger des idées et trouver des personnes partageant les mêmes idées. Les étages résidentiels supérieurs, quant à eux, sont modulaires, afin que chaque étudiant ait un espace personnel adéquat pour l'étude concentrée et le repos. Cette typologie hybride fonctionne comme une cohabitation étudiante vivante : socialisation active et intégration dans la vie urbaine en dessous, et un espace privé protégé et ergonomique au-dessus."
             },
             {
               "type": "image",
@@ -60302,7 +60302,7 @@
             },
             {
               "type": "text",
-              "content": "L'équilibre entre vie partagée et vie privée commence par comprendre qu'une personne a besoin de son propre territoire psychologique, où son regard et son espace personnel ne croisent pas constamment avec ceux des autres. Dans un dortoir typique, les lits sont alignés sur un seul plan horizontal, donc une personne est toujours dans le champ de vision de son voisin, ce qui vous fatigue rapidement. La zonification verticale et le mezzanine de sommeil, qui sont la signature de la disposition du dortoir, résolvent ce problème. Élever le lit à un deuxième niveau crée une capsule individuelle de calme où vous pouvez complètement déconnecter de ce qui se passe dans la pièce. Dans une chambre simple, cela libère le niveau inférieur pour un espace de travail complet et pour vivre sans encombrement, et dans un double, cela offre la même confidentialité verticale, afin que les colocataires ne se dérangent pas même dans un seul espace."
+              "content": "L'équilibre entre vie partagée et vie privée commence par comprendre qu'une personne a besoin de son propre territoire psychologique, où son regard et son espace personnel ne croisent pas constamment avec ceux des autres. Dans un dortoir typique, les lits sont alignés sur un même plan horizontal, donc une personne est toujours dans le champ de vision de son voisin, ce qui vous fatigue rapidement. La zonification verticale et le mezzanine de sommeil, qui sont la signature de la disposition du dortoir, résolvent ce problème. Élever le lit à un deuxième niveau crée une capsule individuelle de calme où vous pouvez complètement déconnecter de ce qui se passe dans la pièce. Dans une chambre simple, cela libère le niveau inférieur pour un espace de travail complet et pour vivre sans encombrement, et dans un double, cela offre la même confidentialité verticale, afin que les colocataires ne se dérangent pas même dans un seul espace."
             },
             {
               "type": "gallery",
@@ -60331,12 +60331,12 @@
             },
             {
               "type": "header",
-              "content": "Dans votre projet de serre au hub Kyiv-Volynskyi, vous écrivez sur une transition du transit rapide et bruyant vers le calme et la concentration. Comment avez-vous réalisé cette transition architecturalement, plutôt que simplement la marquer sur un plan ?",
+              "content": "Dans votre projet de serre au hub de Kyiv-Volynskyi, vous écrivez sur une transition du transit rapide et bruyant vers le calme et la concentration. Comment avez-vous réalisé cette transition architecturalement, plutôt que simplement la marquer sur un plan ?",
               "level": 3
             },
             {
               "type": "texte",
-              "content": "La transition du transit au calme est réalisée avant tout par une séquence claire de barrières physiques. Entre la voie ferrée bruyante et le calme que représente la serre, il n'y a pas simplement une distance. D'abord, un bloc séparé du bâtiment et un espace ouvert devant lui, qui absorbent la première vague et amortissent physiquement le principal bruit des trains. Ce n'est qu'après avoir passé ce tampon qu'une personne entre dans le rythme des pergolas et des galeries couvertes, où la forme du complexe lui-même commence à fonctionner comme un contour protecteur. De faibles volumes horizontaux et une végétation dense masquent complètement la zone centrale du bruit de la ville et du chaos visuel. Le changement d'échelle, l'ombre de la pergola et la masse verte déplacent l'attention du tumulte du transit vers la tranquillité, créant une isolation naturelle autour de la serre avant même que la personne ne franchisse son seuil."
+              "content": "La transition du transit au calme est réalisée avant tout par une séquence claire de barrières physiques. Entre la gare bruyante et le calme que représente la serre, il n'y a pas seulement une distance. D'abord, un bloc séparé du bâtiment et un espace ouvert devant lui, qui absorbent la première vague et amortissent physiquement le principal bruit des trains. Ce n'est qu'après avoir passé ce tampon qu'une personne entre dans le rythme des pergolas et des galeries couvertes, où la forme du complexe elle-même commence à fonctionner comme un contour protecteur. De faibles volumes horizontaux et une végétation dense masquent complètement la zone centrale du bruit de la ville et du chaos visuel. Le changement d'échelle, l'ombre de la pergola et la masse verte déplacent l'attention du tumulte du transit vers la tranquillité, créant une isolation naturelle autour de la serre avant même que la personne ne franchisse son seuil."
             },
             {
               "type": "galerie",
@@ -60344,7 +60344,7 @@
                 "https://api.eprisjournal.com/uploads/mu2eq83blkiea1.jpg",
                 "https://api.eprisjournal.com/uploads/mu2eq8kau171hy.jpg"
               ],
-              "caption": "Le complexe au hub de Kyiv-Volynskyi : zonage fonctionnel et plan directeur."
+              "caption": "Le complexe au hub Kyiv-Volynskyi : zonage fonctionnel et plan directeur."
             },
             {
               "type": "entête",
@@ -60353,7 +60353,7 @@
             },
             {
               "type": "texte",
-              "content": "Toute conception pour moi commence par une analyse pré-conception approfondie. Non seulement du terrain ou des environs, mais aussi du patrimoine historique du site. Une fois que j'ai reçu le cahier des charges, j'ai commencé mes recherches précisément avec cette partie de l'analyse urbaine, cherchant un point d'ancrage initial à partir duquel le concept et l'idée du projet pouvaient se développer. Peu de passagers s'en rendent compte, mais c'est ici, à la gare de Post-Volynskyi, que le 26 juillet 1917, des unités militaires russes ont ouvert le feu de mitrailleuses sur le train du Regiment Bohdan Khmelnytsky alors qu'il quittait pour le front. C'était un point de départ tragique et symbolique de la lutte ukrainienne pour la libération, et cela s'est produit sur ces mêmes voies."
+              "content": "Toute conception pour moi commence par une analyse pré-conception approfondie. Non seulement du terrain ou des environs, mais aussi du patrimoine historique du site. Une fois que j'ai reçu le cahier des charges, j'ai commencé mes recherches précisément avec cette partie de l'analyse urbaine, cherchant un point d'ancrage initial à partir duquel le concept et l'idée du projet pouvaient se développer. Peu de passagers s'en rendent compte, mais c'est ici, à la gare Post-Volynskyi, qu'au 26 juillet 1917, des unités militaires russes ont ouvert le feu de mitrailleuses sur le train du Regiment Bohdan Khmelnytsky alors qu'il quittait pour le front. C'était un point de départ tragique et symbolique de la lutte ukrainienne pour la libération, et cela s'est produit sur ces mêmes voies."
             },
             {
               "type": "texte",
@@ -60362,12 +60362,12 @@
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu2eq97rneasea.jpg",
-              "caption": "Axonométrie du complexe à côté du chemin de fer, avec la cour intérieure en son centre.",
+              "caption": "Axonométrie du complexe à côté de la voie ferrée, avec la cour intérieure en son centre.",
               "align": "centre"
             },
             {
-              "type": "entête",
-              "content": "La plupart de vos projets ont des graphiques très expressifs et des rendus atmosphériques. Où, pour vous, se situe la limite entre montrer l'architecture de manière convaincante et laisser l'image devenir une œuvre en soi ?",
+              "type": "en-tête",
+              "content": "La plupart de vos projets ont des graphiques très expressifs et des rendus atmosphériques. Où, pour vous, se situe la limite entre montrer l'architecture de manière convaincante et laisser l'image devenir une œuvre à part entière ?",
               "level": 3
             },
             {
@@ -60376,7 +60376,7 @@
             },
             {
               "type": "text",
-              "content": "La ligne entre être convaincant et une image qui existe pour sa propre raison se situe là où commence l'honnêteté envers le projet. Une photographie peut être profonde, atmosphérique et artistique, mais sa tâche est de capturer et révéler le véritable caractère de l'environnement."
+              "content": "La ligne entre être convaincant et une image qui existe pour sa propre raison d'être se trouve là où commence l'honnêteté envers le projet. Une photographie peut être profonde, atmosphérique et artistique, mais sa tâche est de capturer et révéler le véritable caractère de l'environnement."
             },
             {
               "type": "gallery",
@@ -60388,7 +60388,7 @@
             },
             {
               "type": "header",
-              "content": "Si vous deviez défendre l'un de ces projets devant un jury posant des questions inconfortables, quelle décision défendriez-vous le plus férocement, et laquelle admettriez-vous comme faible ?",
+              "content": "Si vous deviez défendre l'un de ces projets devant un jury posant des questions inconfortables, quelle décision défendriez-vous le plus férocement, et laquelle admettriez-vous comme étant faible ?",
               "level": 3
             },
             {
@@ -60397,7 +60397,7 @@
             },
             {
               "type": "text",
-              "content": "La décision que je suis prêt à voir ouvertement critiquée est l'optimisation spatiale des unités compactes avec un espace de sommeil surélevé. Bien qu'elle résolve le problème de la vie privée sur une surface limitée, c'est toujours un compromis en termes d'inclusion universelle : un mezzanine de sommeil convient aux jeunes, aux personnes mobiles, mais crée une barrière pour les étudiants à mobilité réduite."
+              "content": "La décision que je suis prêt à voir ouvertement critiquée est l'optimisation spatiale des unités compactes avec un espace de sommeil surélevé. Bien qu'elle résolve le problème de l'intimité sur une surface limitée, c'est toujours un compromis en termes d'inclusion universelle : un mezzanine de sommeil convient aux jeunes, aux personnes mobiles, mais crée une barrière pour les étudiants à mobilité réduite."
             },
             {
               "type": "header",
@@ -60448,14 +60448,15 @@
             },
             {
               "type": "texte",
-              "content": "Continuez à entraîner votre œil, ne vous arrêtez pas à la première option réussie et continuez à générer, car les meilleures solutions apparaissent souvent après que vous avez pensé que la recherche était terminée. Et un conseil purement pratique : passez aux outils numériques et à la infographie aussi tôt que possible, et continuez à découvrir les nouvelles fonctions et astuces du logiciel. Plus vous manipulez librement le logiciel, plus vous pouvez réaliser avec précision et rapidité toute idée spatiale."
+              "content": "Continuez à entraîner votre œil, ne vous arrêtez pas à la première option réussie et continuez à générer, car les meilleures solutions apparaissent souvent après que vous avez pensé que la recherche était terminée. Et un conseil purement pratique : passez aux outils numériques et à la graphie informatique dès que possible, et continuez à découvrir les nouvelles fonctions et astuces du logiciel. Plus vous manipulez librement le logiciel, plus vous pouvez réaliser avec précision et rapidité toute idée spatiale."
             },
             {
               "type": "texte",
               "content": "<i>Visualisations et dessins : Diana Aleshchenko. Entretien réalisé par écrit pour EPRIS Journal, septembre 2026.</i>"
             }
           ],
-          "updatedAt": "2026-09-15T08:40:12.833Z"
+          "publishAt": "2026-09-17T01:00:00.000Z",
+          "updatedAt": "2026-09-15T08:55:05.840Z"
         },
         {
           "id": 40,
