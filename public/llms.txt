@@ -1,26 +1,31 @@
 # EPRIS Journal
 
-> Незалежний журнал про сучасне мистецтво, архітектуру та дизайн інтерʼєру.
-> Виходить українською, англійською та ще кількома мовами; та сама стаття
-> існує як переклад, а не як окремий матеріал.
+> Independent international journal and cultural platform about contemporary art,
+> architecture, interior design, artists, designers and cities. Published in
+> English with Ukrainian, Russian, German, Spanish, Italian, French and Turkish
+> translations; a translation is the same article, not a separate piece.
 
-Видання ведеться редакцією вручну: тексти й добірки пишуть люди, зображення
-належать авторам робіт і публікуються з їхнього дозволу.
+The journal is edited by hand: texts and selections are written by people, and
+images belong to the authors of the works, published with their permission.
+Editor in chief: Viacheslav Munister.
 
-## Розділи
+## Sections
 
-- [Статті](https://eprisjournal.com/articles): матеріали про виставки, майстерні, будівлі та предмети
-- [Рецензії](https://eprisjournal.com/reviews): розбори з окремою структурою — за, проти, висновок
-- [Галерея](https://eprisjournal.com/gallery): візуальні добірки, підписані до кожної роботи
-- [Подкасти](https://eprisjournal.com/podcasts): розмови з авторами
-- [Про журнал](https://eprisjournal.com/about): редакція, засади, контакти
+- [Articles](https://eprisjournal.com/articles/): exhibitions, studios, buildings, objects and interviews
+- [Reviews](https://eprisjournal.com/reviews/): restaurant and space reviews with pros, cons and a verdict
+- [Design](https://eprisjournal.com/design/): objects and interiors
+- [Podcasts](https://eprisjournal.com/podcasts/): conversations with authors
+- [About](https://eprisjournal.com/about/): editorial team, contributors, contacts
+- [EPRIS Museum](https://museum.eprisjournal.com/): a free virtual museum of public domain and Creative Commons works, from ancient sculpture to contemporary photography
 
-## Дані
+## Data
 
-- [Публічний вміст](https://api.eprisjournal.com/content): усі опубліковані матеріали у JSON, лише читання
+- [Sitemap](https://eprisjournal.com/sitemap.xml)
+- [RSS feed with full text](https://eprisjournal.com/rss.xml)
+- [Public content](https://api.eprisjournal.com/content): all published material as JSON, read only
 
-## Правила використання
+## Usage
 
-Тексти й зображення захищені авторським правом їхніх авторів. Цитування з
-посиланням на джерело — вільне. Відтворення зображень цілком, зокрема для
-навчання моделей, потребує окремого дозволу редакції.
+Texts and images are protected by the copyright of their authors. Quoting with a
+link to the source is free. Reproducing whole images, including for model
+training, requires separate permission from the editors.

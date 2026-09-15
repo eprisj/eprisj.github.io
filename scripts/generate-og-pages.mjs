@@ -4,8 +4,14 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
-const distDir = join(rootDir, 'dist');
-const contentPath = join(rootDir, 'src', 'content', 'site-content.json');
+import { existsSync } from 'fs';
+// EPRIS_DIST_DIR lets the hourly content refresh on the VPS regenerate pages
+// straight into the live release. Live content wins over the git snapshot, so
+// articles published or scheduled in the admin reach the sitemap without a code deploy.
+const distDir = process.env.EPRIS_DIST_DIR || join(rootDir, 'dist');
+const LIVE_CONTENT = '/opt/epris-content/site-content.json';
+const contentPath = process.env.EPRIS_CONTENT_PATH
+  || (existsSync(LIVE_CONTENT) ? LIVE_CONTENT : join(rootDir, 'src', 'content', 'site-content.json'));
 const SITE_ORIGIN = 'https://eprisjournal.com';
 const DEFAULT_IMAGE = `${SITE_ORIGIN}/images/featured.png`;
 const SITE_NAME = 'EPRIS Journal';
@@ -267,7 +273,12 @@ function breadcrumbSchema(items) {
   };
 }
 
-const indexHtml = readFileSync(join(distDir, 'index.html'), 'utf-8');
+// The root index.html gets its own prerendered body below, so the untouched
+// Vite shell is kept aside as .shell.html and every later run (including the
+// hourly refresh against the live release) starts from that shell.
+const shellPath = join(distDir, '.shell.html');
+if (!existsSync(shellPath)) writeFileSync(shellPath, readFileSync(join(distDir, 'index.html'), 'utf-8'));
+const indexHtml = readFileSync(shellPath, 'utf-8');
 const content = JSON.parse(readFileSync(contentPath, 'utf-8'));
 
 // Static route/SEO pages must follow the same publication rules as the app.
@@ -349,7 +360,7 @@ for (const article of publicArticles) {
     { name: article.title, url },
   ]);
 
-  const headBlock = `<title>${article.title} \u2014 EPRIS Journal</title>
+  const headBlock = `<title>${article.title} | EPRIS Journal</title>
     ${imageUrl ? `<link rel="preload" as="image" href="${escapeAttr(imageUrl)}" fetchpriority="high" />` : ''}
     <meta name="description" content="${excerpt}" />
     <meta name="keywords" content="${escapeAttr(articleKeywords(article))}" />
@@ -438,7 +449,7 @@ for (const review of publicReviews) {
     { name: review.title, url },
   ]);
 
-  const headBlock = `<title>${review.title} — EPRIS Journal</title>
+  const headBlock = `<title>${review.title} | EPRIS Journal</title>
     <meta name="description" content="${excerpt}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
@@ -501,14 +512,14 @@ const ROUTES = {
   collaboation: 'Collaboration Registry',
   collaboration: 'Collaboration Registry',
   collab: 'Collaboration Registry',
-  bureau: 'Bureau — how the work is put together',
+  bureau: 'Bureau, how the work is put together',
   museum: 'EPRIS Museum',
   vitrine: 'EPRIS Museum',
   futuroshock: 'EPRIS Museum',
-  showcase: 'Showcase — Set Design & Conceptual Art',
-  works: 'Showcase — Set Design & Conceptual Art',
-  set: 'Showcase — Set Design & Conceptual Art',
-  stage: 'Stage — a scene-building tool by EPRIS Bureau',
+  showcase: 'Showcase, Set Design & Conceptual Art',
+  works: 'Showcase, Set Design & Conceptual Art',
+  set: 'Showcase, Set Design & Conceptual Art',
+  stage: 'Stage, a scene-building tool by EPRIS Bureau',
   codex: 'Как работать с машиной · мануал редакции',
   expertise: 'Машина в искусствоведческой экспертизе · курс',
 };
@@ -537,14 +548,14 @@ const ROUTE_DESCRIPTIONS = {
   collaboation: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collaboration: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
   collab: 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.',
-  bureau: 'Breakdowns of the moves behind set design and installation: the gesture, what holds it up and where it breaks — written by the EPRIS editorial.',
+  bureau: 'Breakdowns of the moves behind set design and installation: the gesture, what holds it up and where it breaks, written by the EPRIS editorial.',
   museum: 'A living museum collection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.',
   vitrine: 'A living museum collection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.',
   futuroshock: 'A living museum collection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.',
   showcase: SHOWCASE_DESCRIPTION,
   works: SHOWCASE_DESCRIPTION,
   set: SHOWCASE_DESCRIPTION,
-  stage: 'Build a scene in metres — plan, section and volume driven by one model — and try the moves from EPRIS Bureau on it.',
+  stage: 'Build a scene in metres, plan, section and volume driven by one model, and try the moves from EPRIS Bureau on it.',
   codex: 'Мануал для тех, кто ведёт исследование в искусстве: как превратить тему в вопрос, смотреть на вещь и работать с фрагментом, не смешать первоисточник с чужим выводом, разобрать корпус текстов, проверить цитаты, собрать и посчитать данные о собрании. Токены и цена простыми словами. Полные разборы на живых музейных данных, включая случай, где честный ответ это «по этим данным нельзя». С адресами источников и библиотекой запросов.',
   expertise: 'Курс Вячеслава Мунистера для тех, кто подписывает экспертные заключения. Девять модулей: провенанс и его разрывы, границы стилистической атрибуции, тиражная скульптура и посмертные отливки, датировка по материалу и документам, чтение лабораторных отчётов, признаки сконструированной истории бытования, структура заключения и ответственность. С заданиями на собственном материале.',
 };
@@ -559,7 +570,7 @@ function routeHead(route, label) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': route ? (route === 'issue' ? 'PublicationIssue' : 'CollectionPage') : 'WebSite',
-    name: `${label} — EPRIS Journal`,
+    name: `${label} | EPRIS Journal`,
     url,
     description,
     isPartOf: route ? { '@type': 'WebSite', name: SITE_NAME, url: SITE_ORIGIN } : undefined,
@@ -577,19 +588,19 @@ function routeHead(route, label) {
     { name: SITE_NAME, url: `${SITE_ORIGIN}/` },
     { name: label, url },
   ]) : null;
-  return `<title>${label} — EPRIS Journal</title>
+  return `<title>${label} | EPRIS Journal</title>
     <meta name="description" content="${escapeAttr(description)}" />
     <meta name="keywords" content="${escapeAttr(SITE_KEYWORDS.join(', '))}" />
     <meta name="robots" content="${ALIAS_ROUTES[route] || HIDDEN_PUBLIC_ROUTES.has(route) ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${url}" />
-        <meta property="og:title" content="${label} — EPRIS Journal" />
+        <meta property="og:title" content="${label} | EPRIS Journal" />
     <meta property="og:description" content="${escapeAttr(description)}" />
     <meta property="og:image" content="${DEFAULT_IMAGE}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${url}" />
     <meta property="og:site_name" content="EPRIS Journal" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${label} — EPRIS Journal" />
+    <meta name="twitter:title" content="${label} | EPRIS Journal" />
     <meta name="twitter:description" content="${escapeAttr(description)}" />
     <meta name="twitter:image" content="${DEFAULT_IMAGE}" />
     <script type="application/ld+json">${safeJson(schema)}</script>
@@ -599,7 +610,7 @@ function routeHead(route, label) {
 
 const articleLinks = publicArticles.map((a) =>
   `<li><a href="${SITE_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a>` +
-  `${a.excerpt ? ` — ${escapeHtml(String(a.excerpt).slice(0, 140))}` : ''}</li>`).join('\n');
+  `${a.excerpt ? `: ${escapeHtml(String(a.excerpt).slice(0, 140))}` : ''}</li>`).join('\n');
 const reviewLinks = publicReviews.map((r) => {
   const sl = generateSlug(r.title || '');
   return `<li><a href="${SITE_ORIGIN}/review/${sl || r.id}/">${escapeHtml(r.title || '')}</a></li>`;
@@ -631,7 +642,23 @@ for (const [route, label] of Object.entries(ROUTES)) {
   console.log(`Generated: /${route}`);
 }
 
-const searchHead = `<title>Search — EPRIS Journal</title>
+// Homepage: same head as the shell, but a real body with an h1, sections,
+// every article and a link to the museum, so the most linked page on the site
+// is no longer an empty <div id="root">.
+{
+  const homeBody = prerenderBody(`<main>
+      <h1>${escapeHtml(SITE_NAME)}</h1>
+      <p>${escapeHtml(SITE_DESCRIPTION)}</p>
+      <h2>Latest articles</h2><ul>${articleLinks}</ul>
+      <h2>Reviews</h2><ul>${reviewLinks}</ul>
+      <h2>Sections</h2><ul>${sectionLinks}
+      <li><a href="https://museum.eprisjournal.com/">EPRIS Museum</a></li></ul>
+    </main>`);
+  writeFileSync(join(distDir, 'index.html'), indexHtml.replace('<div id="root"></div>', homeBody));
+  console.log('Generated: / (prerendered home)');
+}
+
+const searchHead = `<title>Search | EPRIS Journal</title>
     <meta name="description" content="Search articles, authors, places and topics across EPRIS Journal." />
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="${SITE_ORIGIN}/search" />`;
