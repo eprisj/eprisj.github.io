@@ -5586,7 +5586,8 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mszv2fc82gc0we.jpg",
       "previewToken": "0eadc13dc5057beeff1fffd5",
       "publishAt": "2026-08-24T09:15:36.200Z",
-      "draft": false
+      "draft": false,
+      "contributorId": "author-chora-practice"
     },
     {
       "id": 25,
@@ -5963,7 +5964,9 @@
       "updatedAt": "2026-08-30T07:12:49.847Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mt8wh6owj2qa80.jpg",
       "previewToken": "7050d8a93e5a216872f5399c",
-      "publishAt": "2026-08-29T14:14:18.395Z"
+      "publishAt": "2026-08-29T14:14:18.395Z",
+      "authorId": "author-1784896384236-4fokw",
+      "contributorId": "author-keisuke-azuma"
     },
     {
       "id": 24,
@@ -8072,7 +8075,8 @@
       "previewToken": "c2prGsB36VSXmwe9",
       "order": 0,
       "updatedAt": "2026-09-11T07:10:47.680Z",
-      "authorId": "author-1784732936927-kw554"
+      "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-abbie-downey"
     },
     {
       "title": "Eighteen Inches of Sky: The Interiors of the World Trade Center",
@@ -9048,7 +9052,8 @@
         }
       ],
       "publishAt": "2026-09-17T01:00:00.000Z",
-      "updatedAt": "2026-09-15T16:18:14.127Z"
+      "updatedAt": "2026-09-15T16:18:14.127Z",
+      "contributorId": "author-diana-aleshchenko"
     },
     {
       "id": 40,
@@ -9367,7 +9372,8 @@
         }
       ],
       "publishAt": "2026-09-16T01:00:00.000Z",
-      "updatedAt": "2026-09-15T08:47:39.983Z"
+      "updatedAt": "2026-09-15T08:47:39.983Z",
+      "contributorId": "author-oksana-dzhuman"
     },
     {
       "id": 41,
@@ -9499,7 +9505,9 @@
       "draft": false,
       "publishAt": "2026-09-18T08:00:00+03:00",
       "previewToken": "zYzyjMSqhySxvsuP",
-      "updatedAt": "2026-09-16T06:38:55.053Z"
+      "updatedAt": "2026-09-16T06:38:55.053Z",
+      "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-dihlust"
     }
   ],
   "reviews": [
