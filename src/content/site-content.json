@@ -62825,16 +62825,16 @@
         },
         {
           "id": 42,
-          "role": "Author",
+          "role": "Auteur",
           "imageSeed": "",
           "showCover": true,
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "PARK3020 : un parc de sculptures daté mille ans en avance",
+          "title": "PARK3020 : Un parc de sculptures daté d'un millénaire à l'avance",
           "author": "Viacheslav Munister",
           "date": "19 septembre 2026",
-          "excerpt": "Aux portes de Lviv, dans les champs du village de Strilky, le premier parc public de sculpture contemporaine ukrainienne offre aux jeunes artistes un lieu pour travailler à grande échelle, et aux visiteurs une raison de s'avancer dans le paysage à leur rencontre.",
+          "excerpt": "En dehors de Lviv, dans des champs ouverts près du village de Strilky, le premier parc public d'Ukraine dédié à la sculpture contemporaine offre aux jeunes artistes un espace pour travailler à grande échelle, et donne aux visiteurs une raison de sortir dans le paysage pour les rencontrer.",
           "category": "Culture",
           "subcategory": "Article",
           "tags": [
@@ -62849,171 +62849,171 @@
           "content": [
             {
               "type": "text",
-              "content": "À une demi-heure de route de Lviv, passé le village de Strilky, la terre s'ouvre en longs champs vallonnés. S'y dressent, à des distances qui obligent à marcher, une sphère blanche où est découpé un profil humain, une oreille de huit mètres, un coquillage de briques et un bosquet d'arbres en acier rouge. C'est PARK3020, le premier parc public de sculpture contemporaine ukrainienne."
+              "content": "À une demi-heure en voiture de Lviv, au-delà du village de Strilky, la terre s'ouvre en longues champs ondulants. Debout dans ceux-ci, à des distances qui vous font marcher, se trouve une sphère blanche avec un profil humain découpé dedans, une oreille de huit mètres, une coquille en briques et un bosquet d'arbres en acier rouge. C'est PARK3020, le premier parc public de sculpture ukrainienne contemporaine."
             },
             {
               "type": "text",
-              "content": "Il a été fondé en 2020 avec une mission claire : offrir aux sculpteurs ukrainiens, et d'abord aux jeunes, un soutien institutionnel, financier et pédagogique, un lieu où réaliser de grandes œuvres dans leur pays et une plateforme pour se faire connaître à l'étranger. Six ans plus tard, le parc est passé de quelques commandes à une collection, un programme d'expositions et une salle d'art couverte."
+              "content": "Il a été fondé en 2020 avec un cahier des charges clair : offrir aux sculpteurs ukrainiens, et surtout aux jeunes, un soutien institutionnel, financier et éducatif, un lieu pour réaliser de grandes œuvres chez eux et une plateforme pour être vue internationalement. Six ans plus tard, le parc est passé d'une poignée de commandes à une collection, un programme d'expositions et une salle d'art intérieure."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-01.jpg",
-              "caption": "Nazar Bilyk, L'Espace autour, dans les champs de PARK3020.",
+              "caption": "Nazar Bilyk, Space Around, dans les champs de PARK3020.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "Une date comme programme",
+              "content": "Une date comme un programme",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Le nombre du nom n'est ni une adresse ni une année de fondation. Le parc lui-même présente 3020 comme une date symbolique de création et, en même temps, comme une ambition : un parc du futur qui fait le premier de mille pas dans l'histoire. C'est une bonne clé de lecture. Rien n'y est achevé ; la collection est faite pour être enrichie, discutée et agrandie sur un temps très long."
+              "content": "Le nombre dans le nom n'est pas une adresse ni une année de fondation. Le parc considère 3020 comme une date symbolique de création et, en même temps, une ambition : un parc du futur qui fait le premier de mille pas dans l'histoire. C'est une façon utile de lire l'endroit. Rien ici n'est terminé ; la collection doit être complétée, discutée et enrichie sur une très longue période."
             },
             {
               "type": "text",
-              "content": "Ce regard au long cours est inscrit dans sa structure. PARK3020 a engagé une collaboration durable avec le Yorkshire Sculpture Park, principale institution britannique consacrée à la sculpture publique, pour s'appuyer sur une expertise internationale à ses débuts et développer ensemble résidences, conférences et ateliers. Un conseil d'experts, réunissant la commissaire Katya Taylor, le sculpteur Mykhailo Reva et Helen Pheby du Yorkshire Sculpture Park, conçoit les expositions et valide les œuvres ; un conseil de mécènes présidé par Ihor Kryvetskyi en supervise la stratégie."
+              "content": "Cette vision à long terme est intégrée dans sa structure. PARK3020 a commencé une collaboration durable avec Yorkshire Sculpture Park, la principale institution britannique pour la sculpture publique, pour apporter une expertise internationale tout en permettant au parc de trouver ses marques et de développer des résidences, des conférences et des studios ensemble. Un conseil d'experts, avec la commissaire Katya Taylor, le sculpteur Mykhailo Reva et Helen Pheby de Yorkshire Sculpture Park, façonne les expositions et approuve les œuvres ; un conseil de surveillance des mécènes, présidé par Ihor Kryvetskyi, supervise sa stratégie."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-02.jpg",
-              "caption": "Le paysage autour du parc, près de l'Edem Resort, dans la région de Lviv.",
+              "caption": "Le paysage autour du parc, près d'Edem Resort dans la région de Lviv.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "Six commandes, un seul champ",
+              "content": "Six commandes, un domaine",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Entre mars et août 2020, six artistes ont réalisé des œuvres de commande pour le parc : Anna Zviahintseva, Anna Naduda, Anton Logov, Bohdan Tomashevskyi, Nazar Bilyk et Oleksii Zolotar. Leur point de départ commun était le paysage lui-même, et la plupart des pièces y répondent directement : elles parlent de la manière dont une personne se tient dans le monde, le regarde et l'écoute."
+              "type": "texte",
+              "content": "Entre mars et août 2020, six artistes ont réalisé des œuvres pour le parc sur commande : Anna Zviahintseva, Anna Naduda, Anton Logov, Bohdan Tomashevskyi, Nazar Bilyk et Oleksii Zolotar. Le brief qu'ils ont partagé était le paysage lui-même, et la plupart des pièces y répondent directement : elles concernent la façon dont une personne se tient, regarde et écoute le monde qui l'entoure."
             },
             {
-              "type": "text",
-              "content": "L'Espace autour, de Nazar Bilyk, est devenu l'image du parc. Une silhouette humaine se dissout dans la forme parfaite d'une sphère et, avec elle, dans l'espace environnant. Bilyk, qui travaille l'empreinte en creux du plâtre blanc, décrit ces contours comme à la fois objet et instrument, une façon de dessiner l'espace où une personne est présente."
+              "type": "texte",
+              "content": "Space Around de Nazar Bilyk est l'œuvre qui est devenue l'image du parc. Une silhouette humaine se dissout dans la forme parfaite d'une sphère, et avec elle dans l'espace environnant. Bilyk, qui travaille avec la forme négative du plâtre blanc, décrit ces contours comme à la fois objet et instrument, une manière de dessiner l'espace dans lequel une personne est présente."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-03.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-04.jpg"
               ],
-              "caption": "Nazar Bilyk, L'Espace autour."
+              "caption": "Nazar Bilyk, Space Around."
             },
             {
-              "type": "text",
-              "content": "L'Oreille d'Oleksii Zolotar s'élève à huit mètres au-dessus de l'herbe. Née, selon le parc, d'un selfie raté, elle reprend un thème classique, de Bosch à Van Gogh, avec une urgence très actuelle : savoir écouter un monde traversé par une guerre physique et une surcharge émotionnelle, et choisir ce que l'on laisse entrer. Anna Zviahintseva est arrivée à la grande échelle par un tout autre chemin. Son père, en réfléchissant, tortillait machinalement du papier aluminium en petites figurines ; elle en a agrandi une, une paire de jambes, jusqu'à un objet de quatre mètres, faisant d'une habitude presque inconsciente un monument à la pensée."
+              "type": "texte",
+              "content": "L'oreille d'Oleksii Zolotar s'élève à huit mètres au-dessus de l'herbe. Elle a commencé, note le parc, par un selfie raté, et elle aborde un thème familier, de Bosch à Van Gogh, avec une urgence : la nécessité d'écouter attentivement un monde en pleine guerre physique et surcharge émotionnelle, et de choisir ce que l'on absorbe. Anna Zviahintseva a emprunté une voie très différente pour la mise à l'échelle. Son père avait l'habitude de tordre du papier d'aluminium en petites figures pendant qu'il réfléchissait ; elle en a agrandi une, une paire de jambes, en un objet de quatre mètres, transformant une habitude à moitié consciente en un monument à la pensée."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-05.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-06.jpg"
               ],
-              "caption": "Oleksii Zolotar, L'Oreille, et Anna Zviahintseva, Sculpture de mon père."
+              "caption": "Oleksii Zolotar, Oreille, et Anna Zviahintseva, Sculpture de mon père."
             },
             {
-              "type": "text",
-              "content": "Les Arbres de vie d'Anton Logov poussent à travers le toit d'une maison. Le paysage lui a rappelé les grands chênes de la région d'Odessa, où il rendait visite enfant à ses grands-parents, et l'idée que pour grandir, il faut franchir des frontières et briser les normes. De l'autre côté du champ, Biomorphe d'Anna Naduda associe la forme ramifiée des arbres au canon idéalisé de la sculpture grecque antique et propose une forme unique où le corporel et le naturel ne font qu'un."
+              "type": "texte",
+              "content": "Les Arbres de la Vie d'Anton Logov poussent droit à travers le toit d'une maison. Le paysage lui rappelait les chênes de la région de ses grands-parents près d'Odessa, et l'idée que pour se développer, une personne doit franchir des frontières et briser des normes. Le Biomorphe d'Anna Naduda, de l'autre côté du champ, relie la forme ramifiée des arbres au canon idéalisé de la sculpture grecque antique, proposant une seule forme dans laquelle le corporel et le naturel sont la même chose."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-07.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-08.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-09.jpg"
               ],
-              "caption": "Anton Logov, Arbres de vie, avec un détail ; Anna Naduda, Biomorphe."
+              "caption": "Anton Logov, Arbres de la Vie, avec un détail, et Anna Naduda, Biomorphe."
             },
             {
-              "type": "text",
-              "content": "La Salamandre de Bohdan Tomashevskyi est la plus abstraite des six œuvres : des plans de métal noir où se lisent à la fois un lézard en mouvement et la crête des Carpates. Dans les forêts de Rakhiv, où l'artiste croisait souvent la salamandre tachetée, une population abondante de cet animal signale un environnement sain. Ici, elle devient un rappel discret, pour qui est ébloui par le progrès technologique, que la civilisation dépend de la nature."
+              "type": "texte",
+              "content": "La Salamandre de Bohdan Tomashevskyi est la plus abstraite des six : des plans en métal noir qui se lisent à la fois comme un lézard en mouvement et comme la crête des Carpates. Dans les forêts de Rakhiv, où il rencontrait souvent la salamandre de feu, une grande population de l'animal est un signe d'air et d'eau propres. Installée ici, elle constitue un avertissement discret à une personne éblouie par le progrès technologique que la civilisation dépend de la nature."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-10.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-11.jpg"
               ],
-              "caption": "Bohdan Tomashevskyi, Salamandre."
+              "caption": "Bohdan Tomashevskyi, Salamander."
             },
             {
-              "type": "header",
-              "content": "Les arrivées suivantes",
+              "type": "en-tête",
+              "content": "Arrivées tardives",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "La collection n'a cessé de s'agrandir. Zhanna Kadyrova, qui explore le potentiel esthétique des matériaux de construction ordinaires, a érigé un monument à un mollusque : un coquillage qui se referme au moindre signe de danger, comme apprend à le faire l'habitant d'une grande ville. Apparition de Stepan Ryabchenko, une colonne jaune pliée, renvoie à la légende d'une apparition de la Vierge sur le terrain d'un jardin botanique de Kyiv en 1862. Et le groupe GREVIS, Volodymyr Levis et Ernest Yemeliantsev, a posé un bouton géant dans une clairière de bouleaux : un objet perdu il y a longtemps, qui a grandi avec les arbres et appartient désormais au paysage autant qu'eux."
+              "type": "texte",
+              "content": "La collection n'a cessé de croître. Zhanna Kadyrova, qui teste le potentiel esthétique des matériaux de construction ordinaires, a réalisé un monument à un mollusque, une coquille qui se ferme à la moindre menace, comme une personne en grande ville apprend à le faire. Apparition de Stepan Ryabchenko, une colonne jaune pliée, fait référence à la légende d'une vision qui aurait apparu sur le site d'un jardin botanique de Kyiv en 1862. Et le groupe GREVIS, Volodymyr Levis et Ernest Yemeliantsev, ont placé un bouton géant dans une clairière de bouleaux : une chose perdue depuis longtemps qui a poussé avec les arbres, et appartient maintenant au paysage autant qu'eux."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-12.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-13.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-14.jpg"
               ],
-              "caption": "Zhanna Kadyrova, Coquillage ; Stepan Ryabchenko, Apparition ; GREVIS, Bouton."
+              "caption": "Zhanna Kadyrova, Coquille ; Stepan Ryabchenko, Apparition ; GREVIS, Bouton."
             },
             {
               "type": "text",
-              "content": "En mai 2021, le parc a ajouté une autre manière de créer : un symposium de sculpture, format qui limite les artistes dans le temps et dans la matière. Neuf sculpteurs ukrainiens et internationaux ont taillé le granit sur place pendant un mois, et leurs œuvres ont rejoint la collection dans les champs."
+              "content": "En mai 2021 le parc a ajouté une autre façon de faire du travail : un symposium de sculpture, un format qui limite les artistes dans le temps et le matériau. Neuf sculpteurs ukrainiens et internationaux ont passé le mois à sculpter le granit sur place, et les résultats ont rejoint la collection dans les champs."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-15.jpg",
-              "caption": "Le symposium de sculpture de 2021 : le granit travaillé sur place.",
+              "caption": "Le symposium de sculpture de 2021 : granit travaillé sur place.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "À couvert : du forum à Naissance",
+              "content": "À l'intérieur : du forum à Birth",
               "level": 3
             },
             {
               "type": "text",
-              "content": "À l'automne 2025, le premier Global Culture Forum a inauguré un nouveau lieu, l'Art Hall, avec une grande exposition de maîtres ukrainiens, parmi lesquels Liubomyr Medvid, Ivan Marchuk et Serhii Savchenko. À ses côtés se tenaient Transformation of the Future, consacrée aux jeunes artistes, et Céramique ukrainienne. Continuité de la forme, qui retraçait une lignée des figurines d'argile de la culture de Trypillia à la céramique d'auteur contemporaine."
+              "content": "À l'automne 2025, le premier Global Culture Forum a ouvert un nouveau lieu, l'Art Hall, avec une grande exposition de maîtres ukrainiens, parmi eux Liubomyr Medvid, Ivan Marchuk et Serhii Savchenko. À côté, se déroulait Transformation of the Future, une exposition de jeunes artistes, et Ukrainian Ceramics. Continuity of Form, qui retraçait une ligne des figures en argile de Trypillia à la céramique contemporaine."
             },
             {
               "type": "text",
-              "content": "L'exposition actuelle, Naissance, se tient jusqu'au 4 octobre 2026. Elle explore le moment qui précède l'œuvre, d'où naît une image et comment l'expérience personnelle d'un artiste devient un langage partagé, avec des artistes de plusieurs générations, dont Volodymyr Odrekhivskyi, Roman Opalynskyi, Volodymyr Tsisaryk, Mykhailo Demtsiu, Artur Soletskyi et Ihor Palii. Elle est accompagnée d'une collection de costumes traditionnels ukrainiens de différentes régions et de livres rares du XXe siècle."
+              "content": "L'exposition actuelle, Naissance, se déroule jusqu'au 4 octobre 2026. Elle examine le moment avant qu'une œuvre n'existe, d'où provient une image et comment une expérience privée devient un langage partagé, avec des œuvres d'artistes de plusieurs générations, y compris Volodymyr Odrekhivskyi, Roman Opalynskyi, Volodymyr Tsisaryk, Mykhailo Demtsiu, Artur Soletskyi et Ihor Palii. Elle est présentée avec une collection de costumes ukrainiens historiques de différentes régions et de rares livres du XXe siècle."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-16.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-17.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-18.jpg"
               ],
-              "caption": "Salles d'exposition de PARK3020 : Naissance, 2026, et l'Art Hall du Global Culture Forum, 2025."
+              "caption": "Salles d'exposition de PARK3020 : Naissance, 2026, et la Salle d'art du Forum de la Culture Globale, 2025."
             },
             {
-              "type": "header",
-              "content": "Venir au parc",
+              "type": "entête",
+              "content": "Visiter",
               "level": 3
             },
             {
               "type": "text",
-              "content": "PARK3020 est ouvert tous les jours de 10 h à 18 h, à côté de l'Edem Resort à Strilky, à environ 30 minutes de route de Lviv ; depuis la gare routière n° 5 de Lviv, les bus 747, 842 et 843 s'y rendent, suivis d'une demi-heure de marche. Les visites guidées, qui incluent les salles d'exposition, partent à 12 h et à 15 h et durent jusqu'à deux heures, mais le parc se découvre aussi librement. Le billet plein tarif coûte 600 hryvnias ; les enfants de 6 à 12 ans, les militaires, les retraités et les étudiants en art paient 300, et les enfants de moins de six ans ainsi que les anciens combattants entrent gratuitement. Les chiens sont les bienvenus, et un parking avec recharge pour voitures électriques est disponible."
+              "content": "PARK3020 est ouvert tous les jours de 10h00 à 18h00, à côté de Edem Resort à Strilky, à environ 30 minutes en voiture de Lviv ; les bus 747, 842 et 843 partent de la station de bus No. 5 de Lviv, suivis d'une marche de 30 minutes. Les visites guidées, y compris les salles d'exposition, commencent à 12h00 et 15h00 et durent jusqu'à deux heures, et vous pouvez également parcourir le parc par vous-même. Un billet standard coûte 600 hryvnias ; les enfants de 6 à 12 ans, le personnel militaire, les retraités et les étudiants en art paient 300, et les enfants de moins de six ans ainsi que les vétérans de combat entrent gratuitement. Les chiens sont acceptés, et il y a un parking avec recharge pour voitures électriques."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-19.jpg",
-              "caption": "Lumière du soir sur les champs de PARK3020.",
+              "caption": "Lumière tardive sur les champs de PARK3020.",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Le parc se découvre mieux lentement. Les distances entre les œuvres font partie de l'expérience : on aperçoit une sculpture de loin, on la perd derrière une butte et on la retrouve sous un autre angle. Pour un parc qui se date mille ans en avance, c'est le bon rythme."
+              "content": "La meilleure façon de voir le parc est lentement. Les distances entre les œuvres font partie de l'expérience : vous approchez d'une sculpture de loin, la perdez derrière une élévation du sol et la retrouvez d'un autre côté. Pour un parc qui se date lui-même à mille ans à l'avance, c'est un rythme approprié."
             },
             {
               "type": "text",
-              "content": "<i>Texte : Viacheslav Munister pour EPRIS Journal. Photographies : PARK3020, park3020.com. Informations pratiques valables en septembre 2026 ; vérifiez sur park3020.com avant de partir.</i>"
+              "content": "<i>Texte : Viacheslav Munister pour EPRIS Journal. Photographies : PARK3020, park3020.com. Informations sur la visite à partir de septembre 2026 ; vérifiez park3020.com avant de partir.</i>"
             }
           ],
           "publishAt": "2026-09-19T05:00:00+03:00",
-          "updatedAt": "2026-09-17T17:12:46.000Z"
+          "updatedAt": "2026-09-17T17:16:11.164Z"
         }
       ],
       "reviews": [
