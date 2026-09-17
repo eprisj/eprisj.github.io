@@ -64811,23 +64811,23 @@
         },
         {
           "id": 43,
-          "role": "Author",
+          "role": "Auteur",
           "imageSeed": "",
           "showCover": true,
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "Le fleuve que Valence a transformé en parc",
+          "title": "La rivière Valencia transformée en parc",
           "author": "Viacheslav Munister",
           "date": "20 septembre 2026",
-          "excerpt": "Après la crue catastrophique de 1957, Valence a détourné son fleuve hors de la ville et prévu une autoroute dans le lit vide. Les habitants ont réclamé autre chose. Il en est né un corridor vert de près de dix kilomètres, l'un des espaces publics les plus instructifs d'Europe.",
+          "excerpt": "Après une inondation catastrophique en 1957, Valencia a déplacé sa rivière hors de la ville et a prévu une autoroute dans le lit vide. Ses citoyens ont demandé autre chose. Le résultat est un canal vert d nearly dix kilomètres de long, et l'un des espaces publics les plus instructifs en Europe.",
           "category": "Architecture",
           "subcategory": "Essai",
           "tags": [
             "Essai",
             "paysage",
             "urbanisme",
-            "Valence",
+            "Valencia",
             "Espagne"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu5turia-01.jpg",
@@ -64835,56 +64835,56 @@
           "content": [
             {
               "type": "text",
-              "content": "Au milieu de Valence coule un fleuve sans eau. Ses quais de pierre sont toujours là, tout comme ses ponts, certains vieux de plusieurs siècles, mais en contrebas, là où coulait autrefois le Turia, on trouve des orangers, des terrains de football, des bassins, des pistes de course et un géant couché sur le dos sur lequel grimpent les enfants. Le Jardí del Túria suit l'ancien lit sur environ huit kilomètres et demi, de la lisière ouest de la ville jusqu'aux coques blanches de la Cité des arts et des sciences, près de la mer."
+              "content": "Au milieu de Valence il y a une rivière sans eau. Ses berges en pierre sont toujours là, tout comme ses ponts, certains vieux de plusieurs siècles, mais en dessous d'eux, là où le Turia coulait autrefois, il y a des orangers, des terrains de football, des étangs, des pistes de course et un géant allongé sur le dos pendant que des enfants grimpent dessus. Le Jardí del Túria, le Jardin du Turia, suit le lit de la vieille rivière sur environ huit kilomètres et demi, de l'extrémité ouest de la ville jusqu'aux coquilles blanches de la City of Arts and Sciences près de la mer."
             },
             {
               "type": "text",
-              "content": "On dirait un cadeau de la nature. C'est l'inverse : le produit d'une catastrophe, d'une décision d'ingénieurs, d'un projet routier jamais construit et d'une mobilisation citoyenne qui a soutenu qu'une ville pouvait faire autre chose de sa propre cicatrice."
+              "content": "On dirait un cadeau de la nature. C'est le contraire : le produit d'une catastrophe, d'une décision d'ingénierie, d'un plan routier qui n'a jamais été construit et d'une campagne civique qui insistait sur le fait qu'une ville pouvait utiliser sa propre cicatrice différemment."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5turia-01.jpg",
-              "caption": "L'ancien lit devenu parc linéaire, qui s'achève à la Cité des arts et des sciences.",
-              "credit": "Wikimedia Commons: Mike Lowe, Public domain",
+              "caption": "L'ancien lit de la rivière en tant que parc linéaire, se terminant à la City of Arts and Sciences.",
+              "credit": "Wikimedia Commons : Mike Lowe, Domaine public",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ciutat_de_les_Arts_i_les_Ci%C3%A8ncies.jpg",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "La crue",
+              "content": "L'inondation",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Le Turia a toujours été dangereux. Les historiens comptent des dizaines de crues au cours des siècles précédant le XXe, mais celle qui a changé la ville est arrivée le 14 octobre 1957. Après deux jours de pluies torrentielles en amont, le fleuve est sorti de son lit et s'est déversé dans Valence. Dans certaines rues, l'eau est montée jusqu'à cinq mètres. Au moins 81 personnes sont mortes, des milliers de logements ont été détruits et une grande partie de la vie commerçante de la ville s'est retrouvée sous la boue."
+              "type": "texte",
+              "content": "La Turia a toujours été dangereuse. Les historiens comptent des dizaines d'inondations dans les siècles précédant le vingtième, mais celle qui a changé la ville est survenue le 14 octobre 1957. Après deux jours de fortes pluies en amont, la rivière a débordé et s'est répandue dans Valence. Dans certaines rues, l'eau est montée jusqu'à cinq mètres. Au moins 81 personnes sont mortes, des milliers de maisons ont été détruites, et une grande partie de la vie commerciale de la ville a été laissée sous la boue."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-02.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-03.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-04.jpg"
               ],
-              "caption": "Le Turia en crue, octobre 1957, et le déblaiement de la boue dans les rues.",
-              "credit": "Wikimedia Commons: unknown photographer, scan by Talayuelo, CC0; Talayuelo, CC BY-SA 3.0; B25es, CC BY-SA 3.0",
+              "caption": "La Turia en crue, octobre 1957, et le nettoyage de la boue dans les rues de la ville.",
+              "credit": "Wikimedia Commons : photographe inconnu, scan par Talayuelo, CC0 ; Talayuelo, CC BY-SA 3.0 ; B25es, CC BY-SA 3.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Riada_Valencia_15_octubre_1957.jpg"
             },
             {
-              "type": "text",
-              "content": "La réponse fut radicale. Avec ce qu'on a appelé le Plan Sur, le plan Sud, le fleuve a été entièrement sorti de la ville : un nouveau lit de douze kilomètres de long et 175 mètres de large a été creusé à environ trois kilomètres au sud et achevé au début des années 1970. Il restait au cœur de Valence un étrange cadeau, un lit sec assez large pour une autoroute. Et c'est précisément une autoroute que prévoyaient les plans de l'époque."
+              "type": "texte",
+              "content": "La réponse a été radicale. Ce qui est devenu connu sous le nom de Plan Sur, le Plan Sud, la rivière a été complètement sortie de la ville : un nouveau chenal, long de douze kilomètres et large de 175 mètres, a été creusé à environ trois kilomètres au sud et achevé au début des années 1970. Cela a laissé un étrange cadeau au cœur de Valence, un lit sec assez large pour une autoroute. Et une autoroute est exactement ce que les plans de l'époque proposaient d'y construire."
             },
             {
-              "type": "header",
-              "content": "Le lit est à nous",
+              "type": "en-tête",
+              "content": "Le lit de la rivière est à nous",
               "level": 3
             },
             {
               "type": "text",
-              "content": "La route n'a jamais été construite. Tout au long des années 1970, associations de quartier et habitants se sont mobilisés autour d'un slogan dont Valence se souvient encore : El llit del Túria és nostre i el volem verd, le lit du Turia est à nous et nous le voulons vert. En 1976, un décret royal a cédé l'ancien lit à la ville, et en 1979 il a été officiellement classé en espace vert et parc public. En 1981, la ville a confié un plan au Taller de Arquitectura de Ricardo Bofill ; le projet définitif a été approuvé en 1984, les travaux ont commencé au milieu des années 1980 et les premiers tronçons ont ouvert au public en 1986 et 1987."
+              "content": "La route n'a jamais été construite. Dans les années 1970, les associations de quartiers et les citoyens ont mené une campagne sous un slogan qui est encore rappelé à Valence : <em>El llit del Túria és nostre i el volem verd</em>, le lit du Túria est à nous et nous le voulons vert. En 1976, un décret royal a transféré l'ancien lit à la ville, et en 1979, il a été officiellement désigné comme espace vert et parc public. En 1981, la ville a commandé à Ricardo Bofill's Taller de Arquitectura l'élaboration d'un plan ; le schéma final a été approuvé en 1984, et les travaux ont commencé au milieu des années 1980, avec les premières sections ouvertes au public en 1986 et 1987."
             },
             {
               "type": "text",
-              "content": "La contribution de Bofill lui-même est la partie la plus monumentale du jardin : le tronçon central, formel, avec orangers, palmiers, bassins et colonnades néoclassiques blanches. Il encadre le Palau de la Música, la salle de concert de José María García de Paredes inaugurée en 1987, posée dans le lit comme un pavillon de verre dans un jardin."
+              "content": "La contribution propre de Bofill est la partie la plus monumentale du jardin, la section centrale formelle avec des orangers, des palmiers, de l'eau et des colonnades néoclassiques blanches. Elle encadre le Palau de la Música, la salle de concert de José María García de Paredes qui a été inaugurée en 1987 et qui repose dans le lit de la rivière comme une verrière dans un jardin."
             },
             {
               "type": "gallery",
@@ -64892,96 +64892,96 @@
                 "https://api.eprisjournal.com/uploads/mu5turia-05.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-06.jpg"
               ],
-              "caption": "Colonnades et bassin devant le Palau de la Música.",
-              "credit": "Wikimedia Commons: Dorieo, CC BY-SA 4.0; Joanbanjo, CC BY-SA 3.0",
+              "caption": "Colonnades et eau devant le Palau de la Música.",
+              "credit": "Wikimedia Commons : Dorieo, CC BY-SA 4.0 ; Joanbanjo, CC BY-SA 3.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jardin_del_Turia_-Tramo_XI_09.jpg"
             },
             {
               "type": "text",
-              "content": "Le reste du jardin n'est pas l'œuvre d'une seule main, et c'est sa force. Le lit a été découpé en tronçons numérotés confiés à différentes équipes. Vetges Tu i Mediterrània a dessiné des espaces sportifs et des prairies ; les architectes Otegui, Gisbert et Noguera, le paysagiste Ángel Zurilla et d'autres ont façonné d'autres tronçons ; l'administration régionale de l'agriculture a planté toute une forêt urbaine de pins. Le jardin change donc de caractère tous les quelques centaines de mètres, mais reste tenu par ce qu'aucun concepteur n'a inventé : la ligne de l'ancien fleuve. Il couvre aujourd'hui quelque 136 hectares, pour une largeur moyenne d'environ 160 mètres, et de nouveaux tronçons doivent le porter à près de dix kilomètres."
+              "content": "Le reste du jardin n'a pas été conçu par une seule main, et c'est sa force. Le lit de la rivière a été divisé en sections numérotées, et différentes équipes les ont prises en charge. Vetges Tu et Mediterrània ont conçu des zones sportives et des prairies ; les architectes Otegui, Gisbert et Noguera, l'architecte paysagiste Ángel Zurilla et d'autres ont façonné d'autres sections ; le département régional de l'agriculture a planté une forêt urbaine entière de pins. Le résultat change de caractère tous les quelques centaines de mètres, mais est relié par la seule chose qu'aucun designer n'a inventée, la ligne de l'ancien fleuve. Aujourd'hui, il couvre environ 136 hectares, avec une largeur moyenne d'environ 160 mètres, et d'autres sections sont prévues pour l'étendre à près de dix kilomètres."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-07.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-08.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-09.jpg"
               ],
-              "caption": "Terrains de sport, pins et palmiers : différents tronçons du même lit.",
-              "credit": "Wikimedia Commons: Dorieo, CC BY-SA 4.0; Dorieo, CC BY-SA 3.0; Dorieo, CC BY-SA 4.0",
+              "caption": "Terrains de sport, pins et palmiers : différentes sections du même lit de rivière.",
+              "credit": "Wikimedia Commons : Dorieo, CC BY-SA 4.0 ; Dorieo, CC BY-SA 3.0 ; Dorieo, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jard%C3%ADn_del_Turia_01.jpg"
             },
             {
-              "type": "header",
-              "content": "Un géant dans le lit du fleuve",
+              "type": "en-tête",
+              "content": "Un géant dans le lit de la rivière",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "L'habitant le plus célèbre du jardin est arrivé vers 1990. Dans le tronçon conçu par Rafael Rivera avec l'artiste Manolo Martín, Lemuel Gulliver gît ligoté au sol, comme dans le roman de Jonathan Swift, et les enfants de Valence jouent les Lilliputiens : ses cheveux, son habit et ses membres sont des toboggans, des rampes et des murs d'escalade. C'est une aire de jeux, mais aussi une petite leçon d'échelle qui convient à tout le projet : une ville qui découvre ce qu'elle peut faire d'un espace soudain bien plus grand que prévu."
+              "type": "texte",
+              "content": "L'habitant le plus célèbre du jardin est arrivé au tournant des années 1990. Dans la section conçue par Rafael Rivera avec l'artiste Manolo Martín, Lemuel Gulliver est allongé, lié au sol, comme dans le roman de Jonathan Swift, et les enfants de Valence jouent aux Lilliputiens : ses cheveux, son manteau et ses membres sont des toboggans, des rampes et des murs d'escalade. C'est une aire de jeux, mais aussi une petite leçon d'échelle qui englobe tout le projet, une ville découvrant ce qu'il est possible de faire avec un espace qui devient soudainement beaucoup plus grand que prévu."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-10.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-11.jpg"
               ],
-              "caption": "L'aire de jeux Gulliver, vue d'un pont et depuis le sol.",
-              "credit": "Wikimedia Commons: Joanbanjo, CC BY-SA 4.0; Steven Lek, CC BY-SA 4.0",
+              "caption": "La aire de jeux Gulliver, vue d'un pont et du sol.",
+              "credit": "Wikimedia Commons : Joanbanjo, CC BY-SA 4.0 ; Steven Lek, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:El_Gulliver_des_del_pont_del_Regne_de_Val%C3%A8ncia.jpg"
             },
             {
               "type": "header",
-              "content": "Les ponts et le bout de la ligne",
+              "content": "Ponts, et la fin de la ligne",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Parce que le jardin est un ancien fleuve, la ville le franchit toujours sur des ponts, plus de deux douzaines. Certains sont historiques : le Pont del Mar date de la fin du XVIe siècle. D'autres appartiennent à la ville nouvelle. Santiago Calatrava, né à Valence, a construit le Pont de l'Exposició puis le pont de l'Assut de l'Or, dont le haut pylône blanc marque aujourd'hui l'extrémité est du jardin."
+              "content": "Parce que le jardin est un ancien fleuve, la ville le traverse encore sur des ponts, plus de deux douzaines d'entre eux. Certains sont historiques : le Pont del Mar date de la fin du XVIe siècle. D'autres appartiennent à la nouvelle ville. Santiago Calatrava, né à Valence, a construit le Pont de l'Exposició et plus tard le pont Assut de l'Or, dont le haut pylône blanc marque maintenant l'extrémité est du jardin."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5turia-12.jpg",
-              "caption": "L'un des ponts de Santiago Calatrava au-dessus du jardin.",
-              "credit": "Wikimedia Commons: JavierOlivares, CC BY-SA 4.0",
+              "caption": "L'un des ponts de Santiago Calatrava sur le jardin.",
+              "credit": "Wikimedia Commons : JavierOlivares, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Puente_Calatrava,_Valencia.jpg",
               "align": "center"
             },
             {
               "type": "text",
-              "content": "Cette extrémité est dominée par la Cité des arts et des sciences de Calatrava, bâtie dans le lit à partir des années 1990 : L'Hemisfèric a ouvert en 1998, le musée des sciences en 2000, L'Oceanogràfic, aux coques signées Félix Candela, en 2003, le Palau de les Arts en 2005 et L'Àgora en 2009. Elle est devenue la carte postale de la ville et l'un de ses projets les plus contestés, notamment parce que son coût a dépassé plusieurs fois le budget initial. Vue du jardin, elle se lit comme le dernier et le plus bruyant chapitre d'une histoire commencée dans la boue des rues."
+              "content": "Cette extrémité est dominée par la Cité des Arts et des Sciences de Calatrava, construite dans le lit de la rivière à partir des années 1990 : L'Hemisfèric ouvert en 1998, le musée des sciences en 2000, L'Oceanogràfic, avec des coquilles de Félix Candela, en 2003, le Palau de les Arts en 2005 et L'Àgora en 2009. Elle est devenue la carte postale de la ville et l'un de ses projets les plus discutés, notamment parce que son coût a plusieurs fois dépassé le budget initial. Vue du jardin, elle apparaît comme le dernier et le plus bruyant chapitre d'une histoire qui a commencé avec la boue dans les rues."
             },
             {
-              "type": "gallery",
+              "type": "galerie",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-13.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-14.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-15.jpg"
               ],
-              "caption": "L'Hemisfèric et le Palau de les Arts ; L'Àgora et le pont de l'Assut de l'Or ; le jardin près du Palau de les Arts.",
-              "credit": "Wikimedia Commons: Javier Boadella, CC BY-SA 3.0; Esniom, CC BY-SA 4.0; José Luis Filpo Cabana, CC BY 3.0",
+              "caption": "L'Hemisfèric et le Palau de les Arts ; L'Àgora et le pont Assut de l'Or ; le jardin près du Palau de les Arts.",
+              "credit": "Wikimedia Commons : Javier Boadella, CC BY-SA 3.0 ; Esniom, CC BY-SA 4.0 ; José Luis Filpo Cabana, CC BY 3.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hemisferic_y_Palacio_de_las_Artes_Reina_Sofia,_Valencia.jpg"
             },
             {
-              "type": "header",
+              "type": "en-tête",
               "content": "Ce que le jardin enseigne",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "On décrit souvent le jardin du Turia comme un parc. Il ressemble davantage à un argument sur ce qu'une ville doit à ses habitants. Le même lit vide aurait pu devenir une voie rapide entre les bords de Valence ; il est devenu une ligne lente qui relie ses quartiers, où l'on marche, court et pédale d'un bout à l'autre de la ville sans croiser une voiture."
+              "type": "texte",
+              "content": "Le Jardin Turia est souvent décrit comme un parc. Il se rapproche davantage d'un argument sur ce que une ville doit à ses habitants. La même lit de rivière vide aurait pu devenir une route rapide reliant les extrémités de Valencia ; au lieu de cela, il est devenu une ligne lente reliant ses quartiers, où les gens marchent, courent et font du vélo à travers la ville sans rencontrer une voiture."
             },
             {
-              "type": "text",
-              "content": "Aujourd'hui, de nombreuses villes cherchent à rouvrir des rivières enterrées, démolir des autoroutes urbaines ou transformer des voies ferrées en parcs. Valence a fait quelque chose de semblable il y a près d'un demi-siècle, bien avant que ce soit à la mode, et pour une raison simple : ceux qui avaient vécu la crue ont demandé qu'on leur rende en vert le lieu de la catastrophe."
+              "type": "texte",
+              "content": "De nombreuses villes essaient maintenant de récupérer des rivières enterrées, de démolir des autoroutes élevées ou de transformer des lignes de chemin de fer en parcs. Valencia a fait quelque chose de similaire il y a presque un demi-siècle, avant que cela ne devienne à la mode, et pour une raison simple : les personnes qui avaient vécu la crue ont demandé que le lieu du désastre leur soit rendu sous une forme verte."
             },
             {
-              "type": "text",
-              "content": "<i>Texte : Viacheslav Munister pour EPRIS Journal. Photographies : Wikimedia Commons ; auteurs et licences indiqués avec chaque image.</i>"
+              "type": "texte",
+              "content": "<i>Texte : Viacheslav Munister pour EPRIS Journal. Photographies : Wikimedia Commons, auteurs et licences sont indiqués avec chaque image.</i>"
             }
           ],
           "publishAt": "2026-09-20T05:00:00+03:00",
-          "updatedAt": "2026-09-17T17:31:03.000Z"
+          "updatedAt": "2026-09-17T17:33:01.168Z"
         }
       ],
       "reviews": [
