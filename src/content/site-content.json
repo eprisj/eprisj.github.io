@@ -56305,23 +56305,23 @@
         },
         {
           "id": 42,
-          "role": "Author",
+          "role": "Autore",
           "imageSeed": "",
           "showCover": true,
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "PARK3020: un parco di sculture datato mille anni nel futuro",
+          "title": "PARK3020: Un Parco di Sculture Datato Mille Anni Avanti",
           "author": "Viacheslav Munister",
           "date": "19 settembre 2026",
-          "excerpt": "Alle porte di Leopoli, nei campi vicino al villaggio di Strilky, il primo parco pubblico di scultura contemporanea ucraina offre ai giovani artisti un luogo dove lavorare in grande scala e ai visitatori un motivo per addentrarsi nel paesaggio e andare loro incontro.",
-          "category": "Culture",
+          "excerpt": "Fuori Lviv, nei campi aperti vicino al villaggio di Strilky, il primo parco pubblico di sculture contemporanee dell'Ucraina offre ai giovani artisti un luogo dove lavorare su larga scala, e dà ai visitatori una ragione per uscire nel paesaggio per incontrarli.",
+          "category": "Cultura",
           "subcategory": "Inchiesta",
           "tags": [
             "Inchiesta",
             "scultura",
             "arte pubblica",
-            "Leopoli",
+            "Lviv",
             "Ucraina"
           ],
           "imageUrl": "https://api.eprisjournal.com/uploads/mu5park3020-01.jpg",
@@ -56329,16 +56329,16 @@
           "content": [
             {
               "type": "text",
-              "content": "A mezz'ora di auto da Leopoli, oltre il villaggio di Strilky, il terreno si apre in lunghi campi ondulati. Lì, a distanze che costringono a camminare, si trovano una sfera bianca con un profilo umano intagliato, un orecchio alto otto metri, una conchiglia di mattoni e un boschetto di alberi d'acciaio rosso. È PARK3020, il primo parco pubblico di scultura contemporanea ucraina."
+              "content": "Mezz'ora di auto da Lviv, oltre il villaggio di Strilky, la terra si apre in lunghi campi ondulati. In piedi in essi, a distanze che ti fanno camminare, ci sono una sfera bianca con un profilo umano inciso, una orecchio di otto metri, una conchiglia di mattoni e un boschetto di alberi di acciaio rossi. Questo è PARK3020, il primo parco pubblico di scultura contemporanea ucraina."
             },
             {
               "type": "text",
-              "content": "È nato nel 2020 con un obiettivo preciso: offrire agli scultori ucraini, soprattutto ai più giovani, un sostegno istituzionale, economico e formativo, un luogo dove realizzare grandi opere in patria e una piattaforma da cui farsi conoscere all'estero. Sei anni dopo, il parco è passato da una manciata di commissioni a una collezione, a un programma di mostre e a una sala espositiva al coperto."
+              "content": "È stato fondato nel 2020 con un brief chiaro: offrire agli scultori ucraini, e soprattutto ai giovani, supporto istituzionale, finanziario ed educativo, un luogo per realizzare grandi opere a casa e una piattaforma da cui essere visti a livello internazionale. Sei anni dopo, il parco è cresciuto da una manciata di commissioni a una collezione, un programma di mostre e una sala d'arte coperta."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-01.jpg",
-              "caption": "Nazar Bilyk, Spazio intorno, nei campi di PARK3020.",
+              "caption": "Nazar Bilyk, Space Around, nei campi di PARK3020.",
               "align": "center"
             },
             {
@@ -56348,30 +56348,30 @@
             },
             {
               "type": "text",
-              "content": "Il numero nel nome non è un indirizzo né un anno di fondazione. Il parco stesso definisce il 3020 una data simbolica di creazione e insieme un'ambizione: un parco del futuro che muove il primo di mille passi nella storia. È una buona chiave di lettura. Qui nulla è concluso: la collezione è pensata per essere arricchita, discussa e fatta crescere per moltissimo tempo."
+              "content": "Il numero nel nome non è un indirizzo o un anno di fondazione. Il parco chiama 3020 una data simbolica di creazione e, allo stesso tempo, un'ambizione: un parco del futuro che sta facendo il primo di mille passi nella storia. È un modo utile per leggere il luogo. Niente qui è finito; la collezione è destinata ad essere aggiunta, discussa e ampliata nel tempo molto lungo."
             },
             {
               "type": "text",
-              "content": "Questo sguardo lungo è scritto nella sua struttura. PARK3020 ha avviato una collaborazione duratura con lo Yorkshire Sculpture Park, la principale istituzione britannica dedicata alla scultura pubblica, per coinvolgere competenze internazionali nelle prime fasi e sviluppare insieme residenze, conferenze e laboratori. Un comitato di esperti, con la curatrice Katya Taylor, lo scultore Mykhailo Reva e Helen Pheby dello Yorkshire Sculpture Park, definisce le mostre e approva le opere, mentre un consiglio di mecenati presieduto da Ihor Kryvetskyi ne guida la strategia."
+              "content": "Quella lunga vista è incorporata nella sua struttura. PARK3020 ha iniziato una collaborazione duratura con Yorkshire Sculpture Park, la principale istituzione britannica per la scultura pubblica, per portare competenze internazionali mentre il parco trovava i suoi piedi e per sviluppare residenze, conferenze e studi insieme. Un consiglio di esperti, con la curatrice Katya Taylor, lo scultore Mykhailo Reva e Helen Pheby di Yorkshire Sculpture Park, modella mostre e approva opere; un consiglio di sorveglianza di patroni, presieduto da Ihor Kryvetskyi, ne supervisiona la strategia."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-02.jpg",
-              "caption": "Il paesaggio intorno al parco, vicino all'Edem Resort, nella regione di Leopoli.",
+              "caption": "Il paesaggio intorno al parco, vicino a Edem Resort nella regione di Lviv.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "Sei commissioni, un solo campo",
+              "content": "Sei commissioni, un campo",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Tra marzo e agosto 2020 sei artisti hanno realizzato opere su commissione per il parco: Anna Zviahintseva, Anna Naduda, Anton Logov, Bohdan Tomashevskyi, Nazar Bilyk e Oleksii Zolotar. Il punto di partenza comune era il paesaggio stesso, e la maggior parte delle opere gli risponde direttamente: parlano di come una persona sta nel mondo, lo guarda e lo ascolta."
+              "content": "Tra marzo e agosto 2020 sei artisti hanno realizzato opere per il parco su commissione: Anna Zviahintseva, Anna Naduda, Anton Logov, Bohdan Tomashevskyi, Nazar Bilyk e Oleksii Zolotar. La breve che condividevano era il paesaggio stesso, e la maggior parte delle opere risponde direttamente a questa: trattano di come una persona si posizioni, guardi e ascolti il mondo intorno a sé."
             },
             {
               "type": "text",
-              "content": "Spazio intorno di Nazar Bilyk è diventato l'immagine del parco. Una sagoma umana si dissolve nella forma perfetta di una sfera e, con essa, nello spazio circostante. Bilyk, che lavora con il negativo del gesso bianco, descrive questi contorni come oggetto e strumento allo stesso tempo, un modo per disegnare lo spazio in cui una persona è presente."
+              "content": "Lo Spazio Intorno di Nazar Bilyk è l'opera che è diventata l'immagine del parco. Una sagoma umana si dissolve nella forma perfetta di una sfera, e con essa nello spazio circostante. Bilyk, che lavora con la forma negativa di gesso bianco, descrive questi contorni come sia oggetto che strumento, un modo di disegnare lo spazio in cui una persona è presente."
             },
             {
               "type": "gallery",
@@ -56379,56 +56379,56 @@
                 "https://api.eprisjournal.com/uploads/mu5park3020-03.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-04.jpg"
               ],
-              "caption": "Nazar Bilyk, Spazio intorno."
+              "caption": "Nazar Bilyk, Spazio Intorno."
             },
             {
               "type": "text",
-              "content": "Orecchio di Oleksii Zolotar si innalza per otto metri sopra l'erba. Secondo il parco è nato da un selfie venuto male e affronta un tema classico, da Bosch a Van Gogh, con un'urgenza attuale: saper ascoltare un mondo che vive una guerra fisica e un sovraccarico emotivo, e scegliere che cosa lasciar entrare. Anna Zviahintseva è arrivata alla grande scala per una strada del tutto diversa. Suo padre, mentre rifletteva, attorcigliava distrattamente la carta stagnola in piccole figure; lei ne ha ingrandita una, un paio di gambe, fino a un oggetto di quattro metri, trasformando un gesto quasi inconscio in un monumento al pensiero."
+              "content": "L'Orecchio di Oleksii Zolotar si alza di otto metri dall'erba. È iniziato, nota il parco, con un selfie fallito, e affronta un tema familiare, da Bosch a Van Gogh, con uno urgente: la necessità di ascoltare attentamente un mondo in mezzo a guerra fisica e sovraccarico emotivo, e di scegliere cosa assorbire. Anna Zviahintseva ha intrapreso una strada molto diversa per la scala. Suo padre solitamente torceva la pellicola in piccole figure mentre pensava; lei ne ha ingrandita una, un paio di gambe, fino a un oggetto di quattro metri, trasformando un'abitudine semi-consapevole in un monumento al pensiero."
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-05.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-06.jpg"
               ],
-              "caption": "Oleksii Zolotar, Orecchio, e Anna Zviahintseva, Scultura di mio padre."
+              "caption": "Oleksii Zolotar, Ear, e Anna Zviahintseva, Scultura di Mio Padre."
             },
             {
-              "type": "text",
-              "content": "Gli Alberi della vita di Anton Logov crescono attraverso il tetto di una casa. Il paesaggio gli ha ricordato le grandi querce della regione di Odessa, dove da bambino andava dai nonni, e l'idea che per crescere una persona debba attraversare confini e infrangere gli standard. Dall'altra parte del campo, Biomorfo di Anna Naduda unisce la forma ramificata degli alberi al canone idealizzato della scultura greca antica e propone un'unica forma in cui corporeo e naturale coincidono."
+              "type": "testo",
+              "content": "Gli Alberi della Vita di Anton Logov crescono dritti attraverso il tetto di una casa. Il paesaggio gli ricordava le querce della regione dei suoi nonni vicino a Odesa, e l'idea che per svilupparsi, una persona deve attraversare confini e rompere gli standard. Biomorph di Anna Naduda, dall'altra parte del campo, unisce la forma ramificata degli alberi al canone idealizzato della scultura greca antica, proponendo una singola forma in cui il corporeo e il naturale sono la stessa cosa."
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-07.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-08.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-09.jpg"
               ],
-              "caption": "Anton Logov, Alberi della vita, con un dettaglio; Anna Naduda, Biomorfo."
+              "caption": "Anton Logov, Trees of Life, con un dettaglio, e Anna Naduda, Biomorph."
             },
             {
-              "type": "text",
-              "content": "Salamandra di Bohdan Tomashevskyi è la più astratta delle sei opere: piani di metallo nero in cui si leggono insieme una lucertola in movimento e il crinale dei Carpazi. Nei boschi di Rachiv, dove l'artista incontrava spesso la salamandra pezzata, una popolazione numerosa di questo animale è segno di un ambiente pulito. Qui diventa un richiamo silenzioso, per chi è abbagliato dal progresso tecnologico, al fatto che la civiltà dipende dalla natura."
+              "type": "testo",
+              "content": "La Salamandra di Bohdan Tomashevskyi è la più astratta delle sei: piani di metallo nero che si leggono sia come una lucertola in movimento sia come la cresta dei Carpazi. Nei boschi di Rakhiv, dove incontrava spesso la salamandra di fuoco, una grande popolazione dell'animale è un segno di aria e acqua pulite. Collocata qui, è un silenzioso avvertimento a una persona abbagliata dal progresso tecnologico che la civiltà dipende dalla natura."
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-10.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-11.jpg"
               ],
-              "caption": "Bohdan Tomashevskyi, Salamandra."
+              "caption": "Bohdan Tomashevskyi, Salamander."
             },
             {
-              "type": "header",
-              "content": "Gli arrivi successivi",
+              "type": "intestazione",
+              "content": "Arrivi successivi",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "La collezione ha continuato a crescere. Zhanna Kadyrova, che indaga il potenziale estetico dei comuni materiali da costruzione, ha realizzato un monumento a un mollusco: una conchiglia che si chiude al minimo segnale di pericolo, come impara a fare una persona nella grande città. Apparizione di Stepan Ryabchenko, una colonna gialla piegata, richiama la leggenda di un'apparizione della Vergine nel terreno di un orto botanico di Kyiv nel 1862. E il gruppo GREVIS, Volodymyr Levis ed Ernest Yemeliantsev, ha posato un bottone gigante in una radura di betulle: qualcosa perso tanto tempo fa, cresciuto insieme agli alberi e oggi parte del paesaggio quanto loro."
+              "type": "testo",
+              "content": "La collezione ha continuato a crescere. Zhanna Kadyrova, che mette alla prova il potenziale estetico dei materiali da costruzione ordinari, ha realizzato un monumento a un mollusco, una conchiglia che si chiude a ogni segno di pericolo, come impara a fare una persona in una grande città. Apparizione di Stepan Ryabchenko, una colonna gialla piegata, si riferisce alla leggenda di una visione che si dice sia apparsa sul sito di un giardino botanico di Kyiv nel 1862. E il gruppo GREVIS, Volodymyr Levis ed Ernest Yemeliantsev, hanno collocato un bottone gigante in una radura di betulle: una cosa perduta da molto tempo che è cresciuta insieme agli alberi, e ora appartiene al paesaggio tanto quanto loro."
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-12.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-13.jpg",
@@ -56438,62 +56438,62 @@
             },
             {
               "type": "text",
-              "content": "Nel maggio 2021 il parco ha aggiunto un altro modo di creare: un simposio di scultura, formato che pone limiti di tempo e di materiale. Nove scultori ucraini e internazionali hanno lavorato il granito sul posto per un mese, e i risultati sono entrati nella collezione nei campi."
+              "content": "In maggio 2021 il parco ha aggiunto un altro modo di fare lavoro: un simposio di sculture, un formato che limita artisti in tempo e materiale. Nove scultori ucraini e internazionali hanno trascorso il mese scolpendo granito sul posto, e i risultati si sono uniti alla collezione nei campi."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-15.jpg",
-              "caption": "Il simposio di scultura del 2021: granito lavorato sul posto.",
+              "caption": "Il simposio di sculture del 2021: granito lavorato sul posto.",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "Al coperto: dal forum a Nascita",
+              "content": "Al chiuso: dal forum a Birth",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Nell'autunno 2025 il primo Global Culture Forum ha inaugurato un nuovo spazio, l'Art Hall, con una grande mostra di maestri ucraini, tra cui Liubomyr Medvid, Ivan Marchuk e Serhii Savchenko. Accanto si tenevano Transformation of the Future, con giovani artisti, e Ceramica ucraina. Continuità della forma, che tracciava una linea dalle figure in argilla della cultura di Trypillia alla ceramica d'autore contemporanea."
+              "content": "In autunno 2025 il primo Global Culture Forum ha aperto una nuova sede, l'Art Hall, con una grande mostra di maestri ucraini, tra cui Liubomyr Medvid, Ivan Marchuk e Serhii Savchenko. Accanto si è svolta Transformation of the Future, una mostra di giovani artisti, e Ukrainian Ceramics. Continuità di Forma, che ha tracciato una linea dalle figure di argilla di Trypillia alla ceramica contemporanea."
             },
             {
               "type": "text",
-              "content": "La mostra in corso, Nascita, resta aperta fino al 4 ottobre 2026. Racconta il momento che precede l'opera, da dove nasce un'immagine e come l'esperienza personale di un artista diventa un linguaggio condiviso, con lavori di artisti di più generazioni, tra cui Volodymyr Odrekhivskyi, Roman Opalynskyi, Volodymyr Tsisaryk, Mykhailo Demtsiu, Artur Soletskyi e Ihor Palii. La completano una collezione di abiti tradizionali ucraini di diverse regioni e libri rari del Novecento."
+              "content": "La mostra attuale, Birth, si svolge fino al 4 ottobre 2026. Esamina il momento prima che un'opera esista, da dove proviene un'immagine e come un'esperienza privata diventa un linguaggio condiviso, con opere di artisti di diverse generazioni, tra cui Volodymyr Odrekhivskyi, Roman Opalynskyi, Volodymyr Tsisaryk, Mykhailo Demtsiu, Artur Soletskyi e Ihor Palii. È esposta insieme a una collezione di abiti storici ucraini di diverse regioni e libri rari del ventesimo secolo."
             },
             {
-              "type": "gallery",
+              "type": "galleria",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5park3020-16.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-17.jpg",
                 "https://api.eprisjournal.com/uploads/mu5park3020-18.jpg"
               ],
-              "caption": "Le sale espositive di PARK3020: Nascita, 2026, e l'Art Hall del Global Culture Forum, 2025."
+              "caption": "Sale espositive di PARK3020: Birth, 2026, e la Sala d'Arte del Global Culture Forum, 2025."
             },
             {
               "type": "header",
-              "content": "Come visitarlo",
+              "content": "Visita",
               "level": 3
             },
             {
               "type": "text",
-              "content": "PARK3020 è aperto tutti i giorni dalle 10:00 alle 18:00, accanto all'Edem Resort di Strilky, a circa 30 minuti d'auto da Leopoli; dalla stazione degli autobus n. 5 di Leopoli partono le linee 747, 842 e 843, poi mezz'ora a piedi. Le visite guidate, comprese le sale espositive, partono alle 12:00 e alle 15:00 e durano fino a due ore, ma il parco si può visitare anche da soli. Il biglietto intero costa 600 grivnie; bambini dai 6 ai 12 anni, militari, pensionati e studenti d'arte pagano 300, mentre bambini sotto i sei anni e veterani di guerra entrano gratis. I cani sono ammessi e c'è un parcheggio con ricarica per auto elettriche."
+              "content": "PARK3020 è aperto tutti i giorni dalle 10:00 alle 18:00, accanto a Edem Resort a Strilky, a circa 30 minuti di auto da Lviv; gli autobus 747, 842 e 843 partono dalla fermata dell'autobus No. 5 di Lviv, seguiti da una passeggiata di 30 minuti. Le visite guidate, comprese le sale espositive, partono alle 12:00 e alle 15:00 e durano fino a due ore, e puoi anche visitare il parco da solo. Un biglietto standard costa 600 hryvnias; bambini dai 6 ai 12 anni, personale militare, pensionati e studenti d'arte pagano 300, e bambini sotto i sei anni e veterani di guerra entrano gratuitamente. I cani sono i benvenuti, e c'è un parcheggio con ricarica per auto elettriche."
             },
             {
-              "type": "image",
+              "type": "immagine",
               "content": "https://api.eprisjournal.com/uploads/mu5park3020-19.jpg",
-              "caption": "Luce della sera sui campi di PARK3020.",
-              "align": "center"
+              "caption": "Luce tarda sopra i campi di PARK3020.",
+              "align": "centro"
             },
             {
-              "type": "text",
-              "content": "Il modo migliore per vedere il parco è con calma. Le distanze tra le opere fanno parte dell'esperienza: vedi una scultura da lontano, la perdi dietro un rilievo del terreno e la ritrovi da un altro lato. Per un parco che si data mille anni nel futuro, è il ritmo giusto."
+              "type": "testo",
+              "content": "Il modo migliore per vedere il parco è lentamente. Le distanze tra le opere fanno parte dell'esperienza: ti avvicini a una scultura da lontano, la perdi dietro un rialzo del terreno e la trovi di nuovo da un'altra parte. Per un parco che si autodefinisce con mille anni di anticipo, è un ritmo appropriato."
             },
             {
-              "type": "text",
-              "content": "<i>Testo: Viacheslav Munister per EPRIS Journal. Fotografie: PARK3020, park3020.com. Informazioni per la visita aggiornate a settembre 2026; verificare su park3020.com prima di partire.</i>"
+              "type": "testo",
+              "content": "<i>Testo: Viacheslav Munister per EPRIS Journal. Fotografie: PARK3020, park3020.com. Informazioni sulla visita a partire da settembre 2026; controlla park3020.com prima di partire.</i>"
             }
           ],
           "publishAt": "2026-09-19T05:00:00+03:00",
-          "updatedAt": "2026-09-17T17:12:46.000Z"
+          "updatedAt": "2026-09-17T17:15:46.346Z"
         }
       ],
       "reviews": [
