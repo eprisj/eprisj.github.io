@@ -42892,17 +42892,17 @@
         },
         {
           "id": 43,
-          "role": "Author",
+          "role": "Autor",
           "imageSeed": "",
           "showCover": true,
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "El río que Valencia convirtió en parque",
+          "title": "El río Valencia convertido en un parque",
           "author": "Viacheslav Munister",
           "date": "20 de septiembre de 2026",
-          "excerpt": "Tras la catastrófica riada de 1957, Valencia sacó el río de la ciudad y planeó una autopista en el cauce vacío. Sus vecinos pidieron otra cosa. El resultado es un corredor verde de casi diez kilómetros y uno de los espacios públicos más instructivos de Europa.",
-          "category": "Architecture",
+          "excerpt": "Después de una inundación catastrófica en 1957, Valencia desplazó su río fuera de la ciudad y planificó una autopista en el lecho vacío. Sus ciudadanos pidieron otra cosa. El resultado es un canal verde de casi diez kilómetros de longitud, y uno de los espacios públicos más instructivos de Europa.",
+          "category": "Arquitectura",
           "subcategory": "Ensayo",
           "tags": [
             "Ensayo",
@@ -42916,59 +42916,59 @@
           "content": [
             {
               "type": "text",
-              "content": "En el centro de Valencia hay un río sin agua. Sus pretiles de piedra siguen ahí, igual que sus puentes, algunos con siglos de historia, pero debajo, donde antes corría el Turia, hay naranjos, campos de fútbol, estanques, pistas para correr y un gigante tumbado boca arriba mientras los niños trepan por él. El Jardí del Túria sigue el antiguo cauce durante unos ocho kilómetros y medio, desde el borde occidental de la ciudad hasta las cáscaras blancas de la Ciudad de las Artes y las Ciencias, cerca del mar."
+              "content": "En el medio de Valencia hay un río sin agua en él. Sus márgenes de piedra todavía están allí, y también sus puentes, algunos de ellos centenarios, pero debajo de ellos, donde una vez corría el Turia, hay naranjos, campos de fútbol, estanques, pistas de atletismo y un gigante acostado de espaldas mientras los niños trepan sobre él. El Jardí del Túria, el Jardín del Turia, sigue el antiguo cauce del río por unos ocho kilómetros y medio, desde el borde oeste de la ciudad hasta las conchas blancas de la Ciudad de las Artes y las Ciencias cerca del mar."
             },
             {
               "type": "text",
-              "content": "Parece un regalo de la naturaleza. Es lo contrario: el resultado de una catástrofe, una decisión de ingeniería, un proyecto de carretera que nunca se construyó y una campaña ciudadana que defendió que una ciudad podía usar su propia cicatriz de otra manera."
+              "content": "Parece un regalo de la naturaleza. Es lo opuesto: el producto de un desastre, una decisión de ingeniería, un plan de carreteras que nunca se construyó y una campaña cívica que insistió en que una ciudad podía usar su propia cicatriz de otra manera."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mu5turia-01.jpg",
-              "caption": "El antiguo cauce como parque lineal, que termina en la Ciudad de las Artes y las Ciencias.",
-              "credit": "Wikimedia Commons: Mike Lowe, Public domain",
+              "caption": "El antiguo cauce del río como un parque lineal, terminando en la Ciudad de las Artes y las Ciencias.",
+              "credit": "Wikimedia Commons: Mike Lowe, Dominio público",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ciutat_de_les_Arts_i_les_Ci%C3%A8ncies.jpg",
               "align": "center"
             },
             {
               "type": "header",
-              "content": "La riada",
+              "content": "La inundación",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "El Turia siempre fue peligroso. Los historiadores cuentan decenas de riadas en los siglos anteriores al XX, pero la que cambió la ciudad llegó el 14 de octubre de 1957. Tras dos días de lluvias intensas aguas arriba, el río se desbordó y entró en Valencia. En algunas calles el agua alcanzó los cinco metros. Murieron al menos 81 personas, miles de viviendas quedaron destruidas y buena parte de la vida comercial de la ciudad acabó bajo el barro."
+              "type": "texto",
+              "content": "El Turia siempre había sido peligroso. Los historiadores cuentan docenas de inundaciones en los siglos anteriores al veinte, pero la que cambió la ciudad ocurrió el 14 de octubre de 1957. Después de dos días de fuertes lluvias en la cuenca alta, el río rompió sus márgenes y se vertió en Valencia. En algunas calles el agua alcanzó los cinco metros. Al menos 81 personas murieron, miles de hogares fueron destruidos, y gran parte de la vida comercial de la ciudad quedó bajo el barro."
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-02.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-03.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-04.jpg"
               ],
-              "caption": "El Turia desbordado, octubre de 1957, y la limpieza del barro en las calles.",
-              "credit": "Wikimedia Commons: unknown photographer, scan by Talayuelo, CC0; Talayuelo, CC BY-SA 3.0; B25es, CC BY-SA 3.0",
+              "caption": "El Turia en inundación, octubre de 1957, y limpiando el barro de las calles de la ciudad.",
+              "credit": "Wikimedia Commons: fotógrafo desconocido, escaneo por Talayuelo, CC0; Talayuelo, CC BY-SA 3.0; B25es, CC BY-SA 3.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Riada_Valencia_15_octubre_1957.jpg"
             },
             {
-              "type": "text",
-              "content": "La respuesta fue radical. Con lo que se conoció como Plan Sur, el río salió por completo de la ciudad: se excavó un nuevo cauce de doce kilómetros de largo y 175 metros de ancho, unos tres kilómetros al sur, terminado a comienzos de los años setenta. Aquello dejó un regalo extraño en el corazón de Valencia: un cauce seco lo bastante ancho para una autopista. Y una autopista era precisamente lo que proponían los planes de la época."
+              "type": "texto",
+              "content": "La respuesta fue radical. Bajo lo que se conoció como el Plan Sur, el río fue sacado por completo de la ciudad: se excavó un nuevo cauce, de doce kilómetros de largo y 175 metros de ancho, aproximadamente a tres kilómetros al sur y completado a principios de los años 70. Eso dejó un extraño regalo en el corazón de Valencia, un lecho seco lo suficientemente ancho para una autopista. Y una autopista es exactamente lo que los planes de la época proponían colocar allí."
             },
             {
-              "type": "header",
-              "content": "El cauce es nuestro",
+              "type": "encabezado",
+              "content": "El lecho del río es nuestro",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "La carretera nunca se construyó. Durante los años setenta, asociaciones vecinales y ciudadanos se movilizaron con un lema que en Valencia aún se recuerda: El llit del Túria és nostre i el volem verd, el cauce del Turia es nuestro y lo queremos verde. En 1976 un real decreto cedió el antiguo cauce a la ciudad, y en 1979 quedó calificado oficialmente como zona verde y parque público. En 1981 el Ayuntamiento encargó un plan al Taller de Arquitectura de Ricardo Bofill; el proyecto definitivo se aprobó en 1984, las obras empezaron a mediados de los ochenta y los primeros tramos se abrieron al público en 1986 y 1987."
+              "type": "texto",
+              "content": "El camino nunca fue construido. A lo largo de los años 1970 asociaciones de vecinos y ciudadanos hicieron campaña bajo un lema que todavía se recuerda en Valencia: El llit del Túria és nostre i el volem verd, el lecho del río Túria es nuestro y lo queremos verde. En 1976 un decreto real transfirió el antiguo lecho a la ciudad, y en 1979 fue formalmente designado como espacio verde y parque público. En 1981 la ciudad encargó a Taller de Arquitectura de Ricardo Bofill que elaborara un plan; el esquema final fue aprobado en 1984, y las obras comenzaron a mediados de los años 1980, con las primeras secciones abiertas al público en 1986 y 1987."
             },
             {
-              "type": "text",
-              "content": "La aportación del propio Bofill es la parte más monumental del jardín: el tramo central, de carácter formal, con naranjos, palmeras, agua y columnatas neoclásicas blancas. Enmarca el Palau de la Música, la sala de conciertos de José María García de Paredes inaugurada en 1987, que se asienta en el cauce como un pabellón de vidrio en un jardín."
+              "type": "texto",
+              "content": "La propia contribución de Bofill es la parte más monumental del jardín, el tramo central formal con naranjos, palmeras, agua y columnas neoclásicas blancas. Enmarca el Palau de la Música, la sala de conciertos de José María García de Paredes que se inauguró en 1987 y que se encuentra en el lecho del río como un pabellón de cristal en un jardín."
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-05.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-06.jpg"
@@ -42978,47 +42978,47 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jardin_del_Turia_-Tramo_XI_09.jpg"
             },
             {
-              "type": "text",
-              "content": "El resto del jardín no lo diseñó una sola mano, y ahí está su fuerza. El cauce se dividió en tramos numerados que asumieron distintos equipos. Vetges Tu i Mediterrània diseñó zonas deportivas y praderas; los arquitectos Otegui, Gisbert y Noguera, el paisajista Ángel Zurilla y otros dieron forma a nuevos tramos; la Conselleria de Agricultura plantó todo un bosque urbano de pinos. El resultado cambia de carácter cada pocos cientos de metros, pero se mantiene unido por lo único que no inventó ningún diseñador: la línea del antiguo río. Hoy ocupa unas 136 hectáreas, con una anchura media de unos 160 metros, y está previsto que nuevos tramos lo lleven hasta casi diez kilómetros."
+              "type": "texto",
+              "content": "El resto del jardín no fue diseñado por una sola mano, y esa es su fortaleza. El lecho del río fue dividido en secciones numeradas, y diferentes equipos las abordaron. Vetges Tu y Mediterrània diseñaron áreas deportivas y praderas; los arquitectos Otegui, Gisbert y Noguera, el arquitecto paisajista Ángel Zurilla y otros modelaron tramos adicionales; el departamento regional de agricultura plantó todo un bosque urbano de pinos. El resultado cambia de carácter cada pocos cientos de metros, pero se mantiene unido por lo que ningún diseñador inventó, la línea del antiguo río. Hoy cubre unas 136 hectáreas, con un ancho promedio de unos 160 metros, y se planifican más secciones para llevarlo a casi diez kilómetros."
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-07.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-08.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-09.jpg"
               ],
-              "caption": "Campos deportivos, pinos y palmeras: distintos tramos del mismo cauce.",
+              "caption": "Cancha deportivas, pinos y palmeras: diferentes secciones del mismo lecho del río.",
               "credit": "Wikimedia Commons: Dorieo, CC BY-SA 4.0; Dorieo, CC BY-SA 3.0; Dorieo, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jard%C3%ADn_del_Turia_01.jpg"
             },
             {
-              "type": "header",
-              "content": "Un gigante en el cauce",
+              "type": "encabezado",
+              "content": "Un gigante en el lecho del río",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "El habitante más famoso del jardín llegó a finales de los ochenta. En el tramo diseñado por Rafael Rivera con el artista Manolo Martín, Lemuel Gulliver yace atado en el suelo, como en la novela de Jonathan Swift, y los niños de Valencia hacen de liliputienses: su pelo, su casaca y sus extremidades son toboganes, rampas y rocódromos. Es un parque infantil, pero también una pequeña lección de escala que encaja con todo el proyecto: una ciudad que descubre qué hacer con un espacio de repente mucho mayor de lo esperado."
+              "type": "texto",
+              "content": "El habitante más famoso del jardín llegó a principios de los años 1990. En la sección diseñada por Rafael Rivera con el artista Manolo Martín, Lemuel Gulliver yace atado en el suelo, como en la novela de Jonathan Swift, y los niños de Valencia juegan a los liliputienses: su cabello, abrigo y extremidades son toboganes, rampas y paredes de escalada. Es un parque infantil, pero también una pequeña lección de escala que abarca todo el proyecto, una ciudad que descubre lo que se puede hacer con un espacio que de repente es mucho más grande de lo esperado."
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-10.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-11.jpg"
               ],
-              "caption": "El Parque Gulliver, visto desde un puente y desde el suelo.",
+              "caption": "El parque infantil de Gulliver, visto desde un puente y desde el suelo.",
               "credit": "Wikimedia Commons: Joanbanjo, CC BY-SA 4.0; Steven Lek, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:El_Gulliver_des_del_pont_del_Regne_de_Val%C3%A8ncia.jpg"
             },
             {
               "type": "header",
-              "content": "Los puentes y el final del trazado",
+              "content": "Puentes, y el fin de la línea",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Como el jardín es un antiguo río, la ciudad sigue cruzándolo por puentes, más de dos docenas. Algunos son históricos: el Pont del Mar data de finales del siglo XVI. Otros pertenecen a la nueva ciudad. Santiago Calatrava, nacido en Valencia, construyó el Pont de l'Exposició y, más tarde, el puente de l'Assut de l'Or, cuyo alto pilono blanco marca hoy el extremo oriental del jardín."
+              "content": "Porque el jardín es un río antiguo, la ciudad todavía lo cruza en puentes, más de dos docenas de ellos. Algunos son históricos: el Pont del Mar data de finales del siglo XVI. Otros pertenecen a la ciudad nueva. Santiago Calatrava, nacido en Valencia, construyó el Pont de l'Exposició y más tarde el puente Assut de l'Or, cuyo alto pilón blanco ahora marca el extremo este del jardín."
             },
             {
               "type": "image",
@@ -43030,39 +43030,39 @@
             },
             {
               "type": "text",
-              "content": "Ese extremo lo domina la Ciudad de las Artes y las Ciencias de Calatrava, levantada en el cauce desde los años noventa: L'Hemisfèric abrió en 1998, el museo de ciencias en 2000, L'Oceanogràfic, con cubiertas de Félix Candela, en 2003, el Palau de les Arts en 2005 y L'Àgora en 2009. Se convirtió en la postal de la ciudad y en uno de sus proyectos más discutidos, entre otras cosas porque su coste multiplicó varias veces el presupuesto inicial. Desde el jardín se lee como el último y más ruidoso capítulo de una historia que empezó con barro en las calles."
+              "content": "Ese extremo está dominado por la Ciudad de las Artes y las Ciencias de Calatrava, construida en el lecho del río desde los años 90: L'Hemisfèric inaugurado en 1998, el museo de ciencias en 2000, L'Oceanogràfic, con conchas de Félix Candela, en 2003, el Palau de les Arts en 2005 y L'Àgora en 2009. Se convirtió en la postal de la ciudad y uno de sus proyectos más discutidos, no menos porque su costo se multiplicó varias veces por encima del presupuesto original. Visto desde el jardín, se lee como el último y más ruidoso capítulo de una historia que comenzó con barro en las calles."
             },
             {
-              "type": "gallery",
+              "type": "galería",
               "content": [
                 "https://api.eprisjournal.com/uploads/mu5turia-13.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-14.jpg",
                 "https://api.eprisjournal.com/uploads/mu5turia-15.jpg"
               ],
-              "caption": "L'Hemisfèric y el Palau de les Arts; L'Àgora y el puente de l'Assut de l'Or; el jardín junto al Palau de les Arts.",
+              "caption": "L'Hemisfèric y el Palau de les Arts; L'Àgora y el puente Assut de l'Or; el jardín cerca del Palau de les Arts.",
               "credit": "Wikimedia Commons: Javier Boadella, CC BY-SA 3.0; Esniom, CC BY-SA 4.0; José Luis Filpo Cabana, CC BY 3.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hemisferic_y_Palacio_de_las_Artes_Reina_Sofia,_Valencia.jpg"
             },
             {
-              "type": "header",
+              "type": "encabezado",
               "content": "Lo que enseña el jardín",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Al Jardín del Turia se le suele llamar parque. Se parece más a un argumento sobre lo que una ciudad debe a sus habitantes. El mismo cauce vacío pudo haberse convertido en una vía rápida entre los bordes de Valencia; en cambio, se convirtió en una línea lenta que une sus barrios, por la que la gente camina, corre y pedalea de un extremo a otro de la ciudad sin cruzarse con un coche."
+              "type": "texto",
+              "content": "El Jardín del Turia a menudo se describe como un parque. Está más cerca de un argumento sobre lo que una ciudad debe a sus habitantes. El mismo lecho de río vacío podría haberse convertido en una vía rápida que conecta los bordes de Valencia; en cambio, se convirtió en una línea lenta que conecta sus barrios, donde la gente camina, corre y pedalea por la ciudad sin encontrarse con un coche."
             },
             {
-              "type": "text",
-              "content": "Hoy muchas ciudades intentan recuperar ríos soterrados, derribar autopistas elevadas o convertir vías de tren en parques. Valencia hizo algo parecido hace casi medio siglo, antes de que estuviera de moda, y por una razón sencilla: quienes habían vivido la riada pidieron que el lugar de la catástrofe se les devolviera en verde."
+              "type": "texto",
+              "content": "Muchas ciudades ahora intentan recuperar ríos enterrados, demoler autopistas elevadas o convertir líneas ferroviarias en parques. Valencia hizo algo similar hace casi medio siglo, antes de que fuera de moda, y por una razón sencilla: las personas que habían vivido la inundación pidieron que el lugar del desastre se les devolviera como algo verde."
             },
             {
-              "type": "text",
-              "content": "<i>Texto: Viacheslav Munister para EPRIS Journal. Fotografías: Wikimedia Commons; autores y licencias junto a cada imagen.</i>"
+              "type": "texto",
+              "content": "<i>Texto: Viacheslav Munister para EPRIS Journal. Fotografías: Wikimedia Commons, autores y licencias se proporcionan con cada imagen.</i>"
             }
           ],
           "publishAt": "2026-09-20T05:00:00+03:00",
-          "updatedAt": "2026-09-17T17:31:03.000Z"
+          "updatedAt": "2026-09-17T17:32:15.536Z"
         }
       ],
       "reviews": [
