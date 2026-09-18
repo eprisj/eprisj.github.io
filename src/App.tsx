@@ -2685,7 +2685,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   return (
                     <Tag
                       key={index}
-                      className={`rich-text font-bold text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'}`}
+                      className={`rich-text font-normal text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}
                       style={{ fontFamily: "var(--font-display)" }}
                       dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
                     />
