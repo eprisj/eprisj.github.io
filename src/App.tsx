@@ -1562,6 +1562,12 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
         first card in it. A link to the manifesto closes out the "who we
         are" story with "what we believe".
       */}
+      <Reveal>
+        <div className="mb-16 text-center max-w-xl mx-auto">
+          <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Est. 2025</div>
+          <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an Italian publication, founded in Milan in 2025 as a digital space for art, architecture and interior design — read wherever taste and culture actually live.</p>
+        </div>
+      </Reveal>
       {team.length > 0 && (
         <Reveal>
           <div className="mb-16">
@@ -1605,7 +1611,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
                     roleLabel={roleLabel}
                     bioText={bioText}
                     websiteLabel={t('about.website')}
-                    locationBadge={isEditor || isTechDirector ? '🇮🇹 Based in Italy' : undefined}
+                    locationBadge={isEditor ? '🇮🇹 Based in Italy' : undefined}
                   />
                 );
               })}
