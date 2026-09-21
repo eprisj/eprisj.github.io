@@ -1485,11 +1485,13 @@ function TeamMemberCard({
   roleLabel,
   bioText,
   websiteLabel,
+  locationBadge,
 }: {
   author: Author;
   roleLabel: string;
   bioText?: ReactNode;
   websiteLabel: string;
+  locationBadge?: string;
 }) {
   /* Портрет обрезается в круг, логотип — нет: круглая маска съедает вордмарк
      по краям, а институция узнаётся именно по нему. Тот же размер, тот же
@@ -1506,6 +1508,11 @@ function TeamMemberCard({
         <h4 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{author.name}</h4>
         <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
           {roleLabel}
+          {locationBadge && (
+            <span className="block mt-1.5 normal-case tracking-normal text-[rgb(var(--c-accent-rgb)_/_0.55)]">
+              {locationBadge}
+            </span>
+          )}
         </div>
         {bioText && (
           <div className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.8)] [&>p]:mb-4 last:[&>p]:mb-4">{bioText}</div>
@@ -1592,7 +1599,14 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
                 }
 
                 return (
-                  <TeamMemberCard key={member.id} author={member} roleLabel={roleLabel} bioText={bioText} websiteLabel={t('about.website')} />
+                  <TeamMemberCard
+                    key={member.id}
+                    author={member}
+                    roleLabel={roleLabel}
+                    bioText={bioText}
+                    websiteLabel={t('about.website')}
+                    locationBadge={isEditor || isTechDirector ? '🇮🇹 Based in Italy' : undefined}
+                  />
                 );
               })}
             </div>
