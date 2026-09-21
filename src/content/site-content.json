@@ -38212,6 +38212,371 @@
           "updatedAt": "2026-09-21T17:21:01.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel"
+        },
+        {
+          "id": 46,
+          "draft": false,
+          "previewToken": "c9f26ab1e6f4a7d029d3b6e1a5c84f70",
+          "title": "Der Rote Faden: Veronika Chernienko über das Malen, was Worte nicht erreichen können",
+          "author": "Viacheslav Munister & Veronika Chernienko",
+          "role": "Autor",
+          "date": "21. Sep. 2026",
+          "excerpt": "Ukrainische Malerin Veronika Chernienko, ausgebildet an der Kyiv Akademie und seit 2014 auf Zypern ansässig, darüber, warum sie sich vor allem als Farbgestalterin bezeichnet, den wiederkehrenden roten Faden, der durch ihre persönlichsten Arbeiten läuft, und die biennale Skizze über Zuhause und Entfernung, die sie immer noch nicht ansehen kann, ohne zu weinen.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "Malerei",
+            "Ukraine",
+            "Zypern"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mubljntzt73dx1.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "Veronika Chernienko malt so, wie sie an der Kyiv Akademie ausgebildet wurde, die sie immer noch ihr Zuhause nennt, und malt dagegen im selben Atemzug. Eine Farbgestalterin zuerst, sagt sie, bevor sie irgendetwas anderes ist — jemand, der aus der Überzeugung arbeitet, dass Farbe, nicht Zeichnung, das trägt, was sie tatsächlich sagen möchte."
+            },
+            {
+              "type": "text",
+              "content": "Sie verließ die Ukraine 2014 nach Cyprus, und jahrelang registrierte ihre Malerei kaum die Bewegung: die Palette blieb ihre, die Motive blieben die menschliche Figur. Was die Arbeit veränderte, war nicht die Geografie, sondern der Krieg. Seit 2022 hat sie mehr gemalt, und anders — nicht immer direkt über den Krieg, aber mit seinen Nachwirkungen in jeder Leinwand: Verletzlichkeit, das Bedürfnis nach Schutz, die Suche nach Wurzeln und nach den zurückgelassenen Menschen. Ein wiederkehrender roter Faden, um ein Handgelenk gebunden oder ins Wasser ziehend, ist für sie eher ein Nerv, den verschiedene Gemälde aus unterschiedlichen Gründen berühren, als ein festes Symbol."
+            },
+            {
+              "type": "text",
+              "content": "Eines dieser Gemälde — ein Kind, das in den freiliegenden Wurzeln eines Baumes eingekauert ist, ein roter Faden, der durch die ganze Komposition läuft — wurde für eine Biennale 2023 in Larnaca zum Thema eines Zuhauses fern von Zuhause geschaffen. Es wurde nicht ausgewählt. Sie kann es immer noch nicht ansehen, ohne zu weinen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljntzt73dx1.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, unbetitelt (ein Kind zwischen Wurzeln), Öl auf Leinwand — die Skizze für die Biennale 2023 in Larnaca, nicht ausgewählt"
+            },
+            {
+              "type": "header",
+              "content": "01 · Woher die Ausbildung kam",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Viacheslav Munister [VM]: Könnten Sie sich vorstellen und den Weg skizzieren, der Sie von Ihrer Ausbildung bis zu Ihrer heutigen Praxis in Cyprus geführt hat?"
+            },
+            {
+              "type": "text",
+              "content": "Veronika Chernienko [VC]: Ich male seit frühester Kindheit — es war immer ein natürlicher Teil meines Lebens. Mit zwölf Jahren kam ich auf eine Kunst-Internat in Kyiv, und später schloss ich die National Academy of Fine Arts and Architecture mit einem Master in der Tafelmalerei ab. Gegen Ende meines Studiums trat ich in die National Union of Artists of Ukraine ein und nahm an ukrainischen und internationalen Ausstellungen teil."
+            },
+            {
+              "type": "text",
+              "content": "Als meine Familie und Kinder kamen, konzentrierte ich mich eine Weile auf das Malen für mich selbst. 2014 zogen wir nach Cyprus, wo ich mich der lokalen Kunstgemeinschaft anschloss, Porträts auf Auftrag malte, Wandgemälde anfertigte und Kinder unterrichtete — einschließlich der Vorbereitung auf den Eintritt in die Kunstschule. Die Umstände und Formen der Arbeit änderten sich ständig, aber die tägliche Praxis verließ mich nie. Ich fühlte immer, dass Malen mein Beruf und meine Berufung ist."
+            },
+            {
+              "type": "text",
+              "content": "Mit dem Beginn des groß angelegten Krieges in der Ukraine begann ich besonders intensiv zu malen — das Malen half mir, das durchzustehen, wofür ich keine Worte hatte. Auch wenn ein Werk den Krieg nicht direkt anspricht, trägt es ein Echo dessen in sich, was ich durchlebt habe: ein Gefühl der Verletzlichkeit, ein Bedürfnis nach Schutz, eine Suche nach Unterstützung und Verbindung zu meinen Wurzeln. Durch den menschlichen Körper und seine Gesten spreche ich über einen inneren Schmerz, der von außen nicht immer sichtbar ist."
+            },
+            {
+              "type": "text",
+              "content": "Es war auf Zypern, unter Künstlern aus vielen Ländern, dass ich die Einzigartigkeit der ukrainischen Malerschule, die mich geprägt hat, noch tiefer verstand — ich sah die Reichhaltigkeit unserer Palette und die Kühnheit unserer Farben und Bilder mit neuen Augen. Heute ist es mir wichtig, dieses Erbe in meiner eigenen Arbeit weiterzuentwickeln und an meine Studierenden weiterzugeben, um eine lebendige Verbindung zur Kultur zu bewahren, die mich geprägt hat und die ich mit mir trage."
+            },
+            {
+              "type": "text",
+              "content": "VM: Könnten Sie Ihre Ausbildung in eine bestimmte pädagogische Tradition einordnen, und inwieweit sehen Sie Ihre aktuelle Arbeit als Fortsetzung oder Abweichung davon?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Meine Ausbildung gehört zur ukrainischen akademischen Malerschule. Ich studierte in der Werkstatt von Oleksandr Lopukhov — unsere Abschlussklasse war leider seine letzte. Komposition und das Genrebild waren dort die Grundlage. Gleichzeitig arbeiteten wir viel mit Ihor Yulianovych Melnychuk, dessen Ansatz durch dekorative Sensibilität und eine kühne, gesättigte Palette geprägt ist. Es war die Kombination der beiden, die meine Sicht auf ein Gemälde formte."
+            },
+            {
+              "type": "text",
+              "content": "Feldpraxis war enorm wichtig. Wir verbrachten lange Phasen in den Karpaten und in Transkarpatien, malten aus dem Leben, studierten die lokale Kultur und Bräuche. Ukrainische Motive wurden Teil meiner persönlichen Erfahrung. Selbst in den Studentenjahren, als viele nach sich selbst außerhalb der akademischen Schule suchten, war ich froh, zur ukrainischen Tradition des Realismus und Impressionismus zu gehören. Der Mensch und das Thema Ukraine sind seitdem bei mir geblieben."
+            },
+            {
+              "type": "text",
+              "content": "Gleichzeitig fühle ich heute, dass ich mich vom Akademismus und von der Notwendigkeit, Regeln zu folgen, entfernt habe. In einer Welt, die sich ständig verändert, mit so viel kreativer Freiheit, habe ich mir erlaubt, zu tun, was ich will — meinem eigenen Farb- und Formgefühl zu vertrauen und dem zu folgen, wohin die Arbeit selbst führt. Ich verlasse mich immer mehr auf Intuition, aber es ist eine Intuition, die aus tiefem Training und jahrelanger Praxis gewachsen ist. Die Schule wurde zu einer inneren Grundlage, die mir die Freiheit gibt, zu experimentieren. Und die einfache Freude am Prozess selbst ist mir enorm wichtig — ich empfinde echten Genuss bei dem, was ich tue."
+            },
+            {
+              "type": "header",
+              "content": "02 · Die Weltanschauung eines Coloristen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Wie würdest du deine Praxis insgesamt jemandem beschreiben, der sie zum ersten Mal begegnet — was sollten sie zuerst verstehen?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Meine Praxis beginnt mit einem aufmerksamen, verliebten Blick auf die Welt. Ich habe eine Schwäche dafür, alles Lebendige zu bewundern — ich liebe es, die Natur zu beobachten, die Bewegung des Lichts, Reflexionen und Farbklänge. Die Welt durch die Augen eines Malers zu sehen, fühlt sich für mich natürlich an: Ich bemerke ständig Farbkombinationen und kaum wahrnehmbare Verschiebungen, die ich auf die Leinwand bringen möchte."
+            },
+            {
+              "type": "text",
+              "content": "Vor allem fühle ich mich als Farbgestalter. Es ist durch Farbe, mehr als durch Form, dass ich meine Wahrnehmung und das, was ich durchlebe, vermittle. Selbst wenn die Welt so viel Schmerz birgt, bin ich fasziniert davon, wie sich alles Lebendige um uns herum unaufhörlich verändert, und ich möchte dieses Gefühl in meine Malerei einfließen lassen."
+            },
+            {
+              "type": "text",
+              "content": "Ich möchte dem Betrachter zeigen, was ich sehe, und was er sonst vielleicht übersehen würde. Ihn einladen, anzuhalten, genauer hinzusehen und zu fühlen. Was mir am wichtigsten ist, ist, dass die Farbe einen Menschen berührt — dass sie eine Erinnerung an die eigene hervorruft, ein Gefühl, ein neues Bewusstsein für etwas Vertrautes."
+            },
+            {
+              "type": "header",
+              "content": "03 · Zypern und was die Geographie nicht veränderte",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Verschiebung von Ukraine nach Cyprus ist eine Tatsache deiner Biografie. Ist es auch eine Tatsache deiner Malerei — tritt die Geografie als Thema auf, als Licht und Palette, oder bleibt sie außerhalb des Werks selbst?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Eine andere Kultur und Landschaft können sicherlich verändern, wie ein Künstler arbeitet. Aber ich kann nicht sagen, dass der Umzug nach Cyprus meine Palette oder meine Themenvielfalt wesentlich verändert hat. Ich male weiterhin das, was mir nahe ist, und greife auf eine Sichtweise zurück, die sich in der Ukraine gebildet hat."
+            },
+            {
+              "type": "text",
+              "content": "Selbst wenn ich mich der zypriotischen Landschaft zuwende, sehe ich sie durch meine eigene Erfahrung und stelle sie in meiner eigenen Art und Farbzusammenhänge dar. Was mich interessiert, ist, welches Bild dieses Ortes aus diesem besonderen Blick entstehen kann — ich habe das Gefühl, dass es sich vom mediterranen Gemälde, das ich hier begegne, unterscheiden wird. Gerade auf Cyprus, unter Künstlern aus verschiedenen Ländern, bemerke ich am deutlichsten die Unterschiede in unseren malerischen Ansätzen und erkenne, was die ukrainische Schule mir gegeben hat."
+            },
+            {
+              "type": "text",
+              "content": "Plein-air-Praxis hat hier nie wirklich Wurzeln geschlagen, obwohl ich mehr als einmal versucht habe, dazu zurückzukehren. Ich arbeite meistens zu Hause und male eine große Menge an figurativer Arbeit. Der Mensch und seine innere Welt bleiben im Mittelpunkt meiner Aufmerksamkeit."
+            },
+            {
+              "type": "text",
+              "content": "Mit dem Beginn des vollumfänglichen Krieges schloss ich mich ehrenamtlicher Arbeit im Ukrainian House in Cyprus an, wo ich ukrainische Kinder unterrichte. Gemeinsam bewahren wir unsere künstlerische Tradition, wenden uns ukrainischen Bildern zu, arbeiten mit Farbe. Es ist mir wichtig, dass Kinder, die im Ausland aufwachsen, eine lebendige Verbindung zu ihrer Kultur spüren und sie in ihrer eigenen Arbeit entwickeln können. Ich sehe dies auch als Fortsetzung eines Weges, der in der Ukraine begann."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljrtgp6kqn4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, drei Frauen in traditioneller Tracht, Öl auf Leinwand"
+            },
+            {
+              "type": "header",
+              "content": "04 · Quellen, und sich von der Linie abhebend",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Über die direkte Beobachtung hinaus, was ist Ihre primäre visuelle Referenzquelle — kunsthistorisches Vorbild, Fotografie, etwas anderes — und wie bewusst platzieren Sie Ihre eigene Arbeit innerhalb einer Linie von Malern?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Meine Gemälde entstehen aus einer Kombination von Quellen: Studien, Fotografien, Gesten, die ich gesehen habe, Beobachtung. Am häufigsten greife ich auf Fotografie zurück — es ist ein praktisches Arbeitsmaterial, und Erfahrung erlaubt mir, es frei neu zu interpretieren. Aber das Arbeiten aus dem Leben bleibt unersetzlich. Hier auf Cyprus, in unserer Kunstgemeinschaft, arbeiten wir immer noch mit einem lebenden Modell, und das schätze ich sehr. Wenn ein Foto nicht ausreicht, kehre ich zum Leben zurück, um genauer hinzusehen, um zu klären, um zu fühlen, was das Bild nicht tragen kann. Ohne diese lebendige Erfahrung fühlt sich das Malen für mich nicht vollständig an."
+            },
+            {
+              "type": "text",
+              "content": "Ich kehre oft zu ukrainischen Malern zurück — Oleksandr Murashko, Viktor Zaretsky, Tetiana Holembievska, Tetiana Yablonska. Meine Lehrer hatten auch einen großen Einfluss auf mich. Ich verfolge auch zeitgenössische Künstler mit Interesse, einschließlich jener, die neben mir auf Cyprus arbeiten. Alles, was ich bewundere, bleibt in gewissem Maße in meinem visuellen Gedächtnis und formt mich."
+            },
+            {
+              "type": "text",
+              "content": "Gleichzeitig ordne ich mich keinem bestimmten Stil zu, und ich versuche nicht bewusst, einem bestimmten Künstler zu folgen. Während der Arbeit denke ich nicht darüber nach, wem mein Gemälde ähneln sollte oder welche Tradition es fortsetzt. Das Wissen, die Eindrücke und Einflüsse sind bereits Teil von mir — wenn ich vor der Leinwand stehe, vertraue ich meinem eigenen Gespür und konzentriere mich auf das, was ich vermitteln möchte."
+            },
+            {
+              "type": "header",
+              "content": "05 · Stillleben und die Figur — eine Sprache, nicht zwei",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Deine Stillleben verfolgen ein fast hyperrealistisches Finish, während die figurative Arbeit lockerer und malerischer bleibt. Sind das für dich zwei verschiedene Sprachen oder eine Sprache, die bei unterschiedlichen Druckstärken verwendet wird?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Für mich ist es wirklich ein Ansatz, bei dem das Gleichgewicht zwischen Präzision und Lockerheit je nachdem verschoben wird, was ich vermitteln möchte. Akademische Ausbildung gibt mir ein Verständnis für Form, aber fotografische Genauigkeit allein ist nicht mein Ziel. Was mich fasziniert, ist die Chance, das, was ich schon oft gesehen habe, zu intensivieren — Farben zu schärfen, die Plastizität des Körpers zu unterstreichen, das, was meine Aufmerksamkeit erregt hat, fühlbar zu machen."
+            },
+            {
+              "type": "text",
+              "content": "Unser Alltag ist mit Bildern gesättigt, und ich möchte dem Betrachter einen Grund geben, den Blick verweilen zu lassen. Ich nehme die Welt durch Farbe und Plastizität auf, und ich möchte zeigen, was normalerweise unbemerkt bleibt. Manchmal erfordert das eine sorgfältige Modellierung der Form, manchmal ein großes flaches Farbfeld. Die Wahl ist oft intuitiv, im Arbeitsprozess getroffen."
+            },
+            {
+              "type": "text",
+              "content": "Die menschliche Figur bleibt für mich eine unerschöpfliche Quelle von Schönheit und Faszination. Durch den Körper, seine Bewegung und Geste, möchte ich eine emotionale Verbindung zum Betrachter aufbauen. Gleichzeitig bin ich selbst fasziniert von Malern, die noch feinere Nuancen wahrnehmen und mir Dinge zeigen, die ich vorher nicht gesehen hatte. Diese fortwährende Vertiefung des Auges ist eine der größten Freuden, die mir die Malerei schenkt."
+            },
+            {
+              "type": "bild",
+              "content": "https://api.eprisjournal.com/uploads/mubljn4x009g9p.png",
+              "align": "zentrum",
+              "width": 100,
+              "caption": "Veronika Chernienko, Stillleben mit Antiquitäten, Öl auf Leinwand"
+            },
+            {
+              "type": "kopfzeile",
+              "content": "06 · Wand und Leinwand",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Arbeiten an Wand- und Tafelmalerei bedeutet, von einer öffentlichen, ortsspezifischen Skala zu einer intimen zu wechseln. Wie ändert sich dein Ansatz?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Monumentale und Tafelmalerei erfordern unterschiedliche Ansätze in Komposition, Skala und der Organisation des Raums — sie sind separate Spezialisierungen, und die Akademie verfügt über einen eigenen Workshop für monumentale Malerei. Aber ich betrachte eine Wand als Tafelmaler: Ich behandle sie als große Leinwand und bringe meine eigene Arbeitsweise mit ein."
+            },
+            {
+              "type": "text",
+              "content": "Es ist für mich nicht natürlich, ein Bild aus großen verallgemeinerten Massen und flachen Flächen zu bauen. Ich arbeite mit Pinseln, bewahre den malerischen Strich und forme dadurch Form, Übergänge, ein Gefühl von Luft. Selbst in Schwarz-Weiß-Wandmalereien ist mir diese Lebendigkeit des Strichs wichtig. Es gibt eine besondere Anziehungskraft in diesem Ansatz, den meine Kunden schätzen."
+            },
+            {
+              "type": "text",
+              "content": "Natürlich braucht eine solche Arbeit auf einer großen Fläche viel mehr Zeit, und ich warne die Leute immer im Voraus davor. Aber ich genieße den Prozess selbst — ich liebe es, mit einem Pinsel zu arbeiten, zu beobachten, wie ein Bild langsam lebendig wird. Das Maßstab ändert sich; die Freude am Malen und mein eigener Ansatz bleiben bei mir."
+            },
+            {
+              "type": "header",
+              "content": "07 · Ein Wendepunkt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Wenn Sie Ihre Praxis im Laufe der Zeit betrachten, gibt es eine bestimmte Werkgruppe, die Sie als Wendepunkt identifizieren würden?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Es gab eine Phase bewusster Experimente in meiner Praxis. Während der Pandemie vertiefte ich mich in die Arbeiten amerikanischer Realistinnen — ihre zurückhaltende, dunkle Palette, komplexe Farbnuancen, die feine Handhabung der bemalten Oberfläche. Ich versuchte, sowohl meinen Farbkreis als auch meine Technik zu verändern. Aus dieser Zeit entstanden eine Reihe dunklerer, zarter ausgeführter Werke."
+            },
+            {
+              "type": "text",
+              "content": "Mit der Zeit fühlte ich, dass diese Manier nicht mehr zu mir passte. Die Arbeit fand weniger Resonanz bei den Betrachtern, und ich verstand immer klarer, dass ich mich bei dieser Suche von mir selbst entfernte. Jetzt kehre ich zurück zu dem, was ich seit meiner Kindheit liebe, und was mich in ukrainischer Malerei fasziniert: mutige, übertriebene Farben, ein breiter Strich, Freiheit."
+            },
+            {
+              "type": "text",
+              "content": "Was sich als der eigentliche Wendepunkt herausstellte, war die Erkenntnis, wie wichtig es ist, meiner eigenen Natur zu vertrauen. Dies ist eine Rückkehr zu mir selbst, aber mit anderer Erfahrung und größerem Selbstvertrauen in meine eigene Sprache."
+            },
+            {
+              "type": "text",
+              "content": "Meine persönlichsten Werke entstehen aus einem tiefen inneren Gefühl. Wissen und Erfahrung stützen mich, aber jedes Mal passiert am Canvas etwas, das ich nicht vollständig vorhersagen oder erklären kann. Manchmal fühle ich es als Verbindung zu etwas Größerem als mir selbst — zu Gott, zur Welt, zur Energie des Lebens. Was mir wichtig ist, ist, offen für diesen Zustand zu bleiben und ihn meine Hand führen zu lassen."
+            },
+            {
+              "type": "Bild",
+              "content": "https://api.eprisjournal.com/uploads/mubljmbjal4u75.jpg",
+              "align": "Zentrum",
+              "width": 100,
+              "caption": "Veronika Chernienko, Figur am Ufer, Öl auf Leinwand — das Werk, das Veronika als ihren Wendepunkt bezeichnet"
+            },
+            {
+              "type": "Kopfzeile",
+              "content": "08 · Der rote Faden",
+              "level": 2
+            },
+            {
+              "type": "Text",
+              "content": "VM: Ein wiederkehrendes Motiv — ein roter Faden, der um das Handgelenk gebunden ist — durchzieht eine ansonsten zurückhaltende Werkreihe. Was bedeutet es für dich, und hat sich seine Bedeutung von Gemälde zu Gemälde verschoben?"
+            },
+            {
+              "type": "Text",
+              "content": "VC: Ich würde dieses Motiv nicht als ein Zeichen mit einer festen Bedeutung bezeichnen — es entsteht aus dem Gefühl hinter jedem spezifischen Werk."
+            },
+            {
+              "type": "text",
+              "content": "Ich stelle mir vor, du meinst, zuerst das Mädchen unter den Wurzeln — die Skizze für die 2023 Larnaca Biennale zum Thema 'ein Zuhause weit weg von Zuhause.' Dieses Gemälde bringt mich immer noch zu Tränen. Darin verbinden sich Hilflosigkeit und eine tiefe Verbindung zu Zuhause, zu den Menschen in meiner Nähe, zu Ukraine. Der rote Faden macht diese unsichtbare Verbindung sichtbar. Weit weg von Zuhause fühlt es sich manchmal sogar noch stärker, noch schmerzhafter an — du kannst die Menschen, die du liebst, nicht umarmen, aber alles, was ihnen passiert, geht durch dich. Und gleichzeitig ist genau diese Nähe das, was uns zu einer Gemeinschaft zusammenführt, was uns hilft, zueinander zu halten."
+            },
+            {
+              "type": "text",
+              "content": "Leider wurde die Skizze nicht ausgewählt. Ich weiß nicht warum. Vielleicht wollten die Organisatoren nicht speziell auf die ukrainische Erfahrung von Krieg und Entfernung von Zuhause fokussieren — aber das ist nur meine Vermutung."
+            },
+            {
+              "type": "text",
+              "content": "Wenn du auch das Mädchen im Wasser meinst, mit einem roten Band im Haar — dieses Gemälde ist meine Reflexion über die schreckliche Gewalt in Bucha. Selbst jetzt fällt es mir schwer, darüber zu sprechen: Das Malen wurde zu einem Weg, einen Schmerz auszudrücken, für den ich keine Worte hatte."
+            },
+            {
+              "type": "text",
+              "content": "Das Bedeutungs des roten Akzents verschiebt sich mit dem Gemälde selbst. Diese Bilder entstanden intuitiv, aus unterschiedlichen Erfahrungen. Was sie vereint, ist menschliche Verletzlichkeit und meine eigene tiefe, persönliche Reaktion."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljp8gaeemeu.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, unbetitelt (im Wasser), Öl auf Leinwand — eine Reflexion über die Gewalt in Bucha"
+            },
+            {
+              "type": "text",
+              "content": "VM: Bestimmte Werke — wie das Stück, das die gefesselten Hände von Kindern anspricht — beschäftigen sich direkt mit Gewalt und Verletzlichkeit. Ändert dieser Inhalt deine Malweise, technisch gesehen?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Du denkst vielleicht an das Gemälde mit dem Mädchen, das ihre eigenen Schultern umarmt, ein rotes Band aus ihrem Haar, das ins Wasser fällt. Dieses Werk entstand als meine Reflexion über die schreckliche Gewalt in Bucha."
+            },
+            {
+              "type": "text",
+              "content": "Dieser Inhalt beeinflusst sicherlich, wie ich male, auch wenn meine malerische Vision erkennbar bleibt. Ich werde besonders aufmerksam auf menschliche Verletzlichkeit und versuche, sie so sanft und zärtlich wie möglich darzustellen. Einige Fragmente der Figur male ich sorgfältiger, verweile länger bei einer Geste, bei subtilen Wertverschiebungen und Farbübergängen. Durch diese Aufmerksamkeit für den Körper versuche ich, inneren Schmerz zu vermitteln."
+            },
+            {
+              "type": "text",
+              "content": "Diese Verschiebungen entstehen aus dem Gefühl selbst, intuitiv. Farbe, Strich und wie weit ich eine Form nehme, sind alle untergeordnet dem, was ich vor der Leinwand fühle. Ich denke, der Betrachter kann diese Zärtlichkeit und diesen Schmerz spüren, noch bevor er die Geschichte hinter dem Gemälde erfährt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljqcas4meij.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, unbetitelt, Öl auf Leinwand"
+            },
+            {
+              "type": "header",
+              "content": "09 · Was sie nicht ansehen kann, ohne zu weinen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Gibt es ein Werk, das du technisch oder konzeptionell als bedeutend ansiehst, über seine öffentliche Rezeption hinaus?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Für mich ist dieses Werk das Mädchen unter den Wurzeln mit dem roten Faden, das ich bereits erwähnt habe. Dieser Entwurf für die Larnaca-Biennale wurde zu einer sehr persönlichen Aussage über Zuhause, Entfernung und eine Bindung, die nicht zerbrochen werden kann. Darin trifft die Hilflosigkeit einer Person auf die Stärke ihres Zugehörigkeitsgefühls — zu den Menschen in ihrer Nähe, zu ihrem Land, zu ihrer Gemeinschaft. Ich kann dieses Gemälde immer noch nicht ansehen, ohne Tränen zu vergießen."
+            },
+            {
+              "type": "text",
+              "content": "Der Entwurf wurde nicht ausgewählt, und es tut mir weh, dass er nicht die Chance bekam, im Kontext, für den er gemacht wurde, gehört zu werden. Ich kenne die Gründe für diese Entscheidung nicht und kann sie nicht mit Sicherheit erklären. Die persönliche Bedeutung eines Werks stimmt nicht immer mit seiner äußeren Anerkennung überein."
+            },
+            {
+              "type": "text",
+              "content": "Seinen Wert hat es für mich nicht verändert: darin ist es mir gelungen, ein Gefühl zu vermitteln, das noch immer schwer in Worte zu fassen ist. Ich möchte, dass dieses Werk noch immer die Chance hat, seinem Betrachter zu begegnen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljoj26oe4d3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, Detail des unbetitelten Wurzeln-Gemäldes"
+            },
+            {
+              "type": "header",
+              "content": "10 · Wissen wann man aufhört",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Deine Stilllebenpraxis verfolgt ein fast hyperrealistisches Finish, während die figurative Arbeit viel freier ist — wie weißt du, wann ein Gemälde fertig ist?"
+            },
+            {
+              "type": "text",
+              "content": "VC: Für mich entscheidet die Vollständigkeit eines Gemäldes, ob ich es geschafft habe, das Wichtigste zu vermitteln. Ich arbeite oft alla prima, versuche das Bild auf einmal einzufangen, um die Kraft des ersten Eindrucks zu bewahren. Schnelles Arbeiten ist mir wichtig. Früher sah ich diese Ungeduld als einen Makel, aber im Laufe der Zeit wurde sie zu einem charakteristischen Merkmal meiner malerischen Sprache."
+            },
+            {
+              "type": "text",
+              "content": "Das hängt auch mit meiner Ausbildung zusammen — wir haben viel en plein air Studien gemalt, im Freien mit lebenden Modellen gearbeitet, oft in ein oder zwei Schichten. Diese Praxis lehrte mich, mich auf das Wesentliche zu konzentrieren. Langes, vielschichtiges Arbeiten auf einer Leinwand ist mir nicht nah, obwohl beauftragte Stillleben mit ihrem spezifischen Auftrag manchmal mehr Detail verlangen."
+            },
+            {
+              "type": "text",
+              "content": "In meiner eigenen Arbeit höre ich auf, wenn ich das Gefühl habe, dass ich gesagt habe, was ich sagen wollte. Bereiche der Leinwand können ungelöst bleiben, Pinselstriche frei, Formen nur angedeutet. Für mich sind das Räume des Ungesagten, in denen der Betrachter das Bild selbst fühlen und vervollständigen kann. Ich möchte die Leinwand nicht überladen — es ist mir wichtig, dass sie atmet."
+            },
+            {
+              "type": "text",
+              "content": "Was unvollendet aussieht, kann für mich ein vollständig fertiggestelltes Gemälde sein. Ich vertraue meinem eigenen Gefühl für diese Grenze, und ich vertraue auch dem Betrachter — nicht jedes Detail muss erklärt werden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljr7h52mq34.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, Hochzeitsszene, Öl auf Leinwand"
+            },
+            {
+              "type": "text",
+              "content": "Veronika Chernienko's Arbeit kann auf Instagram unter @artveronika_painting verfolgt werden."
+            }
+          ],
+          "updatedAt": "2026-09-21T19:02:47.131Z",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-veronika-chernienko",
+          "publishAt": "2026-09-23T00:00:00.000Z",
+          "publishedAt": "2026-09-23T00:00:00.000Z"
         }
       ],
       "reviews": [
