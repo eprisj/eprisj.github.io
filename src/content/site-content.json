@@ -59114,11 +59114,11 @@
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "Dentro del Victoria Museum di Kyiv",
+          "title": "Dentro il Victoria Museum",
           "author": "Viacheslav Munister",
           "date": "21 settembre 2026",
           "publishedAt": "2026-09-21T13:00:00.000Z",
-          "excerpt": "Una casa privata di moda del XIX secolo nascosta in un cortile di Khreshchatyk: abiti di seta corsettati, un cappotto di corte con ricami d'oro, cameo intagliati da conchiglia, e i piccoli oggetti, ciondoli, flaconi di profumo, scatole di smalto, che una vita effettivamente conteneva.",
+          "excerpt": "Una casa privata di moda del diciannovesimo secolo nascosta in un cortile di Khreshchatyk: abiti di seta corsetti, un cappotto di corte ricamato in oro, cameo intagliati in conchiglia, e i piccoli oggetti, ciondoli, flaconi di profumo, scatole smaltate, che una vita ha effettivamente conservato.",
           "category": "Cultura",
           "subcategory": "Storia visiva",
           "tags": [
@@ -59126,21 +59126,14 @@
             "Musei",
             "Storia della moda",
             "Ucraina",
-            "Viaggio"
+            "Viaggi"
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-cover.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-13-gown-peach.jpg",
           "previewToken": "HNmKRF6viNIOMo8G",
           "content": [
             {
               "type": "text",
               "content": "Il Victoria Museum si trova dietro una porta ad arco a pochi passi da Khreshchatyk, in un edificio di appartamenti del XIX secolo le cui cornici in stucco e il piano terra rustico non rivelano nulla di ciò che si trova all'interno. Una piccola targa all'ingresso recita Victoria Museum — Музей костюма та стилю, il Museo del Costume e dello Stile, aperto da giovedì a domenica. Sono andato per impulso dopo una passeggiata nel centro città, e sono rimasto per la maggior parte del pomeriggio."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/victoria-museum-01-entrance.jpg",
-              "credit": "Viacheslav Munister",
-              "align": "center",
-              "caption": "L'ingresso, a pochi passi da Khreshchatyk."
             },
             {
               "type": "header",
@@ -59152,18 +59145,31 @@
               "content": "Stanza dopo stanza, il museo è costruito intorno all'abbigliamento: dozzine di abiti da donna dalla seconda metà del XIX secolo fino agli anni 1900, la maggior parte esposti su manichini all'interno di vetrine, illuminati come i gioielli accanto a loro. Un corpetto di velluto viola scuro rifinito con pizzo all'uncinetto si trova accanto a una gonna di seta blu ardesia; pochi passi più avanti, un abito in crinolina con stampa floreale rosso ruggine degli anni 1860 si gonfia sotto il suo stesso peso, il motivo di piccole rose che corre ininterrotto dalla vita all'orlo. Un'etichetta, in ucraino e inglese, catalogna un vestito di colore cioccolato scuro con ornamenti floreali e bottoni degli anni 1880 in un linguaggio semplice di inventario museale, cotone, velluto, che sottovaluta quanto lavoro manuale ci sia dentro una singola manica."
             },
             {
-              "type": "galleria",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-03-bodice-blue.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-04-gown-red.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-05-gown-brown-uniform.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Un corpetto di velluto, un abito con crinolina degli anni 1860 e un vestito color cioccolato degli anni 1880, mostrati accanto a un ritratto d'epoca e a un cappotto da uniforme da gentiluomo."
+              "caption": "Un corpetto di velluto, un abito in crinolina degli anni 1860, e un vestito di colore cioccolato degli anni 1880, mostrati accanto a un ritratto d'epoca e a un cappotto da uomo."
             },
             {
-              "type": "testo",
-              "content": "Alcuni pezzi sono tableaux esposti in teche piuttosto che singoli capi. In un angolo, un abito da lutto appeso con piccoli fotografie incorniciate lungo il corpetto si trova sotto ritratti in sepia delle donne che potrebbero averlo indossato, accanto a un parasole piegato e a un vestito di seta pallido con un colletto di pizzo profondo, un intero piccolo teatro di una famiglia del XIX secolo, assemblato all'interno di una singola vetrina."
+              "type": "text",
+              "content": "Più avanti, il colore diventa più audace. Un cappotto cropped tagliato da un tessuto paisley marrone, arancione e crema, foderato in velluto scuro, si trova sotto una fotografia incorniciata della donna per cui potrebbe essere stato realizzato, una sopravvivenza insolita: il paisley era più spesso per scialli e interni che per abbigliamento esterno, e vedere l'intero motivo avvolgere un corpo invece di adagiarvisi cambia il modo in cui lo si legge. Due casi più avanti, un abito in avorio lascia cadere le maniche dalle spalle in una schiuma di rose di tulle e bordo di perle, il corpetto ricamato a mano con spruzzi di foglie in un motivo che si ripete lungo tutta la lunghezza della coda, abito da sera costruito per una stanza con un'illuminazione migliore della luce diurna."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-15-coat-paisley.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-14-gown-gold.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Un cappotto paisley foderato in velluto, e un abito da sera in avorio ricamato con foglie e rose di tulle."
+            },
+            {
+              "type": "text",
+              "content": "Alcuni pezzi sono tableaux esposti piuttosto che singoli capi. In un angolo, un abito da lutto appeso con piccoli fotografie incorniciate lungo il corpetto si trova sotto ritratti in sepia delle donne che potrebbero averlo indossato, accanto a un parasole piegato e a un abito di seta pallido con un colletto di pizzo profondo, un intero piccolo teatro di una famiglia del XIX secolo, assemblato all'interno di una singola vetrina."
             },
             {
               "type": "immagine",
@@ -59173,13 +59179,13 @@
               "caption": "Un abito da lutto appeso con fotografie incorniciate, accanto a ritratti in sepia e a un parasole piegato."
             },
             {
-              "type": "intestazione",
-              "content": "Seta, passamaneria e un cappotto da corte",
+              "type": "header",
+              "content": "Seta, treccia, e un cappotto da corte",
               "level": 3
             },
             {
               "type": "text",
-              "content": "La collezione non è solo per abiti da donna. Un cappotto di lana rossa singolo, tagliato come un livery di un cortigiano o di un domestico, è rifinito lungo entrambi i revers e i polsini con una larga treccia metallica dorata, chiuso con una colonna di bottoni di ottone a cupola, il tipo di cappotto formale che sarebbe stato realizzato su misura per una famiglia, non acquistato da un negozio. Nei dintorni, un corpetto di seta crema con un colletto alto con stecche porta lo stesso motivo ricamato di lira e rotolo ripetuto sulle spalle, sulla gola e sull'orlo, il tipo di dettaglio che si rivela solo sotto una luce di esposizione."
+              "content": "La collezione non è solo per l'abbigliamento femminile. Un singolo cappotto rosso in lana, tagliato come un livery di un cortigiano o di un domestico, è rifinito lungo entrambi i revers e i polsini con una larga treccia metallica dorata, chiuso con una fila di bottoni di ottone a cupola, il tipo di cappotto formale che sarebbe stato realizzato su misura per una famiglia, non acquistato da un negozio. Nei dintorni, un corpetto in seta color crema con un colletto alto e rinforzato porta lo stesso motivo ricamato di lira e pergamena ripetuto alle spalle, alla gola e all'orlo, il tipo di dettaglio che si rivela solo sotto una luce di esposizione."
             },
             {
               "type": "gallery",
@@ -59188,16 +59194,30 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-06-bodice-silver.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Un cappotto di corte con treccia d'oro, e il motivo ripetuto di lira su un corpetto di seta crema."
-            },
-            {
-              "type": "header",
-              "content": "Camei, ciondoli e piccole scatole",
-              "level": 3
+              "caption": "Un cappotto da corte con treccia d'oro, e il motivo ripetuto di lira su un corpetto in seta color crema."
             },
             {
               "type": "text",
-              "content": "Una stanza laterale è dedicata a ciò che avrebbe potuto stare su un tavolo da toeletta o viaggiare in una tasca: anelli e spille con ritratti miniature dipinti, scatole di trinket smaltate in blu cobalto e oro, un flacone di profumo su una catena chatelaine. Su una parete, più di una dozzina di camei, scolpiti in conchiglia, onice e sardonyx, inglesi e italiani, per lo più del XIX secolo, sono montati in una singola cornice dorata come una cabina di miniature: un santo a cavallo, un rotolo di foglie di acanto, il profilo di una donna rivolto a tre quarti verso la luce."
+              "content": "Un esempio di accessori maschili fa lo stesso trucco di osservazione da un'angolazione diversa: una fila di bastoni da passeggio, con manici scolpiti in osso e avorio a forma di testa di uccello, un leone, una faccia che ride, si affianca a un cappotto estivo bianco doppiopetto con colletto in velluto nero, una vecchia borsa da viaggio in pelle e un paio di stivali con bottoni alti, abbastanza usurati da sembrare appartenuti a qualcuno. Altri due abiti, uno in chiffon rosa polveroso con una coda in pizzo, uno in seta color crema pallido con un colletto alto ricamato di perline, sono mostrati contro ritratti d'epoca di donne vestite quasi identicamente, così il muro si presenta come prova piuttosto che decorazione."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-16-canes-tunic.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-08-gown-pink.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-12-gown-cream.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Manici di bastone scolpiti e un cappotto estivo da gentiluomo; un abito di chiffon rosa e un vestito di seta crema, ognuno mostrato accanto al suo ritratto d'epoca."
+            },
+            {
+              "type": "intestazione",
+              "content": "Cameo, ciondoli e piccole scatole",
+              "level": 3
+            },
+            {
+              "type": "testo",
+              "content": "Una stanza laterale è dedicata a ciò che avrebbe potuto essere posizionato su un tavolo da trucco o portato in tasca: anelli e spille con miniature dipinte, scatole di trinket smaltate in blu cobalto e oro, un flacone di profumo su una catena chatelaine. Su una parete, più di una dozzina di cameo, scolpiti in conchiglia, onice e sardonyx, inglesi e italiani, per lo più del XIX secolo, sono montati in una singola cornice dorata come un mobile di miniature: un santo a cavallo, un rotolo di foglie di acanto, il profilo di una donna rivolto a tre quarti verso la luce."
             },
             {
               "type": "galleria",
@@ -59206,30 +59226,30 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-10-cameos.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "spille cameo, anelli e scatole smaltate dalle casse di gioielli del museo."
+              "caption": "Spille cameo, anelli e scatole smaltate dalle casse di gioielli del museo."
             },
             {
-              "type": "intestazione",
+              "type": "header",
               "content": "Dipinti e una figura in bronzo, per contesto",
               "level": 3
             },
             {
-              "type": "testo",
-              "content": "I vestiti sono appesi contro uno sfondo di dipinti e oggetti degli stessi decenni: una Madonna e Bambino francese con Giovanni Battista dell'inizio del XIX secolo, ritratti dorati di donne nelle stesse silhouette che indossano le manichine, una figurina in bronzo di una donna con un cappello piumato che tiene un ventaglio a metà volto. Niente di tutto ciò è didascalico. Non c'è un lungo testo sul muro che spiega la storia del corsetto o la politica dell'abbigliamento funebre; il museo lascia principalmente che gli oggetti si posizionino abbastanza vicini da fare la propria argomentazione su un periodo che si vestiva con cura enorme e specifica."
+              "type": "text",
+              "content": "I vestiti sono appesi contro uno sfondo di dipinti e oggetti degli stessi decenni: una Madonna e Bambino francese con Giovanni Battista dell'inizio del XIX secolo, ritratti dorati di donne nelle stesse silhouette indossate dalle manichini, una figurina in bronzo di una donna con un cappello piumato che tiene un ventaglio a metà strada tra il volto. Niente di tutto ciò è didascalico. Non c'è un lungo testo sul muro che spieghi la storia del corsetto o la politica dell'abbigliamento funebre; il museo lascia principalmente che gli oggetti si posizionino abbastanza vicini da fare la propria argomentazione su un periodo che si vestiva con cura enorme e specifica."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-11-bronze-madonna.jpg",
               "credit": "Viacheslav Munister",
-              "align": "centro",
+              "align": "center",
               "caption": "Una figura in bronzo e una Madonna e Bambino francese, entrambi del XIX secolo."
             },
             {
-              "type": "testo",
-              "content": "Il Victoria Museum è aperto da giovedì a domenica, 11:00–18:00, a breve distanza a piedi da Khreshchatyk. È un piccolo museo e facile da visitare in un'ora, ma permetterei più tempo, le teche di vetro premiano il tipo di osservazione lenta che una fotocamera di telefono continua a interrompere."
+              "type": "text",
+              "content": "Il Victoria Museum è aperto da giovedì a domenica, dalle 11:00 alle 18:00, a pochi passi da Khreshchatyk. È un piccolo museo e facile da visitare in un'ora, ma consiglierei di dedicargli più tempo, le teche di vetro premiano il tipo di osservazione lenta che una fotocamera del telefono interrompe continuamente."
             }
           ],
-          "updatedAt": "2026-09-21T12:59:12.178Z"
+          "updatedAt": "2026-09-21T13:14:26.688Z"
         }
       ],
       "reviews": [
