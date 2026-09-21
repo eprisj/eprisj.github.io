@@ -8535,7 +8535,7 @@
           "content": "<i>Ukraine. A Memory That Continues (35. Ucraina. Una memoria che continua) is on view at ArtLab, Via Baiettini 53, Verbania (VB), Italy, from 24 August to 30 September 2026. Guided visits are available by appointment.</i>"
         }
       ],
-      "updatedAt": "2026-09-21T18:00:00.000Z",
+      "updatedAt": "2026-09-21T17:23:30.000Z",
       "previewToken": "9736db8a160512830d9dbc5f",
       "contributorId": "author-nataliia-maloh",
       "onlyLangs": [
@@ -8543,7 +8543,8 @@
         "IT"
       ],
       "locked": true,
-      "publishedAt": "2026-09-12T09:15:00.000Z"
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "publishAt": "2026-09-22T00:00:00.000Z"
     },
     {
       "id": 37,
@@ -10452,10 +10453,10 @@
         },
         {
           "type": "text",
-          "content": "Manuel Heywinkel's work can be seen at manuel-heywinkel.com and 1x.com/manuelheywinkel, and on Instagram at @manuel_242neo. All images © Manuel Heywinkel, published with the artist's permission."
+          "content": "Manuel Heywinkel’s work can be seen at <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a> and <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>, on Instagram at <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a>, and his architectural work at ACMS at <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>. All images © Manuel Heywinkel, published with the artist’s permission."
         }
       ],
-      "updatedAt": "2026-09-21T16:56:00.000Z",
+      "updatedAt": "2026-09-21T17:21:01.000Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-manuel-heywinkel",
       "previewToken": "80d45d7bde12e05363d3c71b74a72838"
@@ -36804,15 +36805,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Ich fotografiere bereits seit meiner frühen Jugend, und Architektur gehörte eigentlich von Anfang an zu meinen Motiven. Deshalb kann ich keinen bestimmten Zeitpunkt benennen, an dem sich mein Blick auf Architektur grundlegend verändert hätte. In meiner Jugend habe ich mich zeitweise auch intensiv mit Film und Video beschäftigt und beispielsweise Trickfilme gemacht, bevor die Fotografie später wieder stärker in den Mittelpunkt rückte."
+              "content": "Manuel Heywinkel [MH]: Ich fotografiere bereits seit meiner frühen Jugend, und Architektur gehörte eigentlich von Anfang an zu meinen Motiven. Deshalb kann ich keinen bestimmten Zeitpunkt benennen, an dem sich mein Blick auf Architektur grundlegend verändert hätte. In meiner Jugend habe ich mich zeitweise auch intensiv mit Film und Video beschäftigt und beispielsweise Trickfilme gemacht, bevor die Fotografie später wieder stärker in den Mittelpunkt rückte. Durch mein Architekturstudium und später natürlich durch meine berufliche Tätigkeit als Architekt hat sich mein fotografischer Blick auf Architektur deutlich geschärft. Man achtet stärker auf Geometrien, Linien und Fluchten, auf Proportionen und räumliche Zusammenhänge."
             },
             {
               "type": "text",
-              "content": "Durch mein Architekturstudium und später natürlich durch meine berufliche Tätigkeit als Architekt hat sich mein fotografischer Blick auf Architektur deutlich geschärft. Man achtet stärker auf Geometrien, Linien und Fluchten, auf Proportionen und räumliche Zusammenhänge. Vieles davon geschieht inzwischen wahrscheinlich ganz automatisch."
-            },
-            {
-              "type": "text",
-              "content": "Interessanterweise habe ich vor der digitalen Fotografie fast ausschließlich in Farbe fotografiert. Schwarz-Weiß kam bei mir erst später stärker hinzu – insbesondere durch die Möglichkeiten der digitalen Bildbearbeitung und schließlich auch durch die Veröffentlichung meiner Arbeiten auf Instagram. Heute sind Schwarz-Weiß und Farbe für mich zwei gleichberechtigte Ausdrucksformen. Ich entscheide letztlich beim jeweiligen Motiv, welche davon für das Bild besser funktioniert."
+              "content": "Vieles davon geschieht inzwischen wahrscheinlich ganz automatisch. Interessanterweise habe ich vor der digitalen Fotografie fast ausschließlich in Farbe fotografiert. Schwarz-Weiß kam bei mir erst später stärker hinzu – insbesondere durch die Möglichkeiten der digitalen Bildbearbeitung und schließlich auch durch die Veröffentlichung meiner Arbeiten auf Instagram. Heute sind Schwarz-Weiß und Farbe für mich zwei gleichberechtigte Ausdrucksformen. Ich entscheide letztlich beim jeweiligen Motiv, welche davon für das Bild besser funktioniert."
             },
             {
               "type": "image",
@@ -36827,15 +36824,7 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Einen konkreten Moment kann ich nicht benennen. Das gestalterische Sehen hat sich bei mir eher kontinuierlich entwickelt."
-            },
-            {
-              "type": "text",
-              "content": "Heute nehme ich beispielsweise Details sehr viel bewusster wahr, aber auch Blickbeziehungen zwischen einzelnen Gebäudeteilen oder zwischen unterschiedlichen Gebäuden. Hinzu kommt der städtebauliche Zusammenhang: Wie steht ein Gebäude in seiner Umgebung, wie reagiert es darauf und welche Perspektiven ergeben sich daraus?"
-            },
-            {
-              "type": "text",
-              "content": "Gerade aus diesen Zusammenhängen entstehen für mich oft interessante Linienführungen, Fluchten und Perspektiven. Durch die intensive Auseinandersetzung mit Architektur ist dieser Blick über die Jahre sicherlich immer bewusster geworden."
+              "content": "Manuel Heywinkel [MH]: Einen konkreten Moment kann ich nicht benennen. Das gestalterische Sehen hat sich bei mir eher kontinuierlich entwickelt. Heute nehme ich beispielsweise Details sehr viel bewusster wahr, aber auch Blickbeziehungen zwischen einzelnen Gebäudeteilen oder zwischen unterschiedlichen Gebäuden. Hinzu kommt der städtebauliche Zusammenhang: Wie steht ein Gebäude in seiner Umgebung, wie reagiert es darauf und welche Perspektiven ergeben sich daraus? Gerade aus diesen Zusammenhängen entstehen für mich oft interessante Linienführungen, Fluchten und Perspektiven. Durch die intensive Auseinandersetzung mit Architektur ist dieser Blick über die Jahre sicherlich immer bewusster geworden."
             },
             {
               "type": "image",
@@ -36855,15 +36844,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Das ist im Baustellenalltag tatsächlich nicht immer einfach. Als bauleitender Architekt ist man sehr stark in die täglichen Abläufe eingebunden: in die Koordination der Firmen, in Abstimmungen und natürlich vor allem in die Qualitätskontrolle der ausgeführten Arbeiten. Dadurch konzentriert sich der Blick zwangsläufig sehr häufig auf einzelne Details und konkrete Aufgaben."
+              "content": "Manuel Heywinkel [MH]: Das ist im Baustellenalltag tatsächlich nicht immer einfach. Als bauleitender Architekt ist man sehr stark in die täglichen Abläufe eingebunden: in die Koordination der Firmen, in Abstimmungen und natürlich vor allem in die Qualitätskontrolle der ausgeführten Arbeiten. Dadurch konzentriert sich der Blick zwangsläufig sehr häufig auf einzelne Details und konkrete Aufgaben. Umso wichtiger ist es, sich zwischendurch davon zu lösen und das entstehende Gebäude wieder als Ganzes wahrzunehmen."
             },
             {
               "type": "text",
-              "content": "Umso wichtiger ist es, sich zwischendurch davon zu lösen und das entstehende Gebäude wieder als Ganzes wahrzunehmen. Mir hilft dabei sicherlich auch mein fotografischer Blick. Ich versuche immer wieder, einen Schritt zurückzutreten und nicht nur das Detail oder das aktuelle Problem zu sehen, sondern auch den Raum, die Architektur und das, was dort gerade entsteht."
-            },
-            {
-              "type": "text",
-              "content": "Gerade bei einem Projekt, das man über einen langen Zeitraum begleitet, kann man sonst schnell vergessen, wie sich das Gebäude als Ganzes entwickelt."
+              "content": "Mir hilft dabei sicherlich auch mein fotografischer Blick. Ich versuche immer wieder, einen Schritt zurückzutreten und nicht nur das Detail oder das aktuelle Problem zu sehen, sondern auch den Raum, die Architektur und das, was dort gerade entsteht. Gerade bei einem Projekt, das man über einen langen Zeitraum begleitet, kann man sonst schnell vergessen, wie sich das Gebäude als Ganzes entwickelt."
             },
             {
               "type": "image",
@@ -36878,15 +36863,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Das ist natürlich zunächst sehr stark vom jeweiligen Entwurf abhängig. Beim LernWerk war ein wesentlicher Gedanke, den historischen Bestand für eine neue, zeitgemäße Nutzung weiterzuentwickeln und technisch zu ertüchtigen, ohne dabei die Geschichte des Gebäudes zu überdecken."
+              "content": "Manuel Heywinkel [MH]: Das ist natürlich zunächst sehr stark vom jeweiligen Entwurf abhängig. Beim LernWerk war ein wesentlicher Gedanke, den historischen Bestand für eine neue, zeitgemäße Nutzung weiterzuentwickeln und technisch zu ertüchtigen, ohne dabei die Geschichte des Gebäudes zu überdecken. Das wird beispielsweise an den vorhandenen Gussstützen deutlich. Sie konnten weitestgehend erhalten werden und wurden durch ihre farbliche Gestaltung noch einmal bewusst hervorgehoben."
             },
             {
               "type": "text",
-              "content": "Das wird beispielsweise an den vorhandenen Gussstützen deutlich. Sie konnten weitestgehend erhalten werden und wurden durch ihre farbliche Gestaltung noch einmal bewusst hervorgehoben. Gleichzeitig wurde mit dem neu eingefügten Kubus ein deutlich zeitgenössisches Element in den Bestand gesetzt. Dessen Glasfasergewebe stellt wiederum einen Bezug zur ursprünglichen Nutzung des Gebäudes als Spinnerei her."
-            },
-            {
-              "type": "text",
-              "content": "Ich finde gerade dieses Nebeneinander spannend: Alt und Neu bleiben als unterschiedliche Zeitschichten erkennbar und stehen trotzdem miteinander in Verbindung."
+              "content": "Gleichzeitig wurde mit dem neu eingefügten Kubus ein deutlich zeitgenössisches Element in den Bestand gesetzt. Dessen Glasfasergewebe stellt wiederum einen Bezug zur ursprünglichen Nutzung des Gebäudes als Spinnerei her. Ich finde gerade dieses Nebeneinander spannend: Alt und Neu bleiben als unterschiedliche Zeitschichten erkennbar und stehen trotzdem miteinander in Verbindung."
             },
             {
               "type": "image",
@@ -36901,15 +36882,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Im täglichen Bauablauf steht zunächst natürlich der Blick des Architekten im Vordergrund. Es geht um die Kontrolle der ausgeführten Arbeiten, um die Koordination der Abläufe und die Kommunikation mit Bauherrn und Handwerkern – beim LernWerk beispielsweise auch mit den späteren Nutzern und teilweise mit der Öffentlichkeit."
+              "content": "Manuel Heywinkel [MH]: Im täglichen Bauablauf steht zunächst natürlich der Blick des Architekten im Vordergrund. Es geht um die Kontrolle der ausgeführten Arbeiten, um die Koordination der Abläufe und die Kommunikation mit Bauherrn und Handwerkern – beim LernWerk beispielsweise auch mit den späteren Nutzern und teilweise mit der Öffentlichkeit. Gleichzeitig gehört es zu den Aufgaben eines Architekten, nicht nur das aktuelle Detail zu betrachten, sondern auch vorauszudenken: Was folgt als Nächstes? Welche Auswirkungen hat eine Entscheidung auf andere Arbeiten?"
             },
             {
               "type": "text",
-              "content": "Gleichzeitig gehört es zu den Aufgaben eines Architekten, nicht nur das aktuelle Detail zu betrachten, sondern auch vorauszudenken: Was folgt als Nächstes? Welche Auswirkungen hat eine Entscheidung auf andere Arbeiten? Wie fügt sich am Ende alles zusammen?"
-            },
-            {
-              "type": "text",
-              "content": "Beim Fotografieren ist dieser Wechsel gar nicht so anders. Auch dort kann ich mich sehr stark auf ein Detail, eine Linie oder eine bestimmte Situation konzentrieren und mich anschließend wieder davon lösen, um den Raum oder das Gebäude als Ganzes wahrzunehmen. Diese beiden Arten zu sehen ergänzen sich für mich sehr gut."
+              "content": "Wie fügt sich am Ende alles zusammen? Beim Fotografieren ist dieser Wechsel gar nicht so anders. Auch dort kann ich mich sehr stark auf ein Detail, eine Linie oder eine bestimmte Situation konzentrieren und mich anschließend wieder davon lösen, um den Raum oder das Gebäude als Ganzes wahrzunehmen. Diese beiden Arten zu sehen ergänzen sich für mich sehr gut."
             },
             {
               "type": "image",
@@ -36929,15 +36906,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Treppen sind für mich weit mehr als reine Bauteile, die unterschiedliche Ebenen eines Gebäudes miteinander verbinden. Sie waren schon historisch häufig wichtige Elemente der Repräsentation. Gerade in Schlössern und anderen bedeutenden Gebäuden wurden Treppen ganz bewusst inszeniert und konnten Ausdruck von Macht, Rang und Bedeutung sein."
+              "content": "Manuel Heywinkel [MH]: Treppen sind für mich weit mehr als reine Bauteile, die unterschiedliche Ebenen eines Gebäudes miteinander verbinden. Sie waren schon historisch häufig wichtige Elemente der Repräsentation. Gerade in Schlössern und anderen bedeutenden Gebäuden wurden Treppen ganz bewusst inszeniert und konnten Ausdruck von Macht, Rang und Bedeutung sein. Auch fotografisch finde ich Treppen ausgesprochen spannend."
             },
             {
               "type": "text",
-              "content": "Auch fotografisch finde ich Treppen ausgesprochen spannend. Sie bieten durch ihre Konstruktion fast automatisch interessante Blickbeziehungen, Fluchten, Linienführungen, Wiederholungen und Perspektiven. Je nachdem, von welchem Standpunkt man sie betrachtet, kann ein und dieselbe Treppe völlig unterschiedlich wirken."
-            },
-            {
-              "type": "text",
-              "content": "Vielleicht liegt genau darin für mich die Faszination: Eine Treppe erfüllt zunächst eine ganz eindeutige Funktion und bietet gleichzeitig unglaublich viele Möglichkeiten, sie architektonisch und fotografisch zu interpretieren."
+              "content": "Sie bieten durch ihre Konstruktion fast automatisch interessante Blickbeziehungen, Fluchten, Linienführungen, Wiederholungen und Perspektiven. Je nachdem, von welchem Standpunkt man sie betrachtet, kann ein und dieselbe Treppe völlig unterschiedlich wirken. Vielleicht liegt genau darin für mich die Faszination: Eine Treppe erfüllt zunächst eine ganz eindeutige Funktion und bietet gleichzeitig unglaublich viele Möglichkeiten, sie architektonisch und fotografisch zu interpretieren."
             },
             {
               "type": "image",
@@ -36952,15 +36925,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Bei alten Industrieanlagen fasziniert mich zunächst einmal, welche enormen Ingenieurleistungen dort erbracht wurden. Wenn man sich beispielsweise die Zeche Zollverein oder andere große Industrieanlagen anschaut, muss man sich immer wieder vor Augen führen, dass diese komplexen Konstruktionen zu einer Zeit geplant und gebaut wurden, in der es weder Computer noch CAD gab. Vieles wurde noch von Hand am Reißbrett gezeichnet – etwas, das ich als gelernter Bauzeichner selbst noch so gelernt habe."
+              "content": "Manuel Heywinkel [MH]: Bei alten Industrieanlagen fasziniert mich zunächst einmal, welche enormen Ingenieurleistungen dort erbracht wurden. Wenn man sich beispielsweise die Zeche Zollverein oder andere große Industrieanlagen anschaut, muss man sich immer wieder vor Augen führen, dass diese komplexen Konstruktionen zu einer Zeit geplant und gebaut wurden, in der es weder Computer noch CAD gab. Vieles wurde noch von Hand am Reißbrett gezeichnet – etwas, das ich als gelernter Bauzeichner selbst noch so gelernt habe. Wenn ich heute durch solche stillgelegten Anlagen gehe, frage ich mich häufig, welche Funktion einzelne Gebäude, Maschinen, Leitungen oder Konstruktionen ursprünglich hatten. Heute steht dort alles still."
             },
             {
               "type": "text",
-              "content": "Wenn ich heute durch solche stillgelegten Anlagen gehe, frage ich mich häufig, welche Funktion einzelne Gebäude, Maschinen, Leitungen oder Konstruktionen ursprünglich hatten. Heute steht dort alles still. Man kann sich den früheren Betrieb und den Arbeitsalltag nur noch vorstellen – und wahrscheinlich auch nur schwer nachvollziehen, unter welchen Bedingungen und mit welcher körperlichen Anstrengung dort teilweise gearbeitet wurde."
-            },
-            {
-              "type": "text",
-              "content": "Gleichzeitig sind diese Anlagen fotografisch unglaublich spannend. Die Vielzahl an Konstruktionen, Materialien, Rohren, technischen Details und großen räumlichen Zusammenhängen bietet eine enorme Vielfalt an Motiven und Perspektiven. Gerade die Zeche Zollverein ist dafür ein sehr gutes Beispiel."
+              "content": "Man kann sich den früheren Betrieb und den Arbeitsalltag nur noch vorstellen – und wahrscheinlich auch nur schwer nachvollziehen, unter welchen Bedingungen und mit welcher körperlichen Anstrengung dort teilweise gearbeitet wurde. Gleichzeitig sind diese Anlagen fotografisch unglaublich spannend. Die Vielzahl an Konstruktionen, Materialien, Rohren, technischen Details und großen räumlichen Zusammenhängen bietet eine enorme Vielfalt an Motiven und Perspektiven. Gerade die Zeche Zollverein ist dafür ein sehr gutes Beispiel."
             },
             {
               "type": "image",
@@ -36975,15 +36944,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Städte interessieren mich nicht nur wegen ihrer unterschiedlichen Architektur. Ich beschäftige mich auch gerne mit ihrer Geschichte und frage mich, warum bestimmte Dinge gerade dort entstanden sind und wie sich eine Stadt zu dem entwickelt hat, was sie heute ist."
+              "content": "Manuel Heywinkel [MH]: Städte interessieren mich nicht nur wegen ihrer unterschiedlichen Architektur. Ich beschäftige mich auch gerne mit ihrer Geschichte und frage mich, warum bestimmte Dinge gerade dort entstanden sind und wie sich eine Stadt zu dem entwickelt hat, was sie heute ist. Bei Frankfurt interessiert mich zum Beispiel, wie sich die Stadt zu einem bedeutenden Messestandort entwickelt hat, aber auch ihre Geschichte als Krönungsstadt mit dem Kaiserdom. Bei anderen Städten sind es wieder ganz andere Aspekte. Bielefeld ist meine Heimatstadt, Freiburg hat einen völlig anderen Charakter, Düsseldorf wieder einen anderen."
             },
             {
               "type": "text",
-              "content": "Bei Frankfurt interessiert mich zum Beispiel, wie sich die Stadt zu einem bedeutenden Messestandort entwickelt hat, aber auch ihre Geschichte als Krönungsstadt mit dem Kaiserdom. Bei anderen Städten sind es wieder ganz andere Aspekte. Bielefeld ist meine Heimatstadt, Freiburg hat einen völlig anderen Charakter, Düsseldorf wieder einen anderen. Jede Stadt hat ihren eigenen Charme und ihren eigenen Vibe."
-            },
-            {
-              "type": "text",
-              "content": "Mich interessiert deshalb nicht nur der historische Gebäudebestand oder die moderne Architektur, sondern auch das Leben dazwischen: Wie nutzen die Menschen ihre Stadt? Wie bewegen sie sich darin? Wie gehen sie mit den vorhandenen Räumen um? Genau das versuche ich neben der Architekturfotografie auch mit Streetfotografie festzuhalten."
+              "content": "Jede Stadt hat ihren eigenen Charme und ihren eigenen Vibe. Mich interessiert deshalb nicht nur der historische Gebäudebestand oder die moderne Architektur, sondern auch das Leben dazwischen: Wie nutzen die Menschen ihre Stadt? Wie bewegen sie sich darin? Wie gehen sie mit den vorhandenen Räumen um? Genau das versuche ich neben der Architekturfotografie auch mit Streetfotografie festzuhalten."
             },
             {
               "type": "image",
@@ -37003,19 +36968,15 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Bei meiner aktuell noch laufenden Ausstellung „FARBRAUM“ habe ich mich von Anfang an ganz bewusst für Farbfotografien entschieden – auch als Gegensatz zu meiner Ausstellung im vergangenen Jahr, in der ich ausschließlich Schwarz-Weiß-Fotografien gezeigt habe."
+              "content": "Manuel Heywinkel [MH]: Bei meiner aktuell noch laufenden Ausstellung „FARBRAUM“ habe ich mich von Anfang an ganz bewusst für Farbfotografien entschieden – auch als Gegensatz zu meiner Ausstellung im vergangenen Jahr, in der ich ausschließlich Schwarz-Weiß-Fotografien gezeigt habe. Mein Grundgedanke war aber, die Farbe nicht auf das eigentliche Bild zu beschränken, sondern sie in den Raum zu übertragen. Umgesetzt habe ich das mit farbigen Passepartouts, die jeweils auf die Fotografien abgestimmt sind, und bei einzelnen Arbeiten zusätzlich mit farblich passenden Stoffen hinter den Bildern."
             },
             {
               "type": "text",
-              "content": "Mein Grundgedanke war aber, die Farbe nicht auf das eigentliche Bild zu beschränken, sondern sie in den Raum zu übertragen. Umgesetzt habe ich das mit farbigen Passepartouts, die jeweils auf die Fotografien abgestimmt sind, und bei einzelnen Arbeiten zusätzlich mit farblich passenden Stoffen hinter den Bildern. Dadurch wird die Farbe des Bildes im Raum fortgeführt und beeinflusst gleichzeitig dessen Wahrnehmung und Stimmung."
+              "content": "Dadurch wird die Farbe des Bildes im Raum fortgeführt und beeinflusst gleichzeitig dessen Wahrnehmung und Stimmung. Auch in der Architektur ist Farbe für mich ein wichtiges Gestaltungsmittel. Natürlich kann Architektur ganz bewusst sehr reduziert mit Weiß arbeiten und dadurch eine völlig andere Wirkung erzielen."
             },
             {
               "type": "text",
-              "content": "Auch in der Architektur ist Farbe für mich ein wichtiges Gestaltungsmittel. Natürlich kann Architektur ganz bewusst sehr reduziert mit Weiß arbeiten und dadurch eine völlig andere Wirkung erzielen. Aber gezielt eingesetzte Farbe kann Räume, Flächen und Proportionen betonen und deren Wahrnehmung verändern. Dabei spielen natürlich auch die jeweiligen Lichtverhältnisse eine wichtige Rolle."
-            },
-            {
-              "type": "text",
-              "content": "Genau dieses Zusammenspiel von Bild, Farbe und Raum ist der Grundgedanke von „FARBRAUM“."
+              "content": "Aber gezielt eingesetzte Farbe kann Räume, Flächen und Proportionen betonen und deren Wahrnehmung verändern. Dabei spielen natürlich auch die jeweiligen Lichtverhältnisse eine wichtige Rolle. Genau dieses Zusammenspiel von Bild, Farbe und Raum ist der Grundgedanke von „FARBRAUM“."
             },
             {
               "type": "image",
@@ -37030,15 +36991,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Auch bei dieser Ausstellung war mein Grundgedanke, Architektur und Fotografie unmittelbar miteinander zu verbinden. Ich wollte hochwertige, sehr präzise ausgearbeitete Architekturfotografien auf Acrylglas in einer bewusst unfertigen Umgebung präsentieren – auf einer Rohbaustelle mit Sichtbeton, unverputztem Mauerwerk und all den Spuren des Bauprozesses."
+              "content": "Manuel Heywinkel [MH]: Auch bei dieser Ausstellung war mein Grundgedanke, Architektur und Fotografie unmittelbar miteinander zu verbinden. Ich wollte hochwertige, sehr präzise ausgearbeitete Architekturfotografien auf Acrylglas in einer bewusst unfertigen Umgebung präsentieren – auf einer Rohbaustelle mit Sichtbeton, unverputztem Mauerwerk und all den Spuren des Bauprozesses. Mich hat gerade dieser Kontrast gereizt: das fertige Bild im unfertigen Raum."
             },
             {
               "type": "text",
-              "content": "Mich hat gerade dieser Kontrast gereizt: das fertige Bild im unfertigen Raum. Die Fotografien zeigen Architektur in einer ausgearbeiteten, fertigen Form, während der Ausstellungsraum selbst noch mitten im Entstehungsprozess steckt."
-            },
-            {
-              "type": "text",
-              "content": "Leider musste ich die Ausstellung damals kurzfristig aus Sicherheitsgründen absagen. Durch die Witterungsverhältnisse an den Tagen zuvor war mir das Risiko für die Besucher auf der Baustelle einfach zu groß."
+              "content": "Die Fotografien zeigen Architektur in einer ausgearbeiteten, fertigen Form, während der Ausstellungsraum selbst noch mitten im Entstehungsprozess steckt. Leider musste ich die Ausstellung damals kurzfristig aus Sicherheitsgründen absagen. Durch die Witterungsverhältnisse an den Tagen zuvor war mir das Risiko für die Besucher auf der Baustelle einfach zu groß."
             },
             {
               "type": "text",
@@ -37057,11 +37014,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Bei der Ausstellung in Köln fand ich besonders spannend, dass wir Fotografien mit ganz unterschiedlichen Stilrichtungen und fotografischen Herangehensweisen miteinander kombiniert haben. Trotzdem gab es zwischen vielen Arbeiten erstaunlich starke inhaltliche oder formale Verbindungen."
+              "content": "Manuel Heywinkel [MH]: Bei der Ausstellung in Köln fand ich besonders spannend, dass wir Fotografien mit ganz unterschiedlichen Stilrichtungen und fotografischen Herangehensweisen miteinander kombiniert haben. Trotzdem gab es zwischen vielen Arbeiten erstaunlich starke inhaltliche oder formale Verbindungen. Wir haben deshalb bewusst Bildpaare zusammengestellt und Arbeiten gegenübergestellt, die auf den ersten Blick sehr unterschiedlich sind, sich aber mit ähnlichen Motiven, Formen oder Strukturen beschäftigen."
             },
             {
               "type": "text",
-              "content": "Wir haben deshalb bewusst Bildpaare zusammengestellt und Arbeiten gegenübergestellt, die auf den ersten Blick sehr unterschiedlich sind, sich aber mit ähnlichen Motiven, Formen oder Strukturen beschäftigen. Ein gutes Beispiel ist Monika Geißlers Aufnahme einer Schnecke und meine Fotografie der Wendeltreppe in der Berliner Siegessäule. Zwei vollkommen unterschiedliche Motive – und trotzdem entsteht durch die ähnliche Form unmittelbar eine Verbindung."
+              "content": "Ein gutes Beispiel ist Monika Geißlers Aufnahme einer Schnecke und meine Fotografie der Wendeltreppe in der Berliner Siegessäule. Zwei vollkommen unterschiedliche Motive – und trotzdem entsteht durch die ähnliche Form unmittelbar eine Verbindung."
             },
             {
               "type": "text",
@@ -37085,19 +37042,15 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Natürlich habe ich mich sehr darüber gefreut, dass gleich zwei meiner Treppenbilder von der Jury unter die Top 50 gewählt wurden, auch wenn ich mit ihnen im eigentlichen Wettbewerb keinen Preis gewinnen konnte. Umso interessanter fand ich, dass mein Bild „Unter der Decke“, das einen Deckenleuchter im Wohnzimmer meiner Mutter zeigt, beim Publikumsvoting den vierten Platz erreicht hat."
+              "content": "Manuel Heywinkel [MH]: Natürlich habe ich mich sehr darüber gefreut, dass gleich zwei meiner Treppenbilder von der Jury unter die Top 50 gewählt wurden, auch wenn ich mit ihnen im eigentlichen Wettbewerb keinen Preis gewinnen konnte. Umso interessanter fand ich, dass mein Bild „Unter der Decke“, das einen Deckenleuchter im Wohnzimmer meiner Mutter zeigt, beim Publikumsvoting den vierten Platz erreicht hat. Eine Fachjury setzt sich gezielt und vergleichend mit den eingereichten Arbeiten auseinander. Je nach fotografischem Hintergrund der Jurymitglieder können dabei beispielsweise Bildaufbau, technische Umsetzung, Gestaltung oder die Auseinandersetzung mit dem jeweiligen Thema eine besondere Rolle spielen."
             },
             {
               "type": "text",
-              "content": "Eine Fachjury setzt sich gezielt und vergleichend mit den eingereichten Arbeiten auseinander. Je nach fotografischem Hintergrund der Jurymitglieder können dabei beispielsweise Bildaufbau, technische Umsetzung, Gestaltung oder die Auseinandersetzung mit dem jeweiligen Thema eine besondere Rolle spielen."
+              "content": "Beim Publikum kommt möglicherweise noch stärker die unmittelbare persönliche oder emotionale Wirkung hinzu. Was spricht mich spontan an? Was begeistert mich an einem Bild? Erinnert mich das Motiv vielleicht an etwas, das ich selbst erlebt oder gesehen habe?"
             },
             {
               "type": "text",
-              "content": "Beim Publikum kommt möglicherweise noch stärker die unmittelbare persönliche oder emotionale Wirkung hinzu. Was spricht mich spontan an? Was begeistert mich an einem Bild? Erinnert mich das Motiv vielleicht an etwas, das ich selbst erlebt oder gesehen habe? Das bedeutet natürlich nicht, dass das Publikum technische oder gestalterische Qualitäten nicht wahrnimmt. Aber die persönliche Verbindung zu einem Bild kann bei einer Publikumsentscheidung eine größere Rolle spielen."
-            },
-            {
-              "type": "text",
-              "content": "Gerade deshalb finde ich beide Formen der Bewertung interessant, weil sie zeigen, wie unterschiedlich fotografische Arbeiten wahrgenommen werden können."
+              "content": "Das bedeutet natürlich nicht, dass das Publikum technische oder gestalterische Qualitäten nicht wahrnimmt. Aber die persönliche Verbindung zu einem Bild kann bei einer Publikumsentscheidung eine größere Rolle spielen. Gerade deshalb finde ich beide Formen der Bewertung interessant, weil sie zeigen, wie unterschiedlich fotografische Arbeiten wahrgenommen werden können."
             },
             {
               "type": "image",
@@ -37112,15 +37065,11 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Eigentlich unterscheide ich beim Fotografieren nicht danach, wo oder in welcher Form ein Bild später einmal gezeigt wird. Ob es auf Instagram veröffentlicht, in einem Magazin abgedruckt oder in einer Ausstellung präsentiert wird, ist im Moment der Aufnahme zunächst einmal nebensächlich. Für mich müssen zunächst das Motiv, die Komposition und die Darstellung funktionieren."
+              "content": "Manuel Heywinkel [MH]: Eigentlich unterscheide ich beim Fotografieren nicht danach, wo oder in welcher Form ein Bild später einmal gezeigt wird. Ob es auf Instagram veröffentlicht, in einem Magazin abgedruckt oder in einer Ausstellung präsentiert wird, ist im Moment der Aufnahme zunächst einmal nebensächlich. Für mich müssen zunächst das Motiv, die Komposition und die Darstellung funktionieren. Wenn ein Bild später für eine Ausstellung oder Veröffentlichung ausgewählt wird, freut mich das natürlich sehr."
             },
             {
               "type": "text",
-              "content": "Wenn ein Bild später für eine Ausstellung oder Veröffentlichung ausgewählt wird, freut mich das natürlich sehr. Besonders gefreut hat mich, dass meine Aufnahme von „Tiger & Turtle“ im Rahmen einer Ausstellung in New York gezeigt wurde. Es war etwas Besonderes, eine eigene Arbeit in einem solchen internationalen Umfeld präsentieren zu können."
-            },
-            {
-              "type": "text",
-              "content": "Gleichzeitig fand ich den Gedanken schön, dort mit „Tiger & Turtle“ ein Motiv aus Duisburg und damit auch ein Stück Nordrhein-Westfalen und Deutschland zu zeigen."
+              "content": "Besonders gefreut hat mich, dass meine Aufnahme von „Tiger & Turtle“ im Rahmen einer Ausstellung in New York gezeigt wurde. Es war etwas Besonderes, eine eigene Arbeit in einem solchen internationalen Umfeld präsentieren zu können. Gleichzeitig fand ich den Gedanken schön, dort mit „Tiger & Turtle“ ein Motiv aus Duisburg und damit auch ein Stück Nordrhein-Westfalen und Deutschland zu zeigen."
             },
             {
               "type": "image",
@@ -37140,43 +37089,15 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkel [MH]: Heute suche und betrachte ich Architektur sehr viel gezielter als früher. Was ich in jungen Jahren teilweise noch eher beiläufig fotografiert habe, suche ich inzwischen ganz bewusst."
+              "content": "Manuel Heywinkel [MH]: Heute suche und betrachte ich Architektur sehr viel gezielter als früher. Was ich in jungen Jahren teilweise noch eher beiläufig fotografiert habe, suche ich inzwischen ganz bewusst. Ich beschäftige mich im Vorfeld mit bestimmten Bauwerken und Orten und überlege, was mich dort fotografisch interessieren könnte. Das sind häufig Museen, aber genauso andere öffentlich zugängliche Gebäude. Besonders interessant sind für mich natürlich auch Orte, die normalerweise nicht ohne Weiteres zugänglich sind."
             },
             {
               "type": "text",
-              "content": "Ich beschäftige mich im Vorfeld mit bestimmten Bauwerken und Orten und überlege, was mich dort fotografisch interessieren könnte. Das sind häufig Museen, aber genauso andere öffentlich zugängliche Gebäude. Besonders interessant sind für mich natürlich auch Orte, die normalerweise nicht ohne Weiteres zugänglich sind."
+              "content": "Durch meine berufliche Tätigkeit ergeben sich zudem manchmal Möglichkeiten, Gebäude bereits während der Bauphase oder kurz vor ihrer Fertigstellung zu fotografieren – also zu einem Zeitpunkt, bevor sie in Nutzung gehen und für die Öffentlichkeit zugänglich werden. Fotografisch ist das sehr spannend, weil man Räume in einem Zustand erleben kann, der später so nicht mehr vorhanden ist. Als Nächstes steht zunächst die gemeinsame Ausstellung mit Petra Baumgart und Andreas Kretzschmar im IKIGAI-Raum in Köln an. Außerdem werde ich erneut am SPC in Köln teilnehmen. Was das neue Jahr darüber hinaus bringen wird, werden wir sehen."
             },
             {
               "type": "text",
-              "content": "Durch meine berufliche Tätigkeit ergeben sich zudem manchmal Möglichkeiten, Gebäude bereits während der Bauphase oder kurz vor ihrer Fertigstellung zu fotografieren – also zu einem Zeitpunkt, bevor sie in Nutzung gehen und für die Öffentlichkeit zugänglich werden. Fotografisch ist das sehr spannend, weil man Räume in einem Zustand erleben kann, der später so nicht mehr vorhanden ist."
-            },
-            {
-              "type": "text",
-              "content": "Als Nächstes steht zunächst die gemeinsame Ausstellung mit Petra Baumgart und Andreas Kretzschmar im IKIGAI-Raum in Köln an. Außerdem werde ich erneut am SPC in Köln teilnehmen. Was das neue Jahr darüber hinaus bringen wird, werden wir sehen."
-            },
-            {
-              "type": "text",
-              "content": "In Planung sind unter anderem weitere FotoWalks, beispielsweise auf der Zeche Zollverein und in Berlin. Das sind momentan aber tatsächlich noch Planungen und keine feststehenden Termine."
-            },
-            {
-              "type": "text",
-              "content": "Vielen Dank für das Interview."
-            },
-            {
-              "type": "text",
-              "content": "Manuel Heywinkel"
-            },
-            {
-              "type": "text",
-              "content": "Velbert, 20.09.2026"
-            },
-            {
-              "type": "text",
-              "content": "Version: deutsch"
-            },
-            {
-              "type": "text",
-              "content": "Interview mit Hilfe von KI bearbeitet."
+              "content": "In Planung sind unter anderem weitere FotoWalks, beispielsweise auf der Zeche Zollverein und in Berlin. Das sind momentan aber tatsächlich noch Planungen und keine feststehenden Termine. Vielen Dank für das Interview. Manuel Heywinkel\nVelbert, 20.09.2026\nVersion: deutsch \n\nInterview mit Hilfe von KI bearbeitet."
             },
             {
               "type": "image",
@@ -37194,10 +37115,10 @@
             },
             {
               "type": "text",
-              "content": "Manuel Heywinkels Arbeiten sind auf manuel-heywinkel.com und 1x.com/manuelheywinkel zu sehen, sowie auf Instagram unter @manuel_242neo. Alle Bilder © Manuel Heywinkel, veröffentlicht mit Erlaubnis des Künstlers."
+              "content": "Manuel Heywinkels Arbeiten sind auf <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a> und <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a> zu sehen, auf Instagram unter <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a>, und seine Arbeit als Architekt beim Büro ACMS unter <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>. Alle Bilder © Manuel Heywinkel, veröffentlicht mit Erlaubnis des Künstlers."
             }
           ],
-          "updatedAt": "2026-09-21T17:11:17.000Z",
+          "updatedAt": "2026-09-21T17:21:01.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel"
         }
