@@ -92,64 +92,67 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
     <aside
       className={`rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-5 py-5 sm:px-6 sm:py-5 ${className}`}
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[32ch] font-serif text-[19px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)]">
-          {t.lead}
-        </p>
-        {/* Три узкие плашки в ряд вместо трёх карточек в столбик — тот самый
-            «баннер», который не нужно ни разворачивать, ни прятать: весь
-            блок умещается в высоту одной строки текста плюс отступы. На
-            телефоне плашки переносятся по одной на строку, но каждая
-            остаётся такой же узкой, а не растягивается в полноразмерную
-            карточку. */}
-        <div className="flex flex-wrap gap-2 sm:shrink-0">
-          {SUPPORT_METHODS.map((method) => {
-            const Icon = method.icon;
-            const isCopied = copied === method.label;
-            const isPaypal = method.label === 'PayPal';
-            return (
-              <div key={method.label} className="relative">
+      <p className="max-w-[42ch] font-serif text-[19px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)]">
+        {t.lead}
+      </p>
+      {/* Реквизиты читаются прямо на странице, без наведения и без клика —
+          скопировать по-прежнему можно одним касанием, но сперва человек
+          должен УВИДЕТЬ значение, а не искать его в title-тултипе. Поэтому
+          каждый способ — строка на всю ширину: подпись слева, само значение
+          моноширинным шрифтом рядом, кнопка копирования справа. */}
+      <div className="mt-4 flex flex-col gap-2">
+        {SUPPORT_METHODS.map((method) => {
+          const Icon = method.icon;
+          const isCopied = copied === method.label;
+          const isPaypal = method.label === 'PayPal';
+          return (
+            <div key={method.label} className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => copyValue(method.label, method.value)}
+                id={`support-journal-${method.label}`}
+                title={isCopied ? t.copied : t.copy}
+                className={`flex min-w-0 flex-1 items-center gap-2.5 rounded-xl border py-2.5 px-3.5 text-left transition-colors sm:gap-3 ${
+                  isCopied
+                    ? 'border-[var(--c-gold)] bg-[rgb(var(--c-gold-rgb)_/_0.16)]'
+                    : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
+                }`}
+              >
+                <Icon size={14} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
+                <span className="w-[46px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[52px]">
+                  {method.label}
+                </span>
+                <span className="min-w-0 flex-1 break-all font-mono text-[12.5px] font-semibold leading-snug text-[var(--c-accent)] sm:text-[13.5px]">
+                  {method.value}
+                </span>
+                {isCopied ? (
+                  <span className="flex shrink-0 items-center gap-1 font-mono text-[10px] font-semibold uppercase tracking-[0.05em] text-[var(--c-gold)]">
+                    <Check size={12} strokeWidth={2.5} aria-hidden="true" />
+                    {t.copied}
+                  </span>
+                ) : (
+                  <Copy size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
+                )}
+              </button>
+              {isPaypal && (
                 <button
                   type="button"
-                  onClick={() => copyValue(method.label, method.value)}
-                  id={`support-journal-${method.label}`}
-                  title={isCopied ? t.copied : `${method.label}: ${method.value}`}
-                  className={`flex items-center gap-2 rounded-full border py-2 pl-3 pr-3.5 text-left transition-colors ${
-                    isCopied
-                      ? 'border-[var(--c-gold)] bg-[rgb(var(--c-gold-rgb)_/_0.16)]'
-                      : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
+                  onClick={toggleQr}
+                  aria-label={t.qr}
+                  title={t.qr}
+                  aria-expanded={qrOpen}
+                  className={`flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                    qrOpen
+                      ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-white'
+                      : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
                   }`}
                 >
-                  <Icon size={13} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
-                  <span className="font-mono text-[11px] font-semibold text-[var(--c-accent)]">
-                    {isCopied ? t.copied : method.label}
-                  </span>
-                  {isCopied ? (
-                    <Check size={12} strokeWidth={2.5} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
-                  ) : (
-                    <Copy size={11} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
-                  )}
+                  <QrCode size={15} strokeWidth={2.2} aria-hidden="true" />
                 </button>
-                {isPaypal && (
-                  <button
-                    type="button"
-                    onClick={toggleQr}
-                    aria-label={t.qr}
-                    title={t.qr}
-                    aria-expanded={qrOpen}
-                    className={`absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border transition-colors ${
-                      qrOpen
-                        ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-white'
-                        : 'border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-[var(--c-bg)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
-                    }`}
-                  >
-                    <QrCode size={10} strokeWidth={2.2} aria-hidden="true" />
-                  </button>
-                )}
-              </div>
-            );
-          })}
-        </div>
+              )}
+            </div>
+          );
+        })}
       </div>
       {qrOpen && (
         <div className="mt-4 flex flex-col items-start gap-2">
