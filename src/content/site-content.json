@@ -71441,6 +71441,371 @@
           "updatedAt": "2026-09-21T17:03:25.746Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel"
+        },
+        {
+          "id": 46,
+          "draft": false,
+          "previewToken": "c9f26ab1e6f4a7d029d3b6e1a5c84f70",
+          "title": "Le Fil Rouge : Veronika Chernienko sur la Peinture que les Mots ne Peuvent Atteindre",
+          "author": "Viacheslav Munister & Veronika Chernienko",
+          "role": "Auteur",
+          "date": "21 sept. 2026",
+          "excerpt": "La peintre ukrainienne Veronika Chernienko, formée à l'académie de Kyiv et basée à Chypre depuis 2014, sur pourquoi elle se considère comme une coloriste avant tout, le fil rouge récurrent qui traverse son œuvre la plus personnelle, et le croquis de la biennale sur la maison et la distance qu'elle ne peut toujours pas regarder sans pleurer.",
+          "category": "entretien",
+          "subcategory": "Entretien",
+          "tags": [
+            "Entretien",
+            "peinture",
+            "Ukraine",
+            "Chypre"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mubljntzt73dx1.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "Veronika Chernienko peint de la manière dont elle a été formée à l'académie de Kyiv qu'elle appelle toujours chez elle, et peint contre cela dans la même respiration. Un coloriste d'abord, dit-elle, avant d'être autre chose — quelqu'un qui travaille avec la conviction que la couleur, non le dessin, porte ce qu'elle veut réellement dire."
+            },
+            {
+              "type": "text",
+              "content": "Elle a quitté l'Ukraine pour Chypre en 2014, et pendant des années, sa peinture a à peine enregistré le déplacement : la palette est restée la sienne, les sujets sont restés la figure humaine. Ce qui a changé dans le travail, ce n'était pas la géographie mais la guerre. Depuis 2022, elle a peint davantage, et différemment — pas toujours à propos de la guerre directement, mais portant ses répliques dans chaque toile : vulnérabilité, besoin de refuge, recherche de racines et des personnes laissées derrière. Un fil rouge récurrent, noué autour d'un poignet ou traînant dans l'eau, n'est pas tant un symbole fixe pour elle qu'un nerf que différentes peintures touchent pour différentes raisons."
+            },
+            {
+              "type": "text",
+              "content": "L'une de ces peintures — un enfant recroquevillé dans les racines exposées d'un arbre, un fil rouge traversant toute la composition — a été réalisée pour une biennale de 2023 à Larnaca sur le thème d'une maison loin de la maison. Elle n'a pas été sélectionnée. Elle ne peut toujours pas la regarder sans pleurer."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljntzt73dx1.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, sans titre (un enfant parmi les racines), huile sur toile — le croquis réalisé pour la biennale de Larnaca 2023, non sélectionné"
+            },
+            {
+              "type": "header",
+              "content": "01 · D'où vient la formation",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Viacheslav Munister [VM] : Pouvez-vous vous présenter et décrire le parcours qui vous a mené de votre formation à votre pratique actuelle, basée à Chypre ?"
+            },
+            {
+              "type": "text",
+              "content": "Veronika Chernienko [VC] : Je peins depuis mon enfance — c'était toujours une partie naturelle de ma vie. À douze ans, je suis entrée dans une école d'art en internat à Kyiv, et plus tard j'ai obtenu un diplôme de l'Académie nationale des beaux-arts et de l'architecture avec une maîtrise en peinture sur chevalet. Vers la fin de mes études, j'ai rejoint l'Union nationale des artistes d'Ukraine et j'ai participé à des expositions ukrainiennes et internationales."
+            },
+            {
+              "type": "text",
+              "content": "Lorsque ma famille et mes enfants sont arrivés, je me suis concentrée pendant un certain temps sur la peinture pour moi-même. En 2014, nous avons déménagé à Chypre, où j'ai rejoint la communauté artistique locale, peint des portraits sur commande, réalisé des fresques murales, et enseigné aux enfants — y compris en les préparant à entrer à l'école d'art. Les circonstances et les formes du travail ont constamment changé, mais la pratique quotidienne ne m'a jamais quittée. J'ai toujours senti que la peinture était ma profession et ma vocation."
+            },
+            {
+              "type": "texte",
+              "content": "Avec le début de la guerre à grande échelle en Ukraine, j'ai commencé à peindre de manière particulièrement intensive — la peinture m'a aidé à vivre ce que je n'avais pas de mots pour exprimer. Même lorsqu'une œuvre n'aborde pas directement la guerre, elle porte un écho de ce que j'ai vécu : un sentiment de vulnérabilité, un besoin de protection, une recherche de soutien et de connexion à mes racines. À travers le corps humain et ses gestes, je parle d'une douleur intérieure qui n'est pas toujours visible de l'extérieur."
+            },
+            {
+              "type": "texte",
+              "content": "C'est à Chypre, parmi des artistes de nombreux pays, que j'ai compris plus profondément le caractère distinctif de l'école ukrainienne de peinture qui m'a façonné — j'ai vu la richesse de notre palette et l'audace de nos couleurs et images avec un regard neuf. Aujourd'hui, il m'importe de continuer à développer cet héritage dans mon propre travail et de le transmettre à mes étudiants, pour maintenir une connexion vivante avec la culture qui m'a élevé et que je porte en moi."
+            },
+            {
+              "type": "texte",
+              "content": "VM : Pouvez-vous situer votre formation dans une tradition pédagogique spécifique, et dans quelle mesure voyez-vous votre travail actuel comme une continuation ou une rupture avec celle-ci ?"
+            },
+            {
+              "type": "texte",
+              "content": "VC : Mon éducation appartient à l'école académique ukrainienne de peinture. J'ai étudié dans l'atelier d'Oleksandr Lopukhov — notre promotion était, malheureusement, sa dernière. La composition et la peinture de genre étaient la base là-bas. En même temps, nous avons beaucoup travaillé avec Ihor Yulianovych Melnychuk, dont l'approche est marquée par une sensibilité décorative et une palette audacieuse et saturée. C'était la combinaison des deux qui a façonné ma vision de la peinture."
+            },
+            {
+              "type": "text",
+              "content": "La pratique sur le terrain comptait énormément. Nous avons passé de longues périodes dans les Carpates et en Transcarpatie, peignant sur le motif, étudiant la culture et les coutumes locales. Les motifs ukrainiens sont devenus une partie de mon expérience personnelle. Même à ces années d'étudiant, lorsque beaucoup cherchaient leur identité en dehors de l'école académique, j'étais heureux d'appartenir à la tradition ukrainienne du réalisme et de l'impressionnisme. L'être humain, et le thème de l'Ukraine, sont restés avec moi depuis."
+            },
+            {
+              "type": "text",
+              "content": "En même temps, je sens aujourd'hui que je me suis éloigné de l'académisme et du besoin de suivre des règles. Dans un monde qui ne cesse de changer, avec autant de liberté créative disponible, je me suis permis de faire ce que je veux — faire confiance à mon propre sens de la couleur et de la forme, et suivre là où le travail lui-même mène. Je m'appuie de plus en plus sur l'intuition, mais c'est une intuition qui a grandi à partir d'une formation approfondie et de années de pratique. L'école est devenue une fondation intérieure qui me donne la liberté d'expérimenter. Et la simple joie du processus lui-même compte énormément pour moi — je prends un réel plaisir dans ce que je fais."
+            },
+            {
+              "type": "header",
+              "content": "02 · La vision du monde d'un coloriste",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Comment décririez-vous votre pratique dans son ensemble à quelqu'un qui la découvre pour la première fois — que devrait-il comprendre avant tout ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Ma pratique commence par un regard attentif, enamouré du monde. J'ai une faiblesse pour admirer tout ce qui est vivant — j'adore observer la nature, le mouvement de la lumière, les reflets et les échos de couleur. Voir le monde à travers les yeux d'un peintre me semble naturel : je remarque constamment des combinaisons de couleurs et des décalages à peine perceptibles que je souhaite porter sur la toile."
+            },
+            {
+              "type": "text",
+              "content": "Avant tout, je me considère comme un coloriste. C'est à travers la couleur, plus qu'à travers la forme, que je transmets ma perception et ce que je vis. Même lorsque le monde recèle tant de douleur, je suis captivé par la façon dont tout ce qui est vivant autour de nous continue de changer sans arrêt, et je veux transmettre ce sentiment dans ma peinture."
+            },
+            {
+              "type": "text",
+              "content": "Je veux montrer au spectateur ce que je vois, et ce qu'il pourrait autrement ignorer. L'inviter à s'arrêter, à regarder de plus près, et à ressentir. Ce qui compte le plus pour moi, c'est que la couleur touche une personne — qu'elle évoque un souvenir, une sensation, une nouvelle perception de quelque chose de familier."
+            },
+            {
+              "type": "header",
+              "content": "03 · Chypre et ce que la géographie n'a pas changé",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Le déplacement de Ukraine à Chypre est un fait de votre biographie. Est-ce aussi un fait de votre peinture — la géographie entre-t-elle en tant que sujet, en tant que lumière et palette, ou reste-t-elle en dehors de l'œuvre elle-même ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Une culture et un paysage différents peuvent certainement changer la façon dont un artiste travaille. Mais je ne peux pas dire que le déménagement à Chypre ait significativement changé ma palette ou ma gamme de sujets. Je continue à peindre ce qui est proche de moi, en m'appuyant sur une manière de voir qui s'est formée en Ukraine."
+            },
+            {
+              "type": "text",
+              "content": "Même lorsque je me tourne vers le paysage chypriote, je le vois à travers ma propre expérience, et je le rends dans ma propre manière et mes relations de couleurs. Ce qui m'intéresse, c'est quelle image de cet endroit peut naître de ce regard particulier — je sens qu'elle différera de la peinture méditerranéenne que je rencontre ici. C'est précisément à Chypre, parmi des artistes de différents pays, que je remarque le plus clairement les différences dans nos approches picturales, et que je reconnais ce que l'école ukrainienne m'a donné."
+            },
+            {
+              "type": "text",
+              "content": "La pratique en plein air n'a jamais vraiment pris racine pour moi ici, bien que j'aie essayé plus d'une fois d'y revenir. Je travaille principalement chez moi, et je peins beaucoup d'œuvres figuratives. L'être humain et son monde intérieur restent au centre de mon attention."
+            },
+            {
+              "type": "text",
+              "content": "Avec le début de la guerre à grande échelle, j'ai rejoint le travail bénévole à la Ukrainian House à Chypre, où j'enseigne aux enfants ukrainiens. Ensemble, nous maintenons notre tradition artistique vivante, nous tournons vers l'imagerie ukrainienne, travaillons avec la couleur. Il m'importe que les enfants grandissant à l'étranger ressentent une connexion vivante avec leur culture et puissent la développer dans leur propre travail. Je vois cela aussi comme une continuation d'un chemin qui a commencé en Ukraine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljrtgp6kqn4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, trois femmes en coiffe traditionnelle, huile sur toile"
+            },
+            {
+              "type": "header",
+              "content": "04 · Sources, et se tenant à l'écart de la lignée",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Au-delà de l'observation directe, quelle est votre principale source de référence visuelle — précédent historique de l'art, photographie, autre chose — et dans quelle mesure placez-vous consciemment votre propre travail dans une lignée de peintres ?"
+            },
+            {
+              "type": "texte",
+              "content": "VC : Mes peintures naissent d'une combinaison de sources : études, photographies, gestes que j'ai vus, observation. La plupart du temps, je me tourne vers la photographie — c'est un matériau pratique, et l'expérience me permet de la réinterpréter librement. Mais travailler d'après la vie reste irremplaçable. Ici à Chypre, dans notre communauté artistique, nous travaillons encore avec un modèle vivant, et j'apprécie cela énormément. Lorsqu'une photographie ne suffit pas, je retourne à la vie, pour regarder de plus près, pour clarifier, pour ressentir ce que l'image ne peut pas transmettre. Sans cette expérience vivante, la peinture ne me semble pas complète."
+            },
+            {
+              "type": "texte",
+              "content": "Je retourne souvent aux peintres ukrainiens — Oleksandr Murashko, Viktor Zaretsky, Tetiana Holembievska, Tetiana Yablonska. Mes maîtres ont aussi eu une grande influence sur moi. Je suis également avec intérêt les artistes contemporains, y compris ceux qui travaillent avec moi à Chypre. Tout ce que j'admire reste, dans une certaine mesure, dans ma mémoire visuelle et me façonne."
+            },
+            {
+              "type": "texte",
+              "content": "En même temps, je ne me place dans aucun style particulier, et je ne cherche pas consciemment à suivre un artiste spécifique. En travaillant, je ne pense pas à qui ma peinture devrait ressembler, ou à quelle tradition elle continue. Les connaissances, impressions et influences font déjà partie de moi — debout devant la toile, je fais confiance à mon propre sens des choses et je me concentre sur ce que je veux transmettre."
+            },
+            {
+              "type": "entête",
+              "content": "05 · Nature morte et figure — une seule langue, pas deux",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Vos natures mortes poursuivent une finition presque hyperréaliste, tandis que le travail figuratif reste plus lâche et plus pictural. Sont-ce deux langages différents pour vous, ou un seul langage utilisé sous différentes pressions ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Pour moi, c'est vraiment une seule approche, dans laquelle l'équilibre entre précision et lâcher-prise change en fonction de ce que je veux transmettre. La formation académique me donne une compréhension de la forme, mais la précision photographique à elle seule n'est pas mon objectif. Ce qui me captive, c'est la possibilité d'intensifier ce que j'ai vu maintes fois — d'affiner la couleur, de souligner la plasticité du corps, de faire ressentir ce qui a attiré mon attention."
+            },
+            {
+              "type": "text",
+              "content": "Notre vie quotidienne est saturée d'images, et je veux donner au spectateur une raison de laisser son regard s'attarder. Je perçois le monde à travers la couleur et la plasticité, et je veux montrer ce qui passe généralement inaperçu. Parfois, cela nécessite une modélisation soigneuse de la forme, parfois un grand champ plat de couleur. Le choix est souvent intuitif, fait dans le processus de travail."
+            },
+            {
+              "type": "text",
+              "content": "La figure humaine reste une source inépuisable de beauté et de fascination pour moi. À travers le corps, ses mouvements et ses gestes, je veux établir une connexion émotionnelle avec le spectateur. En même temps, je suis moi-même captivé par des peintres qui remarquent même des nuances plus fines et me montrent des choses que je n'avais pas vues auparavant. Cette approfondissement continu de l'œil est l'une des plus grandes joies que la peinture m'offre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljn4x009g9p.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, nature morte avec antiquités, huile sur toile"
+            },
+            {
+              "type": "header",
+              "content": "06 · Mur et toile",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Travailler à la fois sur la peinture murale et sur chevalet signifie passer d'une échelle publique, spécifique au site, à une échelle intime. Comment votre approche change-t-elle ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : La peinture monumentale et la peinture sur chevalet nécessitent des approches différentes de la composition, de l'échelle et de l'organisation de l'espace — ce sont des spécialisations distinctes, et l'académie dispose d'un atelier dédié à la peinture monumentale. Mais j'aborde un mur comme un peintre sur chevalet : je le considère comme une grande toile et j'apporte ma propre façon de travailler dessus."
+            },
+            {
+              "type": "text",
+              "content": "Ce n'est pas naturel pour moi de construire une image à partir de masses générales larges et de remplissages plats. Je travaille avec des pinceaux, conserve la touche picturale, et construis la forme, les transitions, un sens de l'air à travers cela. Même dans les fresques en noir et blanc, cette vivacité du trait compte pour moi. Il y a un attrait particulier dans cette approche, que mes clients apprécient."
+            },
+            {
+              "type": "text",
+              "content": "Bien sûr, sur une grande surface, ce genre de travail prend beaucoup plus de temps, et je préviens toujours les gens à l'avance à ce sujet. Mais j'apprécie le processus lui-même — j'adore travailler avec un pinceau, regarder une image prendre vie lentement. L'échelle change ; le plaisir de peindre et ma propre approche restent avec moi."
+            },
+            {
+              "type": "header",
+              "content": "07 · Un tournant",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : En regardant votre pratique au fil du temps, y a-t-il un corps d'œuvres que vous identifieriez comme un tournant ?"
+            },
+            {
+              "type": "texte",
+              "content": "VC : Il y a eu une période d'expérimentation délibérée dans ma pratique. Pendant la pandémie, je me suis plongé dans le travail des peintres réalistes américains — leur palette restreinte, sombre, la nuance complexe des couleurs, la finesse de la gestion de la surface peinte. J'ai essayé de changer à la fois ma gamme de couleurs et ma technique. Plusieurs œuvres plus sombres, plus délicatement rendues, sont sorties de cette période."
+            },
+            {
+              "type": "texte",
+              "content": "Au fil du temps, j'ai senti que cette manière n'était pas proche de moi. Le travail recevait moins de réponse des spectateurs, et j'ai compris, de plus en plus clairement, qu'à cette recherche je m'éloignais de moi-même. Maintenant, je retourne à ce que j'ai aimé depuis l'enfance, et ce qui me captive dans la peinture ukrainienne : des couleurs audacieuses, exagérées, un large coup de pinceau, la liberté."
+            },
+            {
+              "type": "texte",
+              "content": "Ce qui s'est avéré être le véritable tournant, c'est la réalisation de l'importance de faire confiance à ma propre nature. C'est un retour à moi-même, mais avec une expérience différente et une plus grande confiance dans mon propre langage."
+            },
+            {
+              "type": "texte",
+              "content": "Mes œuvres les plus personnelles naissent d'un sentiment intérieur profond. La connaissance et l'expérience me soutiennent, mais à chaque fois, quelque chose se passe sur la toile que je ne peux pas entièrement prévoir ou expliquer. Parfois, je le ressens comme une connexion à quelque chose de plus grand que moi — à Dieu, au monde, à l'énergie même de la vie. Ce qui compte pour moi, c'est de rester ouvert à cet état et de le laisser guider ma main."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljmbjal4u75.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, figure sur la rive, huile sur toile — l'œuvre que Veronika nomme comme son tournant"
+            },
+            {
+              "type": "header",
+              "content": "08 · Le fil rouge",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Un motif récurrent — un fil rouge enroulé autour du poignet — ponctue un corps de travail sinon réservé. Que signifie-t-il pour vous, et son sens a-t-il évolué d'une peinture à l'autre ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Je ne qualifierais pas ce motif de signe avec une signification fixe — il naît du sentiment derrière chaque œuvre spécifique."
+            },
+            {
+              "type": "texte",
+              "content": "Je suppose que vous voulez dire, tout d'abord, la fille parmi les racines — l'esquisse pour la biennale de Larnaca 2023 sur le thème 'une maison loin de la maison.' Cette peinture m'amène encore aux larmes. En elle, l'impuissance et une connexion profonde à la maison, aux personnes proches de moi, à l'Ukraine, se rejoignent. Le fil rouge rend cette connexion invisible visible. Loin de la maison, cela semble parfois encore plus fort, encore plus douloureux — vous ne pouvez pas embrasser les personnes que vous aimez, mais tout ce qui leur arrive passe par vous. Et en même temps, c'est précisément cette proximité qui nous rassemble en une communauté, qui nous aide à nous tenir l'un à l'autre."
+            },
+            {
+              "type": "texte",
+              "content": "Malheureusement, l'esquisse n'a pas été sélectionnée. Je ne sais pas pourquoi. Peut-être que les organisateurs ne voulaient pas se concentrer spécifiquement sur l'expérience ukrainienne de la guerre et de la distance de la maison — mais ce n'est que ma supposition."
+            },
+            {
+              "type": "texte",
+              "content": "Si vous parlez aussi de la fille dans l'eau, avec un ruban rouge dans les cheveux — cette peinture est ma réflexion sur la terrible violence à Bucha. Même maintenant, il m'est difficile d'en parler : la peinture est devenue un moyen d'exprimer une douleur pour laquelle je n'avais pas de mots."
+            },
+            {
+              "type": "texte",
+              "content": "Ainsi, la signification de l'accent rouge évolue avec la peinture elle-même. Ces images sont apparues intuitivement, à partir d'expériences différentes. Ce qui les unit, c'est la vulnérabilité humaine, et ma propre réponse profonde et personnelle."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljp8gaeemeu.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, sans titre (dans l'eau), huile sur toile — une réflexion sur la violence à Bucha"
+            },
+            {
+              "type": "text",
+              "content": "VM : Certaines œuvres — comme la pièce abordant les mains liées des enfants — s'engagent directement avec la violence et la vulnérabilité. Ce contenu change-t-il votre façon de peindre, techniquement ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Vous pensez peut-être à la peinture avec la fille qui serre ses propres épaules, un ruban rouge de ses cheveux tombant dans l'eau. Cette œuvre est née comme ma réflexion sur la terrible violence à Bucha."
+            },
+            {
+              "type": "text",
+              "content": "Ce contenu influence certainement ma façon de peindre, même si ma vision picturale reste reconnaissable. Je deviens particulièrement attentive à la vulnérabilité humaine, et j'essaie de la rendre aussi douce et tendre que possible. Certains fragments de la figure que je rends plus soigneusement, en restant plus longtemps sur un geste, sur des subtils changements de valeur et des transitions de couleur. À travers cette attention portée au corps, j'essaie de transmettre une douleur intérieure."
+            },
+            {
+              "type": "text",
+              "content": "Ces changements découlent du sentiment lui-même, intuitivement. La couleur, le trait, et la distance à laquelle je pousse une forme sont tous subordonnés à ce que je ressens devant la toile. Je pense que le spectateur peut percevoir cette tendresse et cette douleur avant même d'apprendre l'histoire derrière la peinture."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljqcas4meij.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, sans titre, huile sur toile"
+            },
+            {
+              "type": "header",
+              "content": "09 · Ce qu'elle ne peut regarder sans pleurer",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Y a-t-il une œuvre que vous considérez comme techniquement ou conceptuellement significative au-delà de sa réception publique ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Pour moi, ce travail est la fille parmi les racines avec le fil rouge, que j'ai déjà mentionné. Ce croquis pour la biennale de Larnaca est devenu une déclaration très personnelle sur la maison, la distance, et un lien qui ne peut être brisé. En lui, l'impuissance d'une personne rencontre la force de son appartenance — aux gens qui lui sont proches, à sa terre, à sa communauté. Je ne peux toujours pas regarder cette peinture sans pleurer."
+            },
+            {
+              "type": "text",
+              "content": "Le croquis n'a pas été sélectionné, et il est douloureux pour moi qu'il n'ait pas eu la chance d'être entendu dans le contexte pour lequel il a été créé. Je ne connais pas les raisons de cette décision et ne peux pas l'expliquer avec certitude. La signification personnelle d'une œuvre ne correspond pas toujours à sa reconnaissance extérieure."
+            },
+            {
+              "type": "text",
+              "content": "Sa valeur pour moi n'a pas changé : en elle, j'ai réussi à transmettre un sentiment encore difficile à exprimer avec des mots. J'aimerais que cette œuvre ait encore la chance de rencontrer son spectateur."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljoj26oe4d3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, détail de la peinture racines sans titre"
+            },
+            {
+              "type": "header",
+              "content": "10 · Savoir quand s'arrêter",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM : Votre pratique de la nature morte poursuit une finition presque hyperréaliste, tandis que le travail figuratif est beaucoup plus libre — comment savez-vous qu'une peinture est terminée ?"
+            },
+            {
+              "type": "text",
+              "content": "VC : Pour moi, l'exhaustivité d'une peinture est décidée par si j'ai réussi à transmettre ce qui compte le plus. Je travaille souvent en alla prima, essayant de capturer l'image en une seule fois, pour garder la force de la première impression. Travailler vite m'importe. Je considérais cette impatience comme un défaut, mais avec le temps, elle est devenue une caractéristique distinctive de mon langage pictural."
+            },
+            {
+              "type": "text",
+              "content": "Cela est lié aussi à ma formation — nous avons peint beaucoup d'études en plein air, travaillé à partir de modèles vivants en extérieur, souvent en une ou deux couches. Cette pratique m'a appris à me concentrer sur l'essentiel. Un travail long, à plusieurs couches sur une toile, ne m'attire pas, bien que les natures mortes commandées, avec leur cahier des charges spécifique, demandent parfois plus de détails."
+            },
+            {
+              "type": "text",
+              "content": "Dans mon propre travail, je m'arrête lorsque je sens que j'ai dit ce que je voulais dire. Les zones de la toile peuvent rester non résolues, les coups de pinceau libres, les formes seulement suggérées. Pour moi, ce sont des espaces de l'indicible, où le spectateur peut ressentir et compléter l'image lui-même. Je ne veux pas surcharger la toile — il est important pour moi qu'elle respire."
+            },
+            {
+              "type": "text",
+              "content": "Alors ce qui semble inachevé peut, pour moi, être une peinture entièrement achevée. Je fais confiance à mon propre sens de cette limite, et je fais aussi confiance au spectateur — chaque détail n'a pas besoin d'être expliqué."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubljr7h52mq34.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Veronika Chernienko, scène de mariage, huile sur toile"
+            },
+            {
+              "type": "text",
+              "content": "Le travail de Veronika Chernienko peut être suivi sur Instagram à @artveronika_painting."
+            }
+          ],
+          "updatedAt": "2026-09-21T19:06:11.815Z",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-veronika-chernienko",
+          "publishAt": "2026-09-23T00:00:00.000Z",
+          "publishedAt": "2026-09-23T00:00:00.000Z"
         }
       ],
       "reviews": [
