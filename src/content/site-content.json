@@ -65208,110 +65208,94 @@
         {
           "id": 11,
           "draft": false,
-          "title": "Cena Dentro un deposito di pneumatici",
-          "subject": "Bibendum · 81 Fulham Road, Chelsea, Londra · François Espinasse",
+          "title": "Cena Dentro del Mar del Nord",
+          "subject": "Under · Bålyveien 50, Lindesnes · Snøhetta",
           "rating": 0,
           "category": "ARCHITECTURE & DINING",
           "author": "Viacheslav Munister",
           "role": "Guest Editor",
           "authorId": "author-1784732936927-kw554",
           "date": "SEP 21, 2026",
-          "imageUrl": "https://api.eprisjournal.com/uploads/bibendum-exterior.jpg",
-          "meta": "LONDON · FRANÇOIS ESPINASSE · 1911 · GRADE II LISTED 1969 · PHOTO: CC BY / CC BY-SA, WIKIMEDIA COMMONS",
-          "verdict": "Michelin House ha trascorso settantasei anni vendendo e installando pneumatici prima di trascorrere una sera a servire cena, e l'edificio non ha mai completamente accettato il secondo lavoro: nessuno spazio è stato tagliato per una cucina moderna, gli scarichi erano dimensionati per gomma piuttosto che burro, e una mascotte in vetro colorato di quaranta piedi ancora guarda la stanza dall'alto di uno slogan sul bere.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/under-exterior.jpg",
+          "meta": "LINDESNES, NORWAY · SNØHETTA · OPENED MARCH 2019 · PHOTO: CC BY 2.0, CITY FOODSTERS / WIKIMEDIA COMMONS",
+          "verdict": "Under è un tubo di cemento di trentaquattro metri posato a metà nel mare alla punta meridionale della Norvegia, e fa una cosa meglio di qualsiasi sala da pranzo in Europa: mette quaranta persone dietro una finestra di undici metri, a cinque metri e mezzo sotto le onde, e lascia che il Mar del Nord decida come sarà la vista stasera.",
           "pros": [
-            "Tre finestre monumentali in vetro colorato di Bibendum, l'Uomo Michelin, realizzate per un poster del 1898 e mai rimosse durante ottant'anni di cambi di inquilini",
-            "Trentaquattro pannelli di piastrelle in ceramica dipinte a mano registrano vere corse automobilistiche del 1897–1907 per nome, pilota e auto — un album fotografico permanente fissato alle pareti, dentro e fuori",
-            "Elencato come Grado II dal 1969, la conversione di Terence Conran del 1987 non ha toccato le ferrature Art Nouveau originali, le piastrelle o il vetro",
-            "Di nuovo un ristorante funzionante da luglio 2026, gestito dallo stesso chef che ha trascorso otto anni a imparare esattamente cosa un garage di pneumatici del 1911 permetterà e cosa no a una cucina"
+            "La finestra subacquea di 11 × 3,4 metri non è un espediente avvitato a un ristorante normale — l'intero edificio è organizzato intorno a raggiungerla, piano dopo piano, fino a che la sala da pranzo non diventa il fondale marino",
+            "Il nome è un vero gioco di parole in norvegese, che significa sia 'sotto' che 'meraviglia', e Snøhetta ha costruito tutta la discesa per guadagnarselo",
+            "La corazza di cemento è progettata come un reef artificiale, ruvida per invitare cozze e alga, così la vista fuori dalla finestra cambia e si ispessisce con la vita marina anno dopo anno",
+            "Una stella Michelin entro otto mesi dall'apertura nel 2019, mantenuta di nuovo nella guida del 2026 sotto lo chef Bernt Sæthre — lo spettacolo non ha finito per portare una cucina che non riusciva a tenere il passo"
           ],
           "cons": [
-            "Claude Bosi ha chiuso il ristorante ad agosto 2025 piuttosto che continuare a negoziare intorno a un edificio non costruito per ospitare una cucina moderna: troppo poca energia, scarichi scadenti, nessun locale di stoccaggio che non fosse preso in prestito dal negozio di fiori",
-            "Le arcate al piano terra erano spazi adatti per pneumatici, non per sale da pranzo, e le proporzioni si leggono ancora come un garage vestito per la cena",
-            "La caratteristica più spettacolare dell'edificio, la grande finestra di Bibendum, si affaccia sulla strada — all'interno, al tavolo, si vede principalmente la piastrellatura e il ricordo di essa"
+            "Quaranta posti e una struttura di seduta notturna significano che la finestra stessa è una risorsa più scarsa del menu di degustazione — prenota per la vista mesi in anticipo, non settimane",
+            "Lindesnes è il punto più a sud della Norvegia e non sulla strada per nessun luogo: l'aeroporto più vicino è Kristiansand, poi a circa un'ora di strada",
+            "Un menu di degustazione costruito così lontano da qualsiasi luogo ha un prezzo che presume che l'edificio sia metà della ragione per cui sei venuto, perché lo è"
           ],
-          "publishAt": "2026-09-21T18:00:00.000Z",
-          "updatedAt": "2026-09-21T20:34:15.833Z",
+          "publishAt": "2026-09-21T20:00:00.000Z",
+          "updatedAt": "2026-09-21T20:49:26.207Z",
           "content": [
             {
               "type": "text",
-              "content": "Fulham Road è per lo più mattoni rossi e stucco, la grammatica standard di Chelsea, fino a che il numero 81 non interrompe con un muro di piastrelle bianche e verdi smaltate, maiolica crema, e due enormi pile di pneumatici dorati che si adagiano sul parapetto come finiali. Una finestra di vetro colorato a quaranta piedi sopra mostra una figura bianca corpulenta che alza un bicchiere. La scritta sulla facciata non cerca di nascondere cosa fosse stato costruito a fare: MICHELIN TYRE CO LTD da un lato, BIBENDUM dall'altro. È stato un ristorante molto buono per la maggior parte degli ultimi quarant'anni. Fu costruito, nel 1911, per vendere pneumatici."
+              "content": "Al punto più meridionale della Norvegia, dove il Mar del Nord incontra lo Skagerrak, una lastra di cemento scuro scende dai rocce ad un angolo, come se un tratto di tubo fosse stato lasciato cadere da un grande altezza e lasciato esattamente dove è atterrato. Un'estremità è rivestita di legno grezzo e si trova in aria. L'altra estremità scompare nell'acqua. C'è una porta nell'estremità sommersa, sott'acqua, sigillata; esiste per i subacquei di manutenzione, non per i commensali. Tutti gli altri entrano dall'estremità di legno, in alto, e scendono."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-exterior.jpg",
-              "alt": "La facciata Art Nouveau rivestita di piastrelle di Michelin House su Fulham Road, Londra, con la finestra di vetro colorato di Bibendum e la scritta che recita Michelin Tyre Co Ltd e Bibendum",
-              "caption": "Michelin House, 81 Fulham Road. Le arcate al piano terra a sinistra erano baie di montaggio pneumatici; il seminterrato sottostante conteneva scorte di più di 30.000 pneumatici.",
-              "credit": "Fred Romero, CC BY 2.0",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:London_-_Michelin_House_(1).jpg"
+              "content": "https://api.eprisjournal.com/uploads/under-exterior.jpg",
+              "alt": "Sotto ristorante a Lindesnes, Norvegia, un lungo monolito di cemento scuro e legno costruito su una costa rocciosa, inclinato verso il mare",
+              "caption": "Sotto, visto dalle rocce a Lindesnes. La struttura si estende per 34 metri dall'ingresso fino a cinque metri e mezzo sotto la superficie.",
+              "credit": "City Foodsters, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9109_(48614080503).jpg"
             },
             {
               "type": "text",
-              "content": "L'edificio fu progettato da François Espinasse, un ingegnere del dipartimento di costruzione di Michelin a Clermont-Ferrand, non da un architetto qualificato, e fu costruito in circa cinque mesi usando il sistema Hennebique, una delle prime applicazioni del cemento armato in Gran Bretagna. La velocità si vede in niente del risultato: la facciata è rivestita di piastrelle dal pavimento al parapetto in maiolica crema e giada che non ha mai avuto bisogno di essere ridipinta, e tutto il piano terra era pianificato come infrastruttura operativa, con baie di ingresso dove un automobilista poteva far montare nuovi pneumatici mentre aspettava."
+              "content": "L'edificio è di Snøhetta, la società norvegese dietro l'Opera di Oslo, e si è aperto nel marzo 2019 come il primo ristorante subacqueo d'Europa, un titolo che detiene ancora insieme a una giusta pretesa di essere il più grande di questo tipo ovunque. La discesa è l'intera idea progettuale: un ingresso a livello del mare, un bar su un soppalco dove il cemento incontra prima l'acqua, e infine la sala da pranzo stessa, a trentaquattro metri dall'ingresso e a 5,5 metri sotto la superficie, il suo asse lungo termina in una finestra di undici metri per tre point quattro. Le pareti lungo il percorso sono un metro di cemento solido, costruite per resistere all'impatto di un mare agitato direttamente, e non c'è nulla tra il legno grezzo esposto sopra e la roccia nuda e non illuminata sotto per ammorbidire il fatto che ora c'è un grande peso sopra la testa."
             },
             {
               "type": "text",
-              "content": "La mascotte sulla finestra ha la sua storia, più antica di tredici anni rispetto all'edificio. Nel 1898 l'illustratore O'Galop disegnò una figura bianca corpulenta fatta di pneumatici impilati, che alzava un bicchiere pieno di chiodi e vetro rotto, sopra una linea delle Odi di Horace: <i>Nunc est bibendum</i> — ora è il momento di bere. Era un gioco di parole che i fratelli André ed Édouard Michelin non poterono resistere: un pneumatico che beve gli ostacoli sulla strada senza forarli. La figura fu chiamata così per lo slogan. Quando l'edificio di Londra fu costruito, Bibendum era già il volto dell'azienda in tutta Europa, e Espinasse gli dedicò tre delle finestre più grandi dell'edificio."
+              "content": "Il nome gioca su quella struttura piuttosto che decorarla. In norvegese, <i>under</i> significa sia \"sotto\" che \"meraviglia\", e l'edificio trascorre tutta la sua lunghezza facendo sì che la prima parola guadagni la seconda: non arrivi alla meraviglia, scendi in essa, piano dopo piano, fino a che la stanza stessa diventa il fondale marino e il soffitto il mare."
             },
             {
               "type": "immagine",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-exterior2.jpg",
-              "alt": "Vista ravvicinata della grande vetrata su Michelin House raffigurante Bibendum, l'Uomo Michelin, che alza un bicchiere, sopra il motto latino Nunc est Bibendum e le parole Michelin Tyre Co",
-              "caption": "Bibendum, che alza il suo bicchiere di chiodi e vetri rotti sotto la citazione di Horace che gli diede il nome.",
-              "credit": "The wub, CC BY-SA 4.0",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House,_London_-_2022-09-04_(3).jpg"
+              "content": "https://api.eprisjournal.com/uploads/under-dining.jpg",
+              "alt": "Interno della sala da pranzo subacquea del ristorante Under, tavoli apparecchiati per la cena di fronte a una grande finestra panoramica che si affaccia sul mare blu scuro, con pesci visibili all'esterno",
+              "caption": "La sala da pranzo a 5,5 metri sotto il livello del mare, tutti i quaranta coperti di fronte alla stessa finestra di undici metri.",
+              "credit": "City Foodsters, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9117_(48614087913).jpg"
             },
             {
               "type": "testo",
-              "content": "Le piastrelle fanno qualcosa che il vetro colorato non fa: tengono ricevute. Trentiquattro pannelli in ceramica, all'interno dell'atrio e lungo l'elevazione della strada, ognuno registra una specifica corsa automobilistica precoce — pilota, auto, anno, luogo — nello stile appiattito e fogliato dell'arte Nouveau francese pubblicitaria. Fernand Gabriel che guida una Mors alla Parigi–Madrid del 1903, un anno in cui la corsa fu interrotta prematuramente dopo otto morti e le strade non furono più usate per le corse. Nazzaro su una Fiat alla Grand Prix de Dieppe del 1907. Bardin su una De Dion alla Parigi–Cabourg del 1897, una macchina a forma di bicicletta che assomiglia più a un penny-farthing che a un'auto. Niente di tutto ciò è decorazione generica; è un archivio specifico, datato, nominato, dello sport per cui le gomme Michelin furono costruite per resistere, incastonato permanentemente nelle pareti dell'edificio che le vendeva."
+              "content": "Ciò che si trova fuori dalla finestra non è un paesaggio fisso. Snøhetta ha progettato la conchiglia di cemento per funzionare come un reef artificiale, il suo esterno deliberatamente ruvido piuttosto che levigato, in modo che cozze, alghe e barnacle la colonizzino come farebbero con qualsiasi roccia sommersa su questa costa. I biologi marini monitorano la crescita dall'interno, e il ristorante funge, per progettazione, anche come una stazione di ricerca: la stessa finestra che incornicia la cena è anche un punto di osservazione fisso su un reef che non esisteva prima che l'edificio fosse costruito. Ai commensali viene detto, più o meno accuratamente, che nessuna sera alla finestra è uguale all'altra — merluzzi e pollock passano in branchi sciolti, la luce cambia con la profondità e il tempo, e ogni stagione aggiunge un po' più di vita al cemento che non c'era quando il ristorante è stato aperto."
             },
             {
               "type": "immagine",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-panel-race.jpg",
-              "alt": "Pannello di piastrella in ceramica sulla facciata di Michelin House raffigurante il pilota Fernand Gabriel che corre con una Mors nella corsa Parigi–Madrid del 1903, incorniciato da motivi di foglie di quercia in stile Art Nouveau",
-              "caption": "Parigi–Madrid, 1903: Fernand Gabriel su Mors. Uno dei pannelli di corsa esterni dell'edificio, incorniciato in stile Art Nouveau con foglie di quercia.",
-              "credit": "JLDAUSSY, CC BY-SA 4.0",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_-_outside_-_Paris-Madrid_race.jpg"
+              "content": "https://api.eprisjournal.com/uploads/under-kitchen.jpg",
+              "alt": "Cucina aperta del ristorante Under con chef al lavoro al bancone, posizionato accanto alla finestra subacquea con il mare visibile all'esterno",
+              "caption": "La cucina aperta si trova ai margini della stessa finestra della sala da pranzo — il mare è la vista da entrambi i lati del passaggio.",
+              "credit": "City Foodsters, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9151_(48614088388).jpg"
+            },
+            {
+              "type": "testo",
+              "content": "La cucina, sotto la guida dello chef fondatore Nicolai Ellitsgaard, ha costruito un menu di degustazione attorno a ciò che già il edificio suggeriva: frutti di mare d'acqua fredda dalla costa immediatamente fuori dalla finestra, serviti in portate che sembrano assemblate direttamente dalla linea di riva — un singolo pezzo di capasanta inserito in una ciotola di sabbia nera commestibile, cozze servite nelle loro conchiglie all'interno di un nido intrecciato di alghe essiccate, aragoste e erbe piattate su pietre da spiaggia. Under ha ottenuto una stella Michelin entro otto mesi dall'apertura, un riconoscimento insolitamente rapido per un ristorante così remoto, e ne ha mantenuta una ogni anno da allora; la guida attuale attribuisce la responsabilità allo chef Bernt Sæthre, che ha portato avanti la cucina senza allentare la logica costiera, quasi archeologica, del menu originale."
             },
             {
               "type": "immagine",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-hall-door.jpg",
-              "alt": "La porta d'ingresso in vetro smaltato in stile Art Nouveau di Michelin House, con il monogramma Michelin M nel fanale, affiancata da pannelli di piastrelle in ceramica che mostrano le prime corse automobilistiche a Dieppe e Parigi-Cabourg",
-              "caption": "L'atrio: un monogramma Michelin in piombo sopra la porta, più pannelli di corsa ai lati — Dieppe 1907, Parigi–Cabourg 1897 — su mattoni smaltati bianchi.",
-              "credit": "JLDAUSSY, CC BY-SA 4.0",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_and_door_-_hall.jpg"
+              "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
+              "alt": "Un piatto al Under restaurant stilizzato per assomigliare a una pietra sulla spiaggia di sabbia scura commestibile, servito su un piatto di ceramica chiara",
+              "caption": "Un piatto costruito per sembrare la linea di costa fuori dalla finestra: crostacei inseriti nella sabbia nera commestibile.",
+              "credit": "City Foodsters, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "text",
-              "content": "Una pannello nell'atrio d'ingresso non riguarda affatto le corse. Riproduce il warrant reale concesso da Edward VII, leone e unicorno che sostengono lo stemma, foglie di quercia ai lati, le parole <i>By appointment to His late Majesty King Edward VII</i> incise nella ceramica con la stessa smaltatura permanente di tutto il resto. È una pubblicità, tecnicamente — prova di usanza reale, l'equivalente edwardiano di una recensione a cinque stelle stampata sul muro — ma un secolo dopo sembra più un monumento che una vanteria, un warrant per un re ormai defunto, fissato a una compagnia che da allora si è completamente trasferita dall'edificio."
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
+              "alt": "Cozze servite nelle loro conchiglie annidate in un nido intrecciato di alghe secche scure su un piatto al Under restaurant",
+              "caption": "Cozze, servite in un nido di alghe secche piuttosto che sopra di esse — il piatto continua a ripetere l'argomento dell'edificio.",
+              "credit": "City Foodsters, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9163_(48614589357).jpg"
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-panel-warrant.jpg",
-              "alt": "Pannello in ceramica nell'atrio di Michelin House che riproduce il warrant reale di King Edward VII sopra una piastrella dipinta di una prima automobile, incorniciato da motivi scolpiti in pietra e foglie di quercia",
-              "caption": "Il pannello del warrant reale, atrio — prova di usanza per un monarca che morì l'anno prima dell'apertura dell'edificio.",
-              "credit": "JLDAUSSY, CC BY-SA 4.0",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_-_hall_-_Edward_VII_royal_warrant.jpg"
-            },
-            {
-              "type": "text",
-              "content": "Michelin mantenne la sua sede nel Regno Unito nell'edificio fino alla metà degli anni 1980, momento in cui le baie di montaggio pneumatici avevano ormai smesso di avere senso per una compagnia che non aveva più bisogno di una vetrina per vendere gomma. Nel 1985 l'editore Paul Hamlyn e il designer e ristoratore Terence Conran lo acquistarono per 8 milioni di sterline, e lo riaprirono nel 1987 con The Conran Shop al piano terra, uffici sopra, e un nuovo ristorante — Bibendum — installato nella stanza del primo piano che un tempo era la sala di montaggio della compagnia di pneumatici, con un Oyster Bar in quello che era stato l'ingresso al piano terra. L'edificio era stato classificato come struttura di Grado II dal 1969, il che significava che le piastrelle, le strutture in ferro e le finestre non erano mai state realmente disponibili per essere ridisegnate; gli architetti di Conran hanno lavorato intorno a esse piuttosto che attraverso di esse, ed è per questo che i pannelli delle corse e il warrant reale sono ancora esattamente dove Espinasse li ha messi."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/bibendum-mosaic.jpg",
-              "alt": "Pavimento mosaico all'ingresso del ristorante Bibendum all'interno di Michelin House, che raffigura l'Uomo Michelin e la parola Bibendum in piastrella, con tavoli da pranzo del ristorante disposti sullo sfondo",
-              "caption": "Il mosaico d'ingresso, posato quando l'edificio era ancora l'atrio di una compagnia di pneumatici, ora il pavimento di una sala da pranzo.",
-              "credit": "DRD, CC BY 2.5",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:MichelinHouse_MosaicEntrance.jpg"
-            },
-            {
-              "type": "text",
-              "content": "Il ristorante stesso ha cambiato chef più spesso di quanto l'edificio abbia cambiato proprietari. Simon Hopkinson ha gestito Bibendum dall'apertura del 1987 fino al 1994 e ha scritto di fatto l'idea moderna di cosa potrebbe essere un bistro-grande sala di Londra. Seguirono una serie di inquilini. Claude Bosi ha preso il comando nel 2017 e ha vinto due stelle Michelin lì — un riconoscimento con un bordo davvero strano, una cucina stellata Michelin che opera all'interno dell'ex sede stessa della compagnia — prima di chiudere definitivamente il ristorante e il suo Oyster Bar il 31 agosto 2025. La sua ragione dichiarata non era il cibo. Era l'edificio: fornitura elettrica insufficiente per una cucina moderna, drenaggio progettato per un deposito di pneumatici del 1911 piuttosto che per un ristorante funzionante, nessun vero spazio di stoccaggio, il personale ridotto a mantenere tavoli di riserva nel negozio di fiori al piano terra perché non c'era altro posto dove metterli. Bosi riaprirà sotto il suo nome negli stessi ambienti a luglio 2026, il che significa che, quando questa verrà stampata, Michelin House servirà di nuovo cena sotto la mascotte che è stata costruita per vendere."
-            },
-            {
-              "type": "text",
-              "content": "Questa è, in fin dei conti, tutta la tensione dell'edificio, e probabilmente il motivo per cui continua a cambiare mano e a chiudere cucine piuttosto che stabilizzarsi in uno dei due ruoli. Michelin House è stato progettato con totale convinzione come un pezzo di pubblicità — un lavoro di cinque mesi rivestito di piastrelle che non svanirebbe mai, costruito per spostare pneumatici da uno scaffale e mettere pneumatici su un'auto nello stesso pomeriggio. Ha trascorso quasi quattro decenni cercando di essere qualcosa di più lento: una stanza dove le persone si siedono immobili per due ore sotto un manifesto di vetro colorato di cent'quindici anni fa e vengono invitate ad ammirarlo piuttosto che comprare qualcosa da esso. L'edificio non è mai stato veramente chiamato a scegliere. Continua semplicemente a essere entrambi, allo stesso tempo, e ogni tanto le cuciture si mostrano."
+              "type": "testo",
+              "content": "Sarebbe facile per un edificio così drammatico sopraffare tutto ciò che viene servito al suo interno, e ancora più facile per la cucina appoggiarsi alla vista e smettere di provare. Under evita per lo più entrambe le trappole rifiutando di trattare l'architettura e il menu come argomenti separati. Il cemento è un reef; il cibo è ciò che vive su un reef. La finestra è fissa e il mare fuori di essa non lo è, e i piatti continuano a puntare indietro verso la stessa acqua piuttosto che competere con essa. È un viaggio molto lungo per una cena, a un prezzo che presuppone tu sappia già questo. Ma pochissime sale da pranzo ovunque sono anche, silenziosamente, un pezzo di ricerca marina a lungo termine — e ancora meno ti chiedono di rimanere fermo per due ore e guardare l'oceano fare qualcosa che nessuna telecamera sulla parete di un ristorante normale potrebbe mai catturare."
             }
           ]
         }
