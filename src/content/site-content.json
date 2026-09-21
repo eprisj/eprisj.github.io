@@ -48693,6 +48693,116 @@
           ],
           "publishAt": "2026-09-19T05:00:00+03:00",
           "updatedAt": "2026-09-17T17:34:25.020Z"
+        },
+        {
+          "id": 11,
+          "draft": false,
+          "title": "Cena Dentro de un Depósito de Neumáticos",
+          "subject": "Bibendum · 81 Fulham Road, Chelsea, Londres · François Espinasse",
+          "rating": 0,
+          "category": "ARCHITECTURE & DINING",
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "SEP 21, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/bibendum-exterior.jpg",
+          "meta": "LONDON · FRANÇOIS ESPINASSE · 1911 · GRADE II LISTED 1969 · PHOTO: CC BY / CC BY-SA, WIKIMEDIA COMMONS",
+          "verdict": "La Casa Michelin pasó setenta y seis años vendiendo e instalando neumáticos antes de dedicar una noche a servir cena, y el edificio nunca aceptó completamente el segundo trabajo: no se hizo espacio para una cocina moderna, las tuberías estaban dimensionadas para goma en lugar de mantequilla, y un símbolo de vidrio emplomado de cuarenta pies todavía vigila la habitación desde arriba de un eslogan sobre beber.",
+          "pros": [
+            "Tres ventanales monumentales de vidrio emplomado de Bibendum, el Hombre Michelin, hechos para un cartel de 1898 y nunca retirados durante ochenta años de inquilinos cambiantes",
+            "Treinta y cuatro paneles de azulejos cerámicos pintados a mano registran carreras de motor reales de 1897–1907 por nombre, conductor y coche — un álbum de recortes permanente fijado a las paredes, por dentro y por fuera",
+            "La clasificación de grado II desde 1969 mantuvo la conversión de Terence Conran en 1987 sin tocar la herrería, los azulejos o el vidrio del Art Nouveau original",
+            "Un restaurante en funcionamiento nuevamente desde julio de 2026, dirigido por el mismo chef que pasó ocho años aprendiendo exactamente qué puede y qué no puede hacer una cocina en un garaje de neumáticos de 1911"
+          ],
+          "cons": [
+            "Claude Bosi cerró el restaurante en agosto de 2025 en lugar de seguir negociando alrededor de un edificio no construido para albergar una cocina moderna: poca potencia, drenaje deficiente, sin espacio de almacenamiento que no fuera tomado prestado de la floristería",
+            "Los arcos del piso inferior eran bahías adecuadas para neumáticos, no salas de comedor, y las proporciones todavía se leen como un garaje vestido para cenar",
+            "La característica más espectacular del edificio, la gran ventana de Bibendum, mira hacia la calle — en el interior, en la mesa, principalmente se aprecia el trabajo de azulejos y la memoria de él"
+          ],
+          "publishAt": "2026-09-21T18:00:00.000Z",
+          "updatedAt": "2026-09-21T20:33:55.068Z",
+          "content": [
+            {
+              "type": "texto",
+              "content": "Fulham Road es mayormente ladrillo rojo y estuco, la gramática estándar de Chelsea, hasta que el número 81 la interrumpe con un muro de azulejos blancos y verdes vidriados, loza crema, y dos vastas pilas de neumáticos dorados que descansan en el parapeto como remates. Una ventana de vitrales a cuarenta pies de altura muestra una figura blanca y corpulenta levantando una copa. La inscripción en la frente no intenta ocultar para qué fue construido el edificio: MICHELIN TYRE CO LTD de un lado, BIBENDUM del otro. Ha sido un restaurante muy bueno durante la mayor parte de los últimos cuarenta años. Fue construido, en 1911, para vender neumáticos."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-exterior.jpg",
+              "alt": "La fachada de estilo Art Nouveau con azulejos de Michelin House en Fulham Road, Londres, con la ventana de vitrales de Bibendum y la inscripción que dice Michelin Tyre Co Ltd y Bibendum",
+              "caption": "Michelin House, 81 Fulham Road. Los arcos en la planta baja a la izquierda eran bahías de montaje de neumáticos; el sótano debajo contenía stock de más de 30,000 neumáticos.",
+              "credit": "Fred Romero, CC BY 2.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:London_-_Michelin_House_(1).jpg"
+            },
+            {
+              "type": "texto",
+              "content": "El edificio fue diseñado por François Espinasse, un ingeniero del propio departamento de construcción de Michelin en Clermont-Ferrand, no por un arquitecto profesional, y fue construido en unos cinco meses usando el sistema Hennebique, una de las primeras aplicaciones de concreto reforzado en Gran Bretaña. La rapidez se refleja en nada en el resultado: la fachada está azulejada de piso a parapeto en loza crema y jade que nunca necesitó repintado, y toda la planta baja fue planificada como infraestructura operativa, con bahías de entrada donde un automovilista podía tener nuevos neumáticos instalados mientras esperaba."
+            },
+            {
+              "type": "texto",
+              "content": "La mascota en la ventana tiene su propia historia, más antigua que el edificio por trece años. En 1898, el ilustrador O'Galop dibujó una figura blanca corpulenta hecha de neumáticos apilados, levantando una copa llena de clavos y vidrios rotos, sobre una línea de Horacio: <i>Nunc est bibendum</i> — ahora es el momento de beber. Era un juego de palabras que los hermanos André y Édouard Michelin no pudieron resistir: un neumático que bebe los obstáculos en el camino sin pincharse. La figura fue nombrada por el eslogan. Para cuando se construyó el edificio en Londres, Bibendum ya era la cara de la compañía en toda Europa, y Espinasse le asignó tres de las ventanas más grandes del edificio."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-exterior2.jpg",
+              "alt": "Vista cercana de la gran ventana de vitrales en Michelin House que representa a Bibendum, el Hombre Michelin, levantando una copa, sobre el lema en latín Nunc est Bibendum y las palabras Michelin Tyre Co",
+              "caption": "Bibendum, levantando su copa de clavos y cristales rotos debajo de la cita de Horacio que le dio su nombre.",
+              "credit": "El wub, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House,_London_-_2022-09-04_(3).jpg"
+            },
+            {
+              "type": "texto",
+              "content": "El revestimiento de azulejos hace algo que el vitral no: mantiene recibos. Treinta y cuatro paneles de cerámica, dentro del vestíbulo de entrada y a lo largo de la elevación de la calle, cada uno registra una carrera automovilística temprana específica — conductor, coche, año, lugar — en el estilo aplanado y foliar del arte nouveau francés publicitario. Fernand Gabriel conduciendo un Mors en la carrera París–Madrid de 1903, un año en que la carrera fue detenida temprano después de ocho muertes y las carreteras nunca volvieron a usarse para carreras. Nazzaro en un Fiat en el Gran Premio de Dieppe de 1907. Bardin en un De Dion en París–Cabourg en 1897, una máquina en forma de bicicleta que se asemeja más a un penny-farthing que a un coche. Nada de esto es decoración genérica; es un archivo específico, fechado, con nombre, del deporte para el cual los neumáticos Michelin fueron construidos para sobrevivir, incrustado permanentemente en las paredes del edificio que los vendía."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-panel-race.jpg",
+              "alt": "Panel de azulejos cerámicos en la fachada de Michelin House que representa al conductor Fernand Gabriel compitiendo en un coche Mors en la carrera París-Madrid de 1903, enmarcado por motivos de hojas de roble del art nouveau",
+              "caption": "París–Madrid, 1903: Fernand Gabriel en Mors. Uno de los paneles de carreras en el exterior del edificio, enmarcado en roble del art nouveau.",
+              "credit": "JLDAUSSY, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_-_outside_-_Paris-Madrid_race.jpg"
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-hall-door.jpg",
+              "alt": "La puerta de entrada de vidrio del art nouveau de Michelin House, con el monograma Michelin M en la linterna, flanqueada por paneles de azulejos cerámicos que muestran carreras automovilísticas tempranas en Dieppe y París-Cabourg",
+              "caption": "El vestíbulo de entrada: un monograma Michelin en plomo sobre la puerta, más paneles de carrera a cada lado — Dieppe 1907, París–Cabourg 1897 — en ladrillo vidriado blanco.",
+              "credit": "JLDAUSSY, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_and_door_-_hall.jpg"
+            },
+            {
+              "type": "texto",
+              "content": "Un panel en el vestíbulo de entrada no trata en absoluto sobre carreras. Reproduce la orden real otorgada por Edward VII, león y unicornio sosteniendo el escudo, hojas de roble a cada lado, las palabras <i>Por encargo de Su difunta Majestad el Rey Edward VII</i> incrustadas en la cerámica con el mismo esmalte permanente que todo lo demás. Es una copia publicitaria, técnicamente — prueba de costumbre real, el equivalente eduardiano de una reseña de cinco estrellas impresa en la pared — pero un siglo después se lee más como un monumento que como un alarde, una orden para un rey ya fallecido, fijada a una empresa que desde entonces se ha mudado completamente del edificio."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-panel-warrant.jpg",
+              "alt": "Panel cerámico en el vestíbulo de entrada de Michelin House reproduciendo la orden real de King Edward VII sobre un azulejo pintado de un automóvil antiguo, enmarcado por motivos de piedra tallada y hojas de roble",
+              "caption": "El panel de la orden real, vestíbulo de entrada — prueba de costumbre para un monarca que murió el año antes de que se abriera el edificio.",
+              "credit": "JLDAUSSY, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelin_House_decorative_panel_-_hall_-_Edward_VII_royal_warrant.jpg"
+            },
+            {
+              "type": "texto",
+              "content": "Michelin mantuvo su sede en el Reino Unido en el edificio hasta mediados de los años 80, para entonces los puestos de montaje de neumáticos habían dejado de tener sentido para una empresa que ya no necesitaba una fachada para vender caucho. En 1985, el editor Paul Hamlyn y el diseñador y restaurador Terence Conran lo compraron por 8 millones de libras, y lo reabrieron en 1987 con The Conran Shop en la planta baja, oficinas arriba, y un nuevo restaurante — Bibendum — instalado en la habitación del primer piso que solía ser el salón de montaje de la compañía de neumáticos, con un Oyster Bar en lo que había sido la entrada del piso ground. El edificio había sido una estructura catalogada como Grado II desde 1969, lo que significaba que los azulejos, la herrería y las ventanas nunca estuvieron realmente disponibles para rediseñar; los arquitectos de Conran trabajaron a su alrededor en lugar de a través de ellos, por eso los paneles de carreras y la orden real todavía están exactamente donde Espinasse los colocó."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/bibendum-mosaic.jpg",
+              "alt": "Suelo de mosaico en la entrada del restaurante Bibendum dentro de Michelin House, que representa al Michelin Man y la palabra Bibendum en azulejo, con mesas de comedor del restaurante en el fondo",
+              "caption": "El mosaico de la entrada, colocado cuando el edificio aún era el vestíbulo de un fabricante de neumáticos, ahora el suelo de un comedor.",
+              "credit": "DRD, CC BY 2.5",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:MichelinHouse_MosaicEntrance.jpg"
+            },
+            {
+              "type": "texto",
+              "content": "El restaurante en sí ha cambiado de chefs más a menudo de lo que el edificio ha cambiado de dueños. Simon Hopkinson dirigió Bibendum desde la apertura en 1987 hasta 1994 y efectivamente escribió la idea moderna de lo que podría ser un bistró-salón en Londres. Le siguieron una serie de inquilinos. Claude Bosi tomó el control en 2017 y ganó dos estrellas Michelin allí — un reconocimiento con un borde verdaderamente extraño, una cocina con estrella Michelin operando dentro de la antigua sede de la propia empresa — antes de cerrar el restaurante y su Oyster Bar permanentemente el 31 de agosto de 2025. Su razón declarada no fue la comida. Fue el edificio: suministro eléctrico insuficiente para una cocina moderna, drenaje diseñado para un depósito de neumáticos de 1911 en lugar de un restaurante en funcionamiento, sin almacenamiento real, personal reducido a mantener mesas de repuesto en la floristería del piso de abajo porque no había otro lugar para ponerlas. Bosi reabrirá bajo su propio nombre en las mismas habitaciones en julio de 2026, lo que significa que para cuando esto se imprima, Michelin House volverá a servir cenas bajo la mascota para la que fue construido para vender."
+            },
+            {
+              "type": "texto",
+              "content": "Es decir, en última instancia, toda la tensión del edificio, y probablemente por qué sigue cambiando de manos y cerrando cocinas en lugar de asentarse en uno u otro papel. Michelin House fue diseñada con total convicción como una pieza de publicidad: un trabajo de prisa de cinco meses revestido de azulejos que nunca se desvanecería, construido para mover neumáticos de una estantería y poner neumáticos en un coche en la misma tarde. Ha pasado casi cuatro décadas intentando ser algo más lento: una sala donde las personas se sientan quietas durante dos horas bajo un anuncio de vitrales de ciento quince años y se les pide que lo admiren en lugar de comprar algo de él. El edificio nunca ha sido realmente solicitado a elegir. Simplemente sigue siendo ambos, al mismo tiempo, y de vez en cuando las costuras se muestran."
+            }
+          ]
         }
       ],
       "libraryItems": [
