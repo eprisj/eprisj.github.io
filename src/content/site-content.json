@@ -65781,6 +65781,131 @@
           ],
           "publishAt": "2026-09-20T05:00:00+03:00",
           "updatedAt": "2026-09-17T17:43:51.000Z"
+        },
+        {
+          "id": 44,
+          "role": "Auteur",
+          "imageSeed": "",
+          "showCover": true,
+          "draft": false,
+          "order": 0,
+          "authorId": "author-1784732936927-kw554",
+          "title": "À l'intérieur du Victoria Museum de Kyiv",
+          "author": "Viacheslav Munister",
+          "date": "21 septembre 2026",
+          "publishedAt": "2026-09-21T13:00:00.000Z",
+          "excerpt": "Une maison privée de la mode du XIXe siècle nichée dans une cour derrière Khreshchatyk : robes en soie corsetées, manteau de cour tissé d'or, camées taillés dans la coquille, et les petits objets, médaillons, flacons de parfum, boîtes en émail, que contenait réellement une vie.",
+          "category": "Culture",
+          "subcategory": "Histoire visuelle",
+          "tags": [
+            "Kyiv",
+            "Musées",
+            "Histoire de la mode",
+            "Ukraine",
+            "Voyage"
+          ],
+          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-cover.jpg",
+          "previewToken": "HNmKRF6viNIOMo8G",
+          "content": [
+            {
+              "type": "text",
+              "content": "Le Victoria Museum se trouve derrière une porte en arche à quelques pas de Khreshchatyk, dans un immeuble d'appartements du XIXe siècle dont les corniches en stuc et le rez-de-chaussée rustiqué ne laissent rien deviner de ce qui se trouve à l'intérieur. Une petite plaque près de l'entrée indique Victoria Museum — Музей костюма та стилю, le Musée du Costume et du Style, ouvert du jeudi au dimanche. Je suis allé sur un coup de tête après une promenade dans le centre-ville, et je suis resté la majeure partie de l'après-midi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/victoria-museum-01-entrance.jpg",
+              "credit": "Viacheslav Munister",
+              "align": "center",
+              "caption": "L'entrée, à quelques pas de Khreshchatyk."
+            },
+            {
+              "type": "header",
+              "content": "Une garde-robe d'un autre siècle",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Pièce par pièce, le musée est construit autour des vêtements : des dizaines de robes de femmes de la seconde moitié du XIXe siècle jusqu'aux années 1900, la plupart exposées sur des mannequins dans des vitrines, éclairées comme les bijoux à côté d'elles. Un corsage en velours violet profond orné de dentelle en filigrane se tient à côté d'une jupe en soie bleu ardoise ; quelques pas plus loin, une robe en crinoline dans un imprimé floral rouge rouille des années 1860 s'épanouit sous son propre poids, le motif de petites roses courant sans interruption de la taille à l'ourlet. Une étiquette, en ukrainien et en anglais, catalogue une robe de couleur chocolat foncé avec des ornements floraux et des boutons des années 1880 dans le langage simple d'un inventaire de musée, coton, velours, qui sous-estime la quantité de travail manuel présente dans une seule manche."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-03-bodice-blue.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-04-gown-red.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-05-gown-brown-uniform.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Un corsage en velours, une robe en crinoline des années 1860, et une robe de couleur chocolat des années 1880, exposés à côté d'un portrait d'époque et d'un manteau d'uniforme d'homme."
+            },
+            {
+              "type": "texte",
+              "content": "Certaines pièces sont des tableaux en vitrine plutôt que des vêtements individuels. Dans un coin, une robe de deuil suspendue avec de petites photographies encadrées descendant de son corsage se tient sous des portraits sépia des femmes qui pourraient l'avoir portée, à côté d'un parasol plié et d'une robe en soie pâle avec un col en dentelle profond, tout un petit théâtre d'un ménage du XIXe siècle, assemblé à l'intérieur d'une seule vitrine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/victoria-museum-02-room.jpg",
+              "credit": "Viacheslav Munister",
+              "align": "center",
+              "caption": "Une robe de deuil suspendue avec des photographies encadrées, à côté de portraits sépia et d'un parasol plié."
+            },
+            {
+              "type": "en-tête",
+              "content": "Soie, braid, et un manteau de cour",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "La collection n'est pas seulement pour la robe des femmes. Un seul manteau en laine rouge, coupé comme un livery de courtisan ou de valet, est orné tout le long des revers et des poignets d'une large braid métallique dorée, fermé par une rangée de boutons en laiton bombés, le genre de manteau formel qui aurait été fabriqué selon le patron d'une maison, et non acheté en rayon. À proximité, un corsage en soie crème avec un col haut en osselets porte le même motif de lyre et de rouleau brodé répété aux épaules, à la gorge et à l'ourlet, le genre de détail qui ne se révèle que sous une lumière d'exposition."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-07-court-coat.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-06-bodice-silver.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Un manteau de cour en braid doré, et le motif de lyre répété sur un corsage en soie crème."
+            },
+            {
+              "type": "header",
+              "content": "Camees, médaillons, et petites boîtes",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Une pièce latérale est consacrée à ce qui aurait été posé sur une coiffeuse ou aurait voyagé dans une poche : bagues et broches serties de miniatures peintes, boîtes à bijoux émaillées en cobalt bleu et or, un flacon de parfum sur une chaîne de chatelaine. Sur un mur, plus d'une douzaine de camees, sculptées dans la coquille, l'onyx et le sardonyx, anglaises et italiennes, principalement du XIXe siècle, sont montées dans un seul cadre doré comme une cabinet de miniatures : un saint à cheval, un rouleau de feuilles d'acanthe, le profil d'une femme tourné à trois quarts vers la lumière."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-09-jewellery.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-10-cameos.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Broches cameo, bagues et boîtes en émail provenant des vitrines de la musée."
+            },
+            {
+              "type": "en-tête",
+              "content": "Peintures et une figure en bronze, pour contexte",
+              "level": 3
+            },
+            {
+              "type": "texte",
+              "content": "Les vêtements sont suspendus contre un fond de peintures et d'objets des mêmes décennies : une Madonna et Enfant françaises avec Jean le Baptiste du début du XIXe siècle, des portraits encadrés dorés de femmes dans les mêmes silhouettes que portent les mannequins, une figurine en bronze d'une femme portant un chapeau plumé tenant un éventail à mi-chemin de son visage. Rien de tout cela n'est didactique. Il n'y a pas de long texte mural expliquant l'histoire du corset ou la politique du vêtement de deuil ; le musée laisse principalement les objets se rapprocher suffisamment pour faire leur propre argument sur une période qui s'habillait avec un soin précis et immense."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/victoria-museum-11-bronze-madonna.jpg",
+              "credit": "Viacheslav Munister",
+              "align": "centre",
+              "caption": "Une figure en bronze et une Madonna et Enfant françaises, toutes deux du XIXe siècle."
+            },
+            {
+              "type": "texte",
+              "content": "Le musée Victoria est ouvert du jeudi au dimanche, de 11h00 à 18h00, à quelques minutes à pied de Khreshchatyk. C'est un petit musée et facile à voir en une heure, mais je conseillerais de prévoir plus de temps, les vitrines en verre récompensent le genre d'observation lente que l'appareil photo d'un téléphone ne cesse d'interrompre."
+            }
+          ],
+          "updatedAt": "2026-09-21T12:59:29.662Z"
         }
       ],
       "reviews": [
