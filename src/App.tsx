@@ -1633,6 +1633,9 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
               {t('about.readManifest')} →
             </span>
           </button>
+          <div className="mt-10 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)]">
+            Milan, Italy
+          </div>
         </div>
       </Reveal>
     </div>
