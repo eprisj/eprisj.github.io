@@ -60739,6 +60739,375 @@
               "content": "Il Victoria Museum è aperto da giovedì a domenica, dalle 11:00 alle 18:00, a pochi passi da Khreshchatyk. È un museo piccolo, facile da vedere in un'ora, ma io lascerei più tempo, le teche premiano proprio quel tipo di sguardo lento che una fotocamera del telefono continua a interrompere."
             }
           ]
+        },
+        {
+          "id": 45,
+          "draft": true,
+          "title": "Due Modi di Guardare lo Stesso Edificio - intervista con Manuel Heywinkel",
+          "author": "Viacheslav Munister & Manuel Heywinkel",
+          "role": "Autore",
+          "date": "21 set 2026",
+          "excerpt": "Architetto e fotografo Manuel Heywinkel sulla fotografia di un edificio che ha supervisionato per anni, sul motivo per cui colore e bianco e nero non sono mai stati capitoli separati per lui, e su una mostra in bianco e nero in un cantiere grezzo che è stata annullata pochi giorni prima dell'apertura.",
+          "category": "Fotografia",
+          "subcategory": "Inchiesta",
+          "tags": [
+            "fotografia",
+            "architettura",
+            "intervista"
+          ],
+          "imageSeed": "two-ways-of-looking-at-the-same-building-intervi",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mubhjhemdnlxvv.jpg",
+          "content": [
+            {
+              "type": "text",
+              "content": "Manuel Heywinkel stava fotografando edifici prima di essere formato a progettarli. Non c'è stato un anno in cui la fotocamera sia diventata professionale e nessuna rottura netta tra i due — la scuola di architettura e, più tardi, il lavoro come architetto supervisore di costruzioni — semplicemente ha affinato un'abitudine già presente, insegnandogli a notare geometria, linee di vista e proporzione quasi senza decidere di farlo. Il colore è arrivato prima, per il motivo semplice che è arrivato prima del digitale; il bianco e nero è arrivato più tardi, una volta che post-elaborazione e poi Instagram gli hanno dato un luogo dove vivere. Considera entrambi come ugualmente validi oggi, deciso caso per caso, immagine per immagine."
+            },
+            {
+              "type": "text",
+              "content": "L'esempio più chiaro di entrambi i ruoli che si incontrano in un unico luogo è il LernWerk a Bocholt — la conversione dell'ex mulino di filatura Herding, dove Heywinkel ha trascorso anni come responsabile del progetto per ACMS e ha fotografato l'edificio durante tutto il cantiere, non dopo. Colonne in ghisa dell'antico mulino sono state conservate e evidenziate a colori; un nuovo volume contemporaneo è stato inserito in una rivestimento in fibra di vetro che richiama silenziosamente il passato tessile del sito. È anche, dice lui, il luogo dove la fotografia a colori fa qualcosa che il bianco e nero non può: mostrare le strutture vecchie e nuove come materiali realmente diversi, piuttosto che appiattirli nello stesso grigio."
+            },
+            {
+              "type": "text",
+              "content": "Il suo record espositivo si estende in entrambi i registri. FARBRAUM, in corso fino al 30 settembre alla Galerie im Turm a Wuppertal con il fotografo ospite Andreas Kretzschmar, estende la fotografia a colori nella stanza stessa con passe-partout e tessuti di supporto abbinati a ogni immagine — una risposta deliberata alla mostra tutta in bianco e nero del 2025 nello stesso luogo. Una terza mostra, Black & White in Unfinished Core, era pianificata per una struttura grezza e non riscaldata in Moltkestrasse a Essen — stampe d'arte su vetro acrilico allestite all'interno di cemento nudo e muratura incompleta, ingresso solo su invito — e ha dovuto essere posticipata pochi giorni prima dell'apertura per motivi di sicurezza del sito; una nuova data nello stesso indirizzo è ancora in fase di organizzazione. Due delle sue immagini di scale hanno raggiunto indipendentemente le Top 50 della giuria nelle competizioni SPC — Treppe im Kunstpalast Düsseldorf a Berlino, Treppe im Museum Küppersmühle a Duisburg a Colonia — mentre una terza, di una luce sul soffitto nel soggiorno di sua madre, ha ottenuto il quarto posto nel voto pubblico di Colonia. Docu Magazine ha pubblicato due numeri del suo lavoro, e un'immagine — Tiger & Turtle, la scultura pubblica a Duisburg — è stata mostrata alla Black & White International Photography Awards Exhibition a One Art Space, New York, nel giugno 2026."
+            },
+            {
+              "type": "text",
+              "content": "Abbiamo parlato con Manuel di fotografare un edificio di cui era anche responsabile professionalmente, perché le scale continuano ad attirarlo e cosa cerca una giuria che un voto pubblico non considera."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mubhjhemdnlxvv.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Zeche Zollverein / Ruhr Museum, Essen. Manuel Heywinkel"
+            },
+            {
+              "type": "intestazione",
+              "content": "01 · Due modi di vedere",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "Viacheslav Munister [VM]: Lavori sull'architettura sia come architetto che, molto prima che fosse il tuo lavoro, come fotografo. La tua percezione dell'architettura è cambiata in qualche modo che puoi indicare — e dove entrano in gioco colore e bianco e nero?"
+            },
+            {
+              "type": "testo",
+              "content": "Manuel Heywinkel [MH]: Fotografo da quando ero molto giovane, e l'architettura è stata uno dei miei soggetti quasi fin dall'inizio, quindi non posso indicare un momento in cui il mio occhio per essa sia cambiato in modo fondamentale. Per un po' da adolescente sono stato più interessato al cinema e al video — ho realizzato alcuni cortometraggi animati — prima che la fotografia tornasse al centro."
+            },
+            {
+              "type": "text",
+              "content": "Studiare architettura, e successivamente lavorare come architetto, affinò notevolmente quell'occhio. Inizi a prestare molta più attenzione a geometria, linea, punti di fuga, proporzione, relazioni spaziali — molte di queste cose accadono automaticamente ormai."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjdvd3mpagd.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "DZ Bank, Frankfurt. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: C'era una fotografia o un momento specifico in cui la documentazione ha smesso di essere sufficiente ed è diventata un modo più deliberato, composto di guardare all'architettura — o sono sempre stati strettamente legati per te?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Non posso nominare un momento specifico — il modo più deliberato di vedere si è sviluppato continuamente piuttosto che arrivare tutto in una volta. Oggi noto i dettagli molto più consapevolmente, ma anche le linee di vista tra le parti di un edificio, o tra edifici diversi, e il contesto urbano intorno a loro: come un edificio si inserisce nel suo ambiente, come risponde ad esso, quali prospettive crea. È proprio da queste relazioni che tendono a emergere linee interessanti, punti di fuga e prospettive per me — e anni di impegno ravvicinato con l'architettura hanno reso quel modo di guardare progressivamente più consapevole."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mubhjem8t5dujd.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Potsdamer Platz, Berlin. Manuel Heywinkel"
+            },
+            {
+              "type": "intestazione",
+              "content": "02 · The LernWerk",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "VM: The LernWerk in Bocholt è un edificio che hai supervisionato come architetto nel corso degli anni e fotografato durante tutto quel periodo, non dopo i fatti. Guardare un edificio di cui sei anche responsabile professionalmente cambia ciò che vedi — emergono cose che la visione strettamente professionale potrebbe perdere?"
+            },
+            {
+              "type": "testo",
+              "content": "MH: Non è sempre facile in mezzo a un cantiere. Come architetto supervisore della costruzione, sei profondamente immerso nel processo quotidiano — coordinando appaltatori, sistemando accordi e soprattutto controllando la qualità del lavoro svolto. Questo inevitabilmente restringe il tuo focus a dettagli individuali e compiti immediati per molto tempo."
+            },
+            {
+              "type": "text",
+              "content": "Ecco esattamente perché è importante fare periodicamente un passo indietro e rivedere l'edificio emergente come un tutto di nuovo. Il mio occhio fotografico aiuta in questo, credo — continuo a cercare di fare un passo indietro e non vedere solo il dettaglio o il problema attuale, ma lo spazio, l'architettura, ciò che sta effettivamente prendendo forma lì. Su un progetto che segui per un lungo periodo di tempo, è facile altrimenti perdere di vista come l'edificio si sviluppa come un tutto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjfbjjfgda9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "LernWerk, Bocholt, durante la costruzione. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: C'è una immagine nella serie in cui la convivenza tra il vecchio mulino e il nuovo edificio ti appare più chiaramente?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Dipende molto prima dal design stesso. Al LernWerk, un'idea centrale era sviluppare il tessuto storico per un nuovo uso contemporaneo e rafforzarlo tecnicamente senza coprire la storia dell'edificio. Puoi vederlo, ad esempio, nelle colonne originali in ghisa — sono state in gran parte preservate e deliberate evidenziate attraverso il trattamento del colore. Allo stesso tempo, il cubo appena inserito introduce un elemento chiaramente contemporaneo nel tessuto esistente; il suo rivestimento in fibra di vetro in rete, a sua volta, richiama l'uso originale dell'edificio come mulino di filatura."
+            },
+            {
+              "type": "text",
+              "content": "Trovo esattamente questa giustapposizione coinvolgente: vecchio e nuovo rimangono leggibili come strati distinti di tempo, e ancora si pongono in relazione tra loro. È anche, per quello che vale, qualcosa che mi appare più chiaro in colore che in bianco e nero — il bianco e nero tende ad livellare le differenze materiali tra vecchio e nuovo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjfs9nlf4ec.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "LernWerk, Bocholt, le colonne in ghisa preservate. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: Come dividono effettivamente il lavoro sul progetto l'occhio dell'architetto e quello del fotografo — ci sono momenti in cui uno deve prendere consapevolmente il comando?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Nel ritmo quotidiano di un cantiere, la vista dell'architetto viene naturalmente prima — controllare il lavoro completato, coordinare il processo, comunicare con il cliente e i lavoratori specializzati, e al LernWerk, eventualmente con gli utenti futuri dell'edificio e in certa misura con il pubblico. Parte del lavoro consiste anche nel pensare in avanti piuttosto che solo ai dettagli attuali: cosa viene dopo, come una decisione influisce su altri lavori, come tutto si combina alla fine?"
+            },
+            {
+              "type": "text",
+              "content": "Il passaggio alla fotografia non è così diverso, in realtà. Anche lì posso concentrarmi molto strettamente su un dettaglio, una linea, una situazione specifica, e poi deliberatamente lasciarla andare di nuovo per percepire lo spazio o l'edificio nel suo insieme. I due modi di vedere si completano bene per me."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjgc0dyneed.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "LernWerk, Bocholt, il nuovo volume. Manuel Heywinkel"
+            },
+            {
+              "type": "header",
+              "content": "03 · Motivi ricorrenti",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Le scale continuano a tornare nel tuo lavoro — Schloss Schwerin, Kunstpalast di Düsseldorf, il Museum Küppersmühle di Duisburg, il Ruhr Museum nel sito della Zeche Zollverein a Essen. Cos'è di una scala che continua a attirarti indietro?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Una scala è molto di più, per me, di un elemento costruttivo che collega i livelli di un edificio. Storicamente, le scale erano spesso elementi di rappresentazione deliberatamente allestiti — nei palazzi in particolare, potevano essere un'espressione diretta di potere, rango e importanza."
+            },
+            {
+              "type": "text",
+              "content": "Fotograficamente le trovo altrettanto coinvolgenti. La loro costruzione offre quasi automaticamente linee di vista interessanti, punti di fuga, linee ripetute e prospettive — la stessa scala può sembrare completamente diversa a seconda di dove ti trovi. Forse questa è esattamente la fascinazione: una scala ha una funzione inequivocabile e, allo stesso tempo, offre un numero quasi illimitato di modi per interpretarla, architettonicamente e fotograficamente."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjh1tfqbpy4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Scale — Schwerin Palace / Aachen. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: Le tue immagini di Zeche Zollverein mostrano un luogo che un tempo era industria e ora è un monumento — un impianto di coke, riflessi, macchinari che nessuno più utilizza. Come affronti un sito con tanta storia senza che l'immagine diventi una semplice illustrazione di essa?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Ciò che mi colpisce prima di tutto dei vecchi siti industriali è la pura scala del risultato ingegneristico. Guardando Zeche Zollverein, o altri grandi complessi industriali, vale la pena ricordare che queste strutture complesse sono state pianificate e costruite in un'epoca senza computer, senza CAD — gran parte di esse era ancora disegnata a mano al tavolo da disegno, qualcosa che ho imparato a fare io stesso, addestrato originariamente come disegnatore tecnico."
+            },
+            {
+              "type": "text",
+              "content": "Camminando attraverso un sito come quello oggi, mi trovo spesso a chiedermi quale funzione avesse originariamente un determinato edificio, macchina, tubo o struttura. Ora tutto è fermo. Puoi solo immaginare la vita lavorativa che vi si svolgeva, e probabilmente solo immaginare, a questo, lo sforzo fisico che alcuni di quei lavori richiedevano. Allo stesso tempo, questi siti sono fotograficamente straordinari — l'ampia gamma di strutture, materiali, impianti di tubature, dettagli tecnici e grandi relazioni spaziali offre una enorme varietà di motivi e prospettive. Zeche Zollverein è un esempio molto buono di ciò."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjhemdnlxvv.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Zeche Zollverein — l'impianto di coking, Essen. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: Cosa ti attira nell'esplorare diverse città dal punto di vista fotografico, e cosa decide quali motivi di una città diventano una serie?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Le città non mi interessano solo per la loro architettura. Sono attratto anche dalla loro storia — perché certe cose sono emerse in un luogo particolare, come una città è diventata ciò che è oggi. Con Frankfurt, ad esempio, sono interessato a come è cresciuta fino a diventare una città importante per le fiere, ma anche alla sua storia come città di incoronazione imperiale con il Kaiserdom. Altre città sollevano domande completamente diverse. Bielefeld è la mia città natale; Freiburg ha un carattere completamente diverso; Düsseldorf un altro ancora. Ogni città ha il suo fascino, la sua atmosfera."
+            },
+            {
+              "type": "text",
+              "content": "Quindi sono interessato non solo al patrimonio edilizio storico o all'architettura moderna, ma alla vita intermedia: come le persone usano la loro città, si muovono attraverso di essa, interagiscono con gli spazi disponibili. Questo è ciò che cerco di catturare, accanto alla fotografia architettonica, anche attraverso la street photography."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjic1o2z5ev.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Berlin / Freiburg / Norimberga. Manuel Heywinkel"
+            },
+            {
+              "type": "header",
+              "content": "04 · Bianco e nero e colore",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Dopo la tua mostra in bianco e nero a FotoForum Wuppertal nel 2025, la tua attuale mostra FARBRAUM mostra deliberatamente opere a colori. Cosa ti ha portato a questa decisione, e cosa ti apre il colore come strumento fotografico che il bianco e nero non fa? "
+            },
+            {
+              "type": "text",
+              "content": "MH: Per FARBRAUM, ancora in mostra ora, ho deciso deliberatamente fin dall'inizio di usare la fotografia a colori — in parte come contrappunto alla mostra dello scorso anno, dove ho mostrato esclusivamente opere in bianco e nero. "
+            },
+            {
+              "type": "text",
+              "content": "La mia idea di base non era di confinare il colore all'immagine stessa, ma di portarlo nella stanza. L'ho fatto con passe-partout abbinati al colore di ogni fotografia, e per opere individuali, abbinando anche il tessuto dietro l'immagine. In questo modo il colore dell'immagine continua nello spazio intorno ad essa e ne plasma la percezione e l'umore allo stesso tempo. "
+            },
+            {
+              "type": "text",
+              "content": "Il colore per me conta anche come strumento di design in architettura, per quello che vale. L'architettura può ovviamente lavorare molto deliberatamente con una palette ridotta, bianca, e ottenere un effetto completamente diverso in questo modo. Ma il colore applicato deliberatamente può enfatizzare spazi, superfici e proporzioni e cambiare il modo in cui vengono percepiti — con le condizioni di illuminazione che giocano un ruolo importante anche in questo. Quel gioco tra immagine, colore e spazio è l'intera premessa di FARBRAUM. "
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjiltv4thju.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "FotoForum Wuppertal. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: Perché pianificare una mostra in bianco e nero per uno spazio incompleto piuttosto che una galleria convenzionale con pareti bianche?"
+            },
+            {
+              "type": "text",
+              "content": "MH: L'idea di base per quella mostra, anche, era di collegare direttamente architettura e fotografia. Volevo presentare fotografie architettoniche di alta qualità, finemente rifinite, su vetro acrilico all'interno di un ambiente deliberatamente incompleto — una carcassa di costruzione grezza, cemento esposto, muratura non intonacata, tutte le tracce di una costruzione in corso."
+            },
+            {
+              "type": "text",
+              "content": "Quel contrasto era esattamente ciò che mi attirava: l'immagine finita all'interno della stanza incompleta. Le fotografie mostrano architettura in una forma risolta, completata, mentre lo spazio espositivo stesso era ancora in fase di processo."
+            },
+            {
+              "type": "text",
+              "content": "Sfortunatamente ho dovuto cancellare lo spettacolo con breve preavviso per motivi di sicurezza. Le condizioni meteorologiche nei giorni precedenti hanno reso il rischio per i visitatori su un cantiere attivo semplicemente troppo alto. Il concetto stesso non è affatto morto, però — è ancora nella mia mente, e poiché mi occupo regolarmente di cantieri attraverso il mio lavoro, spero di trovare alla fine la posizione giusta per farlo ancora accadere."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjj18bzk894.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Shell di costruzione, Essen — sito pianificato per “Black & White in Unfinished Core”. Manuel Heywinkel"
+            },
+            {
+              "type": "text",
+              "content": "VM: Cosa ti ha insegnato mettere insieme l'une et l'autre — la tua mostra a Colonia con Monika Geisler — riguardo al tuo lavoro che non avresti notato da solo?"
+            },
+            {
+              "type": "text",
+              "content": "MH: Quello che ho trovato particolarmente interessante della mostra a Colonia è stato che abbiamo combinato fotografie con stili e approcci molto diversi, eppure abbiamo trovato connessioni sorprendentemente forti tra molte delle opere — nel contenuto o nella forma."
+            },
+            {
+              "type": "text",
+              "content": "Quindi abbiamo deliberatamente abbinato immagini, posizionando opere fianco a fianco che sembrano molto diverse a prima vista ma si confrontano con motivi, forme o strutture simili. Un buon esempio: la fotografia di Monika Geisler di una lumaca accanto alla mia fotografia della scala a chiocciola all’interno della Siegessäule di Berlino — due soggetti completamente diversi, eppure la somiglianza nella forma crea un collegamento immediato."
+            },
+            {
+              "type": "text",
+              "content": "Mettere insieme la mostra, sono rimasto davvero sorpreso da quanti tali rapporti sono emersi tra le singole opere. Sono state proprio quelle diverse prospettive fotografiche su forme e temi correlati a rappresentare il particolare fascino della mostra, per me."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjju43oelus.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Forma a spirale, da “L'une et l'autre” con Monika Geisler. ikigai-raum, Colonia, Nov 2025. Manuel Heywinkel"
+            },
+            {
+              "type": "header",
+              "content": "05 · Giurie, stampa, una stanza a New York",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "VM: Due delle tue immagini di scale hanno indipendentemente raggiunto le Prime 50 della giuria alle competizioni SPC, mentre una terza — di una lampada a soffitto nel soggiorno di tua madre — ha ottenuto il quarto posto nel voto del pubblico. Cosa ti dice questa divisione sulla differenza tra ciò che cerca una giuria e ciò che effettivamente raggiunge un pubblico?"
+            },
+            {
+              "type": "testo",
+              "content": "MH: Sono stato ovviamente molto contento che due delle mie immagini di scale siano state selezionate dalla giuria per le Prime 50, anche se nessuna delle due si è classificata nella competizione effettiva. Quello che ho trovato ancora più interessante è stato che la mia immagine Unter der Decke — che mostra una lampada a soffitto nel soggiorno di mia madre — è arrivata quarta nel voto del pubblico di Colonia."
+            },
+            {
+              "type": "testo",
+              "content": "Una giuria specializzata si impegna con il lavoro presentato in modo mirato e comparativo. A seconda delle esperienze fotografiche dei giudici, cose come composizione, esecuzione tecnica, artigianato o come viene gestito un tema possono avere un peso particolare. Con il pubblico, la risposta personale o emotiva immediata probabilmente gioca un ruolo più forte — ciò che mi parla subito, ciò che mi entusiasma di un'immagine, il motivo mi ricorda qualcosa che ho vissuto o visto io stesso? Questo non significa che il pubblico sia cieco alle qualità tecniche o formali, ovviamente. Ma una connessione personale con un'immagine può pesare di più in un voto pubblico."
+            },
+            {
+              "type": "testo",
+              "content": "Ecco perché trovo entrambe le forme di giudizio interessanti — mostrano quanto il lavoro fotografico possa essere percepito in modo diverso."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mubhjkbj8xyjaz.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Kunstpalast Düsseldorf / Museum Küppersmühle — SPC Berlin & Cologne, selezione della giuria Top 50. Manuel Heywinkel"
+            },
+            {
+              "type": "testo",
+              "content": "VM: Cosa cambia di un'immagine una volta che sai che sarà vista stampata e rilegata, non solo su uno schermo?"
+            },
+            {
+              "type": "testo",
+              "content": "MH: In realtà non faccio distinzione, durante le riprese, in base a dove o in quale forma un'immagine sarà mostrata in seguito. Se finisce su Instagram, in una rivista o in una mostra, è secondario al momento dello scatto — ciò che deve funzionare prima di tutto è il soggetto, la composizione, il modo in cui è costruita."
+            },
+            {
+              "type": "testo",
+              "content": "Quando un'immagine viene successivamente selezionata per una mostra o una pubblicazione, è ovviamente molto gratificante. Sono stato particolarmente felice che la mia fotografia di Tiger & Turtle sia stata mostrata come parte di una mostra a New York — significava qualcosa presentare un pezzo del mio lavoro in quel tipo di contesto internazionale. E mi è piaciuto pensare che, con Tiger & Turtle, stavo mostrando un motivo di Duisburg — e con esso, un pezzo della Renania Settentrionale-Vestfalia e della Germania."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mubhjkpz9vxoyj.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Tiger & Turtle, Duisburg — mostrato alla Black & White International Photography Awards Exhibition, One Art Space, New York. Manuel Heywinkel"
+            },
+            {
+              "type": "intestazione",
+              "content": "06 · Guardando avanti",
+              "level": 2
+            },
+            {
+              "type": "testo",
+              "content": "VM: Confrontando il lavoro di oggi con le tue prime fotografie architettoniche — sia come architetto che come fotografo — cosa è cambiato di più nel modo in cui guardi? E cosa stai ancora cercando in entrambi i ruoli che non hai ancora trovato?"
+            },
+            {
+              "type": "testo",
+              "content": "MH: Oggi cerco e guardo l'architettura molto più deliberatamente di quanto facessi una volta. Cose che una volta avrei fotografato quasi di passaggio, come giovane fotografo, ora le cerco consapevolmente."
+            },
+            {
+              "type": "text",
+              "content": "Ricerca edifici e luoghi particolari in anticipo e penso a cosa potrebbe interessarmi fotograficamente lì. Spesso sono musei, ma altrettanto spesso altri edifici accessibili al pubblico — e, naturalmente, i luoghi che normalmente non sono accessibili hanno un fascino particolare. Il mio lavoro professionale a volte apre la possibilità di fotografare edifici durante la costruzione, o poco prima del completamento — prima che entrino in uso e diventino accessibili al pubblico. Dal punto di vista fotografico, è molto emozionante, perché si ha l'opportunità di vivere gli spazi in uno stato che non esisterà più una volta che saranno in uso."
+            },
+            {
+              "type": "text",
+              "content": "Il prossimo evento è una mostra con Petra Baumgart e Andreas Kretzschmar al ikigai-raum a Colonia, dal 13 al 15 novembre, e parteciperò di nuovo alla competizione SPC a Colonia nello stesso mese. Cosa porterà il resto dell'anno oltre a ciò, lo vedremo. Sono in programma anche altri FotoWalks, tra cui Zeche Zollverein e Berlino — ancora piani a questo stadio piuttosto che date fisse."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjlyxofuxlr.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Freilichtmuseum Detmold. Manuel Heywinkel"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mubhjlk5lngzr1.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "“Daseinsräume”, Colonia — opuscolo della mostra"
+            },
+            {
+              "type": "text",
+              "content": "Il lavoro di Manuel Heywinkel può essere visto su manuel-heywinkel.com e 1x.com/manuelheywinkel, e su Instagram all'@manuel_242neo. Tutte le immagini © Manuel Heywinkel, pubblicate con il permesso dell'artista."
+            }
+          ],
+          "updatedAt": "2026-09-21T17:01:48.091Z",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-manuel-heywinkel"
         }
       ],
       "reviews": [
