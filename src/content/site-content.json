@@ -9925,7 +9925,7 @@
       "draft": false,
       "order": 0,
       "authorId": "author-1784732936927-kw554",
-      "title": "Inside Kyiv's Victoria Museum",
+      "title": "Inside the Victoria Museum",
       "author": "Viacheslav Munister",
       "date": "September 21, 2026",
       "publishedAt": "2026-09-21T13:00:00.000Z",
@@ -9939,19 +9939,12 @@
         "Ukraine",
         "Travel"
       ],
-      "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-cover.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-13-gown-peach.jpg",
       "previewToken": "HNmKRF6viNIOMo8G",
       "content": [
         {
           "type": "text",
           "content": "The Victoria Museum sits behind an arched doorway a few steps off Khreshchatyk, in a nineteenth-century apartment building whose stucco cornices and rusticated ground floor give away nothing of what is inside. A small plaque by the entrance reads Victoria Museum — Музей костюма та стилю, the Museum of Costume and Style, open Thursday to Sunday. I went on a whim after a walk through the city centre, and stayed for most of the afternoon."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/victoria-museum-01-entrance.jpg",
-          "credit": "Viacheslav Munister",
-          "align": "center",
-          "caption": "The entrance, a few steps off Khreshchatyk."
         },
         {
           "type": "header",
@@ -9971,6 +9964,19 @@
           ],
           "credit": "Viacheslav Munister",
           "caption": "A velvet bodice, an 1860s crinoline gown, and a chocolate-coloured dress from the 1880s, shown beside a period portrait and a gentleman's uniform coat."
+        },
+        {
+          "type": "text",
+          "content": "Further in, the colour gets bolder. A cropped coat cut from a brown, orange and cream paisley weave, lined in dark velvet, sits under a framed photograph of the woman it may have been made for, an unusual survival: paisley was for shawls and interiors more often than outerwear, and seeing the whole pattern wrap around a body rather than lie flat changes how you read it. Two cases along, an ivory gown drops its sleeves off the shoulder into a froth of tulle roses and pearl trim, the bodice hand-embroidered with sprays of leaves in a pattern that repeats down the full length of the train, evening dress built for a room with better lighting than daylight."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/victoria-museum-15-coat-paisley.jpg",
+            "https://api.eprisjournal.com/uploads/victoria-museum-14-gown-gold.jpg"
+          ],
+          "credit": "Viacheslav Munister",
+          "caption": "A paisley coat lined in velvet, and an ivory evening gown embroidered with leaves and tulle roses."
         },
         {
           "type": "text",
@@ -10000,6 +10006,20 @@
           ],
           "credit": "Viacheslav Munister",
           "caption": "A gold-braided court coat, and the repeated lyre motif on a cream silk bodice."
+        },
+        {
+          "type": "text",
+          "content": "A case of men's accessories does the same close-looking trick from a different angle: a row of walking canes, their handles carved from bone and ivory into a bird's head, a lion, a laughing face, stand beside a white double-breasted summer coat with a black velvet collar, an old leather travelling bag and a single pair of high-buttoned boots, worn enough to have belonged to somebody. Two more gowns, one in dusty pink chiffon with a lace-trimmed train, one in pale cream silk with a beaded high collar, are shown against period portraits of women dressed almost identically, so the wall reads as evidence rather than decoration."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/victoria-museum-16-canes-tunic.jpg",
+            "https://api.eprisjournal.com/uploads/victoria-museum-08-gown-pink.jpg",
+            "https://api.eprisjournal.com/uploads/victoria-museum-12-gown-cream.jpg"
+          ],
+          "credit": "Viacheslav Munister",
+          "caption": "Carved cane handles and a gentleman's summer coat; a pink chiffon gown and a cream silk dress, each shown beside its period portrait."
         },
         {
           "type": "header",
@@ -35331,33 +35351,26 @@
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "Im Inneren des Victoria Museums in Kyiv",
+          "title": "Im Inneren des Victoria Museum",
           "author": "Viacheslav Munister",
           "date": "21. September 2026",
           "publishedAt": "2026-09-21T13:00:00.000Z",
-          "excerpt": "Ein Privathaus aus dem neunzehnten Jahrhundert, eingebettet in einen Hof abseits des Khreshchatyk: korsettartige Seidenkleider, ein goldgezierter Hofmantel, Cameos aus Muscheln geschnitzt, und die kleinen Gegenstände, Lockets, Duftflaschen, Emailleboxen, die ein Leben tatsächlich hielt.",
+          "excerpt": "Ein Privathaus im neunzehnten Jahrhundert, eingebettet in einen Hof abseits des Khreshchatyk: korsettartige Seidenkleider, ein goldverzierter Hofmantel, Cameos aus Muscheln geschnitzt, und die kleinen Gegenstände, Lockets, Duftflaschen, Emailleboxen, die ein Leben tatsächlich hielt.",
           "category": "Kultur",
           "subcategory": "Visuelle Geschichte",
           "tags": [
-            "Kyiv",
+            "Kiew",
             "Museen",
             "Modegeschichte",
             "Ukraine",
-            "Reise"
+            "Reisen"
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-cover.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-13-gown-peach.jpg",
           "previewToken": "HNmKRF6viNIOMo8G",
           "content": [
             {
               "type": "text",
-              "content": "Das Victoria Museum sitzt hinter einer gewölbten Tür ein paar Schritte von Khreshchatyk entfernt, in einem Apartmenthaus aus dem neunzehnten Jahrhundert, dessen Stuck-Korbbögen und rustikale Erdgeschoss nichts von dem verraten, was im Inneren ist. Eine kleine Tafel neben dem Eingang liest Victoria Museum — Музей костюма та стилю, das Museum für Kleidung und Stil, geöffnet Donnerstag bis Sonntag. Ich ging auf einen Impuls nach einem Spaziergang durch das Stadtzentrum und blieb die meiste Zeit des Nachmittags."
-            },
-            {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/victoria-museum-01-entrance.jpg",
-              "credit": "Viacheslav Munister",
-              "align": "center",
-              "caption": "Der Eingang, ein paar Schritte von Khreshchatyk entfernt."
+              "content": "Das Victoria Museum sitzt hinter einer gewölbten Tür ein paar Schritte von Khreshchatyk entfernt, in einem Apartmenthaus aus dem neunzehnten Jahrhundert, dessen Stuckkronen und rustikaler Erdgeschoss nichts von dem verraten, was im Inneren ist. Eine kleine Tafel neben dem Eingang liest Victoria Museum — Музей костюма та стилю, das Museum für Kostüm und Stil, geöffnet Donnerstag bis Sonntag. Ich ging auf einen Impuls nach einem Spaziergang durch die Innenstadt und blieb den größten Teil des Nachmittags."
             },
             {
               "type": "header",
@@ -35366,37 +35379,50 @@
             },
             {
               "type": "text",
-              "content": "Zimmer für Zimmer ist das Museum um Kleidung herum aufgebaut: Dutzende von Damenkleidern aus der zweiten Hälfte des neunzehnten Jahrhunderts bis in die 1900er Jahre, die meisten auf Schaufensterpuppen in Glaskästen gezeigt, beleuchtet wie die Schmuckstücke neben ihnen. Ein tiefvioletter Samt-Bustier, verziert mit gehäkelter Spitze, steht neben einem himmelblauen Seidenrock; ein paar Schritte weiter weitet sich ein Crinoline-Kleid in einem rostrot-blumigen Druck aus den 1860er Jahren unter seinem eigenen Gewicht, das Muster kleiner Rosen läuft ununterbrochen vom Taillen- bis zum Saum. Ein Etikett, auf Ukrainisch und Englisch, katalogisiert ein dunkelbraunes Kleid mit Blumenornamenten und Knöpfen aus den 1880er Jahren in der schlichten Sprache eines Museumsinventars, Baumwolle, Samt, das unterschlägt, wie viel Handarbeit in einem einzigen Ärmel steckt."
+              "content": "Zimmer für Zimmer ist das Museum um Kleidung herum gebaut: Dutzende von Damenkleidern aus der zweiten Hälfte des neunzehnten Jahrhunderts bis in die 1900er Jahre, die meisten auf Schaufensterpuppen in Glaskästen gezeigt, beleuchtet wie der Schmuck neben ihnen. Ein tiefvioletter Samt-Bustier, verziert mit gehäkelter Spitze, steht neben einem schieferblauen Seidenrock; ein paar Schritte weiter weht ein Crinoline-Kleid im Rostrot mit Blumenmuster aus den 1860er Jahren unter seinem eigenen Gewicht auf, das Muster kleiner Rosen läuft ununterbrochen vom Taillenbund bis zum Saum. Ein Etikett, auf Ukrainisch und Englisch, katalogisiert ein dunkelbraunes Kleid mit Blumenornamenten und Knöpfen aus den 1880er Jahren in der schlichten Sprache einer Museumsinventarliste, Baumwolle, Samt, das unterschlägt, wie viel Handarbeit in einem einzigen Ärmel steckt."
             },
             {
-              "type": "galerie",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-03-bodice-blue.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-04-gown-red.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-05-gown-brown-uniform.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Ein Samt-Bodice, ein Kleid aus der Crinoline-Ära der 1860er Jahre, und ein schokoladenbraunes Kleid aus den 1880er Jahren, gezeigt neben einem Periodenporträt und einem Herren-Uniformmantel."
+              "caption": "Ein Samt-Bustier, ein Crinoline-Kleid aus den 1860er Jahren und ein dunkelbraunes Kleid aus den 1880er Jahren, gezeigt neben einem Zeitporträt und einem Herrenuniformmantel."
             },
             {
               "type": "text",
-              "content": "Einige Stücke sind Schauvitrinen-Tableaux anstelle einzelner Kleidungsstücke. In einer Ecke hängt ein Trauerkleid mit kleinen eingerahmten Fotografien entlang seines Oberteils, steht unter Sepia-Porträts der Frauen, die es getragen haben könnten, neben einem gefalteten Sonnenschirm und einem blassen Seidenkleid mit einem tiefen Spitzenkragen, ein ganzer kleiner Theaterrraum eines neunzehnten Jahrhunderts Haushalts, versammelt in einer einzigen Vitrine."
+              "content": "Weiter im Inneren wird die Farbe kräftiger. Ein gekürzter Mantel aus braunem, orangefarbenem und cremefarbenem Paisleymuster, gefüttert mit dunklem Samt, sitzt unter einem gerahmten Foto der Frau, für die er vielleicht gemacht wurde, eine ungewöhnliche Überlebensart: Paisley war für Tücher und Inneneinrichtungen häufiger als für Oberbekleidung, und das ganze Muster um den Körper gewickelt zu sehen, anstatt flach zu liegen, verändert die Art, wie man es liest. Zwei Fälle weiter hängt ein Elfenbeinkleid, das seine Ärmel über die Schulter fallen lässt, in einem Schaum aus Tüllrosen und Perlenbesatz, der Oberteil handgestickt mit Sprays aus Blättern in einem Muster, das sich entlang der gesamten Zugbahn wiederholt, Abendkleid, gebaut für einen Raum mit besserer Beleuchtung als Tageslicht."
             },
             {
-              "type": "image",
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-15-coat-paisley.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-14-gown-gold.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Ein Paisleymantel, gefüttert mit Samt, und ein elfenbeinfarbenes Abendkleid, bestickt mit Blättern und Tüllrosen."
+            },
+            {
+              "type": "text",
+              "content": "Einige Stücke sind Schauvitrinen-Tableaux anstelle einzelner Kleidungsstücke. In einer Ecke hängt ein Trauerkleid mit kleinen gerahmten Fotografien entlang seines Oberteils, darunter sepiafarbene Porträts der Frauen, die es getragen haben könnten, neben einem gefalteten Sonnenschirm und einem blassen Seidenkleid mit einem tiefen Spitzenkragen, ein ganzes kleines Theater eines Haushalt des neunzehnten Jahrhunderts, versammelt in einer einzigen Vitrine."
+            },
+            {
+              "type": "bild",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-02-room.jpg",
               "credit": "Viacheslav Munister",
-              "align": "center",
-              "caption": "Ein Trauerkleid mit eingerahmten Fotografien, neben Sepia-Porträts und einem gefalteten Sonnenschirm."
+              "align": "zentrum",
+              "caption": "Ein Trauerkleid, das mit gerahmten Fotografien hängt, neben sepiafarbenen Porträts und einem gefalteten Sonnenschirm."
             },
             {
               "type": "header",
-              "content": "Seide, Borte und ein Hofmantel",
+              "content": "Seide, Borte und Hofmantel",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Die Sammlung ist nicht nur für Damenkleidung. Ein einzelner roter Wollmantel, geschnitten wie die Kleidung eines Hofdieners oder eines Fußsoldaten, ist an beiden Revers und den Manschetten mit breitem goldfarbenem Metallbändchen verziert, geschlossen mit einer Reihe von gewölbten Messingknöpfen, die Art von formellem Mantel, der nach einem hausinternen Schnitt gefertigt worden wäre, nicht vom Regal gekauft. In der Nähe trägt ein cremefarbenes Seidenmieder mit hohem, verstrebtem Kragen dasselbe bestickte Lyra-und-Rollenkonzept, das an den Schultern, am Hals und am Saum wiederholt wird, eine Art Detail, das sich nur unter einer Ausstellungsbeleuchtung zeigt."
+              "content": "Die Sammlung ist nicht nur für Damenkleidung. Ein einzelner roter Wollmantel, geschnitten wie die Kleidung eines Hofdieners oder eines Fußsoldaten, ist an den Längsseiten beider Revers und an den Manschetten mit breiter goldener Metallborte verziert, geschlossen mit einer Reihe von gewölbten Messingknöpfen, die Art von formellem Mantel, der nach einem hausinternen Schnitt gefertigt worden wäre, nicht im Laden gekauft. In der Nähe trägt ein cremefarbenes Seidenoberteil mit hohem, verstärktem Kragen dasselbe bestickte Lyra-und-Rollenmuster, das an den Schultern, am Hals und am Saum wiederholt wird, eine Art Detail, das sich nur unter einer Ausstellungsbeleuchtung zeigt."
             },
             {
               "type": "gallery",
@@ -35405,16 +35431,30 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-06-bodice-silver.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Ein goldverzierter Hofmantel und das wiederholte Lyra-Motiv auf einem cremefarbenen Seidenmieder."
+              "caption": "Ein goldbortierter Hofmantel und das wiederholte Lyra-Motiv auf einem cremefarbenen Seidenoberteil."
             },
             {
-              "type": "header",
+              "type": "text",
+              "content": "Ein Fall von Männeraccessoires zeigt denselben Nahblick-Trick aus einem anderen Blickwinkel: eine Reihe von Spazierstöcken, deren Griffe aus Knochen und Elfenbein in den Kopf eines Vogels, eines Löwen, eines lachenden Gesichts geschnitzt sind, stehen neben einem weißen Doppelreihigen Sommermantel mit schwarzem Samtkragen, einer alten Ledertasche und einem einzelnen Paar hochknöpfbarer Stiefel, die so getragen wurden, dass sie jemandem gehört haben müssen. Zwei weitere Kleider, eines in staubigem Rosa Chiffon mit einem Spitzenbesetzten Zug, das andere in blassem Creme-Seide mit hohem Perlenkragen, werden gegenüber Periodenporträts von Frauen gezeigt, die fast identisch gekleidet sind, sodass die Wand eher als Beweis denn als Dekoration erscheint."
+            },
+            {
+              "type": "galerie",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-16-canes-tunic.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-08-gown-pink.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-12-gown-cream.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Schnitzereien aus Cane-Händen und einem Sommermantel eines Gentlemans; ein pinkes Chiffon-Kleid und ein cremefarbenes Seidenkleid, jeweils neben ihrem Periodenporträt gezeigt."
+            },
+            {
+              "type": "kopfzeile",
               "content": "Cameos, Lockets und kleine Schachteln",
               "level": 3
             },
             {
               "type": "text",
-              "content": "Ein Nebenraum ist für das reserviert, was auf einem Schminktisch stand oder in einer Tasche reiste: Ringe und Broschen mit gemalten Miniaturporträts, emaillierte Schmuckkästchen in Kobaltblau und Gold, eine Duftflasche an einer Chatelaine-Kette. An einer Wand sind mehr als ein Dutzend Cameos, geschnitzt aus Muscheln, Onyx und Sardonyx, englisch und italienisch, überwiegend aus dem neunzehnten Jahrhundert, in einem einzigen vergoldeten Rahmen montiert, wie ein Kabinett mit Miniaturgemälden: ein Heiliger auf einem Pferd, eine Schriftrolle mit Akanthusblättern, ein Frauenprofil, das dreiviertel zur Beleuchtung gedreht ist."
+              "content": "Ein Nebenraum ist gewidmet dem, was auf einem Schminktisch sitzen oder in einer Tasche reisen würde: Ringe und Broschen mit gemalten Miniaturporträts, emaillierte Schmuckkästchen in Kobaltblau und Gold, eine Duftflasche an einer Chatelaine-Kette. An einer Wand sind mehr als ein Dutzend Cameos, geschnitzt aus Muscheln, Onyx und Sardonyx, englisch und italienisch, überwiegend aus dem neunzehnten Jahrhundert, in einem einzigen vergoldeten Rahmen montiert wie ein Kabinett mit Miniaturgemälden: ein Heiliger auf einem Pferd, eine Schriftrolle mit Akanthusblättern, ein Frauenprofil, das dreiviertel zur Beleuchtung gedreht ist."
             },
             {
               "type": "galerie",
@@ -35423,7 +35463,7 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-10-cameos.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Cameo Broschen, Ringe und Emailleboxen aus den Schmuckkästchen des Museums."
+              "caption": "Cameo-Broschen, Ringe und Emaille-Schachteln aus den Schmuckkästchen des Museums."
             },
             {
               "type": "header",
@@ -35432,7 +35472,7 @@
             },
             {
               "type": "text",
-              "content": "Die Kleider hängen vor einem Hintergrund aus Gemälden und Objekten derselben Jahrzehnte: eine französische Madonna und Kind mit Johannes dem Täufer aus dem frühen neunzehnten Jahrhundert, vergoldete Portraits von Frauen in den gleichen Silhouetten, die die Schaufensterpuppen tragen, eine Bronzefigur einer Frau in einem gefiederten Hut, die einen Fächer halb vor das Gesicht hält. Nichts davon ist didaktisch. Es gibt keinen langen Wandtext, der die Geschichte des Korsetts oder die Politik der Trauerkleidung erklärt; das Museum lässt die Objekte meist nah beieinander stehen, um ihr eigenes Argument für eine Epoche zu machen, die sich mit großer, spezifischer Sorgfalt kleidete."
+              "content": "Die Kleidung sind gegen einen Hintergrund aus Gemälden und Objekten aus denselben Jahrzehnten gehängt: eine französische Madonna und Kind mit Johannes dem Täufer aus dem frühen neunzehnten Jahrhundert, goldgerahmte Porträts von Frauen in denselben Silhouetten, die die Schaufensterpuppen tragen, eine Bronzefigur einer Frau in einem gefiederten Hut, die eine Fächer halb vor ihr Gesicht hält. Nichts davon ist didaktisch. Es gibt keinen langen Wandtext, der die Geschichte des Korsetts oder die Politik der Trauermode erklärt; das Museum lässt die Objekte meist nah beieinander stehen, um ihr eigenes Argument über eine Epoche zu machen, die sich mit großer, spezifischer Sorgfalt kleidete."
             },
             {
               "type": "image",
@@ -35443,10 +35483,10 @@
             },
             {
               "type": "text",
-              "content": "Das Victoria Museum ist von Donnerstag bis Sonntag geöffnet, 11:00–18:00, ein kurzer Spaziergang vom Khreshchatyk entfernt. Es ist ein kleines Museum und leicht in einer Stunde zu besichtigen, aber ich würde länger einplanen, die Glaskästen belohnen die Art des langsamen Betrachtens, die eine Handykamera immer wieder unterbricht."
+              "content": "Das Victoria Museum ist von Donnerstag bis Sonntag geöffnet, 11:00–18:00, ein kurzer Spaziergang vom Khreshchatyk entfernt. Es ist ein kleines Museum und leicht in einer Stunde zu besichtigen, aber ich würde länger einplanen, die Glasvitrinen belohnen die Art des langsamen Betrachtens, die eine Handykamera ständig unterbricht."
             }
           ],
-          "updatedAt": "2026-09-21T12:58:34.568Z"
+          "updatedAt": "2026-09-21T13:13:30.929Z"
         }
       ],
       "reviews": [
@@ -43781,42 +43821,35 @@
           "draft": false,
           "order": 0,
           "authorId": "author-1784732936927-kw554",
-          "title": "Dentro del Museo Victoria de Kyiv",
+          "title": "Dentro del Museo Victoria",
           "author": "Viacheslav Munister",
           "date": "21 de septiembre de 2026",
           "publishedAt": "2026-09-21T13:00:00.000Z",
-          "excerpt": "Una casa privada de la moda del siglo XIX escondida en un patio tras Khreshchatyk: vestidos de seda con corsé, un abrigo de corte con oro, cameos tallados en concha, y los pequeños objetos, relicarios, frascos de perfume, cajas de esmalte, que una vida realmente poseyó.",
+          "excerpt": "Una casa privada de la moda del siglo XIX escondida en un patio tras Khreshchatyk: vestidos de seda con corsé, un abrigo de corte con galones dorados, camafeos tallados en concha, y los pequeños objetos, relicarios, frascos de perfume, cajas de esmalte, que una vida realmente poseyó.",
           "category": "Cultura",
           "subcategory": "Historia visual",
           "tags": [
-            "Kyiv",
+            "Kiev",
             "Museos",
             "Historia de la moda",
             "Ucrania",
             "Viaje"
           ],
-          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-cover.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/victoria-museum-13-gown-peach.jpg",
           "previewToken": "HNmKRF6viNIOMo8G",
           "content": [
             {
-              "type": "text",
-              "content": "El Museo Victoria se encuentra detrás de una puerta arqueada a unos pasos de Khreshchatyk, en un edificio de apartamentos del siglo XIX cuya cornisa de estuco y planta baja rústica no revelan nada de lo que hay en su interior. Una pequeña placa junto a la entrada dice Museo Victoria — Музей костюму та стилю, el Museo de Vestuario y Estilo, abierto de jueves a domingo. Fui por capricho después de un paseo por el centro de la ciudad, y me quedé la mayor parte de la tarde."
+              "type": "texto",
+              "content": "El Museo Victoria se encuentra detrás de una puerta arqueada a unos pasos de Khreshchatyk, en un edificio de apartamentos del siglo XIX cuyas cornisas de estuco y planta baja rústica no revelan nada de lo que hay en su interior. Una pequeña placa junto a la entrada dice Museo Victoria — Музей костюма та стилю, el Museo de Vestimenta y Estilo, abierto de jueves a domingo. Fui por capricho después de un paseo por el centro de la ciudad, y me quedé la mayor parte de la tarde."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/victoria-museum-01-entrance.jpg",
-              "credit": "Viacheslav Munister",
-              "align": "center",
-              "caption": "La entrada, a unos pasos de Khreshchatyk."
-            },
-            {
-              "type": "header",
+              "type": "encabezado",
               "content": "Un armario de otro siglo",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Habitación por habitación, el museo está construido en torno a la ropa: docenas de vestidos de mujer desde la segunda mitad del siglo XIX hasta los años 1900, la mayoría exhibidos en maniquíes dentro de vitrinas de cristal, iluminados como las joyas junto a ellos. Un corpiño de terciopelo de color violeta profundo adornado con encaje de encaje de bolillo se encuentra junto a una falda de seda azul pizarra; unos pasos más adelante, un vestido de crinolina en un estampado floral rojo oxidado de los años 1860 se abomba bajo su propio peso, el patrón de pequeñas rosas corriendo ininterrumpidamente desde la cintura hasta el dobladillo. Una etiqueta, en ucraniano e inglés, cataloga un vestido de color chocolate oscuro con adornos florales y botones de los años 1880 en el lenguaje sencillo de un inventario de museo, algodón, terciopelo, que subestima cuánto trabajo manual hay dentro de una sola manga."
+              "type": "texto",
+              "content": "Habitación por habitación, el museo está construido en torno a la ropa: docenas de vestidos de mujer desde la segunda mitad del siglo XIX hasta los años 1900, la mayoría exhibidos en maniquíes dentro de vitrinas, iluminados como las joyas junto a ellos. Un corpiño de terciopelo de color púrpura profundo adornado con encaje de encaje de bolillo se encuentra junto a una falda de seda azul pizarra; unos pasos más adelante, un vestido de crinolina en un estampado floral rojo óxido de los años 1860 se abulta bajo su propio peso, el patrón de pequeñas rosas corriendo ininterrumpido desde la cintura hasta el dobladillo. Una etiqueta, en ucraniano e inglés, cataloga un vestido de color chocolate oscuro con adornos florales y botones de los años 1880 en el lenguaje sencillo de un inventario de museo, algodón, terciopelo, que subestima cuánto trabajo manual hay dentro de una sola manga."
             },
             {
               "type": "galería",
@@ -43826,27 +43859,40 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-05-gown-brown-uniform.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Un corpiño de terciopelo, un vestido de crinolina de los 1860, y un vestido de color chocolate de los 1880, mostrados junto a un retrato de época y un abrigo de uniforme de caballero."
+              "caption": "Un corpiño de terciopelo, un vestido de crinolina de los años 1860 y un vestido de color chocolate de los años 1880, exhibidos junto a un retrato de época y un abrigo de uniforme de caballero."
             },
             {
               "type": "texto",
-              "content": "Algunas piezas son tableaux en vitrinas en lugar de prendas individuales. En una esquina, un vestido de luto colgado con pequeños retratos enmarcados en su corsé se encuentra debajo de retratos en sepia de las mujeres que podrían haberlo llevado, junto a un parasol doblado y un vestido de seda pálida con un profundo cuello de encaje, todo un pequeño teatro de una familia del siglo XIX, ensamblado dentro de una sola vitrina."
+              "content": "Más adelante, el color se vuelve más audaz. Un abrigo recortado hecho de un tejido paisley marrón, naranja y crema, forrado en terciopelo oscuro, se encuentra debajo de una fotografía enmarcada de la mujer para la que pudo haber sido hecho, una supervivencia inusual: el paisley era para mantones y interiores con más frecuencia que para prendas exteriores, y ver el patrón completo envolver un cuerpo en lugar de estar plano cambia la forma en que se lee. Dos casos más adelante, un vestido de marfil deja caer sus mangas del hombro en una espuma de rosas de tul y ribete de perlas, el corpiño bordado a mano con rociadas de hojas en un patrón que se repite a lo largo de toda la cola, vestido de noche diseñado para una habitación con mejor iluminación que la luz del día."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-15-coat-paisley.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-14-gown-gold.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Un abrigo paisley forrado en terciopelo, y un vestido de noche de marfil bordado con hojas y rosas de tul."
+            },
+            {
+              "type": "texto",
+              "content": "Algunas piezas son vitrinas con escenas en lugar de prendas individuales. En una esquina, un vestido de luto colgado con pequeños retratos enmarcados a lo largo de su corpiño se encuentra debajo de retratos en sepia de las mujeres que podrían haberlo llevado, junto a un parasol doblado y un vestido de seda pálida con un profundo cuello de encaje, todo un pequeño teatro de una casa del siglo XIX, ensamblado dentro de una sola vitrina."
             },
             {
               "type": "imagen",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-02-room.jpg",
               "credit": "Viacheslav Munister",
-              "align": "centrar",
+              "align": "centro",
               "caption": "Un vestido de luto colgado con retratos enmarcados, junto a retratos en sepia y un parasol doblado."
             },
             {
-              "type": "encabezado",
-              "content": "Seda, trenza, y un abrigo de corte",
+              "type": "header",
+              "content": "Seda, trenza y un abrigo de corte",
               "level": 3
             },
             {
               "type": "text",
-              "content": "La colección no es solo para vestidos de mujer. Un solo abrigo de lana rojo, cortado como el uniforme de un cortesano o un lacayo, está adornado a lo largo de ambos solapas y puños con una ancha trenza metálica dorada, cerrado con una columna de botones de latón con cúpula, el tipo de abrigo formal que habría sido hecho a medida del patrón de una familia, no comprado en una tienda. Cerca, un corpiño de seda crema con un cuello alto con ballenas lleva el mismo motivo bordado de lira y rollo repetido en los hombros, la garganta y el dobladillo, el tipo de detalle que solo se revela bajo una luz de exhibición."
+              "content": "La colección no es solo para el vestido de mujer. Un solo abrigo de lana roja, cortado como un uniforme de cortesano o de lacayo, está adornado a lo largo de ambos solapas y puños con una ancha trenza metálica dorada, cerrado con una columna de botones de latón con cúpula, el tipo de abrigo formal que habría sido hecho a medida del patrón de una casa, no comprado en una tienda. Cerca, un corpiño de seda crema con un cuello alto con ballenas lleva el mismo motivo bordado de lira y rollo repetido en los hombros, la garganta y el dobladillo, el tipo de detalle que solo se muestra bajo una luz de exhibición."
             },
             {
               "type": "gallery",
@@ -43858,13 +43904,27 @@
               "caption": "Un abrigo de corte con trenza dorada, y el motivo de lira repetido en un corpiño de seda crema."
             },
             {
-              "type": "header",
+              "type": "text",
+              "content": "Un caso de accesorios masculinos hace la misma trampa de observación cercana desde un ángulo diferente: una fila de bastones, sus mangos tallados en hueso y marfil en forma de cabeza de ave, un león, una cara risueña, se colocan junto a un abrigo de verano de doble botonadura blanco con un cuello de terciopelo negro, una vieja bolsa de cuero de viaje y un par de botas altas con botones, lo suficientemente usadas como para haber pertenecido a alguien. Dos más vestidos, uno en chiffon rosa polvoriento con una cola de encaje, otro en seda crema pálida con un cuello alto con cuentas, se muestran contra retratos de época de mujeres vestidas casi de manera idéntica, por lo que la pared se lee como evidencia en lugar de decoración."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/victoria-museum-16-canes-tunic.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-08-gown-pink.jpg",
+                "https://api.eprisjournal.com/uploads/victoria-museum-12-gown-cream.jpg"
+              ],
+              "credit": "Viacheslav Munister",
+              "caption": "Manguitos tallados y un abrigo de verano de caballero; un vestido de chiffon rosa y un vestido de seda crema, cada uno mostrado junto a su retrato de época."
+            },
+            {
+              "type": "encabezado",
               "content": "Cameos, relicarios y pequeñas cajas",
               "level": 3
             },
             {
-              "type": "text",
-              "content": "Una habitación lateral está dedicada a lo que habría estado en una mesa de tocador o viajando en un bolsillo: anillos y broches con retratos miniatura pintados, cajas de esmalte en azul cobalto y oro, una botella de perfume en una cadena de chatelaine. En una pared, más de una docena de cameos, tallados en concha, ónix y sardónice, ingleses e italianos, en su mayoría del siglo XIX, están montados en un solo marco dorado como una vitrina de miniaturas: un santo a caballo, un rollo de hojas de acanto, el perfil de una mujer girado en tres cuartos hacia la luz."
+              "type": "texto",
+              "content": "Una habitación lateral se dedica a lo que habría estado sobre una mesa de tocador o viajaba en un bolsillo: anillos y broches con retratos miniatura pintados, cajas de baratija esmaltadas en azul cobalto y oro, un frasco de perfume en una cadena de chatelaine. En una pared, más de una docena de cameos, tallados en concha, ónix y sardónix, inglés e italiano, en su mayoría del siglo XIX, están montados en un solo marco dorado como una vitrina de miniaturas: un santo a caballo, un pergamino de hojas de acanto, el perfil de una mujer girado en tres cuartos hacia la luz."
             },
             {
               "type": "galería",
@@ -43873,30 +43933,30 @@
                 "https://api.eprisjournal.com/uploads/victoria-museum-10-cameos.jpg"
               ],
               "credit": "Viacheslav Munister",
-              "caption": "Broches de cameo, anillos y cajas de esmalte de las vitrinas de la colección de joyas del museo."
+              "caption": "Broches de cameo, anillos y cajas esmaltadas de las cajas de joyería del museo."
             },
             {
-              "type": "encabezado",
+              "type": "header",
               "content": "Pinturas y una figura de bronce, para contexto",
               "level": 3
             },
             {
-              "type": "texto",
-              "content": "La ropa cuelga contra un telón de fondo de pinturas y objetos de las mismas décadas: una Madonna y Niño francesa con Juan el Bautista del siglo XIX temprano, retratos enmarcados en oro de mujeres en las mismas siluetas que llevan las maniquíes, una figurilla de bronce de una mujer con un sombrero pluma sosteniendo un abanico a medio rostro. Nada de esto es didáctico. No hay un largo texto en la pared explicando la historia del corsé o la política del vestido de luto; el museo en su mayoría deja que los objetos se acerquen lo suficiente para hacer su propio argumento sobre un período que se vestía con un cuidado tremendo y específico."
+              "type": "text",
+              "content": "La ropa está colgada contra un telón de fondo de pinturas y objetos de las mismas décadas: una Madonna y Niño francesa con Juan el Bautista del siglo XIX temprano, retratos enmarcados en oro de mujeres en las mismas siluetas que llevan los maniquíes, una figurilla de bronce de una mujer con un sombrero plumería sosteniendo un abanico a medio camino de su rostro. Nada de esto es didáctico. No hay un largo texto en la pared explicando la historia del corsé o la política de la vestimenta de duelo; el museo en su mayoría deja que los objetos se acerquen lo suficiente como para hacer su propio argumento sobre un período que se vestía con un cuidado tremendo y específico."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-11-bronze-madonna.jpg",
               "credit": "Viacheslav Munister",
-              "align": "centro",
+              "align": "center",
               "caption": "Una figura de bronce y una Madonna y Niño francesas, ambas del siglo XIX."
             },
             {
-              "type": "texto",
-              "content": "El Museo Victoria está abierto de jueves a domingo, de 11:00 a 18:00, a poca distancia a pie de Khreshchatyk. Es un museo pequeño y fácil de visitar en una hora, pero recomendaría más tiempo, las vitrinas de cristal recompensan el tipo de observación pausada que una cámara de teléfono sigue interrumpiendo."
+              "type": "text",
+              "content": "El Museo Victoria está abierto de jueves a domingo, de 11:00 a 18:00, a poca distancia a pie de Khreshchatyk. Es un museo pequeño y fácil de recorrer en una hora, pero recomendaría más tiempo, las vitrinas recompensan el tipo de observación lenta que una cámara de teléfono sigue interrumpiendo."
             }
           ],
-          "updatedAt": "2026-09-21T12:58:56.653Z"
+          "updatedAt": "2026-09-21T13:14:01.931Z"
         }
       ],
       "reviews": [
