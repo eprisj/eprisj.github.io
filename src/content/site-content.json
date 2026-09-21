@@ -20872,11 +20872,11 @@
           "updatedAt": "2026-09-21T20:50:36.119Z",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "На южной точке Норвегии, где Северное море встречается с Skagerrak, плита тёмного бетона спускается из скал под углом, как будто от высокого объекта упала труба и осталась точно там, где приземлилась. Один конец обшит необработанной древесиной и висит в воздухе. Другой конец исчезает в воде. В затопленном конце есть дверь, под водой, запечатанная; она предназначена для спасателей-дайверов, а не для посетителей. Все остальные заходят с деревянного конца, сверху, и спускаются вниз."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-exterior.jpg",
               "alt": "Под рестораном в Lindesnes, Норвегия, длинный тёмный монолит из бетона и дерева, встроенный в скалистый берег, наклонённый в море",
               "caption": "Под, вид с скал в Lindesnes. Конструкция простирается 34 метра от входа до пяти с половиной метров ниже поверхности.",
@@ -20884,15 +20884,15 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9109_(48614080503).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Здание спроектировано Snøhetta, норвежской фирмой, создавшей Оперный театр в Осло, и оно открылось в марте 2019 года как первый в Европе подводный ресторан, звание которого оно по-прежнему удерживает, а также имеет веские основания считать его крупнейшим в своем роде в любой точке мира. Спуск — это вся идея дизайна: вход на уровне моря, бар на мезонине, где бетон впервые встречается с водой, и, наконец, сама столовая, расположенная тридцать четыре метра от двери и на 5,5 метров ниже поверхности, ее длинная ось заканчивается одним окном размером одиннадцать метров на три целых четыре десятых. Стены по пути — метр сплошного бетона, построенного для того, чтобы выдержать удар штормового моря напрямую, и между последней открытой древесиной сверху и необработанной, неосвещенной скалой внизу нет ничего, чтобы смягчить тот факт, что сейчас над вашей головой находится огромное давление."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Имя играет на этой структуре, а не украшает ее. На норвежском <i>under</i> означает и \"ниже\", и \"чудо\", и здание на протяжении всей своей длины заставляет первое слово оправдывать второе: вы не приходите к чуду, вы спускаетесь в него, этаж за этажом, пока сама комната не станет морским дном, а потолок — морем."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-dining.jpg",
               "alt": "Интерьер подводного ресторана Under, столы накрыты для ужина, обращённые к огромному панорамному окну, выходящему в тёмно-синее море, с рыбами, видимыми снаружи",
               "caption": "Обеденная зона на 5,5 метрах ниже уровня моря, все сорок мест facing одинаковым одиннадцатиметровым окном.",
@@ -20900,11 +20900,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9117_(48614087913).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "То, что находится за окном, — не фиксированный пейзаж. Snøhetta спроектировала бетонную оболочку так, чтобы она функционировала как искусственный риф, её внешний слой намеренно сделан грубым, а не гладким, чтобы мидии, морская капуста и ракушки заселили его так же, как они заселяют любой затонувший камень на этом побережье. Морские биологи наблюдают за ростом изнутри, а ресторан по замыслу также служит исследовательской станцией: то же самое окно, которое кадрирует ужин, является фиксированной точкой наблюдения за рифом, которого не было до появления здания. Посетителям более или менее точно сообщают, что ни один вечер у окна не похож на другой — треска и пикша проходят в свободных косяках, свет меняется с глубиной и погодой, а каждое время года добавляет немного жизни в бетон, которого не было при открытии ресторана."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-kitchen.jpg",
               "alt": "Открытая кухня в ресторане Under, шеф-повара работают за прилавком, расположенным рядом с подводным окном, за которым видно море",
               "caption": "Открытая кухня расположена на краю того же окна, что и обеденная зона — море видно с обеих сторон прохода.",
@@ -20912,11 +20912,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9151_(48614088388).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Кухня, под руководством шеф-повара Nicolai Ellitsgaard, создала дегустационное меню вокруг того, что уже было заложено в здании: морепродукты холодных вод с побережья прямо за окном, подаваемые в блюдах, собранных так, будто они сами — часть береговой линии — одна крупная морская раковина с морской капустой, мидии в ракушках внутри плетёного гнезда из высушенной морской травы, лангустин и травы, поданные на морских камнях. Under получил звезду Мишлен в течение восьми месяцев после открытия, что является необычно быстрым признанием для ресторана в таком удалённом месте, и с тех пор он удерживает её каждый год; текущий гид приписывает заслугу шеф-повару Bernt Sæthre, который продолжил развитие кухни, не ослабляя при этом прибрежную, почти археологическую логику оригинального меню."
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
               "alt": "Блюдо в ресторане Under, стилизованное под камень на пляже из темного съедобного песка, поданное на светлой керамической тарелке",
               "caption": "Блюдо, выполненное в виде береговой линии за окном: моллюски, вставленные в съедобный черный песок.",
@@ -20924,7 +20924,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "изображение",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
               "alt": "Моллюски, поданные в раковинах, уютно расположенных внутри сплетенного гнезда из темных высушенных морских водорослей на тарелке в ресторане Under",
               "caption": "Моллюски, поданные в гнезде из высушенных морских водорослей, а не на нем — тарелка продолжает повторять аргумент здания.",
@@ -20932,7 +20932,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9163_(48614589357).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Легко представить, что такое драматичное здание может подавить все, что подается внутри, и еще легче — что кухня опирается на вид и перестает стараться. Under в основном избегает обеих ловушек, отказываясь рассматривать архитектуру и меню как отдельные аргументы. Бетон — это риф; еда — это то, что живет на рифе. Окно закреплено, а море за ним — нет, и тарелки постоянно указывают обратно на ту же воду, а не конкурируют с ней. Это очень долгое путешествие ради ужина, по цене, предполагающей, что вы уже это знаете. Но очень немногие столовые где-либо также являются, тихо, частью долгосрочного морского исследования — и еще меньше просят вас сидеть спокойно два часа и наблюдать за океаном, делая что-то, чего ни одна камера на стене обычного ресторана никогда бы не смогла."
             }
           ]
@@ -30213,11 +30213,11 @@
           "updatedAt": "2026-09-21T20:50:10.683Z",
           "content": [
             {
-              "type": "текст",
+              "type": "text",
               "content": "На південній точці Норвегії, де Північне море зустрічається з Skagerrak, плита темного бетону спускається з каменів під кутом, ніби шматок труби був скинутий з великої висоти і залишився точно там, де приземлився. Один кінець обшитий необробленим деревом і висить у повітрі. Інший кінець зникає у воді. У підводному кінці є двері, під водою, запечатані; вони призначені для дайверів-обслуговувачів, а не для відвідувачів. Інші заходять з дерев’яного кінця, зверху, і йдуть вниз."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-exterior.jpg",
               "alt": "Під рестораном у Lindesnes, Норвегія, довгий темний моноліт із бетону та дерева, вбудований у скелястий берег, нахилений у море",
               "caption": "Під, знято з каменів у Lindesnes. Конструкція простягається 34 метри від входу до п’яти з половиною метрів під поверхнею.",
@@ -30225,15 +30225,15 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9109_(48614080503).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Будівля належить Snøhetta, норвезькій компанії, що стоїть за Oslo Opera House, і вона відкрилася у березні 2019 року як перший у Європі підводний ресторан, титул, який він досі зберігає, разом із справедливим претензією бути найбільшим у своєму роді будь-де. Спуск — це вся ідея дизайну: вхід на рівні моря, бар на мезоніні, де бетон вперше зустрічається з водою, і, нарешті, сама їдальня, тридцять чотири метри від дверей і на 5,5 метра під поверхнею, її довга вісь закінчується одним вікном розміром одинадцять метрів на три з половиною. Стінки по дорозі — це метр суцільного бетону, побудованого для витримки удару грубого моря безпосередньо, і між останнім відкритим деревом нагорі та необробленою, необіленою скелею знизу немає нічого, щоб пом’якшити факт, що зараз над вашою головою лежить велика вага."
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Назва грає на цій структурі, а не прикрашає її. Норвезькою <i>under</i> означає і \"нижче\", і \"чудо\", і будівля протягом усього свого довжини робить перше слово гідним другого: ви не приходите до дива, ви спускаєтеся в нього, поверх за поверхом, доки сама кімната не стане морським дном, а стеля — морем."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-dining.jpg",
               "alt": "Інтер'єр підводної їдальні ресторану Under, столи накриті для вечері, що дивляться на велике панорамне вікно, яке виходить у темно-синє море, з рибами, видимими зовні",
               "caption": "Їдальня на 5.5 метрах нижче рівня моря, усі сорок місць обличчям до одного одиннадцятиметрового вікна.",
@@ -30241,11 +30241,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9117_(48614087913).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Що знаходиться за вікном — це не фіксований пейзаж. Snøhetta спроектувала бетонну оболонку так, щоб вона функціонувала як штучний риф, її зовнішній вигляд навмисно грубий, а не гладкий, щоб мідії, ламінарії та морські цвілі колонізували її так само, як вони колонізували б будь-яку затоплену скелю на цьому узбережжі. Морські біологи контролюють ріст зсередини, а ресторан, за задумом, також виконує функцію дослідної станції: те саме вікно, що обрамляє вечерю, є також фіксованою точкою спостереження на рифі, якого раніше не існувало до будівництва. Відвідувачам повідомляють, більш-менш точно, що жоден вечір за вікном не виглядає зовсім однаково — тріски та миньки проходять у розсіяних зграях, світло змінюється з глибиною та погодою, і кожен сезон додає трохи більше життя до бетону, якого там не було, коли відкрився ресторан."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-kitchen.jpg",
               "alt": "Відкрита кухня у ресторані Under з шеф-кухарями, що працюють за прилавком, розташованим поруч із підводним вікном, через яке видно море",
               "caption": "Відкрита кухня розташована на краю того самого вікна, що й їдальня — море видно з обох боків проходу.",
@@ -30253,11 +30253,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9151_(48614088388).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Кухня, під керівництвом засновника шеф-кухаря Nicolai Ellitsgaard, створила дегустаційне меню навколо саме того, що вже стверджувала будівля: морепродукти холодної води з узбережжя безпосередньо за вікном, подані у стравах, що виглядають зібраними з берегової лінії — один шматочок морського гребінця, вставлений у миску з їстівним чорним піском, мідії, подані у їхніх власних раковинах у плетеному гнізді з висушеного морського бур’яну, лангустини та трави, викладені на пляжних камінцях. Under отримав зірку Michelin через вісім місяців після відкриття, що є незвичайно швидким визнанням для ресторану такої віддаленості, і з того часу має її щороку; сучасний гід приписує цю заслугу шеф-кухарю Bernt Sæthre, який продовжує розвивати кухню, не послаблюючи при цьому прибережної, майже археологічної логіки оригінального меню."
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
               "alt": "Страва в Under restaurant, стилізована під камінь на пляжі темного їстівного піску, подана на світлій керамічній тарілці",
               "caption": "Страва, побудована так, щоб виглядати як берегова лінія за вікном: молюски, вставлені у їстівний чорний пісок.",
@@ -30265,7 +30265,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "зображення",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
               "alt": "Молюски, подані у їхніх раковинах, укладені всередині плетеного гнізда з темного висушеного морського бур'яну на тарілці в Under restaurant",
               "caption": "Молюски, подані у гнізді з висушеного морського бур'яну, а не на ньому — тарілка постійно повторює аргумент будівлі.",
@@ -30273,7 +30273,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9163_(48614589357).jpg"
             },
             {
-              "type": "текст",
+              "type": "text",
               "content": "Легко уявити, що така драматична будівля може перезавантажити все, що подають всередині, і ще легше — що кухня покладається на вид і припиняє намагатися. Under здебільшого уникає обох пасток, відмовляючись розглядати архітектуру та меню як окремі аргументи. Бетон — це риф; їжа — те, що живе на рифі. Вікно закріплене, а море за ним — ні, і тарілки постійно вказують назад на ту саму воду, а не змагаються з нею. Це дуже довга дорога для вечері, за ціною, яка припускає, що ви вже знаєте це. Але дуже мало їдалень у будь-якому місці також, тихо, є частиною довгострокового морського дослідження — і ще менше просять вас сидіти нерухомо дві години і спостерігати, як океан робить щось, що жодна камера на стіні звичайного ресторану ніколи б не могла."
             }
           ]
@@ -39598,7 +39598,7 @@
               "content": "Die Küche, unter der Leitung des Gründungskochs Nicolai Ellitsgaard, baute ein Degustationsmenü um genau das, was das Gebäude bereits betonte: Kaltwasser-Meeresfrüchte von der Küste direkt vor dem Fenster, serviert in Gängen, die aus dem Ufer selbst zu stammen scheinen — ein einzelnes Stück Jakobsmuschel in einer Schüssel essbaren schwarzen Sandes, Muscheln in ihren eigenen Schalen in einem geflochtenen Nest aus getrocknetem Seetang, Languste und Kräutern auf Strandsteinen angerichtet. Under gewann innerhalb von acht Monaten nach der Eröffnung einen Michelin-Stern, eine ungewöhnlich schnelle Anerkennung für ein so abgelegenes Restaurant, und es hat seitdem jedes Jahr einen behalten; der aktuelle Guide schreibt Küchenchef Bernt Sæthre zu, der die Küche weitergeführt hat, ohne die küstliche, fast archäologische Logik des ursprünglichen Menüs zu lockern."
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
               "alt": "Ein Gericht im Under Restaurant, gestaltet, um einem Stein am Strand aus dunklem essbarem Sand zu ähneln, serviert auf einem hellen Keramiktablett",
               "caption": "Ein Gang, der wie die Küstenlinie außerhalb des Fensters aussieht: Schalentiere in essbarem schwarzem Sand eingebettet.",
@@ -39606,7 +39606,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "Bild",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
               "alt": "Miesmuscheln serviert in ihren Schalen, eingebettet in ein geflochtenes Nest aus dunklem getrocknetem Seetang auf einem Teller im Under restaurant",
               "caption": "Miesmuscheln, serviert in einem Nest aus getrocknetem Seetang anstatt darauf — der Teller wiederholt das Argument des Gebäudes.",
@@ -48879,11 +48879,11 @@
           "updatedAt": "2026-09-21T20:48:52.396Z",
           "content": [
             {
-              "type": "texto",
+              "type": "text",
               "content": "En el punto más al sur de Noruega, donde el Mar del Norte se encuentra con el Skagerrak, una losa de concreto oscuro desciende de las rocas en un ángulo, como si un tramo de tubería hubiera caído desde una gran altura y quedado exactamente donde aterrizó. Un extremo está revestido de madera en bruto y se encuentra en el aire. El otro extremo desaparece en el agua. Hay una puerta en el extremo sumergido, bajo el agua, sellada; existe para buzos de mantenimiento, no para comensales. Todos los demás entran desde el extremo de la madera, en la parte superior, y bajan."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-exterior.jpg",
               "alt": "Bajo restaurante en Lindesnes, Noruega, un monolito largo de concreto oscuro y madera construido en una costa rocosa, inclinado hacia el mar",
               "caption": "Bajo, visto desde las rocas en Lindesnes. La estructura corre 34 metros desde la entrada hasta cinco metros y medio debajo de la superficie.",
@@ -48891,15 +48891,15 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9109_(48614080503).jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El edificio es de Snøhetta, la firma noruega detrás de la Ópera de Oslo, y se inauguró en marzo de 2019 como el primer restaurante submarino de Europa, un título que aún mantiene junto con una justa reclamación de ser el más grande de su tipo en cualquier lugar. La bajada es toda la idea del diseño: una entrada a nivel del mar, un bar en un entrepiso donde el concreto primero encuentra el agua, y finalmente el comedor, a treinta y cuatro metros de la puerta y a 5.5 metros bajo la superficie, cuyo eje largo termina en una sola ventana que mide once metros por tres coma cuatro. Las paredes a lo largo son un metro de concreto sólido, construido para soportar el impacto de un mar agitado directamente, y no hay nada entre la última de la madera expuesta arriba y la roca cruda y sin iluminar abajo para suavizar el hecho de que ahora hay un peso enorme sobre tu cabeza."
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "El nombre juega con esa estructura en lugar de decorarla. En noruego, <i>under</i> significa tanto \"debajo\" como \"maravilla\", y el edificio pasa toda su longitud haciendo que la primera palabra gane la segunda: no llegas a la maravilla, sino que bajas en ella, piso por piso, hasta que la habitación misma es el lecho marino y el techo es el mar."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-dining.jpg",
               "alt": "Interior del comedor submarino del restaurante Under, mesas preparadas para cenar frente a una enorme ventana panorámica que mira hacia el mar azul oscuro, con peces visibles afuera",
               "caption": "El comedor a 5.5 metros por debajo del nivel del mar, todas las cuarenta plazas enfrentando la misma ventana de once metros.",
@@ -48907,11 +48907,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9117_(48614087913).jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Lo que está afuera de la ventana no es un paisaje fijo. Snøhetta diseñó la carcasa de concreto para funcionar como un arrecife artificial, su exterior deliberadamente rugoso en lugar de liso, para que mejillones, algas y percebes lo colonizaran de la misma manera que colonizarían cualquier roca sumergida en esta costa. Biólogos marinos monitorean el crecimiento desde adentro, y el restaurante funciona, por diseño, como una estación de investigación: la misma ventana que enmarca la cena también es un punto de observación fijo en un arrecife que no existía antes de que el edificio existiera. Se dice a los comensales, más o menos con precisión, que ninguna noche en la ventana se ve exactamente igual — bacalao y eglefino pasan en bancos sueltos, la luz cambia con la profundidad y el clima, y cada temporada añade un poco más de vida al concreto que no estaba allí cuando se abrió el restaurante."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-kitchen.jpg",
               "alt": "Cocina abierta en el restaurante Under con chefs trabajando en un mostrador, situado junto a la ventana submarina con el mar visible afuera",
               "caption": "La cocina abierta se encuentra en el borde de la misma ventana que el comedor — el mar es la vista desde ambos lados del pasillo.",
@@ -48919,11 +48919,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9151_(48614088388).jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "La cocina, bajo la dirección del chef fundador Nicolai Ellitsgaard, construyó un menú de degustación en torno exactamente a lo que el edificio ya argumentaba: mariscos de agua fría de la costa justo afuera de la ventana, servidos en platos que parecen ensamblados desde la misma orilla — una sola pieza de vieira colocada en un cuenco de arena negra comestible, mejillones servidos en sus propias conchas dentro de un nido trenzado de algas secas, langostinos y hierbas en platos sobre piedras de playa. Under obtuvo una estrella Michelin en ocho meses desde su apertura, un reconocimiento inusualmente rápido para un restaurante tan remoto, y ha mantenido una cada año desde entonces; la guía actual atribuye al chef Bernt Sæthre, quien ha llevado la cocina adelante sin perder la lógica costera, casi arqueológica, del menú original."
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
               "alt": "Un plato en Under restaurant diseñado para parecerse a una piedra en una playa de arena comestible oscura, servido en un plato de cerámica claro",
               "caption": "Un plato construido para parecerse a la línea de costa fuera de la ventana: mariscos incrustados en arena negra comestible.",
@@ -48931,7 +48931,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "imagen",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
               "alt": "<em>Mussels served in their shells nestled inside a woven nest of dark dried seaweed on a plate at Under restaurant</em>",
               "caption": "<em>Mussels, served in a nest of dried seaweed rather than on it — the plate keeps repeating the building's argument.</em>",
@@ -48939,7 +48939,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9163_(48614589357).jpg"
             },
             {
-              "type": "texto",
+              "type": "text",
               "content": "Sería fácil que un edificio tan dramático abrumara lo que se sirva en su interior, y aún más fácil que la cocina se apoyara en la vista y dejara de intentarlo. Under evita en su mayoría ambas trampas al negarse a tratar la arquitectura y el menú como argumentos separados. El concreto es un arrecife; la comida es lo que vive en un arrecife. La ventana está fija y el mar fuera de ella no lo está, y los platos siguen apuntando de vuelta a la misma agua en lugar de competir con ella. Es un viaje muy largo para cenar, a un precio que asume que ya lo sabes. Pero muy pocas salas de comedor en cualquier lugar son también, en silencio, un pedazo de investigación marina a largo plazo — y aún menos te piden que te quedes quieto durante dos horas y observes el océano hacer algo que ninguna cámara en la pared de un restaurante normal podría jamás captar."
             }
           ]
@@ -65222,7 +65222,7 @@
               "content": "Il nome gioca su quella struttura piuttosto che decorarla. In norvegese, <i>under</i> significa sia \"sotto\" che \"meraviglia\", e l'edificio trascorre tutta la sua lunghezza facendo sì che la prima parola guadagni la seconda: non arrivi alla meraviglia, scendi in essa, piano dopo piano, fino a che la stanza stessa diventa il fondale marino e il soffitto il mare."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-dining.jpg",
               "alt": "Interno della sala da pranzo subacquea del ristorante Under, tavoli apparecchiati per la cena di fronte a una grande finestra panoramica che si affaccia sul mare blu scuro, con pesci visibili all'esterno",
               "caption": "La sala da pranzo a 5,5 metri sotto il livello del mare, tutti i quaranta coperti di fronte alla stessa finestra di undici metri.",
@@ -65230,11 +65230,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9117_(48614087913).jpg"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Ciò che si trova fuori dalla finestra non è un paesaggio fisso. Snøhetta ha progettato la conchiglia di cemento per funzionare come un reef artificiale, il suo esterno deliberatamente ruvido piuttosto che levigato, in modo che cozze, alghe e barnacle la colonizzino come farebbero con qualsiasi roccia sommersa su questa costa. I biologi marini monitorano la crescita dall'interno, e il ristorante funge, per progettazione, anche come una stazione di ricerca: la stessa finestra che incornicia la cena è anche un punto di osservazione fisso su un reef che non esisteva prima che l'edificio fosse costruito. Ai commensali viene detto, più o meno accuratamente, che nessuna sera alla finestra è uguale all'altra — merluzzi e pollock passano in branchi sciolti, la luce cambia con la profondità e il tempo, e ogni stagione aggiunge un po' più di vita al cemento che non c'era quando il ristorante è stato aperto."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-kitchen.jpg",
               "alt": "Cucina aperta del ristorante Under con chef al lavoro al bancone, posizionato accanto alla finestra subacquea con il mare visibile all'esterno",
               "caption": "La cucina aperta si trova ai margini della stessa finestra della sala da pranzo — il mare è la vista da entrambi i lati del passaggio.",
@@ -65242,11 +65242,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9151_(48614088388).jpg"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "La cucina, sotto la guida dello chef fondatore Nicolai Ellitsgaard, ha costruito un menu di degustazione attorno a ciò che già il edificio suggeriva: frutti di mare d'acqua fredda dalla costa immediatamente fuori dalla finestra, serviti in portate che sembrano assemblate direttamente dalla linea di riva — un singolo pezzo di capasanta inserito in una ciotola di sabbia nera commestibile, cozze servite nelle loro conchiglie all'interno di un nido intrecciato di alghe essiccate, aragoste e erbe piattate su pietre da spiaggia. Under ha ottenuto una stella Michelin entro otto mesi dall'apertura, un riconoscimento insolitamente rapido per un ristorante così remoto, e ne ha mantenuta una ogni anno da allora; la guida attuale attribuisce la responsabilità allo chef Bernt Sæthre, che ha portato avanti la cucina senza allentare la logica costiera, quasi archeologica, del menu originale."
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate1.jpg",
               "alt": "Un piatto al Under restaurant stilizzato per assomigliare a una pietra sulla spiaggia di sabbia scura commestibile, servito su un piatto di ceramica chiara",
               "caption": "Un piatto costruito per sembrare la linea di costa fuori dalla finestra: crostacei inseriti nella sabbia nera commestibile.",
@@ -65254,7 +65254,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9157-Edit_(48614593327).jpg"
             },
             {
-              "type": "immagine",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/under-plate2.jpg",
               "alt": "Cozze servite nelle loro conchiglie annidate in un nido intrecciato di alghe secche scure su un piatto al Under restaurant",
               "caption": "Cozze, servite in un nido di alghe secche piuttosto che sopra di esse — il piatto continua a ripetere l'argomento dell'edificio.",
@@ -65262,7 +65262,7 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9163_(48614589357).jpg"
             },
             {
-              "type": "testo",
+              "type": "text",
               "content": "Sarebbe facile per un edificio così drammatico sopraffare tutto ciò che viene servito al suo interno, e ancora più facile per la cucina appoggiarsi alla vista e smettere di provare. Under evita per lo più entrambe le trappole rifiutando di trattare l'architettura e il menu come argomenti separati. Il cemento è un reef; il cibo è ciò che vive su un reef. La finestra è fissa e il mare fuori di essa non lo è, e i piatti continuano a puntare indietro verso la stessa acqua piuttosto che competere con essa. È un viaggio molto lungo per una cena, a un prezzo che presuppone tu sappia già questo. Ma pochissime sale da pranzo ovunque sono anche, silenziosamente, un pezzo di ricerca marina a lungo termine — e ancora meno ti chiedono di rimanere fermo per due ore e guardare l'oceano fare qualcosa che nessuna telecamera sulla parete di un ristorante normale potrebbe mai catturare."
             }
           ]
@@ -73020,7 +73020,7 @@
           "updatedAt": "2026-09-21T20:49:45.510Z",
           "content": [
             {
-              "type": "texte",
+              "type": "text",
               "content": "Au point le plus au sud de Norway, où la mer du Nord rencontre le Skagerrak, une dalle de béton sombre descend des rochers en angle, comme si un tronçon de tuyau avait été laissé tomber d'une grande hauteur et laissé exactement à l'endroit où il a atterri. Une extrémité est recouverte de bois brut et repose dans l'air. L'autre extrémité disparaît dans l'eau. Il y a une porte à l'extrémité immergée, sous l'eau, scellée; elle existe pour les plongeurs de maintenance, pas pour les convives. Tout le monde entre par l'extrémité en bois, en haut, et descend."
             },
             {
@@ -73032,11 +73032,11 @@
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Under_restaurant_AV4A9109_(48614080503).jpg"
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Le bâtiment est signé Snøhetta, la société norvégienne derrière l'Opéra d'Oslo, et il a été inauguré en mars 2019 en tant que premier restaurant sous-marin d'Europe, un titre qu'il détient toujours avec une légitime revendication d'être le plus grand de son genre partout. La descente est toute l'idée du design : une entrée au niveau de la mer, un bar en mezzanine où le béton rencontre d'abord l'eau, et enfin la salle à manger elle-même, à trente-quatre mètres de la porte et à 5,5 mètres sous la surface, son long axe se terminant par une seule fenêtre mesurant onze mètres sur trois virgule quatre. Les murs le long du parcours sont d'un mètre de béton solide, conçus pour supporter l'impact d'une mer agitée directement, et il n'y a rien entre le dernier bois exposé au-dessus et la roche brute non éclairée en dessous pour adoucir le fait qu'une grande quantité de poids est maintenant au-dessus de votre tête."
             },
             {
-              "type": "texte",
+              "type": "text",
               "content": "Le nom joue sur cette structure plutôt que de la décorer. En norvégien, <i>under</i> signifie à la fois « en dessous » et « merveille », et le bâtiment passe toute sa longueur à faire en sorte que le premier mot mérite le second : vous n'arrivez pas à la merveille, vous descendez dedans, étage par étage, jusqu'à ce que la pièce elle-même soit le fond marin et que le plafond soit la mer."
             },
             {
