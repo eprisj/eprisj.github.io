@@ -51133,11 +51133,11 @@
               "level": 3
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Oda oda, müze kıyafetler etrafında inşa edilmiştir: on dokuzuncu yüzyılın ikinci yarısından 1900'lere kadar onlarca kadın elbisesi, çoğu cam kutular içinde mankenlerde gösteriliyor, yanlarındaki takılar gibi ışıklandırılmıştır. Dantelli işleme ile süslenmiş derin mor kadife göğüslük, bir taşlı mavi ipek etekle yan yana duruyor; birkaç adım ötede, 1860'lardan kalma pas kırmızı çiçekli crinoline elbise, kendi ağırlığı altında şişiyor, küçük güllerin deseni belden eteğe kadar kesintisiz devam ediyor. Bir etiket, Ukraynaca ve İngilizce, 1880'lerden kalma çiçek süslemeleri ve düğmeli koyu çikolata rengi elbiseyi, müze envanteri dilinde, pamuk, kadife olarak katalogluyor, bu da tek bir kolun içinde ne kadar el işi olduğunu hafifçe gösteriyor."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-03-bodice-blue.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-04-gown-red.jpg",
@@ -51147,7 +51147,7 @@
               "caption": "Bir kadife göğüslük, 1860'lardan kalma crinoline elbise ve 1880'lerden kalma çikolata rengi elbise, dönem portresi ve bir beyefendinin üniformasıyla yan yana gösteriliyor."
             },
             {
-              "type": "resim",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-18-gallery-row.jpg",
               "credit": "Wikimedia Commons: AlinaGusewa, CC BY-SA 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Victorian_dresses.jpg",
@@ -51155,11 +51155,11 @@
               "caption": "1850'ler–60'lar dönemine ait tam bir crinoline elbise kutusu, her biri kendi ayakkabısı, fanı veya şemsiyesi ve uyumlu bir portresiyle gösteriliyor."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "İleriye doğru, renk daha cesur hale geliyor. Kahverengi, turuncu ve krem rengi paisley dokumadan kesilmiş, koyu kadife astarlı bir crop gömlek, muhtemelen yapıldığı kadının bir çerçeveli fotoğrafının altında duruyor, alışılmadık bir hayatta kalma: paisley daha çok şallar ve iç mekanlar için kullanılırdı, dış giyimden çok, ve tüm deseni bir vücut etrafında sarmak yerine yatay olarak görmek, onu okuma şeklinizi değiştirir. İki kutu ileride, fildişi rengi bir elbise omuzlarından kollarını sarkıtıyor, tül güller ve inci süslemeli bir köpük halinde, göğüslük, yaprakların fısıldar gibi işlendiği bir desende elle işlenmiş, tren boyunca tekrarlanan bir desenle, gündüz ışığından daha iyi aydınlatılmış bir oda için tasarlanmış akşam elbisesi."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-15-coat-paisley.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-14-gown-gold.jpg"
@@ -51168,27 +51168,27 @@
               "caption": "Kadifeyle kaplanmış, paisley bir kaban ve yapraklar ve tül güllerle işlenmiş fildişi akşam elbisesi."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Bazı parçalar tek giysi yerine sergilenmiş tablolar gibidir. Bir köşede, küçük çerçeveli fotoğraflarla süslenmiş bir yas elbisesi, onu giyebilecek kadınların sepya portrelerinin altında duruyor, yanına katlanmış bir şemsiye ve derin dantel yakalı soluk ipek elbise yerleştirilmiş, tek bir vitrin içinde toplanmış on dokuzuncu yüzyıl evine ait küçük bir tiyatro."
             },
             {
-              "type": "görüntü",
+              "type": "image",
               "content": "https://api.eprisjournal.com/uploads/victoria-museum-02-room.jpg",
               "credit": "Viacheslav Munister",
               "align": "merkez",
               "caption": "Çerçeveli fotoğraflarla asılmış bir yas elbisesi, yanına sepya portreler ve katlanmış bir şemsiye."
             },
             {
-              "type": "başlık",
+              "type": "header",
               "content": "İpek, örgü ve bir mahkeme cübbesi",
               "level": 3
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Koleksiyon sadece kadınların kıyafeti için değil. Bir adet kırmızı yün kaban, mahkeme görevlisinin veya ayakkabıcıların kıyafeti gibi kesilmiş, geniş altın metal örgüyle iki yakası ve manşetleri süslenmiş, kubbeli pirinç düğmelerle kapatılmış, evin kendi desenine göre yapılmış, raftan alınmamış resmi bir kaban türü. Yakınlarda, yüksek kemerli yakasıyla krem ipek göğüslük, omuzlar, boğaz ve eteklerde tekrar eden aynı nakışlı lir ve kaydırak motifini taşıyor, bu detay sadece bir sergi ışığında kendini gösterir."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-07-court-coat.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-06-bodice-silver.jpg"
@@ -51197,11 +51197,11 @@
               "caption": "Altın örgülü mahkeme kabanı ve krem ipek göğüslükte tekrar eden lir motifi."
             },
             {
-              "type": "metin",
+              "type": "text",
               "content": "Bir erkek aksesuarları kutusu, farklı bir açıdan aynı yakınlaştırma numarasını yapar: bir dizi yürüme değneği, sapları kemik ve fildişinden oyulmuş, kuş başı, aslan, gülen yüz şeklinde, siyah kadife yakalı, beyaz çift düğmeli yazlık kabanın yanında duruyor, eski deri seyahat çantası ve yüksek düğmeli tek bir bot çifti, birine aitmiş gibi kullanılmış. Toz pembe chiffon'dan yapılmış, dantelli kuyruklu bir elbise ve açık krem ipekten yapılmış, yüksek yakalı boncuklu iki elbise, neredeyse aynı şekilde giyinmiş kadınların dönem portreleriyle karşılaştırıldığında, duvar daha çok kanıt olarak okunur, süsleme değil."
             },
             {
-              "type": "galeri",
+              "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/victoria-museum-16-canes-tunic.jpg",
                 "https://api.eprisjournal.com/uploads/victoria-museum-08-gown-pink.jpg",
