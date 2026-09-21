@@ -8301,7 +8301,7 @@
         "ArtLab"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
       "authorId": "author-1784732936927-kw554",
       "draft": false,
       "showCover": true,
@@ -8316,8 +8316,20 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+          "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
           "caption": "",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
+          "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
+          "align": "center"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
+          "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
           "align": "center"
         },
         {
@@ -8416,7 +8428,7 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
+          "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg",
           "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
           "align": "center"
         },
@@ -8431,18 +8443,6 @@
         {
           "type": "text",
           "content": "Yes, absolutely. The exhibition has a section called Madre Terra, Mother Earth, and through it I try to explain to Italian visitors that for a Ukrainian, land is far more than territory in the geographic sense. I talk about our fields, the fertility of Ukrainian soil, the symbolism of our flag's colours, blue sky over golden wheat fields, and then explain that today part of those fields is occupied, part is mined, part is contaminated by the war. Land that fed generations becomes, literally, dangerous to human life. I think Italians understand this through territorio particularly well, because there is also a very strong emotional bond here between a person and their land, their city, their house, their local landscape."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
-          "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
-          "align": "center"
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
-          "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
-          "align": "center"
         },
         {
           "type": "text",
@@ -8535,7 +8535,7 @@
           "content": "<i>Ukraine. A Memory That Continues (35. Ucraina. Una memoria che continua) is on view at ArtLab, Via Baiettini 53, Verbania (VB), Italy, from 24 August to 30 September 2026. Guided visits are available by appointment.</i>"
         }
       ],
-      "updatedAt": "2026-09-19T22:22:54.207Z",
+      "updatedAt": "2026-09-21T18:00:00.000Z",
       "previewToken": "9736db8a160512830d9dbc5f",
       "contributorId": "author-nataliia-maloh",
       "onlyLangs": [
@@ -16975,17 +16975,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "центр"
             },
             {
-              "type": "text",
-              "content": "Мы поговорили с Maloh о полуподвальном помещении в Италии, где она впервые снова взяла кисть, о незнакомце на рождественском рынке, который указал ей на местную художественную ассоциацию, и о том, почему она считает, что самый глубокий культурный мост между Украиной и Италией не имеет ничего общего с двумя странами, а все связано с тем, что ни одна из них никогда не была культурно одним целым."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -16994,8 +16994,8 @@
               "content": "<b>Давайте начнем с вашей собственной истории. Как сформировался ваш путь в искусстве, от первых творческих инстинктов до вашей практики, вашей кураторской работы и жизни в Италии? Был ли момент, после которого вы перестали видеть себя только как художника, и начали видеть себя как человека, который может создать пространство для других художников?</b>"
             },
             {
-              "type": "text",
-              "content": "Могу выделить три момента, которые, вероятно, лучше всего описывают мой путь."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -17026,7 +17026,7 @@
               "content": "Здесь солнце такое тёплое, и так много света, что в какой-то момент стало невозможно продолжать жить и работать так, как я делал раньше. Когда я впервые приехал, я продолжал некоторое время заниматься той работой, которую привёз с собой из Украины. Но я начал чувствовать настоящую диссонанс: солнце, озеро, горы, необыкновенная красота, совершенно другой ритм жизни вокруг меня, а я всё ещё сидел перед компьютером, работая над старым сценарием. В какой-то момент я просто спросил себя: зачем продолжать делать что-то, что больше не приносит мне радости, когда сама жизнь, кажется, подталкивает меня к тому, что я всегда хотел делать? Поэтому я сознательно отказался от своей старой работы, и искусство очень естественно пришло на его место, сначала желание рисовать, а позже — желание помочь другим художникам найти свой путь в итальянском мире искусства."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "центр"
@@ -17036,8 +17036,8 @@
               "content": "Италия также изменила моё восприятие самого искусства. Здесь оно не существует отдельно от повседневной жизни. Оно в архитектуре, на улицах, в маленьких церквях, старых зданиях, городских площадях. Но больше всего меня поразило то, сколько обычных людей практикуют искусство в той или иной форме. Медсестра, врач, продавец могут работать целый день своей профессией и вечером прийти домой, чтобы рисовать, работать с керамикой, фотографировать, заниматься музыкой, что-то создавать своими руками, и никто не спрашивает, являются ли они настоящими художниками. Творчество здесь вплетено в жизнь очень естественным образом. Я думаю, это дало мне своего рода внутреннюю свободу: искусство не обязательно начинать с разрешения, диплома или дня, когда вы решили назвать себя художником. Можно просто начать, потому что это необходимость, и посмотреть, куда вас приведёт путь."
             },
             {
-              "type": "text",
-              "content": "Меня также привлекает то, как внимательно люди здесь относятся к местной истории и наследию. Даже маленький город или небольшая ассоциация могут иметь свою культурную традицию, которую люди поддерживают и считают важной. Возможно, поэтому я начал смотреть на Украину по-другому. Когда ты живешь далеко от нее, ты начинаешь яснее видеть ценность вещей, которые раньше казались обычными: нашу культуру, нашу историю, наши местные традиции. И ты начинаешь хотеть не просто говорить о Украине, а создавать возможности для людей увидеть ее через искусство. Что для меня важно, так это чтобы это не происходило только в одном направлении, не только показывать украинское искусство внутри моего пространства, но и чтобы украинские художники постепенно входили в итальянскую культурную среду, встречались с местными художниками, ассоциациями и кураторами, участвовали в выставках за пределами ArtLab. Простой пример: сегодня, 11 сентября, открывается еще одна выставка с участием художника, чьи работы в настоящее время демонстрируются в ArtLab в рамках этой выставки. Это, по моему мнению, один из самых важных результатов этой работы: когда знакомство, начавшееся в моем пространстве, продолжает жить своей собственной жизнью в широкой итальянской художественной сцене."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -17052,7 +17052,7 @@
               "content": "Это одновременно просто и сложно. Когда я приехал в Verbania, одним из моих первых импульсов было найти галерею и посмотреть современное итальянское искусство. К моему удивлению, поиск по Google Maps по всему городу почти ничего не дал. Позже, когда я лучше познакомился с местной сценой, я обнаружил ежегодные выставки, объявления о коллективных проектах, художников и ассоциации. Художественная жизнь здесь действительно существует, она просто несколько фрагментирована. Что действительно отсутствовало, так это постоянное, открытое пространство, где современное искусство и публика могли бы встречаться регулярно. И оказалось, что я не один такой. После открытия первой выставки ArtLab в июле многие посетители сказали мне почти то же самое: в городе как раз не хватало именно такого места."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "центр"
@@ -17062,8 +17062,8 @@
               "content": "И я бы не хотел ограничивать ArtLab словом «галерея». Для меня это прежде всего живое пространство, место, где можно показывать искусство, но где так же важно знакомить людей друг с другом, строить новые связи, давать художникам шанс быть замеченными и услышанными. В долгосрочной перспективе я хотел бы, чтобы ArtLab стал настоящей точкой встречи: между художником и зрителем, между городом и современным искусством, между разными культурными средами, и, для меня лично, прежде всего между Украиной и Италией. Мне нравится идея, что ArtLab не обязательно должен быть конечной точкой для художника, а скорее местом, где что-то начинается для него: новым знакомством, участием в другой выставке, сотрудничеством с местной ассоциацией или куратором, новым проектом. Когда это происходит, ArtLab делает именно то, для чего я его создал: не просто вешать искусство на стену, а создавать вокруг него среду."
             },
             {
-              "type": "text",
-              "content": "<b>Италию трудно понять через идею единой национальной культуры. Пьемонт, Ломбардия, Венеция, Тоскана, Сардиния и Сицилия каждая несет свою историческую память и визуальный язык. Украина тоже состоит из множества местных культурных опытов. Видите ли вы общую модель между двумя странами, в которой национальная идентичность рождается не из сглаживания региональных различий, а из их сохранения?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -17074,7 +17074,7 @@
               "content": "И всё же, наряду со всем этим, \"итальянскость\" повсюду. Сделано в Италии, триколор, вы видите их на одежде, продуктах, упаковке, вывесках, даже, абсурдно, на коробке яиц. За этим стоит очень ясное послание: это наше, сделано здесь, и мы гордимся этим. Региональные различия не подрывают национальную идентичность здесь. Скорее, кажется, они наполняют её. Итальянцы остро осознают огромное историческое наследие своей земли, от античности и Рима до традиций каждого региона, и они рассматривают всё это как общее культурное богатство."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "центр"
@@ -17084,21 +17084,21 @@
               "content": "Вот где я действительно вижу параллель с Украиной. Мы тоже никогда не были культурно однородными, и я не думаю, что нам нужно становиться таковыми. Гуцульщина не должна напоминать Слобожанщину, Одесса не должна напоминать Полтаву, Закарпатье не должно напоминать Донецк. Каждый регион имеет свою историю, интонацию, архитектуру, кухню, музыку, традиции, даже собственное ощущение пространства. Я считаю, что сила национальной культуры заключается не в том, чтобы делать всех одинаковыми, а в умении видеть эту разницу как общее богатство. Возможно, именно это Италия дополнительно мне и преподала: можно глубоко любить свой маленький уголок страны, защищать его диалект, его традиции, его историю, и это вовсе не противоречит сильной национальной идентичности. Напротив, когда человек точно знает, что он приносит в общую культуру, эта культура становится сильнее. Я хотел бы, чтобы мы смотрели на Украину так же: не пытаясь стирать наши различия ради единства, а понимая, что Украина именно из них и состоит."
             },
             {
-              "type": "text",
-              "content": "<b>Итальянская идея territorio объединяет географию, архитектуру, ремесло, ландшафт, семейную память и образ жизни. Для Украины, после оккупации, перемещений и разрушения городов, связь между человеком и конкретным местом приобрела особое значение. Может ли эта категория стать одним из языков, через которые итальянский зритель сможет глубже понять современное украинское искусство?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Да, абсолютно. Выставка имеет раздел под названием Madre Terra, Mother Earth, и через него я пытаюсь объяснить итальянским посетителям, что для украинца земля гораздо больше, чем территория в географическом смысле. Я говорю о наших полях, плодородии украинской почвы, символике цветов нашего флага, голубом небе над золотыми пшеничными полями, а затем объясняю, что сегодня часть этих полей оккупирована, часть заминирована, часть загрязнена войной. Земля, которая кормила поколения, становится, буквально, опасной для человеческой жизни. Я думаю, итальянцы хорошо понимают это через territorio, потому что здесь также существует очень сильная эмоциональная связь между человеком и его землей, его городом, его домом, его местным пейзажем."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "центр"
@@ -25368,17 +25368,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "center"
             },
             {
-              "type": "text",
-              "content": "Ми розмовляли з Малог про напівпідвальну кімнату в Італії, де вона вперше знову взяла в руки пензель, про незнайомця на різдвяному ярмарку, який підказав їй звернутися до місцевої мистецької асоціації, і про те, чому вона вважає, що найглибший культурний міст між Україною та Італією не має нічого спільного з двома країнами як такими, а має все спільне з тим, що жодна з них ніколи не була культурно єдиним цілим."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -25387,8 +25387,8 @@
               "content": "<b>Почнімо з вашої особистої історії. Як формувався ваш шлях у мистецтві, від перших творчих орієнтирів до власної художньої практики, кураторської роботи та життя в Італії? Чи був момент, після якого ви перестали сприймати себе лише як художницю і почали бачити в собі людину, здатну створювати простір для інших авторів?</b>"
             },
             {
-              "type": "text",
-              "content": "Я могла б виділити три моменти, які, напевно, найкраще описують мій шлях у мистецтві."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -25419,7 +25419,7 @@
               "content": "Тут таке тепле сонце і так багато світла, що в якийсь момент мені стало просто неможливо продовжувати жити й працювати так, як я робила це раніше. Коли я приїхала до Італії, то ще певний час продовжувала займатися тією роботою, яку привезла із собою з України. Але поступово я почала відчувати сильний внутрішній дисонанс: навколо сонце, озеро, гори, неймовірна краса, зовсім інший ритм життя, а я продовжую сидіти перед комп'ютером і жити за старим сценарієм. І в якийсь момент я просто подумала: навіщо продовжувати робити те, що більше не приносить мені радості, коли саме життя ніби підштовхує мене нарешті зайнятися тим, до чого завжди лежала душа? Тому від своєї попередньої роботи я відмовилася цілком свідомо, а натомість дуже природно прийшло мистецтво, спочатку бажання просто малювати, а згодом і бажання допомагати іншим художникам знаходити свій шлях до італійського мистецького простору."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "center"
@@ -25429,8 +25429,8 @@
               "content": "Італія взагалі дуже змінила моє сприйняття мистецтва. Тут воно не існує десь окремо від повсякденного життя. Воно постійно поруч: в архітектурі, на вулицях, у маленьких церквах, у старих будинках, на міських площах. Але мене особливо вразило інше: тут мистецтвом у тій чи іншій формі займається величезна кількість звичайних людей. Медсестра, лікар, продавець у магазині можуть цілий день працювати за своєю основною професією, а ввечері повернутися додому і малювати, займатися керамікою, фотографією, музикою чи створювати щось руками, і ніхто не запитує, чи є вони професійними художниками. Творчість тут дуже природно вплетена в життя. Мені здається, саме це дало мені певну внутрішню свободу: мистецтво не обов'язково має починатися з дозволу, диплома чи рішення одного дня назвати себе художником. Можна просто почати творити, бо це твоя природна потреба, а вже потім дивитися, куди цей шлях тебе приведе."
             },
             {
-              "type": "text",
-              "content": "Мені дуже близьке й те, наскільки дбайливо тут ставляться до локальної історії та спадщини. Навіть невелике місто або маленька асоціація можуть мати власну культурну традицію, яку люди підтримують і вважають важливою. Мабуть, через це я по-іншому почала дивитися і на Україну. Коли живеш далеко від неї, особливо гостро починаєш бачити цінність того, що раніше могло здаватися звичайним: нашої культури, історії, локальних традицій. І з'являється бажання не просто говорити про Україну, а створювати можливості, щоб її побачили через мистецтво. Для мене особливо важливо, щоб це не було одностороннім процесом, не лише показувати українське мистецтво в межах власного простору, а щоб українські художники поступово входили в італійське культурне середовище, знайомилися з місцевими митцями, асоціаціями, кураторами, брали участь у виставках уже поза межами ArtLab. Простий приклад: сьогодні, 11 вересня, відкривається інша виставка, в якій бере участь художниця, чия робота зараз представлена в ArtLab у складі цієї експозиції. Для мене це один із найважливіших результатів моєї роботи: коли знайомство, яке почалося в моєму просторі, продовжується вже самостійним життям у ширшому італійському мистецькому середовищі."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -25445,7 +25445,7 @@
               "content": "Тут усе дуже просто і складно водночас. Коли я приїхала до Вербанії, одним із перших моїх поривів було знайти арт-галерею і подивитися на сучасне італійське мистецтво. І, на моє велике здивування, у Google Maps по всьому місту не знайшлося практично нічого, що відповідало б цьому запиту. Пізніше, коли я краще познайомилася з місцевим культурним середовищем, я знайшла виставки, що проводяться щороку, оголошення про окремі колективні проєкти, художників і мистецькі асоціації. Мистецьке життя тут є, просто воно існує дещо фрагментарно. А от постійного, відкритого простору, де могла б регулярно відбуватися зустріч між сучасним мистецтвом і публікою, справді бракувало. І, як виявилося, не лише мені: після відкриття першої виставки в ArtLab цього липня багато відвідувачів казали мені майже те саме, місту не вистачало саме такого місця."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "center"
@@ -25455,8 +25455,8 @@
               "content": "Тому я не хотіла б обмежувати ArtLab словом «галерея». Для мене це передусім живий простір, де можна показувати мистецтво, але не менш важливо знайомити людей між собою, створювати нові зв'язки, давати художникам можливість бути побаченими й почутими. У довгій перспективі мені хотілося б, щоб ArtLab став справжньою точкою зустрічі: між художником і глядачем, між містом і сучасним мистецтвом, між різними культурними середовищами, а для мене особисто, передусім між Україною та Італією. Мені подобається думка, що ArtLab не мусить бути кінцевою точкою для художника, а навпаки, місцем, звідки для нього щось починається: нове знайомство, участь в іншій виставці, співпраця з місцевою асоціацією чи куратором, новий проєкт. Якщо це відбувається, значить ArtLab виконує саме ту функцію, заради якої я його створювала: не просто показувати мистецтво на стінах, а вибудовувати навколо нього середовище."
             },
             {
-              "type": "text",
-              "content": "<b>Італію важко зрозуміти лише через поняття єдиної національної культури: П'ємонт, Ломбардія, Венето, Тоскана, Сардинія чи Сицилія мають власні історичні пам'яті та візуальні мови. Україна так само складається з багатьох локальних культурних досвідів. Чи бачите ви між двома країнами спільну модель, у якій національна ідентичність народжується не через уніфікацію регіонів, а через збереження їхньої відмінності?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -25467,7 +25467,7 @@
               "content": "І при всьому цьому мене вражає, наскільки сильно тут присутнє відчуття «італійськості». Made in Italy, італійський триколор, вони буквально всюди: на одязі, продуктах, упаковках, вивісках, навіть, як би це смішно не звучало, на коробці з курячими яйцями. За цим стоїть дуже зрозуміле послання: це наше, це зроблено тут, і ми цим пишаємося. Регіональна відмінність не руйнує національну ідентичність, навпаки, здається, що вона її наповнює. Італійці дуже добре усвідомлюють величезну історичну спадщину своєї землі, від античності й Риму до окремих культурних традицій кожного регіону, і сприймають її як частину спільного культурного капіталу."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "center"
@@ -25477,21 +25477,21 @@
               "content": "І ось тут я справді бачу дуже цікаву паралель з Україною. Ми теж ніколи не були культурно однорідними, і я не думаю, що нам потрібно такими ставати. Гуцульщина не повинна бути схожою на Слобожанщину, Одеса, на Полтаву, Закарпаття, на Донеччину. У кожного регіону є власна історія, інтонація, архітектура, кухня, музика, традиції, навіть власне відчуття простору. Мені здається, сила національної культури полягає не в тому, щоб усіх зробити однаковими, а в тому, щоб навчитися сприймати цю різність як спільне багатство. Можливо, саме цього мене додатково навчила Італія: можна дуже сильно любити свою маленьку місцевість, берегти її діалект, традиції та історію, і це зовсім не суперечить сильній національній ідентичності. Навпаки, коли людина знає, що саме вона приносить у спільну культуру, ця спільна культура стає сильнішою. І мені хотілося б, щоб ми так само дивилися на Україну: не намагалися стерти наші відмінності заради єдності, а зрозуміли, що саме з цих відмінностей і складається Україна."
             },
             {
-              "type": "text",
-              "content": "<b>В італійському понятті territorio поєднуються географія, архітектура, ремесло, ландшафт, родинна пам'ять і спосіб життя. Для України після досвіду окупації, вимушеного переміщення та руйнування міст зв'язок людини з конкретним місцем також набув особливої ваги. Чи може ця категорія стати однією з мов, через які італійський глядач здатен глибше зрозуміти сучасне українське мистецтво?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Так, безумовно. На виставці є окремий розділ «Madre Terra», Мати Земля, і через нього я якраз намагаюся пояснити італійському глядачеві, що для українця земля, це далеко не лише територія в географічному сенсі. Я розповідаю про наші поля, про родючість української землі, про символізм кольорів нашого прапора, синього неба над золотими пшеничними полями, а потім пояснюю, що сьогодні частина цих полів окупована, частина замінована, частина забруднена наслідками війни. Земля, яка протягом поколінь годувала людей, у буквальному сенсі стає небезпечною для людини. Мені здається, що саме через поняття territorio італійцям це особливо зрозуміло, бо тут теж існує дуже сильний емоційний зв'язок людини зі своєю землею, містом, домом, місцевим ландшафтом."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "center"
@@ -34001,17 +34001,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "center"
             },
             {
-              "type": "text",
-              "content": "Wir sprachen mit Maloh über den halben Kellerraum in Italien, in dem sie wieder zum Pinsel griff, den Fremden auf einem Weihnachtsmarkt, der sie auf die lokale Kunstvereinigung hinwies, und warum sie glaubt, dass die tiefste kulturelle Brücke zwischen der Ukraine und Italien nichts mit den beiden Ländern zu tun hat, sondern alles damit zu tun hat, dass keines von beiden jemals kulturell nur eine Sache war."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -34020,8 +34020,8 @@
               "content": "<b>Lassen Sie uns mit Ihrer eigenen Geschichte beginnen. Wie hat sich Ihr Weg in der Kunst entwickelt, von Ihren ersten kreativen Instinkten bis zu Ihrer Praxis, Ihrer kuratorischen Arbeit und Ihrem Leben in Italy? Gab es einen Moment, nach dem Sie aufgehört haben, sich nur als Maler zu sehen, und angefangen haben, sich als jemand zu sehen, der einen Raum für andere Künstler schaffen kann?</b>"
             },
             {
-              "type": "text",
-              "content": "Ich kann auf drei Momente hinweisen, die meinen Weg wahrscheinlich am besten beschreiben."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -34052,7 +34052,7 @@
               "content": "Die Sonne hier ist so warm und es gibt so viel Licht, dass es irgendwann unmöglich wurde, weiter so zu leben und zu arbeiten wie zuvor. Als ich zum ersten Mal ankam, machte ich eine Weile weiter mit der Art von Arbeit, die ich aus der Ukraine mitgebracht hatte. Aber ich begann, eine echte Dissonanz zu spüren: Sonne, ein See, Berge, außergewöhnliche Schönheit, ein völlig anderes Tempo des Lebens um mich herum, und ich saß immer noch vor einem Computer, am alten Skript. Irgendwann fragte ich mich einfach: Warum etwas weiter tun, das mir keinen Spaß mehr macht, wenn das Leben selbst mich in die Richtung drängt, die ich immer wollte? Also gab ich bewusst meine alte Arbeit auf, und Kunst kam ganz natürlich an ihre Stelle, zuerst der Wunsch zu malen, später der Wunsch, anderen Künstlern zu helfen, ihren eigenen Weg in die italienische Kunstwelt zu finden."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "center"
@@ -34062,8 +34062,8 @@
               "content": "Italien hat auch meine Sicht auf Kunst selbst verändert. Hier existiert sie nicht getrennt vom Alltag. Sie ist in der Architektur, auf den Straßen, in kleinen Kirchen, alten Gebäuden, Stadtplätzen. Was mich am meisten beeindruckt hat, ist jedoch, wie viele gewöhnliche Menschen Kunst in einer oder anderer Form praktizieren. Eine Krankenschwester, ein Arzt, ein Ladenangestellter können den ganzen Tag in ihrem Beruf arbeiten und abends nach Hause kommen, um zu malen, in Keramik zu arbeiten, Fotos zu machen, Musik zu machen, etwas mit den Händen zu schaffen, und niemand fragt, ob sie echte Künstler sind. Kreativität ist hier auf sehr natürliche Weise in das Leben eingebunden. Ich denke, das hat mir eine Art innere Freiheit gegeben: Kunst muss nicht mit Erlaubnis, einem Diplom oder dem Tag beginnen, an dem man beschließt, sich Künstler zu nennen. Man kann einfach anfangen, weil es ein Bedürfnis ist, und sehen, wohin der Weg einen führt."
             },
             {
-              "type": "text",
-              "content": "Ich fühle mich auch angezogen davon, wie sorgfältig die Menschen hier lokale Geschichte und Erbe behandeln. Selbst eine kleine Stadt oder ein kleiner Verein kann seine eigene kulturelle Tradition haben, die die Menschen pflegen und für wichtig halten. Was wahrscheinlich der Grund ist, warum ich angefangen habe, die Ukraine anders zu sehen. Wenn man weit davon entfernt lebt, beginnt man, den Wert der Dinge schärfer zu erkennen, die einst gewöhnlich schienen: unsere Kultur, unsere Geschichte, unsere lokalen Traditionen. Und man beginnt, nicht nur über die Ukraine zu sprechen, sondern Gelegenheiten zu schaffen, damit die Menschen sie durch Kunst sehen können. Was mir wichtig ist, ist, dass dies nicht nur in eine Richtung laufen sollte, nicht nur ukrainische Kunst in meinem eigenen Raum zu zeigen, sondern ukrainische Künstler allmählich in die italienische Kulturlandschaft selbst einzutreten, lokale Künstler, Vereine und Kuratoren zu treffen, an Ausstellungen außerhalb von ArtLab teilzunehmen. Ein einfaches Beispiel: heute, am 11. September, eröffnet eine weitere Ausstellung mit einem Künstler, dessen Werk derzeit bei ArtLab im Rahmen dieser Ausstellung gezeigt wird. Das ist für mich eines der wichtigsten Ergebnisse dieser Arbeit: Wenn eine Bekanntschaft, die in meinem Raum begann, ein eigenes Leben in der weiteren italienischen Kunstszene entwickelt."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -34078,7 +34078,7 @@
               "content": "Es ist einfach und kompliziert zugleich. Als ich in Verbania ankam, war einer meiner ersten Impulse, eine Galerie zu finden und zeitgenössische italienische Kunst zu sehen. Zu meiner Überraschung ergab eine Google-Maps-Suche für die ganze Stadt fast nichts. Später, als ich die lokale Szene besser kennenlernte, fand ich die jährlichen Ausstellungen, die Ankündigungen für Kollektivprojekte, die Künstler und Vereine. Das Kunstleben hier existiert, es ist nur etwas fragmentiert. Was wirklich fehlte, war ein permanenter, offener Raum, in dem zeitgenössische Kunst und die Öffentlichkeit sich regelmäßig treffen konnten. Und es stellte sich heraus, dass ich nicht der Einzige war, der das so empfand. Nachdem die erste Ausstellung von ArtLab im Juli eröffnet wurde, sagten mir viele Besucher fast dasselbe: Die Stadt hatte genau diese Art von Ort vermisst."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "zentrum"
@@ -34088,8 +34088,8 @@
               "content": "Also möchte ich ArtLab nicht auf das Wort „Galerie“ beschränken. Für mich ist es vor allem ein lebendiger Raum, einer, in dem Kunst gezeigt werden kann, aber in dem es ebenso wichtig ist, Menschen einander vorzustellen, neue Verbindungen zu knüpfen, Künstlern die Chance zu geben, gesehen und gehört zu werden. Langfristig möchte ich, dass ArtLab zu einem echten Treffpunkt wird: zwischen Künstler und Betrachter, zwischen der Stadt und zeitgenössischer Kunst, zwischen verschiedenen kulturellen Umfeldern, und, für mich persönlich, vor allem zwischen der Ukraine und Italien. Ich mag die Idee, dass ArtLab kein Endpunkt für einen Künstler sein muss, sondern vielmehr ein Ort, an dem für sie etwas beginnt: eine neue Bekanntschaft, Teilnahme an einer weiteren Ausstellung, eine Zusammenarbeit mit einem lokalen Verein oder Kurator, ein neues Projekt. Wenn das passiert, tut ArtLab genau das, wofür ich es gebaut habe: nicht nur Kunst an eine Wand hängen, sondern eine Umgebung darum herum aufbauen."
             },
             {
-              "type": "text",
-              "content": "<b>Italien ist schwer durch die Idee einer einzigen nationalen Kultur zu verstehen. Piemont, Lombardei, Veneto, Toskana, Sardinien und Sizilien tragen jeweils ihre eigene historische Erinnerung und visuelle Sprache. Auch die Ukraine besteht aus vielen lokalen kulturellen Erfahrungen. Siehst du ein gemeinsames Modell zwischen den beiden Ländern, bei dem die nationale Identität nicht durch die Vereinheitlichung regionaler Unterschiede entsteht, sondern durch deren Bewahrung?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -34100,7 +34100,7 @@
               "content": "Und doch ist überall, neben all dem, „Italian-ness“. Made in Italy, die Trikolore, man sieht sie auf Kleidung, Produkten, Verpackungen, Beschilderungen, sogar, absurd, auf einer Eierpackung. Dahinter steckt eine sehr klare Botschaft: Das ist unser, hier gemacht, und wir sind stolz darauf. Regionale Unterschiede untergraben hier nicht die nationale Identität. Im Gegenteil, sie scheinen sie zu füllen. Italiener sind sich des enormen historischen Erbes ihres Landes bewusst, von der Antike und Rom bis zu den eigenen Traditionen jeder Region, und sie behandeln alles davon als gemeinsames kulturelles Kapital."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "center"
@@ -34110,21 +34110,21 @@
               "content": "Dort sehe ich wirklich eine Parallele zu Ukraine. Auch wir waren kulturell nie einheitlich, und ich denke nicht, dass wir so werden müssen. Hutsulshchyna muss nicht Slobozhanshchyna ähneln, Odesa muss nicht Poltava ähneln, Zakarpattia muss nicht Donetsk ähneln. Jede Region hat ihre eigene Geschichte, Intonation, Architektur, Küche, Musik, Tradition, sogar ihr eigenes Raumgefühl. Ich denke, die Stärke einer nationalen Kultur liegt nicht darin, alle gleich zu machen, sondern darin, zu lernen, diese Unterschiede als gemeinsames Vermögen zu sehen. Vielleicht hat mir Italien noch zusätzlich beigebracht: Man kann sein kleines Stück Land tief lieben, seinen Dialekt, seine Traditionen, seine Geschichte schützen, und es widerspricht keineswegs einer starken nationalen Identität. Im Gegenteil, wenn eine Person genau weiß, was sie zur gemeinsamen Kultur beiträgt, wird diese gemeinsame Kultur stärker. Ich möchte, dass wir die Ukraine genauso sehen: nicht versuchen, unsere Unterschiede um der Einheit willen auszulöschen, sondern verstehen, dass die Ukraine genau aus ihnen besteht."
             },
             {
-              "type": "text",
-              "content": "<b>Die italienische Idee des territorio verbindet Geografie, Architektur, Handwerk, Landschaft, Familienerinnerung und eine Lebensweise. Für die Ukraine, nach Besetzung, Vertreibung und Zerstörung der Städte, hat die Verbindung zwischen einer Person und einem bestimmten Ort eine besondere Bedeutung erlangt. Könnte diese Kategorie zu einer der Sprachen werden, durch die ein italienischer Betrachter die zeitgenössische ukrainische Kunst tiefer verstehen lernt?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Ja, absolut. Die Ausstellung hat einen Abschnitt namens Madre Terra, Mother Earth, und durch ihn versuche ich italienischen Besuchern zu erklären, dass für einen Ukrainer Land viel mehr ist als Territorium im geografischen Sinne. Ich spreche über unsere Felder, die Fruchtbarkeit ukrainischer Erde, die Symbolik der Farben unserer Flagge, blauer Himmel über goldenen Weizenfeldern, und erkläre dann, dass heute ein Teil dieser Felder besetzt ist, ein Teil vermint ist, ein Teil durch den Krieg kontaminiert ist. Land, das Generationen ernährte, wird buchstäblich gefährlich für das menschliche Leben. Ich denke, Italiener verstehen das durch territorio besonders gut, weil hier auch eine sehr starke emotionale Bindung zwischen einer Person und ihrem Land, ihrer Stadt, ihrem Haus, ihrer lokalen Landschaft besteht."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "center"
@@ -42499,17 +42499,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "centro"
             },
             {
-              "type": "text",
-              "content": "Hablamos con Maloh sobre la habitación en el sótano en Italia donde volvió a tomar un pincel, el extraño en un mercado navideño que le señaló la asociación de arte local, y por qué ella cree que el puente cultural más profundo entre Ucrania e Italia no tiene nada que ver con los dos países en absoluto, y todo que ver con el hecho de que ninguno de ellos ha sido nunca culturalmente una sola cosa."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -42518,8 +42518,8 @@
               "content": "<b>Comencemos con tu propia historia. ¿Cómo tomó forma tu camino en el arte, desde tus primeros instintos creativos hasta tu práctica, tu trabajo curatorial y tu vida en Italia? ¿Hubo un momento después del cual dejaste de verte solo como pintor, y empezaste a verte como alguien que podía construir un espacio para otros artistas?</b>"
             },
             {
-              "type": "text",
-              "content": "Puedo señalar tres momentos que probablemente describen mejor mi camino."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -42550,7 +42550,7 @@
               "content": "El sol aquí es tan cálido y hay tanta luz que en algún momento se volvió imposible seguir viviendo y trabajando como antes. Cuando llegué por primera vez, continué, por un tiempo, con el tipo de trabajo que había traído conmigo desde Ucrania. Pero empecé a sentir una verdadera disonancia: sol, un lago, montañas, belleza extraordinaria, un ritmo de vida completamente diferente a mi alrededor, y todavía estaba sentado frente a una computadora, en el viejo guion. En algún momento simplemente me pregunté: ¿por qué seguir haciendo algo que ya no me da alegría, cuando la vida misma parece empujarme hacia lo que siempre quise hacer? Así que conscientemente abandoné mi antiguo trabajo, y el arte llegó de manera muy natural en su lugar, primero el deseo de pintar, y luego el deseo de ayudar a otros artistas a encontrar su propio camino en el mundo del arte italiano."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "centro"
@@ -42560,8 +42560,8 @@
               "content": "Italia también cambió mi forma de ver el arte en sí. Aquí no existe separado de la vida cotidiana. Está en la arquitectura, en las calles, en pequeñas iglesias, edificios antiguos, plazas del pueblo. Lo que más me impresionó, sin embargo, es cuántas personas comunes practican el arte de una u otra forma. Una enfermera, un médico, un asistente de tienda puede trabajar todo el día en su profesión y volver a casa por la noche para pintar, trabajar en cerámica, tomar fotografías, hacer música, crear algo con sus manos, y nadie pregunta si son un artista de verdad. La creatividad está entrelazada en la vida aquí de una manera muy natural. Creo que eso me dio una especie de libertad interior: el arte no tiene que comenzar con permiso, un diploma, o el día que decides llamarte artista. Simplemente puedes comenzar, porque es una necesidad, y ver a dónde te lleva el camino."
             },
             {
-              "type": "text",
-              "content": "También me atrae cómo las personas aquí tratan cuidadosamente la historia y el patrimonio local. Incluso un pequeño pueblo o una pequeña asociación puede tener su propia tradición cultural que la gente mantiene y considera importante. Lo cual probablemente explica por qué empecé a ver Ucrania de manera diferente. Cuando vives lejos de ella, comienzas a ver, con mayor claridad, el valor de las cosas que una vez parecieron ordinarias: nuestra cultura, nuestra historia, nuestras tradiciones locales. Y empiezas a querer no solo hablar de Ucrania, sino crear oportunidades para que la gente la vea a través del arte. Lo que me importa es que esto no debe correr en una sola dirección, no solo mostrar arte ucraniano dentro de mi propio espacio, sino que artistas ucranianos ingresen gradualmente en el entorno cultural italiano, conozcan artistas locales, asociaciones y curadores, participen en exposiciones más allá de ArtLab. Un ejemplo simple: hoy, 11 de septiembre, se inaugura otra exposición con un artista cuyo trabajo actualmente se exhibe en ArtLab como parte de esta muestra. Eso, para mí, es uno de los resultados más importantes de este trabajo: cuando un conocido que empezó en mi espacio continúa teniendo una vida propia en la escena artística italiana más amplia."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -42576,7 +42576,7 @@
               "content": "Es simple y complicado a la vez. Cuando llegué a Verbania, uno de mis primeros impulsos fue encontrar una galería y ver arte italiano contemporáneo. Para mi sorpresa, una búsqueda en Google Maps de toda la ciudad no arrojó casi nada. Más tarde, cuando conocí mejor la escena local, encontré las exposiciones anuales, los anuncios de proyectos colectivos, los artistas y asociaciones. La vida artística aquí sí existe, solo que está algo fragmentada. Lo que realmente faltaba era un espacio permanente y abierto donde el arte contemporáneo y el público pudieran encontrarse regularmente. Y resultó que no era el único que sentía eso. Después de que se inaugurara la primera exposición de ArtLab en julio, muchos visitantes me dijeron casi lo mismo: la ciudad había estado faltando exactamente este tipo de lugar."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "centro"
@@ -42586,8 +42586,8 @@
               "content": "Así que no me gustaría limitar ArtLab a la palabra «galería». Para mí es ante todo un espacio vivo, uno donde el arte puede ser mostrado, pero donde es igual de importante introducir a las personas entre sí, construir nuevas conexiones, dar a los artistas la oportunidad de ser vistos y escuchados. A largo plazo, me gustaría que ArtLab se convirtiera en un verdadero punto de encuentro: entre artista y espectador, entre la ciudad y el arte contemporáneo, entre diferentes entornos culturales, y, para mí personalmente, sobre todo entre Ucrania e Italia. Me gusta la idea de que ArtLab no tenga que ser un punto final para un artista, sino más bien un lugar donde algo comienza para ellos: un nuevo conocimiento, participación en otra exposición, una colaboración con una asociación local o curador, un nuevo proyecto. Cuando eso sucede, ArtLab está haciendo exactamente lo que construí para que hiciera: no solo colgar arte en una pared, sino construir un entorno a su alrededor."
             },
             {
-              "type": "text",
-              "content": "<b>Italia es difícil de entender a través de la idea de una sola cultura nacional. Piamonte, Lombardía, Veneto, Toscana, Cerdeña y Sicilia cada uno llevan su propia memoria histórica y lenguaje visual. Ucrania, también, está formada por muchas experiencias culturales locales. ¿Ves un modelo compartido entre los dos países, en el que la identidad nacional nace no de aplanar la diferencia regional, sino de preservarla?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -42598,7 +42598,7 @@
               "content": "Y aún así, junto a todo eso, la “italianidad” está en todas partes. Hecho en Italia, el tricolor, los ves en ropa, productos, envases, señalización, incluso, absurdamente, en una caja de huevos. Detrás de ello hay un mensaje muy claro: esto es nuestro, hecho aquí, y estamos orgullosos de ello. La diferencia regional no socava la identidad nacional aquí. Si acaso, parece llenarla. Los italianos son muy conscientes de la enorme herencia histórica de su tierra, desde la antigüedad y Roma hasta las tradiciones de cada región, y tratan todo ello como capital cultural compartida."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "centro"
@@ -42608,21 +42608,21 @@
               "content": "Ahí es donde realmente veo un paralelo con Ucrania. Nosotros también nunca hemos sido culturalmente uniformes, y no creo que necesitemos serlo. Hutsulshchyna no tiene que parecerse a Slobozhanshchyna, Odesa no tiene que parecerse a Poltava, Zakarpattia no tiene que parecerse a Donetsk. Cada región tiene su propia historia, entonación, arquitectura, gastronomía, música, tradición, incluso su propio sentido del espacio. Creo que la fortaleza de una cultura nacional no reside en hacer a todos iguales, sino en aprender a ver esa diferencia como riqueza compartida. Quizás eso es lo que Italia también me ha enseñado: puedes amar profundamente tu pequeño rincón de un país, proteger su dialecto, sus tradiciones, su historia, y eso no contradice en absoluto una fuerte identidad nacional. Al contrario, cuando una persona sabe exactamente qué aporta a la cultura compartida, esa cultura compartida se vuelve más fuerte. Me gustaría que miráramos a Ucrania de la misma manera: no intentando borrar nuestras diferencias por el bien de la unidad, sino entendiendo que Ucrania está precisamente hecha de ellas."
             },
             {
-              "type": "text",
-              "content": "<b>La idea italiana de territorio une geografía, arquitectura, artesanía, paisaje, memoria familiar y una forma de vida. Para Ucrania, tras la ocupación, desplazamiento y destrucción de ciudades, el vínculo entre una persona y un lugar específico ha adquirido un peso particular. ¿Podría esta categoría convertirse en uno de los lenguajes a través de los cuales un espectador italiano llegue a entender más profundamente el arte ucraniano contemporáneo?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Sí, absolutamente. La exposición tiene una sección llamada Madre Tierra, Mother Earth, y a través de ella trato de explicar a los visitantes italianos que para un ucraniano, la tierra es mucho más que territorio en el sentido geográfico. Hablo de nuestros campos, la fertilidad del suelo ucraniano, el simbolismo de los colores de nuestra bandera, cielo azul sobre campos de trigo dorado, y luego explico que hoy parte de esos campos está ocupada, parte está minada, parte está contaminada por la guerra. La tierra que alimentó a generaciones se vuelve, literalmente, peligrosa para la vida humana. Creo que los italianos entienden esto a través de territorio particularmente bien, porque también hay un vínculo emocional muy fuerte aquí entre una persona y su tierra, su ciudad, su casa, su paisaje local."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "centro"
@@ -50643,17 +50643,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "center"
             },
             {
-              "type": "text",
-              "content": "Maloh ile İtalya'daki ilk fırçayı tekrar eline aldığında, Noel pazarında onu yerel sanat derneğine yönlendiren yabancı ve Ukrayna ile İtalya arasındaki en derin kültürel köprünün hiç de iki ülkeyle ilgili olmadığını ve her ikisinin de hiçbir zaman kültürel olarak tek bir şey olmadığını düşündüren nedenler hakkında konuştuk."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -50662,8 +50662,8 @@
               "content": "<b>Kendi hikayenizle başlayalım. Sanattaki yolunuz nasıl şekillendi, ilk yaratıcı içgüdülerinizden uygulamanıza, küratörlük çalışmalarınıza ve İtalya'daki yaşamınıza kadar? Kendinizi sadece bir ressam olarak görmeyi bıraktığınız ve başka sanatçılar için bir alan inşa edebilecek biri olarak görmeye başladığınız bir an oldu mu?</b>"
             },
             {
-              "type": "text",
-              "content": "Sanırım en iyi şekilde anlatan üç anı gösterebilirim."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -50694,7 +50694,7 @@
               "content": "Buradaki güneş o kadar sıcak ve o kadar çok ışık var ki, bir noktada yaşamaya ve çalışmaya devam etmenin imkânsız hale geldiği anlar oldu. İlk geldiğimde, bir süre, Ukrayna’dan getirdiğim türden işlerimle devam ettim. Ama gerçek bir uyumsuzluk hissetmeye başladım: güneş, bir göl, dağlar, olağanüstü güzellik, çevremde tamamen farklı bir yaşam hızı ve ben hâlâ eski senaryoyla bilgisayarın önünde oturuyordum. Bir noktada kendime sordum: artık bana neşe getirmeyen bir şeyi neden yapmaya devam edeyim, hayat kendisi bana her zaman yapmak istediğim şeye doğru itiyorken? Bu yüzden bilinçli olarak eski işlerimi bıraktım ve sanat çok doğal bir şekilde yerine geldi, önce resim yapma arzusu, sonra diğer sanatçıların İtalyan sanat dünyasında kendi yollarını bulmalarına yardım etme arzusu."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "center"
@@ -50704,8 +50704,8 @@
               "content": "İtalya ayrıca sanatın kendisini nasıl gördüğümü değiştirdi. Burada sanat, günlük yaşamdan ayrı değil. Mimarlıkta, sokaklarda, küçük kiliselerde, eski binalarda, şehir meydanlarında var. En çok dikkatimi çeken şey ise, birçok sıradan insanın bir biçimde sanatla uğraşması. Bir hemşire, bir doktor, bir mağaza görevlisi gün boyunca mesleğiyle uğraşabilir ve akşam eve gelip resim yapabilir, seramikle uğraşabilir, fotoğraf çekebilir, müzik yapabilir, elleriyle bir şeyler yapabilir ve kimse bunun gerçek bir sanatçı olup olmadıklarını sormaz. Yaratıcılık burada yaşamın doğal bir parçası haline gelmiş. Bence bu bana bir tür iç özgürlük verdi: sanat, izin, diploma veya kendinizi sanatçı olarak adlandırma gününden başlamalı değil. Sadece başlayabilirsiniz, çünkü bu bir ihtiyaç ve yolun sizi nereye götüreceğine bakabilirsiniz."
             },
             {
-              "type": "text",
-              "content": "Ben de burada insanların yerel tarih ve mirasa ne kadar özenle yaklaştıklarına çekiliyorum. Hatta küçük bir kasaba veya küçük bir dernek bile insanların sürdürdüğü ve önemli kabul ettiği kendi kültürel geleneğine sahip olabilir. Bu muhtemelen Ukrayna'ya farklı bakmaya başlamamın nedenidir. Onun çok uzağında yaşadığınızda, bir zamanlar sıradan görülen şeylerin değerini daha keskin bir şekilde görmeye başlarsınız: kültürümüz, tarihimiz, yerel geleneklerimiz. Ve sadece Ukrayna hakkında konuşmak değil, insanlara onu sanat aracılığıyla görme fırsatları yaratmak istemeye başlarsınız. Önemli olan benim için bunun sadece tek yönlü olmaması, sadece kendi alanımda Ukrayna sanatını göstermek değil, Ukrayna sanatçılarının yavaş yavaş İtalyan kültürel ortamına girmesi, yerel sanatçılar, dernekler ve küratörlerle tanışması, ArtLab dışında sergilere katılmasıdır. Basit bir örnek: bugün, 11 Eylül, bu serginin bir parçası olarak ArtLab'da gösterilen bir sanatçının eserlerini içeren başka bir sergi açılıyor. Bu, benim için bu çalışmanın en önemli sonuçlarından biridir: benim alanımda başlayan bir tanıdık, daha geniş İtalyan sanat sahnesinde kendi yaşamını sürdürmeye devam ettiğinde."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -50720,7 +50720,7 @@
               "content": "Hem basit hem de karmaşık bir durum. Verbania'ya vardığımda, ilk dürtülerimden biri bir galeri bulup çağdaş İtalyan sanatını görmekti. Şaşırtıcı bir şekilde, tüm şehir için bir Google Haritalar araması neredeyse hiçbir şey çıkarmadı. Daha sonra, yerel sahneyi daha iyi tanıdıkça, yıllık sergileri, kolektif projelerin duyurularını, sanatçıları ve dernekleri buldum. Buradaki sanat hayatı var, sadece biraz parçalanmış durumda. Gerçekten eksik olan, çağdaş sanat ve halkın düzenli olarak buluşabileceği kalıcı, açık bir alanın olmamasıydı. Ve anladım ki, yalnız değilmişim. ArtLab'ın ilk sergisi Temmuz ayında açıldıktan sonra, birçok ziyaretçi bana neredeyse aynı şeyi söyledi: kasaba tam da böyle bir yere ihtiyacı vardı."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "merkez"
@@ -50730,8 +50730,8 @@
               "content": "Yani ArtLab'ı “galeri” kelimesiyle sınırlamak istemem. Benim için öncelikle canlı bir alan, sanatın sergilenebileceği, ancak insanların birbirine tanıtılması, yeni bağlantıların kurulması, sanatçıların görülüp duyulma şansı bulduğu bir yer. Uzun vadede, ArtLab'ın gerçek bir buluşma noktası olmasını isterim: sanatçı ve izleyici arasında, şehir ve çağdaş sanat arasında, farklı kültürel ortamlar arasında ve benim kişisel olarak, her şeyden önce, Ukrayna ve İtalya arasında. ArtLab'ın bir sanatçı için bir son nokta olması gerekmediği fikrini seviyorum, daha çok onlar için bir başlangıç noktası olması: yeni bir tanışma, başka bir sergiye katılım, yerel bir dernek veya küratörle işbirliği, yeni bir proje. Bu gerçekleştiğinde, ArtLab tam olarak onun için inşa ettiğim şeyi yapıyor: sadece sanatı bir duvara asmak değil, onun etrafında bir ortam inşa etmek."
             },
             {
-              "type": "text",
-              "content": "<b>İtalya'yı tek bir ulusal kültür fikriyle anlamak zordur. Piyemonte, Lombardiya, Veneto, Toskana, Sardinya ve Sicilya her biri kendi tarihsel hafızasını ve görsel dilini taşır. Ukrayna da birçok yerel kültürel deneyimden oluşur. İki ülke arasında, bölgesel farkları yatay hale getirmek yerine koruyarak ulusal kimliğin doğduğu ortak bir model görüyor musunuz?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -50742,7 +50742,7 @@
               "content": "Ve yine de, tüm bunların yanında, “İtalyanlık” her yerde. İtalya yapımı, üç renkli bayrak, onları kıyafetlerde, ürünlerde, ambalajlarda, tabelalarda görüyorsunuz, hatta, absürtçe, bir yumurta kutusunda bile. Arkasında çok net bir mesaj var: bu bizim, burada yapıldı ve biz gururluyuz. Bölgesel fark, burada ulusal kimliği zayıflatmaz. Aksine, onu dolduruyor gibi görünüyor. İtalyanlar, topraklarının antik çağlardan Roma’ya ve her bölgenin kendi geleneklerine kadar olan büyük tarihsel mirasının farkındalar ve bunların hepsini ortak kültürel sermaye olarak görüyorlar."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "merkez"
@@ -50752,21 +50752,21 @@
               "content": "İşte burada Ukrayna ile gerçekten bir paralellik görüyorum. Biz de hiç kültürel olarak homojen olmadık ve olmamız gerektiğini düşünmüyorum. Hutsulshchyna’nın Slobozhanshchyna’ya benzemesi gerekmez, Odesa’nın Poltava’ya benzemesi gerekmez, Zakarpattia’nın Donetsk’e benzemesi gerekmez. Her bölgenin kendi tarihi, tonlaması, mimarisi, mutfağı, müziği, gelenekleri, hatta kendi mekân anlayışı vardır. Bence ulusal bir kültürün gücü, herkesi aynı yapmak değil, bu farkı ortak bir zenginlik olarak görmeyi öğrenmekte yatar. Belki de bu, İtalya’nın bana ayrıca öğrettiği şeydir: bir ülkenin küçük köşesini derinlemesine sevebilir, lehçesini, geleneklerini, tarihini koruyabilir ve bu, güçlü bir ulusal kimlikle çelişmez. Aksine, bir kişi paylaşılan kültüre tam olarak ne kattığını biliyorsa, o paylaşılan kültür daha güçlü hale gelir. Ukrayna’ya da aynı şekilde bakmak isterim: farklılıklarımızı birliği sağlamak için silmeye çalışmak yerine, Ukrayna’nın tam da bunlardan oluştuğunu anlamak."
             },
             {
-              "type": "text",
-              "content": "<b>İtalyan territorio fikri, coğrafya, mimari, el sanatları, manzara, aile hafızası ve bir yaşam biçimini birleştirir. Ukrayna için, işgal, yer değiştirme ve şehirlerin yıkımından sonra, bir kişi ile belirli bir yer arasındaki bağ özellikle önem kazanmıştır. Bu kategori, bir İtalyan izleyicinin çağdaş Ukrayna sanatını daha derinlemesine anlamasına yardımcı olacak dillerden biri haline gelebilir mi?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Evet, kesinlikle. Serginin Madre Terra, Ana Dünya adlı bir bölümü var ve burada İtalyan ziyaretçilere Ukraynalı biri için toprakların coğrafi anlamda ötesinde çok daha fazlası olduğunu anlatmaya çalışıyorum. Tarlalarımızdan, Ukrayna toprağının verimliliğinden, bayrağımızın renklerinin sembolizminden, altın buğday tarlalarının üzerinde mavi gökyüzünden bahsediyorum ve sonra bu tarlaların bir kısmının işgal altında olduğunu, bir kısmının mayınlandığını, bir kısmının savaş tarafından kirletildiğini açıklıyorum. Nesiller boyunca beslenen toprak, kelimenin tam anlamıyla, insan yaşamı için tehlikeli hale geliyor. Bence İtalyanlar bunu özellikle territorio aracılığıyla çok iyi anlarlar, çünkü burada bir kişi ile toprağı, şehri, evini, yerel manzarasını arasında çok güçlü duygusal bağlar da vardır."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "center"
@@ -57888,17 +57888,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "center"
             },
             {
-              "type": "text",
-              "content": "Abbiamo parlato con Maloh dello scantinato in Italia dove ha ripreso in mano un pennello per la prima volta, dello sconosciuto in un mercatino di Natale che le ha indicato l'associazione artistica locale, e del perché ritenga che il ponte culturale più profondo tra Ucraina e Italia non abbia nulla a che vedere con i due paesi in sé, e tutto a che vedere con il fatto che nessuno dei due è mai stato culturalmente una cosa sola."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -57907,8 +57907,8 @@
               "content": "<b>Cominciamo dalla sua storia personale. Come ha preso forma il suo percorso nell'arte, dai primi impulsi creativi alla pratica pittorica, al lavoro curatoriale, alla vita in Italia? C'è stato un momento dopo il quale ha smesso di vedersi solo come pittrice e ha iniziato a vedersi come qualcuno capace di costruire uno spazio per altri artisti?</b>"
             },
             {
-              "type": "text",
-              "content": "Posso indicare tre momenti che forse descrivono meglio il mio percorso."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -57939,7 +57939,7 @@
               "content": "Qui il sole è così caldo e la luce così tanta che a un certo punto è diventato impossibile continuare a vivere e lavorare come prima. Appena arrivata ho continuato per un po' con il tipo di lavoro che mi ero portata dietro dall'Ucraina. Ma ho cominciato a sentire una dissonanza vera: intorno a me il sole, un lago, le montagne, una bellezza straordinaria, un ritmo di vita completamente diverso, e io ancora seduta davanti a un computer, dentro il vecchio copione. A un certo punto mi sono semplicemente chiesta: perché continuare a fare qualcosa che non mi dà più gioia, quando la vita stessa sembra spingermi verso ciò che ho sempre voluto fare? Così ho lasciato il mio vecchio lavoro con piena consapevolezza, e al suo posto è arrivata, in modo molto naturale, l'arte: prima il desiderio di dipingere, poi quello di aiutare altri artisti a trovare la propria strada nel mondo dell'arte italiano."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "center"
@@ -57949,8 +57949,8 @@
               "content": "L'Italia ha anche cambiato il mio modo di vedere l'arte in sé. Qui non esiste separata dalla vita quotidiana: è nell'architettura, per strada, nelle piccole chiese, nei vecchi edifici, nelle piazze. Ma ciò che mi ha colpita di più è quante persone comuni praticano l'arte in una forma o nell'altra. Un'infermiera, un medico, un commesso possono lavorare tutto il giorno nella loro professione e tornare a casa la sera a dipingere, fare ceramica, fotografia, musica, o creare qualcosa con le mani, e nessuno chiede se siano artisti veri. Qui la creatività è intrecciata alla vita in modo molto naturale. Credo che questo mi abbia dato una certa libertà interiore: l'arte non deve necessariamente cominciare con un permesso, un diploma, o il giorno in cui decidi di chiamarti artista. Puoi semplicemente cominciare, perché è un bisogno, e vedere dove ti porta la strada."
             },
             {
-              "type": "text",
-              "content": "Sono anche colpita da quanta cura qui si abbia per la storia e il patrimonio locale. Anche una piccola città o una piccola associazione può avere una propria tradizione culturale che le persone mantengono viva e considerano importante. Forse è per questo che ho cominciato a guardare l'Ucraina in modo diverso. Quando vivi lontano da essa, cominci a vedere, con più chiarezza, il valore di cose che un tempo sembravano scontate: la nostra cultura, la nostra storia, le nostre tradizioni locali. E nasce il desiderio non solo di parlare dell'Ucraina, ma di creare occasioni perché le persone la vedano attraverso l'arte. Per me è importante che questo non sia un processo a senso unico, non solo mostrare l'arte ucraina nel mio spazio, ma far entrare gli artisti ucraini gradualmente nell'ambiente culturale italiano stesso, farli conoscere ad artisti, associazioni e curatori locali, farli partecipare a mostre al di fuori di ArtLab. Un esempio semplice: oggi, 11 settembre, apre un'altra mostra con un'artista la cui opera è attualmente esposta ad ArtLab all'interno di questa rassegna. Per me è uno dei risultati più importanti di questo lavoro: quando una conoscenza nata nel mio spazio continua a vivere di vita propria nel più ampio mondo dell'arte italiano."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -57965,7 +57965,7 @@
               "content": "È semplice e complicato allo stesso tempo. Quando sono arrivata a Verbania, uno dei miei primi impulsi è stato cercare una galleria per vedere l'arte contemporanea italiana. Con mia grande sorpresa, una ricerca su Google Maps per l'intera città non ha restituito quasi nulla. Più avanti, conoscendo meglio la scena locale, ho trovato le mostre annuali, gli annunci di progetti collettivi, gli artisti e le associazioni: la vita artistica qui esiste, è solo un po' frammentata. Ciò che mancava davvero era uno spazio permanente e aperto dove l'arte contemporanea e il pubblico potessero incontrarsi regolarmente. E si è scoperto che non ero l'unica a pensarla così. Dopo l'apertura della prima mostra di ArtLab, questo luglio, molti visitatori mi hanno detto quasi la stessa cosa: alla città mancava esattamente un posto così."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "center"
@@ -57975,8 +57975,8 @@
               "content": "Per questo non vorrei limitare ArtLab alla parola «galleria». Per me è prima di tutto uno spazio vivo, dove si può mostrare arte, ma dove è altrettanto importante far conoscere le persone tra loro, costruire nuovi legami, dare agli artisti la possibilità di essere visti e ascoltati. Nel lungo periodo vorrei che ArtLab diventasse un vero punto d'incontro: tra artista e spettatore, tra la città e l'arte contemporanea, tra ambienti culturali diversi, e per me personalmente, soprattutto tra Ucraina e Italia. Mi piace l'idea che ArtLab non debba essere un punto di arrivo per un artista, ma piuttosto un luogo da cui qualcosa comincia: una nuova conoscenza, la partecipazione a un'altra mostra, una collaborazione con un'associazione o un curatore locale, un nuovo progetto. Quando questo accade, ArtLab sta facendo esattamente ciò per cui l'ho costruito: non solo appendere arte a un muro, ma costruire un ambiente intorno ad essa."
             },
             {
-              "type": "text",
-              "content": "<b>L'Italia è difficile da comprendere attraverso l'idea di un'unica cultura nazionale. Piemonte, Lombardia, Veneto, Toscana, Sardegna e Sicilia portano ciascuna la propria memoria storica e il proprio linguaggio visivo. Anche l'Ucraina è fatta di molte esperienze culturali locali. Vede un modello comune tra i due paesi, in cui l'identità nazionale nasce non dall'appiattire le differenze regionali, ma dal preservarle?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -57987,7 +57987,7 @@
               "content": "Eppure, insieme a tutto questo, l'«italianità» è ovunque. Made in Italy, il tricolore, li si vede su vestiti, prodotti, imballaggi, insegne, persino, per quanto possa far sorridere, su una scatola di uova. Dietro c'è un messaggio molto chiaro: questo è nostro, è fatto qui, e ne siamo fieri. La differenza regionale qui non indebolisce l'identità nazionale, anzi, sembra arricchirla. Gli italiani sono ben consapevoli dell'enorme eredità storica della loro terra, dall'antichità e da Roma fino alle tradizioni proprie di ogni regione, e la considerano parte di un capitale culturale comune."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "center"
@@ -57997,21 +57997,21 @@
               "content": "Ed è qui che vedo davvero un parallelo con l'Ucraina. Anche noi non siamo mai stati culturalmente uniformi, e non credo che dobbiamo diventarlo. La Hutsulshchyna non deve somigliare alla Slobozhanshchyna, Odessa non deve somigliare a Poltava, la Transcarpazia non deve somigliare al Donbass. Ogni regione ha una propria storia, intonazione, architettura, cucina, musica, tradizione, persino un proprio senso dello spazio. Credo che la forza di una cultura nazionale non stia nel rendere tutti uguali, ma nell'imparare a vedere quella diversità come una ricchezza comune. Forse è proprio questo che l'Italia mi ha insegnato in più: si può amare profondamente il proprio piccolo angolo di paese, custodirne il dialetto, le tradizioni, la storia, e questo non contraddice affatto una forte identità nazionale. Al contrario, quando una persona sa esattamente cosa porta alla cultura comune, quella cultura comune ne esce più forte. Vorrei che guardassimo all'Ucraina allo stesso modo: non cercando di cancellare le nostre differenze in nome dell'unità, ma capendo che l'Ucraina è fatta proprio di quelle differenze."
             },
             {
-              "type": "text",
-              "content": "<b>Nell'idea italiana di territorio confluiscono geografia, architettura, artigianato, paesaggio, memoria familiare e modo di vivere. Per l'Ucraina, dopo l'occupazione, gli sfollamenti e la distruzione delle città, il legame tra una persona e un luogo preciso ha assunto un peso particolare. Questa categoria può diventare uno dei linguaggi attraverso cui lo spettatore italiano arriva a comprendere più a fondo l'arte ucraina contemporanea?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Sì, assolutamente. La mostra ha una sezione chiamata Madre Terra, e attraverso di essa cerco di spiegare ai visitatori italiani che per un ucraino la terra è molto più di un territorio in senso geografico. Parlo dei nostri campi, della fertilità del suolo ucraino, del simbolismo dei colori della nostra bandiera, il cielo blu sopra i campi di grano dorati, e poi spiego che oggi parte di quei campi è occupata, parte minata, parte contaminata dalla guerra. Una terra che per generazioni ha nutrito le persone diventa, letteralmente, pericolosa per la vita umana. Credo che gli italiani comprendano questo attraverso il territorio in modo particolarmente profondo, perché anche qui esiste un legame emotivo fortissimo tra una persona e la propria terra, la propria città, la propria casa, il proprio paesaggio."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "center"
@@ -65027,17 +65027,17 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8toar7evn1zf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-hero-35.jpg",
               "caption": "",
               "align": "center"
             },
             {
-              "type": "text",
-              "content": "Nous avons parlé avec Maloh de la pièce en demi-sous-sol en Italie où elle a repris un pinceau, de l'étranger dans un marché de Noël qui lui a indiqué l'association artistique locale, et pourquoi elle croit que le pont culturel le plus profond entre l'Ukraine et l'Italie n'a rien à voir avec les deux pays, mais tout à voir avec le fait que ni l'un ni l'autre n'a jamais été culturellement une seule chose."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "Intervento di Luciano Paretti, Assessore alla Cultura della Città di Verbania, durante l’inaugurazione della mostra. Alla sua sinistra: Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano; Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Opera sullo sfondo: Anzhelika Volkanova, “Volo verso sé stessi,” 2025, olio su tela, 90×120 cm.",
               "align": "center"
             },
@@ -65046,8 +65046,8 @@
               "content": "<b>Commençons par votre propre histoire. Comment votre parcours dans l'art a-t-il pris forme, de vos premiers instincts créatifs à votre pratique, votre travail de commissaire, et votre vie en Italie ? Y a-t-il eu un moment après lequel vous avez cessé de vous voir uniquement comme un peintre, et avez commencé à vous voir comme quelqu'un capable de construire un espace pour d'autres artistes ?</b>"
             },
             {
-              "type": "text",
-              "content": "Je peux évoquer trois moments qui décrivent probablement le mieux mon parcours."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8todkxyrvj4a.jpg"
             },
             {
               "type": "text",
@@ -65078,7 +65078,7 @@
               "content": "Le soleil ici est si chaud et il y a tellement de lumière qu'à un moment donné il est devenu impossible de continuer à vivre et à travailler comme je le faisais auparavant. Quand je suis arrivé pour la première fois, j'ai continué, pendant un certain temps, avec le type de travail que j'avais apporté de Ukraine. Mais j'ai commencé à ressentir une véritable dissonance : soleil, un lac, montagnes, beauté extraordinaire, un rythme de vie complètement différent tout autour de moi, et j'étais toujours assis devant un ordinateur, sur le vieux script. À un moment donné, je me suis simplement demandé : pourquoi continuer à faire quelque chose qui ne m'apporte plus de joie, alors que la vie elle-même semble me pousser vers la chose que j'ai toujours voulu faire ? Alors j'ai consciemment abandonné mon ancien travail, et l'art est arrivé très naturellement à sa place, d'abord le désir de peindre, et plus tard le désir d'aider d'autres artistes à trouver leur propre voie dans le monde de l'art italien."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg",
               "caption": "Inaugurazione della mostra, 24 agosto 2026. ArtLab, Verbania, Italia.",
               "align": "center"
@@ -65088,8 +65088,8 @@
               "content": "L'Italie a aussi changé ma façon de voir l'art lui-même. Ici, il n'existe pas séparé de la vie quotidienne. Il est dans l'architecture, dans les rues, dans les petites églises, les vieux bâtiments, les places de la ville. Ce qui m'a le plus frappé, cependant, c'est combien de personnes ordinaires pratiquent l'art d'une manière ou d'une autre. Une infirmière, un médecin, un vendeur peuvent travailler toute la journée dans leur profession et rentrer chez eux le soir pour peindre, travailler la céramique, prendre des photos, faire de la musique, fabriquer quelque chose de leurs mains, et personne ne demande s'ils sont de vrais artistes. La créativité est tissée dans la vie ici de manière très naturelle. Je pense que cela m'a donné une sorte de liberté intérieure : l'art ne doit pas commencer par une permission, un diplôme, ou le jour où vous décidez de vous appeler artiste. Vous pouvez simplement commencer, parce que c'est un besoin, et voir où le chemin vous mène."
             },
             {
-              "type": "text",
-              "content": "Je suis aussi attiré par la façon dont les gens ici traitent soigneusement l'histoire locale et le patrimoine. Même une petite ville ou une petite association peut avoir sa propre tradition culturelle que les gens maintiennent et considèrent comme importante. Ce qui est probablement la raison pour laquelle j'ai commencé à voir l'Ukraine différemment. Quand on vit loin de là, on commence à voir, plus nettement, la valeur des choses qui semblaient autrefois ordinaires : notre culture, notre histoire, nos traditions locales. Et on commence à vouloir non seulement parler de l'Ukraine, mais créer des opportunités pour que les gens la voient à travers l'art. Ce qui compte pour moi, c'est que cela ne doit pas se faire dans une seule direction, pas seulement montrer l'art ukrainien dans mon propre espace, mais que les artistes ukrainiens entrent progressivement dans l'environnement culturel italien lui-même, rencontrent des artistes locaux, des associations et des conservateurs, participent à des expositions au-delà d'ArtLab. Un exemple simple : aujourd'hui, 11 septembre, une autre exposition s'ouvre présentant un artiste dont le travail est actuellement exposé à ArtLab dans le cadre de cette exposition. Cela, pour moi, est l'un des résultats les plus importants de ce travail : lorsque une connaissance qui a commencé dans mon espace continue à avoir une vie propre dans la scène artistique italienne plus large."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mu8tohywr3lc1d.jpg"
             },
             {
               "type": "text",
@@ -65104,7 +65104,7 @@
               "content": "C'est simple et compliqué à la fois. Quand je suis arrivé à Verbania, l'une de mes premières impulsions a été de trouver une galerie et de voir l'art italien contemporain. À ma grande surprise, une recherche sur Google Maps pour toute la ville n'a donné presque rien. Plus tard, une fois que j'ai mieux connu la scène locale, j'ai trouvé les expositions annuelles, les annonces pour des projets collectifs, les artistes et les associations. La vie artistique ici existe, elle est juste quelque peu fragmentée. Ce qui manquait vraiment, c'était un espace permanent et ouvert où l'art contemporain et le public pouvaient se rencontrer régulièrement. Et il s'est avéré que je n'étais pas le seul à ressentir cela. Après l'ouverture de la première exposition d'ArtLab en juillet, de nombreux visiteurs m'ont dit presque la même chose : la ville manquait exactement de ce genre d'endroit."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg",
               "caption": "Inside ArtLab, Via Baiettini 53, Verbania. Courtesy of ArtLab. Olha Kovalyk, “Sera” – l’eco delle case lasciate in Ucraina rimane per sempre nella nostra memoria. 2025, olio su tela, 80×50 cm.",
               "align": "center"
@@ -65114,8 +65114,8 @@
               "content": "Donc je ne voudrais pas limiter ArtLab au mot « galerie ». Pour moi c'est avant tout un espace vivant, un endroit où l'art peut être montré, mais où il est tout aussi important d'introduire les gens les uns aux autres, de construire de nouvelles connexions, de donner aux artistes la chance d'être vus et entendus. À long terme, je voudrais que ArtLab devienne un véritable point de rencontre : entre artiste et spectateur, entre la ville et l'art contemporain, entre différents environnements culturels, et, pour moi personnellement, surtout entre l'Ukraine et l'Italie. J'aime l'idée qu'ArtLab ne doit pas être un point final pour un artiste, mais plutôt un lieu où quelque chose commence pour eux : une nouvelle connaissance, la participation à une autre exposition, une collaboration avec une association locale ou un commissaire, un nouveau projet. Quand cela se produit, ArtLab fait exactement ce pour quoi je l'ai construit : pas seulement accrocher de l'art sur un mur, mais construire un environnement autour."
             },
             {
-              "type": "text",
-              "content": "<b>L'Italie est difficile à comprendre à travers l'idée d'une seule culture nationale. Piémont, Lombardie, Vénétie, Toscane, Sardaigne et Sicile portent chacune leur propre mémoire historique et leur langage visuel. L'Ukraine aussi est composée de nombreuses expériences culturelles locales. Voyez-vous un modèle commun entre les deux pays, dans lequel l'identité nationale naît non pas de l'aplatissement des différences régionales, mais de leur préservation ?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mty3k0aq6lriz2.jpg"
             },
             {
               "type": "text",
@@ -65126,7 +65126,7 @@
               "content": "Et pourtant, aux côtés de tout cela, « italianité » est partout. Fabriqué en Italie, le tricolore, vous les voyez sur les vêtements, produits, emballages, signalisation, même, absurde, sur une boîte d'œufs. Derrière cela se trouve un message très clair : c'est à nous, fabriqué ici, et nous en sommes fiers. La différence régionale ne remet pas en cause l'identité nationale ici. Au contraire, il semble la remplir. Les Italiens sont profondément conscients de l'immense héritage historique de leur terre, de l'Antiquité et Rome jusqu'aux traditions propres à chaque région, et ils traitent tout cela comme un capital culturel partagé."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2e12wekn5.jpg",
               "caption": "Parte dell’esposizione dedicata al commovente addio delle madri ai propri figli. Courtesy of ArtLab.",
               "align": "center"
@@ -65136,21 +65136,21 @@
               "content": "C'est là que je vois vraiment un parallèle avec l'Ukraine. Nous aussi n'avons jamais été culturellement uniformes, et je ne pense pas que nous ayons besoin de le devenir. Hutsulshchyna ne doit pas ressembler à Slobozhanshchyna, Odessa ne doit pas ressembler à Poltava, Zakarpattia ne doit pas ressembler à Donetsk. Chaque région a sa propre histoire, son propre ton, son architecture, sa cuisine, sa musique, sa tradition, même son propre sens de l'espace. Je pense que la force d'une culture nationale ne réside pas dans le fait de rendre tout le monde identique, mais dans l'apprentissage à voir cette différence comme une richesse partagée. Peut-être que c'est ce que l'Italie m'a aussi appris : on peut aimer profondément son petit coin d'un pays, protéger son dialecte, ses traditions, son histoire, et cela ne contredit en rien une forte identité nationale. Au contraire, lorsque une personne sait exactement ce qu'elle apporte à la culture partagée, cette culture partagée devient plus forte. Je voudrais que nous regardions l'Ukraine de la même manière : ne pas essayer d'effacer nos différences pour l'unité, mais comprendre que l'Ukraine est précisément faite de ces différences."
             },
             {
-              "type": "text",
-              "content": "<b>L'idée italienne de territorio relie géographie, architecture, artisanat, paysage, mémoire familiale et mode de vie. Pour l'Ukraine, après occupation, déplacement et destruction des villes, le lien entre une personne et un lieu spécifique a pris une importance particulière. Cette catégorie pourrait-elle devenir l'une des langues à travers lesquelles un spectateur italien peut comprendre plus profondément l'art ukrainien contemporain ?</b>"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/souls-cranes-girl-bird.jpg"
             },
             {
               "type": "text",
               "content": "Oui, absolument. L'exposition a une section appelée Madre Terra, Mère Terre, et à travers elle j'essaie d'expliquer aux visiteurs italiens que pour un Ukrainien, la terre est bien plus qu'un territoire au sens géographique. Je parle de nos champs, de la fertilité du sol ukrainien, du symbolisme des couleurs de notre drapeau, du ciel bleu au-dessus des champs de blé dorés, puis j'explique qu'aujourd'hui une partie de ces champs est occupée, une autre minée, une autre contaminée par la guerre. La terre qui nourrissait des générations devient, littéralement, dangereuse pour la vie humaine. Je pense que les Italiens comprennent cela à travers territoire particulièrement bien, car il existe aussi ici un lien émotionnel très fort entre une personne et sa terre, sa ville, sa maison, son paysage local."
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mu8tobl2jmtnrl.jpg",
               "caption": "Da sinistra a destra: Luciano Paretti – Assessore alla Cultura della Città di Verbania. Olena Gryshchenko – Console d’Ucraina presso il Consolato Generale d’Ucraina a Milano. Giovanni Rodari – Consigliere comunale della Città di Verbania. Marisa Cortese – Curatrice e critica d’arte. Nataliia Maloholovko – Fondatrice del progetto “ArtLab by Nataliia Maloh” e organizzatrice della mostra “35. Ucraina. Una memoria che continua”. Olha Pylypenko – Vice Console presso il Consolato Generale d’Ucraina a Milano.",
               "align": "center"
             },
             {
-              "type": "image",
+              "type": "text",
               "content": "https://api.eprisjournal.com/uploads/mty3k2t4x7a0qk.jpg",
               "caption": "\"Madre Ucraina,\" the work that gives its name to the exhibition’s central section. Courtesy ArtLab. Anastasiia Hrudka, \"Teneri abbracci,\" 2024, acrilico su tela, 70×55 cm",
               "align": "center"
