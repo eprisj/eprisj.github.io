@@ -10825,6 +10825,515 @@
       "contributorId": "author-veronika-chernienko",
       "publishAt": "2026-09-23T00:00:00.000Z",
       "publishedAt": "2026-09-23T00:00:00.000Z"
+    },
+    {
+      "id": 47,
+      "draft": false,
+      "previewToken": "a7c41e93b25d86f0e14c7ab9",
+      "title": "Eight Years to a Home: Olha Wood on Building Across Distance, Pandemic and War",
+      "author": "Viacheslav Munister & Olha Wood",
+      "role": "Author",
+      "date": "Sep 22, 2026",
+      "excerpt": "Interior architect Olha Wood works between Kyiv, Denmark and the UK, often without standing in the rooms she shapes. She talks about the Kyiv apartment that took eight years, one pandemic and a full scale war to finish, the house whose site was lost but whose concrete survived into another, and why every project she makes ends up reaching for the garden.",
+      "category": "interview",
+      "subcategory": "Interview",
+      "tags": [
+        "Interview",
+        "architecture",
+        "interior design",
+        "Kyiv",
+        "Ukraine"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mucotcl9766io8.jpg",
+      "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-olha-wood",
+      "publishAt": "2026-09-22T12:29:54.022Z",
+      "publishedAt": "2026-09-22T12:29:54.022Z",
+      "updatedAt": "2026-09-22T12:29:54.022Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "Olha Wood describes her practice in four lines on Instagram: interior architect, high end residential, international experience, remote collaboration with UK studios and private clients. It reads like a list of capabilities. It is closer to a description of a life. The studio began in Kyiv twenty five years ago and now works between Kyiv, Denmark and the United Kingdom, frequently without its architect standing inside the rooms she is shaping until very late in the process, if at all."
+        },
+        {
+          "type": "text",
+          "content": "Her portfolio keeps unusually honest time. One Kyiv apartment is titled, simply, <i>Eight Years to a Home</i>: commissioned in 2018, moved to a different flat in the same building before construction could begin, redesigned around a terrace when the pandemic made private outdoor space essential, then carried through a full scale war its clients chose to stay in Kyiv for. A house on the Fish Island has been listed as in progress since 2020. The Bridge House carries the dates 2017 to 2026."
+        },
+        {
+          "type": "text",
+          "content": "We wrote to her about what happens to buildings that have to wait, about designing a room around a sofa chosen years before the room existed, and about the thing she keeps returning to in every house she names: the garden, the terrace, the bridge, the way a building reaches for the ground it stands on."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojoeeixcct3.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "An interior from the Kyiv practice where Olha Wood's studio began."
+        },
+        {
+          "type": "header",
+          "content": "01 · A practice shaped by places"
+        },
+        {
+          "type": "text",
+          "content": "<b>Viacheslav Munister [VM]: Your Instagram bio reads “Interior Architect | High-End Residential | International Experience | Remote Collaboration with UK Studios & Private” – four lines that describe a practice built almost entirely around distance, flexibility and movement between places, rather than around one fixed studio in one fixed city. Your own portfolio bears that out: projects photographed in Kyiv, a house extension sketched for Tuscany, an island house visualised by a studio in another country entirely, clients across the UK. Was your practice always this dispersed, by temperament or by the nature of high-end residential work – or is this geography something the last several years specifically forced you to design, the way you might redesign a floor plan around a load-bearing wall that suddenly can't be moved?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>Olha Wood [OW]:</b> I was fortunate to begin my career in one of the strongest architectural studios in the city where I was born and educated. It was an unusually good place to start. At a time when many practices were concerned chiefly with the local market, they travelled to the Milan furniture fair each year, worked with Italian furniture – including Minotti – and designed interiors and penthouses of a kind that introduced me early to a world beyond my own city."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps this is why I never learned to think of architecture as something confined by geography."
+        },
+        {
+          "type": "text",
+          "content": "A few years later, I began my own practice. My first client was a Ukrainian pop star. The beginning was almost disarmingly easy. I did not feel that I was entering an unknown profession; rather, I seemed simply to continue walking along a road I had already been travelling for years."
+        },
+        {
+          "type": "text",
+          "content": "I entered competitions constantly. It was not only about winning, although I did take first places in several Ukrainian competitions. I wanted the work to exist outside the rooms in which it was made – to be looked at, questioned and placed beside the work of others."
+        },
+        {
+          "type": "text",
+          "content": "In time, one of my projects was longlisted for the Dezeen Awards in 2018, and another was published on Dezeen. Those moments mattered to me not simply as distinctions, but because they allowed the work to travel further than I could."
+        },
+        {
+          "type": "text",
+          "content": "My first international client was a Slavic couple living in Hamburg. They had commissioned me to create an interior around Promemoria furniture, but wanted it to possess a distinctly Western European character. It was an interesting request: how does one create a sense of belonging to a place without merely reproducing its familiar images?"
+        },
+        {
+          "type": "text",
+          "content": "I was already spending considerable time in Britain then, because my future family lived in England. I travelled back and forth, and gradually absorbed something of the country – its architecture, its proportions, its restraint, its particular relationship between old and new. Much of what we absorb from a place happens without our noticing it at the time. A window, a staircase, the colour of a painted room, the way an old house has been altered rather than replaced – these things remain somewhere in the mind."
+        },
+        {
+          "type": "text",
+          "content": "This has become one of the reasons I continue to prefer working with international clients."
+        },
+        {
+          "type": "text",
+          "content": "Every country has its own domestic language. It lives not only in architecture, but in the way people arrange a table, choose a chair, preserve an old floor, tolerate an imperfection, or decide what deserves to remain. I find that learning these small distinctions is as important as understanding the larger architectural context."
+        },
+        {
+          "type": "text",
+          "content": "This year I worked for a Dutch couple, restructuring their bathroom and restyling the remaining rooms through decoration. It was another opportunity to look closely at a culture I had previously encountered professionally, but now from inside a private home."
+        },
+        {
+          "type": "text",
+          "content": "I discovered more about the Danish market, but also returned to something I have always valued in Scandinavian design: objects that do not need to announce their importance. Ferm Living and House Doctor are not about the spectacle of high-end furniture. Their appeal lies elsewhere – in material, proportion, familiarity and the accumulated feeling of a domestic life."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps this is what I have been looking for throughout my twenty-five years of practice."
+        },
+        {
+          "type": "text",
+          "content": "Not a particular style, and certainly not a particular country."
+        },
+        {
+          "type": "text",
+          "content": "Rather, the possibility of entering someone else’s world for a while, understanding what belongs there, and making something that feels as though it could not have been made anywhere else."
+        },
+        {
+          "type": "header",
+          "content": "02 · Eight years to a home"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: One of your project pages narrates its own timeline with unusual honesty. A home was commissioned in 2018; the clients then discovered a different apartment in the same building, with a large terrace, and exchanged their original unit for it before construction could even begin. Then COVID arrived, and – in your words – “a garden on the terrace suddenly became more than an attractive addition to the brief... having a private outdoor space, somewhere to step outside without leaving home, became essential.” Then the full-scale war began, and your clients chose not to leave Kyiv. You call the project, simply, “Eight years to a Home.” At what specific point across those eight years – the apartment swap, the pandemic, or the war – did you notice yourself stop thinking of it as one job delayed by circumstance, and start thinking of it instead as a shared act of endurance between you and your clients?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> That is what I call responsibility – to the object, and to the people for whom it was made. It is painful to see a place intended for a family’s future remain silent and unfinished. A house is not simply an object that waits for completion; it waits for the life that is meant to happen within it."
+        },
+        {
+          "type": "text",
+          "content": "So I kept reminding my clients with inspiration that the work was not finished. Perhaps there would come a moment when we would find the strength to return to it, and to finish what we had begun."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotcl9766io8.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Eight Years to a Home, Kyiv: the living and dining room, with the black Poliform cabinet by Piero Lissoni at the left."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: That same project's brief was, as you put it, “wonderfully specific”: your clients had always dreamed of particular pieces from Italian design houses – a Poliform cabinet, a B&B Italia sofa, an Antonio Lupi basin – items you describe as “not simply items on a shopping list, but part of the image of the home they wanted to create.” When a client arrives already attached to the exact sofa and the exact basin, sometimes years before the room around those objects even exists, how do you design that room so it reads as something more than a frame built to justify a purchase already made?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> Each piece of furniture has its own history – of material, place of origin, style and suitability."
+        },
+        {
+          "type": "text",
+          "content": "The furniture selected by the clients often told me more about the future interior than a conventional brief could. My task was to bring these individual objects into a conversation with the architecture, the views from the windows and one another, so that the interior would acquire a coherent language rather than become a collection of beautiful things."
+        },
+        {
+          "type": "text",
+          "content": "For example, the black Poliform cabinet, designed by Piero Lissoni, led me towards black-veneered wall panels of the same architectural restraint. The colour of the B&B Italia sofa became the starting point for the bespoke kitchen, whose ceramic fronts were made in a closely related shade."
+        },
+        {
+          "type": "text",
+          "content": "The clients had a particular affection for Italy, and I wanted to acknowledge that without making the house feel as though it belonged elsewhere. The Ukrainian landscape outside the windows remained essential. I brought its yellow and brown tones inside through yellowish terrazzo, travertine and the warm grey of Little Greene’s Slaked Lime – Dark 151. The garden partly obscured the view, which I came to see not as a limitation but as something that gave the sitting room a sense of intimacy – a room held gently between the house and nature."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotdefcyl80p.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The material board for Eight Years to a Home: terrazzo, travertine and the warm grey of Little Greene's Slaked Lime Dark 151."
+        },
+        {
+          "type": "header",
+          "content": "03 · The projects that wait"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: Your house on the Fish Island has been listed as “In Progress” since 2020 – a 450-square-metre concrete-and-steel structure, envisioned explicitly as a prototype for several future houses to be built on the same riverbank, built around a client's very particular list: a swimming pool, a fish pond, dedicated parking for a car collection, and three bedrooms, one for each of his children. Six years is a long time for a prototype to still be a work in progress. Has the house itself changed across those six years – in brief, in detail, in what “prototype” even means for the houses that might follow it – or has the delay simply been the ordinary friction of building something this large?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> This is perhaps one of the more painful questions I might be asked."
+        },
+        {
+          "type": "text",
+          "content": "The building project was cancelled when my clients lost the plot of land. There is something particularly difficult about seeing a house that has been carefully imagined never acquire the life for which it was intended."
+        },
+        {
+          "type": "text",
+          "content": "And yet, the work did not entirely disappear. The concrete structure and its carefully resolved junctions found a second life in another house that was later conceived for the same site and exists there today."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps this is one of the quieter truths of architectural work: an idea does not always arrive at its first destination. Sometimes part of it survives, altered by circumstance, and continues its life somewhere else."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotdvmmcdg5v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "House on the Fish Island: the section cut through pool and terrace, the structure set into the hill."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: The Bridge House has the longest visible timeline in your entire portfolio – 2017 to 2026, described on your own site as an “evolution of the architectural concept” rather than a single continuous build. Its plan is organised as three distinct pieces: a single-level Forest Pavilion designed to nearly disappear into the landscape, a two-storey Main House built around an internal atrium for daylight and privacy, and the Bridge itself, which your notes call “more than a circulation element... the architectural symbol of the project.” Between “Eight Years to a Home,” the Fish Island house still listed as in progress since 2020, and now a nine-year evolution on the Bridge House – is this simply what building privately in Ukraine over the last decade has looked like for everyone in your position, or is a project that's allowed to evolve across many years actually closer to how you'd choose to work even without a war or a pandemic pushing the timeline?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> The Bridge House was first called The House Above an Old Road in 2017."
+        },
+        {
+          "type": "text",
+          "content": "I do agree that, looking at it now, it appears almost as a bridge between my past career and the work I do today."
+        },
+        {
+          "type": "text",
+          "content": "Much of what I had learned through my years of working in the Netherlands and the UK found its place in this house. But its story is not only about a timeline. There was another, more personal connection: my client had lived and studied in the Netherlands for many years."
+        },
+        {
+          "type": "text",
+          "content": "In a way, the materials became the language through which the three of us – the architect, the house and the client – were connected to that place."
+        },
+        {
+          "type": "text",
+          "content": "We chose MIB GeoStylistix facing bricks, concrete junctions inspired by the House on the Fish Island, and Alpi veneer, which I had first discovered in Amsterdam."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps this is why the house has always felt to me like more than a project. It carries pieces of places, experience and memory from different periods of my life, brought together in one piece of architecture."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotea15zlq4v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Bridge House: the Forest Pavilion, shaped around the trees that were kept rather than cleared."
+        },
+        {
+          "type": "header",
+          "content": "04 · Unbuilt, and still alive"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: In Tuscany, you sketched an extension – 2024 – for what your own project notes describe as a “1 Euro House”: one of the abandoned homes Italian municipalities sell for a symbolic euro to buyers who commit to restoring them, in towns trying to survive depopulation. Your plan called for selectively demolishing the existing structure, removing an intermediate floor to create a double-height space, and building a new balcony to connect the old house to a new 60-square-metre extension. What drew you personally to a project built on a premise so different from the rest of your portfolio – not a client with an unlimited wish-list, but a near-abandoned building in a town that is, in its own way, asking to be saved?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> It was a precious time to learn and to create a house for my friends from Israel. It was a voluntary project, but it gave me something I needed very much that summer in Kyiv in 2023: a reason to create, and a way to survive the summer emotionally."
+        },
+        {
+          "type": "text",
+          "content": "Kate, the daughter of my friend, was already dreaming of her future adult life in Italy. So I began to imagine the extension almost as a doll’s house for that future life – a small world of her own, rather than simply an addition to the existing house. Her mother sent me the brief and the possible site, and I began to write a story for the future."
+        },
+        {
+          "type": "text",
+          "content": "I studied the village from a distance, learning its details online and reading the structure of the surrounding landscape through Google Maps. I was also inspired by the quiet architecture of contemporary Tuscan wineries – their relationship with the land, their simplicity, and the feeling that the building had always belonged there."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucoteq6vnbj1k.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "TOSCANA HOUSE: the proposed extension to a one euro house, glazed towards the valley."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: “House near the Dam” is a 2019 sketch, never (as far as your portfolio shows) built: two connected volumes in Kyiv's Dam District, clad in red brick and wood to match the surrounding red pines, with a sloped roof planted with wild herbs specifically so the house would blend into the meadow rather than announce itself from the road. A living roof is a very particular kind of promise – it asks a client to accept years of upkeep for the sake of near-invisibility. What usually happens to a design like this one, that asks that much commitment for that much restraint – does it stay unbuilt because the ambition was too specific for the client who eventually came along, or because the right site and the right client for it simply haven't met yet?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> The house remained a sketch, as the client eventually relocated to the UK as a Ukrainian refugee. The land is still waiting for them, and the sketch – something we were both rather proud of – still exists."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojr5smt4w9p.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "House near the Dam: timber and brick among the red pines of Kyiv's Dam District."
+        },
+        {
+          "type": "header",
+          "content": "05 · A restaurant, a studio, a penthouse"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: CICADA, your restaurant and wine bar project from 2018, came with an unusual condition attached to the brief itself: the client – who had researched the restaurant industry extensively through travel across Europe and Australia – specifically wanted an architect with no previous experience designing restaurants, precisely so the process could stay collaborative and the ideas could stay unconventional. The restaurant's chef, meanwhile, had circled the world three times gathering inspiration for a genuinely multicultural menu. What does it actually feel like to be hired because you're inexperienced in a category, rather than in spite of it – and did that freedom from precedent change how boldly you were willing to work, on a project that went on to be featured in ATTITUDE Magazine?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> I had spent many years visiting restaurants across Europe and the UK, observing not only how they looked, but how they made one feel, how people moved through them, and how a room could shape an evening."
+        },
+        {
+          "type": "text",
+          "content": "My work was always rooted in the client’s brief, but I have never been very interested in clichés about what a restaurant is supposed to be. I wanted to understand how this particular one might live, and then allow the idea to take its own shape."
+        },
+        {
+          "type": "text",
+          "content": "The entire project was carried out online. We spoke with builders and contractors through a screen; samples of materials travelled to me in Kyiv. At the time, it felt almost audacious to imagine that everything could be created this way – a restaurant existing, for a while, between a distant site and a desk in Kyiv."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojsdijslkdx.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "CICADA restaurant and wine bar, designed entirely through a screen from a desk in Kyiv."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: You also designed the office for your own practice, Olga Akulova DESIGN – completed in 2010, photographed once that year and again six years later in 2016, and highly commended at the International Property Awards in London in 2012. That's the one project in your portfolio with no outside client to negotiate against, argue with, or ultimately answer to. Looking back at a space you designed entirely for yourself, and that still held up well enough to be re-photographed six years on – what did you learn about your own taste when there was no one else's taste to balance it against, and is there anything in that office you would design differently today?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> I designed my studio in three days. Perhaps because it was my own space, there was no need to explain the idea to anyone before making it happen."
+        },
+        {
+          "type": "text",
+          "content": "Fourteen years later, I am restyling the interior as I continue to grow as an architect. New materials have appeared, new technologies have changed what is possible, and I have found a colour for the walls that feels more right now – Rolling Fog by Little Greene."
+        },
+        {
+          "type": "text",
+          "content": "And yet the room still draws me back to Kyiv. There is the view of the garden, my own little England; the Boffi K4, around which the kitchen was shaped; and the wooden floor, which has aged beautifully over these fourteen years."
+        },
+        {
+          "type": "text",
+          "content": "All this time, the studio has also been a kind of working catalogue of my practice. It is where I have met clients, and where they could see, rather than simply hear me describe, the junctions, materials and language of the interiors I make."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojsxsvru3jf.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A sectional study from the studio's working drawings."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: Your NPL Penthouse – the 30th floor of the Novopecherskie Lipki condominium in Kyiv, bought by your client purely as an investment property – came with a brief that was really an absence of a brief: exposed concrete ceilings, full-height glass, and then almost total silence, because the client had “limited time to be involved” and asked you to complete the entire interior and fit-out independently. The project went on to be featured in Dezeen, Moroso and Leibal. When a client effectively hands you the keys and steps back entirely, is that the freest you ever get to work, or does an absent client's silence create its own, quieter kind of pressure that a demanding one never would?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> Exactly. The pressure created by the absence of a client was enormous. To prove to myself that I was worthy of making the project without a client’s editorial hand, I brought everything I knew at that time to it, and pushed my knowledge and possibilities as far as I could."
+        },
+        {
+          "type": "text",
+          "content": "My travels to the UK became an important part of the process. I bought some of the accessories for the penthouse in London, at the Designers Guild showroom, and the poster for the kitchen in London as well. They were not souvenirs of a journey, but things that had already found their place in the project in my mind."
+        },
+        {
+          "type": "text",
+          "content": "My contractors worked with remarkable precision and care, following the project closely. And, eventually, the penthouse travelled further than any of us had imagined – into worldwide publications."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojt7bapt3de.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "NPL Penthouse, thirtieth floor of Novopecherskie Lipki in Kyiv: exposed concrete, full height glass and oak joinery."
+        },
+        {
+          "type": "header",
+          "content": "06 · Method and motifs"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: A project titled simply “House near the Dam” is filed in your portfolio under the single word “minimalism” – a word that can mean an empty room just as easily as it can mean a room where every remaining object had to earn, and fight for, the right to stay. When you strip a house down that far for a real client with a real life to live inside it, what is your actual working method for deciding what earns that right – and has a client ever fought you to keep something you were certain had to go?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> When my clients are unsure about a particular piece of furniture or an item in the project, I first try to understand what lies behind their hesitation. It may be the budget, a style they have not mentioned in the brief, or simply that my idea is more daring than they had imagined for themselves."
+        },
+        {
+          "type": "text",
+          "content": "When we discuss a possible change, I look for something that answers their concern without disturbing the composition that already exists. The new piece still has to belong to the whole, and, most importantly, to my client at that particular moment."
+        },
+        {
+          "type": "text",
+          "content": "That is part of the work: not persuading a client to accept my idea, but understanding when an idea needs to change – and when it simply needs to be explained."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotf5wvs8qek.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "An attic bedroom in progress: the point where a minimal room decides what stays."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: Several of your project titles read less like catalogue entries and more like private diary lines – “With a dream of KENZO,” “Uplifted House,” “Interior for Kate & Corgis” – the kind of phrase that usually stays inside a client's head, not on a public portfolio page. Where do these titles actually come from: are they yours, coined out of how the project felt to live through as its designer, or do they belong to the clients – a private joke, a private hope, a pet's name – that somehow made it, intact and unedited, all the way into your public-facing work?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> You made me smile."
+        },
+        {
+          "type": "text",
+          "content": "I live through each project, and its name usually comes to me as a result of the work rather than at the beginning. It is almost a conclusion – the main idea that has slowly shaped the project through months, sometimes years, of working together."
+        },
+        {
+          "type": "text",
+          "content": "Each project becomes a story in its own right. We see it afterwards in photographs, but my clients continue to live inside it. Perhaps that is why the name appears only when the story has already revealed itself."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojun09ei7x3.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "One of the Kyiv interiors whose name arrived only once the project was finished."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: Looking at your Bridge House concept specifically – a pavilion designed to vanish into a pine forest, connected by a bridge you call the project's “architectural symbol” to a house organised around an internal garden bringing light into its own centre – how literally do you take the idea of a threshold in your work generally? Is the bridge, the terrace, the balcony that keeps recurring across your projects (the terrace in “Eight Years to a Home,” the balcony in TOSCANA HOUSE, the riverside terrace on Fish Island) a functional feature you return to because clients keep asking for it, or is it the closest thing your work has to a genuine, recurring architectural signature?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> Bridge House."
+        },
+        {
+          "type": "text",
+          "content": "The shape was created by the existing trees. We cherished them, rather than asking them to give way to the house."
+        },
+        {
+          "type": "text",
+          "content": "The Eight Years to a Home."
+        },
+        {
+          "type": "text",
+          "content": "The garden – nature itself – is the element that connects all my projects."
+        },
+        {
+          "type": "text",
+          "content": "Toscana House."
+        },
+        {
+          "type": "text",
+          "content": "The roof terrace and balcony were conceived as a way of bringing the house towards the mountain view."
+        },
+        {
+          "type": "text",
+          "content": "Fish Island House."
+        },
+        {
+          "type": "text",
+          "content": "The terrace is set into the hill to find the best possible view of the water on the site."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps this is what I could call my architectural signature: I always try to connect my clients with nature. It is the most inseparable relationship a house can have."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotfjf3mxutj.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The sitting room opening onto the terrace: the threshold Olha Wood calls her architectural signature."
+        },
+        {
+          "type": "header",
+          "content": "07 · Distance, and what it costs"
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: Your work now moves between Kyiv, Denmark, and clients across the UK, frequently without you standing physically inside the rooms you're shaping until very late in the process, if at all – site visits replaced by video calls, timber and stone chosen from photographs and swatches sent by courier rather than held in your own hand. Materials like your namesake wood are famously about grain, weight, and how light actually falls across a surface in person. What does an interior architect concretely lose when a project has to be built at that kind of distance – and is there anything, unexpectedly, that the distance makes easier, clearer, or even better?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> Strong communication with clients – video calls, being in regular contact, friendship and empathy – can create a surprisingly close connection with a building site, even from a long distance."
+        },
+        {
+          "type": "text",
+          "content": "Materials are now available across countries, too. And after 25 years of experience, I know how to find the right ones, work with people locally, and keep the architectural idea consistent, wherever the site may be."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucojvm6r3rgi5.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Site and finished room side by side, the process Olha Wood now follows at a distance."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: “Eight years to a Home” ends, in your own account, in August 2026 – the work “very close to the end” – in a Kyiv that is still, as you're answering this, a city living through war. When you finally hand your clients the keys to a home eight years, one pandemic, and one full-scale war in the making, what do you think that specific moment will actually feel like, for them and for you – and is it a feeling any earlier, easier project in your portfolio could possibly have prepared you for?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> The building site is still ongoing. In Kyiv, we do not have an abundance of contractors at the moment, as many of them are protecting our country."
+        },
+        {
+          "type": "text",
+          "content": "We hope to complete part of the work this autumn. My clients can hardly wait to begin their life in the space they have dreamed of for so many years."
+        },
+        {
+          "type": "text",
+          "content": "The garden, which was completed on the terrace a year ago, has already given them something to live with while the house is still being made. They have spent this time among the greenery, watching it grow, and hoping that soon their life in the house will begin."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mucotfyucooqvn.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The terrace garden at Eight Years to a Home, completed a year before the house it belongs to."
+        },
+        {
+          "type": "text",
+          "content": "<b>VM: You've now spent years designing homes for people staying in a country at war, for an apartment building's shared future on an island, for a nearly abandoned house in a depopulating Italian town, and for landscapes – a stream, a pine grove, a riverbank – that were there long before any client and will presumably outlast the buildings too. If a future client asked you to design something with no constraints at all – no budget ceiling, no site, no deadline – what is the one idea sitting somewhere in your unbuilt sketches, the Tuscany extension or the Dam District house or something you haven't shown anyone yet, that you would actually choose to build first?</b>"
+        },
+        {
+          "type": "text",
+          "content": "<b>OW:</b> It would be wonderful to allow myself to dream about a future project."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps it would be a house in the UK – an extension to an old house at the end of a quiet road, in the forest, with a hill and a meadow opening towards the trees."
+        },
+        {
+          "type": "text",
+          "content": "I imagine a studio for work attached to the main house, and a terrace at the top of the hill, looking across the meadow towards the forest."
+        },
+        {
+          "type": "text",
+          "content": "Wood, glass and local stone. A house that belongs to its place rather than simply occupying it. Sustainable and energy-independent, but without making sustainability the aesthetic. It would simply be part of the way the house lives."
+        }
+      ]
     }
   ],
   "reviews": [
@@ -20177,6 +20686,515 @@
           "updatedAt": "2026-09-21T18:50:50.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-veronika-chernienko"
+        },
+        {
+          "id": 47,
+          "draft": false,
+          "previewToken": "a7c41e93b25d86f0e14c7ab9",
+          "title": "Восемь лет до дома: Olha Wood о строительстве через расстояние, пандемию и войну",
+          "author": "Viacheslav Munister & Olha Wood",
+          "role": "Автор",
+          "date": "22 сен 2026",
+          "excerpt": "Интерьерный архитектор Olha Wood работает между Киевом, Данией и Великобританией, часто не находясь в комнатах, которые она формирует. Она рассказывает о киевской квартире, которая заняла восемь лет, одну пандемию и полномасштабную войну, чтобы завершить, доме, чей участок был потерян, но чей бетон пережил в другой, и почему каждый проект, который она создает, в конечном итоге тянется к саду.",
+          "category": "интервью",
+          "subcategory": "Интервью",
+          "tags": [
+            "Интервью",
+            "архитектура",
+            "дизайн интерьера",
+            "Киев",
+            "Украина"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mucotcl9766io8.jpg",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-olha-wood",
+          "publishAt": "2026-09-22T12:29:54.022Z",
+          "publishedAt": "2026-09-22T12:29:54.022Z",
+          "updatedAt": "2026-09-22T13:21:26.663Z",
+          "content": [
+            {
+              "type": "текст",
+              "content": "Ольга Вуд описывает свою практику в четырех строках в Instagram: интерьерный архитектор, элитное жилое пространство, международный опыт, удаленное сотрудничество с студиями и частными клиентами из Великобритании. Это похоже на список возможностей. Это ближе к описанию жизни. Студия начала свою деятельность в Киеве двадцать пять лет назад и сейчас работает между Киевом, Данией и Соединенным Королевством, часто без присутствия своего архитектора внутри комнат, которые она формирует, до очень позднего этапа процесса, если вообще."
+            },
+            {
+              "type": "текст",
+              "content": "Ее портфолио хранит необычно честное время. Одна киевская квартира называется просто <i>Восемь лет к дому</i>: заказана в 2018 году, переехала в другую квартиру в том же здании до начала строительства, переработана вокруг террасы, когда пандемия сделала частное открытое пространство необходимым, затем прошла через полномасштабную войну, в которой ее клиенты решили остаться в Киеве. Дом на Fish Island числится как в процессе с 2020 года. Bridge House носит даты 2017 по 2026."
+            },
+            {
+              "type": "текст",
+              "content": "Мы писали ей о том, что происходит с зданиями, которые должны ждать, о проектировании комнаты вокруг дивана, выбранного за годы до появления самой комнаты, и о том, к чему она постоянно возвращается в каждом доме, который она называет: сад, терраса, мост, способ, которым здание тянется к земле, на которой стоит."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucojoeeixcct3.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Интерьер из киевской практики, где началась студия Ольги Вуд."
+            },
+            {
+              "type": "header",
+              "content": "01 · Практика, сформированная местами"
+            },
+            {
+              "type": "text",
+              "content": "<b>Вячеслав Муністер [VM]: Ваша биография в Instagram гласит «Интерьерный архитектор | Элитные жилые комплексы | Международный опыт | Удалённое сотрудничество с студиями UK & Private» – четыре строки, описывающие практику, построенную почти полностью вокруг дистанции, гибкости и перемещения между местами, а не вокруг одной фиксированной студии в одном фиксированном городе. Ваше собственное портфолио это подтверждает: проекты, сфотографированные в Киеве, расширение дома, набросанное для Тосканы, визуализация островного дома студией из другой страны, клиенты по всему UK. Всегда ли ваша практика была такой разбросанной, по темпераменту или по природе работы в элитных жилых комплексах – или эта география — что-то, что последние несколько лет специально заставляло вас проектировать, как вы могли бы переделать план этажа вокруг несущей стены, которая внезапно не может быть перемещена?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Ольга Вуд [OW]:</b> Мне посчастливилось начать свою карьеру в одной из самых сильных архитектурных студий в городе, где я родилась и училась. Это было необычно хорошее место для начала. В то время как многие практики в основном заботились о местном рынке, они ежегодно ездили на мебельную ярмарку в Милане, работали с итальянской мебелью – включая Minotti – и проектировали интерьеры и пентхаусы, которые рано познакомили меня с миром за пределами моего города."
+            },
+            {
+              "type": "text",
+              "content": "Возможно, поэтому я никогда не училась считать архитектуру чем-то, ограниченным географией."
+            },
+            {
+              "type": "текст",
+              "content": "Несколько лет спустя я начал свою собственную практику. Мой первый клиент был украинской поп-звездой. Начало было почти ошеломительно легким. Я не чувствовал, что вхожу в неизвестную профессию; скорее, я просто продолжал идти по дороге, по которой уже шел много лет."
+            },
+            {
+              "type": "текст",
+              "content": "Я постоянно участвовал в конкурсах. Речь шла не только о победе, хотя я занял первые места в нескольких украинских конкурсах. Я хотел, чтобы работа существовала вне комнат, в которых она создавалась – чтобы её смотрели, задавали вопросы и сравнивали с работами других."
+            },
+            {
+              "type": "текст",
+              "content": "Со временем один из моих проектов был включен в длинный список на Dezeen Awards 2018, а другой был опубликован на Dezeen. Эти моменты имели для меня значение не просто как награды, а потому, что они позволяли работе путешествовать дальше, чем я мог."
+            },
+            {
+              "type": "текст",
+              "content": "Мой первый международный клиент — славянская пара, живущая в Гамбурге. Они заказали у меня создание интерьера вокруг мебели Promemoria, но хотели, чтобы он обладал явно западноевропейским характером. Это был интересный запрос: как создать ощущение принадлежности к месту, не просто воспроизводя его знакомые образы?"
+            },
+            {
+              "type": "текст",
+              "content": "Я уже тогда проводил значительное время в Британии, потому что моя будущая семья жила в Англии. Я ездил туда и обратно, и постепенно впитывал что-то от страны – её архитектуру, её пропорции, её сдержанность, её особое отношение между старым и новым. Многое из того, что мы впитываем из места, происходит без нашего замечания в тот момент. Окно, лестница, цвет окрашенной комнаты, способ, которым старый дом был изменён, а не заменён – эти вещи остаются где-то в уме."
+            },
+            {
+              "type": "текст",
+              "content": "Это стало одной из причин, по которой я продолжаю предпочитать работу с международными клиентами."
+            },
+            {
+              "type": "текст",
+              "content": "У каждой страны есть свой внутренний язык. Он живёт не только в архитектуре, но и в том, как люди накрывают на стол, выбирают стул, сохраняют старый пол, терпят несовершенство или решают, что заслуживает сохранения. Я считаю, что изучение этих мелких различий так же важно, как и понимание более широкого архитектурного контекста."
+            },
+            {
+              "type": "текст",
+              "content": "В этом году я работал с голландской парой, перестраивая их ванную комнату и обновляя оставшиеся комнаты с помощью декора. Это была ещё одна возможность внимательно рассмотреть культуру, с которой я ранее сталкивался профессионально, но теперь изнутри частного дома."
+            },
+            {
+              "type": "текст",
+              "content": "Я обнаружил больше о датском рынке, но также вернулся к тому, что я всегда ценил в скандинавском дизайне: объектам, которые не нуждаются в объявлении о своей важности. Ferm Living и House Doctor не о зрелищности элитной мебели. Их привлекательность заключается в другом – в материале, пропорциях, узнаваемости и накопленном ощущении домашней жизни."
+            },
+            {
+              "type": "текст",
+              "content": "Возможно, именно это я искал на протяжении двадцати пяти лет практики."
+            },
+            {
+              "type": "текст",
+              "content": "Не в каком-то конкретном стиле, и уж тем более не в какой-то конкретной стране."
+            },
+            {
+              "type": "текст",
+              "content": "Скорее, в возможности войти в чужой мир на некоторое время, понять, что там принадлежит, и создать что-то, что кажется невозможным было сделать где-либо еще."
+            },
+            {
+              "type": "header",
+              "content": "02 · Восемь лет до дома"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Одна из ваших страниц проекта рассказывает свою собственную хронологию с необычной честностью. Дом был заказан в 2018 году; клиенты затем обнаружили другую квартиру в том же здании, с большой террасой, и обменяли свою первоначальную квартиру на нее, еще до начала строительства. Затем пришла COVID, и – по вашим словам – «сад на террасе внезапно стал больше, чем привлекательным дополнением к заданию... наличие частного открытого пространства, где можно выйти без выхода из дома, стало необходимостью». Затем началась полномасштабная война, и ваши клиенты решили не покидать Киев. Вы называете проект просто «Восемь лет до дома». В какой именно момент за эти восемь лет – обмен квартир, пандемия или война – вы заметили, что перестали рассматривать это как одну задержку из-за обстоятельств, и начали воспринимать это как совместное испытание выносливости вас и ваших клиентов?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>OW:</b> Это то, что я называю ответственностью – перед объектом и перед людьми, для которых он был создан. Больно видеть, как место, предназначенное для будущего семьи, остается молчаливым и незавершенным. Дом – это не просто объект, ожидающий завершения; он ждет той жизни, которая должна в нем произойти."
+            },
+            {
+              "type": "text",
+              "content": "Так что я продолжал вдохновлять своих клиентов, напоминая, что работа еще не завершена. Возможно, наступит момент, когда мы найдем силы вернуться к ней и закончить начатое."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucotcl9766io8.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Восемь лет к дому, Киев: гостиная и столовая, с черным шкафом Poliform от Piero Lissoni слева."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Техническое задание этого же проекта, как вы выразились, было «прекрасно конкретным»: ваши клиенты всегда мечтали о конкретных предметах из итальянских дизайнерских домов – шкафе Poliform, диване B&B Italia, умывальнике Antonio Lupi – предметах, которые вы описываете как «не просто элементы списка покупок, а часть образа дома, который они хотели создать». Когда клиент приходит уже привязанный к точному дивану и точному умывальнику, иногда за годы до того, как комната вокруг этих предметов даже существует, как вы проектируете эту комнату так, чтобы она воспринималась как нечто большее, чем просто каркас, созданный для оправдания уже совершенной покупки?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Каждый предмет мебели имеет свою историю – о материале, месте происхождения, стиле и пригодности."
+            },
+            {
+              "type": "текст",
+              "content": "Мебель, выбранная клиентами, часто рассказывала мне больше о будущем интерьере, чем обычное техническое задание. Моя задача заключалась в том, чтобы привести эти отдельные предметы в диалог с архитектурой, видами из окон и друг с другом, чтобы интерьер приобрел связный язык, а не стал коллекцией красивых вещей."
+            },
+            {
+              "type": "text",
+              "content": "Например, черный шкаф Poliform, спроектированный Piero Lissoni, привел меня к черным панелям стен из шпона, обладающим той же архитектурной сдержанностью. Цвет дивана B&B Italia стал отправной точкой для индивидуальной кухни, фасады которой выполнены из керамики в близком оттенке."
+            },
+            {
+              "type": "text",
+              "content": "Клиенты особенно любили Италию, и я хотел это подчеркнуть, не создавая ощущение, что дом принадлежит чему-то другому. Украинский пейзаж за окнами оставался важным. Я перенес его желтые и коричневые оттенки внутрь через желтоватый терраццо, травертин и теплый серый цвет Slaked Lime – Dark 151 от Little Greene. Сад частично скрывал вид, который я стал воспринимать не как ограничение, а как нечто, что придает гостиной ощущение уединения – комнату, мягко расположенную между домом и природой."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mucotdefcyl80p.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Материальный доска для Eight Years to a Home: терраццо, травертин и теплый серый цвет Slaked Lime Dark 151 от Little Greene."
+            },
+            {
+              "type": "header",
+              "content": "03 · Проекты, которые ждут"
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Ваш дом на Fish Island с 2020 года числится как «В процессе» — это 450-квадратных метров бетонной и стальной конструкции, явно задуманной как прототип для нескольких будущих домов, которые будут построены на той же набережной, построенных вокруг очень конкретного списка клиента: бассейн, рыбный пруд, выделенная парковка для коллекции автомобилей и три спальни, по одной для каждого из его детей. Шесть лет — это долгое время для прототипа, который всё ещё находится в стадии разработки. Изменился ли сам дом за эти шесть лет — вкратце, подробно, что вообще означает «прототип» для домов, которые могут последовать за ним — или задержка просто обычное трение при строительстве чего-то такого большого?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Возможно, это один из самых болезненных вопросов, которые мне могут задать."
+            },
+            {
+              "type": "текст",
+              "content": "Проект здания был отменен, когда мои клиенты потеряли участок земли. Есть что-то особенно трудное в том, чтобы увидеть дом, который был тщательно продуман, так и не обрести ту жизнь, для которой он предназначался."
+            },
+            {
+              "type": "текст",
+              "content": "И все же, работа полностью не исчезла. Бетонная конструкция и ее тщательно проработанные соединения нашли вторую жизнь в другом доме, который позже был спроектирован для того же участка и существует там сегодня."
+            },
+            {
+              "type": "текст",
+              "content": "Возможно, это одна из тихих истин архитектурной работы: идея не всегда достигает своего первого назначения. Иногда часть её сохраняется, изменённая обстоятельствами, и продолжает свою жизнь где-то ещё."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucotdvmmcdg5v.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Дом на Fish Island: сечение через бассейн и террасу, структура встроена в холм."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: The Bridge House имеет самую длинную видимую временную шкалу во всём вашем портфолио – с 2017 по 2026 год, описанную на вашем собственном сайте как «эволюцию архитектурной концепции», а не как единое непрерывное строительство. Его план организован как три отдельных элемента: одноэтажный Forest Pavilion, спроектированный так, чтобы почти исчезнуть в ландшафте, двухэтажный Main House, построенный вокруг внутреннего атриума для дневного света и уединения, и сам Мост, который ваши заметки называют «более чем элементом циркуляции... архитектурным символом проекта». Между «Восемью годами к дому», домом на Fish Island, который с 2020 года всё ещё числится в процессе, и сейчас девятилетней эволюцией на Bridge House – разве это просто то, как выглядит строительство частных домов в Украине за последнее десятилетие для всех в вашей ситуации, или проект, который допускает развитие на многие годы, на самом деле ближе к тому, как вы бы предпочли работать даже без войны или пандемии, сдвигающих сроки?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> The Bridge House впервые назывался The House Above an Old Road в 2017 году."
+            },
+            {
+              "type": "текст",
+              "content": "Я действительно согласен, что, глядя на это сейчас, оно кажется почти как мост между моей прошлой карьерой и работой, которую я делаю сегодня."
+            },
+            {
+              "type": "текст",
+              "content": "Многое из того, чему я научился за годы работы в Нидерландах и Великобритании, нашло свое место в этом доме. Но его история — не только о хронологии. Была и другая, более личная связь: мой клиент жил и учился в Нидерландах много лет."
+            },
+            {
+              "type": "текст",
+              "content": "В каком-то смысле материалы стали языком, с помощью которого трое из нас — архитектор, дом и клиент — были связаны с этим местом."
+            },
+            {
+              "type": "текст",
+              "content": "Мы выбрали MIB GeoStylistix facing bricks, бетонные соединения, вдохновленные House on the Fish Island, и Alpi veneer, который я впервые обнаружил в Амстердаме."
+            },
+            {
+              "type": "текст",
+              "content": "Возможно, именно поэтому дом всегда казался мне больше, чем просто проект. Он содержит части мест, опыта и памяти из разных периодов моей жизни, объединённые в один архитектурный объект."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucotea15zlq4v.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Bridge House: the Forest Pavilion, сформированный вокруг деревьев, которые оставили, а не вырубили."
+            },
+            {
+              "type": "заголовок",
+              "content": "04 · Не построено, и всё ещё живо"
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: В Тоскане вы набросали расширение – 2024 – для того, что ваши собственные заметки о проекте описывают как «Дом за 1 евро»: один из заброшенных домов, которые итальянские муниципалитеты продают за символическую сумму евро покупателям, обязующимся восстановить их, в городах, пытающихся выжить после депопуляции. Ваш план предусматривал выборочную снос существующей конструкции, удаление промежуточного этажа для создания пространства с двойной высотой и строительство нового балкона, соединяющего старый дом с новым расширением площадью 60 квадратных метров. Что лично привлекло вас в проекте, основанном на предпосылке, столь отличной от остальной части вашего портфолио – не заказчик с неограниченным списком желаний, а почти заброшенное здание в городе, который, по-своему, просит о спасении?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Это было ценное время для обучения и создания дома для моих друзей из Израиля. Это был добровольный проект, но он дал мне то, что мне очень нужно было тем летом в Киеве в 2023 году: повод для творчества и способ пережить лето эмоционально."
+            },
+            {
+              "type": "текст",
+              "content": "Кейт, дочь моего друга, уже мечтала о своей будущей взрослой жизни в Италии. Поэтому я начал представлять расширение почти как кукольный дом для этой будущей жизни – маленький мир её собственной, а не просто добавление к существующему дому. Её мать прислала мне задание и возможный участок, и я начал писать историю для будущего."
+            },
+            {
+              "type": "текст",
+              "content": "Я изучал деревню издалека, узнавая её детали онлайн и читая структуру окружающего ландшафта через Google Maps. Меня также вдохновляла тихая архитектура современных тосканских виноделен – их связь с землёй, их простота и ощущение, что здание всегда принадлежало там."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucoteq6vnbj1k.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "TOSCANA HOUSE: предлагаемый расширение к дому за один евро, остеклённое в сторону долины."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: “House near the Dam” — это набросок 2019 года, никогда (насколько показывает ваше портфолио) не построенный: два соединённых объёма в Киевском районе Dam, облицованные красным кирпичом и деревом, чтобы соответствовать окружающим красным соснам, с наклонной крышей, засаженной дикими травами, специально чтобы дом сливался с лугом, а не выделялся на дороге. Живая крыша — очень особый вид обещания — она требует от клиента принять годы ухода ради почти невидимости. Что обычно происходит с таким проектом, который требует столько обязательств и сдержанности — он остаётся нереализованным потому, что амбиции были слишком конкретными для клиента, который в итоге пришёл, или потому, что подходящее место и подходящий клиент просто ещё не встретились?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Дом остался наброском, так как клиент в конце концов переехал в Великобританию как украинский беженец. Земля всё ещё ждёт их, а набросок — что мы оба довольно гордились — всё ещё существует."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucojr5smt4w9p.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "House near the Dam: timber and brick among the red pines of Kyiv's Dam District."
+            },
+            {
+              "type": "заголовок",
+              "content": "05 · Ресторан, студия, пентхаус"
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: CICADA, ваш проект ресторана и винного бара 2018 года, сопровождался необычным условием, прикреплённым к самому заданию: заказчик – который тщательно исследовал индустрию ресторанов, путешествуя по Европе и Австралии – специально хотел архитектора без предыдущего опыта проектирования ресторанов, именно чтобы процесс оставался совместным, а идеи – нестандартными. Шеф-повар ресторана, тем временем, обошёл весь мир три раза, собирая вдохновение для по-настоящему мультикультурного меню. Что на самом деле ощущается, когда тебя нанимают потому, что у тебя нет опыта в этой категории, а не несмотря на это – и изменило ли это свободу от прецедентов то, насколько смело вы были готовы работать над проектом, который впоследствии был опубликован в ATTITUDE Magazine?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Я провёл много лет, посещая рестораны по всей Европе и Великобритании, наблюдая не только за их внешним видом, но и за тем, как они вызывают ощущение, как люди перемещаются по ним и как комната может формировать вечер."
+            },
+            {
+              "type": "текст",
+              "content": "Моя работа всегда основывалась на задании клиента, но я никогда не интересовался клише о том, каким должен быть ресторан. Я хотел понять, как этот конкретный ресторан может жить, а затем позволить идее принять свою собственную форму."
+            },
+            {
+              "type": "текст",
+              "content": "Весь проект был реализован онлайн. Мы общались с строителями и подрядчиками через экран; образцы материалов доставлялись мне в Киев. Тогда казалось почти дерзким представить, что всё это может быть создано именно так – ресторан, существующий некоторое время между удалённым объектом и столом в Киеве."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucojsdijslkdx.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "ресторан CICADA и винный бар, полностью спроектированные через экран с рабочего стола в Киеве."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Вы также спроектировали офис для своей собственной практики, Olga Akulova DESIGN – завершён в 2010 году, сфотографирован один раз в тот год и снова через шесть лет в 2016 году, и был высоко отмечен на International Property Awards в Лондоне в 2012 году. Это единственный проект в вашем портфолио без внешнего клиента, с которым нужно вести переговоры, спорить или в конечном итоге отвечать. оглядываясь на пространство, которое вы полностью спроектировали для себя, и которое всё ещё выглядело достаточно хорошо, чтобы его сфотографировать снова через шесть лет – чему вы научились о своём собственном вкусе, когда не было чужого вкуса, чтобы сбалансировать его, и есть ли что-то в этом офисе, что вы бы спроектировали иначе сегодня?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Я спроектировал свою студию за три дня. Возможно, потому что это было моё собственное пространство, не было необходимости объяснять идею кому-либо перед её реализацией."
+            },
+            {
+              "type": "текст",
+              "content": "Четырнадцать лет спустя я обновляю интерьер, поскольку продолжаю расти как архитектор. Появились новые материалы, новые технологии изменили возможности, и я нашёл цвет для стен, который кажется более подходящим сейчас – Rolling Fog от Little Greene."
+            },
+            {
+              "type": "текст",
+              "content": "И всё же комната всё ещё тянет меня обратно к Киеву. Там вид на сад, мой собственный маленький Англия; Boffi K4, вокруг которого была сформирована кухня; и деревянный пол, который за эти четырнадцать лет прекрасно состарился."
+            },
+            {
+              "type": "текст",
+              "content": "Все это время студия также была своего рода рабочим каталогом моей практики. Именно там я встречался с клиентами, и именно там они могли увидеть, а не просто услышать, как я описываю, соединения, материалы и язык интерьеров, которые я создаю."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucojsxsvru3jf.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Секционный эскиз из рабочих чертежей студии."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Ваш NPL Penthouse – пентхаус на 30 этаже в жилом комплексе Novopecherskie Lipki в Киеве, приобретённый вашим клиентом исключительно как инвестиционная недвижимость – пришёл с брифом, который фактически был отсутствием брифа: открытые бетонные потолки, стекло во всю высоту, и почти полная тишина, потому что у клиента было «ограниченное время для участия» и он попросил вас самостоятельно завершить весь интерьер и отделку. Проект был опубликован в Dezeen, Moroso и Leibal. Когда клиент фактически передает вам ключи и полностью отступает, это самое свободное время для работы, или же молчание отсутствующего клиента создает свой, более тихий вид давления, которого никогда бы не было у требовательного?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>OW:</b> Точно. Давление, создаваемое отсутствием клиента, было огромным. Чтобы доказать себе, что я достоин создавать проект без редакционной руки клиента, я привнес всё, что знал на тот момент, и толкал свои знания и возможности настолько, насколько мог."
+            },
+            {
+              "type": "text",
+              "content": "Мои путешествия в Великобританию стали важной частью процесса. Я купил некоторые аксессуары для пентхауса в London, в шоуруме Designers Guild, а также постер для кухни в London. Они не были сувенирами с путешествия, а вещами, которые уже нашли своё место в проекте в моём уме."
+            },
+            {
+              "type": "text",
+              "content": "Мои подрядчики работали с замечательной точностью и заботой, внимательно следя за проектом. И, в конце концов, пентхаус отправился дальше, чем мы все могли представить – в мировые публикации."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mucojt7bapt3de.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "NPL Penthouse, тридцатый этаж Novopecherskie Lipki в Киеве: открытый бетон, стекло во весь рост и дубовая мебель."
+            },
+            {
+              "type": "header",
+              "content": "06 · Метод и мотивы"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Проект с названием просто «Дом у дамбы» хранится в вашем портфолио под одним словом «минимализм» – словом, которое может означать пустую комнату так же легко, как и комнату, в которой каждый оставшийся предмет должен был заслужить и бороться за право остаться. Когда вы настолько упрощаете дом для настоящего клиента с реальной жизнью внутри, каков ваш фактический рабочий метод для определения того, что заслуживает этого права – и боролся ли когда-нибудь клиент за то, чтобы оставить что-то, в чем вы были уверены, что это должно уйти?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>OW:</b> Когда мои клиенты не уверены в каком-то конкретном предмете мебели или элементе проекта, я сначала пытаюсь понять, что стоит за их колебаниями. Это может быть бюджет, стиль, который они не упомянули в брифе, или просто то, что моя идея более смелая, чем они себе представляли."
+            },
+            {
+              "type": "text",
+              "content": "Когда мы обсуждаем возможное изменение, я ищу что-то, что отвечает их опасениям, не нарушая уже существующую композицию. Новый элемент всё равно должен принадлежать целому и, что самое важное, моему клиенту в этот конкретный момент."
+            },
+            {
+              "type": "текст",
+              "content": "Это часть работы: не убеждать клиента принять мою идею, а понять, когда идея нуждается в изменении – и когда её просто нужно объяснить."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mucotf5wvs8qek.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Чердачная спальня в процессе: момент, когда минимальная комната решает, что оставить."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Некоторые ваши названия проектов звучат скорее как записи из личного дневника, а не как пункты каталога – “С мечтой о KENZO,” “Поднятый дом,” “Интерьер для Kate & Corgis” – такие фразы обычно остаются внутри головы клиента, а не на публичной странице портфолио. Откуда на самом деле берутся эти названия: ваши ли они, придуманные исходя из того, как проект ощущался вами как его дизайнером, или они принадлежат клиентам – частная шутка, частая надежда, имя питомца – которые каким-то образом прошли, целыми и нетронутыми, прямо в вашу публичную работу?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Вы заставили меня улыбнуться."
+            },
+            {
+              "type": "текст",
+              "content": "Я проживаю каждый проект, и его название обычно приходит ко мне в результате работы, а не в начале. Это почти вывод – основная идея, которая медленно формировалась в проекте на протяжении месяцев, иногда лет, совместной работы."
+            },
+            {
+              "type": "текст",
+              "content": "Каждый проект становится самостоятельной историей. Мы видим его позже на фотографиях, но мои клиенты продолжают жить внутри него. Возможно, поэтому название появляется только тогда, когда история уже раскрылась."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucojun09ei7x3.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Один из интерьеров Киева, название которого появилось только после завершения проекта."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Глядя на вашу концепцию Bridge House особенно – павильон, спроектированный так, чтобы исчезнуть в сосновом лесу, связанный мостом, который вы называете «архитектурным символом» проекта, с домом, организованным вокруг внутреннего сада, приносящего свет в его центр – насколько буквально вы воспринимаете идею порога в вашей работе в целом? Является ли мост, терраса, балкон, которые постоянно повторяются в ваших проектах (терраса в «Eight Years to a Home», балкон в TOSCANA HOUSE, набережная на Fish Island) функциональной особенностью, к которой вы возвращаетесь потому, что клиенты постоянно этого требуют, или это самое близкое к настоящему, повторяющемуся архитектурному почерку в вашей работе?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Bridge House."
+            },
+            {
+              "type": "текст",
+              "content": "Форма была создана существующими деревьями. Мы ценили их, а не просили уступить место дому."
+            },
+            {
+              "type": "текст",
+              "content": "Восемь лет к дому."
+            },
+            {
+              "type": "текст",
+              "content": "Сад – сама природа – это элемент, который связывает все мои проекты."
+            },
+            {
+              "type": "текст",
+              "content": "Toscana House."
+            },
+            {
+              "type": "текст",
+              "content": "Крытая терраса и балкон были задуманы как способ приблизить дом к виду на гору."
+            },
+            {
+              "type": "текст",
+              "content": "Fish Island House."
+            },
+            {
+              "type": "текст",
+              "content": "Терраса встроена в холм, чтобы найти лучший возможный вид на воду на участке."
+            },
+            {
+              "type": "text",
+              "content": "Может быть, это то, что я мог бы назвать своей архитектурной подписью: я всегда стараюсь связать своих клиентов с природой. Это самая неразрывная связь, которую может иметь дом."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mucotfjf3mxutj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Гостиная, открывающаяся на террасу: порог, который Olha Wood называет своей архитектурной подписью."
+            },
+            {
+              "type": "header",
+              "content": "07 · Расстояние и его стоимость"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Ваша работа сейчас перемещается между Киевом, Данией и клиентами по всему Великобритании, часто без вашего физического присутствия внутри формируемых вами помещений до очень позднего этапа процесса, если вообще — визиты на площадку заменены видеозвонками, древесина и камень выбираются по фотографиям и образцам, отправленным курьером, а не держатся в руке. Материалы, такие как ваша одноимённая древесина, славятся своим зерном, весом и тем, как свет фактически падает на поверхность вживую. Что конкретно теряет интерьерный архитектор, когда проект приходится строить на таком расстоянии — и есть ли что-то, неожиданно, что расстояние делает проще, яснее или даже лучше?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Сильное общение с клиентами – видеозвонки, регулярный контакт, дружба и эмпатия – могут создать удивительно тесную связь со строительной площадкой, даже на большом расстоянии."
+            },
+            {
+              "type": "текст",
+              "content": "Материалы теперь доступны и в других странах. И после 25 лет опыта я знаю, как найти правильные, работать с местными людьми и сохранять архитектурную идею последовательной, где бы ни находилась площадка."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mucojvm6r3rgi5.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Сторона площадки и готовая комната рядом, процесс, который сейчас следует Olha Wood на расстоянии."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: «Восемь лет к дому» заканчивается, по вашему собственному признанию, в августе 2026 года – работа «очень близка к завершению» – в Киеве, который, как вы отвечаете сейчас, все еще является городом, переживающим войну. Когда вы наконец передадите своим клиентам ключи от дома через восемь лет, одну пандемию и одну полномасштабную войну, что, по вашему мнению, этот конкретный момент действительно почувствует, для них и для вас – и могло ли какое-либо более раннее, более легкое проектное задание в вашем портфолио подготовить вас к этому?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Строительная площадка все еще продолжается. В Киеве у нас сейчас не так много подрядчиков, так как многие из них защищают нашу страну."
+            },
+            {
+              "type": "текст",
+              "content": "Мы надеемся завершить часть работы этой осенью. Мои клиенты едва могут дождаться начала своей жизни в пространстве, о котором они мечтали так много лет."
+            },
+            {
+              "type": "текст",
+              "content": "Сад, который был завершен на террасе год назад, уже дал им что-то, с чем можно жить, пока дом еще строится. Они провели это время среди зелени, наблюдая за ее ростом и надеясь, что скоро их жизнь в доме начнется."
+            },
+            {
+              "type": "изображение",
+              "content": "https://api.eprisjournal.com/uploads/mucotfyucooqvn.jpg",
+              "align": "центр",
+              "width": 100,
+              "caption": "Сад на террасе в Eight Years to a Home, завершенный за год до дома, к которому он принадлежит."
+            },
+            {
+              "type": "текст",
+              "content": "<b>VM: Вы уже много лет проектируете дома для людей, живущих в стране, находящейся в состоянии войны, для общего будущего жилого комплекса на острове, для почти заброшенного дома в депопулирующем итальянском городе, а также для ландшафтов – ручья, соснового леса, береговой линии – которые существовали задолго до любого клиента и, предположительно, переживут здания тоже. Если бы будущий клиент попросил вас спроектировать что-то без каких-либо ограничений – без ограничения бюджета, без конкретного участка, без срока – какая одна идея, лежащая где-то в ваших не реализованных эскизах, расширение Тосканы или дом в районе Dam District или что-то, что вы еще никому не показывали, вы бы действительно решили построить в первую очередь?</b>"
+            },
+            {
+              "type": "текст",
+              "content": "<b>OW:</b> Было бы замечательно позволить себе мечтать о будущем проекте."
+            },
+            {
+              "type": "текст",
+              "content": "Возможно, это будет дом в Великобритании – пристройка к старому дому на конце тихой дороги, в лесу, с холмом и лугом, открывающимися к деревьям."
+            },
+            {
+              "type": "текст",
+              "content": "Я представляю студию для работы, присоединённую к главному дому, и террасу на вершине холма, с видом через луг на лес."
+            },
+            {
+              "type": "текст",
+              "content": "Дерево, стекло и местный камень. Дом, который принадлежит своему месту, а не просто занимает его. Устойчивый и энергонезависимый, но без превращения устойчивости в эстетику. Он просто станет частью того, как живет дом."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -29518,6 +30536,12 @@
           "updatedAt": "2026-09-21T18:50:50.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-veronika-chernienko"
+        },
+        {
+          "id": 47,
+          "title": "Вісім років до дому: Olha Wood про будівництво через відстань, пандемію та війну",
+          "excerpt": "Інтер'єрний архітектор Olha Wood працює між Києвом, Данією та Великобританією, часто не стоячи в кімнатах, які вона формує. Вона розповідає про квартиру у Києві, яка зайняла вісім років, одну пандемію та повномасштабну війну, щоб завершити, будинок, чий сайт було втрачено, але бетон пережив у іншому, і чому кожен її проект закінчується прагненням до саду.",
+          "category": "інтерв'ю"
         }
       ],
       "reviews": [
@@ -38859,6 +39883,12 @@
           "contributorId": "author-veronika-chernienko",
           "publishAt": "2026-09-23T00:00:00.000Z",
           "publishedAt": "2026-09-23T00:00:00.000Z"
+        },
+        {
+          "id": 47,
+          "title": "Acht Jahre zum Zuhause: Olha Wood beim Bauen über Entfernung, Pandemie und Krieg",
+          "excerpt": "Innenarchitektin Olha Wood arbeitet zwischen Kyiv, Dänemark und dem Vereinigten Königreich, oft ohne in den Räumen zu stehen, die sie gestaltet. Sie spricht über die Kyiv-Wohnung, die acht Jahre, eine Pandemie und einen Vollskala-Krieg brauchte, um fertiggestellt zu werden, das Haus, dessen Standort verloren ging, dessen Beton jedoch in ein anderes überging, und warum jedes Projekt, das sie macht, letztendlich nach dem Garten greift.",
+          "category": "interview"
         }
       ],
       "reviews": [
@@ -48185,6 +49215,12 @@
           "contributorId": "author-veronika-chernienko",
           "publishAt": "2026-09-23T00:00:00.000Z",
           "publishedAt": "2026-09-23T00:00:00.000Z"
+        },
+        {
+          "id": 47,
+          "title": "Ocho años para un hogar: Olha Wood sobre construir a través de la distancia, pandemia y guerra",
+          "excerpt": "La arquitecta de interiores Olha Wood trabaja entre Kyiv, Dinamarca y el Reino Unido, a menudo sin estar en las habitaciones que moldea. Ella habla sobre el apartamento en Kyiv que tomó ocho años, una pandemia y una guerra a gran escala para terminar, la casa cuyo sitio se perdió pero cuyo concreto sobrevivió en otra, y por qué cada proyecto que realiza termina alcanzando el jardín.",
+          "category": "entrevista"
         }
       ],
       "reviews": [
@@ -64508,6 +65544,12 @@
           "contributorId": "author-veronika-chernienko",
           "publishAt": "2026-09-23T00:00:00.000Z",
           "publishedAt": "2026-09-23T00:00:00.000Z"
+        },
+        {
+          "id": 47,
+          "title": "Otto Anni per una Casa: Olha Wood sulla Costruzione Attraverso Distanza, Pandemia e Guerra",
+          "excerpt": "L'architetto d'interni Olha Wood lavora tra Kyiv, Danimarca e Regno Unito, spesso senza stare nelle stanze che plasma. Parla dell'appartamento di Kyiv che ha richiesto otto anni, una pandemia e una guerra su larga scala per essere completato, della casa il cui sito è stato perso ma il cui cemento è sopravvissuto in un'altra, e del motivo per cui ogni progetto che realizza finisce per raggiungere il giardino.",
+          "category": "intervista"
         }
       ],
       "reviews": [
@@ -72370,6 +73412,12 @@
           "contributorId": "author-veronika-chernienko",
           "publishAt": "2026-09-23T00:00:00.000Z",
           "publishedAt": "2026-09-23T00:00:00.000Z"
+        },
+        {
+          "id": 47,
+          "title": "Huit ans pour une maison : Olha Wood sur la construction à travers la distance, la pandémie et la guerre",
+          "excerpt": "L'architecte d'intérieur Olha Wood travaille entre Kyiv, Danemark et Royaume-Uni, souvent sans se tenir dans les pièces qu'elle façonne. Elle parle de l'appartement de Kyiv qui a pris huit ans, une pandémie et une guerre à grande échelle pour être terminé, de la maison dont le site a été perdu mais dont le béton a survécu dans une autre, et pourquoi chaque projet qu'elle réalise finit par atteindre le jardin.",
+          "category": "entretien"
         }
       ],
       "reviews": [
@@ -73638,6 +74686,19 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 16
+    },
+    {
+      "id": "author-olha-wood",
+      "name": "Olha Wood",
+      "role": "Interior Architect, Kyiv & UK",
+      "bio": "Olha Wood is an interior architect with twenty five years of practice, working between Kyiv, Denmark and the United Kingdom on high end residential projects. Her work has been longlisted for the Dezeen Awards and published by Dezeen, Moroso and Leibal, and her own studio interior was highly commended at the International Property Awards in London.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mucp8h8ltkkkmm.jpg",
+      "website": "https://www.olhawoodinteriors.com",
+      "instagram": "@olhawood_interior_designer",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 22
     }
   ],
   "manifest": {
@@ -73724,7 +74785,8 @@
         "26": true,
         "27": true,
         "36": true,
-        "37": true
+        "37": true,
+        "47": true
       },
       "items": {
         "24": true
