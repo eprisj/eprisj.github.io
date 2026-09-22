@@ -3016,16 +3016,23 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
                 <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
                   {contributor.photoUrl ? (
+                    /* Та же развилка, что и в AuthorBlock: портрет режется в
+                       круг, логотип остаётся квадратом с полями, иначе круглая
+                       маска съедает вордмарк. Здесь она раньше отсутствовала,
+                       и портрет соавтора выводился как логотип: вписанный в
+                       белый квадрат с рамкой, не заполняя кадр. */
                     <img
                       src={contributor.photoUrl}
                       alt={contributor.name}
                       loading="lazy"
-                      /* Логотип института — не портрет: круглая обрезка режет
-                         вордмарк, поэтому квадрат со скруглением и contain. */
-                      className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl object-contain bg-white p-1.5 shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)]"
+                      className={`w-14 h-14 sm:w-[72px] sm:h-[72px] shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)] ${
+                        contributor.photoIsLogo === true
+                          ? 'rounded-xl object-contain bg-white p-1.5'
+                          : 'rounded-full object-cover'
+                      }`}
                     />
                   ) : (
-                    <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-xl bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
+                    <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
                       {(contributor.name || '').charAt(0)}
                     </div>
                   )}
