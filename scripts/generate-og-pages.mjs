@@ -313,6 +313,25 @@ function isPublicEntry(entry) {
 const publicArticles = (content.articles || []).filter(isPublicEntry);
 const publicReviews = (content.reviews || []).filter(isPublicEntry);
 
+// Schema.org type for a review's itemReviewed. Kept in sync with
+// itemReviewedType() in src/data.ts (this script runs as plain Node, so it
+// can't import that TS module directly) — see the comment there for why
+// 'Thing' was wrong: Search Console flagged it as an invalid itemReviewed
+// type, since Google's Review snippet only recognises a fixed list (Book,
+// Event, LocalBusiness, Movie, MusicPlaylist, Product, …) and 'Thing' isn't
+// on it. Reviewed subjects here are almost always a named restaurant or
+// venue, so LocalBusiness is the specific, correct match; anything not
+// clearly a business, book or film falls back to Product.
+function itemReviewedType(review) {
+  if (review.desk === 'music') return 'MusicPlaylist';
+  const category = String(review.category || '').toLowerCase();
+  if (/\b(dining|food|restaurant|café|cafe|bar)\b/.test(category)) return 'LocalBusiness';
+  if (/\bbook\b/.test(category)) return 'Book';
+  if (/\b(film|movie|cinema)\b/.test(category)) return 'Movie';
+  if (/\bgame\b/.test(category)) return 'Game';
+  return 'Product';
+}
+
 // Strip all existing OG/twitter/description meta tags and title from template
 let template = indexHtml
   .replace(/<title>[^<]*<\/title>/, '<!--TITLE-->')
@@ -431,7 +450,7 @@ for (const review of publicReviews) {
     '@type': 'Review',
     name: review.title,
     reviewBody: reviewPlainBody(review),
-    itemReviewed: { '@type': 'Thing', name: review.subject || review.title },
+    itemReviewed: { '@type': itemReviewedType(review), name: review.subject || review.title },
     author: { '@type': 'Person', name: review.author || 'EPRIS Editorial' },
     image: [imageUrl],
     inLanguage: 'en',

@@ -53,6 +53,7 @@ import {
   generalReviews,
   musicReviews,
   isMusicReview,
+  itemReviewedType,
   loadLiveContent,
   subscribeContent
 } from './data';
@@ -4295,7 +4296,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
           '@type': 'Review',
           name: review.title,
           reviewBody: reviewPlainText(review.content),
-          itemReviewed: { '@type': 'Thing', name: review.subject || review.title },
+          itemReviewed: { '@type': itemReviewedType(review), name: review.subject || review.title },
           author: { '@type': 'Person', name: review.author || 'EPRIS Editorial' },
           image: [imageUrl],
           publisher: siteNode.publisher,

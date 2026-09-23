@@ -1269,6 +1269,33 @@ export function musicReviews(reviews: Review[]): Review[] {
   return reviews.filter(isMusicReview);
 }
 
+/**
+ * The schema.org type for a review's `itemReviewed`. Search Console flagged
+ * the previous value ('Thing') as invalid — Google's Review snippet only
+ * recognises a fixed list of types (Book, Event, LocalBusiness, Movie,
+ * MusicPlaylist, MusicRecording, Product, …), and 'Thing' — the type every
+ * one of those inherits from — isn't itself on it.
+ *
+ * Categories are free-text editorial labels, not a schema, so this reads
+ * them loosely rather than requiring an exact match. Reviewed subjects here
+ * are almost always a named restaurant or venue at a real address — that's
+ * LocalBusiness, the type schema.org defines for exactly this, and Google's
+ * "self-reviewed" restriction on it doesn't apply: EPRIS is a third party
+ * reviewing places it has no stake in, the ordinary case the type exists
+ * for. Anything that isn't clearly a business, a book or a film falls back
+ * to Product, the general type Google documents for a reviewed creative or
+ * physical work with no more specific match.
+ */
+export function itemReviewedType(review: Review): string {
+  if (isMusicReview(review)) return 'MusicPlaylist';
+  const category = (review.category || '').toLowerCase();
+  if (/\b(dining|food|restaurant|café|cafe|bar)\b/.test(category)) return 'LocalBusiness';
+  if (/\bbook\b/.test(category)) return 'Book';
+  if (/\b(film|movie|cinema)\b/.test(category)) return 'Movie';
+  if (/\bgame\b/.test(category)) return 'Game';
+  return 'Product';
+}
+
 /** Live-aware authors list (preview → live → bundled). Only active authors are returned. */
 export function getAuthors(): Author[] {
   return (src().authors || []).filter((a) => a && a.active !== false && isEntityVisible('authors', a.id));
