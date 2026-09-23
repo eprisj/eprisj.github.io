@@ -476,13 +476,13 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       return;
     }
     setPrintStatus('loading');
-    printWindow.document.write('<!doctype html><title>EPRIS — preparing print</title><body style="margin:0;display:grid;place-items:center;min-height:100vh;background:#f7f2ea;color:#501a2c;font:14px monospace;letter-spacing:.12em">PREPARING BOOKLET…</body>');
+    printWindow.document.write('<!doctype html><title>EPRIS – preparing print</title><body style="margin:0;display:grid;place-items:center;min-height:100vh;background:#f7f2ea;color:#501a2c;font:14px monospace;letter-spacing:.12em">PREPARING BOOKLET…</body>');
     try {
       const sheets = await renderBookletSheets();
       printWindow.document.open();
       printWindow.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>EPRIS Passport ${code}</title><style>
         :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#ded8d1;color:#3a1520;font-family:Arial,sans-serif}.toolbar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:#501a2c;color:#fff;box-shadow:0 6px 24px #501a2c33}.toolbar strong{font:600 13px/1.3 Arial}.toolbar span{display:block;margin-top:3px;font:10px/1.3 monospace;letter-spacing:.1em;opacity:.68}.toolbar button{min-height:44px;border:1px solid #ffffff55;border-radius:999px;background:#fff;color:#501a2c;padding:0 22px;font:700 11px monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.stack{display:grid;gap:24px;justify-items:center;padding:28px}.sheet{display:grid;place-items:center;width:210mm;min-height:297mm;background:#fff;box-shadow:0 12px 38px #35151e22}.sheet img{display:block;width:120mm;height:160mm;object-fit:contain}.sheet small{position:absolute;transform:translateY(91mm);font:9px monospace;letter-spacing:.12em;color:#7a6870}@page{size:A4 portrait;margin:0}@media print{body{background:#fff}.toolbar{display:none}.stack{display:block;padding:0}.sheet{page-break-after:always;width:210mm;height:297mm;min-height:0;box-shadow:none}.sheet:last-child{page-break-after:auto}.sheet small{display:none}}
-      </style></head><body><header class="toolbar"><div><strong>EPRIS Passport · ${code}</strong><span>4 sheets · pages 01—07 · print size 120 × 160 mm</span></div><button type="button" onclick="window.print()">Print booklet</button></header><main class="stack">${sheets.map((src, index) => `<section class="sheet"><img src="${src}" alt="Passport print sheet ${index + 1}"><small>SHEET ${String(index + 1).padStart(2, '0')} / ${sheets.length}</small></section>`).join('')}</main></body></html>`);
+      </style></head><body><header class="toolbar"><div><strong>EPRIS Passport · ${code}</strong><span>4 sheets · pages 01–07 · print size 120 × 160 mm</span></div><button type="button" onclick="window.print()">Print booklet</button></header><main class="stack">${sheets.map((src, index) => `<section class="sheet"><img src="${src}" alt="Passport print sheet ${index + 1}"><small>SHEET ${String(index + 1).padStart(2, '0')} / ${sheets.length}</small></section>`).join('')}</main></body></html>`);
       printWindow.document.close();
       printWindow.focus();
       setPrintStatus('ready');
@@ -567,8 +567,8 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
         <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">{isEditing ? 'Edit Your EPRIS Digital Member Passport' : 'EPRIS Digital Member Passport'}</h1>
         <p className="font-crimson text-sm sm:text-base text-[var(--pp-ink)]/70 mt-3 max-w-2xl mx-auto lg:mx-0">
           {isEditing
-            ? 'Update your published passport below. Changes are saved in place at the same link — nothing is duplicated.'
-            : 'Design your own fictional EPRIS Journal membership passport — a cultural keepsake, not an identity document. Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.'}
+            ? 'Update your published passport below. Changes are saved in place at the same link – nothing is duplicated.'
+            : 'Design your own fictional EPRIS Journal membership passport – a cultural keepsake, not an identity document. Personal data and your photo are processed locally in your browser and are never sent anywhere unless you choose to publish a public profile below.'}
         </p>
       </div>
 
@@ -658,7 +658,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
                 >
                   {publishStatus === 'loading' ? (isEditing ? 'Saving…' : 'Publishing…') : publishStatus === 'done' ? (isEditing ? 'Saved ✓' : 'Published ✓') : (isEditing ? 'Save changes' : 'Publish public profile')}
                 </button>
-                {publishStatus === 'error' && <p className="text-[12px] font-serif text-red-700 mt-3 text-center">Publishing failed — please try again.</p>}
+                {publishStatus === 'error' && <p className="text-[12px] font-serif text-red-700 mt-3 text-center">Publishing failed – please try again.</p>}
                 
                 {publishStatus === 'done' && (
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 p-4 bg-white/60 border border-[var(--pp-burgundy)]/10 rounded-lg">

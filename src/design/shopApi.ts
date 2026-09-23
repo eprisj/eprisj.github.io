@@ -246,17 +246,17 @@ function briefStyleTokens(brief: StylistBrief): string[] {
 function reasonFor(c: CatalogItem, role: PickRole, room: string | null): string {
   const style = c.styles[0] || 'considered';
   const anchorL = [
-    `The anchor — its ${style} presence sets the tone for everything else.`,
+    `The anchor – its ${style} presence sets the tone for everything else.`,
     `Start here: a ${style} ${c.category.toLowerCase().replace(/s$/, '')} the rest of the room can lean on.`,
   ];
   const supportL = [
     `${cap(style)} lines that echo the anchor without competing with it.`,
     `Carries the ${style} language across the room and keeps the eye moving.`,
-    `A quiet workhorse — ${style}, useful, never loud.`,
+    `A quiet workhorse – ${style}, useful, never loud.`,
   ];
   const accentL = [
     `The finishing note: a ${style} accent that makes the board feel intentional.`,
-    `Small, deliberate, ${style} — the detail people notice last and remember most.`,
+    `Small, deliberate, ${style} – the detail people notice last and remember most.`,
   ];
   const pool = role === 'anchor' ? anchorL : role === 'accent' ? accentL : supportL;
   const base = pool[(c.id + (room ? room.length : 0)) % pool.length];
@@ -343,7 +343,7 @@ export function localCurate(
   let budgetNote: string | undefined;
   if (budget) {
     budgetNote = total <= budget
-      ? `Comes in around $${total.toLocaleString()} — inside your $${budget.toLocaleString()} budget, with room left for textiles and the small things.`
+      ? `Comes in around $${total.toLocaleString()} – inside your $${budget.toLocaleString()} budget, with room left for textiles and the small things.`
       : `Around $${total.toLocaleString()} as shown; a touch over $${budget.toLocaleString()}. Drop the accent piece or swap to the budget option to land under.`;
   }
 
@@ -357,7 +357,7 @@ export function localCurate(
     total,
     budgetNote,
     tips: [
-      'Buy the anchor first — let every later choice answer to it.',
+      'Buy the anchor first – let every later choice answer to it.',
       'Keep to two or three materials so the room feels intentional.',
       'Layer light at three heights: floor, table, and overhead.',
     ],

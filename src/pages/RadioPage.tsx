@@ -351,7 +351,7 @@ function NowPlayingBar({ title, artist, isHost, musicGain, onStop, onGain }:
       <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
       <div className="flex-1 min-w-0">
         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--c-gold)]">Now Playing</span>
-        <p className="font-serif text-sm text-[var(--c-bg)] leading-tight truncate">{title}{artist ? ` — ${artist}` : ''}</p>
+        <p className="font-serif text-sm text-[var(--c-bg)] leading-tight truncate">{title}{artist ? ` – ${artist}` : ''}</p>
       </div>
       {isHost && (
         <>

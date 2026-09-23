@@ -95,7 +95,7 @@ export function PassportBook({
     return () => { ro.disconnect(); cancelAnimationFrame(raf); };
   }, []);
 
-  const shareText = `I just got my EPRIS Digital Member Passport \u2014 ${fields.membershipType || 'Member'} No. ${code}, issued to ${fields.givenNames} ${fields.surname}. Verify it here:`;
+  const shareText = `I just got my EPRIS Digital Member Passport \u2013 ${fields.membershipType || 'Member'} No. ${code}, issued to ${fields.givenNames} ${fields.surname}. Verify it here:`;
   const url = typeof window !== 'undefined' ? window.location.href : '';
   const pageCount = 1 + PASSPORT_STAMP_SHEETS.length;
   const activeSheet = pageIndex > 0 ? PASSPORT_STAMP_SHEETS[pageIndex - 1] : null;
@@ -217,7 +217,7 @@ export function PassportBook({
           ))}
         </div>
         <p className="-mt-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/40">
-          {stamps.length ? `${stamps.length} verified ${stamps.length === 1 ? 'mark' : 'marks'} · booklet 01—07` : 'Booklet 01—07 · editorial archive'}
+          {stamps.length ? `${stamps.length} verified ${stamps.length === 1 ? 'mark' : 'marks'} · booklet 01–07` : 'Booklet 01–07 · editorial archive'}
         </p>
         <div className="flex items-center gap-4">
           <ShareRow shareText={shareText} url={url} />

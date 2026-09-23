@@ -103,7 +103,7 @@ export function StagePage() {
   const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
-    document.title = 'Stage — Spatial References — EPRIS Journal';
+    document.title = 'Stage: Spatial References | EPRIS Journal';
     const controller = new AbortController();
     Promise.all([fetchWorks(controller.signal), fetchCases(controller.signal)])
       .then(([nextWorks, nextCases]) => {

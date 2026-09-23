@@ -156,7 +156,7 @@ function F({
         color: '#1a0b10',
         lineHeight: 1.02,
         letterSpacing: big ? '0.01em' : mono ? '0.04em' : '0.005em',
-      }}>{value || '—'}</span>
+      }}>{value || '–'}</span>
     </div>
   );
 }
@@ -286,7 +286,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
           {/* Fields + disclaimer */}
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '3%' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6%' }}>
-              <F label="Membership Type" label2="Tipo di appartenenza" value={fields.membershipType || '—'} />
+              <F label="Membership Type" label2="Tipo di appartenenza" value={fields.membershipType || '–'} />
               <F label="Verification" label2="Verifica" value={code} mono />
             </div>
             <F label="Digital Signature" label2="Firma digitale" value={generateSignatureString(code, fields)} mono />
@@ -370,21 +370,21 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <F label="Surname" label2="Cognome" value={fields.surname.toUpperCase()} big />
             <F label="Given Names" label2="Nome" value={fields.givenNames.toUpperCase()} big />
-            <F label="Nationality" label2="Cittadinanza" value={`EPRIS · ${fields.country || '—'}`.toUpperCase()} />
+            <F label="Nationality" label2="Cittadinanza" value={`EPRIS · ${fields.country || '–'}`.toUpperCase()} />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of birth" label2="Data di nascita" value={fields.dob || '—'} />
+              <F label="Date of birth" label2="Data di nascita" value={fields.dob || '–'} />
               <F label="Record No." label2="Numero di registro" value={code} mono />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
               <F label="Sex" label2="Sesso" value={(fields.sex || 'X').toUpperCase()} />
-              <F label="City" label2="Città" value={fields.city || '—'} />
+              <F label="City" label2="Città" value={fields.city || '–'} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of issue" label2="Data di rilascio" value={fields.issueDate || '—'} />
+              <F label="Date of issue" label2="Data di rilascio" value={fields.issueDate || '–'} />
               <F label="Authority" label2="Autorità" value="EPRIS J." />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
-              <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '—'} />
+              <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '–'} />
               <div>
                 <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.1, marginBottom: 2, whiteSpace: 'nowrap' }}>
                   Holder's signature <span style={{ opacity: 0.82 }}>&middot; Firma del titolare</span>
@@ -392,7 +392,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
                 <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(4px, 1.6cqh, 15px)' }}/>
               </div>
             </div>
-            <F label="Professional Field" label2="Campo professionale" value={(fields.field || '—').toUpperCase()} />
+            <F label="Professional Field" label2="Campo professionale" value={(fields.field || '–').toUpperCase()} />
             <VerificationStamp />
           </div>
         </div>
@@ -536,7 +536,7 @@ export function PassportStampContactSheet({ stamps = [] }: { stamps?: PassportSt
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--pp-burgundy)]/55">Blank stamp archive</p>
           <p className="mt-1 font-serif text-sm text-[var(--pp-ink)]/70">{stamps.length ? `${stamps.length} editorial ${stamps.length === 1 ? 'mark' : 'marks'} · ${6 - stamps.length} pages available` : '6 reserved pages · ready for future marks'}</p>
         </div>
-        <span className="font-mono text-[9px] tabular-nums text-[var(--pp-burgundy)]/45">02—07</span>
+        <span className="font-mono text-[9px] tabular-nums text-[var(--pp-burgundy)]/45">02–07</span>
       </div>
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {PASSPORT_STAMP_SHEETS.map((sheet) => (

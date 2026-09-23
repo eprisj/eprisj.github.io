@@ -69,7 +69,7 @@ function WorkPlate({ work, index, className = '', single = false }: { work: Work
     <>
       <img
         src={image.url}
-        alt={image.caption || `${work.title} — ${work.author}`}
+        alt={image.caption || `${work.title} – ${work.author}`}
         loading={single ? 'eager' : 'lazy'}
         decoding="async"
         onError={() => setFailed(true)}
@@ -104,7 +104,7 @@ function Decomposition({ work }: { work: Work }) {
     { key: 'material', value: work.medium },
     { key: 'place', value: [work.venue, work.city, work.country].filter(Boolean).join(' · ') },
     { key: 'moment', value: [work.year, work.discipline].filter(Boolean).join(' · ') },
-    { key: 'authorship', value: [work.author, work.credits].filter(Boolean).join(' — ') },
+    { key: 'authorship', value: [work.author, work.credits].filter(Boolean).join(' – ') },
     { key: 'reading', value: work.statement },
   ];
 
@@ -167,7 +167,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
             ))}
           </div>
         )}
-        {current?.credit && <p className="mt-3 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">Photo — {current.credit}</p>}
+        {current?.credit && <p className="mt-3 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55">Photo – {current.credit}</p>}
 
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
@@ -220,7 +220,7 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
     <form onSubmit={submit} className="p-5 sm:p-8">
       <div className="mb-7 max-w-xl">
         <h2 className="font-display text-3xl text-[#4a1728] sm:text-4xl">Show us what you built</h2>
-        <p className="mt-3 text-sm leading-relaxed text-[#4a1728]/65">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status — the EPRIS editorial team verifies authorship and credits before publishing.</p>
+        <p className="mt-3 text-sm leading-relaxed text-[#4a1728]/65">Sets, scenography, installations and conceptual pieces. Submissions appear with “Under review” status – the EPRIS editorial team verifies authorship and credits before publishing.</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Work title" required><input className={inputClass} value={draft.title} onChange={(e) => set('title', e.target.value)} maxLength={140} required autoFocus /></Field>
@@ -235,7 +235,7 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
         <Field label="Venue / production"><input className={inputClass} value={draft.venue} onChange={(e) => set('venue', e.target.value)} maxLength={140} /></Field>
         <div className="sm:col-span-2"><Field label="Image URL" required><input className={inputClass} value={draft.imageUrl} onChange={(e) => set('imageUrl', e.target.value)} type="url" maxLength={500} required placeholder="https://" /></Field></div>
         <div className="sm:col-span-2"><Field label="Portfolio link"><input className={inputClass} value={draft.portfolio} onChange={(e) => set('portfolio', e.target.value)} type="url" maxLength={300} placeholder="https://" /></Field></div>
-        <div className="sm:col-span-2"><Field label="Statement — what is this work about?" required><textarea className={`${inputClass} min-h-28 resize-y py-3`} value={draft.statement} onChange={(e) => set('statement', e.target.value)} maxLength={800} required /></Field></div>
+        <div className="sm:col-span-2"><Field label="Statement – what is this work about?" required><textarea className={`${inputClass} min-h-28 resize-y py-3`} value={draft.statement} onChange={(e) => set('statement', e.target.value)} maxLength={800} required /></Field></div>
         <div className="sm:col-span-2"><Field label="Your contact (kept private)"><input className={inputClass} value={draft.contact} onChange={(e) => set('contact', e.target.value)} maxLength={160} placeholder="Email or Instagram" /></Field></div>
         <input tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" value={draft.website} onChange={(e) => set('website', e.target.value)} />
       </div>
@@ -271,7 +271,7 @@ export function ShowcasePage() {
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
-    document.title = 'Showcase — Set Design & Conceptual Art — EPRIS Journal';
+    document.title = 'Showcase: Set Design & Conceptual Art | EPRIS Journal';
     document.documentElement.lang = 'en';
     const description = 'A vitrine of set design, scenography and conceptual art by emerging authors worldwide, curated and open for submissions by EPRIS Journal.';
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
@@ -361,7 +361,7 @@ export function ShowcasePage() {
 
   return <div className="min-h-screen bg-[#f5f0eb] text-[#4a1728] selection:bg-[#4a1728] selection:text-white">
     <p className="bg-[#4a1728] px-4 py-3 text-center font-sans text-[8px] uppercase tracking-[0.18em] text-[#ece2d5] sm:text-[9px]">
-      Open call — set design &amp; conceptual art · Worldwide · Reviewed by EPRIS editorial
+      Open call – set design &amp; conceptual art · Worldwide · Reviewed by EPRIS editorial
     </p>
 
     <header className="sticky top-0 z-40 border-b border-[#4a1728]/10 bg-[#f5f0eb]/95 backdrop-blur-xl">
@@ -608,7 +608,7 @@ export function ShowcasePage() {
                 <div className="max-w-md">
                   <Search size={26} className="mx-auto text-[#4a1728]/40" />
                   <p className="mt-5 font-display text-[clamp(2.6rem,7vw,5rem)] lowercase leading-[0.84] tracking-normal">{works.length === 0 ? 'The vitrine is being assembled.' : 'No works match these filters.'}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open — the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-[#4a1728]/65">{works.length === 0 ? 'Submissions are open – the first works are under editorial review. Send yours and it goes into the queue.' : 'Try clearing a filter or widening the search.'}</p>
                   <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                     {works.length > 0 && activeFilterCount > 0 && <button type="button" onClick={resetFilters} className={btnGhost('bone')}>Clear filters</button>}
                     <button type="button" onClick={() => setSubmitting(true)} className={btnSolid('bone')}><Plus size={16} /> Submit work</button>
@@ -682,7 +682,7 @@ export function ShowcasePage() {
                       <button
                         type="button"
                         onClick={(event) => { event.stopPropagation(); setSelected(work); }}
-                        aria-label={`Read ${work.title} — ${work.author}`}
+                        aria-label={`Read ${work.title} – ${work.author}`}
                         className="mt-3 inline-flex min-h-11 w-fit items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/55 underline-offset-4 transition-colors group-hover:text-[#1a0b10] group-hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a1728]"
                       >
                         Read <ArrowRight size={12} />
@@ -729,7 +729,7 @@ export function ShowcasePage() {
               </h2>
               <p className="mt-5 max-w-[42ch] font-sans text-[14px] leading-relaxed text-[#f5f0eb]/60">
                 Scenography, exhibitions, installations and windows. Send the room, the date
-                and a sentence — a person reads it.
+                and a sentence – a person reads it.
               </p>
             </div>
             <span className="inline-flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#f5f0eb]">

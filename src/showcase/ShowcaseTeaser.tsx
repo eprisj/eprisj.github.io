@@ -55,7 +55,7 @@ export function ShowcaseTeaser() {
 
   const eyebrow = showcaseSettings.eyebrow || 'Showcase';
   const title = showcaseSettings.title || 'A vitrine of set design and conceptual art';
-  const description = showcaseSettings.description || 'Rooms, windows, stages and installations by authors worldwide — read from the source, credited, and open for submissions.';
+  const description = showcaseSettings.description || 'Rooms, windows, stages and installations by authors worldwide – read from the source, credited, and open for submissions.';
   const ctaLabel = showcaseSettings.ctaLabel || 'Open the vitrine';
   const requestedCtaUrl = String(showcaseSettings.ctaUrl || '').trim();
   const ctaUrl = /^(?:https?:\/\/|\/)/i.test(requestedCtaUrl) ? requestedCtaUrl : '/showcase';

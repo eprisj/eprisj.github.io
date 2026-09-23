@@ -257,7 +257,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
     y += 5;
     doc.setFontSize(7);
     for (const reading of readings) {
-      const prefix = reading.tone === 'breaks' ? 'BREAKS — ' : '';
+      const prefix = reading.tone === 'breaks' ? 'BREAKS – ' : '';
       const lines = doc.splitTextToSize(prefix + reading.text, PAGE_W - MARGIN * 2) as string[];
       for (const line of lines) {
         if (y > PAGE_H - MARGIN) {
@@ -272,7 +272,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   }
 
   doc.setFontSize(6);
-  doc.text('Drawn from the model, not traced from a screen — eprisjournal.com/stage', MARGIN, PAGE_H - 8);
+  doc.text('Drawn from the model, not traced from a screen – eprisjournal.com/stage', MARGIN, PAGE_H - 8);
 
   doc.save(`epris-stage-${today()}.pdf`);
 }

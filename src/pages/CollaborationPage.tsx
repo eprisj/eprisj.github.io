@@ -111,9 +111,9 @@ function LeadDetail({ lead, onClose }: { lead: Lead; onClose: () => void }) {
         </div>
 
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#2d1820]/10 bg-[#2d1820]/10 sm:grid-cols-3">
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Discipline</p><p className="mt-2 font-serif text-lg">{lead.discipline || '—'}</p></div>
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">EPRIS score</p><p className="mt-2 font-serif text-lg">{lead.score ?? '—'}{typeof lead.score === 'number' ? '/100' : ''}</p></div>
-          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Added</p><p className="mt-2 font-serif text-lg">{lead.addedAt ? new Date(lead.addedAt).toLocaleDateString('en-GB') : '—'}</p></div>
+          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Discipline</p><p className="mt-2 font-serif text-lg">{lead.discipline || '–'}</p></div>
+          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">EPRIS score</p><p className="mt-2 font-serif text-lg">{lead.score ?? '–'}{typeof lead.score === 'number' ? '/100' : ''}</p></div>
+          <div className="bg-[#fbf8f4] p-4"><p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8a747b]">Added</p><p className="mt-2 font-serif text-lg">{lead.addedAt ? new Date(lead.addedAt).toLocaleDateString('en-GB') : '–'}</p></div>
         </div>
 
         <section className="mt-8">
@@ -203,7 +203,7 @@ export function CollaborationPage() {
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
-    document.title = 'Collaboration Registry — EPRIS Journal';
+    document.title = 'Collaboration Registry | EPRIS Journal';
     document.documentElement.lang = 'en';
     const description = 'Discover and suggest emerging architects, designers and artists for EPRIS Journal interviews and editorial collaborations.';
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
@@ -266,7 +266,7 @@ export function CollaborationPage() {
           <div className="flex items-center justify-between border-y border-[#28151b]/15 py-3 font-mono text-[8px] uppercase tracking-[0.23em] text-[#725b63] sm:text-[9px]">
             <span><span className="text-[#a34f42]">EPRIS</span> / Collaboration index</span>
             <span className="hidden sm:inline">Independent editorial register</span>
-            <span>No. 01 — 2026</span>
+            <span>No. 01 – 2026</span>
           </div>
 
           <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(310px,0.34fr)]">
@@ -354,10 +354,10 @@ export function CollaborationPage() {
                 <thead><tr className="border-b border-[#28151b]/10 bg-[#eee7df]"><th className="w-[25%] px-5 py-4 font-mono text-[9px] font-normal uppercase tracking-[0.17em] text-[#755e66]">Candidate</th><th className="w-[15%] px-4 py-4 font-mono text-[9px] font-normal uppercase tracking-[0.17em] text-[#755e66]">Location</th><th className="w-[15%] px-4 py-4 font-mono text-[9px] font-normal uppercase tracking-[0.17em] text-[#755e66]">Discipline</th><th className="w-[31%] px-4 py-4 font-mono text-[9px] font-normal uppercase tracking-[0.17em] text-[#755e66]">Editorial note</th><th className="w-[8%] px-4 py-4 text-center font-mono text-[9px] font-normal uppercase tracking-[0.17em] text-[#755e66]">Score</th><th className="w-[6%] px-4 py-4"><span className="sr-only">Open</span></th></tr></thead>
                 <tbody>{visible.map((lead) => <tr key={lead.id} className="group cursor-pointer border-b border-[#28151b]/[0.07] transition-colors last:border-0 hover:bg-white" onClick={() => setSelected(lead)}>
                   <td className="px-5 py-5 align-top"><div className="flex gap-3"><span className="text-2xl" aria-hidden="true">{flag(lead.countryCode)}</span><div className="min-w-0"><button type="button" className="text-left font-serif text-lg leading-tight group-hover:text-[#a34f42]">{lead.name}</button>{lead.instagram && <p className="mt-1 truncate font-mono text-[9px] text-[#8b757d]">@{normalizeInstagram(lead.instagram)}</p>}</div></div></td>
-                  <td className="px-4 py-5 align-top text-sm leading-snug text-[#67545a]">{[lead.city, lead.country].filter(Boolean).join(', ') || '—'}</td>
-                  <td className="px-4 py-5 align-top text-sm leading-snug">{lead.discipline || '—'}</td>
+                  <td className="px-4 py-5 align-top text-sm leading-snug text-[#67545a]">{[lead.city, lead.country].filter(Boolean).join(', ') || '–'}</td>
+                  <td className="px-4 py-5 align-top text-sm leading-snug">{lead.discipline || '–'}</td>
                   <td className="px-4 py-5 align-top"><p className="line-clamp-2 text-sm leading-relaxed text-[#67545a]">{lead.why || 'Description in review.'}</p></td>
-                  <td className="px-4 py-5 text-center align-top font-serif text-xl">{lead.score ?? '—'}</td>
+                  <td className="px-4 py-5 text-center align-top font-serif text-xl">{lead.score ?? '–'}</td>
                   <td className="px-4 py-5 align-top"><span className="grid h-10 w-10 place-items-center rounded-full border border-[#28151b]/10 transition-colors group-hover:bg-[#28151b] group-hover:text-white"><ArrowUpRight size={16} /></span></td>
                 </tr>)}</tbody>
               </table>

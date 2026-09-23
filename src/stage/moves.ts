@@ -112,13 +112,13 @@ const objectInEmptiness: Move = {
   read(scene, params, subjectId) {
     const subject = subjectOf(scene, subjectId);
     const out: Reading[] = [];
-    if (!subject) return [{ tone: 'breaks', text: 'Nothing stands in the room yet — the move needs one object to isolate.' }];
+    if (!subject) return [{ tone: 'breaks', text: 'Nothing stands in the room yet – the move needs one object to isolate.' }];
     const clearance = params.clearance;
     const area = Math.PI * clearance * clearance;
     const floor = scene.room.w * scene.room.d;
     out.push({
       tone: 'note',
-      text: `The emptiness takes ${round(area)} m² of floor — ${Math.round((Math.min(area, floor) / floor) * 100)}% of the room. Budget the radius, not the thing standing in it.`,
+      text: `The emptiness takes ${round(area)} m² of floor – ${Math.round((Math.min(area, floor) / floor) * 100)}% of the room. Budget the radius, not the thing standing in it.`,
     });
     if (clearance * 2 > Math.min(scene.room.w, scene.room.d)) {
       out.push({ tone: 'breaks', text: 'The radius no longer fits the room: the objects are pinned to the walls, and the emptiness is a wall gap rather than a field.' });
@@ -183,7 +183,7 @@ const borrowedObject: Move = {
   },
   read(scene, params, subjectId) {
     const subject = subjectOf(scene, subjectId);
-    if (!subject) return [{ tone: 'breaks', text: 'Nothing to borrow yet — add the object first.' }];
+    if (!subject) return [{ tone: 'breaks', text: 'Nothing to borrow yet – add the object first.' }];
     const out: Reading[] = [];
     const count = Math.round(params.count);
     const alteration = params.alteration;
@@ -200,7 +200,7 @@ const borrowedObject: Move = {
       out.push({ tone: 'breaks', text: 'A room of them is a production line, not a borrowing.' });
     }
     if (alteration < 15) {
-      out.push({ tone: 'breaks', text: 'Untouched, it reads as a prop someone had lying around — the borrowing has to show intent.' });
+      out.push({ tone: 'breaks', text: 'Untouched, it reads as a prop someone had lying around – the borrowing has to show intent.' });
     } else if (alteration > 80) {
       out.push({ tone: 'breaks', text: 'Over-designed, the borrowing disappears and you are back to making furniture.' });
     }
@@ -242,7 +242,7 @@ const clothAsWall: Move = {
       { tone: 'note', text: `${walls.length} wall${walls.length > 1 ? 's' : ''} hung at 40 mm. What the room loses in solidity it gains in time.` },
     ];
     if (params.drop > 96) {
-      out.push({ tone: 'breaks', text: 'Floor to ceiling, the cloth stops moving and reads as a painted wall again — leave it short of the slab.' });
+      out.push({ tone: 'breaks', text: 'Floor to ceiling, the cloth stops moving and reads as a painted wall again – leave it short of the slab.' });
     }
     if (params.translucency > 85) {
       out.push({ tone: 'breaks', text: 'At this transparency there is no wall left, only a haze: nothing is divided and nothing is revealed.' });
@@ -286,7 +286,7 @@ const materialThatReturns: Move = {
       { tone: 'note', text: `${whole} of ${scene.objects.length} elements come out of stock whole. Design the taking-apart as carefully as the putting-up.` },
     ];
     if (offcut > 0.05) {
-      out.push({ tone: 'breaks', text: `${round(offcut, 2)} m³ has to be cut to size — that part does not go back on the rack.` });
+      out.push({ tone: 'breaks', text: `${round(offcut, 2)} m³ has to be cut to size – that part does not go back on the rack.` });
     }
     return out;
   },
@@ -342,7 +342,7 @@ const roomInsideARoom: Move = {
     }
     out.push({ tone: 'note', text: `A ${innerW} × ${innerD} m room inside a ${scene.room.w} × ${scene.room.d} m hall, ${seam} m of seam all round.` });
     if (seam < 0.6) {
-      out.push({ tone: 'breaks', text: 'Under 600 mm nobody walks the seam — the inner room stops being a building and becomes cladding.' });
+      out.push({ tone: 'breaks', text: 'Under 600 mm nobody walks the seam – the inner room stops being a building and becomes cladding.' });
     }
     if (params.height >= scene.room.h - 0.15) {
       out.push({ tone: 'breaks', text: 'It reaches the ceiling: this is a partition wall now, and the hall around it has disappeared.' });

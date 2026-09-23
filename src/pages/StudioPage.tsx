@@ -172,7 +172,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
             {gallery.slice(1).map((src, i) => (
               <Reveal key={i}>
                 <div className="aspect-[4/3] bg-[#1a0812] overflow-hidden shadow-md">
-                  <img src={src} alt={`${project.title} — ${i + 2}`} className="w-full h-full object-cover" />
+                  <img src={src} alt={`${project.title} – ${i + 2}`} className="w-full h-full object-cover" />
                 </div>
               </Reveal>
             ))}
@@ -212,7 +212,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
   const handleSend = () => {
     if (!form.name.trim() || !form.email.trim()) { setError(true); return; }
     setError(false);
-    const subject = `${t('studio.brief.kicker')} — ${form.name}`;
+    const subject = `${t('studio.brief.kicker')} – ${form.name}`;
     const to = studio.email || '';
     const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildBrief())}`;
     // Most reliable cross-device mailto: create hidden anchor and click it.
@@ -272,11 +272,11 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
           </div>
           <div>
             <span className={label}>{t('studio.brief.area')} <span className="text-[rgb(var(--c-accent-rgb)_/_0.3)]">· {t('studio.brief.optional')}</span></span>
-            <input className={field} value={form.area} onChange={set('area')} placeholder="—" />
+            <input className={field} value={form.area} onChange={set('area')} placeholder="–" />
           </div>
           <div>
             <span className={label}>{t('studio.brief.timeline')} <span className="text-[rgb(var(--c-accent-rgb)_/_0.3)]">· {t('studio.brief.optional')}</span></span>
-            <input className={field} value={form.timeline} onChange={set('timeline')} placeholder="—" />
+            <input className={field} value={form.timeline} onChange={set('timeline')} placeholder="–" />
           </div>
           <div className="sm:col-span-2">
             <span className={label}>{t('studio.brief.message')} <span className="text-[rgb(var(--c-accent-rgb)_/_0.3)]">· {t('studio.brief.optional')}</span></span>
@@ -308,7 +308,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
           <div className="mt-6 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)]">
             {sent && (
               <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-3">
-                Если почта не открылась — напишите напрямую:
+                Если почта не открылась – напишите напрямую:
               </p>
             )}
             <a
@@ -461,7 +461,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                           <ul className="space-y-1.5">
                             {o.items.map((it, j) => (
                               <li key={j} className="flex items-baseline gap-2.5 font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.75)]">
-                                <span className="text-[var(--c-gold)] text-[10px] shrink-0 translate-y-[-1px]">—</span>
+                                <span className="text-[var(--c-gold)] text-[10px] shrink-0 translate-y-[-1px]">–</span>
                                 {it}
                               </li>
                             ))}
@@ -613,7 +613,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                     <ul className="space-y-2 mt-auto">
                       {pkg.features.map((f, j) => (
                         <li key={j} className={`font-mono text-[10px] uppercase tracking-wider flex items-start gap-2 ${pkg.highlight ? 'text-[rgb(var(--c-bg-rgb)_/_0.8)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.6)]'}`}>
-                          <span className="text-[var(--c-gold)] mt-px">—</span> {t(f)}
+                          <span className="text-[var(--c-gold)] mt-px">–</span> {t(f)}
                         </li>
                       ))}
                     </ul>
