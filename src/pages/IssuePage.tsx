@@ -144,7 +144,7 @@ export function IssuePage({
             <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)]">
               <img
                 src={issue.coverUrl}
-                alt={`${issue.name} — ${issue.season}`}
+                alt={`${issue.name} – ${issue.season}`}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -303,7 +303,7 @@ export function IssuePage({
                   <div className="aspect-[3/4] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)] transition-colors group-hover:border-[var(--c-accent)]">
                     <img
                       src={pastIssue.coverUrl}
-                      alt={`${pastIssue.name} — ${pastIssue.season}`}
+                      alt={`${pastIssue.name} – ${pastIssue.season}`}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
                   </div>

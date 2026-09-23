@@ -96,7 +96,7 @@ function fld(
   ctx.font = opts.mono
     ? `500 ${size}px "Courier New", monospace`
     : `${opts.big ? 700 : 600} ${size}px "Playfair Display", "PT Serif", serif`;
-  ctx.fillText(value || '—', x, y + size + 4, maxW);
+  ctx.fillText(value || '–', x, y + size + 4, maxW);
   ctx.restore();
 }
 
@@ -277,7 +277,7 @@ export async function renderPassportPNG(
   const fCol1X = padX + qrSize + contentW * 0.04;
   const fColW = padX + contentW - fCol1X;
   let ty = topContentY + 6;
-  fld(ctx, fCol1X, ty, fColW * 0.48, 'Membership Type', 'Tipo di appartenenza', fields.membershipType || '—');
+  fld(ctx, fCol1X, ty, fColW * 0.48, 'Membership Type', 'Tipo di appartenenza', fields.membershipType || '–');
   fld(ctx, fCol1X + fColW * 0.5, ty, fColW * 0.48, 'Verification', 'Verifica', code, { mono: true });
   ty += 56;
   fld(ctx, fCol1X, ty, fColW, 'Digital Signature', 'Firma digitale', generateSignatureString(code, fields), { mono: true });
@@ -362,14 +362,14 @@ export async function renderPassportPNG(
   const rowGap = (contentBottom - contentTop) / 8.4;
   fld(ctx, rCol1, ry, rColW, 'Surname', 'Cognome', fields.surname.toUpperCase(), { big: true }); ry += rowGap;
   fld(ctx, rCol1, ry, rColW, 'Given Names', 'Nome', fields.givenNames.toUpperCase(), { big: true }); ry += rowGap;
-  fld(ctx, rCol1, ry, rColW, 'Nationality', 'Cittadinanza', `EPRIS · ${fields.country || '—'}`.toUpperCase()); ry += rowGap;
-  fld(ctx, rCol1, ry, half, 'Date of birth', 'Data di nascita', fields.dob || '—');
+  fld(ctx, rCol1, ry, rColW, 'Nationality', 'Cittadinanza', `EPRIS · ${fields.country || '–'}`.toUpperCase()); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Date of birth', 'Data di nascita', fields.dob || '–');
   fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'Record No.', 'Numero di registro', code, { mono: true }); ry += rowGap;
   fld(ctx, rCol1, ry, half, 'Sex', 'Sesso', (fields.sex || 'X').toUpperCase());
-  fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'City', 'Città', fields.city || '—'); ry += rowGap;
-  fld(ctx, rCol1, ry, half, 'Date of issue', 'Data di rilascio', fields.issueDate || '—');
+  fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'City', 'Città', fields.city || '–'); ry += rowGap;
+  fld(ctx, rCol1, ry, half, 'Date of issue', 'Data di rilascio', fields.issueDate || '–');
   fld(ctx, rCol1 + half + rColW * 0.08, ry, half, 'Authority', 'Autorità', 'EPRIS J.'); ry += rowGap;
-  fld(ctx, rCol1, ry, half, 'Date of expiry', 'Data di scadenza', fields.expiryDate || '—');
+  fld(ctx, rCol1, ry, half, 'Date of expiry', 'Data di scadenza', fields.expiryDate || '–');
   ctx.save();
   const sigX = rCol1 + half + rColW * 0.08;
   ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65; ctx.font = `italic 400 13px "PT Sans", sans-serif`;
@@ -378,7 +378,7 @@ export async function renderPassportPNG(
   ctx.beginPath(); ctx.moveTo(sigX, ry + 20); ctx.lineTo(sigX + half * 0.82, ry + 20); ctx.stroke();
   ctx.restore();
   ry += rowGap;
-  fld(ctx, rCol1, ry, rColW, 'Professional Field', 'Campo professionale', (fields.field || '—').toUpperCase());
+  fld(ctx, rCol1, ry, rColW, 'Professional Field', 'Campo professionale', (fields.field || '–').toUpperCase());
 
   verificationStamp(ctx, padX + contentW - contentW * 0.08, contentBottom - (contentBottom - contentTop) * 0.05, contentW * 0.06);
 
@@ -494,7 +494,7 @@ export async function renderStampPagePNG(sheet: PassportStampSheetDefinition, st
   ctx.save(); ctx.strokeStyle = C.burgundy; ctx.globalAlpha = 0.62; ctx.lineWidth = 2; ctx.strokeRect(17, 17, W - 34, H - 34); ctx.restore();
   ctx.save(); ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.44; ctx.font = '10px monospace';
   ctx.fillText('EPRIS JOURNAL · CULTURAL MEMBERSHIP · EDITORIAL STAMP REGISTER', 58, 35);
-  ctx.textAlign = 'right'; ctx.fillText(`SHEET ${sheet.editionMark} · ${sheet.pageNumbers[0]}—${sheet.pageNumbers[1]}`, W - 58, 35); ctx.restore();
+  ctx.textAlign = 'right'; ctx.fillText(`SHEET ${sheet.editionMark} · ${sheet.pageNumbers[0]}–${sheet.pageNumbers[1]}`, W - 58, 35); ctx.restore();
 
   dottedLine(ctx, W * 0.025, W * 0.975, H * 0.5);
   ctx.save(); ctx.strokeStyle = colors.line; ctx.globalAlpha = 0.28; ctx.lineWidth = 8;

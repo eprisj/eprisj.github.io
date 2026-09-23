@@ -239,7 +239,7 @@ const UI_STRING_FALLBACK: Record<string, Record<string, string>> = {
   'homepage.reviewsTitle': { EN: 'Reviews', RU: 'Обзоры', UA: 'Огляди', DE: 'Rezensionen', IT: 'Recensioni', ES: 'Reseñas', TR: 'İncelemeler', FR: 'Critiques' },
   'homepage.reviewsDescription': { EN: 'What we have been reading, watching and wearing lately.', RU: 'Что мы читаем, смотрим и носим в последнее время.', UA: 'Що ми читаємо, дивимось і носимо останнім часом.', DE: 'Was wir zuletzt gelesen, gesehen und getragen haben.', IT: 'Cosa abbiamo letto, visto e indossato di recente.', ES: 'Lo que hemos leído, visto y llevado últimamente.', TR: 'Son zamanlarda okuduklarımız, izlediklerimiz ve giydiklerimiz.', FR: 'Ce que nous avons lu, regardé et porté récemment.' },
   'homepage.allReviews': { EN: 'All reviews', RU: 'Все обзоры', UA: 'Усі огляди', DE: 'Alle Rezensionen', IT: 'Tutte le recensioni', ES: 'Todas las reseñas', TR: 'Tüm incelemeler', FR: 'Toutes les critiques' },
-  'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала — сначала самые новые.', UA: 'Свіжі тексти журналу — спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.', FR: 'Les derniers textes du journal, du plus récent au plus ancien.' },
+  'homepage.articlesDescription': { EN: 'The latest writing from the journal, newest first.', RU: 'Свежие тексты журнала – сначала самые новые.', UA: 'Свіжі тексти журналу – спочатку найновіші.', DE: 'Die neuesten Texte des Journals, zuerst die aktuellsten.', IT: 'Gli ultimi testi del journal, dal più recente.', ES: 'Los textos más recientes de la revista, primero los nuevos.', TR: 'Derginin en yeni yazıları, en yeniler önce.', FR: 'Les derniers textes du journal, du plus récent au plus ancien.' },
   'articles.readPreview': { EN: 'Read preview', RU: 'Читать превью', UA: 'Читати прев’ю', DE: 'Vorschau lesen', IT: 'Leggi anteprima', ES: 'Leer vista previa', TR: 'Önizlemeyi oku', FR: 'Lire l\'aperçu' },
   'articles.readFull': { EN: 'Read full article', RU: 'Читать полностью', UA: 'Читати повністю', DE: 'Vollständigen Artikel lesen', IT: 'Leggi l’articolo completo', ES: 'Leer el artículo completo', TR: 'Makalenin tamamını oku', FR: 'Lire l\'article complet' },
   'articles.closePreview': { EN: 'Close preview', RU: 'Закрыть превью', UA: 'Закрити прев’ю', DE: 'Vorschau schließen', IT: 'Chiudi anteprima', ES: 'Cerrar vista previa', TR: 'Önizlemeyi kapat', FR: 'Fermer l\'aperçu' },
@@ -1084,7 +1084,7 @@ function NavBar({
         <a
           href="/"
           onClick={(event) => { event.preventDefault(); onHome(); setIsMenuOpen(false); }}
-          aria-label={`${brandName} — home`}
+          aria-label={`${brandName} – home`}
           aria-current={activeTab === 'gallery' ? 'page' : undefined}
           className="absolute left-1/2 -translate-x-1/2 leading-none font-mono px-3 py-2 text-[var(--c-accent)]"
         >
@@ -1115,7 +1115,7 @@ function NavBar({
       <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
         <div className={`w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
-          <a href="/" className="flex items-center font-mono text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} — home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
+          <a href="/" className="flex items-center font-mono text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} – home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
             <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
         </div>
@@ -1565,7 +1565,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
       <Reveal>
         <div className="mb-16 text-center max-w-xl mx-auto">
           <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Est. 2025</div>
-          <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an Italian publication, founded in Milan in 2025 as a digital space for art, architecture and interior design — read wherever taste and culture actually live.</p>
+          <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an Italian publication, founded in Milan in 2025 as a digital space for art, architecture and interior design – read wherever taste and culture actually live.</p>
         </div>
       </Reveal>
       {team.length > 0 && (
@@ -3961,7 +3961,7 @@ function SearchResults({
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('search.results')}</p>
           <h2 className="font-serif text-2xl text-[var(--c-accent)]">
-            "{query}" — <span className="text-[var(--c-gold)]">{results.length}</span>
+            "{query}" – <span className="text-[var(--c-gold)]">{results.length}</span>
           </h2>
         </div>
         <button
@@ -4137,14 +4137,14 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
 }
 
 const ROUTE_META: Record<string, { title: string; description: string }> = {
-  gallery: { title: 'EPRIS Journal — Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
-  articles: { title: 'Articles — EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
-  reviews: { title: 'Reviews — EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
+  gallery: { title: 'EPRIS Journal | Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
+  articles: { title: 'Articles | EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
+  reviews: { title: 'Reviews | EPRIS Journal', description: 'Independent EPRIS reviews of exhibitions, books, design, architecture and contemporary visual culture.' },
   about: { title: 'About EPRIS Journal', description: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.' },
-  manifest: { title: 'Manifesto — EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
-  issue: { title: 'Current Issue — EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
+  manifest: { title: 'Manifesto | EPRIS Journal', description: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.' },
+  issue: { title: 'Current Issue | EPRIS Journal', description: 'Read the current digital issue of EPRIS Journal.' },
   studio: { title: 'EPRIS Studio', description: 'Editorial, visual and cultural projects by EPRIS Studio.' },
-  design: { title: 'The Edit — EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
+  design: { title: 'The Edit | EPRIS Design', description: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.' },
   museum: { title: 'EPRIS Museum | EPRIS Journal', description: 'A living museum collection of works by Ukrainian artists, designers and architects, curated by EPRIS Journal.' },
   radio: { title: 'EPRIS Radio', description: 'Listen to EPRIS Radio: sound, music and cultural programming.' },
   podcasts: { title: 'EPRIS Podcasts', description: 'Conversations and audio stories about contemporary art, architecture, design and cities.' },
@@ -4202,7 +4202,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
       'query-input': 'required name=search_term_string',
     },
   };
-  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+—\s+EPRIS Journal$/, '') || publicationName;
+  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+[|–—]\s+EPRIS Journal$/, '') || publicationName;
 
   if (article) {
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
@@ -4220,7 +4220,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     // is only a fallback for the handful of older records without it.
     const isoPublished = article.publishedAt || article.date;
     const isoModified = article.updatedAt || isoPublished;
-    document.title = `${article.title} — ${publicationName}`;
+    document.title = `${article.title} | ${publicationName}`;
     setMeta('og:title', article.title);
     setMeta('og:description', article.excerpt);
     setMeta('og:image', imageUrl);
@@ -4273,7 +4273,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
       ? `https://music.eprisjournal.com/review/${getSlugForReview(review)}/`
       : `https://eprisjournal.com/review/${getSlugForReview(review)}`;
     const summary = review.verdict || reviewPlainText(review.content).slice(0, 200);
-    document.title = `${review.title} — ${publicationName}`;
+    document.title = `${review.title} | ${publicationName}`;
     setMeta('og:title', review.title);
     setMeta('og:description', summary);
     setMeta('og:image', imageUrl);
@@ -4314,7 +4314,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
       ],
     });
   } else if (activeSearch) {
-    const title = `Search: ${activeSearch} — ${publicationName}`;
+    const title = `Search: ${activeSearch} | ${publicationName}`;
     const description = `Search results for “${activeSearch}” across ${publicationName}.`;
     document.title = title;
     setMeta('og:title', title);

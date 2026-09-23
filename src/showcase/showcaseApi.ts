@@ -240,7 +240,7 @@ export const FALLBACK_WORKS: Work[] = [
   },
   {
     id: 'fallback-dior-tokyo',
-    title: 'Christian Dior: Designer of Dreams — Tokyo scenography',
+    title: 'Christian Dior: Designer of Dreams – Tokyo scenography',
     author: 'OMA',
     year: 2023,
     discipline: 'Scenography',

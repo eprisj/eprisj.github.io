@@ -52,7 +52,7 @@ export function Commission({ onClose }: { onClose: () => void }) {
               it is with the editorial
             </h2>
             <p className="mx-auto mt-4 max-w-md font-sans text-[14px] leading-relaxed text-[#4a1728]/70">
-              A person reads every enquiry — nothing here is automatic. If the brief fits what
+              A person reads every enquiry – nothing here is automatic. If the brief fits what
               the bureau does, you will hear back at the address you left.
             </p>
             <button
@@ -66,7 +66,7 @@ export function Commission({ onClose }: { onClose: () => void }) {
         ) : (
           <form onSubmit={submit} className="px-5 py-6 sm:px-8 sm:py-8">
             <p className="max-w-[54ch] font-sans text-[14px] leading-relaxed text-[#4a1728]/75">
-              Tell us what the space has to do. Rough is fine — a room, a date and a sentence
+              Tell us what the space has to do. Rough is fine – a room, a date and a sentence
               about the work is enough to answer whether we are the right people.
             </p>
 
@@ -86,7 +86,7 @@ export function Commission({ onClose }: { onClose: () => void }) {
               <label className="block">
                 <span className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#4a1728]/50">What kind of work</span>
                 <select {...field('kind')} className="mt-1.5 w-full border-b border-[#4a1728]/25 bg-transparent py-2 font-sans text-[15px] text-[#1a0b10] focus:border-[#4a1728] focus:outline-none">
-                  <option value="">—</option>
+                  <option value="">–</option>
                   {KINDS.map((kind) => <option key={kind} value={kind}>{kind}</option>)}
                 </select>
               </label>
@@ -103,7 +103,7 @@ export function Commission({ onClose }: { onClose: () => void }) {
                 {/* Порядок, а не сумма: точную цифру на этом этапе не знает и
                     сам заказчик, а вилка отсеивает разговоры не по адресу. */}
                 <select {...field('budget')} className="mt-1.5 w-full border-b border-[#4a1728]/25 bg-transparent py-2 font-sans text-[15px] text-[#1a0b10] focus:border-[#4a1728] focus:outline-none">
-                  <option value="">—</option>
+                  <option value="">–</option>
                   {BUDGETS.map((band) => <option key={band} value={band}>{band}</option>)}
                 </select>
               </label>

@@ -271,7 +271,7 @@ function LabTool({ onBack, t }: { onBack: () => void; t: T }) {
       setReport(result);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
-      setError(msg.includes('Rate') ? 'Rate limited — please wait a moment and try again.' : `Analysis failed: ${msg}`);
+      setError(msg.includes('Rate') ? 'Rate limited – please wait a moment and try again.' : `Analysis failed: ${msg}`);
     } finally { setScanning(false); }
   };
 
@@ -528,7 +528,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
       setReport(result);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
-      setError(msg.includes('Rate') ? 'Rate limited — please wait a moment and try again.' : `Analysis failed: ${msg}`);
+      setError(msg.includes('Rate') ? 'Rate limited – please wait a moment and try again.' : `Analysis failed: ${msg}`);
     } finally { setAnalyzing(false); }
   };
 
@@ -634,7 +634,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                   </div>
                   <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Lighting</p>
-                    <p className="font-mono text-xs text-[var(--c-accent)] mb-1">{report.lighting.mood} — {report.lighting.sources.join(', ')}</p>
+                    <p className="font-mono text-xs text-[var(--c-accent)] mb-1">{report.lighting.mood} – {report.lighting.sources.join(', ')}</p>
                     <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] italic">{report.lighting.suggestion}</p>
                   </div>
                 </div>
@@ -708,12 +708,12 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
 const CHRONICLE_PROMPT = `
 You are a senior photo editor and documentary critic at a prestigious international magazine.
 Analyze this photograph with the eye of a seasoned photojournalist and cultural critic.
-This could be any image — people, landscape, event, still life, architecture, abstract, art.
+This could be any image – people, landscape, event, still life, architecture, abstract, art.
 Return ONLY this JSON (no markdown, no explanation):
 {
   "headline": "a sharp, publishable editorial headline (6-10 words, no quotes around it)",
   "subheadline": "a secondary line adding context or irony (8-14 words)",
-  "narrative": "a serious 3-4 sentence editorial paragraph reading this photograph — its story, context, and significance, written in the voice of a magazine journalist",
+  "narrative": "a serious 3-4 sentence editorial paragraph reading this photograph – its story, context, and significance, written in the voice of a magazine journalist",
   "caption": "a ready-to-publish photo caption (15-25 words) as it would appear under the image in a printed magazine",
   "emotion": "the single dominant emotion this photograph communicates (one word, e.g. Grief, Defiance, Wonder, Solitude)",
   "secondary_emotions": ["second emotion", "third emotion"],
@@ -740,7 +740,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
       setReport(result);
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
-      setError(msg.includes('Rate') ? 'Rate limited — please wait a moment and try again.' : `Analysis failed: ${msg}`);
+      setError(msg.includes('Rate') ? 'Rate limited – please wait a moment and try again.' : `Analysis failed: ${msg}`);
     } finally { setReading(false); }
   };
 

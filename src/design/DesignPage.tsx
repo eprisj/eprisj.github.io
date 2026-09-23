@@ -86,7 +86,7 @@ function DarkProductCard({ item, data, index, onOpen }: {
               <img src={data!.image} alt={data!.title} loading="lazy" referrerPolicy="no-referrer"
                 className="w-full h-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-[1.06]" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 bg-gradient-to-t from-black/80 to-transparent">
-                <span className="font-mono text-[8px] uppercase tracking-wider text-white/70 leading-none">{formatPrice(data!) || '—'}</span>
+                <span className="font-mono text-[8px] uppercase tracking-wider text-white/70 leading-none">{formatPrice(data!) || '–'}</span>
                 <ArrowUpRight size={12} className="text-[var(--c-gold)]" />
               </div>
             </>

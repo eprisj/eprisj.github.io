@@ -530,7 +530,7 @@ export function MagazinePDF({
   registerFonts(baseUrl);
   return (
     <Document
-      title={`EPRIS Journal — ${issue.name}`}
+      title={`EPRIS Journal | ${issue.name}`}
       author="Mariia Ivanova"
       subject={issue.season}
       creator="EPRIS Journal"
