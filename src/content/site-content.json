@@ -78805,6 +78805,407 @@
   },
   "homepageArchive": [
     {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-005",
+      "releaseId": "PICS-WEEK-2026-005",
+      "label": "Daily Picks · архітектура · 23 вер. 2026 р.",
+      "publishedAt": "2026-09-23T15:58:28Z",
+      "signature": "gothic:PICS-2026-032|baroque:PICS-2026-033|avant-garde:PICS-2026-034|post-constructivism:PICS-2026-035|brutalism:PICS-2026-036",
+      "publicArchive": false,
+      "visibleOnSite": false,
+      "cards": [
+        {
+          "id": 40,
+          "picsId": "PICS-2026-032",
+          "category": "gothic",
+          "categoryLabel": "Gothic",
+          "title": "Sagrada Família, the nave vault",
+          "subtitle": "Antoni Gaudí and successors · Barcelona · consecrated 2010",
+          "description": "Columns that branch like trees and dissolve into a star-lit canopy: Gothic structure rethought as a forest, still being finished a century after the first stone.",
+          "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg",
+          "localized": {
+            "RU": {
+              "title": "Саграда Фамилия, свод нефа",
+              "subtitle": "Антони Гауди и последователи · Барселона · освящена в 2010",
+              "description": "Колонны ветвятся, как деревья, и растворяются в звёздном пологе: готическая конструкция, переосмысленная как лес, которую достраивают и спустя век после первого камня.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "UA": {
+              "title": "Саграда Фамілія, склепіння нави",
+              "subtitle": "Антоні Гауді та наступники · Барселона · освячена 2010",
+              "description": "Колони розгалужуються, мов дерева, і розчиняються в зоряному пологу: готична конструкція, переосмислена як ліс, яку добудовують і через століття після першого каменю.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "DE": {
+              "title": "Sagrada Família, Gewölbe des Hauptschiffs",
+              "subtitle": "Antoni Gaudí und Nachfolger · Barcelona · geweiht 2010",
+              "description": "Säulen, die sich wie Bäume verzweigen und in einem Sternenhimmel auflösen: Gotik neu gedacht als Wald, ein Jahrhundert nach dem ersten Stein noch im Bau.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "ES": {
+              "title": "Sagrada Família, la bóveda de la nave",
+              "subtitle": "Antoni Gaudí y sucesores · Barcelona · consagrada en 2010",
+              "description": "Columnas que se ramifican como árboles y se disuelven en un dosel estrellado: el gótico repensado como bosque, aún en obras un siglo después de la primera piedra.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "TR": {
+              "title": "Sagrada Família, ana nef tonozu",
+              "subtitle": "Antoni Gaudí ve halefleri · Barselona · 2010'da kutsandı",
+              "description": "Ağaç gibi dallanan ve yıldızlı bir örtüde eriyen sütunlar: orman olarak yeniden düşünülmüş Gotik, ilk taştan bir asır sonra hâlâ yapılıyor.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "IT": {
+              "title": "Sagrada Família, la volta della navata",
+              "subtitle": "Antoni Gaudí e successori · Barcellona · consacrata nel 2010",
+              "description": "Colonne che si ramificano come alberi e si dissolvono in un baldacchino di stelle: il gotico ripensato come foresta, ancora in costruzione un secolo dopo la prima pietra.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            },
+            "FR": {
+              "title": "Sagrada Família, la voûte de la nef",
+              "subtitle": "Antoni Gaudí et ses successeurs · Barcelone · consacrée en 2010",
+              "description": "Des colonnes qui se ramifient comme des arbres et se fondent dans une canopée étoilée : le gothique repensé en forêt, toujours en chantier un siècle après la première pierre.",
+              "credit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg"
+            }
+          }
+        },
+        {
+          "id": 41,
+          "picsId": "PICS-2026-033",
+          "category": "baroque",
+          "categoryLabel": "Baroque",
+          "title": "Harbin Grand Theatre, the lobby",
+          "subtitle": "MAD Architects · Harbin · 2015",
+          "description": "Ash-wood bands peel off the walls like carved drapery under a glass lattice: the baroque love of the folded surface, drawn out of the ice and wetlands around it.",
+          "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "localized": {
+            "RU": {
+              "title": "Большой театр Харбина, фойе",
+              "subtitle": "MAD Architects · Харбин · 2015",
+              "description": "Ленты ясеня отслаиваются от стен, как резные драпировки под стеклянной решёткой: барочная любовь к складчатой поверхности, извлечённая из льда и болот вокруг.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "UA": {
+              "title": "Великий театр Харбіна, фоє",
+              "subtitle": "MAD Architects · Харбін · 2015",
+              "description": "Стрічки ясеня відшаровуються від стін, як різьблені драпірування під скляною решіткою: барокова любов до складчастої поверхні, видобута з льоду й боліт навколо.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "DE": {
+              "title": "Großes Theater Harbin, Foyer",
+              "subtitle": "MAD Architects · Harbin · 2015",
+              "description": "Eschenholzbänder lösen sich wie geschnitzte Draperien von den Wänden, unter einem Glasgitter: die barocke Liebe zur gefalteten Fläche, aus Eis und Feuchtland ringsum gewonnen.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "ES": {
+              "title": "Gran Teatro de Harbin, el vestíbulo",
+              "subtitle": "MAD Architects · Harbin · 2015",
+              "description": "Bandas de fresno se despegan de los muros como paños tallados bajo una retícula de vidrio: el amor barroco por la superficie plegada, sacado del hielo y los humedales que lo rodean.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "TR": {
+              "title": "Harbin Büyük Tiyatrosu, fuaye",
+              "subtitle": "MAD Architects · Harbin · 2015",
+              "description": "Cam bir kafesin altında oyma perdeler gibi duvarlardan ayrılan dişbudak şeritleri: çevresindeki buzdan ve sulak alanlardan çıkarılmış, katlanmış yüzeye barok bir tutku.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "IT": {
+              "title": "Grande Teatro di Harbin, il foyer",
+              "subtitle": "MAD Architects · Harbin · 2015",
+              "description": "Fasce di frassino si staccano dalle pareti come drappeggi scolpiti sotto un reticolo di vetro: l'amore barocco per la superficie piegata, tratto dal ghiaccio e dalle paludi intorno.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            },
+            "FR": {
+              "title": "Grand Théâtre de Harbin, le foyer",
+              "subtitle": "MAD Architects · Harbin · 2015",
+              "description": "Des bandes de frêne se détachent des murs comme des drapés sculptés sous une résille de verre : l'amour baroque de la surface plissée, tiré de la glace et des marais alentour.",
+              "credit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg"
+            }
+          }
+        },
+        {
+          "id": 42,
+          "picsId": "PICS-2026-034",
+          "category": "avant-garde",
+          "categoryLabel": "Avant-garde",
+          "title": "National Taichung Theater",
+          "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+          "description": "No beams, no columns, no floors in the usual sense: a continuous 'sound cave' of curved concrete walls poured around voids, a building that is mostly the shape of its air.",
+          "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/muecwop08f0aor.webp",
+          "localized": {
+            "RU": {
+              "title": "Национальный театр Тайчжуна",
+              "subtitle": "Toyo Ito & Associates · Тайчжун · 2016",
+              "description": "Ни балок, ни колонн, ни привычных перекрытий: сплошная «звуковая пещера» из изогнутых бетонных стен, залитых вокруг пустот, здание, которое в основном имеет форму собственного воздуха.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "UA": {
+              "title": "Національний театр Тайчуна",
+              "subtitle": "Toyo Ito & Associates · Тайчун · 2016",
+              "description": "Жодних балок, колон і звичних перекриттів: суцільна «звукова печера» з вигнутих бетонних стін, залитих навколо порожнеч, будівля, що здебільшого має форму власного повітря.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "DE": {
+              "title": "Nationaltheater Taichung",
+              "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+              "description": "Keine Träger, keine Stützen, keine Geschosse im üblichen Sinn: eine durchgehende 'Klanghöhle' aus gekrümmten Betonwänden um Hohlräume gegossen, ein Haus, das vor allem die Form seiner Luft ist.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "ES": {
+              "title": "Teatro Nacional de Taichung",
+              "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+              "description": "Sin vigas, sin columnas, sin forjados en el sentido habitual: una continua 'cueva sonora' de muros curvos de hormigón vertidos alrededor de vacíos, un edificio que es sobre todo la forma de su aire.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "TR": {
+              "title": "Ulusal Taichung Tiyatrosu",
+              "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+              "description": "Kiriş yok, kolon yok, alışılmış anlamda kat yok: boşlukların çevresine dökülmüş kavisli beton duvarlardan kesintisiz bir 'ses mağarası', çoğunlukla kendi havasının biçimi olan bir yapı.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "IT": {
+              "title": "Teatro Nazionale di Taichung",
+              "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+              "description": "Niente travi, niente pilastri, niente solai nel senso consueto: una continua 'grotta sonora' di pareti curve in calcestruzzo gettate attorno ai vuoti, un edificio che è soprattutto la forma della sua aria.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            },
+            "FR": {
+              "title": "Théâtre national de Taichung",
+              "subtitle": "Toyo Ito & Associates · Taichung · 2016",
+              "description": "Ni poutres, ni poteaux, ni planchers au sens habituel : une « grotte sonore » continue de murs courbes en béton coulés autour de vides, un bâtiment qui est surtout la forme de son air.",
+              "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg"
+            }
+          }
+        },
+        {
+          "id": 43,
+          "picsId": "PICS-2026-035",
+          "category": "post-constructivism",
+          "categoryLabel": "Post-constructivism",
+          "title": "Gallaratese 2 housing",
+          "subtitle": "Aldo Rossi · Milan · 1969–1974",
+          "description": "A 182-metre gallery of blade-thin pillars and one giant order: rational architecture reduced to rhythm, light and shadow, the setting of a de Chirico painting built for daily life.",
+          "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg",
+          "localized": {
+            "RU": {
+              "title": "Жилой комплекс Галларатезе 2",
+              "subtitle": "Альдо Росси · Милан · 1969–1974",
+              "description": "182-метровая галерея из тонких, как лезвия, пилонов и одного гигантского ордера: рациональная архитектура, сведённая к ритму, свету и тени, декорация картины де Кирико, построенная для повседневной жизни.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "UA": {
+              "title": "Житловий комплекс Галларатезе 2",
+              "subtitle": "Альдо Россі · Мілан · 1969–1974",
+              "description": "182-метрова галерея з тонких, як леза, пілонів і одного гігантського ордера: раціональна архітектура, зведена до ритму, світла й тіні, декорація картини де Кіріко, збудована для щоденного життя.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "DE": {
+              "title": "Wohnanlage Gallaratese 2",
+              "subtitle": "Aldo Rossi · Mailand · 1969–1974",
+              "description": "Eine 182 Meter lange Galerie aus klingendünnen Pfeilern und einer Kolossalordnung: rationale Architektur, reduziert auf Rhythmus, Licht und Schatten, eine de-Chirico-Kulisse für den Alltag.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "ES": {
+              "title": "Conjunto residencial Gallaratese 2",
+              "subtitle": "Aldo Rossi · Milán · 1969–1974",
+              "description": "Una galería de 182 metros de pilares finos como cuchillas y un único orden gigante: arquitectura racional reducida a ritmo, luz y sombra, el escenario de un De Chirico construido para la vida diaria.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "TR": {
+              "title": "Gallaratese 2 konut kompleksi",
+              "subtitle": "Aldo Rossi · Milano · 1969–1974",
+              "description": "Bıçak inceliğinde ayaklardan ve tek bir dev düzenden oluşan 182 metrelik bir galeri: ritme, ışığa ve gölgeye indirgenmiş rasyonel mimari, gündelik yaşam için inşa edilmiş bir de Chirico sahnesi.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "IT": {
+              "title": "Complesso residenziale Gallaratese 2",
+              "subtitle": "Aldo Rossi · Milano · 1969–1974",
+              "description": "Una galleria di 182 metri di setti sottili come lame e un unico ordine gigante: l'architettura razionale ridotta a ritmo, luce e ombra, la scena di un de Chirico costruita per la vita quotidiana.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            },
+            "FR": {
+              "title": "Ensemble Gallaratese 2",
+              "subtitle": "Aldo Rossi · Milan · 1969–1974",
+              "description": "Une galerie de 182 mètres de piliers fins comme des lames et un unique ordre colossal : l'architecture rationnelle réduite au rythme, à la lumière et à l'ombre, un décor de De Chirico bâti pour la vie quotidienne.",
+              "credit": "Photo: bianca.maggio · Public Domain Mark 1.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/fa6d0e66d08f2b.jpg"
+            }
+          }
+        },
+        {
+          "id": 44,
+          "picsId": "PICS-2026-036",
+          "category": "brutalism",
+          "categoryLabel": "Brutalism",
+          "title": "Bank of Georgia headquarters",
+          "subtitle": "George Chakhava and Zurab Jalaghania · Tbilisi · 1975",
+          "description": "Stacked concrete blocks that barely touch the hillside: a city built in the air, 'Space City' theory turned into a Soviet ministry and then a bank.",
+          "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+          "sourceUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg",
+          "localized": {
+            "RU": {
+              "title": "Штаб-квартира Банка Грузии",
+              "subtitle": "Георгий Чахава и Зураб Джалагания · Тбилиси · 1975",
+              "description": "Бетонные блоки, сложенные друг на друга, едва касаются склона: город, построенный в воздухе, теория «Space City», ставшая советским министерством, а потом банком.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "UA": {
+              "title": "Штаб-квартира Банку Грузії",
+              "subtitle": "Георгій Чахава і Зураб Джалагонія · Тбілісі · 1975",
+              "description": "Бетонні блоки, складені один на одного, ледь торкаються схилу: місто, збудоване в повітрі, теорія «Space City», що стала радянським міністерством, а потім банком.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "DE": {
+              "title": "Zentrale der Bank of Georgia",
+              "subtitle": "George Chakhava und Zurab Jalaghania · Tiflis · 1975",
+              "description": "Gestapelte Betonblöcke, die den Hang kaum berühren: eine Stadt in der Luft, die 'Space City'-Theorie als sowjetisches Ministerium und später als Bank.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "ES": {
+              "title": "Sede del Bank of Georgia",
+              "subtitle": "George Chakhava y Zurab Jalaghania · Tiflis · 1975",
+              "description": "Bloques de hormigón apilados que apenas tocan la ladera: una ciudad construida en el aire, la teoría de la 'Space City' convertida en ministerio soviético y luego en banco.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "TR": {
+              "title": "Bank of Georgia genel merkezi",
+              "subtitle": "George Chakhava ve Zurab Jalaghania · Tiflis · 1975",
+              "description": "Yamaca zar zor dokunan üst üste beton bloklar: havada kurulmuş bir kent, önce Sovyet bakanlığına sonra bankaya dönüşen 'Space City' kuramı.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "IT": {
+              "title": "Sede della Bank of Georgia",
+              "subtitle": "George Chakhava e Zurab Jalaghania · Tbilisi · 1975",
+              "description": "Blocchi di cemento impilati che toccano appena il pendio: una città costruita nell'aria, la teoria della 'Space City' diventata ministero sovietico e poi banca.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            },
+            "FR": {
+              "title": "Siège de la Bank of Georgia",
+              "subtitle": "George Chakhava et Zurab Jalaghania · Tbilissi · 1975",
+              "description": "Des blocs de béton empilés qui touchent à peine la colline : une ville bâtie dans l'air, la théorie de la « Space City » devenue ministère soviétique puis banque.",
+              "credit": "Photo: Ndecam · CC BY 2.0 · Flickr",
+              "sourceUrl": "",
+              "imageSeed": "",
+              "imageUrl": "https://api.eprisjournal.com/uploads/2f101775af2d2f.jpg"
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "PICS-ARCHIVE-PICS-WEEK-2026-004",
       "releaseId": "PICS-WEEK-2026-004",
       "label": "Daily Picks · 7 вер. 2026 г.",
