@@ -3016,7 +3016,7 @@
       "subtitle": "Toyo Ito & Associates · Taichung · 2016",
       "fig": "PICS 034",
       "description": "No beams, no columns, no floors in the usual sense: a continuous 'sound cave' of curved concrete walls poured around voids, a building that is mostly the shape of its air.",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mued2ko3wb63nj.webp",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mued7xj5jmizhd.jpg",
       "picsOfWeek": true,
       "homeCategory": "avant-garde",
       "homeTitle": "National Taichung Theater",
@@ -3025,9 +3025,13 @@
       "homeCredit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
       "sourceUrl": "https://www.flickr.com/photos/92585929@N06/16584257756",
       "picsId": "PICS-2026-034",
-      "updatedAt": "2026-09-23T17:12:43.156Z",
+      "updatedAt": "2026-09-23T17:16:53.903Z",
       "picsReleaseId": "PICS-WEEK-2026-005",
       "imageHistory": [
+        {
+          "url": "https://api.eprisjournal.com/uploads/mued2ko3wb63nj.webp",
+          "replacedAt": "2026-09-23T17:16:52.027Z"
+        },
         {
           "url": "https://api.eprisjournal.com/uploads/muecwop08f0aor.webp",
           "replacedAt": "2026-09-23T17:12:42.782Z"
@@ -10556,7 +10560,7 @@
           "content": "Manuel Heywinkel’s photography can be seen at <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, his work as an architect at <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, on Instagram at <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> and on 1x at <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Images © Manuel Heywinkel unless credited otherwise; published with permission."
         }
       ],
-      "updatedAt": "2026-09-23T17:15:16.299Z",
+      "updatedAt": "2026-09-23T17:11:40.479Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-manuel-heywinkel",
       "previewToken": "80d45d7bde12e05363d3c71b74a72838",
@@ -78984,7 +78988,7 @@
           "credit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
           "sourceUrl": "",
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mued2ko3wb63nj.webp",
+          "imageUrl": "https://api.eprisjournal.com/uploads/muecwop08f0aor.webp",
           "localized": {
             "RU": {
               "title": "Национальный театр Тайчжуна",
