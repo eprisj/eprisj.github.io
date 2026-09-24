@@ -10566,13 +10566,13 @@
           "content": "Manuel Heywinkel’s photography can be seen at <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, his work as an architect at <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, on Instagram at <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> and on 1x at <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Images © Manuel Heywinkel unless credited otherwise; published with permission."
         }
       ],
-      "updatedAt": "2026-09-23T17:25:14.721Z",
+      "updatedAt": "2026-09-24T06:02:03.000Z",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-manuel-heywinkel",
       "previewToken": "80d45d7bde12e05363d3c71b74a72838",
       "locked": true,
-      "publishAt": "2026-09-24T09:00:00.000Z",
-      "publishedAt": "2026-09-24T09:00:00.000Z"
+      "publishAt": "2026-09-24T06:02:03.000Z",
+      "publishedAt": "2026-09-24T06:02:03.000Z"
     },
     {
       "id": 46,
@@ -20159,7 +20159,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "title": "Два способа взглянуть на одно и то же здание - интервью с Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
           "role": "Автор",
@@ -20522,10 +20522,12 @@
               "content": "Фотографии Manuel Heywinkel можно посмотреть на <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, его архитектурные работы – на <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, в Instagram – <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a>, на 1x – <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Изображения © Manuel Heywinkel, если не указано иное; опубликованы с разрешения."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel",
-          "previewToken": "80d45d7bde12e05363d3c71b74a72838"
+          "previewToken": "80d45d7bde12e05363d3c71b74a72838",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
@@ -30099,7 +30101,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "title": "Два способи погляду на одну й ту ж будівлю - інтерв'ю з Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
           "role": "Автор",
@@ -30462,10 +30464,12 @@
               "content": "Фотографії Manuel Heywinkel можна переглянути на <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, його архітектурні роботи – на <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, в Instagram – <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a>, на 1x – <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Зображення © Manuel Heywinkel, якщо не зазначено інше; опубліковано з дозволу."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel",
-          "previewToken": "80d45d7bde12e05363d3c71b74a72838"
+          "previewToken": "80d45d7bde12e05363d3c71b74a72838",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
@@ -40037,7 +40041,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "previewToken": "80d45d7bde12e05363d3c71b74a72838",
           "title": "Zwei Blickweisen auf dasselbe Gebäude – Interview mit Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
@@ -40401,9 +40405,11 @@
               "content": "Manuel Heywinkels Fotografie ist auf <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a> zu sehen, seine Arbeit als Architekt beim Büro ACMS auf <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, auf Instagram unter <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> und auf 1x unter <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Bilder © Manuel Heywinkel, sofern nicht anders angegeben; veröffentlicht mit Genehmigung."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
-          "contributorId": "author-manuel-heywinkel"
+          "contributorId": "author-manuel-heywinkel",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
@@ -49963,7 +49969,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "title": "Dos maneras de mirar el mismo edificio - entrevista con Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
           "role": "Autor",
@@ -50326,9 +50332,11 @@
               "content": "La fotografía de Manuel Heywinkel puede verse en <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, su trabajo como arquitecto en <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, en Instagram en <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> y en 1x en <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Imágenes © Manuel Heywinkel salvo que se indique otra autoría; publicadas con permiso."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
-          "contributorId": "author-manuel-heywinkel"
+          "contributorId": "author-manuel-heywinkel",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
@@ -67483,7 +67491,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "title": "Due Modi di Guardare lo Stesso Edificio - intervista con Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
           "role": "Autore",
@@ -67846,10 +67854,12 @@
               "content": "La fotografia di Manuel Heywinkel si può vedere su <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, il suo lavoro di architetto su <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, su Instagram all'indirizzo <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> e su 1x all'indirizzo <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Immagini © Manuel Heywinkel salvo diversa indicazione; pubblicate con autorizzazione."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-manuel-heywinkel",
-          "previewToken": "80d45d7bde12e05363d3c71b74a72838"
+          "previewToken": "80d45d7bde12e05363d3c71b74a72838",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
@@ -75945,7 +75955,7 @@
         },
         {
           "id": 45,
-          "draft": true,
+          "draft": false,
           "title": "Deux façons de voir le même bâtiment - interview avec Manuel Heywinkel",
           "author": "Viacheslav Munister & Manuel Heywinkel",
           "role": "Auteur",
@@ -76308,9 +76318,11 @@
               "content": "La photographie de Manuel Heywinkel est à découvrir sur <a href=\"https://www.manuel-heywinkel.com\">manuel-heywinkel.com</a>, son travail d'architecte sur <a href=\"https://www.acms-architekten.de\">acms-architekten.de</a>, sur Instagram à <a href=\"https://www.instagram.com/manuel_242neo\">@manuel_242neo</a> et sur 1x à <a href=\"https://www.1x.com/manuelheywinkel\">1x.com/manuelheywinkel</a>. Images © Manuel Heywinkel sauf mention contraire ; publiées avec autorisation."
             }
           ],
-          "updatedAt": "2026-09-23T05:22:34.241Z",
+          "updatedAt": "2026-09-24T06:02:03.000Z",
           "authorId": "author-1784732936927-kw554",
-          "contributorId": "author-manuel-heywinkel"
+          "contributorId": "author-manuel-heywinkel",
+          "publishAt": "2026-09-24T06:02:03.000Z",
+          "publishedAt": "2026-09-24T06:02:03.000Z"
         },
         {
           "id": 46,
