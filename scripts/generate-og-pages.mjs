@@ -688,6 +688,10 @@ mkdirSync(searchDir, { recursive: true });
 writeFileSync(join(searchDir, 'index.html'), template.replace('<!--TITLE-->', searchHead));
 console.log('Generated: /search');
 
+// Hand-written pages served straight from public/ – the React router never
+// sees them, so ROUTES can't list them. /support/ and /privacy/ are the
+// App Store listing's support and privacy URLs.
+const STATIC_PAGES = ['app', 'support', 'privacy', 'terms'];
 const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => !ALIAS_ROUTES[route] && !HIDDEN_PUBLIC_ROUTES.has(route))];
 const sitemapEntries = [
   // Слеш у кінці обов'язковий: сервер віддає сторінку саме так, а адреса
@@ -696,6 +700,7 @@ const sitemapEntries = [
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}/` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
   ...publicArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
   ...publicReviews.map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}/`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
+  ...STATIC_PAGES.map((page) => ({ loc: `${SITE_ORIGIN}/${page}/`, priority: page === 'app' ? '0.6' : '0.3', changefreq: 'yearly' })),
 ];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}${entry.image ? `\n    <image:image>\n      <image:loc>${escapeAttr(entry.image)}</image:loc>${entry.imageTitle ? `\n      <image:title>${escapeAttr(entry.imageTitle)}</image:title>` : ''}\n    </image:image>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(distDir, 'sitemap.xml'), sitemapXml);
