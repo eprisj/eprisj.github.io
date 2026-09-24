@@ -12,7 +12,8 @@
 //   node scripts/generate-quizzes.mjs --dry-run    list what would be generated
 //
 // The key comes from OPENAI_API_KEY, or from .env.local (gitignored). The
-// model defaults to OPENAI_MODEL or gpt-5-mini.
+// model defaults to OPENAI_MODEL or gpt-5.5 (the gpt-5-mini tier needs a verified
+// OpenAI organisation; the smaller models' Ukrainian was not good enough).
 //
 // A quiz records the article's updatedAt. When an article is edited the app
 // stops showing its quiz until this script is run again – questions about a
@@ -44,7 +45,7 @@ function loadEnvLocal() {
 }
 loadEnvLocal();
 const apiKey = process.env.OPENAI_API_KEY;
-const model = process.env.OPENAI_MODEL || 'gpt-5-mini';
+const model = process.env.OPENAI_MODEL || 'gpt-5.5';
 
 // ── The same visibility rule as the website and the app ──────────────────
 function isLive(article, now = Date.now()) {
@@ -135,12 +136,16 @@ Rules:
 - Wrong options must be plausible to someone who skimmed, and clearly wrong to someone who read. No "all of the above", no jokes, no trick wording.
 - If the article lists photographs (P1, P2, …), make one or two questions of kind "photo": the prompt asks which photograph shows something, correctPhoto is the number of the photograph whose caption proves it, and wrongPhotos are 2 or 3 other photographs whose captions clearly show something else. For "photo" questions, correct is null and wrong is [].
 - For kind "text": exactly 3 wrong options, correct is the right option, correctPhoto is null, wrongPhotos is [].
-- Options are short: a phrase, not a sentence, under 70 characters.
+- Options are short: a phrase, not a sentence, under 70 characters, each starting with a capital letter.
 - explanation: one or two sentences saying why, ideally quoting the article's own words.
+- The reader never sees photograph numbers or captions, only the pictures. Never write "P1", "photograph 3", "captioned" or similar anywhere, and don't copy a caption's wording into a photo question's prompt – describe what to look for.
+- In a photo question every wrong photograph must show a clearly different subject – not another view of the same room, terrace or building as the right one.
 - Treat the subject with respect. If the article concerns war or loss, ask about the work and the people, never about suffering.
+- Refer to the piece and its projects by the names the published translations use (given below), not the English title.
+- Ukrainian and Russian must be grammatical and idiomatic – check gender and case agreement – as a native editor would write them.
 - Write every string in all eight languages (${LANGS.map((l) => `${l} = ${LANG_NAMES[l]}`).join(', ')}). The translations must be natural in each language, keeping names of people, studios and places as the article spells them.`;
 
-async function ask(article, { text, photos }, attempt) {
+async function ask(article, { text, photos }, attempt, titles) {
   const photoList = photos.length
     ? `Photographs you may ask about:\n${photos.map((p, i) => `P${i + 1}: ${p.caption}`).join('\n')}`
     : 'This article has no captioned photographs: make every question of kind "text".';
@@ -151,7 +156,7 @@ async function ask(article, { text, photos }, attempt) {
       model,
       messages: [
         { role: 'system', content: SYSTEM },
-        { role: 'user', content: `Title: ${article.title}\n\n${photoList}\n\nArticle:\n\n${text}` + (attempt > 1 ? '\n\n(Your previous answer broke a rule; follow every rule exactly.)' : '') },
+        { role: 'user', content: `Title: ${article.title}\n\nPublished titles of this piece in other languages:\n${titles}\n\n${photoList}\n\nArticle:\n\n${text}` + (attempt > 1 ? '\n\n(Your previous answer broke a rule; follow every rule exactly.)' : '') },
       ],
       response_format: { type: 'json_schema', json_schema: { name: 'quiz', strict: true, schema } },
     }),
@@ -178,6 +183,8 @@ function toQuiz(raw, photos) {
   const questions = [];
   for (const q of raw.questions || []) {
     if (!complete(q.prompt) || !complete(q.explanation)) throw new Error('missing a translation');
+    const leak = /\bP\d{1,2}\b|caption/i;
+    if (LANGS.some((l) => leak.test(q.prompt[l]) || leak.test(q.explanation[l]))) throw new Error('mentions a photograph label or caption');
     let options;
     if (q.kind === 'photo') {
       const ids = [q.correctPhoto, ...q.wrongPhotos];
@@ -204,6 +211,10 @@ function toQuiz(raw, photos) {
 // ── Main ─────────────────────────────────────────────────────────────────
 const existing = existsSync(outFile) ? JSON.parse(readFileSync(outFile, 'utf8')) : { version: 1, quizzes: {} };
 const content = await (await fetch(CONTENT_URL)).json();
+const publishedTitles = (id) => LANGS.filter((l) => l !== 'EN').map((l) => {
+  const t = content.localizedCollections?.[l]?.articles?.find((a) => a.id === id)?.title;
+  return `${l}: ${t || '(not translated – translate the English title)'}`;
+}).join('\n');
 const articles = content.articles.filter((a) => isLive(a) && (onlyId === null || a.id === onlyId));
 
 const todo = articles.filter((a) => {
@@ -232,7 +243,7 @@ for (const article of todo) {
   let quiz = null;
   for (let attempt = 1; attempt <= 2 && !quiz; attempt += 1) {
     try {
-      quiz = toQuiz(await ask(article, d, attempt), d.photos);
+      quiz = toQuiz(await ask(article, d, attempt, publishedTitles(article.id)), d.photos);
     } catch (error) {
       console.warn(`  ${article.id} attempt ${attempt}: ${error.message}`);
       if (/OpenAI (401|403|404|429)/.test(error.message)) process.exit(1);
