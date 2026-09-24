@@ -7,6 +7,7 @@
 <meta name="description" content="How EPRIS Journal handles data on the website and in the EPRIS Journal iOS app.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://eprisjournal.com/privacy/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -82,6 +83,18 @@
     font-family: system-ui, -apple-system, sans-serif;
     font-size: 12px; color: var(--muted);
   }
+  footer nav { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer nav a { text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
+  footer nav a[aria-current="page"] { color: var(--ink); }
+  h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 400; font-size: 19px; color: var(--ink);
+    margin: 26px 0 6px;
+  }
+  .toc { margin: 0 0 8px; padding: 0; list-style: none; columns: 2; column-gap: 28px; }
+  .toc li { margin-bottom: 4px; font-size: 16px; }
+  .toc a { text-decoration: none; }
+  @media (max-width: 520px) { .toc { columns: 1; } }
 </style>
 </head>
 <body>
@@ -89,24 +102,48 @@
   <a class="masthead" href="/">EPRIS</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated 22 September 2026</p>
+  <p class="updated">Last updated 24 September 2026</p>
 
   <p class="lede">EPRIS Journal has no accounts, no advertising and no tracking profiles. This page explains,
   precisely, the small amount of data that does exist and why.</p>
 
   <h2>The EPRIS Journal iOS app</h2>
   <p>The app <strong>collects no personal data at all</strong>. There is no sign-in, no account,
-  no advertising identifier, and no analytics or tracking framework of any kind embedded in it.</p>
-  <p>Everything the app remembers about you stays on your own device and is never transmitted anywhere:</p>
+  no advertising identifier, and no analytics, crash-reporting or tracking framework of any kind
+  embedded in it. It does not track you across other companies’ apps or websites.</p>
+  <p>Everything the app remembers stays on your own device and is never transmitted to us:</p>
   <ul>
-    <li>the articles you save for offline reading, and the images downloaded with them;</li>
+    <li>the articles you save for offline reading, and the photographs downloaded with them;</li>
     <li>how far you have read in a piece;</li>
-    <li>your chosen reading language and text size.</li>
+    <li>your chosen reading language and text size;</li>
+    <li>a cached copy of the journal, so it opens without a connection.</li>
   </ul>
-  <p>Deleting the app removes all of it. Nothing is backed up to us, because we never receive it.</p>
-  <p>The only network requests the app makes are to fetch the journal's published content and its
-  photographs from <strong>api.eprisjournal.com</strong>. Those requests are subject to the ordinary
-  server logging described below.</p>
+  <p>You can clear the downloaded photographs and your reading progress at any time in the app’s
+  Settings. Deleting the app removes all of it. Nothing is backed up to us, because we never
+  receive it.</p>
+
+  <h3>What the app connects to</h3>
+  <p>To show the journal, the app fetches its published content and photographs from the journal’s
+  own servers, <strong>api.eprisjournal.com</strong> and <strong>eprisjournal.com</strong>. A few
+  articles show photographs or video hosted where they were originally published – for example
+  Wikimedia Commons or Unsplash – and those are requested from that host directly. Articles with a location show a map drawn by Apple
+  Maps. Like any request on the internet, each of these carries your IP address, which the receiving
+  server needs in order to reply; we do not use it to identify you, and the app sends nothing else
+  about you with it.</p>
+
+  <h3>Things that happen only when you ask</h3>
+  <ul>
+    <li><strong>Sharing.</strong> When you share an article or a photograph, iOS’s own share sheet
+    hands it to the app you pick. We are not involved and learn nothing about it.</li>
+    <li><strong>Saving a photograph.</strong> If you choose “Save Image” from the share sheet, iOS
+    asks your permission to add it to your photo library. The app can only add; it never reads your
+    photos.</li>
+    <li><strong>Writing to us.</strong> “Write to the editors” opens your own email app with the app
+    version, iOS version and device type pre-filled, so a problem report is useful. You see all of it
+    and can delete any of it before sending.</li>
+    <li><strong>Links.</strong> Links in articles open in Safari, under Safari’s settings and the
+    visited site’s own policy.</li>
+  </ul>
 
   <h2>The website</h2>
   <p>The website counts page views so the editors know which pieces are being read. This counter is
@@ -117,6 +154,9 @@
   <strong>salted, truncated cryptographic hash of the IP address</strong>. The IP address itself is
   never stored, and the hash exists only so repeat views within a period can be counted once rather
   than identifying anyone. It is not used to build a profile and is not shared.</p>
+  <p>The website loads its typefaces from Google Fonts, and some articles embed photographs, videos
+  or maps from the services where they are published. Your browser contacts those services directly
+  when the page loads. Video embeds do not load until you press play.</p>
 
   <h2>Server logs</h2>
   <p>Like any web server, ours records requests for security and troubleshooting. These logs may
@@ -138,12 +178,15 @@
   directed at children, and we do not knowingly collect any data from them.</p>
 
   <h2>Your rights</h2>
-  <p>Because we hold almost nothing, there is usually nothing to export or erase. Where we do hold
-  something you gave us – a questionnaire submission, for example – you may ask for a copy or for its
-  deletion, and we will act on it.</p>
+  <p>Wherever you live, you may ask what we hold about you, ask for a copy, have it corrected, or
+  have it deleted; if you are in the European Union or the United Kingdom, the GDPR gives you these
+  rights formally, along with the right to complain to your data-protection authority. Because we
+  hold almost nothing, there is usually nothing to export or erase. Where we do hold something you
+  gave us – a questionnaire submission, for example – we will act on your request within 30 days.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the date at the top of this page changes with it.</p>
+  <p>If this policy changes, the date at the top of this page changes with it. A change that affects
+  the app will also be described in the app’s release notes.</p>
 
   <h2>Contact</h2>
   <p>Questions about privacy, or a request about your data:
@@ -152,6 +195,12 @@
   <footer>
     EPRIS JOURNAL – contemporary art, architecture &amp; interior design.
     <a href="/">Return to the journal</a>.
+    <nav aria-label="Legal and help">
+      <a href="/privacy/" aria-current="page">Privacy</a>
+      <a href="/terms/">Terms of use</a>
+      <a href="/support/">Support</a>
+      <a href="/app/">The app</a>
+    </nav>
   </footer>
 </div>
 </body>
