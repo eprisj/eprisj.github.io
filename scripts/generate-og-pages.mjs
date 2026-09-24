@@ -168,14 +168,16 @@ function prerenderStyle() {
        поэтому вопрос не в оттенке, а в том, чтобы на нормальном соединении
        блок не рисовался вовсе.
 
-       1.2 с выбраны так: гидратация на обычном канале укладывается заметно
-       раньше, и React снимает блок до того, как тот проявится. Если не
-       уложилась - медленная сеть, упавший бандл, выключенный JS - текст
-       появляется, ровно ради этого случая блок и написан. */
+       24.09.2026: 1.2 с оказалось мало. Замер на мобильном 4G: React
+       монтируется на ~4 с (бандл ~1 МБ gzip), и с 1.9 до 4.1 с читатель
+       видел статью в другой вёрстке (Playfair, узкая колонка, картинка
+       ниже текста). Теперь при включённом JS блок проявляется только через
+       8 с - то есть лишь если бандл реально не приехал. Без JS (noscript
+       ниже) текст виден сразу. Для поисковиков текст в HTML остаётся. */
     .pre-doc{
       --c-accent:${accent};--c-gold:${gold};--c-bg:${bg};
       --font-display:${display};--font-body:${body};
-      opacity:0;animation:pre-doc-reveal .2s ease 1.2s forwards;
+      opacity:0;animation:pre-doc-reveal .2s ease 8s forwards;
       max-width:44rem;margin:0 auto;padding:5vh 6vw 12vh;
       font-family:var(--font-body);line-height:1.65;color:var(--c-accent)}
     @keyframes pre-doc-reveal{to{opacity:1}}
@@ -197,7 +199,7 @@ function prerenderStyle() {
 }
 
 function prerenderBody(html) {
-  return `<div id="root">${prerenderStyle()}<div class="pre-doc">${html}</div></div>`;
+  return `<div id="root">${prerenderStyle()}<noscript><style>.pre-doc{opacity:1;animation:none}</style></noscript><div class="pre-doc">${html}</div></div>`;
 }
 
 function articleParagraphs(article) {
