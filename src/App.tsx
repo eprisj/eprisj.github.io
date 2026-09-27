@@ -3274,8 +3274,11 @@ function EditorialListCard({
           them, the entry's own otherwise (see the preview* fields in
           data.ts). objectPosition carries the focal point: the frame is
           square and covers rarely are, so a centre crop is what cuts the
-          top off a portrait. */}
-      <div className="aspect-square overflow-hidden bg-[#E8DED5]">
+          top off a portrait. w-full + self-start: Safari (WebKit) otherwise
+          stretches the frame to the row's height and derives its width from
+          that through aspect-ratio — on phones the cover came out about 60%
+          wide with a blank strip to its right. */}
+      <div className="aspect-square w-full self-start sm:self-auto overflow-hidden bg-[#E8DED5]">
         <motion.img
           src={card.imageSrc}
           srcSet={derivedSrcSet(card.imageSrc)}
