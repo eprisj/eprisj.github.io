@@ -2472,8 +2472,22 @@ const CONTRIBUTOR_LABELS: Record<string, string> = {
   FR: 'En collaboration avec',
 };
 
-function contributorLabel(lang: string): string {
-  return CONTRIBUTOR_LABELS[(lang || 'EN').toUpperCase()] || CONTRIBUTOR_LABELS.EN;
+/* Когда второй кредит - не гость, а автор самой редакции (showOnTeam), это
+   соавторство, а не "сотрудничество": подпись другая. */
+const COAUTHOR_LABELS: Record<string, string> = {
+  EN: 'Co-written with',
+  IT: 'Scritto insieme a',
+  RU: 'В соавторстве с',
+  UA: 'У співавторстві з',
+  DE: 'Gemeinsam verfasst mit',
+  ES: 'Escrito junto a',
+  TR: 'Ortak yazar',
+  FR: 'Coécrit avec',
+};
+
+function contributorLabel(lang: string, coauthor = false): string {
+  const table = coauthor ? COAUTHOR_LABELS : CONTRIBUTOR_LABELS;
+  return table[(lang || 'EN').toUpperCase()] || table.EN;
 }
 
 function ArticleView({ article, related, onArticleClick, onTagClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onTagClick: (tag: string) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
@@ -2520,6 +2534,10 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // Второй кредит: институция, вместе с которой сделан материал. Она не
   // перебивает подпись автора, а стоит отдельной карточкой под ней.
   const contributor = article.contributorId ? resolveAuthor({ authorId: article.contributorId }) : null;
+  const contributorIsCoauthor = contributor?.showOnTeam === true;
+  // With a second card below, the first card is one person: the byline
+  // "A & B" above that person's bio and photo read as if the bio were shared.
+  const footerAuthorName = contributor && isMatchingProfile && resolvedAuthor?.name ? resolvedAuthor.name : authorName;
 
   // The overlay is the only scroller while it is open — see the hook.
   useLockedPageScroll();
@@ -2978,7 +2996,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 </div>
               )}
               <div>
-                <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{authorName}</p>
+                <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{footerAuthorName}</p>
                 {authorRole && (
                   <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{authorRole}</p>
                 )}
@@ -3014,7 +3032,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
             </div>
             {contributor && (
               <div className="mt-4 sm:mt-5">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang, contributorIsCoauthor)}</p>
                 <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
                   {contributor.photoUrl ? (
                     /* Та же развилка, что и в AuthorBlock: портрет режется в
