@@ -11451,8 +11451,10 @@
     {
       "draft": false,
       "title": "Two Doors Open in October: EPRIS Museum and Architectura",
-      "author": "EPRIS Journal",
-      "role": "Editorial team",
+      "author": "Maria Ivanova & Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784896384236-4fokw",
+      "contributorId": "author-1784732936927-kw554",
       "date": "Sep 27, 2026",
       "excerpt": "This October the editors of EPRIS Journal open two doors at once: EPRIS Museum, a free museum of painting, sculpture and photography that never closes, and Architectura, an app for iPhone and iPad that teaches you to read Italian buildings the way architects draw them.",
       "category": "Culture",
@@ -11467,7 +11469,7 @@
         "education"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mujzwy61nxk1qi.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
       "content": [
         {
           "type": "text",
@@ -11497,6 +11499,18 @@
           "content": "We wanted the museum to feel like a building even though it is not one. So the home page opens on a drawing of the Pantheon, cut in half from the portico to the apse, with its heights marked in metres as an architect would letter them. The disc of light that falls through the oculus is not decoration: it is calculated from the actual position of the sun over Rome at the moment you open the page. Visit at noon and it lies on the pavement; visit in the evening and it climbs the dome; after dark the oculus shows stars. Further down, the Colosseum is drawn half as a façade and half as a section, and each of its arches holds the entrance to a hall."
         },
         {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/muk06fgky63ykl.jpg",
+            "https://api.eprisjournal.com/uploads/muk06ftwkqrb0q.jpg"
+          ],
+          "caption": "",
+          "alts": [
+            "The original of our front door: sunlight through the oculus of the Pantheon. Photo: NormanB, CC BY-SA 3.0, via Wikimedia Commons",
+            "The Colosseum at night, whose arches lead into the halls. Photo: Anil Öztas, CC BY 4.0, via Wikimedia Commons"
+          ]
+        },
+        {
           "type": "quote",
           "content": "A museum should be open at any hour, and it should always tell you where a work really lives."
         },
@@ -11515,11 +11529,13 @@
           "type": "gallery",
           "content": [
             "https://api.eprisjournal.com/uploads/mujzwyzf5t5cz8.jpg",
+            "https://api.eprisjournal.com/uploads/muk06g8b00ah3n.jpg",
             "https://api.eprisjournal.com/uploads/mujzwzb5yi4qoa.jpg"
           ],
           "caption": "",
           "alts": [
             "The halls in order, each with a short text and its first works",
+            "The index of artists: every name in the collection, by surname",
             "The open call: selected work hangs in a hall, credited in full"
           ]
         },
@@ -11538,6 +11554,20 @@
         {
           "type": "text",
           "content": "The app contains forty-seven plates, one or more for every region of Italy, from the Arch of Augustus in Aosta to the cathedral of Monreale and the nuraghe of Barumini in Sardinia. There are the monuments everyone knows, the Pantheon, the Colosseum, Trajan's Column, Pisa, Brunelleschi's dome, the Doge's Palace, and there are quieter ones: the Cattolica of Stilo, the star-shaped fortress town of Palmanova, the gate of Saepinum in Molise. Milan, where EPRIS is edited, has a chapter of its own, from the Roman columns of San Lorenzo to the Bosco Verticale, with a walking route through the city."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/muk06ghe5i1106.jpg",
+            "https://api.eprisjournal.com/uploads/muk06gve141z6b.jpg",
+            "https://api.eprisjournal.com/uploads/muk06hcoarefyk.jpg"
+          ],
+          "caption": "Three of the buildings behind the plates, as they stand today",
+          "alts": [
+            "Milan Cathedral. Photo: Francesca Milanini, CC BY-SA 4.0, via Wikimedia Commons",
+            "Brunelleschi's dome over the roofs of Florence. Photo: GiovanniPen, CC BY-SA 4.0, via Wikimedia Commons",
+            "Piazza del Campo in Siena, seen from the Torre del Mangia. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons"
+          ]
         },
         {
           "type": "gallery",
@@ -11605,6 +11635,20 @@
         {
           "type": "gallery",
           "content": [
+            "https://api.eprisjournal.com/uploads/muk06hsqlpu5li.jpg",
+            "https://api.eprisjournal.com/uploads/muk06i8fe6xz77.jpg",
+            "https://api.eprisjournal.com/uploads/muk06imxn4k11i.jpg"
+          ],
+          "caption": "",
+          "alts": [
+            "Architectura on iPad: the opening page",
+            "The map of Italy with every plate on it",
+            "The cathedral of San Vigilio in Trento, one of the northern plates"
+          ]
+        },
+        {
+          "type": "gallery",
+          "content": [
             "https://api.eprisjournal.com/uploads/mujzx2ye5o5nsd.jpg",
             "https://api.eprisjournal.com/uploads/mujzx3fjsn1hec.jpg",
             "https://api.eprisjournal.com/uploads/mujzx3z1p0z68x.jpg"
@@ -11629,6 +11673,13 @@
           "content": "We do not think of either as a substitute for travel. A drawing of the Pantheon is not the Pantheon, and a screen will never give you the scale of the Colosseum or the cold of Sant'Ambrogio in January. What they can do is prepare the eye, so that when you do stand under the dome, you already know where to look and what the things you see are called."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Pantheon and the Piazza della Rotonda, Rome. Photo: Nicholas Hartmann, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
           "type": "note",
           "content": "<b>When and where.</b> EPRIS Museum opens officially in October 2026 at museum.eprisjournal.com; entry is free, at any hour, and the halls are already open for anyone who wants to walk them early. Architectura: Italy Drawn arrives on the App Store for iPhone and iPad in October. It is free, with no account, no advertising and no tracking. We will publish the App Store link here and in our newsletter on the day it goes live."
         },
@@ -11651,7 +11702,7 @@
       "previewToken": "7d1b9c2cf185701a4717615c",
       "publishAt": "2026-09-27T15:51:09.649Z",
       "publishedAt": "2026-09-27T15:51:09.649Z",
-      "updatedAt": "2026-09-27T15:51:09.914Z"
+      "updatedAt": "2026-09-27T15:58:28.730Z"
     }
   ],
   "reviews": [
