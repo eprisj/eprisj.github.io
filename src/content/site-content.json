@@ -12671,7 +12671,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/suzhou-moca-at-dusk.jpg",
       "previewToken": "c41a66b071b61e669d2e3882",
-      "updatedAt": "2026-09-28T19:47:23.676Z",
+      "updatedAt": "2026-09-28T19:48:21.266Z",
       "content": [
         {
           "type": "text",
@@ -12727,6 +12727,13 @@
         {
           "type": "text",
           "content": "At Suzhou MoCA, that connective element expands until it becomes the museum’s public identity. The roof does not merely cap a series of rooms. It works as a continuous line of orientation, gathering separate volumes into one route while allowing gardens to remain between them. From the ground, the building arrives as a succession of edges and openings. Only from above—or from a Ferris-wheel gondola—does the entire system become legible."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-covered-corridor.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Visitors moving through the covered public route between gardens and galleries. Photo courtesy Suzhou MoCA and BIG."
         },
         {
           "type": "header",
