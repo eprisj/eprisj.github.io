@@ -71558,10 +71558,294 @@
           "updatedAt": "2026-09-28T08:02:42.595Z"
         },
         {
-          "id": 49,
+          "draft": false,
           "title": "In Praise of Shadow: Colore e Luce in Clair-obscur alla Bourse de Commerce",
-          "excerpt": "Per sei mesi l'edificio più luminoso di Parigi ha accettato di diventare oscuro. Una lettura lavoro per lavoro di Clair-obscur alla Bourse de Commerce, e ciò che Polke, Victor Man, Frank Bowling, Carol Rama e Laura Lamiel insegnano sul colore in un'epoca di troppa luce.",
-          "category": "Cultura"
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "date": "28 set 2026",
+          "excerpt": "Per sei mesi l'edificio più luminoso di Parigi ha accettato di diventare oscuro. Una lettura passo dopo passo di Clair-obscur alla Bourse de Commerce, e ciò che Polke, Victor Man, Frank Bowling, Carol Rama e Laura Lamiel insegnano sul colore in un'epoca di troppa luce.",
+          "category": "Cultura",
+          "subcategory": "Mostra",
+          "tags": [
+            "Clair-obscur",
+            "Bourse de Commerce",
+            "Pinault Collection",
+            "Parigi",
+            "colore",
+            "arte contemporanea",
+            "Sigmar Polke",
+            "Victor Man",
+            "Frank Bowling"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mukwghgln6v911.jpg",
+          "content": [
+            {
+              "type": "citazione",
+              "content": "Il contemporaneo è colui che tiene lo sguardo fisso sulla propria epoca, per percepire non la sua luce ma la sua oscurità. – Giorgio Agamben, What Is the Contemporary?"
+            },
+            {
+              "type": "testo",
+              "content": "Per sei mesi quest'anno, l'edificio più luminoso di Parigi ha accettato di spegnersi. Dal 4 marzo al 24 agosto 2026 la Bourse de Commerce, dove Tadao Ando ha inserito un cilindro di cemento all’interno dell’antico mercato del grano sotto la sua cupola dipinta, si è consegnata a <i>Clair-obscur</i>: circa cento opere della Pinault Collection di alcuni ventisette artisti moderni e contemporanei, disposte, nelle parole della sua curatrice Emma Lavigne, come un paesaggio allo stesso tempo luminoso e crepuscolare. La mostra si è ora chiusa. Merita una seconda occhiata, perché ha posto una domanda che i nostri schermi ci hanno insegnato a dimenticare: cosa significa il colore quando non è semplicemente brillante?"
+            },
+            {
+              "type": "testo",
+              "content": "Viviamo all’interno di un eccesso di luce. I telefoni brillano alla luminosità di mezzogiorno; la pubblicità ha reso la saturazione la voce predefinita del mondo visibile; i colori del nostro secolo arrivano già illuminati da dietro. <i>Clair-obscur</i> proponeva la disciplina opposta, quella che i pittori italiani chiamavano <i>chiaroscuro</i>: colore che è misurato, trattenuto, lasciato emergere dall’ombra piuttosto che urlato in essa. Quanto segue è una lettura delle opere della mostra lavoro per lavoro, come una lezione su come l’arte del nostro tempo gestisce il colore, la luce e la loro assenza."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwghgln6v911.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "La cupola dipinta e il piano superiore della Bourse de Commerce, Parigi, dopo la sua trasformazione da parte di Tadao Ando (2021). Foto: Jean-Pierre Dalbéra, CC BY 2.0, via Wikimedia Commons"
+            },
+            {
+              "type": "header",
+              "content": "L' · L'eredità: un raggio di luce, un muro di nero"
+            },
+            {
+              "type": "text",
+              "content": "Il titolo guarda indietro di quattro secoli. Quando Caravaggio dipinse <i>Il chiamamento di San Matteo</i> per San Luigi dei Francesi a Roma, non illuminò tutta la scena; la tagliò con un singolo raggio diagonale. I riscossori siedono in un'oscurità da osteria, e il colore delle loro maniche, dei loro cappelli e dei loro volti esiste solo dove quel raggio cade. Il colore, in chiaroscuro, non è una proprietà degli oggetti. È un evento, qualcosa che accade a un oggetto quando la luce lo raggiunge."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwght0499mnq.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Caravaggio, Il chiamamento di San Matteo, 1599–1600, olio su tela. Cappella Contarelli, San Luigi dei Francesi, Roma. Foto: Gleb Simonov, CC0, via Wikimedia Commons"
+            },
+            {
+              "type": "text",
+              "content": "Il secondo antenato è Goya. Tra il 1820 e il 1823, nella sua casa fuori Madrid, la Quinta del Sordo, il vecchio pittore coprì le pareti con quello che ora chiamiamo <i>Pinturas negras</i>, le Pitture Nere. Le note stampa della mostra descrivono la loro tavolozza precisamente: neri temperati con ocra e tonalità terrose. È una tavolozza di quasi nulla, e ha prodotto alcune delle immagini più spaventose dell'arte europea. Qui il colore non viene tolto per rendere drammatica la luce, come in Caravaggio; viene tolto perché il mondo che descrive ha perso la sua luce diurna."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgigsrtuaip.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Francisco de Goya, Saturno che divora suo figlio, 1820–1823, uno dei Black Paintings dalla Quinta del Sordo, trasferito su tela. Museo del Prado, Madrid. Dominio pubblico, via Wikimedia Commons"
+            },
+            {
+              "type": "testo",
+              "content": "Philippe Parreno ha preso Goya letteralmente. Il suo film <i>La Quinta del Sordo</i> (2021), mostrato nello Studio della Borsa, ricostruisce la stanza in cui furono realizzate le Black Paintings e lascia che un singolo raggio di luce attraversi in essa nell'oscurità. A volte la luce sfiora solo la superficie, così che la vernice diventa polvere e rilievo piuttosto che immagine; altre volte penetra per rivelare i volti affaticati sulle pareti. Niente viene mostrato intero. In trentanove minuti di oscurità Parreno insegna la prima regola dell'esposizione: <b>un colore che ci è permesso vedere solo parzialmente è un colore che guardiamo due volte</b>."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgj1pr2u15w.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Philippe Parreno, La Quinta del Sordo, 2021, film 4K (colore, colonna sonora multi-canale), 39 min. Collezione Pinault. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "intestazione",
+              "content": "II · Sigmar Polke: colore sospeso in sospensione"
+            },
+            {
+              "type": "text",
+              "content": "Se un'opera giustificava la mostra, era <i>Axial Age</i> di Sigmar Polke (2005–2007), nove pannelli dipinti per la 52ª Biennale di Venezia e mostrati in Galleria 2. Il suo titolo deriva da Karl Jaspers, che chiamò i secoli di Confucio, il Buddha, Omero e Platone l'età assiale del pensiero umano. La sua tecnica è la sua argomentazione. Polke non stendeva colore sulla tela; sospendeva pigmento secco in resina artificiale su tessuto, in modo che il supporto diventasse uno schermo traslucido e la luce passasse attraverso l'immagine così come cadeva su di essa."
+            },
+            {
+              "type": "text",
+              "content": "Il risultato è un colore che sembra formarsi piuttosto che essere finito: pozze di ambra e viola, blu fumosi, zone dove la resina si confonde come respiro sul vetro e zone dove si schiarisce in qualcosa di vicino a una finestra. I curatori descrivono il ciclo come un vasto specchio liquido da cui emergono fantasmi del passato. Stando davanti, si comprende perché Polke, alchimista dei materiali per tutta la vita, parlasse di pittura come di un'arte chimica tanto quanto ottica. La lezione per chi lavora con il colore è precisa: <b>la trasparenza è anche un colore</b>, e le tonalità più vive sono quelle che vediamo attraverso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwgjejmf433m.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Sigmar Polke, Axial Age (dettaglio), 2005–2007, nove pannelli, resina artificiale e pigmento secco su tessuto. Collezione Pinault. © L'Estate di Sigmar Polke, Colonia / ADAGP, Parigi, 2026. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "text",
+              "content": "Nel Salon, due Polke precedenti portavano la stessa idea in dialogo: <i>Stairwell</i> (1968) e <i>Loop – The Prayer Book of Maximilian</i> (1986). Il secondo è un omaggio alle penne ornate che Albrecht Dürer disegnava nei margini del libro di preghiere stampato per l'Imperatore Maximilian I nel 1513. Polke ingrandì quei loop su una tela di due metri e mezzo quadrati e li inserì in una vernice semi-trasparente, dove le aree più scure si leggono, nelle parole della critica Bice Curiger, come tracce di polvere da sparo. Le marginalia di Dürer erano già una lezione di ombreggiatura fatta con una sola linea. Polke le trasformò in tempo atmosferico."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgjp27m0o81.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Dopo Albrecht Dürer, disegno marginale dal Prayer Book dell'Imperatore Maximilian I (1513), litografia di Johann Nepomuk Strixner, 1808. CC0, via Wikimedia Commons"
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgk7dt942gk.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Sigmar Polke, Loop – The Prayer Book of Maximilian, 1986, resina, grafite, pigmento e emulsione su tela, 250.2 × 250.2 cm. Collezione Pinault. © La proprietà di Sigmar Polke, Colonia / ADAGP, Parigi, 2026. Immagine: Collezione Pinault, kit stampa clair-obscur (2026)"
+            },
+            {
+              "type": "intestazione",
+              "content": "III · Victor Man: la tavolozza della distanza"
+            },
+            {
+              "type": "testo",
+              "content": "La Galleria 3 apparteneva a un pittore, il rumeno Victor Man (nato nel 1974), in una stanza curata da Jean-Marie Gallais, che lo definisce il pittore contemporaneo del chiaroscuro. Le immagini di Man sono piccole, spesso dipinte su cartone, e quasi monocromatiche: scuri di oliva, verdi lividi, una carne che sembra illuminata da una sola candela in una stanza lontana. <i>Titiriteros</i> (2023), olio su cartone, 60 per 84 centimetri, prende il suo titolo spagnolo dai burattinai che tirano le fila; <i>Maternity with Legend</i> (2024) raffigura un santo penitente che si arrampica a quattro zampe in primo piano."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgknw4k3dm5.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Victor Man, Titiriteros, 2023, olio su cartone, 60 × 84 cm. Collezione Pinault. © Victor Man © ADAGP, Parigi, 2026. Foto: def immagine. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "testo",
+              "content": "Il suo metodo è istruttivo proprio perché è così contenuto. Man prende un'immagine, spesso dalla storia della pittura, e la passa attraverso quello che Gallais chiama due filtri: storia dell'arte, e la sua palette cupa, che mette il soggetto a distanza. Ha rielaborato <i>Fábula</i> di El Greco, la scena enigmatica di un ragazzo che soffia su una brace tra una scimmia e un pazzo; e realizza copie oscurate di scene italiane del Trecento della Passione, di Sassetta, Lorenzetti e Giovanni di Pietro, deliberatamente <i>desaturate</i> in un gruppo di dipinti neri. I fondi dorati e i blu lapislazzuli del XIV secolo scompaiono, e ciò che rimane è la violenza che un tempo decorava."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgl00tlrxi2.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "El Greco, Un'Allegoria (Fábula), c. 1580–1585, olio su tela. Gallerie Nazionali di Scozia, Edimburgo. Dominio pubblico, via Wikimedia Commons. Una delle immagini che Victor Man ha ridipinto con la sua palette oscurata."
+            },
+            {
+              "type": "testo",
+              "content": "Sarebbe facile chiamare tale pittura cupa. È meglio descriverla come un rifiuto della seduzione. Man usa il colore come uno scrittore attento usa gli aggettivi: raramente, e solo dove una frase crollerebbe senza di essi. Le sue immagini attirano prima l'occhio sulla texture della superficie e solo allora sul soggetto, così che incontriamo l'immagine, come scrive Gallais, senza illusione."
+            },
+            {
+              "type": "header",
+              "content": "IV · Colore come clima: Bowling, Tillmans e una stanza di nebbia"
+            },
+            {
+              "type": "text",
+              "content": "Se l'Uomo trattiene il colore, Frank Bowling lo inonda. La Galleria 6 si chiamava <i>Fog</i>, e lì i curatori hanno stabilito quella che descrivono come una mappa vaporosa dipinta da Bowling, nato in Guyana nel 1934. Il Bowling della Collezione Pinault è <i>Texas Louise</i> (1971), acrilico su tela di quasi sette metri di larghezza, uno dei Map Paintings realizzati a New York tra il 1966 e il 1971: un campo di rosa-rosso incandescente attraverso cui si delineano le coste dei continenti americani, spruzzate attraverso stencil, che si sollevano e si dissolvono come coste viste al tramonto. La descrizione della collezione è precisa: una geografia che ne nasconde un'altra."
+            },
+            {
+              "type": "text",
+              "content": "Qui il colore non è la luce su una cosa; è l'aria stessa. I rosa e gli arancioni di Bowling non hanno fonte e non proiettano ombra. Si comportano come un clima, e i continenti vi galleggiano come la memoria galleggia nel sentimento. La mostra ha interpretato il dipinto come una contro-mappa afro-diasporica, dove la nebbia cancella i confini dei territori e ricorda i attraversamenti oceanici segnati dalla violenza dello sradicamento. Il chiaroscuro sopravvive qui in una forma nuova: non luce contro oscurità, ma chiarezza contro foschia."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwgldjxr36xj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Wolfgang Tillmans, Day/Night II b, 2010. Collezione Pinault. Cortesia Galerie Buchholz. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "text",
+              "content": "Accanto ad esso pendeva <i>Day/Night II b</i> di Wolfgang Tillmans (2010), dai paesaggi verticali che iniziò a fotografare nel 1995 per registrare le variazioni di colore e luce nel cielo, e opere vicine di Trisha Donnelly e Bruce Conner, il cui film del test nucleare del 1946 a Bikini trasforma una catastrofe in onde lente e pallide di spruzzo. E con l'arrivo dell'estate, la Rotonda stessa si riempì di nebbia: l'artista giapponese Fujiko Nakaya, che scolpisce vapore acqueo sin dagli anni '70, lasciò che una nuvola si raccogliesse e dissolvesse sotto l'anello di cemento di Ando e la cupola dipinta. Nella stanza più luminosa di Parigi i colori scomparvero del tutto, e tornarono uno ad uno man mano che la nuvola si diradava. Prima della nebbia, lo stesso palco circolare aveva ospitato <i>Camata</i> di Pierre Huyghe (2024), un film di un rituale metafisico girato nel deserto di Atacama e montato in tempo reale da algoritmi di autoapprendimento: notte che diventa giorno, ombra che diventa luce, terra che diventa cielo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwgln84def4h.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Pierre Huyghe, Camata, 2024, robotica guidata da apprendimento automatico, film auto-diretto montato in tempo reale da algoritmi di autoapprendimento, suono, sensori. Collezione Pinault. © ADAGP, Parigi, 2026. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwgm4t9pkwxb.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Fujiko Nakaya, Foggy Forest, Fog Environment #47660, Children's Forest, 1992, Parco Memorial Showa, Tachikawa, Tokyo: una scultura di nebbia precedente, mostrata nel kit stampa per introdurre il suo pezzo per la Rotonda. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "header",
+              "content": "V · Colore come materia, colore come fuoco"
+            },
+            {
+              "type": "testo",
+              "content": "Gallery 5, <i>Incandescence</i>, trasformata da atmosfera a sostanza. Carol Rama, che ha lavorato per decenni nel suo appartamento a Torino, era rappresentata da tre sue <i>Bricolages</i>. Quello riprodotto nel kit stampa, <i>Untitled</i> (1967), è realizzato con tempera, polvere di bronzo, intonaco pigmentato, colla, perle di vetro e occhi di bambola su Masonite: una crosta di vernice coagulata in cui i segni di blu e rosso circondano gli occhi sbarrati. Il colore qui non è descritto; è attaccato, crostato, trovato. Ha peso, e risponde con uno sguardo."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgmh1vjabtr.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Carol Rama, Untitled, dalla serie Bricolage, 1967, tempera, polvere di bronzo, intonaco pigmentato, colla, perle di vetro e occhi di bambola su Masonite, 28 × 45 cm. Collezione Pinault. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "testo",
+              "content": "Accanto a lei, lo svizzero Louis Soutter, confinato in una casa di riposo per poveri anziani all'inizio della Seconda Guerra Mondiale, disegnava i suoi riti allucinatori con le dita in inchiostro e gouache; la collezione <i>Crepuscolo del gangster</i> (1937–1942) appartiene a quel tardo, oscuro periodo. E riempiendo lo spazio principale, <i>Fire Woman</i> di Bill Viola (2005), realizzato per il suo Tristan Project all'Opéra Bastille, mostrava una sagoma oscura che avanzava davanti a un muro di fiamme e infine si dissolveva in onde di rosso incandescente: chiaroscuro rovesciato, la figura scura e la luce che la consuma."
+            },
+            {
+              "type": "galleria",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mukwgmtyvuxpkc.jpg",
+                "https://api.eprisjournal.com/uploads/mukwgn2orf2ye9.jpg"
+              ],
+              "caption": "Due tipi di incandescenza: dita in inchiostro, un corpo in fuoco",
+              "alts": [
+                "Louis Soutter, Crepuscolo del gangster, 1937–1942, inchiostro e gouache su carta. Collezione Pinault. Foto: Jochen Littkeman, Berlino. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)",
+                "Bill Viola, Fire Woman, 2005, installazione video e sonora, 11 min 12 sec. Collezione Pinault. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "L'oro aveva la sua cappella. James Lee Byars, per il quale l'oro era il colore del sublime e dell'immortale, era presente con <i>The Golden Tower</i> (1974), un cilindro di foglia d'oro, una sfera di 3.333 rose rosse, e <i>Byars Is Elephant</i> (1997), corda di cammello e tessuto dorato concepiti a Il Cairo poco prima della sua morte. Accanto alle resine di Polke, l'oro di Byars era un promemoria che il colore più antico del sacro è anche quello che più dipende dall'oscurità: l'oro è solo oro dove c'è ombra contro cui brillare."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mukwgnah789zgw.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "James Lee Byars, Byars Is Elephant, 1997, corda e tessuto dorato, dimensioni variabili. Collezione Pinault. Immagine: Collezione Pinault, kit stampa Clair-obscur (2026)"
+            },
+            {
+              "type": "header",
+              "content": "VI · Luce usata come pennello"
+            },
+            {
+              "type": "text",
+              "content": "La stanza più sottile non era affatto una stanza. Nelle ventiquattro vetrine del Passage, il corridoio ad anello che sopravvive dall'antico scambio di grano, e nella Sala Macchine sottostante, Laura Lamiel (nata nel 1943) ha costruito una sequenza di installazioni curate da Alexandra Bordes sotto una linea di Beckett: <i>Fanno un suono come ali, come foglie, come sabbia</i>. Scarpe da bambino, guanti, tessuto compresso, mattoni smaltati, ossa di uccelli, i bordi dorati di missali impilati; e tubi fluorescenti che rivelano alcuni oggetti e lasciano altri in ombra. Lamiel dice di usare la luce in modo vitale, come se lavorasse con pennelli."
+            },
+            {
+              "type": "immagine",
+              "content": "https://api.eprisjournal.com/uploads/mukwgnmls1tixb.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Laura Lamiel, _ _ _ poi un salto (dettaglio), 2025–2026, mattoni in acciaio smaltato, ossa di uccello, luce fluorescente, oggetti della collezione dell'artista. © ADAGP, Parigi, 2026. Foto: Nicolas Brasseur. Immagine: Pinault Collection, Clair-obscur press kit (2026)"
+            },
+            {
+              "type": "testo",
+              "content": "Questa frase potrebbe servire come motto dell'intera mostra. Nel caso di Lamiel, come nel film di Parreno e nella resina di Polke, il colore non è un manto applicato a una superficie. È una relazione tra luce, materiale e tempo: vernice nera accanto a cotone bianco immacolato, una scheggia d'oro cattura un tubo di luce fredda. L'opera chiede allo spettatore di rallentare fino a quando l'occhio può distinguere un bianco da un bianco."
+            },
+            {
+              "type": "intestazione",
+              "content": "VII · Cosa ha sbagliato la mostra, e perché ancora importava"
+            },
+            {
+              "type": "testo",
+              "content": "<i>Clair-obscur</i> non fu una mostra impeccabile. Scrivendo per Slash, il critico Guillaume Benoit elogiò la sua ambizione filosofica intorno alla questione dello sguardo, e mise in evidenza la pura sobrietà di <i>Axial Age</i> di Polke, ma trovò la costruzione disordinata: temi diluiti, artisti illuminati senza un vero impegno monografico, alcune opere ridotte ad accessori. Condividiamo parte di quella sentenza. L'organizzazione per parola chiave, <i>Germination</i>, <i>Incandescence</i>, <i>Fog</i>, <i>Shadows</i>, a volte metteva le opere fianco a fianco perché rimeggiavano piuttosto che perché dialogavano tra loro, e la scultura post-bellica di Giacometti, Richier, Dubuffet e Maria Martins nella Galleria 7 meritava una stanza con il suo proprio argomento."
+            },
+            {
+              "type": "text",
+              "content": "Eppure la mostra ha fatto qualcosa che poche istituzioni osano: ha reso un intero edificio più silenzioso dei telefoni dei suoi visitatori. Facendo ciò ha mostrato quattro modi in cui l'arte del nostro tempo pensa al colore, e vale la pena portare fuori dal museo."
+            },
+            {
+              "type": "text",
+              "content": "<b>Colore trattenuto.</b> Victor Man e Parreno mostrano che l'assenza di colore è essa stessa una tavolozza, e che un'immagine desaturata mantiene la sua distanza e quindi il suo mistero. <b>Colore in sospensione.</b> Le resine di Polke mostrano che trasparenza e profondità sono proprietà del colore, non del disegno. <b>Colore come clima.</b> Bowling, Tillmans e Nakaya trasformano il colore in aria e tempo, un campo in cui stiamo dentro piuttosto che un oggetto che guardiamo. <b>Colore come materia e come luce.</b> Carol Rama lo riveste di croste, Byars lo dorano, Lamiel dipinge con la luce stessa."
+            },
+            {
+              "type": "quote",
+              "content": "Il colore non è ciò che aggiungiamo al mondo. È ciò che la luce ci permette di trovare in esso."
+            },
+            {
+              "type": "text",
+              "content": "Il raggio di Caravaggio e le pareti nere di Goya non erano lezioni di oscurità per il suo stesso scopo. Erano lezioni di attenzione: su come una singola manica illuminata può portare tutto il significato di un quadro. Quattrocento anni dopo, in un edificio fatto per brillare, ventisette artisti hanno fatto lo stesso. In un'epoca che illumina tutto contemporaneamente, il colore più radicale potrebbe essere quello che ci aspetta nell'ombra."
+            },
+            {
+              "type": "note",
+              "content": "Clair-obscur è stato mostrato alla Bourse de Commerce – Pinault Collection, 2 rue de Viarmes, Parigi, dal 4 marzo al 24 agosto 2026. Curatore generale: Emma Lavigne, con Nicolas-Xavier Ferrand; sala Victor Man curata da Jean-Marie Gallais; Laura Lamiel di Alexandra Bordes (la sua installazione è rimasta in visione nel Passage fino al 21 settembre 2026). Le immagini delle opere in mostra provengono dal kit stampa della Pinault Collection per Clair-obscur e sono riprodotte per la recensione con i crediti che fornisce; le opere rimangono di proprietà dei loro artisti e patrimoni. Le immagini storiche sono di dominio pubblico o sotto licenze aperte, accreditate nelle didascalie. La pittura su mappa di Frank Bowling non è illustrata qui: il kit stampa non riporta alcuna immagine di essa."
+            },
+            {
+              "type": "link",
+              "content": "La mostra alla Bourse de Commerce",
+              "url": "https://www.pinaultcollection.com/en/boursedecommerce/clair-obscur"
+            },
+            {
+              "type": "link",
+              "content": "La recensione di Guillaume Benoit per Slash (in francese)",
+              "url": "https://slash-paris.com/critiques/clair-obscur-bourse-de-commerce-paris"
+            }
+          ],
+          "id": 49,
+          "previewToken": "f50d4b19eb7eddac971bf9ce",
+          "publishAt": "2026-09-28T07:02:09.040Z",
+          "publishedAt": "2026-09-28T07:02:09.040Z",
+          "updatedAt": "2026-09-28T08:07:58.414Z"
         }
       ],
       "reviews": [
