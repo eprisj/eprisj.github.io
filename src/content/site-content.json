@@ -52149,18 +52149,264 @@
           ]
         },
         {
-          "id": 48,
-          "locked": true,
-          "title": "",
-          "author": "",
-          "date": "",
-          "excerpt": "",
-          "category": "",
-          "subcategory": "",
+          "draft": false,
+          "title": "Las puertas se abren: Museo EPRIS y Architectura, este octubre",
+          "author": "Maria Ivanova & Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784896384236-4fokw",
+          "contributorId": "author-1784732936927-kw554",
+          "date": "27 sep, 2026",
+          "excerpt": "Cada civilización se ha anunciado a través de una puerta. Este octubre, EPRIS Journal abre dos: Museo EPRIS, un museo sin paredes que nunca cierra, y Architectura, un atlas y una escuela que enseña la gramática de tres mil años en la que Italia ha sido construida.",
+          "category": "Cultura",
+          "subcategory": "Anuncio",
+          "tags": [
+            "Museo EPRIS",
+            "Architectura",
+            "arquitectura",
+            "Italia",
+            "museo",
+            "aplicación",
+            "educación"
+          ],
           "imageSeed": "",
-          "tags": [],
-          "content": [],
-          "updatedAt": "2026-09-27T16:36:11.090Z"
+          "imageUrl": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
+          "content": [
+            {
+              "type": "quote",
+              "content": "Nada es tan popular como la belleza. – No hay nada tan del pueblo como lo que es bueno. Cicero, Pro Ligario"
+            },
+            {
+              "type": "text",
+              "content": "Cada civilización se ha anunciado a través de una puerta. Las puertas de bronce del Pantheon han girado en sus bisagras durante diecinueve siglos; Ghiberti pasó la mitad de su vida en las puertas que Michelangelo llamó dignas del Paraíso. Una puerta es una promesa: que lo que yace más allá se mantiene, se cuida y está destinado a ser entrado. Este octubre, la revista EPRIS abre dos puertas propias. No están hechas de bronce sino de luz y línea, y no se cerrarán al atardecer."
+            },
+            {
+              "type": "text",
+              "content": "La primera es <b>Museo EPRIS</b>, un museo de pintura, escultura y fotografía sin paredes, sin entrada y sin hora de cierre, en museo.eprisjournal.com. La segunda es <b>Architectura</b>, un atlas y una escuela para iPhone y iPad, que enseña la gramática más antigua de Europa: el idioma en el que Italia ha estado construyendo durante tres mil años. Una es un lugar para recorrer; la otra una disciplina para aprender. Ambas descansan en una sola convicción, que sostenemos con tanta firmeza como cualquier cosa que publicamos: que la belleza pertenece a quien esté dispuesto a mirarla de cerca, y que mirar de cerca puede enseñarse."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mujzwy61nxk1qi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El umbral del Museo EPRIS: el Pantheon, cortado a través de su eje. La luz sobre las cofres es el verdadero sol sobre Roma, moviéndose hora tras hora mientras lees."
+            },
+            {
+              "type": "header",
+              "content": "Yo · Museo sine muris: el museo sin paredes"
+            },
+            {
+              "type": "text",
+              "content": "André Malraux soñó con un <i>musée imaginaire</i>, un museo sin paredes ensamblado de cada reproducción que el siglo podía crear. El Museo EPRIS es nuestra respuesta a ese sueño. Hoy en día tiene cuarenta y cinco salas, unas seiscientas cuarenta obras y trescientos setenta y cinco artistas, desde el mármol de la Grecia arcaica hasta fotografías tomadas este mismo año. Nada en él es prestado en términos falsos: cada obra pertenece al dominio público o fue entregada libremente por su autor bajo una licencia abierta, y debajo de cada una anotamos, como un acto de honor, el artista, la fecha, la licencia y la casa donde vive el original. El Art Institute of Chicago, el Cleveland Museum of Art y la National Gallery of Art en Washington abrieron sus tesoros al mundo; simplemente entramos y colgamos lo que ofrecían con la reverencia que merece."
+            },
+            {
+              "type": "text",
+              "content": "Un museo sin paredes aún debe tener arquitectura, o solo es una lista. Y así, el visitante es recibido, como lo fueron los romanos, por el Pantheon. Está dibujado en sección desde el pórtico hasta la ábside, sus alturas en metros como un arquitecto de la Académie las habría inscrito. El disco de luz que cae a través de su oculus no es un adorno: es el verdadero sol sobre Roma, calculado en el mismo momento en que se abre la página. Al mediodía descansa sobre el pavimento; hacia la tarde sube a las cúpulas de la bóveda; y cuando cae la noche sobre el Campus Martius, el oculus se llena de estrellas. Más adelante se encuentra el Colosseum, mitad fachada y mitad sección, y cada uno de sus arcos es una puerta a una sala."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06fgky63ykl.jpg",
+                "https://api.eprisjournal.com/uploads/muk06ftwkqrb0q.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "El original de nuestro umbral: el sol a través del oculus del Pantheon. Foto: NormanB, CC BY-SA 3.0, vía Wikimedia Commons",
+                "El Colosseum de noche, cuyos arcos conducen a las salas. Foto: Anil Öztas, CC BY 4.0, vía Wikimedia Commons"
+              ]
+            },
+            {
+              "type": "cita",
+              "content": "Un museo debe estar abierto a cualquier hora, y siempre debe decirte dónde realmente vive una obra."
+            },
+            {
+              "type": "texto",
+              "content": "Dentro, cada sala es una colgadura propia, presentada por unas pocas líneas que te dicen qué une las obras y te dejan la sensación. <i>Antigüedad</i> reúne ocho siglos de escultura griega, etrusca y romana alrededor del Apollo de Cleveland. <i>Construido Luz</i> ofrece catorce edificios fotografiados en los últimos doce meses por personas que firman su trabajo con sus propios nombres. <i>La Habitación en Sí</i> se enfrenta a la arquitectura del museo como tal. <i>Piedra y Memoria</i> y <i>Un Año de Mirar de Cerca</i> cuelgan a los laureados internacionales de este año de Wiki Loves Monuments y Wiki Loves Earth. Luego, las salas siguen la procesión de los siglos, y por fin hay una pared en la que cada obra está dibujada a su tamaño real, de modo que un Chardin no más grande que un libro puede estar con dignidad junto a un Tintoretto de dos metros y medio de ancho."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mujzwyj0t7l6g4.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "La sala de Antigüedad, con el Apollo de Cleveland como su obra clave. Cada etiqueta da la fecha, el material, la colección y la licencia."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzwyzf5t5cz8.jpg",
+                "https://api.eprisjournal.com/uploads/muk06g8b00ah3n.jpg",
+                "https://api.eprisjournal.com/uploads/mujzwzb5yi4qoa.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Las salas en orden, cada una con su texto y sus primeras obras",
+                "El índice de artistas: cada nombre en la colección, por apellido",
+                "La convocatoria abierta: la obra elegida cuelga en una sala, acreditada en su totalidad"
+              ]
+            },
+            {
+              "type": "texto",
+              "content": "Y el museo es una invitación, permanente y de pie. Su convocatoria abierta da la bienvenida a fotógrafos y artistas de todos los países: presentar no cuesta nada, la obra que se elige se cuelga en un vestíbulo bajo el nombre de su creador, y el autor conserva toda la autoría. Solo se pide una modestísima tarifa curatorial de cincuenta centavos por imagen después de la aceptación, y cada término se publica claramente para que todos puedan leerlo. Los vestíbulos del futuro aún no están colgados. Algunos de ellos te están esperando."
+            },
+            {
+              "type": "header",
+              "content": "II · Architectura: Italia, línea por línea"
+            },
+            {
+              "type": "texto",
+              "content": "Fueron los dibujos los que mantuvieron a nuestros lectores más tiempo. Se detenían en las bóvedas del Pantheon, contaban las órdenes del Coliseo y escribían para preguntar los nombres de los pequeños arcos que coronan su ático. La curiosidad de ese tipo es el comienzo de toda educación, y merece más que una leyenda. Architectura es nuestra respuesta: el dibujo de línea medida, ese antiguo instrumento del arquitecto, puesto en tus manos para ser sostenido, cuestionado y entendido."
+            },
+            {
+              "type": "texto",
+              "content": "El atlas contiene cuarenta y siete láminas, y ninguna región de Italia queda sin su monumento: desde el Arco de Augusto en Aosta, bajo los Alpes, hasta la catedral dorada de Monreale y el nuraghe de Barumini, levantado en Cerdeña antes de que Roma fuera fundada. Aquí están los edificios que todo el mundo conoce: el Pantheon, el Coliseo, la Columna de Trajano, la Torre de Pisa, la cúpula de Brunelleschi, el Palacio de los Dux. Y aquí, con igual honor, están los más tranquilos: la Cattolica de Stilo en Calabria, la estrella de nueve puntas de Palmanova, la puerta de Saepinum en las colinas de Molise. Milán, la ciudad en la que se edita EPRIS, recibe un capítulo propio, desde las columnas romanas de San Lorenzo hasta el Bosco Verticale, con un paseo que te lleva a través de dos mil años de la ciudad a pie."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06ghe5i1106.jpg",
+                "https://api.eprisjournal.com/uploads/muk06gve141z6b.jpg",
+                "https://api.eprisjournal.com/uploads/muk06hcoarefyk.jpg"
+              ],
+              "caption": "Tres de los edificios detrás de las placas, como están hoy",
+              "alts": [
+                "Catedral de Milán. Foto: Francesca Milanini, CC BY-SA 4.0, vía Wikimedia Commons",
+                "La cúpula de Brunelleschi sobre los techos de Florencia. Foto: GiovanniPen, CC BY-SA 4.0, vía Wikimedia Commons",
+                "Piazza del Campo en Siena, vista desde la Torre del Mangia. Foto: Vyacheslav Argenberg, CC BY 4.0, vía Wikimedia Commons"
+              ]
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzwzjnqykmlb.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx03sji71ki.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx0k3lx74q9.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "La página de apertura de Architectura",
+                "El Panteón, con el sol de Roma y un control deslizante de horas",
+                "Catedral de Milán en sección, hasta la Madonnina dorada"
+              ]
+            },
+            {
+              "type": "texto",
+              "content": "Abre una placa, y se tinta ante tus ojos, trazo tras trazo, mientras un dibujo crece bajo la mano de su creador. Entonces comienza la lectura. Quinientas noventa y nueve partes están marcadas en el atlas, y cada una recibe su verdadero nombre, la palabra que un guía italiano diría, una explicación clara y un hecho que vale la pena llevar contigo por el resto de tu vida. Toca el óculo, y aprendes que tiene casi nueve metros de ancho y que nunca ha sido vidriado: la lluvia de Roma ha caído a través de él durante diecinueve siglos. Toca la Torre del Mangia, y conoces al campanero cuyo apodo aún lleva la torre. Un narrador habla primero en italiano cada término, porque una palabra que se ha oído es una palabra que se recuerda."
+            },
+            {
+              "type": "cita",
+              "content": "La arquitectura es un idioma antes de ser un estilo. Aprende sus palabras, y cada ciudad del mundo se convierte en un libro que puedes leer."
+            },
+            {
+              "type": "texto",
+              "content": "Hemos escrito como los mejores maestros hablan ante un edificio: nunca escondiéndose tras jerga, nunca rebajándose a la condescendencia. Un friso es una banda de talla que corre a lo largo de la cabecera de una pared como una línea de verso; un entablamento es todo lo que una columna soporta sobre sus hombros. Los hechos se mantienen con el mismo estándar. Cada fecha, altura y nombre ha sido verificado con la erudición publicada, y detrás de cada placa se encuentra una pequeña biblioteca: su nombre oficial en italiano, su lugar, sus constructores, su inscripción en la UNESCO donde la tenga, y una lista de libros para quienes quieran profundizar."
+            },
+            {
+              "type": "cabecera",
+              "content": "III · Schola: una escuela digna del nombre"
+            },
+            {
+              "type": "texto",
+              "content": "Mirar es comenzar; entender requiere un camino. <i>Schola</i>, el corazón de la aplicación, es un verdadero curso de estudio, ordenado como una universidad ordena su lectura. Quedan abiertos siete cursos. <i>Fundamenta</i> enseña la gramática misma: cómo leer un dibujo, los órdenes clásicos, el arco y la cúpula. <i>Roma Aeterna</i> recorre la Ciudad Eterna. <i>Italia</i> cruza la península. <i>Ingenium</i> honra a los ingenieros. <i>Magistri</i> habla de los mecenas, arquitectos y escritores que hicieron posibles los edificios. <i>Peregrinatio</i> es una peregrinación por las veinte regiones. Y <i>Mediolanum</i> es Milán, en profundidad. Cuarenta libros, ochenta y seis lecciones."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzx0yugecgls.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx1gs1dvfoi.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx1zvdyop7p.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Schola: siete cursos, cuarenta libros",
+                "Un examen: encuentra la parte en el dibujo",
+                "Tempora: treinta y seis siglos en una sola línea"
+              ]
+            },
+            {
+              "type": "texto",
+              "content": "Cada libro se cierra con un examen, cuyas preguntas se dibujan de nuevo cada vez: de quién es este detalle, cuándo se empezó, qué tan alto se eleva, dónde se encuentra. El estudiante elige la severidad de la prueba, desde <i>Tiro</i>, el recluta, hasta <i>Magister</i>, el maestro, y un curso completo se sella con un diploma que lleva el nombre del estudiante. Para quienes enseñan, cada libro imprime como una hoja informativa con sus láminas, sus preguntas y una clave; y en <i>Aula</i>, el modo de aula, una sola lámina llena el proyector, con letras para ser leídas desde la última fila del salón, revelada una parte a la vez, sus nombres retenidos hasta que la clase haya respondido."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/mujzx2h3li6wnb.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "Aula, el modo de aula, en iPad: una lámina, una parte a la vez, los nombres retenidos hasta que la clase haya respondido."
+            },
+            {
+              "type": "texto",
+              "content": "Alrededor de la escuela yace un atlas en el sentido más completo de la palabra: un mapa de Italia con cada lámina en su lugar, planos de Roma y Milán, una línea de tiempo de treinta y seis siglos desde los nuraghi hasta el Bosco Verticale, y una página en la que cada edificio se encuentra hombro con hombro a una escala, para que la Columna de Trajano pueda medirse contra la Torre de Pisa con una sola mirada. Y dos estudios alcanzan aún más profundo. El primero reabre la gran disputa de 1391, cuando los albañiles de Milán discutían sobre la geometría que decidiría qué tan alta debería ser su catedral. El segundo recuerda los años de ansiedad de la década de 1740, cuando matemáticos fueron convocados para juzgar si la cúpula agrietada de San Pedro resistiría, y te permite probar su veredicto con pesos, como lo hizo Giovanni Poleni."
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06hsqlpu5li.jpg",
+                "https://api.eprisjournal.com/uploads/muk06i8fe6xz77.jpg",
+                "https://api.eprisjournal.com/uploads/muk06imxn4k11i.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Architectura en iPad: la página de apertura",
+                "El mapa de Italia con cada lámina sobre él",
+                "La catedral de San Vigilio en Trento, una de las láminas del norte"
+              ]
+            },
+            {
+              "type": "galería",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzx2ye5o5nsd.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx3fjsn1hec.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx3z1p0z68x.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Tabula Italiae: cada placa en el mapa",
+                "El Palazzo Pubblico en Siena en el papel Charta",
+                "La Galleria Vittorio Emanuele II en Milán"
+              ]
+            },
+            {
+              "type": "encabezado",
+              "content": "IV · Silentium: la dignidad del silencio"
+            },
+            {
+              "type": "texto",
+              "content": "Ni la obra alza su voz. El museo habla en una sola tipografía y dibuja su arquitectura en líneas finas. La aplicación está impresa en tres papeles: <i>Nox</i>, líneas de luz sobre la noche; <i>Charta</i>, tiza sepia y roja sobre pergamino; <i>Caerulea</i>, líneas blancas sobre el azul de un plano antiguo. No hay anuncios. La aplicación no pide cuenta ni recopila datos; lo que aprendes permanece solo contigo. Habla en inglés, italiano y ruso, y VoiceOver lee cada placa en voz alta, mientras que las preguntas que dependen del ojo se hacen de otra manera para quienes escuchan."
+            },
+            {
+              "type": "texto",
+              "content": "Tampoco se ofrece como sustituto del viaje. Un dibujo del Pantheon no es el Pantheon, y ninguna pantalla te dará nunca la escala del Colosseum ni el frío de Sant'Ambrogio en una mañana de enero. Lo que pueden hacer es preparar el ojo, para que en el día que finalmente te pongas debajo de la cúpula, sepas dónde mirar, y conozcas los nombres de las cosas que ves. Eso es todo lo que siempre hemos querido que un diario hiciera."
+            },
+            {
+              "type": "imagen",
+              "content": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
+              "align": "centro",
+              "width": 100,
+              "caption": "El Pantheon y la Piazza della Rotonda, Roma: M·AGRIPPA·L·F·COS·TERTIVM·FECIT. Foto: Nicholas Hartmann, CC BY-SA 4.0, vía Wikimedia Commons"
+            },
+            {
+              "type": "nota",
+              "content": "Cuándo y dónde: El Museo EPRIS abre oficialmente en octubre de 2026 en museum.eprisjournal.com. La entrada es gratuita, a cada hora, y los pasillos ya están abiertos para quienes deseen recorrerlos primero. Architectura: Italy Drawn llega a la App Store para iPhone y iPad en octubre: gratis, sin cuenta, sin publicidad, sin seguimiento. Anunciaremos el enlace de la App Store aquí y en nuestro boletín el día que abran las puertas."
+            },
+            {
+              "type": "enlace",
+              "content": "Entrar en Museo EPRIS",
+              "url": "https://museum.eprisjournal.com/"
+            },
+            {
+              "type": "enlace",
+              "content": "La convocatoria abierta para fotógrafos y artistas",
+              "url": "https://museum.eprisjournal.com/open-call/"
+            },
+            {
+              "type": "texto",
+              "content": "Para los profesores, los estudiantes, los viajeros y los simplemente curiosos: las puertas están abiertas, y fueron hechas para ti. Escríbenos. Dinos qué edificio te gustaría que dibujáramos a continuación, y qué sala te gustaría que colgáramos. <i>Intrate.</i> Entra."
+            }
+          ],
+          "id": 48,
+          "previewToken": "7d1b9c2cf185701a4717615c",
+          "publishAt": "2026-09-27T15:51:09.649Z",
+          "publishedAt": "2026-09-27T15:51:09.649Z",
+          "updatedAt": "2026-09-28T08:02:09.871Z"
         },
         {
           "id": 49,
