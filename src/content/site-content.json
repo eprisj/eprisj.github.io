@@ -60740,18 +60740,264 @@
           ]
         },
         {
-          "id": 48,
-          "locked": true,
-          "title": "",
-          "author": "",
-          "date": "",
-          "excerpt": "",
-          "category": "",
-          "subcategory": "",
+          "draft": false,
+          "title": "Kapılar Açılıyor: EPRIS Museum ve Architectura, Bu Ekim",
+          "author": "Maria Ivanova & Viacheslav Munister",
+          "role": "Yazar",
+          "authorId": "author-1784896384236-4fokw",
+          "contributorId": "author-1784732936927-kw554",
+          "date": "Eylül 27, 2026",
+          "excerpt": "Her medeniyet kendini bir kapı aracılığıyla duyurdu. Bu Ekim EPRIS Journal iki kapı açıyor: EPRIS Museum, asla kapanmayan duvarsız bir müze ve Architectura, İtalya'nın inşa edildiği üç bin yıllık dilbilgisini öğreten bir atlas ve okul.",
+          "category": "Kültür",
+          "subcategory": "Duyuru",
+          "tags": [
+            "EPRIS Museum",
+            "Architectura",
+            "mimarlık",
+            "İtalya",
+            "müze",
+            "uygulama",
+            "eğitim"
+          ],
           "imageSeed": "",
-          "tags": [],
-          "content": [],
-          "updatedAt": "2026-09-27T16:36:12.066Z"
+          "imageUrl": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
+          "content": [
+            {
+              "type": "alıntı",
+              "content": "Nihil est tam populare quam bonitas. – Halkın en çok sevdiği şey iyiliktir. Cicero, Pro Ligario"
+            },
+            {
+              "type": "metin",
+              "content": "Her medeniyet kendini bir kapı aracılığıyla duyurmuştur. Pantheon'un bronz kapıları on dokuz yüzyıldır menteşelerinde dönüyor; Ghiberti hayatının yarısını, Michelangelo'nun Cennet'e layık dediği kapılarda geçirdi. Bir kapı bir vaattir: ötesinde yatan şey tutulur, özen gösterilir ve girilmesi amaçlanır. Bu Ekim ayında, EPRIS Dergisi kendi iki kapısını açıyor. Bunlar bronz değil, ışık ve çizgiyle yapılmış ve alacakaranlıkta kapanmayacak. "
+            },
+            {
+              "type": "metin",
+              "content": "İlki <b>EPRIS Museum</b>, duvarları olmayan, bilet gerektirmeyen ve kapanış saati olmayan bir resim, heykel ve fotoğraf müzesi, museum.eprisjournal.com adresinde. İkincisi <b>Architectura</b>, Avrupa'nın en eski dilbilgisini öğreten, iPhone ve iPad için bir atlas ve okul: İtalya'nın üç bin yıldır inşa ettiği dil. Biri geçmek için bir yer; diğeri öğrenilmesi gereken bir disiplin. Her ikisi de, yayınladığımız her şey kadar güçlü tuttuğumuz tek bir inanca dayanır: güzellik, ona yakından bakmaya istekli olanın hakkıdır ve yakından bakmak öğretilebilir."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mujzwy61nxk1qi.jpg",
+              "align": "merkez",
+              "width": 100,
+              "caption": "EPRIS Museum'un eşiği: Pantheon, ekseni boyunca kesilmiş. Sandukaların üzerindeki ışık, Roma üzerinde gerçek güneştir, okudukça saat saat hareket eder."
+            },
+            {
+              "type": "header",
+              "content": "Ben · Museum sine muris: duvarsız müze"
+            },
+            {
+              "type": "text",
+              "content": "André Malraux bir <i>musée imaginaire</i> hayal etti, her yüzyılın yapabildiği her reprodüksiyondan oluşan duvarsız bir müze. EPRIS Museum bu hayale verdiğimiz cevaptır. Bugün kırk beş salonu, yaklaşık altı yüz kırk eseri ve üç yüz yetmiş beş sanatçıyı barındırıyor, ilkel Yunan mermerinden bu yıl çekilen fotoğraflara kadar. İçinde hiçbir şey sahte şartlarla ödünç alınmamıştır: her eser kamu malıdır veya yazar tarafından açık bir lisans altında özgürce verilmiştir ve her birinin altında, onur amacıyla, sanatçı, tarih, lisans ve orijinalin yaşadığı ev kaydedilir. Chicago Sanat Enstitüsü, Cleveland Sanat Müzesi ve Washington'daki Ulusal Sanat Galerisi hazinelerini dünyaya açtı; biz sadece içeri girdik ve sunduklarını saygıyla astık."
+            },
+            {
+              "type": "text",
+              "content": "Duvarsız bir müze yine de mimarlık içermelidir, yoksa sadece bir listedir. Ve böylece ziyaretçi, Romalıların karşılandığı gibi, Pantheon tarafından karşılanır. Bu, portikodan apsise kadar kesit alınmış olup, yüksekliği metre cinsinden yazılmıştır, tıpkı Académie'nin bir mimarının yazacağı gibi. Oculustan geçen ışık diski süs değildir: bu, Roma üzerindeki gerçek güneştir, sayfa açılırken hesaplanmıştır. Öğle vakti yoldaki taşlara oturur; akşam yaklaşırken kubbenin kasalarına tırmanır; ve gece Campus Martius üzerine çöktüğünde, oculus yıldızlarla dolar. Daha ileride, yarısı cephe, yarısı kesit olan Colosseum durur ve her bir kemeri, bir salona giriş kapısıdır."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06fgky63ykl.jpg",
+                "https://api.eprisjournal.com/uploads/muk06ftwkqrb0q.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Eşikimizin orijinali: Pantheon'un oculusundan geçen güneş. Fotoğraf: NormanB, CC BY-SA 3.0, Wikimedia Commons aracılığıyla",
+                "Geceki Colosseum, kemerleri salonlara açılan. Fotoğraf: Anil Öztas, CC BY 4.0, Wikimedia Commons aracılığıyla"
+              ]
+            },
+            {
+              "type": "alıntı",
+              "content": "Bir müze herhangi bir saatte açık olmalı ve her zaman size gerçekten bir eserin nerede yaşadığını söylemelidir."
+            },
+            {
+              "type": "metin",
+              "content": "İçeride, her salon kendi asmasına sahiptir, sizi birleştiren şeyleri anlatan birkaç satırla tanıtılır ve size his bırakır. <i>Antikite</i> Cleveland Apollo etrafında Yunan, Etrüsk ve Roma heykelinden oluşan sekiz yüzyılı toplar. <i>Built Light</i> son on iki ay içinde kendi isimleriyle imzalayan kişiler tarafından fotoğraflanan on dört bina sunar. <i>Oda Kendisi</i> müzenin mimarisine yönelir. <i>Taş ve Hafıza</i> ve <i>Yakından Bakış Bir Yıl</i> bu yılın Wiki Loves Monuments ve Wiki Loves Earth uluslararası ödüllü eserlerini sergiler. Sonra salonlar yüzyılların geçişini takip eder ve sonunda her eserin gerçek boyutunda çizildiği bir duvar bulunur, böylece bir Chardin, bir kitabın büyüklüğünde olmasa bile, iki buçuk metre genişliğindeki Tintoretto'nun yanında onurla durabilir."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mujzwyj0t7l6g4.jpg",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Antikite salonu, Cleveland Apollo ana eseri olarak. Her etiket tarih, malzeme, koleksiyon ve lisansı gösterir."
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzwyzf5t5cz8.jpg",
+                "https://api.eprisjournal.com/uploads/muk06g8b00ah3n.jpg",
+                "https://api.eprisjournal.com/uploads/mujzwzb5yi4qoa.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Sıralı salonlar, her biri kendi metni ve ilk eserleriyle",
+                "Sanatçıların dizini: koleksiyondaki her isim, soyadıyla",
+                "Açık çağrı: seçilen eser bir salonda asılı, tam kredilendirilmiş"
+              ]
+            },
+            {
+              "type": "metin",
+              "content": "Ve müze bir davettir, ayakta ve sürekli. Açık çağrısı, her ülkeden fotoğrafçıları ve sanatçıları karşılar: göndermek ücretsizdir, seçilen eser yapımcısının adı altında bir salona asılır ve yazar tüm telif hakkını elinde tutar. Kabulden sonra sadece her görüntü için elli kuruşluk mütevazı bir küratörlük ücreti talep edilir ve her terim herkesin okuyabileceği şekilde açıkça yayınlanır. Geleceğin salonları henüz asılmamıştır. Bazıları sizin için bekliyor."
+            },
+            {
+              "type": "başlık",
+              "content": "II · Architectura: Italia, satır satır"
+            },
+            {
+              "type": "text",
+              "content": "Çizimler, okuyucularımızın en uzun süre ilgisini çeken şeydi. Onlar Pantheon'un hazinelerine takılır, Kolezyum'un siparişlerini sayar ve tavanını taçlandıran küçük kemerlerin isimlerini sormak için yazarlar. Bu tür merak, her eğitimin başlangıcıdır ve bir başlık olmaktan daha fazlasını hak eder. Architectura bizim cevabımızdır: ölçülü çizgi çizimi, mimarın eski enstrümanı, elinizde tutmanız, sorgulamanız ve anlamanız için yerleştirilmiş."
+            },
+            {
+              "type": "text",
+              "content": "Atlas kırk yedi levha içerir ve İtalya'nın hiçbir bölgesi anıtsız kalmaz: Aosta'daki Augustus Kemeri, Alplerin altında, Monreale'nin altın katedrali ve Sardinya'da Roma'dan önce inşa edilen Barumini nuraghi. İşte bütün dünyanın bildiği yapılar: Pantheon, Kolezyum, Trajan Sütunu, Pisa Kulesi, Brunelleschi'nin kubbesi, Dükler Sarayı. Ve burada, eşit onurla, daha sessiz olanlar da var: Calabria'daki Stilo'nun Cattolica'sı, Palmanova'nın dokuz köşeli yıldızı, Molise tepelerindeki Saepinum kapısı. EPRIS'in yayımlandığı Milan şehri, kendi bölümünü alır, San Lorenzo'nun Roma sütunlarından Bosco Verticale'ye, sizi iki bin yıl boyunca şehri yaya olarak gezdirecek bir yürüyüşle."
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06ghe5i1106.jpg",
+                "https://api.eprisjournal.com/uploads/muk06gve141z6b.jpg",
+                "https://api.eprisjournal.com/uploads/muk06hcoarefyk.jpg"
+              ],
+              "caption": "Tabakların arkasındaki üç bina, bugün durduğu gibi",
+              "alts": [
+                "Milan Katedrali. Fotoğraf: Francesca Milanini, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+                "Brunelleschi'nin Floransa'nın çatısındaki kubbesi. Fotoğraf: GiovanniPen, CC BY-SA 4.0, Wikimedia Commons aracılığıyla",
+                "Siena'daki Piazza del Campo, Torre del Mangia'dan görülen. Fotoğraf: Vyacheslav Argenberg, CC BY 4.0, Wikimedia Commons aracılığıyla"
+              ]
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzwzjnqykmlb.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx03sji71ki.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx0k3lx74q9.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Architectura'nın açılış sayfası",
+                "Pantheon, Roma güneşi ve saat kaydırıcısı ile",
+                "Milan Katedrali kesit halinde, altın Madonnina'ya kadar"
+              ]
+            },
+            {
+              "type": "metin",
+              "content": "Bir tabağı açın ve kendisi gözlerinizin önünde mürekkep olur, çizim gibi, yapımcısının elinin altında büyüyen. Sonra okuma başlar. Atlas boyunca beş yüz dokuz dokuz parça işaretlenmiş ve her biri gerçek adıyla, bir İtalyan rehberin söyleyeceği kelimeyle, net bir açıklama ve hayatınız boyunca taşıyacağınız bir gerçekle tanımlanmış. Oculusu dokunun ve bunun neredeyse dokuz metre genişliğinde olduğunu ve hiç camlanmadığını öğrenin: Roma'nın yağmuru yirmi bir yüz yıl boyunca onun içinden akmıştır. Torre del Mangia'yı dokunun ve hala kuleyi taşıyan takma adıyla bilinen çan çalan kişiyle tanışın. Bir anlatıcı her terimi önce İtalyanca söyler, çünkü duyulan bir kelime, tutulan bir kelimedir."
+            },
+            {
+              "type": "alıntı",
+              "content": "Mimarlık, bir tarzdan önce bir dildir. Kelimelerini öğren, ve dünyanın her şehri, okuyabileceğin bir kitap haline gelir."
+            },
+            {
+              "type": "text",
+              "content": "Biz en iyi öğretmenlerin bir binanın önünde konuştuğu gibi yazdık: jargonun arkasına saklanmadan, küçümsemeye inmeden. Bir friz, bir duvarın başlığı boyunca uzanan oymacılık bandıdır, dize satırı gibi; bir entablature ise bir sütunun omuzlarına aldığı her şeydir. Gerçekler de aynı standartlara tabidir. Her tarih, yükseklik ve isim yayınlanmış akademik çalışmalarla kontrol edilmiştir ve her plakanın arkasında küçük bir kütüphane durur: resmi İtalyan adı, yeri, yapıcıları, UNESCO kaydı varsa orası ve daha ileri gitmek isteyenler için kitap listesi."
+            },
+            {
+              "type": "header",
+              "content": "III · Schola: ismine layık bir okul"
+            },
+            {
+              "type": "text",
+              "content": "Bakmak başlamak; anlamak ise bir yol gerektirir. <i>Schola</i>, uygulamanın kalbi, bir üniversitenin okuma sırasına göre düzenlenmiş gerçek bir çalışma yoludur. Yedi kurs açıktır. <i>Fundamenta</i> dilbilgisini kendisi öğretir: bir çizimi nasıl okuyacağınızı, klasik düzenleri, kemer ve kubbeyi. <i>Roma Aeterna</i> Ebedi Şehri gezer. <i>Italia</i> yarımadayı aşar. <i>Ingenium</i> mühendisleri onurlandırır. <i>Magistri</i> binaları mümkün kılan patronları, mimarları ve yazarları anlatır. <i>Peregrinatio</i> yirmi bölge boyunca bir hac yolculuğudur. Ve <i>Mediolanum</i> derinlikte Milano'dur. Kırk kitap, seksen altı ders."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzx0yugecgls.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx1gs1dvfoi.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx1zvdyop7p.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Schola: yedi kurs, kırk kitap",
+                "Bir sınav: çizim üzerindeki bölümü bulun",
+                "Tempora: tek bir çizgi üzerinde otuz altı yüzyıl"
+              ]
+            },
+            {
+              "type": "metin",
+              "content": "Her kitap bir inceleme ile kapanır, soruları her seferinde yeniden çizilir: bu detay kimin, ne zaman başladı, ne kadar yüksek yükselir, nerede durur. Öğrenci denemenin ciddiyetini seçer, <i>Tiro</i>, acemi, ile <i>Magister</i>, usta, arasında ve tamamlanan bir kurs, öğrencinin adını taşıyan bir diploma ile mühürlenir. Öğretenler için, her kitap bir el ilanı olarak basılır, plakaları, soruları ve anahtarı ile; ve <i>Aula</i>, sınıf modu, bir projeksiyonu dolduran tek bir plaka, salonun son sırasından okunacak şekilde harflerle, bir seferde bir parça ortaya çıkarılır, isimleri sınıf cevap verdikçe saklanır."
+            },
+            {
+              "type": "resim",
+              "content": "https://api.eprisjournal.com/uploads/mujzx2h3li6wnb.jpg",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Aula, sınıf modu, iPad üzerinde: bir plaka, bir seferde bir parça, isimler sınıf cevap verdikçe saklanır."
+            },
+            {
+              "type": "metin",
+              "content": "Okulun etrafında en geniş anlamıyla bir atlas yatar: her plakanın yerleştirildiği İtalya haritası, Roma ve Milano planları, nuraghi'den Bosco Verticale'ye otuz altı yüzyıllık bir zaman çizelgesi ve her binanın omuz omuza durduğu bir ölçek üzerinde yer aldığı bir sayfa, böylece Trajan Sütunu tek bir bakışla Pisa Kulesi ile ölçülebilir. Ve iki çalışma daha derinlere iner. İlki, 1391 yılındaki büyük tartışmayı yeniden açar, Milan ustalarının katedrallerinin ne kadar yüksek yükselmesi gerektiğine karar verecek geometrik üzerinde tartıştıkları zaman. İkincisi, 1740'lar yıllarındaki endişeli yılları hatırlatır, matematikçilerin çağrıldığı ve St Peter's'in çatlamış kubbesinin dayanıp dayanmayacağını yargıladıkları zaman, ve Giovanni Poleni'nin yaptığı gibi, onların kararını ağırlıklarla test etmenize izin verir."
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/muk06hsqlpu5li.jpg",
+                "https://api.eprisjournal.com/uploads/muk06i8fe6xz77.jpg",
+                "https://api.eprisjournal.com/uploads/muk06imxn4k11i.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Architectura iPad üzerinde: açılış sayfası",
+                "Her plaka üzerinde İtalya haritası",
+                "Trento'daki San Vigilio Katedrali, kuzey plakalarından biri"
+              ]
+            },
+            {
+              "type": "galeri",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mujzx2ye5o5nsd.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx3fjsn1hec.jpg",
+                "https://api.eprisjournal.com/uploads/mujzx3z1p0z68x.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Tabula Italiae: haritadaki her tabak",
+                "Siena'daki Palazzo Pubblico, Charta kağıdında",
+                "Milan'daki Galleria Vittorio Emanuele II"
+              ]
+            },
+            {
+              "type": "başlık",
+              "content": "IV · Silentium: sessizliğin onuru"
+            },
+            {
+              "type": "metin",
+              "content": "Hiçbir eser sesini yükseltmez. Müze tek bir yazı tipinde konuşur ve mimarisini ince çizgilerle çizer. Uygulama üç kağıda basılmıştır: <i>Nox</i>, gece üzerindeki ışık çizgileri; <i>Charta</i>, parşömen üzerinde sepia ve kırmızı tebeşir; <i>Caerulea</i>, eski bir planın mavi üzerine beyaz çizgileri. Reklam yoktur. Uygulama hesap sormaz ve veri toplamaz; öğrendiğiniz şeyler size aittir. İngilizce, İtalyanca ve Rusça konuşur ve VoiceOver her tabakayı yüksek sesle okur, gözle ilgili sorular başka bir şekilde sorulur dinleyenler için."
+            },
+            {
+              "type": "metin",
+              "content": "Hiçbiri yolculuğun yerine sunulmaz. Pantheon'un bir çizimi Pantheon değildir ve hiçbir ekran size Kolezyum'un ölçeğini veya Sant'Ambrogio'nun Ocak ayındaki soğuğunu asla veremez. Yapabilecekleri, gözü hazırlamaktır, böylece sonunda kubbenin altına durduğunuzda, nereden bakacağınızı bilirsiniz ve gördüklerinizin isimlerini bilirsiniz. Bu, bir derginin yapmasını istediğimiz tek şeydir."
+            },
+            {
+              "type": "görüntü",
+              "content": "https://api.eprisjournal.com/uploads/muk06f246h0i2h.jpg",
+              "align": "merkez",
+              "width": 100,
+              "caption": "Pantheon ve Piazza della Rotonda, Roma: M·AGRIPPA·L·F·COS·TERTIVM·FECIT. Fotoğraf: Nicholas Hartmann, CC BY-SA 4.0, Wikimedia Commons aracılığıyla"
+            },
+            {
+              "type": "not",
+              "content": "Ne zaman ve nerede: EPRIS Müzesi resmi olarak Ekim 2026'da museum.eprisjournal.com adresinde açılacak. Giriş ücretsiz, her saat açık ve koridorlar, ilk yürümek isteyenlere zaten açıktır. Architectura: Italy Drawn, Ekim ayında App Store'da iPhone ve iPad için geliyor: ücretsiz, hesap olmadan, reklamsız, izlenmeden. Açılış günü burada ve bültenimizde App Store bağlantısını duyuracağız."
+            },
+            {
+              "type": "bağlantı",
+              "content": "EPRIS Müzesi'ne Gir",
+              "url": "https://museum.eprisjournal.com/"
+            },
+            {
+              "type": "bağlantı",
+              "content": "Fotoğrafçılar ve sanatçılar için açık çağrı",
+              "url": "https://museum.eprisjournal.com/open-call/"
+            },
+            {
+              "type": "metin",
+              "content": "Öğretmenlere, öğrencilere, gezginlere ve sadece merak edenlere: kapılar açık ve onlar sizin için yapıldı. Bize yazın. Hangi binayı çizmemizi istediğinizi ve hangi salonu asmamızı istediğinizi söyleyin. <i>Intrate.</i> İçeri girin."
+            }
+          ],
+          "id": 48,
+          "previewToken": "7d1b9c2cf185701a4717615c",
+          "publishAt": "2026-09-27T15:51:09.649Z",
+          "publishedAt": "2026-09-27T15:51:09.649Z",
+          "updatedAt": "2026-09-28T08:05:12.422Z"
         }
       ],
       "reviews": [
