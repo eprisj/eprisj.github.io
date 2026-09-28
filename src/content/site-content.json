@@ -13551,21 +13551,27 @@
         },
         {
           "id": 41,
-          "title": "Большой театр Харбина, фойе",
+          "title": "Харбинский главный театр, вестибюль",
           "subtitle": "MAD Architects · Харбин · 2015",
           "fig": "PICS 033",
-          "description": "Ленты ясеня отслаиваются от стен, как резные драпировки под стеклянной решёткой: барочная любовь к складчатой поверхности, извлечённая из льда и болот вокруг.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Доски из ясеня отрываются от стен, как вырезанный занавес под стеклянной решеткой: барочная любовь к сложной поверхности, вытянутой из льда и болот вокруг нее.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Большой театр Харбина, фойе",
+          "homeTitle": "Харбинский главный театр, вестибюль",
           "homeSubtitle": "MAD Architects · Харбин · 2015",
-          "homeDescription": "Ленты ясеня отслаиваются от стен, как резные драпировки под стеклянной решёткой: барочная любовь к складчатой поверхности, извлечённая из льда и болот вокруг.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeDescription": "Доски из ясеня отрываются от стен, как вырезанный занавес под стеклянной решеткой: барочная любовь к сложной поверхности, вытянутой из льда и болот вокруг нее.",
+          "homeCredit": "Фото: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:41.200Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
@@ -23520,21 +23526,27 @@
         },
         {
           "id": 41,
-          "title": "Великий театр Харбіна, фоє",
-          "subtitle": "MAD Architects · Харбін · 2015",
+          "title": "Harbin Grand Theatre, вестибюль",
+          "subtitle": "MAD Architects · Harbin · 2015",
           "fig": "PICS 033",
-          "description": "Стрічки ясеня відшаровуються від стін, як різьблені драпірування під скляною решіткою: барокова любов до складчастої поверхні, видобута з льоду й боліт навколо.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Групи з ясеня злітають з стін, як вирізані драпірування під скляною решіткою: бароковий любов до згортаної поверхні, витягнутої з льоду та боліт навколо.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Великий театр Харбіна, фоє",
-          "homeSubtitle": "MAD Architects · Харбін · 2015",
-          "homeDescription": "Стрічки ясеня відшаровуються від стін, як різьблені драпірування під скляною решіткою: барокова любов до складчастої поверхні, видобута з льоду й боліт навколо.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeTitle": "Harbin Grand Theatre, вестибюль",
+          "homeSubtitle": "MAD Architects · Harbin · 2015",
+          "homeDescription": "Групи з ясеня злітають з стін, як вирізані драпірування під скляною решіткою: бароковий любов до згортаної поверхні, витягнутої з льоду та боліт навколо.",
+          "homeCredit": "Фото: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:38.288Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
@@ -33506,21 +33518,35 @@
         },
         {
           "id": 42,
-          "title": "Nationaltheater Taichung",
+          "title": "National Taichung Theater",
           "subtitle": "Toyo Ito & Associates · Taichung · 2016",
           "fig": "PICS 034",
-          "description": "Keine Träger, keine Stützen, keine Geschosse im üblichen Sinn: eine durchgehende 'Klanghöhle' aus gekrümmten Betonwänden um Hohlräume gegossen, ein Haus, das vor allem die Form seiner Luft ist.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg",
+          "description": "Keine Träger, keine Säulen, keine Böden im üblichen Sinne: eine kontinuierliche 'Klanghöhle' aus gebogenen Betwänden, die um Hohlräume gegossen wurden, ein Gebäude, das größtenteils die Form seiner Luft hat.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued7xj5jmizhd.jpg",
           "picsOfWeek": true,
           "homeCategory": "avant-garde",
-          "homeTitle": "Nationaltheater Taichung",
+          "homeTitle": "National Taichung Theater",
           "homeSubtitle": "Toyo Ito & Associates · Taichung · 2016",
-          "homeDescription": "Keine Träger, keine Stützen, keine Geschosse im üblichen Sinn: eine durchgehende 'Klanghöhle' aus gekrümmten Betonwänden um Hohlräume gegossen, ein Haus, das vor allem die Form seiner Luft ist.",
-          "homeCredit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+          "homeDescription": "Keine Träger, keine Säulen, keine Böden im üblichen Sinne: eine kontinuierliche 'Klanghöhle' aus gebogenen Betwänden, die um Hohlräume gegossen wurden, ein Gebäude, das größtenteils die Form seiner Luft hat.",
+          "homeCredit": "Foto: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/92585929@N06/16584257756",
           "picsId": "PICS-2026-034",
-          "updatedAt": "2026-09-23T16:03:54Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:43.639Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mued2ko3wb63nj.webp",
+              "replacedAt": "2026-09-23T17:16:52.027Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/muecwop08f0aor.webp",
+              "replacedAt": "2026-09-23T17:12:42.782Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg",
+              "replacedAt": "2026-09-23T17:08:07.895Z"
+            }
+          ]
         },
         {
           "id": 43,
@@ -43477,18 +43503,32 @@
           "title": "Teatro Nacional de Taichung",
           "subtitle": "Toyo Ito & Associates · Taichung · 2016",
           "fig": "PICS 034",
-          "description": "Sin vigas, sin columnas, sin forjados en el sentido habitual: una continua 'cueva sonora' de muros curvos de hormigón vertidos alrededor de vacíos, un edificio que es sobre todo la forma de su aire.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg",
+          "description": "Sin vigas, sin columnas, sin pisos en el sentido habitual: una 'cueva de sonido' continua de paredes de concreto curvadas vertidas alrededor de vacíos, un edificio que es en su mayoría la forma de su aire.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued7xj5jmizhd.jpg",
           "picsOfWeek": true,
           "homeCategory": "avant-garde",
           "homeTitle": "Teatro Nacional de Taichung",
           "homeSubtitle": "Toyo Ito & Associates · Taichung · 2016",
-          "homeDescription": "Sin vigas, sin columnas, sin forjados en el sentido habitual: una continua 'cueva sonora' de muros curvos de hormigón vertidos alrededor de vacíos, un edificio que es sobre todo la forma de su aire.",
-          "homeCredit": "Photo: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
+          "homeDescription": "Sin vigas, sin columnas, sin pisos en el sentido habitual: una 'cueva de sonido' continua de paredes de concreto curvadas vertidas alrededor de vacíos, un edificio que es en su mayoría la forma de su aire.",
+          "homeCredit": "Foto: Chi-Hung Lin · CC BY-SA 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/92585929@N06/16584257756",
           "picsId": "PICS-2026-034",
-          "updatedAt": "2026-09-23T16:03:54Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:46.218Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mued2ko3wb63nj.webp",
+              "replacedAt": "2026-09-23T17:16:52.027Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/muecwop08f0aor.webp",
+              "replacedAt": "2026-09-23T17:12:42.782Z"
+            },
+            {
+              "url": "https://api.eprisjournal.com/uploads/caf5f4c1fad304.jpg",
+              "replacedAt": "2026-09-23T17:08:07.895Z"
+            }
+          ]
         },
         {
           "id": 43,
