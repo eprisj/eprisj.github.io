@@ -90155,9 +90155,333 @@
         },
         {
           "id": 55,
+          "draft": false,
           "title": "La peinture est encore humide : Emma McIntyre et l'art qui refuse de finir",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "2 oct. 2026",
+          "publishAt": "2026-10-02T03:00:00.000Z",
+          "publishedAt": "2026-10-02T03:00:00.000Z",
           "excerpt": "Emma McIntyre peint avec de la rouille, du cuivre oxydé, du noir de charbon, la gravité et le temps—créant des œuvres qui continuent de changer après que l'artiste a cessé de les toucher.",
-          "category": "Art"
+          "category": "Art",
+          "subcategory": "Peinture Contemporaine",
+          "tags": [
+            "Emma McIntyre",
+            "peinture contemporaine",
+            "abstraction",
+            "matérialité",
+            "oxydation",
+            "David Zwirner"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+          "previewToken": "9eb92971c2bdc4003ce3aad0",
+          "updatedAt": "2026-09-28T20:30:55.260Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "La fiction d'une peinture terminée est utile. Elle donne au musée une date, au marché un objet stable et à l'historien de l'art une limite : avant l'achèvement, l'artiste décidait ; après l'achèvement, l'œuvre commença à signifier. Les peintures d'Emma McIntyre perturbent cette séquence. La rouille continue de fleurir. Le cuivre continue de s'oxyder. Une surface change après que la main s'est retirée."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Ce corps tient / matière de marais</i>, au 52 Walker de David Zwirner à New York, McIntyre traite la peinture moins comme l'exécution d'une image que comme l'organisation temporaire de réactions. Huile, fer, cuivre, noir de carbone, solvant, pression, gravité et contact corporel se rencontrent sur la toile. L'artiste initie des conditions, mais la matière conserve le droit de répondre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-violet-temple-veil-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Violet pour le voile du temple, 2026, huile, Flashe, oxyde de fer et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "I · Qui termine la peinture?",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La peinture occidentale a longtemps attaché l'autorité à la touche finale. L'achèvement confirme la paternité : le peintre a décidé qu'aucune marque supplémentaire n'était nécessaire. McIntyre remplace ce modèle souverain par la collaboration. Elle verse et incline, presse du film à bulles dans de la peinture humide, oxyde la peinture à base de métal et prend des impressions de sa propre palette et corps."
+            },
+            {
+              "type": "text",
+              "content": "Aucun de cela ne signifie abandonner l'intention. Le hasard est préparé, surveillé et édité. La distinction pertinente n'est pas contrôle contre accident, mais contrôle complet contre contrôle réactif. McIntyre fait un mouvement, observe ce que le matériau fait, et compose la conséquence."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-solve-et-coagula-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Solve et coagula, 2026, huile, pastel à l'huile, peinture en cuivre et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "II · Alchimie sans mysticisme",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Solve et coagula</i> nomme l'instruction alchimique de dissoudre et de recombiner. La phrase peut sembler mystique, mais le processus de McIntyre est obstinément physique. Le fer rencontre une solution oxydante et devient rouille. Le cuivre produit des composés bleu-vert. Le pigment dilué avec un solvant suit la gravité à travers un support horizontal."
+            },
+            {
+              "type": "text",
+              "content": "L'alchimie ici n'est pas une fantaisie de transformer la matière de base en or. C'est une méthode pour laisser les substances révéler des comportements que la technique conventionnelle en studio tente de stabiliser. La peinture cesse d'être une couleur portée par un médium neutre ; elle devient une chimie active avec une durée, une incompatibilité et un risque."
+            },
+            {
+              "type": "header",
+              "content": "III · Rouille est une horloge",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-pearls-ambergris-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Perles d'ambre gris, 2026, huile, peinture en fer et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "La rouille est généralement comprise comme un échec : preuve qu'une surface protégée a été franchie et que le temps est entré. McIntyre rend cette brèche productive. L'oxydation crée des floraisons orange et brunes dont les bords enregistrent le mouvement du liquide et de l'air. La marque n'est pas peinte pour ressembler à la corrosion. C'est de la corrosion."
+            },
+            {
+              "type": "text",
+              "content": "Cette différence réduit la représentation à un événement. Un peintre de paysage peut représenter le temps ; McIntyre permet à l'atmosphère de participer chimiquement à l'œuvre. Chaque passage oxydé est une horloge dont les unités sont l'humidité, l'oxygène et l'exposition. La peinture possède un temps qui ne coïncide pas exactement avec le travail de l'artiste."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-iliaster-flowers-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, This iliaster flowers like the wind, 2026, huile et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "IV · Un corps fait de matière marécageuse",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le titre de l'exposition provient du poème de Diane di Prima « Montre-moi ton autre corps » : « ce corps contient / des choses de marais / épais visqueux / boue génératrice de vie. » Le corps imaginé ici n'est pas une figure scellée séparée de l'environnement. Il est poreux, minéral, humide et génératif."
+            },
+            {
+              "type": "text",
+              "content": "Les abstractions de McIntyre se déplacent à plusieurs reprises entre des échelles corporelles et géologiques. Une tache peut ressembler à une peau meurtrie, un système nuageux, de l'eau de bassin ou une culture microscopique. Aucune de ces lectures ne devient définitive. La peinture se comporte comme un corps précisément parce qu'elle ne peut pas être réduite à l'anatomie : elle absorbe, réagit, cicatrise et change d'état."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-bright-medusas-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Bright medusas, 2026, huile, pastel à l'huile et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "V · Le corps sans figure",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L'expressionnisme abstrait a fait du geste une preuve du corps de l'artiste, mais a souvent transformé ce corps en signature héroïque. McIntyre utilise le contact corporel différemment. Impressions, traînées et coulures apparaissent aux côtés de motifs industriels répétés et de réactions chimiques. L'agence est répartie entre main, outil et substance."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Meduses lumineuses</i>, une grille de film à bulles traverse un champ rose vif. Le matériau d'emballage humble produit un motif cellulaire qui peut se lire comme une peau, des œufs, des pixels ou une membrane protectrice. La répétition mécanique et la couleur sensuelle ne sont pas opposées. Le corps de la peinture est construit à partir de leur collision."
+            },
+            {
+              "type": "header",
+              "content": "VI · Giotto entre par cuivre",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Beaux vieux mensonges, 2026, peinture en cuivre oxydé, huile et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Beaux vieux mensonges</i> transforme le cuivre oxydé en un champ bleu saturé. La couleur évoque le prestige du lapis lazuli dans la Chapelle Scrovegni de Giotto tout en arrivant par une toute autre histoire matérielle. Le bleu médiéval signifiait le coût du pigment minéral et l'autorité de l'image sacrée. Le bleu de McIntyre est produit par changement, exposition et corrosion."
+            },
+            {
+              "type": "text",
+              "content": "Une aile d'ange semi-abstraite dérivée de Giotto entre en surface comme un fragment reconnaissable. La figuration n'organise pas la peinture ; elle s'installe brièvement dans un système météorologique matériel. La référence historique n'est donc ni citation ni hommage. Elle teste si le sacré peut survivre lorsque son image et sa substance ne garantissent plus la permanence."
+            },
+            {
+              "type": "header",
+              "content": "VII · Peinture contre l'écran",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Une image numérique promet une cohérence. Le même fichier peut apparaître sur des milliers d'écrans, variant en calibration mais pas dans ses données sous-jacentes. Les peintures de McIntyre résistent à cette forme d'identité. Leur couleur dépend de la lumière réfléchie ; les passages métalliques et oxydés changent avec l'angle ; le changement chimique lent sépare l'objet de demain de la photographie prise aujourd'hui."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-swear-by-shadows-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Swear it by the shadows, 2026, huile et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Cela ne les rend pas purs ou technologiquement innocents. Ils circulent en ligne, à travers des foires et comme images de marché. Mais la reproduction contient une défaillance honnête : elle ne peut pas stabiliser complètement son sujet. À un moment où les images synthétiques peuvent imiter presque tous les styles picturaux, la durée matérielle devient plus qu’un artisanat. Elle devient une forme de différence."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Monochrome comme météo",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-muted-rain-tones-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Those muted those rain tones, 2026, huile et médias mixtes sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Plusieurs peintures penchent vers le monochrome sans accepter sa revendication historique à la pureté. Un monochrome de McIntyre est encombré de température, de taches, de marques enfouies et de densités concurrentes. Il ne retire pas le monde de la peinture. Il laisse le monde arriver comme météo."
+            },
+            {
+              "type": "text",
+              "content": "Le champ atmosphérique change à mesure que l’attention du spectateur se déplace. Une zone pâle s’épaissit en un corps ; une lavis sombre devient espace ; une ligne rayée se lit brièvement comme écriture et se dissout à nouveau. La perception répète le processus matériel : les formes coagulent et se dispersent."
+            },
+            {
+              "type": "header",
+              "content": "IX · Noir d’os et l’éthique du matériau",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-crackle-and-drag-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Crackle and drag, 2026, huile, noir d’os et médias mixtes sur toile. Courtesy l’artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Crackle and drag</i>, la peinture blanche traverse un sol fait de noir de carbone—un pigment traditionnellement produit à partir d'os d'animaux brûlés. Le nom impose une conscience que la couleur n'est jamais simplement optique. Les pigments ont des corps, des sources, des routes commerciales et des résidus."
+            },
+            {
+              "type": "text",
+              "content": "La peinture contemporaine parle souvent de matérialité comme plaisir tactile, mais les matériaux sont aussi la preuve d'extraction et de transformation. Le cuivre doit être extrait; le fer se corrode; l'os devient carbone. McIntyre ne transforme pas chaque ingrédient en un argument moral explicite. Elle garde sa vie antérieure audible à l'intérieur de la peinture."
+            },
+            {
+              "type": "header",
+              "content": "X · Le diptyque comme expérience",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Violet pour le voile du temple</i> a commencé comme deux panneaux versés séparément avec de la peinture bleu-noir avant d'être assemblés. La symétrie résultante ressemble à un test de Rorschach, un livre ouvert ou un corps divisé le long d'un axe vertical. Pourtant, les moitiés ne se reflètent pas parfaitement. La variance matérielle interrompt le désir d'équivalence."
+            },
+            {
+              "type": "text",
+              "content": "Le diptyque rend la méthode visible. L'assemblage n'est pas la dissimulation finale de la différence mais son affichage. La peinture devient comparative : deux surfaces reçoivent des conditions liées et produisent des résultats distincts. Le spectateur ne cherche pas une image unique mais l'intervalle entre les réactions."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-the-blue-hour-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, The blue hour, 2026, œuvre sur papier. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XI · Paper se souvient de la palette",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Les œuvres sur papier de McIntyre ne sont pas des illustrations préparatoires pour de plus grandes toiles. Elles commencent souvent par des mélanges restants d'œuvres antérieures ou des impressions directes de la palette elle-même. Un sous-produit devient un début. Le déchet devient une archive de couleurs possibles."
+            },
+            {
+              "type": "text",
+              "content": "Cette économie cyclique du studio complique le fantasme de la œuvre maîtresse isolée. Chaque œuvre partage matière et décisions avec d'autres. La peinture voyage entre supports ; motifs migrent ; une fin laisse le résidu à partir duquel une autre composition commence. La pratique est rhizomatique parce que l'influence se déplace latéralement plutôt que le long d'une ligne claire du croquis à l'œuvre finie."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-hawthorn-eyes-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Hawthorn eyes, 2026, œuvre sur papier. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XII · Le romantisme du hasard",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L'abstraction axée sur le processus porte un danger familier : les effets chimiques peuvent devenir un spectacle, et « laisser parler les matériaux » peut dissimuler des décisions faibles. La rouille, les floraisons, les coulures et les empreintes sont visuellement persuasives avant d'être compositionnellement nécessaires. L'accident n'est pas automatiquement liberté."
+            },
+            {
+              "type": "text",
+              "content": "Les meilleures peintures de McIntyre évitent ce piège en proposant une réponse contingente à la structure. Un fragment figuratif net traverse un champ dispersé ; un bord dur arrête une lavis ; une couleur laide empêche l'atmosphère de devenir de bon goût. L'œuvre réussit lorsque la surprise matérielle n'est pas la conclusion mais le prochain problème."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-roses-of-pieria-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Les roses de Pieria, 2026, huile et médias mixtes sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XIII · Ce qui reste inachevé",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Aucune œuvre d'art n'échappe littéralement à l'achèvement. À un moment donné, la peinture quitte le studio, reçoit un titre, entre dans une exposition et devient un objet de propriété. La conservation peut éventuellement travailler pour ralentir les transformations mêmes que l'artiste a invitées. La vie institutionnelle reconstruit la stabilité autour d'une matière instable."
+            },
+            {
+              "type": "text",
+              "content": "Mais le travail de McIntyre conserve un reste productif. L'achèvement devient un seuil négocié plutôt qu'un fait naturel. L'artiste cesse de composer ; la chimie ne s'arrête pas entièrement. Le collectionneur acquiert un objet mais pas un contrôle parfait sur son apparence future. Le temps n'est pas un dommage venant de l'extérieur. C'est l'un des matériaux déjà inclus."
+            },
+            {
+              "type": "quote",
+              "content": "McIntyre ne peint pas une image du changement. Elle donne au changement une paternité limitée à l'intérieur de la peinture."
+            },
+            {
+              "type": "header",
+              "content": "XIV · Verdict",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Ce corps tient / matière de marais</i> offre une réponse convaincante à un problème central de l'abstraction contemporaine : comment une peinture peut-elle rester intelligible matériellement après que le langage du geste, de la tache et du hasard est devenu familier ? La réponse de McIntyre est de faire de ces marques des conséquences de réactions réelles, de procédures corporelles et de matériaux historiques."
+            },
+            {
+              "type": "text",
+              "content": "Les peintures ne sont pas vivantes, mais elles ne sont pas non plus inertes de la manière dont leurs reproductions numériques le suggèrent. Elles s'oxydent, reflètent, absorbent et vieillissent. Leur refus de finir est modeste plutôt que théâtral. Cela nous rappelle que chaque image stable est un accord temporaire entre la matière, le temps et les conditions dans lesquelles quelqu'un regarde."
+            },
+            {
+              "type": "note",
+              "content": "<em>Emma McIntyre</em> : <strong>Cet corps contient / la boue est à David Zwirner, 52 Walker Street, New York, du 18 septembre au 24 octobre 2026</strong>. Toutes les œuvres de l'exposition ont été réalisées en 2026. Cet article a été préparé à partir de matériaux officiels de l'exposition et d'interviews publiées ; il ne prétend pas à une visite en personne. Les images sont reproduites à des fins de revue éditoriale avec crédits fournis par David Zwirner."
+            },
+            {
+              "type": "link",
+              "content": "Cet corps contient / la boue — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre"
+            },
+            {
+              "type": "link",
+              "content": "Communiqué de presse de l'exposition — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre/press-release"
+            },
+            {
+              "type": "link",
+              "content": "Entretien avec Emma McIntyre — David Zwirner / Flaunt",
+              "url": "https://www.davidzwirner.com/news/2023/emma-mcintyre-interviewed-in-flaunt"
+            },
+            {
+              "type": "link",
+              "content": "Sinon, hiver : oxydation et gravure — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2024/emma-mcintyre-if-not-winter"
+            }
+          ]
         }
       ],
       "reviews": [
