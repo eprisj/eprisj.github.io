@@ -13255,6 +13255,336 @@
           "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
         }
       ]
+    },
+    {
+      "id": 55,
+      "draft": false,
+      "title": "The Painting Is Still Wet: Emma McIntyre and Art That Refuses to Finish",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Oct 2, 2026",
+      "publishAt": "2026-10-02T03:00:00.000Z",
+      "publishedAt": "2026-10-02T03:00:00.000Z",
+      "excerpt": "Emma McIntyre paints with rust, oxidised copper, bone black, gravity and time—making works that continue to change after the artist has stopped touching them.",
+      "category": "Art",
+      "subcategory": "Contemporary Painting",
+      "tags": [
+        "Emma McIntyre",
+        "contemporary painting",
+        "abstraction",
+        "materiality",
+        "oxidation",
+        "David Zwirner"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+      "previewToken": "9eb92971c2bdc4003ce3aad0",
+      "updatedAt": "2026-09-28T20:13:39.277Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "The fiction of a finished painting is useful. It gives the museum a date, the market a stable object and the art historian a boundary: before completion, the artist was deciding; after completion, the work began to mean. Emma McIntyre’s paintings disturb that sequence. Rust keeps blooming. Copper continues to oxidise. A surface changes after the hand has withdrawn."
+        },
+        {
+          "type": "text",
+          "content": "In <i>This body holds / swamp stuff</i>, at David Zwirner’s 52 Walker in New York, McIntyre treats painting less as the execution of an image than as the temporary organisation of reactions. Oil, iron, copper, bone black, solvent, pressure, gravity and bodily contact meet on canvas. The artist initiates conditions, but matter retains the right to answer."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-violet-temple-veil-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Violet for the temple veil, 2026, oil, Flashe, iron oxide and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "I · Who finishes the painting?",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Western painting has long attached authority to the final touch. Completion confirms authorship: the painter has decided that no further mark is necessary. McIntyre replaces this sovereign model with collaboration. She pours and tilts, presses bubble wrap into wet pigment, oxidises metal-based paint and takes impressions from her own palette and body."
+        },
+        {
+          "type": "text",
+          "content": "None of this means surrendering intention. Chance is prepared, watched and edited. The relevant distinction is not control versus accident, but complete control versus responsive control. McIntyre makes a move, observes what the material does, and composes the consequence."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-solve-et-coagula-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Solve et coagula, 2026, oil, oil stick, copper paint and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "II · Alchemy without mysticism",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>Solve et coagula</i> names the alchemical instruction to dissolve and recombine. The phrase can sound mystical, but McIntyre’s process is stubbornly physical. Iron meets an oxidising solution and becomes rust. Copper produces blue-green compounds. Pigment thinned with solvent follows gravity across a horizontal support."
+        },
+        {
+          "type": "text",
+          "content": "Alchemy here is not a fantasy of turning base matter into gold. It is a method for letting substances disclose behaviours that conventional studio technique tries to stabilise. Paint ceases to be colour carried by a neutral medium; it becomes an active chemistry with duration, incompatibility and risk."
+        },
+        {
+          "type": "header",
+          "content": "III · Rust is a clock",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-pearls-ambergris-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Pearls of ambergris, 2026, oil, iron paint and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "text",
+          "content": "Rust is usually understood as failure: evidence that a protected surface has been breached and time has entered. McIntyre makes that breach productive. Oxidation creates orange and brown blooms whose edges record the movement of liquid and air. The mark is not painted to resemble corrosion. It is corrosion."
+        },
+        {
+          "type": "text",
+          "content": "This difference collapses representation into event. A landscape painter may depict weather; McIntyre allows atmosphere to participate chemically in the work. Each oxidised passage is a clock whose units are moisture, oxygen and exposure. The painting possesses a time that does not coincide exactly with the artist’s labour."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-iliaster-flowers-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, This iliaster flowers like the wind, 2026, oil and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "IV · A body made of swamp stuff",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The exhibition title comes from Diane di Prima’s poem “Show Me Your Other Body”: “this body holds / swamp stuff / thick viscous / life-generating Mud.” The body imagined here is not a sealed figure separated from environment. It is porous, mineral, wet and generative."
+        },
+        {
+          "type": "text",
+          "content": "McIntyre’s abstractions repeatedly move between bodily and geological scales. A stain can resemble bruised skin, a cloud system, pond water or a microscopic culture. None of those readings becomes definitive. The painting behaves like a body precisely because it cannot be reduced to anatomy: it absorbs, reacts, scars and changes state."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-bright-medusas-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Bright medusas, 2026, oil, oil stick and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "V · The body without a figure",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Abstract expressionism made gesture into evidence of the artist’s body, but often converted that body into heroic signature. McIntyre uses bodily contact differently. Impressions, drags and pours appear alongside repeated industrial patterns and chemical reactions. Agency is distributed among hand, tool and substance."
+        },
+        {
+          "type": "text",
+          "content": "In <i>Bright medusas</i>, a bubble-wrap grid crosses a vivid pink field. The humble packing material produces a cellular pattern that can read as skin, eggs, pixels or a protective membrane. Mechanical repetition and sensuous colour are not opposites. The painting’s body is built from their collision."
+        },
+        {
+          "type": "header",
+          "content": "VI · Giotto enters through copper",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Beautiful old lies, 2026, oxidised copper paint, oil and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "text",
+          "content": "<i>Beautiful old lies</i> turns oxidised copper into a saturated blue field. The colour invokes the prestige of lapis lazuli in Giotto’s Scrovegni Chapel while arriving through an entirely different material history. Medieval blue signified the expense of mineral pigment and the authority of the sacred image. McIntyre’s blue is produced by change, exposure and corrosion."
+        },
+        {
+          "type": "text",
+          "content": "A semiabstract angel’s wing derived from Giotto enters the surface as a recognisable fragment. Figuration does not organise the painting; it alights briefly within a material weather system. The historical reference is therefore neither quotation nor homage. It tests whether the sacred can survive when its image and substance no longer guarantee permanence."
+        },
+        {
+          "type": "header",
+          "content": "VII · Painting against the screen",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A digital image promises consistency. The same file can appear on thousands of screens, varying in calibration but not in its underlying data. McIntyre’s paintings resist this form of identity. Their colour depends on reflected light; metallic and oxidised passages shift with angle; slow chemical change separates the object of tomorrow from the photograph taken today."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-swear-by-shadows-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Swear it by the shadows, 2026, oil and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "text",
+          "content": "This does not make them pure or technologically innocent. They circulate online, through fairs and as market images. But the reproduction contains an honest failure: it cannot fully stabilise its subject. At a moment when synthetic images can imitate almost any pictorial style, material duration becomes more than craft. It becomes a form of difference."
+        },
+        {
+          "type": "header",
+          "content": "VIII · Monochrome as weather",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-muted-rain-tones-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Those muted those rain tones, 2026, oil and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "text",
+          "content": "Several paintings lean toward monochrome without accepting its historical claim to purity. A McIntyre monochrome is crowded with temperature, stains, buried marks and competing densities. It does not remove the world from painting. It lets the world arrive as weather."
+        },
+        {
+          "type": "text",
+          "content": "The atmospheric field changes as the viewer’s attention moves. A pale zone thickens into a body; a dark wash becomes space; a scratched line briefly reads as writing and dissolves again. Perception repeats the material process: forms coagulate and disperse."
+        },
+        {
+          "type": "header",
+          "content": "IX · Bone black and the ethics of material",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-crackle-and-drag-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Crackle and drag, 2026, oil, bone black and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "text",
+          "content": "In <i>Crackle and drag</i>, white paint crosses a ground made with bone black—a pigment traditionally produced from charred animal bone. The name forces an awareness that colour is never merely optical. Pigments have bodies, sources, trade routes and residues."
+        },
+        {
+          "type": "text",
+          "content": "Contemporary painting often speaks about materiality as tactile pleasure, but materials are also evidence of extraction and transformation. Copper must be mined; iron corrodes; bone becomes carbon. McIntyre does not turn every ingredient into an explicit moral argument. She keeps its prior life audible inside the painting."
+        },
+        {
+          "type": "header",
+          "content": "X · The diptych as experiment",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>Violet for the temple veil</i> began as two panels poured separately with blue-black paint before being joined. The resulting symmetry resembles a Rorschach test, an open book or a body split along a vertical axis. Yet the halves do not mirror one another perfectly. Material variance interrupts the desire for equivalence."
+        },
+        {
+          "type": "text",
+          "content": "The diptych makes method visible. Joining is not the final concealment of difference but its display. Painting becomes comparative: two surfaces receive related conditions and produce distinct outcomes. The viewer looks not for a single image but for the interval between reactions."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-the-blue-hour-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, The blue hour, 2026, work on paper. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "XI · Paper remembers the palette",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "McIntyre’s works on paper are not preparatory illustrations for larger canvases. They often begin with leftover mixtures from earlier paintings or direct impressions of the palette itself. A by-product becomes a beginning. Waste becomes an archive of possible colour."
+        },
+        {
+          "type": "text",
+          "content": "This cyclical studio economy complicates the fantasy of the isolated masterpiece. Each work shares matter and decisions with others. Paint travels between supports; motifs migrate; an ending leaves the residue from which another composition starts. The practice is rhizomatic because influence moves sideways rather than down a clean line from sketch to finished work."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-hawthorn-eyes-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, Hawthorn eyes, 2026, work on paper. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "XII · The romance of chance",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Process-driven abstraction carries a familiar danger: chemical effects can become spectacle, and “letting materials speak” can disguise weak decisions. Rust, blooms, pours and imprints are visually persuasive before they are compositionally necessary. Accident is not automatically freedom."
+        },
+        {
+          "type": "text",
+          "content": "McIntyre’s best paintings avoid this trap by making contingency answer to structure. A crisp figurative fragment cuts through a dispersed field; a hard edge halts a wash; an ugly colour prevents atmosphere from becoming tasteful. The work succeeds when material surprise is not the conclusion but the next problem."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-roses-of-pieria-2026.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Emma McIntyre, The roses of Pieria, 2026, oil and mixed media on canvas. Courtesy the artist and David Zwirner."
+        },
+        {
+          "type": "header",
+          "content": "XIII · What remains unfinished",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "No artwork literally escapes completion. At some point the painting leaves the studio, receives a title, enters an exhibition and becomes an object of ownership. Conservation may eventually work to slow the very transformations the artist invited. Institutional life rebuilds stability around unstable matter."
+        },
+        {
+          "type": "text",
+          "content": "But McIntyre’s work retains a productive remainder. Completion becomes a negotiated threshold rather than a natural fact. The artist stops composing; the chemistry does not entirely stop. The collector acquires an object but not perfect control over its future appearance. Time is not damage arriving from outside. It is one of the materials already included."
+        },
+        {
+          "type": "quote",
+          "content": "McIntyre does not paint an image of change. She gives change a limited authorship inside the painting."
+        },
+        {
+          "type": "header",
+          "content": "XIV · Verdict",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>This body holds / swamp stuff</i> offers a compelling answer to a central problem in contemporary abstraction: how can a painting remain materially intelligent after the language of gesture, stain and chance has become familiar? McIntyre’s answer is to make those marks consequences of real reactions, bodily procedures and historical materials."
+        },
+        {
+          "type": "text",
+          "content": "The paintings are not alive, but neither are they inert in the way their digital reproductions suggest. They oxidise, reflect, absorb and age. Their refusal to finish is modest rather than theatrical. It reminds us that every stable image is a temporary agreement between matter, time and the conditions under which someone is looking."
+        },
+        {
+          "type": "note",
+          "content": "Emma McIntyre: This body holds / swamp stuff is at David Zwirner, 52 Walker Street, New York, from 18 September to 24 October 2026. All works in the exhibition were made in 2026. This article was prepared from official exhibition materials and published interviews; it does not claim an in-person visit. Images are reproduced for editorial review with credits supplied by David Zwirner."
+        },
+        {
+          "type": "link",
+          "content": "This body holds / swamp stuff — David Zwirner",
+          "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre"
+        },
+        {
+          "type": "link",
+          "content": "Exhibition press release — David Zwirner",
+          "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre/press-release"
+        },
+        {
+          "type": "link",
+          "content": "Emma McIntyre interview — David Zwirner / Flaunt",
+          "url": "https://www.davidzwirner.com/news/2023/emma-mcintyre-interviewed-in-flaunt"
+        },
+        {
+          "type": "link",
+          "content": "If not, winter: oxidation and printmaking — David Zwirner",
+          "url": "https://www.davidzwirner.com/exhibitions/2024/emma-mcintyre-if-not-winter"
+        }
+      ]
     }
   ],
   "reviews": [
@@ -35088,6 +35418,290 @@
               "type": "link",
               "content": "Прес-реліз — David Zwirner",
               "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw/press-release"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "draft": false,
+          "title": "Океан не синій: Torkwase Dyson і політика абстракції",
+          "author": "Viacheslav Munister",
+          "role": "Автор",
+          "authorId": "author-1784732936927-kw554",
+          "date": "30 вересня 2026",
+          "publishAt": "2026-09-30T03:00:00.000Z",
+          "publishedAt": "2026-09-30T03:00:00.000Z",
+          "excerpt": "У Seeing in Blue Torkwase Dyson запитує, чи може живопис тримати океан як фізику, пам’ять, вилучення та свободу одночасно—і чи може абстракція зробити кліматичну кризу відчутною раніше, ніж вона стане зображенням.",
+          "category": "Мистецтво",
+          "subcategory": "Сучасне живопис",
+          "tags": [
+            "Torkwase Dyson",
+            "сучасне живопис",
+            "абстракція",
+            "кліматична справедливість",
+            "Чорна географія",
+            "Pace Gallery"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-2026.jpg",
+          "previewToken": "35d56447d2dc7e1b4d1ab0e5",
+          "updatedAt": "2026-09-28T20:13:45.777Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Океан не є синім. Вода не має власного кольору; вона позичає, розсіює, поглинає і повертає світло. Синій отже не є властивістю, а подією—відношенням між глибиною, відстанню, матеріалом і оком. Цей нестабільний факт є початком нових картин Torkwase Dyson, і він заважає їм увійти до категорії, яку їхня краса спочатку натякає."
+            },
+            {
+              "type": "text",
+              "content": "У галереї Pace в Нью-Йорку, <i>Seeing in Blue</i> представляє картини, натхненні більш ніж десятирічним плаванням і глибоководним дайвінгом. Їхні темні водяні поля перетинають дуги, струни, шви, латунні стержні та малі отвори. Вони одночасно виглядають як карти, інструменти, нічне небо і фрагменти архітектури. Однак вони не ілюструють жодного з цих речей. Питання Dyson є більш вимогливим: чи може живопис передати фізичне знання води—і політичні історії, що містяться в ній—без зведення їх до образу?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Daydreaming, 2026, акрил, чорнило, графіт, бронза і бавовняна нитка на полотні, 48 × 48 × 5 дюймів. За згодою художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "I · Проти образу клімату",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Сучасна культура розвинула стабільну візуальну мову для екологічної кризи. Аерофотографії показують палаючі ліси, відступаючий лід, отруєні річки та узбережжя, зняті з супутників. Ці зображення необхідні як докази, але їх повторення створює парадокс: чим повніше зображена катастрофа, тим легше вона стає пейзажем. Глядач розміщується в безпеці поза подією, дивлячись вниз."
+            },
+            {
+              "type": "text",
+              "content": "Dyson усуває цю відстань. Її картини не показують океан; вони запитують, що означає мати тіло всередині нього. Тиск замінює панораму. Плавучість замінює горизонт. Дихання стає мірою часу. Навігація більше не лінія, проведена по карті, а безперервна переговори між щільністю, темрявою та рухом."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-to-plunge-to-see.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, To Plunge, To See, To Never, To Time, To Shadow, To Remember, 2026, акрил, чорнило, графіт, латунь і бавовняна нитка на полотні. За згодою художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "II · Фізика і пам’ять",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson описує роботу з водою як рух «між фізикою і пам’яттю». Ця фраза протистоїть поділу між об’єктивним середовищем і суб’єктивним досвідом. Вода підкоряється тиску, гравітації та температурі; вона також зберігає історії транспортування, видобутку, праці, міграції та смерті. Вступити в неї — означає зустріти обидві системи одночасно."
+            },
+            {
+              "type": "text",
+              "content": "Її студійний процес повторює цей подвійний рух. Вона починає з полотен, розкладених на підлозі, дозволяючи розтікатися розведеним кольорам, утворювати калюжі та уникати повного контролю. Потім вона відповідає цій випадковості виміряною геометричною конструкцією. Потік слідує за структурою; випадковість — за рішенням. Картина стає переговором між тим, що робить матерія, і тим, що тіло просить її зробити."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-to-plunge-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Бічний вигляд To Plunge, To See, To Never, To Time, To Shadow, To Remember, що показує сконструйовану глибину картини та латунний елемент. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "III · Абстракція — це тема",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson зробила важливе розмежування: вона не описує себе просто як абстрактного художника; вона обрала абстракцію як тему. Різниця має значення. Абстракція — це не стиль, застосований після визначення політичного змісту. Це сама по собі політична операція: процес, за допомогою якого тіла, території та ресурси перетворюються у категорії, лінії власності, статистику та зони контролю."
+            },
+            {
+              "type": "text",
+              "content": "Карта — це абстракція. Так само і маршрут судноплавства, межа ризику затоплення, план в'язниці, акт, страхова зона та фінансовий інструмент, що робить видобуток прибутковим, перш ніж щось буде вилучено з ґрунту. Абстракція може стерти життєву специфіку. Вона також може дозволити людині уявити простір інакше. Dyson працює всередині цього конфлікту, а не прикидається, що абстракція є безневинною."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-hand-to-hand-one.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Hand to Hand, Heart to Heart (Unknown of Us 1), 2026, акрил, чорнило, графіт, латунь, бронза та бавовняна нитка на полотні. За згодою художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "IV · Чорна географія — це не тема",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Для Dyson екологія не може бути відокремлена від чорної просторової історії. Атлантика — це живий систем і історична структура: засіб примусового руху, торгівлі, колоніального вилучення та діаспори. Земля ніколи не є лише ландшафтом, коли плантації, власність і вплив навколишнього середовища визначили, які тіла можуть безпечно її займати."
+            },
+            {
+              "type": "text",
+              "content": "Ось чому «чорна географія» у її роботі — це не іконографія, яку можна розмістити у картині. Це спосіб мислення про рух за нерівних умов. Її форми черпають із історій самовизволення та імпровізованого притулку: як сховатися, повернути, пройти, дихати, будувати і залишатися невизначеним всередині систем, створених для того, щоб зробити тіло зрозумілим і контрольованим."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-hand-to-hand-three.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Hand to Hand, Heart to Heart (Unknown of Us 3), 2026, акрил, чорнило, графіт, латунь, бронза і бавовняна нитка на полотні. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "V · Геометрія після свободи",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson називає частини своєї формальної лексики “гіперформами”. Криві, клини, отвори та стиснені кімнати витягнуті з стратегій звільнення, а не з геометрії як автономної мови. Їхні джерела включають просторовий інтелект, через який вижили закляті та втечі люди: корпус, горище, прихований маршрут, вузький отвір і архітектуру, зроблену придатною проти її призначення."
+            },
+            {
+              "type": "text",
+              "content": "Форми не розшифровуються у єдину історію. Це відмова є ключовою. Символ стає керованим, коли його значення закріплено. Геометрії Dyson залишаються доступними для руху; їх можна читати як огорожу та вихід, тиск і захист, структуру та прорив. Свобода з’являється не як необмежений відкритий простір, а як здатність компонувати в межах обмежень."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-the-distance-inside-us.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, The Distance Inside Us, 2026, акрил, чорнило, графіт, латунь і бавовняна нитка на полотні. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "VI · Картина з краєм",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Фотографовано фронтально, ці роботи можуть здаватися стриманими та майже невагомими. Побачені під косим кутом, вони розкривають свою об'єктність. Бавовняний шнур віддалений від поверхні; латунь і бронза переривають пофарбоване поле; полотна мають суттєву глибину; круглі та нерегулярні опори відкидають нейтральний прямокутник."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Косий вигляд Daydreaming, 2026. Перила, шнур і глибока опора перетворюють картину у просторову пропозицію. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "Бічний вигляд змінює аргумент. Лінія не лише намальована; вона натягнута через простір. Перила — це не лише колір; вона має вагу, провідність і опір. Робота коливається між діаграмою та конструкцією. Вона не так зображує архітектуру, як змушує глядача архітектурно стикатися з живописом — через відстань, положення і тілесний масштаб."
+            },
+            {
+              "type": "header",
+              "content": "VII · Синій без невинності",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Ранні картини Dyson часто підходили до чорного через багатошарові суміші, а не через один чорний пігмент. В <i>Seeing in Blue</i> водяний колір виходить вперед, але синій також є не чистим. Титанова біла може зробити його здається світловим; зелений мерехтить під ним; іржаво-червоні пасажі натякають на окислення, осад або атмосферу, що втрачає рівновагу."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-a-blue-tongue-a-blue-song.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, A Blue Tongue, A Blue Song, 2026, акрил, чорнило, графіт, латунь, бронза і бавовняна нитка на полотні, діаметром 42 дюйми. За згодою художника та Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "Отже, синій відмовляється від культурної обіцянки, зазвичай пов’язаної з ним: спокою, безкінечності, втечі. Dyson відкидає те, що вона називає просто «відпусковою красою». Її океанічна краса є доісторичною, вразливою і страшною. Вона включає штучні рифи та живі екології, але також буріння морського дна, військові пости, акустичне спостереження та руїни побудованого світу."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-blue-tongue-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Косий вигляд A Blue Tongue, A Blue Song, показує еліптичну глибину роботи та металевий край. За згодою художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Краса як метод залишатися",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Існує спокуса розглядати красу як політично підозрілу, коли йдеться про катастрофу. Страх зрозумілий: краса може естетизувати пошкодження і робити насильство споживаним. Dyson пропонує іншу функцію. Краса може утримувати увагу там, де видовищність її виснажує. Вона може тримати глядача всередині складності досить довго, щоб виникли відносини."
+            },
+            {
+              "type": "text",
+              "content": "Її поверхні не винагороджують швидкий огляд. Пороги майже чорного кольору вимагають налаштування ока; тонкі струни та графітові штрихи зникають і повертаються; металеві перерви змінюються залежно від положення глядача. Дивитися стає повільним, фізичним і неповним. Це неповнота не є ухилом. Це репетиція для зустрічі з екологією, яку не можна оволодіти з однієї точки зору."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-clear-sacred-focus.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Clear Sacred Focus, 2026, акрил, чорнило, графіт, латунь, бронза і бавовняна нитка на полотні, діаметр 42 дюйми. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "IX · Масштаб інтимності",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Більша частина практики Dyson перейшла у сферу монументального живопису, скульптури, архітектури та колективного дослідження. Ці нові роботи стискають це дослідження у більш інтимний регістр. Їхній масштаб не робить тему меншою. Це змінює відношення від публічної промови до близькості."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-blue-worlding-for-love.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Blue Worlding for Love, 2026, акрил, чорнило, графіт, латунь і бавовняна нитка на полотні. За courtesy художника та Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "<i>Blue Worlding for Love</i> виходить за межі стіни як опори. Його багатошарові плани та латунний елемент нагадують компактний притулок, інструмент або незавершену модель. Назва має значення: “worlding” позначає активне побудова відносин, а не пасивне заселення заданого світу. Любов входить не як сентимент, а як просторове практикування — робота з створення умов, у яких може жити інше тіло."
+            },
+            {
+              "type": "header",
+              "content": "X · Що не можуть зробити картини",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Жодне абстрактне полотно не може пояснити кліматичну науку, відновити екосистему або перераспределити екологічний ризик. Теоретичний словник Dyson настільки щільний, що роботи можуть здаватися недоступними без попередніх знань. Контекст галереї додає ще одне протиріччя: об'єкти, пов'язані з звільненням і нерівномірним простором, циркулюють через один із найвибагливіших просторових економік у культурі."
+            },
+            {
+              "type": "text",
+              "content": "Але вимагати, щоб картина вирішила кризу, яку вона порушує, означало б повторити інструментальну логіку, яку робота заперечує. Її функція інша. Dyson робить видимими звички, за допомогою яких організовано знання: перевага поглядів зверху, чисті межі, катастрофа, зображена як образ, що відбувається десь інде. Її картини повертають знання до тіла — не як чисте почуття, а як інструмент сприйняття, залучений у історію."
+            },
+            {
+              "type": "quote",
+              "content": "Dyson не малює океан як місце для погляду. Вона малює те, що трапляється з знанням, коли тіло вже всередині нього."
+            },
+            {
+              "type": "header",
+              "content": "XI · Вирок",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Бачення у блакитному</i> успішне, бо відмовляється робити екологічне живопис зрозумілим через знайомі знаки природи. Немає хвиль для захоплення, немає горизонту, щоб загубитися в ньому, і немає зруйнованого узбережжя, щоб підтвердити те, що глядач уже знає. Замість цього вода стає методом переосмислення живопису: рідка і сконструйована, матеріальна і мнемонічна, красива і компромісна."
+            },
+            {
+              "type": "text",
+              "content": "Найглибша пропозиція полягає в тому, що абстракція не віддаляється від реальності. Вона показує, як реальність вже була абстрагована — у територію, інфраструктуру, цінність і ризик — і запитує, чи можна ці системи перепроектувати. У руках Dyson лінія може бути маршрутом, бар’єром, подихом або відношенням. Блакитний може бути світлом і глибиною, але ніколи невинністю."
+            },
+            {
+              "type": "note",
+              "content": "Torkwase Dyson: Seeing in Blue у Pace Gallery, 540 West 25th Street, Нью-Йорк, з 11 вересня по 24 жовтня 2026 року. Виставка представляє нові живописні роботи, натхненні досвідом Dyson як плавця і глибоководного дайвера. Ця стаття підготовлена на основі письменств художника, інтерв’ю та офіційних матеріалів виставки; вона не претендує на особистий візит. Зображення відтворені для редакційного огляду з кредитами, наданими Pace Gallery."
+            },
+            {
+              "type": "link",
+              "content": "Бачення у синьому — галерея Pace",
+              "url": "https://www.pacegallery.com/exhibitions/torkwase-dyson-seeing-in-blue/"
+            },
+            {
+              "type": "link",
+              "content": "Птах і лава: нотатки досліджень художника — Torkwase Dyson",
+              "url": "https://www.torkwasedyson.com/bird-and-lava"
+            },
+            {
+              "type": "link",
+              "content": "Torkwase Dyson у розмові з Hamza Walker — BOMB",
+              "url": "https://bombmagazine.org/articles/2024/12/16/torkwase-dyson-by-hamza-walker/"
+            },
+            {
+              "type": "link",
+              "content": "Інтерв'ю з Torkwase Dyson — The Brooklyn Rail",
+              "url": "https://brooklynrail.org/2020/09/art/TORKWASE-DYSON-with-Robert-Shane/"
             }
           ]
         }
