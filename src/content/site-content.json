@@ -12646,248 +12646,6 @@
           "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw/press-release"
         }
       ]
-    },
-    {
-      "id": 53,
-      "draft": false,
-      "title": "The Museum That Refuses to Be a Monument: BIG’s Suzhou MoCA",
-      "author": "Viacheslav Munister",
-      "role": "Author",
-      "authorId": "author-1784732936927-kw554",
-      "date": "Sep 30, 2026",
-      "publishAt": "2026-09-30T03:00:00.000Z",
-      "publishedAt": "2026-09-30T03:00:00.000Z",
-      "excerpt": "On the shore of Jinji Lake, BIG dissolves a 60,000-square-metre museum into a village of pavilions, gardens and covered walks—turning an institution into a route between the city and the water.",
-      "category": "Architecture",
-      "subcategory": "Museum",
-      "tags": [
-        "Suzhou MoCA",
-        "BIG",
-        "Bjarke Ingels Group",
-        "Suzhou",
-        "museum architecture",
-        "China"
-      ],
-      "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/suzhou-moca-at-dusk.jpg",
-      "previewToken": "c41a66b071b61e669d2e3882",
-      "updatedAt": "2026-09-28T19:48:21.266Z",
-      "content": [
-        {
-          "type": "text",
-          "content": "A museum of contemporary art usually announces itself as an object: a singular mass, an unmistakable silhouette, a new icon placed before the city. On the shore of Jinji Lake, the Suzhou Museum of Contemporary Art begins with the opposite move. It breaks itself apart."
-        },
-        {
-          "type": "text",
-          "content": "Designed by BIG—Bjarke Ingels Group—in collaboration with ARTS Group, VIA.inc and Shanghai Shuishi, the newly opened museum distributes roughly 60,000 square metres across a village of pavilions. A continuous roof draws them together, bending and lifting as it moves between galleries, courtyards and water. The building is large, but its central ambition is not monumentality. It is passage."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-at-dusk.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Suzhou Museum of Contemporary Art at dusk, Suzhou, China, 2026. Architecture: BIG with ARTS Group, VIA.inc and Shanghai Shuishi. Photo courtesy Suzhou MoCA and BIG."
-        },
-        {
-          "type": "header",
-          "content": "I · Between a city and a lake",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The site is compressed between Suzhou Industrial Park and Jinji Lake, with the giant Suzhou Eye Ferris wheel standing at the water’s edge. A conventional museum could have completed this sequence with another autonomous landmark. BIG instead treats the building as connective tissue. Paths enter from the city, pass through gardens and galleries, and continue toward the lake."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-lake-and-ferris-wheel.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The museum and Suzhou Eye on the shore of Jinji Lake. Photo courtesy Suzhou MoCA and BIG."
-        },
-        {
-          "type": "text",
-          "content": "This porosity is the project’s strongest urban idea. A cultural institution can easily become an obstacle: a long façade, a controlled entrance, a paid interior separating public streets from a privileged view. Here, water and landscape penetrate the composition while the public route threads through it. The museum is not placed beside the park. It behaves like part of the park’s circulation system."
-        },
-        {
-          "type": "header",
-          "content": "II · The corridor becomes the building",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The architectural reference is the <i>lang</i>—the covered corridor of the classical Chinese garden. Traditionally, the corridor is more than protection from rain or sun. It edits movement into a sequence of framed views, turns walking into a measured experience and joins pavilions without collapsing their independence."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-aerial-pavilions.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Aerial view of the pavilion village and its continuous roof. Photo courtesy BIG."
-        },
-        {
-          "type": "text",
-          "content": "At Suzhou MoCA, that connective element expands until it becomes the museum’s public identity. The roof does not merely cap a series of rooms. It works as a continuous line of orientation, gathering separate volumes into one route while allowing gardens to remain between them. From the ground, the building arrives as a succession of edges and openings. Only from above—or from a Ferris-wheel gondola—does the entire system become legible."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-covered-corridor.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Visitors moving through the covered public route between gardens and galleries. Photo courtesy Suzhou MoCA and BIG."
-        },
-        {
-          "type": "header",
-          "content": "III · A fifth façade made for motion",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The roof is clad in warm-toned stainless steel, folded into slopes and upward-curving eaves. It is inevitably photogenic, but its real audience is moving: visitors approaching through the district, residents in surrounding towers and passengers rising above the site in the Suzhou Eye. The aerial surface becomes a fifth façade."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-contemporary-garden.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The roofline rises above a contemporary garden. Photo courtesy Suzhou MoCA and BIG."
-        },
-        {
-          "type": "text",
-          "content": "Its repetition avoids the single grand gesture. Each pavilion receives a variation of the same roof logic, producing a family resemblance rather than uniformity. The museum’s silhouette therefore changes as one walks. It can appear low and sheltered from a courtyard, then suddenly civic and expansive from across the lake."
-        },
-        {
-          "type": "header",
-          "content": "IV · Reflection without imitation",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Suzhou’s classical gardens are built around controlled encounter: wall and opening, rock and water, concealment and revelation. Copying their historic forms at metropolitan scale would have reduced that tradition to decoration. The museum instead borrows an operating system. It uses multiple pavilions, indirect routes, water courts and serial views to make space unfold over time."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-water-courtyard.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A water courtyard between glass-lined pavilions. Photo courtesy BIG."
-        },
-        {
-          "type": "text",
-          "content": "The rippled glass façades complicate reflection. Garden, structure, sky and visitor overlap in their surfaces, making the boundary between room and landscape visually unstable. Stainless steel warms the otherwise cool material palette, while stone paths and shallow water keep the complex grounded in the bodily scale of walking."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-curved-glass-facade.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Curved glass, rising eaves and a reflecting pool at Suzhou MoCA. Photo courtesy BIG."
-        },
-        {
-          "type": "header",
-          "content": "V · Twelve pavilions, not one neutral box",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The completed museum is described by BIG as a village of twelve pavilions. Their distribution allows galleries, event spaces, a theatre, restaurant and public functions to operate with greater independence than they could inside one enormous volume. Bridges and underground connections give curators alternative routes through the complex."
-        },
-        {
-          "type": "text",
-          "content": "That flexibility has a cost. Fragmentation can make circulation less immediately efficient, and the building asks visitors to surrender the certainty of a central hall from which everything is visible. But this is a productive difficulty. Suzhou MoCA replaces the museum as diagram with the museum as itinerary."
-        },
-        {
-          "type": "header",
-          "content": "VI · Inside the white room",
-          "level": 2
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-gallery-interior.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Interior junction between galleries and public circulation. Photo courtesy Suzhou MoCA and BIG."
-        },
-        {
-          "type": "text",
-          "content": "The galleries themselves are restrained: white walls, pale floors, slender structure and dark linear ceilings. The drama is concentrated at their thresholds. A room opens to water; a roof plane drops into view; daylight enters through tall curved glazing before the visitor returns to the controlled light of an exhibition space."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-white-gallery.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A top-lit gallery beneath the folded roof structure. Photo courtesy BIG."
-        },
-        {
-          "type": "text",
-          "content": "This alternation solves a problem common to destination museums. Architecture can overwhelm art when every gallery is required to repeat the exterior spectacle. Here, much of the interior remains useful and calm. The complex saves its strongest spatial effects for transitions, allowing art rooms to function while movement between them carries the memory of the garden."
-        },
-        {
-          "type": "header",
-          "content": "VII · The view is also an exhibit",
-          "level": 2
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-gallery-overlooking-lake.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A gallery overlooking Jinji Lake through rippled glass. Photo courtesy BIG."
-        },
-        {
-          "type": "text",
-          "content": "The lake is never merely a backdrop. It appears as a changing exhibit framed by structure and glass: silver under cloud, reflective at dusk, crowded by the Ferris wheel’s geometry. In a traditional garden, borrowed scenery makes a distant landscape part of a private composition. Suzhou MoCA updates that device for an urban waterfront, borrowing infrastructure, skyline and weather."
-        },
-        {
-          "type": "header",
-          "content": "VIII · An ancient future",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Bjarke Ingels describes the project as a Scandinavian reinterpretation of the Chinese garden and a manifestation of Suzhou’s “ancient future.” The phrase is easy to dismiss as branding, yet the building makes a credible architectural argument behind it. Tradition is not treated as a library of shapes. It is treated as knowledge about sequence, climate, landscape and social movement."
-        },
-        {
-          "type": "text",
-          "content": "The result is most convincing when the roof stops behaving like an image and begins performing ordinary work: shading a public walk, gathering separate rooms, marking a route through rain, or lowering the apparent scale of a vast institution. This is where spectacle and use briefly become the same thing."
-        },
-        {
-          "type": "quote",
-          "content": "The museum’s most radical gesture is not the roof that can be seen from the sky, but the path that remains open at ground level."
-        },
-        {
-          "type": "header",
-          "content": "IX · Verdict",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Suzhou MoCA is unquestionably an icon, and its proximity to a Ferris wheel makes that role impossible to avoid. Yet it is a rare icon that argues for dispersal. Its identity comes from many roofs, many courtyards and many possible routes rather than one sealed object."
-        },
-        {
-          "type": "text",
-          "content": "The project’s success will ultimately depend on whether its porosity survives daily operation—whether public passages remain genuinely public, whether exhibitions inhabit the pavilion system rather than retreat behind it, and whether the gardens mature into more than photographic foreground. Architecturally, however, the premise is already clear: a 60,000-square-metre museum can become less imposing by learning how to be a landscape."
-        },
-        {
-          "type": "note",
-          "content": "Suzhou Museum of Contemporary Art officially opened to the public on 30 August 2026 at 99 You’an Street, Suzhou Industrial Park, Jiangsu, China. Architecture by BIG—Bjarke Ingels Group—in collaboration with ARTS Group, VIA.inc and Shanghai Shuishi Landscape Design. The museum contains approximately 59,500 square metres of floor area and 11,300 square metres of exhibition space. This article was prepared from official project information and photography; it does not claim an in-person visit."
-        },
-        {
-          "type": "link",
-          "content": "Project page — BIG",
-          "url": "https://big.dk/projects/suzhou-museum-of-contemporary-art-18410"
-        },
-        {
-          "type": "link",
-          "content": "About the museum — Suzhou MoCA",
-          "url": "https://www.suzhoumoca.com/en/page/About-the-Art-Museum"
-        },
-        {
-          "type": "link",
-          "content": "Official opening announcement — Suzhou Industrial Park",
-          "url": "https://www.sipac.gov.cn/szgyyqenglish/life/202609/de3ebcaa678b4390a6d57bc919468c7c.shtml"
-        }
-      ]
     }
   ],
   "reviews": [
@@ -44781,7 +44539,7 @@
         },
         {
           "id": 51,
-          "draft": true,
+          "draft": false,
           "title": "Die Welt ist nicht, was sie sagt: Magrittes Nachleben bei Gagosian London",
           "author": "Viacheslav Munister",
           "role": "Autor",
@@ -44801,22 +44559,22 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
           "previewToken": "af164326133e44c0ffbec996",
-          "updatedAt": "2026-09-28T19:36:03.646Z",
+          "updatedAt": "2026-09-28T19:51:13.697Z",
           "content": [
             {
               "type": "text",
-              "content": "Eine Rohrleitung ist nützlich, bis sie zu einem Bild wird. Dann hört sie auf, Rauch zu tragen, und beginnt, Zweifel zu tragen. René Magritte verstand, dass der kleinste Abstand zwischen einer Sache, ihrem Bild und ihrem Namen groß genug gemacht werden konnte, um eine ganze Philosophie zu enthalten. In Gagosians Grosvenor Hill Galerie fragt <i>This Is Still Not a Pipe: The Afterlife of Magritte</i>, was passiert ist, nachdem dieser Abstand in die visuelle Kultur eingedrungen war und nie wieder geschlossen wurde."
+              "content": "Eine Rohrleitung ist nützlich, bis sie zu einem Bild wird. Dann hört sie auf, Rauch zu tragen, und beginnt, Zweifel zu tragen. René Magritte verstand, dass der kleinste Abstand zwischen einer Sache, ihrem Bild und ihrem Namen groß genug gemacht werden konnte, um eine ganze Philosophie zu enthalten. In Gagosians Grosvenor Hill Galerie fragt <i>This Is Still Not a Pipe: The Afterlife of Magritte</i>, was geschah, nachdem dieser Abstand in die visuelle Kultur eingetreten war und nie wieder geschlossen wurde."
             },
             {
               "type": "text",
-              "content": "Organisiert mit der Fondation Magritte und kuratiert von Jasper Sharp und Bernard Lagrange, bringt die Ausstellung Gemälde, Arbeiten auf Papier und Skulpturen aus Magrittes gesamter Karriere in Kontakt mit mehr als vierzig Künstlern. Das wichtige Wort ist nicht Einfluss, sondern <i>Nachleben</i>. Dies ist weniger ein Stammbaum von Zitaten als ein Test, welche Probleme von Magritte noch aktiv sind: das unzuverlässige Wort, das theatralische Objekt, die Skala, die Vertrautheit in Bedrohung verwandelt, und das Bild, das genau das zurückhält, was es zu zeigen scheint."
+              "content": "Organisiert mit der Fondation Magritte und kuratiert von Jasper Sharp und Bernard Lagrange bringt die Ausstellung Gemälde, Arbeiten auf Papier und Skulpturen aus Magrittes gesamter Karriere in Kontakt mit mehr als vierzig Künstlern. Das wichtige Wort ist nicht Einfluss, sondern <i>Nachleben</i>. Dies ist weniger ein Stammbaum von Zitaten als ein Test, welche Probleme von Magritte noch aktiv sind: das unzuverlässige Wort, das theatralische Objekt, die Skala, die Vertrautheit in Bedrohung verwandelt, und das Bild, das genau das zurückhält, was es zu zeigen scheint."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
               "align": "center",
               "width": 100,
-              "caption": "<i>This Is Still Not a Pipe: The Afterlife of Magritte</i>, Installationsansicht, Gagosian Grosvenor Hill, London, 2026. Foto: Prudence Cuming Associates Ltd. Kunstwerkscredits: Gagosian/Fondation Magritte."
+              "caption": "This Is Still Not a Pipe: The Afterlife of Magritte, Installationsansicht, Gagosian Grosvenor Hill, London, 2026. Foto: Prudence Cuming Associates Ltd. Kunstwerke: Gagosian/Fondation Magritte."
             },
             {
               "type": "header",
@@ -44845,18 +44603,18 @@
             },
             {
               "type": "text",
-              "content": "<i>L’Apparition</i> (1928) demonstriert die Struktur unter der vertrauten Bildsprache von Magritte. Ein dunkles Feld hält Formen, die aus inkompatiblen Systemen zu stammen scheinen: Fragmente von Landschaft, körperlicher Suggestion, Diagramm und Objekt. Die Oberfläche fordert nicht dazu auf, als Pinselstrich bewundert zu werden. Sie fordert dazu auf, sie zu inspizieren, als wäre sie Beweis eines Ereignisses, dessen Regeln nicht offengelegt wurden."
+              "content": "<i>L’Apparition</i> (1928) demonstriert die Struktur unter Magrittes vertrauter Bildsprache. Ein dunkles Feld hält Formen, die aus inkompatiblen Systemen zu stammen scheinen: Fragmente von Landschaft, körperlicher Suggestion, Diagramm und Objekt. Die Oberfläche fordert nicht dazu auf, als Pinselstrich bewundert zu werden. Sie fordert dazu auf, sie zu inspizieren, als wäre sie Beweis eines Ereignisses, dessen Regeln nicht offengelegt wurden."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-apparition-1928.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Apparition (Die Erscheinung)</i>, 1928, Öl auf Leinwand, 54 × 73 cm. © 2026 ADAGP, Paris, und DACS, London. Bild courtesy Gagosian."
+              "caption": "René Magritte, L’Apparition (Die Erscheinung), 1928, Öl auf Leinwand, 54 × 73 cm. © 2026 ADAGP, Paris, und DACS, London. Bild courtesy Gagosian."
             },
             {
               "type": "text",
-              "content": "Diese beweisende Flachheit ist wichtig. In einem Gespräch, veröffentlicht im Gagosian Quarterly, unterscheidet Alex Da Corte Magritte von Malern, deren Denken in der Bewegung des Farbauftrags sichtbar ist. Magritte scheint oft das Bild bereits entschieden zu haben und es dann mit der kühlen Präzision einer Illustration oder einer verzerrten Kamera auszuführen. Das Fehlen einer malerischen Bekenntnis ist kein Mangel an Gedanken. Es ist das, was die Last des Denkens auf den Betrachter überträgt."
+              "content": "Diese beweisende Flachheit ist wichtig. In einem Gespräch, veröffentlicht von Gagosian Quarterly, unterscheidet Alex Da Corte Magritte von Malern, deren Denken in der Bewegung der Farbe sichtbar ist. Magritte scheint oft das Bild bereits entschieden zu haben und es dann mit der kühlen Präzision einer Illustration oder einer verzerrten Kamera auszuführen. Das Fehlen einer malerischen Bekenntnis ist kein Mangel an Gedanken. Es ist das, was die Last des Denkens auf den Betrachter überträgt."
             },
             {
               "type": "header",
@@ -44865,18 +44623,18 @@
             },
             {
               "type": "text",
-              "content": "<i>La Malédiction</i> (1931), die früheste Einzelbild-Leinwand, in der Magritte das gesamte Feld einem wolkengefüllten Himmel widmete, entfernt den Boden, ohne das Gemälde in reine Atmosphäre zu verwandeln. Der Himmel wird zu einer Sache: begrenzt, transportabel, besessen. Einmal gerahmt, erhält sogar die Unendlichkeit Kanten."
+              "content": "<i>La Malédiction</i> (1931), die früheste Einzelbild-Leinwand, in der Magritte das gesamte Feld einem wolkengefüllten Himmel widmete, entfernt den Boden, ohne das Gemälde in reine Atmosphäre zu verwandeln. Der Himmel wird zu einer Sache: begrenzt, transportabel, besessen. Einmal gerahmt, erhält selbst die Unendlichkeit Kanten."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-curse-1931.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Malédiction (Der Fluch)</i>, 1931, Öl auf Leinwand, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Paris, und DACS, London. Foto: Antoine van Kaam."
+              "caption": "René Magritte, La Malédiction (The Curse), 1931, Öl auf Leinwand, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Paris, und DACS, London. Foto: Antoine van Kaam."
             },
             {
               "type": "text",
-              "content": "Dies ist ein Grund, warum Magrittes Wolken so leicht in Werbung und Design überleben. Sie sind sowohl Wetter- als auch grafisches Mittel, Natur und Fertigprodukt-Hintergrund. Aber das kommerzielle Nachleben kann die ursprüngliche Störung verbergen. Sein Himmel ist keine Freiheit. Es ist eine Oberfläche, die vorgibt, Tiefe zu sein."
+              "content": "Dies ist ein Grund, warum Magrittes Wolken so leicht im Werbung und Design überleben. Sie sind sowohl Wetter- als auch grafisches Mittel, Natur und Fertigprodukt-Hintergrund. Aber das kommerzielle Nachleben kann die ursprüngliche Störung verbergen. Sein Himmel ist keine Freiheit. Es ist eine Oberfläche, die vorgibt, Tiefe zu sein."
             },
             {
               "type": "header",
@@ -44885,14 +44643,14 @@
             },
             {
               "type": "text",
-              "content": "<i>La Lampe philosophique</i> (1936) wird oft als konzeptuelles Selbstporträt verstanden. Ein Gesicht, eine Pfeife und eine Kerze sind in einen Kreis des Betrachtens und Konsumierens eingeschlossen. Die Nase tritt in die Pfeife ein; die Kerze biegt sich mit fast körperlicher Erschöpfung. Nichts in der Szene ist als Traumeffekt gemalt. Jedes Element ist materiell schlicht, und die Unmöglichkeit liegt nur in ihrer Beziehung."
+              "content": "<i>La Lampe philosophique</i> (1936) wird oft als ein konzeptuelles Selbstporträt verstanden. Ein Gesicht, eine Pfeife und eine Kerze sind in einen Kreis des Betrachtens und Konsumierens eingeschlossen. Die Nase tritt in die Pfeife ein; die Kerze biegt sich mit einer fast körperlichen Erschöpfung. Nichts in der Szene ist als Traumeffekt gemalt. Jedes Element ist materiell schlicht, und die Unmöglichkeit liegt nur in ihrer Beziehung."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-philosophers-lamp-1936.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Lampe philosophique (Der Philosophische Lampe)</i>, 1936, Öl auf Leinwand, 50 × 66 cm. © 2026 C. Herscovici/Künstlerrechte Gesellschaft (ARS), New York. Foto courtesy Private Collection, Brussels."
+              "caption": "René Magritte, La Lampe philosophique (The Philosopher’s Lamp), 1936, Öl auf Leinwand, 50 × 66 cm. © 2026 C. Herscovici/Künstlerrechte Gesellschaft (ARS), New York. Foto courtesy Private Collection, Brussels."
             },
             {
               "type": "text",
@@ -44905,14 +44663,14 @@
             },
             {
               "type": "text",
-              "content": "Der verstorbene <i>L’Empire des lumières</i> (1961), ausgeliehen von der Heidi Horten Collection, ist das letzte Gemälde in Magrittes gefeierter Reihe von Landschaften, bei denen ein heller Taghimmel über einer nächtlichen Straße hängt. Es ist auch das einzige in der Serie, das eine bowlerhütende Figur zeigt, die gegen den Himmel silhouettiert ist."
+              "content": "Der verstorbene <i>L’Empire des lumières</i> (1961), ausgeliehen von der Heidi Horten Sammlung, ist das letzte Gemälde in Magrittes gefeierter Reihe von Landschaften, bei denen ein heller Taghimmel über einer nächtlichen Straße hängt. Es ist auch das einzige in der Serie, das eine bowlerhütende Figur zeigt, die gegen den Himmel silhouettiert ist."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Empire des lumières (Das Reich des Lichts)</i>, 1961, Öl auf Leinwand, 50 × 73 cm, Heidi Horten Collection, Wien. © 2026 ADAGP, Paris, und DACS, London. Foto: Prudence Cuming Associates Ltd."
+              "caption": "René Magritte, L’Empire des lumières (Das Reich des Lichts), 1961, Öl auf Leinwand, 50 × 73 cm, Heidi Horten Sammlung, Wien. © 2026 ADAGP, Paris, und DACS, London. Foto: Prudence Cuming Associates Ltd."
             },
             {
               "type": "text",
@@ -44932,18 +44690,18 @@
               "content": "https://api.eprisjournal.com/uploads/vija-celmins-pink-pearl-eraser.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Vija Celmins, <i>Pink Pearl Eraser</i>, 1966–67, Acryl auf Balsaholz, 17,1 × 49,5 × 8,3 cm. © Vija Celmins. Bild courtesy Gagosian."
+              "caption": "Vija Celmins, Pink Pearl Eraser, 1966–67, Acryl auf Balsaholz, 17,1 × 49,5 × 8,3 cm. © Vija Celmins. Bild courtesy Gagosian."
             },
             {
               "type": "text",
-              "content": "Dana Schutzs neues Gemälde <i>The Singer</i> (2026) arbeitet weiter von Magrittes Ikonographie entfernt, aber nahe an seiner theatralischen Logik. Die Figur und die Bildebene scheinen zu verhandeln, welche von beiden erlaubt ist, das andere zu enthalten. Es ist kein Zitat; es ist eine Fortsetzung desselben Misstrauens gegenüber stabilem bildlichem Raum."
+              "content": "Dana Schutzs neues Gemälde <i>The Singer</i> (2026) arbeitet weiter von Magrittes Ikonographie entfernt, aber nahe an seiner theatralischen Logik. Die Figur und die Bildebene scheinen zu verhandeln, welche von beiden erlaubt ist, das andere zu enthalten. Es ist kein Zitat; es ist eine Fortsetzung des gleichen Misstrauens gegenüber stabilem bildnerischem Raum."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/dana-schutz-the-singer-2026.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Dana Schutz, <i>The Singer</i>, 2026, Öl auf Leinwand, 203,2 × 175,3 cm. © Dana Schutz. Foto: Stephen Arnold."
+              "caption": "Dana Schutz, The Singer, 2026, Öl auf Leinwand, 203,2 × 175,3 cm. © Dana Schutz. Foto: Stephen Arnold."
             },
             {
               "type": "header",
@@ -44973,15 +44731,15 @@
             },
             {
               "type": "text",
-              "content": "<i>Dies ist immer noch keine Pfeife</i> gelingt, wenn es Einfluss als ein Arbeitsproblem behandelt anstatt ein Nachahmungsspiel. Mit mehr als vierzig zeitgenössischen Künstlern erzeugt die Ausstellung zwangsläufig ungleichmäßige Abstammungslinien. Einige Werke liegen nah am Vokabular von Magritte; andere erfordern die kuratorische Prämisse, um die Beziehung sichtbar zu machen. Aber diese Ungleichmäßigkeit ist produktiv. Sie zeigt, dass Magrittes Nachleben kein Stil ist. Es ist eine Reihe von Erlaubnissen: das Gewöhnliche instabil werden zu lassen, Maßstab Bedeutung zu verleihen, einem Bild zu erlauben, seiner Bildunterschrift zu widersprechen, und den zentralen Mechanismus unerklärt zu lassen."
+              "content": "<i>Dies ist immer noch keine Pfeife</i> gelingt, wenn es Einfluss als ein Arbeitsproblem behandelt wird, anstatt ein Nachahmungsspiel zu sein. Mit mehr als vierzig zeitgenössischen Künstlern erzeugt die Ausstellung zwangsläufig ungleichmäßige Abstammungslinien. Einige Werke liegen nahe an Magrittes Vokabular; andere erfordern die kuratorische Prämisse, um die Beziehung sichtbar zu machen. Aber diese Ungleichmäßigkeit ist produktiv. Sie zeigt, dass Magrittes Nachleben kein Stil ist. Es ist eine Reihe von Erlaubnissen: das Gewöhnliche instabil werden zu lassen, Maßstab Bedeutung zu verleihen, einem Bild zu erlauben, seiner Beschriftung zu widersprechen, und den zentralen Mechanismus unerklärt zu lassen."
             },
             {
               "type": "text",
-              "content": "Die Ausstellung ist daher am nützlichsten nicht als Feier eines kanonischen Surrealisten, sondern als Handbuch für das Betrachten von Bildern jetzt. Die Pfeife ist immer noch keine Pfeife. Die dringendere Entdeckung ist, dass das Foto kein Beweis sein muss, das Etikett kein Wissen, und das Vertraute die am wenigsten vertrauenswürdige Kategorie von allen sein könnte."
+              "content": "Die Ausstellung ist daher am nützlichsten nicht als Feier eines kanonischen Surrealisten, sondern als Handbuch für das Betrachten von Bildern jetzt. Die Pfeife ist immer noch keine Pfeife. Die dringendere Entdeckung ist, dass das Foto möglicherweise kein Beweis ist, das Etikett kein Wissen, und das Vertraute die am wenigsten vertrauenswürdige Kategorie von allen sein könnte."
             },
             {
               "type": "note",
-              "content": "<i>Dies ist immer noch keine Pfeife: Das Jenseits von Magritte</i> ist bei Gagosian, 20 Grosvenor Hill, London W1K 3QD, vom 24. September bis 12. Dezember 2026. Dienstag–Samstag, 10 Uhr–18 Uhr. Kuratiert von Jasper Sharp und Bernard Lagrange in Zusammenarbeit mit der Fondation Magritte. Dieser Artikel wurde aus den Ausstellungsunterlagen und offiziellen Installationsfotografien erstellt; er beansprucht keinen persönlichen Besuch. Alle Kunstwerke und Fotografien werden für redaktionelle Zwecke mit den von Gagosian bereitgestellten Credits reproduziert."
+              "content": "<i>Dies ist immer noch keine Pfeife: Das Jenseits von Magritte</i> ist bei Gagosian, 20 Grosvenor Hill, London W1K 3QD, vom 24. September bis 12. Dezember 2026. Dienstag–Samstag, 10 Uhr–18 Uhr. Kuratiert von Jasper Sharp und Bernard Lagrange in Zusammenarbeit mit der Fondation Magritte. Dieser Artikel wurde aus den Ausstellungsunterlagen und offiziellen Installationsfotografien vorbereitet; er beansprucht keinen persönlichen Besuch. Alle Kunstwerke und Fotografien werden für redaktionelle Überprüfung reproduziert, mit den von Gagosian bereitgestellten Credits."
             },
             {
               "type": "link",
@@ -44993,7 +44751,9 @@
               "content": "Alex Da Corte über René Magritte — Gagosian Quarterly",
               "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
             }
-          ]
+          ],
+          "publishAt": "2026-09-29T03:00:00.000Z",
+          "publishedAt": "2026-09-29T03:00:00.000Z"
         }
       ],
       "reviews": [
