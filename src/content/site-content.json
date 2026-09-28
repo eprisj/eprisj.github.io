@@ -61628,6 +61628,322 @@
               "url": "https://www.davidzwirner.com/exhibitions/2024/emma-mcintyre-if-not-winter"
             }
           ]
+        },
+        {
+          "id": 56,
+          "draft": false,
+          "title": "El Edificio Lleva Sus Fuerzas: Dentro de la Estructura Radical de Powerhouse Parramatta",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "2 de oct de 2026",
+          "publishAt": "2026-10-02T09:00:00.000Z",
+          "publishedAt": "2026-10-02T09:00:00.000Z",
+          "excerpt": "Powerhouse Parramatta coloca una retícula de acero de tres capas fuera del museo para que sus vastas salas puedan permanecer casi imposible libres—un edificio en el que estructura, espectáculo y promesa cívica se convierten en el mismo argumento.",
+          "category": "Arquitectura",
+          "subcategory": "Arquitectura Contemporánea",
+          "tags": [
+            "Powerhouse Parramatta",
+            "Moreau Kusunoki",
+            "Genton",
+            "Arup",
+            "arquitectura de museos",
+            "ingeniería estructural"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-aerial.jpg",
+          "previewToken": "c6592e2f829aae192d340412",
+          "updatedAt": "2026-09-28T20:34:05.032Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "La mayoría de los edificios ocultan el trabajo que los mantiene en pie. Las columnas desaparecen en las paredes; las cerchas se retiran por encima de los techos; los sistemas mecánicos se ordenan en zonas que el público nunca ve. Powerhouse Parramatta invierte esa etiqueta. Su entramado de acero blanco envuelve el museo como un diagrama científico ampliado, convirtiendo carga, vano y resistencia en lo primero que la ciudad encuentra."
+            },
+            {
+              "type": "text",
+              "content": "Diseñado por Moreau Kusunoki con Genton, y elaborado en más de veinte disciplinas por Arup, la nueva institución en Western Sydney está programada para abrirse el 7 de noviembre de 2026. Antes de que un solo objeto sea interpretado en su interior, el edificio ya ha hecho una afirmación audaz: la ingeniería no es la sirvienta muda de la arquitectura. Puede ser el lenguaje público de la arquitectura."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-iwan-baan.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Powerhouse Parramatta en construcción, septiembre de 2025. Fotografía de Iwan Baan. Cortesía de Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "I · Un museo construido a partir de demandas incompatibles",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El resumen solicitó siete espacios de presentación enormes, algunos capaces de albergar máquinas y objetos que las galerías ordinarias no pueden admitir. También solicitó apertura a la ciudad, un terreno público generoso, vistas hacia el río Parramatta, adaptabilidad futura y la disciplina ambiental esperada de un gran proyecto público. Cada ambición presiona a las otras."
+            },
+            {
+              "type": "text",
+              "content": "Un gran vano quiere profundidad y masa. Un borde transparente quiere esbeltez. La conservación del museo quiere interiores sellados y controlados; la vida cívica quiere porosidad. Un sitio adyacente a una inundación exige resistencia, mientras que la institución promete intimidad y facilidad. Powerhouse Parramatta es convincente porque no suaviza estas contradicciones en una caja neutral. Permite que su negociación determine la forma."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-frame-construction.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El marco principal durante la construcción. La estructura de acero soporta los volúmenes de la galería mientras preserva interiores despejados inusualmente grandes. Cortesía Genton."
+            },
+            {
+              "type": "header",
+              "content": "II · El exoesqueleto no es un adorno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La fachada diagonal puede confundirse con un patrón gráfico aplicado después del hecho. Estructuralmente, es lo opuesto. Desarrollado a partir del concepto de competencia con el ingeniero Jun Sato y avanzado por Arup, el sistema “lattice³” es un exoesqueleto de tres capas: grandes disposiciones en V, X y N gestionan las fuerzas a escala del edificio, mientras que cuerdas y diagonales más finas trabajan como columnas entrelazadas."
+            },
+            {
+              "type": "text",
+              "content": "Esta jerarquía importa. Un marco convencional repite columnas a lo largo del plano y pide que las exposiciones se adapten a su alrededor. Aquí, la estructura migra hacia el perímetro para que el interior pueda volverse radicalmente disponible. La imagen de libertad en el interior se compra con una disciplina excepcionalmente específica en el exterior."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-exoskeleton-prototype.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Prototipo de exoesqueleto a escala real. La irregularidad aparente está gobernada por caminos de fuerza en lugar de una cuadrícula decorativa. Cortesía Genton."
+            },
+            {
+              "type": "header",
+              "content": "III · La libertad tiene una forma",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Los arquitectos a menudo describen el espacio flexible como si la flexibilidad significara ausencia: menos paredes, menos columnas, menos decisiones. Powerhouse Parramatta revela el costo oculto de esa palabra. Para hacer que una habitación pueda recibir exposiciones cambiantes, actuaciones y objetos excepcionalmente grandes, el edificio debe tomar decisiones difíciles en otros lugares—sobre transferencia, refuerzo, tolerancias, acceso y la ruta de cada servicio."
+            },
+            {
+              "type": "text",
+              "content": "El volumen de presentación más grande es libre de columnas y comparable, según Arup, a quince piscinas olímpicas en volumen. Su elevación norte puede abrirse hacia el río a través de una inmensa puerta mecánica elevadora. La habitación, por lo tanto, funciona menos como una galería convencional que como una pieza de maquinaria cívica: el cerramiento puede convertirse en abertura, y un interior controlado puede dirigirse momentáneamente a la ciudad."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-presentation-space-one.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Espacio de Presentación 1, concebido como un vasto volumen sin columnas para objetos, instalaciones y eventos que superan la escala de una galería convencional. Cortesía Moreau Kusunoki, Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "IV · La puerta es arquitectura a escala de infraestructura",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Una puerta doméstica separa dos habitaciones. La fachada elevadora en Parramatta separa dos regímenes ambientales y dos ideas de público. Cuando está cerrada, ayuda a mantener las condiciones que un museo requiere. Cuando está abierta, convierte la galería en un escenario frente al río y transforma la envolvente del edificio en un evento."
+            },
+            {
+              "type": "text",
+              "content": "Esta es arquitectura cinética sin la fantasía habitual de que el movimiento por sí solo hace que un edificio esté vivo. El hecho importante no es que una pared enorme pueda moverse, sino que la institución debe decidir cuándo exponerse. La apertura se vuelve operativa, programada y negociada—no una transparencia permanente hecha inofensiva en vidrio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-river-opening.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La apertura de Presentation Space 1 hacia el río. La fachada actúa como un límite ambiental, interfaz de carga y proscenio urbano. Cortesía Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "V · Una pila, no una procesión",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Las siete espacios de presentación se conciben como cajas distintas apiladas en un cuerpo compacto. Esto abandona la secuencia ordenada de las galerías del museo clásico. Los visitantes se desplazan entre volúmenes con diferentes escalas, proporciones y atmósferas; la circulación mira a través de un interior compartido y hacia el ámbito público."
+            },
+            {
+              "type": "text",
+              "content": "El apilamiento es tanto un acto urbano como estructural. Reduce la huella, liberando más del sitio como espacio público, pero intensifica la transferencia de cargas a través del edificio. También produce intervalos entre habitaciones—esas zonas ambiguas que Moreau Kusunoki conecta con la idea japonesa de <i>ma</i>, el espacio activo entre cosas definidas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-discovery-space.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un espacio de descubrimiento y aprendizaje dentro del museo apilado. Cortesía de Moreau Kusunoki, Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "VI · La difícil política de la ligereza",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El jurado del concurso elogió la ligereza de la propuesta. Sin embargo, un edificio de 34,000 metros cuadrados, hecho con grandes cantidades de acero y concreto, no es materialmente ligero. La ligereza arquitectónica aquí es perceptual y organizativa: el suelo se abre, el marco aparece poroso, y habitaciones enormes se levantan lejos de un bosque de soportes."
+            },
+            {
+              "type": "text",
+              "content": "Esa distinción debe seguir siendo visible. La arquitectura contemporánea frecuentemente convierte la intensidad de la ingeniería en una imagen de elegancia sin esfuerzo. En Parramatta el efecto es hermoso, pero la celosía también da una cara al esfuerzo. Su densidad registra que la apertura es construida, calculada y materialmente costosa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-lattice-detail.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Detalle de la celosía de acero a múltiples escalas. Grandes soportes y elementos más finos enrejados hacen legibles diferentes órdenes de fuerza en la misma elevación. Cortesía Genton."
+            },
+            {
+              "type": "header",
+              "content": "VII · Un museo de ciencias que se demuestra a sí mismo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Para un museo dedicado a las artes aplicadas y ciencias, la estructura expuesta lleva una carga pedagógica inusual. El edificio no solo contiene relatos de ingeniería; se ofrece como un argumento sobre cómo puede funcionar la ingeniería. Los caminos de carga se convierten en experiencia espacial. Un visitante puede no calcular el marco, pero puede sentir que las diagonales hacen más que componer una fachada."
+            },
+            {
+              "type": "text",
+              "content": "Esto no es la antigua promesa modernista de total legibilidad. La estructura sigue siendo profundamente compleja, dependiente de modelado digital, tolerancias de fabricación y coordinación de especialistas invisibles para la mayoría de los visitantes. Lo que se vuelve público no es una explicación completa, sino evidencia de que el edificio tiene una lógica inteligible."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Veinte disciplinas en un sobre",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Arup registra más de 240 empleados trabajando en estructuras, civil, inundaciones, incendios, fachadas, acústica, mecánica, eléctrica, seguridad, explosivos, flujo peatonal y otros campos. Esa lista no es trivialidad incidental del proyecto. Describe la verdadera autoría de un edificio contemporáneo de esta complejidad."
+            },
+            {
+              "type": "text",
+              "content": "La imagen romántica de la arquitectura comienza con un boceto singular. Powerhouse Parramatta comienza allí también, pero solo sobrevive mediante coordinación: los conductos deben pasar sin debilitar el marco; las tolerancias de la fachada deben cumplir con el movimiento estructural; la estrategia contra incendios debe acomodar vacíos monumentales; las multitudes y objetos enormes necesitan rutas separadas pero que se intersecten. La complejidad es menos una geometría espectacular que la resolución sostenida de dependencias."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-north-view.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vista norte hacia el río Parramatta. El exoesqueleto debe coordinar estructura, fachada, control ambiental y la identidad pública del museo. Cortesía Moreau Kusunoki, Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "IX · El río no es paisaje",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Las descripciones arquitectónicas a menudo convierten el agua en una vista. En Parramatta, el río también es un sistema dinámico y una fuente de riesgo de inundación. La promesa pública del proyecto—reconectar el centro de la ciudad con el río—por lo tanto, no puede separarse de la ingeniería civil, los niveles del paisaje, la planificación de evacuaciones y el diseño de infraestructura resiliente."
+            },
+            {
+              "type": "text",
+              "content": "Esto produce una tensión importante. El museo se presenta como poroso y frente al río, mientras que las colecciones y sistemas técnicos de la institución dependen de la protección contra la inestabilidad ambiental. La arquitectura debe hacer que el contacto y la defensa coexistan. Su apertura cívica solo es creíble porque capas más duras de gestión de riesgos la respaldan."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-drone.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La huella compacta del museo junto al río Parramatta libera terreno para un nuevo paisaje cívico mientras intensifica las demandas impuestas al edificio. Cortesía Powerhouse studio."
+            },
+            {
+              "type": "header",
+              "content": "X · Sostenibilidad más allá de la insignia",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El proyecto terminado ha recibido una calificación de 6 estrellas Green Star Design y está planificado como un edificio totalmente eléctrico suministrado por energía renovable, con una ambición operativa positiva para el clima. Estos son compromisos significativos para un museo, un tipo de edificio cargado por largas horas, altas cargas de visitantes y un estricto acondicionamiento ambiental."
+            },
+            {
+              "type": "text",
+              "content": "Pero los objetivos operativos son solo una parte de la cuenta ambiental. Un exoesqueleto de acero y vastos volúmenes controlados contienen carbono incorporado sustancial. La pregunta más difícil es si la adaptabilidad prometida por el marco puede extender la vida útil del edificio lo suficiente como para recuperar esa inversión inicial. La flexibilidad se convierte en una reclamación ecológica solo cuando las instituciones realmente la utilizan para evitar demoliciones prematuras y reacondicionamientos."
+            },
+            {
+              "type": "header",
+              "content": "XI · La institución y la ciudad",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Powerhouse Parramatta se describe como una plataforma cultural para Western Sydney, una región históricamente desatendida por la distribución metropolitana de instituciones principales. La arquitectura responde a través de escala y visibilidad: esto no es un satélite ni un anexo local modesto, sino un edificio destinado a alterar el mapa cultural de Sydney."
+            },
+            {
+              "type": "text",
+              "content": "Tales reclamaciones merecen tanto reconocimiento como escrutinio. La inversión monumental puede crear acceso, empleo e identidad cívica, pero un edificio público no se vuelve socialmente generoso solo por transparencia. Sus horarios, venta de entradas, programación, empleo, conexiones de transporte y relaciones con las comunidades locales determinarán si el terreno abierto es verdaderamente público."
+            },
+            {
+              "type": "header",
+              "content": "XII · El riesgo del icono",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La celosía le da a Powerhouse Parramatta una imagen inmediatamente reconocible, y el reconocimiento es una moneda poderosa para un nuevo museo. El peligro es que la honestidad estructural se convierta en marca: un sistema complejo se convierte en un logotipo, fotografiado desde los mismos ángulos hasta que la institución y su ciudad desaparecen detrás de diagonales blancas."
+            },
+            {
+              "type": "text",
+              "content": "La mejor defensa del edificio contra ese destino radica en el uso. Si las habitaciones enormes aceptan programas desordenados, si la apertura del río altera cómo los eventos encuentran a la ciudad, y si los espacios públicos permanecen hospitalarios sin requerir consumo, el exoesqueleto será más que un icono. Será el aparato que permita el cambio institucional."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/powerhouse-parramatta-aerial.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Powerhouse Parramatta como figura urbana: una pila compacta de salas culturales, envuelta en estructura y situada dentro de un paisaje fluvial. Cortesía de Moreau Kusunoki, Genton y Powerhouse Parramatta."
+            },
+            {
+              "type": "header",
+              "content": "XIII · Un edificio que explica su precio",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La arquitectura pública siempre se le pide que se justifique dos veces: primero a través de lo que proporciona, y luego a través de lo que simboliza visiblemente. Powerhouse Parramatta hace que su gasto sea legible como capacidad. El tramo, la pared de apertura, los volúmenes suspendidos y el suelo público no son acabados aplicados a un contenedor estándar. Son cosas difíciles que el edificio puede hacer."
+            },
+            {
+              "type": "text",
+              "content": "Eso no resuelve todos los debates sobre costo, sitio o prioridades institucionales. La arquitectura no puede responder preguntas políticas con virtuosismo en ingeniería. Pero puede evitar que la complejidad se convierta en mera opacidad. Aquí, parte de la respuesta está afuera, a la vista, soportando las cargas."
+            },
+            {
+              "type": "quote",
+              "content": "La libertad del edificio no es la ausencia de estructura. Es el resultado de mover la estructura al borde, multiplicando su inteligencia y permitiendo que el público vea la oferta."
+            },
+            {
+              "type": "header",
+              "content": "XIV · Veredicto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Powerhouse Parramatta pertenece a una línea de edificios—desde Centre Pompidou en adelante—que convierten los sistemas técnicos en teatro cívico. Su contribución es más sutil que una simple exposición. La estructura de celosía no muestra cada tubería y conducto. Concentrar un vasto campo de coordinación en un solo lenguaje estructural capaz de parecer íntimo en detalle y monumental en el horizonte."
+            },
+            {
+              "type": "text",
+              "content": "El resultado es arquitectura contemporánea en su forma más ambiciosa y vulnerable: técnicamente exacta, simbólica institucionalmente, responsable ambientalmente, cargada políticamente y dependiente del uso futuro para cumplir sus promesas. Cuando el museo abra, la pregunta decisiva no será si el exoesqueleto fotografíe bien. Será si toda esa fuerza visible ha creado espacio para formas de vida pública que los arquitectos no pudieron predecir."
+            },
+            {
+              "type": "note",
+              "content": "Powerhouse Parramatta está programado para abrir el 7 de noviembre de 2026. Diseñado por Moreau Kusunoki con Genton; ingeniería multidisciplinaria por Arup, con el exoesqueleto en etapa de competencia desarrollado con Jun Sato Structural Engineers. Este artículo fue preparado a partir de fuentes oficiales del proyecto, arquitecto y ingeniería y no reclama una visita en persona. Las imágenes se reproducen para revisión editorial con créditos suministrados por Genton y el equipo del proyecto."
+            },
+            {
+              "type": "link",
+              "content": "Powerhouse Parramatta — Moreau Kusunoki",
+              "url": "https://moreaukusunoki.com/project/powerhouse-precinct-at-parramatta/"
+            },
+            {
+              "type": "link",
+              "content": "Powerhouse Parramatta — Genton",
+              "url": "https://www.genton.com.au/projects/powerhouse-parramatta/"
+            },
+            {
+              "type": "link",
+              "content": "Powerhouse Parramatta — Infrastructure NSW",
+              "url": "https://www.infrastructure.nsw.gov.au/projects-nsw/completed/powerhouse-parramatta/"
+            },
+            {
+              "type": "link",
+              "content": "Revisión del Año de Ingeniería Estructural 2025 — Arup",
+              "url": "https://www.arup.com/globalassets/downloads/services-and-tools/structural-engineering/arup-structural-engineering-year-in-review-2025.pdf"
+            }
+          ]
         }
       ],
       "reviews": [
