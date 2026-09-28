@@ -12237,9 +12237,9 @@
         "contemporary art"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
       "previewToken": "af164326133e44c0ffbec996",
-      "updatedAt": "2026-09-28T19:39:34.308Z",
+      "updatedAt": "2026-09-28T20:10:38.218Z",
       "content": [
         {
           "type": "text",
@@ -12455,9 +12455,9 @@
         "Harlem"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/roy-decarava-jackie-at-the-barricade.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/roy-decarava-woman-children-intersection.jpg",
       "previewToken": "21d272e94afde3b68e699d62",
-      "updatedAt": "2026-09-28T19:42:06.584Z",
+      "updatedAt": "2026-09-28T20:10:38.219Z",
       "content": [
         {
           "type": "text",
@@ -12669,9 +12669,9 @@
         "Pace Gallery"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-2026.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/torkwase-dyson-a-blue-tongue-a-blue-song.jpg",
       "previewToken": "35d56447d2dc7e1b4d1ab0e5",
-      "updatedAt": "2026-09-28T20:00:19.756Z",
+      "updatedAt": "2026-09-28T20:10:38.219Z",
       "content": [
         {
           "type": "text",
@@ -12953,9 +12953,9 @@
         "David Zwirner"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/louis-fratino-jasmine-2026.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/louis-fratino-coffee-2026.jpg",
       "previewToken": "5ae38cfd01839052f7725203",
-      "updatedAt": "2026-09-28T20:05:31.107Z",
+      "updatedAt": "2026-09-28T20:10:38.219Z",
       "content": [
         {
           "type": "text",
@@ -46001,6 +46001,290 @@
               "type": "link",
               "content": "Pressemitteilung — David Zwirner",
               "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw/press-release"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "draft": false,
+          "title": "Der Ozean ist nicht Blau: Torkwase Dyson und die Politik der Abstraktion",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "30. Sep. 2026",
+          "publishAt": "2026-09-30T03:00:00.000Z",
+          "publishedAt": "2026-09-30T03:00:00.000Z",
+          "excerpt": "In Seeing in Blue fragt Torkwase Dyson, ob die Malerei das Meer als Physik, Erinnerung, Extraktion und Freiheit zugleich halten kann—und ob Abstraktion die Klimakrise spürbar machen kann, bevor sie ein Bild wird.",
+          "category": "Kunst",
+          "subcategory": "Zeitgenössische Malerei",
+          "tags": [
+            "Torkwase Dyson",
+            "zeitgenössische malerei",
+            "abstraktion",
+            "klimagerechtigkeit",
+            "schwarze geographie",
+            "Pace Gallery"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-2026.jpg",
+          "previewToken": "35d56447d2dc7e1b4d1ab0e5",
+          "updatedAt": "2026-09-28T20:10:51.941Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Der Ozean ist nicht blau. Wasser hat keine eigene Farbe; es leiht sich, streut, absorbiert und reflektiert Licht. Blau ist daher keine Eigenschaft, sondern ein Ereignis—eine Beziehung zwischen Tiefe, Entfernung, Materie und einem Auge. Dieser instabile Fakt ist der Anfang von Torkwase Dyson’s neuen Gemälden, und er verhindert, dass sie sich in die Kategorie einordnen, die ihre Schönheit zunächst nahelegt."
+            },
+            {
+              "type": "text",
+              "content": "Bei Pace Gallery in New York präsentiert <i>Seeing in Blue</i> Gemälde, die von mehr als einem Jahrzehnt Schwimmen und Tiefseetauchen beeinflusst sind. Ihre dunklen aquatischen Felder werden durch Bögen, Schnüre, Nähte, Messingstangen und kleine Öffnungen durchkreuzt. Sie erscheinen zugleich als Karten, Instrumente, Nachthimmel und Fragmente von Architektur. Doch sie illustrieren keines dieser Dinge. Dyson’s Frage ist anspruchsvoller: Kann die Malerei das physische Wissen über Wasser—und die darin enthaltenen politischen Geschichten—tragen, ohne beides auf ein Bild zu reduzieren?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Daydreaming, 2026, Acryl, Tinte, Graphit, Bronze und Baumwollschnur auf Leinwand, 48 × 48 × 5 Zoll. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "I · Gegen das Klima-Bild",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Contemporary Kultur hat eine stabile visuelle Sprache für ökologische Krise entwickelt. Luftaufnahmen zeigen brennende Wälder, zurückweichendes Eis, vergiftete Flüsse und Küstenlinien, gesehen von Satelliten. Diese Bilder sind notwendig als Beweis, aber ihre Wiederholung erzeugt ein Paradoxon: Je vollständiger die Katastrophe abgebildet wird, desto leichter wird sie zur Kulisse. Der Betrachter ist sicher außerhalb des Ereignisses positioniert, blickt nach unten."
+            },
+            {
+              "type": "text",
+              "content": "Dyson entfernt diese Distanz. Ihre Gemälde zeigen keinen Ozean; sie fragen, was es bedeutet, einen Körper darin zu haben. Druck ersetzt Panorama. Auftrieb ersetzt Horizont. Atem wird zu einem Maß für die Zeit. Navigation ist nicht mehr eine Linie, die über eine Karte gezogen wird, sondern die kontinuierliche Verhandlung zwischen Dichte, Dunkelheit und Bewegung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-to-plunge-to-see.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, To Plunge, To See, To Never, To Time, To Shadow, To Remember, 2026, acryl, tinten, graphit, Messing und Baumwollseil auf Leinwand. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "II · Physik und Erinnerung",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson beschreibt die Arbeit mit Wasser als Bewegung „zwischen Physik und Erinnerung.“ Der Ausdruck widersteht der Trennung zwischen objektiver Umwelt und subjektiver Erfahrung. Wasser gehorcht Druck, Schwerkraft und Temperatur; es speichert auch Geschichten von Transport, Extraktion, Arbeit, Migration und Tod. Es zu betreten bedeutet, beiden Systemen gleichzeitig zu begegnen."
+            },
+            {
+              "type": "text",
+              "content": "Ihr Studio-Prozess wiederholt diese doppelte Bewegung. Sie beginnt mit Leinwänden, die auf dem Boden liegen, und lässt Verdünnungen von Farbe sich ausbreiten, ansammeln und der vollständigen Kontrolle entkommen. Dann begegnet sie dieser Unbestimmtheit mit gemessener geometrischer Konstruktion. Fluss wird von Struktur gefolgt; Zufall von Entscheidung. Das Gemälde wird zu einer Verhandlung zwischen dem, was Materie tut, und dem, was ein Körper von ihr verlangt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-to-plunge-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Seitenansicht von To Plunge, To See, To Never, To Time, To Shadow, To Remember, zeigt die konstruierte Tiefe des Gemäldes und das Messing-Element. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "III · Abstraktion ist das Thema",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson hat eine wesentliche Unterscheidung getroffen: Sie beschreibt sich nicht einfach als abstrakte Künstlerin; sie hat die Abstraktion als Thema gewählt. Der Unterschied ist wichtig. Abstraktion ist kein Stil, der nach der Entscheidung über den politischen Inhalt angewendet wird. Sie ist selbst eine politische Operation: der Prozess, bei dem Körper, Territorien und Ressourcen in Kategorien, Eigentumsgrenzen, Statistiken und Kontrollzonen umgewandelt werden."
+            },
+            {
+              "type": "text",
+              "content": "Eine Karte ist eine Abstraktion. Ebenso eine Schifffahrtsroute, eine Hochwasser-Grenze, ein Gefängnisplan, eine Urkunde, ein Versicherungsbezirk und das Finanzinstrument, das die Gewinnung rentabel macht, bevor etwas aus dem Boden entfernt wurde. Abstraktion kann gelebte Spezifität auslöschen. Sie kann auch einer Person erlauben, Raum anders zu imaginieren. Dyson arbeitet innerhalb dieses Konflikts, anstatt vorzugeben, dass Abstraktion unschuldig ist."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-hand-to-hand-one.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Hand to Hand, Heart to Heart (Unknown of Us 1), 2026, acryl, tinten, graphit, messing, bronze und Baumwollseil auf Leinwand. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "IV · Schwarze Geographie ist kein Thema",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Für Dyson kann Ökologie nicht von Black räumlicher Geschichte getrennt werden. Der Atlantik ist ein lebendiges System und eine historische Struktur: ein Medium erzwungener Bewegung, Handel, kolonialer Ausbeutung und Diaspora. Land ist niemals nur Landschaft, wenn Plantagen, Eigentum und Umweltbelastung bestimmt haben, welche Körper es sicher besetzen dürfen."
+            },
+            {
+              "type": "text",
+              "content": "Deshalb ist „Black Geographie“ in ihrer Arbeit keine Ikonographie, die in einem Bild verortet wird. Es ist eine Denkweise über Bewegung unter ungleichen Bedingungen. Ihre Formen ziehen aus Geschichten der Selbstbefreiung und improvisierten Unterkunft: wie man sich versteckt, dreht, passt, atmet, baut und unbestimmt bleibt in Systemen, die darauf ausgelegt sind, einen Körper lesbar und kontrollierbar zu machen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-hand-to-hand-three.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Hand to Hand, Heart to Heart (Unknown of Us 3), 2026, acryl, tinten, graphit, Messing, Bronze und Baumwollseil auf Leinwand. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "V · Geometrie nach Freiheit",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dyson nennt Teile ihres formalen Vokabulars “hypershapes.” Kurven, Keile, Öffnungen und komprimierte Räume sind aus Befreiungsstrategien destilliert, nicht aus Geometrie als autonome Sprache. Ihre Quellen umfassen die räumliche Intelligenz, durch die versklavte und flüchtende Menschen überlebten: den Rumpf, den Dachboden, die versteckte Route, die enge Öffnung und die Architektur, die gegen ihren beabsichtigten Zweck nutzbar gemacht wurde."
+            },
+            {
+              "type": "text",
+              "content": "Die Formen dekodieren nicht in eine einzige Geschichte. Diese Ablehnung ist entscheidend. Ein Symbol wird beherrschbar, sobald seine Bedeutung festgelegt ist. Dysons Geometrien bleiben für Bewegung zugänglich; sie können als Umfassung und Ausgang, Druck und Schutz, Struktur und Durchbruch gelesen werden. Freiheit erscheint nicht als unbegrenzter offener Raum, sondern als die Fähigkeit, innerhalb von Beschränkungen zu komponieren."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-the-distance-inside-us.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, The Distance Inside Us, 2026, Acryl, Tinte, Graphit, Messing und Baumwollseil auf Leinwand. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "VI · Ein Gemälde mit einer Kante",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Fotografiert frontal, können diese Werke zurückhaltend und fast immateriell wirken. Aus schrägem Blickwinkel offenbaren sie ihre Objektivität. Baumwollfaden steht vom Oberfläche ab; Messing und Bronze unterbrechen das bemalte Feld; Leinwände besitzen substanziellen Tiefenraum; runde und unregelmäßige Stützen lehnen den neutralen Rechteck ab."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-daydreaming-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Schrägansicht von Daydreaming, 2026. Die Stangen, Faden und tiefe Unterstützung verwandeln das Gemälde in einen räumlichen Vorschlag. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "Die Seitenansicht ändert das Argument. Eine Linie wird nicht nur gezogen; sie wird über den Raum gespannt. Eine Stange ist nicht nur eine Farbe; sie hat Gewicht, Leitfähigkeit und Widerstand. Das Werk oszilliert zwischen Diagramm und Konstruktion. Es stellt nicht so sehr Architektur dar, sondern lässt den Betrachter architektonisch auf das Gemälde treffen—durch Abstand, Position und körperliche Skala."
+            },
+            {
+              "type": "header",
+              "content": "VII · Blau ohne Unschuld",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Dysons frühere Gemälde näherten sich der Schwärze oft durch geschichtete Mischungen anstelle eines einzelnen schwarzen Pigments. In <i>Seeing in Blue</i> tritt die aquatische Farbe in den Vordergrund, aber das Blau ist ebenso unrein. Titanweiß kann es leuchtend erscheinen lassen; Grün flackert darunter; rostrote Passagen deuten auf Oxidation, Sediment oder eine Atmosphäre hin, die das Gleichgewicht verliert."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-a-blue-tongue-a-blue-song.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, A Blue Tongue, A Blue Song, 2026, acryl, Tinte, Graphit, Messing, Bronze und Baumwollseil auf Leinwand, 42 Zoll Durchmesser. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "Das Blau verweigert daher das kulturelle Versprechen, das ihm üblicherweise zugeschrieben wird: Gelassenheit, Unendlichkeit, Flucht. Dyson lehnt das ab, was sie das nur \"Urlaubs-Schöne\" nennt. Ihre ozeanische Schönheit ist prähistorisch, verletzlich und erschreckend. Sie umfasst künstliche Riffe und lebende Ökologien, aber auch Meeresbodenbohrungen, Militärposten, akustische Überwachung und die Ruinen der gebauten Welt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-blue-tongue-side.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Schrägansicht von A Blue Tongue, A Blue Song, die die elliptische Tiefe des Werks und den Metallrand zeigt. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Schönheit als Methode des Bleibens",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Es besteht die Versuchung, Schönheit als politisch verdächtig zu behandeln, wann immer das Thema Katastrophe ist. Die Angst ist verständlich: Schönheit kann Schaden ästhetisieren und Gewalt konsumierbar machen. Dyson schlägt eine andere Funktion vor. Schönheit kann Aufmerksamkeit halten, wo Spektakel sie erschöpft. Sie kann einen Betrachter lange genug in Komplexität halten, damit Beziehungen entstehen."
+            },
+            {
+              "type": "text",
+              "content": "Ihre Oberflächen belohnen keinen schnellen Blick. Nah-black Passagen erfordern, dass sich das Auge anpasst; feine Fäden und Graphitmarkierungen verschwinden und kehren zurück; metallische Unterbrechungen verändern sich mit der Position des Betrachters. Das Betrachten wird langsam, physisch und unvollständig. Diese Unvollständigkeit ist nicht ausweichend. Es ist eine Probe für das Treffen mit einer Ökologie, die von einem einzigen Blickpunkt aus nicht gemeistert werden kann."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-clear-sacred-focus.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Clear Sacred Focus, 2026, acryl, tinten, graphit, messing, bronze und Baumwollfaden auf Leinwand, 42 Zoll Durchmesser. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "header",
+              "content": "IX · Das Maß der Intimität",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Vieles von Dysons Praxis hat sich über monumentale Malerei, Skulptur, Architektur und kollektives Studium bewegt. Diese neuen Werke komprimieren diese Forschung in einen intimeren Rahmen. Ihre Größe macht das Thema nicht kleiner. Sie verändert die Beziehung vom öffentlichen Appell zur Nähe."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/torkwase-dyson-blue-worlding-for-love.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Torkwase Dyson, Blue Worlding for Love, 2026, acryl, tinten, graphit, Messing und Baumwollseil auf Leinwand. Courtesy the artist and Pace Gallery."
+            },
+            {
+              "type": "text",
+              "content": "<i>Blue Worlding for Love</i> stößt über die Wand als Unterstützung hinaus. Seine geschichteten Ebenen und Messingglieder ähneln einem kompakten Schutz, Instrument oder unvollständigem Modell. Der Titel ist bedeutend: „worlding“ bezeichnet die aktive Konstruktion von Beziehungen, nicht die passive Besetzung einer gegebenen Welt. Liebe tritt nicht als Sentiment auf, sondern als räumliche Praxis—die Arbeit, Bedingungen zu schaffen, unter denen ein anderer Körper leben kann."
+            },
+            {
+              "type": "header",
+              "content": "X · Was die Gemälde nicht können",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Kein abstraktes Gemälde kann Klimawissenschaft erklären, ein Ökosystem reparieren oder Umweltgefahren umverteilen. Dysons theoretischer Wortschatz ist so dicht, dass die Werke ohne Vorwissen unzugänglich erscheinen können. Der galeriäre Kontext fügt eine weitere Widersprüchlichkeit hinzu: Objekte, die sich mit Befreiung und ungleichem Raum beschäftigen, zirkulieren durch eine der exklusivsten räumlichen Ökonomien in der Kultur."
+            },
+            {
+              "type": "text",
+              "content": "Aber zu fordern, dass ein Gemälde die Krise löst, die es anspricht, würde die instrumentelle Logik wiederholen, der das Werk widerspricht. Seine Funktion ist anders. Dyson macht die Gewohnheiten sichtbar, durch die Wissen organisiert wird: die Vorliebe für Ansichten von oben, für klare Grenzen, für Katastrophen, die als Bild dargestellt werden, das anderswo geschieht. Ihre Gemälde verschieben das Wissen zurück zum Körper – nicht als reines Gefühl, sondern als ein Wahrnehmungsinstrument, das in die Geschichte verwickelt ist."
+            },
+            {
+              "type": "quote",
+              "content": "Dyson malt den Ozean nicht als einen Ort zum Anschauen. Sie malt, was mit Wissen passiert, wenn der Körper bereits darin ist."
+            },
+            {
+              "type": "header",
+              "content": "XI · Urteil",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Sehen in Blau</i> gelingt, weil es sich weigert, ökologische Malerei durch vertraute Zeichen der Natur lesbar zu machen. Es gibt keine Wellen zu bewundern, keinen Horizont, in den man sich verlieren kann, und keine zerstörte Küstenlinie, um zu bestätigen, was der Betrachter bereits weiß. Stattdessen wird Wasser zu einer Methode, um Malerei neu zu denken: flüssig und konstruiert, materialistisch und mnemonisch, schön und kompromittiert."
+            },
+            {
+              "type": "text",
+              "content": "Der tiefste Vorschlag ist, dass Abstraktion sich nicht von der Realität entfernt. Es zeigt, wie die Realität bereits abstrahiert wurde—in Territorium, Infrastruktur, Wert und Risiko—und fragt, ob diese Systeme neu zusammengesetzt werden können. In Dyson’s Händen kann eine Linie eine Route, eine Barriere, ein Atemzug oder eine Beziehung sein. Blau kann Licht und Tiefe sein, aber niemals Unschuld."
+            },
+            {
+              "type": "note",
+              "content": "Torkwase Dyson: Seeing in Blue ist bei Pace Gallery, 540 West 25th Street, New York, vom 11. September bis 24. Oktober 2026. Die Ausstellung zeigt neue Gemälde, die von Dyson’s Erfahrungen als Schwimmer und Tiefseetaucher inspiriert sind. Dieser Artikel wurde aus den Schriften, Interviews und offiziellen Ausstellungsunterlagen der Künstlerin vorbereitet; er beansprucht keinen persönlichen Besuch. Bilder werden für redaktionelle Überprüfung mit Credits von Pace Gallery reproduziert."
+            },
+            {
+              "type": "link",
+              "content": "Sehen in Blau — Pace Gallery",
+              "url": "https://www.pacegallery.com/exhibitions/torkwase-dyson-seeing-in-blue/"
+            },
+            {
+              "type": "link",
+              "content": "Vogel und Lava: Künstlerforschungsnotizen — Torkwase Dyson",
+              "url": "https://www.torkwasedyson.com/bird-and-lava"
+            },
+            {
+              "type": "link",
+              "content": "Torkwase Dyson im Gespräch mit Hamza Walker — BOMB",
+              "url": "https://bombmagazine.org/articles/2024/12/16/torkwase-dyson-by-hamza-walker/"
+            },
+            {
+              "type": "link",
+              "content": "Torkwase Dyson Interview — The Brooklyn Rail",
+              "url": "https://brooklynrail.org/2020/09/art/TORKWASE-DYSON-with-Robert-Shane/"
             }
           ]
         }
