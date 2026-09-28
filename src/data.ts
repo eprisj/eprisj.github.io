@@ -1,4 +1,5 @@
 import rawContent from './content/site-content.json';
+import { withLocalizedTaxonomy } from './taxonomy';
 
 export const DEFAULT_LANGUAGE = 'EN';
 
@@ -1215,7 +1216,8 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => matchesPreviewToken(e) || !isPlaceholderEntity(e));
 
-  const articles = mergeLocalizedArray(bucket.articles, liveBase(c.articles));
+  // Rubrics come from one editorial dictionary keyed by the English rubric (see taxonomy.ts).
+  const articles = withLocalizedTaxonomy(mergeLocalizedArray(bucket.articles, liveBase(c.articles)), c.articles, lang);
   // Reviews hit the same recycled-id trap the Gallery did: every locale still
   // carries a translation of a deleted restaurant review on id 1, so readers of
   // UA/RU/DE opened "Симфонія смаків / Ресторан «Олеа», Лімасол" sitting on top
@@ -1223,7 +1225,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // entry more than the root. Both signals are exactly what mergeLocalizedItems
   // screens for, so reviews get the same guard: an untrustworthy bucket falls
   // back to the base language instead of mixing two different reviews together.
-  const reviews = mergeLocalizedItems(bucket.reviews, liveBase(c.reviews));
+  const reviews = withLocalizedTaxonomy(mergeLocalizedItems(bucket.reviews, liveBase(c.reviews)), c.reviews, lang);
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
