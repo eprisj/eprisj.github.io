@@ -83605,6 +83605,218 @@
           ],
           "publishAt": "2026-09-29T03:00:00.000Z",
           "publishedAt": "2026-09-29T03:00:00.000Z"
+        },
+        {
+          "id": 52,
+          "draft": true,
+          "title": "Où l'obscurité commence à écouter : Roy DeCarava à Los Angeles",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "30 sept. 2026",
+          "excerpt": "Chez David Zwirner Los Angeles, plus de 130 photographies de Roy DeCarava le son que j'ai vu transformer le jazz, le travail et la vie de rue en une partition faite d'ombre, d'intervalle et d'attention.",
+          "category": "Art",
+          "subcategory": "Photographie",
+          "tags": [
+            "Roy DeCarava",
+            "David Zwirner",
+            "Los Angeles",
+            "photographie",
+            "jazz",
+            "Harlem"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/roy-decarava-jackie-at-the-barricade.jpg",
+          "previewToken": "21d272e94afde3b68e699d62",
+          "updatedAt": "2026-09-28T19:56:22.966Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Certaines photographies décrivent le son en montrant sa source : une trompette levée, une main frappant un tambour, une bouche proche d’un microphone. Roy DeCarava a fait quelque chose de plus difficile. Il a photographié les conditions dans lesquelles le son devient significatif — la pause avant une phrase, le corps au travail, la densité d’une pièce, la rue qui continue après que la musique s’est arrêtée."
+            },
+            {
+              "type": "text",
+              "content": "Chez David Zwirner Los Angeles, <i>le son que j’ai vu</i> rassemble plus de 130 images d’un projet que DeCarava a développé entre la fin des années 1940 et les années 1960. Curatée par Ebony L. Haynes, c’est la plus grande présentation de cette œuvre depuis sa première exposition au Studio Museum à Harlem en 1983. Une salle d’écoute adjacente, <i>SIDE B : les sons</i>, prolonge l’exposition à travers des disques et des programmes façonnés par la vie musicale de l’artiste."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-jackie-at-the-barricade.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Jackie à la barricade, c. 1956, tirage au gelatin argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "I · Un livre avant une exposition",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>le son que j'ai vu</i> n'a pas commencé comme une commande ou une mission documentaire mais comme un livre d'artiste fait main : une séquence privée d'environ 300 photographies et textes. Cette origine compte. Le projet ne se comporte pas comme un catalogue d'histoire du jazz. Les musiciens apparaissent à côté d'enfants, de travailleurs, d'intersections et de pièces parce que DeCarava composait un environnement vécu plutôt que d'illustrer un genre."
+            },
+            {
+              "type": "text",
+              "content": "Lorsque 125 photographies ont été exposées au Studio Museum à Harlem en 1983, le conservateur C. Daniel Dawson a décrit l'œuvre comme une réflexion sur la vie faite avec le jazz et la photographie comme instruments. La distinction protège les images d'une réduction familière. DeCarava photographiait des musiciens noirs, mais il refusait de les transformer en spectacle. Il photographiait la vie noire, mais il refusait l'exigence que chaque image fonctionne comme une preuve sociale."
+            },
+            {
+              "type": "header",
+              "content": "II · La rue garde le rythme",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-woman-children-intersection.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Femme et enfants à l'intersection, 1952, tirage au gelatin argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Femme et enfants à l'intersection</i> (1952), la ville est divisée par une tranche lumineuse de ciel d'hiver et les murs sombres des bâtiments. Les figures sont petites, pourtant la traversée ne les diminue pas. Leur mouvement active la géométrie. Une photographie qui pourrait être appelée calme contient plusieurs tempos à la fois : le rythme du trafic, le pas prudent à travers la neige, la durée du regard à distance."
+            },
+            {
+              "type": "text",
+              "content": "DeCarava a travaillé avec un appareil photo 35mm tenu à la main, se déplaçant à travers New York sans la cérémonie d’un grand appareil. La mobilité lui donnait de la proximité, mais la proximité n’était jamais une permission d’envahir. Ses images sont intimes parce qu’elles préservent l’intériorité du sujet. Elles n’expliquent pas les gens en soumission."
+            },
+            {
+              "type": "header",
+              "content": "III · L’ombre est information",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L’obscurité de DeCarava est souvent traitée comme un effet signature. Elle est mieux comprise comme une éthique de l’attention. Dans ses tirages, l’ombre ne dissimule pas un manque d’information ; elle modifie la vitesse à laquelle l’information arrive. L’œil doit s’ajuster. Un visage, une main ou une porte s’émergent progressivement, et le spectateur devient conscient du travail de voir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-blue-morocco.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Blue Morocco, 1955, tirage argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Blue Morocco</i> (1955) transforme un intérieur de boîte de nuit en une série de seuils. Des rideaux encadrent une pièce dont les occupants sont visibles mais non dévoilés. La photographie retient juste assez pour rendre l'atmosphère structurelle. L'obscurité devient l'architecture à travers laquelle on entre."
+            },
+            {
+              "type": "header",
+              "content": "IV · Musique en tant que relation",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-percy-heath.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Percy Heath, 1957, tirage argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Le portrait du bassiste Percy Heath se concentre sur un instrument, une main et la présence partielle d'un visage. DeCarava n'a pas besoin de la performance complète. La photographie situe la musique dans le toucher : la pression des doigts contre les cordes, l'intelligence physique à travers laquelle une note est créée."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-art-blakey.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Art Blakey, 1958, tirage au gelatin argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Art Blakey apparaît à une distance plus grande, isolé par la mare de lumière autour de ses drums. Le noir environnant n'est pas vide. Il mesure l'intensité de la concentration. DeCarava a dit qu'il photographiait les musiciens comme des personnes plutôt que comme des musiciens, répondant à l'engagement qu'ils apportaient à la vie à un moment particulier. Le meilleur de ces images rend le travail lui-même visible sans transformer le travail en performance pour la caméra."
+            },
+            {
+              "type": "header",
+              "content": "V · La pause fait partie de la partition",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-ellington-session-break.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Ellington session break, 1954, silver gelatin print. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Ellington session break</i> (1954) regarde vers l'intervalle que la photographie musicale conventionnelle pourrait rejeter. Un porte-manteau occupe le centre ; des figures attendent aux bords ; les lumières du plafond se répètent comme des notes au-dessus d'elles. La pause de la session n'est pas en dehors de la musique. C'est là où la fatigue, la préparation et le temps ordinaire reviennent."
+            },
+            {
+              "type": "text",
+              "content": "Ceci est la correction radicale de DeCarava à la mythologie de la photographie de jazz. Billie Holiday, Miles Davis, John Coltrane et Count Basie apparaissent dans le cadre du projet plus large, mais la célébrité n'organise pas la séquence. Le musicien sur scène et le livreur dans la rue partagent un monde de compétence, de pression, de repos et d'attention."
+            },
+            {
+              "type": "header",
+              "content": "VI · Une politique sans slogans",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-force-new-york.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Force, New York, 1963, tirage au gelatin argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Force, New York</i> (1963) enregistre une protestation à Brooklyn contre la destruction des maisons des résidents pour une extension du Downstate Medical Center. Les corps se pressent dans un cadre où le pouvoir se ressent physiquement—dans les bras, les épaules, le tissu et la compression. DeCarava a plus tard décrit la force plus profonde dans l’image comme le désir des gens d’atteindre la lumière du soleil."
+            },
+            {
+              "type": "text",
+              "content": "La politique de la photographie n’est ni cachée ni transformée en slogan. Son argument provient de la relation : l’État agit sur les corps, et les corps répondent par la volonté collective. DeCarava comprenait que la sérénité pouvait porter le pouvoir sans adoucir le conflit."
+            },
+            {
+              "type": "header",
+              "content": "VII · Danse et durée",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/roy-decarava-dancers-harlem.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roy DeCarava, Danseurs (Harlem), 1956, tirage argentique. Courtesy The Estate of Roy DeCarava and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Danseurs (Harlem)</i> (1956), le mouvement est dispersé à travers un sol sombre. L'image n'est pas un instant décisif unique autant qu'un champ de rythmes. Les figures avancent, tournent et reculent ; la lumière attrape le sol comme un faible pouls. La photographie semble moins un événement figé qu'une durée brièvement rendue visible."
+            },
+            {
+              "type": "text",
+              "content": "Cette qualité explique pourquoi la salle d'écoute de l'exposition est plus qu'un accessoire. La séquence de DeCarava demande à être vécue musicalement : la répétition produit la différence, le silence donne forme au son, et l'écart entre les images fonctionne comme un intervalle. Le spectateur n'identifie pas simplement des sujets. Le spectateur apprend un tempo."
+            },
+            {
+              "type": "quote",
+              "content": "DeCarava ne photographiait pas le jazz comme un événement. Il photographiait le monde qui rendait son intensité possible."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Verdict",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>le son que j'ai vu</i> est important parce qu'il refuse le faux choix entre beauté formelle et signification sociale. Le contrôle tonal de DeCarava est indissociable de la dignité qu'il accorde à ses sujets. Ses ombres demandent de la patience ; ses séquences résistent à l'extraction ; ses photographies donnent à l'attention l'impression d'une forme de responsabilité."
+            },
+            {
+              "type": "text",
+              "content": "Vues à Los Angeles plus de quatre décennies après la première présentation publique du projet, ces images restent obstinément contemporaines. Elles répondent à une culture d'image construite pour la luminosité, la vitesse et la reconnaissance immédiate avec une proposition différente : regardez plus longtemps, acceptez la connaissance partielle, et laissez une photographie conserver le droit d'être silencieuse."
+            },
+            {
+              "type": "note",
+              "content": "Roy DeCarava : le son que j'ai vu, curaté par Ebony L. Haynes, est à David Zwirner, 606 N Western Avenue, Los Angeles, du 19 septembre au 31 octobre 2026. FACE B : les sons sont présentés au 616 N Western Avenue. Cet article a été préparé à partir des matériaux officiels de l'exposition de la galerie et des légendes des images ; il ne prétend pas à une visite en personne. Les images sont reproduites pour revue éditoriale avec crédits fournis par David Zwirner."
+            },
+            {
+              "type": "link",
+              "content": "Page d'exposition — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw"
+            },
+            {
+              "type": "link",
+              "content": "Communiqué de presse — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw/press-release"
+            }
+          ]
         }
       ],
       "reviews": [
