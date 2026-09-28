@@ -13533,20 +13533,20 @@
         },
         {
           "id": 40,
-          "title": "Саграда Фамилия, свод нефа",
-          "subtitle": "Антони Гауди и последователи · Барселона · освящена в 2010",
+          "title": "Sagrada Família, свод нефов",
+          "subtitle": "Antoni Gaudí и последователи · Барселона · освящено в 2010",
           "fig": "PICS 032",
-          "description": "Колонны ветвятся, как деревья, и растворяются в звёздном пологе: готическая конструкция, переосмысленная как лес, которую достраивают и спустя век после первого камня.",
+          "description": "Колонны, ветвящиеся как деревья и растворяющиеся в звездном навесе: готическая структура переосмыслена как лес, все еще завершающаяся век спустя после первого камня.",
           "imageUrl": "https://api.eprisjournal.com/uploads/eadec2ab1bedd2.jpg",
           "picsOfWeek": true,
           "homeCategory": "gothic",
-          "homeTitle": "Саграда Фамилия, свод нефа",
-          "homeSubtitle": "Антони Гауди и последователи · Барселона · освящена в 2010",
-          "homeDescription": "Колонны ветвятся, как деревья, и растворяются в звёздном пологе: готическая конструкция, переосмысленная как лес, которую достраивают и спустя век после первого камня.",
-          "homeCredit": "Photo: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
+          "homeTitle": "Sagrada Família, свод нефов",
+          "homeSubtitle": "Antoni Gaudí и последователи · Барселона · освящено в 2010",
+          "homeDescription": "Колонны, ветвящиеся как деревья и растворяющиеся в звездном навесе: готическая структура переосмыслена как лес, все еще завершающаяся век спустя после первого камня.",
+          "homeCredit": "Фото: Enfo · CC BY-SA 3.0 · Wikimedia Commons",
           "sourceUrl": "https://commons.wikimedia.org/wiki/File:017_Sagrada_Fam%C3%ADlia%2C_interior%2C_volta_i_columnes.jpg",
           "picsId": "PICS-2026-032",
-          "updatedAt": "2026-09-23T15:58:28Z",
+          "updatedAt": "2026-09-28T07:59:23.980Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
         },
         {
@@ -33482,21 +33482,27 @@
         },
         {
           "id": 41,
-          "title": "Großes Theater Harbin, Foyer",
+          "title": "Harbin Grand Theatre, die Lobby",
           "subtitle": "MAD Architects · Harbin · 2015",
           "fig": "PICS 033",
-          "description": "Eschenholzbänder lösen sich wie geschnitzte Draperien von den Wänden, unter einem Glasgitter: die barocke Liebe zur gefalteten Fläche, aus Eis und Feuchtland ringsum gewonnen.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Asche-Holz-Bänder lösen sich von den Wänden wie geschnitzte Vorhänge unter einem Glaskäfig: die barocke Liebe zur gefalteten Oberfläche, aus dem Eis und den Feuchtgebieten um sie herum gezogen.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Großes Theater Harbin, Foyer",
+          "homeTitle": "Harbin Grand Theatre, die Lobby",
           "homeSubtitle": "MAD Architects · Harbin · 2015",
-          "homeDescription": "Eschenholzbänder lösen sich wie geschnitzte Draperien von den Wänden, unter einem Glasgitter: die barocke Liebe zur gefalteten Fläche, aus Eis und Feuchtland ringsum gewonnen.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeDescription": "Asche-Holz-Bänder lösen sich von den Wänden wie geschnitzte Vorhänge unter einem Glaskäfig: die barocke Liebe zur gefalteten Oberfläche, aus dem Eis und den Feuchtgebieten um sie herum gezogen.",
+          "homeCredit": "Foto: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:27.094Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
@@ -43444,21 +43450,27 @@
         },
         {
           "id": 41,
-          "title": "Gran Teatro de Harbin, el vestíbulo",
+          "title": "Harbin Gran Teatro, el vestíbulo",
           "subtitle": "MAD Architects · Harbin · 2015",
           "fig": "PICS 033",
-          "description": "Bandas de fresno se despegan de los muros como paños tallados bajo una retícula de vidrio: el amor barroco por la superficie plegada, sacado del hielo y los humedales que lo rodean.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Bandas de madera de ceniza se despegan de las paredes como cortinas talladas bajo una celosía de cristal: el amor barroco por la superficie plegada, sacada del hielo y los humedales a su alrededor.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Gran Teatro de Harbin, el vestíbulo",
+          "homeTitle": "Harbin Gran Teatro, el vestíbulo",
           "homeSubtitle": "MAD Architects · Harbin · 2015",
-          "homeDescription": "Bandas de fresno se despegan de los muros como paños tallados bajo una retícula de vidrio: el amor barroco por la superficie plegada, sacado del hielo y los humedales que lo rodean.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeDescription": "Bandas de madera de ceniza se despegan de las paredes como cortinas talladas bajo una celosía de cristal: el amor barroco por la superficie plegada, sacada del hielo y los humedales a su alrededor.",
+          "homeCredit": "Foto: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:29.007Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
@@ -53215,21 +53227,27 @@
         },
         {
           "id": 41,
-          "title": "Harbin Büyük Tiyatrosu, fuaye",
+          "title": "Harbin Büyük Tiyatro, giriş",
           "subtitle": "MAD Architects · Harbin · 2015",
           "fig": "PICS 033",
-          "description": "Cam bir kafesin altında oyma perdeler gibi duvarlardan ayrılan dişbudak şeritleri: çevresindeki buzdan ve sulak alanlardan çıkarılmış, katlanmış yüzeye barok bir tutku.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Kömür ağacı bantlar, cam kafes altında oyulmuş perde gibi duvarlardan ayrılıyor: katlanmış yüzeyin barok aşkı, etrafındaki buz ve sulak alanlardan çıkarılmıştır.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Harbin Büyük Tiyatrosu, fuaye",
+          "homeTitle": "Harbin Büyük Tiyatro, giriş",
           "homeSubtitle": "MAD Architects · Harbin · 2015",
-          "homeDescription": "Cam bir kafesin altında oyma perdeler gibi duvarlardan ayrılan dişbudak şeritleri: çevresindeki buzdan ve sulak alanlardan çıkarılmış, katlanmış yüzeye barok bir tutku.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeDescription": "Kömür ağacı bantlar, cam kafes altında oyulmuş perde gibi duvarlardan ayrılıyor: katlanmış yüzeyin barok aşkı, etrafındaki buz ve sulak alanlardan çıkarılmıştır.",
+          "homeCredit": "Fotoğraf: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:30.916Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
@@ -60998,21 +61016,27 @@
         },
         {
           "id": 41,
-          "title": "Grande Teatro di Harbin, il foyer",
+          "title": "Harbin Grand Theatre, il lobby",
           "subtitle": "MAD Architects · Harbin · 2015",
           "fig": "PICS 033",
-          "description": "Fasce di frassino si staccano dalle pareti come drappeggi scolpiti sotto un reticolo di vetro: l'amore barocco per la superficie piegata, tratto dal ghiaccio e dalle paludi intorno.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+          "description": "Le bande di legno di cenere si staccano dalle pareti come drappeggi scolpiti sotto una griglia di vetro: l'amore barocco per la superficie ripiegata, estratta dal ghiaccio e dalle zone umide intorno.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mued97d5ozdjjh.webp",
           "picsOfWeek": true,
           "homeCategory": "baroque",
-          "homeTitle": "Grande Teatro di Harbin, il foyer",
+          "homeTitle": "Harbin Grand Theatre, il lobby",
           "homeSubtitle": "MAD Architects · Harbin · 2015",
-          "homeDescription": "Fasce di frassino si staccano dalle pareti come drappeggi scolpiti sotto un reticolo di vetro: l'amore barocco per la superficie piegata, tratto dal ghiaccio e dalle paludi intorno.",
-          "homeCredit": "Photo: scotted400 · CC BY 2.0 · Flickr",
+          "homeDescription": "Le bande di legno di cenere si staccano dalle pareti come drappeggi scolpiti sotto una griglia di vetro: l'amore barocco per la superficie ripiegata, estratta dal ghiaccio e dalle zone umide intorno.",
+          "homeCredit": "Foto: scotted400 · CC BY 2.0 · Flickr",
           "sourceUrl": "https://www.flickr.com/photos/30557460@N05/54390642775",
           "picsId": "PICS-2026-033",
-          "updatedAt": "2026-09-23T16:09:48Z",
-          "picsReleaseId": "PICS-WEEK-2026-005"
+          "updatedAt": "2026-09-28T07:59:33.514Z",
+          "picsReleaseId": "PICS-WEEK-2026-005",
+          "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/b6d4682d4f3ad3.jpg",
+              "replacedAt": "2026-09-23T17:17:51.364Z"
+            }
+          ]
         },
         {
           "id": 42,
