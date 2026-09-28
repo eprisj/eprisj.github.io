@@ -24792,6 +24792,18 @@
               "url": "https://brooklynrail.org/2020/09/art/TORKWASE-DYSON-with-Robert-Shane/"
             }
           ]
+        },
+        {
+          "id": 54,
+          "title": "Обычная жизнь — не маленькая тема: Louis Fratino и живопись интимности",
+          "excerpt": "В прозе Louis Fratino рисует влюблённых, родственников, ванны, сады и вагоны метро — и спрашивает, почему обычная квир-жизнь, учитывая масштаб исторической живописи, всё ещё может казаться радикальной.",
+          "category": "Искусство"
+        },
+        {
+          "id": 55,
+          "title": "Картина всё ещё влажна: Emma McIntyre и искусство, которое отказывается завершаться",
+          "excerpt": "Emma McIntyre рисует ржавчиной, окисленным медью, костяным чёрным, гравитацией и временем — создавая работы, которые продолжают меняться после того, как художник перестал их трогать.",
+          "category": "Искусство"
         }
       ],
       "reviews": [
@@ -35988,6 +36000,18 @@
               "url": "https://brooklynrail.org/2020/09/art/TORKWASE-DYSON-with-Robert-Shane/"
             }
           ]
+        },
+        {
+          "id": 54,
+          "title": "Звичайне життя — не мала тема: Louis Fratino і живопис інтимності",
+          "excerpt": "У прозі Louis Fratino малює коханих, родичів, ванни, сади та метро — і запитує, чому звичайне queer життя, з урахуванням масштабу історичного живопису, все ще може здаватися радикальним.",
+          "category": "Мистецтво"
+        },
+        {
+          "id": 55,
+          "title": "Картина ще свіжа: Emma McIntyre та мистецтво, що відмовляється закінчуватися",
+          "excerpt": "Emma McIntyre малює іржею, окисленою міддю, кістковим чорнилом, гравітацією та часом—створюючи роботи, які продовжують змінюватися після того, як художник припинив їх торкатися.",
+          "category": "Мистецтво"
         }
       ],
       "reviews": [
@@ -47510,6 +47534,12 @@
               "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
             }
           ]
+        },
+        {
+          "id": 55,
+          "title": "Das Gemälde Ist Noch Nass: Emma McIntyre und Kunst, die sich weigert, fertig zu werden",
+          "excerpt": "Emma McIntyre malt mit Rost, oxidiertem Kupfer, Knochen schwarz, Schwerkraft und Zeit—schaffend Werke, die sich weiter verändern, nachdem die Künstlerin aufgehört hat, sie zu berühren.",
+          "category": "Kunst"
         }
       ],
       "reviews": [
@@ -59026,6 +59056,12 @@
               "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
             }
           ]
+        },
+        {
+          "id": 55,
+          "title": "La Pintura Todavía Está Mojada: Emma McIntyre y Arte Que Se Niega a Terminar",
+          "excerpt": "Emma McIntyre pinta con óxido, cobre oxidado, negro hueso, gravedad y tiempo—creando obras que siguen cambiando después de que la artista ha dejado de tocarlas.",
+          "category": "Arte"
         }
       ],
       "reviews": [
@@ -78162,6 +78198,12 @@
               "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
             }
           ]
+        },
+        {
+          "id": 55,
+          "title": "Il dipinto è ancora bagnato: Emma McIntyre e l'arte che si rifiuta di finire",
+          "excerpt": "Emma McIntyre dipinge con ruggine, rame ossidato, nero di ossa, gravità e tempo—creando opere che continuano a cambiare dopo che l'artista ha smesso di toccarle.",
+          "category": "Arte"
         }
       ],
       "reviews": [
@@ -87859,6 +87901,337 @@
               "url": "https://brooklynrail.org/2020/09/art/TORKWASE-DYSON-with-Robert-Shane/"
             }
           ]
+        },
+        {
+          "id": 54,
+          "draft": false,
+          "title": "La vie ordinaire n'est pas un petit sujet : Louis Fratino et la peinture de l'intimité",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "1 oct. 2026",
+          "publishAt": "2026-10-01T03:00:00.000Z",
+          "publishedAt": "2026-10-01T03:00:00.000Z",
+          "excerpt": "En prose, Louis Fratino peint des amoureux, des proches, des bains, des jardins et des trains du métro—et demande pourquoi une vie ordinaire queer, compte tenu de l'échelle de la peinture historique, peut encore sembler radicale.",
+          "category": "Art",
+          "subcategory": "Peinture contemporaine",
+          "tags": [
+            "Louis Fratino",
+            "peinture contemporaine",
+            "art queer",
+            "figuration",
+            "intimité",
+            "David Zwirner"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/louis-fratino-coffee-2026.jpg",
+          "previewToken": "5ae38cfd01839052f7725203",
+          "updatedAt": "2026-09-28T20:17:28.789Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Une vie devient visible en fragments : tasses de café sur une table bondée, un amant tournant dans le lit, le jardin d'une mère vu à l'heure où la couleur commence à se détendre, un corps nu plié dans l'eau du bain, des étrangers entassés dans un wagon de métro. Aucun de ces événements ne s'annonce comme histoire. Louis Fratino les peint comme si la distinction entre un sujet majeur et mineur n'était plus utile."
+            },
+            {
+              "type": "text",
+              "content": "Sa nouvelle exposition <i>Prose</i>, chez David Zwirner à Londres, contient des peintures, dessins et sculptures réalisés à partir de l'observation et de la mémoire. Le titre est précis. La prose est ce qui porte la majorité d'une vie : pas la ligne exceptionnelle conservée pour la citation, mais le langage continu entre les moments. Les peintures de Fratino demandent ce qui se passe lorsque cette continuité ordinaire—en particulier la continuité de la vie queer—se voit accorder la concentration autrefois réservée à la mythologie, au pouvoir et à la catastrophe publique."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-jasmine-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Jasmine, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "I · Après visibilité",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La peinture figurative queer a souvent été discutée à travers la visibilité : quels corps étaient absents des musées, quels désirs étaient dissimulés, et quel travail politique est effectué lorsqu'ils entrent dans le cadre. Fratino appartient à une génération pour laquelle le problème a changé sans disparaître. Le corps masculin peut maintenant être montré désirant un autre corps masculin, mais la visibilité seule ne garantit plus la complexité."
+            },
+            {
+              "type": "text",
+              "content": "La tâche plus difficile est de peindre la vie queer sans exiger qu'elle reste exemplaire, transgressive ou tragique. Les figures de Fratino mangent, attendent, se baignent, lisent, voyagent et s'ennuient. Le sexe apparaît, mais il appartient à une écologie plus large de la vie domestique. La revendication radicale n'est pas simplement que ces corps méritent une représentation. C'est que leur temps sans événement mérite une forme."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-ale-moms-bedroom-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Ale dans la chambre de sa mère (après Corot), 2026, huile sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "II · La mémoire n'est pas une archive",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Fratino peint de mémoire, même lorsque l'observation commence le processus. Cela ne signifie pas récupérer une photographie mentale intacte. Les modifications de la mémoire amplifient, exagèrent la couleur, compressent les pièces et rapprochent émotionnellement des moments adjacents dans le même champ. Un corps peut devenir trop grand pour le lit parce que sa présence ressentie était plus grande que la pièce."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Ale dans la chambre de sa mère (après Corot)</i>, la figure assise est maintenue à l'intérieur de verts et de rouges atténués qui donnent à la pièce une sensation de souvenir plutôt que de mesure. Le parenthétique “après Corot” identifie un ancêtre artistique tout en admettant que l'influence atteint le présent à travers l'expérience privée. L'histoire de l'art n'est pas hors de la chambre. C'est l'une des choses qui y sont rappelées."
+            },
+            {
+              "type": "header",
+              "content": "III · La peinture bondée",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-coffee-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Coffee, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Café</i> est une peinture sociale structurée par des objets. Tasses, verres, chaises et corps rivalisent pour le même espace peu profond. La table n’organise pas tant la réunion que ses suites. La perspective compressée de Fratino permet à chaque détail de s’imposer : la boisson, la main, le visage partiellement caché derrière une autre personne."
+            },
+            {
+              "type": "text",
+              "content": "Cette densité porte une position éthique. Aucune figure ne devient le sujet souverain autour duquel la scène est organisée. L’intimité est distribuée. Une réunion est composée d’actes simultanés d’attention et de distraction, et la peinture refuse de décider lequel est le plus important."
+            },
+            {
+              "type": "header",
+              "content": "IV · Plaisir sans défense",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le plaisir dans l’art contemporain est souvent invité à fournir son propre alibi. Il doit être plaisir critique, plaisir blessé, plaisir rendu acceptable par une structure explicative. Fratino résiste à cette économie. Il a dit qu’il voulait rester vulnérable dans l’atelier et travailler sans embarras — comme si le dialogue privé de la peinture ne devait pas commencer en anticipant la poursuite."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-the-sauna-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, The sauna, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>The sauna</i> transforme un intérieur communautaire en un champ de corps orange et rouge. L'anatomie est élastique ; les membres s'intersectent ; la chaleur semble déformer la pièce. La peinture est érotique, mais son érotisme ne dépend pas d'un seul acte exposé. Il provient de la proximité, de la répétition et de la suspension temporaire de la distance entre les corps."
+            },
+            {
+              "type": "text",
+              "content": "Peindre le plaisir sans défense n'est pas politiquement naïf. La culture queer a été rendue visible à travers des histoires d'interdiction, de médicalisation et de perte. Une image de facilité peut donc porter une pression historique même lorsqu'elle refuse d'illustrer la souffrance. Le droit d'apparaître sans peur n'est pas l'absence de politique ; c'est l'un des résultats inachevés de la politique."
+            },
+            {
+              "type": "header",
+              "content": "V · Le corps comme paysage",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-the-green-bath-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, The green bath, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>The green bath</i>, un corps se plie si complètement dans le récipient que la figure et le contenant commencent à partager un contour. La vue d'en haut abolish un horizon stable. Genoux, poitrine, eau et émail deviennent un seul nœud de volumes verts."
+            },
+            {
+              "type": "text",
+              "content": "Les distorsions de Fratino sont parfois placées dans une lignée qui traverse Picasso, Matisse et Marsden Hartley. Les références sont réelles, mais la ressemblance peut devenir une conclusion paresseuse. Ce qui importe, c'est comment la distorsion héritée change lorsque le corps peint n'est pas un modèle anonyme mais un amant, un ami ou soi-même. La liberté formelle devient inséparable de la connaissance relationnelle."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-nude-black-hair-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Nu avec cheveux noirs, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "VI · Regarder sans possession",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le nu allongé est parmi les formats les plus chargés de la peinture occidentale. Il transforme un corps en une surface disponible et attribue au spectateur une position privilégiée en dehors de la scène. Fratino hérite de cette structure et la rend instable. Ses nus sont souvent conscients d’être vus, mais ils ne s’organisent pas pour le contrôle du spectateur."
+            },
+            {
+              "type": "text",
+              "content": "Dans <i>Nude avec cheveux noirs</i>, le corps horizontal de la figure occupe presque toute la toile, mais le visage n’offre pas d’accès. La chair est peinte avec tendresse sans devenir lisse. L’image distingue intimité et possession : la familiarité permet au peintre de rester proche, sans revendiquer une connaissance totale."
+            },
+            {
+              "type": "header",
+              "content": "VII · La peinture comme une forme de soin",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Fratino a décrit la peinture comme un acte de respect ou de soin parce qu'elle exige du temps, de la compétence et une sorte d'abaissement. La formulation est utile à une époque où les images sont créées et jetées avec presque aucun frottement. Une peinture retient quelqu'un en attention plus longtemps que ce que la commodité exige."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-chrissie-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Chrissie, 2026, huile sur toile. Courtesy the artist and David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Chrissie</i> est assez petite pour que le visage doive être approché plutôt que consommé à distance. La surface reste travaillée et non résolue ; la ressemblance est construite à travers des décisions accumulées plutôt que par une complétude photographique. Le soin apparaît non pas comme une idéalisation mais comme une observation soutenue."
+            },
+            {
+              "type": "header",
+              "content": "VIII · La ville entre dans la pièce",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-the-subway-car-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, La voiture de métro, 2026, huile sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "L'intimité domestique n'est pas isolée de la vie publique. <i>La voiture de métro</i> compresse étrangers, reflets, publicités et structure métallique dans une chambre verticale. Le système de transit devient un autre intérieur—partagé sans être privé, physiquement proche sans promettre reconnaissance."
+            },
+            {
+              "type": "text",
+              "content": "L'image complexifie l'idée rassurante que Fratino peint uniquement un monde protégé d'amoureux et de famille. La vie queer urbaine est façonnée par des codes publics de regard : le regard qui teste la sécurité, le corps qui reconnaît un autre corps, l'indifférence pratiquée des étrangers. La voiture de métro est une composition sociale dans laquelle chacun voit et évite d'être vu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-summer-in-the-city-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Été en ville, 2026, huile sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "IX · Histoire de l'art à la maison",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Les peintures de Fratino dialoguent ouvertement avec le modernisme européen et américain : les intérieurs décoratifs de Matisse, les figures de Corot, les corps compressés de Picasso, la charge masculine de Hartley, la couleur domestique de Bonnard et la ligne psychologique d'Alice Neel. Le risque d'une telle fluidité est que la citation puisse devenir un certificat de sérieux attaché à la vie privée."
+            },
+            {
+              "type": "text",
+              "content": "Ses œuvres les plus fortes inversent cette relation. Elles n'utilisent pas l'histoire de l'art pour légitimer l'expérience queer ; elles utilisent l'expérience queer pour tester ce que l'histoire de l'art peut encore faire. Une distorsion moderniste qui autrefois signifiait une révolution formelle revient à la cuisine, à la salle de bain et au lit, où elle doit redevenir émotionnellement spécifique."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-prose-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Prose, 2026, huile sur toile. Courtesy l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "X · Pourquoi « prose » compte",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La poésie est conventionnellement accordée compression, intensité et transformation. La prose porte la séquence : une phrase après une autre, un jour suivant le jour précédent. En appelant l'exposition <i>Prose</i>, Fratino privilégie la durée sur le climax. Une vie n'est pas prouvée par son image la plus dramatique. Elle s'accumule à travers des pièces, des corps et des objets répétés."
+            },
+            {
+              "type": "text",
+              "content": "C'est aussi une théorie de la peinture. Chaque toile est discrète, mais les sujets vieillissent et reviennent. Une nièce apparaît d'abord comme un bébé et plus tard comme une enfant ; partenaires et proches occupent de nouvelles pièces ; l'artiste imagine se peindre lui-même quand il sera vieux. L'autobiographie devient en série plutôt que confessionnelle. La signification de l'œuvre réside non seulement dans la divulgation mais aussi dans la continuité."
+            },
+            {
+              "type": "header",
+              "content": "XI · La nature morte n'est jamais immobile",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-apples-pears-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Pommes et poires, 2026, huile sur toile. Courtoisie de l'artiste et David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Un bol de fruits semble suspendre la politique entièrement. Pourtant, la nature morte a toujours été un enregistrement d'accès : ce qui pouvait être acheté, stocké, affiché et laissé pourrir. Les pommes et poires de Fratino sont comprimées dans un bol sombre sur un tissu rayé, peint avec la même pression corporelle que ses nus."
+            },
+            {
+              "type": "text",
+              "content": "L'équivalence est importante. Fruits, fleurs et chair appartiennent à un même monde visuel parce que l'intimité n'est pas confinée au drame interpersonnel. C'est une façon d'accorder de l'attention. L'objet ordinaire n'est pas élevé hors de la vie ordinaire ; la vie ordinaire se révèle déjà dense en forme."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/louis-fratino-snowdrops-hellebores-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Louis Fratino, Perce-neige et hellébores, 2026, huile sur toile. Courtoisie de l'artiste et David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XII · Le problème de la vie belle",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le travail de Fratino est facile à aimer, et cette facilité crée la suspicion. Les peintures sont colorées, sensuelles, culturellement éclairées et très désirables sur le marché. L'intimité qu'elles dépeignent peut être convertie en un style : l'intérieur domestique queer comme un genre reconnaissable et collectionnable."
+            },
+            {
+              "type": "text",
+              "content": "Le problème n'est pas que l'œuvre soit belle ou commercialement réussie. C'est si la vulnérabilité survit à la répétition. Lorsque la même anatomie compressée et la palette saturée passent de l'amant à la fleur à la scène urbaine, elles risquent de devenir une garantie d'auteur plutôt qu'une rencontre fraîche. Les peintures restent vivantes là où le sujet résiste à la solution connue du peintre."
+            },
+            {
+              "type": "text",
+              "content": "La réponse de Fratino semble être l'expansion plutôt que la réinvention. Le monde des peintures grandit à mesure que son monde grandit : famille, voyage, espace public, vieillissement et nouvelles formes d'attachement. C'est une stratégie modeste, mais la modestie est la prémisse de l'œuvre. Un style change parce qu'une vie change."
+            },
+            {
+              "type": "quote",
+              "content": "Fratino’s affirmation la plus importante n’est pas que l’intimité queer appartient à l’histoire de l’art, mais que le temps ordinaire est l’un des matériaux principaux de l’histoire."
+            },
+            {
+              "type": "header",
+              "content": "XIII · Verdict",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Prose</i> compte parce qu’il refuse la hiérarchie qui rend la violence publique historiquement grave et le plaisir privé simplement personnel. Fratino ne nie pas le conflit ; il refuse de laisser le conflit monopoliser la signification de la vie queer. Ses peintures préservent l’affection, l’ennui, l’appétit, la gêne et le repos comme formes de connaissance."
+            },
+            {
+              "type": "text",
+              "content": "La vie ordinaire n’est pas un petit sujet. C’est là que les victoires et échecs politiques deviennent habitables : dans qui peut partager une pièce, toucher sans peur, construire une famille, vieillir de manière visible et attendre un autre matin. La peinture ne peut garantir ces conditions. Elle peut insister sur le fait qu’elles valent le temps nécessaire pour les voir."
+            },
+            {
+              "type": "note",
+              "content": "Louis Fratino : La prose est à David Zwirner, 24 Grafton Street, Londres, du 18 septembre au 31 octobre 2026. L'exposition est la première présentation en solo de l'artiste à Londres et sa première avec la galerie depuis l'annonce de la représentation. Cet article a été préparé à partir de matériaux officiels de l'exposition et d'interviews publiées ; il ne prétend pas à une visite en personne. Les images sont reproduites à des fins de revue éditoriale avec crédits fournis par David Zwirner."
+            },
+            {
+              "type": "link",
+              "content": "Louis Fratino : Prose — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/louis-fratino"
+            },
+            {
+              "type": "link",
+              "content": "Louis Fratino : Alive and About Life — Louisiana Channel / David Zwirner",
+              "url": "https://www.davidzwirner.com/news/2026/louis-fratino-film-for-the-louisiana-channel"
+            },
+            {
+              "type": "link",
+              "content": "Louis Fratino en conversation — Baltimore Museum of Art",
+              "url": "https://stories.artbma.org/louis-fratino-in-conversation-with-virginia-anderson-and-katy-rothkopf/"
+            },
+            {
+              "type": "link",
+              "content": "Viens doucement à moi : une interview avec Louis Fratino — Columbia Journal",
+              "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "title": "La peinture est encore humide : Emma McIntyre et l'art qui refuse de finir",
+          "excerpt": "Emma McIntyre peint avec de la rouille, du cuivre oxydé, du noir de charbon, la gravité et le temps—créant des œuvres qui continuent de changer après que l'artiste a cessé de les toucher.",
+          "category": "Art"
         }
       ],
       "reviews": [
