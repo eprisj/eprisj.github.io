@@ -73549,7 +73549,7 @@
         },
         {
           "id": 51,
-          "draft": true,
+          "draft": false,
           "title": "Il Mondo Non È Ciò Che Dice: L'aldilà di Magritte al Gagosian London",
           "author": "Viacheslav Munister",
           "role": "Autore",
@@ -73569,7 +73569,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
           "previewToken": "af164326133e44c0ffbec996",
-          "updatedAt": "2026-09-28T19:37:19.854Z",
+          "updatedAt": "2026-09-28T19:52:28.092Z",
           "content": [
             {
               "type": "text",
@@ -73577,14 +73577,14 @@
             },
             {
               "type": "text",
-              "content": "Organizzata con la Fondation Magritte e curata da Jasper Sharp e Bernard Lagrange, la mostra porta dipinti, opere su carta e sculture di tutta la carriera di Magritte in contatto con più di quaranta artisti. La parola importante non è influenza ma <i>post-mortem</i>. Questo è meno un albero genealogico di citazioni che un test di quali dei problemi di Magritte rimangano attivi: la parola inaffidabile, l'oggetto teatrale, la scala che trasforma la familiarità in minaccia, e l'immagine che trattiene esattamente ciò che sembra mostrare."
+              "content": "Organizzata con la Fondation Magritte e curata da Jasper Sharp e Bernard Lagrange, la mostra porta dipinti, opere su carta e sculture di tutta la carriera di Magritte in contatto con più di quaranta artisti. La parola importante non è influenza ma <i>dopo-vita</i>. Questo è meno un albero genealogico di citazioni che un test di quali dei problemi di Magritte rimangano attivi: la parola inaffidabile, l'oggetto teatrale, la scala che trasforma la familiarità in minaccia, e l'immagine che trattiene esattamente ciò che sembra mostrare."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
               "align": "center",
               "width": 100,
-              "caption": "<i>This Is Still Not a Pipe: The Afterlife of Magritte</i>, vista dell'installazione, Gagosian Grosvenor Hill, Londra, 2026. Foto: Prudence Cuming Associates Ltd. Crediti dell'opera: Gagosian/Fondation Magritte."
+              "caption": "This Is Still Not a Pipe: The Afterlife of Magritte, vista dell'installazione, Gagosian Grosvenor Hill, Londra, 2026. Foto: Prudence Cuming Associates Ltd. Crediti dell'opera: Gagosian/Fondation Magritte."
             },
             {
               "type": "header",
@@ -73593,11 +73593,11 @@
             },
             {
               "type": "text",
-              "content": "La mostra inizia con un arco storico che è insolitamente ampio senza diventare didascalico. Il suo primo Magritte, <i>Les Fleurs du voyage</i> (1926), apparve nella sua prima mostra personale a Bruxelles. Opere vicine accompagnano il pittore attraverso gli anni parigini, il cielo ricco di nuvole di <i>La Malédiction</i> (1931), i puzzle di parole-immagine degli anni '30, il periodo volutamente rozzo <i>vache</i> del 1948 e i paradossi tardi, raffinati, per cui divenne riconoscibile a livello globale."
+              "content": "La mostra inizia con un arco storico che è insolitamente ampio senza diventare didascalico. Il suo primo Magritte, <i>Les Fleurs du voyage</i> (1926), apparve nella sua prima mostra personale a Bruxelles. Opere vicine accompagnano il pittore attraverso gli anni parigini, il cielo ricco di nuvole di <i>La Malédiction</i> (1931), i rompicapi di parole-immagine degli anni '30, il periodo volutamente rozzo <i>vache</i> del 1948 e i paradossi tardi, raffinati, per cui divenne riconoscibile a livello globale."
             },
             {
               "type": "text",
-              "content": "Da solo, queste opere potrebbero descrivere l'evoluzione di una carriera. Collocate tra oggetti e dipinti realizzati decenni dopo, si comportano in modo diverso. Diventano proposizioni in attesa di risposte. L'installazione della galleria rende questo argomento spazialmente: Magritte non viene dato come una stanza storica sigillata. Le sue immagini continuano a riapparire tra Robert Gober, Vija Celmins, Maurizio Cattelan, Mona Hatoum, Sarah Lucas, Jeff Koons, Issy Wood, Victor Man e opere di nuova commissione."
+              "content": "Da solo, queste opere potrebbero descrivere l'evoluzione di una carriera. Collocate tra oggetti e dipinti realizzati decenni dopo, si comportano in modo diverso. Diventano proposizioni in attesa di risposte. L'installazione della galleria rende questo argomento spazialmente: Magritte non viene dato in una stanza storica sigillata. Le sue immagini continuano a riapparire tra Robert Gober, Vija Celmins, Maurizio Cattelan, Mona Hatoum, Sarah Lucas, Jeff Koons, Issy Wood, Victor Man e opere di nuova commissione."
             },
             {
               "type": "image",
@@ -73620,7 +73620,7 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-apparition-1928.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Apparition (The Apparition)</i>, 1928, olio su tela, 54 × 73 cm. © 2026 ADAGP, Parigi, e DACS, Londra. Immagine cortesemente fornita da Gagosian."
+              "caption": "René Magritte, L’Apparition (The Apparition), 1928, olio su tela, 54 × 73 cm. © 2026 ADAGP, Parigi, e DACS, Londra. Immagine cortesemente fornita da Gagosian."
             },
             {
               "type": "text",
@@ -73633,18 +73633,18 @@
             },
             {
               "type": "text",
-              "content": "<i>La Malédiction</i> (1931), la prima tela a pannello singolo in cui Magritte ha dedicato l'intero campo a un cielo pieno di nuvole, rimuove il terreno senza trasformare il dipinto in pura atmosfera. Il cielo diventa una cosa: delimitata, trasportabile, posseduta. Una volta incorniciato, anche l'infinito acquisisce i bordi."
+              "content": "<i>La Malédiction</i> (1931), la prima tela a pannello singolo in cui Magritte ha dedicato l'intero campo a un cielo pieno di nuvole, rimuove il terreno senza trasformare il dipinto in pura atmosfera. Il cielo diventa una cosa: delimitata, trasportabile, posseduta. Una volta incorniciato, anche l'infinito acquisisce bordi."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-curse-1931.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Malédiction (The Curse)</i>, 1931, olio su tela, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Parigi, e DACS, Londra. Foto: Antoine van Kaam."
+              "caption": "René Magritte, La Malédiction (The Curse), 1931, olio su tela, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Parigi, e DACS, Londra. Foto: Antoine van Kaam."
             },
             {
               "type": "text",
-              "content": "Questa è una ragione per cui le nuvole di Magritte sopravvivono così facilmente nella pubblicità e nel design. Sono sia tempo atmosferico che dispositivo grafico, natura e sfondo preconfezionato. Ma la vita commerciale può nascondere il disturbo originale. Il suo cielo non è libertà. È una superficie che finge di essere profondità."
+              "content": "Questa è una delle ragioni per cui le nuvole di Magritte sopravvivono così facilmente nella pubblicità e nel design. Sono sia tempo atmosferico che dispositivo grafico, natura e sfondo preconfezionato. Ma la vita commerciale può nascondere il disturbo originale. Il suo cielo non è libertà. È una superficie che finge di essere profondità."
             },
             {
               "type": "header",
@@ -73660,7 +73660,7 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-philosophers-lamp-1936.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Lampe philosophique (The Philosopher’s Lamp)</i>, 1936, olio su tela, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), New York. Foto cortesemente fornita da Collezione Privata, Bruxelles."
+              "caption": "René Magritte, La Lampe philosophique (The Philosopher’s Lamp), 1936, olio su tela, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), New York. Foto cortesemente fornita da Private Collection, Brussels."
             },
             {
               "type": "text",
@@ -73673,14 +73673,14 @@
             },
             {
               "type": "text",
-              "content": "Il tardo <i>L’Empire des lumières</i> (1961), prestato dalla Heidi Horten Collection, è l'ultimo dipinto nella celebre sequenza di paesaggi di Magritte in cui un cielo luminoso diurno si staglia sopra una strada notturna. È anche l'unico nella serie a includere una figura con cappello bowler silhouette contro il cielo."
+              "content": "Il defunto <i>L’Empire des lumières</i> (1961), prestato dalla Heidi Horten Collection, è l'ultimo dipinto nella celebre sequenza di paesaggi di Magritte in cui un cielo luminoso diurno si staglia sopra una strada notturna. È anche l'unico nella serie a includere una figura con cappello bowler silhouette contro il cielo."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Empire des lumières (Il Dominio della Luce)</i>, 1961, olio su tela, 50 × 73 cm, Heidi Horten Collection, Vienna. © 2026 ADAGP, Parigi, e DACS, Londra. Foto: Prudence Cuming Associates Ltd."
+              "caption": "René Magritte, L’Empire des lumières (Il Dominio della Luce), 1961, olio su tela, 50 × 73 cm, Heidi Horten Collection, Vienna. © 2026 ADAGP, Parigi, e DACS, Londra. Foto: Prudence Cuming Associates Ltd."
             },
             {
               "type": "text",
@@ -73693,25 +73693,25 @@
             },
             {
               "type": "text",
-              "content": "Le risposte contemporanee più forti non riproducono la mela, la nuvola o il cappello a bombetta. Ereditano dal metodo di Magritte il tradimento di un oggetto alla sua categoria. <i>Pink Pearl Eraser</i> di Vija Celmins (1966–67) ingrandisce uno strumento di correzione usa e getta in una scultura dipinta in balsa. Rimane riconoscibilmente una gomma da cancellare mentre diventa incapace di cancellare. L'uso è stato sostituito dalla scala."
+              "content": "Le risposte contemporanee più forti non riproducono la mela, la nuvola o il cappello a cilindro. Ereditano dal metodo di Magritte il tradimento di un oggetto alla sua categoria. <i>Pink Pearl Eraser</i> di Vija Celmins (1966–67) ingrandisce uno strumento di correzione usa e getta in una scultura dipinta in balsa. Rimane riconoscibilmente una gomma da cancellare mentre diventa incapace di cancellare. L'uso è stato sostituito dalla scala."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/vija-celmins-pink-pearl-eraser.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Vija Celmins, <i>Pink Pearl Eraser</i>, 1966–67, acrilico su legno di balsa, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Immagine cortesemente fornita da Gagosian."
+              "caption": "Vija Celmins, Pink Pearl Eraser, 1966–67, acrilico su legno di balsa, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Immagine cortesemente fornita da Gagosian."
             },
             {
               "type": "text",
-              "content": "Il nuovo dipinto di Dana Schutz <i>The Singer</i> (2026) opera più lontano dall'iconografia di Magritte ma vicino alla sua logica teatrale. La figura e il piano dell'immagine sembrano negoziare quale delle due sia autorizzata a contenere l'altra. Non è una citazione; è una continuazione della stessa diffidenza nello spazio pittorico stabile."
+              "content": "Il nuovo dipinto di Dana Schutz <i>The Singer</i> (2026) opera più lontano dall'iconografia di Magritte ma vicino alla sua logica teatrale. La figura e il piano dell'immagine sembrano negoziare quale dei due sia autorizzato a contenere l'altro. Non è una citazione; è una continuazione della stessa diffidenza nello spazio pittorico stabile."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/dana-schutz-the-singer-2026.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Dana Schutz, <i>The Singer</i>, 2026, olio su tela, 203.2 × 175.3 cm. © Dana Schutz. Foto: Stephen Arnold."
+              "caption": "Dana Schutz, The Singer, 2026, olio su tela, 203.2 × 175.3 cm. © Dana Schutz. Foto: Stephen Arnold."
             },
             {
               "type": "header",
@@ -73724,7 +73724,7 @@
             },
             {
               "type": "text",
-              "content": "I nostri sistemi di immagini contemporanei promettono trasparenza mentre producono incertezza. Le immagini generate dall'IA possono essere completamente plausibili e completamente prive di un evento fotografato dietro di esse. Le interfacce etichettano oggetti, volti e luoghi con crescente sicurezza. La vecchia separazione di Magritte tra parola, immagine e cosa non si legge più come uno scherzo filosofico; si legge come alfabetizzazione mediatica di base."
+              "content": "I nostri sistemi di immagini contemporanei promettono trasparenza mentre producono incertezza. Le immagini generate dall'AI possono essere completamente plausibili e completamente prive di un evento fotografato dietro di esse. Le interfacce etichettano oggetti, volti e luoghi con crescente sicurezza. La vecchia separazione di Magritte tra parola, immagine e cosa non si legge più come uno scherzo filosofico; si legge come alfabetizzazione mediatica di base."
             },
             {
               "type": "text",
@@ -73741,11 +73741,11 @@
             },
             {
               "type": "text",
-              "content": "<i>Questo Non È Ancora Una Pipa</i> riesce quando tratta l'influenza come un problema pratico piuttosto che come un gioco di somiglianze. Con più di quaranta artisti contemporanei, la mostra inevitabilmente produce linee di discendenza disomogenee. Alcune opere si avvicinano al vocabolario di Magritte; altre richiedono che la premessa curatoriale renda visibile la relazione. Ma questa disomogeneità è produttiva. Mostra che la vita dopo Magritte non è uno stile. È un insieme di permessi: lasciare che l'ordinario diventi instabile, far sì che la scala porti significato, permettere a un'immagine di contraddire la propria didascalia, e lasciare il meccanismo centrale senza spiegazione."
+              "content": "<i>Questo Non È Ancora Una Pipa</i> riesce quando tratta l'influenza come un problema pratico piuttosto che come un gioco di somiglianze. Con più di quaranta artisti contemporanei, la mostra inevitabilmente produce linee di discendenza disomogenee. Alcune opere si avvicinano al vocabolario di Magritte; altre richiedono che la premessa curatoriale renda visibile la relazione. Ma questa disomogeneità è produttiva. Mostra che la vita dopo Magritte non è uno stile. È un insieme di permessi: lasciare che l'ordinario diventi instabile, far sì che la scala abbia significato, permettere a un'immagine di contraddire la propria didascalia, e lasciare il meccanismo centrale senza spiegazione."
             },
             {
               "type": "text",
-              "content": "La mostra è quindi più utile non come celebrazione di un Surrealista canonico, ma come un manuale per guardare le immagini ora. La pipa non è ancora una pipa. La scoperta più urgente è che la fotografia potrebbe non essere prova, l'etichetta potrebbe non essere conoscenza, e il familiare potrebbe essere la categoria meno affidabile di tutte."
+              "content": "La mostra è quindi più utile non come celebrazione di un Surrealista canonico, ma come un manuale per guardare le immagini ora. La pipa non è ancora una pipa. La scoperta più urgente è che la fotografia potrebbe non essere una prova, l'etichetta potrebbe non essere conoscenza, e il familiare potrebbe essere la categoria meno affidabile di tutte."
             },
             {
               "type": "note",
@@ -73761,7 +73761,9 @@
               "content": "Alex Da Corte su René Magritte — Gagosian Quarterly",
               "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
             }
-          ]
+          ],
+          "publishAt": "2026-09-29T03:00:00.000Z",
+          "publishedAt": "2026-09-29T03:00:00.000Z"
         }
       ],
       "reviews": [
