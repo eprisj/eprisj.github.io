@@ -53503,6 +53503,222 @@
           "publishAt": "2026-09-28T07:02:09.040Z",
           "publishedAt": "2026-09-28T07:02:09.040Z",
           "updatedAt": "2026-09-28T08:19:28.564Z"
+        },
+        {
+          "id": 50,
+          "draft": false,
+          "title": "Las formas que se niegan a un nombre: Richard Pearson sobre pintar otros mundos",
+          "author": "Viacheslav Munister & Richard Pearson",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-richard-pearson",
+          "date": "28 sep 2026",
+          "excerpt": "El pintor de Somerset Richard Pearson sobre volver al arte después de Covid, aprender a cuestionar para qué sirve una pintura, construir óleo sobre acrílico, y por qué las formas en Otros Mundos deben permanecer irreconocibles.",
+          "category": "Arte",
+          "subcategory": "Entrevista",
+          "tags": [
+            "Entrevista",
+            "pintura",
+            "abstracción",
+            "Somerset",
+            "Otros Mundos"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds-hero.webp",
+          "previewToken": "1a305455e8a922fff605f064",
+          "publishAt": "2026-09-28T19:04:44.772Z",
+          "publishedAt": "2026-09-28T19:04:44.772Z",
+          "updatedAt": "2026-09-28T19:06:25.928Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Richard Pearson no describe el regreso a la pintura como un plan de carrera. Comenzó durante Covid, luego se aceleró después de que él y su pareja David se mudaron a Somerset: un rayo de luz repentino, seguido por la disciplina y la compañía de un grupo de arte local. El trabajo que surgió allí es abstracto pero no ajeno a la experiencia. Los años de infancia en Oriente Medio regresan como luz del desierto y tormentas de arena; las lecciones de Wolverhampton Polytechnic regresan como preguntas sobre la intención; los años pasados cerca de diseñadores textiles regresan como un recuerdo de color siendo ajustado a mano hasta que estuvo listo para el mundo."
+            },
+            {
+              "type": "text",
+              "content": "Su serie reciente, <i>Other Worlds</i>, está construida en torno a formas que resisten convertirse en objetos. Pueden sugerir rocas, cuerpos u organismos, pero Pearson las mantiene sin resolver para que un espectador tenga espacio para reconocer una emoción en lugar de una cosa. Las pinturas están en capas, revisadas y a veces casi destruidas antes de asentarse. La acrílica puede convertirse en un suelo iluminado debajo del óleo; una primera imagen puede sobrevivir solo como presión bajo lo que la reemplaza."
+            },
+            {
+              "type": "text",
+              "content": "Hablamos con Richard sobre la educación que permaneció con él, los tiempos lentos y rápidos del óleo y la acrílica, y por qué a veces una pintura tiene que hacerse antes de poder ser pintada sobre ella."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds-hero.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pintura abstracta sin título de Richard Pearson. Cortesía del artista."
+            },
+            {
+              "type": "header",
+              "content": "01 · Aprender a preguntar por qué",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Creciste en West Midlands, pasaste ocho años en Oriente Medio y luego estudiaste en el curso de base en Wolverhampton Polytechnic. ¿Qué parte de esa vida moldeó más claramente cómo pintas ahora?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Richard Pearson [RP]:</b> No podría nombrar una parte de mi vida que haya moldeado mi práctica. Creo que todas tus experiencias de vida influyen en cómo trabajas ahora, e incluso cosas más recientes contribuirán. Pero si tuviera que nombrar una, sería Wolverhampton Polytechnic. Era una gran universidad, dirigida por algunos profesores muy inspiradores y llena de estudiantes maravillosos."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Después del curso de base te mudaste a Londres y pasaste años trabajando para organizaciones creativas. ¿Qué te enseñó ese trabajo sobre cómo se realiza realmente el arte y el diseño?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Mi primer trabajo fue con un fabricante de telas, y trabajé en la misma oficina que los diseñadores. Solía observar cómo trabajaban. El proceso era todo a mano entonces: sin computadoras, solo dibujo, pinturas y un ojo maravilloso para los detalles. Los diseños, pintados en gouache, pasaban a la fabricación, y eventualmente recibíamos las telas de las imprentas. Los colores pasaban por ajustes hasta que estaban listos comercialmente."
+            },
+            {
+              "type": "header",
+              "content": "02 · El cambio de regreso a la pintura",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Te comprometiste seriamente con el arte solo en los últimos años. ¿Qué inclinó la balanza?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Comencé a pintar de nuevo durante Covid, pero el verdadero cambio vino cuando mi pareja David y yo nos mudamos a Somerset. Solo empecé. Fue un poco como un rayo de sorpresa. Luego me uní al grupo de arte local, que ha sido increíble y realmente ha abierto mi mente a tanto."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Hubo alguna lección específica en ese grupo que cambiara la forma en que abordaste el lienzo?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> El momento fue cuando nuestra tutora, Vera, nos pidió que realmente cuestionáramos por qué estábamos haciendo la obra, cómo íbamos a hacerlo y qué mensaje queríamos comunicar. Me hizo pensar seriamente en lo que hacemos y por qué pintamos y creamos."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-studio.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Richard Pearson con su obra durante una exposición grupal de dos semanas. Cortesía del artista."
+            },
+            {
+              "type": "header",
+              "content": "03 · Una serie que tuvo que crecer de manera natural",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Cómo empezó <i>Other Worlds</i>?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> No me propuse pintar una serie, pero las formas que comencé a crear en <i>Other Worlds</i> parecían multiplicarse. La primera pintura se llamó <i>Formas Flotantes</i>, y a partir de ahí. Las ideas necesitaban fluir de manera natural sin estar en absoluto forzadas. Fue un proceso encantador de atravesar, y con suerte se agregarán más obras de manera orgánica. No puede ser planeado; tiene que suceder de forma natural."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-drifting-forms.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Formas Flotantes</i>, de la serie Other Worlds. Foto cortesía de Richard Pearson."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Trabajas con óleos y acrílicos. ¿Qué te permite hacer cada medio?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> A veces los mezclo, comenzando con una capa base de acrílico y siguiendo con óleo. El acrílico puede añadir una luz maravillosa que atraviesa el óleo, y el óleo puede hacer lo mismo a través de hermosas glaseados finos. Lo genial del óleo es que se seca tan lentamente, así que puedes mover la pintura. El acrílico es más inmediato; depende de lo que quieras hacer. Recientemente hice una gran pintura en acrílico y luego añadí óleo encima, lo que permitió muchas capas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-acrylic-oil-layers.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Capas de óleo y acrílico en una pintura de Richard Pearson. Cortesía del artista."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-work-in-progress.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una gran pintura en progreso, fotografiada en el jardín de Richard Pearson. Cortesía del artista."
+            },
+            {
+              "type": "header",
+              "content": "04 · Hacer para destruir",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Sabes cómo terminará una pieza antes de comenzar?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Nunca sé dónde terminará. Muy a menudo pinto sobre el original y más o menos empiezo de nuevo. Es casi como si tuviera que crear algo para destruirlo. Con suerte, algo mejor sale de ello. Tengo que pasar por este proceso para alcanzar algo con lo que esté feliz."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-repainting.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una pintura abstracta densamente revisada por Richard Pearson. Cortesía del artista."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Puedes rastrear algo en la obra que remita a tu infancia en Oriente Medio?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Mucho de lo que un artista pinta proviene de la memoria y el subconsciente. No pude identificar una sola fuente, pero los paisajes desérticos aparecen en <i>Other Worlds</i>. Una pintura que titulé <i>Desert Storm</i> se acerca. Muy a menudo tuvimos enormes tormentas de arena que duraron días."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-desert-storm.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Desert Storm</i>, de la serie Other Worlds. Foto cortesía de Richard Pearson."
+            },
+            {
+              "type": "header",
+              "content": "05 · Qué puede contener una forma sin nombre",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Qué perderían las formas en <i>Other Worlds</i> si las hicieras reconocibles—como una roca, un cuerpo o un edificio?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Las formas amorfas en la serie son metáforas de nuestras emociones en lugar de objetos tangibles o reconocibles. Eso permite a los espectadores formar sus propias opiniones y salir con sus propias respuestas, o con más preguntas. Si una forma fuera reconocible, creo que el espectador pasaría a otra cosa en lugar de pensar en lo que estaba viendo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una obra de la serie Otros Mundos de Richard Pearson. Cortesía del artista."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Recientemente mostraste junto a Ksenia Cieslak y Rosaria Valenti en Ilminster Arts Centre. ¿Qué notaste acerca de tu propio trabajo cuando compartiste espacio con el de ellas?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Fue genial tener mis pinturas junto al trabajo de mis amigos. Todos somos muy diferentes, pero de alguna manera funcionó juntos—principalmente porque todos usamos colores fuertes y saturados. Noté que mis colores eran más oscuros y que mis pinturas eran más pequeñas en comparación con algunas de las otras, pero eso estuvo bien. Fue un contraste genial, y me encantó."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-studio.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Richard Pearson en la exposición grupal en Ilminster, Somerset. Cortesía del artista."
+            },
+            {
+              "type": "quote",
+              "content": "Es casi como si tuviera que crear algo para destruirlo. Con suerte, algo mejor saldrá de ello."
+            },
+            {
+              "type": "note",
+              "content": "Entrevista por Viacheslav Munister. Respuestas de Richard Pearson, ligeramente editadas para claridad y puntuación. Todas las obras de arte y fotografías cortesía de Richard Pearson."
+            }
+          ]
         }
       ],
       "reviews": [
