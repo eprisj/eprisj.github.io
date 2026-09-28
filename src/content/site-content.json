@@ -43026,6 +43026,222 @@
           "publishAt": "2026-09-28T07:02:09.040Z",
           "publishedAt": "2026-09-28T07:02:09.040Z",
           "updatedAt": "2026-09-28T08:19:27.382Z"
+        },
+        {
+          "id": 50,
+          "draft": false,
+          "title": "Die Formen, die einen Namen ablehnen: Richard Pearson über das Malen anderer Welten",
+          "author": "Viacheslav Munister & Richard Pearson",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-richard-pearson",
+          "date": "28. Sep. 2026",
+          "excerpt": "Somerset-Maler Richard Pearson über die Rückkehr zur Kunst nach Covid, das Lernen, zu hinterfragen, wofür ein Gemälde ist, das Aufbauen von Öl über Acryl und warum die Formen in Other Worlds unkenntlich bleiben müssen.",
+          "category": "Kunst",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "Malerei",
+            "Abstraktion",
+            "Somerset",
+            "Other Worlds"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds-hero.webp",
+          "previewToken": "1a305455e8a922fff605f064",
+          "publishAt": "2026-09-28T19:04:44.772Z",
+          "publishedAt": "2026-09-28T19:04:44.772Z",
+          "updatedAt": "2026-09-28T19:06:01.550Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Richard Pearson beschreibt nicht die Rückkehr zum Malen als einen Karriereplan. Es begann während Covid, dann beschleunigte es sich, nachdem er und sein Partner David nach Somerset gezogen waren: ein Blitz aus heiterem Himmel, gefolgt von der Disziplin und Gesellschaft einer lokalen Kunstgruppe. Die dort entstandene Arbeit ist abstrakt, aber nicht losgelöst von Erfahrung. Kindheitstage im Nahen Osten kehren zurück als Wüstenlicht und Sandstürme; Lektionen von Wolverhampton Polytechnic kehren zurück als Fragen nach Absicht; Jahre in der Nähe von Textildesignern kehren zurück als Erinnerung daran, dass Farbe per Hand angepasst wurde, bis sie bereit für die Welt war."
+            },
+            {
+              "type": "text",
+              "content": "Seine jüngste Serie, <i>Other Worlds</i>, basiert auf Formen, die sich weigern, Objekte zu werden. Sie können Felsen, Körper oder Organismen andeuten, aber Pearson hält sie ungelöst, damit ein Betrachter Raum hat, eine Emotion zu erkennen, anstatt eines Dinges. Gemälde sind geschichtet, überarbeitet und manchmal fast zerstört, bevor sie sich niederlassen. Acryl kann zu einem beleuchteten Grund unter Öl werden; ein erstes Bild überlebt vielleicht nur als Druck unter dem, was es ersetzt."
+            },
+            {
+              "type": "text",
+              "content": "Wir sprachen mit Richard über die Bildung, die bei ihm geblieben ist, die langsamen und schnellen Zeiten von Öl und Acryl, und warum ein Gemälde manchmal gemacht werden muss, bevor es übermalt werden kann."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds-hero.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Unbetiteltes abstraktes Gemälde von Richard Pearson. Courtesy of the artist."
+            },
+            {
+              "type": "header",
+              "content": "01 · Lernen, warum zu fragen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Du bist im West Midlands aufgewachsen, hast acht Jahre im Nahen Osten verbracht und später den Grundkurs am Wolverhampton Polytechnic studiert. Welcher Teil dieses Lebens hat am deutlichsten deine jetzige Malweise geprägt?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Richard Pearson [RP]:</b> Ich könnte keinen Teil meines Lebens nennen, der meine Praxis geprägt hat. Ich denke, alle deine Lebenserfahrungen prägen, wie du jetzt arbeitest, und sogar neuere Dinge werden dazu beitragen. Aber wenn ich einen nennen müsste, wäre es Wolverhampton Polytechnic. Es war eine großartige Hochschule, geführt von sehr inspirierenden Lehrern und gefüllt mit wunderbaren Studierenden."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Nach dem Grundkurs bist du nach London gezogen und hast Jahre damit verbracht, für kreative Organisationen zu arbeiten. Was hat dir diese Arbeit darüber beigebracht, wie Kunst und Design tatsächlich entstehen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Mein erster Job war bei einem Stoffhersteller, und ich arbeitete im selben Büro wie die Designer. Ich beobachtete sie bei der Arbeit. Der Prozess war damals alles von Hand: keine Computer, nur Zeichnungen, Farben und ein wunderbares Auge für Details. Die Entwürfe, in Gouache gemalt, gingen in die Produktion, und schließlich erhielten wir die Stoffe von den Druckereien. Die Farben wurden angepasst, bis sie kommerziell einsatzbereit waren."
+            },
+            {
+              "type": "header",
+              "content": "02 · Der Wechsel zurück zum Malen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Du hast dich erst in den letzten Jahren ernsthaft der Kunst gewidmet. Was hat das Gleichgewicht verschoben?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Ich begann während Covid wieder zu malen, aber der echte Wandel kam, als mein Partner David und ich nach Somerset zogen. Ich fing einfach an. Es war ein ziemlicher Blitz aus heiterem Himmel. Dann trat ich der lokalen Kunstgruppe bei, die erstaunlich war und meinen Horizont wirklich erweitert hat."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Gab es in dieser Gruppe eine bestimmte Lektion, die deine Herangehensweise an die Leinwand verändert hat?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Der Moment war, als unsere Tutorin, Vera, uns bat, wirklich zu hinterfragen, warum wir die Arbeit machen, wie wir sie machen und welche Botschaft wir vermitteln wollten. Es brachte mich dazu, ernsthaft darüber nachzudenken, was wir tun und warum wir malen und erschaffen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-studio.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Richard Pearson mit seinem Werk während einer zweiwöchigen Gruppenausstellung. Courtesy of the artist."
+            },
+            {
+              "type": "header",
+              "content": "03 · Eine Serie, die natürlich wachsen musste",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Wie begann <i>Other Worlds</i>?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Ich wollte keine Serie malen, aber die Formen, die ich in <i>Other Worlds</i> zu schaffen begann, schienen sich zu vervielfachen. Das erste Gemälde hieß <i>Drifting Forms</i>, und von dort aus ging es weiter. Die Ideen mussten natürlich fließen, ohne gekünstelt zu wirken. Es war ein schöner Prozess, und hoffentlich werden weitere Werke auf organische Weise hinzugefügt. Es lässt sich nicht planen; es muss natürlich geschehen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-drifting-forms.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Drifting Forms</i>, aus der Other Worlds-Serie. Foto mit freundlicher Genehmigung von Richard Pearson."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Sie arbeiten mit Ölfarben und Acryl. Was ermöglicht Ihnen jedes Medium?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Manchmal mische ich sie, beginne mit einer Acryl-Unterzeichnung und folge mit Öl. Acryl kann ein wunderbares Licht hinzufügen, das durch das Öl scheint, und Öl kann dasselbe durch schöne dünne Lasuren tun. Das Tolle an Öl ist, dass es so langsam trocknet, sodass man die Farbe verschieben kann. Acryl ist unmittelbarer; es hängt davon ab, was man tun möchte. Kürzlich habe ich ein großes Gemälde in Acryl gemacht und dann Öl darüber hinzugefügt, was viele Schichten ermöglichte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-acrylic-oil-layers.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Öl- und Acrylschichten in einem Gemälde von Richard Pearson. Courtesy of the artist."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-work-in-progress.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein großes Gemälde im Entstehen, fotografiert im Garten von Richard Pearson. Courtesy of the artist."
+            },
+            {
+              "type": "header",
+              "content": "04 · Herstellung, um zu zerstören",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Weißt du, wie ein Stück endet, bevor du anfängst?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Ich weiß nie, wo es enden wird. Sehr oft übermale ich das Original und beginne mehr oder weniger von neuem. Es ist fast so, als müsste ich etwas erschaffen, um es zu zerstören. Hoffentlich entsteht etwas Besseres daraus. Ich muss diesen Prozess durchlaufen, um etwas zu erreichen, mit dem ich zufrieden bin."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-repainting.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein dicht überarbeitetes abstraktes Gemälde von Richard Pearson. Courtesy of the artist."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Kannst du in der Arbeit etwas aus deiner Kindheit im Nahen Osten zurückverfolgen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Vieles, was ein Künstler malt, stammt aus Erinnerung und dem Unterbewusstsein. Ich konnte keine einzelne Quelle genau bestimmen, aber Wüstenlandschaften erscheinen in <i>Other Worlds</i>. Ein Gemälde, das ich <i>Desert Storm</i> nannte, kommt dem nahe. Wir hatten ziemlich oft riesige Sandstürme, die tagelang andauerten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-desert-storm.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Desert Storm</i>, aus der Serie Other Worlds. Foto mit freundlicher Genehmigung von Richard Pearson."
+            },
+            {
+              "type": "header",
+              "content": "05 · Was eine unbenannte Form halten kann",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Was würden die Formen in <i>Other Worlds</i> verlieren, wenn Sie sie erkennbar machen würden—als Felsen, Körper oder Gebäude?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Die amorphen Formen in der Serie sind Metaphern für unsere Emotionen und nicht greifbare oder erkennbare Objekte. Das ermöglicht es den Betrachtern, ihre eigenen Meinungen zu bilden und mit eigenen Antworten zu gehen, oder mit mehr Fragen. Wenn eine Form erkennbar gemacht würde, denke ich, würde der Betrachter weiterziehen, anstatt darüber nachzudenken, was er sieht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-other-worlds.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein Werk aus Richard Pearsons Other Worlds-Serie. Courtesy of the artist."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Sie haben kürzlich zusammen mit Ksenia Cieslak und Rosaria Valenti im Ilminster Arts Centre ausgestellt. Was haben Sie an Ihrer eigenen Arbeit bemerkt, als sie im Raum mit ihren Arbeiten war?"
+            },
+            {
+              "type": "text",
+              "content": "<b>RP:</b> Es war großartig, meine Gemälde neben den Arbeiten meiner Freunde zu haben. Wir sind alle sehr unterschiedlich, aber irgendwie funktionierte es zusammen—hauptsächlich weil wir alle kräftige, gesättigte Farben verwenden. Ich bemerkte, dass meine Farben dunkler waren und meine Gemälde im Vergleich zu einigen anderen kleiner, aber das war in Ordnung. Es war ein cooler Kontrast, und ich liebte es."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/richard-pearson-studio.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Richard Pearson in der Gruppenausstellung in Ilminster, Somerset. Courtesy of the artist."
+            },
+            {
+              "type": "quote",
+              "content": "Es ist fast so, als müsste ich etwas erschaffen, um es zu zerstören. Hoffentlich entsteht etwas Besseres daraus."
+            },
+            {
+              "type": "note",
+              "content": "Interview von Viacheslav Munister. Antworten von Richard Pearson, leicht bearbeitet für Klarheit und Interpunktion. Alle Kunstwerke und Fotografien courtesy of Richard Pearson."
+            }
+          ]
         }
       ],
       "reviews": [
