@@ -12646,6 +12646,241 @@
           "url": "https://www.davidzwirner.com/exhibitions/2026/roy-decarava-the-sound-i-saw/press-release"
         }
       ]
+    },
+    {
+      "id": 53,
+      "draft": false,
+      "title": "The Museum That Refuses to Be a Monument: BIG’s Suzhou MoCA",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Sep 30, 2026",
+      "publishAt": "2026-09-30T03:00:00.000Z",
+      "publishedAt": "2026-09-30T03:00:00.000Z",
+      "excerpt": "On the shore of Jinji Lake, BIG dissolves a 60,000-square-metre museum into a village of pavilions, gardens and covered walks—turning an institution into a route between the city and the water.",
+      "category": "Architecture",
+      "subcategory": "Museum",
+      "tags": [
+        "Suzhou MoCA",
+        "BIG",
+        "Bjarke Ingels Group",
+        "Suzhou",
+        "museum architecture",
+        "China"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/suzhou-moca-at-dusk.jpg",
+      "previewToken": "c41a66b071b61e669d2e3882",
+      "updatedAt": "2026-09-28T19:47:23.676Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "A museum of contemporary art usually announces itself as an object: a singular mass, an unmistakable silhouette, a new icon placed before the city. On the shore of Jinji Lake, the Suzhou Museum of Contemporary Art begins with the opposite move. It breaks itself apart."
+        },
+        {
+          "type": "text",
+          "content": "Designed by BIG—Bjarke Ingels Group—in collaboration with ARTS Group, VIA.inc and Shanghai Shuishi, the newly opened museum distributes roughly 60,000 square metres across a village of pavilions. A continuous roof draws them together, bending and lifting as it moves between galleries, courtyards and water. The building is large, but its central ambition is not monumentality. It is passage."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-at-dusk.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Suzhou Museum of Contemporary Art at dusk, Suzhou, China, 2026. Architecture: BIG with ARTS Group, VIA.inc and Shanghai Shuishi. Photo courtesy Suzhou MoCA and BIG."
+        },
+        {
+          "type": "header",
+          "content": "I · Between a city and a lake",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The site is compressed between Suzhou Industrial Park and Jinji Lake, with the giant Suzhou Eye Ferris wheel standing at the water’s edge. A conventional museum could have completed this sequence with another autonomous landmark. BIG instead treats the building as connective tissue. Paths enter from the city, pass through gardens and galleries, and continue toward the lake."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-lake-and-ferris-wheel.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The museum and Suzhou Eye on the shore of Jinji Lake. Photo courtesy Suzhou MoCA and BIG."
+        },
+        {
+          "type": "text",
+          "content": "This porosity is the project’s strongest urban idea. A cultural institution can easily become an obstacle: a long façade, a controlled entrance, a paid interior separating public streets from a privileged view. Here, water and landscape penetrate the composition while the public route threads through it. The museum is not placed beside the park. It behaves like part of the park’s circulation system."
+        },
+        {
+          "type": "header",
+          "content": "II · The corridor becomes the building",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The architectural reference is the <i>lang</i>—the covered corridor of the classical Chinese garden. Traditionally, the corridor is more than protection from rain or sun. It edits movement into a sequence of framed views, turns walking into a measured experience and joins pavilions without collapsing their independence."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-aerial-pavilions.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Aerial view of the pavilion village and its continuous roof. Photo courtesy BIG."
+        },
+        {
+          "type": "text",
+          "content": "At Suzhou MoCA, that connective element expands until it becomes the museum’s public identity. The roof does not merely cap a series of rooms. It works as a continuous line of orientation, gathering separate volumes into one route while allowing gardens to remain between them. From the ground, the building arrives as a succession of edges and openings. Only from above—or from a Ferris-wheel gondola—does the entire system become legible."
+        },
+        {
+          "type": "header",
+          "content": "III · A fifth façade made for motion",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The roof is clad in warm-toned stainless steel, folded into slopes and upward-curving eaves. It is inevitably photogenic, but its real audience is moving: visitors approaching through the district, residents in surrounding towers and passengers rising above the site in the Suzhou Eye. The aerial surface becomes a fifth façade."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-contemporary-garden.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The roofline rises above a contemporary garden. Photo courtesy Suzhou MoCA and BIG."
+        },
+        {
+          "type": "text",
+          "content": "Its repetition avoids the single grand gesture. Each pavilion receives a variation of the same roof logic, producing a family resemblance rather than uniformity. The museum’s silhouette therefore changes as one walks. It can appear low and sheltered from a courtyard, then suddenly civic and expansive from across the lake."
+        },
+        {
+          "type": "header",
+          "content": "IV · Reflection without imitation",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Suzhou’s classical gardens are built around controlled encounter: wall and opening, rock and water, concealment and revelation. Copying their historic forms at metropolitan scale would have reduced that tradition to decoration. The museum instead borrows an operating system. It uses multiple pavilions, indirect routes, water courts and serial views to make space unfold over time."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-water-courtyard.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A water courtyard between glass-lined pavilions. Photo courtesy BIG."
+        },
+        {
+          "type": "text",
+          "content": "The rippled glass façades complicate reflection. Garden, structure, sky and visitor overlap in their surfaces, making the boundary between room and landscape visually unstable. Stainless steel warms the otherwise cool material palette, while stone paths and shallow water keep the complex grounded in the bodily scale of walking."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-curved-glass-facade.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Curved glass, rising eaves and a reflecting pool at Suzhou MoCA. Photo courtesy BIG."
+        },
+        {
+          "type": "header",
+          "content": "V · Twelve pavilions, not one neutral box",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The completed museum is described by BIG as a village of twelve pavilions. Their distribution allows galleries, event spaces, a theatre, restaurant and public functions to operate with greater independence than they could inside one enormous volume. Bridges and underground connections give curators alternative routes through the complex."
+        },
+        {
+          "type": "text",
+          "content": "That flexibility has a cost. Fragmentation can make circulation less immediately efficient, and the building asks visitors to surrender the certainty of a central hall from which everything is visible. But this is a productive difficulty. Suzhou MoCA replaces the museum as diagram with the museum as itinerary."
+        },
+        {
+          "type": "header",
+          "content": "VI · Inside the white room",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-gallery-interior.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Interior junction between galleries and public circulation. Photo courtesy Suzhou MoCA and BIG."
+        },
+        {
+          "type": "text",
+          "content": "The galleries themselves are restrained: white walls, pale floors, slender structure and dark linear ceilings. The drama is concentrated at their thresholds. A room opens to water; a roof plane drops into view; daylight enters through tall curved glazing before the visitor returns to the controlled light of an exhibition space."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-white-gallery.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A top-lit gallery beneath the folded roof structure. Photo courtesy BIG."
+        },
+        {
+          "type": "text",
+          "content": "This alternation solves a problem common to destination museums. Architecture can overwhelm art when every gallery is required to repeat the exterior spectacle. Here, much of the interior remains useful and calm. The complex saves its strongest spatial effects for transitions, allowing art rooms to function while movement between them carries the memory of the garden."
+        },
+        {
+          "type": "header",
+          "content": "VII · The view is also an exhibit",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/suzhou-moca-gallery-overlooking-lake.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A gallery overlooking Jinji Lake through rippled glass. Photo courtesy BIG."
+        },
+        {
+          "type": "text",
+          "content": "The lake is never merely a backdrop. It appears as a changing exhibit framed by structure and glass: silver under cloud, reflective at dusk, crowded by the Ferris wheel’s geometry. In a traditional garden, borrowed scenery makes a distant landscape part of a private composition. Suzhou MoCA updates that device for an urban waterfront, borrowing infrastructure, skyline and weather."
+        },
+        {
+          "type": "header",
+          "content": "VIII · An ancient future",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Bjarke Ingels describes the project as a Scandinavian reinterpretation of the Chinese garden and a manifestation of Suzhou’s “ancient future.” The phrase is easy to dismiss as branding, yet the building makes a credible architectural argument behind it. Tradition is not treated as a library of shapes. It is treated as knowledge about sequence, climate, landscape and social movement."
+        },
+        {
+          "type": "text",
+          "content": "The result is most convincing when the roof stops behaving like an image and begins performing ordinary work: shading a public walk, gathering separate rooms, marking a route through rain, or lowering the apparent scale of a vast institution. This is where spectacle and use briefly become the same thing."
+        },
+        {
+          "type": "quote",
+          "content": "The museum’s most radical gesture is not the roof that can be seen from the sky, but the path that remains open at ground level."
+        },
+        {
+          "type": "header",
+          "content": "IX · Verdict",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Suzhou MoCA is unquestionably an icon, and its proximity to a Ferris wheel makes that role impossible to avoid. Yet it is a rare icon that argues for dispersal. Its identity comes from many roofs, many courtyards and many possible routes rather than one sealed object."
+        },
+        {
+          "type": "text",
+          "content": "The project’s success will ultimately depend on whether its porosity survives daily operation—whether public passages remain genuinely public, whether exhibitions inhabit the pavilion system rather than retreat behind it, and whether the gardens mature into more than photographic foreground. Architecturally, however, the premise is already clear: a 60,000-square-metre museum can become less imposing by learning how to be a landscape."
+        },
+        {
+          "type": "note",
+          "content": "Suzhou Museum of Contemporary Art officially opened to the public on 30 August 2026 at 99 You’an Street, Suzhou Industrial Park, Jiangsu, China. Architecture by BIG—Bjarke Ingels Group—in collaboration with ARTS Group, VIA.inc and Shanghai Shuishi Landscape Design. The museum contains approximately 59,500 square metres of floor area and 11,300 square metres of exhibition space. This article was prepared from official project information and photography; it does not claim an in-person visit."
+        },
+        {
+          "type": "link",
+          "content": "Project page — BIG",
+          "url": "https://big.dk/projects/suzhou-museum-of-contemporary-art-18410"
+        },
+        {
+          "type": "link",
+          "content": "About the museum — Suzhou MoCA",
+          "url": "https://www.suzhoumoca.com/en/page/About-the-Art-Museum"
+        },
+        {
+          "type": "link",
+          "content": "Official opening announcement — Suzhou Industrial Park",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/life/202609/de3ebcaa678b4390a6d57bc919468c7c.shtml"
+        }
+      ]
     }
   ],
   "reviews": [
