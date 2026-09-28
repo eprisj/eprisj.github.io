@@ -12219,7 +12219,7 @@
     },
     {
       "id": 51,
-      "draft": true,
+      "draft": false,
       "title": "The World Is Not What It Says: Magritte’s Afterlife at Gagosian London",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -12239,7 +12239,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
       "previewToken": "af164326133e44c0ffbec996",
-      "updatedAt": "2026-09-28T19:33:15.107Z",
+      "updatedAt": "2026-09-28T19:39:34.308Z",
       "content": [
         {
           "type": "text",
@@ -12254,7 +12254,7 @@
           "content": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
           "align": "center",
           "width": 100,
-          "caption": "<i>This Is Still Not a Pipe: The Afterlife of Magritte</i>, installation view, Gagosian Grosvenor Hill, London, 2026. Photo: Prudence Cuming Associates Ltd. Artwork credits: Gagosian/Fondation Magritte."
+          "caption": "This Is Still Not a Pipe: The Afterlife of Magritte, installation view, Gagosian Grosvenor Hill, London, 2026. Photo: Prudence Cuming Associates Ltd. Artwork credits: Gagosian/Fondation Magritte."
         },
         {
           "type": "header",
@@ -12290,7 +12290,7 @@
           "content": "https://api.eprisjournal.com/uploads/magritte-apparition-1928.jpg",
           "align": "center",
           "width": 100,
-          "caption": "René Magritte, <i>L’Apparition (The Apparition)</i>, 1928, oil on canvas, 54 × 73 cm. © 2026 ADAGP, Paris, and DACS, London. Image courtesy Gagosian."
+          "caption": "René Magritte, L’Apparition (The Apparition), 1928, oil on canvas, 54 × 73 cm. © 2026 ADAGP, Paris, and DACS, London. Image courtesy Gagosian."
         },
         {
           "type": "text",
@@ -12310,7 +12310,7 @@
           "content": "https://api.eprisjournal.com/uploads/magritte-curse-1931.jpg",
           "align": "center",
           "width": 100,
-          "caption": "René Magritte, <i>La Malédiction (The Curse)</i>, 1931, oil on canvas, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Paris, and DACS, London. Photo: Antoine van Kaam."
+          "caption": "René Magritte, La Malédiction (The Curse), 1931, oil on canvas, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, Paris, and DACS, London. Photo: Antoine van Kaam."
         },
         {
           "type": "text",
@@ -12330,7 +12330,7 @@
           "content": "https://api.eprisjournal.com/uploads/magritte-philosophers-lamp-1936.jpg",
           "align": "center",
           "width": 100,
-          "caption": "René Magritte, <i>La Lampe philosophique (The Philosopher’s Lamp)</i>, 1936, oil on canvas, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), New York. Photo courtesy Private Collection, Brussels."
+          "caption": "René Magritte, La Lampe philosophique (The Philosopher’s Lamp), 1936, oil on canvas, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), New York. Photo courtesy Private Collection, Brussels."
         },
         {
           "type": "text",
@@ -12350,7 +12350,7 @@
           "content": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
           "align": "center",
           "width": 100,
-          "caption": "René Magritte, <i>L’Empire des lumières (The Dominion of Light)</i>, 1961, oil on canvas, 50 × 73 cm, Heidi Horten Collection, Vienna. © 2026 ADAGP, Paris, and DACS, London. Photo: Prudence Cuming Associates Ltd."
+          "caption": "René Magritte, L’Empire des lumières (The Dominion of Light), 1961, oil on canvas, 50 × 73 cm, Heidi Horten Collection, Vienna. © 2026 ADAGP, Paris, and DACS, London. Photo: Prudence Cuming Associates Ltd."
         },
         {
           "type": "text",
@@ -12370,7 +12370,7 @@
           "content": "https://api.eprisjournal.com/uploads/vija-celmins-pink-pearl-eraser.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Vija Celmins, <i>Pink Pearl Eraser</i>, 1966–67, acrylic on balsa wood, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Image courtesy Gagosian."
+          "caption": "Vija Celmins, Pink Pearl Eraser, 1966–67, acrylic on balsa wood, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Image courtesy Gagosian."
         },
         {
           "type": "text",
@@ -12381,7 +12381,7 @@
           "content": "https://api.eprisjournal.com/uploads/dana-schutz-the-singer-2026.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Dana Schutz, <i>The Singer</i>, 2026, oil on canvas, 203.2 × 175.3 cm. © Dana Schutz. Photo: Stephen Arnold."
+          "caption": "Dana Schutz, The Singer, 2026, oil on canvas, 203.2 × 175.3 cm. © Dana Schutz. Photo: Stephen Arnold."
         },
         {
           "type": "header",
@@ -12431,7 +12431,9 @@
           "content": "Alex Da Corte on René Magritte — Gagosian Quarterly",
           "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
         }
-      ]
+      ],
+      "publishAt": "2026-09-29T03:00:00.000Z",
+      "publishedAt": "2026-09-29T03:00:00.000Z"
     }
   ],
   "reviews": [
