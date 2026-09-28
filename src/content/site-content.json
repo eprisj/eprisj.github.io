@@ -79803,9 +79803,333 @@
         },
         {
           "id": 55,
+          "draft": false,
           "title": "Il dipinto è ancora bagnato: Emma McIntyre e l'arte che si rifiuta di finire",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "date": "2 ott 2026",
+          "publishAt": "2026-10-02T03:00:00.000Z",
+          "publishedAt": "2026-10-02T03:00:00.000Z",
           "excerpt": "Emma McIntyre dipinge con ruggine, rame ossidato, nero di ossa, gravità e tempo—creando opere che continuano a cambiare dopo che l'artista ha smesso di toccarle.",
-          "category": "Arte"
+          "category": "Arte",
+          "subcategory": "Pittura contemporanea",
+          "tags": [
+            "Emma McIntyre",
+            "pittura contemporanea",
+            "astrazione",
+            "materialità",
+            "ossidazione",
+            "David Zwirner"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+          "previewToken": "9eb92971c2bdc4003ce3aad0",
+          "updatedAt": "2026-09-28T20:30:06.223Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "La finzione di un dipinto finito è utile. Dà al museo una data, al mercato un oggetto stabile e allo storico dell'arte un confine: prima del completamento, l'artista stava decidendo; dopo il completamento, l'opera iniziava a significare. I dipinti di Emma McIntyre disturbano quella sequenza. La ruggine continua a sbocciare. Il rame continua a ossidarsi. Una superficie cambia dopo che la mano si è ritirata."
+            },
+            {
+              "type": "text",
+              "content": "In <i>Questo corpo contiene / cose di palude</i>, alla 52 Walker di David Zwirner a New York, McIntyre tratta la pittura meno come l'esecuzione di un'immagine che come l'organizzazione temporanea di reazioni. Olio, ferro, rame, nero di ossa, solvente, pressione, gravità e contatto corporeo si incontrano sulla tela. L'artista avvia condizioni, ma la materia mantiene il diritto di rispondere."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-violet-temple-veil-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Violet for the temple veil, 2026, olio, Flashe, ossido di ferro e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "I · Chi finisce il dipinto?",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La pittura occidentale ha a lungo attribuito autorità all'ultimo tocco. La conclusione conferma l'autorialità: il pittore ha deciso che nessun altro segno è necessario. McIntyre sostituisce questo modello sovrano con la collaborazione. Versa e inclina, preme la plastica a bolle nel pigmento umido, ossida la vernice a base di metallo e prende impressioni dalla sua stessa tavolozza e corpo."
+            },
+            {
+              "type": "text",
+              "content": "Niente di tutto ciò significa rinunciare all'intenzione. Il caso è preparato, osservato e modificato. La distinzione rilevante non è tra controllo e incidente, ma tra controllo completo e controllo reattivo. McIntyre fa una mossa, osserva cosa fa il materiale, e compone la conseguenza."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-solve-et-coagula-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Solve et coagula, 2026, olio, pastello ad olio, vernice di rame e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "II · Alchimia senza misticismo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Solve et coagula</i> nomina l'istruzione alchemica di dissolvere e ricombinare. La frase può sembrare mistica, ma il processo di McIntyre è ostinatamente fisico. Il ferro incontra una soluzione ossidante e diventa ruggine. Il rame produce composti blu-verde. Il pigmento diluito con solvente segue la gravità su un supporto orizzontale."
+            },
+            {
+              "type": "text",
+              "content": "L'alchimia qui non è una fantasia di trasformare materia vile in oro. È un metodo per far sì che le sostanze rivelino comportamenti che la tecnica convenzionale dello studio cerca di stabilizzare. La vernice smette di essere colore trasportato da un mezzo neutro; diventa una chimica attiva con durata, incompatibilità e rischio."
+            },
+            {
+              "type": "header",
+              "content": "III · Ruggine è un orologio",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-pearls-ambergris-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Pearls of ambergris, 2026, olio, vernice di ferro e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "La ruggine è di solito intesa come fallimento: prova che una superficie protetta è stata violata e il tempo è entrato. McIntyre rende quella breccia produttiva. L'ossidazione crea fioriture arancioni e marroni i cui bordi registrano il movimento di liquido e aria. Il segno non è dipinto per assomigliare alla corrosione. È corrosione."
+            },
+            {
+              "type": "text",
+              "content": "Questa differenza riduce la rappresentazione a evento. Un paesaggista può rappresentare il tempo; McIntyre permette all'atmosfera di partecipare chimicamente all'opera. Ogni passaggio ossidato è un orologio le cui unità sono umidità, ossigeno e esposizione. Il dipinto possiede un tempo che non coincide esattamente con il lavoro dell'artista."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-iliaster-flowers-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Questo iliaster fiorisce come il vento, 2026, olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "IV · Un corpo fatto di cose dello stagno",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Il titolo della mostra deriva dalla poesia di Diane di Prima “Show Me Your Other Body”: “questo corpo contiene / cose di palude / viscosa spessa / Melma generatrice di vita.” Il corpo immaginato qui non è una figura sigillata separata dall'ambiente. È poroso, minerale, umido e generativo."
+            },
+            {
+              "type": "text",
+              "content": "Le astrazioni di McIntyre si spostano ripetutamente tra scale corporee e geologiche. Una macchia può somigliare a una pelle contusa, a un sistema di nuvole, a un'acqua di stagno o a una cultura microscopica. Nessuna di queste interpretazioni diventa definitiva. Il dipinto si comporta come un corpo proprio perché non può essere ridotto all'anatomia: assorbe, reagisce, cicatrizza e cambia stato."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-bright-medusas-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Bright medusas, 2026, olio, pastello ad olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "V · Il corpo senza figura",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L'espressionismo astratto ha reso il gesto una prova del corpo dell'artista, ma spesso ha trasformato quel corpo in una firma eroica. McIntyre utilizza il contatto corporeo in modo diverso. Impressioni, trascinamenti e versamenti appaiono accanto a pattern industriali ripetuti e reazioni chimiche. L'agenzia è distribuita tra mano, strumento e sostanza."
+            },
+            {
+              "type": "text",
+              "content": "In <i>Bright medusas</i>, una griglia di pellicola a bolle attraversa un campo rosa vivace. Il modesto materiale di imballaggio produce un pattern cellulare che può essere letto come pelle, uova, pixel o una membrana protettiva. La ripetizione meccanica e il colore sensuale non sono opposti. Il corpo del dipinto è costruito dalla collisione tra di loro."
+            },
+            {
+              "type": "header",
+              "content": "VI · Giotto entra attraverso rame",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-beautiful-old-lies-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Beautiful old lies, 2026, vernice di rame ossidato, olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "<i>Beautiful old lies</i> trasforma il rame ossidato in un campo di blu saturo. Il colore evoca il prestigio del lapis lazuli nella Cappella Scrovegni di Giotto mentre arriva attraverso una storia materiale completamente diversa. Il blu medievale significava la spesa di pigmento minerale e l'autorità dell'immagine sacra. Il blu di McIntyre è prodotto dal cambiamento, dall'esposizione e dalla corrosione."
+            },
+            {
+              "type": "text",
+              "content": "Un'ala d'angelo semiastratta derivata da Giotto entra sulla superficie come un frammento riconoscibile. La figurazione non organizza il dipinto; si posiziona brevemente all'interno di un sistema meteorologico materiale. Il riferimento storico non è quindi né citazione né omaggio. Testa se il sacro può sopravvivere quando la sua immagine e sostanza non garantiscono più la permanenza."
+            },
+            {
+              "type": "header",
+              "content": "VII · Pittura contro lo schermo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Un'immagine digitale promette coerenza. Lo stesso file può apparire su migliaia di schermi, variando nella calibrazione ma non nei dati sottostanti. I dipinti di McIntyre resistono a questa forma di identità. Il loro colore dipende dalla luce riflessa; passaggi metallici e ossidati cambiano con l'angolo; un lento cambiamento chimico separa l'oggetto di domani dalla fotografia scattata oggi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-swear-by-shadows-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Swear it by the shadows, 2026, olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Questo non li rende puri o tecnologicamente innocenti. Circolano online, attraverso fiere e come immagini di mercato. Ma la riproduzione contiene un fallimento onesto: non può stabilizzare completamente il suo soggetto. In un momento in cui le immagini sintetiche possono imitare quasi ogni stile pittorico, la durata materiale diventa più di un mestiere. Diventa una forma di differenza."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Monocromo come tempo atmosferico",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-muted-rain-tones-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Those muted those rain tones, 2026, olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "Diversi dipinti si inclinano verso il monocromo senza accettare la sua pretesa storica di purezza. Un monocromo di McIntyre è affollato di temperatura, macchie, segni sepolti e densità concorrenti. Non rimuove il mondo dalla pittura. Lascia che il mondo arrivi come tempo atmosferico."
+            },
+            {
+              "type": "text",
+              "content": "Il campo atmosferico cambia mentre l’attenzione dello spettatore si sposta. Una zona pallida si addensa in un corpo; una macchia scura diventa spazio; una linea graffiata si legge brevemente come scrittura e si dissolve di nuovo. La percezione ripete il processo materiale: le forme coagulano e si disperdono."
+            },
+            {
+              "type": "header",
+              "content": "IX · Bone black e l’etica del materiale",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-crackle-and-drag-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Crackle and drag, 2026, olio, bone black e media misti su tela. Cortesia dell’artista e David Zwirner."
+            },
+            {
+              "type": "text",
+              "content": "In <i>Crackle and drag</i>, vernice bianca attraversa un terreno realizzato con bone black—un pigmento tradizionalmente prodotto da ossa animali carbonizzate. Il nome induce una consapevolezza che il colore non è mai semplicemente ottico. I pigmenti hanno corpi, fonti, rotte commerciali e residui."
+            },
+            {
+              "type": "text",
+              "content": "La pittura contemporanea spesso parla di materialità come piacere tattile, ma i materiali sono anche prove di estrazione e trasformazione. Il rame deve essere estratto; il ferro si corrode; l'osso diventa carbonio. McIntyre non trasforma ogni ingrediente in un esplicito argomento morale. Mantiene la sua vita precedente udibile all'interno del dipinto."
+            },
+            {
+              "type": "header",
+              "content": "X · Il dittico come esperimento",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Violet for the temple veil</i> iniziò come due pannelli versati separatamente con vernice blu-nero prima di essere uniti. La simmetria risultante somiglia a un test di Rorschach, a un libro aperto o a un corpo diviso lungo un asse verticale. Eppure le metà non si rispecchiano perfettamente. La variazione materiale interrompe il desiderio di equivalenza."
+            },
+            {
+              "type": "text",
+              "content": "Il dittico rende visibile il metodo. L'unione non è la definitiva occultazione della differenza ma la sua esposizione. La pittura diventa comparativa: due superfici ricevono condizioni correlate e producono risultati distinti. Lo spettatore cerca non un'immagine singola ma l'intervallo tra le reazioni."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-the-blue-hour-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, The blue hour, 2026, opera su carta. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XI · La carta ricorda la palette",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le opere su carta di McIntyre non sono illustrazioni preparatorie per tele più grandi. Spesso iniziano con miscele residue di dipinti precedenti o impressioni dirette della palette stessa. Un sottoprodotto diventa un inizio. I rifiuti diventano un archivio di possibili colori."
+            },
+            {
+              "type": "text",
+              "content": "Questa economia ciclica dello studio complica la fantasia del capolavoro isolato. Ogni opera condivide materia e decisioni con altre. La vernice viaggia tra supporti; motivi migrano; una fine lascia il residuo da cui inizia un'altra composizione. La pratica è rizomatica perché l'influenza si muove lateralmente piuttosto che lungo una linea pulita dal bozzetto all'opera finita."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-hawthorn-eyes-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Hawthorn eyes, 2026, opera su carta. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XII · Il romanticismo del caso",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L'astrazione guidata dal processo porta un pericolo familiare: gli effetti chimici possono diventare spettacolo, e “lasciare parlare i materiali” può mascherare decisioni deboli. Ruggine, fioriture, versamenti e impronte sono visivamente convincenti prima di essere compositivamente necessari. L'incidente non è automaticamente libertà."
+            },
+            {
+              "type": "text",
+              "content": "I migliori dipinti di McIntyre evitano questa trappola facendo della contingenza una risposta alla struttura. Un frammento figurativo nitido attraversa un campo disperso; un bordo duro interrompe una lavatura; un colore brutto impedisce all'atmosfera di diventare di buon gusto. L'opera riesce quando la sorpresa materiale non è la conclusione ma il prossimo problema."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/emma-mcintyre-roses-of-pieria-2026.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Emma McIntyre, Le rose di Pieria, 2026, olio e media misti su tela. Cortesia dell'artista e David Zwirner."
+            },
+            {
+              "type": "header",
+              "content": "XIII · Ciò che rimane incompiuto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Nessuna opera d'arte sfugge letteralmente al completamento. A un certo punto il dipinto lascia lo studio, riceve un titolo, entra in una mostra e diventa un oggetto di proprietà. La conservazione può eventualmente lavorare per rallentare le stesse trasformazioni che l'artista ha invitato. La vita istituzionale ricostruisce stabilità attorno a materia instabile."
+            },
+            {
+              "type": "text",
+              "content": "Ma il lavoro di McIntyre mantiene un residuo produttivo. Il completamento diventa una soglia negoziata piuttosto che un fatto naturale. L'artista smette di comporre; la chimica non si ferma del tutto. Il collezionista acquisisce un oggetto ma non il controllo perfetto sul suo aspetto futuro. Il tempo non è danno proveniente dall'esterno. È uno dei materiali già inclusi."
+            },
+            {
+              "type": "quote",
+              "content": "McIntyre non dipinge un'immagine di cambiamento. Lei dà al cambiamento una paternità limitata all'interno del dipinto."
+            },
+            {
+              "type": "header",
+              "content": "XIV · Verdetto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Questo corpo contiene / cose di palude</i> offre una risposta convincente a un problema centrale nell'astrazione contemporanea: come può un dipinto rimanere materialmente intelligente dopo che il linguaggio di gesto, macchia e caso è diventato familiare? La risposta di McIntyre è rendere quei segni conseguenze di reazioni reali, procedure corporee e materiali storici."
+            },
+            {
+              "type": "text",
+              "content": "Le pitture non sono vive, ma non sono nemmeno inerti nel modo in cui le loro riproduzioni digitali suggeriscono. Si ossidano, riflettono, assorbono e invecchiano. Il loro rifiuto di finire è modesto piuttosto che teatrale. Ci ricorda che ogni immagine stabile è un accordo temporaneo tra materia, tempo e le condizioni sotto le quali qualcuno sta guardando."
+            },
+            {
+              "type": "note",
+              "content": "Emma McIntyre: Questo corpo contiene / roba paludosa è da David Zwirner, 52 Walker Street, New York, dal 18 settembre al 24 ottobre 2026. Tutte le opere in mostra sono state realizzate nel 2026. Questo articolo è stato preparato con materiali ufficiali della mostra e interviste pubblicate; non garantisce una visita in presenza. Le immagini sono riprodotte per revisione editoriale con crediti forniti da David Zwirner."
+            },
+            {
+              "type": "link",
+              "content": "Questo corpo contiene / roba paludosa — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre"
+            },
+            {
+              "type": "link",
+              "content": "Comunicato stampa della mostra — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2026/emma-mcintyre/press-release"
+            },
+            {
+              "type": "link",
+              "content": "Intervista a Emma McIntyre — David Zwirner / Flaunt",
+              "url": "https://www.davidzwirner.com/news/2023/emma-mcintyre-interviewed-in-flaunt"
+            },
+            {
+              "type": "link",
+              "content": "Se non, inverno: ossidazione e stampa — David Zwirner",
+              "url": "https://www.davidzwirner.com/exhibitions/2024/emma-mcintyre-if-not-winter"
+            }
+          ]
         }
       ],
       "reviews": [
