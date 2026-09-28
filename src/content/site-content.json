@@ -55234,13 +55234,13 @@
         },
         {
           "id": 51,
-          "draft": true,
+          "draft": false,
           "title": "El mundo no es lo que dice: la vida después de Magritte en Gagosian Londres",
           "author": "Viacheslav Munister",
           "role": "Autor",
           "authorId": "author-1784732936927-kw554",
-          "date": "29 sep 2026",
-          "excerpt": "En Gagosian Londres, René Magritte se coloca junto a más de cuarenta artistas para probar no quién copió sus motivos, sino quién heredó su propuesta más profunda: que una imagen ordinaria puede volverse poco confiable sin dejar de parecer ordinaria.",
+          "date": "29 sep, 2026",
+          "excerpt": "En Gagosian Londres, René Magritte se coloca junto a más de cuarenta artistas para probar no quién copió sus motivos, sino quién heredó su proposición más profunda: que una imagen ordinaria puede volverse poco confiable sin dejar de parecer ordinaria.",
           "category": "Arte",
           "subcategory": "Exposición",
           "tags": [
@@ -55254,7 +55254,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
           "previewToken": "af164326133e44c0ffbec996",
-          "updatedAt": "2026-09-28T19:36:46.893Z",
+          "updatedAt": "2026-09-28T19:51:54.350Z",
           "content": [
             {
               "type": "text",
@@ -55269,7 +55269,7 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-afterlife-installation-01.jpg",
               "align": "center",
               "width": 100,
-              "caption": "<i>Esto todavía no es una tubería: La vida después de Magritte</i>, vista de instalación, Gagosian Grosvenor Hill, Londres, 2026. Foto: Prudence Cuming Associates Ltd. Créditos de la obra: Gagosian/Fondation Magritte."
+              "caption": "Esto todavía no es una tubería: La vida después de Magritte, vista de la instalación, Gagosian Grosvenor Hill, Londres, 2026. Foto: Prudence Cuming Associates Ltd. Créditos de la obra: Gagosian/Fondation Magritte."
             },
             {
               "type": "header",
@@ -55298,14 +55298,14 @@
             },
             {
               "type": "text",
-              "content": "<i>L’Apparition</i> (1928) demuestra la estructura debajo de la imagen familiar de Magritte. Un campo oscuro sostiene formas que parecen haber llegado de sistemas incompatibles: fragmentos de paisaje, sugerencia corporal, diagrama y objeto. La superficie no pide ser admirada como pincelada. Pide ser inspeccionada como si fuera evidencia de un evento cuyas reglas no han sido reveladas."
+              "content": "<i>La Aparición</i> (1928) demuestra la estructura debajo de la imagen familiar de Magritte. Un campo oscuro sostiene formas que parecen haber llegado de sistemas incompatibles: fragmentos de paisaje, sugerencia corporal, diagrama y objeto. La superficie no pide ser admirada como pincelada. Pide ser inspeccionada como si fuera evidencia de un evento cuyas reglas no han sido reveladas."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/magritte-apparition-1928.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Apparition (La Aparición)</i>, 1928, óleo sobre lienzo, 54 × 73 cm. © 2026 ADAGP, París, y DACS, Londres. Imagen cortesía de Gagosian."
+              "caption": "René Magritte, La Aparición (The Apparition), 1928, óleo sobre lienzo, 54 × 73 cm. © 2026 ADAGP, París, y DACS, Londres. Imagen cortesía de Gagosian."
             },
             {
               "type": "text",
@@ -55325,11 +55325,11 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-curse-1931.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Malédiction (La Maldición)</i>, 1931, óleo sobre lienzo, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, París, y DACS, Londres. Foto: Antoine van Kaam."
+              "caption": "René Magritte, La Malédiction (La Maldición), 1931, óleo sobre lienzo, 54 × 73 cm, Museum Voorlinden, Wassenaar. © 2026 ADAGP, París, y DACS, Londres. Foto: Antoine van Kaam."
             },
             {
               "type": "text",
-              "content": "Esta es una razón por la cual las nubes de Magritte sobreviven tan fácilmente en publicidad y diseño. Son tanto clima como dispositivo gráfico, naturaleza y telón de fondo prefabricado. Pero la vida comercial puede ocultar la perturbación original. Su cielo no es libertad. Es una superficie que pretende ser profundidad."
+              "content": "Esta es una de las razones por las que las nubes de Magritte sobreviven tan fácilmente en publicidad y diseño. Son tanto clima como dispositivo gráfico, naturaleza y telón de fondo prefabricado. Pero la vida comercial posterior puede ocultar la perturbación original. Su cielo no es libertad. Es una superficie que pretende ser profundidad."
             },
             {
               "type": "header",
@@ -55345,11 +55345,11 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-philosophers-lamp-1936.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>La Lampe philosophique (La lámpara del filósofo)</i>, 1936, óleo sobre lienzo, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), Nueva York. Foto cortesía de Colección Privada, Bruselas."
+              "caption": "René Magritte, La Lampe philosophique (La lámpara del filósofo), 1936, óleo sobre lienzo, 50 × 66 cm. © 2026 C. Herscovici/Artists Rights Society (ARS), Nueva York. Foto cortesía de Colección Privada, Bruselas."
             },
             {
               "type": "text",
-              "content": "Magritte llamó repetidamente a objetos ordinarios “problemas”: el problema de la ventana, la puerta, la montaña. La formulación sigue siendo útil porque niega a simbolismo una victoria fácil. Una pipa no necesita representar una idea estable. Se convierte en un problema porque la pintura la separa del uso mientras mantiene su identidad intacta."
+              "content": "Magritte llamó repetidamente a objetos ordinarios “problemas”: el problema de la ventana, la puerta, la montaña. La formulación sigue siendo útil porque niega a simbolismo una victoria fácil. Una pipa no necesita representar una idea estable. Se convierte en un problema porque la pintura la separa de su uso mientras mantiene su identidad intacta."
             },
             {
               "type": "header",
@@ -55365,7 +55365,7 @@
               "content": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
               "align": "center",
               "width": 100,
-              "caption": "René Magritte, <i>L’Empire des lumières (El dominio de la luz)</i>, 1961, óleo sobre lienzo, 50 × 73 cm, Colección Heidi Horten, Viena. © 2026 ADAGP, París, y DACS, Londres. Foto: Prudence Cuming Associates Ltd."
+              "caption": "René Magritte, L’Empire des lumières (El dominio de la luz), 1961, óleo sobre lienzo, 50 × 73 cm, Colección Heidi Horten, Viena. © 2026 ADAGP, París, y DACS, Londres. Foto: Prudence Cuming Associates Ltd."
             },
             {
               "type": "text",
@@ -55378,25 +55378,25 @@
             },
             {
               "type": "text",
-              "content": "Las respuestas contemporáneas más fuertes no reproducen la manzana, la nube o el sombrero hongo. Heredan el método de Magritte de hacer que un objeto traicione su categoría. <i>Pink Pearl Eraser</i> de Vija Celmins (1966–67) amplía una herramienta de corrección desechable en una escultura pintada de madera de balsa. Permanece reconocible como una goma de borrar mientras se vuelve incapaz de borrar. El uso ha sido desplazado por la escala."
+              "content": "Las respuestas contemporáneas más fuertes no reproducen la manzana, la nube o el sombrero bombín. Heredan el método de Magritte de hacer que un objeto traicione su categoría. <i>Pink Pearl Eraser</i> de Vija Celmins (1966–67) amplía una herramienta de corrección desechable en una escultura pintada de madera de balsa. Permanece reconocible como una goma de borrar mientras se vuelve incapaz de borrar. El uso ha sido desplazado por la escala."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/vija-celmins-pink-pearl-eraser.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Vija Celmins, <i>Pink Pearl Eraser</i>, 1966–67, acrílico sobre madera de balsa, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Imagen cortesía de Gagosian."
+              "caption": "Vija Celmins, Pink Pearl Eraser, 1966–67, acrílico sobre madera de balsa, 17.1 × 49.5 × 8.3 cm. © Vija Celmins. Imagen cortesía de Gagosian."
             },
             {
               "type": "text",
-              "content": "La nueva pintura de Dana Schutz <i>The Singer</i> (2026) opera más lejos de la iconografía de Magritte pero cerca de su lógica teatral. La figura y el plano de la imagen parecen negociar cuál de los dos está permitido a contener al otro. No es una cita; es una continuación de la misma desconfianza en el espacio pictórico estable."
+              "content": "La nueva pintura de Dana Schutz <i>The Singer</i> (2026) opera más allá de la iconografía de Magritte pero cerca de su lógica teatral. La figura y el plano pictórico parecen negociar cuál de los dos está permitido a contener al otro. No es una cita; es una continuación de la misma desconfianza en el espacio pictórico estable."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/dana-schutz-the-singer-2026.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Dana Schutz, <i>The Singer</i>, 2026, óleo sobre lienzo, 203.2 × 175.3 cm. © Dana Schutz. Foto: Stephen Arnold."
+              "caption": "Dana Schutz, The Singer, 2026, óleo sobre lienzo, 203.2 × 175.3 cm. © Dana Schutz. Foto: Stephen Arnold."
             },
             {
               "type": "header",
@@ -55413,7 +55413,7 @@
             },
             {
               "type": "text",
-              "content": "Da Corte identifica algo aún más anticuado en Magritte: opacidad. Estas imágenes no revelan el proceso interno del artista, proporcionan una interpretación correcta o recompensan al espectador con acceso completo. Siguen siendo claras y reservadas a la vez. En una cultura organizada en torno a la explicación, la divulgación y el contexto instantáneamente buscable, esa negativa se siente como algo contemporáneo."
+              "content": "Da Corte identifica algo aún más anticuado en Magritte: opacidad. Estas imágenes no revelan el proceso interno del artista, proporcionan una interpretación correcta o recompensan al espectador con acceso completo. Siguen siendo claras y reservadas a la vez. En una cultura organizada en torno a la explicación, la divulgación y el contexto instantáneamente buscable, esa negativa se siente como algo contemporáneo en la actualidad."
             },
             {
               "type": "quote",
@@ -55446,7 +55446,9 @@
               "content": "Alex Da Corte sobre René Magritte — Gagosian Quarterly",
               "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
             }
-          ]
+          ],
+          "publishAt": "2026-09-29T03:00:00.000Z",
+          "publishedAt": "2026-09-29T03:00:00.000Z"
         }
       ],
       "reviews": [
