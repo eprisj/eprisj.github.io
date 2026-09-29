@@ -13,7 +13,13 @@ const LIVE_CONTENT = '/opt/epris-content/site-content.json';
 const contentPath = process.env.EPRIS_CONTENT_PATH
   || (existsSync(LIVE_CONTENT) ? LIVE_CONTENT : join(rootDir, 'src', 'content', 'site-content.json'));
 const SITE_ORIGIN = 'https://eprisjournal.com';
-const DEFAULT_IMAGE = `${SITE_ORIGIN}/images/featured.png`;
+const DEFAULT_IMAGE = `${SITE_ORIGIN}/og/default.jpg`;
+/* Карточки превью разделов (1200×630) лежат в public/og/<раздел>.jpg и
+   рисуются ~/epris-tools/og_cards.py. Раньше у всех разделов было одно и то
+   же featured.png – рендер стола из снятого 3D-музея, который в ленте
+   мессенджера ничего не говорил ни о журнале, ни о разделе. */
+const routeImage = (route) => (route && existsSync(join(rootDir, 'public', 'og', `${route}.jpg`)))
+  ? `${SITE_ORIGIN}/og/${route}.jpg` : (route ? DEFAULT_IMAGE : `${SITE_ORIGIN}/og/home.jpg`);
 const SITE_NAME = 'EPRIS Journal';
 const SITE_DESCRIPTION = 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design, artists, designers and cities in context.';
 const SITE_KEYWORDS = [
@@ -526,7 +532,7 @@ const ROUTES = {
   about: 'About',
   manifest: 'Manifesto',
   studio: 'Studio',
-  issue: 'Issue',
+  issue: 'The Temperature of Time · Autumn 2026',
   design: 'Design',
   radio: 'Radio',
   podcasts: 'Podcasts',
@@ -562,7 +568,7 @@ const ROUTE_DESCRIPTIONS = {
   about: 'Meet EPRIS, an independent international journal and cultural platform for art, architecture and interior design.',
   manifest: 'The EPRIS declaration on meaningful modernity, cultural accessibility and independent editorial practice.',
   studio: 'Editorial, visual and cultural projects by EPRIS Studio.',
-  issue: 'Read the current digital issue of EPRIS Journal.',
+  issue: 'The Temperature of Time – EPRIS Journal, Autumn 2026, the complete edition: every story, laid out as a printed magazine. Read it online or download the PDF.',
   design: 'A curated selection of contemporary furniture, objects and interior design by EPRIS.',
   radio: 'Listen to EPRIS Radio: sound, music and cultural programming.',
   podcasts: 'Conversations and audio stories about contemporary art, architecture, design and cities.',
@@ -616,14 +622,16 @@ function routeHead(route, label) {
     <link rel="canonical" href="${url}" />
         <meta property="og:title" content="${label} | EPRIS Journal" />
     <meta property="og:description" content="${escapeAttr(description)}" />
-    <meta property="og:image" content="${DEFAULT_IMAGE}" />
+    <meta property="og:image" content="${routeImage(canonicalRoute)}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${url}" />
     <meta property="og:site_name" content="EPRIS Journal" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${label} | EPRIS Journal" />
     <meta name="twitter:description" content="${escapeAttr(description)}" />
-    <meta name="twitter:image" content="${DEFAULT_IMAGE}" />
+    <meta name="twitter:image" content="${routeImage(canonicalRoute)}" />
     <script type="application/ld+json">${safeJson(schema)}</script>
     ${organizationSchema ? `<script type="application/ld+json">${safeJson(organizationSchema)}</script>` : ''}
     ${breadcrumbs ? `<script type="application/ld+json">${safeJson(breadcrumbs)}</script>` : ''}`;
@@ -661,6 +669,40 @@ for (const [route, label] of Object.entries(ROUTES)) {
   mkdirSync(routeDir, { recursive: true });
   writeFileSync(join(routeDir, 'index.html'), pageHtml);
   console.log(`Generated: /${route}`);
+}
+
+/* Анкеты авторов живут в SPA по адресу /f/<slug>; без своей страницы ссылка
+   в мессенджере показывала бы превью главной. Для разосланных анкет – своя
+   шапка на языке анкеты и карточка og/form.jpg. */
+const FORM_PAGES = [
+  { slug: 'interview-nicolas-delarre', lang: 'fr_FR', title: 'Nicolas Delarre – entretien pour EPRIS Journal',
+    description: 'Un entretien avec le photographe Nicolas Delarre sur le « photographisme », l’architecture, la nature et les miroirs de la ville.' },
+];
+for (const f of FORM_PAGES) {
+  for (const base of ['f', 'form']) {
+    const url = `${SITE_ORIGIN}/f/${f.slug}`;
+    const head = `<title>${escapeHtml(f.title)}</title>
+    <meta name="description" content="${escapeAttr(f.description)}" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="${url}" />
+    <meta property="og:title" content="${escapeAttr(f.title)}" />
+    <meta property="og:description" content="${escapeAttr(f.description)}" />
+    <meta property="og:image" content="${SITE_ORIGIN}/og/form.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:site_name" content="EPRIS Journal" />
+    <meta property="og:locale" content="${f.lang}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(f.title)}" />
+    <meta name="twitter:description" content="${escapeAttr(f.description)}" />
+    <meta name="twitter:image" content="${SITE_ORIGIN}/og/form.jpg" />`;
+    const dir = join(distDir, base, f.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'index.html'), template.replace('<!--TITLE-->', head));
+  }
+  console.log(`Generated: /f/${f.slug}`);
 }
 
 // Homepage: same head as the shell, but a real body with an h1, sections,
