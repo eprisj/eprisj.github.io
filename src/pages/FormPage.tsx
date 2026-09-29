@@ -85,6 +85,15 @@ const COPY = {
         previewBanner: 'Попередній перегляд. Так анкету бачить автор; надіслати відповіді звідси не можна.',
         attach: 'Прикріпити файли', uploading: 'Завантажуємо…', remove: 'Прибрати',
         tooLarge: 'Файл завеликий.', uploadFailed: 'Не завантажилось. Спробуйте ще раз.', noSpace: 'На сервері скінчилось місце. Повідомте редакцію.' },
+  FR: { loading: 'Chargement du questionnaire…', closed: 'Ce questionnaire est clos.', missing: 'Questionnaire introuvable.',
+        invite: 'Ce questionnaire est ouvert sur invitation. Utilisez le lien personnel envoyé par la rédaction.',
+        required: 'Merci de remplir les champs signalés.', send: 'Envoyer mes réponses', sending: 'Envoi…',
+        sent: 'Merci. Vos réponses sont entre les mains de la rédaction.', error: 'L’envoi a échoué. Réessayez dans une minute.',
+        requiredMark: 'obligatoire', invitedAs: 'Répond', progress: 'Rempli', thisRequired: 'Cette réponse est obligatoire.', left: 'Restant', dropHint: 'ou déposez-les ici', filesFull: 'Nombre maximal de fichiers :', minLength: 'au moins', closedDeadline: 'La date limite de ce questionnaire est passée.', closedLimit: 'Ce questionnaire a reçu toutes les réponses attendues.',
+        savedHere: 'Enregistré sur cet appareil. Vous pouvez fermer l’onglet et revenir plus tard.', restored: 'Nous avons retrouvé les réponses commencées plus tôt.', leaveWarning: 'Vos réponses sont enregistrées ici, mais pas encore envoyées.',
+        previewBanner: 'Aperçu. Voici le questionnaire tel que le voit l’auteur ; impossible d’envoyer des réponses d’ici.',
+        attach: 'Joindre des fichiers', uploading: 'Envoi…', remove: 'Retirer',
+        tooLarge: 'Ce fichier est trop lourd.', uploadFailed: 'Échec de l’envoi. Réessayez.', noSpace: 'Le serveur est plein. Prévenez la rédaction.' },
 } as const;
 
 function copyFor(language?: string) {
