@@ -340,17 +340,17 @@ export function IssuePage({
   /* Раздел «Выпуск» открывается полным изданием: онлайн-читалка и PDF, ниже –
      поддержка журнала. Если манифест издания не загрузился, раздел остаётся
      таким, каким был (прежние выпуски с архивом). */
-  if (editionStatus === 'loading') return <div className="min-h-screen bg-[#111111]" aria-busy="true" />;
+  if (editionStatus === 'loading') return <div className="pt-16 min-h-screen bg-[var(--c-bg)]" aria-busy="true" />;
   if (!manifest) return <div className="pt-16 min-h-screen bg-[var(--c-bg)]">{detail}</div>;
 
   return (
-    <div className="min-h-screen bg-[var(--c-bg)]">
+    <div className="pt-16 min-h-screen bg-[var(--c-bg)]">
       <EditionShowcase manifest={manifest} base={edition.base} lang={lang} onRead={setReaderPage} onSite={onOpenArticleId} />
 
       {/* Вместо архива прежних выпусков – поддержка журнала: полное издание
           уже вобрало всё, что в них выходило. */}
-      <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+      <section>
+        <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-12 pb-16">
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-2xl md:text-4xl tracking-[-0.03em] text-[var(--c-accent)] border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-8">
             {w.support}
           </h2>
