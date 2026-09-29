@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, ArrowRight, BookOpen, Download, Grid3x3, List, Maximize2, Minimize2, X, ZoomIn, ZoomOut } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Check, Copy, Download, Grid3x3, List, Maximize2, Minimize2, Quote, Share2, X, ZoomIn, ZoomOut } from 'lucide-react';
 
 /* Онлайн-версия печатного выпуска. Сам выпуск собирается вне сайта
    (Desktop/…/EPRIS-Autumn-Issue-2026: build_complete_issue.py → render-pdf.mjs →
@@ -45,15 +45,46 @@ export const megabytes = (bytes: number) => `${Math.round(bytes / 1024 / 1024)} 
 /* Подписи интерфейса. Сам выпуск английский, а рамка вокруг него говорит на
    языке сайта. */
 const WORDS: Record<string, Record<string, string>> = {
-  EN: { support: 'Support EPRIS', read: 'Read online', download: 'Download PDF', contents: 'Contents', pages: 'pages', stories: 'stories', reviews: 'reviews', sections: 'sections', close: 'Close', prev: 'Previous page', next: 'Next page', all: 'All pages', zoom: 'Read closer', unzoom: 'Whole page', page: 'Page', onsite: 'On the site', inside: 'Inside the issue', archive: 'Issue archive', archiveNote: 'Earlier issues, as they appeared on the site', full: 'Full screen', lede: 'Everything EPRIS has published, from the doors of Tbilisi in spring to the museum we open this October: every story in full, laid out as a printed magazine. Read it here, page by page, or take the PDF with you.', section: 'Section', hideArchive: 'Hide' },
-  RU: { support: 'Поддержать EPRIS', read: 'Читать онлайн', download: 'Скачать PDF', contents: 'Содержание', pages: 'страниц', stories: 'материалов', reviews: 'рецензий', sections: 'разделов', close: 'Закрыть', prev: 'Предыдущая страница', next: 'Следующая страница', all: 'Все страницы', zoom: 'Крупнее', unzoom: 'Вся страница', page: 'Страница', onsite: 'На сайте', inside: 'Внутри выпуска', archive: 'Архив выпусков', archiveNote: 'Прежние выпуски в том виде, в каком они выходили на сайте', full: 'На весь экран', lede: 'Всё, что EPRIS опубликовал – от дверей Тбилиси весной до музея, который мы открываем в октябре: каждый материал целиком, свёрстанный как печатный журнал. Читайте здесь, страница за страницей, или возьмите PDF с собой.', section: 'Раздел', hideArchive: 'Свернуть' },
-  UA: { support: 'Підтримати EPRIS', read: 'Читати онлайн', download: 'Завантажити PDF', contents: 'Зміст', pages: 'сторінок', stories: 'матеріалів', reviews: 'рецензій', sections: 'розділів', close: 'Закрити', prev: 'Попередня сторінка', next: 'Наступна сторінка', all: 'Усі сторінки', zoom: 'Більше', unzoom: 'Уся сторінка', page: 'Сторінка', onsite: 'На сайті', inside: 'Усередині випуску', archive: 'Архів випусків', archiveNote: 'Попередні випуски такими, якими вони виходили на сайті', full: 'На весь екран', lede: 'Усе, що опублікував EPRIS, – від дверей Тбілісі навесні до музею, який ми відкриваємо в жовтні: кожен матеріал повністю, зверстаний як друкований журнал. Читайте тут, сторінка за сторінкою, або візьміть PDF із собою.', section: 'Розділ', hideArchive: 'Згорнути' },
-  DE: { support: 'EPRIS unterstützen', read: 'Online lesen', download: 'PDF herunterladen', contents: 'Inhalt', pages: 'Seiten', stories: 'Beiträge', reviews: 'Kritiken', sections: 'Rubriken', close: 'Schließen', prev: 'Vorherige Seite', next: 'Nächste Seite', all: 'Alle Seiten', zoom: 'Vergrößern', unzoom: 'Ganze Seite', page: 'Seite', onsite: 'Auf der Website', inside: 'In dieser Ausgabe', archive: 'Archiv', archiveNote: 'Frühere Ausgaben, wie sie auf der Website erschienen', full: 'Vollbild', lede: 'Alles, was EPRIS veröffentlicht hat – von den Türen von Tiflis im Frühling bis zum Museum, das wir im Oktober eröffnen: jeder Beitrag vollständig, gesetzt wie ein gedrucktes Magazin.', section: 'Rubrik', hideArchive: 'Einklappen' },
-  IT: { support: 'Sostieni EPRIS', read: 'Leggi online', download: 'Scarica il PDF', contents: 'Sommario', pages: 'pagine', stories: 'articoli', reviews: 'recensioni', sections: 'sezioni', close: 'Chiudi', prev: 'Pagina precedente', next: 'Pagina successiva', all: 'Tutte le pagine', zoom: 'Ingrandisci', unzoom: 'Pagina intera', page: 'Pagina', onsite: 'Sul sito', inside: 'In questo numero', archive: 'Archivio', archiveNote: 'I numeri precedenti, come sono usciti sul sito', full: 'Schermo intero', lede: 'Tutto ciò che EPRIS ha pubblicato, dalle porte di Tbilisi in primavera al museo che apriamo in ottobre: ogni articolo per intero, impaginato come una rivista stampata.', section: 'Sezione', hideArchive: 'Chiudi' },
-  ES: { support: 'Apoya a EPRIS', read: 'Leer en línea', download: 'Descargar PDF', contents: 'Índice', pages: 'páginas', stories: 'artículos', reviews: 'reseñas', sections: 'secciones', close: 'Cerrar', prev: 'Página anterior', next: 'Página siguiente', all: 'Todas las páginas', zoom: 'Ampliar', unzoom: 'Página completa', page: 'Página', onsite: 'En la web', inside: 'En este número', archive: 'Archivo', archiveNote: 'Números anteriores, tal como aparecieron en la web', full: 'Pantalla completa', lede: 'Todo lo que EPRIS ha publicado, de las puertas de Tiflis en primavera al museo que abrimos en octubre: cada artículo completo, maquetado como una revista impresa.', section: 'Sección', hideArchive: 'Ocultar' },
-  FR: { support: 'Soutenir EPRIS', read: 'Lire en ligne', download: 'Télécharger le PDF', contents: 'Sommaire', pages: 'pages', stories: 'articles', reviews: 'critiques', sections: 'rubriques', close: 'Fermer', prev: 'Page précédente', next: 'Page suivante', all: 'Toutes les pages', zoom: 'Agrandir', unzoom: 'Page entière', page: 'Page', onsite: 'Sur le site', inside: 'Dans ce numéro', archive: 'Archives', archiveNote: 'Les numéros précédents, tels qu’ils ont paru sur le site', full: 'Plein écran', lede: 'Tout ce qu’EPRIS a publié, des portes de Tbilissi au printemps au musée que nous ouvrons en octobre : chaque article en entier, mis en page comme un magazine imprimé.', section: 'Rubrique', hideArchive: 'Masquer' },
+  EN: { share: 'Share', linkCopied: 'Link copied', cite: 'How to cite', copy: 'Copy', copied: 'Copied', editedBy: 'Edited by Maria Ivanova · with Viacheslav Munister', citePage: 'Cite this page', support: 'Support EPRIS', read: 'Read online', download: 'Download PDF', contents: 'Contents', pages: 'pages', stories: 'stories', reviews: 'reviews', sections: 'sections', close: 'Close', prev: 'Previous page', next: 'Next page', all: 'All pages', zoom: 'Read closer', unzoom: 'Whole page', page: 'Page', onsite: 'On the site', inside: 'Inside the issue', archive: 'Issue archive', archiveNote: 'Earlier issues, as they appeared on the site', full: 'Full screen', lede: 'Everything EPRIS has published, from the doors of Tbilisi in spring to the museum we open this October: every story in full, laid out as a printed magazine. Read it here, page by page, or take the PDF with you.', section: 'Section', hideArchive: 'Hide' },
+  RU: { share: 'Поделиться', linkCopied: 'Ссылка скопирована', cite: 'Как цитировать', copy: 'Копировать', copied: 'Скопировано', editedBy: 'Главный редактор Мария Иванова · при участии Вячеслава Мунистера', citePage: 'Цитировать страницу', support: 'Поддержать EPRIS', read: 'Читать онлайн', download: 'Скачать PDF', contents: 'Содержание', pages: 'страниц', stories: 'материалов', reviews: 'рецензий', sections: 'разделов', close: 'Закрыть', prev: 'Предыдущая страница', next: 'Следующая страница', all: 'Все страницы', zoom: 'Крупнее', unzoom: 'Вся страница', page: 'Страница', onsite: 'На сайте', inside: 'Внутри выпуска', archive: 'Архив выпусков', archiveNote: 'Прежние выпуски в том виде, в каком они выходили на сайте', full: 'На весь экран', lede: 'Всё, что EPRIS опубликовал – от дверей Тбилиси весной до музея, который мы открываем в октябре: каждый материал целиком, свёрстанный как печатный журнал. Читайте здесь, страница за страницей, или возьмите PDF с собой.', section: 'Раздел', hideArchive: 'Свернуть' },
+  UA: { share: 'Поділитися', linkCopied: 'Посилання скопійовано', cite: 'Як цитувати', copy: 'Копіювати', copied: 'Скопійовано', editedBy: 'Головна редакторка Марія Іванова · за участі В’ячеслава Муністера', citePage: 'Цитувати сторінку', support: 'Підтримати EPRIS', read: 'Читати онлайн', download: 'Завантажити PDF', contents: 'Зміст', pages: 'сторінок', stories: 'матеріалів', reviews: 'рецензій', sections: 'розділів', close: 'Закрити', prev: 'Попередня сторінка', next: 'Наступна сторінка', all: 'Усі сторінки', zoom: 'Більше', unzoom: 'Уся сторінка', page: 'Сторінка', onsite: 'На сайті', inside: 'Усередині випуску', archive: 'Архів випусків', archiveNote: 'Попередні випуски такими, якими вони виходили на сайті', full: 'На весь екран', lede: 'Усе, що опублікував EPRIS, – від дверей Тбілісі навесні до музею, який ми відкриваємо в жовтні: кожен матеріал повністю, зверстаний як друкований журнал. Читайте тут, сторінка за сторінкою, або візьміть PDF із собою.', section: 'Розділ', hideArchive: 'Згорнути' },
+  DE: { share: 'Teilen', linkCopied: 'Link kopiert', cite: 'Zitieren', copy: 'Kopieren', copied: 'Kopiert', editedBy: 'Herausgegeben von Maria Ivanova · mit Viacheslav Munister', citePage: 'Diese Seite zitieren', support: 'EPRIS unterstützen', read: 'Online lesen', download: 'PDF herunterladen', contents: 'Inhalt', pages: 'Seiten', stories: 'Beiträge', reviews: 'Kritiken', sections: 'Rubriken', close: 'Schließen', prev: 'Vorherige Seite', next: 'Nächste Seite', all: 'Alle Seiten', zoom: 'Vergrößern', unzoom: 'Ganze Seite', page: 'Seite', onsite: 'Auf der Website', inside: 'In dieser Ausgabe', archive: 'Archiv', archiveNote: 'Frühere Ausgaben, wie sie auf der Website erschienen', full: 'Vollbild', lede: 'Alles, was EPRIS veröffentlicht hat – von den Türen von Tiflis im Frühling bis zum Museum, das wir im Oktober eröffnen: jeder Beitrag vollständig, gesetzt wie ein gedrucktes Magazin.', section: 'Rubrik', hideArchive: 'Einklappen' },
+  IT: { share: 'Condividi', linkCopied: 'Link copiato', cite: 'Come citare', copy: 'Copia', copied: 'Copiato', editedBy: 'A cura di Maria Ivanova · con Viacheslav Munister', citePage: 'Cita questa pagina', support: 'Sostieni EPRIS', read: 'Leggi online', download: 'Scarica il PDF', contents: 'Sommario', pages: 'pagine', stories: 'articoli', reviews: 'recensioni', sections: 'sezioni', close: 'Chiudi', prev: 'Pagina precedente', next: 'Pagina successiva', all: 'Tutte le pagine', zoom: 'Ingrandisci', unzoom: 'Pagina intera', page: 'Pagina', onsite: 'Sul sito', inside: 'In questo numero', archive: 'Archivio', archiveNote: 'I numeri precedenti, come sono usciti sul sito', full: 'Schermo intero', lede: 'Tutto ciò che EPRIS ha pubblicato, dalle porte di Tbilisi in primavera al museo che apriamo in ottobre: ogni articolo per intero, impaginato come una rivista stampata.', section: 'Sezione', hideArchive: 'Chiudi' },
+  ES: { share: 'Compartir', linkCopied: 'Enlace copiado', cite: 'Cómo citar', copy: 'Copiar', copied: 'Copiado', editedBy: 'Edición de Maria Ivanova · con Viacheslav Munister', citePage: 'Citar esta página', support: 'Apoya a EPRIS', read: 'Leer en línea', download: 'Descargar PDF', contents: 'Índice', pages: 'páginas', stories: 'artículos', reviews: 'reseñas', sections: 'secciones', close: 'Cerrar', prev: 'Página anterior', next: 'Página siguiente', all: 'Todas las páginas', zoom: 'Ampliar', unzoom: 'Página completa', page: 'Página', onsite: 'En la web', inside: 'En este número', archive: 'Archivo', archiveNote: 'Números anteriores, tal como aparecieron en la web', full: 'Pantalla completa', lede: 'Todo lo que EPRIS ha publicado, de las puertas de Tiflis en primavera al museo que abrimos en octubre: cada artículo completo, maquetado como una revista impresa.', section: 'Sección', hideArchive: 'Ocultar' },
+  FR: { share: 'Partager', linkCopied: 'Lien copié', cite: 'Comment citer', copy: 'Copier', copied: 'Copié', editedBy: 'Sous la direction de Maria Ivanova · avec Viacheslav Munister', citePage: 'Citer cette page', support: 'Soutenir EPRIS', read: 'Lire en ligne', download: 'Télécharger le PDF', contents: 'Sommaire', pages: 'pages', stories: 'articles', reviews: 'critiques', sections: 'rubriques', close: 'Fermer', prev: 'Page précédente', next: 'Page suivante', all: 'Toutes les pages', zoom: 'Agrandir', unzoom: 'Page entière', page: 'Page', onsite: 'Sur le site', inside: 'Dans ce numéro', archive: 'Archives', archiveNote: 'Les numéros précédents, tels qu’ils ont paru sur le site', full: 'Plein écran', lede: 'Tout ce qu’EPRIS a publié, des portes de Tbilissi au printemps au musée que nous ouvrons en octobre : chaque article en entier, mis en page comme un magazine imprimé.', section: 'Rubrique', hideArchive: 'Masquer' },
 };
 export const editionWords = (lang: string) => ({ ...WORDS.EN, ...(WORDS[lang] || {}) });
+
+
+export const EDITION_URL = 'https://eprisjournal.com/issue';
+
+/* Ссылка на выпуск или на его страницу: системное меню «Поделиться», где оно
+   есть (телефоны, Safari), иначе – копия ссылки в буфер. */
+export async function shareLink(url: string, title: string): Promise<'shared' | 'copied' | 'failed'> {
+  try {
+    if (navigator.share) { await navigator.share({ title, url }); return 'shared'; }
+  } catch (e) {
+    if ((e as Error)?.name === 'AbortError') return 'failed';
+  }
+  try { await navigator.clipboard.writeText(url); return 'copied'; } catch { return 'failed'; }
+}
+
+/* Библиографическая запись полного издания. Издатель – журнал, составитель –
+   главный редактор; страница добавляется, когда цитируют конкретную полосу. */
+export function citation(m: EditionManifest, style: 'chicago' | 'apa' | 'mla' | 'bibtex', page?: number): string {
+  const url = page ? `${EDITION_URL}#page=${page}` : EDITION_URL;
+  const p = page ? `, ${page}` : '';
+  switch (style) {
+    case 'apa':
+      return `Ivanova, M. (Ed.). (2026). The temperature of time (${m.season}, ${m.edition.toLowerCase().replace(/^the /, '')})${page ? `, p. ${page}` : ''}. EPRIS Journal. ${url}`;
+    case 'mla':
+      return `Ivanova, Maria, editor. The Temperature of Time. EPRIS Journal, ${m.season}${page ? `, p. ${page}` : ''}. ${url.replace('https://', '')}.`;
+    case 'bibtex':
+      return `@book{epris2026autumn,\n  title     = {The Temperature of Time},\n  editor    = {Ivanova, Maria},\n  publisher = {EPRIS Journal},\n  address   = {Milan},\n  year      = {2026},\n  note      = {${m.season}, ${m.edition}}${page ? `,\n  pages     = {${page}}` : ''},\n  url       = {${url}}\n}`;
+    default:
+      return `Ivanova, Maria, ed. The Temperature of Time. EPRIS Journal, ${m.season}. ${m.edition}. Milan: EPRIS Journal, 2026${p}. ${url}.`;
+  }
+}
 
 /* 'loading' отличаем от 'missing': пока манифест в пути, раздел ждёт, а не
    мелькает прежней страницей выпуска. */
@@ -210,6 +241,7 @@ export function EditionReader({
         <button type="button" className={`${btn} ${panel === 'grid' ? 'bg-white/10' : ''}`} onClick={() => setPanel(panel === 'grid' ? 'none' : 'grid')} aria-label={w.all}><Grid3x3 size={15} /></button>
         <button type="button" className={btn} onClick={() => setZoom(!zoom)} aria-label={zoom ? w.unzoom : w.zoom} title={zoom ? w.unzoom : w.zoom}>{zoom ? <ZoomOut size={15} /> : <ZoomIn size={15} />}</button>
         <button type="button" className={`${btn} hidden sm:inline-flex`} onClick={fullscreen} aria-label={w.full}>{document.fullscreenElement ? <Minimize2 size={15} /> : <Maximize2 size={15} />}</button>
+        <ShareButton url={`${EDITION_URL}#page=${shown[0]}`} title={`${manifest.title} – ${w.page} ${shown[0]}`} w={w} className={btn} compact />
         <a className={btn} href={`${base}${manifest.pdf}`} download aria-label={w.download}><Download size={15} /><span className="hidden lg:inline">PDF · {megabytes(manifest.pdfBytes)}</span></a>
       </div>
 
@@ -365,7 +397,70 @@ export function TocList({
   );
 }
 
-/* Первый экран раздела «Выпуск»: обложка, цифры, две кнопки, полосы-разделы. */
+/* Раздел «Выпуск» говорит тем же языком, что «Статьи» и «Обзоры»: колонка
+   max-w-4xl, карточка в рамке «обложка + текст», моно-подписи, кнопки-пилюли.
+   Первая версия была тёмным баннером на всю ширину с цифрами – отдельный
+   диалект на фоне остальных страниц. */
+const pill = 'inline-flex items-center gap-2 border border-[var(--c-accent)] rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors';
+const pillQuiet = `${pill} text-[var(--c-accent)] hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]`;
+const pillLoud = `${pill} bg-[var(--c-accent)] text-[var(--c-bg)] hover:bg-transparent hover:text-[var(--c-accent)]`;
+const label = 'font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]';
+
+export function ShareButton({ url, title, w, className = pillQuiet, compact = false }: { url: string; title: string; w: Record<string, string>; className?: string; compact?: boolean }) {
+  const [done, setDone] = useState(false);
+  return (
+    <button type="button" className={className} onClick={async () => {
+      const r = await shareLink(url, title);
+      if (r === 'copied') { setDone(true); setTimeout(() => setDone(false), 2200); }
+    }}>
+      {done ? <Check size={13} aria-hidden="true" /> : <Share2 size={13} aria-hidden="true" />}
+      <span className={compact ? 'hidden sm:inline' : undefined}>{done ? w.linkCopied : w.share}</span>
+    </button>
+  );
+}
+
+const STYLES: { id: 'chicago' | 'apa' | 'mla' | 'bibtex'; name: string }[] = [
+  { id: 'chicago', name: 'Chicago' }, { id: 'apa', name: 'APA' }, { id: 'mla', name: 'MLA' }, { id: 'bibtex', name: 'BibTeX' },
+];
+
+export function CiteBlock({ manifest, w, page, dark = false }: { manifest: EditionManifest; w: Record<string, string>; page?: number; dark?: boolean }) {
+  const [style, setStyle] = useState<(typeof STYLES)[number]['id']>('chicago');
+  const [copied, setCopied] = useState(false);
+  const text = citation(manifest, style, page);
+  const ink = dark ? 'text-[#F7F2EC]' : 'text-[var(--c-accent)]';
+  const soft = dark ? 'text-[#F7F2EC]/55' : 'text-[rgb(var(--c-accent-rgb)_/_0.55)]';
+  const line = dark ? 'border-white/20' : 'border-[rgb(var(--c-accent-rgb)_/_0.14)]';
+  return (
+    <div>
+      <div className="flex flex-wrap gap-x-5 gap-y-2 mb-3" role="tablist">
+        {STYLES.map((st) => (
+          <button key={st.id} type="button" role="tab" aria-selected={style === st.id} onClick={() => setStyle(st.id)}
+            className={`font-mono text-[10px] uppercase tracking-widest pb-1 border-b ${style === st.id ? `${ink} ${dark ? 'border-[#F7F2EC]' : 'border-[var(--c-accent)]'}` : `${soft} border-transparent`}`}>
+            {st.name}
+          </button>
+        ))}
+      </div>
+      <div className={`border ${line} p-4 sm:p-5 flex gap-4 items-start`}>
+        <p className={`flex-1 min-w-0 ${style === 'bibtex' ? 'font-mono text-[11px] whitespace-pre overflow-x-auto' : 'font-serif text-[15px] leading-relaxed'} ${ink} select-text`}>
+          {style === 'bibtex' ? text : <CitationText text={text} />}
+        </p>
+        <button type="button" onClick={async () => { try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { /* буфер недоступен */ } }}
+          className={`shrink-0 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest ${soft} ${dark ? 'hover:text-white' : 'hover:text-[var(--c-accent)]'}`}>
+          {copied ? <Check size={13} /> : <Copy size={13} />} {copied ? w.copied : w.copy}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* Название издания в записи – курсивом, как положено в библиографии. */
+function CitationText({ text }: { text: string }) {
+  const t = 'The Temperature of Time';
+  const i = text.search(/The (T|t)emperature of (T|t)ime/);
+  if (i < 0) return <>{text}</>;
+  return <>{text.slice(0, i)}<i>{text.slice(i, i + t.length)}</i>{text.slice(i + t.length)}</>;
+}
+
 export function EditionShowcase({
   manifest,
   base,
@@ -381,76 +476,56 @@ export function EditionShowcase({
 }) {
   const w = editionWords(lang);
   const sections = manifest.toc.filter((e) => e.kind === 'section');
+  const title = `${manifest.title} – EPRIS Journal, ${manifest.season}`;
   return (
-    <>
-      <section className="bg-[#111111] text-[#F7F2EC]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-24 pb-14 sm:pt-28 sm:pb-20 grid gap-10 md:gap-16 md:grid-cols-[1fr_minmax(260px,380px)] md:items-center">
-          <div>
-            <p className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#F7F2EC]/55 mb-7">
-              <span className="w-8 border-t border-[#F7F2EC]/30" aria-hidden="true" />
-              {manifest.season} · {manifest.edition}
-            </p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }} className="text-[clamp(44px,7.4vw,96px)] leading-[0.92] tracking-[-0.02em] text-balance">
-              {manifest.title}
-            </h1>
-            <p className="font-serif text-lg md:text-xl leading-relaxed text-[#F7F2EC]/75 mt-7 max-w-xl">{w.lede}</p>
-            <dl className="grid grid-cols-4 max-w-lg mt-9 border-t border-[#F7F2EC]/20">
-              {[[manifest.pages, w.pages], [manifest.stories, w.stories], [manifest.reviews, w.reviews], [sections.length, w.sections]].map(([n, label]) => (
-                <div key={String(label)} className="pt-3 pr-2">
-                  <dt style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl leading-none">{n}</dt>
-                  <dd className="font-mono text-[9px] uppercase tracking-widest text-[#F7F2EC]/50 mt-1.5">{label}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="flex flex-wrap gap-3 mt-9">
-              <button type="button" onClick={() => onRead(1)} className="inline-flex items-center gap-2 bg-[#F7F2EC] text-[#111111] px-7 py-3.5 font-mono text-[10px] uppercase tracking-widest hover:bg-[#D9B56F] transition-colors">
-                <BookOpen size={14} aria-hidden="true" /> {w.read}
-              </button>
-              <a href={`${base}${manifest.pdf}`} download className="inline-flex items-center gap-2 border border-[#F7F2EC]/60 px-7 py-3.5 font-mono text-[10px] uppercase tracking-widest hover:bg-[#F7F2EC] hover:text-[#111111] transition-colors">
-                <Download size={14} aria-hidden="true" /> {w.download} · {megabytes(manifest.pdfBytes)}
-              </a>
-              <a href="#edition-contents" className="inline-flex items-center gap-2 px-4 py-3.5 font-mono text-[10px] uppercase tracking-widest text-[#F7F2EC]/70 hover:text-[#F7F2EC]">
-                {w.contents} <ArrowRight size={13} aria-hidden="true" />
-              </a>
-            </div>
+    <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10 pb-4">
+      {/* карточка издания: та же сетка, что у карточек статей */}
+      <article className="border border-[var(--c-accent)] grid grid-cols-1 sm:grid-cols-[40%_1fr] items-stretch overflow-hidden">
+        <button type="button" onClick={() => onRead(1)} className="block bg-[#E8DED5] group" aria-label={w.read}>
+          <img src={pageSrc(base, 1)} alt={`${manifest.title} – ${manifest.season}`} className="w-full aspect-[230/300] object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+        </button>
+        <div className="flex flex-col p-5 sm:p-8">
+          <span className={`${label} mb-2`}>{manifest.season} · {manifest.edition}</span>
+          <h1 className="font-crimson text-3xl sm:text-[42px] leading-[1.05] text-[var(--c-accent)] mb-4">{manifest.title}</h1>
+          <p className="font-serif text-[15px] sm:text-base text-[rgb(var(--c-accent-rgb)_/_0.75)] leading-relaxed mb-6">{w.lede}</p>
+          <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)] mb-5">
+            {w.editedBy}
           </div>
-          <button type="button" onClick={() => onRead(1)} className="order-first md:order-none w-52 sm:w-64 md:w-full mx-auto group" aria-label={w.read}>
-            <div className="relative aspect-[230/300] shadow-[0_30px_60px_-20px_rgba(0,0,0,.8)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[-0.6deg]">
-              <img src={pageSrc(base, 1)} alt={`${manifest.title} – ${manifest.season}`} className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 to-transparent" aria-hidden="true" />
-            </div>
-          </button>
+          <div className="flex flex-wrap gap-2.5">
+            <button type="button" onClick={() => onRead(1)} className={pillLoud}><BookOpen size={13} aria-hidden="true" /> {w.read}</button>
+            <a href={`${base}${manifest.pdf}`} download className={pillQuiet}><Download size={13} aria-hidden="true" /> {w.download}</a>
+            <ShareButton url={EDITION_URL} title={title} w={w} />
+            <a href="#edition-cite" className={pillQuiet}><Quote size={13} aria-hidden="true" /> {w.cite}</a>
+          </div>
         </div>
-      </section>
+      </article>
 
       {sections.length > 0 && (
-        <section className="border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
-          <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-6">{w.inside}</p>
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-6 sm:overflow-visible">
-              {sections.map((s) => (
-                <button key={s.id} type="button" onClick={() => onRead(s.page)} className="shrink-0 w-36 sm:w-auto self-start text-left group">
-                  <div className="aspect-[230/300] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.16)]">
-                    <img src={thumbSrc(base, s.page)} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
-                  </div>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)] mt-2">{w.section} {s.num} · p. {s.page}</p>
-                  <p style={{ fontFamily: 'var(--font-display)' }} className="text-lg leading-tight text-[var(--c-accent)]">{s.title}</p>
-                </button>
-              ))}
-            </div>
+        <section className="mt-12 sm:mt-16">
+          <p className={`${label} mb-5`}>{w.inside}</p>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4">
+            {sections.map((sec) => (
+              <button key={sec.id} type="button" onClick={() => onRead(sec.page)} className="self-start text-left group">
+                <div className="aspect-[230/300] overflow-hidden border border-[rgb(var(--c-accent-rgb)_/_0.24)] group-hover:border-[var(--c-accent)] transition-colors">
+                  <img src={thumbSrc(base, sec.page)} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                </div>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)] mt-2">{sec.num}</p>
+                <p className="font-crimson text-[15px] sm:text-base leading-tight text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors">{sec.title}</p>
+              </button>
+            ))}
           </div>
         </section>
       )}
 
-      <section id="edition-contents" className="scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
-          <div className="flex items-baseline justify-between border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-8">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-3xl md:text-5xl tracking-[-0.03em] text-[var(--c-accent)]">{w.contents}</h2>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)]">{manifest.pages} {w.pages}</span>
-          </div>
-          <TocList manifest={manifest} w={w} onGo={onRead} onSite={onSite} />
-        </div>
+      <section id="edition-contents" className="scroll-mt-24 mt-12 sm:mt-16">
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-2xl md:text-4xl tracking-[-0.03em] text-[var(--c-accent)] border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-8">{w.contents}</h2>
+        <TocList manifest={manifest} w={w} onGo={onRead} onSite={onSite} />
       </section>
-    </>
+
+      <section id="edition-cite" className="scroll-mt-24 mt-12 sm:mt-16">
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-2xl md:text-4xl tracking-[-0.03em] text-[var(--c-accent)] border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-6">{w.cite}</h2>
+        <CiteBlock manifest={manifest} w={w} />
+      </section>
+    </div>
   );
 }
