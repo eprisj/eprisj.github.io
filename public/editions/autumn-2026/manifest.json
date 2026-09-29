@@ -1,0 +1,485 @@
+{
+ "id": "autumn-2026",
+ "title": "The Temperature of Time",
+ "season": "Autumn 2026",
+ "edition": "The Complete Edition",
+ "pages": 470,
+ "pageWidth": 1240,
+ "pageHeight": 1617,
+ "pdf": "EPRIS-Autumn-2026-complete-edition.pdf",
+ "pdfBytes": 35529955,
+ "stories": 45,
+ "reviews": 7,
+ "toc": [
+  {
+   "id": "contents",
+   "kind": "front",
+   "page": 7,
+   "title": "Contents"
+  },
+  {
+   "id": "masthead",
+   "kind": "front",
+   "page": 10,
+   "title": "Masthead & contributors"
+  },
+  {
+   "id": "sec-painting",
+   "kind": "section",
+   "page": 11,
+   "num": "I",
+   "title": "Painting & Matter"
+  },
+  {
+   "id": "art-55",
+   "kind": "story",
+   "page": 12,
+   "title": "The Painting Is Still Wet: Emma McIntyre and Art That Refuses to Finish",
+   "author": "Viacheslav Munister",
+   "kicker": "Contemporary Painting"
+  },
+  {
+   "id": "art-53",
+   "kind": "story",
+   "page": 23,
+   "title": "The Ocean Is Not Blue: Torkwase Dyson and the Politics of Abstraction",
+   "author": "Viacheslav Munister",
+   "kicker": "Contemporary Painting"
+  },
+  {
+   "id": "art-54",
+   "kind": "story",
+   "page": 34,
+   "title": "The Ordinary Life Is Not a Small Subject: Louis Fratino and the Painting of Intimacy",
+   "author": "Viacheslav Munister",
+   "kicker": "Contemporary Painting"
+  },
+  {
+   "id": "art-50",
+   "kind": "story",
+   "page": 45,
+   "title": "The Forms That Refuse a Name: Richard Pearson on Painting Other Worlds",
+   "author": "Viacheslav Munister & Richard Pearson",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-46",
+   "kind": "story",
+   "page": 54,
+   "title": "The Red Thread: Veronika Chernienko on Painting What Words Can't Reach",
+   "author": "Viacheslav Munister & Veronika Chernienko",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-25",
+   "kind": "story",
+   "page": 65,
+   "title": "Where We Meet Ourselves - interview with Keisuke Azuma",
+   "author": "Maria Ivanova & Keisuke Azuma",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-36",
+   "kind": "story",
+   "page": 77,
+   "title": "Where the Souls Become Cranes",
+   "author": "Viacheslav Munister & Nataliia Maloh",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-40",
+   "kind": "story",
+   "page": 89,
+   "title": "Oksana Dzhuman: A Self-Portrait in 5,500 Sticks",
+   "author": "Viacheslav Munister & Oksana Dzhuman",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-17",
+   "kind": "story",
+   "page": 100,
+   "title": "Emily Kraus: Rhythm of the Moment",
+   "author": "Maria Ivanova",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-13",
+   "kind": "story",
+   "page": 105,
+   "title": "Art that makes you smile",
+   "author": "Maria Ivanova",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-14",
+   "kind": "story",
+   "page": 113,
+   "title": "Sandra Kantanen: Beyond the Lens of Traditional Photography",
+   "author": "EPRIS Journal",
+   "kicker": "Special feature"
+  },
+  {
+   "id": "art-28",
+   "kind": "story",
+   "page": 119,
+   "title": "Nick Dahlen - A Contemporary Take on Modernism",
+   "author": "Maria Ivanova",
+   "kicker": "Visual story"
+  },
+  {
+   "id": "art-30",
+   "kind": "story",
+   "page": 128,
+   "title": "Where the Warmth Lives: How Two Traditions Measured the Turn from Summer to Autumn",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-49",
+   "kind": "story",
+   "page": 143,
+   "title": "In Praise of Shadow: Colour and Light in Clair-obscur at the Bourse de Commerce",
+   "author": "Viacheslav Munister",
+   "kicker": "Exhibition"
+  },
+  {
+   "id": "art-34",
+   "kind": "story",
+   "page": 155,
+   "title": "The Seam That Isn't There: Anish Kapoor's Cloud Gate",
+   "author": "Viacheslav Munister",
+   "kicker": "Critical Essay"
+  },
+  {
+   "id": "sec-architecture",
+   "kind": "section",
+   "page": 160,
+   "num": "II",
+   "title": "Architecture & Memory"
+  },
+  {
+   "id": "art-56",
+   "kind": "story",
+   "page": 161,
+   "title": "The Building Wears Its Forces: Inside the Radical Structure of Powerhouse Parramatta",
+   "author": "Viacheslav Munister",
+   "kicker": "Contemporary Architecture"
+  },
+  {
+   "id": "art-43",
+   "kind": "story",
+   "page": 172,
+   "title": "The River Valencia Turned Into a Park",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-2",
+   "kind": "story",
+   "page": 179,
+   "title": "Eighteen Inches of Sky: The Interiors of the World Trade Center",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-18",
+   "kind": "story",
+   "page": 188,
+   "title": "Against the Right Angle",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-22",
+   "kind": "story",
+   "page": 202,
+   "title": "Rooms That Watch You Back",
+   "author": "Viacheslav Munister",
+   "kicker": "Critical Essay"
+  },
+  {
+   "id": "art-29",
+   "kind": "story",
+   "page": 213,
+   "title": "Soft Modernism: Bryn and Ellefsen's Physics Building at Blindern",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-32",
+   "kind": "story",
+   "page": 220,
+   "title": "Neobarocco: Five Buildings That Confess What They Want You to Believe",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-33",
+   "kind": "story",
+   "page": 231,
+   "title": "Built to a Score: Three Buildings Where Music Wrote the Architecture",
+   "author": "Viacheslav Munister",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-37",
+   "kind": "story",
+   "page": 235,
+   "title": "Architecture That Listens",
+   "author": "US Architecture Studio",
+   "kicker": "Studio profile"
+  },
+  {
+   "id": "art-15",
+   "kind": "story",
+   "page": 243,
+   "title": "Tadao Ando",
+   "author": "Maria Ivanova",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-12",
+   "kind": "story",
+   "page": 252,
+   "title": "The Sacred Spring: A Portrait of the Vienna Secession",
+   "author": "Viacheslav Munister",
+   "kicker": "The Long Read"
+  },
+  {
+   "id": "art-9",
+   "kind": "story",
+   "page": 257,
+   "title": "The Threshold of Time",
+   "author": "Viacheslav Munister",
+   "kicker": "Reportage"
+  },
+  {
+   "id": "art-45",
+   "kind": "story",
+   "page": 268,
+   "title": "Two Ways of Looking at the Same Building - interview with Manuel Heywinkel",
+   "author": "Viacheslav Munister",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-31",
+   "kind": "story",
+   "page": 280,
+   "title": "The Picture Is Finished Before the Shutter - interview with Roland M Schwerdtfeger",
+   "author": "Viacheslav Munister & Roland M Schwerdtfeger",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-39",
+   "kind": "story",
+   "page": 291,
+   "title": "Diana Aleshchenko: Safety Comes From Openness",
+   "author": "Viacheslav Munister & Diana Aleshchenko",
+   "kicker": "Interview"
+  },
+  {
+   "id": "sec-rooms",
+   "kind": "section",
+   "page": 303,
+   "num": "III",
+   "title": "Rooms & Hands"
+  },
+  {
+   "id": "art-47",
+   "kind": "story",
+   "page": 304,
+   "title": "Eight Years to a Home: Olha Wood on Building Across Distance, Pandemic and War",
+   "author": "Viacheslav Munister & Olha Wood",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-35",
+   "kind": "story",
+   "page": 318,
+   "title": "Abbie Downey: Collected, Not Coordinated",
+   "author": "Viacheslav Munister & Abbie Downey",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-23",
+   "kind": "story",
+   "page": 328,
+   "title": "In Conversation with Chora Practice:",
+   "author": "Maria Ivanova & Chora Practice",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-10",
+   "kind": "story",
+   "page": 336,
+   "title": "Five Rooms, One Signature",
+   "author": "EPRIS Journal",
+   "kicker": "Design Study"
+  },
+  {
+   "id": "art-8",
+   "kind": "story",
+   "page": 343,
+   "title": "Home Away From Home",
+   "author": "Maria Ivanova",
+   "kicker": "Essay"
+  },
+  {
+   "id": "art-16",
+   "kind": "story",
+   "page": 346,
+   "title": "Polish Design: Woven From Memory",
+   "author": "Maria Ivanova",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-41",
+   "kind": "story",
+   "page": 352,
+   "title": "A Cow Made of Broken Tile",
+   "author": "Viacheslav Munister & DIHLUST",
+   "kicker": "Interview"
+  },
+  {
+   "id": "sec-objects",
+   "kind": "section",
+   "page": 359,
+   "num": "IV",
+   "title": "Objects & Time"
+  },
+  {
+   "id": "art-57",
+   "kind": "story",
+   "page": 360,
+   "title": "Who Owns the Hours? Audemars Piguet and the Art of Manufacturing Time",
+   "author": "Viacheslav Munister",
+   "kicker": "Design & Collecting"
+  },
+  {
+   "id": "art-27",
+   "kind": "story",
+   "page": 374,
+   "title": "Souv: The Souvenir That Doesn't Forget",
+   "author": "Viacheslav Munister & Souv",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-26",
+   "kind": "story",
+   "page": 385,
+   "title": "Museo Nivola: A Museum, a Village and the Memory They Share",
+   "author": "Viacheslav Munister & Museo Nivola",
+   "kicker": "Interview"
+  },
+  {
+   "id": "art-42",
+   "kind": "story",
+   "page": 395,
+   "title": "PARK3020: A Sculpture Park Dated a Thousand Years Ahead",
+   "author": "Viacheslav Munister",
+   "kicker": "Feature"
+  },
+  {
+   "id": "art-44",
+   "kind": "story",
+   "page": 402,
+   "title": "Inside the Victoria Museum",
+   "author": "Viacheslav Munister",
+   "kicker": "Visual story"
+  },
+  {
+   "id": "art-38",
+   "kind": "story",
+   "page": 409,
+   "title": "Nothing Fallow About It: The Harvest Behind France's Novels and Italy's Golden Lion",
+   "author": "Viacheslav Munister",
+   "kicker": "Culture Notes"
+  },
+  {
+   "id": "sec-reviews",
+   "kind": "section",
+   "page": 413,
+   "num": "V",
+   "title": "Reviews"
+  },
+  {
+   "id": "rev-8",
+   "kind": "review",
+   "page": 414,
+   "title": "Dinner Inside an Advertisement",
+   "author": "Viacheslav Munister",
+   "kicker": "Architecture & Dining"
+  },
+  {
+   "id": "rev-1",
+   "kind": "review",
+   "page": 422,
+   "title": "Le Dauphine",
+   "author": "Maria Ivanova",
+   "kicker": "Food"
+  },
+  {
+   "id": "rev-6",
+   "kind": "review",
+   "page": 429,
+   "title": "Dining Inside a Watercolour",
+   "author": "Viacheslav Munister",
+   "kicker": "Architecture & Dining"
+  },
+  {
+   "id": "rev-7",
+   "kind": "review",
+   "page": 437,
+   "title": "Marrow Deep",
+   "author": "Viacheslav Munister",
+   "kicker": "Metal"
+  },
+  {
+   "id": "rev-9",
+   "kind": "review",
+   "page": 439,
+   "title": "The Restaurant That Painted an 18th-Century House Pink",
+   "author": "Viacheslav Munister",
+   "kicker": "Architecture & Dining"
+  },
+  {
+   "id": "rev-10",
+   "kind": "review",
+   "page": 446,
+   "title": "Sculpture Left Out in the Fields",
+   "author": "Viacheslav Munister",
+   "kicker": "Sculpture & Landscape"
+  },
+  {
+   "id": "rev-11",
+   "kind": "review",
+   "page": 451,
+   "title": "Dinner Inside the North Sea",
+   "author": "Viacheslav Munister",
+   "kicker": "Architecture & Dining"
+  },
+  {
+   "id": "sec-house",
+   "kind": "section",
+   "page": 457,
+   "num": "VI",
+   "title": "From the House"
+  },
+  {
+   "id": "art-48",
+   "kind": "story",
+   "page": 458,
+   "title": "The Doors Are Opening: EPRIS Museum and Architectura, This October",
+   "author": "Maria Ivanova & Viacheslav Munister",
+   "kicker": "Announcement"
+  },
+  {
+   "id": "art-11",
+   "kind": "story",
+   "page": 467,
+   "title": "The Heart of EPRIS: Maria Is Now a Bachelor of Architecture",
+   "author": "EPRIS Journal",
+   "kicker": "From the Editors"
+  }
+ ]
+}

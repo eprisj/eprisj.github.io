@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, BookOpen, ArrowRight } from 'lucide-react';
 import type { Article, Issue } from '../data';
+import { EDITIONS, EditionReader, EditionShowcase, editionWords, pageFromHash, useEditionManifest } from './EditionReader';
 
 const COVER_BASE =
   'https://raw.githubusercontent.com/eprisj/eprisj.github.io/main/%D1%81over';
@@ -21,14 +22,28 @@ export function IssuePage({
   archive,
   t,
   onArticleClick,
+  onOpenArticleId,
+  lang = 'EN',
 }: {
   archive: { issue: Issue; articles: Article[] }[];
   t: (key: string) => string;
+  onOpenArticleId?: (id: number) => void;
+  lang?: string;
   /* Материал выпуска открывается по клику. Раньше карточка носила
      cursor-pointer и подсвечивалась при наведении, но не делала ничего:
      обещание без действия. */
   onArticleClick?: (article: Article) => void;
 }) {
+  const edition = EDITIONS[0];
+  const { manifest, status: editionStatus } = useEditionManifest(edition.base);
+  const [readerPage, setReaderPage] = useState<number | null>(() => pageFromHash());
+  const [archiveOpen, setArchiveOpen] = useState(false);
+  const w = editionWords(lang);
+  useEffect(() => {
+    const onHash = () => { const p = pageFromHash(); if (p) setReaderPage(p); };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   const [selectedId, setSelectedId] = useState<number>(archive[0]?.issue.id);
   const selected = archive.find((entry) => entry.issue.id === selectedId) || archive[0];
   const { issue, articles } = selected;
@@ -86,8 +101,8 @@ export function IssuePage({
      читался как чужая вёрстка. Вертикальные отступы срезаны примерно
      вдвое: воздух был рассчитан на десяток материалов, а выпуск обычно
      состоит из двух-трёх. */
-  return (
-    <div className="pt-16 min-h-screen bg-[var(--c-bg)]">
+  const detail = (
+    <>
 
       {/* Шапка выпуска.
           Типографика собрана в один ритм: тонкая линия и разрядка над номером
@@ -319,6 +334,56 @@ export function IssuePage({
           </div>
         )}
       </div>
+    </>
+  );
+
+  /* Раздел «Выпуск» открывается полным изданием: онлайн-читалка и PDF. Прежние
+     выпуски – ниже, архивом обложек; по клику раскрывается их прежняя страница.
+     Если манифест издания не загрузился, раздел остаётся таким, каким был. */
+  if (editionStatus === 'loading') return <div className="min-h-screen bg-[#180D13]" aria-busy="true" />;
+  if (!manifest) return <div className="pt-16 min-h-screen bg-[var(--c-bg)]">{detail}</div>;
+
+  return (
+    <div className="min-h-screen bg-[var(--c-bg)]">
+      <EditionShowcase manifest={manifest} base={edition.base} lang={lang} onRead={setReaderPage} onSite={onOpenArticleId} />
+
+      {archive.length > 0 && (
+        <section className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
+          <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)] pb-4 mb-8">
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 430 }} className="text-2xl md:text-4xl tracking-[-0.03em] text-[var(--c-accent)]">{w.archive}</h2>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)]">{w.archiveNote}</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+              {archive.map(({ issue: item }) => {
+                const on = archiveOpen && item.id === selected?.issue.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => { if (on) setArchiveOpen(false); else { setSelectedId(item.id); setArchiveOpen(true); } }}
+                    aria-expanded={on}
+                    className="text-left group"
+                  >
+                    <div className={`aspect-[3/4] overflow-hidden border transition-colors ${on ? 'border-[var(--c-accent)]' : 'border-[rgb(var(--c-accent-rgb)_/_0.24)] group-hover:border-[var(--c-accent)]'}`}>
+                      <img src={item.coverUrl} alt={`${item.name} – ${item.season}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                    </div>
+                    <p className="mt-2 font-serif text-sm text-[var(--c-accent)] leading-tight truncate">{item.name}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">
+                      {on ? w.hideArchive : [item.season, item.tagline].filter(Boolean).join(' · ')}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+      {archiveOpen && <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">{detail}</div>}
+
+      {readerPage !== null && (
+        <EditionReader manifest={manifest} base={edition.base} startPage={readerPage} lang={lang} onClose={() => setReaderPage(null)} />
+      )}
     </div>
   );
 }
