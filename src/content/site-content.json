@@ -12219,7 +12219,7 @@
     },
     {
       "id": 51,
-      "draft": false,
+      "draft": true,
       "title": "The World Is Not What It Says: Magritte’s Afterlife at Gagosian London",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -12239,7 +12239,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
       "previewToken": "af164326133e44c0ffbec996",
-      "updatedAt": "2026-09-28T20:10:38.218Z",
+      "updatedAt": "2026-09-29T06:08:35.398Z",
       "content": [
         {
           "type": "text",
@@ -12432,8 +12432,7 @@
           "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
         }
       ],
-      "publishAt": "2026-09-29T03:00:00.000Z",
-      "publishedAt": "2026-09-29T03:00:00.000Z"
+      "hiddenAt": "2026-09-29T06:08:35.398Z"
     },
     {
       "id": 52,
@@ -13925,7 +13924,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/audemars-piguet-etablisseurs-triptych.jpg",
       "previewToken": "6defdaea67d02e81cf81991d",
-      "updatedAt": "2026-09-29T06:03:02.214Z",
+      "updatedAt": "2026-09-29T06:08:35.398Z",
       "content": [
         {
           "type": "text",
@@ -13936,24 +13935,34 @@
           "content": "Audemars Piguet understands this paradox better than almost any modern watchmaker. The company does not simply sell instruments that tell time. It constructs a cultural system in which steel can behave like a precious metal, hand-finishing becomes evidence of authorship, scarcity becomes desire, a museum becomes a movement, and contemporary art teaches the brand how to speak beyond the wrist."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/audemars-piguet-etablisseurs-galets.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Audemars Piguet, Établisseurs Galets, presented in 2026. Natural stones turn the watch into a singular composition rather than a repeatable industrial surface. Courtesy Audemars Piguet."
-        },
-        {
           "type": "header",
           "content": "I · The product that cannot justify itself by function",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Luxury watches are often described as art because they are difficult to make. Difficulty alone is not enough. A jet engine is difficult; a medical scanner is difficult. Art enters when technical labour is made available for contemplation—when a solution exceeds its practical task and begins to organise attention, memory and interpretation."
+          "content": "Luxury watches are often described as art because they are difficult to make. Difficulty alone is not enough. A jet engine is difficult; a medical scanner is difficult. Art enters when technical labour is made available for contemplation — when a solution exceeds its practical task and begins to organise attention, memory and interpretation."
         },
         {
           "type": "text",
           "content": "The decisive material in watchmaking is therefore not gold, ceramic or steel. It is time twice over: the time indicated by the hands and the time sedimented in the object. Polishing a bevel nobody will see, adjusting a repeater by ear, or cutting a stone to fit one irregular link converts hours of labour into an almost invisible surplus. The collector purchases condensed duration."
+        },
+        {
+          "type": "header",
+          "content": "The first century: complexity before the icon",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Audemars Piguet began in 1875, when Jules Louis Audemars and Edward Auguste Piguet established their workshop in Le Brassus. The location was not picturesque branding invented later. The Vallée de Joux had developed a dispersed economy of highly specialised makers whose long winters encouraged domestic precision work. The company emerged from that network rather than from a modern factory system."
+        },
+        {
+          "type": "text",
+          "content": "From 1882 onward, grande complication work became a continuous thread through periods when such objects had almost no rational commercial future. A grande complication combines several demanding functions — traditionally a calendar, chronograph and chiming mechanism — inside one coordinated movement. Its significance is not the number of functions but their negotiation for space, energy and reliability."
+        },
+        {
+          "type": "text",
+          "content": "The 1899 Universelle pocket watch, now positioned at the centre of the Musée Atelier, condensed nineteen complications and 1,168 components into one object. It established an enduring AP strategy: technical density becomes cultural authority when the mechanism can be narrated as the limit of what a generation knows how to make."
         },
         {
           "type": "header",
@@ -13981,6 +13990,23 @@
         },
         {
           "type": "header",
+          "content": "Finishing is not decoration",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A movement can function before it is beautifully finished. Anglage, black polishing, circular graining and Geneva stripes do not necessarily make it keep better time. Their purpose is epistemic as much as aesthetic: they expose the maker’s control over surfaces at a scale where a fraction of a millimetre changes the reflection."
+        },
+        {
+          "type": "text",
+          "content": "Anglage turns a sharp machined edge into an even, gleaming bevel. Interior angles are particularly revealing because a rotating industrial tool cannot form them cleanly; they must be approached by hand. Black polishing produces a plane so flat that it alternates between mirror brightness and apparent blackness according to the angle of light. The eye reads precision through behaviour, not ornament."
+        },
+        {
+          "type": "text",
+          "content": "This is why transparent casebacks matter. They transform labour once reserved for a watchmaker’s bench into a spectacle for the owner. The movement is no longer only an engine. It is an exhibition whose smallest surfaces carry the proof of time spent."
+        },
+        {
+          "type": "header",
           "content": "III · The danger of becoming your own icon",
           "level": 2
         },
@@ -13994,6 +14020,23 @@
         },
         {
           "type": "header",
+          "content": "The calendar that remembers February",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A perpetual calendar is a miniature model of an irregular human convention. It must distinguish 30-day months, 31-day months and February, then insert a leap day every four years without ordinary manual correction. In 1955 Audemars Piguet introduced the first wristwatch perpetual calendar to display the leap-year cycle, turning hidden calculation into readable information."
+        },
+        {
+          "type": "text",
+          "content": "The complication is philosophically strange. The mechanism does not measure an astronomical truth directly; it mechanically remembers a calendar assembled through centuries of political and religious adjustment. A perpetual calendar is therefore a machine that performs culture as though culture were nature."
+        },
+        {
+          "type": "text",
+          "content": "This distinction clarifies why watchmaking belongs in an art journal. Its highest achievements are not simply accurate. They materialise abstract systems — calendars, celestial cycles, elapsed intervals, musical sequences — and force them to coexist inside a wearable volume."
+        },
+        {
+          "type": "header",
           "content": "IV · 2026: the return of the établisseur",
           "level": 2
         },
@@ -14002,7 +14045,7 @@
           "content": "https://api.eprisjournal.com/uploads/audemars-piguet-etablisseurs-triptych.jpg",
           "align": "center",
           "width": 100,
-          "caption": "The three inaugural Établisseurs creations—Galets, Peacock and Nomade—bring independent specialists back into a named network of collective authorship. Courtesy Audemars Piguet."
+          "caption": "The three inaugural Établisseurs creations — Galets, Peacock and Nomade — bring independent specialists back into a named network of collective authorship. Courtesy Audemars Piguet."
         },
         {
           "type": "text",
@@ -14014,12 +14057,32 @@
         },
         {
           "type": "text",
-          "content": "That change matters because luxury usually performs collective labour as singular brand authorship. Hundreds of hands disappear beneath a logo. By restoring names to the network, AP moves closer to the credit structures of film, architecture and contemporary art—fields in which authorship remains unequal, but collaboration can at least become visible."
+          "content": "That change matters because luxury usually performs collective labour as singular brand authorship. Hundreds of hands disappear beneath a logo. By restoring names to the network, AP moves closer to the credit structures of film, architecture and contemporary art — fields in which authorship remains unequal, but collaboration can at least become visible."
+        },
+        {
+          "type": "header",
+          "content": "Calibre 3098: engineering an asymmetry",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The Galets case is not a conventional round housing given a decorative outline. Its asymmetry obliges the calibre to answer the case. Calibre 3098 was developed from the historical 3090 architecture and reshaped so that movement, case and stone composition share the same off-centre logic."
+        },
+        {
+          "type": "text",
+          "content": "A balance oscillates at one end of this miniature landscape while bridges distribute support across the available volume. Hand-grained surfaces and chamfered edges make the movement legible without forcing it into bilateral symmetry. The achievement is integration: engineering does not correct the designer after the fact; it participates in the form."
         },
         {
           "type": "header",
           "content": "V · Galets: nature disciplined without becoming uniform",
           "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/audemars-piguet-etablisseurs-galets.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Audemars Piguet, Établisseurs Galets, presented in 2026. Natural stones turn the watch into a singular composition rather than a repeatable industrial surface. Courtesy Audemars Piguet."
         },
         {
           "type": "text",
@@ -14079,6 +14142,23 @@
         },
         {
           "type": "header",
+          "content": "One watchmaker, one chain of responsibility",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Each Établisseurs piece is assembled and adjusted by one master watchmaker. That continuity differs from a production line in which specialised operations pass anonymously from station to station. A single maker follows the behaviour of the movement through assembly, regulation and casing, accumulating knowledge of one object’s particular resistances."
+        },
+        {
+          "type": "text",
+          "content": "Individual responsibility does not mean solitary creation. Galets depends on gemmologist and lapidary Mario Senape, specialist case makers, jewellers and movement constructors; Peacock brings together designer Kenan Geraud, engravers, enameller Vanessa Lecci and goldsmiths; Nomade requires stone cutting, skeletonisation and minute case tolerances. The single watchmaker is the final integrator of a visibly plural authorship."
+        },
+        {
+          "type": "text",
+          "content": "The model resembles an orchestra more than the mythology of the lone artist. Specialisation increases difference, while coordination prevents difference from becoming noise. The brand’s meaningful role is not to claim every gesture as its own but to sustain the conditions under which the gestures can meet."
+        },
+        {
+          "type": "header",
           "content": "VIII · A museum shaped like a mainspring",
           "level": 2
         },
@@ -14110,6 +14190,19 @@
         },
         {
           "type": "header",
+          "content": "Architecture as a regulating mechanism",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The Musée Atelier’s glass does structural and environmental work simultaneously. Curved panels carry the roof, admit the valley as a continuous horizon and are screened by a brass mesh that moderates light and temperature. The grass-covered steel roof adds thermal mass and manages rainwater. The apparently immaterial spiral is, in fact, a calibrated environmental machine."
+        },
+        {
+          "type": "text",
+          "content": "Its exhibition route also manages narrative energy. Scenographer ATELIER BRÜCKNER conceived the displays as a musical score with interludes, crescendos and a climax around the Universelle. Time is not represented by a straight chronology alone. It is paced through compression, release and recurrence."
+        },
+        {
+          "type": "header",
           "content": "IX · When a brand becomes a curator",
           "level": 2
         },
@@ -14119,7 +14212,7 @@
         },
         {
           "type": "text",
-          "content": "The programme’s artists—including Cao Fei, Ryoji Ikeda, Alexandra Pirici, Tomás Saraceno, Sallisa Rosa, Yu Ji and others—are not selected to decorate boutiques with images of watches. Their works address data, ecology, performance, memory, sound and unstable material systems. The relationship to the brand is structural rather than iconographic: sustained production, technical ambition and the measurement of change."
+          "content": "The programme’s artists — including Cao Fei, Ryoji Ikeda, Alexandra Pirici, Tomás Saraceno, Sallisa Rosa, Yu Ji and others — are not selected to decorate boutiques with images of watches. Their works address data, ecology, performance, memory, sound and unstable material systems. The relationship to the brand is structural rather than iconographic: sustained production, technical ambition and the measurement of change."
         },
         {
           "type": "image",
@@ -14183,6 +14276,23 @@
         },
         {
           "type": "header",
+          "content": "What the commissions actually change",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The strongest AP Contemporary projects do not translate watch components into enlarged sculpture. Ryoji Ikeda turns datasets into audiovisual environments whose precision exceeds comprehension. Alexandra Pirici uses living bodies to question whether memory requires an object. Yu Ji works with erosion and material fatigue. These practices complicate the brand’s own promises of permanence, mastery and possession."
+        },
+        {
+          "type": "text",
+          "content": "Because the commissioned works remain the artists’ property, the programme avoids one common form of corporate extraction: funding a work and absorbing it permanently into a branded collection. The arrangement still produces cultural capital for AP, but it also permits the artwork to develop an institutional life beyond its sponsor."
+        },
+        {
+          "type": "text",
+          "content": "That distinction is more consequential than visual alignment. Patronage becomes credible when it finances difference rather than demanding resemblance."
+        },
+        {
+          "type": "header",
           "content": "XIII · Patronage is never innocent",
           "level": 2
         },
@@ -14209,12 +14319,29 @@
         },
         {
           "type": "header",
+          "content": "The secondary market and the second clock",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A watch has a second clock running beside its movement: the market. Auction results, discontinued references, condition reports and provenance convert ownership history into price. Patina can be valued as evidence of time, while replacement parts may reduce value even when they improve function. Collectors do not simply want an old object; they want continuity that can be authenticated."
+        },
+        {
+          "type": "text",
+          "content": "This produces a paradox. The manufacture promises service over generations, but intervention can erase the very traces the market rewards. Restoration must decide which time to preserve: the ideal form intended by the maker or the accumulated life carried by the object. The Musée Atelier’s restoration workshop sits precisely inside that ethical problem."
+        },
+        {
+          "type": "text",
+          "content": "The best watch conservation does not return every surface to youth. It distinguishes damage from history, maintaining mechanical life without manufacturing a false past."
+        },
+        {
+          "type": "header",
           "content": "XV · What a brand can learn from art",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Brands usually approach art hoping that art will make them appear imaginative. The more interesting possibility runs in the opposite direction: art can teach a company to tolerate outcomes it does not fully control. A commissioned work that remains recognisably the artist’s—not an illustration of corporate values—is evidence of that tolerance."
+          "content": "Brands usually approach art hoping that art will make them appear imaginative. The more interesting possibility runs in the opposite direction: art can teach a company to tolerate outcomes it does not fully control. A commissioned work that remains recognisably the artist’s — not an illustration of corporate values — is evidence of that tolerance."
         },
         {
           "type": "text",
@@ -14222,7 +14349,7 @@
         },
         {
           "type": "quote",
-          "content": "A mechanical watch does not defeat time. It gives time a body—and then asks us to decide whose labour, memory and desire that body contains."
+          "content": "A mechanical watch does not defeat time. It gives time a body — and then asks us to decide whose labour, memory and desire that body contains."
         },
         {
           "type": "header",
