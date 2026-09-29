@@ -359,7 +359,7 @@ export function IssuePage({
       </section>
 
       {readerPage !== null && (
-        <EditionReader manifest={manifest} base={edition.base} startPage={readerPage} lang={lang} onClose={() => setReaderPage(null)} />
+        <EditionReader key={readerPage} manifest={manifest} base={edition.base} startPage={readerPage} lang={lang} onClose={() => setReaderPage(null)} />
       )}
     </div>
   );
