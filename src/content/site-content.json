@@ -13253,7 +13253,8 @@
           "content": "Come Softly to Me: an interview with Louis Fratino — Columbia Journal",
           "url": "https://www.columbiajournal.org/archive/2019-come-softly-to-me-an-interview-with-louis-fratino"
         }
-      ]
+      ],
+      "hideOnHome": true
     },
     {
       "id": 55,
@@ -13924,7 +13925,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/audemars-piguet-etablisseurs-triptych.jpg",
       "previewToken": "6defdaea67d02e81cf81991d",
-      "updatedAt": "2026-10-01T10:50:06.814Z",
+      "updatedAt": "2026-10-01T10:51:12.632Z",
       "content": [
         {
           "type": "text",
