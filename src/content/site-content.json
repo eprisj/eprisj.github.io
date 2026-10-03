@@ -16427,6 +16427,44 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-044",
           "updatedAt": "2026-10-03T13:37:45.465Z"
+        },
+        {
+          "id": 48,
+          "title": "Польский дизайн: соткан из памяти",
+          "subtitle": "Дизайн",
+          "fig": "FIG. 09",
+          "description": "Современный польский дизайн достиг момента глубокого, тихого созревания. Прогулка по студиям ведущих архитекторов и мебельных дизайнеров сегодня — это встреча с языком строгого минимализма, тактильных необработанных материалов и преднамеренной структурной честности. Однако эта современная ясность не является отказом от прошлого — это кульминация векового диалога о том, что значит создавать с национальной душой.",
+          "imageSeed": "epris-pick-design",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · гофрированный картон",
+          "homeDescription": "Простая плита превращается в извилиное сиденье: повседневный материал, превращённый в скульптурную, удивительно щедрую форму.",
+          "homeCredit": "Frank Gehry · фото CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-045",
+          "updatedAt": "2026-10-03T13:38:01.517Z"
+        },
+        {
+          "id": 49,
+          "title": "Искусство, которое заставляет вас улыбнуться",
+          "subtitle": "ИСКУССТВО & ДИЗАЙН",
+          "fig": "FIG. 07",
+          "description": "Я верю, что когда вы вводите игривые объекты в окружающую среду, это расширяет границы разума. Это дает вам невербальное разрешение свободно думать - не только чтобы противостоять обычным рамкам, но и чтобы забыть, что они вообще существуют.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Уникальные формы непрерывности в пространстве",
+          "homeSubtitle": "Umberto Boccioni · 1913 · бронза",
+          "homeDescription": "Тело становится скоростью: Boccioni превращает фигуру в единый аэродинамический жест, зафиксированный между скульптурой и полетом.",
+          "homeCredit": "Umberto Boccioni · произведение в общественном достоянии / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:22.798Z"
         }
       ],
       "articles": [
@@ -29635,6 +29673,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-045",
           "updatedAt": "2026-10-03T13:37:58.647Z"
+        },
+        {
+          "id": 49,
+          "title": "Мистецтво, яке змушує вас посміхатися",
+          "subtitle": "ART & DESIGN",
+          "fig": "FIG. 07",
+          "description": "Я вірю, що коли ви вводите грайливі об'єкти в середовище, це розширює межі розуму. Це дає вам невербальний дозвіл думати вільно — не лише натискати проти звичних рамок, а й забути, що вони існують.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Унікальні форми безперервності у просторі",
+          "homeSubtitle": "Umberto Boccioni · 1913 · бронза",
+          "homeDescription": "Тіло стає швидкістю: Boccioni перетворює фігуру в один аеродинамічний жест, зафіксований між скульптурою та польотом.",
+          "homeCredit": "Umberto Boccioni · робота з публічного домену / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:20.055Z"
         }
       ],
       "articles": [
@@ -42837,6 +42894,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-045",
           "updatedAt": "2026-10-03T13:37:48.536Z"
+        },
+        {
+          "id": 49,
+          "title": "Kunst, die Sie zum Lächeln bringt",
+          "subtitle": "KUNST & DESIGN",
+          "fig": "FIG. 07",
+          "description": "Ich glaube daran, dass wenn man verspielte Objekte in eine Umgebung einführt, es die Grenzen des Geistes erweitert. Es gibt einem non-verbal die Erlaubnis, frei zu denken - nicht nur gegen konventionelle Rahmen zu stoßen, sondern sie sogar zu vergessen.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Einzigartige Formen der Kontinuität im Raum",
+          "homeSubtitle": "Umberto Boccioni · 1913 · Bronze",
+          "homeDescription": "Ein Körper wird zur Geschwindigkeit: Boccioni verwandelt die Figur in eine einzige aerodynamische Geste, eingefangen zwischen Skulptur und Flug.",
+          "homeCredit": "Umberto Boccioni · public-domain-Werk / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:04.533Z"
         }
       ],
       "articles": [
@@ -56035,6 +56111,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-045",
           "updatedAt": "2026-10-03T13:37:50.908Z"
+        },
+        {
+          "id": 49,
+          "title": "Arte que te hace sonreír",
+          "subtitle": "ARTE & DISEÑO",
+          "fig": "FIG. 07",
+          "description": "Creo que cuando introduces objetos lúdicos en un entorno, amplía los límites de la mente. Te da permiso no verbal para pensar libremente - no solo para empujar contra marcos convencionales, sino para olvidar que incluso existen.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Formas Únicas de Continuidad en el Espacio",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronce",
+          "homeDescription": "Un cuerpo se convierte en velocidad: Boccioni convierte la figura en un solo gesto aerodinámico, atrapado entre escultura y vuelo.",
+          "homeCredit": "Umberto Boccioni · obra de dominio público / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:13.534Z"
         }
       ],
       "articles": [
@@ -76855,6 +76950,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-045",
           "updatedAt": "2026-10-03T13:37:53.603Z"
+        },
+        {
+          "id": 49,
+          "title": "Arte che ti fa sorridere",
+          "subtitle": "ART & DESIGN",
+          "fig": "FIG. 07",
+          "description": "Credo che quando introduci oggetti giocosi in un ambiente, espandi i confini della mente. Ti dà il permesso non verbale di pensare liberamente - non solo di spingere contro i quadri convenzionali, ma di dimenticarli anche esistono.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Forme Uniche della Continuità nello Spazio",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronzo",
+          "homeDescription": "Un corpo diventa velocità: Boccioni trasforma la figura in un gesto aerodinamico unico, catturato tra scultura e volo.",
+          "homeCredit": "Umberto Boccioni · opera di dominio pubblico / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:15.713Z"
         }
       ],
       "articles": [
@@ -89543,6 +89657,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-045",
           "updatedAt": "2026-10-03T13:37:55.749Z"
+        },
+        {
+          "id": 49,
+          "title": "Art qui vous fait sourire",
+          "subtitle": "ART & DESIGN",
+          "fig": "FIG. 07",
+          "description": "Je crois que lorsque vous introduisez des objets ludiques dans un environnement, cela élargit les frontières de l'esprit. Cela vous donne la permission non verbale de penser librement - pas seulement de repousser les cadres conventionnels, mais d'oublier qu'ils existent même.",
+          "imageSeed": "epris-pick-sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+          "homeCategory": "sculpture",
+          "homeLabel": "Umberto Boccioni · 1913 · bronze",
+          "homeTitle": "Formes uniques de continuité dans l'espace",
+          "homeSubtitle": "Umberto Boccioni · 1913 · bronze",
+          "homeDescription": "Un corps devient vitesse : Boccioni transforme la figure en un seul geste aérodynamique, pris entre sculpture et vol.",
+          "homeCredit": "Umberto Boccioni · œuvre du domaine public / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-046",
+          "updatedAt": "2026-10-03T13:38:17.939Z"
         }
       ],
       "articles": [
