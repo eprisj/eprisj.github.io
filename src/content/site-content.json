@@ -2493,7 +2493,10 @@
       "homeSubtitle": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
       "homeDescription": "A path dissolves into haze and trees, making the landscape feel like a memory still finding its focus.",
       "homeCredit": "Fedora E. D. Brown · public-domain photograph / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-037",
+      "updatedAt": "2026-10-03T13:45:00Z"
     },
     {
       "id": 12,
@@ -2510,7 +2513,10 @@
       "homeSubtitle": "Hilma af Klint · 1907 · tempera on paper",
       "homeDescription": "Lilac fields, solar diagrams and a dark central seed make the canvas feel less painted than grown from an invisible cosmos.",
       "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-038",
+      "updatedAt": "2026-10-03T13:45:00Z"
     },
     {
       "id": 10,
@@ -2527,7 +2533,10 @@
       "homeSubtitle": "Lekeboy54 · 2025 · architectural photograph",
       "homeDescription": "A quiet concrete frame turns weather, repetition and a low horizon into one measured composition.",
       "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-039",
+      "updatedAt": "2026-10-03T13:45:00Z"
     },
     {
       "id": 9,
@@ -2544,7 +2553,10 @@
       "homeSubtitle": "Frank Gehry · 1972 · corrugated cardboard",
       "homeDescription": "A simple sheet becomes a sinuous seat: an everyday material pushed into a sculptural, surprisingly generous form.",
       "homeCredit": "Frank Gehry · photo CC0 / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-040",
+      "updatedAt": "2026-10-03T13:45:00Z"
     },
     {
       "id": 8,
@@ -2571,7 +2583,10 @@
       "homeSubtitle": "Umberto Boccioni · 1913 · bronze",
       "homeDescription": "A body becomes velocity: Boccioni turns the figure into a single aerodynamic gesture, caught between sculpture and flight.",
       "homeCredit": "Umberto Boccioni · public-domain work / Wikimedia Commons",
-      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg"
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-041",
+      "updatedAt": "2026-10-03T13:45:00Z"
     },
     {
       "id": 1,
@@ -101051,11 +101066,26 @@
             "PICS-2026-035",
             "PICS-2026-036"
           ]
+        },
+        {
+          "id": "PICS-WEEK-2026-006",
+          "label": "Daily Picks · form, colour & space · 3 Oct 2026",
+          "status": "published",
+          "createdAt": "2026-10-03T13:45:00Z",
+          "publishedAt": "2026-10-03T13:45:00Z",
+          "publicArchive": true,
+          "picsIds": [
+            "PICS-2026-041",
+            "PICS-2026-038",
+            "PICS-2026-039",
+            "PICS-2026-040",
+            "PICS-2026-037"
+          ]
         }
       ],
-      "activeReleaseId": "PICS-WEEK-2026-004",
+      "activeReleaseId": "PICS-WEEK-2026-006",
       "centerCategory": "avant-garde",
-      "pastReleasesPublic": false
+      "pastReleasesPublic": true
     },
     "articles": {},
     "showcase": {},
@@ -102663,6 +102693,13 @@
           }
         }
       ]
+    },
+    {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-006",
+      "releaseId": "PICS-WEEK-2026-006",
+      "label": "Daily Picks · form, colour & space · 3 Oct 2026",
+      "publishedAt": "2026-10-03T13:45:00Z",
+      "signature": "sculpture:PICS-2026-041|painting:PICS-2026-038|architecture:PICS-2026-039|design:PICS-2026-040|photography:PICS-2026-037"
     }
   ],
   "translationsSource": {
