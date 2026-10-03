@@ -97411,6 +97411,245 @@
               "url": "https://museeatelier.audemarspiguet.com/en/about/tradition-forward-thinking.html"
             }
           ]
+        },
+        {
+          "id": 58,
+          "draft": false,
+          "title": "Kerry James Marshall : L’Histoire d’être vu",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "3 oct. 2026",
+          "publishedAt": "2026-10-03T12:50:00.000Z",
+          "excerpt": "Au Musée d’Art Moderne de Paris, Kerry James Marshall transforme l’histoire de la peinture en une scène vivante : grandiose, tendre et impossible à détourner le regard.",
+          "category": "Art",
+          "subcategory": "Expositions",
+          "tags": [
+            "Kerry James Marshall",
+            "Paris",
+            "Peinture",
+            "Art contemporain",
+            "Musée d’Art Moderne",
+            "Expositions"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/kerry-marshall-school-of-beauty.jpg",
+          "previewToken": "kerry-james-marshall-paris-20261003",
+          "updatedAt": "2026-10-03T12:55:07.843Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-school-of-beauty.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Kerry James Marshall, École de Beauté, École de Culture, 2012. Acrylique et paillettes sur toile non tendue avec œillets en métal. Birmingham Museum of Art, Alabama. © Kerry James Marshall. Courtesy l’artiste et Jack Shainman Gallery, New York. Photo : M. Sean Pathasema."
+            },
+            {
+              "type": "text",
+              "content": "Les peintures de Kerry James Marshall ne demandent pas à être admises dans l’histoire de l’art. Elles arrivent comme si elles avaient toujours possédé une salle là-bas. Dans The Histories*, la première exposition de l’artiste en France, le Musée d’Art Moderne de Paris rassemble soixante-dix œuvres sur plus de quatre décennies, y compris huit peintures réalisées spécialement pour l’exposition. Le résultat n’est pas une rétrospective qui passe poliment des œuvres anciennes aux œuvres récentes. C’est un système de pression : une contre-histoire qui fait que le vieux canon semble soudainement inachevé."
+            },
+            {
+              "type": "text",
+              "content": "Les figures de Marshall sont indubitablement présentes. Elles ne sont pas des fantômes pâles attendant que le musée les reconnaisse, ni des symboles conçus pour porter un seul message politique. Elles siègent dans des parcs, se tiennent dans des salons de beauté, apparaissent comme des amants, des étudiants, des sujets historiques et des ancêtres inventés. Elles occupent toute l’échelle de la peinture : ses plaisirs décoratifs, son autorité, sa théâtralité et sa capacité à faire qu’une image semble inévitable."
+            },
+            {
+              "type": "note",
+              "content": "Ceci est un essai éditorial indépendant de Viacheslav Munister. Les dates d’exposition, les informations sur les œuvres et les crédits d’image sont basés sur les matériaux officiels du Musée d’Art Moderne de Paris. Les droits des œuvres restent la propriété de Kerry James Marshall, des prêteurs et des photographes crédités."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Peinture comme un contre-archive"
+            },
+            {
+              "type": "text",
+              "content": "L'expression « contre-archive » est utile pour Marshall, mais seulement si nous nous rappelons que son archive est faite de couleur, d'échelle et de séduction autant que de documents. Il n'ajoute pas simplement des personnes manquantes à une image historique existante. Il change la température émotionnelle de l'image elle-même. Une figure noire rendue en pigment dense et lumineux devient non pas une illustration de l'absence mais une nouvelle norme de visibilité."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-038.jpg",
+              "align": "center",
+              "width": 72,
+              "caption": "Kerry James Marshall, visuel officiel de l'exposition provenant des matériaux de presse du Musée d’Art Moderne de Paris. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "Marshall a parlé de l'expérience de grandir à Los Angeles, de l'insurrection de Watts et de la rencontre avec l'histoire de l'art noir en tant que jeune artiste. Pourtant, les peintures ne restent pas à l'intérieur de la biographie. Elles transforment l'histoire vécue en un problème formel : comment un corps peut-il entrer dans une image avec assez de force pour résister à être réduit à une preuve ? Sa réponse est de donner à la figure les privilèges traditionnellement réservés au sujet européen—monumentalité, mystère, élégance, allégorie et temps."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "La figure noire n'est pas une couleur plate"
+            },
+            {
+              "type": "text",
+              "content": "Les noirs de Marshall ne sont jamais simplement noir. Ils contiennent du bleu, du vert, du rouge, du violet, de la lumière réfléchie et la pression lente du champ environnant. C'est l'un des aspects les plus radicaux de sa peinture. Le spectateur rencontre d'abord une silhouette, puis une surface, puis une personne dont la présence est plus complexe que la catégorie utilisée pour la nommer."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-untitled.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Kerry James Marshall, Sans titre. Acrylique sur panneau en PVC. Harvard Art Museums/Fogg Museum, Cambridge. © Kerry James Marshall. Photo © President and Fellows of Harvard College."
+            },
+            {
+              "type": "text",
+              "content": "Cette complexité importe parce que la peinture occidentale a souvent traité la Noirceur comme un sujet de documentation ou un signe d'altérité. Marshall refuse les deux positions. Ses figures peuvent être silencieuses sans devenir passives, stylisées sans devenir décoratives, et symboliques sans perdre leur vie privée. L'œil est invité à rester avec elles assez longtemps pour que la première lecture devienne insuffisante."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Le salon, le parc, l’épopée"
+            },
+            {
+              "type": "text",
+              "content": "Dans School of Beauty, School of Culture, le salon de beauté est à la fois un espace social réel et une scène pour l’histoire de l’art. La scène contient le langage du quotidien—cheveux, conversation, vêtements, miroirs—mais elle est composée avec l’ambition d’une fresque publique. Marshall crée un lieu qui a souvent été traité comme périphérique pour devenir central architecturalement."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-007.jpg",
+              "align": "center",
+              "width": 96,
+              "caption": "Kerry James Marshall, visuel de presse officiel de The Histories*. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "C’est là que le dialogue de Marshall avec Manet, Caillebotte et Seurat devient plus qu’une liste de références. La ville moderne a été construite en peinture à travers des cafés, des boulevards, des parcs et des scènes de loisirs, mais les personnes autorisées à représenter la vie moderne n’ont jamais été réparties équitablement. Marshall ne demande pas à être inséré dans cette image aux marges. Il agrandit l’image jusqu’à ce que la marge perde son autorité."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-027.jpg",
+              "align": "center",
+              "width": 84,
+              "caption": "Kerry James Marshall, visuel officiel de presse de The Histories*. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "Ses figures sont souvent magnifiquement habillées, entourées de fleurs, de murs à motifs, de meubles polis ou de la douce lumière artificielle d'un salon. La beauté n'est pas une distraction de l'histoire. Elle fait partie de l'argument. Représenter la vie noire uniquement à travers la lutte est une autre forme d'exclusion. Plaisir, style et romance ne sont pas des récompenses qui viennent après la politique ; ce sont des formes de connaissance."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Vignette : intimité avec un cadre autour"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-vignette-13.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Kerry James Marshall, Vignette #13. Acrylique sur panneau en PVC. Collection Jennifer Gilbert. © Kerry James Marshall. Image fournie par l'artiste et Jack Shainman Gallery, New York."
+            },
+            {
+              "type": "text",
+              "content": "Les peintures Vignette ressemblent, au début, à de petits théâtres de romance. Les couples flottent dans des atmosphères de fleurs et de couleurs douces, empruntant à l'ornement rococo et au langage visuel des cartes de vœux. Mais la tendresse n'est pas sentimentale. Marshall revendique le droit des figures noires d'habiter les espaces picturaux de l'idéalisation : le jardin, l'étreinte, le moment suspendu où le monde semble s'être organisé autour de deux personnes."
+            },
+            {
+              "type": "text",
+              "content": "Le cadre dans ces œuvres n'est jamais innocent. C'est une frontière autour de l'intimité, mais aussi un rappel que l'intimité a été historiquement rationnée par la représentation. Marshall rend le couple visible sans en faire une propriété publique. Ils sont vus, mais non disponibles pour être consommés comme un problème."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Histoire sans un seul héros"
+            },
+            {
+              "type": "text",
+              "content": "La série Souvenirs commence du mouvement des droits civiques, mais Marshall évite la chorégraphie familière de la peinture historique : le leader au podium, la foule sous une bannière, le geste décisif figé à son moment le plus lisible. Ses images sont plus compliquées. Elles comprennent que l'histoire est portée par des personnes qui ne sont pas toujours nommées, photographiées ou rappelées."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-031.jpg",
+              "align": "center",
+              "width": 96,
+              "caption": "Kerry James Marshall, visuel officiel de l’exposition provenant des matériaux de presse du Musée d’Art Moderne de Paris. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "Ce refus d’un seul héros se poursuit dans les portraits imaginés de figures telles que Scipio Moorhead et Harriet Tubman. Lorsque les archives ne fournissent pas une image fiable, la peinture peut soit capituler soit inventer. Marshall choisit l’invention, mais c’est une invention disciplinée : le visage devient un site où l’absence de preuve est reconnue et réparée par l’attention."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Réveil et le poids de la mémoire"
+            },
+            {
+              "type": "text",
+              "content": "Réveil, la sculpture cumulative au centre de l’imagination historique de l’exposition, est faite de médaillons et d’ajouts. Elle change à chaque fois qu’elle est exposée. L’œuvre n’est donc pas un monument fixe mais une machine à mémoire : une forme qui admet que le passé n’est jamais terminé et que chaque histoire publique dépend de ce qu’elle est encore capable de recevoir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-027.jpg",
+              "align": "center",
+              "width": 84,
+              "caption": "Kerry James Marshall, détail des visuels officiels de la presse pour The Histories*. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "La logique de l'accumulation décrit également l'exposition elle-même. Marshall travaille par cycles, revenant sur des motifs jusqu'à ce qu'ils révèlent une pression différente. Un parc n'est jamais seulement un parc ; un portrait n'est jamais seulement un portrait ; une pose classique peut devenir un salut du Black Power. La signification ne se transmet pas une seule fois. Elle s'épaissit."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "L'Académie et le droit d'étudier"
+            },
+            {
+              "type": "text",
+              "content": "Dans L'Académie, un modèle masculin dans une classe de dessin en vie lève son poing en un salut du Black Power. Le geste est instantanément reconnaissable, mais sa place change tout. Il entre dans un espace traditionnellement organisé autour de l'étude du corps idéal et interrompt l'autorité neutre de l'académie. Le modèle n'est plus un matériau anonyme pour l'éducation de quelqu'un d'autre. Il est à la fois sujet et agent historique."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-007.jpg",
+              "align": "center",
+              "width": 96,
+              "caption": "Kerry James Marshall, visuel de presse officiel de The Histories*. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "Les peintures de Marshall ont souvent ce double mouvement. Elles sont richement conscientes du musée—ses genres, cadres, leçons et hiérarchies—mais elles ne deviennent pas des exercices académiques. La surface reste vivante. Motif, paillettes, couleur saturée et blagues visuelles empêchent l'œuvre de se durcir en une thèse."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Les nouvelles peintures ne ferment pas l'histoire"
+            },
+            {
+              "type": "text",
+              "content": "Les huit nouvelles peintures à la fin de l'exposition se tournent vers des épisodes de l'histoire africaine et de la traite transatlantique des esclaves. Leur sujet est difficile, mais la stratégie de Marshall n'est pas de produire une image de violence historique qui demande au spectateur de rester au niveau du choc. Il s'intéresse aux structures de la connaissance autour de l'événement : qui est nommé, qui est blâmé, qui disparaît, et ce qu'une peinture peut faire lorsque l'archive est partielle."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/kerry-marshall-031.jpg",
+              "align": "center",
+              "width": 96,
+              "caption": "Kerry James Marshall, visuel officiel de The Histories*, Musée d’Art Moderne de Paris. © Kerry James Marshall."
+            },
+            {
+              "type": "text",
+              "content": "Les peintures ne sont pas des illustrations d’un passé achevé. Elles sont des invitations à regarder à nouveau les conditions dans lesquelles un passé devient visible. L’histoire de Marshall n’est donc pas derrière nous. Elle est active dans la galerie, dans le cadre, dans le corps du spectateur et dans les habitudes d’attention que la peinture a héritées."
+            },
+            {
+              "type": "quote",
+              "content": "Marshall ne peint pas un chapitre manquant dans le canon. Il change ce que le canon est autorisé à signifier."
+            },
+            {
+              "type": "text",
+              "content": "The Histories* est une exposition formidable parce qu’elle comprend que la représentation n’est jamais seulement une question de qui apparaît. Il s’agit d’échelle, de plaisir, d’autorité, d’intimité et de durée. Elle demande si les figures noires peuvent se voir accorder toute la complexité que la peinture a toujours promise à ses sujets choisis. Entre les mains de Marshall, la réponse n’est pas un slogan. C’est une pièce, une couleur, une pose, un visage—et puis un autre visage, et un autre, jusqu’à ce que l’absence ne semble plus inévitable."
+            },
+            {
+              "type": "link",
+              "content": "Musée d’Art Moderne de Paris — page officielle de l’exposition",
+              "url": "https://www.mam.paris.fr/fr/expositions/exposition-kerry-james-marshall"
+            },
+            {
+              "type": "link",
+              "content": "Kit de presse officiel — Kerry James Marshall : Les Histoires*",
+              "url": "https://www.mam.paris.fr/sites/default/files/documents/fr_dp_kjm_mam_15.09.2026.pdf"
+            },
+            {
+              "type": "note",
+              "content": "Crédits image : © Kerry James Marshall, avec prêteurs, galeries et photographes crédités dans chaque légende. Images reproduites à partir des matériaux de presse officiels du Musée d’Art Moderne de Paris à des fins éditoriales ; les droits restent avec les titulaires de droits respectifs."
+            }
+          ]
         }
       ],
       "reviews": [
