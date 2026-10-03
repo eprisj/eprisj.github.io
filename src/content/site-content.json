@@ -14392,241 +14392,229 @@
       ]
     },
     {
-      "id": 58,
+      "id": 59,
       "draft": false,
-      "title": "Kerry James Marshall: The History of Being Seen",
+      "title": "Cathy de Monchaux: The Poise of Wounds",
       "author": "Viacheslav Munister",
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
       "date": "Oct 3, 2026",
-      "publishedAt": "2026-10-03T12:50:00.000Z",
-      "excerpt": "At the Musée d’Art Moderne de Paris, Kerry James Marshall turns the history of painting into a living stage: grand, tender and impossible to look away from.",
+      "publishedAt": "2026-10-03T13:20:00.000Z",
+      "excerpt": "At the Palais de Tokyo, Cathy de Monchaux turned metal, velvet, dust and fragile armatures into a sculptural language of desire, danger and extraordinary beauty.",
       "category": "Art",
-      "subcategory": "Exhibitions",
+      "subcategory": "Sculpture & Objects",
       "tags": [
-        "Kerry James Marshall",
-        "Paris",
-        "Painting",
+        "Cathy de Monchaux",
+        "Sculpture",
+        "Palais de Tokyo",
         "Contemporary Art",
-        "Musée d’Art Moderne",
-        "Exhibitions"
+        "Installation",
+        "Paris"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/kerry-marshall-school-of-beauty.jpg",
-      "previewToken": "kerry-james-marshall-paris-20261003",
-      "updatedAt": "2026-10-03T12:50:00.000Z",
+      "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
+      "previewToken": "cathy-de-monchaux-paris-20261003",
+      "updatedAt": "2026-10-03T13:20:00.000Z",
       "content": [
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-school-of-beauty.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Kerry James Marshall, School of Beauty, School of Culture, 2012. Acrylic and glitter on unstretched canvas with metal grommets. Birmingham Museum of Art, Alabama. © Kerry James Marshall. Courtesy the artist and Jack Shainman Gallery, New York. Photo: M. Sean Pathasema."
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Antoine Aphesbero. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "Kerry James Marshall’s paintings do not ask to be admitted into the history of art. They arrive as if they have always owned a room there. In The Histories*, the artist’s first exhibition in France, the Musée d’Art Moderne de Paris gathers seventy works across more than four decades, including eight paintings made especially for the exhibition. The result is not a retrospective that politely moves from early work to late work. It is a pressure system: a counter-history that makes the old canon look suddenly unfinished."
+          "content": "Some exhibitions make sculpture look monumental. Cathy de Monchaux’s first major retrospective at the Palais de Tokyo made it look alive. Across roughly fifty works dating from 1984 to the present, metal, velvet, dust, tracing paper, straps, rivets and delicate armatures formed an unsettled ecology of bodies. Nothing simply stood still. Even the most rigid structure seemed to be breathing, bracing itself or remembering an injury."
         },
         {
           "type": "text",
-          "content": "Marshall’s figures are unmistakably present. They are not pale ghosts waiting for the museum to acknowledge them, nor symbols designed to carry a single political message. They sit in parks, stand in beauty salons, appear as lovers, students, historical subjects and invented ancestors. They occupy the full scale of painting: its decorative pleasures, its authority, its theatricality and its capacity to make an image feel inevitable."
+          "content": "Studio, wounds and battles, desire is the reiteration of hope closed on 13 September 2026, but its images remain unusually difficult to put away. The exhibition was beautiful in the way a thorn, a relic or a half-remembered dream can be beautiful: not because it reassures, but because it gives form to the contradiction between vulnerability and force."
         },
         {
           "type": "note",
-          "content": "This is an independent editorial essay by Viacheslav Munister. Exhibition dates, artwork information and image credits are based on the official materials of the Musée d’Art Moderne de Paris. Artwork rights remain with Kerry James Marshall, lenders and credited photographers."
+          "content": "Independent editorial review by Viacheslav Munister. Exhibition dates, descriptions and image credits are based on official Palais de Tokyo materials. Images are reproduced from the institution’s press visuals; rights remain with Cathy de Monchaux, ADAGP and the credited photographers."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "Painting as a counter-archive"
+          "content": "The sculpture that refuses a clean edge"
         },
         {
           "type": "text",
-          "content": "The phrase “counter-archive” is useful for Marshall, but only if we remember that his archive is made of colour, scale and seduction as much as documents. He does not simply add missing people to an existing historical picture. He changes the emotional temperature of the picture itself. A black figure rendered in dense, luminous pigment becomes not an illustration of absence but a new standard of visibility."
+          "content": "De Monchaux’s objects are never satisfied with a single category. They can be sculpture, reliquary, anatomical fragment, stage set, machine, shell or weapon. They often occupy the wall like a drawing that has thickened into matter, or the floor like a body that has not decided whether to crawl, stand or disappear."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-038.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-002.jpg",
           "align": "center",
-          "width": 72,
-          "caption": "Kerry James Marshall, official exhibition visual from the Musée d’Art Moderne de Paris press materials. © Kerry James Marshall."
+          "width": 74,
+          "caption": "Cathy de Monchaux, installation view, “Studio, wounds and battles, desire is the reiteration of hope”, Palais de Tokyo, 2026. Photo: Aurélien Mole. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "Marshall has spoken about the experience of growing up in Los Angeles, about the Watts uprising and about encountering the history of Black art as a young artist. Yet the paintings do not remain inside biography. They turn lived history into a formal problem: how can a body enter a picture with enough force to resist being reduced to evidence? His answer is to give the figure the privileges traditionally reserved for the European subject—monumentality, mystery, elegance, allegory and time."
+          "content": "This refusal of a clean edge is central to the exhibition’s sensuality. A surface may appear soft until the eye notices its armour. A metal structure may look severe until it begins to resemble a rib cage, a flower or a nest. The works are made from transitions. They live in the moment when one material becomes another kind of image."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "The black figure is not a flat colour"
+          "content": "An intimacy made from metal"
         },
         {
           "type": "text",
-          "content": "Marshall’s blacks are never simply black. They contain blue, green, red, violet, reflected light and the slow pressure of the surrounding field. This is one of the most radical aspects of his painting. The viewer first encounters a silhouette, then a surface, then a person whose presence is more complex than the category used to name it."
+          "content": "The most striking quality of de Monchaux’s work is not its darkness but its intimacy. The sculptures seem to know the scale of the body. They bend, clasp, fold and open like gestures that have been enlarged without losing their private origin. Even the more spectacular installations retain the feeling of something handled, repaired or protected."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-untitled.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-009.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Kerry James Marshall, Untitled. Acrylic on PVC panel. Harvard Art Museums/Fogg Museum, Cambridge. © Kerry James Marshall. Photo © President and Fellows of Harvard College."
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Aurélien Mole. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "That complexity matters because Western painting has often treated Blackness as either a subject of documentation or a sign of otherness. Marshall refuses both positions. His figures can be quiet without becoming passive, stylised without becoming decorative, and symbolic without losing their private life. The eye is asked to stay with them long enough for the first reading to become inadequate."
+          "content": "Her vocabulary is full of structures that support and restrain at the same time. Straps can hold a form together, but they can also bind it. Ribs can protect, but they can also become a cage. The work does not decide which reading is correct. It makes the viewer feel the pressure between them."
+        },
+        {
+          "type": "text",
+          "content": "That pressure is why the sculptures never become decorative, even when they are extraordinarily refined. Beauty is not a surface applied to difficult material. It is the exactness with which difficulty has been given a body."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "The salon, the park, the epic"
-        },
-        {
-          "type": "text",
-          "content": "In School of Beauty, School of Culture, the beauty salon is both a real social space and a stage for art history. The scene contains the language of the everyday—hair, conversation, clothing, mirrors—but it is composed with the ambition of a public mural. Marshall makes a place that has frequently been treated as peripheral become architecturally central."
+          "content": "The forest inside the gallery"
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-007.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-32.jpg",
           "align": "center",
-          "width": 96,
-          "caption": "Kerry James Marshall, official press visual from The Histories*. © Kerry James Marshall."
+          "width": 70,
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Quentin Chevrier. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "This is where Marshall’s dialogue with Manet, Caillebotte and Seurat becomes more than a reference list. The modern city was built in painting through cafés, boulevards, parks and leisure scenes, but the people allowed to represent modern life were never distributed evenly. Marshall does not ask to be inserted into that picture at the margins. He enlarges the picture until the margin loses its authority."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-027.jpg",
-          "align": "center",
-          "width": 84,
-          "caption": "Kerry James Marshall, official press visual from The Histories*. © Kerry James Marshall."
+          "content": "In the gallery, pale branches and clustered forms project from the wall like a forest translated into nerves. The effect is both natural and artificial. It recalls roots, antlers, coral, lace and the architecture of an inner organ, yet every part remains visibly made. The eye moves from the overall silhouette to the individual joint, then back again, as if the work were asking to be read at two speeds."
         },
         {
           "type": "text",
-          "content": "His figures are often beautifully dressed, surrounded by flowers, patterned walls, polished furniture or the soft artificial light of a salon. The beauty is not a distraction from history. It is part of the argument. To represent Black life only through struggle is another form of exclusion. Pleasure, style and romance are not rewards that come after politics; they are forms of knowledge."
+          "content": "De Monchaux’s sculptures often create this double scale. From a distance, they become landscapes or battle scenes. Up close, they reveal minute acts of construction: a rivet, a fold, a seam, a rough edge. Grandeur is built from attention. The monumental is not the opposite of the intimate; it is the intimate carried carefully to another register."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "Vignette: intimacy with a frame around it"
+          "content": "Desire is never innocent"
+        },
+        {
+          "type": "text",
+          "content": "The exhibition’s title places desire beside wounds and battles, and the pairing is exact. De Monchaux’s work is sensual, but never passive. Its surfaces invite the eye and then make the eye cautious. The viewer is drawn toward velvet, cavities, polished metal and soft-looking forms, only to discover a hidden threat: a spine, a point, a hard seam, an opening that refuses to explain itself."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-vignette-13.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-19.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Kerry James Marshall, Vignette #13. Acrylic on PVC panel. Collection Jennifer Gilbert. © Kerry James Marshall. Image courtesy of the artist and Jack Shainman Gallery, New York."
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Quentin Chevrier. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "The Vignette paintings look, at first, like small theatres of romance. Couples float in atmospheres of flowers and soft colour, borrowing from rococo ornament and the visual language of greeting cards. But the tenderness is not sentimental. Marshall is reclaiming the right of Black figures to inhabit the pictorial spaces of idealisation: the garden, the embrace, the suspended moment in which the world seems to have arranged itself around two people."
-        },
-        {
-          "type": "text",
-          "content": "The frame in these works is never innocent. It is a border around intimacy, but also a reminder that intimacy has historically been rationed by representation. Marshall makes the couple visible without making them public property. They are seen, but not available to be consumed as a problem."
+          "content": "This is not the eroticism of smooth surfaces. It is an eroticism of hesitation. The body recognises something in the work, but cannot immediately decide whether that recognition means attraction, fear, memory or all three at once. De Monchaux makes sculpture out of the delay between these responses."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "History without a single hero"
+          "content": "The archive of the damaged"
         },
         {
           "type": "text",
-          "content": "The series Souvenirs begins from the civil-rights movement, yet Marshall avoids the familiar choreography of historical painting: the leader at the podium, the crowd beneath a banner, the decisive gesture frozen at its most legible. His images are more complicated. They understand that history is carried by people who are not always named, photographed or remembered."
+          "content": "The retrospective included technical drawings and archives of destroyed works, and this widened the exhibition’s emotional range. The finished sculptures were not presented as isolated miracles. They were surrounded by evidence of trial, failure, disappearance and reconstruction. A destroyed work still has a body in the archive. Its absence becomes another material."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-031.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "align": "center",
-          "width": 96,
-          "caption": "Kerry James Marshall, official exhibition visual from the Musée d’Art Moderne de Paris press materials. © Kerry James Marshall."
+          "width": 100,
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Antoine Aphesbero. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "That refusal of a single hero continues in the imagined portraits of figures such as Scipio Moorhead and Harriet Tubman. When archives do not provide a reliable image, painting can either surrender or invent. Marshall chooses invention, but it is a disciplined invention: the face becomes a site where the absence of evidence is acknowledged and repaired through attention."
+          "content": "This matters because de Monchaux’s work is fundamentally about what holds. An armature holds a form; a memory holds an event; a title holds an image open; a museum holds a fragile object long enough for strangers to encounter it. But every support can fail. The exhibition never hides that fact. It gives failure a quiet dignity."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "Wake and the weight of memory"
+          "content": "A sculpture of the almost-human"
         },
         {
           "type": "text",
-          "content": "Wake, the cumulative sculpture at the centre of the exhibition’s historical imagination, is made of medallions and additions. It changes every time it is exhibited. The work is therefore not a fixed monument but a memory machine: a form that admits the past is never finished and that every public history depends on what it is still capable of receiving."
+          "content": "The works often hover near the human figure without becoming figurative in any conventional sense. A vertical structure suggests a torso. A cluster becomes a group of bodies. A protrusion feels like a limb, a horn or an architectural brace. This almost-human quality is where the sculptures become most psychologically intense."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-027.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-32.jpg",
           "align": "center",
-          "width": 84,
-          "caption": "Kerry James Marshall, detail from the official press visuals for The Histories*. © Kerry James Marshall."
+          "width": 74,
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Quentin Chevrier. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "The logic of accumulation also describes the exhibition itself. Marshall works in cycles, returning to motifs until they reveal a different pressure. A park is never only a park; a portrait is never only a portrait; a classical pose can become a Black Power salute. The meaning is not delivered once. It thickens."
+          "content": "The viewer begins to project a story onto the object, then the object withdraws. It refuses to become a character in a simple narrative. It remains matter, and that refusal is liberating. The sculpture does not have to represent a person in order to carry the pressure of a person’s life."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "The Academy and the right to study"
+          "content": "Against the straight line"
         },
         {
           "type": "text",
-          "content": "In The Academy, a male model in a life-drawing class raises his fist in a Black Power salute. The gesture is instantly recognisable, but its placement changes everything. It enters a space traditionally organised around the study of the ideal body and interrupts the neutral authority of the academy. The model is no longer anonymous material for someone else’s education. He is both subject and historical agent."
+          "content": "The Palais de Tokyo presentation was also a quiet critique of the straight line: the straight line of the pedestal, the clean line of progress, the hard line of authority. De Monchaux bends, tangles and interrupts those lines. Her forms make room for asymmetry, softness and the intelligence of the detour."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-007.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-002.jpg",
           "align": "center",
-          "width": 96,
-          "caption": "Kerry James Marshall, official press visual from The Histories*. © Kerry James Marshall."
+          "width": 74,
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Aurélien Mole. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "Marshall’s paintings often have this double movement. They are richly aware of the museum—its genres, frames, lessons and hierarchies—but they do not become academic exercises. The surface remains alive. Pattern, glitter, saturated colour and visual jokes keep the work from hardening into a thesis."
+          "content": "The effect is not chaos. It is a different order. The sculptures are carefully composed, but their order is organic rather than administrative. It grows by repetition, pressure and response. One shape touches another; one material changes the temperature of the next. The gallery becomes a field of relations rather than a sequence of isolated objects."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "The new paintings do not close the story"
-        },
-        {
-          "type": "text",
-          "content": "The eight new paintings at the end of the exhibition turn toward episodes in African history and the transatlantic slave trade. Their subject is difficult, but Marshall’s strategy is not to produce an image of historical violence that asks the viewer to remain at the level of shock. He is interested in the structures of knowledge around the event: who is named, who is blamed, who disappears, and what a painting can do when the archive is partial."
+          "content": "The elegance of resistance"
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/kerry-marshall-031.jpg",
+          "content": "https://api.eprisjournal.com/uploads/cathy-009.jpg",
           "align": "center",
-          "width": 96,
-          "caption": "Kerry James Marshall, official visual from The Histories*, Musée d’Art Moderne de Paris. © Kerry James Marshall."
+          "width": 100,
+          "caption": "Cathy de Monchaux, installation view, Palais de Tokyo, 2026. Photo: Aurélien Mole. © Adagp, Paris, 2026."
         },
         {
           "type": "text",
-          "content": "The paintings are not illustrations of a completed past. They are invitations to look again at the conditions under which a past becomes visible. Marshall’s history is therefore not behind us. It is active in the gallery, in the frame, in the body of the viewer and in the habits of attention that painting has inherited."
+          "content": "There is a particularly British severity to de Monchaux’s sensibility: a willingness to let elegance coexist with discomfort, and to let humour appear at the edge of the grotesque. But the exhibition’s emotional geography is wider than national style. These works speak to the body under pressure, to the architectures that protect and confine it, and to the strange optimism of continuing to make something delicate after damage."
         },
         {
           "type": "quote",
-          "content": "Marshall does not paint a missing chapter into the canon. He changes what the canon is allowed to mean."
+          "content": "The beauty of Cathy de Monchaux is never innocent. It is beauty that has learned how to brace itself."
         },
         {
           "type": "text",
-          "content": "The Histories* is a formidable exhibition because it understands that representation is never only about who appears. It is about scale, pleasure, authority, intimacy and duration. It asks whether Black figures can be allowed the full complexity that painting has always promised its chosen subjects. In Marshall’s hands, the answer is not a slogan. It is a room, a colour, a pose, a face—and then another face, and another, until absence no longer looks inevitable."
+          "content": "That is why the exhibition stayed with me after its closing date. Not as a catalogue of forms, but as a physical intelligence: the knowledge that fragility can be engineered, that a wound can become an aperture, and that a sculpture can be both warning and shelter."
+        },
+        {
+          "type": "text",
+          "content": "Studio, wounds and battles did not ask to be admired from a safe distance. It made the distance unstable. The closer one looked, the more the works changed register—from ornament to anatomy, from relic to threat, from private memory to collective image. Their beauty was not an escape from the world. It was a way of remaining awake inside it."
         },
         {
           "type": "link",
-          "content": "Musée d’Art Moderne de Paris — official exhibition page",
-          "url": "https://www.mam.paris.fr/fr/expositions/exposition-kerry-james-marshall"
-        },
-        {
-          "type": "link",
-          "content": "Official press kit — Kerry James Marshall: The Histories*",
-          "url": "https://www.mam.paris.fr/sites/default/files/documents/fr_dp_kjm_mam_15.09.2026.pdf"
+          "content": "Palais de Tokyo — official exhibition page",
+          "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
         },
         {
           "type": "note",
-          "content": "Image credits: © Kerry James Marshall, with lenders, galleries and photographers credited in each caption. Images reproduced from the official Musée d’Art Moderne de Paris press materials for editorial purposes; rights remain with the respective copyright holders."
+          "content": "Image credits: Cathy de Monchaux installation views, Palais de Tokyo, 2026. Photos by Antoine Aphesbero, Aurélien Mole and Quentin Chevrier. © Adagp, Paris, 2026. Images reproduced from official institutional press materials for editorial purposes; rights remain with the respective copyright holders."
         }
       ]
     }
@@ -53330,6 +53318,233 @@
             {
               "type": "note",
               "content": "Bildnachweise: © Kerry James Marshall, mit Leihgebern, Galerien und Fotografen in jeder Bildunterschrift genannt. Bilder reproduziert aus den offiziellen Presseunterlagen des Musée d’Art Moderne de Paris für redaktionelle Zwecke; Rechte verbleiben bei den jeweiligen Urheberrechtsinhabern."
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "draft": false,
+          "title": "Cathy de Monchaux: Die Haltung der Wunden",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "3. Okt. 2026",
+          "publishedAt": "2026-10-03T13:20:00.000Z",
+          "excerpt": "Im Palais de Tokyo verwandelte Cathy de Monchaux Metall, Samt, Staub und zerbrechliche Armaturen in eine skulpturale Sprache des Begehrens, der Gefahr und außergewöhnlicher Schönheit.",
+          "category": "Kunst",
+          "subcategory": "Skulptur & Objekte",
+          "tags": [
+            "Cathy de Monchaux",
+            "Skulptur",
+            "Palais de Tokyo",
+            "Zeitgenössische Kunst",
+            "Installation",
+            "Paris"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
+          "previewToken": "cathy-de-monchaux-paris-20261003",
+          "updatedAt": "2026-10-03T13:10:59.252Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Antoine Aphesbero. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Einige Ausstellungen lassen Skulptur monumental erscheinen. Cathy de Monchauxs erste große Retrospektive im Palais de Tokyo ließ sie lebendig erscheinen. Über etwa fünfzig Werke aus den Jahren 1984 bis heute bildeten Metall, Samt, Staub, Transparentpapier, Gurte, Nieten und zarte Armaturen eine unruhige Ökologie der Körper. Nichts stand einfach still. Selbst die rigideste Struktur schien zu atmen, sich zu wappnen oder sich an eine Verletzung zu erinnern."
+            },
+            {
+              "type": "text",
+              "content": "Studio, Wunden und Kämpfe, Wunsch ist die Wiederholung der Hoffnung, geschlossen am 13. September 2026, aber ihre Bilder bleiben ungewöhnlich schwer wegzulegen. Die Ausstellung war schön auf die Weise, wie ein Dorn, ein Relikt oder ein halbvergessenes Traum schön sein kann: nicht weil es beruhigt, sondern weil es den Widerspruch zwischen Verletzlichkeit und Kraft formt."
+            },
+            {
+              "type": "note",
+              "content": "Unabhängige redaktionelle Überprüfung durch Viacheslav Munister. Ausstellungsdaten, Beschreibungen und Bildnachweise basieren auf offiziellen Materialien des Palais de Tokyo. Bilder sind aus den Pressebildern der Institution reproduziert; Rechte verbleiben bei Cathy de Monchaux, ADAGP und den genannten Fotografen."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Die Skulptur, die eine saubere Kante verweigert"
+            },
+            {
+              "type": "text",
+              "content": "De Monchauxs Objekte sind nie mit einer einzigen Kategorie zufrieden. Sie können Skulptur, Reliquie, anatomisches Fragment, Bühnenbild, Maschine, Muschel oder Waffe sein. Sie besetzen oft die Wand wie eine Zeichnung, die sich in Materie verdickt hat, oder den Boden wie ein Körper, der noch nicht entschieden hat, ob er kriechen, stehen oder verschwinden soll."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-002.jpg",
+              "align": "center",
+              "width": 74,
+              "caption": "Cathy de Monchaux, Installationsansicht, “Studio, Wunden und Kämpfe, Wunsch ist die Wiederholung der Hoffnung”, Palais de Tokyo, 2026. Foto: Aurélien Mole. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Diese Verweigerung einer sauberen Kante ist zentral für die Sinnlichkeit der Ausstellung. Eine Oberfläche kann weich erscheinen, bis das Auge ihre Rüstung bemerkt. Eine Metallstruktur kann streng aussehen, bis sie beginnt, einem Brustkorb, einer Blume oder einem Nest zu ähneln. Die Werke bestehen aus Übergängen. Sie leben im Moment, wenn ein Material zu einer anderen Art von Bild wird."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Eine Intimität aus Metall"
+            },
+            {
+              "type": "text",
+              "content": "Die auffälligste Qualität von de Monchauxs Arbeit ist nicht ihre Dunkelheit, sondern ihre Intimität. Die Skulpturen scheinen das Maß des Körpers zu kennen. Sie biegen sich, umklammern, falten und öffnen sich wie Gesten, die vergrößert wurden, ohne ihre private Herkunft zu verlieren. Selbst die spektakuläreren Installationen bewahren das Gefühl von etwas, das gehandhabt, repariert oder geschützt wird."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-009.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Aurélien Mole. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Ihr Vokabular ist voll von Strukturen, die gleichzeitig stützen und einschränken. Gurte können eine Form zusammenhalten, aber sie können sie auch binden. Rippen können schützen, aber sie können auch zu einem Käfig werden. Das Werk entscheidet nicht, welche Lesart richtig ist. Es lässt den Betrachter den Druck zwischen ihnen spüren."
+            },
+            {
+              "type": "text",
+              "content": "Dieser Druck ist der Grund, warum die Skulpturen niemals dekorativ werden, selbst wenn sie außergewöhnlich verfeinert sind. Schönheit ist keine Oberfläche, die auf schwieriges Material aufgetragen wird. Es ist die Genauigkeit, mit der Schwierigkeit einen Körper erhalten hat."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Der Wald innerhalb der Galerie"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-32.jpg",
+              "align": "center",
+              "width": 70,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Quentin Chevrier. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "In der Galerie ragen blasse Zweige und gruppierte Formen wie ein Wald aus der Wand, übersetzt in Nerven. Der Effekt ist sowohl natürlich als auch künstlich. Es erinnert an Wurzeln, Geweihe, Korallen, Spitze und die Architektur eines inneren Organs, doch jeder Teil bleibt sichtbar gemacht. Das Auge bewegt sich vom Gesamtsilhouette zum einzelnen Gelenk, dann wieder zurück, als ob das Werk darum bittet, mit zwei Geschwindigkeiten gelesen zu werden."
+            },
+            {
+              "type": "text",
+              "content": "De Monchauxs Skulpturen schaffen oft diese doppelte Skala. Aus der Ferne werden sie zu Landschaften oder Schlachtenszenen. Nah betrachtet offenbaren sie winzige Akte des Bauens: eine Niete, eine Falte, eine Naht, eine raue Kante. Großartigkeit wird durch Aufmerksamkeit gebaut. Das Monumentale ist nicht das Gegenteil des Intimen; es ist das Intime, das sorgfältig in einen anderen Register getragen wird."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Verlangen ist niemals unschuldig"
+            },
+            {
+              "type": "text",
+              "content": "Der Titel der Ausstellung stellt Verlangen neben Wunden und Schlachten, und die Paarung ist exakt. De Monchauxs Arbeit ist sinnlich, aber niemals passiv. Ihre Oberflächen laden das Auge ein und machen es dann vorsichtig. Der Betrachter wird zu Samt, Hohlräumen, poliertem Metall und weich aussehenden Formen hingezogen, nur um eine verborgene Bedrohung zu entdecken: eine Wirbelsäule, einen Punkt, eine harte Naht, eine Öffnung, die sich weigert, sich selbst zu erklären."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-19.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Quentin Chevrier. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Dies ist nicht der Erotismus glatter Oberflächen. Es ist ein Erotismus des Zögerns. Der Körper erkennt etwas im Werk, kann aber nicht sofort entscheiden, ob diese Erkenntnis Anziehung, Angst, Erinnerung oder alle drei gleichzeitig bedeuten. De Monchaux macht Skulptur aus der Verzögerung zwischen diesen Reaktionen."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Das Archiv des beschädigten"
+            },
+            {
+              "type": "text",
+              "content": "Die Retrospektive umfasste technische Zeichnungen und Archive zerstörter Werke, und dies erweiterte die emotionale Bandbreite der Ausstellung. Die fertigen Skulpturen wurden nicht als isolierte Wunder präsentiert. Sie waren umgeben von Beweisen für Versuch, Scheitern, Verschwinden und Wiederaufbau. Ein zerstörtes Werk hat im Archiv immer noch einen Körper. Seine Abwesenheit wird zu einem weiteren Material."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Antoine Aphesbero. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Das ist wichtig, weil de Monchauxs Arbeit grundsätzlich darüber handelt, was hält. Ein Armatur hält eine Form; eine Erinnerung hält ein Ereignis; ein Titel hält ein Bild offen; ein Museum hält ein zerbrechliches Objekt lange genug, damit Fremde es begegnen können. Aber jede Unterstützung kann versagen. Die Ausstellung versteckt diese Tatsache nie. Sie verleiht dem Scheitern eine ruhige Würde."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Eine Skulptur des fast-menschlichen"
+            },
+            {
+              "type": "text",
+              "content": "Die Werke schweben oft in der Nähe der menschlichen Figur, ohne in irgendeinem konventionellen Sinne figurativ zu werden. Eine vertikale Struktur deutet einen Torso an. Ein Haufen wird zu einer Gruppe von Körpern. Eine Ausbuchtung fühlt sich an wie ein Glied, ein Horn oder eine architektonische Stütze. Diese fast-menschliche Qualität ist der Punkt, an dem die Skulpturen am psychologisch intensivsten werden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-32.jpg",
+              "align": "center",
+              "width": 74,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Quentin Chevrier. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Der Betrachter beginnt, eine Geschichte auf das Objekt zu projizieren, dann zieht sich das Objekt zurück. Es weigert sich, eine Figur in einer einfachen Erzählung zu werden. Es bleibt Materie, und diese Weigerung ist befreiend. Die Skulptur muss keine Person darstellen, um den Druck eines Lebens zu tragen."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Gegen die gerade Linie"
+            },
+            {
+              "type": "text",
+              "content": "Die Präsentation im Palais de Tokyo war auch eine stille Kritik an der geraden Linie: die gerade Linie des Sockels, die klare Linie des Fortschritts, die harte Linie der Autorität. De Monchaux biegt, verheddert und unterbricht diese Linien. Ihre Formen schaffen Raum für Asymmetrie, Weichheit und die Intelligenz des Umwegs."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-002.jpg",
+              "align": "center",
+              "width": 74,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Aurélien Mole. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Das Ergebnis ist kein Chaos. Es ist eine andere Ordnung. Die Skulpturen sind sorgfältig komponiert, aber ihre Ordnung ist organisch und nicht administrativ. Sie wächst durch Wiederholung, Druck und Reaktion. Eine Form berührt eine andere; ein Material verändert die Temperatur des nächsten. Die Galerie wird zu einem Feld von Beziehungen anstatt zu einer Abfolge isolierter Objekte."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Die Eleganz des Widerstands"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/cathy-009.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cathy de Monchaux, Installationsansicht, Palais de Tokyo, 2026. Foto: Aurélien Mole. © Adagp, Paris, 2026."
+            },
+            {
+              "type": "text",
+              "content": "Es gibt eine besonders britische Strenge in de Monchauxs Empfindlichkeit: die Bereitschaft, Eleganz mit Unbehagen koexistieren zu lassen, und Humor am Rand des Grotesken erscheinen zu lassen. Aber die emotionale Geographie der Ausstellung ist weiter gefasst als der nationale Stil. Diese Werke sprechen vom Körper unter Druck, von den Architekturen, die ihn schützen und einschränken, und vom seltsamen Optimismus, nach Schaden weiterhin etwas Zerbrechliches zu schaffen."
+            },
+            {
+              "type": "quote",
+              "content": "Die Schönheit von Cathy de Monchaux ist niemals unschuldig. Es ist Schönheit, die gelernt hat, sich zu wappnen."
+            },
+            {
+              "type": "text",
+              "content": "Deshalb blieb die Ausstellung nach ihrem Schließungstermin bei mir. Nicht als Katalog von Formen, sondern als physische Intelligenz: das Wissen, dass Zerbrechlichkeit konstruiert werden kann, dass eine Wunde eine Öffnung werden kann, und dass eine Skulptur sowohl Warnung als auch Schutz sein kann."
+            },
+            {
+              "type": "text",
+              "content": "Studio, Wunden und Kämpfe baten nicht darum, aus sicherer Entfernung bewundert zu werden. Es machte die Entfernung instabil. Je näher man hinsah, desto mehr änderten die Werke den Register—von Ornament zu Anatomie, von Relikt zu Bedrohung, von privater Erinnerung zu kollektivem Bild. Ihre Schönheit war kein Fluchtweg aus der Welt. Es war eine Möglichkeit, darin wach zu bleiben."
+            },
+            {
+              "type": "link",
+              "content": "Palais de Tokyo — offizielle Ausstellungsseite",
+              "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
+            },
+            {
+              "type": "note",
+              "content": "Bildnachweise: Cathy de Monchaux Installationsansichten, Palais de Tokyo, 2026. Fotos von Antoine Aphesbero, Aurélien Mole und Quentin Chevrier. © Adagp, Paris, 2026. Bilder reproduziert aus offiziellen institutionellen Pressematerialien zu redaktionellen Zwecken; Rechte verbleiben bei den jeweiligen Urheberrechtsinhabern."
             }
           ]
         }
