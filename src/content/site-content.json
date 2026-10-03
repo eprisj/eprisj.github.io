@@ -16370,6 +16370,25 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:29.068Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
+        },
+        {
+          "id": 47,
+          "title": "Против правого угла",
+          "subtitle": "Архитектура",
+          "fig": "FIG. 08",
+          "description": "Пять зданий, которые убедительно вышли из сетки — и программное обеспечение, металл, деньги и смелость, необходимые для их строительства.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Модернистское бетонное исследование",
+          "homeSubtitle": "Lekeboy54 · 2025 · архитектурная фотография",
+          "homeDescription": "Тихая бетонная рама превращает погоду, повторение и низкий горизонт в одну измеренную композицию.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:20.234Z"
         }
       ],
       "articles": [
@@ -29502,6 +29521,25 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:27.089Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
+        },
+        {
+          "id": 47,
+          "title": "Проти Правого Куту",
+          "subtitle": "Архітектура",
+          "fig": "FIG. 08",
+          "description": "П’ять будівель, які переконалися, що вони можуть обійтися без сітки — і програмне забезпечення, метал, гроші та сама сміливість, необхідна для їх зведення.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Модерністське Бетонне Дослідження",
+          "homeSubtitle": "Lekeboy54 · 2025 · архітектурна фотографія",
+          "homeDescription": "Тихий бетонний каркас перетворює погоду, повторення та низький горизонт у одну виміряну композицію.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:18.290Z"
         }
       ],
       "articles": [
@@ -42647,6 +42685,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-044",
           "updatedAt": "2026-10-03T13:34:09.267Z"
+        },
+        {
+          "id": 48,
+          "title": "Polnisches Design: Gewebt aus Erinnerung",
+          "subtitle": "Design",
+          "fig": "FIG. 09",
+          "description": "Zeitgenössisches polnisches Design ist zu einem Moment tiefgehender, stiller Reife gelangt. Das Durchqueren der Ateliers der heutigen führenden Architekten und Möbeldesigner ist eine Begegnung mit einer Sprache des rigorosen Minimalismus, taktiler roher Materialien und einer bewussten strukturellen Ehrlichkeit. Doch diese moderne Klarheit ist kein Ablehnen der Vergangenheit - sie ist die Krönung eines jahrhundertelangen Dialogs darüber, was es bedeutet, mit einer nationalen Seele zu schaffen.",
+          "imageSeed": "epris-pick-design",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · Wellpappe",
+          "homeDescription": "Ein einfaches Blatt wird zu einem geschwungenen Sitz: Ein alltägliches Material, das in eine skulpturale, überraschend großzügige Form gedrängt wird.",
+          "homeCredit": "Frank Gehry · Foto CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-045",
+          "updatedAt": "2026-10-03T13:34:23.248Z"
         }
       ],
       "articles": [
@@ -55788,6 +55845,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-044",
           "updatedAt": "2026-10-03T13:34:11.596Z"
+        },
+        {
+          "id": 48,
+          "title": "Diseño Polaco: Tejido Desde la Memoria",
+          "subtitle": "Diseño",
+          "fig": "FIG. 09",
+          "description": "El diseño polaco contemporáneo ha llegado a un momento de profunda, tranquila madurez. Caminar por los estudios de los principales arquitectos y diseñadores de muebles de hoy es encontrar un lenguaje de minimalismo riguroso, materiales crudos táctiles y una honestidad estructural deliberada. Sin embargo, esta claridad moderna no es un rechazo al pasado - es la culminación de un diálogo de un siglo sobre qué significa crear con un alma nacional.",
+          "imageSeed": "epris-pick-design",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · cartón corrugado",
+          "homeDescription": "Una simple lámina se convierte en un asiento sinuoso: un material cotidiano llevado a una forma escultórica, sorprendentemente generosa.",
+          "homeCredit": "Frank Gehry · foto CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-045",
+          "updatedAt": "2026-10-03T13:34:25.721Z"
         }
       ],
       "articles": [
@@ -76664,6 +76740,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-044",
           "updatedAt": "2026-10-03T13:34:13.515Z"
+        },
+        {
+          "id": 48,
+          "title": "Polish Design: Woven From Memory",
+          "subtitle": "Design",
+          "fig": "FIG. 09",
+          "description": "Il design polacco contemporaneo è arrivato in un momento di profonda, silenziosa maturità. Camminare attraverso gli studi dei principali architetti e designer di mobili di oggi è incontrare un linguaggio di minimalismo rigoroso, materiali grezzi tattili e una onestà strutturale deliberata. Eppure, questa chiarezza moderna non è un rifiuto del passato - è la culminazione di un dialogo durato un secolo su cosa significhi creare con un'anima nazionale.",
+          "imageSeed": "epris-pick-design",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
+          "homeCategory": "design",
+          "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+          "homeTitle": "Wiggle Side Chair",
+          "homeSubtitle": "Frank Gehry · 1972 · cartone ondulato",
+          "homeDescription": "Un semplice foglio diventa un sedile sinuoso: un materiale quotidiano spinto in una forma scultorea, sorprendentemente generosa.",
+          "homeCredit": "Frank Gehry · foto CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-045",
+          "updatedAt": "2026-10-03T13:34:28.101Z"
         }
       ],
       "articles": [
