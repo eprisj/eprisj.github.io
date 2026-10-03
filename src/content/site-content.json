@@ -14524,7 +14524,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
       "previewToken": "cathy-de-monchaux-paris-20261003",
-      "updatedAt": "2026-10-03T17:08:51.835Z",
+      "updatedAt": "2026-10-03T17:20:47.667Z",
       "content": [
         {
           "type": "image",
@@ -101930,9 +101930,358 @@
     {
       "id": "PICS-ARCHIVE-PICS-WEEK-2026-007",
       "releaseId": "PICS-WEEK-2026-007",
-      "label": "Daily Picks · form, colour & space · 3 Oct 2026",
-      "publishedAt": "2026-10-03T14:00:00Z",
-      "signature": "sculpture:PICS-2026-046|painting:PICS-2026-043|architecture:PICS-2026-044|design:PICS-2026-045|photography:PICS-2026-042"
+      "label": "Daily Picks · selected works · 3 Oct 2026",
+      "publishedAt": "2026-10-03T15:00:00Z",
+      "signature": "sculpture:PICS-2026-046|painting:PICS-2026-043|architecture:PICS-2026-044|design:PICS-2026-045|photography:PICS-2026-042",
+      "cards": [
+        {
+          "id": 45,
+          "picsId": "PICS-2026-046",
+          "category": "sculpture",
+          "categoryLabel": "Sculpture",
+          "title": "Sculpting Time",
+          "subtitle": "Kathleen Ryan · ceramic, metal and found materials",
+          "description": "A luminous, unruly sculpture in which mineral surfaces and organic forms seem to be caught between growth and collapse.",
+          "credit": "Kathleen Ryan · courtesy of Gagosian / Gagosian Quarterly",
+          "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+          "imageSeed": "epris-approved-pick-45",
+          "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg",
+          "localized": {
+            "RU": {
+              "title": "Скульптура времени",
+              "subtitle": "Kathleen Ryan · керамика, металл и найденные материалы",
+              "description": "Светящаяся, неупорядоченная скульптура, в которой минеральные поверхности и органические формы кажутся застрявшими между ростом и коллапсом.",
+              "credit": "Kathleen Ryan · любезно предоставлено Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            },
+            "UA": {
+              "title": "Витинання часу",
+              "subtitle": "Kathleen Ryan · кераміка, метал і знайдені матеріали",
+              "description": "Яскрава, неспокійна скульптура, у якій мінеральні поверхні та органічні форми здаються застряглими між зростанням і руйнуванням.",
+              "credit": "Kathleen Ryan · за підтримки Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            },
+            "DE": {
+              "title": "Skulpturieren der Zeit",
+              "subtitle": "Kathleen Ryan · Keramik, Metall und gefundene Materialien",
+              "description": "Eine leuchtende, ungezähmte Skulptur, in der mineralische Oberflächen und organische Formen zwischen Wachstum und Kollaps zu scheinen.",
+              "credit": "Kathleen Ryan · courtesy of Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            },
+            "ES": {
+              "title": "Esculpir el Tiempo",
+              "subtitle": "Kathleen Ryan · cerámica, metal y materiales encontrados",
+              "description": "Una escultura luminosa y indisciplinada en la que superficies minerales y formas orgánicas parecen estar atrapadas entre el crecimiento y el colapso.",
+              "credit": "Kathleen Ryan · cortesía de Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            },
+            "IT": {
+              "title": "Scultore del Tempo",
+              "subtitle": "Kathleen Ryan · ceramica, metallo e materiali trovati",
+              "description": "Una scultura luminosa e indisciplinata in cui superfici minerali e forme organiche sembrano essere intrappolate tra crescita e collasso.",
+              "credit": "Kathleen Ryan · cortesemente di Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            },
+            "FR": {
+              "title": "Sculptant le Temps",
+              "subtitle": "Kathleen Ryan · céramique, métal et matériaux trouvés",
+              "description": "Une sculpture lumineuse et indisciplinée dans laquelle des surfaces minérales et des formes organiques semblent être prises entre croissance et effondrement.",
+              "credit": "Kathleen Ryan · courtoisie de Gagosian / Gagosian Quarterly",
+              "sourceUrl": "https://gagosian.com/quarterly/2024/10/09/essay-kathleen-ryan-sculpting-time/",
+              "imageSeed": "epris-approved-pick-45",
+              "imageUrl": "https://gagosian.com/media/images/quarterly/essay-kathleen-ryan-sculpting-time/q0o9lCkldLVd_2400x2400.jpg"
+            }
+          }
+        },
+        {
+          "id": 46,
+          "picsId": "PICS-2026-043",
+          "category": "painting",
+          "categoryLabel": "Painting",
+          "title": "Panta Rhei",
+          "subtitle": "Yukimasa Ida · oil on canvas",
+          "description": "A charged field of colour where a face emerges, dissolves and returns as a memory rather than a portrait.",
+          "credit": "Yukimasa Ida · photo Keizo Kioku · courtesy of Mariane Ibrahim and the artist",
+          "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+          "imageSeed": "epris-approved-pick-46",
+          "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg",
+          "localized": {
+            "RU": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · масло на холсте",
+              "description": "Заряженное поле цвета, где появляется лицо, растворяется и возвращается как память, а не портрет.",
+              "credit": "Yukimasa Ida · фото Keizo Kioku · по согласованию с Mariane Ibrahim и художником",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            },
+            "UA": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · олія на полотні",
+              "description": "Заряджене поле кольору, де з’являється обличчя, розчиняється і повертається як пам’ять, а не портрет.",
+              "credit": "Yukimasa Ida · фото Keizo Kioku · за сприянням Mariane Ibrahim та художника",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            },
+            "DE": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · Öl auf Leinwand",
+              "description": "Ein aufgeladener Farbfeld, in dem ein Gesicht erscheint, sich auflöst und als Erinnerung zurückkehrt, anstatt als Porträt.",
+              "credit": "Yukimasa Ida · Foto Keizo Kioku · courtesy of Mariane Ibrahim and the artist",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            },
+            "ES": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · óleo sobre lienzo",
+              "description": "Un campo cargado de color donde emerge, se disuelve y regresa como una memoria en lugar de un retrato.",
+              "credit": "Yukimasa Ida · foto Keizo Kioku · cortesía de Mariane Ibrahim y el artista",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            },
+            "IT": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · olio su tela",
+              "description": "Un campo carico di colore dove emerge un volto, si dissolve e ritorna come memoria piuttosto che come ritratto.",
+              "credit": "Yukimasa Ida · foto Keizo Kioku · cortesia di Mariane Ibrahim e dell'artista",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            },
+            "FR": {
+              "title": "Panta Rhei",
+              "subtitle": "Yukimasa Ida · huile sur toile",
+              "description": "Un champ de couleur chargé où un visage émerge, se dissout et revient comme une mémoire plutôt qu'un portrait.",
+              "credit": "Yukimasa Ida · photo Keizo Kioku · courtoisie de Mariane Ibrahim et de l'artiste",
+              "sourceUrl": "https://marianeibrahim.com/news/104-panta-rhei-for-as-long-as-the-world-yukimasa-ida-i-kyoto-city-kyocera-museum-of/",
+              "imageSeed": "epris-approved-pick-46",
+              "imageUrl": "https://static-assets.artlogic.net/w_1800%2Ch_1320%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/ws-marianeibrahimgallery/usr/library/images/main/news/104/yukimasa-ida-installation-view-of-panta-rhei-kyoto-city-kyocera-museum-of-art-2023.-photo-keizo-kioku.-courtesy-of-mariane-ibrahim-and-the-artist_mg_0258.jpg"
+            }
+          }
+        },
+        {
+          "id": 47,
+          "picsId": "PICS-2026-044",
+          "category": "architecture",
+          "categoryLabel": "Architecture",
+          "title": "Suzhou Museum of Contemporary Art",
+          "subtitle": "BIG · 2026",
+          "description": "A ribbon-like roof gathers a sequence of pavilions into one calm, monumental walk through art and landscape.",
+          "credit": "BIG · Suzhou Museum of Contemporary Art · image via Gooood",
+          "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+          "imageSeed": "epris-approved-pick-47",
+          "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg",
+          "localized": {
+            "RU": {
+              "title": "Музей современного искусства Suzhou",
+              "subtitle": "BIG · 2026",
+              "description": "Лентаобразная кровля объединяет последовательность павильонов в один спокойный, монументальный прогулочный маршрут через искусство и ландшафт.",
+              "credit": "BIG · Музей современного искусства Suzhou · изображение через Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            },
+            "UA": {
+              "title": "Музей сучасного мистецтва у Сучжоу",
+              "subtitle": "BIG · 2026",
+              "description": "Довга стрічкоподібна дах збирає послідовність павільйонів у один спокійний, монументальний прогулянковий простір через мистецтво та ландшафт.",
+              "credit": "BIG · Музей сучасного мистецтва у Сучжоу · зображення через Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            },
+            "DE": {
+              "title": "Suzhou Museum für zeitgenössische Kunst",
+              "subtitle": "BIG · 2026",
+              "description": "Ein bandförmiges Dach sammelt eine Sequenz von Pavillons zu einem ruhigen, monumentalen Spaziergang durch Kunst und Landschaft.",
+              "credit": "BIG · Suzhou Museum für zeitgenössische Kunst · Bild via Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            },
+            "ES": {
+              "title": "Museo de Arte Contemporáneo de Suzhou",
+              "subtitle": "BIG · 2026",
+              "description": "Un techo similar a una cinta reúne una secuencia de pabellones en un paseo tranquilo y monumental a través del arte y el paisaje.",
+              "credit": "BIG · Museo de Arte Contemporáneo de Suzhou · imagen vía Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            },
+            "IT": {
+              "title": "Suzhou Museum of Contemporary Art",
+              "subtitle": "BIG · 2026",
+              "description": "Un tetto simile a un nastro raccoglie una sequenza di padiglioni in una passeggiata calma e monumentale attraverso arte e paesaggio.",
+              "credit": "BIG · Suzhou Museum of Contemporary Art · immagine via Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            },
+            "FR": {
+              "title": "Musée d'art contemporain de Suzhou",
+              "subtitle": "BIG · 2026",
+              "description": "Un toit semblable à un ruban rassemble une séquence de pavillons en une promenade calme et monumentale à travers l'art et le paysage.",
+              "credit": "BIG · Musée d'art contemporain de Suzhou · image via Gooood",
+              "sourceUrl": "https://www.wallpaper.com/architecture/public-buildings/suzhou-museum-of-contemporary-art-big-china",
+              "imageSeed": "epris-approved-pick-47",
+              "imageUrl": "https://oss.gooood.cn/uploads/2026/03/047-suzhou-museum-of-contemporary-art-by-shuishi-960x720.jpg"
+            }
+          }
+        },
+        {
+          "id": 48,
+          "picsId": "PICS-2026-045",
+          "category": "design",
+          "categoryLabel": "Design",
+          "title": "Formation",
+          "subtitle": "Formafantasma · furniture and objects · 2025",
+          "description": "Wood, aluminium and light are arranged with quiet precision until the domestic object becomes a spatial composition.",
+          "credit": "Formafantasma · Formation · photo via Designboom",
+          "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+          "imageSeed": "epris-approved-pick-48",
+          "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg",
+          "localized": {
+            "RU": {
+              "title": "Formation",
+              "subtitle": "Formafantasma · мебель и объекты · 2025",
+              "description": "Дерево, алюминий и свет расположены с тихой точностью, пока домашний объект не станет пространственной композицией.",
+              "credit": "Formafantasma · Formation · фото через Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            },
+            "UA": {
+              "title": "Formation",
+              "subtitle": "Formafantasma · меблі та об'єкти · 2025",
+              "description": "Дерево, алюміній і світло розташовані з тихою точністю, поки домашній об'єкт не стане просторовою композицією.",
+              "credit": "Formafantasma · Formation · фото через Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            },
+            "DE": {
+              "title": "Formation",
+              "subtitle": "Formafantasma · Möbel und Objekte · 2025",
+              "description": "Holz, Aluminium und Licht sind mit ruhiger Präzision angeordnet, bis das häusliche Objekt zu einer Raumkomposition wird.",
+              "credit": "Formafantasma · Formation · Foto via Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            },
+            "ES": {
+              "title": "Formación",
+              "subtitle": "Formafantasma · muebles y objetos · 2025",
+              "description": "La madera, el aluminio y la luz se disponen con una precisión silenciosa hasta que el objeto doméstico se convierte en una composición espacial.",
+              "credit": "Formafantasma · Formación · foto vía Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            },
+            "IT": {
+              "title": "Formation",
+              "subtitle": "Formafantasma · mobili e oggetti · 2025",
+              "description": "Legno, alluminio e luce sono disposti con quieta precisione fino a quando l'oggetto domestico diventa una composizione spaziale.",
+              "credit": "Formafantasma · Formation · foto via Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            },
+            "FR": {
+              "title": "Formation",
+              "subtitle": "Formafantasma · mobilier et objets · 2025",
+              "description": "Le bois, l'aluminium et la lumière sont agencés avec une précision silencieuse jusqu'à ce que l'objet domestique devienne une composition spatiale.",
+              "credit": "Formafantasma · Formation · photo via Designboom",
+              "sourceUrl": "https://www.designboom.com/design/formafantasma-american-domestic-furniture-archetypes-friedman-benda-nyc-formations-06-11-2025/",
+              "imageSeed": "epris-approved-pick-48",
+              "imageUrl": "https://static.designboom.com/wp-content/uploads/2025/06/friedman-benda-formafantasma-formation-exhibition-new-york-designboom-06a.jpg"
+            }
+          }
+        },
+        {
+          "id": 49,
+          "picsId": "PICS-2026-042",
+          "category": "photography",
+          "categoryLabel": "Photography",
+          "title": "Window (Self-Portrait)",
+          "subtitle": "Tania Franco-Klein · archival pigment print · 2020",
+          "description": "A solitary figure held in warm light: staged, intimate and slightly unreal, with the room becoming part of the portrait.",
+          "credit": "Tania Franco-Klein · image courtesy of Rose Gallery",
+          "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+          "imageSeed": "epris-approved-pick-49",
+          "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg",
+          "localized": {
+            "RU": {
+              "title": "Окно (автопортрет)",
+              "subtitle": "Tania Franco-Klein · архивный пигментный отпечаток · 2020",
+              "description": "Одиночная фигура, удерживаемая в теплом свете: постановочная, интимная и немного нереальная, с комнатой, становящейся частью портрета.",
+              "credit": "Tania Franco-Klein · изображение предоставлено Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            },
+            "UA": {
+              "title": "Вікно (Автопортрет)",
+              "subtitle": "Tania Franco-Klein · архівний пігментний друк · 2020",
+              "description": "Самотня фігура, тримаючася у теплом світлі: постановочна, інтимна і трохи нереальна, з кімнатою, що стає частиною портрету.",
+              "credit": "Tania Franco-Klein · зображення надано Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            },
+            "DE": {
+              "title": "Fenster (Selbstporträt)",
+              "subtitle": "Tania Franco-Klein · Archivfarbprint · 2020",
+              "description": "Eine einsame Figur im warmen Licht gehalten: inszeniert, intim und leicht unwirklich, wobei der Raum Teil des Porträts wird.",
+              "credit": "Tania Franco-Klein · Bild mit freundlicher Genehmigung der Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            },
+            "ES": {
+              "title": "Ventana (Autorretrato)",
+              "subtitle": "Tania Franco-Klein · impresión de pigmento archivístico · 2020",
+              "description": "Una figura solitaria sostenida en una luz cálida: escenificada, íntima y ligeramente irreal, con la habitación convirtiéndose en parte del retrato.",
+              "credit": "Tania Franco-Klein · imagen cortesía de Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            },
+            "IT": {
+              "title": "Finestra (Autoritratto)",
+              "subtitle": "Tania Franco-Klein · stampa a pigmenti archiviati · 2020",
+              "description": "Una figura solitaria immersa in una luce calda: messa in scena, intima e leggermente irreale, con la stanza che diventa parte del ritratto.",
+              "credit": "Tania Franco-Klein · immagine cortesemente fornita da Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            },
+            "FR": {
+              "title": "Fenêtre (Autoportrait)",
+              "subtitle": "Tania Franco-Klein · impression pigmentaire archivale · 2020",
+              "description": "Une silhouette solitaire tenue dans une lumière chaleureuse : mise en scène, intime et légèrement irréelle, la pièce devenant partie intégrante du portrait.",
+              "credit": "Tania Franco-Klein · image gracieuseté de Rose Gallery",
+              "sourceUrl": "https://rosegallery.net/artworks/25706-tania-franco-klein-window-self-portait-2020/",
+              "imageSeed": "epris-approved-pick-49",
+              "imageUrl": "https://artlogic-res.cloudinary.com/w_1600%2Ch_1600%2Cc_limit%2Cf_auto%2Cfl_lossy%2Cq_auto/artlogicstorage/rosegallery/images/view/e42115d6088bc19746d43b4a76166887/rosegallery-tania-franco-klein-window-self-portait-2020.jpg"
+            }
+          }
+        }
+      ],
+      "publicArchive": false,
+      "visibleOnSite": false
     }
   ],
   "translationsSource": {
