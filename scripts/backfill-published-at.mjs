@@ -13,7 +13,7 @@
  * Deliberately conservative:
  *   - it never overwrites an existing publishedAt;
  *   - it only writes a date it could parse without guessing. A date it cannot
- *     read is REPORTED, not invented — a wrong date is worse than a missing
+ *     read is REPORTED, not invented – a wrong date is worse than a missing
  *     one, because a missing one is visible in the admin and a wrong one is
  *     not;
  *   - --dry-run by default. Nothing is written unless --write is passed.
@@ -101,7 +101,7 @@ console.log(`file: ${file}`);
 console.log(`filled: ${filled.length}   already had publishedAt: ${already.length}   unreadable: ${unreadable.length}`);
 if (filled.length) console.log('\nfilled:\n  ' + filled.join('\n  '));
 if (unreadable.length) {
-  console.log('\nNOT filled — set the date by hand in the admin, these were not guessed:\n  ' + unreadable.join('\n  '));
+  console.log('\nNOT filled – set the date by hand in the admin, these were not guessed:\n  ' + unreadable.join('\n  '));
 }
 
 if (!write) {

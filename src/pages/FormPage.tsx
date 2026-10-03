@@ -4,13 +4,13 @@ import { Loader2, Check, AlertCircle, Paperclip, X } from 'lucide-react';
 
 /* ПУБЛИЧНАЯ АНКЕТА.
  *
- * Автору приходит ссылка вида /form/anketa-avtora — и на этом всё: ни
+ * Автору приходит ссылка вида /form/anketa-avtora – и на этом всё: ни
  * регистрации, ни чужого сервиса, ни рекламы Google на странице журнала.
  * Страница живёт по тем же типографским правилам, что и статьи: те же
  * шрифты, та же ширина полосы, тот же язык интерфейса.
  *
  * Всё, что здесь проверяется, проверяется ещё раз на сервере. Здешние
- * проверки — вежливость к человеку (подсветить пропущенное до отправки), а
+ * проверки – вежливость к человеку (подсветить пропущенное до отправки), а
  * не защита: защита живёт там, куда нельзя дотянуться из браузера.
  */
 
@@ -101,10 +101,10 @@ function copyFor(language?: string) {
   return (COPY as unknown as Record<string, typeof COPY.EN>)[key] || COPY.EN;
 }
 
-/* Размер шрифта в полях — 16px и не меньше.
+/* Размер шрифта в полях – 16px и не меньше.
    Это не вкус: Safari на iPhone принудительно приближает страницу, когда
    фокус попадает в поле с текстом мельче шестнадцати пикселей, и человек
-   заполняет анкету, ёрзая по увеличенной странице. Всё остальное здесь —
+   заполняет анкету, ёрзая по увеличенной странице. Всё остальное здесь –
    про попадание пальцем: высокая строка ввода, крупные варианты ответа,
    заметный фокус. */
 const inputClass =
@@ -113,7 +113,7 @@ const inputClass =
   'placeholder:text-[rgb(var(--c-accent-rgb)_/_0.35)] ' +
   'focus:border-[var(--c-accent)] focus:bg-transparent focus:ring-4 focus:ring-[rgb(var(--c-accent-rgb)_/_0.07)]';
 
-/* Варианты ответа — не точки диаметром в десять пикселей, а целые строки:
+/* Варианты ответа – не точки диаметром в десять пикселей, а целые строки:
    палец попадает по всей карточке, а выбранная видна с расстояния. */
 const choiceClass = (selected: boolean) =>
   'flex cursor-pointer items-start gap-3 rounded-[2px] border px-4 py-3 font-serif text-[16px] leading-snug transition-all ' +
@@ -177,13 +177,13 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
      Длинную анкету заполняют не за один присест: человек уходит искать
      ссылку на портфолио, закрывает вкладку, возвращается с телефона на
-     ноутбук. Потерянные ответы — самая частая причина, по которой анкету не
+     ноутбук. Потерянные ответы – самая частая причина, по которой анкету не
      присылают вовсе. Файлы сюда не пишем: их место на сервере, а в черновике
      остаются только ссылки на уже загруженное. */
   const draftKey = `epris_form_draft_${slug}`;
   const [restored, setRestored] = useState(false);
   /* Черновик восстановился молча, и человек об этом не знал: возвращаясь к
-     анкете, он видел свои ответы и не понимал, откуда они, а уходя — боялся
+     анкете, он видел свои ответы и не понимал, откуда они, а уходя – боялся
      потерять написанное. Обе вещи стоит сказать вслух. */
   const [restoredNotice, setRestoredNotice] = useState(false);
   const [savedAt, setSavedAt] = useState<number | null>(null);
@@ -201,7 +201,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
      за человеком, а тем, кто не собирался платить, не показывает ничего. */
   /* Файл уходит на сервер сразу при выборе, а не вместе с анкетой.
      Так автор видит, что пятисотмегабайтный макет действительно загрузился,
-     до того как нажмёт «Отправить», — и не теряет заполненные ответы, если
+     до того как нажмёт «Отправить», – и не теряет заполненные ответы, если
      загрузка сорвалась. В самом ответе едут только ссылки на загруженное. */
   const uploadFiles = useCallback(async (field: FormField, files: FileList) => {
     if (!form || !files.length) return;
@@ -266,16 +266,16 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           setRestoredNotice(true);
         }
       }
-    } catch { /* приватный режим — просто не восстанавливаем */ }
+    } catch { /* приватный режим – просто не восстанавливаем */ }
   }, [draftKey, form, restored]);
 
   useEffect(() => {
     if (!form || !restored) return;
     try {
       localStorage.setItem(draftKey, JSON.stringify(answers));
-      // Пустой объект — это ещё не начатая анкета, о её «сохранении» сообщать не о чем.
+      // Пустой объект – это ещё не начатая анкета, о её «сохранении» сообщать не о чем.
       if (Object.keys(answers).length) setSavedAt(Date.now());
-    } catch { /* нет места — не беда */ }
+    } catch { /* нет места – не беда */ }
   }, [answers, draftKey, form, restored]);
 
   /* Уход со страницы с незаконченной анкетой. Ответы никуда не денутся, но
@@ -295,7 +295,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
   }, [answers, state, t.leaveWarning]);
 
   /* Показывать ли вопрос при нынешних ответах. Скрытый не спрашивается и не
-     требуется — иначе анкета отказывалась бы отправляться из-за поля, которого
+     требуется – иначе анкета отказывалась бы отправляться из-за поля, которого
      человек не видел. Правило то же, что на сервере. */
   const isVisible = useCallback((field: FormField) => {
     if (!field.showIf?.fieldId) return true;
@@ -366,7 +366,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     }
   }, [answers, draftKey, form, isVisible, previewMode, sending, t, token]);
 
-  /* Полоса набора — 640 пикселей: примерно семьдесят знаков в строке, то есть
+  /* Полоса набора – 640 пикселей: примерно семьдесят знаков в строке, то есть
      ширина, на которой длинный вопрос читается без возврата глазом. На
      телефоне поля дышат по краям, на большом экране анкета не растягивается
      во всю ширину монитора. */
@@ -392,7 +392,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
     );
   }
   if (state === 'sent') {
-    /* Последний экран — единственное, что автор увидит после получаса работы,
+    /* Последний экран – единственное, что автор увидит после получаса работы,
        и раньше он выглядел как обрывок формы, прижатый к левому краю. Теперь
        это отдельная страница благодарности: по центру, с воздухом и выходом
        обратно в журнал. */
@@ -407,7 +407,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
         )}
         {form?.support && (
-          /* Второй заход компонента — уже не карточка, которую нужно было
+          /* Второй заход компонента – уже не карточка, которую нужно было
              центрировать особым flex justify-center, а обычный баннер на всю
              ширину колонки, как и остальные блоки на этой странице. Первое,
              что автор видит после «спасибо». */
@@ -447,12 +447,12 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
               <span>{t.progress}</span>
               <span>{progress.done} / {progress.total}</span>
             </div>
-            {/* Полоса, а не проценты: доля читается взглядом, число — нет. */}
+            {/* Полоса, а не проценты: доля читается взглядом, число – нет. */}
             <div className="mt-2 h-[3px] w-full bg-[rgb(var(--c-accent-rgb)_/_0.12)]">
               <div className="h-full bg-[var(--c-accent)] transition-[width] duration-500"
                 style={{ width: `${Math.round((progress.done / progress.total) * 100)}%` }} />
             </div>
-            {/* Анкета длинная, и главный страх отвечающего — потерять написанное.
+            {/* Анкета длинная, и главный страх отвечающего – потерять написанное.
                 Строка появляется только когда есть что терять. */}
             {savedAt !== null && (
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[rgb(var(--c-accent-rgb)_/_0.42)]">
@@ -473,7 +473,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
           if (field.type === 'image') {
             if (!field.imageUrl) return null;
             /* Картинка идёт во всю полосу набора и без рамки: это иллюстрация
-               к вопросу, а не вложение — рамка превратила бы её в элемент
+               к вопросу, а не вложение – рамка превратила бы её в элемент
                управления, который хочется нажать. */
             return (
               <figure key={field.id} className="my-2">
@@ -553,7 +553,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                     min={field.type === 'number' && field.min != null ? field.min : undefined}
                     max={field.type === 'number' && field.max != null ? field.max : undefined}
                     /* Числовое поле на телефоне открывает цифровую клавиатуру,
-                       остальные — обычную: тип поля влияет на то, чем человек
+                       остальные – обычную: тип поля влияет на то, чем человек
                        набирает ответ, а не только на проверку. */
                     inputMode={field.type === 'number' ? 'decimal' : undefined}
                     value={String(value ?? '')} onChange={(e) => setAnswer(field.id, e.target.value)} />
@@ -572,7 +572,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                 {field.type === 'multi-choice' && (
                   <div className="space-y-2">
                     {(field.options || []).map((option) => {
-                      // Ответ этого типа — всегда список строк; общий тип
+                      // Ответ этого типа – всегда список строк; общий тип
                       // ответов шире, потому что файлы приходят объектами.
                       const list = (Array.isArray(value) ? value : []).filter((item): item is string => typeof item === 'string');
                       return (
@@ -615,7 +615,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                     <div>
                       {/* Область для перетаскивания, она же кнопка выбора.
                           С ноутбука файлы кидают мышью из папки, с телефона
-                          выбирают пальцем — работать должно и то, и другое. */}
+                          выбирают пальцем – работать должно и то, и другое. */}
                       <label
                         onDragOver={(e) => { e.preventDefault(); setDragField(field.id); }}
                         onDragLeave={() => setDragField('')}
@@ -644,7 +644,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
                         <ul className="mt-3 space-y-2">
                           {list.map((file) => (
                             <li key={file.fileId} className="flex items-center gap-3 rounded-[2px] border border-[rgb(var(--c-accent-rgb)_/_0.14)] p-2.5">
-                              {/* У картинки — её собственный кадр: так видно,
+                              {/* У картинки – её собственный кадр: так видно,
                                   что приложили именно ту работу. */}
                               {previews[file.fileId]
                                 ? <img src={previews[file.fileId]} alt="" className="h-12 w-12 shrink-0 object-cover" />
@@ -685,7 +685,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
       </div>
 
       {/* Ловушка для роботов: настоящий человек этого поля не видит и не
-          заполняет. Скрыто стилями, а не type=hidden — заполнялки форм
+          заполняет. Скрыто стилями, а не type=hidden – заполнялки форм
           пропускают hidden и охотно пишут в «website». */}
       <div aria-hidden className="absolute left-[-9999px] h-px w-px overflow-hidden">
         <label>Website<input tabIndex={-1} autoComplete="off" onChange={(e) => setAnswers((prev) => ({ ...prev, website: e.target.value }))} /></label>
@@ -701,7 +701,7 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
 
           Стоит после всех вопросов и до кнопки: человек уже сделал главное,
           ответил, и его не стоит встречать просьбой о деньгах в середине
-          работы. Компонент теперь один вид везде — компактный баннер, не
+          работы. Компонент теперь один вид везде – компактный баннер, не
           нужно ни прятать его, ни выделять отдельным оформлением здесь. */}
       {form!.support && <SupportJournal lang={form!.language} className="mt-14" />}
 

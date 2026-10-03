@@ -3,13 +3,13 @@
 /* Брендованные карточки для бота: SVG → PNG через sharp, без headless-браузера
  * (служба живёт в MemoryMax=200M, puppeteer туда не поместится).
  *
- * Макет и шрифты сняты С ЖИВОГО САЙТА (не с brandbook/data.js — тот описывает
+ * Макет и шрифты сняты С ЖИВОГО САЙТА (не с brandbook/data.js – тот описывает
  * старую бордо-золотую версию, которую сайт больше не носит):
  *   чёрная шапка с трекованным «EPRIS», тонкая (1px) чёрная рамка карточки,
  *   мелкая caps-метка категории, заголовок Crimson Text обычным начертанием
  *   (не курсив), тонкая линия-разделитель, pill-кнопка с чёрной обводкой.
- *   Тело/подписи — системный serif сайта (ui-serif → Iowan Old Style на Mac),
- *   здесь его роль играет PT Serif — она уже установлена и близка по духу.
+ *   Тело/подписи – системный serif сайта (ui-serif → Iowan Old Style на Mac),
+ *   здесь его роль играет PT Serif – она уже установлена и близка по духу.
  */
 
 const sharp = require("sharp");
@@ -51,7 +51,7 @@ const W = 1200;
 const H = 630;
 const BAR = 76;
 
-/* Pill-кнопка с чёрной обводкой и стрелкой — как «READ PREVIEW ↗» на сайте. */
+/* Pill-кнопка с чёрной обводкой и стрелкой – как «READ PREVIEW ↗» на сайте. */
 function pill(x, y, label) {
   const w = label.length * 9 + 56;
   return `
@@ -70,7 +70,7 @@ function masthead(right) {
     <text x="${W - 40}" y="${BAR / 2 + 5}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="2" fill="rgba(255,255,255,0.6)" text-anchor="end">${esc(right)}</text>`;
 }
 
-/* Тонкая рамка вокруг всей карточки — так собраны блоки материалов на сайте. */
+/* Тонкая рамка вокруг всей карточки – так собраны блоки материалов на сайте. */
 function frame(right, inner) {
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
     <rect width="${W}" height="${H}" fill="${COLOR.paper}"/>
@@ -137,7 +137,7 @@ function draftsCard(items) {
 
   return frame("ЧЕРНОВИКИ", `
     <text x="40" y="${BAR + 50}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="1.5" fill="${COLOR.muted}">РЕДАКЦИЯ · К ПУБЛИКАЦИИ</text>
-    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Черновики — ${items.length}</text>
+    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Черновики – ${items.length}</text>
     ${rows}
   `);
 }
@@ -158,7 +158,7 @@ function contactsCard(items) {
 
   return frame("КОНТАКТЫ", `
     <text x="40" y="${BAR + 50}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="1.5" fill="${COLOR.muted}">РЕДАКЦИЯ · АВТОРЫ И ПАРТНЁРЫ</text>
-    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Контакты — ${items.length}</text>
+    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Контакты – ${items.length}</text>
     ${rows}
   `);
 }
@@ -184,7 +184,7 @@ function interviewsCard(items) {
 
   return frame("ИНТЕРВЬЮ", `
     <text x="40" y="${BAR + 50}" font-family="${FONT_LABEL}" font-size="11" letter-spacing="1.5" fill="${COLOR.muted}">РЕДАКЦИЯ · ПЛАНИРОВАНИЕ</text>
-    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Интервью — ${items.length}</text>
+    <text x="40" y="${BAR + 90}" font-family="${FONT_TITLE}" font-size="34" fill="${COLOR.ink}">Интервью – ${items.length}</text>
     ${rows}
   `);
 }

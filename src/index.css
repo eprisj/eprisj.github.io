@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Theme tokens — overridable from the admin Appearance panel (content.theme),
+  /* Theme tokens – overridable from the admin Appearance panel (content.theme),
      which does so at RUNTIME (applySiteTheme in App.tsx sets these same custom
      properties on document.documentElement AFTER the theme loads over the
      network). These defaults are what paints BEFORE that call lands: every
@@ -52,24 +52,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* PT Serif-as-fallback (above) fixes readability — a whole Cyrillic run no
-   longer drops to the browser's generic serif — but Crimson Text and
+/* PT Serif-as-fallback (above) fixes readability – a whole Cyrillic run no
+   longer drops to the browser's generic serif – but Crimson Text and
    Playfair Display still win every Latin *run* inside that same text, since
    font-family fallback resolves per character, not per element. A review
    full of English proper nouns (a person's name, a building, a brand) reads
-   in RU/UK as two visibly different serifs alternating mid-sentence — the
+   in RU/UK as two visibly different serifs alternating mid-sentence – the
    Cyrillic words in PT Serif, "David Shrigley" or "sketch" in Crimson Text
    right next to them. Overriding both variables to PT Serif alone for these
    two languages removes the seam: everything, Latin included, renders in
    the one typeface that actually has both scripts. English pages are
-   untouched — the fallback chain up top still applies there. */
+   untouched – the fallback chain up top still applies there. */
 :root:lang(ru), :root:lang(uk) {
   --font-display: 'PT Serif', serif;
   --font-body: 'PT Serif', serif;
 }
 
 /* The variables above don't reach `font-serif`/`font-crimson`/`font-display`
-   — Tailwind bakes those into static, hardcoded `font-family` rules at build
+   – Tailwind bakes those into static, hardcoded `font-family` rules at build
    time (tailwind.config.js), so they can't read a CSS custom property.
    `font-serif` alone is the single most-used type class in App.tsx (64
    places), so this is the majority of the site's Cyrillic body copy left
@@ -760,7 +760,7 @@ img[data-reveal="done"] {
    Родную подсветку тапа выше уже погасили (-webkit-tap-highlight-color),
    но замены ей не поставили: на телефоне нажатие не отзывалось ничем, и
    между касанием и сменой экрана оставалась глухая пауза. Ни одного
-   правила :active в проекте не было — проверено обходом стилей в браузере.
+   правила :active в проекте не было – проверено обходом стилей в браузере.
 
    Только там, где нет курсора: на десктопе роль отклика играет :hover. */
 @media (hover: none) {
@@ -801,7 +801,7 @@ img[data-reveal="done"] {
 
 /* Курсиву в журналі немає (2026-10-03): будь-який нахил – у статтях з адмінки,
    у старих текстах з <i> чи style="font-style: italic", у віджетах – набирається
-   звичайним Courier. Іконки на сайті — SVG, тож <i> тут лише текст. */
+   звичайним Courier. Іконки на сайті – SVG, тож <i> тут лише текст. */
 em, i, cite, dfn, var, address,
 .italic,
 [style*="font-style: italic"], [style*="font-style:italic"] {

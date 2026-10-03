@@ -983,7 +983,7 @@ export function MateriePage({ t }: { t: T }) {
             </div>
           </div>
 
-          {/* ── Tool cards — 3 col ── */}
+          {/* ── Tool cards – 3 col ── */}
           <div className="px-6 sm:px-10 md:px-16 py-12 sm:py-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 max-w-6xl">
               {TOOL_CARDS(t).map((card) => (

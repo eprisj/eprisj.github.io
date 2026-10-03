@@ -21,13 +21,13 @@ export interface PassportFields {
 }
 
 // Single combined sheet (observations on top, data page below), matching the
-// on-screen PassportPage in PassportPreview.tsx — this used to be an entirely
+// on-screen PassportPage in PassportPreview.tsx – this used to be an entirely
 // separate, hand-drawn "vintage passport book" (guilloche patterns, a 2-page
 // spread with a spine) that had drifted far from that modern design. Ported
 // to canvas rather than photographing the live DOM (tried html-to-image:
 // its automatic @font-face inlining hung for a minute-plus on this page's
 // ~20 Google Fonts weights, and re-fetching the cross-origin uploaded photo
-// to embed it hit a 404/CORS dead end) — canvas drawing has neither problem
+// to embed it hit a 404/CORS dead end) – canvas drawing has neither problem
 // since cross-origin images are only ever drawn via loadImage()'s blob-URL
 // fetch below, which never taints the canvas.
 const W = 1200;
@@ -234,7 +234,7 @@ export async function renderPassportPNG(
   const padX = W * 0.045;
   const contentW = W - padX * 2;
 
-  // ══════════════════════ TOP HALF — OBSERVATIONS ══════════════════════════
+  // ══════════════════════ TOP HALF – OBSERVATIONS ══════════════════════════
   const topY = H * 0.02;
   const topH = H * 0.32;
 
@@ -304,7 +304,7 @@ export async function renderPassportPNG(
   // ══════════════════════ DIVIDER ═══════════════════════════════════════════
   dottedLine(ctx, W * 0.02, W - W * 0.02, H * 0.36);
 
-  // ══════════════════════ BOTTOM HALF — DATA PAGE ═══════════════════════════
+  // ══════════════════════ BOTTOM HALF – DATA PAGE ═══════════════════════════
   const botY = H * 0.39;
   const botH = H - H * 0.02 - botY;
 

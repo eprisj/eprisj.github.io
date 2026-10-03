@@ -59,7 +59,7 @@ export function useChat(callId: number | null, joined: boolean) {
             return [...cleaned.slice(-80), ...incoming]
           })
         }
-      } catch { /* transient errors — ignore */ }
+      } catch { /* transient errors – ignore */ }
       if (alive) timerRef.current = setTimeout(poll, 2000)
     }
     poll()

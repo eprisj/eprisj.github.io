@@ -3,7 +3,7 @@
 // Это не оптимизация, а обход целого класса поломок: html2canvas и подобные
 // падают на любом современном цвете (`color-mix`, `oklab`) в снимаемом дереве и
 // роняют весь экспорт разом. Геометрия у нас и так в метрах, поэтому рисовать с
-// нуля и проще, и точнее — линия остаётся линией, а не пикселями, и на листе
+// нуля и проще, и точнее – линия остаётся линией, а не пикселями, и на листе
 // можно честно проставить масштаб.
 //
 // Лист печатный: тёмная краска по белому, а не тёмная тема интерфейса.
@@ -70,7 +70,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   const planBox = { x: MARGIN, y: 46, w: 152, h: 140 };
   const sectBox = { x: MARGIN + 162, y: 46, w: PAGE_W - MARGIN * 2 - 162, h: 140 };
 
-  /* План и разрез идут В ОДНОМ масштабе — иначе это два рисунка, а не комплект,
+  /* План и разрез идут В ОДНОМ масштабе – иначе это два рисунка, а не комплект,
      и сравнивать высоту с глубиной по листу становится нельзя. */
   const scale = Math.min(
     planBox.w / room.w,
@@ -112,7 +112,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
   doc.setLineWidth(0.4);
   doc.rect(planX(0), planY(0), room.w * scale, room.d * scale, 'S');
 
-  /* Поше и веса — те же, что на экране: рассечённое заливается и обводится
+  /* Поше и веса – те же, что на экране: рассечённое заливается и обводится
      жирным, стоящее в поле зрения остаётся тонким контуром. */
   scene.objects.forEach((object) => {
     const cut = isCut(object.kind);
@@ -128,7 +128,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
     doc.text(String(index + 1).padStart(2, '0'), planX(object.x) - 1, planY(object.z) - 1, { align: 'right' });
   });
 
-  // Глаз зрителя — на плане это точка, ради которой сцена и строится.
+  // Глаз зрителя – на плане это точка, ради которой сцена и строится.
   doc.setFillColor(...INK);
   doc.circle(planX(scene.viewer.x), planY(scene.viewer.z), 1, 'F');
   doc.setFontSize(5);
@@ -248,7 +248,7 @@ export async function exportSpec({ scene, moveTitle, readings = [] }: SpecInput)
     y,
   );
 
-  /* Наблюдения приёма попадают в спеку дословно — в том числе те, что говорят,
+  /* Наблюдения приёма попадают в спеку дословно – в том числе те, что говорят,
      где приём ломается. Лист, умалчивающий о поломке, был бы рекламой. */
   if (readings.length) {
     y += 10;

@@ -5,7 +5,7 @@ import { GizmoHelper, GizmoViewport, OrbitControls } from '@react-three/drei';
 import { BoxGeometry, DoubleSide, FrontSide } from 'three';
 import type { Scene } from './sceneModel';
 
-// Собственный чанк — three и fiber тяжелее ~150 КБ gzip, и на главную журнала
+// Собственный чанк – three и fiber тяжелее ~150 КБ gzip, и на главную журнала
 // это грузить нельзя. StagePage подключает этот файл через lazy().
 
 const PAPER = 0xf5f0eb;
@@ -18,12 +18,12 @@ function Room({ scene }: { scene: Scene }) {
   const { w, d, h } = scene.room;
   return (
     <group>
-      {/* Пол — единственная плоскость, на которой всё стоит */}
+      {/* Пол – единственная плоскость, на которой всё стоит */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[w / 2, 0, d / 2]}>
         <planeGeometry args={[w, d]} />
         <meshStandardMaterial color={INK} roughness={0.9} metalness={0.04} />
       </mesh>
-      {/* Контур коробки, а не сплошные стены — им ничто не должно заслонять сцену */}
+      {/* Контур коробки, а не сплошные стены – им ничто не должно заслонять сцену */}
       <lineSegments position={[w / 2, h / 2, d / 2]}>
         <edgesGeometry args={[useMemo(() => new BoxGeometry(w, h, d), [w, h, d])]} />
         <lineBasicMaterial color={PAPER} transparent opacity={0.25} />
@@ -147,7 +147,7 @@ interface Props {
 }
 
 // Камера либо на воображаемом орбитальном посте над сценой, либо ровно в
-// глазах зрителя — второй режим показывает то самое, ради чего в модели
+// глазах зрителя – второй режим показывает то самое, ради чего в модели
 // вообще есть eyeHeight.
 export function Scene3D({ scene, fromViewerEye = false, physicsEnabled = false }: Props) {
   const cameraPosition = useMemo<[number, number, number]>(() => {

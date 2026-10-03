@@ -15,7 +15,7 @@ interface Props {
 
 export function MovesPanel({ cases, moves, activeSlug, params, readings, onPick, onParam, onBake }: Props) {
   // Показываем только те разборы, у которых есть оператор: приём без механики
-  // — это статья, ей место в Бюро, а не в панели инструмента.
+  // – это статья, ей место в Бюро, а не в панели инструмента.
   const playable = cases.filter((item) => moves.some((m) => m.slug === item.slug));
   const activeCase = playable.find((item) => item.slug === activeSlug) || null;
   const activeMove = moves.find((m) => m.slug === activeSlug) || null;
@@ -101,7 +101,7 @@ export function MovesPanel({ cases, moves, activeSlug, params, readings, onPick,
                     reading.tone === 'breaks' ? 'text-[#b8956e]' : 'text-[#f5f0eb]/55'
                   }`}
                 >
-                  {/* Золотом — ровно те условия, которые разбор назвал местом
+                  {/* Золотом – ровно те условия, которые разбор назвал местом
                       поломки. Это не ошибка ввода: сцена честно в них попала. */}
                   {reading.tone === 'breaks' && <span className="mr-1.5 uppercase tracking-[0.14em] text-[9px]">Breaks</span>}
                   {reading.text}

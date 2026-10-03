@@ -31,7 +31,7 @@
 
     <!-- ── Auth overlay ──
          Форма входа мигала при каждом обновлении страницы: разметка показывает
-         её сразу, а решение «мы уже вошли» принимает app.js — почти мегабайт,
+         её сразу, а решение «мы уже вошли» принимает app.js – почти мегабайт,
          который сначала надо разобрать. Этот крошечный скрипт выполняется до
          него и прячет форму, если сохранённый вход уже есть; сам вход всё
          равно проверяется дальше обычным путём. -->
@@ -40,7 +40,7 @@
         try {
           var signedIn = localStorage.getItem('epris_admin_token') || localStorage.getItem('epris_admin_pw_saved');
           if (signedIn) document.documentElement.classList.add('epris-signed-in');
-        } catch (e) { /* приватный режим — покажем форму */ }
+        } catch (e) { /* приватный режим – покажем форму */ }
       })();
     </script>
     <div id="authOverlay" class="auth-overlay">
@@ -56,7 +56,7 @@
         </div>
         <!-- Password login (primary, for editors) -->
         <div class="auth-form" id="authFormPassword">
-          <!-- Which password you type must match this — picking "Admin" and
+          <!-- Which password you type must match this – picking "Admin" and
                typing an editor password fails with a clear reason (server
                is authoritative on the actual role either way). -->
           <div class="auth-role-toggle" id="authRoleToggle" role="radiogroup" data-i18n-aria="auth.roleGroupAria" aria-label="Sign-in role">
@@ -349,7 +349,7 @@
 
         <!-- Док на телефоне показывает только закреплённые разделы; за
              остальными двадцатью открывается список во весь экран. Раньше
-             все 25 лежали лентой по 74 точки — почти два экрана прокрутки
+             все 25 лежали лентой по 74 точки – почти два экрана прокрутки
              вбок без заголовков групп, вслепую. -->
         <button id="navSheetBtn" class="sb-sheet-btn" type="button" aria-expanded="false" aria-controls="sbNav">
           <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -449,23 +449,23 @@
               <div class="dash-stats-row" id="dashStatsRow">
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-                  <div><div class="dash-stat-value" id="dashCountArticles">—</div><div class="dash-stat-label">Статьи</div></div>
+                  <div><div class="dash-stat-value" id="dashCountArticles">–</div><div class="dash-stat-label">Статьи</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-                  <div><div class="dash-stat-value" id="dashCountReviews">—</div><div class="dash-stat-label">Обзоры</div></div>
+                  <div><div class="dash-stat-value" id="dashCountReviews">–</div><div class="dash-stat-label">Обзоры</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-                  <div><div class="dash-stat-value" id="dashCountIssues">—</div><div class="dash-stat-label">Выпуски</div></div>
+                  <div><div class="dash-stat-value" id="dashCountIssues">–</div><div class="dash-stat-label">Выпуски</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></div>
-                  <div><div class="dash-stat-value" id="dashCountLangs">—</div><div class="dash-stat-label">Языков</div></div>
+                  <div><div class="dash-stat-value" id="dashCountLangs">–</div><div class="dash-stat-label">Языков</div></div>
                 </div>
                 <div class="dash-stat-card dash-stat-card--wide">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
-                  <div><div class="dash-stat-value" id="dashIssueStatus">—</div><div class="dash-stat-label">Текущий выпуск</div></div>
+                  <div><div class="dash-stat-value" id="dashIssueStatus">–</div><div class="dash-stat-label">Текущий выпуск</div></div>
                 </div>
               </div>
               <div class="dash-main-grid">
@@ -562,7 +562,7 @@
 
             <p class="an-foot">Считает собственный счётчик на сервере журнала. Адрес посетителя не хранится:
               вместо него записывается необратимый отпечаток, по нему и считаются уникальные.
-              История до 19 августа не сохранилась — логи сервера тогда хранились 10 дней.
+              История до 19 августа не сохранилась – логи сервера тогда хранились 10 дней.
               Параллельно работает Google Analytics (G-F3F5GCXFBF), его отчёты в интерфейсе Google.</p>
           </section>
 
@@ -570,7 +570,7 @@
           <!-- ===== МАСТЕР СОЗДАНИЯ ЗАПИСИ =====
                Создание было разложено на два несвязанных пути: кнопка
                «+ Создать статью» в тулбаре заводила пустой черновик, а
-               свёрнутая внизу «Creator Studio» — заготовку с полями, среди
+               свёрнутая внизу «Creator Studio» – заготовку с полями, среди
                которых стояло «imageSeed». Теперь путь один: заполняешь то,
                с чего статья и начинается (тип, заголовок, автор, анонс,
                обложка), получаешь готовый черновик и сразу его правишь. -->
@@ -708,7 +708,7 @@
               </div>
               <section class="homepage-published-now" aria-labelledby="homepagePublishedTitle">
                 <div class="homepage-published-head">
-                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Текущий выпуск на главной</h3><p>Это независимый снимок с VPS. Чтобы не менять его случайно, создайте новый выпуск ниже — он будет отдельным черновиком.</p></div>
+                  <div><span class="homepage-admin-kicker">ЧТО ВИДЯТ ЧИТАТЕЛИ СЕЙЧАС</span><h3 id="homepagePublishedTitle">Текущий выпуск на главной</h3><p>Это независимый снимок с VPS. Чтобы не менять его случайно, создайте новый выпуск ниже – он будет отдельным черновиком.</p></div>
                   <span id="homepagePublishedMeta" class="homepage-preview-badge">Проверяю VPS…</span>
                 </div>
                 <div id="homepageRowControls" class="hp-row-controls"></div>
@@ -776,7 +776,7 @@
                   </div>
                   <span id="homepageArchiveCount" class="homepage-preview-badge">0 выпусков</span>
                 </div>
-                <label class="homepage-toggle-field homepage-archive-visibility-toggle"><input id="homepageArchivePublic" type="checkbox" checked><span><strong>Показывать прошлые выпуски читателям</strong><small>При публикации новой недели прежняя останется в Daily picks archive. Если выключить — она сохранится только в редакции.</small></span></label>
+                <label class="homepage-toggle-field homepage-archive-visibility-toggle"><input id="homepageArchivePublic" type="checkbox" checked><span><strong>Показывать прошлые выпуски читателям</strong><small>При публикации новой недели прежняя останется в Daily picks archive. Если выключить – она сохранится только в редакции.</small></span></label>
                 <div id="homepageArchiveList" class="homepage-archive-list" aria-live="polite"></div>
               </section>
               <section class="homepage-quickstart" aria-labelledby="homepageQuickstartTitle">
@@ -803,7 +803,7 @@
                   <span class="homepage-status-dot" data-state="idle" aria-hidden="true"></span>
                   <div>
                     <strong id="homepageStatusTitle">Черновик главной</strong>
-                  <span id="homepageStatusDetail">Выберите до пяти фотографий — по одной на категорию.</span>
+                  <span id="homepageStatusDetail">Выберите до пяти фотографий – по одной на категорию.</span>
                   </div>
                 </div>
                 <div class="homepage-admin-status-meta">
@@ -823,7 +823,7 @@
                 </div>
 
                 <!-- Разделено по смыслу: слева то, что решает, ЧТО увидит читатель,
-                     справа — поведение самой панели. Раньше девять контролов лежали
+                     справа – поведение самой панели. Раньше девять контролов лежали
                      одной сеткой, и «сколько статей на главной» стояло вплотную к
                      «интервалу проверки VPS». -->
                 <div class="hp-settings-block">
@@ -873,7 +873,7 @@
                         <span class="homepage-manual-copy-plus" aria-hidden="true">+</span>
                       </summary>
                       <div class="homepage-manual-copy-body">
-                        <p>Обычно ничего здесь не заполняют: заголовки разделов переводятся автоматически. Поле ниже — только ручное переопределение конкретного языка. Пустое поле всегда означает «использовать автоматический перевод».</p>
+                        <p>Обычно ничего здесь не заполняют: заголовки разделов переводятся автоматически. Поле ниже – только ручное переопределение конкретного языка. Пустое поле всегда означает «использовать автоматический перевод».</p>
                         <div id="homepageLayoutCopyEditor" class="homepage-layout-copy-editor"></div>
                       </div>
                     </details>
@@ -888,19 +888,19 @@
                 <div class="homepage-layout-options">
                   <div class="homepage-layout-option-group">
                     <span class="homepage-layout-option-label">Daily Picks</span>
-                    <label class="homepage-field"><span>Подписи</span><select id="homepagePicsCaptionPlacement"><option value="below">Под фото — редакционный блок</option><option value="overlay">На фото — компактный overlay</option></select></label>
+                    <label class="homepage-field"><span>Подписи</span><select id="homepagePicsCaptionPlacement"><option value="below">Под фото – редакционный блок</option><option value="overlay">На фото – компактный overlay</option></select></label>
                     <label class="homepage-toggle-field"><input id="homepagePicsShowDescriptions" type="checkbox" checked><span><strong>Дать открыть описание</strong><small>Текст появляется только под активной фотографией, по нажатию</small></span></label>
                     <label class="homepage-toggle-field"><input id="homepagePicsShowCategory" type="checkbox" checked><span><strong>Показывать категорию</strong><small>Подпись Sculpture / Painting и т. д.</small></span></label>
                     <label class="homepage-toggle-field"><input id="homepagePicsShowNavigation" type="checkbox" checked><span><strong>Показывать навигацию</strong><small>Стрелки, точки и счётчик; swipe остаётся всегда</small></span></label>
                     <label class="homepage-field"><span>Мобильная карусель</span><select id="homepagePicsMobileMode"><option value="single">Один кадр + подсказка свайпа</option><option value="peek">Кадр + лёгкий preview соседей</option></select></label>
-                    <label class="homepage-field"><span>Плотность карточек</span><select id="homepagePicsCardStyle"><option value="editorial">Editorial — крупное описание</option><option value="compact">Compact — больше воздуха вокруг</option></select></label>
+                    <label class="homepage-field"><span>Плотность карточек</span><select id="homepagePicsCardStyle"><option value="editorial">Editorial – крупное описание</option><option value="compact">Compact – больше воздуха вокруг</option></select></label>
                   </div>
                   <div class="homepage-layout-option-group">
                     <span class="homepage-layout-option-label">Статьи на главной</span>
                     <label class="homepage-toggle-field"><input id="homepageArticlesShowDescription" type="checkbox" checked><span><strong>Показывать превью</strong><small>Описание статьи до перехода</small></span></label>
-                    <label class="homepage-toggle-field"><input id="homepageArticlesShowPreview" type="checkbox" checked><span><strong>Открывать preview</strong><small>Первое нажатие — превью, затем «Read full»</small></span></label>
+                    <label class="homepage-toggle-field"><input id="homepageArticlesShowPreview" type="checkbox" checked><span><strong>Открывать preview</strong><small>Первое нажатие – превью, затем «Read full»</small></span></label>
                     <label class="homepage-toggle-field"><input id="homepageArticlesShowReadAll" type="checkbox" checked><span><strong>Показывать кнопку чтения</strong><small>CTA внутри каждой карточки статьи</small></span></label>
-                    <label class="homepage-field"><span>Колонки на широком экране</span><select id="homepageArticlesColumns"><option value="1">Одна — журнальный поток</option><option value="2">Две — сбалансированная сетка</option><option value="3">Три — плотная лента</option></select></label>
+                    <label class="homepage-field"><span>Колонки на широком экране</span><select id="homepageArticlesColumns"><option value="1">Одна – журнальный поток</option><option value="2">Две – сбалансированная сетка</option><option value="3">Три – плотная лента</option></select></label>
                   </div>
                 </div>
               </section>
@@ -933,7 +933,7 @@
                     <div>
                       <span class="homepage-admin-kicker">Карточки на главной</span>
                       <h3 id="homepageComposerTitle" class="card-title">Следующий выпуск</h3>
-                      <p class="card-desc">Сначала создайте новый выпуск. В нём будут пять новых фото — опубликованная версия выше не изменится до отдельной публикации.</p>
+                      <p class="card-desc">Сначала создайте новый выпуск. В нём будут пять новых фото – опубликованная версия выше не изменится до отдельной публикации.</p>
                     </div>
                     <span class="homepage-preview-badge">Вид на главной</span>
                   </div>
@@ -971,10 +971,10 @@
                   <button id="homepageShowcaseCopyLink" class="btn btn-sm" type="button">Скопировать ссылку</button>
                 </div>
                 <div class="homepage-showcase-grid">
-                  <label class="homepage-toggle-field homepage-showcase-wide"><input id="homepageShowcaseEnabled" type="checkbox" checked><span>Показывать Showcase на главной<small>Отключает только анонс — сами работы и страница /showcase остаются доступными.</small></span></label>
+                  <label class="homepage-toggle-field homepage-showcase-wide"><input id="homepageShowcaseEnabled" type="checkbox" checked><span>Показывать Showcase на главной<small>Отключает только анонс – сами работы и страница /showcase остаются доступными.</small></span></label>
                   <label class="homepage-field"><span>Режим выбора</span><select id="homepageShowcaseMode"><option value="auto">Автоматически</option><option value="manual">Вручную</option></select></label>
                   <label class="homepage-field"><span>Сортировка</span><select id="homepageShowcaseSort"><option value="editorial">Редакционный рейтинг</option><option value="score">Оценка редакции</option><option value="newest">Новые первыми</option><option value="oldest">Старые первыми</option></select></label>
-                  <label class="homepage-field"><span>Минимальный рейтинг</span><input id="homepageShowcaseMinScore" type="number" min="0" max="10000" step="10" placeholder="0"><small>0 — не отсеивать; рейтинг строится из качества карточки.</small></label>
+                  <label class="homepage-field"><span>Минимальный рейтинг</span><input id="homepageShowcaseMinScore" type="number" min="0" max="10000" step="10" placeholder="0"><small>0 – не отсеивать; рейтинг строится из качества карточки.</small></label>
                   <label class="homepage-field"><span>Карточек в анонсе</span><select id="homepageShowcaseLimit"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label>
                   <label class="homepage-field homepage-showcase-wide"><span>Ручной порядок (ID через запятую)</span><input id="homepageShowcaseIds" type="text" placeholder="work-id-1, work-id-2, work-id-3, work-id-4"><small>Работает в ручном режиме. ID можно взять во вкладке «Витрина».</small></label>
                   <label class="homepage-field"><span>Надзаголовок</span><input id="homepageShowcaseEyebrow" type="text" placeholder="Showcase"></label>
@@ -997,7 +997,7 @@
                 <div>
                   <span class="visibility-kicker">Публичный сайт</span>
                   <h2 class="card-title">Управление видимостью</h2>
-                  <p class="card-desc">Скрывайте разделы из меню или полностью закрывайте прямую страницу. Ни одна запись не удаляется — её можно вернуть одним переключателем.</p>
+                  <p class="card-desc">Скрывайте разделы из меню или полностью закрывайте прямую страницу. Ни одна запись не удаляется – её можно вернуть одним переключателем.</p>
                 </div>
                 <div class="visibility-hero-actions">
                   <a class="btn" href="../" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
@@ -1125,7 +1125,7 @@
                     Живой редактор
                   </button>
                   <button id="addEntryBtn" class="btn btn-primary btn-sm" type="button" title="Создать черновик сразу; перевод запускается при сохранении">+ Создать статью</button>
-                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше (влияет на порядок на сайте — для Галереи первая запись становится featured)">↑</button>
+                  <button id="moveEntryUpBtn" class="btn btn-sm" type="button" title="Переместить выше (влияет на порядок на сайте – для Галереи первая запись становится featured)">↑</button>
                   <button id="moveEntryDownBtn" class="btn btn-sm" type="button" title="Переместить ниже">↓</button>
                   <button id="duplicateEntryBtn" class="btn btn-sm" type="button">Дублировать</button>
                   <button id="deleteEntryBtn" class="btn btn-sm btn-danger-text" type="button">Удалить</button>
@@ -1161,7 +1161,7 @@
                 </div>
               </div>
 
-              <!-- ═══ ONE EDITOR SURFACE — the article itself is the editor ═══ -->
+              <!-- ═══ ONE EDITOR SURFACE – the article itself is the editor ═══ -->
               <div id="wysShell" class="wys-shell">
                 <div class="wys-bar">
                   <div class="wys-bar-left">
@@ -1191,7 +1191,7 @@
                 </div>
               </div>
 
-              <!-- ═══ REVIEW CANVAS — the review itself is the editor ═══ -->
+              <!-- ═══ REVIEW CANVAS – the review itself is the editor ═══ -->
               <div id="revWysShell" class="wys-shell">
                 <div class="wys-bar">
                   <div class="wys-bar-left">
@@ -1247,7 +1247,7 @@
                 <button id="aiGenerateBtn" class="btn btn-sm btn-ai" type="button" title="Черновик текста через AI">✨ AI-черновик</button>
               </div>
 
-              <!-- ── Main editor — block editor + split preview ── -->
+              <!-- ── Main editor – block editor + split preview ── -->
               <div class="editor-split" id="editorSplit">
                 <div class="editor-pane" id="editorPane">
                   <p id="visualNotice" class="visual-notice">Выберите запись, внесите правки и нажмите «Сохранить запись».</p>
@@ -1516,7 +1516,7 @@
                     <li data-transcript-flow-step="process"><span class="transcript-flow-index">02</span><span><strong>Локальная очередь</strong><small>обработка на VPS</small></span></li>
                     <li data-transcript-flow-step="edit"><span class="transcript-flow-index">03</span><span><strong>Редактура</strong><small>текст и черновик</small></span></li>
                   </ol>
-                  <p id="transcriptFlowNote" class="transcript-flow-note" role="status">Нажмите «Загрузить запись», выберите файл — остальное произойдёт автоматически.</p>
+                  <p id="transcriptFlowNote" class="transcript-flow-note" role="status">Нажмите «Загрузить запись», выберите файл – остальное произойдёт автоматически.</p>
                   <aside class="transcript-next-action" id="transcriptNextAction" hidden aria-live="polite"><span class="transcript-next-kicker">Следующее действие</span><div><strong id="transcriptNextTitle"></strong><span id="transcriptNextDetail"></span></div><button class="btn btn-sm" id="transcriptNextButton" type="button"></button></aside>
                   <div class="transcript-hero-actions"><button class="btn btn-primary transcript-intake-cta" id="transcriptNewBtn" type="button">Загрузить запись</button></div>
                 </div>
@@ -1536,7 +1536,7 @@
                 <div class="transcript-section-head"><div><p class="panel-kicker">Загрузка записи</p><h2 class="card-title">Файл отправляется в очередь</h2><p class="card-desc">После приёма файла можно закрыть админку: ход обработки сохранится на VPS.</p></div></div>
                 <div class="transcript-source-panel" id="transcriptFilePanel"><label class="transcript-dropzone" id="transcriptDropZone" for="transcriptAudioInput"><input id="transcriptAudioInput" type="file" accept="audio/*,video/*,.3g2,.3ga,.3gp,.aac,.ac3,.aif,.aifc,.aiff,.alac,.amr,.ape,.asf,.au,.avi,.caf,.dts,.eac3,.flac,.m4a,.m4b,.m4r,.m4v,.mka,.mkv,.mov,.mp1,.mp2,.mp3,.mp4,.mpeg,.mpga,.oga,.ogg,.opus,.ra,.ram,.rm,.rmvb,.snd,.spx,.tta,.voc,.wav,.weba,.webm,.wma,.wmv,.wv" hidden /><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55"><path d="M12 3v12"/><path d="m7 8 5-5 5 5"/><path d="M5 15v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3"/></svg><strong id="transcriptFileLabel">Выбрать другой файл</strong><span id="transcriptFileMeta">Voice Memos iPhone (M4A/AAC), CAF, WAV, AIFF, MP3, видео и другие · до 1.5 ГБ.</span></label></div>
                 <section class="transcript-upload-progress" id="transcriptUploadProgress" hidden aria-live="polite" aria-label="Загрузка записи на VPS"><div class="transcript-progress-head"><span id="transcriptUploadPhase">Передача записи</span><strong id="transcriptUploadPercent">0%</strong></div><div class="transcript-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--transcript-progress:0"><i id="transcriptUploadBar"></i></div><p id="transcriptUploadDetail">Файл ещё не отправлен.</p></section>
-                <p class="transcript-intake-note">Выбирая файл, вы подтверждаете право на его внутреннюю редакционную обработку. Название возьмётся из файла, язык — английский, аудио хранится 30 дней. Всё это можно изменить уже после готовой расшифровки.</p>
+                <p class="transcript-intake-note">Выбирая файл, вы подтверждаете право на его внутреннюю редакционную обработку. Название возьмётся из файла, язык – английский, аудио хранится 30 дней. Всё это можно изменить уже после готовой расшифровки.</p>
                 <div hidden aria-hidden="true"><input id="transcriptTitle" maxlength="180" /><select id="transcriptLanguage"><option value="en" selected>English</option></select><select id="transcriptRetention"><option value="30" selected>30 дней</option></select><input id="transcriptSpeakers" maxlength="500" /><input id="transcriptConsent" type="checkbox" checked /><button id="transcriptStartBtn" type="button"></button><span id="transcriptSubmitDetail"></span></div>
               </section>
               <section class="transcript-library card"><div class="transcript-section-head"><div><p class="panel-kicker">Шаг 2 и архив</p><h2 class="card-title">Интервью редакции</h2><p class="card-desc">Готовое интервью можно открыть, вычитать и только затем вручную превратить в черновик статьи.</p></div><span id="transcriptLibraryCount" class="transcript-count" aria-live="polite">0 записей</span></div><div class="transcript-archive-tools" aria-label="Поиск и фильтры интервью"><label class="transcript-archive-search"><span class="sr-only">Найти интервью</span><input id="transcriptArchiveSearch" type="search" autocomplete="off" placeholder="Найти интервью или статью" /></label><div class="transcript-archive-filters" id="transcriptArchiveFilters" role="group" aria-label="Показать интервью"><button class="btn btn-sm is-active" type="button" data-transcript-filter="all" aria-pressed="true">Все</button><button class="btn btn-sm" type="button" data-transcript-filter="ready" aria-pressed="false">Готово</button><button class="btn btn-sm" type="button" data-transcript-filter="working" aria-pressed="false">В работе</button><button class="btn btn-sm" type="button" data-transcript-filter="failed" aria-pressed="false">Нужны действия</button><button class="btn btn-sm" type="button" data-transcript-filter="linked" aria-pressed="false">Со статьёй</button></div></div><div id="transcriptJobs" class="transcript-jobs"><p class="empty-state">Загружаю интервью…</p></div></section>
@@ -1616,7 +1616,7 @@
                 </div>
                 <!-- Живой пульс: опрашивается сам, пока вкладка открыта.
                      Держится выше метрик, потому что отвечает на более срочный
-                     вопрос — «работает ли всё прямо сейчас». -->
+                     вопрос – «работает ли всё прямо сейчас». -->
                 <div class="pulse-head">
                   <span class="metrics-cadence-title" style="margin:0">Пульс</span>
                   <span id="pulseState" class="pulse-state">не запущен</span>
@@ -1691,7 +1691,7 @@
                     <button class="btn btn-sm" id="orderSortByDateBtn" type="button">Применить</button>
                   </div>
                   <div class="order-bar-right">
-                    <span class="order-count" id="orderCount">—</span>
+                    <span class="order-count" id="orderCount">–</span>
                     <button class="btn btn-sm" id="orderApplyBtn" type="button" title="Записать порядок в JSON, не отправляя на сервер">Записать в JSON</button>
                     <button class="btn btn-sm btn-primary" id="orderSaveBtn" type="button" title="Записать и сразу опубликовать на VPS">Сохранить</button>
                   </div>
@@ -1749,7 +1749,7 @@
             <div class="issues-layout">
               <div class="issue-statusbar" id="issueStatusBar">
                 <div class="issue-statusbar-left">
-                  <span class="issue-status-badge" id="issueStatusBadge">—</span>
+                  <span class="issue-status-badge" id="issueStatusBadge">–</span>
                   <div>
                     <div class="issue-statusbar-title" id="issueStatusTitle">Конструктор выпусков</div>
                     <div class="issue-statusbar-sub" id="issueStatusSub">Загрузите контент, чтобы начать.</div>
@@ -1765,7 +1765,7 @@
               </div>
               <div class="card card-highlight">
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Конструктор выпуска</h2>
-                <p class="card-desc">Соберите номер по шагам. Черновик не меняет сайт. После проверки нажмите «Опубликовать выпуск», а затем общий «Сохранить» в сайдбаре — только тогда данные уйдут на VPS.</p>
+                <p class="card-desc">Соберите номер по шагам. Черновик не меняет сайт. После проверки нажмите «Опубликовать выпуск», а затем общий «Сохранить» в сайдбаре – только тогда данные уйдут на VPS.</p>
                 <div class="issue-pipeline" id="issuePipeline" aria-label="Путь публикации выпуска">
                   <div class="issue-pipeline-step is-current" data-pipeline-step="draft"><span class="issue-pipeline-num">1</span><span><b>Черновик</b><small>только в редакторе</small></span></div>
                   <span class="issue-pipeline-arrow" aria-hidden="true">→</span>
@@ -1817,12 +1817,12 @@
                 </div>
                 <div class="card">
                   <h2 class="card-title">Письмо редактора</h2>
-                  <p class="card-desc">Если пустое — используется текст из переводов.</p>
+                  <p class="card-desc">Если пустое – используется текст из переводов.</p>
                   <div class="form-grid">
                     <label class="full"><span class="field-label">Заголовок</span><input id="issueLetterHeading" placeholder="A season of thresholds…" /></label>
                     <label class="full"><span class="field-label">Текст (абзацы через пустую строку)</span><textarea id="issueLetterBody" rows="6" placeholder="Dear reader,&#10;&#10;…"></textarea></label>
                     <label class="full"><span class="field-label">Подпись</span><input id="issueLetterSignature" placeholder="Mariia Ivanova" /></label>
-                    <p class="form-hint" style="margin:-8px 0 0">Если пустое — по умолчанию «Mariia Ivanova». Показывается на сайте и в PDF-экспорте выпуска.</p>
+                    <p class="form-hint" style="margin:-8px 0 0">Если пустое – по умолчанию «Mariia Ivanova». Показывается на сайте и в PDF-экспорте выпуска.</p>
                   </div>
                 </div>
                 <div class="card" id="issueValidationCard">
@@ -1871,7 +1871,7 @@
                   <div>
                     <span class="section-kicker">ПУБЛИЧНАЯ СТРАНИЦА</span>
                     <h2 class="card-title">Студия EPRIS</h2>
-                    <p class="card-desc">Здесь редактируется страница <strong>/studio</strong>. Сначала примените изменения в редакторе, затем нажмите общий «Сохранить» — только после этого они появятся на сайте.</p>
+                    <p class="card-desc">Здесь редактируется страница <strong>/studio</strong>. Сначала примените изменения в редакторе, затем нажмите общий «Сохранить» – только после этого они появятся на сайте.</p>
                   </div>
                   <div id="studioPublishStatus" class="studio-publish-status" aria-live="polite"></div>
                 </div>
@@ -1916,7 +1916,7 @@
               </details>
               <details class="card studio-advanced-panel">
                 <summary class="studio-advanced-summary"><span><b>Пакеты и цены</b><small>Тарифы, цены и состав работ</small></span><span class="studio-summary-plus" aria-hidden="true">+</span></summary>
-                <div class="studio-advanced-body"><div class="studio-section-head"><h2 class="card-title" style="margin:0">Пакеты и цены</h2><button id="studioAddPkgBtn" class="btn btn-sm" type="button">+ Добавить пакет</button></div><p class="card-desc">Цена — прямой текст, например «от €2 500».</p><div id="studioPkgList" class="studio-pkgs-list"></div></div>
+                <div class="studio-advanced-body"><div class="studio-section-head"><h2 class="card-title" style="margin:0">Пакеты и цены</h2><button id="studioAddPkgBtn" class="btn btn-sm" type="button">+ Добавить пакет</button></div><p class="card-desc">Цена – прямой текст, например «от €2 500».</p><div id="studioPkgList" class="studio-pkgs-list"></div></div>
               </details>
               <div class="card">
                 <div class="studio-section-head"><h2 class="card-title" style="margin:0">4. Портфолио проектов</h2><button id="studioAddProjectBtn" class="btn btn-sm" type="button">+ Новый проект</button></div>
@@ -1931,7 +1931,7 @@
             <div class="studio-layout">
               <div class="card card-highlight">
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3h11l5 5v13H4z"/><polyline points="15 3 15 8 20 8"/></svg> Страница «Манифест»</h2>
-                <p class="card-desc">Редактируйте манифест как статью — прямо в тексте. Другие языки подтянутся автоматически при нажатии «Применить».</p>
+                <p class="card-desc">Редактируйте манифест как статью – прямо в тексте. Другие языки подтянутся автоматически при нажатии «Применить».</p>
                 <div class="studio-toolbar">
                   <a id="manifestOpenLink" href="../manifest" target="_blank" rel="noreferrer" class="btn btn-sm">Открыть ↗</a>
                   <button id="manifestApplyBtn" class="btn btn-primary btn-sm" type="button">Применить + перевести</button>
@@ -1953,7 +1953,7 @@
                       <span class="manifest-fmtsep"></span>
                       <button type="button" data-mfmt="ul" title="Список">• Список</button>
                       <button type="button" data-mfmt="quote" title="Цитата">❝</button>
-                      <button type="button" data-mfmt="hr" title="Разделитель">—</button>
+                      <button type="button" data-mfmt="hr" title="Разделитель">–</button>
                       <span class="manifest-fmtsep"></span>
                       <button type="button" data-mfmt="bold" title="Жирный"><b>B</b></button>
                       <button type="button" data-mfmt="italic" title="Курсив"><i>I</i></button>
@@ -1962,7 +1962,7 @@
                     <div id="manifestBodyEditor" class="wys-rt manifest-editor" contenteditable="true" spellcheck="true"></div>
                   </div>
                 </div>
-                <p class="card-desc" style="margin-top:10px">Пишите прямо здесь, как в редакторе статьи. Нажмите «Применить + перевести» — текст переведётся на все языки сайта, затем общий «Сохранить», чтобы отправить на VPS.</p>
+                <p class="card-desc" style="margin-top:10px">Пишите прямо здесь, как в редакторе статьи. Нажмите «Применить + перевести» – текст переведётся на все языки сайта, затем общий «Сохранить», чтобы отправить на VPS.</p>
               </div>
             </div>
           </section>
@@ -1984,7 +1984,7 @@
                   <button class="btn" id="formsReloadBtn" type="button">Обновить</button>
                 </div>
               </div>
-              <!-- Шаблоны — отдельной строкой под шапкой. Внутри panel-actions
+              <!-- Шаблоны – отдельной строкой под шапкой. Внутри panel-actions
                    этот блок наезжал на кнопки и перекрывал их. -->
               <div class="forms-templates" id="formsTemplates" hidden>
                 <span class="forms-templates-label">Начать с шаблона</span>
@@ -2023,7 +2023,7 @@
             <div class="studio-layout">
               <div class="card card-highlight">
                 <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> CRM</h2>
-                <p class="card-desc">Контакты, планирование интервью и заметки редакции — тот же документ, что видит бот и Mini App в Telegram: правки здесь появляются там сразу, и наоборот.</p>
+                <p class="card-desc">Контакты, планирование интервью и заметки редакции – тот же документ, что видит бот и Mini App в Telegram: правки здесь появляются там сразу, и наоборот.</p>
                 <div class="studio-toolbar">
                   <button class="btn btn-sm crm-subtab active" data-crmsub="interviews" type="button">Интервью</button>
                   <button class="btn btn-sm crm-subtab" data-crmsub="contacts" type="button">Контакты</button>
@@ -2306,26 +2306,26 @@
               <div class="dash-stats-row" id="designStatsRow">
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-                  <div><div class="dash-stat-value" id="designStatItems">—</div><div class="dash-stat-label">Товаров в каталоге</div></div>
+                  <div><div class="dash-stat-value" id="designStatItems">–</div><div class="dash-stat-label">Товаров в каталоге</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-                  <div><div class="dash-stat-value" id="designStatRetailers">—</div><div class="dash-stat-label">Магазинов</div></div>
+                  <div><div class="dash-stat-value" id="designStatRetailers">–</div><div class="dash-stat-label">Магазинов</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                  <div><div class="dash-stat-value" id="designStatStyles">—</div><div class="dash-stat-label">Стилей</div></div>
+                  <div><div class="dash-stat-value" id="designStatStyles">–</div><div class="dash-stat-label">Стилей</div></div>
                 </div>
                 <div class="dash-stat-card">
                   <div class="dash-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-                  <div><div class="dash-stat-value" id="designStatLooks">—</div><div class="dash-stat-label">Образов (Looks)</div></div>
+                  <div><div class="dash-stat-value" id="designStatLooks">–</div><div class="dash-stat-label">Образов (Looks)</div></div>
                 </div>
               </div>
 
               <div class="rf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div class="card">
                   <div class="card-title">Страница дизайна</div>
-                  <p class="card-desc">Раздел /design — AI-мудборд с реальными товарами из дизайнерских магазинов. Каталог обновляется в <code>src/design/catalog.ts</code>.</p>
+                  <p class="card-desc">Раздел /design – AI-мудборд с реальными товарами из дизайнерских магазинов. Каталог обновляется в <code>src/design/catalog.ts</code>.</p>
                   <div style="display:flex;gap:8px;flex-wrap:wrap">
                     <a href="https://eprisjournal.com/design" target="_blank" class="btn btn-sm">Открыть сайт →</a>
                     <button class="btn btn-sm" type="button" id="designClearCacheBtn">Очистить кеш VPS</button>
@@ -2367,7 +2367,7 @@
               <div class="appearance-controls" style="display:flex;flex-direction:column;gap:16px">
                 <div class="card">
                   <div class="card-title">Готовые темы</div>
-                  <p class="card-desc">Выбери пресет — поля ниже заполнятся, останется опубликовать.</p>
+                  <p class="card-desc">Выбери пресет – поля ниже заполнятся, останется опубликовать.</p>
                   <div id="apPresets" style="display:flex;flex-wrap:wrap;gap:8px"></div>
                 </div>
                 <div class="card">
@@ -2381,7 +2381,7 @@
                 </div>
                 <div class="card">
                   <div class="card-title">Фоновая картинка</div>
-                  <p class="card-desc">Необязательно. URL изображения — перекроет цвет фона на всём сайте.</p>
+                  <p class="card-desc">Необязательно. URL изображения – перекроет цвет фона на всём сайте.</p>
                   <input type="text" id="apBgImage" class="form-input" placeholder="https://.../background.jpg" style="width:100%" />
                   <div style="display:flex;gap:8px;margin-top:8px">
                     <button class="btn" type="button" id="apBgImageClear">Убрать картинку</button>
@@ -2411,7 +2411,7 @@
                   <div class="card-title">Главная в поиске</div>
                   <p class="card-desc">Заголовок и описание попадут в Google и превью при публикации ссылки. Результат зависит от переобхода поисковой системы.</p>
                   <div class="site-editor-grid">
-                    <label class="site-editor-wide"><span class="field-label">SEO-заголовок <small>до 70 символов</small></span><input id="apSeoTitle" class="form-input" maxlength="70" placeholder="EPRIS — design, art &amp; culture journal" /></label>
+                    <label class="site-editor-wide"><span class="field-label">SEO-заголовок <small>до 70 символов</small></span><input id="apSeoTitle" class="form-input" maxlength="70" placeholder="EPRIS – design, art &amp; culture journal" /></label>
                     <label class="site-editor-wide"><span class="field-label">SEO-описание <small>до 165 символов</small></span><textarea id="apSeoDescription" class="form-input" rows="3" maxlength="165" placeholder="Короткое понятное описание для поиска и соцсетей."></textarea></label>
                     <label class="site-editor-wide"><span class="field-label">Ключевые темы</span><input id="apSeoKeywords" class="form-input" placeholder="design, architecture, art, culture" /></label>
                     <label class="site-editor-wide"><span class="field-label">Изображение для предпросмотра</span><input id="apOgImage" class="form-input" type="url" inputmode="url" placeholder="https://…/share-image.jpg" /></label>
@@ -2436,7 +2436,7 @@
                   <div class="ap-pv-body">
                     <div class="ap-pv-tag">TRAVEL</div>
                     <h3 class="ap-pv-h">Home Away From Home</h3>
-                    <p class="ap-pv-p">To choose a place of stay is to trust a stranger with the <b>significant moments</b> of your life — a <a href="#" onclick="return false">small act of faith</a>.</p>
+                    <p class="ap-pv-p">To choose a place of stay is to trust a stranger with the <b>significant moments</b> of your life – a <a href="#" onclick="return false">small act of faith</a>.</p>
                     <blockquote class="ap-pv-q">Every threshold is a palimpsest of arrivals.</blockquote>
                     <button class="ap-pv-btn">Читать дальше</button>
                   </div>
@@ -2623,7 +2623,7 @@
     </div>
 
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-    <!-- Editor.js (modern block editor) + tools — loaded before the module so globals are ready -->
+    <!-- Editor.js (modern block editor) + tools – loaded before the module so globals are ready -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.30.8/dist/editorjs.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@2.8.8/dist/header.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@1.10.0/dist/list.umd.min.js"></script>
@@ -2675,12 +2675,12 @@
            editor visited, and that key is still sitting in their browsers. */
         var LAST_TAB_KEY = 'epris_admin_last_tab';
         /* Sections that must never become the screen the admin opens on.
-           «Порядок статей» is a task you come to deliberately and leave — being
+           «Порядок статей» is a task you come to deliberately and leave – being
            dropped into it on every login is disorienting, and because the tab
            handler below rewrites the URL hash on every switch, one visit made it
            the entry point permanently: the hash said #order, the remembered tab
-           said order, and both pointed back here. Direct links still work — the
-           hash is honoured on load — this only stops the screen claiming the
+           said order, and both pointed back here. Direct links still work – the
+           hash is honoured on load – this only stops the screen claiming the
            entrance by itself. */
         var NO_AUTO_REOPEN = ['order'];
         /* The section the admin opens on when the URL does not say otherwise. */
@@ -2805,7 +2805,7 @@
 
         /* ── Список разделов на телефоне ────────────────────────────────
            Отдельного меню нет: во весь экран разворачивается та же .sb-nav
-           с теми же кнопками. Дублировать разметку нельзя — по всему app.js
+           с теми же кнопками. Дублировать разметку нельзя – по всему app.js
            разделы ищутся как `.tab-btn[data-tab=…]` в единственном числе, и
            вторая копия кнопки сломала бы и подсветку, и переключение. */
         var sheetBtn = document.getElementById('navSheetBtn');
@@ -2843,7 +2843,7 @@
             var titleEl = document.getElementById('pageTitle');
             if (titleEl && pageTitles[tab]) titleEl.textContent = pageTitles[tab];
             if (tab === 'polls' && typeof window._renderPollResults === 'function') window._renderPollResults();
-            /* Раздел выбран — список во весь экран больше не нужен. */
+            /* Раздел выбран – список во весь экран больше не нужен. */
             setNavSheet(false);
             /* No last-tab memory any more (see the open logic at the end of this
                file): the entrance is fixed, so recording where someone was would
@@ -2881,7 +2881,7 @@
         // always opens that section regardless of local history.
         /* Where the admin opens.
            One rule: «Главная / Галерея», unless the URL hash names a section.
-           The remembered-last-tab restore that used to decide this is gone — it
+           The remembered-last-tab restore that used to decide this is gone – it
            is what kept dragging an editor into whatever they happened to look at
            last, and it fought every attempt to have a predictable entrance. A
            hash still wins, so shared and bookmarked links work, except for
@@ -2977,9 +2977,9 @@
         })();
 
         /* Панель открывается свёрнутой: колонка иконок отдаёт экран
-           материалу, а развернуть её — один клик или «[». Сохранённый
+           материалу, а развернуть её – один клик или «[». Сохранённый
            выбор редактора уважается, но старое значение, записанное до
-           смены умолчания, один раз сбрасывается — иначе те, кто уже
+           смены умолчания, один раз сбрасывается – иначе те, кто уже
            открывал панель, никогда не увидели бы нового поведения. */
         applyCollapsed(function () {
           try {

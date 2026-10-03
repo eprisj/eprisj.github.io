@@ -1,6 +1,6 @@
 // ── ICAO 9303 TD3 Machine Readable Zone ──────────────────────────────────────
 // Single source of truth for the passport MRZ, shared by PassportPreview
-// (on-screen, and reused by passportRender for the PNG/PDF export) —
+// (on-screen, and reused by passportRender for the PNG/PDF export) –
 // previously each render path triplicated the same buggy generator.
 //
 // TD3 (passport booklet) is two 44-character lines:
@@ -17,14 +17,14 @@ export interface MRZSourceFields {
   sex?: string;        // 'M' | 'F' | 'X' | '' (unspecified)
 }
 
-const ISSUING_CODE = 'EPR'; // 3-letter pseudo issuing-authority code — used consistently in both lines
+const ISSUING_CODE = 'EPR'; // 3-letter pseudo issuing-authority code – used consistently in both lines
 
 function stripDiacritics(s: string): string {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 // A name field, ICAO-normalized: letters only, internal whitespace/punctuation
-// collapsed to a single '<' word separator (never dropped — dropping a space
+// collapsed to a single '<' word separator (never dropped – dropping a space
 // silently glues two words together, e.g. "VAN DER BERG" -> "VANDERBERG").
 function mrzToken(s: string): string {
   return stripDiacritics(String(s || ''))
@@ -62,10 +62,10 @@ function yymmdd(iso: string): string {
 
 /**
  * Builds the two 44-character TD3 MRZ lines for a passport-style document.
- * `code` is the document/member number (e.g. "EPR-MPCQSE" — separators are
+ * `code` is the document/member number (e.g. "EPR-MPCQSE" – separators are
  * stripped automatically). Every check digit is computed correctly and the
  * issuing-state code is identical on both lines (previously line 1 used a
- * 6-letter "EPRISJ" while line 2 used the real 3-letter "EPR" — a mismatch
+ * 6-letter "EPRISJ" while line 2 used the real 3-letter "EPR" – a mismatch
  * that made the MRZ internally inconsistent and unparseable).
  */
 export function buildMRZ(f: MRZSourceFields, code: string): [string, string] {
@@ -83,10 +83,10 @@ export function buildMRZ(f: MRZSourceFields, code: string): [string, string] {
   const exp = yymmdd(f.expiryDate);
   const expChk = checkDigit(exp);
   const personalNo = '<'.repeat(14); // optional field, unused here
-  const personalChk = checkDigit(personalNo); // naturally '0' — an all-filler field
+  const personalChk = checkDigit(personalNo); // naturally '0' – an all-filler field
 
   // Composite check digit covers exactly: doc-no+check, DOB+check, expiry+check,
-  // personal-no+check (39 chars) — sex and nationality are NOT part of it.
+  // personal-no+check (39 chars) – sex and nationality are NOT part of it.
   const composite = `${num}${numChk}${dob}${dobChk}${exp}${expChk}${personalNo}${personalChk}`;
   const compositeChk = checkDigit(composite);
 

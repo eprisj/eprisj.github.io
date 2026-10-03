@@ -45,8 +45,8 @@ function ModalShell({ title, onClose, children, wide = false }: { title: string;
 /* The vitrine is image-first, so a broken or missing photograph must still read
    as a designed tile rather than a hole in the grid. */
 /* `single` отключает подмену кадра на ховере. В первом экране она не просто
-   лишняя: второй кадр там лежал поверх первого с непрозрачностью 1 — класс
-   opacity-0 в разметке есть, а вычисленное значение 1, — и полотно во всю
+   лишняя: второй кадр там лежал поверх первого с непрозрачностью 1 – класс
+   opacity-0 в разметке есть, а вычисленное значение 1, – и полотно во всю
    ширину показывало ту же фотографию, что и врезка рядом с ним. Одна работа,
    две одинаковые картинки в одном экране. Герою подмена и не нужна: «внутри
    есть ещё» там говорит сама врезка. */
@@ -93,7 +93,7 @@ function WorkPlate({ work, index, className = '', single = false }: { work: Work
 }
 
 /* The breakdown a set designer actually wants: what the thing is made of,
-   where it stood, when, whose it is, and what it does — one line each, in the
+   where it stood, when, whose it is, and what it does – one line each, in the
    opening spread's register.
 
    Every row is a field a human filled in from the source article. A row with
@@ -341,7 +341,7 @@ export function ShowcasePage() {
   const rangeStart = filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
   const rangeEnd = Math.min(page * PAGE_SIZE, filtered.length);
   const activeFilterCount = Number(country !== ALL_COUNTRIES) + Number(discipline !== ALL_DISCIPLINES) + Number(Boolean(author)) + Number(withImageOnly) + Number(recentOnly);
-  // One work opens the page at full width — but only on the plain, unfiltered
+  // One work opens the page at full width – but only on the plain, unfiltered
   // view, where there is no question the reader is already trying to answer.
   //
   // Which work that is, is an editorial decision and cannot be inferred here.
@@ -388,7 +388,7 @@ export function ShowcasePage() {
 
     <main>
       {/* The opening spread: one work at the width of the window, the section
-          named over it. Only on the plain view — under a filter the reader is
+          named over it. Only on the plain view – under a filter the reader is
           already looking for something and a full screen of picture is in the
           way. */}
       {leadWork && (
@@ -404,7 +404,7 @@ export function ShowcasePage() {
           <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#f5f0eb]/12 lg:block" />
 
           {/* The wordmark: two lines, lowercase, set as large as the frame
-              allows — the one element their page is built around. */}
+              allows – the one element their page is built around. */}
           <div className="relative z-10 px-6 pt-12 sm:px-10 lg:px-14 lg:pt-16">
             <h1 className="font-display lowercase leading-[0.87] tracking-normal text-[#f5f0eb]">
               <span className="block text-[15vw] sm:text-[11vw] lg:text-[8.5vw]">epris</span>
@@ -465,7 +465,7 @@ export function ShowcasePage() {
       />
 
       {/* Catalogue head: crumb, name of the current cut, count. Дисциплины
-          отсюда убраны — тот же список стоит в сайдбаре в трёх сантиметрах
+          отсюда убраны – тот же список стоит в сайдбаре в трёх сантиметрах
           ниже, и две копии одного фильтра расходились по состоянию на глазах
           у читателя. Заголовок здесь h2: h1 на странице один, в первом кадре. */}
       <section className="px-4 pt-14 sm:px-8 lg:px-12 lg:pt-20">
@@ -568,7 +568,7 @@ export function ShowcasePage() {
           </aside>
 
           <div className="min-w-0">
-            {/* Ряд чипсов авторов стоял здесь вторым способом выбрать автора —
+            {/* Ряд чипсов авторов стоял здесь вторым способом выбрать автора –
                 при том, что первый (список в сайдбаре) виден в том же экране.
                 Осталось активное состояние: что фильтр включён, видно по
                 строке ниже и по кнопке сброса. */}
@@ -619,21 +619,21 @@ export function ShowcasePage() {
               <>
               <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
                 {gridWorks.map((work, index) => {
-                  /* Один кадр із п'яти йде на дві колонки — щоб ряд не читався
+                  /* Один кадр із п'яти йде на дві колонки – щоб ряд не читався
                      як таблиця. Період саме 5, а не 4: у трьох колонках це
                      3 + (широка + вузька) = два повні ряди. При періоді 4
                      широкій не вистачало місця в ряду, вона переносилась і
                      лишала дірку в третій колонці.
 
                      Пропорція широкої теж інша. З вертикальними 4:5 вона при
-                     859px ставала 1208px заввишки, сусідня лишалась 651 — і під
+                     859px ставала 1208px заввишки, сусідня лишалась 651 – і під
                      нею зяяло пів екрана порожнечі. 5:3 дає ту саму висоту, що
                      й у вузьких сусідів. */
                   const wide = index % 5 === 3;
                   return (
                   /* Карточка кликабельна целиком, но настоящая кнопка на ней
-                     одна — «read». Обёртка поэтому div, а не button: кнопка в
-                     кнопке — невалидная разметка, и клавиатура в ней теряется. */
+                     одна – «read». Обёртка поэтому div, а не button: кнопка в
+                     кнопке – невалидная разметка, и клавиатура в ней теряется. */
                   <div
                     key={work.id}
                     role="button"
@@ -653,14 +653,14 @@ export function ShowcasePage() {
                       {work.status === 'Under review' && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#f5f0eb]/90 px-2.5 py-1 font-sans text-[8px] uppercase tracking-[0.14em] text-[#b8956e]">Under review</span>
                       )}
-                      {/* The journal never covers a picture with a button —
+                      {/* The journal never covers a picture with a button –
                           the image itself answers the hover. */}
                       <span className="pointer-events-none absolute inset-0 bg-[#4a1728]/0 transition-colors duration-300 group-hover:bg-[#4a1728]/8 group-active:bg-[#4a1728]/10" />
                     </div>
 
                     {/* Titles run to wildly different lengths, so the caption
-                        block is a fixed three-row rhythm — label, title, byline
-                        — and the row of cards keeps its baseline. */}
+                        block is a fixed three-row rhythm – label, title, byline
+                        – and the row of cards keeps its baseline. */}
                     <div className="mt-4 flex flex-1 flex-col border-t border-[#4a1728]/15 pt-4 sm:mt-5 sm:pt-5">
                       <p className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#4a1728]/48">
                         {work.discipline || 'Work'}{work.year ? ` · ${work.year}` : ''}
@@ -707,7 +707,7 @@ export function ShowcasePage() {
       </section>
 
       {/* ДВЕ двери, а не одна. Раньше все призывы на странице просили отдать
-          нам работу — то есть страница умела только брать. Человеку, который
+          нам работу – то есть страница умела только брать. Человеку, который
           хочет нанять бюро, идти было решительно некуда, и это была не
           недоделка оформления, а отсутствие коммерческого хода как такового. */}
       <section className="relative isolate border-t border-[#4a1728]/10 bg-[#1a0b10] text-[#f5f0eb]">
@@ -716,7 +716,7 @@ export function ShowcasePage() {
         <div className="mx-auto grid max-w-[1600px] divide-y divide-[#f5f0eb]/12 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
 
           {/* Заказчик идёт первым: он и есть тот, ради кого витрина показывает
-              работы. Автор — второй дверью, но не тише. */}
+              работы. Автор – второй дверью, но не тише. */}
           <button
             type="button"
             onClick={() => setCommissioning(true)}

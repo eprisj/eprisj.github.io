@@ -2,11 +2,11 @@
  *
  * Раньше каждая кнопка описывалась инлайном на месте, и их набралось около
  * тридцати в трёх несовместимых стилях: пилюли в модалках, прямоугольники в
- * атласе, заливки в шапке. Отличались не только формы — у части не было
+ * атласе, заливки в шапке. Отличались не только формы – у части не было
  * focus-visible, у части высота падала ниже 44px.
  *
  * Отсюда два измерения: роль (solid / ghost / quiet) и фон, на котором кнопка
- * стоит (ink — тёмный, bone — светлый). Фон приходится задавать явно: одни и
+ * стоит (ink – тёмный, bone – светлый). Фон приходится задавать явно: одни и
  * те же секции переворачиваются с тёмного на светлое, и вывести его из
  * контекста нельзя.
  */
@@ -15,7 +15,7 @@ type Tone = 'ink' | 'bone';
 
 const BASE = 'inline-flex min-h-12 items-center justify-center gap-2.5 px-5 font-sans text-[10px] uppercase tracking-[0.16em] transition-[background-color,border-color,color,box-shadow,transform] duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
 
-/** Основное действие секции. На секцию — одно. */
+/** Основное действие секции. На секцию – одно. */
 export function btnSolid(tone: Tone = 'bone') {
   return tone === 'bone'
     ? `${BASE} bg-[#1a0b10] text-[#f5f0eb] shadow-[0_10px_28px_rgba(26,11,16,.12)] hover:bg-[#4a1728] hover:shadow-[0_16px_34px_rgba(26,11,16,.2)] focus-visible:outline-[#4a1728]`

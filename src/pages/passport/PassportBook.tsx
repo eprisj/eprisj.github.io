@@ -6,14 +6,14 @@ import { PASSPORT_STAMP_SHEETS, type PassportStamp } from './passportPages';
 
 const COVER_SRC = '/passport-assets/passport-cover.jpg';
 const ENDPAPER_SRC = '/passport-assets/passport-endpaper.jpg';
-const COVER_RATIO = 776 / 1100; // 0.705 — cropped cover art (closed booklet stays its own portrait shape)
+const COVER_RATIO = 776 / 1100; // 0.705 – cropped cover art (closed booklet stays its own portrait shape)
 
-// Slim share row shown under the book once it's open. Sharing only — no Edit on
+// Slim share row shown under the book once it's open. Sharing only – no Edit on
 // the public verification page.
 function ShareRow({ shareText, url }: { shareText: string; url: string }) {
   const [copied, setCopied] = useState(false);
   // Copies the ready-made caption + link together, so pasting into any app
-  // (DM, email, notes) drops in a complete, presentable share — not just a
+  // (DM, email, notes) drops in a complete, presentable share – not just a
   // bare URL the recipient has to caption themselves.
   const copy = useCallback(() => {
     navigator.clipboard?.writeText(`${shareText}\n${url}`);
@@ -56,9 +56,9 @@ export function PassportBook({
 
   useEffect(() => {
     // Mobile pinch-zoom / the on-screen keyboard opening can fire dozens of
-    // resize events per second. Setting state on every single one — each
+    // resize events per second. Setting state on every single one – each
     // triggering a re-render of the whole cqw-clamp()-heavy PassportPage below
-    // — was jank severe enough to read as the tab freezing/crashing. Coalesce
+    // – was jank severe enough to read as the tab freezing/crashing. Coalesce
     // to at most one state update per animation frame.
     let raf = 0;
     const onResize = () => {
@@ -78,7 +78,7 @@ export function PassportBook({
 
   // Measure the passport card's natural height so the cover art can match it.
   // Subscribed once (not re-created per cardW change, and coalesced the same
-  // way as the resize listener above) — ResizeObserver already notices the
+  // way as the resize listener above) – ResizeObserver already notices the
   // element's own size changing when cardW changes its CSS width, so it
   // doesn't need to be torn down and rebuilt on every render.
   useEffect(() => {
@@ -112,7 +112,7 @@ export function PassportBook({
 
   return (
     <div className="passport-zoom-lock w-full flex flex-col items-center" style={{ overflowX: 'clip', touchAction: 'pan-y' }}>
-      {/* Cover fades away in place to reveal the combined card underneath — a
+      {/* Cover fades away in place to reveal the combined card underneath – a
           plain crossfade, no floating/bobbing loop and no 3D flip (both read
           as jittery rather than premium at this size). */}
       <div style={{ position: 'relative', width: cardW, minHeight: bookH, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -169,7 +169,7 @@ export function PassportBook({
         </div>
       </div>
 
-      {/* Booklet navigation and sharing — appear once the passport is open. */}
+      {/* Booklet navigation and sharing – appear once the passport is open. */}
       <div
         className="mt-6 flex w-full max-w-[560px] flex-col items-center gap-4"
         style={{ opacity: open ? 1 : 0, transform: open ? 'translateY(0)' : 'translateY(8px)', transition: 'opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s', pointerEvents: open ? 'auto' : 'none' }}

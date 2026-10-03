@@ -5,7 +5,7 @@ import { useEffect } from 'react';
  * with their own `overflow-y: auto`. The page underneath keeps its own
  * scrollbar, so the reader sees two scrollbars side by side and the wheel
  * sometimes drives the wrong one. Freezing the page while an overlay is open
- * leaves exactly one scroller — the overlay.
+ * leaves exactly one scroller – the overlay.
  *
  * The scrollbar it removes is compensated with padding so the page behind does
  * not jump by its width when the overlay opens and fades out on close.

@@ -5,7 +5,7 @@ const SIGNAL_POLL_MS = 800
 const MEMBERS_POLL_MS = 2000
 const SPEAK_TICK_MS = 150
 const SPEAK_THRESHOLD = 0.018
-const AUDIO_MAX_BITRATE = 128_000   // 128 kbps — high-quality voice
+const AUDIO_MAX_BITRATE = 128_000   // 128 kbps – high-quality voice
 
 // ── Storage helpers ──────────────────────────────────────────────────────────
 
@@ -44,7 +44,7 @@ async function ensureAuth(nickname?: string): Promise<{ id: number; nickname: st
         try {
           const updated = await apiFetch('/api/auth/me', { method: 'PUT', body: JSON.stringify({ nickname: nickname.trim() }) })
           setStoredUser(updated); return updated
-        } catch { /* ignore — return original */ }
+        } catch { /* ignore – return original */ }
       }
       setStoredUser(user); return user
     } catch { /* re-auth */ }
@@ -95,7 +95,7 @@ type AnalyserEntry = {
   data: Uint8Array<ArrayBuffer>
 }
 
-// ── Mic stream — high quality Opus settings ──────────────────────────────────
+// ── Mic stream – high quality Opus settings ──────────────────────────────────
 
 async function getMicStream(): Promise<MediaStream> {
   const ideal: MediaTrackConstraints = {
@@ -104,7 +104,7 @@ async function getMicStream(): Promise<MediaStream> {
     autoGainControl: true,
     channelCount: { ideal: 1 },
     sampleRate: { ideal: 48000 },
-    // @ts-expect-error — non-standard but supported in Chrome/Firefox
+    // @ts-expect-error – non-standard but supported in Chrome/Firefox
     latency: { ideal: 0.01 },
   }
   try { return await navigator.mediaDevices.getUserMedia({ audio: ideal }) }
@@ -222,7 +222,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     return audioCtxRef.current
   }, [])
 
-  // NoSleep: <audio> з реальним WAV-блобом — iOS тримає аудіо-сесію
+  // NoSleep: <audio> з реальним WAV-блобом – iOS тримає аудіо-сесію
   // живою при блокуванні екрана лише якщо грає справжній <audio>.
   const startNoSleep = useCallback(() => {
     if (noSleepElRef.current) return
@@ -382,7 +382,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       iceServers: iceServersRef.current,
       iceTransportPolicy: peerOpts.forceRelay ? 'relay' : 'all',
       iceCandidatePoolSize: 6,
-      // @ts-expect-error — Chrome-specific for better audio
+      // @ts-expect-error – Chrome-specific for better audio
       sdpSemantics: 'unified-plan',
     })
     const audio = document.createElement('audio')
@@ -390,7 +390,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     (audio as HTMLAudioElement & { playsInline?: boolean }).playsInline = true
     audio.setAttribute('playsinline', '')
     audio.style.display = 'none'
-    // iOS може заглушити <audio> при блокуванні екрана — одразу відновлюємо
+    // iOS може заглушити <audio> при блокуванні екрана – одразу відновлюємо
     audio.addEventListener('pause', () => {
       if (joinedRef.current && audio.srcObject) audio.play().catch(() => {})
     })
@@ -518,7 +518,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           else if (sig.signal_type === 'ice') await handleIce(sig.from_user_id, payload as RTCIceCandidateInit)
           else if (sig.signal_type === 'bye') cleanupPeer(sig.from_user_id)
           else if (sig.signal_type === 'ended') {
-            // Host ended the broadcast — auto-leave and surface the reason
+            // Host ended the broadcast – auto-leave and surface the reason
             setBroadcastEnded(true)
             leaveFnRef.current().catch(() => {})
             return  // discard any signals that came after 'ended'
@@ -644,7 +644,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
         }),
       })
       callIdRef.current = res.call_id; setCallId(res.call_id)
-      // CRITICAL: start from current max signal/chat ID — skip all stale signals from previous sessions
+      // CRITICAL: start from current max signal/chat ID – skip all stale signals from previous sessions
       afterIdRef.current = res.after_signal_id ?? 0
       afterChatIdRef.current = res.after_chat_id ?? 0
       joinedRef.current = true; setJoined(true)
@@ -662,7 +662,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
         androidCleanupRef.current()
         const osc = ctx.createOscillator()
         const gainNode = ctx.createGain()
-        gainNode.gain.value = 0.001  // 0.1% — essentially silent but non-zero
+        gainNode.gain.value = 0.001  // 0.1% – essentially silent but non-zero
         osc.type = 'sine'; osc.frequency.value = 20  // 20 Hz, below hearing
         osc.connect(gainNode)
         const streamDest = ctx.createMediaStreamDestination()
@@ -703,7 +703,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
           navigator.mediaSession.setActionHandler('previoustrack', () => {
             leaveFnRef.current().catch(() => {})
           })
-          // 'stop' — iOS натискає на локскрині і вбиває аудіо-сесію.
+          // 'stop' – iOS натискає на локскрині і вбиває аудіо-сесію.
           // Резистуємо: скидаємо playbackState в 'playing' замість виходу.
           navigator.mediaSession.setActionHandler('stop', () => {
             try { navigator.mediaSession.playbackState = 'playing' } catch { /* ignore */ }
@@ -830,7 +830,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
   }, [stopTimers, cleanupAll, refreshActive])
 
   // Захоплюємо мікрофон ОДИН раз і тримаємо весь дзвінок.
-  // PTT/мьют перемикають лише track.enabled — миттєво, без повторного getUserMedia
+  // PTT/мьют перемикають лише track.enabled – миттєво, без повторного getUserMedia
   // і без renegotiation. Повторний захват пристрою = затримки + гальмування AEC на мобайлі.
   const ensureMicStream = useCallback(async (): Promise<MediaStreamTrack | null> => {
     const live = localStreamRef.current?.getAudioTracks().find(t => t.readyState === 'live')
@@ -893,7 +893,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
     apiFetch(`/api/calls/${cid}/mic`, { method: 'PUT', body: JSON.stringify({ on: next }) }).catch(() => {})
   }, [ensureMicStream, applyMicToTransceiver])
 
-  // Pagehide — send leave beacon
+  // Pagehide – send leave beacon
   useEffect(() => {
     const onHide = (e: PageTransitionEvent) => {
       if (e.persisted) return
@@ -923,7 +923,7 @@ export function useEprisVoice(opts?: { nickname?: string; roomSlug?: string; roo
       }
       acquireWakeLock()
       startTimers(); pollMembers(); pollSignals()
-      // iOS/Android: якщо ОС завершила трек під час локскрину — перезахоплюємо
+      // iOS/Android: якщо ОС завершила трек під час локскрину – перезахоплюємо
       if (userWantsMicRef.current) {
         const track = localStreamRef.current?.getAudioTracks()[0]
         if (!track || track.readyState === 'ended') {

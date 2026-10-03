@@ -183,7 +183,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
   );
 }
 
-// ─── "Start a project" brief form (no backend — composes a mailto) ────────────
+// ─── "Start a project" brief form (no backend – composes a mailto) ────────────
 
 const BRIEF_TYPES = ['Apartment', 'House', 'Commercial', 'Single room', 'Styling only'];
 const BRIEF_BUDGETS = ['Under €10k', '€10–30k', '€30–60k', '€60k+', 'To discuss'];
@@ -217,7 +217,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
     const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildBrief())}`;
     // Most reliable cross-device mailto: create hidden anchor and click it.
     // This avoids navigation away from the page (window.location.href quirk) and
-    // works on iOS Safari even when no default mail app is configured — the OS
+    // works on iOS Safari even when no default mail app is configured – the OS
     // shows a picker. Falls back to visible email address on the same click.
     const a = document.createElement('a');
     a.href = href;
@@ -303,7 +303,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
           </button>
         </div>
 
-        {/* Fallback: visible email address — works on any device even without a mail app */}
+        {/* Fallback: visible email address – works on any device even without a mail app */}
         {studio.email && (
           <div className="mt-6 pt-6 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)]">
             {sent && (
@@ -641,7 +641,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
         </section>
       )}
 
-      {/* ── 9. Start a project — brief form ── */}
+      {/* ── 9. Start a project – brief form ── */}
       <BriefForm studio={studio} t={t} />
 
       {/* ── 10. Contact / CTA ── */}
@@ -679,7 +679,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                   </a>
                 )}
               </div>
-              {/* Plain email address — always visible, copyable on any device */}
+              {/* Plain email address – always visible, copyable on any device */}
               {studio.email && (
                 <p className="font-mono text-[11px] text-[rgb(var(--c-accent-rgb)_/_0.5)] tracking-widest flex items-center gap-1.5">
                   <Mail size={11} />

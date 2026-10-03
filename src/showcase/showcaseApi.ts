@@ -1,4 +1,4 @@
-// Public API for the EPRIS Showcase — a vitrine of set design and conceptual
+// Public API for the EPRIS Showcase – a vitrine of set design and conceptual
 // art by emerging authors worldwide. Same host and moderation model as the
 // collaboration registry: public submissions land as "Under review", the
 // editorial team promotes them to "Published".
@@ -24,7 +24,7 @@ export interface Work {
   medium?: string;
   author: string;
   /** Хто ще стоїть за роботою: керівник команди, співавтори, установа-замовник.
-   *  Заповнюється редакцією з джерела — у формі подачі цього поля немає. */
+   *  Заповнюється редакцією з джерела – у формі подачі цього поля немає. */
   credits?: string;
   authorInstagram?: string;
   portfolio?: string;

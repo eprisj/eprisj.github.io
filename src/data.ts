@@ -36,7 +36,7 @@ export interface Item {
   previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
-  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  /** Server-stamped on every /content/entity save – see mergeLocalizedArray. */
   updatedAt?: string;
   /** Legacy placement retained for backwards-compatible content imports. */
   homeSlot?: 'left' | 'center' | 'right';
@@ -141,9 +141,9 @@ export interface ContentBlock {
   /** Poster image for Vimeo or self-hosted video. */
   poster?: string;
   /** Второй формат того же ролика (WebM/VP9): меньше весит, но играет не везде.
-   *  Основная ссылка в `content` — всегда mp4, он понятен любому браузеру. */
+   *  Основная ссылка в `content` – всегда mp4, он понятен любому браузеру. */
   videoWebm?: string;
-  /** Видео-петля: играет само, по кругу и без звука — так ведут себя гифки. */
+  /** Видео-петля: играет само, по кругу и без звука – так ведут себя гифки. */
   loop?: boolean;
   /** Запускать без действия читателя. Работает только вместе с muted. */
   autoplay?: boolean;
@@ -180,7 +180,7 @@ export interface Author {
   /**
    * Forces the square "logo fitted whole" treatment instead of the round
    * portrait crop, regardless of `collaborator`. Only for institutions
-   * credited by wordmark (a museum, a brand) — a real person, even an
+   * credited by wordmark (a museum, a brand) – a real person, even an
    * external collaborator, still gets the round photo like the rest of
    * the team.
    */
@@ -197,7 +197,7 @@ export interface Article {
   /**
    * Optional second credit: the studio, museum or institution the material was
    * made together with. It is rendered as its own card under the author's and
-   * never touches the byline — the byline belongs to whoever wrote the piece.
+   * never touches the byline – the byline belongs to whoever wrote the piece.
    */
   contributorId?: string;
   /**
@@ -228,7 +228,7 @@ export interface Article {
   previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
-  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  /** Server-stamped on every /content/entity save – see mergeLocalizedArray. */
   updatedAt?: string;
 
   /* ── How this article looks as a CARD ──────────────────────────────────────
@@ -270,8 +270,8 @@ export interface Article {
    * Which editorial desk the piece belongs to. Absent (the default) means the
    * general desk and the /articles grid; 'music' routes it to /music instead.
    *
-   * Music interviews are articles in every way that matters — same editor,
-   * same block model, same /article/<slug> reader, same translation pipeline —
+   * Music interviews are articles in every way that matters – same editor,
+   * same block model, same /article/<slug> reader, same translation pipeline –
    * so they are a facet of this collection rather than a parallel one. A
    * separate `music` array would have meant a second copy of the reader, the
    * slug map, the localisation merge and the preview-token flow, all to hold
@@ -302,7 +302,7 @@ export interface Review {
   featured?: boolean;
   /**
    * Which editorial desk the piece belongs to. Absent (the default) means the
-   * general desk and the /reviews grid; 'music' routes it to /music instead —
+   * general desk and the /reviews grid; 'music' routes it to /music instead –
    * same flag, same meaning as Article.desk.
    */
   desk?: 'music';
@@ -312,7 +312,7 @@ export interface Review {
   previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
-  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  /** Server-stamped on every /content/entity save – see mergeLocalizedArray. */
   updatedAt?: string;
 }
 
@@ -329,7 +329,7 @@ export interface LibraryItem {
   previewToken?: string;
   /** ISO datetime; hidden from the public site until this moment passes. */
   publishAt?: string;
-  /** Server-stamped on every /content/entity save — see mergeLocalizedArray. */
+  /** Server-stamped on every /content/entity save – see mergeLocalizedArray. */
   updatedAt?: string;
 }
 
@@ -521,7 +521,7 @@ export interface ArticleOrderSettings {
   unplaced?: 'top' | 'bottom';
 }
 
-/* 'reviews' — секция обзоров на главной, сразу после трёх свежих статей.
+/* 'reviews' – секция обзоров на главной, сразу после трёх свежих статей.
    Ключ входит сюда, а не живёт строкой в компоненте: порядок и видимость
    секций редактируются в админке, и незнакомый ей ключ она бы отбросила. */
 export type HomepageSectionKey = 'pics' | 'articles' | 'reviews' | 'showcase' | 'archive';
@@ -660,7 +660,25 @@ export interface SiteContent {
   languages?: string[];
 }
 
-const content = rawContent as SiteContent;
+/* Довгого тире на сайті немає: скрізь середнє «–» (вказівка редактора, 2026-10-03).
+   Тексти приходять з адмінки й від перекладача, там довге тире трапляється
+   постійно, тож правимо його один раз на вході, на місці, без копії об'єкта. */
+function normaliseDashes<T>(node: T): T {
+  if (node && typeof node === 'object') {
+    const obj = node as unknown as Record<string, unknown>;
+    for (const key of Object.keys(obj)) {
+      const v = obj[key];
+      if (typeof v === 'string') {
+        if (v.includes('\u2014') || v.includes('&mdash;')) obj[key] = v.replace(/\u2014/g, '\u2013').replace(/&mdash;/g, '&ndash;');
+      } else if (v && typeof v === 'object') {
+        normaliseDashes(v);
+      }
+    }
+  }
+  return node;
+}
+
+const content = normaliseDashes(rawContent) as SiteContent;
 
 // ── Live content layer (VPS is the source of truth) ──────────────────────────
 // The admin saves content to the VPS API, and the public site fetches it live
@@ -687,8 +705,8 @@ function notifyContentChanged(): void {
 /* ЯЗЫКОВЫЕ СРЕЗЫ НАКАПЛИВАЮТСЯ, А НЕ ВЫТЕСНЯЮТ ДРУГ ДРУГА.
 
    `?lang=UA` привозит только украинский набор. Если просто положить ответ на
-   место предыдущего, то переключение на немецкий покажет английский текст —
-   немецкого набора в памяти уже нет, — и так до конца загрузки следующего
+   место предыдущего, то переключение на немецкий покажет английский текст –
+   немецкого набора в памяти уже нет, – и так до конца загрузки следующего
    среза. Поэтому наборы по языкам сливаются поверх предыдущего состояния, а
    стартовой основой служит собранный бандл: в нём есть все языки, пусть и от
    последней сборки. Переключение мгновенно показывает осмысленный текст, а
@@ -698,6 +716,7 @@ function notifyContentChanged(): void {
    перевод только на записи, которые есть в ЖИВОЙ базе, поэтому перевод
    удалённой статьи никуда не всплывёт. */
 export function applyLiveContent(json: SiteContent): void {
+  normaliseDashes(json);
   const previous = liveContent || content;
   const merged: SiteContent = { ...json };
   merged.localizedCollections = {
@@ -717,13 +736,13 @@ export function applyLiveContent(json: SiteContent): void {
  * ETag from the previous response, so unchanged content answers with a tiny
  * 304 response instead of downloading the whole editorial JSON again.
  * Resolves to true on success (including 304), false on any failure (network,
- * timeout, bad shape) — in which case the bundled fallback stays unaffected.
+ * timeout, bad shape) – in which case the bundled fallback stays unaffected.
  */
 export async function loadLiveContent(timeoutMs = 4000, lang?: string): Promise<boolean> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
-  /* Читателю нужен один язык из семи. Полный документ — это ~700 КБ в gzip,
-     срез — 216 КБ (109 КБ для английского), и на мобильной связи разница
+  /* Читателю нужен один язык из семи. Полный документ – это ~700 КБ в gzip,
+     срез – 216 КБ (109 КБ для английского), и на мобильной связи разница
      решает, откроется ли страница вообще: см. таймауты предпросмотра в
      App.tsx. Без параметра сервер по-прежнему отдаёт всё целиком. */
   const code = String(lang || '').trim().toUpperCase();
@@ -830,7 +849,7 @@ export function getSectionVisibility(key: VisibilitySectionKey): Required<Sectio
  * for that domain to redirect a visitor away from the one thing it exists to
  * show, whatever the CMS visibility toggle (meant for the eprisjournal.com
  * nav/route) currently says. eprisjournal.com/music keeps obeying the toggle
- * as before — this only widens what counts as "enabled" on the subdomain.
+ * as before – this only widens what counts as "enabled" on the subdomain.
  */
 export function isMusicHost(): boolean {
   try {
@@ -854,7 +873,7 @@ function isEntityVisible(collection: VisibilityEntityKey, id: string | number): 
   if (isPreview()) return true;
   /* Ссылка предпросмотра обязана открывать и СКРЫТУЮ запись.
      Первая версия обходила только фильтр черновиков, а видимость проверялась
-     отдельно и записывала статью обратно в невидимые — то есть ссылка не
+     отдельно и записывала статью обратно в невидимые – то есть ссылка не
      работала ровно в том случае, ради которого её и делают: показать на
      утверждение материал, который ещё не должен стоять на сайте. */
   if (matchesPreviewTokenFor(collection, id)) return true;
@@ -862,8 +881,8 @@ function isEntityVisible(collection: VisibilityEntityKey, id: string | number): 
 }
 
 // Admin "add new" seeds every collection with a blueprint stub whose fields are
-// obvious placeholders ("New editorial story", "…— replace me"). If the author
-// never fills it in, that stub used to leak onto the public site — and once an
+// obvious placeholders ("New editorial story", "…– replace me"). If the author
+// never fills it in, that stub used to leak onto the public site – and once an
 // AI translate pass ran over it, translated placeholders ("замініть мене") got
 // stored per-locale and overrode the real base content for that language even
 // after the base entry was rewritten into a real piece. Both are the same bug:
@@ -871,7 +890,7 @@ function isEntityVisible(collection: VisibilityEntityKey, id: string | number): 
 //
 // Detection is anchored on the FULL, distinctive seed strings (exact blueprint
 // titles + whole "replace me"/"before publishing" phrases and their translated
-// forms) — never on short fragments, because fragments like "замін" also occur
+// forms) – never on short fragments, because fragments like "замін" also occur
 // inside real words ("незамінне"/"irreplaceable") and would wrongly hide real
 // translations. Any real edit changes the title or copy and clears the flag.
 // Blueprint titles, EN seeds + the AI-translated forms found in every locale.
@@ -887,7 +906,7 @@ const PLACEHOLDER_TITLES = new Set([
   'neue redaktionelle geschichte', 'nueva historia editorial', 'yeni editoryal hikaye',
   'nuova storia editoriale', 'новая редакционная история', 'нова редакційна історія',
 ]);
-// The "…— replace me" subtitle imperative, one distinctive token per language.
+// The "…– replace me" subtitle imperative, one distinctive token per language.
 // These never appear in real prose (unlike the fragment "замін", which is inside
 // real words like "незамінне"), so substring matching is safe.
 const PLACEHOLDER_PHRASES = [
@@ -920,7 +939,7 @@ export function isPlaceholderEntity(entry: unknown): boolean {
 
 function hasLocalizedPayload(entry: unknown): boolean {
   // A localized entry that is still a translated placeholder must not override
-  // real base content — treat it as no payload so the merge falls back.
+  // real base content – treat it as no payload so the merge falls back.
   if (isPlaceholderEntity(entry)) return false;
   if (!entry || typeof entry !== 'object') return false;
   const record = entry as Record<string, unknown>;
@@ -935,8 +954,8 @@ function hasLocalizedPayload(entry: unknown): boolean {
 
 // A localized entry is a full deep-clone snapshot of the base entry, taken when
 // its translation was first created (admin app.js: getSectionArray →
-// deepClone(base)). It then drifts: later edits to the BASE entry — a swapped
-// hero image, added/removed content blocks, a new gallery — never reach the
+// deepClone(base)). It then drifts: later edits to the BASE entry – a swapped
+// hero image, added/removed content blocks, a new gallery – never reach the
 // snapshot, so a whole-object override froze every language at translation time
 // while English moved on. That is the root cause of "content differs by
 // language": readers saw stale images and truncated articles in every locale
@@ -945,7 +964,7 @@ function hasLocalizedPayload(entry: unknown): boolean {
 // The fix is to treat a localized entry as a TEXT OVERLAY, not a replacement:
 // the base entry is authoritative for structure and media, and only translated
 // text fields are overlaid from the localized copy. These fields are structure/
-// media/state/links — never translated prose — so they always come from base.
+// media/state/links – never translated prose – so they always come from base.
 const BASE_AUTHORITATIVE_FIELDS = new Set([
   // A person's name is identity, not translated copy. Keeping both author
   // fields base-owned prevents a stale locale from showing a different writer
@@ -954,7 +973,7 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   'url', 'link', 'rating', 'featured', 'coordinates',
   // When an article was published is a fact about the article, not a translated
   // string. Left overlayable, a stale locale bucket could order that language's
-  // feed differently from every other one — the same class of drift that made
+  // feed differently from every other one – the same class of drift that made
   // translated article bodies diverge from the base before the text-overlay fix.
   'publishedAt',
   // Card media and card layout are properties of the design, not of a
@@ -1012,7 +1031,7 @@ function mergeContentBlock(base: ContentBlock, localized: ContentBlock | undefin
 
 // Base defines the block count and structure; localized supplies text where an
 // index exists and its type matches. Extra base blocks (added after translation)
-// render in the base language instead of vanishing — a full article beats a
+// render in the base language instead of vanishing – a full article beats a
 // silently truncated one.
 function mergeContentBlocks(base: ContentBlock[], localized: unknown): ContentBlock[] {
   if (!Array.isArray(localized)) return base;
@@ -1105,37 +1124,37 @@ function mergeLocalizedArray<T extends { id: number }>(value: T[] | undefined, f
 // The homepage Gallery ("items") had a real incident: its root collection was
 // completely restructured (old travel captions replaced with new long-form
 // pieces, ids reused) while stale per-locale translations for those same ids
-// were never cleared — every non-English reader kept seeing the old, unrelated
+// were never cleared – every non-English reader kept seeing the old, unrelated
 // item merged with the new one's id. mergeLocalizedArray's per-id merge can't
 // tell "this id still means the same thing" from "this id was recycled for
 // different content," and a timestamp-based check was already tried and
 // reverted elsewhere in this file for making valid translations disappear.
-// Two cheap, unambiguous signals that need no admin-side bookkeeping — if
+// Two cheap, unambiguous signals that need no admin-side bookkeeping – if
 // either fires, the whole locale items bucket is untrustworthy and it's safer
 // to show the current English items than a bucket that may no longer correspond
 // to the same entries:
-//   1. Different LENGTH than the current root — structurally diverged.
-//   2. Contains a placeholder stub ("New gallery item" and its translations) —
+//   1. Different LENGTH than the current root – structurally diverged.
+//   2. Contains a placeholder stub ("New gallery item" and its translations) –
 //      an unfinished/stale translation pass, so the "real-looking" siblings in
 //      the same bucket (which the per-id merge can't tell are stale) can't be
 //      trusted either. This is what caught the recycled-id incident again: every
 //      locale's items still translated the OLD deleted pieces on reused ids.
-/* ЗАЩИТА ОТ ЧУЖОГО ПЕРЕВОДА — ПОЗАПИСНО, А НЕ ВСЕМ НАБОРОМ.
+/* ЗАЩИТА ОТ ЧУЖОГО ПЕРЕВОДА – ПОЗАПИСНО, А НЕ ВСЕМ НАБОРОМ.
  *
  * Прежняя версия выключала перевод ЦЕЛИКОМ, если в языковом наборе оказалось
  * не столько же записей, сколько в базе, или хоть одна заглушка. Замысел был
  * верный (перевод удалённого обзора однажды подменил собой живой), но цена
  * оказалась несоразмерной: в наборе обзоров лежит шесть записей против трёх
- * в базе — переводы двух удалённых и один черновик, — и из-за них читатель на
+ * в базе – переводы двух удалённых и один черновик, – и из-за них читатель на
  * украинском видел ВСЕ обзоры по-английски. Причём навсегда: сам собой лишний
  * перевод не исчезнет.
  *
  * Сопоставление идёт по id. Перевод записи применяется, если запись есть в
  * базе, её структура совпадает и в переводе действительно что-то написано.
- * Лишние записи в языковом наборе просто игнорируются — они больше не могут
+ * Лишние записи в языковом наборе просто игнорируются – они больше не могут
  * ни подменить живой обзор, ни отменить перевод остальных.
  *
- * Разбор мусора при этом остаётся нужным: см. уборку осиротевших переводов —
+ * Разбор мусора при этом остаётся нужным: см. уборку осиротевших переводов –
  * данные чистятся отдельно, но сайт не должен зависеть от их чистоты. */
 function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, fallback: T[]): T[] {
   if (!Array.isArray(value)) return fallback;
@@ -1147,7 +1166,7 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
 export function getAvailableLanguages(): string[] {
   /* В языковом срезе translations урезаны до своего языка плюс EN, поэтому
      список берётся из явного поля `languages`. Без него (полный ответ или
-     собранный бандл) остаётся прежний путь — по ключам словаря. */
+     собранный бандл) остаётся прежний путь – по ключам словаря. */
   const declared = src().languages;
   const allLangs = Array.isArray(declared) && declared.length
     ? [...declared]
@@ -1185,7 +1204,7 @@ export function getAvailableLanguagesForEntity(section: 'articles' | 'reviews', 
  */
 export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolean {
   // Черновик, открытый по своей ссылке предпросмотра, читается как обычная
-  // запись — но только он один и только при точном совпадении токена.
+  // запись – но только он один и только при точном совпадении токена.
   if (matchesPreviewToken(e)) return true;
   if (e.draft) return false;
   const publishTimestamp = e.publishAt ? Date.parse(e.publishAt) : NaN;
@@ -1200,7 +1219,7 @@ export function isEntityLive(e: { draft?: boolean; publishAt?: string }): boolea
   return true;
 }
 
-/** @deprecated use isEntityLive — kept as an alias for back-compat. */
+/** @deprecated use isEntityLive – kept as an alias for back-compat. */
 export const isArticleLive = isEntityLive;
 
 export function getContentForLanguage(lang: string): LanguageContent {
@@ -1211,7 +1230,7 @@ export function getContentForLanguage(lang: string): LanguageContent {
   // of any translation. A localized overlay carries the *translated* stub text
   // (e.g. base "New editorial story" → UA "Нова редакційна історія"), which a
   // post-merge check can't recognise. So drop placeholder base entries here,
-  // before the merge — mergeLocalizedArray never adds locale-only entries, so
+  // before the merge – mergeLocalizedArray never adds locale-only entries, so
   // an orphaned localized stub for the same id is dropped along with it. Admin
   // preview keeps everything so stubs remain visible for editing.
   const liveBase = <T,>(arr: T[]): T[] => isPreview() ? arr : arr.filter((e) => matchesPreviewToken(e) || !isPlaceholderEntity(e));
@@ -1248,7 +1267,7 @@ export function isMusicArticle(article: Article): boolean {
   return article.desk === 'music';
 }
 
-/** Everything the general /articles grid shows — i.e. every desk but music. */
+/** Everything the general /articles grid shows – i.e. every desk but music. */
 export function generalArticles(articles: Article[]): Article[] {
   return articles.filter((a) => !isMusicArticle(a));
 }
@@ -1262,7 +1281,7 @@ export function isMusicReview(review: Review): boolean {
   return review.desk === 'music';
 }
 
-/** Everything the general /reviews grid shows — every desk but music. */
+/** Everything the general /reviews grid shows – every desk but music. */
 export function generalReviews(reviews: Review[]): Review[] {
   return reviews.filter((r) => !isMusicReview(r));
 }
@@ -1273,14 +1292,14 @@ export function musicReviews(reviews: Review[]): Review[] {
 
 /**
  * The schema.org type for a review's `itemReviewed`. Search Console flagged
- * the previous value ('Thing') as invalid — Google's Review snippet only
+ * the previous value ('Thing') as invalid – Google's Review snippet only
  * recognises a fixed list of types (Book, Event, LocalBusiness, Movie,
- * MusicPlaylist, MusicRecording, Product, …), and 'Thing' — the type every
- * one of those inherits from — isn't itself on it.
+ * MusicPlaylist, MusicRecording, Product, …), and 'Thing' – the type every
+ * one of those inherits from – isn't itself on it.
  *
  * Categories are free-text editorial labels, not a schema, so this reads
  * them loosely rather than requiring an exact match. Reviewed subjects here
- * are almost always a named restaurant or venue at a real address — that's
+ * are almost always a named restaurant or venue at a real address – that's
  * LocalBusiness, the type schema.org defines for exactly this, and Google's
  * "self-reviewed" restriction on it doesn't apply: EPRIS is a third party
  * reviewing places it has no stake in, the ordinary case the type exists
@@ -1327,7 +1346,7 @@ export function resolveAuthor(article: { authorId?: string; author?: string }): 
 // locale. This lookup translates known role strings per language; unknown
 // roles fall back to the raw string as typed.
 /* Роль набирается один раз, в одном языке, и раньше таблица знала только один
-   вход — русское «Автор». Всё, что редактор написал по-английски, оставалось
+   вход – русское «Автор». Всё, что редактор написал по-английски, оставалось
    английским для русского читателя, а всё, что осталось по-русски (например,
    роль в старом обзоре), показывалось кириллицей и в английской, и в
    немецкой, и в итальянской версии. Теперь ключом служит ЛЮБОЕ написание из
@@ -1396,7 +1415,7 @@ export function articleTimestamp(article: { publishedAt?: string; date?: string;
 /**
  * THE order of articles. Every surface calls this one function, so the
  * homepage feed, the Articles grid, an issue and search cannot answer the same
- * question differently — which they already did, with two separate sorts in
+ * question differently – which they already did, with two separate sorts in
  * App.tsx and a dead `order` field in the data.
  *
  * Pinned ids come first in the order the editor pinned them. The rest follow
@@ -1508,7 +1527,7 @@ export function getAllIssues(): Issue[] {
  *
  * More than one issue can carry status "published" at once (the admin panel
  * doesn't enforce exclusivity), and .find() used to just grab whichever one
- * happened to sit first in the array — meaning the oldest published issue
+ * happened to sit first in the array – meaning the oldest published issue
  * could silently outrank a newer one published the same day. Picking the
  * highest id among the published ones instead always favours the
  * most-recently-created issue, since ids are assigned in creation order.
@@ -1590,7 +1609,7 @@ export function getStudio(): Studio {
  * задаёт редакция в /admin/museum.html, а сцена только читает список.
  *
  * Координаты в метрах от центра зала: x поперёк, z вдоль. Высота не
- * хранится — её задаёт `stand`: пол, подиум или стена. Так расстановка
+ * хранится – её задаёт `stand`: пол, подиум или стена. Так расстановка
  * переживает изменение габаритов зала, чего абсолютная высота не умеет.
  */
 export type MuseumObject = {
