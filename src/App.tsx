@@ -4435,6 +4435,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
           редакции: разделы и так в меню, а длинный подвал на узком экране
           листается дольше самой статьи. */}
       <div className="md:hidden flex flex-col items-center gap-5 text-center">
+        <p className="font-serif text-3xl leading-none tracking-tight uppercase">{title}</p>
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
           className="inline-block leading-none">
           <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[160px] h-auto" loading="lazy" />
