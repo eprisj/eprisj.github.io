@@ -16370,6 +16370,25 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:29.068Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
+        },
+        {
+          "id": 45,
+          "title": "Sandra Kantanen: За пределами объектива традиционной фотографии",
+          "subtitle": "Фотография",
+          "fig": "FIG. 11",
+          "description": "Фотография может быть порогом, а не записью — Sandra Kantanen превращает пейзаж в пространство между памятью, мифом и оптическим искажением.",
+          "imageSeed": "epris-pick-photography",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+          "homeTitle": "Пейзаж",
+          "homeSubtitle": "Fedora E. D. Brown · 1908 г. · серебряная гелатиновая печать",
+          "homeDescription": "Дорога растворяется в тумане и деревьях, создавая ощущение, что пейзаж всё ещё ищет свой фокус.",
+          "homeCredit": "Fedora E. D. Brown · фотография из общественного достояния / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-042",
+          "updatedAt": "2026-10-03T13:37:04.575Z"
         }
       ],
       "articles": [
@@ -29502,6 +29521,25 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:27.089Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
+        },
+        {
+          "id": 45,
+          "title": "Sandra Kantanen: За межами об'єктива традиційної фотографії",
+          "subtitle": "Фотографія",
+          "fig": "FIG. 11",
+          "description": "Фотографія може бути порогом, а не записом — Sandra Kantanen перетворює пейзаж у простір між пам'яттю, міфом і оптичним спотворенням.",
+          "imageSeed": "epris-pick-photography",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+          "homeTitle": "Пейзаж",
+          "homeSubtitle": "Fedora E. D. Brown · c. 1908 · срібляста гелатинова друк",
+          "homeDescription": "Шлях розчиняється у тумані та деревах, змушуючи пейзаж відчуватися як пам'ять, що ще шукає свій фокус.",
+          "homeCredit": "Fedora E. D. Brown · фотографія з публічного домену / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-042",
+          "updatedAt": "2026-10-03T13:36:55.657Z"
         }
       ],
       "articles": [
@@ -42647,6 +42685,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-042",
           "updatedAt": "2026-10-03T13:36:45.367Z"
+        },
+        {
+          "id": 46,
+          "title": "Wie Emily Kraus die Handlung des Malens neu erfindet",
+          "subtitle": "Zeitgenössische Kunst",
+          "fig": "FIG. 10",
+          "description": "Im Inneren des Canvas-Würfels malt Emily Kraus den Rhythmus des gegenwärtigen Moments",
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
+          "homeTitle": "Die Zehn Größten Nr. 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · Tempera auf Papier",
+          "homeDescription": "Fliederfelder, Sonnendiagramme und ein dunkler zentraler Samen lassen die Leinwand weniger gemalt erscheinen als aus einem unsichtbaren Kosmos gewachsen.",
+          "homeCredit": "Hilma af Klint · Public-Domain-Arbeit / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-043",
+          "updatedAt": "2026-10-03T13:37:10.256Z"
         }
       ],
       "articles": [
@@ -55788,6 +55845,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-042",
           "updatedAt": "2026-10-03T13:36:48.081Z"
+        },
+        {
+          "id": 46,
+          "title": "Cómo Emily Kraus reinventa el acto de pintar",
+          "subtitle": "Arte contemporáneo",
+          "fig": "FIG. 10",
+          "description": "Dentro del cubo de lienzo, Emily Kraus pinta el ritmo del momento presente",
+          "imageSeed": "epris-pick-painting",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+          "homeCategory": "painting",
+          "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
+          "homeTitle": "Los diez más grandes No. 6",
+          "homeSubtitle": "Hilma af Klint · 1907 · témpera sobre papel",
+          "homeDescription": "Campos de lila, diagramas solares y una semilla central oscura hacen que el lienzo parezca menos pintado que crecido de un cosmos invisible.",
+          "homeCredit": "Hilma af Klint · obra de dominio público / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-043",
+          "updatedAt": "2026-10-03T13:37:12.781Z"
         }
       ],
       "articles": [
@@ -89163,6 +89239,25 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-23T16:09:48Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
+        },
+        {
+          "id": 45,
+          "title": "Sandra Kantanen : Au-delà de l'objectif de la photographie traditionnelle",
+          "subtitle": "Photographie",
+          "fig": "FIG. 11",
+          "description": "Une photographie peut être un seuil plutôt qu'un enregistrement — Sandra Kantanen transforme le paysage en un espace entre mémoire, mythe et distorsion optique.",
+          "imageSeed": "epris-pick-photography",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
+          "homeCategory": "photography",
+          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+          "homeTitle": "Paysage",
+          "homeSubtitle": "Fedora E. D. Brown · c. 1908 · impression en gelatine argentée",
+          "homeDescription": "Un chemin se dissout dans la brume et les arbres, donnant au paysage l'impression d'une mémoire encore en train de se faire au point de vue.",
+          "homeCredit": "Fedora E. D. Brown · photographie du domaine public / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-042",
+          "updatedAt": "2026-10-03T13:36:52.825Z"
         }
       ],
       "articles": [
