@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, LayoutGroup, MotionConfig } from 'framer-motion';
 import { ReactNode, useState, useEffect, useCallback, useMemo, FormEvent, MouseEvent, PointerEvent as ReactPointerEvent, TouchEvent as ReactTouchEvent, CSSProperties, useRef, Suspense, lazy, Component } from 'react';
-// Heavy, rarely-visited tabs are code-split out of the critical bundle —
+// Heavy, rarely-visited tabs are code-split out of the critical bundle –
 // e.g. DesignPage alone carries a 244-item catalogue that has no business
 // loading for a reader who just opened an article. Each only downloads once
 // its tab is actually clicked.
@@ -285,9 +285,9 @@ function resolveMediaSource(value: string | undefined, width: number, height: nu
 
 /* Похiднi розмiри (сервер: /opt/deploy-webhook.js, generateDerivatives) лежать
    поруч з оригiналом: /uploads/<stem>.jpg -> /uploads/sizes/<stem>-<w>w.webp.
-   Умова навмисно вузька — лише для api.eprisjournal.com/uploads/*.<jpg|jpeg|png|webp> —
+   Умова навмисно вузька – лише для api.eprisjournal.com/uploads/*.<jpg|jpeg|png|webp> –
    бо тiльки цi файли сервер справдi обробляе. Зовнiшнi посилання (Wikimedia,
-   /images/hero-*) i плейсхолдери picsum лишаються без srcset — не наш файл,
+   /images/hero-*) i плейсхолдери picsum лишаються без srcset – не наш файл,
    немає що резати. */
 const DERIVATIVE_WIDTHS = [480, 960, 1600] as const;
 const UPLOAD_HOST_RE = /^https:\/\/api\.eprisjournal\.com\/uploads\/([^/?#]+)\.(jpe?g|png|webp)$/i;
@@ -323,7 +323,7 @@ function recoverOriginalImage(event: { currentTarget: HTMLImageElement }) {
   image.setAttribute('aria-hidden', 'true');
 }
 
-// Pixel-heart silhouette for the 'mosaic' content block — each 'X' becomes one photo tile.
+// Pixel-heart silhouette for the 'mosaic' content block – each 'X' becomes one photo tile.
 const HEART_PATTERN = [
   '.XX...XX.',
   'XXXXXXXXX',
@@ -344,7 +344,7 @@ const HEART_CELLS: [number, number][] = HEART_PATTERN.flatMap((row, r) =>
 // regex-stripping) is what makes it XSS-safe.
 const RICH_ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'MARK', 'CODE', 'BR', 'A', 'SPAN', 'P', 'H2', 'H3', 'H4', 'UL', 'OL', 'LI', 'HR', 'BLOCKQUOTE']);
 // Editorial layout classes an article body may ask for. A closed list, because
-// the alternative — passing `class` through — would let stored content reach
+// the alternative – passing `class` through – would let stored content reach
 // into the app's own stylesheet. Anything not named here is dropped silently.
 const RICH_ALLOWED_CLASSES = new Set(['stats', 'stat-figure', 'stat-label', 'kicker', 'dek', 'sources']);
 function escapeTextNode(s: string): string {
@@ -450,7 +450,7 @@ function applySiteTheme(theme: SiteTheme) {
   if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
   /* Фоновая картинка тянется во весь экран только когда она есть. Постоянный
      background-attachment: fixed на iOS оставляет неокрашенную полосу у нижней
-     кромки — фон считается от вьюпорта, а панель браузера меняет его высоту. */
+     кромки – фон считается от вьюпорта, а панель браузера меняет его высоту. */
   root.setProperty('--bg-attachment', theme.bgImage ? 'fixed' : 'scroll');
   /* Панели Safari (и встроенных браузеров) красятся по theme-color. Он был
      прибит в разметке бордовым от старой палитры, а фон сайта задаётся из
@@ -504,11 +504,11 @@ function isDirectVideoUrl(url: string): boolean {
 
 /* ── Источники одного и того же ролика ───────────────────────────────────────
    Файл лежит на сервере в двух видах: mp4 (H.264) и webm (VP9). WebM меньше,
-   но его не понимает ни один Safari до iOS 17.4 — а именно там читатель видел
+   но его не понимает ни один Safari до iOS 17.4 – а именно там читатель видел
    пустой прямоугольник вместо гифки. Поэтому браузеру даётся выбор: сначала
    webm, следом mp4, и решает он сам по canPlayType, без лишних запросов.
 
-   Старые записи хранят одну ссылку — второй формат выводится из имени файла:
+   Старые записи хранят одну ссылку – второй формат выводится из имени файла:
    сервер кладёт оба файла рядом с одинаковым именем. Если соседа нет, эта
    ветка просто не сработает: браузер перейдёт к следующему источнику. */
 function videoSources(content: string, videoWebm?: string): { src: string; type: string }[] {
@@ -517,10 +517,10 @@ function videoSources(content: string, videoWebm?: string): { src: string; type:
   const isOurUpload = /\/uploads\//.test(url);
   /* WebM больше не додумывается из имени mp4. Раньше строка `.mp4` → `.webm`
      давала запрос к файлу, которого с 21.08.2026 просто нет (сервер перестал
-     тратить на VP9 по двадцать секунд ядра), — то есть лишний 404 перед
+     тратить на VP9 по двадцать секунд ядра), – то есть лишний 404 перед
      каждым воспроизведением. У старых записей webm на диске есть, но замеры
      показали, что он КРУПНЕЕ mp4 в каждой паре (+21…132%), поэтому первым
-     источником теперь всегда идёт mp4, а webm — только если он явно записан
+     источником теперь всегда идёт mp4, а webm – только если он явно записан
      в блоке, и только вторым. */
   const webm = String(videoWebm || '').trim();
   const mp4 = /\.mp4(?:$|[?#])/i.test(url)
@@ -552,9 +552,9 @@ function safeExternalUrl(value?: string): string | null {
    То, что редакция вставляет вместо гифки: играет само, по кругу, без звука и
    без панели управления. Три вещи, без которых это не работает в реальности:
 
-   • `muted` + `playsInline` — иначе iOS не запустит воспроизведение вовсе и
+   • `muted` + `playsInline` – иначе iOS не запустит воспроизведение вовсе и
      развернёт ролик на весь экран при касании;
-   • пауза за пределами экрана — десяток петель в длинном материале иначе
+   • пауза за пределами экрана – десяток петель в длинном материале иначе
      декодируются одновременно, грея телефон и съедая трафик;
    • уважение к системной настройке «уменьшить движение»: там, где человек
      попросил не двигать картинку, показываем постер и даём кнопку. */
@@ -571,10 +571,10 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
   const sources = videoSources(src, webm);
   /* Файл начинает грузиться, только когда петля подходит к экрану. Раньше
      каждая гифка в материале тянула свои мегабайты сразу при открытии
-     страницы, даже если читатель до неё не дошёл, — на телефоне это самая
+     страницы, даже если читатель до неё не дошёл, – на телефоне это самая
      дорогая часть статьи. */
   const [near, setNear] = useState(false);
-  /* Экономия трафика — не догадка о скорости, а явно включённый режим:
+  /* Экономия трафика – не догадка о скорости, а явно включённый режим:
      тогда петля стоит на постере и ждёт нажатия. */
   const [saveData, setSaveData] = useState(false);
 
@@ -594,7 +594,7 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
   useEffect(() => {
     const node = frameRef.current;
     if (!node || near) return;
-    /* Без IntersectionObserver отложить загрузку нечем — тогда грузим сразу,
+    /* Без IntersectionObserver отложить загрузку нечем – тогда грузим сразу,
        иначе на таком браузере петля не появилась бы вовсе. */
     if (typeof IntersectionObserver === 'undefined') { setNear(true); return; }
     const observer = new IntersectionObserver((entries) => {
@@ -604,7 +604,7 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
     return () => observer.disconnect();
   }, [near]);
 
-  /* Источники появляются в разметке позже самого <video> — только когда петля
+  /* Источники появляются в разметке позже самого <video> – только когда петля
      подошла к экрану. Браузер сам про них не узнает: добавленные после монтажа
      <source> не запускают загрузку, нужен явный load(). Без этого петля
      оставалась пустой навсегда. */
@@ -682,12 +682,12 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
         </video>
       )}
       {!ready && !failed && poster && (
-        /* Пока грузится — тот же кадр, что станет постером: переход
+        /* Пока грузится – тот же кадр, что станет постером: переход
            получается незаметным, без вспышки пустоты. */
         <img src={poster} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
       )}
 
-      {/* Вся петля — одна кнопка. На телефоне остановить анимацию было нечем:
+      {/* Вся петля – одна кнопка. На телефоне остановить анимацию было нечем:
           она шла всё время, пока текст под ней читают. Наведения там нет,
           поэтому подпись «loop» видна всегда, а не только под курсором. */}
       {!failed && (
@@ -729,8 +729,8 @@ function VideoBlock({ content, videoWebm, caption, poster, credit, sourceUrl, lo
   const provider = ytId ? 'YouTube' : vimeoId ? 'Vimeo' : directVideo ? 'Video' : openVideoLabel;
   const cleanSource = safeExternalUrl(sourceUrl);
   /* Бывшая гифка узнаётся по имени файла: сервер сохраняет её как
-     *.loop.webm. Флаг «петля» в блоке легко потерять — старая запись,
-     скопированный блок, вручную вставленная ссылка, — и тогда гифка
+     *.loop.webm. Флаг «петля» в блоке легко потерять – старая запись,
+     скопированный блок, вручную вставленная ссылка, – и тогда гифка
      попадала в обычную ветку видео: с панелью управления, без цикла, в
      рамке 16:9. Имя файла эту память не теряет. */
   const looksLikeLoopFile = /[.]loop[.](webm|mp4)([?#]|$)/i.test(content || '');
@@ -740,14 +740,14 @@ function VideoBlock({ content, videoWebm, caption, poster, credit, sourceUrl, lo
     <figure className={isLoop ? 'my-8 sm:my-12 -mx-4 sm:mx-0' : 'my-8 sm:my-12'}>
       {/* Петля живёт по правилам фотографии в статье: на телефоне тянется от
           края до края, сохраняет собственную пропорцию (гифка бывает
-          квадратной и вертикальной — рамка 16:9 обрезала бы её) и не сидит на
+          квадратной и вертикальной – рамка 16:9 обрезала бы её) и не сидит на
           чёрной подложке, из-за которой светлые гифки смотрелись врезкой из
           другого материала. */}
       <div className={`${isLoop ? '' : 'aspect-video bg-black'} relative overflow-hidden`}>
         {isLoop ? (
           <LoopingVideo src={content} webm={videoWebm} poster={poster} caption={caption} />
         ) : directVideo ? (
-          /* Обычный ролик: тот же приём с двумя форматами. Порядок важен —
+          /* Обычный ролик: тот же приём с двумя форматами. Порядок важен –
              браузер берёт первый, который умеет, поэтому webm достаётся тем,
              кому он дешевле, а Safari спокойно уходит на mp4. */
           <video className="w-full h-full object-cover" controls playsInline preload="metadata" muted={muted} poster={poster || undefined}>
@@ -831,7 +831,7 @@ function TabLoadingFallback() {
 // visitor already has open (or a link/bookmark to a lazy route like /issue)
 // can ask for a JS chunk that no longer exists on the server. That 404
 // surfaces as a rejected dynamic import(), which React re-throws as a render
-// error on the next tick — Suspense only handles the *loading* state, not
+// error on the next tick – Suspense only handles the *loading* state, not
 // this, so with no error boundary anywhere the whole app unmounted to a
 // blank white screen with nothing in the UI to explain why or recover.
 const CHUNK_ERROR_PATTERN = /fetch dynamically imported module|Importing a module script failed|Loading chunk/i;
@@ -843,7 +843,7 @@ class TabErrorBoundary extends Component<{ children: ReactNode }, { hasError: bo
   componentDidCatch(error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
     // A stale chunk is only fixable by a fresh page load (new index.html →
-    // new chunk manifest) — not a React retry, which would just throw again.
+    // new chunk manifest) – not a React retry, which would just throw again.
     // Guard against loop: only auto-reload once per session.
     if (CHUNK_ERROR_PATTERN.test(message) && !sessionStorage.getItem(RELOAD_GUARD_KEY)) {
       sessionStorage.setItem(RELOAD_GUARD_KEY, '1');
@@ -874,11 +874,11 @@ class TabErrorBoundary extends Component<{ children: ReactNode }, { hasError: bo
 /* ── Тихая граница ошибки ────────────────────────────────────────────────────
    Корневая защита ловит падение и показывает заглушку на весь экран. Это
    правильно для сломанной страницы и слишком грубо для одной её части: один
-   кривой блок в статье — и читатель не видит ни текста, ни остальных
+   кривой блок в статье – и читатель не видит ни текста, ни остальных
    иллюстраций. Ровно так и вышло с поиском: массив там, где ожидалась строка,
    уронил весь сайт.
 
-   Эта граница отделяет часть от целого. Что упало — исчезает (или показывает
+   Эта граница отделяет часть от целого. Что упало – исчезает (или показывает
    короткую строку), остальное продолжает работать, а ошибка уходит в консоль,
    чтобы её было видно при разборе. */
 class SafePart extends Component<{ children: ReactNode; label?: string; silent?: boolean }, { hasError: boolean }> {
@@ -922,7 +922,7 @@ const ROUTE_SEQUENCE = ['gallery', 'articles', 'reviews', 'about', 'manifest', '
 /* Route transitions run in mode="wait", so the old page leaves BEFORE the new
    one arrives and the two durations add up. Symmetrical timings therefore read
    as a lag, not as grace: the eye is waiting on nothing for the whole exit.
-   Leaving is quick and small, arriving is longer and does the expressive work —
+   Leaving is quick and small, arriving is longer and does the expressive work –
    which is also how it feels in print, where a page is turned away sharply and
    the next one settles.
 
@@ -956,11 +956,11 @@ function RouteTransition({ routeKey, direction, children }: { routeKey: string; 
      Прежняя обвязка (mode="wait" вокруг motion.div с key={routeKey}) на этой
      связке версий вела себя так: уходящий маршрут не доигрывал exit и не
      размонтировался, а входящий оставался на initial, то есть с нулевой
-     непрозрачностью. Наружу это выглядело как сломанный сайт — адрес и
+     непрозрачностью. Наружу это выглядело как сломанный сайт – адрес и
      заголовок вкладки менялись, содержимое нет, а узлы разделов копились в
      DOM один поверх другого. Поиск был лишь самым заметным следствием.
 
-     Смена key заставляет React размонтировать прошлый раздел — здесь это
+     Смена key заставляет React размонтировать прошлый раздел – здесь это
      гарантия, а не побочный эффект анимации. Направление перехода остаётся
      осмысленным: оно задаёт сторону, с которой раздел выезжает. */
   return (
@@ -1094,7 +1094,7 @@ function NavBar({
         {/* Language is the only control that earns a place beside the wordmark
             here. Issue used to sit next to it as a filled pill, which made the
             header compete with the page: two buttons plus the mark, the loudest
-            of them a shortcut to one section among eleven — all of which the
+            of them a shortcut to one section among eleven – all of which the
             menu already lists. The pill is small and quiet on purpose; the tap
             target underneath it is not, hence the inset ::after. */}
         <div className="relative z-10 flex items-center">
@@ -1204,7 +1204,7 @@ function NavBar({
         </div>
       </nav>
 
-      {/* Mobile language sheet — reachable directly from the header, with
+      {/* Mobile language sheet – reachable directly from the header, with
           full language names and thumb-sized targets. */}
       <AnimatePresence>
         {isLangOpen && (
@@ -1219,7 +1219,7 @@ function NavBar({
               onClick={() => setIsLangOpen(false)}
             />
             {/* A sheet the thumb pulls up should answer like a physical one, so
-                it arrives on a spring — damped hard enough not to wobble, which
+                it arrives on a spring – damped hard enough not to wobble, which
                 on a serif magazine would read as a toy. It leaves on a tween:
                 springing away makes dismissal feel hesitant. */}
             <motion.div
@@ -1494,7 +1494,7 @@ function TeamMemberCard({
   websiteLabel: string;
   locationBadge?: string;
 }) {
-  /* Портрет обрезается в круг, логотип — нет: круглая маска съедает вордмарк
+  /* Портрет обрезается в круг, логотип – нет: круглая маска съедает вордмарк
      по краям, а институция узнаётся именно по нему. Тот же размер, тот же
      ритм колонки, разная маска. */
   const isLogo = author.photoIsLogo === true;
@@ -1550,7 +1550,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
       const bOrder = b.teamOrder ?? LEGACY_TEAM_ORDER.get(b.id) ?? Number.MAX_SAFE_INTEGER;
       return aOrder - bOrder || a.name.localeCompare(b.name);
     });
-  // Музей или студия — не сотрудники редакции, и под заголовком «Команда»
+  // Музей или студия – не сотрудники редакции, и под заголовком «Команда»
   // они читались бы как штат. Своя группа сразу под ней, тем же строем карточек.
   const team = listed.filter((author) => author.collaborator !== true);
   const collaborators = listed.filter((author) => author.collaborator === true);
@@ -1558,7 +1558,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
   return (
     <div className="max-w-4xl mx-auto">
       {/*
-        One team, one list, one card pattern — Mariia isn't a separate
+        One team, one list, one card pattern – Mariia isn't a separate
         "editor-in-chief spread" bolted onto the team below her, she's the
         first card in it. A link to the manifesto closes out the "who we
         are" story with "what we believe".
@@ -1735,7 +1735,7 @@ function resolveBylineAuthor(entity: BylineEntity): Author | null {
 }
 
 // A co-credited byline reads "Name A & Name B" (there is no multi-author
-// array — see authors[] in data.ts). An exact-string match against the full
+// array – see authors[] in data.ts). An exact-string match against the full
 // byline therefore fails for the second, third, ... name even though their
 // profile is exactly who the reader is looking at: check the profile's name
 // as a whole word inside the byline instead of requiring an exact equality.
@@ -2027,7 +2027,7 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
             }
             const categoryLabel = localizedHomepageCategoryLabel(category, currentLang);
             // homepageItemTitle can genuinely return '' (homeTitle and title both
-            // blank) — the archive view below already falls back to the category,
+            // blank) – the archive view below already falls back to the category,
             // this one didn't, and a content photo would render alt="" for a
             // screen reader with nothing else nearby to explain what it is.
             const title = homepageItemTitle(item) || categoryLabel;
@@ -2048,27 +2048,27 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                   >
                     <button type="button" className="home-carousel-artwork" onClick={() => handleCarouselArtworkClick(position, resolveMediaSource(item.imageUrl || item.imageSeed, 2000, 1400), `${categoryLabel}: ${title}`)} aria-label={isCenter ? `${t('homepage.openImage')}: ${categoryLabel}` : `${categoryLabel}: ${title}`} title={isCenter ? t('homepage.openImage') : undefined}>
                       <div className="home-carousel-media relative aspect-[4/5] overflow-hidden bg-[#E8DED5]">
-                        {/* Не lazy: это h1-карусель — самое первое, что видно на
+                        {/* Не lazy: это h1-карусель – самое первое, что видно на
                             главной, и позиции всегда все пять в кадре разом, ни
                             одна не «за экраном». Хуже того, каждый поворот
                             карусели пересоздаёт <img> заново (key меняется на
                             position), и свежий loading="lazy" элемент внутри
                             анимации framer-motion (opacity/scale ещё не
                             устоялись) браузер иногда не успевал распознать как
-                            видимый — отсюда «то грузится, то нет» при листании,
+                            видимый – отсюда «то грузится, то нет» при листании,
                             не только при первой загрузке. */}
                         {/* fetchPriority только у центра: это и есть кандидат
-                            в LCP (largest contentful paint) — самая крупная
+                            в LCP (largest contentful paint) – самая крупная
                             картинка, которую видит читатель первой. Раньше
                             все пять грузились с одним приоритетом и спорили
                             за канал с шрифтами наравне; теперь браузер знает,
-                            какую тащить первой. decoding="async" — тот же
+                            какую тащить первой. decoding="async" – тот же
                             приём, что уже стоит на архивных превью ниже, не
                             блокирует отрисовку раскодированием картинки.
 
                             Одного приоритета виявилося мало. Пріоритет каже,
                             яку тягнути першою, але тягнулися все одно всі
-                            п'ять — а бачить читач одну. На повільному 4G це
+                            п'ять – а бачить читач одну. На повільному 4G це
                             і давало LCP 21,6 с при TBT 0: головна картинка
                             стояла в черзі за тими, яких на екрані немає.
                             Тому бічні слайди тепер lazy. */}
@@ -2109,17 +2109,17 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
 
 /* Ordering moved to data.ts (orderArticles). It used to live here as a local
    sort by Date.parse(article.date), which the Articles grid and the homepage
-   feed each called for themselves — two places deciding one thing, with no way
+   feed each called for themselves – two places deciding one thing, with no way
    for an editor to influence either. The rule now belongs to the content
    layer, where pins and the manual sequence live with it. */
 /* Главная показывает ТРИ последние статьи, а не весь архив.
 
    Раньше без явной настройки на первую страницу выкладывались все тринадцать
    материалов, и она превращалась в бесконечную ленту: витрина журнала читалась
-   как список файлов. Три свежих текста — это превью, после которого человек
+   как список файлов. Три свежих текста – это превью, после которого человек
    либо идёт в раздел статей за остальным, либо спускается к обзорам.
 
-   Настройка в админке по-прежнему главнее: поставили лимит — работает он. */
+   Настройка в админке по-прежнему главнее: поставили лимит – работает он. */
 const HOMEPAGE_ARTICLE_PREVIEW_COUNT = 3;
 
 function homepageArticleFeed(articles: Article[]): Article[] {
@@ -2128,7 +2128,7 @@ function homepageArticleFeed(articles: Article[]): Article[] {
   // hideOnHome is per article and separate from `draft`: the piece is
   // published and reachable, it just does not belong on the front page.
   // Music-desk pieces belong to /music, same as they're excluded from
-  // /articles (generalArticles) — otherwise a music interview could appear
+  // /articles (generalArticles) – otherwise a music interview could appear
   // on the front page while remaining invisible on the general grid.
   const sorted = orderArticles(generalArticles(articles)).filter((article) => !article.hideOnHome);
   const limit = Number(settings.limit);
@@ -2138,9 +2138,9 @@ function homepageArticleFeed(articles: Article[]): Article[] {
   return sorted.slice(0, effective);
 }
 
-/* Сколько статей вообще годится для главной — нужно, чтобы понять, прячет ли
+/* Сколько статей вообще годится для главной – нужно, чтобы понять, прячет ли
    превью что-то ещё. Кнопка «все материалы» имеет смысл только тогда, и ведёт
-   на /articles — тот же generalArticles, что и там, иначе лишний музыкальный
+   на /articles – тот же generalArticles, что и там, иначе лишний музыкальный
    материал обещал бы «ещё» то, чего на /articles никогда не появится. */
 function homepageArticlePoolSize(articles: Article[]): number {
   return orderArticles(generalArticles(articles)).filter((article) => !article.hideOnHome).length;
@@ -2272,7 +2272,7 @@ function getPollStorageKey(pollKey: string) {
   return 'epris-poll-v2-' + pollKey;
 }
 
-// Own API (api.eprisjournal.com), not a third-party counter service — votes
+// Own API (api.eprisjournal.com), not a third-party counter service – votes
 // are deduped server-side by (hashed) IP, so clearing localStorage or using
 // incognito no longer allows a repeat vote, and results no longer depend on
 // an external service's uptime.
@@ -2459,7 +2459,7 @@ function NoteBlock({ content }: { content: string }) {
 }
 
 /* Подпись над карточкой соавтора. Роль автора переводится отдельной таблицей
-   (translateRole), а эта строка своя и короткая — держим её здесь, чтобы не
+   (translateRole), а эта строка своя и короткая – держим её здесь, чтобы не
    заводить ключ перевода ради двух слов. Неизвестный язык получает английский. */
 const CONTRIBUTOR_LABELS: Record<string, string> = {
   EN: 'In collaboration with',
@@ -2494,7 +2494,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  // Only offer languages this article actually has a translation for — a
+  // Only offer languages this article actually has a translation for – a
   // language that would silently fall back to the base text still shows as
   // "selected" afterwards, which reads as a broken translation rather than
   // an absent one.
@@ -2521,7 +2521,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // role is a single global string entered once in the admin, so it can only
   // ever show in whatever language it was typed in. Prefer the localized
   // article.role and only fall back to the author record's role when the
-  // article doesn't specify one — otherwise the byline "role" freezes in
+  // article doesn't specify one – otherwise the byline "role" freezes in
   // one language regardless of the reader's selected language.
   const roleWasLegacyAuthorName = Boolean(
     resolvedAuthor && article.role?.trim().toLocaleLowerCase() === resolvedAuthor.name.trim().toLocaleLowerCase()
@@ -2539,10 +2539,10 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // "A & B" above that person's bio and photo read as if the bio were shared.
   const footerAuthorName = contributor && isMatchingProfile && resolvedAuthor?.name ? resolvedAuthor.name : authorName;
 
-  // The overlay is the only scroller while it is open — see the hook.
+  // The overlay is the only scroller while it is open – see the hook.
   useLockedPageScroll();
 
-  // Jumping to a related article swaps content inside the same overlay — snap
+  // Jumping to a related article swaps content inside the same overlay – snap
   // the scroll back to the top so the reader starts at the new article's hero.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
@@ -2555,7 +2555,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
     try {
       if (sessionStorage.getItem(key)) return;
       sessionStorage.setItem(key, '1');
-    } catch { /* private mode etc. — just count every time */ }
+    } catch { /* private mode etc. – just count every time */ }
     fetch('https://api.eprisjournal.com/view', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2585,12 +2585,12 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   return (
     <motion.div
       ref={scrollRef}
-      // Only the horizontal slide animates on entry — the backdrop itself
+      // Only the horizontal slide animates on entry – the backdrop itself
       // must be fully opaque from frame one, or fading its opacity from 0
       // fades the solid bg-[var(--c-bg)] along with it, letting the page
       // underneath show through for the whole transition (a genuine "ghost
       // of the homepage behind the article" flash on every open, not a
-      // rendering artifact). Exit still fades — closing back onto the page
+      // rendering artifact). Exit still fades – closing back onto the page
       // behind it is the correct, intentional cross-fade.
       initial={{ opacity: 1, x: '3%' }}
       animate={{ opacity: 1, x: 0 }}
@@ -2646,7 +2646,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
 
         <article className="mt-12">
           <header className="mb-16">
-            {/* Hero image first — matches Figma layout */}
+            {/* Hero image first – matches Figma layout */}
             <div
               className="relative left-1/2 w-screen -translate-x-1/2 aspect-[4/3] sm:aspect-[16/8] lg:aspect-[21/8] overflow-hidden bg-[#E8DED5] mb-8 sm:mb-12 cursor-pointer"
               role="button"
@@ -2655,7 +2655,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               onClick={() => onImageClick(heroSource, article.title)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onImageClick(heroSource, article.title)}
             >
-              {/* Стрічка статей починається за межею першого екрана — від
+              {/* Стрічка статей починається за межею першого екрана – від
                   1100 px і нижче. Без lazy усі її картинки бралися одразу і
                   ділили канал з тією єдиною, яку видно. */}
               <img
@@ -2767,7 +2767,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                           : 'my-6 sm:my-8 -mx-4 sm:mx-0';
                   const figureStyle = widthPct && align !== 'full' && !stretched ? { width: `${widthPct}%`, maxWidth: '100%' } : undefined;
                   /* Гифка, вставленная картинкой (старые материалы и просто
-                     вставленная ссылка), остаётся картинкой — иначе она
+                     вставленная ссылка), остаётся картинкой – иначе она
                      перестала бы двигаться. Но грузить её вперёд текста
                      незачем: это самый тяжёлый файл в статье. */
                   const isAnimatedImage = /[.]gif([?#]|$)/i.test(imageSource);
@@ -3239,15 +3239,15 @@ function ArticlePreviewDialog({ article, onClose, onReadFull, onImageClick, t }:
 
 /* ОДНА КАРТОЧКА НА ВСЕ СПИСКИ ЖУРНАЛА.
 
-   Статьи и обзоры были двумя независимыми вёрстками одного и того же —
+   Статьи и обзоры были двумя независимыми вёрстками одного и того же –
    «обложка, рубрика, заголовок, вводка, автор, кнопка». Поэтому они и разошлись:
    статьи читались как журнал (ряд карточек в одну колонку, квадратная обложка
-   слева), а обзоры — как каталог (плитка 2-в-ряд, широкий баннер сверху,
+   слева), а обзоры – как каталог (плитка 2-в-ряд, широкий баннер сверху,
    строка фильтров). Одна и та же страница выглядела как два разных издания.
 
    Теперь композицию задаёт это место, и разойтись снова они не могут. Всё, что
-   отличает обзор от статьи, приходит данными: `kicker` — то, О ЧЁМ обзор
-   (адрес ресторана, автор книги), которого у статьи нет, а `verdict` — приговор,
+   отличает обзор от статьи, приходит данными: `kicker` – то, О ЧЁМ обзор
+   (адрес ресторана, автор книги), которого у статьи нет, а `verdict` – приговор,
    главная строка обзора: она набирается курсивом с золотой линейкой, потому что
    это голос критика, а не пересказ. */
 type EditorialCardData = {
@@ -3294,7 +3294,7 @@ function EditorialListCard({
           square and covers rarely are, so a centre crop is what cuts the
           top off a portrait. w-full + self-start: Safari (WebKit) otherwise
           stretches the frame to the row's height and derives its width from
-          that through aspect-ratio — on phones the cover came out about 60%
+          that through aspect-ratio – on phones the cover came out about 60%
           wide with a blank strip to its right. */}
       <div className="aspect-square w-full self-start sm:self-auto overflow-hidden bg-[#E8DED5]">
         <motion.img
@@ -3348,7 +3348,7 @@ function EditorialListCard({
   );
 }
 
-/* Обёртка списка — та же мера набора и те же интервалы для любого раздела.
+/* Обёртка списка – та же мера набора и те же интервалы для любого раздела.
    max-w-4xl тут не украшение: карточка «обложка + текст» рассчитана на эту
    ширину, и на всю ширину экрана она разъезжается в баннер. */
 function EditorialList({ children, columns = 1 }: { children: React.ReactNode; columns?: 1 | 2 | 3 }) {
@@ -3453,7 +3453,7 @@ function ProsCons({ pros, cons, t }: { pros?: string[]; cons?: string[]; t: (key
 // with prompt text underneath ("FIRST IMPRESSION" / "What stays with you after
 // the first encounter?"). It is a writing aid, not content: on Le Dauphine it
 // was pressed twice and never filled in, so readers got eight lines of editor
-// instructions. A prompt still verbatim means that section was never written —
+// instructions. A prompt still verbatim means that section was never written –
 // drop the header with it. Once an editor replaces the prompt, both stay.
 const REVIEW_SCAFFOLD_PROMPTS: Record<string, string> = {
   'FIRST IMPRESSION': 'What stays with you after the first encounter?',
@@ -3500,7 +3500,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
     if (block.type === 'gallery' && Array.isArray(block.content)) return <figure key={index} className="grid grid-cols-2 gap-2">{block.content.map((src, i) => <img key={i} src={src} alt={block.alts?.[i] || ''} className="aspect-square w-full object-cover" />)}</figure>;
     /* Обзор показывает видео и гифки тем же блоком, что и статья. Раньше сюда
        подставлялся <iframe src={файл}>: ссылка на YouTube ещё как-то жила, а
-       загруженный из панели mp4 или бывшая гифка не показывались вовсе —
+       загруженный из панели mp4 или бывшая гифка не показывались вовсе –
        браузер не проигрывает видеофайл внутри iframe. */
     if (block.type === 'video' && text) return <VideoBlock key={index} content={text} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
     if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
@@ -3660,10 +3660,10 @@ function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages
 
    Раздел был устроен принципиально иначе: широкий баннер главного обзора во всю
    полосу, строка фильтров по рубрикам и плитка два-в-ряд с обложками 16:9 и
-   заголовками в 3xl. Рядом со статьями — рядом карточек в одну колонку с
-   квадратной обложкой — это читалось как другой сайт под той же шапкой.
+   заголовками в 3xl. Рядом со статьями – рядом карточек в одну колонку с
+   квадратной обложкой – это читалось как другой сайт под той же шапкой.
 
-   Три решения, каждое из них — отказ от чего-то:
+   Три решения, каждое из них – отказ от чего-то:
 
    БАННЕРА БОЛЬШЕ НЕТ. Главный обзор просто идёт первым и помечен рубрикой
    «Featured» в надзаголовке. В журнальной полосе первенство и так означает
@@ -3675,9 +3675,9 @@ function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages
 
    ПРИГОВОР ОСТАЛСЯ. Это единственное, что отличает обзор от статьи по существу,
    и он набран так же, как был: курсив с золотой линейкой слева. Композиция общая,
-   голос раздела — свой. */
+   голос раздела – свой. */
 function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (key: string) => string; onReviewClick: (review: Review) => void }) {
-  // Главный обзор — первым в полосе, остальные — от нового к старому: без
+  // Главный обзор – первым в полосе, остальные – от нового к старому: без
   // второго ключа .sort() лишь стабильно сохраняет порядок записей в CMS
   // (обычно порядок создания, то есть старые сверху), а не порядок публикации.
   const ordered = useMemo(
@@ -3698,21 +3698,21 @@ function ReviewsSection({ reviews, t, onReviewClick }: { reviews: Review[]; t: (
             <EditorialListCard
               card={{
                 key: String(review.id),
-                // Рубрика, а у главного обзора — метка «Featured» рядом с ней:
+                // Рубрика, а у главного обзора – метка «Featured» рядом с ней:
                 // баннер её больше не несёт, а сказать это надо.
                 eyebrow: [review.featured ? t('reviews.featured') : '', review.category || '']
                   .filter(Boolean).join(' · ') || undefined,
                 title: review.title,
                 kicker: review.subject,
                 verdict: review.verdict,
-                // Вводка — начало текста, и только если приговора нет: две
+                // Вводка – начало текста, и только если приговора нет: две
                 // цитаты подряд в карточке шириной в половину полосы не читаются.
                 standfirst: review.verdict ? undefined : (body.length > 190 ? `${body.slice(0, 190)}…` : body),
                 byline: review.author ? `${t('articles.by')} ${review.author}` : undefined,
-                /* У обзора обложка необязательна, а карточка без неё — дыра
+                /* У обзора обложка необязательна, а карточка без неё – дыра
                    в полосе: сетка «обложка + текст» держится на первом столбце.
                    Поэтому тот же запасной вариант, что и у статьи без своего
-                   изображения — устойчивая заглушка по ключу записи. */
+                   изображения – устойчивая заглушка по ключу записи. */
                 imageSrc: resolveMediaSource(review.imageUrl || `review-${review.id}`, 480, 480),
               }}
               onOpen={() => onReviewClick(review)}
@@ -3751,7 +3751,7 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 
 // ── Search ────────────────────────────────────────────────────────────────
 // The old search was a single raw substring check across every article's raw
-// body text with no word boundaries — "ando" matched "abandoned", a query
+// body text with no word boundaries – "ando" matched "abandoned", a query
 // like "design" (a word that turns up in passing in most captions) surfaced
 // nearly the entire article list in no particular order, and Gallery and
 // Reviews weren't searched at all. Net effect: results looked
@@ -3764,7 +3764,7 @@ function Sidebar({ t }: { t: (key: string) => string }) {
 // pass so a search actually finds whatever the reader is looking for.
 /* Текст для поиска приходит из живого контента, который редакция меняет без
    участия кода: поле, бывшее строкой, однажды оказывается массивом блоков или
-   числом. Раньше такой случай ронял НЕ поиск, а всё приложение целиком —
+   числом. Раньше такой случай ронял НЕ поиск, а всё приложение целиком –
    `.normalize is not a function` в рендере, белая страница вместо сайта.
    Поэтому вход приводится к строке здесь, а не предполагается строкой. */
 function blocksToText(value: unknown): string {
@@ -3892,7 +3892,7 @@ function buildSearchIndex(
   }
 
   for (const r of reviews) {
-    // Как и у статьи, тело отзыва — массив блоков, а не строка.
+    // Как и у статьи, тело отзыва – массив блоков, а не строка.
     const reviewBody = blocksToText(r.content);
     const allTokens = tokenize([r.title, r.subject, r.category, r.author, reviewBody].filter(Boolean).join(' '));
     const score =
@@ -4078,11 +4078,11 @@ function getSlugForReview(review: Review): string {
   return generateSlug(canonical?.title || review.title || '') || String(review.id);
 }
 
-// Gallery items and full Articles have no shared id/slug field — some Gallery
+// Gallery items and full Articles have no shared id/slug field – some Gallery
 // pieces happen to also exist as a full standalone Article (same title, its
 // own /article/<slug> page with more room for photos/blocks). Matching by
 // exact title is the only signal the data model offers; when it doesn't
-// match anything, no link renders — deliberately conservative so this can't
+// match anything, no link renders – deliberately conservative so this can't
 // point at the wrong piece.
 function findMatchingArticle(item: Item, articles: Article[]): Article | undefined {
   const title = item.title?.trim();
@@ -4093,7 +4093,7 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   // Fallback: a gallery piece often carries a "Name: subtitle" headline while
   // the full article is filed under just "Name" (or vice-versa). Compare the
   // part before the first colon so the featured piece still links to its
-  // article — without loosening into arbitrary substring matches.
+  // article – without loosening into arbitrary substring matches.
   const base = (s: string) => s.split(':')[0].trim().toLowerCase();
   const itemBase = base(title);
   if (itemBase.length < 4) return undefined;
@@ -4106,7 +4106,7 @@ function findMatchingArticle(item: Item, articles: Article[]): Article | undefin
   try {
     const token = new URLSearchParams(window.location.search).get('preview');
     if (token && token.length >= 8) setPreviewToken(token);
-  } catch { /* нестандартный адрес — предпросмотра просто не будет */ }
+  } catch { /* нестандартный адрес – предпросмотра просто не будет */ }
 })();
 
 function parsePath(pathname: string, search = ''): { tab?: string; articleId?: number; reviewId?: number; passportCode?: string; searchQuery?: string; formSlug?: string; formInvite?: string; museumHall?: string } {
@@ -4130,7 +4130,7 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
   /* Раздел назывался vitrine, на экране давно Museum. Адрес приведён к
      названию, а прежние ссылки продолжают открывать тот же раздел. */
   if (p === 'vitrine' || p === 'futuroshock') return { tab: 'museum' };
-  /* Зал музея — это адрес, а не состояние внутри страницы: ссылку на зал
+  /* Зал музея – это адрес, а не состояние внутри страницы: ссылку на зал
      присылают, открывают с телефона и возвращаются к ней кнопкой «назад». */
   const hallMatch = p.match(/^museum\/([a-z-]{2,24})$/);
   if (hallMatch) return { tab: 'museum', museumHall: hallMatch[1] };
@@ -4143,8 +4143,8 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
   }
   /* Анкета автора. Живёт отдельным адресом, а не вкладкой: ссылку присылают
      человеку, который на сайт до этого не заходил, и она должна открывать
-     ровно анкету — без меню номера и без остальной витрины.
-     Короткий /f/ — та же страница: этот адрес влезает в подпись письма и в
+     ровно анкету – без меню номера и без остальной витрины.
+     Короткий /f/ – та же страница: этот адрес влезает в подпись письма и в
      строчку в мессенджере, а /form/ остаётся для тех, кто уже разослан. */
   /* Персональная ссылка выглядит как /f/interview-abbie-downey/abbie-downey:
      имя человека вместо строки случайных знаков. Прежний вид со знаком
@@ -4224,7 +4224,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
       'query-input': 'required name=search_term_string',
     },
   };
-  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+[|–—]\s+EPRIS Journal$/, '') || publicationName;
+  const routeLabel = ROUTE_META[activeTab]?.title?.replace(/\s+[|––]\s+EPRIS Journal$/, '') || publicationName;
 
   if (article) {
     const imageUrl = resolveMediaSource(article.imageUrl || article.imageSeed, 1200, 630);
@@ -4398,7 +4398,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
 
 /* ── Підвал журналу: чорний, з описом, розділами й кнопкою App Store ──
    Тексти тут, а не в site-content.json: той файл щогодини перезаписує знімок
-   з VPS. Значок — офіційний бейдж Apple (public/app/app-store-badge-*.svg). */
+   з VPS. Значок – офіційний бейдж Apple (public/app/app-store-badge-*.svg). */
 const APP_STORE_URL = 'https://apps.apple.com/us/app/epris-journal/id6815797964?itscg=30200&itsct=apps_box_link&mttnsubad=6815797964';
 const APP_BAND_TEXT: Record<string, { kicker: string; title: string; line: string; more: string }> = {
   EN: { kicker: 'The app', title: 'EPRIS Journal for iPhone and iPad', line: 'Every piece typeset for reading, saved offline with one tap. Free, with no account and no tracking.', more: 'About the app' },
@@ -4485,12 +4485,12 @@ export default function App() {
     }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><CollaborationPage /></Suspense>;
   }
-  /* Бюро — і список, і окремий розбір. Глибокі адреси віддає SPA-заглушка
+  /* Бюро – і список, і окремий розбір. Глибокі адреси віддає SPA-заглушка
      404.html, тож посилання на конкретний розбір працює напряму. */
   if (/^\/bureau(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><BureauPage /></Suspense>;
   }
-  /* Кодекс — и оглавление, и отдельная статья по своему адресу. Глубокие
+  /* Кодекс – и оглавление, и отдельная статья по своему адресу. Глубокие
      адреса отдаёт SPA-заглушка 404.html, поэтому ссылка на статью работает
      напрямую, как и в бюро. */
   if (/^\/codex(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
@@ -4542,7 +4542,7 @@ export default function App() {
   const [contentVersion, setContentVersion] = useState(0);
   // Fresh loads of /article/<slug> only have the bundled fallback articles to match
   // against until the live fetch resolves (SLUG_MAP at module scope is built once,
-  // from that same stale bundle) — so any article published after the last deploy
+  // from that same stale bundle) – so any article published after the last deploy
   // 404s silently on direct load/refresh/share instead of resolving once live data
   // arrives. Track whether the live-content attempt has settled so we know when a
   // still-unresolved /article/ path is a genuine 404 rather than "still loading."
@@ -4550,19 +4550,19 @@ export default function App() {
   useEffect(() => {
     applySiteTheme(getTheme()); // bundled/default theme on first paint
     const unsubscribe = subscribeContent(() => { setContentVersion((v) => v + 1); applySiteTheme(getTheme()); });
-    /* Ссылка на черновик — особый случай. Обычной статье четырёх секунд хватает
+    /* Ссылка на черновик – особый случай. Обычной статье четырёх секунд хватает
        с запасом: если живой контент не пришёл, читатель всё равно увидит
        страницу из собранного бандла. Черновика в бандле нет по определению,
        поэтому там таймаут решает не «свежо или нет», а «откроется или нет»:
        контент отдаётся сжатым примерно на 700 КБ, и на мобильной связи это
        заметно дольше четырёх секунд. Отсюда «иногда не открывается»: дома
-       ссылка работает, в дороге — нет.
+       ссылка работает, в дороге – нет.
 
        Поэтому под предпросмотр даём заведомо достаточное время и одну повторную
        попытку: лишние секунды ожидания честнее, чем список статей вместо
        обещанного материала. */
     const previewMode = hasPreviewToken();
-    /* Язык известен ещё до первого запроса — он лежит в localStorage, — поэтому
+    /* Язык известен ещё до первого запроса – он лежит в localStorage, – поэтому
        сразу просим срез, а не весь журнал: 216 КБ вместо 700 (для английского
        109 КБ). Именно этот вес и стоял за таймаутами предпросмотра выше. */
     const startLang = currentLang;
@@ -4573,7 +4573,7 @@ export default function App() {
     // Стартовый язык читается один раз: переключение обрабатывает эффект ниже.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  /* Смена языка — это новый срез. В памяти лежит уже загруженный набор плюс
+  /* Смена языка – это новый срез. В памяти лежит уже загруженный набор плюс
      наборы из бандла, поэтому текст на экране меняется сразу, а свежий перевод
      подъезжает следом и перекрывает его. */
   const langLoadedRef = useRef(true);
@@ -4611,7 +4611,7 @@ export default function App() {
   const homepageArchive = getHomepageArchive();
   const homepageArticles = homepageArticleFeed(articles);
   const homepageArticlePool = homepageArticlePoolSize(articles);
-  /* Обзоров на главной столько же, сколько статей: три карточки — это превью,
+  /* Обзоров на главной столько же, сколько статей: три карточки – это превью,
      а не раздел. Главный обзор всегда среди них, иначе «Featured» на вкладке и
      на главной означали бы разное. */
   const homepageReviews = useMemo(
@@ -4647,7 +4647,7 @@ export default function App() {
   const selectedReview = selectedReviewId !== null
     ? reviews.find((review) => review.id === selectedReviewId) || defaultContent.reviews.find((review) => review.id === selectedReviewId) || null
     : null;
-  // Retry resolving /article/<slug> against live articles once they load — the
+  // Retry resolving /article/<slug> against live articles once they load – the
   // synchronous initial parse only had the stale bundled SLUG_MAP to check against.
   useEffect(() => {
     if (selectedArticleId !== null) return;
@@ -4661,17 +4661,17 @@ export default function App() {
       setActiveTab('articles');
     }
   }, [defaultContent.articles, selectedArticleId]);
-  // Only a genuine 404 once the live fetch has had its chance — otherwise a
+  // Only a genuine 404 once the live fetch has had its chance – otherwise a
   // fresh load would flash "not found" before the retry effect above can run.
   const articleSlugNotFound = contentLoadAttempted
     && selectedArticleId === null
     && /^\/article\/([^/]+)\/?$/.test(window.location.pathname);
   /* Адрес указывает на конкретную статью, а её нет среди загруженных.
      Раньше этот случай ничего не рисовал: ArticleView не появлялся, и читатель
-     оставался на списке статей — той самой вкладке, которую включил разбор
+     оставался на списке статей – той самой вкладке, которую включил разбор
      адреса. Выглядит как «ссылка привела не туда», хотя на деле материал ещё
      едет (или не доехал). Разделяем два состояния честно: пока живой контент
-     не ответил — ждём, после ответа — говорим, что не нашли. */
+     не ответил – ждём, после ответа – говорим, что не нашли. */
   const articleAwaitingContent = !contentLoadAttempted
     && selectedArticleId !== null
     && !selectedArticle;
@@ -4701,7 +4701,7 @@ export default function App() {
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
   const homepageLayout = getHomepageSettings().layout || {};
   const homepageDefaultSectionOrder: HomepageSectionKey[] = ['pics', 'articles', 'reviews', 'archive'];
-  /* Порядок секций: сохранённый в админке — главный, но НОВАЯ секция должна
+  /* Порядок секций: сохранённый в админке – главный, но НОВАЯ секция должна
      встать на своё место по замыслу, а не в хвост.
 
      Наивное слияние «сохранённые, затем дефолтные» отправляло обзоры за архив:
@@ -4719,7 +4719,7 @@ export default function App() {
   })();
   const homepageSectionVisible = (section: string) => {
     // Обзоры на главной подчиняются той же галочке раздела, что и вкладка:
-    // выключили раздел в админке — он исчезает целиком, а не наполовину.
+    // выключили раздел в админке – он исчезает целиком, а не наполовину.
     if (section === 'reviews' && !isSectionEnabled('reviews')) return false;
     return homepageLayout.visibility?.[section as HomepageSectionKey] !== false;
   };
@@ -4770,7 +4770,7 @@ export default function App() {
 
        До сих пор они жили только на своей вкладке, и с главной о них нельзя
        было узнать. Теперь три свежих текста, выход в архив статей и следом
-       обзоры — главная читается как оглавление номера, а не как одна лента. */
+       обзоры – главная читается как оглавление номера, а не как одна лента. */
     if (section === 'reviews') {
       if (!homepageReviews.length) return null;
       return <section className="homepage-reviews mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-reviews-title">
@@ -4839,17 +4839,17 @@ export default function App() {
   /* Переход из превью в раздел ведёт к началу раздела.
 
      Кнопка стоит глубоко на главной, и без прокрутки человек оказывался в
-     середине списка статей — ровно там, где была кнопка. Выглядит так, будто
+     середине списка статей – ровно там, где была кнопка. Выглядит так, будто
      ничего не произошло, только пропала половина страницы.
 
      Тонкость в двух вещах, и обе видны только на собранной странице.
 
      Первая: в html стоит `scroll-behavior: smooth`, поэтому behavior 'auto'
-     означает не «мгновенно», а «как задано в CSS» — читателя плавно везло
+     означает не «мгновенно», а «как задано в CSS» – читателя плавно везло
      через полстраницы, и переход выглядел как долгая поездка вместо смены
      раздела. Нужен явный 'instant'.
 
-     Вторая: одного requestAnimationFrame мало — в этот момент новый раздел ещё
+     Вторая: одного requestAnimationFrame мало – в этот момент новый раздел ещё
      не отрисован, страница короткая, и прокрутка проходит вхолостую. Поэтому
      тот же мгновенный переход повторяется после отрисовки. */
   const scrollToTop = useCallback(() => {
@@ -4941,7 +4941,7 @@ export default function App() {
     }
     // Same upgrade for the numeric review URLs that are already out there.
     // The static landing pages are directories, so the server hands the reader
-    // /review/1/ with a trailing slash — match it or the address bar keeps the id.
+    // /review/1/ with a trailing slash – match it or the address bar keeps the id.
     if (initialRoute.reviewId !== undefined && /\/review\/\d+\/?$/.test(window.location.pathname)) {
       const r = defaultContent.reviews.find((review) => review.id === initialRoute.reviewId);
       if (r) window.history.replaceState(null, '', `/review/${getSlugForReview(r)}`);

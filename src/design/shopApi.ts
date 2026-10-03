@@ -120,7 +120,7 @@ function numericPrice(p: ResolvedProduct | null | undefined): number {
 }
 
 // Sum the real resolved prices for a set of picks. Items without a scrapable
-// price contribute 0 (honest — we never invent numbers).
+// price contribute 0 (honest – we never invent numbers).
 export function boardTotal(ids: number[], resolved: Record<number, ResolvedProduct | null>): number {
   return ids.reduce((sum, id) => sum + numericPrice(resolved[id]), 0);
 }
@@ -149,7 +149,7 @@ export async function curateBoard(
 
   // The AI path is best, but the backend tries several free models in sequence
   // and can be slow. Race it against a timeout so the reader always gets a board
-  // quickly — the deterministic local stylist is a strong fallback.
+  // quickly – the deterministic local stylist is a strong fallback.
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 28000);
   try {

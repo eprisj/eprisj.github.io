@@ -235,7 +235,7 @@ function VerifyView({ code }: { code: string }) {
 
 // Gates passport creation/editing behind the same password as the admin
 // panel. Sharing an existing published passport is a fictional keepsake and
-// stays open to everyone (see VerifyView) — this only guards the form that
+// stays open to everyone (see VerifyView) – this only guards the form that
 // creates or edits one. Shares a localStorage entry with public/admin/app.js,
 // so being logged into /admin already unlocks this with no extra prompt.
 function PassportAuthGate({ children }: { children: React.ReactNode }) {
@@ -330,7 +330,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
   const [printStatus, setPrintStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
   const isEditing = mode === 'edit';
 
-  // Admin deep link only — never surfaced on the public verification page —
+  // Admin deep link only – never surfaced on the public verification page –
   // that loads the existing record straight into the editor: /passport/CODE?edit=1
   const isAdminEditRequest = useMemo(
     () => Boolean(viewCode) && new URLSearchParams(window.location.search).get('edit') === '1',

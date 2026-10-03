@@ -8,7 +8,7 @@ import { startImageReveal } from './lib/imageReveal';
 // for the specific "stale JS chunk after a redeploy" case, but ANY other
 // uncaught render error anywhere in the tree (a malformed content entry, a
 // bad prop, etc.) would still unmount the whole app to a blank white page
-// with zero explanation — there was no boundary at all before this. This one
+// with zero explanation – there was no boundary at all before this. This one
 // wraps everything, so no single crash can ever produce a totally blank
 // screen again. Deliberately styled with inline hardcoded colors (not the
 // app's CSS custom properties, which are set by JS that may not have run if

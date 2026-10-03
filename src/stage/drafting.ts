@@ -2,7 +2,7 @@
 //
 // Главное, чем чертёж отличается от схемы: смысл несёт ВЕС ЛИНИИ, а не подпись.
 // То, что плоскость сечения режет, идёт жирным и заливается (поше); то, что
-// видно за срезом, — средним; сетка и размерные — волоском. Пока всё нарисовано
+// видно за срезом, – средним; сетка и размерные – волоском. Пока всё нарисовано
 // одной толщиной, глаз читает каркасную схему, сколько подписей на неё ни вешай.
 import type { ObjectKind, SceneObject } from './sceneModel';
 
@@ -24,7 +24,7 @@ export const WEIGHT = {
   selected: 2.4,
 } as const;
 
-/** Режется ли элемент плоскостью сечения. Стены — да, поэтому они заливаются;
+/** Режется ли элемент плоскостью сечения. Стены – да, поэтому они заливаются;
  *  помосты, предметы и мебель стоят в поле зрения и остаются контуром. */
 export function isCut(kind: ObjectKind): boolean {
   return kind === 'wall';
@@ -42,7 +42,7 @@ export function styleFor(object: SceneObject, selected: boolean): ElementStyle {
     return { fill: GOLD, fillOpacity: 0.22, stroke: GOLD, strokeWidth: WEIGHT.selected };
   }
   if (isCut(object.kind)) {
-    // Поше: сплошная заливка вместо контура — так стена читается как масса.
+    // Поше: сплошная заливка вместо контура – так стена читается как масса.
     return { fill: PAPER, fillOpacity: 0.82, stroke: PAPER, strokeWidth: WEIGHT.cut };
   }
   if (object.kind === 'platform') {

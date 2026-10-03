@@ -27,7 +27,7 @@ export function saveAdminPassword(pw: string, persistent = true): void {
 
 /**
  * Verifies a password against the live API by calling an existing
- * read-only, already-password-protected endpoint (passport-list) — no
+ * read-only, already-password-protected endpoint (passport-list) – no
  * dedicated "check password" endpoint exists, and this one has no side
  * effects, so it's safe to use purely as a verification probe.
  */

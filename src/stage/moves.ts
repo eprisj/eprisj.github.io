@@ -1,13 +1,13 @@
 // Приёмы Бюро, применённые к сцене.
 //
 // Каждый оператор выведен из текста своего разбора и ничего к нему не
-// добавляет: параметр берётся из слоя «Mechanics», а предупреждения — дословно
+// добавляет: параметр берётся из слоя «Mechanics», а предупреждения – дословно
 // из «Where it breaks». Это НЕ реконструкция чужих работ, стоящих в разборе
 // примерами: их размеров и конструкции мы не знаем, и придуманная
 // спецификация была бы ложью, подписанной чужим именем. Приём применяется к
-// ВАШЕЙ коробке — он показывает механику, а не копирует постановку.
+// ВАШЕЙ коробке – он показывает механику, а не копирует постановку.
 //
-// Оператор — чистая функция: сцена, которую вы собрали, остаётся базой, приём
+// Оператор – чистая функция: сцена, которую вы собрали, остаётся базой, приём
 // строится поверх неё. Поэтому ползунок можно возить туда-сюда без накопления
 // сдвига, а «Bake» переносит результат в базу.
 import { newId, type Scene, type SceneObject } from './sceneModel';
@@ -32,7 +32,7 @@ export interface Reading {
 export type Params = Record<string, number>;
 
 export interface Move {
-  /** Совпадает со slug разбора в Бюро — оператор без разбора не показывается. */
+  /** Совпадает со slug разбора в Бюро – оператор без разбора не показывается. */
   slug: string;
   params: MoveParam[];
   apply: (scene: Scene, params: Params, subjectId: string | null) => Scene;
@@ -47,7 +47,7 @@ export function defaultParams(move: Move): Params {
   return initialParams(move);
 }
 
-/** Предмет приёма: выделенный объект, иначе самый крупный — приём всегда
+/** Предмет приёма: выделенный объект, иначе самый крупный – приём всегда
  *  должен на чём-то стоять, даже если пользователь ничего не выбрал. */
 function subjectOf(scene: Scene, subjectId: string | null): SceneObject | null {
   if (subjectId) {
@@ -66,7 +66,7 @@ const round = (n: number, places = 1) => Number(n.toFixed(places));
 
 /* ── object in emptiness ─────────────────────────────────────────────────────
    «An object cut out of its usual company forces the viewer to supply the
-   context.» Параметр — радиус пустоты; всё прочее выталкивается за него.
+   context.» Параметр – радиус пустоты; всё прочее выталкивается за него.
    Разбор отдельно предупреждает: считать надо радиус, а не предмет в нём. */
 const objectInEmptiness: Move = {
   slug: 'object-in-emptiness',
@@ -86,9 +86,9 @@ const objectInEmptiness: Move = {
         let distance = Math.hypot(dx, dz);
         const needed = clearance + Math.max(o.w, o.d) / 2;
         if (distance >= needed) return o;
-        /* Совпадающие центры — не редкость, а норма: новые объекты рождаются
+        /* Совпадающие центры – не редкость, а норма: новые объекты рождаются
            в середине коробки. Луча от предмета в этом случае нет, поэтому
-           раскладываем такие объекты веером по стабильному углу от индекса —
+           раскладываем такие объекты веером по стабильному углу от индекса –
            иначе умножение нулевого вектора оставляло бы их стоять в точке. */
         if (distance < 0.001) {
           const angle = (index * 2 * Math.PI) / Math.max(scene.objects.length - 1, 1);
@@ -96,7 +96,7 @@ const objectInEmptiness: Move = {
           dz = Math.sin(angle);
           distance = 1;
         }
-        // Толкаем по лучу от предмета — направление, в котором объект уже
+        // Толкаем по лучу от предмета – направление, в котором объект уже
         // стоял, сохраняется, меняется только дистанция.
         const scale = needed / distance;
         const nx = c.x + dx * scale - o.w / 2;
@@ -126,7 +126,7 @@ const objectInEmptiness: Move = {
     /* «The move collapses the moment a second, similar object appears beside
        it.» Расстояние здесь не показатель: приём сам расставляет соседей по
        кольцу на РАВНОМ отдалении, а равенство и есть узор. Считать надо
-       похожесть — близнец по размеру ломает приём, где бы он ни стоял. */
+       похожесть – близнец по размеру ломает приём, где бы он ни стоял. */
     const twins = scene.objects.filter((o) => {
       if (o.id === subject.id) return false;
       const ratio = volume(o) / (volume(subject) || 1);
@@ -147,7 +147,7 @@ const objectInEmptiness: Move = {
    вмешательства. Обе границы взяты из «Where it breaks» и «What it costs». */
 /* Раскладка копий живёт отдельно, потому что ею пользуются ОБА метода: apply
    строит по ней объекты, read по ней же отчитывается. Иначе панель говорила бы
-   «восемь», пока в коробку помещается три — ровно то умолчание, которого
+   «восемь», пока в коробку помещается три – ровно то умолчание, которого
    витрина избегает в текстах о работах. */
 function packCopies(scene: Scene, subject: SceneObject, count: number): { x: number; z: number }[] {
   if (count <= 1) return [];
@@ -252,7 +252,7 @@ const clothAsWall: Move = {
 };
 
 /* ── material that returns ───────────────────────────────────────────────────
-   «Build from what the last show left behind.» Мерило — попадание в складской
+   «Build from what the last show left behind.» Мерило – попадание в складской
    модуль: то, что режется в размер, назад не вернётся. */
 const materialThatReturns: Move = {
   slug: 'material-that-returns',
@@ -293,7 +293,7 @@ const materialThatReturns: Move = {
 };
 
 /* ── a room inside a room ────────────────────────────────────────────────────
-   «Let the seam between the two do the talking» — поэтому параметр здесь шов,
+   «Let the seam between the two do the talking» – поэтому параметр здесь шов,
    а не внутренняя коробка: коробка из него следует. */
 const roomInsideARoom: Move = {
   slug: 'room-inside-a-room',

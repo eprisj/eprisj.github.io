@@ -395,9 +395,9 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
 
             <div className="mt-12">
               {/* Строка «18 works / 5 in route / 3 disciplines» убрана.
-                  Ни одно из трёх чисел не про работы: 18 — это потолок среза
-                  атласа (slice(0,18)), 5 — длина маршрута, зашитая константой
-                  в curatedRoute, 3 — сколько дисциплин попало в эти пять. То
+                  Ни одно из трёх чисел не про работы: 18 – это потолок среза
+                  атласа (slice(0,18)), 5 – длина маршрута, зашитая константой
+                  в curatedRoute, 3 – сколько дисциплин попало в эти пять. То
                   есть счётчики считали собственный UI и на трёх линзах из
                   четырёх не менялись вовсе. Тот же дефект, что и у «99
                   production score», который отсюда уже убирали. */}
@@ -420,7 +420,7 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
         </div>
 
         <div className="grid border-t border-[#f8f3ea]/14 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.42fr)]">
-          {/* self-start обязателен: соседняя колонка — маршрут на пять пунктов,
+          {/* self-start обязателен: соседняя колонка – маршрут на пять пунктов,
               и без него эта растягивалась под её высоту, оставляя под абзацем
               пустой полуэкран. */}
           <div className="px-5 py-7 sm:px-8 lg:self-start lg:px-10">
@@ -470,8 +470,8 @@ export function ShowcaseAtlas({ works, loading, onOpenWork }: { works: Work[]; l
             </ol>
 
             {/* Две равновесные кнопки читались как выбор из двух незнакомых
-                действий. Досье — то, что человек уносит с собой; копирование
-                текста в буфер — служебный дубль того же, и стоит тише. */}
+                действий. Досье – то, что человек уносит с собой; копирование
+                текста в буфер – служебный дубль того же, и стоит тише. */}
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <button type="button" onClick={handleExportDossier} disabled={exporting || !route.length} className={`${btnSolid('ink')} disabled:opacity-40`}>
                 {exporting ? <Loader2 size={14} className="animate-spin" /> : <FileDown size={14} />}

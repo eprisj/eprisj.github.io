@@ -1,6 +1,6 @@
 // Видимость: то единственное, ради чего эта коробка вообще считается машиной.
 //
-// Расставить прямоугольники можно и на салфетке. Чего салфетка не делает —
+// Расставить прямоугольники можно и на салфетке. Чего салфетка не делает –
 // не отвечает, что с крайнего кресла закрыто декорацией. Это настоящая работа
 // сценографа: мёртвые зоны ищут руками, ошибаются и переделывают построенное.
 //
@@ -18,7 +18,7 @@ export interface Seat {
   label: string;
 }
 
-/** Кресла ряда: середина и два края. Именно на краях сцена и разваливается —
+/** Кресла ряда: середина и два края. Именно на краях сцена и разваливается –
  *  из центра почти всегда видно всё. */
 export function seatsOf(scene: Scene, rowWidth = 6): Seat[] {
   const { viewer, room } = scene;
@@ -33,7 +33,7 @@ export function seatsOf(scene: Scene, rowWidth = 6): Seat[] {
 }
 
 /* Пересечение отрезка с коробкой методом плит. Поворот объекта учитывается
-   переводом отрезка в его собственные оси — так не нужно вращать саму коробку. */
+   переводом отрезка в его собственные оси – так не нужно вращать саму коробку. */
 function segmentHitsBox(
   ax: number, ay: number, az: number,
   bx: number, by: number, bz: number,
@@ -95,11 +95,11 @@ export interface Sightlines {
   stageArea: number;
 }
 
-/** `step` — шаг выборки в метрах. 0.25 даёт честную картину и считается мгновенно. */
+/** `step` – шаг выборки в метрах. 0.25 даёт честную картину и считается мгновенно. */
 export function computeSightlines(scene: Scene, step = 0.25): Sightlines {
   const seats = seatsOf(scene);
   // Заслоняют только те элементы, что реально стоят на пути: следы приёма
-  // (пунктирные) — предположение, а не построенное, и в расчёт не идут.
+  // (пунктирные) – предположение, а не построенное, и в расчёт не идут.
   const blockers = scene.objects.filter((o) => !o.generatedBy && o.h > 0.05);
   const cells: Cell[] = [];
   let dead = 0;
@@ -108,7 +108,7 @@ export function computeSightlines(scene: Scene, step = 0.25): Sightlines {
   const cellArea = step * step;
 
   for (let z = step / 2; z < scene.room.d; z += step) {
-    // Позади ряда сцены нет — там сидят, а не играют.
+    // Позади ряда сцены нет – там сидят, а не играют.
     if (z >= scene.viewer.z - step) continue;
     for (let x = step / 2; x < scene.room.w; x += step) {
       stage += cellArea;

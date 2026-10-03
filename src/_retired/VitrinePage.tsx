@@ -453,7 +453,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave, items, onOp
         {locked ? copy.lockedNote : WORKS_INSTALLED.has(hall) ? copy.partialHall : copy.emptyHall}
       </p>
       {/* Список того, что стоит в зале. По самим вещам кликают в комнате, но
-          мышью попасть в предмет в глубине зала трудно, а с клавиатуры —
+          мышью попасть в предмет в глубине зала трудно, а с клавиатуры –
           никак. Список делает то же самое и заодно говорит, что здесь есть,
           не заходя внутрь. */}
       {items.length > 0 && (
@@ -475,7 +475,7 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave, items, onOp
         </ul>
       )}
 
-      {/* Зал — это место, а не абзац: отсюда в него входят. */}
+      {/* Зал – это место, а не абзац: отсюда в него входят. */}
       <button
         type="button"
         onClick={entered ? onLeave : onEnter}
@@ -489,14 +489,14 @@ function HallPanel({ copy, hall, onClear, entered, onEnter, onLeave, items, onOp
 
 /* Залы, в которых уже что-то стоит. Список короткий и лежит рядом с текстом
    намеренно: строчка «здесь пока ничего не смонтировано» под залом с
-   работами — это ровно то враньё, ради которого текст и правят. Сам состав
+   работами – это ровно то враньё, ради которого текст и правят. Сам состав
    залов с работами задан в Interior.tsx. */
 const WORKS_INSTALLED = new Set<HallId>(['collection', 'practice']);
 
 /* КАРТОЧКА ПРЕДМЕТА В ЗАЛЕ.
  *
  * Ровно те поля, что заполняет редакция, и ни одного придуманного: пустое
- * поле не показывается вовсе, потому что «Автор: —» в музее читается как
+ * поле не показывается вовсе, потому что «Автор: –» в музее читается как
  * утверждение, что автор неизвестен, а не что паспорт ещё не дописан. */
 function ObjectPanel({ copy, item, onClose }: { copy: MuseumCopy; item: MuseumObject; onClose: () => void }) {
   const rows: [string, string | undefined][] = [
@@ -548,12 +548,12 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
   const [entered, setEntered] = useState(false);
   /* Паспорт предмета редакция уже заполняла, но прочитать его было негде:
      вещь стояла в зале молча. Клик по вещи открывает её карточку в колонке
-     справа — там же, где стоит описание самого зала. */
+     справа – там же, где стоит описание самого зала. */
   const [selectedObject, setSelectedObject] = useState<string | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const shown = objects.find((item) => item.id === selectedObject) || null;
 
-  /* Нажать «войти» и остаться смотреть на абзац — это и есть «нажимаю, а где
+  /* Нажать «войти» и остаться смотреть на абзац – это и есть «нажимаю, а где
      комната». После входа страница подводит к самому залу. */
   const enterHall = () => {
     setEntered(true);
@@ -561,7 +561,7 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
       stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   };
-  /* Вышли из зала — вышли и из комнаты: состояние не должно пережить смену
+  /* Вышли из зала – вышли и из комнаты: состояние не должно пережить смену
      зала, иначе следующий зал открывается уже изнутри чужой комнаты. */
   useEffect(() => { setEntered(false); setSelectedObject(null); }, [hall]);
   /* Пустая коллекция больше не объясняется абзацами о том, что её готовят.
@@ -604,10 +604,10 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
           />
         </Suspense>
         {/* Внутри зала заголовок во всю ширину лежит поперёк комнаты: снаружи
-            это подпись на планшете, изнутри — надпись на стене. */}
+            это подпись на планшете, изнутри – надпись на стене. */}
         {/* Подложка под заголовком: он лежит поверх макета, а макет бывает
             и светлым, и тёмным в одном и том же месте кадра. */}
-        {/* Выбран зал — камера подходит к зданию, и подписи объёмов уезжают
+        {/* Выбран зал – камера подходит к зданию, и подписи объёмов уезжают
             вниз кадра, прямо на слово «Museum» и на надпись над ним. Титул
             принадлежит внешнему виду: как только зал выбран, его имя уже
             стоит в колонке справа, и спорить двум заголовкам незачем. */}
@@ -645,11 +645,11 @@ function EmptyVitrine({ copy, hall, onHall, objects }: { copy: MuseumCopy; hall:
           <div className="flex flex-col gap-6 p-5 sm:p-8 lg:p-12">
             <div className="flex items-start justify-between gap-4">
               {/* На телефоне та же подпись стоит строкой выше, в шапке раздела:
-                  две одинаковые строки подряд — не заголовок, а сбой. */}
+                  две одинаковые строки подряд – не заголовок, а сбой. */}
               <p className="hidden font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)] sm:block">{copy.museumLabel}</p>
               <p className="shrink-0 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.modelHint}</p>
             </div>
-            {/* Список залов дублирует клик по зданию: макет — не единственный
+            {/* Список залов дублирует клик по зданию: макет – не единственный
                 способ попасть внутрь, и с клавиатуры он недоступен. */}
             <div>
               <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{copy.hallsHint}</p>
@@ -743,7 +743,7 @@ export function VitrinePage({ lang = 'EN', hall, onHallChange }: { lang?: string
   const [selectedId, setSelectedId] = useState<string | null>(() => works[0]?.id || null);
   const copy = getMuseumCopy(lang);
   /* Зал живёт в адресе, а не в состоянии страницы: неизвестное имя в ссылке
-     не должно ломать экран — оно просто открывает музей целиком. */
+     не должно ломать экран – оно просто открывает музей целиком. */
   const activeHall = (HALLS.find((item) => item.id === hall)?.id ?? null) as HallId | null;
   const setHall = (next: HallId | null) => onHallChange?.(next);
 

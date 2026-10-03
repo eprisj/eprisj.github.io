@@ -66,17 +66,17 @@ function escapeAttr(str) {
   return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
-/* Пошуковий сніпет — не те саме поле, що редакційний вступний абзац.
+/* Пошуковий сніпет – не те саме поле, що редакційний вступний абзац.
  *
  * article.excerpt пишеться як перший абзац під заголовком на самій сторінці:
  * там йому природно бути на чотириста-п'ятсот символів. У <meta
  * name="description">, og:description і twitter:description той самий
- * текст лягав без жодного обрізання — Google різав його на середині слова
+ * текст лягав без жодного обрізання – Google різав його на середині слова
  * десь у районі 155-160 символів (а частіше просто ігнорував і сам
  * переписував сніпет з тіла статті, тобто вся ретельно написана фраза йшла
  * в нікуди), а картка в Telegram/Twitter показувала абзац, обірваний на
  * середині речення. Structured data (NewsArticle.description) лишає повний
- * excerpt — там довжина не карається так само жорстко і опис справді описує
+ * excerpt – там довжина не карається так само жорстко і опис справді описує
  * статтю, а не намагається вміститись в один рядок видачі. */
 function metaDescription(text, max = 155) {
   const clean = String(text || '').replace(/\s+/g, ' ').trim();
@@ -117,7 +117,7 @@ function articleBody(article) {
 
 
 /* Пререндер бачив лише <title> і мету: у тілі сторінки не було ні тексту,
-   ні посилань, ні h1 — статтю індексувати було нічим. React під час
+   ні посилань, ні h1 – статтю індексувати було нічим. React під час
    монтування вміст #root затирає, тому цей блок нічого не ламає, зате
    краулер без JS бачить справжній матеріал, а користувач на повільному
    зв'язку читає текст ще до завантаження застосунку.
@@ -125,7 +125,7 @@ function articleBody(article) {
    Кольори й шрифти беремо змінними (--c-accent, --font-body, --font-display),
    а не своїми значеннями: index.css вже підключений у <head> цієї ж сторінки,
    тож змінні реально є на момент рендеру. Раніше тут стояли захардкожені
-   PT Serif/#2b2b2b — сіро-серифний плейсхолдер на бежевому тлі сайту, що на
+   PT Serif/#2b2b2b – сіро-серифний плейсхолдер на бежевому тлі сайту, що на
    секунду-дві (помітніше на мобільному, де гідратація повільніша) виглядав
    як зовсім інший дизайн, поки React не змонтувався і не підмінив розмітку.
 
@@ -288,7 +288,8 @@ function breadcrumbSchema(items) {
 const shellPath = join(distDir, '.shell.html');
 if (!existsSync(shellPath)) writeFileSync(shellPath, readFileSync(join(distDir, 'index.html'), 'utf-8'));
 const indexHtml = readFileSync(shellPath, 'utf-8');
-const content = JSON.parse(readFileSync(contentPath, 'utf-8'));
+// Довгого тире на сайті немає: у попередньо відрендерених сторінках теж середнє «–»
+const content = JSON.parse(readFileSync(contentPath, 'utf-8').replace(/\u2014/g, '\u2013').replace(/&mdash;/g, '&ndash;'));
 
 // Static route/SEO pages must follow the same publication rules as the app.
 // Otherwise an untouched editor blueprint is hidden in the React feed but its
@@ -324,7 +325,7 @@ const publicReviews = (content.reviews || []).filter(isPublicEntry);
 
 // Schema.org type for a review's itemReviewed. Kept in sync with
 // itemReviewedType() in src/data.ts (this script runs as plain Node, so it
-// can't import that TS module directly) — see the comment there for why
+// can't import that TS module directly) – see the comment there for why
 // 'Thing' was wrong: Search Console flagged it as an invalid itemReviewed
 // type, since Google's Review snippet only recognises a fixed list (Book,
 // Event, LocalBusiness, Movie, MusicPlaylist, Product, …) and 'Thing' isn't

@@ -1,18 +1,18 @@
 "use strict";
 
-/* EPRIS FORMS — анкеты для авторов.
+/* EPRIS FORMS – анкеты для авторов.
  *
- * Зачем свой механизм, а не Google Forms: анкета автора — это редакционный
+ * Зачем свой механизм, а не Google Forms: анкета автора – это редакционный
  * документ. Он содержит имя, почту, иногда гонорарные и паспортные данные, и
  * отдавать его чужому сервису значит терять контроль над тем, где эти данные
- * лежат и кто их видит. Плюс ответы нужны РЯДОМ с материалом — в той же
+ * лежат и кто их видит. Плюс ответы нужны РЯДОМ с материалом – в той же
  * админке, где редактор ведёт статью, а не в отдельной вкладке чужого сайта.
  *
  * Отдельный процесс, как у Interview Studio: выкат сайта перезапускает
  * deploy-webhook несколько раз в день, и незачем ронять вместе с ним приём
  * ответов, который может идти в этот момент.
  *
- * Хранение — файлы JSON, по одному на форму и по одному на пачку ответов.
+ * Хранение – файлы JSON, по одному на форму и по одному на пачку ответов.
  * База данных здесь не окупается: форм десятки, ответов сотни, а файл можно
  * скопировать, прочитать глазами и положить в бэкап без дампов.
  */
@@ -29,16 +29,16 @@ const UPLOADS_DIR = path.join(ROOT, "uploads");
 
 /* ФАЙЛЫ АВТОРА.
  *
- * Портфолио, макеты, оригиналы фотографий — то, ради чего анкету и заводят.
+ * Портфолио, макеты, оригиналы фотографий – то, ради чего анкету и заводят.
  * Формально «без ограничений» не бывает: на диске VPS шесть с небольшим
  * свободных гигабайт, и анкета, забившая его под ноль, уронит вместе с собой
  * сайт, радио и админку. Поэтому пределы щедрые, но названные, и они
  * настраиваются переменными окружения без правки кода:
- *   FORMS_MAX_FILE_MB     — один файл (по умолчанию 512 МБ)
- *   FORMS_MAX_RESPONSE_MB — все файлы одного ответа (по умолчанию 2 ГБ)
- *   FORMS_MIN_FREE_GB     — сколько места на диске беречь (по умолчанию 2 ГБ)
+ *   FORMS_MAX_FILE_MB     – один файл (по умолчанию 512 МБ)
+ *   FORMS_MAX_RESPONSE_MB – все файлы одного ответа (по умолчанию 2 ГБ)
+ *   FORMS_MIN_FREE_GB     – сколько места на диске беречь (по умолчанию 2 ГБ)
  * Тип файла не ограничен вовсе: «любые» здесь означает буквально любые. Файл
- * никогда не отдаётся по прямому пути и не исполняется — он лежит под
+ * никогда не отдаётся по прямому пути и не исполняется – он лежит под
  * случайным именем и скачивается только редакцией, по паролю. */
 const MAX_FILE_BYTES = Math.round((Number(process.env.FORMS_MAX_FILE_MB) || 512) * 1024 * 1024);
 const MAX_RESPONSE_BYTES = Math.round((Number(process.env.FORMS_MAX_RESPONSE_MB) || 2048) * 1024 * 1024);
@@ -47,19 +47,19 @@ const MIN_FREE_BYTES = Math.round((Number(process.env.FORMS_MIN_FREE_GB) || 2) *
    сутки. Иначе диск копит чужие черновики вечно. */
 const ORPHAN_FILE_TTL_MS = 24 * 60 * 60 * 1000;
 
-const MAX_BODY_BYTES = 512 * 1024;      // анкета — это текст, не медиатека
+const MAX_BODY_BYTES = 512 * 1024;      // анкета – это текст, не медиатека
 const MAX_FIELDS = 60;
 const MAX_ANSWER_CHARS = 8000;
 const DEFAULT_MAX_LENGTH = 5000;
 const MAX_RESPONSES_PER_FORM = 5000;
-/* Один IP — десять ответов в час. Живой автор столько не отправляет, а
+/* Один IP – десять ответов в час. Живой автор столько не отправляет, а
    скрипту этого мало, чтобы засорить анкету. */
 const RATE_LIMIT_PER_HOUR = 10;
 
 const FIELD_TYPES = new Set([
   "short-text", "long-text", "email", "url", "number", "date",
   "single-choice", "multi-choice", "consent", "section", "files",
-  /* Картинка в анкете — не вопрос, а часть текста: пример макета, обложка
+  /* Картинка в анкете – не вопрос, а часть текста: пример макета, обложка
      номера, схема проезда. Ответа не требует и в выгрузку не попадает. */
   "image",
 ]);
@@ -76,11 +76,11 @@ const newId = () => crypto.randomBytes(9).toString("hex");
 const clean = (value, max = 300) => String(value == null ? "" : value).replace(/\s+/g, " ").trim().slice(0, max);
 const cleanMultiline = (value, max = MAX_ANSWER_CHARS) => String(value == null ? "" : value).replace(/\r\n/g, "\n").trim().slice(0, max);
 
-/* Ссылка на анкету должна читаться и диктоваться по телефону, поэтому slug —
+/* Ссылка на анкету должна читаться и диктоваться по телефону, поэтому slug –
    из букв заголовка, а не случайная строка.
 
    Кириллический заголовок превращать в транслит («anketa-avtora-osennyi-nomer»)
-   — плохой выход: такую ссылку не прочитает ни русскоязычный, ни иностранный
+   – плохой выход: такую ссылку не прочитает ни русскоязычный, ни иностранный
    автор, а именно её отправляют людям, для которых журнал англоязычный.
    Поэтому заголовок на кириллице даёт короткий английский адрес по словарю
    ходовых слов анкет, а редактор всегда может задать свой явно. */
@@ -89,7 +89,7 @@ const TRANSLIT = {
   н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",х:"h",ц:"ts",ч:"ch",ш:"sh",щ:"shch",ъ:"",ы:"y",ь:"",э:"e",ю:"iu",я:"ia",
 };
 /* Словарь на те слова, из которых редакция реально составляет названия
-   анкет. Промахнулись — редактор правит адрес руками, поле для этого есть. */
+   анкет. Промахнулись – редактор правит адрес руками, поле для этого есть. */
 const SLUG_WORDS = {
   анкета: "questionnaire", анкети: "questionnaire", анкета_автора: "author-questionnaire",
   автор: "author", автора: "author", авторов: "authors", авторська: "author",
@@ -106,7 +106,7 @@ const SLUG_WORDS = {
 function slugify(value) {
   const raw = String(value || "").toLowerCase().trim();
   const latin = raw.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-  // Заголовок уже латиницей — берём как есть, ничего не выдумывая.
+  // Заголовок уже латиницей – берём как есть, ничего не выдумывая.
   if (latin.length >= 3) return latin.slice(0, 60);
 
   const words = raw.split(/[^a-zа-яёіїєґ0-9]+/i).filter(Boolean);
@@ -168,7 +168,7 @@ async function writeResponses(formId, responses) {
  *
  * Основной файл анкеты перезаписывается целиком, и это нормально, пока пишет
  * кто-то один. Но ответ может прийти и во время выката, и одновременно со
- * вторым ответом, и в момент, когда на разделе кончается место, — а человек по
+ * вторым ответом, и в момент, когда на разделе кончается место, – а человек по
  * ту сторону уже увидел «спасибо» и второй раз анкету не пришлёт.
  *
  * Поэтому рядом ведётся журнал: одна строка JSON на ответ, только дозапись,
@@ -184,7 +184,7 @@ function appendResponseLog(formId, response) {
     ensureDirs();
     fs.appendFileSync(responsesLogPath(formId), JSON.stringify(response) + "\n");
   } catch (error) {
-    // Журнал — страховка, а не условие приёма: его отказ не должен отменять
+    // Журнал – страховка, а не условие приёма: его отказ не должен отменять
     // уже принятый ответ.
     console.error("[forms] response log failed", formId, error.message);
   }
@@ -240,7 +240,7 @@ function freeBytes() {
     const stat = fs.statfsSync(ROOT);
     return stat.bavail * stat.bsize;
   } catch {
-    // Нет statfs — не притворяемся, что места нет: проверку просто пропускаем.
+    // Нет statfs – не притворяемся, что места нет: проверку просто пропускаем.
     return Number.MAX_SAFE_INTEGER;
   }
 }
@@ -266,7 +266,7 @@ async function saveFileMeta(formId, meta) {
   await writeJsonAtomic(`${uploadPath(formId, meta.id)}.json`, meta);
 }
 
-/* Файлы, на которые не сослался ни один ответ, — это брошенные черновики.
+/* Файлы, на которые не сослался ни один ответ, – это брошенные черновики.
    Собираются раз в час и после суток жизни удаляются вместе с описанием. */
 function sweepOrphanFiles() {
   ensureDirs();
@@ -318,7 +318,7 @@ function normaliseField(raw, index) {
   const options = Array.isArray(raw?.options)
     ? raw.options.map((option) => clean(option, 160)).filter(Boolean).slice(0, 30)
     : [];
-  /* «Ограничения нет» и «ограничение равно нулю» — разные вещи, и Number()
+  /* «Ограничения нет» и «ограничение равно нулю» – разные вещи, и Number()
      их не различает: Number(null) даёт 0, а зажим в допустимый диапазон
      превращал этот ноль в единицу. Так у анкеты, пересохранённой без явных
      настроек, все поля получили предел в ОДИН символ, и человек видел
@@ -348,12 +348,12 @@ function normaliseField(raw, index) {
        юридическая формулировка, и обрезать её на ста шестидесяти знаках
        значит опубликовать половину условия. */
     placeholder: clean(raw?.placeholder, type === "consent" ? 1500 : 160),
-    // У раздела и согласия обязательность смысла не имеет — у первого нет
+    // У раздела и согласия обязательность смысла не имеет – у первого нет
     // ответа, у второго она означает «нельзя отправить без галочки».
     required: (type === "section" || type === "image") ? false : Boolean(raw?.required),
     imageUrl: type === "image" ? clean(raw?.imageUrl, 500) : "",
     options: (type === "single-choice" || type === "multi-choice") ? options : [],
-    /* Рамки ответа. Пустое значение означает «без ограничения» — это не то же
+    /* Рамки ответа. Пустое значение означает «без ограничения» – это не то же
        самое, что ноль, поэтому null, а не 0. */
     minLength: ["short-text", "long-text"].includes(type) ? num(raw?.minLength, 0, 20000) : null,
     /* Верхняя граница по умолчанию щедрая: пять тысяч знаков это примерно
@@ -374,7 +374,7 @@ function normaliseField(raw, index) {
 /* ПОКАЗАТЬ АНКЕТУ ДО ТОГО, КАК ЕЁ ОТКРЫЛИ.
  *
  * Черновик отвечал «анкета закрыта» всем, включая саму редакцию: посмотреть,
- * как вопросы выглядят глазами автора, можно было только открыв приём — то
+ * как вопросы выглядят глазами автора, можно было только открыв приём – то
  * есть согласившись принимать ответы раньше, чем анкета готова. Предпросмотр
  * в панели упирался в то же самое.
  *
@@ -417,7 +417,7 @@ function normaliseForm(raw, existing = null) {
     aliases,
     title,
     description: cleanMultiline(raw?.description, 2000) || existing?.description || "",
-    /* Что автор увидит после отправки. Пустая страница «спасибо» — самый
+    /* Что автор увидит после отправки. Пустая страница «спасибо» – самый
        частый способ заставить человека отправить анкету дважды. */
     thankYou: cleanMultiline(raw?.thankYou, 800) || existing?.thankYou || "",
     language: clean(raw?.language, 5).toUpperCase() || existing?.language || "EN",
@@ -508,7 +508,7 @@ function formClosedReason(form) {
 /* ── Проверка ответа ────────────────────────────────────────────────────────
    Проверяем на сервере, а не только в браузере: форма открыта миру, и до
    диска доходит ровно то, что мы согласились принять. */
-/* Виден ли вопрос при таких ответах. Скрытый вопрос не спрашивают — и не
+/* Виден ли вопрос при таких ответах. Скрытый вопрос не спрашивают – и не
    требуют: иначе анкета отказывалась бы отправляться из-за поля, которого
    автор в глаза не видел. */
 function fieldVisible(field, answers) {
@@ -554,18 +554,18 @@ function validateAnswers(form, rawAnswers) {
       if (field.required && value === "") errors.push(field.label);
       if (value !== "") {
         const parsed = Number(value);
-        if (field.min !== null && field.min !== undefined && parsed < field.min) errors.push(`${field.label} — не меньше ${field.min}`);
-        if (field.max !== null && field.max !== undefined && parsed > field.max) errors.push(`${field.label} — не больше ${field.max}`);
+        if (field.min !== null && field.min !== undefined && parsed < field.min) errors.push(`${field.label} – не меньше ${field.min}`);
+        if (field.max !== null && field.max !== undefined && parsed > field.max) errors.push(`${field.label} – не больше ${field.max}`);
       }
     } else if (field.type === "email") {
       value = clean(raw, 200).toLowerCase();
-      if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) errors.push(`${field.label} — неверный адрес`);
+      if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) errors.push(`${field.label} – неверный адрес`);
       else if (field.required && !value) errors.push(field.label);
     } else {
       value = field.type === "long-text" ? cleanMultiline(raw) : clean(raw, 500);
       if (field.required && !value) errors.push(field.label);
       else if (value) {
-        if (field.minLength && value.length < field.minLength) errors.push(`${field.label} — не короче ${field.minLength} знаков`);
+        if (field.minLength && value.length < field.minLength) errors.push(`${field.label} – не короче ${field.minLength} знаков`);
         if (field.maxLength && value.length > field.maxLength) value = value.slice(0, field.maxLength);
       }
     }
@@ -588,7 +588,7 @@ function tooManyRecent(responses, fingerprint) {
 
 function csvEscape(value) {
   const list = Array.isArray(value)
-    // Файлы в таблице — это их имена: идентификатор на диске в отчёте не нужен.
+    // Файлы в таблице – это их имена: идентификатор на диске в отчёте не нужен.
     ? value.map((item) => (item && typeof item === "object" && item.name ? item.name : item))
     : null;
   const text = list ? list.join("; ") : String(value == null ? "" : value);
@@ -603,7 +603,7 @@ function responsesCsv(form, responses) {
     response.inviteLabel || "",
     ...columns.map((field) => response.answers?.[field.id] ?? ""),
   ]);
-  // BOM — иначе Excel открывает кириллицу как «ÐÐ½ÐºÐµÑ‚Ð°».
+  // BOM – иначе Excel открывает кириллицу как «ÐÐ½ÐºÐµÑ‚Ð°».
   return "﻿" + [header, ...rows].map((row) => row.map(csvEscape).join(",")).join("\r\n");
 }
 
@@ -617,7 +617,7 @@ function responsesCsv(form, responses) {
  * машине, где живут ещё четыре проекта) ради этого не стоит.
  *
  * Уведомление НИКОГДА не влияет на приём: почта отвалилась, ящик переполнен,
- * настроек нет — ответ всё равно принят и лежит на диске. Поэтому отправка
+ * настроек нет – ответ всё равно принят и лежит на диске. Поэтому отправка
  * идёт после ответа автору и её ошибки только пишутся в журнал.             */
 const net = require("net");
 const tls = require("tls");
@@ -661,7 +661,7 @@ function smtpSend({ to, subject, text }) {
       Buffer.from(text, "utf8").toString("base64").replace(/(.{76})/g, "$1\r\n"),
     ].join("\r\n");
 
-    /* Каждая строка — «команда и код, который сервер должен ответить». Держать
+    /* Каждая строка – «команда и код, который сервер должен ответить». Держать
        их списком проще, чем цепочкой колбэков: видно весь диалог целиком. */
     const steps = [
       { send: "EHLO eprisjournal.com", expect: 250 },
@@ -693,7 +693,7 @@ function smtpSend({ to, subject, text }) {
     socket.on("data", (chunk) => {
       buffer += chunk.toString("utf8");
       /* Ответ SMTP бывает многострочным: продолжение помечено дефисом после
-         кода («250-SIZE»), последняя строка — пробелом («250 OK»). Пока не
+         кода («250-SIZE»), последняя строка – пробелом («250 OK»). Пока не
          пришла она, отвечать рано. */
       const lines = buffer.split(/\r?\n/).filter(Boolean);
       const last = lines[lines.length - 1] || "";
@@ -724,9 +724,9 @@ function answerPreview(form, response) {
 
 /* ТЕЛЕГРАМ КАК ВТОРОЙ КАНАЛ.
  *
- * Почта требует чужого сервера и его настроек; телеграм — токена бота и номера
- * чата, и включается за пару минут. Каналы независимы: настроен один — работает
- * один, настроены оба — придёт и туда, и туда, потому что «ответ пришёл» лучше
+ * Почта требует чужого сервера и его настроек; телеграм – токена бота и номера
+ * чата, и включается за пару минут. Каналы независимы: настроен один – работает
+ * один, настроены оба – придёт и туда, и туда, потому что «ответ пришёл» лучше
  * увидеть дважды, чем не увидеть вовсе.                                      */
 const TELEGRAM = {
   token: process.env.FORMS_TELEGRAM_TOKEN || "",
@@ -764,7 +764,7 @@ async function notifyNewResponse(form, response, total) {
     "",
     `Открыть в панели: https://eprisjournal.com/admin/#forms`,
     "",
-    "————",
+    "––––",
     "",
     answerPreview(form, response),
   ].filter((line) => line !== "").join("\n");

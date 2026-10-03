@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-// Portrait crop box — same aspect used everywhere the photo renders (preview,
+// Portrait crop box – same aspect used everywhere the photo renders (preview,
 // PNG export, PDF export) so what you crop is exactly what you get.
 export const CROP_W = 240;
 export const CROP_H = 320;
 // The exported photo only ever renders inside a ~360px-wide box on the card
 // (preview, 1400px PNG/PDF page). 600×800 is more than enough for print at that
-// size while keeping the base64 payload small — the old 720×960@0.92 could
+// size while keeping the base64 payload small – the old 720×960@0.92 could
 // balloon to ~900KB, which made the publish POST slow and flaky on mobile.
 export const CROP_EXPORT_W = 600;
 export const CROP_EXPORT_H = 800;
@@ -41,7 +41,7 @@ export function PhotoCropper({
     const w = el.naturalWidth;
     const h = el.naturalHeight;
     setNatural({ w, h });
-    // Cover the crop box entirely — never show letterboxing.
+    // Cover the crop box entirely – never show letterboxing.
     const s = Math.max(CROP_W / w, CROP_H / h);
     setMinScale(s);
     setScale(s);

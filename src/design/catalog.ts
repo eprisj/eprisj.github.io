@@ -39,38 +39,38 @@ export interface SetDesign {
 }
 
 export const CATALOG: CatalogItem[] = [
-  // ── Sofas — IKEA ──
+  // ── Sofas – IKEA ──
   { id: 1, url: 'https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/', name: 'KIVIK Sofa, beige/gray', category: 'Sofas', styles: ['warm', 'minimalist', 'scandinavian'], room: 'living', retailer: 'IKEA' },
   { id: 2, url: 'https://www.ikea.com/us/en/p/vimle-sofa-3-seat-lejde-light-gray-s29484837/', name: 'VIMLE Sofa, light gray', category: 'Sofas', styles: ['minimalist', 'modern', 'scandinavian'], room: 'living', retailer: 'IKEA' },
   { id: 3, url: 'https://www.ikea.com/us/en/p/stockholm-2025-sofa-sundhamn-beige-00586096/', name: 'STOCKHOLM 2025 Sofa, beige', category: 'Sofas', styles: ['warm', 'classic', 'elevated'], room: 'living', retailer: 'IKEA' },
   { id: 4, url: 'https://www.ikea.com/us/en/p/finnala-sofa-with-chaise-gunnared-medium-gray-s39319101/', name: 'FINNALA Sofa with chaise, gray', category: 'Sofas', styles: ['modern', 'minimalist'], room: 'living', retailer: 'IKEA' },
   { id: 5, url: 'https://www.ikea.com/us/en/p/stockholm-sofa-seglora-natural-20245049/', name: 'STOCKHOLM Sofa, natural leather', category: 'Sofas', styles: ['mid-century', 'classic', 'leather', 'elevated'], room: 'living', retailer: 'IKEA' },
 
-  // ── Armchairs — IKEA ──
+  // ── Armchairs – IKEA ──
   { id: 6, url: 'https://www.ikea.com/us/en/p/ekenaset-armchair-kilanda-light-beige-30533493/', name: 'EKENÄSET Armchair, light beige', category: 'Armchairs', styles: ['mid-century', 'scandinavian', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 7, url: 'https://www.ikea.com/us/en/p/strandmon-armchair-and-ottoman-nordvalla-dark-gray-s19487874/', name: 'STRANDMON Wing chair & ottoman', category: 'Armchairs', styles: ['classic', 'cozy'], room: 'living', retailer: 'IKEA' },
 
-  // ── Armchairs — HAY & Muuto ──
+  // ── Armchairs – HAY & Muuto ──
   { id: 22, url: 'https://www.hay.com/hay/furniture/seating/chair/about-a-chair/aac-22', name: 'About A Chair AAC 22', category: 'Armchairs', styles: ['scandinavian', 'design-classic', 'minimal'], room: 'living', retailer: 'HAY' },
   { id: 23, url: 'https://www.muuto.com/product/fiber-armchair-wood-base-p5063/p5063/', name: 'Fiber Armchair, wood base', category: 'Armchairs', styles: ['organic', 'scandinavian', 'modern'], room: 'living', retailer: 'Muuto' },
 
-  // ── Lighting — IKEA ──
+  // ── Lighting – IKEA ──
   { id: 8, url: 'https://www.ikea.com/us/en/p/ranarp-floor-reading-lamp-with-led-bulb-off-white-20419657/', name: 'RANARP Floor lamp, off-white', category: 'Lighting', styles: ['classic', 'industrial', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 9, url: 'https://www.ikea.com/us/en/p/hektar-floor-lamp-dark-gray-70216544/', name: 'HEKTAR Floor lamp, dark gray', category: 'Lighting', styles: ['industrial', 'modern'], room: 'living', retailer: 'IKEA' },
   { id: 10, url: 'https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/', name: 'ÖKENSAND Floor lamp, beech/white', category: 'Lighting', styles: ['scandinavian', 'minimalist', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 11, url: 'https://www.ikea.com/us/en/p/fado-table-lamp-with-led-bulb-white-60416280/', name: 'FADO Table lamp, white', category: 'Lighting', styles: ['minimalist', 'soft', 'scandinavian'], room: 'bedroom', retailer: 'IKEA' },
 
-  // ── Lighting — Muuto & HAY ──
+  // ── Lighting – Muuto & HAY ──
   { id: 24, url: 'https://www.muuto.com/product/under-the-bell-pendant-lamp--p2854/p2854/', name: 'Under the Bell Pendant Lamp', category: 'Lighting', styles: ['statement', 'modern', 'acoustic'], room: 'dining', retailer: 'Muuto' },
   { id: 25, url: 'https://www.hay.com/hay/lighting/pendant-lamp/nelson-pendant', name: 'Nelson Pendant Lamp', category: 'Lighting', styles: ['organic', 'mid-century', 'warm'], room: 'living', retailer: 'HAY' },
   { id: 26, url: 'https://www.hay.com/hay/lighting/pendant-lamp/ava-cone-pendant', name: 'Ava Cone Pendant', category: 'Lighting', styles: ['geometric', 'minimalist', 'modern'], room: 'dining', retailer: 'HAY' },
 
-  // ── Tables — IKEA ──
+  // ── Tables – IKEA ──
   { id: 12, url: 'https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-white-00530066/', name: 'ÖSTAVALL Coffee table, white', category: 'Tables', styles: ['modern', 'minimalist'], room: 'living', retailer: 'IKEA' },
   { id: 13, url: 'https://www.ikea.com/us/en/p/idanaes-coffee-table-white-20487873/', name: 'IDANÄS Coffee table, white', category: 'Tables', styles: ['classic', 'warm'], room: 'living', retailer: 'IKEA' },
   { id: 14, url: 'https://www.ikea.com/us/en/p/lack-coffee-table-white-stained-oak-effect-50319029/', name: 'LACK Coffee table, oak effect', category: 'Tables', styles: ['minimalist', 'scandinavian', 'budget'], room: 'living', retailer: 'IKEA' },
 
-  // ── Tables — West Elm ──
+  // ── Tables – West Elm ──
   { id: 27, url: 'https://www.westelm.com/products/mid-century-round-coffee-table-h11978/', name: 'Mid-Century Round Coffee Table', category: 'Tables', styles: ['mid-century', 'warm', 'wood'], room: 'living', retailer: 'West Elm' },
   { id: 28, url: 'https://www.westelm.com/products/reeve-mid-century-rectangular-coffee-table-h1181/', name: 'Reeve Mid-Century Coffee Table', category: 'Tables', styles: ['mid-century', 'classic', 'elevated'], room: 'living', retailer: 'West Elm' },
 
@@ -87,16 +87,16 @@ export const CATALOG: CatalogItem[] = [
   { id: 20, url: 'https://www.ikea.com/us/en/p/nissedal-mirror-black-50503777/', name: 'NISSEDAL Mirror, black', category: 'Mirrors', styles: ['minimalist', 'modern'], room: 'bedroom', retailer: 'IKEA' },
   { id: 21, url: 'https://www.ikea.com/us/en/p/ikornnes-floor-mirror-ash-90524042/', name: 'IKORNNES Floor mirror, ash', category: 'Mirrors', styles: ['scandinavian', 'warm', 'minimalist'], room: 'bedroom', retailer: 'IKEA' },
 
-  // ── Armchairs — CB2 ──
+  // ── Armchairs – CB2 ──
   { id: 29, url: 'https://www.cb2.com/club-lounge-chair/s341429', name: 'Club Lounge Chair', category: 'Armchairs', styles: ['modern', 'elevated', 'statement'], room: 'living', retailer: 'CB2' },
   { id: 30, url: 'https://www.cb2.com/club-chair/f13915', name: 'Club Chair', category: 'Armchairs', styles: ['modern', 'minimalist', 'design-classic'], room: 'living', retailer: 'CB2' },
 
-  // ── Lighting — Ferm Living ──
+  // ── Lighting – Ferm Living ──
   { id: 31, url: 'https://fermliving.com/products/arum-table-lamp-cashmere', name: 'Arum Table Lamp, cashmere', category: 'Lighting', styles: ['organic', 'warm', 'elevated'], room: 'living', retailer: 'Ferm Living' },
   { id: 32, url: 'https://fermliving.com/products/arum-table-lamp-black', name: 'Arum Table Lamp, black', category: 'Lighting', styles: ['graphic', 'modern', 'minimal'], room: 'bedroom', retailer: 'Ferm Living' },
   { id: 33, url: 'https://fermliving.com/products/gry-table-lamp-blacktranslucent', name: 'Gry Table Lamp, black', category: 'Lighting', styles: ['portable', 'modern', 'outdoor'], room: 'living', retailer: 'Ferm Living' },
 
-  // ── Art — Amazon ──
+  // ── Art – Amazon ──
   { id: 34, url: 'https://www.amazon.com/wall26-Large-Framed-Canvas-Print/dp/B0FXF59ZG3', name: 'Minimalist Neutral Abstract, 60″×20″', category: 'Art', styles: ['minimalist', 'neutral', 'large-format'], room: 'living', retailer: 'Amazon' },
   { id: 35, url: 'https://www.amazon.com/Beautiful-Abstract-Painting-Minimalist-Bathroom/dp/B0BCZRQZPJ', name: 'Abstract Canvas Set of 3, 16″×24″', category: 'Art', styles: ['abstract', 'neutral', 'set'], room: 'living', retailer: 'Amazon' },
   { id: 36, url: 'https://www.amazon.com/Abstract-Wall-Art-Living-Room/dp/B0C6TDTN8V', name: 'Abstract Navy & Grey Set of 3', category: 'Art', styles: ['abstract', 'dark', 'moody'], room: 'living', retailer: 'Amazon' },
@@ -105,7 +105,7 @@ export const CATALOG: CatalogItem[] = [
   { id: 39, url: 'https://www.amazon.com/Abstract-Contemporary-Painting-Geometric-Midcentury/dp/B0DDC2MTNL', name: 'Geometric Mid-Century Set of 3', category: 'Art', styles: ['geometric', 'mid-century', 'graphic'], room: 'office', retailer: 'Amazon' },
   { id: 40, url: 'https://www.amazon.com/Neutral-Minimalist-Abstract-Geometric-Painting/dp/B0DMW6G71K', name: 'Boho Geometric Canvas Set of 3', category: 'Art', styles: ['boho', 'geometric', 'warm'], room: 'bedroom', retailer: 'Amazon' },
 
-  // ── Sofas — more options ──
+  // ── Sofas – more options ──
   { id: 41, url: 'https://www.ikea.com/us/en/p/haerlanda-sofa-ljungen-medium-gray-s79319501/', name: 'HÄRLANDA Sofa, gray', category: 'Sofas', styles: ['modern', 'minimalist', 'scandinavian'], room: 'living', retailer: 'IKEA' },
   { id: 42, url: 'https://www.ikea.com/us/en/p/aepplaryd-sofa-with-chaise-lejde-light-gray-s59434349/', name: 'ÄPPLARYD Sofa with chaise, light gray', category: 'Sofas', styles: ['modern', 'minimalist', 'elevated'], room: 'living', retailer: 'IKEA' },
   { id: 43, url: 'https://www.westelm.com/products/harris-leather-sofa-h4351/', name: 'Harris Leather Sofa', category: 'Sofas', styles: ['classic', 'leather', 'elevated', 'warm'], room: 'living', retailer: 'West Elm' },
@@ -220,7 +220,7 @@ export const CATALOG: CatalogItem[] = [
   { id: 122, url: 'https://www.andtradition.com/collections/pendant-lamps/flowerpot-vp1/', name: 'Flowerpot VP1 Pendant', category: 'Lighting', styles: ['design-classic', 'statement', 'pop', 'elevated'], room: 'dining', retailer: '&Tradition' },
   { id: 123, url: 'https://www.andtradition.com/collections/floor-lamps/set-sl6/', name: 'SET Floor Lamp', category: 'Lighting', styles: ['minimalist', 'elevated', 'graphic'], room: 'living', retailer: '&Tradition' },
 
-  // ── Audo Copenhagen (ex Menu) — audo.com was sold to an unrelated company;
+  // ── Audo Copenhagen (ex Menu) – audo.com was sold to an unrelated company;
   // the brand's real current domain is audocph.com, re-verified 2026-07-02 ──
   { id: 124, url: 'https://audocph.com/products/co-lounge-chair', name: 'Co Lounge Chair', category: 'Armchairs', styles: ['design-classic', 'elevated', 'warm', 'organic'], room: 'living', retailer: 'Audo Copenhagen' },
   { id: 125, url: 'https://audocph.com/products/androgyne-lounge-table', name: 'Androgyne Lounge Table', category: 'Tables', styles: ['design-classic', 'elevated', 'organic', 'statement'], room: 'living', retailer: 'Audo Copenhagen' },
@@ -264,19 +264,19 @@ export const CATALOG: CatalogItem[] = [
   { id: 151, url: 'https://www.dwr.com/lighting-floor-lamps/nelson-bubble-lamp-arched/2631.html', name: 'Nelson Bubble Arched Floor Lamp', category: 'Lighting', styles: ['design-icon', 'mid-century', 'warm', 'organic', 'elevated'], room: 'living', retailer: 'DWR' },
   { id: 152, url: 'https://www.dwr.com/dining/wireframe-dining-table/3629.html', name: 'Wireframe Dining Table', category: 'Dining', styles: ['modern', 'graphic', 'elevated', 'minimalist'], room: 'dining', retailer: 'DWR' },
 
-  // ── Ferm Living — more ──
+  // ── Ferm Living – more ──
   { id: 153, url: 'https://fermliving.com/products/catena-sofa-eggshell', name: 'Catena Sofa, eggshell', category: 'Sofas', styles: ['scandinavian', 'organic', 'elevated', 'warm'], room: 'living', retailer: 'Ferm Living' },
   { id: 154, url: 'https://fermliving.com/products/level-coffee-table-dark-grey', name: 'Level Coffee Table, dark grey', category: 'Tables', styles: ['graphic', 'minimalist', 'elevated', 'dark'], room: 'living', retailer: 'Ferm Living' },
   { id: 155, url: 'https://fermliving.com/products/plant-box-large-black', name: 'Plant Box, black', category: 'Storage', styles: ['scandinavian', 'graphic', 'modern'], room: 'living', retailer: 'Ferm Living' },
   { id: 156, url: 'https://fermliving.com/products/turn-dining-table-dark-stained-oak', name: 'Turn Dining Table, dark stained oak', category: 'Dining', styles: ['organic', 'warm', 'elevated', 'scandinavian'], room: 'dining', retailer: 'Ferm Living' },
   { id: 157, url: 'https://fermliving.com/products/mineral-bed-dark-blue', name: 'Mineral Bed, dark blue', category: 'Beds', styles: ['graphic', 'moody', 'elevated', 'statement'], room: 'bedroom', retailer: 'Ferm Living' },
 
-  // ── HAY — more ──
+  // ── HAY – more ──
   { id: 158, url: 'https://www.hay.com/hay/furniture/sofas/mags-soft-sofa', name: 'MAGS Soft Sofa', category: 'Sofas', styles: ['design-classic', 'modern', 'elevated', 'modular'], room: 'living', retailer: 'HAY' },
   { id: 159, url: 'https://www.hay.com/hay/furniture/tables/dining-table/t12-table', name: 'T12 Dining Table', category: 'Dining', styles: ['scandinavian', 'minimalist', 'elevated', 'design-classic'], room: 'dining', retailer: 'HAY' },
   { id: 160, url: 'https://www.hay.com/hay/furniture/storage/loop-stand', name: 'Loop Stand Room Divider', category: 'Storage', styles: ['graphic', 'design-classic', 'scandinavian', 'statement'], room: 'office', retailer: 'HAY' },
 
-  // ── Muuto — more ──
+  // ── Muuto – more ──
   { id: 161, url: 'https://www.muuto.com/product/outline-sofa-2-seater/p3041/', name: 'Outline Sofa, 2-seater', category: 'Sofas', styles: ['scandinavian', 'modern', 'elevated', 'design-classic'], room: 'living', retailer: 'Muuto' },
   { id: 162, url: 'https://www.muuto.com/product/compose-side-table/p3066/', name: 'Compose Side Table', category: 'Tables', styles: ['organic', 'scandinavian', 'warm', 'elevated'], room: 'living', retailer: 'Muuto' },
   { id: 163, url: 'https://www.muuto.com/product/stacked-storage-system/p3079/', name: 'Stacked Storage System', category: 'Storage', styles: ['scandinavian', 'graphic', 'design-classic', 'modular'], room: 'office', retailer: 'Muuto' },
@@ -336,20 +336,20 @@ export const CATALOG: CatalogItem[] = [
   { id: 197, url: 'https://www.westelm.com/products/grid-bookcase-h3878/', name: 'Grid Bookcase', category: 'Storage', styles: ['modern', 'elevated', 'graphic', 'mid-century'], room: 'office', retailer: 'West Elm' },
   { id: 198, url: 'https://www.westelm.com/products/metallic-printed-rug-h5044/', name: 'Metallic Printed Rug', category: 'Rugs', styles: ['elevated', 'graphic', 'warm', 'statement'], room: 'living', retailer: 'West Elm' },
 
-  // ── Ferm Living — more ──
+  // ── Ferm Living – more ──
   { id: 199, url: 'https://fermliving.com/products/rely-armchair-cashmere', name: 'Rely Armchair, cashmere', category: 'Armchairs', styles: ['organic', 'elevated', 'warm', 'scandinavian'], room: 'living', retailer: 'Ferm Living' },
   { id: 200, url: 'https://fermliving.com/products/kona-coffee-table-black', name: 'Kona Coffee Table, black', category: 'Tables', styles: ['dark', 'minimalist', 'elevated', 'graphic'], room: 'living', retailer: 'Ferm Living' },
   { id: 201, url: 'https://fermliving.com/products/canvas-pendant-off-white', name: 'Canvas Pendant, off-white', category: 'Lighting', styles: ['organic', 'scandinavian', 'warm', 'elevated'], room: 'dining', retailer: 'Ferm Living' },
   { id: 202, url: 'https://fermliving.com/products/kelim-rug-rectangle-off-white', name: 'Kelim Rug, off-white', category: 'Rugs', styles: ['scandinavian', 'organic', 'warm', 'elevated'], room: 'living', retailer: 'Ferm Living' },
 
-  // ── HAY — more ──
+  // ── HAY – more ──
   { id: 203, url: 'https://www.hay.com/hay/lighting/floor-lamp/base-floor-lamp', name: 'Base Floor Lamp', category: 'Lighting', styles: ['design-classic', 'warm', 'elevated', 'minimal'], room: 'living', retailer: 'HAY' },
   { id: 204, url: 'https://www.hay.com/hay/furniture/tables/coffee-table/o-table', name: 'O! Table', category: 'Tables', styles: ['design-classic', 'graphic', 'scandinavian', 'elevated'], room: 'living', retailer: 'HAY' },
   { id: 205, url: 'https://www.hay.com/hay/furniture/seating/sofa/quilton-sofa', name: 'Quilton Sofa', category: 'Sofas', styles: ['design-classic', 'statement', 'elevated', 'modern'], room: 'living', retailer: 'HAY' },
   { id: 206, url: 'https://www.hay.com/hay/furniture/storage/cps-cabinet', name: 'CPH Cabinet', category: 'Storage', styles: ['scandinavian', 'design-classic', 'elevated', 'warm'], room: 'living', retailer: 'HAY' },
   { id: 207, url: 'https://www.hay.com/hay/textiles/rug/peas-rug', name: 'Peas Rug', category: 'Rugs', styles: ['graphic', 'scandinavian', 'design-classic', 'statement'], room: 'living', retailer: 'HAY' },
 
-  // ── Muuto — more ──
+  // ── Muuto – more ──
   { id: 208, url: 'https://www.muuto.com/product/visu-lounge-chair/p3088/', name: 'Visu Lounge Chair', category: 'Armchairs', styles: ['scandinavian', 'organic', 'elevated', 'warm'], room: 'living', retailer: 'Muuto' },
   { id: 209, url: 'https://www.muuto.com/product/linear-steel-side-table/p3062/', name: 'Linear Steel Side Table', category: 'Tables', styles: ['minimalist', 'graphic', 'elevated', 'industrial'], room: 'living', retailer: 'Muuto' },
   { id: 210, url: 'https://www.muuto.com/product/rest-coffee-table/p3126/', name: 'Rest Coffee Table', category: 'Tables', styles: ['organic', 'scandinavian', 'elevated', 'warm'], room: 'living', retailer: 'Muuto' },
@@ -390,7 +390,7 @@ export const CATALOG: CatalogItem[] = [
   { id: 233, url: 'https://www.normann-copenhagen.com/products/tablo-sideboard', name: 'Tablo Sideboard', category: 'Storage', styles: ['scandinavian', 'elevated', 'design-classic', 'graphic'], room: 'living', retailer: 'Normann Copenhagen' },
   { id: 234, url: 'https://www.hay.com/hay/furniture/storage/cph-storage-series', name: 'CPH Storage Series', category: 'Storage', styles: ['scandinavian', 'elevated', 'minimal', 'design-classic'], room: 'living', retailer: 'HAY' },
 
-  // ── More Lighting — Sconces & Table Lamps ──
+  // ── More Lighting – Sconces & Table Lamps ──
   { id: 235, url: 'https://www.cb2.com/span-wall-lamp/s675492', name: 'Span Wall Lamp', category: 'Lighting', styles: ['modern', 'elevated', 'minimal', 'graphic'], room: 'bedroom', retailer: 'CB2' },
   { id: 236, url: 'https://www.westelm.com/products/sculptural-glass-globe-sconce-h5094/', name: 'Sculptural Glass Sconce', category: 'Lighting', styles: ['elevated', 'statement', 'warm', 'glass'], room: 'living', retailer: 'West Elm' },
   { id: 237, url: 'https://fermliving.com/products/casca-floor-lamp-off-white', name: 'Casca Floor Lamp, off-white', category: 'Lighting', styles: ['organic', 'warm', 'elevated', 'scandinavian'], room: 'living', retailer: 'Ferm Living' },
@@ -398,7 +398,7 @@ export const CATALOG: CatalogItem[] = [
   { id: 239, url: 'https://www.normann-copenhagen.com/products/amp-table-lamp', name: 'Amp Table Lamp', category: 'Lighting', styles: ['graphic', 'design-classic', 'elevated', 'statement'], room: 'living', retailer: 'Normann Copenhagen' },
   { id: 240, url: 'https://www.hay.com/hay/lighting/wall-lamp/neon-tube-wall-lamp', name: 'Neon Tube Wall Lamp', category: 'Lighting', styles: ['graphic', 'design-classic', 'statement', 'modern'], room: 'office', retailer: 'HAY' },
 
-  // ── Sofas — more variety ──
+  // ── Sofas – more variety ──
   { id: 241, url: 'https://www.cb2.com/piazza-sofa/s628744', name: 'Piazza Sofa', category: 'Sofas', styles: ['modern', 'elevated', 'minimalist', 'clean'], room: 'living', retailer: 'CB2' },
   { id: 242, url: 'https://www.cb2.com/rowan-sofa/s628743', name: 'Rowan Velvet Sofa', category: 'Sofas', styles: ['elevated', 'velvet', 'statement', 'classic'], room: 'living', retailer: 'CB2' },
   { id: 243, url: 'https://www.article.com/product/18834/mello-velvet-sectional', name: 'Mello Velvet Sectional', category: 'Sofas', styles: ['velvet', 'elevated', 'modern', 'statement'], room: 'living', retailer: 'Article' },

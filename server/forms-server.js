@@ -1,12 +1,12 @@
 "use strict";
 
-/* HTTP-слой анкет. Отдельный процесс — по той же причине, что и у Interview
+/* HTTP-слой анкет. Отдельный процесс – по той же причине, что и у Interview
  * Studio: выкат сайта перезапускает deploy-webhook несколько раз в день, а
  * приём ответа не должен зависеть от того, правил ли редактор статью.
  *
  * Два круга доступа, и они не пересекаются:
- *   • публичный  — прочитать открытую анкету и отправить ответ;
- *   • редакционный — всё остальное, только с паролем админки.
+ *   • публичный  – прочитать открытую анкету и отправить ответ;
+ *   • редакционный – всё остальное, только с паролем админки.
  * Ответы наружу не отдаются никогда, ни по какому адресу.
  */
 
@@ -59,7 +59,7 @@ function readBody(req) {
     const chunks = [];
     req.on("data", (chunk) => {
       size += chunk.length;
-      // Обрываем на пороге, а не после: анкета на полмегабайта — это уже не
+      // Обрываем на пороге, а не после: анкета на полмегабайта – это уже не
       // анкета, и дочитывать её в память незачем.
       if (size > F.MAX_BODY_BYTES) { reject(new Error("payload too large")); req.destroy(); return; }
       chunks.push(chunk);
@@ -83,7 +83,7 @@ const server = http.createServer(async (req, res) => {
 
   const url = new URL(req.url, "http://localhost");
   const parts = url.pathname.replace(/^\/+|\/+$/g, "").split("/");
-  // Путь приходит и как /forms/..., и как /... — nginx может срезать префикс.
+  // Путь приходит и как /forms/..., и как /... – nginx может срезать префикс.
   if (parts[0] === "forms") parts.shift();
 
   try {
@@ -135,7 +135,7 @@ const server = http.createServer(async (req, res) => {
 
       const body = await readBody(req);
       /* Ловушка для роботов: поле скрыто от человека, поэтому заполнить его
-         может только тот, кто читает разметку. Отвечаем ему успехом — иначе
+         может только тот, кто читает разметку. Отвечаем ему успехом – иначе
          скрипт узнает, что его отсекли, и попробует иначе. */
       if (F.clean(body?.website, 100)) return send(res, 200, { ok: true, accepted: true });
 
@@ -172,7 +172,7 @@ const server = http.createServer(async (req, res) => {
       };
       /* Запись идёт через очередь службы, а не «прочитал-дописал-записал»:
          два ответа в одну секунду раньше затирали друг друга, и пропажу
-         никто не замечал — оба автора видели «спасибо». */
+         никто не замечал – оба автора видели «спасибо». */
       const total = await F.appendResponse(form.id, response);
 
       if (invite) {
@@ -190,8 +190,8 @@ const server = http.createServer(async (req, res) => {
     /* Загрузка файла к анкете.
      *
      * Файл идёт потоком прямо на диск: анкету с оригиналами фотографий нельзя
-     * складывать в память процесса — она кончится раньше, чем закончится
-     * загрузка. Имя и поле приходят заголовками, тело — сырой файл; так не
+     * складывать в память процесса – она кончится раньше, чем закончится
+     * загрузка. Имя и поле приходят заголовками, тело – сырой файл; так не
      * нужен разбор multipart ради одного вложения. */
     if (req.method === "POST" && parts[0] === "public" && parts[1] && parts[2] === "upload") {
       const form = F.findFormBySlug(parts[1]);
@@ -207,7 +207,7 @@ const server = http.createServer(async (req, res) => {
       if (declared > F.MAX_FILE_BYTES) {
         return send(res, 413, { ok: false, error: "file too large", limitMb: Math.round(F.MAX_FILE_BYTES / 1048576) });
       }
-      /* Место на диске проверяем ДО приёма: свободные два гигабайта — это не
+      /* Место на диске проверяем ДО приёма: свободные два гигабайта – это не
          запас на всякий случай, а условие работы сайта, радио и админки,
          которые живут на том же разделе. */
       if (!F.diskHasRoom(declared)) return send(res, 507, { ok: false, error: "no space left" });
@@ -262,7 +262,7 @@ const server = http.createServer(async (req, res) => {
       const body = await readBody(req);
       const existing = body?.id ? F.readJson(F.formPath(F.clean(body.id, 40)), null) : null;
       const form = F.normaliseForm(body, existing);
-      /* Один slug — одна анкета. Иначе публичная ссылка вела бы то в одну,
+      /* Один slug – одна анкета. Иначе публичная ссылка вела бы то в одну,
          то в другую, в зависимости от порядка файлов на диске.
          Занятый адрес получает номер («author-questionnaire-2»), а не хвост
          из шестнадцатеричного мусора: ссылку диктуют по телефону и пишут в
@@ -326,7 +326,7 @@ const server = http.createServer(async (req, res) => {
 
     /* АРХИВ ФОТОГРАФИЙ ОДНИМ ФАЙЛОМ.
      *
-     * Двадцать снимков — это двадцать нажатий «скачать» и двадцать файлов в
+     * Двадцать снимков – это двадцать нажатий «скачать» и двадцать файлов в
      * загрузках без всякого порядка. Отдаём один zip: либо весь по анкете,
      * либо по одному ответу (?response=ID), с именами вида
      * «02 Abbie Downey/фасад.jpg», чтобы в архиве было видно, кто что прислал.
@@ -426,7 +426,7 @@ const server = http.createServer(async (req, res) => {
       const token = F.clean(parts[2], 80);
       const invite = form.invites.find((item) => item.token === token);
       // Приглашение отзывается, а не удаляется: ответ, присланный по нему,
-      // должен остаться подписанным — иначе непонятно, кто отвечал.
+      // должен остаться подписанным – иначе непонятно, кто отвечал.
       if (invite) invite.revoked = true;
       form.updatedAt = F.nowIso();
       await F.writeJsonAtomic(F.formPath(form.id), form);
@@ -449,7 +449,7 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, "127.0.0.1", () => console.log(`[forms] listening on 127.0.0.1:${PORT}`));
 
 /* Раз в час убираем файлы, которые загрузили и бросили, не отправив анкету.
-   Первый проход — через минуту после старта, чтобы выкат не совпал с уборкой. */
+   Первый проход – через минуту после старта, чтобы выкат не совпал с уборкой. */
 setTimeout(() => { try { F.sweepOrphanFiles(); } catch (e) { console.warn("[forms] sweep:", e.message); } }, 60 * 1000).unref?.();
 setInterval(() => {
   try {

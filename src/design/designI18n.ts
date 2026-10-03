@@ -26,7 +26,7 @@ export interface DesignUI {
   stylistLoading: string;
   stylistBoardFor: string;
   stylistTryAgain: string;
-  // ── Stylist v2 (structured brief + reasoning) — optional, EN-merged ──
+  // ── Stylist v2 (structured brief + reasoning) – optional, EN-merged ──
   stylistRoom?: string;
   stylistStyle?: string;
   stylistBudget?: string;
@@ -41,7 +41,7 @@ export interface DesignUI {
   roleAnchor?: string;
   roleSupport?: string;
   roleAccent?: string;
-  // ── The Edit — search & sort (optional, EN-merged) ──
+  // ── The Edit – search & sort (optional, EN-merged) ──
   searchPlaceholder?: string;
   sortRelevance?: string;
   sortPriceAsc?: string;
@@ -88,7 +88,7 @@ export function getRoomLabel(key: string, lang: string): string {
   return r ? (r.label[lang as SupportedLang] ?? r.label.EN) : key;
 }
 
-// Design vocabulary — kept in English (universal, matches catalogue style tags).
+// Design vocabulary – kept in English (universal, matches catalogue style tags).
 export const STYLIST_STYLES = ['Scandinavian', 'Minimalist', 'Mid-century', 'Warm', 'Modern', 'Classic', 'Moody', 'Boho'];
 export const STYLIST_BUDGETS = [800, 1500, 3000, 0];
 

@@ -19,7 +19,7 @@ interface Props {
   scene: Scene;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
-  /** `free` — зажат Alt: тянуть мимо привязок. */
+  /** `free` – зажат Alt: тянуть мимо привязок. */
   onDrag: (id: string, x: number, z: number, free: boolean) => void;
   /** Начало и конец жеста: по ним пишется одна запись в историю на всё
    *  перетаскивание, а не на каждый его кадр. */
@@ -27,11 +27,11 @@ interface Props {
   onDragEnd: () => void;
   guideX: number | null;
   guideZ: number | null;
-  /** Расчёт видимости; null — анализ выключен. */
+  /** Расчёт видимости; null – анализ выключен. */
   sightlines: Sightlines | null;
 }
 
-/** Подпись пролёта: целые метры без хвоста, дробные — с одним знаком. */
+/** Подпись пролёта: целые метры без хвоста, дробные – с одним знаком. */
 function fmtSpan(metres: number): string {
   return Number.isInteger(metres) ? String(metres) : metres.toFixed(1);
 }
@@ -221,7 +221,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
     <svg viewBox={`0 0 ${width} ${height}`} className="h-auto w-full max-w-full" onPointerDown={() => onSelect(null)}>
       <rect x={0} y={0} width={width} height={height} fill="#1a0b10" />
 
-      {/* Сетка: каждый метр волоском, каждый пятый заметнее — по ней считывают
+      {/* Сетка: каждый метр волоском, каждый пятый заметнее – по ней считывают
           расстояние, не прикладывая линейку. */}
       {gridX.map((i) => (
         <line
@@ -249,7 +249,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
       ))}
 
       {/* Мёртвая зона: чем от большего числа кресел точка закрыта, тем плотнее
-          заливка. Лежит ПОД элементами — это подложка к чертежу, а не поверх. */}
+          заливка. Лежит ПОД элементами – это подложка к чертежу, а не поверх. */}
       {sightlines && (
         <g>
           {sightlines.cells.map((cell, index) => (
@@ -266,7 +266,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
         </g>
       )}
 
-      {/* Оболочка зала — тоже разрез, поэтому самый жирный контур на листе. */}
+      {/* Оболочка зала – тоже разрез, поэтому самый жирный контур на листе. */}
       <rect
         x={px(0)}
         y={py(0)}
@@ -311,7 +311,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
         );
       })}
 
-      {/* Зритель и направление взгляда — ось, вокруг которой строится сцена. */}
+      {/* Зритель и направление взгляда – ось, вокруг которой строится сцена. */}
       <g>
         <line
           x1={px(scene.viewer.x)}
@@ -339,7 +339,7 @@ export function PlanView({ scene, selectedId, onSelect, onDrag, onDragStart, onD
       <DimensionChain from={py(0)} to={py(scene.room.d)} offset={px(0) - 22} total={scene.room.d} vertical />
 
       {/* Кресла, по которым считалась видимость: без них цифры мёртвой зоны
-          повисают в воздухе — непонятно, откуда смотрели. */}
+          повисают в воздухе – непонятно, откуда смотрели. */}
       {sightlines &&
         seatsOf(scene).map((seat) => (
           <g key={seat.label}>

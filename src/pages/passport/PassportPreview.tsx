@@ -9,7 +9,7 @@ export { buildMRZ };
 // ── EPRIS Identity Backdrop ───────────────────────────────────────────────────
 // Real passport data pages are dominated by one continuous piece of national
 // artwork (a mountain photo, a landscape) bleeding across both pages, with
-// guilloche lines as a secondary security texture on top of it — not the other
+// guilloche lines as a secondary security texture on top of it – not the other
 // way around. This is EPRIS's own commissioned art (an engraved-mountain scene
 // in the site's cream/burgundy/gold palette, with a tree emblem and a
 // perforation motif standing in for a national one). It has a soft built-in
@@ -121,7 +121,7 @@ function Emblem({ px }: { px: number }) {
 // ── Field ─────────────────────────────────────────────────────────────────────
 // Real passport data pages stack the field label in every one of the issuing
 // country's official languages (Switzerland: DE/FR/IT/RM). EPRIS's equivalent
-// is EN + Italian — `label2` renders as a second, slightly smaller line under
+// is EN + Italian – `label2` renders as a second, slightly smaller line under
 // the English label, matching that bilingual-caption convention.
 function F({
   label, label2, value, big, mono,
@@ -192,8 +192,8 @@ function VerificationStamp() {
 }
 
 // ── Main passport page ────────────────────────────────────────────────────────
-// Reoriented to a single combined sheet — observations on top, data page below,
-// split by a dotted perforation line — matching the reference specimen layout
+// Reoriented to a single combined sheet – observations on top, data page below,
+// split by a dotted perforation line – matching the reference specimen layout
 // exactly (that reference always shows both halves stacked in one portrait
 // sheet, not two separate side-by-side book pages). One shared frame,
 // background, watermark and side text run the full height behind both halves.
@@ -206,7 +206,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
       className="relative w-full select-none overflow-hidden"
       style={{
         aspectRatio: '3 / 4',
-        // Base color sampled from the identity art's own opaque band — the art
+        // Base color sampled from the identity art's own opaque band – the art
         // has a soft built-in alpha vignette (transparent top/bottom), so this
         // is what shows through there.
         background: '#e1dbd7',
@@ -216,7 +216,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
         borderRadius: '8px',
       } as CSSProperties}
     >
-      {/* EPRIS identity artwork — the passport's "world" */}
+      {/* EPRIS identity artwork – the passport's "world" */}
       <IdentityBackdrop />
       {/* Soft cyan / ochre / rose interference wash: recognisably passport-like
           print depth, without borrowing any national colour system. */}
@@ -247,14 +247,14 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
         }}>EPRIS</span>
       </div>
 
-      {/* Single frame — a doubled outer+inner border read as visual noise at
+      {/* Single frame – a doubled outer+inner border read as visual noise at
           this size, one clean line is enough to read as a document edge. */}
       <div className="absolute pointer-events-none" style={{ inset: '1.4%', border: '1px solid #4a1728', opacity: 0.7, zIndex: 3 }}/>
       <div className="absolute pointer-events-none" aria-hidden style={{ top: '37.4%', left: '2.7%', right: '2.7%', height: '0.55%', background: 'linear-gradient(90deg, rgba(45,151,162,.75), rgba(226,191,79,.6) 35%, rgba(219,121,150,.64) 68%, rgba(45,151,162,.75))', mixBlendMode: 'multiply', opacity: 0.55, zIndex: 4 }} />
 
-      {/* ══════════════════════════ TOP HALF — OBSERVATIONS ══════════════════════ */}
+      {/* ══════════════════════════ TOP HALF – OBSERVATIONS ══════════════════════ */}
       <div style={{ position: 'absolute', top: '2%', left: '4.5%', right: '4.5%', height: '32%', overflow: 'hidden' }}>
-        {/* Big page number + small colored security glyph, top-right — a real
+        {/* Big page number + small colored security glyph, top-right – a real
             specimen page's most immediately recognizable feature. */}
         <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: '3%' }}>
           <span style={{ fontFamily: '"PT Sans", sans-serif', fontWeight: 400, fontSize: 'clamp(18px, 4.4cqw, 34px)', color: '#1a0b10', opacity: 0.75, lineHeight: 1 }}>01</span>
@@ -275,7 +275,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
 
         {/* Content */}
         <div style={{ position: 'absolute', top: '22%', left: 0, right: 0, bottom: 0, display: 'flex', gap: '4%' }}>
-          {/* QR box — mirrors the data page's photo box */}
+          {/* QR box – mirrors the data page's photo box */}
           <div style={{ width: '26%', flexShrink: 0 }}>
             <div style={{ width: '100%', aspectRatio: '1/1', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
               {qrDataUrl
@@ -314,7 +314,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
         {Array.from({ length: 9 }, (_, i) => <div key={i} style={{ width: 5, height: 5, border: '0.6px solid rgba(74,23,40,0.35)' }} />)}
       </div>
 
-      {/* ══════════════════════════ BOTTOM HALF — DATA PAGE ══════════════════════ */}
+      {/* ══════════════════════════ BOTTOM HALF – DATA PAGE ══════════════════════ */}
       <div style={{ position: 'absolute', top: '39%', left: '4.5%', right: '4.5%', bottom: '2%' }}>
         {/* Header band */}
         <div style={{
@@ -397,7 +397,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
           </div>
         </div>
 
-        {/* MRZ — printed directly on the page art, no boxed background */}
+        {/* MRZ – printed directly on the page art, no boxed background */}
         <div style={{ position: 'absolute', bottom: '2%', left: 0, right: 0 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: '"OCR-B 10 BT", "OCR-B", "Courier New", monospace', fontSize: 'clamp(9px, 1.9cqw, 17px)', fontWeight: 'bold', color: '#1a0b10', lineHeight: 1.25 }}>
             {mrz[0].split('').map((c, i) => <span key={i}>{c}</span>)}

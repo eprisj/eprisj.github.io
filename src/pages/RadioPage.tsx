@@ -539,7 +539,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
     setEditingNick(false)
   }
 
-  // PTT — spacebar desktop
+  // PTT – spacebar desktop
   useEffect(() => {
     if (!joined || isTouch) return
     const onDown = (e: KeyboardEvent) => {
@@ -727,7 +727,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
             </motion.div>
           )}
 
-          {/* ── JOINED — live ─────────────────────────────────────────────── */}
+          {/* ── JOINED – live ─────────────────────────────────────────────── */}
           {joined && (
             <motion.div key="live" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
 

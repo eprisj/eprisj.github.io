@@ -3,7 +3,7 @@
 // check-digit algorithm, no fixed 44-char lines, no "<" filler characters,
 // no passport-number encoding. It's a decorative authenticity flourish only.
 
-const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no O/0, I/1 — avoids visual ambiguity
+const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no O/0, I/1 – avoids visual ambiguity
 
 export function generatePassportCode(): string {
   let out = '';
@@ -13,7 +13,7 @@ export function generatePassportCode(): string {
   return `EPR-${out}`;
 }
 
-// Small non-cryptographic hash purely for a cosmetic "signature string" —
+// Small non-cryptographic hash purely for a cosmetic "signature string" –
 // not a security feature, not a real document checksum.
 function hash32(input: string): string {
   let h = 0x811c9dc5;

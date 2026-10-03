@@ -66,7 +66,7 @@ function articleCoverUrl(article: Article, baseUrl: string): string | null {
 
 // ── Styles ─────────────────────────────────────────────────
 const s = StyleSheet.create({
-  // Covers (image pages) — explicit image height leaves room for the band so
+  // Covers (image pages) – explicit image height leaves room for the band so
   // the whole cover stays on exactly one page (no spill onto a 2nd page).
   coverPage: { backgroundColor: c.burgundy },
   coverImage: { width: W, height: 790, objectFit: 'cover' },
@@ -365,10 +365,10 @@ function ArticleContentPage({
   const blocks = article.content ?? [];
 
   // The article's dramatic cover page already provides the opening image, so the
-  // content page opens straight into the masthead + body — no repeated hero.
+  // content page opens straight into the masthead + body – no repeated hero.
   let firstText = true;
 
-    // react-pdf can't render HTML — flatten any inline markup to plain text.
+    // react-pdf can't render HTML – flatten any inline markup to plain text.
     const plain = (html: string) => String(html || '').replace(/<br\s*\/?>(?=)/gi, ' ').replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ');
 
   const renderBlock = (block: ContentBlock, key: number) => {
@@ -469,13 +469,13 @@ function ArticleContentPage({
 
   return (
     <Page size="A4" style={s.contentPage} wrap>
-      {/* Running header — repeats on every wrapped page */}
+      {/* Running header – repeats on every wrapped page */}
       <View style={s.runningHeader} fixed>
         <Text style={s.runningHeaderText}>EPRIS JOURNAL  ·  {issue.name.toUpperCase()}</Text>
         <Text style={s.runningHeaderText}>{article.title.toUpperCase()}</Text>
       </View>
 
-      {/* Masthead — appears once at the start of the article */}
+      {/* Masthead – appears once at the start of the article */}
       <View style={s.masthead}>
         {article.category ? <Text style={s.mastheadCategory}>{article.category.toUpperCase()}</Text> : null}
         <Text style={s.mastheadTitle}>{article.title}</Text>

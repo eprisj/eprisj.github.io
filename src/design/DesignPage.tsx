@@ -192,7 +192,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
             src={set.photo} alt={set.title} loading="lazy"
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${isActive ? 'scale-[1.03] brightness-60' : 'brightness-75 group-hover:scale-[1.02] group-hover:brightness-65'}`}
           />
-          {/* Look number — huge background watermark */}
+          {/* Look number – huge background watermark */}
           <div className="absolute inset-0 flex items-end justify-end p-6 md:p-10 overflow-hidden pointer-events-none">
             <span
               className="font-mono font-bold leading-none text-white select-none pointer-events-none"
@@ -246,7 +246,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
         </div>
       </div>
 
-      {/* Product strip — slides open */}
+      {/* Product strip – slides open */}
       <AnimatePresence>
         {isActive && (
           <div className="bg-[#100610]">
@@ -493,7 +493,7 @@ function StylistPanel({ resolved, onOpen, lang }: {
               </div>
             </div>
 
-            {/* Picks — image + role + reasoning */}
+            {/* Picks – image + role + reasoning */}
             <p className="font-mono text-[7px] uppercase tracking-[0.35em] text-white/30 mb-5">{ui.stylistWhy} · {picks.length} {ui.items}</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9">
               {picks.map(({ pick, item }, i) => (
@@ -769,7 +769,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
       {/* ── AI STYLIST ── */}
       <div id="design-rooms"><StylistPanel resolved={resolved} onOpen={openModal} lang={lang} /></div>
 
-      {/* ── LOOKS — alternating panels ── */}
+      {/* ── LOOKS – alternating panels ── */}
       <div>
         {SETS.map((set, i) => (
           <div key={set.id} ref={(el) => { if (el) stripRef.current.set(set.id, el); }}>
@@ -782,7 +782,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
         ))}
       </div>
 
-      {/* ── THE EDIT — dark catalogue ── */}
+      {/* ── THE EDIT – dark catalogue ── */}
       <div className="border-t border-white/5 mt-0">
         {/* Section header */}
         <div className="relative overflow-hidden border-b border-white/5">
@@ -936,7 +936,7 @@ export function DesignPage({ lang = 'EN' }: { lang?: string }) {
         {modal && <ProductModal item={modal.item} data={modal.data} onClose={() => setModal(null)} lang={lang} />}
       </AnimatePresence>
 
-      {/* Catalogue resolve progress — reassures on a cold VPS cache, self-dismisses.
+      {/* Catalogue resolve progress – reassures on a cold VPS cache, self-dismisses.
           Full-width bottom bar on mobile (a floating corner card would sit on
           top of scrolled content on a short viewport); small corner card on
           desktop where there's room for it not to overlap anything. */}

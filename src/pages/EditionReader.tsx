@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Check, Copy, Download, Grid3x3, List, 
    (Desktop/…/EPRIS-Autumn-Issue-2026: build_complete_issue.py → render-pdf.mjs →
    make_web_edition.py) и кладётся статикой в public/editions/<id>/:
    pages/NNN.webp (1240 px), pages/t/NNN.webp (превью), manifest.json и лёгкий PDF.
-   Страницы — картинки, а не PDF.js: читатель видит первую полосу через
+   Страницы – картинки, а не PDF.js: читатель видит первую полосу через
    секунду, телефону не нужно разбирать 35 МБ PDF, а разворот выглядит как
    журнал, а не как окно просмотрщика. */
 

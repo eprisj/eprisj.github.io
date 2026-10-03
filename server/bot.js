@@ -4,7 +4,7 @@
  *
  * Зачем отдельная служба. Уведомления об анкетах служба анкет отправляла сама,
  * и для одной задачи этого хватало. Но событий в редакции больше: статью
- * создали, черновик опубликовали, материал скрыли или удалили. Их источник —
+ * создали, черновик опубликовали, материал скрыли или удалили. Их источник –
  * другая служба (deploy-webhook), и повторять в каждой отправку в телеграм
  * означало бы держать токен в двух местах и чинить один и тот же разбор ответа
  * дважды.
@@ -33,7 +33,7 @@ const CONTENT_API = process.env.EPRIS_CONTENT_API || "https://api.eprisjournal.c
 const SITE = "https://eprisjournal.com";
 
 if (!TOKEN || !CHAT) {
-  console.error("[bot] нет EPRIS_BOT_TOKEN или EPRIS_BOT_CHAT — служба бессмысленна, выходим");
+  console.error("[bot] нет EPRIS_BOT_TOKEN или EPRIS_BOT_CHAT – служба бессмысленна, выходим");
   process.exit(1);
 }
 
@@ -43,7 +43,7 @@ const api = (method) => `https://api.telegram.org/bot${TOKEN}/${method}`;
    Режем сами и по строкам, чтобы не рвать слово посередине.
 
    ОДНА СТРОКА ДЛИННЕЕ ЛИМИТА РАНЬШЕ ТЕРЯЛАСЬ. Прежняя версия делала
-   `line.slice(0, limit)` — то есть от длинной строки оставляла начало, а
+   `line.slice(0, limit)` – то есть от длинной строки оставляла начало, а
    хвост выбрасывала молча. На тексте в 9000 символов без переносов
    уходило 3900, а 5100 исчезали, и никто бы не заметил: телеграм отвечал
    «ок», в чате лежало обрезанное сообщение. Заметно это стало на выводе
@@ -76,7 +76,7 @@ async function send(text, keyboard) {
       const response = await fetch(api("sendMessage"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // Клавиатура — только под последним куском, как и в sendRich: иначе
+        // Клавиатура – только под последним куском, как и в sendRich: иначе
         // при разбивке длинного события на части она повторилась бы на каждой.
         body: JSON.stringify({
           chat_id: CHAT, text: parts[i], disable_web_page_preview: true,
@@ -93,7 +93,7 @@ async function send(text, keyboard) {
 
 
 /* ── Телеграм: то, что в боте до сих пор не использовалось ───────────────────
- * Бот умел ровно одно — послать простой текст. Ни разметки, ни кнопок, ни
+ * Бот умел ровно одно – послать простой текст. Ни разметки, ни кнопок, ни
  * ответа на нажатие. Ниже добавлены родные возможности телеграма, ради
  * которых не нужно ничего, кроме тех же исходящих запросов: HTML-разметка,
  * inline-клавиатуры, ответ на callback и правка уже отправленного сообщения.
@@ -125,18 +125,18 @@ async function tg(method, payload) {
 const kb = (rows) => ({ inline_keyboard: rows.map((row) => row.map(([text, data]) => ({ text, callback_data: data }))) });
 
 /* Шесть кнопок вместо одиннадцати: под каждым ответом бота висело целое
-   меню на все случаи жизни (Службы/Диск/Сертификат/Ссылки/Сторож — это
+   меню на все случаи жизни (Службы/Диск/Сертификат/Ссылки/Сторож – это
    вопросы раз в неделю, не через сообщение), и это читалось как «нет
-   гибкости» — стену кнопок пролистывают, а не читают. То, что осталось
+   гибкости» – стену кнопок пролистывают, а не читают. То, что осталось
    внизу, всё ещё доступно командой (/services, /disk, /ssl, /links,
-   /alerts) и в /help — просто не навязывается на каждом шаге. */
+   /alerts) и в /help – просто не навязывается на каждом шаге. */
 const MENU = kb([
   [["📋 Состояние", "cmd:status"], ["✉️ Анкеты", "cmd:forms"]],
   [["📝 Черновики", "cmd:drafts"], ["📰 Последнее", "cmd:last"]],
   [["👥 Контакты", "cmd:contacts"], ["🎙 Интервью", "cmd:interviews"]],
 ]);
 
-/* Отправка PNG-карточки вместо текста. Телеграм ждёт multipart, а не JSON —
+/* Отправка PNG-карточки вместо текста. Телеграм ждёт multipart, а не JSON –
    Node 22 даёт глобальные FormData/Blob, отдельный пакет не нужен. */
 async function sendPhoto(buffer, caption, extra = {}) {
   const form = new FormData();
@@ -201,10 +201,10 @@ function draftUrl(collection, entry) {
 
 /* ── Правка контента прямо из чата ────────────────────────────────────────────
  * Пишем не в локальный файл, а через PATCH /content/entity на самом API:
- * там же лежит проверка версии (оптимистичная блокировка — не перезаписать
+ * там же лежит проверка версии (оптимистичная блокировка – не перезаписать
  * правку, сделанную в панели параллельно) и валидация формы сущности.
  * Бот только читает актуальную версию сущности из локального файла, меняет
- * одно поле и отправляет её целиком обратно — meta.version берём заново
+ * одно поле и отправляет её целиком обратно – meta.version берём заново
  * перед каждой отправкой, чтобы не словить 409 на ровном месте. */
 async function patchEntity(section, id, mutate, lang) {
   const metaRes = await fetch(`${CONTENT_API}/content/meta`);
@@ -241,7 +241,7 @@ async function formsList() {
   } catch { return null; }
 }
 
-// ── CRM: контакты, интервью, заметки — тот же /crm, что и у Mini App ─────────
+// ── CRM: контакты, интервью, заметки – тот же /crm, что и у Mini App ─────────
 async function fetchCrm() {
   const response = await fetch(`${CONTENT_API}/crm`, { headers: { "X-Admin-Password": FORMS_PASSWORD } });
   const data = await response.json();
@@ -260,30 +260,30 @@ async function saveCrm(crm) {
 
 const STATUS_LABEL_RU = { planned: "запланировано", done: "проведено", transcribing: "расшифровка", ready: "готово" };
 
-/* <blockquote> — не украшение ради украшения: список из десятка контактов
+/* <blockquote> – не украшение ради украшения: список из десятка контактов
    сплошным текстом сливается в кашу, а рамка вокруг каждой записи держит
    взгляд построчно. Телеграм поддерживает тег без каких-то доп. настроек
-   бота — он есть в HTML-режиме давно, просто раньше не пригождался. */
+   бота – он есть в HTML-режиме давно, просто раньше не пригождался. */
 async function cmdContacts() {
   let crm;
   try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
-  if (!crm.contacts.length) return "Контактов пока нет — добавьте через App.";
+  if (!crm.contacts.length) return "Контактов пока нет – добавьте через App.";
   const typeLabel = { author: "автор", partner: "партнёр", speaker: "спикер", other: "" };
   const sorted = [...crm.contacts].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
-  return [`<b>👥 Контакты</b> — ${sorted.length}`, "", ...sorted.map((c) => {
+  return [`<b>👥 Контакты</b> – ${sorted.length}`, "", ...sorted.map((c) => {
     const bits = [typeLabel[c.type] || "", c.telegram, c.phone, c.email].filter(Boolean).join(" · ");
     return `<blockquote><b>${esc(c.name || "без имени")}</b>${bits ? `\n${esc(bits)}` : ""}</blockquote>`;
   })].join("\n");
 }
 
-/* Карточные версии — тот же язык, что у /status, /last, /drafts: чёрно-белая
+/* Карточные версии – тот же язык, что у /status, /last, /drafts: чёрно-белая
    рамка, Crimson Text, тонкие линии. Текстовые cmdContacts/cmdInterviews
-   остаются как есть — используются в /help и как запасной путь, если
+   остаются как есть – используются в /help и как запасной путь, если
    sharp/рендер вдруг подведёт. */
 async function cmdContactsCard() {
   let crm;
   try { crm = await fetchCrm(); } catch (e) { return { text: `CRM недоступна: ${esc(e.message)}` }; }
-  if (!crm.contacts.length) return { text: "Контактов пока нет — добавьте через App." };
+  if (!crm.contacts.length) return { text: "Контактов пока нет – добавьте через App." };
   const sorted = [...crm.contacts].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
   const buffer = await cards.renderContacts(sorted);
   return { buffer, caption: `Контактов: ${sorted.length}` };
@@ -294,7 +294,7 @@ const STATUS_EMOJI = { planned: "🗓", done: "✅", transcribing: "📝", ready
 async function cmdInterviewsCard() {
   let crm;
   try { crm = await fetchCrm(); } catch (e) { return { text: `CRM недоступна: ${esc(e.message)}` }; }
-  if (!crm.interviews.length) return { text: "Интервью пока нет — добавьте через App." };
+  if (!crm.interviews.length) return { text: "Интервью пока нет – добавьте через App." };
   const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
   const sorted = [...crm.interviews]
     .sort((a, b) => String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")))
@@ -310,14 +310,14 @@ async function cmdInterviewsCard() {
 async function cmdInterviews() {
   let crm;
   try { crm = await fetchCrm(); } catch (e) { return `CRM недоступна: ${esc(e.message)}`; }
-  if (!crm.interviews.length) return "Интервью пока нет — добавьте через App.";
-  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : "—"; };
+  if (!crm.interviews.length) return "Интервью пока нет – добавьте через App.";
+  const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : "–"; };
   const sorted = [...crm.interviews].sort((a, b) => String(a.scheduledAt || "").localeCompare(String(b.scheduledAt || "")));
-  return [`<b>🎙 Интервью</b> — ${sorted.length}`, "", ...sorted.map((iv) => {
+  return [`<b>🎙 Интервью</b> – ${sorted.length}`, "", ...sorted.map((iv) => {
     const when = iv.scheduledAt ? new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "без даты";
     const mark = STATUS_EMOJI[iv.status] || "•";
     const link = iv.meetLink ? `\n<a href="${esc(iv.meetLink)}">🎥 Встреча</a>` : "";
-    return `<blockquote>${mark} <b>${esc(iv.subject || "без темы")}</b> — ${esc(STATUS_LABEL_RU[iv.status] || iv.status)}\n${esc(contactName(iv.contactId))} · ${esc(when)}${link}</blockquote>`;
+    return `<blockquote>${mark} <b>${esc(iv.subject || "без темы")}</b> – ${esc(STATUS_LABEL_RU[iv.status] || iv.status)}\n${esc(contactName(iv.contactId))} · ${esc(when)}${link}</blockquote>`;
   })].join("\n");
 }
 
@@ -358,13 +358,13 @@ const COMMANDS = [
   ["/ssl", "сколько осталось сертификату"],
   ["/links", "быстрые ссылки"],
   ["/alerts", "что сторож проверяет сам"],
-  ["/digest", "утренний дайджест прямо сейчас (в 9:00 — сам)"],
+  ["/digest", "утренний дайджест прямо сейчас (в 9:00 – сам)"],
   ["/mute", "тишина на N часов (по умолчанию 4)"],
   ["/unmute", "вернуть алерты"],
   ["/help", "этот список"],
 ];
 
-/* Разбито по смыслу, а не одним полотном — так за секунду видно, в какой
+/* Разбито по смыслу, а не одним полотном – так за секунду видно, в какой
    раздел лезть, а не читаешь список из пятнадцати команд подряд. */
 const HELP_GROUPS = [
   ["📋 Редакция", ["/status", "/last", "/drafts", "/digest"]],
@@ -379,10 +379,10 @@ function cmdHelp() {
   const out = ["<b>EPRIS.</b> Что я умею:", ""];
   for (const [title, names] of HELP_GROUPS) {
     out.push(`<b>${title}</b>`);
-    for (const name of names) out.push(`${name} — ${esc(byName.get(name) || "")}`);
+    for (const name of names) out.push(`${name} – ${esc(byName.get(name) || "")}`);
     out.push("");
   }
-  out.push("<i>Ниже — то же самое кнопками, набирать не обязательно.</i>");
+  out.push("<i>Ниже – то же самое кнопками, набирать не обязательно.</i>");
   return out.join("\n");
 }
 
@@ -398,9 +398,9 @@ async function collectStatus() {
   };
 
   // Параллельно, не по очереди: раньше три проверки шли одна за другой с
-  // таймаутом 8с каждая — если что-то одно подвисало (не упало, а именно
+  // таймаутом 8с каждая – если что-то одно подвисало (не упало, а именно
   // подвисало), /status ждал до 24с вместо 8. Порядок строк на карточке не
-  // зависит от того, кто первым ответил — Promise.all сохраняет порядок
+  // зависит от того, кто первым ответил – Promise.all сохраняет порядок
   // самого массива промисов, не порядок завершения.
   const checks = await Promise.all([
     check("сайт", SITE),
@@ -442,7 +442,7 @@ async function cmdStatus() {
   return lines.join("\n");
 }
 
-/* Та же сводка, но карточкой в айдентике EPRIS — на неё удобнее взглянуть
+/* Та же сводка, но карточкой в айдентике EPRIS – на неё удобнее взглянуть
    мельком, чем разбирать текстовый список галочек. */
 async function cmdStatusCard() {
   const { checks, counts, freeGb } = await collectStatus();
@@ -482,7 +482,7 @@ function draftsList() {
 function cmdDrafts() {
   const drafts = draftsList();
   if (!drafts) return "Контент прочитать не удалось.";
-  if (!drafts.length) return "Черновиков нет — всё опубликовано.";
+  if (!drafts.length) return "Черновиков нет – всё опубликовано.";
   const out = [];
   for (const [key, title] of [["articles", "Статьи"], ["reviews", "Обзоры"]]) {
     const list = drafts.filter((d) => d.section === key).slice(0, 15);
@@ -495,19 +495,19 @@ function cmdDrafts() {
 }
 
 /* Список черновиков карточкой + кнопки «Опубликовать»/«Правка заголовка» под
-   каждым — не нужно открывать панель ради одного клика. lastDraftsIndex
+   каждым – не нужно открывать панель ради одного клика. lastDraftsIndex
    хранит, какая кнопка на какую (section,id) ссылается, между сообщениями. */
 let lastDraftsIndex = [];
 
 async function cmdDraftsCard() {
   const drafts = draftsList();
   if (!drafts) return { text: "Контент прочитать не удалось." };
-  if (!drafts.length) return { text: "Черновиков нет — всё опубликовано." };
+  if (!drafts.length) return { text: "Черновиков нет – всё опубликовано." };
   lastDraftsIndex = drafts.slice(0, 8);
   const buffer = await cards.renderDrafts(lastDraftsIndex);
-  // Четыре действия на черновик в один ряд (не четыре строки) — иначе
+  // Четыре действия на черновик в один ряд (не четыре строки) – иначе
   // клавиатура на восемь черновиков растягивается на два экрана. Четвёртая
-  // кнопка — не callback, а web_app: открывает Mini App сразу в редакторе
+  // кнопка – не callback, а web_app: открывает Mini App сразу в редакторе
   // этого материала (?open=section-id), не с дашборда.
   const rows = lastDraftsIndex.map((d, i) => [
     { text: `${i + 1} ✓`, callback_data: `pub:${i}` },
@@ -555,14 +555,14 @@ async function cmdLastCard() {
 }
 
 /* ── Сторож: алерты сами, без вопроса ────────────────────────────────────────
- * До сих пор бот был только реактивным: спросили — ответил. Значит про упавший
+ * До сих пор бот был только реактивным: спросили – ответил. Значит про упавший
  * сайт или кончившийся диск редакция узнавала последней, от читателя.
  *
  * Сторож обходит проверки по кругу и пишет в чат сам. Два правила, без
  * которых он превратился бы в шум и его отключили бы через день:
  *
  *   • сообщаем ПЕРЕХОД, а не состояние. «Сайт лежит» приходит один раз, а не
- *     каждые пять минут, пока лежит. Восстановление тоже приходит — иначе
+ *     каждые пять минут, пока лежит. Восстановление тоже приходит – иначе
  *     непонятно, кончилось ли уже.
  *   • состояние переживает перезапуск (файл на диске), иначе рестарт службы
  *     заново разошлёт всё, о чём уже сообщили.
@@ -581,7 +581,7 @@ function saveState(state) {
 }
 let state = loadState();
 
-/* Тишина по просьбе. Дежурный уходит спать — алерты не должны будить, но и
+/* Тишина по просьбе. Дежурный уходит спать – алерты не должны будить, но и
    теряться не должны: после срока сторож продолжит с того же места. */
 function muted() {
   return Boolean(state.muteUntil && Date.now() < state.muteUntil);
@@ -614,7 +614,7 @@ async function watchdog() {
       "API контента снова отвечает");
     /* Проверять надо /health, а не /list: /list закрыт паролем и без него
        честно отвечает 401, то есть «служба жива и охраняется». Сторож на
-       первом же круге принял это за падение и прислал ложную тревогу —
+       первом же круге принял это за падение и прислал ложную тревогу –
        поймано при проверке после выката. /health открыт намеренно и
        отвечает {"ok":true}. */
     await transition("forms", !(await reachable(`${FORMS_API}/health`)),
@@ -632,7 +632,7 @@ async function watchdog() {
     const disk = diskFree();
     if (disk) {
       await transition("disk", disk.freeGb < DISK_ALERT_GB,
-        `<b>Мало места на диске</b>\nОсталось ${disk.freeGb.toFixed(1)} ГБ — загрузка фото и аудио начнёт отказывать.`,
+        `<b>Мало места на диске</b>\nОсталось ${disk.freeGb.toFixed(1)} ГБ – загрузка фото и аудио начнёт отказывать.`,
         `Место на диске в норме (${disk.freeGb.toFixed(1)} ГБ)`);
     }
 
@@ -644,7 +644,7 @@ async function watchdog() {
         "Сертификат продлён");
     }
 
-    // 5. Новые ответы в анкетах — считаем по нарастающей сумме, а не по
+    // 5. Новые ответы в анкетах – считаем по нарастающей сумме, а не по
     //    отдельным ответам: служба анкет отдаёт только количество.
     const forms = await formsList();
     if (forms) {
@@ -656,7 +656,7 @@ async function watchdog() {
         next[form.slug] = count;
         const before = Number(seen[form.slug]);
         if (Number.isFinite(before) && count > before) {
-          fresh.push(`${esc(form.title)} — <b>+${count - before}</b> (всего ${count})`);
+          fresh.push(`${esc(form.title)} – <b>+${count - before}</b> (всего ${count})`);
         }
       }
       state.formCounts = next;
@@ -667,10 +667,10 @@ async function watchdog() {
       }
     }
 
-    // 6. Счётчик черновиков на самой кнопке App — видно, не открывая бота.
+    // 6. Счётчик черновиков на самой кнопке App – видно, не открывая бота.
     await updateMenuBadge();
 
-    // 7. Напоминания об интервью — за час до назначенного времени, один раз
+    // 7. Напоминания об интервью – за час до назначенного времени, один раз
     //    (reminded=true), и только пока оно ещё «запланировано»: если статус
     //    сменили или время перенесли, Mini App уже сбросил reminded сама.
     await remindInterviews();
@@ -681,10 +681,10 @@ async function watchdog() {
   }
 }
 
-/* Раньше /alerts показывал только настройки сторожа — что именно проверяется
+/* Раньше /alerts показывал только настройки сторожа – что именно проверяется
    и с каким порогом, но не отвечал на первый вопрос, с которым сюда идут:
    «а сейчас-то всё в порядке?». Состояние уже посчитано в transition() на
-   каждом круге и лежит в state[key] — просто читаем, не гоняя проверки
+   каждом круге и лежит в state[key] – просто читаем, не гоняя проверки
    заново ради одной команды. */
 function cmdAlerts() {
   const live = (key, label) => {
@@ -708,7 +708,7 @@ function cmdAlerts() {
       ? `🔕 тишина до ${new Date(state.muteUntil).toLocaleString("ru-RU")}`
       : "🔔 алерты включены",
     "",
-    "<i>⚪ — ещё не проверялось с последнего перезапуска. Сообщается смена состояния, а не само состояние: «упало» и «поднялось» по разу, без повторов.</i>",
+    "<i>⚪ – ещё не проверялось с последнего перезапуска. Сообщается смена состояния, а не само состояние: «упало» и «поднялось» по разу, без повторов.</i>",
   ];
   return rows.join("\n");
 }
@@ -717,7 +717,7 @@ function cmdMute(text) {
   const hours = Math.min(72, Math.max(1, Number(String(text).split(/\s+/)[1]) || 4));
   state.muteUntil = Date.now() + hours * 3600000;
   saveState(state);
-  return `🔕 Тишина на ${hours} ч — до ${new Date(state.muteUntil).toLocaleString("ru-RU")}.\nСторож продолжит следить и сообщит, что накопилось, когда срок выйдет.`;
+  return `🔕 Тишина на ${hours} ч – до ${new Date(state.muteUntil).toLocaleString("ru-RU")}.\nСторож продолжит следить и сообщит, что накопилось, когда срок выйдет.`;
 }
 
 function cmdUnmute() {
@@ -729,7 +729,7 @@ function cmdUnmute() {
 /* ── Новые команды: инфраструктура под рукой ─────────────────────────────────
  * Всё, ради чего раньше приходилось лезть по ssh: живы ли службы, не кончился
  * ли диск, когда протухнет сертификат. Редактор такими вопросами не задаётся,
- * а вот дежурный по сайту — постоянно.
+ * а вот дежурный по сайту – постоянно.
  */
 
 const { execFile } = require("child_process");
@@ -766,8 +766,8 @@ async function serviceStates() {
 async function cmdServices() {
   const states = await serviceStates();
   const bad = states.filter((s) => !s.ok);
-  const lines = [`<b>🛠 Службы</b> — ${bad.length ? `не в порядке: ${bad.length}` : "все на ходу"}`, ""];
-  for (const s of states) lines.push(`${s.ok ? "✓" : "✗"} ${esc(s.label)} — <code>${esc(s.state)}</code>`);
+  const lines = [`<b>🛠 Службы</b> – ${bad.length ? `не в порядке: ${bad.length}` : "все на ходу"}`, ""];
+  for (const s of states) lines.push(`${s.ok ? "✓" : "✗"} ${esc(s.label)} – <code>${esc(s.state)}</code>`);
   return lines.join("\n");
 }
 
@@ -791,7 +791,7 @@ async function cmdDisk() {
     `занято: ${usedPct.toFixed(0)}%`,
   ];
   if (disk.freeGb < DISK_ALERT_GB) lines.push("", "⚠ мало места: загрузка файлов начнёт отказывать");
-  // Крупнейшие каталоги — чтобы сразу видеть, что именно съело место.
+  // Крупнейшие каталоги – чтобы сразу видеть, что именно съело место.
   const du = await run("/usr/bin/du", ["-sh", "/opt/epris-forms/data", "/var/www/eprisjournal", "/opt/builds"], 9000);
   if (du.trim()) lines.push("", "<b>Что занимает:</b>", `<code>${esc(du.trim())}</code>`);
   return lines.join("\n");
@@ -801,8 +801,8 @@ async function cmdSsl() {
   const days = await sslDaysLeft();
   if (days === null) return "Срок сертификата определить не удалось.";
   const mark = days <= SSL_ALERT_DAYS ? "⚠" : "✓";
-  return `<b>🔒 Сертификат</b>\n\n${mark} eprisjournal.com — осталось <b>${days}</b> дн.` +
-    (days <= SSL_ALERT_DAYS ? "\n\nПора продлевать: certbot обычно делает это сам, но раз счёт пошёл на дни — стоит проверить таймер." : "");
+  return `<b>🔒 Сертификат</b>\n\n${mark} eprisjournal.com – осталось <b>${days}</b> дн.` +
+    (days <= SSL_ALERT_DAYS ? "\n\nПора продлевать: certbot обычно делает это сам, но раз счёт пошёл на дни – стоит проверить таймер." : "");
 }
 
 async function sslDaysLeft() {
@@ -811,7 +811,7 @@ async function sslDaysLeft() {
   ], 8000).catch(() => "");
   let text = out;
   if (!/notAfter/.test(text)) {
-    // Через сокет не вышло — пробуем файл сертификата на диске.
+    // Через сокет не вышло – пробуем файл сертификата на диске.
     text = await run("/usr/bin/openssl", ["x509", "-enddate", "-noout", "-in",
       "/etc/letsencrypt/live/eprisjournal.com/fullchain.pem"], 5000);
   }
@@ -825,11 +825,11 @@ async function sslDaysLeft() {
 function cmdLinks() {
   return [
     "<b>🔗 Ссылки</b>", "",
-    `Сайт — ${SITE}`,
-    `Панель — ${SITE}/admin/`,
-    `Анкеты — ${SITE}/admin/#forms`,
-    `Статьи — ${SITE}/articles`,
-    `Витрина — ${SITE}/showcase`,
+    `Сайт – ${SITE}`,
+    `Панель – ${SITE}/admin/`,
+    `Анкеты – ${SITE}/admin/#forms`,
+    `Статьи – ${SITE}/articles`,
+    `Витрина – ${SITE}/showcase`,
   ].join("\n");
 }
 
@@ -840,11 +840,11 @@ async function cmdResponses() {
   if (!withAnswers.length) return "Ответов пока нет ни в одной анкете.";
   withAnswers.sort((a, b) => Number(b.responses) - Number(a.responses));
   const total = withAnswers.reduce((sum, f) => sum + Number(f.responses), 0);
-  return [`<b>✉️ Ответы</b> — всего ${total}`, "",
-    ...withAnswers.map((f) => `${esc(f.title)} — <b>${Number(f.responses)}</b>\n  ${SITE}/f/${esc(f.slug)}`)].join("\n");
+  return [`<b>✉️ Ответы</b> – всего ${total}`, "",
+    ...withAnswers.map((f) => `${esc(f.title)} – <b>${Number(f.responses)}</b>\n  ${SITE}/f/${esc(f.slug)}`)].join("\n");
 }
 
-/* Команды, у которых есть карточный вариант — берём приоритет над текстом
+/* Команды, у которых есть карточный вариант – берём приоритет над текстом
    в обоих местах, откуда бота можно спросить (сообщение и кнопка меню). */
 const PHOTO_COMMANDS = {
   "/status": cmdStatusCard,
@@ -868,11 +868,11 @@ async function sendCommandResult(command) {
 
 // ── Правка одним кликом: публикация и смена заголовка из карточки черновиков ─
 
-let pendingEdit = null;   // { section, id, title } — ждём следующий текст как новый заголовок
+let pendingEdit = null;   // { section, id, title } – ждём следующий текст как новый заголовок
 
 async function handlePublish(index) {
   const d = lastDraftsIndex[index];
-  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  if (!d) return sendRich("Список черновиков устарел – откройте /drafts заново.");
   try {
     await patchEntity(d.section, d.id, (e) => { e.draft = false; });
     await sendRich(`✓ Опубликовано: <b>${esc(d.title)}</b>`, { reply_markup: MENU });
@@ -883,7 +883,7 @@ async function handlePublish(index) {
 
 async function handleEditStart(index) {
   const d = lastDraftsIndex[index];
-  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  if (!d) return sendRich("Список черновиков устарел – откройте /drafts заново.");
   pendingEdit = { section: d.section, id: d.id, title: d.title };
   await sendRich(`Пришлите новый заголовок для «${esc(d.title)}» одним сообщением.`);
 }
@@ -892,7 +892,7 @@ async function handleEditApply(newTitle) {
   const p = pendingEdit;
   pendingEdit = null;
   const title = newTitle.trim();
-  if (!title) return sendRich("Пустой заголовок — правка отменена.");
+  if (!title) return sendRich("Пустой заголовок – правка отменена.");
   try {
     await patchEntity(p.section, p.id, (e) => { e.title = title; });
     await sendRich(`✓ Заголовок обновлён: «${esc(p.title)}» → «${esc(title)}»`, { reply_markup: MENU });
@@ -903,11 +903,11 @@ async function handleEditApply(newTitle) {
 
 // ── Фото прямо из чата: телеграм → /upload на API → imageUrl материала ───────
 
-let pendingPhoto = null;   // { section, id, title } — ждём следующее фото
+let pendingPhoto = null;   // { section, id, title } – ждём следующее фото
 
 async function handlePhotoStart(index) {
   const d = lastDraftsIndex[index];
-  if (!d) return sendRich("Список черновиков устарел — откройте /drafts заново.");
+  if (!d) return sendRich("Список черновиков устарел – откройте /drafts заново.");
   pendingPhoto = { section: d.section, id: d.id, title: d.title };
   await sendRich(`Пришлите фото для «${esc(d.title)}» одним сообщением (как фото, не файлом).`);
 }
@@ -916,7 +916,7 @@ async function handlePhotoApply(photoSizes) {
   const p = pendingPhoto;
   pendingPhoto = null;
   try {
-    // Телеграм присылает один file_id на несколько уменьшенных копий — берём
+    // Телеграм присылает один file_id на несколько уменьшенных копий – берём
     // последнюю в массиве, она самая крупная.
     const best = photoSizes[photoSizes.length - 1];
     const fileInfo = await tg("getFile", { file_id: best.file_id });
@@ -941,7 +941,7 @@ async function handlePhotoApply(photoSizes) {
 async function handleCommand(text) {
   const command = String(text || "").trim().split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
   switch (command) {
-    case "/start": return `👋 На связи бот редакции EPRIS.\n\n<b>App</b> внизу слева открывает панель — там дашборд, поиск по материалам и правка прямо с телефона. Каждое утро сам пришлёт дайджест, а всё остальное — по кнопкам ниже или командой, если так привычнее.\n\n<i>/help — полный список.</i>`;
+    case "/start": return `👋 На связи бот редакции EPRIS.\n\n<b>App</b> внизу слева открывает панель – там дашборд, поиск по материалам и правка прямо с телефона. Каждое утро сам пришлёт дайджест, а всё остальное – по кнопкам ниже или командой, если так привычнее.\n\n<i>/help – полный список.</i>`;
     case "/menu":
     case "/help": return cmdHelp();
     case "/status": return cmdStatus();
@@ -975,7 +975,7 @@ const server = http.createServer((req, res) => {
   let body = "";
   req.on("data", (chunkOfBody) => {
     body += chunkOfBody;
-    if (body.length > 100000) req.destroy();   // событие такого размера — уже не событие
+    if (body.length > 100000) req.destroy();   // событие такого размера – уже не событие
   });
   req.on("end", () => {
     res.writeHead(200, { "Content-Type": "application/json" });
@@ -1009,7 +1009,7 @@ async function poll() {
 
       /* Нажатие кнопки под сообщением. Телеграм ждёт answerCallbackQuery в
          течение нескольких секунд, иначе у человека висят «часики» на
-         кнопке — отвечаем сразу, до выполнения самой команды. */
+         кнопке – отвечаем сразу, до выполнения самой команды. */
       if (update.callback_query) {
         const q = update.callback_query;
         if (String(q.message && q.message.chat && q.message.chat.id) !== String(CHAT)) continue;
@@ -1027,14 +1027,14 @@ async function poll() {
       // Чужие чаты игнорируем: бот отвечает только редакции.
       if (String(message.chat && message.chat.id) !== String(CHAT)) continue;
 
-      // Ждём фото после «🖼 Фото» — оно приходит отдельным апдейтом, без текста.
+      // Ждём фото после «🖼 Фото» – оно приходит отдельным апдейтом, без текста.
       if (pendingPhoto && Array.isArray(message.photo) && message.photo.length) {
         await handlePhotoApply(message.photo);
         continue;
       }
       if (!message.text) continue;
 
-      // Ждём новый заголовок после «✏️ Заголовок» — обычный текст, не команда.
+      // Ждём новый заголовок после «✏️ Заголовок» – обычный текст, не команда.
       if (pendingEdit && !message.text.startsWith("/")) {
         await handleEditApply(message.text);
         continue;
@@ -1052,9 +1052,9 @@ async function poll() {
     }
   } catch (error) {
     if (error.name !== "TimeoutError") console.error("[bot] опрос:", error.message);
-    // Задержка нужна только после реальной ошибки — не долбить API, пока
+    // Задержка нужна только после реальной ошибки – не долбить API, пока
     // сеть или Телеграм приходят в себя. На каждом успешном цикле (и на
-    // пустом таймауте long polling'а, это не ошибка) она была лишней —
+    // пустом таймауте long polling'а, это не ошибка) она была лишней –
     // добавляла до полусекунды к ответу на каждое сообщение без всякой
     // причины: getUpdates и так не возвращается, пока нет апдейта или не
     // истекут его собственные 50с.
@@ -1108,7 +1108,7 @@ scheduleDigest();
 /* Список команд в меню телеграма: человек видит их по нажатию «/», а не
    вспоминает. Ставится один раз при старте, ошибка тут ничего не ломает. */
 /* Сторож стартует с задержкой: сразу после перезапуска службы соседи ещё
-   поднимаются, и проверка застала бы их «упавшими» — получили бы ложную
+   поднимаются, и проверка застала бы их «упавшими» – получили бы ложную
    тревогу на каждом рестарте. */
 setTimeout(watchdog, 20000);
 
@@ -1118,16 +1118,16 @@ void fetch(api("setMyCommands"), {
   body: JSON.stringify({ commands: COMMANDS.map(([name, what]) => ({ command: name.slice(1), description: what })) }),
 }).catch(() => {});
 
-/* Кнопка слева от поля ввода открывает Mini App — полноценную панель
+/* Кнопка слева от поля ввода открывает Mini App – полноценную панель
    вместо построчных команд. Глобальный дефолт ставится для приватных чатов
    вообще, но у чата редакции уже мог осесть персональный оверрайд типа
    "default" (Телеграм заводит его сам при первом /start, до того как бот
-   вообще узнал про web_app) — он перебивает глобальный молча, кнопка не
+   вообще узнал про web_app) – он перебивает глобальный молча, кнопка не
    появляется. Поэтому ставим ЕЩЁ РАЗ явно с chat_id: персональная запись
    имеет приоритет, значит и чинить нужно именно её. */
 const MENU_BUTTON = { type: "web_app", text: "App", web_app: { url: `${SITE}/tgapp/` } };
 
-/* Число черновиков прямо в подписи кнопки — видно до открытия бота, а не
+/* Число черновиков прямо в подписи кнопки – видно до открытия бота, а не
    после команды. Дёргаем API только когда счётчик реально сменился: у
    setChatMenuButton нет отдельного лимита, но незачем стучаться в Telegram
    каждые пять минут ради одного и того же текста. */
@@ -1145,12 +1145,12 @@ async function updateMenuBadge() {
   }).catch(() => {});
 }
 
-/* Час до интервью — не раньше и не за неделю: слишком заблаговременно, и
-   уведомление потеряется среди прочего. reminded — чтобы не слать одно и
+/* Час до интервью – не раньше и не за неделю: слишком заблаговременно, и
+   уведомление потеряется среди прочего. reminded – чтобы не слать одно и
    то же на каждом круге сторожа (раз в 5 минут), пока час не истёк. */
 async function remindInterviews() {
   let crm;
-  try { crm = await fetchCrm(); } catch { return; }   // CRM недоступна — не критично, попробуем на следующем круге
+  try { crm = await fetchCrm(); } catch { return; }   // CRM недоступна – не критично, попробуем на следующем круге
   const now = Date.now();
   const contactName = (id) => { const c = crm.contacts.find((x) => String(x.id) === String(id)); return c ? c.name : null; };
   let changed = false;
@@ -1163,9 +1163,9 @@ async function remindInterviews() {
   for (const iv of due) {
     const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
     const who = contactName(iv.contactId);
-    // Ссылка — отдельной кнопкой, не просто текстом: за час до созвона это
+    // Ссылка – отдельной кнопкой, не просто текстом: за час до созвона это
     // единственное, что реально нужно нажать, не разбирая сообщение. Полное
-    // MENU сюда не приплюсовываем — оно и так на одну команду /menu дальше,
+    // MENU сюда не приплюсовываем – оно и так на одну команду /menu дальше,
     // а десяток лишних кнопок под алертом только мешает найти нужную.
     const keyboard = iv.meetLink ? { inline_keyboard: [[{ text: "🎥 Присоединиться", url: iv.meetLink }]] } : MENU;
     await sendRich(`🎙 <b>Интервью через час</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>`,
@@ -1174,9 +1174,9 @@ async function remindInterviews() {
     changed = true;
   }
 
-  /* Время прошло, а статус так и остался «запланировано» — либо забыли
+  /* Время прошло, а статус так и остался «запланировано» – либо забыли
      отметить, либо интервью сорвалось. Раздражает не меньше, чем молчание:
-     поэтому один раз, не на каждом круге (overdueNotified), и не сразу —
+     поэтому один раз, не на каждом круге (overdueNotified), и не сразу –
      двух часов достаточно, чтобы не дёргать из-за короткой задержки. */
   const overdue = crm.interviews.filter((iv) => {
     if (iv.overdueNotified || iv.status !== "planned" || !iv.scheduledAt) return false;
@@ -1186,7 +1186,7 @@ async function remindInterviews() {
   for (const iv of overdue) {
     const when = new Date(iv.scheduledAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
     const who = contactName(iv.contactId);
-    await sendRich(`⚠️ <b>Интервью прошло, статус не менялся</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>\nОтметьте в App, как прошло — или перенесите дату.`,
+    await sendRich(`⚠️ <b>Интервью прошло, статус не менялся</b>\n\n<blockquote>${esc(iv.subject || "без темы")}${who ? `\n${esc(who)}` : ""}\n${esc(when)}</blockquote>\nОтметьте в App, как прошло – или перенесите дату.`,
       { reply_markup: MENU });
     iv.overdueNotified = true;
     changed = true;

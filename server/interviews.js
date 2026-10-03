@@ -1,6 +1,6 @@
 "use strict";
 
-// EPRIS Interview Studio — deliberately separate from the public CMS store.
+// EPRIS Interview Studio – deliberately separate from the public CMS store.
 // Audio and transcripts are editorial working material: no source file is
 // exposed by nginx, every request is authorised, and every processing step is
 // recoverable after a service restart.
