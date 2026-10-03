@@ -3098,6 +3098,101 @@
       "picsId": "PICS-2026-036",
       "updatedAt": "2026-09-23T16:09:48Z",
       "picsReleaseId": "PICS-WEEK-2026-005"
+    },
+    {
+      "id": 45,
+      "title": "Sandra Kantanen: Beyond the Lens of Traditional Photography",
+      "subtitle": "Photography",
+      "fig": "FIG. 11",
+      "description": "A photograph can be a threshold rather than a record — Sandra Kantanen turns landscape into a space between memory, myth and optical distortion.",
+      "imageSeed": "epris-pick-photography",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
+      "homeCategory": "photography",
+      "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+      "homeTitle": "Landscape",
+      "homeSubtitle": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
+      "homeDescription": "A path dissolves into haze and trees, making the landscape feel like a memory still finding its focus.",
+      "homeCredit": "Fedora E. D. Brown · public-domain photograph / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-042",
+      "updatedAt": "2026-10-03T14:00:00Z"
+    },
+    {
+      "id": 46,
+      "title": "How Emily Kraus Reinvents the Act of Painting",
+      "subtitle": "Contemporary Art",
+      "fig": "FIG. 10",
+      "description": "Inside the Canvas Cube, Emily Kraus Paints the Rhythm of the Present Moment",
+      "imageSeed": "epris-pick-painting",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
+      "homeCategory": "painting",
+      "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
+      "homeTitle": "The Ten Largest No. 6",
+      "homeSubtitle": "Hilma af Klint · 1907 · tempera on paper",
+      "homeDescription": "Lilac fields, solar diagrams and a dark central seed make the canvas feel less painted than grown from an invisible cosmos.",
+      "homeCredit": "Hilma af Klint · public-domain work / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-043",
+      "updatedAt": "2026-10-03T14:00:00Z"
+    },
+    {
+      "id": 47,
+      "title": "Against the Right Angle",
+      "subtitle": "Architecture",
+      "fig": "FIG. 08",
+      "description": "Five buildings that talked their way out of the grid — and the software, the metal, the money and the sheer nerve it took to build them.",
+      "imageSeed": "epris-pick-architecture",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+      "homeCategory": "architecture",
+      "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+      "homeTitle": "Modernist Concrete Study",
+      "homeSubtitle": "Lekeboy54 · 2025 · architectural photograph",
+      "homeDescription": "A quiet concrete frame turns weather, repetition and a low horizon into one measured composition.",
+      "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-044",
+      "updatedAt": "2026-10-03T14:00:00Z"
+    },
+    {
+      "id": 48,
+      "title": "Polish Design: Woven From Memory",
+      "subtitle": "Design",
+      "fig": "FIG. 09",
+      "description": "Contemporary Polish design has arrived at a moment of profound, quiet maturity. To walk through the studios of today’s leading architects and furniture designers is to encounter a language of rigorous minimalism, tactile raw materials, and a deliberate structural honesty. Yet, this modern clarity is not a rejection of the past - it is the culmination of a century-long dialogue regarding what it means to create with a national soul.",
+      "imageSeed": "epris-pick-design",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt6jsxpm2n.jpg",
+      "homeCategory": "design",
+      "homeLabel": "Frank Gehry · 1972 · corrugated cardboard",
+      "homeTitle": "Wiggle Side Chair",
+      "homeSubtitle": "Frank Gehry · 1972 · corrugated cardboard",
+      "homeDescription": "A simple sheet becomes a sinuous seat: an everyday material pushed into a sculptural, surprisingly generous form.",
+      "homeCredit": "Frank Gehry · photo CC0 / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Wiggle_Side_Chair,_designed_by_Frank_Gehry,_manufactured_by_Easy_Edges_and_Vitra,_1972,_corrugated_cardboard_-_Design_Museum,_Kensington_-_London_-_DSC01592.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-045",
+      "updatedAt": "2026-10-03T14:00:00Z"
+    },
+    {
+      "id": 49,
+      "title": "Art that makes you smile",
+      "subtitle": "ART & DESIGN",
+      "fig": "FIG. 07",
+      "description": "I believe that when you introduce playful objects into an environment, it expands the boundaries of the mind. It gives you non-verbal permission to think freely - not just to push against conventional frames, but to forget they even exist.",
+      "imageSeed": "epris-pick-sculpture",
+      "imageUrl": "https://api.eprisjournal.com/uploads/msnluv70lwze6y.jpg",
+      "homeCategory": "sculpture",
+      "homeLabel": "Umberto Boccioni · 1913 · bronze",
+      "homeTitle": "Unique Forms of Continuity in Space",
+      "homeSubtitle": "Umberto Boccioni · 1913 · bronze",
+      "homeDescription": "A body becomes velocity: Boccioni turns the figure into a single aerodynamic gesture, caught between sculpture and flight.",
+      "homeCredit": "Umberto Boccioni · public-domain work / Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:%27Unique_Forms_of_Continuity_in_Space%27,_1913_bronze_by_Umberto_Boccioni.jpg",
+      "picsOfWeek": true,
+      "picsId": "PICS-2026-046",
+      "updatedAt": "2026-10-03T14:00:00Z"
     }
   ],
   "articles": [
@@ -40674,7 +40769,7 @@
           "author": "Viacheslav Munister",
           "role": "Автор",
           "authorId": "author-1784732936927-kw554",
-          "date": "Oct 3, 2026",
+          "date": "3 жовтня 2026",
           "publishedAt": "2026-10-03T13:20:00.000Z",
           "excerpt": "У Palais de Tokyo Cathy de Monchaux перетворила метал, оксамит, пил і крихкі каркаси у скульптурну мову бажання, небезпеки та надзвичайної краси.",
           "category": "Мистецтво",
@@ -40685,12 +40780,12 @@
             "Palais de Tokyo",
             "Сучасне мистецтво",
             "Інсталяція",
-            "Paris"
+            "Париж"
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "previewToken": "cathy-de-monchaux-paris-20261003",
-          "updatedAt": "2026-10-03T13:13:05.988Z",
+          "updatedAt": "2026-10-03T13:32:29.983Z",
           "content": [
             {
               "type": "image",
@@ -40701,15 +40796,15 @@
             },
             {
               "type": "text",
-              "content": "Деякі виставки роблять скульптуру монументальною. Персональна ретроспектива Cathy de Monchaux у Palais de Tokyo зробила її живою. На приблизно п’ятдесяти роботах, датованих від 1984 року до сьогодні, метал, оксамит, пил, кальковий папір, ремені, заклепки та ніжні каркаси утворювали неспокійну екологію тіл. Нічого просто не стояло на місці. Навіть найжорсткіша структура здавалася дихаючою, зміцнювалася або згадувала травму."
+              "content": "Деякі виставки роблять скульптуру монументальною. Персональна ретроспектива Cathy de Monchaux у Palais de Tokyo зробила її живою. На приблизно п’ятдесяти роботах, датованих від 1984 року до сьогодні, метал, оксамит, пил, кальковий папір, ремені, заклепки та ніжні каркаси утворювали неспокійну екологію тіл. Нічого просто не стояло на місці. Навіть найжорсткіша структура здавалася дихаючою, напружуючись або згадуючи травму."
             },
             {
               "type": "text",
-              "content": "Студія, рани та битви, бажання — це повторення надії, закрите 13 вересня 2026 року, але її образи залишаються незвично важкими для зняття. Виставка була прекрасною у тій мірі, у якій може бути прекрасним колючка, реліквія або напівзабутий сон: не тому, що вона заспокоює, а тому, що вона надає форму суперечності між вразливістю та силою."
+              "content": "Студія, рани та битви, бажання — це повторення надії, закритої 13 вересня 2026 року, але її образи залишаються незвично важкими для зняття. Виставка була прекрасною у тому сенсі, що колючка, реліквія або напівзабутий сон можуть бути прекрасними: не тому, що вони заспокоюють, а тому, що вони надають форму суперечності між вразливістю та силою."
             },
             {
               "type": "note",
-              "content": "Незалежний редакційний огляд Вячеславом Муністером. Дати виставки, описи та кредити на зображення базуються на офіційних матеріалах Palais de Tokyo. Зображення відтворені з прес-матеріалів установи; права залишаються за Cathy de Monchaux, ADAGP та зазначеними фотографами."
+              "content": "Незалежний редакційний огляд Вячеслава Муністра. Дати виставки, описи та кредити на зображення базуються на офіційних матеріалах Palais de Tokyo. Зображення відтворені з прес-матеріалів установи; права залишаються за Cathy de Monchaux, ADAGP та зазначеними фотографами."
             },
             {
               "type": "header",
@@ -40734,11 +40829,11 @@
             {
               "type": "header",
               "level": 2,
-              "content": "Інтимність, зроблена з металу"
+              "content": "Інтимність, створена з металу"
             },
             {
               "type": "text",
-              "content": "Найбільш вражаюча якість роботи de Monchaux — це не її темрява, а її інтимність. Скульптури здається, знають масштаб тіла. Вони згинаються, обіймають, згинаються і відкриваються, як жесті, які були збільшені без втрати їх приватного походження. Навіть найвражаючіші інсталяції зберігають відчуття чогось обробленого, відремонтованого або захищеного."
+              "content": "Найбільш вражаюча якість роботи de Monchaux — це не її темрява, а її інтимність. Скульптури здається, знають масштаб тіла. Вони згинаються, обіймають, згинаються і відкриваються, як жести, збільшені без втрати їх приватного походження. Навіть найвражаючіші інсталяції зберігають відчуття чогось обробленого, відремонтованого або захищеного."
             },
             {
               "type": "image",
@@ -40749,7 +40844,7 @@
             },
             {
               "type": "text",
-              "content": "Її словник наповнений структурами, які одночасно підтримують і стримують. Ремінці можуть тримати форму разом, але вони також можуть її зв’язати. Ребра можуть захищати, але вони також можуть стати кліткою. Робота не визначає, яке читання є правильним. Вона змушує глядача відчути тиск між ними."
+              "content": "Її словник наповнений структурами, що підтримують і одночасно стримують. Ремінці можуть тримати форму разом, але вони також можуть її зв’язати. Ребра можуть захищати, але також можуть стати кліткою. Робота не визначає, яке читання є правильним. Вона змушує глядача відчути тиск між ними."
             },
             {
               "type": "text",
@@ -40769,11 +40864,11 @@
             },
             {
               "type": "text",
-              "content": "У галереї бліді гілки та скупчені форми виступають із стіни, наче ліс, перетворений у нерви. Ефект є одночасно природним і штучним. Це нагадує корені, роги, корали, мереживо та архітектуру внутрішнього органу, але кожна частина залишається явно зробленою. Око рухається від загального силуету до окремого з'єднання, а потім знову назад, ніби робота просить читати її на двох швидкостях."
+              "content": "У галереї бліді гілки та скупчені форми виступають із стіни, наче ліс, перетворений у нерви. Ефект є одночасно природним і штучним. Це нагадує корені, роги, корали, мереживо та архітектуру внутрішнього органу, але кожна частина залишається явно зробленою. Око рухається від загального силуету до окремого з'єднання, потім знову назад, ніби робота просить її читати на двох швидкостях."
             },
             {
               "type": "text",
-              "content": "Скульптури De Monchaux часто створюють цей подвійний масштаб. Звідси вони стають пейзажами або сценами битв. З близька вони розкривають малі акти конструкції: заклепку, згин, шов, грубий край. Величність створена з уваги. Монументальне не є протилежністю інтимного; це інтимне, акуратно перенесене в інший регістр."
+              "content": "Скульптури De Monchaux часто створюють цей подвійний масштаб. Звідси вони стають пейзажами або сценами битв. З близька вони розкривають малі акти конструкції: заклепку, згин, шов, грубий край. Величність створена з уваги. Монументальне не є протилежністю інтимного; воно — це інтимне, акуратно перенесене в інший регістр."
             },
             {
               "type": "header",
@@ -40782,14 +40877,14 @@
             },
             {
               "type": "text",
-              "content": "Назва виставки ставить бажання поруч із ранами та битвами, і поєднання є точним. Робота De Monchaux є чуттєвою, але ніколи не пасивною. Її поверхні запрошують погляд і потім роблять його обережним. Глядач притягується до оксамиту, порожнин, поліруваного металу та м’яко виглядаючих форм, лише щоб виявити приховану загрозу: хребет, точку, тверді шви, отвір, що відмовляється пояснювати себе."
+              "content": "Назва виставки ставить бажання поруч із ранами та битвами, і поєднання є точним. Робота De Monchaux є чуттєвою, але ніколи пасивною. Її поверхні запрошують око, а потім роблять його обережним. Глядач притягується до оксамиту, порожнин, поліруваного металу та м’яко виглядаючих форм, лише щоб виявити приховану загрозу: хребет, точку, тверді шви, отвір, що відмовляється пояснювати себе."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/cathy-19.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Cathy de Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Quentin Chevrier. © Adagp, Paris, 2026."
+              "caption": "Кеті де Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Quentin Chevrier. © Adagp, Париж, 2026."
             },
             {
               "type": "text",
@@ -40809,11 +40904,11 @@
               "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Cathy de Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Paris, 2026."
+              "caption": "Cathy de Monchaux, огляд інсталяції, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Paris, 2026."
             },
             {
               "type": "text",
-              "content": "Це має значення, тому що робота de Monchaux по суті про те, що тримає. Каркас тримає форму; пам’ять тримає подію; назва тримає відкритий образ; музей тримає крихкий об’єкт досить довго, щоб незнайомці могли його зустріти. Але кожна опора може зламатися. Виставка ніколи не приховує цього факту. Вона надає невдачі тиху гідність."
+              "content": "Це має значення, тому що робота de Monchaux по суті стосується того, що тримає. Каркас тримає форму; пам’ять тримає подію; назва тримає відкритий образ; музей тримає крихкий об’єкт досить довго, щоб незнайомці могли його зустріти. Але кожна опора може зламатися. Виставка ніколи не приховує цього факту. Вона надає невдачі тиху гідність."
             },
             {
               "type": "header",
@@ -40822,7 +40917,7 @@
             },
             {
               "type": "text",
-              "content": "Роботи часто коливаються біля людської фігури, не стаючи фігуративними в будь-якому традиційному сенсі. Вертикальна структура натякає на торс. Згусток стає групою тіл. Випуклість відчувається як кінцівка, ріг або архітектурна опора. Ця майже-людська якість є тим місцем, де скульптури стають найпсихологічно напруженими."
+              "content": "Роботи часто зависають біля людської фігури, не стаючи фігуративними в будь-якому традиційному сенсі. Вертикальна структура натякає на торс. Згусток стає групою тіл. Випуклість відчувається як кінцівка, ріг або архітектурна опора. Ця майже-людська якість є тим місцем, де скульптури стають найпсихологічно напруженими."
             },
             {
               "type": "image",
@@ -40833,7 +40928,7 @@
             },
             {
               "type": "text",
-              "content": "Зритель починає проектувати історію на об'єкт, потім об'єкт відступає. Він відмовляється ставати персонажем у простій оповіді. Він залишається матеріалом, і ця відмова є звільняючою. Скульптура не повинна зображати людину, щоб нести тиск життя людини."
+              "content": "Зорова починає проектувати історію на об'єкт, потім об'єкт відступає. Він відмовляється ставати персонажем у простому наративі. Він залишається матерією, і ця відмова є звільняючою. Скульптура не повинна зображати людину, щоб нести тиск життя людини."
             },
             {
               "type": "header",
@@ -40842,7 +40937,7 @@
             },
             {
               "type": "text",
-              "content": "Презентація Palais de Tokyo також була тихою критикою прямої лінії: прямої лінії підставки, чистої лінії прогресу, жорсткої лінії влади. De Monchaux згинає, заплутує і перериває ці лінії. Її форми створюють простір для асиметрії, м’якості та інтелекту обхідного шляху."
+              "content": "Презентація Palais de Tokyo також була тихою критикою прямої лінії: прямої лінії п'єдесталу, чистої лінії прогресу, жорсткої лінії влади. De Monchaux згинає, заплутує і перериває ці лінії. Її форми створюють простір для асиметрії, м'якості та інтелекту обхідного шляху."
             },
             {
               "type": "image",
@@ -40877,20 +40972,20 @@
             },
             {
               "type": "text",
-              "content": "Саме тому виставка залишилася у мене в пам’яті після її закриття. Не як каталог форм, а як фізичний інтелект: знання, що крихкість можна інженерно створити, що рана може стати прорізом, і що скульптура може бути і попередженням, і притулком."
+              "content": "Саме тому виставка залишилася у мене після її закриття. Не як каталог форм, а як фізичний інтелект: знання, що крихкість можна інженерно створити, що рана може стати прорізом, і що скульптура може бути і попередженням, і притулком."
             },
             {
               "type": "text",
-              "content": "Студія, рани і битви не просилися бути захопленими з безпечної відстані. Вони зробили відстань нестабільною. Чим ближче дивився, тим більше роботи змінювали регістр — від орнаменту до анатомії, від реліквії до загрози, від приватної пам’яті до колективного образу. Їхня краса не була втечею від світу. Це був спосіб залишатися бадьорим всередині нього."
+              "content": "Студія, рани і битви не просилися бути захопленими з безпечної відстані. Вони зробили відстань нестабільною. Чим ближче дивився, тим більше роботи змінювали регістр – від орнаменту до анатомії, від реліквії до загрози, від приватної пам’яті до колективного образу. Їхня краса не була втечею від світу. Це був спосіб залишатися бадьорим всередині нього."
             },
             {
               "type": "link",
-              "content": "Palais de Tokyo — офіційна сторінка виставки",
+              "content": "Palais de Tokyo – офіційна сторінка виставки",
               "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
             },
             {
               "type": "note",
-              "content": "Підписки до зображень: Cathy de Monchaux оглядові знімки інсталяції, Palais de Tokyo, 2026. Фото Антуана Афесберо, Ауреліена Моля та Квентіна Шевр'є. © Adagp, Париж, 2026. Зображення відтворені з офіційних прес-матеріалів установ для редакційних цілей; права залишаються за відповідними правовласниками."
+              "content": "Підписки до зображень: Cathy de Monchaux оглядові знімки інсталяції, Palais de Tokyo, 2026. Фото Антуана Афесберо, Орелієн Моль та Квентіна Шевр'є. © Adagp, Париж, 2026. Зображення відтворені з офіційних прес-матеріалів установ для редакційних цілей; права залишаються у відповідних правовласників."
             }
           ]
         }
@@ -99276,7 +99371,7 @@
           "authorId": "author-1784732936927-kw554",
           "date": "3 oct. 2026",
           "publishedAt": "2026-10-03T13:20:00.000Z",
-          "excerpt": "Au Palais de Tokyo, Cathy de Monchaux a transformé le métal, le velours, la poussière et des armatures fragiles en un langage sculptural de désir, de danger et de beauté extraordinaire.",
+          "excerpt": "Au Palais de Tokyo, Cathy de Monchaux a transformé le métal, le velours, la poussière et de fragiles armatures en un langage sculptural de désir, de danger et de beauté extraordinaire.",
           "category": "Art",
           "subcategory": "Sculpture & Objets",
           "tags": [
@@ -99290,7 +99385,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "previewToken": "cathy-de-monchaux-paris-20261003",
-          "updatedAt": "2026-10-03T13:12:31.534Z",
+          "updatedAt": "2026-10-03T13:31:53.432Z",
           "content": [
             {
               "type": "image",
@@ -99301,7 +99396,7 @@
             },
             {
               "type": "text",
-              "content": "Certaines expositions rendent la sculpture monumentale. La première grande rétrospective de Cathy de Monchaux au Palais de Tokyo lui a donné vie. À travers une cinquantaine d'œuvres datant de 1984 à aujourd'hui, métal, velours, poussière, papier calque, sangles, rivets et armatures délicates formaient une écologie instable de corps. Rien ne restait simplement immobile. Même la structure la plus rigide semblait respirer, se préparer ou se souvenir d'une blessure."
+              "content": "Certaines expositions rendent la sculpture monumentale. La première grande rétrospective de Cathy de Monchaux au Palais de Tokyo lui a donné vie. Sur une cinquantaine d'œuvres datant de 1984 à aujourd'hui, le métal, le velours, la poussière, le papier calque, les sangles, les rivets et les armatures délicates formaient une écologie instable de corps. Rien ne restait simplement immobile. Même la structure la plus rigide semblait respirer, se préparer ou se souvenir d'une blessure."
             },
             {
               "type": "text",
@@ -99325,11 +99420,11 @@
               "content": "https://api.eprisjournal.com/uploads/cathy-002.jpg",
               "align": "center",
               "width": 74,
-              "caption": "Cathy de Monchaux, vue d'installation, « Studio, blessures et batailles, le désir est la réitération de l'espoir », Palais de Tokyo, 2026. Photo : Aurélien Mole. © Adagp, Paris, 2026."
+              "caption": "Cathy de Monchaux, vue d'installation, “Studio, blessures et batailles, le désir est la réitération de l'espoir”, Palais de Tokyo, 2026. Photo : Aurélien Mole. © Adagp, Paris, 2026."
             },
             {
               "type": "text",
-              "content": "Ce refus d'une bordure nette est au cœur de la sensualité de l'exposition. Une surface peut sembler douce jusqu'à ce que l'œil remarque son armure. Une structure métallique peut paraître sévère jusqu'à ce qu'elle commence à ressembler à une cage thoracique, une fleur ou un nid. Les œuvres sont faites de transitions. Elles vivent dans le moment où un matériau devient une autre sorte d'image."
+              "content": "Ce refus d'une bordure nette est au cœur de la sensualité de l'exposition. Une surface peut sembler douce jusqu'à ce que l'œil remarque son armure. Une structure métallique peut paraître sévère jusqu'à ce qu'elle commence à ressembler à une cage thoracique, une fleur ou un nid. Les œuvres sont faites de transitions. Elles vivent dans le moment où un matériau devient un autre type d'image."
             },
             {
               "type": "header",
@@ -99369,11 +99464,11 @@
             },
             {
               "type": "text",
-              "content": "Dans la galerie, des branches pâles et des formes groupées se projettent du mur comme une forêt traduite en nerfs. L'effet est à la fois naturel et artificiel. Il évoque des racines, des bois de cerf, du corail, de la dentelle et l'architecture d'un organe intérieur, mais chaque partie reste visiblement fabriquée. L'œil se déplace de la silhouette globale à l'articulation individuelle, puis revient, comme si l'œuvre demandait à être lue à deux vitesses."
+              "content": "Dans la galerie, des branches pâles et des formes groupées se projettent du mur comme une forêt traduite en nerfs. L'effet est à la fois naturel et artificiel. Il évoque des racines, des bois de cerf, du corail, de la dentelle et l'architecture d'un organe intérieur, mais chaque partie reste visiblement fabriquée. L'œil passe de la silhouette globale à l'articulation individuelle, puis revient, comme si l'œuvre demandait à être lue à deux vitesses."
             },
             {
               "type": "text",
-              "content": "Les sculptures de Monchaux créent souvent cette double échelle. De loin, elles deviennent des paysages ou des scènes de bataille. De près, elles révèlent de petits actes de construction : une rivet, un pli, une couture, un bord rugueux. La grandeur est construite à partir de l'attention. Le monumental n'est pas l'opposé de l'intime ; c'est l'intime porté soigneusement à un autre registre."
+              "content": "Les sculptures de Monchaux créent souvent cette double échelle. De loin, elles deviennent des paysages ou des scènes de bataille. De près, elles révèlent de petits actes de construction : une rivet, un pli, une couture, un bord rugueux. La grandeur se construit à partir de l'attention. Le monumental n'est pas l'opposé de l'intime ; c'est l'intime porté soigneusement à un autre registre."
             },
             {
               "type": "header",
@@ -99402,7 +99497,7 @@
             },
             {
               "type": "text",
-              "content": "La rétrospective comprenait des dessins techniques et des archives d'œuvres détruites, et cela a élargi la gamme émotionnelle de l'exposition. Les sculptures finies n'étaient pas présentées comme des miracles isolés. Elles étaient entourées de preuves d'essai, d'échec, de disparition et de reconstruction. Une œuvre détruite a encore un corps dans l'archive. Son absence devient un autre matériau."
+              "content": "La rétrospective comprenait des dessins techniques et des archives d'œuvres détruites, et cela a élargi la gamme émotionnelle de l'exposition. Les sculptures finies n'ont pas été présentées comme des miracles isolés. Elles étaient entourées de preuves d'essais, d'échecs, de disparition et de reconstruction. Une œuvre détruite a encore un corps dans l'archive. Son absence devient un autre matériau."
             },
             {
               "type": "image",
@@ -99413,16 +99508,16 @@
             },
             {
               "type": "text",
-              "content": "Cela importe parce que le travail de de Monchaux concerne fondamentalement ce qui soutient. Un armature soutient une forme ; une mémoire soutient un événement ; un titre soutient une image ouverte ; un musée soutient un objet fragile assez longtemps pour que des étrangers le rencontrent. Mais chaque support peut échouer. L'exposition ne cache jamais ce fait. Elle donne à l'échec une dignité silencieuse."
+              "content": "Cela importe parce que le travail de de Monchaux concerne fondamentalement ce qui soutient. Une armature soutient une forme ; une mémoire soutient un événement ; un titre soutient une image ouverte ; un musée soutient un objet fragile assez longtemps pour que des étrangers le rencontrent. Mais chaque support peut échouer. L'exposition ne cache jamais ce fait. Elle donne à l'échec une dignité silencieuse."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "Une sculpture de l'ultra-humain"
+              "content": "Une sculpture de l'aux-humain"
             },
             {
               "type": "text",
-              "content": "Les œuvres flottent souvent près de la figure humaine sans devenir figuratives dans aucun sens conventionnel. Une structure verticale suggère un torse. Un groupe devient un groupe de corps. Une protrusion ressemble à un membre, une corne ou une bride architecturale. Cette qualité presque humaine est l'endroit où les sculptures deviennent le plus intensément psychologiques."
+              "content": "Les œuvres flottent souvent près de la figure humaine sans devenir figuratives dans aucun sens conventionnel. Une structure verticale suggère un torse. Un amas devient un groupe de corps. Une protrusion ressemble à un membre, une corne ou une bride architecturale. Cette qualité presque humaine est l'endroit où les sculptures deviennent le plus intensément psychologiques."
             },
             {
               "type": "image",
@@ -99477,15 +99572,15 @@
             },
             {
               "type": "text",
-              "content": "C'est pourquoi l'exposition est restée en moi après sa date de clôture. Pas comme un catalogue de formes, mais comme une intelligence physique : la connaissance que la fragilité peut être conçue, qu'une blessure peut devenir une ouverture, et qu'une sculpture peut être à la fois avertissement et refuge."
+              "content": "C'est pourquoi l'exposition est restée en moi après sa date de clôture. Pas comme un catalogue de formes, mais comme une intelligence physique : la connaissance que la fragilité peut être conçue, qu'une blessure peut devenir une ouverture, et qu'une sculpture peut à la fois avertir et abriter."
             },
             {
               "type": "text",
-              "content": "Studio, blessures et batailles n'ont pas demandé à être admirés à distance en toute sécurité. Cela a rendu la distance instable. Plus on regardait de près, plus les œuvres changeaient de registre — de l'ornement à l'anatomie, du reliquaire à la menace, de la mémoire privée à l'image collective. Leur beauté n'était pas une évasion du monde. C'était une façon de rester éveillé à l'intérieur."
+              "content": "Studio, blessures et batailles n'ont pas demandé à être admirés à distance en toute sécurité. Cela a rendu la distance instable. Plus on regardait de près, plus les œuvres changeaient de registre – de l'ornement à l'anatomie, du reliquaire à la menace, de la mémoire privée à l'image collective. Leur beauté n'était pas une évasion du monde. C'était une façon de rester éveillé à l'intérieur."
             },
             {
               "type": "link",
-              "content": "Palais de Tokyo — page officielle de l'exposition",
+              "content": "Palais de Tokyo – page officielle de l'exposition",
               "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
             },
             {
@@ -101081,9 +101176,24 @@
             "PICS-2026-040",
             "PICS-2026-037"
           ]
+        },
+        {
+          "id": "PICS-WEEK-2026-007",
+          "label": "Daily Picks · form, colour & space · 3 Oct 2026",
+          "status": "published",
+          "createdAt": "2026-10-03T14:00:00Z",
+          "publishedAt": "2026-10-03T14:00:00Z",
+          "publicArchive": true,
+          "picsIds": [
+            "PICS-2026-046",
+            "PICS-2026-043",
+            "PICS-2026-044",
+            "PICS-2026-045",
+            "PICS-2026-042"
+          ]
         }
       ],
-      "activeReleaseId": "PICS-WEEK-2026-006",
+      "activeReleaseId": "PICS-WEEK-2026-007",
       "centerCategory": "avant-garde",
       "pastReleasesPublic": true
     },
@@ -102700,6 +102810,13 @@
       "label": "Daily Picks · form, colour & space · 3 Oct 2026",
       "publishedAt": "2026-10-03T13:45:00Z",
       "signature": "sculpture:PICS-2026-041|painting:PICS-2026-038|architecture:PICS-2026-039|design:PICS-2026-040|photography:PICS-2026-037"
+    },
+    {
+      "id": "PICS-ARCHIVE-PICS-WEEK-2026-007",
+      "releaseId": "PICS-WEEK-2026-007",
+      "label": "Daily Picks · form, colour & space · 3 Oct 2026",
+      "publishedAt": "2026-10-03T14:00:00Z",
+      "signature": "sculpture:PICS-2026-046|painting:PICS-2026-043|architecture:PICS-2026-044|design:PICS-2026-045|photography:PICS-2026-042"
     }
   ],
   "translationsSource": {
