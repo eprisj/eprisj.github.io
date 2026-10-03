@@ -4396,7 +4396,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
   }
 }
 
-/* ── Застосунок у App Store: смуга вгорі підвалу на всіх сторінках журналу ──
+/* ── Підвал журналу: чорний, з описом, розділами й кнопкою App Store ──
    Тексти тут, а не в site-content.json: той файл щогодини перезаписує знімок
    з VPS. Значок — офіційний бейдж Apple (public/app/app-store-badge-*.svg). */
 const APP_STORE_URL = 'https://apps.apple.com/us/app/epris-journal/id6815797964?itscg=30200&itsct=apps_box_link&mttnsubad=6815797964';
@@ -4411,27 +4411,66 @@ const APP_BAND_TEXT: Record<string, { kicker: string; title: string; line: strin
   TR: { kicker: 'Uygulama', title: 'iPhone ve iPad için EPRIS Journal', line: 'Her yazı okumak için dizildi, tek dokunuşla çevrimdışı kaydedilir. Ücretsiz, hesap ve takip yok.', more: 'Uygulama hakkında' },
 };
 
-function AppStoreBand({ lang }: { lang: string }) {
+const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: string }> = {
+  EN: { line: 'An independent journal of contemporary art, architecture and interior design: long-form interviews, essays and reviews.', place: 'Edited in Milan, Italy', sections: 'Sections' },
+  RU: { line: 'Независимый журнал о современном искусстве, архитектуре и дизайне интерьеров: большие интервью, эссе и рецензии.', place: 'Редакция в Милане, Италия', sections: 'Разделы' },
+  UA: { line: 'Незалежний журнал про сучасне мистецтво, архітектуру й дизайн інтер’єрів: великі інтерв’ю, есеї та рецензії.', place: 'Редакція в Мілані, Італія', sections: 'Розділи' },
+  DE: { line: 'Ein unabhängiges Journal für zeitgenössische Kunst, Architektur und Interior Design: lange Interviews, Essays und Rezensionen.', place: 'Redaktion in Mailand, Italien', sections: 'Rubriken' },
+  IT: { line: 'Una rivista indipendente di arte contemporanea, architettura e interior design: lunghe interviste, saggi e recensioni.', place: 'Redazione a Milano, Italia', sections: 'Sezioni' },
+  ES: { line: 'Una revista independiente de arte contemporáneo, arquitectura e interiorismo: entrevistas largas, ensayos y reseñas.', place: 'Editada en Milán, Italia', sections: 'Secciones' },
+  FR: { line: 'Une revue indépendante d’art contemporain, d’architecture et de design d’intérieur : grands entretiens, essais et critiques.', place: 'Éditée à Milan, Italie', sections: 'Rubriques' },
+  TR: { line: 'Çağdaş sanat, mimarlık ve iç mimarlık üzerine bağımsız bir dergi: uzun söyleşiler, denemeler ve eleştiriler.', place: 'Milano, İtalya’da yayımlanır', sections: 'Bölümler' },
+};
+
+function SiteFooter({ lang, title, description, publicationName, rights, instagramUrl, contactEmail, links, onNavigate }: {
+  lang: string; title: string; description: string; publicationName: string; rights: string;
+  instagramUrl?: string; contactEmail?: string; links: [string, string][]; onNavigate: (tab: string) => void;
+}) {
   const tx = APP_BAND_TEXT[String(lang || 'EN').toUpperCase()] || APP_BAND_TEXT.EN;
+  const about = FOOTER_ABOUT[String(lang || 'EN').toUpperCase()] || FOOTER_ABOUT.EN;
+  const head = 'font-mono text-[10px] uppercase tracking-[0.28em] text-white/45';
   return (
-    <div className="max-w-[1600px] mx-auto mb-10 sm:mb-14 md:mb-20 pb-10 sm:pb-14 md:pb-16 border-b border-[rgba(209,181,149,0.22)]">
-      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
-        <img src="/app/epris-journal-icon.png" alt="" width={88} height={88} loading="lazy"
-          className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] rounded-[20px] md:rounded-[24px] shadow-[0_18px_40px_-18px_rgba(0,0,0,.8)] ring-1 ring-[rgba(247,242,236,0.12)] shrink-0" />
-        <div className="flex-1 min-w-0">
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#D1B595]">{tx.kicker}</p>
-          <h3 className="mt-2 font-serif text-2xl sm:text-3xl md:text-4xl text-[#F7F2EC] leading-tight">{tx.title}</h3>
-          <p className="mt-3 max-w-[56ch] mx-auto md:mx-0 text-sm sm:text-base text-[#D9C7BA] leading-relaxed">{tx.line}</p>
+    <footer className="bg-black text-white px-5 sm:px-8 md:px-16 pt-14 sm:pt-20 md:pt-24 pb-8">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="grid gap-12 md:gap-10 md:grid-cols-[1.35fr_.75fr_1fr]">
+          <div>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight">{title}</h2>
+            <p className="mt-6 max-w-[44ch] text-base sm:text-lg leading-relaxed text-white/70">{description || about.line}</p>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
+          </div>
+          <nav aria-label="Footer">
+            <p className={head}>{about.sections}</p>
+            <ul className="mt-5 space-y-3">
+              {links.map(([tab, label]) => (
+                <li key={tab}>
+                  <a href={`/${tab}`} onClick={(e) => { e.preventDefault(); onNavigate(tab); window.scrollTo({ top: 0 }); }}
+                    className="font-serif text-xl text-white/85 hover:text-white transition-colors">{label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div>
+            <p className={head}>{tx.kicker}</p>
+            <p className="mt-5 font-serif text-xl text-white/85 leading-snug max-w-[30ch]">{tx.title}</p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
+                className="inline-block leading-none transition-transform hover:-translate-y-0.5">
+                <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[150px] sm:w-[160px] h-auto" loading="lazy" />
+              </a>
+              <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 hover:text-white underline underline-offset-4 transition-colors">{tx.more}</a>
+            </div>
+            {(instagramUrl || contactEmail) && <div className="mt-10 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
+              {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Instagram ↗</a>}
+              {contactEmail && <a href={`mailto:${contactEmail}`} className="block normal-case tracking-[0.06em] hover:text-white transition-colors">{contactEmail}</a>}
+            </div>}
+          </div>
         </div>
-        <div className="flex flex-col items-center md:items-end gap-3 shrink-0">
-          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
-            className="inline-block leading-none transition-transform hover:-translate-y-0.5">
-            <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={180} height={60} className="w-[170px] sm:w-[180px] h-auto" loading="lazy" />
-          </a>
-          <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#BFAFA4] hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{tx.more}</a>
+        <div className="mt-16 sm:mt-20 pt-6 border-t border-white/15 flex flex-col sm:flex-row gap-2 sm:justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-white/45">
+          <p>© 2026 {publicationName} · {rights}</p>
+          <p>Milano · Italia</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
@@ -5011,26 +5050,17 @@ export default function App() {
           </main>
         )}
 
-        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'museum' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
-          <AppStoreBand lang={currentLang} />
-          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
-            <div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">{footerTitle}</h2>
-              <div className="font-mono text-xs uppercase tracking-widest text-[#D9C7BA] max-w-xs mx-auto md:mx-0 leading-relaxed">
-                {footerDescription ? <p>{footerDescription}</p> : <><p>{t('hero.subtitle2')}</p><p>{t('hero.subtitle1')}</p></>}
-              </div>
-            </div>
-            <div className="text-center md:text-right font-mono text-xs uppercase tracking-widest text-[#BFAFA4]">
-              <p>© 2026 {publicationName}</p>
-              <p>{t('footer.rights')}</p>
-              <p className="mt-4 text-[#D9C7BA]">Milan, Italy</p>
-              {(instagramUrl || contactEmail) && <div className="mt-4 flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-[#D9C7BA]">
-                {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">Instagram</a>}
-                {contactEmail && <a href={`mailto:${contactEmail}`} className="hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{contactEmail}</a>}
-              </div>}
-            </div>
-          </div>
-        </footer>}
+        {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'museum' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <SiteFooter
+          lang={currentLang}
+          title={footerTitle}
+          description={footerDescription}
+          publicationName={publicationName}
+          rights={t('footer.rights')}
+          instagramUrl={instagramUrl}
+          contactEmail={contactEmail}
+          links={[['articles', t('nav.articles')], ['reviews', t('nav.reviews')], ['issue', t('nav.issue')], ['about', t('nav.about')], ['museum', 'Museum']]}
+          onNavigate={handleSetTab}
+        />}
       </div>
       </RouteTransition>
       
