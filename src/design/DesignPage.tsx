@@ -229,7 +229,7 @@ function LookPanel({ set, lookIndex, activeId, onSelect, resolved, onOpen, lang 
               style={{ fontFamily: "var(--font-display)" }}
               className="text-[clamp(36px,5.5vw,72px)] leading-[0.93] text-white mb-5"
             >{look.title || set.title}</h2>
-            <p className="font-serif italic text-base md:text-lg text-white/70 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
+            <p className="font-courier text-base md:text-lg text-white/70 mb-5 max-w-xs">{look.subtitle || set.subtitle}</p>
             <p className="text-sm text-white/75 leading-relaxed mb-8 max-w-sm">{look.story || set.story}</p>
             <button
               type="button"

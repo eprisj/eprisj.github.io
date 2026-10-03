@@ -87,7 +87,7 @@ function fld(
   ctx.save();
   ctx.textAlign = 'left';
   ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65;
-  ctx.font = `italic 400 15px "PT Sans", sans-serif`;
+  ctx.font = `400 15px "Courier New", Courier, monospace`;
   const labelText = label2 ? `${label} · ${label2}` : label;
   ctx.fillText(labelText, x, y, maxW);
   ctx.globalAlpha = 1;
@@ -294,7 +294,7 @@ export async function renderPassportPNG(
   ctx.beginPath(); ctx.moveTo(fCol1X, ty); ctx.lineTo(fCol1X + fColW, ty); ctx.stroke(); ctx.globalAlpha = 1;
   ty += 24;
   ctx.save();
-  ctx.fillStyle = '#3a1520'; ctx.globalAlpha = 0.85; ctx.font = `italic 600 15px "Playfair Display", serif`;
+  ctx.fillStyle = '#3a1520'; ctx.globalAlpha = 0.85; ctx.font = `400 15px "Courier New", Courier, monospace`;
   const obs1 = 'This is not a travel document or a state-issued identification. It certifies membership in the EPRIS Journal cultural system only.';
   const obs2 = "Questo non è un documento di viaggio né un documento d'identità statale. Certifica esclusivamente l'appartenenza al sistema culturale EPRIS Journal.";
   wrapText(ctx, obs1, fCol1X, ty, fColW, 19);
@@ -372,7 +372,7 @@ export async function renderPassportPNG(
   fld(ctx, rCol1, ry, half, 'Date of expiry', 'Data di scadenza', fields.expiryDate || '–');
   ctx.save();
   const sigX = rCol1 + half + rColW * 0.08;
-  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65; ctx.font = `italic 400 13px "PT Sans", sans-serif`;
+  ctx.fillStyle = C.burgundy; ctx.globalAlpha = 0.65; ctx.font = `400 13px "Courier New", Courier, monospace`;
   ctx.fillText("Holder's signature · Firma del titolare", sigX, ry);
   ctx.strokeStyle = C.sand; ctx.globalAlpha = 0.45; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(sigX, ry + 20); ctx.lineTo(sigX + half * 0.82, ry + 20); ctx.stroke();

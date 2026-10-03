@@ -293,7 +293,7 @@
     display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
   }
   .block-preview.is-head { font-family: 'Crimson Text', 'PT Serif', serif; font-size: 17px; -webkit-line-clamp: 2; }
-  .block-preview.empty { color: var(--muted); font-style: italic; }
+  .block-preview.empty { color: var(--muted); font-style: normal; font-family: "Courier New", Courier, monospace; }
   .block-locked-preview { font-size: 13px; color: var(--muted); line-height: 1.4; }
   .block-img {
     width: 100%; max-height: 160px; object-fit: cover; margin-bottom: 8px; cursor: pointer; display: block;
@@ -1356,7 +1356,7 @@
         '<input type="text" class="cap-input" placeholder="Подпись" data-field="caption" data-i="' + i + '" value="' + esc(b.caption || "") + '"></div>';
     }
     return '<div class="block-card locked" data-i="' + i + '">' + head +
-      '<div class="block-locked-preview">' + blockPreview(b) + '<br><i>правится в панели на сайте</i></div></div>';
+      '<div class="block-locked-preview">' + blockPreview(b) + '<br><span style="font-family:'Courier New',Courier,monospace">правится в панели на сайте</span></div></div>';
   }
 
   function renderBlocks() {

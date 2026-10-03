@@ -60,7 +60,7 @@ function WorkPlate({ work, index, className = '', single = false }: { work: Work
     return (
       <div className={`flex flex-col items-center justify-center gap-3 ${className}`} style={{ backgroundColor: tint }}>
         <ImageOff size={22} className="text-[#4a1728]/25" aria-hidden="true" />
-        <p className="max-w-[70%] text-center font-display text-base italic leading-snug text-[#4a1728]/45">{work.title}</p>
+        <p className="max-w-[70%] text-center text-base font-courier leading-snug text-[#4a1728]/45">{work.title}</p>
       </div>
     );
   }
@@ -172,7 +172,7 @@ function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
         <div className="mt-7 flex flex-wrap items-start justify-between gap-5">
           <div className="min-w-0">
             <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] leading-[0.86] tracking-normal text-[#1a0b10]">{work.title}</h2>
-            <p className="mt-3 font-display text-xl italic text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
+            <p className="mt-3 text-xl font-courier text-[#b8956e]">{work.author}{work.year ? `, ${work.year}` : ''}</p>
             <p className="mt-4 border-t border-[#4a1728]/15 pt-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#4a1728]/60">{[work.venue, work.city, work.country].filter(Boolean).join(' · ') || 'Location not stated'}</p>
           </div>
           {work.country && (

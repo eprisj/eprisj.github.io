@@ -131,11 +131,11 @@ function F({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
       <span style={{
-        fontFamily: '"PT Sans", sans-serif',
+        fontFamily: '"Courier New", Courier, monospace',
         fontSize: 'clamp(6px, 1.3cqw, 10px)',
         color: '#4a1728',
         opacity: 0.65,
-        fontStyle: 'italic',
+        fontStyle: 'normal',
         lineHeight: 1.15,
         letterSpacing: '0.02em',
         whiteSpace: 'nowrap',
@@ -296,10 +296,10 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
                 Official Observations · Osservazioni ufficiali
               </div>
               <div style={{ borderTop: '0.6px solid rgba(74,23,40,0.25)', paddingTop: '3%', display: 'flex', flexDirection: 'column', gap: '3%' }}>
-                <p style={{ fontFamily: '"Playfair Display", "PT Serif", serif', fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(6.5px, 1.35cqw, 11px)', lineHeight: 1.22, color: '#3a1520', opacity: 0.85, margin: 0 }}>
+                <p style={{ fontFamily: '"Courier New", Courier, monospace', fontStyle: 'normal', fontWeight: 400, fontSize: 'clamp(6.5px, 1.35cqw, 11px)', lineHeight: 1.22, color: '#3a1520', opacity: 0.85, margin: 0 }}>
                   This is not a travel document or a state-issued identification. It certifies membership in the EPRIS Journal cultural system only.
                 </p>
-                <p style={{ fontFamily: '"Playfair Display", "PT Serif", serif', fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(6.5px, 1.35cqw, 11px)', lineHeight: 1.22, color: '#3a1520', opacity: 0.85, margin: 0 }}>
+                <p style={{ fontFamily: '"Courier New", Courier, monospace', fontStyle: 'normal', fontWeight: 400, fontSize: 'clamp(6.5px, 1.35cqw, 11px)', lineHeight: 1.22, color: '#3a1520', opacity: 0.85, margin: 0 }}>
                   Questo non è un documento di viaggio né un documento d'identità statale. Certifica esclusivamente l'appartenenza al sistema culturale EPRIS Journal.
                 </p>
               </div>
@@ -386,7 +386,7 @@ export function PassportPage({ fields, photoUrl, code, mrz, qrDataUrl }: {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8%' }}>
               <F label="Date of expiry" label2="Data di scadenza" value={fields.expiryDate || '–'} />
               <div>
-                <div style={{ fontFamily: '"PT Sans",sans-serif', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'italic', lineHeight: 1.1, marginBottom: 2, whiteSpace: 'nowrap' }}>
+                <div style={{ fontFamily: '"Courier New", Courier, monospace', fontSize: 'clamp(5.5px, 1.25cqw, 10px)', color: '#4a1728', opacity: 0.65, fontStyle: 'normal', lineHeight: 1.1, marginBottom: 2, whiteSpace: 'nowrap' }}>
                   Holder's signature <span style={{ opacity: 0.82 }}>&middot; Firma del titolare</span>
                 </div>
                 <div style={{ borderBottom: '0.8px solid #b8956e', width: '82%', height: 'clamp(4px, 1.6cqh, 15px)' }}/>

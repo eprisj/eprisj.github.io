@@ -236,7 +236,7 @@ export function EditionReader({
       <div className="h-12 shrink-0 flex items-center gap-1 px-2 sm:px-4 border-b border-white/10">
         <button type="button" className={btn} onClick={onClose} aria-label={w.close}><X size={16} /></button>
         <div className="min-w-0 flex-1 px-2 truncate">
-          <span className="font-serif italic text-sm sm:text-base">{manifest.title}</span>
+          <span className="font-courier text-sm sm:text-base">{manifest.title}</span>
           {current.story && <span className="hidden md:inline font-mono text-[10px] uppercase tracking-widest text-[#F7F2EC]/45 ml-3">{current.story.title}</span>}
         </div>
         <button type="button" className={`${btn} ${panel === 'toc' ? 'bg-white/10' : ''}`} onClick={() => setPanel(panel === 'toc' ? 'none' : 'toc')}><List size={15} /><span className="hidden sm:inline">{w.contents}</span></button>

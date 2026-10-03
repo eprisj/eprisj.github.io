@@ -129,7 +129,7 @@ export function IssuePage({
               {issue.name}
             </h1>
             {issue.tagline && (
-              <p className="font-serif text-xl md:text-[26px] italic text-[rgb(var(--c-accent-rgb)_/_0.62)] mt-3 leading-snug">
+              <p className="text-xl md:text-[26px] font-courier text-[rgb(var(--c-accent-rgb)_/_0.62)] mt-3 leading-snug">
                 {issue.tagline}
               </p>
             )}
@@ -178,7 +178,7 @@ export function IssuePage({
               <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-4">
                 {t('pdf.letter.kicker')}
               </p>
-              <h2 className="font-serif text-2xl md:text-3xl italic text-[var(--c-accent)] leading-snug mb-5">
+              <h2 className="text-2xl md:text-3xl font-courier text-[var(--c-accent)] leading-snug mb-5">
                 {heading}
               </h2>
               {body.split('\n\n').map((paragraph, i) => (
@@ -186,7 +186,7 @@ export function IssuePage({
                   {paragraph}
                 </p>
               ))}
-              <p className="font-serif text-lg italic text-[var(--c-accent)] mt-6">
+              <p className="text-lg font-courier text-[var(--c-accent)] mt-6">
                 {(issue.letterSignature || '').trim() || 'Mariia Ivanova'}
               </p>
               <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mt-1">

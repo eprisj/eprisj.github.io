@@ -43,6 +43,9 @@ export default {
            on one page, none of them chosen. Pointing `serif` at the same stack
            as `crimson` harmonises all of it without touching the markup. */
         serif: ['Crimson Text', 'PT Serif', 'serif'],
+        /* Курсиву в журналі немає: усе, що раніше виділялося нахилом, набрано
+           звичайним Courier (2026-10-03). */
+        courier: ['"Courier New"', 'Courier', 'monospace'],
       },
     },
   },

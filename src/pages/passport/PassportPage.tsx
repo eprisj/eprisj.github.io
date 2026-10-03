@@ -91,7 +91,7 @@ function CreatorForm({
             <Upload size={20} />
           </div>
           <span className="font-mono text-[11px] uppercase tracking-widest text-[var(--pp-burgundy)]/80 group-hover:text-[var(--pp-burgundy)] transition-colors">Upload &amp; crop photo</span>
-          <span className="font-serif text-[13px] text-[var(--pp-ink)]/40 italic">Ideal size: 35×45mm aspect ratio</span>
+          <span className="text-[13px] text-[var(--pp-ink)]/40 font-courier">Ideal size: 35×45mm aspect ratio</span>
           <input
             type="file"
             accept="image/*"

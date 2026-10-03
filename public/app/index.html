@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EPRIS for iPhone – the journal, offline. Coming to the App Store</title>
-<meta name="description" content="EPRIS Journal is coming to iPhone and iPad. Articles render natively, in eight languages, and stay readable offline. Screenshots, privacy, terms and support.">
+<title>EPRIS for iPhone and iPad – the journal, offline. Free on the App Store</title>
+<meta name="description" content="EPRIS Journal for iPhone and iPad, free on the App Store. Articles render natively, in eight languages, and stay readable offline. Screenshots, privacy, terms and support.">
 <link rel="canonical" href="https://eprisjournal.com/app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EPRIS for iPhone">
-<meta property="og:description" content="The journal in your pocket – and readable without a signal. Coming to the App Store.">
+<meta property="og:description" content="The journal in your pocket – and readable without a signal. Free on the App Store.">
 <meta property="og:image" content="https://eprisjournal.com/images/app/v2/01-front-page.webp">
 <meta property="og:url" content="https://eprisjournal.com/app/">
 <meta name="twitter:card" content="summary_large_image">
@@ -84,7 +84,7 @@
     font-size: clamp(42px, 6.4vw, 84px); line-height: 1.02;
     letter-spacing: -.02em; margin: 22px 0 0; max-width: 13ch;
   }
-  h1 em { font-style: italic; color: var(--gold); }
+  h1 em { font-style: normal; font-family: "Courier New", Courier, monospace; font-weight: 400; color: var(--gold); }
   .rule { width: 72px; height: 1px; background: var(--gold); margin: 30px 0; }
   .lede {
     font-size: clamp(16px, 1.35vw, 19px); max-width: 46ch;
@@ -96,6 +96,10 @@
     text-transform: uppercase; padding: 13px 22px;
     border: 1px solid rgb(var(--ink) / .3);
   }
+  .store { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+  .store-badge { display: inline-block; line-height: 0; transition: transform .2s ease, opacity .2s ease; }
+  .store-badge img { width: 180px; height: auto; }
+  .store-badge:hover { transform: translateY(-2px); opacity: .9; }
   .pulse {
     width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
     box-shadow: 0 0 0 0 rgb(184 149 110 / .6);
@@ -212,7 +216,11 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
-    .pulse { animation: none; }
+    .store { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+  .store-badge { display: inline-block; line-height: 0; transition: transform .2s ease, opacity .2s ease; }
+  .store-badge img { width: 180px; height: auto; }
+  .store-badge:hover { transform: translateY(-2px); opacity: .9; }
+  .pulse { animation: none; }
     .hero .phone, figure.shot:nth-child(even) .phone { transform: none; }
   }
 
@@ -246,7 +254,15 @@
           saved, they stay on the device, photographs and all. Read them on a plane, on the
           metro, anywhere the signal gives up.
         </p>
-        <p class="status"><span class="pulse"></span> Coming to the App Store</p>
+        <div class="store">
+          <a class="store-badge" href="https://apps.apple.com/us/app/epris-journal/id6815797964?itscg=30200&amp;itsct=apps_box_link&amp;mttnsubad=6815797964" target="_blank" rel="noopener">
+            <picture>
+              <source srcset="/app/app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+              <img src="/app/app-store-badge-black.svg" alt="Download on the App Store" width="180" height="60">
+            </picture>
+          </a>
+          <p class="status"><span class="pulse"></span> Free · iPhone and iPad · iOS 17 or later</p>
+        </div>
       </div>
       <div class="reveal">
         <div class="phone">
