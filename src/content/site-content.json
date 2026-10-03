@@ -16370,25 +16370,6 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:29.068Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
-        },
-        {
-          "id": 45,
-          "title": "Sandra Kantanen: За пределами объектива традиционной фотографии",
-          "subtitle": "Фотография",
-          "fig": "FIG. 11",
-          "description": "Фотография может быть порогом, а не записью — Sandra Kantanen превращает пейзаж в пространство между памятью, мифом и оптическим искажением.",
-          "imageSeed": "epris-pick-photography",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
-          "homeCategory": "photography",
-          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
-          "homeTitle": "Пейзаж",
-          "homeSubtitle": "Fedora E. D. Brown · 1908 г. · серебряная гелатиновая печать",
-          "homeDescription": "Дорога растворяется в тумане и деревьях, создавая ощущение, что пейзаж всё ещё ищет свой фокус.",
-          "homeCredit": "Fedora E. D. Brown · фотография из общественного достояния / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
-          "picsOfWeek": true,
-          "picsId": "PICS-2026-042",
-          "updatedAt": "2026-10-03T13:33:42.916Z"
         }
       ],
       "articles": [
@@ -27659,17 +27640,17 @@
         {
           "id": 59,
           "draft": false,
-          "title": "Cathy de Monchaux: Уравновешенность ран",
+          "title": "Кэти де Моншо: Уравновешенность ран",
           "author": "Viacheslav Munister",
           "role": "Автор",
           "authorId": "author-1784732936927-kw554",
           "date": "3 окт. 2026",
           "publishedAt": "2026-10-03T13:20:00.000Z",
-          "excerpt": "В Palais de Tokyo Cathy de Monchaux превратила металл, бархат, пыль и хрупкие каркасы в скульптурный язык желания, опасности и необыкновенной красоты.",
+          "excerpt": "В Palais de Tokyo Кэти де Моншо превратила металл, бархат, пыль и хрупкие каркасы в скульптурный язык желания, опасности и необыкновенной красоты.",
           "category": "Искусство",
-          "subcategory": "Скульптура и Объекты",
+          "subcategory": "Скульптура и объекты",
           "tags": [
-            "Cathy de Monchaux",
+            "Кэти де Моншо",
             "Скульптура",
             "Palais de Tokyo",
             "Современное искусство",
@@ -27679,7 +27660,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "previewToken": "cathy-de-monchaux-paris-20261003",
-          "updatedAt": "2026-10-03T13:32:58.404Z",
+          "updatedAt": "2026-10-03T13:13:34.321Z",
           "content": [
             {
               "type": "image",
@@ -27694,7 +27675,7 @@
             },
             {
               "type": "text",
-              "content": "Студия, раны и битвы, желание — это повторение надежды, закрытое 13 сентября 2026 года, но её образы остаются необычно трудноотделимыми. Выставка была прекрасна так же, как может быть прекрасен шип, реликвия или полузабытый сон: не потому, что она утешает, а потому, что придает форму противоречию между уязвимостью и силой."
+              "content": "Студия, раны и битвы, желание — это повторение надежды, закрытое 13 сентября 2026 года, но её образы остаются необычно трудно убирать. Выставка была прекрасна так же, как может быть прекрасен шип, реликвия или наполовину забытая мечта: не потому, что она утешает, а потому, что она придает форму противоречию между уязвимостью и силой."
             },
             {
               "type": "note",
@@ -27707,7 +27688,7 @@
             },
             {
               "type": "text",
-              "content": "Объекты De Monchaux никогда не ограничиваются одной категорией. Они могут быть скульптурой, реликвией, анатомическим фрагментом, сценой, машиной, ракушкой или оружием. Они часто занимают стену, как рисунок, который утолщается в материю, или пол, как тело, которое не решило, ползти, стоять или исчезнуть."
+              "content": "Объекты De Monchaux никогда не ограничиваются одной категорией. Они могут быть скульптурой, реликвией, анатомическим фрагментом, сценой, машиной, ракушкой или оружием. Они часто занимают стену, как рисунок, который утолщается в материю, или пол, как тело, которое еще не решило, ползти, стоять или исчезнуть."
             },
             {
               "type": "image",
@@ -27718,16 +27699,16 @@
             },
             {
               "type": "text",
-              "content": "Это отказ от чистой границы является центральным для чувственности выставки. Поверхность может казаться мягкой, пока глаз не заметит её броню. Металлическая структура может выглядеть строго, пока не начнёт напоминать ребра, цветок или гнездо. Работы созданы из переходов. Они живут в момент, когда один материал превращается в другой вид изображения."
+              "content": "Это отвержение чистой границы является центральным для чувственности выставки. Поверхность может казаться мягкой, пока глаз не заметит ее броню. Металлическая структура может выглядеть строго, пока не начнет напоминать ребра, цветок или гнездо. Работы созданы из переходов. Они живут в момент, когда один материал превращается в другой вид изображения."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "Интимность, созданная из металла"
+              "content": "Интимность, сделанная из металла"
             },
             {
               "type": "text",
-              "content": "Самое поразительное качество работы de Monchaux — это не её темнота, а её интимность. Скульптуры, кажется, знают масштаб тела. Они изгибаются, обнимают, складываются и открываются, как жесты, увеличенные без потери их личного происхождения. Даже самые зрелищные инсталляции сохраняют ощущение чего-то обработанного, отремонтированного или защищенного."
+              "content": "Самое поразительное качество работы de Monchaux — это не её темнота, а её интимность. Скульптуры, кажется, знают масштаб тела. Они изгибаются, обнимают, складываются и открываются, как жесты, увеличенные без потери их личного происхождения. Даже самые зрелищные инсталляции сохраняют ощущение чего-то обработанного, отремонтированного или защищённого."
             },
             {
               "type": "image",
@@ -27738,11 +27719,11 @@
             },
             {
               "type": "text",
-              "content": "Её лексика полна структур, которые одновременно поддерживают и сдерживают. Ремни могут держать форму вместе, но также могут связывать её. Ребра могут защищать, но также могут стать клеткой. Работа не определяет, какое толкование правильное. Она заставляет зрителя почувствовать давление между ними."
+              "content": "Её лексика полна структур, которые одновременно поддерживают и сдерживают. Ремни могут держать форму вместе, но также могут её связать. Рёбра могут защищать, но также могут стать клеткой. Работа не определяет, какое толкование правильное. Она заставляет зрителя почувствовать давление между ними."
             },
             {
               "type": "text",
-              "content": "Это давление — почему скульптуры никогда не становятся декоративными, даже когда они чрезвычайно утонченны. Красота — это не поверхность, наложенная на трудный материал. Это точность, с которой трудность обрела тело."
+              "content": "Это давление и есть причина, почему скульптуры никогда не становятся декоративными, даже когда они чрезвычайно изысканны. Красота — это не поверхность, нанесенная на трудный материал. Это точность, с которой трудность обрела тело."
             },
             {
               "type": "header",
@@ -27758,7 +27739,7 @@
             },
             {
               "type": "text",
-              "content": "В галерее бледные ветви и скопленные формы выступают из стены, как лес, переведённый в нервы. Эффект одновременно естественный и искусственный. Он напоминает корни, рога, коралл, кружево и архитектуру внутреннего органа, но каждый элемент остаётся явно сделанным. Глаз перемещается от общего силуэта к отдельному суставу, затем обратно, как будто работа просит прочитать её на двух скоростях."
+              "content": "В галерее бледные ветви и скопленные формы выступают из стены, как лес, переведенный в нервы. Эффект одновременно естественный и искусственный. Он напоминает корни, рога, коралл, кружево и архитектуру внутреннего органа, но каждая часть остается явно сделанной. Глаз перемещается от общего силуэта к отдельному суставу, затем обратно, как будто работа просит быть прочитанной на двух скоростях."
             },
             {
               "type": "text",
@@ -27782,23 +27763,23 @@
             },
             {
               "type": "text",
-              "content": "Это не эротизм гладких поверхностей. Это эротизм колебания. Тело распознает что-то в работе, но не может сразу решить, означает ли это распознавание притяжение, страх, память или все сразу. De Monchaux создает скульптуру из задержки между этими реакциями."
+              "content": "Это не эротизм гладких поверхностей. Это эротизм колебания. Тело распознаёт что-то в работе, но не может сразу решить, означает ли это распознавание притяжение, страх, память или всё сразу. De Monchaux создает скульптуру из задержки между этими реакциями."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "Архив поврежденного"
+              "content": "Архив повреждённого"
             },
             {
               "type": "text",
-              "content": "Ретроспектива включала технические чертежи и архивы разрушенных работ, что расширяло эмоциональный диапазон выставки. Готовые скульптуры не представлялись как изолированные чудеса. Их окружали свидетельства испытаний, неудач, исчезновения и восстановления. Разрушенная работа все еще имеет тело в архиве. Ее отсутствие становится еще одним материалом."
+              "content": "Ретроспектива включала технические чертежи и архивы разрушенных работ, что расширяло эмоциональный диапазон выставки. Готовые скульптуры не представлялись как изолированные чудеса. Их окружали свидетельства испытаний, неудач, исчезновения и восстановления. Разрушенная работа всё ещё имеет тело в архиве. Его отсутствие становится ещё одним материалом."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Cathy de Monchaux, установка, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Paris, 2026."
+              "caption": "Cathy de Monchaux, установка, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Париж, 2026."
             },
             {
               "type": "text",
@@ -27811,7 +27792,7 @@
             },
             {
               "type": "text",
-              "content": "Работы часто парят рядом с человеческой фигурой, не становясь фигуративными в каком-либо обычном смысле. Вертикальная структура намекает на торс. Группа превращается в группу тел. Выступление ощущается как конечность, рог или архитектурная скоба. Это почти-человеческое качество — именно здесь скульптуры становятся наиболее психологически интенсивными."
+              "content": "Работы часто парят рядом с человеческой фигурой, не становясь фигуративными в каком-либо обычном смысле. Вертикальная структура намекает на торс. Группа превращается в группу тел. Выступ кажется конечностью, рогом или архитектурным кронштейном. Эта почти-человеческая черта — это то, где скульптуры становятся наиболее психологически интенсивными."
             },
             {
               "type": "image",
@@ -27870,11 +27851,11 @@
             },
             {
               "type": "text",
-              "content": "Студия, раны и битвы не просили быть восхищёнными с безопасного расстояния. Она сделала расстояние нестабильным. Чем ближе смотришь, тем больше работы меняют регистр – от орнамента к анатомии, от реликвии к угрозе, от личной памяти к коллективному образу. Их красота не была побегом от мира. Это был способ оставаться бодрствующим внутри него."
+              "content": "Студия, раны и битвы не просили быть восхищёнными с безопасного расстояния. Она сделала расстояние нестабильным. Чем ближе смотришь, тем больше работы меняют регистр — от орнамента к анатомии, от реликвии к угрозе, от личной памяти к коллективному образу. Их красота не была побегом от мира. Это был способ оставаться бодрствующим внутри него."
             },
             {
               "type": "link",
-              "content": "Palais de Tokyo – официальная страница выставки",
+              "content": "Palais de Tokyo — официальная страница выставки",
               "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
             },
             {
@@ -29521,44 +29502,6 @@
           "picsId": "PICS-2026-036",
           "updatedAt": "2026-09-28T08:00:27.089Z",
           "picsReleaseId": "PICS-WEEK-2026-005"
-        },
-        {
-          "id": 45,
-          "title": "Sandra Kantanen: За межами об'єктива традиційної фотографії",
-          "subtitle": "Фотографія",
-          "fig": "FIG. 11",
-          "description": "Фотографія може бути порогом, а не записом — Sandra Kantanen перетворює пейзаж у простір між пам'яттю, міфом і оптичним спотворенням.",
-          "imageSeed": "epris-pick-photography",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
-          "homeCategory": "photography",
-          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
-          "homeTitle": "Пейзаж",
-          "homeSubtitle": "Fedora E. D. Brown · c. 1908 · срібний гелатиновий друк",
-          "homeDescription": "Шлях розчиняється у тумані та деревах, змушуючи пейзаж здаватися пам'яттю, що ще шукає свій фокус.",
-          "homeCredit": "Fedora E. D. Brown · фотографія з публічного домену / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
-          "picsOfWeek": true,
-          "picsId": "PICS-2026-042",
-          "updatedAt": "2026-10-03T13:33:40.763Z"
-        },
-        {
-          "id": 46,
-          "title": "Як Емілі Краус переосмислює акт малювання",
-          "subtitle": "Сучасне мистецтво",
-          "fig": "FIG. 10",
-          "description": "Всередині Куба Полотна, Емілі Краус малює ритм теперішнього моменту",
-          "imageSeed": "epris-pick-painting",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
-          "homeCategory": "painting",
-          "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
-          "homeTitle": "Десять найбільших № 6",
-          "homeSubtitle": "Hilma af Klint · 1907 · темпера на папері",
-          "homeDescription": "Лавандові поля, сонячні діаграми та темний центральний насінинка роблять полотно менш намальованим, ніж вирощеним із невидимої космосу.",
-          "homeCredit": "Hilma af Klint · робота з публічного домену / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
-          "picsOfWeek": true,
-          "picsId": "PICS-2026-043",
-          "updatedAt": "2026-10-03T13:34:04.100Z"
         }
       ],
       "articles": [
@@ -40826,7 +40769,7 @@
           "author": "Viacheslav Munister",
           "role": "Автор",
           "authorId": "author-1784732936927-kw554",
-          "date": "3 жовтня 2026",
+          "date": "Oct 3, 2026",
           "publishedAt": "2026-10-03T13:20:00.000Z",
           "excerpt": "У Palais de Tokyo Cathy de Monchaux перетворила метал, оксамит, пил і крихкі каркаси у скульптурну мову бажання, небезпеки та надзвичайної краси.",
           "category": "Мистецтво",
@@ -40837,12 +40780,12 @@
             "Palais de Tokyo",
             "Сучасне мистецтво",
             "Інсталяція",
-            "Париж"
+            "Paris"
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
           "previewToken": "cathy-de-monchaux-paris-20261003",
-          "updatedAt": "2026-10-03T13:32:29.983Z",
+          "updatedAt": "2026-10-03T13:13:05.988Z",
           "content": [
             {
               "type": "image",
@@ -40853,15 +40796,15 @@
             },
             {
               "type": "text",
-              "content": "Деякі виставки роблять скульптуру монументальною. Персональна ретроспектива Cathy de Monchaux у Palais de Tokyo зробила її живою. На приблизно п’ятдесяти роботах, датованих від 1984 року до сьогодні, метал, оксамит, пил, кальковий папір, ремені, заклепки та ніжні каркаси утворювали неспокійну екологію тіл. Нічого просто не стояло на місці. Навіть найжорсткіша структура здавалася дихаючою, напружуючись або згадуючи травму."
+              "content": "Деякі виставки роблять скульптуру монументальною. Персональна ретроспектива Cathy de Monchaux у Palais de Tokyo зробила її живою. На приблизно п’ятдесяти роботах, датованих від 1984 року до сьогодні, метал, оксамит, пил, кальковий папір, ремені, заклепки та ніжні каркаси утворювали неспокійну екологію тіл. Нічого просто не стояло на місці. Навіть найжорсткіша структура здавалася дихаючою, зміцнювалася або згадувала травму."
             },
             {
               "type": "text",
-              "content": "Студія, рани та битви, бажання — це повторення надії, закритої 13 вересня 2026 року, але її образи залишаються незвично важкими для зняття. Виставка була прекрасною у тому сенсі, що колючка, реліквія або напівзабутий сон можуть бути прекрасними: не тому, що вони заспокоюють, а тому, що вони надають форму суперечності між вразливістю та силою."
+              "content": "Студія, рани та битви, бажання — це повторення надії, закрите 13 вересня 2026 року, але її образи залишаються незвично важкими для зняття. Виставка була прекрасною у тій мірі, у якій може бути прекрасним колючка, реліквія або напівзабутий сон: не тому, що вона заспокоює, а тому, що вона надає форму суперечності між вразливістю та силою."
             },
             {
               "type": "note",
-              "content": "Незалежний редакційний огляд Вячеслава Муністра. Дати виставки, описи та кредити на зображення базуються на офіційних матеріалах Palais de Tokyo. Зображення відтворені з прес-матеріалів установи; права залишаються за Cathy de Monchaux, ADAGP та зазначеними фотографами."
+              "content": "Незалежний редакційний огляд Вячеславом Муністером. Дати виставки, описи та кредити на зображення базуються на офіційних матеріалах Palais de Tokyo. Зображення відтворені з прес-матеріалів установи; права залишаються за Cathy de Monchaux, ADAGP та зазначеними фотографами."
             },
             {
               "type": "header",
@@ -40886,11 +40829,11 @@
             {
               "type": "header",
               "level": 2,
-              "content": "Інтимність, створена з металу"
+              "content": "Інтимність, зроблена з металу"
             },
             {
               "type": "text",
-              "content": "Найбільш вражаюча якість роботи de Monchaux — це не її темрява, а її інтимність. Скульптури здається, знають масштаб тіла. Вони згинаються, обіймають, згинаються і відкриваються, як жести, збільшені без втрати їх приватного походження. Навіть найвражаючіші інсталяції зберігають відчуття чогось обробленого, відремонтованого або захищеного."
+              "content": "Найбільш вражаюча якість роботи de Monchaux — це не її темрява, а її інтимність. Скульптури здається, знають масштаб тіла. Вони згинаються, обіймають, згинаються і відкриваються, як жесті, які були збільшені без втрати їх приватного походження. Навіть найвражаючіші інсталяції зберігають відчуття чогось обробленого, відремонтованого або захищеного."
             },
             {
               "type": "image",
@@ -40901,7 +40844,7 @@
             },
             {
               "type": "text",
-              "content": "Її словник наповнений структурами, що підтримують і одночасно стримують. Ремінці можуть тримати форму разом, але вони також можуть її зв’язати. Ребра можуть захищати, але також можуть стати кліткою. Робота не визначає, яке читання є правильним. Вона змушує глядача відчути тиск між ними."
+              "content": "Її словник наповнений структурами, які одночасно підтримують і стримують. Ремінці можуть тримати форму разом, але вони також можуть її зв’язати. Ребра можуть захищати, але вони також можуть стати кліткою. Робота не визначає, яке читання є правильним. Вона змушує глядача відчути тиск між ними."
             },
             {
               "type": "text",
@@ -40921,11 +40864,11 @@
             },
             {
               "type": "text",
-              "content": "У галереї бліді гілки та скупчені форми виступають із стіни, наче ліс, перетворений у нерви. Ефект є одночасно природним і штучним. Це нагадує корені, роги, корали, мереживо та архітектуру внутрішнього органу, але кожна частина залишається явно зробленою. Око рухається від загального силуету до окремого з'єднання, потім знову назад, ніби робота просить її читати на двох швидкостях."
+              "content": "У галереї бліді гілки та скупчені форми виступають із стіни, наче ліс, перетворений у нерви. Ефект є одночасно природним і штучним. Це нагадує корені, роги, корали, мереживо та архітектуру внутрішнього органу, але кожна частина залишається явно зробленою. Око рухається від загального силуету до окремого з'єднання, а потім знову назад, ніби робота просить читати її на двох швидкостях."
             },
             {
               "type": "text",
-              "content": "Скульптури De Monchaux часто створюють цей подвійний масштаб. Звідси вони стають пейзажами або сценами битв. З близька вони розкривають малі акти конструкції: заклепку, згин, шов, грубий край. Величність створена з уваги. Монументальне не є протилежністю інтимного; воно — це інтимне, акуратно перенесене в інший регістр."
+              "content": "Скульптури De Monchaux часто створюють цей подвійний масштаб. Звідси вони стають пейзажами або сценами битв. З близька вони розкривають малі акти конструкції: заклепку, згин, шов, грубий край. Величність створена з уваги. Монументальне не є протилежністю інтимного; це інтимне, акуратно перенесене в інший регістр."
             },
             {
               "type": "header",
@@ -40934,14 +40877,14 @@
             },
             {
               "type": "text",
-              "content": "Назва виставки ставить бажання поруч із ранами та битвами, і поєднання є точним. Робота De Monchaux є чуттєвою, але ніколи пасивною. Її поверхні запрошують око, а потім роблять його обережним. Глядач притягується до оксамиту, порожнин, поліруваного металу та м’яко виглядаючих форм, лише щоб виявити приховану загрозу: хребет, точку, тверді шви, отвір, що відмовляється пояснювати себе."
+              "content": "Назва виставки ставить бажання поруч із ранами та битвами, і поєднання є точним. Робота De Monchaux є чуттєвою, але ніколи не пасивною. Її поверхні запрошують погляд і потім роблять його обережним. Глядач притягується до оксамиту, порожнин, поліруваного металу та м’яко виглядаючих форм, лише щоб виявити приховану загрозу: хребет, точку, тверді шви, отвір, що відмовляється пояснювати себе."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/cathy-19.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Кеті де Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Quentin Chevrier. © Adagp, Париж, 2026."
+              "caption": "Cathy de Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Quentin Chevrier. © Adagp, Paris, 2026."
             },
             {
               "type": "text",
@@ -40961,11 +40904,11 @@
               "content": "https://api.eprisjournal.com/uploads/cathy-05.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Cathy de Monchaux, огляд інсталяції, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Paris, 2026."
+              "caption": "Cathy de Monchaux, інсталяційний вигляд, Palais de Tokyo, 2026. Фото: Antoine Aphesbero. © Adagp, Paris, 2026."
             },
             {
               "type": "text",
-              "content": "Це має значення, тому що робота de Monchaux по суті стосується того, що тримає. Каркас тримає форму; пам’ять тримає подію; назва тримає відкритий образ; музей тримає крихкий об’єкт досить довго, щоб незнайомці могли його зустріти. Але кожна опора може зламатися. Виставка ніколи не приховує цього факту. Вона надає невдачі тиху гідність."
+              "content": "Це має значення, тому що робота de Monchaux по суті про те, що тримає. Каркас тримає форму; пам’ять тримає подію; назва тримає відкритий образ; музей тримає крихкий об’єкт досить довго, щоб незнайомці могли його зустріти. Але кожна опора може зламатися. Виставка ніколи не приховує цього факту. Вона надає невдачі тиху гідність."
             },
             {
               "type": "header",
@@ -40974,7 +40917,7 @@
             },
             {
               "type": "text",
-              "content": "Роботи часто зависають біля людської фігури, не стаючи фігуративними в будь-якому традиційному сенсі. Вертикальна структура натякає на торс. Згусток стає групою тіл. Випуклість відчувається як кінцівка, ріг або архітектурна опора. Ця майже-людська якість є тим місцем, де скульптури стають найпсихологічно напруженими."
+              "content": "Роботи часто коливаються біля людської фігури, не стаючи фігуративними в будь-якому традиційному сенсі. Вертикальна структура натякає на торс. Згусток стає групою тіл. Випуклість відчувається як кінцівка, ріг або архітектурна опора. Ця майже-людська якість є тим місцем, де скульптури стають найпсихологічно напруженими."
             },
             {
               "type": "image",
@@ -40985,7 +40928,7 @@
             },
             {
               "type": "text",
-              "content": "Зорова починає проектувати історію на об'єкт, потім об'єкт відступає. Він відмовляється ставати персонажем у простому наративі. Він залишається матерією, і ця відмова є звільняючою. Скульптура не повинна зображати людину, щоб нести тиск життя людини."
+              "content": "Зритель починає проектувати історію на об'єкт, потім об'єкт відступає. Він відмовляється ставати персонажем у простій оповіді. Він залишається матеріалом, і ця відмова є звільняючою. Скульптура не повинна зображати людину, щоб нести тиск життя людини."
             },
             {
               "type": "header",
@@ -40994,7 +40937,7 @@
             },
             {
               "type": "text",
-              "content": "Презентація Palais de Tokyo також була тихою критикою прямої лінії: прямої лінії п'єдесталу, чистої лінії прогресу, жорсткої лінії влади. De Monchaux згинає, заплутує і перериває ці лінії. Її форми створюють простір для асиметрії, м'якості та інтелекту обхідного шляху."
+              "content": "Презентація Palais de Tokyo також була тихою критикою прямої лінії: прямої лінії підставки, чистої лінії прогресу, жорсткої лінії влади. De Monchaux згинає, заплутує і перериває ці лінії. Її форми створюють простір для асиметрії, м’якості та інтелекту обхідного шляху."
             },
             {
               "type": "image",
@@ -41029,20 +40972,20 @@
             },
             {
               "type": "text",
-              "content": "Саме тому виставка залишилася у мене після її закриття. Не як каталог форм, а як фізичний інтелект: знання, що крихкість можна інженерно створити, що рана може стати прорізом, і що скульптура може бути і попередженням, і притулком."
+              "content": "Саме тому виставка залишилася у мене в пам’яті після її закриття. Не як каталог форм, а як фізичний інтелект: знання, що крихкість можна інженерно створити, що рана може стати прорізом, і що скульптура може бути і попередженням, і притулком."
             },
             {
               "type": "text",
-              "content": "Студія, рани і битви не просилися бути захопленими з безпечної відстані. Вони зробили відстань нестабільною. Чим ближче дивився, тим більше роботи змінювали регістр – від орнаменту до анатомії, від реліквії до загрози, від приватної пам’яті до колективного образу. Їхня краса не була втечею від світу. Це був спосіб залишатися бадьорим всередині нього."
+              "content": "Студія, рани і битви не просилися бути захопленими з безпечної відстані. Вони зробили відстань нестабільною. Чим ближче дивився, тим більше роботи змінювали регістр — від орнаменту до анатомії, від реліквії до загрози, від приватної пам’яті до колективного образу. Їхня краса не була втечею від світу. Це був спосіб залишатися бадьорим всередині нього."
             },
             {
               "type": "link",
-              "content": "Palais de Tokyo – офіційна сторінка виставки",
+              "content": "Palais de Tokyo — офіційна сторінка виставки",
               "url": "https://palaisdetokyo.com/exposition/studio-wounds-and-battles-desire-is-the-reiteration-of-hope/?t=true"
             },
             {
               "type": "note",
-              "content": "Підписки до зображень: Cathy de Monchaux оглядові знімки інсталяції, Palais de Tokyo, 2026. Фото Антуана Афесберо, Орелієн Моль та Квентіна Шевр'є. © Adagp, Париж, 2026. Зображення відтворені з офіційних прес-матеріалів установ для редакційних цілей; права залишаються у відповідних правовласників."
+              "content": "Підписки до зображень: Cathy de Monchaux оглядові знімки інсталяції, Palais de Tokyo, 2026. Фото Антуана Афесберо, Ауреліена Моля та Квентіна Шевр'є. © Adagp, Париж, 2026. Зображення відтворені з офіційних прес-матеріалів установ для редакційних цілей; права залишаються за відповідними правовласниками."
             }
           ]
         }
@@ -42687,42 +42630,23 @@
           "picsReleaseId": "PICS-WEEK-2026-005"
         },
         {
-          "id": 45,
-          "title": "Sandra Kantanen: Jenseits des Blicks der traditionellen Fotografie",
-          "subtitle": "Fotografie",
-          "fig": "FIG. 11",
-          "description": "Ein Foto kann eine Schwelle sein, anstatt eines Aufzeichnungs — Sandra Kantanen verwandelt Landschaft in einen Raum zwischen Erinnerung, Mythos und optischer Verzerrung.",
-          "imageSeed": "epris-pick-photography",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
-          "homeCategory": "photography",
-          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
-          "homeTitle": "Landschaft",
-          "homeSubtitle": "Fedora E. D. Brown · ca. 1908 · Silbergelatineabzug",
-          "homeDescription": "Ein Pfad löst sich in Nebel und Bäume auf, wodurch die Landschaft wie eine Erinnerung erscheint, die noch ihren Fokus sucht.",
-          "homeCredit": "Fedora E. D. Brown · gemeinfreies Foto / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "id": 47,
+          "title": "Gegen den rechten Winkel",
+          "subtitle": "Architektur",
+          "fig": "FIG. 08",
+          "description": "Fünf Gebäude, die sich aus dem Raster herausgeredet haben — und die Software, das Metall, das Geld und den reinen Mut, die es brauchte, um sie zu bauen.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Modernistischer Beton-Studie",
+          "homeSubtitle": "Lekeboy54 · 2025 · architektonisches Foto",
+          "homeDescription": "Ein ruhiger Betonschirm verwandelt Wetter, Wiederholung und einen niedrigen Horizont in eine gemessene Komposition.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
           "picsOfWeek": true,
-          "picsId": "PICS-2026-042",
-          "updatedAt": "2026-10-03T13:33:32.026Z"
-        },
-        {
-          "id": 46,
-          "title": "Wie Emily Kraus die Handlung des Malens neu erfindet",
-          "subtitle": "Zeitgenössische Kunst",
-          "fig": "FIG. 10",
-          "description": "Im Inneren des Canvas-Würfels malt Emily Kraus den Rhythmus des gegenwärtigen Moments",
-          "imageSeed": "epris-pick-painting",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
-          "homeCategory": "painting",
-          "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
-          "homeTitle": "Die Zehn Größten Nr. 6",
-          "homeSubtitle": "Hilma af Klint · 1907 · Tempera auf Papier",
-          "homeDescription": "Fliederfelder, Sonnendiagramme und ein dunkler zentraler Samen lassen die Leinwand weniger gemalt erscheinen als aus einem unsichtbaren Kosmos gewachsen.",
-          "homeCredit": "Hilma af Klint · public-domain-Arbeit / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
-          "picsOfWeek": true,
-          "picsId": "PICS-2026-043",
-          "updatedAt": "2026-10-03T13:33:54.414Z"
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:09.267Z"
         }
       ],
       "articles": [
@@ -55847,42 +55771,23 @@
           "picsReleaseId": "PICS-WEEK-2026-005"
         },
         {
-          "id": 45,
-          "title": "Sandra Kantanen: Más allá del lente de la fotografía tradicional",
-          "subtitle": "Fotografía",
-          "fig": "FIG. 11",
-          "description": "Una fotografía puede ser un umbral en lugar de un registro — Sandra Kantanen convierte el paisaje en un espacio entre la memoria, el mito y la distorsión óptica.",
-          "imageSeed": "epris-pick-photography",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt8ytd6vu1.jpg",
-          "homeCategory": "photography",
-          "homeLabel": "Fedora E. D. Brown · c. 1908 · silver gelatin print",
-          "homeTitle": "Paisaje",
-          "homeSubtitle": "Fedora E. D. Brown · c. 1908 · impresión en gelatina de plata",
-          "homeDescription": "Un camino se disuelve en neblina y árboles, haciendo que el paisaje parezca una memoria que aún busca su enfoque.",
-          "homeCredit": "Fedora E. D. Brown · fotografía de dominio público / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Landscape_by_Fedora_E.D._Brown.jpg",
+          "id": 47,
+          "title": "Contra el Ángulo Recto",
+          "subtitle": "Arquitectura",
+          "fig": "FIG. 08",
+          "description": "Cinco edificios que se salieron de la cuadrícula hablando por sí mismos — y el software, el metal, el dinero y la simple audacia que se necesitó para construirlos.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Estudio de Concreto Modernista",
+          "homeSubtitle": "Lekeboy54 · 2025 · fotografía arquitectónica",
+          "homeDescription": "Un marco de concreto silencioso convierte el clima, la repetición y un horizonte bajo en una composición medida.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
           "picsOfWeek": true,
-          "picsId": "PICS-2026-042",
-          "updatedAt": "2026-10-03T13:33:34.151Z"
-        },
-        {
-          "id": 46,
-          "title": "Cómo Emily Kraus reinventa el acto de pintar",
-          "subtitle": "Arte contemporáneo",
-          "fig": "FIG. 10",
-          "description": "Dentro del cubo de lienzo, Emily Kraus pinta el ritmo del momento presente",
-          "imageSeed": "epris-pick-painting",
-          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvsz8ir8omt.jpg",
-          "homeCategory": "painting",
-          "homeLabel": "Hilma af Klint · 1907 · tempera on paper",
-          "homeTitle": "Los diez más grandes nº 6",
-          "homeSubtitle": "Hilma af Klint · 1907 · témpera sobre papel",
-          "homeDescription": "Campos de lila, diagramas solares y una semilla central oscura hacen que el lienzo parezca menos pintado que crecido de un cosmos invisible.",
-          "homeCredit": "Hilma af Klint · obra de dominio público / Wikimedia Commons",
-          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_-_The_Ten_Largest_No._6_-_1907.jpg",
-          "picsOfWeek": true,
-          "picsId": "PICS-2026-043",
-          "updatedAt": "2026-10-03T13:33:56.720Z"
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:11.596Z"
         }
       ],
       "articles": [
@@ -67827,6 +67732,81 @@
             },
             {
               "type": "text",
+              "content": "La decisión más disciplinada de The Gallery es la que parece más frívola. La renovación de 2014 de India Mahdavi se compromete a un solo rosa milenial en paredes, techo, alfombra y los banquetes de terciopelo en forma de tulipán que rodean la habitación, rechazando el instinto habitual del diseñador de romper un color fuerte con un contrapeso neutral. El efecto es menos una habitación temática que un Rothko habitable: desde la puerta, el rosa se lee como una superficie continua, y solo de cerca se resuelve en tela, yeso, suelo de mármol en zigzag yideña <em>Mr. Bean</em> en 2007 - una sala de época Belle Époque interpretándose a sí misma, década tras década, en historias que no tenían nada que ver con ferrocarriles. Cada generación encontró una ficción ligeramente diferente para proyectar sobre las mismas cuarenta y una pinturas. Eso es lo que hace una pieza de publicidad verdaderamente exitosa: deja de necesitar el producto para el que fue creada y comienza a vender la sensación de haber estado siempre allí."
+            },
+            {
+              "type": "header",
+              "content": "Lo que realmente está en la mesa",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Nada de esto importaría si la cocina se hubiera modernizado para coincidir con la ambición de la sala, y en su crédito nunca lo ha hecho. Desde 2018 el restaurante ha sido gestionado para su operador, SSP, por el chef Michel Rostang, y el menú que construyó es deliberadamente anticuado: pierna de cordero tallada junto a la mesa desde un carrito, un gratín dauphinois hecho sin queso ni huevo al estilo antiguo, pollo de Bresse con crema de estragón, steak tartare mezclado frente a ti, baba de ron terminada con un chorro de ron en la mesa. No hay intento de reinterpretar la sala a la imagen de la cocina, como un chef contemporáneo podría sentirse obligado a hacer dentro de un monumento. La comida juega el mismo papel secundario que las pinturas: prueba de que una versión de Francia que existe principalmente en la memoria, durante la duración de una comida, todavía está disponible para ordenar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mton426yr3s0w9.jpg",
+              "alt": "Exterior diurno de la fachada de Gare de Lyon, con ventanas arqueadas que llevan carteles ovalados que leen Le Train Bleu, sobre los toldos de la entrada de la estación",
+              "caption": "La fachada de la estación diseñada por Toudoire junto al restaurante, sus ventanas arqueadas aún llevan el nombre del restaurante hacia la plaza exterior.",
+              "credit": "Foto: APB11 / Wikimedia Commons, CC BY-SA 4.0",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Les_fen%C3%AAtres_du_Train_Bleu_vues_du_parvis_de_la_gare_de_Lyon.jpg"
+            },
+            {
+              "type": "text",
+              "content": "Abajo, los trenes que hicieron la fortuna de la sala en su mayoría se han ido. La línea a la Riviera ahora es más rápida y hace menos paradas; el TGV que finalmente reemplazó al original Train Bleu no lleva su nombre, y los pasajeros que desean la costa hoy en día probablemente comparen tarifas en un teléfono en lugar de sentarse en un comedor y que les vendan el destino en óleo. El anuncio, en otras palabras, ha superado completamente al producto. Lo que queda es una sala que ya no tiene que persuadir a nadie de nada, protegida por la ley de tener que probar un argumento diferente, aún poniendo una mesa bajo un techo construido para hacerte creer que un viaje en tren podría sentirse como llegar a algún lugar antes de haberte ido. Come allí y no estás visitando el pasado. Estás sentado dentro de un argumento de ventas de ciento veinticinco años que el estado francés decidió que valía la pena contar para siempre, y pagar, con gusto, por el privilegio de escucharlo de nuevo."
+            }
+          ],
+          "featured": true,
+          "updatedAt": "2026-09-05T17:31:55.985Z"
+        },
+        {
+          "id": 9,
+          "draft": false,
+          "previewToken": "8f4b21ad0e6c937510dfa382",
+          "title": "El Restaurante Que Pintó una Casa del Siglo XVIII de Rosa",
+          "subject": "sketch, La Galería · 9 Conduit Street, Mayfair, Londres · India Mahdavi",
+          "rating": 0,
+          "author": "Viacheslav Munister",
+          "role": "Guest Editor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "Arquitectura y Gastronomía",
+          "date": "SEP 12, 2026",
+          "imageUrl": "https://flodeau.com/wp-content/uploads/2014/07/DS_gallery_1.jpg",
+          "meta": "LONDON · INDIA MAHDAVI, DAVID SHRIGLEY · 1779 / 2014 · PHOTO: FLODEAU",
+          "verdict": "Sketch toma una casa georgiana catalogada como Grado II construida por James Wyatt en 1779 y pinta una de sus habitaciones del color rosa exacto de un vestido de graduación de los años 80, cuelga doscientos treinta y nueve dibujos de David Shrigley en las paredes en una cuadrícula, y coloca una cámara de inodoros en forma de huevo iluminada con arcoíris un piso debajo, y pide a los comensales que se muevan entre los tres sin explicar una sola vez la broma.",
+          "pros": [
+            "El esquema monocromático rosa de La Galería de India Mahdavi cubre paredes, banquetas, alfombra y iluminación en un tono continuo en lugar de tratar el rosa como un acento, lo que hace que la habitación se lea como una sola obra de arte en lugar de un comedor temático",
+            "Los 239 dibujos de David Shrigley están colgados al estilo salón, enmarcados de manera uniforme y en cuadrícula en todas las paredes, de modo que los bocetos deliberadamente infantiles y serios se leen como papel tapiz desde la otra parte de la habitación y como chistes individuales de cerca",
+            "El edificio en sí, una casa del siglo XVIII en Mayfair que pasó 220 años como hogar de clubes de ciclistas, sociedades de globos y reuniones de sufragistas antes de convertirse en restaurante, se mantiene legible bajo el rediseño en lugar de ser vaciado por completo",
+            "Los inodoros en forma de huevo, situados bajo un techo abovedado cubierto de azulejos de vidrio de colores, se comprometen con la misma lógica absurdista que el comedor en lugar de revertir al diseño ordinario una vez que la broma podría haber terminado con seguridad",
+            "Las banquetas de terciopelo con respaldo de tulipán, tapizadas en el mismo rosa que las paredes, fueron construidas como mobiliario a medida para la habitación en lugar de ser adquiridas de un catálogo, por lo que la asientos se leen como esculturas que también sirven para sentarse",
+            "Incluso la comida se integra en la broma: los platos llegan en vajilla con letras hechas a mano con la propia dirección del restaurante, por lo que la vajilla sigue haciendo el mismo punto que las paredes sobre un edificio que nunca deja de ser consciente de sí mismo"
+          ],
+          "cons": [
+            "Una habitación de un solo color, esta famosa, se fotografía mejor de lo que se sienta: las banquetas en cabina profunda y la iluminación tenue que hacen que el rosa brille en las fotos son menos cómodas para una cena larga que una silla de comedor convencional",
+            "La Galería ha sido repintada antes, cambiada a amarillo sol para un rediseño de Yinka Shonibare en 2022 antes de que volviera el rosa, lo que significa que la habitación que ven los comensales hoy es una reactivación en lugar del esquema original de 2014",
+            "Los inodoros en forma de huevo, aunque llamativos, funcionan como una fila de ocupación individual en horas punta, y la iluminación teatral que se fotografía tan bien de cerca se lee como ligeramente clínica una vez que la novedad de la primera visita desaparece"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "Nine Conduit Street ha sido muchas cosas desde que James Wyatt la diseñó como una residencia privada en Mayfair en 1779: una casa adosada, un hogar para una sociedad de ciclistas y un club de globos, un lugar de reunión para el movimiento sufragista, y durante mucho tiempo simplemente un edificio para el que nadie tenía un buen uso. En 2002, el restaurador Mourad Mazouz la compró sin un plan claro más allá de la convicción de que una casa georgiana catalogada como Grado II merecía algo mejor que estar vacía, y la convirtió en sketch, una sola dirección que contiene varias habitaciones con casi nada en común excepto la creencia de que un restaurante también puede ser una crítica de diseño."
+            },
+            {
+              "type": "image",
+              "content": "https://flodeau.com/wp-content/uploads/2014/07/DSGallery2.jpg",
+              "alt": "Primer plano de una mesa preparada para cenar en The Gallery, sketch, Londres, con un camarero desenfocado ajustando los lugares contra una pared de dibujos enmarcados de David Shrigley",
+              "caption": "Una mesa preparada dentro de The Gallery, con la pared de Shrigley y una de las lámparas de mesa de cobre de la habitación lo suficientemente cerca para leerlas individualmente.",
+              "credit": "Foto: flodeau.com",
+              "align": "centro"
+            },
+            {
+              "type": "header",
+              "content": "Un color, sin excepciones",
+              "level": 2
+            },
+            {
+              "type": "text",
               "content": "La decisión más disciplinada de The Gallery es la que parece más frívola. La renovación de 2014 de India Mahdavi se compromete a un solo rosa milenial en paredes, techo, alfombra y los banquetes de terciopelo en forma de tulipán que rodean la habitación, rechazando el instinto habitual del diseñador de romper un color fuerte con un contrapeso neutral. El efecto es menos una habitación temática que un Rothko habitable: desde la puerta, el rosa se lee como una superficie continua, y solo de cerca se resuelve en tela, yeso, suelo de mármol en zigzag y doscientos treinta y nueve dibujos enmarcados individualmente. Mahdavi tuvo tres meses para completar la renovación en 2014; lo que originalmente se planificó como una instalación de dos años duró ocho."
             },
             {
@@ -76665,6 +76645,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-043",
           "updatedAt": "2026-10-03T13:33:59.476Z"
+        },
+        {
+          "id": 47,
+          "title": "Contro l'Angolo Retto",
+          "subtitle": "Architettura",
+          "fig": "FIG. 08",
+          "description": "Cinque edifici che hanno parlato la loro strada fuori dalla griglia — e il software, il metallo, il denaro e il semplice coraggio che ci è voluto per costruirli.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Studio di Cemento Modernista",
+          "homeSubtitle": "Lekeboy54 · 2025 · fotografia architettonica",
+          "homeDescription": "Una tranquilla struttura di cemento trasforma il tempo, la ripetizione e un basso orizzonte in una composizione misurata.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:13.515Z"
         }
       ],
       "articles": [
@@ -89315,6 +89314,25 @@
           "picsOfWeek": true,
           "picsId": "PICS-2026-043",
           "updatedAt": "2026-10-03T13:34:01.537Z"
+        },
+        {
+          "id": 47,
+          "title": "Contre l'angle droit",
+          "subtitle": "Architecture",
+          "fig": "FIG. 08",
+          "description": "Cinq bâtiments qui ont réussi à sortir du réseau — et le logiciel, le métal, l'argent et le simple courage qu'il a fallu pour les construire.",
+          "imageSeed": "epris-pick-architecture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/msnlvt45l8hv6y.jpg",
+          "homeCategory": "architecture",
+          "homeLabel": "Lekeboy54 · 2025 · architectural photograph",
+          "homeTitle": "Étude de béton moderniste",
+          "homeSubtitle": "Lekeboy54 · 2025 · photographie architecturale",
+          "homeDescription": "Une structure en béton silencieuse transforme le temps, la répétition et un horizon bas en une composition mesurée.",
+          "homeCredit": "Lekeboy54 · CC0 / Wikimedia Commons",
+          "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_Architectural_Design_of_Concrete_Building.jpg",
+          "picsOfWeek": true,
+          "picsId": "PICS-2026-044",
+          "updatedAt": "2026-10-03T13:34:15.408Z"
         }
       ],
       "articles": [
