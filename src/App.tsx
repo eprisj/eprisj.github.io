@@ -1684,7 +1684,7 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
             dangerouslySetInnerHTML={{ __html: sanitizeRichText(body) }}
           />
         ) : (
-          <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] text-center italic">
+          <p className="text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] text-center font-courier">
             {t('manifest.empty')}
           </p>
         )}
@@ -3495,7 +3495,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
     const text = typeof block.content === 'string' ? block.content : '';
     if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight">{text}</h2>;
     if (block.type === 'quote' && text) return <blockquote key={index} className="my-10 font-serif text-[22px] leading-[1.35] sm:text-[30px] sm:leading-[1.3]">{text}</blockquote>;
-    if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-serif italic text-xl">{text}</aside>;
+    if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-courier text-xl">{text}</aside>;
     if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
     if (block.type === 'gallery' && Array.isArray(block.content)) return <figure key={index} className="grid grid-cols-2 gap-2">{block.content.map((src, i) => <img key={i} src={src} alt={block.alts?.[i] || ''} className="aspect-square w-full object-cover" />)}</figure>;
     /* Обзор показывает видео и гифки тем же блоком, что и статья. Раньше сюда
@@ -4396,6 +4396,45 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
   }
 }
 
+/* ── Застосунок у App Store: смуга вгорі підвалу на всіх сторінках журналу ──
+   Тексти тут, а не в site-content.json: той файл щогодини перезаписує знімок
+   з VPS. Значок — офіційний бейдж Apple (public/app/app-store-badge-*.svg). */
+const APP_STORE_URL = 'https://apps.apple.com/us/app/epris-journal/id6815797964?itscg=30200&itsct=apps_box_link&mttnsubad=6815797964';
+const APP_BAND_TEXT: Record<string, { kicker: string; title: string; line: string; more: string }> = {
+  EN: { kicker: 'The app', title: 'EPRIS Journal for iPhone and iPad', line: 'Every piece typeset for reading, saved offline with one tap. Free, with no account and no tracking.', more: 'About the app' },
+  RU: { kicker: 'Приложение', title: 'EPRIS Journal для iPhone и iPad', line: 'Каждый материал свёрстан для чтения и сохраняется офлайн одним касанием. Бесплатно, без аккаунта и слежки.', more: 'О приложении' },
+  UA: { kicker: 'Застосунок', title: 'EPRIS Journal для iPhone та iPad', line: 'Кожен матеріал зверстаний для читання й зберігається офлайн одним дотиком. Безкоштовно, без акаунта й стеження.', more: 'Про застосунок' },
+  DE: { kicker: 'Die App', title: 'EPRIS Journal für iPhone und iPad', line: 'Jeder Beitrag für das Lesen gesetzt, mit einem Tippen offline gespeichert. Kostenlos, ohne Konto und ohne Tracking.', more: 'Über die App' },
+  IT: { kicker: "L'app", title: 'EPRIS Journal per iPhone e iPad', line: 'Ogni articolo impaginato per la lettura, salvato offline con un tocco. Gratis, senza account e senza tracciamento.', more: "Scopri l'app" },
+  ES: { kicker: 'La app', title: 'EPRIS Journal para iPhone y iPad', line: 'Cada pieza maquetada para leer y guardada sin conexión con un toque. Gratis, sin cuenta y sin rastreo.', more: 'Sobre la app' },
+  FR: { kicker: "L'application", title: 'EPRIS Journal pour iPhone et iPad', line: 'Chaque texte mis en page pour la lecture, enregistré hors ligne d’un geste. Gratuit, sans compte ni pistage.', more: "À propos de l'app" },
+  TR: { kicker: 'Uygulama', title: 'iPhone ve iPad için EPRIS Journal', line: 'Her yazı okumak için dizildi, tek dokunuşla çevrimdışı kaydedilir. Ücretsiz, hesap ve takip yok.', more: 'Uygulama hakkında' },
+};
+
+function AppStoreBand({ lang }: { lang: string }) {
+  const tx = APP_BAND_TEXT[String(lang || 'EN').toUpperCase()] || APP_BAND_TEXT.EN;
+  return (
+    <div className="max-w-[1600px] mx-auto mb-10 sm:mb-14 md:mb-20 pb-10 sm:pb-14 md:pb-16 border-b border-[rgba(209,181,149,0.22)]">
+      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
+        <img src="/app/epris-journal-icon.png" alt="" width={88} height={88} loading="lazy"
+          className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] rounded-[20px] md:rounded-[24px] shadow-[0_18px_40px_-18px_rgba(0,0,0,.8)] ring-1 ring-[rgba(247,242,236,0.12)] shrink-0" />
+        <div className="flex-1 min-w-0">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#D1B595]">{tx.kicker}</p>
+          <h3 className="mt-2 font-serif text-2xl sm:text-3xl md:text-4xl text-[#F7F2EC] leading-tight">{tx.title}</h3>
+          <p className="mt-3 max-w-[56ch] mx-auto md:mx-0 text-sm sm:text-base text-[#D9C7BA] leading-relaxed">{tx.line}</p>
+        </div>
+        <div className="flex flex-col items-center md:items-end gap-3 shrink-0">
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
+            className="inline-block leading-none transition-transform hover:-translate-y-0.5">
+            <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={180} height={60} className="w-[170px] sm:w-[180px] h-auto" loading="lazy" />
+          </a>
+          <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#BFAFA4] hover:text-[#F7F2EC] underline underline-offset-4 transition-colors">{tx.more}</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   if (/^\/(?:museum|vitrine|futuroshock)(?:\/|$)/.test(window.location.pathname)) {
     window.location.replace('https://museum.eprisjournal.com/');
@@ -4973,6 +5012,7 @@ export default function App() {
         )}
 
         {activeTab !== 'issue' && activeTab !== 'design' && activeTab !== 'museum' && activeTab !== 'studio' && activeTab !== 'radio' && activeTab !== 'podcasts' && activeTab !== 'passport' && <footer className="border-t border-[rgba(209,181,149,0.45)] bg-[#180D13] text-[#F7F2EC] py-8 sm:py-12 md:py-24 px-4 sm:px-8 md:px-16">
+          <AppStoreBand lang={currentLang} />
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-8 sm:gap-12 text-center md:text-left">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-[#F7F2EC]">{footerTitle}</h2>

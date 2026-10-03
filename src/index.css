@@ -674,7 +674,7 @@ img[data-reveal="done"] {
 .rich-text mark { background: rgba(201,166,144,.38); color: inherit; padding: 0 .12em; border-radius: 2px; }
 .rich-text code { font-family: 'IBM Plex Mono', monospace; background: rgba(80,26,44,.07); padding: .05em .35em; border-radius: 3px; font-size: .9em; }
 .rich-text strong, .rich-text b { font-weight: 700; }
-.rich-text em, .rich-text i { font-style: italic; }
+.rich-text em, .rich-text i { font-style: normal; font-family: "Courier New", Courier, monospace; }
 .rich-text u { text-decoration: underline; }
 .rich-text p { margin: 0 0 1em; }
 .rich-text p:last-child { margin-bottom: 0; }
@@ -693,7 +693,7 @@ img[data-reveal="done"] {
 .rich-text li { margin: 0 0 .35em; }
 .rich-text li:last-child { margin-bottom: 0; }
 .rich-text hr { border: none; border-top: 1px solid rgba(80,26,44,.18); margin: 2em auto; width: 40%; }
-.rich-text blockquote { border-left: 2px solid rgba(80,26,44,.3); padding-left: 1em; margin: 1em 0; font-style: italic; opacity: .85; }
+.rich-text blockquote { border-left: 2px solid rgba(80,26,44,.3); padding-left: 1em; margin: 1em 0; font-style: normal; font-family: "Courier New", Courier, monospace; opacity: .85; }
 
 /* ── Editorial furniture available to article bodies ─────────────────────────
    Opt-in classes (see RICH_ALLOWED_CLASSES): a figures panel, a section kicker,
@@ -720,7 +720,7 @@ img[data-reveal="done"] {
   color: var(--c-gold); margin-bottom: .85em;
 }
 .rich-text .dek {
-  display: block; font-style: italic; font-size: 1.05em; line-height: 1.5;
+  display: block; font-style: normal; font-family: "Courier New", Courier, monospace; font-size: 1.05em; line-height: 1.5;
   color: rgba(80,26,44,.62); padding-bottom: .9em; border-bottom: 1px solid rgba(80,26,44,.14);
 }
 .rich-text ul.sources { list-style: none; padding-left: 0; margin: 0 0 1.4em; }
@@ -797,4 +797,14 @@ img[data-reveal="done"] {
 
 @media (prefers-reduced-motion: reduce) {
   img[data-reveal="pending"] { opacity: 1; }
+}
+
+/* Курсиву в журналі немає (2026-10-03): будь-який нахил – у статтях з адмінки,
+   у старих текстах з <i> чи style="font-style: italic", у віджетах – набирається
+   звичайним Courier. Іконки на сайті — SVG, тож <i> тут лише текст. */
+em, i, cite, dfn, var, address,
+.italic,
+[style*="font-style: italic"], [style*="font-style:italic"] {
+  font-style: normal !important;
+  font-family: "Courier New", Courier, monospace !important;
 }

@@ -282,7 +282,7 @@ export function CollaborationPage() {
 
             <div className="border-t border-[#28151b]/15 py-9 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:py-14 lg:pl-9 xl:pl-12">
               <div>
-                <span className="font-serif text-5xl italic leading-none text-[#a34f42]" aria-hidden="true">“</span>
+                <span className="text-5xl font-courier leading-none text-[#a34f42]" aria-hidden="true">“</span>
                 <p className="-mt-2 max-w-md font-serif text-xl leading-[1.45] text-[#4e3940] sm:text-2xl lg:text-[1.45rem]">A living shortlist of emerging architects, designers and artists for interviews, studio visits and editorial collaborations.</p>
               </div>
               <div className="mt-9 border-t border-[#28151b]/15 pt-5 lg:mt-10">
@@ -304,7 +304,7 @@ export function CollaborationPage() {
                 <span className="absolute right-2 top-3 font-mono text-[7px] tracking-[0.16em] text-[#9f4f42]/70 sm:right-4 sm:top-5 sm:text-[8px]">0{index + 1}</span>
                 <strong className="block font-serif text-[2.15rem] font-normal leading-none tabular-nums sm:text-5xl lg:text-7xl">{stat.value}</strong>
                 <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.18em] text-[#4e3940] sm:text-[9px]">{stat.label}</span>
-                <span className="mt-1 hidden font-serif text-sm italic text-[#826d74] sm:block">{stat.note}</span>
+                <span className="mt-1 hidden text-sm font-courier text-[#826d74] sm:block">{stat.note}</span>
               </div>
             ))}
           </div>

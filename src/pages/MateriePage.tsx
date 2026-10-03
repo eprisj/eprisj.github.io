@@ -635,7 +635,7 @@ function StudioTool({ onBack, t }: { onBack: () => void; t: T }) {
                   <div className="pt-3 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">Lighting</p>
                     <p className="font-mono text-xs text-[var(--c-accent)] mb-1">{report.lighting.mood} – {report.lighting.sources.join(', ')}</p>
-                    <p className="font-serif text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] italic">{report.lighting.suggestion}</p>
+                    <p className="text-xs text-[rgb(var(--c-accent-rgb)_/_0.6)] font-courier">{report.lighting.suggestion}</p>
                   </div>
                 </div>
               )}
@@ -782,7 +782,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
             {report && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
                 className="bg-[#1a1008] px-5 py-4 border-t border-white/10">
-                <p className="font-serif text-xs text-white/60 italic leading-relaxed">{report.caption}</p>
+                <p className="text-xs text-white/60 font-courier leading-relaxed">{report.caption}</p>
               </motion.div>
             )}
           </div>
@@ -810,7 +810,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
                 <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-6 py-6">
                   <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[rgb(var(--c-gold-rgb)_/_0.5)] mb-2">Chronicle / Editorial</p>
                   <h2 className="font-serif text-2xl md:text-3xl leading-tight text-[var(--c-bg)] mb-2">{report.headline}</h2>
-                  <p className="font-serif text-sm italic text-[rgb(var(--c-bg-rgb)_/_0.55)] leading-snug">{report.subheadline}</p>
+                  <p className="text-sm font-courier text-[rgb(var(--c-bg-rgb)_/_0.55)] leading-snug">{report.subheadline}</p>
                 </div>
 
                 {/* Narrative */}
@@ -967,7 +967,7 @@ export function MateriePage({ t }: { t: T }) {
             <div className="relative z-10 px-6 sm:px-10 md:px-16 pt-14 pb-12 sm:pt-20 sm:pb-16">
               <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-5">{t('materie.kicker')}</p>
               <h1 className="font-mono text-5xl sm:text-7xl lg:text-8xl tracking-[0.06em] text-[var(--c-accent)] leading-none mb-6">MATERIE</h1>
-              <p className="font-serif text-lg sm:text-2xl text-[rgb(var(--c-accent-rgb)_/_0.55)] italic max-w-xl leading-relaxed">{t('materie.subtitle')}</p>
+              <p className="text-lg sm:text-2xl text-[rgb(var(--c-accent-rgb)_/_0.55)] font-courier max-w-xl leading-relaxed">{t('materie.subtitle')}</p>
               <div className="flex gap-8 sm:gap-14 mt-10 pt-8 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)]">
                 {[
                   { num: '03', label: t('materie.stats.tools') },

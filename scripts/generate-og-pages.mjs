@@ -196,7 +196,8 @@ function prerenderStyle() {
     .pre-doc small{color:var(--c-accent);opacity:.6;
       font-family:var(--font-body);font-size:14px}
     .pre-doc blockquote{margin:1.6em 0;padding-left:1.1em;
-      border-left:2px solid var(--c-gold);font-style:italic;opacity:.85}
+      border-left:2px solid var(--c-gold);font-style:normal;font-family:"Courier New",Courier,monospace;opacity:.85}
+    .pre-doc em,.pre-doc i,.pre-doc cite{font-style:normal;font-family:"Courier New",Courier,monospace}
     .pre-doc ul{padding-left:1.1em}
     .pre-doc li{margin:0 0 .5em}
     .pre-doc a{color:var(--c-accent)}
