@@ -4430,8 +4430,18 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
   const about = FOOTER_ABOUT[String(lang || 'EN').toUpperCase()] || FOOTER_ABOUT.EN;
   const head = 'font-mono text-[10px] uppercase tracking-[0.28em] text-white/45';
   return (
-    <footer className="bg-black text-white px-5 sm:px-8 md:px-16 pt-14 sm:pt-20 md:pt-24 pb-8">
-      <div className="max-w-[1600px] mx-auto">
+    <footer className="bg-black text-white px-5 sm:px-8 md:px-16 pt-10 md:pt-24 pb-10 md:pb-8">
+      {/* На телефоне подвал – только значок App Store по центру и место
+          редакции: разделы и так в меню, а длинный подвал на узком экране
+          листается дольше самой статьи. */}
+      <div className="md:hidden flex flex-col items-center gap-5 text-center">
+        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
+          className="inline-block leading-none">
+          <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[160px] h-auto" loading="lazy" />
+        </a>
+        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
+      </div>
+      <div className="hidden md:block max-w-[1600px] mx-auto">
         <div className="grid gap-12 md:gap-10 md:grid-cols-[1.35fr_.75fr_1fr]">
           <div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight">{title}</h2>
