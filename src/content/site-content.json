@@ -15753,7 +15753,7 @@
     },
     {
       "id": 12,
-      "draft": true,
+      "draft": false,
       "previewToken": "poliform-cafe-milan-epris-20261004",
       "title": "When a Furniture Brand Serves Lunch",
       "subject": "Poliform Café · Piazza della Scala, Milan · Stefano Belingardi Clusoni & Poliform Lab",
@@ -15801,6 +15801,14 @@
           "content": "The café occupies an independent volume attached to Poliform’s three-level flagship in a palazzo built between 1874 and 1876. The building once operated as a hotel used by singers, dancers and other artists working at Teatro alla Scala across the square; later incarnations, including fashion retail, stripped away much of the domestic interior. Architect Stefano Belingardi Clusoni approached the wider renovation as an urban villa, using stone, light oak, glass and mirrored steel to restore continuity without pretending to reconstruct a lost nineteenth century."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mutjbhtela8jsd.jpg",
+          "alt": "The nineteenth-century palazzo on Piazza della Scala that houses the Poliform flagship.",
+          "caption": "The palazzo of 1874–1876, once a hotel for artists of La Scala, now holds Poliform’s three-level flagship.",
+          "credit": "Courtesy Poliform Café",
+          "sourceUrl": "https://www.poliformcafe.it/en/"
+        },
+        {
           "type": "text",
           "content": "The café is the project’s most public room. Its glass skin rejects the guarded threshold typical of high-end furniture stores. From outside, tables, diners and staff remain visible. From inside, the façades of central Milan replace the scenic wallpaper. This is not transparency as an abstract architectural virtue. It is a commercial decision: people who would never enter a Poliform showroom can still walk in for breakfast."
         },
@@ -15811,6 +15819,19 @@
           "caption": "The forty-seat dining room uses curved seating and closely controlled lighting to soften the geometric shell.",
           "credit": "Courtesy Poliform Café",
           "sourceUrl": "https://www.poliformcafe.it/en/location/"
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mutjbia9ifhjps.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbiqgi7il3p.jpg"
+          ],
+          "alts": [
+            "The glazed café volume under a dark timber canopy at the corner of the palazzo.",
+            "The café front seen from the square, with the dining room visible through the glass."
+          ],
+          "caption": "A low glass pavilion under a dark timber canopy: the café is added to the palazzo rather than hidden inside it.",
+          "credit": "Courtesy Poliform Café"
         },
         {
           "type": "header",
@@ -15831,8 +15852,36 @@
           "credit": "Courtesy Poliform Café"
         },
         {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mutjbj7mrjegie.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbjok2n6qlm.jpg"
+          ],
+          "alts": [
+            "Tables with white linen beside a pale abstract canvas and flowering plants.",
+            "Dark bookshelves with ceramics and a small framed work above set tables."
+          ],
+          "caption": "Art, books and ceramics turn the dining room into a lived-in interior rather than a display.",
+          "credit": "Courtesy Poliform Café"
+        },
+        {
           "type": "text",
           "content": "The risk is over-resolution. Every transition is composed, every finish arrives already perfect, and even the uniforms and cutlery participate in the same visual system. Older Milanese cafés accumulate character through replacement, wear and improvisation; Poliform Café begins with character fully specified. The question is whether use will be permitted to improve it. A hospitality interior should be able to age without looking like a damaged showroom."
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mutjbr4capa013.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbrl0vkueqc.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbryrlczew3.jpg"
+          ],
+          "alts": [
+            "A travertine table top with a small plant in soft light.",
+            "The backlit bar with shelves of bottles and tall stools.",
+            "Bar stools in dark wood and leather against a curved metal wall."
+          ],
+          "caption": "Travertine, backlit glass and dark timber: the materials do the decorative work.",
+          "credit": "Courtesy Poliform Café"
         },
         {
           "type": "header",
@@ -15856,6 +15905,19 @@
           "content": "That separation is important. Brand restaurants often make food subordinate to visual identity, treating a plate as another surface on which to repeat a logo, colour or design narrative. Here the stronger analogy is structural: few ingredients, careful sourcing, recognisable construction. Poliform describes its furniture through clarity and durability; De Liguoro applies the same values without making lunch explain the sofa upstairs."
         },
         {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mutjbsctk221n9.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbsoq1s3s4d.jpg"
+          ],
+          "alts": [
+            "A waiter in a cream jacket presenting spaghetti al pomodoro.",
+            "Milanese cotoletta on a white plate beside a green salad."
+          ],
+          "caption": "Spaghetti al pomodoro and the cotoletta alla milanese – classics served without design theatre.",
+          "credit": "Courtesy Poliform Café"
+        },
+        {
           "type": "header",
           "level": 2,
           "content": "From eight in the morning to nine at night"
@@ -15871,6 +15933,19 @@
           "caption": "Breakfast is essential to the café’s claim to be a daily Milanese address rather than an extension of Design Week.",
           "credit": "Courtesy Poliform Café",
           "sourceUrl": "https://www.poliformcafe.it/en/"
+        },
+        {
+          "type": "gallery",
+          "content": [
+            "https://api.eprisjournal.com/uploads/mutjbt5ctd5pcc.jpg",
+            "https://api.eprisjournal.com/uploads/mutjbtggarele7.jpg"
+          ],
+          "alts": [
+            "An aperitivo drink with olives and crisps on a silver tray.",
+            "A pale foamy cocktail in a coupe glass."
+          ],
+          "caption": "Aperitivo at Poliform Café: the evening shift that makes the room part of the daily city.",
+          "credit": "Courtesy Poliform Café"
         },
         {
           "type": "header",
@@ -15913,7 +15988,9 @@
         }
       ],
       "featured": false,
-      "updatedAt": "2026-10-04T07:58:29.390Z"
+      "updatedAt": "2026-10-04T08:04:55.802Z",
+      "publishedAt": "2026-10-04T08:04:24.051Z",
+      "publishAt": "2026-10-04T08:04:24.051Z"
     }
   ],
   "libraryItems": [
@@ -54103,6 +54180,266 @@
               "content": "Bildnachweise: Cathy de Monchaux Installationsansichten, Palais de Tokyo, 2026. Fotos von Antoine Aphesbero, Aurélien Mole und Quentin Chevrier. © Adagp, Paris, 2026. Bilder reproduziert aus offiziellen institutionellen Pressematerialien zu redaktionellen Zwecken; Rechte verbleiben bei den jeweiligen Urheberrechtsinhabern."
             }
           ]
+        },
+        {
+          "id": 60,
+          "draft": false,
+          "title": "Wie man in einer instabilen Welt steht: Mona Hatoum bei Fondazione Prada",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "4. Okt. 2026",
+          "excerpt": "Drei Räume, mehr als dreißigtausend Glaskugeln und ein Metallturm, der wiederholt sein Gleichgewicht verliert: Mona Hatoum verwandelt Skulptur in ein Instrument zur Messung von Instabilität.",
+          "category": "Kunst",
+          "subcategory": "Skulptur & Objekte",
+          "tags": [
+            "Mona Hatoum",
+            "Skulptur",
+            "Installation",
+            "Fondazione Prada",
+            "Zeitgenössische Kunst",
+            "Mailand"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/hatoum-web-overview.jpg",
+          "previewToken": "mona-hatoum-epris-review-20261004",
+          "updatedAt": "2026-10-04T08:04:11.553Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Mona Hatoums neue Installation bei Fondazione Prada beginnt mit einer einfachen Korrektur der Art und Weise, wie Ausstellungen normalerweise gesehen werden. Der Besucher steht nicht außerhalb des Werks und interpretiert es aus einer stabilen Position. Der Boden mag frei sein, die Wände mögen still sein, aber der Körper ist bereits involviert: nach oben blickend durch ein aufgehängtes Netz, das um eine Weltkarte kreist, die unter den Füßen zerstreuen könnte, dem Klang eines neunstöckigen Metallrahmens, der gegen seinen eigenen Kollaps anstrengt. „Über, unter und dazwischen“ ist weniger eine Abfolge von Objekten als eine Reihe physischer Vorschläge darüber, wie es sich anfühlt, eine Welt zu besetzen, deren Strukturen sichtbar bleiben, während ihre Versprechen unzuverlässig geworden sind."
+            },
+            {
+              "type": "text",
+              "content": "In den drei Räumen der Cisterna installiert, vereint das Projekt zwei neue Werke, die für Mailand geschaffen wurden, Web und Map (rot), mit allem eines Pfeils aus 2022. Die Wirtschaft ist streng: Glas, Kabel, Aluminium, Scharniere, ein Motor; Transparenz, Geometrie, Wiederholung. Doch diese Zurückhaltung erzeugt keinen Frieden. Hatoum nimmt die ererbte Sprache des Minimalismus — das Gitter, das Modul, die industrielle Oberfläche — und kehrt zu allem zurück, was das modernistische Ideal zu excluieren versuchte: den verletzlichen Körper, die unstabile Grenze, die Möglichkeit der Bruchstelle, den Lärm der Angst."
+            },
+            {
+              "type": "note",
+              "content": "Unabhängige redaktionelle Überprüfung durch Viacheslav Munister. „Mona Hatoum. Over, under and in between“ ist vom 29. Januar bis 9. November 2026 bei Fondazione Prada, Mailand, zu sehen. Sachliche Details und Arbeitsspezifikationen basieren auf den offiziellen Ausstellungsunterlagen der Institution."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Ein Gebäude, das Erinnerung an Einschluss bewahrt"
+            },
+            {
+              "type": "text",
+              "content": "Die Cisterna wurde 1909 gebaut, um drei Speichertanks für die ehemalige Brennerei zu beherbergen. Ihre Umwandlung in Ausstellungsraum löschte diese Geschichte nicht aus. Jede hohe Betonkammer fühlt sich immer noch wie ein Gefäß an: eingeschlossen, vertikal, leicht unverhältnismäßig zur Person, die sie betritt. Hatoums Entscheidung, jeder Raum eine Installation zuzuordnen, verwandelt die Architektur in mehr als nur einen Hintergrund. Der Besucher bewegt sich durch drei unterschiedliche Zustände der Einschließung — gefangen unter einem Netzwerk, gehalten am Rand eines Diagramms und konfrontiert mit einer Struktur, die ihre Fassung nicht bewahren kann."
+            },
+            {
+              "type": "text",
+              "content": "Das ist wichtig, weil Hatoum Raum nie als neutral behandelt hat. Seit sie in den frühen 1990er Jahren vom Performance- und Video-Kunst zur Installation und Skulptur wechselte, hat sie vertraute Formen auf seltsame Weise zum Verhalten gebracht: Haushaltsgegenstände werden bedrohlich, Karten verweigern politische Gewissheit, Raster werden zu Käfigen oder Nervensystemen. Geboren in Beirut im Jahr 1952 in einer palästinensischen Familie und seit dem Libanesischen Bürgerkrieg, der ihre Rückkehr 1975 unmöglich machte, in London ansässig, arbeitet sie aus einer Biografie, die von Vertreibung geprägt ist, ohne jedes Objekt auf Autobiografie zu reduzieren. Die politische Kraft ihrer Kunst liegt genau in dieser Ablehnung der Illustration. Geschichte tritt ein als Druck, Maßstab, Temperatur und Entfernung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-portrait-cisterna.jpg",
+              "align": "center",
+              "width": 72,
+              "caption": "Mona Hatoum mit aller Nervosität bei Fondazione Prada, Mailand, 2026. Foto: Marta Marinotti. Courtesy Fondazione Prada.",
+              "alt": "Mona Hatoum steht vor dem gefalteten Metallgitter von all of a quiver.",
+              "credit": "Foto: Marta Marinotti. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Web: schönheit wird zur Bedingung der Aufnahme"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-web-room.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Mona Hatoum, Web, 2026. Handgeblasene klare Glaskugeln und Edelstahlkabel. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Ein schwebendes Netz aus klaren Glaskugeln spannt sich über eine hohe Betongalerie.",
+              "credit": "Installationsansicht von “Mona Hatoum. Over, under and in between”, Fondazione Prada, Mailand, 2026. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Netz erstreckt sich über die erste Kammer. Klare handgeblasene Kugeln, unregelmäßig in der Größe, sind entlang eines Edelstahlkabels zu einem Netzwerk verflochten, das sowohl präzise als auch improvisiert erscheint. Vom Eingang aus kann es einer Konstellation oder einem Molekülmodell ähneln. Darunter zu gehen verändert den Eindruck. Die funkelnden Punkte werden zu Tropfen unter Spannung; die Geometrie senkt sich in das Bewegungsfeld des Besuchers. Was himmlisch schien, beginnt sich klebend anzufühlen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-web-human-scale.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Mona Hatoum, Web, 2026. Die schwebende Installation ist auf das Maß und die Bewegung der Besucher abgestimmt. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Zwei Besucher gehen unter einem breiten schwebenden Netz aus klaren Glaskugeln hindurch.",
+              "credit": "Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Das Werk gelingt, weil seine Verführung nicht zufällig mit seiner Bedrohung verbunden ist. Ein Netz ist gleichzeitig ein Zuhause und eine Falle, ein Bild der Verbindung und eine Technologie der Gefangennahme. Hatoum wählt nicht zwischen diesen Bedeutungen. Auch lässt sie Transparenz nicht für Unschuld stehen. Jede Glaskugel erhält Licht, aber jede Kugel markiert auch einen Knotenpunkt in einer Struktur, die hält. Der Raum ist visuell offen und psychologisch besetzt."
+            },
+            {
+              "type": "text",
+              "content": "Es besteht das Risiko, bei Arbeiten über Prekarität, dass Fragilität zu einem eleganten Effekt wird — Gefahr, die schön genug gemacht wird, um institutionell ausgestellt zu werden. Hatoum erkennt dieses Risiko an und integriert es in das Werk. Das Glas ist wirklich verletzlich, doch das Netz ist konstruiert und gespannt. Seine Schönheit mildert den Widerspruch nicht; sie lässt den Betrachter darin verweilen. Man schaut länger, weil das Objekt schön ist, und diese verlängerte Aufmerksamkeit ist genau der Moment, in dem Schönheit ihre disziplinarische Kante offenbart."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Karte (rot): keine Grenze ist gleichbedeutend mit keiner Gewalt"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-map-red.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Mona Hatoum, Karte (rot), 2026. Klare rote Glaskugeln, Durchmesser 25 mm. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Eine Weltkarte, zusammengesetzt aus Tausenden loser roter Glaskugeln, liegt direkt auf einem Betonboden.",
+              "credit": "Installationsansicht von “Mona Hatoum. Over, under and in between”, Fondazione Prada, Mailand, 2026. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Im zweiten Raum bilden mehr als dreißigtausend lose rote Glaskugeln eine Weltkarte direkt auf dem Boden. Es gibt keine Nationalgrenzen. Die Projektion ist Gall–Peters, die die relative Fläche der Landmassen genauer bewahrt als die bekannte Mercator-Projektion und daher eine der persistentesten Hierarchien der Kartografie ablehnt: die visuelle Inflation Europas und Nordamerikas auf Kosten der Regionen näher am Äquator."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-map-red-visitors.jpg",
+              "align": "center",
+              "width": 74,
+              "caption": "Mona Hatoum, Karte (rot), 2026. Besucher bewegen sich mehr als dreißigtausend unfeste Glaskugeln. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Zwei Besucher umrunden sorgfältig eine rote Glaskugel-Weltkarte, die von oben betrachtet wird.",
+              "credit": "Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Zunächst scheint Map (rot) ein repariertes Bild der Welt zu bieten — grenzenlos und proportional korrigiert. Aber Hatoum verwechselt nicht Korrektur mit Auflösung. Die Kontinente bestehen aus identischen Einheiten, die nicht miteinander oder mit dem Boden verbunden sind. Ein unachtsamer Schritt, eine Vibration oder eine kleine Verschiebung könnten eine Küstenlinie deformieren. Geographie erscheint nur lesbar, weil der Raum vorübergehend ruhig ist."
+            },
+            {
+              "type": "text",
+              "content": "Das Rot ist entscheidend. Es kann vorwarnen, Blut, Hitze, Ideologie oder Notfall andeuten, aber die Kugeln bleiben durchscheinend; Licht dringt durch sie hindurch. Die Farbe weist keine einzelne Botschaft zu. Stattdessen verweigert sie der Karte die kühle Autorität der Information. Dies ist kein neutraler Diagramm, das von nirgendwo aus gesehen wird. Es ist eine Welt zu Füßen des Betrachters, verwundbar durch Nähe und Macht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-map-red-detail.jpg",
+              "align": "center",
+              "width": 88,
+              "caption": "Mona Hatoum, Karte (rot), 2026, Detail. Lose 25 mm klare rote Glaskugeln bilden eine Geographie, die physisch gestört werden kann. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Nahaufnahme von Tausenden durchsichtigen roten Glaskugeln, die Europa, Nordafrika und Asien bilden.",
+              "credit": "Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Hatoum ist über Jahrzehnte hinweg zu Karten zurückgekehrt, weil sie politische Entscheidungen in scheinbar natürliche Formen komprimieren. Hier entfernt sie Grenzen, lässt aber das Problem des Territoriums intakt. Die schwierigste Erkenntnis des Werks ist, dass eine Welt ohne gezogene Grenzen nicht automatisch eine Welt ohne Herrschaft ist. Maßstab kann korrigiert werden, während Bewegung ungleich bleibt; eine Grenze kann aus einem Bild verschwinden, während sie im erlebten Erlebnis schwerer wird. Die Installation veranschaulicht dieses Argument nicht. Sie gibt dem Argument eine materielle Bedingung: eine schöne Anordnung, die nur durch kollektive Zurückhaltung aufrechterhalten wird."
+            },
+            {
+              "type": "quote",
+              "content": "Die Karte ist am politischsten an dem Punkt, an dem sie aufhört, vorzugeben, dauerhaft zu sein."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "alles in Aufregung: das Gitter entwickelt ein Nervensystem"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-all-of-a-quiver.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Mona Hatoum, alles in Aufregung, 2022. Aluminium-Quadratrohre, Stahl-Scharnier, Elektromotor und Kabel. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Ein neungeschossiges schwarzes Metallgitter erhebt sich wie ein instabiles Turm in einer Betongalerie.",
+              "credit": "Installationsansicht von “Mona Hatoum. Over, under and in between”, Fondazione Prada, Mailand, 2026. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Die letzte Kammer enthält das lauteste und explizit animierteste Werk der Ausstellung. all of a quiver ist ein neun-stufiger Rahmen aus Aluminium-Quadratrohren, verbunden durch Stahl-Scharnier. Auf voller Höhe ähnelt er Gerüst, einem Skelettturm oder dem Diagramm eines Gebäudes, das alles außer seinem Anspruch auf Ordnung entfernt wurde. Dann initiieren ein Motor und Kabel seine Verwandlung. Ebenen falten sich, der Rahmen senkt sich ab und die Geometrie gibt mit einem metallischen Knarren nach, bevor die Struktur wieder aufgerichtet wird."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-quiver-collapse.jpg",
+              "align": "center",
+              "width": 74,
+              "caption": "Mona Hatoum, all of a quiver, 2022, während ihres motorisierten Kollaps- und Wiederaufbauszyklus. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Das hohe Scharniergitter biegt und faltet sich während seines kinetischen Zyklus durch die Mitte.",
+              "credit": "Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Nichts fällt buchstäblich. Diese Unterscheidung ist wesentlich. Die Skulptur führt den Kollaps vor, während sie in einem System gehalten wird, das ihn wiederholen soll. Katastrophe ist kein einzelnes Ereignis, sondern ein Zyklus: Spannung, Versagen, Schwebe, Wiederaufbau. Beim Betrachten des Werks beginnt man zu bemerken, wie viel Vertrauen normalerweise in den rechten Winkel investiert wird. Das Gitter hat lange Rationalität, Wiederholbarkeit und Kontrolle symbolisiert. Hatoum lässt seine Logik sichtbar, macht aber jede Verbindung artikuliert. Der abstrakte Rahmen wird körperlich — er stabilisiert, knickt, stöhnt und steigt auf."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/hatoum-quiver-detail.jpg",
+              "align": "center",
+              "width": 76,
+              "caption": "Mona Hatoum, all of a quiver, 2022, Detail. Aluminium-Quadratrohre, Stahl-Scharnier, Elektromotor und Kabel. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "alt": "Eine Nahaufnahme durch das scharnierende Aluminiumgitter von Mona Hatoums kinetischem Turm.",
+              "credit": "Installationsansicht von “Mona Hatoum. Over, under and in between”, Fondazione Prada, Mailand, 2026. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "text",
+              "content": "Von den drei Installationen ist dies die theatralischste, doch zugleich auch die präziseste. Ihr Drama entsteht durch Ingenieurskunst statt Illusion. Der Mechanismus erlaubt niemals vollständige Katastrophe, und diese Grenze macht das Werk beunruhigender statt weniger. Es erinnert an Infrastrukturen, die knapp über dem Zusammenbruch gehalten werden, an Institutionen, die durch Krisenproben überleben, und an Körper, die aufgefordert werden, sich zu erholen, ohne die Bedingungen zu ändern, die sie erschöpft haben."
+            },
+            {
+              "type": "video",
+              "content": "https://player.vimeo.com/video/1176891027",
+              "caption": "Über, unter und dazwischen | Mona Hatoum | Fondazione Prada Milano",
+              "credit": "Fondazione Prada",
+              "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Minimalismus nach Gewissheit"
+            },
+            {
+              "type": "text",
+              "content": "Hatoums Beziehung zum Minimalismus wird oft durch Ähnlichkeit beschrieben: modulare Strukturen, industrielle Materialien, wiederholte Einheiten, das Entfernen expressiver Gesten. Aber Ähnlichkeit ist keine Treue. Historischer Minimalismus bot das Objekt häufig als eigenständige Tatsache an und die Galerie als Feld für phänomenologische Begegnung. Hatoum bewahrt die Begegnung und entfernt die Sicherheit. Ihre Module können zerstreuen, ihr Gitter kann versagen, ihre transparente Oberfläche kann fangen. Der angeblich universelle Betrachtungskörper wird zu einem besonderen Körper, der sich des Risikos bewusst ist."
+            },
+            {
+              "type": "text",
+              "content": "Das ist der Grund, warum die Ausstellung sich aktuell anfühlt, ohne der aktuellen Tagespolitik nachzujagen. Ihre Materialien benennen keinen Krieg, keine Migrationsroute, kein Grenzregime oder eine kollabierende Institution, doch sie schärfen das Sensorium, durch das diese Realitäten erlebt werden. Unsicherheit wird nicht als Nebel dargestellt. Sie erhält Struktur. Es gibt klare Linien, messbare Sphären, sichtbare Gelenke und erkennbare Mechanismen. Alles kann beschrieben werden, und doch fühlt sich nichts sicher an."
+            },
+            {
+              "type": "text",
+              "content": "Die Ausstellung ist auch eine Korrektur der Idee, dass politische Kunst auf den ersten Blick eine lesbare Position liefern muss. Hatoums Politik sind räumlich, bevor sie deklarativ sind. Der Besucher entdeckt sie durch Haltung: den Nacken nach oben geneigt, die Füße vom Glasbild entfernt, den Körper wartend auf die nächste Bewegung des Turms. Interpretation folgt dem Gefühl, anstatt es zu ersetzen."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Der Körper als Messinstrument"
+            },
+            {
+              "type": "text",
+              "content": "Durch die drei Räume wird der Körper wiederholt zu einem Instrument, um das zu messen, was nicht vertrauenswürdig ist. Unter Web wird die Höhe als Exposition empfunden. Neben Map (rot) wird Entfernung zu einer ethischen Entscheidung, nicht zu stören. Vor allem eines Zitterns wird die Zeit durch Erwartung gezählt: Wann wird sich die Struktur bewegen, wie weit wird sie nachgeben, wird sie zurückkehren? Die Werke tauchen den Betrachter nicht durch Spektakel ein. Sie machen die Wahrnehmung verantwortlich."
+            },
+            {
+              "type": "text",
+              "content": "Diese Verantwortung unterscheidet Hatoums Einsatz von Zerbrechlichkeit von einem breiteren zeitgenössischen Geschmack an Ruinen, zerbrochenen Gittern und prekären Materialien. Hier ist Instabilität niemals nur ein Aussehen. Sie bestimmt das Verhalten des Betrachters und das Überleben des Objekts. Die Installationen bleiben streng genug, um narrativen Illustrationen zu widerstehen, aber sinnlich genug, um Entfremdung zu verhindern. Glas fängt Licht ein; Metall erzeugt Klang; Maßstab wirkt auf die Lungen, bevor die Sprache sich etabliert hat."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Wie man steht"
+            },
+            {
+              "type": "text",
+              "content": "„Über, unter und dazwischen“ bietet keine Widerstandsfähigkeit als tröstliches Fazit. Der Turm erhebt sich wieder, weil ein Kabel ihn zieht. Die Karte bleibt intakt, weil die Menschen Abstand halten. Das Netz ist schön, weil seine Spannung hält. Jedes Gleichgewicht ist bedingt, unterstützt durch Arbeit, Zurückhaltung oder Kraft, die das Werk sichtbar macht."
+            },
+            {
+              "type": "text",
+              "content": "Was Hatoum schließlich fragt, ist nicht, ob die Welt stabil ist. Es ist offensichtlich nicht so. Die schwierigere Frage ist, wie man innerhalb der Instabilität steht, ohne Überleben mit Sicherheit zu verwechseln oder Ordnung mit Gerechtigkeit. In der Cisterna wird Skulptur zu einem Proben für diese Position: aufmerksam, aber nicht gelähmt, involviert, aber immer noch in der Lage, Aufmerksamkeit zu zeigen. Die tiefste Errungenschaft der Ausstellung besteht darin, Prekarität weder abstrakt noch spektakulär zu machen. Es wird der Raum zwischen Objekt und Körper — das Intervall, in dem das Sehen zur Verantwortung wird."
+            },
+            {
+              "type": "link",
+              "content": "Fondazione Prada — offizielle Ausstellungsseite",
+              "url": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
+            },
+            {
+              "type": "note",
+              "content": "Bildnachweise: Installationsansichten von “Mona Hatoum. Über, unter und dazwischen”, Fondazione Prada, Mailand, 2026. Fotos von Roberto Marossi. Courtesy Fondazione Prada. Bilder reproduziert aus offiziellen institutionellen Materialien für unabhängige redaktionelle Überprüfung; Rechte verbleiben beim Künstler, Fotografen und Institut."
+            }
+          ],
+          "publishedAt": "2026-10-04T07:56:08.904Z"
         }
       ],
       "reviews": [
