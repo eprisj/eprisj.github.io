@@ -342,7 +342,7 @@ function normaliseField(raw, index) {
   return {
     id: clean(raw?.id, 40) || `f${index + 1}-${newId().slice(0, 4)}`,
     type,
-    label: clean(raw?.label, 300) || `Вопрос ${index + 1}`,
+    label: clean(raw?.label, 1500) || `Вопрос ${index + 1}`,
     hint: clean(raw?.hint, 400),
     /* У согласия в подписи стоит не подсказка, а сам текст разрешения: это
        юридическая формулировка, и обрезать её на ста шестидесяти знаках
