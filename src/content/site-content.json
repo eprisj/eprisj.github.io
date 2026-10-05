@@ -15033,7 +15033,6 @@
           "width": 76,
           "caption": "The idea, up close: a detail of the physical “Affordable Palace” model (2019), Opposite Office / Benedikt Hartl. Crop of the cover photograph · CC BY 4.0.",
           "alt": "The idea, up close: a detail of the physical “Affordable Palace” model (2019), Opposite Office / Benedikt Hartl. Crop of the cover photograph · CC BY 4.0.",
-          "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
           "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
         },
         {
@@ -28625,7 +28624,6 @@
               "width": 76,
               "caption": "Идея вблизи: деталь физического макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Фрагмент фотографии с обложки · CC BY 4.0.",
               "alt": "Идея вблизи: деталь физического макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Фрагмент фотографии с обложки · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
@@ -42206,7 +42204,6 @@
               "width": 76,
               "caption": "Ідея зблизька: деталь фізичного макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Фрагмент фотографії з обкладинки · CC BY 4.0.",
               "alt": "Ідея зблизька: деталь фізичного макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Фрагмент фотографії з обкладинки · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
@@ -55785,7 +55782,6 @@
               "width": 76,
               "caption": "Die Idee, aus der Nähe: ein Detail des physischen „Affordable Palace“ Modells (2019), Opposite Office / Benedikt Hartl. Ausschnitt des Titelbildes · CC BY 4.0.",
               "alt": "Die Idee, aus der Nähe: ein Detail des physischen „Affordable Palace“ Modells (2019), Opposite Office / Benedikt Hartl. Ausschnitt des Titelbildes · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
@@ -69316,10 +69312,10 @@
         {
           "id": 61,
           "draft": false,
-          "category": "Architecture",
+          "category": "Arquitectura",
           "subcategory": "Editorial",
           "tags": [
-            "World Architecture Day",
+            "Día Mundial de la Arquitectura",
             "EPRIS"
           ],
           "imageSeed": "",
@@ -69327,12 +69323,12 @@
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:35:49.123Z",
-          "title": "Un poco más de espacio para la vida",
-          "author": "La redacción de EPRIS",
-          "role": "Carta de la redacción",
-          "date": "5 de octubre de 2026",
-          "excerpt": "En el Día Mundial de la Arquitectura, una pequeña carta de amor a las personas y los lugares que nos hacen sentir en casa. Con cariño, la redacción de EPRIS.",
+          "updatedAt": "2026-10-05T09:36:43.077Z",
+          "title": "Un Poco Más de Espacio para la Vida",
+          "author": "EPRIS Editorial Team",
+          "role": "Carta Editorial",
+          "date": "5 de oct de 2026",
+          "excerpt": "En el Día Mundial de la Arquitectura, una pequeña carta de amor a las personas y lugares que nos hacen sentir en casa. Con calidez, del equipo editorial de EPRIS.",
           "content": [
             {
               "type": "header",
@@ -69341,29 +69337,28 @@
             },
             {
               "type": "text",
-              "content": "<b>Queridos arquitectos, estudiantes, artesanos y amantes de los lugares,</b>"
+              "content": "<b>Queridos arquitectos, estudiantes, creadores y amantes de los lugares,</b>"
             },
             {
               "type": "text",
-              "content": "Antes de convertirse en parte de una ciudad, un edificio es algo que cabe en las manos. Una línea de lápiz. Una hoja doblada. Un trozo de cartón cortado y pegado con paciencia. Una maqueta que se gira hacia la ventana para comprender dónde caerá la luz. La arquitectura empieza con estos gestos modestos — y con la extraordinaria convicción de que un día cualquiera puede ser mejor."
+              "content": "Antes de que un edificio se convierta en parte de una ciudad, es algo lo suficientemente pequeño como para sostenerlo en tus manos. Una línea de lápiz. Una hoja doblada. Una pieza de cartulina cortada y pegada con paciencia. Un modelo girado hacia la ventana para ver dónde caerá la luz. La arquitectura comienza en estos gestos modestos — y en la creencia extraordinaria de que un día ordinario puede ser mejorado."
             },
             {
               "type": "text",
-              "content": "Hoy celebramos esa convicción y a quienes la mantienen viva. Los bocetos redibujados, las maquetas reconstruidas, las preguntas que se vuelven a formular. El cuidado que rara vez aparece en la fotografía final: una barandilla agradable, una puerta que se abre fácilmente, una habitación que deja espacio para los demás. Gracias por la imaginación — y por la paciencia que la sostiene."
+              "content": "Hoy estamos celebrando esa creencia, y a las personas que la mantienen viva. Los bocetos redibujados, los modelos reconstruidos, las preguntas formuladas una vez más. El cuidado que rara vez aparece en la fotografía terminada: una barandilla que se siente correcta, una puerta que se abre fácilmente, una habitación que deja suficiente espacio para otra persona. Gracias por la imaginación — y por la paciencia que la respalda."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-architecture-day-model-detail.jpg",
               "align": "center",
               "width": 76,
-              "caption": "La idea de cerca: detalle de la maqueta física «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Recorte de la fotografía de portada · CC BY 4.0.",
-              "alt": "La idea de cerca: detalle de la maqueta física «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Recorte de la fotografía de portada · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
+              "caption": "La idea, de cerca: un detalle del modelo físico de “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Recorte de la fotografía de portada · CC BY 4.0.",
+              "alt": "La idea, de cerca: un detalle del modelo físico de “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Recorte de la fotografía de portada · CC BY 4.0.",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "quote",
-              "content": "Por las habitaciones que nos reciben.<br>Por las ciudades donde tenemos un lugar.<br>Por las personas que imaginan ambas."
+              "content": "Para las habitaciones que nos acogen.<br>Para las ciudades que nos permiten pertenecer.<br>Para las personas que imaginan ambos."
             },
             {
               "type": "header",
@@ -69372,42 +69367,42 @@
             },
             {
               "type": "text",
-              "content": "En EPRIS, la arquitectura está cerca del corazón. Da forma a cómo observamos la luz, contamos historias y buscamos significado en un detalle. Amamos sus grandes gestos. Pero también los silenciosos: un patio sombreado, un umbral acogedor, un banco donde quedarse sin tener que comprar nada."
+              "content": "En EPRIS, la arquitectura está cerca del corazón. Moldea la forma en que notamos la luz, contamos historias y buscamos significado en un detalle. Nos encantan sus grandes gestos. Pero también amamos los silenciosos: un patio sombreado, un umbral generoso, un banco donde puedes quedarte sin tener que comprar nada."
             },
             {
               "type": "text",
-              "content": "El lema de este año, «La vivienda es un derecho humano. Constrúyanla.», nos devuelve a lo esencial. La belleza no debería terminar en la imagen de un edificio. Debería llegar a quien vive dentro. Un hogar seguro y digno es el comienzo de esa promesa, no su último retoque."
+              "content": "El tema del Día Mundial de la Arquitectura de este año, “Housing is a Human Right. Build It.”, nos lleva de regreso a lo esencial. La belleza no debería detenerse en la imagen de un edificio. Debería llegar a la persona que vive dentro de él. Un hogar seguro y digno es el comienzo de esa promesa, no su toque final."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Un deseo de nuestra mesa de trabajo a la suya"
+              "content": "Un deseo desde nuestra mesa de trabajo a la tuya"
             },
             {
               "type": "text",
-              "content": "Les deseamos colaboradores que escuchen, clientes que confíen y valor para defender una buena idea. Menos noches agotadoras y más mañanas en las que un dibujo difícil cobre sentido de pronto. Que sus espacios guarden conversaciones, infancias, pequeñas celebraciones y el alivio de volver a casa. Y que nunca pierdan el placer de observar cómo el sol transforma una pared."
+              "content": "Que encuentres colaboradores que escuchen, clientes que confíen y el valor para proteger una buena idea. Que haya menos noches agotadas y más mañanas en las que un dibujo difícil de repente tenga sentido. Que tus espacios alberguen conversaciones, niñeces, pequeñas celebraciones y el simple alivio de volver a casa. Y que nunca pierdas el placer de notar cómo la luz del sol cambia una pared."
             },
             {
               "type": "text",
-              "content": "Feliz Día Mundial de la Arquitectura.<br>Gracias por hacer un poco más de espacio para la vida.<br><br>Con cariño,<br><b>la redacción de EPRIS</b>."
+              "content": "Feliz Día Mundial de la Arquitectura.<br>Gracias por hacer un poco más de espacio para la vida.<br><br>Con calidez,<br><b>el equipo editorial de EPRIS</b>."
             },
             {
               "type": "note",
-              "content": "Portada: fotografía de la maqueta arquitectónica «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Resized and compressed for the web; cover display may crop the photograph."
+              "content": "Portada: fotografía del modelo arquitectónico “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Redimensionado y comprimido para la web; la visualización de la portada puede recortar la fotografía."
             },
             {
               "type": "link",
-              "content": "Día Mundial de la Arquitectura 2026 — fecha y lema oficiales, Unión Internacional de Arquitectos (UIA)",
+              "content": "Día Mundial de la Arquitectura 2026 — fecha oficial y tema, Unión Internacional de Arquitectos (UIA)",
               "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
             },
             {
               "type": "link",
-              "content": "Fotografía de la maqueta — Opposite Office / Benedikt Hartl",
+              "content": "Fotografía de portada — Opposite Office / Benedikt Hartl",
               "url": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "link",
-              "content": "Licencia de la imagen — CC BY 4.0",
+              "content": "Licencia de imagen — CC BY 4.0",
               "url": "https://creativecommons.org/licenses/by/4.0/"
             }
           ]
@@ -77545,7 +77540,6 @@
               "width": 76,
               "caption": "Fikre yakından bakış: “Affordable Palace” (2019) fiziksel maketinden ayrıntı, Opposite Office / Benedikt Hartl. Kapak fotoğrafından kırpılmıştır · CC BY 4.0.",
               "alt": "Fikre yakından bakış: “Affordable Palace” (2019) fiziksel maketinden ayrıntı, Opposite Office / Benedikt Hartl. Kapak fotoğrafından kırpılmıştır · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
@@ -90650,7 +90644,6 @@
               "width": 76,
               "caption": "L’idea da vicino: dettaglio del modello fisico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
               "alt": "L’idea da vicino: dettaglio del modello fisico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
@@ -102729,7 +102722,6 @@
               "width": 76,
               "caption": "L’idée de près : détail de la maquette physique « Affordable Palace » (2019), Opposite Office / Benedikt Hartl. Recadrage de la photographie de couverture · CC BY 4.0.",
               "alt": "L’idée de près : détail de la maquette physique « Affordable Palace » (2019), Opposite Office / Benedikt Hartl. Recadrage de la photographie de couverture · CC BY 4.0.",
-              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
