@@ -14987,6 +14987,62 @@
         }
       ],
       "publishedAt": "2026-10-04T07:56:08.904Z"
+    },
+    {
+      "id": 61,
+      "draft": false,
+      "category": "Architecture",
+      "subcategory": "Editorial",
+      "tags": [
+        "World Architecture Day",
+        "EPRIS"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+      "previewToken": "911c5905389d2fac242d0f1d",
+      "publishedAt": "2026-10-05T09:27:23.581Z",
+      "publishAt": "2026-10-05T09:27:23.581Z",
+      "updatedAt": "2026-10-05T09:28:13.902Z",
+      "title": "A Little More Room for Life",
+      "author": "EPRIS Editorial Team",
+      "role": "Editorial Letter",
+      "date": "Oct 5, 2026",
+      "excerpt": "On World Architecture Day, a small love letter to the people and places that make us feel at home. With warmth, from the EPRIS editorial team.",
+      "content": [
+        {
+          "type": "text",
+          "content": "A patch of morning sun on the floor. A doorway that feels like an invitation. A bench where someone can rest without having to buy anything. Sometimes architecture enters our lives so quietly that we forget to thank it."
+        },
+        {
+          "type": "quote",
+          "content": "Here’s to spaces that make room for people, not just for beautiful photographs."
+        },
+        {
+          "type": "text",
+          "content": "Today, 5 October, we celebrate World Architecture Day – and everyone who draws, builds, repairs, teaches and cares for the places we share. Architects and students, craftspeople and restless dreamers: thank you for looking at an empty space and imagining a life within it."
+        },
+        {
+          "type": "text",
+          "content": "This year’s theme, “Housing is a Human Right. Build It.”, reminds us that beauty begins with something essential: a safe, dignified place to call home. Good architecture is not only what we admire from a distance. It is what welcomes us in, lets us belong and makes everyday life a little gentler."
+        },
+        {
+          "type": "text",
+          "content": "We wish you courageous ideas, thoughtful collaborators and enough time to notice the light. May the places you make offer shelter, connection and joy. And may there always be a window, somewhere, through which the world looks a little kinder."
+        },
+        {
+          "type": "text",
+          "content": "Happy World Architecture Day.<br>With warmth, <b>the EPRIS editorial team</b>."
+        },
+        {
+          "type": "link",
+          "content": "World Architecture Day 2026 – official date and theme, International Union of Architects (UIA)",
+          "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+        },
+        {
+          "type": "note",
+          "content": "Cover: an original AI-generated architectural illustration created for EPRIS; an imagined space, not a photograph of an existing building."
+        }
+      ]
     }
   ],
   "reviews": [
@@ -28480,6 +28536,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Чуть больше места для жизни",
+          "author": "Редакция EPRIS",
+          "role": "Письмо редакции",
+          "date": "5 октября 2026",
+          "excerpt": "Во Всемирный день архитектуры — маленькое признание в любви людям и пространствам, в которых мы чувствуем себя дома. С теплом, редакция EPRIS.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Пятно утреннего солнца на полу. Дверь, похожая на приглашение. Скамья, на которой можно отдохнуть, ничего не покупая. Иногда архитектура входит в нашу жизнь так тихо, что мы забываем сказать ей спасибо."
+            },
+            {
+              "type": "quote",
+              "content": "За пространства, в которых есть место людям, а не только красивым фотографиям."
+            },
+            {
+              "type": "text",
+              "content": "Сегодня, 5 октября, мы поздравляем со Всемирным днём архитектуры всех, кто рисует, строит, восстанавливает, учит и заботится о местах, в которых проходит наша жизнь. Архитекторов и студентов, мастеров и неугомонных мечтателей — спасибо за умение увидеть в пустом пространстве будущую жизнь."
+            },
+            {
+              "type": "text",
+              "content": "Тема этого года — «Жильё — право человека. Постройте его». Она напоминает: красота начинается с самого необходимого — безопасного, достойного места, которое можно назвать домом. Хорошая архитектура — не только то, чем любуются издалека. Это то, что впускает нас внутрь, даёт чувство принадлежности и делает обычный день немного добрее."
+            },
+            {
+              "type": "text",
+              "content": "Желаем вам смелых идей, внимательных соавторов и времени замечать свет. Пусть созданные вами места дарят защищённость, близость и радость. И пусть всегда найдётся окно, из которого мир выглядит чуть теплее."
+            },
+            {
+              "type": "text",
+              "content": "Со Всемирным днём архитектуры.<br>С теплом, <b>редакция EPRIS</b>."
+            },
+            {
+              "type": "link",
+              "content": "Всемирный день архитектуры 2026 — официальные дата и тема, Международный союз архитекторов (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Обложка: оригинальная архитектурная иллюстрация, созданная для EPRIS с помощью ИИ. Это воображаемое пространство, а не фотография существующего здания."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -41962,6 +42074,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Трохи більше місця для життя",
+          "author": "Редакція EPRIS",
+          "role": "Лист редакції",
+          "date": "5 жовтня 2026",
+          "excerpt": "У Всесвітній день архітектури — маленьке освідчення людям і просторам, у яких ми почуваємося вдома. З теплом, редакція EPRIS.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Пляма ранкового сонця на підлозі. Двері, схожі на запрошення. Лава, на якій можна перепочити, нічого не купуючи. Іноді архітектура входить у наше життя так тихо, що ми забуваємо подякувати їй."
+            },
+            {
+              "type": "quote",
+              "content": "За простори, у яких є місце людям, а не лише красивим фотографіям."
+            },
+            {
+              "type": "text",
+              "content": "Сьогодні, 5 жовтня, вітаємо зі Всесвітнім днем архітектури всіх, хто малює, будує, відновлює, навчає й дбає про місця, у яких минає наше життя. Архітекторів і студентів, майстрів і невтомних мрійників — дякуємо за вміння побачити в порожньому просторі майбутнє життя."
+            },
+            {
+              "type": "text",
+              "content": "Тема цього року — «Житло — право людини. Збудуйте його». Вона нагадує: краса починається з найнеобхіднішого — безпечного, гідного місця, яке можна назвати домом. Хороша архітектура — не лише те, чим милуються здалеку. Це те, що впускає нас усередину, дарує відчуття належності й робить звичайний день трохи лагіднішим."
+            },
+            {
+              "type": "text",
+              "content": "Бажаємо вам сміливих ідей, уважних співавторів і часу помічати світло. Нехай створені вами місця дарують захищеність, близькість і радість. І нехай завжди знайдеться вікно, з якого світ здається трохи теплішим."
+            },
+            {
+              "type": "text",
+              "content": "Зі Всесвітнім днем архітектури.<br>З теплом, <b>редакція EPRIS</b>."
+            },
+            {
+              "type": "link",
+              "content": "Всесвітній день архітектури 2026 — офіційні дата й тема, Міжнародна спілка архітекторів (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Обкладинка: оригінальна архітектурна ілюстрація, створена для EPRIS за допомогою ШІ. Це уявний простір, а не фотографія наявної будівлі."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -55442,6 +55610,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Ein wenig mehr Raum fürs Leben",
+          "author": "EPRIS-Redaktion",
+          "role": "Brief der Redaktion",
+          "date": "5. Oktober 2026",
+          "excerpt": "Zum Welttag der Architektur: ein kleiner Liebesbrief an die Menschen und Orte, die uns ein Gefühl von Zuhause geben. Herzlich, die EPRIS-Redaktion.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Ein Fleck Morgensonne auf dem Boden. Eine Tür, die wie eine Einladung wirkt. Eine Bank, auf der man sich ausruhen darf, ohne etwas kaufen zu müssen. Manchmal tritt Architektur so leise in unser Leben, dass wir vergessen, ihr zu danken."
+            },
+            {
+              "type": "quote",
+              "content": "Auf Räume, die Platz für Menschen schaffen — nicht nur für schöne Fotografien."
+            },
+            {
+              "type": "text",
+              "content": "Heute, am 5. Oktober, feiern wir den Welttag der Architektur und alle, die unsere gemeinsamen Orte entwerfen, bauen, reparieren, vermitteln und bewahren. Architektinnen und Architekten, Studierende, Handwerker und unermüdliche Träumer: Danke, dass ihr in einem leeren Raum ein künftiges Leben erkennt."
+            },
+            {
+              "type": "text",
+              "content": "Das diesjährige Motto „Wohnen ist ein Menschenrecht. Baut es.“ erinnert daran, dass Schönheit mit etwas Grundlegendem beginnt: einem sicheren, würdigen Ort, den man Zuhause nennen kann. Gute Architektur ist nicht nur etwas, das wir aus der Ferne bewundern. Sie heißt uns willkommen, schenkt Zugehörigkeit und macht den Alltag ein wenig freundlicher."
+            },
+            {
+              "type": "text",
+              "content": "Wir wünschen euch mutige Ideen, aufmerksame Mitstreiter und Zeit, das Licht wahrzunehmen. Mögen eure Räume Schutz, Verbundenheit und Freude schenken. Und möge es immer irgendwo ein Fenster geben, durch das die Welt etwas wärmer aussieht."
+            },
+            {
+              "type": "text",
+              "content": "Alles Gute zum Welttag der Architektur.<br>Herzlich, <b>die EPRIS-Redaktion</b>."
+            },
+            {
+              "type": "link",
+              "content": "Welttag der Architektur 2026 — offizielles Datum und Motto, International Union of Architects (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Titelbild: eine für EPRIS erstellte, KI-generierte Architekturillustration. Ein imaginierter Raum, keine Fotografie eines bestehenden Gebäudes."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -68916,6 +69140,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Un poco más de espacio para la vida",
+          "author": "La redacción de EPRIS",
+          "role": "Carta de la redacción",
+          "date": "5 de octubre de 2026",
+          "excerpt": "En el Día Mundial de la Arquitectura, una pequeña carta de amor a las personas y los lugares que nos hacen sentir en casa. Con cariño, la redacción de EPRIS.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Una mancha de sol matinal en el suelo. Una puerta que parece una invitación. Un banco donde descansar sin tener que comprar nada. A veces la arquitectura entra en nuestras vidas tan silenciosamente que olvidamos darle las gracias."
+            },
+            {
+              "type": "quote",
+              "content": "Por los espacios que hacen sitio a las personas, no solo a las fotografías bonitas."
+            },
+            {
+              "type": "text",
+              "content": "Hoy, 5 de octubre, celebramos el Día Mundial de la Arquitectura y a quienes dibujan, construyen, reparan, enseñan y cuidan los lugares que compartimos. Arquitectos y estudiantes, artesanos y soñadores incansables: gracias por ver una vida futura en un espacio vacío."
+            },
+            {
+              "type": "text",
+              "content": "El lema de este año, «La vivienda es un derecho humano. Constrúyanla.», nos recuerda que la belleza empieza por lo esencial: un lugar seguro y digno al que llamar hogar. La buena arquitectura no es solo lo que admiramos desde lejos. Nos recibe, nos permite pertenecer y hace la vida cotidiana un poco más amable."
+            },
+            {
+              "type": "text",
+              "content": "Les deseamos ideas valientes, colaboradores atentos y tiempo para reparar en la luz. Que sus espacios ofrezcan refugio, cercanía y alegría. Y que siempre haya, en algún lugar, una ventana desde la que el mundo parezca un poco más cálido."
+            },
+            {
+              "type": "text",
+              "content": "Feliz Día Mundial de la Arquitectura.<br>Con cariño, <b>la redacción de EPRIS</b>."
+            },
+            {
+              "type": "link",
+              "content": "Día Mundial de la Arquitectura 2026 — fecha y lema oficiales, Unión Internacional de Arquitectos (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Portada: ilustración arquitectónica original creada para EPRIS con IA. Un espacio imaginario, no una fotografía de un edificio existente."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -77004,6 +77284,62 @@
           "tags": [],
           "content": [],
           "updatedAt": "2026-09-28T08:19:40.113Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Hayata biraz daha yer",
+          "author": "EPRIS Editör Ekibi",
+          "role": "Editörden Mektup",
+          "date": "5 Ekim 2026",
+          "excerpt": "Dünya Mimarlık Günü’nde, bize evimizde hissettiren insanlara ve mekânlara küçük bir sevgi mektubu. İçtenlikle, EPRIS editör ekibi.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Zeminde bir parça sabah güneşi. Davet gibi hissettiren bir kapı. Hiçbir şey satın almadan dinlenebileceğiniz bir bank. Mimarlık bazen hayatımıza o kadar sessizce girer ki ona teşekkür etmeyi unuturuz."
+            },
+            {
+              "type": "quote",
+              "content": "Yalnızca güzel fotoğraflara değil, insanlara da yer açan mekânlara."
+            },
+            {
+              "type": "text",
+              "content": "Bugün, 5 Ekim’de, Dünya Mimarlık Günü’nü ve ortak mekânlarımızı çizen, inşa eden, onaran, öğreten ve koruyan herkesi kutluyoruz. Mimarlar ve öğrenciler, zanaatkârlar ve yorulmaz hayalperestler: boş bir mekânda gelecekteki bir yaşamı gördüğünüz için teşekkür ederiz."
+            },
+            {
+              "type": "text",
+              "content": "Bu yılın teması, “Barınma bir insan hakkıdır. İnşa edin.”, güzelliğin temel bir ihtiyaçla başladığını hatırlatıyor: ev diyebileceğimiz güvenli ve insan onuruna yakışır bir yer. İyi mimarlık yalnızca uzaktan hayranlık duyduğumuz şey değildir. Bizi içeri buyur eder, ait hissettirir ve gündelik hayatı biraz daha nazik kılar."
+            },
+            {
+              "type": "text",
+              "content": "Size cesur fikirler, özenli çalışma arkadaşları ve ışığı fark edecek zaman diliyoruz. Yarattığınız mekânlar sığınak, yakınlık ve sevinç sunsun. Ve dünyanın biraz daha sıcak göründüğü bir pencere, bir yerlerde, hep var olsun."
+            },
+            {
+              "type": "text",
+              "content": "Dünya Mimarlık Günü kutlu olsun.<br>İçtenlikle, <b>EPRIS editör ekibi</b>."
+            },
+            {
+              "type": "link",
+              "content": "Dünya Mimarlık Günü 2026 — resmî tarih ve tema, Uluslararası Mimarlar Birliği (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Kapak: EPRIS için yapay zekâ ile oluşturulmuş özgün mimari illüstrasyon. Hayalî bir mekândır; mevcut bir binanın fotoğrafı değildir."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -90010,6 +90346,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Un po’ più di spazio per la vita",
+          "author": "La redazione EPRIS",
+          "role": "Lettera della redazione",
+          "date": "5 ottobre 2026",
+          "excerpt": "Per la Giornata mondiale dell’architettura, una piccola lettera d’amore alle persone e ai luoghi che ci fanno sentire a casa. Con affetto, la redazione EPRIS.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Una macchia di sole mattutino sul pavimento. Una porta che sembra un invito. Una panchina su cui riposare senza dover comprare nulla. A volte l’architettura entra nelle nostre vite così silenziosamente che dimentichiamo di ringraziarla."
+            },
+            {
+              "type": "quote",
+              "content": "Agli spazi che fanno posto alle persone, non soltanto alle belle fotografie."
+            },
+            {
+              "type": "text",
+              "content": "Oggi, 5 ottobre, celebriamo la Giornata mondiale dell’architettura e chiunque disegni, costruisca, ripari, insegni e si prenda cura dei luoghi che condividiamo. Architetti e studenti, artigiani e sognatori instancabili: grazie per vedere una vita futura in uno spazio ancora vuoto."
+            },
+            {
+              "type": "text",
+              "content": "Il tema di quest’anno, «La casa è un diritto umano. Costruitela.», ci ricorda che la bellezza comincia dall’essenziale: un luogo sicuro e dignitoso da chiamare casa. La buona architettura non è soltanto ciò che ammiriamo da lontano. Ci accoglie, ci fa sentire parte di qualcosa e rende la vita quotidiana un po’ più gentile."
+            },
+            {
+              "type": "text",
+              "content": "Vi auguriamo idee coraggiose, collaboratori attenti e tempo per accorgervi della luce. Che i vostri spazi offrano riparo, vicinanza e gioia. E che ci sia sempre, da qualche parte, una finestra da cui il mondo sembri un po’ più caldo."
+            },
+            {
+              "type": "text",
+              "content": "Buona Giornata mondiale dell’architettura.<br>Con affetto, <b>la redazione EPRIS</b>."
+            },
+            {
+              "type": "link",
+              "content": "Giornata mondiale dell’architettura 2026 — data e tema ufficiali, Unione internazionale degli architetti (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Copertina: illustrazione architettonica originale creata per EPRIS con l’IA. Uno spazio immaginario, non la fotografia di un edificio esistente."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -101990,6 +102382,62 @@
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
+        },
+        {
+          "id": 61,
+          "draft": false,
+          "category": "Architecture",
+          "subcategory": "Editorial",
+          "tags": [
+            "World Architecture Day",
+            "EPRIS"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "previewToken": "911c5905389d2fac242d0f1d",
+          "publishedAt": "2026-10-05T09:27:23.581Z",
+          "publishAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "title": "Un peu plus de place pour la vie",
+          "author": "La rédaction EPRIS",
+          "role": "Lettre de la rédaction",
+          "date": "5 octobre 2026",
+          "excerpt": "Pour la Journée mondiale de l’architecture, une petite lettre d’amour aux personnes et aux lieux qui nous font sentir chez nous. Avec chaleur, la rédaction EPRIS.",
+          "content": [
+            {
+              "type": "text",
+              "content": "Une tache de soleil matinal sur le sol. Une porte qui ressemble à une invitation. Un banc où se reposer sans rien acheter. Parfois, l’architecture entre si discrètement dans nos vies que nous oublions de la remercier."
+            },
+            {
+              "type": "quote",
+              "content": "Aux espaces qui font une place aux personnes, pas seulement aux belles photographies."
+            },
+            {
+              "type": "text",
+              "content": "Aujourd’hui, 5 octobre, nous célébrons la Journée mondiale de l’architecture et toutes celles et ceux qui dessinent, construisent, réparent, enseignent et prennent soin des lieux que nous partageons. Architectes, étudiants, artisans et rêveurs infatigables : merci de voir, dans un espace vide, une vie à venir."
+            },
+            {
+              "type": "text",
+              "content": "Le thème de cette année, « Le logement est un droit humain. Construisons-le. », rappelle que la beauté commence par l’essentiel : un lieu sûr et digne que l’on puisse appeler son foyer. La bonne architecture n’est pas seulement ce que l’on admire de loin. Elle nous accueille, nous donne une place et rend le quotidien un peu plus doux."
+            },
+            {
+              "type": "text",
+              "content": "Nous vous souhaitons des idées audacieuses, des collaborateurs attentifs et le temps de remarquer la lumière. Que vos espaces offrent refuge, liens et joie. Et qu’il y ait toujours, quelque part, une fenêtre à travers laquelle le monde semble un peu plus chaleureux."
+            },
+            {
+              "type": "text",
+              "content": "Belle Journée mondiale de l’architecture.<br>Chaleureusement, <b>la rédaction EPRIS</b>."
+            },
+            {
+              "type": "link",
+              "content": "Journée mondiale de l’architecture 2026 — date et thème officiels, Union internationale des architectes (UIA)",
+              "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
+            },
+            {
+              "type": "note",
+              "content": "Couverture : illustration architecturale originale créée pour EPRIS avec l’IA. Un espace imaginaire, et non la photographie d’un bâtiment existant."
+            }
+          ]
         }
       ],
       "reviews": [
