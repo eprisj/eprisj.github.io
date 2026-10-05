@@ -14998,11 +14998,11 @@
         "EPRIS"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
       "previewToken": "911c5905389d2fac242d0f1d",
       "publishedAt": "2026-10-05T09:27:23.581Z",
       "publishAt": "2026-10-05T09:27:23.581Z",
-      "updatedAt": "2026-10-05T09:28:13.902Z",
+      "updatedAt": "2026-10-05T09:29:52.344Z",
       "title": "A Little More Room for Life",
       "author": "EPRIS Editorial Team",
       "role": "Editorial Letter",
@@ -15040,7 +15040,7 @@
         },
         {
           "type": "note",
-          "content": "Cover: an original AI-generated architectural illustration created for EPRIS; an imagined space, not a photograph of an existing building."
+          "content": "Cover: photograph of the architectural model “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
         }
       ]
     }
@@ -28547,11 +28547,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Чуть больше места для жизни",
           "author": "Редакция EPRIS",
           "role": "Письмо редакции",
@@ -28589,7 +28589,7 @@
             },
             {
               "type": "note",
-              "content": "Обложка: оригинальная архитектурная иллюстрация, созданная для EPRIS с помощью ИИ. Это воображаемое пространство, а не фотография существующего здания."
+              "content": "Обложка: фотография архитектурного макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Изображение уменьшено и сжато для сайта; в обложке может отображаться с кадрированием."
             }
           ]
         }
@@ -42085,11 +42085,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Трохи більше місця для життя",
           "author": "Редакція EPRIS",
           "role": "Лист редакції",
@@ -42127,7 +42127,7 @@
             },
             {
               "type": "note",
-              "content": "Обкладинка: оригінальна архітектурна ілюстрація, створена для EPRIS за допомогою ШІ. Це уявний простір, а не фотографія наявної будівлі."
+              "content": "Обкладинка: фотографія архітектурного макета «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Зображення зменшено та стиснуто для сайту; обкладинка може відображатися з кадруванням."
             }
           ]
         }
@@ -55621,11 +55621,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Ein wenig mehr Raum fürs Leben",
           "author": "EPRIS-Redaktion",
           "role": "Brief der Redaktion",
@@ -55663,7 +55663,7 @@
             },
             {
               "type": "note",
-              "content": "Titelbild: eine für EPRIS erstellte, KI-generierte Architekturillustration. Ein imaginierter Raum, keine Fotografie eines bestehenden Gebäudes."
+              "content": "Titelbild: Fotografie des Architekturmodells „Affordable Palace“ (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
             }
           ]
         }
@@ -69151,11 +69151,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Un poco más de espacio para la vida",
           "author": "La redacción de EPRIS",
           "role": "Carta de la redacción",
@@ -69193,7 +69193,7 @@
             },
             {
               "type": "note",
-              "content": "Portada: ilustración arquitectónica original creada para EPRIS con IA. Un espacio imaginario, no una fotografía de un edificio existente."
+              "content": "Portada: fotografía de la maqueta arquitectónica «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
             }
           ]
         }
@@ -77295,11 +77295,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Hayata biraz daha yer",
           "author": "EPRIS Editör Ekibi",
           "role": "Editörden Mektup",
@@ -77337,7 +77337,7 @@
             },
             {
               "type": "note",
-              "content": "Kapak: EPRIS için yapay zekâ ile oluşturulmuş özgün mimari illüstrasyon. Hayalî bir mekândır; mevcut bir binanın fotoğrafı değildir."
+              "content": "Kapak: “Affordable Palace” (2019) mimari maketinin fotoğrafı, Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
             }
           ]
         }
@@ -90357,11 +90357,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Un po’ più di spazio per la vita",
           "author": "La redazione EPRIS",
           "role": "Lettera della redazione",
@@ -90399,7 +90399,7 @@
             },
             {
               "type": "note",
-              "content": "Copertina: illustrazione architettonica originale creata per EPRIS con l’IA. Uno spazio immaginario, non la fotografia di un edificio esistente."
+              "content": "Copertina: fotografia del modello architettonico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
             }
           ]
         }
@@ -102393,11 +102393,11 @@
             "EPRIS"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-2026.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/epris-world-architecture-day-opposite-office-model.jpg",
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:27:23.581Z",
+          "updatedAt": "2026-10-05T09:29:52.344Z",
           "title": "Un peu plus de place pour la vie",
           "author": "La rédaction EPRIS",
           "role": "Lettre de la rédaction",
@@ -102435,7 +102435,7 @@
             },
             {
               "type": "note",
-              "content": "Couverture : illustration architecturale originale créée pour EPRIS avec l’IA. Un espace imaginaire, et non la photographie d’un bâtiment existant."
+              "content": "Couverture : photographie de la maquette architecturale « Affordable Palace » (2019), Opposite Office / Benedikt Hartl. <a href=\"https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg\">Wikimedia Commons</a> · <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>. Resized and compressed for the web; cover display may crop the photograph."
             }
           ]
         }
