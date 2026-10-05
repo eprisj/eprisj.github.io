@@ -77498,10 +77498,10 @@
         {
           "id": 61,
           "draft": false,
-          "category": "Architecture",
-          "subcategory": "Editorial",
+          "category": "Mimarlık",
+          "subcategory": "Editoryal",
           "tags": [
-            "World Architecture Day",
+            "Dünya Mimarlık Günü",
             "EPRIS"
           ],
           "imageSeed": "",
@@ -77509,12 +77509,12 @@
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:35:49.123Z",
-          "title": "Hayata biraz daha yer",
-          "author": "EPRIS Editör Ekibi",
-          "role": "Editörden Mektup",
+          "updatedAt": "2026-10-05T09:36:54.990Z",
+          "title": "Hayat için Biraz Daha Çok Alan",
+          "author": "EPRIS Editorial Team",
+          "role": "Editoryal Mektup",
           "date": "5 Ekim 2026",
-          "excerpt": "Dünya Mimarlık Günü’nde, bize evimizde hissettiren insanlara ve mekânlara küçük bir sevgi mektubu. İçtenlikle, EPRIS editör ekibi.",
+          "excerpt": "Dünya Mimarlık Günü'nde, bizi evimizde hissettiren insanlara ve mekanlara küçük bir sevgi mektubu. Sıcaklıkla, EPRIS editoryal ekibinden.",
           "content": [
             {
               "type": "header",
@@ -77523,72 +77523,73 @@
             },
             {
               "type": "text",
-              "content": "<b>Sevgili mimarlar, öğrenciler, zanaatkârlar ve mekânları seven herkes,</b>"
+              "content": "<b>Sevgili mimarlar, öğrenciler, yapımcılar ve mekanların severleri,</b>"
             },
             {
               "type": "text",
-              "content": "Bir bina şehrin parçası olmadan önce, ellerinizde tutabileceğiniz kadar küçük bir şeydir. Bir kalem çizgisi. Katlanmış bir kâğıt. Sabırla kesilip yapıştırılmış bir karton parçası. Işığın nereye düşeceğini anlamak için pencereye çevrilen bir maket. Mimarlık bu mütevazı hareketlerle — ve sıradan bir günün daha iyi olabileceğine duyulan olağanüstü inançla başlar."
+              "content": "Bir bina bir şehrin parçası olmadan önce, avuçlarınızda tutabileceğiniz kadar küçüktür. Bir kalem çizgisi. Katlanmış bir sayfa. Sabırla kesilmiş ve yapıştırılmış bir kart parçası. Işığın nereye düşeceğini görmek için pencereye çevrilmiş bir model. Mimarlık bu mütevazı jestlerde başlar — ve sıradan bir günün daha iyi hale getirilebileceğine olan olağanüstü inançta."
             },
             {
               "type": "text",
-              "content": "Bugün bu inancı ve onu yaşatan insanları kutluyoruz. Yeniden çizilen eskizleri, yeniden kurulan maketleri, bir kez daha sorulan soruları. Son fotoğrafta pek görünmeyen özeni: rahat bir tutamağı, kolay açılan bir kapıyı, başkasına yeterince yer bırakan bir odayı. Hayal gücünüz — ve arkasındaki sabrınız için teşekkürler."
+              "content": "Bugün bu inancı ve onu canlı tutan insanları kutluyoruz. Yeniden çizilen taslaklar, yeniden inşa edilen modeller, bir kez daha sorulan sorular. Bitmiş fotoğrafta nadiren görülen özen: doğru hissettiren bir tutamak, kolayca açılan bir kapı, başka biri için yeterli alan bırakan bir oda. Hayal gücü için — ve onun arkasındaki sabır için teşekkür ederiz."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-architecture-day-model-detail.jpg",
               "align": "center",
               "width": 76,
-              "caption": "Fikre yakından bakış: “Affordable Palace” (2019) fiziksel maketinden ayrıntı, Opposite Office / Benedikt Hartl. Kapak fotoğrafından kırpılmıştır · CC BY 4.0.",
-              "alt": "Fikre yakından bakış: “Affordable Palace” (2019) fiziksel maketinden ayrıntı, Opposite Office / Benedikt Hartl. Kapak fotoğrafından kırpılmıştır · CC BY 4.0.",
+              "caption": "Fikir, yakından: fiziksel “Uygun Fiyatlı Saray” modeli (2019) detayları, Opposite Office / Benedikt Hartl. Kapak fotoğrafının kırpması · CC BY 4.0.",
+              "alt": "Fikir, yakından: fiziksel “Uygun Fiyatlı Saray” modeli (2019) detayları, Opposite Office / Benedikt Hartl. Kapak fotoğrafının kırpması · CC BY 4.0.",
+              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "quote",
-              "content": "Bizi karşılayan odalara.<br>Ait hissettiğimiz şehirlere.<br>Her ikisini de hayal eden insanlara."
+              "content": "Bizi karşılayan odalar için.<br>İzin veren şehirler için.<br>İkisini hayal eden insanlar için."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "İnsan ölçeği"
+              "content": "İnsan ölçüsü"
             },
             {
               "type": "text",
-              "content": "EPRIS için mimarlık kalbe yakın bir hikâyedir. Işığı fark etme, hikâye anlatma ve bir ayrıntıda anlam arama biçimimizi şekillendirir. Büyük jestlerini severiz. Ama sessiz olanları da: gölgeli bir avluyu, davetkâr bir eşiği, hiçbir şey satın almadan kalabileceğiniz bir bankı."
+              "content": "EPRIS'te, mimarlık kalbe yakındır. Işığı fark etme şeklimizi, hikayeler anlatma ve bir detayda anlam arama biçimimizi şekillendirir. Onun büyük jestlerini seviyoruz. Ama sessiz olanlarını da seviyoruz: gölgeli bir avlu, cömert bir eşik, herhangi bir şey almadan kalabileceğiniz bir bank."
             },
             {
               "type": "text",
-              "content": "Bu yılın teması “Barınma bir insan hakkıdır. İnşa edin.” bizi öze döndürüyor. Güzellik binanın görüntüsünde son bulmamalı. İçinde yaşayan insana ulaşmalı. Güvenli ve insan onuruna yakışır bir ev, bu sözün başlangıcıdır; son dokunuşu değil."
+              "content": "Bu yılın Dünya Mimarlık Günü teması, “Konut Bir İnsan Hakkıdır. İnşa Et.”, bizi özüne geri getiriyor. Güzellik bir binanın görüntüsüyle sınırlı olmamalı. İçinde yaşayan kişiye ulaşmalı. Güvenli, saygın bir ev, o sözün başlangıcıdır, tamamlayıcısı değil."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Bizim çalışma masamızdan sizinkine bir dilek"
+              "content": "Çalışma masamızdan size bir dilek"
             },
             {
               "type": "text",
-              "content": "Dinleyen çalışma arkadaşları, güvenen müşteriler ve iyi bir fikri koruma cesareti bulmanızı diliyoruz. Daha az yorucu gece ve zor bir çizimin aniden anlam kazandığı daha çok sabah olsun. Mekânlarınız sohbetleri, çocuklukları, küçük kutlamaları ve eve dönmenin rahatlığını saklasın. Güneş ışığının bir duvarı nasıl değiştirdiğini fark etmenin sevincini hiç kaybetmeyin."
+              "content": "Dinleyen işbirlikçileri, güvenen müşteriler ve iyi bir fikri koruma cesareti bulmanızı dilerim. Yorgun gecelerin az, zor bir çizimin aniden anlam kazandığı sabahların çok olması dileğiyle. Mekanlarınızda sohbetler, çocukluklar, küçük kutlamalar ve eve dönüşün basit rahatlığı olsun. Ve hiç bitmeyen bir zevk olsun, güneş ışığının bir duvarı nasıl değiştirdiğini fark etmek."
             },
             {
               "type": "text",
-              "content": "Dünya Mimarlık Günü kutlu olsun.<br>Hayata biraz daha yer açtığınız için teşekkürler.<br><br>İçtenlikle,<br><b>EPRIS editör ekibi</b>."
+              "content": "Mutlu Dünya Mimarlık Günü.<br>Hayat için biraz daha alan açtığınız için teşekkür ederiz.<br><br>Sevgiyle,<br><b>the EPRIS editoryal ekibi</b>."
             },
             {
               "type": "note",
-              "content": "Kapak: “Affordable Palace” (2019) mimari maketinin fotoğrafı, Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Resized and compressed for the web; cover display may crop the photograph."
+              "content": "Kapak: mimari model “Affordable Palace” (2019) fotoğrafı, Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Web için yeniden boyutlandırılmış ve sıkıştırılmıştır; kapak gösterimi fotoğrafı kırpabilir."
             },
             {
               "type": "link",
-              "content": "Dünya Mimarlık Günü 2026 — resmî tarih ve tema, Uluslararası Mimarlar Birliği (UIA)",
+              "content": "Dünya Mimarlık Günü 2026 — resmi tarih ve tema, Uluslararası Mimarlar Birliği (UIA)",
               "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
             },
             {
               "type": "link",
-              "content": "Maket fotoğrafı — Opposite Office / Benedikt Hartl",
+              "content": "Kapak fotoğrafı — Opposite Office / Benedikt Hartl",
               "url": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "link",
-              "content": "Görsel lisansı — CC BY 4.0",
+              "content": "Görüntü lisansı — CC BY 4.0",
               "url": "https://creativecommons.org/licenses/by/4.0/"
             }
           ]
@@ -90602,10 +90603,10 @@
         {
           "id": 61,
           "draft": false,
-          "category": "Architecture",
-          "subcategory": "Editorial",
+          "category": "Architettura",
+          "subcategory": "Editoriale",
           "tags": [
-            "World Architecture Day",
+            "Giornata Mondiale dell'Architettura",
             "EPRIS"
           ],
           "imageSeed": "",
@@ -90613,42 +90614,43 @@
           "previewToken": "911c5905389d2fac242d0f1d",
           "publishedAt": "2026-10-05T09:27:23.581Z",
           "publishAt": "2026-10-05T09:27:23.581Z",
-          "updatedAt": "2026-10-05T09:35:49.124Z",
-          "title": "Un po’ più di spazio per la vita",
-          "author": "La redazione EPRIS",
-          "role": "Lettera della redazione",
-          "date": "5 ottobre 2026",
-          "excerpt": "Per la Giornata mondiale dell’architettura, una piccola lettera d’amore alle persone e ai luoghi che ci fanno sentire a casa. Con affetto, la redazione EPRIS.",
+          "updatedAt": "2026-10-05T09:37:05.093Z",
+          "title": "Un po' più di spazio per la vita",
+          "author": "EPRIS Editorial Team",
+          "role": "Lettera editoriale",
+          "date": "5 ott 2026",
+          "excerpt": "In occasione della Giornata Mondiale dell'Architettura, una piccola lettera d'amore alle persone e ai luoghi che ci fanno sentire a casa. Con calore, dal team editoriale di EPRIS.",
           "content": [
             {
               "type": "header",
               "level": 3,
-              "content": "Giornata mondiale dell’architettura · 5 ottobre 2026"
+              "content": "World Architecture Day · 5 October 2026"
             },
             {
               "type": "text",
-              "content": "<b>Cari architetti, studenti, artigiani e amanti dei luoghi,</b>"
+              "content": "<b>Cari architetti, studenti, creatori e amanti dei luoghi,</b>"
             },
             {
               "type": "text",
-              "content": "Prima di diventare parte di una città, un edificio è qualcosa che si può tenere fra le mani. Una linea a matita. Un foglio piegato. Un pezzo di cartone pazientemente tagliato e incollato. Un modello girato verso la finestra per capire dove cadrà la luce. L’architettura comincia da questi gesti modesti — e dalla straordinaria convinzione che un giorno qualsiasi possa diventare migliore."
+              "content": "Prima che un edificio diventi parte di una città, è qualcosa di abbastanza piccolo da tenere tra le mani. Una linea di matita. Un foglio piegato. Un pezzo di cartoncino pazientemente tagliato e incollato. Un modello rivolto verso la finestra per vedere dove cadrà la luce. L'architettura inizia in questi gesti modesti — e nella straordinaria convinzione che un giorno ordinario possa essere reso migliore."
             },
             {
               "type": "text",
-              "content": "Oggi celebriamo questa convinzione e le persone che la tengono viva. Gli schizzi ridisegnati, i modelli ricostruiti, le domande poste ancora una volta. La cura che raramente compare nella fotografia finale: un corrimano piacevole, una porta facile da aprire, una stanza che lasci abbastanza spazio agli altri. Grazie per l’immaginazione — e per la pazienza che la sostiene."
+              "content": "Oggi celebriamo quella convinzione, e le persone che la mantengono viva. Gli schizzi ridisegnati, i modelli ricostruiti, le domande poste ancora una volta. La cura che raramente appare nella fotografia finita: una ringhiera che sembra giusta, una porta che si apre facilmente, una stanza che lascia abbastanza spazio per qualcun altro. Grazie per l'immaginazione — e per la pazienza che la sostiene."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/epris-architecture-day-model-detail.jpg",
               "align": "center",
               "width": 76,
-              "caption": "L’idea da vicino: dettaglio del modello fisico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
-              "alt": "L’idea da vicino: dettaglio del modello fisico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
+              "caption": "L'idea, da vicino: un dettaglio del modello fisico “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
+              "alt": "L'idea, da vicino: un dettaglio del modello fisico “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Ritaglio della fotografia di copertina · CC BY 4.0.",
+              "credit": "Opposite Office / Benedikt Hartl · CC BY 4.0",
               "sourceUrl": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "quote",
-              "content": "Alle stanze che ci accolgono.<br>Alle città in cui troviamo il nostro posto.<br>Alle persone che immaginano entrambe."
+              "content": "Per le stanze che ci accolgono.<br>Per le città che ci permettono di appartenere.<br>Per le persone che immaginano entrambi."
             },
             {
               "type": "header",
@@ -90657,42 +90659,42 @@
             },
             {
               "type": "text",
-              "content": "Per EPRIS l’architettura è una storia vicina al cuore. Modella il nostro modo di notare la luce, raccontare e cercare significato in un dettaglio. Amiamo i suoi grandi gesti. Ma anche quelli silenziosi: un cortile ombreggiato, una soglia accogliente, una panchina su cui restare senza dover comprare nulla."
+              "content": "Da EPRIS, l'architettura è vicina al cuore. Modella il modo in cui notiamo la luce, raccontiamo storie e cerchiamo significato in un dettaglio. Amiamo i suoi grandi gesti. Ma amiamo anche quelli silenziosi: un cortile ombreggiato, una soglia generosa, una panchina dove puoi restare senza dover comprare nulla."
             },
             {
               "type": "text",
-              "content": "Il tema di quest’anno, «La casa è un diritto umano. Costruitela.», ci riporta all’essenziale. La bellezza non dovrebbe fermarsi all’immagine di un edificio. Dovrebbe raggiungere chi ci vive. Una casa sicura e dignitosa è l’inizio di questa promessa, non il suo ultimo ritocco."
+              "content": "Il tema di quest'anno della Giornata Mondiale dell'Architettura, “Housing is a Human Right. Build It.”, ci riporta all'essenziale. La bellezza non dovrebbe fermarsi all'immagine di un edificio. Dovrebbe raggiungere la persona che vive al suo interno. Una casa sicura e dignitosa è l'inizio di quella promessa, non il suo tocco finale."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Un augurio dal nostro tavolo di lavoro al vostro"
+              "content": "Un desiderio dal nostro banco di lavoro al vostro"
             },
             {
               "type": "text",
-              "content": "Vi auguriamo collaboratori che ascoltino, clienti che si fidino e il coraggio di proteggere una buona idea. Meno notti esauste e più mattine in cui un disegno difficile acquista improvvisamente senso. Che i vostri spazi custodiscano conversazioni, infanzie, piccole feste e il sollievo di tornare a casa. E che non perdiate mai il piacere di notare come il sole trasformi una parete."
+              "content": "Che troviate collaboratori che ascoltano, clienti che si fidano e il coraggio di proteggere una buona idea. Che ci siano meno notti esauste e più mattine in cui un disegno difficile improvvisamente ha senso. Che i vostri spazi ospitino conversazioni, infanzie, piccole celebrazioni e il semplice sollievo di tornare a casa. E che non perdiate mai il piacere di notare come la luce del sole cambia una parete."
             },
             {
               "type": "text",
-              "content": "Buona Giornata mondiale dell’architettura.<br>Grazie per fare un po’ più di spazio alla vita.<br><br>Con affetto,<br><b>la redazione EPRIS</b>."
+              "content": "Buona Giornata Mondiale dell'Architettura.<br>Grazie per aver fatto un po' più di spazio alla vita.<br><br>Con calore,<br><b>il team editoriale di EPRIS</b>."
             },
             {
               "type": "note",
-              "content": "Copertina: fotografia del modello architettonico «Affordable Palace» (2019), Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Resized and compressed for the web; cover display may crop the photograph."
+              "content": "Copertina: fotografia del modello architettonico “Affordable Palace” (2019), Opposite Office / Benedikt Hartl. Wikimedia Commons · CC BY 4.0. Ridimensionato e compresso per il web; la visualizzazione della copertina potrebbe ritagliare la fotografia."
             },
             {
               "type": "link",
-              "content": "Giornata mondiale dell’architettura 2026 — data e tema ufficiali, Unione internazionale degli architetti (UIA)",
+              "content": "Giornata Mondiale dell'Architettura 2026 — data ufficiale e tema, Unione Internazionale degli Architetti (UIA)",
               "url": "https://www.uia-architectes.org/en/world-architecture-day/world-architecture-day-2026-housing-is-a-human-right-build-it/"
             },
             {
               "type": "link",
-              "content": "Fotografia del modello — Opposite Office / Benedikt Hartl",
+              "content": "Fotografia di copertina — Opposite Office / Benedikt Hartl",
               "url": "https://commons.wikimedia.org/wiki/File:Affordable_Palace_Opposite_Office_4600x3450.jpg"
             },
             {
               "type": "link",
-              "content": "Licenza dell’immagine — CC BY 4.0",
+              "content": "Licenza immagine — CC BY 4.0",
               "url": "https://creativecommons.org/licenses/by/4.0/"
             }
           ]
