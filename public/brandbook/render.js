@@ -59,7 +59,9 @@
     return out;
   }
 
-  const section = (id, num, title, sub, body) => `
+  let hiddenSections = [];
+
+  const section = (id, num, title, sub, body) => hiddenSections.includes(id) ? '' : `
     <section id="${id}" aria-labelledby="${id}-h">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num" aria-hidden="true">${num}</span><h2 id="${id}-h">${title}</h2></div>
@@ -238,8 +240,13 @@
       const res = await fetch(CONTENT_API, { cache: 'no-store' });
       if (!res.ok) throw new Error(String(res.status));
       const content = await res.json();
-      build(merged(content?.brandbook));
-      stamp('Актуально: правки редакции подтянуты');
+      const state = content?.brandbook;
+      const published = state?.published || (state?.draft ? null : state);
+      hiddenSections = state?.hiddenSections || [];
+      build(merged(published));
+      stamp(state?.publishedAt
+        ? `Обновлено ${new Date(state.publishedAt).toLocaleDateString('ru-RU')}`
+        : 'Базовая версия');
     } catch {
       // Открытая страница не должна ломаться из-за недоступного API —
       // показываем базовую версию и честно это подписываем.

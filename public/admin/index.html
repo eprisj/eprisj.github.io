@@ -16,9 +16,11 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=7.01" />
+    <link rel="stylesheet" href="./styles.css?v=7.08" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./mobile-polish.css?v=1.3" />
+    <link rel="stylesheet" href="./brandbook-editor.css?v=1.0" />
     <script>
       if (localStorage.getItem('epris_theme') === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -294,9 +296,16 @@
             <button class="sb-group-head" type="button" data-toggle-group="brand" aria-expanded="true">
               <svg class="sb-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
               <span data-i18n="sb.group.brand">Brand & design</span>
-              <em class="sb-count" aria-hidden="true">2</em>
+              <em class="sb-count" aria-hidden="true">3</em>
             </button>
             <div class="sb-group-items">
+            <div class="sb-item" data-home="brand">
+              <button class="tab-btn" data-tab="brandbook" data-nav-label="Бренд-бук" data-keywords="бренд стиль шрифты цвета гайдлайны" type="button">
+                <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5Z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5Z"/><path d="M7 8h2M15 8h2M7 12h2M15 12h2"/></svg>
+                <span class="sb-label">Бренд-бук</span>
+              </button>
+              <button class="sb-pin" type="button" data-pin="brandbook" title="Закрепить" aria-label="Закрепить раздел Бренд-бук"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
+            </div>
             <div class="sb-item" data-home="brand">
               <button class="tab-btn" data-tab="design" data-nav-label="Дизайн" data-keywords="шоп мудборд макеты" type="button">
                 <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3.5 4.2 7.2H3.8Z"/><circle cx="17.2" cy="6.8" r="3.3"/><rect x="4" y="14" width="7.5" height="7" rx="1.4"/><path d="M14 21v-7h7v7Z"/></svg>
@@ -362,7 +371,7 @@
             <span id="editorState" class="editor-state" data-i18n="sidebar.noChanges">No changes</span>
           </div>
 
-          <button id="saveBtn" class="sb-save" type="button">
+          <button id="saveBtn" class="sb-save" type="button" aria-label="Save" data-i18n-aria="sidebar.save">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
             <span class="sidebar-btn-label" data-i18n="sidebar.save">Save</span>
           </button>
@@ -1175,7 +1184,7 @@
                     <span class="toolbar-sep"></span>
                     <button id="wysMetaBtn" class="btn btn-sm" type="button" title="Настройки публикации"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Настройки</span></button>
                     <button id="wysDeviceBtn" class="btn btn-sm" type="button" title="Показать мобильную версию" aria-label="Показать мобильную версию"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M10 18h4"></path></svg></button>
-                    <button id="wysOpenPageBtn" class="btn btn-sm" type="button" title="Открыть материал на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
+                    <button id="wysOpenPageBtn" class="btn btn-sm" type="button" title="Открыть материал на сайте" aria-label="Открыть материал на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
@@ -1204,7 +1213,7 @@
                     <button id="revRedoBtn" class="btn btn-sm" type="button" title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить" disabled><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 10"></path><path d="M3 5v5h5"></path><path d="M4 13a8 8 0 0 0 14.8 4L21 14"></path><path d="M21 19v-5h-5"></path></svg></button>
                     <span class="toolbar-sep"></span>
                     <button id="revMetaBtn" class="btn btn-sm" type="button" title="Настройки публикации"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .51V20a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5.6V5a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 5.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H20a2 2 0 0 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15Z"></path></svg><span>Настройки</span></button>
-                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть обзор на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
+                    <button id="revPreviewBtn" class="btn btn-sm" type="button" title="Открыть обзор на сайте" aria-label="Открыть обзор на сайте"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M10 14 19 5"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></svg><span>На сайте</span></button>
                   </div>
                 </div>
                 <div class="wys-scroll">
@@ -2300,6 +2309,13 @@
             </div>
           </section>
 
+          <!-- ===== BRAND BOOK ===== -->
+          <section class="tab-panel" id="tab-brandbook">
+            <div id="brandbookEditor" class="brandbook-editor" aria-live="polite">
+              <div class="brandbook-loading">Загружаем бренд-бук…</div>
+            </div>
+          </section>
+
           <!-- ===== DESIGN ===== -->
           <section class="tab-panel" id="tab-design">
             <div style="max-width:960px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:16px">
@@ -2633,7 +2649,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.4.2/dist/delimiter.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
+    <script src="../brandbook/data.js?v=1.0"></script>
     <script src="./app.js?v=6.68" type="module"></script>
+    <script src="./brandbook-editor.js?v=1.0" type="module"></script>
     <script>
       // Tab switching + page title update
       document.addEventListener('DOMContentLoaded', function () {
@@ -2809,16 +2827,28 @@
            разделы ищутся как `.tab-btn[data-tab=…]` в единственном числе, и
            вторая копия кнопки сломала бы и подсветку, и переключение. */
         var sheetBtn = document.getElementById('navSheetBtn');
+        var sheetFooter = document.querySelector('.sidebar .sb-foot');
         /* Список открывается над содержимым, но НЕ над доком: сама кнопка
            «Разделы» остаётся видимой и закрывает список повторным нажатием.
            Затемняющая подложка тут не нужна и была бы нулевой площади. */
         function setNavSheet(open) {
           document.body.classList.toggle('nav-sheet-open', open);
           if (sheetBtn) sheetBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          // Move the existing nodes, never clone them: save/theme/language
+          // handlers and IDs must remain unique in both mobile layout states.
+          if (sheetFooter && navRoot) {
+            if (open) navRoot.appendChild(sheetFooter);
+            else document.getElementById('sidebar').appendChild(sheetFooter);
+          }
+          if (open && navRoot) navRoot.scrollTop = 0;
         }
         if (sheetBtn) sheetBtn.addEventListener('click', function () {
           setNavSheet(!document.body.classList.contains('nav-sheet-open'));
         });
+        var sheetViewport = window.matchMedia('(max-width: 860px)');
+        function closeDesktopSheet() { if (!sheetViewport.matches) setNavSheet(false); }
+        if (sheetViewport.addEventListener) sheetViewport.addEventListener('change', closeDesktopSheet);
+        else if (sheetViewport.addListener) sheetViewport.addListener(closeDesktopSheet);
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') setNavSheet(false);
         });
