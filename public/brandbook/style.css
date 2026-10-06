@@ -61,11 +61,20 @@ summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--pad); }
 
+.site-head {
+  height: 96px; padding: 0 var(--pad); display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; border-bottom: 1px solid var(--rule); background: var(--paper-raised);
+}
+.wordmark { font-family: var(--display); font-size: 27px; letter-spacing: .26em; text-decoration: none; color: var(--ink); }
+.menu { width: 44px; height: 44px; display: grid; align-content: center; gap: 5px; justify-self: start; }
+.menu span { display: block; width: 25px; height: 1.5px; background: var(--ink); }
+.lang { justify-self: end; width: 58px; height: 58px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: .15em; }
+
 /* ── шапка ───────────────────────────────────────────────── */
 
 .hero {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--accent);
   padding: clamp(44px, 9vw, 96px) 0 clamp(36px, 7vw, 72px);
   position: relative;
   overflow: hidden;
@@ -73,8 +82,8 @@ summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .hero::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(circle at 82% 14%, rgba(184,149,110,.22), transparent 48%),
-    radial-gradient(circle at 8% 88%, rgba(74,23,40,.66), transparent 54%);
+    linear-gradient(90deg, transparent 0 73%, rgba(74,23,40,.06) 73% 73.1%, transparent 73.1%),
+    radial-gradient(circle at 84% 16%, rgba(184,149,110,.16), transparent 44%);
 }
 .hero > * { position: relative; z-index: 1; }
 .kicker {
@@ -90,20 +99,20 @@ summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .hero .lede {
   max-width: 34em; margin: 0;
   font-size: clamp(17px, 1.4vw + 13px, 21px); line-height: 1.65;
-  color: rgba(245, 240, 235, .84);
+  color: rgba(74,23,40,.76);
 }
 .hero-meta {
   display: flex; flex-wrap: wrap; gap: clamp(18px, 4vw, 44px);
   margin-top: clamp(28px, 5vw, 48px);
   padding-top: clamp(20px, 3vw, 28px);
-  border-top: 1px solid rgba(184,149,110,.35);
+  border-top: 1px solid var(--rule);
 }
 .hero-meta div { min-width: 88px; }
 .hero-meta dt {
   font-family: var(--mono); font-size: 9px; letter-spacing: .22em;
-  text-transform: uppercase; color: rgba(245,240,235,.55); margin-bottom: 8px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
 }
-.hero-meta dd { margin: 0; font-family: var(--display); font-size: clamp(17px, 2.4vw, 22px); color: var(--gold); }
+.hero-meta dd { margin: 0; font-family: var(--display); font-size: clamp(17px, 2.4vw, 22px); color: var(--accent); }
 
 /* ── навигация ───────────────────────────────────────────── */
 
@@ -257,6 +266,12 @@ footer {
 footer a { color: var(--gold); }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: baseline; }
 footer p { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; margin: 0; }
+
+@media (max-width: 640px) {
+  .site-head { height: 76px; }
+  .lang { width: 48px; height: 48px; }
+  .wordmark { font-size: 22px; }
+}
 
 .updated { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
 
