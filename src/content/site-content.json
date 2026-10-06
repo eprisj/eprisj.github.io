@@ -94412,6 +94412,239 @@
           "updatedAt": "2026-10-04T08:08:39.490Z",
           "publishedAt": "2026-10-04T08:04:24.051Z",
           "publishAt": "2026-10-04T08:04:24.051Z"
+        },
+        {
+          "id": 13,
+          "draft": true,
+          "previewToken": "da-niko-epris-b1ac1367848baa5d",
+          "title": "Il Lusso di Sentirsi a Casa",
+          "subject": "Da Niko · Bvlgari Hotel Milano · Niko Romito & ACPV Architects",
+          "rating": 0,
+          "category": "DESIGN & DINING",
+          "author": "Viacheslav Munister",
+          "role": "Author",
+          "authorId": "author-1784732936927-kw554",
+          "date": "OCT 6, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/da-niko-milan-01.jpg",
+          "meta": "MILAN · NIKO ROMITO · ACPV ARCHITECTS · OPENED SEPTEMBER 2026 · PHOTOS: BVLGARI HOTEL MILANO",
+          "verdict": "Da Niko sostituisce il vecchio linguaggio internazionale della ristorazione alberghiera con la facilità meticolosamente allestita di una casa milanese. La sua calore è progettato fino agli specchi, uniformi e carrelli di servizio, eppure la stanza è più convincente quando architettura e cibo nascondono la loro notevole tecnica e lasciano il posto alla convivialità.",
+          "pros": [
+            "ACPV Architects smonta la scala del vecchio ristorante attraverso tavoli vari, poltrone e banconi piuttosto che partizioni decorative",
+            "Teak, terracotta, specchi con cornice di salice e luce da giardino producono calore attraverso materiale e proporzione invece di nostalgica imitazione",
+            "Niko Romito risponde all’interno residenziale con piatti italiani leggibili progettati per la condivisione e il servizio al tavolo",
+            "Il bar da cocktail scultoreo in resina nera conferisce al ristorante un forte centro senza trasformare la sala da pranzo in un set teatrale",
+            "Arte e oggetti—including gli specchi di Emy Petrini e un raro vaso degli anni '20 di Richard Ginori—sono integrati come abitanti della stanza piuttosto che decorazioni di lusso"
+          ],
+          "cons": [
+            "Il linguaggio dell’informalità domestica rimane inscindibile dai prezzi, rituali di servizio e accesso controllato di un hotel cinque stelle",
+            "Ogni segno di facilità è altamente autoriale, dalle uniformi in terracotta alla esclusiva porcellana Ginori, lasciando poco spazio all’incidente",
+            "Senza una visita anonima di persona, i giudizi su acustica, ritmo, comfort e valore devono rimanere provvisori"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "I ristoranti di lusso hanno trascorso decenni perfezionando la distanza. La stanza annuncia spesa prima che qualcuno si sieda; il menù trattiene la familiarità; il servizio trasforma ogni gesto in cerimonia. Da Niko, il nuovo ristorante al Bvlgari Hotel Milano, inizia con l’affermazione opposta. Il suo nome suona meno come un’istituzione che come un invito a casa di qualcuno. L’architettura di ACPV Architects e la cucina di Niko Romito condividono la stessa ambizione difficile: far sembrare il controllo eccezionale naturale."
+            },
+            {
+              "type": "text",
+              "content": "Aperto a settembre 2026, il progetto sostituisce il linguaggio precedente, più scuro, dell minimalismo internazionale dell’hotel con quello che i suoi progettisti chiamano una casa milanese elegante. Quella descrizione è sia accurata che strategicamente incompleta. Da Niko non è domestico. È una sala da pranzo a cinque stelle a Brera, gestita da uno dei marchi di lusso più riconoscibili d’Italia e concepita da uno dei suoi chef più rigorosi. Ciò che lo rende interessante è la precisione con cui mette in scena la sensazione di facilità domestica senza pretendere di abbandonare il lusso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La sala da pranzo centrale di Da Niko è organizzata come una sequenza di gruppi conversazionali piuttosto che un campo di tavoli da ristorante identici.",
+              "alt": "Sala da pranzo calda con tavoli vari, banconi e poltrone a Da Niko a Milano.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "La stanza rifiuta la griglia"
+            },
+            {
+              "type": "text",
+              "content": "La prima decisione architettonica non è un materiale ma una geometria sociale. Tavoli differiscono in dimensione. Poltrone e banquette sostituiscono la ripetizione della sedia da pranzo standard. Le linee di vista sono accorciate senza chiudere la stanza. Questi aggiustamenti riprospettano il ristorante intorno ai gruppi piuttosto che all'efficienza operativa, facendo sì che ogni tavolo sembri meno come un'unità numerata in un grande piano di servizio."
+            },
+            {
+              "type": "text",
+              "content": "Patricia Viel descrive l'obiettivo come creare un ambiente più intimo che favorisca relazione, conversazione e convivialità. Il linguaggio è familiare, ma qui è supportato da un piano chiaro. La domesticità non arriva attraverso divani posizionati decorativamente in un ristorante. È prodotta dalla variazione: posture diverse, distanze diverse da un vicino, diversi gradi di recinzione."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Poltrone, banquette e tavoli di dimensioni diverse interrompono il ritmo istituzionale della ristorazione alberghiera.",
+              "alt": "Una vista interna ravvicinata che mostra sedute imbottite e legno caldo da Da Niko.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Calore senza il costume della nostalgia"
+            },
+            {
+              "type": "text",
+              "content": "Molti nuovi ristoranti prendono in prestito l'immagine di una vecchia trattoria: tovaglia a quadri, intonaco usurato, sedie sbagliate, fotografie incorniciate di antenati inventati. Da Niko evita questo costume. La sua calore deriva dal teak, tonalità terracotta, rivestimenti, luce controllata e la morbidezza visiva di grandi specchi incorniciati in salice dall'artista Emy Petrini. I riferimenti sono milanesi, ma non dipendono da una ricostruzione teatrale del passato."
+            },
+            {
+              "type": "text",
+              "content": "Questa moderazione è importante. Un hotel non può fabbricare la memoria sociale di una sala da pranzo familiare, ma può riprodurre alcune delle sue condizioni spaziali: oggetti a scale diverse, superfici che assorbono piuttosto che trasmettere luce, angoli che non richiedono di essere visti dall'ingresso, e mobili disposti per la conversazione piuttosto che per la sorveglianza. La stanza sembra costosa, ma la spesa non è il suo unico soggetto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-04.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Grandi specchi con cornice in salice di Emy Petrini aggiungono profondità senza trasformare le pareti in piani riflettenti anonimi.",
+              "alt": "Opera d'arte e specchio con cornice in salice all'interno della sala da pranzo Da Niko, tonalità terracotta.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Un bar come un pezzo di scultura"
+            },
+            {
+              "type": "text",
+              "content": "Il cocktail bar fornisce il controargomento a tutta questa dolcezza. Il suo grande bancone ovale in resina nera è continuo, riflettente e visivamente pesante—un oggetto scultoreo posizionato contro la luminosità della parete vetrata e il giardino dell'hotel oltre. Dove la sala da pranzo si dissolve in raggruppamenti, il bar attira l'attenzione."
+            },
+            {
+              "type": "text",
+              "content": "Il contrasto impedisce all'interno di diventare educato. Resina nera, vetro e luce del giardino formano una composizione più astratta rispetto alla sala da pranzo residenziale. Il bar non si maschera da arredamento ereditato da un appartamento; si dichiara come infrastruttura di ospitalità. Quell'onestà conferisce al progetto un bordo necessario."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-05.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il bar da cocktail ovale in resina nera funge da centro scultoreo scuro del progetto accanto al muro di vetro rivolto al giardino.",
+              "alt": "Bar da cocktail ovale nero che riflette la luce del giardino al Bvlgari Hotel Milano.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Oggetti con biografie"
+            },
+            {
+              "type": "text",
+              "content": "Al centro della stanza si trova <i>La Venatoria</i>, un raro vaso Richard Ginori degli anni '20, realizzato durante la direzione artistica di Gio Ponti e decorato con il Triumph of the Amazons. La sua presenza è più di un branding attraverso il design da collezione. Introduce profondità storica in una stanza altrimenti inequivocabilmente moderna."
+            },
+            {
+              "type": "text",
+              "content": "La porcellana continua la relazione con Ginori 1735 attraverso una versione esclusiva della collezione Diva. Le uniformi del personale ripetono il registro terracotta dell’interno. Questo è design totale nella tradizione italiana: architettura, oggetto, abbigliamento, piatto e servizio riuniti in un unico sistema visivo. Il pericolo è evidente. Quando ogni dettaglio partecipa, l’ospitalità può diventare un’immagine di marca da cui la vita ordinaria è stata eliminata."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-06.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un vaso Richard Ginori degli anni '20, realizzato durante la direzione artistica di Gio Ponti, conferisce alla nuova stanza un autentico ancoraggio storico.",
+              "alt": "Raro vaso Richard Ginori esposto nella sala da pranzo di Da Niko.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Il menù parla in sostantivi riconoscibili"
+            },
+            {
+              "type": "text",
+              "content": "Romito risponde alla elaborata coordinazione della stanza con un menù apparentemente semplice. Ostriche, pesce crudo, vitello tonnato, polpette, spaghetti al pomodoro, cacio e pepe, lasagne, agnolotti del plin, parmigiana e cotoletta alla Milanese non necessitano di spiegazioni concettuali. Alcune preparazioni sono finite o servite da un carrello, e diverse sono destinate a due persone. La grammatica è condivisione, affettare, passare e restituire."
+            },
+            {
+              "type": "text",
+              "content": "La semplicità non è innocente. La cucina di Romito si basa su riduzioni, estrazioni, temperature precise e la rimozione di elementi che non intensificano il sapore. Il punto non è che il cibo sia facile da preparare. È che la tecnica si ritrae dalla vista. Pizza fritta con pomodoro e Parmigiano entra in una sala da pranzo Bvlgari senza essere trasformata in uno scherzo o in una decostruzione. Orata con limone, capperi e prezzemolo chiede quanto si possa rimuovere prima che il sapore perda identità."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-07.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il menù di Romito utilizza forme italiane familiari mentre nasconde le riduzioni, estrazioni e il controllo della temperatura dietro di esse.",
+              "alt": "Un piatto italiano presentato con precisione da Niko Romito presso Da Niko.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "La performance dell'informalità"
+            },
+            {
+              "type": "text",
+              "content": "Da Niko appartiene a un cambiamento più ampio a Milano: la ristorazione di alta qualità che adotta il vocabolario della trattoria, non necessariamente i suoi prezzi o la sua struttura sociale. Il nome abbreviato, i piatti condivisibili e gli interni residenziali promettono tutti una liberazione dalla cerimonia. Eppure, l'informalità all'interno di un hotel di lusso non è mai semplicemente informale. È una performance altamente servita di facilità."
+            },
+            {
+              "type": "text",
+              "content": "Ciò non rende la performance falsa. I ristoranti sono teatri che lo riconoscano o meno. La domanda utile è se lo scenario cambi il comportamento delle persone. Sedute variate possono sostenere conversazioni più lunghe. Un carrello può creare un punto focale condiviso. Piatti familiari possono ridurre l'ansia di ordinare. Una stanza può essere precisa senza far sentire l'ospite esaminato."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/da-niko-milan-08.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La luce del giardino e l'illuminazione artificiale calda consentono al ristorante di muoversi tra calma domestica e cerimonia alberghiera.",
+              "alt": "Atmosfera serale da Da Niko con illuminazione calda e viste sul giardino.",
+              "credit": "Courtesy Bvlgari Hotel Milano",
+              "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Ciò che le fotografie non possono raccontarci"
+            },
+            {
+              "type": "text",
+              "content": "Le immagini ufficiali sono quasi completamente vuote. Descrivono colore, proporzione e la relazione controllata tra la sala da pranzo e il giardino, ma non possono verificare la pretesa centrale del progetto. La convivialità non è visibile in una panca inutilizzata. La domesticità dipende dal suono, dall'interruzione, dall'attesa, dal movimento dello staff e dalla distanza a cui diventa udibile la conversazione di un altro tavolo."
+            },
+            {
+              "type": "text",
+              "content": "Per questa ragione questa recensione rimane una lettura architettonica basata sulla documentazione ufficiale e sul reportage indipendente, non un resoconto di un pasto anonimo. La distinzione importa soprattutto qui. Il risultato di Da Niko può essere completato solo dall'occupazione. Una fotografia perfetta dimostra che la scena è stata preparata; non può dimostrare che la scena permette la vita."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Verdetto"
+            },
+            {
+              "type": "text",
+              "content": "Da Niko è più forte dove architettura e cucina fanno lo stesso passo. Entrambi iniziano con una tecnica formidabile e poi cercano di rimuovere la sensazione di sforzo. ACPV divide una grande stanza d'hotel in distanze sociali intime; Romito traduce la ricerca in piatti i cui nomi rimangono immediatamente leggibili. Nessuno dei due rifiuta il lusso. Entrambi chiedono se il lusso possa smettere di annunciarsi abbastanza a lungo da permettere al piacere di prendere il primo piano."
+            },
+            {
+              "type": "text",
+              "content": "La contraddizione rimane produttiva. Questa è una casa milanese senza vita privata, una registrazione di trattoria all’interno di un indirizzo Bvlgari, un pasto informale coordinato attraverso il design totale. Ma la stanza evita il pastiche, gli oggetti possiedono vere biografie culturali, e il menù sembra disposto a lasciare che il cibo riconoscibile rimanga riconoscibile. Il lusso di Da Niko non è che assomigli a una casa. È lo sforzo enorme investito nel far sì che la formalità si allenti brevemente."
+            },
+            {
+              "type": "link",
+              "content": "Interni di Da Niko — ACPV Architects",
+              "url": "https://acpvarchitects.com/news/da-niko-bulgarimilano/"
+            },
+            {
+              "type": "link",
+              "content": "Da Niko — Architectural Digest Italia",
+              "url": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+            },
+            {
+              "type": "link",
+              "content": "Da Niko e la nuova normalità di Milano — Vanity Fair Italia",
+              "url": "https://www.vanityfair.it/article/da-niko-nuovo-ristorante-bulgari-nuovo-trend-trattorie-milano"
+            },
+            {
+              "type": "note",
+              "content": "Revisione editoriale indipendente di Viacheslav Munister. Da Niko aperto al Bvlgari Hotel Milano a settembre 2026. Dettagli architettonici e culinari basati su materiali ufficiali di ACPV Architects e Bvlgari Hotel Milano, con ulteriori reportage da Architectural Digest Italia e Vanity Fair Italia. Questa bozza non rivendica una visita anonima di persona. Immagini: cortesía Bvlgari Hotel Milano; riprodotte per revisione editoriale."
+            }
+          ],
+          "featured": false,
+          "updatedAt": "2026-10-06T17:38:31.663Z"
         }
       ],
       "libraryItems": [
