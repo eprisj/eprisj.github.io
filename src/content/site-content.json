@@ -15088,7 +15088,7 @@
     },
     {
       "id": 62,
-      "draft": true,
+      "draft": false,
       "title": "The Second Exposure: What Photography Does to Architecture, Sculpture and Painting",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -15109,9 +15109,9 @@
         "Typologien"
       ],
       "imageSeed": "",
-      "imageUrl": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
       "previewToken": "second-exposure-9c6e4b16f634ab2a",
-      "updatedAt": "2026-10-06T16:49:44.369Z",
+      "updatedAt": "2026-10-06T17:09:34.608Z",
       "content": [
         {
           "type": "text",
@@ -15123,7 +15123,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
           "align": "center",
           "width": 100,
           "caption": "Installation view, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Courtesy Kunstmuseum Basel.",
@@ -15149,7 +15149,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
           "align": "center",
           "width": 100,
           "caption": "Sculpture and photograph share the gallery as parallel forms of inquiry in <i>Medardo Rosso: Inventing Modern Sculpture</i>. Installation view, Kunstmuseum Basel, 2025.",
@@ -15175,7 +15175,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
           "align": "center",
           "width": 100,
           "caption": "The exhibition design refuses a single ideal viewpoint; sculpture is encountered through changing distances and obstructions. Kunstmuseum Basel, 2025.",
@@ -15201,7 +15201,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
           "align": "center",
           "width": 100,
           "caption": "Installation view, <i>Medardo Rosso: Inventing Modern Sculpture</i>. Light, vitrines and sightlines are treated as part of the work’s reception. Kunstmuseum Basel, 2025.",
@@ -15218,7 +15218,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
           "align": "center",
           "width": 100,
           "caption": "A gallery sequence in the Basel retrospective. Rosso’s figures change character as illumination and viewing distance change.",
@@ -15235,7 +15235,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
           "align": "center",
           "width": 100,
           "caption": "Rosso’s sculptural surfaces hold and scatter light rather than presenting a stable contour. Installation view, Kunstmuseum Basel, 2025.",
@@ -15253,7 +15253,7 @@
         },
         {
           "type": "image",
-          "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
           "align": "center",
           "width": 100,
           "caption": "Ann Hamilton, image from <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. Courtesy the artist and Cleveland Museum of Art.",
@@ -15283,7 +15283,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
           "align": "center",
           "width": 100,
           "caption": "Installation view, Kunstmuseum Basel, 2025. The photograph records not an isolated object but an arrangement of surfaces, intervals and reflected light.",
@@ -15313,7 +15313,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
           "align": "center",
           "width": 100,
           "caption": "Medardo Rosso challenged the stable boundary between figure and atmosphere. Exhibition image, Kunstmuseum Basel.",
@@ -15339,7 +15339,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
           "align": "center",
           "width": 100,
           "caption": "A photographic work included in the Rosso retrospective. Reproduction becomes part of the sculptor’s method rather than a neutral report.",
@@ -15360,7 +15360,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
           "align": "center",
           "width": 100,
           "caption": "Overview of the Rosso galleries at Kunstmuseum Basel, 2025. A sequence of viewpoints resists reducing sculpture to a single emblematic shot.",
@@ -15382,7 +15382,7 @@
         },
         {
           "type": "image",
-          "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+          "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
           "align": "center",
           "width": 100,
           "caption": "Exhibition image from <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -15403,7 +15403,7 @@
         },
         {
           "type": "note",
-          "content": "Editorial draft by Viacheslav Munister for EPRIS Journal. The essay draws on official exhibition materials for <i>Typologien: Photography in 20th-Century Germany</i> (Fondazione Prada, Milan, 3 April–14 July 2025), <i>Medardo Rosso: Inventing Modern Sculpture</i> (Kunstmuseum Basel, 29 March–10 August 2025), and Ann Hamilton’s <i>still and moving • the tactile image</i> (Cleveland Museum of Art, 14 December 2025–19 April 2026). It does not claim in-person attendance. Images are reproduced in this unpublished preview for editorial review and remain credited to their institutions and authors."
+          "content": "Essay by Viacheslav Munister for EPRIS Journal. The text draws on official exhibition materials for <i>Typologien: Photography in 20th-Century Germany</i> (Fondazione Prada, Milan, 3 April–14 July 2025), <i>Medardo Rosso: Inventing Modern Sculpture</i> (Kunstmuseum Basel, 29 March–10 August 2025), and Ann Hamilton’s <i>still and moving • the tactile image</i> (Cleveland Museum of Art, 14 December 2025–19 April 2026). It does not claim in-person attendance. Images are reproduced for editorial and critical discussion and remain credited to their institutions and authors."
         },
         {
           "type": "link",
@@ -15420,7 +15420,9 @@
           "content": "Ann Hamilton: still and moving • the tactile image — Cleveland Museum of Art",
           "url": "https://www.clevelandart.org/exhibitions/ann-hamilton-still-and-moving-tactile-image"
         }
-      ]
+      ],
+      "publishAt": "2026-10-06T17:09:00.413Z",
+      "publishedAt": "2026-10-06T17:09:00.413Z"
     }
   ],
   "reviews": [
@@ -16425,6 +16427,239 @@
       "updatedAt": "2026-10-04T08:04:55.802Z",
       "publishedAt": "2026-10-04T08:04:24.051Z",
       "publishAt": "2026-10-04T08:04:24.051Z"
+    },
+    {
+      "id": 13,
+      "draft": true,
+      "previewToken": "da-niko-epris-b1ac1367848baa5d",
+      "title": "The Luxury of Feeling at Home",
+      "subject": "Da Niko · Bvlgari Hotel Milano · Niko Romito & ACPV Architects",
+      "rating": 0,
+      "category": "DESIGN & DINING",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "OCT 6, 2026",
+      "imageUrl": "https://api.eprisjournal.com/uploads/da-niko-milan-01.jpg",
+      "meta": "MILAN · NIKO ROMITO · ACPV ARCHITECTS · OPENED SEPTEMBER 2026 · PHOTOS: BVLGARI HOTEL MILANO",
+      "verdict": "Da Niko replaces the old international language of hotel fine dining with the meticulously staged ease of a Milanese home. Its warmth is designed down to the mirrors, uniforms and serving trolley, yet the room is most convincing when architecture and food hide their considerable technique and let conviviality occupy the foreground.",
+      "pros": [
+        "ACPV Architects breaks down the scale of the former restaurant through varied tables, armchairs and banquettes rather than decorative partitions",
+        "Teak, terracotta, willow-framed mirrors and garden light produce warmth through material and proportion instead of nostalgic imitation",
+        "Niko Romito answers the residential interior with legible Italian dishes designed for sharing and tableside service",
+        "The sculptural black-resin cocktail bar gives the restaurant a strong centre without turning the dining room into a stage set",
+        "Art and objects—including Emy Petrini’s mirrors and a rare late-1920s Richard Ginori vase—are integrated as inhabitants of the room rather than luxury decoration"
+      ],
+      "cons": [
+        "The language of domestic informality remains inseparable from the prices, service rituals and controlled access of a five-star hotel",
+        "Every sign of ease is highly authored, from the terracotta uniforms to the exclusive Ginori tableware, leaving little room for accident",
+        "Without an anonymous in-person visit, judgments about acoustics, pacing, comfort and value must remain provisional"
+      ],
+      "content": [
+        {
+          "type": "text",
+          "content": "Luxury restaurants have spent decades perfecting distance. The room announces expense before anyone sits down; the menu withholds familiarity; service turns every gesture into ceremony. Da Niko, the new restaurant at Bvlgari Hotel Milano, begins with the opposite claim. Its name sounds less like an institution than an invitation to somebody’s house. The architecture by ACPV Architects and the cooking by Niko Romito share the same difficult ambition: to make exceptional control feel natural."
+        },
+        {
+          "type": "text",
+          "content": "Opened in September 2026, the project replaces the hotel’s previous, darker language of international minimalism with what its designers call an elegant Milanese home. That description is both accurate and strategically incomplete. Da Niko is not domestic. It is a five-star dining room in Brera, operated by one of Italy’s most recognisable luxury brands and conceived by one of its most rigorous chefs. What makes it interesting is the precision with which it stages the sensation of domestic ease without pretending to abandon luxury."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Da Niko’s central dining room is organised as a sequence of conversational groupings rather than a field of identical restaurant tables.",
+          "alt": "Warm dining room with varied tables, banquettes and armchairs at Da Niko in Milan.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "The room refuses the grid"
+        },
+        {
+          "type": "text",
+          "content": "The first architectural decision is not a material but a social geometry. Tables differ in size. Armchairs and banquettes replace the repetition of the standard dining chair. Sightlines are shortened without closing the room. These adjustments re-proportion the restaurant around groups rather than around operational efficiency, making each table feel less like a numbered unit in a large service plan."
+        },
+        {
+          "type": "text",
+          "content": "Patricia Viel describes the aim as creating a more intimate setting that encourages relation, conversation and conviviality. The language is familiar, but here it is supported by a clear plan. Domesticity does not arrive through sofas placed decoratively in a restaurant. It is produced by variation: different postures, different distances from a neighbour, different degrees of enclosure."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Armchairs, banquettes and tables of different dimensions break the institutional rhythm of hotel dining.",
+          "alt": "A close interior view showing upholstered seating and warm timber at Da Niko.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Warmth without the costume of nostalgia"
+        },
+        {
+          "type": "text",
+          "content": "Many new restaurants borrow the image of an old trattoria: checked cloth, distressed plaster, mismatched chairs, framed photographs of invented ancestors. Da Niko avoids this costume. Its warmth comes from teak, terracotta tones, upholstery, controlled light and the visual softness of large mirrors framed in willow by artist Emy Petrini. The references are Milanese, but they do not depend on a theatrical reconstruction of the past."
+        },
+        {
+          "type": "text",
+          "content": "This restraint matters. A hotel cannot manufacture the social memory of a family dining room, but it can reproduce some of its spatial conditions: objects at different scales, surfaces that absorb rather than broadcast light, corners that do not demand to be seen from the entrance, and furniture arranged for conversation rather than surveillance. The room feels expensive, but expense is not its only subject."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-04.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Large willow-framed mirrors by Emy Petrini add depth without turning the walls into anonymous reflective planes.",
+          "alt": "Willow-framed artwork and mirror within the terracotta-toned Da Niko dining room.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "A bar as a piece of sculpture"
+        },
+        {
+          "type": "text",
+          "content": "The cocktail bar provides the counterargument to all this softness. Its large oval counter in black resin is continuous, reflective and visually heavy—a sculptural object positioned against the brightness of the glazed wall and the hotel garden beyond. Where the dining room dissolves into groupings, the bar gathers attention."
+        },
+        {
+          "type": "text",
+          "content": "The contrast prevents the interior from becoming polite. Black resin, glass and garden light form a more abstract composition than the residential dining room. The bar is not disguised as furniture inherited from an apartment; it declares itself as hospitality infrastructure. That honesty gives the project a necessary edge."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-05.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The oval black-resin cocktail bar acts as the project’s dark sculptural centre beside the garden-facing glass wall.",
+          "alt": "Black oval cocktail bar reflecting light from the garden at Bvlgari Hotel Milano.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Objects with biographies"
+        },
+        {
+          "type": "text",
+          "content": "At the centre of the room stands <i>La Venatoria</i>, a rare Richard Ginori vase from the late 1920s, made during Gio Ponti’s artistic direction and decorated with the Triumph of the Amazons. Its presence is more than branding through collectible design. It introduces historical depth into a room that is otherwise unmistakably new."
+        },
+        {
+          "type": "text",
+          "content": "The tableware continues the relationship with Ginori 1735 through an exclusive version of the Diva collection. Staff uniforms repeat the interior’s terracotta register. This is total design in the Italian tradition: architecture, object, clothing, plate and service brought into one visual system. The danger is obvious. When every detail participates, hospitality can become a brand image from which ordinary life has been edited out."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-06.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A late-1920s Richard Ginori vase made during Gio Ponti’s artistic direction gives the new room a genuine historical anchor.",
+          "alt": "Rare Richard Ginori vase displayed in the dining room at Da Niko.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "The menu speaks in recognisable nouns"
+        },
+        {
+          "type": "text",
+          "content": "Romito answers the elaborate coordination of the room with an apparently straightforward menu. Oysters, raw fish, vitello tonnato, meatballs, spaghetti al pomodoro, cacio e pepe, lasagne, agnolotti del plin, parmigiana and cotoletta alla Milanese need no conceptual explanation. Some preparations are finished or served from a trolley, and several are intended for two people. The grammar is sharing, carving, passing and returning."
+        },
+        {
+          "type": "text",
+          "content": "The simplicity is not innocent. Romito’s cooking is built on reductions, extractions, exact temperatures and the removal of elements that do not intensify flavour. The point is not that the food is easy to make. It is that technique withdraws from view. Fried pizza with tomato and Parmigiano enters a Bvlgari dining room without being turned into a joke or a deconstruction. Sole with lemon, capers and parsley asks how much can be removed before flavour loses identity."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-07.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Romito’s menu uses familiar Italian forms while hiding the reductions, extractions and temperature control behind them.",
+          "alt": "A precisely presented Italian dish from Niko Romito at Da Niko.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "The performance of informality"
+        },
+        {
+          "type": "text",
+          "content": "Da Niko belongs to a wider shift in Milan: fine dining adopting the vocabulary of the trattoria, not necessarily its prices or social structure. The shortened name, shareable plates and residential interior all promise release from ceremony. Yet informality inside a luxury hotel is never simply informal. It is a highly serviced performance of ease."
+        },
+        {
+          "type": "text",
+          "content": "That does not make the performance false. Restaurants are theatres whether they acknowledge it or not. The useful question is whether the scenario changes how people behave. Varied seating can support longer conversation. A trolley can create a shared focal point. Familiar dishes can reduce the anxiety of ordering. A room can be exact without making the guest feel examined."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/da-niko-milan-08.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Garden light and warm artificial illumination allow the restaurant to move between domestic calm and hotel ceremony.",
+          "alt": "Evening atmosphere at Da Niko with warm lighting and views toward the garden.",
+          "credit": "Courtesy Bvlgari Hotel Milano",
+          "sourceUrl": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "What the photographs cannot tell us"
+        },
+        {
+          "type": "text",
+          "content": "The official images are almost entirely empty. They describe colour, proportion and the controlled relationship between the dining room and garden, but they cannot verify the project’s central claim. Conviviality is not visible in an unused banquette. Domesticity depends on sound, interruption, waiting, the movement of staff and the distance at which another table’s conversation becomes audible."
+        },
+        {
+          "type": "text",
+          "content": "For that reason this review remains an architectural reading based on official documentation and independent reporting, not an account of an anonymous meal. The distinction matters especially here. Da Niko’s achievement can only be completed by occupation. A perfect photograph proves that the scene has been prepared; it cannot prove that the scene permits life."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Verdict"
+        },
+        {
+          "type": "text",
+          "content": "Da Niko is strongest where architecture and cuisine make the same move. Both begin with formidable technique and then attempt to remove the sensation of effort. ACPV breaks a large hotel room into intimate social distances; Romito translates research into dishes whose names remain immediately legible. Neither rejects luxury. Both ask whether luxury can stop announcing itself long enough for pleasure to take the foreground."
+        },
+        {
+          "type": "text",
+          "content": "The contradiction remains productive. This is a Milanese home without private life, a trattoria register inside a Bvlgari address, an informal meal coordinated through total design. But the room avoids pastiche, the objects possess real cultural biographies, and the menu appears willing to let recognisable food remain recognisable. The luxury of Da Niko is not that it looks like home. It is the enormous effort invested in making formality briefly loosen its grip."
+        },
+        {
+          "type": "link",
+          "content": "Da Niko interiors — ACPV Architects",
+          "url": "https://acpvarchitects.com/news/da-niko-bulgarimilano/"
+        },
+        {
+          "type": "link",
+          "content": "Da Niko — Architectural Digest Italia",
+          "url": "https://www.ad-italia.it/article/da-niko-apre-il-nuovo-ristorante-dello-chef-abruzzese-al-bvlgari-hotel-milano/"
+        },
+        {
+          "type": "link",
+          "content": "Da Niko and Milan’s new normality — Vanity Fair Italia",
+          "url": "https://www.vanityfair.it/article/da-niko-nuovo-ristorante-bulgari-nuovo-trend-trattorie-milano"
+        },
+        {
+          "type": "note",
+          "content": "Independent editorial review by Viacheslav Munister. Da Niko opened at Bvlgari Hotel Milano in September 2026. Architectural and culinary details are based on official materials from ACPV Architects and Bvlgari Hotel Milano, with additional reporting from Architectural Digest Italia and Vanity Fair Italia. This draft does not claim an anonymous in-person visit. Images: courtesy Bvlgari Hotel Milano; reproduced for editorial review."
+        }
+      ],
+      "featured": false,
+      "updatedAt": "2026-10-06T17:26:17.049Z"
     }
   ],
   "libraryItems": [
@@ -29050,7 +29285,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Обзор инсталляции, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Courtesy Kunstmuseum Basel.",
@@ -29076,7 +29311,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "Скульптура и фотография разделяют галерею как параллельные формы исследования в <i>Medardo Rosso: Inventing Modern Sculpture</i>. Витрина выставки, Kunstmuseum Basel, 2025.",
@@ -29102,7 +29337,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "Дизайн выставки отвергает одну идеальную точку зрения; скульптура встречается через меняющиеся расстояния и препятствия. Kunstmuseum Basel, 2025.",
@@ -29128,7 +29363,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Экспозиция, <i>Medardo Rosso: Inventing Modern Sculpture</i>. Свет, витрины и линии зрения рассматриваются как часть восприятия работы. Kunstmuseum Basel, 2025.",
@@ -29145,7 +29380,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Последовательность галереи в ретроспективе в Базеле. Фигуры Россо меняют характер по мере изменения освещения и расстояния просмотра.",
@@ -29162,7 +29397,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Поверхности скульптуры Россо удерживают и рассеивают свет, а не создают стабильный контур. Виды инсталляции, Kunstmuseum Basel, 2025.",
@@ -29180,7 +29415,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, изображение из <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. Courtesy the artist and Cleveland Museum of Art.",
@@ -29210,7 +29445,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Экспозиционный вид, Kunstmuseum Basel, 2025. Фотография запечатлевает не изолированный объект, а расположение поверхностей, интервалов и отраженного света.",
@@ -29240,7 +29475,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso оспаривал стабильную границу между фигурой и атмосферой. Изображение выставки, Kunstmuseum Basel.",
@@ -29266,7 +29501,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Фотографическая работа, включенная в ретроспективу Rosso. Воспроизведение становится частью метода скульптора, а не нейтральным отчетом.",
@@ -29287,7 +29522,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Обзор галерей Rosso в Kunstmuseum Basel, 2025. Последовательность точек зрения сопротивляется сведению скульптуры к одному эмблематическому снимку.",
@@ -29309,7 +29544,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Изображение выставки из <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -42966,7 +43201,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Перегляд інсталяції, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. За courtesy Kunstmuseum Basel.",
@@ -42992,7 +43227,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "Скульптура та фотографія поділяють галерею як паралельні форми дослідження у <i>Medardo Rosso: Inventing Modern Sculpture</i>. Виставковий огляд, Kunstmuseum Basel, 2025.",
@@ -43018,7 +43253,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "Дизайн виставки відмовляється від єдиного ідеального погляду; скульптура зустрічається через змінювані відстані та перешкоди. Kunstmuseum Basel, 2025.",
@@ -43044,7 +43279,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Виставковий огляд, <i>Medardo Rosso: Inventing Modern Sculpture</i>. Світло, вітрини та лінії огляду розглядаються як частина сприйняття роботи. Kunstmuseum Basel, 2025.",
@@ -43061,7 +43296,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Послідовність галереї у базельській ретроспективі. Фігури Rosso змінюють характер залежно від освітлення та відстані перегляду.",
@@ -43078,7 +43313,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Скульптурні поверхні Rosso тримають і розсіюють світло, а не представляють стабільний контур. Виставковий вигляд, Kunstmuseum Basel, 2025.",
@@ -43096,7 +43331,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, зображення з <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. За згодою художниці та Cleveland Museum of Art.",
@@ -43126,7 +43361,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Виставковий огляд, Kunstmuseum Basel, 2025. Фотографія фіксує не ізольований об'єкт, а розташування поверхонь, інтервалів і відбитого світла.",
@@ -43156,7 +43391,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso оспорював стабільну межу між фігурою і атмосферою. Зображення виставки, Kunstmuseum Basel.",
@@ -43182,7 +43417,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Фотографічна робота, включена до ретроспективи Rosso. Відтворення стає частиною методу скульптора, а не нейтральним звітом.",
@@ -43203,7 +43438,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Огляд галерей Rosso в Kunstmuseum Basel, 2025. Послідовність точок зору протистоїть зменшенню скульптури до одного емблематичного кадру.",
@@ -43225,7 +43460,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Зображення виставки з <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -56880,7 +57115,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Installationsansicht, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Courtesy Kunstmuseum Basel.",
@@ -56906,7 +57141,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "Skulptur und Fotografie teilen die Galerie als parallele Formen der Untersuchung in <i>Medardo Rosso: Inventing Modern Sculpture</i>. Installationsansicht, Kunstmuseum Basel, 2025.",
@@ -56932,7 +57167,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "Das Ausstellungskonzept verweigert einen einzigen idealen Blickpunkt; Skulptur wird durch wechselnde Entfernungen und Hindernisse erlebt. Kunstmuseum Basel, 2025.",
@@ -56958,7 +57193,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Installationsansicht, <i>Medardo Rosso: Inventing Modern Sculpture</i>. Licht, Vitrinen und Sichtachsen werden als Teil der Rezeption des Werks behandelt. Kunstmuseum Basel, 2025.",
@@ -56975,7 +57210,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Eine Galerienfolge in der Basel-Retrospektive. Rosso’s Figuren verändern Charakter, wenn Beleuchtung und Betrachtungsabstand sich ändern.",
@@ -56992,7 +57227,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Rosso’s skulpturale Oberflächen halten und streuen Licht, anstatt eine stabile Kontur zu präsentieren. Installationsansicht, Kunstmuseum Basel, 2025.",
@@ -57010,7 +57245,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, Bild aus <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. Courtesy the artist and Cleveland Museum of Art.",
@@ -57040,7 +57275,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Installationsansicht, Kunstmuseum Basel, 2025. Das Foto dokumentiert kein isoliertes Objekt, sondern eine Anordnung von Oberflächen, Intervallen und reflektiertem Licht.",
@@ -57070,7 +57305,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso stellte die stabile Grenze zwischen Figur und Atmosphäre in Frage. Ausstellungsbild, Kunstmuseum Basel.",
@@ -57096,7 +57331,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ein fotografisches Werk, das in der Rosso-Retrospektive enthalten ist. Reproduktion wird Teil der Methode des Bildhauers anstatt eines neutralen Berichts.",
@@ -57117,7 +57352,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Übersicht über die Rosso-Galerien im Kunstmuseum Basel, 2025. Eine Sequenz von Blickwinkeln widersteht der Reduzierung der Skulptur auf ein einzelnes emblematisches Bild.",
@@ -57139,7 +57374,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ausstellungsbild aus <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -70788,7 +71023,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista de instalación, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Cortesía Kunstmuseum Basel.",
@@ -70814,7 +71049,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "La escultura y la fotografía comparten la galería como formas paralelas de investigación en <i>Medardo Rosso: Inventing Modern Sculpture</i>. Vista de la instalación, Kunstmuseum Basel, 2025.",
@@ -70840,7 +71075,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "El diseño de la exposición rechaza un único punto de vista ideal; la escultura se encuentra a través de distancias y obstrucciones cambiantes. Kunstmuseum Basel, 2025.",
@@ -70866,7 +71101,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista de instalación, <i>Medardo Rosso: Inventing Modern Sculpture</i>. La luz, las vitrinas y las líneas de visión se tratan como parte de la recepción de la obra. Kunstmuseum Basel, 2025.",
@@ -70883,7 +71118,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Una secuencia de galería en la retrospectiva de Basel. Las figuras de Rosso cambian carácter a medida que cambia la iluminación y la distancia de visión.",
@@ -70900,7 +71135,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Las superficies escultóricas de Rosso sostienen y dispersan la luz en lugar de presentar un contorno estable. Vista de instalación, Kunstmuseum Basel, 2025.",
@@ -70918,7 +71153,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, imagen de <i>aún y en movimiento • la imagen táctil</i>, Cleveland Museum of Art, 2025–26. Cortesía de la artista y Cleveland Museum of Art.",
@@ -70948,7 +71183,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista de instalación, Kunstmuseum Basel, 2025. La fotografía registra no un objeto aislado sino una disposición de superficies, intervalos y luz reflejada.",
@@ -70978,7 +71213,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso desafió el límite estable entre figura y atmósfera. Imagen de la exposición, Kunstmuseum Basel.",
@@ -71004,7 +71239,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Una obra fotográfica incluida en la retrospectiva de Rosso. La reproducción se convierte en parte del método del escultor en lugar de un informe neutral.",
@@ -71025,7 +71260,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Visión general de las galerías Rosso en Kunstmuseum Basel, 2025. Una secuencia de puntos de vista resiste reducir la escultura a una sola toma emblemática.",
@@ -71047,7 +71282,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Imagen de la exposición de <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -92414,7 +92649,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista dell'installazione, <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Courtesy Kunstmuseum Basel.",
@@ -92440,7 +92675,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "Scultura e fotografia condividono la galleria come forme parallele di indagine in <i>Medardo Rosso: Inventing Modern Sculpture</i>. Vista dell'installazione, Kunstmuseum Basel, 2025.",
@@ -92466,7 +92701,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "Il design della mostra rifiuta un singolo punto di vista ideale; la scultura si incontra attraverso distanze e ostruzioni variabili. Kunstmuseum Basel, 2025.",
@@ -92492,7 +92727,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista dell'installazione, <i>Medardo Rosso: Inventing Modern Sculpture</i>. Luce, vetrine e linee di vista sono trattate come parte della ricezione dell'opera. Kunstmuseum Basel, 2025.",
@@ -92509,7 +92744,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Una sequenza di galleria nella retrospettiva di Basilea. Le figure di Rosso cambiano carattere man mano che cambia l'illuminazione e la distanza di visione.",
@@ -92526,7 +92761,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Le superfici scultoree di Rosso trattengono e diffondono la luce piuttosto che presentare un contorno stabile. Vista dell'installazione, Kunstmuseum Basel, 2025.",
@@ -92544,7 +92779,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, immagine da <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. Cortesia dell'artista e Cleveland Museum of Art.",
@@ -92574,7 +92809,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vista dell'installazione, Kunstmuseum Basel, 2025. La fotografia registra non un oggetto isolato ma un arrangiamento di superfici, intervalli e luce riflessa.",
@@ -92604,7 +92839,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso sfidò il confine stabile tra figura e atmosfera. Immagine della mostra, Kunstmuseum Basel.",
@@ -92630,7 +92865,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Un'opera fotografica inclusa nella retrospettiva di Rosso. La riproduzione diventa parte del metodo dello scultore piuttosto che un rapporto neutro.",
@@ -92651,7 +92886,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Panoramica delle gallerie Rosso al Kunstmuseum Basel, 2025. Una sequenza di punti di vista resiste alla riduzione della scultura a una singola inquadratura emblematico.",
@@ -92673,7 +92908,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Immagine della mostra da <i>Medardo Rosso: Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
@@ -104828,7 +105063,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_banner-webseite_8dc2ef9e.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-02.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vue d'installation, <i>Medardo Rosso : Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025. Courtesy Kunstmuseum Basel.",
@@ -104854,7 +105089,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s022_39b48d0d.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-01.jpg",
               "align": "center",
               "width": 100,
               "caption": "La sculpture et la photographie partagent la galerie comme formes parallèles d'enquête dans <i>Medardo Rosso : Inventer la sculpture moderne</i>. Vue d'installation, Kunstmuseum Basel, 2025.",
@@ -104880,7 +105115,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s010_050a8639.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-03.jpg",
               "align": "center",
               "width": 100,
               "caption": "La conception de l'exposition refuse un seul point de vue idéal ; la sculpture est rencontrée à travers des distances changeantes et des obstructions. Kunstmuseum Basel, 2025.",
@@ -104906,7 +105141,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s013_12d2f1e3.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-04.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vue d’installation, <i>Medardo Rosso : Inventing Modern Sculpture</i>. La lumière, les vitrines et les lignes de vue sont traitées comme faisant partie de la réception de l’œuvre. Kunstmuseum Basel, 2025.",
@@ -104923,7 +105158,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s029_77b24678.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-05.jpg",
               "align": "center",
               "width": 100,
               "caption": "Une séquence de galerie dans la rétrospective de Bâle. Les figures de Rosso changent de caractère à mesure que l’éclairage et la distance de vision changent.",
@@ -104940,7 +105175,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s018_615fd33a.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-06.jpg",
               "align": "center",
               "width": 100,
               "caption": "Les surfaces sculpturales de Rosso retiennent et dispersent la lumière plutôt que de présenter un contour stable. Vue d’installation, Kunstmuseum Basel, 2025.",
@@ -104958,7 +105193,7 @@
             },
             {
               "type": "image",
-              "content": "https://openaccess-api.clevelandart.org/api/collection/images/exhibition_artwork/701025?variant=web",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-07.jpg",
               "align": "center",
               "width": 100,
               "caption": "Ann Hamilton, image de <i>still and moving • the tactile image</i>, Cleveland Museum of Art, 2025–26. Courtesy l'artiste et Cleveland Museum of Art.",
@@ -104988,7 +105223,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/11_cd34-v001002-a027076-2025-03-27-s008_a99f06d7.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-08.jpg",
               "align": "center",
               "width": 100,
               "caption": "Vue d'installation, Kunstmuseum Basel, 2025. La photographie ne capture pas un objet isolé mais une disposition de surfaces, intervalles et lumière réfléchie.",
@@ -105018,7 +105253,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_2017-hero-medardo-rosso-challenged-conventions-1_9c7d31f2.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-09.jpg",
               "align": "center",
               "width": 100,
               "caption": "Medardo Rosso a défié la frontière stable entre figure et atmosphère. Image d'exposition, Kunstmuseum Basel.",
@@ -105044,7 +105279,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_ew11-0004673-2024-11-18_bf3725b6.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-10.jpg",
               "align": "center",
               "width": 100,
               "caption": "Une œuvre photographique incluse dans la rétrospective de Rosso. La reproduction devient une partie de la méthode du sculpteur plutôt qu'un rapport neutre.",
@@ -105065,7 +105300,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/0_rosso-uberblick-raume_600e4ba9.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-11.jpg",
               "align": "center",
               "width": 100,
               "caption": "Aperçu des galeries Rosso au Kunstmuseum Basel, 2025. Une séquence de points de vue résiste à réduire la sculpture à une seule prise emblématique.",
@@ -105087,7 +105322,7 @@
             },
             {
               "type": "image",
-              "content": "https://cdn.kunstmuseumbasel.ch/website/2_1737566211815_7963e7e8.jpg",
+              "content": "https://api.eprisjournal.com/uploads/second-exposure-12.jpg",
               "align": "center",
               "width": 100,
               "caption": "Image de l'exposition de <i>Medardo Rosso : Inventing Modern Sculpture</i>, Kunstmuseum Basel, 2025.",
