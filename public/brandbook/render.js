@@ -157,10 +157,10 @@
     const rules = `<ol class="rules">${d.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ol>`;
 
     const pairs = [
-      ['#4a1728', '#f5f0eb', 'Burgundy on paper', 'The principal reading pair.'],
-      ['#f5f0eb', '#1a0b10', 'Paper on ink', 'Dark sections and the footer.'],
-      ['#b8956e', '#f5f0eb', 'Gold on paper', 'Decoration only: contrast is insufficient for reading text.'],
-      ['#b8956e', '#1a0b10', 'Gold on ink', 'Categories and metadata on dark surfaces.'],
+      ['#000000', '#ffffff', 'Black on white', 'The principal reading pair.'],
+      ['#ffffff', '#000000', 'White on black', 'Dark sections and the footer.'],
+      ['#666666', '#ffffff', 'Grey on white', 'Secondary information at accessible sizes.'],
+      ['#ffffff', '#333333', 'White on charcoal', 'Supporting text on dark fields.'],
     ];
     const contrastBlock = `
       <div class="grid g2">${pairs.map(([fg, bg, name, note]) => {
@@ -183,14 +183,13 @@
         <div class="ref">
           <a href="${esc(r.url)}" target="_blank" rel="noreferrer">${esc(r.name)} <span aria-hidden="true">↗</span></a>
           <p>${esc(r.why)}</p>
-          <p class="take">What we take: ${esc(r.take)}</p>
         </div>`).join('')}`).join('');
 
     document.getElementById('bb-lede').textContent = d.intro;
     document.getElementById('bb-toc').innerHTML = SECTIONS
       .map(([id, label]) => `<a href="#${id}">${label}</a>`).join('');
     document.getElementById('bb-body').innerHTML = [
-      section('identity', '01', 'Identity', '', identity), section('palette', '02', 'Colour', 'Four colours carry the identity; the rest are functional.', palette),
+      section('identity', '01', 'Identity', '', identity), section('palette', '02', 'Colour', 'Black and white define the identity; grey exists only for hierarchy and interface states.', palette),
       section('type', '03', 'Typography', 'Five families, each with one clear role.', type), section('scale', '04', 'Type scale', 'A consistent hierarchy from metadata to cover.', scale),
       section('elements', '05', 'Editorial elements', 'The parts from which an EPRIS page is built.', elements), section('imagery', '06', 'Imagery', '', imagery),
       section('voice', '07', 'Voice', 'Language is as recognisable as colour.', voice), section('dodont', '08', 'Do and don\u2019t', '', dodont),
