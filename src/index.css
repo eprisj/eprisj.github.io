@@ -674,7 +674,7 @@ img[data-reveal="done"] {
 .rich-text mark { background: rgba(201,166,144,.38); color: inherit; padding: 0 .12em; border-radius: 2px; }
 .rich-text code { font-family: 'IBM Plex Mono', monospace; background: rgba(80,26,44,.07); padding: .05em .35em; border-radius: 3px; font-size: .9em; }
 .rich-text strong, .rich-text b { font-weight: 700; }
-.rich-text em, .rich-text i { font-style: normal; font-family: "Courier New", Courier, monospace; }
+.rich-text em, .rich-text i { font-style: normal; font-family: inherit; }
 .rich-text u { text-decoration: underline; }
 .rich-text p { margin: 0 0 1em; }
 .rich-text p:last-child { margin-bottom: 0; }
@@ -799,12 +799,11 @@ img[data-reveal="done"] {
   img[data-reveal="pending"] { opacity: 1; }
 }
 
-/* Курсиву в журналі немає (2026-10-03): будь-який нахил – у статтях з адмінки,
-   у старих текстах з <i> чи style="font-style: italic", у віджетах – набирається
-   звичайним Courier. Іконки на сайті – SVG, тож <i> тут лише текст. */
+/* Курсива в журнале нет: выделение сохраняет гарнитуру окружающего
+   текста. Моноширинная гарнитура остаётся только у служебных меток, подписей и навигации. */
 em, i, cite, dfn, var, address,
 .italic,
 [style*="font-style: italic"], [style*="font-style:italic"] {
   font-style: normal !important;
-  font-family: "Courier New", Courier, monospace !important;
+  font-family: inherit !important;
 }
