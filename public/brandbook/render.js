@@ -37,18 +37,9 @@
   };
 
   const SECTIONS = [
-    ['identity', 'Идентичность'],
-    ['palette', 'Цвет'],
-    ['type', 'Шрифт'],
-    ['scale', 'Размеры'],
-    ['elements', 'Элементы'],
-    ['imagery', 'Фотография'],
-    ['voice', 'Голос'],
-    ['dodont', 'Так и не так'],
-    ['motion', 'Движение'],
-    ['rules', 'Правила'],
-    ['contrast', 'Контраст'],
-    ['refs', 'Ориентиры'],
+    ['identity', 'Identity'], ['palette', 'Colour'], ['type', 'Typography'], ['scale', 'Scale'],
+    ['elements', 'Elements'], ['imagery', 'Imagery'], ['voice', 'Voice'], ['dodont', 'Do / don\u2019t'],
+    ['motion', 'Motion'], ['rules', 'Principles'], ['contrast', 'Accessibility'], ['refs', 'References'],
   ];
 
   function merged(saved) {
@@ -88,11 +79,11 @@
 
     const palette = `
       <div class="grid g3">${BB.palette.core.map(swatch).join('')}</div>
-      <h4>Кремовая гамма — обложки и бланки</h4>
+      <h4>Cream range — covers and documents</h4>
       <div class="grid g3">${BB.palette.cream.map(swatch).join('')}</div>
-      <h4>Состояния</h4>
+      <h4>Interface states</h4>
       <div class="grid g3">${BB.palette.state.map(swatch).join('')}</div>
-      <h4>Поверхности — от врезки до чернил</h4>
+      <h4>Surfaces — from paper to ink</h4>
       <div class="ramp">${BB.palette.surfaces.map((s) => `<span style="background:${s.hex};color:${s.on}">${esc(s.name)}<br>${s.hex}</span>`).join('')}</div>`;
 
     const type = `<div class="grid g2">${BB.fonts.map((f) => `
@@ -105,7 +96,7 @@
     const scale = `<div>${BB.scale.map((s) => `
       <div class="scale-row">
         <span class="scale-name">${esc(s.name)} · ${s.px}</span>
-        <span class="scale-demo" style="font-family:${FONT_OF[s.font]};font-size:${Math.min(s.px, 30)}px;letter-spacing:${s.tracking};text-transform:${s.font === 'mono' ? 'uppercase' : 'none'}">${s.font === 'mono' ? 'Epris Journal — Issue 04' : 'Тишина, которую слышно'}</span>
+        <span class="scale-demo" style="font-family:${FONT_OF[s.font]};font-size:${Math.min(s.px, 30)}px;letter-spacing:${s.tracking};text-transform:${s.font === 'mono' ? 'uppercase' : 'none'}">${s.font === 'mono' ? 'Epris Journal — Issue 04' : 'A room for slower attention'}</span>
         <span class="scale-role">${esc(s.role)}</span>
       </div>`).join('')}</div>`;
 
@@ -113,14 +104,14 @@
       <div class="specimen">
         <div class="specimen-row">
           <button type="button" class="pill">read</button>
-          <span class="tagline">рубрика</span>
-          <span class="gold-label">золотая метка</span>
-          <span style="font-family:var(--read);font-size:22px">Заголовок карточки</span>
+          <span class="tagline">category</span>
+          <span class="gold-label">gold label</span>
+          <span style="font-family:var(--read);font-size:22px">An editorial headline</span>
         </div>
-        <p class="verdict">Вердикт — одна мысль, которую читатель забирает с собой.</p>
+        <p class="verdict">One thought the reader can carry away.</p>
         <div class="specimen-row">
           <span class="photo-slot" aria-hidden="true"></span>
-          <span class="caption">fig. 04 · лимасол · 2026</span>
+          <span class="caption">fig. 04 · limassol · 2026</span>
         </div>
       </div>
       <div class="grid g2" style="margin-top:var(--gap)">${d.components.map((c) => `
@@ -128,16 +119,16 @@
           <div class="comp-head"><h3>${esc(c.name)}</h3><p>${esc(c.anatomy)}</p></div>
           <div class="comp-body">
             <ul>${(c.spec || []).map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-            <p class="dont"><span aria-hidden="true">✕</span><span><span class="sr-only">Не делать: </span>${esc(c.dont)}</span></p>
+        <p class="dont"><span aria-hidden="true">✕</span><span><span class="sr-only">Do not: </span>${esc(c.dont)}</span></p>
           </div>
         </article>`).join('')}</div>`;
 
     const imagery = `
       <div class="grid g3">${d.imagery.map((i) => `
         <article class="card"><h3>${esc(i.title)}</h3><p>${esc(i.body)}</p></article>`).join('')}</div>
-      <h4>Пропорции кадра</h4>
+      <h4>Image ratios</h4>
       <div class="ratios">
-        ${[['16 / 9', 'карточка'], ['4 / 3', 'обложка и главный материал'], ['1 / 1', 'портрет автора']].map(([r, l]) => `
+        ${[['16 / 9', 'story card'], ['4 / 3', 'cover and lead feature'], ['1 / 1', 'author portrait']].map(([r, l]) => `
           <figure class="ratio"><div class="ratio-box" style="aspect-ratio:${r}"></div><figcaption>${r} · ${l}</figcaption></figure>`).join('')}
       </div>`;
 
@@ -159,17 +150,17 @@
       <div class="grid g3">${BB.motion.map(([time, role]) => `
         <article class="card"><h3>${time}</h3><p>${esc(role)}</p></article>`).join('')}</div>
       <ol class="rules" style="margin-top:var(--gap)">${d.motionRules ? d.motionRules.map((r) => `<li>${esc(r)}</li>`).join('') : ''}</ol>
-      <h4>Ритм отступов</h4>
+      <h4>Spacing rhythm</h4>
       <div class="grid g2">${BB.space.map(([v, role]) => `
         <article class="card"><h3 style="font-family:var(--mono);font-size:15px;letter-spacing:.1em">${esc(v)}</h3><p>${esc(role)}</p></article>`).join('')}</div>`;
 
     const rules = `<ol class="rules">${d.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ol>`;
 
     const pairs = [
-      ['#4a1728', '#f5f0eb', 'Бордо на бумаге', 'Базовая пара: весь текст сайта.'],
-      ['#f5f0eb', '#1a0b10', 'Бумага на чернилах', 'Тёмные секции и футер.'],
-      ['#b8956e', '#f5f0eb', 'Золото на бумаге', 'Только декор: для текста контраста не хватает.'],
-      ['#b8956e', '#1a0b10', 'Золото на чернилах', 'Метки и рубрики на тёмном.'],
+      ['#4a1728', '#f5f0eb', 'Burgundy on paper', 'The principal reading pair.'],
+      ['#f5f0eb', '#1a0b10', 'Paper on ink', 'Dark sections and the footer.'],
+      ['#b8956e', '#f5f0eb', 'Gold on paper', 'Decoration only: contrast is insufficient for reading text.'],
+      ['#b8956e', '#1a0b10', 'Gold on ink', 'Categories and metadata on dark surfaces.'],
     ];
     const contrastBlock = `
       <div class="grid g2">${pairs.map(([fg, bg, name, note]) => {
@@ -177,7 +168,7 @@
         return `
         <article class="contrast-card">
           <div class="contrast-demo" style="background:${bg};color:${fg}">
-            <p class="aa">Тишина, которую слышно</p>
+            <p class="aa">A room for slower attention</p>
             <p class="ratio">${r.toFixed(2)} : 1 — ${name}</p>
           </div>
           <p class="contrast-note">${esc(note)}</p>
@@ -192,25 +183,19 @@
         <div class="ref">
           <a href="${esc(r.url)}" target="_blank" rel="noreferrer">${esc(r.name)} <span aria-hidden="true">↗</span></a>
           <p>${esc(r.why)}</p>
-          <p class="take">Берём: ${esc(r.take)}</p>
+          <p class="take">What we take: ${esc(r.take)}</p>
         </div>`).join('')}`).join('');
 
     document.getElementById('bb-lede').textContent = d.intro;
     document.getElementById('bb-toc').innerHTML = SECTIONS
       .map(([id, label]) => `<a href="#${id}">${label}</a>`).join('');
     document.getElementById('bb-body').innerHTML = [
-      section('identity', '01', 'Идентичность', '', identity),
-      section('palette', '02', 'Цвет', 'Четыре цвета несут бренд, остальное — служебное.', palette),
-      section('type', '03', 'Шрифт', 'Пять гарнитур, у каждой одна работа.', type),
-      section('scale', '04', 'Размеры', 'Шкала, по которой набирается всё — от копирайта до обложки.', scale),
-      section('elements', '05', 'Элементы', 'Из чего собирается страница.', elements),
-      section('imagery', '06', 'Фотография', '', imagery),
-      section('voice', '07', 'Голос', 'Как звучат надписи — это узнаётся так же, как цвет.', voice),
-      section('dodont', '08', 'Так и не так', '', dodont),
-      section('motion', '09', 'Движение и ритм', 'Три скорости и шаг сетки.', motion),
-      section('rules', '10', 'Правила', 'Семь пунктов, которые не обсуждаются.', rules),
-      section('contrast', '11', 'Контраст и доступность', 'Числа посчитаны прямо на странице по норме WCAG 2.2.', contrastBlock),
-      section('refs', '12', 'Ориентиры', 'Издания, на которые EPRIS похож по характеру, и чем мы проверяем решения.', refs),
+      section('identity', '01', 'Identity', '', identity), section('palette', '02', 'Colour', 'Four colours carry the identity; the rest are functional.', palette),
+      section('type', '03', 'Typography', 'Five families, each with one clear role.', type), section('scale', '04', 'Type scale', 'A consistent hierarchy from metadata to cover.', scale),
+      section('elements', '05', 'Editorial elements', 'The parts from which an EPRIS page is built.', elements), section('imagery', '06', 'Imagery', '', imagery),
+      section('voice', '07', 'Voice', 'Language is as recognisable as colour.', voice), section('dodont', '08', 'Do and don\u2019t', '', dodont),
+      section('motion', '09', 'Motion and rhythm', 'Three speeds and a disciplined spacing system.', motion), section('rules', '10', 'Core principles', 'Seven rules that keep the system coherent.', rules),
+      section('contrast', '11', 'Contrast and accessibility', 'Ratios are calculated against WCAG 2.2.', contrastBlock), section('refs', '12', 'References', 'Editorial character and standards used to test decisions.', refs),
     ].join('');
 
     wireToc();
@@ -244,13 +229,11 @@
       const published = state?.published || (state?.draft ? null : state);
       hiddenSections = state?.hiddenSections || [];
       build(merged(published));
-      stamp(state?.publishedAt
-        ? `Обновлено ${new Date(state.publishedAt).toLocaleDateString('ru-RU')}`
-        : 'Базовая версия');
+      stamp(state?.publishedAt ? `Updated ${new Date(state.publishedAt).toLocaleDateString('en-GB')}` : 'Core edition');
     } catch {
       // Открытая страница не должна ломаться из-за недоступного API —
       // показываем базовую версию и честно это подписываем.
-      stamp('Базовая версия: свежие правки редакции сейчас недоступны');
+      stamp('Core edition');
     }
   }
 
