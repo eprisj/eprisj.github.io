@@ -42,7 +42,7 @@ const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string;
 
 const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
   { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
-  { label: 'PayPal.Me', value: 'paypal.me/ViacheslawMunister', icon: Wallet },
+  { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister', icon: Wallet },
   { label: 'Card', value: '4149 5100 2837 6350', icon: CreditCard },
   { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
