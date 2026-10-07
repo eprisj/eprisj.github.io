@@ -39,7 +39,7 @@
   const SECTIONS = [
     ['identity', 'Identity'], ['palette', 'Colour'], ['type', 'Typography'], ['scale', 'Scale'],
     ['elements', 'Elements'], ['imagery', 'Imagery'], ['voice', 'Voice'], ['dodont', 'Do / don\u2019t'],
-    ['motion', 'Motion'], ['rules', 'Principles'], ['contrast', 'Accessibility'], ['refs', 'References'],
+    ['motion', 'Motion and spacing'], ['rules', 'Core rules'], ['contrast', 'Accessibility'], ['refs', 'Standards'],
   ];
 
   function merged(saved) {
