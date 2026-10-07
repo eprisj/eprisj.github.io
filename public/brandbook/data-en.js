@@ -55,6 +55,7 @@
   };
   const roles=['Navigation, dates, categories, captions and metadata. Never inside reading paragraphs.','Feature titles and cover-scale statements.','Long-form essays and article introductions.','Forms, controls and supporting interface text.','Selected quotations and literary openings.'];
   const samples=['EPRIS JOURNAL — ISSUE 04 / MMXXVI','A room for slower attention','Every issue gives attention a shape.','Subscribe to the journal','We write about what cannot be reduced to news.']; b.fonts.forEach((x,i)=>{x.role=roles[i];x.sample=samples[i]});
+  b.fonts = b.fonts.filter((x) => x.name !== 'Crimson Text');
   const scaleNames=['utility','caption','category','metadata','standfirst','body','lead','subheading','headline','cover']; const scaleRoles=['Copyright and technical marks.','Image captions, dates and tags.','Categories, navigation and controls.','Author, reading time and card data.','Card summaries.','Article body copy.','Opening paragraph.','Article section headings.','Story title.','Cover and lead-feature title.']; b.scale.forEach((x,i)=>{x.name=scaleNames[i];x.role=scaleRoles[i]});
   b.space=[['8 / 12 / 16','Within controls and cards.'],['24 / 32','Between blocks inside a section.'],['64 / 96','Between page sections.'],['1200 pixels','Maximum reading canvas; galleries may extend to 1600.']];
   b.motion=[['0.2 s','Colour, focus and active-state changes.'],['0.3 s','Element entrance and preview expansion.'],['0.5 s','Section reveals and page transitions.']];
