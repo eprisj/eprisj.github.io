@@ -1,68 +1,58 @@
 (() => {
   const b = window.EPRIS_BRANDBOOK;
   b.defaults = {
-    intro: 'A practical guide to how EPRIS looks, reads and moves: colour, typography, imagery, voice and interface. One clear system for editors, writers, photographers and collaborators.',
+    intro: 'The working standards for EPRIS Journal. Use this guide when writing, commissioning photography or building an editorial page.',
     identity: [
-      {title:'What EPRIS is',body:'An independent journal devoted to architecture, art, design and contemporary culture. It is conceived as an issue rather than a feed: measured, edited and made to be revisited.'},
-      {title:'Editorial tone',body:'Quiet, exact and curious. The interface never competes with the work. Space, fine rules and deliberate pacing replace decoration and urgency.'},
-      {title:'Recognisable in three details',body:'Black type on white space. Widely tracked capitals for editorial metadata. Square corners for images and reading surfaces.'},
+      {title:'Scope',body:'EPRIS is an independent journal about architecture, art, design and contemporary culture. Articles, interviews, reviews and visual essays are the core formats.'},
+      {title:'Editorial standard',body:'Every published piece must have a clear subject, verified names and dates, credited images and an edited English text. The design supports the material and does not add a second narrative.'},
+      {title:'Visual identity',body:'Black and white, serif reading type, monospaced metadata, thin rules and square image frames. These elements remain consistent across sections.'},
     ],
     rules: [
-      'The identity is black and white. Colour is never used as decoration or as an editorial shortcut.',
-      'Hierarchy comes from scale, weight, spacing and line — never from an accent colour.',
-      'Monospaced type belongs to navigation, dates, captions and metadata. It never interrupts a long-form paragraph.',
-      'Reading type is never letter-spaced. Its rhythm comes from line height, measure and paragraph spacing.',
-      'Images, covers and editorial panels use square corners. Rounded forms are reserved for controls.',
-      'Depth is created with paper tones and borders, not diffuse shadows.',
-      'Small type is reserved for short service information. Body copy remains comfortably readable.',
+      'Use black, white and neutral grey only. Editorial images provide the colour.',
+      'Create hierarchy with type size, weight, spacing and rules.',
+      'Use monospaced type for navigation, dates, categories, captions and metadata only.',
+      'Use serif type for titles, standfirsts and long-form reading. Do not add letter spacing to body copy.',
+      'Use square corners for images, cards and editorial panels. Rounded corners are limited to controls.',
+      'Use one-pixel borders instead of decorative shadows.',
+      'Keep body text at 16 pixels or larger on mobile and maintain a readable line length.',
     ],
     components: [
-      {name:'Button',anatomy:'A one-pixel oval outline with a short, clearly named action.',spec:['Transparent at rest.','Black fill on hover or press, without movement.','Reversed on black surfaces.'],dont:'Do not make every action solid. EPRIS controls should remain quiet.'},
-      {name:'Category label',anatomy:'A short uppercase label with generous tracking and no frame.',spec:['On photography, use a white field when contrast requires it.','Without photography, use black type.','One category per card.'],dont:'Do not colour-code subjects. The word carries the meaning.'},
-      {name:'Editorial card',anatomy:'A paper surface, fine border, image above and square corners.',spec:['Image, category, title, standfirst, rule and credit.','Titles use the reading serif in sentence case.','Credits align at the foot of a group.'],dont:'Do not add a shadow or rounded corners. The card is a page, not an app tile.'},
-      {name:'Pull quote',anatomy:'A larger reading line with a narrow black rule.',spec:['One thought the reader can carry away.','Keep it concise enough to read at a glance.'],dont:'Do not add quotation marks when the rule already establishes the form.'},
-      {name:'Rule',anatomy:'A one-pixel burgundy line at low opacity.',spec:['Use it to separate meaning.','One decisive rule is stronger than several decorative ones.'],dont:'Do not place a rule directly beneath every heading.'},
-      {name:'Image caption',anatomy:'Small, tracked metadata in a restrained colour.',spec:['Object, place, year; then credit where required.','Use continuous numbering only inside a gallery.'],dont:'Do not repeat the title in the caption.'},
+      {name:'Button',anatomy:'A short action inside a one-pixel rounded outline.',spec:['Use a verb that describes the result.','Use black fill for the primary action and outline for secondary actions.','Minimum touch target: 44 by 44 pixels.'],dont:'Do not use gradients, shadows or vague labels such as “Continue”.'},
+      {name:'Category label',anatomy:'A short uppercase label in monospaced type.',spec:['Use one category per item.','Place it above the title or on a solid white field over an image.','Keep the wording consistent across the site.'],dont:'Do not assign different colours to categories.'},
+      {name:'Editorial card',anatomy:'Image, category, title, standfirst and credit inside a square frame.',spec:['Use a one-pixel border.','Set the title in sentence case.','Keep image ratios consistent within a row.'],dont:'Do not add rounded corners or a drop shadow.'},
+      {name:'Pull quote',anatomy:'A short quotation set larger than body copy and marked by a black rule.',spec:['Use the speaker’s exact words.','Keep attribution next to the quote.'],dont:'Do not use a pull quote to repeat the headline.'},
+      {name:'Rule',anatomy:'A one-pixel black or grey line.',spec:['Use it to separate sections or metadata.','Keep the same weight throughout a page.'],dont:'Do not place rules between every paragraph.'},
+      {name:'Image caption',anatomy:'Object or work, place, year and credit in monospaced metadata.',spec:['Credit every image according to its licence or supplied credit line.','Keep captions directly attached to their image.'],dont:'Do not repeat the headline or add unsupported interpretation.'},
     ],
     dodont: [
       {topic:'Headline',good:'Serif, sentence case, no added tracking.',bad:'Spaced uppercase: that treatment belongs to metadata.'},
       {topic:'Metadata',good:'Uppercase, compact and clearly tracked.',bad:'Mixed with reading copy inside a paragraph.'},
-      {topic:'Emphasis',good:'Scale, weight, spacing or a black rule.',bad:'A decorative accent colour.'},
+      {topic:'Emphasis',good:'Scale, weight, spacing or a black rule.',bad:'A decorative colour or effect.'},
       {topic:'Card',good:'Square corners, fine border, no shadow.',bad:'A rounded card floating on a soft shadow.'},
       {topic:'Button',good:'Outline at rest, black on interaction.',bad:'Gradient, colour accent or decorative elevation.'},
       {topic:'Spacing',good:'A consistent rhythm of 8, 16, 24 and 32.',bad:'Unrelated gaps adjusted by eye.'},
     ],
     imagery: [
-      {title:'Proportion',body:'Use 16:9 for story cards, 4:3 for covers and lead features, and 1:1 for author portraits.'},
-      {title:'Treatment',body:'Warm, lightly restrained colour and open tonal detail. Avoid crushed shadows: retain material and atmosphere.'},
-      {title:'Point of view',body:'Objects, spaces and relations matter more than a frontal face. Emptiness is an active part of the frame.'},
-      {title:'What to avoid',body:'Stock expressions, heavy filters, framed collages, shadows and promotional text across photographs.'},
-      {title:'Delivery',body:'Use WebP where possible: 1600 pixels for cards and 2400 for covers. Name files from the story slug.'},
+      {title:'Ratios',body:'Use 16:9 for standard story cards, 4:3 for covers and lead features, and 1:1 for contributor portraits.'},
+      {title:'Selection',body:'Choose images that explain the subject: overall view, spatial context, material detail and human scale. Avoid several near-identical views.'},
+      {title:'Treatment',body:'Preserve natural colour, highlight detail and readable shadows. Do not apply a house filter.'},
+      {title:'Rights and credits',body:'Publish only images with documented permission or a compatible licence. Store the required credit and source with the file.'},
+      {title:'Delivery',body:'Use WebP or AVIF where possible. Supply at least 1600 pixels for cards and 2400 pixels for covers; use the story slug in the filename.'},
     ],
     voice: [
-      {good:'Read',bad:'DISCOVER MORE NOW →',note:'Controls use the shortest unambiguous action.'},
-      {good:'Issue 04 · MMXXVI',bad:'Our fourth issue for the year 2026',note:'Issue information is compact and typographic.'},
-      {good:'Olea, Limassol',bad:'A review of the Olea restaurant in Limassol',note:'A standfirst names the subject instead of repeating the format.'},
-      {good:'The middle loses tension.',bad:'One small downside is that it occasionally feels a little slow.',note:'Criticism is precise and does not apologise for itself.'},
+      {good:'Read',bad:'Discover more now',note:'Interface labels use the shortest clear action.'},
+      {good:'Olea, Limassol',bad:'A review of the Olea restaurant in Limassol',note:'A standfirst adds information instead of repeating the content type.'},
+      {good:'The middle loses tension.',bad:'There are a few small issues, but overall it is quite good.',note:'Criticism identifies the issue and avoids filler.'},
+      {good:'The exhibition closed on 13 September 2026.',bad:'The exhibition has recently finished.',note:'Use specific dates and verifiable facts.'},
     ],
-    a11y: ['Body text maintains a contrast ratio of at least 4.5:1.','Black and white remain the only identity colours; grey is used only for hierarchy.','Keyboard focus is always visible.','Every touch target is at least 44 by 44 pixels.','Meaningful images have useful alternative text.','Motion respects the reduced-motion preference.'],
-    motionRules: ['Use one easing character across the site.','Animate opacity and position, not layout dimensions.','Reveal a section once rather than on every scroll.','When reduced motion is enabled, content appears immediately.'],
+    a11y: ['Body text must meet a contrast ratio of at least 4.5:1.','Keyboard focus must remain visible.','Touch targets must be at least 44 by 44 pixels.','Meaningful images require concise alternative text; decorative images use empty alternative text.','Pages must remain usable at 200% zoom without horizontal scrolling.','Motion must respect the reduced-motion preference.'],
+    motionRules: ['Use motion only to explain a change of state or location.','Animate opacity and transform; avoid layout-dependent animation.','Keep interface transitions between 150 and 300 milliseconds.','Do not replay entrance effects every time a section returns to view.','When reduced motion is enabled, show content immediately.'],
     refs: [
-      {group:'Editorial references',name:'The Gentlewoman',url:'https://thegentlewoman.co.uk',why:'A model of quiet structure, generous fields and restrained colour.',take:'Space can establish authority more effectively than decoration.'},
-      {group:'Editorial references',name:'Apartamento',url:'https://www.apartamentomagazine.com',why:'Direct photography paired with disciplined typography.',take:'Images may remain tactile and unpolished without becoming casual.'},
-      {group:'Editorial references',name:'Kinfolk',url:'https://www.kinfolk.com',why:'Warm paper and spacious long-form layouts.',take:'A generous line height helps serious text remain inviting.'},
-      {group:'Editorial references',name:'MUBI Notebook',url:'https://mubi.com/en/notebook',why:'Criticism with clear hierarchy and minimal interface furniture.',take:'Reviews need a strong proposition, not visual noise.'},
-      {group:'Editorial references',name:'032c',url:'https://032c.com',why:'A useful opposite pole: aggressive typography and abrupt fields.',take:'It clarifies the boundary beyond which EPRIS stops sounding like itself.'},
-      {group:'Standards and tools',name:'WCAG 2.2',url:'https://www.w3.org/TR/WCAG22/#contrast-minimum',why:'The accessibility standard used for contrast.',take:'Visual restraint must never reduce usability.'},
-      {group:'Standards and tools',name:'Google Fonts',url:'https://fonts.google.com',why:'Source for the approved editorial families.',take:'Use the approved families rather than near substitutes.'},
+      {group:'Standards',name:'WCAG 2.2',url:'https://www.w3.org/TR/WCAG22/',why:'Accessibility requirements for contrast, keyboard operation, focus and reflow.',take:'Check every new component against the relevant success criteria.'},
+      {group:'Standards',name:'Web Content Accessibility Guidelines — contrast',url:'https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html',why:'Method and thresholds used for the contrast examples on this page.',take:'Normal text requires at least 4.5:1.'},
+      {group:'Assets',name:'Google Fonts',url:'https://fonts.google.com',why:'Source for Playfair Display, PT Serif and PT Sans.',take:'Use the specified families and weights.'},
     ],
   };
-  const words = {
-    '#4a1728':['Burgundy','Primary ink: body text, headings, rules and active states.'], '#b8956e':['Gold','Accent for categories, numbering and rules.'], '#f5f0eb':['Paper','The principal page surface and visual temperature.'], '#1a0b10':['Ink','Maximum contrast for dark sections and image fields.'],
-    '#f5eddc':['Light cream','Cards and editorial inserts.'], '#ede1c6':['Cream','Issue covers and document surfaces.'], '#e7d8b8':['Deep cream','Rules and subtle depth.'], '#4a7c59':['Success','Confirmation and completion.'], '#b33939':['Error','Errors and destructive actions.'], '#b8860b':['Attention','Warnings, drafts and pending states.']
-  };
-  [...b.palette.core,...b.palette.cream,...b.palette.state].forEach(x=>{if(words[x.hex]) [x.name,x.role]=words[x.hex]});
-  const surfaceNames=['raised paper','paper','recessed paper','dark field','ink','deep ink']; b.palette.surfaces.forEach((x,i)=>x.name=surfaceNames[i]);
   const roles=['Navigation, dates, categories, captions and metadata. Never inside reading paragraphs.','Feature titles and cover-scale statements.','Long-form essays and article introductions.','Forms, controls and supporting interface text.','Selected quotations and literary openings.'];
   const samples=['EPRIS JOURNAL — ISSUE 04 / MMXXVI','A room for slower attention','Every issue gives attention a shape.','Subscribe to the journal','We write about what cannot be reduced to news.']; b.fonts.forEach((x,i)=>{x.role=roles[i];x.sample=samples[i]});
   const scaleNames=['utility','caption','category','metadata','standfirst','body','lead','subheading','headline','cover']; const scaleRoles=['Copyright and technical marks.','Image captions, dates and tags.','Categories, navigation and controls.','Author, reading time and card data.','Card summaries.','Article body copy.','Opening paragraph.','Article section headings.','Story title.','Cover and lead-feature title.']; b.scale.forEach((x,i)=>{x.name=scaleNames[i];x.role=scaleRoles[i]});
