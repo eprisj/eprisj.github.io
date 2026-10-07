@@ -466,6 +466,7 @@ const SUPPORT_NOTE = {
   },
   methods: [
     { label: "PayPal", value: "munister@outlook.com" },
+    { label: "PayPal.Me", value: "paypal.me/ViacheslawMunister" },
     { label: "Card", value: "4149 5100 2837 6350", note: "MUNISTER VIACHESLAV" },
     { label: "IBAN", value: "UA733003350000002620715221312" },
   ],

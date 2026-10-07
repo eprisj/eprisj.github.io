@@ -42,6 +42,7 @@ const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string;
 
 const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
   { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
+  { label: 'PayPal.Me', value: 'paypal.me/ViacheslawMunister', icon: Wallet },
   { label: 'Card', value: '4149 5100 2837 6350', icon: CreditCard },
   { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
@@ -120,7 +121,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                 }`}
               >
                 <Icon size={14} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
-                <span className="w-[46px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[52px]">
+                <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
                   {method.label}
                 </span>
                 <span className="min-w-0 flex-1 break-all font-mono text-[12.5px] font-semibold leading-snug text-[var(--c-accent)] sm:text-[13.5px]">
