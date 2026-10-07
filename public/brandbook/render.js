@@ -48,8 +48,8 @@
       out[key] = saved && key in saved ? saved[key] : BB.defaults[key];
     }
     out.page = {
-      kicker: 'Epris Journal · Brand Book · MMXXVI',
-      headline: 'How EPRIS looks, reads and moves',
+      kicker: 'Epris Journal · Editorial Standards · 2026',
+      headline: 'EPRIS editorial standards',
       description: out.intro,
       ...((saved && saved.page) || {}),
     };
@@ -113,10 +113,10 @@
         <div class="specimen-row">
           <button type="button" class="pill">read</button>
           <span class="tagline">category</span>
-          <span class="gold-label">gold label</span>
+          <span class="gold-label">section label</span>
           <span style="font-family:var(--read);font-size:22px">An editorial headline</span>
         </div>
-        <p class="verdict">One thought the reader can carry away.</p>
+        <p class="verdict">A verified quotation with its attribution.</p>
         <div class="specimen-row">
           <span class="photo-slot" aria-hidden="true"></span>
           <span class="caption">fig. 04 · limassol · 2026</span>
@@ -199,12 +199,12 @@
     document.getElementById('bb-toc').innerHTML = SECTIONS
       .map(([id, fallback]) => `<a href="#${id}">${esc(label(id === 'elements' ? 'components' : id === 'motion' ? 'motionRules' : id === 'contrast' ? 'a11y' : id, fallback))}</a>`).join('');
     document.getElementById('bb-body').innerHTML = [
-      section('identity', '01', label('identity','Identity'), '', identity), section('palette', '02', 'Colour', 'Black and white define the identity; grey exists only for hierarchy and interface states.', palette),
-      section('type', '03', 'Typography', 'Five families, each with one clear role.', type), section('scale', '04', 'Type scale', 'A consistent hierarchy from metadata to cover.', scale),
-      section('elements', '05', label('components','Editorial elements'), 'The parts from which an EPRIS page is built.', elements), section('imagery', '06', label('imagery','Imagery'), '', imagery),
-      section('voice', '07', label('voice','Voice'), 'Language is as recognisable as colour.', voice), section('dodont', '08', label('dodont','Do and don\u2019t'), '', dodont),
-      section('motion', '09', label('motionRules','Motion and rhythm'), 'Three speeds and a disciplined spacing system.', motion), section('rules', '10', label('rules','Core principles'), 'Seven rules that keep the system coherent.', rules),
-      section('contrast', '11', label('a11y','Contrast and accessibility'), 'Ratios are calculated against WCAG 2.2.', contrastBlock), section('refs', '12', label('refs','References'), 'Editorial character and standards used to test decisions.', refs),
+      section('identity', '01', label('identity','Identity'), 'Scope, editorial standard and visual system.', identity), section('palette', '02', 'Colour', 'Black, white and neutral grey.', palette),
+      section('type', '03', 'Typography', 'Each type family has one defined role.', type), section('scale', '04', 'Type scale', 'Approved sizes for editorial and interface text.', scale),
+      section('elements', '05', label('components','Editorial elements'), 'Specifications for repeated interface and editorial components.', elements), section('imagery', '06', label('imagery','Imagery'), 'Selection, treatment, rights and delivery.', imagery),
+      section('voice', '07', label('voice','Voice'), 'Clear examples for interface copy and editorial writing.', voice), section('dodont', '08', label('dodont','Do and don\u2019t'), 'Common decisions shown side by side.', dodont),
+      section('motion', '09', label('motionRules','Motion and spacing'), 'Timings and spacing values used across the site.', motion), section('rules', '10', label('rules','Core rules'), 'The non-negotiable rules of the system.', rules),
+      section('contrast', '11', label('a11y','Accessibility'), 'Contrast values and minimum interaction requirements.', contrastBlock), section('refs', '12', label('refs','Standards and assets'), 'External standards and approved asset sources.', refs),
     ].join('');
 
     wireToc();
