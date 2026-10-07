@@ -47,6 +47,13 @@
     for (const key of Object.keys(BB.defaults)) {
       out[key] = saved && key in saved ? saved[key] : BB.defaults[key];
     }
+    out.page = {
+      kicker: 'Epris Journal · Brand Book · MMXXVI',
+      headline: 'How EPRIS looks, reads and moves',
+      description: out.intro,
+      ...((saved && saved.page) || {}),
+    };
+    out.sectionLabels = { ...((saved && saved.sectionLabels) || {}) };
     return out;
   }
 
@@ -74,6 +81,7 @@
   }
 
   function build(d) {
+    const label = (key, fallback) => d.sectionLabels[key] || fallback;
     const identity = `<div class="grid g3">${d.identity.map((c) => `
       <article class="card"><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p></article>`).join('')}</div>`;
 
@@ -185,16 +193,18 @@
           <p>${esc(r.why)}</p>
         </div>`).join('')}`).join('');
 
-    document.getElementById('bb-lede').textContent = d.intro;
+    document.getElementById('bb-kicker').textContent = d.page.kicker;
+    document.getElementById('bb-headline').innerHTML = esc(d.page.headline).replace(/\n/g, '<br>');
+    document.getElementById('bb-lede').textContent = d.page.description || d.intro;
     document.getElementById('bb-toc').innerHTML = SECTIONS
-      .map(([id, label]) => `<a href="#${id}">${label}</a>`).join('');
+      .map(([id, fallback]) => `<a href="#${id}">${esc(label(id === 'elements' ? 'components' : id === 'motion' ? 'motionRules' : id === 'contrast' ? 'a11y' : id, fallback))}</a>`).join('');
     document.getElementById('bb-body').innerHTML = [
-      section('identity', '01', 'Identity', '', identity), section('palette', '02', 'Colour', 'Black and white define the identity; grey exists only for hierarchy and interface states.', palette),
+      section('identity', '01', label('identity','Identity'), '', identity), section('palette', '02', 'Colour', 'Black and white define the identity; grey exists only for hierarchy and interface states.', palette),
       section('type', '03', 'Typography', 'Five families, each with one clear role.', type), section('scale', '04', 'Type scale', 'A consistent hierarchy from metadata to cover.', scale),
-      section('elements', '05', 'Editorial elements', 'The parts from which an EPRIS page is built.', elements), section('imagery', '06', 'Imagery', '', imagery),
-      section('voice', '07', 'Voice', 'Language is as recognisable as colour.', voice), section('dodont', '08', 'Do and don\u2019t', '', dodont),
-      section('motion', '09', 'Motion and rhythm', 'Three speeds and a disciplined spacing system.', motion), section('rules', '10', 'Core principles', 'Seven rules that keep the system coherent.', rules),
-      section('contrast', '11', 'Contrast and accessibility', 'Ratios are calculated against WCAG 2.2.', contrastBlock), section('refs', '12', 'References', 'Editorial character and standards used to test decisions.', refs),
+      section('elements', '05', label('components','Editorial elements'), 'The parts from which an EPRIS page is built.', elements), section('imagery', '06', label('imagery','Imagery'), '', imagery),
+      section('voice', '07', label('voice','Voice'), 'Language is as recognisable as colour.', voice), section('dodont', '08', label('dodont','Do and don\u2019t'), '', dodont),
+      section('motion', '09', label('motionRules','Motion and rhythm'), 'Three speeds and a disciplined spacing system.', motion), section('rules', '10', label('rules','Core principles'), 'Seven rules that keep the system coherent.', rules),
+      section('contrast', '11', label('a11y','Contrast and accessibility'), 'Ratios are calculated against WCAG 2.2.', contrastBlock), section('refs', '12', label('refs','References'), 'Editorial character and standards used to test decisions.', refs),
     ].join('');
 
     wireToc();
