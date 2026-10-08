@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">
+  <rect width="1800" height="1100" fill="#f4f1eb"/>
+  <style>
+    .serif{font-family:Georgia,serif}.mono{font-family:'Courier New',monospace}.ink{fill:#121212}.muted{fill:#77736d}
+    .rule{stroke:#121212;stroke-width:2;fill:none}.hair{stroke:#121212;stroke-width:1;fill:none}.dash{stroke:#77736d;stroke-width:1;stroke-dasharray:8 10;fill:none}
+  </style>
+  <text x="90" y="100" class="serif ink" font-size="50">A museum is approached in degrees</text>
+  <text x="90" y="148" class="mono muted" font-size="18" letter-spacing="3">URBAN FIELD / NOT A SINGLE DOOR</text>
+  <line x1="90" y1="190" x2="1710" y2="190" class="rule"/>
+
+  <g transform="translate(90 275)">
+    <path d="M0 400 H1620" class="hair"/>
+    <path d="M70 400 C260 210 440 210 630 400 S1000 590 1190 400 S1430 210 1550 400" class="dash"/>
+    <rect x="1080" y="70" width="470" height="330" fill="#111"/>
+    <rect x="1175" y="150" width="280" height="250" fill="#f4f1eb"/>
+    <line x1="0" y1="400" x2="0" y2="435" class="rule"/>
+    <line x1="340" y1="400" x2="340" y2="435" class="rule"/>
+    <line x1="720" y1="400" x2="720" y2="435" class="rule"/>
+    <line x1="1080" y1="400" x2="1080" y2="435" class="rule"/>
+    <line x1="1550" y1="400" x2="1550" y2="435" class="rule"/>
+
+    <circle cx="135" cy="365" r="18" fill="#111"/><line x1="135" y1="383" x2="135" y2="400" class="rule"/>
+    <circle cx="500" cy="365" r="18" fill="#111"/><line x1="500" y1="383" x2="500" y2="400" class="rule"/>
+    <circle cx="905" cy="365" r="18" fill="#111"/><line x1="905" y1="383" x2="905" y2="400" class="rule"/>
+
+    <g class="mono ink" font-size="17" letter-spacing="1">
+      <text x="0" y="485">CITY ROUTINE</text><text x="340" y="485">VISIBLE PROGRAMME</text><text x="720" y="485">PLACE TO PAUSE</text><text x="1080" y="485">FREE INTERIOR</text><text x="1550" y="485" text-anchor="end">COLLECTION</text>
+    </g>
+    <g class="serif muted" font-size="23">
+      <text x="0" y="535">pass without deciding</text><text x="340" y="535">understand what is inside</text><text x="720" y="535">approach without purchase</text><text x="1080" y="535">enter without expertise</text>
+    </g>
+  </g>
+
+  <line x1="90" y1="925" x2="1710" y2="925" class="hair"/>
+  <text x="90" y="975" class="serif ink" font-size="25">The invitation succeeds when every step gives information before it asks for commitment.</text>
+  <text x="1710" y="1030" text-anchor="end" class="mono muted" font-size="15" letter-spacing="2">EPRIS / URBAN CULTURE STUDY / 2026</text>
+</svg>
