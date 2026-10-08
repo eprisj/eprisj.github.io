@@ -108155,6 +108155,413 @@
               "url": "https://www.clevelandart.org/exhibitions/ann-hamilton-still-and-moving-tactile-image"
             }
           ]
+        },
+        {
+          "id": 63,
+          "draft": true,
+          "title": "Qui a besoin d'un musée ? La conception urbaine de l'invitation",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "8 oct. 2026",
+          "excerpt": "Un musée ne trouve pas son public à la billetterie. Il le trouve—ou le perd—à travers le transport, les trottoirs, les seuils et la vie civique de la rue.",
+          "category": "Architecture",
+          "subcategory": "Urbanisme & Espace Public",
+          "tags": [
+            "Musées",
+            "Conception Urbaine",
+            "Art Public",
+            "Espace Public",
+            "Accessibilité",
+            "Infrastructure Culturelle",
+            "Orientation"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Tate_Modern_-_turbine_hall_cranes_-_geograph.org.uk_-_6712263.jpg",
+          "previewToken": "museum-street-e0847bec006e55eb",
+          "updatedAt": "2026-10-08T06:53:38.595Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Une visite de musée commence rarement par l'art. Elle commence par un calcul : combien de temps le voyage prendra, si l'itinéraire est lisible, si l'entrée paraît publique, s'il y a un endroit pour faire une pause, si le bâtiment semble destiné à des personnes comme nous. L'institution peut posséder une collection majeure et ne rien faire payer, mais rester néanmoins socialement et spatialement coûteuse. Une porte gratuite à la fin d'un voyage incertain n'est pas la même chose qu'un accès."
+            },
+            {
+              "type": "text",
+              "content": "C'est le problème urbain central de la culture de masse. Les musées sont invités à servir un large public, mais ils sont souvent conçus comme des objets singuliers : un point de repère placé sur un site, photographié depuis une place et jugé par ce qui se passe à l'intérieur. Les visiteurs vivent autre chose. Ils rencontrent une chaîne de seuils s'étendant du calendrier à la chaussée, de la chaussée à la cour, de la cour à la sécurité, et de la sécurité à la première salle. Chaque seuil peut transformer un passant en visiteur — ou le renvoyer discrètement."
+            },
+            {
+              "type": "quote",
+              "content": "Le musée ne trouve pas son public à la billetterie. Il le trouve — ou le perd — le long du parcours à travers la ville."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Qui a réellement besoin du musée?"
+            },
+            {
+              "type": "text",
+              "content": "La réponse conventionnelle est universelle : tout le monde. Elle est moralement attrayante et opérationnellement faible. Différents publics ont besoin de choses différentes de la même institution. Un touriste peut avoir besoin d'une destination reconnaissable et d'une visite prévisible de deux heures. Un résident local peut avoir besoin d'un lieu qui reste utile après la fermeture de l'exposition temporaire. Un parent a besoin de toilettes, de sièges et d'un itinéraire qui fonctionne avec une poussette. Un adolescent peut avoir besoin de permission pour entrer sans déjà savoir comment se comporter. Un visiteur handicapé a besoin d'informations fiables avant de quitter la maison, pas d'une solution improvisée à la porte."
+            },
+            {
+              "type": "text",
+              "content": "Les données de participation rendent visibles les limites de l'universalité. L'enquête Taking Part 2019–20 de l'Angleterre a révélé que 51 pour cent des adultes avaient visité un musée ou une galerie au cours de l'année précédente ; près de la moitié ne l'avait pas fait. Les données ultérieures de l'enquête Participation ont continué à montrer de fortes différences selon l'éducation, la profession et la deprivation. L'entrée gratuite peut augmenter la fréquentation totale sans changer automatiquement qui se sent entitled, informé ou capable de participer. Le public du musée ne se limite pas simplement à attendre dehors. Il est produit par le transport, le temps, l'habitude, la confiance sociale et la conception de l'invitation."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/9/94/Tate_Modern_-_turbine_hall_cranes_-_geograph.org.uk_-_6712263.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La salle des turbines de Tate Modern fonctionne comme une rue intérieure : un volume gratuit et lisible qui peut être pénétré avant qu'un visiteur ne s'engage dans un parcours de galerie. Photographie via Wikimedia Commons ; source à licence ouverte liée.",
+              "alt": "La grande salle des turbines à l'intérieur de Tate Modern à Londres.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tate_Modern_-_turbine_hall_cranes_-_geograph.org.uk_-_6712263.jpg"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "L'accès est une séquence, pas un rayon"
+            },
+            {
+              "type": "text",
+              "content": "Les plans urbains décrivent souvent l'accès culturel avec des cercles : un musée se trouve à moins de dix minutes à pied, ou dans le périmètre d'un réseau de transport. La distance compte, mais le cercle cache le voyage. Des recherches récentes sur l'accessibilité perçue des musées proposent une séquence plus utile : faisabilité avant le voyage, confort et prévisibilité dans le transport, et utilisabilité à l'arrivée. Deux musées peuvent être à égal distance en mètres et radicalement différents en pratique. Un itinéraire traverse des devantures actives et une place ombragée ; l'autre suit un mur blanc, traverse six voies de circulation et se termine à une entrée visible seulement après une barrière de sécurité."
+            },
+            {
+              "type": "text",
+              "content": "La séquence suggère six formes de friction. La friction informationnelle demande si les heures d'ouverture, le prix et les conditions d'accès sont clairs. La friction temporelle mesure le coût réel en temps, y compris les transferts et les files d'attente. La friction mobilité inclut les trottoirs cassés, les crossings dangereux et l'absence de routes sans marchepied. La friction visuelle concerne la capacité à trouver la destination et la porte. La friction sociale demande si l'approche signale l'accueil ou la surveillance. La friction procédurale commence à partir du seuil : règles pour les sacs, billetterie, sécurité et l'incertitude quant à la prochaine étape."
+            },
+            {
+              "type": "text",
+              "content": "Aucun geste architectural unique ne supprime les six. Une canopée spectaculaire ne peut réparer un bus peu fiable ; une entrée gratuite ne peut rendre un passage souterrain hostile confortable ; un hall transparent ne peut aider si la seule approche est une voie de service. L'unité efficace de conception du musée n'est donc pas le bâtiment mais le parcours complet du visiteur."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/museum-urban-journey.svg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le parcours du musée commence avant l'architecture. Six étapes exposent six formes différentes de friction, de l'incertitude quant à l'appartenance à la désorientation à l'intérieur de la collection. Diagramme : EPRIS Research, 2026.",
+              "alt": "Diagramme du parcours urbain en six étapes vers un musée, de la prise de conscience à la collection."
+            },
+            {
+              "type": "text",
+              "content": "Le diagramme rend une implication politique explicite : l'accessibilité ne peut pas être déléguée à un seul département. La communication façonne la conscience, les agences de transport façonnent le voyage, la planification façonne la rue, les architectes façonnent le seuil, et les conservateurs façonnent l'orientation à l'intérieur. Une rupture dans n'importe quel lien change qui arrive."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Comment trouver un visiteur dans la rue"
+            },
+            {
+              "type": "text",
+              "content": "Le passant n'est pas une catégorie vide. La plupart des gens dans une rue ont déjà une destination, un horaire et une raison d'être là. Pour les attirer, un musée doit offrir une interruption à faible risque. La première exigence est la visibilité, mais la visibilité n'est pas la même que la monumentalité. Une façade peut être inoubliable et cacher ce que l'entrée implique. La visibilité utile révèle l'activité : un hall, une installation gratuite, un café, des gens assis, un itinéraire qui continue plutôt que de se terminer à l'institution."
+            },
+            {
+              "type": "text",
+              "content": "La deuxième exigence est un engagement réversible. Une personne doit pouvoir s'approcher, regarder et partir sans embarras ni coût. Des escaliers, des avant-corps, des galeries, des jardins et des halls gratuits peuvent créer cette condition intermédiaire. Les escaliers du Metropolitan Museum sont réussis non pas parce qu'ils acheminent efficacement tout le monde à travers les portes, mais parce qu'ils fonctionnent aussi comme sièges, lieu de rencontre et théâtre urbain. Leur usage civique permet au musée d'entrer dans les routines ordinaires avant qu'un billet ne soit envisagé."
+            },
+            {
+              "type": "text",
+              "content": "La troisième exigence est l'information à la vitesse de la marche. Un message face à la rue a des secondes, pas des minutes. Il doit répondre à trois questions : que puis-je voir maintenant, puis-je entrer sans réservation, et combien de temps ou d'argent cela nécessitera-t-il ? Les slogans institutionnels ne répondent à aucune d'entre elles. Un tableau de programme, une zone libre visible et une porte claire font plus que une campagne sur l'ouverture."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/2/20/Design_Museum%2C_Kensington_exterior_2017-09-16.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Design Museum à Kensington se trouve entre une rue principale, un logement et Holland Park. La valeur urbaine réside dans les connexions entre ces conditions, pas seulement dans la proximité. Photo via Wikimedia Commons ; source à licence ouverte liée.",
+              "alt": "Extérieur et approche du Design Museum à Kensington, Londres.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Design_Museum,_Kensington_exterior_2017-09-16.jpg"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Tous les rues ne peuvent pas faire le même travail"
+            },
+            {
+              "type": "text",
+              "content": "La rue de musée idéale est souvent imaginée comme animée, centrale et à usage mixte. Ce n'est qu'un modèle. Une rue principale fournit un flux continu de piétons, des transports en commun et des raisons de combiner une visite avec d'autres courses. Un bord de parc offre un mouvement plus lent, un usage familial et de l'espace pour le travail en plein air. Une promenade en bord de waterfront offre visibilité et trafic de promenade mais peut devenir vide par mauvais temps ou après la tombée de la nuit. Un campus offre des utilisateurs locaux répétés mais peut sembler territorial pour les étrangers. Une frange industrielle offre de l'échelle et de l'accessibilité tout en rendant la fréquentation spontanée plus difficile."
+            },
+            {
+              "type": "text",
+              "content": "La question n'est pas de savoir si une rue est universellement adaptée. C'est si ses schémas de mouvement existants correspondent à la mission publique du musée. Un lieu dépendant des groupes scolaires a besoin d'accès pour autocar et d'un rassemblement sécurisé pour les groupes. Une salle d'art contemporain cherchant un jeune public local a besoin de transports en soirée, de nourriture ordinaire à proximité et d'un seuil qui ne donne pas l'impression d'une cérémonie. Un musée de sculpture peut utiliser un parc comme une collection ouverte, tandis qu'une archive fragile peut nécessiter un bord plus contrôlé. Le programme et la rue doivent être conçus comme un seul système."
+            },
+            {
+              "type": "text",
+              "content": "Quatre conditions de rue sont constamment précieuses : un parcours piétonnier continu, suffisamment d'espace de séjour près de l'entrée, des usages actifs qui dépassent les heures du musée, et plus d'une raison d'être là. La fréquentation seule ne suffit pas. Les navetteurs passant par un échangeur étroit peuvent être nombreux mais indisponibles. Un flux plus petit qui ralentit déjà — s'asseoir, rencontrer, manger, regarder ou traverser un parc — peut être plus convertible."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/museum-street-types.svg",
+              "align": "center",
+              "width": 100,
+              "caption": "Six configurations récurrentes de musées. Aucune n'est intrinsèquement supérieure ; chacune produit une relation différente entre mouvement, temps de séjour et découverte spontanée. Diagramme : EPRIS Recherche, 2026.",
+              "alt": "Diagramme comparatif de six configurations de rue de musée : rue principale, bord de parc, front de mer, campus, périphérie industrielle et nœud de transit."
+            },
+            {
+              "type": "text",
+              "content": "Cette typologie est diagnostique plutôt que prescriptive. Elle invite les institutions à cesser de traiter la « centralité » comme un bien universel et à identifier plutôt quels rythmes quotidiens leur site peut soutenir. Un front de mer peut créer un contact long et lent avec l'art ; un nœud de transit peut produire une visibilité énorme mais presque aucune pause non planifiée."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/d/d5/HK_YTM_%E8%A5%BF%E4%B9%9D%E9%BE%8D%E6%96%87%E5%8C%96%E5%8D%80_West_Kowloon_Cultural_District_M%2B_Plus_Museum_%E5%A4%A9%E5%8F%B0%E8%8A%B1%E5%9C%92_roof_garden_view_WKCD_Art_Park_July_2022_Px3_01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "À West Kowloon, M+ est abordé à travers un paysage culturel plus vaste de parc et de front de mer. Le musée bénéficie d'usages publics qui ne dépendent pas de son entrée. Photographie via Wikimedia Commons ; source à licence ouverte liée.",
+              "alt": "Vue depuis le jardin sur le toit de M+ vers le West Kowloon Art Park à Hong Kong.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:HK_YTM_%E8%A5%BF%E4%B9%9D%E9%BE%8D%E6%96%87%E5%8C%96%E5%8D%80_West_Kowloon_Cultural_District_M%2B_Plus_Museum_%E5%A4%A9%E5%8F%B0%E8%8A%B1%E5%9C%92_roof_garden_view_WKCD_Art_Park_July_2022_Px3_01.jpg"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "L'art public n'est pas automatiquement public"
+            },
+            {
+              "type": "text",
+              "content": "Les grandes sculptures et murals sont fréquemment sollicités pour résoudre la relation entre musée et ville. Ils peuvent établir une orientation, rendre un itinéraire mémorable et permettre un contact avec l'art sans entrée. Mais l'échelle et l'emplacement extérieur ne garantissent pas la publicité. Une œuvre sur une place clôturée, entourée de trafic ou présentée sans ombre, sièges ou passage sécurisé, reste formellement publique et pratiquement éloignée."
+            },
+            {
+              "type": "text",
+              "content": "L'art public devient une infrastructure urbaine lorsqu'il modifie ce qu'un lieu permet. Il peut créer un point de rencontre, marquer un itinéraire accessible, offrir un abri, conserver une mémoire que le développement commercial effacerait, ou relier des quartiers à travers une barrière. C'est une norme plus élevée que l'impact visuel. Elle demande qui peut approcher l'œuvre, à quelles heures, selon quelles règles, et si la linger est considérée comme légitime."
+            },
+            {
+              "type": "text",
+              "content": "La distinction protège également l'art contre la réduction à un équipement de création d'espaces publics. Chaque œuvre ne doit pas nécessairement produire de la sociabilité ou de la relance économique. L'art critique, difficile et même obstructif a un rôle public. L'obligation urbaine incombe au cadre : la ville doit fournir les conditions physiques et civiques dans lesquelles le désaccord, la curiosité et l'indifférence peuvent se produire sans achat."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Le problème Bilbao"
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Guggenheim_Bilbao._Exterior.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Guggenheim Bilbao est devenu un raccourci pour la régénération axée sur la culture. Sa leçon est souvent réduite au bâtiment, bien que le musée fasse partie d'une transformation plus large du transport, du front fluvial et de l'espace public. Photographie via Wikimedia Commons ; source à licence ouverte liée.",
+              "alt": "Le musée Guggenheim Bilbao à côté de la rivière Nervión.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guggenheim_Bilbao._Exterior.jpg"
+            },
+            {
+              "type": "text",
+              "content": "Le Guggenheim Bilbao reste le cas incontournable parce qu'il a transformé un musée en une image mondiale du changement urbain. L’‘effet Bilbao’ est généralement raconté comme une causalité architecturale : commander un bâtiment extraordinaire et les visiteurs, l’investissement et la confiance suivront. Le récit est incomplet. Le musée appartenait à un programme plus large de réhabilitation du front fluvial, d’investissement dans le transport, de nouvel espace public et de restructuration économique. L’icône était puissante parce que la ville avait modifié les systèmes qui l’entouraient."
+            },
+            {
+              "type": "text",
+              "content": "Copier l'objet sans ces systèmes produit une isolation culturelle : une destination atteinte par les visiteurs mais faiblement connectée à la vie locale. La régénération peut également redistribuer la valeur de manière inégale. La hausse des prix fonciers, le commerce touristique et le branding des anciens quartiers industriels peuvent déplacer les communautés dont l'histoire a fourni l'identité de la zone. Un musée peut être économiquement réussi tout en réduisant la signification sociale de ses environs."
+            },
+            {
+              "type": "text",
+              "content": "La question pertinente n'est donc pas de savoir si un musée augmente le nombre de visiteurs, mais comment la valeur circule. Les itinéraires locaux s'améliorent-ils ? Les résidents peuvent-ils utiliser le paysage sans acheter d'entrée ? Les petites entreprises sont-elles connectées au nouveau flux de visiteurs ? L'institution commande-t-elle localement et fournit-elle des itinéraires vers l'emploi ? Le domaine public reste-t-il public lorsque le musée est fermé ? Ces questions transforment l'impact d'un titre en un récit urbain."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "La salle gratuite avant la collection"
+            },
+            {
+              "type": "text",
+              "content": "Un musée peut réduire le seuil institutionnel en plaçant des salles publiques utiles avant les galeries contrôlées : hall d'entrée, bibliothèque, toilettes, café, sièges, espace de projet, salle d'éducation ou passage couvert. La Turbine Hall de Tate Modern démontre la force d'une telle salle. Elle est monumentale, mais sa réussite pratique est plus simple : un visiteur peut entrer dans un intérieur indubitablement culturel sans d'abord choisir une exposition ou démontrer une expertise."
+            },
+            {
+              "type": "text",
+              "content": "Cette pièce d'entrée ne doit pas être confondue avec un hall commercial. Son succès dépend de la permission non commerciale. Si chaque chaise appartient à un café, si la sécurité défie les personnes qui attendent, ou si la voie libre est visuellement subordonnée à celle payante, la promesse s'effondre. Les meilleurs espaces de seuil soutiennent plusieurs durées : deux minutes pour s'orienter, vingt minutes pour rencontrer quelqu'un, une heure pour travailler, ou un après-midi qui devient progressivement une visite de musée."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/museum-threshold-gradient.svg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un musée peut approfondir la publicisation par étapes : rue, avant-cour civique, hall libre, orientation et collection. Chaque étape doit donner des informations avant d'exiger un engagement. Diagramme : Recherche EPRIS, 2026.",
+              "alt": "Diagramme en noir et blanc montrant un dégradé en cinq étapes de la rue publique à la collection de musée payante."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/7/74/ARoS_Aarhus_Art_Museum_photographed_from_air.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "ARoS à Aarhus fonctionne à la fois comme point de repère et destination civique. La recherche sur les musées en tant qu'espace public urbain souligne que la publicisation dépend de la façon dont les espaces sont utilisés et gouvernés, pas seulement de leur forme architecturale. Photographie aérienne via Wikimedia Commons ; source à licence ouverte liée.",
+              "alt": "Vue aérienne du ARoS Aarhus Art Museum et de ses rues environnantes.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:ARoS_Aarhus_Art_Museum_photographed_from_air.jpg"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "À l'intérieur, la ville continue"
+            },
+            {
+              "type": "text",
+              "content": "Traverser la porte ne met pas fin au problème urbain. La circulation au musée répartit l'attention tout comme les rues répartissent le mouvement. Les visiteurs suivent des ouvertures visibles, d'autres personnes, des points de repère et des raccourcis perçus. Une centaine d'études sur les visiteurs montre que le choix du chemin ne peut pas être réduit à une règle universelle telle que toujours tourner à droite. La disposition, l'attraction, la connaissance préalable, l'affluence et le but individuel interagissent."
+            },
+            {
+              "type": "text",
+              "content": "Une bonne signalisation n'est pas la multiplication de panneaux. Elle commence par une structure spatiale intelligible : une destination visible suivante, des itinéraires distinguables, des endroits pour s'arrêter sans bloquer le mouvement et un moyen fiable de revenir en arrière. La navigation numérique peut aider, mais elle ne peut pas réparer un plan dans lequel chaque seuil semble identique ou l'escalier principal est caché. Le musée devrait permettre à la fois un itinéraire concis pour un visiteur de première visite et des choix latéraux pour les visites de retour."
+            },
+            {
+              "type": "text",
+              "content": "La connexion la plus profonde entre musée et ville est donc comportementale. Les deux devraient permettre l'orientation sans exiger l'obéissance. Un itinéraire réussi dans le musée offre suffisamment de structure pour réduire l'anxiété et suffisamment de choix pour soutenir la découverte. Cet équilibre est particulièrement important pour les visiteurs qui n'arrivent pas avec une habitude de musée déjà acquise."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Trois auteurs, trois tests pour la frontière du musée"
+            },
+            {
+              "type": "text",
+              "content": "Trois récits influents de la vie publique affûtent les obligations urbaines du musée. Ils ne fournissent pas un guide de style. Chacun offre un test : si le bord est surveillé et habité, si la vie précède la forme, et si les visiteurs peuvent agir plutôt que simplement recevoir."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/1/14/Jane_Jacobs.jpg",
+              "align": "center",
+              "width": 72,
+              "caption": "Jane Jacobs lors d'une conférence de presse en 1961 à Greenwich Village. Photographie par Phil Stanziola, collection New York World-Telegram and Sun, Bibliothèque du Congrès ; domaine public via Wikimedia Commons.",
+              "alt": "Jane Jacobs tenant des documents lors d'une conférence de presse en 1961.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jane_Jacobs.jpg"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Jane Jacobs : le bord habité"
+            },
+            {
+              "type": "quote",
+              "content": "« Il doit y avoir des yeux sur la rue, des yeux appartenant à ceux que l'on pourrait appeler les propriétaires naturels de la rue. » — Jane Jacobs"
+            },
+            {
+              "type": "text",
+              "content": "Les “yeux sur la rue” de Jacobs sont souvent réduits à une surveillance passive. Son point plus large concerne la confiance réciproque produite par l'activité ordinaire. Appliqué à un musée, cela demande si le rez-de-chaussée contribue par des portes, fenêtres, œuvres, sièges et une présence locale répétée — ou seulement une façade protégée. Le bord du musée devient plus sûr et plus public lorsque les gens ont des raisons de l'habiter qui ne se limitent pas à la fréquentation des expositions."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Jan_Gehl_2017_Gda%C5%84sk.jpg",
+              "align": "center",
+              "width": 72,
+              "caption": "Jan Gehl au European Solidarity Centre à Gdańsk, 2017. Photographie par Kapsuglan, CC BY-SA 4.0, via Wikimedia Commons.",
+              "alt": "Urbaniste Jan Gehl parlant à Gdansk en 2017.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jan_Gehl_2017_Gda%C5%84sk.jpg"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Jan Gehl : la vie avant la forme"
+            },
+            {
+              "type": "quote",
+              "content": "“La première vie, puis les espaces, puis les bâtiments — l'autre façon ne fonctionne jamais.” — Jan Gehl"
+            },
+            {
+              "type": "text",
+              "content": "Gehl inverse la compétition muséale habituelle, dans laquelle un bâtiment est commandé en premier et le comportement public est censé suivre. Sa séquence commence par l'observation : qui marche déjà, attend, joue, travaille et rencontre ici ; à quelles heures ; par quel temps ; et avec quelles contraintes physiques ? L'espace peut alors soutenir ces modèles et en créer de nouveaux. Le bâtiment vient en dernier en tant que participant à la vie publique, non en remplacement."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Nina_Simon_%28born_1981%29_in_the_video_%27Nina_Simon_at_Future_of_Libraries_11%27.png",
+              "align": "center",
+              "width": 72,
+              "caption": "Nina Simon parlant des institutions culturelles participatives. Image fixe de la vidéo via Wikimedia Commons ; lien vers la source et la licence.",
+              "alt": "Écrivain de musées Nina Simon parlant lors d'une présentation enregistrée.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nina_Simon_(born_1981)_in_the_video_%27Nina_Simon_at_Future_of_Libraries_11%27.png"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Nina Simon : de spectateur à participant"
+            },
+            {
+              "type": "quote",
+              "content": "« Un lieu où les visiteurs peuvent créer, partager et se connecter entre eux autour du contenu. » — Nina Simon"
+            },
+            {
+              "type": "text",
+              "content": "Le musée participatif de Simon déplace le public du cible démographique à l'acteur culturel. Sur le plan urbanistique, la participation commence avant un atelier ou un mur de commentaires. Les gens peuvent-ils s'approprier les escaliers, le hall ou le jardin pour des rencontres et un usage informel ? La connaissance locale peut-elle entrer dans le programme de l'institution ? Un seuil qui ne tolère que le comportement conçu par le musée contredit la participation même lorsque l'exposition invite aux retours."
+            },
+            {
+              "type": "text",
+              "content": "Ensemble, les trois tests forment une séquence exigeante. Jacobs demande si la vie quotidienne rend la frontière digne de confiance. Gehl demande si l'activité humaine observée a façonné l'espace. Simon demande si l'institution donne aux visiteurs une véritable autonomie. Un musée peut réussir un et échouer aux autres : il peut être occupé mais non participatif, magnifiquement dimensionné mais socialement contrôlé, ou participatif à l'intérieur tout en restant intimidant depuis la rue."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Un test pratique pour la rue du musée"
+            },
+            {
+              "type": "text",
+              "content": "Avant d'approuver un bâtiment culturel, les urbanistes et les institutions devraient parcourir l'itinéraire complet avec plusieurs utilisateurs et enregistrer les points d'incertitude. L'entrée peut-elle être identifiée depuis l'arrêt le plus proche ? Chaque passage est-il légal, direct et sans marche ? Une personne peut-elle faire une pause près de la porte sans rien acheter ? Le programme actuel est-il lisible depuis le trottoir ? Les heures d'ouverture et les prix sont-ils visibles avant la ligne de sécurité ? Le rez-de-chaussée révèle-t-il une utilisation publique ? Y a-t-il une raison de rester lorsque les galeries sont fermées ?"
+            },
+            {
+              "type": "text",
+              "content": "Ils devraient aussi mesurer ce que les chiffres de fréquentation conventionnels manquent : combien de personnes utilisent la cour sans entrer, quelles approches sont évitées, où les groupes attendent, quand le bord devient vide, à quelle fréquence les passants demandent des directions à la sécurité, et si les résidents locaux reviennent pour des usages non liés à l'exposition. Ces observations révèlent si l'institution est un lieu public ou simplement un objet publicisé."
+            },
+            {
+              "type": "quote",
+              "content": "Un musée devient civique lorsque la ville peut l'utiliser avant de décider de le visiter."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Le musée comme un accord avec la rue"
+            },
+            {
+              "type": "text",
+              "content": "L'art de masse ne signifie pas un art simplifié pour le plus grand public possible. Cela signifie que la possibilité de rencontre est distribuée suffisamment largement pour que la connaissance, la confiance et l'argent ne soient pas des prérequis pour franchir le seuil. L'architecture ne peut pas accomplir cela seule, mais elle peut faciliter ou compliquer l'exclusion. Le même principe s'applique à l'horaire du bus, au signal de passage, au banc, au tableau d'affichage, aux instructions du garde et au prix d'une heure."
+            },
+            {
+              "type": "text",
+              "content": "La tâche urbaine du musée n'est pas de capturer chaque passant. C'est de rendre l'approche compréhensible, l'entrée réversible et le retour plausible. Certaines personnes utiliseront les escaliers et ne verront jamais la collection. D'autres viendront pour le café, la vue, les toilettes, la bibliothèque ou le refuge. Ce n'est pas une fuite de l'objectif de l'institution. C'est le processus par lequel une institution devient partie intégrante de la vie civique ordinaire—et par lequel un passant peut éventuellement devenir un visiteur selon ses propres termes."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Sources et lectures complémentaires"
+            },
+            {
+              "type": "link",
+              "content": "Gouvernement du Royaume-Uni — Enquête Taking Part 2019/20 : musées",
+              "url": "https://www.gov.uk/government/statistics/taking-part-201920-museums/museums-taking-part-survey-201920"
+            },
+            {
+              "type": "link",
+              "content": "Gouvernement du Royaume-Uni — Enquête Participation 2021/22 : musées et galeries",
+              "url": "https://www.gov.uk/government/statistics/participation-survey-2021-22-annual-report/main-report-for-the-participation-survey-october-2021-to-march-2022"
+            },
+            {
+              "type": "link",
+              "content": "Accessibilité perçue du musée comme une expérience urbaine séquentielle (Buildings, 2026)",
+              "url": "https://doi.org/10.3390/buildings16091843"
+            },
+            {
+              "type": "link",
+              "content": "Comprendre le choix du parcours des visiteurs et améliorer la signalisation dans les musées (Curator, 2025)",
+              "url": "https://doi.org/10.1111/cura.70016"
+            },
+            {
+              "type": "link",
+              "content": "Musées en tant qu'espaces publics dans la ville : perspectives d'Aarhus, Danemark",
+              "url": "https://research.cbs.dk/en/publications/museums-as-public-spaces-in-the-city-insights-from-aarhus-denmark/"
+            },
+            {
+              "type": "link",
+              "content": "Possibilités spatiales et comportement des visiteurs : le Design Museum",
+              "url": "https://doi.org/10.1177/30497671261445323"
+            },
+            {
+              "type": "link",
+              "content": "Jane Jacobs — La Mort et la Vie des Grandes Villes Américaines",
+              "url": "https://www.penguinrandomhouse.com/books/86058/the-death-and-life-of-great-american-cities-by-jane-jacobs/"
+            },
+            {
+              "type": "link",
+              "content": "Danish Architecture Center — Jan Gehl Fête ses 90 ans",
+              "url": "https://dac.dk/en/press-releases/jan-gehl-turns-90-the-architect-who-taught-the-world-to-build-cities-for-people"
+            },
+            {
+              "type": "link",
+              "content": "Nina Simon — Le Musée Participatif",
+              "url": "https://participatorymuseum.org/"
+            },
+            {
+              "type": "note",
+              "content": "Recherche et texte par Viacheslav Munister pour EPRIS Journal. Les affirmations statistiques sont tirées des enquêtes officielles liées et des études évaluées par des pairs. Illustrations sont des images sous licence libre de Wikimedia Commons ; chaque légende renvoie à sa source et à son enregistrement de licence."
+            }
+          ]
         }
       ],
       "reviews": [
