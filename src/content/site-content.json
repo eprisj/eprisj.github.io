@@ -12329,7 +12329,7 @@
     },
     {
       "id": 51,
-      "draft": true,
+      "draft": false,
       "title": "The World Is Not What It Says: Magritte’s Afterlife at Gagosian London",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -12349,7 +12349,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/magritte-dominion-of-light-1961.jpg",
       "previewToken": "af164326133e44c0ffbec996",
-      "updatedAt": "2026-09-29T06:08:35.398Z",
+      "updatedAt": "2026-10-08T06:07:57.987Z",
       "content": [
         {
           "type": "text",
@@ -12542,7 +12542,8 @@
           "url": "https://gagosian.com/quarterly/2026/08/17/interview-alex-da-corte-on-rene-magritte/"
         }
       ],
-      "hiddenAt": "2026-09-29T06:08:35.398Z"
+      "hiddenAt": "2026-09-29T06:08:35.398Z",
+      "publishAt": "2026-10-08T06:07:57.853Z"
     },
     {
       "id": 52,
