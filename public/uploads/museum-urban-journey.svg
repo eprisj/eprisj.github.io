@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#f7f6f2"/>
+  <style>
+    .serif{font-family:Georgia,serif}.sans{font-family:Arial,sans-serif}.mono{font-family:Courier New,monospace}
+    .line{stroke:#111;stroke-width:2;fill:none}.fine{stroke:#111;stroke-width:1;fill:none}.muted{fill:#676767}
+  </style>
+  <text x="80" y="95" class="serif" font-size="52">The museum journey is an urban sequence</text>
+  <text x="80" y="142" class="mono muted" font-size="20" letter-spacing="2">ACCESS IS PRODUCED BEFORE THE DOOR</text>
+  <line x1="80" y1="185" x2="1520" y2="185" class="line"/>
+  <path d="M130 420 H1470" class="line"/>
+  <g class="sans" text-anchor="middle">
+    <g transform="translate(150 420)"><circle r="32" fill="#111"/><text y="8" fill="#fff" font-size="22">01</text><text y="-92" class="serif" font-size="28">Awareness</text><text y="88" class="mono muted" font-size="17">Can I imagine</text><text y="113" class="mono muted" font-size="17">myself there?</text></g>
+    <g transform="translate(410 420)"><circle r="32" fill="#fff" stroke="#111" stroke-width="2"/><text y="8" font-size="22">02</text><text y="-92" class="serif" font-size="28">Planning</text><text y="88" class="mono muted" font-size="17">Price, time, access</text><text y="113" class="mono muted" font-size="17">made predictable</text></g>
+    <g transform="translate(670 420)"><circle r="32" fill="#fff" stroke="#111" stroke-width="2"/><text y="8" font-size="22">03</text><text y="-92" class="serif" font-size="28">Transit</text><text y="88" class="mono muted" font-size="17">A route without</text><text y="113" class="mono muted" font-size="17">avoidable friction</text></g>
+    <g transform="translate(930 420)"><circle r="32" fill="#fff" stroke="#111" stroke-width="2"/><text y="8" font-size="22">04</text><text y="-92" class="serif" font-size="28">Street</text><text y="88" class="mono muted" font-size="17">Visible activity,</text><text y="113" class="mono muted" font-size="17">safe approach</text></g>
+    <g transform="translate(1190 420)"><circle r="32" fill="#fff" stroke="#111" stroke-width="2"/><text y="8" font-size="22">05</text><text y="-92" class="serif" font-size="28">Threshold</text><text y="88" class="mono muted" font-size="17">Entry remains</text><text y="113" class="mono muted" font-size="17">reversible</text></g>
+    <g transform="translate(1450 420)"><circle r="32" fill="#111"/><text y="8" fill="#fff" font-size="22">06</text><text y="-92" class="serif" font-size="28">Collection</text><text y="88" class="mono muted" font-size="17">Orientation before</text><text y="113" class="mono muted" font-size="17">instruction</text></g>
+  </g>
+  <line x1="80" y1="650" x2="1520" y2="650" class="fine"/>
+  <text x="80" y="706" class="mono" font-size="18">SIX FRICTIONS</text>
+  <text x="80" y="760" class="serif" font-size="28">informational · temporal · mobility · visual · social · procedural</text>
+  <text x="1520" y="820" text-anchor="end" class="mono muted" font-size="16">EPRIS RESEARCH DIAGRAM 01</text>
+</svg>
