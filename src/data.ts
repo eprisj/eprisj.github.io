@@ -151,6 +151,11 @@ export interface ContentBlock {
   muted?: boolean;
   coordinates?: { lat: number; lng: number };
   url?: string;
+  /** `link` blocks only: a logo makes the link a card (studio, museum, brand).
+   *  `content` is the name, `caption` a short description, `credit` a line of
+   *  facts (city, field), `url` the site. `src` is a structural key, so the
+   *  translation queue leaves the address alone. */
+  src?: string;
   level?: number;
   stretched?: boolean;
   align?: 'left' | 'center' | 'right' | 'full';
