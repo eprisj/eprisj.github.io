@@ -3198,7 +3198,7 @@
   "articles": [
     {
       "id": 64,
-      "draft": true,
+      "draft": false,
       "title": "Where Wisdom Takes Form: Inside the New CCA Tashkent",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -3221,7 +3221,7 @@
       "imageUrl": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ67B4Y6M3PMBTJRQCZDXKR.jpg",
       "showCover": true,
       "previewToken": "cca-tashkent-e26030d49deedaea",
-      "updatedAt": "2026-10-09T06:58:05.407125Z",
+      "updatedAt": "2026-10-09T07:02:22.034Z",
       "content": [
         {
           "type": "text",
@@ -3597,7 +3597,8 @@
           "type": "note",
           "content": "Research and text by Viacheslav Munister for EPRIS Journal. The review is based on official institutional materials, published architectural documentation and independent reporting. Images are official editorial photographs credited to CCA Tashkent and linked to the institutional source."
         }
-      ]
+      ],
+      "publishedAt": "2026-10-09T07:02:22.034Z"
     },
     {
       "id": 63,
@@ -97237,6 +97238,410 @@
             }
           ],
           "publishedAt": "2026-10-08T06:57:08.132728Z"
+        },
+        {
+          "id": 64,
+          "draft": false,
+          "title": "Dove la Saggezza Prende Forma: Dentro il Nuovo CCA Tashkent",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "date": "9 ott 2026",
+          "excerpt": "In una centrale elettrica trasformata del 1912, HIKMAH chiede se argilla, mattone, filo e uso collettivo possano dare alla più recente istituzione artistica dell'Asia Centrale un proprio linguaggio.",
+          "category": "Arte",
+          "subcategory": "Istituzioni & Mostre",
+          "tags": [
+            "CCA Tashkent",
+            "HIKMAH",
+            "Asia Centrale",
+            "Arte Contemporanea",
+            "Riutilizzo Adattivo",
+            "Studio KO",
+            "Uzbekistan",
+            "Istituzioni Culturali"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ67B4Y6M3PMBTJRQCZDXKR.jpg",
+          "showCover": true,
+          "previewToken": "cca-tashkent-e26030d49deedaea",
+          "updatedAt": "2026-10-09T07:03:17.317Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Un nuovo centro d'arte si apre raramente con una domanda vecchia quanto la saggezza. Le istituzioni di solito si annunciano attraverso scala, novità o ambizione civica. CCA Tashkent inizia in modo diverso. La sua mostra inaugurale, HIKMAH, chiede quale conoscenza possa risiedere in argilla, mattone, filo, rame, gesto e ripetizione—e se un edificio segnato da impero, industria e cambiamento tecnologico possa diventare uno strumento per il pensiero piuttosto che un contenitore neutro per l'esposizione."
+            },
+            {
+              "type": "text",
+              "content": "Il Centre for Contemporary Arts Tashkent è stato inaugurato il 6 settembre 2026 in un ex deposito di tram e centrale a diesel costruiti nel 1912. Rielaborato dallo studio parigino Studio KO, è presentato come il primo centro permanente del suo genere a Tashkent e nella regione più ampia: non un museo con una collezione storica, ma un'istituzione produttrice di mostre, performance, film, musica, educazione e ricerca. Questa distinzione è importante. Una collezione stabilizza una narrazione. Un centro simile a kunsthalle deve continuamente inventarne una—e persuadere un pubblico che l'invenzione appartiene a loro."
+            },
+            {
+              "type": "quote",
+              "content": "CCA Tashkent è più convincente quando architettura, opera d'arte e uso pubblico sono consentiti di alterarsi a vicenda."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/news/2026/09/01M36CY767TPGVRP48AYCT0E4H.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Giorno di apertura al CCA Tashkent, 6 settembre 2026. La scala circolare è diventata sia circolazione che un auditorium informale per il primo pubblico del Centro. Fotografia ufficiale cortesemente fornita da CCA Tashkent.",
+              "alt": "Visitatori riuniti intorno alla scala circolare durante l'apertura di CCA Tashkent.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Una centrale elettrica impara una diversa forma di energia"
+            },
+            {
+              "type": "text",
+              "content": "L'edificio si trova vicino a Piazza Amir Temur, all'interno del tessuto urbano composito di Tashkent centrale. La città intorno è già un archivio di progetti concorrenti: costruzioni in laterizio dell'epoca imperiale tardo, pianificazione monumentale sovietica, simboli post-indipendenza e lo sviluppo accelerato del presente. Il complesso del 1912 appartiene a uno strato infrastrutturale precoce. Progettato per tram e generazione diesel, organizzava movimento e energia prima di organizzare cultura."
+            },
+            {
+              "type": "text",
+              "content": "Quella storia conferisce alla conversione più di un carattere industriale pittoresco. L'elettricità e i trasporti erano tecnologie attraverso le quali la città moderna riorganizzava il tempo, la distanza e il lavoro. Il nuovo centro eredita quelle storie mentre cambia il tipo di energia distribuita. La sua materia prima è ora l'attenzione: chi la riceve, il lavoro di chi viene amplificato, quali storie possono essere rese visibili e per quanto tempo un visitatore è invitato a rimanere."
+            },
+            {
+              "type": "text",
+              "content": "Il riutilizzo adattivo è spesso lodato come se il semplice mantenimento delle vecchie mura garantisse la memoria culturale. Non è così. L'architettura industriale può diventare una superficie di lusso, spogliata del lavoro che ha prodotto le sue cicatrici. La decisione più forte di Studio KO è stata trattare il tessuto sopravvissuto come una costrizione attiva. La vecchia sala elettrica mantiene il suo lungo volume simile a una basilica, muri in laterizio, aperture ad arco e struttura del tetto esposta. I nuovi interventi non imitano quel linguaggio. Arrivano come piani in terrazzo, circolazione curva e inserzioni scure la cui differenza è leggibile."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ67B4Y6M3PMBTJRQCZDXKR.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La ex sala diesel dopo l'intervento di Studio KO. Mattoni, tralicci d'acciaio e un volume contemporaneo sospeso rimangono visibilmente distinti. Fotografia architettonica ufficiale cortesemente CCA Tashkent.",
+              "alt": "La sala diesel in mattoni restaurata di CCA Tashkent con tralicci di acciaio e un volume bianco sospeso.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Architettura per sottrazione"
+            },
+            {
+              "type": "text",
+              "content": "Il co-fondatore di Studio KO Olivier Marty ha descritto la prima fase come una sorta di archeologia: decidere quali aggiunte successive potevano essere rimosse affinché la composizione del 1912 potesse essere nuovamente letta. Questa è l'intelligenza architettonica centrale del progetto. Invece di riempire il lotto con il programma, gli architetti hanno restaurato il valore del vuoto. Il cortile separa i volumi principali, ammette la luce naturale e dà agli eventi uno spazio oltre le gallerie. Il vuoto diventa parte della capacità dell'istituzione."
+            },
+            {
+              "type": "text",
+              "content": "All'interno, la circolazione è insolitamente fisica. Una larga scala a spirale si avvolge attorno a un'apertura centrale piuttosto che scomparire in un nucleo di servizio. Rampe e pareti curve rallentano la transizione tra i livelli. Il terrazzo copre pavimenti, banconi e balaustre fino a far sembrare la circolazione scolpita da un corpo minerale continuo. L'effetto è sensuale, forse quasi troppo completo: un interno contemporaneo immacolato inserito in una corazza industriale. Eppure le dimensioni generose impediscono al materiale di diventare semplicemente decorativo."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/content-blocks/2026/09/01M33TKA45GF5SPSSC51H9YDFA.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La scala in terrazzo è concepita come un paesaggio pubblico continuo piuttosto che come un elemento di circolazione nascosto. Fotografia architettonica ufficiale a cura di CCA Tashkent.",
+              "alt": "Una scala a spirale scultorea in terrazzo sotto una lucernario circolare presso CCA Tashkent.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "text",
+              "content": "Il restauro si basa anche su materiali e tecniche di fabbricazione associati a diverse parti dell'Uzbekistan. Questo può facilmente diventare un gesto istituzionale familiare: artigianato locale applicato come un distintivo di autenticità a un edificio di autore internazionale. Al CCA, i momenti più produttivi si verificano quando l'artigianato è trattato come conoscenza tecnica piuttosto che come citazione ornamentale. Legame di mattoni, aggregato, perforazione, falegnameria e luce filtrata diventano sistemi di intelligenza ambientale e spaziale. L'edificio non ha bisogno di sembrare folklorico per essere realizzato localmente."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Un centro all'interno di una città di rotture"
+            },
+            {
+              "type": "text",
+              "content": "Leggere il progetto solo come una conversione compiuta perderebbe la pressione esercitata da Tashkent stessa. La città è stata ripetutamente ricostruita attraverso rotture. La città imperiale russa si sviluppò accanto al tessuto urbano più antico piuttosto che al suo interno. La pianificazione sovietica introdusse ampie avenue, istituzioni monumentali e nuovi sistemi di vita collettiva. Il terremoto del 1966 accelerò un'altra ricostruzione, mentre i decenni dopo l'indipendenza produssero un ulteriore strato di spazi cerimoniali, sviluppo commerciale e cambiamenti infrastrutturali. Tashkent non è quindi una città con un'unica identità architettonica stabile in attesa di essere protetta. È una città in cui diverse idee politiche di modernità rimangono fisicamente adiacenti."
+            },
+            {
+              "type": "text",
+              "content": "Il CCA occupa una posizione utile all’interno di quella condizione. Non è un oggetto culturale isolato in un sito vuoto né un museo inserito in un distretto civico appositamente costruito. Riattiva infrastrutture che appartenevano già alla modernizzazione della città. La scelta crea continuità, ma non innocenza. Una centrale elettrica parla di fornitura collettiva e ambizione tecnologica; parla anche di controllo amministrativo, estrazione e distribuzione diseguale di energia. Trasformare un edificio del genere in un’istituzione culturale significa ereditare quelle contraddizioni piuttosto che cancellarle."
+            },
+            {
+              "type": "text",
+              "content": "Questo rende particolarmente importante la soglia del Centre. Molti edifici di arte contemporanea annunciano differenza attraverso una facciata intimidatoria o una piazza che deve essere attraversata prima dell’ingresso. Qui, la sequenza è più compressa. Muri di mattoni stabiliscono peso storico, ma il cortile e i molteplici programmi ammorbidiscono la transizione dalla strada alla mostra. Il successo di questa disposizione sarà infine misurato meno da fotografie architettoniche che da abitudini: se le persone usano il cortile senza un evento, se gli studenti considerano la biblioteca come infrastruttura di lavoro, se un visitatore può entrare per venti minuti senza sentirsi come se fosse richiesta una conoscenza specialistica."
+            },
+            {
+              "type": "text",
+              "content": "Il centro circostante di Tashkent contiene già musei, teatri, edifici governativi, hotel e spazi pubblici gestiti intensamente. CCA aggiunge un’altra destinazione culturale, ma lo status di destinazione da solo non basta. Una seria istituzione urbana deve anche funzionare come connettore. Dovrebbe permettere ai percorsi attraverso la città di attraversarla, fare spazio a incontri non pianificati e creare motivi per il ritorno che non dipendano dalla novità di un’apertura. In questo senso, l’ingresso gratuito è politica spaziale tanto quanto politica culturale. Rimuove una barriera, mentre architettura e programmazione devono affrontare le altre."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "HIKMAH è un metodo, non un tema"
+            },
+            {
+              "type": "text",
+              "content": "Il curatore capo Sara Raza definisce hikmah attraverso saggezza, intelligenza materiale e coscienza superiore. Il termine ha peso filosofico e spirituale nelle tradizioni intellettuali araba, persiana e islamica, ma la mostra evita di ridurlo a una definizione stabile. Usa hikmah come metodo curatoriale: la conoscenza viene affrontata attraverso la creazione, la ripetizione corporea, la tecnica ereditata e le trasformazioni che i materiali subiscono."
+            },
+            {
+              "type": "quote",
+              "content": "“Hikmah può essere riformulata come un metodo espositivo.” — Dr Sara Raza"
+            },
+            {
+              "type": "text",
+              "content": "Questa formulazione è importante perché le mostre sulla spiritualità spesso tendono a vagare in un'atmosfera di vaghezza. HIKMAH è più forte quando rimane materialmente precisa. L'acciaio è sospeso secondo contorni misurati. L'argilla registra la pressione di migliaia di mani. Il rame trovato viene lasciato ossidare. Filo, polvere, resina e fibra di vetro conservano prove di lavoro e spostamento. La saggezza non è illustrata; viene messa alla prova contro la materia."
+            },
+            {
+              "type": "text",
+              "content": "La lista degli artisti attraversa deliberatamente le geografie: Ali Cherri, Nadia Kaabi-Linke, Kimsooja, Tarik Kiswanson, Muhannad Shono e Nari Ward appaiono accanto a Shokhrukh Rakhimov e opere di Vladimir Pan, Bakhtiyar Saipov e Daribay Saipov dalla collezione del Savitsky Museum in Karakalpakstan. La giustapposizione rifiuta una semplice divisione tra un presente contemporaneo internazionale e un background storico regionale. Se crea uguaglianza tra queste posizioni è la domanda più difficile della mostra."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/content-blocks/2026/09/01M33TNF8Q4XPH31QS925PKTYX.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La sala power restaurata durante HIKMAH. Il volume industriale è usato come parte dell'argomento della mostra piuttosto che nascosto dietro una scatola bianca neutra. Fotografia ufficiale cortesemente fornita da CCA Tashkent.",
+              "alt": "Lunga sala esposizioni in mattoni con struttura del tetto esposta e un'installazione sospesa al CCA Tashkent.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Kimsooja: conoscenza fatta da molte mani"
+            },
+            {
+              "type": "text",
+              "content": "L'Archivio della Mente partecipativo di Kimsooja fornisce alla mostra la sua immagine più chiara della conoscenza collettiva. I visitatori siedono intorno a un immenso tavolo di legno e arrotolano pezzi di argilla tra i palmi delle mani. Ogni piccola sfera è elementare e distinta. Accumulate centinaia e poi migliaia, diventano un campo la cui ordine visivo è prodotto senza un'autorialità centrale."
+            },
+            {
+              "type": "text",
+              "content": "L'opera cambia la posizione del visitatore. Guardare non è più l'unica attività autorizzata; il tocco diventa una forma di contributo. La sfera registra il tempo, la pressione, l'umidità e la leggera asimmetria di una particolare coppia di mani. Niente di ciò che si ottiene è spettacolare da solo. La sua forza arriva attraverso la durata e la molteplicità—il riconoscimento che un archivio può essere fatto da gesti anonimi piuttosto che da documenti ufficiali."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ9DBBAJMMT3F8D7DZ9W31D.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Visitatori che formano sfere di argilla per Archive of Mind di Kimsooja. L'opera trasforma il tocco ripetitivo in un campo collettivamente autoriale. Fotografia ufficiale dell'installazione cortesemente fornita da CCA Tashkent.",
+              "alt": "Visitatori seduti intorno a un grande tavolo di legno coperto di sfere di argilla fatte a mano.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "text",
+              "content": "A Tashkent, l'opera acquista un'ulteriore risonanza. L'argilla non è qui una sostanza universale astratta; appartiene a lunghe storie architettoniche e ceramiche attraverso la regione. HIKMAH non sostiene che ogni sfera arrotolata trasmetta quelle storie, ma permette al materiale di portare più di una scala di memoria: l'intimità del tocco, la socialità del tavolo e la durata geologica della terra."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ9DBBESEZ3VXND98N454W8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Archive of Mind si estende nel volume di mattoni più vecchio, consentendo alle forme di argilla accumulate di registrarsi contro la memoria industriale dell'edificio. Fotografia ufficiale dell'installazione cortesemente fornita da CCA Tashkent.",
+              "alt": "Migliaia di sfere di argilla distribuite su una superficie all'interno della sala storica in mattoni.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Nadia Kaabi-Linke: libertà sospesa"
+            },
+            {
+              "type": "text",
+              "content": "Nadia Kaabi-Linke’s Flying Carpets è visivamente più leggero e politicamente più acuto. L’installazione deriva le sue forme di acciaio sospese dai tappeti usati dai venditori ambulanti migranti a Venezia per esporre merci contraffatte. Quei tappeti promettono la fantasia del volo illimitato mentre servono, nella vita quotidiana, come dispositivi che permettono ai lavoratori precari di raccogliere la loro merce e fuggire dalla polizia."
+            },
+            {
+              "type": "text",
+              "content": "Kaabi-Linke trasforma i contorni misurati in una struttura sospesa sostenuta da fili discendenti. Da lontano è quasi architettonica: ponte, tettoia, gabbia e disegno occupano la stessa aria. Mentre si cammina intorno, l’opera rifiuta un’immagine singola. L’eleganza della sospensione non può essere separata dal movimento ristretto che descrive. La mobilità, uno dei più celebri diritti della cultura contemporanea, si mostra radicalmente ineguale."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ9DBBJXVFC5EXT62375YHB.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Nadia Kaabi-Linke, Flying Carpets, 2011, installato in HIKMAH. Contorni di metallo sospesi traducono i tappeti improvvisati dei venditori ambulanti migranti in una gabbia fluttuante. Fotografia ufficiale dell’installazione a cura di CCA Tashkent.",
+              "alt": "Cornici di metallo sospese e fili verticali densi formano i Flying Carpets di Nadia Kaabi-Linke.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "text",
+              "content": "Installato all’interno di un centro creato per collegare Tashkent alle reti culturali internazionali, Flying Carpets complica anche il linguaggio di circolazione che circonda l’istituzione stessa. Artisti, curatori e opere d’arte viaggiano attraverso sistemi di visti, capitale e riconoscimento professionale che rimangono molto meno aperti di quanto suggerisca la retorica dello scambio globale. L’opera chiede silenziosamente chi è permesso muoversi come agente culturale e chi viene trattato come un problema da gestire."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Trovato materia e tecnica locale"
+            },
+            {
+              "type": "text",
+              "content": "Il site-specific Tashkent Groundin di Nari Ward è stato sviluppato in dialogo con le tradizioni artigianali locali e il passato industriale dell'edificio. La pratica più ampia di Ward ha a lungo utilizzato materiali trovati per tracciare migrazione, valore e memoria urbana. Qui, il rame e la patina collegano l'usura del materiale con i segni lasciati dal lavoro. L'insistenza del titolo sul radicamento contrasta con il globalismo senza attrito che spesso si chiede alle nuove istituzioni culturali di svolgere."
+            },
+            {
+              "type": "text",
+              "content": "L'attenzione della mostra alla pratica ceramica uzbeka approfondisce questa questione di localizzazione. Il lavoro di Shokhrukh Rakhimov, e la presenza di Bakhtiyar e Daribay Saipov, posizionano la ceramica come pensiero contemporaneo piuttosto che decorazione ereditaria. La tecnica diventa un argomento: la conoscenza sopravvive perché viene ripetutamente incarnata, corretta e trasmessa. La mano non si oppone al concettuale; è il luogo in cui il concetto acquista conseguenza."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/gallery/2026/05/01KQJ9DBBG45G6BNYKTRQ0W5QY.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una vista dell'installazione di HIKMAH, dove il lavoro materiale a terra e il disegno murale resistono alle convenzioni di esposizione isolata. Fotografia ufficiale cortesemente fornita da CCA Tashkent.",
+              "alt": "Installazione contemporanea che utilizza una linea di materiale sul pavimento e un disegno rosso su una parete bianca della galleria.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "text",
+              "content": "Nest di Tarik Kiswanson recentemente commissionato, realizzato in acciaio, resina e fibra di vetro, si avvicina all'appartenenza da un'altra direzione. La sua forma che cresce verso l'interno tiene protezione e intrappolamento in sospensione. Un nido è costruito per rendere possibile la vita vulnerabile, ma è anche temporaneo: una struttura organizzata intorno alla partenza eventuale. All'interno di una nuova istituzione che definisce il suo posto nella regione, quell'ambiguità è particolarmente adatta."
+            },
+            {
+              "type": "text",
+              "content": "Muhannad Shono e Ali Cherri estendono la mostra verso l'oblio, archeologia e memoria speculativa. Il lavoro di immagine in movimento di Cherri The Digger segue un custode che sorveglia antiche rovine a Sharjah, rifiutando il ritmo eroico attraverso cui l'archeologia viene solitamente narrata. Il lavoro paziente di sorveglianza sui frammenti diventa un contropunto etico alle istituzioni che trattano il passato come materiale da confezionare rapidamente per un pubblico contemporaneo."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Una mostra assemblata attraverso velocità diverse"
+            },
+            {
+              "type": "text",
+              "content": "HIKMAH non si rivela attraverso una singola vista panoramica. Le sue opere chiedono durate incompatibili. Archive of Mind si sviluppa attraverso partecipazioni ripetute; Flying Carpets cambia mentre il corpo si muove sotto e intorno ad essa; il cinema richiede il abbandono a un altro ordine temporale; la ceramica può sembrare inizialmente immobile ma condensare anni di apprendimento tecnico. L'intelligenza della mostra risiede in parte nel rifiutare di sincronizzare queste velocità. I visitatori non possono consumare ogni opera con lo stesso ritmo di riconoscimento."
+            },
+            {
+              "type": "text",
+              "content": "Anche qui l'architettura svolge un ruolo curatoriale. La lunga sala industriale crea linee di vista lontane, ma le sue superfici di mattoni impediscono la neutralità ottica del cubo bianco. Le stanze più piccole riducono l'attenzione. La scala trasforma il movimento tra le opere in uno spettacolo pubblico: i visitatori si vedono arrivare, fermarsi e tornare. L'architettura del Centro ricorda continuamente allo spettatore solitario che l'interpretazione avviene tra altri corpi."
+            },
+            {
+              "type": "text",
+              "content": "Le opere storiche associate al Savitsky Museum introducono un'altra complicazione temporale. La loro presenza evita di presentare l'arte contemporanea in Asia Centrale come qualcosa iniziato con nuove istituzioni internazionali. Tuttavia, l'inclusione storica comporta responsabilità. Un piccolo numero di opere precedenti può diventare ascendenza su richiesta, arruolata per legittimare un programma contemporaneo senza essere concessa abbastanza spazio per disturbarlo. HIKMAH indica una genealogia più ricca; le future mostre dovranno ampliarla attraverso ricerche approfondite, prestiti, traduzioni e pubblicazioni."
+            },
+            {
+              "type": "text",
+              "content": "Lo stesso vale per la categoria dell'artigianato. Nella cultura espositiva globale, l'artigianato è frequentemente accolto nel momento in cui può essere descritto come conoscenza incarnata, intelligenza ecologica o pratica decoloniale. Questi quadri di riferimento possono essere produttivi, ma possono anche trasformare economie vive in metafora curatoriale. HIKMAH è più forte quando la tecnica mantiene una specificità—quando l'argilla, il rame o il tessuto sono collegati a forme particolari di lavoro e trasmissione—e più debole quando la materialità viene lasciata al posto di una profondità spirituale indifferenziata."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "L'istituzione oltre la mostra"
+            },
+            {
+              "type": "text",
+              "content": "Gli spazi più significativi del CCA Tashkent potrebbero non essere le sue gallerie. La biblioteca, il laboratorio, il cinema, il cortile, il ristorante e il negozio stabiliscono motivi diversi per entrare e durate di soggiorno diverse. Il Centro è aperto sei giorni alla settimana e l'ingresso a HIKMAH è gratuito. Il giorno dell'apertura, le visite curatoriali sono state accompagnate da poesia, laboratori per bambini, film, performance dal vivo e musica Shashmaqom. Questo non era un intrattenimento supplementare; era una dichiarazione precoce sul tipo di pubblico che l'istituzione spera di produrre."
+            },
+            {
+              "type": "image",
+              "content": "https://ccat.uz/storage/uploads/content-blocks/2026/09/01M33TKA493ZDX645PA1R7VHDC.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La biblioteca e sala lettura del CCA. L'infrastruttura di ricerca è essenziale se il Centro deve diventare più di una sequenza di mostre temporanee. Fotografia architettonica ufficiale cortesemente fornita da CCA Tashkent.",
+              "alt": "Biblioteca con tavolo lungo, scaffali e sedie imbottite al CCA Tashkent.",
+              "sourceUrl": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "text",
+              "content": "Un'istituzione non collezionistica può essere insolitamente reattiva, commissionando nuove opere e cambiando direzione senza il peso di una esposizione permanente. Può anche essere fragile. La sua memoria deve essere costruita attraverso archivi, pubblicazioni, educazione, relazioni ripetute con artisti e la conoscenza conservata dal personale e dal pubblico. Il programma di residenza, operativo dal 2024, non è quindi periferico. Offre la possibilità che l'attenzione internazionale possa sostenere una produzione sostenuta piuttosto che una successione di eventi importati."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Le politiche difficili di un nuovo punto di riferimento culturale"
+            },
+            {
+              "type": "text",
+              "content": "Nessuna grande istituzione arriva fuori dalla politica. CCA Tashkent è un progetto di punta della Uzbekistan Art and Culture Development Foundation, e la sua apertura partecipa a uno sforzo più ampio per collocare il paese all’interno dei circuiti internazionali di biennali, architettura, turismo e diplomazia culturale. La qualità dell’edificio e del programma non dovrebbe rendere invisibile quel quadro."
+            },
+            {
+              "type": "text",
+              "content": "L’esperimento sarà ciò che accadrà dopo che la visibilità inaugurale si sarà affievolita. Quanta autorità curatoriale sarà disponibile per artisti e ricercatori con sede in Uzbekistan? Può un lavoro difficile rimanere difficile quando entra in conflitto con una narrazione ufficiale di rinnovamento culturale? Appariranno praticanti regionali come partner intellettuali piuttosto che fornitori di conoscenze artigianali e tessuto storico? Può un’istituzione libera rimanere accessibile a pubblici oltre la classe culturale internazionalmente mobile?"
+            },
+            {
+              "type": "text",
+              "content": "HIKMAH inizia ad affrontare queste domande rifiutando una semplice vetrina dell’identità nazionale. Eppure l’equilibrio rimane delicato. Un elenco leggibile a livello internazionale e una pratica architettonica riconosciuta a livello globale attirano l’attenzione; possono anche stabilire i termini attraverso cui la pratica locale diventa visibile. La futura importanza del Centro dipenderà dal fatto che possa invertire quella direzione—consentendo alla conoscenza generata a Tashkent, Nukus e in tutta l’Asia centrale di modificare la conversazione internazionale piuttosto che semplicemente entrarvi."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Che tipo di pubblico può creare una nuova istituzione?"
+            },
+            {
+              "type": "text",
+              "content": "I musei spesso parlano di attrarre un pubblico esistente, come se gli spettatori aspettassero fuori in forma completata. In realtà, le istituzioni producono pubblici attraverso la ripetizione. Gli orari di apertura determinano chi può partecipare. La lingua determina chi può interpretare. La sistemazione a sedere determina chi può indugiare. La sicurezza determina chi si sente osservato. La programmazione determina se bambini, artisti, studenti, vicini e visitatori occasionali riconoscono l'edificio come disponibile a loro. Un pubblico non è una demografia raggiunta dal marketing; è una relazione costruita attraverso molte piccole decisioni istituzionali."
+            },
+            {
+              "type": "text",
+              "content": "Il programma di apertura di CCA ha compreso questa molteplicità. Film, workshop, poesia, performance, musica e tour offrivano più di attrazioni parallele. Creavano diversi modi legittimi di essere presenti. Questo è importante in un contesto in cui l'arte contemporanea può ancora essere percepita come un dominio specializzato o importato. L'istituzione non ha bisogno di semplificare l'arte per ampliare il suo pubblico. Deve moltiplicare le forme di accesso preservando la complessità di ciò che si incontra all'interno."
+            },
+            {
+              "type": "text",
+              "content": "La lingua sarà decisiva. Uzbek, russo e inglese non traducono semplicemente lo stesso campo culturale; collegano generazioni diverse, storie educative e reti internazionali. Un centro che lavora attraverso queste lingue può diventare un sito insolitamente prezioso di scambio intellettuale. Un centro che privilegia l'inglese a livello di ricerca e comunicazione globale mentre tratta la mediazione in lingua locale come un servizio rischia di riprodurre la gerarchia che afferma di superare. La traduzione deve quindi far parte dell'autorialità curatoriale, non di un passaggio amministrativo finale."
+            },
+            {
+              "type": "text",
+              "content": "L'accesso digitale pone una domanda correlata. Una documentazione forte può portare le mostre oltre il periodo di esposizione e oltre Tashkent, ma un archivio online dovrebbe offrire più di viste di installazioni rifinite. Saggi commissionati, trascrizioni, conversazioni con artisti, bibliografie e registrazioni di disaccordi pubblici permetterebbero al Centro di accumulare conoscenza nonostante non accumuli oggetti. Per un'istituzione non collezionista, la pubblicazione è uno dei modi principali in cui la memoria diventa durevole."
+            },
+            {
+              "type": "text",
+              "content": "La promessa urbana del Centre finalmente dipende dalla ricorrenza. Un punto di riferimento può attirare una folla una volta. Un'istituzione diventa civica quando la stessa persona ritorna per motivi non correlati: leggere, incontrare, dissentire, vedere un film, partecipare a un workshop o semplicemente attraversare il cortile. La fotografia più convincente di CCA Tashkent non sarà una sala vuota ma un'immagine, tra anni, in cui l'uso ha lasciato tracce visibili sulle superfici accuratamente completate da Studio KO."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Una promettente prima proposizione"
+            },
+            {
+              "type": "text",
+              "content": "CCA Tashkent non è importante perché risolve la relazione tra patrimonio e contemporaneità. È importante perché la sua apertura rende quella relazione di nuovo contestabile. L'edificio conserva le prove senza congelarle. HIKMAH colloca la conoscenza spirituale e materiale in prossimità senza pretendere che siano intercambiabili. Il programma pubblico tratta l'istituzione come un luogo di creazione, ascolto e incontro, oltre che di visione."
+            },
+            {
+              "type": "text",
+              "content": "Ci sono momenti in cui la lucentezza dell'architettura rischia di sopraffare il carattere provvisorio su cui si basa l'arte contemporanea. Ci sono momenti in cui il linguaggio di saggezza della mostra minaccia di diventare troppo ampio, capace di contenere ogni opera senza sufficiente attrito. Ma le installazioni più forti si oppongono. L'argilla si accumula irregolarmente. L'acciaio sospeso trasforma l'eleganza in vincolo. La materia trovata si scolora. La vecchia sala si rifiuta di diventare silenziosa."
+            },
+            {
+              "type": "quote",
+              "content": "Il vero risultato non è un monumento culturale finito, ma un'istituzione che ancora sembra capace di essere cambiata dall'uso."
+            },
+            {
+              "type": "text",
+              "content": "Per un centro che apre senza una collezione permanente, questo è l'inizio corretto. CCA Tashkent ha creato una proposta architettonica e curatoriale convincente. Il suo compito ora è più lento e meno fotogenico: costruire fiducia, indipendenza critica, memoria istituzionale e un pubblico che non percepisce l'arte contemporanea come una lingua importata. La saggezza, HIKMAH suggerisce, non si possiede nel momento dell'apertura. Si produce attraverso ciò che un luogo impara a mantenere."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Informazioni per i visitatori"
+            },
+            {
+              "type": "text",
+              "content": "HIKMAH è in mostra al CCA Tashkent, Edificio B, 6 Amir Temur Street, Tashkent, fino al 31 gennaio 2027. L'ingresso è gratuito. I visitatori dovrebbero consultare il sito ufficiale del Centro per gli orari di apertura attuali, i requisiti di registrazione e gli eventi pubblici."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Fonti e ulteriori letture"
+            },
+            {
+              "type": "link",
+              "content": "CCA Tashkent — mostra HIKMAH",
+              "url": "https://ccat.uz/en/programme/hikmah-exhibition"
+            },
+            {
+              "type": "link",
+              "content": "CCA Tashkent — annuncio di apertura ufficiale",
+              "url": "https://ccat.uz/en/news/the-centre-for-contemporary-arts-tashkent-cca-tashkent-has-offic"
+            },
+            {
+              "type": "link",
+              "content": "CCA Tashkent — programma di apertura pubblica",
+              "url": "https://ccat.uz/en/programme/programme-1788582698"
+            },
+            {
+              "type": "link",
+              "content": "e-flux — Mostra inaugurale HIKMAH",
+              "url": "https://www.e-flux.com/announcements/6787892/inaugural-exhibitionhikmah"
+            },
+            {
+              "type": "link",
+              "content": "Studio KO trasforma un deposito di tram del 1912 — Domus",
+              "url": "https://www.domusweb.it/en/architecture/gallery/2026/09/10/tashkent-centre-for-contemporary-art-studio-ko.html"
+            },
+            {
+              "type": "link",
+              "content": "All’interno del nuovo Centro per l’Arte Contemporanea dell’Uzbekistan — Art Focus Now",
+              "url": "https://artfocusnow.com/news/to-tashkent-for-wisdom-inside-uzbekistans-new-centre-for-contemporary-art/"
+            },
+            {
+              "type": "link",
+              "content": "Nadia Kaabi-Linke — Tappeti Volanti",
+              "url": "https://nadiakaabilinke.com/work/flying-carpets/"
+            },
+            {
+              "type": "note",
+              "content": "Ricerca e testo di Viacheslav Munister per EPRIS Journal. La recensione si basa su materiali istituzionali ufficiali, documentazione architettonica pubblicata e reportage indipendente. Le immagini sono fotografie editoriali ufficiali attribuite a CCA Tashkent e collegate alla fonte istituzionale."
+            }
+          ],
+          "publishedAt": "2026-10-09T07:02:22.034Z"
         }
       ],
       "reviews": [
