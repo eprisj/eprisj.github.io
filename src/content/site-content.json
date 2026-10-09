@@ -112525,9 +112525,218 @@
         },
         {
           "id": 65,
+          "draft": false,
           "title": "Le luxe de ce qui n'est pas là : Winnie Tam de 28 a.m.",
+          "author": "Viacheslav Munister & Winnie Tam",
+          "role": "Auteur",
+          "date": "9 oct. 2026",
           "excerpt": "La fondatrice de 28 a.m. sur le toucher et la température, l'intelligence de l'ombre, et pourquoi une pièce calme commence par la retenue plutôt que par l'apparence.",
-          "category": "Entretien"
+          "category": "Entretien",
+          "subcategory": "Architecture & Intérieurs",
+          "tags": [
+            "28 a.m.",
+            "Winnie Tam",
+            "Fox Burrow",
+            "Architecture intérieure",
+            "Londres",
+            "Hong Kong",
+            "Matérialité",
+            "En faveur des ombres"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/28am-fox-burrow-01.jpg",
+          "showCover": true,
+          "updatedAt": "2026-10-09T08:17:29.467Z",
+          "publishedAt": "2026-10-09T12:00:00.000Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "L'architecture est souvent discutée comme une image avant d'être comprise comme une atmosphère. Winnie Tam commence ailleurs : avec la densité fraîche de la pierre sous les pieds, la température du bois dans la main, le changement progressif de la lumière du jour et la force émotionnelle d'un espace non rempli. En tant que fondatrice de 28 a.m., un studio d'architecture et de design d'intérieur basé à Londres et Hong Kong, elle considère le calme non pas comme un style mais comme une relation soigneusement construite entre matériau, proportion, ombre et utilisation."
+            },
+            {
+              "type": "text",
+              "content": "La conversation se concentre sur Fox Burrow, l'extension à un étage à l'arrière du studio et la rénovation intérieure d'une maison victorienne importante à Redbridge, Londres. Conçu comme un sanctuaire familial restaurateur, le projet s'inspire du shakkei, le principe japonais de paysage emprunté, et de l'écriture de Jun’ichirō Tanizaki sur l'obscurité et la lumière réfléchie. Le résultat n'imite pas la nature ni ne cite la forme japonaise. Il fonctionne plus silencieusement, à travers des seuils, des surfaces tactiles, des vues encadrées et une lumière qui est autorisée à rester incomplète."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Fox Burrow, Redbridge, Londres : la cheminée restaurée et les murs rouge profond donnent à la pièce de la chaleur sans excès visuel. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Un salon à Fox Burrow avec des murs rouge profond, une cheminée blanche et une suspension sculpturale.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Vous parlez souvent de concevoir à travers les cinq sens. Quel sens est le plus sous-estimé dans l'architecture contemporaine et les intérieurs ?"
+            },
+            {
+              "type": "text",
+              "content": "Toucher—spécifiquement texture et température. Le design contemporain est devenu de plus en plus obsédé par l'image, conçu pour paraître frappant sur un écran plutôt que de ressentir quelque chose de remarquable en personne. Nous sous-estimons souvent le poids silencieux des matériaux bruts : la densité fraîche de la pierre sous les pieds, ou le drapé doux et non raffiné du lin naturel captant la lumière faible. Le véritable luxe spatial n'est pas seulement vu ; il est ressenti à travers la peau."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Une vue rapprochée de la menuiserie en bois chez Fox Burrow. Grain, ombre et la poignée noire fraîche rendent le toucher partie de la composition. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Gros plan sur les armoires en bois foncé et les poignées en métal noir chez Fox Burrow.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Vous décrivez votre esthétique comme minimaliste, naturellement sans effort et profondément apaisante. La tranquillité est-elle quelque chose que vous pouvez concevoir délibérément, ou est-elle finalement créée par la personne habitant l'espace ?"
+            },
+            {
+              "type": "text",
+              "content": "La tranquillité peut absolument être conçue. En tant qu'architectes, nous manipulons délibérément la proportion, l'ombre et la matérialité honnête pour créer une atmosphère. Nous éliminons le bruit visuel pour ralentir le système nerveux. L'espace établit le rythme silencieux ; la personne qui l'habite lui donne vie. La tranquillité est un dialogue partagé entre l'architecture et l'âme qui y vit."
+            },
+            {
+              "type": "quote",
+              "content": "L'espace établit le rythme tranquille ; la personne qui l'habite lui donne vie.",
+              "caption": "Winnie Tam"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-06.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La salle familiale à Fox Burrow. Lumière tamisée, rembourrage pâle et alcôves encastrées produisent le calme par la proportion plutôt que par le vide. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Une salle familiale doucement éclairée avec des sièges modulaires pâles, des étagères encastrées et un sol en bois.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "La nature est l'une des références les plus fortes dans votre travail. Comment en traduisez-vous les qualités en architecture sans simplement reproduire son langage visuel ?"
+            },
+            {
+              "type": "text",
+              "content": "Pour éviter la traduction littérale, nous nous éloignons des motifs visuels et nous concentrons sur la qualité atmosphérique. La nature n'est jamais statique ; elle est définie par la lumière, l'atmosphère et le temps."
+            },
+            {
+              "type": "text",
+              "content": "Nous capturons ces qualités en concevant des espaces qui répondent dynamiquement à leur environnement. Nous privilégions des matériaux qui portent leur histoire ouvertement et vieillissent avec beauté. En honorant le rythme silencieux du monde naturel—sa lumière, ses ombres et ses textures subtiles—nous créons des intérieurs qui se sentent profondément organiques et vivants, sans recourir à des représentations littérales."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-04.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Chez Fox Burrow, une niche de plafond courbée transforme la lumière indirecte en une surface architecturale. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Une niche de plafond sculptée illuminée par une lumière indirecte chaude.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Votre travail s'inspire des philosophies orientales. Quelles idées japonaises vous ont appris sur l'espace que vous avez trouvé manquant dans la pratique architecturale en Occident ?"
+            },
+            {
+              "type": "text",
+              "content": "L'appréciation de la transition et du vide non rempli. La pratique occidentale traite souvent l'espace comme quelque chose à maximiser, éclairé vivement et décoré avec une intention ornementale. La philosophie spatiale orientale a révélé ce qui manquait : la beauté de ce qui n'est pas là."
+            },
+            {
+              "type": "text",
+              "content": "Je suis particulièrement intéressé par le luxe qui réside dans la retenue. En célébrant les transitions subtiles entre les pièces, en honorant les seuils et en laissant les ombres jouer sur les surfaces naturelles, l'espace gagne en profondeur émotionnelle. In Praise of Shadows de Jun’ichirō Tanizaki nous rappelle que la beauté ne réside pas dans l'objet lui-même, mais dans les motifs d'ombres, de lumière et d'obscurité que un objet crée contre un autre. Adopter ce principe permet à notre travail de sembler calme, non précipité et profondément ancré."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-08.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un pendentif au-dessus de l'escalier est lu à travers l'ombre avant d'être lu comme un objet. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Un pendentif sculptural translucide brillant au-dessus d'un escalier sombre.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "L'architecture occidentale contemporaine est-elle devenue trop centrée sur l'ajout—plus d'objets, plus de fonctions, plus d'informations visuelles—plutôt que de créer de l'espace pour l'absence ?"
+            },
+            {
+              "type": "text",
+              "content": "Pour moi, oui. Ayant grandi dans des villes, j'ai longtemps été submergé par la disponibilité des choses. Lorsque je ne peux plus me souvenir de l'histoire d'un objet et de la raison de sa présence, il cesse de devenir significatif pour moi. C'est un choix très personnel, mais je trouve que je suis le plus en paix lorsque j'ai une clarté visuelle, et cela m'apporte la tranquillité."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cuisine à Fox Burrow associe un mur en bois sombre à une île pâle et une vue de jardin encadrée avec précision. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Une cuisine contemporaine avec des armoires en noyer, une île blanche et une fenêtre sur le jardin.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Pourriez-vous nous parler d'un petit détail dans l'un de vos projets qui pourrait passer inaperçu visuellement, mais qui change fondamentalement la façon dont l'espace est vécu ?"
+            },
+            {
+              "type": "text",
+              "content": "Je trouve que les détails de conception les plus réussis sont ceux qui passent inaperçus. Dans Wave Residence, par exemple, nous avons ajouté une extension et une fenêtre extérieure est devenue partie intégrante d'un mur intérieur. J'y ai placé une étagère encadrée dans une alcôve. Le fait qu'il s'agissait auparavant d'une fenêtre passerait totalement inaperçu si ce n'était pas mentionné."
+            },
+            {
+              "type": "text",
+              "content": "Dans un projet récent, l'extension a créé une baisse de la hauteur du plafond. Nous avons utilisé ce point pour changer le matériau du plafond, de sorte que la baisse semblait intentionnelle. Lorsque les détails sont bien faits, ils donnent simplement l'impression d'appartenir. Ils ne ressortent pas ; ils sont discrètement confiants."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-10.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La vue plus large de la cuisine montre comment le rangement, la structure et la circulation sont absorbés dans une composition lisible. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Vue large d'une cuisine avec des armoires en bois, des plans de travail blancs et un éclairage de piste discret.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Pensez-vous que nos maisons peuvent influencer nos habitudes et notre mode de vie, plutôt que simplement les accueillir ?"
+            },
+            {
+              "type": "text",
+              "content": "Totalement. Nous sommes fortement influencés par l'environnement dans lequel nous sommes. Dans une rue animée, nos cœurs battent plus vite et nous agissons plus vite. Dans un bâtiment formel, nous sommes plus prudents quant à la façon dont nous marchons, nous asseyons et parlons. Donc, lorsque nous concevons une maison, nous ne concevons pas seulement l'espace physique ; nous concevons le mode de vie de la famille qui l'habite."
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Ayant vécu et travaillé à travers Londres, Hong Kong, Tokyo et Paris, comment différentes villes ont-elles façonné votre compréhension de ce qui donne à un lieu le sentiment d'être chez soi ?"
+            },
+            {
+              "type": "text",
+              "content": "Chaque ville m'a enseigné une couche différente de sanctuaire. Hong Kong m'a montré comment concevoir la tranquillité au milieu d'une intensité urbaine dense. Tokyo a révélé le poids émotionnel des rituels silencieux et de la discipline spatiale. Londres a apporté une appréciation pour un patrimoine chaud et tactile. Ensemble, ils ont prouvé que la maison n'est pas définie par la géographie. C'est un sentiment intérieur de calme profond, créé lorsque l'architecture honore la façon dont vous vivez."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/28am-fox-burrow-07.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Une lecture plus calme de la salle rouge : miroir, cheminée et pendentif sont tenus dans un cadre retenu, presque symétrique. Photographie : Nacho Rivera. Courtesy 28 a.m. Studio.",
+              "alt": "Détail d'un salon rouge avec une cheminée blanche, un miroir et un pendentif reflétés au-dessus.",
+              "sourceUrl": "https://www.28am.studio/projects/fox-burrow"
+            },
+            {
+              "type": "header",
+              "level": 3,
+              "content": "Comment équilibrer la simplicité visuelle avec la complexité nécessaire pour rendre une maison véritablement durable et confortable ?"
+            },
+            {
+              "type": "text",
+              "content": "Par une intégration réfléchie. Le vrai confort et la durabilité—systèmes d'air propre, chaleur acoustique et efficacité énergétique—doivent être intégrés dans l'ossature même de la maison, et non ajoutés comme un encombrement visuel. Lorsque les systèmes techniques sont conçus de manière fluide dans l'architecture, l'espace reste ouvert, naturel et d'une tranquillité sans effort à habiter."
+            },
+            {
+              "type": "note",
+              "content": "Fox Burrow est une extension résidentielle et une rénovation intérieure à Redbridge, Londres, par 28 a.m. Studio. Toutes les photographies du projet dans cet article sont de Nacho Rivera et sont reproduites à partir de la page officielle du projet du studio avec crédit éditorial complet."
+            },
+            {
+              "type": "link",
+              "content": "Voir Fox Burrow sur 28 a.m. Studio",
+              "url": "https://www.28am.studio/projects/fox-burrow"
+            }
+          ]
         }
       ],
       "reviews": [
