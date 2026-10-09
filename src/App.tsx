@@ -2836,6 +2836,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 }
                 case 'link': {
                   if (typeof block.content !== 'string') return null;
+                  if (block.src) return <LinkCard key={index} block={block} />;
                   return (
                     <div key={index} className="my-8">
                       <a 
@@ -3489,6 +3490,39 @@ const reviewPlainText = (content: Review['content']) => typeof content === 'stri
   ? content
   : reviewBlocks(content).map(block => typeof block.content === 'string' ? block.content : block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content ? block.content.items.join(' ') : '').filter(Boolean).join(' ');
 
+/* A `link` block with a logo is a card for the studio, museum or brand the
+   text is about. Nothing on it is language-bound except name, description and
+   the facts line, which come from the block (translated like captions). */
+function LinkCard({ block }: { block: ContentBlock }) {
+  const name = typeof block.content === 'string' ? block.content : '';
+  let host = '';
+  try { host = new URL(block.url || '').hostname.replace(/^www\./, ''); } catch { /* not a URL */ }
+  return (
+    <div className="my-10 w-full sm:my-14">
+    <a
+      href={block.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex w-full flex-col border border-[rgb(var(--c-accent-rgb)_/_0.2)] transition-colors hover:border-[var(--c-accent)] sm:flex-row"
+    >
+      <div className="flex shrink-0 items-center justify-center bg-[rgb(var(--c-accent-rgb)_/_0.04)] px-8 py-7 sm:w-56 sm:py-8">
+        <img src={block.src} alt={name} loading="lazy" className="h-24 w-auto max-w-full object-contain sm:h-28" />
+      </div>
+      <div className="flex flex-1 flex-col justify-center gap-2 p-5 sm:p-7">
+        {block.credit && <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{block.credit}</p>}
+        <h3 className="font-serif text-2xl leading-tight sm:text-3xl">{name}</h3>
+        {block.caption && <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] sm:text-lg">{block.caption}</p>}
+        {host && (
+          <span className="mt-1 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] group-hover:text-[var(--c-gold)]">
+            {host} <ArrowUpRight size={14} />
+          </span>
+        )}
+      </div>
+    </a>
+    </div>
+  );
+}
+
 function ReviewBody({ content, t }: { content: Review['content']; t: (key: string) => string }) {
   if (typeof content === 'string') return <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
@@ -3503,6 +3537,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
        загруженный из панели mp4 или бывшая гифка не показывались вовсе –
        браузер не проигрывает видеофайл внутри iframe. */
     if (block.type === 'video' && text) return <VideoBlock key={index} content={text} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
+    if (block.type === 'link' && text && block.src) return <LinkCard key={index} block={block} />;
     if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
     if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-base sm:text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
     return text ? <p key={index} className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
