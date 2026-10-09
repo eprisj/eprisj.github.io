@@ -16402,6 +16402,439 @@
         }
       ],
       "authorId": "author-1784732936927-kw554"
+    },
+    {
+      "id": 66,
+      "draft": true,
+      "title": "The Rooms That Matter Now: Six Interiors Defining Autumn 2026",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Oct 9, 2026",
+      "excerpt": "From a reused museum apartment in Helsinki to a red-lit SoHo bar and a timber office beneath the Dutch heath, six projects reveal why the season’s strongest interiors are less concerned with style than with time, atmosphere and use.",
+      "category": "Design",
+      "subcategory": "Autumn Review",
+      "tags": [
+        "Interior Design",
+        "Autumn 2026",
+        "Adaptive Reuse",
+        "Circular Design",
+        "Hospitality",
+        "Materiality",
+        "Lighting",
+        "Helsinki",
+        "New York",
+        "Belgium",
+        "Netherlands",
+        "Paris"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/autumn26-admuseum-01.jpg",
+      "showCover": true,
+      "previewToken": "rooms-that-matter-8fa62c1d31b0",
+      "updatedAt": "2026-10-09T19:45:46.906829Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "An interior arrives online as a finished image: empty, corrected, evenly lit and detached from the hours for which it was designed. The more persuasive the photograph, the easier it becomes to mistake composition for experience. Yet the best rooms of autumn 2026 are interesting precisely where the image fails—where daylight changes a surface, where an old object interrupts a new system, where a floor receives wear, where darkness makes conversation possible, or where a material claim can be tested against the way a building is actually made."
+        },
+        {
+          "type": "text",
+          "content": "This review brings together six projects across domestic, cultural, workplace and hospitality interiors. They are not a forecast of colours or furniture shapes. Nor do they share a look. A restrained apartment near Versailles, a North Sea penthouse, a temporary museum in Helsinki, a timber office in the Dutch landscape, the renewal of Hotel Kämp and a two-level bar in SoHo belong to different economies and social worlds. What connects them is a more consequential design question: how can an interior make time perceptible?"
+        },
+        {
+          "type": "quote",
+          "content": "The season’s strongest rooms do not ask to be consumed at a glance. They construct conditions for attention."
+        },
+        {
+          "type": "text",
+          "content": "Time enters these projects in several forms. It is historical fabric that must be neither erased nor sentimentalised. It is the future disassembly of a temporary exhibition. It is timber allowed to carry structure rather than imitate warmth. It is a hotel expected to survive intense use without becoming anonymous. It is the half-light of a bar, calibrated not for documentation but for the social permission night can offer. Together, the six projects suggest that contemporary interior design is moving away from the room as a still life and toward the room as an active agreement between matter, climate, memory and behaviour."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Eteläranta 6, the temporary home of Finland’s Architecture & Design Museum in Helsinki. Existing furniture, museum holdings and reused elements are composed as a working public interior. Courtesy Studio Joanna Laajisto.",
+          "alt": "Muted green rooms furnished with vintage seating and bookshelves at Eteläranta 6 in Helsinki.",
+          "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "1. Versailles: preservation without obedience"
+        },
+        {
+          "type": "text",
+          "content": "In an eighteenth-century house south of Paris, Inès Deschodt and Johanne Le Griffon begin with an apparently familiar brief: make a historic apartment workable for contemporary life while retaining its architectural dignity. The danger is equally familiar. Conservation can become a tasteful freeze, while contrast can become a performance in which every new insertion loudly announces its date. This 135-square-metre pied-à-terre avoids both traps by treating the existing shell as a frame with enough authority to absorb disagreement."
+        },
+        {
+          "type": "text",
+          "content": "Mouldings and proportions are preserved, but the rooms are not staged as an inventory of period correctness. A deep, low sofa settles into the salon without competing with the fireplace. Dark timber and black metal give weight to the otherwise pale envelope. The most forceful intervention arrives in the kitchen, where Calacatta Viola marble is placed beside stainless steel. Veining and reflectivity do not blend with the old house; they sharpen one another. Marble carries geological excess and domestic ceremony, while steel brings the unemotional precision of the professional kitchen."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The salon of the Versailles pied-à-terre. Historic mouldings remain legible while low contemporary furniture changes the room’s centre of gravity. Interior design by Inès Deschodt and Johanne Le Griffon. Photography: Oracle.",
+          "alt": "A pale historic salon with a dark curved sofa, sculptural lighting and retained wall mouldings.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "text",
+          "content": "The project’s real intelligence is not contrast by itself, but the control of visual temperature. In the living areas, daylight is diffused through curtains and absorbed by dark upholstery. In the kitchen, metal catches and redistributes it. Elsewhere, sapele panelling and an electric-blue carpet create a denser, almost nocturnal register. The home is allowed to have several atmospheres instead of forcing every room into the same photogenic neutrality."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Calacatta Viola marble meets stainless steel in the kitchen. The opposition between geological pattern and industrial reflection is the project’s most decisive material gesture. Photography: Oracle.",
+          "alt": "A kitchen island and backsplash in dramatically veined marble beside stainless-steel cabinetry.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "text",
+          "content": "Even the bathroom’s microtopping is less interesting as a fashionable seamless finish than as a pragmatic act: it is applied over existing surfaces, limiting demolition while giving the small room a continuous field. That choice is modest compared with the kitchen’s theatre, but it reveals the project’s method. The new work does not need to dominate every surface. It intervenes where performance, maintenance or spatial emphasis requires it, then recedes."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The bathroom is unified with a light microtopping applied over existing surfaces, reducing demolition and visual noise. Photography: Oracle.",
+          "alt": "A compact pale bathroom with continuous mineral surfaces and restrained fittings.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: allowing historic detail and contemporary material intensity to coexist without hierarchy. Risk: the marble-and-steel kitchen can read as an autonomous luxury image. What it changes: preservation becomes a flexible spatial discipline rather than a decorative style."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "2. Residence DNB: the sea is not a colour palette"
+        },
+        {
+          "type": "text",
+          "content": "Residence DNB, a duplex penthouse in Knokke-Heist by Britt Van Namen, could easily have turned its North Sea view into a theme. Coastal projects are often reduced to beige textiles, bleached timber and a generalised language of calm. Here, the horizon is treated not as decoration but as a source of changing luminance. The interior remains quiet enough to register the weather, while its materials are substantial enough not to disappear against it."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Residence DNB in Knokke-Heist frames the North Sea as changing light rather than decorative motif. Interior design by Britt Van Namen. Photography: Cafeine.",
+          "alt": "A penthouse living room with a broad view across the North Sea and a dark circular table.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "text",
+          "content": "The rounded stainless-steel kitchen island is the clearest example. Its shape prevents the metal from becoming severe: light moves around the curve, blurring the boundary between object and reflection. Behind it, pale cabinetry and stone shelves are deliberately recessive. Two dark timber stools introduce a warmer contact point at the body. The arrangement looks simple because several kinds of hardness—metal, stone, glass—have been choreographed through radius, texture and distance."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The rounded stainless-steel island turns daylight into a moving surface; dark timber stools temper the kitchen’s mineral precision. Photography: Cafeine.",
+          "alt": "A minimal kitchen with a curved stainless-steel island and two dark timber stools.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "text",
+          "content": "A rammed-earth floor gives the apartment an unusually grounded base, while storage made from scaffolding boards carries evidence of previous use. Green marble and Breccia Rosata appear as concentrated accents rather than an all-over statement. Van Namen has described atmosphere as something produced by textures, proportions, transitions and light. Residence DNB supports that claim because no individual material is asked to supply the whole identity. The experience accumulates across thresholds."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Pale upholstery, green marble and a low horizon line organise the living area around bodily scale and coastal light. Photography: Cafeine.",
+          "alt": "A softly furnished living space with green marble accents and floor-to-ceiling coastal glazing.",
+          "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "text",
+          "content": "The weakness of many luxury interiors is that tactility is offered as a substitute for social or environmental consequence. A rough wall, handmade tile or reclaimed board becomes a visual alibi. DNB is strongest when it resists that simplification. The reused boards do not make the whole apartment circular, and the rammed-earth surface does not neutralise the embodied cost of extensive glazing and bespoke stone. Yet the project demonstrates a more mature material literacy: provenance, sensory effect and technical performance are allowed to remain different questions."
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: translating the sea into a changing light condition rather than a decorative theme. Risk: material richness can still be mistaken for environmental responsibility. What it changes: luxury is located in calibrated transitions, not in the number of visible finishes."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "3. Eteläranta 6: circularity becomes visible intelligence"
+        },
+        {
+          "type": "text",
+          "content": "The temporary Architecture & Design Museum at Eteläranta 6 in Helsinki is the most conceptually important project in this selection because it treats reuse as the origin of an aesthetic rather than a compromise applied after design. Studio Joanna Laajisto worked within a Jugend apartment designed by Mauritz Gripenberg in 1904. The museum needed event rooms, a library, workshops and spaces for public work, but its occupation was never meant to justify wasteful permanence."
+        },
+        {
+          "type": "text",
+          "content": "Almost every decision therefore begins with an inventory: what can remain, what can be borrowed, what can be recovered, and what can later move elsewhere? Reclaimed Ecophon acoustic panels, Ege carpet tiles, a second-hand Kvadrat curtain, salvaged bespoke furniture and objects from the museum’s collection form the project’s material vocabulary. Minimal demolition preserves both embodied carbon and the legibility of the apartment."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The museum library occupies a dark green room where collected furniture and books create density without a new fitted scenography. Courtesy Studio Joanna Laajisto.",
+          "alt": "A dark green library with vintage velvet chairs, a timber table and bookshelves.",
+          "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+        },
+        {
+          "type": "text",
+          "content": "The result is not a collage of virtuous leftovers. Colour provides a strong ordering system. Dark green gives the library enclosure and concentration; pale blue-grey allows smaller rooms to receive daylight without losing softness; an acidic olive marks a modest table setting with almost theatrical clarity. Curtains absorb sound and define zones. Old chairs are not romanticised as antiques; they are selected for proportion, repairability and the way their worn materials negotiate public use."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A reused table and stools sit within an olive room, where colour does more organisational work than new construction. Courtesy Studio Joanna Laajisto.",
+          "alt": "A small olive-coloured room with a simple timber table, stools and a pendant lamp.",
+          "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+        },
+        {
+          "type": "text",
+          "content": "Circular design is often communicated through diagrams because its achievements are difficult to photograph. Eteläranta 6 solves that representational problem by making continuity itself sensuous. Nothing matches in the retail sense, but relationships are precise. Wood tones repeat across objects of different ages. Lamps locate islands of use. Textiles reduce the institutional hardness normally associated with temporary venues. The interior feels complete without pretending to be new."
+        },
+        {
+          "type": "text",
+          "content": "There is a broader lesson here for cultural interiors. Temporary exhibitions frequently consume vast quantities of sheet material, paint, carpet and custom fabrication in pursuit of a supposedly neutral display. Laajisto demonstrates that limitation can produce a richer public character. Visitors encounter not an abstract museum brand but an assembly of Finnish design histories placed back into use. The museum becomes a live archive: not only a place where design is explained, but a room in which its afterlives can be tested."
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: turning material inventory into atmosphere. Risk: the cultivated elegance of the result may understate the logistical difficulty of reuse. What it changes: circularity is shown as authorship through selection, maintenance and recombination."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "4. Office by Nature: when structure becomes the interior"
+        },
+        {
+          "type": "text",
+          "content": "At Tafelberg in Blaricum, Studio Massimo’s Office by Nature addresses a problem that workplace design often avoids. Corporate interiors are typically conceived after the building shell, then replaced on short cycles as tenants, branding or management fashions change. Here, structure, envelope and interior are designed as one timber system. The project’s environmental argument is therefore architectural before it becomes decorative."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-office-nature-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Office by Nature sits close to protected heathland at Tafelberg in Blaricum. A bark-clad envelope and planted roof reduce the distinction between building and landscape. Architecture and interiors by Studio Massimo. Photography: Riccardo De Vecchi.",
+          "alt": "A low office building clad in textured bark with a planted roof among mature trees.",
+          "sourceUrl": "https://www.studiomassimo.com/"
+        },
+        {
+          "type": "text",
+          "content": "The 1,000-square-metre building uses Red Grandis glulam with spruce cross-laminated timber. Poplar bark gives the exterior a rough, weathering surface, while a green roof extends the surrounding vegetation across the building’s profile. Inside, the pitched timber geometry is not concealed above a suspended ceiling. It defines the rooms, catches daylight from long rooflights and gives shared workspaces a domestic scale without imitating a house."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-office-nature-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Glulam frames, spruce CLT and a long rooflight make construction, daylight and interior character inseparable. Photography: Riccardo De Vecchi.",
+          "alt": "A long timber office interior beneath pitched ceilings and a continuous skylight.",
+          "sourceUrl": "https://www.studiomassimo.com/"
+        },
+        {
+          "type": "text",
+          "content": "Milled ventilation slots are integrated into timber surfaces rather than added as a competing technical layer. A spiral stair becomes a compact sculptural hinge between levels. Terrazzo incorporates quarry waste, introducing mineral density where the body needs a durable floor. These are not invisible technologies, but neither are they displayed as eco-gadgets. Performance is absorbed into the spatial language."
+        },
+        {
+          "type": "text",
+          "content": "The project’s title risks the easy rhetoric of biophilia, a word now attached to almost any room with plants or timber. Office by Nature is more convincing when read structurally. Its achievement is not that workers can see greenery, although they can. It is that the interior’s principal visual order is also the building’s load-bearing and environmental order. The caution is maintenance: exposed timber, planted roofs and bespoke ventilation details demand long-term care. An ecological interior is credible only if its operational life confirms the promise of its photographs."
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: collapsing structure, servicing and atmosphere into one legible timber system. Risk: the language of ‘nature’ can conceal resource and maintenance questions. What it changes: workplace identity comes from construction rather than applied branding."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "5. Hotel Kämp: durability is the real form of luxury"
+        },
+        {
+          "type": "text",
+          "content": "Hotel renovation tests a designer’s ethics of time more severely than a private home. Rooms are used intensely, photographed repeatedly and expected to communicate continuity to guests who may know the building only through reputation. At Helsinki’s Hotel Kämp, founded in 1887, Fyra’s renewal of guestrooms and corridors forms part of a larger expansion that includes Helander House and twenty-two additional rooms, fifteen of them suites."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Sibelius Suite at Hotel Kämp balances retained cultural memory with furniture scaled for contemporary use. Interior design by Fyra. Photography: Riikka Kantinkoski.",
+          "alt": "A light hotel suite with moulded walls, a curved sofa, a piano and a dark ceramic stove.",
+          "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+        },
+        {
+          "type": "text",
+          "content": "The project avoids the two standard responses to heritage hospitality. It does not reconstruct a nineteenth-century interior as spectacle, and it does not neutralise the building into international five-star anonymity. References to Finnish cultural life, including Helene Schjerfbeck and Jean Sibelius, appear through artworks, suites and atmosphere rather than themed decoration. Mouldings, ceramic stoves, warm timber, pale textiles and carefully chosen colour establish a layered chronology."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A dining space in the renewed Hotel Kämp uses a vivid rug and sculptural glass pendant to interrupt the controlled cream envelope. Photography: Riikka Kantinkoski.",
+          "alt": "An elegant cream dining room with a vivid floral rug and clustered glass chandelier.",
+          "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+        },
+        {
+          "type": "text",
+          "content": "The strongest rooms contain a degree of visual friction. A bright rug sits beneath tailored furniture. A glass pendant gathers light into a dense cloud. Art is not centred merely to complete a wall. These gestures prevent heritage from becoming beige reassurance. They also recognise that a hotel interior must be understood in episodes: arrival, unpacking, working, eating, sleeping, waking. Each requires a different light level and a different relationship between exposure and enclosure."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The quieter guestroom palette relies on proportion, layered light and the tactile presence of the historic ceramic stove. Photography: Riikka Kantinkoski.",
+          "alt": "A muted hotel sitting room with a curved sofa, brass sconces and a white ceramic stove.",
+          "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+        },
+        {
+          "type": "text",
+          "content": "Durability is the project’s unresolved but essential criterion. Luxury hotels frequently replace surfaces before they are physically exhausted because visual freshness is part of the product. Fyra speaks of combining modern technology with longevity; the claim will be proven by repair strategies, replaceable components and whether patina is accepted rather than treated as failure. The most sustainable heritage hotel is not the one that looks historic on opening day, but the one that can absorb thousands of nights without requiring another total image reset."
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: using Finnish cultural memory as spatial depth rather than literal theme. Risk: hospitality’s cycle of cosmetic renewal can undermine claims of longevity. What it changes: luxury is judged by repair, acoustic comfort and the ability to age, not by immediate novelty."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "6. Bar Leone: the design of permission after dark"
+        },
+        {
+          "type": "text",
+          "content": "Bar Leone at 527 Broome Street, designed by BOND, is the selection’s most openly cinematic interior. Opened in September 2026, the 2,400-square-foot venue divides itself vertically into two related but distinct social worlds. The upper level uses sapele, corduroy velvet and red travertine to hold a slower, warmer ‘golden hour’. Downstairs, red velvet wallpaper, vinyl banquettes, lacquer and chrome produce the compressed energy of an Italo-disco."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-01.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The upper room at Bar Leone uses low amber light, polished metal and sapele to extend the psychological duration of golden hour. Interior design by BOND. Photography: Matthew Kappas.",
+          "alt": "An amber-lit bar with sculptural floor lamps, reflective tables and a long banquette.",
+          "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+        },
+        {
+          "type": "text",
+          "content": "The project is valuable because it makes lighting perform more than visibility. Light defines distance between strangers, controls how quickly the room can be understood and gives materials a temporal role. Red travertine looks almost liquid under amber sources. Chrome turns each lamp into several reflections. Faces are legible without being exposed. The room offers a calibrated degree of privacy in public—one of nightlife design’s most important and least measurable achievements."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-02.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Red travertine, corduroy velvet and pools of reflected light organise the upper level around intimacy rather than spectacle. Photography: Matthew Kappas.",
+          "alt": "A dark curved banquette surrounding red marble tables under low warm light.",
+          "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+        },
+        {
+          "type": "text",
+          "content": "Downstairs, the palette becomes denser and more synthetic. Upholstered chairs are almost bodily in profile. The colour red moves across carpet, walls, leather and light, but variation in sheen prevents monochrome from becoming flat. Custom lighting by Gantri and a scheme developed with Map Studio establish rhythm rather than blanket illumination. Furniture by Spinzi Studio is arranged to permit different forms of occupation: watching, gathering, withdrawing, approaching the bar."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-03.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The lower level shifts toward an Italo-disco register: velvet walls, vinyl seating and vertical light create a denser social tempo. Photography: Matthew Kappas.",
+          "alt": "A deep red nightclub interior with rounded leather chairs, marble tables and glowing wall lights.",
+          "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+        },
+        {
+          "type": "text",
+          "content": "The risk is obvious: a room this controlled can become a backdrop before it becomes a place. Its visual signature is immediately available to social media, and every polished reflection can be framed as content. Yet the plan’s division into two atmospheres gives the bar a resistance that a single iconic room would lack. Guests must choose a tempo. Movement between levels becomes part of the evening. The interior does not merely represent nightlife; it edits its sequence."
+        },
+        {
+          "type": "note",
+          "content": "Review verdict — Strongest move: treating light as a social boundary and timekeeping device. Risk: the cinematic identity may be consumed faster than the rituals it is meant to host. What it changes: hospitality design is evaluated through permission, pace and acoustic intimacy, not only appearance."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "What the six projects say together"
+        },
+        {
+          "type": "text",
+          "content": "Placed side by side, these interiors resist a single seasonal aesthetic. There is no responsible way to call green walls, stainless steel, timber structure, reused furniture or red light ‘the look’ of autumn 2026. Their value lies in different relationships between design and duration. Versailles shows that preservation can accommodate material disagreement. Residence DNB makes climate and horizon active components. Eteläranta 6 turns reuse into a curatorial method. Office by Nature gives construction the work usually assigned to corporate styling. Hotel Kämp asks whether luxury can survive repair. Bar Leone designs the night as a sequence of permissions."
+        },
+        {
+          "type": "text",
+          "content": "Three criteria emerge. The first is temporal legibility: can a visitor sense what existed before, what has been added and how the room might change? The second is environmental specificity: does light, climate, acoustic behaviour or material sourcing genuinely shape the interior, or is context used only as a narrative? The third is operational truth: will the space remain convincing when people work, spill drinks, move chairs, open curtains, replace damaged parts and return for a second year?"
+        },
+        {
+          "type": "text",
+          "content": "These criteria make interior criticism more demanding than the ranking of images. A beautiful photograph remains useful evidence, but it is incomplete evidence. It cannot show glare at noon, the noise of a full dining room, the maintenance regime of a bark facade, the ease of repairing a hotel headboard or the labour required to catalogue reused exhibition furniture. Design culture needs images, but it also needs plans, specifications, post-occupancy accounts and honest statements about what was retained, removed and newly made."
+        },
+        {
+          "type": "quote",
+          "content": "A room matters when its atmosphere is not an effect placed over use, but the perceptible form of how it is built, maintained and shared."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "What survives the photograph"
+        },
+        {
+          "type": "text",
+          "content": "The most memorable interiors of this autumn are not those with the most recognisable palette. They are the ones in which atmosphere can be traced back to decisions. A shadow exists because a light source has been located with care. A calm room is calm because circulation, acoustics and storage have been resolved. An old chair remains because someone accepted the work of repair. A timber ceiling is warm because it carries load, filters air and measures daylight—not because a timber veneer was applied at the end."
+        },
+        {
+          "type": "text",
+          "content": "That distinction separates style from authorship. Style can be copied quickly; an operating logic cannot. The six projects are not beyond criticism, and none should be treated as a universal model. Their budgets, users and regulatory conditions differ too radically. But each offers a precise proposition about what an interior can do. The room is no longer a container filled with taste. It is an environmental and social instrument, tuned through material, light, memory and use."
+        },
+        {
+          "type": "text",
+          "content": "Autumn is often described through retreat: shorter days, enclosed rooms, heavier surfaces. These projects suggest a more useful interpretation. The season makes us notice interior conditions again. It reveals which spaces can hold changing light, which histories have been allowed to remain active, which materials promise more than an image and which forms of comfort depend on someone else’s invisibility. The rooms that matter now are not simply beautiful places to enter. They are places that make the terms of entry worth examining."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Project index and sources"
+        },
+        {
+          "type": "link",
+          "content": "Versailles pied-à-terre and Residence DNB — Archiproducts, Best Interior Design Projects of September",
+          "url": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+        },
+        {
+          "type": "link",
+          "content": "Eteläranta 6 / AD Museum — Studio Joanna Laajisto",
+          "url": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+        },
+        {
+          "type": "link",
+          "content": "Office by Nature / Tafelberg — Studio Massimo",
+          "url": "https://www.studiomassimo.com/"
+        },
+        {
+          "type": "link",
+          "content": "Office by Nature — Archilovers project documentation",
+          "url": "https://www.archilovers.com/projects/351208/office-by-nature.html"
+        },
+        {
+          "type": "link",
+          "content": "Hotel Kämp — Fyra",
+          "url": "https://www.fyra.fi/reference/hotel-kamp/"
+        },
+        {
+          "type": "link",
+          "content": "Bar Leone — BOND",
+          "url": "https://bond-ny.com/project/bar-leone/"
+        },
+        {
+          "type": "note",
+          "content": "Research and text by Viacheslav Munister for EPRIS Journal. The review is based on official studio documentation and published project information. Image captions identify the credited photographer where supplied by the source; Eteläranta 6 images are credited courtesy Studio Joanna Laajisto."
+        }
+      ]
     }
   ],
   "reviews": [
@@ -61791,6 +62224,439 @@
             }
           ],
           "authorId": "author-1784732936927-kw554"
+        },
+        {
+          "id": 66,
+          "draft": true,
+          "title": "Die Räume, die jetzt zählen: Sechs Innenräume, die Herbst 2026 prägen",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "9. Okt 2026",
+          "excerpt": "Von einer wiederverwendeten Museumswohnung in Helsinki bis zu einer rot beleuchteten SoHo-Bar und einem Holzbüro unter der niederländischen Heidelandschaft zeigen sechs Projekte, warum die stärksten Innenräume der Saison weniger mit Stil als mit Zeit, Atmosphäre und Nutzung zu tun haben.",
+          "category": "Design",
+          "subcategory": "Herbst-Review",
+          "tags": [
+            "Innenarchitektur",
+            "Herbst 2026",
+            "Adaptive Wiederverwendung",
+            "Kreisförmiges Design",
+            "Gastgewerbe",
+            "Materialität",
+            "Beleuchtung",
+            "Helsinki",
+            "New York",
+            "Belgien",
+            "Niederlande",
+            "Paris"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/autumn26-admuseum-01.jpg",
+          "showCover": true,
+          "previewToken": "rooms-that-matter-8fa62c1d31b0",
+          "updatedAt": "2026-10-09T19:48:21.150Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Ein Interieur erscheint online als fertiges Bild: leer, korrigiert, gleichmäßig beleuchtet und losgelöst von den Stunden, für die es entworfen wurde. Je überzeugender das Foto, desto leichter fällt es, Komposition mit Erfahrung zu verwechseln. Doch die besten Räume des Herbstes 2026 sind genau dort interessant, wo das Bild versagt—wo Tageslicht eine Oberfläche verändert, wo ein altes Objekt ein neues System unterbricht, wo ein Boden Abnutzung erhält, wo Dunkelheit Gespräche ermöglicht oder wo ein Materialanspruch gegen die tatsächliche Bauweise eines Gebäudes getestet werden kann."
+            },
+            {
+              "type": "text",
+              "content": "Diese Rezension vereint sechs Projekte aus dem Bereich der häuslichen, kulturellen, Arbeits- und Hospitality-Interieurs. Sie sind kein Ausblick auf Farben oder Möbelgestaltungen. Sie teilen auch keinen Look. Eine zurückhaltende Wohnung in der Nähe von Versailles, ein Penthouse in der Nordsee, ein temporäres Museum in Helsinki, ein Holzbüro in der niederländischen Landschaft, die Erneuerung des Hotel Kämp und eine zweistöckige Bar in SoHo gehören unterschiedlichen Wirtschaften und sozialen Welten an. Was sie verbindet, ist eine bedeutendere Designfrage: Wie kann ein Interieur die Zeit erfahrbar machen?"
+            },
+            {
+              "type": "quote",
+              "content": "Die stärksten Räume der Saison fordern nicht dazu auf, auf einen Blick konsumiert zu werden. Sie schaffen Bedingungen für Aufmerksamkeit."
+            },
+            {
+              "type": "text",
+              "content": "Zeit tritt in diesen Projekten in mehreren Formen auf. Es ist das historische Gewebe, das weder gelöscht noch sentimentalisiert werden darf. Es ist die zukünftige Demontage einer temporären Ausstellung. Es ist Holz, das die Struktur tragen darf, anstatt Wärme zu imitieren. Es ist ein Hotel, das intensiver Nutzung standhalten soll, ohne anonym zu werden. Es ist das Halbdunkel einer Bar, kalibriert nicht für Dokumentation, sondern für die soziale Erlaubnis, die die Nacht bieten kann. Gemeinsam deuten die sechs Projekte darauf hin, dass sich das zeitgenössische Interior-Design vom Raum als Stillleben wegbewegt und hin zum Raum als aktive Vereinbarung zwischen Materie, Klima, Erinnerung und Verhalten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Eteläranta 6, das temporäre Zuhause des Finland’s Architecture & Design Museum in Helsinki. Bestehende Möbel, Museumsbestände und wiederverwendete Elemente sind als funktionale öffentliche Innenraum gestaltet. Courtesy Studio Joanna Laajisto.",
+              "alt": "Gedämpfte grüne Räume mit Vintage-Sitzmöbeln und Bücherregalen bei Eteläranta 6 in Helsinki.",
+              "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "1. Versailles: Erhaltung ohne Gehorsam"
+            },
+            {
+              "type": "text",
+              "content": "In einem Haus aus dem achtzehnten Jahrhundert südlich von Paris beginnen Inès Deschodt und Johanne Le Griffon mit einem scheinbar vertrauten Auftrag: Machen Sie eine historische Wohnung für das zeitgenössische Leben nutzbar, während Sie ihre architektonische Würde bewahren. Die Gefahr ist ebenso vertraut. Denkmalschutz kann zu einer geschmackvollen Einfrierung werden, während Kontrast zu einer Aufführung werden kann, in der jede neue Einfügung laut ihr Datum verkündet. Dieses 135-Quadratmeter-Pied-à-Terre vermeidet beide Fallen, indem es die bestehende Hülle als Rahmen behandelt, der genügend Autorität besitzt, um Meinungsverschiedenheiten aufzufangen."
+            },
+            {
+              "type": "text",
+              "content": "Leisten und Proportionen werden bewahrt, aber die Räume sind nicht als Inventar der Periodenrichtigkeit inszeniert. Ein tiefer, niedriger Sofa fügt sich nahtlos in das Salon ein, ohne mit dem Kamin zu konkurrieren. Dunkles Holz und schwarzes Metall verleihen dem ansonsten blassen Gehäuse Gewicht. Der eindrucksvollste Eingriff erfolgt in der Küche, wo Calacatta Viola Marmor neben Edelstahl platziert wird. Aderung und Reflexivität verschmelzen nicht mit dem alten Haus; sie schärfen einander. Marmor trägt geologische Überfülle und häusliche Zeremonie, während Stahl die emotionslose Präzision der Profiküche bringt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Salon des Versailles pied-à-terre. Historische Leisten bleiben lesbar, während niedrige zeitgenössische Möbel den Schwerpunkt des Raumes verändern. Innendesign von Inès Deschodt und Johanne Le Griffon. Fotografie: Oracle.",
+              "alt": "Ein blasser historischer Salon mit einem dunklen, gebogenen Sofa, skulpturaler Beleuchtung und erhaltenen Wandleisten.",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "text",
+              "content": "Die wahre Intelligenz des Projekts liegt nicht im Kontrast an sich, sondern in der Kontrolle der visuellen Temperatur. In den Wohnbereichen wird Tageslicht durch Vorhänge diffundiert und von dunklem Polster absorbiert. In der Küche fängt Metall es ein und verteilt es neu. Andernorts schaffen Sapele-Verkleidungen und ein elektrisch-blauer Teppich einen dichteren, fast nächtlichen Eindruck. Das Zuhause darf mehrere Atmosphären haben, anstatt jeden Raum in die gleiche fotogene Neutralität zu zwingen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Calacatta Viola Marmor trifft auf Edelstahl in der Küche. Der Gegensatz zwischen geologischem Muster und industrieller Reflexion ist die entscheidendste materielle Geste des Projekts. Fotografie: Oracle.",
+              "alt": "Eine Kücheninsel und Rückwand aus dramatisch geädertem Marmor neben Edelstahl-Schränken.",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "text",
+              "content": "Sogar das Microtopping im Badezimmer ist weniger als modisches nahtloses Finish interessant, sondern als pragmatischer Akt: Es wird auf bestehenden Flächen aufgetragen, begrenzt den Abriss und verleiht dem kleinen Raum ein durchgehendes Feld. Diese Wahl ist bescheiden im Vergleich zum Theater der Küche, offenbart aber die Methode des Projekts. Die neue Arbeit muss nicht jede Oberfläche dominieren. Sie greift dort ein, wo Leistung, Wartung oder räumliche Betonung es erfordern, und zieht sich dann zurück."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-versailles-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Badezimmer ist mit einem leichten Microtopping über den bestehenden Flächen vereinheitlicht, wodurch Abbruch und visuelles Rauschen reduziert werden. Fotografie: Oracle.",
+              "alt": "Ein kompakter blasser Badezimmer mit durchgehenden mineralischen Oberflächen und zurückhaltenden Armaturen.",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "note",
+              "content": "Rezensionsurteil — Stärkster Zug: die historische Detailtreue und die zeitgenössische Materialintensität koexistieren lassen, ohne Hierarchie. Risiko: die Marmor-und-Stahl-Küche kann als autonome Luxusabbildung gelesen werden. Was es verändert: Erhaltung wird zu einer flexiblen räumlichen Disziplin anstelle eines dekorativen Stils."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "2. Residence DNB: das Meer ist keine Farbpalette"
+            },
+            {
+              "type": "text",
+              "content": "Residence DNB, ein Duplex-Penthouse in Knokke-Heist von Britt Van Namen, hätte seine Nordseeblick leicht in ein Thema verwandeln können. Küstenprojekte werden oft auf beige Textilien, gebleichtes Holz und eine verallgemeinerte Sprache der Ruhe reduziert. Hier wird der Horizont nicht als Dekoration behandelt, sondern als Quelle wechselnder Leuchtkraft. Das Interieur bleibt ruhig genug, um das Wetter zu registrieren, während seine Materialien substanziell genug sind, um nicht gegen es zu verschwinden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Residence DNB in Knokke-Heist rahmt die Nordsee als wechselndes Licht und nicht als dekoratives Motiv ein. Inneneinrichtung von Britt Van Namen. Fotografie: Cafeine.",
+              "alt": "Ein Penthouse-Wohnzimmer mit weitem Blick über die Nordsee und einem dunklen runden Tisch.",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "text",
+              "content": "Die runde Edelstahl-Kücheninsel ist das klarste Beispiel. Ihre Form verhindert, dass das Metall streng wirkt: Licht bewegt sich um die Kurve, verwischt die Grenze zwischen Objekt und Reflexion. Dahinter sind helle Schränke und Steinsregale absichtlich zurückhaltend. Zwei dunkle Holzschemel schaffen einen wärmeren Kontaktpunkt am Körper. Die Anordnung wirkt einfach, weil verschiedene Arten von Härte—Metall, Stein, Glas—durch Radius, Textur und Abstand choreografiert wurden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die runde Edelstahlinsel verwandelt Tageslicht in eine bewegliche Oberfläche; dunkle Holzschemel mildern die mineralische Präzision der Küche. Fotografie: Cafeine.",
+              "alt": "Eine minimalistische Küche mit einer gewölbten Edelstahlinsel und zwei dunklen Holzschemel.",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "text",
+              "content": "Ein Lehmboden verleiht der Wohnung eine ungewöhnlich geerdete Basis, während Stauraum aus Gerüstbrettern Belege für vorherige Nutzung trägt. Grüner Marmor und Breccia Rosata erscheinen als konzentrierte Akzente anstelle eines All-over-Statements. Van Namen hat die Atmosphäre als etwas beschrieben, das durch Texturen, Proportionen, Übergänge und Licht erzeugt wird. Residence DNB unterstützt diese Behauptung, weil kein einzelnes Material verlangt wird, die ganze Identität zu liefern. Das Erlebnis sammelt sich über Schwellen hinweg."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-dnb-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "<p>Blasse Polsterung, grüner Marmor und eine niedrige Horizontlinie organisieren den Wohnbereich um die körperliche Skala und das Küstenlicht. Fotografie: Cafeine.</p>",
+              "alt": "<p>Ein sanft eingerichteter Wohnraum mit grünen Marmorakzenten und bodentiefen Küstendurchblicken.</p>",
+              "sourceUrl": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "text",
+              "content": "<p>Die Schwäche vieler Luxusinterieurs ist, dass Tastbarkeit als Ersatz für soziale oder ökologische Konsequenzen angeboten wird. Eine grobe Wand, handgefertigte Fliese oder recyceltes Brett werden zu einem visuellen Alibi. DNB ist am stärksten, wenn es dieser Vereinfachung widersteht. Die wiederverwendeten Bretter machen die ganze Wohnung nicht kreisförmig, und die rammed-earth-Oberfläche neutralisiert nicht die verkörperten Kosten umfangreicher Verglasung und maßgeschneiderter Steine. Doch das Projekt zeigt eine reifere Materialkompetenz: Herkunft, sinnliche Wirkung und technische Leistung dürfen unterschiedliche Fragen bleiben.</p>"
+            },
+            {
+              "type": "note",
+              "content": "<p>Rezensionsurteil — Stärkster Schritt: Das Meer in einen sich verändernden Lichtzustand zu übersetzen, anstatt ein dekoratives Thema. Risiko: Materialreichtum kann noch immer mit ökologischer Verantwortung verwechselt werden. Was es verändert: Luxus liegt in kalibrierten Übergängen, nicht in der Anzahl sichtbarer Oberflächen.</p>"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "<p>3. Eteläranta 6: Kreislauf wird sichtbare Intelligenz</p>"
+            },
+            {
+              "type": "text",
+              "content": "Das temporäre Architektur & Design Museum am Eteläranta 6 in Helsinki ist das konzeptuell wichtigste Projekt in dieser Auswahl, weil es Wiederverwendung als Ursprung einer Ästhetik behandelt, anstatt einen Kompromiss nach dem Design anzuwenden. Studio Joanna Laajisto arbeitete in einer Jugendwohnung, die 1904 von Mauritz Gripenberg entworfen wurde. Das Museum benötigte Veranstaltungsräume, eine Bibliothek, Werkstätten und Räume für öffentliche Arbeit, aber seine Nutzung sollte niemals eine verschwenderische Dauerhaftigkeit rechtfertigen."
+            },
+            {
+              "type": "text",
+              "content": "Fast jede Entscheidung beginnt daher mit einer Inventur: Was kann bleiben, was kann ausgeliehen werden, was kann wiederhergestellt werden, und was kann später anderswohin umziehen? Recycelte Ecophon-Akustikpaneele, Ege-Teppichfliesen, ein Second-Hand Kvadrat-Vorhang, geborgene maßgeschneiderte Möbel und Objekte aus der Sammlung des Museums bilden den Materialwortschatz des Projekts. Minimale Demontage bewahrt sowohl den eingebetteten Kohlenstoff als auch die Lesbarkeit der Wohnung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Museumsbibliothek befindet sich in einem dunkelgrünen Raum, in dem gesammelte Möbel und Bücher Dichte schaffen, ohne eine neue eingerichtete Szenografie. Courtesy Studio Joanna Laajisto.",
+              "alt": "Eine dunkelgrüne Bibliothek mit Vintage-Velvet-Stühlen, einem Holztisch und Bücherregalen.",
+              "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+            },
+            {
+              "type": "text",
+              "content": "Das Ergebnis ist kein Collage aus tugendhaften Resten. Farbe bietet ein starkes Ordnungssystem. Dunkelgrün verleiht der Bibliothek Umfassung und Konzentration; blassblau-grau ermöglicht es kleineren Räumen, Tageslicht zu empfangen, ohne die Weichheit zu verlieren; ein saftiges Oliv markiert eine bescheidene Tafelstellung mit fast theatralischer Klarheit. Vorhänge absorbieren Schall und definieren Zonen. Alte Stühle werden nicht romantisiert als Antiquitäten; sie werden nach Proportion, Reparierbarkeit und der Art, wie ihre abgenutzten Materialien den öffentlichen Gebrauch aushandeln, ausgewählt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-admuseum-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein wiederverwendeter Tisch und Hocker stehen in einem Olive-Raum, in dem Farbe mehr organisatorische Arbeit leistet als neue Konstruktion. Courtesy Studio Joanna Laajisto.",
+              "alt": "Ein kleiner olivefarbener Raum mit einem einfachen Holztisch, Hockern und einer Pendelleuchte.",
+              "sourceUrl": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+            },
+            {
+              "type": "text",
+              "content": "Kreisförmiges Design wird oft durch Diagramme vermittelt, weil seine Errungenschaften schwer zu fotografieren sind. Eteläranta 6 löst dieses repräsentative Problem, indem es Kontinuität selbst sinnlich macht. Nichts passt im Einzelhandelssinn, aber Beziehungen sind präzise. Holz Töne wiederholen sich über Objekte verschiedener Altersstufen. Lampen lokalisieren Nutzinseln. Textilien reduzieren die institutionelle Härte, die normalerweise mit temporären Veranstaltungsorten verbunden ist. Das Innere fühlt sich vollständig an, ohne vorzugeben, neu zu sein."
+            },
+            {
+              "type": "text",
+              "content": "Hier gibt es eine breitere Lektion für kulturelle Innenräume. Temporäre Ausstellungen verbrauchen häufig große Mengen an Blechmaterial, Farbe, Teppich und maßgeschneiderter Fertigung im Streben nach einer angeblich neutralen Präsentation. Laajisto zeigt, dass Begrenzung einen reicheren öffentlichen Charakter erzeugen kann. Besucher begegnen nicht einer abstrakten Museumsmarke, sondern einer Zusammenstellung finnischer Design-Geschichten, die wieder in Gebrauch genommen werden. Das Museum wird zu einem lebendigen Archiv: nicht nur ein Ort, an dem Design erklärt wird, sondern ein Raum, in dem seine Nachleben getestet werden können."
+            },
+            {
+              "type": "note",
+              "content": "Rezensionsurteil — Stärkster Schritt: Materialinventar in Atmosphäre verwandeln. Risiko: die kultivierte Eleganz des Ergebnisses könnte die logistische Schwierigkeit der Wiederverwendung unterschätzen. Was sich ändert: Kreislaufwirtschaft wird als Urheberschaft durch Auswahl, Wartung und Neukombination gezeigt."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "4. Office by Nature: wenn Struktur zum Interieur wird"
+            },
+            {
+              "type": "text",
+              "content": "Bei Tafelberg in Blaricum adressiert Studio Massimo’s Office by Nature ein Problem, das Arbeitsplatzgestaltung oft vermeidet. Unternehmensinterieurs werden typischerweise nach der Gebäudeshell konzipiert, dann in kurzen Zyklen ersetzt, wenn Mieter, Markenbildung oder Managementmoden sich ändern. Hier werden Struktur, Hülle und Interieur als ein Holzsystem gestaltet. Das Umweltargument des Projekts ist daher architektonisch, bevor es dekorativ wird."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-office-nature-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Office by Nature liegt in der Nähe geschützter Heideflächen bei Tafelberg in Blaricum. Eine barkummantelte Hülle und ein bepflanztes Dach verringern die Unterscheidung zwischen Gebäude und Landschaft. Architektur und Interieurs von Studio Massimo. Fotografie: Riccardo De Vecchi.",
+              "alt": "Ein niedriges Bürogebäude, verkleidet mit strukturierter Rinde, mit einem bepflanzten Dach zwischen reifen Bäumen.",
+              "sourceUrl": "https://www.studiomassimo.com/"
+            },
+            {
+              "type": "text",
+              "content": "Das 1.000 Quadratmeter große Gebäude verwendet Red Grandis-Konstruktion mit Brettschichtholz aus Fichte. Pappelrinde verleiht der Fassade eine raue, wetterbeständige Oberfläche, während ein grünes Dach die umliegende Vegetation über das Profil des Gebäudes ausdehnt. Innen ist die geneigte Holzgeometrie nicht über einer schwebenden Decke verborgen. Sie definiert die Räume, fängt Tageslicht von langen Dachfenstern ein und verleiht gemeinsamen Arbeitsbereichen eine häusliche Dimension, ohne ein Haus nachzuahmen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-office-nature-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Glulam-Rahmen, Fichte CLT und ein langer Dachlicht machen Konstruktion, Tageslicht und Innenraumcharakter untrennbar. Fotografie: Riccardo De Vecchi.",
+              "alt": "Ein langer Holzbüro-Innenraum unter geneigten Decken und einem durchgehenden Oberlicht.",
+              "sourceUrl": "https://www.studiomassimo.com/"
+            },
+            {
+              "type": "text",
+              "content": "Fräste Belüftungsschlitze sind in Holzflächen integriert, anstatt als konkurrierende technische Schicht hinzugefügt zu werden. Eine Spiraltreppe wird zu einem kompakten skulpturalen Scharnier zwischen den Ebenen. Terrazzo enthält Steinbruchabfälle und führt mineralische Dichte ein, wo der Körper einen langlebigen Boden benötigt. Dies sind keine unsichtbaren Technologien, aber auch keine als Öko-Gadgets präsentierten. Die Leistung wird in die räumliche Sprache aufgenommen."
+            },
+            {
+              "type": "text",
+              "content": "Der Titel des Projekts riskiert die einfache Rhetorik der Biophilie, ein Wort, das jetzt fast jedem Raum mit Pflanzen oder Holz zugeordnet wird. Office by Nature ist überzeugender, wenn es strukturell gelesen wird. Seine Leistung besteht nicht darin, dass Arbeiter Grünflächen sehen können, obwohl sie es können. Es ist, dass die hauptsächliche visuelle Ordnung des Innenraums auch die tragende und umweltbezogene Ordnung des Gebäudes ist. Die Vorsicht gilt der Wartung: offenes Holz, bepflanzte Dächer und maßgeschneiderte Belüftungsdetails erfordern langfristige Pflege. Ein ökologischer Innenraum ist nur glaubwürdig, wenn seine Betriebsdauer das Versprechen seiner Fotografien bestätigt."
+            },
+            {
+              "type": "note",
+              "content": "Rezensionsurteil — Stärkster Schritt: kollabierende Struktur, Versorgung und Atmosphäre in ein lesbares Holzsystem. Risiko: die Sprache der ‘Natur’ kann Ressourcen- und Wartungsfragen verschleiern. Was es verändert: Arbeitsplatzidentität stammt aus der Konstruktion anstatt aus angewandtem Branding."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "5. Hotel Kämp: Haltbarkeit ist die wahre Form des Luxus"
+            },
+            {
+              "type": "text",
+              "content": "Hotelrenovierung testet die Ethik eines Designers in Bezug auf die Zeit strenger als ein Privathaus. Zimmer werden intensiv genutzt, wiederholt fotografiert und sollen den Gästen Kontinuität vermitteln, die das Gebäude möglicherweise nur durch Ruf kennen. Im Helsinki’s Hotel Kämp, gegründet 1887, bildet die Erneuerung der Gästezimmer und Flure von Fyra einen Teil einer größeren Erweiterung, die Helander House und zwanzig weitere Zimmer umfasst, fünfzehn davon Suiten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Sibelius Suite im Hotel Kämp verbindet bewahrte kulturelle Erinnerung mit Möbeln, die für zeitgenössische Nutzung skaliert sind. Innenarchitektur von Fyra. Fotografie: Riikka Kantinkoski.",
+              "alt": "Eine helle Hotellounge mit geformten Wänden, einem geschwungenen Sofa, einem Klavier und einem dunklen keramischen Ofen.",
+              "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+            },
+            {
+              "type": "text",
+              "content": "Das Projekt vermeidet die beiden Standardreaktionen auf Heritage Hospitality. Es rekonstruiert kein Innenraum des neunzehnten Jahrhunderts als Spektakel, und es neutralisiert das Gebäude nicht in internationale Fünf-Sterne-Anonymität. Bezüge zum finnischen kulturellen Leben, einschließlich Helene Schjerfbeck und Jean Sibelius, erscheinen durch Kunstwerke, Suiten und Atmosphäre anstelle von thematischer Dekoration. Zierleisten, keramische Öfen, warmes Holz, blasse Textilien und sorgfältig gewählte Farben schaffen eine geschichtete Chronologie."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein Speiseraum im erneuerten Hotel Kämp nutzt einen lebendigen Teppich und eine skulpturale Glasschmucklampe, um die kontrollierte Cremehülle zu unterbrechen. Fotografie: Riikka Kantinkoski.",
+              "alt": "Ein elegantes cremefarbenes Speisezimmer mit einem lebendigen Blumenmusterteppich und einer gruppierten Glasschmucklampe.",
+              "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+            },
+            {
+              "type": "text",
+              "content": "Die stärksten Räume enthalten ein Maß an visuellem Reibungspunkt. Ein heller Teppich liegt unter maßgeschneiderten Möbeln. Eine Glasschmucklampe sammelt Licht zu einer dichten Wolke. Kunst ist nicht nur zentriert, um eine Wand zu vervollständigen. Diese Gesten verhindern, dass Erbe zu beiger Beruhigung wird. Sie erkennen auch an, dass ein Hotell interior in Episoden verstanden werden muss: Ankunft, Auspacken, Arbeiten, Essen, Schlafen, Erwachen. Jede erfordert ein anderes Lichtniveau und eine andere Beziehung zwischen Belichtung und Umschließung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-kamp-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die ruhigere Gästepalettenpalette basiert auf Proportion, geschichtetem Licht und der taktilen Präsenz des historischen Keramikofens. Fotografie: Riikka Kantinkoski.",
+              "alt": "Ein gedämpfter Hotellounge mit einer gebogenen Couch, Messingspiegelleuchten und einem weißen Keramikofen.",
+              "sourceUrl": "https://www.fyra.fi/reference/hotel-kamp/"
+            },
+            {
+              "type": "text",
+              "content": "Haltbarkeit ist das ungelöste, aber wesentliche Kriterium des Projekts. Luxushotels ersetzen Oberflächen häufig, bevor sie physisch erschöpft sind, weil visuelle Frische Teil des Produkts ist. Fyra spricht von der Kombination moderner Technologie mit Langlebigkeit; der Anspruch wird durch Reparaturstrategien, austauschbare Komponenten und die Akzeptanz von Patina anstelle von Scheitern bewiesen. Das nachhaltigste Heritage-Hotel ist nicht das, das am Eröffnungstag historisch aussieht, sondern das, das Tausende von Nächten absorbieren kann, ohne eine weitere vollständige Bildrücksetzung zu erfordern."
+            },
+            {
+              "type": "note",
+              "content": "Bewertungsergebnis — Stärkster Schritt: Verwendung des finnischen kulturellen Gedächtnisses als räumliche Tiefe anstelle eines wörtlichen Themas. Risiko: Der Zyklus der kosmetischen Erneuerung im Gastgewerbe kann die Behauptungen von Langlebigkeit untergraben. Was es verändert: Luxus wird anhand von Reparatur, akustischem Komfort und der Fähigkeit zu altern beurteilt, nicht durch unmittelbare Neuheit."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "6. Bar Leone: das Design der Erlaubnis nach Einbruch der Dunkelheit"
+            },
+            {
+              "type": "text",
+              "content": "Bar Leone bei 527 Broome Street, entworfen von BOND, ist das offenste kinoartige Interieur der Auswahl. Eröffnet im September 2026, teilt sich der 2.400 Quadratfuß große Veranstaltungsort vertikal in zwei verwandte, aber unterschiedliche soziale Welten. Die obere Ebene verwendet Sapele, Corduroy-Velours und roten Travertin, um eine langsamere, wärmere ‘Goldene Stunde’ zu schaffen. Unten produzieren rote Samt Tapeten, Vinyl-Bänke, Lack und Chrom die komprimierte Energie eines Italo-Disco."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der obere Raum bei Bar Leone verwendet schwaches bernsteinfarbenes Licht, poliertes Metall und Sapele, um die psychologische Dauer der goldenen Stunde zu verlängern. Innenarchitektur von BOND. Fotografie: Matthew Kappas.",
+              "alt": "Eine bernsteinbeleuchtete Bar mit skulpturalen Bodenlampen, reflektierenden Tischen und einer langen Bank.",
+              "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+            },
+            {
+              "type": "text",
+              "content": "Das Projekt ist wertvoll, weil es Licht mehr als Sichtbarkeit ermöglicht. Licht definiert die Entfernung zwischen Fremden, steuert, wie schnell der Raum verstanden werden kann, und verleiht Materialien eine temporale Rolle. Roter Travertin sieht unter bernsteinfarbenen Quellen fast flüssig aus. Chrom verwandelt jede Lampe in mehrere Reflexionen. Gesichter sind lesbar, ohne exponiert zu sein. Der Raum bietet einen kalibrierten Grad an Privatsphäre im öffentlichen Raum—einer der wichtigsten und am wenigsten messbaren Errungenschaften des Nachtclub-Designs."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roter Travertin, Corduroy-Velours und Pools reflektierten Lichts organisieren die obere Ebene um Intimität statt Spektakel. Fotografie: Matthew Kappas.",
+              "alt": "Ein dunkles, gebogenes Bänkelement, das rote Marmortische unter schwachem warmem Licht umgibt.",
+              "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+            },
+            {
+              "type": "text",
+              "content": "Unten wird die Palette dichter und synthetischer. Polsterstühle sind fast körperlich im Profil. Die Farbe Rot bewegt sich über Teppich, Wände, Leder und Licht, aber Variationen im Glanz verhindern, dass Monochrom flach wirkt. Maßgeschneiderte Beleuchtung von Gantri und ein mit Map Studio entwickeltes Schema schaffen Rhythmus statt flächendeckende Beleuchtung. Möbel von Spinzi Studio sind so angeordnet, dass sie verschiedene Formen der Nutzung ermöglichen: Zuschauen, Treffen, Zurückziehen, Annäherung an die Bar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/autumn26-bar-leone-03.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die untere Ebene wechselt zu einem Italo-Disco-Register: Samtwände, Vinylsitze und vertikales Licht schaffen ein dichteres soziales Tempo. Fotografie: Matthew Kappas.",
+              "alt": "Ein tiefrotes Nachtclub-Innenraum mit abgerundeten Ledersesseln, Marmortischen und leuchtenden Wandlichtern.",
+              "sourceUrl": "https://bond-ny.com/project/bar-leone/"
+            },
+            {
+              "type": "text",
+              "content": "Das Risiko ist offensichtlich: Ein so kontrollierter Raum kann zu einem Kulissenhintergrund werden, bevor er zu einem Ort wird. Sein visueller Eindruck ist sofort in sozialen Medien verfügbar, und jede polierte Reflexion kann als Inhalt gerahmt werden. Doch die Aufteilung des Plans in zwei Atmosphären verleiht der Bar eine Widerstandskraft, die ein einzelner ikonischer Raum fehlen würde. Gäste müssen ein Tempo wählen. Bewegung zwischen Ebenen wird Teil des Abends. Das Innere repräsentiert nicht nur das Nachtleben; es schneidet seine Sequenz."
+            },
+            {
+              "type": "note",
+              "content": "Rezensionsurteil — Stärkster Zug: Licht als soziale Grenze und Zeitmessgerät zu behandeln. Risiko: Die filmische Identität könnte schneller konsumiert werden, als die Rituale, die sie beherbergen soll. Was es verändert: Hospitality-Design wird durch Erlaubnis, Tempo und akustische Intimität bewertet, nicht nur durch das Erscheinungsbild."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Was die sechs Projekte zusammen sagen"
+            },
+            {
+              "type": "text",
+              "content": "Nebenbei gestellt, widerstehen diese Innenräume einer einzigen saisonalen Ästhetik. Es gibt keinen verantwortungsvollen Weg, grüne Wände, Edelstahl, Holzstruktur, wiederverwendete Möbel oder rotes Licht als ‚den Look‘ des Herbstes 2026 zu bezeichnen. Ihr Wert liegt in unterschiedlichen Beziehungen zwischen Design und Dauer. Versailles zeigt, dass Erhaltung Materialstreitigkeiten aufnehmen kann. Residence DNB macht Klima und Horizont zu aktiven Komponenten. Eteläranta 6 verwandelt Wiederverwendung in eine kuratorische Methode. Office by Nature gibt der Konstruktion die Arbeit, die normalerweise der Unternehmensstil zuweist. Hotel Kämp fragt, ob Luxus Reparatur überleben kann. Bar Leone gestaltet die Nacht als eine Sequenz von Genehmigungen."
+            },
+            {
+              "type": "text",
+              "content": "Drei Kriterien treten hervor. Das erste ist zeitliche Lesbarkeit: Kann ein Besucher erkennen, was vorher existierte, was hinzugefügt wurde und wie sich der Raum verändern könnte? Das zweite ist umweltbezogene Spezifität: Formt Licht, Klima, akustisches Verhalten oder Materialbeschaffung wirklich das Interieur, oder wird Kontext nur als Erzählung verwendet? Das dritte ist operationale Wahrheit: Wird der Raum auch nach einem Jahr noch überzeugend sein, wenn Menschen arbeiten, Getränke verschütten, Stühle bewegen, Vorhänge öffnen, beschädigte Teile ersetzen und zurückkehren?"
+            },
+            {
+              "type": "text",
+              "content": "Diese Kriterien machen Innenkritik anspruchsvoller als die Rangliste von Bildern. Ein schönes Foto bleibt ein nützliches Beweisstück, aber es ist ein unvollständiger Beweis. Es kann keinen Glanz um Mittag, den Lärm eines vollen Speisesaals, das Wartungsregime einer Barkfassade, die Leichtigkeit bei der Reparatur eines Hotelkopfteils oder die Arbeit, die erforderlich ist, um wiederverwendete Ausstellungs furniture zu katalogisieren, zeigen. Designkultur braucht Bilder, aber sie braucht auch Pläne, Spezifikationen, Nachnutzungsberichte und ehrliche Aussagen darüber, was beibehalten, entfernt und neu gemacht wurde."
+            },
+            {
+              "type": "quote",
+              "content": "Ein Raum zählt, wenn seine Atmosphäre kein Effekt ist, der über die Nutzung gelegt wird, sondern die wahrnehmbare Form, wie er gebaut, gepflegt und geteilt wird."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Was die Fotografie überlebt"
+            },
+            {
+              "type": "text",
+              "content": "Die denkwürdigsten Innenräume dieses Herbstes sind nicht diejenigen mit der am leichtesten erkennbaren Farbpalette. Es sind die, in denen Atmosphäre auf Entscheidungen zurückgeführt werden kann. Ein Schatten existiert, weil eine Lichtquelle sorgfältig positioniert wurde. Ein ruhiger Raum ist ruhig, weil Kreislauf, Akustik und Stauraum gelöst wurden. Ein alter Stuhl bleibt, weil jemand die Arbeit der Reparatur akzeptiert hat. Eine Holzdecke ist warm, weil sie Last trägt, Luft filtert und Tageslicht misst – nicht weil eine Holzfurnier am Ende aufgebracht wurde."
+            },
+            {
+              "type": "text",
+              "content": "Diese Unterscheidung trennt Stil von Urheberschaft. Stil kann schnell kopiert werden; eine Betriebslogik nicht. Die sechs Projekte sind nicht kritikfrei, und keines sollte als universales Modell behandelt werden. Ihre Budgets, Nutzer und regulatorischen Bedingungen unterscheiden sich zu radikal. Aber jedes bietet einen genauen Vorschlag darüber, was ein Innenraum tun kann. Der Raum ist nicht mehr nur ein Behälter, gefüllt mit Geschmack. Er ist ein Umwelt- und Sozialinstrument, abgestimmt durch Material, Licht, Erinnerung und Nutzung."
+            },
+            {
+              "type": "text",
+              "content": "Herbst wird oft durch Rückzug beschrieben: kürzere Tage, geschlossene Räume, schwerere Oberflächen. Diese Projekte schlagen eine nützlichere Interpretation vor. Die Saison lässt uns Innenraumzustände wieder wahrnehmen. Sie zeigt, welche Räume wechselndes Licht halten können, welche Geschichten aktiv bleiben durften, welche Materialien mehr versprechen als ein Bild und welche Komfortformen von der Unsichtbarkeit anderer abhängen. Die Räume, die jetzt zählen, sind nicht einfach schöne Orte zum Betreten. Es sind Orte, die die Bedingungen des Eintritts wert sind, genauer betrachtet zu werden."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Projektindex und Quellen"
+            },
+            {
+              "type": "link",
+              "content": "Versailles pied-à-terre und Residence DNB — Archiproducts, Beste Innenarchitekturprojekte im September",
+              "url": "https://www.archiproducts.com/en/news/5-best-interior-design-projects-of-september_112055"
+            },
+            {
+              "type": "link",
+              "content": "Eteläranta 6 / AD Museum — Studio Joanna Laajisto",
+              "url": "https://joannalaajisto.com/project/etelaranta-6-ad-museum/"
+            },
+            {
+              "type": "link",
+              "content": "Büro by Nature / Tafelberg — Studio Massimo",
+              "url": "https://www.studiomassimo.com/"
+            },
+            {
+              "type": "link",
+              "content": "Büro by Nature — Archilovers Projekt Dokumentation",
+              "url": "https://www.archilovers.com/projects/351208/office-by-nature.html"
+            },
+            {
+              "type": "link",
+              "content": "Hotel Kämp — Fyra",
+              "url": "https://www.fyra.fi/reference/hotel-kamp/"
+            },
+            {
+              "type": "link",
+              "content": "Bar Leone — BOND",
+              "url": "https://bond-ny.com/project/bar-leone/"
+            },
+            {
+              "type": "note",
+              "content": "Forschung und Text von Viacheslav Munister für EPRIS Journal. Die Rezension basiert auf offiziellen Studio-Dokumentationen und veröffentlichten Projektinformationen. Bildunterschriften identifizieren den genannten Fotografen, sofern vom Quellenmaterial bereitgestellt; Eteläranta 6 Bilder werden courtesy Studio Joanna Laajisto gutgeschrieben."
+            }
+          ]
         }
       ],
       "reviews": [
