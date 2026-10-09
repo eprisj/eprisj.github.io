@@ -16210,7 +16210,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/28am-fox-burrow-01.jpg",
       "showCover": true,
-      "updatedAt": "2026-10-09T12:00:00.000Z",
+      "updatedAt": "2026-10-09T09:36:40.067Z",
       "publishedAt": "2026-10-09T12:00:00.000Z",
       "content": [
         {
@@ -16400,7 +16400,8 @@
           "content": "View Fox Burrow on 28 a.m. Studio",
           "url": "https://www.28am.studio/projects/fox-burrow"
         }
-      ]
+      ],
+      "authorId": "author-1784732936927-kw554"
     }
   ],
   "reviews": [
