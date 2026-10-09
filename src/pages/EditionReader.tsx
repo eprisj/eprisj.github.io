@@ -35,11 +35,14 @@ export interface EditionManifest {
   toc: EditionTocEntry[];
 }
 
+// rev: меняем при каждой пересборке выпуска. Страницы отдаются с Cache-Control immutable на 30 дней,
+// а вставка статьи сдвигает нумерацию: без ?v= вернувшийся читатель увидел бы старые страницы под новыми номерами.
+export const EDITION_REV = '20261009';
 export const EDITIONS = [{ id: 'autumn-2026', base: '/editions/autumn-2026/' }];
 
 const pad = (n: number) => String(n).padStart(3, '0');
-export const pageSrc = (base: string, n: number) => `${base}pages/${pad(n)}.webp`;
-export const thumbSrc = (base: string, n: number) => `${base}pages/t/${pad(n)}.webp`;
+export const pageSrc = (base: string, n: number) => `${base}pages/${pad(n)}.webp?v=${EDITION_REV}`;
+export const thumbSrc = (base: string, n: number) => `${base}pages/t/${pad(n)}.webp?v=${EDITION_REV}`;
 export const megabytes = (bytes: number) => `${Math.round(bytes / 1024 / 1024)} MB`;
 
 /* Подписи интерфейса. Сам выпуск английский, а рамка вокруг него говорит на
