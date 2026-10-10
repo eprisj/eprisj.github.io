@@ -2612,6 +2612,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // группу, чтобы над карточками не стояли две одинаковые подписи подряд.
   const coAuthorCards = contributorIsCoauthor && contributor ? [...coAuthors, contributor] : coAuthors;
   const separateContributor = contributorIsCoauthor ? null : contributor;
+  // В интервью h3 – это всегда вопрос (в эссе – подзаголовок). Вопрос в три-
+  // четыре предложения, набранный заголовочным шрифтом, читался как стена:
+  // теперь он текстовым шрифтом, полужирный, с золотой линейкой слева, а
+  // пары «вопрос – ответ» разведены воздухом.
+  const isInterview = /interview/i.test(`${article.category || ''} ${article.subcategory || ''}`);
   // With a second card below, the first card is one person: the byline
   // "A & B" above that person's bio and photo read as if the bio were shared.
   const footerAuthorName = (contributor || coAuthors.length > 0) && isMatchingProfile && resolvedAuthor?.name ? resolvedAuthor.name : authorName;
@@ -2801,6 +2806,27 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   if (typeof block.content !== 'string') return null;
                   const lvl = block.level === 3 ? 3 : 2;
                   const Tag = (lvl === 3 ? 'h3' : 'h2') as keyof JSX.IntrinsicElements;
+                  if (isInterview && lvl === 3) {
+                    return (
+                      <h3
+                        key={index}
+                        className="rich-text font-serif font-semibold text-[var(--c-accent)] text-[17px] sm:text-[19px] leading-[1.5] border-l-2 border-[var(--c-gold)] pl-4 sm:pl-5 mt-12 sm:mt-16 mb-5 sm:mb-6"
+                        dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
+                      />
+                    );
+                  }
+                  if (isInterview) {
+                    // Раздел интервью открывается линейкой: без неё «01 · …»
+                    // терялся среди вопросов того же цвета.
+                    return (
+                      <h2
+                        key={index}
+                        className="rich-text font-normal text-[var(--c-accent)] text-xl sm:text-2xl mt-16 sm:mt-20 mb-2 pt-8 sm:pt-10 border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]"
+                        style={{ fontFamily: "var(--font-display)" }}
+                        dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
+                      />
+                    );
+                  }
                   return (
                     <Tag
                       key={index}
