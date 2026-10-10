@@ -16840,7 +16840,7 @@
     },
     {
       "title": "Gayane Arushanian: Home Is Something You Carry",
-      "author": "Viacheslav Munister & Maria Ivanova",
+      "author": "Gayane Arushanian, Viacheslav Munister & Maria Ivanova",
       "role": "Author",
       "date": "October 10, 2026",
       "excerpt": "A Ukrainian artist of Armenian descent, now between Miami and Kyiv, on balance that is earned rather than given, a series that began as a paper game and turned out to be a factorial, and why she refuses to read her work only through war.",
@@ -16853,7 +16853,7 @@
         "sculpture"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
       "showCover": true,
       "draft": true,
       "order": 0,
@@ -16861,7 +16861,7 @@
       "content": [
         {
           "type": "text",
-          "content": "Gayane Arushanian is a Ukrainian multidisciplinary artist of Armenian descent. She was born in Nagorno-Karabakh and came to Ukraine as a child, when war forced her family to leave. She trained at the art school of the Children's and Youth Creativity Centre in Zaporizhzhia, then took two degrees at once: industrial architecture and economic cybernetics. Her main series are <em>IMMERSION. Lapis Lazuli</em> (since 2016), <em>Equilibrium</em> (since 2017) and <em>Abstract Animals</em> (since 2022)."
+          "content": "Gayane Arushanian is a Ukrainian multidisciplinary artist of Armenian descent. She was born in Nagorno-Karabakh and came to Ukraine as a child, when war forced her family to leave. She trained at the art school of the Children’s and Youth Creativity Centre in Zaporizhzhia, then took two degrees at once: industrial architecture and economic cybernetics. Her main series are <em>IMMERSION. Lapis Lazuli</em> (since 2016), <em>Equilibrium</em> (since 2017) and <em>Abstract Animals</em> (since 2022)."
         },
         {
           "type": "text",
@@ -16869,18 +16869,12 @@
         },
         {
           "type": "text",
-          "content": "EPRIS Journal asked her about home, hidden order, the body's sense of balance, and what changes when a painting steps out into space."
-        },
-        {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-          "caption": "Gayane Arushanian in the studio with her works, autumn 2025. Photo: Yuliia Osipova.",
-          "align": "center"
+          "content": "EPRIS Journal asked her about home, hidden order, the body’s sense of balance, and what changes when a painting steps out into space."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "I. Memory and home"
+          "content": "01 · Memory and home"
         },
         {
           "type": "header",
@@ -16906,7 +16900,7 @@
         },
         {
           "type": "text",
-          "content": "I would put it this way: only a person's inner truth gives birth to a place we can call home. Perhaps you could call me a cosmopolitan – that is how my life has turned out. Interestingly, it was the film <em>Home</em> by the French director Yann Arthus-Bertrand that inspired me. People divide absolutely everything. Yes, the world we live in doesn't exist without that either. But I understood, once and for all: home is me, and wherever I am, I carry that meaning."
+          "content": "I would put it this way: only a person’s inner truth gives birth to a place we can call home. Perhaps you could call me a cosmopolitan – that is how my life has turned out. Interestingly, it was the film <em>Home</em> by the French director Yann Arthus-Bertrand that inspired me. People divide absolutely everything. Yes, the world we live in doesn’t exist without that either. But I understood, once and for all: home is me, and wherever I am, I carry that meaning."
         },
         {
           "type": "text",
@@ -16914,24 +16908,29 @@
         },
         {
           "type": "text",
-          "content": "So I wouldn't want to divide it into the body, the language, memory, people or the work. All of it is part of my truth. I carry all of it with me."
+          "content": "So I wouldn’t want to divide it into the body, the language, memory, people or the work. All of it is part of my truth. I carry all of it with me."
         },
         {
           "type": "text",
           "content": "But of course, my home will always be my Armenia, my Nagorno-Karabakh, to which I cannot return. And my Ukraine – the way I lived it, the way I felt it, the way I carry it inside me."
         },
         {
+          "type": "quote",
+          "content": "All of it is part of my truth. I carry all of it with me.",
+          "caption": "Gayane Arushanian"
+        },
+        {
           "type": "header",
           "level": 3,
-          "content": "Armenian roots, a Ukrainian formation, an American present. Which of the three is most present in your work, even when you don't call on it? And has a viewer in one country ever seen something in a painting that viewers elsewhere didn't notice at all?"
+          "content": "Armenian roots, a Ukrainian formation, an American present. Which of the three is most present in your work, even when you don’t call on it? And has a viewer in one country ever seen something in a painting that viewers elsewhere didn’t notice at all?"
         },
         {
           "type": "text",
-          "content": "I can't separate the parts that make up who I am. You can't throw part of your life out of yourself. My Armenian roots influenced me greatly, and each of these cultures has its share in who I am."
+          "content": "I can’t separate the parts that make up who I am. You can’t throw part of your life out of yourself. My Armenian roots influenced me greatly, and each of these cultures has its share in who I am."
         },
         {
           "type": "text",
-          "content": "But if we're talking about which is most present in my work, it is without doubt my Ukrainian formation. More than thirty years of my life were lived in Ukraine. That is where I took shape as a person and as an artist. Ukrainian reality, life in Ukraine, the opportunities I created there and keep developing beyond it – all of that formed me. So I am a Ukrainian artist of Armenian origin. And living abroad, I keep shaping my vision."
+          "content": "But if we’re talking about which is most present in my work, it is without doubt my Ukrainian formation. More than thirty years of my life were lived in Ukraine. That is where I took shape as a person and as an artist. Ukrainian reality, life in Ukraine, the opportunities I created there and keep developing beyond it – all of that formed me. So I am a Ukrainian artist of Armenian origin. And living abroad, I keep shaping my vision."
         },
         {
           "type": "text",
@@ -16939,61 +16938,66 @@
         },
         {
           "type": "text",
-          "content": "What's interesting is that nobody – at least nobody who said it to me – has ever said, \"This is something Ukrainian.\" But I don't create specifically Ukrainian images; there are no direct references to traditional Ukrainian motifs in my work. Ukraine formed me, and that influence shows in how I feel, see and create."
+          "content": "What’s interesting is that nobody – at least nobody who said it to me – has ever said, “This is something Ukrainian.” But I don’t create specifically Ukrainian images; there are no direct references to traditional Ukrainian motifs in my work. Ukraine formed me, and that influence shows in how I feel, see and create."
         },
         {
           "type": "text",
-          "content": "At the same time, I wouldn't say Ukraine feels very different from Armenia when it comes to colour. Maybe that's why I found myself in both. To me both peoples are warm and sincere, and both cultures are very rich in colour. So here too it's hard for me to say where one ends and the other begins in my work."
+          "content": "At the same time, I wouldn’t say Ukraine feels very different from Armenia when it comes to colour. Maybe that’s why I found myself in both. To me both peoples are warm and sincere, and both cultures are very rich in colour. So here too it’s hard for me to say where one ends and the other begins in my work."
         },
         {
           "type": "header",
           "level": 3,
-          "content": "Many artists who have lived through war say they don't want their work read only through trauma: it is both true and a trap. How do you feel about curators, journalists and collectors so often starting the conversation with war – us included?"
+          "content": "Many artists who have lived through war say they don’t want their work read only through trauma: it is both true and a trap. How do you feel about curators, journalists and collectors so often starting the conversation with war – us included?"
         },
         {
           "type": "text",
-          "content": "I'm calm about it, including in this interview, because I have accepted the experience of war as part of my path. I don't separate myself from it. I don't call it only trauma, because it has become part of my life. It is what formed me."
+          "content": "I’m calm about it, including in this interview, because I have accepted the experience of war as part of my path. I don’t separate myself from it. I don’t call it only trauma, because it has become part of my life. It is what formed me."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
           "caption": "Creative chaos, studio in Kyiv, 2019.",
           "align": "center"
         },
         {
           "type": "header",
           "level": 2,
-          "content": "II. Cybernetics and hidden order"
+          "content": "02 · Cybernetics and hidden order"
         },
         {
           "type": "header",
           "level": 3,
-          "content": "You have two degrees – architecture and economic cybernetics, the science of control, feedback and systems. You say you look for \"hidden order behind what seems to be chaos\". Yet abstraction, from Kandinsky to Pollock, was often a revolt against order. Are you closer to the engineer who decodes a system, or to the artist who lets it break?"
+          "content": "You have two degrees – architecture and economic cybernetics, the science of control, feedback and systems. You say you look for “hidden order behind what seems to be chaos”. Yet abstraction, from Kandinsky to Pollock, was often a revolt against order. Are you closer to the engineer who decodes a system, or to the artist who lets it break?"
         },
         {
           "type": "text",
-          "content": "Chaos doesn't exist without order, just as white doesn't exist without black, or light without darkness."
+          "content": "Chaos doesn’t exist without order, just as white doesn’t exist without black, or light without darkness."
         },
         {
           "type": "text",
-          "content": "Engineering and economic cybernetics are closely tied to physics and higher mathematics. For me they are sciences of the patterns that lie at the root of life. Still, I don't count myself an engineer. I don't build systems by strict rules. And even if I had the chance to build something, I'd be interested in breaking those rules, in making something that goes beyond them."
+          "content": "Engineering and economic cybernetics are closely tied to physics and higher mathematics. For me they are sciences of the patterns that lie at the root of life. Still, I don’t count myself an engineer. I don’t build systems by strict rules. And even if I had the chance to build something, I’d be interested in breaking those rules, in making something that goes beyond them."
         },
         {
           "type": "header",
           "level": 3,
-          "content": "Your series <em>Factorials</em> was, in your words, a response to rupture, exploring \"the inner structures of influence within a system\". A factorial grows explosively: each new element multiplies all the previous ones. Did you think of the mathematical metaphor literally? Which system did you mean – family, country, self, the world – and what broke in it?"
+          "content": "Your series <em>Factorials</em> was, in your words, a response to rupture, exploring “the inner structures of influence within a system”. A factorial grows explosively: each new element multiplies all the previous ones. Did you think of the mathematical metaphor literally? Which system did you mean – family, country, self, the world – and what broke in it?"
         },
         {
           "type": "text",
-          "content": "Before I started, I didn't think about a mathematical metaphor. It was pure creation. The very first object was made of paper. I was making the elements of a sculpture, tearing them, opening and closing them in my hands, watching what happened. It was like a game. I opened one element and saw that the whole picture had changed. At some point I thought: \"But this is a factorial.\" It even reminded me of that school lesson where we were told about factorials."
+          "content": "Before I started, I didn’t think about a mathematical metaphor. It was pure creation. The very first object was made of paper. I was making the elements of a sculpture, tearing them, opening and closing them in my hands, watching what happened. It was like a game. I opened one element and saw that the whole picture had changed. At some point I thought: “But this is a factorial.” It even reminded me of that school lesson where we were told about factorials."
         },
         {
           "type": "text",
-          "content": "I never take a mathematical formula and set out to depict it. First something is born in a creative state, and then I recognise in it something that is already part of my world. But it could be named quite differently, too. That's exactly why I adore abstraction: it has an endless number of names we can give it."
+          "content": "I never take a mathematical formula and set out to depict it. First something is born in a creative state, and then I recognise in it something that is already part of my world. But it could be named quite differently, too. That’s exactly why I adore abstraction: it has an endless number of names we can give it."
         },
         {
           "type": "text",
           "content": "At first it was simply a visual system for me. Only as I went deeper into the series did I understand that it is about any system: a country, a family, oneself, education. And what broke in it? Nothing broke. Every small part affects the system and at the same time creates it."
+        },
+        {
+          "type": "quote",
+          "content": "Chaos doesn’t exist without order, just as white doesn’t exist without black, or light without darkness.",
+          "caption": "Gayane Arushanian"
         },
         {
           "type": "image",
@@ -17004,11 +17008,11 @@
         {
           "type": "header",
           "level": 3,
-          "content": "You call your abstractions \"visual formulas\" that translate emotional and spiritual experience into colour, line and composition. A formula should be reproducible. Can the same painting be painted twice? What in its \"formula\" stays unspeakable?"
+          "content": "You call your abstractions “visual formulas” that translate emotional and spiritual experience into colour, line and composition. A formula should be reproducible. Can the same painting be painted twice? What in its “formula” stays unspeakable?"
         },
         {
           "type": "text",
-          "content": "That is exactly why it is art. My abstraction depicts a system but is not a system itself. It is about those patterns, yet it can't be reproduced by formula. That's where its creative, artistic part lies."
+          "content": "That is exactly why it is art. My abstraction depicts a system but is not a system itself. It is about those patterns, yet it can’t be reproduced by formula. That’s where its creative, artistic part lies."
         },
         {
           "type": "text",
@@ -17025,7 +17029,7 @@
         {
           "type": "header",
           "level": 3,
-          "content": "For you colour is \"vibration\" and \"sensory memory\", not an aesthetic choice. Name one colour in your work and the memory it carries. Is there a colour you refuse to use because it remembers too much?"
+          "content": "For you colour is “vibration” and “sensory memory”, not an aesthetic choice. Name one colour in your work and the memory it carries. Is there a colour you refuse to use because it remembers too much?"
         },
         {
           "type": "text",
@@ -17033,49 +17037,49 @@
         },
         {
           "type": "text",
-          "content": "As for a colour I refuse to use – there isn't one. I allow myself absolutely every colour. What kind of artist would I be if I limited myself? For me art is born from freedom."
+          "content": "As for a colour I refuse to use – there isn’t one. I allow myself absolutely every colour. What kind of artist would I be if I limited myself? For me art is born from freedom."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
           "caption": "Chaos of Lazur, 2016. Mixed media on paper, 36.7 × 35 cm.",
           "align": "center"
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
           "caption": "Blue Month I, 2018. Watercolour on paper, 42 × 29.7 cm.",
           "align": "center"
         },
         {
           "type": "header",
           "level": 2,
-          "content": "III. Equilibrium"
+          "content": "03 · Equilibrium"
         },
         {
           "type": "header",
           "level": 3,
-          "content": "<em>Equilibrium</em> took shape as a meditative focus on balance in unstable times. How did the word \"balance\" change for you after 24 February 2022? Doesn't balance now look less like calm and more like the tension of two forces that could tear each other apart at any second?"
+          "content": "<em>Equilibrium</em> took shape as a meditative focus on balance in unstable times. How did the word “balance” change for you after 24 February 2022? Doesn’t balance now look less like calm and more like the tension of two forces that could tear each other apart at any second?"
         },
         {
           "type": "note",
-          "content": "Editor's note: our original question dated the series to 2021; the artist corrected this in her answer below, and the question has been adjusted."
+          "content": "Editor’s note: our original question dated the series to 2021; the artist corrected this in her answer below, and the question has been adjusted."
         },
         {
           "type": "text",
-          "content": "Let me clarify first: the <em>Equilibrium</em> series began to take shape in 2016–2017, especially in 2017, when I moved to Kyiv. It didn't appear in 2021."
+          "content": "Let me clarify first: the <em>Equilibrium</em> series began to take shape in 2016–2017, especially in 2017, when I moved to Kyiv. It didn’t appear in 2021."
         },
         {
           "type": "text",
-          "content": "Balance has never been absolute calm for me. It is the simultaneous existence of all forces. One doesn't exist without the other – that is the pattern. It can be the tension of two forces, or it can be their calm. For me balance is a single whole that can show itself in very different ways."
+          "content": "Balance has never been absolute calm for me. It is the simultaneous existence of all forces. One doesn’t exist without the other – that is the pattern. It can be the tension of two forces, or it can be their calm. For me balance is a single whole that can show itself in very different ways."
         },
         {
           "type": "text",
-          "content": "After 24 February my understanding of balance didn't change. On the contrary, to some extent it helped me live through the horror. I knew there was another side to that experience – love, an incredible desire to live and create. I'm not saying I knew when the war would end or what would come next. But I already felt that counterweight to destruction. For me that doesn't contradict balance. And at the same time it doesn't mean it is calm or easy."
+          "content": "After 24 February my understanding of balance didn’t change. On the contrary, to some extent it helped me live through the horror. I knew there was another side to that experience – love, an incredible desire to live and create. I’m not saying I knew when the war would end or what would come next. But I already felt that counterweight to destruction. For me that doesn’t contradict balance. And at the same time it doesn’t mean it is calm or easy."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
           "caption": "In the studio in Zaporizhzhia, working on the Equilibrium series, 2016–2017.",
           "align": "center"
         },
@@ -17106,7 +17110,7 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
           "caption": "Working on Balance, studio in Kyiv, spring 2025.",
           "align": "center"
         },
@@ -17117,37 +17121,42 @@
         },
         {
           "type": "text",
-          "content": "Of course, the body knows and feels its own laws of balance too. Look at yoga or at athletes: our body can hold its balance in very different positions. We're used to walking on our feet, but we can learn to stand on our hands. It's a skill we acquire gradually."
+          "content": "Of course, the body knows and feels its own laws of balance too. Look at yoga or at athletes: our body can hold its balance in very different positions. We’re used to walking on our feet, but we can learn to stand on our hands. It’s a skill we acquire gradually."
         },
         {
           "type": "text",
-          "content": "Working on a canvas bigger than you is physically harder. But over time the body gets used to it: you train your hand, you get used to the scale and the movements. It's like learning to hatch – at first your muscles may ache, then the movement becomes natural."
+          "content": "Working on a canvas bigger than you is physically harder. But over time the body gets used to it: you train your hand, you get used to the scale and the movements. It’s like learning to hatch – at first your muscles may ache, then the movement becomes natural."
         },
         {
           "type": "text",
-          "content": "So I'd say the body adapts. It finds its balance with the material and the surface we work with."
+          "content": "So I’d say the body adapts. It finds its balance with the material and the surface we work with."
+        },
+        {
+          "type": "quote",
+          "content": "So destruction and creation exist at the same time. I see it in nature, in history and in my own life.",
+          "caption": "Gayane Arushanian"
         },
         {
           "type": "header",
           "level": 2,
-          "content": "IV. Space: sculpture and transformational objects"
+          "content": "04 · Space: sculpture and transformational objects"
         },
         {
           "type": "header",
           "level": 3,
-          "content": "Your profile says \"Creating transformational spaces\". What has to happen to a space – and to the person in it – for you to call it transformed? How does an object that changes a room differ from an expensive interior accessory? Where is the line between art and design, and does it still exist?"
+          "content": "Your profile says “Creating transformational spaces”. What has to happen to a space – and to the person in it – for you to call it transformed? How does an object that changes a room differ from an expensive interior accessory? Where is the line between art and design, and does it still exist?"
         },
         {
           "type": "text",
-          "content": "For me a space should coexist with a person's inner world and transform along with it. If it doesn't match your inner state, it's like clothes in which you don't feel like yourself. Through art a collector fills a space with meanings and with the energy they want to feel in it. I'm convinced that an artist puts their energy into every work."
+          "content": "For me a space should coexist with a person’s inner world and transform along with it. If it doesn’t match your inner state, it’s like clothes in which you don’t feel like yourself. Through art a collector fills a space with meanings and with the energy they want to feel in it. I’m convinced that an artist puts their energy into every work."
         },
         {
           "type": "text",
-          "content": "For me the line with design runs through function. Design usually answers a particular function. In art we can go beyond it: not fit the work to a task, but follow meanings, the questions we're looking for answers to. At the same time design can also be art. For me the objects made at the Bauhaus are an example: they have function, vision and a sense of their time. Art carries the time in which it is born."
+          "content": "For me the line with design runs through function. Design usually answers a particular function. In art we can go beyond it: not fit the work to a task, but follow meanings, the questions we’re looking for answers to. At the same time design can also be art. For me the objects made at the Bauhaus are an example: they have function, vision and a sense of their time. Art carries the time in which it is born."
         },
         {
           "type": "text",
-          "content": "Art can be decorative, but decoration isn't its purpose. And decoration isn't always art – it doesn't aim to be anything more than decoration."
+          "content": "Art can be decorative, but decoration isn’t its purpose. And decoration isn’t always art – it doesn’t aim to be anything more than decoration."
         },
         {
           "type": "text",
@@ -17162,7 +17171,7 @@
         {
           "type": "header",
           "level": 3,
-          "content": "Your first profession was in architecture and construction. Your sculptures and relief objects look like an architect's return: a flat shape is cut out and gains thickness, shadow, weight. What does the third dimension give you that canvas doesn't? And what do you lose when a painting steps out into space?"
+          "content": "Your first profession was in architecture and construction. Your sculptures and relief objects look like an architect’s return: a flat shape is cut out and gains thickness, shadow, weight. What does the third dimension give you that canvas doesn’t? And what do you lose when a painting steps out into space?"
         },
         {
           "type": "text",
@@ -17170,18 +17179,18 @@
         },
         {
           "type": "text",
-          "content": "Do I lose anything? I don't feel it as a loss. For me it is one more way to create and to feel."
+          "content": "Do I lose anything? I don’t feel it as a loss. For me it is one more way to create and to feel."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+          "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
           "caption": "Studio in Kyiv, summer 2018, working on a 3D Equilibrium piece.",
           "align": "center"
         },
         {
           "type": "header",
           "level": 3,
-          "content": "The language of your objects – streamlined silhouettes, cut-outs, openings, pastel and saturated planes – recalls an architectural drawing, a child's stencil and a sign all at once. Where do these forms come from? Do you draw them by hand or construct them geometrically – and has a form ever appeared \"by itself\" from a mistake or an offcut?"
+          "content": "The language of your objects – streamlined silhouettes, cut-outs, openings, pastel and saturated planes – recalls an architectural drawing, a child’s stencil and a sign all at once. Where do these forms come from? Do you draw them by hand or construct them geometrically – and has a form ever appeared “by itself” from a mistake or an offcut?"
         },
         {
           "type": "text",
@@ -17189,11 +17198,11 @@
         },
         {
           "type": "text",
-          "content": "And sometimes an image comes to me. I say exactly that: \"A picture came to me.\" It's like an imaginary screen in front of me on which I see something. Some images come in dreams. Sometimes, while I'm drawing, I already see the whole form in volume, its geometry, not just the plane."
+          "content": "And sometimes an image comes to me. I say exactly that: “A picture came to me.” It’s like an imaginary screen in front of me on which I see something. Some images come in dreams. Sometimes, while I’m drawing, I already see the whole form in volume, its geometry, not just the plane."
         },
         {
           "type": "text",
-          "content": "I never sit down thinking, \"Right, now I need to come up with something.\" Everything is born from within. Of course I was influenced by technical drawing, which I loved at school, and by architecture. I love architecture very much, and it is part of my vision too."
+          "content": "I never sit down thinking, “Right, now I need to come up with something.” Everything is born from within. Of course I was influenced by technical drawing, which I loved at school, and by architecture. I love architecture very much, and it is part of my vision too."
         },
         {
           "type": "image",
@@ -17214,16 +17223,16 @@
         },
         {
           "type": "text",
-          "content": "I see it neither as chance nor as a wish to take root. For me it is the desire to work with space, with matter: to feel it and shape it – stone, clay. That feeling can't be replaced by anything."
+          "content": "I see it neither as chance nor as a wish to take root. For me it is the desire to work with space, with matter: to feel it and shape it – stone, clay. That feeling can’t be replaced by anything."
         },
         {
           "type": "text",
-          "content": "Taking root may come as a result, but it isn't my aim. When I want to make something, I don't start by thinking, \"This will be heavy, it'll be impossible to move.\" Yes, it can be physically hard. But what comes first for me is the desire to create, not the limit of how hard it is. That matters a great deal to me."
+          "content": "Taking root may come as a result, but it isn’t my aim. When I want to make something, I don’t start by thinking, “This will be heavy, it’ll be impossible to move.” Yes, it can be physically hard. But what comes first for me is the desire to create, not the limit of how hard it is. That matters a great deal to me."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "V. The market, teaching and honesty"
+          "content": "05 · The market, teaching and honesty"
         },
         {
           "type": "header",
@@ -17236,32 +17245,32 @@
         },
         {
           "type": "text",
-          "content": "When you create a work, you look at it as an artist; you live it. But when you enter the art market, you also have to see your work as an object within that system. That isn't easy. For me these are two different roles: the artist, and the person who wants more opportunities to create. That's why I go to international art fairs – to widen my possibilities and make something bigger."
+          "content": "When you create a work, you look at it as an artist; you live it. But when you enter the art market, you also have to see your work as an object within that system. That isn’t easy. For me these are two different roles: the artist, and the person who wants more opportunities to create. That’s why I go to international art fairs – to widen my possibilities and make something bigger."
         },
         {
           "type": "text",
-          "content": "Did I learn anything new about the works themselves? My feeling for them hasn't changed. What changed is my understanding of the place they occupy in the market. I realised it matters to me to be where my works are understood, where my meanings meet the meanings of my collector."
+          "content": "Did I learn anything new about the works themselves? My feeling for them hasn’t changed. What changed is my understanding of the place they occupy in the market. I realised it matters to me to be where my works are understood, where my meanings meet the meanings of my collector."
         },
         {
           "type": "header",
           "level": 3,
-          "content": "You've said abstraction was not understood in Ukraine at first, and that you came to accept that a work \"doesn't have to be understood by everyone\". But between \"not for everyone\" and \"for the narrow circle that can afford to buy it\" the line is thin. Who do you work for now – the collector, the viewer, or your ten-year-old self?"
+          "content": "You’ve said abstraction was not understood in Ukraine at first, and that you came to accept that a work “doesn’t have to be understood by everyone”. But between “not for everyone” and “for the narrow circle that can afford to buy it” the line is thin. Who do you work for now – the collector, the viewer, or your ten-year-old self?"
         },
         {
           "type": "text",
-          "content": "At the first exhibitions of the Union of Young Artists of Ukraine in 2012 my works were criticised a lot. At the same time I felt that in that very setting I was doing something new. Today I take it calmly. But even then I knew I wouldn't change my visual language just because someone didn't understand it."
+          "content": "At the first exhibitions of the Union of Young Artists of Ukraine in 2012 my works were criticised a lot. At the same time I felt that in that very setting I was doing something new. Today I take it calmly. But even then I knew I wouldn’t change my visual language just because someone didn’t understand it."
         },
         {
           "type": "text",
-          "content": "I don't set out to work for anyone in particular. Inwardly I understand who my art might touch: some are close to its themes and meanings, some to its visual language, some are moved by it emotionally. But I don't make a work in order to touch someone. Where would my freedom as an artist be then?"
+          "content": "I don’t set out to work for anyone in particular. Inwardly I understand who my art might touch: some are close to its themes and meanings, some to its visual language, some are moved by it emotionally. But I don’t make a work in order to touch someone. Where would my freedom as an artist be then?"
         },
         {
           "type": "text",
-          "content": "In recent years I've come to see it like this: if I have created something, then somewhere there is my viewer – a person with whom I'll meet in these meanings. Perhaps they'll become my collector, perhaps they'll remain a viewer."
+          "content": "In recent years I’ve come to see it like this: if I have created something, then somewhere there is my viewer – a person with whom I’ll meet in these meanings. Perhaps they’ll become my collector, perhaps they’ll remain a viewer."
         },
         {
           "type": "text",
-          "content": "That feeling lets me create freely. I know that person exists somewhere, and I don't need to fit my art to them in advance."
+          "content": "That feeling lets me create freely. I know that person exists somewhere, and I don’t need to fit my art to them in advance."
         },
         {
           "type": "image",
@@ -17280,7 +17289,7 @@
         },
         {
           "type": "text",
-          "content": "Being an artist and being a teacher are different roles, and combining them isn't easy. A good artist isn't always a good teacher, and a good teacher isn't always a good artist. I hope I'm a good teacher, but only my students can say."
+          "content": "Being an artist and being a teacher are different roles, and combining them isn’t easy. A good artist isn’t always a good teacher, and a good teacher isn’t always a good artist. I hope I’m a good teacher, but only my students can say."
         },
         {
           "type": "text",
@@ -17288,28 +17297,28 @@
         },
         {
           "type": "text",
-          "content": "So for me teaching isn't only explaining. I teach feeling – combining the two: understanding and feeling."
+          "content": "So for me teaching isn’t only explaining. I teach feeling – combining the two: understanding and feeling."
         },
         {
           "type": "header",
           "level": 3,
-          "content": "\"The moment you stop being honest with yourself, it shows in the work,\" you said in one interview. Tell us about a time you saw it in your own painting. What gave the dishonesty away – colour, line, speed, a result that was too pretty? And what did you do with that work?"
+          "content": "“The moment you stop being honest with yourself, it shows in the work,” you said in one interview. Tell us about a time you saw it in your own painting. What gave the dishonesty away – colour, line, speed, a result that was too pretty? And what did you do with that work?"
         },
         {
           "type": "text",
-          "content": "First of all, honesty means knowing yourself. And that is very hard: knowing what you feel, understanding yourself. Then you can sense when you're being honest with yourself and when you aren't."
+          "content": "First of all, honesty means knowing yourself. And that is very hard: knowing what you feel, understanding yourself. Then you can sense when you’re being honest with yourself and when you aren’t."
         },
         {
           "type": "text",
-          "content": "So I don't have finished works in which I saw it. There were times I started something and it just wouldn't come. And I didn't finish it. I could throw something away at the very beginning, so I can't even call it a work."
+          "content": "So I don’t have finished works in which I saw it. There were times I started something and it just wouldn’t come. And I didn’t finish it. I could throw something away at the very beginning, so I can’t even call it a work."
         },
         {
           "type": "text",
-          "content": "What gives it away? It can start with a line, with a colour: you put down a colour and feel something is wrong. Maybe it shows in speed too, but speed alone decides nothing. It's a feeling."
+          "content": "What gives it away? It can start with a line, with a colour: you put down a colour and feel something is wrong. Maybe it shows in speed too, but speed alone decides nothing. It’s a feeling."
         },
         {
           "type": "text",
-          "content": "Everything starts with the state. The artist's inner state shapes everything: the matter, the painting, the sculpture. If I'm not in that state, what can I create? For me – hardly anything in which I myself would feel meaning."
+          "content": "Everything starts with the state. The artist’s inner state shapes everything: the matter, the painting, the sculpture. If I’m not in that state, what can I create? For me – hardly anything in which I myself would feel meaning."
         },
         {
           "type": "header",
@@ -17318,20 +17327,20 @@
         },
         {
           "type": "text",
-          "content": "In recent years I really have worked mostly in abstraction, but I don't call myself only an abstract painter. Abstraction is a large part of my path right now, but I've realised that I am a multidisciplinary artist. I don't want to limit myself to a style or a technique. There are patterns in everything, in portraiture too – any portraitist can tell you about them."
+          "content": "In recent years I really have worked mostly in abstraction, but I don’t call myself only an abstract painter. Abstraction is a large part of my path right now, but I’ve realised that I am a multidisciplinary artist. I don’t want to limit myself to a style or a technique. There are patterns in everything, in portraiture too – any portraitist can tell you about them."
         },
         {
           "type": "text",
-          "content": "And the faces haven't gone anywhere. I think those portraits grew into photography. I often photograph people when they don't notice. I've shown little of it so far, but that is how <em>Inspire Me If You Can</em> continued for me."
+          "content": "And the faces haven’t gone anywhere. I think those portraits grew into photography. I often photograph people when they don’t notice. I’ve shown little of it so far, but that is how <em>Inspire Me If You Can</em> continued for me."
         },
         {
           "type": "text",
-          "content": "People and their faces still inspire me greatly. And I have many more ideas I'd like to realise in the future."
+          "content": "People and their faces still inspire me greatly. And I have many more ideas I’d like to realise in the future."
         },
         {
           "type": "header",
           "level": 2,
-          "content": "VI. Doubts and the horizon"
+          "content": "06 · Doubts and the horizon"
         },
         {
           "type": "header",
@@ -17340,15 +17349,15 @@
         },
         {
           "type": "text",
-          "content": "I probably don't see anything as a misunderstanding of my work. I've never even thought about it that way."
+          "content": "I probably don’t see anything as a misunderstanding of my work. I’ve never even thought about it that way."
         },
         {
           "type": "text",
-          "content": "At the start of my path I was very sensitive to how my abstraction was received. It's my creation, after all. Incomprehension, and sometimes hate, did hurt me. That's probably the only thing I could call a misunderstanding."
+          "content": "At the start of my path I was very sensitive to how my abstraction was received. It’s my creation, after all. Incomprehension, and sometimes hate, did hurt me. That’s probably the only thing I could call a misunderstanding."
         },
         {
           "type": "text",
-          "content": "But over the years I've become much calmer about it. It no longer matters so much that everyone understands what I create. If someone didn't understand – then they didn't. Maybe they simply aren't my viewer. That's all."
+          "content": "But over the years I’ve become much calmer about it. It no longer matters so much that everyone understands what I create. If someone didn’t understand – then they didn’t. Maybe they simply aren’t my viewer. That’s all."
         },
         {
           "type": "header",
@@ -17357,7 +17366,7 @@
         },
         {
           "type": "text",
-          "content": "I wouldn't say I had to give anything up. I consciously chose to leave something behind and move on, because I wanted to grow."
+          "content": "I wouldn’t say I had to give anything up. I consciously chose to leave something behind and move on, because I wanted to grow."
         },
         {
           "type": "text",
@@ -17365,11 +17374,11 @@
         },
         {
           "type": "text",
-          "content": "The same with cities. I left Zaporizhzhia because I wanted to move to Kyiv. Going to Miami was my conscious choice as well. I didn't leave Kyiv because of the full-scale war – I very much wanted to stay there. But I always felt a pull towards something larger. The places I leave stay in my heart for ever."
+          "content": "The same with cities. I left Zaporizhzhia because I wanted to move to Kyiv. Going to Miami was my conscious choice as well. I didn’t leave Kyiv because of the full-scale war – I very much wanted to stay there. But I always felt a pull towards something larger. The places I leave stay in my heart for ever."
         },
         {
           "type": "text",
-          "content": "What I gave up inwardly was the fear of growing – because it really is frightening to be alone in a huge city, or a huge country, or a completely new and enormous art world. Yet on the international art scene I feel confident. I have the sense that I'm where I'm meant to be. This is my world. I chose this path consciously. Where it leads next – we'll see."
+          "content": "What I gave up inwardly was the fear of growing – because it really is frightening to be alone in a huge city, or a huge country, or a completely new and enormous art world. Yet on the international art scene I feel confident. I have the sense that I’m where I’m meant to be. This is my world. I chose this path consciously. Where it leads next – we’ll see."
         },
         {
           "type": "header",
@@ -17382,7 +17391,7 @@
         },
         {
           "type": "text",
-          "content": "I'd want a person leaving the garden to feel what we feel when we listen to classical music: a sense of spring, a sense of beginning, a sense of eternity. I would call that feeling very close to God."
+          "content": "I’d want a person leaving the garden to feel what we feel when we listen to classical music: a sense of spring, a sense of beginning, a sense of eternity. I would call that feeling very close to God."
         },
         {
           "type": "header",
@@ -17391,7 +17400,7 @@
         },
         {
           "type": "text",
-          "content": "I'm working on a series for an exhibition. I know what I'd like to show, but for now I'll keep it secret. In parallel I'm working on the series <em>Equilibrium.Net</em>."
+          "content": "I’m working on a series for an exhibition. I know what I’d like to show, but for now I’ll keep it secret. In parallel I’m working on the series <em>Equilibrium.Net</em>."
         },
         {
           "type": "header",
@@ -17400,15 +17409,15 @@
         },
         {
           "type": "text",
-          "content": "Not that you should have asked exactly this, but taking it creatively, I'd be interested to answer: \"If you could meet a person from the past, who would it be?\""
+          "content": "Not that you should have asked exactly this, but taking it creatively, I’d be interested to answer: “If you could meet a person from the past, who would it be?”"
         },
         {
           "type": "text",
-          "content": "For me it's Leonardo da Vinci. Simply a brilliant artist, the genius of his time. I would love to live near him for at least a while and see with my own eyes how he lives, how he creates, what inspires him. Not just to meet and talk, but to observe his life. That would be incredibly interesting to me. I love watching wise, intelligent older people – there is so much life in them. Or Einstein, if da Vinci is too busy."
+          "content": "For me it’s Leonardo da Vinci. Simply a brilliant artist, the genius of his time. I would love to live near him for at least a while and see with my own eyes how he lives, how he creates, what inspires him. Not just to meet and talk, but to observe his life. That would be incredibly interesting to me. I love watching wise, intelligent older people – there is so much life in them. Or Einstein, if da Vinci is too busy."
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+          "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
           "caption": "Gayane Arushanian. Shot on film. Photo: Rita Pakhlova.",
           "align": "center"
         },
@@ -17417,9 +17426,9 @@
           "content": [
             "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
             "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-            "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+            "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
             "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-            "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+            "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
           ],
           "caption": "",
           "alts": [
@@ -17433,10 +17442,14 @@
         {
           "type": "text",
           "content": "<em>Gayane Arushanian lives and works between Miami and Kyiv. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+        },
+        {
+          "type": "text",
+          "content": "<em>Cover: Gayane Arushanian in the studio with her works, autumn 2025. Photo: Yuliia Osipova.</em>"
         }
       ],
       "id": 67,
-      "updatedAt": "2026-10-10T08:12:45.100Z",
+      "updatedAt": "2026-10-10T08:44:56.000Z",
       "onlyLangs": [
         "EN",
         "UA",
@@ -17445,6 +17458,11 @@
         "DE",
         "FR",
         "ES"
+      ],
+      "authorId": "author-gayane-arushanian",
+      "coAuthorIds": [
+        "author-1784732936927-kw554",
+        "author-1784896384236-4fokw"
       ]
     }
   ],
@@ -33035,7 +33053,7 @@
             "скульптура"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -33054,15 +33072,9 @@
               "content": "Сейчас она живёт и работает между Майами и Киевом. EPRIS Journal расспросил её о доме, скрытом порядке, телесном ощущении равновесия и о том, что меняется, когда картина выходит в пространство."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Гаяне Арушанян в студии с работами, осень 2025. Фото: Юлия Осипова.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Память и дом"
+              "content": "01 · Память и дом"
             },
             {
               "type": "header",
@@ -33103,6 +33115,11 @@
               "content": "Но, конечно, моим домом навсегда останется моя Армения, мой Нагорный Карабах, куда я не могу вернуться. Останется моя Украина – такой, какой я её прожила, какой я её почувствовала, какой я несу её в себе."
             },
             {
+              "type": "quote",
+              "content": "Всё это часть моей истины. Всё это я несу с собой.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Армянские корни, украинское становление, американское настоящее. Какая из этих трёх культур сильнее всего присутствует в вашей работе, даже когда вы её не зовёте? И случалось ли, что зритель в одной стране видел в вашей картине то, чего зритель в другой не замечал вовсе?"
@@ -33138,14 +33155,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Творческий хаос, студия в Киеве, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Кибернетика и скрытый порядок"
+              "content": "02 · Кибернетика и скрытый порядок"
             },
             {
               "type": "header",
@@ -33176,6 +33193,11 @@
             {
               "type": "text",
               "content": "Сначала для меня это была просто визуальная система. И только когда я шла вглубь этой серии, поняла, что она о любой системе: стране, семье, себе, образовании. А что в ней разорвалось? Ничего не разорвалось. Каждая маленькая часть влияет на систему и одновременно создаёт её."
+            },
+            {
+              "type": "quote",
+              "content": "Хаос не существует без порядка. Как белое не существует без чёрного, а свет – без тьмы.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -33219,20 +33241,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Смешанная техника, бумага, 36,7 × 35 см.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Акварель, бумага, 42 × 29,7 см.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -33257,7 +33279,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "В студии в Запорожье во время работы над серией Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -33288,7 +33310,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Работа над серией Balance, студия в Киеве, весна 2025.",
               "align": "center"
             },
@@ -33310,9 +33332,14 @@
               "content": "Поэтому я бы сказала, что тело подстраивается. Оно находит свой баланс с материалом и поверхностью, с которой мы работаем."
             },
             {
+              "type": "quote",
+              "content": "То есть разрушение и созидание существуют одновременно. Я наблюдаю это и в природе, и в истории, и в собственной жизни.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. Пространство: скульптура и трансформационные объекты"
+              "content": "04 · Пространство: скульптура и трансформационные объекты"
             },
             {
               "type": "header",
@@ -33356,7 +33383,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Студия в Киеве, лето 2018: работа над 3D-объектом Equilibrium.",
               "align": "center"
             },
@@ -33405,7 +33432,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. Рынок, преподавание и честность"
+              "content": "05 · Рынок, преподавание и честность"
             },
             {
               "type": "header",
@@ -33513,7 +33540,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Сомнения и горизонт"
+              "content": "06 · Сомнения и горизонт"
             },
             {
               "type": "header",
@@ -33590,7 +33617,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Гаяне Арушанян. Снято на плёнку. Фото: Рита Пахлова.",
               "align": "center"
             },
@@ -33599,9 +33626,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -33615,6 +33642,10 @@
             {
               "type": "text",
               "content": "<em>Гаяне Арушанян живёт и работает между Майами и Киевом. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Обложка: Гаяне Арушанян в студии с работами, осень 2025. Фото: Юлия Осипова.</em>"
             }
           ],
           "id": 67,
@@ -49207,7 +49238,7 @@
             "скульптура"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -49226,15 +49257,9 @@
               "content": "Зараз вона живе й працює між Маямі та Києвом. EPRIS Journal розпитав її про дім, прихований порядок, тілесне відчуття рівноваги і про те, що змінюється, коли картина виходить у простір."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Гаяне Арушанян у студії з роботами, осінь 2025. Фото: Юлія Осіпова.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Пам’ять і дім"
+              "content": "01 · Пам’ять і дім"
             },
             {
               "type": "header",
@@ -49275,6 +49300,11 @@
               "content": "Але, звичайно, моїм домом назавжди залишиться моя Вірменія, мій Нагірний Карабах, до якого я не можу повернутися. Залишиться моя Україна – такою, якою я її прожила, якою я її відчула, якою я несу її в собі."
             },
             {
+              "type": "quote",
+              "content": "Усе це є частиною моєї істини. Усе це я несу із собою.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Вірменське коріння, українське становлення, американське сьогодення. Яка з цих трьох культур найсильніше присутня у вашій роботі, навіть коли ви її не кличете? І чи траплялося, що глядач в одній країні бачив у вашій картині щось, чого глядач в іншій не помічав зовсім?"
@@ -49310,14 +49340,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Творчий хаос, студія в Києві, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Кібернетика і прихований порядок"
+              "content": "02 · Кібернетика і прихований порядок"
             },
             {
               "type": "header",
@@ -49348,6 +49378,11 @@
             {
               "type": "text",
               "content": "Спочатку для мене це була просто візуальна система. І тільки коли я йшла вглиб цієї серії робіт, зрозуміла, що це про будь-яку систему: країну, родину, себе, освіту. А що в ній розірвалося? Нічого не розірвалося. Кожна маленька частина впливає на систему й одночасно створює її."
+            },
+            {
+              "type": "quote",
+              "content": "Хаос не існує без порядку. Як біле не існує без чорного, а світло – без темряви.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -49391,20 +49426,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Змішана техніка, папір, 36,7 × 35 см.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Акварель, папір, 42 × 29,7 см.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -49429,7 +49464,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "У студії в Запоріжжі під час роботи над серією Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -49460,7 +49495,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Робота над серією Balance, студія в Києві, весна 2025.",
               "align": "center"
             },
@@ -49482,9 +49517,14 @@
               "content": "Тому я б сказала, що тіло підлаштовується. Воно знаходить свій баланс із матеріалом і поверхнею, з якою ми працюємо."
             },
             {
+              "type": "quote",
+              "content": "Тобто руйнування і створення існують одночасно. Я спостерігаю це і в природі, і в історії, і у власному житті.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. Простір: скульптура і трансформаційні об’єкти"
+              "content": "04 · Простір: скульптура і трансформаційні об’єкти"
             },
             {
               "type": "header",
@@ -49528,7 +49568,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Студія в Києві, літо 2018: робота над 3D-об’єктом Equilibrium.",
               "align": "center"
             },
@@ -49577,7 +49617,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. Ринок, вчительство і чесність"
+              "content": "05 · Ринок, вчительство і чесність"
             },
             {
               "type": "header",
@@ -49685,7 +49725,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Сумніви та обрій"
+              "content": "06 · Сумніви та обрій"
             },
             {
               "type": "header",
@@ -49762,7 +49802,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Гаяне Арушанян. Знято на плівку. Фото: Рита Пахлова.",
               "align": "center"
             },
@@ -49771,9 +49811,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -49787,6 +49827,10 @@
             {
               "type": "text",
               "content": "<em>Гаяне Арушанян живе й працює між Маямі та Києвом. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Обкладинка: Гаяне Арушанян у студії з роботами, осінь 2025. Фото: Юлія Осіпова.</em>"
             }
           ],
           "id": 67,
@@ -65367,7 +65411,7 @@
             "Skulptur"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -65386,15 +65430,9 @@
               "content": "EPRIS Journal hat mit ihr über Zuhause, verborgene Ordnung, das körperliche Gespür für Gleichgewicht gesprochen und darüber, was sich ändert, wenn ein Bild in den Raum tritt."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Gayane Arushanian im Atelier mit ihren Arbeiten, Herbst 2025. Foto: Yuliia Osipova.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Erinnerung und Zuhause"
+              "content": "01 · Erinnerung und Zuhause"
             },
             {
               "type": "header",
@@ -65435,6 +65473,11 @@
               "content": "Aber natürlich wird mein Zuhause für immer mein Armenien bleiben, mein Bergkarabach, in das ich nicht zurückkehren kann. Und meine Ukraine – so, wie ich sie gelebt habe, wie ich sie gefühlt habe, wie ich sie in mir trage."
             },
             {
+              "type": "quote",
+              "content": "All das ist Teil meiner Wahrheit. All das trage ich mit mir.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Armenische Wurzeln, ukrainische Prägung, amerikanische Gegenwart. Welche der drei Kulturen ist in Ihrer Arbeit am stärksten gegenwärtig, auch wenn Sie sie nicht rufen? Und ist es vorgekommen, dass ein Betrachter in einem Land in einem Bild etwas sah, das anderswo niemand bemerkte?"
@@ -65470,14 +65513,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Kreatives Chaos, Atelier in Kyjiw, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Kybernetik und verborgene Ordnung"
+              "content": "02 · Kybernetik und verborgene Ordnung"
             },
             {
               "type": "header",
@@ -65508,6 +65551,11 @@
             {
               "type": "text",
               "content": "Anfangs war es für mich einfach ein visuelles System. Erst als ich tiefer in die Serie ging, verstand ich, dass es um jedes System geht: ein Land, eine Familie, sich selbst, die Bildung. Und was ist darin zerbrochen? Nichts ist zerbrochen. Jeder kleine Teil wirkt auf das System und erschafft es zugleich."
+            },
+            {
+              "type": "quote",
+              "content": "Chaos existiert nicht ohne Ordnung, so wie Weiß nicht ohne Schwarz existiert oder Licht nicht ohne Dunkelheit.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -65551,20 +65599,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Mischtechnik auf Papier, 36,7 × 35 cm.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Aquarell auf Papier, 42 × 29,7 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -65589,7 +65637,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "Im Atelier in Saporischschja bei der Arbeit an der Serie Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -65620,7 +65668,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Arbeit an Balance, Atelier in Kyjiw, Frühjahr 2025.",
               "align": "center"
             },
@@ -65642,9 +65690,14 @@
               "content": "Deshalb würde ich sagen, der Körper passt sich an. Er findet sein Gleichgewicht mit dem Material und der Fläche, mit der wir arbeiten."
             },
             {
+              "type": "quote",
+              "content": "Zerstörung und Schöpfung existieren also gleichzeitig. Ich beobachte das in der Natur, in der Geschichte und in meinem eigenen Leben.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. Raum: Skulptur und transformative Objekte"
+              "content": "04 · Raum: Skulptur und transformative Objekte"
             },
             {
               "type": "header",
@@ -65688,7 +65741,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Atelier in Kyjiw, Sommer 2018: Arbeit an einem 3D-Objekt der Serie Equilibrium.",
               "align": "center"
             },
@@ -65737,7 +65790,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. Markt, Lehre und Ehrlichkeit"
+              "content": "05 · Markt, Lehre und Ehrlichkeit"
             },
             {
               "type": "header",
@@ -65845,7 +65898,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Zweifel und Horizont"
+              "content": "06 · Zweifel und Horizont"
             },
             {
               "type": "header",
@@ -65922,7 +65975,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Gayane Arushanian. Analog auf Film fotografiert. Foto: Rita Pakhlova.",
               "align": "center"
             },
@@ -65931,9 +65984,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -65947,6 +66000,10 @@
             {
               "type": "text",
               "content": "<em>Gayane Arushanian lebt und arbeitet zwischen Miami und Kyjiw. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Titelbild: Gayane Arushanian im Atelier mit ihren Arbeiten, Herbst 2025. Foto: Yuliia Osipova.</em>"
             }
           ],
           "id": 67,
@@ -81530,7 +81587,7 @@
             "escultura"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -81549,15 +81606,9 @@
               "content": "EPRIS Journal le preguntó por el hogar, el orden oculto, el sentido corporal del equilibrio y lo que cambia cuando un cuadro sale al espacio."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Gayane Arushanian en su estudio con sus obras, otoño de 2025. Foto: Yuliia Osipova.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Memoria y hogar"
+              "content": "01 · Memoria y hogar"
             },
             {
               "type": "header",
@@ -81598,6 +81649,11 @@
               "content": "Pero, por supuesto, mi hogar será siempre mi Armenia, mi Nagorno Karabaj, al que no puedo volver. Y mi Ucrania, tal como la viví, tal como la sentí, tal como la llevo dentro."
             },
             {
+              "type": "quote",
+              "content": "Todo eso forma parte de mi verdad. Todo eso lo llevo conmigo.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Raíces armenias, formación ucraniana, presente estadounidense. ¿Cuál de las tres culturas está más presente en su trabajo, incluso cuando no la llama? ¿Y le ha pasado que un espectador en un país viera en un cuadro algo que en otro nadie notaba?"
@@ -81633,14 +81689,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Caos creativo, estudio en Kyiv, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Cibernética y orden oculto"
+              "content": "02 · Cibernética y orden oculto"
             },
             {
               "type": "header",
@@ -81671,6 +81727,11 @@
             {
               "type": "text",
               "content": "Al principio, para mí era simplemente un sistema visual. Solo al adentrarme en la serie comprendí que trata de cualquier sistema: un país, una familia, uno mismo, la educación. ¿Y qué se rompió en él? No se rompió nada. Cada pequeña parte influye en el sistema y, al mismo tiempo, lo crea."
+            },
+            {
+              "type": "quote",
+              "content": "El caos no existe sin el orden, igual que el blanco no existe sin el negro, ni la luz sin la oscuridad.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -81714,20 +81775,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Técnica mixta sobre papel, 36,7 × 35 cm.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Acuarela sobre papel, 42 × 29,7 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -81752,7 +81813,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "En el estudio de Zaporiyia, trabajando en la serie Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -81783,7 +81844,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Trabajando en Balance, estudio en Kyiv, primavera de 2025.",
               "align": "center"
             },
@@ -81805,9 +81866,14 @@
               "content": "Por eso diría que el cuerpo se adapta. Encuentra su equilibrio con el material y con la superficie sobre la que trabajamos."
             },
             {
+              "type": "quote",
+              "content": "Así que la destrucción y la creación existen a la vez. Lo observo en la naturaleza, en la historia y en mi propia vida.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. Espacio: escultura y objetos transformadores"
+              "content": "04 · Espacio: escultura y objetos transformadores"
             },
             {
               "type": "header",
@@ -81851,7 +81917,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Estudio en Kyiv, verano de 2018: trabajo en un objeto 3D de la serie Equilibrium.",
               "align": "center"
             },
@@ -81900,7 +81966,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. El mercado, la enseñanza y la honestidad"
+              "content": "05 · El mercado, la enseñanza y la honestidad"
             },
             {
               "type": "header",
@@ -82008,7 +82074,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Dudas y horizonte"
+              "content": "06 · Dudas y horizonte"
             },
             {
               "type": "header",
@@ -82085,7 +82151,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Gayane Arushanian. Fotografía en película. Foto: Rita Pakhlova.",
               "align": "center"
             },
@@ -82094,9 +82160,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -82110,6 +82176,10 @@
             {
               "type": "text",
               "content": "<em>Gayane Arushanian vive y trabaja entre Miami y Kyiv. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Portada: Gayane Arushanian en su estudio con sus obras, otoño de 2025. Foto: Yuliia Osipova.</em>"
             }
           ],
           "id": 67,
@@ -105202,7 +105272,7 @@
             "scultura"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -105221,15 +105291,9 @@
               "content": "EPRIS Journal le ha chiesto della casa, dell'ordine nascosto, del senso corporeo dell'equilibrio e di che cosa cambia quando un dipinto esce nello spazio."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Gayane Arushanian nello studio con le sue opere, autunno 2025. Foto: Yuliia Osipova.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Memoria e casa"
+              "content": "01 · Memoria e casa"
             },
             {
               "type": "header",
@@ -105270,6 +105334,11 @@
               "content": "Ma certo, la mia casa resterà per sempre la mia Armenia, il mio Nagorno-Karabakh, dove non posso tornare. E la mia Ucraina – così come l'ho vissuta, così come l'ho sentita, così come la porto dentro di me."
             },
             {
+              "type": "quote",
+              "content": "Tutto questo fa parte della mia verità. Tutto questo lo porto con me.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Radici armene, formazione ucraina, presente americano. Quale delle tre culture è più presente nel suo lavoro, anche quando non la chiama? E le è capitato che uno spettatore in un paese vedesse in un suo quadro qualcosa che altrove nessuno notava?"
@@ -105305,14 +105374,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Caos creativo, studio a Kyiv, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Cibernetica e ordine nascosto"
+              "content": "02 · Cibernetica e ordine nascosto"
             },
             {
               "type": "header",
@@ -105343,6 +105412,11 @@
             {
               "type": "text",
               "content": "All'inizio per me era semplicemente un sistema visivo. Solo andando più a fondo nella serie ho capito che riguarda qualsiasi sistema: un paese, una famiglia, sé stessi, l'istruzione. E che cosa si è spezzato? Niente si è spezzato. Ogni piccola parte influenza il sistema e allo stesso tempo lo crea."
+            },
+            {
+              "type": "quote",
+              "content": "Il caos non esiste senza ordine, così come il bianco non esiste senza il nero, o la luce senza il buio.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -105386,20 +105460,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Tecnica mista su carta, 36,7 × 35 cm.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Acquerello su carta, 42 × 29,7 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -105424,7 +105498,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "Nello studio di Zaporizhzhia, durante il lavoro sulla serie Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -105455,7 +105529,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Al lavoro su Balance, studio a Kyiv, primavera 2025.",
               "align": "center"
             },
@@ -105477,9 +105551,14 @@
               "content": "Per questo direi che il corpo si adatta. Trova il suo equilibrio con il materiale e con la superficie su cui lavoriamo."
             },
             {
+              "type": "quote",
+              "content": "Quindi distruzione e creazione esistono contemporaneamente. Lo osservo nella natura, nella storia e nella mia stessa vita.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. Spazio: scultura e oggetti trasformativi"
+              "content": "04 · Spazio: scultura e oggetti trasformativi"
             },
             {
               "type": "header",
@@ -105523,7 +105602,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Studio a Kyiv, estate 2018: lavoro su un oggetto 3D della serie Equilibrium.",
               "align": "center"
             },
@@ -105572,7 +105651,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. Il mercato, l'insegnamento e l'onestà"
+              "content": "05 · Il mercato, l'insegnamento e l'onestà"
             },
             {
               "type": "header",
@@ -105680,7 +105759,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Dubbi e orizzonte"
+              "content": "06 · Dubbi e orizzonte"
             },
             {
               "type": "header",
@@ -105757,7 +105836,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Gayane Arushanian. Scattata su pellicola. Foto: Rita Pakhlova.",
               "align": "center"
             },
@@ -105766,9 +105845,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -105782,6 +105861,10 @@
             {
               "type": "text",
               "content": "<em>Gayane Arushanian vive e lavora tra Miami e Kyiv. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Copertina: Gayane Arushanian nello studio con le sue opere, autunno 2025. Foto: Yuliia Osipova.</em>"
             }
           ],
           "id": 67,
@@ -119872,7 +119955,7 @@
             "sculpture"
           ],
           "imageSeed": "",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb-hq.jpg",
           "showCover": true,
           "draft": true,
           "order": 0,
@@ -119891,15 +119974,9 @@
               "content": "EPRIS Journal l'a interrogée sur la maison, l'ordre caché, le sens corporel de l'équilibre et ce qui change lorsqu'un tableau sort dans l'espace."
             },
             {
-              "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Gayane Arushanian dans son atelier avec ses œuvres, automne 2025. Photo : Yuliia Osipova.",
-              "align": "center"
-            },
-            {
               "type": "header",
               "level": 2,
-              "content": "I. Mémoire et maison"
+              "content": "01 · Mémoire et maison"
             },
             {
               "type": "header",
@@ -119940,6 +120017,11 @@
               "content": "Mais bien sûr, ma maison restera pour toujours mon Arménie, mon Haut-Karabakh, où je ne peux pas retourner. Et mon Ukraine – telle que je l'ai vécue, telle que je l'ai ressentie, telle que je la porte en moi."
             },
             {
+              "type": "quote",
+              "content": "Tout cela fait partie de ma vérité. Tout cela, je le porte avec moi.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 3,
               "content": "Des racines arméniennes, une formation ukrainienne, un présent américain. Laquelle de ces trois cultures est la plus présente dans votre travail, même quand vous ne l'appelez pas ? Et un spectateur d'un pays a-t-il déjà vu dans une de vos toiles quelque chose que personne ailleurs ne remarquait ?"
@@ -119975,14 +120057,14 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r-hq.jpg",
               "caption": "Chaos créatif, atelier à Kyiv, 2019.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "II. Cybernétique et ordre caché"
+              "content": "02 · Cybernétique et ordre caché"
             },
             {
               "type": "header",
@@ -120013,6 +120095,11 @@
             {
               "type": "text",
               "content": "Au début, c'était pour moi simplement un système visuel. Ce n'est qu'en allant plus loin dans la série que j'ai compris qu'elle parle de n'importe quel système : un pays, une famille, soi-même, l'éducation. Et qu'est-ce qui s'y est rompu ? Rien ne s'est rompu. Chaque petite partie agit sur le système et, en même temps, le crée."
+            },
+            {
+              "type": "quote",
+              "content": "Le chaos n'existe pas sans l'ordre, de même que le blanc n'existe pas sans le noir, ni la lumière sans l'obscurité.",
+              "caption": "Gayane Arushanian"
             },
             {
               "type": "image",
@@ -120056,20 +120143,20 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak-hq.jpg",
               "caption": "Chaos of Lazur, 2016. Technique mixte sur papier, 36,7 × 35 cm.",
               "align": "center"
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd-hq.jpg",
               "caption": "Blue Month I, 2018. Aquarelle sur papier, 42 × 29,7 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 2,
-              "content": "III. Equilibrium"
+              "content": "03 · Equilibrium"
             },
             {
               "type": "header",
@@ -120094,7 +120181,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf-hq.jpg",
               "caption": "Dans l'atelier de Zaporijjia, pendant le travail sur la série Equilibrium, 2016–2017.",
               "align": "center"
             },
@@ -120125,7 +120212,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l-hq.jpg",
               "caption": "Travail sur Balance, atelier à Kyiv, printemps 2025.",
               "align": "center"
             },
@@ -120147,9 +120234,14 @@
               "content": "Je dirais donc que le corps s'adapte. Il trouve son équilibre avec le matériau et la surface sur lesquels nous travaillons."
             },
             {
+              "type": "quote",
+              "content": "La destruction et la création existent donc en même temps. Je l'observe dans la nature, dans l'histoire et dans ma propre vie.",
+              "caption": "Gayane Arushanian"
+            },
+            {
               "type": "header",
               "level": 2,
-              "content": "IV. L'espace : sculpture et objets de transformation"
+              "content": "04 · L'espace : sculpture et objets de transformation"
             },
             {
               "type": "header",
@@ -120193,7 +120285,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
+              "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy-hq.jpg",
               "caption": "Atelier à Kyiv, été 2018 : travail sur un objet 3D de la série Equilibrium.",
               "align": "center"
             },
@@ -120242,7 +120334,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "V. Le marché, l'enseignement et l'honnêteté"
+              "content": "05 · Le marché, l'enseignement et l'honnêteté"
             },
             {
               "type": "header",
@@ -120350,7 +120442,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Doutes et horizon"
+              "content": "06 · Doutes et horizon"
             },
             {
               "type": "header",
@@ -120427,7 +120519,7 @@
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
               "caption": "Gayane Arushanian. Photographie argentique. Photo : Rita Pakhlova.",
               "align": "center"
             },
@@ -120436,9 +120528,9 @@
               "content": [
                 "https://api.eprisjournal.com/uploads/mv22mejylfj6tc.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mgbtvl907c.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl.jpg",
+                "https://api.eprisjournal.com/uploads/mv22mhk7lew4hl-hq.jpg",
                 "https://api.eprisjournal.com/uploads/mv22mkkurdw10z.jpg",
-                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm.jpg"
+                "https://api.eprisjournal.com/uploads/mv22mlq2zt6ybm-hq.jpg"
               ],
               "caption": "",
               "alts": [
@@ -120452,6 +120544,10 @@
             {
               "type": "text",
               "content": "<em>Gayane Arushanian vit et travaille entre Miami et Kyiv. gayanearushanian.com · Instagram : @gaya.arushanian.art</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Couverture: Gayane Arushanian dans son atelier avec ses œuvres, automne 2025. Photo : Yuliia Osipova.</em>"
             }
           ],
           "id": 67,
@@ -122236,6 +122332,19 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 23
+    },
+    {
+      "id": "author-gayane-arushanian",
+      "name": "Gayane Arushanian",
+      "role": "Artist, Miami & Kyiv",
+      "bio": "Gayane Arushanian is a Ukrainian multidisciplinary artist of Armenian descent, working between Miami and Kyiv. Born in Nagorno-Karabakh, she came to Ukraine as a child, trained at the art school of the Children's and Youth Creativity Centre in Zaporizhzhia and took degrees in industrial architecture and economic cybernetics. Her paintings, sculptures and relief objects, in series such as IMMERSION. Lapis Lazuli, Equilibrium and Abstract Animals, look for the hidden order behind apparent chaos.",
+      "photoUrl": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
+      "website": "https://gayanearushanian.com",
+      "instagram": "@gaya.arushanian.art",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 24
     }
   ],
   "manifest": {
