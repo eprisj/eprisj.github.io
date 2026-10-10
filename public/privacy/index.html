@@ -102,15 +102,17 @@
   <a class="masthead" href="/">EPRIS</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated 24 September 2026</p>
+  <p class="updated">Last updated 11 October 2026</p>
 
   <p class="lede">EPRIS Journal has no accounts, no advertising and no tracking profiles. This page explains,
   precisely, the small amount of data that does exist and why.</p>
 
   <h2>The EPRIS Journal iOS app</h2>
-  <p>The app <strong>collects no personal data at all</strong>. There is no sign-in, no account,
+  <p>The app <strong>collects no personal data</strong>. There is no sign-in, no account,
   no advertising identifier, and no analytics, crash-reporting or tracking framework of any kind
-  embedded in it. It does not track you across other companies’ apps or websites.</p>
+  embedded in it. It does not track you across other companies’ apps or websites. The one thing it
+  can send us is an anonymous notification token, and only if you turn notifications on – see
+  below.</p>
   <p>Everything the app remembers stays on your own device and is never transmitted to us:</p>
   <ul>
     <li>the articles you save for offline reading, and the photographs downloaded with them;</li>
@@ -133,6 +135,14 @@
 
   <h3>Things that happen only when you ask</h3>
   <ul>
+    <li><strong>Notifications about new pieces.</strong> They are off until you turn them on. If you
+    do, iOS gives the app an anonymous push token, and the app sends it to the journal’s server
+    (api.eprisjournal.com) with your time zone, so that pieces published at night reach you silently,
+    and the app version. That is all the server keeps: no name, no account, nothing about what you
+    read, and no record of your IP address. The token is used only to tell you that a new piece has
+    been published. Turn notifications off in the app’s Settings and it is deleted from the server;
+    turn them off in iOS Settings and it is deleted the next time you open the app. A token the app
+    hasn’t confirmed for six months is deleted automatically.</li>
     <li><strong>Sharing.</strong> When you share an article or a photograph, iOS’s own share sheet
     hands it to the app you pick. We are not involved and learn nothing about it.</li>
     <li><strong>Saving a photograph.</strong> If you choose “Save Image” from the share sheet, iOS
