@@ -74,6 +74,28 @@ class RootErrorBoundary extends React.Component<{ children: React.ReactNode }, {
   }
 }
 
+/* Uploads are served at several widths (/uploads/sizes/<stem>-<w>w.webp), made
+   by the server after an upload. A browser that picks a width from srcset does
+   not fall back to src when that file is missing: it shows a broken image - on
+   iPhone the blue "?" on a beige square (2026-10-10, "What a Room Remembers":
+   the original was there, its 480w/960w copies were not, and two of the three
+   <img> with srcset had no onError).
+   Whatever renders the picture, an image whose srcset points at /uploads/sizes/
+   and fails is switched to its plain src here, once. Capture phase, because
+   image errors do not bubble. Its own flag, so App.tsx's recoverOriginalImage
+   (which hides the image on a second failure) still works after it. */
+document.addEventListener('error', (event) => {
+  const img = event.target;
+  if (!(img instanceof HTMLImageElement) || img.dataset.srcsetFallback) return;
+  const set = img.getAttribute('srcset') || '';
+  if (!/\/uploads\/sizes\//.test(set)) return;
+  img.dataset.srcsetFallback = '1';
+  const original = img.dataset.originalSrc || img.getAttribute('src');
+  img.removeAttribute('srcset');
+  img.removeAttribute('sizes');
+  if (original) img.src = original;
+}, true);
+
 startImageReveal();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
