@@ -81522,18 +81522,18 @@
           "publishedAt": "2026-10-10T00:00:00.000Z"
         },
         {
-          "title": "Гаяне Арушанян: дім – це те, що несеш із собою",
-          "author": "Вʼячеслав Муністер і Марія Іванова",
-          "role": "Автор",
-          "date": "10 жовтня 2026",
-          "excerpt": "Українська мисткиня вірменського походження, яка нині живе між Маямі та Києвом, – про рівновагу, яку здобувають, а не отримують, про серію, що почалася як гра з папером і виявилася факторіалом, і про те, чому її роботу не варто читати лише через війну.",
-          "category": "інтерв’ю",
-          "subcategory": "Інтерв’ю",
+          "title": "Gayane Arushanian: El hogar es algo que llevas contigo",
+          "author": "Viacheslav Munister & Maria Ivanova",
+          "role": "Autor",
+          "date": "10 de octubre de 2026",
+          "excerpt": "Una artista ucraniana de ascendencia armenia, ahora entre Miami y Kyiv, en equilibrio que se gana más que se da, una serie que comenzó como un juego de papel y resultó ser un factorial, y por qué se niega a leer su trabajo solo a través de la guerra.",
+          "category": "entrevista",
+          "subcategory": "Entrevista",
           "tags": [
-            "Інтерв’ю",
-            "мистецтво",
-            "абстракція",
-            "скульптура"
+            "Entrevista",
+            "arte",
+            "abstracción",
+            "escultura"
           ],
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
@@ -81544,16 +81544,20 @@
           "content": [
             {
               "type": "text",
-              "content": "Гаяне Арушанян — художниця мультidisciplinaria ucraniana de raíces armenias, nacida en Nagorno-Karabaj, de donde debido a la guerra se trasladó a Ucrania; recibió su educación artística básica en la escuela de arte en la ЦДЮТ en Zaporizhzhia, y su educación superior — simultáneamente en dos especialidades: «Arquitectura de construcción industrial» y «Cibernética económica». Sus principales series de obras son — <em>IMMERSION. Lapis Lazuli</em> (desde 2016), <em>Equilibrium</em> (desde 2017) y <em>Abstract Animals</em> (desde 2022). Ha tenido exposiciones individuales en Zaporizhzhia y Kyiv, participado en exposiciones colectivas en Kyiv, Lviv, Zaporizhzhia, Odesa, Dnipro y Járkov, en países de Europa — Alemania, Italia, Polonia, España y Gran Bretaña, así como en EE. UU. en la feria internacional de arte contemporáneo CONTEXT Art Miami durante la Miami Art Week. Fundadora de G-ART STUDIO en Zaporizhzhia (2012) y Dnipro (2016), así como de School of Experimental Art en Kyiv (2017), cuyo trabajo reanudó en 2024 tras una pausa debido a la invasión a gran escala."
+              "content": "Gayane Arushanian es una artista multidisciplinaria ucraniana de ascendencia armenia. Ella nació en Nagorno-Karabaj y vino a Ucrania de niña, cuando la guerra obligó a su familia a partir. Se formó en la escuela de arte del Centro de Creatividad Infantil y Juvenil en Zaporizhzhia, luego obtuvo dos títulos a la vez: arquitectura industrial y cibernética económica. Sus series principales son <em>INMERSIÓN. Lapis Lazuli</em> (desde 2016), <em>Equilibrio</em> (desde 2017) y <em>Animales Abstractos</em> (desde 2022)."
             },
             {
               "type": "text",
-              "content": "Actualmente vive y trabaja entre Miami y Kyiv. EPRIS Journal le preguntó sobre el hogar, el orden oculto, la sensación corporal de equilibrio y sobre lo que cambia cuando la obra sale al espacio."
+              "content": "Ha tenido exposiciones individuales en Zaporizhzhia y Kyiv y ha mostrado en exposiciones colectivas en Kyiv, Lviv, Zaporizhzhia, Odesa, Dnipro y Járkov, en Alemania, Italia, Polonia, España y Reino Unido, y en Estados Unidos en CONTEXT Art Miami durante la Miami Art Week. Fundó G-ART STUDIO en Zaporizhzhia (2012) y Dnipro (2016) y la Escuela de Arte Experimental en Kyiv (2017), que reabrió en 2024 tras una pausa causada por la invasión a gran escala. Ahora vive y trabaja entre Miami y Kyiv."
+            },
+            {
+              "type": "text",
+              "content": "La revista EPRIS le preguntó sobre el hogar, el orden oculto, el sentido de equilibrio del cuerpo, y qué cambia cuando una pintura sale al espacio."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mnbwnodcyb.jpg",
-              "caption": "Гаяне Арушанян en el estudio con obras, otoño 2025. Foto: Юлія Осіпова.",
+              "caption": "Gayane Arushanian en el estudio con sus obras, otoño 2025. Foto: Yuliia Osipova.",
               "align": "center"
             },
             {
@@ -81564,79 +81568,79 @@
             {
               "type": "header",
               "level": 3,
-              "content": "Ви народилися в Нагірному Карабаху, у 1992 році війна змусила вашу родину переїхати в Україну, а за тридцять років інша війна змусила вас знову будувати життя з нуля – тепер у Маямі. Ви писали, що почали малювати в десять років як спосіб зцілення. Чи можна сказати, що ваше мистецтво й досі є відповіддю на втрату дому – чи воно давно стало чимось іншим, і якщо так, то коли саме ви це помітили?"
+              "content": "Naciste en Nagorno-Karabaj. En 1992 la guerra llevó a tu familia a Ucrania, y treinta años después otra guerra te hizo reconstruir tu vida desde cero, esta vez en Miami. Has dicho que empezaste a dibujar a los diez años como una forma de sanar. ¿Tu arte sigue siendo una respuesta a la pérdida del hogar, o se ha convertido en otra cosa?"
             },
             {
               "type": "text",
-              "content": "І одна, і друга війна стали для мене лакмусовим папірцем. Як би жорстоко це не звучало, але іноді життя таке. І з історії мистецтва ми знаємо, скільки митців стикалися з війною, і не раз. Для мене цей досвід став поштовхом ще голосніше створювати. Саме перед лицем руйнування я зрозуміла, наскільки я є мисткинею. Ось у чому був вплив війни на мене."
+              "content": "Ambas guerras fueron una prueba de fuego para mí. Por cruel que parezca, la vida a veces es así, y sabemos por la historia del arte cuántos artistas han enfrentado la guerra, más de una vez. Para mí esa experiencia se convirtió en un impulso para crear aún más fuerte. Fue ante la destrucción que entendí cuánto soy un artista. Ese fue el efecto que la guerra tuvo en mí."
             },
             {
               "type": "text",
-              "content": "Кризові ситуації, моменти внутрішньої кризи спонукали мене ще голосніше проявляти себе через мистецтво. Бо на межі війни й смерті ти ще сильніше відчуваєш любов і бажання жити."
+              "content": "Las crisis, momentos de crisis interior, me hicieron expresar más fuerte a través del arte. Porque en el borde de la guerra y la muerte sientes el amor y el deseo de vivir aún con más fuerza."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Ваша виставка 2025 року в Mlyn Design Hub називалася «<em>Where Home Begins</em>», а в описі профілю стоїть просто: HOME. Людина, яка двічі втрачала дім, має особливе право питати, де він починається. Тож де? У тілі, у мові, у пам’яті, у майстерні, у людях – чи в самому творі, який ви носите з собою з країни в країну?"
+              "content": "Tu exposición de 2025 en Mlyn Design Hub se llamó <em>Where Home Begins</em>, y tu perfil simplemente dice CASA. Alguien que ha perdido el hogar dos veces tiene un derecho particular a preguntar dónde comienza. Entonces, ¿dónde? En el cuerpo, el idioma, la memoria, el estudio, las personas – o en la obra que llevas de país en país?"
             },
             {
               "type": "text",
-              "content": "Cuando leo esta pregunta, se me llenan los ojos de lágrimas. Entiendo su profundidad y recuerdo todo el camino que hay detrás de ella."
+              "content": "Cuando leo esta pregunta, las lágrimas vienen a mis ojos. Entiendo lo profundo que va, y recuerdo todo el camino detrás de ella."
             },
             {
               "type": "text",
-              "content": "Diré que sí: solo la verdad interior de la persona da lugar a un lugar que podemos llamar hogar. Tal vez, en algún lugar, pueda llamarme cosmopolita – así ha sido mi vida. Y, lo que es interesante, fue la película «Home» del director francés Yan Artius-Bertrand la que me inspiró. La persona comparte absolutamente todo. Sí, sin esto, tampoco existe el mundo en el que vivimos. Pero para mí, una vez y para siempre, entendí: el hogar soy yo, y dondequiera que esté, llevo ese significado."
+              "content": "Lo diría así: solo la verdad interior de una persona da origen a un lugar que podemos llamar hogar. Quizás podrías llamarme cosmopolita – así ha sido mi vida. Curiosamente, fue la película <em>Home</em> del director francés Yann Arthus-Bertrand la que me inspiró. La gente divide absolutamente todo. Sí, el mundo en el que vivimos tampoco existe sin eso. Pero entendí, de una vez por todas: el hogar soy yo, y dondequiera que esté, llevo ese significado."
             },
             {
               "type": "text",
-              "content": "Esa es mi verdad interior, de la cual creo este hogar, en la que nacen los sentidos. Son esas leyes que he entendido, visto y que transmito a través de mi arte, que creo constantemente. Para mí, todo nace del corazón, del amor puro por todo lo que existe."
+              "content": "Es mi verdad interior, de la cual creo este hogar y en la que nacen los significados. Son los patrones que he entendido y visto, y que transmito a través del arte que hago constantemente. Para mí, todo nace del corazón, de un amor puro por todo lo que existe."
             },
             {
               "type": "text",
-              "content": "Por eso, no me gustaría dividir: el hogar está en el cuerpo, en el idioma, en la memoria, en las personas o en la obra. Todo esto es parte de mi verdad. Todo esto lo llevo conmigo."
+              "content": "Así que no me gustaría dividirlo en el cuerpo, el idioma, la memoria, la gente o la obra. Todo ello forma parte de mi verdad."
             },
             {
               "type": "text",
-              "content": "Pero, por supuesto, mi hogar siempre será mi Armenia, mi Nagorno-Karabaj, al que no puedo regresar. Quedará mi Ucrania – tal como la viví, como la sentí, como la llevo en mí."
+              "content": "Pero, por supuesto, mi hogar será siempre mi Armenia, mi Nagorno-Karabaj, a la que no puedo regresar. Y mi Ucrania – la forma en que la viví, la forma en que la sentí, la forma en que la llevo dentro de mí."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Raíces armenias, formación ucraniana, actualidad estadounidense. ¿Cuál de estas tres culturas está más presente en tu trabajo, incluso cuando no la llamas? ¿Y ha ocurrido alguna vez que el espectador en un país haya visto en tu obra algo que el espectador en otro no notaba en absoluto?"
+              "content": "Raíces armenias, una formación ucraniana, un presente estadounidense. ¿Cuál de los tres está más presente en tu trabajo, incluso cuando no lo mencionas? ¿Y algún espectador en un país ha visto algo en una pintura que los espectadores en otros lugares no notaron en absoluto?"
             },
             {
               "type": "text",
-              "content": "No puedo separar esas partes que conforman mi personalidad. No puedes desechar una parte de tu vida. Las raíces armenias influyeron mucho en mí, y cada una de estas culturas tiene su parte en quién soy."
+              "content": "No puedo separar las partes que componen quién soy. No puedes desechar parte de tu vida de ti mismo. Mis raíces armenias me influyeron mucho, y cada una de estas culturas tiene su parte en quién soy."
             },
             {
               "type": "text",
-              "content": "Pero si hablamos de cuál de ellas está más presente en mi trabajo, sin duda es la formación ucraniana. Más de treinta años de mi vida – es la vida en Ucrania. Allí me formé como persona y como artista. La realidad ucraniana, la vida en Ucrania, las oportunidades que creé allí y que sigo desarrollando fuera de ella, – todo esto me formó. Por eso soy una artista ucraniana de origen armenio. Y, viviendo en el extranjero, sigo formando mi visión."
+              "content": "Pero si hablamos de lo que está más presente en mi trabajo, sin duda es mi formación ucraniana. Más de treinta años de mi vida se vivieron en Ucrania. Ahí fue donde me formé como persona y como artista. La realidad ucraniana, la vida en Ucrania, las oportunidades que creé allí y sigo desarrollando más allá de ella – todo eso me formó. Así que soy un artista ucraniano de origen armenio. Y viviendo en el extranjero, sigo moldeando mi visión."
             },
             {
               "type": "text",
-              "content": "En cuanto a la percepción de los espectadores – sí, algunos armenios notaron en mis <em>Abstract Animals</em>, especialmente en Abstract Animal 2, una similitud con los khachkars armenios. Veían algo armenio allí. Incluso en obras suficientemente abstractas, percibían el rojo profundo o brillante como una manifestación del temperamento armenio, la emocionalidad, la conexión con las raíces."
+              "content": "En cuanto a los espectadores – sí, algunos armenios notaron en mis <em>Animales Abstractos</em>, especialmente <em>Animal Abstracto II</em>, una semejanza con los khachkars armenios. Vieron algo armenio en ello. Incluso en obras bastante abstractas, un rojo profundo o brillante se interpretaba como temperamento armenio, emoción, un vínculo con las raíces."
             },
             {
               "type": "text",
-              "content": "Y es interesante que nadie, al menos yo personalmente, dijo: «Esto es algo ucraniano». Pero tampoco creo que cree imágenes puramente ucranianas, en mis obras no hay referencias directas a motivos tradicionales ucranianos. Ucrania me formó, y esta influencia se manifiesta en cómo siento, veo y creo."
+              "content": "Lo interesante es que nadie – al menos nadie que me lo haya dicho – ha dicho nunca, \"Esto es algo ucraniano.\" Pero no creo imágenes específicamente ucranianas; no hay referencias directas a motivos tradicionales ucranianos en mi trabajo. Ucrania me formó, y esa influencia se nota en cómo me siento, veo y creo."
             },
             {
               "type": "text",
-              "content": "Al mismo tiempo, en esto no diría que, por la percepción del color, Ucrania difiere mucho de Armenia. Quizás por eso encontré en ellos a mí mismo. Para mí, ambas naciones son bastante cálidas y sinceras. Y si hablamos específicamente del color, tanto la cultura ucraniana como la armenia son muy ricas en él. Por eso también me resulta difícil aquí dividir dónde terminan unas y dónde comienzan otras en mis obras."
+              "content": "Al mismo tiempo, no diría que Ucrania se siente muy diferente de Armenia en cuanto al color. Quizá por eso me encontré en ambos. Para mí, ambos pueblos son cálidos y sinceros, y ambas culturas son muy ricas en color. Así que también aquí me resulta difícil decir dónde termina uno y dónde comienza el otro en mi trabajo."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Muchos artistas que han vivido la guerra dicen que no quieren que su trabajo sea leído solo a través del trauma: esto es a la vez verdad y trampa. ¿Cómo te sientes respecto a que los curadores, periodistas y coleccionistas comiencen tan a menudo la conversación sobre ti precisamente con la guerra, incluyendo a nosotros en esta entrevista?"
+              "content": "Muchos artistas que han vivido la guerra dicen que no quieren que su trabajo se lea solo a través del trauma: es tanto verdad como una trampa. ¿Cómo te sientes respecto a los curadores, periodistas y coleccionistas que a menudo comienzan la conversación con guerra – nosotros incluidos?"
             },
             {
               "type": "text",
-              "content": "Я спокійно ставлюся до цього, у тому числі й у нашому інтерв’ю, тому що я прийняла досвід війни як частину свого шляху. Я не відділяю себе від цього досвіду. Я не називаю його лише травмою, бо він став частиною мого життя. Це те, що сформувало мене."
+              "content": "Estoy tranquilo al respecto, incluso en esta entrevista, porque he aceptado la experiencia de la guerra como parte de mi camino. No me separo de ella. No la llamo solo trauma, porque se ha convertido en parte de mi vida. Es lo que me formó."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22me0kjk6x0r.jpg",
-              "caption": "Taller creativo, студія в Kyiv, 2019.",
+              "caption": "Caos creativo, estudio en Kyiv, 2019.",
               "align": "center"
             },
             {
@@ -81647,83 +81651,83 @@
             {
               "type": "header",
               "level": 3,
-              "content": "У вас дві магістерські освіти – урбаністика й дизайн та економічна кібернетика. Кібернетика – це наука про керування, зворотний зв’язок і системи. Ви кажете, що шукаєте «прихований порядок за тим, що здається хаосом». Але абстракція в історії мистецтва – від Кандинського до Поллока – часто була саме бунтом проти порядку. Ви ближчі до інженера, який розгадує систему, чи до художника, який дозволяє системі зламатися?"
+              "content": "Tienes dos títulos de maestría – planificación urbana y diseño, y cibernética económica, la ciencia del control, retroalimentación y sistemas. Dices que buscas \"orden oculta detrás de lo que parece ser caos\". Sin embargo, la abstracción, desde Kandinsky hasta Pollock, fue a menudo una revuelta contra el orden. ¿Estás más cerca del ingeniero que decodifica un sistema, o del artista que lo deja romperse?"
             },
             {
               "type": "text",
-              "content": "El caos no existe sin orden. Así como el blanco no existe sin negro, y la luz – sin oscuridad."
+              "content": "El caos no existe sin orden, así como el blanco no existe sin negro, o la luz sin oscuridad."
             },
             {
               "type": "text",
-              "content": "Ingeniería y cibernética económica están estrechamente relacionadas con la física y las matemáticas superiores. Para mí, son ciencias sobre las leyes que subyacen en la vida. Pero aún así, no me considero ingeniera. No construyo sistemas según reglas estrictas. E incluso si tuviera la oportunidad de construir algo, sería interesante para mí romper esas reglas, crear algo que vaya más allá."
+              "content": "La ingeniería y la cibernética económica están estrechamente relacionadas con la física y las matemáticas superiores. Para mí, son ciencias de los patrones que se encuentran en la raíz de la vida. Sin embargo, no me considero un ingeniero. No construyo sistemas siguiendo reglas estrictas. E incluso si tuviera la oportunidad de construir algo, me interesaría romper esas reglas, crear algo que vaya más allá de ellas."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "La serie <em>Factorials</em>, según tus palabras, nació como respuesta a la ruptura y explora «las estructuras internas de influencia dentro del sistema». Factorial es una función que crece de manera explosiva: cada nuevo elemento multiplica a todos los anteriores. ¿Pensaste en esta metáfora matemática de manera literal? ¿A qué sistema te referías – a la familia, al país, a ti misma, al mundo – y qué se rompió en él?"
+              "content": "Tu serie <em>Factorials</em> fue, en tus palabras, una respuesta a la ruptura, explorando \"las estructuras internas de influencia dentro de un sistema\". Un factorial crece de manera explosiva: cada nuevo elemento multiplica a todos los anteriores. ¿Pensaste en la metáfora matemática de manera literal? ¿A qué sistema te referías – familia, país, yo, el mundo – y qué se rompió en él?"
             },
             {
               "type": "text",
-              "content": "Antes del proceso de creación, no pensé en la metáfora matemática. Fue una creación pura. El primer objeto fue de papel. Creaba elementos de la escultura, los desprendía, los abría y cerraba en las manos, observaba qué sucedía. Me resultaba interesante, era como un juego. Abrí un elemento y vi que toda la imagen cambiaba. Y en un momento pensé: «Esto es un factorial». Incluso me recordó esa misma lección en la escuela, cuando nos hablaban sobre factoriales."
+              "content": "Antes de comenzar, no pensé en una metáfora matemática. Era pura creación. El primer objeto fue hecho de papel. Estaba creando los elementos de una escultura, desgarrándolos, abriéndolos y cerrándolos en mis manos, observando qué sucedía. Era como un juego. Abrí un elemento y vi que toda la imagen había cambiado. En algún momento pensé: \"Pero esto es un factorial.\" Incluso me recordó esa lección de la escuela donde nos hablaban de factoriales."
             },
             {
               "type": "text",
-              "content": "Я ніколи не беру математичну формулу із завданням її зобразити. Спочатку щось народжується у творчому стані, а потім я впізнаю в цьому те, що вже є частиною мого світу. Але це можна назвати й зовсім інакше. Саме тому я обожнюю абстракцію: вона має нескінченну кількість імен, які ми можемо їй дати."
+              "content": "Nunca tomo una fórmula matemática y me propongo representarla. Primero nace algo en un estado creativo, y luego reconozco en ello algo que ya forma parte de mi mundo. Pero también podría llamarse de manera bastante diferente. Por eso adoro la abstracción: tiene un número infinito de nombres que podemos darle."
             },
             {
               "type": "text",
-              "content": "Спочатку для мене це була просто візуальна система. І тільки коли я йшла вглиб цієї серії робіт, зрозуміла, що це про будь-яку систему: країну, родину, себе, освіту. А що в ній розірвалося? Нічого не розірвалося. Кожна маленька частина впливає на систему й одночасно створює її."
+              "content": "Al principio era simplemente un sistema visual para mí. Solo al profundizar en la serie entendí que se trata de cualquier sistema: un país, una familia, uno mismo, la educación. ¿Y qué se rompió en él? Nada se rompió. Cada pequeña parte afecta al sistema y al mismo tiempo lo crea."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22msiqg924tj.jpg",
-              "caption": "Factorial 3, 2021. Акрил, спрей, папір, 15 × 22,9 см.",
+              "caption": "Factorial 3, 2021. Acrílico y pintura en aerosol sobre papel, 15 × 22.9 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Ви називаєте свої абстракції «візуальними формулами», що перекладають емоційний і духовний досвід у колір, лінію та композицію. Формула має бути відтворюваною: ту саму задачу можна розв’язати двічі й отримати той самий результат. Чи можна двічі написати ту саму картину? Що в її «формулі» лишається невимовним і не піддається жодній системі?"
+              "content": "Tú llamas a tus abstracciones \"fórmulas visuales\" que traducen la experiencia emocional y espiritual en color, línea y composición. Una fórmula debe ser reproducible. ¿Puede una misma pintura ser pintada dos veces? ¿Qué en su \"fórmula\" permanece inexpresable?"
             },
             {
               "type": "text",
-              "content": "Por eso es arte. Mi abstracción representa un sistema, pero ella misma no es un sistema. Trata sobre estas leyes, pero no se puede reproducir con una fórmula. Y en eso está la parte creativa, artística."
+              "content": "Esa es exactamente la razón por la que es arte. Mi abstracción representa un sistema pero no es un sistema en sí mismo. Se trata de esos patrones, sin embargo no puede ser reproducido por fórmula. Ahí es donde reside su parte creativa, artística."
             },
             {
               "type": "text",
-              "content": "Nunca me he propuesto pintar la misma obra dos veces. Para mí, la abstracción es creatividad pura, y repetirla exactamente igual es casi imposible."
+              "content": "Nunca he intentado pintar la misma imagen dos veces. Para mí, la abstracción es creación de principio a fin, y repetirla exactamente es casi imposible."
             },
             {
               "type": "text",
-              "content": "Lo inefable en esta fórmula visual permanece siendo el sentido y la energía con los que creo. Esa fuerza que me impulsa a hacer esto. La experiencia emocional y espiritual en sí misma: todas esas emociones y sensaciones que pongo en la obra."
+              "content": "Lo que permanece inexpresable en esta fórmula visual es el significado y la energía que creo con ella – la fuerza que me impulsa a hacerlo. La experiencia emocional y espiritual en sí misma: todas las emociones y sensaciones que pongo en una obra."
             },
             {
               "type": "text",
-              "content": "Nunca creo por crear. Creo porque vivo esto en mi vida. Todo lo que hay en mi arte, lo vivo. De esto existo."
+              "content": "Nunca creo solo por crear. Creo porque lo vivo. Todo en mi arte es algo que he experimentado."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "El color para ti es «vibración» y «memoria sensorial», y no una elección estética. Nombra un color específico en tus obras y cuéntanos qué memoria lleva. ¿Existe un color que no utilizas por principio, porque recuerda demasiado?"
+              "content": "Para ti el color es \"vibración\" y \"memoria sensorial\", no una elección estética. Nombra un color en tu trabajo y la memoria que lleva. ¿Hay un color que te niegas a usar porque recuerda demasiado?"
             },
             {
               "type": "text",
-              "content": "En mis obras hay mucho azul. Este azul profundo comenzó para mí en Zaporizhzhia. Iba al Dnipro y podía estar horas mirando el agua. Luego apareció para mí en el azul del cielo – ya un poco diferente. Y en Kyiv adquirió una profundidad especial, se volvió muy profundo, pero al mismo tiempo brillante. Todos estos tonos de azul y lapislázuli se manifiestan en la serie <em>Lapis Lazuli</em>. Con estos colores en mi arte está muy relacionado."
+              "content": "Hay mucho azul en mi trabajo. Ese azul profundo, profundo comenzó para mí en Zaporizhzhia. Solía bajar al Dnipro y podía quedarme horas mirando el agua. Luego me apareció en el azul del cielo – ligeramente diferente. Y en Kyiv adquirió una profundidad especial: muy profundo, pero brillante. Todos estos tonos de azul y azur se reflejan en la serie <em>Lapis Lazuli</em>. Mucho en mi arte está conectado con estos colores."
             },
             {
               "type": "text",
-              "content": "No hay colores que no utilice por principio. Me permito usar absolutamente todos los colores. ¿Qué artista soy entonces, si me limito a mí misma? Para mí, el arte nace de la libertad."
+              "content": "En cuanto a un color que me niego a usar – no hay uno. Me permito absolutamente todos los colores. ¿Qué clase de artista sería si me limitara? Para mí, el arte nace de la libertad."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mj4lcmd8ak.jpg",
-              "caption": "Chaos of Lazur, 2016. Técnica mixta, papel, 36,7 × 35 cm.",
+              "caption": "Caos de Lazur, 2016. Medios mixtos sobre papel, 36.7 × 35 cm.",
               "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mfle8haupd.jpg",
-              "caption": "Blue Month I, 2018. Acuarela, papel, 42 × 29,7 cm.",
+              "caption": "Mes Azul I, 2018. Acuarela sobre papel, 42 × 29.7 cm.",
               "align": "center"
             },
             {
@@ -81734,373 +81738,361 @@
             {
               "type": "header",
               "level": 3,
-              "content": "Serie <em>Equilibrium</em> nació como una concentración meditativa en el equilibrio en tiempos de inestabilidad. ¿Cómo ha cambiado para ti la propia palabra «equilibrio» después del 24 de febrero de 2022? ¿No te parece ahora que el equilibrio no es un estado de calma, sino la tensión de dos fuerzas que pueden romperse mutuamente en cada segundo?"
+              "content": "<em>Equilibrio</em> tomó forma como un enfoque meditativo sobre el equilibrio en tiempos inestables. ¿Cómo cambió la palabra \"equilibrio\" para ti después del 24 de febrero de 2022? ¿No parece el equilibrio ahora menos como calma y más como la tensión de dos fuerzas que podrían desgarrarse en cualquier segundo?"
             },
             {
               "type": "note",
-              "content": "Nota de la redacción: en la pregunta original datamos la serie en 2021; la artista corrigió esto en su respuesta a continuación, y la pregunta fue aclarada."
+              "content": "Nota del editor: nuestra pregunta original fechaba la serie en 2021; el artista corrigió esto en su respuesta a continuación, y la pregunta ha sido ajustada."
             },
             {
               "type": "text",
-              "content": "Спочатку уточню: серія <em>Equilibrium</em> почала формуватися у 2016–2017 роках, особливо у 2017-му, коли я переїхала до Києва. Вона не з’явилася у 2021 році."
+              "content": "Permítame aclarar primero: la <em>Equilibrium</em> serie comenzó a tomar forma en 2016–2017, especialmente en 2017, cuando me mudé a Kyiv. No apareció en 2021."
             },
             {
               "type": "text",
-              "content": "Рівновага для мене ніколи не була абсолютним спокоєм. Це одночасне існування всіх сил. Одне без іншого не існує – у цьому й закономірність. Це може бути напруженням двох сил, а може бути їхнім спокоєм. Для мене рівновага – це єдине ціле, яке може проявлятися дуже по-різному."
+              "content": "El equilibrio nunca ha sido una calma absoluta para mí. Es la existencia simultánea de todas las fuerzas. Una no existe sin la otra – ese es el patrón. Puede ser la tensión de dos fuerzas, o puede ser su calma. Para mí, el equilibrio es un todo único que puede mostrarse de maneras muy diferentes."
             },
             {
               "type": "text",
-              "content": "Після 24 лютого моє розуміння рівноваги не стало іншим. Навпаки, саме воно певною мірою допомогло мені проживати цей жах."
-            },
-            {
-              "type": "text",
-              "content": "Я знала, що є й інша сторона цього досвіду – любов, неймовірне бажання жити й створювати. Я не говорю про те, що знала, коли закінчиться війна чи що саме буде далі. Але я вже відчувала цю противагу руйнуванню. Для мене це не суперечить рівновазі. І водночас це зовсім не означає, що спокійно чи легко."
+              "content": "Después del 24 de febrero, mi comprensión del equilibrio no cambió. Al contrario, en cierto modo me ayudó a sobrevivir al horror. Sabía que había otro lado a esa experiencia – amor, un deseo increíble de vivir y crear. No digo que supiera cuándo terminaría la guerra o qué vendría después. Pero ya sentía ese contrapeso a la destrucción. Para mí, eso no contradice el equilibrio. Y al mismo tiempo, no significa que sea calma o fácil."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mlgwdpeccf.jpg",
-              "caption": "У студії в Запоріжжі під час роботи над серією Equilibrium, 2016–2017.",
+              "caption": "En el estudio en Zaporizhzhia, trabajando en la serie Equilibrium, 2016–2017.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Рівновагу легко намалювати як симетрію, але симетрія швидко стає мертвою. Де у ваших композиціях свідомо закладена нестійкість – лінія, що ось-ось вислизне, пляма, яка важча, ніж має бути? Розкажіть про конкретну роботу, де ви довго шукали точку, у якій усе тримається, і про момент, коли ви її знайшли."
+              "content": "El equilibrio es fácil de pintar como simetría, pero la simetría rápidamente muere. ¿Dónde en tus composiciones se construye deliberadamente la inestabilidad? Cuéntanos sobre una obra en la que buscaste mucho tiempo el punto donde todo se sostiene."
             },
             {
               "type": "text",
-              "content": "Рівновага й симетрія – це різні речі для мене. Якщо говорити про абсолютну симетрію, про повну однаковість, то в природі я бачу інше: повторювані елементи, які щоразу змінюються, створюючи загальну систему. І в цьому хаосі є сила природи."
+              "content": "El equilibrio y la simetría son cosas diferentes para mí. Si nos referimos a la simetría absoluta, la igualdad completa – en la naturaleza veo otra cosa: elementos que se repiten que cambian cada vez y juntos crean un sistema general. Ahí está el poder de la naturaleza en ese caos."
             },
             {
               "type": "text",
-              "content": "У роботах <em>Balance</em> я свідомо створювала порушення, можна сказати, деструкцію. Але все тримається не на одній лінії, а на всьому патерні, який ніколи точно не повторюється."
+              "content": "En las obras <em>Balance</em> creé deliberadamente una interrupción – destrucción, se podría decir. Pero todo se sostiene no en una sola línea sino en todo el patrón, que nunca se repite exactamente."
             },
             {
               "type": "text",
-              "content": "Al principio simplemente doblaba el papel en mis manos y observaba cómo surgían las arrugas, cómo cambiaba la forma. La observación para mí en general es muy importante. Observo todo. Y luego en Tenerife vi una patrón similar en la montaña rocosa, en cómo se formó la roca agrietada. Todos los elementos son diferentes, pero juntos crean algo increíble."
+              "content": "Al principio simplemente arrugué papel en mis manos y observé cómo aparecían los pliegues y cómo cambiaba la forma. La observación es muy importante para mí en general; veo todo. Más tarde, en Tenerife, vi un patrón similar en una montaña rocosa, en la forma en que las piedras partidas se habían asentado. Todos los elementos son diferentes, sin embargo juntos crean algo increíble."
             },
             {
               "type": "text",
-              "content": "Más tarde, cuando en 2023 llegué por unos meses a Miami y vi la increíble Villa Vizcaya, me impresionó otra coexistencia. En ese período, cuando se creaba esa belleza aquí, en otra parte del mundo ocurría el genocidio de los armenios en el Imperio Otomano. Y yo misma, estando en Miami, parecía vivir en otra realidad, mientras en Ucrania continuaba la guerra."
+              "content": "Aún más tarde, en 2023, cuando vine a Miami durante unos meses y vi la extraordinariamente hermosa Villa Vizcaya, me sorprendió otra coexistencia. En el momento en que se creaba esta belleza aquí, en otra parte del mundo, tenía lugar el genocidio armenio en el Imperio Otomano. Y yo mismo, mientras estaba en Miami, parecía vivir en otra realidad, mientras la guerra continuaba en Ucrania."
             },
             {
               "type": "text",
-              "content": "Es decir, la destrucción y la creación existen simultáneamente. Lo observo tanto en la naturaleza, como en la historia, y en mi propia vida."
+              "content": "Así que destrucción y creación existen al mismo tiempo. Lo veo en la naturaleza, en la historia y en mi propia vida."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mnspkgvr0l.jpg",
-              "caption": "Trabajo en la serie Balance, estudio en Kiev, primavera 2025.",
+              "caption": "Trabajando en Balance, estudio en Kyiv, primavera 2025.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Ви пишете великі полотна, які, за вашими словами, фізично важко рухати й монтувати самотужки. Чи відчувається рівновага тілом – коли ви працюєте над полотном, вищим за вас, на підлозі, зі скотчем і губкою, як у ваших відео? Що тіло знає про композицію раніше, ніж знає голова?"
+              "content": "Tú pintas lienzos grandes que son físicamente difíciles de mover y colgar solo. ¿Se siente el equilibrio por el cuerpo – cuando trabajas en un lienzo más alto que tú, en el suelo, con cinta y una esponja? ¿Qué sabe el cuerpo sobre la composición antes que la cabeza?"
             },
             {
               "type": "text",
-              "content": "Por supuesto, el cuerpo también conoce y siente sus leyes de equilibrio. Mira el yoga o a los deportistas: nuestro cuerpo puede mantener el equilibrio en posiciones muy diferentes. Estamos acostumbrados a caminar sobre las piernas, pero podemos aprender a estar de pie y en las manos. Es una habilidad que adquirimos gradualmente."
+              "content": "Por supuesto, el cuerpo también conoce y siente sus propias leyes de equilibrio. Mira el yoga o a los atletas: nuestro cuerpo puede mantener su equilibrio en posiciones muy diferentes. Estamos acostumbrados a caminar sobre nuestros pies, pero podemos aprender a ponernos de manos. Es una habilidad que adquirimos gradualmente."
             },
             {
               "type": "text",
-              "content": "Trabajar con el lienzo, que es más grande que tú, es físicamente más difícil. Pero con el tiempo, el cuerpo se acostumbra: entrenas la mano, te acostumbras a la escala y a los movimientos."
+              "content": "Trabajar en un lienzo más grande que tú es físicamente más difícil. Pero con el tiempo el cuerpo se acostumbra a ello: entrenas tu mano, te acostumbras a la escala y a los movimientos. Es como aprender a incubar – al principio tus músculos pueden doler, luego el movimiento se vuelve natural."
             },
             {
               "type": "text",
-              "content": "De la misma manera, cuando aprendes a sombrear, al principio pueden doler los músculos, y luego el movimiento se vuelve habitual."
+              "content": "Así que diría que el cuerpo se adapta. Encuentra su equilibrio con el material y la superficie con la que trabajamos."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "IV. Простір: скульптура і трансформаційні об’єкти"
+              "content": "IV. Espacio: escultura y objetos transformacionales"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "У профілі ви пишете: «Creating transformational spaces». Що має статися з простором – і з людиною в ньому – щоб ви назвали його трансформованим? Чим об’єкт, який змінює кімнату, відрізняється від дорогої прикраси інтер’єру? Де для вас проходить межа між мистецтвом і дизайном – і чи вона ще існує?"
+              "content": "Tu perfil dice \"Creando espacios transformacionales\". ¿Qué tiene que suceder en un espacio – y en la persona en él – para que tú lo llames transformado? ¿En qué se diferencia un objeto que cambia una habitación de un accesorio interior costoso? ¿Dónde está la línea entre arte y diseño, y todavía existe?"
             },
             {
               "type": "text",
-              "content": "Для мене простір має співіснувати із внутрішнім світом людини й трансформуватися разом із нею. Якщо він не відповідає твоєму внутрішньому стану, це як одяг, у якому ти не почуваєшся собою. Через мистецтво арт-колекціонер наповнює простір сенсами й тією енергією, яку хоче в ньому відчувати. Я впевнена, що в кожну роботу митець вкладає свою енергію."
+              "content": "Para mí un espacio debe coexistir con el mundo interior de una persona y transformarse junto con él. Si no coincide con tu estado interior, es como ropa en la que no te sientes tú mismo. A través del arte, un coleccionista llena un espacio de significados y con la energía que quiere sentir en él. Estoy convencido de que un artista pone su energía en cada obra."
             },
             {
               "type": "text",
-              "content": "Межа з дизайном для мене проходить через функціональність. Дизайн зазвичай відповідає певній функції. У мистецтві ми можемо вийти за її рамки: не підлаштовувати роботу під задачу, а йти за сенсами, за запитаннями, на які шукаємо відповіді. Водночас дизайн теж може бути мистецтвом. Для мене прикладом є об’єкти, створені в Баухаусі: у них є і функція, і бачення, і відчуття свого часу. Через мистецтво передається час, у якому воно народжується."
+              "content": "Para mí la línea con el diseño pasa por la función. El diseño generalmente responde a una función particular. En el arte podemos ir más allá: no adaptar la obra a una tarea, sino seguir los significados, las preguntas para las que buscamos respuestas. Al mismo tiempo, el diseño también puede ser arte. Para mí, los objetos hechos en la Bauhaus son un ejemplo: tienen función, visión y un sentido de su tiempo. El arte lleva el tiempo en el que nació."
             },
             {
               "type": "text",
-              "content": "El arte puede decorar, pero esa no es su meta. Y la decoración no siempre es arte – tampoco aspira a ser algo más."
+              "content": "El arte puede ser decorativo, pero la decoración no es su propósito."
             },
             {
               "type": "text",
-              "content": "A veces me parece que con suficiente frecuencia el tiempo determina qué es arte y qué simplemente es decoración."
+              "content": "Y la decoración no siempre es arte – no pretende ser nada más que decoración."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mjoj0mncqw.jpg",
-              "caption": "Exposición en Mlyn Design Hub, verano 2025.",
+              "caption": "A la vista de la instalación en Mlyn Design Hub, verano 2025.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Tu primera profesión es construcción y diseño urbano. Las esculturas y objetos en relieve parecen ser un regreso del arquitecto: la forma plana se recorta, obtiene grosor, sombra, peso. ¿Qué te da la tercera dimensión que no da el lienzo? ¿Y qué pierdes cuando la pintura sale al espacio?"
+              "content": "Tu primera profesión fue construcción y diseño urbano. Tus esculturas y objetos en relieve parecen el regreso de un arquitecto: una forma plana es recortada y gana grosor, sombra, peso. ¿Qué te da la tercera dimensión que el lienzo no? ¿Y qué pierdes cuando una pintura sale al espacio?"
             },
             {
               "type": "text",
-              "content": "El tercer dimensión me da la oportunidad de sentir la forma con las manos. Por supuesto, también se puede dibujar con las manos, pero quiero salir de la superficie del lienzo, sentir el espacio. A través de la escultura, yo misma creo este espacio. Me gusta esa sensación, y quiero transmitirla."
+              "content": "La tercera dimensión me permite sentir la forma con mis manos. Por supuesto, también puedes pintar con tus manos, pero quiero ir más allá del plano del lienzo y sentir el espacio. A través de la escultura creo ese espacio yo mismo. Me gusta esa sensación, y quiero transmitírsela."
             },
             {
               "type": "text",
-              "content": "¿Y acaso pierdo algo? No lo percibo como una pérdida. Para mí, es otra oportunidad de crear y sentir."
+              "content": "¿Pierdo algo? No lo siento como una pérdida. Para mí es una forma más de crear y de sentir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mm5n903gwy.png",
-              "caption": "Estudio en Kiev, verano de 2018: trabajo sobre el objeto 3D Equilibrium.",
+              "caption": "Estudio en Kyiv, verano de 2018, trabajando en una pieza de Equilibrio 3D.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "El lenguaje de las formas en tus objetos son siluetas fluidas, recortes, agujeros, planos pastel y saturados – que recuerdan al mismo tiempo un dibujo arquitectónico, una plantilla infantil y un signo. ¿De dónde provienen estas formas? ¿Las dibujas a mano, o las construyes geométricamente, y ha ocurrido alguna vez que la forma «apareció» por error o recorte?"
+              "content": "El lenguaje de tus objetos – siluetas aerodinámicas, recortes, aberturas, planos en pastel y saturados – recuerda un dibujo arquitectónico, una plantilla infantil y un signo a la vez. ¿De dónde provienen estas formas? ¿Las dibujas a mano o las construyes geométricamente – y alguna vez ha aparecido una forma \"por sí misma\" a partir de un error o un recorte?"
             },
             {
               "type": "text",
-              "content": "Con mayor frecuencia, la forma nace por el llamado de la mano. Comienzo a dibujar, y simplemente se crea. A veces dejo que la casualidad influya en este proceso, pero rara vez sucede que la forma nazca exactamente de un recorte."
+              "content": "Con mayor frecuencia una forma nace a la llamada de la mano. Comienzo a dibujar y simplemente toma forma. A veces dejo que el azar influya en el proceso, pero una forma rara vez proviene de un recorte."
             },
             {
               "type": "text",
-              "content": "Y a veces llega una imagen a mí. Simplemente digo: «Me llegó una imagen». Es como una pantalla imaginaria frente a mí, en la que veo algo. Algunas imágenes llegan en sueños. Y a veces, mientras dibujo, ya veo toda la forma en volumen, su geometría, y no solo la superficie."
+              "content": "Y a veces una imagen me llega. Digo exactamente eso: \"Una imagen me llegó.\" Es como una pantalla imaginaria frente a mí en la que veo algo. Algunas imágenes vienen en sueños. A veces, mientras dibujo, ya veo toda la forma en volumen, su geometría, no solo el plano."
             },
             {
               "type": "text",
-              "content": "Nunca me siento con la idea: «Bueno, ahora tengo que inventar algo». Todo nace desde adentro. Por supuesto, me influyeron también los bocetos, que amaba en la escuela, y la arquitectura. Me encanta mucho la arquitectura, y eso también es parte de mi visión."
+              "content": "Nunca me siento pensando, \"Bien, ahora necesito idear algo.\" Todo nace desde dentro. Por supuesto, fui influenciado por el dibujo técnico, que amaba en la escuela, y por la arquitectura. Amo mucho la arquitectura, y también forma parte de mi visión."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22moa1vdwfdz.jpg",
-              "caption": "Abstract Animals I, 2022. Cerámica, esmalte, 19 × 23 × 6 cm.",
+              "caption": "Animales Abstractos I, 2022. Cerámica esmaltada, 19 × 23 × 6 cm.",
               "align": "center"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mqznox58dr.jpg",
-              "caption": "Abstract Animals II, 2022. Кераміка, глазур, 16 × 21,5 × 6 см.",
+              "caption": "Abstract Animals II, 2022. Cerámica esmaltada, 16 × 21.5 × 6 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "La escultura vive más que el lienzo y se traslada con más dificultad. La persona que varias veces empezó la vida desde cero, de repente comienza a crear cosas pesadas e inmóviles. ¿Es casualidad o una forma de finalmente establecerse en el espacio?"
+              "content": "La escultura sobrevive al lienzo y es más difícil de mover. Alguien que ha comenzado la vida desde cero varias veces de repente hace cosas pesadas e inmóviles. ¿Es esa casualidad – o una forma de finalmente echar raíces?"
             },
             {
               "type": "text",
-              "content": "No miro esto ni como casualidad ni como deseo de establecerse en el espacio. Para mí, es el deseo de trabajar con el espacio, con la materia: sentirla, formarla – piedra, arcilla. Es una sensación que no se puede reemplazar con nada."
+              "content": "No la veo ni como casualidad ni como un deseo de echar raíces. Para mí es el deseo de trabajar con el espacio, con la materia: sentirla y darle forma – piedra, arcilla. Ese sentimiento no puede ser reemplazado por nada."
             },
             {
               "type": "text",
-              "content": "Establecerse en el espacio puede ser ya un resultado, pero no me propongo ese objetivo. Cuando quiero crear algo, no empiezo con la idea: «Será pesado, será imposible moverlo». Sí, puede ser físicamente difícil. Pero lo primordial para mí es el deseo de crear, no las limitaciones de cuán difícil sea. Y para mí, esto es muy importante."
+              "content": "Echar raíces puede ser un resultado, pero no es mi objetivo. Cuando quiero hacer algo, no empiezo pensando, \"Esto será pesado, será imposible de mover.\" Sí, puede ser físicamente difícil. Pero lo que viene primero para mí es el deseo de crear, no el límite de lo difícil que sea. Eso me importa mucho."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "V. Ринок, вчительство і чесність"
+              "content": "V. El mercado, la enseñanza y la honestidad"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "CONTEXT Art Miami 2025 – uno de los eventos feriales más sonados del mundo, donde en unos pocos días pasan decenas de miles de personas y miles de obras. ¿Cómo sobrevive una abstracción, que requiere una observación prolongada, en un entorno donde cada obra se mira unos pocos segundos? ¿Qué aprendiste sobre tus obras observando a desconocidos junto a tu stand?"
+              "content": "CONTEXT Art Miami 2025 es una de las semanas de ferias más concurridas del mundo: decenas de miles de visitantes, miles de obras, unos pocos segundos por pieza. ¿Cómo sobrevive allí la abstracción que necesita una mirada prolongada? ¿Qué aprendiste sobre tus obras al observar a desconocidos en el stand?"
             },
             {
               "type": "text",
-              "content": "Las personas que se detenían junto a mis obras estaban interesadas en ellas. Para mí, es importante ese diálogo entre la persona y lo que creo. Y esta experiencia volvió a mostrarme cuán importante es entender tu lugar en el mundo del arte."
+              "content": "Aquellos que se detuvieron en mis obras estaban interesados en ellas. Lo que me importa precisamente es ese diálogo entre una persona y lo que creo. Y la experiencia me mostró una vez más lo importante que es entender tu lugar en el mundo del arte."
             },
             {
               "type": "text",
-              "content": "Cuando creas una obra, la miras como artista, la vives. Pero cuando sales al mercado del arte, también necesitas ver tu obra como un objeto en ese sistema. No es fácil. Para mí, son dos roles diferentes: artista y persona que quiere tener más oportunidades de crear. Por eso participo en ferias de arte internacionales, para ampliar mis posibilidades, para crear algo más."
+              "content": "Cuando creas una obra, la miras como artista; la vives. Pero cuando entras en el mercado del arte, también tienes que ver tu obra como un objeto dentro de ese sistema. Eso no es fácil. Para mí, estos son dos roles diferentes: el artista, y la persona que quiere más oportunidades para crear. Por eso voy a ferias de arte internacionales – para ampliar mis posibilidades y hacer algo más grande."
             },
             {
               "type": "text",
-              "content": "¿Aprendí algo nuevo sobre las obras? Mi sensación no ha cambiado. Lo que ha cambiado es la comprensión del lugar que ocupan en el mercado del arte. Entendí que es importante estar donde se entienden mis obras, donde mis sentidos se cruzan con los sentidos de mi coleccionista."
+              "content": "¿Aprendí algo nuevo sobre las obras en sí? Mi sensación por ellas no ha cambiado. Lo que cambió es mi comprensión del lugar que ocupan en el mercado. Me di cuenta de que me importa estar donde mis obras sean entendidas, donde mis significados se encuentren con los significados de mi coleccionista."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Decían que en Ucrania inicialmente no entendían la abstracción, y que con el tiempo aceptaron: que la obra «no tiene que ser comprensible para todos». Pero entre «no para todos» y «para un círculo reducido que puede permitírselo» hay una línea delgada. ¿Para quién trabajas ahora: para el coleccionista, para el espectador, para ti misma de diez años?"
+              "content": "Has dicho que la abstracción no fue entendida en Ucrania al principio, y que llegaste a aceptar que una obra \"no tiene que ser entendida por todos\". Pero entre \"no para todos\" y \"para el círculo estrecho que puede permitirse comprarla\" la línea es delgada. ¿Para quién trabajas ahora – el coleccionista, el espectador, o tu yo de diez años?"
             },
             {
               "type": "text",
-              "content": "En las primeras exposiciones de la Unión de Jóvenes Artistas de Ucrania en 2012, muchas de mis obras fueron criticadas. Al mismo tiempo, sentí que precisamente en ese entorno hacía algo nuevo. Ahora lo percibo con calma. Pero en ese entonces también sabía con certeza que no cambiaría mi lenguaje visual solo porque alguien no lo entienda."
+              "content": "En las primeras exposiciones de la Unión de Jóvenes Artistas de Ucrania en 2012, mis obras fueron muy criticadas. Al mismo tiempo, sentí que en ese mismo entorno estaba haciendo algo nuevo. Hoy lo tomo con calma. Pero incluso entonces sabía que no cambiaría mi lenguaje visual solo porque alguien no lo entendiera."
             },
             {
               "type": "text",
-              "content": "No me propongo trabajar para alguien en particular. Internamente entiendo a quién puede afectar mi arte: a algunos les son cercanos estos temas y sentidos, a otros la lengua visual, a algunos les emociona. Pero no creo obras específicamente para impactar a alguien. ¿Dónde está entonces mi libertad como artista?"
+              "content": "No me propongo trabajar para nadie en particular. Internamente entiendo quiénes podrían tocar mi arte: algunos están cerca de sus temas y significados, otros de su lenguaje visual, algunos se sienten conmovidos emocionalmente por él. Pero no hago una obra para tocar a alguien. ¿Dónde estaría entonces mi libertad como artista?"
             },
             {
               "type": "text",
-              "content": "Últimamente he empezado a pensar en esto así: si he creado algo, significa que en algún lugar hay mi espectador. La persona con la que nos cruzaremos en estos sentidos. Quizás se convierta en mi coleccionista, o quizás permanezca como espectador."
+              "content": "En los últimos años he llegado a verlo así: si he creado algo, entonces en algún lugar está mi espectador – una persona con la que me encontraré en estos significados. Quizás se conviertan en mi coleccionista, quizás permanezcan como un espectador."
             },
             {
               "type": "text",
-              "content": "Esta sensación me permite crear libremente. Sé que en algún lugar esa persona existe, y no necesito adaptar previamente mi arte a ella."
+              "content": "Esa sensación me permite crear libremente. Sé que esa persona existe en algún lugar, y no necesito adaptar mi arte a ella de antemano."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22mi3vet70ll.jpg",
-              "caption": "No Limit / Immeasurable, 2012. Acrílico, lienzo, 94 × 94 cm.",
+              "caption": "No Limit / Immeasurable, 2012. Acrílico sobre lienzo, 94 × 94 cm.",
               "align": "center"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Fundaste School of Experimental Art en Kiev y G-ART STUDIO en Zaporizhzhia y durante años combinaste la enseñanza con tu práctica personal. ¿Qué te enseñaron los estudiantes que ningún profesor enseñó? ¿Y no molesta a la artista la enseñanza — la costumbre de explicar cuando la obra debería guardar silencio?"
+              "content": "Fundaste la Escuela de Arte Experimental en Kyiv y G-ART STUDIO en Zaporizhzhia y combinaste la enseñanza con tu propia práctica durante años. ¿Qué te han enseñado tus estudiantes que ningún profesor hizo? ¿Y la enseñanza interfiere con el artista – el hábito de explicar cuando la obra debería permanecer en silencio?"
             },
             {
               "type": "text",
-              "content": "Якщо говорити про дітей, я їх обожнюю. Вони навчають життю краще, ніж будь-що. Вони – чистий прояв природи. Навчають бути собою, бути щирими. А в мистецві для мене це номер один. Водночас хороший викладач теж навчає йти до своєї природи, до своєї істини."
+              "content": "Cuando se trata de niños, los adoro. Ellos enseñan la vida mejor que cualquier cosa. Son pura naturaleza. Ellos te enseñan a ser tú mismo, a ser sincero – y en el arte, para mí, eso es lo primero. Al mismo tiempo, un buen maestro también te enseña a moverte hacia tu propia naturaleza, tu propia verdad."
             },
             {
               "type": "text",
-              "content": "Бути мисткинею й бути викладачкою – це різні ролі, і поєднувати їх непросто. Не завжди хороший митець є хорошим учителем, і не завжди хороший учитель є хорошим митцем. Я сподіваюся, що я хороша викладачка, але про це можуть сказати тільки мої учні."
+              "content": "Ser artista y ser maestro son roles diferentes, y combinarlos no es fácil. Un buen artista no siempre es un buen maestro, y un buen maestro no siempre es un buen artista. Espero ser un buen maestro, pero solo mis estudiantes pueden decirlo."
             },
             {
               "type": "text",
-              "content": "Я навчаю правил і водночас намагаюся навчити людину йти за внутрішнім покликом. Це дуже важливо. На моїх очах були художники, які майже втрачали себе через звичку постійно копіювати або просто писати, коли це вже не йшло від душі, від власного покликання."
+              "content": "Enseño las reglas y al mismo tiempo trato de enseñar a una persona a seguir su llamado interior. Eso es muy importante. He visto artistas casi perderse a través del hábito de copiar constantemente, o de simplemente pintar cuando ya no venía del alma, de su propio llamado."
             },
             {
               "type": "text",
-              "content": "Тому для мене викладання – це не тільки пояснювати. Я навчаю відчувати. Поєднувати ці дві речі: розуміти й відчувати."
+              "content": "Así que para mí, enseñar no es solo explicar. Enseño a sentir – combinando los dos: comprensión y sentimiento."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "«Щойно перестаєш бути чесною з собою – це видно в роботі», – сказали ви в одному інтерв’ю. Розкажіть про випадок, коли ви це побачили у власній картині. Що саме видало нечесність – колір, лінія, швидкість, надто гарний результат? І що ви з цією роботою зробили?"
+              "content": "\"El momento en que dejas de ser honesto contigo mismo, se nota en el trabajo,\" dijiste en una entrevista. Cuéntanos sobre una vez que lo viste en tu propia pintura. ¿Qué reveló la deshonestidad – color, línea, velocidad, un resultado demasiado bonito? ¿Y qué hiciste con esa obra?"
             },
             {
               "type": "text",
-              "content": "По-перше, чесність – це знати себе. А це дуже важко: знати, що ти відчуваєш, розуміти себе. І тоді ти відчуваєш, коли чесна із собою, а коли ні."
+              "content": "Primero que todo, la honestidad significa conocerse a uno mismo. Y eso es muy difícil: saber qué sientes, entenderte a ti mismo. Entonces puedes percibir cuándo estás siendo honesto contigo mismo y cuándo no."
             },
             {
               "type": "text",
-              "content": "Тому завершених робіт, у яких я це побачила, у мене немає. Бувало, я щось починала, але воно просто не йшло. І я не завершувала. Могла викинути щось ще на самому початку, тому навіть роботою це не можу назвати."
+              "content": "Así que no tengo obras terminadas en las que lo haya visto. Hubo momentos en que empecé algo y simplemente no salía. Y no lo terminé. Podía desechar algo desde el principio, así que ni siquiera puedo llamarlo una obra."
             },
             {
               "type": "text",
-              "content": "Що саме це видає? Це може починатися з лінії, з кольору: ти кладеш колір і відчуваєш, що щось не те. Можливо, це проявляється й у швидкості, але сама по собі швидкість нічого не визначає. Це відчуття."
+              "content": "¿Qué lo delata? Puede comenzar con una línea, con un color: pones un color y sientes que algo está mal. Quizá también se nota en la velocidad, pero la velocidad por sí sola no decide nada. Es una sensación."
             },
             {
               "type": "text",
-              "content": "Todo comienza con el estado. El estado interno del artista forma todo: esta materia, la pintura, la escultura. Si no estoy en ese estado, ¿qué puedo crear? Para mí, difícilmente algo en lo que yo misma sienta sentido."
+              "content": "Todo comienza con el estado. El estado interior del artista moldea todo: la materia, la pintura, la escultura. Si no estoy en ese estado, ¿qué puedo crear? Para mí – casi nada en lo que yo mismo sintiera significado."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "El proyecto <em>Inspire Me If You Can</em> (2012–2015) fue retratista – es decir, figurativo, sobre personas concretas. Hoy en día trabajas casi exclusivamente con abstracción. ¿Qué pasó con los rostros? ¿Viven en algún lugar dentro de tus formas abstractas?"
+              "content": "<em>Inspire Me If You Can</em> (2012–2015) fue un proyecto de retratos – figurativo, sobre personas específicas. Hoy en día trabajas casi exclusivamente en abstracción. ¿Qué pasó con las caras? ¿Viven en algún lugar dentro de tus formas abstractas?"
             },
             {
               "type": "text",
-              "content": "En los últimos años realmente trabajo principalmente con abstracción, pero no me considero solo una artista abstracta. Ella ahora ocupa una gran parte de mi camino creativo, sin embargo, he entendido que soy una artista multidisciplinaria. No quiero limitarme por estilo o técnica. En todo hay patrones, y en el retrato también – cualquier retratista puede contar sobre ellos."
+              "content": "En los últimos años realmente he trabajado principalmente en abstracción, pero no me considero solo un pintor abstracto. La abstracción es una gran parte de mi camino en este momento, pero me he dado cuenta de que soy un artista multidisciplinario. No quiero limitarme a un estilo o una técnica. Hay patrones en todo, también en el retrato – cualquier retratista puede hablar de ellos."
             },
             {
               "type": "text",
-              "content": "Y los rostros no han desaparecido. Probablemente, estos retratos se convirtieron en fotografía. A menudo fotografío a personas cuando no se dan cuenta. Por ahora, muestro poco esto, pero así es como continuó para mí <em>Inspire Me If You Can</em>."
+              "content": "Y las caras no han desaparecido. Creo que esos retratos se convirtieron en fotografía. A menudo fotografío a las personas cuando no se dan cuenta. Hasta ahora he mostrado poco de eso, pero así fue como <em>Inspire Me If You Can</em> continuó para mí."
             },
             {
               "type": "text",
-              "content": "Las personas, sus rostros todavía me inspiran mucho. Y todavía tengo muchas ideas que me gustaría realizar en el futuro."
+              "content": "Las personas y sus rostros todavía me inspiran mucho. Y tengo muchas más ideas que me gustaría realizar en el futuro."
             },
             {
               "type": "header",
               "level": 2,
-              "content": "VI. Dudas y horizonte"
+              "content": "VI. Dudas y el horizonte"
             },
             {
               "type": "header",
               "level": 3,
-              "content": "¿Cuál es el mayor malentendido sobre tu creatividad?"
+              "content": "¿Cuál es el mayor malentendido sobre tu trabajo?"
             },
             {
               "type": "text",
-              "content": "Probablemente, no percibo nada como un malentendido sobre mi creatividad. Incluso nunca pensé en ello de esa manera."
+              "content": "Probablemente no veo nada como un malentendido de mi trabajo. Ni siquiera lo había pensado de esa manera."
             },
             {
               "type": "text",
-              "content": "Al comienzo de su camino, me sentía muy sensible a cómo percibían mi abstracción. Es mi creación. La incomprensión, y a veces el odio, me afectaban. Probablemente, eso es lo único que podría llamar un malentendido."
+              "content": "Al comienzo de mi camino, era muy sensible a cómo se recibía mi abstracción. Es mi creación, después de todo. La incomprensión, y a veces el odio, me dolieron. Eso probablemente sea lo único que podría llamar un malentendido."
             },
             {
               "type": "text",
-              "content": "Pero con los años, empecé a tomarlo mucho más tranquilamente. Para mí ya no es tan importante que todos entiendan lo que creo. Si una persona no entendió, significa que no entendió. Quizá, simplemente, no es mi espectador. Y listo."
+              "content": "Pero con los años me he vuelto mucho más tranquilo al respecto. Ya no importa tanto que todos entiendan lo que creo. Si alguien no entendió – entonces no lo hizo. Quizás simplemente no son mi espectador. Eso es todo."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "¿De qué tuvo que renunciar – modales, series, ciudades, certezas – para llegar a lo que hace hoy?"
+              "content": "¿Qué tuviste que abandonar – una manera, una serie, una ciudad, una certeza – para llegar a lo que haces hoy?"
             },
             {
               "type": "text",
-              "content": "No diría que tuve que renunciar a algo. Conscientemente elegí dejar algo y seguir adelante, porque quería crecer."
+              "content": "No diría que tuve que abandonar nada. Elegí conscientemente dejar algo atrás y seguir adelante, porque quería crecer."
             },
             {
               "type": "text",
-              "content": "Por ejemplo, dejé retratos. Para mí era muy importante que vivieran, especialmente los ojos. Pero en un momento dado, quise otra cosa, y esas investigaciones quedaron en la forma en que las terminé. Experimenté mucho y todavía amo mucho experimentar. En ello nace la creatividad pura, hay casualidad y misterio. Esto sigue inspirándome. Y todo lo que creé fue mi manera, incluso cuando era una búsqueda."
+              "content": "Por ejemplo, dejé retratos. Era muy importante para mí que estuvieran vivos, especialmente los ojos. Pero en algún momento quise algo más, y esos estudios quedaron así cuando los terminé. Experimenté mucho, y todavía me encanta experimentar. La creatividad pura nace en ello; hay azar y misterio en ello. Sigue inspirándome. Y todo lo que hice fue mi manera, incluso cuando era una búsqueda."
             },
             {
               "type": "text",
-              "content": "Igualmente con las ciudades. Dejé Zaporizhzhia, porque quería mudarme a Kyiv. Y el viaje a Miami también fue mi elección consciente. No dejé Kyiv por la guerra a gran escala – quería seguir estando allí. Pero al mismo tiempo siempre sentí el deseo de algo más grande. Los lugares que dejo permanecen conmigo en mi corazón para siempre."
+              "content": "Lo mismo con las ciudades. Dejé Zaporizhzhia porque quería mudarme a Kyiv. Ir a Miami también fue mi elección consciente. No dejé Kyiv por la guerra a gran escala – quería quedarme allí mucho. Pero siempre sentí una atracción hacia algo más grande. Los lugares que dejo permanecen en mi corazón para siempre."
             },
             {
               "type": "text",
-              "content": "De lo que renuncié solo por dentro, – del miedo a crecer, porque en realidad da miedo, cuando estás solo en una ciudad enorme, en un país enorme o en un mundo del arte completamente nuevo y enorme. Sin embargo, al mismo tiempo, en el escenario internacional del arte, me siento segura. Tengo la sensación de que estoy donde debo estar. Este es mi mundo. Elegí conscientemente este camino. Y a dónde me llevará después, – lo veremos."
+              "content": "Lo que renuncié interiormente fue al miedo a crecer – porque realmente da miedo estar solo en una ciudad enorme, o en un país enorme, o en un mundo del arte completamente nuevo y enorme. Sin embargo, en la escena internacional del arte me siento confiado. Tengo la sensación de que estoy donde debo estar. Este es mi mundo. Elegí este camino conscientemente. A dónde me lleva después – ya veremos."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Si pudieras crear solo un espacio – una habitación, un pabellón, una plaza – para una sola ciudad del mundo, ¿qué ciudad elegirías y qué debería sentir la persona al salir de allí?"
+              "content": "Si pudieras crear solo un espacio – una habitación, un pabellón, una plaza – para una ciudad en el mundo, ¿qué ciudad elegirías, y qué debería sentir una persona al irse?"
             },
             {
               "type": "text",
-              "content": "Я mрію створити величезний сад із неймовірними квітами, деревами та скульптурами."
+              "content": "Sueño con crear un jardín enorme con flores increíbles, árboles y esculturas. Lo más probable es que elegiría Armenia y Ucrania para ello. Realmente amo Kyiv."
             },
             {
               "type": "text",
-              "content": "І для цього найімовірніше, я б обрала Вірменію та Україну. Насправді я дуже люблю Київ."
-            },
-            {
-              "type": "text",
-              "content": "Я хотіла б, щоб людина, виходячи з саду відчула те саме, що ми відчуваємо, коли слухаємо класичну музику, відчуття весни, відчуття початку, відчуття вічності. Я назвала б це відчуття дуже наближеним до Бога."
+              "content": "Quisiera que una persona que salga del jardín sintiera lo que sentimos cuando escuchamos música clásica: una sensación de primavera, una sensación de comienzo, una sensación de eternidad. Llamaría a esa sensación muy cercana a Dios."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Над чим ви працюєте зараз? Виставка, серія, об’єкт, про який ви ще нікому не розповідали?"
+              "content": "¿En qué estás trabajando ahora?"
             },
             {
               "type": "text",
-              "content": "Зараз я працюю над серією робіт для виставки. Я знаю, що б я хотіла показати, але поки це залишу в секреті."
-            },
-            {
-              "type": "text",
-              "content": "Паралельно я також працюю над серією «<em>Equilibrium.Net</em>»."
+              "content": "Estoy trabajando en una serie para una exposición. Sé lo que me gustaría mostrar, pero por ahora lo mantendré en secreto. En paralelo, estoy trabajando en la serie <em>Equilibrium.Net</em>."
             },
             {
               "type": "header",
               "level": 3,
-              "content": "Питання, яке ми мали вам поставити, і ваша відповідь на нього."
+              "content": "La pregunta que deberíamos haber hecho – y tu respuesta."
             },
             {
               "type": "text",
-              "content": "Не те щоб ви мали поставити саме це запитання, але якщо сприймати його творчо, то мені було б цікаво відповісти: «Якби у вас була можливість зустрітися з людиною з минулого, хто б це був?»"
+              "content": "No que deberías haber preguntado exactamente esto, pero tomándolo creativamente, me interesaría responder: \"¿Si pudieras conocer a una persona del pasado, quién sería?\""
             },
             {
               "type": "text",
-              "content": "Para mí, esto es Leonardo da Vinci. Simplemente un artista genial, un genio de su tiempo. Me encantaría al menos vivir un tiempo cerca de él y verlo en vivo, cómo vive, cómo crea, de qué se inspira. No solo encontrarse y hablar, sino observar su vida. Sería increíblemente interesante para mí. Me encanta observar a personas inteligentes y sabias de edad avanzada. Tienen tanta vida. O Einstein, si Da Vinci está muy ocupado."
+              "content": "Para mí es Leonardo da Vinci. Simplemente un artista brillante, el genio de su tiempo. Me encantaría vivir cerca de él al menos un tiempo y ver con mis propios ojos cómo vive, cómo crea, qué le inspira. No solo para conocerlo y hablar, sino para observar su vida. Eso sería increíblemente interesante para mí. Me encanta ver a personas mayores sabias e inteligentes – hay tanta vida en ellas. O Einstein, si da Vinci está demasiado ocupado."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4.jpg",
-              "caption": "Gayané Arushanyan. Filmado en película. Foto: Rita Pakhlova.",
+              "caption": "Gayane Arushanian. Tomado en película. Foto: Rita Pakhlova.",
               "align": "center"
             },
             {
@@ -82114,21 +82106,29 @@
               ],
               "caption": "",
               "alts": [
-                "Obras de la serie Spring Equilibrium. Colección privada, Lituania.",
-                "Exposición personal «Explorando el equilibrio», galería del Centro de Juventud de Zaporizhzhia, 2023.",
+                "Obras de la serie Equilibrio de Primavera. Colección privada, Lituania.",
+                "Exposición individual “Explorando el equilibrio”, galería Zaporizhzhia Youth Centre, 2023.",
                 "Sesión de fotos en Kyiv, 2023 – Equilibrium.Origin.",
                 "Estudio en Kyiv, verano de 2025.",
-                "«Extraterrestre», 2003–2004. Gouache, papel, 40 × 30 cm."
+                "“Alien”, 2003–2004. Gouache sobre papel, 40 × 30 cm."
               ]
             },
             {
               "type": "text",
-              "content": "<em>Gayané Arushanyan vive y trabaja entre Miami y Kyiv. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
+              "content": "<em>Gayane Arushanian vive y trabaja entre Miami y Kyiv. gayanearushanian.com · Instagram: @gaya.arushanian.art</em>"
             }
           ],
           "id": 67,
-          "updatedAt": "2026-10-10T07:43:56.668Z",
-          "locked": false
+          "updatedAt": "2026-10-10T07:50:46.286Z",
+          "onlyLangs": [
+            "EN",
+            "UA",
+            "RU",
+            "IT",
+            "DE",
+            "FR",
+            "ES"
+          ]
         }
       ],
       "reviews": [
