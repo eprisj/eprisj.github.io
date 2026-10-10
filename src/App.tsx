@@ -2076,6 +2076,8 @@ function GallerySection({ items, onImageClick, currentLang, t }: { items: Item[]
                           src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)}
                           srcSet={derivedSrcSet(resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900))}
                           sizes="(min-width: 640px) 360px, 45vw"
+                          data-original-src={resolveMediaSource(item.imageUrl || item.imageSeed, 720, 900)}
+                          onError={recoverOriginalImage}
                           alt={title}
                           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                           referrerPolicy="no-referrer"
@@ -3302,6 +3304,8 @@ function EditorialListCard({
           src={card.imageSrc}
           srcSet={derivedSrcSet(card.imageSrc)}
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          data-original-src={card.imageSrc}
+          onError={recoverOriginalImage}
           alt={card.title}
           className="w-full h-full object-cover"
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
