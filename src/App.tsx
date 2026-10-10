@@ -2492,6 +2492,69 @@ function contributorLabel(lang: string, coauthor = false): string {
   return table[(lang || 'EN').toUpperCase()] || table.EN;
 }
 
+/* Карточка второго и следующих кредитов под подписью статьи: соавторы из
+   редакции (coAuthorIds) и институция или герой материала (contributorId). */
+function CreditCard({ person, currentLang }: { person: Author; currentLang: string }) {
+  return (
+    <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
+      {person.photoUrl ? (
+        /* Та же развилка, что и в AuthorBlock: портрет режется в
+           круг, логотип остаётся квадратом с полями, иначе круглая
+           маска съедает вордмарк. Здесь она раньше отсутствовала,
+           и портрет соавтора выводился как логотип: вписанный в
+           белый квадрат с рамкой, не заполняя кадр. */
+        <img
+          src={person.photoUrl}
+          alt={person.name}
+          loading="lazy"
+          className={`w-14 h-14 sm:w-[72px] sm:h-[72px] shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)] ${
+            person.photoIsLogo === true
+              ? 'rounded-xl object-contain bg-white p-1.5'
+              : 'rounded-full object-cover'
+          }`}
+        />
+      ) : (
+        <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
+          {(person.name || '').charAt(0)}
+        </div>
+      )}
+      <div>
+        <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{person.name}</p>
+        {person.role && (
+          <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{translateRole(person.role, currentLang)}</p>
+        )}
+        {person.bio && (
+          <p className="font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed mb-3 max-w-xl">{person.bio}</p>
+        )}
+        {(person.website || person.instagram) && (
+          <div className="flex items-center gap-4">
+            {person.website && (
+              <a
+                href={person.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
+              >
+                Website
+              </a>
+            )}
+            {person.instagram && (
+              <a
+                href={`https://instagram.com/${person.instagram.replace(/^@/, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
+              >
+                {person.instagram}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function ArticleView({ article, related, onArticleClick, onTagClick, onClose, onImageClick, t, currentLang, setCurrentLang, languages }: { article: Article; related: Article[]; onArticleClick: (article: Article) => void; onTagClick: (tag: string) => void; onClose: () => void; onImageClick: (src: string, alt: string) => void; t: (key: string) => string; currentLang: string; setCurrentLang: (lang: string) => void; languages: string[] }) {
   const [isArticleLangOpen, setIsArticleLangOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -2537,9 +2600,21 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // перебивает подпись автора, а стоит отдельной карточкой под ней.
   const contributor = article.contributorId ? resolveAuthor({ authorId: article.contributorId }) : null;
   const contributorIsCoauthor = contributor?.showOnTeam === true;
+  // Соавторы из редакции – каждый своей карточкой. Автор подписи и
+  // contributor здесь не повторяются, даже если их id попал в список.
+  const coAuthors = (article.coAuthorIds || [])
+    .map((id) => resolveAuthor({ authorId: id }))
+    .filter((person): person is Author => Boolean(person))
+    .filter((person, i, all) => person.id !== resolvedAuthor?.id
+      && person.id !== contributor?.id
+      && all.findIndex((other) => other.id === person.id) === i);
+  // Contributor из редакции (showOnTeam) – тоже соавтор: встаёт в ту же
+  // группу, чтобы над карточками не стояли две одинаковые подписи подряд.
+  const coAuthorCards = contributorIsCoauthor && contributor ? [...coAuthors, contributor] : coAuthors;
+  const separateContributor = contributorIsCoauthor ? null : contributor;
   // With a second card below, the first card is one person: the byline
   // "A & B" above that person's bio and photo read as if the bio were shared.
-  const footerAuthorName = contributor && isMatchingProfile && resolvedAuthor?.name ? resolvedAuthor.name : authorName;
+  const footerAuthorName = (contributor || coAuthors.length > 0) && isMatchingProfile && resolvedAuthor?.name ? resolvedAuthor.name : authorName;
 
   // The overlay is the only scroller while it is open – see the hook.
   useLockedPageScroll();
@@ -3033,65 +3108,18 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 <p className="font-mono text-xs font-semibold text-[rgb(var(--c-accent-rgb)_/_0.55)]">{article.date}</p>
               </div>
             </div>
-            {contributor && (
+            {coAuthorCards.length > 0 && (
               <div className="mt-4 sm:mt-5">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang, contributorIsCoauthor)}</p>
-                <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
-                  {contributor.photoUrl ? (
-                    /* Та же развилка, что и в AuthorBlock: портрет режется в
-                       круг, логотип остаётся квадратом с полями, иначе круглая
-                       маска съедает вордмарк. Здесь она раньше отсутствовала,
-                       и портрет соавтора выводился как логотип: вписанный в
-                       белый квадрат с рамкой, не заполняя кадр. */
-                    <img
-                      src={contributor.photoUrl}
-                      alt={contributor.name}
-                      loading="lazy"
-                      className={`w-14 h-14 sm:w-[72px] sm:h-[72px] shrink-0 border-2 border-[rgb(var(--c-accent-rgb)_/_0.24)] ${
-                        contributor.photoIsLogo === true
-                          ? 'rounded-xl object-contain bg-white p-1.5'
-                          : 'rounded-full object-cover'
-                      }`}
-                    />
-                  ) : (
-                    <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] rounded-full bg-[var(--c-accent)] flex items-center justify-center text-[var(--c-bg)] font-serif text-xl sm:text-2xl shrink-0">
-                      {(contributor.name || '').charAt(0)}
-                    </div>
-                  )}
-                  <div>
-                    <p className="font-serif text-xl sm:text-2xl font-semibold mb-1">{contributor.name}</p>
-                    {contributor.role && (
-                      <p className="font-mono text-xs font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-3">{translateRole(contributor.role, currentLang)}</p>
-                    )}
-                    {contributor.bio && (
-                      <p className="font-serif text-[15px] text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed mb-3 max-w-xl">{contributor.bio}</p>
-                    )}
-                    {(contributor.website || contributor.instagram) && (
-                      <div className="flex items-center gap-4">
-                        {contributor.website && (
-                          <a
-                            href={contributor.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
-                          >
-                            Website
-                          </a>
-                        )}
-                        {contributor.instagram && (
-                          <a
-                            href={`https://instagram.com/${contributor.instagram.replace(/^@/, '')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
-                          >
-                            {contributor.instagram}
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang, true)}</p>
+                <div className="flex flex-col gap-4 sm:gap-5">
+                  {coAuthorCards.map((person) => <CreditCard key={person.id} person={person} currentLang={currentLang} />)}
                 </div>
+              </div>
+            )}
+            {separateContributor && (
+              <div className="mt-4 sm:mt-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
+                <CreditCard person={separateContributor} currentLang={currentLang} />
               </div>
             )}
             {article.tags && (
