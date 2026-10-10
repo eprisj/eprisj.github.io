@@ -206,6 +206,13 @@ export interface Article {
    */
   contributorId?: string;
   /**
+   * Further authors of the editorial team who wrote the piece together with
+   * the byline's author ("A & B"). Each gets its own card under the author's,
+   * labelled as co-authorship, above the `contributorId` card. Without it the
+   * second name in a shared byline had no card, photo or bio at all.
+   */
+  coAuthorIds?: string[];
+  /**
    * Human-facing date, exactly as an editor typed it ("Jul 30, 2026",
    * "15 серпня 2026"). Display only.
    */
@@ -975,6 +982,9 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // fields base-owned prevents a stale locale from showing a different writer
   // (or an old placeholder) on the same article/review.
   'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  // The other credits are identities too, and the translator, handed a
+  // locale's copy, may return their ids "translated".
+  'contributorId', 'coAuthorIds',
   'url', 'link', 'rating', 'featured', 'coordinates',
   // When an article was published is a fact about the article, not a translated
   // string. Left overlayable, a stale locale bucket could order that language's
