@@ -370,10 +370,10 @@ export function TocList({
       {groups.map((g, gi) => (
         <div key={g.sec?.id || `front-${gi}`}>
           {g.sec && (
-            <button type="button" onClick={() => onGo(g.sec!.page)} className={`w-full flex items-baseline gap-3 border-b ${dark ? 'border-white/25' : 'border-[var(--c-accent)]'} pb-2 mb-1 text-left`}>
-              <span className={`font-mono text-[10px] tracking-[0.25em] ${soft} w-8 shrink-0`}>{g.sec.num}</span>
-              <span style={{ fontFamily: 'var(--font-display)' }} className={`text-xl sm:text-2xl leading-tight ${ink} flex-1`}>{g.sec.title}</span>
-              <span className={`font-mono text-[10px] ${soft}`}>{g.sec.page}</span>
+            <button type="button" onClick={() => onGo(g.sec!.page)} className={`w-full grid grid-cols-[1fr_auto] sm:grid-cols-[auto_minmax(0,1fr)_auto] items-end sm:items-baseline gap-x-3 gap-y-1 border-b ${dark ? 'border-white/25' : 'border-[var(--c-accent)]'} pb-2 mb-1 text-left`}>
+              <span className={`col-start-1 row-start-1 sm:col-auto sm:row-auto font-mono text-[10px] tracking-[0.25em] ${soft} whitespace-nowrap`}>{g.sec.num}</span>
+              <span style={{ fontFamily: 'var(--font-display)' }} className={`col-span-2 row-start-2 sm:col-span-1 sm:row-auto min-w-0 text-xl sm:text-2xl leading-tight ${ink}`}>{g.sec.title}</span>
+              <span className={`col-start-2 row-start-1 sm:col-auto sm:row-auto font-mono text-[10px] ${soft} whitespace-nowrap`}>{g.sec.page}</span>
             </button>
           )}
           <ol>

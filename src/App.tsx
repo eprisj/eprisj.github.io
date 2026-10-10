@@ -1565,8 +1565,8 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
       */}
       <Reveal>
         <div className="mb-16 text-center max-w-xl mx-auto">
-          <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Est. 2025</div>
-          <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an Italian publication, founded in Milan in 2025 as a digital space for art, architecture and interior design – read wherever taste and culture actually live.</p>
+          <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Founded 5 June 2024</div>
+          <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an independent Italian publication founded in Milan on 5 June 2024. It is a digital space for contemporary art, architecture and interior design, bringing together long-form essays, interviews, exhibition reviews and close readings of the places, objects and ideas shaping visual culture. Edited in Milan and read internationally, EPRIS follows culture where it is made and where it is lived – with curiosity, clarity and an eye for lasting work.</p>
         </div>
       </Reveal>
       {team.length > 0 && (
@@ -3303,7 +3303,7 @@ function EditorialListCard({
         <motion.img
           src={card.imageSrc}
           srcSet={derivedSrcSet(card.imageSrc)}
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
           data-original-src={card.imageSrc}
           onError={recoverOriginalImage}
           alt={card.title}

@@ -743,7 +743,7 @@ export function applyLiveContent(json: SiteContent): void {
  * Resolves to true on success (including 304), false on any failure (network,
  * timeout, bad shape) – in which case the bundled fallback stays unaffected.
  */
-export async function loadLiveContent(timeoutMs = 4000, lang?: string): Promise<boolean> {
+export async function loadLiveContent(timeoutMs = 12000, lang?: string): Promise<boolean> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   /* Читателю нужен один язык из семи. Полный документ – это ~700 КБ в gzip,
