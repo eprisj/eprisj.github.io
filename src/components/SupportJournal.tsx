@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Check, Coffee, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
+import { Check, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
 import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
@@ -29,15 +29,15 @@ import QRCode from 'qrcode';
  * реже раза в год, а страница статьи не должна ждать лишний round-trip ради
  * блока, который открывает не каждый читатель. Форма решает, показывать ли
  * блок вообще (см. FormPage – form.support), но не что в нём написано.       */
-const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string; qr: string }> = {
-  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal' },
-  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal' },
-  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal' },
-  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen' },
-  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal' },
-  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal' },
-  FR: { lead: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.', copy: 'Copier', copied: 'Copié', qr: 'Scanner avec PayPal' },
-  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara" },
+const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string; qr: string; kofi: string; kofiSub: string; other: string }> = {
+  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal', kofi: 'Support EPRIS on Ko-fi', kofiSub: 'Any amount, by card or PayPal', other: 'Other ways' },
+  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal', kofi: 'Поддержать EPRIS на Ko-fi', kofiSub: 'Любая сумма, картой или через PayPal', other: 'Другие способы' },
+  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal', kofi: 'Підтримати EPRIS на Ko-fi', kofiSub: 'Будь-яка сума, карткою чи через PayPal', other: 'Інші способи' },
+  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen', kofi: 'EPRIS auf Ko-fi unterstützen', kofiSub: 'Jeder Betrag, per Karte oder PayPal', other: 'Weitere Möglichkeiten' },
+  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal', kofi: 'Sostieni EPRIS su Ko-fi', kofiSub: 'Qualsiasi importo, con carta o PayPal', other: 'Altri modi' },
+  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal', kofi: 'Apoya a EPRIS en Ko-fi', kofiSub: 'Cualquier importe, con tarjeta o PayPal', other: 'Otras formas' },
+  FR: { lead: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.', copy: 'Copier', copied: 'Copié', qr: 'Scanner avec PayPal', kofi: 'Soutenir EPRIS sur Ko-fi', kofiSub: 'Le montant de votre choix, par carte ou PayPal', other: 'Autres moyens' },
+  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara", kofi: "EPRIS'i Ko-fi'de destekleyin", kofiSub: 'İstediğiniz tutar, kartla veya PayPal ile', other: 'Diğer yollar' },
 };
 
 /* Ko-fi: второй способ, когда PayPal недоступен или неудобен (карта без
@@ -45,10 +45,9 @@ const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string;
    страница журнала на Ko-fi, где сумму выбирает сам человек. */
 const KOFI_URL = 'https://ko-fi.com/epris';
 
-const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet; href?: string }[] = [
+const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
   { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
   { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister', icon: Wallet },
-  { label: 'Ko-fi', value: 'ko-fi.com/epris', icon: Coffee, href: KOFI_URL },
   { label: 'Card', value: '4149 5100 2837 6350', icon: CreditCard },
   { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
@@ -103,36 +102,43 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       <p className="max-w-[42ch] font-serif text-[19px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)]">
         {t.lead}
       </p>
+      {/* Ko-fi стоит первым и заметным: это самый простой способ поддержать –
+          один клик, карта или PayPal на их странице, сумму выбирает человек.
+          Остальные реквизиты ниже, под подписью «другие способы». Цвет и
+          чашка – фирменные Ko-fi (#29ABE0), единственное цветное пятно в
+          чёрно-белом блоке, чтобы кнопку нельзя было не заметить. */}
+      <a
+        href={KOFI_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#29ABE0] px-4 py-3.5 text-white shadow-[0_6px_18px_-8px_rgba(41,171,224,0.9)] transition-transform hover:-translate-y-0.5 hover:bg-[#1f9bcd] sm:gap-4 sm:px-5 sm:py-4"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26">
+            <path fill="#29ABE0" d="M3 8h13.2c1.5 0 2.4.1 3.2.8.9.7 1.1 1.7 1.1 3 0 1.9-1.3 3.5-3.2 3.9-.4 1.9-1.9 3.3-3.9 3.3H8c-2.7 0-4.4-1.8-4.7-4.4L2.8 9c-.1-.5.2-1 .2-1z" />
+            <path fill="#fff" d="M19.2 10.6c.8.1 1.3.7 1.3 1.6 0 1-.6 1.7-1.5 1.9l.2-3.5z" />
+            <path fill="#FF5E5B" d="M9.9 16.2c-1.2-.9-2.6-1.9-2.6-3.3 0-.9.7-1.6 1.6-1.6.5 0 .9.2 1.2.6.3-.4.7-.6 1.2-.6.9 0 1.6.7 1.6 1.6 0 1.4-1.4 2.4-2.6 3.3z" />
+          </svg>
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.kofi}</span>
+          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/85">{t.kofiSub}</span>
+        </span>
+        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/90 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+      </a>
+      <p className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.other}</p>
       {/* Реквизиты читаются прямо на странице, без наведения и без клика –
           скопировать по-прежнему можно одним касанием, но сперва человек
           должен УВИДЕТЬ значение, а не искать его в title-тултипе. Поэтому
           каждый способ – строка на всю ширину: подпись слева, само значение
           моноширинным шрифтом рядом, кнопка копирования справа. */}
-      <div className="mt-4 flex flex-col gap-2">
+      <div className="mt-2.5 flex flex-col gap-2">
         {SUPPORT_METHODS.map((method) => {
           const Icon = method.icon;
           const isCopied = copied === method.label;
           const isPaypal = method.label === 'PayPal';
           return (
             <div key={method.label} className="flex items-center gap-2">
-              {method.href ? (
-                <a
-                  href={method.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id={`support-journal-${method.label}`}
-                  className="flex min-w-0 flex-1 items-center gap-2.5 rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] py-2.5 px-3.5 text-left transition-colors hover:border-[var(--c-gold)] sm:gap-3"
-                >
-                  <Icon size={14} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
-                  <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
-                    {method.label}
-                  </span>
-                  <span className="min-w-0 flex-1 break-all font-mono text-[12.5px] font-semibold leading-snug text-[var(--c-accent)] sm:text-[13.5px]">
-                    {method.value}
-                  </span>
-                  <ExternalLink size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
-                </a>
-              ) : (
               <button
                 type="button"
                 onClick={() => copyValue(method.label, method.value)}
@@ -160,7 +166,6 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                   <Copy size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
                 )}
               </button>
-              )}
               {isPaypal && (
                 <button
                   type="button"
