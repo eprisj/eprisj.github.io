@@ -406,15 +406,17 @@ export function FormPage({ slug, token }: { slug: string; token?: string }) {
         {thankYou && (
           <p className="mt-5 whitespace-pre-line font-serif text-[16px] leading-[1.75] text-[rgb(var(--c-accent-rgb)_/_0.72)]">{thankYou}</p>
         )}
-        {form?.support && (
-          /* Второй заход компонента – уже не карточка, которую нужно было
+        {/* После отправки блок поддержки показывается ВСЕГДА, у каждой анкеты:
+            Ko-fi и остальные способы – часть экрана «спасибо», даже если у
+            анкеты стоит supportNote: false (тот флаг гасит лишь приписку про
+            бесплатность до отправки). */}
+        {/* Второй заход компонента – уже не карточка, которую нужно было
              центрировать особым flex justify-center, а обычный баннер на всю
              ширину колонки, как и остальные блоки на этой странице. Первое,
-             что автор видит после «спасибо». */
-          <div className="mt-10 w-full">
-            <SupportJournal lang={form.language} />
-          </div>
-        )}
+             что автор видит после «спасибо». */}
+        <div className="mt-10 w-full">
+          <SupportJournal lang={form?.language} />
+        </div>
         <span className="mt-9 h-px w-16 bg-[rgb(var(--c-accent-rgb)_/_0.25)]" />
         <a href="/" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[var(--c-accent)] px-7 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-accent)] transition-colors hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)]">
           eprisjournal.com
