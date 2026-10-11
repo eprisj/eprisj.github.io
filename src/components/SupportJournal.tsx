@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Check, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
+import { Check, Coffee, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
 import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
@@ -104,27 +104,22 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       </p>
       {/* Ko-fi стоит первым и заметным: это самый простой способ поддержать –
           один клик, карта или PayPal на их странице, сумму выбирает человек.
-          Остальные реквизиты ниже, под подписью «другие способы». Цвет и
-          чашка – фирменные Ko-fi (#29ABE0), единственное цветное пятно в
-          чёрно-белом блоке, чтобы кнопку нельзя было не заметить. */}
+          Баннер чёрный, под цвет журнала, со значком чашки кофе; остальные
+          реквизиты ниже, под подписью «другие способы». */}
       <a
         href={KOFI_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#29ABE0] px-4 py-3.5 text-white shadow-[0_6px_18px_-8px_rgba(41,171,224,0.9)] transition-transform hover:-translate-y-0.5 hover:bg-[#1f9bcd] sm:gap-4 sm:px-5 sm:py-4"
+        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="26" height="26">
-            <path fill="#29ABE0" d="M3 8h13.2c1.5 0 2.4.1 3.2.8.9.7 1.1 1.7 1.1 3 0 1.9-1.3 3.5-3.2 3.9-.4 1.9-1.9 3.3-3.9 3.3H8c-2.7 0-4.4-1.8-4.7-4.4L2.8 9c-.1-.5.2-1 .2-1z" />
-            <path fill="#fff" d="M19.2 10.6c.8.1 1.3.7 1.3 1.6 0 1-.6 1.7-1.5 1.9l.2-3.5z" />
-            <path fill="#FF5E5B" d="M9.9 16.2c-1.2-.9-2.6-1.9-2.6-3.3 0-.9.7-1.6 1.6-1.6.5 0 .9.2 1.2.6.3-.4.7-.6 1.2-.6.9 0 1.6.7 1.6 1.6 0 1.4-1.4 2.4-2.6 3.3z" />
-          </svg>
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-[#111111]" aria-hidden="true">
+          <Coffee size={22} strokeWidth={2} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.kofi}</span>
-          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/85">{t.kofiSub}</span>
+          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.kofiSub}</span>
         </span>
-        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/90 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
       </a>
       <p className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.other}</p>
       {/* Реквизиты читаются прямо на странице, без наведения и без клика –
