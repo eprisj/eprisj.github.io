@@ -185,7 +185,7 @@ test("блок поддержки говорит на языке анкеты", 
   assert.match(F.supportNoteFor("EN").free, /free/i);
   assert.match(F.supportNoteFor("UA").free, /безкоштовна/);
   assert.match(F.supportNoteFor("ZZ").free, /free/i, "незнакомый язык падает на английский");
-  assert.equal(F.supportNoteFor("EN").methods.length, 3);
+  assert.ok(F.supportNoteFor("EN").methods.some((m) => m.label === "Ko-fi" && /ko-fi\.com\/epris/.test(m.value)), "Ko-fi есть среди способов");
 });
 
 /* ── Архив ────────────────────────────────────────────────────────────── */

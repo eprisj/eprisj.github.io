@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Check, Copy, CreditCard, Landmark, QrCode, Wallet } from 'lucide-react';
+import { Check, Coffee, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
 import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
@@ -40,9 +40,15 @@ const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string;
   TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara" },
 };
 
-const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
+/* Ko-fi: второй способ, когда PayPal недоступен или неудобен (карта без
+   PayPal, страна, где он ограничен). Это ссылка, а не реквизит: открывается
+   страница журнала на Ko-fi, где сумму выбирает сам человек. */
+const KOFI_URL = 'https://ko-fi.com/epris';
+
+const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet; href?: string }[] = [
   { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
   { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister', icon: Wallet },
+  { label: 'Ko-fi', value: 'ko-fi.com/epris', icon: Coffee, href: KOFI_URL },
   { label: 'Card', value: '4149 5100 2837 6350', icon: CreditCard },
   { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
@@ -109,6 +115,24 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
           const isPaypal = method.label === 'PayPal';
           return (
             <div key={method.label} className="flex items-center gap-2">
+              {method.href ? (
+                <a
+                  href={method.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id={`support-journal-${method.label}`}
+                  className="flex min-w-0 flex-1 items-center gap-2.5 rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] py-2.5 px-3.5 text-left transition-colors hover:border-[var(--c-gold)] sm:gap-3"
+                >
+                  <Icon size={14} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
+                  <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
+                    {method.label}
+                  </span>
+                  <span className="min-w-0 flex-1 break-all font-mono text-[12.5px] font-semibold leading-snug text-[var(--c-accent)] sm:text-[13.5px]">
+                    {method.value}
+                  </span>
+                  <ExternalLink size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
+                </a>
+              ) : (
               <button
                 type="button"
                 onClick={() => copyValue(method.label, method.value)}
@@ -136,6 +160,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                   <Copy size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
                 )}
               </button>
+              )}
               {isPaypal && (
                 <button
                   type="button"
