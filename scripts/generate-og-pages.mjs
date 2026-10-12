@@ -561,7 +561,12 @@ const SHOWCASE_DESCRIPTION = 'A vitrine of set design, scenography and conceptua
 // page:false, доки немає реального контенту - SPA миттєво відкидає
 // відвідувача з /music на запасну вкладку. Прибрати звідси, коли розділ
 // увімкнуть (переставити visibility на true в data.ts чи через адмінку).
-const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum', 'music']);
+/* codex и expertise - методическое пособие и курс на русском, а не журнал: Google
+   выводил их главы («Анализ изображения», «Провенанс…») сайтлинками под
+   сайтом. Страницы открываются по прямой ссылке, но из выдачи и sitemap уходят
+   (глубокие адреса главы закрываются в самих страницах, см. CodexPage и
+   ExpertisePage). */
+const HIDDEN_PUBLIC_ROUTES = new Set(['showcase', 'works', 'set', 'museum', 'music', 'codex', 'expertise']);
 
 const ROUTE_DESCRIPTIONS = {
   articles: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.',
