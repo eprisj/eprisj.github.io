@@ -247,6 +247,13 @@ export function ExpertisePage() {
   const prev = idx > 0 ? MODULES[idx - 1] : null;
 
   useEffect(() => {
+    /* Курс не для выдачи Google: глубокие адреса глав отдаёт общая заглушка,
+       у которой в разметке index, поэтому закрываем и здесь. */
+    {
+      let robots = document.querySelector('meta[name="robots"]');
+      if (!robots) { robots = document.createElement('meta'); robots.setAttribute('name', 'robots'); document.head.appendChild(robots); }
+      robots.setAttribute('content', 'noindex, follow');
+    }
     document.title = mod
       ? `${mod.title} · ${COURSE_TITLE} · EPRIS`
       : `${COURSE_TITLE} · Курс · EPRIS`;

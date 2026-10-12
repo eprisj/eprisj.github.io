@@ -459,6 +459,13 @@ export function CodexPage() {
   const ch = single && !isLibrary ? bySlug(single) : null;
 
   useEffect(() => {
+    /* Пособие не для выдачи Google: глубокие адреса глав отдаёт общая заглушка,
+       у которой в разметке index, поэтому закрываем и здесь. */
+    {
+      let robots = document.querySelector('meta[name="robots"]');
+      if (!robots) { robots = document.createElement('meta'); robots.setAttribute('name', 'robots'); document.head.appendChild(robots); }
+      robots.setAttribute('content', 'noindex, follow');
+    }
     document.title = isLibrary
       ? `Библиотека запросов · ${CODEX_TITLE} · EPRIS`
       : ch
