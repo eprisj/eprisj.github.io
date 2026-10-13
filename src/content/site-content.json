@@ -122938,7 +122938,7 @@
       "website": "",
       "instagram": "",
       "active": true,
-      "showOnTeam": true,
+      "showOnTeam": false,
       "collaborator": true,
       "photoIsLogo": true,
       "teamOrder": 21
@@ -122965,7 +122965,7 @@
       "website": "",
       "instagram": "@artveronika_painting",
       "active": true,
-      "showOnTeam": true,
+      "showOnTeam": false,
       "collaborator": true,
       "teamOrder": 16
     },
