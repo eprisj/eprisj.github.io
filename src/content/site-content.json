@@ -17469,13 +17469,13 @@
     },
     {
       "id": 68,
-      "draft": true,
+      "draft": false,
       "title": "Nothing but Everything: Yaroslav Seleznev on Abstraction Without a Name",
       "author": "Viacheslav Munister & Yaroslav Seleznev",
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
       "contributorId": "author-yaroslav-seleznev",
-      "date": "Oct 13, 2026",
+      "date": "Oct 14, 2026",
       "excerpt": "Painter Yaroslav Seleznev on moving from academic realism to abstraction, why a title can get in the way, where minimalism turns into emptiness, and what is left of a painting when the artist is gone.",
       "category": "Art",
       "subcategory": "Interview",
@@ -17789,7 +17789,10 @@
           "content": "Interview by Viacheslav Munister. Answers by Yaroslav Seleznev, lightly edited for clarity and punctuation. Questions have been shortened. All artworks and photographs courtesy of the artist."
         }
       ],
-      "updatedAt": "2026-10-13T10:25:13.240Z"
+      "publishAt": "2026-10-13T23:00:00.000Z",
+      "publishedAt": "2026-10-13T23:00:00.000Z",
+      "locked": true,
+      "updatedAt": "2026-10-13T15:03:34.000Z"
     }
   ],
   "reviews": [
@@ -33991,13 +33994,13 @@
         },
         {
           "id": 68,
-          "draft": true,
+          "draft": false,
           "title": "Ничто, кроме всего: Ярослав Селезнёв об абстракции без имени",
           "author": "Viacheslav Munister & Yaroslav Seleznev",
           "role": "Автор",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-yaroslav-seleznev",
-          "date": "13 окт. 2026",
+          "date": "14 окт. 2026",
           "excerpt": "Ярослав Селезнёв о переходе от академического реализма к абстракции, названии «Композиция №», границе между минимализмом и пустотой, ярмарках, экране и о том, что останется от картины, когда не останется художника.",
           "category": "Искусство",
           "subcategory": "Интервью",
@@ -34311,7 +34314,10 @@
               "content": "Интервью: Viacheslav Munister. Ответы: Ярослав Селезнёв, с небольшой редактурой для ясности и пунктуации. Вопросы сокращены. Все работы и фотографии публикуются по инициативе художника."
             }
           ],
-          "updatedAt": "2026-10-13T10:46:13.982Z"
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
@@ -50490,6 +50496,333 @@
           "id": 67,
           "updatedAt": "2026-10-12T08:52:27.292Z",
           "locked": true
+        },
+        {
+          "id": 68,
+          "draft": false,
+          "title": "Ніщо, окрім усього: Ярослав Селезньов про абстракцію без імені",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Автор",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
+          "date": "14 жовт. 2026",
+          "excerpt": "Ярослав Селезньов про шлях від академічного реалізму до абстракції, назву, яка може заважати картині, межу між мінімалізмом і порожнечею та про те, що лишається від картини, коли немає автора.",
+          "category": "Мистецтво",
+          "subcategory": "Інтерв’ю",
+          "tags": [
+            "Інтерв’ю",
+            "живопис",
+            "абстракція",
+            "Париж",
+            "Ярослав Селезньов"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "«It’s nothing but everything…» — так звучить рядок в Instagram Ярослава Селезньова, і три крапки наприкінці означають тут не менше, ніж слова. Це і жарт, і програма, і парадокс, який не вичерпати за один вечір. Його картини говорять так само: один широкий мазок, тонка графічна лінія, сіре повітря навколо, а потім раптом червоний, синій чи помаранчевий, як спалах, якого ніхто не чекав."
+            },
+            {
+              "type": "text",
+              "content": "До цієї мови він ішов не по прямій. Спершу художня школа всередині академічної системи. Потім, у тридцять два роки, студія майстра при Академії мистецтв: академічний реалізм XVIII–XIX століть, широкі завдання, жодної муштри. А далі свідома відмова від упізнаваних предметів. Сам він називає це зламом: «руйнування уявлень про вміння малювати і побудова мови з нуля». Його персональна виставка в галереї «Арт-Ліга» називалася «Композиція №» — знак номера, за яким може стояти будь-яке число. Ця назва доводить відмову до краю."
+            },
+            {
+              "type": "text",
+              "content": "Сьогодні його роботи показують у Парижі, на виставці Deux Paris (2025) і на ярмарку Art3f (2026), а також на виставці «Сад» (2025). Поряд із полотном і папером з’явилися кераміка й мідь: той самий широкий жест переходить на блюдо й в об’єкт."
+            },
+            {
+              "type": "text",
+              "content": "Ми написали Ярославу довгі й подекуди незручні запитання: про академічне око і назву, про ціну й екран, про паразитизм і про те, що залишається від картини без автора. Він відповів коротко й точно. У цих відповідях мало слів, які можна прибрати, і зовсім немає виправдань. Селезньов говорить про красу як про абсолют і не ховається за іронію, хоча іронії в нього вистачає."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ugly beauty, 2023. Полотно, акрил, 80×60 см."
+            },
+            {
+              "type": "header",
+              "content": "01 · Око, ніщо і ім’я",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Почнемо з того, що людина, вихована на академічному реалізмі, бере з собою в абстракцію, з межі між «усім» і «нічим» і з назви, яка іноді заважає картині.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Ви вчилися в студії майстра з Академії мистецтв, де око вчать упізнавати форму, вагу, світло й тон. Абстракція для вас — радикалізація академічного зору чи його зрада? І чи не є вона просто іншим, глибше захованим академізмом, де впізнають уже власний «почерк»?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS]:</b> Хоча я закінчив художню школу, що була частиною академічної системи, до студії майстра прийшов уже в свідомому віці, у тридцять два роки. Муштри й нав’язування канону не було, завдання ставилися широкі. Метою був не постсезаннізм і соцарт, а академічний реалізм XVIII–XIX століть. Тож перехід до абстракції не те щоб був легким, але завжди залишалася широта поглядів, можливість мати інші інтереси.<br><br>Коли формувалася моя мова, я шукав щось радикально інше, напрям, де можна створити речі актуальні й новаторські, висловити саме своє і реалізуватися. Це був злам, вихід у невідоме, на свободу, на інший рівень. Можна сказати, руйнування уявлень про вміння малювати і побудова мови з нуля.<br><br>У певний момент починаєш бачити загальне, співвідношення плям, нехтуючи предметами. Думаю, це не новий академізм, а інший погляд. Але цінності незмінні: баланс композиції, гармонія, смак і, як наслідок, «дивна», «нова» краса."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Чи був момент, коли ви побачили, що ваша точна рука — головна перешкода?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Стиль — і перешкода, і ні. У певний момент я знайшов його як особисту художню правду, і ця правда не змінилася. Але робити одне й те саме нескінченно неможливо, відчуваєш рутину, спустошеність. Тому ненавмисність, помилка, випадковість — те, що оновлює й дає виняткові відчуття. Точна рука — перешкода. Надмірний контроль — це неживе, але повна відсутність порядку — хаос. Тому важливий баланс: ніби не рукотворно, але автор присутній."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Memories of the Future, 2026. Полотно, акрил, 100×60 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> «It’s nothing but everything…»: що відрізняє вашу картину і від порожнечі, і від хаосу? Що не дає «всьому» розтектися в «ніщо»? І чому саме три крапки?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ви напрочуд проникливі). Це ніщо, але все. Це ніщо інше, як усе, і так далі.<br><br>Для мене абстракція — це ступінь узагальнення, дистанція від смислів і конкретного, рівень емоційного та інтуїтивного. Формулювати ідею означає бути нею пригвинченим.<br><br>Твір — це організація простору таким чином, що з’являється повідомлення про особисту красу, про художню правду. Вона ґрунтується на відчутті, цінностях і вірі. Межа — це суб’єктивна думка автора, відчуття завершеності, достатності, але не надмірності. Думка глядача — повністю на його боці. Три крапки — бо система відкрита, поняття загальні, кожен побачить своє."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ваша виставка в «Арт-Лізі» називалася «Композиція №». Відмова від назви — найчесніший жест чи спосіб сховатися від відповідальності за зміст?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> І те, і те: і чесний жест, і хованки. Назва негайно конкретизує абстракцію. «Композиція №» — найчесніше для твору. І водночас це можливість сховати не так невміння чи брак наповнення, як однозначність, і захиститися від знецінення.<br><br>Сьогодні слова часто пов’язані з маркетингом, а немає нічого несумісніше зі справжньою цінністю, ніж особистий інтерес. Він може опинитися в назвах. Водночас назва — це діалог із глядачем доступною мовою. Даючи номер, ти ризикуєш не просто бути незрозумілим, а отримати початкову відмову в комунікації.<br><br>Мені назви заважають: вони викликають надто буквальні асоціації чи спогади. Якщо можна залишитися на рівні форми, цінність зберігається."
+            },
+            {
+              "type": "header",
+              "content": "02 · Рука, відмова, світ",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Далі — про стриманість, руку і випадковість та про те, чи може картина без сюжету бути свідком.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Про вашу практику пишуть як про колірний мінімалізм. Та чи не є стриманість формою привілею? Де межа, за якою «менше» перестає бути чистотою і стає порожнечею? Чи були роботи, де ви дозволили собі надлишок?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Так, були роботи з деталізацією, текстурами й широкою палітрою. Але з’являлося враження, що за достатком губиться виразність, а форма переходить у декоративність. Межа лежить на рівні відчуттів. Порожнеча — це відсутність завершеної фрази, а надмірне самообмеження одразу обертається нудьгою, відчуттям втрати зв’язку зі своєю мовою і безвиході."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Східний танець, 2026. Полотно, акрил, 100×60 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Solitary, 2026. Папір, темпера, 30×20 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Хто в картині автор: ви, матеріал, випадок чи глядач? Чи можна зображати випадковість? Як ви відрізняєте у власній руці живий рух від відпрацьованого?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Випадковість і рука співіснують. Робота водночас створена природою, але в ній присутній автор. Художник організовує випадковості. Глядач вмикається, коли робота вже завершена.<br><br>Зобразити випадковість для глядача можна, але автор знає, що це невипадковість, і тоді втрачаються інтерес і цінність для нього. У жесту буває момент вичерпаності; тоді допомагає елемент новизни: інший інструмент, матеріал, фарба, зміна руху.<br><br>На мою думку, питання не в самому зображенні, а в меті, в особистому вкладенні. Натюрморт може бути учнівським, із-під палки, а може нести цінності автора, життя: динаміку, твердість руки, смак, відчуття кольору. Так, в абстракції немає критерію; це дає свободу, але й усе-дозволеність, і неозначуваність цінності. Тесту чи спеціальної людини немає; потрібна певна частка несподіванки, випадковість і відсутність натрудженості, задуманості."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dish, 2024. Кераміка, емаль, діаметр 23 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Metal gear, 2023. Мідь, латунь, 100×50×50 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Чи може картина без сюжету бути свідком? Якщо ваша робота не залежить від того, що відбувається у світі, чи не означає це, що вона за нього не відповідає?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Саме так! Не звинуватити, не виправдати, не знецінити. Дистанція від порядків денних. Спроба знайти універсальні цінності, які залишаться незмінними за будь-яких перипетій. Автор неминуче перебуває в діалозі з реальністю, минулим, історією мистецтва. Це питання точки зору; є думка, що чим жорсткіший час, тим абстрактніше мистецтво.<br><br>З іншого боку, я чітко розумію, що в пошуках мови відштовхувався від конкретних бажань і настанов. Велике мистецтво поза політикою, на відстані від порядків денних; мистецтво не про «сподобатися»; поза сюжетами й смислами, які локалізують і виявляють особисті межі. Це була й опозиція достатку, надвиробництву образів та інформації."
+            },
+            {
+              "type": "header",
+              "content": "03 · Спадок, господар, стіна",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Потім — про спадок авангарду, про спільноти, які художник обирає або відкидає, і про стіну, на якій картина стає частиною чужої композиції.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Малевич, Родченко й Кандинський вірили, що форма змінює життя. У що вірите ви? І що для вас означає членство в професійних об’єднаннях?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Вірю в красу як таку, як інстанцію-абсолют, свідченням взаємодії з якою є конкретна робота (або не є). Об’єднання, зокрема Союз абстракціоністів Росії і Союз художників Росії, — це спроба знайти коло однодумців і своє місце у професійній спільноті, в інституційному середовищі. Вступати не було потрібно; або потрібно — для самовизначення від супротивного.<br><br>На мою думку, абстракція дає свободу для пошуку власної мови; це єдиний сьогодні напрям, пов’язаний із традицією, але такий, що дає поле для новаторства. Абстракція — різна. Американський мінімалізм минулого століття не такий, як сучасний. Повоєнний абстрактний експресіонізм у США відрізняється від японського, і так далі. Особиста авторська мова — це можливість висловити себе і самореалізуватися. Індивідуальність невідтворювана й не повторюється в історії."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> У ваших добірках в Instagram є «Parazit» і «Borey». Кого чи що ви «годуєте» і чим живитеся самі? Чи може художник бути вільним, залежачи від того, хто купує і виставляє?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Усе прозаїчніше. «Паразит» — це спільнота, що успадковує ленінградський нонконформізм і arte povera, антитеза спілці художників. Можна сказати, що твори учасників перебувають по той бік краси, або це інша краса, з елементами маргінальності й андеграунду. Художник має бути один, бо спільнота нівелює індивідуальність. І мене не приваблює гумор у мистецтві: спроби розсмішити чи знецінити іноді виглядають ширмою і марним пошуком невразливості.<br><br>Можливо, паразит змінює поведінку господаря, але головне в паразитуванні в мистецтві, на мій погляд, — це опонування офіційному, конвенційному, комерційно успішному. А за відсутності господаря лишаються тільки маргінальність і голий бунт. Я за змістовність крім цього. Художник стверджує власні цінності. Думаю, має значення підтримання автономності, ізольованості власної кухні від ринку."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Виставка Deux Paris, графіка, 2025. Фото: Ярослав Селезньов."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Для якого часу ви працюєте: для секунд, які є, чи для років, яких ніхто не дасть? І наскільки ви готові віддавати авторство над картиною виставці, куратору, стіні?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Думаю, абстракцію приймає глядач, який хоче або готовий її приймати. Час не має значення. Це може бути довго, якщо є потенціал для занурення, або секунди. Ми несвідомо сприймаємо іншого за мить і фактично вирішуємо, подобається чи ні, обираємо, спілкуватися чи ні.<br><br>В «Арт-Лізі» ми розміщували роботи спільно, узгоджено. Для мене важлива чистота простору, його здатність бути тлом. Віддавати на відкуп кураторам не готовий, і чужий погляд, як правило, чужий. На виставці робота розкривається ширше, цикл наближається до завершення, погляд зустрічається з поглядом."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Avalon, 2022, на виставці «Сад», 2025. Полотно, акрил, 120×80 см. Фото: Ольга Гілева."
+            },
+            {
+              "type": "header",
+              "content": "04 · Ціна, копія, екран",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Четверта частина — про ярмарок, ціну й екран телефона та про те, як помітити, що стиль помер, раніше, ніж про це скаже ринок.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Абстрактна картина — майже ідеальний товар. Як не стати декоративним? Чи змінює вас присутність ринку, коли ви виставляєтеся на ярмарках на кшталт Art3f Paris?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ярмарки — це завжди надихаюче живе спілкування, велика кількість нових глядачів, уваги, ще одна можливість справити перше враження.<br><br>Мені здається, є досить зрозуміла межа декоративності. Це про бажання сподобатися. Воно виражається в зробленості, лиску, надмірності, награній дружелюбності. Якщо зберігати власну мету і залишатися в межах смаку, це дає змогу уникнути декору.<br><br>Ринок змінює. Протягом кількох років чую, що потрібен колір, що монохром нудний, понурий, жалобний, похмурий. Тому в колір виходжу обережно. Але чесно, як казав Тарковський, колір заважає сфокусованості повідомлення."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, фронтальна стіна стенда, 2026. Фото: Олександр Плотніков."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, графіка, 2026. Фото: Олександр Плотніков."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Вашу картину бачать у стрічці тисячі людей, оригінал — лише десятки. Яка з цих зустрічей — «робота»? Чи змінювалася картина, коли ви думали про те, як вона виглядатиме на екрані?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Працюючи в майстерні, я дію так, як вважаю за потрібне наживо, на медійний простір не озираюся. Деякі роботи на екрані виглядають менш виразно; намагаюся публікувати ті, що вражають. Думаю, змінюється контекст і вимірність сприйняття, сама робота незмінна. Соцмережі сприймаю як необхідність для самопрезентації. Але обов’язок постпродакшну і публікації — це робота, а не задоволення."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Spark, 2026. Полотно, акрил, 100×60 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Яка ознака мертвого стилю — і як ви зрозумієте, що ваш уже помер? Що змусило б вас зупинитися?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Живе в стилі — це (n+1)×¿, де останнє — випадковість, ненавмисність, непередбачуваність. Стиль мертвий, коли мертвий автор і не може жваво, у форматі спілкування, поділитися власними цілями й цінностями. Проте мистецтвознавці, дослідники й дилери успішно бальзамують твори і забезпечують їхній обіг століттями.<br><br>Я робив і авторські повтори робіт, і близьке до очікувань, але це було у форматі замовлення, я сприймав це як комерційне. У майстерні орієнтуюся лише на власні вподобання. Брак є, але він скоріше пов’язаний із ходінням по краю естетичного. Є думка, що фрустрація — це шлях до суб’єктивації. Мабуть, у довгій перспективі це так, але кожна невдача може бути останньою.<br><br>Не можу уявити ситуацію, коли далі вже не можна. Із принципу — так, коли бачиш, що прийом заюзали й перетворили на кітч (не як художній прийом). Імовірно, може зупинити достаток, коли немає навіщо працювати: це точно може змінити внутрішню інтенцію. Але припускаю, що продовжу працювати для себе, у шухляду."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Легкий дотик I, 2025. Полотно, акрил, 60×40 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Легкий дотик II, 2025. Полотно, акрил, 60×40 см."
+            },
+            {
+              "type": "header",
+              "content": "05 · Слова, час, залишок",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>І насамкінець — про слова, які краще не казати, і про те, що залишається, коли автора вже немає.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Про абстракцію пишуть або порожньо, або надто пояснювально. Яке одне слово чи фразу ви дозволили б нам поставити поруч із вашою картиною?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Справді, краще б без слів. Але «Nothing but everything» підійде). Критик і глядач існують в іншій площині. Для мене абстракція — це безпосереднє сприйняття і ступінь узагальнення. Інтерпретації та асоціації — необхідні елементи комунікації, існування арт-світу. Мені здається, будь-яку роботу можна витлумачити, і не єдиним чином. Це інструмент культурного маркетингу."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Що залишиться від вашої роботи, коли не залишиться вас, ваших пояснень і імені? Якби ви могли залишити лише одну роботу — яку б ви обрали? І яке одне питання без відповіді ви залишили б читачам?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Залишаться композиція, майстерність і смак, недомовленість і внутрішня динаміка. Якщо захочуть це побачити. Історії та легенди захопливіші).<br><br>Я залишив би <i>Ugly beauty</i>, 2023 року. «Жахливо прекрасне» або «потворна краса»). Робота, в якій я сформулював мету: найпростішими засобами — про максимум.<br><br>А питання таке: чи є місце слову «краса» в мистецтві сьогодні, чи його витіснило поняття «художня правда»? Чи може існувати краса як така, як інстанція, ідеал?"
+            },
+            {
+              "type": "quote",
+              "content": "Художник організовує випадковості."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pale fire, 2025. Полотно, акрил, 100×80 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ярослав Селезньов. Париж, 2026. Фото: Ліза Хлєбнікова."
+            },
+            {
+              "type": "text",
+              "content": "Останнє запитання Ярослав повернув нам: чи може краса існувати в мистецтві сьогодні, чи її замінила «художня правда»? Відповідати за нього ми не будемо. Нехай це запитання залишиться з читачами."
+            },
+            {
+              "type": "note",
+              "content": "Інтерв’ю: Viacheslav Munister. Відповіді: Ярослав Селезньов, з невеликою редактурою для ясності й пунктуації. Запитання скорочено. Усі роботи й фотографії публікуються з ініціативи художника."
+            }
+          ],
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
@@ -66674,6 +67007,333 @@
             "ES"
           ],
           "locked": true
+        },
+        {
+          "id": 68,
+          "draft": false,
+          "title": "Nichts als Alles: Yaroslav Seleznev über Abstraktion ohne Namen",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
+          "date": "14. Okt. 2026",
+          "excerpt": "Der Maler Yaroslav Seleznev über den Weg vom akademischen Realismus zur Abstraktion, warum ein Titel im Weg stehen kann, wo Minimalismus zur Leere wird und was von einem Bild bleibt, wenn der Künstler nicht mehr da ist.",
+          "category": "Kunst",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "Malerei",
+            "Abstraktion",
+            "Paris",
+            "Yaroslav Seleznev"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "„It’s nothing but everything…“ So lautet die Zeile in Yaroslav Seleznevs Instagram, und die drei Punkte am Ende sagen so viel wie die Worte. Sie ist ein Witz, ein Programm und ein Paradox, das man an einem einzigen Abend nicht zu Ende denkt. Seine Bilder sprechen genauso: ein breiter Pinselstrich, eine feine grafische Linie, graue Luft ringsum – und dann plötzlich Rot, Blau oder Orange, wie ein Aufblitzen, mit dem niemand gerechnet hat."
+            },
+            {
+              "type": "text",
+              "content": "Zu dieser Sprache kam er nicht auf geradem Weg. Zuerst eine Kunstschule im akademischen System. Dann, mit zweiunddreißig, das Atelier eines Meisters im Umfeld der Akademie der Künste: akademischer Realismus des 18. und 19. Jahrhunderts, weit gefasste Aufgaben, kein Drill. Und danach der bewusste Bruch mit dem Erkennbaren. Er nennt es „die Zerstörung meiner Vorstellung davon, zeichnen zu können, und den Aufbau einer Sprache von null“. Seine Einzelausstellung in der Galerie Art-Liga hieß <i>Composition No.</i>, ein Nummernzeichen, hinter dem jede beliebige Zahl stehen kann. Der Titel treibt diese Verweigerung so weit, wie sie gehen kann."
+            },
+            {
+              "type": "text",
+              "content": "Heute wird seine Arbeit in Paris gezeigt, bei Deux Paris (2025) und auf der Messe Art3f (2026), außerdem in der Ausstellung <i>Garden</i> (2025). Neben Leinwand und Papier gibt es jetzt Keramik und Kupfer: dieselbe große Geste wandert auf eine Schale und in ein Objekt."
+            },
+            {
+              "type": "text",
+              "content": "Wir haben Yaroslav lange und manchmal unbequeme Fragen geschrieben: über das akademische Auge und den Titel, über Preis und Bildschirm, über Parasitismus und darüber, was von einem Bild ohne seinen Autor bleibt. Er antwortete kurz und genau. Kaum ein Wort ließe sich streichen, und keines ist eine Ausrede. Seleznev spricht von der Schönheit als einem Absoluten und versteckt sich nicht hinter Ironie, obwohl er davon reichlich hat."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ugly beauty, 2023. Acryl auf Leinwand, 80 × 60 cm."
+            },
+            {
+              "type": "header",
+              "content": "01 · Das Auge, das Nichts und der Name",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Wir beginnen mit dem, was ein im akademischen Realismus geschulter Mensch in die Abstraktion mitbringt, mit der Grenze zwischen „allem“ und „nichts“ und mit einem Titel, der dem Bild manchmal im Weg steht.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Sie haben im Atelier eines Meisters im Umfeld der Akademie der Künste gelernt, wo das Auge Form, Gewicht, Licht und Ton sehen lernt. Ist die Abstraktion für Sie eine radikale Fortsetzung dieser Schule oder ein Verrat an ihr? Könnte sie nicht nur ein besser versteckter Akademismus sein, in dem man die eigene „Handschrift“ wiedererkennt?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS]:</b> Ich habe eine Kunstschule abgeschlossen, die Teil des akademischen Systems war, kam aber erst spät, mit zweiunddreißig und aus freier Entscheidung, ins Atelier des Meisters. Es gab keinen Drill und keinen aufgezwungenen Kanon. Die Aufgaben waren weit gefasst. Wir zielten nicht auf Post-Cézannismus oder sowjetischen sozialistischen Realismus, sondern auf den akademischen Realismus des 18. und 19. Jahrhunderts. Der Übergang zur Abstraktion war also nicht leicht, aber ich hatte immer Raum für andere Interessen.<br><br>Als ich meine eigene Sprache aufbaute, wollte ich etwas radikal anderes. Ich wollte Arbeiten machen, die neu und zeitgemäß sind, sagen, was wirklich mein ist, und mich darin finden. Es war ein Bruch, ein Schritt ins Unbekannte, in die Freiheit, auf eine andere Ebene. Man kann sagen, ich habe meine Vorstellung davon, zeichnen zu können, zerstört und eine Sprache von null aufgebaut.<br><br>Irgendwann beginnt man das Ganze zu sehen, das Verhältnis der Flecken, und die Gegenstände interessieren einen nicht mehr. Ich glaube nicht, dass das ein neuer Akademismus ist. Es ist ein anderer Blick. Die Werte bleiben dieselben: Balance in der Komposition, Harmonie, Geschmack und, als Ergebnis, eine „seltsame“, „neue“ Schönheit."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Gab es einen Moment, in dem Sie gemerkt haben, dass Ihre präzise Hand das größte Hindernis ist?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Stil ist Hindernis und zugleich keines. Irgendwann habe ich meinen gefunden, als persönliche künstlerische Wahrheit, und diese Wahrheit hat sich nicht geändert. Aber man kann nicht ewig dasselbe tun. Man spürt Routine und eine Art Leere. Deshalb erneuern das Unbeabsichtigte, der Fehler, der Zufall alles und geben mir außergewöhnliche Empfindungen. Eine präzise Hand ist ein Hindernis. Zu viel Kontrolle ist leblos, aber gar keine Ordnung ist Chaos. Darum kommt es auf die Balance an: Es soll aussehen, als wäre es nicht von Hand gemacht, und doch ist der Autor da."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Memories of the Future, 2026. Acryl auf Leinwand, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> „It’s nothing but everything…“ Was trennt Ihr Bild von der Leere und vom Chaos? Was verhindert, dass „alles“ in „nichts“ zerfließt? Und warum genau drei Punkte?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Sie sind bemerkenswert scharfsinnig). Es ist nichts, aber es ist alles. Es ist nichts anderes als alles, und so weiter.<br><br>Abstraktion ist für mich ein Grad der Verallgemeinerung, ein Abstand zu Bedeutungen und zum Konkreten. Sie wirkt auf der Ebene von Gefühl und Intuition. Eine Idee zu formulieren heißt, von ihr festgenagelt zu werden.<br><br>Ein Werk ordnet den Raum so, dass eine Botschaft über persönliche Schönheit, über künstlerische Wahrheit entsteht. Diese Wahrheit beruht auf Gefühl, Werten und Glauben. Die Grenze ist das eigene Empfinden des Autors, dass das Werk fertig und genug ist, aber nicht zu viel. Die Meinung des Betrachters gehört ganz dem Betrachter. Die Auslassungspunkte stehen da, weil das System offen ist, die Begriffe allgemein sind und jeder das Seine sehen wird."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ihre Ausstellung bei Art-Liga hieß <i>Composition No.</i> Ist der Verzicht auf einen Titel die ehrlichste Geste oder eine Art, sich der Verantwortung für den Inhalt zu entziehen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Beides: eine ehrliche Geste und ein Versteckspiel. Ein Titel macht eine Abstraktion sofort konkret. „Composition No.“ ist der ehrlichste Name für ein solches Werk. Aber er erlaubt auch, sich zu verstecken, weniger hinter mangelndem Können oder Gehalt als hinter jeder einzelnen Bedeutung, und er schützt davor, abgewertet zu werden.<br><br>Heute sind Worte oft mit Marketing verbunden, und nichts ist mit echtem Wert weniger vereinbar als persönliches Interesse. Es kann sich in Titel einschleichen. Zugleich ist ein Titel ein Gespräch mit dem Betrachter in einer Sprache, die er versteht. Wer nur eine Nummer gibt, riskiert mehr, als missverstanden zu werden: Man kann von Anfang an die Kommunikation verweigert bekommen.<br><br>Titel stören mich. Sie rufen zu wörtliche Assoziationen oder Erinnerungen hervor. Wenn ich auf der Ebene der Form bleiben kann, bleibt der Wert erhalten."
+            },
+            {
+              "type": "header",
+              "content": "02 · Die Hand, der Verzicht, die Welt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Der zweite Abschnitt handelt von Zurückhaltung, von Hand und Zufall und davon, ob ein Bild ohne Gegenstand ein Zeuge sein kann.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ihre Arbeit wird oft als Farbminimalismus beschrieben. Aber ist Zurückhaltung nicht ein Privileg? Wo hört „weniger“ auf, Reinheit zu sein, und wird zur Leere? Gab es Arbeiten, in denen Sie sich Überfluss erlaubt haben?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ja, ich habe Arbeiten mit Detail, Textur und breiter Palette gemacht. Aber ich hatte das Gefühl, dass im Überfluss die Klarheit verloren geht und die Form ins Dekorative abrutscht. Die Grenze ist eine Frage des Gefühls. Leere ist ein unvollendeter Satz. Zu viel Selbstbeschränkung schlägt schnell in Langeweile um, in das Gefühl, den Kontakt zur eigenen Sprache zu verlieren, und in Ausweglosigkeit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Oriental Dance, 2026. Acryl auf Leinwand, 100 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Solitary, 2026. Tempera auf Papier, 30 × 20 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Wer ist der Autor eines Bildes: Sie, das Material, der Zufall oder der Betrachter? Lässt sich Zufall darstellen? Woran erkennen Sie bei Ihrer eigenen Hand eine lebendige Bewegung von einer einstudierten?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Zufall und Hand leben zusammen. Das Werk ist von der Natur gemacht, und doch ist der Autor darin gegenwärtig. Der Künstler organisiert den Zufall. Der Betrachter kommt hinzu, wenn das Werk schon fertig ist.<br><br>Man kann Zufall für einen Betrachter darstellen, aber der Autor weiß, dass es kein Zufall ist, und dann gehen für ihn Interesse und Wert verloren. Eine Geste kann sich abnutzen. Dann hilft etwas Neues: ein anderes Werkzeug, ein anderes Material oder eine andere Farbe, eine veränderte Bewegung.<br><br>Meiner Ansicht nach geht es nicht um das Bild selbst, sondern um den Zweck und den persönlichen Einsatz. Ein Stillleben kann eine Schülerübung sein, unter Zwang gemalt, oder es kann die Werte und das Leben des Autors tragen: Energie, eine feste Hand, Geschmack, ein Gefühl für Farbe. Ja, die Abstraktion kennt kein Kriterium. Das gibt Freiheit, aber es bedeutet auch, dass jeder Abstraktion machen kann und der Wert schwer zu bestimmen ist. Es gibt keinen Test und keine besondere Person, die man fragen könnte. Nötig sind ein wenig Überraschung, ein wenig Zufall und keine Spur von Mühe oder Kalkül."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dish, 2024. Emaille auf Keramik, Durchmesser 23 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Metal gear, 2023. Kupfer und Messing, 100 × 50 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Kann ein Bild ohne Gegenstand ein Zeuge sein? Wenn Ihre Arbeit nicht davon abhängt, was in der Welt geschieht, trägt sie dann keine Verantwortung dafür?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Genau! Nicht anklagen, nicht rechtfertigen, nicht abwerten. Ein Abstand zu den Tagesordnungen. Der Versuch, allgemeingültige Werte zu finden, die bei jedem Umbruch dieselben bleiben. Der Autor steht immer im Dialog mit der Wirklichkeit, mit der Vergangenheit, mit der Kunstgeschichte. Das hängt vom Standpunkt ab. Manche sagen: Je härter die Zeiten, desto abstrakter die Kunst.<br><br>Andererseits weiß ich, dass ich bei der Suche nach meiner Sprache von ganz bestimmten Wünschen und Haltungen ausging. Große Kunst steht außerhalb der Politik, im Abstand zu Tagesordnungen. Sie will nicht gefallen. Sie bleibt außerhalb der Sujets und Bedeutungen, die einen festlegen und die eigenen Grenzen zeigen. Es war auch eine Reaktion auf den Überfluss, auf die Überproduktion von Bildern und Information."
+            },
+            {
+              "type": "header",
+              "content": "03 · Erbe, Wirt, Wand",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Der dritte Abschnitt handelt vom Erbe der Avantgarde, von den Gemeinschaften, denen ein Künstler beitritt oder die er ablehnt, und von der Wand, an der ein Bild Teil einer fremden Komposition wird.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Malewitsch, Rodtschenko und Kandinsky glaubten, dass Form das Leben verändern kann. Woran glauben Sie? Und was bedeuten Ihnen Berufsverbände?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ich glaube an die Schönheit als solche, als ein Absolutes, und ein einzelnes Werk ist ein Beleg für den Kontakt mit ihr, oder es ist keiner. Die Verbände, darunter die Union der Abstraktionisten Russlands und die Union der Künstler Russlands, waren ein Versuch, Gleichgesinnte und meinen Platz in der Fachgemeinschaft zu finden. Ich musste nicht beitreten. Oder doch, um mich durch den Gegensatz zu bestimmen.<br><br>Die Abstraktion gibt meiner Ansicht nach die Freiheit, die eigene Sprache zu suchen. Sie ist heute die einzige Richtung, die an die Tradition gebunden ist und trotzdem Raum für Neues lässt. Abstraktion ist nicht eine Sache. Der amerikanische Minimalismus des letzten Jahrhunderts ist nicht dasselbe wie der heutige. Der Abstrakte Expressionismus der Nachkriegszeit in den USA unterscheidet sich vom japanischen, und so weiter. Eine persönliche Sprache erlaubt, sich auszudrücken und zu verwirklichen. Individualität lässt sich nicht reproduzieren und wiederholt sich nicht in der Geschichte."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> In Ihrem Instagram gibt es Sammlungen namens „Parazit“ und „Borey“. Wen oder was „füttern“ Sie, und wovon ernähren Sie sich selbst? Kann ein Künstler frei sein, wenn er von denen abhängt, die kaufen und ausstellen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Es ist nüchterner. „Parazit“ ist eine Gemeinschaft, die den Leningrader Nonkonformismus und die Arte povera fortführt. Sie ist das Gegenteil eines Künstlerverbands. Man kann sagen, die Werke ihrer Mitglieder liegen auf der anderen Seite der Schönheit, oder es ist eine andere Schönheit, mit etwas Randständigem und Underground darin. Ein Künstler sollte allein sein, denn eine Gemeinschaft nivelliert die Individualität. Humor in der Kunst reizt mich nicht. Versuche, zum Lachen zu bringen oder abzuwerten, wirken manchmal wie ein Schutzschirm und eine aussichtslose Suche nach Unverwundbarkeit.<br><br>Vielleicht verändert ein Parasit das Verhalten seines Wirts. Aber in der Kunst bedeutet Parasitismus vor allem Widerstand gegen das Offizielle, das Konventionelle, das kommerziell Erfolgreiche. Ohne Wirt bleiben nur Randständigkeit und bloße Rebellion. Ich will Substanz darüber hinaus. Ein Künstler behauptet seine eigenen Werte. Ich halte es für wichtig, autonom zu bleiben und die eigene Küche vom Markt getrennt zu halten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ausstellung Deux Paris, Arbeiten auf Papier, 2025. Foto: Yaroslav Seleznev."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Für wen arbeiten Sie: für die Sekunden, die Betrachter tatsächlich geben, oder für die Jahre, die niemand gibt? Und wie weit überlassen Sie einer Ausstellung, einem Kurator oder einer Wand die Autorschaft über Ihr Bild?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ich glaube, Abstraktion wird von einem Betrachter angenommen, der es will oder dazu bereit ist. Zeit spielt keine Rolle. Sie kann lang sein, wenn es etwas gibt, in das man eintauchen kann, oder es können Sekunden sein. Wir lesen einen anderen Menschen unbewusst im Nu und entscheiden praktisch, ob er uns gefällt und ob wir mit ihm sprechen.<br><br>Bei Art-Liga haben wir die Arbeiten gemeinsam, einvernehmlich gehängt. Ein klarer Raum ist mir wichtig, seine Fähigkeit, Hintergrund zu sein. Ich bin nicht bereit, das Kuratoren zu überlassen, und der Blick eines anderen ist meist fremd. Auf einer Ausstellung öffnet sich ein Werk vollständiger, ein Zyklus kommt zum Abschluss, und ein Blick trifft den anderen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Avalon, 2022, in der Ausstellung Garden, 2025. Acryl auf Leinwand, 120 × 80 cm. Foto: Olga Gileva."
+            },
+            {
+              "type": "header",
+              "content": "04 · Preis, Kopie, Bildschirm",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Der vierte Abschnitt handelt von der Messe, vom Preis und vom Smartphone-Bildschirm und davon, wie man merkt, dass ein Stil gestorben ist, bevor der Markt es sagt.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ein abstraktes Gemälde ist fast die perfekte Ware. Wie vermeiden Sie, dekorativ zu werden? Verändert der Markt Sie, wenn Sie auf Messen wie der Art3f Paris ausstellen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Messen sind immer inspirierend: lebendiger Kontakt, viele neue Betrachter, Aufmerksamkeit, eine weitere Gelegenheit, einen ersten Eindruck zu machen.<br><br>Ich finde, die Grenze des Dekorativen ist ziemlich klar. Es geht um den Wunsch zu gefallen. Er zeigt sich in Politur, Glanz, Überfluss, zur Schau gestellter Freundlichkeit. Wer seinem eigenen Ziel treu bleibt und im Rahmen des Geschmacks, kann Dekor vermeiden.<br><br>Der Markt verändert mich schon. Seit mehreren Jahren höre ich, dass Farbe nötig sei, dass Monochromie langweilig, trist, trauerhaft und düster sei. Deshalb gehe ich vorsichtig in die Farbe. Aber ehrlich gesagt, wie Tarkowski sagte: Farbe stört die Konzentration der Botschaft."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, die Frontwand des Stands, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, Arbeiten auf Papier, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Tausende Menschen sehen Ihr Bild im Feed, und nur Dutzende das Original. Welche dieser Begegnungen ist „das Werk“? Hat sich ein Bild verändert, als Sie daran dachten, wie es auf dem Bildschirm aussehen würde?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Im Atelier tue ich, was ich für das Werk in Person für richtig halte. Ich schaue nicht über die Schulter auf den Medienraum. Manche Arbeiten wirken auf dem Bildschirm weniger ausdrucksstark, deshalb veröffentliche ich die, die Eindruck machen. Ich glaube, der Kontext und die Dimension der Wahrnehmung ändern sich, das Werk selbst nicht. Soziale Netzwerke sehe ich als Notwendigkeit der Selbstdarstellung. Aber Postproduktion und Veröffentlichung sind Pflicht. Sie sind Arbeit, kein Vergnügen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Spark, 2026. Acryl auf Leinwand, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Woran erkennt man einen toten Stil, und woran werden Sie merken, dass Ihrer gestorben ist? Was würde Sie zum Aufhören bringen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Lebendig im Stil ist (n+1)×¿, wobei der letzte Faktor Zufall ist, das Unbeabsichtigte, das Unvorhersehbare. Ein Stil ist tot, wenn der Autor tot ist und seine Ziele und Werte nicht mehr im lebendigen Gespräch teilen kann. Dennoch balsamieren Kunsthistoriker, Forscher und Händler Werke sehr erfolgreich ein und halten sie über Jahrhunderte im Umlauf.<br><br>Ich habe auch eigene Arbeiten wiederholt und Arbeiten gemacht, die den Erwartungen nahekamen, aber das war im Auftrag, und ich habe es als kommerziell gesehen. Im Atelier folge ich nur meinen eigenen Vorlieben. Es gibt Misserfolge, aber sie kommen meist daher, dass ich am Rand des Ästhetischen entlanggehe. Manche sagen, Frustration sei der Weg zur Subjektivität. Auf lange Sicht stimmt das wohl, aber jeder Misserfolg kann der letzte sein.<br><br>Ich kann mir keine Situation vorstellen, in der es nicht mehr weitergeht. Aus Prinzip schon: wenn ich sähe, dass eine Technik verbraucht und zu Kitsch geworden ist, nicht als künstlerisches Mittel. Überfluss, wenn es keinen Grund mehr zu arbeiten gibt, könnte mich wohl stoppen. Er könnte meine innere Absicht gewiss verändern. Aber ich nehme an, dass ich für mich weiterarbeite, für die Schublade."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch I, 2025. Acryl auf Leinwand, 60 × 40 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch II, 2025. Acryl auf Leinwand, 60 × 40 cm."
+            },
+            {
+              "type": "header",
+              "content": "05 · Worte, Zeit, was bleibt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Der letzte Abschnitt handelt von Worten, die man besser nicht sagt, und davon, was bleibt, wenn der Autor nicht mehr da ist.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Über Abstraktion wird meist entweder leer oder zu erklärend geschrieben. Welches einzelne Wort oder welchen Satz dürften wir neben Ihr Bild stellen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ehrlich gesagt wäre es besser ohne Worte. Aber „Nothing but everything“ geht). Der Kritiker und der Betrachter existieren auf einer anderen Ebene. Abstraktion ist für mich unmittelbare Wahrnehmung und ein Grad der Verallgemeinerung. Deutungen und Assoziationen sind für die Kommunikation und für die Existenz der Kunstwelt notwendig. Ich glaube, jedes Werk lässt sich deuten, und nicht nur auf eine Weise. Es ist ein Werkzeug des Kulturmarketings."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Was wird von Ihrer Arbeit bleiben, wenn Sie, Ihre Erklärungen und Ihr Name fort sind? Wenn Sie nur ein Werk behalten könnten, welches? Und welche unbeantwortete Frage würden Sie unseren Lesern hinterlassen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Bleiben werden die Komposition, das Handwerk und der Geschmack, das Ungesagte und die innere Energie. Wenn jemand es sehen will. Geschichten und Legenden sind unterhaltsamer).<br><br>Ich würde <i>Ugly beauty</i> von 2023 behalten. „Schrecklich schön“ oder „hässliche Schönheit“). In dieser Arbeit habe ich mein Ziel formuliert: mit den einfachsten Mitteln vom Maximum zu sprechen.<br><br>Und hier meine Frage. Gibt es in der Kunst heute noch Platz für das Wort „Schönheit“, oder hat die „künstlerische Wahrheit“ es ersetzt? Kann Schönheit als solche bestehen, als Ideal?"
+            },
+            {
+              "type": "quote",
+              "content": "Der Künstler organisiert den Zufall."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pale fire, 2025. Acryl auf Leinwand, 100 × 80 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Yaroslav Seleznev. Paris, 2026. Foto: Liza Khlebnikova."
+            },
+            {
+              "type": "text",
+              "content": "Die letzte Frage hat Yaroslav an uns zurückgegeben: Kann Schönheit in der Kunst heute noch bestehen, oder hat die „künstlerische Wahrheit“ sie ersetzt? Wir werden nicht an seiner Stelle antworten. Wir überlassen sie unseren Lesern."
+            },
+            {
+              "type": "note",
+              "content": "Interview von Viacheslav Munister. Antworten von Yaroslav Seleznev, leicht redigiert für Klarheit und Zeichensetzung. Die Fragen wurden gekürzt. Alle Kunstwerke und Fotografien mit freundlicher Genehmigung des Künstlers."
+            }
+          ],
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
@@ -82852,6 +83512,333 @@
             "ES"
           ],
           "locked": true
+        },
+        {
+          "id": 68,
+          "draft": false,
+          "title": "Nada más que todo: Yaroslav Seleznev sobre la abstracción sin nombre",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
+          "date": "14 oct. 2026",
+          "excerpt": "El pintor Yaroslav Seleznev habla del paso del realismo académico a la abstracción, de por qué un título puede estorbar, de dónde el minimalismo se convierte en vacío y de lo que queda de un cuadro cuando el artista ya no está.",
+          "category": "Arte",
+          "subcategory": "Entrevista",
+          "tags": [
+            "Entrevista",
+            "pintura",
+            "abstracción",
+            "París",
+            "Yaroslav Seleznev"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "«It’s nothing but everything…» Es la frase que figura en el Instagram de Yaroslav Seleznev, y los tres puntos del final dicen tanto como las palabras. Es una broma, un programa y una paradoja que no se agota en una sola tarde. Sus cuadros hablan igual: una pincelada ancha, una línea gráfica fina, aire gris alrededor y, de pronto, rojo, azul o naranja, como un destello que nadie esperaba."
+            },
+            {
+              "type": "text",
+              "content": "No llegó a este lenguaje en línea recta. Primero, una escuela de arte dentro del sistema académico. Luego, a los treinta y dos años, el taller de un maestro vinculado a la Academia de Artes: realismo académico de los siglos XVIII y XIX, tareas amplias, ninguna disciplina férrea. Y después una ruptura deliberada con los temas reconocibles. Él lo llama «la destrucción de mi idea de saber dibujar y la construcción de un lenguaje desde cero». Su exposición individual en la galería Art-Liga se llamó <i>Composition No.</i>, un signo de número que puede ir seguido de cualquier cifra. El título lleva esa renuncia hasta donde puede llegar."
+            },
+            {
+              "type": "text",
+              "content": "Hoy su obra se muestra en París, en Deux Paris (2025) y en la feria Art3f (2026), y también en la exposición <i>Garden</i> (2025). Junto al lienzo y el papel hay ahora cerámica y cobre: el mismo gesto amplio pasa a un plato y a un objeto."
+            },
+            {
+              "type": "text",
+              "content": "Le escribimos a Yaroslav preguntas largas y a veces incómodas: sobre el ojo académico y el título, sobre el precio y la pantalla, sobre el parasitismo y sobre lo que queda de un cuadro sin su autor. Respondió con brevedad y precisión. Casi ninguna palabra sobra, y ninguna es una excusa. Seleznev habla de la belleza como de un absoluto y no se esconde tras la ironía, aunque de ella tiene mucha."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ugly beauty, 2023. Acrílico sobre lienzo, 80 × 60 cm."
+            },
+            {
+              "type": "header",
+              "content": "01 · El ojo, la nada y el nombre",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Empezamos por lo que lleva a la abstracción quien se formó en el realismo académico, por la frontera entre «todo» y «nada» y por un título que a veces estorba al cuadro.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Usted estudió en el taller de un maestro vinculado a la Academia de Artes, donde el ojo aprende a ver forma, peso, luz y tono. ¿Es la abstracción para usted una versión radical de esa formación o una traición a ella? ¿No podría ser un academicismo mejor disimulado, en el que lo que se reconoce es la propia «letra»?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS]:</b> Terminé una escuela de arte que formaba parte del sistema académico, pero llegué tarde al taller del maestro, a los treinta y dos años y por decisión propia. No había disciplina férrea ni se nos imponía un canon. Las tareas eran amplias. No apuntábamos al postcezannismo ni al realismo social soviético, sino al realismo académico de los siglos XVIII y XIX. Así que el paso a la abstracción no fue fácil, pero siempre tuve espacio para otros intereses.<br><br>Cuando construía mi propio lenguaje, quería algo radicalmente distinto. Quería hacer una obra nueva y de su tiempo, decir lo que de verdad era mío y encontrarme en ella. Fue una ruptura, un paso a lo desconocido, a la libertad, a otro nivel. Puede decirse que destruí mi idea de saber dibujar y construí un lenguaje desde cero.<br><br>En algún momento empiezas a ver el conjunto, la relación entre las manchas, y los objetos dejan de importarte. No creo que sea un nuevo academicismo. Es otra manera de mirar. Los valores siguen siendo los mismos: equilibrio en la composición, armonía, gusto y, como resultado, una belleza «extraña», «nueva»."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Hubo un momento en que vio que su mano precisa era el principal obstáculo?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> El estilo es un obstáculo y no lo es. En algún momento encontré el mío, como verdad artística personal, y esa verdad no ha cambiado. Pero no se puede hacer lo mismo para siempre. Sientes rutina y una especie de vacío. Por eso lo involuntario, el error, el azar lo renuevan todo y me dan sensaciones excepcionales. Una mano precisa es un obstáculo. Demasiado control es algo sin vida, pero la ausencia total de orden es caos. Por eso importa el equilibrio: debe parecer que no está hecho a mano, y sin embargo el autor está ahí."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Memories of the Future, 2026. Acrílico sobre lienzo, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> «It’s nothing but everything…» ¿Qué separa su pintura del vacío y del caos? ¿Qué impide que «todo» se disuelva en «nada»? ¿Y por qué exactamente tres puntos?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Es usted notablemente perspicaz). Es nada, pero es todo. No es otra cosa que todo, y así sucesivamente.<br><br>Para mí la abstracción es un grado de generalización, una distancia respecto de los significados y de lo concreto. Actúa en el plano de la emoción y la intuición. Formular una idea es quedar clavado por ella.<br><br>Una obra organiza el espacio de modo que surja un mensaje sobre la belleza personal, sobre la verdad artística. Esa verdad se apoya en el sentimiento, en los valores y en la fe. El límite es la propia sensación del autor de que la obra está terminada y es suficiente, pero no demasiado. La opinión del espectador pertenece por entero al espectador. Los puntos suspensivos están ahí porque el sistema es abierto, los conceptos son generales y cada uno verá lo suyo."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Su exposición en Art-Liga se llamó <i>Composition No.</i> ¿Renunciar al título es el gesto más honesto o una forma de esquivar la responsabilidad por el contenido?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Las dos cosas: un gesto honesto y un juego de escondite. Un título concreta de inmediato la abstracción. «Composition No.» es el nombre más honesto para una obra así. Pero también permite esconderse, no tanto tras la falta de oficio o de sustancia como tras cualquier significado único, y protege de ser devaluado.<br><br>Hoy las palabras suelen estar atadas al marketing, y nada es menos compatible con el valor real que el interés personal. Puede colarse en los títulos. Al mismo tiempo, un título es una conversación con el espectador en un idioma que entiende. Si das solo un número, arriesgas más que ser malentendido: puede que te nieguen la comunicación desde el principio.<br><br>Los títulos me estorban. Evocan asociaciones o recuerdos demasiado literales. Si puedo quedarme en el nivel de la forma, el valor se conserva."
+            },
+            {
+              "type": "header",
+              "content": "02 · La mano, la renuncia, el mundo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La segunda sección trata de la contención, de la mano y el azar, y de si un cuadro sin tema puede ser testigo.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> A su obra se la suele llamar minimalismo del color. Pero ¿no es la contención una forma de privilegio? ¿Dónde deja «menos» de ser pureza y se vuelve vacío? ¿Hubo obras en las que se permitió el exceso?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Sí, hice obras con detalle, textura y paleta amplia. Pero sentí que en la abundancia se pierde claridad y la forma resbala hacia lo decorativo. El límite es cuestión de sensación. El vacío es una frase sin terminar. Demasiada autolimitación se convierte enseguida en aburrimiento, en la sensación de perder contacto con el propio lenguaje, y en desesperanza."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Oriental Dance, 2026. Acrílico sobre lienzo, 100 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Solitary, 2026. Témpera sobre papel, 30 × 20 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Quién es el autor de un cuadro: usted, el material, el azar o el espectador? ¿Se puede representar el azar? ¿Cómo distingue en su propia mano un movimiento vivo de uno ensayado?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> El azar y la mano conviven. La obra la hace la naturaleza, y sin embargo el autor está presente en ella. El artista organiza el azar. El espectador entra cuando la obra ya está terminada.<br><br>Se puede representar el azar para un espectador, pero el autor sabe que no es azar, y entonces para él se pierden el interés y el valor. Un gesto puede agotarse. Entonces ayuda algo nuevo: otra herramienta, otro material u otra pintura, un cambio de movimiento.<br><br>A mi juicio, la cuestión no es la imagen en sí, sino el propósito y la implicación personal. Un bodegón puede ser un ejercicio de estudiante, hecho a la fuerza, o puede llevar los valores y la vida del autor: energía, pulso firme, gusto, sentido del color. Sí, la abstracción no tiene criterio. Eso da libertad, pero también significa que cualquiera puede hacer abstracción y que el valor se vuelve difícil de definir. No hay prueba ni persona especial a quien preguntar. Hace falta algo de sorpresa, algo de azar y ninguna huella de esfuerzo ni de artificio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dish, 2024. Esmalte sobre cerámica, diámetro 23 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Metal gear, 2023. Cobre y latón, 100 × 50 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Puede un cuadro sin tema ser testigo? Si su obra no depende de lo que ocurre en el mundo, ¿significa eso que no responde por él?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> ¡Exacto! No acusar, no justificar, no devaluar. Una distancia respecto de las agendas. Un intento de encontrar valores universales que permanezcan iguales en cualquier vuelco. El autor siempre dialoga con la realidad, con el pasado, con la historia del arte. Depende del punto de vista. Algunos dicen que cuanto más duros son los tiempos, más abstracto es el arte.<br><br>Por otra parte, sé que al buscar mi lenguaje partí de deseos y posturas concretos. El gran arte está fuera de la política, a distancia de las agendas. No trata de gustar. Se mantiene fuera de los temas y significados que te fijan y muestran tus límites personales. Fue también una reacción contra la abundancia, contra la sobreproducción de imágenes e información."
+            },
+            {
+              "type": "header",
+              "content": "03 · Herencia, anfitrión, pared",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La tercera sección trata de la herencia de la vanguardia, de las comunidades a las que un artista se une o que rechaza, y de la pared en la que un cuadro pasa a formar parte de la composición de otro.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Malévich, Ródchenko y Kandinski creían que la forma puede cambiar la vida. ¿En qué cree usted? ¿Y qué significan para usted las asociaciones profesionales?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Creo en la belleza como tal, como un absoluto, y una obra concreta es prueba de contacto con ella, o no lo es. Las asociaciones, entre ellas la Unión de Abstraccionistas de Rusia y la Unión de Artistas de Rusia, fueron un intento de encontrar personas afines y mi lugar en la comunidad profesional. No tenía que afiliarme. O sí, para definirme por contraste.<br><br>A mi juicio, la abstracción da libertad para buscar el propio lenguaje. Es hoy la única corriente que está ligada a la tradición y deja espacio a lo nuevo. La abstracción no es una sola cosa. El minimalismo estadounidense del siglo pasado no es igual al actual. El expresionismo abstracto de posguerra en Estados Unidos se diferencia del japonés, y así sucesivamente. Un lenguaje personal permite expresarse y realizarse. La individualidad no se puede reproducir y no se repite en la historia."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> En su Instagram hay colecciones llamadas «Parazit» y «Borey». ¿A quién o a qué «alimenta», y de qué se alimenta usted? ¿Puede un artista ser libre si depende de quienes compran y exponen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Es más terrenal. «Parazit» es una comunidad que hereda el inconformismo de Leningrado y el arte povera. Es lo contrario de una unión de artistas. Se puede decir que las obras de sus miembros están al otro lado de la belleza, o que es otra belleza, con algo marginal y underground. Un artista debe estar solo, porque una comunidad nivela la individualidad. El humor en el arte no me atrae. Los intentos de hacer reír o de devaluar a veces parecen una pantalla y una búsqueda inútil de invulnerabilidad.<br><br>Quizá un parásito cambia la conducta de su anfitrión. Pero en el arte el parasitismo significa sobre todo oponerse a lo oficial, a lo convencional, a lo comercialmente exitoso. Sin anfitrión solo quedan la marginalidad y la rebeldía a secas. Yo quiero sustancia más allá de eso. Un artista afirma sus propios valores. Creo que es importante mantenerse autónomo y mantener la propia cocina separada del mercado."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Exposición Deux Paris, obras sobre papel, 2025. Foto: Yaroslav Seleznev."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Para quién trabaja: para los segundos que los espectadores dan de verdad o para los años que nadie dará? ¿Y hasta qué punto deja que una exposición, un comisario o una pared asuman la autoría de su cuadro?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Creo que la abstracción la acepta el espectador que quiere o está listo para aceptarla. El tiempo no importa. Puede ser largo, si hay algo en lo que sumergirse, o pueden ser segundos. A otra persona la leemos de manera inconsciente en un instante, y en la práctica decidimos si nos gusta y si vamos a hablar.<br><br>En Art-Liga colgamos las obras juntos, de común acuerdo. Me importa un espacio limpio, su capacidad de ser fondo. No estoy dispuesto a dejárselo a los comisarios, y la mirada de otro suele ser ajena. En una exposición la obra se abre más plenamente, un ciclo se cierra y una mirada se encuentra con otra."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Avalon, 2022, en la exposición Garden, 2025. Acrílico sobre lienzo, 120 × 80 cm. Foto: Olga Gileva."
+            },
+            {
+              "type": "header",
+              "content": "04 · Precio, copia, pantalla",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La cuarta sección trata de la feria, del precio y de la pantalla del móvil, y de cómo darse cuenta de que un estilo ha muerto antes de que lo diga el mercado.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Un cuadro abstracto es casi la mercancía perfecta. ¿Cómo evita volverse decorativo? ¿Le cambia el mercado cuando expone en ferias como Art3f Paris?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Las ferias siempre son estimulantes: contacto vivo, muchos espectadores nuevos, atención, una oportunidad más de causar una primera impresión.<br><br>Creo que la frontera de lo decorativo es bastante clara. Tiene que ver con querer agradar. Se nota en el pulido, el brillo, la abundancia, la amabilidad ostentosa. Si mantienes tu propio propósito y te quedas dentro de los límites del buen gusto, puedes evitar lo decorativo.<br><br>El mercado sí me cambia. Desde hace varios años oigo que hace falta color, que lo monocromo es aburrido, gris, fúnebre, sombrío. Por eso entro en el color con cuidado. Pero, sinceramente, como decía Tarkovski, el color estorba la concentración del mensaje."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, la pared frontal del stand, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, obras sobre papel, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Miles de personas ven su cuadro en el feed y solo decenas ven el original. ¿Cuál de esos encuentros es «la obra»? ¿Cambió un cuadro cuando pensó en cómo se vería en pantalla?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> En el taller hago lo que creo adecuado para la obra en persona. No miro de reojo el espacio mediático. Algunas obras resultan menos expresivas en pantalla, así que procuro publicar las que causan impresión. Creo que cambian el contexto y la dimensión de la percepción, pero no la obra. Veo las redes sociales como una necesidad de autopresentación. Pero la posproducción y la publicación son una obligación. Son trabajo, no placer."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Spark, 2026. Acrílico sobre lienzo, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Cuál es la señal de un estilo muerto y cómo sabrá que el suyo ha muerto? ¿Qué le haría parar?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Lo vivo en un estilo es (n+1)×¿, donde el último término es el azar, lo involuntario, lo impredecible. Un estilo está muerto cuando el autor está muerto y ya no puede compartir sus objetivos y valores en una conversación viva. Sin embargo, historiadores del arte, investigadores y marchantes embalsaman las obras con mucho éxito y las mantienen en circulación durante siglos.<br><br>Yo también repetí obras mías e hice obra cercana a lo que se esperaba, pero fue por encargo y lo vi como algo comercial. En el taller sigo solo mis propias preferencias. Hay fracasos, pero vienen sobre todo de caminar por el borde de lo estético. Algunos dicen que la frustración es el camino hacia la subjetividad. A la larga seguramente es cierto, pero cualquier fracaso puede ser el último.<br><br>No puedo imaginar una situación en la que ya no se pueda seguir. Por principio, sí: si viera que una técnica se ha gastado y convertido en kitsch, no como recurso artístico. La abundancia, cuando ya no hay razón para trabajar, probablemente podría detenerme. Seguro que podría cambiar mi intención interior. Pero supongo que seguiré trabajando para mí, para el cajón."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch I, 2025. Acrílico sobre lienzo, 60 × 40 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch II, 2025. Acrílico sobre lienzo, 60 × 40 cm."
+            },
+            {
+              "type": "header",
+              "content": "05 · Palabras, tiempo, lo que queda",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La última sección trata de las palabras que es mejor no decir y de lo que queda cuando el autor ya no está.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Sobre la abstracción se escribe sobre todo o de forma vacía o con demasiada explicación. ¿Qué palabra o frase nos permitiría poner junto a su cuadro?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Sinceramente, sería mejor sin palabras. Pero «Nothing but everything» sirve). El crítico y el espectador existen en otro plano. Para mí la abstracción es percepción directa y un grado de generalización. Las interpretaciones y las asociaciones son necesarias para la comunicación y para que exista el mundo del arte. Creo que cualquier obra puede interpretarse, y no de una sola manera. Es una herramienta del marketing cultural."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> ¿Qué quedará de su obra cuando no estén usted, sus explicaciones ni su nombre? Si pudiera conservar una sola obra, ¿cuál? ¿Y qué pregunta sin respuesta dejaría a nuestros lectores?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Quedarán la composición, el oficio y el gusto, lo no dicho y la energía interior. Si alguien quiere verlo. Las historias y las leyendas son más entretenidas).<br><br>Yo conservaría <i>Ugly beauty</i>, de 2023. «Terriblemente hermoso» o «belleza fea»). En esa obra formulé mi propósito: hablar de lo máximo con los medios más sencillos.<br><br>Y esta es mi pregunta. ¿Queda hoy lugar para la palabra «belleza» en el arte, o la ha sustituido la «verdad artística»? ¿Puede existir la belleza como tal, como ideal?"
+            },
+            {
+              "type": "quote",
+              "content": "El artista organiza el azar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pale fire, 2025. Acrílico sobre lienzo, 100 × 80 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Yaroslav Seleznev. París, 2026. Foto: Liza Khlebnikova."
+            },
+            {
+              "type": "text",
+              "content": "La última pregunta nos la devolvió Yaroslav: ¿puede la belleza seguir existiendo en el arte hoy, o la ha sustituido la «verdad artística»? No responderemos por él. La dejamos a nuestros lectores."
+            },
+            {
+              "type": "note",
+              "content": "Entrevista de Viacheslav Munister. Respuestas de Yaroslav Seleznev, con ligera edición para mayor claridad y puntuación. Las preguntas se han acortado. Todas las obras y fotografías, cortesía del artista."
+            }
+          ],
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
@@ -106539,6 +107526,333 @@
             "ES"
           ],
           "locked": true
+        },
+        {
+          "id": 68,
+          "draft": false,
+          "title": "Nient’altro che tutto: Yaroslav Seleznev sull’astrazione senza nome",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
+          "date": "14 ott. 2026",
+          "excerpt": "Il pittore Yaroslav Seleznev racconta il passaggio dal realismo accademico all’astrazione, perché un titolo può essere d’ostacolo, dove il minimalismo diventa vuoto e che cosa resta di un quadro quando l’artista non c’è più.",
+          "category": "Arte",
+          "subcategory": "Intervista",
+          "tags": [
+            "Intervista",
+            "pittura",
+            "astrazione",
+            "Parigi",
+            "Yaroslav Seleznev"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "«It’s nothing but everything…» È la frase che compare nell’Instagram di Yaroslav Seleznev, e i tre puntini finali dicono quanto le parole. È uno scherzo, un programma e un paradosso che non si esaurisce in una sera. I suoi quadri parlano allo stesso modo: una pennellata larga, una sottile linea grafica, aria grigia intorno e poi, all’improvviso, rosso, blu o arancione, come un lampo che nessuno si aspettava."
+            },
+            {
+              "type": "text",
+              "content": "A questo linguaggio non è arrivato in linea retta. Prima una scuola d’arte dentro il sistema accademico. Poi, a trentadue anni, lo studio di un maestro legato all’Accademia di Belle Arti: realismo accademico dei secoli XVIII e XIX, compiti ampi, nessuna disciplina rigida. E infine una rottura deliberata con i soggetti riconoscibili. La chiama «la distruzione della mia idea di saper disegnare e la costruzione di un linguaggio da zero». La sua mostra personale alla galleria Art-Liga si intitolava <i>Composition No.</i>, un segno di numero che qualsiasi cifra può seguire. Il titolo porta questo rifiuto fin dove può arrivare."
+            },
+            {
+              "type": "text",
+              "content": "Oggi il suo lavoro viene mostrato a Parigi, a Deux Paris (2025) e alla fiera Art3f (2026), e anche nella mostra <i>Garden</i> (2025). Accanto a tela e carta ci sono ora ceramica e rame: lo stesso ampio gesto passa su un piatto e in un oggetto."
+            },
+            {
+              "type": "text",
+              "content": "Abbiamo scritto a Yaroslav domande lunghe e a volte scomode: sull’occhio accademico e sul titolo, sul prezzo e sullo schermo, sul parassitismo e su ciò che resta di un quadro senza il suo autore. Ha risposto con brevità e precisione. Quasi nessuna parola si potrebbe togliere, e nessuna è una scusa. Seleznev parla della bellezza come di un assoluto e non si nasconde dietro l’ironia, anche se ne ha in abbondanza."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ugly beauty, 2023. Acrilico su tela, 80 × 60 cm."
+            },
+            {
+              "type": "header",
+              "content": "01 · L’occhio, il nulla e il nome",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Cominciamo da ciò che chi si è formato nel realismo accademico porta con sé nell’astrazione, dal confine fra «tutto» e «niente» e da un titolo che a volte intralcia il quadro.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Lei ha studiato nello studio di un maestro legato all’Accademia di Belle Arti, dove l’occhio impara a vedere forma, peso, luce e tono. L’astrazione è per lei una versione radicale di quella formazione o un tradimento? Non potrebbe essere un accademismo meglio nascosto, in cui ciò che si riconosce è la propria «calligrafia»?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS]:</b> Ho finito una scuola d’arte che faceva parte del sistema accademico, ma allo studio del maestro sono arrivato tardi, a trentadue anni e per scelta. Non c’era disciplina rigida né un canone imposto. I compiti erano ampi. Non puntavamo al post-cézannismo né al realismo sociale sovietico, ma al realismo accademico dei secoli XVIII e XIX. Il passaggio all’astrazione quindi non fu facile, ma ho sempre avuto spazio per altri interessi.<br><br>Quando costruivo il mio linguaggio volevo qualcosa di radicalmente diverso. Volevo fare un lavoro nuovo e del suo tempo, dire ciò che era davvero mio e ritrovarmi in esso. Fu una rottura, un passo nell’ignoto, nella libertà, a un altro livello. Si può dire che distrussi la mia idea di saper disegnare e costruii un linguaggio da zero.<br><br>A un certo punto cominci a vedere l’insieme, il rapporto fra le macchie, e gli oggetti smettono di importarti. Non credo che sia un nuovo accademismo. È un altro modo di guardare. I valori restano gli stessi: equilibrio nella composizione, armonia, gusto e, come risultato, una bellezza «strana», «nuova»."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> C’è stato un momento in cui ha visto che la sua mano precisa era l’ostacolo principale?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Lo stile è un ostacolo e non lo è. A un certo punto ho trovato il mio, come verità artistica personale, e quella verità non è cambiata. Ma non si può fare sempre la stessa cosa. Senti la routine e una specie di vuoto. Per questo l’involontario, l’errore, il caso rinnovano tutto e mi danno sensazioni eccezionali. Una mano precisa è un ostacolo. Troppo controllo è privo di vita, ma l’assenza totale di ordine è caos. Per questo conta l’equilibrio: deve sembrare che non sia fatto a mano, eppure l’autore c’è."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Memories of the Future, 2026. Acrilico su tela, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> «It’s nothing but everything…» Che cosa separa la sua pittura dal vuoto e dal caos? Che cosa impedisce al «tutto» di dissolversi nel «niente»? E perché proprio tre puntini?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Lei è straordinariamente perspicace). È niente, ma è tutto. Non è altro che tutto, e così via.<br><br>Per me l’astrazione è un grado di generalizzazione, una distanza dai significati e dal concreto. Opera sul piano dell’emozione e dell’intuizione. Formulare un’idea significa restarne inchiodati.<br><br>Un’opera organizza lo spazio in modo che emerga un messaggio sulla bellezza personale, sulla verità artistica. Quella verità poggia sul sentimento, sui valori e sulla fede. Il confine è la sensazione dell’autore che l’opera sia finita e sufficiente, ma non troppo. L’opinione dello spettatore appartiene interamente allo spettatore. I puntini di sospensione ci sono perché il sistema è aperto, i concetti sono generali e ognuno vedrà il proprio."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> La sua mostra a Art-Liga si intitolava <i>Composition No.</i> Rinunciare al titolo è il gesto più onesto o un modo di sfuggire alla responsabilità per il contenuto?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Entrambe le cose: un gesto onesto e un nascondino. Un titolo rende subito concreta un’astrazione. «Composition No.» è il nome più onesto per un’opera simile. Ma permette anche di nascondersi, non tanto dietro la mancanza di abilità o di sostanza quanto dietro qualsiasi significato univoco, e protegge dallo svilimento.<br><br>Oggi le parole sono spesso legate al marketing, e niente è meno compatibile col valore reale dell’interesse personale. Può infiltrarsi nei titoli. Allo stesso tempo un titolo è una conversazione con lo spettatore in una lingua che capisce. Se dai solo un numero, rischi più che essere frainteso: puoi vederti negata la comunicazione fin dall’inizio.<br><br>I titoli mi danno fastidio. Richiamano associazioni o ricordi troppo letterali. Se posso restare al livello della forma, il valore si conserva."
+            },
+            {
+              "type": "header",
+              "content": "02 · La mano, la rinuncia, il mondo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La seconda sezione parla di sobrietà, di mano e di caso e di se un quadro senza soggetto possa essere un testimone.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Il suo lavoro viene spesso definito minimalismo del colore. Ma la sobrietà non è una forma di privilegio? Dove «meno» smette di essere purezza e diventa vuoto? Ci sono state opere in cui si è concesso l’eccesso?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Sì, ho fatto opere con dettaglio, texture e tavolozza ampia. Ma ho avuto la sensazione che nell’abbondanza si perda chiarezza e la forma scivoli nel decorativo. Il confine è questione di sensazione. Il vuoto è una frase lasciata a metà. Troppa autolimitazione si trasforma presto in noia, nella sensazione di perdere il contatto col proprio linguaggio, e in mancanza di speranza."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Oriental Dance, 2026. Acrilico su tela, 100 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Solitary, 2026. Tempera su carta, 30 × 20 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Chi è l’autore di un quadro: lei, il materiale, il caso o lo spettatore? Si può rappresentare il caso? Come distingue, nella sua mano, un movimento vivo da uno provato e riprovato?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Caso e mano vivono insieme. L’opera è fatta dalla natura, eppure l’autore vi è presente. L’artista organizza il caso. Lo spettatore entra quando l’opera è già finita.<br><br>Si può rappresentare il caso per uno spettatore, ma l’autore sa che non è caso, e allora per lui interesse e valore vanno perduti. Un gesto può consumarsi. Allora aiuta qualcosa di nuovo: un altro strumento, un altro materiale o un altro colore, un cambio di movimento.<br><br>A mio avviso la questione non è l’immagine in sé, ma lo scopo e l’investimento personale. Una natura morta può essere un esercizio da studente, fatto a forza, oppure può portare i valori e la vita dell’autore: energia, mano ferma, gusto, senso del colore. Sì, l’astrazione non ha criteri. Questo dà libertà, ma significa anche che chiunque può fare astrazione e che il valore diventa difficile da definire. Non c’è un test né una persona speciale a cui chiedere. Servono un po’ di sorpresa, un po’ di caso e nessuna traccia di fatica o di artificio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dish, 2024. Smalto su ceramica, diametro 23 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Metal gear, 2023. Rame e ottone, 100 × 50 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Un quadro senza soggetto può essere un testimone? Se il suo lavoro non dipende da ciò che accade nel mondo, significa che non ne risponde?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Esatto! Non accusare, non giustificare, non svalutare. Una distanza dalle agende. Il tentativo di trovare valori universali che restino gli stessi in qualsiasi sconvolgimento. L’autore è sempre in dialogo con la realtà, con il passato, con la storia dell’arte. Dipende dal punto di vista. Alcuni dicono che più duri sono i tempi, più astratta è l’arte.<br><br>D’altra parte so che, cercando il mio linguaggio, sono partito da desideri e posizioni precisi. La grande arte sta fuori dalla politica, a distanza dalle agende. Non vuole piacere. Resta fuori dai soggetti e dai significati che ti inchiodano e mostrano i tuoi limiti personali. Era anche una reazione all’abbondanza, alla sovrapproduzione di immagini e informazioni."
+            },
+            {
+              "type": "header",
+              "content": "03 · Eredità, ospite, parete",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La terza sezione parla dell’eredità dell’avanguardia, delle comunità a cui un artista si unisce o che rifiuta, e della parete su cui un quadro diventa parte della composizione di qualcun altro.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Malevič, Rodčenko e Kandinskij credevano che la forma potesse cambiare la vita. Lei in che cosa crede? E che cosa significano per lei le associazioni professionali?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Credo nella bellezza in quanto tale, come assoluto, e una singola opera è la prova del contatto con essa, oppure non lo è. Le associazioni, fra cui l’Unione degli Astrattisti di Russia e l’Unione degli Artisti di Russia, furono un tentativo di trovare persone affini e il mio posto nella comunità professionale. Non ero obbligato a iscrivermi. O forse sì, per definirmi per contrasto.<br><br>A mio avviso l’astrazione dà la libertà di cercare il proprio linguaggio. Oggi è l’unica direzione legata alla tradizione che lasci ancora spazio al nuovo. L’astrazione non è una cosa sola. Il minimalismo americano del secolo scorso non è uguale a quello contemporaneo. L’espressionismo astratto del dopoguerra negli Stati Uniti si distingue da quello giapponese, e così via. Un linguaggio personale permette di esprimersi e di realizzarsi. L’individualità non si può riprodurre e non si ripete nella storia."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Nel suo Instagram ci sono raccolte intitolate «Parazit» e «Borey». Chi o che cosa «nutre», e di che cosa si nutre lei? Un artista può essere libero se dipende da chi compra ed espone?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> È più terra terra. «Parazit» è una comunità che eredita l’anticonformismo di Leningrado e l’arte povera. È l’opposto di un’unione di artisti. Si può dire che le opere dei suoi membri stiano dall’altra parte della bellezza, o che sia un’altra bellezza, con qualcosa di marginale e di underground. Un artista dovrebbe essere solo, perché una comunità livella l’individualità. L’umorismo nell’arte non mi attrae. I tentativi di far ridere o di svalutare a volte sembrano uno schermo e una ricerca disperata di invulnerabilità.<br><br>Forse un parassita cambia il comportamento del suo ospite. Ma nell’arte il parassitismo significa soprattutto opporsi all’ufficiale, al convenzionale, a ciò che ha successo commerciale. Senza un ospite restano solo marginalità e semplice ribellione. Io voglio sostanza al di là di questo. Un artista afferma i propri valori. Penso che sia importante restare autonomi e tenere la propria cucina separata dal mercato."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Mostra Deux Paris, opere su carta, 2025. Foto: Yaroslav Seleznev."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Per chi lavora: per i secondi che gli spettatori davvero concedono o per gli anni che nessuno concederà? E fino a che punto lascia a una mostra, a un curatore o a una parete la paternità del suo quadro?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Credo che l’astrazione venga accolta dallo spettatore che lo vuole o è pronto a farlo. Il tempo non conta. Può essere lungo, se c’è qualcosa in cui immergersi, oppure possono essere secondi. Un’altra persona la leggiamo inconsciamente in un istante, e di fatto decidiamo se ci piace e se vogliamo parlarle.<br><br>Da Art-Liga abbiamo appeso le opere insieme, di comune accordo. Mi importa uno spazio pulito, la sua capacità di fare da sfondo. Non sono pronto a lasciarlo ai curatori, e lo sguardo di un altro di solito mi è estraneo. In una mostra l’opera si apre più pienamente, un ciclo giunge al termine e uno sguardo incontra l’altro."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Avalon, 2022, nella mostra Garden, 2025. Acrilico su tela, 120 × 80 cm. Foto: Olga Gileva."
+            },
+            {
+              "type": "header",
+              "content": "04 · Prezzo, copia, schermo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La quarta sezione parla della fiera, del prezzo e dello schermo del telefono, e di come accorgersi che uno stile è morto prima che lo dica il mercato.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Un quadro astratto è quasi la merce perfetta. Come evita di diventare decorativo? Il mercato la cambia, quando espone in fiere come Art3f Paris?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Le fiere sono sempre stimolanti: contatto vivo, tanti nuovi spettatori, attenzione, un’altra occasione di fare una prima impressione.<br><br>Penso che il confine del decorativo sia abbastanza chiaro. Riguarda il desiderio di piacere. Si vede nella lucidatura, nella patina, nell’abbondanza, nell’amabilità ostentata. Se mantieni il tuo scopo e resti entro i limiti del gusto, puoi evitare il decor.<br><br>Il mercato mi cambia, sì. Da diversi anni sento dire che serve il colore, che il monocromo è noioso, grigio, funebre, cupo. Perciò entro nel colore con prudenza. Ma onestamente, come diceva Tarkovskij, il colore ostacola la concentrazione del messaggio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, la parete frontale dello stand, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, opere su carta, 2026. Foto: Alexander Plotnikov."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Migliaia di persone vedono il suo quadro nel feed, e solo poche decine l’originale. Quale di questi incontri è «l’opera»? Un quadro è cambiato quando ha pensato a come sarebbe apparso sullo schermo?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> In studio faccio ciò che ritengo giusto per l’opera dal vivo. Non guardo di sbieco lo spazio mediatico. Alcune opere sullo schermo risultano meno espressive, quindi cerco di pubblicare quelle che fanno impressione. Penso che cambino il contesto e la dimensione della percezione, ma non l’opera. Vedo i social come una necessità di autopresentazione. Ma la postproduzione e la pubblicazione sono un dovere. Sono lavoro, non piacere."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Spark, 2026. Acrilico su tela, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Qual è il segno di uno stile morto, e come si accorgerà che il suo è morto? Che cosa la farebbe smettere?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ciò che è vivo in uno stile è (n+1)×¿, dove l’ultimo termine è il caso, l’involontario, l’imprevedibile. Uno stile è morto quando l’autore è morto e non può più condividere i propri scopi e valori in una conversazione viva. Eppure storici dell’arte, ricercatori e mercanti imbalsamano le opere con grande successo e le tengono in circolazione per secoli.<br><br>Ho anche ripetuto miei lavori e fatto opere vicine alle aspettative, ma era su commissione e lo vedevo come commerciale. In studio seguo solo le mie preferenze. Ci sono fallimenti, ma vengono soprattutto dal camminare sul bordo dell’estetico. Alcuni dicono che la frustrazione sia la strada verso la soggettività. Alla lunga probabilmente è vero, ma ogni fallimento può essere l’ultimo.<br><br>Non riesco a immaginare una situazione in cui non sia più possibile andare avanti. Per principio sì: se vedessi che una tecnica è stata consumata e ridotta a kitsch, non come mezzo artistico. L’abbondanza, quando non c’è più ragione di lavorare, potrebbe probabilmente fermarmi. Potrebbe di certo cambiare la mia intenzione interiore. Ma suppongo che continuerò a lavorare per me stesso, per il cassetto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch I, 2025. Acrilico su tela, 60 × 40 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch II, 2025. Acrilico su tela, 60 × 40 cm."
+            },
+            {
+              "type": "header",
+              "content": "05 · Parole, tempo, ciò che resta",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>L’ultima sezione parla di parole che è meglio non dire e di ciò che resta quando l’autore non c’è più.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Dell’astrazione si scrive di solito o in modo vuoto o con troppe spiegazioni. Quale singola parola o frase ci permetterebbe di mettere accanto al suo quadro?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Onestamente sarebbe meglio senza parole. Ma «Nothing but everything» va bene). Il critico e lo spettatore esistono su un altro piano. Per me l’astrazione è percezione diretta e un grado di generalizzazione. Interpretazioni e associazioni sono necessarie alla comunicazione e all’esistenza del mondo dell’arte. Penso che qualsiasi opera si possa interpretare, e non in un solo modo. È uno strumento del marketing culturale."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Che cosa resterà del suo lavoro quando non ci saranno più lei, le sue spiegazioni e il suo nome? Se potesse tenere una sola opera, quale? E quale domanda senza risposta lascerebbe ai nostri lettori?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Resteranno la composizione, il mestiere e il gusto, il non detto e l’energia interiore. Se qualcuno vorrà vederlo. Le storie e le leggende sono più divertenti).<br><br>Terrei <i>Ugly beauty</i>, del 2023. «Terribilmente bello» o «bellezza brutta»). In quell’opera ho formulato il mio scopo: parlare del massimo con i mezzi più semplici.<br><br>Ed ecco la mia domanda. C’è ancora posto oggi per la parola «bellezza» nell’arte, o l’ha sostituita la «verità artistica»? Può esistere la bellezza in quanto tale, come ideale?"
+            },
+            {
+              "type": "quote",
+              "content": "L’artista organizza il caso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pale fire, 2025. Acrilico su tela, 100 × 80 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Yaroslav Seleznev. Parigi, 2026. Foto: Liza Khlebnikova."
+            },
+            {
+              "type": "text",
+              "content": "L’ultima domanda Yaroslav ce l’ha restituita: la bellezza può ancora esistere nell’arte oggi, o l’ha sostituita la «verità artistica»? Non risponderemo al suo posto. La lasciamo ai nostri lettori."
+            },
+            {
+              "type": "note",
+              "content": "Intervista di Viacheslav Munister. Risposte di Yaroslav Seleznev, leggermente rielaborate per chiarezza e punteggiatura. Le domande sono state abbreviate. Tutte le opere e le fotografie per gentile concessione dell’artista."
+            }
+          ],
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
@@ -121224,6 +122538,333 @@
             "ES"
           ],
           "locked": true
+        },
+        {
+          "id": 68,
+          "draft": false,
+          "title": "Rien que tout : Yaroslav Seleznev sur l’abstraction sans nom",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
+          "date": "14 oct. 2026",
+          "excerpt": "Le peintre Yaroslav Seleznev parle du passage du réalisme académique à l’abstraction, de ce qu’un titre peut empêcher, de l’endroit où le minimalisme devient vide et de ce qui reste d’un tableau quand l’artiste n’est plus là.",
+          "category": "Art",
+          "subcategory": "Entretien",
+          "tags": [
+            "Entretien",
+            "peinture",
+            "abstraction",
+            "Paris",
+            "Yaroslav Seleznev"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "« It’s nothing but everything… » C’est la ligne qui figure sur l’Instagram de Yaroslav Seleznev, et les trois points de fin en disent autant que les mots. C’est une plaisanterie, un programme et un paradoxe qu’on n’épuise pas en une soirée. Ses tableaux parlent de la même façon : un large coup de pinceau, une ligne graphique fine, de l’air gris tout autour, puis soudain du rouge, du bleu ou de l’orange, comme un éclat que personne n’attendait."
+            },
+            {
+              "type": "text",
+              "content": "Il n’est pas venu à ce langage en ligne droite. D’abord une école d’art dans le système académique. Puis, à trente-deux ans, l’atelier d’un maître lié à l’Académie des beaux-arts : réalisme académique des XVIIIe et XIXe siècles, tâches larges, aucun dressage. Et ensuite une rupture délibérée avec les sujets reconnaissables. Il l’appelle « la destruction de mon idée de savoir dessiner et la construction d’un langage à partir de zéro ». Son exposition personnelle à la galerie Art-Liga s’intitulait <i>Composition No.</i>, un signe de numéro que n’importe quel chiffre peut suivre. Le titre pousse ce refus aussi loin qu’il peut aller."
+            },
+            {
+              "type": "text",
+              "content": "Aujourd’hui son travail est montré à Paris, à Deux Paris (2025) et à la foire Art3f (2026), ainsi que dans l’exposition <i>Garden</i> (2025). À côté de la toile et du papier, il y a désormais de la céramique et du cuivre : le même grand geste passe sur un plat et dans un objet."
+            },
+            {
+              "type": "text",
+              "content": "Nous avons écrit à Yaroslav des questions longues et parfois inconfortables : sur l’œil académique et le titre, sur le prix et l’écran, sur le parasitisme et sur ce qui reste d’un tableau sans son auteur. Il a répondu brièvement et avec exactitude. Presque aucun mot ne pourrait être retiré, et aucun n’est une excuse. Seleznev parle de la beauté comme d’un absolu et ne se cache pas derrière l’ironie, bien qu’il n’en manque pas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ugly beauty, 2023. Acrylique sur toile, 80 × 60 cm."
+            },
+            {
+              "type": "header",
+              "content": "01 · L’œil, le rien et le nom",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Nous commençons par ce qu’une personne formée au réalisme académique emporte avec elle dans l’abstraction, par la frontière entre « tout » et « rien », et par un titre qui gêne parfois le tableau.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM] :</b> Vous avez étudié dans l’atelier d’un maître lié à l’Académie des beaux-arts, où l’œil apprend à voir la forme, le poids, la lumière et le ton. L’abstraction est-elle pour vous une version radicale de cette formation ou une trahison ? Ne pourrait-elle être qu’un académisme mieux caché, où ce que l’on reconnaît est sa propre « écriture » ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS] :</b> J’ai terminé une école d’art qui faisait partie du système académique, mais je suis arrivé tard à l’atelier du maître, à trente-deux ans et par choix. Il n’y avait ni dressage ni canon imposé. Les tâches étaient larges. Nous ne visions ni le post-cézannisme ni le réalisme social soviétique, mais le réalisme académique des XVIIIe et XIXe siècles. Le passage à l’abstraction n’a donc pas été facile, mais j’ai toujours eu de la place pour d’autres intérêts.<br><br>Quand je construisais mon propre langage, je voulais quelque chose de radicalement différent. Je voulais faire un travail neuf et de son temps, dire ce qui était vraiment à moi et m’y retrouver. Ce fut une rupture, un pas dans l’inconnu, dans la liberté, vers un autre niveau. On peut dire que j’ai détruit mon idée de savoir dessiner et construit un langage à partir de zéro.<br><br>À un moment donné, on commence à voir l’ensemble, le rapport des taches, et les objets cessent d’importer. Je ne crois pas que ce soit un nouvel académisme. C’est une autre façon de regarder. Les valeurs restent les mêmes : équilibre de la composition, harmonie, goût et, en résultat, une beauté « étrange », « nouvelle »."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Y a-t-il eu un moment où vous avez vu que votre main précise était le principal obstacle ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Le style est un obstacle et n’en est pas un. À un moment donné, j’ai trouvé le mien, comme vérité artistique personnelle, et cette vérité n’a pas changé. Mais on ne peut pas faire éternellement la même chose. On sent la routine et une sorte de vide. C’est pourquoi l’involontaire, l’erreur, le hasard renouvellent tout et me donnent des sensations exceptionnelles. Une main précise est un obstacle. Trop de contrôle est sans vie, mais l’absence totale d’ordre est le chaos. L’équilibre compte donc : il faut que cela ait l’air de ne pas être fait à la main, et pourtant l’auteur est là."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Memories of the Future, 2026. Acrylique sur toile, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> « It’s nothing but everything… » Qu’est-ce qui sépare votre peinture du vide et du chaos ? Qu’est-ce qui empêche le « tout » de se dissoudre dans le « rien » ? Et pourquoi exactement trois points ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Vous êtes remarquablement perspicace). C’est rien, mais c’est tout. Ce n’est rien d’autre que tout, et ainsi de suite.<br><br>Pour moi l’abstraction est un degré de généralisation, une distance par rapport aux significations et au concret. Elle agit sur le plan de l’émotion et de l’intuition. Formuler une idée, c’est être cloué par elle.<br><br>Une œuvre organise l’espace de façon qu’un message apparaisse sur la beauté personnelle, sur la vérité artistique. Cette vérité repose sur le sentiment, les valeurs et la foi. La limite est le sentiment propre de l’auteur que l’œuvre est achevée et suffisante, mais pas trop. L’opinion du spectateur appartient entièrement au spectateur. Les points de suspension sont là parce que le système est ouvert, les notions sont générales et chacun verra les siennes."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Votre exposition à Art-Liga s’intitulait <i>Composition No.</i> Renoncer au titre est-il le geste le plus honnête, ou une façon d’échapper à la responsabilité du contenu ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Les deux : un geste honnête et un jeu de cache-cache. Un titre rend aussitôt l’abstraction concrète. « Composition No. » est le nom le plus honnête pour une telle œuvre. Mais il permet aussi de se cacher, moins derrière un manque de métier ou de substance que derrière toute signification univoque, et il protège de la dévalorisation.<br><br>Aujourd’hui les mots sont souvent liés au marketing, et rien n’est moins compatible avec la vraie valeur que l’intérêt personnel. Il peut se glisser dans les titres. En même temps, un titre est une conversation avec le spectateur dans une langue qu’il comprend. Si l’on ne donne qu’un numéro, on risque plus que d’être mal compris : on peut se voir refuser la communication dès le départ.<br><br>Les titres me gênent. Ils appellent des associations ou des souvenirs trop littéraux. Si je peux rester au niveau de la forme, la valeur est préservée."
+            },
+            {
+              "type": "header",
+              "content": "02 · La main, le renoncement, le monde",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La deuxième section parle de retenue, de la main et du hasard, et de la question de savoir si un tableau sans sujet peut être un témoin.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Votre travail est souvent décrit comme un minimalisme de la couleur. Mais la retenue n’est-elle pas une forme de privilège ? Où « moins » cesse-t-il d’être pureté pour devenir vide ? Y a-t-il eu des œuvres où vous vous êtes permis l’excès ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Oui, j’ai fait des œuvres avec du détail, de la texture et une palette large. Mais j’ai senti que la clarté se perd dans l’abondance et que la forme glisse vers le décoratif. La limite est une affaire de sensation. Le vide est une phrase laissée inachevée. Trop d’autolimitation se transforme vite en ennui, en impression de perdre le contact avec son propre langage, et en désespoir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Oriental Dance, 2026. Acrylique sur toile, 100 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Solitary, 2026. Détrempe sur papier, 30 × 20 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Qui est l’auteur d’un tableau : vous, la matière, le hasard ou le spectateur ? Peut-on représenter le hasard ? Comment distinguez-vous, dans votre propre main, un mouvement vivant d’un mouvement répété ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Le hasard et la main vivent ensemble. L’œuvre est faite par la nature, et pourtant l’auteur y est présent. L’artiste organise le hasard. Le spectateur entre quand l’œuvre est déjà achevée.<br><br>On peut représenter le hasard pour un spectateur, mais l’auteur sait que ce n’est pas du hasard, et alors l’intérêt et la valeur disparaissent pour lui. Un geste peut s’user. Alors quelque chose de neuf aide : un autre outil, une autre matière ou une autre peinture, un changement de mouvement.<br><br>À mon avis la question n’est pas l’image elle-même, mais le but et l’investissement personnel. Une nature morte peut être un exercice d’élève, fait sous la contrainte, ou porter les valeurs et la vie de l’auteur : énergie, main ferme, goût, sens de la couleur. Oui, l’abstraction n’a pas de critère. Cela donne la liberté, mais cela signifie aussi que n’importe qui peut faire de l’abstraction et que la valeur devient difficile à définir. Il n’y a ni test ni personne à qui demander. Il faut un peu de surprise, un peu de hasard et aucune trace d’effort ni d’artifice."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dish, 2024. Émail sur céramique, diamètre 23 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Metal gear, 2023. Cuivre et laiton, 100 × 50 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Un tableau sans sujet peut-il être un témoin ? Si votre travail ne dépend pas de ce qui se passe dans le monde, cela veut-il dire qu’il n’en répond pas ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Exactement ! Ne pas accuser, ne pas justifier, ne pas dévaluer. Une distance par rapport aux agendas. Une tentative de trouver des valeurs universelles qui restent les mêmes dans tous les bouleversements. L’auteur est toujours en dialogue avec la réalité, avec le passé, avec l’histoire de l’art. Cela dépend du point de vue. Certains disent que plus les temps sont durs, plus l’art est abstrait.<br><br>D’un autre côté, je sais qu’en cherchant mon langage je suis parti de désirs et de positions précis. Le grand art se tient hors de la politique, à distance des agendas. Il ne cherche pas à plaire. Il reste en dehors des sujets et des significations qui vous fixent et montrent vos limites personnelles. C’était aussi une réaction contre l’abondance, contre la surproduction d’images et d’informations."
+            },
+            {
+              "type": "header",
+              "content": "03 · Héritage, hôte, mur",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La troisième section parle de l’héritage de l’avant-garde, des communautés qu’un artiste rejoint ou refuse, et du mur où un tableau devient une partie de la composition de quelqu’un d’autre.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Malévitch, Rodtchenko et Kandinsky croyaient que la forme peut changer la vie. En quoi croyez-vous ? Et que signifient pour vous les associations professionnelles ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Je crois à la beauté en tant que telle, comme à un absolu, et une œuvre donnée est la preuve d’un contact avec elle, ou ne l’est pas. Les associations, dont l’Union des abstractionnistes de Russie et l’Union des artistes de Russie, ont été une tentative de trouver des personnes proches et ma place dans la communauté professionnelle. Je n’étais pas obligé d’y adhérer. Ou plutôt si, pour me définir par contraste.<br><br>À mon avis l’abstraction donne la liberté de chercher son propre langage. C’est aujourd’hui la seule direction liée à la tradition qui laisse encore de la place au nouveau. L’abstraction n’est pas une seule chose. Le minimalisme américain du siècle dernier n’est pas le même que le contemporain. L’expressionnisme abstrait de l’après-guerre aux États-Unis diffère du japonais, et ainsi de suite. Un langage personnel permet de s’exprimer et de se réaliser. L’individualité ne se reproduit pas et ne se répète pas dans l’histoire."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Sur votre Instagram, il y a des collections intitulées « Parazit » et « Borey ». Qui ou quoi « nourrissez »-vous, et de quoi vous nourrissez-vous vous-même ? Un artiste peut-il être libre s’il dépend de ceux qui achètent et exposent ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> C’est plus terre à terre. « Parazit » est une communauté qui hérite du non-conformisme léningradois et de l’arte povera. C’est l’opposé d’une union d’artistes. On peut dire que les œuvres de ses membres se trouvent de l’autre côté de la beauté, ou que c’est une autre beauté, avec quelque chose de marginal et d’underground. Un artiste doit être seul, car une communauté nivelle l’individualité. L’humour dans l’art ne m’attire pas. Les tentatives de faire rire ou de dévaloriser ressemblent parfois à un écran et à une recherche désespérée d’invulnérabilité.<br><br>Peut-être qu’un parasite change le comportement de son hôte. Mais dans l’art, le parasitisme signifie surtout s’opposer à l’officiel, au conventionnel, à ce qui réussit commercialement. Sans hôte, il ne reste que la marginalité et la simple rébellion. Je veux de la substance au-delà. Un artiste affirme ses propres valeurs. Je pense qu’il est important de rester autonome et de garder sa propre cuisine séparée du marché."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Exposition Deux Paris, œuvres sur papier, 2025. Photo : Yaroslav Seleznev."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Pour qui travaillez-vous : pour les secondes que les spectateurs donnent vraiment, ou pour les années que personne ne donnera ? Et jusqu’où laissez-vous une exposition, un commissaire ou un mur prendre la paternité de votre tableau ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Je pense que l’abstraction est acceptée par le spectateur qui le veut ou y est prêt. Le temps n’a pas d’importance. Cela peut être long, s’il y a quelque chose où plonger, ou ce peut être quelques secondes. Un autre être, nous le lisons inconsciemment en un instant, et nous décidons en fait s’il nous plaît et si nous allons lui parler.<br><br>À Art-Liga, nous avons accroché les œuvres ensemble, d’un commun accord. Un espace propre m’importe, sa capacité à être un fond. Je ne suis pas prêt à le laisser aux commissaires, et le regard d’un autre m’est en général étranger. Dans une exposition, l’œuvre s’ouvre plus pleinement, un cycle arrive à son terme et un regard rencontre un autre regard."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Avalon, 2022, à l’exposition Garden, 2025. Acrylique sur toile, 120 × 80 cm. Photo : Olga Gileva."
+            },
+            {
+              "type": "header",
+              "content": "04 · Prix, copie, écran",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La quatrième section parle de la foire, du prix et de l’écran du téléphone, et de la manière de s’apercevoir qu’un style est mort avant que le marché ne le dise.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Un tableau abstrait est presque la marchandise parfaite. Comment éviter de devenir décoratif ? Le marché vous change-t-il, quand vous exposez dans des foires comme Art3f Paris ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Les foires sont toujours stimulantes : contact vivant, beaucoup de nouveaux spectateurs, de l’attention, une occasion de plus de faire une première impression.<br><br>Je pense que la limite du décoratif est assez claire. Elle tient au désir de plaire. Elle se voit dans le poli, le brillant, l’abondance, l’amabilité ostentatoire. Si l’on garde son propre but et reste dans les limites du goût, on peut éviter le décor.<br><br>Le marché me change, oui. Depuis plusieurs années j’entends qu’il faut de la couleur, que le monochrome est ennuyeux, terne, funèbre, sombre. Alors j’entre dans la couleur avec prudence. Mais, honnêtement, comme le disait Tarkovski, la couleur gêne la concentration du message."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, le mur de face du stand, 2026. Photo : Alexander Plotnikov."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, œuvres sur papier, 2026. Photo : Alexander Plotnikov."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Des milliers de personnes voient votre tableau dans un fil, et seulement quelques dizaines voient l’original. Laquelle de ces rencontres est « l’œuvre » ? Un tableau a-t-il changé quand vous avez pensé à son aspect à l’écran ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> À l’atelier, je fais ce que je juge juste pour l’œuvre en personne. Je ne jette pas de regard en coin vers l’espace médiatique. Certaines œuvres sont moins expressives à l’écran, alors j’essaie de publier celles qui font impression. Je pense que le contexte et la dimension de la perception changent, mais pas l’œuvre elle-même. Je vois les réseaux sociaux comme une nécessité d’autoprésentation. Mais la postproduction et la publication sont un devoir. C’est du travail, pas un plaisir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Spark, 2026. Acrylique sur toile, 100 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Quel est le signe d’un style mort, et comment saurez-vous que le vôtre est mort ? Qu’est-ce qui vous ferait arrêter ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Ce qui est vivant dans un style, c’est (n+1)×¿, où le dernier terme est le hasard, l’involontaire, l’imprévisible. Un style est mort quand l’auteur est mort et ne peut plus partager ses buts et ses valeurs dans une conversation vivante. Pourtant les historiens de l’art, les chercheurs et les marchands embaument les œuvres avec beaucoup de succès et les maintiennent en circulation pendant des siècles.<br><br>J’ai aussi répété mes propres œuvres et fait des œuvres proches de ce qu’on attendait, mais c’était sur commande et je le voyais comme commercial. À l’atelier, je ne suis que mes préférences. Il y a des échecs, mais ils viennent surtout du fait de marcher au bord de l’esthétique. Certains disent que la frustration est la voie vers la subjectivité. À la longue c’est probablement vrai, mais chaque échec peut être le dernier.<br><br>Je ne peux pas imaginer une situation où il serait impossible d’aller plus loin. Par principe, oui : si je voyais qu’une technique a été usée jusqu’à la corde et réduite au kitsch, non comme procédé artistique. L’abondance, quand il n’y a plus de raison de travailler, pourrait probablement m’arrêter. Elle pourrait certainement changer mon intention intérieure. Mais je suppose que je continuerai à travailler pour moi, pour le tiroir."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch I, 2025. Acrylique sur toile, 60 × 40 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Light Touch II, 2025. Acrylique sur toile, 60 × 40 cm."
+            },
+            {
+              "type": "header",
+              "content": "05 · Mots, temps, ce qui reste",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>La dernière section parle des mots qu’il vaut mieux ne pas dire et de ce qui reste quand l’auteur n’est plus là.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> On écrit sur l’abstraction soit dans le vide, soit avec trop d’explications. Quel mot ou quelle phrase nous permettriez-vous de placer à côté de votre tableau ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Honnêtement, ce serait mieux sans mots. Mais « Nothing but everything » conviendra). Le critique et le spectateur existent sur un autre plan. Pour moi l’abstraction est une perception directe et un degré de généralisation. Les interprétations et les associations sont nécessaires à la communication et à l’existence du monde de l’art. Je pense que toute œuvre peut être interprétée, et pas d’une seule façon. C’est un outil du marketing culturel."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM :</b> Que restera-t-il de votre travail quand vous, vos explications et votre nom auront disparu ? Si vous ne pouviez garder qu’une seule œuvre, laquelle ? Et quelle question sans réponse laisseriez-vous à nos lecteurs ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS :</b> Il restera la composition, le métier et le goût, le non-dit et l’énergie intérieure. Si quelqu’un veut le voir. Les histoires et les légendes sont plus amusantes).<br><br>Je garderais <i>Ugly beauty</i>, de 2023. « Terriblement beau » ou « beauté laide »). Dans cette œuvre, j’ai formulé mon but : parler du maximum avec les moyens les plus simples.<br><br>Et voici ma question. Reste-t-il aujourd’hui une place pour le mot « beauté » dans l’art, ou la « vérité artistique » l’a-t-elle remplacé ? La beauté peut-elle exister en tant que telle, comme idéal ?"
+            },
+            {
+              "type": "quote",
+              "content": "L’artiste organise le hasard."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pale fire, 2025. Acrylique sur toile, 100 × 80 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Yaroslav Seleznev. Paris, 2026. Photo : Liza Khlebnikova."
+            },
+            {
+              "type": "text",
+              "content": "La dernière question, Yaroslav nous l’a renvoyée : la beauté peut-elle encore exister dans l’art aujourd’hui, ou la « vérité artistique » l’a-t-elle remplacée ? Nous ne répondrons pas à sa place. Nous la laissons à nos lecteurs."
+            },
+            {
+              "type": "note",
+              "content": "Entretien de Viacheslav Munister. Réponses de Yaroslav Seleznev, légèrement retouchées pour la clarté et la ponctuation. Les questions ont été raccourcies. Toutes les œuvres et photographies : avec l’aimable autorisation de l’artiste."
+            }
+          ],
+          "publishAt": "2026-10-13T23:00:00.000Z",
+          "publishedAt": "2026-10-13T23:00:00.000Z",
+          "locked": true,
+          "updatedAt": "2026-10-13T15:03:34.000Z"
         }
       ],
       "reviews": [
