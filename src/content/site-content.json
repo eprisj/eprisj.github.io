@@ -17474,6 +17474,7 @@
       "author": "Viacheslav Munister & Yaroslav Seleznev",
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-yaroslav-seleznev",
       "date": "Oct 13, 2026",
       "excerpt": "Yaroslav Seleznev on moving from academic realism to abstraction, the title Composition No., the line between minimalism and emptiness, art fairs, the screen, and what is left of a painting when the artist is gone.",
       "category": "Art",
@@ -17491,15 +17492,19 @@
       "content": [
         {
           "type": "text",
-          "content": "In Yaroslav Seleznev’s Instagram there is a line: “It’s nothing but everything…”, with three dots at the end. It reads as a joke and as a programme at once. His painting and drawing are built from very little: a broad brushstroke, graphic materials, a restrained palette in which red, blue or orange arrive as an event rather than a rule."
+          "content": "“It’s nothing but everything…”: Yaroslav Seleznev put this line in his Instagram, with three dots at the end. It works in several registers at once: as a joke, as a manifesto, and as a paradox one could unpack for hours. For an artist whose painting and drawing rest on a minimum of means, it is almost a technical passport: a broad brushstroke, a graphic material, a restrained palette in which red, blue or orange arrive as an event rather than a rule."
         },
         {
           "type": "text",
-          "content": "He studied in a master’s studio linked to the Academy of Arts, but arrived there as an adult, at thirty-two, and later deliberately gave up recognisable subjects. His solo exhibition at the Art-Liga gallery was called <i>Composition No.</i>: a number sign that could be followed by any number. Recently his work has been shown in Paris, at the Deux Paris exhibition (2025) and at the Art3f fair (2026)."
+          "content": "The road to this language was not a straight one. Seleznev graduated from an art school that was part of the academic system, and came to a master’s studio linked to the Academy of Arts as an adult, at thirty-two, where he studied the academic realism of the eighteenth and nineteenth centuries. Later he deliberately gave up recognisable subjects. He describes it himself as a break and a step into the unknown: “the destruction of my idea of being able to draw, and the building of a language from zero.” The title of his solo exhibition at the Art-Liga gallery, <i>Composition No.</i>, a number sign that could be followed by any number, took that refusal to its formula."
         },
         {
           "type": "text",
-          "content": "We sent Yaroslav long and sometimes uncomfortable questions: about the academic eye, titles, price, the screen, parasitism, and what remains of a painting without its author. He answered briefly and precisely, and there are few words in his answers that could be removed."
+          "content": "Today his work is shown in Paris, at the Deux Paris exhibition (2025) and at the Art3f fair (2026), as well as at the exhibition <i>Garden</i> (2025). Alongside canvas and paper his practice includes ceramics and copper, and the motif of the broad stroke carries over onto a dish and into an object."
+        },
+        {
+          "type": "text",
+          "content": "We sent Yaroslav long and sometimes uncomfortable questions: about the academic eye and the title, price and the screen, parasitism in art, and what remains of a painting without its author. He answered briefly and precisely. There are few words in these answers that could be removed, and even fewer apologies: Seleznev speaks of beauty as an absolute and does not hide behind irony, although he has no shortage of irony either."
         },
         {
           "type": "image",
@@ -17512,6 +17517,10 @@
           "type": "header",
           "content": "01 · The Eye, the Nothing and the Name",
           "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>The first section is about what a person raised on academic realism brings to abstraction, about the line between “everything” and “nothing”, and about a title that, it turns out, gets in the way.</i>"
         },
         {
           "type": "text",
@@ -17556,6 +17565,10 @@
           "type": "header",
           "content": "02 · The Hand, the Refusal, the World",
           "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>The second section is about restraint, the hand and chance, and whether a painting without a subject can be a witness.</i>"
         },
         {
           "type": "text",
@@ -17616,6 +17629,10 @@
         },
         {
           "type": "text",
+          "content": "<i>The third is about the legacy of the avant-garde, the communities an artist chooses or rejects, and the wall on which a painting becomes part of someone else’s composition.</i>"
+        },
+        {
+          "type": "text",
           "content": "<b>VM:</b> Malevich, Rodchenko and Kandinsky believed that form changes life. What do you believe in? And what does membership in professional associations mean to you?"
         },
         {
@@ -17656,6 +17673,10 @@
           "type": "header",
           "content": "04 · Price, Copy, Pronunciation",
           "level": 2
+        },
+        {
+          "type": "text",
+          "content": "<i>The fourth is about the fair, the price and the phone screen, and how to tell that a style has died before the market says so.</i>"
         },
         {
           "type": "text",
@@ -17723,6 +17744,10 @@
         },
         {
           "type": "text",
+          "content": "<i>And the last is about words that are better left unsaid, and about what remains when the author does not.</i>"
+        },
+        {
+          "type": "text",
           "content": "<b>VM:</b> Abstraction is written about either emptily or with too much explanation. What single word or phrase would you allow us to place next to your painting?"
         },
         {
@@ -17754,6 +17779,10 @@
           "align": "center",
           "width": 100,
           "caption": "Yaroslav Seleznev. Paris, 2026. Photo: Liza Khlebnikova."
+        },
+        {
+          "type": "text",
+          "content": "Yaroslav handed the last question back to us: can beauty as such still exist in art today, or has it been displaced by “artistic truth”? We will not answer it for him. We leave it to our readers."
         },
         {
           "type": "note",
@@ -33967,6 +33996,7 @@
           "author": "Viacheslav Munister & Yaroslav Seleznev",
           "role": "Автор",
           "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-yaroslav-seleznev",
           "date": "13 окт. 2026",
           "excerpt": "Ярослав Селезнёв о переходе от академического реализма к абстракции, названии «Композиция №», границе между минимализмом и пустотой, ярмарках, экране и о том, что останется от картины, когда не останется художника.",
           "category": "Искусство",
@@ -33984,15 +34014,19 @@
           "content": [
             {
               "type": "text",
-              "content": "В Instagram Ярослава Селезнёва стоит фраза: «It’s nothing but everything…» — «это ничто, кроме всего», с тремя точками в конце. Она звучит и как шутка, и как программа. Его живопись и графика построены на малом числе средств: широкий мазок кисти, графический материал, сдержанная палитра, в которой красный, синий или оранжевый появляются как событие, а не как норма."
+              "content": "«It’s nothing but everything…» — эту строчку Ярослав Селезнёв поставил в своём Instagram с тремя точками в конце. Она работает сразу в нескольких регистрах: как шутка, как манифест и как парадокс, который можно разбирать часами. Для художника, чья живопись и графика держатся на минимуме средств, это почти технический паспорт: широкий мазок кисти, графический материал, сдержанная палитра, где красный, синий или оранжевый возникают как событие, а не как норма."
             },
             {
               "type": "text",
-              "content": "Он учился в студии мастера при Академии художеств, но пришёл туда уже взрослым, в тридцать два года, и позже сознательно отказался от узнаваемых предметов. Его персональная выставка в галерее «Арт-Лига» называлась «Композиция №»: знак номера, за которым может стоять любое число. Недавно его работы показывали в Париже: на выставке Deux Paris (2025) и на ярмарке Art3f (2026)."
+              "content": "Путь к этому языку был не прямым. Селезнёв окончил художественную школу, входившую в академическую систему, а в студию мастера при Академии художеств пришёл уже взрослым, в тридцать два года, и учился там академическому реализму XVIII–XIX веков. Позже он сознательно отказался от узнаваемых предметов. Сам он описывает это как слом и выход в неизвестность: «разрушение представлений об умении рисовать и построение языка с нуля». Название его персональной выставки в галерее «Арт-Лига» — «Композиция №», знак номера, за которым может стоять любое число — довёл этот отказ до формулы."
             },
             {
               "type": "text",
-              "content": "Мы отправили Ярославу длинные, местами неудобные вопросы: об академическом глазе, названии, цене, экране, паразитизме и о том, что остаётся от картины без автора. Он ответил коротко и точно, и в этих ответах мало слов, которые можно было бы убрать."
+              "content": "Сегодня его работы показывают в Париже: на выставке Deux Paris (2025) и на ярмарке Art3f (2026), а также на выставке «Сад» (2025). Рядом с холстами и бумагой в его практике есть керамика и медь, и мотив широкого мазка переходит на блюдо и в объект."
+            },
+            {
+              "type": "text",
+              "content": "Мы отправили Ярославу длинные, местами неудобные вопросы: об академическом глазе и названии, о цене и экране, о паразитизме в искусстве и о том, что остаётся от картины без автора. Он ответил коротко и точно. В этих ответах мало слов, которые можно убрать, и ещё меньше извинений: Селезнёв говорит о красоте как об инстанции-абсолюте и не прячется за иронию, хотя иронии у него тоже хватает."
             },
             {
               "type": "image",
@@ -34005,6 +34039,10 @@
               "type": "header",
               "content": "01 · Глаз, ничто и имя",
               "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Первый блок — о том, с чем человек, воспитанный на академическом реализме, приходит в абстракцию, о границе между «всем» и «ничем» и о названии, которое, как выясняется, мешает.</i>"
             },
             {
               "type": "text",
@@ -34049,6 +34087,10 @@
               "type": "header",
               "content": "02 · Рука, отказ, мир",
               "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Второй блок — о сдержанности, о руке и случайности и о том, может ли картина без сюжета быть свидетельством.</i>"
             },
             {
               "type": "text",
@@ -34109,6 +34151,10 @@
             },
             {
               "type": "text",
+              "content": "<i>Третий — о наследстве авангарда, о сообществах, которые художник выбирает или отвергает, и о стене, на которой картина становится частью чужой композиции.</i>"
+            },
+            {
+              "type": "text",
               "content": "<b>VM:</b> Малевич, Родченко и Кандинский верили, что форма меняет жизнь. Во что верите вы? И что для вас значит членство в профессиональных объединениях?"
             },
             {
@@ -34149,6 +34195,10 @@
               "type": "header",
               "content": "04 · Цена, копия, произношение",
               "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Четвёртый — о ярмарке, цене и экране телефона, а также о том, как понять, что стиль умер раньше, чем об этом скажет рынок.</i>"
             },
             {
               "type": "text",
@@ -34216,6 +34266,10 @@
             },
             {
               "type": "text",
+              "content": "<i>И последний — о словах, которые лучше не произносить, и о том, что останется, когда не останется автора.</i>"
+            },
+            {
+              "type": "text",
               "content": "<b>VM:</b> Об абстракции пишут либо пусто, либо слишком поясняюще. Какое одно слово или фразу вы позволили бы нам поставить рядом с вашей картиной?"
             },
             {
@@ -34247,6 +34301,10 @@
               "align": "center",
               "width": 100,
               "caption": "Ярослав Селезнёв. Париж, 2026. Фото: Лиза Хлебникова."
+            },
+            {
+              "type": "text",
+              "content": "Последний вопрос Ярослав вернул нам сам: может ли красота как таковая существовать в искусстве сегодня или её вытеснила «художественная правда»? Отвечать за него мы не станем. Оставляем вопрос читателям."
             },
             {
               "type": "note",
@@ -122945,6 +123003,19 @@
       "photoUrl": "https://api.eprisjournal.com/uploads/mv22n3s04rjsc4-hq.jpg",
       "website": "https://gayanearushanian.com",
       "instagram": "@gaya.arushanian.art",
+      "active": true,
+      "showOnTeam": true,
+      "collaborator": true,
+      "teamOrder": 24
+    },
+    {
+      "id": "author-yaroslav-seleznev",
+      "name": "Yaroslav Seleznev",
+      "role": "Painter",
+      "bio": "Yaroslav Seleznev is a painter working in abstraction. He studied in a master’s studio linked to the Academy of Arts, coming to academic realism as an adult, and later gave up recognisable subjects for a language of broad brushstrokes, graphic materials and a restrained palette. His solo exhibition Composition No. was held at the Art-Liga gallery; his work has also been shown in Paris at Deux Paris (2025) and Art3f (2026), and at the exhibition Garden (2025).",
+      "photoUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+      "website": "",
+      "instagram": "",
       "active": true,
       "showOnTeam": true,
       "collaborator": true,
