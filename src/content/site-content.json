@@ -33959,6 +33959,301 @@
             "ES"
           ],
           "locked": true
+        },
+        {
+          "id": 60,
+          "draft": true,
+          "title": "Ничто, кроме всего: Ярослав Селезнёв об абстракции без имени",
+          "author": "Viacheslav Munister & Yaroslav Seleznev",
+          "role": "Автор",
+          "authorId": "author-1784732936927-kw554",
+          "date": "13 окт. 2026",
+          "excerpt": "Ярослав Селезнёв о переходе от академического реализма к абстракции, названии «Композиция №», границе между минимализмом и пустотой, ярмарках, экране и о том, что останется от картины, когда не останется художника.",
+          "category": "Искусство",
+          "subcategory": "Интервью",
+          "tags": [
+            "Интервью",
+            "живопись",
+            "абстракция",
+            "Париж",
+            "Ярослав Селезнёв"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+          "previewToken": "yaroslav-seleznev-20261013",
+          "content": [
+            {
+              "type": "text",
+              "content": "В Instagram Ярослава Селезнёва стоит фраза: «It’s nothing but everything…» — «это ничто, кроме всего», с тремя точками в конце. Она звучит и как шутка, и как программа. Его живопись и графика построены на малом числе средств: широкий мазок кисти, графический материал, сдержанная палитра, в которой красный, синий или оранжевый появляются как событие, а не как норма."
+            },
+            {
+              "type": "text",
+              "content": "Он учился в студии мастера при Академии художеств, но пришёл туда уже взрослым, в тридцать два года, и позже сознательно отказался от узнаваемых предметов. Его персональная выставка в галерее «Арт-Лига» называлась «Композиция №»: знак номера, за которым может стоять любое число. Недавно его работы показывали в Париже: на выставке Deux Paris (2025) и на ярмарке Art3f (2026)."
+            },
+            {
+              "type": "text",
+              "content": "Мы отправили Ярославу длинные, местами неудобные вопросы: об академическом глазе, названии, цене, экране, паразитизме и о том, что остаётся от картины без автора. Он ответил коротко и точно, и в этих ответах мало слов, которые можно было бы убрать."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-03.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Ugly beauty</i>, 2023. Холст, акрил, 80×60 см."
+            },
+            {
+              "type": "header",
+              "content": "01 · Глаз, ничто и имя",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> Вы учились в студии мастера из Академии художеств, где глаз воспитывают узнавать форму, вес, свет и тон. Абстракция для вас — радикализация академического зрения или его предательство? И не становится ли она просто другим, более скрытым академизмом, где узнают уже собственный «почерк»?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Yaroslav Seleznev [YS]:</b> Хотя я окончил художественную школу, которая была частью академической системы, в студию мастера пришёл уже в осознанном возрасте, в тридцать два года. Муштры и насаждения канона не было, задачи ставились широкие. Целью был не постсезаннизм и соцарт, а академический реализм XVIII–XIX веков. Поэтому не то чтобы переход к абстракции был лёгким, но всегда сохранялась широта взглядов, возможность иметь альтернативные интересы.<br><br>В момент формирования своего языка я искал что-то радикально другое, направление, где можно создать вещи актуальные и новаторские, выразить именно своё и реализоваться. Это был слом, выход в неизвестность, на свободу, на другой уровень. Можно сказать, разрушение представлений об умении рисовать и построение языка с нуля.<br><br>В какой-то момент начинаешь видеть общее, соотношение пятен, пренебрегая предметами. Думаю, это не новый академизм, а другой взгляд. Но ценности неизменны: баланс композиции, гармония, вкус и, как итог, «странная», «новая» красота."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Был ли момент, когда вы увидели, что ваша точная рука — главная помеха?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Стиль — и помеха, и нет. В какой-то момент он был найден как личная художественная правда, и эта правда не изменилась. Но делать одно и то же бесконечно невозможно, чувствуешь рутинизацию, опустошённость. Поэтому непреднамеренность, ошибка, случайность — то, что обновляет и даёт исключительные ощущения. Точная рука — помеха. Чрезмерный контроль — это неживое, но полное отсутствие порядка — хаос. Поэтому важен баланс: как будто нерукотворно, но автор присутствует."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-22.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Memories of the Future</i>, 2026. Холст, акрил, 100×60 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> «It’s nothing but everything…»: что отличает вашу картину и от пустоты, и от хаоса? Где проходит граница, не дающая «всему» растечься в «ничто»? И почему точек именно три?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Вы удивительно проницательны). Это ничто, но всё. Это ничто иное, как всё, и так далее.<br><br>Для меня абстракция — это степень обобщения, дистанция от смыслов и конкретного, это уровень эмоционального и интуитивного. Формулировать идею значит быть пригвождённым ею.<br><br>Произведение — это организация пространства таким образом, что появляется сообщение о личной красоте, о художественной правде. Она основана на ощущении, ценностях и вере. Граница — субъективное мнение автора, чувство законченности, достаточности, но не чрезмерности. Мнение зрителя — полностью на его стороне. Многоточие — потому что система открытая, понятия общие, каждый увидит своё."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ваша выставка в «Арт-Лиге» называлась «Композиция №». Отказ от названия — самый честный жест или способ спрятаться от ответственности за содержание?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> И то и другое: и честный жест, и прятки. Название незамедлительно конкретизирует абстракцию. «Композиция №» — самое честное для произведения. И одновременно это возможность спрятать не столько неумение или отсутствие наполнения, сколько однозначность и защититься от обесценивания.<br><br>Сегодня слова часто сопряжены с маркетингом, а нет ничего более несовместимого с действительной ценностью, чем личный интерес. Он может оказаться в названиях. В то же время название — это диалог со зрителем на доступном языке. Давая номер, ты рискуешь не просто быть непонятым, а получить изначальный отказ в коммуникации.<br><br>Мне названия мешают: они вызывают слишком буквальные ассоциации или воспоминания. Если возможно остаться на уровне формы, ценность сохраняется."
+            },
+            {
+              "type": "header",
+              "content": "02 · Рука, отказ, мир",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> О вашей практике пишут как о цветовом минимализме. Но не является ли сдержанность формой привилегии? Где граница, за которой «меньше» перестаёт быть чистотой и становится пустотой? Были ли работы, где вы позволили себе избыток?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Да, были работы с детализацией, текстурами и широкой палитрой. Но возникало впечатление, что за изобилием теряется внятность, а форма переходит в декоративность. Граница находится на уровне ощущений. Пустота — это отсутствие законченной фразы, а чрезмерное самоограничение сразу оборачивается скукой, чувством потери связи со своим языком и безысходности."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-19.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Восточный танец</i>, 2026. Холст, акрил, 100×60 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-21.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Solitary</i>, 2026. Бумага, темпера, 30×20 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Кто в картине автор: вы, материал, случай или зритель? Можно ли изображать случайность? Как вы отличаете в собственной руке живое движение от отработанного?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Случайность и рука сосуществуют. Работа одновременно создана природой, но в ней присутствует автор. Художник организует случайности. Зритель включается, когда работа уже завершена.<br><br>Изобразить случайность для зрителя можно, но автор знает, что это неслучайность, и тогда для него теряются интерес и ценность. С жестом бывает момент исчерпанности; в таком случае помогает элемент новизны: другой инструмент, материал, краска, изменение движения.<br><br>На мой взгляд, вопрос не в самом изображении, а в цели, в личностном вложении. Натюрморт может быть ученическим, из-под палки, а может нести в себе ценности автора, жизнь: динамику, твёрдость руки, вкус, чувство цвета. Да, в абстракции нет критерия, это даёт свободу, но и вседоступность, и неопределимость ценности. Теста или специального человека нет; есть необходимая доля неожиданности, случайность и отсутствие натруженности, задуманности."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-13.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Dish</i>, 2024. Керамика, эмаль, диаметр 23 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-14.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Metal gear</i>, 2023. Медь, латунь, 100×50×50 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Может ли картина без сюжета быть свидетелем? Если ваша работа не зависит от того, что происходит в мире, не значит ли это, что она за него не отвечает?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Именно! Не обвинить, не оправдать, не обесценить. Дистанция от повесток. Попытка найти универсальные ценности, которые останутся неизменными в любых перипетиях. Автор неизбежно находится в диалоге с реальностью, прошлым, историей искусства. Это вопрос точки зрения; есть мнение, что чем жёстче время, тем абстрактнее искусство.<br><br>С другой стороны, я отчётливо понимаю, что в поисках языка отталкивался от конкретных желаний и установок. Большое искусство вне политики, на расстоянии от повесток; искусство, не про «понравиться»; вне сюжетов и смыслов, которые локализуют и обнаруживают личные пределы. Это было и оппозицией изобилию, перепроизводству образов и информации."
+            },
+            {
+              "type": "header",
+              "content": "03 · Наследие, хозяин, пространство",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Малевич, Родченко и Кандинский верили, что форма меняет жизнь. Во что верите вы? И что для вас значит членство в профессиональных объединениях?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Верю в красоту как таковую, как инстанцию-абсолют, свидетельством взаимодействия с которой является конкретная работа (или не является). Объединения, в том числе Союз абстракционистов России и Союз художников России, — это попытка найти круг единомышленников и своё место в профессиональном сообществе, в институциональной среде. Вступать было не нужно; или нужно — для самоопределения от обратного.<br><br>На мой взгляд, абстракция даёт свободу для поиска своего языка; это единственное направление сегодня, связанное с традицией, но дающее поле для новаторства. Абстракция — разная. Американский минимализм прошлого века не такой, как современный. Послевоенный абстрактный экспрессионизм в США отличается от японского, и так далее. Личный авторский язык — это возможность выразить себя и самореализоваться. Индивидуальность невоспроизводима и не повторяется в истории."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> В вашем Instagram есть подборки «Parazit» и «Borey». Кого или что вы «кормите» и чем питаетесь сами? Может ли художник быть свободным, завися от того, кто покупает и выставляет?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Всё более прозаично. «Паразит» — это сообщество, наследующее ленинградский нонконформизм и arte povera, антитеза союзу художников. Можно сказать, что произведения участников находятся по ту сторону красоты, или это другая красота, с элементами маргинальности и андеграунда. Художник должен быть один, так как сообщество нивелирует индивидуальность. И меня не привлекает юмор в искусстве: попытки рассмешить или обесценить иногда выглядят ширмой и тщетным поиском неуязвимости.<br><br>Возможно, паразит меняет поведение хозяина, но главное в паразитировании в искусстве, на мой взгляд, это оппонирование официальному, конвенциональному, коммерчески успешному. А в отсутствие хозяина остаются только маргинальность и голый бунт. Я за содержательность помимо этого. Художник утверждает собственные ценности. Думаю, имеет значение поддержание автономности, изолированности собственной кухни от рынка."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-09.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Выставка Deux Paris, графика, 2025. Фото: Ярослав Селезнёв."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Для какого времени вы работаете: для секунд, которые есть, или для лет, которых никто не даст? И насколько вы готовы отдавать авторство над картиной выставке, куратору, стене?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Думаю, абстракция принимается зрителем, который хочет или готов её принимать. Время не имеет значения. Это может быть долго, если есть потенциал для погружения, или секунды. Мы бессознательно воспринимаем другого за мгновение и фактически решаем, нравится или не нравится, выбираем, общаться или нет.<br><br>В «Арт-Лиге» мы размещали работы совместно, согласованно. Для меня важна чистота пространства, его способность быть фоном. Кураторам на откуп отдавать не готов, и чужой взгляд, как правило, чужд. На выставке работа раскрывается шире, цикл подходит к завершению, взгляд встречается со взглядом."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-12.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Avalon</i>, 2022, на выставке «Сад», 2025. Холст, акрил, 120×80 см. Фото: Ольга Гилева."
+            },
+            {
+              "type": "header",
+              "content": "04 · Цена, копия, произношение",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Абстрактная картина — почти идеальный товар. Как не стать декоративным? Меняет ли вас присутствие рынка, когда вы выставляетесь на ярмарках вроде Art3f Paris?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Ярмарки — это всегда воодушевляющее живое общение, большое количество новых зрителей, внимания, ещё одна возможность произвести первое впечатление.<br><br>Мне кажется, есть достаточно понятная граница декоративности. Это про желание понравиться. Оно выражается в сделанности, лоске, изобильности, нарочитой дружелюбности. Если сохранять собственную цель и оставаться в рамках вкуса, это позволяет избежать декора.<br><br>Рынок меняет. На протяжении нескольких лет я слышу, что нужен цвет, что монохром скучен, уныл, траурен, угрюм. Поэтому в цвет выхожу аккуратно. Но, честно, как говорил Тарковский, цвет мешает сфокусированности сообщения."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-06.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, фронтальная стена стенда, 2026. Фото: Александр Плотников."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-11.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Art3f Paris, графика, 2026. Фото: Александр Плотников."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Ваши работы видят в ленте тысячи людей, оригинал — десятки. Какая из этих встреч — «работа»? Менялась ли картина, когда вы думали о том, как она будет выглядеть на экране?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Работая в мастерской, я действую так, как считаю необходимым вживую, на медийное пространство не оглядываюсь. Некоторые работы смотрятся на экране менее выразительно; стараюсь публиковать те, которые впечатляют. Думаю, меняется контекст и мерность восприятия, сама работа неизменна. Соцсети воспринимаю как необходимость для целей самопрезентации. Но обязанность постпродакшна и публикации — это работа, не удовольствие."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-28.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Spark</i>, 2026. Холст, акрил, 100×60 см."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Каков признак мёртвого стиля — и как вы поймёте, что ваш уже умер? Что заставило бы вас остановиться?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Живое в стиле — это (n+1)×¿, где последнее — случайность, непреднамеренность, непредсказуемость. Стиль мёртв, когда мёртв автор и не может живо, в формате общения, поделиться собственными целями и ценностями. Однако искусствоведы, исследователи и дилеры успешно бальзамируют произведения и обеспечивают их циркуляцию веками.<br><br>Я делал и авторские повторы работ, и близкое к ожиданиям, но это было в формате заказа, я воспринимал это как коммерческое. В мастерской ориентируюсь только на свои предпочтения. Брак есть, но он скорее связан с хождением по краю эстетичного. Есть мнение, что фрустрация — путь субъективации. Наверное, в длинной перспективе это так, но каждый провал может быть последним.<br><br>Не могу представить ситуацию, когда дальше уже нельзя. Из принципа — да, когда видишь, что приём заюзали и превратили в китч (не как художественный приём). Вероятно, может остановить изобилие, когда незачем работать: это точно может изменить внутреннюю интенцию. Но предполагаю, что продолжу работать для себя, в стол."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-26.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Лёгкое касание I</i>, 2025. Холст, акрил, 60×40 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-27.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Лёгкое касание II</i>, 2025. Холст, акрил, 60×40 см."
+            },
+            {
+              "type": "header",
+              "content": "05 · Слова, время, остаток",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Об абстракции пишут либо пусто, либо слишком поясняюще. Какое одно слово или фразу вы позволили бы нам поставить рядом с вашей картиной?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Действительно, лучше бы без слов. Но «Nothing but everything» подойдёт). Критик и зритель существуют в другой плоскости. Для меня абстракция — это непосредственное восприятие и степень обобщения. Интерпретации и ассоциации — необходимые элементы коммуникации, существования арт-мира. Мне кажется, любую работу можно истолковать, и не единственным образом. Это инструмент культурного маркетинга."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> Что от вашей работы останется, когда не останется вас, ваших объяснений и имени? Если бы вы могли оставить только одну работу — какой бы она была? И какой вопрос без ответа вы оставили бы читателям?"
+            },
+            {
+              "type": "text",
+              "content": "<b>YS:</b> Останутся композиция, мастерство и вкус, недосказанность и внутренняя динамика. Если это захотят увидеть. Истории и легенды более увлекательны).<br><br>Я бы оставил <i>Ugly beauty</i>, 2023 года. «Ужасно прекрасное» или «уродливая красота»). Это работа, в которой я сформулировал цель: самыми простыми средствами — о максимуме.<br><br>А вопрос такой: есть ли место слову «красота» в искусстве сегодня, или оно вытеснено понятием «художественная правда»? Может ли существовать красота как таковая, как инстанция, идеал?"
+            },
+            {
+              "type": "quote",
+              "content": "Художник организует случайности."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-29.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "<i>Pale fire</i>, 2025. Холст, акрил, 100×80 см."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/yaroslav-seleznev-05.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Ярослав Селезнёв. Париж, 2026. Фото: Лиза Хлебникова."
+            },
+            {
+              "type": "note",
+              "content": "Интервью: Viacheslav Munister. Ответы: Ярослав Селезнёв, с небольшой редактурой для ясности и пунктуации. Вопросы сокращены. Все работы и фотографии публикуются по инициативе художника."
+            }
+          ],
+          "updatedAt": "2026-10-13T10:15:08.551Z"
         }
       ],
       "reviews": [
@@ -63613,15 +63908,15 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/hatoum-web-overview.jpg",
           "previewToken": "mona-hatoum-epris-review-20261004",
-          "updatedAt": "2026-10-04T08:05:15.413Z",
+          "updatedAt": "2026-10-13T10:21:37.195Z",
           "content": [
             {
               "type": "text",
-              "content": "Mona Hatoums neue Installation bei Fondazione Prada beginnt mit einer einfachen Korrektur der Art und Weise, wie Ausstellungen normalerweise gesehen werden. Der Besucher steht nicht außerhalb des Werks und interpretiert es aus einer stabilen Position. Der Boden mag frei sein, die Wände mögen still sein, aber der Körper ist bereits involviert: nach oben blickend durch ein aufgehängtes Netz, das um eine Weltkarte kreist, die unter den Füßen zerstreuen könnte, dem Lauschen auf einen neunstöckigen Metallrahmen, der gegen seinen eigenen Kollaps spannt. „Über, unter und dazwischen“ ist weniger eine Abfolge von Objekten als eine Reihe physischer Vorschläge darüber, wie es sich anfühlt, eine Welt zu besetzen, deren Strukturen sichtbar bleiben, während ihre Versprechen unzuverlässig geworden sind."
+              "content": "Mona Hatoums neue Installation bei Fondazione Prada beginnt mit einer einfachen Korrektur der Art und Weise, wie Ausstellungen normalerweise gesehen werden. Der Besucher steht nicht außerhalb des Werks und interpretiert es aus einer stabilen Position. Der Boden mag frei sein, die Wände mögen still sein, aber der Körper ist bereits involviert: nach oben blickend durch ein aufgehängtes Netz, das um eine Weltkarte kreist, die unter den Füßen zerstreuen könnte, dem Klang eines neunstöckigen Metallrahmens, der gegen seinen eigenen Kollaps anstrengt. „Über, unter und dazwischen“ ist weniger eine Abfolge von Objekten als eine Reihe physischer Vorschläge darüber, wie es sich anfühlt, eine Welt zu besetzen, deren Strukturen sichtbar bleiben, während ihre Versprechen unzuverlässig geworden sind."
             },
             {
               "type": "text",
-              "content": "In den drei Räumen der Cisterna installiert, vereint das Projekt zwei neue Werke, die für Mailand geschaffen wurden, Web und Map (rot), mit allem eines Pfeils aus 2022. Die Wirtschaft ist streng: Glas, Kabel, Aluminium, Scharniere, ein Motor; Transparenz, Geometrie, Wiederholung. Doch diese Zurückhaltung erzeugt keinen Frieden. Hatoum nimmt die ererbte Sprache des Minimalismus — das Raster, das Modul, die industrielle Oberfläche — und kehrt zu allem zurück, was das modernistische Ideal zu vermeiden suchte: den verletzlichen Körper, die unstabile Grenze, die Möglichkeit der Bruchstelle, den Lärm der Angst."
+              "content": "In den drei Räumen der Cisterna installiert, vereint das Projekt zwei neue Werke, die für Mailand geschaffen wurden, Web und Map (rot), mit allem eines Köchers aus 2022. Die Wirtschaft ist streng: Glas, Kabel, Aluminium, Scharniere, ein Motor; Transparenz, Geometrie, Wiederholung. Doch diese Zurückhaltung erzeugt keinen Frieden. Hatoum nimmt die ererbte Sprache des Minimalismus — das Gitter, das Modul, die industrielle Oberfläche — und kehrt zu allem zurück, was das modernistische Ideal zu excluieren versuchte: den verletzlichen Körper, die unstabile Grenze, die Möglichkeit der Bruchstelle, den Lärm der Angst."
             },
             {
               "type": "note",
@@ -63634,11 +63929,11 @@
             },
             {
               "type": "text",
-              "content": "Die Cisterna wurde 1909 gebaut, um drei Speichertanks für die ehemalige Brennerei zu beherbergen. Ihre Umwandlung in Ausstellungsraum löschte diese Geschichte nicht aus. Jede hohe Betonkammer fühlt sich immer noch wie ein Gefäß an: eingeschlossen, vertikal, leicht unverhältnismäßig zur Person, die sie betritt. Hatoums Entscheidung, jeder Raum eine Installation zuzuordnen, verwandelt die Architektur in mehr als nur einen Hintergrund. Der Besucher bewegt sich durch drei unterschiedliche Zustände der Einschließung — gefangen unter einem Netzwerk, gehalten am Rand eines Diagramms und konfrontiert mit einer Struktur, die ihre Fassung nicht bewahren kann."
+              "content": "Die Cisterna wurde 1909 gebaut, um drei Speichertanks für die ehemalige Brennerei zu beherbergen. Ihre Umwandlung in Ausstellungsraum löschte diese Geschichte nicht aus. Jede hohe Betonkammer fühlt sich immer noch wie ein Gefäß an: eingeschlossen, vertikal, leicht unverhältnismäßig zur Person, die sie betritt. Hatoums Entscheidung, jeder Raum eine Installation zuzuordnen, macht die Architektur zu mehr als nur einem Hintergrund. Der Besucher bewegt sich durch drei unterschiedliche Zustände der Einschließung — gefangen unter einem Netzwerk, gehalten am Rand eines Diagramms und konfrontiert mit einer Struktur, die ihre Fassung nicht bewahren kann."
             },
             {
               "type": "text",
-              "content": "Das ist wichtig, weil Hatoum Raum nie als neutral behandelt hat. Seit sie in den frühen 1990er Jahren vom Performance- und Video-Kunst zur Installation und Skulptur wechselte, hat sie vertraute Formen auf seltsame Weise erscheinen lassen: Haushaltsgegenstände werden bedrohlich, Karten verweigern politische Gewissheit, Raster werden zu Käfigen oder Nervensystemen. Geboren in Beirut im Jahr 1952 in einer palästinensischen Familie und seit dem Libanesischen Bürgerkrieg in London ansässig, der ihre Rückkehr 1975 unmöglich machte, arbeitet sie aus einer Biografie, die von Vertreibung geprägt ist, ohne jedes Objekt auf Autobiografie zu reduzieren. Die politische Kraft ihrer Kunst liegt genau in dieser Ablehnung der Illustration. Geschichte tritt ein als Druck, Maßstab, Temperatur und Entfernung."
+              "content": "Das ist wichtig, weil Hatoum Raum nie als neutral behandelt hat. Seit sie in den frühen 1990er Jahren vom Performance- und Video-Kunst zur Installation und Skulptur wechselte, hat sie vertraute Formen auf seltsame Weise zum Verhalten gebracht: Haushaltsgegenstände werden bedrohlich, Karten verweigern politische Gewissheit, Raster werden zu Käfigen oder Nervensystemen. Geboren in Beirut im Jahr 1952 in einer palästinensischen Familie und seit dem Libanesischen Bürgerkrieg in London ansässig, der ihre Rückkehr 1975 unmöglich machte, arbeitet sie aus einer Biografie, die von Vertreibung geprägt ist, ohne jedes Objekt auf Autobiografie zu reduzieren. Die politische Kraft ihrer Kunst liegt genau in dieser Ablehnung der Illustration. Geschichte tritt ein als Druck, Maßstab, Temperatur und Entfernung."
             },
             {
               "type": "image",
@@ -63653,7 +63948,7 @@
             {
               "type": "header",
               "level": 2,
-              "content": "Web: schönheit wird zur Bedingung der Aufnahme"
+              "content": "Web: Schönheit wird zur Bedingung der Aufnahme"
             },
             {
               "type": "image",
@@ -63667,7 +63962,7 @@
             },
             {
               "type": "text",
-              "content": "Netz erstreckt sich über die erste Kammer. Klare handgeblasene Kugeln, unregelmäßig in der Größe, sind entlang eines Edelstahlkabels zu einem Netzwerk verflochten, das sowohl präzise als auch improvisiert erscheint. Vom Eingang aus kann es einer Konstellation oder einem Molekülmodell ähneln. Darunter zu gehen verändert den Eindruck. Die funkelnden Punkte werden zu Tropfen unter Spannung; die Geometrie senkt sich in das Bewegungsfeld des Besuchers. Was himmlisch schien, beginnt sich klebend anzufühlen."
+              "content": "Netz erstreckt sich über die erste Kammer. Klare handgeblasene Kugeln, unregelmäßig in der Größe, sind entlang eines Edelstahlkabels zu einem Netzwerk verflochten, das sowohl präzise als auch improvisiert erscheint. Vom Eingang aus kann es einer Konstellation oder einem Molekülmodell ähneln. Darunter zu gehen verändert den Eindruck. Die funkelnden Punkte werden zu Tropfen unter Spannung; die Geometrie senkt sich in das Bewegungsfeld des Besuchers. Was himmlisch schien, beginnt klebrig zu wirken."
             },
             {
               "type": "image",
@@ -63685,7 +63980,7 @@
             },
             {
               "type": "text",
-              "content": "Es besteht das Risiko, bei Arbeiten über Prekarität, dass Fragilität zu einem eleganten Effekt wird — Gefahr, die schön genug gemacht wird, um institutionell ausgestellt zu werden. Hatoum erkennt dieses Risiko an und integriert es in das Stück. Das Glas ist wirklich verletzlich, doch das Netz ist konstruiert und gespannt. Seine Schönheit mildert den Widerspruch nicht; sie lässt den Betrachter darin verweilen. Man schaut länger, weil das Objekt schön ist, und diese verlängerte Aufmerksamkeit ist genau der Moment, in dem Schönheit ihre disziplinierende Kante offenbart."
+              "content": "Es besteht das Risiko, bei Arbeiten über Prekarität, dass Fragilität zu einem eleganten Effekt wird — Gefahr, die schön genug gemacht wird, um institutionell ausgestellt zu werden. Hatoum erkennt dieses Risiko an und integriert es in das Werk. Das Glas ist wirklich verletzlich, doch das Netz ist konstruiert und gespannt. Seine Schönheit mildert den Widerspruch nicht; sie lässt den Betrachter darin verweilen. Man schaut länger, weil das Objekt schön ist, und diese verlängerte Aufmerksamkeit ist genau der Moment, in dem Schönheit ihre disziplinarische Kante offenbart."
             },
             {
               "type": "header",
@@ -63718,18 +64013,18 @@
             },
             {
               "type": "text",
-              "content": "Zunächst scheint Map (rot) ein repariertes Bild der Welt zu bieten — grenzenlos und proportional korrigiert. Aber Hatoum verwechselt nicht Korrektur mit Auflösung. Die Kontinente bestehen aus identischen Einheiten, die nicht miteinander oder mit dem Boden verbunden sind. Ein unachtsamer Schritt, eine Vibration oder eine kleine Verschiebung könnten eine Küstenlinie deformieren. Geographie erscheint nur lesbar, weil der Raum vorübergehend ruhig ist."
+              "content": "Zunächst scheint Map (rot) ein repariertes Bild der Welt zu bieten — grenzenlos und proportional korrigiert. Aber Hatoum verwechselt nicht Korrektur mit Auflösung. Die Kontinente bestehen aus identischen Einheiten, die nicht miteinander oder mit dem Boden verbunden sind. Ein unachtsamer Schritt, eine Vibration oder eine kleine Verschiebung könnten eine Küstenlinie deformieren. Geografie erscheint nur lesbar, weil der Raum vorübergehend ruhig ist."
             },
             {
               "type": "text",
-              "content": "Das Rot ist entscheidend. Es kann vorwarnen, Blut, Hitze, Ideologie oder Notfall andeuten, aber die Kugeln bleiben durchscheinend; Licht dringt durch sie hindurch. Die Farbe weist keine einzelne Botschaft zu. Stattdessen verweigert sie der Karte die kühle Autorität der Information. Dies ist kein neutraler Diagramm, das von nirgendwo aus gesehen wird. Es ist eine Welt zu Füßen des Betrachters, verletzlich durch Nähe und Macht."
+              "content": "Das Rot ist entscheidend. Es kann vorwarnen, Blut, Hitze, Ideologie oder Notfall andeuten, aber die Kugeln bleiben durchscheinend; Licht bewegt sich durch sie hindurch. Die Farbe weist keine einzelne Botschaft zu. Stattdessen verweigert sie der Karte die kühle Autorität der Information. Dies ist kein neutraler Diagramm, das von nirgendwo aus gesehen wird. Es ist eine Welt zu Füßen des Betrachters, verletzlich gegenüber Nähe und Macht."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/hatoum-map-red-detail.jpg",
               "align": "center",
               "width": 88,
-              "caption": "Mona Hatoum, Karte (rot), 2026, Detail. Lose 25 mm klare rote Glaskugeln bilden eine Geographie, die physisch gestört werden kann. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "caption": "Mona Hatoum, Karte (rot), 2026, Detail. Lose 25 mm klare rote Glaskugeln bilden eine Geografie, die physisch gestört werden kann. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
               "alt": "Nahaufnahme von Tausenden durchsichtigen roten Glaskugeln, die Europa, Nordafrika und Asien bilden.",
               "credit": "Foto: Roberto Marossi. Courtesy Fondazione Prada.",
               "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
@@ -63745,14 +64040,14 @@
             {
               "type": "header",
               "level": 2,
-              "content": "alles in Aufregung: das Gitter entwickelt ein Nervensystem"
+              "content": "alles in einem Bogen: das Gitter entwickelt ein Nervensystem"
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/hatoum-all-of-a-quiver.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Mona Hatoum, alles in Aufregung, 2022. Aluminium-Quadratrohre, Stahl-Scharnier, Elektromotor und Kabel. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
+              "caption": "Mona Hatoum, alles in einem Bogen, 2022. Aluminium-Quadratrohre, Stahl-Scharnier, Elektromotor und Kabel. Installationsansicht, Fondazione Prada, Mailand. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
               "alt": "Ein neungeschossiges schwarzes Metallgitter erhebt sich wie ein instabiles Turm in einer Betongalerie.",
               "credit": "Installationsansicht von “Mona Hatoum. Over, under and in between”, Fondazione Prada, Mailand, 2026. Foto: Roberto Marossi. Courtesy Fondazione Prada.",
               "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
@@ -63787,12 +64082,12 @@
             },
             {
               "type": "text",
-              "content": "Von den drei Installationen ist dies die theatralischste, doch sie ist auch die genaueste. Ihr Drama entsteht durch Ingenieurkunst statt Illusion. Der Mechanismus erlaubt niemals vollständige Katastrophe, und diese Grenze macht das Werk beunruhigender statt weniger. Es erinnert an Infrastrukturen, die knapp über dem Scheitern gehalten werden, an Institutionen, die durch Krisenproben überleben, und an Körper, die aufgefordert werden, sich zu erholen, ohne die Bedingungen zu ändern, die sie erschöpft haben."
+              "content": "Von den drei Installationen ist dies die theatralischste, doch sie ist auch die genaueste. Ihr Drama entsteht durch Ingenieurkunst statt Illusion. Der Mechanismus erlaubt niemals vollständige Katastrophe, und diese Grenze macht das Werk beunruhigender statt weniger. Es erinnert an Infrastrukturen, die gerade über dem Scheitern erhalten bleiben, an Institutionen, die durch Krisenproben überleben, und an Körper, die aufgefordert werden, sich zu erholen, ohne die Bedingungen zu ändern, die sie erschöpft haben."
             },
             {
               "type": "video",
               "content": "https://player.vimeo.com/video/1176891027",
-              "caption": "<em>Over, under and in between</em> | Mona Hatoum | Fondazione Prada Milano",
+              "caption": "Über, unter und dazwischen | Mona Hatoum | Fondazione Prada Milano",
               "credit": "Fondazione Prada",
               "sourceUrl": "https://www.fondazioneprada.org/project/mona-hatoum-over-under-and-in-between/%3Flang=en"
             },
@@ -63803,11 +64098,11 @@
             },
             {
               "type": "text",
-              "content": "Hatoums Beziehung zum Minimalismus wird oft durch Ähnlichkeit beschrieben: modulare Strukturen, industrielle Materialien, wiederholte Einheiten, das Entfernen expressiver Gesten. Aber Ähnlichkeit ist keine Treue. Historischer Minimalismus bot das Objekt häufig als eigenständige Tatsache an und die Galerie als Feld für phänomenologische Begegnung. Hatoum bewahrt die Begegnung und entfernt die Sicherheit. Ihre Module können zerstreuen, ihr Raster kann versagen, ihre transparente Oberfläche kann fangen. Der angeblich universelle Betrachtungskörper wird zu einem besonderen Körper, der sich des Risikos bewusst ist."
+              "content": "Hatoums Beziehung zum Minimalismus wird oft durch Ähnlichkeit beschrieben: modulare Strukturen, industrielle Materialien, wiederholte Einheiten, das Entfernen expressiver Gesten. Aber Ähnlichkeit ist keine Treue. Historischer Minimalismus bot das Objekt häufig als eigenständige Tatsache an und die Galerie als Feld für phänomenologische Begegnung. Hatoum bewahrt die Begegnung und entfernt die Sicherheit. Ihre Module können zerstreuen, ihr Gitter kann versagen, ihre transparente Oberfläche kann fangen. Der angeblich universelle Betrachtungskörper wird zu einem besonderen Körper, der sich des Risikos bewusst ist."
             },
             {
               "type": "text",
-              "content": "Das ist der Grund, warum die Ausstellung sich aktuell anfühlt, ohne der Aktualität nachzujagen. Ihre Materialien benennen keinen Krieg, keine Migrationsroute, kein Grenzregime oder eine kollabierende Institution, doch sie schärfen das Sensorium, durch das diese Realitäten erlebt werden. Unsicherheit wird nicht als Nebel dargestellt. Sie erhält Struktur. Es gibt klare Linien, messbare Sphären, sichtbare Gelenke und erkennbare Mechanismen. Alles kann beschrieben werden, und doch fühlt sich nichts sicher an."
+              "content": "Das ist der Grund, warum die Ausstellung sich aktuell anfühlt, ohne der aktuellen Tagespolitik nachzujagen. Ihre Materialien benennen keinen Krieg, keine Migrationsroute, kein Grenzregime oder eine kollabierende Institution, doch sie schärfen das Sensorium, durch das diese Realitäten erlebt werden. Unsicherheit wird nicht als Nebel dargestellt. Sie erhält Struktur. Es gibt klare Linien, messbare Sphären, sichtbare Gelenke und erkennbare Mechanismen. Alles kann beschrieben werden, und doch fühlt sich nichts sicher an."
             },
             {
               "type": "text",
@@ -63820,7 +64115,7 @@
             },
             {
               "type": "text",
-              "content": "In den drei Räumen wird der Körper wiederholt zu einem Instrument, um das zu messen, was nicht vertrauenswürdig ist. Unter Web wird die Höhe als Exposition empfunden. Neben Map (rot) wird Entfernung zu einer ethischen Entscheidung, nicht zu stören. Vor all dem Zittern wird die Zeit durch Erwartung gezählt: Wann wird sich die Struktur bewegen, wie weit wird sie nachgeben, wird sie zurückkehren? Die Werke tauchen den Betrachter nicht durch Spektakel ein. Sie machen die Wahrnehmung verantwortlich."
+              "content": "In den drei Räumen wird der Körper wiederholt zu einem Instrument, um das zu messen, was nicht vertrauenswürdig ist. Unter Web wird die Höhe als Exposition empfunden. Neben Map (rot) wird Entfernung zu einer ethischen Entscheidung, nicht zu stören. Vor allem eines Zitterns wird die Zeit durch Erwartung gezählt: Wann wird sich die Struktur bewegen, wie weit wird sie nachgeben, wird sie zurückkehren? Die Werke tauchen den Betrachter nicht durch Spektakel ein. Sie machen die Wahrnehmung verantwortlich."
             },
             {
               "type": "text",
@@ -63837,7 +64132,7 @@
             },
             {
               "type": "text",
-              "content": "Was Hatoum schließlich fragt, ist nicht, ob die Welt stabil ist. Es ist offensichtlich nicht so. Die schwierigere Frage ist, wie man innerhalb der Instabilität steht, ohne Überleben mit Sicherheit zu verwechseln oder Ordnung mit Gerechtigkeit. In der Cisterna wird Skulptur zu einem Proben für diese Position: aufmerksam, aber nicht gelähmt, involviert, aber immer noch fähig zur Aufmerksamkeit. Das tiefste Verdienst der Ausstellung besteht darin, Prekarität weder abstrakt noch spektakulär zu machen. Es wird zum Raum zwischen dem Objekt und dem Körper — das Intervall, in dem Betrachten Verantwortung wird."
+              "content": "Was Hatoum schließlich fragt, ist nicht, ob die Welt stabil ist. Es ist offensichtlich nicht so. Die schwierigere Frage ist, wie man innerhalb der Instabilität steht, ohne Überleben mit Sicherheit zu verwechseln oder Ordnung mit Gerechtigkeit. In der Cisterna wird Skulptur zu einem Proben für diese Position: aufmerksam, aber nicht gelähmt, involviert, aber immer noch fähig zur Aufmerksamkeit. Die tiefste Errungenschaft der Ausstellung besteht darin, Prekarität weder abstrakt noch spektakulär zu machen. Es wird der Raum zwischen Objekt und Körper — das Intervall, in dem das Betrachten zur Verantwortung wird."
             },
             {
               "type": "link",
@@ -63846,7 +64141,7 @@
             },
             {
               "type": "note",
-              "content": "Bildnachweise: Installationsansichten von “Mona Hatoum. Über, unter und dazwischen”, Fondazione Prada, Mailand, 2026. Fotos von Roberto Marossi. Courtesy Fondazione Prada. Bilder reproduziert aus offiziellen institutionellen Materialien für unabhängige redaktionelle Überprüfung; Rechte verbleiben beim Künstler, Fotografen und Institut."
+              "content": "Bildnachweise: Installationsansichten von “Mona Hatoum. Über, unter und dazwischen”, Fondazione Prada, Mailand, 2026. Fotos von Roberto Marossi. Courtesy Fondazione Prada. Bilder reproduziert aus offiziellen institutionellen Materialien für unabhängige redaktionelle Überprüfung; Rechte verbleiben beim Künstler, Fotografen und der Institution."
             }
           ],
           "publishedAt": "2026-10-04T07:56:08.904Z"
