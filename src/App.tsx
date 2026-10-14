@@ -3169,7 +3169,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 (это цельный баннер, не голый div под общим разделителем),
                 поэтому здесь только отступ, без border-t/pt дублем поверх
                 уже готовой карточки. */}
-            <SupportJournal lang={currentLang} className="mt-10" />
+            {!article.hideSupport && <SupportJournal lang={currentLang} className="mt-10" />}
 
             <div className="mt-8 flex justify-center">
               <button

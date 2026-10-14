@@ -213,6 +213,12 @@ export interface Article {
    */
   coAuthorIds?: string[];
   /**
+   * Hides the "support the journal" banner under this article. The banner is
+   * shown under every article by default; set this only where the author has
+   * asked for a piece to go without it.
+   */
+  hideSupport?: boolean;
+  /**
    * Human-facing date, exactly as an editor typed it ("Jul 30, 2026",
    * "15 серпня 2026"). Display only.
    */
@@ -984,7 +990,7 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
   // The other credits are identities too, and the translator, handed a
   // locale's copy, may return their ids "translated".
-  'contributorId', 'coAuthorIds',
+  'contributorId', 'coAuthorIds', 'hideSupport',
   'url', 'link', 'rating', 'featured', 'coordinates',
   // When an article was published is a fact about the article, not a translated
   // string. Left overlayable, a stale locale bucket could order that language's
