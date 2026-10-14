@@ -16840,9 +16840,9 @@
     },
     {
       "title": "Gayane Arushanian: Home Is Something You Carry",
-      "author": "Gayane Arushanian, Viacheslav Munister & Maria Ivanova",
+      "author": "Viacheslav Munister",
       "role": "Author",
-      "date": "October 10, 2026",
+      "date": "October 15, 2026",
       "excerpt": "A Ukrainian artist of Armenian descent, now between Miami and Kyiv, on balance that is earned rather than given, a series that began as a paper game and turned out to be a factorial, and why she refuses to read her work only through war.",
       "category": "interview",
       "subcategory": "Interview",
@@ -16855,7 +16855,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
       "showCover": true,
-      "draft": true,
+      "draft": false,
       "order": 0,
       "previewToken": "lg4Cf6krpIdUjU7_",
       "content": [
@@ -17451,7 +17451,7 @@
         }
       ],
       "id": 67,
-      "updatedAt": "2026-10-14T16:40:25.000Z",
+      "updatedAt": "2026-10-14T18:53:42.000Z",
       "onlyLangs": [
         "EN",
         "UA",
@@ -17461,11 +17461,12 @@
         "FR",
         "ES"
       ],
-      "authorId": "author-gayane-arushanian",
-      "coAuthorIds": [
-        "author-1784732936927-kw554",
-        "author-1784896384236-4fokw"
-      ]
+      "authorId": "author-1784732936927-kw554",
+      "publishAt": "2026-10-15T15:45:00.000Z",
+      "publishedAt": "2026-10-15T15:45:00.000Z",
+      "hideSupport": true,
+      "contributorId": "author-gayane-arushanian",
+      "contributorFirst": true
     },
     {
       "id": 68,
@@ -33369,9 +33370,9 @@
         },
         {
           "title": "Гаяне Арушанян: дом – это то, что носишь с собой",
-          "author": "Вячеслав Мунистер и Мария Иванова",
+          "author": "Вячеслав Мунистер",
           "role": "Автор",
-          "date": "10 октября 2026",
+          "date": "15 октября 2026",
           "excerpt": "Украинская художница армянского происхождения, которая сейчас живёт между Майами и Киевом, – о равновесии, которое добывают, а не получают, о серии, начавшейся как игра с бумагой и оказавшейся факториалом, и о том, почему её работы не стоит читать только через войну.",
           "category": "интервью",
           "subcategory": "Интервью",
@@ -33384,7 +33385,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -33990,7 +33991,9 @@
             "FR",
             "ES"
           ],
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
@@ -49883,9 +49886,9 @@
         },
         {
           "title": "Гаяне Арушанян: дім – це те, що несеш із собою",
-          "author": "Вʼячеслав Муністер і Марія Іванова",
+          "author": "Вʼячеслав Муністер",
           "role": "Автор",
-          "date": "10 жовтня 2026",
+          "date": "15 жовтня 2026",
           "excerpt": "Українська мисткиня вірменського походження, яка нині живе між Маямі та Києвом, – про рівновагу, яку здобувають, а не отримують, про серію, що почалася як гра з папером і виявилася факторіалом, і про те, чому її роботу не варто читати лише через війну.",
           "category": "інтерв’ю",
           "subcategory": "Інтерв’ю",
@@ -49898,7 +49901,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -50495,7 +50498,9 @@
           ],
           "id": 67,
           "updatedAt": "2026-10-12T08:52:27.292Z",
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
@@ -66385,9 +66390,9 @@
         },
         {
           "title": "Gayane Arushanian: Zuhause ist etwas, das man in sich trägt",
-          "author": "Viacheslav Munister und Maria Ivanova",
+          "author": "Viacheslav Munister",
           "role": "Autor",
-          "date": "10. Oktober 2026",
+          "date": "15. Oktober 2026",
           "excerpt": "Eine ukrainische Künstlerin armenischer Herkunft, heute zwischen Miami und Kyjiw, über ein Gleichgewicht, das man sich erarbeitet, statt es geschenkt zu bekommen, über eine Serie, die als Spiel mit Papier begann und sich als Fakultät entpuppte, und darüber, warum ihr Werk nicht nur durch den Krieg gelesen werden sollte.",
           "category": "interview",
           "subcategory": "Interview",
@@ -66400,7 +66405,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -67006,7 +67011,9 @@
             "FR",
             "ES"
           ],
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
@@ -82890,9 +82897,9 @@
         },
         {
           "title": "Gayane Arushanian: el hogar es algo que llevas contigo",
-          "author": "Viacheslav Munister y Maria Ivanova",
+          "author": "Viacheslav Munister",
           "role": "Autor",
-          "date": "10 de octubre de 2026",
+          "date": "15 de octubre de 2026",
           "excerpt": "Una artista ucraniana de origen armenio, hoy entre Miami y Kyiv, habla de un equilibrio que se conquista y no se recibe, de una serie que empezó como un juego con papel y resultó ser un factorial, y de por qué su obra no debe leerse solo a través de la guerra.",
           "category": "entrevista",
           "subcategory": "Entrevista",
@@ -82905,7 +82912,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -83511,7 +83518,9 @@
             "FR",
             "ES"
           ],
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
@@ -106904,9 +106913,9 @@
         },
         {
           "title": "Gayane Arushanian: la casa è qualcosa che porti con te",
-          "author": "Viacheslav Munister e Maria Ivanova",
+          "author": "Viacheslav Munister",
           "role": "Autore",
-          "date": "10 ottobre 2026",
+          "date": "15 ottobre 2026",
           "excerpt": "Un'artista ucraina di origine armena, oggi tra Miami e Kyiv, sull'equilibrio che si conquista e non si riceve, su una serie nata come un gioco con la carta e rivelatasi un fattoriale, e sul perché il suo lavoro non va letto soltanto attraverso la guerra.",
           "category": "intervista",
           "subcategory": "Intervista",
@@ -106919,7 +106928,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -107525,7 +107534,9 @@
             "FR",
             "ES"
           ],
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
@@ -121916,9 +121927,9 @@
         },
         {
           "title": "Gayane Arushanian : la maison, on la porte en soi",
-          "author": "Viacheslav Munister et Maria Ivanova",
+          "author": "Viacheslav Munister",
           "role": "Auteur",
-          "date": "10 octobre 2026",
+          "date": "15 octobre 2026",
           "excerpt": "Artiste ukrainienne d'origine arménienne, aujourd'hui entre Miami et Kyiv, elle parle d'un équilibre que l'on conquiert au lieu de le recevoir, d'une série née d'un jeu avec le papier qui s'est révélée être une factorielle, et des raisons pour lesquelles son œuvre ne doit pas être lue uniquement à travers la guerre.",
           "category": "entretien",
           "subcategory": "Entretien",
@@ -121931,7 +121942,7 @@
           "imageSeed": "",
           "imageUrl": "https://api.eprisjournal.com/uploads/mv4zror2z2vzc0.jpg",
           "showCover": true,
-          "draft": true,
+          "draft": false,
           "order": 0,
           "previewToken": "lg4Cf6krpIdUjU7_",
           "content": [
@@ -122537,7 +122548,9 @@
             "FR",
             "ES"
           ],
-          "locked": true
+          "locked": true,
+          "publishAt": "2026-10-15T15:45:00.000Z",
+          "publishedAt": "2026-10-15T15:45:00.000Z"
         },
         {
           "id": 68,
