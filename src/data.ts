@@ -219,6 +219,12 @@ export interface Article {
    */
   hideSupport?: boolean;
   /**
+   * Puts the `contributorId` card above the author's card, labelled "In
+   * collaboration with". For a profile where the person the piece is about
+   * should lead the credits and the writer follows.
+   */
+  contributorFirst?: boolean;
+  /**
    * Human-facing date, exactly as an editor typed it ("Jul 30, 2026",
    * "15 серпня 2026"). Display only.
    */
@@ -990,7 +996,7 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
   // The other credits are identities too, and the translator, handed a
   // locale's copy, may return their ids "translated".
-  'contributorId', 'coAuthorIds', 'hideSupport',
+  'contributorId', 'coAuthorIds', 'hideSupport', 'contributorFirst',
   'url', 'link', 'rating', 'featured', 'coordinates',
   // When an article was published is a fact about the article, not a translated
   // string. Left overlayable, a stale locale bucket could order that language's

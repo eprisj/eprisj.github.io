@@ -2610,8 +2610,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
       && all.findIndex((other) => other.id === person.id) === i);
   // Contributor из редакции (showOnTeam) – тоже соавтор: встаёт в ту же
   // группу, чтобы над карточками не стояли две одинаковые подписи подряд.
-  const coAuthorCards = contributorIsCoauthor && contributor ? [...coAuthors, contributor] : coAuthors;
-  const separateContributor = contributorIsCoauthor ? null : contributor;
+  // contributorFirst: the person the piece is about leads the credits, above
+  // the author's card, under the "In collaboration with" label.
+  const leadContributor = article.contributorFirst ? contributor : null;
+  const coAuthorCards = contributorIsCoauthor && contributor && !leadContributor ? [...coAuthors, contributor] : coAuthors;
+  const separateContributor = leadContributor || contributorIsCoauthor ? null : contributor;
   // В интервью h3 – это всегда вопрос (в эссе – подзаголовок). Вопрос в три-
   // четыре предложения, набранный заголовочным шрифтом, читался как стена:
   // теперь он текстовым шрифтом, полужирный, с золотой линейкой слева, а
@@ -3086,6 +3089,12 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
               border-[1.5px] на пилюлях, тексты на ступень темнее и жирнее -
               подвал читается одним куском, а не остатком после статьи. */}
           <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.14)]">
+            {leadContributor && (
+              <div className="mb-4 sm:mb-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
+                <CreditCard person={leadContributor} currentLang={currentLang} />
+              </div>
+            )}
             <div className="flex items-start gap-5 sm:gap-7 rounded-2xl bg-[rgb(var(--c-accent-rgb)_/_0.035)] p-5 sm:p-7">
               {authorPhoto ? (
                 <img
