@@ -219,9 +219,9 @@ export interface Article {
    */
   hideSupport?: boolean;
   /**
-   * Puts the `contributorId` card above the author's card, labelled "In
-   * collaboration with". For a profile where the person the piece is about
-   * should lead the credits and the writer follows.
+   * Puts the `contributorId` card above the author's card, without a label.
+   * For a profile where the person the piece is about should lead the
+   * credits and the writer follows.
    */
   contributorFirst?: boolean;
   /**

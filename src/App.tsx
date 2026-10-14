@@ -2611,7 +2611,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // Contributor из редакции (showOnTeam) – тоже соавтор: встаёт в ту же
   // группу, чтобы над карточками не стояли две одинаковые подписи подряд.
   // contributorFirst: the person the piece is about leads the credits, above
-  // the author's card, under the "In collaboration with" label.
+  // the author's card, with no label of its own.
   const leadContributor = article.contributorFirst ? contributor : null;
   const coAuthorCards = contributorIsCoauthor && contributor && !leadContributor ? [...coAuthors, contributor] : coAuthors;
   const separateContributor = leadContributor || contributorIsCoauthor ? null : contributor;
@@ -3091,7 +3091,6 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           <footer className="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t-2 border-[rgb(var(--c-accent-rgb)_/_0.14)]">
             {leadContributor && (
               <div className="mb-4 sm:mb-5">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2.5">{contributorLabel(currentLang)}</p>
                 <CreditCard person={leadContributor} currentLang={currentLang} />
               </div>
             )}
