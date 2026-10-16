@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam Lab — EPRIS Journal</title>
+<meta name="description" content="Interactive beam: load, deflection, bending moment. RU / EN.">
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--bg:#f6f5f1;--fg:#0d0d0d;--mut:#77756f;--line:#d9d7d0;--card:#fff;--load:#1f4fe0;--mom:#e0381f;--ok:#14935a;--beam:#0d0d0d}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0b0b;--fg:#f1f0ec;--mut:#8d8b85;--line:#292826;--card:#141413;--load:#7d9cff;--mom:#ff7a63;--ok:#4cd08b;--beam:#f1f0ec}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,4vw,40px)}
+header a{color:var(--fg);text-decoration:none;font-size:12px;letter-spacing:.24em;font-weight:600}
+.seg{display:inline-flex;border:1.5px solid var(--fg);border-radius:99px;overflow:hidden}
+.seg button{font:600 12px/1 inherit;font-family:inherit;border:0;background:none;color:var(--fg);padding:9px 15px;cursor:pointer;letter-spacing:.06em}
+.seg button.on{background:var(--fg);color:var(--bg)}
+main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 90px}
+h1{font:400 clamp(44px,9vw,112px)/.95 Georgia,"Times New Roman",serif;letter-spacing:-.02em;margin:18px 0 6px}
+.sub{color:var(--mut);font-size:clamp(15px,2vw,19px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sub i{font-style:normal;color:var(--fg)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(8px,2vw,22px)}
+svg{width:100%;height:auto;display:block;overflow:visible}
+.t{font:500 12px -apple-system,Arial,sans-serif;fill:var(--mut)}
+.tb{font:700 13px -apple-system,Arial,sans-serif;fill:var(--fg)}
+.row{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:860px){.row{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+.sl{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px}
+@media(max-width:520px){.sl{grid-template-columns:1fr}}
+.sl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mut)}
+.sl b{font:400 28px/1 Georgia,serif;color:var(--fg);font-variant-numeric:tabular-nums}
+.sl b u{text-decoration:none;font:12px -apple-system,Arial;color:var(--mut);margin-left:3px}
+input[type=range]{width:100%;height:28px;-webkit-appearance:none;appearance:none;background:none}
+input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--line);border-radius:3px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--fg);margin-top:-9.5px;border:3px solid var(--card);box-shadow:0 0 0 1.5px var(--fg)}
+input[type=range]::-moz-range-track{height:3px;background:var(--line)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--fg);border:3px solid var(--card)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.pills button{font:600 13px inherit;font-family:inherit;border:1.5px solid var(--line);background:none;color:var(--fg);padding:9px 14px;border-radius:99px;cursor:pointer}
+.pills button.on{border-color:var(--fg);background:var(--fg);color:var(--bg)}
+.pick{display:flex;gap:18px;align-items:center}
+.pick svg{width:120px;flex:none}
+.pick h2{font:400 clamp(40px,6vw,64px)/1 Georgia,serif}
+.pick small{color:var(--mut);font-size:13px;display:block;margin-top:4px}
+.bar{margin-top:18px}
+.bar div.h{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-bottom:6px}
+.bar div.h b{color:var(--fg);font-variant-numeric:tabular-nums}
+.bar .tr{height:10px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:9px;background:var(--ok);transition:width .25s}
+.bar .tr i.hi{background:var(--mom)}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:16px}
+@media(max-width:700px){.nums{grid-template-columns:repeat(2,1fr)}}
+.nums div{background:var(--card);padding:16px}
+.nums span{display:block;font-size:12px;color:var(--mut)}
+.nums b{font:400 30px/1.2 Georgia,serif;font-variant-numeric:tabular-nums}
+.nums em{font:12px -apple-system;color:var(--mut);font-style:normal;margin-left:3px}
+h3{font:600 12px/1 inherit;font-family:inherit;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin:48px 0 14px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.steps .card{padding:18px}
+.steps .n{font:400 40px/1 Georgia,serif;color:var(--mut)}
+.steps .f{font:italic 17px/1.6 "Cambria Math","STIX Two Math",Georgia,serif;margin-top:10px;overflow-wrap:anywhere}
+.steps .f b{font-style:normal;font-weight:600}
+.strip{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+.strip div{flex:none;width:84px;text-align:center;border:1.5px solid var(--line);border-radius:14px;padding:10px 4px 8px;background:var(--card);font-size:12px;color:var(--mut)}
+.strip div.on{border-color:var(--fg);color:var(--fg)}
+.strip div.no{opacity:.4}
+.strip svg{width:34px;margin:0 auto 4px}
+.strip b{display:block;color:var(--fg);font-size:13px}
+.gl{display:flex;flex-wrap:wrap;gap:8px}
+.gl span{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-size:14px}
+.gl span i{font-style:normal;color:var(--mut);margin-left:6px}
+.lim{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.lim .card{padding:16px;text-align:center}
+.lim b{font:400 34px/1.1 Georgia,serif;display:block}
+.lim span{font-size:13px;color:var(--mut)}
+.hint{font-size:12.5px;line-height:1.4;color:var(--mut);margin-top:-2px}
+.leg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 22px;margin:14px 4px 0}
+.leg div{display:flex;gap:10px;font-size:13.5px;line-height:1.4;color:var(--mut)}
+.leg i{flex:none;width:22px;height:0;border-top:5px solid;margin-top:8px;border-radius:3px}
+.leg b{color:var(--fg);font-weight:600}
+.now{margin-top:16px;border-radius:22px;padding:22px 24px;background:var(--fg);color:var(--bg)}
+.now small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+.now p{font:400 clamp(19px,2.6vw,26px)/1.35 Georgia,serif}
+.now p+p{margin-top:10px;font:15px/1.5 -apple-system,Arial,sans-serif;opacity:.75}
+.try{margin-top:22px}
+.try span{font-size:12px;color:var(--mut);display:block;margin-bottom:8px;letter-spacing:.08em}
+.mini{font-size:13px;color:var(--mut);margin-top:16px;line-height:1.5;border-top:1px solid var(--line);padding-top:14px}
+.mini b{color:var(--fg)}
+.dims{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.dims em{font-style:normal;font-size:11.5px;border:1px solid var(--line);border-radius:99px;padding:3px 9px;color:var(--mut)}
+.steps .why{font-size:14px;color:var(--mut);margin-top:10px;line-height:1.5}
+.steps .card{display:flex;flex-direction:column}
+.gl2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.gl2 .card{padding:16px 18px}
+.gl2 b{font:400 20px Georgia,serif;display:block}
+.gl2 i{font-style:normal;font-size:12px;color:var(--mut);letter-spacing:.06em}
+.gl2 p{font-size:14px;color:var(--mut);margin-top:6px;line-height:1.45}
+</style>
+</head>
+<body>
+<header>
+  <a href="/">EPRIS JOURNAL</a>
+  <div class="seg" id="lang"><button data-l="ru" class="on">RU</button><button data-l="en">EN</button></div>
+</header>
+<main>
+  <div class="top">
+    <div>
+      <h1 data-t="h1"></h1>
+      <div class="sub"><span data-t="s1"></span><i>→</i><span data-t="s2"></span><i>→</i><span data-t="s3"></span></div>
+    </div>
+    <div class="seg" id="mode"><button data-m="v" class="on" data-t="mv"></button><button data-m="h" data-t="mh"></button></div>
+  </div>
+
+  <div class="stage"><svg id="viz" viewBox="0 0 800 470"></svg><div class="leg" id="leg"></div></div>
+  <div class="now"><small data-t="nowH"></small><div id="now"></div></div>
+
+  <div class="row">
+    <div class="card">
+      <div class="sl" id="sl"></div>
+      <div class="pills" id="pills"></div>
+      <div class="hint" id="limhint" style="margin-top:10px"></div>
+      <div class="try"><span data-t="tryH"></span><div class="pills" id="try" style="margin-top:0"></div></div>
+    </div>
+    <div class="card">
+      <div class="pick"><svg id="sec" viewBox="0 0 120 120"></svg><div><h2 id="pname"></h2><small id="pinfo"></small></div></div>
+      <div class="dims" id="dims"></div>
+      <div class="bar"><div class="h"><span data-t="stiff"></span><b id="b1v"></b></div><div class="tr"><i id="b1"></i></div></div>
+      <div class="bar"><div class="h"><span data-t="str"></span><b id="b2v"></b></div><div class="tr"><i id="b2"></i></div></div>
+      <div class="mini" id="iw"></div>
+    </div>
+  </div>
+
+  <div class="nums" id="nums"></div>
+
+  <h3 data-t="how"></h3>
+  <div class="steps" id="steps"></div>
+
+  <h3 data-t="all"></h3>
+  <div class="strip" id="strip"></div>
+
+  <h3 data-t="limH"></h3>
+  <div class="lim" id="lim"></div>
+
+  <h3 data-t="gl"></h3>
+  <div class="gl2" id="gloss"></div>
+</main>
+<script>
+const T={
+ ru:{h1:"Балка",s1:"нагрузка",s2:"прогиб",s3:"момент",mv:"Вертикальная",mh:"Боковая (lateral)",
+  L:"Пролёт L",H:"Высота H",i:"Шаг балок",G:"Постоянная G",Q:"Временная Q",P:"Ветер p",fa:"Прочность стали",
+  stiff:"Жёсткость: прогиб / допуск",str:"Прочность: σ / f",how:"Как считается",all:"Подбор по сортаменту IPE",limH:"Допуски на прогиб",gl:"Словарь",nowH:"",tryH:"",
+  w:"нагрузка на балку",wd:"расчётная ×1.5",M:"макс. момент",Imin:"нужный I",Wmin:"нужный W",d:"прогиб",dl:"допуск",
+  n1:"Нагрузка → на метр балки",n2:"Жёсткость",n3:"Прочность",n4:"Профиль",
+  slab:"Перекрытие",roof:"Покрытие",no:"нет",defl:"прогиб (увеличен)",mom:"момент M",m:"м",
+  gl_:[["Нагрузка","Load"],["Постоянная","Permanent (G)"],["Временная","Variable (Q)"],["Боковая нагрузка","Lateral load"],["Пролёт","Span"],["Шаг балок","Spacing"],["Второстепенная балка","Secondary beam"],["Опора","Support"],["Изгибающий момент","Bending moment"],["Прогиб","Deflection"],["Момент инерции I","Second moment of area"],["Момент сопротивления W","Section modulus"],["Напряжение σ","Stress"]]},
+ en:{h1:"Beam",s1:"load",s2:"deflection",s3:"moment",mv:"Vertical",mh:"Lateral",
+  L:"Span L",H:"Height H",i:"Beam spacing",G:"Permanent G",Q:"Variable Q",P:"Wind p",fa:"Steel strength",
+  stiff:"Stiffness: deflection / limit",str:"Strength: σ / f",how:"How it works",all:"IPE section selection",limH:"Deflection limits",gl:"Glossary",nowH:"",tryH:"",
+  w:"load on beam",wd:"design ×1.5",M:"max moment",Imin:"required I",Wmin:"required W",d:"deflection",dl:"limit",
+  n1:"Load → per metre of beam",n2:"Stiffness",n3:"Strength",n4:"Section",
+  slab:"Slab",roof:"Roof",no:"none",defl:"deflection (exaggerated)",mom:"moment M",m:"m",
+  gl_:[["Load","Нагрузка"],["Permanent (G)","Постоянная"],["Variable (Q)","Временная"],["Lateral load","Боковая нагрузка"],["Span","Пролёт"],["Spacing","Шаг балок"],["Secondary beam","Второстепенная балка"],["Support","Опора"],["Bending moment","Изгибающий момент"],["Deflection","Прогиб"],["Second moment of area","Момент инерции I"],["Section modulus","Момент сопротивления W"],["Stress","Напряжение σ"]]}
+};
+// h, b, tw, tf (mm), I cm4, W cm3
+const IPE=[[160,82,5,7.4,869,109],[180,91,5.3,8,1317,146],[200,100,5.6,8.5,1943,194],[220,110,5.9,9.2,2772,252],[240,120,6.2,9.8,3892,324],[270,135,6.6,10.2,5790,429],[300,150,7.1,10.7,8356,557],[330,160,7.5,11.5,11770,713],[360,170,8,12.7,16270,904],[400,180,8.6,13.5,23130,1156],[450,190,9.4,14.6,33740,1500],[500,200,10.2,16,48200,1928],[550,210,11.1,17.2,67120,2441],[600,220,12,19,92080,3069]];
+const X={ru:{
+ nowH:"Что сейчас происходит",tryH:"ПОПРОБУЙТЕ",
+ hint:{L:"Расстояние между опорами. Длиннее балка — сильнее она провисает. Прогиб растёт как L⁴, момент как L².",i:"Балки стоят рядами. Каждая держит полосу плиты шириной в этот шаг («грузовая полоса»).",G:"Постоянная нагрузка: вес плиты, стяжки, пола. Есть всегда. На слайде: 3,28 кН/м².",Q:"Временная нагрузка: люди, мебель, вещи. Может быть, а может и нет. На слайде: 3 кН/м².",fa:"Какое напряжение выдерживает сталь, не начиная течь. S275 → 275 МПа, S355 → 355 МПа.",H:"Высота стойки (колонны) от заделки внизу до верха. Стойка работает как консоль.",P:"Давление ветра на стену, которое передаётся на стойку сбоку. Это и есть lateral load."},
+ limhint:{v:"Допуск — насколько балке разрешено прогнуться. L/400 на 5 м = 12,5 мм: чтобы не трескалась штукатурка и пол не «качался».",h:"Допуск на боковое смещение. H/300 — стандарт для фасадов и стоек."},
+ leg:{v:[["var(--load)","Нагрузка","давит на балку вниз"],["var(--mut)","Пунктир","балка до нагрузки"],["var(--beam)","Чёрная линия","балка после — прогнулась (на рисунке сильно увеличено)"],["var(--mom)","Красная эпюра","момент: где балку сильнее всего «гнёт». Максимум — в середине"]],
+  h:[["var(--load)","Ветер","давит на стойку сбоку"],["var(--mut)","Пунктир","стойка до ветра"],["var(--beam)","Чёрная линия","стойка прогнулась (увеличено)"],["var(--mom)","Красная эпюра","момент: максимум у заделки (внизу), там конструкция «ломается» первой"]]},
+ presets:{v:[["Как на слайде",{L:5,i:4,G:3.28,Q:3,fa:275,lim:400}],["Пролёт 10 м",{L:10}],["Нагрузка ×2",{G:6.56,Q:6}],["Покрытие",{lim:200,Q:1,G:2}],["Сталь S355",{fa:355}]],h:[["Ветер 0,8",{P:.8,H:4}],["Сильный ветер",{P:1.6}],["Высокая стойка",{H:8}]]},
+ iw:"<b>I</b> — момент инерции: насколько сечение «жёсткое» (чем больше, тем меньше прогиб). <b>W</b> — момент сопротивления: насколько сечение «прочное» (чем больше, тем меньше напряжение). У двутавра металл вынесен к полкам — там он работает лучше всего.",
+ why:["Плита лежит на балках. Каждая балка собирает нагрузку с полосы шириной в шаг: кН/м² × м = кН/м.","Первое: не прогнётся ли слишком. Приравниваем прогиб к допуску и находим минимальный I — «жёсткость сечения».","Второе: не сломается ли. Умножаем нагрузку на 1,5 (запас), считаем момент и находим минимальный W.","Берём самый лёгкий профиль таблицы, у которого и I, и W не меньше нужных."],
+ gloss:[["Нагрузка","Load","Всё, что давит на конструкцию: вес, люди, ветер."],["Постоянная G","Permanent","Вес самой конструкции и отделки. Не меняется."],["Временная Q","Variable / live","Люди, мебель, снег. Меняется со временем."],["Боковая (lateral)","Lateral load","Нагрузка, которая толкает сбоку: ветер, землетрясение."],["Пролёт","Span","Расстояние между опорами балки."],["Второстепенная балка","Secondary beam","Балка, которая собирает нагрузку с плиты и передаёт на главную балку."],["Опора","Support","Шарнирная (можно поворачиваться) или заделка (жёстко)."],["Изгибающий момент M","Bending moment","«Сколько балку гнёт» в данном месте. Единицы: кН·м."],["Прогиб δ","Deflection","Насколько середина балки опустилась."],["Момент инерции I","Second moment of area","Жёсткость формы сечения. Против прогиба. см⁴."],["Момент сопротивления W","Section modulus","Прочность формы сечения. Против поломки. см³."],["Напряжение σ","Stress","σ = M / W. Не должно быть больше прочности стали f."],["Коэффициент 1,5","Load factor","Запас надёжности: нагрузку для расчёта умножаем на 1,5."]],
+ now:{both:(a,b,c)=>`Подходит <b>IPE ${a}</b> — и по жёсткости, и по прочности.`,
+  str:(a,b,c)=>`Решает <b>прочность</b>: по прогибу хватило бы IPE ${b}, но по моменту нужен <b>IPE ${a}</b>.`,
+  sti:(a,b,c)=>`Решает <b>жёсткость</b>: по прочности хватило бы IPE ${c}, но чтобы не прогибалась — <b>IPE ${a}</b>.`,
+  no:()=>`Даже самого большого профиля из таблицы не хватает. Уменьшите пролёт или нагрузку.`,
+  law:(Lm,M,h)=>h?`Закономерность: поднимете стойку вдвое — момент вырастет в 4 раза, а прогиб в 16.`:`Закономерность: если пролёт ${fmt(Lm,1)} м → ${fmt(Lm*2,1)} м, момент вырастет в 4 раза (до ${fmt(M*4,0)} кН·м), а прогиб — в 16.`}
+},en:{
+ nowH:"What is happening now",tryH:"TRY",
+ hint:{L:"Distance between supports. A longer beam sags more. Deflection grows as L⁴, moment as L².",i:"Beams stand in rows. Each carries a strip of slab this wide (the tributary width).",G:"Permanent load: slab, screed, floor finish. Always there. On the slide: 3.28 kN/m².",Q:"Variable load: people, furniture. May or may not be there. On the slide: 3 kN/m².",fa:"Stress the steel can take before yielding. S275 → 275 MPa, S355 → 355 MPa.",H:"Column height from the fixed base to the top. It works as a cantilever.",P:"Wind pressure on the wall, passed to the column sideways. This is the lateral load."},
+ limhint:{v:"The limit is how much the beam may sag. L/400 over 5 m = 12.5 mm, so plaster does not crack and the floor does not feel bouncy.",h:"Limit for sideways drift. H/300 is typical for façades and columns."},
+ leg:{v:[["var(--load)","Load","pushes the beam down"],["var(--mut)","Dashed","beam before loading"],["var(--beam)","Black line","beam after — it deflected (strongly exaggerated)"],["var(--mom)","Red diagram","moment: where the beam is bent the most. Peak at midspan"]],
+  h:[["var(--load)","Wind","pushes the column sideways"],["var(--mut)","Dashed","column before wind"],["var(--beam)","Black line","column deflected (exaggerated)"],["var(--mom)","Red diagram","moment: peak at the fixed base, where it fails first"]]},
+ presets:{v:[["As on the slide",{L:5,i:4,G:3.28,Q:3,fa:275,lim:400}],["10 m span",{L:10}],["Load ×2",{G:6.56,Q:6}],["Roof",{lim:200,Q:1,G:2}],["S355 steel",{fa:355}]],h:[["Wind 0.8",{P:.8,H:4}],["Strong wind",{P:1.6}],["Tall column",{H:8}]]},
+ iw:"<b>I</b> — second moment of area: how stiff the section is (bigger = less deflection). <b>W</b> — section modulus: how strong it is (bigger = lower stress). An I-section puts steel into the flanges, where it works best.",
+ why:["The slab rests on beams. Each beam collects the load from a strip as wide as the spacing: kN/m² × m = kN/m.","First: will it sag too much? Set deflection equal to the limit and find the minimum I — stiffness.","Second: will it break? Multiply the load by 1.5 (safety), find the moment and the minimum W.","Take the lightest table section with I and W both not less than required."],
+ gloss:[["Load","Нагрузка","Everything that pushes on a structure: weight, people, wind."],["Permanent G","Постоянная","Weight of the structure and finishes. Does not change."],["Variable Q","Временная","People, furniture, snow. Changes over time."],["Lateral load","Боковая","Pushes sideways: wind, earthquake."],["Span","Пролёт","Distance between the supports."],["Secondary beam","Второстепенная балка","Collects load from the slab and passes it to the main beam."],["Support","Опора","Pinned (can rotate) or fixed (rigid)."],["Bending moment M","Изгибающий момент","How much the beam is being bent at a point. kN·m."],["Deflection δ","Прогиб","How far the middle sags."],["Second moment I","Момент инерции","Stiffness of the shape. Against sagging. cm⁴."],["Section modulus W","Момент сопротивления","Strength of the shape. Against failure. cm³."],["Stress σ","Напряжение","σ = M / W. Must not exceed steel strength f."],["Factor 1.5","Коэффициент","Safety: design load is the real load × 1.5."]],
+ now:{both:(a,b,c)=>`<b>IPE ${a}</b> works for both stiffness and strength.`,
+  str:(a,b,c)=>`<b>Strength</b> decides: stiffness alone would allow IPE ${b}, but the moment needs <b>IPE ${a}</b>.`,
+  sti:(a,b,c)=>`<b>Stiffness</b> decides: strength alone would allow IPE ${c}, but to limit sagging you need <b>IPE ${a}</b>.`,
+  no:()=>`Even the biggest section in the table is not enough. Reduce the span or the load.`,
+  law:(Lm,M,h)=>h?`Rule: double the column height — moment grows 4×, deflection 16×.`:`Rule: span ${fmt(Lm,1)} m → ${fmt(Lm*2,1)} m makes the moment 4× bigger (${fmt(M*4,0)} kN·m) and the deflection 16×.`}
+}};
+const E=210000;
+let lang="ru",mode="v";
+const S={L:5,i:4,G:3.28,Q:3,fa:275,lim:400,H:4,P:0.8};
+const CV={v:[["L",2,12,.1,"m"],["i",1,8,.1,"m"],["G",0,10,.01,"kN/m²"],["Q",0,10,.1,"kN/m²"],["fa",235,355,5,"MPa"]],h:[["H",2,10,.1,"m"],["i",1,8,.1,"m"],["P",.2,2,.05,"kN/m²"],["fa",235,355,5,"MPa"]]};
+const t=k=>T[lang][k];
+const fmt=(x,d=1)=>Number(x).toLocaleString(lang==="ru"?"ru-RU":"en-GB",{maximumFractionDigits:d,minimumFractionDigits:d});
+const $=id=>document.getElementById(id);
+
+function secSVG(p,fill,fit){
+  const [h,b,tw,tf]=p,k=fit?108/h:0.18,H=h*k+0,B=b*k,W=tw*k,F=Math.max(tf*k,2.2),cx=60,top=60-H/2;
+  return `<path d="M${cx-B/2},${top}h${B}v${F}h${-(B-W)/2}v${H-2*F}h${(B-W)/2}v${F}h${-B}v${-F}h${(B-W)/2}v${-(H-2*F)}h${-(B-W)/2}z" fill="${fill||"currentColor"}"/>`;
+}
+function buildControls(){
+  $("sl").innerHTML=CV[mode].map(([k,a,b,s,u])=>`<div><label><span>${t(k)}</span><b><span id="v_${k}"></span><u>${u}</u></b></label><input type="range" min="${a}" max="${b}" step="${s}" value="${S[k]}" data-k="${k}"><div class="hint">${X[lang].hint[k]}</div></div>`).join("");
+  $("sl").querySelectorAll("input").forEach(el=>el.oninput=()=>{S[el.dataset.k]=+el.value;calc()});
+  const opts=mode==="v"?[[400,"L/400 · "+t("slab")],[250,"L/250 · "+t("slab")+" g+q"],[200,"L/200 · "+t("roof")]]:[[300,"H/300"],[150,"H/150"]];
+  if(mode==="h"&&![300,150].includes(S.lim))S.lim=300;
+  if(mode==="v"&&![400,250,200].includes(S.lim))S.lim=400;
+  $("pills").innerHTML=opts.map(([v,l])=>`<button data-v="${v}" class="${v==S.lim?"on":""}">${l}</button>`).join("");
+  $("pills").querySelectorAll("button").forEach(b=>b.onclick=()=>{S.lim=+b.dataset.v;$("pills").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));calc()});
+  $("limhint").textContent=X[lang].limhint[mode];
+  $("try").innerHTML=X[lang].presets[mode].map(([l],n)=>`<button data-n="${n}">${l}</button>`).join("");
+  $("try").querySelectorAll("button").forEach(b=>b.onclick=()=>{Object.assign(S,X[lang].presets[mode][+b.dataset.n][1]);buildControls();calc()});
+  $("leg").innerHTML=X[lang].leg[mode].map(([c,a,b])=>`<div><i style="border-color:${c}${a==="Пунктир"||a==="Dashed"?";border-top-style:dashed":""}"></i><span><b>${a}</b> — ${b}</span></div>`).join("");
+}
+function arrows(n,fn){let s="";for(let k=0;k<=n;k++)s+=fn(k/n);return s}
+function calc(){
+  CV[mode].forEach(([k])=>$("v_"+k).textContent=fmt(S[k],k==="fa"?0:k==="G"||k==="P"?2:1));
+  const v=mode==="v",Lm=v?S.L:S.H,Lmm=Lm*1000;
+  let g,q,wS,wU,M,cd;
+  if(v){g=S.G*S.i;q=S.Q*S.i;wS=S.lim===400?q:g+q;wU=1.5*(g+q);M=wU*Lm*Lm/8;cd=5/384}
+  else{q=S.P*S.i;g=0;wS=q;wU=1.5*q;M=wU*Lm*Lm/2;cd=1/8}
+  const Imin=cd*S.lim*wS*Lmm**3/E/1e4, Wmin=M*1e6/S.fa/1e3;
+  const pick=IPE.find(p=>p[4]>=Imin&&p[5]>=Wmin), P=pick||IPE[IPE.length-1];
+  const d=cd*wS*Lmm**4/(E*P[4]*1e4), dl=Lmm/S.lim, sig=M*1e6/(P[5]*1e3);
+  // numbers
+  const u=v?"kN/m":"kN/m";
+  $("nums").innerHTML=[[t("w"),fmt(v?g+q:q,2),u],[t("M"),fmt(M,1),"kN·m"],[t("Imin"),fmt(Imin,0),"cm⁴"],[t("Wmin"),fmt(Wmin,0),"cm³"]].map(([a,b,c])=>`<div><span>${a}</span><b>${b}</b><em>${c}</em></div>`).join("");
+  // pick card
+  $("sec").innerHTML=secSVG(P,pick?"var(--fg)":"var(--mom)",1);
+  $("pname").textContent=pick?"IPE "+P[0]:t("no");
+  $("pinfo").textContent=`I ${fmt(P[4],0)} cm⁴ · W ${fmt(P[5],0)} cm³`;
+  const r1=d/dl*100,r2=sig/S.fa*100;
+  [["b1",r1],["b2",r2]].forEach(([id,r])=>{$(id).style.width=Math.min(r,100)+"%";$(id).className=r>100?"hi":""});
+  $("b1v").textContent=`${fmt(d,1)} / ${fmt(dl,1)} mm`;
+  $("b2v").textContent=`${fmt(sig,0)} / ${fmt(S.fa,0)} MPa`;
+  $("dims").innerHTML=`<em>h ${P[0]}</em><em>b ${P[1]}</em><em>t<sub>w</sub> ${P[2]}</em><em>t<sub>f</sub> ${P[3]}</em><em>mm</em>`;
+  $("iw").innerHTML=X[lang].iw;
+  const iI=IPE.findIndex(p=>p[4]>=Imin),iW=IPE.findIndex(p=>p[5]>=Wmin),N=X[lang].now;
+  let msg;
+  if(!pick)msg=N.no();else if(iI===iW)msg=N.both(P[0]);else if(iW>iI)msg=N.str(P[0],IPE[iI][0],IPE[iW][0]);else msg=N.sti(P[0],IPE[iI][0],IPE[iW][0]);
+  $("now").innerHTML=`<p>${msg}</p><p>${N.law(Lm,M,!v)}</p>`;
+  draw(v,Lm,wU,M,d,dl,g,q);
+  steps(v,g,q,wS,wU,Lm,Imin,Wmin,pick,P);
+  strip(Imin,Wmin,pick);
+}
+function draw(v,Lm,w,M,d,dl,g,q){
+  const amp=Math.max(6,Math.min(46,34*d/dl));
+  let s=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1L10,5L0,9z" fill="var(--load)"/></marker></defs>`;
+  if(v){
+    const x0=90,x1=710,W=x1-x0,y=190,al=Math.min(86,34+w*.9);
+    // load block + arrows
+    s+=`<rect x="${x0}" y="${y-al-12}" width="${W}" height="12" rx="3" fill="var(--load)" opacity=".9"/>`;
+    s+=arrows(16,f=>{const x=x0+W*f;return `<line x1="${x}" y1="${y-al}" x2="${x}" y2="${y-9}" stroke="var(--load)" stroke-width="2" marker-end="url(#ah)"/>`});
+    s+=`<text class="tb" x="${x1}" y="${y-al-24}" text-anchor="end" fill="var(--load)" style="fill:var(--load)">${fmt(w,1)} kN/m</text>`;
+    // undeformed (dashed) + deflected
+    s+=`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="var(--mut)" stroke-dasharray="4 5"/>`;
+    let p="";for(let k=0;k<=80;k++){const xi=k/80;p+=(k?"L":"M")+(x0+W*xi)+","+(y+amp*(16/5)*(xi-2*xi**3+xi**4))}
+    s+=`<path d="${p}" fill="none" stroke="var(--beam)" stroke-width="9" stroke-linecap="round"/>`;
+    // supports
+    s+=`<path d="M${x0},${y+6}l-14,26h28z" fill="none" stroke="var(--fg)" stroke-width="2.5"/><circle cx="${x1}" cy="${y+22}" r="9" fill="none" stroke="var(--fg)" stroke-width="2.5"/><line x1="${x1-18}" y1="${y+34}" x2="${x1+18}" y2="${y+34}" stroke="var(--fg)" stroke-width="2.5"/>`;
+    s+=`<text class="tb" x="${x0-34}" y="${y+4}">C</text><text class="tb" x="${x1+22}" y="${y+4}">D</text>`;
+    // delta marker
+    const mx=(x0+x1)/2;
+    s+=`<line x1="${mx+34}" y1="${y}" x2="${mx+34}" y2="${y+amp}" stroke="var(--mom)" stroke-width="2"/><text class="tb" x="${mx+44}" y="${y+amp/2+5}" style="fill:var(--mom)">δ ${fmt(d,1)} mm</text>`;
+    // span
+    s+=`<line x1="${x0}" y1="${y+70}" x2="${x1}" y2="${y+70}" stroke="var(--mut)"/><line x1="${x0}" y1="${y+64}" x2="${x0}" y2="${y+76}" stroke="var(--mut)"/><line x1="${x1}" y1="${y+64}" x2="${x1}" y2="${y+76}" stroke="var(--mut)"/>`;
+    s+=`<rect x="${mx-36}" y="${y+58}" width="72" height="24" rx="12" style="fill:var(--card)"/><text class="tb" x="${mx}" y="${y+75}" text-anchor="middle">L = ${fmt(Lm,1)} m</text>`;
+    // moment diagram
+    const by=330,mh=100;
+    let mp=`M${x0},${by}`;for(let k=0;k<=80;k++){const xi=k/80;mp+=`L${x0+W*xi},${by+mh*4*xi*(1-xi)}`}
+    s+=`<path d="${mp}L${x1},${by}z" fill="var(--mom)" opacity=".16"/><path d="${mp}" fill="none" stroke="var(--mom)" stroke-width="2.5"/><line x1="${x0}" y1="${by}" x2="${x1}" y2="${by}" stroke="var(--fg)" stroke-width="1.5"/>`;
+    s+=`<line x1="${mx}" y1="${y+8}" x2="${mx}" y2="${by+mh}" stroke="var(--mom)" stroke-dasharray="2 5" opacity=".55"/>`;
+    s+=`<text class="t" x="${x0}" y="${by-10}">${t("mom")}</text><text class="tb" x="${mx+10}" y="${by+mh+22}" style="fill:var(--mom)">M = ${fmt(M,1)} kN·m</text>`;
+  }else{
+    const bx=250,yb=400,yt=40,h=yb-yt,al=Math.min(120,36+w*5);
+    s+=arrows(10,f=>{const yy=yb-h*f;return `<line x1="${bx-al-30}" y1="${yy}" x2="${bx-16}" y2="${yy}" stroke="var(--load)" stroke-width="2" marker-end="url(#ah)"/>`});
+    s+=`<text class="tb" x="${bx-al-30}" y="${yt-14}" style="fill:var(--load)">${fmt(w,1)} kN/m</text>`;
+    s+=`<line x1="${bx}" y1="${yb}" x2="${bx}" y2="${yt}" stroke="var(--mut)" stroke-dasharray="4 5"/>`;
+    let p="";for(let k=0;k<=80;k++){const z=k/80;p+=(k?"L":"M")+(bx+amp*(z*z*(6-4*z+z*z))/3)+","+(yb-h*z)}
+    s+=`<path d="${p}" fill="none" stroke="var(--beam)" stroke-width="10" stroke-linecap="round"/>`;
+    s+=`<rect x="${bx-46}" y="${yb+6}" width="92" height="14" rx="3" style="fill:var(--fg)"/>`;
+    for(let k=0;k<6;k++)s+=`<line x1="${bx-40+k*16}" y1="${yb+20}" x2="${bx-48+k*16}" y2="${yb+30}" stroke="var(--fg)" stroke-width="2"/>`;
+    s+=`<text class="tb" x="${bx+amp+16}" y="${yt+6}" style="fill:var(--mom)">δ ${fmt(d,1)} mm</text>`;
+    s+=`<text class="t" x="${bx+14}" y="${yb-h/2}">H = ${fmt(Lm,1)} m</text>`;
+    const mx=520,mw=Math.min(220,20+M*1.6);let mp=`M${mx},${yt}`;
+    for(let k=0;k<=80;k++){const z=k/80;mp+=`L${mx+mw*(1-z)**2},${yt+h*z}`}
+    s+=`<path d="${mp}L${mx},${yb}z" fill="var(--mom)" opacity=".16"/><path d="${mp}" fill="none" stroke="var(--mom)" stroke-width="2.5"/><line x1="${mx}" y1="${yt}" x2="${mx}" y2="${yb}" stroke="var(--fg)" stroke-width="1.5"/>`;
+    s+=`<text class="t" x="${mx}" y="${yt-14}">${t("mom")}</text><text class="tb" x="${mx+mw+12}" y="${yb}" style="fill:var(--mom)">M = ${fmt(M,1)} kN·m</text>`;
+  }
+  $("viz").innerHTML=s;
+}
+function steps(v,g,q,wS,wU,Lm,Imin,Wmin,pick,P){
+  const L=fmt(Lm*1000,0);
+  const f1=v?`g = ${fmt(S.G,2)} × ${fmt(S.i,1)} = <b>${fmt(g,2)}</b><br>q = ${fmt(S.Q,1)} × ${fmt(S.i,1)} = <b>${fmt(q,2)}</b> kN/m`:`w = ${fmt(S.P,2)} × ${fmt(S.i,1)} = <b>${fmt(q,2)}</b> kN/m`;
+  const f2=v?`5·${S.lim}/384 · ${fmt(wS,2)}·${L}³/${E}<br>I = <b>${fmt(Imin,0)}</b> cm⁴`:`${S.lim}/8 · ${fmt(wS,2)}·${L}³/${E}<br>I = <b>${fmt(Imin,0)}</b> cm⁴`;
+  const f3=`${fmt(wU,2)}·${L}²/(${v?8:2}·${S.fa})<br>W = <b>${fmt(Wmin,0)}</b> cm³`;
+  const f4=pick?`I ${fmt(P[4],0)} ≥ ${fmt(Imin,0)}<br>W ${fmt(P[5],0)} ≥ ${fmt(Wmin,0)}<br><b>IPE ${P[0]}</b>`:`—`;
+  $("steps").innerHTML=[["1",t("n1"),f1],["2",t("n2"),f2],["3",t("n3"),f3],["4",t("n4"),f4]].map(([n,a,f])=>`<div class="card"><div class="n">${n}</div><div style="font-size:14px;color:var(--mut)">${a}</div><div class="f">${f}</div><div class="why">${X[lang].why[+n-1]}</div></div>`).join("");
+}
+function strip(Imin,Wmin,pick){
+  $("strip").innerHTML=IPE.map(p=>{const ok=p[4]>=Imin&&p[5]>=Wmin,on=pick&&p[0]===pick[0];
+   return `<div class="${on?"on":ok?"":"no"}"><svg viewBox="0 0 120 120">${secSVG(p)}</svg><b>IPE ${p[0]}</b>${fmt(p[5],0)} cm³</div>`}).join("");
+}
+function render(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-t]").forEach(el=>el.textContent=X[lang][el.dataset.t]||t(el.dataset.t));
+  $("gloss").innerHTML=X[lang].gloss.map(([a,b,c])=>`<div class="card"><b>${a}</b><i>${b}</i><p>${c}</p></div>`).join("");
+  $("lim").innerHTML=[["L/400",t("slab")+" · q"],["L/250",t("slab")+" · g+q"],["L/200",t("roof")+" · g+q"]].map(([a,b])=>`<div class="card"><b>${a}</b><span>${b}</span></div>`).join("");
+  buildControls();calc();
+}
+document.querySelectorAll("#lang button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;document.querySelectorAll("#lang button").forEach(x=>x.classList.toggle("on",x===b));render()});
+document.querySelectorAll("#mode button").forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll("#mode button").forEach(x=>x.classList.toggle("on",x===b));render()});
+render();
+</script>
+</body>
+</html>
