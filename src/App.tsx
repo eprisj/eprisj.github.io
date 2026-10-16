@@ -4512,15 +4512,27 @@ const APP_BAND_TEXT: Record<string, { kicker: string; title: string; line: strin
   TR: { kicker: 'Uygulama', title: 'iPhone ve iPad için EPRIS Journal', line: 'Her yazı okumak için dizildi, tek dokunuşla çevrimdışı kaydedilir. Ücretsiz, hesap ve takip yok.', more: 'Uygulama hakkında' },
 };
 
-const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: string }> = {
-  EN: { line: 'An independent journal of contemporary art, architecture and interior design: long-form interviews, essays and reviews.', place: 'Edited in Milan, Italy', sections: 'Sections' },
-  RU: { line: 'Независимый журнал о современном искусстве, архитектуре и дизайне интерьеров: большие интервью, эссе и рецензии.', place: 'Редакция в Милане, Италия', sections: 'Разделы' },
-  UA: { line: 'Незалежний журнал про сучасне мистецтво, архітектуру й дизайн інтер’єрів: великі інтерв’ю, есеї та рецензії.', place: 'Редакція в Мілані, Італія', sections: 'Розділи' },
-  DE: { line: 'Ein unabhängiges Journal für zeitgenössische Kunst, Architektur und Interior Design: lange Interviews, Essays und Rezensionen.', place: 'Redaktion in Mailand, Italien', sections: 'Rubriken' },
-  IT: { line: 'Una rivista indipendente di arte contemporanea, architettura e interior design: lunghe interviste, saggi e recensioni.', place: 'Redazione a Milano, Italia', sections: 'Sezioni' },
-  ES: { line: 'Una revista independiente de arte contemporáneo, arquitectura e interiorismo: entrevistas largas, ensayos y reseñas.', place: 'Editada en Milán, Italia', sections: 'Secciones' },
-  FR: { line: 'Une revue indépendante d’art contemporain, d’architecture et de design d’intérieur : grands entretiens, essais et critiques.', place: 'Éditée à Milan, Italie', sections: 'Rubriques' },
-  TR: { line: 'Çağdaş sanat, mimarlık ve iç mimarlık üzerine bağımsız bir dergi: uzun söyleşiler, denemeler ve eleştiriler.', place: 'Milano, İtalya’da yayımlanır', sections: 'Bölümler' },
+/* Patreon: публичная страница журнала (не кабинет patreon.com/cw/…, он требует
+   входа). Значок – упрощённый знак Patreon: колонка и круг. */
+const PATREON_URL = 'https://www.patreon.com/epris';
+function PatreonMark({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <rect x="2" y="2" width="3.6" height="20" />
+      <circle cx="15.2" cy="9.6" r="6.8" />
+    </svg>
+  );
+}
+
+const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: string; support: string }> = {
+  EN: { line: 'An independent journal of contemporary art, architecture and interior design: long-form interviews, essays and reviews.', place: 'Edited in Milan, Italy', sections: 'Sections', support: 'Support us on Patreon' },
+  RU: { line: 'Независимый журнал о современном искусстве, архитектуре и дизайне интерьеров: большие интервью, эссе и рецензии.', place: 'Редакция в Милане, Италия', sections: 'Разделы', support: 'Поддержать на Patreon' },
+  UA: { line: 'Незалежний журнал про сучасне мистецтво, архітектуру й дизайн інтер’єрів: великі інтерв’ю, есеї та рецензії.', place: 'Редакція в Мілані, Італія', sections: 'Розділи', support: 'Підтримати на Patreon' },
+  DE: { line: 'Ein unabhängiges Journal für zeitgenössische Kunst, Architektur und Interior Design: lange Interviews, Essays und Rezensionen.', place: 'Redaktion in Mailand, Italien', sections: 'Rubriken', support: 'Auf Patreon unterstützen' },
+  IT: { line: 'Una rivista indipendente di arte contemporanea, architettura e interior design: lunghe interviste, saggi e recensioni.', place: 'Redazione a Milano, Italia', sections: 'Sezioni', support: 'Sostienici su Patreon' },
+  ES: { line: 'Una revista independiente de arte contemporáneo, arquitectura e interiorismo: entrevistas largas, ensayos y reseñas.', place: 'Editada en Milán, Italia', sections: 'Secciones', support: 'Apóyanos en Patreon' },
+  FR: { line: 'Une revue indépendante d’art contemporain, d’architecture et de design d’intérieur : grands entretiens, essais et critiques.', place: 'Éditée à Milan, Italie', sections: 'Rubriques', support: 'Soutenez-nous sur Patreon' },
+  TR: { line: 'Çağdaş sanat, mimarlık ve iç mimarlık üzerine bağımsız bir dergi: uzun söyleşiler, denemeler ve eleştiriler.', place: 'Milano, İtalya’da yayımlanır', sections: 'Bölümler', support: "Patreon'da destekleyin" },
 };
 
 function SiteFooter({ lang, title, description, publicationName, rights, instagramUrl, contactEmail, links, onNavigate }: {
@@ -4540,6 +4552,10 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
           className="inline-block leading-none">
           <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[160px] h-auto" loading="lazy" />
+        </a>
+        <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-white/70 hover:text-white transition-colors">
+          <PatreonMark size={16} />{about.support} ↗
         </a>
         <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
       </div>
@@ -4571,6 +4587,10 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
               </a>
               <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 hover:text-white underline underline-offset-4 transition-colors">{tx.more}</a>
             </div>
+            <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors">
+              <PatreonMark size={18} />{about.support} ↗
+            </a>
             {(instagramUrl || contactEmail) && <div className="mt-10 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
               {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Instagram ↗</a>}
               {contactEmail && <a href={`mailto:${contactEmail}`} className="block normal-case tracking-[0.06em] hover:text-white transition-colors">{contactEmail}</a>}
