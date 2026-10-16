@@ -98,6 +98,25 @@ h3{font:600 12px/1 inherit;font-family:inherit;letter-spacing:.2em;text-transfor
 .gl2 b{font:400 20px Georgia,serif;display:block}
 .gl2 i{font-style:normal;font-size:12px;color:var(--mut);letter-spacing:.06em}
 .gl2 p{font-size:14px;color:var(--mut);margin-top:6px;line-height:1.45}
+#bur{position:fixed;left:14px;bottom:14px;z-index:50;display:flex;align-items:flex-end;gap:6px;max-width:calc(100vw - 28px);pointer-events:none}
+#bur>*{pointer-events:auto}
+#bur .av{width:84px;flex:none;cursor:pointer;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3));animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.bub{position:relative;background:var(--card);color:var(--fg);border:1.5px solid var(--fg);border-radius:20px 20px 20px 4px;padding:14px 16px 12px;width:min(410px,calc(100vw - 130px));max-height:min(54vh,400px);overflow:auto;font-size:14px;line-height:1.55;box-shadow:0 14px 44px rgba(0,0,0,.3)}
+.bub h4{font:400 21px/1.15 Georgia,serif;margin:0 22px 6px 0}
+.bub .x{position:absolute;right:10px;top:8px;border:0;background:none;color:var(--mut);font-size:20px;cursor:pointer;line-height:1}
+.bub .nav{display:flex;align-items:center;gap:6px;margin-top:12px;position:sticky;bottom:-12px;background:var(--card);padding:8px 0 2px}
+.bub .nav button{font:600 12px inherit;font-family:inherit;border:1.5px solid var(--fg);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:99px;cursor:pointer}
+.bub .nav button.g{background:none;color:var(--fg)}
+.bub .dots{flex:1;display:flex;gap:4px;justify-content:center}
+.bub .dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.bub .dots i.on{background:var(--fg)}
+.bub b{font-weight:700}
+.spot{outline:3px solid var(--mom);outline-offset:6px;border-radius:24px}
+main{padding-bottom:230px!important}
+@media(max-width:560px){#bur .av{width:62px}.bub{width:calc(100vw - 100px);font-size:13.5px}}
+.nums p{font-size:12px;color:var(--mut);margin-top:6px;line-height:1.4}
+#stress{max-height:340px}
 </style>
 </head>
 <body>
@@ -114,17 +133,17 @@ h3{font:600 12px/1 inherit;font-family:inherit;letter-spacing:.2em;text-transfor
     <div class="seg" id="mode"><button data-m="v" class="on" data-t="mv"></button><button data-m="h" data-t="mh"></button></div>
   </div>
 
-  <div class="stage"><svg id="viz" viewBox="0 0 800 470"></svg><div class="leg" id="leg"></div></div>
+  <div class="stage" id="stage"><svg id="viz" viewBox="0 0 800 560"></svg><div class="leg" id="leg"></div></div>
   <div class="now"><small data-t="nowH"></small><div id="now"></div></div>
 
   <div class="row">
-    <div class="card">
+    <div class="card" id="ctl">
       <div class="sl" id="sl"></div>
       <div class="pills" id="pills"></div>
       <div class="hint" id="limhint" style="margin-top:10px"></div>
       <div class="try"><span data-t="tryH"></span><div class="pills" id="try" style="margin-top:0"></div></div>
     </div>
-    <div class="card">
+    <div class="card" id="pickcard">
       <div class="pick"><svg id="sec" viewBox="0 0 120 120"></svg><div><h2 id="pname"></h2><small id="pinfo"></small></div></div>
       <div class="dims" id="dims"></div>
       <div class="bar"><div class="h"><span data-t="stiff"></span><b id="b1v"></b></div><div class="tr"><i id="b1"></i></div></div>
@@ -132,6 +151,9 @@ h3{font:600 12px/1 inherit;font-family:inherit;letter-spacing:.2em;text-transfor
       <div class="mini" id="iw"></div>
     </div>
   </div>
+
+  <h3 data-t="insideH"></h3>
+  <div class="card" id="inside"><svg id="stress" viewBox="0 0 800 280"></svg><div class="why" id="insideTxt" style="margin-top:10px;font-size:14px;color:var(--mut);line-height:1.55"></div></div>
 
   <div class="nums" id="nums"></div>
 
@@ -147,11 +169,12 @@ h3{font:600 12px/1 inherit;font-family:inherit;letter-spacing:.2em;text-transfor
   <h3 data-t="gl"></h3>
   <div class="gl2" id="gloss"></div>
 </main>
+<div id="bur"></div>
 <script>
 const T={
  ru:{h1:"Балка",s1:"нагрузка",s2:"прогиб",s3:"момент",mv:"Вертикальная",mh:"Боковая (lateral)",
   L:"Пролёт L",H:"Высота H",i:"Шаг балок",G:"Постоянная G",Q:"Временная Q",P:"Ветер p",fa:"Прочность стали",
-  stiff:"Жёсткость: прогиб / допуск",str:"Прочность: σ / f",how:"Как считается",all:"Подбор по сортаменту IPE",limH:"Допуски на прогиб",gl:"Словарь",nowH:"",tryH:"",
+  stiff:"Жёсткость: прогиб / допуск",str:"Прочность: σ / f",how:"Как считается",all:"Подбор по сортаменту IPE",limH:"Допуски на прогиб",gl:"Словарь",nowH:"",tryH:"",insideH:"",insideH:"",
   w:"нагрузка на балку",wd:"расчётная ×1.5",M:"макс. момент",Imin:"нужный I",Wmin:"нужный W",d:"прогиб",dl:"допуск",
   n1:"Нагрузка → на метр балки",n2:"Жёсткость",n3:"Прочность",n4:"Профиль",
   slab:"Перекрытие",roof:"Покрытие",no:"нет",defl:"прогиб (увеличен)",mom:"момент M",m:"м",
@@ -167,7 +190,8 @@ const T={
 // h, b, tw, tf (mm), I cm4, W cm3
 const IPE=[[160,82,5,7.4,869,109],[180,91,5.3,8,1317,146],[200,100,5.6,8.5,1943,194],[220,110,5.9,9.2,2772,252],[240,120,6.2,9.8,3892,324],[270,135,6.6,10.2,5790,429],[300,150,7.1,10.7,8356,557],[330,160,7.5,11.5,11770,713],[360,170,8,12.7,16270,904],[400,180,8.6,13.5,23130,1156],[450,190,9.4,14.6,33740,1500],[500,200,10.2,16,48200,1928],[550,210,11.1,17.2,67120,2441],[600,220,12,19,92080,3069]];
 const X={ru:{
- nowH:"Что сейчас происходит",tryH:"ПОПРОБУЙТЕ",
+ numh:["Сколько кН давит на каждый метр балки (без запаса).","Насколько сильно балку «гнёт» в самом опасном месте (с запасом ×1,5).","Минимальная жёсткость сечения, чтобы прогиб не превысил допуск.","Минимальная прочность сечения, чтобы напряжение не превысило сталь."],
+ nowH:"Что сейчас происходит",tryH:"ПОПРОБУЙТЕ",insideH:"Что происходит внутри балки",
  hint:{L:"Расстояние между опорами. Длиннее балка — сильнее она провисает. Прогиб растёт как L⁴, момент как L².",i:"Балки стоят рядами. Каждая держит полосу плиты шириной в этот шаг («грузовая полоса»).",G:"Постоянная нагрузка: вес плиты, стяжки, пола. Есть всегда. На слайде: 3,28 кН/м².",Q:"Временная нагрузка: люди, мебель, вещи. Может быть, а может и нет. На слайде: 3 кН/м².",fa:"Какое напряжение выдерживает сталь, не начиная течь. S275 → 275 МПа, S355 → 355 МПа.",H:"Высота стойки (колонны) от заделки внизу до верха. Стойка работает как консоль.",P:"Давление ветра на стену, которое передаётся на стойку сбоку. Это и есть lateral load."},
  limhint:{v:"Допуск — насколько балке разрешено прогнуться. L/400 на 5 м = 12,5 мм: чтобы не трескалась штукатурка и пол не «качался».",h:"Допуск на боковое смещение. H/300 — стандарт для фасадов и стоек."},
  leg:{v:[["var(--load)","Нагрузка","давит на балку вниз"],["var(--mut)","Пунктир","балка до нагрузки"],["var(--beam)","Чёрная линия","балка после — прогнулась (на рисунке сильно увеличено)"],["var(--mom)","Красная эпюра","момент: где балку сильнее всего «гнёт». Максимум — в середине"]],
@@ -182,7 +206,8 @@ const X={ru:{
   no:()=>`Даже самого большого профиля из таблицы не хватает. Уменьшите пролёт или нагрузку.`,
   law:(Lm,M,h)=>h?`Закономерность: поднимете стойку вдвое — момент вырастет в 4 раза, а прогиб в 16.`:`Закономерность: если пролёт ${fmt(Lm,1)} м → ${fmt(Lm*2,1)} м, момент вырастет в 4 раза (до ${fmt(M*4,0)} кН·м), а прогиб — в 16.`}
 },en:{
- nowH:"What is happening now",tryH:"TRY",
+ numh:["How many kN press on each metre of the beam (no safety factor).","How hard the beam is being bent at its worst spot (with ×1.5 safety).","Minimum stiffness of the section so deflection stays within the limit.","Minimum strength of the section so stress stays below the steel strength."],
+ nowH:"What is happening now",tryH:"TRY",insideH:"What happens inside the beam",
  hint:{L:"Distance between supports. A longer beam sags more. Deflection grows as L⁴, moment as L².",i:"Beams stand in rows. Each carries a strip of slab this wide (the tributary width).",G:"Permanent load: slab, screed, floor finish. Always there. On the slide: 3.28 kN/m².",Q:"Variable load: people, furniture. May or may not be there. On the slide: 3 kN/m².",fa:"Stress the steel can take before yielding. S275 → 275 MPa, S355 → 355 MPa.",H:"Column height from the fixed base to the top. It works as a cantilever.",P:"Wind pressure on the wall, passed to the column sideways. This is the lateral load."},
  limhint:{v:"The limit is how much the beam may sag. L/400 over 5 m = 12.5 mm, so plaster does not crack and the floor does not feel bouncy.",h:"Limit for sideways drift. H/300 is typical for façades and columns."},
  leg:{v:[["var(--load)","Load","pushes the beam down"],["var(--mut)","Dashed","beam before loading"],["var(--beam)","Black line","beam after — it deflected (strongly exaggerated)"],["var(--mom)","Red diagram","moment: where the beam is bent the most. Peak at midspan"]],
@@ -234,7 +259,7 @@ function calc(){
   const d=cd*wS*Lmm**4/(E*P[4]*1e4), dl=Lmm/S.lim, sig=M*1e6/(P[5]*1e3);
   // numbers
   const u=v?"kN/m":"kN/m";
-  $("nums").innerHTML=[[t("w"),fmt(v?g+q:q,2),u],[t("M"),fmt(M,1),"kN·m"],[t("Imin"),fmt(Imin,0),"cm⁴"],[t("Wmin"),fmt(Wmin,0),"cm³"]].map(([a,b,c])=>`<div><span>${a}</span><b>${b}</b><em>${c}</em></div>`).join("");
+  $("nums").innerHTML=[[t("w"),fmt(v?g+q:q,2),u,0],[t("M"),fmt(M,1),"kN·m",1],[t("Imin"),fmt(Imin,0),"cm⁴",2],[t("Wmin"),fmt(Wmin,0),"cm³",3]].map(([a,b,c,n])=>`<div><span>${a}</span><b>${b}</b><em>${c}</em><p>${X[lang].numh[n]}</p></div>`).join("");
   // pick card
   $("sec").innerHTML=secSVG(P,pick?"var(--fg)":"var(--mom)",1);
   $("pname").textContent=pick?"IPE "+P[0]:t("no");
@@ -249,55 +274,90 @@ function calc(){
   let msg;
   if(!pick)msg=N.no();else if(iI===iW)msg=N.both(P[0]);else if(iW>iI)msg=N.str(P[0],IPE[iI][0],IPE[iW][0]);else msg=N.sti(P[0],IPE[iI][0],IPE[iW][0]);
   $("now").innerHTML=`<p>${msg}</p><p>${N.law(Lm,M,!v)}</p>`;
+  CTX={v,g,q,wS,wU,Lm,M,d,dl,sig,P,pick,Imin,Wmin,iI,iW,R:v?wU*Lm/2:wU*Lm};
   draw(v,Lm,wU,M,d,dl,g,q);
+  stress();
+  renderBur();
   steps(v,g,q,wS,wU,Lm,Imin,Wmin,pick,P);
   strip(Imin,Wmin,pick);
 }
 function draw(v,Lm,w,M,d,dl,g,q){
+  const tr=(a,b)=>lang==="ru"?a:b;
   const amp=Math.max(6,Math.min(46,34*d/dl));
-  let s=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1L10,5L0,9z" fill="var(--load)"/></marker></defs>`;
+  const R=v?w*Lm/2:w*Lm;
+  const ARR=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1L10,5L0,9z" fill="${c}"/></marker>`;
+  let s=`<defs>${ARR("ah","var(--load)")}${ARR("ar","var(--ok)")}</defs>`;
+  const tx=(x,y,txt,c,a)=>`<text class="tb" x="${x}" y="${y}" text-anchor="${a||"start"}" style="fill:${c||"var(--fg)"}">${txt}</text>`;
   if(v){
-    const x0=90,x1=710,W=x1-x0,y=190,al=Math.min(86,34+w*.9);
-    // load block + arrows
+    const x0=90,x1=710,W=x1-x0,y=170,al=Math.min(80,30+w*.8),mx=(x0+x1)/2;
     s+=`<rect x="${x0}" y="${y-al-12}" width="${W}" height="12" rx="3" fill="var(--load)" opacity=".9"/>`;
     s+=arrows(16,f=>{const x=x0+W*f;return `<line x1="${x}" y1="${y-al}" x2="${x}" y2="${y-9}" stroke="var(--load)" stroke-width="2" marker-end="url(#ah)"/>`});
-    s+=`<text class="tb" x="${x1}" y="${y-al-24}" text-anchor="end" fill="var(--load)" style="fill:var(--load)">${fmt(w,1)} kN/m</text>`;
-    // undeformed (dashed) + deflected
+    s+=tx(x1,y-al-24,`${fmt(w,1)} kN/m · ${tr("всего","total")} ${fmt(w*Lm,0)} kN`,"var(--load)","end");
     s+=`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="var(--mut)" stroke-dasharray="4 5"/>`;
     let p="";for(let k=0;k<=80;k++){const xi=k/80;p+=(k?"L":"M")+(x0+W*xi)+","+(y+amp*(16/5)*(xi-2*xi**3+xi**4))}
     s+=`<path d="${p}" fill="none" stroke="var(--beam)" stroke-width="9" stroke-linecap="round"/>`;
-    // supports
     s+=`<path d="M${x0},${y+6}l-14,26h28z" fill="none" stroke="var(--fg)" stroke-width="2.5"/><circle cx="${x1}" cy="${y+22}" r="9" fill="none" stroke="var(--fg)" stroke-width="2.5"/><line x1="${x1-18}" y1="${y+34}" x2="${x1+18}" y2="${y+34}" stroke="var(--fg)" stroke-width="2.5"/>`;
-    s+=`<text class="tb" x="${x0-34}" y="${y+4}">C</text><text class="tb" x="${x1+22}" y="${y+4}">D</text>`;
-    // delta marker
-    const mx=(x0+x1)/2;
-    s+=`<line x1="${mx+34}" y1="${y}" x2="${mx+34}" y2="${y+amp}" stroke="var(--mom)" stroke-width="2"/><text class="tb" x="${mx+44}" y="${y+amp/2+5}" style="fill:var(--mom)">δ ${fmt(d,1)} mm</text>`;
+    s+=tx(x0-34,y+4,"C")+tx(x1+22,y+4,"D");
+    // reactions
+    [x0,x1].forEach((x,k)=>{s+=`<line x1="${x}" y1="${y+98}" x2="${x}" y2="${y+42}" stroke="var(--ok)" stroke-width="4" marker-end="url(#ar)"/>`;
+      s+=tx(k?x-12:x+12,y+86,`R = ${fmt(R,1)} kN`,"var(--ok)",k?"end":"start")});
+    // delta
+    s+=`<line x1="${mx+34}" y1="${y}" x2="${mx+34}" y2="${y+amp}" stroke="var(--mom)" stroke-width="2"/>`+tx(mx+44,y+amp/2+5,`δ ${fmt(d,1)} mm`,"var(--mom)");
     // span
-    s+=`<line x1="${x0}" y1="${y+70}" x2="${x1}" y2="${y+70}" stroke="var(--mut)"/><line x1="${x0}" y1="${y+64}" x2="${x0}" y2="${y+76}" stroke="var(--mut)"/><line x1="${x1}" y1="${y+64}" x2="${x1}" y2="${y+76}" stroke="var(--mut)"/>`;
-    s+=`<rect x="${mx-36}" y="${y+58}" width="72" height="24" rx="12" style="fill:var(--card)"/><text class="tb" x="${mx}" y="${y+75}" text-anchor="middle">L = ${fmt(Lm,1)} m</text>`;
-    // moment diagram
-    const by=330,mh=100;
+    const sy=y+122;
+    s+=`<line x1="${x0}" y1="${sy}" x2="${x1}" y2="${sy}" stroke="var(--mut)"/><line x1="${x0}" y1="${sy-6}" x2="${x0}" y2="${sy+6}" stroke="var(--mut)"/><line x1="${x1}" y1="${sy-6}" x2="${x1}" y2="${sy+6}" stroke="var(--mut)"/>`;
+    s+=`<rect x="${mx-38}" y="${sy-12}" width="76" height="24" rx="12" style="fill:var(--card)"/>`+tx(mx,sy+5,`L = ${fmt(Lm,1)} m`,"var(--fg)","middle");
+    // shear
+    const vb=372,vh=44;
+    s+=`<path d="M${x0},${vb-vh}L${x1},${vb+vh}L${x1},${vb}L${x0},${vb}z" fill="var(--ok)" opacity=".16"/><path d="M${x0},${vb}L${x0},${vb-vh}L${x1},${vb+vh}L${x1},${vb}" fill="none" stroke="var(--ok)" stroke-width="2.5"/><line x1="${x0}" y1="${vb}" x2="${x1}" y2="${vb}" stroke="var(--fg)" stroke-width="1.5"/>`;
+    s+=`<text class="t" x="${x0}" y="${vb-vh-12}">${tr("поперечная сила V","shear force V")}</text>`+tx(x0+8,vb-vh+14,`+${fmt(R,0)}`,"var(--ok)")+tx(x1-8,vb+vh-6,`−${fmt(R,0)}`,"var(--ok)","end")+tx(mx+8,vb-6,"0","var(--ok)");
+    // moment
+    const by=470,mh=78;
     let mp=`M${x0},${by}`;for(let k=0;k<=80;k++){const xi=k/80;mp+=`L${x0+W*xi},${by+mh*4*xi*(1-xi)}`}
     s+=`<path d="${mp}L${x1},${by}z" fill="var(--mom)" opacity=".16"/><path d="${mp}" fill="none" stroke="var(--mom)" stroke-width="2.5"/><line x1="${x0}" y1="${by}" x2="${x1}" y2="${by}" stroke="var(--fg)" stroke-width="1.5"/>`;
-    s+=`<line x1="${mx}" y1="${y+8}" x2="${mx}" y2="${by+mh}" stroke="var(--mom)" stroke-dasharray="2 5" opacity=".55"/>`;
-    s+=`<text class="t" x="${x0}" y="${by-10}">${t("mom")}</text><text class="tb" x="${mx+10}" y="${by+mh+22}" style="fill:var(--mom)">M = ${fmt(M,1)} kN·m</text>`;
+    s+=`<line x1="${mx}" y1="${y+8}" x2="${mx}" y2="${by+mh}" stroke="var(--mut)" stroke-dasharray="2 5" opacity=".6"/>`;
+    s+=`<text class="t" x="${x0}" y="${by-10}">${tr("изгибающий момент M","bending moment M")}</text>`+tx(mx+10,by+mh+20,`M = ${fmt(M,1)} kN·m`,"var(--mom)");
   }else{
-    const bx=250,yb=400,yt=40,h=yb-yt,al=Math.min(120,36+w*5);
+    const bx=230,yb=470,yt=50,h=yb-yt,al=Math.min(120,36+w*5);
     s+=arrows(10,f=>{const yy=yb-h*f;return `<line x1="${bx-al-30}" y1="${yy}" x2="${bx-16}" y2="${yy}" stroke="var(--load)" stroke-width="2" marker-end="url(#ah)"/>`});
-    s+=`<text class="tb" x="${bx-al-30}" y="${yt-14}" style="fill:var(--load)">${fmt(w,1)} kN/m</text>`;
+    s+=tx(bx-al-30,yt-16,`${fmt(w,1)} kN/m · ${tr("всего","total")} ${fmt(w*Lm,0)} kN`,"var(--load)");
     s+=`<line x1="${bx}" y1="${yb}" x2="${bx}" y2="${yt}" stroke="var(--mut)" stroke-dasharray="4 5"/>`;
     let p="";for(let k=0;k<=80;k++){const z=k/80;p+=(k?"L":"M")+(bx+amp*(z*z*(6-4*z+z*z))/3)+","+(yb-h*z)}
     s+=`<path d="${p}" fill="none" stroke="var(--beam)" stroke-width="10" stroke-linecap="round"/>`;
     s+=`<rect x="${bx-46}" y="${yb+6}" width="92" height="14" rx="3" style="fill:var(--fg)"/>`;
     for(let k=0;k<6;k++)s+=`<line x1="${bx-40+k*16}" y1="${yb+20}" x2="${bx-48+k*16}" y2="${yb+30}" stroke="var(--fg)" stroke-width="2"/>`;
-    s+=`<text class="tb" x="${bx+amp+16}" y="${yt+6}" style="fill:var(--mom)">δ ${fmt(d,1)} mm</text>`;
+    s+=`<line x1="${bx+96}" y1="${yb-18}" x2="${bx+14}" y2="${yb-18}" stroke="var(--ok)" stroke-width="4" marker-end="url(#ar)"/>`+tx(bx+102,yb-13,`R = ${fmt(R,1)} kN`,"var(--ok)");
+    s+=tx(bx+amp+16,yt+6,`δ ${fmt(d,1)} mm`,"var(--mom)");
     s+=`<text class="t" x="${bx+14}" y="${yb-h/2}">H = ${fmt(Lm,1)} m</text>`;
-    const mx=520,mw=Math.min(220,20+M*1.6);let mp=`M${mx},${yt}`;
+    const mx=410,mw=Math.min(190,20+M*1.6);let mp=`M${mx},${yt}`;
     for(let k=0;k<=80;k++){const z=k/80;mp+=`L${mx+mw*(1-z)**2},${yt+h*z}`}
     s+=`<path d="${mp}L${mx},${yb}z" fill="var(--mom)" opacity=".16"/><path d="${mp}" fill="none" stroke="var(--mom)" stroke-width="2.5"/><line x1="${mx}" y1="${yt}" x2="${mx}" y2="${yb}" stroke="var(--fg)" stroke-width="1.5"/>`;
-    s+=`<text class="t" x="${mx}" y="${yt-14}">${t("mom")}</text><text class="tb" x="${mx+mw+12}" y="${yb}" style="fill:var(--mom)">M = ${fmt(M,1)} kN·m</text>`;
+    s+=`<text class="t" x="${mx}" y="${yt-16}">${tr("момент M","moment M")}</text>`+tx(mx+mw+10,yb,`M = ${fmt(M,1)} kN·m`,"var(--mom)");
+    const sx=660,sw=90;
+    s+=`<path d="M${sx},${yt}L${sx},${yb}L${sx+sw},${yb}z" fill="var(--ok)" opacity=".16"/><path d="M${sx},${yt}L${sx+sw},${yb}" fill="none" stroke="var(--ok)" stroke-width="2.5"/><line x1="${sx}" y1="${yt}" x2="${sx}" y2="${yb}" stroke="var(--fg)" stroke-width="1.5"/>`;
+    s+=`<text class="t" x="${sx}" y="${yt-16}">${tr("сила V","shear V")}</text>`+tx(sx+sw,yb+18,`${fmt(R,0)} kN`,"var(--ok)","end");
   }
   $("viz").innerHTML=s;
+}
+function stress(){
+  const C=CTX,P=C.P,tr=(a,b)=>lang==="ru"?a:b;
+  const r=Math.min(1,C.sig/S.fa),wd=26+64*r;
+  let s=`<defs><marker id="sa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1L10,5L0,9z" fill="var(--load)"/></marker><marker id="sb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1L10,5L0,9z" fill="var(--mom)"/></marker></defs>`;
+  // bent piece
+  s+=`<path d="M60,80Q200,98 340,80L340,170Q200,188 60,170Z" fill="var(--line)" stroke="var(--beam)" stroke-width="3"/>`;
+  s+=`<path d="M60,125Q200,143 340,125" fill="none" stroke="var(--mut)" stroke-dasharray="5 5"/>`;
+  [[110,160],[290,240]].forEach(([a,b])=>{});
+  s+=`<line x1="90" y1="60" x2="150" y2="68" stroke="var(--load)" stroke-width="3" marker-end="url(#sa)"/><line x1="310" y1="60" x2="250" y2="68" stroke="var(--load)" stroke-width="3" marker-end="url(#sa)"/>`;
+  s+=`<line x1="150" y1="200" x2="90" y2="192" stroke="var(--mom)" stroke-width="3" marker-end="url(#sb)"/><line x1="250" y1="200" x2="310" y2="192" stroke="var(--mom)" stroke-width="3" marker-end="url(#sb)"/>`;
+  s+=`<text class="tb" x="200" y="46" text-anchor="middle" style="fill:var(--load)">${tr("верх сжимается","top is compressed")}</text><text class="tb" x="200" y="228" text-anchor="middle" style="fill:var(--mom)">${tr("низ растягивается","bottom is stretched")}</text><text class="t" x="200" y="120" text-anchor="middle">${tr("нейтральная ось — здесь ноль","neutral axis — zero here")}</text>`;
+  // section + stress
+  s+=`<svg x="440" y="40" width="180" height="180" viewBox="0 0 120 120" style="color:var(--fg)">${secSVG(P,"var(--fg)",1)}</svg>`;
+  const ax=700,y0=40+180*6/120,y1=40+180*114/120,ym=(y0+y1)/2;
+  s+=`<path d="M${ax},${ym}L${ax-wd},${y0}L${ax},${y0}z" fill="var(--load)" opacity=".3" stroke="var(--load)" stroke-width="2"/><path d="M${ax},${ym}L${ax+wd},${y1}L${ax},${y1}z" fill="var(--mom)" opacity=".3" stroke="var(--mom)" stroke-width="2"/><line x1="${ax}" y1="${y0-6}" x2="${ax}" y2="${y1+6}" stroke="var(--fg)" stroke-width="1.5"/>`;
+  s+=`<text class="tb" x="${ax-8}" y="${y0-10}" text-anchor="end" style="fill:var(--load)">−${fmt(C.sig,0)} MPa</text><text class="tb" x="${ax+8}" y="${y1+22}" style="fill:var(--mom)">+${fmt(C.sig,0)} MPa</text>`;
+  s+=`<text class="t" x="530" y="268" text-anchor="middle">${tr("сечение IPE "+P[0],"IPE "+P[0]+" section")}</text><text class="t" x="${ax}" y="268" text-anchor="middle">${tr("напряжение σ по высоте","stress σ over the height")}</text>`;
+  $("stress").innerHTML=s;
+  $("insideTxt").innerHTML=tr(`Когда балку гнёт, верхние волокна <b>укорачиваются</b> (сжатие), нижние <b>удлиняются</b> (растяжение), а посередине длина не меняется — это нейтральная ось. Чем дальше от оси, тем больше напряжение: на самом краю <b>σ = M / W = ${fmt(C.sig,0)} МПа</b>. Сталь выдерживает ${fmt(S.fa,0)} МПа, значит запас ${fmt((1-C.sig/S.fa)*100,0)}%. Поэтому у двутавра металл собран в полки сверху и снизу, а стенка тонкая — в середине всё равно почти ничего не работает.`,`When the beam bends, the top fibres get <b>shorter</b> (compression), the bottom ones get <b>longer</b> (tension), and in the middle the length does not change — the neutral axis. The farther from the axis, the higher the stress: at the very edge <b>σ = M / W = ${fmt(C.sig,0)} MPa</b>. The steel takes ${fmt(S.fa,0)} MPa, so the margin is ${fmt((1-C.sig/S.fa)*100,0)}%. That is why an I-section puts steel into flanges at the top and bottom, with a thin web: the middle hardly works anyway.`);
 }
 function steps(v,g,q,wS,wU,Lm,Imin,Wmin,pick,P){
   const L=fmt(Lm*1000,0);
@@ -311,6 +371,61 @@ function strip(Imin,Wmin,pick){
   $("strip").innerHTML=IPE.map(p=>{const ok=p[4]>=Imin&&p[5]>=Wmin,on=pick&&p[0]===pick[0];
    return `<div class="${on?"on":ok?"":"no"}"><svg viewBox="0 0 120 120">${secSVG(p)}</svg><b>IPE ${p[0]}</b>${fmt(p[5],0)} cm³</div>`}).join("");
 }
+
+// ---------- Bur the chipmunk guide
+let CTX={},BS=0,BOPEN=innerWidth>760;
+const CHIP=`<svg class="av" id="avatar" viewBox="0 0 100 110" aria-label="Bur">
+<path d="M70,92 C98,88 100,52 84,40 C92,60 84,74 66,78z" fill="#b4693a"/><path d="M88,52 l-8,3 M92,64 l-9,2 M86,76 l-8,0" stroke="#5a3320" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="46" cy="84" rx="22" ry="22" fill="#c98a55"/><ellipse cx="46" cy="89" rx="13" ry="14" fill="#f4dfc0"/>
+<ellipse cx="30" cy="102" rx="8" ry="5" fill="#a9703f"/><ellipse cx="60" cy="102" rx="8" ry="5" fill="#a9703f"/>
+<path d="M28,78 C20,70 26,62 34,66" fill="none" stroke="#a9703f" stroke-width="6" stroke-linecap="round"/>
+<circle cx="46" cy="46" r="23" fill="#c98a55"/><circle cx="26" cy="40" r="7" fill="#c98a55"/><circle cx="66" cy="40" r="7" fill="#c98a55"/><circle cx="26" cy="41" r="3.5" fill="#e8b58a"/><circle cx="66" cy="41" r="3.5" fill="#e8b58a"/>
+<ellipse cx="31" cy="56" rx="9" ry="8" fill="#f4dfc0"/><ellipse cx="61" cy="56" rx="9" ry="8" fill="#f4dfc0"/>
+<path d="M46,26 v12 M38,28 v8 M54,28 v8" stroke="#5a3320" stroke-width="3" stroke-linecap="round"/>
+<circle cx="37" cy="49" r="3.4" fill="#1a1a1a"/><circle cx="55" cy="49" r="3.4" fill="#1a1a1a"/><circle cx="38" cy="47.8" r="1.1" fill="#fff"/><circle cx="56" cy="47.8" r="1.1" fill="#fff"/>
+<ellipse cx="46" cy="56" rx="3" ry="2.3" fill="#3a2418"/><path d="M41,61 Q46,66 51,61" fill="none" stroke="#3a2418" stroke-width="2" stroke-linecap="round"/>
+<path d="M24,30 C24,10 68,10 68,30z" fill="#ffc400"/><rect x="21" y="28" width="52" height="6" rx="3" fill="#f0a800"/><rect x="41" y="14" width="10" height="16" rx="2" fill="#f0a800"/>
+</svg>`;
+function tips(){
+  const C=CTX,v=C.v,tr=(a,b)=>lang==="ru"?a:b,f1=x=>fmt(x,1),f0=x=>fmt(x,0),tn=x=>fmt(x/9.81,1);
+  const Wt=C.wU*C.Lm,R=C.R,pct=C.d/C.dl*100,P=C.P[0];
+  const dec=!C.pick?"":C.iI===C.iW?tr("Подошёл по обоим условиям одновременно.","It passes both checks at the same size."):C.iW>C.iI?tr(`Заметь: по жёсткости хватило бы IPE ${IPE[C.iI][0]}, но по прочности он слабоват — нужен ${P}.`,`Note: stiffness alone would allow IPE ${IPE[C.iI][0]}, but it is too weak in strength — you need ${P}.`):tr(`Заметь: по прочности хватило бы IPE ${IPE[C.iW][0]}, но он прогнётся — нужен ${P}.`,`Note: strength alone would allow IPE ${IPE[C.iW][0]}, but it would sag — you need ${P}.`);
+  const S0=tr([
+   ["stage","Привет! Я Бур","Я бурундук-инженер. Видишь <b>балку</b>? Это как доска между двумя стульями. Если положить на неё груз, она <b>прогнётся</b>, а если груза слишком много — <b>сломается</b>. Работа инженера — подобрать такой профиль IPE, чтобы не было ни того, ни другого. Жми «Дальше», разберём всё по шагам."],
+   ["stage","1. Нагрузка — синие стрелки",v?`Плита и люди давят на <b>квадратные метры</b>, а мы считаем одну балку. Поэтому переводим в «кН на метр длины»: каждая балка держит полосу шириной <b>${f1(S.i)} м</b>. Постоянная g = ${fmt(S.G,2)}×${f1(S.i)} = <b>${fmt(C.g,2)}</b> кН/м, временная q = ${f1(S.Q)}×${f1(S.i)} = <b>${fmt(C.q,2)}</b> кН/м. Вместе ${fmt(C.g+C.q,2)}, с запасом ×1,5 получаем <b>${f1(C.wU)} кН/м</b>. На всю балку это ${f0(Wt)} кН — как примерно ${tn(Wt)} т.`:`Ветер давит на стену, стена передаёт нагрузку на стойку: ${fmt(S.P,2)}×${f1(S.i)} = <b>${fmt(C.q,2)}</b> кН/м по всей высоте. С запасом ×1,5: <b>${f1(C.wU)} кН/м</b>. Всего на стойку действует горизонтальная сила ${f0(Wt)} кН (≈ ${tn(Wt)} т).`],
+   ["stage","2. Опоры — зелёные стрелки",v?`Балка не падает, потому что опоры толкают её <b>вверх</b>. Груз у нас симметричный, значит каждая опора берёт ровно половину: R = wL/2 = ${f1(C.wU)}×${f1(C.Lm)}/2 = <b>${f1(R)} кН</b>. Сумма двух реакций равна всей нагрузке — иначе балка поехала бы вверх или вниз. Это называется равновесие.`:`Стойка заделана внизу в фундамент. Ветер толкает её вправо, значит фундамент должен толкнуть <b>влево</b> с силой R = w·H = ${f1(C.wU)}×${f1(C.Lm)} = <b>${f1(R)} кН</b>. И ещё удержать от опрокидывания — этот «заворот» и есть момент.`],
+   ["stage","3. Поперечная сила V",v?`Мысленно разрежь балку в любом месте. Слева: опора толкает вверх на R, нагрузка давит вниз. На самой опоре перерезывающая сила максимальна — <b>${f0(R)} кН</b>, к середине она падает до нуля (сколько вверх — столько вниз), а за серединой меняет знак. Это график V. Он нужен, чтобы стенка не срезалась, но главное в нашей задаче — момент.`:`Разрежь стойку на любой высоте — выше разреза действует ветер, ниже — реакция. Внизу сила максимальна (${f0(R)} кН), вверху — ноль: выше разреза просто нет ветра. График V — треугольник.`],
+   ["stage","4. Изгибающий момент — красная эпюра",v?`Опора толкает вверх на <b>плече</b> — как рука, которая гнёт линейку. Чем дальше от опоры, тем плечо длиннее, поэтому момент растёт к середине и там максимален: M = wL²/8 = ${f1(C.wU)}×${f1(C.Lm)}²/8 = <b>${f1(C.M)} кН·м</b>. Видишь квадрат? Удвоишь пролёт — момент вырастет в <b>4 раза</b>.`:`Ветер на высоте H/2 тянет с плечом — как рычаг. Чем выше, тем больше «рычаг»: M = wH²/2 = ${f1(C.wU)}×${f1(C.Lm)}²/2 = <b>${f1(C.M)} кН·м</b>. Максимум — <b>внизу</b>, у заделки. Туда и бьёт: стойка «ломается» именно там.`],
+   ["stage","5. Прогиб δ",`Под нагрузкой ${v?"балка проседает":"верх стойки уходит в сторону"}: <b>δ = ${f1(C.d)} мм</b>. На рисунке я его сильно увеличил, иначе ты бы ничего не увидел. Допуск ${f1(C.dl)} мм (1/${S.lim} от ${v?"пролёта":"высоты"}) — чтобы ${v?"потолок не трескался и пол не «пружинил»":"фасад и окна не ломались"}. Сейчас использовано <b>${f0(pct)}%</b> допуска${pct>100?" — это уже нарушение!":"."} Прогиб растёт как 4-я степень длины: удвоишь — станет в 16 раз больше.`],
+   ["inside","6. Что внутри балки","Балка изгибается как лук. <b>Верх сжимается</b> (волокна укорачиваются), <b>низ растягивается</b>, а посередине есть нейтральная ось — там напряжение ноль. Чем дальше от оси, тем сильнее нагружен металл. На самом краю: <b>σ = M / W = "+f0(C.sig)+" МПа</b>. Поэтому металл двутавра собран в полки сверху и снизу, а стенка тонкая."],
+   ["pickcard","7. Подбор профиля",`Нужно пройти два экзамена. <b>Жёсткость:</b> I ≥ ${f0(C.Imin)} см⁴ (чтобы прогиб не превысил допуск). <b>Прочность:</b> W ≥ ${f0(C.Wmin)} см³ (чтобы σ ≤ ${f0(S.fa)} МПа). Из таблицы берём самый лёгкий профиль, который сдаёт оба: ${C.pick?`<b>IPE ${P}</b>. ${dec}`:"такого нет — уменьши пролёт или нагрузку."}`],
+   ["ctl","Теперь твоя очередь!","Двигай ползунки и смотри, как меняются стрелки, эпюры и профиль. Увеличь пролёт — момент и прогиб взлетят. Нажми «Попробуйте» для быстрых экспериментов. Захочешь повторить — кликни на меня."]
+  ],[
+   ["stage","Hi! I'm Bur","I'm an engineer chipmunk. See the <b>beam</b>? It's like a plank between two chairs. Put a weight on it and it will <b>sag</b>; put too much and it will <b>break</b>. The engineer's job is to pick an IPE section so neither happens. Press “Next” and we'll go step by step."],
+   ["stage","1. Load — blue arrows",v?`The slab and people press on <b>square metres</b>, but we design one beam. So we convert to “kN per metre of length”: each beam carries a strip <b>${f1(S.i)} m</b> wide. Permanent g = ${fmt(S.G,2)}×${f1(S.i)} = <b>${fmt(C.g,2)}</b> kN/m, variable q = ${f1(S.Q)}×${f1(S.i)} = <b>${fmt(C.q,2)}</b> kN/m. Together ${fmt(C.g+C.q,2)}; with the ×1.5 safety factor we get <b>${f1(C.wU)} kN/m</b>. Over the whole beam that is ${f0(Wt)} kN — about ${tn(Wt)} tonnes.`:`Wind pushes on the wall, the wall passes it to the column: ${fmt(S.P,2)}×${f1(S.i)} = <b>${fmt(C.q,2)}</b> kN/m along the height. With ×1.5: <b>${f1(C.wU)} kN/m</b>. In total a horizontal force of ${f0(Wt)} kN (≈ ${tn(Wt)} t).`],
+   ["stage","2. Supports — green arrows",v?`The beam doesn't fall because the supports push it <b>up</b>. The load is symmetric, so each support takes exactly half: R = wL/2 = ${f1(C.wU)}×${f1(C.Lm)}/2 = <b>${f1(R)} kN</b>. The two reactions add up to the whole load — otherwise the beam would move. That is equilibrium.`:`The column is fixed into the foundation. Wind pushes it right, so the foundation must push <b>left</b> with R = w·H = ${f1(C.wU)}×${f1(C.Lm)} = <b>${f1(R)} kN</b>, and also stop it from tipping — that “twist” is the moment.`],
+   ["stage","3. Shear force V",v?`Cut the beam anywhere. On the left: the support pushes up with R, the load pushes down. At the support the shear is largest — <b>${f0(R)} kN</b>; it drops to zero at midspan (up equals down) and changes sign. That is the V diagram. It checks that the web doesn't shear off, but the key one here is the moment.`:`Cut the column at any height: wind acts above, the reaction below. At the base the shear is largest (${f0(R)} kN), at the top it is zero — there is no wind above. V is a triangle.`],
+   ["stage","4. Bending moment — red diagram",v?`The support pushes up on an <b>arm</b> — like a hand bending a ruler. The farther from the support, the longer the arm, so the moment grows toward midspan: M = wL²/8 = ${f1(C.wU)}×${f1(C.Lm)}²/8 = <b>${f1(C.M)} kN·m</b>. See the square? Double the span and the moment grows <b>4×</b>.`:`Wind at height H/2 acts with an arm — a lever. The higher, the longer: M = wH²/2 = ${f1(C.wU)}×${f1(C.Lm)}²/2 = <b>${f1(C.M)} kN·m</b>. The peak is at the <b>base</b>, so that's where the column fails first.`],
+   ["stage","5. Deflection δ",`Under load the ${v?"beam sags":"column top moves sideways"}: <b>δ = ${f1(C.d)} mm</b>. I exaggerated it in the picture, otherwise you would see nothing. The limit is ${f1(C.dl)} mm (1/${S.lim} of the ${v?"span":"height"}) so that ${v?"the ceiling doesn't crack and the floor doesn't feel bouncy":"the façade and windows don't break"}. Used: <b>${f0(pct)}%</b> of the limit${pct>100?" — that's a violation!":"."} Deflection grows with the 4th power of length: double it and it becomes 16× bigger.`],
+   ["inside","6. Inside the beam","A beam bends like a bow. <b>The top is compressed</b> (fibres get shorter), <b>the bottom is stretched</b>, and in the middle there's a neutral axis where stress is zero. The farther from it, the harder the steel works. At the very edge: <b>σ = M / W = "+f0(C.sig)+" MPa</b>. That's why an I-section keeps its steel in the flanges at top and bottom, with a thin web."],
+   ["pickcard","7. Picking the section",`Two exams to pass. <b>Stiffness:</b> I ≥ ${f0(C.Imin)} cm⁴ (deflection within the limit). <b>Strength:</b> W ≥ ${f0(C.Wmin)} cm³ (σ ≤ ${f0(S.fa)} MPa). From the table take the lightest section that passes both: ${C.pick?`<b>IPE ${P}</b>. ${dec}`:"none exists — reduce the span or the load."}`],
+   ["ctl","Your turn!","Move the sliders and watch the arrows, diagrams and section change. Increase the span — the moment and deflection explode. Use “Try” for quick experiments. To repeat the tour, click me."]
+  ]);
+  return S0;
+}
+function renderBur(){
+  if(!CTX.P)return;
+  const T0=tips(),k=Math.min(BS,T0.length-1),[,h,b]=T0[k],tr=(a,b)=>lang==="ru"?a:b;
+  $("bur").innerHTML=CHIP+(BOPEN?`<div class="bub"><button class="x" id="bx" aria-label="close">×</button><h4>${h}</h4><div>${b}</div><div class="nav"><button class="g" id="bp" ${k?"":"disabled style=opacity:.35"}>←</button><div class="dots">${T0.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("")}</div><button id="bn">${k===T0.length-1?tr("Сначала","Restart"):tr("Дальше","Next")} →</button></div></div>`:"");
+  $("avatar").onclick=()=>{BOPEN=!BOPEN;if(BOPEN&&BS===T0.length-1)BS=0;renderBur()};
+  if(BOPEN){
+    $("bx").onclick=()=>{BOPEN=false;spot(null);renderBur()};
+    $("bp").onclick=()=>{BS=Math.max(0,BS-1);go()};
+    $("bn").onclick=()=>{BS=BS>=T0.length-1?0:BS+1;go()};
+  }
+}
+function spot(id){document.querySelectorAll(".spot").forEach(e=>e.classList.remove("spot"));if(id){const e=$(id);e.classList.add("spot");return e}}
+function go(){const T0=tips(),e=spot(T0[BS][0]);renderBur();if(e)e.scrollIntoView({behavior:"smooth",block:BS===0||T0[BS][0]==="stage"?"start":"center"})}
 function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>el.textContent=X[lang][el.dataset.t]||t(el.dataset.t));
