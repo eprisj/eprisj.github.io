@@ -4536,7 +4536,7 @@ const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: stri
 };
 
 /* Кнопка Patreon в подвале: контурная «таблетка», на наведении заливается белым. */
-const FOOTER_PILL = 'group inline-flex items-center gap-3 rounded-full border border-white/35 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-white transition-colors hover:border-white hover:bg-white hover:text-black';
+const FOOTER_PILL = 'group inline-flex items-center gap-3 rounded-full border border-white/35 px-5 py-3 font-mono text-[13px] uppercase tracking-[0.14em] text-white transition-colors hover:border-white hover:bg-white hover:text-black';
 
 function SiteFooter({ lang, title, description, publicationName, rights, instagramUrl, contactEmail, links, onNavigate }: {
   lang: string; title: string; description: string; publicationName: string; rights: string;
@@ -4544,7 +4544,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
 }) {
   const tx = APP_BAND_TEXT[String(lang || 'EN').toUpperCase()] || APP_BAND_TEXT.EN;
   const about = FOOTER_ABOUT[String(lang || 'EN').toUpperCase()] || FOOTER_ABOUT.EN;
-  const head = 'font-mono text-[10px] uppercase tracking-[0.28em] text-white/45';
+  const head = 'font-mono text-[12px] uppercase tracking-[0.22em] text-white/65';
   return (
     <footer className="bg-black text-white px-5 sm:px-8 md:px-16 pt-10 md:pt-24 pb-10 md:pb-8">
       {/* На телефоне подвал – только значок App Store по центру и место
@@ -4559,14 +4559,14 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
         <a href={PATREON_URL} target="_blank" rel="noopener noreferrer" className={FOOTER_PILL}>
           <PatreonMark size={16} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
         </a>
-        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
+        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/75">{about.place}</p>
       </div>
       <div className="hidden md:block max-w-[1600px] mx-auto">
         <div className="grid gap-12 md:gap-10 md:grid-cols-[1.35fr_.75fr_1fr]">
           <div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight">{title}</h2>
-            <p className="mt-6 max-w-[44ch] text-base sm:text-lg leading-relaxed text-white/70">{description || about.line}</p>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
+            <p className="mt-6 max-w-[44ch] text-lg sm:text-xl leading-relaxed text-white/85">{description || about.line}</p>
+            <p className="mt-6 font-mono text-[12.5px] uppercase tracking-[0.2em] text-white/75">{about.place}</p>
           </div>
           <nav aria-label="Footer" className="md:border-l md:border-white/10 md:pl-10">
             <p className={head}>{about.sections}</p>
@@ -4574,14 +4574,14 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
               {links.map(([tab, label]) => (
                 <li key={tab}>
                   <a href={`/${tab}`} onClick={(e) => { e.preventDefault(); onNavigate(tab); window.scrollTo({ top: 0 }); }}
-                    className="font-serif text-xl text-white/85 hover:text-white transition-colors">{label}</a>
+                    className="font-serif text-[22px] text-white/90 hover:text-white transition-colors">{label}</a>
                 </li>
               ))}
             </ul>
           </nav>
           <div className="md:border-l md:border-white/10 md:pl-10">
             <p className={head}>{tx.kicker}</p>
-            <p className="mt-5 font-serif text-xl text-white/85 leading-snug max-w-[30ch]">{tx.title}</p>
+            <p className="mt-5 font-serif text-[22px] text-white/90 leading-snug max-w-[30ch]">{tx.title}</p>
             <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
               className="mt-5 inline-block leading-none transition-transform hover:-translate-y-0.5">
               <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[150px] sm:w-[160px] h-auto" loading="lazy" />
@@ -4592,13 +4592,13 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
                 <PatreonMark size={18} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
               </a>
             </div>
-            {(instagramUrl || contactEmail) && <div className="mt-9 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
+            {(instagramUrl || contactEmail) && <div className="mt-9 space-y-2 font-mono text-[12.5px] uppercase tracking-[0.16em] text-white/75">
               {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Instagram ↗</a>}
               {contactEmail && <a href={`mailto:${contactEmail}`} className="block normal-case tracking-[0.06em] hover:text-white transition-colors">{contactEmail}</a>}
             </div>}
           </div>
         </div>
-        <div className="mt-16 sm:mt-20 pt-6 border-t border-white/15 flex flex-col sm:flex-row gap-2 sm:justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-white/45">
+        <div className="mt-16 sm:mt-20 pt-6 border-t border-white/15 flex flex-col sm:flex-row gap-2 sm:justify-between font-mono text-[11.5px] uppercase tracking-[0.18em] text-white/65">
           <p>© 2026 {publicationName} · {rights}</p>
           <p>Milano · Italia</p>
         </div>
