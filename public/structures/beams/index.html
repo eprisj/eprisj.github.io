@@ -284,6 +284,31 @@ input[type=range]::-webkit-slider-thumb{width:26px;height:26px;margin-top:9px}
   .lim{grid-template-columns:repeat(3,1fr)}.lim b{font-size:26px}.lim .card{padding:14px 8px}.lim span{font-size:12px}
 }
 @media(max-width:380px){.steps{grid-template-columns:1fr}.rw{padding:10px}}
+/* ---- Bur dock ---- */
+#bur,#bur.open{max-width:none}
+#bur{left:auto;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));align-items:center;gap:8px}
+#bur .av{width:64px}
+#bur.open{left:0;right:0;bottom:0;padding:0 max(12px,env(safe-area-inset-left)) max(10px,env(safe-area-inset-bottom));justify-content:center}
+.dock{pointer-events:auto;display:flex;align-items:flex-end;gap:14px;width:100%;max-width:1056px;background:var(--card);border:1px solid var(--fg);border-radius:24px;padding:16px 18px 14px 14px;box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.dock .av{width:92px;margin-top:-46px;flex:none;animation:none}
+.dock .bub{flex:1;min-width:0;border:0;box-shadow:none;border-radius:0;padding:0;width:auto;max-height:none;overflow:visible;font-size:15px;display:flex;flex-direction:column}
+.dock .bh{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+.dock .bub .x{position:static;margin:0}
+.dock .bub h4{margin:0 0 4px}
+.dock .bt{max-height:min(24vh,190px);overflow:auto;padding-right:4px;overscroll-behavior:contain}
+.dock .bub .nav{position:static;padding:10px 0 0;margin:0}
+.dock .bub .nav button{min-height:40px}
+body.bur-open main{padding-bottom:calc(min(46vh,330px) + 40px)!important}
+#stage,#inside,#pickcard,#ctl{scroll-margin-top:84px}
+@media(max-width:640px){
+  .dock{padding:14px 14px 12px;border-radius:22px 22px 0 0;flex-direction:column;align-items:stretch;gap:0;position:relative}
+  #bur.open{padding:0}
+  .dock .av{position:absolute;left:14px;top:-54px;width:72px;margin:0}
+  .dock .bub .bh{min-height:24px;padding-left:78px}
+  .dock .bub .bh{padding-right:0}
+  .dock .bt{max-height:26vh}
+  body.bur-open main{padding-bottom:calc(min(44vh,360px) + 40px)!important}
+}
 </style>
 </head>
 <body>
@@ -627,7 +652,8 @@ function tips(){
 function renderBur(){
   if(!CTX.P)return;
   const T0=tips(),k=Math.min(BS,T0.length-1),[,h,b]=T0[k],tr=(a,b)=>lang==="ru"?a:b;
-  $("bur").innerHTML=CHIP+(BOPEN?`<div class="bub"><button class="x" id="bx" aria-label="minimize">${tr("Свернуть","Minimize")} ▾</button><span class="bubtag">${tr("БУР · ИНЖЕНЕР","BUR · ENGINEER")}</span><h4>${h}</h4><div>${b}</div><div class="nav"><button class="g" id="bp" ${k?"":"disabled style=opacity:.35"}>←</button><div class="dots">${T0.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("")}</div><button id="bn">${k===T0.length-1?tr("Сначала","Restart"):tr("Дальше","Next")} →</button></div></div>`:`<button class="mini2" id="bm">${tr("Подсказки Бура","Ask Bur")} ▸</button>`);
+  $("bur").className=BOPEN?"open":"";document.body.classList.toggle("bur-open",BOPEN);
+  $("bur").innerHTML=BOPEN?`<div class="dock">${CHIP}<div class="bub"><div class="bh"><span class="bubtag">${tr("БУР · ИНЖЕНЕР","BUR · ENGINEER")}</span><button class="x" id="bx" aria-label="minimize">${tr("Свернуть","Minimize")} ▾</button></div><h4>${h}</h4><div class="bt">${b}</div><div class="nav"><button class="g" id="bp" ${k?"":"disabled style=opacity:.35"}>←</button><div class="dots">${T0.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("")}</div><button id="bn">${k===T0.length-1?tr("Сначала","Restart"):tr("Дальше","Next")} →</button></div></div></div>`:CHIP+`<button class="mini2" id="bm">${tr("Подсказки Бура","Ask Bur")} ▸</button>`;
   $("avatar").onclick=()=>{BOPEN=!BOPEN;saveOpen();renderBur()};
   if(!BOPEN)$("bm").onclick=()=>{BOPEN=true;saveOpen();renderBur()};
   if(BOPEN){
@@ -637,7 +663,7 @@ function renderBur(){
   }
 }
 function spot(id){document.querySelectorAll(".spot").forEach(e=>e.classList.remove("spot"));if(id){const e=$(id);e.classList.add("spot");return e}}
-function go(){const T0=tips(),e=spot(T0[BS][0]);renderBur();if(e)e.scrollIntoView({behavior:"smooth",block:BS===0||T0[BS][0]==="stage"?"start":"center"})}
+function go(){const T0=tips(),e=spot(T0[BS][0]);renderBur();if(e)e.scrollIntoView({behavior:"smooth",block:"start"})}
 function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>el.textContent=X[lang][el.dataset.t]||t(el.dataset.t));
