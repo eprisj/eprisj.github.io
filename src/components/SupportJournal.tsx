@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Check, Coffee, Copy, CreditCard, ExternalLink, Landmark, QrCode, Wallet } from 'lucide-react';
+import { Check, Coffee, Copy, ExternalLink, Heart, QrCode, Wallet } from 'lucide-react';
 import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
@@ -29,15 +29,15 @@ import QRCode from 'qrcode';
  * реже раза в год, а страница статьи не должна ждать лишний round-trip ради
  * блока, который открывает не каждый читатель. Форма решает, показывать ли
  * блок вообще (см. FormPage – form.support), но не что в нём написано.       */
-const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string; qr: string; kofi: string; kofiSub: string; other: string }> = {
-  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal', kofi: 'Support EPRIS on Ko-fi', kofiSub: 'Any amount, by card or PayPal', other: 'Other ways' },
-  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal', kofi: 'Поддержать EPRIS на Ko-fi', kofiSub: 'Любая сумма, картой или через PayPal', other: 'Другие способы' },
-  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal', kofi: 'Підтримати EPRIS на Ko-fi', kofiSub: 'Будь-яка сума, карткою чи через PayPal', other: 'Інші способи' },
-  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen', kofi: 'EPRIS auf Ko-fi unterstützen', kofiSub: 'Jeder Betrag, per Karte oder PayPal', other: 'Weitere Möglichkeiten' },
-  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal', kofi: 'Sostieni EPRIS su Ko-fi', kofiSub: 'Qualsiasi importo, con carta o PayPal', other: 'Altri modi' },
-  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal', kofi: 'Apoya a EPRIS en Ko-fi', kofiSub: 'Cualquier importe, con tarjeta o PayPal', other: 'Otras formas' },
-  FR: { lead: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.', copy: 'Copier', copied: 'Copié', qr: 'Scanner avec PayPal', kofi: 'Soutenir EPRIS sur Ko-fi', kofiSub: 'Le montant de votre choix, par carte ou PayPal', other: 'Autres moyens' },
-  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara", kofi: "EPRIS'i Ko-fi'de destekleyin", kofiSub: 'İstediğiniz tutar, kartla veya PayPal ile', other: 'Diğer yollar' },
+const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string; qr: string; kofi: string; kofiSub: string; patreon: string; patreonSub: string; other: string }> = {
+  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal', kofi: 'Support EPRIS on Ko-fi', kofiSub: 'Any amount, by card or PayPal', patreon: 'Support EPRIS on Patreon', patreonSub: 'Monthly membership from $3', other: 'Other ways' },
+  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal', kofi: 'Поддержать EPRIS на Ko-fi', kofiSub: 'Любая сумма, картой или через PayPal', patreon: 'Поддержать EPRIS на Patreon', patreonSub: 'Ежемесячная подписка от $3', other: 'Другие способы' },
+  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal', kofi: 'Підтримати EPRIS на Ko-fi', kofiSub: 'Будь-яка сума, карткою чи через PayPal', patreon: 'Підтримати EPRIS на Patreon', patreonSub: 'Щомісячна підписка від $3', other: 'Інші способи' },
+  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen', kofi: 'EPRIS auf Ko-fi unterstützen', kofiSub: 'Jeder Betrag, per Karte oder PayPal', patreon: 'EPRIS auf Patreon unterstützen', patreonSub: 'Monatliche Mitgliedschaft ab 3 $', other: 'Weitere Möglichkeiten' },
+  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal', kofi: 'Sostieni EPRIS su Ko-fi', kofiSub: 'Qualsiasi importo, con carta o PayPal', patreon: 'Sostieni EPRIS su Patreon', patreonSub: 'Abbonamento mensile da $3', other: 'Altri modi' },
+  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal', kofi: 'Apoya a EPRIS en Ko-fi', kofiSub: 'Cualquier importe, con tarjeta o PayPal', patreon: 'Apoya a EPRIS en Patreon', patreonSub: 'Suscripción mensual desde $3', other: 'Otras formas' },
+  FR: { lead: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.', copy: 'Copier', copied: 'Copié', qr: 'Scanner avec PayPal', kofi: 'Soutenir EPRIS sur Ko-fi', kofiSub: 'Le montant de votre choix, par carte ou PayPal', patreon: 'Soutenir EPRIS sur Patreon', patreonSub: 'Abonnement mensuel dès 3 $', other: 'Autres moyens' },
+  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara", kofi: "EPRIS'i Ko-fi'de destekleyin", kofiSub: 'İstediğiniz tutar, kartla veya PayPal ile', patreon: "EPRIS'i Patreon'da destekleyin", patreonSub: "Aylık üyelik 3 $'dan başlar", other: 'Diğer yollar' },
 };
 
 /* Ko-fi: второй способ, когда PayPal недоступен или неудобен (карта без
@@ -45,11 +45,13 @@ const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string;
    страница журнала на Ko-fi, где сумму выбирает сам человек. */
 const KOFI_URL = 'https://ko-fi.com/epris';
 
+/* Patreon: ежемесячная подписка, главный способ поддержки. Адрес публичной
+   страницы журнала, а не кабинета создателя (patreon.com/cw/… требует входа). */
+const PATREON_URL = 'https://www.patreon.com/epris';
+
 const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
   { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
   { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister', icon: Wallet },
-  { label: 'Card', value: '4149 5100 2837 6350', icon: CreditCard },
-  { label: 'IBAN', value: 'UA733003350000002620715221312', icon: Landmark },
 ];
 
 /* Настоящая ссылка PayPal (не придуманная – подтверждена сканированием
@@ -102,15 +104,30 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
       <p className="max-w-[42ch] font-serif text-[19px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)]">
         {t.lead}
       </p>
-      {/* Ko-fi стоит первым и заметным: это самый простой способ поддержать –
-          один клик, карта или PayPal на их странице, сумму выбирает человек.
-          Баннер чёрный, под цвет журнала, со значком чашки кофе; остальные
-          реквизиты ниже, под подписью «другие способы». */}
+      {/* Patreon стоит первым: ежемесячная подписка. Под ним Ko-fi: разовая
+          сумма любой величины. Оба баннера чёрные, под цвет журнала; PayPal
+          ниже, под подписью «другие способы». Карта и IBAN убраны: платить
+          по номеру карты читателю незачем, когда есть эти три способа. */}
+      <a
+        href={PATREON_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-[#111111]" aria-hidden="true">
+          <Heart size={22} strokeWidth={2} />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.patreon}</span>
+          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.patreonSub}</span>
+        </span>
+        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+      </a>
       <a
         href={KOFI_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
+        className="group mt-2.5 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-[#111111]" aria-hidden="true">
           <Coffee size={22} strokeWidth={2} />
