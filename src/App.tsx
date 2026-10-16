@@ -4554,8 +4554,8 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
           <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[160px] h-auto" loading="lazy" />
         </a>
         <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-white/70 hover:text-white transition-colors">
-          <PatreonMark size={16} />{about.support} ↗
+          className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-white/85 hover:text-white transition-colors">
+          <PatreonMark size={16} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
         </a>
         <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
       </div>
@@ -4588,8 +4588,8 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
               <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 hover:text-white underline underline-offset-4 transition-colors">{tx.more}</a>
             </div>
             <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors">
-              <PatreonMark size={18} />{about.support} ↗
+              className="mt-8 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/85 hover:text-white transition-colors">
+              <PatreonMark size={18} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
             </a>
             {(instagramUrl || contactEmail) && <div className="mt-10 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
               {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Instagram ↗</a>}
