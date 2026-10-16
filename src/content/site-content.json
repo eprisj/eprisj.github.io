@@ -125855,14 +125855,14 @@
         },
         {
           "id": 69,
-          "draft": true,
-          "title": "La structure était déjà là - entretien avec Nicolas Delarre",
+          "draft": false,
+          "title": "Nicolas Delarre : La structure était déjà là",
           "author": "Viacheslav Munister & Nicolas Delarre",
           "role": "Auteur",
           "authorId": "author-1784732936927-kw554",
           "contributorId": "author-nicolas-delarre",
           "date": "16 oct. 2026",
-          "excerpt": "Photographe autodidacte de Lille Nicolas Delarre sur « photographisme », pourquoi le nombre d’or compte pour lui comme de la poésie plus que comme de la science, refuser d’effacer un seul passant en post-production, et s’allonger sur le sol d’une bibliothèque pour une symétrie parfaite.",
+          "excerpt": "Le photographe autodidacte de Lille Nicolas Delarre sur « photographisme », pourquoi le nombre d’or compte pour lui comme de la poésie plus que comme de la science, refuser d’effacer un seul passant en post-production, et s’allonger sur le sol d’une bibliothèque pour une symétrie parfaite.",
           "category": "entretien",
           "subcategory": "Entretien",
           "tags": [
@@ -125870,22 +125870,29 @@
             "architecture",
             "entretien"
           ],
-          "imageSeed": "the-structure-was-already-there-interview-delarre",
-          "imageUrl": "",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/nicolas-delarre-spg.webp",
           "previewToken": "6e05814734bff30fd5ce21a84c939bd8",
-          "updatedAt": "2026-10-16T08:39:52.935Z",
+          "updatedAt": "2026-10-16T08:55:23.114Z",
           "content": [
             {
               "type": "text",
-              "content": "Nicolas Delarre pratique la photographie depuis 2018, sans formation préalable : la pratique s'est construite image par image, lors de voyages et par essais et erreurs. Ce qui en est sorti est une photographie de type graphique, principalement consacrée à l'architecture et au macro – façades à Amsterdam, Vienne, Prague et Genève, reflets dans des miroirs d'eau, la spirale d'un dahlia sur fond noir."
+              "content": "Nicolas Delarre est en photographie depuis 2018, sans formation derrière lui : la pratique s'est construite image par image, lors de voyages et par essais et erreurs. Ce qui en est sorti est une photographie de type graphique, consacrée principalement à l'architecture et au macro – façades à Amsterdam, Vienne, Prague et Genève, reflets dans des miroirs d'eau, la spirale d'un dahlia sur fond noir."
             },
             {
               "type": "text",
-              "content": "Il l'appelle « photographisme » : révéler la structure d'un sujet plutôt que le décrire. En pratique, cela signifie laisser de côté – passants, circulation, parfois la végétation – jusqu'à ce qu'un bâtiment cesse d'être un bâtiment et devienne une composition. Sa série « Miroirs » double les villes à travers leurs reflets ; le travail floral emprunte au « langage des fleurs et des choses muettes » de Baudelaire. Il travaille depuis Lille, où il revient sans cesse aux mêmes bâtiments jusqu'à ce que l'image qu'il a en tête apparaisse réellement."
+              "content": "Il l'appelle « photographisme » : révéler la structure d'un sujet plutôt que la décrire. En pratique, cela signifie laisser de côté – passants, circulation, parfois la végétation – jusqu'à ce qu'un bâtiment cesse d'être un bâtiment et devienne une composition. Sa série « Miroirs » double les villes à travers leurs reflets ; le travail floral emprunte au « langage des fleurs et des choses muettes » de Baudelaire. Il travaille depuis Lille, où il revient sans cesse aux mêmes bâtiments jusqu'à ce que l'image qu'il a en tête apparaisse réellement."
             },
             {
               "type": "text",
-              "content": "Nous avons parlé avec Nicolas de l'endroit où une photographie d'un bâtiment se termine et où une image de sa structure commence, du nombre d'or en tant que mythe et en tant que poésie, des limites de la retouche, et jusqu'où il est prêt à aller pour une symétrie parfaite."
+              "content": "Nous avons parlé avec Nicolas de où s'arrête une photographie d'un bâtiment et où commence une image de sa structure, du nombre d'or en tant que mythe et en tant que poésie, des limites de la retouche, et jusqu'où il ira pour une symétrie parfaite."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-spg.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Le bâtiment SPG, Genève, 2022. Photo : Nicolas Delarre"
             },
             {
               "type": "header",
@@ -125894,11 +125901,11 @@
             },
             {
               "type": "text",
-              "content": "Viacheslav Munister [VM] : Vous appelez votre approche « photographisme » : révéler la structure sous-jacente d’un sujet plutôt que le représenter fidèlement. Où se trouve exactement la limite entre une photographie qui montre un bâtiment et une image qui révèle sa structure ?"
+              "content": "<b>Viacheslav Munister [VM]:</b> Vous appelez votre approche « photographisme » : révéler la structure sous-jacente d’un sujet plutôt que le représenter fidèlement. Où se trouve exactement la limite entre une photographie qui montre un bâtiment et une image qui révèle sa structure ?"
             },
             {
               "type": "text",
-              "content": "Nicolas Delarre [ND] : Pour moi, la limite se trouve probablement dans la façon dont je sélectionne la réalité. Lorsque je photographie un bâtiment, je tente rarement de le rendre de manière descriptive, dans son environnement. Au contraire, j’essaie de l’isoler de son contexte afin que l’œil se concentre sur ses lignes, formes, volumes, répétitions ou ruptures. Beaucoup de cela se produit par le cadrage : je tiens à l’écarter les passants, la circulation, parfois la végétation, tout ce qui ne contribue pas à la construction graphique. En un sens, je retire visuellement le contexte pour faire ressortir sa structure graphique."
+              "content": "<b>Nicolas Delarre [ND]:</b> Pour moi la ligne se trouve probablement dans la façon dont je sélectionne dans la réalité. Lorsque je photographie un bâtiment, je tente rarement de le rendre de manière descriptive, dans son environnement. Au contraire, j’essaie de l’isoler de son contexte afin que l’œil se concentre sur ses lignes, formes, volumes, répétitions ou ruptures. Beaucoup de cela se produit par le cadrage : je tiens à exclure les passants, la circulation, parfois la végétation, tout ce qui ne contribue pas à la construction graphique. En un sens, je retire visuellement le contexte pour faire ressortir sa structure graphique."
             },
             {
               "type": "text",
@@ -125906,35 +125913,49 @@
             },
             {
               "type": "text",
-              "content": "C’est probablement là que je placerais la limite : le moment où vous ne regardez plus seulement ce que l’image représente, mais comment ses formes sont organisées à l’intérieur du cadre."
+              "content": "C’est probablement là que je mettrais la ligne : le moment où vous ne regardez plus seulement ce que l’image représente, mais comment ses formes sont organisées à l’intérieur du cadre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-masarycka.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "le bâtiment Masaryčka, Prague, 2025. Photo : Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "VM : Symétrie, perspective centrale, géométrie parfaite – ce sont aussi les outils de l'architecture du pouvoir, des palais et des régimes qui veulent impressionner. Qu'est-ce qui distingue l'harmonie de l'ordre imposé pour vous ? Avez-vous déjà rejeté une symétrie parce qu'elle était trop parfaite ?"
+              "content": "<b>VM :</b> Symétrie, perspective centrale, géométrie parfaite – ce sont aussi les outils de l’architecture du pouvoir, des palais et des régimes qui veulent impressionner. Qu’est-ce qui distingue l’harmonie de l’ordre imposé pour vous ? Avez-vous déjà rejeté une symétrie parce qu’elle était trop parfaite ?"
             },
             {
               "type": "text",
-              "content": "ND : Pour moi la symétrie n'est pas nécessairement un synonyme d'ordre imposé. Je la vois avant tout comme un langage visuel."
+              "content": "<b>ND :</b> Pour moi, la symétrie n’est pas nécessairement un synonyme d’ordre imposé. Je la vois avant tout comme un langage visuel."
             },
             {
               "type": "text",
-              "content": "Une symétrie très rigoureuse peut produire un sentiment d'harmonie et de calme ou, au contraire, de monumentalité – en fonction de l'architecture elle-même et de ce qu'elle contient."
+              "content": "Une symétrie très rigoureuse peut produire une sensation d'harmonie et de calme ou, au contraire, de monumentalité – en fonction de l'architecture elle-même et de ce qu'elle contient."
             },
             {
               "type": "text",
-              "content": "Donc je ne pense pas avoir jamais abandonné une composition simplement parce qu'elle était « trop parfaite », mais je peux m'en éloigner pour des raisons de goût personnel."
+              "content": "Donc je ne pense pas avoir jamais abandonné une composition simplement parce qu'elle était « trop parfaite », mais je peux m'éloigner d'une pour des raisons de goût personnel."
             },
             {
               "type": "text",
-              "content": "D'autre part, si une composition décentrée ou une rupture dans la géométrie semble plus intéressante visuellement pour moi, je peux la choisir – même si cela arrive rarement."
+              "content": "D'autre part, si une composition décentrée ou une rupture dans la géométrie me semble plus intéressante visuellement, je peux la choisir – même si cela arrive rarement."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-tuschinski.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Théâtre Tuschinski, Amsterdam, 2023. Photo : Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "VM : Vous recherchez « un impact visuel immédiat, ouvert à la surprise et à la contemplation ». L’immédiateté et la contemplation ne tirent-elles pas dans des directions opposées ? Comment une image peut-elle frapper en une seconde et vous retenir pendant une heure ?"
+              "content": "<b>VM :</b> Vous recherchez « un impact visuel immédiat, ouvert à la surprise et à la contemplation ». L’immédiateté et la contemplation ne tirent-elles pas dans des directions opposées ? Comment une image peut-elle frapper en une seconde et vous retenir pendant une heure ?"
             },
             {
               "type": "text",
-              "content": "ND : C’est une question intéressante, car l’impact immédiat et la contemplation peuvent en effet sembler contradictoires. Mais je les vois plutôt comme deux moments successifs : d’abord l’impact, puis la contemplation."
+              "content": "<b>ND :</b> C’est une question intéressante, car l’impact immédiat et la contemplation peuvent en effet sembler contradictoires. Mais je les vois plutôt comme deux moments successifs : d’abord l’impact, puis la contemplation."
             },
             {
               "type": "text",
@@ -125942,23 +125963,42 @@
             },
             {
               "type": "text",
-              "content": "L'impact attire l'œil ; la multitude l'invite à rester."
+              "content": "L’impact attire l’œil ; la multitude l’invite à rester."
+            },
+            {
+              "type": "quote",
+              "content": "L'impact attire l'œil ; la multitude l'invite à rester.",
+              "caption": "Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-rechtbank.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Le bâtiment Rechtbank, Amsterdam, 2024. Photo : Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "VM : Lorsque vous réduisez un bâtiment à sa structure, il perd quelque chose : son usage, ses habitants, son bruit, son histoire. Est-ce une perte que vous acceptez, ou pensez-vous que la structure contient déjà tout cela ?"
+              "content": "<b>VM :</b> Lorsque vous réduisez un bâtiment à sa structure, il perd quelque chose : son usage, ses habitants, son bruit, son histoire. Est-ce une perte que vous acceptez, ou pensez-vous que la structure contient déjà tout cela ?"
             },
             {
               "type": "text",
-              "content": "ND : Oui, c’est une perte que j’accepte pleinement. Lorsque je photographie un bâtiment, je ne cherche pas à en donner une représentation complète, avec son usage, ses habitants et toute la vie qui l’entoure. Je choisis plutôt d’isoler ses lignes et ses formes."
+              "content": "<b>ND :</b> Oui, c’est une perte que j’accepte pleinement. Lorsque je photographie un bâtiment, je ne cherche pas à en donner une représentation complète, avec son usage, ses habitants et toute la vie qui l’entoure. Je choisis plutôt d’isoler ses lignes et ses formes."
             },
             {
               "type": "text",
-              "content": "Je ne pense pas que la structure seule contienne tout ce que je laisse de côté. Elle peut porter des traces d’une époque, d’un usage ou d’une histoire, mais ce n’est pas nécessairement ce que j’essaie de raconter."
+              "content": "Je ne pense pas que la structure seule contienne tout ce que je laisse de côté. Elle peut porter des traces d'une époque, d'une utilisation ou d'une histoire, mais ce n'est pas nécessairement ce que j'essaie de raconter."
             },
             {
               "type": "text",
               "content": "Mon approche consiste plutôt à supprimer visuellement une partie du contexte afin que la structure graphique du bâtiment ressorte plus fortement. Ce qui disparaît de l'image n'est pas sans importance : c'est simplement ce que je choisis de laisser hors du cadre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-prague-sky.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Sous le ciel de Prague, Prague, 2025. Photo : Nicolas Delarre"
             },
             {
               "type": "header",
@@ -125967,67 +126007,67 @@
             },
             {
               "type": "text",
-              "content": "VM : Votre diptyque parle d'« un langage plus ancien que les mots » : la suite de Fibonacci, la symétrie radiale, le nombre d'or. Beaucoup de mathématiciens considèrent le nombre d'or comme un mythe largement surinterprété. La vérité scientifique de ces motifs vous importe-t-elle, ou seulement leur force poétique ?"
+              "content": "<b>VM :</b> Votre diptyque parle de “une langue plus ancienne que les mots” : la suite de Fibonacci, la symétrie radiale, le nombre d’or. Beaucoup de mathématiciens considèrent le nombre d’or comme un mythe largement surinterprété. La vérité scientifique de ces motifs vous importe-t-elle, ou seulement leur force poétique ?"
             },
             {
               "type": "text",
-              "content": "ND : La vérité scientifique de ces motifs m'intéresse, mais elle n'est pas essentielle à ma pratique. Le nombre d'or est en effet souvent surinterprété. Dans le monde végétal, on trouve de nombreux agencements liés à la suite de Fibonacci – dans le placement des feuilles et des pétales, ou dans certaines structures en spirale. Mais cela ne fait pas de lui une loi universelle des êtres vivants."
+              "content": "<b>ND :</b> La vérité scientifique de ces motifs m’intéresse, mais ce n’est pas essentiel à ma pratique. Le nombre d’or est en effet souvent surinterprété. Dans le monde végétal, on trouve de nombreux agencements liés à la suite de Fibonacci – dans le placement des feuilles et des pétales, ou dans certaines structures en spirale. Mais cela ne fait pas de lui une loi universelle des êtres vivants."
             },
             {
               "type": "text",
-              "content": "Ce qui m'intéresse le plus, c'est que les êtres vivants s'organisent eux-mêmes et créent parfois un équilibre visuel. Que cet équilibre corresponde exactement à une règle mathématique m'importe moins, en fin de compte, que sa force graphique et poétique."
+              "content": "Ce qui m’intéresse davantage, c’est que les êtres vivants s’organisent eux-mêmes et créent parfois un équilibre visuel. Que cet équilibre corresponde exactement à une règle mathématique m’importe moins, en fin de compte, que sa force graphique et poétique."
             },
             {
               "type": "text",
-              "content": "Dans le monde vivant, la symétrie parfaite est très rare. Ce qui compte pour moi, c'est la symétrie ressentie, et c'est souvent ce que la nature me rend lorsque je sors pour photographier."
+              "content": "Dans le monde vivant, la symétrie parfaite est très rare. Ce qui compte pour moi, c’est la symétrie ressentie, et c’est souvent ce que la nature me renvoie lorsque je sors pour photographier."
             },
             {
               "type": "text",
-              "content": "Peut-être que c'est précisément là que se trouve ce « langage plus ancien que les mots » pour moi : dans notre capacité à ressentir un ordre, un rythme ou un équilibre avant même d'essayer de l'expliquer."
+              "content": "Peut-être que c’est précisément là que réside pour moi ce « langage plus ancien que les mots » : dans notre capacité à ressentir un ordre, un rythme ou un équilibre avant même d’essayer de l’expliquer."
             },
             {
               "type": "text",
-              "content": "VM : Tu empruntes à Baudelaire « le langage des fleurs et des choses muettes », et à Chesterton l'idée que le monde périra seulement par manque d'émerveillement. Qu'est-ce qu'un poète ou un écrivain t'a appris sur la photographie que aucun photographe n'a fait ?"
+              "content": "<b>VM :</b> Tu empruntes à Baudelaire « le langage des fleurs et des choses muettes », et à Chesterton l’idée que le monde périra seulement par manque d’émerveillement. Qu’est-ce qu’un poète ou un écrivain t’a appris sur la photographie que aucun photographe n’a ?"
             },
             {
               "type": "text",
-              "content": "ND : La phrase de Baudelaire me touche parce qu'elle rejoint ce que je ressens en photographie. Certaines choses restent silencieuses jusqu'au moment où vous décidez vraiment de les regarder. Une fleur, une façade ou une répétition de formes peuvent sembler ordinaires, puis révéler quelque chose dès que vous leur prêtez attention."
+              "content": "<b>ND :</b> La phrase de Baudelaire me touche parce qu’elle correspond à ce que je ressens en photographie. Certaines choses restent silencieuses jusqu’au moment où tu décides vraiment de les regarder. Une fleur, une façade ou une répétition de formes peuvent sembler ordinaires, puis révéler quelque chose dès que tu leur prêtes attention."
             },
             {
               "type": "text",
-              "content": "La ligne de Chesterton sur le manque d'émerveillement est aussi restée avec moi. Je ne l'entends pas seulement dans un sens esthétique : l'émerveillement est aussi une façon de regarder le monde autre que par l'utilité, le pouvoir ou l'intérêt économique. Il invite à l'humilité, nous rappelant que nous faisons partie d'un monde plus grand que nous."
+              "content": "La ligne de Chesterton sur le manque d’émerveillement est aussi restée avec moi. Je ne l’entends pas seulement dans un sens esthétique : l’émerveillement est aussi une façon de regarder le monde autre que par l’utilité, le pouvoir ou l’intérêt économique. Il invite à l’humilité, nous rappelant que nous faisons partie d’un monde plus grand que nous."
             },
             {
               "type": "text",
-              "content": "Je ne pense pas que les conflits ou les problèmes politiques puissent être expliqués simplement par un manque d'émerveillement. Mais lorsque nous cessons de regarder vraiment les êtres humains, la nature et ce qui nous entoure, nous risquons de réduire le monde à ce que nous pouvons contrôler, posséder ou exploiter. Je trouve cette idée chez Edgar Morin, dans la façon dont il pense les liens entre l'humain, le vivant, la société et l'environnement."
+              "content": "Je ne pense pas que les conflits ou les problèmes politiques puissent s'expliquer simplement par un manque d'émerveillement. Mais lorsque nous cessons de vraiment regarder les êtres humains, la nature et ce qui nous entoure, nous risquons de réduire le monde à ce que nous pouvons contrôler, posséder ou exploiter. Je trouve cette idée chez Edgar Morin, dans la façon dont il pense aux liens entre l'humain, le vivant, la société et l'environnement."
             },
             {
               "type": "text",
-              "content": "Certains écrivains et penseurs m'ont peut-être appris plus à regarder que les photographes eux-mêmes : avant de faire une image, il faut garder la capacité d'être étonné par ce qui est déjà là."
+              "content": "Certains écrivains et penseurs m'ont peut-être appris plus sur la façon de regarder que les photographes eux-mêmes : avant de faire une image, il faut garder la capacité d'être étonné par ce qui est déjà là."
             },
             {
               "type": "text",
-              "content": "VM : Tu écris que tu regardes l'architecture avec un œil d'adulte et la nature avec un œil d'enfant. Que se passerait-il si tu les échangeais ? Y a-t-il un bâtiment qui te fait redevenir un enfant, et une fleur que tu regardes comme un ingénieur ?"
+              "content": "<b>VM :</b> Vous écrivez que vous regardez l'architecture avec l'œil d'un adulte et la nature avec celui d'un enfant. Que se passerait-il si vous les échangiez ? Y a-t-il un bâtiment qui vous fait redevenir enfant, et une fleur que vous regardez comme un ingénieur ?"
             },
             {
               "type": "text",
-              "content": "ND : Je pense en fait que ces deux façons de voir sont moins opposées qu'il n'y paraît. La Sagrada Família, par exemple, me fait ça. Il y a quelque chose de si foisonnant et d'irréel à son sujet que je le regarde d'abord avec étonnement, avant même d'essayer d'analyser ses lignes."
+              "content": "<b>ND :</b> Je pense en fait que ces deux façons de regarder sont moins opposées qu'il n'y paraît. La Sagrada Família, par exemple, me fait cet effet. Il y a quelque chose de si foisonnant et d'irréel à son sujet que je l'observe d'abord avec étonnement, avant même d'essayer d'analyser ses lignes."
             },
             {
               "type": "text",
-              "content": "Inversement, je peux regarder une fleur de manière très analytique. Un simple pissenlit m'intéresse presque comme une construction : sa symétrie, la répétition de ses éléments, son organisation extrêmement précise peuvent m'amener à l'observer avec quelque chose qui se rapproche de l'œil d'un ingénieur."
+              "content": "Inversement, je peux regarder une fleur de manière très analytique. Un simple pissenlit m'intéresse presque comme une construction : sa symétrie, la répétition de ses éléments, son organisation extrêmement précise peuvent me conduire à l'observer avec quelque chose proche du regard d'un ingénieur."
             },
             {
               "type": "text",
-              "content": "En fin de compte, les deux peuvent se suivre assez naturellement. D'abord la merveille, puis le désir de comprendre visuellement ce qui l'a causée."
+              "content": "En fin de compte, les deux peuvent se suivre assez naturellement. D'abord vient l'émerveillement, puis le désir de comprendre visuellement ce qui l'a causé."
             },
             {
               "type": "text",
-              "content": "VM : Au musée Micropia à Amsterdam, vous photographiez des répliques d'Asterionella formosa et Heliosphaera – l'image d'une image. Dans « Miroirs », la ville est doublée par son reflet. Qu'est-ce qui vous attire dans ces objets de second degré – modèles, répliques, reflets – plutôt que dans la chose elle-même ?"
+              "content": "<b>VM :</b> Au musée Micropia à Amsterdam, vous photographiez des répliques d'Asterionella formosa et Heliosphaera – l'image d'une image. Dans “Miroirs”, la ville est doublée par son reflet. Qu'est-ce qui vous attire dans ces objets de second degré – modèles, répliques, reflets – plutôt que dans la chose elle-même ?"
             },
             {
               "type": "text",
-              "content": "ND : Ce que j'aime dans ces objets de second degré, ce n'est pas tant leur statut de réplique ou de reflet que la transformation de la perception qu'ils permettent."
+              "content": "<b>ND :</b> Ce que j'aime dans ces objets de second degré, ce n'est pas tant leur statut de réplique ou de reflet que la transformation de la vision qu'ils permettent."
             },
             {
               "type": "text",
@@ -126038,17 +126078,31 @@
               "content": "Dans les deux cas, la réalité est toujours présente, mais elle devient autre chose. Il est intéressant de partir du réel et d'en tirer une lecture plus graphique, parfois plus abstraite."
             },
             {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-micropia-asterionella.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Réplique d'un micro-organisme marin (Asterionella formosa), Micropia, Amsterdam. Photo : Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-micropia-heliosphaera.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Réplique d'un micro-organisme marin (Heliosphaera), Micropia, Amsterdam. Photo : Nicolas Delarre"
+            },
+            {
               "type": "header",
               "content": "03 · Villes et miroirs",
               "level": 2
             },
             {
               "type": "text",
-              "content": "VM : Lisbonne, Genève, Prague, Vienne, Amsterdam, Annecy : dans la série « Miroirs », la réflexion est-elle une vérité supplémentaire sur la ville, ou une fiction qu’elle raconte sur elle-même ? Combien de ces images proviennent du hasard – une flaque, une fenêtre – et combien d’une longue attente ?"
+              "content": "<b>VM :</b> Lisbonne, Genève, Prague, Vienne, Amsterdam, Annecy : dans la série « Miroirs », la réflexion est-elle une vérité supplémentaire sur la ville, ou une fiction qu’elle raconte sur elle-même ? Combien de ces images proviennent du hasard – une flaque, une fenêtre – et combien d’une longue attente ?"
             },
             {
               "type": "text",
-              "content": "ND : Dans « Miroirs » le hasard joue en réalité un rôle assez réduit. Beaucoup de ces images ont été pensées à l’avance, y compris celles réalisées avec des miroirs d’eau. Je recherche délibérément ces surfaces réfléchissantes, car elles me permettent de transformer la perception d’un lieu – la doubler, la fragmenter ou parfois renforcer sa symétrie."
+              "content": "<b>ND :</b> Dans « Miroirs », le hasard joue en réalité un rôle assez réduit. Beaucoup de ces images ont été pensées à l’avance, y compris celles réalisées avec des miroirs d’eau. Je recherche délibérément ces surfaces réfléchissantes, car elles me permettent de transformer la perception d’un lieu – la doubler, la fragmenter ou parfois renforcer sa symétrie."
             },
             {
               "type": "text",
@@ -126059,24 +126113,52 @@
               "content": "Bien sûr, une flaque ou une lumière particulière peuvent parfois déclencher une image plus spontanément, mais cela reste assez rare."
             },
             {
-              "type": "text",
-              "content": "VM : Amsterdam, Vienne, Prague et Genève reviennent sans cesse dans votre travail. Qu'est-ce qu'une ville doit avoir pour que vous y retourniez avec votre appareil photo ? Et Lille – « Convergence », « Tétris », la gare Lille-Europe, le Palais des Beaux-Arts : est-il plus difficile de photographier votre propre ville ?"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-lisbon.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Un nouveau jour pour Lisbonne (le pont Vasco da Gama), Lisbonne, 2024. Photo : Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-annecy.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Lac Annecy. Photo : Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "ND : J'ai une attraction particulière pour l'architecture de l'Europe centrale, mais ce qui me donne vraiment envie de revenir dans une ville, c'est le sentiment que je n'ai pas épuisé ses possibilités photographiques. Certaines villes offrent une telle diversité d'architecture qu'un seul séjour ne suffit pas. Et la saison, ou simplement un itinéraire différent, peut complètement changer votre regard sur elles."
+              "content": "<b>VM :</b> Amsterdam, Vienne, Prague et Genève continuent de revenir dans votre travail. Qu'est-ce qu'une ville doit avoir pour que vous y retourniez avec votre appareil photo ? Et Lille – “Convergence”, “Tétris”, gare Lille-Europe, le Palais des Beaux-Arts : est-il plus difficile de photographier votre propre ville ?"
             },
             {
               "type": "text",
-              "content": "Photographier sa propre ville est différent. La familiarité peut rendre l'œil moins attentif : ce que vous voyez tous les jours finit parfois par devenir presque invisible. Mais cette proximité est aussi un avantage, car vous pouvez y revenir autant de fois qu'il faut pour trouver l'image que vous cherchez."
+              "content": "<b>ND :</b> J'ai une attraction particulière pour l'architecture de l'Europe centrale, mais ce qui me donne vraiment envie de revenir dans une ville, c'est le sentiment de ne pas avoir épuisé ses possibilités photographiques. Certaines villes offrent une telle diversité d'architecture qu'un seul séjour ne suffit pas. Et la saison, ou simplement un itinéraire différent, peut complètement changer la façon dont vous les regardez."
             },
             {
               "type": "text",
-              "content": "VM : Beaucoup de vos sujets urbains sont des bâtiments contemporains en verre et en métal : le Sluishuis, le bâtiment SPG de Genève avec ses 2 900 lames en verre, la tour ÖBB. Photographiez-vous un bâtiment comme l’architecte l’a prévu, ou à leur opposition ? Un architecte a-t-il déjà réagi à l’une de vos images ?"
+              "content": "Photographier sa propre ville est différent. La familiarité peut rendre l'œil moins attentif : ce que vous voyez tous les jours finit parfois par devenir presque invisible. Mais cette proximité est aussi un avantage, car vous pouvez revenir autant de fois qu'il faut pour trouver l'image que vous recherchez."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-tetris.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "« Tétris », Lille. Photo : Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-convergence.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "« Convergence », Lille. Photo : Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "ND : Ce sont en effet des bâtiments que j’affectionne beaucoup. Je n’essaie pas vraiment de photographier un bâtiment « contre » son architecte, mais je n’essaie pas non plus de donner une représentation strictement descriptive. Je pars de ce qui a été conçu, puis j’essaie d’en offrir ma propre lecture – souvent plus abstraite, avec une perspective assez prononcée et un résultat global très graphique."
+              "content": "<b>VM :</b> Beaucoup de vos sujets urbains sont des bâtiments contemporains en verre et en métal : le Sluishuis, le bâtiment SPG de Genève avec ses 2 900 lames en verre, la tour ÖBB. Photographiez-vous un bâtiment comme l’architecte l’a prévu, ou contre eux ? Un architecte a-t-il déjà réagi à l’une de vos images ?"
+            },
+            {
+              "type": "text",
+              "content": "<b>ND :</b> Ce sont en effet des bâtiments que j’affectionne beaucoup. Je n’essaie pas vraiment de photographier un bâtiment « contre » son architecte, mais je n’essaie pas non plus de donner une représentation strictement descriptive. Je pars de ce qui a été conçu, puis j’essaie d’en offrir ma propre lecture – souvent plus abstraite, avec une perspective assez prononcée et un résultat global très graphique."
             },
             {
               "type": "text",
@@ -126087,24 +126169,64 @@
               "content": "Jusqu’à présent, je n’ai jamais eu de retour direct d’architectes, à part quelques réactions positives sur les réseaux sociaux. J’aimerais vraiment avoir leur avis un jour et savoir comment ils perçoivent cette interprétation de leur propre travail."
             },
             {
-              "type": "text",
-              "content": "VM : Le Palais des Beaux-Arts à Lille illuminé pour Pink October, l'installation de Mathias Kiss, “Aspersion” de Clarence Guéna à La Manufacture à Roubaix : lorsque la lumière ou l'œuvre d'un autre artiste transforment un lieu, à qui appartient votre image de celui-ci ?"
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-sluishuis.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "The Sluishuis, Amsterdam. Photo: Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-obb.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La tour ÖBB, Vienne. Photo: Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "ND : Je pense que cela dépend beaucoup de la façon dont je rencontre l'œuvre ou le lieu. Avec Aspersion de Clarence Guéna, tout était déjà là. L'œuvre, présentée comme une peinture, m'a immédiatement plu. C'était un coup de cœur et je n'ai ressenti aucun besoin d'ajouter une interprétation particulière, alors je l'ai simplement photographiée sur un trépied, de manière descriptive."
+              "content": "<b>VM :</b> Le Palais des Beaux-Arts à Lille illuminé pour Pink October, l'installation de Mathias Kiss, « Aspersion » de Clarence Guéna à La Manufacture à Roubaix : lorsque la lumière ou le travail d’un autre artiste transforme un lieu, à qui appartient votre image de celui-ci ?"
             },
             {
               "type": "text",
-              "content": "Avec l'installation de Mathias Kiss, les réflexions et la symétrie faisaient déjà partie intégrante de l'œuvre. Mon rôle consistait principalement à gérer certaines contraintes techniques de la prise de vue à l'intérieur du musée."
+              "content": "<b>ND :</b> Je pense que cela dépend beaucoup de la façon dont je rencontre l’œuvre ou le lieu. Avec Aspersion de Clarence Guéna, tout était déjà là. L’œuvre, présentée comme une peinture, m’a immédiatement plu. C’était un coup de foudre et je n’ai ressenti aucun besoin d’ajouter une interprétation particulière, je l’ai simplement photographiée sur un trépied, de manière descriptive."
             },
             {
               "type": "text",
-              "content": "Pink October était différent : l'éclairage rose était prévu, mais la pluie ne l'était pas. Les réflexions sur le sol ont apporté un élément de surprise et m'ont permis de construire une image plus personnelle."
+              "content": "Avec l'installation de Mathias Kiss, <em>reflets</em> et <em>symétrie</em> faisaient déjà partie intégrante de l'œuvre. Mon rôle consistait principalement à gérer certaines contraintes techniques de tournage à l'intérieur du musée."
             },
             {
               "type": "text",
-              "content": "Dans tous les trois cas, l'œuvre ne m'appartient pas. C'est précisément pour cela que je m'assure toujours de créditer les artistes. Vous devez aussi reconnaître qu'dans ces photographies, ils ont déjà réalisé une grande partie du travail visuel. Ce qui m'appartient davantage, c'est la façon dont je décide de regarder leur travail et de le photographier. Ces photographies sont avant tout un clin d'œil à leur travail – une manière de saluer des pièces qui m'ont marqué."
+              "content": "Pink October était différent : l'<em>éclairage rose</em> était prévu, mais la pluie ne l’était pas. Les reflets sur le sol ont apporté un élément de surprise et m'ont permis de construire une image plus personnelle."
+            },
+            {
+              "type": "text",
+              "content": "Dans les trois cas, l'œuvre ne m’appartient pas. C’est précisément pour cela que je m’assure toujours de créditer les artistes. Il faut aussi reconnaître qu’dans ces photographies, ils ont déjà réalisé une grande partie du travail visuel. Ce qui m’appartient davantage, c’est la façon dont je décide de regarder leur travail et de le photographier. Ces photographies sont avant tout un clin d'œil à leur œuvre – une manière de saluer des pièces qui m’ont marqué."
+            },
+            {
+              "type": "quote",
+              "content": "L'œuvre ne m’appartient pas. Ce qui m’appartient, c’est la façon dont je décide de la regarder.",
+              "caption": "Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-aspersion.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "« Aspersion » par Clarence Guéna, La Manufacture, Roubaix. Photo : Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-kiss.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Installation par Mathias Kiss (2019), Palais des Beaux-Arts, Lille. Photo : Nicolas Delarre"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-octobre-rose.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Palais des Beaux-Arts, Lille, illuminé pour Pink October. Photo : Nicolas Delarre"
             },
             {
               "type": "header",
@@ -126113,39 +126235,39 @@
             },
             {
               "type": "text",
-              "content": "VM : Pourquoi noir et blanc pour certaines séries et couleur pour d'autres ? Qu'est-ce que la couleur vous empêche de dire – et qu'est-ce que le noir et blanc vous oblige à garder secret ?"
+              "content": "<b>VM :</b> Pourquoi en noir et blanc pour certaines séries et en couleur pour d'autres ? Qu'est-ce que la couleur vous empêche de dire – et qu'est-ce que le noir et blanc vous oblige à garder silencieux ?"
             },
             {
               "type": "text",
-              "content": "ND : Pour moi, le choix entre couleur et noir et blanc dépend avant tout de ce que l'image doit dire."
+              "content": "<b>ND :</b> Pour moi, le choix entre couleur et noir et blanc dépend avant tout de ce que l'image doit exprimer."
             },
             {
               "type": "text",
-              "content": "J'utilise le noir et blanc lorsque la couleur semble secondaire, ou même distraire de ce qui rend l'image forte : les lignes, les formes, les contrastes, les ombres. Cela peut aussi donner au sujet une sorte d'intemporalité."
+              "content": "J'utilise le noir et blanc lorsque la couleur semble secondaire, ou même distrait de ce qui rend l'image forte : les lignes, les formes, les contrastes, les ombres. Cela peut aussi donner au sujet une sorte d'intemporalité."
             },
             {
               "type": "text",
-              "content": "Inversement, certaines images ont besoin de couleur. Elle peut faire partie intégrante de la composition, créer un équilibre ou une atmosphère, ou simplement être ce qui m'a attiré vers la scène en premier lieu. Dans ce cas, passer au noir et blanc signifierait supprimer une information essentielle."
+              "content": "Inversement, certaines images ont besoin de couleur. Elle peut faire partie intégrante de la composition, créer un équilibre ou une atmosphère, ou simplement être ce qui m'a attiré vers la scène en premier lieu. Dans ce cas, passer au noir et blanc signifierait supprimer des informations essentielles."
             },
             {
               "type": "text",
-              "content": "Donc je n'essaie pas de décider si une image est plus belle en couleur ou en noir et blanc, mais plutôt ce qui est indispensable à son expression. La couleur peut parfois en dire trop ; le noir et blanc vous oblige nécessairement à abandonner une partie de la réalité. C'est un équilibre à trouver pour chaque photographie."
+              "content": "Donc je ne tente pas de décider si une image est plus belle en couleur ou en noir et blanc, mais plutôt ce qui est indispensable à son expression. La couleur peut parfois en dire trop ; le noir et blanc vous oblige nécessairement à abandonner une partie de la réalité. C’est un équilibre à trouver pour chaque photographie."
             },
             {
               "type": "text",
-              "content": "VM : Quelle part de l'image est créée lors de la prise de vue, et quelle part lors du développement ? Où tracez-vous la limite du retouche acceptable en photographie architecturale – redresser les verticales, supprimer un passant, un câble, une enseigne ?"
+              "content": "<b>VM :</b> Combien de l’image est créée lors de la prise de vue, et combien lors du développement ? Où tracez-vous la ligne du retouche acceptable en photographie architecturale – redresser les verticales, supprimer un passant, un câble, une enseigne ?"
             },
             {
               "type": "text",
-              "content": "ND : Pour moi, la partie essentielle de l'image est construite au moment de la prise de vue. Je prête beaucoup d'attention à l'équilibre général de la composition. C'est à ce moment que l'image existe vraiment."
+              "content": "<b>ND :</b> Pour moi, la partie essentielle de l’image se construit au moment de la prise de vue. Je porte beaucoup d’attention à l’équilibre global de la composition. C’est à ce moment que l’image existe vraiment."
             },
             {
               "type": "text",
-              "content": "Le développement intervient ensuite comme une finition. Il me permet d'ajuster le contraste, les hautes lumières, les ombres, les couleurs, ou parfois de corriger la perspective, pour obtenir le plus possible ce que j'ai perçu sur place."
+              "content": "Le développement intervient ensuite comme une finition. Il me permet d’ajuster le contraste, les hautes lumières, les ombres, les couleurs, ou parfois de corriger la perspective, pour me rapprocher autant que possible de ce que j’ai perçu sur place."
             },
             {
               "type": "text",
-              "content": "En ce qui concerne la retouche, je ne supprime pas d'éléments de la scène et je n'en ajoute pas non plus. Je préfère travailler avec ce qui est réellement présent au moment de la prise de vue, même si cela signifie attendre, bouger ou changer mon cadrage. Je retourne aussi parfois plusieurs fois au même bâtiment pour obtenir la version que je souhaite."
+              "content": "En ce qui concerne la retouche, je ne supprime pas d'éléments de la scène et je n'en ajoute pas non plus. Je préfère travailler avec ce qui est vraiment là au moment de la prise de vue, même si cela signifie attendre, bouger ou changer mon cadrage. Je retourne aussi parfois au même bâtiment plusieurs fois pour obtenir la version que je souhaite."
             },
             {
               "type": "text",
@@ -126153,43 +126275,50 @@
             },
             {
               "type": "text",
-              "content": "Donc ma limite réside dans la transformation de la réalité. Je peux corriger ou affiner l'image, mais sans en modifier le contenu. Bien sûr, c’est une approche personnelle qui peut évoluer avec le temps. D’autres photographes choisissent d’aller beaucoup plus loin avec la retouche, et cela peut produire un travail artistiquement très fort. En fin de compte, tout dépend de votre propre approche et des limites que vous vous fixez."
+              "content": "Donc ma limite réside dans la transformation de la réalité. Je peux corriger ou affiner l'image, mais sans en modifier le contenu. Bien sûr, c'est une approche personnelle qui peut évoluer avec le temps. D'autres photographes choisissent d'aller beaucoup plus loin avec la retouche, et cela peut produire un travail artistiquement très fort. En fin de compte, tout dépend de votre propre approche et des limites que vous vous fixez."
             },
             {
               "type": "text",
-              "content": "VM : Vos tirages sont limités à trente exemplaires, signés, sur Hahnemühle Photo Rag. À une époque où la même image circule gratuitement et sans fin sur Instagram, que signifie la rareté d’un tirage ? Qu’est-ce qu’un tirage dit qu’un écran ne peut pas ?"
+              "content": "<b>VM :</b> Vos tirages sont limités à trente exemplaires, signés, sur Hahnemühle Photo Rag. À une époque où la même image circule gratuitement et sans fin sur Instagram, que signifie la rareté d'un tirage ? Qu'est-ce qu'un tirage dit qu'un écran ne peut pas ?"
             },
             {
               "type": "text",
-              "content": "ND : Pour moi, la rareté ne réside pas dans l’image elle-même, puisqu’elle peut circuler librement et être vue un nombre presque illimité de fois, mais dans l’objet photographique."
+              "content": "<b>ND :</b> Pour moi, la rareté ne réside pas dans l'image elle-même, puisqu'elle peut circuler librement et être vue un nombre presque illimité de fois, mais dans l'objet photographique."
             },
             {
               "type": "text",
-              "content": "Un tirage est un objet physique, avec son propre format, papier, texture et matérialité – un objet photographique que vous choisissez de laisser exister dans un espace. Un écran reste une représentation lumineuse éphémère dont le rendu peut varier selon sa qualité. Un tirage d’art sur papier de haute qualité, en revanche, fixe le rendu final plus précisément, notamment dans la finesse du détail, les nuances et la matière de l’image. La grande taille compte aussi : elle confère à la photographie une qualité immersive."
+              "content": "Une impression est un objet physique, avec son propre format, papier, texture et matérialité – un objet photographique que vous choisissez de laisser exister dans un espace. Un écran reste une représentation lumineuse éphémère dont le rendu peut varier selon sa qualité. Une impression d'art sur papier de haute qualité, en revanche, fixe le rendu final plus précisément, notamment dans la finesse du détail, les nuances et la matière de l'image. La grande taille compte aussi : elle confère à la photographie une qualité immersive."
             },
             {
               "type": "text",
-              "content": "Pour le photographe, l'impression est aussi l'apogée d'une image qui a souvent été préparée longtemps à l'avance."
+              "content": "Pour le photographe, l'impression est aussi l'aboutissement d'une image qui a souvent été préparée longtemps à l'avance. Je prends toujours un réel plaisir à aller chercher l'impression finale au laboratoire."
             },
             {
               "type": "text",
-              "content": "C'est aussi ce que signifie pour moi la rareté d'une impression : ne pas rendre l'image inaccessible, mais donner à une photographie une existence physique, durable."
+              "content": "C'est aussi cela que signifie pour moi la rareté d'une impression : ne pas rendre l'image inaccessible, mais donner à une photographie une existence physique, durable."
             },
             {
               "type": "text",
-              "content": "VM : Parlez-nous d'une image que le public adore mais qui ne vous satisfait pas, et d'une que vous défendez et qui laisse les gens indifférents. Qu'est-ce que cet écart vous apprend ?"
+              "content": "<b>VM :</b> Parlez-nous d'une image que le public adore mais qui ne vous satisfait pas, et d'une que vous défendez mais qui laisse les gens indifférents. Qu'est-ce que cet écart vous apprend ?"
             },
             {
               "type": "text",
-              "content": "ND : Une photographie de la Karlskirche à Vienne a été très populaire, alors que je reste plutôt mitigé à son sujet. J'aime l'image, mais j'aurais voulu que la présence humaine soit plus discrète. Un événement se déroulait pendant tout mon séjour et je n'ai pas eu la chance de faire une autre version dans des conditions plus calmes."
+              "content": "<b>ND :</b> Une photographie de la Karlskirche à Vienne a été très populaire, alors que je reste plutôt mitigé à son sujet. J'aime l'image, mais j'aurais voulu que la présence humaine soit plus discrète. Un événement se déroulait pendant tout mon séjour et je n'ai pas eu la chance de faire une autre version dans des conditions plus calmes."
             },
             {
               "type": "text",
-              "content": "Inversement, une photographie prise à Amsterdam d'une avenue d'arbres en hiver a suscité beaucoup moins de réactions que je ne l'avais imaginé. J'avais mis beaucoup d'effort pour obtenir cette prise de vue, et je pense que cet effort avait également créé une attente particulière en moi. Je suis donc surpris qu'elle ait laissé le public plus indifférent, alors que je l'aime toujours beaucoup."
+              "content": "Inversement, une photographie prise à Amsterdam d'une avenue d'arbres en hiver a suscité beaucoup moins de réactions que je ne l'avais imaginé. J'avais beaucoup investi pour obtenir cette prise de vue, et je pense que l'effort avait aussi créé une attente particulière en moi. J'ai donc été surpris qu'elle laisse le public plus indifférent, alors que je l'aime beaucoup."
             },
             {
               "type": "text",
-              "content": "Avant tout, cet écart m'apprend à séparer mon propre regard de celui du public. Le succès d'une photographie ne signifie pas nécessairement qu'elle me satisfait pleinement, et l'indifférence qu'elle rencontre ne remet pas forcément en question l'intérêt que je lui porte."
+              "content": "Surtout, cet écart m'apprend à séparer mon propre regard de celui du public. Le succès d'une photographie ne signifie pas nécessairement qu'elle me satisfait pleinement, et l'indifférence qu'elle rencontre ne remet pas forcément en question l'intérêt que je lui porte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/nicolas-delarre-karlskirche.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "L'église Karlskirche, Vienne, 2023. Photo : Nicolas Delarre"
             },
             {
               "type": "header",
@@ -126198,11 +126327,11 @@
             },
             {
               "type": "text",
-              "content": "VM : Quelle est la plus grande incompréhension concernant votre travail ?"
+              "content": "<b>VM :</b> Quelle est la plus grande incompréhension concernant votre travail ?"
             },
             {
               "type": "text",
-              "content": "ND : Peut-être l'idée que mes images sont en grande partie construites en post-traitement. Leur aspect très graphique, géométrique ou symétrique peut parfois donner cette impression, alors que pour moi la partie essentielle se déroule au moment de la prise de vue : le choix du point de vue, de la longueur focale, de la distance et du cadrage. Le post-traitement intervient ensuite comme une finition, mais il ne crée pas la structure de l'image. Avant tout, j'essaie de révéler une organisation qui est déjà présente dans la réalité."
+              "content": "<b>ND :</b> Peut-être l'idée que mes images sont largement construites en post-traitement. Leur aspect très graphique, géométrique ou symétrique peut parfois donner cette impression, alors que pour moi la partie essentielle se déroule au moment de la prise de vue : le choix du point de vue, de la longueur focale, de la distance et du cadrage. Le post-traitement intervient ensuite comme une finition, mais il ne crée pas la structure de l'image. Avant tout, j'essaie de révéler une organisation qui est déjà présente dans la réalité."
             },
             {
               "type": "text",
@@ -126210,53 +126339,60 @@
             },
             {
               "type": "text",
-              "content": "VM : Qu'avez-vous dû abandonner – une façon de photographier, une série, une certitude – pour arriver à ce que vous faites aujourd'hui ?"
+              "content": "<b>VM :</b> Qu'avez-vous dû abandonner – une façon de photographier, une série, une certitude – pour arriver à ce que vous faites aujourd'hui ?"
             },
             {
               "type": "text",
-              "content": "ND : Avant tout, j'ai dû abandonner le besoin d'appuyer sur le déclencheur. Avec le temps, je suis devenu plus exigeant sur ce qui doit vraiment entrer dans l'image. Cela a un prix : un certain degré de spontanéité, et la facilité de photographier sans me poser de questions."
+              "content": "<b>ND :</b> Avant tout, j'ai dû abandonner le besoin d'appuyer sur le déclencheur. Avec le temps, je suis devenu plus exigeant sur ce qui doit vraiment entrer dans l'image. Cela avait un prix : un certain degré de spontanéité, et la facilité de photographier sans me poser de questions."
             },
             {
               "type": "text",
-              "content": "Aujourd’hui je peux passer beaucoup de temps à chercher un angle, revenir plusieurs fois au même endroit, ou simplement abandonner si les conditions ne correspondent pas à ce que j’imagine. Une sortie n’a plus besoin de produire une image réussie : revenir sans photo n’est pas un échec, c’est une partie du processus."
+              "content": "Aujourd'hui, je peux passer beaucoup de temps à chercher un angle, revenir plusieurs fois au même endroit, ou simplement abandonner si les conditions ne correspondent pas à ce que j'imagine. Une sortie ne doit plus produire une image réussie : revenir sans photo n'est pas un échec, c'est une partie du processus."
             },
             {
               "type": "text",
-              "content": "Au fond, je photographie moins facilement qu’avant, mais avec une intention beaucoup plus précise."
+              "content": "Au fond, je photographie moins facilement qu'avant, mais avec une intention beaucoup plus précise."
+            },
+            {
+              "type": "quote",
+              "content": "Rentrer sans photo n’est pas un échec, c’est une partie du processus.",
+              "caption": "Nicolas Delarre"
             },
             {
               "type": "text",
-              "content": "VM : Si vous ne pouviez photographier qu’un seul bâtiment pendant toute une année, lequel serait-ce, et pourquoi celui-là ?"
+              "content": "<b>VM :</b> Si vous ne pouviez photographier qu’un seul bâtiment pendant toute une année, lequel serait-ce, et pourquoi celui-là ?"
             },
             {
               "type": "text",
-              "content": "ND : Probablement la Sagrada Família. J’y suis allé, mais c’était au tout début de ma pratique photographique. Aujourd’hui je veux y retourner avec plus d’expérience. C’est un bâtiment qui offre de nombreuses possibilités, surtout avec les vitraux et la lumière colorée qui traverse le bâtiment tout au long de la journée. C’est exactement le genre d’endroit où on peut revenir encore et encore sans vraiment prendre la même photo deux fois."
+              "content": "<b>ND :</b> Probablement la Sagrada Família. J’y suis allé, mais c’était au tout début de ma pratique photographique. Aujourd’hui, je veux y retourner avec plus d’expérience. C’est un bâtiment qui offre de nombreuses possibilités, surtout avec les vitraux et la lumière colorée qui traverse le bâtiment tout au long de la journée. C’est exactement le genre d’endroit où vous pouvez revenir encore et encore sans vraiment prendre la même photo deux fois."
             },
             {
               "type": "text",
-              "content": "VM: Un projet en cours, une prochaine exposition, un lieu que vous rêvez de photographier ?"
+              "content": "<b>VM :</b> Un projet en cours, une prochaine exposition, un lieu que vous rêvez de photographier ?"
             },
             {
               "type": "text",
-              "content": "ND: Je n'ai pas de projet précis en préparation pour le moment. Cependant, à terme, j'aimerais organiser une exposition autour de l'architecture de l'Europe centrale, une région que j'aime particulièrement photographier et où je souhaite continuer à voyager. Ce n'est qu'un souhait pour l'instant, mais c'est probablement le projet que j'aimerais le plus voir prendre forme dans les années à venir."
+              "content": "<b>ND :</b> Je n'ai pas de projet précis en préparation pour le moment. Finalement, cependant, j'aimerais organiser une exposition autour de l'architecture de l'Europe centrale, une région que j'aime particulièrement photographier et où je souhaite continuer à voyager. Ce n'est qu'un souhait pour l'instant, mais c'est probablement le projet que j'aimerais le plus voir prendre forme dans les années à venir."
             },
             {
               "type": "text",
-              "content": "VM: Une question que nous aurions dû vous poser – et votre réponse."
+              "content": "<b>VM :</b> Une question que nous aurions dû vous poser – et votre réponse."
             },
             {
               "type": "text",
-              "content": "ND: Question : Jusqu'où êtes-vous prêt à aller pour obtenir une symétrie parfaite ?"
+              "content": "<b>ND :</b> Question : Jusqu'où êtes-vous prêt à aller pour obtenir une symétrie parfaite ?"
             },
             {
               "type": "text",
-              "content": "Réponse : Apparemment autant que mentir par terre au milieu d'une bibliothèque. À ce moment-là, je préférerais ne pas savoir ce que pensent les personnes autour de moi."
+              "content": "Réponse : Apparemment autant que mentir par terre au milieu d'une bibliothèque. À ce moment-là, je préférerais ne pas savoir ce que pensent les gens autour de moi."
             },
             {
               "type": "text",
               "content": "La photographie de Nicolas Delarre peut être vue sur <a href=\"https://nicolasdelarre-photography.com\">nicolasdelarre-photography.com</a> et sur Instagram à <a href=\"https://www.instagram.com/photo.graphizm\">@photo.graphizm</a>. Images © Nicolas Delarre ; publié avec permission."
             }
-          ]
+          ],
+          "publishAt": "2026-10-16T08:47:29.000Z",
+          "publishedAt": "2026-10-16T08:47:29.000Z"
         }
       ],
       "reviews": [
