@@ -17794,6 +17794,411 @@
       "publishedAt": "2026-10-13T23:00:00.000Z",
       "locked": true,
       "updatedAt": "2026-10-14T14:26:27.472Z"
+    },
+    {
+      "id": 69,
+      "draft": true,
+      "title": "The Structure Was Already There - interview with Nicolas Delarre",
+      "author": "Viacheslav Munister & Nicolas Delarre",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "contributorId": "author-nicolas-delarre",
+      "date": "Oct 16, 2026",
+      "excerpt": "Self-taught Lille photographer Nicolas Delarre on “photographisme”, why the golden ratio matters to him as poetry more than as science, refusing to erase a single passer-by in post, and lying on a library floor for perfect symmetry.",
+      "category": "interview",
+      "subcategory": "Interview",
+      "tags": [
+        "photography",
+        "architecture",
+        "interview"
+      ],
+      "imageSeed": "the-structure-was-already-there-interview-delarre",
+      "imageUrl": "",
+      "previewToken": "6e05814734bff30fd5ce21a84c939bd8",
+      "updatedAt": "2026-10-16T09:00:00.000Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "Nicolas Delarre has been photographing since 2018, with no training behind him: the practice was built shot by shot, on trips and through trial and error. What came out of it is a graphic kind of photography, given over mostly to architecture and macro – façades in Amsterdam, Vienna, Prague and Geneva, reflections in water mirrors, the spiral of a dahlia against black."
+        },
+        {
+          "type": "text",
+          "content": "He calls it “photographisme”: revealing the structure of a subject rather than describing it. In practice that means leaving things out – passers-by, traffic, sometimes the vegetation – until a building stops being a building and becomes a composition. His series “Miroirs” doubles cities through their reflections; the flower work borrows Baudelaire’s “language of flowers and mute things”. He works from Lille, where he keeps returning to the same buildings until the picture he has in mind actually appears."
+        },
+        {
+          "type": "text",
+          "content": "We spoke with Nicolas about where a photograph of a building ends and an image of its structure begins, the golden ratio as myth and as poetry, the limits of retouching, and how far he will go for perfect symmetry."
+        },
+        {
+          "type": "header",
+          "content": "01 · Photographisme",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Viacheslav Munister [VM]: You call your approach “photographisme”: revealing the underlying structure of a subject rather than representing it faithfully. Where exactly is the line between a photograph that shows a building and an image that reveals its structure?"
+        },
+        {
+          "type": "text",
+          "content": "Nicolas Delarre [ND]: For me the line probably lies in how I select from reality. When I photograph a building I rarely try to render it descriptively, in its surroundings. On the contrary, I try to isolate it from its context so the eye concentrates on its lines, forms, volumes, repetitions or breaks. A lot of that happens through framing: I keep out passers-by, traffic, sometimes vegetation, anything that doesn’t contribute to the graphic construction. In a sense I visually remove the context to bring out its graphic structure."
+        },
+        {
+          "type": "text",
+          "content": "From there the building gradually stops being only an architectural subject and becomes a composition. A façade can become a set of lines and rhythms, a staircase a sequence of shapes, a structure almost an abstraction."
+        },
+        {
+          "type": "text",
+          "content": "That’s probably where I would put the line: the moment you no longer look only at what the image represents, but at how its forms are organised inside the frame."
+        },
+        {
+          "type": "text",
+          "content": "VM: Symmetry, central perspective, perfect geometry – these are also the tools of the architecture of power, of palaces and regimes that want to impress. What separates harmony from imposed order for you? Have you ever turned down a symmetry because it was too perfect?"
+        },
+        {
+          "type": "text",
+          "content": "ND: For me symmetry isn’t necessarily a synonym for imposed order. I see it first of all as a visual language."
+        },
+        {
+          "type": "text",
+          "content": "A very rigorous symmetry can produce a feeling of harmony and calm or, on the contrary, of monumentality – depending on the architecture itself and what it holds."
+        },
+        {
+          "type": "text",
+          "content": "So I don’t think I’ve ever given up a composition just because it was “too perfect”, but I may move away from one for reasons of personal taste."
+        },
+        {
+          "type": "text",
+          "content": "On the other hand, if an off-centre composition or a break in the geometry seems more interesting to me visually, I can choose it – even though that happens rarely."
+        },
+        {
+          "type": "text",
+          "content": "VM: You look for “an immediate visual impact, open to surprise and contemplation”. Don’t immediacy and contemplation pull in opposite directions? How can an image strike in one second and hold you for an hour?"
+        },
+        {
+          "type": "text",
+          "content": "ND: It’s an interesting question, because immediate impact and contemplation can indeed seem contradictory. But I see them rather as two successive moments: first the impact, then the contemplation."
+        },
+        {
+          "type": "text",
+          "content": "Our eye is naturally drawn to symmetry and ordered structures. That overall construction works for me as a way into the image. Then comes what I would call “the multitude”: the accumulation of lines, forms, repetitions, contrasts, shadows or graphic details. It’s this richness that lets the eye move around the image, gradually discover new things in it and linger."
+        },
+        {
+          "type": "text",
+          "content": "The impact draws the eye in; the multitude invites it to stay."
+        },
+        {
+          "type": "text",
+          "content": "VM: When you reduce a building to its structure, it loses something: its use, its inhabitants, its noise, its history. Is that a loss you accept, or do you think the structure already contains all of it?"
+        },
+        {
+          "type": "text",
+          "content": "ND: Yes, it’s a loss I fully accept. When I photograph a building I’m not trying to give a complete representation of it, with its use, its inhabitants and all the life around it. I choose instead to isolate its lines and forms."
+        },
+        {
+          "type": "text",
+          "content": "I don’t think the structure alone contains everything I leave out. It can carry traces of an era, a use or a history, but that isn’t necessarily what I’m trying to tell."
+        },
+        {
+          "type": "text",
+          "content": "My approach is rather to visually remove part of the context so the building’s graphic structure comes through more strongly. What disappears from the image isn’t unimportant: it’s simply what I choose to leave outside the frame."
+        },
+        {
+          "type": "header",
+          "content": "02 · Architecture and nature",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "VM: Your diptych speaks of “a language older than words”: the Fibonacci sequence, radial symmetry, the golden ratio. Many mathematicians consider the golden ratio a largely over-interpreted myth. Does the scientific truth of these patterns matter to you, or only their poetic force?"
+        },
+        {
+          "type": "text",
+          "content": "ND: The scientific truth of these patterns interests me, but it isn’t essential to my practice. The golden ratio is indeed often over-interpreted. In the plant world you find many arrangements linked to the Fibonacci sequence – in the placement of leaves and petals, or in certain spiral structures. But that doesn’t make it a universal law of living things."
+        },
+        {
+          "type": "text",
+          "content": "What interests me more is that living things organise themselves and sometimes create a visual balance. Whether that balance matches a mathematical rule exactly matters less to me, in the end, than its graphic and poetic force."
+        },
+        {
+          "type": "text",
+          "content": "In the living world perfect symmetry is very rare. What counts for me is felt symmetry, and that’s often what nature gives back to me when I go out to photograph."
+        },
+        {
+          "type": "text",
+          "content": "Perhaps that’s exactly where this “language older than words” lies for me: in our capacity to feel an order, a rhythm or a balance before we even try to explain it."
+        },
+        {
+          "type": "text",
+          "content": "VM: You borrow from Baudelaire “the language of flowers and mute things”, and from Chesterton the idea that the world will perish only for want of wonder. What has a poet or a writer taught you about photography that no photographer has?"
+        },
+        {
+          "type": "text",
+          "content": "ND: Baudelaire’s phrase touches me because it meets what I feel in photography. Some things stay silent until the moment you really decide to look at them. A flower, a façade or a repetition of forms can seem ordinary, then reveal something as soon as you give them attention."
+        },
+        {
+          "type": "text",
+          "content": "Chesterton’s line about the want of wonder also stayed with me. I don’t hear it only in an aesthetic sense: wonder is also a way of looking at the world other than through usefulness, power or economic interest. It invites humility, reminding us that we are part of a world larger than ourselves."
+        },
+        {
+          "type": "text",
+          "content": "I don’t think conflicts or political problems can be explained simply by a lack of wonder. But when we stop really looking at human beings, at nature and at what surrounds us, we risk reducing the world to what we can control, own or exploit. I find this idea in Edgar Morin, in the way he thinks about the links between the human, the living, society and the environment."
+        },
+        {
+          "type": "text",
+          "content": "Some writers and thinkers may have taught me more about looking than photographers themselves: before making an image, you have to keep the capacity to be astonished by what is already there."
+        },
+        {
+          "type": "text",
+          "content": "VM: You write that you look at architecture with an adult’s eye and at nature with a child’s. What would happen if you swapped them? Is there a building that makes you a child again, and a flower you look at like an engineer?"
+        },
+        {
+          "type": "text",
+          "content": "ND: I actually think these two ways of looking are less opposed than they seem. The Sagrada Família, for example, does that to me. There is something so teeming and unreal about it that I look at it first with astonishment, before I even try to analyse its lines."
+        },
+        {
+          "type": "text",
+          "content": "Conversely, I can look at a flower very analytically. A simple dandelion interests me almost as a construction: its symmetry, the repetition of its elements, its extremely precise organisation can lead me to observe it with something close to an engineer’s eye."
+        },
+        {
+          "type": "text",
+          "content": "In the end the two can follow one another quite naturally. First comes wonder, then the wish to understand visually what caused it."
+        },
+        {
+          "type": "text",
+          "content": "VM: At the Micropia museum in Amsterdam you photograph replicas of Asterionella formosa and Heliosphaera – the image of an image. In “Miroirs” the city is doubled by its reflection. What draws you to these second-degree objects – models, replicas, reflections – rather than the thing itself?"
+        },
+        {
+          "type": "text",
+          "content": "ND: What I like about these second-degree objects isn’t so much their status as replica or reflection as the transformation of looking they allow."
+        },
+        {
+          "type": "text",
+          "content": "An enlarged replica makes visible a structure that normally escapes us. A reflection doubles or transforms a piece of architecture and brings out a new composition."
+        },
+        {
+          "type": "text",
+          "content": "In both cases reality is always present, but it becomes something else. It’s interesting to start from the real and draw out of it a more graphic, sometimes more abstract reading."
+        },
+        {
+          "type": "header",
+          "content": "03 · Cities and mirrors",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "VM: Lisbon, Geneva, Prague, Vienna, Amsterdam, Annecy: in the “Miroirs” series, is the reflection an extra truth about the city, or a fiction it tells about itself? How many of these images came from chance – a puddle, a window – and how many from a long wait?"
+        },
+        {
+          "type": "text",
+          "content": "ND: In “Miroirs” chance actually plays quite a small part. Many of these images were thought out in advance, including the ones made with water mirrors. I look for these reflective surfaces deliberately, because they let me transform the perception of a place – double it, fragment it or sometimes strengthen its symmetry."
+        },
+        {
+          "type": "text",
+          "content": "For me the reflection sits precisely between reality and fiction. It always starts from something real, but it offers another reading of it, sometimes almost abstract. So it doesn’t simply show the city as it is: it builds another version of it."
+        },
+        {
+          "type": "text",
+          "content": "Of course a puddle or a particular light can sometimes trigger an image more spontaneously, but that remains fairly rare. In most cases these photographs are the result of intention and searching rather than chance."
+        },
+        {
+          "type": "text",
+          "content": "VM: Amsterdam, Vienna, Prague and Geneva keep returning in your work. What does a city need for you to go back with your camera? And Lille – “Convergence”, “Tétris”, Lille-Europe station, the Palais des Beaux-Arts: is it harder to photograph your own city?"
+        },
+        {
+          "type": "text",
+          "content": "ND: I have a particular attraction to the architecture of Central Europe, but what really makes me want to go back to a city is the feeling that I haven’t exhausted its photographic possibilities. Some cities offer such a diversity of architecture that one stay isn’t enough. And the season, or simply a different route, can completely change the way you look at them."
+        },
+        {
+          "type": "text",
+          "content": "Photographing your own city is different. Familiarity can make the eye less attentive: what you see every day sometimes ends up almost invisible. But that closeness is also an advantage, because you can go back as many times as it takes to find the image you’re looking for."
+        },
+        {
+          "type": "text",
+          "content": "VM: Many of your urban subjects are contemporary glass-and-metal buildings: the Sluishuis, Geneva’s SPG building with its 2,900 glass louvres, the ÖBB tower. Do you photograph a building as the architect intended it, or against them? Has an architect ever reacted to one of your images?"
+        },
+        {
+          "type": "text",
+          "content": "ND: These are indeed buildings I’m very fond of. I don’t really try to photograph a building “against” its architect, but I don’t try to give a strictly descriptive rendering either. I start from what was designed, then try to offer my own reading of it – often a more abstract one, with a fairly pronounced perspective and a very graphic overall result."
+        },
+        {
+          "type": "text",
+          "content": "I particularly love the moment when I’m searching for my shot – often without even having a camera with me. It’s clearly my favourite phase."
+        },
+        {
+          "type": "text",
+          "content": "So far I’ve never had direct feedback from architects, apart from a few positive reactions on social media. I would really like to have their opinion one day and know how they see this interpretation of their own work."
+        },
+        {
+          "type": "text",
+          "content": "VM: The Palais des Beaux-Arts in Lille lit up for Pink October, Mathias Kiss’s installation, Clarence Guéna’s “Aspersion” at La Manufacture in Roubaix: when light or another artist’s work transforms a place, whom does your image of it belong to?"
+        },
+        {
+          "type": "text",
+          "content": "ND: I think it depends a lot on how I encounter the work or the place. With Clarence Guéna’s Aspersion, everything was already there. The work, presented like a painting, appealed to me immediately. It was love at first sight and I felt no need to add any particular interpretation, so I simply photographed it on a tripod, descriptively."
+        },
+        {
+          "type": "text",
+          "content": "With Mathias Kiss’s installation, reflections and symmetry were already fully part of the work. My role was mostly to deal with certain technical constraints of shooting inside the museum."
+        },
+        {
+          "type": "text",
+          "content": "Pink October was different: the pink illumination was planned, but the rain wasn’t. The reflections on the ground brought an element of surprise and let me build a more personal image."
+        },
+        {
+          "type": "text",
+          "content": "In all three cases the work doesn’t belong to me. That’s exactly why I always make sure to credit the artists. You also have to recognise that in these photographs they have already done a large part of the visual work. What belongs to me more is the way I decide to look at their work and photograph it. These photographs are above all a nod to their work – a way of saluting pieces that marked me."
+        },
+        {
+          "type": "header",
+          "content": "04 · Black and white, retouching, print",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "VM: Why black and white for some series and colour for others? What does colour stop you from saying – and what does black and white force you to keep quiet?"
+        },
+        {
+          "type": "text",
+          "content": "ND: For me the choice between colour and black and white depends above all on what the image needs to say."
+        },
+        {
+          "type": "text",
+          "content": "I use black and white when colour seems secondary, or even distracts from what makes the image strong: the lines, the forms, the contrasts, the shadows. It can also give the subject a kind of timelessness."
+        },
+        {
+          "type": "text",
+          "content": "Conversely, some images need colour. It can be an integral part of the composition, create a balance or an atmosphere, or simply be what drew me to the scene in the first place. In that case switching to black and white would mean removing essential information."
+        },
+        {
+          "type": "text",
+          "content": "So I don’t try to decide whether an image is more beautiful in colour or in black and white, but rather what is indispensable to its expression. Colour can sometimes say too much; black and white necessarily makes you give up part of reality. It’s a balance to find for each photograph."
+        },
+        {
+          "type": "text",
+          "content": "VM: How much of the image is made when you shoot, and how much in development? Where do you draw the line of acceptable retouching in architectural photography – straightening verticals, removing a passer-by, a cable, a sign?"
+        },
+        {
+          "type": "text",
+          "content": "ND: For me the essential part of the image is built at the moment of shooting. I pay a lot of attention to the overall balance of the composition. That is when the image really exists."
+        },
+        {
+          "type": "text",
+          "content": "Development comes afterwards as a finish. It lets me adjust contrast, highlights, shadows, colours, or sometimes correct the perspective, to get as close as possible to what I perceived on site."
+        },
+        {
+          "type": "text",
+          "content": "As for retouching, I don’t remove elements from the scene and I don’t add any either. I prefer to work with what is really there at the moment of shooting, even if it means waiting, moving or changing my framing. I also sometimes go back to the same building several times to get the version I want."
+        },
+        {
+          "type": "text",
+          "content": "The same goes for my flower photographs: as far as possible I try to get the effect I want in camera – for example by isolating the subject against a black background rather than removing its surroundings in post-production."
+        },
+        {
+          "type": "text",
+          "content": "So my limit lies in the transformation of reality. I can correct or refine the image, but without altering its content. Of course that’s a personal approach that may change over time. Other photographers choose to go much further with retouching, and that can produce artistically very strong work. In the end it all depends on your own approach and the limits you set yourself."
+        },
+        {
+          "type": "text",
+          "content": "VM: Your prints are limited to thirty copies, signed, on Hahnemühle Photo Rag. At a time when the same image circulates for free and endlessly on Instagram, what does the rarity of a print mean? What does a print say that a screen can’t?"
+        },
+        {
+          "type": "text",
+          "content": "ND: For me the rarity doesn’t lie in the image itself, since it can circulate freely and be seen an almost unlimited number of times, but in the photographic object."
+        },
+        {
+          "type": "text",
+          "content": "A print is a physical object, with its own format, paper, texture and materiality – a photographic object you choose to let exist in a space. A screen remains an ephemeral luminous representation whose rendering can vary with its quality. A fine-art print on high-quality paper, on the other hand, fixes the final rendering more precisely, especially in the fineness of detail, the nuances and the matter of the image. Large format matters too: it gives the photograph an immersive quality."
+        },
+        {
+          "type": "text",
+          "content": "For the photographer, the print is also the culmination of an image that has often been prepared for a long time. I always take real pleasure in going to pick up the final print from the lab."
+        },
+        {
+          "type": "text",
+          "content": "That too is what the rarity of a print means to me: not making the image inaccessible, but giving a photograph a physical, lasting existence."
+        },
+        {
+          "type": "text",
+          "content": "VM: Tell us about an image the public loves that doesn’t satisfy you, and one you stand by that leaves people indifferent. What does that gap teach you?"
+        },
+        {
+          "type": "text",
+          "content": "ND: A photograph of the Karlskirche in Vienna was very popular, while I remain rather mixed about it. I like the image, but I would have wanted the human presence to be more discreet. An event was running for my whole stay and I had no chance to make another version in calmer conditions."
+        },
+        {
+          "type": "text",
+          "content": "Conversely, a photograph made in Amsterdam of an avenue of trees in winter got far fewer reactions than I had imagined. I had put a lot into getting that shot, and I think the effort had also created a particular expectation in me. So I was surprised it left the public more indifferent, while I still like it very much."
+        },
+        {
+          "type": "text",
+          "content": "Above all, this gap teaches me to separate my own eye from the public’s. A photograph’s success doesn’t necessarily mean it fully satisfies me, and the indifference it meets doesn’t necessarily call into question the interest I have in it."
+        },
+        {
+          "type": "header",
+          "content": "05 · Doubts and horizon",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "VM: What is the biggest misunderstanding about your work?"
+        },
+        {
+          "type": "text",
+          "content": "ND: Perhaps the idea that my images are largely constructed in post-processing. Their very graphic, geometric or symmetrical look can sometimes give that impression, whereas for me the essential part happens at the moment of shooting: the choice of viewpoint, focal length, distance and framing. Post-processing comes afterwards as a finish, but it doesn’t create the structure of the image. Above all I try to reveal an organisation that is already present in reality."
+        },
+        {
+          "type": "text",
+          "content": "Another misunderstanding would be to think I pursue graphic perfection for its own sake. Geometry and symmetry are above all ways for me to guide the eye and bring out something I have seen."
+        },
+        {
+          "type": "text",
+          "content": "VM: What did you have to give up – a way of photographing, a series, a certainty – to get to what you do today?"
+        },
+        {
+          "type": "text",
+          "content": "ND: Above all I had to give up the need to press the shutter. Over time I’ve become more demanding about what really has to go into the image. That had a price: a degree of spontaneity, and the ease of photographing without asking myself questions."
+        },
+        {
+          "type": "text",
+          "content": "Today I can spend a long time looking for an angle, go back to the same place several times, or simply give up if the conditions don’t match what I imagine. An outing no longer has to produce a successful image: coming home without a photo isn’t a failure, it’s part of the process."
+        },
+        {
+          "type": "text",
+          "content": "At heart, I photograph less easily than before, but with a much more precise intention."
+        },
+        {
+          "type": "text",
+          "content": "VM: If you could photograph only one building for a whole year, which would it be, and why that one?"
+        },
+        {
+          "type": "text",
+          "content": "ND: Probably the Sagrada Família. I’ve been there, but it was at the very beginning of my photographic practice. Today I want to go back with more experience. It’s a building that offers many possibilities, especially with the stained glass and the coloured light that moves through the building over the course of the day. It’s exactly the kind of place you can return to again and again without really taking the same photograph twice."
+        },
+        {
+          "type": "text",
+          "content": "VM: A project in progress, an upcoming exhibition, a place you dream of photographing?"
+        },
+        {
+          "type": "text",
+          "content": "ND: I don’t have a specific project in preparation right now. Eventually, though, I would like to build an exhibition around the architecture of Central Europe, a region I particularly love to photograph and where I want to keep travelling. It’s only a wish for now, but it’s probably the project I would most like to see take shape in the years to come."
+        },
+        {
+          "type": "text",
+          "content": "VM: A question we should have asked you – and your answer."
+        },
+        {
+          "type": "text",
+          "content": "ND: Question: How far are you prepared to go to get perfect symmetry?"
+        },
+        {
+          "type": "text",
+          "content": "Answer: Apparently as far as lying on the floor in the middle of a library. At that point I’d rather not know what the people around me are thinking."
+        },
+        {
+          "type": "text",
+          "content": "Nicolas Delarre’s photography can be seen at <a href=\"https://nicolasdelarre-photography.com\">nicolasdelarre-photography.com</a> and on Instagram at <a href=\"https://www.instagram.com/photo.graphizm\">@photo.graphizm</a>. Images © Nicolas Delarre; published with permission."
+        }
+      ]
     }
   ],
   "reviews": [
@@ -67341,6 +67746,411 @@
           "publishedAt": "2026-10-13T23:00:00.000Z",
           "locked": true,
           "updatedAt": "2026-10-13T15:03:34.000Z"
+        },
+        {
+          "id": 69,
+          "draft": true,
+          "title": "Die Struktur war bereits vorhanden - Interview mit Nicolas Delarre",
+          "author": "Viacheslav Munister & Nicolas Delarre",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-nicolas-delarre",
+          "date": "16. Okt 2026",
+          "excerpt": "Selbstlernender Lille-Fotograf Nicolas Delarre über “photographisme”, warum der goldene Schnitt für ihn mehr Poesie als Wissenschaft ist, das Ablehnen, auch nur einen Passanten im Nachhinein zu löschen, und auf einem Bibliotheksboden zu liegen für perfekte Symmetrie.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "fotografie",
+            "architektur",
+            "interview"
+          ],
+          "imageSeed": "the-structure-was-already-there-interview-delarre",
+          "imageUrl": "",
+          "previewToken": "6e05814734bff30fd5ce21a84c939bd8",
+          "updatedAt": "2026-10-16T08:37:01.243Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Nicolas Delarre ist seit 2018 am Fotografieren, ohne jegliche Ausbildung dahinter: die Praxis wurde Bild für Bild aufgebaut, auf Reisen und durch Versuch und Irrtum. Was daraus entstand, ist eine grafische Art der Fotografie, die hauptsächlich Architektur und Makro fokussiert – Fassaden in Amsterdam, Wien, Prag und Genf, Reflexionen in Wasser Spiegeln, die Spirale einer Dahlie gegen Schwarz."
+            },
+            {
+              "type": "text",
+              "content": "Er nennt es “photographisme”: die Struktur eines Subjekts offenbaren, anstatt es zu beschreiben. In der Praxis bedeutet das, Dinge wegzulassen – Passanten, Verkehr, manchmal die Vegetation – bis ein Gebäude aufhört, ein Gebäude zu sein, und zu einer Komposition wird. Seine Serie “Miroirs” verdoppelt Städte durch ihre Reflexionen; die Blumenarbeit leiht sich Baudelaire’s “Sprache der Blumen und stummen Dinge”. Er arbeitet aus Lille, wo er immer wieder zu denselben Gebäuden zurückkehrt, bis das Bild, das er im Kopf hat, tatsächlich erscheint."
+            },
+            {
+              "type": "text",
+              "content": "Wir sprachen mit Nicolas darüber, wo ein Foto eines Gebäudes endet und ein Bild seiner Struktur beginnt, das Goldene Schnitt-Verhältnis als Mythos und als Poesie, die Grenzen der Retusche und wie weit er für perfekte Symmetrie gehen wird."
+            },
+            {
+              "type": "header",
+              "content": "01 · Photographisme",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Viacheslav Munister [VM]: Du nennst deinen Ansatz „photographisme“: die zugrunde liegende Struktur eines Subjekts offenbaren, anstatt es getreu darzustellen. Wo genau ist die Grenze zwischen einem Foto, das ein Gebäude zeigt, und einem Bild, das seine Struktur offenbart?"
+            },
+            {
+              "type": "text",
+              "content": "Nicolas Delarre [ND]: Für mich liegt die Grenze wahrscheinlich darin, wie ich aus der Realität auswähle. Wenn ich ein Gebäude fotografiere, versuche ich selten, es beschreibend darzustellen, in seiner Umgebung. Im Gegenteil, ich versuche, es von seinem Kontext zu isolieren, damit das Auge sich auf seine Linien, Formen, Volumen, Wiederholungen oder Brüche konzentriert. Vieles davon geschieht durch Bildausschnitt: Ich halte Passanten, Verkehr, manchmal Vegetation, alles fern, was zur grafischen Konstruktion nicht beiträgt. In gewisser Weise entferne ich visuell den Kontext, um seine grafische Struktur hervorzuheben."
+            },
+            {
+              "type": "text",
+              "content": "Von dort an hört das Gebäude allmählich auf, nur ein architektonisches Subjekt zu sein, und wird zu einer Komposition. Eine Fassade kann zu einer Reihe von Linien und Rhythmen werden, eine Treppe zu einer Abfolge von Formen, eine Struktur fast zu einer Abstraktion."
+            },
+            {
+              "type": "text",
+              "content": "Das ist wahrscheinlich die Stelle, an der ich die Linie ziehen würde: den Moment, in dem du nicht mehr nur auf das schaust, was das Bild darstellt, sondern darauf, wie seine Formen innerhalb des Rahmens organisiert sind."
+            },
+            {
+              "type": "text",
+              "content": "VM: Symmetrie, zentrale Perspektive, perfekte Geometrie – das sind auch die Werkzeuge der Architektur der Macht, der Paläste und Regime, die beeindrucken wollen. Was trennt für Sie Harmonie von auferlegter Ordnung? Haben Sie jemals eine Symmetrie abgelehnt, weil sie zu perfekt war?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Für mich ist Symmetrie nicht unbedingt ein Synonym für auferlegte Ordnung. Ich sehe sie vor allem als eine visuelle Sprache."
+            },
+            {
+              "type": "text",
+              "content": "Eine sehr strenge Symmetrie kann ein Gefühl von Harmonie und Ruhe erzeugen oder, im Gegenteil, von Monumentalität – abhängig von der Architektur selbst und was sie enthält."
+            },
+            {
+              "type": "text",
+              "content": "Ich denke also nicht, dass ich jemals eine Komposition aufgegeben habe, nur weil sie „zu perfekt“ war, aber ich könnte mich aus persönlichen Geschmack aus einer entfernen."
+            },
+            {
+              "type": "text",
+              "content": "Auf der anderen Seite, wenn eine off-centre Komposition oder eine Unterbrechung in der Geometrie mir visuell interessanter erscheint, kann ich sie wählen – auch wenn das selten passiert."
+            },
+            {
+              "type": "text",
+              "content": "VM: Du suchst nach “einem unmittelbaren visuellen Eindruck, offen für Überraschung und Kontemplation”. Zieht Nicht-Dringlichkeit und Kontemplation nicht in entgegengesetzte Richtungen? Wie kann ein Bild in einer Sekunde treffen und dich eine Stunde lang halten?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Es ist eine interessante Frage, weil unmittelbarer Eindruck und Kontemplation tatsächlich widersprüchlich erscheinen können. Aber ich sehe sie eher als zwei aufeinanderfolgende Momente: zuerst der Eindruck, dann die Kontemplation."
+            },
+            {
+              "type": "text",
+              "content": "Unser Auge wird natürlich von Symmetrie und geordneten Strukturen angezogen. Diese Gesamtstruktur funktioniert für mich als ein Zugang zum Bild. Dann kommt das, was ich “die Vielzahl” nennen würde: die Anhäufung von Linien, Formen, Wiederholungen, Kontrasten, Schatten oder grafischen Details. Es ist diese Fülle, die das Auge im Bild wandern lässt, allmählich neue Dinge entdeckt und verweilt."
+            },
+            {
+              "type": "text",
+              "content": "Der Eindruck zieht das Auge hinein; die Menge lädt es ein, zu bleiben."
+            },
+            {
+              "type": "text",
+              "content": "VM: Wenn man ein Gebäude auf seine Struktur reduziert, verliert es etwas: seine Nutzung, seine Bewohner, seinen Lärm, seine Geschichte. Ist das ein Verlust, den Sie akzeptieren, oder glauben Sie, dass die Struktur bereits alles enthält?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ja, es ist ein Verlust, den ich voll und ganz akzeptiere. Wenn ich ein Gebäude fotografiere, versuche ich nicht, eine vollständige Darstellung davon zu geben, mit seiner Nutzung, seinen Bewohnern und all dem Leben drumherum. Ich entscheide mich stattdessen, seine Linien und Formen zu isolieren."
+            },
+            {
+              "type": "text",
+              "content": "Ich denke nicht, dass die Struktur allein alles enthält, was ich weglasse. Sie kann Spuren einer Ära, einer Nutzung oder einer Geschichte tragen, aber das ist nicht unbedingt das, was ich zu erzählen versuche."
+            },
+            {
+              "type": "text",
+              "content": "Mein Ansatz ist eher, einen Teil des Kontexts visuell zu entfernen, damit die grafische Struktur des Gebäudes stärker durchkommt. Was aus dem Bild verschwindet, ist nicht unwichtig: Es ist einfach das, was ich außerhalb des Rahmens lassen wähle."
+            },
+            {
+              "type": "header",
+              "content": "02 · Architektur und Natur",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Ihr Diptychon spricht von „einer Sprache älter als Worte“: die Fibonacci-Folge, radiale Symmetrie, das goldene Verhältnis. Viele Mathematiker betrachten das goldene Verhältnis als weitgehend überinterpretierten Mythos. Wichtig ist Ihnen die wissenschaftliche Wahrheit dieser Muster, oder nur ihre poetische Kraft?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Die wissenschaftliche Wahrheit dieser Muster interessiert mich, aber sie ist nicht wesentlich für meine Praxis. Das goldene Verhältnis wird tatsächlich oft überinterpretiert. In der Pflanzenwelt findet man viele Anordnungen, die mit der Fibonacci-Folge verbunden sind – in der Anordnung von Blättern und Blütenblättern oder in bestimmten Spiralstrukturen. Aber das macht es nicht zu einem universellen Gesetz lebender Dinge."
+            },
+            {
+              "type": "text",
+              "content": "Was mich mehr interessiert ist, dass lebende Dinge sich organisieren und manchmal ein visuellen Gleichgewicht schaffen. Ob dieses Gleichgewicht genau einer mathematischen Regel entspricht, ist mir letztlich weniger wichtig als seine grafische und poetische Kraft."
+            },
+            {
+              "type": "text",
+              "content": "In der lebenden Welt ist perfekte Symmetrie sehr selten. Was für mich zählt, ist gefühlte Symmetrie, und das ist oft das, was die Natur mir zurückgibt, wenn ich fotografiere."
+            },
+            {
+              "type": "text",
+              "content": "Vielleicht liegt genau darin für mich diese „ältere Sprache als Worte“: in unserer Fähigkeit, eine Ordnung, einen Rhythmus oder ein Gleichgewicht zu fühlen, bevor wir versuchen, es zu erklären."
+            },
+            {
+              "type": "text",
+              "content": "VM: Du entlehnst von Baudelaire „die Sprache der Blumen und stummen Dinge“, und von Chesterton die Idee, dass die Welt nur wegen des Mangels an Wunder vergehen wird. Was hat dir ein Dichter oder Schriftsteller über Fotografie beigebracht, das kein Fotograf dir vermittelt hat?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Baudelaire’s Satz berührt mich, weil er das trifft, was ich in der Fotografie fühle. Einige Dinge bleiben still, bis du dich wirklich entscheidest, sie anzusehen. Eine Blume, eine Fassade oder eine Wiederholung von Formen können gewöhnlich erscheinen, dann aber etwas offenbaren, sobald du ihnen Aufmerksamkeit schenkst."
+            },
+            {
+              "type": "text",
+              "content": "Chestertons Zeile über den Mangel an Wunder blieb mir ebenfalls im Gedächtnis. Ich höre sie nicht nur im ästhetischen Sinne: Wunder ist auch eine Art, die Welt anders zu sehen als durch Nützlichkeit, Macht oder wirtschaftliches Interesse. Es lädt zur Demut ein und erinnert uns daran, dass wir Teil einer größeren Welt sind als wir selbst."
+            },
+            {
+              "type": "text",
+              "content": "Ich denke nicht, dass Konflikte oder politische Probleme einfach durch einen Mangel an Wunder erklärt werden können. Aber wenn wir aufhören, wirklich auf Menschen, Natur und unsere Umgebung zu schauen, riskieren wir, die Welt auf das zu reduzieren, was wir kontrollieren, besitzen oder ausbeuten können. Ich finde diese Idee bei Edgar Morin, in der Art, wie er die Verbindungen zwischen dem Menschen, dem Lebendigen, der Gesellschaft und der Umwelt denkt."
+            },
+            {
+              "type": "text",
+              "content": "Einige Schriftsteller und Denker haben mir vielleicht mehr über das Sehen beigebracht als Fotografen selbst: Bevor man ein Bild macht, muss man die Fähigkeit bewahren, von dem, was bereits da ist, erstaunt zu sein."
+            },
+            {
+              "type": "text",
+              "content": "VM: Du schreibst, dass du Architektur mit einem Erwachsenenauge und Natur mit einem Kindauge betrachtest. Was würde passieren, wenn du sie austauschst? Gibt es ein Gebäude, das dich wieder zum Kind macht, und eine Blume, die du wie ein Ingenieur ansiehst?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ich denke tatsächlich, dass diese beiden Betrachtungsweisen weniger gegensätzlich sind, als sie scheinen. Die Sagrada Família, zum Beispiel, tut das bei mir. Es gibt etwas so Lebendiges und Unrealistisches daran, dass ich es zuerst mit Staunen betrachte, bevor ich versuche, seine Linien zu analysieren."
+            },
+            {
+              "type": "text",
+              "content": "Umgekehrt kann ich eine Blume sehr analytisch betrachten. Ein einfaches Löwenzahn interessiert mich fast wie eine Konstruktion: seine Symmetrie, die Wiederholung seiner Elemente, seine äußerst präzise Organisation können mich dazu bringen, sie mit etwas, das einem Ingenieur nahekommt, zu beobachten."
+            },
+            {
+              "type": "text",
+              "content": "Letztendlich können die beiden quite natürlich aufeinander folgen. Zuerst kommt das Staunen, dann der Wunsch, visuell zu verstehen, was es verursacht hat."
+            },
+            {
+              "type": "text",
+              "content": "VM: Im Micropia-Museum in Amsterdam fotografieren Sie Repliken von Asterionella formosa und Heliosphaera – das Bild eines Bildes. In „Miroirs“ wird die Stadt durch ihre Reflexion verdoppelt. Was zieht Sie an diesen zweiter Grad-Objekten – Modellen, Repliken, Reflexionen – eher als an der Sache selbst?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Was mir an diesen zweiter Grad-Objekten gefällt, ist nicht so sehr ihr Status als Replik oder Reflexion, sondern die Transformationsfähigkeit des Betrachtens, die sie ermöglichen."
+            },
+            {
+              "type": "text",
+              "content": "Eine vergrößerte Replik macht eine Struktur sichtbar, die uns normalerweise entgeht. Eine Reflexion verdoppelt oder transformiert ein Stück Architektur und bringt eine neue Komposition hervor."
+            },
+            {
+              "type": "text",
+              "content": "In beiden Fällen ist die Realität immer präsent, aber sie wird zu etwas anderem. Es ist interessant, vom Realen auszugehen und daraus eine grafischere, manchmal abstraktere Lesart zu entwickeln."
+            },
+            {
+              "type": "header",
+              "content": "03 · Städte und Spiegel",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Lissabon, Genf, Prag, Wien, Amsterdam, Annecy: in der “Miroirs” Serie, ist die Reflexion eine zusätzliche Wahrheit über die Stadt, oder eine Fiktion, die sie über sich selbst erzählt? Wie viele dieser Bilder stammen aus Zufall – eine Pfütze, ein Fenster – und wie viele aus langem Warten?"
+            },
+            {
+              "type": "text",
+              "content": "ND: In “Miroirs” spielt Zufall tatsächlich eine ziemlich kleine Rolle. Viele dieser Bilder wurden im Voraus durchdacht, einschließlich der mit Wasser Spiegeln. Ich suche diese reflektierenden Oberflächen absichtlich, weil sie mir erlauben, die Wahrnehmung eines Ortes zu transformieren – sie zu verdoppeln, zu zerlegen oder manchmal ihre Symmetrie zu verstärken."
+            },
+            {
+              "type": "text",
+              "content": "Für mich liegt die Reflexion genau zwischen Realität und Fiktion. Sie beginnt immer mit etwas Echtem, bietet aber eine andere Lesart davon, manchmal fast abstrakt. Sie zeigt also nicht einfach die Stadt, wie sie ist: sie baut eine andere Version davon auf."
+            },
+            {
+              "type": "text",
+              "content": "Natürlich kann eine Pfütze oder ein bestimmtes Licht manchmal ein Bild spontaner auslösen, aber das bleibt ziemlich selten."
+            },
+            {
+              "type": "text",
+              "content": "VM: Amsterdam, Wien, Prag und Genève tauchen immer wieder in deiner Arbeit auf. Was braucht eine Stadt für dich, um mit deiner Kamera zurückzukehren? Und Lille – “Convergence”, “Tétris”, Lille-Europe Station, das Palais des Beaux-Arts: Ist es schwieriger, deine eigene Stadt zu fotografieren?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ich habe eine besondere Anziehungskraft zur Architektur Mitteleuropas, aber was mich wirklich dazu bringt, in eine Stadt zurückzukehren, ist das Gefühl, ihre fotografischen Möglichkeiten noch nicht ausgeschöpft zu haben. Manche Städte bieten eine solche Vielfalt an Architektur, dass ein Aufenthalt nicht ausreicht. Und die Jahreszeit oder einfach eine andere Route kann die Art, wie man sie betrachtet, völlig verändern."
+            },
+            {
+              "type": "text",
+              "content": "Das Fotografieren der eigenen Stadt ist anders. Vertrautheit kann das Auge weniger aufmerksam machen: Was man jeden Tag sieht, endet manchmal fast unsichtbar. Aber diese Nähe ist auch ein Vorteil, weil man so oft zurückkehren kann, wie es nötig ist, um das Bild zu finden, das man sucht."
+            },
+            {
+              "type": "text",
+              "content": "VM: Viele Ihrer urbanen Motive sind zeitgenössische Glas- und Metallgebäude: das Sluishuis, das SPG-Gebäude in Genf mit seinen 2.900 Glaslamellen, der ÖBB-Turm. Fotografieren Sie ein Gebäude so, wie es der Architekt beabsichtigt hat, oder gegen sie? Hat ein Architekt jemals auf eines Ihrer Bilder reagiert?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Das sind in der Tat Gebäude, die ich sehr mag. Ich versuche nicht wirklich, ein Gebäude „gegen“ seinen Architekten zu fotografieren, aber ich versuche auch nicht, eine streng beschreibende Darstellung zu geben. Ich beginne mit dem, was entworfen wurde, und versuche dann, meine eigene Interpretation davon anzubieten – oft eine abstraktere, mit einer ziemlich ausgeprägten Perspektive und einem sehr grafischen Gesamtergebnis."
+            },
+            {
+              "type": "text",
+              "content": "Ich liebe besonders den Moment, wenn ich nach meinem Motiv suche – oft ohne sogar eine Kamera dabei zu haben. Das ist eindeutig meine Lieblingsphase."
+            },
+            {
+              "type": "text",
+              "content": "Bisher habe ich kein direktes Feedback von Architekten erhalten, abgesehen von einigen positiven Reaktionen in den sozialen Medien. Ich würde wirklich gerne eines Tages ihre Meinung hören und wissen, wie sie diese Interpretation ihrer eigenen Arbeit sehen."
+            },
+            {
+              "type": "text",
+              "content": "VM: Das Palais des Beaux-Arts in Lille erleuchtete für Pink October, Mathias Kiss’s Installation, Clarence Guéna’s “Aspersion” bei La Manufacture in Roubaix: wenn Licht oder das Werk eines anderen Künstlers einen Ort verwandeln, wem gehört dann dein Bild davon?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ich denke, es hängt sehr davon ab, wie ich das Werk oder den Ort begegne. Bei Clarence Guéna’s Aspersion war bereits alles vorhanden. Das Werk, präsentiert wie ein Gemälde, sprach mich sofort an. Es war Liebe auf den ersten Blick und ich fühlte keinen Bedarf, eine besondere Interpretation hinzuzufügen, also fotografierte ich es einfach auf einem Stativ, beschreibend."
+            },
+            {
+              "type": "text",
+              "content": "Bei Mathias Kiss’s Installation waren Reflexionen und Symmetrie bereits vollständig Teil des Werks. Meine Rolle bestand hauptsächlich darin, mit bestimmten technischen Einschränkungen beim Fotografieren im Museum umzugehen."
+            },
+            {
+              "type": "text",
+              "content": "Pink October war anders: die pinke Beleuchtung war geplant, aber der Regen nicht. Die Reflexionen auf dem Boden brachten ein Element der Überraschung und ließen mich ein persönlicheres Bild erstellen."
+            },
+            {
+              "type": "text",
+              "content": "In allen drei Fällen gehört das Werk nicht mir. Genau deshalb stelle ich immer sicher, die Künstler zu nennen. Man muss auch erkennen, dass sie in diesen Fotografien bereits einen großen Teil der visuellen Arbeit geleistet haben. Was mir mehr gehört, ist die Art und Weise, wie ich ihre Arbeit betrachte und fotografiere. Diese Fotografien sind vor allem eine Verbeugung vor ihrer Arbeit – eine Art, Stücke zu grüßen, die mich geprägt haben."
+            },
+            {
+              "type": "header",
+              "content": "04 · Schwarzweiß, Retusche, Druck",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Warum Schwarzweiß für einige Serien und Farbe für andere? Was hindert dich daran, in Farbe zu sagen – und was zwingt dich, in Schwarzweiß still zu sein?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Für mich hängt die Wahl zwischen Farbe und Schwarzweiß vor allem davon ab, was das Bild sagen muss."
+            },
+            {
+              "type": "text",
+              "content": "Ich verwende Schwarzweiß, wenn Farbe zweitrangig erscheint oder sogar vom Wesentlichen ablenkt: die Linien, die Formen, die Kontraste, die Schatten. Es kann dem Motiv auch eine Art Zeitlosigkeit verleihen."
+            },
+            {
+              "type": "text",
+              "content": "Umgekehrt brauchen manche Bilder Farbe. Sie kann ein integraler Bestandteil der Komposition sein, ein Gleichgewicht oder eine Atmosphäre schaffen oder einfach das sein, was mich ursprünglich an der Szene angezogen hat. In diesem Fall würde ein Wechsel zu Schwarzweiß bedeuten, wesentliche Informationen zu entfernen."
+            },
+            {
+              "type": "text",
+              "content": "Also versuche ich nicht zu entscheiden, ob ein Bild in Farbe oder Schwarzweiß schöner ist, sondern was für den Ausdruck unentbehrlich ist. Farbe kann manchmal zu viel sagen; Schwarzweiß zwingt einen notwendigerweise dazu, einen Teil der Realität aufzugeben. Es ist ein Gleichgewicht, das für jedes Foto gefunden werden muss."
+            },
+            {
+              "type": "text",
+              "content": "VM: Wie viel des Bildes entsteht beim Fotografieren, und wie viel bei der Entwicklung? Wo ziehst du die Grenze für akzeptable Retuschen in der Architekturfotografie – Vertikale begradigen, einen Passanten entfernen, ein Kabel, ein Schild?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Für mich ist der wesentliche Teil des Bildes in dem Moment der Aufnahme aufgebaut. Ich achte sehr auf das Gesamtgleichgewicht der Komposition. Genau dann existiert das Bild wirklich."
+            },
+            {
+              "type": "text",
+              "content": "Die Entwicklung erfolgt anschließend als Abschluss. Sie ermöglicht es mir, Kontrast, Highlights, Schatten, Farben anzupassen oder manchmal die Perspektive zu korrigieren, um so nah wie möglich an das heranzukommen, was ich vor Ort wahrgenommen habe."
+            },
+            {
+              "type": "text",
+              "content": "Was die Retusche betrifft, so entferne ich keine Elemente aus der Szene und füge auch keine hinzu. Ich arbeite lieber mit dem, was zum Zeitpunkt der Aufnahme wirklich vorhanden ist, auch wenn das bedeutet, zu warten, sich zu bewegen oder den Bildausschnitt zu ändern. Ich gehe auch manchmal mehrmals zum selben Gebäude, um die gewünschte Version zu erhalten."
+            },
+            {
+              "type": "text",
+              "content": "Das Gleiche gilt für meine Blumenfotografien: Soweit möglich versuche ich, den gewünschten Effekt direkt in der Kamera zu erzielen – zum Beispiel, indem ich das Motiv vor einem schwarzen Hintergrund isolieren, anstatt die Umgebung in der Nachbearbeitung zu entfernen."
+            },
+            {
+              "type": "text",
+              "content": "Also meine Grenze liegt in der Transformation der Realität. Ich kann das Bild korrigieren oder verfeinern, aber ohne seinen Inhalt zu verändern. Natürlich ist das ein persönlicher Ansatz, der sich im Laufe der Zeit ändern kann. Andere Fotografen wählen es, mit Retusche viel weiter zu gehen, und das kann künstlerisch sehr starke Arbeiten hervorbringen. Am Ende hängt alles von deinem eigenen Ansatz und den Grenzen ab, die du dir setzt."
+            },
+            {
+              "type": "text",
+              "content": "VM: Deine Drucke sind auf dreißig Exemplare limitiert, signiert, auf Hahnemühle Photo Rag. In einer Zeit, in der dasselbe Bild kostenlos und endlos auf Instagram zirkuliert, was bedeutet die Seltenheit eines Drucks? Was sagt ein Druck, was ein Bildschirm nicht kann?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Für mich liegt die Seltenheit nicht im Bild selbst, da es frei zirkulieren und fast unbegrenzt oft gesehen werden kann, sondern im fotografischen Objekt."
+            },
+            {
+              "type": "text",
+              "content": "Ein Druck ist ein physisches Objekt, mit eigenem Format, Papier, Textur und Materialität – ein fotografisches Objekt, das du wählst, in einem Raum existieren zu lassen. Ein Bildschirm bleibt eine flüchtige leuchtende Darstellung, deren Wiedergabe je nach Qualität variieren kann. Ein Fine-Art-Druck auf hochwertigem Papier hingegen fixiert die endgültige Wiedergabe genauer, insbesondere in der Feinheit der Details, den Nuancen und der Beschaffenheit des Bildes. Großformat ist ebenfalls wichtig: Es verleiht dem Foto eine immersive Qualität."
+            },
+            {
+              "type": "text",
+              "content": "Für den Fotografen ist der Druck auch der Höhepunkt eines Bildes, das oft lange vorbereitet wurde."
+            },
+            {
+              "type": "text",
+              "content": "Das ist auch das, was die Seltenheit eines Drucks für mich bedeutet: das Bild nicht unzugänglich zu machen, sondern einer Fotografie eine physische, dauerhafte Existenz zu verleihen."
+            },
+            {
+              "type": "text",
+              "content": "VM: Erzählen Sie uns von einem Bild, das die Öffentlichkeit liebt, das Sie aber nicht zufriedenstellt, und eines, das Sie vertreten, das die Menschen gleichgültig lässt. Was lehrt Sie diese Kluft?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ein Foto der Karlskirche in Wien war sehr beliebt, während ich dazu eher zwiegespalten bleibe. Ich mag das Bild, aber ich hätte gewünscht, dass die menschliche Präsenz diskreter ist. Bei meinem ganzen Aufenthalt lief eine Veranstaltung, und ich hatte keine Chance, eine andere Version unter ruhigeren Bedingungen zu machen."
+            },
+            {
+              "type": "text",
+              "content": "Umgekehrt erhielt ein in Amsterdam aufgenommenes Foto einer Allee im Winter deutlich weniger Reaktionen, als ich erwartet hatte. Ich hatte viel investiert, um dieses Bild zu machen, und ich denke, die Anstrengung hatte auch eine bestimmte Erwartung in mir geweckt. Daher war ich überrascht, dass es die Öffentlichkeit mehr gleichgültig ließ, während ich es immer noch sehr mag."
+            },
+            {
+              "type": "text",
+              "content": "Vor allem lehrt mich diese Kluft, mein eigenes Auge vom öffentlichen zu trennen. Der Erfolg eines Fotos bedeutet nicht unbedingt, dass es mich vollständig zufriedenstellt, und die Gleichgültigkeit, die es begegnet, stellt nicht unbedingt die Frage nach meinem Interesse daran in Zweifel."
+            },
+            {
+              "type": "header",
+              "content": "05 · Zweifel und Horizont",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "VM: Was ist das größte Missverständnis über Ihre Arbeit?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Vielleicht die Idee, dass meine Bilder größtenteils in der Nachbearbeitung konstruiert werden. Ihr sehr grafischer, geometrischer oder symmetrischer Look kann manchmal diesen Eindruck erwecken, während für mich der wesentliche Teil im Moment des Fotografierens passiert: die Wahl des Blickwinkels, Brennweite, Entfernung und Bildausschnitt. Die Nachbearbeitung kommt danach als Abschluss, aber sie schafft nicht die Struktur des Bildes. Vor allem versuche ich, eine Organisation zu offenbaren, die bereits in der Realität vorhanden ist."
+            },
+            {
+              "type": "text",
+              "content": "Ein weiteres Missverständnis wäre zu denken, dass ich grafische Perfektion um ihrer selbst willen anstrebe. Geometrie und Symmetrie sind für mich vor allem Wege, das Auge zu lenken und etwas hervorzuheben, das ich gesehen habe."
+            },
+            {
+              "type": "text",
+              "content": "VM: Was mussten Sie aufgeben – eine Art der Fotografie, eine Serie, eine Gewissheit – um zu dem zu gelangen, was Sie heute tun?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Vor allem musste ich die Notwendigkeit aufgeben, den Auslöser zu drücken. Im Laufe der Zeit bin ich anspruchsvoller geworden, was wirklich in das Bild hinein muss. Das hatte einen Preis: ein Maß an Spontaneität und die Leichtigkeit, ohne Fragen zu stellen zu fotografieren."
+            },
+            {
+              "type": "text",
+              "content": "Heute kann ich lange nach einem Blickwinkel suchen, mehrmals an denselben Ort zurückkehren oder einfach aufgeben, wenn die Bedingungen nicht mit meinen Vorstellungen übereinstimmen. Ein Ausflug muss nicht mehr ein erfolgreiches Bild hervorbringen: nach Hause zu kommen ohne Foto ist kein Versagen, es ist Teil des Prozesses."
+            },
+            {
+              "type": "text",
+              "content": "Im Grunde fotografiere ich weniger leicht als früher, aber mit einer viel präziseren Absicht."
+            },
+            {
+              "type": "text",
+              "content": "VM: Wenn du nur ein Gebäude ein ganzes Jahr lang fotografieren könntest, welches wäre das, und warum dieses?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Wahrscheinlich die Sagrada Família. Ich war dort, aber es war am Anfang meiner fotografischen Praxis. Heute möchte ich mit mehr Erfahrung zurückkehren. Es ist ein Gebäude, das viele Möglichkeiten bietet, vor allem mit dem Buntglas und dem farbigen Licht, das im Laufe des Tages durch das Gebäude wandert. Es ist genau die Art von Ort, zu dem man immer wieder zurückkehren kann, ohne wirklich zweimal dasselbe Foto zu machen."
+            },
+            {
+              "type": "text",
+              "content": "VM: Ein Projekt in Arbeit, eine kommende Ausstellung, ein Ort, den Sie sich wünschen zu fotografieren?"
+            },
+            {
+              "type": "text",
+              "content": "ND: Ich habe momentan kein konkretes Projekt in Vorbereitung. Letztendlich möchte ich jedoch eine Ausstellung über die Architektur Mitteleuropas erstellen, eine Region, die ich besonders gerne fotografiere und in der ich weiterhin reisen möchte. Es ist nur ein Wunsch für jetzt, aber es ist wahrscheinlich das Projekt, das ich in den kommenden Jahren am liebsten realisiert sehen würde."
+            },
+            {
+              "type": "text",
+              "content": "VM: Eine Frage, die wir hätten stellen sollen – und Ihre Antwort."
+            },
+            {
+              "type": "text",
+              "content": "ND: Frage: Wie weit sind Sie bereit zu gehen, um perfekte Symmetrie zu erreichen?"
+            },
+            {
+              "type": "text",
+              "content": "Antwort: Anscheinend soweit, auf dem Boden in der Mitte einer Bibliothek zu liegen. An diesem Punkt würde ich lieber nicht wissen, was die Menschen um mich herum denken."
+            },
+            {
+              "type": "text",
+              "content": "Nicolas Delarre’s Fotografie kann gesehen werden bei <a href=\"https://nicolasdelarre-photography.com\">nicolasdelarre-photography.com</a> und auf Instagram bei <a href=\"https://www.instagram.com/photo.graphizm\">@photo.graphizm</a>. Bilder © Nicolas Delarre; veröffentlicht mit Genehmigung."
+            }
+          ]
         }
       ],
       "reviews": [
@@ -124674,6 +125484,15 @@
       "showOnTeam": true,
       "collaborator": true,
       "teamOrder": 16.5
+    },
+    {
+      "id": "author-nicolas-delarre",
+      "name": "Nicolas Delarre",
+      "role": "Photographer, Lille",
+      "bio": "Nicolas Delarre is a self-taught photographer based in Lille, France, who has been photographing since 2018. Built up through shooting, travel and experiment rather than formal training, his practice has moved towards graphic photography devoted mainly to architecture and macro.",
+      "photoUrl": "",
+      "website": "https://nicolasdelarre-photography.com",
+      "instagram": "https://www.instagram.com/photo.graphizm"
     }
   ],
   "manifest": {
