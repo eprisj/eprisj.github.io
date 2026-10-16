@@ -4524,16 +4524,19 @@ function PatreonMark({ size = 18 }: { size?: number }) {
   );
 }
 
-const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: string; support: string }> = {
-  EN: { line: 'An independent journal of contemporary art, architecture and interior design: long-form interviews, essays and reviews.', place: 'Edited in Milan, Italy', sections: 'Sections', support: 'Support us on Patreon' },
-  RU: { line: 'Независимый журнал о современном искусстве, архитектуре и дизайне интерьеров: большие интервью, эссе и рецензии.', place: 'Редакция в Милане, Италия', sections: 'Разделы', support: 'Поддержать на Patreon' },
-  UA: { line: 'Незалежний журнал про сучасне мистецтво, архітектуру й дизайн інтер’єрів: великі інтерв’ю, есеї та рецензії.', place: 'Редакція в Мілані, Італія', sections: 'Розділи', support: 'Підтримати на Patreon' },
-  DE: { line: 'Ein unabhängiges Journal für zeitgenössische Kunst, Architektur und Interior Design: lange Interviews, Essays und Rezensionen.', place: 'Redaktion in Mailand, Italien', sections: 'Rubriken', support: 'Auf Patreon unterstützen' },
-  IT: { line: 'Una rivista indipendente di arte contemporanea, architettura e interior design: lunghe interviste, saggi e recensioni.', place: 'Redazione a Milano, Italia', sections: 'Sezioni', support: 'Sostienici su Patreon' },
-  ES: { line: 'Una revista independiente de arte contemporáneo, arquitectura e interiorismo: entrevistas largas, ensayos y reseñas.', place: 'Editada en Milán, Italia', sections: 'Secciones', support: 'Apóyanos en Patreon' },
-  FR: { line: 'Une revue indépendante d’art contemporain, d’architecture et de design d’intérieur : grands entretiens, essais et critiques.', place: 'Éditée à Milan, Italie', sections: 'Rubriques', support: 'Soutenez-nous sur Patreon' },
-  TR: { line: 'Çağdaş sanat, mimarlık ve iç mimarlık üzerine bağımsız bir dergi: uzun söyleşiler, denemeler ve eleştiriler.', place: 'Milano, İtalya’da yayımlanır', sections: 'Bölümler', support: "Patreon'da destekleyin" },
+const FOOTER_ABOUT: Record<string, { line: string; place: string; sections: string; support: string; supportHead: string }> = {
+  EN: { line: 'An independent journal of contemporary art, architecture and interior design: long-form interviews, essays and reviews.', place: 'Edited in Milan, Italy', sections: 'Sections', support: 'Support us on Patreon', supportHead: 'Support' },
+  RU: { line: 'Независимый журнал о современном искусстве, архитектуре и дизайне интерьеров: большие интервью, эссе и рецензии.', place: 'Редакция в Милане, Италия', sections: 'Разделы', support: 'Поддержать на Patreon', supportHead: 'Поддержка' },
+  UA: { line: 'Незалежний журнал про сучасне мистецтво, архітектуру й дизайн інтер’єрів: великі інтерв’ю, есеї та рецензії.', place: 'Редакція в Мілані, Італія', sections: 'Розділи', support: 'Підтримати на Patreon', supportHead: 'Підтримка' },
+  DE: { line: 'Ein unabhängiges Journal für zeitgenössische Kunst, Architektur und Interior Design: lange Interviews, Essays und Rezensionen.', place: 'Redaktion in Mailand, Italien', sections: 'Rubriken', support: 'Auf Patreon unterstützen', supportHead: 'Unterstützen' },
+  IT: { line: 'Una rivista indipendente di arte contemporanea, architettura e interior design: lunghe interviste, saggi e recensioni.', place: 'Redazione a Milano, Italia', sections: 'Sezioni', support: 'Sostienici su Patreon', supportHead: 'Sostegno' },
+  ES: { line: 'Una revista independiente de arte contemporáneo, arquitectura e interiorismo: entrevistas largas, ensayos y reseñas.', place: 'Editada en Milán, Italia', sections: 'Secciones', support: 'Apóyanos en Patreon', supportHead: 'Apoyo' },
+  FR: { line: 'Une revue indépendante d’art contemporain, d’architecture et de design d’intérieur : grands entretiens, essais et critiques.', place: 'Éditée à Milan, Italie', sections: 'Rubriques', support: 'Soutenez-nous sur Patreon', supportHead: 'Soutien' },
+  TR: { line: 'Çağdaş sanat, mimarlık ve iç mimarlık üzerine bağımsız bir dergi: uzun söyleşiler, denemeler ve eleştiriler.', place: 'Milano, İtalya’da yayımlanır', sections: 'Bölümler', support: "Patreon'da destekleyin", supportHead: 'Destek' },
 };
+
+/* Кнопка Patreon в подвале: контурная «таблетка», на наведении заливается белым. */
+const FOOTER_PILL = 'group inline-flex items-center gap-3 rounded-full border border-white/35 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-white transition-colors hover:border-white hover:bg-white hover:text-black';
 
 function SiteFooter({ lang, title, description, publicationName, rights, instagramUrl, contactEmail, links, onNavigate }: {
   lang: string; title: string; description: string; publicationName: string; rights: string;
@@ -4553,8 +4556,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
           className="inline-block leading-none">
           <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[160px] h-auto" loading="lazy" />
         </a>
-        <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-white/85 hover:text-white transition-colors">
+        <a href={PATREON_URL} target="_blank" rel="noopener noreferrer" className={FOOTER_PILL}>
           <PatreonMark size={16} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
         </a>
         <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
@@ -4566,7 +4568,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
             <p className="mt-6 max-w-[44ch] text-base sm:text-lg leading-relaxed text-white/70">{description || about.line}</p>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white/55">{about.place}</p>
           </div>
-          <nav aria-label="Footer">
+          <nav aria-label="Footer" className="md:border-l md:border-white/10 md:pl-10">
             <p className={head}>{about.sections}</p>
             <ul className="mt-5 space-y-3">
               {links.map(([tab, label]) => (
@@ -4577,21 +4579,20 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
               ))}
             </ul>
           </nav>
-          <div>
+          <div className="md:border-l md:border-white/10 md:pl-10">
             <p className={head}>{tx.kicker}</p>
             <p className="mt-5 font-serif text-xl text-white/85 leading-snug max-w-[30ch]">{tx.title}</p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
-                className="inline-block leading-none transition-transform hover:-translate-y-0.5">
-                <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[150px] sm:w-[160px] h-auto" loading="lazy" />
-              </a>
-              <a href="/app/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 hover:text-white underline underline-offset-4 transition-colors">{tx.more}</a>
-            </div>
-            <a href={PATREON_URL} target="_blank" rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/85 hover:text-white transition-colors">
-              <PatreonMark size={18} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
+              className="mt-5 inline-block leading-none transition-transform hover:-translate-y-0.5">
+              <img src="/app/app-store-badge-white.svg" alt="Download on the App Store" width={160} height={53} className="w-[150px] sm:w-[160px] h-auto" loading="lazy" />
             </a>
-            {(instagramUrl || contactEmail) && <div className="mt-10 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
+            <div className="mt-9 border-t border-white/10 pt-8">
+              <p className={head}>{about.supportHead}</p>
+              <a href={PATREON_URL} target="_blank" rel="noopener noreferrer" className={`mt-5 ${FOOTER_PILL}`}>
+                <PatreonMark size={18} />{about.support}<ArrowUpRight size={14} strokeWidth={2} className="shrink-0 opacity-70" aria-hidden="true" />
+              </a>
+            </div>
+            {(instagramUrl || contactEmail) && <div className="mt-9 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
               {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Instagram ↗</a>}
               {contactEmail && <a href={`mailto:${contactEmail}`} className="block normal-case tracking-[0.06em] hover:text-white transition-colors">{contactEmail}</a>}
             </div>}
