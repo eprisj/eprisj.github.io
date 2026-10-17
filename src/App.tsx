@@ -59,6 +59,7 @@ import {
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
 import { SupportJournal } from './components/SupportJournal';
+import { PatronPlaque } from './components/PatronPlaque';
 import { useLockedPageScroll } from './hooks/useLockedPageScroll';
 import type { HomepageArchiveEntry, HomepagePicsCategory, HomepageSectionKey, SiteSettings, SiteTheme, VisibilitySectionKey } from './data';
 import { Search, ArrowUpRight, FileText, Menu, X, Globe, MapPin, ExternalLink, ArrowLeft, ArrowRight, Quote, Play, Music, Image as ImageIcon, CheckSquare, Square, BarChart, Lightbulb, Share2, Link2, Check } from 'lucide-react';
@@ -1564,9 +1565,15 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
         are" story with "what we believe".
       */}
       <Reveal>
-        <div className="mb-16 text-center max-w-xl mx-auto">
+        <div className="mb-10 text-center max-w-xl mx-auto">
           <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Founded 5 June 2024</div>
           <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an independent Italian publication founded in Milan on 5 June 2024. It is a digital space for contemporary art, architecture and interior design, bringing together long-form essays, interviews, exhibition reviews and close readings of the places, objects and ideas shaping visual culture. Edited in Milan and read internationally, EPRIS follows culture where it is made and where it is lived – with curiosity, clarity and an eye for lasting work.</p>
+        </div>
+      </Reveal>
+      {/* The patron's plaque closes the journal's introduction, before the team. */}
+      <Reveal delay={0.08}>
+        <div className="mb-16">
+          <PatronPlaque lang={currentLang} />
         </div>
       </Reveal>
       {team.length > 0 && (
