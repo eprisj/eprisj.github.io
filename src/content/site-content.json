@@ -18438,7 +18438,7 @@
     },
     {
       "id": 70,
-      "draft": true,
+      "draft": false,
       "title": "Stephen Spartana: My Photographs Are My Paints",
       "author": "Viacheslav Munister & Stephen Spartana",
       "role": "Author",
@@ -19125,7 +19125,9 @@
           "content": "Interview by Viacheslav Munister. Answers by Stephen Spartana, lightly edited for clarity and punctuation. Questions have been shortened. All artworks courtesy of the artist."
         }
       ],
-      "updatedAt": "2026-10-18T12:51:49.315Z"
+      "publishAt": "2026-10-18T12:55:41.000Z",
+      "publishedAt": "2026-10-18T12:55:41.000Z",
+      "updatedAt": "2026-10-18T12:55:43.043Z"
     }
   ],
   "reviews": [
