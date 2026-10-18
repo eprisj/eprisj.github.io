@@ -70463,6 +70463,564 @@
           ],
           "publishAt": "2026-10-16T08:47:29.000Z",
           "publishedAt": "2026-10-16T08:47:29.000Z"
+        },
+        {
+          "id": 70,
+          "draft": true,
+          "title": "Stephen Spartana: Meine Fotografien sind meine Farben",
+          "author": "Viacheslav Munister & Stephen Spartana",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "contributorId": "author-stephen-spartana",
+          "date": "18. Okt 2026",
+          "excerpt": "Fotograf Stephen Spartana auf einer Straße vom Baseballfeld und der Stahlfabrik zur bildenden Kunst, Wasser als lebenden Spiegel, ein Bild aus Schichten bauen, ein gefrorener Bach, der schmolz, und was ein Foto von Blättern jemandem geben kann, dessen Himmel nicht sicher ist.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "fotografie",
+            "bildende kunst",
+            "geschichtete fotografie",
+            "Stephen Spartana"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvds7jnjnchtl0.webp",
+          "previewToken": "stephen-spartana-20261018",
+          "content": [
+            {
+              "type": "text",
+              "content": "Stephen Spartanas Fotografien sind aufgebaut wie Erinnerungen: eine Schicht nach der anderen. Eine Figur, fotografiert im Studio vor Schwarz, ein Baum von einem Winterspaziergang, Acrylstriche auf Glas gemalt, ein Fluss, ein gefrorener Bach: sie fügen sich zu einem Bild zusammen, das nicht sagt, wo es entstanden ist. „Wo wurde diese Person fotografiert? Ist das ein echter Ort? Wo endet die Realität und beginnt die Fantasie?“ fragt er den Betrachter, und er meint die Fragen als den Punkt der Arbeit."
+            },
+            {
+              "type": "text",
+              "content": "Er kam auf einem langen Weg dazu. Ein Junge aus einer bürgerlichen Baltimore-Familie ohne Künstler darin, er ging aufs College, nur um Baseballspieler zu werden. Er nahm seinen ersten Fotokurs als Senior, arbeitete in einer Stahlfabrik, weil er Geld brauchte, begann Kunstkurse an einem Gemeinschaftskolleg, und bewarb sich dann am Maryland Institute College of Art, das er mit langen Stunden in der Fabrik bezahlte. Nach dem BFA folgten etwa vierzig Jahre als Werbefotograf. Als die Pandemie seine Aufträge stoppte, hatte er endlich ungestörte Zeit für seine eigene Arbeit. Heute wird sie international gezeigt, in Venedig 2021 und bei der Florence Biennale 2025, wo er den Lorenzo il Magnifico Award for Photography erhielt."
+            },
+            {
+              "type": "text",
+              "content": "Wir stellten Stephen lange Fragen: über die Stahlfabrik und ein Paar verirrter Theaterkarten, über Spiegel und Wasser, über die Human-Nature-Serie, die er Anfang der 1990er Jahre begann und Jahrzehnte später wieder aufgriff, über vierzig Jahre Aufträge, darüber, wie ein geschichtetes Bild entsteht, über Eis, Abstraktion und Italien, über sein Buch, und darüber, was eine Fotografie Menschen im Krieg bieten kann. Er antwortete in seiner eigenen Länge und in seiner eigenen Zeit und schickte sechzehn Bilder."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7jnjnchtl0.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Veil der verflochtenen Seelen, 2019. Aus der Serie Intertwined. Mehrschichtig, 90 × 60 cm."
+            },
+            {
+              "type": "header",
+              "content": "01 · Wo es beginnt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Wir beginnen mit dem, was ein Baseballfeld, eine Stahlfabrik und ein Theatersitz einem Auge beigebracht haben, mit den Spiegeln einer Studentenarbeit und mit einer Serie, die Jahrzehnte auf ihre zweite Hälfte wartete.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM]:</b> <i>Du bist aufs College gegangen, nur um Baseballspieler zu werden; Wirtschaft und Buchhaltung fühlten sich nie wie eine Karriere an, und du hast deine erste Fotoklasse als Senior belegt. Du hast in einer Stahlfabrik gearbeitet, weil du Geld brauchte, hast Kunstkurse an einem Community College belegt, und erkannt, dass das, was du wirklich machen wolltest. Du hast dich bei MICA beworben, hast lange Stunden in der Fabrik gearbeitet, um es zu bezahlen, und hast oft darüber nachgedacht, wie interessant es wäre, im Melt Shop zu fotografieren. Jahre später hast du selbst Ballettstunden genommen und erst dann angefangen, Tänzer zu fotografieren. Was haben dir diese Welten für dein Auge beigebracht: die Pitcher-Mound, das Licht flüssigen Metalls, den Körper des Tänzers in der Luft? Ist noch etwas von der Fabrik in deinen Fotografien?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Stephen Spartana [SS]:</b> Weil ich nicht in einem künstlerischen Umfeld aufgewachsen bin, stammt ein Großteil meiner kreativen Inspiration aus den Erfahrungen, die ich im Laufe meines Lebens gesammelt habe. Ich bin immer sehr aufmerksam gewesen, fasziniert von den Dingen, die um mich herum passieren, sehe oft Schönheit und Möglichkeiten an Orten, an denen andere vielleicht nicht suchen würden."
+            },
+            {
+              "type": "text",
+              "content": "Als ich begann, Fotografie zu studieren, erinnerte ich mich an Dinge, die ich vor Jahren erlebt hatte, und stellte mir vor, wie ich sie durch eine Kamera interpretieren könnte. Zum Beispiel, als ich als junger Mann in einer Stahlfabrik arbeitete, war ich fasziniert von dem flüssigen Stahl, den enormen Maschinen, den hohen Kränen und der unglaublichen Größe und Energie des Ortes. Ich erinnere mich, dass ich dachte, wie wunderbar es wäre, diese Umgebung eines Tages zu fotografieren. Viele Jahre später, nachdem ich mich als Werbefotograf etabliert hatte, hatte ich endlich die Gelegenheit, eine kleinere Stahlfabrik zu fotografieren. Es war eine unglaublich angenehme Erfahrung, fast wie die Erfüllung einer Vision, die ich Jahrzehnte lang mit mir getragen hatte."
+            },
+            {
+              "type": "text",
+              "content": "Ich erinnere mich an eine andere Erfahrung, die meine Sichtweise beeinflusst hat. Das erste Mal, als ich an einer Tanzaufführung teilnahm, waren unsere Tickets verlegt worden, und wir bekamen Plätze ganz vorne im Theater. Von dieser Position aus war es fast unmöglich, die gesamte Bühne zu sehen. Stattdessen fand ich mich dabei, durch die Beine der Tänzer zu schauen, Fragmente von Bewegung, ungewöhnliche Winkel und intime Details zu beobachten, die jemand, der weiter hinten sitzt, vielleicht nie bemerkt hätte. Diese unerwarteten Perspektiven blieben bei mir und fanden schließlich ihren Weg in meine Fotografie."
+            },
+            {
+              "type": "text",
+              "content": "Ich glaube, alles, was wir im Leben erleben, bleibt irgendwo in uns. Die Orte, die wir besucht haben, die Menschen, denen wir begegnet sind, und die Dinge, die wir beobachtet haben, werden Teil unseres visuellen Gedächtnisses. Meine Arbeit ist größtenteils konzeptuell, und ich greife oft auf diese Erinnerungen zurück, manchmal ohne es überhaupt zu merken."
+            },
+            {
+              "type": "text",
+              "content": "Was mich am meisten fasziniert, ist die Möglichkeit, verschiedene Welten zusammenzubringen – Orte, Erfahrungen und Momente zu kombinieren, die durch Jahre oder sogar Jahrzehnte getrennt sein könnten. Durch Schichtung und Komposition kann ich Beziehungen zwischen Dingen schaffen, die normalerweise niemals zusammen existieren würden."
+            },
+            {
+              "type": "text",
+              "content": "In gewisser Weise versuche ich, über die traditionellen drei Dimensionen eines Bildes hinauszugehen und die Zeit als vierte Dimension einzuführen. Meine Fotografien werden zu Orten, an denen Vergangenheit und Gegenwart koexistieren, an denen Erinnerung und Realität sich überschneiden, und an denen Erfahrungen eines ganzen Lebens in einem einzigen Bild zusammenkommen."
+            },
+            {
+              "type": "quote",
+              "content": "In gewisser Weise versuche ich, über die traditionellen drei Dimensionen eines Bildes hinauszugehen und die Zeit als vierte Dimension einzuführen.",
+              "caption": "Stephen Spartana"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Deine These bei MICA verwendete Spiegel, um entfernte Teile einer Landschaft in einem Foto einer Figur einzufangen. Jahrzehnte später übernimmt Wasser die Arbeit der Spiegel. Warum ist eine Oberfläche, die zwei Welten hält, dir seit vierzig Jahren geblieben? Was kann Wasser tun, was ein Spiegel niemals könnte, und was hast du verloren, als du den Spiegel losgelassen hast?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Ich war schon immer fasziniert von der Idee, zwei Welten in einem einzigen Bild zusammenzubringen. Diese Faszination begann mit Spiegeln, aber im Laufe der Zeit entdeckte ich, dass Wasser etwas viel Dynamischeres und Unvorhersehbareres bietet."
+            },
+            {
+              "type": "text",
+              "content": "Wasser hat so viele außergewöhnliche Eigenschaften. Es existiert als Flüssigkeit, Feststoff und Gas, verändert ständig seine Form und seinen Charakter. Ein Spiegel gibt dir eine relativ genaue Reflexion dessen, was vor ihm ist, aber Wasser hat ein Eigenleben. Die geringste Brise, eine Welle oder eine Lichtänderung kann das Reflektierte völlig verwandeln. Es kann Elemente verzerren, erweichen, zerlegen oder vermischen, auf eine Weise, die ein herkömmlicher Spiegel nicht kann."
+            },
+            {
+              "type": "text",
+              "content": "Was mich am meisten interessiert, ist, dass Wasser nicht einfach eine andere Welt widerspiegelt; es kann sie neu interpretieren. Es führt Bewegung, Atmosphäre und ein Element der Unvorhersehbarkeit ein, das so viele kreative Möglichkeiten eröffnet."
+            },
+            {
+              "type": "text",
+              "content": "Ich denke, der Grund, warum diese Idee mir seit mehr als vierzig Jahren im Kopf geblieben ist, ist, dass ich immer daran interessiert war, verschiedene Momente, Orte und Dimensionen in einem einzigen Foto zu kombinieren. Bei Spiegeln hatte ich mehr Kontrolle darüber, was ich zusammenbrachte. Mit Wasser habe ich einen Teil dieser Kontrolle aufgegeben, aber im Gegenzug etwas Organischeres und Ausdrucksstärkeres gewonnen. Wasser ermöglicht es der Natur, Teil des kreativen Prozesses zu werden, und das ist für mich als Künstler immer wichtiger geworden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7c35c6rkwd.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "In Blue, 2017. Aus der Serie Interwoven. Mehrlagig, 75 × 40 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>In den frühen 1990er Jahren, bei Gomez Gallery in Baltimore, verband Human-Nature schwarz-weiße Aktaufnahmen mit Nahaufnahmen von Blumen. Dann wurde die Serie für viele Jahre still, bevor du zu ihr zurückkehrtest. Was unterbrach sie, und was brachte dich zurück? Und wie beantwortest du die alte Frage, die über Blumen und nebeneinander stehende Körper schwebt, über Schönheit, Verlangen und die Art, wie wir schauen?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Meine Kunst wurde einfach durch das Leben unterbrochen. Zu der Zeit arbeitete ich als freiberuflicher Werbefotograf, und meine Karriere begann wirklich durchzustarten. Ich war unglaublich beschäftigt, baute ein Geschäft auf und verdiente meinen Lebensunterhalt. Meine Frau und ich waren auch dabei, unsere beiden Töchter aus China zu adoptieren, also verschoben sich meine Prioritäten natürlich auf meine Karriere und Familie. Es gab einfach nicht genug Zeit, um mich meiner persönlichen Kunst zu widmen, obwohl ich immer wusste, dass ich dorthin zurückkehren würde."
+            },
+            {
+              "type": "text",
+              "content": "Ich habe <i>Human Nature</i> nie vergessen. Im Laufe der Jahre habe ich die Serie gelegentlich wieder besucht und einige der ursprünglichen Aktaufnahmen, die ich auf schwarz-weiß-Infrarotfilm fotografiert hatte, integriert. Diese Bilder hatten für mich immer etwas Besonderes, und die Beziehung zwischen der menschlichen Figur und der natürlichen Welt faszinierte mich weiterhin."
+            },
+            {
+              "type": "text",
+              "content": "Georgia O’Keeffes Blumen waren eine frühe Inspiration, insbesondere die Art und Weise, wie sie außergewöhnliche Schönheit in Formen offenbarte, die wir oft übersehen. Ich denke, es gibt eine natürliche Verbindung zwischen dem menschlichen Körper und den organischen Formen in der Natur. Beide besitzen ihre eigene Sinnlichkeit, Verletzlichkeit und Schönheit. Für mich war es nie einfach nur Verlangen, sie zusammenzubringen. Es ging darum, zu erkennen, dass wir Teil der Natur sind, nicht getrennt von ihr."
+            },
+            {
+              "type": "text",
+              "content": "Als ich zur Serie zurückkehrte, hatte sich meine Perspektive erweitert. Blumen waren immer noch wichtig, aber ich begann, andere Elemente der natürlichen Welt einzubeziehen, um Beziehungen zwischen Formen, Texturen, Zeit und Raum zu erforschen. Das Werk entwickelte sich, genau wie ich mich entwickelt hatte."
+            },
+            {
+              "type": "text",
+              "content": "Ich glaube, dass man als Künstler eine Idee wieder aufgreifen kann, aber man sollte niemals aufhören, vorwärts zu gehen. Das ursprüngliche <i>Human Nature</i> hat einen Samen gepflanzt, der im Laufe meiner Karriere weiter gewachsen ist. Was als Erforschung der Beziehung zwischen Blumen und der menschlichen Figur begann, ist zu etwas viel Größerem geworden: einer fortlaufenden Erforschung unserer Verbindung zur Natur und der vielen Schichten des Lebens selbst."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7dec9zuv64.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Iris, 1992. Aus der Serie Human-Nature. Mehrschichtig, 90 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7gisdthzks.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Petal Wear, 1992. Aus der Serie Human-Nature. Mehrschichtig, 60 × 90 cm."
+            },
+            {
+              "type": "header",
+              "content": "02 · Zwei Leben, viele Schichten",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Als Nächstes: vierzig Jahre Aufträge und die Arbeit, die danach kam, ein Bild, das Schicht für Schicht aufgebaut wurde, die Erde als Tätowierung, und die Menschen, die im Wasser stehen.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Seit 1983 leben Sie als Werbefotograf. Wie nähren und stehlen die beiden Leben, die Arbeit, die bezahlt wird, und die Arbeit, die zählt, voneinander? Was haben vierzig Jahre Aufträge dem Künstler gebracht, und was haben sie ihn gekostet?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Ich habe jede Aufgabe immer als Gelegenheit zum Lernen gesehen. Als Werbefotograf hätte ich mich auf Porträts, Architektur oder ein anderes Thema spezialisieren können, aber ich wollte mich nie einschränken. Ich wusste, dass ich irgendwann die Lust verlieren würde, immer dasselbe zu tun. Ich mochte, dass jede Aufgabe eine andere Perspektive bot und eine neue Art, Fotografie anzugehen. Ich arbeitete in vielen Bereichen, oft mit Menschen, Gebäuden, Gegenständen, Landschaften und anderen Motiven. Es gab immer etwas Neues zu sehen, und jede Aufgabe stellte eine Herausforderung und eine Gelegenheit dar, mein Wissen zu erweitern."
+            },
+            {
+              "type": "text",
+              "content": "Ich genoss es besonders, an colleges und universitäten zu arbeiten. Ich liebte es, mit studenten zu sprechen, ihre perspektiven zu hören und verbunden zu bleiben mit einer jüngeren generation. Ich habe immer geglaubt, dass lernen lebenslang ist, und diese begegnungen waren für mich genauso wertvoll wie die fotografien, die ich gemacht habe."
+            },
+            {
+              "type": "text",
+              "content": "Ich habe meine kommerzielle karriere und die bildende kunst nie als getrennte leben betrachtet. Einer informierte ständig den anderen. Die kommerzielle fotografie brachte mich in kontakt mit menschen, orten und situationen, denen ich sonst vielleicht nie begegnet wäre. Es lehrte mich disziplin, anpassungsfähigkeit, problemlösung und wie man ein thema aus verschiedenen perspektiven angeht. Diese erfahrungen wurden ein teil von mir, sowohl persönlich als auch künstlerisch."
+            },
+            {
+              "type": "text",
+              "content": "Kommerzielle arbeit forderte viel von meiner zeit, und jahrelang nahm meine persönliche kunst eine hintere stelle ein. Aber ich sehe das nicht als etwas, das ich verloren habe. Ich baute eine karriere auf, erziehte eine familie und sammelte erfahrungen, die schließlich ihren weg in meine kunst finden würden."
+            },
+            {
+              "type": "text",
+              "content": "Als die pandemie die kommerziellen aufträge stoppte, gab sie mir etwas, das ich seit jahren nicht mehr hatte: ununterbrochene zeit, um mich auf meine eigene kreative vision zu konzentrieren. Zum ersten mal seit langer zeit konnte ich fotografien ausschließlich für mich selbst machen, ohne erwartungen eines kunden oder eine deadline, die das ergebnis bestimmten."
+            },
+            {
+              "type": "text",
+              "content": "Was sich änderte, war nicht meine Leidenschaft für Fotografie, sondern wo ich sie lenken konnte. Nach vierzig Jahren, in denen ich die Visionen anderer erfüllte, konnte ich mich endlich ganz meiner eigenen widmen."
+            },
+            {
+              "type": "text",
+              "content": "Ich empfinde meine kommerzielle Karriere nicht als kreativ belastend. Im Gegenteil. Sie gab mir vierzig Jahre Wissen, Erfahrung und visuelles Verständnis, die ich jetzt in meine Kunstwerke einbringe. In vielerlei Hinsicht bin ich einen vollständigen Kreis gegangen, zurück zu dem Ort, an dem ich immer sein wollte, mit einer Lebenserfahrung, die ich beim Beginn nicht hatte."
+            },
+            {
+              "type": "text",
+              "content": "Vielleicht ist das der lohnendste Teil. Ich lerne immer noch, experimentiere und entdecke neue Möglichkeiten. Ein Künstler hört nie wirklich auf zu lernen; es gibt immer mehr zu erkunden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7ioa1m4lq7.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Searching, 2023. Aus der Serie Walking in Space. Mehrlagig, 50 × 75 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Du nennst deine Fotografien deine Farben und deine Werkzeuge eine Palette. Nimm ein Bild aus Life in Layers und führe uns durch seine Entstehung: Was wurde fotografiert, wie viele Schichten gibt es, in welcher Reihenfolge treffen sie aufeinander, und wann wusstest du, dass es fertig ist? Was wird vor Ort entschieden, und was erscheint nur auf dem Bildschirm?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> <i>Heart of the Rose</i> ist ein gutes Beispiel dafür, wie ich an die Erstellung eines Bildes durch Schichten herangehe. Der Prozess begann mit einer Schwarz-Weiß-Fotografie eines Nackten, gefolgt von einer Fotografie einer Rose mit einer schönen, gedämpften roten Farbe. Dann malte ich Acrylpinselstriche auf Glas und fotografierte diese ebenfalls, wodurch ein weiteres Element entstand, das ich in die Komposition einfügen konnte."
+            },
+            {
+              "type": "text",
+              "content": "Das Bild fügte sich in Phasen zusammen. Ich begann mit dem Nackten, führte die gedämpfte rote Rose ein und fügte schließlich die fotografierten Acrylpinselstriche hinzu. Jede Schicht brachte etwas anderes in die Komposition, und die Herausforderung bestand darin, eine Balance zu finden, bei der die einzelnen Elemente etwas Größeres wurden, als sie für sich allein waren."
+            },
+            {
+              "type": "text",
+              "content": "Vieles dieser Erforschung findet jetzt auf meinem Computerbildschirm statt. Ich erschaffe selten nur eine Version eines Bildes. Ich experimentiere mit verschiedenen Anordnungen, Transparenzen, Kontrasten und Beziehungen zwischen den Schichten. Manchmal erstelle ich zahlreiche Variationen, bevor ich eine Richtung finde, die sich richtig anfühlt. In vielerlei Hinsicht ist es ähnlich wie Malen, nur dass meine Palette aus Fotografien besteht, die ich im Laufe meines Lebens gemacht habe."
+            },
+            {
+              "type": "text",
+              "content": "Die ursprünglichen Fotografien bilden die Grundlage, aber die endgültige Komposition führt mich oft an einen Ort, den ich beim ersten Aufnehmen nicht erwartet hatte. Das ist eines der Dinge, die ich am meisten an diesem Prozess liebe. Ich nehme nicht einfach nur auf, was ich sehe; ich entdecke, was diese Bilder werden können, wenn sie zusammengebracht werden."
+            },
+            {
+              "type": "text",
+              "content": "Was das Wissen betrifft, wann ein Stück fertig ist, ist das wahrscheinlich die schwierigste Frage zu beantworten. Manchmal erreiche ich einen Punkt, an dem sich alles ausgeglichen anfühlt und das Bild vollständig erscheint. Manchmal bin ich nicht ganz überzeugt. Ich lege es vielleicht beiseite und kehre Monate oder sogar Jahre später mit einer anderen Perspektive zurück. Ich habe ältere Arbeiten schon oft wieder besucht und Möglichkeiten entdeckt, die ich vorher nicht gesehen hatte."
+            },
+            {
+              "type": "text",
+              "content": "Für mich ist das Schaffen von Kunst ein fortlaufender Prozess der Erforschung. Es gibt meistens einen Anfang, aber nicht immer ein endgültiges Ende. Manchmal sagt mir ein Bild, dass es fertig ist, und manchmal muss ich einfach davon weggehen. Ich habe diese Unsicherheit als Teil des Künstlerseins akzeptiert. Die Möglichkeiten sind oft endlos, und genau das macht den kreativen Prozess spannend."
+            },
+            {
+              "type": "quote",
+              "content": "Ich nehme nicht einfach nur auf, was ich sehe; ich entdecke, was diese Bilder werden können, wenn sie zusammengebracht werden.",
+              "caption": "Stephen Spartana"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds73zwqsgs9m.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Color Tree, 2022. Aus der Serie Yin Yang. Mehrschichtig, 50 × 75 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7kbngtmqft.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Yin Yang, 2022. Aus der Serie Yin Yang. Mehrschichtig, 50 × 90 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Du beschreibst die verflochtenen Landschaften als „wie die Schichten der Erinnerungen“, und die Muster von Blättern und Felsen als Tattoos auf der Haut. Wenn du einen Stein oder ein Blatt auf einen menschlichen Körper legst, was sagst du: dass wir von der Erde geschrieben sind, dass wir zu ihr zurückkehren, dass wir sie wie Tinte tragen? Welche Erinnerung sitzt in der tiefsten Schicht?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Ich war schon immer fasziniert von Tattoos und der Art und Weise, wie Menschen sie verwenden, um ihre Körper zu schmücken, oft als Ausdruck von Identität, persönlicher Geschichte oder Emotion. In meiner Arbeit sehe ich die Natur als eine Form von Tattoo. Anstatt Tinte zu verwenden, nutze ich die Muster und Texturen von Blättern, Steinen und anderen natürlichen Elementen, um die menschliche Figur zu schmücken. Für mich ist es eine Möglichkeit, die Erde in den menschlichen Geist zu bringen, und zu suggerieren, dass wir nicht von der Natur getrennt sind, sondern tief mit ihr verbunden. Diese natürlichen Formen werden Teil des Körpers, fast so, als hätte die Erde ihre eigenen Eindrücke auf uns hinterlassen. In diesem Sinne sind die Schichten in meinen Fotografien nicht unbedingt über eine bestimmte Erinnerung, sondern über etwas Universelleres: unsere gemeinsame Verbindung zur natürlichen Welt und die Idee, dass wir letztlich von der Erde sind."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7crmujmxic.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Inter-Twined, 2019. Aus der Serie Intertwined. Mehrschichtig, 90 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7e626wemu8.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Night Hat, 2020. Aus der Serie Nature, Life in Layers. Mehrschichtig, 75 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>In Caress of Maples steht eine Frau im fließenden Wasser zwischen Ahornfarben, die von Chartreuse bis Karmesin reichen, „wie eine griechische Göttin“. Wer sind die Menschen auf deinen Bildern, und wie arbeitest du mit ihnen? Wie viel ist geplant, und wie viel ist Vertrauen?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> In <i>Caress of Maples</i> steht die Frau eigentlich nicht im Wasser. Alle meine Aktaufnahmen werden im Studio vor einem schwarzen Hintergrund fotografiert, oft teilweise in ein durchscheinendes, gauziges Gewebe gehüllt. Ich arbeite mit dem Modell, um eine Vielzahl von Posen, Gesten und Bewegungen zu erkunden, fotografiere Möglichkeiten, die ich vielleicht viel später verwenden werde. Es gibt einen Grad an Planung, aber auch viel Spontaneität und Vertrauen in den Prozess."
+            },
+            {
+              "type": "text",
+              "content": "Die natürlichen Elemente werden vollständig separat fotografiert. Im Laufe der Jahre habe ich eine umfangreiche Palette von Bildern aus der Natur aufgebaut, zu der ich immer wieder zurückkehre, wenn ich meine Kompositionen erschaffe. Ich suche nach einer Beziehung zwischen der menschlichen Figur und der natürlichen Welt, etwas, das sich anfühlt, als wären die beiden immer dazu bestimmt gewesen, zusammen zu existieren."
+            },
+            {
+              "type": "text",
+              "content": "Wenn ich diese Verbindung finde, beginne ich, die Bilder zu schichten, sodass die menschliche Form und die Natur Teil derselben visuellen Erfahrung werden. Mein Ziel ist es, etwas zu schaffen, das glaubwürdig, aber dennoch traumhaft wirkt, sodass der Betrachter sich fragt: Wo wurde diese Person fotografiert? Ist das ein echter Ort? Wo endet die Realität und beginnt die Fantasie?"
+            },
+            {
+              "type": "text",
+              "content": "Letztendlich ist es mein Zweck, ein Kunstwerk zu schaffen, das den Betrachter einlädt, Zeit mit Erkunden und Entdecken zu verbringen. Ich möchte, dass es Elemente gibt, die sofort sichtbar sind, aber auch Feinheiten, die in den Schichten verborgen sind und sich auf den ersten Blick vielleicht nicht offenbaren. Ich hoffe, dass jeder, der zum Bild zurückkehrt, etwas entdeckt, das er vorher nicht bemerkt hatte. Für mich sollte das Kunstwerk mehr bieten als einen einzigen Moment der Beobachtung. Es sollte zu einer Entdeckungserfahrung werden, bei der der Betrachter durch die Schichten wandert, so wie ich es beim Erstellen getan habe."
+            },
+            {
+              "type": "text",
+              "content": "Dieses Gefühl von Geheimnis und Entdeckung hat mich schon immer fasziniert. Ich platziere nicht einfach eine Figur in eine Landschaft; ich erschaffe eine Welt, in der die Grenzen zwischen menschlichem Körper und Natur zu verschwinden beginnen, und lade den Betrachter ein, über das sofort Sichtbare hinauszublicken."
+            },
+            {
+              "type": "header",
+              "content": "03 · Eis, Abstraktion, Italien",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Der dritte Teil handelt von einem Strom, der zwei Wochen lang gefroren war, dem Punkt, an dem sich ein Wald in ein Gefühl verwandelt, und einem Land, das den Künstler vollständig fühlen lässt.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Im Jahr 2022 wurde deine Arbeit kalt: Cryos-Scapes, Ice Scapes, World Below 0°. Gleichzeitig sitzt Elephants of Sri Lanka in deinem Portfolio. Ist Eis, Wasser, das in der Zeit gestoppt und langsam schmilzt, das ehrlichste Bild der Zeit, das du gefunden hast? Und wenn du Elefanten oder gefrorenes Wasser fotografierst, hast du das Gefühl, etwas zu dokumentieren, das vielleicht nicht ewig hält?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Die Elefanten von Sri Lanka und meine <i>World Below Zero</i>-Serie sind wirklich zwei völlig unterschiedliche Themen, jedes mit eigener Geschichte und Inspiration."
+            },
+            {
+              "type": "text",
+              "content": "Die Elefanten wurden in einem geschützten Gebiet in Sri Lanka während eines Projekts fotografiert, das ursprünglich für ein Buch gedacht war, das leider nie realisiert wurde. Es gab etwas Bemerkenswertes daran, diese prächtigen Tiere zu beobachten, ihre Persönlichkeiten, ihre Interaktionen und die Sanftheit, die neben ihrer enormen Stärke existiert. Während ich die Bedeutung des Schutzes dieser Tiere und ihrer Umwelt anerkenne, verstehe ich auch, dass ein einzelnes Foto ihren Erhalt nicht garantieren kann. Ein Bild kann Bewusstsein schaffen oder eine emotionale Reaktion hervorrufen, aber ob diese Emotion jemanden dazu bringt, Maßnahmen zu ergreifen, liegt letztlich außerhalb meiner Kontrolle."
+            },
+            {
+              "type": "text",
+              "content": "<i>World Below Zero</i> entstand auf eine völlig andere Weise. Während einer ungewöhnlich kalten Periode im Jahr 2022 wanderte ich durch den Wald, als ich auf einen teilweise gefrorenen Bach stieß. Ich war sofort fasziniert von den komplexen Formen, Mustern und Texturen, die entstanden, als das bewegte Wasser zu gefrieren begann. Es lag eine außergewöhnliche Schönheit in etwas so Alltäglichem, etwas, das die meisten Menschen vorbeigehen könnten, ohne es zu bemerken."
+            },
+            {
+              "type": "text",
+              "content": "Da das ungewöhnlich kalte Wetter anhielt, kehrte ich über einen Zeitraum von zwei Wochen immer wieder zum Bach zurück. Jeder Besuch offenbarte etwas anderes. Das Wasser floss weiterhin unter dem Eis, schuf neue Formationen und verwandelte andere. Es war faszinierend zu beobachten, wie sich die Natur ständig neu erfindet, komplexe Designs hervorbringt, die in ihrer Komplexität fast skulptural wirken."
+            },
+            {
+              "type": "text",
+              "content": "Meine anfängliche Faszination galt den visuellen Möglichkeiten, die diese Formationen boten. Das Eis wurde zu einer Sammlung natürlicher Kompositionen, jede mit eigenen Formen, Linien, Texturen und zarten Strukturen. Ich begann zu erforschen, wie diese Elemente Teil der visuellen Sprache der Serie werden könnten."
+            },
+            {
+              "type": "text",
+              "content": "Aber es gab auch etwas Faszinierendes an der temporären Natur dessen, was ich fotografierte. Selbst während dieser zwei Wochen mit Frosttemperaturen änderte sich das Eis ständig. Und sobald das Wetter sich erwärmte, würden diese schönen Formationen einfach verschwinden, weggetragen vom genau dem Wasser, das bei ihrer Entstehung geholfen hatte."
+            },
+            {
+              "type": "text",
+              "content": "In diesem Sinne werden die Fotografien tatsächlich zu einem Dokument von etwas, das nicht mehr existiert. Ich dachte beim Machen nicht unbedingt an Umweltverlust. Ich reagierte auf die Schönheit, die ich entdeckte, und die bemerkenswerten Transformationen, die vor meinen Augen stattfanden. Aber im Rückblick erkenne ich, dass die Arbeit auch vom Lauf der Zeit und der zerbrechlichen, flüchtigen Natur der Welt um uns herum spricht."
+            },
+            {
+              "type": "text",
+              "content": "Vielleicht ist das eine der Dinge, die ich an der Fotografie am faszinierendsten finde. Sie ermöglicht es mir, einen Moment festzuhalten, der nie wieder genau so passieren wird. Das Eis wird schmelzen, das Wasser wird weiterfließen, und diese außergewöhnlichen Muster werden verschwunden sein. Doch innerhalb des Fotos bleibt dieser Moment bestehen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7829nnz95n.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Cryo Scape, 2025. Aus der Serie World Below 0°. Mehrlagig, 90 × 60 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7f3wisi6gg.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Passing Thoughts, 2025. Aus der Serie World Below 0°. Mehrschichtig, 75 × 50 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Deine jüngsten Preise liegen hauptsächlich im Bereich der Fine-Art-Abstraktion, doch alles beginnt in einem echten Wald, einem echten Fluss, echtem Licht. Wo hört ein Wald auf, ein Wald zu sein, und wird zu einem Gefühl? Bist du auf Abstraktion aus, oder offenbart sich die Abstraktion erst später? Und was fühlst du, wenn Betrachter deine Fotografien mit Gemälden verwechseln?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Nach so vielen Jahren als Werbefotograf und der Möglichkeit, ausgiebig zu reisen, finde ich immer noch große Freude daran, Fotos einfach nur zum Vergnügen des Sehens und Entdeckens von etwas Schönem zu machen. Aber in diesem Stadium meines Lebens geschieht vieles von dem, was ich fotografiere, mit der Absicht, schließlich Teil einer Fine-Art-Komposition oder Abstraktion zu werden."
+            },
+            {
+              "type": "text",
+              "content": "Ich war schon immer fasziniert von der Idee, verschiedene Orte zusammenzubringen, Momente in der Zeit zu kombinieren und etwas zu schaffen, das in der Realität niemals in genau derselben Weise existieren könnte. Ein Wald mag als Wald beginnen, ein Fluss als Fluss, aber sobald ich mit diesen Bildern arbeite, werden sie etwas mehr. Sie werden Elemente einer visuellen Sprache, durch die ich Gefühle, Erinnerungen und Fantasie ausdrücken kann."
+            },
+            {
+              "type": "text",
+              "content": "Manchmal fotografiere ich etwas mit einer sehr spezifischen Idee im Kopf, in dem Wissen, wie ich es möglicherweise später verwenden werde. Andere Male offenbart sich die Abstraktion viel später. Ein Bild, das ich vor Jahren aufgenommen habe, kann plötzlich zum perfekten Element für etwas werden, das ich heute erschaffe. Wie ich bereits erwähnt habe, wird alles Teil meiner Palette, eine wachsende Sammlung von Farben, Texturen, Formen und Erfahrungen, auf die ich zurückgreifen kann."
+            },
+            {
+              "type": "text",
+              "content": "Ich denke nicht unbedingt, dass es einen genauen Moment gibt, in dem ein Wald aufhört, ein Wald zu sein, und zu einem Gefühl wird. Es geschieht allmählich, durch den kreativen Prozess, während ich beginne, über das hinauszugehen, was die Kamera ursprünglich aufgenommen hat. Ich experimentiere mit Beziehungen zwischen Bildern, lasse Farbe, Licht, Textur und Form mich leiten. Was als erkennbarer Landschaft begann, kann schließlich etwas völlig anderes werden, etwas, das irgendwo zwischen Realität und Fantasie existiert."
+            },
+            {
+              "type": "text",
+              "content": "Wenn jemand eines meiner Fotografien mit einem Gemälde verwechselt, nehme ich das als ein wunderbares Kompliment. Ich habe immer eine tiefe Wertschätzung für Malerei und Maler gehabt, aber ich habe mich nie dem traditionellen Malerwerden verschrieben. Stattdessen habe ich meinen eigenen Weg gefunden, durch Fotografie zu malen."
+            },
+            {
+              "type": "text",
+              "content": "Meine Kamera liefert die Rohmaterialien, meine Fotografien werden zu meinen Farben, und der Computer wird zu meiner Leinwand. Ähnlich wie ein Maler baue ich meine Kompositionen durch Schichten auf, treffe Entscheidungen über Farbe, Balance, Textur und Emotion."
+            },
+            {
+              "type": "text",
+              "content": "Letztendlich möchte ich, dass Menschen meine Arbeit so erleben, wie sie ein Gemälde erleben könnten, nicht einfach als Aufzeichnung von etwas, das existierte, sondern als Ausdruck von etwas, das vorgestellt und gefühlt wurde. Fotografie ist mein Medium, aber die Freiheit, über das wörtliche Bild hinaus zu schaffen, ist es, was mich als Künstler weiterhin begeistert."
+            },
+            {
+              "type": "quote",
+              "content": "Meine Kamera liefert die Rohstoffe, meine Fotografien werden meine Farben, und der Computer wird meine Leinwand.",
+              "caption": "Stephen Spartana"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7ai4v38616.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Verzauberter Wald, 2024. Aus der Serie Whisper in the Woods. Mehrlagig, 75 × 50 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7hkcnhhyxv.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Steigend (Treibende Strömungen), 2024. Aus der Serie Nature, Life in Layers. Mehrlagig, 75 × 50 cm."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds75znxh9p3x.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Connection, 2022. Aus der Serie Yin Yang. Mehrschichtig, 50 × 75 cm."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Im Jahr 2021 nahmen Sie an der Ausstellung “Time, Space” in Venedig teil, und im Jahr 2025 erhielten Sie den Lorenzo il Magnifico Award for Photography bei der Florence Biennale. Worum geht es in Italien, und vor allem in Venedig, das etwas in Ihnen anspricht? Was haben Sie in Venedig gezeigt, und was bedeutete es, in der Stadt der Medici einen Preis zu halten, der nach einem von ihnen benannt ist?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Bei der Time Space Ausstellung 2021 in Venedig präsentierte ich drei Werke: <i>Drifting Through Time</i>, <i>Enema</i> und <i>Imagine</i>. Es war eine besonders bedeutungsvolle Erfahrung für mich, nicht nur als Künstler, sondern auch auf einer sehr persönlichen Ebene."
+            },
+            {
+              "type": "text",
+              "content": "Ich habe immer eine tiefe Zuneigung zu Italien gehabt. Die Familie meines Vaters stammte aus Italien, daher gab es immer ein Gefühl der Verbindung zum Land und seiner Kultur. Meine Frau und ich verbrachten unsere Flitterwochen mit einem Besuch in Florenz und Venedig, und diese Erinnerungen sind mir mein ganzes Leben geblieben. Ich bin auch mehrfach zum Comer See zurückgekehrt, jeder Besuch hat meine Liebe zum Land weiter verstärkt."
+            },
+            {
+              "type": "text",
+              "content": "Es gibt etwas Außergewöhnliches an Italien, das schwer in Worte zu fassen ist. Überall, wohin man sich wendet, ist man umgeben von Kunst, Geschichte, Architektur und Schönheit. Es ist fast so, als wäre Kreativität in den Stoff des Alltags eingewoben. Venedig hat insbesondere eine magische Qualität. Die Spiegelungen in den Kanälen, das ständig wechselnde Licht, die Texturen jahrhundertealter Gebäude und das Gefühl, dass die Zeit in ihrem eigenen Tempo vergeht, machen es zu einem bemerkenswerten Ort für jemanden, der die Welt durch Bilder sieht."
+            },
+            {
+              "type": "text",
+              "content": "Als Künstler, dessen Arbeit oft Zeit, Raum und die Beziehung zwischen Realität und Fantasie erforscht, finde ich Italien unendlich inspirierend. Wenn ich durch seine Städte gehe, fühle ich mich umgeben von den Errungenschaften von Künstlern, die mir Jahrhunderte vorausgingen. Es gibt ein wunderbares Gefühl der Kontinuität, verbunden zu sein mit etwas viel Größerem als man selbst."
+            },
+            {
+              "type": "text",
+              "content": "Den Lorenzo il Magnifico Award für Fotografie bei der Florence Biennale 2025 zu erhalten, war besonders bedeutungsvoll. Für meine Kunst in Florenz anerkannt zu werden, einer Stadt, die so tief mit der Geschichte der Kunst und der Renaissance verbunden ist, war sowohl demütigend als auch befriedigend. Ich konnte nicht anders, als an meine eigene Reise zu denken, von einem jungen Mann, der nie im Traum daran dachte, Künstler zu werden, bis hin zu einem, der in einer Stadt steht, die Generationen großartiger Künstler inspiriert hat."
+            },
+            {
+              "type": "text",
+              "content": "Ich habe oft davon geträumt, ein Studio in Italien zu haben, vielleicht in der Nähe des Lago di Como, wo ich mich in diese Atmosphäre von Kreativität und Inspiration vertiefen könnte."
+            },
+            {
+              "type": "text",
+              "content": "Für mich ist Italien mehr als ein schöner Ort, um ihn zu besuchen. Es gibt etwas daran, das mich auf einer tieferen Ebene berührt. Vielleicht ist es mein Erbe, meine Liebe zur Kunst, oder einfach die Art und Weise, wie das Land die Schönheit in all ihren Formen zu feiern scheint. Was auch immer der Grund ist, wenn ich in Italien bin, fühle ich ein außergewöhnliches Gefühl der Zugehörigkeit. In vielerlei Hinsicht fühle ich mich vollständig."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds7bct8rd4x2.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Florence Biennale, 2025: Driften durch die Zeit, Üppige Träume und Streicheleinheiten der Ahornbäume."
+            },
+            {
+              "type": "header",
+              "content": "04 · Das Buch, und was Schönheit ist für",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<i>Wir enden mit dem Buch, das vierzig Jahre zusammenfasst, und mit einer Frage, die wir nicht vermeiden konnten zu stellen, von wo aus wir schreiben.</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>Vor Jahren nanntest du drei Träume: Vollzeit an deiner eigenen Kunst zu arbeiten, in Städten auf der ganzen Welt auszustellen und ein Buch deiner gesammelten Werke zu veröffentlichen. Was ist das Buch, und welche Geschichte erzählt es? Was hast du über deine eigene Arbeit entdeckt, als du sie Seite für Seite ordnen musstest?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Der Titel meines Buches ist <i>Visions of Earth: Fantasy and Reality</i>. Es stellt einen Höhepunkt meines Lebens und künstlerischen Weges dar, vereint Bilder aus neun meiner etablierten Serien sowie eine kleine Sammlung neuer Arbeiten. Aber ich wollte nie, dass es nur eine Sammlung von Fotografien ist. Ich wollte, dass es eine Geschichte erzählt, nicht nur über die Entwicklung meiner Kunst, sondern auch über die Erfahrungen und unerwarteten Wendungen im Leben, die mich dorthin brachten, wo ich heute bin."
+            },
+            {
+              "type": "text",
+              "content": "Ich stamme aus einer bürgerlichen Familie ohne wirklichen künstlerischen Hintergrund. Als Kind war mein Traum, Profisportler zu werden, insbesondere Baseballspieler. Rückblickend war das vielleicht nicht die realistischste Ambition, aber es gab mir etwas, worauf ich hinarbeiten konnte. Als sich die Umstände änderten und dieser Traum nicht mehr möglich war, musste ich eine andere Richtung für mein Leben finden. Durch eine Reihe von Erfahrungen, Einflüssen und Chancen fand ich schließlich den Weg zur Kunstschule, erwarb meinen BFA-Abschluss und genoss eine lange und erfolgreiche Karriere in der Werbefotografie."
+            },
+            {
+              "type": "text",
+              "content": "Während dieser Jahre entwickelte ich weiterhin meine eigene künstlerische Vision, oft basierend auf Erfahrungen, die damals völlig unrelated zur Kunst schienen. Schließlich erreichte ich einen Punkt, an dem ich mich ganz meiner persönlichen Arbeit widmen konnte, etwas, von dem ich seit Jahrzehnten träumte."
+            },
+            {
+              "type": "text",
+              "content": "Das Buch folgt dieser Reise durch die verschiedenen Serien, die ich erstellt habe. Jede repräsentiert eine bestimmte Periode in meinem Leben, eine andere Sichtweise oder eine Erforschung von Ideen, die sich weiterentwickelt haben. Während die Seiten voranschreiten, hoffe ich, dass der Leser beginnen wird, die Verbindungen zwischen der früheren Arbeit und dem, was ich heute schaffe, zu erkennen. Obwohl sich meine Techniken und meine visuelle Sprache verändert haben, ist meine Faszination für Natur, Zeit, Erinnerung und die menschliche Erfahrung bemerkenswert konstant geblieben."
+            },
+            {
+              "type": "text",
+              "content": "Interessanterweise hatte vielleicht der schwierigste Teil bei der Erstellung dieses Buches nichts mit der Auswahl oder Anordnung der Fotografien zu tun. Es war die Herausforderung, über mich selbst zu schreiben. Ich bin von Natur aus eine sehr private Person, und das Teilen meiner persönlichen Geschichte, meines Hintergrunds und der Erfahrungen, die mein Leben geprägt haben, war zunächst etwas, womit ich mich nicht ganz wohl fühlte. Seit so vielen Jahren habe ich meine Fotografien für mich sprechen lassen, daher war es für mich ungewohnt, mein eigenes Leben in Worte zu fassen."
+            },
+            {
+              "type": "text",
+              "content": "Aber als die Geschichte Form annahm und ich sah, wie diese Erfahrungen auf Papier in einer zusammenhängenden Weise zusammengebracht wurden, änderten sich meine Gefühle. Ich begann zu erkennen, wie wichtig diese persönlichen Details für das Verständnis des Kunstwerks selbst waren. Dinge, die damals unrelated schienen, offenbarten plötzlich Verbindungen, die ich nicht vollständig erkannt hatte. Wenn ich die fertige Erzählung betrachte, bin ich wirklich glücklich, dass wir diesen Ansatz gewählt haben. Was zunächst wie der schwierigste Teil des Projekts schien, ist zu einem der lohnendsten geworden."
+            },
+            {
+              "type": "text",
+              "content": "Das Zusammenfügen so vieler Jahre Arbeit hat mir auch ermöglicht, zurückzublicken und zu erkennen, wie eine Idee oft zur nächsten führte, manchmal getrennt durch Jahrzehnte. Ich habe gelernt, dass die Erfahrungen, die wir im Leben machen, selbst jene, die im Moment unbedeutend erscheinen, letztendlich ihren Weg in unseren kreativen Ausdruck finden können."
+            },
+            {
+              "type": "text",
+              "content": "Vielleicht am wichtigsten, ich hoffe, das Buch wird einigen Menschen Inspiration bieten, die noch nicht ihre eigene Richtung im Leben entdeckt haben. Ich habe sicherlich nicht mit einer klaren Vision begonnen, Künstler zu werden. Mein Weg war alles andere als geradlinig, und ich denke, es gibt etwas Ermutigendes daran zu wissen, dass ein Leben unerwartete Wendungen nehmen kann und trotzdem irgendwo bedeutungsvoll führt."
+            },
+            {
+              "type": "text",
+              "content": "Meine Arbeit international auszustellen und jetzt dieses Buch in die Welt zu bringen, sind Träume, die ich einst hoffte, dass sie wahr werden könnten. Aber ich sehe das Buch nicht als den Abschluss meiner Reise. Ich sehe es als ein weiteres Kapitel."
+            },
+            {
+              "type": "text",
+              "content": "Ich bin immer noch neugierig, experimentiere noch immer und lerne noch immer. Es gibt immer neue Orte zu erkunden, neue Bilder zu schaffen und neue Ideen zu entdecken. An diesem Punkt in meinem Leben fühle ich mich glücklich, das zu tun, was ich liebe, und ich habe nicht vor, aufzuhören. Ich möchte einfach weiter voranschreiten und sehen, wohin die Reise mich als Nächstes führt."
+            },
+            {
+              "type": "text",
+              "content": "<b>VM:</b> <i>EPRIS wird von Menschen gemacht, die einen Krieg durchleben, in der Ukraine. Was kann eine Fotografie von Blättern, Wasser oder Eis jemandem geben, dessen Himmel nicht sicher ist? Und wenn du heute Abend eines deiner Bilder an einen Leser in der Ukraine schicken könntest, welches wäre es, und was würdest du dir wünschen, dass ihnen passiert, während sie es ansehen?</i>"
+            },
+            {
+              "type": "text",
+              "content": "<b>SS:</b> Ich habe immer geglaubt, dass meine Kunstwerke eine positive Kraft im Leben der Menschen sein sollten. Ich war nie von Protestfotografie oder der Dokumentation der härteren Realitäten der Welt angezogen. Es gibt viele bemerkenswerte Fotografen, die diese Arbeit leisten, und ich habe großen Respekt vor ihnen. Aber meine eigene künstlerische Richtung war immer anders. Ich möchte, dass meine Fotografien ein Gefühl von Schönheit, Frieden und vielleicht ein wenig Flucht vor den Schwierigkeiten des Alltags bieten."
+            },
+            {
+              "type": "text",
+              "content": "Mein Herz geht an die Menschen in der Ukraine. Es war herzzerreißend, das Leiden, die Zerstörung und den enormen Verlust, den sie erlitten haben, zu beobachten. Ich finde es auch zutiefst beunruhigend, zuzusehen, was in meinem eigenen Land, den Vereinigten Staaten, passiert, und zu fühlen, dass wir in vielerlei Hinsicht unseren Orientierungssinn und einige der Werte verloren haben, die uns einst ausmachten."
+            },
+            {
+              "type": "text",
+              "content": "Ich verstehe, dass ein Foto von Blättern, fließendem Wasser oder gefrorenem Eis die Umstände von jemandem, der einen Krieg durchlebt, nicht verändern kann. Es kann ihre Himmel nicht sicher machen oder das wiederherstellen, was sie verloren haben. Ich würde niemals so tun, als könnte Kunst allein etwas so Tiefgreifendes bewirken. Aber ich glaube fest daran, dass Kunst die Fähigkeit hat, uns emotional zu berühren, einen Moment der Ruhe zu bieten oder unsere Gedanken an einen Ort jenseits unserer unmittelbaren Umgebung zu tragen."
+            },
+            {
+              "type": "text",
+              "content": "Das ist wirklich, was ich hoffe, dass meine Arbeit tun kann. Durch die Schönheit der Natur und die imaginären Welten, die ich erschaffe, möchte ich den Menschen die Möglichkeit geben, ihre Realität zu verlassen, auch wenn es nur für wenige Momente ist. Es gibt so viel Hässlichkeit, Wut und Leid auf der Welt, dass ich es für ebenso wichtig halte, die Menschen daran zu erinnern, dass Schönheit immer noch existiert."
+            },
+            {
+              "type": "text",
+              "content": "Ich würde es schwierig finden, nur ein Foto auszuwählen, um es an jemanden in der Ukraine zu schicken, weil dieses Gefühl von Hoffnung und Flucht etwas ist, das ich in all meine Arbeit einzubringen versuche. Ob es die zarte Struktur eines Blattes, die Bewegung des Wassers oder eine traumhafte Landschaft ist, die nur in meiner Vorstellung existiert, jedes Bild soll etwas Positives bieten."
+            },
+            {
+              "type": "text",
+              "content": "Wenn jemand, der solch außergewöhnliche Härte durchlebt, eines meiner Fotos ansehen würde, wäre mein größter Wunsch, dass sein Geist für nur einen Moment irgendwo in Frieden reisen könnte. Irgendwo, wo er ein Gefühl von Wunder, Schönheit oder einfach eine kleine Erleichterung von der Last um ihn herum erleben könnte."
+            },
+            {
+              "type": "text",
+              "content": "Ich erwarte nicht, dass meine Fotos die Welt verändern, aber wenn sie den Geisteszustand eines Menschen verändern können, sogar nur kurz, dann habe ich das Gefühl, dass sie etwas Bedeutungsvolles erreicht haben. Manchmal sind ein paar Momente des Friedens und die Erinnerung daran, dass Schönheit noch existiert, ein kleines, aber wertvolles Geschenk."
+            },
+            {
+              "type": "quote",
+              "content": "Manchmal sind ein paar Momente des Friedens und die Erinnerung daran, dass Schönheit noch existiert, ein kleines, aber wertvolles Geschenk.",
+              "caption": "Stephen Spartana"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvds79bhc91sb3.webp",
+              "align": "center",
+              "width": 62,
+              "caption": "Echoes of Flight, 2025. Aus der Serie Flights of Fancy. Mehrlagig, 90 × 60 cm."
+            },
+            {
+              "type": "text",
+              "content": "Die Arbeit von Stephen Spartana ist zu sehen unter <a href=\"https://stephenspartanaartist.com\">stephenspartanaartist.com</a> und auf Instagram unter <a href=\"https://www.instagram.com/spartanaphotography/\">@spartanaphotography</a>. Bilder © Stephen Spartana; veröffentlicht mit Erlaubnis des Künstlers."
+            },
+            {
+              "type": "note",
+              "content": "Interview von Viacheslav Munister. Antworten von Stephen Spartana, leicht bearbeitet für Klarheit und Interpunktion. Fragen wurden gekürzt. Alle Kunstwerke courtesy des Künstlers."
+            }
+          ],
+          "updatedAt": "2026-10-18T12:22:11.355Z"
         }
       ],
       "reviews": [
