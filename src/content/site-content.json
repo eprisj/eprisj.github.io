@@ -58770,17 +58770,17 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mvf49rr33soby4.webp",
           "title": "Kongo (Vili): Männliche Figur (Nkisi Nkondi)",
           "subtitle": "Skulptur",
-          "description": "Eine stehende Vili-Figur, starrend vor Eisennägeln und Klingen, jede eingeschlagen, um einen Eid zu besiegeln oder die Figur auf einen Übeltäter zu hetzen. Medizin steckt in der Kappe auf dem Kopf und in einem spiegelbedeckten Päckchen am Bauch. Ein Kraftobjekt, das mit jedem Gebrauch dichter wird.",
-          "homeLabel": "Kongo (Vili) · Männliche Figur (Nkisi Nkondi) · Holz, Eisen, Glas, Fasern, Kaurischnecken · 19. Jahrhundert",
+          "description": "Eine stehende Vili-Figur, die mit Eisennägeln und Klingen übersät ist, jede eingeschlagen, um einen Schwur zu besiegeln oder eine Person des Unrechts zu überführen. Medizin ist im Deckel auf ihrem Kopf versiegelt und in einem spiegelbedeckten Paket auf dem Bauch. Ein Machtobjekt, das mit jeder Verwendung intensiver wird.",
+          "homeLabel": "Kongo (Vili) · Male Figure (Nkisi Nkondi) · wood, iron, glass, fibre, cowrie shells · 19th century",
           "homeTitle": "Männliche Figur (Nkisi Nkondi)",
-          "homeSubtitle": "Kongo (Vili) · Holz, Eisen, Glas, Kauri · 19. Jahrhundert",
-          "homeDescription": "Ein Wächter aus Nägeln: Jede eingeschlagene Klinge ist ein Eid, eine Bitte oder eine Strafe, und die Figur lädt sich mit jeder weiter auf.",
+          "homeSubtitle": "Kongo (Vili) · Holz, Eisen, Glas, Cowrie · 19. Jahrhundert",
+          "homeDescription": "Ein Wächter aus Nägeln: jede Klinge, die ins Holz getrieben wird, ist ein Schwur, eine Bitte oder eine Strafe, und die Figur wird mit jedem stärker aufgeladen.",
           "homeCredit": "Kongo (Vili), Republik Kongo · Art Institute of Chicago · CC0 · artic.edu",
           "homeSourceUrl": "https://www.artic.edu/artworks/151358",
           "imageSeed": "epris-daily-pick-56",
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
-          "updatedAt": "2026-10-19T10:35:44.055Z"
+          "updatedAt": "2026-10-19T10:36:09.025Z"
         },
         {
           "id": 57,
@@ -77141,6 +77141,26 @@
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
           "updatedAt": "2026-10-19T07:37:10.090Z"
+        },
+        {
+          "id": 56,
+          "picsId": "PICS-2026-053",
+          "fig": "FIG. 16",
+          "homeCategory": "sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvf49rr33soby4.webp",
+          "title": "Kongo (Vili): Figura Masculina (Nkisi Nkondi)",
+          "subtitle": "Escultura",
+          "description": "Una figura Vili de pie llena de clavos y cuchillas de hierro, cada uno clavado para sellar un juramento o poner la figura sobre un malhechor. La medicina está sellada en la tapa en su cabeza y en un paquete cubierto de espejos en el vientre. Un objeto de poder que se vuelve más intenso con cada uso.",
+          "homeLabel": "Kongo (Vili) · Male Figure (Nkisi Nkondi) · wood, iron, glass, fibre, cowrie shells · 19th century",
+          "homeTitle": "Figura Masculina (Nkisi Nkondi)",
+          "homeSubtitle": "Kongo (Vili) · madera, hierro, vidrio, cowrie · siglo XIX",
+          "homeDescription": "Un guardián hecho de clavos: cada cuchilla clavada en la madera es un juramento, una petición o un castigo, y la figura se carga más con cada uno.",
+          "homeCredit": "Kongo (Vili), República del Congo · Art Institute of Chicago · CC0 · artic.edu",
+          "homeSourceUrl": "https://www.artic.edu/artworks/151358",
+          "imageSeed": "epris-daily-pick-56",
+          "picsOfWeek": true,
+          "picsReleaseId": "PICS-WEEK-2026-007",
+          "updatedAt": "2026-10-19T10:36:11.839Z"
         }
       ],
       "articles": [
@@ -103268,19 +103288,19 @@
           "fig": "FIG. 16",
           "homeCategory": "sculpture",
           "imageUrl": "https://api.eprisjournal.com/uploads/mvf49rr33soby4.webp",
-          "title": "Kongo (Vili): Figura maschile (Nkisi Nkondi)",
+          "title": "Kongo (Vili): Figura Maschile (Nkisi Nkondi)",
           "subtitle": "Scultura",
-          "description": "Una figura vili in piedi, irta di chiodi e lame di ferro, ciascuno piantato per suggellare un giuramento o aizzare la figura contro un malfattore. La medicina è sigillata nel berretto sulla testa e in un pacchetto coperto da uno specchio sul ventre. Un oggetto di potere che si carica a ogni uso.",
-          "homeLabel": "Kongo (Vili) · Figura maschile (Nkisi Nkondi) · legno, ferro, vetro, fibre, conchiglie cauri · XIX secolo",
-          "homeTitle": "Figura maschile (Nkisi Nkondi)",
-          "homeSubtitle": "Kongo (Vili) · legno, ferro, vetro, cauri · XIX secolo",
-          "homeDescription": "Un guardiano di chiodi: ogni lama piantata è un giuramento, una richiesta o una punizione, e la figura si carica a ogni colpo.",
+          "description": "Una figura Vili in piedi, ricolma di chiodi di ferro e lame, ognuna conficcata per sigillare un giuramento o mettere un colpevole in condizione di colpa. La medicina è sigillata nel cappuccio sulla sua testa e in un pacchetto coperto di specchi sulla pancia. Un oggetto di potere che diventa più intenso ad ogni uso.",
+          "homeLabel": "Kongo (Vili) · Male Figure (Nkisi Nkondi) · wood, iron, glass, fibre, cowrie shells · 19th century",
+          "homeTitle": "Figura Maschile (Nkisi Nkondi)",
+          "homeSubtitle": "Kongo (Vili) · legno, ferro, vetro, cowrie · XIX secolo",
+          "homeDescription": "Un guardiano fatto di chiodi: ogni lama conficcata nel legno è un giuramento, una petizione o una punizione, e la figura si carica di energia ad ogni inserimento.",
           "homeCredit": "Kongo (Vili), Repubblica del Congo · Art Institute of Chicago · CC0 · artic.edu",
           "homeSourceUrl": "https://www.artic.edu/artworks/151358",
           "imageSeed": "epris-daily-pick-56",
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
-          "updatedAt": "2026-10-19T10:35:50.378Z"
+          "updatedAt": "2026-10-19T10:36:15.304Z"
         },
         {
           "id": 57,
@@ -120922,6 +120942,26 @@
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
           "updatedAt": "2026-10-19T07:37:15.235Z"
+        },
+        {
+          "id": 56,
+          "picsId": "PICS-2026-053",
+          "fig": "FIG. 16",
+          "homeCategory": "sculpture",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvf49rr33soby4.webp",
+          "title": "Kongo (Vili) : Figure masculine (Nkisi Nkondi)",
+          "subtitle": "Sculpture",
+          "description": "Une figure Vili debout, hérissée de clous en fer et de lames, chacun enfoncé pour sceller un serment ou pour punir un malfaiteur. La médecine est scellée dans le chapeau sur sa tête et dans un paquet recouvert de miroirs sur le ventre. Un objet de pouvoir qui devient plus intense à chaque utilisation.",
+          "homeLabel": "Kongo (Vili) · Male Figure (Nkisi Nkondi) · wood, iron, glass, fibre, cowrie shells · 19th century",
+          "homeTitle": "Figure masculine (Nkisi Nkondi)",
+          "homeSubtitle": "Kongo (Vili) · bois, fer, verre, cowrie · XIXe siècle",
+          "homeDescription": "Un gardien fait de clous : chaque lame enfoncée dans le bois est un serment, une pétition ou une punition, et la figure devient plus chargée à chaque fois.",
+          "homeCredit": "Kongo (Vili), République du Congo · Art Institute of Chicago · CC0 · artic.edu",
+          "homeSourceUrl": "https://www.artic.edu/artworks/151358",
+          "imageSeed": "epris-daily-pick-56",
+          "picsOfWeek": true,
+          "picsReleaseId": "PICS-WEEK-2026-007",
+          "updatedAt": "2026-10-19T10:36:18.310Z"
         }
       ],
       "articles": [
