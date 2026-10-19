@@ -18684,11 +18684,11 @@
         },
         {
           "type": "text",
-          "content": "<b>SS:</b> <i>Heart of the Rose</i> is a good example of how I approach creating an image through layers. The process began with a black-and-white photograph of a nude, followed by a photograph of a rose with a beautiful, muted red color. I then painted acrylic brushstrokes onto glass and photographed those as well, creating another element that I could incorporate into the composition."
+          "content": "<b>SS:</b> <i>Night Hat</i> is a wonderful example of how I approach creating an image through layers. It was part of one of my first series devoted entirely to nature, without incorporating the human form. My intention was to explore the extraordinary beauty that nature offers."
         },
         {
           "type": "text",
-          "content": "The image came together in stages. I began with the nude, introduced the muted red rose, and finally added the photographed acrylic brushstrokes. Each layer brought something different to the composition, and the challenge was finding a balance where the individual elements became something greater than they were on their own."
+          "content": "I began with a tightly composed photograph of a rose. I was drawn to its rich color, subtle shading, and delicate contours. From there, I introduced a photograph of a tree, which brought an entirely new dimension to the composition. The contrast between the two elements created a wonderful sense of depth and beauty."
         },
         {
           "type": "image",
@@ -18698,6 +18698,14 @@
           "alt": "Night Hat, 2020",
           "align": "full",
           "stretched": true
+        },
+        {
+          "type": "text",
+          "content": "Still, I felt something was missing. I wanted to introduce another level of texture, so I turned to acrylic brushstrokes that I had painted on glass and photographed. I experimented with combining these strokes with the rose and realized they worked best as part of that initial image. I returned to the rose, integrated the acrylic textures, and then reintroduced the tree as the final layer."
+        },
+        {
+          "type": "text",
+          "content": "This process is very typical of how I work. An image evolves through experimentation, with each element suggesting another possibility. What begins as a simple photograph gradually becomes something entirely new, a composition that brings together different aspects of nature in a way that couldn’t exist in a single photograph."
         },
         {
           "type": "text",
@@ -18839,7 +18847,7 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mvds7829nnz95n.webp",
+          "content": "https://api.eprisjournal.com/uploads/mvew5pebh4bwu8.webp",
           "caption": "Cryo Scape, 2025. From the series World Below 0°. Multilayer, 90 × 60 cm.",
           "credit": "© Stephen Spartana",
           "alt": "Cryo Scape, 2025",
@@ -19127,7 +19135,7 @@
       ],
       "publishAt": "2026-10-18T12:55:41.000Z",
       "publishedAt": "2026-10-18T12:55:41.000Z",
-      "updatedAt": "2026-10-18T12:55:43.043Z"
+      "updatedAt": "2026-10-19T06:46:46.378Z"
     }
   ],
   "reviews": [
