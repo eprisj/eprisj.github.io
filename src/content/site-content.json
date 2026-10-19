@@ -3318,8 +3318,8 @@
         "UNESCO",
         "American architecture"
       ],
-      "imageSeed": "frank-lloyd-wright",
-      "imageUrl": "",
+      "imageSeed": "",
+      "imageUrl": "https://tile.loc.gov/storage-services/service/pnp/ppem/00600/00689v.jpg",
       "previewToken": "28489066796e024f78f5950a",
       "content": [
         {
@@ -3329,6 +3329,15 @@
         {
           "type": "text",
           "content": "This essay is about the second Wright. It treats a sequence of buildings—from the Oak Park years to the last museum opened after his death—as a single argument about space, and then asks what that argument cost. The claim is simple to state and awkward to defend: Wright was a greater choreographer than engineer, a greater engineer than he is usually accused of being, and a far more difficult moral subject than the legend allows. The buildings that matter most are those in which the spatial idea is so strong that it survives the failures of everything else—leaking roofs, sagging slabs, clients who could not afford the dream, and an architect who often could not afford to be honest about any of it."
+        },
+        {
+          "type": "image",
+          "content": "https://tile.loc.gov/storage-services/service/pnp/ppem/00600/00689v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Fallingwater, Mill Run, Pennsylvania (1935–37). The house is built over the stream rather than facing it: the cantilevered terraces hover above the rocks of Bear Run. Photograph by Balthazar Korab, Library of Congress, Prints & Photographs Division (no known restrictions on publication).",
+          "alt": "Black-and-white view of Fallingwater’s cantilevered terraces above the boulders and cascade of Bear Run.",
+          "sourceUrl": "https://www.loc.gov/pictures/item/2020714524/"
         },
         {
           "type": "header",
@@ -3348,6 +3357,15 @@
           "content": "What is easy to miss is the role of the fireplace. In a Wright plan the hearth is not a decorative feature but the anchor of a spatial system. Everything else—the low ceilings, the broad eaves, the long horizontal bands of windows—exists in tension with it. The fire is the one point in the house where the occupant is protected on three sides; the rest of the plan is an exercise in how far one can be drawn from that point without feeling exposed. The Prairie house is a theory of shelter, expressed as a theory of horizon."
         },
         {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Frank_Lloyd_Wright_-_Highland_Park%2C_IL_-_Ward_W._Willits_House_%288%29.jpg/1280px-Frank_Lloyd_Wright_-_Highland_Park%2C_IL_-_Ward_W._Willits_House_%288%29.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Ward W. Willits House, Highland Park, Illinois (1901): a cruciform plan, low hipped roofs and a banded façade, an early statement of the Prairie house. Photograph: Bmzuckerman, CC BY 4.0, via Wikimedia Commons.",
+          "alt": "Low, horizontal Prairie-style house with hipped roofs and banded stucco walls among leafless trees.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_-_Highland_Park,_IL_-_Ward_W._Willits_House_(8).jpg"
+        },
+        {
           "type": "quote",
           "content": "Wright did not abolish the room. He abolished its walls as the thing that told you where you were—and replaced them with a sequence."
         },
@@ -3365,8 +3383,44 @@
           "content": "The Frederick C. Robie House, completed in Chicago’s Hyde Park in 1910, is the pure case. The street front gives almost nothing away. One approaches by walking past the building, around the end of the garden wall, under the shelter of a low porch roof, and the entrance itself is tucked back at the side. The composition makes the visitor move away from the point of arrival before being allowed to turn into the house. Inside, the sequence continues: a low, compressed stair hall, then the single long living-and-dining room, with a fireplace set not against a wall but as a screen between the two zones, and glass doors opening onto balconies that seem to hover above the street."
         },
         {
+          "type": "image",
+          "content": "https://tile.loc.gov/storage-services/service/pnp/habshaer/il/il0000/il0039/sheet/00003v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Second (main) floor plan of the Robie House, measured drawing by Jānis J. Eriņš for the Historic American Buildings Survey, 1963 (HABS ILL-1005, sheet 3 of 14). The long living–dining room is divided only by the chimney-and-stair core at its centre; the service wing, terraces and porches are pushed outward in bands. Library of Congress (public domain).",
+          "alt": "Measured drawing of the Robie House main floor showing a single elongated living and dining room around a central fireplace and stair core.",
+          "sourceUrl": "https://www.loc.gov/pictures/item/il0039.sheet.00003a/"
+        },
+        {
           "type": "text",
           "content": "The structural bravado of the Robie House serves this spatial argument. The roof projects some twenty feet at its ends, a cantilever made possible by steel beams concealed inside the horizontal bands of the eaves—an early, discreet use of a technology the Prairie ideology was reluctant to admit. The surface treatment is no less deliberate: long, thin Roman bricks are laid with horizontal mortar joints raked deeply and vertical joints filled flush with mortar tinted to match the brick, so that the walls read as stacked planes rather than a pattern of individual units. Every element has been tuned to exaggerate the line of the horizon, because the horizon is where the compression releases."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Robie_House_Exterior_19.jpg/1280px-Robie_House_Exterior_19.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Robie House (1910), Chicago: the cantilevered roofs, Roman brick and long garden walls exaggerate the horizon line. Photograph: Stilfehler, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "Corner of the Robie House with its long cantilevered roofs, brick walls and planters.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robie_House_Exterior_19.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Robie_House_Exterior_17.jpg/1280px-Robie_House_Exterior_17.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Roman brick at the Robie House: horizontal joints are deeply raked while vertical joints are filled flush with mortar tinted to match the brick, so the wall reads as stacked planes. Photograph: Stilfehler, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "Close-up of long thin Roman bricks with recessed horizontal joints and flush vertical joints.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robie_House_Exterior_17.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/89900/89976v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The living room of the Robie House, looking along its length toward the central fireplace. Ceiling bands, art-glass doors and the continuous window wall carry the eye outward to the terrace. Photograph by Balthazar Korab, Library of Congress (no known restrictions on publication).",
+          "alt": "Long living room of the Robie House with banded ceiling, a window wall of glass doors and low upholstered furniture.",
+          "sourceUrl": "https://www.loc.gov/pictures/item/2024633143/"
         },
         {
           "type": "header",
@@ -3386,6 +3440,24 @@
           "content": "This is the point at which Wright’s statements about space become architecture rather than rhetoric. He liked to say that the reality of a building was not its walls and roof but the space within, a paraphrase of Lao Tzu that he adopted as a personal axiom. Unity Temple tests it to destruction. The exterior is a blunt, windowless stack of concrete slabs, deliberately severe, so that the interior—arrived at by a low, dark passage—feels like a revelation. The cost overrun, over fifty percent according to local accounts, and the notorious leaks in the flat concrete roof suggest what the revelation cost the client. But the room is the argument, and the argument held."
         },
         {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Unity_Temple%2C_Lake_Street_and_Kenilworth_Avenue%2C_Oak_Park%2C_IL.jpg/1280px-Unity_Temple%2C_Lake_Street_and_Kenilworth_Avenue%2C_Oak_Park%2C_IL.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Unity Temple (1908), Oak Park: a blunt, nearly windowless stack of poured concrete, with light admitted high on the walls through clerestory openings. Photograph: w_lemay, CC BY-SA 2.0, via Wikimedia Commons.",
+          "alt": "Night view of the symmetrical concrete façade of Unity Temple lit from below.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Unity_Temple,_Lake_Street_and_Kenilworth_Avenue,_Oak_Park,_IL.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Lloyd_Wright_Unity_Temple_sanctuary_2.jpg/1280px-Lloyd_Wright_Unity_Temple_sanctuary_2.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The sanctuary of Unity Temple seen from a balcony: three levels of seating wrap the pulpit beneath a coffered ceiling of skylights. Photograph: QuartierLatin1968, CC BY-SA 3.0, via Wikimedia Commons.",
+          "alt": "Interior of Unity Temple showing balconies, wooden pews and clerestory windows around the pulpit.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lloyd_Wright_Unity_Temple_sanctuary_2.jpg"
+        },
+        {
           "type": "header",
           "content": "IV · Fallingwater and the problem of the view",
           "level": 2
@@ -3399,12 +3471,48 @@
           "content": "The commission contained a quiet test. Kaufmann expected to look at the waterfall; Wright put the house on top of it. The living room hovers above the stream, so that the sound of the water is constant but the falls themselves are largely invisible from inside. This is a deliberate inversion of the picturesque. The ordinary country house treats nature as a view, a thing seen through glass from a safe distance; Fallingwater treats it as a condition, something you hear, feel and are embedded in. The rock on which the family used to sunbathe was left to rise through the floor and form the base of the hearth. A hatch in the living-room floor lets a stair descend directly to the stream. The house is not a building that happens to be near water but a building that is, in effect, a section through the ground."
         },
         {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Frank_Lloyd_Wright_-_Mill_Run%2C_PA_-_Fallingwater_%28K%29.jpg/1280px-Frank_Lloyd_Wright_-_Mill_Run%2C_PA_-_Fallingwater_%28K%29.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The living-room terrace projects over the falls on Bear Run. Photograph: Bmzuckerman, CC BY 4.0, via Wikimedia Commons.",
+          "alt": "The cantilevered living-room terrace of Fallingwater above a waterfall.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_-_Mill_Run,_PA_-_Fallingwater_(K).jpg"
+        },
+        {
           "type": "text",
           "content": "The device that carries all this is the cantilever—three stacked concrete trays that project over the stream, balanced against a core of local sandstone. In the photograph the trays look like horizontal planes drawn with a ruler. In reality they were the most contested element of the project. Kaufmann became alarmed enough about the reinforcement to commission an independent engineering review; additional steel was added over Wright’s objections. Wright later blamed the outside engineers’ interference for the troubles that followed. A computer model produced decades later suggested that the original reinforcement had in fact been inadequate for the main cantilever. Whatever the cause, the result was the same: the long living-room cantilever began to sag almost immediately, and it never stopped. By the end of the century the deflection at the tip had reached roughly seven inches, and the house had acquired from its owner the nickname Rising Mildew for the dampness that was as much part of life at Bear Run as the sound of the stream."
         },
         {
           "type": "text",
           "content": "The repair, carried out in 2001–2002 by Robert Silman Associates, used post-tensioning cables threaded through the cantilevered beams and terrace joists. It halted the creep but could not reverse the sag. There is a lesson here that goes beyond Fallingwater: a great building can be structurally flawed and architecturally correct at the same time. The tension between the rhetoric of the cantilever and the physics of it is not a footnote to the house’s meaning. It is the meaning. Fallingwater shows a gesture so ambitious that the materials could only just keep up with it, and the viewer’s thrill is partly a thrill of risk."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Frank_Lloyd_Wright_-_Mill_Run%2C_PA_-_Fallingwater_%28G%29.jpg/1280px-Frank_Lloyd_Wright_-_Mill_Run%2C_PA_-_Fallingwater_%28G%29.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Stacked concrete trays against a core of local sandstone: the cantilevers that began to sag almost immediately and were stabilised by post-tensioning in 2001–02. Photograph: Bmzuckerman, CC BY 4.0, via Wikimedia Commons.",
+          "alt": "Close view of Fallingwater’s stacked concrete terraces and stone chimney in a winter wood.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_-_Mill_Run,_PA_-_Fallingwater_(G).jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Fallingwater_-_Living_Room_from_Kitchen_-_HABS_PA%2C26-OHPY.V%2C1-48.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Fallingwater’s living room seen from the kitchen. The flagstone floor runs through the glazing to the terrace, and the boulder on which the family once sunbathed rises through the floor as the base of the hearth. Photograph by Jack E. Boucher for the Historic American Buildings Survey (public domain).",
+          "alt": "Black-and-white interior of Fallingwater’s living room with flagstone floor, stone piers and a coffered, backlit ceiling.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fallingwater_-_Living_Room_from_Kitchen_-_HABS_PA,26-OHPY.V,1-48.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/2/27/Fallingwater_-_Gallery_at_stair_to_below_-_HABS_PA%2C26-OHPY.V%2C1-80.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The gallery at the head of the stair that descends toward the stream at Fallingwater: a low, compressed passage of stone, books and sidelong light. Photograph by Jack E. Boucher for the Historic American Buildings Survey (public domain).",
+          "alt": "Narrow gallery inside Fallingwater with a stone chimney mass, bookshelves and a ribbon window.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fallingwater_-_Gallery_at_stair_to_below_-_HABS_PA,26-OHPY.V,1-80.jpg"
         },
         {
           "type": "quote",
@@ -3428,6 +3536,24 @@
           "content": "The Great Workroom is also a revealing record of Wright’s limitations. The Pyrex tubes leaked in heavy rain, a defect that generated a famous exchange between architect and client. The story is told in several versions, and in most Wright responds with a shrug. The original three-legged chairs, which Wright designed as part of the interior, were prone to tipping and had to be replaced. The deeper limitation is ethical rather than technical. A hall of such sublime beauty, designed for typists and clerks at identical desks, is also an apparatus of control. The light is gentle, the columns are lovely, and no one can see out in any ordinary sense. The building is an environment complete in itself, a cathedral of work—a form of corporate paternalism so well designed that it is hard to object to it."
         },
         {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Work_area_at_the_Johnson_Wax_Building%2C_headquarters_of_the_S.C._Johnson_and_Son_Co.%2C_Racine%2C_Wisconsin_LCCN2011633764.jpg/1280px-Work_area_at_the_Johnson_Wax_Building%2C_headquarters_of_the_S.C._Johnson_and_Son_Co.%2C_Racine%2C_Wisconsin_LCCN2011633764.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Great Workroom of the S. C. Johnson Administration Building, Racine (1936–39): slender dendriform columns expand into lily-pad discs, with light filtering through Pyrex glass tubing between them. Photograph: Carol M. Highsmith, Public domain, via Wikimedia Commons.",
+          "alt": "Large office hall with white lily-pad columns and desks arranged below a glowing ceiling.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Work_area_at_the_Johnson_Wax_Building,_headquarters_of_the_S.C._Johnson_and_Son_Co.,_Racine,_Wisconsin_LCCN2011633764.jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/FLW_SC_Johnson_Admin_Bldg_5598.jpg/1280px-FLW_SC_Johnson_Admin_Bldg_5598.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Dendriform columns of the covered parking area at Johnson Wax, where the same dendriform logic that had to be proven in a load test carries a plain car park. Photograph: gillfoto, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "White tapering columns with disc capitals rising from a shallow pool at the Johnson Wax headquarters.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:FLW_SC_Johnson_Admin_Bldg_5598.jpg"
+        },
+        {
           "type": "header",
           "content": "VI · Usonia: the democratic house and its price",
           "level": 2
@@ -3443,6 +3569,15 @@
         {
           "type": "text",
           "content": "These houses are among the most influential ever designed. The open plan, the radiant floor and the carport became the vocabulary of the postwar American suburb. But the Usonian dream had its own contradictions. Wright’s houses almost always cost more than he promised and took longer to build than the owners expected. The interiors were so thoroughly designed—built-in furniture, specified lighting, an inflexible geometry—that the owners often felt they were guests in their own homes. And the same logic that made the house efficient made it a stage set for an ideal family. Wright’s democratic housing was, in the end, a system for converting every family into the family that Wright had in mind."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Rear%2C_Herbert_A_Jacobs_House%2C_Madison_WI%2C_USA_%281_of_1%29.jpg/1280px-Rear%2C_Herbert_A_Jacobs_House%2C_Madison_WI%2C_USA_%281_of_1%29.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The first Herbert and Katherine Jacobs House, Madison, Wisconsin (1936–37): a board-and-batten L-plan around a garden under a low flat roof, the prototype of the Usonian house. Photograph: James Thornbery, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "Low timber house with a wall of glazed doors opening to a paved terrace and garden.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rear,_Herbert_A_Jacobs_House,_Madison_WI,_USA_(1_of_1).jpg"
         },
         {
           "type": "header",
@@ -3462,6 +3597,33 @@
           "content": "The criticism of the building has been constant since before it opened, and some of it is fair. Twenty-one artists signed a letter in 1956 protesting that their work would be hung in a space that seemed designed to compete with it. The sloping floor and the curved, slightly tilted walls make it hard to hang and view a picture in the conventional way. The niches off the ramp are shallow. The building does not defer to the art; it asks the art to be part of a larger spectacle. But the museum’s popularity, and the way it has shaped an entire generation of ‘destination’ museums, suggests that Wright understood something that his critics did not. The act of moving through space can itself be the main event."
         },
         {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Frank_Lloyd_Wright_-_New_York%2C_NY_-_Solomon_R._Guggenheim_Museum_%28A%29.jpg/1280px-Frank_Lloyd_Wright_-_New_York%2C_NY_-_Solomon_R._Guggenheim_Museum_%28A%29.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Solomon R. Guggenheim Museum, Fifth Avenue, New York (1943–59): a Prairie house wound upward into a single ascending spiral. Photograph: Bmzuckerman, CC BY 4.0, via Wikimedia Commons.",
+          "alt": "The white spiral drum of the Guggenheim Museum on Fifth Avenue seen from the street.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_-_New_York,_NY_-_Solomon_R._Guggenheim_Museum_(A).jpg"
+        },
+        {
+          "type": "image",
+          "content": "https://tile.loc.gov/storage-services/service/pnp/ppem/00600/00691v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Looking up through the rotunda of the Guggenheim Museum to its glass dome. The Prairie principle—a gradient rather than a boundary—turned upward into a single spiralling void. Photograph by Balthazar Korab, Library of Congress (no known restrictions on publication).",
+          "alt": "Looking up the spiralling ramps of the Guggenheim rotunda toward the ribbed glass dome.",
+          "sourceUrl": "https://www.loc.gov/pictures/item/2020714526/"
+        },
+        {
+          "type": "image",
+          "content": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/89900/89970v.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "From an upper ramp toward the ornamental pool at the base of the rotunda. Photograph by Balthazar Korab, Library of Congress (no known restrictions on publication). The museum opened in October 1959, six months after Wright’s death.",
+          "alt": "View down from an upper ramp of the Guggenheim Museum to visitors gathered around the pool in the rotunda.",
+          "sourceUrl": "https://www.loc.gov/pictures/item/2024632899/"
+        },
+        {
           "type": "header",
           "content": "VIII · What was lost, and what almost was",
           "level": 2
@@ -3473,6 +3635,15 @@
         {
           "type": "text",
           "content": "The Robie House itself narrowly escaped. In 1957, when the Chicago Theological Seminary, then its owner, planned to replace it with a dormitory, the eighty-nine-year-old Wright appeared at the site to defend it in person. It was a tiny reversal in the long story of American indifference to its own twentieth century, and it points to the larger fact that Wright’s architecture is at once the most protected and the most vulnerable of modern masters. In July 2019 UNESCO inscribed eight of his buildings on the World Heritage List under the title The 20th-Century Architecture of Frank Lloyd Wright: Fallingwater, Unity Temple, the Robie House, the Jacobs House, Taliesin, Taliesin West, Hollyhock House and the Guggenheim. It was the first modern architecture in the United States to receive the distinction."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Taliesin_West%2C_view_of_the_southside.jpg/1280px-Taliesin_West%2C_view_of_the_southside.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Taliesin West, Scottsdale, Arizona: Wright’s winter camp, built from desert rubble masonry and redwood timber beneath canvas and, later, glazed roofs. Photograph: Bigmacthealmanac, CC0, via Wikimedia Commons.",
+          "alt": "Low desert-stone complex with red timber roofs under a blue sky and desert landscaping.",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taliesin_West,_view_of_the_southside.jpg"
         },
         {
           "type": "header",
