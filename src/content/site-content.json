@@ -3293,6 +3293,26 @@
       "picsOfWeek": true,
       "picsReleaseId": "PICS-WEEK-2026-007",
       "updatedAt": "2026-10-18T11:38:56.472Z"
+    },
+    {
+      "id": 55,
+      "picsId": "PICS-2026-052",
+      "fig": "FIG. 17",
+      "homeCategory": "architecture",
+      "title": "Frank Lloyd Wright: Fallingwater",
+      "subtitle": "Architecture",
+      "description": "Concrete trays reach out over Bear Run through a green wall of leaves, with the falls running beneath them. Wright did not set the Kaufmanns' house in front of the waterfall: he put it above the water and made the stream part of the plan.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mvexrrnls30kdy.webp",
+      "homeLabel": "Frank Lloyd Wright · Fallingwater · 1935–37",
+      "homeTitle": "Fallingwater",
+      "homeSubtitle": "Frank Lloyd Wright · Mill Run, Pennsylvania · 1935–37",
+      "homeDescription": "A house built over a waterfall: cantilevered concrete trays, a tower of local sandstone and the stream running under the living room. Wright's clearest case of a building as a section of the ground.",
+      "homeCredit": "Frank Lloyd Wright · photograph by Daderot · CC0 · Wikimedia Commons",
+      "homeSourceUrl": "https://commons.wikimedia.org/wiki/File:Fallingwater_-_DSC05643.JPG",
+      "imageSeed": "epris-daily-pick-55",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-10-19T07:32:22.504Z"
     }
   ],
   "articles": [
