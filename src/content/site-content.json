@@ -3298,7 +3298,7 @@
   "articles": [
     {
       "id": 71,
-      "draft": true,
+      "draft": false,
       "title": "The House Is a Section of the Ground: Reading Frank Lloyd Wright Against His Own Legend",
       "author": "EPRIS Editorial Team",
       "role": "Author",
@@ -3717,7 +3717,10 @@
           "content": "Frank Lloyd Wright Foundation",
           "url": "https://franklloydwright.org/"
         }
-      ]
+      ],
+      "publishAt": "2026-10-19T07:02:58.000Z",
+      "publishedAt": "2026-10-19T07:02:58.000Z",
+      "updatedAt": "2026-10-19T07:02:58.000Z"
     },
     {
       "id": 64,
