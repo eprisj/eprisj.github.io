@@ -17915,7 +17915,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/nicolas-delarre-aspersion.webp",
       "previewToken": "6e05814734bff30fd5ce21a84c939bd8",
-      "updatedAt": "2026-10-19T07:16:18.859Z",
+      "updatedAt": "2026-10-19T07:20:12.963Z",
       "content": [
         {
           "type": "text",
@@ -37431,6 +37431,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:59:07.291Z"
+        },
+        {
+          "id": 71,
+          "title": "Дом — это часть земли: чтение Фрэнка Ллойда Райта в контексте его собственной легенды",
+          "excerpt": "За пределами открытки Fallingwater: подробное чтение планов, конструкций и компромиссов Фрэнка Ллойда Райта — от Robie House и Unity Temple до Johnson Wax и Guggenheim — и того, сколько стоила его архитектура сжатия и расслабления окружающим её людям.",
+          "category": "Архитектура"
         }
       ],
       "reviews": [
@@ -55280,6 +55286,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:57:49.552Z"
+        },
+        {
+          "id": 71,
+          "title": "Будинок — це частина ґрунту: читання Frank Lloyd Wright проти його власної легенди",
+          "excerpt": "Поза поштовою карткою Fallingwater: детальне читання планів, структур і компромісів Frank Lloyd Wright — від Robie House і Unity Temple до Johnson Wax і Guggenheim — і того, скільки коштувала його архітектура стискання та розслаблення навколо неї.",
+          "category": "Архітектура"
         }
       ],
       "reviews": [
@@ -73135,6 +73147,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:52:22.605Z"
+        },
+        {
+          "id": 71,
+          "title": "Das Haus ist ein Abschnitt des Bodens: Frank Lloyd Wright gegen seine eigene Legende lesen",
+          "excerpt": "Jenseits der Postkarte von Fallingwater: eine genaue Lektüre von Frank Lloyd Wrights Plänen, Strukturen und Kompromissen – vom Robie House und Unity Temple bis Johnson Wax und dem Guggenheim – und davon, was seine Architektur von Kompression und Entspannung die Menschen um ihn herum gekostet hat.",
+          "category": "Architektur"
         }
       ],
       "reviews": [
@@ -90984,6 +91002,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:53:43.176Z"
+        },
+        {
+          "id": 71,
+          "title": "La Casa Es una Sección del Suelo: Leer a Frank Lloyd Wright Contra Su Propia Leyenda",
+          "excerpt": "Más allá de la postal de Fallingwater: una lectura detallada de los planos, estructuras y compromisos de Frank Lloyd Wright—desde la Robie House y Unity Temple hasta Johnson Wax y el Guggenheim—y de lo que su arquitectura de compresión y liberación costó a las personas a su alrededor.",
+          "category": "Arquitectura"
         }
       ],
       "reviews": [
@@ -116442,6 +116466,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:55:03.704Z"
+        },
+        {
+          "id": 71,
+          "title": "La Casa È una Sezione del Terreno: Lettura di Frank Lloyd Wright Contro la Sua Propria Leggenda",
+          "excerpt": "Oltre la cartolina di Fallingwater: una lettura approfondita dei piani, delle strutture e dei compromessi di Frank Lloyd Wright—dal Robie House e Unity Temple a Johnson Wax e Guggenheim—e di ciò che la sua architettura di compressione e rilascio è costata alle persone intorno a essa.",
+          "category": "Architettura"
         }
       ],
       "reviews": [
@@ -132798,6 +132828,12 @@
           "publishAt": "2026-10-18T12:55:41.000Z",
           "publishedAt": "2026-10-18T12:55:41.000Z",
           "updatedAt": "2026-10-19T06:56:17.726Z"
+        },
+        {
+          "id": 71,
+          "title": "La Maison est une section du sol : Lecture de Frank Lloyd Wright contre sa propre légende",
+          "excerpt": "Au-delà de la carte postale de Fallingwater : une lecture attentive des plans, structures et compromis de Frank Lloyd Wright — de la Robie House et Unity Temple à Johnson Wax et Guggenheim — et de ce que son architecture de compression et de relâchement a coûté aux personnes qui l'entourent.",
+          "category": "Architecture"
         }
       ],
       "reviews": [
