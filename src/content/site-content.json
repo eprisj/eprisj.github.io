@@ -19667,8 +19667,9 @@
       "id": 72,
       "draft": true,
       "title": "A Cathedral Cut from Grain: How Cape Town’s Silo Became Zeitz MOCAA",
-      "author": "EPRIS Editorial Team",
+      "author": "Viacheslav Munister",
       "role": "Author",
+      "authorId": "author-1784732936927-kw554",
       "date": "Oct 21, 2026",
       "excerpt": "Cape Town’s grain elevator – 42 concrete silos and a grading tower – was carved into a contemporary art museum in 2017. How Heatherwick Studio cut a cathedral-scale atrium out of cellular concrete, what now hangs inside it, and why the subtraction is the point.",
       "category": "Architecture",
@@ -19684,7 +19685,7 @@
         "V&A Waterfront"
       ],
       "imageSeed": "",
-      "imageUrl": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7648.jpg",
+      "imageUrl": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3978.jpg",
       "previewToken": "7516196b7594ffcd4b5f3793",
       "content": [
         {
@@ -19792,6 +19793,22 @@
         },
         {
           "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7587.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Studies of how a single tube is cut back: eight stages of carving, from the closed cylinder to the opened, curved form. Image: Heatherwick Studio.",
+          "alt": "Eight small 3D diagrams of a concrete cylinder cut away in different ways."
+        },
+        {
+          "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7593.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Diagrams of the silo tubes as a continuous run, cut back to form a curved gallery edge. Image: Heatherwick Studio.",
+          "alt": "Three diagrams of vertical concrete tubes progressively cut to form a curving shape."
+        },
+        {
+          "type": "image",
           "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7570.jpg",
           "align": "center",
           "width": 100,
@@ -19813,6 +19830,22 @@
           "width": 100,
           "caption": "Inside one of the silo tubes during construction. Image: Heatherwick Studio.",
           "alt": "Workers on a scaffold platform inside a concrete silo tube, seen from above."
+        },
+        {
+          "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7583.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A cut surface inside a tube: the edge of the new opening, with a worker for scale at the top. Image: Heatherwick Studio.",
+          "alt": "Large curved cut in a concrete surface with a person in a hard hat at the top of the frame."
+        },
+        {
+          "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7589.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A curved timber template, set under a cut to guide the new edge. Image: Heatherwick Studio.",
+          "alt": "A curved row of timber slats fixed under a concrete opening on scaffolding."
         },
         {
           "type": "image",
@@ -19841,11 +19874,11 @@
         },
         {
           "type": "image",
-          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3978.jpg",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3981.jpg",
           "align": "center",
           "width": 100,
-          "caption": "The atrium from the lowest level: the cut tubes read as a cluster of ovals, lit from above. Image: Heatherwick Studio.",
-          "alt": "Tall atrium with oval openings in raw concrete walls and visitors standing at the bottom."
+          "caption": "Looking from one level into another through a cut opening. Image: Heatherwick Studio.",
+          "alt": "A large rounded opening in a concrete wall leading to a lower gallery space with curved supports."
         },
         {
           "type": "image",
@@ -19874,6 +19907,22 @@
           "width": 100,
           "caption": "Looking straight up the atrium to the glazed roof. Image: Heatherwick Studio.",
           "alt": "View looking up through a concrete atrium of cut tubes towards a glazed roof."
+        },
+        {
+          "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7569.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The material itself: the surface of the original concrete, left as found. Image: Heatherwick Studio.",
+          "alt": "A hand resting on a rough concrete surface with exposed aggregate."
+        },
+        {
+          "type": "image",
+          "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7582.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The edge of a cut, where the new surface meets the old. Image: Heatherwick Studio.",
+          "alt": "Close-up of a cut concrete edge with rough exposed aggregate."
         },
         {
           "type": "image",
@@ -20037,7 +20086,7 @@
           "url": "https://zeitzmocaa.museum/plan-your-visit/"
         }
       ],
-      "updatedAt": "2026-10-21T12:42:50.593Z"
+      "updatedAt": "2026-10-21T12:44:41.927Z"
     }
   ],
   "reviews": [
