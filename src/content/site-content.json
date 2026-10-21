@@ -20092,7 +20092,7 @@
     },
     {
       "id": 73,
-      "draft": true,
+      "draft": false,
       "title": "The Body as a Place: Antony Gormley and the Sculpture of Standing Still",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -20517,7 +20517,9 @@
           "url": "https://www.antonygormley.com/works/exhibitions/antony-gormley-critical-mass"
         }
       ],
-      "updatedAt": "2026-10-21T12:58:45.274Z"
+      "updatedAt": "2026-10-21T15:20:08.248Z",
+      "publishAt": "2026-10-21T15:20:07.000Z",
+      "publishedAt": "2026-10-21T15:20:07.000Z"
     }
   ],
   "reviews": [
