@@ -137842,6 +137842,433 @@
           "publishAt": "2026-10-19T07:02:58.000Z",
           "publishedAt": "2026-10-19T07:02:58.000Z",
           "updatedAt": "2026-10-19T17:22:07.200Z"
+        },
+        {
+          "id": 72,
+          "draft": false,
+          "title": "Une cathédrale taillée dans le grain : comment le silo de Cape Town est devenu Zeitz MOCAA",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "21 oct. 2026",
+          "excerpt": "L'ascenseur à grains de Cape Town – 42 silos en béton et une tour de tri – a été sculpté en un musée d'art contemporain en 2017. Comment Heatherwick Studio a taillé un atrium de la taille d'une cathédrale dans du béton cellulaire, ce qui y pend maintenant, et pourquoi la soustraction est le point.",
+          "category": "Architecture",
+          "subcategory": "Article",
+          "tags": [
+            "Zeitz MOCAA",
+            "Heatherwick Studio",
+            "Cape Town",
+            "réutilisation adaptative",
+            "art africain contemporain",
+            "silo à grains",
+            "architecture muséale",
+            "V&A Waterfront"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3978.jpg",
+          "previewToken": "7516196b7594ffcd4b5f3793",
+          "content": [
+            {
+              "type": "text",
+              "content": "Pendant la majeure partie du vingtième siècle, la chose la plus haute sur le port de travail de Cape Town n'était pas un hôtel ou un immeuble de bureaux mais un élévateur à grains. Il se tenait au bord de ce qui est maintenant le Victoria & Alfred Waterfront, une dalle de béton gris avec une tour d'un côté, et son seul travail était de recevoir le maïs de toute l'Afrique du Sud, de le stocker et de le classer avant qu'il ne soit expédié par bateau. Personne n'était censé y entrer. Personne n'était censé le regarder."
+            },
+            {
+              "type": "text",
+              "content": "En 2017, ce même bâtiment a été ouvert en tant que Zeitz MOCAA, le Musée d'Art Contemporain Afrique – selon les mots des architectes qui l'ont reconstruit, le premier musée international dédié à l'art contemporain africain. Aujourd'hui, c'est l'un des intérieurs de musée les plus inhabituels au monde : un atrium de la taille d'une cathédrale découpé dans un faisceau de tubes en béton, éclairé par le dessus à travers du verre, avec cinq étages de galeries qui l'entourent. C'est une histoire sur une méthode – sculpter plutôt que construire – et sur ce qui se passe lorsqu'un musée est contraint de répondre à sa propre architecture."
+            },
+            {
+              "type": "header",
+              "content": "I · Une machine pour le grain",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Un silo à grains est l'opposé d'un musée. Un musée est une séquence de pièces conçues pour les personnes ; un silo est une machine conçue pour une marchandise. Heatherwick Studio, le cabinet londonien qui a été approché par le V&A Waterfront pour développer et adapter le site, décrit la structure originale comme deux éléments : une tour de tri, et un bloc de 42 silos en béton étroitement empilés – de hauts cylindres se tenant côte à côte dans une grille, chacun étant un tube fermé sans fenêtres ni étages. Le site web de Zeitz MOCAA date le bâtiment dans les années 1920."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7575.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le port de Cape Town avec le silo à grains et la montagne de la Table derrière, avant la conversion. Image : Heatherwick Studio.",
+              "alt": "Photographie en noir et blanc de navires dans le port de Cape Town avec le silo à grains et la montagne de la Table en arrière-plan."
+            },
+            {
+              "type": "text",
+              "content": "La géométrie est toute l'histoire, il vaut donc la peine de l'examiner. En plan, le bloc de silos est un champ de cercles : six colonnes par sept rangées de cylindres, avec l'espace restant entre eux formant de petites vides en forme d'étoile. Chaque cercle est un mur structurel autant qu'un conteneur. En en supprimant un, vous modifiez la façon dont tout le bloc supporte sa charge. C'est ce qui a rendu la conversion du bâtiment si difficile, et si intéressante une fois réalisée."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7591.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Plan du bloc de silos : une grille de cylindres avec des vides en forme d'étoile entre eux (à gauche) et la grille structurelle du bloc (à droite). Image : Heatherwick Studio.",
+              "alt": "Plan architectural montrant une grille de silos circulaires et une grille structurelle rectangulaire."
+            },
+            {
+              "type": "text",
+              "content": "Au moment où le studio est arrivé, le transport maritime conteneurisé avait rendu le bâtiment obsolète. Il avait été désactivé et attendait une destination, ce qui est la situation habituelle pour les géants industriels : démolir, ou trouver une utilisation qui mérite la structure. Le récit de Heatherwick est que le V&A Waterfront avait demandé au studio de développer et d'adapter le site, et qu'ensuite une initiative distincte a commencé pour créer un musée d'art africain contemporain."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7571.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le site pendant les travaux : le bloc silo vu d'en haut, avec le port et les bâtiments riverains environnants. Image : Heatherwick Studio.",
+              "alt": "Vue aérienne du site de construction du silo entouré par le port et la construction."
+            },
+            {
+              "type": "header",
+              "content": "II · Deux programmes, un bâtiment",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Les deux projets ont coïncidé. Le silo deviendrait la résidence permanente de la collection de Jochen Zeitz, l'ancien directeur général de Puma, et de la Zeitz Foundation, ainsi que le catalyseur pour le nouveau musée. Le récit du musée sur sa collection est un contrepoids utile au mythe d’un seul mécène : la collection permanente a été établie en 2015, et se compose de plus de 500 objets – œuvres sur papier et toile, photographies, sculptures, œuvres vidéo, installations – par des artistes d’Afrique du Sud, du Zimbabwe, du Nigeria, de Madagascar, des États-Unis, du Kenya, du Soudan et d’ailleurs."
+            },
+            {
+              "type": "text",
+              "content": "Une grande partie d’entre eux est une donation récente d’œuvres d’art auparavant en prêt à long terme de Zeitz, maintenant rejointes par des dons d’artistes, de collectionneurs et d’amateurs. L’institution décrit la collection comme entièrement contemporaine, et les thèmes qu’elle nomme sont ceux que le bâtiment doit contenir : migration, droits de l’homme, visibilité, mémoire et désir. Elle détient également des ensembles complets d’œuvres d’art d’artistes uniques, parmi eux Nandipha Mntambo, Zanele Muholi et Kudzanai Chiurai."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7597.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Modèles d'étude du bloc silo et de l'atrium sculpté. Image : Heatherwick Studio.",
+              "alt": "Deux modèles architecturaux gris montrant le bloc silo et une section de l'atrium sculpté."
+            },
+            {
+              "type": "header",
+              "content": "III · Sculpture, pas construction",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le cahier des charges contenait un piège. Quarante-deux tubes sont efficaces pour stocker des grains, mais ils sont presque inutiles pour suspendre des peintures. Ils sont courbés, étroits et sombres, et une galerie a besoin de murs plats, d'espace au sol et de lumière. La solution évidente aurait été de vider la structure et de recommencer, ce qui aurait conservé l'empreinte et perdu tout ce qui rendait le bâtiment digne d'être conservé."
+            },
+            {
+              "type": "text",
+              "content": "La réponse du studio a été de traiter le bloc silo comme un solide et de le sculpter. Plutôt que de recourir à une démolition totale, ils ont décidé de convertir la multitude de tubes en béton en espaces pour l'art tout en conservant le caractère industriel du silo. Un grand espace central a été sculpté dans le béton cellulaire pour former le principal espace social du musée – un vide qui révèle de manière inattendue les géométries intersectantes originales. Les tubes périphériques ont ensuite été substantiellement réduits et transformés en cinq étages de galeries pour des expositions permanentes et temporaires. Le musée ajoute que la forme sculptée de l'atrium a été inspirée par un seul grain de maïs."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7581.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L'idée génératrice : la forme d'un seul noyau de maïs, agrandie dans la section de l'atrium. Image : Heatherwick Studio.",
+              "alt": "Une dispersion de grains de maïs jaune sur une surface blanche."
+            },
+            {
+              "type": "text",
+              "content": "Ce que cela signifiait sur site était une chirurgie. Avant qu'une scie ne touche la structure, les lignes de coupe étaient marquées sur la surface en béton ; puis les murs étaient découpés section par section, plutôt que démolis. Les photographies des travaux montrent à quel point le processus était physique : un cercle d'ouvriers sur une plateforme à l'intérieur d'un seul tube, coupant des disques de la taille de tables à manger, et un échafaudage remplissant un puits ouvert."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7595.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Six vues des œuvres : grues au-dessus du port, et les tubes du silo ouverts d'en haut. Image : Heatherwick Studio.",
+              "alt": "Six photographies de construction montrant des grues et les tubes du silo ouverts à côté du port."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7587.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Études de la façon dont un seul tube est découpé : huit étapes de sculpture, du cylindre fermé à la forme ouverte et courbée. Image : Heatherwick Studio.",
+              "alt": "Huit petits diagrammes 3D d'un cylindre en béton découpé de différentes manières."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7593.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Diagrammes des tubes de silo en une course continue, coupés pour former un bord de galerie courbe. Image : Heatherwick Studio.",
+              "alt": "Trois diagrammes de tubes en béton verticals progressivement coupés pour former une forme courbe."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7570.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Lignes de coupe marquées sur la surface du mur du silo avant que le béton ne soit enlevé. Image : Heatherwick Studio.",
+              "alt": "Symboles de marquage rouge et bleu et numéros peints sur un mur en béton gris."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7579.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Disques de coupe à pointe en diamant sur site. Image : Heatherwick Studio.",
+              "alt": "Plusieurs grandes lames de scie circulaires reposant sur le sol devant un mur en béton."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7574.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "À l'intérieur de l'un des tubes de silo lors de la construction. Image : Heatherwick Studio.",
+              "alt": "Travailleurs sur une plateforme d'échafaudage à l'intérieur d'un tube de silo en béton, vus d'en haut."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7583.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Une surface coupée à l'intérieur d'un tube : le bord de la nouvelle ouverture, avec un ouvrier pour l'échelle en haut. Image : Heatherwick Studio.",
+              "alt": "Grande coupe courbe dans une surface en béton avec une personne portant un casque en haut du cadre."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7589.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un gabarit en bois courbé, placé sous une coupe pour guider le nouveau bord. Image : Heatherwick Studio.",
+              "alt": "Une rangée courbée de lames de bois fixée sous une ouverture en béton sur un échafaudage."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7580.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L'échafaudage remplit un puits ouvert dans le bloc silo. Image : Heatherwick Studio.",
+              "alt": "Échafaudage et lumières dans un puits de silo ouvert élevé."
+            },
+            {
+              "type": "text",
+              "content": "Le résultat est l'opposé de la conversion habituelle. Rien n'a été ajouté pour faire paraître le béton ancien, et rien n'a été plâtré pour le faire paraître neuf. Ce qui restait après la coupe a été conservé tel quel : les bords finis des tubes, les marques de nervures du coffrage des années 1920, la couleur du matériau. Le nouveau bâtiment est fait du même matériau que l'ancien, et on peut voir exactement où l'un s'arrête et où l'autre commence."
+            },
+            {
+              "type": "quote",
+              "content": "Un silo est construit pour cacher ce qu'il contient."
+            },
+            {
+              "type": "header",
+              "content": "IV · L'atrium",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le résultat est la chose que les visiteurs photographient en premier. Entrez depuis le front de mer et vous vous tenez au pied d'un espace dont les murs sont des cylindres découpés : de grands ovales et arches en béton brut s'élèvent à plusieurs étages, avec des ascenseurs en verre et des passerelles tissant entre eux. Cela ne ressemble pas à une entrée de galerie. Cela ressemble plutôt à une carrière, ou à l'intérieur d'une cathédrale conçue par quelqu'un qui n'avait vu que des entrepôts de grains."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3981.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vue d'un niveau à un autre à travers une ouverture découpée. Image : Heatherwick Studio.",
+              "alt": "Une grande ouverture arrondie dans un mur en béton menant à un espace de galerie inférieur avec des supports courbes."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3977.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un ascenseur en verre monte devant les ouvertures sculptées. Image : Heatherwick Studio.",
+              "alt": "Visiteurs à une balustrade regardant de grandes ouvertures ovales et un ascenseur en verre dans l'atrium en béton."
+            },
+            {
+              "type": "text",
+              "content": "La lumière du jour est la seconde moitié de l'idée. Les tubes sculptés finis au-dessus de l'atrium laissent entrer la lumière du jour par le haut à travers de épaisses couches de verre feuilleté, frituré avec un motif commandé à l'artiste ouest-africain El Loko. La friture remplit deux fonctions à la fois : elle forme une surface praticable pour le jardin de sculptures à l'étage supérieur, et elle laisse entrer la lumière du jour tout en protégeant contre une accumulation excessive de chaleur à l'intérieur. Le musée décrit la lumière comme inondant à travers des tubes de cinq mètres et demi de large, reliant le patrimoine industriel au design moderne."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7573.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Échantillons de vitrage et modèles de motifs réalisés lors de la conception. Image : Heatherwick Studio.",
+              "alt": "Mains tenant un échantillon de verre avec un motif étoilé foncé à côté de modèles de motifs blancs."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3979.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Regard droit vers le haut de l'atrium jusqu'au toit vitré. Image : Heatherwick Studio.",
+              "alt": "Vue en regardant vers le haut à travers un atrium en béton de tubes coupés vers un toit vitré."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7569.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le matériau lui-même : la surface du béton original, laissée telle quelle. Image : Heatherwick Studio.",
+              "alt": "Une main reposant sur une surface en béton rugueuse avec un agrégat exposé."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7582.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le bord d'une coupe, où la nouvelle surface rencontre l'ancienne. Image : Heatherwick Studio.",
+              "alt": "Zoom avant sur un bord de béton coupé avec un agrégat rugueux exposé."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-3982.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L'un des tubes coupés vus de dessous. Image : Heatherwick Studio.",
+              "alt": "Un axe en béton effilé avec une petite forme en diamant éclairée à l'extrémité et une passerelle au premier plan."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7566.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Les tubes silo vus de dessus. Image : Heatherwick Studio.",
+              "alt": "Un groupe dense d'ouvertures de tubes en béton circulaires vus de dessus."
+            },
+            {
+              "type": "text",
+              "content": "Ce que l'architecture refuse de faire est aussi important que ce qu'elle fait. Elle ne lisse pas le béton. Elle ne cache pas les coupures. Un musée d'art contemporain est généralement un conteneur neutre, une boîte blanche qui disparaît derrière l'œuvre ; celui-ci a un caractère si fort que l'art doit y répondre. Pour certains conservateurs, c'est une difficulté. Pour le public, c'est la raison de venir."
+            },
+            {
+              "type": "header",
+              "content": "V · La tour",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La tour de classement raconte une histoire différente de celle des silos. Ici, le studio a laissé le cadre structurel en place et a coupé les murs en béton entre les colonnes, créant de nouvelles fenêtres en trois dimensions qui reflètent un kaléidoscope de textures et de couleurs, changeant au fil de la journée. La nuit, la lueur des lumières à l'intérieur transforme la tour en un phare dans le port."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7584.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Regardant la tour depuis le pied des silos : les fenêtres facettées ont été taillées dans le cadre en béton d'origine. Image : Heatherwick Studio.",
+              "alt": "Les silos cylindriques en dessous et la tour de classement vitrée au-dessus avec ses fenêtres facettées contre un ciel bleu."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7585.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La tour et le sommet en verre du bloc de silo, avec Table Mountain derrière. Image : Heatherwick Studio.",
+              "alt": "Le bâtiment du silo avec sa tour vitrée et la montagne en arrière-plan."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7578.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Une unité de fenêtre à facettes soutenue à l'extérieur : chaque ouverture dans la tour a sa propre forme tridimensionnelle. Image : Heatherwick Studio.",
+              "alt": "Une personne tenant un cadre de fenêtre en métal et en verre à facettes contre un ciel bleu."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7577.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La grille d'un cadre de fenêtre avec la ville de Cape Town au-delà. Image : Heatherwick Studio.",
+              "alt": "Une grande fenêtre à cadre en acier vue de l'intérieur avec les bâtiments de Cape Town au-delà."
+            },
+            {
+              "type": "image",
+              "content": "https://heatherwick.com/wp-content/uploads/heatherwick-Zeitz-MOCAA-7678.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Une section du bâtiment : l'atrium sculpté, les galeries autour et la tour au-dessus. Image : Heatherwick Studio.",
+              "alt": "Rendu en coupe architecturale du musée montrant l'atrium, les galeries et la tour."
+            },
+            {
+              "type": "header",
+              "content": "VI · Ce qui suspend dans le vide",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Un bâtiment aussi solide est un test pour l'art. La réponse du musée est d'accorder à l'atrium ses propres commandes. Du 25 octobre 2025 au 25 octobre 2026, l'atrium accueille The Procession, une œuvre spécifique au site de l'artiste ghanéenne-américaine Rita Mawuena Benissan : une tapisserie cylindrique de grande taille en tissu transparent et toile brodée, suspendue au centre du bassin de l'atrium. La pratique de Benissan est ancrée dans les traditions de la royauté ghanéenne, où les processions publiques honorent les chefs sous des canopées d'ombrelles royales dansantes, et l'œuvre porte ce vocabulaire – couleur, communauté, tambours, motifs de mouettes et de palmiers – à travers toute la hauteur de l'espace."
+            },
+            {
+              "type": "image",
+              "content": "https://zeitzmocaa.museum/wp-content/uploads/2026/02/Web-Banner-The-Procession.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Détail de The Procession de Rita Mawuena Benissan (2025), la tapisserie suspendue dans l'atrium. Image : Zeitz MOCAA.",
+              "alt": "Détail d'une tapisserie transparente avec des frondes de palmier vert brodées et des mouettes sombres contre du béton."
+            },
+            {
+              "type": "text",
+              "content": "Le musée décrit l'œuvre comme une apparition délicate qui adoucit ses environs en béton brut – éthérée et monumentale, répondant au léger mouvement d'une brise, à la lumière changeante et au bavardage des visiteurs. C'est une bonne description de ce que le silo fait à tout ce qui se trouve à l'intérieur : le béton rend tout ce qui est doux encore plus doux, et tout ce qui est fort encore plus fort."
+            },
+            {
+              "type": "text",
+              "content": "Partout ailleurs dans le bâtiment, le programme est aussi ambitieux que la coque. Au Niveau 2, la collection permanente est présentée dans la longue série Sélections de la Collection, avec des œuvres de Zanele Muholi, Isaac Julien, Glenn Ligon, Nandipha Mntambo, Ebony G. Patterson, Thebe Magugu et d'autres. L'une d'elles, Ophiophilia de Frances Goodman (2014), est faite de faux ongles en acrylique, de colle, de mousse de polyuréthane et de fil – une bobine de serpents qui paraît féroce de loin et, de près, est faite du même matériau qu'une manucure."
+            },
+            {
+              "type": "image",
+              "content": "https://zeitzmocaa.museum/wp-content/uploads/2024/03/APP_140401_27-scaled.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Détail de Frances Goodman, Ophiophilia, 2014 : faux ongles en acrylique, colle, mousse de polyuréthane, fil, résine et jute, 227 × 315 × 75 cm. Collection Permanente Zeitz MOCAA, par don aimable du ARTCO Trust (Collection Privée). Image : Zeitz MOCAA.",
+              "alt": "Zoom sur une sculpture de serpents enroulés faite de faux ongles en acrylique colorés."
+            },
+            {
+              "type": "text",
+              "content": "La saison 2026–27 pousse dans deux directions. IMPRINT, visible du 2 octobre 2026 au 2 avril 2028 au Niveau 2, est une résidence d'atelier dirigée par des artistes au Koyo Kouoh Atelier qui accueille des collectifs d'édition du Cap – (B)and Wi(d)th, Medupi Publishing et Creative Knowledge Resources – et considère l'édition non pas comme une réflexion secondaire de l'art mais comme sa condition et sa méthode centrales, l'étendant au son, à la performance et à l'éphémère. Du 11 décembre 2026 au 15 août 2027, Turning Towards the Sun au Niveau 4 présente six films récemment commandés par Zeresenay Berhane Mehari, Mati Diop, Robin Coste Lewis, Jim Chuchu, Wanuri Kahiu et The Otolith Group, développés par le African Film and Media Arts Collective dirigé par Julie Mehretu et Mehret Mandefro."
+            },
+            {
+              "type": "header",
+              "content": "VII · Koyo Kouoh, et un musée qui est encore en construction",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L'Atelier porte le nom du conservateur qui a dirigé le musée pendant plusieurs années : Koyo Kouoh (1967–2025). Le site web du musée associe son nom à une ligne qui ressemble au propre credo de l'institution – « L'art a la capacité de changer les perceptions, d'ouvrir les esprits, et de construire des futurs. » – et fait la promotion de sa curation de la Biennale de Venise. C'est un rappel qu'un musée n'est pas terminé lorsque son architecture l'est : il continue d'être façonné par les personnes qui y travaillent."
+            },
+            {
+              "type": "text",
+              "content": "Il en va de même pour le bâtiment. Les programmes de soutien du musée sont intégrés dans sa structure : le Centre BMW pour l'éducation artistique accueille des apprenants de tous âges, et l'Atelier offre un espace de studio aux artistes émergents basés à Cape Town. Les étages supérieurs de la tour abritent un hôtel, donc la structure a encore une vie après la fermeture des galeries. Et le district plus large autour, le District Silo, est devenu le centre créatif du front de mer qui gérait autrefois le grain."
+            },
+            {
+              "type": "text",
+              "content": "Pour les architectes, la leçon est simple à énoncer et difficile à suivre. Un bâtiment redondant n'est pas un problème à résoudre ; c'est un matériau à éditer. Heatherwick Studio a conservé ce qui rendait le silo intéressant – sa masse, sa grille de tubes, son béton – et n'a changé que ce qui était nécessaire. Le mouvement le plus radical a été une soustraction. Le musée est, en effet, un vide, et le vide est ce dont les gens se souviennent."
+            },
+            {
+              "type": "header",
+              "content": "Visite",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Zeitz MOCAA est dans le District Silo au V&A Waterfront, Le Cap. Il est ouvert tous les jours, 10:00–18:00 (dernière entrée 17:30), avec des visites guidées gratuites d'une heure du lundi au vendredi à 12:30 sur la base du premier arrivé, premier servi, réservées à l'arrivée. Les directions propres du musée sont les plus simples : cherchez le silo en béton avec le toit en verre. Le restaurant OCULAR et la boutique du musée sont sur place."
+            },
+            {
+              "type": "note",
+              "content": "Cette caractéristique s'appuie sur la description du projet publié de Heatherwick Studio et le site Web de Zeitz MOCAA (Notre Histoire ; La Procession ; Sélections de la Collection ; l'annonce de la saison 2026–2027), où les faits cités – les 42 silos, les cinq étages de galeries, le motif frit de El Loko, les tubes de 5,5 mètres, l'inspiration du grain de maïs de l'atrium, la taille de la collection et les dates de l'exposition – sont indiqués. Les photographies sont reproduites de ces deux sites avec crédit à leurs propriétaires ; l'année d'ouverture et l'hôtel dans la tour sont donnés comme largement rapportés."
+            },
+            {
+              "type": "link",
+              "content": "Zeitz MOCAA — Notre Histoire",
+              "url": "https://zeitzmocaa.museum/our-story/"
+            },
+            {
+              "type": "link",
+              "content": "Zeitz MOCAA — La Procession",
+              "url": "https://zeitzmocaa.museum/exhibition/the-procession/"
+            },
+            {
+              "type": "link",
+              "content": "Zeitz MOCAA — saison d'exposition 2026–2027",
+              "url": "https://zeitzmocaa.museum/exhibition/zeitz-mocaa-announces-upcoming-exhibition-season-2026-2027/"
+            },
+            {
+              "type": "link",
+              "content": "Heatherwick Studio — Zeitz MOCAA",
+              "url": "https://heatherwick.com/projects/buildings/zeitz-mocaa/"
+            },
+            {
+              "type": "link",
+              "content": "Zeitz MOCAA — planifiez votre visite",
+              "url": "https://zeitzmocaa.museum/plan-your-visit/"
+            }
+          ],
+          "publishAt": "2026-10-21T12:47:25.000Z",
+          "publishedAt": "2026-10-21T12:47:25.000Z",
+          "updatedAt": "2026-10-21T12:50:59.494Z"
         }
       ],
       "reviews": [
