@@ -20089,6 +20089,435 @@
       "publishAt": "2026-10-21T12:47:25.000Z",
       "publishedAt": "2026-10-21T12:47:25.000Z",
       "updatedAt": "2026-10-21T12:47:26.021Z"
+    },
+    {
+      "id": 73,
+      "draft": true,
+      "title": "The Body as a Place: Antony Gormley and the Sculpture of Standing Still",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Oct 22, 2026",
+      "excerpt": "From hand-beaten lead in a cathedral to a hundred iron figures on a beach, a black platform floating in a hall and thirty-one bodies on the rooftops of Hong Kong: fifty years of Antony Gormley’s single question – where does the human body stand? – and where to see the answers in 2026.",
+      "category": "Art",
+      "subcategory": "Profile",
+      "tags": [
+        "Antony Gormley",
+        "sculpture",
+        "Angel of the North",
+        "Another Place",
+        "Event Horizon",
+        "Time Horizon",
+        "Quantum Cloud",
+        "Turner Prize",
+        "contemporary art",
+        "public art"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://cdn.sanity.io/images/rgmbly0p/production/034814a6ebbf18f8fd65e883ef0a9fb66aa818a8-3000x2371.jpg",
+      "previewToken": "54244a6cf578debe21a1faeb",
+      "content": [
+        {
+          "type": "text",
+          "content": "Most sculptors make objects and then ask us to look at them. Antony Gormley makes situations. A single iron figure on a tidal beach, a hundred of them staring out to sea, thirty-one bodies on the rooftops of a city, a black platform floating above the floor of an empty hall: in each case the work is less a thing to admire than a place to be in, and the real subject is the person standing in front of it."
+        },
+        {
+          "type": "text",
+          "content": "Born in London in 1950, Gormley has spent half a century on one question, which his own profile puts plainly: where does the human body stand in relation to space, to nature and to the cosmos? He answers it with his own body – cast, scanned, stacked, expanded into steel grids and buried in parks – with a patience that makes his work feel less like a career than an experiment run in public. This is a guide to that experiment: what it is made of, where to find it, and why it is so hard to walk past."
+        },
+        {
+          "type": "header",
+          "content": "I · Lead, and the weight of a body",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The early work is the least known and, in some ways, the most important. In the mid-1970s Gormley began making sculptures in lead, a heavy, soft material that takes the shape of whatever it is wrapped around. These works developed amid the geopolitical tensions of the Cold War and, in the words of the exhibition that reintroduced them at White Cube’s Mason’s Yard in 2025, they represent a major breakthrough in the development of his visual language and laid the groundwork for many later bodies of work."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/547b3817e039dec12d2744425ea2cffa2217cd18-2500x1875.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Installation view, Witness: Early Lead Works, White Cube Mason’s Yard, London, 2025. A walking figure carries a beam on its head; other bodies lie, sit and fall around it. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "Gallery with a standing lead figure carrying a horizontal beam, a figure lying on the floor and a curled seated figure."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/c5164897a6d63392e107de666e9fc7e4469069e5-2500x1876.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Installation view, Witness: Early Lead Works, White Cube Mason’s Yard, 2025. Small lead forms set out in a line across the floor. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "White gallery with a line of small dark lead objects on a concrete floor and a heap of lead pellets."
+        },
+        {
+          "type": "text",
+          "content": "The technique is the thought. The sculpture keeps the surface of the real thing – wrinkles, joints, the breath held in the chest. Sound II (1986) is a good place to see where it led: a lead, fibreglass and water figure, 188 centimetres high, standing in Winchester Cathedral, where its reflection in dark water makes the vault look twice as deep."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/0799aea744a767ed4bbbc15264ccf4cf39a36555-1950x3000.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Sound II, 1986, lead, fibreglass and water, 188 × 60 × 45 cm. Permanent installation, Winchester Cathedral, Winchester, England. Photograph by Louis Bustamante. © Antony Gormley.",
+          "alt": "A dark figure standing in a flooded vaulted crypt with its reflection in the water."
+        },
+        {
+          "type": "header",
+          "content": "II · One man, a hundred times",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In the 1990s the body went outdoors and became iron. The method stayed the same: Gormley’s own body is the mould, cast and then installed where its size and posture will make a point about the site. Iron:Man (1993) stands more than six metres tall in Victoria Square, Birmingham, in front of the Council House: a rusting figure with its arms by its sides, still in the middle of a busy square."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/f36e02d9fb2d6a76960c1f8f7dbc4bf1f377ab5c-3000x2345.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Iron:Man, 1993, iron, 666 × 185 × 115 cm. Permanent installation, Victoria Square, Birmingham, England. Photograph by Stephen White & Co. © Antony Gormley.",
+          "alt": "A tall rusting iron figure seen in profile in front of a neoclassical building in a city square."
+        },
+        {
+          "type": "text",
+          "content": "Another Place (1997) is the work that made the method famous. One hundred cast-iron figures, each 189 centimetres tall, are spread along Crosby Beach on Merseyside and look out to sea. The tide covers them and uncovers them twice a day, and the iron weathers and rusts. The sculpture has no front and no back and no viewing platform. It is the opposite of a monument: a weather system with people in it."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/034814a6ebbf18f8fd65e883ef0a9fb66aa818a8-3000x2371.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Another Place, 1997, cast iron, 100 elements, each 189 × 53 × 29 cm. Permanent installation, Crosby Beach, Merseyside, England. Photograph by Stephen White, London. © Antony Gormley.",
+          "alt": "A single iron figure standing on a wide, wet beach at low tide with other figures far away along the shore."
+        },
+        {
+          "type": "text",
+          "content": "A year later the figure went vertical and monumental. Angel of the North (1998), commissioned by Gateshead Metropolitan Borough Council, is a steel body 22 metres high with a wingspan of 54 metres, standing on a hill in Gateshead. The wings do not spread flat: they tilt slightly forward, which gives the figure an air of embrace rather than threat. A sculpture that could have been a trophy became a landmark that people drive past on purpose."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/ea8c2f84704c6606e131a84a17f3256bff81f030-2800x3000.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Angel of the North, 1998, steel, 22 × 54 × 2.2 m. Permanent installation, Gateshead, England. Commissioned by Gateshead Metropolitan Borough Council. Photograph by Colin Cuthbert, Newcastle. © Antony Gormley.",
+          "alt": "The silhouette of the Angel of the North against a dark, stormy pink sky with small figures of visitors at its feet."
+        },
+        {
+          "type": "quote",
+          "content": "A sculpture that could have been a trophy became a landmark that people drive past on purpose."
+        },
+        {
+          "type": "header",
+          "content": "III · The body dissolves",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Then something unexpected happened. Having spent years making the body solid, Gormley began to take it apart. Quantum Cloud (2000), on the Thames at Greenwich, is made of galvanised steel and stands 29 metres high. Look at it from the river and it is a swarm: lengths of steel bar in a dense random network, with the idea of a human figure just visible in its core. It is made from the same body, but it has no outline. It is what a figure looks like when it is not sure where it stops."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/be3e0661955d63effc7cb13233c675a46ac318d2-3000x3031.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Quantum Cloud, 2000, galvanised steel, 29 × 16 × 10 m. Permanent installation. River Thames, Greenwich Peninsula, London, England. Photograph by Stephen White, London. © Antony Gormley.",
+          "alt": "A tall cloud of steel bars standing on a platform on the River Thames."
+        },
+        {
+          "type": "text",
+          "content": "The same logic runs through the works that meet architecture and landscape. Exposure (2010), 25.64 metres tall and made of galvanised steel, stands in the polder landscape of Lelystad in the Netherlands as the sixth Flevoland Landscape Artwork: a figure you see across the water long before you understand what it is. Chord (2015), at MIT in Cambridge, Massachusetts, is made of variable square-section stainless steel bar and 60-millimetre stainless steel balls, a 17-metre thread of metal that hangs over the staircase like a drawn line."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/998843ff73121574cb07348ea02139b6235f79c7-3000x2250.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Exposure, 2010, galvanised steel, 25.64 × 13.25 × 18.47 m. The 6th Flevoland Landscape Artwork. Permanent installation, Lelystad, the Netherlands. Photograph by Allard Bovenberg. © Antony Gormley.",
+          "alt": "A distant tree-like steel figure on a flat green polder landscape under a cloudy sky."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/eabf89bd5d202705be005ecfcca535715d036ebb-3000x2002.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Chord, 2015, variable square-section stainless steel bar and 60 mm stainless steel balls, overall size 1706 × 321 × 341 cm. Permanent installation, MIT, Cambridge, Massachusetts, USA. Photograph by Peter Vanderwarker. © Antony Gormley.",
+          "alt": "A web of steel bars and balls hanging above a staircase seen from above."
+        },
+        {
+          "type": "header",
+          "content": "IV · A floor that floats",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The most radical of these experiments was not a sculpture in any traditional sense. At the Deichtorhallen in Hamburg in 2012, visitors walked into a space of almost 4,000 square metres, nearly 19 metres high, and virtually empty. Over their heads, a vast black, reflective structure floated 7.5 metres above the floor. Horizon Field Hamburg was a slightly oscillating platform that exploited the structural potential and architectural context of the hall and took visitors, in the words of the artist’s website, into a new spatiotemporal matrix."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/da7edb315bc3fdd6f6c67a632cadfc4564df012b-3000x2085.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Horizon Field Hamburg, Deichtorhallen, Hamburg, Germany, 27 April–16 September 2012. A black reflective platform hangs 7.5 metres above the floor of the hall. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A vast industrial hall with a large black rectangular platform suspended near its ceiling and people walking beneath."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/cef60cb856cf48ec5d42f397f489284af2d0daa4-3000x2283.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Looking up at the underside of the platform: the surface is pierced with circular openings. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "The dark underside of a suspended platform with rows of round warm-lit openings."
+        },
+        {
+          "type": "text",
+          "content": "The work has no figure at all. It is pure situation: a floor you see from underneath, a ceiling that is a floor, and a hall that has suddenly become a horizon. It is the clearest demonstration of Gormley’s claim that the space of art is a place of becoming, in which new behaviours, thoughts and feelings can arise."
+        },
+        {
+          "type": "header",
+          "content": "V · Thirty-one bodies on the roofs",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "What happens if you take the figure out of the gallery and put it in a skyline? Event Horizon placed thirty-one life-size cast bodies at street level and on rooftops. It was shown in New York in 2010, on the pavements and rooftops around Madison Square Park, as Gormley’s first American public art project. In 2015 it arrived in Hong Kong, where, according to the project’s own description, it became the most extensive public art project ever installed in the city."
+        },
+        {
+          "type": "text",
+          "content": "The idea was conceived in the year when, for the first time, over half of the world’s population were recorded as living in cities. Each figure looks out into space from a ledge or a pavement, and the effect is oddly intimate: a human body stranded at the edge of a building, as small as a person ever is, in a landscape made of towers. The work asks how the built world relates to an inherited earth."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/38b1ae783c59f24401386055c321c6362eb5f636-2002x3000.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Event Horizon, Hong Kong, 19 November 2015–18 May 2016. One of thirty-one figures, seen from the street against a tower. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A distant human figure standing on the roof of a building below a tall blue glass tower in Hong Kong."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/162c411906df42eb484b73b3e021c27650892c0b-3000x2003.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "At street level, figures stood among passers-by. Event Horizon, Hong Kong. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A bronze-coloured figure on a paved square with a child and a woman looking at it, trees behind."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/133a0d52d28e0fdc33142d13d0b59af447db7be7-3000x1366.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A figure on a rooftop looks across the city towards the hills. Event Horizon, Hong Kong. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A figure standing on a roof with a hazy view of high-rise buildings and green hills behind."
+        },
+        {
+          "type": "header",
+          "content": "VI · Into the ground",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "If Event Horizon puts the body in the city, Inside Australia (2003) puts it in the emptiest landscape imaginable. Fifty-one cast alloy figures of iron, molybdenum, iridium, vanadium and titanium stand scattered across the white salt of Lake Ballard in Western Australia, each based on one of the fifty-one inhabitants of the nearby town of Menzies. It was a commission for the 50th Perth International Arts Festival. In the glare of the lake bed the figures look like survey markers, or like the last people on earth."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/ee7e20a57ee9e309dbcce77b820eeed697d84e8a-3000x1995.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Inside Australia, 2003, cast alloy of iron, molybdenum, iridium, vanadium and titanium, 51 elements based on 51 inhabitants of Menzies. Permanent installation, Lake Ballard, Menzies, Western Australia. Commission for 50th Perth International Arts Festival. © Antony Gormley.",
+          "alt": "A slender dark figure standing on a vast white salt lake under a deep blue sky with its reflection beneath it."
+        },
+        {
+          "type": "text",
+          "content": "Time Horizon at Houghton Hall in Norfolk (2024) pushed the idea of the field to its logical conclusion. One hundred life-size cast-iron figures, each weighing about 640 kilograms and standing on average 191 centimetres tall, were distributed across 300 acres of the park – but all at one datum level, forming a single horizontal plane across the landscape. Where the ground rises, the figures are buried to the chest or knees; some show only part of the head. Around a quarter of them are set on concrete columns that vary from a few centimetres to four metres high. Only occasionally do they stand on the existing surface."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/9dfe7833502137139f4f5129740fed962e477b33-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Time Horizon, Houghton Hall, Norfolk, 21 April–31 October 2024: a figure in the mist before the house. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A lone dark figure standing on grass in the mist in front of a large stately home."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/c56f2eec630c2da3af7fcb3705e87e03a18c9855-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A figure buried to the head in a path between two high hedges. Time Horizon, Houghton Hall. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A head and shoulders emerging from a grass path between two tall russet hedges."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/2c51aae4d137f001e79415be3a58ae150577aab7-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The plane of the horizon runs across the park: some figures high on columns, others in the ground. Time Horizon. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A long avenue of grass with scattered small figures stretching toward the horizon."
+        },
+        {
+          "type": "text",
+          "content": "Standing in it, you do not look at sculptures. You look at the horizon through them, and the horizon turns out to be a line that the ground, not the sculpture, has been bent to meet. The art is the datum."
+        },
+        {
+          "type": "header",
+          "content": "VII · The museum as a test site",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In October 2023 the Musée Rodin in Paris gave Gormley all of its spaces – the temporary exhibition hall, the gardens, the Marble Gallery and the Hôtel Biron – for Critical Mass. Key works from across his career entered into dialogue with Rodin’s own sculptures, asking, in the museum’s words, what the body offers sculpture as subject, object and reflexive tool. Black bodies lay on the steps of the Hôtel Biron and stood among the clipped yews, a few paces from Rodin’s bronzes."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/2880c81b3349ceccec39bee3d31cd83f901ea658-1667x2500.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Critical Mass, Musée Rodin, Paris, 17 October 2023–3 March 2024: a figure lies on the steps of the Hôtel Biron. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A black body-shaped figure lying on its back across the stone steps of a classical building."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/78670cd7d9e505bf030413503904dcac2b76151f-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A bowing figure in the Rodin garden. Critical Mass. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A dark human figure bending forward in a gravel path between rounded yew trees."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/fbd186df847d17d6a4bc38bb9a3e25b44cef4eee-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A figure among the yews, with a Rodin bronze group beside it. Critical Mass. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A dark figure kneeling in a garden with a bronze group by Rodin and a dome in the background."
+        },
+        {
+          "type": "text",
+          "content": "The same instinct explains Survey at the Nasher Sculpture Center in Dallas (2025–26), the first major museum survey of Gormley’s work in the United States. It covered his whole career, from experimental work of the early 1980s to the present, and added a project installed on the rooftops of skyscrapers in and around downtown Dallas. His own words for the show are, in a sense, his whole programme: ‘For me, sculpture is a thing in the world in a world of things, a physical manifestation of thinking and feeling through making. Like every show that I make, this exhibition is a test site for sculpture and for how the work might animate a viewer. The beholder’s share is an intrinsic part of a sculpture’s making.’"
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/8a944abe016381c91ab05747cad94f9c08451708-1875x2500.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Installation view, Survey, Nasher Sculpture Center, Dallas, 2025–26: a cast figure lies spread-eagled on the terrace. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A cast iron figure lying with its arms and legs outstretched on a stone terrace in front of green trees."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/f158b7ef6688a67fc35caa3a1fa029706fe4917f-1875x2500.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A figure leans against the Nasher’s building. Survey. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A dark figure leaning against a stone pillar of a gallery building in sunlight."
+        },
+        {
+          "type": "header",
+          "content": "VIII · 2026: soil, and a ‘where’",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The year now ending has been one of the busiest of Gormley’s career. In May, Geestgrond opened at the Royal Museum of Fine Arts Antwerp (KMSKA), curated by Carolyn Christov-Bakargiev. The exhibition, which closed on 20 September, digs, in the museum’s words, into the ground and grain of the work – but also into the museum’s own collections and into the layered soil of a shared visual and material culture. What is unearthed is not just sculpture but a field of feeling, sensing and being. A book of the same name was published by MER. Books in July."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/396e9327d83a3f0c9eae4a24039fd0e387fcc229-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Geestgrond, Royal Museum of Fine Arts Antwerp (KMSKA), 23 May–20 September 2026. A figure made of small blocks at the museum’s balustrade. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A dark figure made of small blocks leaning forward over an ornate stone balustrade in a marble-walled hall."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/d81c8d4d97adeb9df06ae56bd780e04088f313fc-2500x1786.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "In the KMSKA’s historic halls the sculptures stand beside the museum’s own collection. Geestgrond. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A marble hall with two white caryatid statues framing a doorway to a room with looping steel lines."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/0d277ec8999a587ac2febeb2aa7ffa78a840e3b7-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Looping steel lines fill a KMSKA gallery. Geestgrond. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "Two visitors walking through a white gallery filled with large sweeping loops of thin steel."
+        },
+        {
+          "type": "text",
+          "content": "The most recent show is a set of works on paper. Where, at Cristea Roberts Gallery in London (14 October–23 December 2026), brings together more than twenty new works, some monumental in scale, each a direct trace of a place and a body. It is, in the gallery’s words, an attempt both to subjectivise and universalise the question ‘Where am I?’ The prints – among them Aperture, Body, Bodyspace and Lux – are, in the artist’s words, impressions and applications of weight, and he is clear about what he wants from them: ‘their placeness is more important than their objectness, hopefully allowing us to feel more here, more now, and more alert, alive, and aware of all that is happening.’"
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/23f808402b22a3df878ecf8028e09bcfc1b1be92-2500x1661.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Installation view, Where, Cristea Roberts Gallery, London, 14 October–23 December 2026. A monumental print of light and shadow. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "A large black and white print with bright diagonal bands of light on a gallery wall."
+        },
+        {
+          "type": "image",
+          "content": "https://cdn.sanity.io/images/rgmbly0p/production/f5431a98f220c2976861cacff9407441a29a7900-2500x1667.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Installation view, Where: body prints in rust-coloured pigment beside the black prints. Image: antonygormley.com, © Antony Gormley.",
+          "alt": "Two tall vertical prints of a human body in orange-brown pigment on cream paper on a gallery wall."
+        },
+        {
+          "type": "header",
+          "content": "IX · A career, in short",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The recognition has followed the work. Gormley won the Turner Prize in 1994, the South Bank Prize for Visual Art in 1999, the Obayashi Prize in 2012 and the Praemium Imperiale in 2013. He was made an Officer of the British Empire in 1997, knighted in 2014 and appointed a Companion of Honour in 2025. He has been a Royal Academician since 2003. His permanent public works include Angel of the North, Another Place, Inside Australia, Exposure, Chord at MIT and Alert at Imperial College London. His 2019 exhibition at the Royal Academy explored his use of organic, industrial and elemental materials – iron, steel, hand-beaten lead, seawater and clay – alongside rarely seen early works and pocket sketchbooks."
+        },
+        {
+          "type": "text",
+          "content": "Seen from a distance, the career looks like a straight line from a lead figure in a cathedral to a hundred iron figures on a hill. Look closer and it is a series of moves in a single game: put a body somewhere; take it away; put a field of them somewhere else; let the space do the thinking. The result is the rare kind of contemporary art that does not need a caption. You walk up to it, you feel your own weight, and for a moment you know exactly where you are."
+        },
+        {
+          "type": "header",
+          "content": "See it",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Angel of the North stands in Gateshead, in the north-east of England. Another Place is at Crosby Beach, Merseyside, near Liverpool: go at low tide and stay until the water reaches the farthest figures. Quantum Cloud is on the Greenwich Peninsula in London. Where is at Cristea Roberts Gallery in London until 23 December 2026, and Drawing: Antony Gormley, published by Thames & Hudson in April 2026, collects the works on paper."
+        },
+        {
+          "type": "note",
+          "content": "This feature draws on the artist’s own website, antonygormley.com: his published profile (career, awards, public works), the exhibition descriptions quoted above (Critical Mass, Survey, Time Horizon, Event Horizon, Horizon Field Hamburg, Witness: Early Lead Works, Geestgrond, Where) and the captions of the permanent works, which give titles, dates, dimensions and photographers. Photographs are reproduced from the artist’s site with credit to the photographers named there; all works © Antony Gormley. Descriptive details not stated on the site (the tilt of the Angel’s wings, the location of Sound II) are given as widely reported."
+        },
+        {
+          "type": "link",
+          "content": "Antony Gormley — official website",
+          "url": "https://www.antonygormley.com/"
+        },
+        {
+          "type": "link",
+          "content": "Where — Cristea Roberts Gallery, London (until 23 December 2026)",
+          "url": "https://www.antonygormley.com/works/exhibitions/where"
+        },
+        {
+          "type": "link",
+          "content": "Geestgrond — KMSKA, Antwerp",
+          "url": "https://www.antonygormley.com/works/exhibitions/geestgrond"
+        },
+        {
+          "type": "link",
+          "content": "Time Horizon — Houghton Hall",
+          "url": "https://www.antonygormley.com/works/exhibitions/time-horizon-houghton"
+        },
+        {
+          "type": "link",
+          "content": "Critical Mass — Musée Rodin",
+          "url": "https://www.antonygormley.com/works/exhibitions/antony-gormley-critical-mass"
+        }
+      ],
+      "updatedAt": "2026-10-21T12:58:45.274Z"
     }
   ],
   "reviews": [
