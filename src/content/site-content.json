@@ -19665,7 +19665,7 @@
     },
     {
       "id": 72,
-      "draft": true,
+      "draft": false,
       "title": "A Cathedral Cut from Grain: How Cape Town’s Silo Became Zeitz MOCAA",
       "author": "Viacheslav Munister",
       "role": "Author",
@@ -20086,7 +20086,9 @@
           "url": "https://zeitzmocaa.museum/plan-your-visit/"
         }
       ],
-      "updatedAt": "2026-10-21T12:44:41.927Z"
+      "publishAt": "2026-10-21T12:47:25.000Z",
+      "publishedAt": "2026-10-21T12:47:25.000Z",
+      "updatedAt": "2026-10-21T12:47:26.021Z"
     }
   ],
   "reviews": [
