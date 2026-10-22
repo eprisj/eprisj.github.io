@@ -98450,11 +98450,11 @@
           "draft": true,
           "title": "“Aún en construcción”: Una exposición individual de Alexander Brodsky",
           "author": "Maria Ivanova",
-          "role": "Redacción editorial",
-          "date": "22 de octubre de 2026",
+          "role": "Mesa editorial",
+          "date": "22 de oct de 2026",
           "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto contemporáneo ruso Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
           "category": "Arte",
-          "subcategory": "Artículo destacado",
+          "subcategory": "Característica",
           "tags": [
             "historia",
             "cultura",
@@ -98534,7 +98534,7 @@
             },
             {
               "type": "text",
-              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por casualidad, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdón por tales libertades."
+              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por ningún medio de suerte, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdón por tales libertades."
             },
             {
               "type": "text",
@@ -98552,12 +98552,16 @@
               "type": "gallery",
               "content": [
                 "https://api.eprisjournal.com/uploads/mvjnlij951nznt.jpg",
-                "https://api.eprisjournal.com/uploads/mvjnnkqxl697tl.jpg"
+                "https://api.eprisjournal.com/uploads/mvjnnkqxl697tl.jpg",
+                "https://api.eprisjournal.com/uploads/mvjnp5wq72fi0i.jpg",
+                "https://api.eprisjournal.com/uploads/mvjnr8nne9w7xc.jpg"
               ],
               "caption": "",
               "alts": [
-                "Rotonda de Alexander Brodsky (2009. Fotografía: Yuri Palmin",
-                "15 Biennale di Venezia. The Shed Venezia - Italia Foto por Yuri Palmin"
+                "Rotonda de Alexander Brodsky, Kaluga, Federación Rusa. Foto por Yuri Palmin",
+                "15 Biennale di Venezia. The Shed Venezia, Italia. Foto por Yuri Palmin",
+                "Ice Bar Pirogovo, Federación Rusa. Foto por Yuri Palmin",
+                "Pabellón de Vodka Pirogovo, Federación Rusa. Foto por Yuri Palmin"
               ]
             },
             {
@@ -98581,6 +98585,16 @@
               "content": "Frente a la entrada, fui recibido por una de las esculturas de pared. La colección exhibida consiste en siete esculturas colgadas en la pared, una escultura de perro hecha a partir de un dibujo de los años 80, y Archipelagus Aequitatis Universalis."
             },
             {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjns6qy0u7v19.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjns6qy0u7v19.poster.jpg"
+            },
+            {
               "type": "text",
               "content": "La escultura puede percibirse de manera diferente. A veces encontramos forma en ella, el encuadre del espacio circundante, una historia, una declaración, experimentación material. Pero rara vez la escultura se convierte en un estado y te abraza de manera tan ilimitada que no tienes deseo de escapar."
             },
@@ -98594,7 +98608,17 @@
             },
             {
               "type": "text",
-              "content": "Enriquecidas con textura y ritmo de detalles, ejecutadas en arcilla sin cocer, ciertamente llaman la atención a primera vista. Un deseo irresistible de acercarse y estudiarlas cuidadosamente revela los patrones minuciosos de contrarrelieve, estructura y orden que mantienen los objetos dentro del marco de imágenes reconocibles, sin nombrar nada con precisión."
+              "content": "Enriquecido con textura y ritmo de detalles, ejecutado en arcilla sin cocer, ciertamente llama la atención a primera vista. Un deseo irresistible de acercarse y estudiarlos cuidadosamente revela los patrones minuciosos de contrarrelieve, estructura y orden que mantienen los objetos dentro del marco de imágenes reconocibles, sin nombrar nada con precisión."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjnsx02emu1hu.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjnsx02emu1hu.poster.jpg"
             },
             {
               "type": "text",
@@ -98602,11 +98626,24 @@
             },
             {
               "type": "text",
-              "content": "Alguien estará sumido en la melancolía, mientras que otra persona recordará un sentimiento olvidado de curiosidad infantil, evocada por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
+              "content": "Alguien se sumergirá en la melancolía, mientras que otra persona recordará un sentimiento olvidado hace mucho tiempo de curiosidad infantil, evocado por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
             },
             {
               "type": "text",
-              "content": "La materia prima deja las esculturas inacabadas – cambian orgánicamente con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede obtenerse a través de la prueba del tiempo."
+              "content": "El material en bruto deja las esculturas sin terminar – cambian de forma orgánica con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede adquirirse a través de la prueba del tiempo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjnu2pltxyy1m.jpg",
+              "caption": ""
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "",
+              "caption": "",
+              "loop": true,
+              "muted": true
             },
             {
               "type": "header",
@@ -98630,7 +98667,7 @@
             },
             {
               "type": "text",
-              "content": "Es un planeta sumergido imaginario con los restos de islas autónomas idénticas. La escultura se encuentra en una caja espejada que borra ópticamente los límites del entorno y nos sumerge en un mundo abandonado infinito. El nombre se traduce del latín como Archipiélago de la Equidad Universal."
+              "content": "Es un planeta sumergido imaginario con los restos de islas autónomas idénticas. La escultura está ubicada en una caja espejada que borra ópticamente los límites del entorno y nos sumerge en un mundo abandonado infinito. El nombre se traduce del latín como Archipiélago de la Equidad Universal."
             },
             {
               "type": "text",
@@ -98638,7 +98675,7 @@
             },
             {
               "type": "text",
-              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo albergaría una torre cuadrada de 20–30 metros de altura, que alojaría a una familia, una empresa o un ermitaño."
+              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo alojando una torre cuadrada de 20–30 metros de altura, que albergaría una familia, una empresa o un ermitaño."
             },
             {
               "type": "text",
@@ -98665,7 +98702,7 @@
               "content": "Si todavía no estás seguro de si deberías visitar las exposiciones, mi humilde consejo es dejarte vulnerable a lo que suceda cuando encuentres una pieza de arte contemporáneo. No te defiendas, no intentes cuestionar o entender todo a primera vista. De lo contrario, podrías perder la esencia en el caos de tus propios pensamientos y sus complejidades. Déjalo que suceda contigo."
             }
           ],
-          "updatedAt": "2026-10-22T14:48:54.379Z",
+          "updatedAt": "2026-10-22T15:03:56.222Z",
           "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
         }
       ],
