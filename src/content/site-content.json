@@ -20520,6 +20520,71 @@
       "updatedAt": "2026-10-22T13:26:57.694Z",
       "publishAt": "2026-10-21T15:20:07.000Z",
       "publishedAt": "2026-10-21T15:20:07.000Z"
+    },
+    {
+      "id": 74,
+      "draft": true,
+      "title": "“Still under construction”, MAAB + Nina Due gallery",
+      "author": "Maria Ivanova",
+      "role": "Editorial Desk",
+      "date": "Oct 22, 2026",
+      "excerpt": "“Still under construction” - solo exhibition of Russian contemporary artist and architect Alexander Brodsky, taking place in MAAB + Nina Due gallery in Milan from 6 October to 20 November.",
+      "category": "Art",
+      "subcategory": "Feature",
+      "tags": [
+        "story",
+        "culture",
+        "editorial"
+      ],
+      "imageSeed": "still-under-construction-maab-nina-due-gallery",
+      "content": [
+        {
+          "type": "text",
+          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
+        },
+        {
+          "type": "image",
+          "content": "still-under-construction-maab-nina-due-gallery-2",
+          "caption": "Lead image"
+        },
+        {
+          "type": "quote",
+          "content": "Add a line worth remembering here."
+        },
+        {
+          "type": "note",
+          "content": "Editorial note, source context, or a short aside."
+        },
+        {
+          "type": "checklist",
+          "caption": "What to cover",
+          "content": {
+            "items": [
+              "Context",
+              "Key detail",
+              "Human angle",
+              "What changes next"
+            ]
+          }
+        },
+        {
+          "type": "poll",
+          "content": {
+            "question": "What should we explore next?",
+            "options": [
+              {
+                "label": "More context",
+                "votes": 0
+              },
+              {
+                "label": "Practical guide",
+                "votes": 0
+              }
+            ]
+          }
+        }
+      ],
+      "updatedAt": "2026-10-22T13:27:15.327Z"
     }
   ],
   "reviews": [
