@@ -5553,11 +5553,13 @@ body.busy::after {
 /* ── Popovers ── */
 .wys-pop { position: absolute; z-index: 1000; background: var(--bg-card); border: 1px solid var(--line-strong); border-radius: 0; box-shadow: var(--shadow); padding: 10px; animation: wysPop .14s ease; }
 @keyframes wysPop { from { transform: translateY(-6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.wys-pop-img { width: 420px; max-height: 82vh; overflow-y: auto; }
+/* Окно не шире экрана: на телефоне фиксированные 420px уводили «Применить»
+   за правый край, а `82vh` на iOS выше видимой области. */
+.wys-pop-img { box-sizing: border-box; width: min(420px, calc(100vw - 20px)); max-height: 82vh; max-height: 82dvh; overflow-y: auto; }
 .wys-pop-head { font-family: var(--font-mono); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 8px; }
 .wys-pop-input { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 0; font-size: .88rem; background: var(--bg); color: var(--text); }
 .wys-pop-input:focus { outline: none; border-color: var(--accent); }
-.wys-pop-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 10px; }
+.wys-pop-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-top: 10px; }
 
 /* Media library grid inside the image picker popover */
 .wys-media-lib { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
@@ -5596,7 +5598,7 @@ body.busy::after {
 .wys-seltool-sep { width: 1px; height: 16px; background: rgba(255,255,255,.15); margin: 0 3px; flex-shrink: 0; }
 
 /* ── Metadata drawer ── */
-.wys-meta-drawer { position: fixed; top: 0; right: 0; width: 340px; max-width: 88vw; height: 100vh; background: var(--bg-card); border-left: 1px solid var(--line-strong); box-shadow: -8px 0 30px rgba(0,0,0,.12); z-index: 200; display: flex; flex-direction: column; animation: wysDrawer .22s ease; }
+.wys-meta-drawer { position: fixed; top: 0; right: 0; width: 340px; max-width: 88vw; height: 100vh; height: 100dvh; background: var(--bg-card); border-left: 1px solid var(--line-strong); box-shadow: -8px 0 30px rgba(0,0,0,.12); z-index: 200; display: flex; flex-direction: column; animation: wysDrawer .22s ease; }
 .wys-meta-drawer[hidden] { display: none !important; }
 @keyframes wysDrawer { from { transform: translateX(100%); } to { transform: translateX(0); } }
 .wys-meta-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
