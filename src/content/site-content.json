@@ -20554,7 +20554,7 @@
         },
         {
           "type": "text",
-          "content": "Today I take you back with me to a warm Milanese evening vernisage, generous enough to gift the warmest feelings to those who open their souls. When the artist was playing ping pong, while I was observing  bronze sculpture of the dog, trying hard to keep my smile withing my heart. "
+          "content": "Today I take you back with me to a warm Milanese evening vernissage, generous enough to gift the warmest feelings to those who open their souls. The artist was playing ping pong while I was observing a bronze sculpture of a dog, trying hard to keep my smile within my heart."
         },
         {
           "type": "video",
@@ -20565,6 +20565,11 @@
           "muted": true,
           "videoWebm": "",
           "poster": "https://api.eprisjournal.com/uploads/mvjpx7vb36r9u5.poster.jpg"
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -20805,7 +20810,7 @@
           "content": "If you are still unsure whether you should visit the exhibitions, my humble advice is to let yourself be vulnerable to whatever happens when you encounter a piece of contemporary art. Don't defend yourself, don't try to question or figure everything out at first glance. Otherwise, you might miss the essence in the chaos of your own thoughts and their complexities. Let it happen to you."
         }
       ],
-      "updatedAt": "2026-10-22T15:54:00.198Z",
+      "updatedAt": "2026-10-22T15:58:03.196Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg"
     }
   ],
