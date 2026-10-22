@@ -20696,10 +20696,10 @@
         },
         {
           "type": "text",
-          "content": "The gallery and the exhibition never has a need to be extensivly broad. Sometimes you should let yourself be vulnerable for what is going to happen once you encounter contemporary art - dont defend, dont try to question, or you will miss the essence in the chaos of your thoughts and complexities. "
+          "content": "The gallery and the exhibition never has a need to be extensivly broad - . Sometimes you should let yourself be vulnerable for what is going to happen once you encounter contemporary art - dont defend, dont try to question, or you will miss the essence in the chaos of your thoughts and complexities. "
         }
       ],
-      "updatedAt": "2026-10-22T14:03:23.392Z"
+      "updatedAt": "2026-10-22T14:03:45.251Z"
     }
   ],
   "reviews": [
@@ -98188,9 +98188,9 @@
           "draft": true,
           "title": "“Aún en construcción”, Alexander Brodsky",
           "author": "Maria Ivanova",
-          "role": "Redacción editorial",
-          "date": "22 de octubre de 2026",
-          "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto contemporáneo ruso Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
+          "role": "Redacción",
+          "date": "22 de oct de 2026",
+          "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto ruso contemporáneo Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
           "category": "Arte",
           "subcategory": "Reportaje",
           "tags": [
@@ -98214,11 +98214,11 @@
             },
             {
               "type": "text",
-              "content": "“Aún en construcción” es una exposición individual del artista y arquitecto ruso contemporáneo Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán desde el 6 de octubre hasta el 20 de noviembre."
+              "content": "“Still Under Construction” es una exposición individual del artista y arquitecto ruso contemporáneo Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán desde el 6 de octubre hasta el 20 de noviembre."
             },
             {
               "type": "text",
-              "content": "Visitarlo fue una experiencia profundamente reverente para mí. Solo tengo un conocimiento superficial de Milán, pero tuve una sensación cálida de pertenencia a través de una alma rusa compartida con el artista."
+              "content": "Visitarlo fue una experiencia profundamente reverente para mí. Solo tengo un conocimiento superficial de Milan, pero tuve una sensación cálida de pertenencia a través de una alma rusa compartida con el artista."
             },
             {
               "type": "text",
@@ -98229,28 +98229,32 @@
               "content": "Algunos artistas tienden a distanciarse de su trabajo, y algunos amantes del arte separan felizmente al creador de la creación. Sin embargo, tengo que confesar mi curiosidad por el tipo de música que suena en el alma del artista. Para mí, el arte no solo se trata de descubrimiento visual, sino también de la relación intrincada entre la persona y la pieza final. A veces, sin embargo, esta curiosidad no trabaja a mi favor."
             },
             {
-              "type": "text",
-              "content": "Alexander Brodsky nació en 1955 en Moscú. En su infancia, asistió a la Escuela de Arte de Moscú y consideró convertirse en pintor, pero por consejo de su padre, se inscribió en el Instituto de Arquitectura de Moscú."
+              "type": "note",
+              "content": "Alexander Brodsky"
             },
             {
               "type": "text",
-              "content": "Luego, se convirtió en un miembro clave del movimiento de Arquitectura de Papel soviética de los años 80. Se arraigó en la universidad, donde Brodsky y sus compañeros estudiantes Ilya Utkin y Egor Solopov diseñaron su primer proyecto para la competencia internacional de estudiantes “Teatro del Futuro”."
+              "content": "Alexander Brodsky nació en 1955 en Moscú. En su infancia, asistió a la Escuela de Arte de Moscú y consideró convertirse en pintor, pero siguiendo el consejo de su padre, se inscribió en el Instituto de Arquitectura de Moscú."
             },
             {
               "type": "text",
-              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos – que preferirían permanecer invisibles o ser enviados a concursos de arquitectura extranjeros."
+              "content": "Luego, se hizo conocido como un miembro clave del movimiento de Arquitectura de Papel soviética de los años 80. Echó raíces en la universidad, donde Brodsky y sus compañeros estudiantes Ilya Utkin y Egor Solopov diseñaron su primer proyecto para la competencia internacional de estudiantes “Teatro del Futuro”."
             },
             {
               "type": "text",
-              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por casualidad, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdónenme por tales libertades."
+              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos: preferirían permanecer invisibles o ser enviados a concursos de arquitectura extranjeros."
             },
             {
               "type": "text",
-              "content": "En una entrevista con Blueprint en 2018, a Brodsky le preguntaron si le molestaba perder su primera oportunidad de visitar la FRG, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez genuina: “Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”"
+              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por casualidad, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdón por tales libertades."
             },
             {
               "type": "text",
-              "content": "Para Alexander Brodsky, cambiar de arquitecto a artista contemporáneo fue bastante fluido y orgánico. En 1988, las obras que él y Utkin produjeron fueron publicadas en un periódico, donde llamaron la atención de la galería Storefront en Nueva York. Los artistas soviéticos enviaron sus grabados a los EE. UU., envolviéndolos alrededor de un bastón de esquí roto."
+              "content": "En una entrevista con Blueprint en 2018, Brodsky fue preguntado si estaba molesto por perder su primera oportunidad de visitar la FRG, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez sincera: <i>“Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”</i>"
+            },
+            {
+              "type": "text",
+              "content": "Para Alexander Brodsky, cambiar de arquitecto a artista contemporáneo fue bastante fluido y orgánico. En 1988, las obras que él y Utkin produjeron fueron publicadas en un periódico, donde llamaron la atención de la galería Storefront en Nueva York. Los artistas soviéticos enviaron sus grabados a Estados Unidos, envolviéndolos alrededor de un bastón de esquí roto."
             },
             {
               "type": "text",
@@ -98258,19 +98262,19 @@
             },
             {
               "type": "text",
-              "content": "Cada estructura temporal hecha con materiales o objetos usados a menudo echa raíces en recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de la luz, la escala, la visibilidad, la presencia del tiempo y el espíritu – el espíritu del lugar que habita, la memoria y los sueños que transmite, o la intención inigualable del autor."
+              "content": "Cada estructura temporal hecha con materiales u objetos usados a menudo echa raíces en recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de la luz, la escala, la visibilidad, la presencia del tiempo y el espíritu: el espíritu del lugar que habita, la memoria y los sueños que transmite, o la intención inigualable del autor."
             },
             {
               "type": "text",
-              "content": "El genio de su trabajo radica en la resonancia emocional con la mundanidad íntima conocida por el alma rusa, que, a través de los medios de la atmósfera, se vuelve accesible para todos."
+              "content": "El genio de su trabajo reside en la resonancia emocional con la mundanidad íntima conocida por el alma rusa, que, a través de los medios de la atmósfera, se vuelve accesible para todos. Alexander Brodsky es un artista reconocido internacionalmente cuyas obras están en las colecciones del Museo Ruso, MoMA y Tate Modern."
+            },
+            {
+              "type": "header",
+              "content": "Entrando en la Exposición"
             },
             {
               "type": "text",
-              "content": "Alexander Brodsky es un artista reconocido internacionalmente cuyas obras están en las colecciones del Museo Ruso, MoMA y Tate Modern."
-            },
-            {
-              "type": "text",
-              "content": "MAAB Gallery está ubicada cerca de Piazza Cordusio, desde donde calles estrechas te llevan a Via Nerino 3."
+              "content": "La galería MAAB está ubicada cerca de Piazza Cordusio, desde donde calles estrechas te llevan a Via Nerino 3."
             },
             {
               "type": "text",
@@ -98278,7 +98282,7 @@
             },
             {
               "type": "text",
-              "content": "La escultura puede percibirse de manera diferente. A veces encontramos forma en ella, el encuadre del espacio circundante, una historia, una declaración, experimentación material – pero rara vez la escultura se convierte en un estado y te abraza de manera tan ilimitada que no tienes deseo de escapar."
+              "content": "La escultura puede percibirse de manera diferente. A veces encontramos forma en ella, el encuadre del espacio circundante, una historia, una declaración, experimentación material. Pero rara vez la escultura se convierte en un estado y te abraza de manera tan ilimitada que no tienes deseo de escapar."
             },
             {
               "type": "text",
@@ -98286,7 +98290,7 @@
             },
             {
               "type": "text",
-              "content": "Dentro del marco de la escultura, Brodsky también cambia las reglas del juego – en la exposición, podemos ver esculturas colgantes, que en su forma se parecen a pinturas."
+              "content": "Dentro del marco de la escultura, Brodsky también cambia las reglas del juego: en la exposición, podemos ver esculturas colgantes, que en su forma se parecen a pinturas."
             },
             {
               "type": "text",
@@ -98294,35 +98298,35 @@
             },
             {
               "type": "text",
-              "content": "Cada escultura indudablemente evoca arquitectura – pero cada uno encontrará algo propio en ella: alguien recordará una fachada de vivienda residencial típica, otros verán una ciudad abandonada o imaginaria."
+              "content": "Cada escultura indudablemente evoca arquitectura, pero todos encontrarán algo propio en ella: alguien recordará una fachada de vivienda residencial típica, otros verán una ciudad abandonada o imaginaria."
             },
             {
               "type": "text",
-              "content": "Alguien estará sumergido en melancolía, mientras que otra persona recordará un sentimiento olvidado hace mucho tiempo de curiosidad infantil, evocada por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
+              "content": "Alguien estará sumido en la melancolía, mientras que otra persona recordará un sentimiento olvidado de curiosidad infantil, evocado por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
             },
             {
               "type": "text",
-              "content": "La materia prima deja las esculturas inacabadas – cambian orgánicamente con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte – no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede obtenerse a través de la prueba del tiempo."
+              "content": "La materia prima deja las esculturas inacabadas – cambian orgánicamente con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede obtenerse a través de la prueba del tiempo."
             },
             {
-              "type": "text",
+              "type": "header",
               "content": "Archipelagus Aequitatis Universalis"
             },
             {
               "type": "text",
-              "content": "No recomiendo leer esta parte si planea visitar la exposición. Si no se imagina en el espacio en un futuro cercano, será más que bienvenido a leer el breve ensayo a continuación."
+              "content": "No recomiendo leer esta parte si planea visitar la exposición. Si no se imagina en el espacio en un futuro cercano, será más que bienvenido a leer el ensayo corto a continuación."
             },
             {
               "type": "text",
-              "content": "Mientras exploras la galería, encontrarás una cortina gruesa, a prueba de luz, frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
+              "content": "Mientras explora la galería, encontrará una cortina gruesa, a prueba de luz, frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
             },
             {
               "type": "text",
-              "content": "Pero una vez que entras en el espacio, el cubo blanco abierto y acogedor cede inmediatamente ante la oscuridad envolvente. Como si entraras de la luz brillante del sol, por un segundo intentas buscar el significado de la habitación – luego se despliega justo frente a ti."
+              "content": "Pero una vez que entra en el espacio, el cubo blanco abierto y acogedor da paso inmediatamente a una oscuridad envolvente. Como si entrara de la luz brillante del sol, por un segundo intenta buscar el significado de la habitación – luego se despliega justo frente a usted."
             },
             {
               "type": "text",
-              "content": "Tu mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puedes percibirla como una pintura, pero con cada paso más cerca, descubres la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
+              "content": "Su mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puede percibirla como una pintura, pero con cada paso más cerca, descubre la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
             },
             {
               "type": "text",
@@ -98342,18 +98346,22 @@
             },
             {
               "type": "text",
-              "content": "En Archipelagus Aequitatis Universalis, el recurso más codiciado en la Tierra está disponible para todos sin limitación, eliminando su estatus como motivo de peleas y conflictos."
+              "content": "En Archipelagus Aequitatis Universalis, el recurso más buscado en la Tierra está disponible para todos sin limitación, eliminando su estatus como motivo de peleas y conflictos."
             },
             {
               "type": "text",
-              "content": "Recomendaría visitar esta parte de la exposición al final, después de examinar todos los demás objetos."
+              "content": "Recomendaría visitar esta parte de la exposición al final, después de examinar todos los otros objetos."
             },
             {
               "type": "text",
-              "content": "La soledad, el abandono, la eternidad superpuesta y la absurdidad de los conflictos globales se expresan de manera brillante a través de la escultura y el espacio, dejándote sin ninguna oportunidad de permanecer solo ligeramente o imperceptiblemente afectado."
+              "content": "La soledad, el abandono, la eternidad superpuesta y la absurdidad de los conflictos globales se expresan brillantemente a través de la escultura y el espacio, dejándote sin ninguna oportunidad de permanecer solo ligeramente o imperceptiblemente afectado."
+            },
+            {
+              "type": "text",
+              "content": "La galería y la exposición nunca necesitan ser extensamente amplias. A veces debes dejarte ser vulnerable por lo que va a suceder una vez que encuentres arte contemporáneo - no defiendas, no intentes cuestionar, o perderás la esencia en"
             }
           ],
-          "updatedAt": "2026-10-22T13:38:22.424Z"
+          "updatedAt": "2026-10-22T14:03:48.486Z"
         }
       ],
       "reviews": [
