@@ -7042,6 +7042,7 @@ function renderVisualForm() {
         </div>
         <input id="vf-title" class="canvas-title" placeholder="Заголовок статьи..." value="${escapeHtml(entry.title || '')}" />
         <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
+        <div class="vf-quick-insert"><button type="button" id="vf-insert-photo" class="btn btn-sm">▣ Добавить фото</button></div>
         <div class="block-editor" id="vf-block-editor"></div>
       </div>
 
@@ -19137,13 +19138,10 @@ class ImgAlignTune {
 function __buildEditorTools() {
   const t = {};
   if (__hasTool('Header')) t.header = { class: window.Header, inlineToolbar: true, config: { levels: [2, 3], defaultLevel: 2, placeholder: 'Заголовок' } };
-  if (__hasTool('List')) t.list = { class: window.List, inlineToolbar: true };
-  if (__hasTool('Quote')) t.quote = { class: window.Quote, inlineToolbar: true, config: { quotePlaceholder: 'Цитата', captionPlaceholder: 'Автор' } };
-  if (__hasTool('Checklist')) t.checklist = { class: window.Checklist, inlineToolbar: true };
-  if (__hasTool('Delimiter')) t.delimiter = { class: window.Delimiter };
-  if (__hasTool('Marker')) t.marker = { class: window.Marker };
-  if (__hasTool('Underline')) t.underline = { class: window.Underline };
   t.imgAlignTune = { class: ImgAlignTune };
+  /* Фото стоит сразу после заголовка: на телефоне список блоков — нижняя
+     шторка в пять-шесть строк, и пункт, добавленный в конец, остаётся под
+     краем экрана (и под клавиатурой). */
   if (__hasTool('ImageTool')) t.image = {
     class: window.ImageTool,
     tunes: ['imgAlignTune'],
@@ -19154,6 +19152,12 @@ function __buildEditorTools() {
       }
     }
   };
+  if (__hasTool('List')) t.list = { class: window.List, inlineToolbar: true };
+  if (__hasTool('Quote')) t.quote = { class: window.Quote, inlineToolbar: true, config: { quotePlaceholder: 'Цитата', captionPlaceholder: 'Автор' } };
+  if (__hasTool('Checklist')) t.checklist = { class: window.Checklist, inlineToolbar: true };
+  if (__hasTool('Delimiter')) t.delimiter = { class: window.Delimiter };
+  if (__hasTool('Marker')) t.marker = { class: window.Marker };
+  if (__hasTool('Underline')) t.underline = { class: window.Underline };
   t.eprisBlock = { class: EprisBlockTool };
   return t;
 }
@@ -19165,6 +19169,8 @@ function mountModernEditor(blocks) {
   // Graceful fallback to the classic block editor if Editor.js didn't load.
   if (typeof window.EditorJS === 'undefined') {
     window.__modernEditorActive = false;
+    const quick = document.getElementById('vf-insert-photo');
+    if (quick) quick.hidden = true;
     holder.innerHTML = renderBlockEditor(blocks);
     bindBlockEditorEvents();
     return;
@@ -19187,9 +19193,32 @@ function mountModernEditor(blocks) {
       }
     });
     window.__modernEditorActive = true;
+    /* Кнопка «Добавить фото» над редактором: на телефоне это единственный
+       надёжный путь, шторка «+» уезжает под клавиатуру. */
+    const photoBtn = document.getElementById('vf-insert-photo');
+    if (photoBtn) {
+      photoBtn.hidden = !__hasTool('ImageTool');
+      photoBtn.onclick = async () => {
+        const ed = __modernEditor;
+        if (!ed) return;
+        try {
+          await ed.isReady;
+          const count = ed.blocks.getBlocksCount();
+          const idx = ed.blocks.getCurrentBlockIndex();
+          const cur = idx >= 0 ? ed.blocks.getBlockByIndex(idx) : null;
+          const replace = !!(cur && cur.name === 'paragraph' && cur.isEmpty);
+          const at = idx >= 0 ? (replace ? idx : idx + 1) : count;
+          ed.blocks.insert('image', {}, {}, at, true, replace);
+        } catch (e) {
+          showToast('error', 'Не удалось добавить блок фото: ' + getErrorMessage(e));
+        }
+      };
+    }
   } catch (e) {
     console.error('Editor.js mount failed, falling back:', e);
     window.__modernEditorActive = false;
+    const quick = document.getElementById('vf-insert-photo');
+    if (quick) quick.hidden = true;
     holder.innerHTML = renderBlockEditor(blocks);
     bindBlockEditorEvents();
   }

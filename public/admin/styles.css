@@ -5176,6 +5176,9 @@ body.busy::after {
 /* ══════════════════════════════════════════════════════════
    MODERN EDITOR (Editor.js) — themed to EPRIS / Orbit
    ══════════════════════════════════════════════════════════ */
+/* Быстрая кнопка «Добавить фото» над блочным редактором */
+.vf-quick-insert { margin-top: 12px; }
+.vf-quick-insert .btn { min-height: 40px; }
 #vf-block-editor {
   background: var(--bg-card);
   border: 1px solid var(--line);
