@@ -735,7 +735,11 @@ function VideoBlock({ content, videoWebm, caption, poster, credit, sourceUrl, lo
      попадала в обычную ветку видео: с панелью управления, без цикла, в
      рамке 16:9. Имя файла эту память не теряет. */
   const looksLikeLoopFile = /[.]loop[.](webm|mp4)([?#]|$)/i.test(content || '');
-  const isLoop = directVideo && (!!loop || looksLikeLoopFile);
+  /* Загруженный ролик играет так же, как гифка: сам, без звука, по кругу и без
+     кнопки «Play» – только пока он на экране. Плеер с панелью управления
+     остаётся для блока, где явно записано `muted: false` (ролик со звуком).
+     Ссылки на YouTube и Vimeo по-прежнему запускаются по нажатию. */
+  const isLoop = directVideo && (!!loop || looksLikeLoopFile || muted !== false);
 
   return (
     <figure className={isLoop ? 'my-8 sm:my-12 -mx-4 sm:mx-0' : 'my-8 sm:my-12'}>
