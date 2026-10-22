@@ -143427,6 +143427,16 @@
               "content": "Ce n’est pas la description la plus conventionnelle d’une exposition que vous ayez probablement rencontrée. Chaque critique trouve ses racines dans l’expérience personnelle, mais dans ce cas particulier, je n’ai pas l’intention de la dissimuler complètement."
             },
             {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjnfgqkkgq478.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjnfgqkkgq478.poster.jpg"
+            },
+            {
               "type": "text",
               "content": "Aujourd’hui je vous ramène avec moi à une soirée milanaise chaleureuse, suffisamment généreuse pour offrir les sentiments les plus chaleureux à ceux qui ouvrent leur âme et leur cœur."
             },
@@ -143436,11 +143446,21 @@
             },
             {
               "type": "text",
-              "content": "« Still Under Construction » est une exposition personnelle de l’artiste contemporain russe et architecte Alexander Brodsky, qui se déroule à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre."
+              "content": "« Still Under Construction » est une exposition personnelle de l'artiste et architecte russe contemporain Alexander Brodsky, qui se déroule à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre."
             },
             {
               "type": "text",
-              "content": "Visiter cela a été une expérience profondément révérente pour moi. Je n'ai qu'une connaissance superficielle de Milan, mais j'ai ressenti un sentiment de belonging à travers une âme russe partagée avec l'artiste."
+              "content": "Le visiter a été une expérience profondément respectueuse pour moi. Je n'ai qu'une connaissance superficielle de Milan, mais j'ai ressenti un sentiment de belonging à travers une âme russe partagée avec l'artiste."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjngfjo1dts5i.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjngfjo1dts5i.poster.jpg"
             },
             {
               "type": "text",
@@ -143448,43 +143468,61 @@
             },
             {
               "type": "text",
-              "content": "Certains artistes ont tendance à prendre leurs distances avec leur travail, et certains amateurs d'art séparent volontiers le créateur de la création. Pourtant, je dois confesser ma curiosité sur le type de musique qui joue dans l'âme de l'artiste. Pour moi, l'art ne concerne pas seulement la découverte visuelle, mais aussi la relation complexe entre la persona et la pièce finale. Parfois, cependant, cette curiosité ne joue pas en ma faveur."
+              "content": "Certains artistes ont tendance à prendre leurs distances avec leur œuvre, et certains amateurs d'art séparent volontiers le créateur de la création. Pourtant, je dois avouer ma curiosité concernant le genre de musique qui joue dans l'âme de l'artiste. Pour moi, l'art ne concerne pas seulement la découverte visuelle, mais aussi la relation complexe entre la personne et la pièce finale. Parfois, cependant, cette curiosité ne joue pas en ma faveur."
             },
             {
-              "type": "note",
+              "type": "header",
               "content": "Alexander Brodsky"
             },
             {
-              "type": "text",
-              "content": "Alexander Brodsky est né en 1955 à Moscou. Dans son enfance, il a fréquenté l'École d'art de Moscou et a envisagé de devenir peintre, mais sur le conseil de son père, il s'est inscrit à l'Institut d'architecture de Moscou."
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjnida6pz3dvn.webp",
+              "caption": "Alexander Brodsky. Photo par Kirill Loginov",
+              "sourceUrl": "https://artfocusnow.com/people/alexander-brodsky-the-grey-matter-of-architecture/"
             },
             {
               "type": "text",
-              "content": "Plus tard, il est devenu connu comme un membre clé du mouvement d'Architecture en papier soviétique des années 1980. Il a pris racine à l'université, où Brodsky et ses camarades étudiants Ilya Utkin et Egor Solopov ont conçu leur premier projet pour la compétition étudiante internationale « Théâtre du Futur »."
+              "content": "Alexander Brodsky est né en 1955 à Moscou. Dans son enfance, il a fréquenté l'École d'art de Moscou et envisageait de devenir peintre, mais sur le conseil de son père, il s'est inscrit à l'Institut d'architecture de Moscou."
             },
             {
               "type": "text",
-              "content": "Le terme Architecture en papier a été inventé en 1984 par Yuriy Avvakumov et fait référence à la nature finalement non construite des projets : ils resteraient plutôt invisibles ou seraient envoyés à des concours d'architecture étrangers."
+              "content": "Plus tard, il est devenu connu comme un membre clé du mouvement Architecture Papier soviétique des années 1980. Il a pris racine à l'université, où Brodsky et ses camarades étudiants Ilya Utkin et Egor Solopov ont conçu leur premier projet pour le concours étudiant international « Théâtre du Futur »."
             },
             {
               "type": "text",
-              "content": "Comparé à la pratique conventionnelle d'un architecte récemment diplômé à l'époque soviétique, Alexander Brodsky et Ilya Utkin portaient un certain degré de liberté, qui ne venait pas par hasard, mais par intention multipliée par le plaisir. La dernière composante est mon hypothèse, mais pardonnez-moi pour de telles libertés."
+              "content": "Le terme Architecture Papier a été inventé en 1984 par Yuriy Avvakumov et se réfère à la nature finalement non construite des projets : ils resteraient plutôt invisibles ou seraient envoyés à des concours d'architecture étrangers."
             },
             {
               "type": "text",
-              "content": "Dans une interview avec Blueprint en 2018, Brodsky a été interrogé sur le fait s'il était contrarié de manquer sa première opportunité de visiter la FRG, et le début de sa réponse m'a conquis par sa sincérité et sa simplicité authentique : <i>« C'était un peu décevant, mais honnêtement, nous nous en fichions complètement. Nous nous amusions de toute façon. »</i>"
+              "content": "Comparé à la pratique conventionnelle d'un architecte récemment diplômé à l'époque soviétique, Alexander Brodsky et Ilya Utkin portaient un certain degré de liberté, qui ne venait pas par hasard, mais par intention multipliée par plaisir. Le dernier composant est mon hypothèse, mais pardonnez-moi pour de telles libertés."
             },
             {
               "type": "text",
-              "content": "Pour Alexander Brodsky, passer d'architecte à artiste contemporain a été plutôt fluide et organique. En 1988, les œuvres qu'il et Utkin ont produites ont été publiées dans un journal, où elles ont attiré l'attention de la galerie Storefront à New York. Les artistes soviétiques ont envoyé leurs gravures aux États-Unis, les enveloppant autour d'une perche de ski cassée."
+              "content": "Dans une interview avec Blueprint en 2018, Brodsky a été interrogé sur le fait s'il était contrarié de manquer sa première opportunité de visiter la RFA, et le début de sa réponse m'a conquis par sa sincérité et sa simplicité authentique : <i>« C'était un peu décevant, mais honnêtement, nous nous en fichions complètement. Nous nous amusions de toute façon. »</i>"
+            },
+            {
+              "type": "text",
+              "content": "Pour Alexander Brodsky, passer d'architecte à artiste contemporain était plutôt fluide et organique. En 1988, les œuvres qu'il et Utkin ont produites ont été publiées dans un journal, où elles ont attiré l'attention de la galerie Storefront à New York. Les artistes soviétiques ont envoyé leurs gravures aux États-Unis, les enveloppant autour d'une perche de ski cassée."
             },
             {
               "type": "text",
               "content": "Mais au-delà de Paper Architecture, Alexander Brodsky est bien connu pour ses installations, qui ressemblent à de la poésie par la nature éphémère des émotions fragiles qu'elles évoquent."
             },
             {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mvjnlij951nznt.jpg",
+                "https://api.eprisjournal.com/uploads/mvjnnkqxl697tl.jpg"
+              ],
+              "caption": "",
+              "alts": [
+                "Rotonde de Alexander Brodsky (2009. Photographie : Yuri Palmin",
+                "15e Biennale de Venise. The Shed Venezia - Italie Photo par Yuri Palmin"
+              ]
+            },
+            {
               "type": "text",
-              "content": "Chaque structure temporaire faite de matériaux ou d'objets usagés s'ancre souvent dans des souvenirs, que l'artiste peut brillamment articuler et transformer en forme tangible. Le récit discernable est codé dans les interrelations de la lumière, de l'échelle, de la visibilité, de la présence du temps et de l'esprit : l'esprit du lieu qu'il habite, la mémoire et les rêves qu'il transmet, ou l'intention inégalable de l'auteur."
+              "content": "Chaque structure temporaire faite de matériaux ou d'objets usagés prend souvent racine dans les souvenirs, que l'artiste peut brillamment articuler et transformer en forme tangible. Le récit discernable est codé dans les interrelations de la lumière, de l'échelle, de la visibilité, de la présence du temps et de l'esprit : l'esprit du lieu qu'elle habite, la mémoire et les rêves qu'elle transmet, ou l'intention inégalable de l'auteur."
             },
             {
               "type": "text",
@@ -143512,11 +143550,11 @@
             },
             {
               "type": "text",
-              "content": "Dans le cadre de la sculpture, Brodsky change aussi les règles du jeu : lors de l’exposition, nous pouvons voir des sculptures suspendues, qui dans leur forme ressemblent à des peintures."
+              "content": "Dans le cadre de la sculpture, Brodsky change aussi les règles du jeu : à l’exposition, nous pouvons voir des sculptures suspendues, qui dans leur forme ressemblent à des peintures."
             },
             {
               "type": "text",
-              "content": "Enrichies par la texture et le rythme des détails, réalisées en argile non cuite, elles attirent certainement l’attention au premier coup d’œil. Un désir irrésistible de s’approcher et de les étudier attentivement révèle les motifs minutieux du contre-relief, la structure et l’ordre qui maintiennent les objets dans le cadre d’images reconnaissables, sans nommer rien précisément."
+              "content": "Enrichies par la texture et le rythme des détails, exécutées en argile non cuite, elles attirent certainement l’attention au premier coup d’œil. Un désir irrésistible de s’approcher et de les étudier attentivement révèle les motifs minutieux de contre-relief, de structure et d’ordre qui maintiennent les objets dans le cadre d’images reconnaissables, sans nommer rien précisément."
             },
             {
               "type": "text",
@@ -143552,7 +143590,7 @@
             },
             {
               "type": "text",
-              "content": "C'est une planète immergée imaginaire avec les vestiges d'îles autonomes identiques. La sculpture est située dans une boîte miroir qui efface optiquement les limites de l'environnement et nous immerge dans un monde abandonné infini. Le nom se traduit du latin comme Archipel de l'Équité Universelle."
+              "content": "C'est une planète immergée imaginaire avec les vestiges d'îles autonomes identiques. La sculpture est située dans une boîte miroir qui efface optiquement les limites de l'environnement et nous immerge dans un monde abandonné infini. Le nom se traduit du latin par Archipel de l'Équité Universelle."
             },
             {
               "type": "text",
@@ -143584,10 +143622,10 @@
             },
             {
               "type": "text",
-              "content": "Si vous n'êtes toujours pas sûr de devoir visiter les expositions, mon humble conseil est de vous laisser vulnérable à tout ce qui se passe lorsque vous rencontrez une œuvre d'art contemporaine. Ne vous défendez pas, ne tentez pas de questionner ou de tout comprendre au premier regard. Sinon, vous pourriez manquer l'essence dans le chaos de vos propres pensées et leurs complexités. Laissez cela vous arriver."
+              "content": "Si vous n'êtes toujours pas sûr de devoir visiter les expositions, mon humble conseil est de vous laisser vulnérable à tout ce qui se passe lorsque vous rencontrez une œuvre d'art contemporaine. Ne vous défendez pas, n'essayez pas de questionner ou de tout comprendre au premier regard. Sinon, vous pourriez manquer l'essence dans le chaos de vos propres pensées et leurs complexités. Laissez cela vous arriver."
             }
           ],
-          "updatedAt": "2026-10-22T14:34:48.037Z",
+          "updatedAt": "2026-10-22T14:49:51.632Z",
           "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
         }
       ],
