@@ -20545,50 +20545,9 @@
         {
           "type": "text",
           "content": "Today I take you back with me to a warm Milanese evening, generous enough to gift the warmest feelings to those who open their souls and hearts."
-        },
-        {
-          "type": "image",
-          "content": "still-under-construction-maab-nina-due-gallery-2",
-          "caption": "Lead image"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
-      "updatedAt": "2026-10-22T13:28:06.041Z"
+      "updatedAt": "2026-10-22T13:28:22.957Z"
     }
   ],
   "reviews": [
