@@ -20750,10 +20750,12 @@
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.mp4",
           "caption": "",
           "loop": true,
-          "muted": true
+          "muted": true,
+          "videoWebm": "",
+          "poster": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.poster.jpg"
         },
         {
           "type": "text",
@@ -20780,6 +20782,11 @@
           "content": "The solitude, abandonment, overlapping eternity and absurdity of global conflicts are brilliantly expressed through sculpture and space, leaving you no chance to remain only slightly or imperceptibly affected."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "Neither a gallery nor an exhibition needs to be particularly extensive: the depth of resonance depends on quality, not quantity, unless quantity itself is intended to amplify the experience."
         },
@@ -20788,7 +20795,7 @@
           "content": "If you are still unsure whether you should visit the exhibitions, my humble advice is to let yourself be vulnerable to whatever happens when you encounter a piece of contemporary art. Don't defend yourself, don't try to question or figure everything out at first glance. Otherwise, you might miss the essence in the chaos of your own thoughts and their complexities. Let it happen to you."
         }
       ],
-      "updatedAt": "2026-10-22T15:44:27.154Z",
+      "updatedAt": "2026-10-22T15:44:43.108Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg"
     }
   ],
