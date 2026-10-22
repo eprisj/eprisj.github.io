@@ -20732,10 +20732,12 @@
         {
           "type": "video",
           "mediaKind": "gif",
-          "content": "",
+          "content": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.mp4",
           "caption": ",",
           "loop": true,
-          "muted": true
+          "muted": true,
+          "videoWebm": "",
+          "poster": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.poster.jpg"
         },
         {
           "type": "text",
@@ -20778,7 +20780,7 @@
           "content": "If you are still unsure whether you should visit the exhibitions, my humble advice is to let yourself be vulnerable to whatever happens when you encounter a piece of contemporary art. Don't defend yourself, don't try to question or figure everything out at first glance. Otherwise, you might miss the essence in the chaos of your own thoughts and their complexities. Let it happen to you."
         }
       ],
-      "updatedAt": "2026-10-22T15:43:46.242Z",
+      "updatedAt": "2026-10-22T15:43:55.111Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg"
     }
   ],
