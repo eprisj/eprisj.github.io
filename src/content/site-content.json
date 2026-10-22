@@ -20726,18 +20726,16 @@
           "content": "While exploring the gallery, you'll find a thick, light-proof curtain in front of the staircase. At first glance, it doesn't look like something inviting visitors in."
         },
         {
-          "type": "video",
-          "mediaKind": "gif",
-          "content": "https://api.eprisjournal.com/uploads/mvjp9te746b2lj.mp4",
-          "caption": "",
-          "loop": true,
-          "muted": true,
-          "videoWebm": "",
-          "poster": "https://api.eprisjournal.com/uploads/mvjp9te746b2lj.poster.jpg"
-        },
-        {
           "type": "text",
           "content": "But once you step into the space, the open, welcoming white cube immediately gives way to enveloping darkness. As if coming in from bright sunlight, for a second you try to search for the meaning of the room – then it unfolds right in front of you."
+        },
+        {
+          "type": "video",
+          "mediaKind": "gif",
+          "content": "",
+          "caption": ",",
+          "loop": true,
+          "muted": true
         },
         {
           "type": "text",
@@ -20780,7 +20778,7 @@
           "content": "If you are still unsure whether you should visit the exhibitions, my humble advice is to let yourself be vulnerable to whatever happens when you encounter a piece of contemporary art. Don't defend yourself, don't try to question or figure everything out at first glance. Otherwise, you might miss the essence in the chaos of your own thoughts and their complexities. Let it happen to you."
         }
       ],
-      "updatedAt": "2026-10-22T15:42:27.560Z",
+      "updatedAt": "2026-10-22T15:43:46.242Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg"
     }
   ],
