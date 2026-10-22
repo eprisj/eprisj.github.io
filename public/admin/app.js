@@ -20734,7 +20734,8 @@ async function flushModernEditor() {
     const doneBtn = pop.querySelector('[data-done]');
     const updateDoneBtn = () => { if (doneBtn) { doneBtn.textContent = `Готово (${selected.size})`; doneBtn.disabled = !selected.size; } };
     if (doneBtn) doneBtn.onclick = () => { closePopovers(); onPick(Array.from(selected)); };
-    inp.focus();
+    /* На телефоне автофокус сразу поднимает клавиатуру и закрывает кнопки окна. */
+    if (!window.matchMedia('(hover: none)').matches) inp.focus();
     pop.querySelector('[data-ok]').onclick = () => {
       const v = inp.value.trim(); if (!v) return;
       if (multi) { selected.add(v); inp.value = ''; updateDoneBtn(); }
@@ -20921,9 +20922,15 @@ async function flushModernEditor() {
     if (!host || !host.closest('.wys-rt')) { sel.classList.remove('on'); return; }
     const r = s.getRangeAt(0).getBoundingClientRect();
     if (!r.width) { sel.classList.remove('on'); return; }
-    sel.style.top = (window.scrollY + r.top - 44) + 'px';
-    sel.style.left = (window.scrollX + r.left + r.width / 2 - 90) + 'px';
     sel.classList.add('on');
+    /* Панель не должна уезжать за край экрана: на телефоне выделение часто у
+       левого края, а над первой строкой под шапкой места нет — тогда ниже. */
+    const w = sel.offsetWidth || 270;
+    const left = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), Math.max(8, window.innerWidth - w - 8));
+    const above = r.top - 44;
+    const top = above >= 8 ? above : r.bottom + 8;
+    sel.style.top = (window.scrollY + top) + 'px';
+    sel.style.left = (window.scrollX + left) + 'px';
   }
   document.addEventListener('selectionchange', () => { if (shell.classList.contains('on')) updateSelTool(); });
   document.addEventListener('mouseup', () => setTimeout(updateSelTool, 0));
