@@ -98528,11 +98528,11 @@
           "draft": true,
           "title": "“Aún en construcción”: Una exposición individual de Alexander Brodsky",
           "author": "Maria Ivanova",
-          "role": "Mesa editorial",
-          "date": "22 de oct de 2026",
+          "role": "Redacción editorial",
+          "date": "22 de octubre de 2026",
           "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto contemporáneo ruso Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
           "category": "Arte",
-          "subcategory": "Característica",
+          "subcategory": "Artículo destacado",
           "tags": [
             "historia",
             "cultura",
@@ -98560,7 +98560,7 @@
             },
             {
               "type": "text",
-              "content": "Hay una sombra de vaguedad en los textos centrados en la emoción, el arte y la exposición pueden parecer auxiliares allí, pero dame el beneficio de la duda. El arte es el núcleo y el faro de los sentimientos al mismo tiempo, engendrando y guiando el tipo de viaje introspectivo al que solo puedes acceder si escuchas atentamente lo que permanece en silencio."
+              "content": "Hay una sombra de vaguedad en los textos centrados en la emoción, el arte y la exposición pueden parecer auxiliares allí, pero dame el beneficio de la duda. El arte es el núcleo y el faro de los sentimientos al mismo tiempo, engendrando y guiando el tipo de viaje introspectivo al que solo se puede acceder si escuchas atentamente lo que permanece en silencio."
             },
             {
               "type": "text",
@@ -98608,7 +98608,7 @@
             },
             {
               "type": "text",
-              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos: preferirían permanecer invisibles o ser enviados a competencias arquitectónicas extranjeras."
+              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos: preferirían permanecer invisibles o ser enviados a concursos de arquitectura extranjeros."
             },
             {
               "type": "text",
@@ -98616,7 +98616,7 @@
             },
             {
               "type": "text",
-              "content": "En una entrevista con Blueprint en 2018, a Brodsky le preguntaron si le molestaba perder su primera oportunidad de visitar la FRG, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez genuina: <i>“Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”</i>"
+              "content": "En una entrevista con Blueprint en 2018, a Brodsky le preguntaron si le molestaba perder su primera oportunidad de visitar la RFA, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez genuina: <i>“Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”</i>"
             },
             {
               "type": "text",
@@ -98644,7 +98644,7 @@
             },
             {
               "type": "text",
-              "content": "Cada estructura temporal hecha con materiales u objetos usados a menudo echa raíces en recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de luz, escala, visibilidad, la presencia del tiempo y espíritu: el espíritu del lugar que habita, la memoria y sueños que transmite, o la intención inigualable del autor."
+              "content": "Cada estructura temporal hecha con materiales u objetos usados a menudo echa raíces en recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de la luz, la escala, la visibilidad, la presencia del tiempo y el espíritu: el espíritu del lugar que habita, la memoria y los sueños que transmite, o la intención inigualable del autor."
             },
             {
               "type": "text",
@@ -98708,20 +98708,12 @@
             },
             {
               "type": "text",
-              "content": "El material en bruto deja las esculturas sin terminar – cambian de forma orgánica con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede adquirirse a través de la prueba del tiempo."
+              "content": "El material en bruto deja las esculturas sin terminar – cambian orgánicamente con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede ganarse a través de la prueba del tiempo."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mvjnu2pltxyy1m.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mvjp8jg4mszsbg.jpg",
               "caption": ""
-            },
-            {
-              "type": "video",
-              "mediaKind": "gif",
-              "content": "",
-              "caption": "",
-              "loop": true,
-              "muted": true
             },
             {
               "type": "header",
@@ -98733,15 +98725,25 @@
             },
             {
               "type": "text",
-              "content": "Mientras explora la galería, encontrará una cortina gruesa, a prueba de luz, frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
+              "content": "Mientras exploras la galería, encontrarás una cortina gruesa, a prueba de luz, frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjp9te746b2lj.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjp9te746b2lj.poster.jpg"
             },
             {
               "type": "text",
-              "content": "Pero una vez que entra en el espacio, el cubo blanco abierto y acogedor da paso inmediatamente a una oscuridad envolvente. Como si entrara de la luz brillante del sol, por un segundo intenta buscar el significado de la habitación – luego se despliega justo frente a usted."
+              "content": "Pero una vez que entras en el espacio, el cubo blanco abierto y acogedor cede inmediatamente ante la oscuridad envolvente. Como si entraras de la luz brillante del sol, por un segundo intentas buscar el significado de la habitación – luego se despliega justo frente a ti."
             },
             {
               "type": "text",
-              "content": "Su mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puede percibirla como una pintura, pero con cada paso más cerca, descubre la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
+              "content": "Tu mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puedes percibirla como una pintura, pero con cada paso más cerca, descubres la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
             },
             {
               "type": "text",
@@ -98753,7 +98755,7 @@
             },
             {
               "type": "text",
-              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo alojando una torre cuadrada de 20–30 metros de altura, que albergaría una familia, una empresa o un ermitaño."
+              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo albergaría una torre cuadrada de 20–30 metros de altura, que alojaría a una familia, una empresa o un ermitaño."
             },
             {
               "type": "text",
@@ -98777,11 +98779,11 @@
             },
             {
               "type": "text",
-              "content": "Si todavía no estás seguro de si deberías visitar las exposiciones, mi humilde consejo es dejarte vulnerable a lo que suceda cuando encuentres una pieza de arte contemporáneo. No te defiendas, no intentes cuestionar o entender todo a primera vista. De lo contrario, podrías perder la esencia en el caos de tus propios pensamientos y sus complejidades. Déjalo que suceda contigo."
+              "content": "Si todavía no estás seguro de si deberías visitar las exposiciones, mi humilde consejo es dejarte vulnerable a lo que suceda cuando encuentres una pieza de arte contemporáneo. No te defiendas, no intentes cuestionar o entender todo a simple vista. De lo contrario, podrías perder la esencia en el caos de tus propios pensamientos y sus complejidades. Déjalo que suceda contigo."
             }
           ],
-          "updatedAt": "2026-10-22T15:03:56.222Z",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
+          "updatedAt": "2026-10-22T15:33:57.453Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg"
         }
       ],
       "reviews": [
