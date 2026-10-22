@@ -97218,7 +97218,7 @@
         },
         {
           "id": 73,
-          "draft": true,
+          "draft": false,
           "title": "El cuerpo como lugar: Antony Gormley y la escultura de permanecer quieto",
           "author": "Viacheslav Munister",
           "role": "Autor",
@@ -97295,7 +97295,7 @@
             },
             {
               "type": "text",
-              "content": "En los años 1990 el cuerpo salió al exterior y se convirtió en hierro. El método permaneció igual: el propio cuerpo de Gormley es el molde, fundido y luego instalado donde su tamaño y postura harán un punto sobre el sitio. Hierro:Hombre (1993) mide más de seis metros de altura en Victoria Square, Birmingham, frente a la Casa del Ayuntamiento: una figura oxidada con los brazos a los lados, todavía en medio de una plaza concurrida."
+              "content": "En los años 90 el cuerpo salió al exterior y se convirtió en hierro. El método se mantuvo igual: el propio cuerpo de Gormley es el molde, fundido y luego instalado donde su tamaño y postura harán un punto sobre el sitio. Hierro:Hombre (1993) mide más de seis metros de altura en Victoria Square, Birmingham, frente a la Casa del Ayuntamiento: una figura oxidada con los brazos a los lados, todavía en medio de una plaza concurrida."
             },
             {
               "type": "image",
@@ -97315,7 +97315,7 @@
               "align": "center",
               "width": 100,
               "caption": "Otra Lugar, 1997, hierro fundido, 100 elementos, cada uno 189 × 53 × 29 cm. Instalación permanente, Crosby Beach, Merseyside, Inglaterra. Fotografía de Stephen White, Londres. © Antony Gormley.",
-              "alt": "Una figura de hierro única de pie en una playa ancha y húmeda con marea baja con otras figuras muy lejos a lo largo de la orilla."
+              "alt": "Una figura de hierro sola de pie en una playa ancha y húmeda con marea baja con otras figuras lejos a lo largo de la orilla."
             },
             {
               "type": "text",
@@ -97377,7 +97377,7 @@
             },
             {
               "type": "text",
-              "content": "El más radical de estos experimentos no fue una escultura en ningún sentido tradicional. En las Deichtorhallen de Hamburgo en 2012, los visitantes entraron en un espacio de casi 4,000 metros cuadrados, casi 19 metros de altura, y prácticamente vacío. Sobre sus cabezas, una vasta estructura negra y reflectante flotaba a 7.5 metros sobre el suelo. Horizon Field Hamburg era una plataforma que oscilaba ligeramente que explotaba el potencial estructural y el contexto arquitectónico del pabellón y llevaba a los visitantes, en palabras del sitio web del artista, a una nueva matriz espaciotemporal."
+              "content": "El más radical de estos experimentos no fue una escultura en ningún sentido tradicional. En las Deichtorhallen de Hamburgo en 2012, los visitantes entraron en un espacio de casi 4,000 metros cuadrados, casi 19 metros de altura, y prácticamente vacío. Sobre sus cabezas, una vasta estructura negra y reflectante flotaba a 7.5 metros sobre el suelo. Horizon Field Hamburg era una plataforma que oscilaba ligeramente que explotaba el potencial estructural y el contexto arquitectónico del hall y llevaba a los visitantes, en palabras del sitio web del artista, a una nueva matriz espaciotemporal."
             },
             {
               "type": "image",
@@ -97434,7 +97434,7 @@
               "align": "center",
               "width": 100,
               "caption": "Una figura en una azotea mira a través de la ciudad hacia las colinas. Event Horizon, Hong Kong. Imagen: antonygormley.com, © Antony Gormley.",
-              "alt": "Una figura de pie en un tejado con una vista brumosa de edificios altos y colinas verdes detrás."
+              "alt": "Una figura de pie en un techo con una vista brumosa de edificios altos y colinas verdes detrás."
             },
             {
               "type": "header",
@@ -97443,7 +97443,7 @@
             },
             {
               "type": "text",
-              "content": "Si Event Horizon pone el cuerpo en la ciudad, Inside Australia (2003) lo coloca en el paisaje más vacío imaginable. Cincuenta y una figuras de aleación de fundición de hierro, molibdeno, iridio, vanadio y titanio están dispersas por la sal blanca del Lago Ballard en Australia Occidental, cada una basada en uno de los cincuenta y un habitantes de la cercana ciudad de Menzies. Fue una comisión para el 50º Festival Internacional de Artes de Perth. A la luz del lecho del lago, las figuras parecen marcas de encuesta, o como las últimas personas en la tierra."
+              "content": "Si Event Horizon pone el cuerpo en la ciudad, Inside Australia (2003) lo pone en el paisaje más vacío imaginable. Cincuenta y una figuras de aleación de fundición de hierro, molibdeno, iridio, vanadio y titanio están dispersas por la sal blanca del Lago Ballard en Australia Occidental, cada una basada en uno de los cincuenta y un habitantes del cercano pueblo de Menzies. Fue una comisión para el 50º Festival Internacional de Artes de Perth. A la luz del lecho del lago, las figuras parecen marcas de encuesta, o como las últimas personas en la tierra."
             },
             {
               "type": "image",
@@ -97478,7 +97478,7 @@
               "content": "https://cdn.sanity.io/images/rgmbly0p/production/2c51aae4d137f001e79415be3a58ae150577aab7-2500x1667.jpg",
               "align": "center",
               "width": 100,
-              "caption": "El plano del horizonte atraviesa el parque: algunas figuras en lo alto de columnas, otras en el suelo. Time Horizon. Imagen: antonygormley.com, © Antony Gormley.",
+              "caption": "El plano del horizonte atraviesa el parque: algunas figuras en columnas altas, otras en el suelo. Time Horizon. Imagen: antonygormley.com, © Antony Gormley.",
               "alt": "Una larga avenida de hierba con pequeñas figuras dispersas que se extienden hacia el horizonte."
             },
             {
@@ -97507,7 +97507,7 @@
               "content": "https://cdn.sanity.io/images/rgmbly0p/production/78670cd7d9e505bf030413503904dcac2b76151f-2500x1667.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Una figura inclinada en el jardín de Rodin. Critical Mass. Imagen: antonygormley.com, © Antony Gormley.",
+              "caption": "Una figura inclinado en el jardín de Rodin. Critical Mass. Imagen: antonygormley.com, © Antony Gormley.",
               "alt": "Una figura humana oscura inclinada hacia adelante en un camino de grava entre arbustos de tejo redondeados."
             },
             {
@@ -97520,7 +97520,7 @@
             },
             {
               "type": "text",
-              "content": "El mismo instinto explica Survey en el Nasher Sculpture Center en Dallas (2025–26), la primera gran exposición de museo del trabajo de Gormley en los Estados Unidos. Cubrió toda su carrera, desde el trabajo experimental de principios de los años 80 hasta el presente, y añadió un proyecto instalado en las azoteas de rascacielos en y alrededor del centro de Dallas. Sus propias palabras para la exposición son, en cierto sentido, su programa completo: ‘Para mí, la escultura es una cosa en el mundo en un mundo de cosas, una manifestación física de pensar y sentir a través de hacer. Como toda exposición que hago, esta exhibición es un sitio de prueba para la escultura y para cómo la obra podría animar a un espectador. La parte del espectador es una parte intrínseca de la creación de una escultura.’"
+              "content": "El mismo instinto explica Survey en el Nasher Sculpture Center en Dallas (2025–26), la primera gran exposición de museo del trabajo de Gormley en los Estados Unidos. Cubrió toda su carrera, desde el trabajo experimental de principios de los años 80 hasta el presente, y añadió un proyecto instalado en las azoteas de rascacielos en y alrededor del centro de Dallas. Sus propias palabras para la exposición son, en cierto sentido, su programa completo: ‘Para mí, la escultura es una cosa en el mundo en un mundo de cosas, una manifestación física de pensar y sentir a través de hacer. Como cada exposición que hago, esta exhibición es un sitio de prueba para la escultura y para cómo la obra podría animar a un espectador. La parte del espectador es una parte intrínseca de la creación de una escultura.’"
             },
             {
               "type": "image",
@@ -97545,7 +97545,7 @@
             },
             {
               "type": "text",
-              "content": "El año que ahora termina ha sido uno de los más ocupados en la carrera de Gormley. En mayo, Geestgrond se inauguró en el Museo Real de Bellas Artes de Amberes (KMSKA), curada por Carolyn Christov-Bakargiev. La exposición, que cerró el 20 de septiembre, profundiza, en palabras del museo, en la tierra y el grano de la obra – pero también en las propias colecciones del museo y en el suelo estratificado de una cultura visual y material compartida. Lo que se desentierra no es solo escultura sino un campo de sentimiento, percepción y existencia. Un libro con el mismo nombre fue publicado por MER. Books en julio."
+              "content": "El año que ahora termina ha sido uno de los más ocupados en la carrera de Gormley. En mayo, Geestgrond se inauguró en el Museo Real de Bellas Artes de Amberes (KMSKA), curada por Carolyn Christov-Bakargiev. La exposición, que cerró el 20 de septiembre, profundiza, en palabras del museo, en la tierra y el grano de la obra – pero también en las propias colecciones del museo y en el suelo estratificado de una cultura visual y material compartida. Lo que se desentierra no es solo escultura sino un campo de sentimiento, percepción y existencia. Un libro con el mismo nombre fue publicado por MER. Libros en julio."
             },
             {
               "type": "image",
@@ -97553,7 +97553,7 @@
               "align": "center",
               "width": 100,
               "caption": "Geestgrond, Museo Real de Bellas Artes de Amberes (KMSKA), 23 de mayo–20 de septiembre de 2026. Una figura hecha de pequeños bloques en la balaustrada del museo. Imagen: antonygormley.com, © Antony Gormley.",
-              "alt": "Una figura oscura hecha de pequeños bloques inclinada hacia adelante sobre una balaustrada de piedra ornamentada en un salón con paredes de mármol."
+              "alt": "Una figura oscura hecha de pequeños bloques inclinada hacia adelante sobre una balaustrada de piedra ornamentada en un vestíbulo con paredes de mármol."
             },
             {
               "type": "image",
@@ -97569,11 +97569,11 @@
               "align": "center",
               "width": 100,
               "caption": "Líneas de acero en bucle llenan una galería del KMSKA. Geestgrond. Imagen: antonygormley.com, © Antony Gormley.",
-              "alt": "Dos visitantes caminando por una galería blanca llena de grandes bucles ondulados de acero delgado."
+              "alt": "Dos visitantes caminando por una galería blanca llena de grandes bucles de acero delgado."
             },
             {
               "type": "text",
-              "content": "La exposición más reciente es un conjunto de obras sobre papel. Donde, en Cristea Roberts Gallery en Londres (14 de octubre–23 de diciembre de 2026), reúne más de veinte nuevas obras, algunas monumentales en escala, cada una un rastro directo de un lugar y un cuerpo. Es, en palabras de la galería, un intento tanto de subjetivizar como de universalizar la pregunta ‘¿Dónde estoy?’ Las impresiones – entre ellas Aperture, Body, Bodyspace y Lux – son, en palabras del artista, impresiones y aplicaciones de peso, y él es claro sobre lo que quiere de ellas: ‘su lugar es más importante que su objetividad, con suerte permitiéndonos sentir más aquí, más ahora, y más alerta, vivo y consciente de todo lo que está sucediendo.’"
+              "content": "La exposición más reciente es un conjunto de obras en papel. Donde, en Cristea Roberts Gallery en Londres (14 de octubre–23 de diciembre de 2026), reúne más de veinte nuevas obras, algunas monumentales en escala, cada una un rastro directo de un lugar y un cuerpo. Es, en palabras de la galería, un intento tanto de subjetivizar como de universalizar la pregunta ‘¿Dónde estoy?’ Las impresiones – entre ellas Aperture, Body, Bodyspace y Lux – son, en palabras del artista, impresiones y aplicaciones de peso, y él es claro sobre lo que quiere de ellas: ‘su lugar es más importante que su objetividad, con suerte permitiéndonos sentir más aquí, más ahora, y más alerta, vivo y consciente de todo lo que está sucediendo.’"
             },
             {
               "type": "image",
@@ -97598,7 +97598,7 @@
             },
             {
               "type": "text",
-              "content": "El reconocimiento ha seguido al trabajo. Gormley ganó el Turner Prize en 1994, el South Bank Prize for Visual Art en 1999, el Obayashi Prize en 2012 y el Praemium Imperiale en 2013. Fue nombrado Oficial de la Orden del Imperio Británico en 1997, caballero en 2014 y nombrado Compañero de Honor en 2025. Ha sido Académico Real desde 2003. Sus obras públicas permanentes incluyen Angel of the North, Another Place, Inside Australia, Exposure, Chord en MIT y Alert en Imperial College London. Su exposición de 2019 en la Royal Academy exploró su uso de materiales orgánicos, industriales y elementales – hierro, acero, plomo martillado a mano, agua de mar y arcilla – junto a obras tempranas raramente vistas y cuadernos de bocetos de bolsillo."
+              "content": "El reconocimiento ha seguido al trabajo. Gormley ganó el Turner Prize en 1994, el South Bank Prize for Visual Art en 1999, el Obayashi Prize en 2012 y el Praemium Imperiale en 2013. Fue nombrado Oficial de la Orden del Imperio Británico en 1997, caballero en 2014 y nombrado Compañero de Honor en 2025. Ha sido Académico Real desde 2003. Sus obras públicas permanentes incluyen Angel of the North, Another Place, Inside Australia, Exposure, Chord en MIT y Alert en Imperial College London. Su exposición de 2019 en la Royal Academy exploró su uso de materiales orgánicos, industriales y elementales – hierro, acero, plomo martillado a mano, agua de mar y arcilla – junto con obras tempranas raramente vistas y cuadernos de bocetos de bolsillo."
             },
             {
               "type": "text",
@@ -97619,31 +97619,33 @@
             },
             {
               "type": "link",
-              "content": "Sitio web oficial de Antony Gormley",
+              "content": "Antony Gormley – sitio web oficial",
               "url": "https://www.antonygormley.com/"
             },
             {
               "type": "link",
-              "content": "¿Dónde — Cristea Roberts Gallery, Londres (hasta el 23 de diciembre de 2026)",
+              "content": "¿Dónde – Cristea Roberts Gallery, Londres (hasta 23 de diciembre de 2026)",
               "url": "https://www.antonygormley.com/works/exhibitions/where"
             },
             {
               "type": "link",
-              "content": "Geestgrond — KMSKA, Amberes",
+              "content": "Geestgrond – KMSKA, Amberes",
               "url": "https://www.antonygormley.com/works/exhibitions/geestgrond"
             },
             {
               "type": "link",
-              "content": "Time Horizon — Houghton Hall",
+              "content": "Horizonte Temporal – Houghton Hall",
               "url": "https://www.antonygormley.com/works/exhibitions/time-horizon-houghton"
             },
             {
               "type": "link",
-              "content": "Critical Mass — Musée Rodin",
+              "content": "Masa Crítica – Musée Rodin",
               "url": "https://www.antonygormley.com/works/exhibitions/antony-gormley-critical-mass"
             }
           ],
-          "updatedAt": "2026-10-21T13:05:23.872Z"
+          "updatedAt": "2026-10-22T13:34:26.473Z",
+          "publishAt": "2026-10-21T15:20:07.000Z",
+          "publishedAt": "2026-10-21T15:20:07.000Z"
         }
       ],
       "reviews": [
