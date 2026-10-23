@@ -143855,12 +143855,11 @@
         },
         {
           "id": 74,
-          "draft": true,
-          "title": "« Toujours en construction » : une exposition personnelle de Alexander Brodsky",
+          "title": "« Toujours en construction » : Exposition personnelle de Alexander Brodsky",
           "author": "Maria Ivanova",
           "role": "Rédaction éditoriale",
           "date": "22 oct. 2026",
-          "excerpt": "« Toujours en construction » - exposition personnelle de l'artiste contemporain russe et architecte Alexander Brodsky, se tenant à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre.",
+          "excerpt": "« Toujours en construction » - exposition personnelle de l'artiste contemporain russe et architecte Alexander Brodsky, ayant lieu à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre.",
           "category": "Art",
           "subcategory": "Dossier",
           "tags": [
@@ -143872,7 +143871,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Ce n’est pas la description la plus conventionnelle d’une exposition que vous ayez probablement rencontrée. Chaque critique trouve ses racines dans l’expérience personnelle, mais dans ce cas particulier, je n’ai pas l’intention de la dissimuler complètement."
+              "content": "Ce n’est pas la description la plus conventionnelle d’une exposition que vous ayez probablement rencontrée. Chaque critique trouve ses racines dans l’expérience personnelle, mais dans ce cas particulier, je n’ai aucune intention de la dissimuler complètement."
             },
             {
               "type": "video",
@@ -143886,15 +143885,30 @@
             },
             {
               "type": "text",
-              "content": "Aujourd’hui je vous ramène avec moi à une soirée milanaise chaleureuse, suffisamment généreuse pour offrir les sentiments les plus chaleureux à ceux qui ouvrent leur âme et leur cœur."
+              "content": "Aujourd’hui je vous ramène avec moi à un vernissage milanais chaud en soirée, assez généreux pour offrir les sentiments les plus chaleureux à ceux qui ouvrent leur âme. L’artiste jouait au ping-pong pendant que j’observais une sculpture en bronze d’un chien, essayant de garder mon sourire dans mon cœur."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpx7vb36r9u5.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpx7vb36r9u5.poster.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjq6cvdzfe1ee.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Il y a une ombre de flou dans les textes centrés sur l’émotion, l’art et l’exposition peuvent sembler accessoires là-bas, mais donnez-moi le bénéfice du doute. L’art est le cœur et le phare des sentiments en même temps, engendrant et guidant le type de voyage introspectif que vous ne pouvez entreprendre que si vous écoutez attentivement ce qui reste silencieux."
+              "content": "Il y a une ombre de flou dans les textes centrés sur l'émotion, l'art et l'exposition peuvent sembler accessoires là-bas, mais donnez-moi le bénéfice du doute. L'art est le cœur et le phare des sentiments en même temps, engendrant et guidant le genre de voyage introspectif auquel on ne peut accéder qu'en écoutant attentivement ce qui reste silencieux."
             },
             {
               "type": "text",
-              "content": "« Still Under Construction » est une exposition personnelle de l'artiste et architecte russe contemporain Alexander Brodsky, qui se déroule à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre."
+              "content": "« Still Under Construction » est une exposition personnelle de l'artiste et architecte contemporain russe Alexander Brodsky, qui se déroule à la galerie MAAB + Nina Due à Milan du 6 octobre au 20 novembre."
             },
             {
               "type": "text",
@@ -143916,7 +143930,7 @@
             },
             {
               "type": "text",
-              "content": "Certains artistes ont tendance à prendre leurs distances avec leur œuvre, et certains amateurs d'art séparent volontiers le créateur de la création. Pourtant, je dois avouer ma curiosité concernant le genre de musique qui joue dans l'âme de l'artiste. Pour moi, l'art ne concerne pas seulement la découverte visuelle, mais aussi la relation complexe entre la personne et la pièce finale. Parfois, cependant, cette curiosité ne joue pas en ma faveur."
+              "content": "Certains artistes ont tendance à prendre leurs distances avec leur travail, et certains amateurs d'art séparent volontiers le créateur de la création. Pourtant, je dois confesser ma curiosité sur le type de musique qui joue dans l'âme de l'artiste. Pour moi, l'art ne concerne pas seulement la découverte visuelle, mais aussi la relation complexe entre la personne et la pièce finale. Parfois, cependant, cette curiosité ne joue pas en ma faveur."
             },
             {
               "type": "header",
@@ -143930,27 +143944,27 @@
             },
             {
               "type": "text",
-              "content": "Alexander Brodsky est né en 1955 à Moscou. Dans son enfance, il a fréquenté l'École d'art de Moscou et envisageait de devenir peintre, mais sur le conseil de son père, il s'est inscrit à l'Institut d'architecture de Moscou."
+              "content": "Alexander Brodsky est né en 1955 à Moscou. Dans son enfance, il a fréquenté l'École d'art de Moscou et a envisagé de devenir peintre, mais sur le conseil de son père, il s'est inscrit à l'Institut d'architecture de Moscou."
             },
             {
               "type": "text",
-              "content": "Plus tard, il est devenu connu comme un membre clé du mouvement Architecture Papier soviétique des années 1980. Il a pris racine à l'université, où Brodsky et ses camarades étudiants Ilya Utkin et Egor Solopov ont conçu leur premier projet pour le concours étudiant international « Théâtre du Futur »."
+              "content": "Plus tard, il est devenu connu comme un membre clé du mouvement d'Architecture en papier soviétique des années 1980. Il a pris racine à l'université, où Brodsky et ses camarades étudiants Ilya Utkin et Egor Solopov ont conçu leur premier projet pour la compétition étudiante internationale « Théâtre du Futur »."
             },
             {
               "type": "text",
-              "content": "Le terme Architecture Papier a été inventé en 1984 par Yuriy Avvakumov et se réfère à la nature finalement non construite des projets : ils resteraient plutôt invisibles ou seraient envoyés à des concours d'architecture étrangers."
+              "content": "Le terme Architecture en papier a été inventé en 1984 par Yuriy Avvakumov et fait référence à la nature finalement non construite des projets : ils resteraient plutôt invisibles ou seraient envoyés à des concours d'architecture étrangers."
             },
             {
               "type": "text",
-              "content": "Comparé à la pratique conventionnelle d'un architecte récemment diplômé à l'époque soviétique, Alexander Brodsky et Ilya Utkin portaient un certain degré de liberté, qui ne venait pas par hasard, mais par intention multipliée par le plaisir. La dernière composante est mon hypothèse, mais pardonnez-moi pour de telles libertés."
+              "content": "Comparé à la pratique conventionnelle d'un architecte récemment diplômé en temps soviétique, Alexander Brodsky et Ilya Utkin portaient un certain degré de liberté, qui ne venait pas par quelque moyen de chance, mais par intention multipliée par plaisir. La dernière composante est mon hypothèse, mais pardonnez-moi pour de telles libertés."
             },
             {
               "type": "text",
-              "content": "Dans une interview avec Blueprint en 2018, Brodsky a été interrogé s'il était contrarié de manquer sa première opportunité de visiter la FRG, et le début de sa réponse m'a conquis par sa sincérité et sa simplicité authentique : <i>« C'était un peu décevant, mais honnêtement, nous nous en fichions complètement. Nous nous amusions de toute façon. »</i>"
+              "content": "Dans une interview avec Blueprint en 2018, Brodsky a été interrogé s'il était contrarié de manquer sa première opportunité de visiter la FRG, et le début de sa réponse m'a conquis par sa sincérité et sa simplicité authentique : <i>“C'était un peu décevant, mais honnêtement, nous nous en fichions complètement. Nous nous amusions de toute façon.”</i>"
             },
             {
               "type": "text",
-              "content": "Pour Alexander Brodsky, passer d'architecte à artiste contemporain était plutôt fluide et organique. En 1988, les œuvres qu'il et Utkin ont produites ont été publiées dans un journal, où elles ont attiré l'attention de la galerie Storefront à New York. Les artistes soviétiques ont envoyé leurs gravures aux États-Unis, les enveloppant autour d'une perche de ski cassée."
+              "content": "Pour Alexander Brodsky, passer d'architecte à artiste contemporain a été plutôt fluide et organique. En 1988, les œuvres qu'il et Utkin ont produites ont été publiées dans un journal, où elles ont attiré l'attention de la galerie Storefront à New York. Les artistes soviétiques ont envoyé leurs eaux-fortes aux États-Unis, les enroulant autour d'une perche de ski cassée."
             },
             {
               "type": "text",
@@ -143959,38 +143973,38 @@
             {
               "type": "gallery",
               "content": [
-                "https://api.eprisjournal.com/uploads/mvjnlij951nznt.jpg",
+                "https://api.eprisjournal.com/uploads/mvjqc5dwb0fvm7.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnnkqxl697tl.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnp5wq72fi0i.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnr8nne9w7xc.jpg"
               ],
               "caption": "",
               "alts": [
-                "Rotonde d'Alexander Brodsky, Kaluga, Fédération de Russie. Photo par Yuri Palmin",
-                "15e Biennale de Venise. The Shed Venezia, Italie. Photo par Yuri Palmin",
+                null,
+                "15 Biennale de Venise. The Shed Venezia, Italie. Photo par Yuri Palmin",
                 "Ice Bar Pirogovo, Fédération de Russie. Photo par Yuri Palmin",
-                "Pavillon Vodka Pirogovo, Fédération de Russie. Photo par Yuri Palmin"
+                "Vodka Pavilion Pirogovo, Fédération de Russie. Photo par Yuri Palmin"
               ]
             },
             {
               "type": "text",
-              "content": "Chaque structure temporaire faite de matériaux ou d'objets usagés prend souvent racine dans les souvenirs, que l'artiste peut brillamment articuler et transformer en forme tangible. Le récit discernable est codé dans les interrelations de la lumière, de l'échelle, de la visibilité, de la présence du temps et de l'esprit : l'esprit du lieu qu'il habite, la mémoire et les rêves qu'il transmet, ou l'intention inégalable de l'auteur."
+              "content": "Chaque structure temporaire faite de matériaux ou d'objets recyclés prend souvent racine dans les souvenirs, que l'artiste peut brillamment articuler et transformer en forme tangible. Le récit discernable est codé dans les interrelations de la lumière, de l'échelle, de la visibilité, de la présence du temps et de l'esprit : l'esprit du lieu qu'il habite, la mémoire et les rêves qu'il transmet, ou l'intention inégalable de l'auteur."
             },
             {
               "type": "text",
-              "content": "Le génie de son œuvre réside dans la résonance émotionnelle avec la banalité intime connue de l'âme russe, qui, par le biais de l'atmosphère, devient accessible à tous. Alexander Brodsky est un artiste de renommée internationale dont les œuvres font partie des collections du Musée russe, du MoMA et de la Tate Modern."
+              "content": "Le génie de son travail réside dans la résonance émotionnelle avec la banalité intime connue de l'âme russe, qui, par le biais de l'atmosphère, devient accessible à tous. Alexander Brodsky est un artiste de renommée internationale dont les œuvres figurent dans les collections du Musée russe, du MoMA et de la Tate Modern."
             },
             {
               "type": "header",
-              "content": "Entrer dans l'Exposition"
+              "content": "Entrée dans l'Exposition"
             },
             {
               "type": "text",
-              "content": "La galerie MAAB est située près de la Piazza Cordusio, d'où de petites rues mènent à la Via Nerino 3."
+              "content": "MAAB Gallery est située près de la Piazza Cordusio, d'où de petites rues mènent à Via Nerino 3."
             },
             {
               "type": "text",
-              "content": "Devant l'entrée, j'ai été accueilli par l'une des sculptures murales. La collection présentée se compose de sept sculptures murales, d'une sculpture de chien réalisée d'après un dessin des années 1980, et d'Archipelagus Aequitatis Universalis."
+              "content": "En face de l'entrée, j'ai été accueilli par l'une des sculptures murales. La collection présentée se compose de sept sculptures murales, d'une sculpture de Dog réalisée d'après un dessin des années 1980, et d'Archipelagus Aequitatis Universalis."
             },
             {
               "type": "video",
@@ -144004,7 +144018,7 @@
             },
             {
               "type": "text",
-              "content": "La sculpture peut être perçue différemment. Parfois, nous trouvons la forme en elle, le cadrage de l'espace environnant, une histoire, une déclaration, une expérimentation matérielle. Mais rarement la sculpture devient un état et vous embrasse si infiniment que vous n'avez pas envie de vous échapper."
+              "content": "La sculpture peut être perçue différemment. Parfois, nous trouvons une forme en elle, le cadre de l'espace environnant, une histoire, une déclaration, une expérimentation matérielle. Mais rarement la sculpture devient un état et vous embrasse si infiniment que vous n'avez pas envie de vous échapper."
             },
             {
               "type": "text",
@@ -144016,7 +144030,7 @@
             },
             {
               "type": "text",
-              "content": "Enrichi avec texture et rythme de détails, exécuté en argile non cuite, ils attirent certainement l'attention au premier coup d'œil. Un désir irrésistible de s'approcher et de les étudier attentivement révèle les motifs minutieux de contre-relief, structure et ordre qui maintiennent les objets dans le cadre d'images reconnaissables, sans nommer rien précisément."
+              "content": "Enrichies par la texture et le rythme des détails, exécutées en argile non cuite, elles attirent certainement l’attention au premier coup d’œil. Un désir irrésistible de s’approcher et de les étudier attentivement révèle les motifs minutieux de contre-relief, de structure et d’ordre qui maintiennent les objets dans le cadre d’images reconnaissables, sans nommer rien précisément."
             },
             {
               "type": "video",
@@ -144030,28 +144044,20 @@
             },
             {
               "type": "text",
-              "content": "Chaque sculpture évoque indéniablement l'architecture, mais chacun y trouvera quelque chose qui lui est propre : certains rappelleront une façade d'habitation résidentielle typique, d'autres verront une ville abandonnée ou imaginaire."
+              "content": "Chaque sculpture évoque indéniablement l'architecture, mais chacun y trouvera quelque chose qui lui appartient : certains rappelleront une façade d'habitation résidentielle typique, d'autres verront une ville abandonnée ou imaginaire."
             },
             {
               "type": "text",
-              "content": "Quelqu'un sera plongé dans la mélancolie, tandis qu'un autre se souviendra d'un sentiment d'émerveillement d'enfance longtemps oublié, évoqué par le mystère, l'ambiguïté et l'échelle, où il est impossible de trouver la vérité. Comme si derrière chaque fenêtre improvisée et chaque colonne, des gens se cachaient à bout de souffle, tenant des fils dans leurs mains, les liant à d'autres gardiens de secrets."
+              "content": "Quelqu'un sera plongé dans la mélancolie, tandis qu'un autre se rappellera un sentiment d'enfance oublié depuis longtemps, évoqué par le mystère, l'ambiguïté et l'échelle, où il est impossible de trouver la vérité. Comme si derrière chaque fenêtre improvisée et chaque colonne, les gens se cachaient à bout de souffle, tenant des fils dans leurs mains, les liant à d'autres gardiens de secrets."
             },
             {
               "type": "text",
-              "content": "La matière brute laisse les sculptures inachevées – elles changent organiquement avec le passage du temps, gagnant de nouvelles rides. Il est fascinant de voir à quel point nous sommes tolérants face au vieillissement dans l'art ; cela ne représente pas simplement l'âge, mais élabore le contexte et ajoute du charme, qui ne peut être acquis qu'à travers l'épreuve du temps."
+              "content": "La matière brute laisse les sculptures inachevées – elles changent organiquement avec le passage du temps, acquérant de nouvelles rides. Il est fascinant de voir à quel point nous sommes tolérants face au vieillissement dans l'art ; il ne représente pas simplement l'âge, mais élabore le contexte et ajoute du charme, qui ne peut être obtenu qu'à travers l'épreuve du temps."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mvjnu2pltxyy1m.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mvjp8jg4mszsbg.jpg",
               "caption": ""
-            },
-            {
-              "type": "video",
-              "mediaKind": "gif",
-              "content": "",
-              "caption": "",
-              "loop": true,
-              "muted": true
             },
             {
               "type": "header",
@@ -144063,23 +144069,48 @@
             },
             {
               "type": "text",
-              "content": "En explorant la galerie, vous trouverez un rideau épais, insonorisant, devant l'escalier. À première vue, cela ne ressemble pas à quelque chose qui invite les visiteurs."
+              "content": "En explorant la galerie, vous trouverez un rideau épais, insonorisé, devant l'escalier. À première vue, cela ne ressemble pas à quelque chose qui invite les visiteurs."
             },
             {
               "type": "text",
-              "content": "Mais une fois que vous entrez dans l'espace, le cube blanc ouvert et accueillant cède immédiatement la place à une obscurité enveloppante. Comme si vous sortiez d'une lumière solaire brillante, pendant une seconde, vous essayez de chercher la signification de la pièce – puis elle se déploie juste devant vous."
+              "content": "Mais une fois que vous entrez dans l'espace, le cube blanc ouvert et accueillant cède immédiatement la place à une obscurité enveloppante. Comme si vous sortiez d'une lumière vive, pendant une seconde, vous essayez de chercher la signification de la pièce – puis elle se déploie juste devant vous."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.mp4",
+              "caption": ",",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.poster.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjqg4zfv6vt8d.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Votre regard est doucement attiré par une fenêtre rectangulaire allongée au niveau des yeux. Au début, vous pouvez la percevoir comme une peinture, mais à chaque pas en avant, vous découvrez la profondeur de l'espace derrière le verre, qui accueille le point central de la pièce sombre – une installation, Archipelagus Aequitatis Universalis, créée pour la première fois pour la Cascais Water Biennale sous la curatelle de Demetrio Paparoni."
+              "content": "Votre regard est doucement attiré par une fenêtre rectangulaire allongée à hauteur des yeux. Au début, vous pouvez la percevoir comme une peinture, mais à chaque pas en avant, vous découvrez la profondeur de l'espace derrière le verre, qui accueille le point central de la pièce sombre – une installation, Archipelagus Aequitatis Universalis, créée pour la première fois pour la Cascais Water Biennale sous la curatelle de Demetrio Paparoni."
             },
             {
               "type": "text",
-              "content": "C'est une planète immergée imaginaire avec les restes d'îles autonomes identiques. La sculpture est située dans une boîte miroir qui efface optiquement les limites de l'environnement et nous immerge dans un monde abandonné infini. Le nom se traduit du latin comme Archipel de l'Équité Universelle."
+              "content": "C'est une planète immergée imaginaire avec les vestiges d'îles autonomes identiques. La sculpture est située dans une boîte miroir qui efface optiquement les limites de l'environnement et nous plonge dans un monde abandonné infini. Le nom se traduit du latin par Archipel de l'Équité Universelle."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.poster.jpg"
             },
             {
               "type": "text",
-              "content": "Le cœur du projet est un concours mondial pour l'eau, l'une des ressources les plus recherchées sur notre planète. La solution utopique de l'artiste est de démolir tout ce qui est fabriqué par l'homme et créé naturellement au-dessus du niveau de la mer et de faire couler tous les débris dans des cavités sous-marines pour augmenter le niveau de l'eau. Ce changement radical entraînerait la couverture de toute la surface de la Terre par l'océan."
+              "content": "Le cœur du projet est un concours mondial pour l'eau, l'une des ressources les plus recherchées sur notre planète. La solution utopique de l'artiste est de démolir tout ce qui est fabriqué par l'homme et naturellement créé au-dessus du niveau de la mer et d'enfoncer tous les débris dans des cavités sous-marines pour augmenter le niveau de l'eau. Ce changement radical entraînerait la couverture de toute la surface de la Terre par l'océan."
             },
             {
               "type": "text",
@@ -144099,7 +144130,12 @@
             },
             {
               "type": "text",
-              "content": "La solitude, l'abandon, l'éternité qui se chevauche et l'absurdité des conflits mondiaux sont brillamment exprimés à travers la sculpture et l'espace, ne vous laissant aucune chance de rester seulement légèrement ou imperceptiblement affecté."
+              "content": "La solitude, l'abandon, l'éternité superposée et l'absurdité des conflits mondiaux sont brillamment exprimés à travers la sculpture et l'espace, ne vous laissant aucune chance de rester seulement légèrement ou imperceptiblement affecté."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjpu97kartplx.webp",
+              "caption": ""
             },
             {
               "type": "text",
@@ -144107,11 +144143,13 @@
             },
             {
               "type": "text",
-              "content": "Si vous n'êtes toujours pas sûr de devoir visiter les expositions, mon humble conseil est de vous laisser vulnérable à tout ce qui se passe lorsque vous rencontrez une œuvre d'art contemporaine. Ne vous défendez pas, ne tentez pas de questionner ou de tout comprendre au premier regard. Sinon, vous pourriez manquer l'essence dans le chaos de vos propres pensées et leurs complexités. Laissez cela vous arriver."
+              "content": "Si vous n'êtes toujours pas sûr de devoir visiter les expositions, mon humble conseil est de vous laisser vulnérable à ce qui se passe lorsque vous rencontrez une œuvre d'art contemporaine. Ne vous défendez pas, ne cherchez pas à questionner ou à tout comprendre au premier coup d'œil. Sinon, vous pourriez manquer l'essence dans le chaos de vos propres pensées et leurs complexités. Laissez cela vous arriver."
             }
           ],
-          "updatedAt": "2026-10-22T15:04:58.383Z",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
+          "updatedAt": "2026-10-23T04:21:43.056Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg",
+          "previewToken": "00412802310c7b5271536852",
+          "publishAt": "2026-10-22T16:10:20.355Z"
         }
       ],
       "reviews": [
