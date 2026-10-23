@@ -100393,21 +100393,25 @@
         },
         {
           "id": 17,
-          "title": "En Büyük On, No. 9, Yaşlılık",
-          "subtitle": "Hilma af Klint · 1907 · kağıt üzeri tempera",
+          "title": "En Büyük On, 9. Sıra, Yaşlılık",
+          "subtitle": "Hilma af Klint · 1907 · kağıt üzerine tempera",
           "fig": "PICS 013",
-          "description": "Hilma af Klint yaşlılığa canlı, yüzen bir dil veriyor: leylak tarlaları, döngüler ve koyu tohumlar tuvali büyümüş gibi hissettiriyor, boyanmış değil.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "description": "Hilma af Klint, yaşlılığa canlı ve akıcı bir dil kazandırır: leylak tarlaları, kıvrımlar ve koyu renkli tohumlar, tuvalin boyanmış olmaktan ziyade kendiliğinden yetişmiş gibi bir izlenim uyandırır.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Diver, Molly Brocklhurst, 2024",
-          "homeSubtitle": "Molly Brocklehurst · 2024 • tuval üzerine yağlı boya",
-          "homeDescription": "Molly Brocklehurst İngiliz bir ressamdır ve bulunan fotoğraflara dayanan rüya gibi yağlı boya tablolarıyla tanınır. Eseri hafıza, nostalji ve gerçeklik ile kurgu arasındaki bulanık çizgiyi keşfeder, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
-          "homeCredit": "@mollbrokenhurst",
+          "homeTitle": "Jim Thorell, Hyperion humusu ve deniz topalak, 2026",
+          "homeSubtitle": "Jim Thorel · 2026 • tuval üzerine yağlı boya",
+          "homeDescription": "Molly Brocklehurst, bulduğu fotoğraflardan esinlenerek yarattığı rüya gibi yağlı boya tablolarıyla tanınan İngiliz bir ressamdır. Eserlerinde hafıza, nostalji ve gerçek ile kurgu arasındaki belirsiz sınırı keşfederek, unutulmuş bir geçmişin parçaları gibi hissettiren sahneler yaratır.",
+          "homeCredit": "@jimthorel",
           "picsId": "PICS-2026-013",
-          "updatedAt": "2026-08-24T22:22:52.020Z",
+          "updatedAt": "2026-10-23T20:50:07.369Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+              "replacedAt": "2026-08-27T23:41:56.350Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
               "replacedAt": "2026-08-24T07:53:54.578Z"
@@ -100421,7 +100425,7 @@
               "replacedAt": "2026-08-22T08:55:10.700Z"
             }
           ],
-          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
+          "homeSourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ=="
         },
         {
           "id": 18,
