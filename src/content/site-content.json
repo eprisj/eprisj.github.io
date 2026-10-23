@@ -61262,20 +61262,24 @@
       "items": [
         {
           "id": 16,
-          "title": "Oval mit Punkten",
-          "subtitle": "Henry Moore · 1968–70 · bronze",
+          "title": "Oval mit Spitzen",
+          "subtitle": "Henry Moore · 1968–70 · Bronze",
           "fig": "PICS 012",
-          "description": "Zwei Hohlräume verwandeln ein bronzenes Oval in einen sich verschiebenden Horizont: Henry Moore macht Gewicht, Landschaft und den menschlichen Körper untrennbar fühlbar.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "description": "Zwei Hohlräume verwandeln ein ovales Bronzeskulptur in einen sich wandelnden Horizont: Henry Moore lässt Gewicht, Landschaft und den menschlichen Körper untrennbar miteinander verschmelzen.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc5w0yihz3v69.webp",
           "picsOfWeek": true,
           "homeCategory": "sculpture",
-          "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
-          "homeSubtitle": "Brandon Morris · 2025 ·Fiberglas und Harz",
-          "homeDescription": "Brandon Morris erforscht die Grenze zwischen Mode und Skulptur, indem er seine Ghost Dress-Serie aus Fiberglas und Harz schafft. Inspiriert von viktorianischer Kinderkleidung, Horrorfilmen wie The Ring und Künstlern Martin Margiela, Hans Bellmer und Heidi Bucher, stellt er sich Kleider vor, die ohne Körper existieren.",
+          "homeTitle": "SWEDISH FISH WATER BAG NR. 94 • DYLAN MARTINAZ • 2026",
+          "homeSubtitle": "Dylan Martinez · 2026 · Glas und Keramik",
+          "homeDescription": "Eine spielerische Auseinandersetzung mit Illusion, Zerbrechlichkeit und Alltagsgegenständen. Dylan Martinez verwandelt mundgeblasenes Glas in einen unheimlichen Wasserbeutel, in dem ein leuchtend roter Fisch schwebt – und macht so aus einem vertrauten Bild etwas auf subtile Weise Surreales.",
           "picsId": "PICS-2026-012",
-          "updatedAt": "2026-08-24T22:22:26.597Z",
+          "updatedAt": "2026-10-23T18:50:07.192Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+              "replacedAt": "2026-08-27T23:36:24.703Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
               "replacedAt": "2026-08-24T07:34:13.220Z"
@@ -61293,8 +61297,8 @@
               "replacedAt": "2026-08-22T09:18:18.007Z"
             }
           ],
-          "homeCredit": "@codeunknown_",
-          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
+          "homeCredit": "Square One Galerie",
+          "homeSourceUrl": "https://www.squareonegallery.com/viewing-room/34-dylan-martinez-swedish-fish-water-bags-the-newest-iteration-of-the-water-bag-series/"
         },
         {
           "id": 17,
