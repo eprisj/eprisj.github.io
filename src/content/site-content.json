@@ -100337,20 +100337,24 @@
       "items": [
         {
           "id": 16,
-          "title": "Oval with Points",
+          "title": "Sivri Uçlu Oval",
           "subtitle": "Henry Moore · 1968–70 · bronz",
           "fig": "PICS 012",
-          "description": "İki boşluk bir bronz ovali kaydırıcı bir ufuk haline getiriyor: Henry Moore ağırlık, manzara ve insan bedenini ayırt edilemez kılıyor.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "description": "İki boşluk, bronz bir ovali değişken bir ufka dönüştürür: Henry Moore, ağırlık, manzara ve insan vücudunu birbirinden ayrılamaz hissettirir.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc5w0yihz3v69.webp",
           "picsOfWeek": true,
           "homeCategory": "sculpture",
-          "homeTitle": "GHOST DRESS • BRANDON MORRIS • 2025",
-          "homeSubtitle": "Brandon Morris · 2025 ·Fiber Cam ve Reçine",
-          "homeDescription": "Brandon Morris moda ve heykel arasındaki sınırı keşfediyor, Ghost Dress serisini fiber cam ve reçineden oluşturuyor. Viktorya dönemi çocuk kıyafetlerinden, The Ring gibi korku filmlerinden ve sanatçılardan Martin Margiela, Hans Bellmer ve Heidi Bucher’dan ilham alarak, beden olmadan var olan elbiseleri hayal ediyor.",
+          "homeTitle": "İSVEÇ BALIK SU TORBASI NO 94 • DYLAN MARTINAZ • 2026",
+          "homeSubtitle": "Dylan Martinez · 2026 · Cam ve seramik",
+          "homeDescription": "İllüzyon, kırılganlık ve gündelik nesneler üzerine eğlenceli bir çalışma. Dylan Martinez, el üflemeli camı, içinde asılı duran parlak kırmızı bir balıkla tamamlanmış, esrarengiz bir su torbasına dönüştürüyor — böylece tanıdık bir görüntüyü sessizce sürreal bir şeye dönüştürüyor.",
           "picsId": "PICS-2026-012",
-          "updatedAt": "2026-08-24T22:22:33.525Z",
+          "updatedAt": "2026-10-23T19:20:07.339Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+              "replacedAt": "2026-08-27T23:36:24.703Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
               "replacedAt": "2026-08-24T07:34:13.220Z"
@@ -100368,8 +100372,8 @@
               "replacedAt": "2026-08-22T09:18:18.007Z"
             }
           ],
-          "homeCredit": "@codeunknown_",
-          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
+          "homeCredit": "Square One Galerisi",
+          "homeSourceUrl": "https://www.squareonegallery.com/viewing-room/34-dylan-martinez-swedish-fish-water-bags-the-newest-iteration-of-the-water-bag-series/"
         },
         {
           "id": 17,
