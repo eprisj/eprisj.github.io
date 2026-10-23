@@ -16,6 +16,7 @@ const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ def
 const CodexPage = lazy(() => import('./codex/CodexPage').then((m) => ({ default: m.CodexPage })));
 const ExpertisePage = lazy(() => import('./expertise/ExpertisePage').then((m) => ({ default: m.ExpertisePage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
+import { ratioOf, rememberRatio } from './lib/mediaRatio';
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
 import {
   Article,
@@ -649,9 +650,12 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
   };
 
   const stopped = showStill || paused;
+  /* Рамка держит пропорции постера с первого кадра: пока видео не прислало
+     метаданные, у него нет высоты, и текст под петлёй прыгал вниз. */
+  const frameRatio = ratioOf(poster) ?? ratioOf(src);
 
   return (
-    <div ref={frameRef} className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]">
+    <div ref={frameRef} className="relative bg-[rgb(var(--c-accent-rgb)_/_0.05)]" style={frameRatio ? { aspectRatio: frameRatio } : undefined}>
       {failed ? (
         poster ? (
           <img src={poster} alt={caption || ''} className="w-full h-auto block" />
@@ -665,7 +669,7 @@ function LoopingVideo({ src, webm, poster, caption }: { src: string; webm?: stri
           ref={videoRef}
           /* Появляется, когда первый кадр готов: иначе на медленной сети видно
              пустой прямоугольник, который потом дёргается. */
-          className={`w-full h-auto block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full ${frameRatio ? 'h-full object-cover' : 'h-auto'} block transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
           poster={poster || undefined}
           loop
           muted
@@ -1033,7 +1037,7 @@ function NavBar({
     };
   }, [isSearchOpen, isMenuOpen, isLangOpen]);
 
-  const tabs: { id: VisibilitySectionKey; label: string }[] = [
+  const tabs = ([
     { id: 'articles', label: t('nav.articles') },
     { id: 'reviews', label: t('nav.reviews') },
     { id: 'about', label: t('nav.about') },
@@ -1043,7 +1047,7 @@ function NavBar({
     { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
-  ].filter((tab) => isSectionInNavigation(tab.id));
+  ] as { id: VisibilitySectionKey; label: string }[]).filter((tab) => isSectionInNavigation(tab.id));
 
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
@@ -2894,6 +2898,12 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         src={imageSource}
                         data-original-src={imageSource}
                         alt={imageAlt}
+                        srcSet={derivedSrcSet(imageSource)}
+                        sizes={stretched || align === 'full' ? '100vw' : '(min-width: 640px) 720px, 100vw'}
+                        /* Рамка занимает свою высоту ещё до загрузки файла:
+                           иначе текст под фотографией прыгает при прокрутке. */
+                        style={ratioOf(imageSource) ? { aspectRatio: ratioOf(imageSource) } : undefined}
+                        onLoad={(event) => rememberRatio(imageSource, event.currentTarget)}
                         className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
                         referrerPolicy="no-referrer"
                         /* Первая картинка материала грузится сразу: она почти
@@ -3616,7 +3626,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
     if (block.type === 'video' && text) return <VideoBlock key={index} content={text} videoWebm={block.videoWebm} caption={block.caption} poster={block.poster} credit={block.credit} sourceUrl={block.sourceUrl} loop={block.loop} muted={block.muted} t={t} />;
     if (block.type === 'link' && text && block.src) return <LinkCard key={index} block={block} />;
     if (block.type === 'link' && text) return <a key={index} href={block.url || text} target="_blank" rel="noopener noreferrer" className="inline-flex border-b border-[var(--c-accent)] pb-1 font-mono text-xs uppercase tracking-widest">{text}<ArrowUpRight size={14} className="ml-2" /></a>;
-    if (block.type === 'checklist' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-base sm:text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
+    if (block.type === 'checklist' && typeof block.content === 'object' && !Array.isArray(block.content) && 'items' in block.content) return <ul key={index} className="space-y-2 font-serif text-base sm:text-lg">{block.content.items.map((item, i) => <li key={i} className="flex gap-3"><Check size={16} className="mt-1 shrink-0 text-[var(--c-gold)]" />{item}</li>)}</ul>;
     return text ? <p key={index} className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{text}</p> : null;
   })}</div>;
 }
@@ -5200,7 +5210,7 @@ export default function App() {
           description={footerDescription}
           publicationName={publicationName}
           rights={t('footer.rights')}
-          instagramUrl={instagramUrl}
+          instagramUrl={instagramUrl ?? undefined}
           contactEmail={contactEmail}
           links={[['articles', t('nav.articles')], ['reviews', t('nav.reviews')], ['issue', t('nav.issue')], ['about', t('nav.about')], ['museum', 'Museum']]}
           onNavigate={handleSetTab}

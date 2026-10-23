@@ -1,8 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { execFileSync } from 'node:child_process';
+
+/* Пересобирает таблицу пропорций картинок перед каждой сборкой и запуском dev:
+   деплой на сервере зовёт `npx vite build` напрямую, мимо npm-скриптов. */
+const mediaRatios = {
+  name: 'media-ratios',
+  buildStart() {
+    try { execFileSync(process.execPath, ['scripts/media-ratios.mjs'], { stdio: 'inherit' }); }
+    catch { /* прошлая таблица остаётся: страница лишь чуть меньше резервирует места */ }
+  },
+};
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), mediaRatios],
   base: '/',
   build: {
     rollupOptions: {
