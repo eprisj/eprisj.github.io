@@ -80855,21 +80855,25 @@
         },
         {
           "id": 17,
-          "title": "Los diez más grandes, No. 9, Vejez",
+          "title": "Los diez más grandes, n.º 9: la vejez",
           "subtitle": "Hilma af Klint · 1907 · témpera sobre papel",
           "fig": "PICS 013",
-          "description": "Hilma af Klint da a la vejez un lenguaje vívido y flotante: campos de lila, bucles y semillas oscuras hacen que el lienzo parezca más crecido que pintado.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+          "description": "Hilma af Klint dota a la vejez de un lenguaje vívido y etéreo: los campos de lilas, los bucles y las semillas oscuras hacen que el lienzo parezca haber crecido por sí solo, en lugar de haber sido pintado.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc634rcvwp73m.jpg",
           "picsOfWeek": true,
           "homeCategory": "painting",
-          "homeTitle": "Diver, Molly Brocklhurst, 2024",
-          "homeSubtitle": "Molly Brocklehurst · 2024 • óleo sobre lienzo",
-          "homeDescription": "Molly Brocklehurst es una pintora británica conocida por sus pinturas al óleo oníricas basadas en fotografías encontradas. Su trabajo explora la memoria, la nostalgia y la línea borrosa entre la realidad y la ficción, creando escenas que parecen fragmentos de un pasado olvidado.",
-          "homeCredit": "@mollbrokenhurst",
+          "homeTitle": "Jim Thorell, Hyperion hummus espino amarillo, 2026",
+          "homeSubtitle": "Jim Thorel · 2026 • óleo sobre lienzo",
+          "homeDescription": "Molly Brocklehurst es una pintora británica conocida por sus pinturas al óleo de carácter onírico, basadas en fotografías encontradas. Su obra explora la memoria, la nostalgia y la difusa línea que separa la realidad de la ficción, creando escenas que parecen fragmentos de un pasado olvidado.",
+          "homeCredit": "@jimthorel",
           "picsId": "PICS-2026-013",
-          "updatedAt": "2026-08-24T22:22:48.352Z",
+          "updatedAt": "2026-10-23T20:35:07.405Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6xwevjygig8g.jpg",
+              "replacedAt": "2026-08-27T23:41:56.350Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt45868wd5pi0w.jpg",
               "replacedAt": "2026-08-24T07:53:54.578Z"
@@ -80883,7 +80887,7 @@
               "replacedAt": "2026-08-22T08:55:10.700Z"
             }
           ],
-          "homeSourceUrl": "https://www.instagram.com/mollybrocklehurst?igsi=MWN2N2tjeGt0NnF1bA=="
+          "homeSourceUrl": "https://www.instagram.com/p/DZ__zUZsIxM/?igsi=MXd2MXA1YmJvcjJvMQ=="
         },
         {
           "id": 18,
