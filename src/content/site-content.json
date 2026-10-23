@@ -80803,20 +80803,24 @@
       "items": [
         {
           "id": 16,
-          "title": "Oval con Puntos",
-          "subtitle": "Henry Moore · 1968–70 · bronce",
+          "title": "Óvalo con puntas",
+          "subtitle": "Henry Moore · 1968-1970 · bronce",
           "fig": "PICS 012",
-          "description": "Dos vacíos convierten un óvalo de bronce en un horizonte cambiante: Henry Moore hace que peso, paisaje y cuerpo humano parezcan inseparables.",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+          "description": "Dos espacios vacíos convierten un óvalo de bronce en un horizonte cambiante: Henry Moore consigue que el peso, el paisaje y el cuerpo humano parezcan inseparables.",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mtc5w0yihz3v69.webp",
           "picsOfWeek": true,
           "homeCategory": "sculpture",
-          "homeTitle": "VESTIDO FANTASMA • BRANDON MORRIS • 2025",
-          "homeSubtitle": "Brandon Morris · 2025 ·Fibra de vidrio y resina",
-          "homeDescription": "Brandon Morris explora la frontera entre moda y escultura, creando su serie Vestido Fantasma con fibra de vidrio y resina. Inspirado en la ropa infantil victoriana, películas de terror como The Ring, y artistas Martin Margiela, Hans Bellmer y Heidi Bucher, imagina vestidos existentes sin un cuerpo.",
+          "homeTitle": "BOLSA DE AGUA «SWEDISH FISH» N.º 94 • DYLAN MARTINAZ • 2026",
+          "homeSubtitle": "Dylan Martínez · 2026 · Vidrio y cerámica",
+          "homeDescription": "Un estudio lúdico sobre la ilusión, la fragilidad y los objetos cotidianos. Dylan Martínez transforma el cristal soplado a mano en una misteriosa bolsa de agua, con un pez de color rojo brillante suspendido en su interior, convirtiendo así una imagen familiar en algo discretamente surrealista.",
           "picsId": "PICS-2026-012",
-          "updatedAt": "2026-08-24T22:22:29.850Z",
+          "updatedAt": "2026-10-23T19:05:06.128Z",
           "picsReleaseId": "PICS-WEEK-2026-001",
           "imageHistory": [
+            {
+              "url": "https://api.eprisjournal.com/uploads/mt6x738935zw1a.jpg",
+              "replacedAt": "2026-08-27T23:36:24.703Z"
+            },
             {
               "url": "https://api.eprisjournal.com/uploads/mt464h3xj7ftes.jpg",
               "replacedAt": "2026-08-24T07:34:13.220Z"
@@ -80834,8 +80838,8 @@
               "replacedAt": "2026-08-22T09:18:18.007Z"
             }
           ],
-          "homeCredit": "@codeunknown_",
-          "homeSourceUrl": "https://www.instagram.com/codeunknown_?igsi=MTNkeWFjMmx4eTZybw=="
+          "homeCredit": "Galería Square One",
+          "homeSourceUrl": "https://www.squareonegallery.com/viewing-room/34-dylan-martinez-swedish-fish-water-bags-the-newest-iteration-of-the-water-bag-series/"
         },
         {
           "id": 17,
