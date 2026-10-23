@@ -98597,14 +98597,13 @@
         },
         {
           "id": 74,
-          "draft": true,
-          "title": "“Aún en construcción”: Una exposición individual de Alexander Brodsky",
+          "title": "“Aún en construcción”: Exposición individual de Alexander Brodsky",
           "author": "Maria Ivanova",
-          "role": "Mesa editorial",
-          "date": "22 de oct de 2026",
-          "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto contemporáneo ruso Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
+          "role": "Redacción editorial",
+          "date": "22 de octubre de 2026",
+          "excerpt": "“Aún en construcción” - exposición individual del artista y arquitecto ruso contemporáneo Alexander Brodsky, que tiene lugar en la galería MAAB + Nina Due en Milán del 6 de octubre al 20 de noviembre.",
           "category": "Arte",
-          "subcategory": "Característica",
+          "subcategory": "Reportaje",
           "tags": [
             "historia",
             "cultura",
@@ -98614,7 +98613,7 @@
           "content": [
             {
               "type": "text",
-              "content": "No es la descripción más convencional de una exposición que hayas encontrado probablemente. Cada reseña se basa en la experiencia personal, pero en este caso particular, no tengo intención de encubrirla por completo."
+              "content": "No es la descripción más convencional de una exposición que probablemente hayas encontrado. Cada reseña se basa en la experiencia personal, pero en este caso particular, no tengo intención de ocultarlo por completo."
             },
             {
               "type": "video",
@@ -98628,7 +98627,22 @@
             },
             {
               "type": "text",
-              "content": "Hoy te llevo de regreso conmigo a una cálida noche milanesa, lo suficientemente generosa como para regalar los sentimientos más cálidos a aquellos que abren sus almas y corazones."
+              "content": "Hoy te llevo de regreso conmigo a una vernissage cálida en Milán, lo suficientemente generosa como para regalar los sentimientos más cálidos a quienes abren sus almas. El artista jugaba ping pong mientras yo observaba una escultura de bronce de un perro, esforzándome por mantener mi sonrisa dentro de mi corazón."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpx7vb36r9u5.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpx7vb36r9u5.poster.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjq6cvdzfe1ee.jpg",
+              "caption": ""
             },
             {
               "type": "text",
@@ -98658,7 +98672,7 @@
             },
             {
               "type": "text",
-              "content": "Algunos artistas tienden a distanciarse de su trabajo, y algunos amantes del arte felizmente separan al creador de la creación. Sin embargo, tengo que confesar mi curiosidad por el tipo de música que suena en el alma del artista. Para mí, el arte no solo se trata de descubrimiento visual, sino también de la relación intrincada entre la persona y la pieza final. A veces, sin embargo, esta curiosidad no juega a mi favor."
+              "content": "Algunos artistas tienden a distanciarse de su trabajo, y algunos amantes del arte separan felizmente al creador de la creación. Sin embargo, tengo que confesar mi curiosidad por el tipo de música que suena en el alma del artista. Para mí, el arte no solo se trata de descubrimiento visual, sino también de la relación intrincada entre la persona y la pieza final. A veces, sin embargo, esta curiosidad no trabaja a mi favor."
             },
             {
               "type": "header",
@@ -98672,55 +98686,55 @@
             },
             {
               "type": "text",
-              "content": "Alexander Brodsky nació en 1955 en Moscú. En su infancia, asistió a la Escuela de Arte de Moscú y consideró convertirse en pintor, pero siguiendo el consejo de su padre, se inscribió en el Instituto de Arquitectura de Moscú."
+              "content": "Alexander Brodsky nació en 1955 en Moscú. En su infancia, asistió a la Escuela de Arte de Moscú y consideró convertirse en pintor, pero por consejo de su padre, se inscribió en el Instituto de Arquitectura de Moscú."
             },
             {
               "type": "text",
-              "content": "Luego, se convirtió en un miembro clave del movimiento de Arquitectura de Papel soviética de los años 1980. Echó raíces en la universidad, donde Brodsky y sus compañeros estudiantes Ilya Utkin y Egor Solopov diseñaron su primer proyecto para la competencia internacional de estudiantes “Teatro del Futuro”."
+              "content": "Luego, se hizo conocido como un miembro clave del movimiento de Arquitectura de Papel soviética de los años 1980. Se arraigó en la universidad, donde Brodsky y sus compañeros estudiantes Ilya Utkin y Egor Solopov diseñaron su primer proyecto para la competencia internacional de estudiantes “Teatro del Futuro”."
             },
             {
               "type": "text",
-              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos: preferirían permanecer invisibles o ser enviados a competencias arquitectónicas extranjeras."
+              "content": "El término Arquitectura de Papel fue acuñado en 1984 por Yuriy Avvakumov y se refiere a la naturaleza en última instancia no construida de los proyectos: que preferirían permanecer invisibles o ser enviados a concursos de arquitectura extranjeros."
             },
             {
               "type": "text",
-              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por ningún medio de suerte, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdón por tales libertades."
+              "content": "En comparación con la práctica convencional de un arquitecto recién graduado en tiempos soviéticos, Alexander Brodsky e Ilya Utkin llevaban un cierto grado de libertad, que no venía por ningún medio de suerte, sino por intención multiplicada por disfrute. El último componente es mi suposición, pero perdónenme por tales libertades."
             },
             {
               "type": "text",
-              "content": "En una entrevista con Blueprint en 2018, a Brodsky le preguntaron si le molestaba perder su primera oportunidad de visitar la FRG, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez genuina: <i>“Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”</i>"
+              "content": "En una entrevista con Blueprint en 2018, a Brodsky le preguntaron si estaba molesto por perder su primera oportunidad de visitar la FRG, y el comienzo de su respuesta me conquistó con su sinceridad y sencillez genuina: <i>“Fue un poco decepcionante, pero honestamente, nos importaba un bledo. De todos modos, nos estábamos divirtiendo.”</i>"
             },
             {
               "type": "text",
-              "content": "Para Alexander Brodsky, cambiar de arquitecto a artista contemporáneo fue bastante fluido y orgánico. En 1988, las obras que él y Utkin produjeron fueron publicadas en un periódico, donde llamaron la atención de la galería Storefront en Nueva York. Los artistas soviéticos enviaron sus grabados a los EE. UU., envolviéndolos alrededor de un bastón de esquí roto."
+              "content": "Para Alexander Brodsky, cambiar de arquitecto a artista contemporáneo fue bastante fluido y orgánico. En 1988, las obras que él y Utkin produjeron fueron publicadas en un periódico, donde llamaron la atención de la galería Storefront en Nueva York. Los artistas soviéticos enviaron sus grabados a Estados Unidos, envolviéndolos alrededor de un bastón de esquí roto."
             },
             {
               "type": "text",
-              "content": "Pero más allá de Paper Architecture, Alexander Brodsky es bien conocido por sus instalaciones, que parecen poesía a través de la naturaleza efímera de las emociones frágiles que evocan."
+              "content": "Pero más allá de Paper Architecture, Alexander Brodsky es bien conocido por sus instalaciones, que se parecen a la poesía a través de la naturaleza efímera de las emociones frágiles que evocan."
             },
             {
               "type": "gallery",
               "content": [
-                "https://api.eprisjournal.com/uploads/mvjnlij951nznt.jpg",
+                "https://api.eprisjournal.com/uploads/mvjqc5dwb0fvm7.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnnkqxl697tl.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnp5wq72fi0i.jpg",
                 "https://api.eprisjournal.com/uploads/mvjnr8nne9w7xc.jpg"
               ],
               "caption": "",
               "alts": [
-                "Rotonda de Alexander Brodsky, Kaluga, Federación Rusa. Foto por Yuri Palmin",
+                null,
                 "15 Biennale di Venezia. The Shed Venezia, Italia. Foto por Yuri Palmin",
                 "Ice Bar Pirogovo, Federación Rusa. Foto por Yuri Palmin",
-                "Pabellón de Vodka Pirogovo, Federación Rusa. Foto por Yuri Palmin"
+                "Vodka Pavilion Pirogovo, Federación Rusa. Foto por Yuri Palmin"
               ]
             },
             {
               "type": "text",
-              "content": "Cada estructura temporal hecha con materiales u objetos usados a menudo echa raíces en recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de luz, escala, visibilidad, la presencia del tiempo y espíritu: el espíritu del lugar que habita, la memoria y sueños que transmite, o la intención inigualable del autor."
+              "content": "Cada estructura temporal hecha con materiales u objetos usados a menudo echa raíces en los recuerdos, que el artista puede articular brillantemente y transformar en forma tangible. La narrativa discernible está codificada en las interrelaciones de luz, escala, visibilidad, la presencia del tiempo y espíritu: el espíritu del lugar que habita, la memoria y sueños que transmite, o la intención del autor irrepetible."
             },
             {
               "type": "text",
-              "content": "El genio de su trabajo reside en la resonancia emocional con la mundanidad íntima conocida por el alma rusa, que, a través de los medios de la atmósfera, se vuelve accesible para todos. Alexander Brodsky es un artista reconocido internacionalmente cuyas obras están en las colecciones del Museo Ruso, MoMA y Tate Modern."
+              "content": "El genio de su trabajo radica en la resonancia emocional con la mundanidad íntima conocida por el alma rusa, que, a través de los medios de la atmósfera, se vuelve accesible para todos. Alexander Brodsky es un artista de renombre internacional cuyas obras están en las colecciones del Museo Ruso, MoMA y Tate Modern."
             },
             {
               "type": "header",
@@ -98728,11 +98742,11 @@
             },
             {
               "type": "text",
-              "content": "La galería MAAB está ubicada cerca de Piazza Cordusio, desde donde calles estrechas te llevan a Via Nerino 3."
+              "content": "MAAB Gallery está ubicada cerca de Piazza Cordusio, desde donde calles estrechas te llevan a Via Nerino 3."
             },
             {
               "type": "text",
-              "content": "Frente a la entrada, fui recibido por una de las esculturas de pared. La colección exhibida consiste en siete esculturas colgadas en la pared, una escultura de perro hecha a partir de un dibujo de los años 80, y Archipelagus Aequitatis Universalis."
+              "content": "En frente de la entrada, fui recibido por una de las esculturas en la pared. La colección exhibida consiste en siete esculturas colgadas en la pared, una escultura de perro hecha a partir de un dibujo de los años 1980, y Archipelagus Aequitatis Universalis."
             },
             {
               "type": "video",
@@ -98758,7 +98772,7 @@
             },
             {
               "type": "text",
-              "content": "Enriquecido con textura y ritmo de detalles, ejecutado en arcilla sin cocer, ciertamente llama la atención a primera vista. Un deseo irresistible de acercarse y estudiarlos cuidadosamente revela los patrones minuciosos de contrarrelieve, estructura y orden que mantienen los objetos dentro del marco de imágenes reconocibles, sin nombrar nada con precisión."
+              "content": "Enriquecidas con textura y ritmo de detalles, ejecutadas en arcilla sin cocer, ciertamente llaman la atención a primera vista. Un deseo irresistible de acercarse y estudiarlas cuidadosamente revela los patrones minuciosos de contrarrelieve, estructura y orden que mantienen los objetos dentro del marco de imágenes reconocibles, sin nombrar nada con precisión."
             },
             {
               "type": "video",
@@ -98772,28 +98786,20 @@
             },
             {
               "type": "text",
-              "content": "Cada escultura indudablemente evoca arquitectura, pero cada uno encontrará algo propio en ella: alguien recordará una fachada de vivienda residencial típica, otros verán una ciudad abandonada o imaginaria."
+              "content": "Cada escultura indudablemente evoca arquitectura, pero todos encontrarán algo propio en ella: alguien recordará una fachada de vivienda residencial típica, otros verán una ciudad abandonada o imaginaria."
             },
             {
               "type": "text",
-              "content": "Alguien se sumergirá en la melancolía, mientras que otra persona recordará un sentimiento olvidado hace mucho tiempo de curiosidad infantil, evocado por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
+              "content": "Alguien estará sumido en la melancolía, mientras que otra persona recordará un sentimiento olvidado hace mucho tiempo de curiosidad infantil, evocada por el misterio, la ambigüedad y la escala, donde es imposible encontrar la verdad. Como si detrás de cada ventana improvisada y cada columna, las personas se escondieran con la respiración contenida, sosteniendo hilos en sus manos, atándolos a otros guardianes de secretos."
             },
             {
               "type": "text",
-              "content": "El material en bruto deja las esculturas sin terminar – cambian de forma orgánica con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo puede adquirirse a través de la prueba del tiempo."
+              "content": "El material en bruto deja las esculturas inacabadas – cambian orgánicamente con el paso del tiempo, ganando nuevas arrugas. Es fascinante cuán tolerantes somos con el envejecimiento en el arte; no simplemente representa la edad, sino que elabora el contexto y añade encanto, que solo se puede obtener a través de la prueba del tiempo."
             },
             {
               "type": "image",
-              "content": "https://api.eprisjournal.com/uploads/mvjnu2pltxyy1m.jpg",
+              "content": "https://api.eprisjournal.com/uploads/mvjp8jg4mszsbg.jpg",
               "caption": ""
-            },
-            {
-              "type": "video",
-              "mediaKind": "gif",
-              "content": "",
-              "caption": "",
-              "loop": true,
-              "muted": true
             },
             {
               "type": "header",
@@ -98801,31 +98807,56 @@
             },
             {
               "type": "text",
-              "content": "No recomiendo leer esta parte si planea visitar la exposición. Si no se imagina en el espacio en un futuro cercano, será más que bienvenido a leer el ensayo corto a continuación."
+              "content": "No recomiendo leer esta parte si planeas visitar la exposición. Si no te imaginas en el espacio en un futuro cercano, eres más que bienvenido a leer el ensayo corto a continuación."
             },
             {
               "type": "text",
-              "content": "Mientras explora la galería, encontrará una cortina gruesa, a prueba de luz, frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
+              "content": "Mientras exploras la galería, encontrarás una cortina gruesa y a prueba de luz frente a la escalera. A simple vista, no parece algo que invite a los visitantes."
             },
             {
               "type": "text",
-              "content": "Pero una vez que entra en el espacio, el cubo blanco abierto y acogedor da paso inmediatamente a una oscuridad envolvente. Como si entrara de la luz brillante del sol, por un segundo intenta buscar el significado de la habitación – luego se despliega justo frente a usted."
+              "content": "Pero una vez que entras en el espacio, el cubo blanco abierto y acogedor da paso a una oscuridad envolvente. Como si entraras de la luz brillante del sol, por un segundo intentas buscar el significado de la habitación – luego se despliega justo frente a ti."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.mp4",
+              "caption": ",",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpo01jxvm07a.poster.jpg"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjqg4zfv6vt8d.jpg",
+              "caption": ""
             },
             {
               "type": "text",
-              "content": "Su mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puede percibirla como una pintura, pero con cada paso más cerca, descubre la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
+              "content": "Tu mirada es suavemente atrapada por una ventana rectangular alargada a la altura de los ojos. Al principio, puedes percibirla como una pintura, pero con cada paso más cerca, descubres la profundidad del espacio detrás del cristal, que alberga el foco central de la habitación oscura – una instalación, Archipelagus Aequitatis Universalis, creada por primera vez para la Cascais Water Biennale bajo la curaduría de Demetrio Paparoni."
             },
             {
               "type": "text",
-              "content": "Es un planeta sumergido imaginario con los restos de islas autónomas idénticas. La escultura está ubicada en una caja espejada que borra ópticamente los límites del entorno y nos sumerge en un mundo abandonado infinito. El nombre se traduce del latín como Archipiélago de la Equidad Universal."
+              "content": "Es un planeta sumergido imaginario con los restos de islas autónomas idénticas. La escultura se encuentra en una caja espejada que borra ópticamente los límites del entorno y nos sumerge en un mundo abandonado infinito. El nombre se traduce del latín como Archipiélago de la Equidad Universal."
+            },
+            {
+              "type": "video",
+              "mediaKind": "gif",
+              "content": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.mp4",
+              "caption": "",
+              "loop": true,
+              "muted": true,
+              "videoWebm": "",
+              "poster": "https://api.eprisjournal.com/uploads/mvjpouhw6f1qvp.poster.jpg"
             },
             {
               "type": "text",
-              "content": "El núcleo del proyecto es una competencia mundial por el agua, uno de los recursos más codiciados en nuestro planeta. La solución utópica del artista es demoler todo lo hecho por el hombre y creado naturalmente por encima del nivel del mar y hundir todos los escombros en cavidades submarinas para elevar el nivel del agua. Este cambio drástico resultaría en que el océano cubriera toda la superficie de la Tierra."
+              "content": "El núcleo del proyecto es una competencia mundial por el agua, uno de los recursos más buscados en nuestro planeta. La solución utópica del artista es demoler todo lo hecho por el hombre y creado naturalmente por encima del nivel del mar y hundir todos los escombros en cavidades submarinas para elevar el nivel del agua. Este cambio drástico resultaría en que el océano cubriera toda la superficie de la Tierra."
             },
             {
               "type": "text",
-              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo alojando una torre cuadrada de 20–30 metros de altura, que albergaría una familia, una empresa o un ermitaño."
+              "content": "Para un acceso igualitario al agua, la superficie se dividiría en una cuadrícula de parcelas de 1 km², cada nodo albergaría una torre cuadrada de 20–30 metros de altura, que alojaría a una familia, una empresa o un ermitaño."
             },
             {
               "type": "text",
@@ -98841,7 +98872,12 @@
             },
             {
               "type": "text",
-              "content": "La soledad, el abandono, la eternidad superpuesta y la absurdidad de los conflictos globales se expresan brillantemente a través de la escultura y el espacio, sin dejarte ninguna oportunidad de permanecer solo ligeramente o imperceptiblemente afectado."
+              "content": "La soledad, el abandono, la eternidad superpuesta y la absurdidad de los conflictos globales se expresan de manera brillante a través de la escultura y el espacio, sin dejarte ninguna oportunidad de permanecer solo ligeramente o imperceptiblemente afectado."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvjpu97kartplx.webp",
+              "caption": ""
             },
             {
               "type": "text",
@@ -98849,11 +98885,13 @@
             },
             {
               "type": "text",
-              "content": "Si todavía no estás seguro de si deberías visitar las exposiciones, mi humilde consejo es dejarte vulnerable a lo que suceda cuando encuentres una pieza de arte contemporáneo. No te defiendas, no intentes cuestionar o entender todo a primera vista. De lo contrario, podrías perder la esencia en el caos de tus propios pensamientos y sus complejidades. Déjalo que suceda contigo."
+              "content": "Si aún no estás seguro de si debes visitar las exposiciones, mi humilde consejo es dejarte ser vulnerable a lo que suceda cuando encuentres una pieza de arte contemporáneo. No te defiendas, no intentes cuestionar o entender todo a simple vista. De lo contrario, podrías perder la esencia en el caos de tus propios pensamientos y sus complejidades. Déjalo suceder contigo."
             }
           ],
-          "updatedAt": "2026-10-22T15:03:56.222Z",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
+          "updatedAt": "2026-10-23T04:20:53.978Z",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg",
+          "previewToken": "00412802310c7b5271536852",
+          "publishAt": "2026-10-22T16:10:20.355Z"
         }
       ],
       "reviews": [
