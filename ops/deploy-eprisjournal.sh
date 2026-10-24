@@ -1,75 +1,151 @@
-#!/bin/bash
-set -e
-cd /opt/builds/eprisjournal
+#!/usr/bin/env bash
+# Fetch, build and publish EPRIS Journal without overlapping deploys or
+# replacing the live tree with a half-written build.
+set -Eeuo pipefail
+umask 027
 
-# ── Drift guard: catch hand-edits to the served files before they're lost ──
-# rsync --delete below replaces /var/www/eprisjournal wholesale on every
-# deploy, and a deploy fires within ~2 minutes of ANY new commit (including
-# the automated nightly content snapshot) — so a file edited directly in
-# /var/www (skipping git entirely) survives for an unpredictable window of
-# minutes to hours, then vanishes with no trace and no error. This happened
-# for real on 2026-08-02: admin/app.js was hand-edited on the server and
-# would have been silently overwritten by the next deploy.
-#
-# dist/admin/ still holds this build's *previous* output at this point —
-# vite hasn't run yet — so it's the correct "what the live file should be"
-# reference. A mismatch here means someone touched /var/www since the last
-# deploy, independent of whatever this new commit changes. Never blocks the
-# deploy; a false positive here must not stop the site from updating.
-DRIFT_BACKUP_DIR="/opt/eprisjournal-drift-backups"
-DRIFT_LOG="/var/log/eprisjournal-drift.log"
+REPO=/opt/builds/eprisjournal
+LIVE=/var/www/eprisjournal
+RELEASES=/var/www/eprisjournal-releases
+LOCK=/run/lock/eprisjournal-deploy.lock
+LOG=/var/log/eprisjournal-deploy.log
+ASKPASS=/opt/epris-github-askpass
+MODE=${1:---manual}
+
+exec 9>"$LOCK"
+flock -n 9 || exit 0
+
+log() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
+fail() { log "FATAL: $*" >&2; exit 1; }
+
+export GIT_ASKPASS="$ASKPASS"
+export GIT_TERMINAL_PROMPT=0
+[ -x "$ASKPASS" ] || fail "missing executable $ASKPASS"
+
+cd "$REPO"
+
+# Every build rewrites this tracked file (scripts/media-ratios.mjs), so what the
+# previous build left behind is not a hand edit. Without this the guard below
+# refused every deploy after the first one (2026-10-23 .. 24).
+git checkout -- src/content/media-ratios.json 2>/dev/null || true
+
+# Hand-edited tracked files are never silently overwritten. Ignored runtime
+# snapshots are fine; tracked changes require a human to reconcile them.
+git diff --quiet || fail "tracked worktree changes; refusing to deploy"
+git diff --cached --quiet || fail "staged worktree changes; refusing to deploy"
+
+log "checking GitHub main..."
+git fetch --prune origin main || fail "git fetch failed"
+LOCAL=$(git rev-parse HEAD)
+REMOTE=$(git rev-parse origin/main)
+
+if [ "$LOCAL" = "$REMOTE" ] && [ "$MODE" = "--poll" ]; then
+  exit 0
+fi
+
+if [ "$LOCAL" != "$REMOTE" ]; then
+  git merge --ff-only origin/main || fail "origin/main is not a fast-forward; manual reconciliation required"
+  RELEASE_SHA=$(git rev-parse HEAD)
+else
+  RELEASE_SHA="$LOCAL"
+fi
+
+log "building $RELEASE_SHA..."
+npm ci --silent || fail "npm ci failed"
+NODE_OPTIONS="--max-old-space-size=1400" ./node_modules/.bin/vite build || fail "vite build failed"
+node scripts/generate-og-pages.mjs || fail "OG page generation failed"
+
+[ -s dist/index.html ] || fail "dist/index.html missing after build"
+printf '%s\n' "$RELEASE_SHA" > dist/.epris-build
+
+# Compare the previous build with the served tree before replacing it. A
+# direct server edit is preserved in the drift archive and reported, not lost.
+DRIFT_BACKUP_DIR=/opt/eprisjournal-drift-backups
+DRIFT_LOG=/var/log/eprisjournal-drift.log
+LIVE_DIR=$(readlink -f "$LIVE" 2>/dev/null || printf '%s' "$LIVE")
 drift_found=0
-if [ -d dist/admin ] && [ -d /var/www/eprisjournal/admin ]; then
+if [ -d dist/admin ] && [ -d "$LIVE_DIR/admin" ]; then
   for f in dist/admin/*.js dist/admin/*.html dist/admin/*.css; do
     [ -f "$f" ] || continue
     name=$(basename "$f")
-    live="/var/www/eprisjournal/admin/$name"
-    if [ -f "$live" ] && ! cmp -s "$f" "$live"; then
+    live_file="$LIVE_DIR/admin/$name"
+    if [ -f "$live_file" ] && ! cmp -s "$f" "$live_file"; then
       drift_found=1
       mkdir -p "$DRIFT_BACKUP_DIR"
       stamp=$(date +%Y%m%d-%H%M%S)
-      cp "$live" "$DRIFT_BACKUP_DIR/${name}.${stamp}"
-      echo "[$(date)] DRIFT: $name differs from last deploy — hand-edited live? Saved to $DRIFT_BACKUP_DIR/${name}.${stamp}" | tee -a "$DRIFT_LOG"
+      cp -- "$live_file" "$DRIFT_BACKUP_DIR/${name}.${stamp}"
+      echo "[$(date)] DRIFT: $name saved to $DRIFT_BACKUP_DIR/${name}.${stamp}" >> "$DRIFT_LOG"
     fi
   done
 fi
-if [ "$drift_found" = "1" ]; then
-  echo "[eprisjournal] drift detected and backed up — see $DRIFT_LOG" | tee -a "$DRIFT_LOG"
+[ "$drift_found" = 0 ] || log "warning: live admin drift archived in $DRIFT_BACKUP_DIR"
+
+# Stage the complete release under a commit-specific directory, then switch
+# one symlink. Nginx sees either the old complete release or the new one.
+mkdir -p "$RELEASES"
+chown root:nginx "$RELEASES"
+chmod 0750 "$RELEASES"
+RELEASE_DIR="$RELEASES/$RELEASE_SHA"
+rm -rf -- "$RELEASE_DIR"
+mkdir -p "$RELEASE_DIR"
+rsync -a --delete dist/ "$RELEASE_DIR/" || fail "release rsync failed"
+
+# Вкладки, открытые до деплоя, продолжают просить чанки прошлого релиза:
+# имена содержат хеш содержимого, старый каталог жив, но недостижим по
+# адресу — и вкладка получает 404 вместо кода. Переносим ассеты прошлого
+# релиза в новый: имена по содержимому, конфликтовать нечему. При деплое
+# раз в 2 минуты недельное окно копило гигабайты старых чанков в каждом
+# релизе; суток с запасом хватает любой открытой вкладке.
+ASSET_GRACE_DAYS=1
+PREV_DIR=$(readlink -f "$LIVE" 2>/dev/null || true)
+if [ -n "$PREV_DIR" ] && [ -d "$PREV_DIR/assets" ] && [ "$PREV_DIR" != "$RELEASE_DIR" ]; then
+  rsync -a --ignore-existing "$PREV_DIR/assets/" "$RELEASE_DIR/assets/" \
+    || log "warning: carrying previous assets forward failed"
+  find "$RELEASE_DIR/assets" -type f -mtime +$ASSET_GRACE_DAYS -delete 2>/dev/null || true
+  log "carried forward $(ls -1 "$RELEASE_DIR/assets" | wc -l) assets (grace ${ASSET_GRACE_DAYS}d)"
+fi
+chown -R nginx:nginx "$RELEASE_DIR"
+# umask 027 вище лишає файли в режимі 640; якщо chown не спрацював,
+# nginx не може їх прочитати і віддає 403 (так лягла /admin/ 28.08.2026).
+# Статика публічна, тому режим доступу проставляємо явно.
+chmod -R a+rX "$RELEASE_DIR"
+chcon -R -t httpd_sys_content_t "$RELEASE_DIR" 2>/dev/null || true
+
+NEXT="$LIVE.next"
+rm -f -- "$NEXT"
+ln -s "$RELEASE_DIR" "$NEXT"
+if [ -L "$LIVE" ]; then
+  mv -Tf -- "$NEXT" "$LIVE"
+else
+  LEGACY="$RELEASES/legacy-$(date +%Y%m%d-%H%M%S)"
+  mv -- "$LIVE" "$LEGACY"
+  mv -Tf -- "$NEXT" "$LIVE"
 fi
 
-echo "[eprisjournal] pulling latest..."
-git pull origin main
-echo "[eprisjournal] installing deps..."
-npm ci --silent
-echo "[eprisjournal] building..."
-# Two separate commands, NOT "vite build && node ...".
-#
-# set -e is ignored for every command of an AND-OR list except the last, so a
-# failed build in "vite build && node og-pages" did not stop this script: on
-# 2026-08-16 the build died with a V8 heap OOM and the next line happily
-# rsynced the PREVIOUS dist over the webroot and logged "done". The site kept
-# serving a stale build while every log line said the deploy had succeeded.
-#
-# The heap cap is deliberate too. Node sizes its old space from total RAM
-# (~870MB on this 1.7GB box) and this build peaks just above that; the box has
-# 2GB of swap to absorb the difference, so raising the ceiling is what lets the
-# build finish instead of aborting.
-NODE_OPTIONS="--max-old-space-size=1400" npx vite build
-node scripts/generate-og-pages.mjs
+# Keep the current release plus one rollback point (звужено 28.08.2026 через диск).
+# Legacy first-boot trees
+# are retained by age and are not touched by this prune.
+mapfile -t OLD_RELEASES < <(
+  find "$RELEASES" -mindepth 1 -maxdepth 1 -type d -name '[0-9a-f]*' -printf '%T@ %p\n' |
+    sort -nr | awk 'NR > 2 { $1=""; sub(/^ /, ""); print }'
+)
+for old in "${OLD_RELEASES[@]}"; do
+  [ -n "$old" ] && rm -rf -- "$old"
+done
 
-# Belt and braces: never ship a dist that this run did not produce. If the
-# build somehow exits 0 without writing anything, that is still a stale deploy.
-if [ ! -f dist/index.html ]; then
-  echo "[eprisjournal] FATAL: dist/index.html missing after build — not deploying" >&2
-  exit 1
+# ── Сповістити пошуковики ────────────────────────────────────────────
+# Жоден із цих викликів не має права зламати викат: сайт уже розгорнуто,
+# і невдале сповіщення це не привід повертати попередню збірку. Тому
+# помилки лише пишуться в журнал.
+INDEXNOW_KEY="b7f3d9a14c2e48f0b6d5a83e1c7f9024"
+URL_LIST="$LIVE/indexnow-urls.txt"
+if [ -f "$URL_LIST" ]; then
+  URLS_JSON=$(awk 'NF{printf "%s\"%s\"", (NR>1?",":""), $0}' "$URL_LIST")
+  BODY="{\"host\":\"eprisjournal.com\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://eprisjournal.com/$INDEXNOW_KEY.txt\",\"urlList\":[$URLS_JSON]}"
+  CODE=$(curl -s -o /dev/null -w "%{http_code}" -m 25 -X POST "https://api.indexnow.org/indexnow" \
+    -H "Content-Type: application/json; charset=utf-8" -d "$BODY" 2>/dev/null || echo fail)
+  log "IndexNow: $CODE ($(grep -c . "$URL_LIST") адрес)"
 fi
-if [ -n "$(find dist/index.html -mmin +10)" ]; then
-  echo "[eprisjournal] FATAL: dist/index.html is older than 10 minutes — build did not run, not deploying" >&2
-  exit 1
-fi
+curl -s -o /dev/null -m 15 "https://www.bing.com/ping?sitemap=https%3A%2F%2Feprisjournal.com%2Fsitemap.xml" 2>/dev/null || true
 
-echo "[eprisjournal] deploying..."
-rsync -a --delete dist/ /var/www/eprisjournal/
-chown -R nginx:nginx /var/www/eprisjournal
-chcon -R -t httpd_sys_content_t /var/www/eprisjournal/
-echo "[eprisjournal] done ✓"
+log "deployed $RELEASE_SHA ✓"
