@@ -551,6 +551,7 @@ const ROUTES = {
   stage: 'Stage, a scene-building tool by EPRIS Bureau',
   codex: 'Как работать с машиной · мануал редакции',
   expertise: 'Машина в искусствоведческой экспертизе · курс',
+  book: 'Sunset of the Midnight Sun · a novel by Vyacheslav Munister',
   sunsetofthemidnightsun: 'Sunset of the Midnight Sun · a novel by Vyacheslav Munister',
 };
 
@@ -592,12 +593,13 @@ const ROUTE_DESCRIPTIONS = {
   set: SHOWCASE_DESCRIPTION,
   stage: 'Build a scene in metres, plan, section and volume driven by one model, and try the moves from EPRIS Bureau on it.',
   codex: 'Мануал для тех, кто ведёт исследование в искусстве: как превратить тему в вопрос, смотреть на вещь и работать с фрагментом, не смешать первоисточник с чужим выводом, разобрать корпус текстов, проверить цитаты, собрать и посчитать данные о собрании. Токены и цена простыми словами. Полные разборы на живых музейных данных, включая случай, где честный ответ это «по этим данным нельзя». С адресами источников и библиотекой запросов.',
+  book: 'Autumn 1922. As the last White stronghold on the Pacific falls, a steamer carries refugees from Vladivostok towards America and is wrecked on the coast of the Alaska Panhandle. A forthcoming novel by Vyacheslav Munister, co-editor of EPRIS Journal.',
   sunsetofthemidnightsun: 'Autumn 1922. As the last White stronghold on the Pacific falls, a steamer carries refugees from Vladivostok towards America and is wrecked on the coast of the Alaska Panhandle. A forthcoming novel by Vyacheslav Munister, co-editor of EPRIS Journal.',
   expertise: 'Курс Вячеслава Мунистера для тех, кто подписывает экспертные заключения. Девять модулей: провенанс и его разрывы, границы стилистической атрибуции, тиражная скульптура и посмертные отливки, датировка по материалу и документам, чтение лабораторных отчётов, признаки сконструированной истории бытования, структура заключения и ответственность. С заданиями на собственном материале.',
 };
 
 // Aliases that must not compete with their canonical route in search results.
-const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', works: 'showcase', set: 'showcase', futuroshock: 'museum', vitrine: 'museum' };
+const ALIAS_ROUTES = { collaboation: 'collaboration', collab: 'collaboration', works: 'showcase', set: 'showcase', futuroshock: 'museum', vitrine: 'museum', sunsetofthemidnightsun: 'book' };
 
 function routeHead(route, label) {
   const canonicalRoute = ALIAS_ROUTES[route] || route;
