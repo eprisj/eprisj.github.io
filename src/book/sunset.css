@@ -1,0 +1,90 @@
+/* Страница книги. Гарнитуры и цвета книги (design/template.typ), раскладка
+   как у обложки: волосяные линейки,
+   разрядка прописных, одна картинка. Всё под .sunset-root, чтобы не
+   протечь в остальные разделы. */
+.sunset-root{
+  --s-paper:#ffffff;
+  --s-ink:#1b1a18;
+  --s-muted:#6b665e;
+  --s-rule:rgba(27,26,24,.9);
+  --s-display:'Cormorant Garamond','EB Garamond',Georgia,serif;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  background:var(--s-paper);
+  color:var(--s-ink);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:19px;line-height:1.55;
+}
+.sunset-root *{box-sizing:border-box}
+
+.sunset-top,.sunset-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:0 clamp(16px,5vw,56px);
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+}
+.sunset-top{height:58px;background:#111;color:#fff}
+.sunset-foot{justify-content:center;margin-top:auto;padding-block:22px;border-top:1px solid var(--s-rule);color:var(--s-muted)}
+.sunset-mark{
+  font-family:var(--s-display);font-size:15px;font-weight:600;letter-spacing:.46em;
+  color:#fff;text-decoration:none;
+}
+
+.sunset-main{
+  width:100%;max-width:1120px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);
+  gap:clamp(32px,6vw,88px);align-items:start;
+  padding:clamp(32px,6vw,80px) clamp(16px,5vw,56px);
+}
+
+.sunset-cover img{
+  display:block;width:100%;height:auto;aspect-ratio:2/3;
+  border:1px solid rgba(17,17,17,.14);
+  box-shadow:0 28px 50px -28px rgba(0,0,0,.35);
+}
+
+.sunset-status{
+  display:inline-block;margin:0 0 22px;padding:6px 12px;
+  background:var(--s-ink);color:#fff;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+}
+.sunset-text h1{
+  margin:0;font-family:var(--s-display);font-weight:500;
+  font-size:clamp(40px,5.6vw,68px);line-height:1.04;letter-spacing:-.01em;
+}
+.sunset-kind{margin:14px 0 0;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--s-muted)}
+.sunset-by{
+  margin:26px 0 0;padding:14px 0;border-top:1px solid var(--s-rule);border-bottom:1px solid var(--s-rule);
+  font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+}
+.sunset-by span{display:block;margin-top:4px;font-size:10px;color:var(--s-muted)}
+
+.sunset-hook{margin:30px 0 0;font-family:var(--s-display);font-weight:500;font-size:clamp(24px,2.6vw,31px);line-height:1.25}
+.sunset-blurb{margin:16px 0 0;max-width:34em}
+/* Буквица на три строки, как в начале глав книги. */
+.sunset-lead::first-letter{
+  float:left;margin:.06em .1em 0 0;
+  font-family:var(--s-display);font-weight:500;font-size:3.6em;line-height:.8;
+}
+.sunset-ornament{margin:22px 0 0;max-width:34em;text-align:center;color:var(--s-muted);font-size:20px}
+
+.sunset-facts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+  margin:32px 0 0;padding:16px 0;border-top:1px solid var(--s-rule);border-bottom:1px solid var(--s-rule);
+}
+.sunset-facts dt{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--s-muted)}
+.sunset-facts dd{margin:4px 0 0;font-size:18px}
+
+.sunset-notify{
+  display:inline-block;margin-top:30px;padding:14px 26px;
+  background:var(--s-ink);color:#fff;text-decoration:none;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+}
+.sunset-notify:hover{background:#333}
+.sunset-follow{margin-top:26px;color:var(--s-muted)}
+.sunset-follow a{color:var(--s-ink)}
+
+@media (max-width:760px){
+  .sunset-main{grid-template-columns:1fr;gap:36px}
+  .sunset-cover{max-width:300px;width:80%;margin:0 auto}
+  .sunset-facts{grid-template-columns:1fr 1fr}
+}

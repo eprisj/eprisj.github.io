@@ -15,6 +15,7 @@ const ShowcasePage = lazy(() => import('./showcase/ShowcasePage').then((m) => ({
 const BureauPage = lazy(() => import('./showcase/BureauPage').then((m) => ({ default: m.BureauPage })));
 const CodexPage = lazy(() => import('./codex/CodexPage').then((m) => ({ default: m.CodexPage })));
 const ExpertisePage = lazy(() => import('./expertise/ExpertisePage').then((m) => ({ default: m.ExpertisePage })));
+const SunsetPage = lazy(() => import('./book/SunsetPage').then((m) => ({ default: m.SunsetPage })));
 const StagePage = lazy(() => import('./stage/StagePage').then((m) => ({ default: m.StagePage })));
 import { ratioOf, rememberRatio } from './lib/mediaRatio';
 const FormPage = lazy(() => import('./pages/FormPage').then((m) => ({ default: m.FormPage })));
@@ -4654,6 +4655,10 @@ export default function App() {
      у мануала: глубокие адреса отдаёт SPA-заглушка 404.html. */
   if (/^\/expertise(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#ffffff]" />}><ExpertisePage /></Suspense>;
+  }
+  /* Страница готовящейся книги соредактора. */
+  if (/^\/sunsetofthemidnightsun\/?$/i.test(window.location.pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><SunsetPage /></Suspense>;
   }
   if (/^\/stage\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#1a0b10]" />}><StagePage /></Suspense>;
