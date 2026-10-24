@@ -19,7 +19,7 @@ const BOOK = {
   author: 'Vyacheslav Munister',
   authorRole: 'Co-editor, EPRIS Journal',
   status: 'Coming 2026',
-  cover: '/uploads/sunset-cover-riders.jpg',
+  cover: '/uploads/sunset-cover-barcode.jpg',
   hook: 'The last stronghold on the Pacific has fallen.',
   blurb: [
     'Autumn 1922. A steamer slips out of Vladivostok with hundreds of people who have lost a country and are not sure what they are carrying instead. A storm, a wreck on the coast of the Alaska Panhandle, a winter among strangers, and an old story about who gets to call a land theirs.',
