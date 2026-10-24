@@ -103144,21 +103144,21 @@
         {
           "id": 22,
           "slug": "rooms-that-watch-you-back",
-          "title": "İzleyen Odalar",
+          "title": "Sana Karşılık Veren Odalar",
           "author": "Viacheslav Munister",
           "authorId": "author-1784732936927-kw554",
-          "role": "Contributing Editor",
-          "date": "August 15, 2026",
-          "excerpt": "Cam bir zamanlar özgürlük, dürüstlük ve ışık vaat etmişti. Sonra duvarlar veri toplamayı öğrendi. Şeffaf mimarlık, kontrollü görünürlük ve kaybolma özgürlüğünün radikal lüksü üzerine bir deneme.",
-          "category": "Architecture",
-          "subcategory": "Critical Essay",
+          "role": "Katkıda Bulunan Editör",
+          "date": "15 Ağustos 2026",
+          "excerpt": "Cam bir zamanlar özgürlük, dürüstlük ve ışık vaat ediyordu. Sonra duvarlar veri toplamayı öğrendi. Şeffaf mimari, kontrollü görünürlük ve ortadan kaybolmaya izin verilmesinin sunduğu radikal lüks üzerine bir deneme.",
+          "category": "Mimarlık",
+          "subcategory": "Eleştirel Deneme",
           "tags": [
-            "Architecture",
-            "Design",
-            "Glass",
-            "Privacy",
-            "Surveillance",
-            "Modernism"
+            "Mimarlık",
+            "Tasarım",
+            "Cam",
+            "Gizlilik",
+            "Gözetim",
+            "Modernizm"
           ],
           "imageSeed": "glass-architecture-surveillance-night",
           "imageUrl": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
@@ -103166,87 +103166,87 @@
           "content": [
             {
               "type": "text",
-              "content": "Gece boyunca, her cam bina sadakatini değiştirir. Gündüz gökyüzünü ödünç alır ve şehrin temiz bir görüntüsünü geri verir. Karanlıkta yansıma çöker. Masalar, asansörler, mutfaklar ve bedenler yığılmış dikdörtgenlerde görünür, her oda delil gibi aydınlatılmıştır. Geç saat çalışan bir kişi yükselişin parçası olur. Bir cam yıkayan kişi bir mimarın çiziminde hareketli bir detay haline gelir. Vaad açık olmaktı. His ise maruz kalmaktır."
+              "content": "Geceleri, her cam bina taraf değiştirir. Gündüzleri gökyüzünü ödünç alır ve şehrin net bir görüntüsünü yansıtır. Hava karardığında bu yansıma yok olur. Masalar, asansörler, mutfaklar ve insanlar üst üste yığılmış dikdörtgenler halinde belirir; her oda bir kanıtmışçasına aydınlatılır. Geç saatlere kadar çalışan bir kişi, binanın cephesinin bir parçası haline gelir. Camı silen biri, bir mimarın çizimindeki hareketli bir detay haline gelir. Vaad edilen açıklıktı. Yaşanan his ise ifşa olmaktır."
             },
             {
               "type": "text",
-              "content": "Gizli tutmayı reddeden alanlarda belirli bir huzursuzluk vardır. Bunu, resepsiyonistin asansörü görebildiği lobide, asansör resepsiyoncuyu göremeden; göz seviyesinde nazikçe buzlu şerit ile süslenmiş cam duvarlı toplantı odasında; perdelerin estetik bir başarısızlık olarak görüldüğü dairede hissedersiniz. Bu iç mekanlar güzeldir, kontrollüdür ve hafifçe suçlayıcıdır. Gizliliğin, şüpheli davranışlardan sonra talep edilen bir şey olduğunu öne sürerler."
+              "content": "Sır saklamayı reddeden mekanlarda tuhaf bir tedirginlik vardır. Bunu, resepsiyonistin asansörü görmeden önce asansörün resepsiyonisti görebildiği lobide; cam duvarının göz hizasında nazik bir buzlu cam şeridiyle süslendiği toplantı odasında; perdenin estetik bir başarısızlık olarak görüldüğü dairede hissedersiniz. Bu iç mekanlar güzel, kontrollü ve hafifçe suçlayıcıdır. Mahremiyetin, ancak şüpheli davranışlar sergilendikten sonra talep edilen bir şey olduğunu ima ederler."
             },
             {
               "type": "header",
-              "content": "Her şeyi görme vaadi"
+              "content": "Her şeyi görebilme vaadi"
             },
             {
               "type": "text",
-              "content": "Modern cam, ahlaki bir argüman taşıyarak geldi. Ağırlıksız duvarlar, eski kurumun savunmacı opaklığını değiştirecekti. Güneş ışığı fabrika, okul ve ofise girecekti. Yapı okunabilir hale gelecekti. Çalışma görünür olacaktı, dolayısıyla dürüst olacaktı. Dessau’daki Bauhaus Binası, 1926’da bu inanca unutulmaz bir beden verdi: çelik ve kristal levha camla kaplı bir atölye kanadı, köşeleri görünüşte çözülmüş, odaları dış dünyaya sürekli bir faaliyet alanı olarak sunulmuştu."
+              "content": "Modern cam, ahlaki bir argümanla ortaya çıktı. Ağırlıksız duvarlar, eski kurumun savunmacı opaklığının yerini alacaktı. Güneş ışığı fabrikaya, okula ve ofise girecekti. Yapı anlaşılır hale gelecekti. Çalışma görünür, dolayısıyla dürüst olacaktı. Dessau’daki Bauhaus Binası, 1926’da bu inanca unutulmaz bir somutluk kazandırdı: çelik ve kristal düz camla kaplı bir atölye kanadı; köşeleri adeta erimiş gibi görünüyordu ve odaları, dış dünyaya kesintisiz bir faaliyet alanı olarak açılıyordu."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5jnsm6lj3.jpg",
-              "caption": "Dessau’daki Bauhaus Binası’nın atölye cephesi. Cam, yapıyı okunabilir kılarak çalışmayı kamusal bir imgeye dönüştürür. Fotoğraf: Wikimedia Commons, kamu alanı."
+              "caption": "Dessau’daki Bauhaus Binası’nın atölye cephesi. Cam, yapıyı net bir şekilde görünür kılarken, buradaki çalışmaları kamusal bir imgeye dönüştürüyor. Fotoğraf: Wikimedia Commons, kamu malı."
             },
             {
               "type": "text",
-              "content": "Cephe sadece teknik bir gösteri değildi. Aynı zamanda yeni bir sosyal karakter öneriyordu. Şeffaflık hijyenik, kolektif, ileriye doğru hareket eden görünüyordu. Duvar artık authority’yi taşla duyurmak zorunda değildi; görünürdeki yoklukla authority’yi gösterebilirdi. Bu, şeffaf mimarlığın ilk numarasıdır: sınırın içerdiği malzeme ne kadar az görünürse, sınırın kimlerin girebileceğine, kimlerin bakabileceğine ve kimlerin görünür kalması gerektiğine karar verdiğini unutmamak o kadar kolay olur."
+              "content": "Cephe, yalnızca teknik bir gösteri değildi. Yeni bir toplumsal karakter öneriyordu. Şeffaflık hijyenik, kolektif ve ileriye dönük bir izlenim veriyordu. Duvar artık taş yoluyla otoriteyi ilan etmek zorunda değildi; görünürdeki yokluğuyla otoriteyi sergileyebiliyordu. Şeffaf mimarinin ilk hilesi budur: Sınır ne kadar az malzeme içeriyormuş gibi görünürse, sınırın hâlâ kimin girebileceğine, kimin bakabileceğine ve kimin görünür kalması gerektiğine karar verdiğini unutmak o kadar kolay olur."
             },
             {
               "type": "quote",
-              "content": "Şeffaf bir duvar gücü ortadan kaldırmaz. Gücün bakabileceği yönü düzenler."
+              "content": "Şeffaf bir duvar, iktidarı ortadan kaldırmaz. İktidarın bakabileceği yönü yeniden şekillendirir."
             },
             {
               "type": "header",
-              "content": "Saklanacak yeri olmayan bir ev"
+              "content": "Saklanacak hiçbir yeri olmayan bir ev"
             },
             {
               "type": "text",
-              "content": "Philip Johnson’ın 1949 tarihli Glass House’u genellikle saf bir serbest bırakma olarak fotoğraflanır: Connecticut peyzajında ürkütücü bir hassasiyetle yerleştirilmiş koyu çelik çerçeve, tuğla silindirik ve cam çevre. Kırsal alan odadan geçiyor gibi görünür. Mobilyalar süzülür. Hava duvar kağıdı olur. Ancak ev, fotoğraflarından daha az masumdur. Onu yaşamak, her ev içi hareketin bir izleyici kitlesi kazandığını kabul etmektir, bu izleyici sadece hayal ediliyor olsa bile."
+              "content": "Philip Johnson’ın 1949 tarihli Cam Evi genellikle saf bir özgürlük ifadesi olarak fotoğraflanır: Connecticut manzarasına tedirgin edici bir hassasiyetle yerleştirilmiş koyu renkli bir çelik iskelet, tuğladan bir silindir ve camdan bir dış cephe. Kırsal manzara sanki odanın içinden geçiyormuş gibi görünür. Mobilyalar havada süzülür. Hava durumu duvar kağıdına dönüşür. Oysa bu ev, fotoğraflarında göründüğü kadar masum değildir. Bu evde yaşamak, her türlü ev içi hareketin bir seyirci kitlesi kazandığını kabul etmek demektir; bu seyirci kitlesi sadece hayal ürünü olsa bile."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5edocd9yr.jpg",
-              "caption": "Philip Johnson’ın Glass House, New Canaan, 1949’da tamamlandı. Peyzaj odadan geçiyor gibi görünürken, sakin sürekli sergilenir. Fotoğraf: Carol M. Highsmith / Library of Congress, kamu alanı."
+              "caption": "Philip Johnson’ın New Canaan’daki Cam Evi, 1949 yılında tamamlandı. Manzara sanki odanın içinden geçiyormuş gibi görünürken, evin sakini ise sürekli olarak gözler önünde kalır. Fotoğraf: Carol M. Highsmith / Kongre Kütüphanesi, kamu malı."
             },
             {
               "type": "text",
-              "content": "Önemli nesne yalnızca cam pavilion değil, çimlerin karşısındaki yoldaşıdır: Brick House. Opak, ağır ve özel olan bu yapı, yatak odalarını, hizmetleri ve şeffaf ikonun desteklediği mekanik sistemleri barındırıyordu. İki bina, bölünmüş bir psikoloji gibi çalışır. Biri açıklık sağlar; diğeri uyku, sıhhi tesisat, düzensizlik ve geri çekilme alır. Glass House, Brick House’un kanıtları sahne dışında tuttuğu için çabasız görünebilir."
+              "content": "Asıl önemli olan sadece cam pavyon değil, çimlerin ötesindeki eşidir: Tuğla Ev. Opak, ağır ve mahrem olan bu yapı, yatak odalarını, hizmet alanlarını ve şeffaf simgeyi destekleyen mekanik sistemleri barındırıyordu. İki bina, bölünmüş bir ruh gibi işliyor. Biri berraklığı temsil ederken, diğeri uykuyu, sıhhi tesisatı, dağınıklığı ve inzivayı üstlenir. Cam Ev, her şey çok doğal ve zahmetsiz görünebilir; çünkü Tuğla Ev, tüm bu unsurları sahne arkasında tutar."
             },
             {
               "type": "header",
-              "content": "Kusursuz çerçevedeki beden"
+              "content": "Mükemmel bir çerçeve içindeki beden"
             },
             {
               "type": "text",
-              "content": "Mies van der Rohe’nin Farnsworth House, aynı soruyu keskinleştirir. 1945’te tasarlandı ve 1951’de doktor Edith Farnsworth için tamamlandı, hafta sonu evi, Fox River taşkın alanının üzerinde yükselmiş, iki beyaz yatay düzlem olarak tasarlandı ve bunlar arasında tek bir şeffaf oda asılıdır. Görüntü neredeyse imkansız derecede sakindir. Kışın, çıplak dallar camlar boyunca devam eder ve ev, daha az inşa edilmiş gibi değil, geçici olarak çizilmiş gibi görünür."
+              "content": "Mies van der Rohe’nin Farnsworth Evi de aynı soruyu daha da keskinleştiriyor. 1945’te tasarlanan ve 1951’de doktor Edith Farnsworth için tamamlanan bu hafta sonu evi, Fox Nehri’nin taşkın ovasının üzerinde, aralarında asılı duran tek bir şeffaf odaya sahip iki beyaz yatay düzlemden oluşuyor. Görüntü, neredeyse inanılmaz derecede sakin. Kışın, çıplak dallar camlardan içeri süzülür; bu da evin inşa edilmiş olmaktan çok, geçici olarak çizilmiş bir siluet gibi görünmesine neden olur."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6r768yk7inf.jpg",
-              "caption": "Farnsworth House kışın, Plano, Illinois. Perdeler, konseptin ihanetidir değil; bir konseptin sonunda bir bedene kavuştuğunun kanıtıdır. Fotoğraf: Carol M. Highsmith / Library of Congress, kamu alanı."
+              "caption": "Kış mevsiminde Farnsworth Evi, Plano, Illinois. Perdeler, konseptin ihlali değildir; aksine, bir konseptin eninde sonunda somut bir yapıya kavuşduğunun kanıtıdır. Fotoğraf: Carol M. Highsmith / Kongre Kütüphanesi, kamu malı."
             },
             {
               "type": "text",
-              "content": "Plan evrensel görünür, ama yaşamak özeldir. Sabah bir yönden gelir. Giysi bir yere gitmek zorundadır. Bir kişi hasta olur, kızar, yorgun ya da sadece manzarayı sergilemek istemez. Taşınmadan kısa bir süre sonra, Farnsworth batı verandası etrafına ekranlar ekledi. Daha sonra restorasyon, onları kaldırdı ve 1951’in ikonik görüntüsünü geri kazandı. Bu dizilim açıktır: sakin, hayatı daha katlanabilir kılmak için başyapıtı değiştirdi; koruma ise tekrar değiştirdi ve başyapıtı daha okunabilir hale getirdi."
+              "content": "Plan evrensel görünse de yaşamın kendisi özeldir. Sabah tek bir yönden gelir. Giysilerin bir yere konması gerekir. Kişi hastalanır, sinirlenir, yorulur ya da sadece manzarayı canlandırmak istemez. Taşındıktan kısa bir süre sonra Farnsworth, batı verandasının etrafına paravanlar ekledi. Daha sonraki restorasyon çalışmalarında, 1951’deki orijinal görüntüyü geri kazanmak amacıyla bunlar kaldırıldı. Bu süreç çok şey ortaya koyuyor: Ev sahibi, hayatı daha katlanılabilir hale getirmek için bu şaheseri değiştirdi; koruma çalışmaları ise şaheseri daha anlaşılır hale getirmek için onu yeniden değiştirdi."
             },
             {
               "type": "text",
-              "content": "Bu, evle ilgili bir argüman değildir. Onun güzelliğini, içinde yaşamak için gereken müzakereleri silmeden okumak için bir argümandır. Mimari fotoğrafçılık, kesintisiz düzlemi ödüllendirir. Günlük yaşam kesintiler üretir: yarım çekilmiş bir perde, görüşten uzaklaştırılmış bir sandalye, bir camın kenarında yoğuşma. Bu izler görsel gürültü değildir. Bunlar, sakinlerin geri yazdığı izlerdir."
+              "content": "Bu, ev aleyhine bir argüman değildir. Bu, evi mesken edinmek için gerekli olan müzakere sürecini silip atmadan, evin güzelliğini okumaya yönelik bir argümandır. Mimari fotoğrafçılık, kesintisiz düzlemi ön plana çıkarır. Günlük yaşam ise kesintiler yaratır: yarıya kadar çekilmiş bir perde, manzaradan uzaklaştırılmış bir sandalye, camın kenarındaki buğu. Bu izler görsel gürültü değildir. Bunlar, evin sakinlerinin verdiği yanıtlardır."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5mj1cr2y7.jpg",
-              "caption": "Glass House’un içinde, mobilya ve manzara tek bir görsel düzlem paylaşır. Dairesel tuğla çekirdek, tek katı kesintidir. Fotoğraf: Carol M. Highsmith / Library of Congress, kamu alanı."
+              "caption": "Cam Ev’in içinde, mobilyalar ve peyzaj tek bir görsel düzlemde birleşiyor. Dairesel tuğla çekirdek, bu düzlemdeki tek katı engeldir. Fotoğraf: Carol M. Highsmith / Kongre Kütüphanesi, kamu malı."
             },
             {
               "type": "text",
-              "content": "Bu düzen, çağdaş iç mekanların çoğu tarafından gizlenen bir gerçeği ortaya koyar: şeffaflık asla tam değildir. O, özenle seçilmiştir. Kablo gizlenmiş, depolama duvarı kapalıdır, arka ofiste pencere yoktur, kamera siyah ve küçüktür. Görünen açıklık genellikle opaklığın yeniden dağılımıdır. Birisi cam manzarayı alır; diğerleri, içinde görünmemesi gerekenleri yönetir."
+              "content": "Bu düzenleme, çağdaş iç mekanların genellikle gizlediği bir gerçeği ortaya koyuyor: Şeffaflık asla tam değildir. Bu, özenle tasarlanmış bir durumdur. Kablo gizlenmiştir, depolama duvarı kapalıdır, arka ofisin penceresi yoktur, kamera siyah ve küçüktür. Açıklık gibi görünen şey, genellikle opaklığın yeniden dağıtılmasıdır. Biri camdan manzarayı seyrederken, diğeri ise bu manzarada görünmemesi gerekenleri yönetir."
             },
             {
               "type": "header",
-              "content": "Şirket bir yüz keşfediyor"
+              "content": "Şirket bir yüz keşfeder"
             },
             {
               "type": "text",
-              "content": "Yirminci yüzyılın ortalarına gelindiğinde, cam kurumsal dil haline gelmişti. New York’taki Lever House, 1952’de Skidmore, Owings & Merrill tarafından tamamlandı ve ticari bloğun taş ağırlığını mavi-yeşil perdeli duvar ve üzerinde yükselen bir levha ile değiştirdi. Bina hassas, temiz ve neredeyse sürtüşmesiz görünüyordu. İdareyi fotojenik hale getirdi. Şirket, karar dolu bir oda yerine, soğuk bir yüzey olarak anlaşılabilirdi."
+              "content": "Yirminci yüzyılın ortalarına gelindiğinde cam, kurumsal bir dil haline gelmişti. 1952 yılında Skidmore, Owings &amp; Merrill tarafından tamamlanan New York’taki Lever House, ticari bloğun ağır taş yapısını mavi-yeşil bir perde duvar ve halka açık bir meydanın üzerinde süzülen yükseltilmiş bir döşeme ile değiştirmişti. Bina, kusursuz, temiz ve neredeyse sürtünmesiz bir görünüme sahipti. İdari işleri fotojenik hale getirdi. Şirket, kararlarla dolu bir oda olmaktan ziyade, soğuk bir yüzey olarak algılanabilirdi."
             },
             {
               "type": "header",
@@ -103254,25 +103254,25 @@
             },
             {
               "type": "text",
-              "content": "Birleşmiş Milletler Sekretaryası Binası sembolizmi açık hale getirdi. 1950’de, Mavi-yeşil cam levha, East River kıyısında yükseldiğinde, şeffaflık, dünyaya işleyişini ifşa etmeye istekli bir kurumu temsil edebilecekti. Cephe, bilgi yerine ahlaki bir tablo sundu: uluslararası düzen, parlak bir ızgara olarak, bürokrasi ise ışığa dönüştü."
+              "content": "Birleşmiş Milletler Genel Sekreterliği Binası bu sembolizmi açıkça ortaya koydu. 1950 yılında mavi-yeşil cam kaplı cephesi East River’ın kıyısında yükseldiğinde, şeffaflık, işleyişini tüm dünyaya sergilemeye istekli bir kurumu simgeliyordu. Cephe, bilgi sunmadan önce ahlaki bir tablo çiziyordu: ışık saçan bir ızgara olarak uluslararası düzen, ışığa dönüşmüş bürokrasi."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6r79ffu6czg.jpg",
-              "caption": "Birleşmiş Milletler Sekretaryası Binası gün batımında. Perdeli duvar, bir kurumu tek bir parlak görüntüye dönüştürürken, bireysel odalar okunamaz durumda kalır. Fotoğraf: Daryan Shamkhali, CC0."
+              "caption": "Gün batımında Birleşmiş Milletler Genel Sekreterliği Binası. Perde duvar, kurumu tek bir ışıkla parlayan bir görüntüye dönüştürürken, odaların her biri ayrı ayrı ayırt edilemez kalır. Fotoğraf: Daryan Shamkhali, CC0."
             },
             {
               "type": "text",
-              "content": "Sokaktan, ancak, ızgara eşitliği sağlar ve her bölmeyi eşit gösterir. İçeride, odalar erişim, güvenlik ve etki açısından farklılık gösterir. Perde duvar bu farkları tek tutarlı bir cilt haline getirir. Bu, cam kulesinin politik baştan çıkarıcılığıdır: hiyerarşiyi terk etmeden açıklık temsil edebilir. Organizasyonu her yerde görebilirsiniz ve kararlarını hiçbir yerde göremezsiniz."
+              "content": "Ancak caddeden bakıldığında, bu ızgara düzeni her bir bölümü birbirine eşdeğer göstererek eşitlik sağlıyor. İçeride ise odalar erişim, güvenlik ve etki açısından birbirinden farklılık gösteriyor. Perde duvar, bu ayrımları tek bir tutarlı yüzeyde düzleştiriyor. Cam kulenin politik cazibesi de budur: hiyerarşiden ödün vermeden açıklığı temsil edebilmesi. Düzeni her yerde görüyorsunuz, ancak kararlarını hiçbir yerde göremiyorsunuz."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5pl0gojxo.jpg",
-              "caption": "Park Avenue'deki Lever House: perde duvar kurumsal organizasyonu soyut, kusursuz bir cilt haline getirir. Fotoğraf: Seth Tisue, CC BY-SA 2.0."
+              "caption": "Park Avenue’daki Lever House: Perde duvar, kurumsal yapıyı soyut ve kusursuz bir dış kabuğa dönüştürüyor. Fotoğraf: Seth Tisue, CC BY-SA 2.0."
             },
             {
               "type": "text",
-              "content": "Burada şeffaflık markalaşmaya dönüşür. Bir camlı merkez ofis şunu söyler: burada hiçbir şey gizli değil. Ama ifade görseldir, prosedürel değil. İnsanların cephe arkasında yürüdüğünü görebilirsiniz, otoritenin aralarındaki hareketini görmeden. Şeffaf bina, bedenlere erişim sağlar ve sistemlere erişimi engeller. Bir katın çalıştığını izlemek ve işin ne yaptığı hakkında hiçbir şey öğrenmemek mümkündür."
+              "content": "İşte burada şeffaflık, bir marka kimliğine dönüşür. Camdan yapılmış bir genel merkez şunu söyler: Burada hiçbir şey gizli değildir. Ancak bu ifade görsel niteliktedir, usule ilişkin değildir. Cephenin arkasında yürüyen insanları görebilirsiniz, ancak aralarında otoritenin nasıl dolaştığını göremezsiniz. Şeffaf bina, bedenlere erişim sağlarken sistemlere erişimi engeller. Bir katın tamamında yapılan işi izleyebilirsiniz, ancak bu işin ne olduğu hakkında hiçbir şey öğrenemezsiniz."
             },
             {
               "type": "header",
@@ -103280,91 +103280,91 @@
             },
             {
               "type": "text",
-              "content": "Akıllı ofis, pencere ile arayüz arasındaki geçişi tamamlar. Amsterdam'daki The Edge'de, çalışanlar meslektaşlarını bulmak, masaları ve yerel aydınlatma veya sıcaklığı ayarlamak için bir uygulama kullanırken, sensörler doluluk, hareket, nem, karbondioksit, ışık ve iklimi izler. Tasarım gerçekten kullanışlıdır. Odalar talebe göre tepki verebilir; enerji, boş bir katın meşgul olduğunu iddia etmek için harcanmaz. Konfor hassas hale gelir."
+              "content": "Akıllı ofis, pencereden arayüze geçişi tamamlıyor. Amsterdam’daki The Edge’de çalışanlar, bir uygulama aracılığıyla iş arkadaşlarının yerini tespit ediyor, masalarını buluyor ve odadaki aydınlatma ya da sıcaklığı ayarlarken, sensörler ise odadaki doluluk durumunu, hareketleri, nemi, karbondioksit seviyesini, ışığı ve iklimi izliyor. Tasarım gerçekten kullanışlı. Odalar talebe göre tepki verebiliyor; boş bir katın dolu olduğu izlenimini vermek için enerji harcanmıyor. Konfor, son derece hassas bir hale geliyor."
             },
             {
               "type": "text",
-              "content": "Ancak hassasiyetin bir gölgesi vardır. Bir bina bir kişinin nerede oturduğunu, bir odanın ne kadar kullanıldığını ve öğle yemeğinden sonra hangi rotanın dolduğunu bildiğinde, alan davranışsal veriye dönüşür. Çalışan artık nötr bir konteyner içinde hareket etmez. Konteyner hareketi kaydeder, talebi tahmin eder ve sessizce normal sayılanı tanımlar. Hiçbir kötü adam, monitör duvarının arkasında oturmak zorunda değildir. Rahatsızlık, sistemin aynı anda verimli, hoş ve müdahaleci olabilmesinden gelir."
+              "content": "Ancak hassasiyetin bir gölgesi vardır. Bir bina, bir kişinin nerede oturduğunu, bir odanın ne kadar süreyle kullanıldığını ve öğle yemeğinden sonra hangi güzergâhın dolduğunu bildiğinde, mekan davranışsal veriye dönüşür. Çalışan artık tarafsız bir mekânda hareket etmez. Mekân, hareketleri kaydeder, talebi tahmin eder ve neyin “normal” sayılacağını sessizce belirler. Monitörlerden oluşan bir duvarın arkasında bir kötü adam oturmasına gerek yok. Rahatsızlık, sistemin aynı anda hem verimli, hem hoş hem de müdahaleci olabilmesinden kaynaklanıyor."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6g5sd70bo9x.jpg",
-              "caption": "Yansımalar, ofis cephesini iç, dış ve gözlemci alanında belirsiz bir alana çoğaltır. Fotoğraf: Dietmar Rabich, CC BY-SA 4.0."
+              "caption": "Yansımalar, ofis cephesini iç mekan, dış mekan ve gözlemcinin birbirine karıştığı belirsiz bir alana dönüştürüyor. Fotoğraf: Dietmar Rabich, CC BY-SA 4.0."
             },
             {
               "type": "note",
-              "content": "En ikna edici gözetim mimarisi cezalandırıcı görünmez. Kullanışlı görünür. Tercih ettiğiniz ışık seviyesini hatırlar, doğru kapıyı açar ve en yakın masayı önerir. Kontrol, hizmet olarak gelir."
+              "content": "En ikna edici gözetim sistemi, cezalandırıcı bir görünüm sergilemez. Kullanışlı görünür. Tercih ettiğiniz ışık seviyesini hatırlar, doğru kapıyı açar ve en yakın masayı önerir. Kontrol, hizmet kılığına girerek gelir."
             },
             {
               "type": "header",
-              "content": "Kaybolma hakkını tasarlamak"
+              "content": "“Ortadan kaybolma hakkı”nın tasarlanması"
             },
             {
               "type": "text",
-              "content": "Cevap, kalın duvarlara ve küçük pencerelere duygusal bir dönüş değil. Opaklık koruyabilir, ama aynı zamanda izole edebilir ve korkutabilir. Daha ilginç görev, ayarlanabilir görünürlüğü tasarlamaktır: bir kişinin ne zaman görünmeye karar vereceğine, ne zaman bulanıklaştıracağına ve ne zaman kaybolacağına izin veren alanlar. Gizlilik, siper gibi davranmak yerine, daha çok bir dimmer gibi davranmalıdır."
+              "content": "Cevap, kalın duvarlara ve minik pencerelere duygusal bir dönüş değildir. Opaklık koruma sağlayabilir, ancak aynı zamanda izole edebilir ve korkutabilir. Daha ilginç olan görev, ayarlanabilir görünürlük tasarlamaktır: kişinin ne zaman görüneceğine, ne zaman bulanıklaşacağına ve ne zaman ortadan kaybolacağına karar vermesine imkân tanıyan mekanlar. Mahremiyet, bir sığınak gibi değil, daha çok bir ışık kısma düğmesi gibi işlev görmelidir."
             },
             {
               "type": "header",
-              "content": "Sorgusuz şeffaflık"
+              "content": "Sorgulama olmaksızın şeffaflık"
             },
             {
               "type": "text",
-              "content": "SANAA’nın Glass Pavilion’u Toledo Museum of Art'ta daha belirsiz bir modeli sunar. Şeffaf duvarlar sadece iç ve dışı ayırmakla kalmaz. Birçok eğri büyük panel, iç içe odalar oluşturur. Yansımalar silüetlerle örtüşür; bir kişi, bir kıvrımın arkasında görünür, kaybolur ve başka bir yüzeyde soluk bir ikiz olarak geri döner. Görünürlük sürekli ama asla istikrarlı değildir."
+              "content": "SANAA’nın Toledo Sanat Müzesi’ndeki Cam Pavyonu, daha belirsiz bir model sunuyor. Şeffaf duvarları, iç mekanı dış mekandan sadece ayırmakla kalmıyor. Çoğu kavisli olan 360’tan fazla büyük panel, odaların içinde odalar oluşturuyor. Yansımalar silüetlerle üst üste biniyor; bir kişi beliriyor, bir kıvrımın arkasında kayboluyor ve başka bir yüzeyde soluk bir ikiz olarak geri dönüyor. Görünürlük süreklidir, ancak hiçbir zaman sabit değildir."
             },
             {
               "type": "image",
               "content": "https://api.eprisjournal.com/uploads/msu6r7d4gzssa6.jpg",
-              "caption": "SANAA’nın Glass Pavilion’u içinde, Toledo Museum of Art. Eğri duvarlar görünürlüğü katmanlı ve belirsiz yapar, toplam değil. Fotoğraf: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
+              "caption": "SANAA’nın Toledo Sanat Müzesi’ndeki Cam Pavyonu’nun içi. Kavisli duvarlar, görüş alanını tam değil, katmanlı ve belirsiz hale getiriyor. Fotoğraf: Kiko 2709 / Adam C Nelson, CC BY-SA 3.0."
             },
             {
               "type": "text",
-              "content": "Fark ince ama önemlidir. Düz cam bölme bir diyagram gibi davranır: burada, orada, gözlemlenen, gözlemci. Eğri cam ise gecikme ve hata ekler. Göze çok fazla bilgi verir, bir kerede yönetmek için. Mimari açık kalır, ancak beden tek bir görüş alanına sabitlenmez. Açıklık, disiplinli değil, atmosferiktir."
+              "content": "Aradaki fark ince ama önemlidir. Düz camlı bir bölme, bir şema gibi işlev görür: burada, orada, gözlemlenen, gözlemci. Kavisli cam ise gecikme ve hata yaratır. Göze, bir anda sindirilemeyecek kadar fazla bilgi sunar. Mimari açık kalır, ancak beden tek bir görüş alanına sabitlenmez. Açıklık, disiplin edici olmaktan ziyade atmosferik bir nitelik kazanır."
             },
             {
               "type": "text",
-              "content": "Bu, çağdaş tasarım için daha zengin bir brief önerir. Sadece bir bölmenin ne kadar gün ışığı veya görsel bağlantı sağlayabileceğini sormayın. Panelin ne tür bir ilişki ürettiğini sorun. İlk görünümü kim alır? İçteki kişi yaklaşımı önceden tahmin edebilir mi? Yansıma karanlıkta korur mu yoksa açığa çıkar mı? Yüzey, tesis yönetimini çağırmadan durumu değiştirebilir mi? Şeffaflığın etik kalitesi bu küçük asimetrilerde yaşar."
+              "content": "Bu, çağdaş tasarım için daha kapsamlı bir görev tanımı gerektirdiğini gösteriyor. Bir bölmenin ne kadar gün ışığı veya görsel bağlantı sağlayabileceğini sormayın. Camın ne tür bir ilişki yarattığını sorun. İlk görüşü kim elde eder? İçerideki kişi yaklaşan birini önceden tahmin edebilir mi? Karanlık çöktükten sonra yansıma koruma sağlar mı yoksa açığa çıkarır mı? Yüzey, tesis yönetimi çağırılmadan durumunu değiştirebilir mi? Şeffaflığın etik niteliği, işte bu küçük asimetrilerde yatmaktadır."
             },
             {
               "type": "text",
-              "content": "Bu, sıradan unsurların statüsünü değiştirir. Bir perde artık süsleme değil, kullanıcı kontrollü bir cephedir. Kabartmalı cam, ışık geçirirken tam bir görüntü reddeder. Derin bir açıklık, birinin pencere yakınında durmasına izin verir, gösteri olmadan. Bir koridordaki dönüş, görünümü bir saniye geciktirir, bu da sürprizi onayla değiştirir. Akustik emilim, görsel bağlantı faydalı olsa bile sesin şeffaflığını engeller. Sıcak bir yerel ışık havuzu, masanın yaşanmış gibi hissettirmesini sağlar, tüm odayı aydınlatmadan."
+              "content": "Bu, sıradan öğelerin niteliğini değiştirir. Perde artık bir dekorasyon öğesi değil, kullanıcı tarafından kontrol edilen bir cephedir. Oluklu cam, ışığı geçirirken tam bir görüntüyü engeller. Derin bir pencere pervazına sahip bir pencere, bir kişinin pencerenin yanında durmasına izin verirken, onun bir sergi parçası haline gelmesini önler. Koridordaki bir dönüş, manzarayı bir saniye geciktirir; bu süre, şaşkınlığı rızaya dönüştürmek için yeterlidir. Akustik yalıtım, görsel bağlantının yararlı olduğu yerlerde bile sesin geçmesini engeller. Yerel bir ışık havuzu, tüm odayı aydınlatmadan masanın kullanıldığını hissettirebilir."
             },
             {
               "type": "text",
-              "content": "İyi mekansal gizlilik, temasın yokluğu değildir. Bina izni olmadan teması modüle etme yeteneğidir. En iyi odalar, maruz ve mühürlü arasında birkaç durumu sunar: görünür, silüetli, yansıtıcı, ekranlı, geri çekilmiş. İnsan dikkatinin sınırsız bir kamu kaynağı olmadığını kabul ederler."
+              "content": "İyi bir mekânsal mahremiyet, temasın yokluğu değildir. Bu, binadan izin istemeye gerek kalmadan teması ayarlama yeteneğidir. En iyi odalar, açık ve kapalı durumlar arasında çeşitli aşamalar sunar: görünür, silüet halinde, yansıyan, perdelenmiş, geri çekilmiş. Bu odalar, insan dikkatinin sınırsız bir kamu kaynağı olmadığını kabul eder."
             },
             {
               "type": "quote",
-              "content": "Bir sonraki iç mekanın radikal lüksü basit olabilir: sizi fark eden, rapor etmeyen bir oda."
+              "content": "Bir sonraki iç mekanın radikal lüksü, aslında basit olabilir: sizi fark eden, ancak sizi ifşa etmeyen bir oda."
             },
             {
               "type": "header",
-              "content": "Işığı yanan son pencere"
+              "content": "Son aydınlık pencere"
             },
             {
               "type": "text",
-              "content": "Cam, mimariyi hava durumuna dönüştürdüğü için karşı konulamaz kalır. Bulutları yakalar, köşeleri çözer ve bir odanın ufuk ödünç almasını sağlar. Bu güzelliklerin hiçbiri sahte değildir. Hata, görsel açıklığı etik açıklıkla veya teknik zekayı özenle karıştırmaktır. Bir bina yapısını gösterebilir ve yine de politikalarını gizleyebilir. Tam olarak nerede olduğunu bilir ve ihtiyaçlarını anlamaz."
+              "content": "Cam, mimariyi havaya dönüştürdüğü için hâlâ karşı konulmazdır. Bulutları yakalar, köşeleri ortadan kaldırır ve bir odaya ufku ödünç verir. Bu güzelliğin hiçbir yanı sahte değildir. Hata, görsel açıklığı etik açıklıkla, ya da teknik zekayı özenle karıştırmaktır. Bir bina, yapısını ortaya çıkarabilir ve yine de politikasını gizleyebilir. Tam olarak nerede olduğunuzu bilebilir, ama neye ihtiyacınız olduğu konusunda hiçbir şey anlamayabilir."
             },
             {
               "type": "text",
-              "content": "Gece sonrası şehir, bu çelişkiyi görünür kılar. Kuleler özel sahnelerin ızgaralarına dönüşür; şeffaf evler fenerlere; ofis kimseye parlamaya devam eder. Bir camın arkasında, bir kişi anahtara uzanır. Oda karanlığa bürünür. Bir anlık olarak, cephe bir parça bilgiyi kaybeder. Bu küçük kayıp, geri çekilmekten çok, kontrol gibi gelir."
+              "content": "Gece yarısından sonra şehir, bu çelişkiyi gözler önüne serer. Kuleler, özel sahnelerden oluşan bir ızgara haline gelir; şeffaf evler fenerlere dönüşür; ofis ise kimse için parlamaya devam eder. Bir camın arkasında bir yerlerde, bir kişi anahtara uzanır. Oda karanlığa bürünür. Bir an için cephe, bir bilgi parçasını yitirir. Bu küçük kayboluş, geri çekilme değil de daha çok bir kontrol gibi hissettirir."
             },
             {
               "type": "header",
-              "content": "Kaynaklar"
+              "content": "Kaynakça"
             },
             {
               "type": "link",
-              "content": "Transparency in Architecture and Beyond – MoMA",
+              "content": "Mimarlıkta ve Ötesinde Şeffaflık – MoMA",
               "url": "https://www.moma.org/calendar/galleries/5381"
             },
             {
               "type": "link",
-              "content": "Bauhaus Building – Stiftung Bauhaus Dessau",
+              "content": "Bauhaus Binası – Bauhaus Dessau Vakfı",
               "url": "https://bauhaus-dessau.de/en/venues/bauhaus-building/"
             },
             {
               "type": "link",
-              "content": "The Glass House – National Trust for Historic Preservation",
+              "content": "Cam Ev – Ulusal Tarihi Koruma Vakfı",
               "url": "https://theglasshouse.org/about/"
             },
             {
@@ -103373,7 +103373,7 @@
               "url": "https://www.plparchitecture.com/projects/the-edge"
             }
           ],
-          "updatedAt": "2026-08-19T12:51:50.099Z",
+          "updatedAt": "2026-10-24T02:05:21.932Z",
           "publishedAt": "2026-08-15"
         },
         {
