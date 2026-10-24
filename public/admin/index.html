@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=7.09" />
+    <link rel="stylesheet" href="./styles.css?v=7.10" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./mobile-polish.css?v=1.3" />
@@ -243,7 +243,7 @@
             <button class="sb-group-head" type="button" data-toggle-group="journal" aria-expanded="true">
               <svg class="sb-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
               <span data-i18n="sb.group.journal">Journal</span>
-              <em class="sb-count" aria-hidden="true">5</em>
+              <em class="sb-count" aria-hidden="true">7</em>
             </button>
             <div class="sb-group-items">
             <div class="sb-item" data-home="journal">
@@ -274,6 +274,14 @@
                 <span class="sb-label" data-i18n="nav.crm">CRM</span>
               </button>
               <button class="sb-pin" type="button" data-pin="crm" title="Pin to Pinned" aria-label="Pin section “CRM” to Pinned"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
+            </div>
+            <div class="sb-item" data-home="journal">
+              <button class="tab-btn" data-tab="appaccess" data-nav-label="Доступ к приложению" data-keywords="редакторы приглашение вход apple google роли доступ приложение заявки главный редактор" type="button">
+                <svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.1 8 7.5 9.5 4.4-1.5 7.5-5.1 7.5-9.5V6Z"/><path d="m9 12 2.2 2.2L15 10"/></svg>
+                <span class="sb-label" data-i18n="nav.appaccess">App access</span>
+                <span id="appAccessPendingBadge" class="sb-badge sb-badge--count" hidden></span>
+              </button>
+              <button class="sb-pin" type="button" data-pin="appaccess" title="Pin to Pinned" aria-label="Pin section “App access” to Pinned"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 3.5h6l-.8 5.2 3.3 3.3H6.5l3.3-3.3Z"/><path d="M12 12v8.5"/></svg></button>
             </div>
             <div class="sb-item" data-home="journal">
               <button class="tab-btn" data-tab="passports" data-nav-label="Паспорта" data-keywords="документы удостоверения" type="button">
@@ -2045,6 +2053,27 @@
             </div>
           </section>
 
+          <!-- ===== APP ACCESS ===== -->
+          <section class="tab-panel" id="tab-appaccess">
+            <div class="studio-layout">
+              <div class="card card-highlight">
+                <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4.5 6v5.5c0 4.4 3.1 8 7.5 9.5 4.4-1.5 7.5-5.1 7.5-9.5V6Z"/><path d="m9 12 2.2 2.2L15 10"/></svg> Доступ к приложению</h2>
+                <p class="card-desc">Кто может входить в редактор приложений EPRIS Journal и EPRIS Notebook через Apple. <b>Редактор</b> пишет и правит черновики и загружает фото; <b>главный редактор</b> ещё и публикует, планирует выход и снимает с публикации. Приглашённый по email попадает в редакцию с первого входа; остальные сначала становятся заявкой, которую можно принять здесь.</p>
+                <form id="accessInviteForm" class="studio-toolbar access-invite" autocomplete="off">
+                  <input id="accessInviteEmail" type="email" inputmode="email" autocapitalize="off" placeholder="email, с которым человек будет входить" aria-label="Email приглашённого" required>
+                  <select id="accessInviteRole" aria-label="Роль">
+                    <option value="editor">Редактор</option>
+                    <option value="admin">Главный редактор</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm" type="submit" id="accessInviteBtn">Пригласить</button>
+                  <button class="btn btn-sm" type="button" id="accessRefreshBtn">Обновить</button>
+                </form>
+                <p class="form-hint" id="accessNote"></p>
+              </div>
+              <div id="accessList" class="access-list"></div>
+            </div>
+          </section>
+
           <!-- ===== TRANSLATIONS ===== -->
           <section class="tab-panel" id="tab-translations">
             <!-- Два режима одной вкладки: словарь интерфейса (как было) и
@@ -2650,7 +2679,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
     <script src="../brandbook/data.js?v=1.0"></script><script src="../brandbook/data-en.js?v=1.0"></script>
-    <script src="./app.js?v=6.70" type="module"></script>
+    <script src="./app.js?v=6.71" type="module"></script>
     <script src="./brandbook-editor.js?v=2.0" type="module"></script>
     <script>
       // Tab switching + page title update

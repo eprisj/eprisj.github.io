@@ -11155,4 +11155,16 @@ textarea { min-height: 112px; }
 @media (max-width: 560px) {
   #tab-content .toolbar-field:nth-child(5),
   #tab-content .toolbar-field:nth-child(6) { grid-column: auto; }
+
+/* ── Доступ к приложению ─────────────────────────────────── */
+.access-invite { align-items: stretch; margin: 14px 0 8px; }
+.access-invite input[type="email"] { flex: 1 1 280px; min-width: 0; }
+.access-invite select { flex: 0 1 220px; min-width: 0; }
+.access-list { display: grid; gap: 12px; }
+.access-h { margin: 14px 2px 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+.access-count { margin-left: 6px; font-weight: 500; opacity: .75; }
+.access-card.is-busy { opacity: .55; pointer-events: none; }
+.access-card .access-role { min-width: 190px; }
+@media (max-width: 700px) {
+  .access-card .access-role { width: 100%; }
 }

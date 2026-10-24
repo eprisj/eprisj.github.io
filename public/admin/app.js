@@ -61,6 +61,7 @@ const I18N_STRINGS = {
     'nav.manifest': 'Manifesto',
     'nav.forms': 'Forms',
     'nav.crm': 'CRM',
+    'nav.appaccess': 'App access',
     'nav.passports': 'Passports',
     'nav.showcase': 'Showcase',
     'nav.design': 'Design',
@@ -154,6 +155,7 @@ const I18N_STRINGS = {
     'nav.manifest': 'Манифест',
     'nav.forms': 'Анкеты',
     'nav.crm': 'CRM',
+    'nav.appaccess': 'Доступ к приложению',
     'nav.passports': 'Паспорта',
     'nav.showcase': 'Витрина',
     'nav.design': 'Дизайн',
@@ -247,6 +249,7 @@ const I18N_STRINGS = {
     'nav.manifest': 'Маніфест',
     'nav.forms': 'Анкети',
     'nav.crm': 'CRM',
+    'nav.appaccess': 'Доступ до застосунку',
     'nav.passports': 'Паспорти',
     'nav.showcase': 'Вітрина',
     'nav.design': 'Дизайн',
@@ -11953,6 +11956,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if (btn.dataset.tab === 'history') setTimeout(refreshVersionHistory, 50);
     if (btn.dataset.tab === 'order') setTimeout(() => window._renderArticleOrderTab && window._renderArticleOrderTab(), 50);
     if (btn.dataset.tab === 'crm') setTimeout(() => window._renderCrmTab && window._renderCrmTab(), 50);
+    if (btn.dataset.tab === 'appaccess') setTimeout(() => window._renderAppAccessTab && window._renderAppAccessTab(), 50);
     /* Пульс включается и гаснет вместе со вкладкой — и при уходе на любую
        другую тоже, поэтому проверка стоит на каждом переключении, а не только
        на 'monitor'. */
@@ -16444,6 +16448,267 @@ function bindStudioMediaActions() {
   });
 
   window._renderCrmTab = renderCrmTab;
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ──  ДОСТУП К ПРИЛОЖЕНИЮ: кто входит в редактор EPRIS  ───────
+// Входят через Sign in with Apple. Здесь главный администратор принимает
+// заявки, приглашает по email и выбирает роль. Список живёт на VPS
+// (/notebook/admin), тот же, что видит приложение: правка здесь действует
+// в приложении сразу, открытые сессии человека при смене роли обрываются.
+// ═══════════════════════════════════════════════════════════
+(function () {
+  const esc = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const API = 'https://api.eprisjournal.com/notebook/admin';
+  const ROLE_LABEL = { editor: 'Редактор', admin: 'Главный редактор' };
+  const PROVIDER_LABEL = { apple: 'Apple', google: 'Google' };
+  const ERRORS = {
+    invalid_email: 'Это не похоже на email.',
+    invalid_role: 'Неизвестная роль.',
+    already_active: 'Этот человек уже в редакции.',
+    account_disabled: 'Доступ этого человека отключён: включите его в списке ниже.',
+    too_many_invites: 'Слишком много открытых приглашений. Отзовите ненужные.',
+    account_not_found: 'Эта запись уже удалена. Обновите список.',
+    invite_not_found: 'Это приглашение уже отозвано или истекло. Обновите список.',
+    too_many_attempts: 'Слишком много неверных попыток. Подождите 15 минут.',
+    unauthorized: 'Сервер не принял пароль администратора. Войдите заново как администратор.',
+  };
+
+  let state = { editors: [], invites: [], providers: {} };
+  let bound = false;
+  let loadSeq = 0;
+
+  const when = (iso) => {
+    const d = iso ? new Date(iso) : null;
+    return d && !Number.isNaN(d.getTime())
+      ? d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+      : '';
+  };
+
+  async function api(method, path, body) {
+    const pw = getAdminPassword();
+    if (!pw) throw new Error('Нет пароля редакции: войдите заново и оставьте галочку «Запомнить».');
+    const res = await fetch(API + path, {
+      method,
+      headers: { 'X-Admin-Password': pw, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+      body: body ? JSON.stringify(body) : undefined,
+      cache: 'no-store',
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(ERRORS[data.error] || data.error || ('Сервер вернул статус ' + res.status));
+    return data;
+  }
+
+  function renderBadge() {
+    const badge = document.getElementById('appAccessPendingBadge');
+    if (!badge) return;
+    const n = state.editors.filter((a) => a.status === 'pending').length;
+    badge.hidden = n === 0;
+    badge.textContent = n > 99 ? '99+' : String(n);
+    badge.title = n ? `Заявок на доступ: ${n}` : '';
+  }
+
+  function providers(a) {
+    return (a.providers && a.providers.length ? a.providers : [a.provider || 'apple'])
+      .map((p) => PROVIDER_LABEL[p] || p).join(' · ');
+  }
+
+  function avatar(a) {
+    return `<div class="team-admin-avatar team-admin-avatar-placeholder">${esc((a.displayName || a.email || '?').trim().charAt(0).toUpperCase())}</div>`;
+  }
+
+  function person(a, actions, extra) {
+    const mail = a.email ? esc(a.email) : 'email скрыт';
+    const line = [mail, providers(a), extra].filter(Boolean).join(' · ');
+    return `
+      <div class="card team-admin-card access-card" data-id="${esc(a.id)}">
+        ${avatar(a)}
+        <div class="team-admin-copy">
+          <div class="team-admin-name">${esc(a.displayName || '(без имени)')}</div>
+          <div class="team-admin-role">${line}</div>
+          <div class="team-admin-actions">${actions}</div>
+        </div>
+      </div>`;
+  }
+
+  function roleSelect(a) {
+    return `<select class="access-role" data-access="role" aria-label="Роль">
+      ${Object.entries(ROLE_LABEL).map(([v, l]) => `<option value="${v}" ${a.role === v ? 'selected' : ''}>${l}</option>`).join('')}
+    </select>`;
+  }
+
+  function render() {
+    const wrap = document.getElementById('accessList');
+    if (!wrap) return;
+    const by = (status) => state.editors.filter((a) => a.status === status);
+    const pending = by('pending');
+    const active = by('active');
+    const disabled = by('disabled');
+    const section = (title, count, body, empty) => `
+      <h3 class="access-h">${title}${count ? ` <span class="access-count">${count}</span>` : ''}</h3>
+      ${body || `<p class="form-hint">${empty}</p>`}`;
+
+    const pendingHtml = pending.map((a) => person(a, `
+      <button class="btn btn-primary btn-sm" type="button" data-access="approve" data-role="editor">Принять редактором</button>
+      <button class="btn btn-sm" type="button" data-access="approve" data-role="admin">Принять главным редактором</button>
+      <button class="btn btn-sm btn-danger-text" type="button" data-access="reject">Отклонить</button>`,
+    a.createdAt ? 'заявка от ' + when(a.createdAt) : '')).join('');
+
+    const activeHtml = active.map((a) => person(a, `
+      ${roleSelect(a)}
+      <button class="btn btn-sm" type="button" data-access="disable">Отключить</button>`,
+    a.lastLoginAt ? 'вход ' + when(a.lastLoginAt) : 'ещё не входил')).join('');
+
+    const disabledHtml = disabled.map((a) => person(a, `
+      <button class="btn btn-sm" type="button" data-access="enable">Включить</button>
+      <button class="btn btn-sm btn-danger-text" type="button" data-access="delete">Удалить</button>`,
+    a.lastLoginAt ? 'вход ' + when(a.lastLoginAt) : '')).join('');
+
+    const invitesHtml = state.invites.map((i) => `
+      <div class="card team-admin-card access-card" data-invite="${esc(i.id)}">
+        <div class="team-admin-avatar team-admin-avatar-placeholder">@</div>
+        <div class="team-admin-copy">
+          <div class="team-admin-name">${esc(i.email)}</div>
+          <div class="team-admin-role">${ROLE_LABEL[i.role] || esc(i.role)} · приглашён ${esc(when(i.createdAt))}</div>
+          <div class="team-admin-actions">
+            <button class="btn btn-sm btn-danger-text" type="button" data-access="revoke">Отозвать</button>
+          </div>
+        </div>
+      </div>`).join('');
+
+    wrap.innerHTML =
+      section('Заявки', pending.length, pendingHtml, 'Новых заявок нет. Человек, которого вы не приглашали, появится здесь после первого входа.') +
+      section('В редакции', active.length, activeHtml, 'Пока никого. Пригласите первого человека выше.') +
+      section('Приглашения', state.invites.length, invitesHtml, 'Открытых приглашений нет.') +
+      (disabled.length ? section('Отключены', disabled.length, disabledHtml, '') : '');
+
+    const note = document.getElementById('accessNote');
+    if (note) {
+      note.textContent = 'Если человек скрыл email в Apple («Скрыть email»), приглашение его не узнает: он придёт заявкой, и её нужно принять вручную.';
+    }
+    renderBadge();
+  }
+
+  async function load({ quiet } = {}) {
+    const wrap = document.getElementById('accessList');
+    const seq = ++loadSeq;
+    if (wrap && !quiet && !state.editors.length) wrap.innerHTML = '<p class="form-hint">Загрузка…</p>';
+    try {
+      const data = await api('GET', '/editors');
+      if (seq !== loadSeq) return; // a newer load has already answered
+      state = { editors: data.editors || [], invites: data.invites || [], providers: data.providers || {} };
+      render();
+    } catch (e) {
+      if (quiet) return;
+      if (wrap) wrap.innerHTML = `<p class="form-hint">Не удалось загрузить список: ${esc(e.message)}</p>`;
+    }
+  }
+
+  async function act(card, work, doneText) {
+    card.classList.add('is-busy');
+    try {
+      await work();
+      if (doneText) showToast('success', doneText);
+    } catch (e) {
+      showToast('error', e.message);
+    }
+    await load({ quiet: true });
+    render();
+  }
+
+  function onClick(event) {
+    const btn = event.target.closest('[data-access]');
+    if (!btn) return;
+    const card = btn.closest('[data-id], [data-invite]');
+    if (!card) return;
+    const id = card.dataset.id;
+    const account = state.editors.find((a) => a.id === id);
+    const name = account ? (account.displayName || account.email || '') : '';
+    const kind = btn.dataset.access;
+
+    if (kind === 'approve') {
+      const role = btn.dataset.role;
+      act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'active', role }),
+        `${name}: принят, роль: ${ROLE_LABEL[role].toLowerCase()}. Пусть войдёт в приложение ещё раз.`);
+    } else if (kind === 'reject') {
+      showConfirmModal(`Отклонить заявку «${name}»?`, 'Человек увидит в приложении, что доступ отключён. Позже его можно включить.', 'Отклонить').then((ok) => {
+        if (ok) act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'disabled' }), 'Заявка отклонена.');
+      });
+    } else if (kind === 'disable') {
+      showConfirmModal(`Отключить доступ «${name}»?`, 'Открытые сессии человека закроются сразу. Статьи и черновики остаются на месте.', 'Отключить').then((ok) => {
+        if (ok) act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'disabled' }), 'Доступ отключён.');
+      });
+    } else if (kind === 'enable') {
+      act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'active' }), 'Доступ включён.');
+    } else if (kind === 'delete') {
+      showConfirmModal(`Удалить «${name}»?`, 'Запись исчезнет из списка. Если человек войдёт снова, он станет новой заявкой.', 'Удалить').then((ok) => {
+        if (ok) act(card, () => api('DELETE', '/editors/' + encodeURIComponent(id)), 'Запись удалена.');
+      });
+    } else if (kind === 'revoke') {
+      act(card, () => api('DELETE', '/invites/' + encodeURIComponent(card.dataset.invite)), 'Приглашение отозвано.');
+    }
+  }
+
+  function onChange(event) {
+    const sel = event.target.closest('select[data-access="role"]');
+    if (!sel) return;
+    const card = sel.closest('[data-id]');
+    const account = card && state.editors.find((a) => a.id === card.dataset.id);
+    if (!account || sel.value === account.role) return;
+    const name = account.displayName || account.email || '';
+    const apply = () => act(card, () => api('PATCH', '/editors/' + encodeURIComponent(account.id), { role: sel.value }),
+      `${name}: теперь ${ROLE_LABEL[sel.value].toLowerCase()}. Сессия в приложении закроется, нужен новый вход.`);
+    if (sel.value === 'admin') {
+      showConfirmModal(`Сделать «${name}» главным редактором?`, 'Главный редактор публикует и снимает материалы с публикации.', 'Сделать').then((ok) => {
+        if (ok) apply(); else sel.value = account.role;
+      });
+    } else apply();
+  }
+
+  async function onInvite(event) {
+    event.preventDefault();
+    const email = document.getElementById('accessInviteEmail');
+    const role = document.getElementById('accessInviteRole');
+    const btn = document.getElementById('accessInviteBtn');
+    btn.disabled = true;
+    try {
+      const data = await api('POST', '/invites', { email: email.value.trim(), role: role.value });
+      email.value = '';
+      showToast('success', data.activated
+        ? `${data.activated.displayName}: заявка принята, роль: ${ROLE_LABEL[data.activated.role].toLowerCase()}.`
+        : 'Приглашение создано. Пусть войдёт в приложении через Apple с этим email.');
+      await load({ quiet: true });
+      render();
+    } catch (e) {
+      showToast('error', e.message);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  function bind() {
+    if (bound) return;
+    const list = document.getElementById('accessList');
+    if (!list) return;
+    bound = true;
+    list.addEventListener('click', onClick);
+    list.addEventListener('change', onChange);
+    document.getElementById('accessInviteForm')?.addEventListener('submit', onInvite);
+    document.getElementById('accessRefreshBtn')?.addEventListener('click', () => load());
+  }
+
+  function renderAccessTab() { bind(); return load(); }
+  window._renderAppAccessTab = renderAccessTab;
+
+  // The sidebar badge counts waiting requests, so a chief editor sees them
+  // without opening the tab: once after sign-in, then whenever the page
+  // comes back to the foreground.
+  const refreshBadge = () => {
+    if (getSessionRole() === 'admin' && getAdminPassword()) { bind(); load({ quiet: true }); }
+  };
+  setTimeout(refreshBadge, 4000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') refreshBadge(); });
 })();
 
 // ═══════════════════════════════════════════════════════════
