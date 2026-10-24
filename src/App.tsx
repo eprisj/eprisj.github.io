@@ -4656,8 +4656,12 @@ export default function App() {
   if (/^\/expertise(?:\/[^/]+)?\/?$/.test(window.location.pathname)) {
     return <Suspense fallback={<div className="min-h-screen bg-[#ffffff]" />}><ExpertisePage /></Suspense>;
   }
-  /* Страница готовящейся книги соредактора. */
-  if (/^\/sunsetofthemidnightsun\/?$/i.test(window.location.pathname)) {
+  /* Страница готовящейся книги соредактора. Первый адрес был длинным
+     (/sunsetofthemidnightsun) и уже разошёлся, поэтому он ведёт сюда же. */
+  if (/^\/(?:book|sunsetofthemidnightsun)\/?$/i.test(window.location.pathname)) {
+    if (!/^\/book\/?$/.test(window.location.pathname)) {
+      window.history.replaceState(null, '', '/book');
+    }
     return <Suspense fallback={<div className="min-h-screen bg-[#f5f0ea]" />}><SunsetPage /></Suspense>;
   }
   if (/^\/stage\/?$/.test(window.location.pathname)) {
