@@ -21200,6 +21200,7 @@
       "imageSeed": "",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvo8ceo0azp4kp.jpg",
       "previewToken": "c919a0466a76a0f1155fc31a",
+      "locked": true,
       "content": [
         {
           "type": "text",
@@ -21556,7 +21557,7 @@
       ],
       "publishAt": "2026-10-27T02:00:00.000Z",
       "publishedAt": "2026-10-27T02:00:00.000Z",
-      "updatedAt": "2026-10-25T19:42:18.188Z"
+      "updatedAt": "2026-10-25T19:46:08.505Z"
     }
   ],
   "reviews": [
