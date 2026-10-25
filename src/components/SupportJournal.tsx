@@ -1,254 +1,80 @@
-import { useCallback, useState } from 'react';
-import { Check, Copy, ExternalLink, QrCode } from 'lucide-react';
-import QRCode from 'qrcode';
+import { ExternalLink } from 'lucide-react';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
  *
- * Используется и в конце статей/обзоров, и в анкетах (src/pages/FormPage.tsx)
- * – один компонент вместо двух похожих, чтобы вид и правки жили в одном
- * месте.
+ * Используется и в конце статей/обзоров, и в анкетах (src/pages/FormPage.tsx),
+ * и на странице выпуска – один компонент, чтобы вид и правки жили в одном месте.
  *
- * ВТОРОЙ ЗАХОД. Первая версия пряталась за кнопкой «Support the journal»:
- * гость должен был сам догадаться щёлкнуть неприметную строку, а раскрытый
- * вид оказывался тремя высокими карточками одна под другой – реквизиты,
- * которые нужны на десять секунд, занимали пол-экрана. И заметный вариант
- * для анкет (emphasized), который решал это золотой рамкой и заглавными
- * буквами, читался ещё хуже – отдельным, более громким языком поверх и так
- * тяжёлого списка.
+ * ТРЕТИЙ ЗАХОД. Раньше тут были два чёрных баннера со словами про суммы и
+ * подписки и столбик реквизитов PayPal с копированием и QR – много текста ради
+ * того, что читателю нужно одно: нажать на знакомый логотип. Теперь заголовок
+ * из двух слов и три настоящих логотипа в ряд – Patreon, Ko-fi, PayPal. Логотипы
+ * не нарисованные, а контуры из набора simple-icons (CC0), в фирменных цветах
+ * сервисов: так их узнают с первого взгляда, как на любом нормальном баннере.
  *
- * Развязка – не «спрятать» и не «раскрасить», а сделать блок настолько
- * компактным, что прятать не от чего: один баннер, всегда на виду, способы
- * оплаты – узкие плашки в ряд, а не карточки в столбик. Реквизит виден сразу
- * (это и есть «удобно» – скопировать одним касанием, не разворачивая ничего
- * заранее), но каждая плашка выше пальца едва на пару миллиметров.
- *
- * Текст короткий и без объяснений про деньги: «мы не берём плату» звучало как
- * оправдание перед вопросом, которого никто не задавал.
- *
- * Реквизиты встроены здесь же, а не запрашиваются с сервера: они меняются
- * реже раза в год, а страница статьи не должна ждать лишний round-trip ради
- * блока, который открывает не каждый читатель. Форма решает, показывать ли
- * блок вообще (см. FormPage – form.support), но не что в нём написано.       */
-const SUPPORT_TEXT: Record<string, { lead: string; copy: string; copied: string; qr: string; kofi: string; kofiSub: string; patreon: string; patreonSub: string; other: string }> = {
-  EN: { lead: "If our work here means something to you, we'd be grateful for your support.", copy: 'Copy', copied: 'Copied', qr: 'Scan with PayPal', kofi: 'Support EPRIS on Ko-fi', kofiSub: 'Any amount, by card or PayPal', patreon: 'Support EPRIS on Patreon', patreonSub: 'Monthly membership from $3', other: 'Other ways' },
-  RU: { lead: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.', copy: 'Копировать', copied: 'Скопировано', qr: 'Сканируйте в PayPal', kofi: 'Поддержать EPRIS на Ko-fi', kofiSub: 'Любая сумма, картой или через PayPal', patreon: 'Поддержать EPRIS на Patreon', patreonSub: 'Ежемесячная подписка от $3', other: 'Другие способы' },
-  UA: { lead: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.', copy: 'Копіювати', copied: 'Скопійовано', qr: 'Скануйте у PayPal', kofi: 'Підтримати EPRIS на Ko-fi', kofiSub: 'Будь-яка сума, карткою чи через PayPal', patreon: 'Підтримати EPRIS на Patreon', patreonSub: 'Щомісячна підписка від $3', other: 'Інші способи' },
-  DE: { lead: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.', copy: 'Kopieren', copied: 'Kopiert', qr: 'Mit PayPal scannen', kofi: 'EPRIS auf Ko-fi unterstützen', kofiSub: 'Jeder Betrag, per Karte oder PayPal', patreon: 'EPRIS auf Patreon unterstützen', patreonSub: 'Monatliche Mitgliedschaft ab 3 $', other: 'Weitere Möglichkeiten' },
-  IT: { lead: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.', copy: 'Copia', copied: 'Copiato', qr: 'Scansiona con PayPal', kofi: 'Sostieni EPRIS su Ko-fi', kofiSub: 'Qualsiasi importo, con carta o PayPal', patreon: 'Sostieni EPRIS su Patreon', patreonSub: 'Abbonamento mensile da $3', other: 'Altri modi' },
-  ES: { lead: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.', copy: 'Copiar', copied: 'Copiado', qr: 'Escanea con PayPal', kofi: 'Apoya a EPRIS en Ko-fi', kofiSub: 'Cualquier importe, con tarjeta o PayPal', patreon: 'Apoya a EPRIS en Patreon', patreonSub: 'Suscripción mensual desde $3', other: 'Otras formas' },
-  FR: { lead: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.', copy: 'Copier', copied: 'Copié', qr: 'Scanner avec PayPal', kofi: 'Soutenir EPRIS sur Ko-fi', kofiSub: 'Le montant de votre choix, par carte ou PayPal', patreon: 'Soutenir EPRIS sur Patreon', patreonSub: 'Abonnement mensuel dès 3 $', other: 'Autres moyens' },
-  TR: { lead: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.', copy: 'Kopyala', copied: 'Kopyalandı', qr: "PayPal ile tara", kofi: "EPRIS'i Ko-fi'de destekleyin", kofiSub: 'İstediğiniz tutar, kartla veya PayPal ile', patreon: "EPRIS'i Patreon'da destekleyin", patreonSub: "Aylık üyelik 3 $'dan başlar", other: 'Diğer yollar' },
+ * Что убрано и почему: почта PayPal и QR-код (достаточно ссылки paypal.me,
+ * она открывает тот же платёж), подписи «от $3» и «любая сумма» (всё это
+ * читатель увидит на странице сервиса).                                    */
+const SUPPORT_TITLE: Record<string, string> = {
+  EN: 'Support us',
+  RU: 'Поддержите нас',
+  UA: 'Підтримайте нас',
+  DE: 'Unterstützen Sie uns',
+  IT: 'Sostienici',
+  ES: 'Apóyanos',
+  FR: 'Soutenez-nous',
+  TR: 'Bizi destekleyin',
 };
 
-/* Ko-fi: второй способ, когда PayPal недоступен или неудобен (карта без
-   PayPal, страна, где он ограничен). Это ссылка, а не реквизит: открывается
-   страница журнала на Ko-fi, где сумму выбирает сам человек. */
-const KOFI_URL = 'https://ko-fi.com/epris';
-
-/* Patreon: ежемесячная подписка, главный способ поддержки. Адрес публичной
-   страницы журнала, а не кабинета создателя (patreon.com/cw/… требует входа). */
 const PATREON_URL = 'https://www.patreon.com/epris';
+const KOFI_URL = 'https://ko-fi.com/epris';
+const PAYPAL_URL = 'https://paypal.me/ViacheslavMunister';
 
-
-/* ЗНАКИ СЕРВИСОВ В НАШЕМ СТИЛЕ. Чужие цветные логотипы на белых плашках
-   ломали строгую чёрно-золотую гамму журнала и спорили друг с другом за
-   внимание. Поэтому здесь три собственных одноцветных знака одного рисунка
-   (линия 1.6, скруглённые концы, currentColor): круг и вертикаль для Patreon,
-   чашка с сердцем для Ko-fi, двойная «P» для PayPal. Цвет им задаёт блок,
-   а не сервис – так они выглядят набором, а не россыпью чужих брендов. */
-function PatreonMark({ size = 24 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-      <circle cx="14.8" cy="9.6" r="6.4" />
-      <rect x="2.6" y="3.2" width="3.6" height="17.6" rx="1.2" />
-    </svg>
-  );
-}
-function KofiMark({ size = 24 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-      <path d="M3.2 7.4h13.2v7.2a4.4 4.4 0 0 1-4.4 4.4H7.6a4.4 4.4 0 0 1-4.4-4.4Z" />
-      <path d="M16.4 9h1.5a2.6 2.6 0 0 1 0 5.2h-1.5" />
-      <path d="M9.8 15.4c-2-1.3-2.9-2.1-2.9-3.2a1.55 1.55 0 0 1 2.9-.75 1.55 1.55 0 0 1 2.9.75c0 1.1-.9 1.9-2.9 3.2Z" fill="currentColor" stroke="none" />
-      <path d="M3.2 21.4h13.2" />
-    </svg>
-  );
-}
-function PayPalMark({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-      <path d="M6.2 21 8.4 4.4h5.6a3.9 3.9 0 0 1 0 7.8H10.7" />
-      <path d="M9.6 21l.8-5.4h3.6a3.9 3.9 0 0 0 3.8-3.4" opacity="0.55" />
-    </svg>
-  );
-}
-
-const SUPPORT_METHODS: { label: string; value: string }[] = [
-  { label: 'PayPal', value: 'munister@outlook.com' },
-  { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister' },
+const BRANDS: { name: string; url: string; color: string; path: string }[] = [
+  {
+    name: 'Patreon',
+    url: PATREON_URL,
+    color: '#FF424D',
+    path: 'M22.957 7.21c-.004-3.064-2.391-5.576-5.191-6.482-3.478-1.125-8.064-.962-11.384.604C2.357 3.231 1.093 7.391 1.046 11.54c-.039 3.411.302 12.396 5.369 12.46 3.765.047 4.326-4.804 6.068-7.141 1.24-1.662 2.836-2.132 4.801-2.618 3.376-.836 5.678-3.501 5.673-7.031Z',
+  },
+  {
+    name: 'Ko-fi',
+    url: KOFI_URL,
+    color: '#FF5E5B',
+    path: 'M11.351 2.715c-2.7 0-4.986.025-6.83.26C2.078 3.285 0 5.154 0 8.61c0 3.506.182 6.13 1.585 8.493 1.584 2.701 4.233 4.182 7.662 4.182h.83c4.209 0 6.494-2.234 7.637-4a9.5 9.5 0 0 0 1.091-2.338C21.792 14.688 24 12.22 24 9.208v-.415c0-3.247-2.13-5.507-5.792-5.87-1.558-.156-2.65-.208-6.857-.208m0 1.947c4.208 0 5.09.052 6.571.182 2.624.311 4.13 1.584 4.13 4v.39c0 2.156-1.792 3.844-3.87 3.844h-.935l-.156.649c-.208 1.013-.597 1.818-1.039 2.546-.909 1.428-2.545 3.064-5.922 3.064h-.805c-2.571 0-4.831-.883-6.078-3.195-1.09-2-1.298-4.155-1.298-7.506 0-2.181.857-3.402 3.012-3.714 1.533-.233 3.559-.26 6.39-.26m6.547 2.287c-.416 0-.65.234-.65.546v2.935c0 .311.234.545.65.545 1.324 0 2.051-.754 2.051-2s-.727-2.026-2.052-2.026m-10.39.182c-1.818 0-3.013 1.48-3.013 3.142 0 1.533.858 2.857 1.949 3.897.727.701 1.87 1.429 2.649 1.896a1.47 1.47 0 0 0 1.507 0c.78-.467 1.922-1.195 2.623-1.896 1.117-1.039 1.974-2.364 1.974-3.897 0-1.662-1.247-3.142-3.039-3.142-1.065 0-1.792.545-2.338 1.298-.493-.753-1.246-1.298-2.312-1.298',
+  },
+  {
+    name: 'PayPal',
+    url: PAYPAL_URL,
+    color: '#003087',
+    path: 'M7.016 19.198h-4.2a.562.562 0 0 1-.555-.65L5.093.584A.692.692 0 0 1 5.776 0h7.222c3.417 0 5.904 2.488 5.846 5.5-.006.25-.027.5-.066.747A6.794 6.794 0 0 1 12.071 12H8.743a.69.69 0 0 0-.682.583l-.325 2.056-.013.083-.692 4.39-.015.087zM19.79 6.142c-.01.087-.01.175-.023.261a7.76 7.76 0 0 1-7.695 6.598H9.007l-.283 1.795-.013.083-.692 4.39-.134.843-.014.088H6.86l-.497 3.15a.562.562 0 0 0 .555.65h3.612c.34 0 .63-.249.683-.585l.952-6.031a.692.692 0 0 1 .683-.584h2.126a6.793 6.793 0 0 0 6.707-5.752c.306-1.95-.466-3.744-1.89-4.906z',
+  },
 ];
 
-/* Настоящая ссылка PayPal (не придуманная – подтверждена сканированием
-   собственного QR-кода PayPal пользователем и проверкой ответа сервера).
-   QR рисуется на лету тем же пакетом qrcode, что уже используется для
-   паспортов (src/pages/passport/passportRender.ts), а не хранится готовой
-   картинкой – так ссылку видно прямо в коде и легко сменить одной строкой. */
-const PAYPAL_QR_TARGET = 'https://www.paypal.com/qrcodes/p2pqrc/UW4J64QUNFVUQ';
-
 export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string; className?: string }) {
-  const [copied, setCopied] = useState('');
-  const [qrOpen, setQrOpen] = useState(false);
-  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
-  const t = SUPPORT_TEXT[String(lang || 'EN').toUpperCase()] || SUPPORT_TEXT.EN;
-
-  const toggleQr = useCallback(async () => {
-    setQrOpen((v) => !v);
-    if (!qrDataUrl) {
-      try {
-        const dataUrl = await QRCode.toDataURL(PAYPAL_QR_TARGET, { margin: 1, width: 320 });
-        setQrDataUrl(dataUrl);
-      } catch {
-        // QR не сгенерировался – ссылка всё равно доступна копированием ниже.
-      }
-    }
-  }, [qrDataUrl]);
-
-  const copyValue = useCallback(async (label: string, value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(label);
-      window.setTimeout(() => setCopied(''), 1800);
-    } catch {
-      // Буфер недоступен – выделяем текст, чтобы человек скопировал вручную.
-      const node = document.getElementById(`support-journal-${label}`);
-      if (node) {
-        const range = document.createRange();
-        range.selectNodeContents(node);
-        const selection = window.getSelection();
-        selection?.removeAllRanges();
-        selection?.addRange(range);
-      }
-    }
-  }, []);
-
+  const title = SUPPORT_TITLE[String(lang || 'EN').toUpperCase()] || SUPPORT_TITLE.EN;
   return (
     <aside
-      className={`rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-5 py-5 sm:px-6 sm:py-5 ${className}`}
+      className={`rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-5 py-5 sm:px-6 sm:py-6 ${className}`}
     >
-      <p className="max-w-[42ch] font-serif text-[19px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)]">
-        {t.lead}
-      </p>
-      {/* Patreon стоит первым: ежемесячная подписка. Под ним Ko-fi: разовая
-          сумма любой величины. Оба баннера чёрные, под цвет журнала; PayPal
-          ниже, под подписью «другие способы». Карта и IBAN убраны: платить
-          по номеру карты читателю незачем, когда есть эти три способа. */}
-      <a
-        href={PATREON_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
-      >
-        <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.55)] bg-[rgb(var(--c-gold-rgb)_/_0.1)] text-[var(--c-gold)] transition-colors group-hover:bg-[rgb(var(--c-gold-rgb)_/_0.2)]" aria-hidden="true">
-          <PatreonMark size={26} />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.patreon}</span>
-          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.patreonSub}</span>
-        </span>
-        <ExternalLink size={17} strokeWidth={1.8} className="shrink-0 text-white/55 transition-all group-hover:translate-x-0.5 group-hover:text-[var(--c-gold)]" aria-hidden="true" />
-      </a>
-      <a
-        href={KOFI_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group mt-2.5 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
-      >
-        <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.55)] bg-[rgb(var(--c-gold-rgb)_/_0.1)] text-[var(--c-gold)] transition-colors group-hover:bg-[rgb(var(--c-gold-rgb)_/_0.2)]" aria-hidden="true">
-          <KofiMark size={28} />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.kofi}</span>
-          <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.kofiSub}</span>
-        </span>
-        <ExternalLink size={17} strokeWidth={1.8} className="shrink-0 text-white/55 transition-all group-hover:translate-x-0.5 group-hover:text-[var(--c-gold)]" aria-hidden="true" />
-      </a>
-      <p className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.other}</p>
-      {/* Реквизиты читаются прямо на странице, без наведения и без клика –
-          скопировать по-прежнему можно одним касанием, но сперва человек
-          должен УВИДЕТЬ значение, а не искать его в title-тултипе. Поэтому
-          каждый способ – строка на всю ширину: подпись слева, само значение
-          моноширинным шрифтом рядом, кнопка копирования справа. */}
-      <div className="mt-2.5 flex flex-col gap-2">
-        {SUPPORT_METHODS.map((method) => {
-          const isCopied = copied === method.label;
-          const isPaypal = method.label === 'PayPal';
-          return (
-            <div key={method.label} className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => copyValue(method.label, method.value)}
-                id={`support-journal-${method.label}`}
-                title={isCopied ? t.copied : t.copy}
-                className={`flex min-w-0 flex-1 items-center gap-2.5 rounded-xl border py-2.5 px-3.5 text-left transition-colors sm:gap-3 ${
-                  isCopied
-                    ? 'border-[var(--c-gold)] bg-[rgb(var(--c-gold-rgb)_/_0.16)]'
-                    : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
-                }`}
-              >
-                <span className="shrink-0 text-[var(--c-gold)]"><PayPalMark size={19} /></span>
-                <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
-                  {method.label}
-                </span>
-                <span className="min-w-0 flex-1 break-all font-mono text-[12.5px] font-semibold leading-snug text-[var(--c-accent)] sm:text-[13.5px]">
-                  {method.value}
-                </span>
-                {isCopied ? (
-                  <span className="flex shrink-0 items-center gap-1 font-mono text-[10px] font-semibold uppercase tracking-[0.05em] text-[var(--c-gold)]">
-                    <Check size={12} strokeWidth={2.5} aria-hidden="true" />
-                    {t.copied}
-                  </span>
-                ) : (
-                  <Copy size={13} strokeWidth={2} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.4)]" aria-hidden="true" />
-                )}
-              </button>
-              {isPaypal && (
-                <button
-                  type="button"
-                  onClick={toggleQr}
-                  aria-label={t.qr}
-                  title={t.qr}
-                  aria-expanded={qrOpen}
-                  className={`flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-xl border transition-colors ${
-                    qrOpen
-                      ? 'border-[var(--c-gold)] bg-[var(--c-gold)] text-white'
-                      : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] text-[rgb(var(--c-accent-rgb)_/_0.55)] hover:border-[var(--c-gold)] hover:text-[var(--c-gold)]'
-                  }`}
-                >
-                  <QrCode size={15} strokeWidth={2.2} aria-hidden="true" />
-                </button>
-              )}
-            </div>
-          );
-        })}
+      <p className="font-serif text-[22px] font-bold leading-tight tracking-[-0.01em] text-[var(--c-accent)] sm:text-[24px]">{title}</p>
+      <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+        {BRANDS.map((brand) => (
+          <a
+            key={brand.name}
+            href={brand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-white px-4 py-3.5 transition-all hover:-translate-y-0.5 hover:border-[rgb(var(--c-accent-rgb)_/_0.35)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.07)]"
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill={brand.color} aria-hidden="true" focusable="false" className="shrink-0">
+              <path d={brand.path} />
+            </svg>
+            <span className="min-w-0 flex-1 font-serif text-[18px] font-bold leading-none tracking-[-0.01em] text-[#111111]">{brand.name}</span>
+            <ExternalLink size={15} strokeWidth={1.8} className="shrink-0 text-[rgb(var(--c-accent-rgb)_/_0.3)] transition-colors group-hover:text-[var(--c-accent)]" aria-hidden="true" />
+          </a>
+        ))}
       </div>
-      {qrOpen && (
-        <div className="mt-4 flex flex-col items-start gap-2">
-          {qrDataUrl ? (
-            <img
-              src={qrDataUrl}
-              alt={t.qr}
-              width={132}
-              height={132}
-              className="h-[132px] w-[132px] rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-white p-1.5"
-            />
-          ) : (
-            <div className="flex h-[132px] w-[132px] items-center justify-center rounded-xl border border-[rgb(var(--c-accent-rgb)_/_0.24)] bg-white/40">
-              <span className="h-5 w-5 animate-spin rounded-full border-2 border-[var(--c-gold)] border-t-transparent" aria-hidden="true" />
-            </div>
-          )}
-          <p className="font-mono text-[9.5px] font-bold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{t.qr}</p>
-        </div>
-      )}
     </aside>
   );
 }
