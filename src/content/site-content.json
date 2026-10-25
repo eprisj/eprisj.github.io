@@ -21177,441 +21177,386 @@
     {
       "id": 76,
       "draft": false,
-      "title": "Ochre, Copper and a Long Summer Evening: Copenhagen, One Warm Detail at a Time",
+      "title": "Burnt Sienna, Pink Marble and a Garden of Umbrellas: Copenhagen’s Museums, Room by Room",
       "author": "Viacheslav Munister",
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
       "date": "Oct 27, 2026",
-      "excerpt": "From Nyboder’s limewashed ochre rows and Nyhavn’s painted quay to a spire with its staircase on the outside, a Red Square built in 2012 and a harbour you can swim in: a summer field guide to the colours and small architectural decisions that make Copenhagen.",
+      "excerpt": "Thorvaldsens painted galleries, a Roman emperor in hot pink at the Glyptotek, Henrik Vibskov’s spiral of umbrellas, Thomas Dambo’s trolls at ARKEN and Remedios Varo at Louisiana: a colour-led tour of Copenhagen’s museums and what is on until when.",
       "category": "Architecture",
       "subcategory": "Feature",
       "tags": [
         "Copenhagen",
-        "Nyhavn",
-        "Nyboder",
-        "Superkilen",
-        "Cirkelbroen",
-        "Church of Our Saviour",
-        "Børsen",
-        "Danish architecture",
-        "colour",
-        "summer"
+        "museums",
+        "Thorvaldsens Museum",
+        "Glyptotek",
+        "Designmuseum Danmark",
+        "ARKEN",
+        "Louisiana",
+        "Thomas Dambo",
+        "Henrik Vibskov",
+        "colour"
       ],
       "imageSeed": "",
-      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nyhavn_Copenhagen_2014_01.jpg/1920px-Nyhavn_Copenhagen_2014_01.jpg",
+      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Gallery_-_Thorvaldsens_Museum_-_DSC08734.JPG/1920px-Gallery_-_Thorvaldsens_Museum_-_DSC08734.JPG",
       "previewToken": "c919a0466a76a0f1155fc31a",
       "content": [
         {
           "type": "text",
-          "content": "Copenhagen in summer does not shout. It hums. Somewhere a bicycle bell goes off, the sun is still up at ten in the evening, someone is eating an ice cream on a harbour wall with their shoes off, and the whole city smells faintly of warm stone and water. It is a low city – its City Hall tower, the tallest of the old landmarks, rises 105.6 metres, and most of what surrounds you is ten or twelve metres of brick, plaster and copper – and because nothing is trying to impress you from above, you start to read it at eye level."
+          "content": "There is a Copenhagen that you can only see indoors, and it is a warm one. Walls the colour of burnt sienna and chrome yellow. A ceiling painted blue and gold. A glasshouse of palm trees in the middle of a sculpture museum, in a city where it is dark by four o’clock in the winter. A garden with an almost nine-metre spiral of red and white umbrellas turning in the wind. And, this autumn, a hall painted pink for an emperor in a hot-pink toga."
         },
         {
           "type": "text",
-          "content": "So this is a slow guide, not an architectural survey: a walk through five colours and a great many small decisions – shutters, door handles, a weather vane, a patch of cobbles – that make the city feel the way it does. The ochre that holds the old streets together. The green, black and gold of the spires. A red square built in 2012. An orange bicycle ramp. And the blue of a harbour that people now jump into. Nothing here needs a ticket, and almost all of it is best at the end of the day."
+          "content": "Copenhagen’s museums are not neutral white boxes. Many of them are buildings with a strong colour and a strong personality, and what is on show inside is often in conversation with the walls around it. So here is a guide to six of them, as they are right now, in the final stretch of 2026: what the rooms look like, who made them, and what is on until when. Between them you will find the ochre streets that connect it all."
         },
         {
           "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nyhavn_Copenhagen_2014_01.jpg/1920px-Nyhavn_Copenhagen_2014_01.jpg",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Gallery_-_Thorvaldsens_Museum_-_DSC08734.JPG/1920px-Gallery_-_Thorvaldsens_Museum_-_DSC08734.JPG",
           "align": "center",
           "width": 100,
-          "caption": "Nyhavn at the end of a summer day: the old wooden ships lit gold from the low sun, the townhouses glowing behind them. Photo: Julian Herzog (Website), CC BY 4.0, via Wikimedia Commons.",
-          "alt": "A canal lined with colourful gabled houses and tall-masted wooden ships, lit warm gold by a low sun, with reflections in the water."
+          "caption": "Thorvaldsens Museum: Christ and the Apostles under a blue barrel vault, against a wall the colour of dark Pompeian red, on a floor of mosaic tiles. Photo: Daderot, CC0, via Wikimedia Commons.",
+          "alt": "A museum hall with dark red walls, a blue coffered barrel vault, white marble statues of Christ and apostles on plinths, and an ochre-and-grey mosaic floor."
         },
         {
           "type": "header",
-          "content": "I · Ochre: the colour that holds the old streets together",
+          "content": "I · Thorvaldsens Museum: the building that was never white",
           "level": 2
         },
         {
           "type": "text",
-          "content": "Start with yellow, because it is what you will see most. Not a postcard yellow, but a warm, slightly dusty ochre that runs through whole neighbourhoods, like a shared accent. Its purest form is in Nyboder, a district of low terraced rows a short walk north of the centre. King Christian IV began it in 1631 to house the ordinary sailors of the fast-growing Royal Danish Navy, together with their families, and the first stage was finished around 1641. The yellow is so tied to the place that ‘Nyboder yellow’ is an established Danish colour term."
+          "content": "Start with the one that surprises people most. Thorvaldsens Museum sits on Slotsholmen, beside the palace of Christiansborg, and it was designed by the architect Gottlieb Bindesbøll to hold the works that the sculptor Bertel Thorvaldsen left to his native city. It opened in 1848. You expect a temple of white marble, and the statues are indeed white. But the rooms around them are painted, in saturated colour, and walking in feels like stepping into a jewel box."
+        },
+        {
+          "type": "text",
+          "content": "The idea behind that colour has a history. According to sources on the museum, Bindesbøll followed the debate of his time about how brightly the ancient Greeks had painted their temples and sculptures, and brought strong colour into a neoclassical building in Copenhagen, which met with resistance at first. Modern descriptions of the galleries talk of a palette of earth tones: alternating shades of umber, burnt sienna, ochre and chrome. The building was restored several times, among others between 1921 and 1942 by the architect Kaare Klint, so what you see is the result of many hands, not a perfectly frozen 1848. I could not find a room-by-room paint analysis, so I will not pretend to know exactly which wall was which colour on opening day."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hallway_-_Thorvaldsens_Museum_-_DSC08659.JPG/1920px-Hallway_-_Thorvaldsens_Museum_-_DSC08659.JPG",
+          "align": "center",
+          "width": 100,
+          "caption": "A view down the enfilade: doorway after doorway in deep red, each frame a little warmer, a checkered floor leading the eye on. Photo: Daderot, CC0, via Wikimedia Commons.",
+          "alt": "A long view through successive red doorways with black plinths, over a geometric grey and ochre tiled floor, toward a bright yellow room at the far end."
+        },
+        {
+          "type": "text",
+          "content": "Look at the floors, too. They are tiled in geometric patterns, ochre, grey and black, a different design for different rooms, so that the ground itself is a kind of fabric. The ceilings are the real surprise. In some galleries they are decorated with pale, finely worked ornament that you only notice when you tilt your head back."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Ceiling_-_Thorvaldsens_Museum_-_DSC08657.JPG/1920px-Ceiling_-_Thorvaldsens_Museum_-_DSC08657.JPG",
+          "align": "center",
+          "width": 100,
+          "caption": "Look up: a vault with delicate pale ornament, framed panels and a frieze of animals around the edge. Photo: Daderot, CC0, via Wikimedia Commons.",
+          "alt": "A close view of a curved cream-coloured ceiling vault decorated with fine framed panels and a narrow frieze along its lower edge."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Arched_room_-_Thorvaldsens_Museum_-_DSC08562.JPG/1920px-Arched_room_-_Thorvaldsens_Museum_-_DSC08562.JPG",
+          "align": "center",
+          "width": 100,
+          "caption": "A smaller room under a painted vault: blue, red and gold in geometric bands, with a mosaic floor below. Photo: Daderot, CC0, via Wikimedia Commons.",
+          "alt": "A small museum room with a vault ceiling painted in blue, red and gold geometric patterns, a window at the end, and a mosaic floor."
+        },
+        {
+          "type": "text",
+          "content": "The courtyard completes it. Thorvaldsen is buried in the middle of the museum he never saw, in a courtyard whose walls carry painted friezes of plants. A museum designed so that visitors would remember it as a place, not only a collection. If you do one thing in Copenhagen on a grey day, make it this: the colour is its own exhibition."
+        },
+        {
+          "type": "header",
+          "content": "II · The Glyptotek: palms in winter, and a hall painted pink",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The Ny Carlsberg Glyptotek is the museum of the brewery’s heir, Carl Jacobsen, and it is a collection of ancient sculpture that happens to live in a building with a garden inside it. Under a glass roof is a winter garden of palms and tropical plants, with a fountain, benches, and a mosaic path. In the Danish winter, people sit there with coffee and take off their coats."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Winter_garden_-_Ny_Carlsberg_Glyptotek_-_Copenhagen_-_DSC09235.JPG/1920px-Winter_garden_-_Ny_Carlsberg_Glyptotek_-_Copenhagen_-_DSC09235.JPG",
+          "align": "center",
+          "width": 100,
+          "caption": "The winter garden: palms, a fountain with a marble group, and visitors resting on benches under a glass roof. Photo: Daderot, CC0, via Wikimedia Commons.",
+          "alt": "A glasshouse courtyard with tall palms and green plants, a stone fountain with a white marble sculpture group, and people sitting beside it."
+        },
+        {
+          "type": "text",
+          "content": "And this autumn the building has an exhibition that is entirely about colour. The Power of Fashion in the Roman Empire opened on 1 October 2026 and, by the museum’s own listing, runs until 27 March 2027 (a few news outlets give 29 March, so check before you plan a trip around the final weekend). It has 171 objects, drawn from the Glyptotek’s own Roman collection and from international loans, and it is the largest special exhibition on antiquity in the museum’s history."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8ceo0azp4kp.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The exhibition hall: a glass roof, pink walls and a pale marble emperor on a pink plinth. Photo: Ana Cecilia González / Ny Carlsberg Glyptotek, courtesy of the museum, via Smithsonian Magazine.",
+          "alt": "A long museum gallery with a glass skylight roof and pink walls, a marble statue of a man in a draped toga on a round pink platform in the centre, and other busts along the walls."
+        },
+        {
+          "type": "text",
+          "content": "The centrepiece is a statue of the emperor Tiberius, carved in the first century. Today it is white marble. But polychromatic analysis shows that the cloth draped over him was originally hot pink, a colour associated in his day with wealth and conviction, and the exhibition digitally reconstructs how the statue may have looked. It is a good reminder that the white marble we think of as “classical” is mostly what time left behind: the colour was washed, burned and worn away, and now scientists are painting it back. “Today, a half-naked ruler wearing pink might come as a surprise,” the Glyptotek’s Brøns says in the museum’s statement, “but for the Romans, it was a clear visual statement of power, luxury and divine authority.”"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cb0ywdktxa.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The reconstruction of Tiberius: the white marble figure with its toga digitally restored to the pink that analysis points to. Photo: Ny Carlsberg Glyptotek, digital reconstruction, courtesy of the museum.",
+          "alt": "A statue of a muscular, partly draped man with an arm raised, rendered in colour: pale skin and a pink cloth over his shoulder and arm, standing on a stone base."
+        },
+        {
+          "type": "text",
+          "content": "The pink is the point. In antiquity, the status of a colour was largely a question of how hard it was to make: pinks and purples came from shellfish, and ancient Romans boiled snails in lead vats for days at a time to get the dye. Fashion, in other words, was not a frivolity but a legible code, in which the right colour, the right hairstyle and the right scent told a room who you were. The show makes that code something you can smell: four “scent stations”, developed with a Danish skincare company, let visitors sniff floral notes worn by Roman men and the stronger perfumes popular among women, and twelve listening posts let you eavesdrop on Roman writers gossiping about what their powerful contemporaries wore. There are also loans, including three tunics that have never before left the British Museum."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8c96hdu2vlm.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "One of the scent stations: a visitor leans into a glass dome to smell a perfume made from an ancient recipe. Photo: Ana Cecilia González / Ny Carlsberg Glyptotek, courtesy of the museum, via Smithsonian Magazine.",
+          "alt": "A woman in an orange knitted sweater bends over a white pedestal, holding a frosted glass dome to her nose, with an ancient marble bust behind her in a pale grey room."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cdkcgcf8pb.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A forest of Roman busts, each with a different hairstyle, in front of a drape of grey fabric. Photo: Ana Cecilia González / Ny Carlsberg Glyptotek, courtesy of the museum, via Smithsonian Magazine.",
+          "alt": "Dozens of white marble Roman portrait busts of different sizes on grey cylindrical pedestals in front of soft grey draped curtains."
+        },
+        {
+          "type": "header",
+          "content": "III · Designmuseum Danmark: a rococo courtyard, and a spiral of umbrellas",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Designmuseum Danmark is housed in an eighteenth-century building, a former hospital, and the first thing it teaches is how calm a Copenhagen facade can be: a long pale-grey front with white windows, a central pediment, and a dark door, around a gravelled courtyard with a line of stones set into the ground. It is the opposite of a museum trying to impress you. And inside it is a different story."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Designmuseum_Danmark_2025.jpg/1920px-Designmuseum_Danmark_2025.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Designmuseum Danmark seen from the courtyard: grey plaster, white window frames, a hip roof and a red-black door. Photo: August Dominus, CC0, via Wikimedia Commons.",
+          "alt": "A symmetrical two-storey grey plastered building with white windows, a dark roof, a pediment above the entrance, and a gravel courtyard in front."
+        },
+        {
+          "type": "text",
+          "content": "From 18 September 2026 to 21 February 2027 the museum belongs to the Danish designer and artist Henrik Vibskov. He has spent more than 25 years building a universe in which music, scenography, costumes, installations and fashion feed one another. A graduate of Central Saint Martins (2001), he has made more than 50 fashion collections and shown at MoMA in New York and at the Palais de Tokyo in Paris, and he plays drums with the band Trentemøller and others. Alongside the studio he is a professor at Design School Kolding, and his prizes include the Thorvald Bindesbøll Medal and the Crown Prince Couple’s Culture Prize; in 2025 he received a lifelong honorary grant from the Danish Arts Foundation. The exhibition is immersive, with miniature models of installations, 44 display cases of objects and prototypes from his studio, and walk-through works, and its stated spirit is that mistakes are gold and beauty can emerge from chaos."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cgopp7ro25.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Umbrico Spiral in the museum garden: a double spiral of red and white umbrellas on a black steel frame. Photo: Mads Christensen / Nordic Agency, courtesy of Designmuseum Danmark.",
+          "alt": "A man in a cap sits on a bench inside a black steel frame hung with red-and-white striped umbrellas, with a pale building and green trees behind."
+        },
+        {
+          "type": "text",
+          "content": "You can see part of the show before you step inside. The outdoor piece The Umbrico Spiral, almost nine metres tall, with red and white double spirals that turn in the wind, stands in the museum garden. Against grey plaster and green summer leaves, the red and white is the loudest colour in the neighbourhood, and the most cheerful."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cfntlsgm21.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Inside the exhibition: hanging bulbous forms in blue and green checks, from the work Observations of Humans. Photo: Josefina Eikenaar, courtesy of Designmuseum Danmark.",
+          "alt": "A room full of tall, bulbous hanging fabric sculptures in blue and green checkered patterns with dark blue tassels, in a space with blue walls."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cfeckvfgtz.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Costumes for Madama Butterfly: a row of sculptural dresses in yellow, green and violet on a darkened stage. Photo: Mathias Baus, courtesy of Designmuseum Danmark.",
+          "alt": "A dark stage lit from below with a row of pleated dresses in yellow, green, blue and purple, and two performers in grey at the left."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cg6jkv174l.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Jaw Nut Piece: rows of painted heads on sticks, in red, white and black. Photo: Victor Jones, courtesy of Designmuseum Danmark.",
+          "alt": "Rows of small painted faces with red, black and white markings on thin wooden sticks, in a dark room, with a black railing in the foreground."
+        },
+        {
+          "type": "header",
+          "content": "IV · ARKEN: a ship made of concrete, and a troll made of trash",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Out on the coast at Ishøj, south-west of the city, ARKEN is the museum that looks like it is about to sail. Its architecture is deliberately nautical: a long white form with a sharp angular prow, set among water and reeds at the edge of the sea. (The architect is Søren Robert Lund and it opened in 1996; I am quoting this from general knowledge rather than a source I checked this week.) It is worth the trip in itself, and this year it is worth the trip for one exhibition in particular, with only a few weeks left."
+        },
+        {
+          "type": "image",
+          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/ARKEN_stairs_interior.jpg/1920px-ARKEN_stairs_interior.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A detail of ARKEN’s stairs: stepped concrete, pale timber seats and sharp diagonals. Photo: Till Niermann, CC BY 3.0, via Wikimedia Commons.",
+          "alt": "A close top-down view of a stepped concrete staircase with pale wooden benches set into the steps, forming a zigzag pattern."
+        },
+        {
+          "type": "text",
+          "content": "Thomas Dambo – The Garbage Man runs from 24 May to 29 November 2026. It is the first museum exhibition by the Danish artist who has become famous for monumental troll sculptures made from recycled materials: more than a hundred of them, placed around the world. Dambo came to it by an unusual route: a youth shaped by hip-hop, graffiti and street art, then large-scale installations from salvaged material, and a conviction that upcycling and public participation are the point. His breakthrough was The Six Forgotten Giants of 2016, giant trolls hidden in the green areas around Copenhagen’s western suburbs, and the American version of his Troll Hunt drew more than 1.24 million visitors in its first year, according to the museum. ARKEN says it aims to be the first museum in the world to bring Dambo indoors, and the exhibition tries to say that recycling is gold."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cjx1dm92gy.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "In the ARKEN halls: a wooden troll with a spiky back points across a floor strewn with scraps, while a giant of fabric and cardboard rises behind it. Photo: Anders Sune Berg, courtesy of ARKEN.",
+          "alt": "A large museum hall with a concrete floor, a wooden troll with a spiky mane pointing with one arm, and an enormous colourful figure of textile waste and cardboard behind it."
+        },
+        {
+          "type": "text",
+          "content": "The colour here is of a different kind: not paint, but the stuff of a thousand wardrobes. The halls are filled with mountains of discarded clothing, cardboard and plastic, which the trolls rise from, climb over and sleep in. ARKEN thanks the waste companies and the charity Folkekirkens Nødhjælp for collecting the waste that went into it. At the end, there is a troll workshop where visitors build their own trolls from the museum’s own former shop and foyer flooring, which had just been taken out. The museum’s building is, in a small way, part of the art."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8cw2j5ebyf8.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A troll stands at the top of a staircase, with a pile of discarded clothes behind it. Photo: Anders Sune Berg, courtesy of ARKEN.",
+          "alt": "A large wooden troll with a friendly face standing with a raised arm in a tall concrete museum space, with a heap of coloured clothing at its feet."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvo8d3qy339x1m.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A sleeping troll, lying on a hill of textiles. Photo: Anders Sune Berg, courtesy of ARKEN.",
+          "alt": "A wooden troll lying on its back on a huge mound of coloured clothes and fabric in a bare concrete room."
+        },
+        {
+          "type": "header",
+          "content": "V · Louisiana: the museum that lets the garden in",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Further north, in Humlebæk, the Louisiana Museum of Modern Art starts in a nineteenth-century villa and then keeps going. Its founder Knud W. Jensen bought the villa to turn it into Denmark’s first contemporary art gallery, and the architects Jørgen Bo and Vilhelm Wohlert extended it over decades, in six buildings between 1956 and 1991, that link together in a continuous circuit around the park. The principle, repeated in every description, is balance: nature, architecture and art. The villa is not hidden or replaced. It is just the beginning of a walk."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Louisiana_Museum_of_Modern_Art_Hovedindgang.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Where it starts: the old villa, covered in ivy, with the entrance courtyard in front. Photo: Louisiana Museum of Modern Art / Kim Hansen, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "A two-storey white villa covered in green ivy, with a cobbled courtyard in front and two visitors in red walking toward the entrance, under tall pine trees."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Louisiana_Museum_of_Modern_Art_Pauserum.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "A pavilion that opens to the sea: a low copper-coloured roof, black window frames and a sunken seating corner of pale concrete. Photo: Louisiana Museum of Modern Art / Kim Hansen, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "A low flat-roofed pavilion with dark glazing facing a blue sea, a sunken concrete seating area in front, and dwarf pines on the side."
+        },
+        {
+          "type": "text",
+          "content": "Look at the details here: the low roofs, the dark window frames, the pale concrete steps, and the way every pavilion frames a different piece of the Øresund. The museum’s colour is the colour of its surroundings: the ivy-green of the villa, the blue of the water, the grey-white of the concrete, the dark green of the trees."
+        },
+        {
+          "type": "text",
+          "content": "The current headline show is a retrospective of Remedios Varo (1908–1963), the Spanish-Mexican artist who made precise, dreamlike paintings at the meeting point of Surrealism, mysticism and science. It has more than 70 works, including paintings, drawings, notebooks and archival material, arranged in roughly chronological order, and it is on until 10 January 2027. Varo’s technique is meticulous, and much of her imagery draws on Italian painting of the late Middle Ages and the Renaissance. The exhibition is organised around questions of creativity, knowledge and perception, and around how Varo moved between dream and reality in a single canvas. For a museum so tied to its park, there is something fitting about a painter who made entire interior worlds."
+        },
+        {
+          "type": "image",
+          "content": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Louisiana_Museum_of_Modern_Art_Gamle_Villa.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The garden side of the old villa: a lawn, a dark sculpture and rhododendrons in bloom. Photo: Louisiana Museum of Modern Art / Kim Hansen, CC BY-SA 4.0, via Wikimedia Commons.",
+          "alt": "A garden with a green lawn, a dark abstract sculpture on a plinth, flowering rhododendron bushes and a white villa covered in vines in the background."
+        },
+        {
+          "type": "header",
+          "content": "VI · Between the museums: the ochre streets",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "It would be a mistake to end indoors. Everything above is connected by streets, and the streets have their own palette, a warm ochre that you could call the city’s house colour. Its purest form is in Nyboder, the low terraced rows King Christian IV began in 1631 to house the sailors of the Royal Danish Navy; ‘Nyboder yellow’ is an accepted colour name in Danish. Whether the original paint was ochre-wash on pale brick or something else is disputed, but the way a lime-and-earth-pigment wall holds the evening light is not."
         },
         {
           "type": "image",
           "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Yellow_houses_Copenhagen_-_panoramio.jpg/1920px-Yellow_houses_Copenhagen_-_panoramio.jpg",
           "align": "center",
           "width": 100,
-          "caption": "A row of ochre houses with red tile roofs and granite posts joined by chains: the Nyboder look. Photo: René Bongard, CC BY-SA 3.0, via Wikimedia Commons.",
+          "caption": "Nyboder’s look: ochre walls, a red tile roof, granite posts linked by chains. Photo: René Bongard, CC BY-SA 3.0, via Wikimedia Commons.",
           "alt": "A long low ochre-yellow house with a steep red tile roof beside a cobbled street, with stone bollards linked by black chains in front."
-        },
-        {
-          "type": "text",
-          "content": "The surprising part is that nobody agrees how it began. One standard account says the original colour was red and white; a conservation report says the 17th- and 18th-century houses were built in pale yellow brick and given an external wash of lime with deep ochre pigment. Whichever is right, the technique is the lovely part. Limewash is a thin coat, and each layer oxidises and bonds with the surface beneath it, so the wall is not so much painted as slowly cured, and ochre is a cheap earth pigment that shrugs off sun and weather. A popular explanation says it was simply the most affordable way to make a house look warm. There is also a repeated story that a king once decreed the whole city be painted one colour. I could find nothing to support it, and one local guide says outright that no single decree turned Copenhagen into pastels."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Nyboders_Mindestuer.jpg/1920px-Nyboders_Mindestuer.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Close to the wall: Nyboder’s ochre limewash, a sill, a pair of shutters and a window. Photo: RAYANDBEE, CC BY 2.0, via Wikimedia Commons.",
-          "alt": "A close upward view of a yellow ochre wall with a green-framed window and red-brown shutters under a red tile roof."
         },
         {
           "type": "image",
           "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Nyboder%2C_Copenhagen_Denmark_%2834382051486%29.jpg/1920px-Nyboder%2C_Copenhagen_Denmark_%2834382051486%29.jpg",
           "align": "center",
           "width": 100,
-          "caption": "A Nyboder house with green window frames, dusty-pink shutters and a bicycle against the wall. Photo: Lorie Shaull, CC BY-SA 2.0, via Wikimedia Commons.",
+          "caption": "A close detail: rough ochre plaster, a green window frame, dusty-pink shutters and a bicycle. Photo: Lorie Shaull, CC BY-SA 2.0, via Wikimedia Commons.",
           "alt": "A rough ochre plastered wall with a window in a green frame with dusty pink shutters, a basket bicycle leaning below, and a street sign above."
         },
         {
           "type": "text",
-          "content": "What makes Nyboder worth wandering is how much is fixed and how much is left to the people living there. The plan is strict: two main streets radiate from a square that was planned and never built, and the rows sit perpendicular to them. The base colour is fixed. But the details on top of it – the shutters in a dusty pink-brown, the green of a door, a pot of something on a step, a bicycle leaning where it always leans – belong to the residents. And the residents are still, mostly, service people: priority for the houses goes to members of the Danish Navy, Army and Air Force stationed in Copenhagen, and plans to sell them off have been refused. In 1771 an extra storey was added to some of Christian IV’s first rows, and the old guardhouse had an outside bell to gather people in an attack or a fire. It is a district of shutters and flower pots that is also, quietly, a piece of working military housing four hundred years old."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Kopenhagen_%28DK%29%2C_Vester_Voldgade_--_2017_--_1677.jpg/1920px-Kopenhagen_%28DK%29%2C_Vester_Voldgade_--_2017_--_1677.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Ochre plaster, grey shutters and a heavy front door in the late sun: the same palette, a few streets away. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A warm orange-ochre wall with a diagonal of sunlight across it, two windows with grey shutters and a dark panelled door at street level."
-        },
-        {
-          "type": "header",
-          "content": "II · Nyhavn: the painted quay",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Nyhavn, ‘New Harbour’, is the same idea turned up loud. The canal was dug between 1670 and 1675 under King Christian V, by Danish soldiers and by Swedish prisoners of war from the war of 1658–60, to give ships a gateway to the old town at Kongens Nytorv, where they unloaded cargo and fishermen sold the catch. It is about 450 metres long. On the northern side are the brightly coloured townhouses of wood, brick and plaster you know from every photograph, with No. 9, from 1681, the oldest; the southern side has larger mansions, including Charlottenborg Palace on the Kongens Nytorv corner."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1447.jpg/1920px-Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1447.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Looking along the canal towards the harbour, in the half hour when everything turns amber. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A canal of old sailing ships and a row of colourful gabled houses under a sky of warm clouds, all reflected in the water."
-        },
-        {
-          "type": "text",
-          "content": "Hans Christian Andersen lived at No. 67 from 1845 to 1864 and again at No. 18 from 1871 to 1875, and a plaque marks No. 67. The inner end of the canal is a harbour of veteran and museum ships, inaugurated in 1977, with vessels like the lightship Gedser Rev, built in 1895 in Odense, and the galleass Svalan af Nyhavn from 1924. It is worth noticing how much of Nyhavn’s old-world feeling comes from the ships: the masts, the rigging and the painted hulls are as much of the picture as the houses. As for why the facades are so bright, a travel guide says that harbour merchants used strong colours so sailors could tell a warehouse or a home from the water. I have not found a primary source, but it is a lovely rule for reading the street: the palette is less decoration than address."
+          "content": "Then there is Nyhavn, dug between 1670 and 1675, whose coloured houses and old wooden ships look best at the end of a long day, and the black-and-gold spire of the Church of Our Saviour, whose external staircase winds around the outside of the spire, 400 steps in all. They are not museums, and they are free."
         },
         {
           "type": "image",
           "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Nyhavn_Copenhagen_2014_05.jpg/1920px-Nyhavn_Copenhagen_2014_05.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Evening light on the quay: pink sky, painted hulls, and a row of houses in every colour at once. Photo: Julian Herzog (Website), CC BY 4.0, via Wikimedia Commons.",
+          "caption": "Evening light on Nyhavn: pink sky, painted hulls, and houses in every colour at once. Photo: Julian Herzog (Website), CC BY 4.0, via Wikimedia Commons.",
           "alt": "A long canal with white and dark sailing ships moored on the left, a row of coloured houses on the right and a peach and pink sunset sky."
-        },
-        {
-          "type": "header",
-          "content": "III · Green, black and gold: spires, copper and the old kings’ towers",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "Look up and the palette changes. Above the ochre is a skyline of roofs and spires, mostly copper, and copper keeps its own calendar. New, it is the colour of a coin; after decades of sea air it turns the soft, pale green of verdigris. Copenhagen’s skyline is a gallery of those greens, with a few glorious exceptions in black, gold and brick."
-        },
-        {
-          "type": "text",
-          "content": "The best exception is the spire of the Church of Our Saviour in Christianshavn. The church was designed by Lambert van Haven and built from 1682 to 1695, but the spire is the work of Lauritz de Thurah, who in 1749 replaced van Haven’s original design with his own, finished in 1752. It is timber-framed, black and gold, and 90 metres tall, and an external staircase winds four times counter-clockwise around it, a motif Thurah took from the spiral lantern of Sant’Ivo alla Sapienza in Rome. The climb is 400 steps, and the last 150 are outside, on the spire itself, with a gilded rail between you and the street. At the top a gilded globe carries a four-metre figure of Christ Triumphant holding a banner."
         },
         {
           "type": "image",
           "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Church_tower_%E2%80%93_Church_of_Our_Saviour%2C_Copenhagen.jpg/1920px-Church_tower_%E2%80%93_Church_of_Our_Saviour%2C_Copenhagen.jpg",
           "align": "center",
           "width": 100,
-          "caption": "The spire of the Church of Our Saviour, Christianshavn: dark brick tower, black and gold spiral, gilded globe. Photo: OleNeitzel, CC BY 4.0, via Wikimedia Commons.",
+          "caption": "The spire of the Church of Our Saviour: black and gold, spiralling up to a gilded globe. Photo: OleNeitzel, CC BY 4.0, via Wikimedia Commons.",
           "alt": "A tall brick church tower with a black-and-gold spiralling spire topped by a gold ball, against a deep blue sky."
         },
         {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Climbing_the_90m_high_Vor_Frelsers_Kirke_spire_%28Church_of_Our_Saviour%29_%2837188404854%29.jpg/1920px-Climbing_the_90m_high_Vor_Frelsers_Kirke_spire_%28Church_of_Our_Saviour%29_%2837188404854%29.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The outdoor staircase: timber treads and a gilded handrail wound around the outside of the spire, with the roofs of Copenhagen below. Photo: Jorge Láscar, CC BY 2.0, via Wikimedia Commons.",
-          "alt": "A narrow spiral staircase with a golden railing climbing around the outside of a black spire, with the rooftops of Copenhagen below."
-        },
-        {
-          "type": "text",
-          "content": "Børsen, the old Stock Exchange, has the other kind of spire: four dragon tails twisted together into a single point, 56 metres high. The building, in Dutch Renaissance style, was built between 1619 and 1640 under Christian IV by the brothers Lorenz and Hans van Steenwinckel, and housed the Danish stock market until 1974. On 16 April 2024 a fire that began during renovation work in the copper roof destroyed about half of it and brought the spire down. Nobody was hurt, and in November that year the police ruled out criminal causes. Reconstruction began that September and aims to finish in 2029, using handmade red bricks and recycled copper for the roof, a good reminder that the green in the skyline is a material with a supply chain as well as a colour."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/B%C3%B8rsen_dragon_spire_roofs_Copenhagen_Denmark.jpg/1920px-B%C3%B8rsen_dragon_spire_roofs_Copenhagen_Denmark.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The dragon spire of Børsen above its copper roofs, photographed before the 2024 fire. The spire collapsed in the blaze and is being rebuilt. Photo: Jebulon, CC0, via Wikimedia Commons.",
-          "alt": "A tall spire made of four twisted dragon tails above a roofline of pale green copper and dark brick gables."
-        },
-        {
-          "type": "text",
-          "content": "Then there is brick. The City Hall by Martin Nyrop, begun in the 1890s and inaugurated in 1905, is the great red-brick set piece: National Romantic in style, with Renaissance Revival touches and an openly acknowledged debt to the Palazzo Pubblico in Siena. Its tower rises 105.6 metres, and above the balcony stands a gilded statue of Absalon, the city’s founding bishop. Inside is Jens Olsen’s World Clock. The copper on it is the same soft green; the brick is warmer than any ochre."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Copenhagen_City_Hall_detail.jpg/1920px-Copenhagen_City_Hall_detail.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Copenhagen City Hall in late light: red brick, copper-green towers, a clock face. Photo: mararie, CC BY-SA 2.0, via Wikimedia Commons.",
-          "alt": "Red brick gabled facade of a city hall with two slender green copper-capped towers, one with a clock face, in warm light."
-        },
-        {
-          "type": "text",
-          "content": "Even the smallest copper goes the same way. Look at the weather vane of Trinitatis church, which stands at the foot of the Round Tower, a crowned monogram on a spike, and you will see its crown, its monogram and its two small spheres turned the same pale green as the roofs."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Weather_vane_Trinitatis_kirke_Copenhagen_Denmark.jpg/1920px-Weather_vane_Trinitatis_kirke_Copenhagen_Denmark.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The weather vane of Trinitatis church: crown, monogram, two spheres and a spike, all in green copper patina. Photo: Jebulon, CC0, via Wikimedia Commons.",
-          "alt": "A pale green copper weather vane with a crowned monogram, a cross and two round balls on a spike against a blue sky with soft clouds."
-        },
-        {
-          "type": "text",
-          "content": "And the oddest of Christian IV’s buildings is the Round Tower, built from 1637 to 1642. It has no staircase. Instead a spiral ramp of 7.5 turns, about 210 metres long, climbs gently to an observation deck 34.8 metres up. The reason is practical and slightly absurd: it was designed so that a horse and carriage could reach the university library at the top, and so that books and the heavy instruments of the observatory could be carried up. The upper facade carries a gilded rebus, dated 1642, built around the four Hebrew letters of God’s name, which reads as a prayer for divine guidance for the king."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/002_Copenhagen_landmark_-_The_Round_Tower_%28Rundetaarn%29_spiral_ramp.jpg/1920px-002_Copenhagen_landmark_-_The_Round_Tower_%28Rundetaarn%29_spiral_ramp.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Inside the Round Tower: a brick-paved ramp curves up past small windows, built for horses and carriages. Photo: Marek Ślusarczyk (Tupungato) Photo portfolio, CC BY 3.0, via Wikimedia Commons.",
-          "alt": "A whitewashed, curved vaulted corridor with a floor of paving bricks and small arched windows, bending out of sight."
-        },
-        {
           "type": "header",
-          "content": "IV · A red square, a black square, an orange ramp",
+          "content": "A museum day, planned by colour",
           "level": 2
         },
         {
           "type": "text",
-          "content": "The newer city has a palette of its own, and it is much louder. The loudest is Superkilen, a long, thin park through Nørrebro, opened in June 2012. ‘Kilen’ means wedge; the park covers about 30,000 square metres and runs roughly 750 metres along a cycle track. It was designed by the art group Superflex with Bjarke Ingels Group and the German landscape architects Topotek1, for a neighbourhood whose residents come from some 62 countries. The idea was to bring them and the old Copenhageners together through objects that each group would recognise. There are 108 plants and artefacts: swings from Iraq, benches from Brazil, a bus stop from the Soviet Union, a fountain from Morocco, litter bins from England, manhole covers from Zanzibar and Poland, Armenian picnic tables, a Japanese octopus slide, neon signs from around the world – each with a plaque in Danish and in the language of its origin."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Superkilen.JPG/1920px-Superkilen.JPG",
-          "align": "center",
-          "width": 100,
-          "caption": "Superkilen’s Red Square, painted in red, orange and pink, with neon signs brought from elsewhere: a star, a Cyrillic car-brand sign. Photo: Orf3us, public domain, via Wikimedia Commons.",
-          "alt": "A wide flat plaza painted in shades of red and pink with tall poles carrying neon signs, including a red star and a sign in Cyrillic, with people and cyclists in the distance."
-        },
-        {
-          "type": "text",
-          "content": "The park has three zones, named by colour. The Red Square, painted in bright red, orange and pink, is for sport and play. The Black Market, in the middle, is the classic square, with a fountain, barbecue grills and palm trees from China, an ‘urban living room’, its asphalt painted with white wavy lines. The Green Park, at the far end, is a swell of grass with trees and picnic tables. Superkilen won the Aga Khan Award for Architecture in 2016 and was shortlisted for the EU Prize for Contemporary Architecture, and its authors call it an artwork in progress rather than a finished project. For something that is, at heart, a very large coat of paint, it works surprisingly hard."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/2_Superkilen_Park.jpg/1920px-2_Superkilen_Park.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "The Black Market at dusk: white lines flowing across black asphalt, lamps and a fountain in the middle. Photo: Lorie Shaull, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A broad black plaza with white wavy lines painted across it, with two street lamps in the middle distance and apartment blocks beyond in the evening light."
-        },
-        {
-          "type": "text",
-          "content": "Orange is the colour of the Bicycle Snake, Cykelslangen, an elevated ramp opened on 28 June 2014 that crosses the Gasværkshavnen harbour basin between Kalvebod Brygge and Havneholmen. It is 220 metres long and 4.6 metres wide, with seven metres of clearance below, and cost 32 million Danish kroner. The designers are Dissing+Weitling. Its job is dull and its form is not: it lets cyclists skip the congested quay by floating over the water, with an orange-red surface that makes it as readable at speed as a road sign."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Cykelslangen_01.JPG/1920px-Cykelslangen_01.JPG",
-          "align": "center",
-          "width": 100,
-          "caption": "Cykelslangen, the Bicycle Snake: an orange-red ramp curling past a chequered black-and-white building. Photo: Leif Jørgensen, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A wide orange-red ramp with a light railing curving beside a tall black-and-white chequered building and a paved plaza."
-        },
-        {
-          "type": "header",
-          "content": "V · Blue: the harbour you can jump into",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The last colour is the one that changed the city most: the blue of the water. Until fairly recently nobody swam in Copenhagen’s harbour. Now it is about as clean as the Øresund strait, and in summer the harbour baths are generally open every day. The first, at Islands Brygge, opened for the 2002 season; in 2003 that original bath was towed to Fisketorvet and replaced at Islands Brygge by a bigger permanent one, by the architects JDS and Bjarke Ingels Group. It has five pools and room for about 600 people – two children’s pools, two 50-metre pools and a diving pool seven metres deep with 3- and 5-metre springboards. Copencabana at Fisketorvet followed, with three pools and springboards, and Svanemølle Beach opened on 20 June 2010 with a 130-metre pier and 4,000 square metres of shallow water. The newest, at Sluseholmen, opened on 16 December 2011. Water quality is published on a dedicated website, and after heavy rain, when sewage can overflow, the baths close for a couple of days until the tide has changed the water."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Havnebad_Islands_Brygge_summer_Copenhagen.jpg/1920px-Havnebad_Islands_Brygge_summer_Copenhagen.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Islands Brygge in the afternoon sun: swimmers queueing to jump from the timber platform into the harbour. Photo: kallerna, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "Young people standing on a timber deck at the edge of the harbour and jumping into the water in bright sun, with glass office buildings behind."
-        },
-        {
-          "type": "image",
-          "content": "https://upload.wikimedia.org/wikipedia/commons/4/47/Kastrup_S%C3%B8bad.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Out on a pier into the Øresund: the circular timber sea bath at Kastrup, in soft evening light. Photo: Ambroxide 24, CC0, via Wikimedia Commons.",
-          "alt": "A long timber pier with two people walking along it towards a round wooden bath structure standing in the sea under a soft cloudy sky."
-        },
-        {
-          "type": "text",
-          "content": "One more piece of harbour architecture belongs here, because it turns the water into a stage. Cirkelbroen, the Circle Bridge, designed by Olafur Eliasson, opened on 22 August 2015 as a gift from the Nordea Foundation across the southern mouth of the Christianshavn Canal. It is five circular steel decks of slightly different diameters, joined together, each with a mast of a different height at its centre, with 110 inclined cables running from the mast tops to the deck edges. The rails are made of wood from the Brazilian guariuba tree. It is 40 metres long, and two of the circular decks can swing open together to let boats through. The masts give it, as one description says, the look of a series of sailing yachts, so that on a windy evening it seems to be about to set off."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Circle_Bridge%2C_Copenhagen%2C_20220618_1531_7319.jpg/1920px-Circle_Bridge%2C_Copenhagen%2C_20220618_1531_7319.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Cirkelbroen: five round decks, five masts, crossing the mouth of the Christianshavn Canal. Photo: Jakub Hałun, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A low red and steel pedestrian bridge with five tall white masts and fine cables, seen across blue water with apartment buildings behind."
-        },
-        {
-          "type": "header",
-          "content": "VI · The hour after dinner",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "If you want to see how all this fits together, go out after dinner. In Copenhagen, summer dinner ends early and the evening is long, and the city fills with people who are going nowhere in particular: along the avenue in Frederiksberg, where the late sun comes through the trees like a stage light; down Vesterbrogade, where the street lamps and bicycle lamps come on together; into Tivoli, which has been open since 1843 and where an ice-cream kiosk from 1900-something glows like a lantern and sells cones to people who are still in their work clothes."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Girl_walking_on_Frederiksberg_All%C3%A9_on_a_summer_day._Taken_with_Kodak_Ektar_100_%2B_Canon_EOS_650_%2B_Canon_EF_135mm_f2_-_45557775225.jpg/1920px-Girl_walking_on_Frederiksberg_All%C3%A9_on_a_summer_day._Taken_with_Kodak_Ektar_100_%2B_Canon_EOS_650_%2B_Canon_EF_135mm_f2_-_45557775225.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Walking a bicycle along Frederiksberg Allé on a summer day, in the low backlight. Photo: Kristoffer Trolle, CC BY 2.0, via Wikimedia Commons.",
-          "alt": "A woman in an orange coat walking a bicycle along a tree-lined pavement in warm backlight, with café tables and a cargo bike at the left."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Vesterbrogade_-_Flickr_-_Kristoffer_Trolle.jpg/1920px-Vesterbrogade_-_Flickr_-_Kristoffer_Trolle.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Vesterbrogade after dark: cyclists in the bike lane under the shop signs. Photo: Kristoffer Trolle, CC BY 2.0, via Wikimedia Commons.",
-          "alt": "A city street at dusk with two cyclists passing a man sitting on a bench by a graffiti-covered shopfront, under blue evening light and street lamps."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Evening_at_Tivoli_%2835107021135%29.jpg/1920px-Evening_at_Tivoli_%2835107021135%29.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "An ice-cream kiosk lit from within at Tivoli, in the early evening. Photo: Susanne Nilsson, CC BY-SA 2.0, via Wikimedia Commons.",
-          "alt": "A glowing old-fashioned ice-cream kiosk with ornate frame and green-and-white tiles, with two customers silhouetted in front."
-        },
-        {
-          "type": "text",
-          "content": "None of this is architecture in the strict sense, and all of it is. A city’s details are not just in its buildings: they are in the width of a pavement, the colour of the paint on a bench, the way the light is allowed to arrive. Copenhagen has spent four hundred years getting those right, in ochre, copper, brick, red paint and, lately, harbour water, and the result is that on a long summer evening it feels like a place designed for exactly one purpose, which is to make a person want to stay out a little longer."
-        },
-        {
-          "type": "header",
-          "content": "VII · Small things: handles, grilles, monograms",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "The more time you spend in the old streets the more your eye drops below the roofline and finds the small things, and the small things are where Copenhagen is most generous. A good building has a front door that has been thought about, and the city is full of them. On Østergade, a white door at No. 6 has a panel of cast-iron grille work behind glass, a tangle of leaves and tiny figures, that looks as if it should be in a museum and is simply in a door."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/%C3%98stergade_6_-_door_detail.jpg/1920px-%C3%98stergade_6_-_door_detail.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A cast-iron grille in the door of Østergade 6: leaves, scrolls and small figures behind the glass. Photo: Ramblersen, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A close view of an ornate cast iron grille filling a door panel, with symmetrical scrolling leaves, two small figures and fantastic creatures at the base, in a white frame."
-        },
-        {
-          "type": "text",
-          "content": "At the old arsenal, the Tøjhuset, the door hardware is the sculpture: a heavy silver ring held in the jaws of a curling beast, bolted to dark wood. At the Stock Exchange the opposite is true: a plain wooden door with a brushed-steel handle and a small plate with a single word, Træk, which is Danish for ‘pull’. Both are, in their way, perfect: one is a creature that wants to be touched, the other a door that tells you what to do."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/D%C3%B8rh%C3%A5ndtag_til_T%C3%B8jhuset_i_K%C3%B8benhavn.jpg/1920px-D%C3%B8rh%C3%A5ndtag_til_T%C3%B8jhuset_i_K%C3%B8benhavn.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Door furniture at Tøjhuset, the old arsenal: a silver ring in the mouth of a beast on dark wood. Photo: Orf3us, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A close-up of a door handle shaped like a coiled silvery beast holding a ring, on a reddish-brown wooden door with round studs."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Tr%C3%A6k%2C_d%C3%B8r%2C_B%C3%B8rsen%2C_2016-05-14.jpg/1920px-Tr%C3%A6k%2C_d%C3%B8r%2C_B%C3%B8rsen%2C_2016-05-14.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "‘Træk’ – ‘pull’ – on a door at Børsen: wood, steel and a small glass panel. Photo: Finn Årup Nielsen, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "A tall wooden door with diamond-shaped glass panels, a curved steel handle and a small black plate with the word TRÆK."
-        },
-        {
-          "type": "text",
-          "content": "Look at the stonework, too. On Knabrostræde, a black door set in a red brick front has a pattern of herringbone planks and a carved stone surround with its house number held in a small wreath. On a gable on a house dated 1748, the year is cut into the plaster beside a royal monogram, F R, above a window with a green balcony rail. On a corner of the Christiansborg palace a red wooden sentry box, with a golden royal cipher on its peaked roof, throws a long, lamp-shaped shadow across the granite. Cobbles in Vendersgade have been repaired so many times, in so many patterns, that the street surface reads like a patchwork."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Hofkonditor_Zieglers_G%C3%A5rd_-_detail_02.jpg/1920px-Hofkonditor_Zieglers_G%C3%A5rd_-_detail_02.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A gable dated 1748 with a royal monogram, F R, above a window with a green balcony rail. Photo: Ramblersen, CC BY-SA 4.0, via Wikimedia Commons.",
-          "alt": "The top of a cream-coloured house with a curving gable, the numerals 17 and 48 and the letters F and R around a round window, and a balcony with a green railing."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Sentry_box_shadow_lamp_Christiansborg_Copenhagen_Denmark.jpg/1920px-Sentry_box_shadow_lamp_Christiansborg_Copenhagen_Denmark.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "A red sentry box with a gilded royal cipher at Christiansborg, and its shadow on the granite wall. Photo: Jebulon, CC0, via Wikimedia Commons.",
-          "alt": "A narrow red wooden sentry box with a pointed roof and a gold crowned monogram, against a grey granite wall, casting a long dark shadow."
-        },
-        {
-          "type": "image",
-          "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Vendersgade_i_K%C3%B8benhavn.jpg/1920px-Vendersgade_i_K%C3%B8benhavn.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Cobbles in Vendersgade: patch upon patch of repairs, a manhole cover, and a long view down the street. Photo: Orf3us, CC BY-SA 3.0, via Wikimedia Commons.",
-          "alt": "A cobbled street in perspective with different patterns of stone and patches of asphalt, a round manhole cover, and apartment buildings on both sides."
-        },
-        {
-          "type": "text",
-          "content": "None of this is on a list of must-sees. That is the point. A city that has spent four hundred years deciding what a door pull should look like is a city that expects you to put your hand on it."
-        },
-        {
-          "type": "header",
-          "content": "What to look for",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "A good way to use all this is as a checklist, and the checklist is made of small things. Look at the colour of the shutters in any ochre street, and how the limewash has been allowed to chalk. Count the masts in Nyhavn, and see how many of the ‘old’ ones are actually museum ships. On the Church of Our Saviour, find the point at which the staircase leaves the wall and becomes a rail in the air. At Børsen, find the gap in the skyline. At Superkilen, read the plaque beside any object and see which language comes second. At Cykelslangen, notice that the colour does the job a sign would. At Islands Brygge, look for the springboards. None of this takes more than a minute, and all of it tells you something a guidebook does not: that a city is made, on the whole, from decisions about paint, wood, copper and water."
-        },
-        {
-          "type": "text",
-          "content": "Opening times and tower access change by season, and some of the buildings above are under renovation or reconstruction, so check each place before you go. The harbour baths close after heavy rain."
+          "content": "If you have a long weekend, you could do worse than plan it by colour. Begin with Thorvaldsens Museum, because it will recalibrate your eye; the Glyptotek’s palm garden and its pink Roman hall for lunch; Designmuseum Danmark and Vibskov’s garden in the afternoon, with the grey rococo courtyard as the rest. Give ARKEN or Louisiana a whole day each, because both are better as a destination than as a stop. ARKEN’s trolls leave on 29 November, so that is the one with a deadline; Varo stays until 10 January and Vibskov until 21 February."
         },
         {
           "type": "note",
-          "content": "This feature draws on encyclopaedic entries for Nyhavn, Nyboder, Superkilen, Copenhagen Harbour Baths, the Church of Our Saviour, Børsen, the Round Tower, Copenhagen City Hall, Cirkelbroen and Cykelslangen, plus a conservation report on Nyboder’s limewash and a travel guide on Copenhagen’s colour. The earliest colour of Nyboder is disputed between sources, and the explanations for the colours of Nyhavn are popular accounts rather than documented decisions. The date of Tivoli’s opening is from general knowledge. Interpretive judgements are the author’s. Photographs are from Wikimedia Commons, credited to their authors under the licence stated in each caption."
+          "content": "Fact-check note: dates and show details come from the museums’ own pages and from Smithsonian Magazine, Euronews and other press coverage of the shows; the Glyptotek’s closing date differs between sources (27 vs 29 March 2027). Thorvaldsens Museum’s colour scheme is from published descriptions; I found no room-by-room paint analysis. The 1848 opening date, Thorvaldsen’s burial in the courtyard, the Glyptotek’s founder Carl Jacobsen, ARKEN’s architect and 1996 opening, and Designmuseum Danmark’s origins as a hospital are from general knowledge. Please double-check opening hours and any ticket rules before you go. Photographs from Wikimedia Commons are credited in each caption with author and licence; exhibition photographs are used with credit to the photographers and the museums."
         },
         {
           "type": "link",
-          "content": "Nyhavn — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Nyhavn"
+          "content": "Thorvaldsens Museum",
+          "url": "https://thorvaldsensmuseum.dk/en"
         },
         {
           "type": "link",
-          "content": "Nyboder — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Nyboder"
+          "content": "Ny Carlsberg Glyptotek: The Power of Fashion in the Roman Empire",
+          "url": "https://glyptoteket.com/exhibitions/current-exhibitions/power-fashion"
         },
         {
           "type": "link",
-          "content": "Superkilen — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Superkilen"
+          "content": "Designmuseum Danmark: Henrik Vibskov",
+          "url": "https://designmuseum.dk/en/henrikvibskov/"
         },
         {
           "type": "link",
-          "content": "Copenhagen Harbour Baths — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Copenhagen_Harbour_Baths"
+          "content": "ARKEN: Thomas Dambo – The Garbage Man",
+          "url": "https://www.arken.dk/en/exhibitions/the-garbage-man"
         },
         {
           "type": "link",
-          "content": "Church of Our Saviour — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Church_of_Our_Saviour,_Copenhagen"
-        },
-        {
-          "type": "link",
-          "content": "Børsen — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Børsen"
-        },
-        {
-          "type": "link",
-          "content": "Cirkelbroen — Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Cirkelbroen"
+          "content": "Louisiana Museum of Modern Art",
+          "url": "https://louisiana.dk/en"
         }
       ],
       "publishAt": "2026-10-27T02:00:00.000Z",
       "publishedAt": "2026-10-27T02:00:00.000Z",
-      "updatedAt": "2026-10-25T19:27:47.362Z"
+      "updatedAt": "2026-10-25T19:40:18.971Z"
     }
   ],
   "reviews": [
