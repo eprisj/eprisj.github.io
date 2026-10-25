@@ -146100,50 +146100,253 @@
         {
           "id": 75,
           "draft": false,
-          "title": "Une plongée dans l&#x27;œuvre : le verre comme forme d&#x27;art dans trois expositions de 2026",
+          "title": "La matière à travers laquelle on regarde : le verre en tant que forme d’art, de la Venise de Chihuly au « Cube » de Roni Horn",
           "author": "Viacheslav Munister",
           "role": "Auteur",
           "authorId": "author-1784732936927-kw554",
           "date": "26 octobre 2026",
-          "excerpt": "Le verre est le seul matériau conçu pour qu’on puisse voir à travers. De l’étude menée par Corning sur les femmes du mouvement américain du verre d’atelier aux fours d’après-guerre de Murano présentés à la Biennale de Venise, en passant par les soixante-cinq artistes de Glasstress 2026 : trois expositions qui expliquent pourquoi le verre est un langage à part entière.",
+          "excerpt": "Les tours de Chihuly sur le Grand Canal, le cube de Roni Horn qui se prend pour de l’eau, les soixante-cinq artistes de « Glasstress » et les femmes que Corning remet à l’honneur dans l’art du verre d’atelier : quatre expositions prévues pour 2026 qui explorent ce que devient le verre lorsqu’il cesse d’être une fenêtre.",
           "category": "Genre",
           "subcategory": "Fonctionnalité",
           "tags": [
             "art du verre",
-            "verre d&#x27;atelier",
-            "Musée du verre de Corning",
-            "Murano",
+            "Dale Chihuly",
+            "Roni Horn",
             "Glasstress",
-            "Les Salles du Verre",
+            "Murano",
+            "Musée du Verre de Corning",
             "Venise",
             "art contemporain",
             "sculpture",
             "expositions 2026"
           ],
           "imageSeed": "",
-          "imageUrl": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
           "previewToken": "b19e9cc8aeb90893f7d5f6c5",
           "content": [
             {
               "type": "text",
-              "content": "Tous les autres supports vous invitent à les regarder. Le verre, lui, vous invite à regarder à travers lui. Une fenêtre, une bouteille, une lentille, un écran : pendant la majeure partie de l’histoire de l’humanité, le verre a été cet élément qui disparaît pour permettre de voir autre chose. C’est précisément ce qui le rend si singulier en tant que matériau artistique. Pour faire du verre le sujet de son œuvre, un artiste doit rendre visible cet objet invisible – et le faire avec une matière qui est liquide jusqu’au moment où elle ne l’est plus, qui garde en mémoire chaque seconde de la chaleur dans laquelle elle a été façonnée, et qui peut se briser entre les mains de celui qui l’a créée."
+              "content": "Tous les autres supports vous invitent à les regarder. Le verre, lui, vous invite à regarder à travers lui. Une fenêtre, une bouteille, une lentille, un écran : pendant la majeure partie de l’histoire de l’humanité, le verre a été cet élément qui disparaît pour permettre de voir autre chose. C’est précisément ce qui le rend si singulier en tant que matériau artistique. Pour faire du verre son sujet, un artiste doit rendre visible cet objet invisible – et le faire avec une matière qui est liquide jusqu’au moment où elle ne l’est plus, qui garde en mémoire chaque seconde de la chaleur dans laquelle elle a été façonnée, et qui peut se briser entre les mains de celui qui l’a créée."
             },
             {
               "type": "text",
-              "content": "Trois expositions inaugurées en 2026 abordent cette question sous trois angles différents : une rétrospective dans le nord de l’État de New York qui réécrit l’histoire du verre d’atelier américain, une exposition vénitienne consacrée aux fours d’après-guerre de Murano, et un projet d’envergure biennale qui confie ce matériau à soixante-cinq artistes, dont beaucoup le découvrent pour la première fois. Considérées dans leur ensemble, elles constituent une brève réflexion sur ce qu’est le verre lorsqu’il cesse d’être une fenêtre."
+              "content": "Cette année, l’exposition se déroule simultanément dans quatre lieux différents. Sur le Grand Canal à Venise, Dale Chihuly a installé trois tours et un lustre en verre soufflé dans les jardins des palais, trente ans après avoir suspendu quatorze lustres au-dessus des canaux de la ville. À Londres, Roni Horn a passé l’été à exposer un simple cube de verre moulé qui se comporte comme un bloc d’eau immobile. À quelques centaines de mètres de là, de l’autre côté de la lagune, soixante-cinq artistes, dont la plupart ne sont pas des verriers, collaborent avec les maîtres verriers de Murano dans le cadre du projet Glasstress. Et dans le nord de l’État de New York, le Corning Museum of Glass réécrit l’histoire du mouvement américain du verre d’atelier du point de vue des femmes qu’il a oubliées. Lues côte à côte, ces quatre expositions constituent autant de réponses à une même question : qu’est-ce que le verre lorsqu’il cesse d’être une fenêtre ?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "« Chihuly Over Venice », 1996 : un lustre en verre orange suspendu sous les arcades au-dessus d&#x27;un canal. © 1996 Chihuly Studio.",
+              "alt": "Un lustre en verre orange aux formes pointues, suspendu à des poteaux noirs sous une arcade sombre, avec des palais roses que l&#x27;on aperçoit de l&#x27;autre côté du canal à travers les arcades."
             },
             {
               "type": "header",
-              "content": "I · La main et la torche : des matériaux résistants chez Corning",
+              "content": "I · Chihuly revient à Venise : l&#x27;art du lustre impossible",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Le Musée du Verre de Corning a inauguré l&#x27;exposition « Tough Stuff : Women in the American Glass Studio » le 16 mai 2026, dans le cadre de son 75e anniversaire ; celle-ci se tiendra jusqu&#x27;au 10 janvier 2027. Elle est présentée comme la première rétrospective consacrée au travail des femmes artistes verrières des années 1960 et 1970, décennies charnières du mouvement américain du verre d’atelier – moment où le verre a quitté l’usine pour entrer dans l’atelier de l’artiste. Plus de 200 objets proviennent de la collection du musée, de sa bibliothèque de recherche Rakow et de prêts accordés par les artistes elles-mêmes ; certains n’ont jamais été présentés au public."
+              "content": "Commençons par l’œuvre la plus spectaculaire. L’exposition « CHIHULY : Venise 2026 » a ouvert ses portes le 5 mai et se tiendra jusqu’au 14 novembre, en parallèle de la Biennale de Venise et de la Semaine du verre de Venise. Sa pièce maîtresse est « Gold Tower » (2025) : 31 pieds de verre soufflé, soit près de dix mètres, s&#x27;élevant depuis la pelouse du Palazzo Franchetti, une colonne composée de centaines de vrilles entrelacées dont les teintes vont du miel translucide à l&#x27;ambre foncé. Depuis le pont de l&#x27;Accademia, on peut l&#x27;admirer – ainsi que les deux autres nouvelles œuvres qui complètent l&#x27;exposition – de l&#x27;autre côté de l&#x27;eau."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/05/CMoG_Image_5.png",
+              "content": "https://cdn.galeriemagazine.com/wp-content/uploads/2026/05/01.-22Gold-Tower22-Dale-Chihuly-2025-Horizontal.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, « Gold Tower », 2025, 31 × 10½ × 10½ pieds (953 × 323 × 318 cm). Palazzo Franchetti, Venise, installation prévue en 2026. © 2025 Chihuly Studio. Photographie de Nathaniel Willson.",
+              "alt": "Une haute colonne composée de vrilles en verre soufflé ambré et jaune, dressée sur la pelouse du jardin d&#x27;un palais, près d&#x27;une façade vénitienne."
+            },
+            {
+              "type": "text",
+              "content": "Les deux autres œuvres sont « Blue and Green Tower » (2025), hautes de 26½ pieds, assemblées dans un jardin privé du Palazzo Balbi Valier, et « End of the Day Chandelier » (2025), un lustre de 16 pieds exposé au Palazzo Querini alla Carità, réalisé à partir des chutes restantes à la fin d’une journée de travail dans l’atelier de soufflage. Ces trois œuvres ont été soufflées dans l’atelier de Chihuly à Seattle, où elles ont été assemblées à taille réelle, puis emballées dans quatre conteneurs de 40 pieds et expédiées outre-Atlantique. À Venise, elles ont été assemblées section par section sur des armatures en acier : les formes en verre ont été enfilées à la main sur des tiges ; un journaliste qui a assisté à l’installation a comparé le processus à un immense art floral. Il n’existe pas de mode d’emploi."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jddu9nm20d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, « End of the Day Chandelier », 2025, 16 × 8 × 8 pieds (483 × 234 × 234 cm). Palazzo Querini alla Carità, Venise, installation prévue en 2026. © 2025 Chihuly Studio. Photographie de Nathaniel Willson.",
+              "alt": "Un lustre en verre soufflé multicolore, rouge, jaune, bleu et vert, suspendu à une armature en acier au-dessus d&#x27;un balcon vénitien rose, sur fond de ciel bleu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jehknlwio8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, « Blue and Green Tower », 2025, 26½ × 10 × 10 pieds (810 × 312 × 305 cm). Palazzo Balbi Valier, Venise, installation prévue en 2026. © 2025 Chihuly Studio. Photographie de Nathaniel Willson.",
+              "alt": "Une haute tour en verre soufflé bleu et vert qui brille au crépuscule dans un jardin vénitien, au pied d&#x27;un palais doté d&#x27;une loggia."
+            },
+            {
+              "type": "text",
+              "content": "Il est facile d’adopter une attitude cynique à l’égard de Chihuly. C’est l’artiste verrier vivant qui connaît le plus grand succès commercial ; ses lustres sont exposés dans des casinos et dans le hall d’entrée du Victoria and Albert Museum, et les critiques soupçonnent depuis longtemps que tant de couleurs ne sont qu’un moyen d’éviter de réfléchir. Mais l’exposition de Venise s’accompagne d’un argument modeste mais sérieux qu’il est difficile de rejeter : ce qui ressemble à un spectacle est en réalité une méthode."
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;histoire commence en 1968, lorsque Chihuly se rendit à Venise dans le cadre d&#x27;une bourse Fulbright et passa un an à la manufacture Venini, sur l&#x27;île de Murano. Ce qu&#x27;il y découvrit n&#x27;était pas tant une technique particulière qu&#x27;une méthode de travail : la fabrication du verre en équipe, selon un rythme bien établi, chaque personne se consacrant à la tâche qu&#x27;elle maîtrisait le mieux. Il ramena cette approche chez lui. En 1971, il a cofondé la Pilchuck Glass School dans l’État de Washington, et au cours des décennies qui ont suivi, il a invité les maîtres verriers de Murano, Lino Tagliapietra et Pino Signoretto, à y enseigner. Des techniques qui étaient restées le secret de quelques familles vénitiennes, telles que la fabrication de gobelets et le travail des motifs à la canne de verre, ont ainsi été intégrées à la tradition des ateliers américains grâce à cet échange."
+            },
+            {
+              "type": "text",
+              "content": "En 1996, il est revenu aux sources de son idée. Le projet « Chihuly Over Venice » a nécessité deux ans de préparation. Chihuly a travaillé avec des souffleurs de verre en Finlande, en Irlande et au Mexique, puis à Venise même. En septembre 1996, une équipe de 25 personnes, avec sa future épouse Leslie Jackson comme directrice de projet, a installé quatorze lustres monumentaux dans les canaux et aux coins de la ville. La nouvelle exposition marque cet anniversaire. Au Palazzo Loredan de l’Istituto Veneto, la commissaire d’exposition Suzanne Geiss a disposé quatre cents photographies d’archives sur du mylar, le long d’une grande table lumineuse, afin que le visiteur découvre le projet tel qu’elle l’avait découvert elle-même, sous la forme d’une quantité impressionnante de diapositives, avec les fax des croquis dessinés à la main par Chihuly épinglés au mur derrière."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jfbml1zxoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "« Chihuly Over Venice », 1996 : un lustre fabriqué en Finlande au chantier de gondoles du Squero di San Trovaso. © 1996 Chihuly Studio.",
+              "alt": "Un lustre en verre orange posé sur des poteaux en bois dans l&#x27;eau, devant un chantier de réparation de gondoles où se trouvent des gondoles vertes et des géraniums rouges."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jg8ysl2h0h.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, « Gold Tower » (détail), 2025. Palazzo Franchetti, Venise, installation prévue en 2026. On aperçoit à l&#x27;arrière-plan des visiteurs sur le pont de l&#x27;Accademia. © 2025 Chihuly Studio. Photographie de Nathaniel Willson.",
+              "alt": "Gros plan sur des volutes sinueuses en verre ambré, avec des visiteurs sur un pont en bois et un toit vénitien en arrière-plan."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jh3lkk8dku.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly devant le lustre du Palazzetto Stern, Venise, 1996. Photographie de Russell Johnson. © 1996 Chihuly Studio.",
+              "alt": "Un homme vêtu d&#x27;une chemise orange tend la main pour toucher un lustre en verre bleu suspendu à un trépied en acier devant un palais vénitien."
+            },
+            {
+              "type": "text",
+              "content": "La phrase de Geiss pour 1996 est la plus pertinente de tout le programme : il ne s’agissait pas d’une pratique solitaire en atelier, mais d’une chorégraphie de la création à travers le temps, les personnes et les espaces géographiques. C’est une description précise de ce qu’est souvent le verre. Dans la Gold Tower, une seule vrille est soufflée par une seule personne, mais la tour en nécessite des dizaines, et l’artiste qui l’a conçue ne touchera jamais à la plupart des pièces. La contribution de Chihuly lui-même, depuis longtemps déjà, réside dans la consigne – « allez plus loin, faites plus grand » – et dans le courage de ne cesser d’élargir le champ de cette consigne. Que l’on trouve le résultat émouvant ou simplement gigantesque, il s’agit d’une conception de la paternité artistique véritablement différente de celle du peintre solitaire devant son chevalet, et elle appartient au verre plus qu’à tout autre matériau."
+            },
+            {
+              "type": "text",
+              "content": "Il y a également, comme le souligne Geiss, une bonne raison pour que cette œuvre se trouve à Venise. Une ville de palais érigés sur des pilotis de bois au milieu d’une lagune est une chose décadente et fragile, tout comme le verre est lui aussi une matière décadente et fragile. Une tour qui semble pouvoir s’effondrer à la moindre rafale de vent, dressée dans un jardin au bord de l’eau pendant six mois, est une réflexion sur ce qui permet aux choses de tenir debout."
+            },
+            {
+              "type": "quote",
+              "content": "Il ne s&#x27;agit pas d&#x27;une pratique solitaire en atelier, mais d&#x27;une chorégraphie de la création qui transcende le temps, les personnes et les frontières géographiques."
+            },
+            {
+              "type": "header",
+              "content": "II · Roni Horn : un bloc de verre qui se prend pour de l&#x27;eau",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Si Chihuly incarne le verre dans ce qu’il a de plus spectaculaire, l’œuvre de Roni Horn est tout le contraire : il ne se passe rien, pendant très longtemps, puis on se rend compte qu’on est resté debout devant elle pendant dix minutes. À l’été 2026, la galerie Hauser &amp; Wirth de Londres a présenté « Seizure of Hope » (du 21 mai au 1er août), une exposition réunissant plus de quarante-cinq œuvres sur papier réalisées au crayon de cire au cours de près de quatre décennies, ainsi qu’une unique œuvre rare en verre moulé : Sans titre (« Que devient le trou une fois le fromage disparu ? »), 2022, un cube de 91,4 centimètres, soit trois pieds, de côté."
+            },
+            {
+              "type": "image",
+              "content": "https://fadmagazine.com/wp-content/uploads/IMG_4238.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, Sans titre (« Que devient le trou une fois le fromage disparu ? »), 2022, verre moulé massif, 91,4 × 91,4 × 91,4 cm. Vue de l’installation, « Seizure of Hope », Hauser &amp; Wirth Londres, 2026. © Roni Horn. Photographie de Mark Westall.",
+              "alt": "Un cube en verre moulé dont les parois verticales sont dépolies et dont le dessus est poli, dans lequel se reflète et se déforme la façade d&#x27;un immeuble en briques."
+            },
+            {
+              "type": "text",
+              "content": "Horn réalise depuis des années des sculptures en verre moulé, et le principe est d’une simplicité brutale. Les faces du cube sont laissées mates, ce qui lui donne l’aspect d’un bloc de glace ou de verre de mer. La face supérieure est polie et se comporte comme de l’eau : elle reflète le plafond, les fenêtres, les bâtiments de l’autre côté de la rue et les visages des visiteurs, les courbe vers l’intérieur et les restitue avec un léger décalage. Il n’y a rien à regarder en elle. Ce que vous voyez, c’est la pièce et vous-même debout à l’intérieur. La lumière et les conditions météorologiques la transforment d’heure en heure, ce qui signifie que l’œuvre n’est, à proprement parler, jamais deux fois la même."
+            },
+            {
+              "type": "text",
+              "content": "C’est une plaisanterie physique sur la solidité. Un cube de verre de cette taille pèse plus lourd qu’une personne et a été moulé, et non soufflé, ce qui signifie qu’il a refroidi très longtemps, lentement, afin de ne pas se fissurer de l’intérieur. Et pourtant, tout en lui évoque le liquide. Le titre provient d’une question qu’un enfant pourrait poser, et qui obéit à une logique à laquelle on ne peut répondre : si le trou est ce que le fromage n’est pas, qu’advient-il de lui lorsque le fromage disparaît ? Dans le cube de Horn, la question s’inverse. Qu’est-ce que le verre, quand tout ce que l’on y voit, c’est autre chose ?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jjk1gcfgcx.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, dessin tiré de *Seizure of Hope*, crayon de cire sur papier, avec la phrase répétée « Je suis paralysée par l’espoir ». Vue de l’installation, Hauser &amp; Wirth Londres, 2026. © Roni Horn. Photographie de Mark Westall.",
+              "alt": "Un dessin encadré accroché à un mur blanc : des rangées de mots écrits à la main en bleu sur un fond beige chaud, formant la phrase « Je suis paralysé par l&#x27;espoir »."
+            },
+            {
+              "type": "text",
+              "content": "Les dessins exposés dans la même salle font de même avec le langage. La phrase qui les traverse, « Je suis paralysée par l’espoir », est tirée d’un sketch de Maria Bamford et est apparue pour la première fois dans LOG (2019–2020) de Horn, une installation composée de 406 dessins. Écrite à maintes reprises par différentes mains, c’est une phrase qui ne trouve jamais sa forme définitive : les lettres s’épaississent, s’estompent et, l’espace d’un instant, cessent d’être des mots. Le travail de Horn sur l’eau est le maillon manquant de ce raisonnement. Sa « Bibliothèque de l’eau » à Stykkishólmur, en Islande, qu’elle a réalisée en 2007, stocke l’eau de fonte des glaciers dans vingt-quatre colonnes de verre, et le verre n’y sert pas de récipient mais de lentille. C’est la même idée à une autre échelle : le matériau le plus transparent est celui dans lequel on voit le plus ce qui n’y est pas."
+            },
+            {
+              "type": "header",
+              "content": "III · Glasstress 2026 : quand l&#x27;artiste rencontre le maestro",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Chihuly a fait venir Venise à Seattle, puis l’a ramenée ; le verre de Horn, lui, ne quitte jamais la galerie. Glasstress fait de cette question une véritable institution. Fondée en 2009 par Adriano Berengo, en marge de la Biennale de Venise, cette manifestation a pour vocation de faire découvrir aux artistes contemporains les fours de Murano. L’édition 2026, organisée par Berengo en collaboration avec Joanna De Vos et Umberto Croppi, en est la neuvième. Elle se déroule du 12 juillet au 22 novembre, au Palazzo Ca’ Tron sur le Grand Canal et à la Fondazione Berengo Art Space à Murano, et rassemble soixante-cinq artistes et designers, dont plus de vingt font leurs débuts à Glasstress, et dont beaucoup travaillent le verre pour la première fois."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jks1vmavw6.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vue de l&#x27;installation « Glasstress 2026 » : une salle de four de Murano avec un tas de sphères de verre réfléchissantes, une tête blanche et des lustres en verre suspendus. Image : Exibart.",
+              "alt": "Un long hangar industriel en briques doté de hautes fenêtres, un tas de sphères en verre miroir argenté posées sur un sol en béton, une tête sculptée blanche et, au loin, des lustres en verre suspendus."
+            },
+            {
+              "type": "text",
+              "content": "La meilleure façon de l&#x27;aborder est de la considérer comme une expérience visant à observer ce qui se passe lorsque l&#x27;idée et le savoir-faire proviennent de personnes différentes. Certains artistes confient entièrement la réalisation aux artisans de Murano ; d&#x27;autres se chargent eux-mêmes de la canne à souffler. Les critiques italiens qui ont couvert le vernissage n’ont pas trouvé d’esthétique unique dans l’exposition, et certains de ses moments les plus intéressants sont ceux où l’artiste va délibérément à l’encontre de ce que l’on attend du verre."
+            },
+            {
+              "type": "text",
+              "content": "Au rez-de-chaussée de Ca’ Tron, les miroirs anthropomorphes de Gelitin déforment la pièce et reflètent les œuvres qui les entourent, de sorte que l’espace tout entier semble prendre des courbes. Ghost of the Future, de Monira Al Qadiri, est réalisé en verre sombre et compact, d’aspect presque géologique : un matériau réputé pour sa transparence, utilisé ici pour créer quelque chose qui ressemble à une relique d’un avenir déjà figé. « X-Ray-Me (Myself) » de Fariba Ferdosi utilise la transparence à l’envers, comme un seuil à travers lequel on observe le corps en tant que lieu de mémoire et de vulnérabilité. Les pièces polychromes d’Erwin Wurm rompent complètement le lien entre le verre et la clarté, conférant au matériau une densité de couleur qu’un critique a qualifiée d’inattendue. Zheng Chongbin rapproche le verre de la peinture, avec de fines couches de couleur qui évoquent le temps lent de l’encre orientale ; Tony Cragg transforme le verre en une masse dense dotée de ses propres tensions internes ; Vanessa Beecroft produit un fragment anatomique inachevé d’un rose tendre."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jmdcdrlp10.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Erwin Wurm, sculpture en verre exposée à Glasstress 2026. Image : Metropolitano.it.",
+              "alt": "Une forme en verre rose dépoli, en forme de haricot, reposant sur deux fines pattes roses, posée sur un socle blanc devant un fond clair."
+            },
+            {
+              "type": "text",
+              "content": "À Murano, dans l’espace dédié aux fours, l’œuvre « Dialog » de Martin Janecký présente des figures qui semblent émerger de l’intérieur du verre, comme si elles étaient suspendues dans un état de formation permanente – ce qui correspond exactement à ce qui se passe dans un four : une forme prenant naissance à partir d’une masse en fusion. Judy Chicago propose « Glass Goddess » ; Ai Weiwei, selon une critique vénitienne, présente des lustres qui dissimulent son irrévérence habituelle sous une surface baroque, un geste qui rappelle le « Blossom Chandelier » qu’il avait réalisé pour une édition précédente, dans lequel des fleurs en verre côtoyaient des menottes, des caméras de surveillance et des oiseaux Twitter."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jo92r1he7w.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ai Weiwei, lustre en verre présenté lors de l&#x27;exposition « Glasstress 2026 », Fondazione Berengo Art Space, Murano. Image : Metropolitano.it.",
+              "alt": "Un immense lustre sphérique en verre blanc, orné de fleurs et de tiges entrelacées, suspendu dans un hall industriel en briques."
+            },
+            {
+              "type": "image",
+              "content": "https://static.wixstatic.com/media/010253_f7627d18f8cf42f984a0cf37c00eb165~mv2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Karen LaMonte, « Reclining Lucent 1 », verre moulé. Exposée à Glasstress 2026, au Palazzo Ca’ Tron et à la Fondazione Berengo Art Space. Image reproduite avec l’aimable autorisation de l’artiste.",
+              "alt": "Une sculpture en verre moulé représentant une robe de soirée vide, posée sur un socle noir, en verre bleu-blanc pâle et translucide, avec de lourds plis à l&#x27;ourlet."
+            },
+            {
+              "type": "text",
+              "content": "Parmi les œuvres moulées figure « Reclining Lucent 1 » de Karen LaMonte : une robe de soirée vide, moulée dans du verre pâle, allongée sur le côté avec un poids qui serait impossible à obtenir avec du tissu. LaMonte se consacre à ce sujet depuis des décennies, et ce qu’elle montre, c’est ce que le tissu ne peut pas montrer : qu’une absence a une forme et peut être rendue solide. Le verre capte la lumière dans les plis comme le ferait l’eau, puis s’arrête."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jqhnldexbf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Laure Prouvost, sculpture en verre présentée lors de Glasstress 2026. Photographie de Francesco Allegretto. Image : Metropolitano.it.",
+              "alt": "Un animal en verre, dont la couleur va du rose au turquoise, dressé sur ses pattes comme un phoque, avec une prise électrique en guise de queue, posé sur un socle blanc."
+            },
+            {
+              "type": "text",
+              "content": "L’exposition présente des problèmes, et il convient de le dire. Lors du vernissage, un critique a trouvé les œuvres convaincantes, mais l’exposition moins réussie : un concept curatorial qui n’était pas tout à fait clair, certaines pièces encore en cours d’acheminement, des étiquettes manquantes, une figure de proue, Marina Abramović, annoncée mais absente. L’hétérogénéité qui donne de la vie à l’exposition rend également difficile sa cohésion. Cela aussi, c’est une réalité du verre. C’est un matériau qui se situe à la croisée de centaines de traditions – artisanat, design, sculpture, installation, art conceptuel – et une exposition qui souhaite toutes les englober donnera toujours l’impression de s’effriter légèrement."
+            },
+            {
+              "type": "header",
+              "content": "IV · Corning : qui a fabriqué le verre d&#x27;art ?",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La quatrième réponse concerne l’histoire. Le « studio glass », ce mouvement dans lequel des artistes ont commencé à souffler et à mouler le verre dans leurs propres ateliers plutôt que dans des usines, est généralement daté de 1962, avec la création de deux ateliers au Musée d’art de Toledo. Pendant des décennies, l’histoire qui en a été racontée était celle d’une poignée d’hommes. L&#x27;exposition « Tough Stuff : Women in the American Glass Studio », qui a ouvert ses portes au Musée du Verre de Corning le 16 mai 2026 et se tiendra jusqu&#x27;au 10 janvier 2027, soutient que cela n&#x27;a jamais reflété toute la réalité."
+            },
+            {
+              "type": "text",
+              "content": "Il s’agit de la première exposition de ce type : plus de 200 œuvres, issues de la collection du musée, de sa bibliothèque de recherche Rakow et de prêts accordés par les artistes, dont certaines n’ont jamais été exposées auparavant, réalisées par des femmes verrières des années 1960 et 1970. Organisée par Tami Landis, conservatrice chargée du verre d’après-guerre et contemporain, en collaboration avec Rïse Peacock, conservatrice stagiaire, cette exposition s’inscrit dans le cadre du programme célébrant le 75e anniversaire du musée. Parmi les artistes figurent Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler et Joan Reep."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jrrwa2i63g.jpg",
               "align": "center",
               "width": 100,
               "caption": "Lucartha Kohler, « Colors of Consciousness », 1977. Don de l&#x27;artiste au Musée du verre de Corning. Image reproduite avec l&#x27;aimable autorisation du Musée du verre de Corning.",
@@ -146151,27 +146354,19 @@
             },
             {
               "type": "text",
-              "content": "L&#x27;exposition est organisée par Tami Landis, conservatrice spécialisée dans le verre d&#x27;après-guerre et contemporain, en collaboration avec Rïse Peacock, conservatrice stagiaire. Parmi les artistes présentés figurent Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler et Joan Reep. Ce qui frappe dans ces images, c’est à quel point elles sont toutes différentes les unes des autres. L’œuvre de Kohler, *Colors of Consciousness* (1977), n’est pas du tout un récipient : il s’agit d’une succession de panneaux transparents sur lesquels est reproduit un portrait photographique sérigraphié, répété et décalé à travers le spectre, de sorte que le verre fonctionne comme une pellicule de cinéma. La « Small Double Bubble Sculpture » (1969) d’Audrey Handler prend le contre-pied de cette approche et laisse le matériau soufflé s’affaisser en un nœud lâche et translucide."
+              "content": "Ce qui frappe dans ces images, c’est à quel point ces œuvres ont peu de points communs. « Colors of Consciousness » (1977) de Lucartha Kohler est une rangée de panneaux transparents sur lesquels figure le même portrait sérigraphié, teinté des couleurs du spectre, de sorte que le verre se comporte comme une bande de pellicule. *Silver Glass Bowl* (1973–74) de Joan Reep est une forme soufflée, large et irisée, dont les parois emprisonnent des nuages de couleur. La *Small Double Bubble Sculpture* (1969) d’Audrey Handler laisse le verre soufflé s’affaisser en un nœud lâche et translucide, une sculpture dont il ne reste plus rien du récipient."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_3.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jsgxib7618.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Audrey Handler, « Small Double Bubble Sculpture », 1969. Don de l&#x27;artiste au Musée du Verre de Corning. Avec l&#x27;aimable autorisation du Musée du Verre de Corning.",
-              "alt": "Une pièce en verre translucide vert pâle, présentant deux creux en forme de boucle et des stries ambrées, posée sur le côté sur un fond gris."
-            },
-            {
-              "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_4-1.png",
-              "align": "center",
-              "width": 100,
-              "caption": "Joan Reep, « Silver Glass Bowl », 1973-1974. Don de l&#x27;artiste au Musée du verre de Corning. Avec l&#x27;aimable autorisation du Musée du verre de Corning.",
+              "caption": "Joan Reep, « Silver Glass Bowl », 1973-1974. Don de l&#x27;artiste au Musée du verre de Corning. Image reproduite avec l&#x27;aimable autorisation du Musée du verre de Corning.",
               "alt": "Un grand bol en verre soufflé, au bord ondulé et à la surface irisée de bleu, de violet et d&#x27;or, présentant deux inclusions opaques dans la paroi."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_1.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jt6qcct13m.jpg",
               "align": "center",
               "width": 100,
               "caption": "Kathleen Mulcahy en train d&#x27;installer « Drops on a Landscape », 1973, Université d&#x27;Alfred, Alfred, New York. Photo avec l&#x27;aimable autorisation de Kathleen Mulcahy.",
@@ -146179,86 +146374,40 @@
             },
             {
               "type": "text",
-              "content": "La photographie de Kathleen Mulcahy déposant des gouttes de verre sur une terrasse pavée en 1973 constitue le cœur discret de l’exposition. Elle montre le verre comme une installation, comme un matériau que l’on dispose sur un site, bien avant que le terme « installation » ne devienne courant dans le monde de l’art. Elle montre également qui réalisait ce travail. Le musée fait valoir que l’histoire du verre d’atelier a trop souvent été racontée à travers le prisme d’un groupe restreint de pionniers masculins, alors que les femmes créaient leurs propres ateliers, développaient leurs propres méthodes et trouvaient leur style caractéristique au même moment. Parallèlement à l’exposition, la Rakow Research Library publie des témoignages oraux à la première personne d’artistes encore en vie de cette époque, afin que cette rectification s’opère aussi bien dans les archives que sur les murs."
+              "content": "La photo de Kathleen Mulcahy, accroupie sur une terrasse pavée en 1973, en train de disposer des gouttes de verre transparent sur le sol, résume à elle seule l’exposition. Il s’agit d’une installation, réalisée bien avant que le terme « installation » ne devienne courant dans le monde de l’art, par une femme travaillant de ses propres mains un matériau dont l’histoire s’écrivait alors principalement autour des hommes. Selon le récit du musée, les femmes construisaient leurs propres ateliers et développaient leurs propres méthodes en même temps que les pionniers les plus connus, mais l’histoire officielle n’y a tout simplement pas prêté attention. Parallèlement à l’exposition, la bibliothèque publie des témoignages oraux à la première personne recueillis auprès des artistes encore en vie, de sorte que cette rectification s’opère dans les archives et pas seulement sur les murs."
             },
             {
-              "type": "quote",
-              "content": "Les femmes ont joué un rôle central, mais souvent méconnu, dans ce mouvement."
+              "type": "text",
+              "content": "Vu depuis Venise, le message prend tout son sens. Les tours de Chihuly s’inscrivent en partie dans la lignée de ce même moment : son atelier de Pilchuck a été fondé en 1971, au cours de la même décennie que les objets de Corning. La question de savoir à qui reviennent le mérite et la paternité d’une œuvre en verre n’est pas une question purement théorique. Le verre a toujours été fabriqué collectivement, par des maîtres verriers, des assistants et des gardiens de four, et l’histoire de cet art est celle de ceux à qui l’on a accordé le titre d’artiste."
             },
             {
               "type": "header",
-              "content": "II · Le four en tant qu’auteur : Murano à la Biennale",
+              "content": "V · Ce que le verre peut faire et que rien d&#x27;autre ne peut faire",
               "level": 2
             },
             {
               "type": "text",
-              "content": "À Venise, sur l&#x27;île de San Giorgio Maggiore, « Le Stanze del Vetro » se distingue par une approche différente. « 1948–1958 : Le verre de Murano et la Biennale de Venise » (du 19 avril au 22 novembre 2026) est le troisième volet d’une série organisée par la Fondation Giorgio Cini et la Pentagram Stiftung, sous la direction de Marino Barovier. Plus de 160 pièces retracent les participations de Murano aux éditions XXIV à XXIX de la Biennale, de la première exposition d’après-guerre jusqu’à la fin des années 1950, et un catalogue édité par Barovier et Carla Sonego accompagne l’exposition."
-            },
-            {
-              "type": "image",
-              "content": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Vases de Murano ornés de bandes concentriques de verre vert et jaune, vue de l&#x27;installation, Le Stanze del Vetro, San Giorgio Maggiore, Venise. Image reproduite avec l&#x27;aimable autorisation de Le Stanze del Vetro / Fondazione Giorgio Cini.",
-              "alt": "Deux vases en verre en forme de larme, placés côte à côte sur une étagère blanche, chacun composé d&#x27;anneaux concentriques de verre vert émeraude et jaune pâle."
+              "content": "Si l&#x27;on compare ces quatre spectacles, certaines propriétés du verre apparaissent clairement, car chacun d&#x27;entre eux s&#x27;est appuyé sur une propriété différente."
             },
             {
               "type": "text",
-              "content": "Ici, l’auteur n’est pas un artiste solitaire, mais un four. Les noms figurant sur les étiquettes sont ceux de maisons de verre – Venini, AVEM, Barovier &amp; Toso, Seguso Vetri d’Arte, Aureliano Toso, Fratelli Toso, Gino Cenedese – et des personnes qui y ont travaillé : Alfredo Barbini, Archimede Seguso, Ercole Barovier, Flavio Poli, Dino Martens, Vinicio Vianello. Les coupes « Corinto » et « Damasco » d’Ercole Barovier, présentées à la Biennale de 1948, sont constituées de cannes alternant avec des feuilles d’or. Martens a conçu pour Aureliano Toso une « bouteille du sorcier » composée de fragments, de grains et d’inserts décoratifs sur un fond transparent. Le travail de Poli pour Seguso explore le verre cannelé semi-opaque aux textures rayées et dorées, ainsi que le verre épais immergé aux formes organiques."
+              "content": "Il laisse passer la lumière. Un tableau la reflète, un bronze l’absorbe ; le verre la diffuse ailleurs dans la pièce. Les tours de Chihuly brillent de l’intérieur lorsque le soleil se trouve derrière elles, et l’on voit littéralement à travers elles les personnes qui se trouvent sur le pont de l’Accademia. C’est pourquoi les photos de verre prises dans les galeries ne rendent jamais tout à fait justice à ces œuvres, et pourquoi il faut aller voir de ses propres yeux les plus belles d’entre elles."
             },
             {
               "type": "text",
-              "content": "Il est facile de qualifier tout cela de « design », et l’exposition évoque effectivement la reconstruction d’après-guerre et l’essor de la culture du design. Mais les vases présentés dans la vue d’ensemble de l’installation ci-dessus méritent qu’on s’y attarde davantage. Leurs anneaux ne sont pas peints : ce sont des couches de verre coloré superposées à chaud puis découpées, de sorte que le motif fait partie intégrante de la structure. Il s’agit là d’un dialogue entre l’idée d’un designer et le savoir-faire d’un maître artisan, qui ne peuvent plus être dissociés par la suite ; et le verre est pratiquement le seul matériau à rendre cette collaboration visible dans l’objet fini."
-            },
-            {
-              "type": "header",
-              "content": "III · Soixante-cinq artistes, un seul matériau : Glasstress 2026",
-              "level": 2
+              "content": "Elle reflète également ce qu’elle capte, tout en le déformant. Le cube de Horn et les miroirs de Gelitin ne vous montrent pas un objet ; ils vous montrent l’espace qui l’entoure, déformé, de sorte que l’espace lui-même devient le sujet. Le même matériau qui fait office de fenêtre sous un certain angle devient un miroir sous un autre, et c’est souvent l’angle qui fait toute la différence dans l’œuvre."
             },
             {
               "type": "text",
-              "content": "La troisième exposition met en avant le savoir-faire verrier vénitien. « Glasstress 2026 » se tiendra du 12 juillet au 22 novembre à la Ca’ Tron, sur le Grand Canal, et à l’espace d’art de la Fondazione Berengo, à Murano. Adriano Berengo a conçu ce projet en 2009 en tant qu’événement parallèle officiel de la Biennale de Venise. Cette édition, organisée par Berengo, Joanna De Vos et Umberto Croppi, invite 65 artistes et designers internationaux à collaborer avec les maîtres verriers du Berengo Studio. Plus d’une vingtaine d’entre eux font leurs débuts à Glasstress, et nombreux sont ceux qui travaillent le verre pour la première fois."
+              "content": "C&#x27;est aussi, contrairement à presque tout ce que l&#x27;on trouve dans une galerie, un liquide dont le mouvement a été interrompu. La torsion d&#x27;une vrille chez Chihuly, la bulle affaissée de la sculpture de Handler et le drapé de la robe vide de LaMonte relèvent tous du même principe : quelqu&#x27;un travaillait avec une substance en mouvement et l&#x27;a figée. Le verre est le témoignage de cet instant d’arrêt."
             },
             {
               "type": "text",
-              "content": "Cette liste ressemble davantage à un panorama de l&#x27;art contemporain qu&#x27;à celui de l&#x27;artisanat : Ai Weiwei, Judy Chicago, Tony Cragg, Jaume Plensa, Thomas Schütte, Chiharu Shiota, Cornelia Parker, Erwin Wurm, Jan Fabre, Paul McCarthy, Yue Minjun, Wael Shawky, Sean Scully, Karen LaMonte et des dizaines d’autres. C’est justement là l’intérêt. Les organisateurs décrivent le verre comme un langage artistique autonome, et comme un « hypertexte matériel » dans lequel le sens provient de la construction technique, du geste de l’artiste et du contexte de production. En d’autres termes, l’artiste apporte l’idée ; le maître de Murano apporte le savoir accumulé au fil d’une vie sur ce qu’un four peut et ne peut pas faire."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Jaume-Plensa-Blake-in-Venice-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Jaume Plensa, « Blake » à Venise, issu d&#x27;un précédent projet Glasstress. Plensa fait partie des artistes participant à Glasstress 2026. Image reproduite avec l&#x27;aimable autorisation de la Fondazione Berengo.",
-              "alt": "De hautes fenêtres de style gothique donnant sur le Grand Canal, ornées de guirlandes de lettres en verre doré à travers lesquelles on aperçoit une façade de l&#x27;autre côté du canal."
+              "content": "Et cela soulève inévitablement la question de la paternité de l’œuvre. Chez Corning, l’artisan est une personne seule, penchée sur son établi ; à Venise, chez Chihuly, il s’agit d’une équipe de vingt-cinq personnes guidées par une seule et même volonté ; chez Glasstress, c’est un duo : l’artiste qui a l’idée et le maître verrier de Murano qui la réalise. Les expositions divergent quant à savoir à qui revient le mérite. Elles s’accordent toutefois sur le fait qu’on ne peut pas regarder l’objet sans voir les traces de sa fabrication : une couture, une bulle, une trace de couleur, la ligne où deux plis se rejoignent."
             },
             {
               "type": "text",
-              "content": "L’œuvre « Blake » de Plensa à Venise, issue d’un précédent projet « Glasstress », illustre parfaitement pourquoi cette association fonctionne. Un rideau de lettres en verre est suspendu dans une fenêtre gothique de la Ca’ Tron, et le Grand Canal, en arrière-plan, fait partie intégrante du texte. Rien de tout cela n’aurait pu être réalisé en pierre ou en bronze : l’œuvre n’existe que parce que le verre laisse passer la vue tout en maintenant les mots en place. « Reclining Nocturne » de Karen LaMonte, issue du même programme, exploite la propriété inverse. Une robe vide, moulée dans le verre, devient lourde, froide et presque liquide – le vêtement se transforme en monument."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Karen-LaMonte-Reclining-Nocturne-1-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Karen LaMonte, *Reclining Nocturne*, réalisée en collaboration avec le Studio Berengo dans le cadre d&#x27;un précédent projet Glasstress. LaMonte fait partie des artistes associés à ce projet. Image reproduite avec l&#x27;aimable autorisation de la Fondazione Berengo.",
-              "alt": "Une sculpture en verre moulé représentant une robe de soirée vide, posée sur un socle blanc, réalisée en verre translucide bleu-gris fumé et présentant de profonds plis à l’ourlet."
-            },
-            {
-              "type": "header",
-              "content": "IV · Quel verre que rien d’autre ne peut égaler",
-              "level": 2
-            },
-            {
-              "type": "text",
-              "content": "Placez les trois côte à côte et un motif apparaît. Chez Corning, l’artisan est une personne seule à son établi, et le verre est le témoignage d’un corps et d’une décision. À Venise, l’artisan est un atelier, et le verre est un langage commun entre le design et l’artisanat. Chez Glasstress, l’artisan est un duo – un artiste et un maestro – et le verre est un lieu de rencontre entre deux types de savoir. Dans chaque cas, l’objet porte les traces de sa fabrication, car le verre ne peut cacher son histoire : une bulle, une jointure, une trace de couleur, une ligne là où deux coulées se sont rencontrées."
-            },
-            {
-              "type": "text",
-              "content": "Il transporte également la lumière. Un tableau la reflète et un bronze l’absorbe ; le verre la transmet, la réfracte et la projette ailleurs dans la pièce. C’est pourquoi les photographies de verre exposées dans une galerie sont toujours légèrement trompeuses, et pourquoi les meilleures de ces expositions ne prennent tout leur sens que sur place : grâce aux vases qui brillent de l’intérieur de leurs niches, à un rideau de lettres projetant des ombres sur un canal, à un champ de gouttes transparentes disposées sur une terrasse. C’est un art qui repose autant sur les conditions que sur les objets."
-            },
-            {
-              "type": "text",
-              "content": "Et c’est un art qui n’est pris au sérieux que depuis moins longtemps qu’il ne le mérite. Le mouvement du verre d’atelier n’a qu’une soixantaine d’années ; les musées qui l’exposent en 2026 sont encore en train de corriger leur propre histoire, comme le fait ouvertement « Tough Stuff ». Si ces expositions partagent une ambition, c’est bien celle de cesser de considérer le verre comme un cas particulier d’autre chose – artisanat, design, décoration – et de le traiter pour ce qu’il est clairement : un médium doté de ses propres lois physiques, de sa propre autorité créatrice et de sa propre manière de rendre une chose visible en laissant tout le reste transparaître."
+              "content": "Le mouvement du verre d&#x27;atelier n&#x27;a qu&#x27;une soixantaine d&#x27;années, et il est encore en train de rattraper son retard sur sa propre histoire. Si ces expositions partagent une ambition, c’est bien celle de cesser de considérer le verre comme un cas particulier d’autre chose – artisanat, design ou décoration – et de le traiter pour ce qu’il est clairement : un matériau doté de ses propres propriétés physiques et de sa propre manière de rendre une chose visible en laissant tout le reste transparaître."
             },
             {
               "type": "header",
@@ -146267,26 +146416,31 @@
             },
             {
               "type": "text",
-              "content": "L&#x27;exposition « Tough Stuff : Women in the American Glass Studio » se tient au Musée du Verre de Corning, à Corning (New York), jusqu&#x27;au 10 janvier 2027. Les expositions « 1948–1958 : Le verre de Murano et la Biennale de Venise » à Le Stanze del Vetro, sur l’île de San Giorgio Maggiore, et « Glasstress 2026 » à Ca’ Tron et à Murano se tiennent toutes deux jusqu’au 22 novembre 2026 ; il reste donc environ quatre semaines pour les découvrir. Plus loin, le Museum of Glass de Tacoma rouvrira ses galeries le 12 décembre 2026 avec l’exposition « Lino Tagliapietra : Maestro ». Les dates et horaires d’ouverture sont susceptibles de changer ; veuillez vérifier les informations auprès de chaque lieu avant de vous y rendre."
+              "content": "L&#x27;exposition « CHIHULY : Venise 2026 » se tient jusqu&#x27;au 14 novembre. Les trois sculptures sont exposées en plein air le long du Grand Canal ; elles sont visibles depuis le pont de l&#x27;Accademia et ne nécessitent pas de billet d&#x27;entrée. Les archives situées au Palazzo Loredan de l&#x27;Istituto Veneto, sur le Campo Santo Stefano, sont ouvertes du mercredi au dimanche. Glasstress 2026 se tient au Palazzo Ca’ Tron et à l’espace d’art de la Fondazione Berengo à Murano jusqu’au 22 novembre. Les deux expositions ferment leurs portes dans moins d’un mois. Tough Stuff est présentée au Corning Museum of Glass à Corning, dans l’État de New York, jusqu’au 10 janvier 2027. L’exposition « Seizure of Hope » de Roni Horn a fermé ses portes à Londres le 1er août. Par la suite, le Museum of Glass de Tacoma rouvrira le 12 décembre avec l’exposition « Lino Tagliapietra : Maestro ». Les dates et les horaires d’ouverture sont susceptibles de changer ; veuillez vérifier auprès de chaque lieu avant de vous y rendre."
             },
             {
               "type": "note",
-              "content": "Cet article s&#x27;appuie sur les pages consacrées à l&#x27;exposition et les dossiers de presse du Corning Museum of Glass, de Le Stanze del Vetro (Fondazione Giorgio Cini), de la Fondazione Berengo / Glasstress et du Museum of Glass de Tacoma, ainsi que sur les articles consacrés à « Tough Stuff » par Hyperallergic et à l&#x27;exposition vénitienne par Finestre sull’Arte. Les interprétations exprimées ici sont celles de l’auteur. Les images sont présentées avec mention des institutions qui les ont fournies."
+              "content": "Cet article s&#x27;appuie sur les documents d&#x27;exposition du Chihuly Studio et de la Pilchuck Glass School, de Hauser &amp; Wirth, du Corning Museum of Glass, de la Fondazione Berengo et du Museum of Glass de Tacoma, ainsi que sur des articles parus dans Galerie, le magazine Seattle, FAD Magazine, Hyperallergic, Exibart, Interactive Art Magazine et Primopiano24. Les détails relatifs aux œuvres individuelles proviennent de ces sources ; les interprétations sont celles de l’auteur. La description de « The Library of Water » repose sur les connaissances personnelles de l’auteur. Les images sont accompagnées de la mention des institutions et des photographes qui les ont fournies."
             },
             {
               "type": "link",
-              "content": "« Tough Stuff : Les femmes dans les ateliers de verre américains » — Musée du verre de Corning",
-              "url": "https://whatson.cmog.org/exhibitions-galleries"
+              "content": "CHIHULY : Venise 2026 — École du verre de Pilchuck",
+              "url": "https://www.pilchuck.org/event/chihuly-venice-2026"
             },
             {
               "type": "link",
-              "content": "1948–1958 Le verre de Murano et la Biennale de Venise — Le Stanze del Vetro",
-              "url": "https://lestanzedelvetro.org/en/exhibition/1948-1958-murano-glass-and-the-venice-biennale/"
+              "content": "Roni Horn : « Seizure of Hope » — Hauser &amp; Wirth",
+              "url": "https://www.hauserwirth.com/hauser-wirth-exhibitions/roni-horn-london/"
             },
             {
               "type": "link",
               "content": "Glasstress 2026 — Fondation Berengo",
               "url": "https://glasstress.org/"
+            },
+            {
+              "type": "link",
+              "content": "« Tough Stuff : Les femmes dans les ateliers de verre américains » — Musée du verre de Corning",
+              "url": "https://whatson.cmog.org/exhibitions-galleries"
             },
             {
               "type": "link",
@@ -146296,7 +146450,7 @@
           ],
           "publishAt": "2026-10-26T02:00:00.000Z",
           "publishedAt": "2026-10-26T02:00:00.000Z",
-          "updatedAt": "2026-10-25T19:05:54.084Z"
+          "updatedAt": "2026-10-25T19:21:23.059Z"
         }
       ],
       "reviews": [
