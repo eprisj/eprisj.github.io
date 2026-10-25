@@ -1552,6 +1552,36 @@ function TeamMemberCard({
   );
 }
 
+const CONTACT_TEXT: Record<string, { kicker: string; line: string; cta: string }> = {
+  EN: { kicker: 'Write to us', line: 'Pitches, corrections, collaborations, press: the editors read every message.', cta: 'Send an email' },
+  RU: { kicker: 'Напишите нам', line: 'Предложения, поправки, сотрудничество, пресса: редакция читает каждое письмо.', cta: 'Написать письмо' },
+  UA: { kicker: 'Напишіть нам', line: 'Пропозиції, виправлення, співпраця, преса: редакція читає кожен лист.', cta: 'Написати листа' },
+  DE: { kicker: 'Schreiben Sie uns', line: 'Themenvorschläge, Korrekturen, Kooperationen, Presse: Die Redaktion liest jede Nachricht.', cta: 'E-Mail senden' },
+  IT: { kicker: 'Scrivici', line: 'Proposte, correzioni, collaborazioni, stampa: la redazione legge ogni messaggio.', cta: 'Invia un’e-mail' },
+  ES: { kicker: 'Escríbenos', line: 'Propuestas, correcciones, colaboraciones, prensa: la redacción lee cada mensaje.', cta: 'Enviar un correo' },
+  FR: { kicker: 'Écrivez-nous', line: 'Propositions, corrections, collaborations, presse : la rédaction lit chaque message.', cta: 'Envoyer un e-mail' },
+  TR: { kicker: 'Bize yazın', line: 'Öneriler, düzeltmeler, iş birlikleri, basın: editörler her mesajı okur.', cta: 'E-posta gönder' },
+};
+
+function ContactCard({ lang }: { lang: string }) {
+  const t = CONTACT_TEXT[String(lang || 'EN').toUpperCase()] || CONTACT_TEXT.EN;
+  const email = 'eprisjournal@outlook.com';
+  return (
+    <div className="mt-8 mb-16 mx-auto max-w-xl rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-6 py-7 text-center">
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.kicker}</div>
+      <p className="mt-3 font-serif text-lg leading-snug text-[rgb(var(--c-accent-rgb)_/_0.85)]">{t.line}</p>
+      <a
+        href={`mailto:${email}`}
+        className="mt-5 inline-flex items-center gap-2.5 rounded-xl bg-[#111111] px-5 py-3 font-mono text-[13px] font-semibold tracking-[0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-black"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3.5 7 8.5 6 8.5-6" /></svg>
+        {email}
+      </a>
+      <div className="mt-2.5 font-mono text-[10px] uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">{t.cta}</div>
+    </div>
+  );
+}
+
 function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => string; currentLang: string; onOpenManifest: () => void }) {
   const listed = getAuthors()
     .filter((author) => author.active !== false && author.showOnTeam !== false)
@@ -1655,6 +1685,10 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
           </div>
         </Reveal>
       )}
+
+      <Reveal delay={0.1}>
+        <ContactCard lang={currentLang} />
+      </Reveal>
 
       <Reveal delay={0.15}>
         <div className="border-t border-[var(--c-accent)] pt-16 mt-24 text-center">

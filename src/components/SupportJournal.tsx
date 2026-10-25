@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Check, Coffee, Copy, ExternalLink, Heart, QrCode, Wallet } from 'lucide-react';
+import { Check, Copy, ExternalLink, QrCode } from 'lucide-react';
 import QRCode from 'qrcode';
 
 /* БЛОК ПОДДЕРЖКИ ЖУРНАЛА, ОДИН НА ВЕСЬ САЙТ.
@@ -49,9 +49,41 @@ const KOFI_URL = 'https://ko-fi.com/epris';
    страницы журнала, а не кабинета создателя (patreon.com/cw/… требует входа). */
 const PATREON_URL = 'https://www.patreon.com/epris';
 
-const SUPPORT_METHODS: { label: string; value: string; icon: typeof Wallet }[] = [
-  { label: 'PayPal', value: 'munister@outlook.com', icon: Wallet },
-  { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister', icon: Wallet },
+
+/* Фирменные знаки сервисов: узнаваемость важнее иконки-символа. Простые
+   одноцветные контуры, цвет задаёт сам сервис (Patreon – коралловый,
+   Ko-fi – голубой, PayPal – тёмно-синий), поэтому на белой плашке они
+   читаются как логотип, а не как украшение. */
+function PatreonMark({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="14.6" cy="9.4" r="6.6" fill="#FF424D" />
+      <rect x="2" y="2.8" width="4.2" height="19" rx="0.6" fill="#052D49" />
+    </svg>
+  );
+}
+function KofiMark({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M2 6.6h14.4v8.2c0 2.6-2.1 4.7-4.7 4.7H6.7C4.1 19.5 2 17.4 2 14.8Z" fill="#29ABE0" />
+      <path d="M16.4 8.4h1.7a2.9 2.9 0 0 1 0 5.8h-1.7" fill="none" stroke="#29ABE0" strokeWidth="1.9" strokeLinecap="round" />
+      <path d="M9.2 16.1c-2.3-1.5-3.3-2.4-3.3-3.7a1.9 1.9 0 0 1 3.3-1.2 1.9 1.9 0 0 1 3.3 1.2c0 1.3-1 2.2-3.3 3.7Z" fill="#fff" />
+      <path d="M5 21.2h8.8" stroke="#29ABE0" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+function PayPalMark({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7.4 2.6h6.3c3 0 5 1.6 4.5 4.4-.5 3-2.8 4.5-5.7 4.5H9.6l-1 5.8H4.8Z" fill="#003087" />
+      <path d="M9.8 6.4h5.6c2.5 0 4 1.3 3.5 3.9-.5 2.9-2.7 4.4-5.5 4.4h-2l-.9 5.4H6.9Z" fill="#009CDE" opacity="0.92" />
+    </svg>
+  );
+}
+
+const SUPPORT_METHODS: { label: string; value: string }[] = [
+  { label: 'PayPal', value: 'munister@outlook.com' },
+  { label: 'PayPal.Me', value: 'paypal.me/ViacheslavMunister' },
 ];
 
 /* Настоящая ссылка PayPal (не придуманная – подтверждена сканированием
@@ -114,8 +146,8 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
         rel="noopener noreferrer"
         className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-[#111111]" aria-hidden="true">
-          <Heart size={22} strokeWidth={2} />
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.15)]" aria-hidden="true">
+          <PatreonMark size={28} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.patreon}</span>
@@ -129,8 +161,8 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
         rel="noopener noreferrer"
         className="group mt-2.5 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-[#111111]" aria-hidden="true">
-          <Coffee size={22} strokeWidth={2} />
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.15)]" aria-hidden="true">
+          <KofiMark size={28} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.kofi}</span>
@@ -146,7 +178,6 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
           моноширинным шрифтом рядом, кнопка копирования справа. */}
       <div className="mt-2.5 flex flex-col gap-2">
         {SUPPORT_METHODS.map((method) => {
-          const Icon = method.icon;
           const isCopied = copied === method.label;
           const isPaypal = method.label === 'PayPal';
           return (
@@ -162,7 +193,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                     : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
                 }`}
               >
-                <Icon size={14} strokeWidth={2} className="shrink-0 text-[var(--c-gold)]" aria-hidden="true" />
+                <PayPalMark size={17} />
                 <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
                   {method.label}
                 </span>
