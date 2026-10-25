@@ -20818,6 +20818,207 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg",
       "previewToken": "00412802310c7b5271536852",
       "publishAt": "2026-10-22T16:10:20.355Z"
+    },
+    {
+      "id": 75,
+      "draft": false,
+      "title": "Looking Through the Work: Glass as an Art Form in Three 2026 Exhibitions",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Oct 26, 2026",
+      "excerpt": "Glass is the one material made to be looked through. From Corning’s survey of women in the American studio glass movement to Murano’s postwar furnaces at the Venice Biennale and sixty-five artists at Glasstress 2026: three exhibitions on why glass is a language of its own.",
+      "category": "Art",
+      "subcategory": "Feature",
+      "tags": [
+        "glass art",
+        "studio glass",
+        "Corning Museum of Glass",
+        "Murano",
+        "Glasstress",
+        "Le Stanze del Vetro",
+        "Venice",
+        "contemporary art",
+        "sculpture",
+        "exhibitions 2026"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+      "previewToken": "b19e9cc8aeb90893f7d5f6c5",
+      "content": [
+        {
+          "type": "text",
+          "content": "Every other medium asks you to look at it. Glass asks you to look through it. A window, a bottle, a lens, a screen: for most of human history glass has been the thing that disappears so that something else can be seen. That is exactly what makes it strange as an art material. To make glass the subject, an artist has to bring the invisible object back into view – and to do it with a substance that is liquid until the moment it is not, that remembers every second of the heat it was shaped in, and that can shatter in the hands of the person who made it."
+        },
+        {
+          "type": "text",
+          "content": "Three exhibitions open in 2026 make this case from three different directions: a survey in upstate New York that rewrites the history of American studio glass, a Venetian show about the postwar furnaces of Murano, and a biennial-scale project that hands the material to sixty-five artists, many of them new to it. Read together, they amount to a short argument about what glass is when it stops being a window."
+        },
+        {
+          "type": "header",
+          "content": "I · The hand and the torch: Tough Stuff at Corning",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The Corning Museum of Glass opened Tough Stuff: Women in the American Glass Studio on 16 May 2026, as part of its 75th-anniversary year; it runs until 10 January 2027. It is billed as the first survey of work by women artists in glass during the 1960s and 1970s, the breakthrough decades of the American studio glass movement – the moment when glass left the factory and entered the artist’s own workshop. More than 200 objects come from the museum’s collection, its Rakow Research Library and loans from the artists themselves, and some have never been on public view."
+        },
+        {
+          "type": "image",
+          "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/05/CMoG_Image_5.png",
+          "align": "center",
+          "width": 100,
+          "caption": "Lucartha Kohler, Colors of Consciousness, 1977. Gift of the artist to the Corning Museum of Glass. Image courtesy the Corning Museum of Glass.",
+          "alt": "Six upright glass panels in a row, each printed with the same photographic portrait of a standing woman, in colours moving from violet through green to orange and pink."
+        },
+        {
+          "type": "text",
+          "content": "The show is organised by Tami Landis, curator of postwar and contemporary glass, with curatorial fellow Rïse Peacock, and its roster includes Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler and Joan Reep. What is striking in the images is how little they resemble one another. Kohler’s Colors of Consciousness (1977) is not a vessel at all: it is a sequence of clear panels carrying one silkscreened photographic portrait, repeated and shifted through the spectrum, so that the glass works like film stock. Audrey Handler’s Small Double Bubble Sculpture (1969) goes the other way and lets the blown material sag into a loose, translucent knot."
+        },
+        {
+          "type": "image",
+          "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_3.png",
+          "align": "center",
+          "width": 100,
+          "caption": "Audrey Handler, Small Double Bubble Sculpture, 1969. Gift of the artist to the Corning Museum of Glass. Courtesy the Corning Museum of Glass.",
+          "alt": "A pale green translucent glass form with two looped hollows and amber streaks, lying on its side on a grey ground."
+        },
+        {
+          "type": "image",
+          "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_4-1.png",
+          "align": "center",
+          "width": 100,
+          "caption": "Joan Reep, Silver Glass Bowl, 1973–74. Gift of the artist to the Corning Museum of Glass. Courtesy the Corning Museum of Glass.",
+          "alt": "A wide blown glass bowl with a wavy rim and iridescent blue, violet and gold surface, with two cloudy inclusions in the wall."
+        },
+        {
+          "type": "image",
+          "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_1.png",
+          "align": "center",
+          "width": 100,
+          "caption": "Kathleen Mulcahy installing Drops on a Landscape, 1973, Alfred University, Alfred, New York. Photograph courtesy Kathleen Mulcahy.",
+          "alt": "A woman in a blue shirt and jeans crouching on a paved terrace, arranging dozens of clear glass drop-shaped forms on the ground."
+        },
+        {
+          "type": "text",
+          "content": "The photograph of Kathleen Mulcahy placing glass drops on a paved terrace in 1973 is the quiet centre of the exhibition. It shows glass as an installation, as a material you lay out across a site, long before installation became a routine word in the art world. It also shows who was doing the work. The museum’s argument is that the story of studio glass has too often been told through a narrow group of male pioneers, while women were building their own studios, finding their own methods and signature styles at the same time. Alongside the show, the Rakow Research Library is publishing first-person oral histories from living artists of the period, so the correction is made in the archive as well as on the wall."
+        },
+        {
+          "type": "quote",
+          "content": "Women played a central yet often overlooked role in the movement."
+        },
+        {
+          "type": "header",
+          "content": "II · The furnace as author: Murano at the Biennale",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In Venice, on the island of San Giorgio Maggiore, Le Stanze del Vetro makes a different claim. 1948–1958: Murano Glass and the Venice Biennale (19 April to 22 November 2026) is the third chapter of a series by the Giorgio Cini Foundation and Pentagram Stiftung, curated by Marino Barovier. More than 160 pieces follow Murano’s appearances at Biennale editions XXIV to XXIX, from the first exhibition after the war to the end of the 1950s, and a catalogue edited by Barovier and Carla Sonego accompanies it."
+        },
+        {
+          "type": "image",
+          "content": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Murano vases with concentric bands of green and yellow glass, installation view, Le Stanze del Vetro, San Giorgio Maggiore, Venice. Image courtesy Le Stanze del Vetro / Fondazione Giorgio Cini.",
+          "alt": "Two teardrop-shaped glass vases side by side on a white shelf, each built from concentric rings of emerald green and pale yellow glass."
+        },
+        {
+          "type": "text",
+          "content": "Here the author is not a lone artist but a furnace. The names on the labels are houses – Venini, AVEM, Barovier & Toso, Seguso Vetri d’Arte, Aureliano Toso, Fratelli Toso, Gino Cenedese – and the people who worked with them: Alfredo Barbini, Archimede Seguso, Ercole Barovier, Flavio Poli, Dino Martens, Vinicio Vianello. Ercole Barovier’s cups Corinto and Damasco, shown at the 1948 Biennale, are built from alternating canes with gold leaf. Martens designed for Aureliano Toso a Wizard’s Bottle made of fragments, grits and decorative inserts on a transparent ground. Poli’s work for Seguso explores semi-opaque reeded glass with striped textures and gilding, and thick submerged glass in organic forms."
+        },
+        {
+          "type": "text",
+          "content": "It is easy to call all this design, and the exhibition does speak of postwar reconstruction and the rise of design culture. But the vases in the installation view above are worth a longer look. Their rings are not painted on: they are layers of coloured glass built up in the heat and cut across, so that the pattern is the structure. This is a conversation between a designer’s idea and a master’s hands that cannot be separated afterwards, and glass is almost alone among materials in making that collaboration visible in the finished object."
+        },
+        {
+          "type": "header",
+          "content": "III · Sixty-five artists, one material: Glasstress 2026",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The third exhibition turns the Venetian furnace outward. Glasstress 2026 runs from 12 July to 22 November across Ca’ Tron on the Grand Canal and the Fondazione Berengo Art Space on Murano. Adriano Berengo conceived the project in 2009 as an official collateral event of the Venice Biennale, and this edition, curated by Berengo, Joanna De Vos and Umberto Croppi, invites 65 international artists and designers to work with the master glassmakers of Berengo Studio. More than twenty of them are making their Glasstress debut, many working with glass for the first time."
+        },
+        {
+          "type": "text",
+          "content": "The list reads like a survey of contemporary art rather than of craft: Ai Weiwei, Judy Chicago, Tony Cragg, Jaume Plensa, Thomas Schütte, Chiharu Shiota, Cornelia Parker, Erwin Wurm, Jan Fabre, Paul McCarthy, Yue Minjun, Wael Shawky, Sean Scully, Karen LaMonte and dozens more. That is the point. The organisers describe glass as an autonomous artistic language, and as a ‘material hypertext’ in which meaning comes from the technical construction, the artist’s gesture and the context of production. In other words, the artist brings the idea; the Murano master brings a lifetime of knowledge about what a furnace can and cannot do."
+        },
+        {
+          "type": "image",
+          "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Jaume-Plensa-Blake-in-Venice-1024x683.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Jaume Plensa, Blake in Venice, from an earlier Glasstress project. Plensa is among the artists of Glasstress 2026. Image courtesy Fondazione Berengo.",
+          "alt": "Tall Gothic palace windows over the Grand Canal, hung with strings of golden glass letters through which a facade across the water is seen."
+        },
+        {
+          "type": "text",
+          "content": "Plensa’s Blake in Venice, from an earlier Glasstress project, shows why the combination works. A curtain of glass letters hangs in a Gothic window at Ca’ Tron, and the Grand Canal behind it becomes part of the text. Nothing about it could be made from stone or bronze: the work exists only because glass lets the view through while holding the words in place. Karen LaMonte’s Reclining Nocturne, from the same programme, uses the opposite property. A dress with no body in it, cast in glass, becomes heavy, cold and almost liquid – the garment turned into a monument."
+        },
+        {
+          "type": "image",
+          "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Karen-LaMonte-Reclining-Nocturne-1-1024x683.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Karen LaMonte, Reclining Nocturne, produced with Berengo Studio for an earlier Glasstress project. LaMonte is among the artists associated with the project. Image courtesy Fondazione Berengo.",
+          "alt": "A cast glass sculpture of an empty evening dress reclining on a white plinth, in smoky blue-grey translucent glass with heavy folds at the hem."
+        },
+        {
+          "type": "header",
+          "content": "IV · What glass does that nothing else can",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Put the three side by side and a pattern appears. At Corning the maker is a single person at her own bench, and glass is a record of a body and a decision. In Venice the maker is a workshop, and glass is a shared language between design and craft. At Glasstress the maker is a pair – an artist and a maestro – and glass is a meeting place between two kinds of knowledge. In each case the object carries the evidence of how it was made, because glass cannot hide its history: a bubble, a seam, a trace of colour, a line where one gather met another."
+        },
+        {
+          "type": "text",
+          "content": "It also carries light. A painting reflects it and a bronze absorbs it; glass transmits it, bends it and sends it somewhere else in the room. That is why photographs of glass in a gallery are always slightly wrong, and why the best of these shows depend on being there: on the vases glowing from inside their niches, on a curtain of letters throwing shadows on a canal, on a field of clear drops laid out across a terrace. It is an art of conditions, as much as of objects."
+        },
+        {
+          "type": "text",
+          "content": "And it is an art that has been taken seriously for a shorter time than it deserves. Studio glass as a movement is only about sixty years old; the museums showing it in 2026 are still correcting their own histories, as Tough Stuff openly does. If these exhibitions share an ambition, it is to stop treating glass as a special case of something else – craft, design, decoration – and to treat it as what it plainly is: a medium with its own physics, its own authorship and its own way of making a thing visible by letting everything else through."
+        },
+        {
+          "type": "header",
+          "content": "See it",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Tough Stuff: Women in the American Glass Studio is at the Corning Museum of Glass in Corning, New York, until 10 January 2027. 1948–1958: Murano Glass and the Venice Biennale at Le Stanze del Vetro on San Giorgio Maggiore and Glasstress 2026 at Ca’ Tron and on Murano both run until 22 November 2026, so there are about four weeks left to see them. Further out, the Museum of Glass in Tacoma reopens its galleries on 12 December 2026 with Lino Tagliapietra: Maestro. Dates and opening hours change; check each venue before travelling."
+        },
+        {
+          "type": "note",
+          "content": "This feature draws on the exhibition pages and press materials of the Corning Museum of Glass, Le Stanze del Vetro (Fondazione Giorgio Cini), Fondazione Berengo / Glasstress and the Museum of Glass, Tacoma, and on the coverage of Tough Stuff by Hyperallergic and of the Venetian show by Finestre sull’Arte. Interpretive judgements are the author’s. Images are shown with attribution to the institutions that supplied them."
+        },
+        {
+          "type": "link",
+          "content": "Tough Stuff: Women in the American Glass Studio — Corning Museum of Glass",
+          "url": "https://whatson.cmog.org/exhibitions-galleries"
+        },
+        {
+          "type": "link",
+          "content": "1948–1958 Murano Glass and the Venice Biennale — Le Stanze del Vetro",
+          "url": "https://lestanzedelvetro.org/en/exhibition/1948-1958-murano-glass-and-the-venice-biennale/"
+        },
+        {
+          "type": "link",
+          "content": "Glasstress 2026 — Fondazione Berengo",
+          "url": "https://glasstress.org/"
+        },
+        {
+          "type": "link",
+          "content": "Museum of Glass, Tacoma — Exhibitions",
+          "url": "https://www.museumofglass.org/exhibitions"
+        }
+      ],
+      "publishAt": "2026-10-26T02:00:00.000Z",
+      "publishedAt": "2026-10-26T02:00:00.000Z",
+      "updatedAt": "2026-10-25T19:00:45.012Z"
     }
   ],
   "reviews": [
