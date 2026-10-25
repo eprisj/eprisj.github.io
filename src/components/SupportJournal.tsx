@@ -7,8 +7,8 @@ import { ExternalLink } from 'lucide-react';
  *
  * ТРЕТИЙ ЗАХОД. Раньше тут были два чёрных баннера со словами про суммы и
  * подписки и столбик реквизитов PayPal с копированием и QR – много текста ради
- * того, что читателю нужно одно: нажать на знакомый логотип. Теперь заголовок
- * из двух слов и три настоящих логотипа в ряд – Patreon, Ko-fi, PayPal. Логотипы
+ * того, что читателю нужно одно: нажать на знакомый логотип. Теперь фраза-обращение
+ * и три настоящих логотипа в ряд – Patreon, Ko-fi, PayPal. Логотипы
  * не нарисованные, а контуры из набора simple-icons (CC0), в фирменных цветах
  * сервисов: так их узнают с первого взгляда, как на любом нормальном баннере.
  *
@@ -16,14 +16,14 @@ import { ExternalLink } from 'lucide-react';
  * она открывает тот же платёж), подписи «от $3» и «любая сумма» (всё это
  * читатель увидит на странице сервиса).                                    */
 const SUPPORT_TITLE: Record<string, string> = {
-  EN: 'Support us',
-  RU: 'Поддержите нас',
-  UA: 'Підтримайте нас',
-  DE: 'Unterstützen Sie uns',
-  IT: 'Sostienici',
-  ES: 'Apóyanos',
-  FR: 'Soutenez-nous',
-  TR: 'Bizi destekleyin',
+  EN: "If our work here means something to you, we'd be grateful for your support.",
+  RU: 'Если наша работа что-то значит для вас, мы будем признательны за поддержку.',
+  UA: 'Якщо наша робота щось для вас важить, ми будемо вдячні за підтримку.',
+  DE: 'Wenn Ihnen unsere Arbeit hier etwas bedeutet, wären wir für Ihre Unterstützung dankbar.',
+  IT: 'Se il nostro lavoro qui significa qualcosa per te, ti saremmo grati per il tuo sostegno.',
+  ES: 'Si nuestro trabajo aquí significa algo para ti, te agradeceríamos tu apoyo.',
+  FR: 'Si notre travail compte pour vous, nous vous serions reconnaissants de votre soutien.',
+  TR: 'Buradaki çalışmamız sizin için bir anlam ifade ediyorsa, desteğiniz için minnettar oluruz.',
 };
 
 const PATREON_URL = 'https://www.patreon.com/epris';
@@ -57,7 +57,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
     <aside
       className={`rounded-2xl border border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(var(--c-gold-rgb)_/_0.055)] px-5 py-5 sm:px-6 sm:py-6 ${className}`}
     >
-      <p className="font-serif text-[22px] font-bold leading-tight tracking-[-0.01em] text-[var(--c-accent)] sm:text-[24px]">{title}</p>
+      <p className="max-w-[44ch] font-serif text-[20px] font-bold leading-[1.22] tracking-[-0.01em] text-[var(--c-accent)] sm:text-[22px]">{title}</p>
       <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
         {BRANDS.map((brand) => (
           <a
