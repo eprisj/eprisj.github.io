@@ -308,6 +308,19 @@ export async function submitWork(draft: WorkDraft): Promise<Work> {
   return result.work as Work;
 }
 
+const NOTEBOOK_API = import.meta.env.VITE_NOTEBOOK_API || 'https://api.eprisjournal.com/notebook';
+
+export type CouponCheck = { valid: boolean; percent?: number; tier?: string; holder?: string | null };
+
+/** What a Museum code from the EPRIS passport is worth today; the reader app shows the code. */
+export async function checkCoupon(code: string, signal?: AbortSignal): Promise<CouponCheck> {
+  const response = await fetch(`${NOTEBOOK_API}/coupon/${encodeURIComponent(code.trim())}`, { signal, cache: 'no-store' });
+  if (response.status === 429) throw new Error('Too many checks, try again in a minute');
+  const result = await response.json();
+  if (!response.ok || !result.ok) throw new Error('Could not check the code');
+  return result as CouponCheck;
+}
+
 export function flag(code?: string) {
   const normalized = (code || '').trim().toUpperCase();
   if (!/^[A-Z]{2}$/.test(normalized)) return '◌';
