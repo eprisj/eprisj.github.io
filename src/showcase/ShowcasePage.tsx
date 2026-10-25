@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import {
   DISCIPLINES, EMPTY_WORK_DRAFT, Work, WorkDraft,
-  externalUrl, fetchWorks, flag, normalizeInstagram, rankShowcaseWorks, submitWork,
+  checkCoupon, externalUrl, fetchWorks, flag, normalizeInstagram, rankShowcaseWorks, submitWork,
 } from './showcaseApi';
 import { getHomepageSettings } from '../data';
 import { Commission } from './Commission';
@@ -201,12 +201,29 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
   const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
   const set = (key: keyof WorkDraft, value: string) => setDraft((current) => ({ ...current, [key]: value }));
+  const [coupon, setCoupon] = useState('');
+  const [couponState, setCouponState] = useState<{ ok: boolean; text: string; percent?: number } | null>(null);
+
+  async function verifyCoupon() {
+    const code = coupon.trim().toUpperCase();
+    if (!code) { setCouponState(null); return; }
+    try {
+      const result = await checkCoupon(code);
+      setCouponState(result.valid
+        ? { ok: true, percent: result.percent, text: `−${result.percent}% · ${result.tier}${result.holder ? `, ${result.holder}` : ''}` }
+        : { ok: false, text: 'This code is not valid' });
+    } catch (error) {
+      setCouponState({ ok: false, text: error instanceof Error ? error.message : 'Could not check the code' });
+    }
+  }
 
   async function submit(event: FormEvent) {
     event.preventDefault();
     setState('sending'); setMessage('');
     try {
-      const work = await submitWork(draft);
+      // The editorial reads the contact line; a verified passport code travels with it.
+      const note = couponState?.ok ? ` · passport code ${coupon.trim().toUpperCase()} (−${couponState.percent}%)` : '';
+      const work = await submitWork({ ...draft, contact: `${draft.contact}${note}`.slice(0, 160) });
       setState('success');
       setMessage('The work is in the queue and marked for editorial review.');
       onAdded(work);
@@ -237,6 +254,10 @@ function SubmitWork({ onClose, onAdded }: { onClose: () => void; onAdded: (work:
         <div className="sm:col-span-2"><Field label="Portfolio link"><input className={inputClass} value={draft.portfolio} onChange={(e) => set('portfolio', e.target.value)} type="url" maxLength={300} placeholder="https://" /></Field></div>
         <div className="sm:col-span-2"><Field label="Statement – what is this work about?" required><textarea className={`${inputClass} min-h-28 resize-y py-3`} value={draft.statement} onChange={(e) => set('statement', e.target.value)} maxLength={800} required /></Field></div>
         <div className="sm:col-span-2"><Field label="Your contact (kept private)"><input className={inputClass} value={draft.contact} onChange={(e) => set('contact', e.target.value)} maxLength={160} placeholder="Email or Instagram" /></Field></div>
+        <div className="sm:col-span-2"><Field label="Passport code (EPRIS reader discount)">
+          <input className={inputClass} value={coupon} onChange={(e) => { setCoupon(e.target.value.toUpperCase()); setCouponState(null); }} onBlur={verifyCoupon} maxLength={24} placeholder="MUS-XXXX-XXXX" autoCapitalize="characters" autoComplete="off" />
+          {couponState && <span className={`mt-2 block font-sans text-[11px] ${couponState.ok ? 'text-[#4a1728]' : 'text-[#b13b3b]'}`}>{couponState.text}</span>}
+        </Field></div>
         <input tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" value={draft.website} onChange={(e) => set('website', e.target.value)} />
       </div>
       {message && <div role="status" className={`mt-6 rounded-xl border p-4 text-sm ${state === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-900' : 'border-red-200 bg-red-50 text-red-900'}`}>{state === 'success' && <Check size={16} className="mr-2 inline" />}{message}</div>}
