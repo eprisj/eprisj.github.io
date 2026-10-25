@@ -100116,50 +100116,253 @@
         {
           "id": 75,
           "draft": false,
-          "title": "Una mirada a la obra: el vidrio como forma de arte en tres exposiciones de 2026",
+          "title": "El material a través del cual miras: el cristal como forma de arte, desde la Venecia de Chihuly hasta el «Cubo» de Roni Horn",
           "author": "Viacheslav Munister",
           "role": "Autor",
           "authorId": "author-1784732936927-kw554",
           "date": "26 de octubre de 2026",
-          "excerpt": "El vidrio es el único material creado para que se vea a través de él. Desde el estudio de Corning sobre las mujeres del movimiento del vidrio de taller estadounidense hasta los hornos de Murano de la posguerra en la Bienal de Venecia y los sesenta y cinco artistas de Glasstress 2026: tres exposiciones que explican por qué el vidrio es un lenguaje en sí mismo.",
+          "excerpt": "Las torres de Chihuly en el Gran Canal, el cubo de Roni Horn que cree que es agua, los sesenta y cinco artistas de Glasstress y las mujeres a las que Corning está devolviendo un lugar en el mundo del vidrio artístico: cuatro exposiciones de 2026 sobre en qué se convierte el vidrio cuando deja de ser una ventana.",
           "category": "Tipo",
           "subcategory": "Característica",
           "tags": [
             "arte en vidrio",
-            "vidrio de taller",
-            "Museo del Vidrio de Corning",
-            "Murano",
+            "Dale Chihuly",
+            "Roni Horn",
             "Estrés por el vidrio",
-            "Las salas del cristal",
+            "Murano",
+            "Museo del Vidrio de Corning",
             "Venecia",
             "arte contemporáneo",
             "escultura",
             "exposiciones 2026"
           ],
           "imageSeed": "",
-          "imageUrl": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
           "previewToken": "b19e9cc8aeb90893f7d5f6c5",
           "content": [
             {
               "type": "text",
-              "content": "Cualquier otro material te invita a mirarlo. El cristal te invita a mirar a través de él. Una ventana, una botella, una lente, una pantalla: durante la mayor parte de la historia de la humanidad, el cristal ha sido aquello que desaparece para que se pueda ver otra cosa. Eso es precisamente lo que lo convierte en un material artístico tan peculiar. Para convertir el vidrio en el tema central de su obra, un artista tiene que volver a hacer visible lo invisible, y hacerlo con una sustancia que es líquida hasta el momento en que deja de serlo, que recuerda cada segundo del calor en el que se moldeó y que puede romperse en las manos de quien la creó."
+              "content": "Cualquier otro material te invita a mirarlo. El cristal te invita a mirar a través de él. Una ventana, una botella, una lente, una pantalla: durante la mayor parte de la historia de la humanidad, el cristal ha sido aquello que desaparece para que se pueda ver otra cosa. Eso es precisamente lo que lo hace tan peculiar como material artístico. Para convertir el vidrio en el protagonista, un artista tiene que volver a hacer visible lo invisible, y hacerlo con una sustancia que es líquida hasta el momento en que deja de serlo, que recuerda cada segundo del calor en el que se moldeó y que puede romperse en las manos de quien la creó."
             },
             {
               "type": "text",
-              "content": "Tres exposiciones que se inauguran en 2026 abordan esta cuestión desde tres perspectivas diferentes: una retrospectiva en el norte del estado de Nueva York que reescribe la historia del vidrio de taller estadounidense, una muestra veneciana sobre los hornos de Murano de la posguerra y un proyecto a escala de bienal que pone este material en manos de sesenta y cinco artistas, muchos de ellos novatos en su uso. Leídas en conjunto, constituyen una breve reflexión sobre qué es el vidrio cuando deja de ser una ventana."
+              "content": "Este año, la exposición se celebra en cuatro lugares a la vez. En el Gran Canal de Venecia, Dale Chihuly ha instalado tres torres y una lámpara de araña de cristal soplado en los jardines de los palacios, treinta años después de que colgara catorce lámparas de araña sobre los canales de la ciudad. En Londres, Roni Horn ha pasado el verano exponiendo un único cubo de vidrio fundido que se comporta como un bloque de agua en reposo. A unos cientos de metros de distancia, al otro lado de la laguna, sesenta y cinco artistas —la mayoría de ellos ajenos al mundo del vidrio— están trabajando con los maestros vidrieros de Murano en el proyecto «Glasstress». Y en el norte del estado de Nueva York, el Museo del Vidrio de Corning está reescribiendo la historia del movimiento del vidrio de estudio estadounidense desde el punto de vista de las mujeres a las que se había olvidado. Leídas en paralelo, son cuatro respuestas a una misma pregunta: ¿qué es el vidrio cuando deja de ser una ventana?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "«Chihuly Over Venice», 1996: una lámpara de araña de cristal naranja colgada bajo los arcos que surcan un canal. © 1996 Chihuly Studio.",
+              "alt": "Una lámpara de araña de cristal naranja con puntas, suspendida de unos postes negros bajo una arcada oscura, con palacios rosas que se divisan al otro lado del canal a través de los arcos."
             },
             {
               "type": "header",
-              "content": "I · La mano y la antorcha: «Tough Stuff» en Corning",
+              "content": "I · Chihuly vuelve a Venecia: el arte de la lámpara de araña imposible",
               "level": 2
             },
             {
               "type": "text",
-              "content": "El Museo del Vidrio de Corning inauguró la exposición «Tough Stuff: Women in the American Glass Studio» el 16 de mayo de 2026, en el marco de la celebración de su 75.º aniversario; permanecerá abierta hasta el 10 de enero de 2027. Se presenta como la primera retrospectiva de la obra de mujeres artistas del vidrio durante las décadas de 1960 y 1970, un periodo decisivo para el movimiento del vidrio de taller estadounidense —el momento en que el vidrio salió de la fábrica y entró en el propio taller del artista—. Más de 200 objetos proceden de la colección del museo, de su Biblioteca de Investigación Rakow y de préstamos de las propias artistas, y algunos de ellos nunca se han expuesto al público."
+              "content": "Empecemos por la respuesta más llamativa. «CHIHULY: Venecia 2026» se inauguró el 5 de mayo y permanecerá abierta hasta el 14 de noviembre, coincidiendo con la Bienal de Venecia y la Semana del Vidrio de Venecia. Su pieza central es «Gold Tower» (2025): 31 pies de cristal soplado, casi diez metros, que se eleva desde el césped del Palazzo Franchetti, una columna formada por cientos de zarcillos rizados que van desde el color miel translúcido hasta el ámbar intenso. Desde el Puente de la Accademia se puede ver —junto con las otras dos nuevas obras que completan la exposición— al otro lado del agua."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/05/CMoG_Image_5.png",
+              "content": "https://cdn.galeriemagazine.com/wp-content/uploads/2026/05/01.-22Gold-Tower22-Dale-Chihuly-2025-Horizontal.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, «Gold Tower», 2025, 31 × 10½ × 10½ pies (953 × 323 × 318 cm). Palazzo Franchetti, Venecia, instalada en 2026. © 2025 Chihuly Studio. Fotografía de Nathaniel Willson.",
+              "alt": "Una alta columna de zarcillos de cristal soplado de color ámbar y amarillo, situada en el césped del jardín de un palacio, junto a una fachada veneciana."
+            },
+            {
+              "type": "text",
+              "content": "Las otras dos obras son «Blue and Green Tower» (2025), de 26½ pies de altura, montadas en un jardín privado del Palazzo Balbi Valier, y «End of the Day Chandelier» (2025), una lámpara de araña de 16 pies situada en el Palazzo Querini alla Carità y elaborada con los restos que quedaban al final de una jornada en el taller de soplado. Las tres obras se soplaron en el taller de Chihuly en Seattle, donde se construyeron a escala real, para luego embalarlas en cuatro contenedores de transporte de 40 pies y enviarlas al otro lado del Atlántico. En Venecia se montaron sección por sección sobre armaduras de acero: las piezas de vidrio se encajaban a mano en unas puntas; un periodista que presenció la instalación la comparó con un colosal arreglo floral. No hay ningún manual."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jddu9nm20d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, «End of the Day Chandelier», 2025, 16 × 8 × 8 pies (483 × 234 × 234 cm). Palazzo Querini alla Carità, Venecia, instalada en 2026. © 2025 Chihuly Studio. Fotografía de Nathaniel Willson.",
+              "alt": "Una lámpara de araña de cristal soplado multicolor —en tonos rojos, amarillos, azules y verdes— colgaba de una estructura de acero sobre un balcón veneciano de color rosa, con un cielo azul como telón de fondo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jehknlwio8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, «Blue and Green Tower», 2025, 26½ × 10 × 10 pies (810 × 312 × 305 cm). Palazzo Balbi Valier, Venecia, instalada en 2026. © 2025 Chihuly Studio. Fotografía de Nathaniel Willson.",
+              "alt": "Una alta torre de cristal soplado azul y verde que resplandece al atardecer en un jardín veneciano, bajo un palacio con una logia."
+            },
+            {
+              "type": "text",
+              "content": "Es fácil mostrarse cínico con Chihuly. Es el artista del vidrio vivo con mayor éxito comercial; sus lámparas de araña cuelgan en casinos y en el vestíbulo del Museo Victoria and Albert, y los críticos llevan tiempo sospechando que tanto color debe de ser una forma de evitar pensar. Pero la exposición de Venecia viene acompañada de un pequeño y serio argumento que resulta difícil de descartar: que lo que parece un espectáculo es, en realidad, un método."
+            },
+            {
+              "type": "text",
+              "content": "La historia comienza en 1968, cuando Chihuly viajó a Venecia con una beca Fulbright y pasó un año en la fábrica Venini de Murano. Lo que vio allí no fue una técnica concreta, sino una forma de trabajar: el vidrio elaborado por un equipo, siguiendo un ritmo, en el que cada persona se encargaba de la parte que mejor sabía hacer. Se lo llevó consigo a casa. En 1971 cofundó la Pilchuck Glass School en el estado de Washington y, en las décadas siguientes, invitó a los maestros de Murano Lino Tagliapietra y Pino Signoretto a impartir clases allí. Técnicas que se habían conservado en unas pocas familias venecianas, como la fabricación de copas y los motivos con varillas de vidrio, se integraron en la tradición de los talleres estadounidenses gracias a ese intercambio."
+            },
+            {
+              "type": "text",
+              "content": "En 1996 volvió a llevar la idea a su lugar de origen. «Chihuly Over Venice» tardó dos años en completarse. Chihuly trabajó con sopladores de vidrio en Finlandia, Irlanda y México, y posteriormente en la propia Venecia; y en septiembre de 1996, un equipo de veinticinco personas, con su futura esposa, Leslie Jackson, como directora del proyecto, instaló catorce lámparas de araña monumentales en los canales y rincones de la ciudad. La nueva exposición conmemora ese aniversario. En el Palazzo Loredan del Istituto Veneto, la comisaria Suzanne Geiss ha colgado cuatrocientas de las fotografías de archivo sobre mylar a lo largo de una gran mesa de luz, de modo que el visitante se encuentre con el proyecto tal y como ella lo hizo, como un volumen abrumador de diapositivas, con los faxes de los bocetos dibujados a mano por Chihuly fijados a la pared detrás."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jfbml1zxoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "«Chihuly Over Venice», 1996: una lámpara de araña fabricada en Finlandia en el astillero de góndolas Squero di San Trovaso. © 1996 Chihuly Studio.",
+              "alt": "Una lámpara de araña de cristal naranja apoyada sobre postes de madera en el agua, frente a un taller de reparación de góndolas con góndolas verdes y geranios rojos."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jg8ysl2h0h.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, «Gold Tower» (detalle), 2025. Palazzo Franchetti, Venecia, instalada en 2026. Al fondo se ven visitantes en el Puente de la Accademia. © 2025 Chihuly Studio. Fotografía de Nathaniel Willson.",
+              "alt": "Primer plano de zarcillos de cristal ámbar rizados, con unos visitantes en un puente de madera y una azotea veneciana al fondo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jh3lkk8dku.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly con la lámpara de araña del Palazzetto Stern, Venecia, 1996. Fotografía de Russell Johnson. © 1996 Chihuly Studio.",
+              "alt": "Un hombre con una camiseta naranja que alarga el brazo para tocar una lámpara de araña de cristal azul que cuelga de un trípode de acero frente a un palacio veneciano."
+            },
+            {
+              "type": "text",
+              "content": "La frase de Geiss para 1996 es la más útil de todo el programa: no se trataba de una práctica solitaria en el taller, sino de una coreografía de la creación a través del tiempo, las personas y los espacios geográficos. Esa es una descripción precisa de lo que suele ser el vidrio. Un solo zarcillo de la «Gold Tower» lo sopla una sola persona, pero la torre necesita docenas, y el artista que la diseñó nunca tocará la mayoría de las piezas. La contribución del propio Chihuly, desde hace mucho tiempo, ha consistido en dar instrucciones —«ve más allá», «hazlo más grande»— y en tener el valor de seguir ampliando esas instrucciones. Tanto si el resultado te parece conmovedor como si simplemente te parece enorme, se trata de una concepción de la autoría genuinamente diferente a la del pintor solitario ante su caballete, y es una característica propia del vidrio más que de cualquier otro medio."
+            },
+            {
+              "type": "text",
+              "content": "Además, como señala Geiss, hay una buena razón para que se encuentre en Venecia. Una ciudad de palacios erigidos sobre pilotes de madera en una laguna es algo decadente y frágil, y el cristal también es algo decadente y frágil. Una torre que parece que una buena ráfaga de viento podría derribarla, erigida en un jardín a orillas del agua durante seis meses, es una reflexión sobre lo que sostiene las cosas."
+            },
+            {
+              "type": "quote",
+              "content": "No se trata de una práctica en solitario en el estudio, sino de una coreografía de la creación que trasciende el tiempo, las personas y los lugares."
+            },
+            {
+              "type": "header",
+              "content": "II · Roni Horn: un bloque de cristal que se cree que es agua",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Si Chihuly representa el cristal en su máxima expresión operística, la obra de Roni Horn es todo lo contrario: no ocurre nada durante mucho tiempo y, de repente, te das cuenta de que llevas diez minutos de pie frente a ella. En el verano de 2026, Hauser &amp; Wirth de Londres presentó «Seizure of Hope» (del 21 de mayo al 1 de agosto), más de cuarenta y cinco obras sobre papel realizadas con lápices de cera a lo largo de casi cuatro décadas, junto con una única y excepcional obra en vidrio fundido: Sin título («¿Qué le pasa al agujero cuando ya no queda queso?»), 2022, un cubo que mide 91,4 centímetros —o tres pies— de lado."
+            },
+            {
+              "type": "image",
+              "content": "https://fadmagazine.com/wp-content/uploads/IMG_4238.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, Sin título («¿Qué pasa con el agujero cuando ya no queda queso?»), 2022, vidrio fundido macizo, 91,4 × 91,4 × 91,4 cm. Vista de la instalación, «Seizure of Hope», Hauser &amp; Wirth Londres, 2026. © Roni Horn. Fotografía de Mark Westall.",
+              "alt": "Un cubo de vidrio fundido con los lados verticales esmerilados y una parte superior pulida en la que se refleja y se distorsiona la fachada de un edificio de ladrillo."
+            },
+            {
+              "type": "text",
+              "content": "Horn lleva años creando esculturas de vidrio fundido, y la fórmula es tremendamente sencilla. Los lados del cubo se dejan mates, por lo que parece un bloque de hielo o cristal marino. La superficie superior está pulida y se comporta como el agua: refleja el techo, las ventanas, los edificios al otro lado de la calle y los rostros de los visitantes, los curva hacia dentro y los devuelve ligeramente distorsionados. No hay nada en ella que mirar. Lo que ves es la sala y a ti mismo de pie en ella. La luz y las condiciones meteorológicas la transforman cada hora, lo que significa que la obra, estrictamente hablando, nunca es dos veces el mismo objeto."
+            },
+            {
+              "type": "text",
+              "content": "Es una broma física sobre la solidez. Un cubo de cristal de este tamaño pesa más que una persona y se ha moldeado, no soplado, lo que significa que se enfrió durante mucho tiempo, lentamente, para que no se agrietara por dentro. Y, sin embargo, todo en él evoca lo líquido. El título proviene de una pregunta que podría hacer un niño y tiene una lógica a la que no hay respuesta: si el agujero es lo que el queso no es, ¿qué le pasa cuando el queso desaparece? En el cubo de Horn, la pregunta se invierte. ¿Qué es el cristal, cuando lo único que se ve en él es otra cosa?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jjk1gcfgcx.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, dibujo de la serie «Seizure of Hope», lápiz de cera sobre papel, con la frase repetida «Estoy paralizada por la esperanza». Vista de la instalación, Hauser &amp; Wirth Londres, 2026. © Roni Horn. Fotografía de Mark Westall.",
+              "alt": "Un dibujo enmarcado en una pared blanca: filas de palabras escritas a mano en azul sobre un fondo beige cálido que dicen «Estoy paralizado por la esperanza»."
+            },
+            {
+              "type": "text",
+              "content": "Los dibujos de la misma sala hacen lo mismo con el lenguaje. La frase que los recorre, «Estoy paralizada por la esperanza», fue tomada de un monólogo de Maria Bamford y apareció por primera vez en LOG (2019-2020) de Horn, una instalación compuesta por 406 dibujos. Escrita una y otra vez con diferentes caligrafías, es una frase que nunca se asienta: las letras se engrosan, se difuminan y, por un momento, dejan de ser palabras. El trabajo de Horn con el agua es el término que falta en el argumento. Su «Biblioteca del Agua» en Stykkishólmur, Islandia, que realizó en 2007, almacena agua de deshielo glacial en veinticuatro columnas de cristal, y el cristal allí no es un recipiente, sino una lente. Es la misma idea a otra escala: que el material más transparente es aquel en el que se ve más de lo que no está en él."
+            },
+            {
+              "type": "header",
+              "content": "III · Glasstress 2026: cuando el artista se encuentra con el maestro",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Chihuly llevó Venecia a Seattle y luego la trajo de vuelta; el cristal de Horn nunca sale de la galería. Glasstress convierte la pregunta en una institución. Fue fundada en 2009 por Adriano Berengo, como evento paralelo a la Bienal de Venecia, para situar a los artistas contemporáneos frente a los hornos de Murano, y la edición de 2026, comisariada por Berengo junto con Joanna De Vos y Umberto Croppi, es la novena. Se celebra del 12 de julio al 22 de noviembre, repartida entre el Palazzo Ca’ Tron, en el Gran Canal, y el Fondazione Berengo Art Space, en Murano, e incluye a sesenta y cinco artistas y diseñadores, más de veinte de los cuales debutan en Glasstress, y muchos de los cuales trabajan con vidrio por primera vez."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jks1vmavw6.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vista de la instalación «Glasstress 2026»: una sala de hornos de Murano con una pila de esferas de cristal espejado, una cabeza blanca y lámparas de cristal colgantes. Imagen: Exibart.",
+              "alt": "Una larga nave industrial de ladrillo con ventanas altas, un montón de esferas de cristal plateado espejado sobre un suelo de hormigón, una cabeza esculpida en blanco y lámparas de araña de cristal colgadas a lo lejos."
+            },
+            {
+              "type": "text",
+              "content": "La mejor forma de interpretarlo es como un experimento sobre lo que ocurre cuando la idea y la ejecución artesanal provienen de personas diferentes. Algunos artistas dejan la ejecución íntegramente en manos de los artesanos de Murano; otros cogen ellos mismos la pipa de soplado. Los críticos italianos que reseñaron la inauguración no encontraron una estética única en la exposición, y algunos de sus momentos más interesantes son aquellos en los que el artista va deliberadamente en contra de lo que se espera del vidrio."
+            },
+            {
+              "type": "text",
+              "content": "En la planta baja de Ca’ Tron, los espejos antropomórficos de Gelitin deforman la sala y reflejan las obras que los rodean, de modo que todo el espacio comienza a curvarse. Ghost of the Future, de Monira Al Qadiri, está realizada en vidrio oscuro y compacto, de aspecto casi geológico: un material famoso por su transparencia utilizado para crear algo que parece una reliquia de un futuro ya consolidado. «X-Ray-Me (Myself)», de Fariba Ferdosi, utiliza la transparencia de otra manera, como un umbral a través del cual contemplar el cuerpo como un lugar de memoria y vulnerabilidad. Las piezas policromadas de Erwin Wurm rompen por completo el vínculo entre el cristal y la claridad, dotando al material de una intensidad cromática que un crítico calificó de inesperada. Zheng Chongbin acerca el vidrio a la pintura, con finas capas de color que recuerdan el tiempo lento de la tinta oriental; Tony Cragg convierte el vidrio en una masa densa con sus propias tensiones internas; Vanessa Beecroft crea un fragmento anatómico inacabado en un suave tono rosa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jmdcdrlp10.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Erwin Wurm, escultura de cristal expuesta en Glasstress 2026. Imagen: Metropolitano.it.",
+              "alt": "Una pieza de cristal rosa esmerilado con forma de alubia, sostenida por dos delgadas patas rosas, que descansa sobre un zócalo blanco frente a un fondo claro."
+            },
+            {
+              "type": "text",
+              "content": "En Murano, en el espacio dedicado a los hornos, la obra «Dialog», de Martin Janecký, muestra figuras que parecen emerger del interior del vidrio, como si se encontraran en un estado de formación permanente, que es precisamente lo que ocurre en un horno: una forma que surge de una masa fundida. Judy Chicago aporta *Glass Goddess*; Ai Weiwei, según una reseña veneciana, expone lámparas de araña que ocultan su habitual irreverencia bajo una superficie barroca, un gesto que recuerda a la *Blossom Chandelier* que creó para una edición anterior, en la que las flores de cristal convivían con esposas, cámaras de vigilancia y pajaritos de Twitter."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jo92r1he7w.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ai Weiwei, lámpara de araña de cristal en Glasstress 2026, Fondazione Berengo Art Space, Murano. Imagen: Metropolitano.it.",
+              "alt": "Una enorme lámpara de araña esférica de cristal blanco, cubierta de flores y tallos rizados, que cuelga en una nave industrial de ladrillo."
+            },
+            {
+              "type": "image",
+              "content": "https://static.wixstatic.com/media/010253_f7627d18f8cf42f984a0cf37c00eb165~mv2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Karen LaMonte, «Reclining Lucent 1», vidrio fundido. Expuesta en Glasstress 2026, en el Palazzo Ca’ Tron y en el Fondazione Berengo Art Space. Imagen cedida por la artista.",
+              "alt": "Una escultura de cristal fundido que representa un vestido de noche vacío recostado sobre un zócalo negro, realizada en cristal azul-blanco pálido y translúcido, con pliegues marcados en el dobladillo."
+            },
+            {
+              "type": "text",
+              "content": "Entre las obras moldeadas se encuentra «Reclining Lucent 1», de Karen LaMonte: un vestido de noche sin nadie dentro, moldeado en cristal claro, que yace de costado con un peso que sería imposible de conseguir con tela. LaMonte lleva décadas trabajando en este tema, y lo que muestra es algo que la tela no puede: que una ausencia tiene forma y puede hacerse sólida. El cristal capta la luz en los pliegues como lo haría el agua, y luego se detiene."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jqhnldexbf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Laure Prouvost, escultura de cristal en Glasstress 2026. Fotografía de Francesco Allegretto. Imagen: Metropolitano.it.",
+              "alt": "Un animal de cristal, de color rosa a turquesa, que se yergue como una foca, con un enchufe eléctrico a modo de cola, sobre un pedestal blanco."
+            },
+            {
+              "type": "text",
+              "content": "La exposición tiene problemas, y vale la pena decirlo. Un crítico que asistió a la inauguración consideró que las obras eran potentes, pero que la exposición, en cambio, no lo era tanto: un concepto curatorial que no resultaba del todo claro, algunas piezas que aún estaban por llegar, etiquetas que faltaban y una figura destacada, Marina Abramović, anunciada pero ausente. La heterogeneidad que da vida a la exposición también hace que resulte difícil mantenerla cohesionada. Eso, también, forma parte de la información sobre el vidrio. Se trata de un medio que se sitúa a medio camino entre un sinfín de tradiciones —artesanía, diseño, escultura, instalación, arte conceptual— y una exposición que pretenda abarcarlas todas siempre dará la sensación de estar a punto de desmoronarse."
+            },
+            {
+              "type": "header",
+              "content": "IV · Corning: ¿quiénes fabricaban el cristal de estudio?",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La cuarta respuesta es la que tiene que ver con la historia. El «vidrio de estudio», movimiento en el que los artistas comenzaron a soplar y moldear vidrio en sus propios talleres en lugar de en fábricas, suele remontarse a un par de talleres del Museo de Arte de Toledo en 1962. Durante décadas, la historia que se contaba al respecto giraba en torno a un puñado de hombres. La exposición «Tough Stuff: Women in the American Glass Studio», que se inauguró en el Museo del Vidrio de Corning el 16 de mayo de 2026 y permanecerá abierta hasta el 10 de enero de 2027, sostiene que esta nunca fue la imagen completa."
+            },
+            {
+              "type": "text",
+              "content": "Se trata de la primera exposición de este tipo: más de 200 objetos, procedentes de la colección del museo, de su Biblioteca de Investigación Rakow y de préstamos de los propios artistas —algunos de ellos nunca antes expuestos—, creados por mujeres que trabajaban con el vidrio en las décadas de 1960 y 1970. La exposición está comisariada por Tami Landis, conservadora de vidrio de posguerra y contemporáneo, junto con la becaria de comisariado Rïse Peacock, y forma parte del programa del 75.º aniversario del museo. Entre las artistas se encuentran Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler y Joan Reep."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jrrwa2i63g.jpg",
               "align": "center",
               "width": 100,
               "caption": "Lucartha Kohler, «Colors of Consciousness», 1977. Donación de la artista al Museo del Vidrio de Corning. Imagen cortesía del Museo del Vidrio de Corning.",
@@ -100167,27 +100370,19 @@
             },
             {
               "type": "text",
-              "content": "La exposición está organizada por Tami Landis, comisaria de vidrio de posguerra y contemporáneo, junto con la becaria de comisariado Rïse Peacock, y entre las artistas participantes figuran Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler y Joan Reep. Lo que llama la atención en las imágenes es lo poco que se parecen unas a otras. «Colors of Consciousness» (1977), de Kohler, no es en absoluto un recipiente: se trata de una secuencia de paneles transparentes en los que se reproduce un retrato fotográfico serigrafiado, repetido y desplazado a lo largo del espectro, de modo que el cristal actúa como una película fotográfica. «Small Double Bubble Sculpture» (1969), de Audrey Handler, va en la dirección opuesta y deja que el material soplado se hunda formando un nudo suelto y translúcido."
+              "content": "Lo que llama la atención en las imágenes es lo poco que tienen en común las obras. «Colors of Consciousness» (1977), de Lucartha Kohler, es una hilera de paneles transparentes, cada uno con el mismo retrato serigrafiado, teñido con los colores del espectro, de modo que el cristal se comporta como una tira de película. *Silver Glass Bowl* (1973-1974), de Joan Reep, es una forma soplada, ancha e iridiscente, con nubes de color atrapadas en sus paredes. La obra *Small Double Bubble Sculpture* (1969), de Audrey Handler, deja que el vidrio soplado se combe formando un nudo suelto y translúcido, una escultura en la que ya no queda ningún recipiente."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_3.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jsgxib7618.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Audrey Handler, «Small Double Bubble Sculpture», 1969. Donación de la artista al Museo del Vidrio de Corning. Cortesía del Museo del Vidrio de Corning.",
-              "alt": "Una pieza de cristal translúcido de color verde pálido con dos huecos en forma de lazo y vetas de color ámbar, apoyada de lado sobre un fondo gris."
-            },
-            {
-              "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_4-1.png",
-              "align": "center",
-              "width": 100,
-              "caption": "Joan Reep, Cuenco de cristal plateado, 1973-1974. Donación de la artista al Museo del Cristal de Corning. Por cortesía del Museo del Cristal de Corning.",
+              "caption": "Joan Reep, Cuenco de cristal plateado, 1973-1974. Donación de la artista al Museo del Cristal de Corning. Imagen cortesía del Museo del Cristal de Corning.",
               "alt": "Un cuenco ancho de vidrio soplado con el borde ondulado y una superficie iridiscente en tonos azules, violetas y dorados, con dos inclusiones opacas en la pared."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_1.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jt6qcct13m.jpg",
               "align": "center",
               "width": 100,
               "caption": "Kathleen Mulcahy instalando «Drops on a Landscape», 1973, Universidad de Alfred, Alfred, Nueva York. Fotografía cedida por Kathleen Mulcahy.",
@@ -100195,86 +100390,40 @@
             },
             {
               "type": "text",
-              "content": "La fotografía de Kathleen Mulcahy colocando gotas de vidrio en una terraza pavimentada en 1973 constituye el centro discreto de la exposición. Muestra el vidrio como una instalación, como un material que se distribuye por un espacio, mucho antes de que el término «instalación» se convirtiera en algo habitual en el mundo del arte. También muestra quién realizaba el trabajo. El argumento del museo es que la historia del vidrio de taller se ha contado con demasiada frecuencia a través de un grupo reducido de pioneros masculinos, mientras que las mujeres, al mismo tiempo, creaban sus propios talleres y desarrollaban sus propios métodos y estilos característicos. Paralelamente a la exposición, la Biblioteca de Investigación Rakow está publicando testimonios orales en primera persona de artistas vivos de la época, de modo que la corrección se lleva a cabo tanto en el archivo como en las paredes."
+              "content": "La fotografía de Kathleen Mulcahy agachada en una terraza pavimentada en 1973, colocando gotas de cristal transparente por el suelo, es la exposición en miniatura. Se trata de una instalación, realizada mucho antes de que el término «instalación» se convirtiera en algo habitual en el mundo del arte, creada por una mujer que trabajaba con sus propias manos en un material cuya historia se estaba escribiendo entonces, en su mayor parte, en torno a los hombres. Según el relato del museo, las mujeres estaban creando sus propios talleres y desarrollando sus propios métodos al mismo tiempo que los pioneros más conocidos, y la historia oficial simplemente no se ha fijado en ello. Paralelamente a la exposición, la biblioteca está publicando testimonios orales en primera persona de las artistas aún vivas, de modo que la corrección se está llevando a cabo en el archivo y no solo en las paredes."
             },
             {
-              "type": "quote",
-              "content": "Las mujeres desempeñaron un papel fundamental, aunque a menudo pasado por alto, en el movimiento."
+              "type": "text",
+              "content": "Visto desde Venecia, el punto se agudiza. Las torres de Chihuly son, en parte, herederas de ese mismo momento: su Pilchuck se fundó en 1971, en la misma década que los objetos de Corning. La cuestión de qué manos y qué nombres deben figurar en una obra de vidrio no es meramente académica. El vidrio siempre se ha fabricado de forma colectiva, por maestros vidrieros, ayudantes y encargados de los hornos, y la historia de este arte ha sido una historia de quién ha llegado a ser considerado el artista."
             },
             {
               "type": "header",
-              "content": "II · El horno como autor: Murano en la Bienal",
+              "content": "V · Lo que el cristal puede hacer y nada más",
               "level": 2
             },
             {
               "type": "text",
-              "content": "En Venecia, en la isla de San Giorgio Maggiore, «Le Stanze del Vetro» plantea una perspectiva diferente. «1948-1958: El cristal de Murano y la Bienal de Venecia» (del 19 de abril al 22 de noviembre de 2026) es el tercer capítulo de una serie organizada por la Fundación Giorgio Cini y la Pentagram Stiftung, con comisariado de Marino Barovier. Más de 160 piezas repasan las participaciones de Murano en las ediciones XXIV a XXIX de la Bienal, desde la primera exposición tras la guerra hasta finales de la década de 1950, y la exposición va acompañada de un catálogo editado por Barovier y Carla Sonego."
-            },
-            {
-              "type": "image",
-              "content": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Jarrones de Murano con bandas concéntricas de cristal verde y amarillo, vista de la instalación, Le Stanze del Vetro, San Giorgio Maggiore, Venecia. Imagen cortesía de Le Stanze del Vetro / Fondazione Giorgio Cini.",
-              "alt": "Dos jarrones de cristal con forma de lágrima, uno al lado del otro sobre una estantería blanca, cada uno formado por anillos concéntricos de cristal verde esmeralda y amarillo pálido."
+              "content": "Si comparamos las cuatro series, quedan claras algunas propiedades del cristal, ya que cada una de ellas se ha basado en una propiedad diferente."
             },
             {
               "type": "text",
-              "content": "Aquí el autor no es un artista solitario, sino un horno. Los nombres que figuran en las etiquetas son los de las casas —Venini, AVEM, Barovier &amp; Toso, Seguso Vetri d’Arte, Aureliano Toso, Fratelli Toso, Gino Cenedese— y las personas que trabajaron con ellas: Alfredo Barbini, Archimede Seguso, Ercole Barovier, Flavio Poli, Dino Martens, Vinicio Vianello. Las copas «Corinto» y «Damasco» de Ercole Barovier, expuestas en la Bienal de 1948, están elaboradas a partir de varillas alternadas con pan de oro. Martens diseñó para Aureliano Toso una «botella del mago» compuesta por fragmentos, granalla e inserciones decorativas sobre un fondo transparente. La obra de Poli para Seguso explora el vidrio acanalado semitransparente con texturas rayadas y dorados, así como el vidrio grueso sumergido en formas orgánicas."
+              "content": "Transmite la luz. Un cuadro la refleja, un bronce la absorbe; el cristal la proyecta hacia otro lugar de la sala. Las torres de Chihuly brillan desde dentro cuando el sol está a sus espaldas, y se ve literalmente a la gente que está en el Puente de la Accademia a través de ellas. Por eso las fotografías del cristal en las galerías siempre se quedan un poco cortas, y por eso las mejores de estas obras hay que verlas en persona."
             },
             {
               "type": "text",
-              "content": "Es fácil calificar todo esto de «diseño», y la exposición aborda, efectivamente, la reconstrucción de la posguerra y el auge de la cultura del diseño. Pero merece la pena dedicar más tiempo a observar los jarrones que aparecen en la imagen de la instalación anterior. Sus anillos no están pintados: son capas de vidrio de colores superpuestas al calor y cortadas transversalmente, de modo que el patrón es la propia estructura. Se trata de un diálogo entre la idea de un diseñador y las manos de un maestro que, una vez creado, ya no puede separarse, y el vidrio es prácticamente el único material que hace visible esa colaboración en el objeto acabado."
-            },
-            {
-              "type": "header",
-              "content": "III · Sesenta y cinco artistas, un único material: Glasstress 2026",
-              "level": 2
+              "content": "Además, refleja y distorsiona lo que refleja. El cubo de Horn y los espejos de Gelitin no te muestran un objeto, sino la habitación que lo rodea, curvada, de modo que el propio espacio se convierte en el tema central. El mismo material que es una ventana desde un ángulo es un espejo desde otro, y la obra suele residir precisamente en ese ángulo."
             },
             {
               "type": "text",
-              "content": "La tercera exposición abre las puertas del horno veneciano al exterior. «Glasstress 2026» se celebra del 12 de julio al 22 de noviembre en Ca’ Tron, en el Gran Canal, y en el Espacio Artístico de la Fondazione Berengo, en Murano. Adriano Berengo concibió el proyecto en 2009 como un evento colateral oficial de la Bienal de Venecia, y esta edición, comisariada por Berengo, Joanna De Vos y Umberto Croppi, invita a 65 artistas y diseñadores internacionales a trabajar con los maestros vidrieros de Berengo Studio. Más de veinte de ellos debutan en Glasstress, y muchos trabajan con el vidrio por primera vez."
+              "content": "Además, a diferencia de casi todo lo demás que hay en una galería, es un líquido que se ha detenido. El giro de un zarcillo de Chihuly, la burbuja combada de la escultura de Handler y el drapeado del vestido vacío de LaMonte son, en realidad, lo mismo: alguien estaba trabajando con una sustancia que se movía y la detuvo. El cristal es un registro del momento en que se detuvo."
             },
             {
               "type": "text",
-              "content": "La lista parece más un repaso por el arte contemporáneo que por la artesanía: Ai Weiwei, Judy Chicago, Tony Cragg, Jaume Plensa, Thomas Schütte, Chiharu Shiota, Cornelia Parker, Erwin Wurm, Jan Fabre, Paul McCarthy, Yue Minjun, Wael Shawky, Sean Scully, Karen LaMonte y docenas más. Esa es la clave. Los organizadores describen el vidrio como un lenguaje artístico autónomo y como un «hipertexto material» en el que el significado surge de la construcción técnica, el gesto del artista y el contexto de producción. En otras palabras, el artista aporta la idea; el maestro de Murano aporta toda una vida de conocimientos sobre lo que un horno puede y no puede hacer."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Jaume-Plensa-Blake-in-Venice-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Jaume Plensa, «Blake in Venice», de un proyecto anterior de Glasstress. Plensa es uno de los artistas que participan en Glasstress 2026. Imagen cortesía de la Fondazione Berengo.",
-              "alt": "Altas ventanas góticas de un palacio que dan al Gran Canal, adornadas con guirnaldas de letras de cristal dorado a través de las cuales se divisa una fachada al otro lado del canal."
+              "content": "Y esto nos lleva a plantearnos la cuestión de la autoría. En Corning, el creador es una sola persona en su propio banco de trabajo; en la Venecia de Chihuly, es un equipo de veinticinco personas dirigidas por una sola voluntad; en Glasstress, es una pareja: el artista con la idea y el maestro de Murano con las manos. Las exposiciones discrepan sobre quién merece el reconocimiento. Coinciden, sin embargo, en que no se puede contemplar el objeto sin percibir las huellas de su proceso de creación: una costura, una burbuja, un rastro de color, la línea donde se unen dos pliegues."
             },
             {
               "type": "text",
-              "content": "La obra «Blake» de Plensa en Venecia, perteneciente a un proyecto anterior de Glasstress, demuestra por qué esta combinación funciona. Una cortina de letras de cristal cuelga de una ventana gótica de Ca’ Tron, y el Gran Canal que se divisa detrás pasa a formar parte del texto. Nada de ello podría haberse realizado en piedra o bronce: la obra existe únicamente porque el cristal permite ver a través de él al tiempo que mantiene las palabras en su sitio. «Reclining Nocturne», de Karen LaMonte, perteneciente al mismo programa, aprovecha la propiedad opuesta. Un vestido sin cuerpo, moldeado en cristal, se vuelve pesado, frío y casi líquido: la prenda se ha convertido en un monumento."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Karen-LaMonte-Reclining-Nocturne-1-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Karen LaMonte, «Reclining Nocturne», obra realizada en colaboración con Berengo Studio para un proyecto anterior de Glasstress. LaMonte es una de las artistas vinculadas al proyecto. Imagen cortesía de la Fondazione Berengo.",
-              "alt": "Una escultura de cristal fundido que representa un vestido de noche vacío recostado sobre un pedestal blanco, realizada en cristal translúcido de color azul grisáceo ahumado, con pliegues marcados en el bajo."
-            },
-            {
-              "type": "header",
-              "content": "IV · ¿Qué cristal es ese que nada más puede?",
-              "level": 2
-            },
-            {
-              "type": "text",
-              "content": "Si colocamos los tres uno al lado del otro, aparece un patrón. En Corning, la creadora es una sola persona en su propio banco de trabajo, y el cristal es el registro de un cuerpo y de una decisión. En Venecia, la creadora es un taller, y el cristal es un lenguaje compartido entre el diseño y la artesanía. En Glasstress, el creador es una pareja —un artista y un maestro— y el cristal es un punto de encuentro entre dos tipos de conocimiento. En cada caso, el objeto lleva la huella de cómo se hizo, porque el cristal no puede ocultar su historia: una burbuja, una costura, un rastro de color, una línea donde se unieron dos gotas."
-            },
-            {
-              "type": "text",
-              "content": "También transmite la luz. Un cuadro la refleja y un bronce la absorbe; el cristal la transmite, la desvía y la envía a otro lugar de la sala. Por eso las fotografías de cristal en una galería siempre resultan un poco inexactas, y por eso lo mejor de estas exposiciones depende de estar allí: de los jarrones que brillan desde el interior de sus nichos, de una cortina de letras que proyecta sombras sobre un canal, de un campo de gotas transparentes dispuestas a lo largo de una terraza. Es un arte de las condiciones, tanto como de los objetos."
-            },
-            {
-              "type": "text",
-              "content": "Y se trata de un arte que se ha tomado en serio durante menos tiempo del que se merece. El vidrio de taller, como movimiento, solo tiene unos sesenta años; los museos que lo exponen en 2026 siguen corrigiendo sus propias historias, tal y como hace abiertamente «Tough Stuff». Si estas exposiciones comparten una ambición, es la de dejar de tratar el vidrio como un caso especial de otra cosa —artesanía, diseño, decoración— y considerarlo lo que es a todas luces: un medio con su propia física, su propia autoría y su propia forma de hacer visible algo dejando pasar todo lo demás."
+              "content": "El movimiento del vidrio de estudio tiene solo unos sesenta años de antigüedad y aún está poniéndose al día con su propia historia. Si estas exposiciones comparten una ambición, es la de dejar de tratar el vidrio como un caso especial de otra cosa —ya sea artesanía, diseño o decoración— y considerarlo como lo que es, sencillamente: un medio con sus propias propiedades físicas y su propia forma de hacer visible algo al dejar pasar todo lo demás."
             },
             {
               "type": "header",
@@ -100283,26 +100432,31 @@
             },
             {
               "type": "text",
-              "content": "La exposición «Tough Stuff: Women in the American Glass Studio» se puede visitar en el Museo del Vidrio de Corning, en Corning (Nueva York), hasta el 10 de enero de 2027. «1948–1958: El cristal de Murano y la Bienal de Venecia», en Le Stanze del Vetro, en San Giorgio Maggiore, y «Glasstress 2026», en Ca’ Tron y en Murano, permanecerán abiertas hasta el 22 de noviembre de 2026, por lo que quedan unas cuatro semanas para visitarlas. Más adelante, el Museo del Vidrio de Tacoma reabre sus galerías el 12 de diciembre de 2026 con «Lino Tagliapietra: Maestro». Las fechas y los horarios de apertura pueden variar; consulta la información de cada sede antes de viajar."
+              "content": "CHIHULY: Venecia 2026 permanecerá abierta hasta el 14 de noviembre. Las tres esculturas se encuentran al aire libre a lo largo del Gran Canal, son visibles desde el Puente de la Accademia y no es necesario adquirir entrada; el archivo del Palazzo Loredan del Istituto Veneto, en Campo Santo Stefano, está abierto de miércoles a domingo. «Glasstress 2026» se celebra en el Palazzo Ca’ Tron y en el Espacio de Arte de la Fondazione Berengo, en Murano, hasta el 22 de noviembre. Ambas exposiciones cierran en menos de un mes. «Tough Stuff» se puede visitar en el Museo del Vidrio de Corning, en Corning (Nueva York), hasta el 10 de enero de 2027. La exposición «Seizure of Hope», de Roni Horn, cerró sus puertas en Londres el 1 de agosto. Más adelante, el Museo del Vidrio de Tacoma reabrirá el 12 de diciembre con «Lino Tagliapietra: Maestro». Las fechas y los horarios de apertura pueden variar; consulta cada sede antes de viajar."
             },
             {
               "type": "note",
-              "content": "Este artículo se basa en las páginas de la exposición y los materiales de prensa del Museo del Vidrio de Corning, Le Stanze del Vetro (Fondazione Giorgio Cini), la Fondazione Berengo / Glasstress y el Museo del Vidrio de Tacoma, así como en la cobertura de «Tough Stuff» realizada por Hyperallergic y de la exposición veneciana por Finestre sull’Arte. Las interpretaciones son del autor. Las imágenes se muestran con la atribución correspondiente a las instituciones que las han facilitado."
+              "content": "Este artículo se basa en el material expositivo de Chihuly Studio y Pilchuck Glass School, Hauser &amp; Wirth, el Museo del Vidrio de Corning, la Fondazione Berengo y el Museo del Vidrio de Tacoma, así como en artículos publicados en Galerie, la revista Seattle, FAD Magazine, Hyperallergic, Exibart, Interactive Art Magazine y Primopiano24. Los detalles de las obras concretas proceden de dichas fuentes; las interpretaciones son del autor. La descripción de «The Library of Water» se basa en los conocimientos propios del autor. Las imágenes se muestran con la atribución correspondiente a las instituciones y los fotógrafos que las han facilitado."
             },
             {
               "type": "link",
-              "content": "«Tough Stuff: Las mujeres en los talleres de vidrio estadounidenses» — Museo del Vidrio de Corning",
-              "url": "https://whatson.cmog.org/exhibitions-galleries"
+              "content": "CHIHULY: Venecia 2026 — Escuela de Vidrio de Pilchuck",
+              "url": "https://www.pilchuck.org/event/chihuly-venice-2026"
             },
             {
               "type": "link",
-              "content": "1948-1958: El cristal de Murano y la Bienal de Venecia — Le Stanze del Vetro",
-              "url": "https://lestanzedelvetro.org/en/exhibition/1948-1958-murano-glass-and-the-venice-biennale/"
+              "content": "Roni Horn: «Seizure of Hope» — Hauser &amp; Wirth",
+              "url": "https://www.hauserwirth.com/hauser-wirth-exhibitions/roni-horn-london/"
             },
             {
               "type": "link",
               "content": "Glasstress 2026 — Fundación Berengo",
               "url": "https://glasstress.org/"
+            },
+            {
+              "type": "link",
+              "content": "«Tough Stuff: Las mujeres en los talleres de vidrio estadounidenses» — Museo del Vidrio de Corning",
+              "url": "https://whatson.cmog.org/exhibitions-galleries"
             },
             {
               "type": "link",
@@ -100312,7 +100466,7 @@
           ],
           "publishAt": "2026-10-26T02:00:00.000Z",
           "publishedAt": "2026-10-26T02:00:00.000Z",
-          "updatedAt": "2026-10-25T19:05:29.624Z"
+          "updatedAt": "2026-10-25T19:20:44.808Z"
         }
       ],
       "reviews": [
