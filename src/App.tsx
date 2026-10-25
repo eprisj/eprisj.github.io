@@ -4733,6 +4733,13 @@ export default function App() {
     try { return new URLSearchParams(window.location.search).get('t') || undefined; } catch { return undefined; }
   });
   const [currentLang, setCurrentLang] = useState(() => {
+    /* ?lang=IT в адресе главнее сохранённого выбора: ссылкой на материал на
+       другом языке (например, интервью на итальянском для героя) читатель
+       сразу попадает на сайт на этом языке, а не на английский. */
+    try {
+      const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
+      if (fromUrl && getAvailableLanguages().includes(fromUrl)) return fromUrl;
+    } catch { /* адрес не разобрать – берём сохранённый язык */ }
     try {
       const stored = localStorage.getItem('epris_language');
       return stored && getAvailableLanguages().includes(stored) ? stored : DEFAULT_LANGUAGE;
