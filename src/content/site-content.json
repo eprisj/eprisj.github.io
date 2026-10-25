@@ -145184,6 +145184,207 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mvjp7nhasugneq.jpg",
           "previewToken": "00412802310c7b5271536852",
           "publishAt": "2026-10-22T16:10:20.355Z"
+        },
+        {
+          "id": 75,
+          "draft": false,
+          "title": "Une plongée dans l&#x27;œuvre : le verre comme forme d&#x27;art dans trois expositions de 2026",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "26 octobre 2026",
+          "excerpt": "Le verre est le seul matériau conçu pour qu’on puisse voir à travers. De l’étude menée par Corning sur les femmes du mouvement américain du verre d’atelier aux fours d’après-guerre de Murano présentés à la Biennale de Venise, en passant par les soixante-cinq artistes de Glasstress 2026 : trois expositions qui expliquent pourquoi le verre est un langage à part entière.",
+          "category": "Genre",
+          "subcategory": "Fonctionnalité",
+          "tags": [
+            "art du verre",
+            "verre d&#x27;atelier",
+            "Musée du verre de Corning",
+            "Murano",
+            "Glasstress",
+            "Les Salles du Verre",
+            "Venise",
+            "art contemporain",
+            "sculpture",
+            "expositions 2026"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+          "previewToken": "b19e9cc8aeb90893f7d5f6c5",
+          "content": [
+            {
+              "type": "text",
+              "content": "Tous les autres supports vous invitent à les regarder. Le verre, lui, vous invite à regarder à travers lui. Une fenêtre, une bouteille, une lentille, un écran : pendant la majeure partie de l’histoire de l’humanité, le verre a été cet élément qui disparaît pour permettre de voir autre chose. C’est précisément ce qui le rend si singulier en tant que matériau artistique. Pour faire du verre le sujet de son œuvre, un artiste doit rendre visible cet objet invisible – et le faire avec une matière qui est liquide jusqu’au moment où elle ne l’est plus, qui garde en mémoire chaque seconde de la chaleur dans laquelle elle a été façonnée, et qui peut se briser entre les mains de celui qui l’a créée."
+            },
+            {
+              "type": "text",
+              "content": "Trois expositions inaugurées en 2026 abordent cette question sous trois angles différents : une rétrospective dans le nord de l’État de New York qui réécrit l’histoire du verre d’atelier américain, une exposition vénitienne consacrée aux fours d’après-guerre de Murano, et un projet d’envergure biennale qui confie ce matériau à soixante-cinq artistes, dont beaucoup le découvrent pour la première fois. Considérées dans leur ensemble, elles constituent une brève réflexion sur ce qu’est le verre lorsqu’il cesse d’être une fenêtre."
+            },
+            {
+              "type": "header",
+              "content": "I · La main et la torche : des matériaux résistants chez Corning",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le Musée du Verre de Corning a inauguré l&#x27;exposition « Tough Stuff : Women in the American Glass Studio » le 16 mai 2026, dans le cadre de son 75e anniversaire ; celle-ci se tiendra jusqu&#x27;au 10 janvier 2027. Elle est présentée comme la première rétrospective consacrée au travail des femmes artistes verrières des années 1960 et 1970, décennies charnières du mouvement américain du verre d’atelier – moment où le verre a quitté l’usine pour entrer dans l’atelier de l’artiste. Plus de 200 objets proviennent de la collection du musée, de sa bibliothèque de recherche Rakow et de prêts accordés par les artistes elles-mêmes ; certains n’ont jamais été présentés au public."
+            },
+            {
+              "type": "image",
+              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/05/CMoG_Image_5.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Lucartha Kohler, « Colors of Consciousness », 1977. Don de l&#x27;artiste au Musée du verre de Corning. Image reproduite avec l&#x27;aimable autorisation du Musée du verre de Corning.",
+              "alt": "Six panneaux de verre disposés verticalement en rangée, chacun orné du même portrait photographique d&#x27;une femme debout, dans des tons allant du violet au vert, en passant par l&#x27;orange et le rose."
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;exposition est organisée par Tami Landis, conservatrice spécialisée dans le verre d&#x27;après-guerre et contemporain, en collaboration avec Rïse Peacock, conservatrice stagiaire. Parmi les artistes présentés figurent Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler et Joan Reep. Ce qui frappe dans ces images, c’est à quel point elles sont toutes différentes les unes des autres. L’œuvre de Kohler, *Colors of Consciousness* (1977), n’est pas du tout un récipient : il s’agit d’une succession de panneaux transparents sur lesquels est reproduit un portrait photographique sérigraphié, répété et décalé à travers le spectre, de sorte que le verre fonctionne comme une pellicule de cinéma. La « Small Double Bubble Sculpture » (1969) d’Audrey Handler prend le contre-pied de cette approche et laisse le matériau soufflé s’affaisser en un nœud lâche et translucide."
+            },
+            {
+              "type": "image",
+              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_3.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Audrey Handler, « Small Double Bubble Sculpture », 1969. Don de l&#x27;artiste au Musée du Verre de Corning. Avec l&#x27;aimable autorisation du Musée du Verre de Corning.",
+              "alt": "Une pièce en verre translucide vert pâle, présentant deux creux en forme de boucle et des stries ambrées, posée sur le côté sur un fond gris."
+            },
+            {
+              "type": "image",
+              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_4-1.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Joan Reep, « Silver Glass Bowl », 1973-1974. Don de l&#x27;artiste au Musée du verre de Corning. Avec l&#x27;aimable autorisation du Musée du verre de Corning.",
+              "alt": "Un grand bol en verre soufflé, au bord ondulé et à la surface irisée de bleu, de violet et d&#x27;or, présentant deux inclusions opaques dans la paroi."
+            },
+            {
+              "type": "image",
+              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_1.png",
+              "align": "center",
+              "width": 100,
+              "caption": "Kathleen Mulcahy en train d&#x27;installer « Drops on a Landscape », 1973, Université d&#x27;Alfred, Alfred, New York. Photo avec l&#x27;aimable autorisation de Kathleen Mulcahy.",
+              "alt": "Une femme vêtue d&#x27;un t-shirt bleu et d&#x27;un jean, accroupie sur une terrasse pavée, est en train de disposer sur le sol des dizaines de formes en verre transparent en forme de goutte."
+            },
+            {
+              "type": "text",
+              "content": "La photographie de Kathleen Mulcahy déposant des gouttes de verre sur une terrasse pavée en 1973 constitue le cœur discret de l’exposition. Elle montre le verre comme une installation, comme un matériau que l’on dispose sur un site, bien avant que le terme « installation » ne devienne courant dans le monde de l’art. Elle montre également qui réalisait ce travail. Le musée fait valoir que l’histoire du verre d’atelier a trop souvent été racontée à travers le prisme d’un groupe restreint de pionniers masculins, alors que les femmes créaient leurs propres ateliers, développaient leurs propres méthodes et trouvaient leur style caractéristique au même moment. Parallèlement à l’exposition, la Rakow Research Library publie des témoignages oraux à la première personne d’artistes encore en vie de cette époque, afin que cette rectification s’opère aussi bien dans les archives que sur les murs."
+            },
+            {
+              "type": "quote",
+              "content": "Les femmes ont joué un rôle central, mais souvent méconnu, dans ce mouvement."
+            },
+            {
+              "type": "header",
+              "content": "II · Le four en tant qu’auteur : Murano à la Biennale",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "À Venise, sur l&#x27;île de San Giorgio Maggiore, « Le Stanze del Vetro » se distingue par une approche différente. « 1948–1958 : Le verre de Murano et la Biennale de Venise » (du 19 avril au 22 novembre 2026) est le troisième volet d’une série organisée par la Fondation Giorgio Cini et la Pentagram Stiftung, sous la direction de Marino Barovier. Plus de 160 pièces retracent les participations de Murano aux éditions XXIV à XXIX de la Biennale, de la première exposition d’après-guerre jusqu’à la fin des années 1950, et un catalogue édité par Barovier et Carla Sonego accompagne l’exposition."
+            },
+            {
+              "type": "image",
+              "content": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vases de Murano ornés de bandes concentriques de verre vert et jaune, vue de l&#x27;installation, Le Stanze del Vetro, San Giorgio Maggiore, Venise. Image reproduite avec l&#x27;aimable autorisation de Le Stanze del Vetro / Fondazione Giorgio Cini.",
+              "alt": "Deux vases en verre en forme de larme, placés côte à côte sur une étagère blanche, chacun composé d&#x27;anneaux concentriques de verre vert émeraude et jaune pâle."
+            },
+            {
+              "type": "text",
+              "content": "Ici, l’auteur n’est pas un artiste solitaire, mais un four. Les noms figurant sur les étiquettes sont ceux de maisons de verre – Venini, AVEM, Barovier &amp; Toso, Seguso Vetri d’Arte, Aureliano Toso, Fratelli Toso, Gino Cenedese – et des personnes qui y ont travaillé : Alfredo Barbini, Archimede Seguso, Ercole Barovier, Flavio Poli, Dino Martens, Vinicio Vianello. Les coupes « Corinto » et « Damasco » d’Ercole Barovier, présentées à la Biennale de 1948, sont constituées de cannes alternant avec des feuilles d’or. Martens a conçu pour Aureliano Toso une « bouteille du sorcier » composée de fragments, de grains et d’inserts décoratifs sur un fond transparent. Le travail de Poli pour Seguso explore le verre cannelé semi-opaque aux textures rayées et dorées, ainsi que le verre épais immergé aux formes organiques."
+            },
+            {
+              "type": "text",
+              "content": "Il est facile de qualifier tout cela de « design », et l’exposition évoque effectivement la reconstruction d’après-guerre et l’essor de la culture du design. Mais les vases présentés dans la vue d’ensemble de l’installation ci-dessus méritent qu’on s’y attarde davantage. Leurs anneaux ne sont pas peints : ce sont des couches de verre coloré superposées à chaud puis découpées, de sorte que le motif fait partie intégrante de la structure. Il s’agit là d’un dialogue entre l’idée d’un designer et le savoir-faire d’un maître artisan, qui ne peuvent plus être dissociés par la suite ; et le verre est pratiquement le seul matériau à rendre cette collaboration visible dans l’objet fini."
+            },
+            {
+              "type": "header",
+              "content": "III · Soixante-cinq artistes, un seul matériau : Glasstress 2026",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La troisième exposition met en avant le savoir-faire verrier vénitien. « Glasstress 2026 » se tiendra du 12 juillet au 22 novembre à la Ca’ Tron, sur le Grand Canal, et à l’espace d’art de la Fondazione Berengo, à Murano. Adriano Berengo a conçu ce projet en 2009 en tant qu’événement parallèle officiel de la Biennale de Venise. Cette édition, organisée par Berengo, Joanna De Vos et Umberto Croppi, invite 65 artistes et designers internationaux à collaborer avec les maîtres verriers du Berengo Studio. Plus d’une vingtaine d’entre eux font leurs débuts à Glasstress, et nombreux sont ceux qui travaillent le verre pour la première fois."
+            },
+            {
+              "type": "text",
+              "content": "Cette liste ressemble davantage à un panorama de l&#x27;art contemporain qu&#x27;à celui de l&#x27;artisanat : Ai Weiwei, Judy Chicago, Tony Cragg, Jaume Plensa, Thomas Schütte, Chiharu Shiota, Cornelia Parker, Erwin Wurm, Jan Fabre, Paul McCarthy, Yue Minjun, Wael Shawky, Sean Scully, Karen LaMonte et des dizaines d’autres. C’est justement là l’intérêt. Les organisateurs décrivent le verre comme un langage artistique autonome, et comme un « hypertexte matériel » dans lequel le sens provient de la construction technique, du geste de l’artiste et du contexte de production. En d’autres termes, l’artiste apporte l’idée ; le maître de Murano apporte le savoir accumulé au fil d’une vie sur ce qu’un four peut et ne peut pas faire."
+            },
+            {
+              "type": "image",
+              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Jaume-Plensa-Blake-in-Venice-1024x683.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Jaume Plensa, « Blake » à Venise, issu d&#x27;un précédent projet Glasstress. Plensa fait partie des artistes participant à Glasstress 2026. Image reproduite avec l&#x27;aimable autorisation de la Fondazione Berengo.",
+              "alt": "De hautes fenêtres de style gothique donnant sur le Grand Canal, ornées de guirlandes de lettres en verre doré à travers lesquelles on aperçoit une façade de l&#x27;autre côté du canal."
+            },
+            {
+              "type": "text",
+              "content": "L’œuvre « Blake » de Plensa à Venise, issue d’un précédent projet « Glasstress », illustre parfaitement pourquoi cette association fonctionne. Un rideau de lettres en verre est suspendu dans une fenêtre gothique de la Ca’ Tron, et le Grand Canal, en arrière-plan, fait partie intégrante du texte. Rien de tout cela n’aurait pu être réalisé en pierre ou en bronze : l’œuvre n’existe que parce que le verre laisse passer la vue tout en maintenant les mots en place. « Reclining Nocturne » de Karen LaMonte, issue du même programme, exploite la propriété inverse. Une robe vide, moulée dans le verre, devient lourde, froide et presque liquide – le vêtement se transforme en monument."
+            },
+            {
+              "type": "image",
+              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Karen-LaMonte-Reclining-Nocturne-1-1024x683.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Karen LaMonte, *Reclining Nocturne*, réalisée en collaboration avec le Studio Berengo dans le cadre d&#x27;un précédent projet Glasstress. LaMonte fait partie des artistes associés à ce projet. Image reproduite avec l&#x27;aimable autorisation de la Fondazione Berengo.",
+              "alt": "Une sculpture en verre moulé représentant une robe de soirée vide, posée sur un socle blanc, réalisée en verre translucide bleu-gris fumé et présentant de profonds plis à l’ourlet."
+            },
+            {
+              "type": "header",
+              "content": "IV · Quel verre que rien d’autre ne peut égaler",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Placez les trois côte à côte et un motif apparaît. Chez Corning, l’artisan est une personne seule à son établi, et le verre est le témoignage d’un corps et d’une décision. À Venise, l’artisan est un atelier, et le verre est un langage commun entre le design et l’artisanat. Chez Glasstress, l’artisan est un duo – un artiste et un maestro – et le verre est un lieu de rencontre entre deux types de savoir. Dans chaque cas, l’objet porte les traces de sa fabrication, car le verre ne peut cacher son histoire : une bulle, une jointure, une trace de couleur, une ligne là où deux coulées se sont rencontrées."
+            },
+            {
+              "type": "text",
+              "content": "Il transporte également la lumière. Un tableau la reflète et un bronze l’absorbe ; le verre la transmet, la réfracte et la projette ailleurs dans la pièce. C’est pourquoi les photographies de verre exposées dans une galerie sont toujours légèrement trompeuses, et pourquoi les meilleures de ces expositions ne prennent tout leur sens que sur place : grâce aux vases qui brillent de l’intérieur de leurs niches, à un rideau de lettres projetant des ombres sur un canal, à un champ de gouttes transparentes disposées sur une terrasse. C’est un art qui repose autant sur les conditions que sur les objets."
+            },
+            {
+              "type": "text",
+              "content": "Et c’est un art qui n’est pris au sérieux que depuis moins longtemps qu’il ne le mérite. Le mouvement du verre d’atelier n’a qu’une soixantaine d’années ; les musées qui l’exposent en 2026 sont encore en train de corriger leur propre histoire, comme le fait ouvertement « Tough Stuff ». Si ces expositions partagent une ambition, c’est bien celle de cesser de considérer le verre comme un cas particulier d’autre chose – artisanat, design, décoration – et de le traiter pour ce qu’il est clairement : un médium doté de ses propres lois physiques, de sa propre autorité créatrice et de sa propre manière de rendre une chose visible en laissant tout le reste transparaître."
+            },
+            {
+              "type": "header",
+              "content": "Regardez ça",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;exposition « Tough Stuff : Women in the American Glass Studio » se tient au Musée du Verre de Corning, à Corning (New York), jusqu&#x27;au 10 janvier 2027. Les expositions « 1948–1958 : Le verre de Murano et la Biennale de Venise » à Le Stanze del Vetro, sur l’île de San Giorgio Maggiore, et « Glasstress 2026 » à Ca’ Tron et à Murano se tiennent toutes deux jusqu’au 22 novembre 2026 ; il reste donc environ quatre semaines pour les découvrir. Plus loin, le Museum of Glass de Tacoma rouvrira ses galeries le 12 décembre 2026 avec l’exposition « Lino Tagliapietra : Maestro ». Les dates et horaires d’ouverture sont susceptibles de changer ; veuillez vérifier les informations auprès de chaque lieu avant de vous y rendre."
+            },
+            {
+              "type": "note",
+              "content": "Cet article s&#x27;appuie sur les pages consacrées à l&#x27;exposition et les dossiers de presse du Corning Museum of Glass, de Le Stanze del Vetro (Fondazione Giorgio Cini), de la Fondazione Berengo / Glasstress et du Museum of Glass de Tacoma, ainsi que sur les articles consacrés à « Tough Stuff » par Hyperallergic et à l&#x27;exposition vénitienne par Finestre sull’Arte. Les interprétations exprimées ici sont celles de l’auteur. Les images sont présentées avec mention des institutions qui les ont fournies."
+            },
+            {
+              "type": "link",
+              "content": "« Tough Stuff : Les femmes dans les ateliers de verre américains » — Musée du verre de Corning",
+              "url": "https://whatson.cmog.org/exhibitions-galleries"
+            },
+            {
+              "type": "link",
+              "content": "1948–1958 Le verre de Murano et la Biennale de Venise — Le Stanze del Vetro",
+              "url": "https://lestanzedelvetro.org/en/exhibition/1948-1958-murano-glass-and-the-venice-biennale/"
+            },
+            {
+              "type": "link",
+              "content": "Glasstress 2026 — Fondation Berengo",
+              "url": "https://glasstress.org/"
+            },
+            {
+              "type": "link",
+              "content": "Musée du verre de Tacoma — Expositions",
+              "url": "https://www.museumofglass.org/exhibitions"
+            }
+          ],
+          "publishAt": "2026-10-26T02:00:00.000Z",
+          "publishedAt": "2026-10-26T02:00:00.000Z",
+          "updatedAt": "2026-10-25T19:05:54.084Z"
         }
       ],
       "reviews": [
