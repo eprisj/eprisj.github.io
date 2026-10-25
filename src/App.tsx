@@ -4622,6 +4622,11 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
         </div>
         <div className="mt-16 sm:mt-20 pt-6 border-t border-white/15 flex flex-col sm:flex-row gap-2 sm:justify-between font-mono text-[11.5px] uppercase tracking-[0.18em] text-white/65">
           <p>© 2026 {publicationName} · {rights}</p>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-5 gap-y-1">
+            {[['privacy', 'Privacy'], ['terms', 'Terms'], ['passport-terms', 'Passport'], ['cookies', 'Cookies'], ['copyright', 'Copyright'], ['editorial-policy', 'Editorial policy'], ['accessibility', 'Accessibility'], ['legal-notice', 'Legal'], ['support', 'Support']].map(([slug, label]) => (
+              <a key={slug} href={`/${slug}/`} className="hover:text-white transition-colors">{label}</a>
+            ))}
+          </nav>
           <p>Milano · Italia</p>
         </div>
       </div>
@@ -5220,7 +5225,7 @@ export default function App() {
           publicationName={publicationName}
           rights={t('footer.rights')}
           instagramUrl={instagramUrl ?? undefined}
-          contactEmail={contactEmail}
+          contactEmail={contactEmail || 'eprisjournal@outlook.com'}
           links={[['articles', t('nav.articles')], ['reviews', t('nav.reviews')], ['issue', t('nav.issue')], ['about', t('nav.about')], ['museum', 'Museum']]}
           onNavigate={handleSetTab}
         />}

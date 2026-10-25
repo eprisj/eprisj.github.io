@@ -744,7 +744,7 @@ console.log('Generated: /search');
 // Hand-written pages served straight from public/ – the React router never
 // sees them, so ROUTES can't list them. /support/ and /privacy/ are the
 // App Store listing's support and privacy URLs.
-const STATIC_PAGES = ['app', 'support', 'privacy', 'terms'];
+const STATIC_PAGES = ['app', 'support', 'privacy', 'terms', 'passport-terms', 'cookies', 'copyright', 'editorial-policy', 'submissions', 'accessibility', 'legal-notice'];
 const sitemapRoutes = ['', ...Object.keys(ROUTES).filter((route) => !ALIAS_ROUTES[route] && !HIDDEN_PUBLIC_ROUTES.has(route))];
 const sitemapEntries = [
   // Слеш у кінці обов'язковий: сервер віддає сторінку саме так, а адреса
