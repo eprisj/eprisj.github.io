@@ -20843,7 +20843,7 @@
         "exhibitions 2026"
       ],
       "imageSeed": "",
-      "imageUrl": "https://www.wmoda.com/wp-content/uploads/2026/06/Blue-and-Green-Tower-Photo-Nathaniel-Wilson.jpg",
+      "imageUrl": "https://www.wmoda.com/wp-content/uploads/2026/06/Chihuly-Over-Venice-1996.jpg",
       "previewToken": "b19e9cc8aeb90893f7d5f6c5",
       "content": [
         {
@@ -20856,11 +20856,11 @@
         },
         {
           "type": "image",
-          "content": "https://www.wmoda.com/wp-content/uploads/2026/06/Blue-and-Green-Tower-Photo-Nathaniel-Wilson.jpg",
+          "content": "https://www.wmoda.com/wp-content/uploads/2026/06/Chihuly-Over-Venice-1996.jpg",
           "align": "center",
           "width": 100,
-          "caption": "Dale Chihuly, Blue and Green Tower, 2025, 26½ × 10 × 10 ft (810 × 312 × 305 cm). Palazzo Balbi Valier, Venice, installed 2026. © 2025 Chihuly Studio. Photograph by Nathaniel Willson.",
-          "alt": "A tall blue and green blown glass tower glowing at dusk in a Venetian garden below a palazzo with a loggia."
+          "caption": "Chihuly Over Venice, 1996: an orange glass chandelier hung under the arches above a canal. © 1996 Chihuly Studio.",
+          "alt": "A spiky orange glass chandelier suspended from black poles under a dark arcade, with pink palaces seen across the canal through the arches."
         },
         {
           "type": "header",
@@ -20892,6 +20892,14 @@
           "alt": "A multicoloured blown glass chandelier in red, yellow, blue and green, hung from a steel frame above a pink Venetian balcony against a blue sky."
         },
         {
+          "type": "image",
+          "content": "https://www.wmoda.com/wp-content/uploads/2026/06/Blue-and-Green-Tower-Photo-Nathaniel-Wilson.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Dale Chihuly, Blue and Green Tower, 2025, 26½ × 10 × 10 ft (810 × 312 × 305 cm). Palazzo Balbi Valier, Venice, installed 2026. © 2025 Chihuly Studio. Photograph by Nathaniel Willson.",
+          "alt": "A tall blue and green blown glass tower glowing at dusk in a Venetian garden below a palazzo with a loggia."
+        },
+        {
           "type": "text",
           "content": "It is easy to be cynical about Chihuly. He is the most commercially successful glass artist alive, his chandeliers hang in casinos and in the Victoria and Albert Museum’s entrance hall, and critics have long suspected that so much colour must be a way of avoiding thought. But the Venice show comes with a small, serious argument that is hard to dismiss: that what looks like spectacle is really a method."
         },
@@ -20910,14 +20918,6 @@
           "width": 100,
           "caption": "Chihuly Over Venice, 1996: a chandelier made in Finland at the Squero di San Trovaso gondola yard. © 1996 Chihuly Studio.",
           "alt": "An orange glass chandelier standing on wooden posts in the water in front of a gondola repair yard with green gondolas and red geraniums."
-        },
-        {
-          "type": "image",
-          "content": "https://www.wmoda.com/wp-content/uploads/2026/06/Chihuly-Over-Venice-1996.jpg",
-          "align": "center",
-          "width": 100,
-          "caption": "Chihuly Over Venice, 1996: an orange glass chandelier hung under the arches above a canal. © 1996 Chihuly Studio.",
-          "alt": "A spiky orange glass chandelier suspended from black poles under a dark arcade, with pink palaces seen across the canal through the arches."
         },
         {
           "type": "image",
@@ -21172,7 +21172,7 @@
       ],
       "publishAt": "2026-10-26T02:00:00.000Z",
       "publishedAt": "2026-10-26T02:00:00.000Z",
-      "updatedAt": "2026-10-25T19:11:48.440Z"
+      "updatedAt": "2026-10-25T19:11:57.775Z"
     }
   ],
   "reviews": [
