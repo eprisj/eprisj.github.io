@@ -50,33 +50,35 @@ const KOFI_URL = 'https://ko-fi.com/epris';
 const PATREON_URL = 'https://www.patreon.com/epris';
 
 
-/* Фирменные знаки сервисов: узнаваемость важнее иконки-символа. Простые
-   одноцветные контуры, цвет задаёт сам сервис (Patreon – коралловый,
-   Ko-fi – голубой, PayPal – тёмно-синий), поэтому на белой плашке они
-   читаются как логотип, а не как украшение. */
+/* ЗНАКИ СЕРВИСОВ В НАШЕМ СТИЛЕ. Чужие цветные логотипы на белых плашках
+   ломали строгую чёрно-золотую гамму журнала и спорили друг с другом за
+   внимание. Поэтому здесь три собственных одноцветных знака одного рисунка
+   (линия 1.6, скруглённые концы, currentColor): круг и вертикаль для Patreon,
+   чашка с сердцем для Ko-fi, двойная «P» для PayPal. Цвет им задаёт блок,
+   а не сервис – так они выглядят набором, а не россыпью чужих брендов. */
 function PatreonMark({ size = 24 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <circle cx="14.6" cy="9.4" r="6.6" fill="#FF424D" />
-      <rect x="2" y="2.8" width="4.2" height="19" rx="0.6" fill="#052D49" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <circle cx="14.8" cy="9.6" r="6.4" />
+      <rect x="2.6" y="3.2" width="3.6" height="17.6" rx="1.2" />
     </svg>
   );
 }
 function KofiMark({ size = 24 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M2 6.6h14.4v8.2c0 2.6-2.1 4.7-4.7 4.7H6.7C4.1 19.5 2 17.4 2 14.8Z" fill="#29ABE0" />
-      <path d="M16.4 8.4h1.7a2.9 2.9 0 0 1 0 5.8h-1.7" fill="none" stroke="#29ABE0" strokeWidth="1.9" strokeLinecap="round" />
-      <path d="M9.2 16.1c-2.3-1.5-3.3-2.4-3.3-3.7a1.9 1.9 0 0 1 3.3-1.2 1.9 1.9 0 0 1 3.3 1.2c0 1.3-1 2.2-3.3 3.7Z" fill="#fff" />
-      <path d="M5 21.2h8.8" stroke="#29ABE0" strokeWidth="1.4" strokeLinecap="round" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <path d="M3.2 7.4h13.2v7.2a4.4 4.4 0 0 1-4.4 4.4H7.6a4.4 4.4 0 0 1-4.4-4.4Z" />
+      <path d="M16.4 9h1.5a2.6 2.6 0 0 1 0 5.2h-1.5" />
+      <path d="M9.8 15.4c-2-1.3-2.9-2.1-2.9-3.2a1.55 1.55 0 0 1 2.9-.75 1.55 1.55 0 0 1 2.9.75c0 1.1-.9 1.9-2.9 3.2Z" fill="currentColor" stroke="none" />
+      <path d="M3.2 21.4h13.2" />
     </svg>
   );
 }
 function PayPalMark({ size = 18 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M7.4 2.6h6.3c3 0 5 1.6 4.5 4.4-.5 3-2.8 4.5-5.7 4.5H9.6l-1 5.8H4.8Z" fill="#003087" />
-      <path d="M9.8 6.4h5.6c2.5 0 4 1.3 3.5 3.9-.5 2.9-2.7 4.4-5.5 4.4h-2l-.9 5.4H6.9Z" fill="#009CDE" opacity="0.92" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.2 21 8.4 4.4h5.6a3.9 3.9 0 0 1 0 7.8H10.7" />
+      <path d="M9.6 21l.8-5.4h3.6a3.9 3.9 0 0 0 3.8-3.4" opacity="0.55" />
     </svg>
   );
 }
@@ -146,14 +148,14 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
         rel="noopener noreferrer"
         className="group mt-4 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.15)]" aria-hidden="true">
-          <PatreonMark size={28} />
+        <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.55)] bg-[rgb(var(--c-gold-rgb)_/_0.1)] text-[var(--c-gold)] transition-colors group-hover:bg-[rgb(var(--c-gold-rgb)_/_0.2)]" aria-hidden="true">
+          <PatreonMark size={26} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.patreon}</span>
           <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.patreonSub}</span>
         </span>
-        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        <ExternalLink size={17} strokeWidth={1.8} className="shrink-0 text-white/55 transition-all group-hover:translate-x-0.5 group-hover:text-[var(--c-gold)]" aria-hidden="true" />
       </a>
       <a
         href={KOFI_URL}
@@ -161,14 +163,14 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
         rel="noopener noreferrer"
         className="group mt-2.5 flex items-center gap-3.5 rounded-2xl bg-[#111111] px-4 py-3.5 text-white transition-transform hover:-translate-y-0.5 hover:bg-black sm:gap-4 sm:px-5 sm:py-4"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.15)]" aria-hidden="true">
+        <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-[rgb(var(--c-gold-rgb)_/_0.55)] bg-[rgb(var(--c-gold-rgb)_/_0.1)] text-[var(--c-gold)] transition-colors group-hover:bg-[rgb(var(--c-gold-rgb)_/_0.2)]" aria-hidden="true">
           <KofiMark size={28} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-serif text-[18px] font-bold leading-tight tracking-[-0.01em] sm:text-[20px]">{t.kofi}</span>
           <span className="mt-0.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-white/70">{t.kofiSub}</span>
         </span>
-        <ExternalLink size={18} strokeWidth={2.2} className="shrink-0 text-white/80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        <ExternalLink size={17} strokeWidth={1.8} className="shrink-0 text-white/55 transition-all group-hover:translate-x-0.5 group-hover:text-[var(--c-gold)]" aria-hidden="true" />
       </a>
       <p className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t.other}</p>
       {/* Реквизиты читаются прямо на странице, без наведения и без клика –
@@ -193,7 +195,7 @@ export function SupportJournal({ lang = 'EN', className = '' }: { lang?: string;
                     : 'border-[rgb(var(--c-accent-rgb)_/_0.14)] bg-[rgb(255_255_255_/_0.5)] hover:border-[var(--c-gold)]'
                 }`}
               >
-                <PayPalMark size={17} />
+                <span className="shrink-0 text-[var(--c-gold)]"><PayPalMark size={19} /></span>
                 <span className="w-[64px] shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[rgb(var(--c-accent-rgb)_/_0.55)] sm:w-[70px]">
                   {method.label}
                 </span>
