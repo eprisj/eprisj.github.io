@@ -2071,6 +2071,17 @@
                 <p class="form-hint" id="accessNote"></p>
               </div>
               <div id="accessList" class="access-list"></div>
+              <div class="card" id="accessAuth">
+                <h2 class="card-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg> Авторизации в приложении</h2>
+                <p class="card-desc">Все входы с телефонов: кто пришёл в редакторский кабинет и кто завёл паспорт читателя. Права доступа выдаются в списке выше: заявку принимаете вы, и человеку приходит пуш.</p>
+                <div class="auth-summary" id="authSummary"></div>
+                <div class="studio-toolbar auth-tabs" role="tablist">
+                  <button class="btn btn-sm is-active" type="button" data-auth-view="log">Последние входы</button>
+                  <button class="btn btn-sm" type="button" data-auth-view="readers">Читатели</button>
+                  <button class="btn btn-sm" type="button" id="authRefreshBtn">Обновить</button>
+                </div>
+                <div id="authBody" class="auth-body"></div>
+              </div>
             </div>
           </section>
 
@@ -2679,7 +2690,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
     <script src="../brandbook/data.js?v=1.0"></script><script src="../brandbook/data-en.js?v=1.0"></script>
-    <script src="./app.js?v=6.72" type="module"></script>
+    <script src="./app.js?v=6.73" type="module"></script>
     <script src="./brandbook-editor.js?v=2.0" type="module"></script>
     <script>
       // Tab switching + page title update

@@ -11168,3 +11168,19 @@ textarea { min-height: 112px; }
 @media (max-width: 700px) {
   .access-card .access-role { width: 100%; }
 }
+
+/* ── App access: authorizations ── */
+.auth-summary{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.auth-pill{display:flex;flex-direction:column;min-width:96px;padding:10px 14px;border:1px solid var(--border,rgba(128,128,128,.25));border-radius:10px}
+.auth-pill b{font-size:22px;line-height:1.1}
+.auth-pill span{font-size:12px;opacity:.7}
+.auth-tabs .btn.is-active{background:var(--accent,#8a6652);color:#fff}
+.auth-table{display:flex;flex-direction:column}
+.auth-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr) auto;gap:14px;align-items:center;padding:11px 0;border-top:1px solid var(--border,rgba(128,128,128,.2))}
+.auth-who{display:flex;flex-direction:column;min-width:0}
+.auth-who b,.auth-who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-who span,.auth-meta,.auth-when{font-size:12.5px;opacity:.75}
+.auth-when{white-space:nowrap}
+.auth-tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11.5px;border:1px solid currentColor}
+.auth-tag.ok{color:#2e7d4f}.auth-tag.wait{color:#b7791f}.auth-tag.bad{color:#b3261e}
+@media (max-width:720px){.auth-row{grid-template-columns:1fr}.auth-when{white-space:normal}}

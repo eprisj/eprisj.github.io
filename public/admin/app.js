@@ -16698,7 +16698,64 @@ function bindStudioMediaActions() {
     document.getElementById('accessRefreshBtn')?.addEventListener('click', () => load());
   }
 
-  function renderAccessTab() { bind(); return load(); }
+  // ── Authorizations: every sign-in through the apps, and the readers behind the passports ──
+  let auth = { events: [], readers: [], totals: null, view: 'log' };
+  const OUTCOME = {
+    new: ['Новый вход', 'ok'], returning: ['Вход', ''], pending: ['Ждёт одобрения', 'wait'], disabled: ['Доступ отключён', 'bad'],
+  };
+
+  function renderAuth() {
+    const sum = document.getElementById('authSummary');
+    const body = document.getElementById('authBody');
+    if (!sum || !body) return;
+    const t = auth.totals;
+    const pending = state.editors.filter((a) => a.status === 'pending').length;
+    const active = state.editors.filter((a) => a.status === 'active').length;
+    const pill = (n, label) => `<div class="auth-pill"><b>${n}</b><span>${label}</span></div>`;
+    sum.innerHTML = [
+      pill(active, 'редакторов'), pill(pending, 'ждут одобрения'),
+      t ? pill(t.readers, 'читателей') : '', t ? pill(t.withPassport, 'с паспортом') : '', t ? pill(t.active7d, 'за неделю') : '',
+    ].join('');
+    document.querySelectorAll('[data-auth-view]').forEach((b) => b.classList.toggle('is-active', b.dataset.authView === auth.view));
+    if (auth.view === 'readers') {
+      body.innerHTML = auth.readers.length ? `<div class="auth-table">${auth.readers.map((r) => `
+        <div class="auth-row">
+          <div class="auth-who"><b>${esc(r.name || '(без имени)')}</b><span>${esc(r.email || 'email скрыт')}</span></div>
+          <div class="auth-meta">${esc(r.level)}${r.percent ? ' −' + r.percent + '%' : ''} · штампов ${r.stamps} · прочитано ${r.read}${r.hasPassport ? ' · паспорт' : ''}</div>
+          <div class="auth-when">${esc(when(r.lastSeenAt))}</div>
+        </div>`).join('')}</div>` : '<p class="form-hint">Читателей пока нет.</p>';
+      return;
+    }
+    body.innerHTML = auth.events.length ? `<div class="auth-table">${auth.events.map((e) => {
+      const [label, tone] = OUTCOME[e.outcome] || [e.outcome, ''];
+      return `
+        <div class="auth-row">
+          <div class="auth-who"><b>${esc(e.name || '(без имени)')}</b><span>${esc(e.email || 'email скрыт')}</span></div>
+          <div class="auth-meta"><span class="auth-tag ${tone}">${esc(label)}</span> ${e.kind === 'editor' ? 'кабинет редактора' : 'паспорт читателя'} · iPhone · ${esc(PROVIDER_LABEL[e.provider] || e.provider)}</div>
+          <div class="auth-when">${esc(when(e.at))}</div>
+        </div>`;
+    }).join('')}</div>` : '<p class="form-hint">Входов пока не было.</p>';
+  }
+
+  async function loadAuth() {
+    try {
+      const [log, rd] = await Promise.all([api('GET', '/auth-log'), api('GET', '/readers')]);
+      auth = { ...auth, events: log.events || [], readers: rd.readers || [], totals: rd.totals || null };
+    } catch (e) {
+      const body = document.getElementById('authBody');
+      if (body) body.innerHTML = `<p class="form-hint">Не удалось загрузить: ${esc(e.message)}</p>`;
+      return;
+    }
+    renderAuth();
+  }
+
+  document.addEventListener('click', (event) => {
+    const v = event.target.closest('[data-auth-view]');
+    if (v) { auth.view = v.dataset.authView; renderAuth(); }
+    if (event.target.closest('#authRefreshBtn')) loadAuth();
+  });
+
+  function renderAccessTab() { bind(); loadAuth(); return load(); }
   window._renderAppAccessTab = renderAccessTab;
 
   // The sidebar badge counts waiting requests, so a chief editor sees them
