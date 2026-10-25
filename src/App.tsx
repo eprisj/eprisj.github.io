@@ -2921,7 +2921,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                              images specifically - flagged directly as
                              uneven rhythm between text and photos. */
                           : 'my-6 sm:my-8 -mx-4 sm:mx-0';
-                  const figureStyle = widthPct && align !== 'full' && !stretched ? { width: `${widthPct}%`, maxWidth: '100%' } : undefined;
+                  /* Узкая центрированная картинка (width < 100) раньше прилипала к левому
+                     краю: у блока была ширина в процентах, но не было автоотступов. */
+                  const figureStyle = widthPct && align !== 'full' && !stretched
+                    ? { width: `${widthPct}%`, maxWidth: '100%', ...(align === 'center' ? { marginLeft: 'auto', marginRight: 'auto' } : {}) }
+                    : undefined;
                   /* Гифка, вставленная картинкой (старые материалы и просто
                      вставленная ссылка), остаётся картинкой – иначе она
                      перестала бы двигаться. Но грузить её вперёд текста
