@@ -80222,50 +80222,253 @@
         {
           "id": 75,
           "draft": false,
-          "title": "Ein Blick auf die Werke: Glas als Kunstform in drei Ausstellungen im Jahr 2026",
+          "title": "Das Material, durch das man hindurchblickt: Glas als Kunstform – von Chihulys Venedig bis zu Roni Horns „Cube“",
           "author": "Viacheslav Munister",
           "role": "Autor",
           "authorId": "author-1784732936927-kw554",
           "date": "26. Oktober 2026",
-          "excerpt": "Glas ist das einzige Material, das dafür geschaffen ist, dass man hindurchsehen kann. Von Cornings Untersuchung über Frauen in der amerikanischen Studio-Glas-Bewegung über die Nachkriegsöfen aus Murano auf der Biennale in Venedig bis hin zu 65 Künstlerinnen bei „Glasstress 2026“: drei Ausstellungen darüber, warum Glas eine ganz eigene Sprache ist.",
+          "excerpt": "Chihulys Türme am Grand Canal, Roni Horns Würfel, der sich für Wasser hält, 65 Künstler bei „Glasstress“ und die Frauen, die Corning wieder in die Glaskunst einbezieht: vier Ausstellungen im Jahr 2026 darüber, was aus Glas wird, wenn es aufhört, ein Fenster zu sein.",
           "category": "Art",
           "subcategory": "Funktion",
           "tags": [
             "Glaskunst",
-            "Kunstglas",
-            "Corning Glasmuseum",
-            "Murano",
+            "Dale Chihuly",
+            "Roni Horn",
             "Glasstress",
-            "Die Glasräume",
+            "Murano",
+            "Corning Glasmuseum",
             "Venedig",
             "zeitgenössische Kunst",
             "Skulptur",
             "Ausstellungen 2026"
           ],
           "imageSeed": "",
-          "imageUrl": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
           "previewToken": "b19e9cc8aeb90893f7d5f6c5",
           "content": [
             {
               "type": "text",
-              "content": "Jedes andere Medium fordert den Betrachter auf, es anzuschauen. Glas fordert den Betrachter auf, hindurchzuschauen. Ein Fenster, eine Flasche, eine Linse, ein Bildschirm: Während des größten Teils der Menschheitsgeschichte war Glas das Material, das verschwindet, damit etwas anderes sichtbar wird. Genau das macht es als Kunstmaterial so ungewöhnlich. Um Glas zum Thema zu machen, muss ein Künstler das Unsichtbare wieder sichtbar machen – und zwar mit einem Material, das flüssig ist, bis es es nicht mehr ist, das sich an jede Sekunde der Hitze erinnert, in der es geformt wurde, und das in den Händen desjenigen zerbrechen kann, der es geschaffen hat."
+              "content": "Jedes andere Medium fordert den Betrachter auf, es anzuschauen. Glas fordert den Betrachter auf, hindurchzuschauen. Ein Fenster, eine Flasche, eine Linse, ein Bildschirm: In den meisten Epochen der Menschheitsgeschichte war Glas das Material, das verschwindet, damit etwas anderes sichtbar wird. Genau das macht es als Kunstmaterial so ungewöhnlich. Um Glas zum Thema zu machen, muss ein Künstler das unsichtbare Objekt wieder sichtbar machen – und das mit einem Material, das flüssig ist, bis es es nicht mehr ist, das sich an jede Sekunde der Hitze erinnert, in der es geformt wurde, und das in den Händen desjenigen zerbrechen kann, der es geschaffen hat."
             },
             {
               "type": "text",
-              "content": "Drei Ausstellungen, die 2026 eröffnet werden, beleuchten dieses Thema aus drei verschiedenen Blickwinkeln: eine Übersichtsausstellung im Hinterland von New York, die die Geschichte des amerikanischen Studioglases neu schreibt, eine Ausstellung in Venedig über die Nachkriegsöfen von Murano und ein Projekt im Biennale-Format, bei dem 65 Künstler – von denen viele noch keine Erfahrung mit diesem Material haben – damit arbeiten. Zusammengenommen ergeben sie eine kurze Auseinandersetzung mit der Frage, was Glas ist, wenn es aufhört, ein Fenster zu sein."
+              "content": "In diesem Jahr wird das Thema an vier Orten gleichzeitig aufgegriffen. Am Canal Grande in Venedig hat Dale Chihuly drei Türme und einen Kronleuchter aus geblasenem Glas in den Gärten von Palästen aufgestellt – dreißig Jahre, nachdem er vierzehn Kronleuchter über den Kanälen der Stadt aufgehängt hatte. In London zeigte Roni Horn den Sommer über einen einzigen Würfel aus gegossenem Glas, der sich wie ein Block stillstehenden Wassers verhält. Nur wenige hundert Meter über die Lagune hinweg arbeiten 65 Künstler, von denen die meisten keine Glasbläser sind, gemeinsam mit den Meisterglasbläsern von Murano an „Glasstress“. Und im Bundesstaat New York schreibt das Corning Museum of Glass die Geschichte der amerikanischen Studio-Glas-Bewegung aus der Perspektive der Frauen neu, die dabei vergessen wurden. Nehmen wir sie nebeneinander betrachtet, sind sie vier Antworten auf eine Frage: Was ist Glas, wenn es aufhört, ein Fenster zu sein?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jbrtckar04.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Chihuly Over Venice“, 1996: Ein orangefarbener Glasleuchter, der unter den Bögen über einem Kanal hing. © 1996 Chihuly Studio.",
+              "alt": "Ein stacheliger, orangefarbener Glasleuchter, der an schwarzen Stangen unter einer dunklen Arkade hängt, während durch die Bögen hindurch rosa Paläste auf der anderen Seite des Kanals zu sehen sind."
             },
             {
               "type": "header",
-              "content": "I · Die Hand und die Fackel: „Tough Stuff“ bei Corning",
+              "content": "I · Chihuly kehrt nach Venedig zurück: Die Kunst des unmöglichen Kronleuchters",
               "level": 2
             },
             {
               "type": "text",
-              "content": "Das Corning Museum of Glass eröffnete am 16. Mai 2026 im Rahmen seines 75-jährigen Jubiläums die Ausstellung „Tough Stuff: Women in the American Glass Studio“, die bis zum 10. Januar 2027 zu sehen ist. Sie gilt als erste umfassende Übersicht über das Werk von Glaskünstlerinnen der 1960er und 1970er Jahre, den Durchbruchsjahren der amerikanischen Studio-Glas-Bewegung – dem Moment, als Glas die Fabrik verließ und Einzug in die eigenen Werkstätten der Künstler hielt. Mehr als 200 Objekte stammen aus der Sammlung des Museums, seiner Rakow Research Library sowie aus Leihgaben der Künstlerinnen selbst; einige davon wurden noch nie öffentlich ausgestellt."
+              "content": "Beginnen wir mit der auffälligsten Antwort. „CHIHULY: Venice 2026“ wurde am 5. Mai eröffnet und läuft bis zum 14. November, zeitgleich mit der Biennale von Venedig und der Venice Glass Week. Das Herzstück der Ausstellung ist „Gold Tower“ (2025): 31 Fuß geblasenes Glas, fast zehn Meter, ragen aus dem Rasen des Palazzo Franchetti empor – eine Säule aus Hunderten von gewundenen Ranken, deren Farbtöne von durchscheinendem Honig bis zu tiefem Bernstein reichen. Von der Accademia-Brücke aus kann man ihn – und die beiden anderen neuen Werke, die die Ausstellung vervollständigen – über das Wasser hinweg sehen."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/05/CMoG_Image_5.png",
+              "content": "https://cdn.galeriemagazine.com/wp-content/uploads/2026/05/01.-22Gold-Tower22-Dale-Chihuly-2025-Horizontal.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, „Gold Tower“, 2025, 31 × 10½ × 10½ ft (953 × 323 × 318 cm). Palazzo Franchetti, Venedig, aufgestellt 2026. © 2025 Chihuly Studio. Foto: Nathaniel Willson.",
+              "alt": "Eine hohe Säule aus bernsteinfarbenen und gelben, geblasenen Glasranken, die auf einer Rasenfläche im Schlossgarten neben einer venezianischen Fassade steht."
+            },
+            {
+              "type": "text",
+              "content": "Die beiden anderen Werke sind „Blue and Green Tower“ (2025), 26½ Fuß hoch, die in einem privaten Garten am Palazzo Balbi Valier aufgestellt wurden, sowie „End of the Day Chandelier“ (2025), ein 16 Fuß großes Ensemble im Palazzo Querini alla Carità, das aus den Reststücken gefertigt wurde, die am Ende eines Arbeitstages in der Glasbläserei übrig geblieben waren. Alle drei wurden in Chihulys Atelier in Seattle geblasen, dort in Originalgröße aufgebaut, anschließend in vier 40-Fuß-Frachtcontainer verpackt und über den Atlantik verschifft. In Venedig wurden sie Abschnitt für Abschnitt auf Stahlgerüsten zusammengesetzt: Glasformen, die von Hand auf Stifte aufgesteckt wurden – ein Journalist, der die Installation beobachtete, verglich sie mit einem kolossalen Blumenarrangement. Es gibt keine Anleitung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jddu9nm20d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, Kronleuchter „End of the Day“, 2025, 16 × 8 × 8 ft (483 × 234 × 234 cm). Palazzo Querini alla Carità, Venedig, installiert 2026. © 2025 Chihuly Studio. Foto: Nathaniel Willson.",
+              "alt": "Ein bunter Kronleuchter aus geblasenem Glas in Rot, Gelb, Blau und Grün hing an einem Stahlgestell über einem rosa venezianischen Balkon vor dem Hintergrund eines blauen Himmels."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jehknlwio8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, „Blue and Green Tower“, 2025, 26½ × 10 × 10 ft (810 × 312 × 305 cm). Palazzo Balbi Valier, Venedig, aufgestellt 2026. © 2025 Chihuly Studio. Foto: Nathaniel Willson.",
+              "alt": "Ein hoher Turm aus blau-grünem mundgeblasenem Glas, der in der Abenddämmerung in einem venezianischen Garten unterhalb eines Palazzos mit Loggia leuchtet."
+            },
+            {
+              "type": "text",
+              "content": "Es ist leicht, Chihuly mit Zynismus zu begegnen. Er ist der kommerziell erfolgreichste lebende Glaskünstler, seine Kronleuchter hängen in Casinos und in der Eingangshalle des Victoria and Albert Museums, und Kritiker vermuten schon lange, dass so viel Farbe ein Mittel sein muss, um dem Nachdenken auszuweichen. Doch die Ausstellung in Venedig liefert ein kleines, ernstzunehmendes Argument, das sich nur schwer abtun lässt: Was wie Spektakel aussieht, ist in Wirklichkeit eine Methode."
+            },
+            {
+              "type": "text",
+              "content": "Die Geschichte beginnt im Jahr 1968, als Chihuly im Rahmen eines Fulbright-Stipendiums nach Venedig reiste und ein Jahr lang in der Venini-Manufaktur auf Murano verbrachte. Was er dort sah, war keine bestimmte Technik, sondern eine Arbeitsweise: Glas, das von einem Team in einem bestimmten Rhythmus hergestellt wurde, wobei jeder die Aufgabe übernahm, die er am besten beherrschte. Diese Arbeitsweise nahm er mit nach Hause. 1971 war er Mitbegründer der Pilchuck Glass School im US-Bundesstaat Washington, und in den folgenden Jahrzehnten lud er die Murano-Meister Lino Tagliapietra und Pino Signoretto ein, dort zu unterrichten. Techniken, die zuvor in wenigen venezianischen Familien gehütet worden waren, wie die Herstellung von Kelchgläsern und die Mustergestaltung mit Glasstäben, wurden durch diesen Austausch in die amerikanische Ateliertradition integriert."
+            },
+            {
+              "type": "text",
+              "content": "1996 kehrte er mit dieser Idee an den Ursprungsort zurück. „Chihuly Over Venice“ entstand im Laufe von zwei Jahren. Chihuly arbeitete mit Glasbläsern in Finnland, Irland und Mexiko sowie anschließend in Venedig selbst zusammen, und im September 1996 installierte ein 25-köpfiges Team unter der Leitung seiner zukünftigen Ehefrau Leslie Jackson als Projektleiterin vierzehn monumentale Kronleuchter in den Kanälen und an den Ecken der Stadt. Die neue Ausstellung markiert dieses Jubiläum. Im Palazzo Loredan des Istituto Veneto hat die Kuratorin Suzanne Geiss vierhundert der Archivfotos auf Mylar über einem langen Leuchttisch aufgehängt, sodass die Besucherin das Projekt so erlebt, wie sie es damals tat: als überwältigende Menge an Dias, hinter denen die Faxe von Chihulys handgezeichneten Skizzen an die Wand geheftet sind."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jfbml1zxoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Chihuly Over Venice“, 1996: Ein Kronleuchter, der in Finnland in der Gondelwerft „Squero di San Trovaso“ gefertigt wurde. © 1996 Chihuly Studio.",
+              "alt": "Ein orangefarbener Glasleuchter, der auf Holzpfählen im Wasser vor einer Gondelwerft steht, auf der grüne Gondeln und rote Geranien zu sehen sind."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jg8ysl2h0h.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly, „Gold Tower“ (Ausschnitt), 2025. Palazzo Franchetti, Venedig, aufgestellt 2026. Im Hintergrund sind Besucher auf der Accademia-Brücke zu sehen. © 2025 Chihuly Studio. Foto: Nathaniel Willson.",
+              "alt": "Nahaufnahme von gewundenen Ranken aus bernsteinfarbenem Glas, mit Besuchern auf einer Holzbrücke und einem venezianischen Dach im Hintergrund."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jh3lkk8dku.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Dale Chihuly mit dem Kronleuchter „Palazzetto Stern“, Venedig, 1996. Foto: Russell Johnson. © 1996 Chihuly Studio.",
+              "alt": "Ein Mann in einem orangefarbenen Hemd streckt die Hand aus, um einen blauen Glasleuchter zu berühren, der vor einem venezianischen Palast an einem Stahlstativ hängt."
+            },
+            {
+              "type": "text",
+              "content": "Geiss’ Aussage aus dem Jahr 1996 ist der treffendste Satz des gesamten Programms: Es handelte sich nicht um eine einsame Atelierpraxis, sondern um eine Choreografie des Schaffens, die sich über Zeit, Menschen und Geografien hinweg erstreckte. Das ist eine präzise Beschreibung dessen, was Glas oft ausmacht. Eine einzelne Ranke im „Gold Tower“ wird von einer Person geblasen, doch der Turm benötigt Dutzende davon, und der Künstler, der ihn entworfen hat, wird die meisten Teile niemals selbst in die Hand nehmen. Chihulys eigener Beitrag besteht schon seit langem in der Anweisung – geh noch weiter, mach es größer – und dem Mut, diese Anweisung immer weiter auszudehnen. Ob man das Ergebnis nun bewegend oder einfach nur gewaltig findet – es ist eine wirklich andere Vorstellung von Urheberschaft als die des einsamen Malers an der Staffelei, und sie gehört mehr zum Glas als zu jedem anderen Medium."
+            },
+            {
+              "type": "text",
+              "content": "Wie Geiss anmerkt, gibt es zudem einen guten Grund dafür, dass es gerade in Venedig steht. Eine Stadt voller Paläste, die auf Holzpfählen in einer Lagune stehen, ist etwas Dekadentes und Zerbrechliches, und auch Glas ist etwas Dekadentes und Zerbrechliches. Ein Turm, der so aussieht, als würde ihn schon eine kräftige Windböe auseinanderwehen, und der sechs Monate lang in einem Garten am Wasser steht, ist eine Auseinandersetzung mit der Frage, was Dinge zusammenhält."
+            },
+            {
+              "type": "quote",
+              "content": "Keine einsame Arbeit im Atelier, sondern eine Choreografie des Schaffens, die sich über Zeit, Menschen und Regionen hinweg erstreckt."
+            },
+            {
+              "type": "header",
+              "content": "II · Roni Horn: Ein Glasblock, der glaubt, er sei Wasser",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Wenn Chihuly Glas in seiner opernhaftesten Form verkörpert, ist Roni Horns Werk das Gegenteil davon: Es passiert eine ganze Weile lang nichts, und dann merkt man plötzlich, dass man schon seit zehn Minuten davor steht. Im Sommer 2026 zeigte Hauser &amp; Wirth in London „Seizure of Hope“ (21. Mai bis 1. August), mehr als 45 Werke auf Papier, die über fast vier Jahrzehnte hinweg mit Wachsmalstiften gezeichnet wurden, zusammen mit einem einzigen seltenen Werk aus gegossenem Glas: „Untitled‘ (‚Was passiert mit dem Loch, wenn der Käse weg ist?‘), 2022, ein Würfel mit einer Kantenlänge von 91,4 Zentimetern bzw. drei Fuß."
+            },
+            {
+              "type": "image",
+              "content": "https://fadmagazine.com/wp-content/uploads/IMG_4238.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, Ohne Titel („Was passiert mit dem Loch, wenn der Käse weg ist?“), 2022, massives Gussglas, 91,4 × 91,4 × 91,4 cm. Ausstellungsansicht, „Seizure of Hope“, Hauser &amp; Wirth London, 2026. © Roni Horn. Foto: Mark Westall.",
+              "alt": "Ein Würfel aus Gussglas mit mattierten vertikalen Seiten und einer polierten Oberseite, in der sich die Fassade eines Backsteingebäudes spiegelt und verzerrt erscheint."
+            },
+            {
+              "type": "text",
+              "content": "Horn fertigt seit Jahren Skulpturen aus Gussglas, und das Prinzip ist denkbar einfach. Die Seiten des Würfels sind matt belassen, sodass er wie ein Eisblock oder Seeglas wirkt. Die Oberseite ist poliert und verhält sich wie Wasser: Sie nimmt die Decke, die Fenster, die Gebäude auf der anderen Straßenseite und die Gesichter der Besucher auf, krümmt sie nach innen und gibt sie leicht verzerrt zurück. Es gibt darin nichts zu betrachten. Was man sieht, ist der Raum und sich selbst, wie man darin steht. Licht und Wetter verändern das Werk stündlich, was bedeutet, dass es streng genommen nie zweimal dasselbe Objekt ist."
+            },
+            {
+              "type": "text",
+              "content": "Es ist ein physikalischer Witz über Festigkeit. Ein Glaswürfel dieser Größe wiegt mehr als ein Mensch und wurde gegossen, nicht geblasen, was bedeutet, dass er sehr lange und langsam abgekühlt ist, damit er nicht von innen her zerbricht. Und doch deutet alles an ihm auf Flüssigkeit hin. Der Titel stammt von einer Frage, die ein Kind stellen könnte, und folgt einer Logik, auf die es keine Antwort gibt: Wenn das Loch das ist, was der Käse nicht ist, was passiert dann mit ihm, wenn der Käse verschwindet? In Horns Würfel kehrt sich die Frage um. Was ist das Glas, wenn man darin nur etwas anderes sehen kann?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jjk1gcfgcx.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Roni Horn, Zeichnung aus der Serie „Seizure of Hope“, Wachsmalstift auf Papier, mit der wiederholten Zeile „I am paralyzed with hope“. Installationsansicht, Hauser &amp; Wirth London, 2026. © Roni Horn. Foto: Mark Westall.",
+              "alt": "Eine gerahmte Zeichnung an einer weißen Wand: Reihen handgeschriebener blauer Wörter auf einem warmen beigen Hintergrund, die lauten: „Ich bin gelähmt vor Hoffnung“."
+            },
+            {
+              "type": "text",
+              "content": "Die Zeichnungen im selben Raum tun dasselbe mit der Sprache. Der rote Faden, der sich durch sie zieht – „I am paralyzed with hope“ –, stammt aus einem Stand-up-Auftritt von Maria Bamford und tauchte erstmals in Horns „LOG“ (2019–2020) auf, einer Installation aus 406 Zeichnungen. Immer wieder in unterschiedlicher Handschrift geschrieben, ist es ein Satz, der niemals zur Ruhe kommt: Die Buchstaben verdichten sich, verschwimmen und hören für einen Moment auf, Wörter zu sein. Horns Arbeit mit Wasser ist das fehlende Glied in der Argumentationskette. Ihre „Library of Water“ in Stykkishólmur, Island, die sie 2007 schuf, speichert Gletscherschmelzwasser in vierundzwanzig Glassäulen, und das Glas dient dort nicht als Behälter, sondern als Linse. Es ist dieselbe Idee in einem anderen Maßstab: dass das klarste Material dasjenige ist, in dem man am meisten von dem sieht, was nicht darin ist."
+            },
+            {
+              "type": "header",
+              "content": "III · Glasstress 2026: Wenn der Künstler auf den Maestro trifft",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Chihuly brachte Venedig nach Seattle und wieder zurück; Horns Glas verlässt die Galerie nie. „Glasstress“ macht aus dieser Frage eine Institution. Die Ausstellung wurde 2009 von Adriano Berengo als Begleitveranstaltung zur Biennale von Venedig ins Leben gerufen, um zeitgenössische Künstler an die Öfen von Murano zu bringen, und die von Berengo gemeinsam mit Joanna De Vos und Umberto Croppi kuratierte Ausgabe 2026 ist bereits die neunte. Sie findet vom 12. Juli bis zum 22. November im Palazzo Ca’ Tron am Canal Grande und im Fondazione Berengo Art Space auf Murano statt und umfasst 65 Künstler und Designer, von denen mehr als zwanzig ihr Debüt bei Glasstress geben und viele zum ersten Mal mit Glas arbeiten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jks1vmavw6.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ausstellungsansicht, „Glasstress 2026“: eine Glasbläserei in Murano mit einem Haufen verspiegelter Glaskugeln, einem weißen Kopf und hängenden Glaskronleuchtern. Bild: Exibart.",
+              "alt": "Eine lange Industriehalle aus Backstein mit hohen Fenstern, ein Haufen silberner, verspiegelter Glaskugeln auf einem Betonboden, ein weißer, skulpturaler Kopf und in der Ferne hängende Glaskronleuchter."
+            },
+            {
+              "type": "text",
+              "content": "Am besten betrachtet man es als ein Experiment, bei dem untersucht wird, was passiert, wenn die Idee und die handwerkliche Umsetzung von verschiedenen Personen stammen. Manche Künstler überlassen die Ausführung vollständig den Handwerkern aus Murano; andere greifen selbst zur Glasbläserpfeife. Die italienischen Kritiker, die über die Eröffnung berichteten, konnten in der Ausstellung keine einheitliche Ästhetik feststellen, und zu den interessantesten Momenten zählen jene, in denen der Künstler bewusst gegen die Erwartungen an das Glas arbeitet."
+            },
+            {
+              "type": "text",
+              "content": "Im Erdgeschoss der Ca’ Tron verzerren die anthropomorphen Spiegel von Gelitin den Raum und reflektieren die Werke um sie herum, sodass der gesamte Raum sich zu krümmen scheint. Monira Al Qadiris „Ghost of the Future“ besteht aus dunklem, kompaktem Glas, das fast geologisch anmutet: ein Material, das für seine Transparenz bekannt ist und hier dazu verwendet wird, etwas zu schaffen, das wie ein Relikt aus einer bereits vergangenen Zukunft wirkt. Fariba Ferdosis „X-Ray-Me (Myself)“ nutzt Transparenz auf andere Weise, als Schwelle, durch die man den Körper als Ort der Erinnerung und Verletzlichkeit betrachten kann. Erwin Wurms vielfarbige Arbeiten lösen die Verbindung zwischen Glas und Klarheit gänzlich auf und verleihen dem Material eine Farbintensität, die ein Kritiker als unerwartet bezeichnete. Zheng Chongbin rückt Glas in Richtung Malerei, mit dünnen Farbschichten, die an die langsame Zeit der östlichen Tuschemalerei erinnern; Tony Cragg verwandelt Glas in eine dichte Masse mit eigenen inneren Spannungen; Vanessa Beecroft schafft ein unvollendetes anatomisches Fragment in zartem Rosa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jmdcdrlp10.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Erwin Wurm, Glasskulptur, ausgestellt auf der Glasstress 2026. Bild: Metropolitano.it.",
+              "alt": "Eine milchig-rosa Glasform in Form einer Bohne auf zwei dünnen rosa Beinen, die auf einem weißen Sockel vor einem blassen Hintergrund steht."
+            },
+            {
+              "type": "text",
+              "content": "Auf Murano, im Ofenraum, zeigt Martin Janeckys „Dialog“ Figuren, die aus dem Inneren des Glases hervorzutreten scheinen, als befänden sie sich in einem Zustand ständiger Entstehung – genau das, was in einem Ofen geschieht: eine Form, die aus einer geschmolzenen Masse entsteht. Judy Chicago steuert „Glass Goddess“ bei; Ai Weiwei zeigt laut einer venezianischen Kritik Kronleuchter, die seine übliche Respektlosigkeit unter einer barocken Oberfläche verbergen – eine Geste, die an den „Blossom Chandelier“ erinnert, den er für eine frühere Ausgabe geschaffen hatte und in dem Glasblumen neben Handschellen, Überwachungskameras und Twitter-Vögeln thronten."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jo92r1he7w.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ai Weiwei, Glasleuchter bei „Glasstress 2026“, Fondazione Berengo Art Space, Murano. Bild: Metropolitano.it.",
+              "alt": "Ein riesiger, kugelförmiger Kronleuchter aus weißem Glas, übersät mit Blüten und gewundenen Stielen, hängt in einer Backsteinhalle im Industriestil."
+            },
+            {
+              "type": "image",
+              "content": "https://static.wixstatic.com/media/010253_f7627d18f8cf42f984a0cf37c00eb165~mv2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Karen LaMonte, „Reclining Lucent 1“, gegossenes Glas. Ausgestellt auf der Glasstress 2026 im Palazzo Ca’ Tron und im Fondazione Berengo Art Space. Bild mit freundlicher Genehmigung der Künstlerin.",
+              "alt": "Eine Skulptur aus gegossenem Glas, die ein leeres Abendkleid darstellt, das auf einem schwarzen Sockel ruht; aus blassem, durchscheinendem blau-weißem Glas mit kräftigen Falten am Saum."
+            },
+            {
+              "type": "text",
+              "content": "Zu den Gussarbeiten gehört „Reclining Lucent 1“ von Karen LaMonte: ein Abendkleid ohne Körper darin, aus hellem Glas gegossen, das auf der Seite liegt und eine Schwere ausstrahlt, die bei Stoff unmöglich wäre. LaMonte beschäftigt sich seit Jahrzehnten mit diesem Thema, und was es zeigt, ist etwas, was Stoff nicht vermag: dass eine Leere eine Form hat und verfestigt werden kann. Das Glas fängt das Licht in den Falten ein, wie es Wasser tun würde, und hält es dann fest."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jqhnldexbf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Laure Prouvost, Glasskulptur bei Glasstress 2026. Foto: Francesco Allegretto. Bild: Metropolitano.it.",
+              "alt": "Ein Tier aus rosa- bis türkisfarbenem Glas, das sich wie eine Robbe aufrichtet und dessen Schwanz aus einem herabhängenden Stromstecker besteht, auf einem weißen Sockel."
+            },
+            {
+              "type": "text",
+              "content": "Die Ausstellung hat Probleme, und es lohnt sich, darauf hinzuweisen. Ein Kritiker befand bei der Eröffnung, die Werke seien stark, die Ausstellung jedoch weniger: ein kuratorisches Konzept, das nicht ganz nachvollziehbar war, einige Werke, die noch unterwegs waren, fehlende Beschriftungen, eine als Headliner angekündigte, aber abwesende Marina Abramović. Die Heterogenität, die die Ausstellung lebendig macht, erschwert es zugleich, sie als Ganzes zusammenzuhalten. Auch das sagt etwas über Glas aus. Es ist ein Medium, das sich unbehaglich zwischen hundert Traditionen bewegt – Kunsthandwerk, Design, Skulptur, Installation, Konzeptkunst –, und eine Ausstellung, die sie alle einbeziehen will, wird immer den Eindruck erwecken, als würde sie leicht auseinanderfallen."
+            },
+            {
+              "type": "header",
+              "content": "IV · Corning: Wer hat das Studio-Glas hergestellt?",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die vierte Antwort betrifft die Geschichte. Studio-Glas – jene Bewegung, in der Künstler begannen, Glas in ihren eigenen Werkstätten statt in Fabriken zu blasen und zu gießen – wird üblicherweise auf zwei Werkstätten im Toledo Museum of Art im Jahr 1962 zurückgeführt. Jahrzehntelang handelte die Geschichte, die darüber erzählt wurde, von einer Handvoll Männer. Die Ausstellung „Tough Stuff: Women in the American Glass Studio“, die am 16. Mai 2026 im Corning Museum of Glass eröffnet wurde und bis zum 10. Januar 2027 läuft, argumentiert, dass dies nie das ganze Bild war."
+            },
+            {
+              "type": "text",
+              "content": "Es ist die erste Ausstellung dieser Art: Mehr als 200 Objekte aus der Sammlung des Museums, seiner Rakow-Forschungsbibliothek und Leihgaben der Künstlerinnen – darunter einige, die noch nie zuvor gezeigt wurden –, die in den 1960er- und 1970er-Jahren von Glaskünstlerinnen geschaffen wurden. Die Ausstellung wird von Tami Landis, Kuratorin für Nachkriegs- und zeitgenössische Glaskunst, gemeinsam mit der kuratorischen Mitarbeiterin Rïse Peacock kuratiert und ist Teil des Programms zum 75-jährigen Jubiläum des Museums. Zu den Künstlerinnen zählen Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler und Joan Reep."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jrrwa2i63g.jpg",
               "align": "center",
               "width": 100,
               "caption": "Lucartha Kohler, „Colors of Consciousness“, 1977. Schenkung der Künstlerin an das Corning Museum of Glass. Bild mit freundlicher Genehmigung des Corning Museum of Glass.",
@@ -80273,114 +80476,60 @@
             },
             {
               "type": "text",
-              "content": "Die Ausstellung wird von Tami Landis, Kuratorin für Glaskunst der Nachkriegszeit und der Gegenwart, gemeinsam mit der kuratorischen Mitarbeiterin Rïse Peacock organisiert; zu den ausgestellten Künstlern gehören Claire Falkenstein, Audrey Handler, Margie Jervis, Susie Krasnican, Kathleen Mulcahy, Ginny Ruffner, Ruth Tamura, Toots Zynsky, Lucartha Kohler und Joan Reep. Auffällig an den Bildern ist, wie wenig sie einander ähneln. Kohler’s „Colors of Consciousness“ (1977) ist gar kein Gefäß: Es handelt sich um eine Abfolge transparenter Platten, auf denen jeweils ein im Siebdruckverfahren aufgebrachtes fotografisches Porträt zu sehen ist, das sich über das gesamte Farbspektrum hinweg wiederholt und verschoben ist, sodass das Glas wie Filmmaterial wirkt. Audrey Handlers „Small Double Bubble Sculpture“ (1969) geht den umgekehrten Weg und lässt das geblasene Material zu einem lockeren, durchscheinenden Knoten herabhängen."
+              "content": "Was auf den Bildern auffällt, ist, wie wenig die Werke gemeinsam haben. Lucartha Kohlers „Colors of Consciousness“ (1977) besteht aus einer Reihe transparenter Paneele, auf denen jeweils dasselbe im Siebdruckverfahren aufgebrachte Porträt zu sehen ist, das in den Farben des Spektrums getönt ist, sodass das Glas wie ein Filmstreifen wirkt. Joan Reeps „Silver Glass Bowl“ (1973–74) ist eine breite, schillernde, geblasene Form, in deren Wand Farbwolken eingeschlossen sind. Audrey Handlers „Small Double Bubble Sculpture“ (1969) lässt geblasenes Glas zu einem lockeren, durchscheinenden Knoten herabsacken – eine Skulptur, in der kein Gefäß mehr vorhanden ist."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_3.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jsgxib7618.jpg",
               "align": "center",
               "width": 100,
-              "caption": "Audrey Handler, Skulptur „Small Double Bubble“, 1969. Schenkung der Künstlerin an das Corning Museum of Glass. Mit freundlicher Genehmigung des Corning Museum of Glass.",
-              "alt": "Eine hellgrüne, durchscheinende Glasform mit zwei geschwungenen Vertiefungen und bernsteinfarbenen Streifen, die auf der Seite auf einem grauen Untergrund liegt."
-            },
-            {
-              "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_4-1.png",
-              "align": "center",
-              "width": 100,
-              "caption": "Joan Reep, Silberne Glasschale, 1973–74. Schenkung der Künstlerin an das Corning Museum of Glass. Mit freundlicher Genehmigung des Corning Museum of Glass.",
+              "caption": "Joan Reep, „Silver Glass Bowl“, 1973–74. Schenkung der Künstlerin an das Corning Museum of Glass. Bild mit freundlicher Genehmigung des Corning Museum of Glass.",
               "alt": "Eine breite, mundgeblasene Glasschale mit wellenförmigem Rand und einer schillernden Oberfläche in Blau, Violett und Gold, mit zwei trüben Einschlüssen in der Wand."
             },
             {
               "type": "image",
-              "content": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1000/2026/05/CMoG_Image_1.png",
+              "content": "https://api.eprisjournal.com/uploads/mvo7jt6qcct13m.jpg",
               "align": "center",
               "width": 100,
               "caption": "Kathleen Mulcahy bei der Installation von „Drops on a Landscape“, 1973, Alfred University, Alfred, New York. Foto mit freundlicher Genehmigung von Kathleen Mulcahy.",
-              "alt": "Eine Frau in blauem Hemd und Jeans, die auf einer gepflasterten Terrasse hockt und Dutzende tropfenförmiger, durchsichtiger Glasformen auf dem Boden anordnet."
+              "alt": "Eine Frau in einem blauen Hemd und Jeans, die auf einer gepflasterten Terrasse hockt und Dutzende tropfenförmiger, durchsichtiger Glasformen auf dem Boden anordnet."
             },
             {
               "type": "text",
-              "content": "Das Foto von Kathleen Mulcahy, die 1973 Glastropfen auf einer gepflasterten Terrasse anordnet, bildet den stillen Mittelpunkt der Ausstellung. Es zeigt Glas als Installation, als Material, das man über einen Ort verteilt – lange bevor „Installation“ in der Kunstwelt zum gängigen Begriff wurde. Es zeigt auch, wer diese Arbeit leistete. Das Museum vertritt die These, dass die Geschichte des Studioglases allzu oft durch eine kleine Gruppe männlicher Pioniere erzählt wurde, während Frauen zur gleichen Zeit ihre eigenen Ateliers aufbauten und ihre eigenen Methoden sowie unverwechselbaren Stile entwickelten. Begleitend zur Ausstellung veröffentlicht die Rakow Research Library mündliche Zeitzeugenberichte von noch lebenden Künstlerinnen dieser Zeit, sodass die Korrektur sowohl im Archiv als auch an den Wänden erfolgt."
+              "content": "Das Bild von Kathleen Mulcahy, die 1973 auf einer gepflasterten Terrasse hockt und klare Glastropfen auf dem Boden anordnet, ist die Ausstellung im Kleinen. Es handelt sich um eine Installation, die lange bevor „Installation“ in der Kunstwelt zum gängigen Begriff wurde, von einer Frau geschaffen wurde, die mit ihren eigenen Händen an einem Material arbeitete, dessen Geschichte damals vor allem von Männern geschrieben wurde. Nach den Darstellungen des Museums bauten Frauen zeitgleich mit den bekannteren Pionieren ihre eigenen Ateliers auf und entwickelten ihre eigenen Methoden, doch die gängige Geschichtsschreibung hat dies schlichtweg übersehen. Begleitend zur Ausstellung veröffentlicht die Bibliothek mündliche Zeitzeugenberichte der noch lebenden Künstlerinnen in der Ich-Form, sodass die Korrektur nicht nur an den Wänden, sondern auch im Archiv vorgenommen wird."
             },
             {
-              "type": "quote",
-              "content": "Frauen spielten eine zentrale, aber oft übersehene Rolle in der Bewegung."
+              "type": "text",
+              "content": "Aus der Perspektive Venedigs wird dieser Punkt noch deutlicher. Chihulys Türme sind zum Teil die Nachfahren eben dieses Moments: Sein Pilchuck wurde 1971 gegründet, im selben Jahrzehnt wie die Objekte in Corning. Die Frage, wessen Hände und wessen Namen auf einem Glaswerk stehen sollten, ist keine rein akademische. Glas wurde schon immer gemeinschaftlich hergestellt – von Glasmeistern, Gehilfen und Ofenwärtern –, und die Geschichte dieser Kunst ist eine Geschichte darüber, wer als Künstler bezeichnet werden durfte."
             },
             {
               "type": "header",
-              "content": "II · Der Ofen als Schöpfer: Murano auf der Biennale",
+              "content": "V · Was Glas kann, was sonst nichts kann",
               "level": 2
             },
             {
               "type": "text",
-              "content": "In Venedig, auf der Insel San Giorgio Maggiore, verfolgt „Le Stanze del Vetro“ einen anderen Ansatz. „1948–1958: Murano-Glas und die Biennale von Venedig“ (19. April bis 22. November 2026) ist das dritte Kapitel einer Reihe der Fondazione Giorgio Cini und der Pentagram Stiftung, kuratiert von Marino Barovier. Mehr als 160 Exponate dokumentieren Muranos Auftritte bei den Biennalen XXIV bis XXIX, von der ersten Ausstellung nach dem Krieg bis zum Ende der 1950er Jahre; begleitet wird die Ausstellung von einem Katalog, der von Barovier und Carla Sonego herausgegeben wurde."
-            },
-            {
-              "type": "image",
-              "content": "https://lestanzedelvetro.org/wp-content/uploads/2025/11/7.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Murano-Vasen mit konzentrischen Bändern aus grünem und gelbem Glas, Installationsansicht, Le Stanze del Vetro, San Giorgio Maggiore, Venedig. Bild mit freundlicher Genehmigung von Le Stanze del Vetro / Fondazione Giorgio Cini.",
-              "alt": "Zwei tropfenförmige Glasvasen stehen nebeneinander auf einem weißen Regal; jede besteht aus konzentrischen Ringen aus smaragdgrünem und hellgelbem Glas."
+              "content": "Stellt man die vier Ausstellungen nebeneinander, werden einige Eigenschaften von Glas deutlich, denn jede von ihnen hat eine andere Eigenschaft als Ausgangspunkt gewählt."
             },
             {
               "type": "text",
-              "content": "Hier ist der Schöpfer kein einzelner Künstler, sondern eine Glasbläserei. Die Namen auf den Etiketten sind Manufakturen – Venini, AVEM, Barovier &amp; Toso, Seguso Vetri d’Arte, Aureliano Toso, Fratelli Toso, Gino Cenedese – und die Menschen, die dort arbeiteten: Alfredo Barbini, Archimede Seguso, Ercole Barovier, Flavio Poli, Dino Martens, Vinicio Vianello. Ercole Baroviers Becher „Corinto“ und „Damasco“, die 1948 auf der Biennale ausgestellt wurden, bestehen aus abwechselnd angeordneten Glasstäbchen mit Blattgold. Martens entwarf für Aureliano Toso eine „Wizard’s Bottle“ aus Fragmenten, Glaskörnern und dekorativen Einsätzen auf transparentem Grund. Polis Arbeiten für Seguso beschäftigen sich mit halbtransparentem, geriffeltem Glas mit gestreiften Texturen und Vergoldungen sowie mit dickem, eingetauchtem Glas in organischen Formen."
+              "content": "Es lässt Licht durch. Ein Gemälde reflektiert es, eine Bronzeskulptur absorbiert es; Glas lenkt es an eine andere Stelle im Raum. Chihulys Türme leuchten von innen, wenn die Sonne hinter ihnen steht, und die Menschen auf der Accademia-Brücke sind buchstäblich durch sie hindurch zu sehen. Deshalb sind Fotos von Glas in Galerien immer ein wenig ungenau, und deshalb muss man die besten dieser Werke persönlich erleben."
             },
             {
               "type": "text",
-              "content": "Man könnte all dies einfach als Design bezeichnen, und die Ausstellung thematisiert tatsächlich den Wiederaufbau nach dem Krieg und den Aufstieg der Designkultur. Doch die Vasen in der oben gezeigten Installationsansicht verdienen einen genaueren Blick. Ihre Ringe sind nicht aufgemalt: Es handelt sich um Schichten aus farbigem Glas, die unter Hitzeeinwirkung aufgetragen und anschließend durchgeschnitten wurden, sodass das Muster die Struktur selbst bildet. Dies ist ein Dialog zwischen der Idee eines Designers und den Händen eines Meisters, der sich im Nachhinein nicht mehr trennen lässt, und Glas ist unter den Materialien fast das einzige, das diese Zusammenarbeit im fertigen Objekt sichtbar macht."
-            },
-            {
-              "type": "header",
-              "content": "III · 65 Künstler, ein Material: Glasstress 2026",
-              "level": 2
+              "content": "Es reflektiert zudem und verzerrt das, was es reflektiert. Horns Würfel und Gelitins Spiegel zeigen einem kein Objekt; sie zeigen einem den Raum um dieses herum, verzerrt, sodass der Raum selbst zum Gegenstand wird. Dasselbe Material, das aus einem bestimmten Blickwinkel ein Fenster ist, ist aus einem anderen Blickwinkel ein Spiegel, und oft liegt der Reiz des Werks gerade in diesem Blickwinkel."
             },
             {
               "type": "text",
-              "content": "Die dritte Ausstellung richtet den Blick nach außen auf die venezianische Glasbläserei. „Glasstress 2026“ findet vom 12. Juli bis zum 22. November in der Ca’ Tron am Canal Grande und im Fondazione Berengo Art Space auf Murano statt. Adriano Berengo konzipierte das Projekt 2009 als offizielle Begleitveranstaltung der Biennale von Venedig, und diese Ausgabe, kuratiert von Berengo, Joanna De Vos und Umberto Croppi, lädt 65 internationale Künstler und Designer ein, mit den Glasmeister des Berengo Studio zusammenzuarbeiten. Mehr als zwanzig von ihnen geben ihr Debüt bei Glasstress, viele arbeiten zum ersten Mal mit Glas."
+              "content": "Außerdem handelt es sich dabei – im Gegensatz zu fast allem anderen in einer Galerie – um eine Flüssigkeit, deren Bewegung unterbrochen wurde. Die Windung in einer Chihuly-Ranke, die herabhängende Blase in Handlers Skulptur und der Faltenwurf von LaMontes leerem Kleid sind allesamt Ausdruck derselben Tatsache: Jemand arbeitete mit einer Substanz, die in Bewegung war, und brachte sie zum Stillstand. Glas ist eine Aufzeichnung des Augenblicks des Anhaltens."
             },
             {
               "type": "text",
-              "content": "Die Liste liest sich eher wie ein Überblick über zeitgenössische Kunst als über Kunsthandwerk: Ai Weiwei, Judy Chicago, Tony Cragg, Jaume Plensa, Thomas Schütte, Chiharu Shiota, Cornelia Parker, Erwin Wurm, Jan Fabre, Paul McCarthy, Yue Minjun, Wael Shawky, Sean Scully, Karen LaMonte und Dutzende weitere. Genau darum geht es. Die Organisatoren beschreiben Glas als eigenständige künstlerische Sprache und als „materiellen Hypertext“, bei dem die Bedeutung aus der technischen Konstruktion, der Geste des Künstlers und dem Kontext der Herstellung entsteht. Mit anderen Worten: Der Künstler bringt die Idee ein; der Murano-Meister bringt sein lebenslanges Wissen darüber ein, was ein Brennofen leisten kann und was nicht."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Jaume-Plensa-Blake-in-Venice-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Jaume Plensa, „Blake in Venedig“, aus einem früheren Glasstress-Projekt. Plensa gehört zu den Künstlern von Glasstress 2026. Bild mit freundlicher Genehmigung der Fondazione Berengo.",
-              "alt": "Hohe gotische Palastfenster mit Blick auf den Canal Grande, an denen Ketten aus goldenen Glasbuchstaben hängen, durch die man eine Fassade auf der anderen Seite des Wassers erkennen kann."
+              "content": "Und das wirft die Frage nach der Urheberschaft auf. Bei Corning ist die Schöpferin eine einzelne Person an ihrer eigenen Werkbank; in Chihulys Venedig ist es ein Team von fünfundzwanzig Personen, das von einem einzigen Willen geleitet wird; bei Glasstress ist es ein Duo: die Künstlerin mit der Idee und der Maestro aus Murano mit den Händen. Die Ausstellungen sind sich uneinig darüber, wem die Anerkennung gebührt. Sie sind sich jedoch einig, dass man das Objekt nicht betrachten kann, ohne die Spuren seiner Entstehung zu sehen: eine Naht, eine Blase, eine Farbspur, die Linie, an der sich zwei Falten treffen."
             },
             {
               "type": "text",
-              "content": "Plensas „Blake“ in Venedig, ein Werk aus einem früheren „Glasstress“-Projekt, zeigt, warum diese Kombination funktioniert. Ein Vorhang aus Glasbuchstaben hängt in einem gotischen Fenster der Ca’ Tron, und der dahinter liegende Canal Grande wird Teil des Textes. Nichts daran könnte aus Stein oder Bronze gefertigt sein: Das Werk existiert nur, weil Glas den Blick durchlässt und gleichzeitig die Wörter an ihrem Platz hält. Karen LaMontes „Reclining Nocturne“ aus demselben Programm nutzt die gegenteilige Eigenschaft. Ein Kleid ohne Körper darin, aus Glas gegossen, wirkt schwer, kalt und fast flüssig – das Kleidungsstück wird zum Denkmal."
-            },
-            {
-              "type": "image",
-              "content": "https://fondazioneberengo.org/wp-content/uploads/2019/01/Karen-LaMonte-Reclining-Nocturne-1-1024x683.jpg",
-              "align": "center",
-              "width": 100,
-              "caption": "Karen LaMonte, „Reclining Nocturne“, entstanden in Zusammenarbeit mit dem Berengo Studio für ein früheres Glasstress-Projekt. LaMonte gehört zu den Künstlerinnen und Künstlern, die an dem Projekt mitwirken. Bild mit freundlicher Genehmigung der Fondazione Berengo.",
-              "alt": "Eine Skulptur aus gegossenem Glas, die ein leeres Abendkleid darstellt, das auf einem weißen Sockel ruht; aus rauchigem, blaugrauem, durchscheinendem Glas mit tiefen Falten am Saum."
-            },
-            {
-              "type": "header",
-              "content": "IV · Welches Glas, das nichts anderes kann",
-              "level": 2
-            },
-            {
-              "type": "text",
-              "content": "Stellt man die drei nebeneinander, ergibt sich ein Muster. Bei Corning ist die Schöpferin eine einzelne Person an ihrer eigenen Werkbank, und Glas ist ein Abbild eines Körpers und einer Entscheidung. In Venedig ist der Schöpfer eine Werkstatt, und Glas ist eine gemeinsame Sprache zwischen Design und Handwerk. Bei Glasstress besteht das Herstellerteam aus einem Duo – einer Künstlerin und einem Maestro – und das Glas ist ein Ort der Begegnung zwischen zwei Arten von Wissen. In jedem Fall trägt das Objekt die Spuren seiner Entstehung in sich, denn Glas kann seine Geschichte nicht verbergen: eine Blase, eine Naht, eine Farbspur, eine Linie, an der sich zwei Glasstränge treffen."
-            },
-            {
-              "type": "text",
-              "content": "Es leitet auch Licht weiter. Ein Gemälde reflektiert es, eine Bronzeskulptur absorbiert es; Glas lässt es durch, lenkt es ab und leitet es an eine andere Stelle im Raum weiter. Deshalb wirken Fotos von Glas in einer Galerie immer etwas unpassend, und deshalb hängt der Reiz der besten dieser Ausstellungen davon ab, vor Ort zu sein: von den Vasen, die in ihren Nischen von innen leuchten, von einem Vorhang aus Buchstaben, der Schatten auf einen Kanal wirft, von einem Feld aus klaren Tropfen, die über eine Terrasse verteilt sind. Es ist ebenso sehr eine Kunst der Bedingungen wie der Objekte."
-            },
-            {
-              "type": "text",
-              "content": "Und es ist eine Kunst, die erst seit kürzerer Zeit ernst genommen wird, als sie es verdient hätte. Die Studio-Glas-Bewegung ist erst etwa sechzig Jahre alt; die Museen, die sie im Jahr 2026 zeigen, sind noch dabei, ihre eigene Geschichtsschreibung zu korrigieren, wie es „Tough Stuff“ ganz offen tut. Wenn diese Ausstellungen ein gemeinsames Ziel verfolgen, dann ist es, Glas nicht länger als Sonderfall von etwas anderem – Handwerk, Design, Dekoration – zu betrachten, sondern es als das zu behandeln, was es ganz einfach ist: ein Medium mit eigener Physik, eigener Urheberschaft und einer eigenen Art, etwas sichtbar zu machen, indem es alles andere durchlässt."
+              "content": "Die Studio-Glas-Bewegung ist erst etwa sechzig Jahre alt und ist noch dabei, ihre eigene Geschichte nachzuholen. Wenn diese Ausstellungen ein gemeinsames Ziel verfolgen, dann ist es, Glas nicht länger als Sonderfall von etwas anderem – sei es Handwerk, Design oder Dekoration – zu betrachten, sondern es als das zu behandeln, was es ganz einfach ist: ein Medium mit eigenen physikalischen Eigenschaften und einer ganz eigenen Art, Dinge sichtbar zu machen, indem es alles andere durchlässt."
             },
             {
               "type": "header",
@@ -80389,26 +80538,31 @@
             },
             {
               "type": "text",
-              "content": "Die Ausstellung „Tough Stuff: Women in the American Glass Studio“ ist bis zum 10. Januar 2027 im Corning Museum of Glass in Corning, New York, zu sehen. „1948–1958: Murano-Glas und die Biennale von Venedig“ in „Le Stanze del Vetro“ auf San Giorgio Maggiore sowie „Glasstress 2026“ in der Ca’ Tron und auf Murano laufen beide noch bis zum 22. November 2026; es bleiben also noch etwa vier Wochen, um sie zu besuchen. Etwas später, am 12. Dezember 2026, öffnet das Museum of Glass in Tacoma seine Galerien wieder mit der Ausstellung „Lino Tagliapietra: Maestro“. Termine und Öffnungszeiten können sich ändern; informieren Sie sich bitte vor Ihrer Anreise bei den jeweiligen Veranstaltungsorten."
+              "content": "CHIHULY: Venice 2026 läuft noch bis zum 14. November. Die drei Skulpturen stehen im Freien am Canal Grande, sind von der Accademia-Brücke aus zu sehen und können ohne Eintrittskarte besichtigt werden; das Archiv im Palazzo Loredan des Istituto Veneto am Campo Santo Stefano ist von Mittwoch bis Sonntag geöffnet. „Glasstress 2026“ ist bis zum 22. November im Palazzo Ca’ Tron und im Fondazione Berengo Art Space auf Murano zu sehen. Beide Ausstellungen enden in weniger als einem Monat. „Tough Stuff“ ist bis zum 10. Januar 2027 im Corning Museum of Glass in Corning, New York, zu sehen. Roni Horns Ausstellung „Seizure of Hope“ endete am 1. August in London. Später, am 12. Dezember, öffnet das Museum of Glass in Tacoma wieder seine Pforten mit der Ausstellung „Lino Tagliapietra: Maestro“. Termine und Öffnungszeiten können sich ändern; informieren Sie sich bitte vor Ihrer Anreise bei den jeweiligen Veranstaltungsorten."
             },
             {
               "type": "note",
-              "content": "Dieser Beitrag stützt sich auf die Ausstellungsseiten und Pressematerialien des Corning Museum of Glass, von „Le Stanze del Vetro“ (Fondazione Giorgio Cini), der Fondazione Berengo / Glasstress und des Museum of Glass in Tacoma sowie auf die Berichterstattung von Hyperallergic über „Tough Stuff“ und von Finestre sull’Arte über die Ausstellung in Venedig. Die interpretativen Einschätzungen stammen vom Autor. Die Abbildungen werden unter Nennung der Institutionen gezeigt, die sie zur Verfügung gestellt haben."
+              "content": "Dieser Beitrag stützt sich auf Ausstellungsmaterialien des Chihuly Studio und der Pilchuck Glass School, von Hauser &amp; Wirth, dem Corning Museum of Glass, der Fondazione Berengo und dem Museum of Glass in Tacoma sowie auf Berichte der Zeitschrift „Galerie“, des „Seattle Magazine“, des „FAD Magazine“, von „Hyperallergic“, „Exibart“, des „Interactive Art Magazine“ und von „Primopiano24“. Die Angaben zu den einzelnen Werken stammen aus diesen Quellen; interpretative Einschätzungen sind die des Autors. Die Beschreibung von „The Library of Water“ basiert auf den eigenen Kenntnissen des Autors. Die Abbildungen werden unter Nennung der Institutionen und Fotografen gezeigt, die sie zur Verfügung gestellt haben."
             },
             {
               "type": "link",
-              "content": "„Tough Stuff“: Frauen in der amerikanischen Glaswerkstatt – Corning Museum of Glass",
-              "url": "https://whatson.cmog.org/exhibitions-galleries"
+              "content": "CHIHULY: Venedig 2026 – Pilchuck Glass School",
+              "url": "https://www.pilchuck.org/event/chihuly-venice-2026"
             },
             {
               "type": "link",
-              "content": "1948–1958 Murano-Glas und die Biennale von Venedig – Le Stanze del Vetro",
-              "url": "https://lestanzedelvetro.org/en/exhibition/1948-1958-murano-glass-and-the-venice-biennale/"
+              "content": "Roni Horn: Seizure of Hope – Hauser &amp; Wirth",
+              "url": "https://www.hauserwirth.com/hauser-wirth-exhibitions/roni-horn-london/"
             },
             {
               "type": "link",
               "content": "Glasstress 2026 — Fondazione Berengo",
               "url": "https://glasstress.org/"
+            },
+            {
+              "type": "link",
+              "content": "„Tough Stuff“: Frauen in der amerikanischen Glaswerkstatt – Corning Museum of Glass",
+              "url": "https://whatson.cmog.org/exhibitions-galleries"
             },
             {
               "type": "link",
@@ -80418,7 +80572,7 @@
           ],
           "publishAt": "2026-10-26T02:00:00.000Z",
           "publishedAt": "2026-10-26T02:00:00.000Z",
-          "updatedAt": "2026-10-25T19:05:17.334Z"
+          "updatedAt": "2026-10-25T19:20:25.210Z"
         }
       ],
       "reviews": [
