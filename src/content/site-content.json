@@ -101653,6 +101653,445 @@
           "publishAt": "2026-10-26T02:00:00.000Z",
           "publishedAt": "2026-10-26T02:00:00.000Z",
           "updatedAt": "2026-10-25T19:20:44.808Z"
+        },
+        {
+          "id": 76,
+          "draft": false,
+          "title": "Ocre, cobre y una larga tarde de verano: Copenhague, un cálido detalle tras otro",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "27 de octubre de 2026",
+          "excerpt": "Desde las hileras de edificios de color ocre encalados de Nyboder y el muelle pintado de Nyhavn hasta una aguja con la escalera en el exterior, una Plaza Roja construida en 2012 y un puerto en el que se puede nadar: una guía de verano sobre los colores y los pequeños detalles arquitectónicos que definen a Copenhague.",
+          "category": "Arquitectura",
+          "subcategory": "Característica",
+          "tags": [
+            "Copenhague",
+            "Nyhavn",
+            "Nyboder",
+            "La supercuña",
+            "El puente circular",
+            "Iglesia de Nuestro Salvador",
+            "La bolsa",
+            "Arquitectura danesa",
+            "color",
+            "verano"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nyhavn_Copenhagen_2014_01.jpg/1920px-Nyhavn_Copenhagen_2014_01.jpg",
+          "previewToken": "c919a0466a76a0f1155fc31a",
+          "content": [
+            {
+              "type": "text",
+              "content": "Copenhague en verano no grita. Susurra. En algún lugar suena el timbre de una bicicleta, el sol aún no se ha puesto a las diez de la noche, alguien está comiéndose un helado en el muelle con los zapatos quitados, y toda la ciudad huele ligeramente a piedra caliente y agua. Es una ciudad baja —la torre del Ayuntamiento, el más alto de los antiguos monumentos, se eleva 105,6 metros, y la mayor parte de lo que te rodea son edificios de diez o doce metros de ladrillo, yeso y cobre— y, como nada intenta impresionarte desde las alturas, empiezas a interpretarla a la altura de los ojos."
+            },
+            {
+              "type": "text",
+              "content": "Así que esta es una guía sin prisas, no un estudio arquitectónico: un paseo por cinco colores y un sinfín de pequeñas decisiones —contraventanas, pomos de puertas, una veleta, un trozo de adoquines— que hacen que la ciudad transmita esa sensación tan particular. El ocre que mantiene unidas las viejas calles. El verde, el negro y el dorado de las agujas. Una plaza roja construida en 2012. Una rampa para bicicletas naranja. Y el azul de un puerto al que ahora la gente se lanza. Aquí no hace falta comprar ninguna entrada, y casi todo se disfruta mejor al final del día."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nyhavn_Copenhagen_2014_01.jpg/1920px-Nyhavn_Copenhagen_2014_01.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Nyhavn al final de un día de verano: los viejos barcos de madera se tiñen de dorado bajo el sol poniente, con las casas adosadas resplandeciendo a sus espaldas. Foto: Julian Herzog (página web), CC BY 4.0, vía Wikimedia Commons.",
+              "alt": "Un canal bordeado de coloridas casas a dos aguas y barcos de madera de mástiles altos, iluminado por la cálida luz dorada de un sol bajo, con reflejos en el agua."
+            },
+            {
+              "type": "header",
+              "content": "I · Ocre: el color que mantiene unidas las antiguas calles",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Empieza por el amarillo, porque es lo que más verás. No es el amarillo de las postales, sino un ocre cálido y ligeramente apagado que impregna barrios enteros, como un rasgo común. Su forma más pura se encuentra en Nyboder, un barrio de hileras de casas adosadas bajas situado a un corto paseo al norte del centro. El rey Cristián IV lo fundó en 1631 para alojar a los marineros rasos de la Armada Real Danesa, en pleno crecimiento, junto con sus familias, y la primera fase se terminó hacia 1641. El amarillo está tan ligado al lugar que «amarillo de Nyboder» es un término de color consolidado en danés."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Yellow_houses_Copenhagen_-_panoramio.jpg/1920px-Yellow_houses_Copenhagen_-_panoramio.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una hilera de casas de color ocre con tejados de tejas rojas y postes de granito unidos por cadenas: el estilo característico de Nyboder. Foto: René Bongard, CC BY-SA 3.0, vía Wikimedia Commons.",
+              "alt": "Una casa alargada y baja, de color amarillo ocre, con un tejado empinado de tejas rojas, situada junto a una calle empedrada, con bolardos de piedra unidos por cadenas negras en la parte delantera."
+            },
+            {
+              "type": "text",
+              "content": "Lo sorprendente es que nadie se pone de acuerdo sobre cómo empezó todo. Una versión habitual afirma que los colores originales eran el rojo y el blanco; un informe de conservación señala que las casas de los siglos XVII y XVIII se construyeron con ladrillo amarillo pálido y se les aplicó un revestimiento exterior de cal con pigmento ocre intenso. Sea cual sea la versión correcta, lo más bonito es la técnica. El encalado es una capa fina, y cada capa se oxida y se adhiere a la superficie que hay debajo, por lo que la pared no se pinta tanto como se cura lentamente; además, el ocre es un pigmento natural barato que resiste bien el sol y las inclemencias del tiempo. Una explicación muy extendida sostiene que era simplemente la forma más asequible de dar un aspecto acogedor a una casa. También se cuenta a menudo que un rey decretó en su día que toda la ciudad se pintara de un solo color. No he encontrado nada que lo respalde, y un guía local afirma rotundamente que ningún decreto en concreto convirtió Copenhague en una ciudad de tonos pastel."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Nyboders_Mindestuer.jpg/1920px-Nyboders_Mindestuer.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cerca de la pared: la cal ocre de Nyboder, un alféizar, un par de contraventanas y una ventana. Foto: RAYANDBEE, CC BY 2.0, vía Wikimedia Commons.",
+              "alt": "Una vista de cerca hacia arriba de una pared de ocre amarillo con una ventana con marco verde y contraventanas de color marrón rojizo bajo un tejado de tejas rojas."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Nyboder%2C_Copenhagen_Denmark_%2834382051486%29.jpg/1920px-Nyboder%2C_Copenhagen_Denmark_%2834382051486%29.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una casa de Nyboder con marcos de ventana verdes, contraventanas de color rosa empolvado y una bicicleta apoyada contra la pared. Foto: Lorie Shaull, CC BY-SA 2.0, vía Wikimedia Commons.",
+              "alt": "Una pared enlucida de color ocre rugoso con una ventana enmarcada en verde y contraventanas de color rosa empolvado, una bicicleta con cesta apoyada al pie y una señal de calle encima."
+            },
+            {
+              "type": "text",
+              "content": "Lo que hace que merezca la pena pasear por Nyboder es la combinación entre lo que está fijado y lo que se deja en manos de quienes viven allí. El plan urbanístico es estricto: dos calles principales parten en forma de rayos desde una plaza que se proyectó pero nunca se construyó, y las hileras de casas se sitúan perpendiculares a ellas. El color de base está fijado. Pero los detalles que lo adornan —las contraventanas en un tono rosa-marrón apagado, el verde de una puerta, una maceta con alguna planta en un escalón, una bicicleta apoyada donde siempre está— pertenecen a los residentes. Y los residentes siguen siendo, en su mayoría, personal de servicio: la prioridad para las viviendas recae en los miembros de la Armada, el Ejército y la Fuerza Aérea daneses destinados en Copenhague, y se han rechazado los planes para venderlas. En 1771 se añadió una planta más a algunas de las primeras hileras de Christian IV, y la antigua caseta de guardia contaba con una campana exterior para reunir a la gente en caso de ataque o incendio. Es un barrio de contraventanas y macetas que es también, discretamente, un conjunto de viviendas militares en funcionamiento con cuatrocientos años de antigüedad."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Kopenhagen_%28DK%29%2C_Vester_Voldgade_--_2017_--_1677.jpg/1920px-Kopenhagen_%28DK%29%2C_Vester_Voldgade_--_2017_--_1677.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Yeso ocre, contraventanas grises y una pesada puerta de entrada bajo el sol del atardecer: la misma paleta de colores, a pocas calles de distancia. Foto: Dietmar Rabich, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Una pared de color naranja-ocre cálido atravesada por un rayo de sol en diagonal, dos ventanas con contraventanas grises y una puerta con paneles oscuros a pie de calle."
+            },
+            {
+              "type": "header",
+              "content": "II · Nyhavn: el muelle pintado",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Nyhavn, «Puerto Nuevo», es esa misma idea llevada al extremo. El canal fue excavado entre 1670 y 1675 bajo el reinado del rey Cristián V, por soldados daneses y prisioneros de guerra suecos de la guerra de 1658-1660, para proporcionar a los barcos una vía de acceso al casco antiguo en Kongens Nytorv, donde descargaban la mercancía y los pescadores vendían sus capturas. Tiene unos 450 metros de longitud. En el lado norte se encuentran las casas adosadas de colores vivos, construidas en madera, ladrillo y yeso, que aparecen en todas las fotografías, siendo la número 9, de 1681, la más antigua; el lado sur cuenta con mansiones más grandes, entre las que destaca el Palacio de Charlottenborg, en la esquina con Kongens Nytorv."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1447.jpg/1920px-Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1447.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vista a lo largo del canal hacia el puerto, en esa media hora en la que todo se tiñe de ámbar. Foto: Dietmar Rabich, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Un canal con antiguos veleros y una hilera de coloridas casas a dos aguas bajo un cielo de cálidas nubes, todo ello reflejado en el agua."
+            },
+            {
+              "type": "text",
+              "content": "Hans Christian Andersen vivió en el n.º 67 entre 1845 y 1864 y, de nuevo, en el n.º 18 entre 1871 y 1875; una placa conmemorativa señala el n.º 67. El extremo interior del canal es un puerto de barcos históricos y de museo, inaugurado en 1977, con embarcaciones como el barco faro Gedser Rev, construido en 1895 en Odense, y la galeaza Svalan af Nyhavn, de 1924. Cabe destacar hasta qué punto el ambiente de antaño de Nyhavn proviene de los barcos: los mástiles, el aparejo y los cascos pintados forman parte del paisaje tanto como las casas. En cuanto a por qué las fachadas son tan llamativas, una guía de viajes explica que los comerciantes del puerto utilizaban colores vivos para que los marineros pudieran distinguir un almacén o una vivienda desde el agua. No he encontrado una fuente primaria, pero es una forma encantadora de interpretar la calle: la paleta de colores es más una señal de identificación que una mera decoración."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Nyhavn_Copenhagen_2014_05.jpg/1920px-Nyhavn_Copenhagen_2014_05.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Luz del atardecer en el muelle: cielo rosado, cascos pintados y una hilera de casas de todos los colores a la vez. Foto: Julian Herzog (página web), CC BY 4.0, a través de Wikimedia Commons.",
+              "alt": "Un largo canal con veleros blancos y oscuros amarrados a la izquierda, una hilera de casas de colores a la derecha y un cielo al atardecer en tonos melocotón y rosa."
+            },
+            {
+              "type": "header",
+              "content": "III · Verde, negro y dorado: agujas, cobre y las torres de los antiguos reyes",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Al levantar la vista, la paleta de colores cambia. Por encima del ocre se alza un horizonte de tejados y agujas, en su mayoría de cobre, y el cobre sigue su propio calendario. Cuando es nuevo, tiene el color de una moneda; tras décadas de aire marino, adquiere el suave y pálido tono verde del verdigrís. El horizonte de Copenhague es una galería de esos verdes, con algunas gloriosas excepciones en negro, dorado y ladrillo."
+            },
+            {
+              "type": "text",
+              "content": "La excepción más destacada es la aguja de la iglesia de Nuestro Salvador, en Christianshavn. La iglesia fue diseñada por Lambert van Haven y construida entre 1682 y 1695, pero la aguja es obra de Lauritz de Thurah, quien en 1749 sustituyó el diseño original de van Haven por el suyo propio, terminado en 1752. Es de estructura de madera, de color negro y dorado, y mide 90 metros de altura; una escalera exterior la rodea cuatro veces en sentido antihorario, un motivo que Thurah tomó de la linterna en espiral de Sant’Ivo alla Sapienza, en Roma. La subida consta de 400 escalones, y los últimos 150 se encuentran al aire libre, en la propia aguja, con una barandilla dorada que separa al visitante de la calle. En la cima, un globo dorado sostiene una figura de cuatro metros de Cristo Triunfante que sostiene un estandarte."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Church_tower_%E2%80%93_Church_of_Our_Saviour%2C_Copenhagen.jpg/1920px-Church_tower_%E2%80%93_Church_of_Our_Saviour%2C_Copenhagen.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La aguja de la Iglesia de Nuestro Salvador, en Christianshavn: torre de ladrillo oscuro, espiral negra y dorada, globo dorado. Foto: OleNeitzel, CC BY 4.0, vía Wikimedia Commons.",
+              "alt": "Una alta torre de iglesia de ladrillo con una aguja en espiral negra y dorada rematada por una bola dorada, recortada contra un cielo azul intenso."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Climbing_the_90m_high_Vor_Frelsers_Kirke_spire_%28Church_of_Our_Saviour%29_%2837188404854%29.jpg/1920px-Climbing_the_90m_high_Vor_Frelsers_Kirke_spire_%28Church_of_Our_Saviour%29_%2837188404854%29.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La escalera exterior: peldaños de madera y una barandilla dorada que se enrolla alrededor del exterior de la aguja, con los tejados de Copenhague a sus pies. Foto: Jorge Láscar, CC BY 2.0, vía Wikimedia Commons.",
+              "alt": "Una estrecha escalera de caracol con una barandilla dorada que se eleva por el exterior de una aguja negra, con los tejados de Copenhague a sus pies."
+            },
+            {
+              "type": "text",
+              "content": "Børsen, la antigua Bolsa de Valores, tiene otro tipo de aguja: cuatro colas de dragón entrelazadas en una sola punta, de 56 metros de altura. El edificio, de estilo renacentista holandés, fue construido entre 1619 y 1640 bajo el reinado de Cristián IV por los hermanos Lorenz y Hans van Steenwinckel, y albergó la bolsa danesa hasta 1974. El 16 de abril de 2024, un incendio que se inició durante las obras de renovación del tejado de cobre destruyó aproximadamente la mitad del mismo y derribó la aguja. No hubo heridos y, en noviembre de ese año, la policía descartó causas delictivas. La reconstrucción comenzó en septiembre y se prevé que finalice en 2029, utilizando ladrillos rojos hechos a mano y cobre reciclado para el tejado, lo que nos recuerda que el verde del horizonte es un material con una cadena de suministro, además de un color."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/B%C3%B8rsen_dragon_spire_roofs_Copenhagen_Denmark.jpg/1920px-B%C3%B8rsen_dragon_spire_roofs_Copenhagen_Denmark.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La aguja con forma de dragón de Børsen, sobre sus tejados de cobre, fotografiada antes del incendio de 2024. La aguja se derrumbó durante el incendio y se está reconstruyendo. Foto: Jebulon, CC0, vía Wikimedia Commons.",
+              "alt": "Una alta aguja formada por cuatro colas de dragón retorcidas que se eleva por encima de una línea de tejado de cobre verde pálido y frontones de ladrillo oscuro."
+            },
+            {
+              "type": "text",
+              "content": "Luego está el ladrillo. El Ayuntamiento, obra de Martin Nyrop, cuya construcción se inició en la década de 1890 y se inauguró en 1905, es la gran obra emblemática de ladrillo rojo: de estilo romántico nacional, con toques neorrenacentistas y una influencia abiertamente reconocida del Palazzo Pubblico de Siena. Su torre se eleva 105,6 metros y, sobre el balcón, se alza una estatua dorada de Absalón, el obispo fundador de la ciudad. En el interior se encuentra el Reloj Mundial de Jens Olsen. El cobre que lo recubre es de ese mismo verde suave; el ladrillo es más cálido que cualquier ocre."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Copenhagen_City_Hall_detail.jpg/1920px-Copenhagen_City_Hall_detail.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El Ayuntamiento de Copenhague a la luz del atardecer: ladrillo rojo, torres de color verde cobrizo y una esfera de reloj. Foto: mararie, CC BY-SA 2.0, vía Wikimedia Commons.",
+              "alt": "Fachada a dos aguas de ladrillo rojo de un ayuntamiento con dos esbeltas torres rematadas con cobre verde, una de ellas con una esfera de reloj, bañada por una luz cálida."
+            },
+            {
+              "type": "text",
+              "content": "Incluso el cobre más pequeño sigue la misma tendencia. Fíjate en la veleta de la iglesia de la Trinitatis, que se alza a los pies de la Torre Redonda: un monograma coronado sobre una punta; verás que su corona, su monograma y sus dos pequeñas esferas han adquirido el mismo tono verde pálido que los tejados."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Weather_vane_Trinitatis_kirke_Copenhagen_Denmark.jpg/1920px-Weather_vane_Trinitatis_kirke_Copenhagen_Denmark.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La veleta de la iglesia de Trinitatis: corona, monograma, dos esferas y una punta, todo con pátina de cobre verde. Foto: Jebulon, CC0, vía Wikimedia Commons.",
+              "alt": "Una veleta de cobre de color verde pálido con un monograma coronado, una cruz y dos bolas redondas sobre una punta, con un cielo azul y nubes suaves de fondo."
+            },
+            {
+              "type": "text",
+              "content": "Y el edificio más curioso de Christian IV es la Torre Redonda, construida entre 1637 y 1642. No tiene escalera. En su lugar, una rampa en espiral de 7,5 vueltas, de unos 210 metros de longitud, asciende suavemente hasta un mirador situado a 34,8 metros de altura. La razón es práctica y un poco absurda: se diseñó para que un carruaje tirado por caballos pudiera llegar hasta la biblioteca de la universidad, situada en la parte superior, y para que se pudieran subir los libros y los pesados instrumentos del observatorio. La fachada superior presenta un acertijo dorado, fechado en 1642, construido en torno a las cuatro letras hebreas del nombre de Dios, que se lee como una plegaria pidiendo la guía divina para el rey."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/002_Copenhagen_landmark_-_The_Round_Tower_%28Rundetaarn%29_spiral_ramp.jpg/1920px-002_Copenhagen_landmark_-_The_Round_Tower_%28Rundetaarn%29_spiral_ramp.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "En el interior de la Torre Redonda: una rampa pavimentada con ladrillos asciende en curva junto a unas pequeñas ventanas, construida para caballos y carruajes. Foto: Marek Ślusarczyk (Tupungato). Álbum de fotos, CC BY 3.0, a través de Wikimedia Commons.",
+              "alt": "Un pasillo abovedado y curvo, encalado, con suelo de ladrillos de adoquín y pequeñas ventanas en arco, que se pierde de vista al doblarse."
+            },
+            {
+              "type": "header",
+              "content": "IV · Un cuadrado rojo, un cuadrado negro, una rampa naranja",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La parte más nueva de la ciudad tiene su propia paleta de colores y es mucho más llamativa. La más llamativa es Superkilen, un parque largo y estrecho que atraviesa Nørrebro, inaugurado en junio de 2012. «Kilen» significa «cuña»; el parque tiene una superficie de unos 30 000 metros cuadrados y se extiende aproximadamente 750 metros a lo largo de un carril bici. Fue diseñado por el colectivo artístico Superflex, en colaboración con Bjarke Ingels Group y los arquitectos paisajistas alemanes Topotek1, para un barrio cuyos residentes proceden de unos 62 países. La idea era unir a estos residentes con los antiguos habitantes de Copenhague a través de objetos que cada grupo pudiera reconocer. Hay 108 elementos vegetales y objetos: columpios de Irak, bancos de Brasil, una parada de autobús de la Unión Soviética, una fuente de Marruecos, papeleras de Inglaterra, tapas de alcantarilla de Zanzíbar y Polonia, mesas de picnic armenias, un tobogán japonés con forma de pulpo, letreros de neón de todo el mundo —cada uno con una placa en danés y en el idioma de su origen—."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Superkilen.JPG/1920px-Superkilen.JPG",
+              "align": "center",
+              "width": 100,
+              "caption": "La Plaza Roja de Superkilen, pintada de rojo, naranja y rosa, con letreros de neón traídos de otros lugares: una estrella y el logotipo de una marca de coches en alfabeto cirílico. Foto: Orf3us, dominio público, vía Wikimedia Commons.",
+              "alt": "Una amplia plaza llana pintada en tonos rojos y rosas, con altos postes en los que cuelgan letreros de neón —entre ellos, una estrella roja y un letrero en cirílico— y gente y ciclistas a lo lejos."
+            },
+            {
+              "type": "text",
+              "content": "El parque cuenta con tres zonas, identificadas por colores. La Plaza Roja, pintada en rojo vivo, naranja y rosa, está destinada al deporte y al juego. El Mercado Negro, situado en el centro, es la plaza clásica, con una fuente, barbacoas y palmeras procedentes de China, una «sala de estar urbana», cuyo asfalto está pintado con líneas onduladas blancas. El Parque Verde, en el extremo más alejado, es una extensa zona de césped con árboles y mesas de picnic. Superkilen ganó el Premio Aga Khan de Arquitectura en 2016 y fue finalista del Premio de la UE de Arquitectura Contemporánea, y sus autores lo describen como una obra de arte en proceso más que como un proyecto terminado. Para ser, en el fondo, una gran capa de pintura, funciona sorprendentemente bien."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/2_Superkilen_Park.jpg/1920px-2_Superkilen_Park.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El Black Market al atardecer: líneas blancas que se extienden sobre el asfalto negro, farolas y una fuente en el centro. Foto: Lorie Shaull, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Una amplia plaza negra con líneas blancas onduladas pintadas en ella, con dos farolas en el plano medio y bloques de pisos más allá, bajo la luz del atardecer."
+            },
+            {
+              "type": "text",
+              "content": "El naranja es el color de la «Serpiente de las Bicicletas» (Cykelslangen), una rampa elevada inaugurada el 28 de junio de 2014 que cruza la dársena de Gasværkshavnen entre Kalvebod Brygge y Havneholmen. Mide 220 metros de largo y 4,6 metros de ancho, con una altura libre de siete metros por debajo, y costó 32 millones de coronas danesas. Los diseñadores son Dissing+Weitling. Su función es sencilla, pero su forma no lo es: permite a los ciclistas evitar el congestionado muelle al flotar sobre el agua, con una superficie de color rojo anaranjado que la hace tan visible a gran velocidad como una señal de tráfico."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Cykelslangen_01.JPG/1920px-Cykelslangen_01.JPG",
+              "align": "center",
+              "width": 100,
+              "caption": "«Cykelslangen», la «serpiente de las bicicletas»: una rampa de color rojo anaranjado que serpentea junto a un edificio a cuadros blancos y negros. Foto: Leif Jørgensen, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Una amplia rampa de color rojo anaranjado con una barandilla clara que discurre en curva junto a un edificio alto con un diseño a cuadros blancos y negros y una plaza pavimentada."
+            },
+            {
+              "type": "header",
+              "content": "V · Azul: el puerto al que puedes lanzarte",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El último color es el que más ha cambiado la ciudad: el azul del agua. Hasta hace relativamente poco, nadie se bañaba en el puerto de Copenhague. Ahora está casi tan limpio como el estrecho de Øresund, y en verano los baños del puerto suelen estar abiertos todos los días. El primero, en Islands Brygge, abrió sus puertas para la temporada de 2002; en 2003, ese balneario original fue trasladado a Fisketorvet y sustituido en Islands Brygge por otro más grande y permanente, obra de los arquitectos JDS y Bjarke Ingels Group. Cuenta con cinco piscinas y capacidad para unas 600 personas: dos piscinas infantiles, dos piscinas de 50 metros y una piscina de saltos de siete metros de profundidad con trampolines de 3 y 5 metros. A continuación se inauguró Copencabana en Fisketorvet, con tres piscinas y trampolines, y Svanemølle Beach abrió sus puertas el 20 de junio de 2010 con un muelle de 130 metros y 4.000 metros cuadrados de aguas poco profundas. La más reciente, en Sluseholmen, abrió sus puertas el 16 de diciembre de 2011. La calidad del agua se publica en una página web específica y, tras lluvias intensas —cuando las aguas residuales pueden desbordarse—, los baños cierran durante un par de días hasta que la marea haya renovado el agua."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Havnebad_Islands_Brygge_summer_Copenhagen.jpg/1920px-Havnebad_Islands_Brygge_summer_Copenhagen.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Islands Brygge bajo el sol de la tarde: bañistas haciendo cola para tirarse desde la plataforma de madera al puerto. Foto: kallerna, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Unos jóvenes de pie en una terraza de madera a orillas del puerto, saltando al agua bajo un sol radiante, con edificios de oficinas acristalados al fondo."
+            },
+            {
+              "type": "image",
+              "content": "https://upload.wikimedia.org/wikipedia/commons/4/47/Kastrup_S%C3%B8bad.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "En un muelle que se adentra en el Øresund: la piscina marina circular de madera de Kastrup, bañada por la suave luz del atardecer. Foto: Ambroxide 24, CC0, vía Wikimedia Commons.",
+              "alt": "Un largo embarcadero de madera por el que caminan dos personas hacia una estructura redonda de madera a modo de bañera situada en el mar, bajo un cielo ligeramente nublado."
+            },
+            {
+              "type": "text",
+              "content": "Hay otra obra de arquitectura portuaria que merece un lugar aquí, ya que convierte el agua en un escenario. El Cirkelbroen, o Puente Circular, diseñado por Olafur Eliasson, se inauguró el 22 de agosto de 2015 como un regalo de la Fundación Nordea y cruza la desembocadura sur del canal de Christianshavn. Consta de cinco cubiertas circulares de acero de diámetros ligeramente diferentes, unidas entre sí, cada una con un mástil de diferente altura en su centro, y 110 cables inclinados que van desde la parte superior de los mástiles hasta los bordes de las cubiertas. Las barandillas están hechas de madera del árbol brasileño guariuba. Mide 40 metros de largo, y dos de las plataformas circulares pueden abrirse juntas para dejar pasar a los barcos. Los mástiles le dan, como dice una descripción, el aspecto de una serie de yates de vela, de modo que en una tarde ventosa parece que está a punto de zarpar."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Circle_Bridge%2C_Copenhagen%2C_20220618_1531_7319.jpg/1920px-Circle_Bridge%2C_Copenhagen%2C_20220618_1531_7319.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cirkelbroen: cinco cubiertas circulares, cinco mástiles, que cruza la desembocadura del canal de Christianshavn. Foto: Jakub Hałun, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Un puente peatonal bajo, de color rojo y acero, con cinco altos mástiles blancos y finos cables, visto sobre aguas azules con edificios de apartamentos al fondo."
+            },
+            {
+              "type": "header",
+              "content": "VI · La hora después de la cena",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Si quieres ver cómo encaja todo esto, sal después de cenar. En Copenhague, la cena de verano termina temprano y la noche es larga, y la ciudad se llena de gente que no va a ningún sitio en concreto: por la avenida de Frederiksberg, donde el sol del atardecer se cuela entre los árboles como un foco de escenario; por Vesterbrogade, donde las farolas y las luces de las bicicletas se encienden al unísono; en Tivoli, que lleva abierto desde 1843 y donde un quiosco de helados de principios del siglo XX brilla como una linterna y vende cucuruchos a gente que todavía lleva puesta la ropa de trabajo."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Girl_walking_on_Frederiksberg_All%C3%A9_on_a_summer_day._Taken_with_Kodak_Ektar_100_%2B_Canon_EOS_650_%2B_Canon_EF_135mm_f2_-_45557775225.jpg/1920px-Girl_walking_on_Frederiksberg_All%C3%A9_on_a_summer_day._Taken_with_Kodak_Ektar_100_%2B_Canon_EOS_650_%2B_Canon_EF_135mm_f2_-_45557775225.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Pasear con la bicicleta por Frederiksberg Allé un día de verano, con la luz del atardecer. Foto: Kristoffer Trolle, CC BY 2.0, vía Wikimedia Commons.",
+              "alt": "Una mujer con un abrigo naranja que empuja una bicicleta por una acera arbolada, iluminada por una cálida luz de contraluz, con mesas de cafetería y una bicicleta de carga a la izquierda."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Vesterbrogade_-_Flickr_-_Kristoffer_Trolle.jpg/1920px-Vesterbrogade_-_Flickr_-_Kristoffer_Trolle.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vesterbrogade al anochecer: ciclistas en el carril bici bajo los letreros de las tiendas. Foto: Kristoffer Trolle, CC BY 2.0, vía Wikimedia Commons.",
+              "alt": "Una calle de la ciudad al atardecer en la que dos ciclistas pasan junto a un hombre sentado en un banco junto al escaparate de una tienda cubierto de grafitis, bajo la luz azul del atardecer y la iluminación de las farolas."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Evening_at_Tivoli_%2835107021135%29.jpg/1920px-Evening_at_Tivoli_%2835107021135%29.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un quiosco de helados iluminado desde dentro en Tivoli, a primera hora de la tarde. Foto: Susanne Nilsson, CC BY-SA 2.0, vía Wikimedia Commons.",
+              "alt": "Un quiosco de helados antiguo e iluminado, con un marco ornamentado y azulejos verdes y blancos, delante del cual se recortan las siluetas de dos clientes."
+            },
+            {
+              "type": "text",
+              "content": "Nada de esto es arquitectura en sentido estricto, y, sin embargo, todo lo es. Los detalles de una ciudad no residen solo en sus edificios: están en la anchura de una acera, en el color de la pintura de un banco, en la forma en que se deja que entre la luz. Copenhague ha dedicado cuatrocientos años a conseguir que todo eso encaje a la perfección, con tonos ocre, cobre, ladrillo, pintura roja y, últimamente, el agua del puerto, y el resultado es que, en una larga tarde de verano, da la sensación de ser un lugar diseñado con un único propósito: hacer que uno quiera quedarse fuera un poco más."
+            },
+            {
+              "type": "header",
+              "content": "VII · Pequeños detalles: tiradores, rejillas, monogramas",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Cuanto más tiempo pasas por las calles antiguas, más se desvía tu mirada hacia abajo, más allá de la línea de los tejados, y descubre los pequeños detalles; y es precisamente en esos pequeños detalles donde Copenhague se muestra más generosa. Un buen edificio tiene una puerta de entrada bien pensada, y la ciudad está llena de ellas. En Østergade, una puerta blanca del número 6 tiene un panel de reja de hierro fundido detrás del cristal, un enredo de hojas y figuritas diminutas, que parece que debería estar en un museo y, sin embargo, simplemente forma parte de una puerta."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/%C3%98stergade_6_-_door_detail.jpg/1920px-%C3%98stergade_6_-_door_detail.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una reja de hierro fundido en la puerta del número 6 de Østergade: hojas, volutas y pequeñas figuras tras el cristal. Foto: Ramblersen, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Primer plano de una reja de hierro fundido ornamentada que cubre un panel de puerta, con hojas en espiral simétricas, dos pequeñas figuras y criaturas fantásticas en la base, todo ello enmarcado en blanco."
+            },
+            {
+              "type": "text",
+              "content": "En el antiguo arsenal, el Tøjhuset, la herraje de la puerta es la propia escultura: un pesado anillo de plata sujeto entre las fauces de una bestia enroscada, atornillado a la madera oscura. En la Bolsa ocurre justo lo contrario: una puerta sencilla de madera con un tirador de acero cepillado y una pequeña placa con una sola palabra, «Træk», que en danés significa «tirar». Ambas son, a su manera, perfectas: una es una criatura que pide ser tocada, la otra, una puerta que te dice qué hacer."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/D%C3%B8rh%C3%A5ndtag_til_T%C3%B8jhuset_i_K%C3%B8benhavn.jpg/1920px-D%C3%B8rh%C3%A5ndtag_til_T%C3%B8jhuset_i_K%C3%B8benhavn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Herrajes de puerta en Tøjhuset, el antiguo arsenal: un anillo de plata en la boca de una bestia sobre madera oscura. Foto: Orf3us, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Un primer plano de un pomo de puerta con forma de bestia plateada enroscada que sujeta un anillo, en una puerta de madera de color marrón rojizo con tachuelas redondas."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Tr%C3%A6k%2C_d%C3%B8r%2C_B%C3%B8rsen%2C_2016-05-14.jpg/1920px-Tr%C3%A6k%2C_d%C3%B8r%2C_B%C3%B8rsen%2C_2016-05-14.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "«Tirador» —«pull»— de una puerta en Børsen: madera, acero y un pequeño panel de cristal. Foto: Finn Årup Nielsen, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "Una puerta alta de madera con paneles de cristal en forma de rombo, un tirador curvo de acero y una pequeña placa negra con la palabra «TRÆK»."
+            },
+            {
+              "type": "text",
+              "content": "Fíjate también en la mampostería. En Knabrostræde, una puerta negra empotrada en una fachada de ladrillo rojo presenta un diseño de tablones en espiga y un marco de piedra tallada en el que el número de la casa aparece enmarcado en una pequeña corona. En el frontón de una casa que data de 1748, el año está grabado en el yeso junto a un monograma real, F R, sobre una ventana con una barandilla de balcón verde. En una esquina del palacio de Christiansborg, una garita de madera roja, con un cifrado real dorado en su tejado a dos aguas, proyecta una larga sombra con forma de farola sobre el granito. Los adoquines de Vendersgade se han reparado tantas veces, con tantos diseños diferentes, que la superficie de la calle parece un mosaico."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Hofkonditor_Zieglers_G%C3%A5rd_-_detail_02.jpg/1920px-Hofkonditor_Zieglers_G%C3%A5rd_-_detail_02.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un frontón que data de 1748 con un monograma real, «F R», sobre una ventana con una barandilla verde en el balcón. Foto: Ramblersen, CC BY-SA 4.0, vía Wikimedia Commons.",
+              "alt": "La parte superior de una casa de color crema con un frontón curvo, los números 17 y 48 y las letras F y R alrededor de una ventana redonda, y un balcón con una barandilla verde."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Sentry_box_shadow_lamp_Christiansborg_Copenhagen_Denmark.jpg/1920px-Sentry_box_shadow_lamp_Christiansborg_Copenhagen_Denmark.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una garita roja con el monograma real dorado en Christiansborg, y su sombra sobre el muro de granito. Foto: Jebulon, CC0, vía Wikimedia Commons.",
+              "alt": "Una estrecha garita de madera roja, con techo puntiagudo y un monograma coronado por una corona dorada, situada frente a un muro de granito gris, que proyecta una larga sombra oscura."
+            },
+            {
+              "type": "image",
+              "content": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Vendersgade_i_K%C3%B8benhavn.jpg/1920px-Vendersgade_i_K%C3%B8benhavn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Adoquines en Vendersgade: parches y más parches de reparaciones, una tapa de alcantarilla y una vista que se adentra en la calle. Foto: Orf3us, CC BY-SA 3.0, vía Wikimedia Commons.",
+              "alt": "Una calle empedrada en perspectiva, con diferentes motivos de piedra y parches de asfalto, una tapa de alcantarilla redonda y edificios de viviendas a ambos lados."
+            },
+            {
+              "type": "text",
+              "content": "Nada de esto figura en una lista de lugares que no hay que perderse. Esa es precisamente la cuestión. Una ciudad que se ha pasado cuatrocientos años decidiendo qué aspecto debe tener el tirador de una puerta es una ciudad que espera que le eches la mano encima."
+            },
+            {
+              "type": "header",
+              "content": "Qué hay que tener en cuenta",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Una buena forma de aprovechar todo esto es como una lista de cosas que hacer, y esa lista se compone de pequeños detalles. Fíjate en el color de las contraventanas de cualquier calle de color ocre y en cómo se ha dejado que la cal se vuelva tiza. Cuenta los mástiles de Nyhavn y fíjate en cuántos de los «antiguos» son, en realidad, barcos-museo. En la Iglesia de Nuestro Salvador, busca el punto en el que la escalera se separa de la pared y se convierte en una barandilla en el aire. En Børsen, busca el hueco en el horizonte. En Superkilen, lee la placa que hay junto a cualquier objeto y fíjate qué idioma aparece en segundo lugar. En Cykelslangen, fíjate en que el color cumple la función que tendría una señal. En Islands Brygge, busca los trampolines. Nada de esto te llevará más de un minuto, y todo ello te dice algo que una guía turística no te cuenta: que una ciudad está hecha, en general, de decisiones sobre pintura, madera, cobre y agua."
+            },
+            {
+              "type": "text",
+              "content": "Los horarios de apertura y el acceso a las torres varían según la temporada, y algunos de los edificios mencionados están en proceso de renovación o reconstrucción, así que infórmate bien sobre cada lugar antes de ir. Los baños del puerto cierran tras lluvias intensas."
+            },
+            {
+              "type": "note",
+              "content": "Este artículo se basa en entradas enciclopédicas sobre Nyhavn, Nyboder, Superkilen, los baños del puerto de Copenhague, la Iglesia de Nuestro Salvador, Børsen, la Torre Redonda, el Ayuntamiento de Copenhague, Cirkelbroen y Cykelslangen, además de un informe de conservación sobre el encalado de Nyboder y una guía turística sobre el color de Copenhague. El color original de Nyboder es objeto de controversia entre las distintas fuentes, y las explicaciones sobre los colores de Nyhavn son relatos populares más que decisiones documentadas. La fecha de inauguración de Tivoli se basa en el conocimiento general. Las interpretaciones son del autor. Las fotografías proceden de Wikimedia Commons, con los créditos correspondientes a sus autores bajo la licencia indicada en cada pie de foto."
+            },
+            {
+              "type": "link",
+              "content": "Nyhavn — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Nyhavn"
+            },
+            {
+              "type": "link",
+              "content": "Nyboder — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Nyboder"
+            },
+            {
+              "type": "link",
+              "content": "La supercuña — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Superkilen"
+            },
+            {
+              "type": "link",
+              "content": "Baños del puerto de Copenhague — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Copenhagen_Harbour_Baths"
+            },
+            {
+              "type": "link",
+              "content": "Iglesia de Nuestro Salvador — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Church_of_Our_Saviour,_Copenhagen"
+            },
+            {
+              "type": "link",
+              "content": "La Bolsa — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Børsen"
+            },
+            {
+              "type": "link",
+              "content": "El Puente Circular — Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Cirkelbroen"
+            }
+          ],
+          "publishAt": "2026-10-27T02:00:00.000Z",
+          "publishedAt": "2026-10-27T02:00:00.000Z",
+          "updatedAt": "2026-10-25T19:35:48.975Z"
         }
       ],
       "reviews": [
