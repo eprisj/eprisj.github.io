@@ -21949,6 +21949,228 @@
         }
       ],
       "updatedAt": "2026-10-25T20:33:44.183Z"
+    },
+    {
+      "id": 78,
+      "draft": false,
+      "title": "The Art of Being Human, or Why I Came Into This World",
+      "author": "Viacheslav Munister",
+      "authorId": "author-1784732936927-kw554",
+      "role": "Author",
+      "date": "Oct 30, 2026",
+      "excerpt": "An architect who never became one, a book that never got finished, and a city that changed its composition. A personal essay on order, autumn and the art of being human.",
+      "category": "Architecture",
+      "subcategory": "Essay",
+      "tags": [
+        "Essay",
+        "Architecture",
+        "Geometry",
+        "Autumn",
+        "Memory"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mvpaivg70k8lkv.jpg",
+      "showCover": true,
+      "previewToken": "art-of-being-human-3e778570bd340745",
+      "publishAt": "2026-10-30T03:00:00.000Z",
+      "content": [
+        {
+          "type": "quote",
+          "content": "“Man, endowed with free will, tends toward pure geometry.” – Le Corbusier"
+        },
+        {
+          "type": "quote",
+          "content": "“Every comfort has to be paid for.” – Ernst Jünger"
+        },
+        {
+          "type": "header",
+          "content": "Prologue",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "My name is Viacheslav, and I am the creative director of EPRIS Journal. A few days ago it was my birthday, and I decided to give myself a present. It is this essay."
+        },
+        {
+          "type": "text",
+          "content": "I was born at the end of October, and I have come to believe that it explains rather a lot. Halloween is the only holiday on which people decorate their houses with the load-bearing parts of the human body. Skeletons in the windows, ribs on the doors, a spine on the porch, and the whole street agrees for one night to show its structure and call it fun. The trees do the same thing, only more discreetly and in better colours. A person born into this exhibition is professionally acquainted with one idea, which is that what remains when the decoration falls is what matters."
+        },
+        {
+          "type": "text",
+          "content": "In the pages that follow I intend to take off the leaves, and a few masks, and to show how a man who drew rooms as a child, wrote a manual for other people’s parents and never built a single house ended up making a journal out of other people’s voices. The way there was not straight. It ran through autumn, and mostly in the dark."
+        },
+        {
+          "type": "header",
+          "content": "A Manual Without a Child",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Let me begin with a confession. I am the author of an unfinished book. It is called <em>Your Child Is an Architect</em>, and I would like you to notice the pronoun. Not <em>my</em> child. At the time I had no children, no built shed and not one signed contract, and I was explaining to other people’s parents, with great authority, how to raise a person who would build cities. I recommended the Parthenon, the golden section and a Vitruvian man holding an electric guitar. I made affectionate fun of the “tame hydrocephalic toddler”, of kindergartens and television, and of fathers whose only contribution to their son’s education is iodine on his knees."
+        },
+        {
+          "type": "text",
+          "content": "It was a happy period, in which a man is certain he knows how to live correctly and, by a fortunate coincidence, has never tried it."
+        },
+        {
+          "type": "quote",
+          "content": "A man who has never tried it is the best-qualified person to explain how it is done."
+        },
+        {
+          "type": "header",
+          "content": "The Textbook Called City D",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "I had been drawing since childhood. Pictures first, which is to say rooms, streets, courtyards, places you could walk into with your eyes and stay. It was not yet a profession. But “architect” sounded like the right answer to the question “what will you be”, because it promised order, meaning a ruler, a drawing board, a sheet of paper at 1:100 and the light from a window falling exactly where it was calculated. I sincerely believed the world was also drawn at 1:100, and one only had to find the right sheet."
+        },
+        {
+          "type": "text",
+          "content": "My city, which I will call City D, was an excellent textbook, though I did not know it. I read it the way one reads a palimpsest, where one era shows through another, where a façade lies about what is behind it, where the courtyard is more honest than the street. The plan was simple, with no surprises. Study, build, be recognised, die a respected old man in a city that was proud of him."
+        },
+        {
+          "type": "header",
+          "content": "The Air Has No Licence",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Plans, as we know, love us more than we love them. In 2014 the composition of my city changed. Not its walls, which were fine, but its people, its rules and its vocabulary. The words “may”, “agreement”, “tomorrow” and “client” quietly took on meanings that appear in no dictionary. I will not explain who was to blame or what happened. Mountains of words have been written about that, and not one of them has returned a single house. I will say only that the city where I had learned to read buildings suddenly required me to learn to read the air. For the air, it turns out, architects hold no licences."
+        },
+        {
+          "type": "text",
+          "content": "Jünger sums up the next part in one sentence to which I have nothing to add. While the tap runs and the socket is live, and a phone call brings the fire brigade, a person comes to rely on help, and is helpless on the day it does not arrive. I had taught the readers of my book to choose a hobby circle and a foreign language for their child, “straight into the embrasure”, as I joked. That the theatre itself might collapse, together with the prompter and the fire station, was not covered in any chapter. My city taught me the lesson without footnotes, and I sat the exam at once."
+        },
+        {
+          "type": "text",
+          "content": "Notice how neatly it turned out. The author of a manual on raising architects did not become an architect. The book stayed unfinished and so did the profession, and even the question “whose fault is it?” never grew into a chapter. If I had invented the plot, an editor would have returned the manuscript with the note “too on the nose”."
+        },
+        {
+          "type": "quote",
+          "content": "For the air, it turns out, architects hold no licences."
+        },
+        {
+          "type": "header",
+          "content": "Years in the Wrong Room",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "I was out of the game for a long time. For years I studied a technical specialty, and the problem there was not knowledge. Equations are patient, and they forgive everything except carelessness, and I was not careless. The problem was the environment. As you know, technical people do not much like to reflect or to feel, or at least that is how it seemed to me, and at that age seeming is the same as being. Ask an engineer how he feels about a bridge, and he will tell you its load capacity, with a look that suggests you have asked him about his mother."
+        },
+        {
+          "type": "text",
+          "content": "I may have been unfair. Some of my best readers are engineers, and some of the most tender people I know calculate beams for a living. But I was young, I was in the wrong room, and the part of me that drew pictures had been put on a long, polite hold, the way one puts a call on hold with a melody that nobody chose. I learned to count, and I learned it well. What I could not learn was to pretend that counting is all there is."
+        },
+        {
+          "type": "header",
+          "content": "A Blog with a French Verb",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Then, around the end of 2023, I came across a blog on YouTube. It was called, quite literally, <em>Masha Peut</em>. For those who do not read French (I barely do), <em>peut</em> means “can” and also “may”, precisely the little word my city had quietly confiscated ten years earlier. I do not believe in signs, and I noticed it at once, which is the usual way of not believing in them."
+        },
+        {
+          "type": "text",
+          "content": "The blog belonged to Maria, and she had a journal that came out in Telegram and as a blog. In 2025 I suggested developing the concept of that journal, and it happened. It became EPRIS Journal. This is the shortest paragraph in the essay, and the one of which I am most proud, because for years I had been writing paragraphs on the subject of things that did not happen. Nobody warned me that a thing can simply happen, with no emergency exits, no long preparation and no apology. It turns out that “may” still works, if you say it to the right person."
+        },
+        {
+          "type": "header",
+          "content": "Two Places for Order",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Which brings me back to geometry. Le Corbusier says that a person with free will tends toward pure geometry and creates order, because without order our actions lose their coherence. I believed this then, and I believe it now. Only the sentence has a reverse side that nobody prints on posters. Order lives in two places."
+        },
+        {
+          "type": "text",
+          "content": "Outside, it is a house, a street, a law, a contract. Inside, it is the habit of drawing a straight line when no one around you is drawing one."
+        },
+        {
+          "type": "text",
+          "content": "The outside order was cancelled for me, quite decisively. The inner one remained, and it turned out to carry a great deal more than I had calculated while I was writing about the Parthenon."
+        },
+        {
+          "type": "header",
+          "content": "Calligraphicus",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Remember the practicum “Calligraphicus” from my book. With a perfectly straight face I told parents that geometry begins with handwriting and not with a compass, and that a child should be taught to make letters rather than to crochet. It was a joke (a well-constructed one, I should add). Today it is my main working hypothesis."
+        },
+        {
+          "type": "text",
+          "content": "When you cannot build, you can still draw. When you cannot draw, you can write. When you cannot write what you want, you can write honestly for one reader. A line drawn with intent is already an order, even if it is the size of a palm."
+        },
+        {
+          "type": "quote",
+          "content": "A line drawn with intent is already an order, even if it is the size of a palm."
+        },
+        {
+          "type": "header",
+          "content": "Load-Bearing",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "So “the art of being human” turned out, for me, to be an architectural problem at a small scale, with no client, no budget and no right to a second option."
+        },
+        {
+          "type": "text",
+          "content": "You have to work out what in you is load-bearing and what is decoration, and not confuse them when the pressure comes. You have to leave an emptiness in yourself for another person, which is to say a pause, a different opinion, a place at the table. You must not give away what matters in exchange for comfort. Jünger names the price, and it rises without consultation. And of course you must go on drawing, even if only aloud."
+        },
+        {
+          "type": "header",
+          "content": "Rooms for Voices",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "EPRIS Journal is not compensation for a profession that did not happen (that sounds like an excuse, and I have nothing to excuse). It is the same work by other means, a room for voices, a foundation made of people, windows in the form of questions. When a photographer tells me why he leaves a frame empty, or a designer why he cuts a hole in the middle of a table, I feel that I am finally doing what I promised myself at ten years old, which is making sure people have somewhere to be. Only without bricks."
+        },
+        {
+          "type": "text",
+          "content": "Why did I come into this world? Certainly not to build one particular house. It might not have worked even if everything had gone as planned. Rather, to find out what remains of a person when the stage, the scenery and the prompter have been taken away. What remains, it turns out, is a hand that can draw a line, and a question addressed to someone else."
+        },
+        {
+          "type": "text",
+          "content": "And the child from <em>Your Child Is an Architect</em> has, by my observation, grown up after all. His house is just not made of brick."
+        },
+        {
+          "type": "header",
+          "content": "Windmills",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "There is a song I keep coming back to, “Windmills of Your Mind”. I will not quote it, since a song is a house that belongs to someone else, and one should knock before entering. But I can tell you why it fits here. A windmill is the most honest building I know. It does not argue with the air, and it does not demand a licence from it. It stands in the open, lets the wind go through, and turns what passes into bread. When I was learning to read the air, nobody told me that somewhere in the history of architecture there is a structure that does only that."
+        },
+        {
+          "type": "text",
+          "content": "The song also knows something about circles. A thought goes round, a year goes round, a plan returns in a different coat, and a boy who drew rooms becomes a man who answers for other people’s voices, and nothing has been wasted, only turned. I used to think that my life had a straight line in it and that the line was broken in 2014. Now I suspect it was always a circle, and the part I took for a break was a turn of the sail."
+        },
+        {
+          "type": "text",
+          "content": "So here is the last thing I would like to say to anyone who also lost the city they meant to build. Do not wait for a site. Put up a small mill of your own, whether a notebook, a magazine, a letter to one reader or a question to a stranger. Let the wind that took your plans go through it. You will be surprised how much grain a ruined year can grind."
+        },
+        {
+          "type": "text",
+          "content": "And if, somewhere, an unfinished manuscript is waiting on a shelf, do not worry about it. A book that is not finished is simply a mill that has not met its wind. It is not made of brick, and it never was. It is made of whatever turns."
+        },
+        {
+          "type": "text",
+          "content": "<em>Viacheslav Munister is the creative director of EPRIS Journal, an independent Italian-Ukrainian magazine about art, architecture and design. He grew up in a city he calls City D, drew pictures before he learned to read floor plans, and still hopes to finish the book.</em>"
+        },
+        {
+          "type": "text",
+          "content": "<em>Cover image. Albrecht Dürer, Melencolia I, 1514. National Gallery of Art, Washington (CC0).</em>"
+        }
+      ],
+      "updatedAt": "2026-10-26T13:26:36.185Z"
     }
   ],
   "reviews": [
@@ -41884,6 +42106,229 @@
           "publishAt": "2026-10-27T02:00:00.000Z",
           "publishedAt": "2026-10-27T02:00:00.000Z",
           "updatedAt": "2026-10-25T19:46:32.744Z"
+        },
+        {
+          "id": 78,
+          "draft": false,
+          "title": "Искусство быть человеком, или Почему я пришёл в этот мир",
+          "author": "Viacheslav Munister",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Автор",
+          "date": "30 окт. 2026",
+          "excerpt": "Архитектор, которым я не стал, книга, которую я не дописал, и город, у которого сменился состав. Личное эссе о порядке, осени и искусстве быть человеком.",
+          "category": "Архитектура",
+          "subcategory": "Эссе",
+          "tags": [
+            "Эссе",
+            "Архитектура",
+            "Геометрия",
+            "Осень",
+            "Память"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvpaivg70k8lkv.jpg",
+          "showCover": true,
+          "previewToken": "art-of-being-human-3e778570bd340745",
+          "publishAt": "2026-10-30T03:00:00.000Z",
+          "content": [
+            {
+              "type": "quote",
+              "content": "«Человек, наделённый свободной волей, тяготеет к чистой геометрии.» – Ле Корбюзье"
+            },
+            {
+              "type": "quote",
+              "content": "«За любой комфорт нужно расплачиваться.» – Эрнст Юнгер"
+            },
+            {
+              "type": "header",
+              "content": "Пролог",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Меня зовут Вячеслав, я креативный директор журнала EPRIS. Несколько дней назад у меня был день рождения, и я решил сделать себе подарок. Это эссе."
+            },
+            {
+              "type": "text",
+              "content": "Я родился в конце октября и давно подозреваю, что это многое объясняет. Хэллоуин – единственный праздник, когда люди украшают дома несущими частями человеческого тела. Скелеты в окнах, рёбра на дверях, позвоночник на крыльце, и вся улица на одну ночь соглашается показать свою конструкцию и назвать это весельем. Деревья делают то же самое, только тактичнее и в лучших цветах. Человек, родившийся в этой экспозиции, профессионально знаком с одной идеей, а именно что, когда украшения падают, важно то, что остаётся."
+            },
+            {
+              "type": "text",
+              "content": "На следующих страницах я собираюсь снять листья, пару масок и показать, как человек, который рисовал в детстве комнаты, написал пособие для чужих родителей и не построил ни одного дома, оказался с журналом, сделанным из чужих голосов. Дорога сюда была непрямой. Она шла через осень, и в основном в темноте."
+            },
+            {
+              "type": "header",
+              "content": "Пособие без ребёнка",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Начну с признания. Я автор недописанной книги. Называется она «Ваш ребёнок – архитектор», и прошу заметить местоимение. Не «мой». У меня тогда не было ни детей, ни построенного сарая, ни одного подписанного договора, а я с огромным апломбом объяснял чужим родителям, как вырастить человека, который будет строить города. Я рекомендовал им Парфенон, золотое сечение и витрувианца с электрогитарой. Я ласково потешался над «ручным гидроцефальчиком», детсадами и «голубым экраном» и над отцами, чей педагогический вклад сводится к йоду на детских коленках."
+            },
+            {
+              "type": "text",
+              "content": "Это было счастливое время, когда человек уверен, что знает, как правильно жить, и по счастливой случайности никогда этого не пробовал."
+            },
+            {
+              "type": "quote",
+              "content": "Человек, который ни разу этого не пробовал, лучше всех знает, как это делается."
+            },
+            {
+              "type": "header",
+              "content": "Учебник по имени Город Д",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Рисовать я начал с детства. Сначала картины, то есть комнаты, улицы, дворы, места, куда можно войти глазами и остаться. Это ещё не было профессией. Но слово «архитектор» звучало как правильный ответ на вопрос «кем ты будешь», потому что обещало порядок, а именно линейку, кульман, лист в масштабе 1:100 и свет из окна, падающий ровно туда, куда рассчитано. Я искренне считал, что мир тоже начерчен в масштабе 1:100, и нужно лишь найти нужный лист."
+            },
+            {
+              "type": "text",
+              "content": "Мой город, назовём его Городом Д, был прекрасным учебником, хотя тогда я об этом не знал. Я читал его как палимпсест, где одна эпоха просвечивает сквозь другую, где фасад врёт о том, что за ним, где двор честнее улицы. План был простой, без сюрпризов. Выучиться, строить, получить признание и умереть уважаемым старцем в городе, который мной гордится."
+            },
+            {
+              "type": "header",
+              "content": "У воздуха нет лицензии",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Планы, как известно, любят нас больше, чем мы их. В 2014 году у моего города изменился состав. Не стены, с ними всё было в порядке, а люди, правила и словарь. Слова «можно», «договор», «завтра» и «заказчик» тихо обрели значения, которых нет ни в одном справочнике. Я не стану объяснять, кто виноват и что произошло. Об этом написаны горы слов, и ни одно из них не вернуло ни одного дома. Скажу лишь, что город, в котором я учился читать здания, вдруг потребовал, чтобы я научился читать ещё и воздух. А на воздух, как выяснилось, у архитекторов нет лицензии."
+            },
+            {
+              "type": "text",
+              "content": "Остальное Юнгер говорит одной фразой, к которой мне нечего добавить. Пока из крана течёт вода, а в розетке ток, и по звонку приезжает пожарная, человек привыкает полагаться на помощь, а потом оказывается беспомощным в тот день, когда она не приходит. Читателей своей книги я учил выбирать ребёнку кружок и иностранный язык, «на амбразуру», как я шутил. Что может рухнуть сам театр вместе с суфлёром и пожарной частью, ни в одной главе не было. Мой город преподал мне этот урок без сносок, и экзамен я сдавал сразу."
+            },
+            {
+              "type": "text",
+              "content": "Заметьте, как изящно сложилось. Автор пособия по воспитанию архитекторов не стал архитектором. Книга осталась недописанной, профессия тоже, и даже вопрос «кто виноват?» не успел вырасти в главу. Если бы я придумал такой сюжет, редактор вернул бы рукопись с пометкой «слишком в лоб»."
+            },
+            {
+              "type": "quote",
+              "content": "На воздух, как выяснилось, у архитекторов нет лицензии."
+            },
+            {
+              "type": "header",
+              "content": "Годы не в той комнате",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Я долго был не у дел. Годами учился на технической специальности, и проблема была не в знаниях. Уравнения терпеливы, они прощают всё, кроме небрежности, а небрежным я не был. Проблема была в среде. Как вы знаете, технари не особенно любят размышлять и чувствовать, во всяком случае мне так казалось, а в том возрасте «казалось» и «есть» одно и то же. Спросите инженера, что он чувствует по поводу моста, и он назовёт вам грузоподъёмность с видом человека, которого спросили о его матери."
+            },
+            {
+              "type": "text",
+              "content": "Возможно, я был несправедлив. Некоторые из моих лучших читателей инженеры, а самые нежные люди из тех, кого я знаю, зарабатывают расчётом балок. Но я был молод, сидел не в той комнате, и та часть меня, которая рисовала картины, стояла на долгом, вежливом ожидании, как звонок, который держат на линии под мелодию, никем не выбранную. Я научился считать и считал хорошо. Не научился только делать вид, что считать – это всё."
+            },
+            {
+              "type": "header",
+              "content": "Блог с французским глаголом",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "А потом, кажется, в конце 2023 года, мне на YouTube попался блог. Он назывался буквально <em>Masha Peut</em>. Для тех, кто не читает по-французски (я почти нет), <em>peut</em> значит «может» и одновременно «можно», то самое словечко, которое мой город тихо конфисковал десятью годами раньше. Я не верю в знаки и заметил это сразу, что и есть обычный способ в них не верить."
+            },
+            {
+              "type": "text",
+              "content": "Блог принадлежал Марии, и у неё был журнал, выходивший в Telegram и в формате блога. В 2025 году я предложил развить концепцию этого журнала, и это состоялось. Он стал EPRIS Journal. Это самый короткий абзац в эссе, и я им больше всего горжусь, потому что годами писал абзацы о том, что не случилось. Никто не предупредил меня, что бывает так, что просто случилось, без запасных выходов, без долгой подготовки и без извинений. Выходит, что «можно» всё ещё работает, если сказать его нужному человеку."
+            },
+            {
+              "type": "header",
+              "content": "Два места для порядка",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Что возвращает меня к геометрии. Ле Корбюзье говорит, что человек со свободной волей тяготеет к чистой геометрии и создаёт порядок, потому что без порядка действия теряют согласованность. Я верил в это тогда, верю и сейчас. Только у фразы есть обратная сторона, которую не печатают на плакатах. Порядок живёт в двух местах."
+            },
+            {
+              "type": "text",
+              "content": "Снаружи это дом, улица, закон, договор. Внутри это привычка проводить прямую линию, когда никто вокруг её не проводит."
+            },
+            {
+              "type": "text",
+              "content": "Внешний порядок мне отменили, причём вполне решительно. Внутренний остался, и оказалось, что он несёт гораздо больше, чем я рассчитывал, когда писал про Парфенон."
+            },
+            {
+              "type": "header",
+              "content": "Каллиграфикус",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Помните практикум «Каллиграфикус» из моей книги? С совершенно серьёзным лицом я убеждал родителей, что геометрия начинается с письма, а не с циркуля, и что детей надо учить выводить буквы, а не вязать крючком. Это была шутка, хорошо выстроенная, замечу. Сегодня это моя главная рабочая гипотеза."
+            },
+            {
+              "type": "text",
+              "content": "Когда нельзя строить, ещё можно чертить. Когда нельзя чертить, можно писать. Когда нельзя писать так, как хочется, можно писать честно для одного читателя. Линия, проведённая с намерением, уже порядок, даже если она размером с ладонь."
+            },
+            {
+              "type": "quote",
+              "content": "Линия, проведённая с намерением, уже порядок, даже если она размером с ладонь."
+            },
+            {
+              "type": "header",
+              "content": "Несущее",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Так что «искусство быть человеком» оказалось для меня архитектурной задачей в малом масштабе, без заказчика, без сметы и без права на второй вариант."
+            },
+            {
+              "type": "text",
+              "content": "Нужно понять, что в тебе несущее, а что украшение, и не путать их, когда давят. Нужно оставить в себе пустоту для другого, то есть паузу, чужое мнение, место за столом. Нельзя отдавать главное в обмен на комфорт. Юнгер называет цену, и она растёт без согласования. И, разумеется, нужно продолжать чертить, хотя бы вслух."
+            },
+            {
+              "type": "header",
+              "content": "Комнаты для голосов",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "EPRIS Journal не компенсация за профессию, которой не случилось. Это звучало бы как оправдание, а мне оправдываться не в чем. Это та же работа другими средствами, то есть комната для голосов, фундамент из людей, окна в виде вопросов. Когда фотограф рассказывает, почему оставляет кадр пустым, а дизайнер, почему вырезает дыру в центре стола, я чувствую, что наконец занимаюсь тем, что обещал себе в десять лет. Делаю так, чтобы людям было где находиться. Только без кирпича."
+            },
+            {
+              "type": "text",
+              "content": "Зачем я пришёл в этот мир? Точно не затем, чтобы построить конкретный дом. Он мог не получиться, даже если бы всё сложилось. Скорее чтобы выяснить, что остаётся от человека, когда у него забрали сцену, декорации и суфлёра. Остаётся, как выясняется, рука, умеющая вести линию, и вопрос, обращённый к другому."
+            },
+            {
+              "type": "text",
+              "content": "А ребёнок из книги «Ваш ребёнок – архитектор», по моим наблюдениям, всё-таки вырос. Просто его дом не из кирпича."
+            },
+            {
+              "type": "header",
+              "content": "Мельницы",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Есть песня, к которой я всё время возвращаюсь, «Windmills of Your Mind». Цитировать я её не буду, потому что песня – чужой дом, и в него принято стучаться. Но объяснить, почему она здесь, могу. Ветряная мельница – самое честное здание из всех, что я знаю. Она не спорит с воздухом и не требует у него лицензии. Она стоит под открытым небом, пропускает ветер сквозь себя и превращает то, что проходит, в хлеб. Когда я учился читать воздух, никто не сказал мне, что в истории архитектуры есть сооружение, которое занимается только этим."
+            },
+            {
+              "type": "text",
+              "content": "А ещё песня знает кое-что о кругах. Мысль ходит по кругу, год ходит по кругу, план возвращается в другом пальто, а мальчик, рисовавший комнаты, становится мужчиной, который отвечает за чужие голоса, и ничего не пропало, всё только повернулось. Я думал, что в моей жизни была прямая линия и что в 2014 году она сломалась. Теперь подозреваю, что это всегда был круг, а то, что я принимал за разлом, было поворотом лопасти."
+            },
+            {
+              "type": "text",
+              "content": "Поэтому вот последнее, что я хотел бы сказать каждому, кто тоже потерял город, который собирался строить. Не ждите участка. Поставьте свою маленькую мельницу, будь то блокнот, журнал, письмо одному читателю или вопрос постороннему. Пусть ветер, унёсший ваши планы, пройдёт сквозь неё. Вы удивитесь, сколько зерна может смолоть пропавший год."
+            },
+            {
+              "type": "text",
+              "content": "А если где-то на полке лежит недописанная рукопись, не волнуйтесь за неё. Недописанная книга – это просто мельница, которая ещё не встретила своего ветра. Она не из кирпича и никогда не была. Она сделана из всего, что вертится."
+            },
+            {
+              "type": "text",
+              "content": "<em>Вячеслав Мунистер – креативный директор EPRIS Journal, независимого итало-украинского журнала об искусстве, архитектуре и дизайне. Вырос в городе, который называет Городом Д, рисовал картины раньше, чем научился читать планы, и всё ещё надеется дописать книгу.</em>"
+            },
+            {
+              "type": "text",
+              "content": "<em>Обложка. Альбрехт Дюрер, «Меланхолия I», 1514. Национальная галерея искусства, Вашингтон (CC0).</em>"
+            }
+          ],
+          "locked": true,
+          "updatedAt": "2026-10-26T13:26:38.365Z"
         }
       ],
       "reviews": [
