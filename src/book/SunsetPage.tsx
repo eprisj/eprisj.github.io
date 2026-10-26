@@ -4,7 +4,7 @@ import './sunset.css';
 /**
  * «Sunset of the Midnight Sun»: страница книги со свободным скачиванием.
  *
- * Розовое поле и чёрные буквы обложки, обложка, аннотация с задней стороны,
+ * Белая страница, обложка, аннотация с задней стороны,
  * кнопки PDF и EPUB. Файлы лежат в public/book и обновляются из репозитория
  * книги (python3 build.py, затем копия build/*.pdf и build/*.epub сюда).
  */
@@ -19,8 +19,8 @@ const BOOK = {
     'A crowd of ordinary and extraordinary people watch their certainties come down, one after another, in a light that will not go out.',
   ],
   downloads: [
-    { label: 'Download PDF', note: 'Reading edition · 6 × 9 in · 267 pages', href: '/book/sunset-of-the-midnight-sun.pdf' },
-    { label: 'Download EPUB', note: 'For e-readers and phones', href: '/book/sunset-of-the-midnight-sun.epub' },
+    { label: 'PDF', note: '267 pages', primary: true, href: '/book/sunset-of-the-midnight-sun.pdf' },
+    { label: 'EPUB', note: 'e-readers and phones', primary: false, href: '/book/sunset-of-the-midnight-sun.epub' },
   ],
 };
 
@@ -51,7 +51,8 @@ export function SunsetPage() {
           </div>
           <div className="sunset-downloads">
             {BOOK.downloads.map((d) => (
-              <a key={d.href} className="sunset-btn" href={d.href} download>
+              <a key={d.href} className={`sunset-btn${d.primary ? ' is-primary' : ''}`} href={d.href} download>
+                <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3v9m0 0l-4-4m4 4l4-4M4 16h12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 <span>{d.label}</span>
                 <small>{d.note}</small>
               </a>
