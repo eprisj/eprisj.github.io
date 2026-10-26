@@ -1,96 +1,45 @@
-/* Страница книги: ультрамарин и песок. Всё под .sunset-root, чтобы не
-   протечь в остальные разделы. Цвета повторяют BLUE и SAND из Burst.tsx. */
+/* Страница книги: розовое поле и чёрные буквы обложки. Всё под .sunset-root,
+   чтобы не протечь в остальные разделы. */
 .sunset-root{
-  --s-blue:#1f35d8;
-  --s-blue-deep:#1527a8;
-  --s-sand:#e6d3b3;
-  --s-paper:#f1e6d2;
-  --s-ink:#141414;
-  --s-serif:'Instrument Serif',Georgia,serif;
-  --s-sans:'Inter Tight','Helvetica Neue',Arial,sans-serif;
-  --s-pad:clamp(16px,5vw,64px);
-  background:var(--s-paper);
-  color:var(--s-ink);
-  font-family:var(--s-sans);
-  -webkit-font-smoothing:antialiased;
+  --s-pink:#f699af;
+  --s-ink:#130b0d;
+  --s-sans:'Jost','Helvetica Neue',Arial,sans-serif;
+  min-height:100svh;display:flex;flex-direction:column;
+  background:var(--s-pink);color:var(--s-ink);
+  font-family:var(--s-sans);-webkit-font-smoothing:antialiased;
 }
 .sunset-root *{box-sizing:border-box}
-.sunset-root a{color:inherit}
-
-/* HERO */
-.sunset-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;color:#fff}
-.sunset-burst{position:absolute;inset:0;width:100%;height:100%;display:block}
-.sunset-nav{
-  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;
-  padding:24px var(--s-pad);
+.sunset-wrap{
+  flex:1;width:100%;max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,88px);
+  align-items:center;padding:clamp(32px,6vw,80px) clamp(20px,5vw,64px);
 }
-.sunset-logo{font-family:var(--s-serif);font-size:28px;letter-spacing:.02em;text-decoration:none}
-.sunset-pill{
-  font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);background:rgba(31,53,216,.35);
+.sunset-cover{width:100%;height:auto;display:block;box-shadow:0 24px 60px rgba(19,11,13,.28)}
+.sunset-label,.sunset-author{
+  margin:0;font-size:12px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;
 }
-.sunset-hero-inner{
-  position:relative;z-index:1;flex:1;width:100%;max-width:1240px;margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,72px);
-  align-items:center;padding:clamp(12px,3vw,40px) var(--s-pad) 18vh;
+.sunset-text h1{
+  margin:18px 0 14px;font-weight:500;font-size:clamp(28px,4vw,46px);
+  letter-spacing:.06em;text-transform:uppercase;line-height:1.15;
 }
-.sunset-eyebrow{margin:0 0 18px;font-size:14px;font-weight:500;letter-spacing:.02em;opacity:.85}
-.sunset-hero h1{
-  margin:0;font-family:var(--s-serif);font-weight:400;
-  font-size:clamp(52px,8.4vw,124px);line-height:.95;letter-spacing:-.02em;
+.sunset-hook{margin:36px 0 18px;font-size:clamp(17px,2vw,21px);font-weight:500;letter-spacing:.02em}
+.sunset-blurb p{margin:0 0 1em;font-size:16px;line-height:1.65;max-width:34em}
+.sunset-downloads{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.sunset-btn{
+  display:flex;flex-direction:column;gap:4px;min-width:220px;padding:16px 22px;
+  background:var(--s-ink);color:var(--s-pink);text-decoration:none;
+  transition:transform .15s ease;
 }
-.sunset-hero h1 em{font-style:italic}
-.sunset-hook{margin:26px 0 0;max-width:30ch;font-size:clamp(17px,1.6vw,20px);line-height:1.45;opacity:.9}
-.sunset-cta{
-  display:inline-block;margin-top:30px;padding:14px 22px;border-radius:999px;
-  background:var(--s-sand);color:var(--s-blue-deep)!important;text-decoration:none;font-weight:600;font-size:15px;
+.sunset-btn:hover{transform:translateY(-2px)}
+.sunset-btn span{font-size:13px;font-weight:500;letter-spacing:.28em;text-transform:uppercase}
+.sunset-btn small{font-size:13px;opacity:.75}
+.sunset-free{margin:16px 0 0;font-size:13px;opacity:.7}
+.sunset-footer{
+  padding:20px clamp(20px,5vw,64px) 28px;font-size:12px;letter-spacing:.12em;
+  text-align:center;opacity:.75;
 }
-.sunset-cta:hover{background:#fff}
-.sunset-book img{
-  display:block;width:100%;max-width:340px;margin-left:auto;aspect-ratio:2/3;object-fit:cover;
-  border-radius:3px;box-shadow:0 40px 80px -30px rgba(10,16,80,.75);
-}
-
-/* ABOUT */
-.sunset-about{max-width:1240px;margin:0 auto;padding:clamp(56px,9vw,120px) var(--s-pad)}
-.sunset-about-inner{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:clamp(20px,4vw,56px)}
-.sunset-label{margin:6px 0 0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s-blue)}
-.sunset-blurb p{margin:0 0 .9em;font-family:var(--s-serif);font-size:clamp(24px,2.6vw,34px);line-height:1.22;letter-spacing:-.005em}
-.sunset-blurb p + p{color:rgba(20,20,20,.62)}
-.sunset-facts{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;
-  margin:clamp(40px,6vw,72px) 0 0;padding-top:22px;border-top:1px solid rgba(31,53,216,.35);
-}
-.sunset-facts dt{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s-blue)}
-.sunset-facts dd{margin:6px 0 0;font-size:17px}
-
-/* FOOTER: колонки на ультрамарине, под ними пейзаж. */
-.sunset-footer{position:relative;background:var(--s-blue);color:#fff;padding:clamp(40px,6vw,64px) var(--s-pad) 0;overflow:hidden}
-.sunset-footer-top{
-  position:relative;z-index:1;max-width:1240px;margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:32px;
-}
-.sunset-footer-brand p{margin:18px 0 0;max-width:36ch;font-size:16px;line-height:1.5;color:rgba(255,255,255,.82)}
-.sunset-footer-brand em{font-style:italic;font-family:var(--s-serif);font-size:1.12em}
-.sunset-footer-col p{margin:6px 0 18px;font-size:15px;font-weight:500}
-.sunset-footer-col a{display:block;margin-top:12px;font-size:15px;color:rgba(255,255,255,.75);text-decoration:none}
-.sunset-footer-col a:hover{color:#fff}
-.sunset-footer-bottom{
-  position:relative;z-index:1;max-width:1240px;margin:clamp(36px,5vw,56px) auto 0;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  padding-top:22px;border-top:1px solid rgba(255,255,255,.3);font-size:14px;
-}
-.sunset-footer-art{
-  display:block;height:clamp(240px,34vw,420px);
-  margin:0 calc(-1 * var(--s-pad));width:calc(100% + 2 * var(--s-pad));
-  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%);mask-image:linear-gradient(to bottom,transparent,#000 22%);
-}
-
-@media (max-width:860px){
-  .sunset-hero-inner{grid-template-columns:1fr;padding-bottom:14vh}
-  .sunset-book img{max-width:230px;margin:0}
-  .sunset-about-inner{grid-template-columns:1fr}
-  .sunset-facts{grid-template-columns:1fr 1fr}
-  .sunset-footer-top{grid-template-columns:1fr 1fr}
-  .sunset-footer-brand{grid-column:1 / -1}
+@media (max-width:760px){
+  .sunset-wrap{grid-template-columns:1fr;gap:32px}
+  .sunset-cover{max-width:360px;margin:0 auto}
+  .sunset-btn{width:100%}
 }
