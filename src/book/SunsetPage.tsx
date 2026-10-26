@@ -15,8 +15,8 @@ const BOOK = {
   cover: '/uploads/sunset-cover-pink.jpg',
   hook: 'The last stronghold on the Pacific has fallen.',
   blurb: [
-    'Autumn 1922. A steamer slips out of Vladivostok with hundreds of people who have lost a country and are not sure what they are carrying instead. A storm, a wreck on the coast of the Alaska Panhandle, a winter among strangers, and an old story about who gets to call a land theirs.',
-    'A crowd of ordinary and extraordinary people watch their certainties come down, one after another, in a light that will not go out.',
+    'An empire has ended, and the people who believed in it are fleeing by sea. Officers and thieves, believers and sceptics, old men and children, each carrying the story they tell about themselves. Then the ship breaks on a coast that was never empty, and every certainty has to be argued all over again.',
+    'A novel about how a country is lost, who pays for the land it was built on, and what is left of a person when everything they were sure of has gone down with the ship.',
   ],
   downloads: [
     { label: 'PDF', note: '267 pages', primary: true, href: '/book/sunset-of-the-midnight-sun.pdf' },
