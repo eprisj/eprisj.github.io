@@ -247,12 +247,16 @@ export function ExpertisePage() {
   const prev = idx > 0 ? MODULES[idx - 1] : null;
 
   useEffect(() => {
-    /* Курс не для выдачи Google: глубокие адреса глав отдаёт общая заглушка,
-       у которой в разметке index, поэтому закрываем и здесь. */
+    /* Курс не для поисковой выдачи. Сервер также отдаёт X-Robots-Tag,
+       а здесь устраняем конфликт с индексируемой SPA-заглушкой и не передаём
+       сигналы этих служебных модулей через ссылки дальше. */
     {
       let robots = document.querySelector('meta[name="robots"]');
       if (!robots) { robots = document.createElement('meta'); robots.setAttribute('name', 'robots'); document.head.appendChild(robots); }
-      robots.setAttribute('content', 'noindex, follow');
+      robots.setAttribute('content', 'noindex, nofollow, noarchive');
+      let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+      canonical.href = `https://eprisjournal.com${window.location.pathname}`;
     }
     document.title = mod
       ? `${mod.title} · ${COURSE_TITLE} · EPRIS`
