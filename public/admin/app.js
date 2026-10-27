@@ -16553,7 +16553,7 @@ function bindStudioMediaActions() {
       <button class="btn btn-primary btn-sm" type="button" data-access="approve" data-role="editor">Принять редактором</button>
       <button class="btn btn-sm" type="button" data-access="approve" data-role="admin">Принять главным редактором</button>
       <button class="btn btn-sm btn-danger-text" type="button" data-access="reject">Отклонить</button>`,
-    a.createdAt ? 'заявка от ' + when(a.createdAt) : '')).join('');
+    [a.createdAt ? 'заявка от ' + when(a.createdAt) : '', a.pushReady ? 'придёт уведомление' : 'без уведомления: ответ увидит при открытии приложения'].filter(Boolean).join(' · '))).join('');
 
     const activeHtml = active.map((a) => person(a, `
       ${roleSelect(a)}
@@ -16578,7 +16578,7 @@ function bindStudioMediaActions() {
       </div>`).join('');
 
     wrap.innerHTML =
-      section('Заявки', pending.length, pendingHtml, 'Новых заявок нет. Человек, которого вы не приглашали, появится здесь после первого входа.') +
+      section('Заявки', pending.length, pendingHtml, 'Новых заявок нет. Человек появится здесь, когда запросит доступ к редакции в приложении.') +
       section('В редакции', active.length, activeHtml, 'Пока никого. Пригласите первого человека выше.') +
       section('Приглашения', state.invites.length, invitesHtml, 'Открытых приглашений нет.') +
       (disabled.length ? section('Отключены', disabled.length, disabledHtml, '') : '');
@@ -16630,7 +16630,9 @@ function bindStudioMediaActions() {
     if (kind === 'approve') {
       const role = btn.dataset.role;
       act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'active', role }),
-        `${name}: принят, роль: ${ROLE_LABEL[role].toLowerCase()}. Пусть войдёт в приложение ещё раз.`);
+        `${name}: принят, роль: ${ROLE_LABEL[role].toLowerCase()}. ` + (account && account.pushReady
+          ? 'Телефон получит уведомление, редакция откроется сама.'
+          : 'Уведомление отправить нельзя (оно выключено на телефоне): человек увидит доступ, когда откроет приложение.'));
     } else if (kind === 'reject') {
       showConfirmModal(`Отклонить заявку «${name}»?`, 'Человек увидит в приложении, что доступ отключён. Позже его можно включить.', 'Отклонить').then((ok) => {
         if (ok) act(card, () => api('PATCH', '/editors/' + encodeURIComponent(id), { status: 'disabled' }), 'Заявка отклонена.');
