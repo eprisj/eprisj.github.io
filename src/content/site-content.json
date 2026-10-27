@@ -149095,6 +149095,397 @@
           "title": "L'art d'être humain, ou pourquoi je suis venu dans ce monde",
           "excerpt": "Un architecte qui n'en est jamais devenu un, un livre qui n'a jamais été terminé et une ville qui a changé sa composition. Trois histoires sur les cartes, l'ordre, l'automne et l'art d'être humain.",
           "category": "Architecture"
+        },
+        {
+          "id": 77,
+          "draft": true,
+          "title": "Federica Gioffredi : d'abord le cœur, puis l'esprit, enfin l'œil",
+          "author": "Viacheslav Munister & Federica Gioffredi",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "25 oct. 2026",
+          "excerpt": "La photographe napolitaine Federica Gioffredi sur un Olympus et un père champion d'offshore, sur le noir et blanc qui cache un univers de couleurs, sur le linge étendu qui attend le vent, sur Sanfelice vu d'en bas, sur la maison-galerie de Parco Margherita et sur un projet né pendant le Covid.",
+          "category": "interview",
+          "subcategory": "Interview",
+          "tags": [
+            "Interview",
+            "photographie",
+            "Naples",
+            "noir et blanc",
+            "Federica Gioffredi"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvo9dsp12tgxao.webp",
+          "previewToken": "federica-gioffredi-20261025",
+          "content": [
+            {
+              "type": "text",
+              "content": "Federica Gioffredi fige l'instant qui semblait quelconque : un drap gonflé par le vent dans une ruelle, une capuche blanche soulevée lors d'une procession, un escalier vu d'en haut, le portique de Paris réfléchi dans une sphère d'acier. Elle est née à Naples en 1972. Pendant environ dix ans, elle a travaillé à Milan comme négociatrice en bourse ; puis elle est partie pour Bali pour des vacances et, comme elle l'a raconté, elle y est restée quatre ans. Aujourd'hui, la photographie est son métier."
+            },
+            {
+              "type": "text",
+              "content": "Son travail passe par le noir et blanc, le voyage et la mémoire, et s'ouvre últimement aussi à la couleur : de <i>Kosmo</i> à <i>Sinestesie d’acqua</i>, des cinq volumes de <i>Documento > Monumento</i> pour la Fondazione Banco di Napoli à <i>Ardite invenzioni</i>, <i>FRIENDS</i> et <i>Il Giappone. Equilibrio nel tempo</i>. Elle a transformé sa maison de Parco Margherita en une home gallery, la FG Home Gallery."
+            },
+            {
+              "type": "text",
+              "content": "Nous lui avons écrit de longues questions, et elle a répondu à sa manière : avec simplicité, en quelques lignes, sans explications superflues. Une phrase nous a plus marqués que les autres : « Si je devais choisir entre le cœur, l'esprit et l'œil, je mettrais certainement le cœur en premier lieu. » Voici la conversation, avec neuf photographies choisies par elle."
+            },
+            {
+              "type": "header",
+              "content": "<span class=\"kicker\">Partie I</span>Le regard derrière l'appareil",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<span class=\"dek\">Un Olympus, la vitesse de la mer et l'immobilité d'une photographie ; que cache un objectif ; du sac de Milan à Bali et retour.</span>"
+            },
+            {
+              "type": "header",
+              "content": "La vitesse et l'instant",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>Viacheslav Munister [VM] : Elle est née à Naples en 1972, fille d'Antonio Gioffredi, champion du monde de motonautique offshore, et c'est son père qui lui a offert son premier appareil photo, un Olympus. Un père qui vit de vitesse et une fille qui écrit « mon pouvoir d'arrêter le temps » : la vitesse et l'immobilité sont-elles opposées, ou sont-elles deux façons de regarder la même vague ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Federica Gioffredi [FG] :</b> En réalité, je crois que la vitesse et la photographie sont deux mondes très différents, presque en opposition. La vitesse est mouvement, c'est quelque chose qui échappe, tandis que la photographie est précisément le désir d'arrêter un instant, de le soustraire au temps. Peut-être que le seul point de rencontre est justement cela : l'instant. Ce qui unit certainement ces deux dimensions, c'est une façon particulière de regarder la vie, une perspective différente de celle des autres. Au fond, je crois que tant dans la vitesse que dans la photographie, il y a la capacité de percevoir quelque chose que tout le monde n'arrive pas à saisir. Et peut-être que c'est là le lien le plus authentique : non pas tant la vitesse ou l'immobilité, que la manière dont nous choisissons de regarder le monde."
+            },
+            {
+              "type": "header",
+              "content": "Derrière l'appareil",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Dans votre présentation sur Instagram, vous écrivez « cacher mon regard derrière l'appareil », un geste qui vous apporte « paix et tranquillité » ; sur le site, vous ajoutez : « J'observe mon monde intérieur pour le transposer ensuite dans la photographie ». De quoi se cache-t-on derrière l'appareil ? Photographier est-il pour vous une façon d'être plus présent au monde ou d'en disparaître un instant ? Et que reste-t-il du monde extérieur quand l'image est achevée ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Quand je parle de cacher mon regard derrière l'appareil photo, je ne veux pas dire me cacher du monde, mais simplement me placer derrière un objectif. C'est précisément ce geste qui me procure une immense sensation de paix. Regarder le monde, la vie, les gens qui défilent à travers ce petit rectangle est quelque chose de profondément intime. C'est comme si, dans cet espace si restreint, tout prenait un sens différent. Je choisis un instant, je l'arrête dans le temps et j'essaie de le transformer en émotion. Ce n'est donc pas une façon de disparaître du monde, mais peut-être d'y entrer encore plus profondément, à travers mon regard et ma sensibilité. Le monde extérieur reste là, dans l'image, mais s'entremêle inévitablement avec ce que je ressens en moi."
+            },
+            {
+              "type": "header",
+              "content": "Du sac à Bali",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Pendant une dizaine d'années, elle a travaillé à Milan comme négociatrice en bourse ; puis, comme elle l'a raconté, « je suis partie pour Bali pour des vacances et j'y suis restée quatre ans ». La bourse et la photographie ont quelque chose en commun : l'instant, la décision, le risque d'arriver une seconde trop tard. Qu'est-ce que Bali lui a donné que Milan ne pouvait pas lui donner, et pourquoi est-elle ensuite revenue à Naples ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Je crois que la bourse et la photographie sont deux mondes apparemment très lointains, mais qui ont quelque chose en commun : les chiffres, le temps et surtout l'importance de l'instant. En bourse, chaque seconde peut faire la différence, tout comme en photographie, où tout se joue en une fraction de seconde. Bali, en revanche, m'a offert une dimension complètement différente de celle que j'avais vécue à Milan. Puis je suis revenue à Naples, parce que je crois que Naples a quelque chose d'unique : c'est une ville dont on peut s'éloigner, même pendant de nombreuses années, mais qui continue d'une certaine manière à vous appartenir. Elle reste en vous, dans le cœur, dans les souvenirs, dans les émotions."
+            },
+            {
+              "type": "header",
+              "content": "<span class=\"kicker\">Partie II</span>Le noir et blanc, et la couleur",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<span class=\"dek\">Le cœur avant l'esprit et l'œil ; un univers de couleurs dans le gris ; un vieil homme en noir et blanc et une maiko qui devait être rouge.</span>"
+            },
+            {
+              "type": "header",
+              "content": "Cœur, esprit, œil",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: «Je me suis toujours exprimée en noir et blanc parce que j'aime ce type de photographie», a-t-elle dit. Dans votre biographie figure Cartier-Bresson : mettre «sur la même ligne de mire le cœur, l'esprit et l'œil». Des trois, lequel arrive en premier quand vous déclenchez ? Et qu'est-ce que le noir et blanc ôte à une ville colorée comme Naples, et qu'est-ce qu'il lui rend ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG:</b> Si je devais choisir entre le cœur, l'esprit et l'œil, je mettrais sans doute le cœur en premier, puis l'esprit et enfin l'œil. Cela peut sembler un paradoxe, car en photographie l'œil devrait être le protagoniste, mais pour moi ce n'est pas le cas. C'est le cœur qui ressent, l'esprit qui interprète et seulement ensuite l'œil qui traduit tout cela en une image. Quant au noir et blanc, je ne l'ai jamais considéré comme une photographie dépourvue de couleurs. Au contraire, je crois que dans les infinies nuances de gris se cache un univers de couleurs et d'émotions. Chaque tonalité raconte quelque chose."
+            },
+            {
+              "type": "header",
+              "content": "Quand la couleur est nécessaire",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Avec Le Japon. Équilibre dans le temps, la couleur fait son entrée pour la première fois aux côtés du noir et blanc, et le rouge, a-t-elle dit, est la couleur qu'elle associe à ce pays. Parmi vos photographies préférées, vous avez cité une maiko vue de dos, en couleur, et un homme âgé assis sur les marches, en noir et blanc. Comment décidez-vous, face à une scène, si elle doit être en couleur ou en noir et blanc ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Je privilégie le noir et blanc car c'est celui dans lequel je me reconnais le plus, celui que je sens le plus proche de ma sensibilité. Pour moi, le noir et blanc n'est pas du tout dépourvu de couleurs : dans les infinies nuances de gris, je retrouve une profondeur et une intensité émotionnelle particulières, comme si à travers ces tonalités je parvenais à entrer dans l'image, presque à la toucher. Il y a cependant des photographies qui ont besoin de la couleur, car c'est précisément la couleur qui en raconte l'essence. Dans mon exposition dédiée au Japon, par exemple, il y a la photographie d'un homme âgé assis sur un escalier, au visage profondément marqué par le temps. Cette image, pour moi, ne pourrait être qu'en noir et blanc. Chaque ride, chaque trait de son visage acquiert une force extraordinaire, presque tactile. C'est comme si je pouvais effleurer cette peau et sentir l'histoire qu'elle raconte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dwtavxy6vr.webp",
+              "caption": "Vieux. Japon, 2024. Tiré de Le Japon. Équilibre dans le temps.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Un homme âgé avec un chapeau et une barbe blanche, assis les jambes croisées sur un escalier en pierre, en noir et blanc",
+              "align": "center",
+              "width": 60
+            },
+            {
+              "type": "text",
+              "content": "À l'inverse, la photographie de la Maiko devait absolument être en couleur. Lui retirer la couleur aurait signifié perdre une partie fondamentale du Japon : ce rouge si intense, si vivant, presque un feu, qui renferme toute la force et l'énergie de cette culture."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dv3jbm0o00.webp",
+              "caption": "Maiko. Japon, 2024. De Il Giappone. Équilibre dans le temps.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Une maiko vue de dos : coiffure avec ornements rouges, kimono orange à rayures, fond noir",
+              "align": "center",
+              "width": 60
+            },
+            {
+              "type": "header",
+              "content": "<span class=\"kicker\">Partie III</span>Le voyage et la mémoire",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<span class=\"dek\">Mille deux cents clichés pour un voyage de Naples à Martina Franca ; les quatre éléments ; le linge, la procession et le coup de vent ; deux lacs.</span>"
+            },
+            {
+              "type": "header",
+              "content": "«Touriste en ville»",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: «Le voyage est la véritable substance de ma recherche», écrit-il en présentant Kosmo. Deux siècles plus tard… De Naples à Martina Franca, un voyage «sur les traces du Grand Tour» : cinq étapes, 331,6 kilomètres, 1 234 clichés. Comment choisir, parmi tant de clichés, ce qui raconte un lieu ? Et peut-on être voyageur dans sa propre terre ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG:</b> Les mille deux cents clichés sont le résultat des différentes étapes de mon voyage, des lieux traversés et des moments que j'ai voulu capturer. Je me suis souvent attardée sur le même sujet, le photographiant plusieurs fois, sous des angles et des perspectives différents, cherchant à chaque fois quelque chose de différent. La partie la plus difficile a sans doute été la sélection, car je devais réussir à enfermer l'histoire et l'essence d'un lieu à travers très peu d'images. J'ai dû donc faire un premier choix des photographies que je sentais les plus représentatives et, par la suite, continuer à les sélectionner, jusqu'à arriver à celles qui réussissaient le mieux à raconter ce que j'avais vu et vécu. En ce qui concerne le fait de photographier ma ville, j'aime me définir comme une « touriste dans ma ville ». J'aime arpenter Naples, découvrir de nouveaux coins, connaître des lieux que je n'avais pas encore explorés et les regarder à chaque fois avec des yeux différents. Naples est une ville qui a énormément à raconter et à montrer, et je crois qu'on ne finit jamais vraiment de la découvrir. C'est une habitude qui me tient à cœur et à laquelle je consacre du temps au moins une ou deux fois par semaine. J'aime me perdre dans ses rues, observer, me laisser surprendre et bien sûr photographier. Au fond, pour moi, voyager ne signifie pas nécessairement aller loin. Parfois, il suffit de sortir de chez soi et de regarder sa propre ville avec la curiosité de celui qui la voit pour la première fois."
+            },
+            {
+              "type": "header",
+              "content": "Les quatre éléments",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Kosmo, sous la direction de Bianca Stranieri, est dédié aux quatre éléments : Feu, Eau, Air et Terre, vingt-huit photographies en quatre séries de sept. Comment photographie-t-on l'air, qui est invisible ? Et lequel des quatre éléments vous parle le plus ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG:</b> Certainement, l'eau est l'élément auquel je me sens le plus liée, celui dans lequel je me reconnais le plus, suivi immédiatement par le feu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dtpeyxlbtq.webp",
+              "caption": "Feu. Vésuve, Naples, 2021. De Kosmo.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Un feu de bois aux flammes nettes sur fond sombre, en noir et blanc",
+              "align": "center",
+              "width": 72
+            },
+            {
+              "type": "text",
+              "content": "Pour représenter l'air, en revanche, j'ai choisi surtout des photographies d'arbres, car j'aimais l'idée de raconter quelque chose qu'on ne peut pas voir directement, mais dont on peut percevoir la présence. J'ai pensé au vent qui traverse les feuilles, à leur mouvement, et cela m'a semblé le moyen le plus naturel pour donner forme, à travers la photographie, à un élément invisible. Fait exception une photographie prise à Rocca Calascio, dans les Abruzzes, où c'est le ciel qui est protagoniste."
+            },
+            {
+              "type": "header",
+              "content": "Le blanc du linge étendu",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Dans vos photographies, un tissu blanc revient souvent : des draps étendus dans les ruelles de Naples et les tuniques des Biancovestiti de Lauro. Le linge et la pénitence, le quotidien et le sacré, dans le même blanc : est-ce un hasard ou un choix ? Combien de temps attend-elle un coup de vent ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> J'ai toujours été fascinée par le linge étendu, au point de lui avoir consacré un projet photographique intitulé Mollette e panni. Je ne l'ai pas photographié seulement à Naples, mais aussi dans de nombreuses autres villes, comme Barletta, Martina Franca, Rome et Venise. C'est un sujet qui m'attire particulièrement, peut-être parce qu'il parvient à raconter le quotidien et la vie des gens à travers quelque chose d'aussi simple. Combien de temps suis-je prête à attendre un coup de vent ? Pas mal de temps ! Je me souviens d'une photographie prise à Naples, dans le quartier Sanità. J'étais immobile sous un immeuble, le regard tourné vers le haut, et j'observais tous ces linges étendus qui se gonflaient et se dégonflaient au passage du vent. Finalement, cela s'est produit, et la photographie que j'avais imaginée est née."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9ds0885q8sr.webp",
+              "caption": "Les Biancovestiti. Lauro (AV), 2018. De Deux siècles après, de Naples à Martina Franca.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Pénitents encapuchonnés en tuniques blanches, avec des couronnes de brindilles, dans une procession ; une capuche est soulevée par le vent",
+              "align": "center",
+              "width": 100
+            },
+            {
+              "type": "header",
+              "content": "Deux lacs",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Synesthésies d'eau. Entre ciel et terre, sous la direction de Bianca Stranieri, met côte à côté le Lac d'Averne et le Lac d'Annecy pour parler de la dualité de l'homme : bien et mal, vie et mort. Pourquoi précisément ces deux lacs ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Le lac d'Annecy, en Haute-Savoie, me procure une sensation de paix absolue. C'est un lieu que je connais très bien, car j'y retourne souvent grâce à une amie qui m'héberge. Le paysage ressemble presque à un tableau, avec ses couleurs tendres, le lac calme, les gens qui se promènent et une atmosphère de grande sérénité. Chaque fois que j'y suis, je ressens une tranquillité si profonde qu'il me vient spontanément de l'associer à l'image du paradis. Le lac d'Averne, en revanche, me transmet des sensations complètement différentes. C'est un lieu qui, malgré ses dimensions réduites, possède une énergie extraordinaire, presque mystérieuse. Une énergie que je retrouve aussi dans les vers des nombreux auteurs qui l'ont décrit et qui, selon moi, se perçoit réellement quand on s'y trouve. Non sans raison, Virgile le décrit comme la porte d'accès aux Enfers. C'est un lieu intense, chargé de suggestions, qui m'a naturellement amenée à l'associer à l'enfer. C'est de là qu'est née l'idée de mettre en parallèle ces deux lacs, en utilisant précisément l'eau, l'élément auquel je me sens le plus liée, pour raconter deux mondes complètement opposés."
+            },
+            {
+              "type": "header",
+              "content": "<span class=\"kicker\">Partie IV</span>Naples : archives, architecture, amitié",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<span class=\"dek\">Du Caravage au stade vide ; un palais découvert par hasard dans le quartier Sanità ; quarante-quatre photographies pour quarante-quatre amis ; une maison qui est une galerie.</span>"
+            },
+            {
+              "type": "header",
+              "content": "De Caravage à Maradona",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: Documento &gt; Monumento, d'après une idée de Bianca Stranieri pour la Fondation Banco di Napoli, est arrivé à son cinquième volume: de C'arte in fotografia e Intorno a Caravaggio à Il Patrimonio UNESCO in Campania, I 2500 anni di Napoli e Napoli 100. Comment s'est passé le passage de l'art au football, et comment photographie-t-on un stade immense et vide?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG:</b> Documento &gt; Monumento a été une expérience extraordinaire, surtout parce que chaque volume abordait un thème différent et m'a donné la possibilité d'explorer des mondes également très éloignés les uns des autres. Nous sommes passés de Caravage, qui pour moi représente l'art pur, au patrimoine UNESCO, qui m'a menée à visiter et photographier divers lieux de Campanie, jusqu'au football, un monde que je connaissais relativement peu. Je suis le football, mais je n'ai jamais été une grande passionnée."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dw0ssr6z93.webp",
+              "caption": "Certosa di Padula, escalier. Padula, 2024. Da Documento > Monumento, volume III, Il Patrimonio UNESCO in Campania.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Intérieur d'un atrium avec un large escalier à volées, de hautes fenêtres et une arche ouverte sur le jardin, en noir et blanc",
+              "align": "center",
+              "width": 72
+            },
+            {
+              "type": "text",
+              "content": "C'est précisément pour cette raison que l'une des expériences qui m'a le plus marquée a été de photographier le stade Diego Armando Maradona complètement vide. Au début, je me suis demandé comment je pourrais raconter à travers une image un lieu si grand, mais dépourvu des gens et des émotions qui l'animent habituellement. Et pourtant, ce fut une surprise incroyable. J'ai perçu une force folle, une énergie qui semblait présente même dans le silence, même en l'absence des supporters. C'était comme si tout l'amour que Naples éprouve pour le football était resté là, dans les tribunes vides. La même intensité, je l'ai retrouvée dans les fresques murales dédiées à Maradona, qui à Naples sont devenues de véritables icônes, partie de l'identité et de la culture de la ville."
+            },
+            {
+              "type": "header",
+              "content": "«Ferdinando, soulève le fond»",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Ardite invenzioni, en 2025, rend hommage à Ferdinando Sanfelice pour les 350 ans de sa naissance. Que l'architecture enseigne-t-elle à une photographe sur la lumière et le regard ? Et Naples, après ce projet, vous semble-t-elle plus verticale ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Ardite invenzioni naît précisément de mon être, comme je dis toujours, une « touriste dans ma propre ville ». Un jour, je me promenais dans le quartier de Sanità, à Naples, et je me suis retrouvée face à deux palais extraordinaires : le Palazzo dello Spagnolo et le Palazzo Sanfelice. Le premier, longtemps attribué à Ferdinando Sanfelice, s'est avéré, grâce à des documents historiques, ne pas être son œuvre, bien qu'il rappelle fortement son style architectural. De cette rencontre fortuite est née une véritable passion pour cet architecte, un personnage que j'ai trouvé absolument extraordinaire, au point d'être surnommé « Ferdinando, soulève le fond », par crainte que ses constructions audacieuses ne s'effondrent. J'ai approfondi son histoire et j'ai commencé à étudier ses palais, ses œuvres, les escaliers et les grilles, découvrant des détails architecturaux qui m'ont profondément fascinée. Parmi les photographies nées de cette recherche, il y en a une, intitulée Gelosia, qui représente précisément une grille et est l'une de mes préférées. Dédiée à mon loup tchécoslovaque."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9ductfrolx5.webp",
+              "caption": "Julius, Gelosia. Ferdinando Sanfelice, Naples, 2025. De FRIENDS.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Une grille en fer forgé à mailles entrelacées sur fond clair, en noir et blanc",
+              "align": "center",
+              "width": 60
+            },
+            {
+              "type": "text",
+              "content": "Depuis, ma façon de regarder la ville a changé. Je la regarde beaucoup plus en vertical. Absolument oui !"
+            },
+            {
+              "type": "header",
+              "content": "Amis, pas des portraits",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM: FRIENDS, «…tu les appelles si tu veux des émotions !», à la FG Home Gallery depuis avril 2026 au profit de la pet therapy de l'Hôpital Santobono : 44 photographies en noir et blanc de lieux et non de visages, chacune intitulée du nom d'un ami. Comment avez-vous choisi les photographies, si ce ne sont pas des portraits ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG:</b> J'aime énormément cette exposition, car l'amitié est une partie fondamentale de ma vie et je crois profondément en ce sentiment. J'ai voulu dédier les photographies à toutes ces personnes qui, d'une manière ou d'une autre, ont été importantes pour moi : certaines ont fait partie de ma vie pendant un temps, d'autres sont encore aujourd'hui de grands amis et de grandes amies. J'ai aussi dédié une photographie à mon loup tchécoslovaque. Comme je l'ai déjà raconté, il s'agit de Gelosia, la photographie d'une grille de Ferdinando Sanfelice. Comment ai-je choisi les photographies, puisqu'elles ne sont pas des portraits ? Certaines je les ai prises justement pendant que j'étais avec la personne à qui je les ai ensuite dédiées, d'autres je les ai choisies parce qu'il y avait quelque chose dans l'image qui me faisait penser à cette personne."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dsp12tgxao.webp",
+              "caption": "Carolina, Scalinata. Certosa di Padula, 2024. De FRIENDS.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Un escalier en colimaçon en pierre vu d'en haut, en noir et blanc",
+              "align": "center",
+              "width": 72
+            },
+            {
+              "type": "text",
+              "content": "C'est une exposition que j'aime vraiment beaucoup, car derrière chaque photographie il y a un souvenir, une personne, un lien. Je l'ai faite avec tout mon cœur."
+            },
+            {
+              "type": "header",
+              "content": "La matière et les sphères",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Dans Materia Materica, vous écrivez : « Je photographie pour rendre tangibles nos émotions à travers la matière ». Avec The Balls, les sphères de métal de Paris qui reflètent le ciel, vous êtes arrivée deuxième au Prix Coinè pour l'Art à la Vernice Art Fair 2021. Une surface qui contient le monde et une matière qui ne représente rien : sont-ce les deux extrêmes de votre recherche ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Balls est peut-être l'une de mes photos préférées de tous les temps. Je l'ai prise à Paris et elle représente de grandes sphères métalliques. D'une certaine manière, je la relie aussi à Materia Materica, un travail fait de détails et de surfaces, souvent en couleurs, car je trouve que la couleur rend mieux la matière. Les clair-obscurs créent des formes qui ressemblent à des pierres volcaniques ou à l'intérieur des arbres. J'aime vraiment cette sensation de rendre la matière presque tangible, comme si à travers la photographie on pouvait parvenir à la toucher."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dqxhxy1tri.webp",
+              "caption": "The Balls. Paris, 2017. De En voyage avec moi.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Sphères d'acier poli reflétant un portique et le ciel avec des nuages, en noir et blanc",
+              "align": "center",
+              "width": 100
+            },
+            {
+              "type": "header",
+              "content": "Une maison pleine de photographies",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : À Parco Margherita a ouvert la FG Home Gallery, une maison d'environ 160 mètres carrés remplie de photographies. Que change-t-il lorsqu'une photographie vit dans une maison et non dans un musée ? Et qu'est-ce qu'elle doit avoir pour mériter d'être accrochée ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Ce sont deux choses complètement différentes. Le musée est un lieu ouvert au public, tandis que ma maison est un espace plus intime, où j'accueille des amis et des personnes avec qui j'ai plaisir à partager ce que je fais. Mon appartement est devenu une home gallery et je vis désormais complètement immergée dans mes photographies. J'en ai partout, grandes, petites, souvenirs de voyages, images du Japon, du Maroc, de Venise, les Boules de Paris en format énorme… Un jour, je les compterai peut-être ! J'aime ouvrir ma maison, organiser des dîners, être avec des amis, faire des expositions et inviter d'autres artistes. J'aime vraiment l'idée de partager une partie de ma vie privée à travers la photographie. Exposer dans un musée est sûrement une autre chose, cela a une valeur immense pour le public et pour un artiste, mais ce sont deux expériences complètement différentes. Chez moi, les photographies font partie de ma vie quotidienne et j'aime qu'elles entrent aussi dans la vie des personnes qui me rendent visite. Le critère selon lequel je choisis une photo à accrocher chez moi est très simple : soit elle est liée à un beau souvenir, soit elle suscite en moi une grande émotion. Je ne suis pas d'autres règles, ce doit être quelque chose que j'aime avoir autour de moi et qui me fait du bien."
+            },
+            {
+              "type": "header",
+              "content": "<span class=\"kicker\">Partie V</span>Pour conclure",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "<span class=\"dek\">Un travail dont nous n'avons pas parlé.</span>"
+            },
+            {
+              "type": "header",
+              "content": "Ennemi invisible",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>VM : Y a-t-il une question que nous aurions dû vous poser, ou une personne que vous voudriez remercier ?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>FG :</b> Non, au contraire, vous avez été très forts, vous avez donné de l'espace et de la valeur à presque tous mes travaux. Il y en a cependant un dont nous n'avons pas parlé, qui s'appelle Ennemi invisible. C'est un projet photographique né pendant le Covid, auquel je tiens énormément car je l'ai réalisé pendant une période de grande souffrance, également en compagnie de mon loup tchécoslovaque. C'est un travail qui n'a pas encore été publié. Quant aux personnes, certainement mes parents, qui malheureusement ne sont plus là."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvo9dvn5yvtv1v.webp",
+              "caption": "Ennemi invisible. Photo pour le calendrier de l'Hôpital Pascale, 2020.",
+              "credit": "© Federica Gioffredi",
+              "alt": "Un gant blanc accroché à une rampe bleue à volutes",
+              "align": "center",
+              "width": 100
+            },
+            {
+              "type": "link",
+              "content": "federicagioffredi.it",
+              "url": "https://www.federicagioffredi.it"
+            },
+            {
+              "type": "text",
+              "content": "Photographies © Federica Gioffredi ; publiées avec le consentement de l'autrice."
+            },
+            {
+              "type": "note",
+              "content": "Entretien de Viacheslav Munister. Réponses de Federica Gioffredi, légèrement revues pour la ponctuation et la clarté. Les questions ont été raccourcies. Toutes les photographies sont reproduites avec l'aimable autorisation de l'autrice."
+            }
+          ],
+          "updatedAt": "2026-10-27T00:11:51.827Z"
         }
       ],
       "reviews": [
