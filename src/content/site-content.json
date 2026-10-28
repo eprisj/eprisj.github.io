@@ -22088,7 +22088,6 @@
     },
     {
       "id": 80,
-      "draft": true,
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
       "date": "Oct 28, 2026",
@@ -22438,7 +22437,8 @@
           "url": "https://aerocene.org/pacha/"
         }
       ],
-      "updatedAt": "2026-10-28T08:25:30.608Z"
+      "updatedAt": "2026-10-28T08:26:46.497Z",
+      "publishAt": "2026-10-28T08:26:46.195Z"
     }
   ],
   "reviews": [
