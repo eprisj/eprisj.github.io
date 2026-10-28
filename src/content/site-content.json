@@ -22777,6 +22777,256 @@
         }
       ],
       "updatedAt": "2026-10-28T08:54:55.812Z"
+    },
+    {
+      "id": 82,
+      "previewToken": "f122ddf3ee9859d31a2d8feb",
+      "title": "The Swimming Pool and the Villa: French Art Deco’s Other Capital",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "category": "Architecture",
+      "subcategory": "Feature",
+      "date": "Nov 3, 2026",
+      "excerpt": "In 1932, a few kilometres apart on the edge of Roubaix, a socialist mayor finished the most beautiful swimming pool in France for textile workers and a mill owner moved into a sixty-metre villa of yellow brick by Robert Mallet-Stevens. Both nearly vanished; both have been saved. Twenty-five years after the pool became a museum, the story of French Art Deco told in two buildings.",
+      "tags": [
+        "Art Deco",
+        "French architecture",
+        "La Piscine",
+        "Roubaix",
+        "Albert Baert",
+        "Villa Cavrois",
+        "Robert Mallet-Stevens",
+        "modernism",
+        "museums",
+        "Hauts-de-France"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mvrvncg9mk5s1f.webp",
+      "publishAt": "2026-11-03T04:00:00.000Z",
+      "content": [
+        {
+          "type": "text",
+          "content": "Ask anyone where to find French Art Deco and they will send you to Paris: the 1925 exhibition that gave the style its name, the Palais de Tokyo, the ocean liners, the cinemas. The more surprising answer is an hour north by train, in the old textile towns on the Belgian border. In Roubaix and its neighbour Croix, two buildings finished in the same year, 1932, a few kilometres apart and paid for by the same industry, show the two faces of the age better than anything in the capital. One is a swimming pool built for workers. The other is a villa built for a mill owner. Both came close to disappearing, and both are now among the most remarkable interiors in France."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvncg9mk5s1f.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The great stained-glass sun at the end of La Piscine’s pool hall, reflected in the water that still fills the old basin, 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A vast semicircular stained-glass window in yellow and amber rays above a long indoor pool lined with sculptures and two tiers of galleries."
+        },
+        {
+          "type": "header",
+          "content": "I · The most beautiful swimming pool in France",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "In the 1920s Roubaix was one of the richest industrial towns in Europe and one of the most crowded: tens of thousands of textile workers, most of them in cramped workers’ housing. Its socialist mayor, Jean-Baptiste Lebas, wanted a public building that would answer that with something better than a bathhouse. He asked the Lille architect Albert Baert, then in his sixties, for nothing less than the most beautiful swimming pool in France. Baert built it between 1927 and 1932."
+        },
+        {
+          "type": "text",
+          "content": "The result is a cathedral of water. The 50-metre basin runs down a long, vaulted nave lined with two tiers of galleries and changing cabins, all in pale tiles and white balustrades. At each end, a great semicircular stained-glass window fans out like a rising and a setting sun, so that the light changes colour through the day. Around the pool, the building held everything a modern city was meant to give its citizens: water, light, cleanliness and a place to spend Sunday."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvo30qbt5uzk.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The pool hall seen along the axis of the basin: the galleries, the cabins and a stained-glass sun at the far end, 2019. Photo: Gadeau, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A long narrow pool in a white vaulted hall with galleries on both sides and a bright yellow stained-glass sun at the far end."
+        },
+        {
+          "type": "quote",
+          "content": "The result is a cathedral of water."
+        },
+        {
+          "type": "text",
+          "content": "Lebas did not live to see what became of his pool. Minister of Labour in 1936, he refused to accept the occupation, was arrested and sentenced by a German court, and died in the Sonnenburg camp in March 1944. The pool outlived him by forty years. In 1985 it closed for safety reasons, its structure worn out, and for more than a decade the most beautiful swimming pool in France stood empty."
+        },
+        {
+          "type": "header",
+          "content": "II · A museum that kept the water",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Its second life began with a museum that had nowhere to go. Roubaix’s collections of art and industry had started in 1835 with books of fabric samples from the town’s mills and grown into a remarkable mixture of textiles, ceramics, painting and sculpture. The architect Jean-Paul Philippon was asked to turn the pool into their home, and he made the one decision that makes the building unforgettable: he kept the water. A long, narrow strip of it still runs down the centre of the old basin, with sculpture lined up along its edges like swimmers waiting for the whistle."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvofdeaiqp5n.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The water strip in the old basin reflects the stained-glass sun; sculptures stand along both sides, 2018. Photo: Jamain, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "An indoor hall with a long shallow pool reflecting a large amber stained-glass window, flanked by white and bronze statues."
+        },
+        {
+          "type": "text",
+          "content": "The museum opened on 21 October 2001 as La Piscine, the Musée d’Art et d’Industrie André Diligent. The changing cabins became display cases and study rooms; the galleries became walkways around the hall. A second campaign, completed in 2018 after two years of work, added new galleries and restored the building again. Twenty-five years after it opened, it is one of the best-loved museums in the north of France, and the most persuasive argument anywhere that a building’s first purpose can survive inside its second."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvotg2lxlsck.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "Statues along the water, beneath the galleries and cabins of the old pool, October 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "White marble and plaster statues standing in a row beside the shallow water of a former swimming pool, with tiled galleries above."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvoazso3cf3b.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The setting-sun window, the second of the hall’s two stained-glass suns, October 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A semicircular stained-glass window with radiating yellow and orange panes above a gallery and an ornamental screen."
+        },
+        {
+          "type": "text",
+          "content": "This autumn the anniversary season opens with Ni Dieu ni maître ! Arts et anarchie de Courbet à Banksy, an exhibition on art and anarchism from the nineteenth century to street art, on view until 24 January 2027. It is a fitting subject for a building commissioned by a socialist mayor as a palace for the working class."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvp1l1na1gm3.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The great basin today: the water, the sculpture and the galleries of Albert Baert’s 1932 hall, October 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A wide view of a museum hall built as a swimming pool, with a long water basin, statues and visitors on wooden walkways."
+        },
+        {
+          "type": "header",
+          "content": "III · A castle of yellow brick",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "A few kilometres away, in the leafy suburb of Croix, the money that paid for the mills built something very different. Paul Cavrois, a Roubaix textile industrialist, commissioned a house for his large family from Robert Mallet-Stevens, the Parisian architect who had designed film sets and the modernist street in Paris that bears his name. Built between 1929 and 1932, the Villa Cavrois is sixty metres long, faced entirely in thin yellow bricks made from twenty-six different moulds, and composed of horizontal bands and one tall tower, like a liner moored in a park."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvpenl86nopo.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The Villa Cavrois seen from the south-east: yellow brick, horizontal bands and the tower, 2022. Photo: Velvet, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A long, low modernist house of yellow brick with horizontal bands of windows and a slender tower, on a lawn under a blue sky."
+        },
+        {
+          "type": "text",
+          "content": "This is where Art Deco meets modernism and starts to turn into it. The ornament has gone; what is left is proportion, materials and comfort. The house had electric light and a telephone in every room, central heating, softened water and indirect lighting designed with the engineer André Salomon. In front of it, Mallet-Stevens laid out a formal garden around a mirror of water 72 metres long, which stretches the axis of the central hall out into the grounds, and the family had its own swimming pool, 27 metres long. The villa was, in its day, the very image of what modern living could mean – for those who could afford it."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvq5yhjc6ong.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The villa from the garden, across the long mirror of water that extends the axis of the hall, 2022. Photo: Velvet, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A modernist yellow-brick villa seen across a lawn with a long rectangular reflecting pool leading towards it."
+        },
+        {
+          "type": "text",
+          "content": "Inside, the luxury lies in surfaces rather than decoration: green Swedish marble, yellow Siena marble and white Carrara, rare woods, lacquer, chrome and glass. The dining room is a single block of veined marble and black-lacquered furniture; the salon is a calm, green, rounded room around a fireplace; the bathrooms are tiled in black and white like a set for a film. Every room is designed down to the radiators and the door handles."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvqcr4cn1uce.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The dining room: green marble walls, lacquered furniture and chairs upholstered in ochre, 2022. Photo: Velvet, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A dining room with a long black lacquered table, ochre chairs, walls of green veined marble and a large window."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvqmkmx396jc.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The salon, with its rounded green walls, fireplace and restored furniture, 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A pale green living room with a curved wall, a fireplace and green upholstered armchairs on a patterned rug."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvqq6rlh6k7r.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The staircase and its curved bay of glass, 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A white staircase with stepped geometric walls rising towards a tall curved window with a grid of panes."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvqv71k779ro.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "A bathroom in black and white tiles, with chrome fittings, 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A bathroom with white tiled walls, a black and white chequered floor, twin basins, a bath and a mirror."
+        },
+        {
+          "type": "header",
+          "content": "IV · Ruin and return",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The house had a harder century than the pool. During the Second World War German troops used it as a barracks for two hundred soldiers and filled in the mirror of water because it was too visible from the air. In 1947 it was divided into two apartments for the family’s sons. After the death of Lucie Cavrois in 1985 the furniture was sold at auction, and in 1987 a property company bought the villa intending to demolish it and divide the land into building plots. For years it stood empty and was looted, vandalised and occupied by squatters."
+        },
+        {
+          "type": "text",
+          "content": "It was saved, slowly. The villa was listed as a historic monument in 1990, bought by the French state in 2001 and entrusted in 2008 to the Centre des monuments nationaux, which restored the façades, the interiors and the garden – the mirror of water included – for some 23 million euros. Where possible, original furniture was traced and brought back; other pieces were remade from photographs and drawings. On 13 June 2015 the Villa Cavrois opened to the public. One room was deliberately left as it was found, with stripped walls and broken plaster, as a reminder of how close it came to being lost."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvr0xagyzo6u.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "A restored bedroom with built-in furniture in red, blue and cream, 2022. Photo: Hay Kranen, Wikimedia Commons (CC BY 4.0).",
+          "alt": "A bedroom with a built-in desk and shelves in red, blue and cream lacquer, a long window with curtains and a radiator in front."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvr7v4sk9hot.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The room left unrestored: bare brick, peeling plaster and broken fittings, 2022. Photo: Hay Kranen, Wikimedia Commons (CC BY 4.0).",
+          "alt": "A damaged room with peeling plaster, exposed brick and pipes, and a large window looking onto trees."
+        },
+        {
+          "type": "header",
+          "content": "V · Two answers to 1932",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "It is tempting to read the two buildings as opposites: the people’s palace and the boss’s castle, decoration and abstraction, a swimming pool for thousands and a swimming pool for one family. But they share more than a year and a source of money. Both treat water, light and hygiene as the substance of modern life. Both were nearly destroyed by the decline of the industry that built them. And both were saved by the same idea – that a building can be given back to the public without being turned into something else."
+        },
+        {
+          "type": "text",
+          "content": "Paris has more Art Deco. It has nothing that tells the story of the style, its ideals and its contradictions, as clearly as these two buildings on the edge of Roubaix."
+        },
+        {
+          "type": "header",
+          "content": "See it",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "La Piscine is in the centre of Roubaix, a short walk from the Gare Jean Lebas metro station on line 2 from Lille; Ni Dieu ni maître ! runs until 24 January 2027. The Villa Cavrois is in Croix, a few kilometres away, and is managed by the Centre des monuments nationaux. Both can be seen in a single day from Lille, which is an hour from Paris and under an hour and a half from Brussels by train."
+        },
+        {
+          "type": "note",
+          "content": "This feature draws on the museum’s own history of the building and its press releases for the 2026–27 season (La Piscine: Albert Baert, 1927–32; opening on 21 October 2001; Ni Dieu ni maître !, 10 October 2026–24 January 2027), the French heritage database Mérimée (Jean Lebas’s commission), the Centre des monuments nationaux and published histories of the Villa Cavrois (dimensions, materials, wartime use, 1987 sale, restoration and the 2015 opening), and biographies of Jean-Baptiste Lebas. Photographs: Wikimedia Commons, under the licences named in each caption."
+        },
+        {
+          "type": "link",
+          "content": "La Piscine – Musée d’Art et d’Industrie André Diligent, Roubaix",
+          "url": "https://www.roubaix-lapiscine.com/"
+        },
+        {
+          "type": "link",
+          "content": "Villa Cavrois – Centre des monuments nationaux",
+          "url": "https://www.villa-cavrois.fr/"
+        }
+      ],
+      "updatedAt": "2026-10-28T08:57:57.284Z"
     }
   ],
   "reviews": [
