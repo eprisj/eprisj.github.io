@@ -22085,6 +22085,192 @@
       "imageUrl": "https://api.eprisjournal.com/uploads/mvr0nc1jdamo8e.jpg",
       "previewToken": "7c68d2890cf969f879d9ae67",
       "updatedAt": "2026-10-28T08:10:15.888Z"
+    },
+    {
+      "id": 80,
+      "draft": true,
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Oct 28, 2026",
+      "imageSeed": "",
+      "imageUrl": "",
+      "previewToken": "ccba0f91821cbd99490ffaad",
+      "title": "Living on Air: Tomás Saraceno and the Art of Floating Together",
+      "author": "Viacheslav Munister",
+      "category": "Art",
+      "subcategory": "Profile",
+      "excerpt": "Spider webs scanned in three dimensions, cities that float like clouds, a balloon that carried a woman over a salt flat on nothing but sunlight, and a sanctuary of water built against a lithium rush: twenty-five years of Tomás Saraceno, and his largest exhibition in Germany, at Haus der Kunst in Munich until 7 February 2027.",
+      "tags": [
+        "Tomás Saraceno",
+        "Aerocene",
+        "Arachnophilia",
+        "Cloud Cities",
+        "In Orbit",
+        "Haus der Kunst",
+        "Ancestral Futures",
+        "spider webs",
+        "contemporary art",
+        "ecology"
+      ],
+      "content": [
+        {
+          "type": "text",
+          "content": "Most artists ask what a work should look like. Tomás Saraceno asks who it should be for. His answers keep widening the circle: people, but also spiders, dust, clouds, dogs, the air itself and the communities who live on the land where our batteries come from. The result is one of the strangest and most generous bodies of work in contemporary art – part architecture, part science lab, part utopian flight school – and, this year, a museum turned inside out to hold it."
+        },
+        {
+          "type": "text",
+          "content": "Saraceno was born in 1973 in San Miguel de Tucumán, Argentina, and lives and works in Berlin. He trained first as an architect, at the Universidad Nacional de Buenos Aires, before postgraduate studies in art and architecture in Buenos Aires and at the Städelschule in Frankfurt, under Thomas Bayrle and Ben van Berkel. The architect never left. Almost everything he makes is a structure you can enter, climb, breathe inside or launch into the sky – and almost every structure is a question about how we might live differently on a crowded, overheating planet."
+        },
+        {
+          "type": "header",
+          "content": "I · A web is an architecture",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The spider came first. Saraceno’s studio has spent years living with spiders, watching them build and asking the question an architect would ask: how does a body only a few millimetres long make a structure so light, so strong and so precisely adapted to its site? To answer it properly, the studio worked with researchers at the Photogrammetric Institute of TU Darmstadt on a tomographic method, Spider/Web Scan, that produced for the first time precise three-dimensional models of complex spider webs. A web turned out to be not a flat net but a cloud of lines in space."
+        },
+        {
+          "type": "text",
+          "content": "That discovery runs through the work that made his name. At the 53rd Venice Biennale in 2009, Making Worlds, curated by Daniel Birnbaum, he filled a room with Galaxies Forming along Filaments, like Droplets along the Strands of a Spider’s Web: elastic cords knotted into a vast, sagging, astronomical web that visitors had to stoop and twist to pass through. The same year he received the Calder Prize. The title says the whole programme in one breath: the structure of a web, the structure of the universe and the structure of a city might be the same structure seen at different scales."
+        },
+        {
+          "type": "quote",
+          "content": "A web turned out to be not a flat net but a cloud of lines in space."
+        },
+        {
+          "type": "text",
+          "content": "Since then the spiders have become collaborators rather than models. The series Webs of At-tent(s)ion, which has run for a decade, shows webs spun by several species inside glass boxes, sometimes by more than one species on the same frame. Arachnophilia, the not-for-profit research community the studio set up, collects spider knowledge from scientists and from people who grew up with spiders as oracles and neighbours, with one stated aim: to change how we perceive spiders and their webs at a moment of ecological crisis. In a culture that reaches for the shoe, it is a quietly radical proposition."
+        },
+        {
+          "type": "header",
+          "content": "II · Walking on air",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Then the web grew large enough to hold people. In Orbit, installed in June 2013 at K21 Ständehaus in Düsseldorf and curated by Marion Ackermann, is a steel-wire net of some 2,500 square metres stretched more than 25 metres above the building’s glass-roofed piazza, with huge inflated spheres caught in it like droplets. Visitors climb in, lie down and move across it. Every step travels through the whole net, so everyone on it feels everyone else: a lesson in interdependence you learn with your knees rather than your head. More than 400,000 people have walked it."
+        },
+        {
+          "type": "text",
+          "content": "The same year, at HangarBicocca in Milan, On Space Time Foam stretched three levels of thin transparent film across about 400 square metres, between 14 and 20 metres above the floor. Its curator was Andrea Lissoni – who, thirteen years later, as artistic director of Haus der Kunst, would invite Saraceno to take over the Munich museum. In 2012 he had put Cloud City on the roof of the Metropolitan Museum of Art in New York, a cluster of mirrored, interlocking modules through which Central Park and the Manhattan skyline appeared broken into facets and turned upside down."
+        },
+        {
+          "type": "header",
+          "content": "III · Cloud Cities",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Cloud City was a chapter of a much larger thought experiment, Cloud Cities: what if architecture let go of the ground? The modules – polyhedra, bubbles, nets – are prototypes for habitats that might one day float, joined to one another like cells in a foam or spiders in a colony. They are deliberately unfinished, closer to a working hypothesis than to a design. In Barcelona in 2022, Cloud Cities Barcelona hung inside the Torre Glòries; the studio’s current version is described as one cloud with cohabitational spaces for twenty-four species."
+        },
+        {
+          "type": "text",
+          "content": "That last phrase marks the shift in Saraceno’s later work. The floating city is no longer imagined only for humans. It is a shared house, where the question is not how many people fit, but how many kinds of life can live together without one of them taking over."
+        },
+        {
+          "type": "header",
+          "content": "IV · Aerocene: flying on sunlight",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "If the Cloud Cities are a dream of floating, Aerocene is the attempt to actually do it – without fuel, helium, batteries or solar panels. The idea is disarmingly simple. A balloon made of a thin, dark envelope is warmed by the sun; the air inside grows lighter than the air outside; the balloon rises. No burning, no emissions. In 2015 Saraceno initiated the Aerocene Foundation, a non-profit and open-source community that shares the designs, launches balloons around the world and imagines an era – the Aerocene – that would follow the Anthropocene and its fossil fuels."
+        },
+        {
+          "type": "text",
+          "content": "Its most famous moment came in January 2020 on the Salinas Grandes, a salt flat more than 3,000 metres above sea level in Jujuy, northern Argentina. Fly with Aerocene Pacha carried the pilot Leticia Noemí Marqués aloft on sunlight alone. The flight lasted only a few minutes, covered about two and a half kilometres and rose a little over 270 metres – and the Fédération Aéronautique Internationale recognised 32 world records from it. The balloon carried a sentence written with the local communities: “Water and Life are Worth More than Lithium.”"
+        },
+        {
+          "type": "text",
+          "content": "Its sister project is made of rubbish. Museo Aero Solar, begun in 2007, is a flying sculpture assembled collectively from reused plastic bags, taped together by volunteers in every city it visits, and growing with each stop. It was shown at the Venice Architecture Biennale in 2021 and has travelled to dozens of places around the world. It is the most democratic thing in Saraceno’s work: anyone with a bag and an afternoon can become one of its authors."
+        },
+        {
+          "type": "quote",
+          "content": "Water and Life are Worth More than Lithium."
+        },
+        {
+          "type": "header",
+          "content": "V · From the sky to the ground",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The Pacha flight explains where the work has gone since. The Salinas Grandes basin sits in one of the most lithium-rich regions on earth, the so-called lithium triangle that feeds the batteries of the energy transition. Lithium extraction there uses enormous quantities of water in a place where water is life. The communities of the basin have resisted. Saraceno’s collaboration with them turned the art from a speculation about the future into a position about the present: that a green future built on dried-up ancestral land is not green at all."
+        },
+        {
+          "type": "text",
+          "content": "The answer is El Santuario del Agua – The Sanctuary of Water – a permanent land work conceived with eleven Indigenous communities of the Red Atacama network at the Salinas Grandes. At its centre is a large reflective pond that mirrors the sky. It is meant to belong to the communities who initiated it, and it stands, in the words of the museum that co-commissioned it, in solidarity with local resistance to lithium mining. For an artist who began by trying to leave the ground, it is a striking return: a work that does not float at all, but holds water in place."
+        },
+        {
+          "type": "header",
+          "content": "VI · 2026: Ancestral Futures in Munich",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "All of this has now arrived in one building. Tomás Saraceno in Collaboration: Ancestral Futures opened at Haus der Kunst in Munich on 17 July 2026 and runs until 7 February 2027. Curated by Sarah Johanna Theurer and Andrea Lissoni, it is his largest exhibition in Germany to date, and its premise is in the title: the knowledge we need to build a shared future may be very old."
+        },
+        {
+          "type": "text",
+          "content": "The show braids the two long research strands, Aerocene and Arachnophilia, with the new co-commission. Webs of At-tent(s)ion are there, spun live by several species of spider. In Algo-R(h)i(y)thms, the vibrations of orb-weaver spiders are paired with electromagnetic signals from distant galaxies, so that you hear the web and the cosmos in the same room. There are large web-like structures to crawl through, and a cavern of donated plastic bags that visitors inflate themselves by pedalling stationary bicycles. There are paintings made of scent, for dogs. Galleries of sand, salt and water from the Salinas Grandes bring the landscape of the Sanctuary to Bavaria, and eleven weavers from the Red Atacama communities lent handmade blankets that formed a place to sit and lie at the opening."
+        },
+        {
+          "type": "text",
+          "content": "The museum itself has been changed. On the east terrace, Cloud Cities: Species of Spaces and Other Pieces hangs twelve suspended, cloud-like chambers as habitats for urban species, above a new community garden around the building. Even the plumbing is part of the show: Flashing Toilets reroutes the water from hand-washing to flush the toilets, which the museum expects to save around a million litres a year. And a new Museo Aero Solar is being assembled for a launch this autumn."
+        },
+        {
+          "type": "text",
+          "content": "It is easy to make fun of a show that includes paintings for dogs and a redesign of the toilets. It is harder to leave it without the feeling that the joke is on us: that the museum, the city and the economy we live in were all designed for one species, and that the designs could be otherwise. Saraceno’s gift is to make that thought feel not like a lecture, but like a game you want to play – lying in a net, pedalling a bicycle, watching a spider at work."
+        },
+        {
+          "type": "header",
+          "content": "VII · A career, in short",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Alongside the Calder Prize in 2009, Saraceno received the 1822 Kunstpreis in 2010 and the Platinum Konex Award in 2022 for his work of the preceding decade. He returned to the Venice Biennale in 2019, in Ralph Rugoff’s May You Live in Interesting Times, and had major solo exhibitions at the Palais de Tokyo in Paris (ON AIR, 2018), the Serpentine in London (Web(s) of Life, 2023) and, this spring and summer, the New Taipei City Art Museum (Interwoven, 21 March–5 September 2026), his first large show in Taiwan."
+        },
+        {
+          "type": "text",
+          "content": "Seen from a distance, the career looks like a line from a knotted web in Venice to a pond on a salt flat. Look closer and it is one sustained argument: that architecture is not a matter of walls but of relationships; that the strongest structures are the lightest; and that a future worth building will have to be built with others – other people, other species, other ways of knowing. Very few artists working today make the future look so physical, so playful, and so close."
+        },
+        {
+          "type": "header",
+          "content": "See it",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Ancestral Futures is at Haus der Kunst, Prinzregentenstraße 1, Munich, until 7 February 2027; the museum is open Wednesday to Monday, 10 am to 8 pm, closed on Tuesdays, with free admission on the last Friday of each month from 4 to 10 pm. In Orbit has been open to visitors at K21 Ständehaus in Düsseldorf since 2013; check the museum’s website for access before you go. To fly a balloon of your own, the Aerocene Foundation publishes its designs and launch guides openly."
+        },
+        {
+          "type": "note",
+          "content": "This feature draws on the press materials of Haus der Kunst München for Ancestral Futures (curators, dates, the Sanctuary of Water and its credits), the website of Studio Tomás Saraceno (exhibition history, Cloud Cities, Fly with Pacha), the Aerocene Foundation and the Fédération Aéronautique Internationale (the 2020 flight and its records), exhibition reports in Colossal and designboom (works and rooms in Munich), and published biographies of the artist (education, In Orbit, On Space Time Foam, awards)."
+        },
+        {
+          "type": "link",
+          "content": "Tomás Saraceno in Collaboration: Ancestral Futures – Haus der Kunst, Munich (until 7 February 2027)",
+          "url": "https://www.hausderkunst.de/en/presse/current-exhibitions/tomás-saraceno"
+        },
+        {
+          "type": "link",
+          "content": "Studio Tomás Saraceno – official website",
+          "url": "https://studiotomassaraceno.org/"
+        },
+        {
+          "type": "link",
+          "content": "Aerocene Foundation",
+          "url": "https://aerocene.org/"
+        },
+        {
+          "type": "link",
+          "content": "Fly with Aerocene Pacha",
+          "url": "https://aerocene.org/pacha/"
+        }
+      ],
+      "updatedAt": "2026-10-28T08:13:43.280Z"
     }
   ],
   "reviews": [
