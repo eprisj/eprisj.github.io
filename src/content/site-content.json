@@ -23176,50 +23176,9 @@
         {
           "type": "text",
           "content": "The contrast between recognisable human proportions and radical anatomical distortion intensified the unsettling effect of his paintings, making even his most abstracted figures feel disturbingly real."
-        },
-        {
-          "type": "image",
-          "content": "francis-bacon-2",
-          "caption": "Lead image"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
         }
       ],
-      "updatedAt": "2026-10-28T22:44:53.560Z"
+      "updatedAt": "2026-10-28T22:45:07.232Z"
     }
   ],
   "reviews": [
