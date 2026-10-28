@@ -24006,6 +24006,192 @@
       ],
       "featured": false,
       "updatedAt": "2026-10-12T09:05:43.466Z"
+    },
+    {
+      "id": 14,
+      "previewToken": "3edc94d71d3867767ba2c9b5",
+      "title": "Dinner Under a Planetarium",
+      "subject": "Alchemist · Refshalevej 173C, Copenhagen · Rasmus Munk & Studio Duncalf",
+      "rating": 0,
+      "category": "DESIGN & DINING",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "NOV 2, 2026",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mvrvcbyg8mzsts.webp",
+      "meta": "COPENHAGEN · RASMUS MUNK · STUDIO DUNCALF · TWO MICHELIN STARS · PHOTOS: ALCHEMIST",
+      "verdict": "Alchemist hands almost all of its architecture to an eighteen-metre projected dome and turns a dinner for fifty-two strangers into a single, shared performance. It is the most complete piece of spatial storytelling in European dining – and, with five months of Intermission starting in December, November 2026 is the last chance to see it in its current form.",
+      "pros": [
+        "The 18-metre planetarium dome, with twelve projectors and a 360-degree image, makes the ceiling the room’s only architecture – and changes the whole space with every scene",
+        "The evening is planned as a building-wide sequence: bronze door, gallery, a fourteen-metre hall with a three-storey wine cellar, the dome, then a timber-floored lounge with a fire pit",
+        "Fifty-two seats at counters around the kitchen and a single seating turn a group of strangers into an audience",
+        "Impressions such as ‘1984’ and ‘Tongue Kiss’ treat plating as industrial design and art commentary, not decoration",
+        "Intermission – five months a year of research with the whole team kept on – is a rare, serious rethink of how a top restaurant works"
+      ],
+      "cons": [
+        "Four to six hours and fifty impressions demand a great deal of stamina and attention; this is a performance, not a dinner",
+        "A menu that raises waste, health and the oceans inside an extreme luxury experience invites an obvious contradiction",
+        "With the restaurant reporting more than a million people on its waiting list, the design is far easier to read about than to visit",
+        "From December 2026 the restaurant closes for five months a year, and the next version will be different from the one described here"
+      ],
+      "content": [
+        {
+          "type": "text",
+          "content": "Most restaurants want you to forget the room and remember the food. Alchemist, on Refshaleøen in Copenhagen, wants you to remember everything: the door, the walk, the ceiling, the sound, the moment the lights change and a plate arrives that looks like a human eye. Rasmus Munk calls his menu not courses but impressions, fifty of them over an evening of four to six hours, and the building has been designed as a machine for delivering them. It is the most theatrical dining room in Europe, and in November 2026 it is about to stop, for the first time, for five months."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvcbyg8mzsts.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The planetarium dome in its ‘Heartbeat’ universe: a projected anatomy of arteries and a beating heart above the dining counters.",
+          "alt": "A circular dining room bathed in red light, with long counters and black chairs under a domed ceiling projected with giant arteries and a heart.",
+          "credit": "Photo: Claes Bech Poulsen / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "A theatre workshop on a former shipyard"
+        },
+        {
+          "type": "text",
+          "content": "The address explains half the idea. Refshaleøen is a former shipyard island on the edge of the harbour, still raw and industrial, and Alchemist occupies a former boat workshop that later served the Royal Danish Theatre as a set-building hall. Munk moved here in 2019 from a first restaurant of about fifteen seats; the new house, designed with Studio Duncalf, was built to hold not a dining room but a sequence of scenes. Seven months after opening it had two Michelin stars, a first for so young a restaurant in Denmark, and it has kept them ever since."
+        },
+        {
+          "type": "text",
+          "content": "The evening is choreographed like a play in five acts. Guests enter through a three-metre bronze door carved with gnarled branches into a gallery that shows rotating artists’ installations. A partition slides up to reveal a fourteen-metre-high hall with a three-storey glass wine cellar of some ten thousand bottles, brass pendant lamps four metres long and a glass-fronted kitchen running along the back wall. Stairs and a glass-floored bridge lead up to the main event; a lift takes the diners on to a last room of timber floors, low sofas, a fire pit and a tea bar."
+        },
+        {
+          "type": "quote",
+          "content": "It is the most theatrical dining room in Europe."
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Dinner under a planetarium"
+        },
+        {
+          "type": "text",
+          "content": "The heart of the building is the dome: eighteen metres across, built with two hundred tonnes of steel and wrapped in a 360-degree image from twelve projectors. Fifty-two guests sit at long counters around the kitchen, one seating a night, and more than thirty of the fifty impressions are served here. Above them the ceiling becomes the northern lights, the Earth seen from orbit, a sea full of jellyfish – or, in the universe called Heartbeat, the inside of a human body."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvcafepn7rk7.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The dome in its ‘Space’ universe: the Earth seen from orbit above the dining counters.",
+          "alt": "A dark dining room with lit counters and chairs beneath a dome projected with a view of the Earth from space and scattered asteroids.",
+          "credit": "Photo: Søren Gammelmark / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "text",
+          "content": "The design trick is that the room is almost nothing. The counters are low and dark, the chairs simple, the light pooled on the tables; all of the architecture’s expression has been handed to the ceiling. When the projection changes, the whole room changes with it, and the guests – who have no view out and nothing else to look at – are inside the image rather than in front of it. It is the logic of a planetarium applied to a restaurant, and it turns a counter of fifty-two strangers into an audience."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvc7o0ccnz92.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "Rasmus Munk, founder and head chef, in the dome under a projected sea of jellyfish.",
+          "alt": "A chef in black standing in a dark domed room under a deep-blue projection of jellyfish.",
+          "credit": "Photo: Mathias Eis / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Impressions, not courses"
+        },
+        {
+          "type": "text",
+          "content": "Munk’s word for the dishes matters. An impression can be edible or not; it can be a joke, a provocation or a small lecture. The release that accompanies this season lists some of them: Burnout Chicken, Hunger, The Scream, Butterfly, Lithophane, What came first?, Andy Warhol, Tongue Kiss and 1984, the last served as a perfectly rendered human eye. The food borrows from art history and the news as freely as from the Nordic larder, and several plates are designed to start an argument – about waste, about health, about the oceans – rather than to end one."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvcehy6tz3ht.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "A selection of impressions, among them Burnout Chicken, Hunger, Tongue Kiss, The Scream, Butterfly, Lithophane, What came first?, 1984 and Andy Warhol.",
+          "alt": "An overhead view of several plates and objects on a grey surface, including a tiny copy of The Scream, an eye-shaped dish, a banana and a framed portrait.",
+          "credit": "Photo: Daniel Lundsgaard / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "text",
+          "content": "This is also where Alchemist divides people. A dish shaped like an eyeball is a brilliant piece of design and a slightly uncomfortable thing to eat; a menu that wants to talk about the state of the planet across six hours of luxury dining is open to the obvious objection. Alchemist does not resolve that tension. It stages it, and the room makes it impossible to look away."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvcgptnnwylj.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The impression ‘1984’, served in the form of a human eye.",
+          "alt": "A glossy sphere made to look like a human eye with a blue iris, on a white background.",
+          "credit": "Photo: Claes Bech Poulsen / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvciqzdk7t18.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The impression ‘Tongue Kiss’ on a spoon, against a red mirror-like surface.",
+          "alt": "A tongue-shaped red dish garnished with small flowers, resting on a silver spoon over a glossy red surface.",
+          "credit": "Photo: Søren Gammelmark / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "Five months of silence"
+        },
+        {
+          "type": "text",
+          "content": "The news this autumn is that the show is taking an interval. From December 2026, Alchemist will close its daily service for five months of every year for what it calls Intermission. All of its team – more than a hundred people from over thirty countries – stay on. Front of house will study psychology, choreography, drama and storytelling; the kitchen will develop hundreds of new ideas; the studio team will work on the next generation of the dome’s interactive technology. During the closure there will be guided tours behind the scenes, with selected dishes from the past season, and a programme of special events. When the restaurant reopens, a single fixed price will include drinks."
+        },
+        {
+          "type": "text",
+          "content": "That makes November 2026 the last month of Alchemist as it now exists. The restaurant says it has been fully booked every day since it opened in 2019, with more than a million people on its waiting list; Munk was named the world’s best chef in 2024 and 2025, and the restaurant stands fifth on The World’s 50 Best list. In other words: the chances of a table this month are small. The chance to see where dining design goes next, a few months from now, is rather better."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrvc94yqekfcz.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "Rasmus Munk, founder and head chef of Alchemist.",
+          "alt": "A portrait of a chef in a black shirt with tattooed forearms, hands clasped, against a dark background.",
+          "credit": "Photo: Mathias Eis / Alchemist",
+          "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        },
+        {
+          "type": "header",
+          "level": 2,
+          "content": "The verdict on the room"
+        },
+        {
+          "type": "text",
+          "content": "Alchemist is not a beautiful restaurant in the usual sense. There is no view, no handsome furniture to admire, no materials to stroke. What it has instead is a complete piece of spatial storytelling: a building that controls light, sound, scale and time as carefully as the kitchen controls temperature. Few architects get to design a room whose ceiling can become anything. Munk and Studio Duncalf used that freedom to make the most memorable dining space of the last decade – and, with Intermission, they are now asking what it should become next."
+        },
+        {
+          "type": "note",
+          "content": "This review is based on Alchemist’s own press release of 17 September 2026 on Intermission (dates, team, dome figures, seats, awards and waiting list as stated by the restaurant), the restaurant’s design as described by Dezeen at its opening in 2019 (Studio Duncalf, bronze door, wine cellar, dome, dessert room), VisitCopenhagen (address, Michelin stars) and Falstaff. Photographs: Alchemist press images; photographers as credited."
+        },
+        {
+          "type": "link",
+          "content": "Alchemist – official website",
+          "url": "https://alchemist.dk/"
+        },
+        {
+          "type": "link",
+          "content": "Intermission at Alchemist – press release (Danish)",
+          "url": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+        }
+      ],
+      "featured": false,
+      "publishAt": "2026-11-02T04:00:00.000Z",
+      "updatedAt": "2026-10-28T08:46:55.969Z"
     }
   ],
   "libraryItems": [
