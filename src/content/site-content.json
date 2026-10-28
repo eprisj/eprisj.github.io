@@ -22810,14 +22810,6 @@
           "content": "Ask anyone where to find French Art Deco and they will send you to Paris: the 1925 exhibition that gave the style its name, the Palais de Tokyo, the ocean liners, the cinemas. The more surprising answer is an hour north by train, in the old textile towns on the Belgian border. In Roubaix and its neighbour Croix, two buildings finished in the same year, 1932, a few kilometres apart and paid for by the same industry, show the two faces of the age better than anything in the capital. One is a swimming pool built for workers. The other is a villa built for a mill owner. Both came close to disappearing, and both are now among the most remarkable interiors in France."
         },
         {
-          "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mvrvncg9mk5s1f.webp",
-          "align": "center",
-          "width": 100,
-          "caption": "The great stained-glass sun at the end of La Piscine’s pool hall, reflected in the water that still fills the old basin, 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
-          "alt": "A vast semicircular stained-glass window in yellow and amber rays above a long indoor pool lined with sculptures and two tiers of galleries."
-        },
-        {
           "type": "header",
           "content": "I · The most beautiful swimming pool in France",
           "level": 2
@@ -22825,6 +22817,14 @@
         {
           "type": "text",
           "content": "In the 1920s Roubaix was one of the richest industrial towns in Europe and one of the most crowded: tens of thousands of textile workers, most of them in cramped workers’ housing. Its socialist mayor, Jean-Baptiste Lebas, wanted a public building that would answer that with something better than a bathhouse. He asked the Lille architect Albert Baert, then in his sixties, for nothing less than the most beautiful swimming pool in France. Baert built it between 1927 and 1932."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvrw1p73bfb1zv.webp",
+          "align": "center",
+          "width": 100,
+          "caption": "The garden path to La Piscine, between the brick walls of the old buildings and a tall brick tower, 2019. Photo: Jean Housen, Wikimedia Commons (CC BY-SA 4.0).",
+          "alt": "A paved garden path leading past a tall round brick tower and ivy-covered brick walls with arched openings, under a blue sky."
         },
         {
           "type": "text",
@@ -22857,11 +22857,11 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mvrvofdeaiqp5n.webp",
+          "content": "https://api.eprisjournal.com/uploads/mvrw1yhyxfoq08.webp",
           "align": "center",
           "width": 100,
-          "caption": "The water strip in the old basin reflects the stained-glass sun; sculptures stand along both sides, 2018. Photo: Jamain, Wikimedia Commons (CC BY-SA 4.0).",
-          "alt": "An indoor hall with a long shallow pool reflecting a large amber stained-glass window, flanked by white and bronze statues."
+          "caption": "The original lettering of the baths – Baignoires, Hommes, Dames – kept inside the museum, with a sculpted stag in front, 2019. Photo: Chatsam, Wikimedia Commons (CC BY-SA 3.0).",
+          "alt": "A white wall with large gilt letters reading Baignoires, Hommes, Dames above two glazed doors, and a dark sculpture of a stag in the foreground."
         },
         {
           "type": "text",
@@ -22889,11 +22889,11 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mvrvp1l1na1gm3.webp",
+          "content": "https://api.eprisjournal.com/uploads/mvrw1vvv1mmlet.webp",
           "align": "center",
           "width": 100,
-          "caption": "The great basin today: the water, the sculpture and the galleries of Albert Baert’s 1932 hall, October 2026. Photo: JackyM59, Wikimedia Commons (CC BY-SA 4.0).",
-          "alt": "A wide view of a museum hall built as a swimming pool, with a long water basin, statues and visitors on wooden walkways."
+          "caption": "A tiled doorway from the original building, in cream and green glazed brick, 2019. Photo: Chatsam, Wikimedia Commons (CC BY-SA 3.0).",
+          "alt": "A narrow doorway lined with cream glazed bricks and a green border, opening onto a bright gallery beyond."
         },
         {
           "type": "header",
@@ -23026,7 +23026,7 @@
           "url": "https://www.villa-cavrois.fr/"
         }
       ],
-      "updatedAt": "2026-10-28T08:58:31.266Z"
+      "updatedAt": "2026-10-28T09:05:12.779Z"
     }
   ],
   "reviews": [
