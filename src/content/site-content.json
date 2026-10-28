@@ -102793,9 +102793,118 @@
         },
         {
           "id": 78,
+          "draft": false,
           "title": "El arte de ser humano, o por qué vine a este mundo",
-          "excerpt": "Un arquitecto que nunca se convirtió en uno, un libro que nunca se terminó y una ciudad que cambió su composición. Tres historias sobre mapas, orden, otoño y el arte de ser humano.",
-          "category": "Arquitectura"
+          "author": "Viacheslav Munister",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autor",
+          "date": "30 oct 2026",
+          "excerpt": "Un arquitecto que nunca llegó a serlo, un libro que nunca se terminó y una ciudad que cambió su composición. Tres historias sobre mapas, orden, otoño y el arte de ser humano.",
+          "category": "Arquitectura",
+          "subcategory": "Ensayo",
+          "tags": [
+            "Ensayo",
+            "Arquitectura",
+            "Mapas",
+            "Geometría",
+            "Otoño",
+            "Memoria"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvpbhzm2x9of9o.jpg",
+          "showCover": true,
+          "previewToken": "art-of-being-human-3e778570bd340745",
+          "publishAt": "2026-10-30T03:00:00.000Z",
+          "content": [
+            {
+              "type": "quote",
+              "content": "“El mapa no es el territorio.” – Alfred Korzybski"
+            },
+            {
+              "type": "quote",
+              "content": "“No te deleitas en las siete o setenta maravillas de una ciudad, sino en la respuesta que da a una pregunta tuya.” – Italo Calvino, Las ciudades invisibles"
+            },
+            {
+              "type": "header",
+              "content": "Prólogo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Mi nombre es Viacheslav y soy el director creativo de EPRIS Journal. Hace unos días fue mi cumpleaños y decidí regalarme un presente. Es este ensayo.<br>  Nací a finales de octubre y he llegado a creer que eso explica bastante. Halloween es la única fiesta en la que la gente decora sus casas con las partes portantes del cuerpo humano. Esqueletos en las ventanas, costillas en las puertas, una columna vertebral en el porche, y toda la calle acuerda por una noche mostrar su estructura y llamarlo diversión. Los árboles hacen lo mismo, solo que con más discreción y mejores colores. Una persona nacida en esta exposición conoce bien una idea. Cuando cae la decoración, lo que importa es lo que queda.<br>  La imagen en la parte superior de esta página se hizo para la ocasión, a partir de dos viejos grabados. Uno es la <em>Melencolia I</em> de Durero, de 1514, en la que una figura alada se sienta entre todos los instrumentos de la construcción (un compás, una garlopa, una sierra, una escalera, un poliedro, un reloj de arena) y no construye nada. Es el retrato más exacto de un arquitecto que conozco, una persona con una caja de herramientas llena y sin obra. El otro es un plano de París, dibujado en 1739 con tanto cuidado que se pueden contar los patios. Superpuse uno sobre el otro. El resultado es todo el ensayo en dos imágenes: un mapa, y un hombre que no puede decidirse a confiar en él."
+            },
+            {
+              "type": "header",
+              "content": "Tres historias",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Steve Jobs abrió una vez un discurso a los graduados diciendo que les contaría tres historias, y eso fue todo. Voy a tomar prestada esa forma, porque es honesta. Tres historias, no un tratado. Cualquiera que pretenda hablar en serio de sí mismo debería aprender primero a hablar de sí mismo con sencillez.<br>  Y una advertencia por adelantado. No tengo manzana ni garaje. Tengo un libro que nunca terminé."
+            },
+            {
+              "type": "header",
+              "content": "Primera historia. Un libro para los padres de otros",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Se llama <em>Tu hijo es un arquitecto</em>, y me gustaría que notaran el pronombre. No <em>mi</em> hijo. Entonces, como ahora, no tenía hijos, ni cobertizo construido ni contrato firmado para construir una casa, y les explicaba a los padres de otros, con gran autoridad, cómo criar a una persona que construiría ciudades.<br>  El libro era divertido. En el prólogo saludaba al lector con la noticia de que la pequeña criatura había abierto finalmente los ojos, se burlaba del “niño hidrocefálico domesticado”, de las guarderías y la televisión, y de los padres cuya única contribución a la educación de su hijo es el yodo en sus rodillas. Un capítulo se llamaba “Aperol geométrico”. En su primera página estaba el Partenón con una espiral dorada dibujada sobre él, y junto a él un hombre vitruviano sosteniendo una guitarra eléctrica. Le Corbusier en el epígrafe decía que una persona con libre albedrío tiende hacia la geometría pura, y Jünger añadía que toda comodidad hay que pagarla.<br>  Entiendo ahora quién era el verdadero lector de ese libro. Todo adulto tiene una infancia que le gustaría reeditar en una edición mejor, y un libro de consejos a los padres es la forma más educada de hacerlo. Pensaba que me dirigía a madres y padres. Me dirigía a un niño que había querido que alguien tomara en serio sus dibujos, y que tendría que aprender a hacerlo él mismo.<br>  Llevaba dibujando desde antes de saber leer, y no dibujos sino mapas. Calles, patios, plazas y ríos, trazados en papel para que se pudiera caminar por ellos con la mirada y quedarse. Aún no era una profesión. Pero “arquitecto” sonaba como la respuesta correcta a la pregunta “¿qué serás?”, porque prometía orden, es decir, una regla, una mesa de dibujo, una hoja de papel a 1:100 y la luz de una ventana cayendo exactamente donde se había calculado. Creía sinceramente que el mundo también estaba dibujado a 1:100, y solo había que encontrar la hoja adecuada."
+            },
+            {
+              "type": "text",
+              "content": "  Un mapa es el documento más optimista que existe. Describe un lugar como si este ya hubiera aceptado ser lo que el dibujo dice. Nadie dibuja un mapa de una calle que está a punto de desaparecer, y para un niño con un lápiz el mundo entero es una calle que no va a ninguna parte.<br>  Luego, en uno de los últimos capítulos, escribí un practicum llamado «Calligraphicus». Con la cara más seria les dije a los padres que la geometría empieza por la caligrafía y no por el compás, y que a un niño se le debe enseñar a hacer letras en lugar de a tejer ganchillo. Hasta entrevisté a un científico, porque quería cierta autoridad. Era una broma, y bien construida.<br>  Aquí está lo que entendí mucho más tarde. En ese mismo discurso, Jobs cuenta un curso de caligrafía que tomó sin ningún propósito, y que volvió a él años después en su trabajo. Dice que solo se pueden unir los puntos mirando hacia atrás. Yo miro hacia atrás y veo que mi broma sobre la caligrafía no era una broma. Era la única cosa seria del libro. Una línea trazada con intención era lo que me quedaba, y una línea trazada con intención ya es una orden, aunque sea del tamaño de una palma."
+            },
+            {
+              "type": "header",
+              "content": "Segunda historia. Una ciudad que no estaba en el libro de texto",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Mi ciudad, a la que llamaré Ciudad D, fue el mejor libro de texto de arquitectura que he tenido. La leí como se lee un palimpsesto, donde una época se transparenta a través de otra, donde una fachada miente sobre lo que hay detrás, donde el patio es más honesto que la calle. El plan era simple. Estudiar, construir, ser reconocido, morir como un viejo respetable en una ciudad que se enorgullecía de él.<br>  Todo estudiante de arquitectura aprende que un edificio debe tener tres virtudes, que Vitruvio llamó firmeza, utilidad y belleza. Nadie añade una cuarta, porque es invisible, y la cuarta es el consentimiento. Un edificio se sostiene porque una ciudad ha acordado que el terreno es tuyo, que el cliente pagará, que el vecino no derribará el muro, y que dentro de cuarenta años habrá todavía personas para quienes hoy dibujas la escalera. El consentimiento es el cimiento bajo el cimiento. Solo te das cuenta el día que se va.<br>  En 2014 cambió la composición de mi ciudad. No sus muros, que estaban bien, sino su gente, sus normas y su vocabulario. Las palabras «poder», «acuerdo», «mañana» y «cliente» adquirieron en silencio sentidos que no aparecen en ningún diccionario. No explicaré quién tuvo la culpa ni qué pasó. Se han escrito montañas de palabras sobre eso, y ni una solo ha devuelto una sola casa. Diré solo que la ciudad donde había aprendido a leer edificios de pronto me exigió aprender a leer el aire. Y para el aire, resulta que los arquitectos no tenemos licencias.<br>  Fue entonces cuando los mapas me traicionaron, de la manera más educada posible. Seguían siendo precisos, y cada calle estaba donde yo la había dibujado. Pero un mapa describe un territorio que ha aceptado ser cartografiado, y el mío había dejado de aceptar. Yo sostenía un documento perfectamente preciso sobre un lugar que ya no existía en la forma en que lo había registrado, y no sabía qué hacer con él. Todos saben que el mapa no es el territorio. Menos gente menciona que es mucho peor cuando has pasado la infancia amando el mapa."
+            },
+            {
+              "type": "text",
+              "content": "  Fíjense qué bien quedó todo. El autor de un manual para criar arquitectos no se hizo arquitecto. El libro quedó inacabado y también la profesión. Si yo hubiera inventado la trama, un editor me habría devuelto el manuscrito con la nota «demasiado obvio».<br>  Los años que siguieron los pasé en la habitación equivocada. Estudié una carrera técnica, y el problema no era el conocimiento. Las ecuaciones son pacientes, y lo perdonan todo menos el descuido. El problema era el entorno. A la gente técnica, me parecía, no le gusta reflexionar ni sentir, y a esa edad parecer es lo mismo que ser. Aprendí a calcular, y lo aprendí bien. Lo que no pude aprender fue a fingir que calcular es todo lo que hay. Debo añadir, en justicia, que la habitación no se desperdició. Me enseñó qué es una carga, qué es una tolerancia y qué le pasa a una idea bonita cuando se encuentra con la gravedad, que resulta ser la mayor parte de lo que necesita un editor de revista.<br>  A menudo se dice que debes encontrar lo que amas. Nadie menciona la segunda opción, en la que lo que amas te encuentra a ti más tarde, por un camino lateral, en forma de un video al azar. Hacia finales de 2023 me topé con un blog en YouTube que se llamaba, literalmente, <em>Masha Peut</em>. Para los que no leen francés (yo apenas), <em>peut</em> significa «puede» y también «puede ser», precisamente la palabrita que mi ciudad me había confiscado en silencio diez años antes."
+            },
+            {
+              "type": "text",
+              "content": "  El blog lo llevaba María. Tenía una revista que salía en Telegram y como blog, es decir, en una forma ligera, rápida, casi ingrávida, lo opuesto a un monumento. En 2025 propuse desarrollar el concepto de esa revista, y sucedió. Aporté lo único que tenía, el hábito de arquitecta de preguntar para qué sirve una cosa, quién entrará en ella y cómo se mantendrá en pie dentro de diez años. Así nació EPRIS Journal. Es el relato más breve de este ensayo y el más importante, porque durante años había estado escribiendo sobre cosas que no sucedían. Resulta que «puede ser» sigue funcionando, si se lo dices a la persona adecuada."
+            },
+            {
+              "type": "header",
+              "content": "Tercera historia. Qué sostiene la carga",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Jünger lo expresó con más exactitud que yo. Mientras el grifo corre, la luz está encendida y una llamada trae a los bomberos, una persona se acostumbra a contar con la ayuda de otro, y queda indefensa el día en que no llega. En mi libro enseñaba a los padres a elegir un círculo de aficiones y un idioma extranjero para su hijo, es decir, a prepararlo para una vida en la que todo sigue funcionando. Que el propio edificio pudiera dejar de funcionar algún día, junto con el cuartel de bomberos y todos los que deberían acudir cuando llamas, no estaba en ningún capítulo.<br>  Dejó de funcionar. Y entonces resultó que el orden vive en dos lugares. Afuera, es una casa, una calle, una ley, un contrato. Adentro, es el hábito de trazar una línea recta cuando nadie a tu alrededor la traza. El orden exterior me fue cancelado, de forma bastante definitiva. El interior permaneció, y soportó mucho más de lo que había calculado mientras escribía sobre el Partenón.<br>  Así que «el arte de ser humano» se convirtió, para mí, en un problema arquitectónico a pequeña escala, sin cliente, sin presupuesto y sin derecho a una segunda opción. Hay que averiguar qué hay en uno que es estructural y qué es decoración, y no confundirlos cuando llega la presión. Hay que dejar un vacío en uno mismo para otra persona, es decir, una pausa, una opinión distinta, un sitio en la mesa. No hay que entregar lo que importa a cambio de comodidad. Jünger pone el precio, y sube sin consultar.<br>  Una cosa más sobre los edificios, que aprendí tarde. Un edificio no está terminado el día que se inaugura. Se mantiene cada día después, por alguien que cambia las bombillas, arregla el tejado y desatasca el desagüe, y se mantiene en pie exactamente mientras esa persona aparece. Las personas son iguales. Ser humano no es un estado que se alcanza, sino una tarea de mantenimiento que se realiza, en silencio, sobre las promesas que hiciste y la gente que confía en ellas. Nadie lo fotografía, y sostiene todo."
+            },
+            {
+              "type": "text",
+              "content": "  EPRIS Journal no es compensación por una profesión que no ocurrió (eso suena a excusa, y no tengo nada que excusar). Es el mismo trabajo por otros medios, una habitación para voces, una cimentación hecha de personas, ventanas en forma de preguntas. Cuando un fotógrafo me dice por qué deja un encuadre vacío, o un diseñador por qué hace un agujero en medio de una mesa, siento que por fin estoy haciendo lo que me prometí de pequeña, que es asegurar que la gente tenga dónde estar. Solo que sin ladrillos."
+            },
+            {
+              "type": "header",
+              "content": "Molinos de viento",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Hay una canción a la que sigo volviendo, «Molinos de tu mente». No la citaré, ya que una canción es una casa que pertenece a otro, y se debe llamar antes de entrar. Pero puedo decirles por qué encaja aquí. Un molino de viento es el edificio más honesto que conozco. No discute con el aire, ni le exige una licencia. Se alza a la intemperie, deja pasar el viento y convierte lo que pasa en pan.<br>  Un molinero no puede elegir el viento. Elige el ángulo de las velas. Creo que esta es toda la sabiduría práctica, y ojalá alguien se lo hubiera dicho al niño de los mapas. No puedes decidir qué tiempo llega a tu ciudad, a tu década o a tu vida. Decides cómo ponerte frente a él, para que lo que pasa a través de ti se convierta en algo que otros puedan comer.<br>  Solía pensar que mi vida corría en línea recta y que la línea se rompió en 2014. Ahora pienso que siempre fue un círculo, y lo que tomé por una ruptura fue un giro de la vela.<br>  Al final de su discurso, Jobs deseó a los graduados que se mantuvieran hambrientos y locos. Mi deseo es más modesto y, posiblemente, más honesto. Manténganse inacabados. Un libro inacabado es simplemente un molino que no ha encontrado su viento. Y el niño de <em>Your Child Is an Architect</em> ha crecido, según mi observación. Su casa no está hecha de ladrillo. Está hecha de lo que sea que gire."
+            },
+            {
+              "type": "header",
+              "content": "Gracias",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Gracias a todos los que estuvieron conmigo durante estos años. A los que se quedaron cerca cuando los mapas dejaron de coincidir con el terreno, a los que dijeron «puede» cuando la palabra escaseaba, y a los que simplemente se quedaron y no pidieron explicaciones. Lo que sea que haya logrado construir descansa en ustedes. Lo recuerdo."
+            }
+          ],
+          "updatedAt": "2026-10-28T00:10:57.706Z"
         },
         {
           "id": 77,
