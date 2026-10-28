@@ -134224,6 +134224,182 @@
           ],
           "featured": false,
           "updatedAt": "2026-10-12T09:05:50.193Z"
+        },
+        {
+          "id": 14,
+          "previewToken": "3edc94d71d3867767ba2c9b5",
+          "title": "Cena sotto un planetario",
+          "subject": "Alchimista · Refshalevej 173C, Copenaghen · Rasmus Munk e Studio Duncalf",
+          "rating": 0,
+          "category": "DESIGN & DINING",
+          "author": "Viacheslav Munister",
+          "role": "Author",
+          "authorId": "author-1784732936927-kw554",
+          "date": "NOV 2, 2026",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvrvcbyg8mzsts.webp",
+          "meta": "COPENHAGEN · RASMUS MUNK · STUDIO DUNCALF · TWO MICHELIN STARS · PHOTOS: ALCHEMIST",
+          "verdict": "Alchemist consegna quasi tutta la sua architettura a una cupola proiettata di diciotto metri e trasforma una cena per cinquantadue sconosciuti in un'unica performance condivisa. È l’opera più completa di narrazione spaziale nella ristorazione europea e, con cinque mesi di intervallo a partire da dicembre, novembre 2026 è l’ultima possibilità di vederlo nella sua forma attuale.",
+          "pros": [
+            "La cupola del planetario alta 18 metri, con dodici proiettori e un'immagine a 360 gradi, rende il soffitto l'unica architettura della stanza e cambia l'intero spazio con ogni scena",
+            "La serata è pianificata come una sequenza che abbraccia l'intero edificio: porta di bronzo, galleria, un salone di quattordici metri con una cantina a tre piani, la cupola, poi un salone dal pavimento in legno con un braciere",
+            "Cinquantadue posti ai banconi intorno alla cucina e un unico posto a sedere trasformano un gruppo di sconosciuti in un pubblico",
+            "Impressioni come \"1984\" e \"Tongue Kiss\" trattano la placcatura come design industriale e commento artistico, non come decorazione",
+            "L'intervallo – cinque mesi all'anno di ricerca con l'intero team – è un raro e serio ripensamento di come funziona un ristorante di alto livello"
+          ],
+          "cons": [
+            "Da quattro a sei ore e cinquanta impressioni richiedono molta resistenza e attenzione; questa è una performance, non una cena",
+            "Un menu che valorizza i rifiuti, la salute e gli oceani all’interno di un’esperienza di lusso estremo invita a un’ovvia contraddizione",
+            "Con il ristorante che conta più di un milione di persone in lista d'attesa, il progetto è molto più facile da leggere che da visitare",
+            "Da dicembre 2026 il ristorante chiude per cinque mesi all'anno, e la prossima versione sarà diversa da quella qui descritta"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "La maggior parte dei ristoranti vuole che tu dimentichi la stanza e ricordi il cibo. Alchemist, al Refshaleøen di Copenhagen, vuole che ricordi tutto: la porta, il cammino, il soffitto, il suono, il momento in cui le luci cambiano e arriva un piatto che sembra un occhio umano. Rasmus Munk definisce il suo menu non portate ma impressioni, cinquanta in una serata da quattro a sei ore, e l'edificio è stato progettato come una macchina per servirle. È la sala da pranzo più teatrale d'Europa, e nel novembre 2026 si appresta a fermarsi, per la prima volta, per cinque mesi."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Un laboratorio teatrale in un ex cantiere navale"
+            },
+            {
+              "type": "text",
+              "content": "L'indirizzo spiega metà dell'idea. Refshaleøen è un'ex isola di un cantiere navale ai margini del porto, ancora grezza e industriale, e Alchemist occupa un'ex officina navale che in seguito servì al Teatro reale danese come sala per la costruzione di scenografie. Munk si è trasferito qui nel 2019 da un primo ristorante di una quindicina di posti; la nuova casa, progettata con lo Studio Duncalf, è stata costruita per contenere non una sala da pranzo ma una sequenza di scene. Sette mesi dopo l'apertura aveva due stelle Michelin, la prima volta per un ristorante così giovane in Danimarca, e da allora le ha mantenute."
+            },
+            {
+              "type": "text",
+              "content": "La serata è coreografata come un'opera teatrale in cinque atti. Gli ospiti entrano attraverso una porta di bronzo di tre metri scolpita con rami nodosi in una galleria che mostra installazioni di artisti a rotazione. Un divisorio scorre verso l'alto per rivelare una sala alta quattordici metri con una cantina di vetro a tre piani con circa diecimila bottiglie, lampade a sospensione in ottone lunghe quattro metri e una cucina con la facciata in vetro che corre lungo la parete di fondo. Scale e un ponte con pavimento in vetro conducono all'evento principale; un ascensore porta i commensali in un'ultima sala con pavimenti in legno, divani bassi, un braciere e un bancone da tè."
+            },
+            {
+              "type": "quote",
+              "content": "È la sala da pranzo più teatrale d'Europa."
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Cena sotto un planetario"
+            },
+            {
+              "type": "text",
+              "content": "Il cuore dell'edificio è la cupola: diciotto metri di diametro, costruita con duecento tonnellate di acciaio e avvolta in un'immagine a 360 gradi da dodici proiettori. Cinquantadue ospiti si siedono ai lunghi banconi intorno alla cucina, uno per notte, e qui vengono servite più di trenta delle cinquanta impressioni. Sopra di loro il soffitto diventa l'aurora boreale, la Terra vista dall'orbita, un mare pieno di meduse – o, nell'universo chiamato Heartbeat, l'interno di un corpo umano."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvcafepn7rk7.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La cupola nel suo universo “Spaziale”: la Terra vista dall’orbita sopra i banconi della sala da pranzo.",
+              "alt": "Una sala da pranzo buia con banconi illuminati e sedie sotto una cupola proiettata con una vista della Terra dallo spazio e asteroidi sparsi.",
+              "credit": "Foto: Søren Gammelmark / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "text",
+              "content": "Il trucco del design è che la stanza non è quasi nulla. I banconi sono bassi e scuri, le sedie semplici, la luce si concentra sui tavoli; tutta l'espressione dell'architettura è stata consegnata al soffitto. Quando la proiezione cambia, l’intera stanza cambia con essa, e gli ospiti – che non hanno vista fuori e nient’altro da guardare – sono dentro l’immagine anziché davanti ad essa. È la logica di un planetario applicata a un ristorante, e trasforma un bancone di cinquantadue sconosciuti in una platea."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvc7o0ccnz92.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Rasmus Munk, fondatore e capo chef, nella cupola sotto un mare proiettato di meduse.",
+              "alt": "Uno chef vestito di nero in piedi in una stanza buia a cupola sotto una proiezione di meduse blu intenso.",
+              "credit": "Foto: Mathias Eis / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Impressioni, non corsi"
+            },
+            {
+              "type": "text",
+              "content": "La parola di Munk per i piatti è importante. Un'impronta può essere commestibile oppure no; può essere uno scherzo, una provocazione o una piccola predica. L'uscita che accompagna questa stagione ne elenca alcuni: Burnout Chicken, Hunger, The Scream, Butterfly, Lithophane, What came first?, Andy Warhol, Tongue Kiss e 1984, l'ultimo servito come un occhio umano perfettamente reso. Il cibo prende in prestito dalla storia dell’arte e dalle notizie tanto liberamente quanto dalla dispensa nordica, e diversi piatti sono progettati per avviare una discussione – sui rifiuti, sulla salute, sugli oceani – piuttosto che per concluderla."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvcehy6tz3ht.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una selezione di impressioni, tra cui Burnout Chicken, Hunger, Tongue Kiss, The Scream, Butterfly, Lithophane, What came first?, 1984 e Andy Warhol.",
+              "alt": "Una vista dall'alto di diversi piatti e oggetti su una superficie grigia, tra cui una piccola copia di L'Urlo, un piatto a forma di occhio, una banana e un ritratto incorniciato.",
+              "credit": "Foto: Daniel Lundsgaard / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "text",
+              "content": "Questo è anche il punto in cui l'Alchimista divide le persone. Un piatto a forma di bulbo oculare è un brillante pezzo di design e una cosa leggermente scomoda da mangiare; un menu che vuole parlare dello stato del pianeta attraverso sei ore di cena di lusso è aperto all'ovvia obiezione. L’alchimista non risolve quella tensione. Lo mette in scena e la stanza rende impossibile distogliere lo sguardo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvcgptnnwylj.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "L’impronta “1984”, presentata sotto forma di un occhio umano.",
+              "alt": "Una sfera lucida fatta per assomigliare ad un occhio umano con un'iride blu, su sfondo bianco.",
+              "credit": "Foto: Claes Bech Poulsen / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvciqzdk7t18.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "L'impressione \"Tongue Kiss\" su un cucchiaio, su una superficie rossa a specchio.",
+              "alt": "Piatto rosso a forma di lingua guarnito con fiorellini, appoggiato su un cucchiaio d'argento sopra una superficie rossa lucida.",
+              "credit": "Foto: Søren Gammelmark / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Cinque mesi di silenzio"
+            },
+            {
+              "type": "text",
+              "content": "La novità di quest'autunno è che lo spettacolo si prenderà una pausa. Da dicembre 2026, Alchemist chiuderà il suo servizio quotidiano per cinque mesi all'anno per quello che chiama Intervallo. Tutto il suo team – più di cento persone provenienti da più di trenta paesi – resta. In sala si studierà psicologia, coreografia, teatro e narrazione; la cucina svilupperà centinaia di nuove idee; il team dello studio lavorerà sulla prossima generazione della tecnologia interattiva della cupola. Durante la chiusura sono previste visite guidate dietro le quinte, con piatti selezionati della passata stagione, e un programma di eventi speciali. Alla riapertura del ristorante le bevande saranno incluse in un unico prezzo fisso."
+            },
+            {
+              "type": "text",
+              "content": "Ciò rende novembre 2026 l’ultimo mese di Alchemist così come esiste ora. Il ristorante afferma di essere stato completamente prenotato ogni giorno da quando è stato aperto nel 2019, con oltre un milione di persone in lista d’attesa; Munk è stato nominato miglior chef del mondo nel 2024 e nel 2025 e il ristorante è al quinto posto nella lista dei 50 migliori del mondo. In altre parole: le possibilità di un tavolo questo mese sono poche. La possibilità di vedere dove andrà il design della sala da pranzo, tra qualche mese, è piuttosto migliore."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrvc94yqekfcz.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Rasmus Munk, fondatore e capo chef di Alchemist.",
+              "alt": "Un ritratto di uno chef in camicia nera con avambracci tatuati, mani giunte, su uno sfondo scuro.",
+              "credit": "Foto: Mathias Eis / Alchimista",
+              "sourceUrl": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            },
+            {
+              "type": "header",
+              "level": 2,
+              "content": "Il verdetto sulla stanza"
+            },
+            {
+              "type": "text",
+              "content": "L'Alchemist non è un bel ristorante nel senso comune del termine. Non c'è vista, nessun bel mobile da ammirare, nessun materiale da accarezzare. Ciò che ha invece è un pezzo completo di narrazione spaziale: un edificio che controlla la luce, il suono, la scala e il tempo con la stessa attenzione con cui la cucina controlla la temperatura. Pochi architetti riescono a progettare una stanza il cui soffitto può diventare qualsiasi cosa. Munk e Studio Duncalf hanno sfruttato questa libertà per realizzare lo spazio da pranzo più memorabile dell'ultimo decennio e, con Intermission, ora si chiedono cosa dovrebbe diventare il prossimo."
+            },
+            {
+              "type": "note",
+              "content": "Questa recensione si basa sul comunicato stampa di Alchemist del 17 settembre 2026 su Intermission (date, squadra, figure della cupola, posti a sedere, premi e lista d'attesa come dichiarato dal ristorante), sul design del ristorante descritto da Dezeen alla sua apertura nel 2019 (Studio Duncalf, porta di bronzo, cantina, cupola, sala dei dessert), VisitCopenhagen (indirizzo, stelle Michelin) e Falstaff. Fotografie: immagini della stampa Alchemist; fotografi come accreditati."
+            },
+            {
+              "type": "link",
+              "content": "Alchimista – sito ufficiale",
+              "url": "https://alchemist.dk/"
+            },
+            {
+              "type": "link",
+              "content": "Intervallo presso Alchemist – comunicato stampa (danese)",
+              "url": "https://via.ritzau.dk/pressemeddelelse/15164837/intermission-pa-alchemist-fem-maneder-om-aret-skal-bruges-til-kreativ-fordybelse?lang=da"
+            }
+          ],
+          "featured": false,
+          "publishAt": "2026-11-02T04:00:00.000Z",
+          "updatedAt": "2026-10-28T21:42:27.970Z"
         }
       ],
       "libraryItems": [
