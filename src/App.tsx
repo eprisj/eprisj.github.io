@@ -1491,6 +1491,16 @@ const LEGACY_TEAM_ORDER = new Map([
   ['author-1784732936927-kw554', 3],
 ]);
 
+/* Ссылка на страницу в App Store подписывается «App Store», а не «Website»:
+   читатель должен знать, что попадёт в магазин приложений, а не на сайт. */
+function authorLinkLabel(url: string, fallback: string): string {
+  try {
+    return new URL(url).hostname === 'apps.apple.com' ? 'App Store' : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 function TeamMemberCard({
   author,
   roleLabel,
@@ -1532,7 +1542,7 @@ function TeamMemberCard({
           <div className="flex justify-center sm:justify-start gap-4 font-serif text-sm text-[var(--c-accent)]">
             {author.website && (
               <a href={author.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--c-gold)] transition-colors">
-                {websiteLabel}
+                {authorLinkLabel(author.website, websiteLabel)}
               </a>
             )}
             {author.instagram && (
@@ -2585,7 +2595,7 @@ function CreditCard({ person, currentLang }: { person: Author; currentLang: stri
                 rel="noopener noreferrer"
                 className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
               >
-                Website
+                {authorLinkLabel(person.website, 'Website')}
               </a>
             )}
             {person.instagram && (
@@ -3184,7 +3194,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                         rel="noopener noreferrer"
                         className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--c-accent)] hover:text-[var(--c-gold)] underline underline-offset-4 transition-colors py-3.5 -my-3.5 inline-block"
                       >
-                        Website
+                        {authorLinkLabel(resolvedAuthor.website, 'Website')}
                       </a>
                     )}
                     {resolvedAuthor.instagram && (
@@ -3793,7 +3803,7 @@ function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages
               {authorProfile?.bio && <p className="mb-3 max-w-xl font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.7)]">{authorProfile.bio}</p>}
               {(authorProfile?.website || authorProfile?.instagram) && (
                 <div className="mb-3 flex flex-wrap items-center gap-4">
-                  {authorProfile.website && <a href={authorProfile.website} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] underline underline-offset-4 transition-colors hover:text-[var(--c-gold)]">Website</a>}
+                  {authorProfile.website && <a href={authorProfile.website} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] underline underline-offset-4 transition-colors hover:text-[var(--c-gold)]">{authorLinkLabel(authorProfile.website, 'Website')}</a>}
                   {authorProfile.instagram && <a href={`https://instagram.com/${authorProfile.instagram.replace(/^@/, '')}`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] underline underline-offset-4 transition-colors hover:text-[var(--c-gold)]">{authorProfile.instagram}</a>}
                 </div>
               )}
