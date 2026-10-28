@@ -22466,7 +22466,7 @@
         "berlin modern"
       ],
       "imageSeed": "",
-      "imageUrl": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mvrux0wk2fb2bd.webp",
       "publishAt": "2026-10-29T08:00:00.000Z",
       "content": [
         {
@@ -22677,14 +22677,6 @@
         },
         {
           "type": "image",
-          "content": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
-          "align": "center",
-          "width": 100,
-          "caption": "The Neue Nationalgalerie at dusk, November 2021, with Henry Moore’s Three Way Piece No. 2: The Archer in front of the glass hall. Photo: A.Savin, Wikimedia Commons (Free Art License).",
-          "alt": "A glass pavilion under a wide flat black steel roof, lit from inside at blue hour, with a dark bronze sculpture on the granite terrace in front."
-        },
-        {
-          "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvruyxdulclfqq.webp",
           "align": "center",
           "width": 100,
@@ -22776,7 +22768,7 @@
           "url": "https://www.preussischer-kulturbesitz.de/en/news-detail/article/2025/10/17/milestone-for-a-new-cultural-forum-berlin-modern-celebrates-topping-out-ceremony.html"
         }
       ],
-      "updatedAt": "2026-10-28T08:39:54.195Z"
+      "updatedAt": "2026-10-28T08:40:24.214Z"
     }
   ],
   "reviews": [
