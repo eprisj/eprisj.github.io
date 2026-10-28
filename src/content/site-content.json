@@ -82763,9 +82763,118 @@
         },
         {
           "id": 78,
-          "title": "Die Kunst, menschlich zu sein, oder warum ich in diese Welt kam",
-          "excerpt": "Ein Architekt, der nie einer wurde, ein Buch, das nie fertig wurde, und eine Stadt, die ihre Zusammensetzung änderte. Drei Geschichten über Karten, Ordnung, Herbst und die Kunst des Menschseins.",
-          "category": "Architektur"
+          "draft": false,
+          "title": "Die Kunst, Mensch zu sein, oder warum ich in diese Welt kam",
+          "author": "Viacheslav Munister",
+          "authorId": "author-1784732936927-kw554",
+          "role": "Autor",
+          "date": "Okt 30, 2026",
+          "excerpt": "Ein Architekt, der nie einer wurde, ein Buch, das nie fertig wurde, und eine Stadt, die ihre Zusammensetzung veränderte. Drei Geschichten über Karten, Ordnung, Herbst und die Kunst, Mensch zu sein.",
+          "category": "Architektur",
+          "subcategory": "Essay",
+          "tags": [
+            "Essay",
+            "Architektur",
+            "Karten",
+            "Geometrie",
+            "Herbst",
+            "Erinnerung"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvpbhzm2x9of9o.jpg",
+          "showCover": true,
+          "previewToken": "art-of-being-human-3e778570bd340745",
+          "publishAt": "2026-10-30T03:00:00.000Z",
+          "content": [
+            {
+              "type": "quote",
+              "content": "„Eine Karte ist nicht das Gebiet.“ – Alfred Korzybski"
+            },
+            {
+              "type": "quote",
+              "content": "„Man erfreut sich nicht an den sieben oder siebzig Wundern einer Stadt, sondern an der Antwort, die sie auf eine Frage von einem selbst gibt.“ – Italo Calvino, Unsichtbare Städte"
+            },
+            {
+              "type": "header",
+              "content": "Prolog",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Mein Name ist Viacheslav, und ich bin der Creative Director des EPRIS Journal. Vor wenigen Tagen hatte ich Geburtstag, und ich beschloss, mir selbst ein Geschenk zu machen. Es ist dieser Essay.<br>  Ich wurde Ende Oktober geboren, und ich bin zu der Überzeugung gekommen, dass das einiges erklärt. Halloween ist der einzige Feiertag, an dem Menschen ihre Häuser mit den tragenden Teilen des menschlichen Körpers schmücken. Skelette in den Fenstern, Rippen an den Türen, eine Wirbelsäule auf der Veranda, und die ganze Straße einigt sich für eine Nacht darauf, ihre Struktur zu zeigen und das Vergnügen zu nennen. Die Bäume tun dasselbe, nur diskreter und in schöneren Farben. Ein Mensch, der in diese Ausstellung hineingeboren wird, kennt eine Idee gut. Wenn der Schmuck fällt, kommt es darauf an, was bleibt.<br>  Das Bild oben auf dieser Seite wurde für den Anlass aus zwei alten Stichen gefertigt. Der eine ist Dürers <em>Melencolia I</em> von 1514, auf dem eine geflügelte Figur unter sämtlichen Bauinstrumenten sitzt (ein Zirkel, eine Hobel, eine Säge, eine Leiter, ein Polyeder, eine Sanduhr) und nichts baut. Es ist das treffendste Porträt eines Architekten, das ich kenne: ein Mensch mit vollem Werkzeugkasten und ohne Baustelle. Der andere ist ein Plan von Paris, gezeichnet 1739 so sorgfältig, dass man die Höfe zählen kann. Ich legte das eine über das andere. Das Ergebnis ist der ganze Essay in zwei Bildern: eine Karte und ein Mann, der nicht entscheiden kann, ob er ihr trauen soll."
+            },
+            {
+              "type": "header",
+              "content": "Drei Geschichten",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Steve Jobs eröffnete einst eine Rede an Absolventen damit, dass er ihnen drei Geschichten erzählen werde, und das sei alles. Ich werde diese Form borgen, weil sie ehrlich ist. Drei Geschichten, keine Abhandlung. Wer ernsthaft über sich sprechen will, muss zuerst lernen, einfach über sich zu sprechen.<br>  Und eine Warnung vorab. Ich habe keinen Apfel und keine Garage. Ich habe ein Buch, das ich nie fertiggeschrieben habe."
+            },
+            {
+              "type": "header",
+              "content": "Erste Geschichte. Ein Buch für die Eltern anderer Leute",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Es heißt <em>Your Child Is an Architect</em>, und ich möchte, dass Sie auf das Pronomen achten. Nicht <em>mein</em> Kind. Damals wie heute hatte ich keine Kinder, keinen gebauten Schuppen und keinen unterschriebenen Vertrag, ein Haus zu bauen, und ich erklärte den Eltern anderer Leute mit großer Autorität, wie man einen Menschen erzieht, der Städte baut.<br>  Das Buch war lustig. Im Vorwort begrüßte ich den Leser mit der Nachricht, dass das kleine Wesen endlich die Augen geöffnet habe, machte mich lustig über den „gezähmten hydrozephalen Kleinkind“, über Kindergärten und Fernsehen, und über Väter, deren einziger Beitrag zur Erziehung ihres Sohnes Jod auf seinen Knien ist. Ein Kapitel hieß „Geometrischer Aperol“. Auf seiner ersten Seite stand der Parthenon mit einer darüber gezeichneten goldenen Spirale, und daneben ein vitruvianischer Mann, der eine elektrische Gitarre hielt. Le Corbusier sagte im Epigraph, dass ein Mensch mit freiem Willen zur reinen Geometrie strebe, und Jünger fügte hinzu, dass jeder Komfort bezahlt werden muss.<br>  Ich verstehe jetzt, wer der wahre Leser dieses Buches war. Jeder Erwachsene hat eine Kindheit, die er gerne in einer besseren Auflage neu herausgeben würde, und ein Ratschlagbuch für Eltern ist der höflichste Weg, dies zu tun. Ich dachte, ich spreche Mütter und Väter an. Ich sprach einen Jungen an, der sich gewünscht hatte, dass jemand seine Zeichnungen ernst nimmt, und der lernen musste, es selbst zu tun.<br>  Ich zeichnete, bevor ich lesen konnte, und keine Bilder, sondern Karten. Straßen, Höfe, Plätze und Flüsse, auf Papier angelegt, sodass man sie mit den Augen durchwandern und verweilen konnte. Es war noch kein Beruf. Aber „Architekt“ klang wie die richtige Antwort auf die Frage „Was wirst du werden“, weil es Ordnung versprach, nämlich ein Lineal, einen Zeichentisch, ein Blatt Papier im Maßstab 1:100 und das Licht eines Fensters, das genau dort fällt, wo es berechnet war. Ich glaubte aufrichtig, die Welt sei ebenfalls im Maßstab 1:100 gezeichnet, und man müsse nur das richtige Blatt finden."
+            },
+            {
+              "type": "text",
+              "content": "  Eine Karte ist das optimistischste Dokument, das es gibt. Sie beschreibt einen Ort so, als hätte der Ort bereits zugestimmt, genau das zu sein, was die Zeichnung behauptet. Niemand zeichnet eine Karte einer Straße, die gerade weggenommen werden soll, und für ein Kind mit einem Stift ist die ganze Welt eine Straße, die nirgendwohin führt.<br>  Dann, in einem der letzten Kapitel, schrieb ich ein Praktikum namens „Calligraphicus“. Mit vollkommen ernster Miene sagte ich Eltern, dass Geometrie mit Handschrift beginnt und nicht mit dem Zirkel, und dass ein Kind gelehrt werden sollte, Buchstaben zu formen statt zu häkeln. Ich befragte sogar einen Wissenschaftler, weil ich etwas Autorität brauchte. Es war ein Witz, und ein gut konstruierter noch dazu.<br>  Hier ist, was ich viel später verstand. In derselben Rede erzählt Jobs von einem Kalligraphiekurs, den er ganz ohne Absicht belegt hatte, der ihm Jahre später in seiner Arbeit wiederbegegnete. Er sagt, man kann die Punkte nur rückblickend verbinden. Ich blicke zurück und sehe, dass mein Witz über Kalligraphie kein Witz war. Er war die eine ernste Sache in dem Buch. Eine mit Absicht gezogene Linie war das, was mir blieb, und eine mit Absicht gezogene Linie ist bereits ein Befehl, auch wenn sie nur handtellergroß ist."
+            },
+            {
+              "type": "header",
+              "content": "Zweite Geschichte. Eine Stadt, die nicht im Lehrbuch stand",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Meine Stadt, die ich Stadt D nenne, war das beste Architekturbuch, das ich je hatte. Ich las sie so, wie man ein Palimpsest liest, wo eine Epoche durch die andere hindurchscheint, wo eine Fassade lügt, was dahinterliegt, wo der Hof ehrlicher ist als die Straße. Der Plan war einfach. Studieren, bauen, anerkannt werden, als geachteter alter Mann in einer Stadt sterben, die stolz auf ihn war.<br>  Jeder Architekturstudent lernt, dass ein Gebäude drei Tugenden haben muss, die Vitruv Festigkeit, Zweckmäßigkeit und Schönheit nannte. Niemand fügt eine vierte hinzu, weil sie unsichtbar ist, und die vierte ist Einverständnis. Ein Gebäude steht, weil eine Stadt zugestimmt hat, dass das Land dir gehört, dass der Bauherr zahlt, dass der Nachbar die Mauer nicht niederreißt, und dass es in vierzig Jahren noch Menschen geben wird, für die du heute die Treppe zeichnest. Einverständnis ist das Fundament unter dem Fundament. Man bemerkt es nur an dem Tag, an dem es weg ist.<br>  2014 veränderte sich die Zusammensetzung meiner Stadt. Nicht ihre Mauern, die waren in Ordnung, sondern ihre Menschen, ihre Regeln und ihr Vokabular. Die Wörter „dürfen“, „Einvernehmen“, „morgen“ und „Bauherr“ erhielten stillschweigend Bedeutungen, die in keinem Wörterbuch stehen. Ich werde nicht erklären, wer schuld war oder was geschah. Berge von Worten wurden darüber geschrieben, und keines davon hat ein einziges Haus zurückgebracht. Ich sage nur: Die Stadt, in der ich gelernt hatte, Gebäude zu lesen, verlangte plötzlich, dass ich lernte, die Luft zu lesen. Und für die Luft, so stellt sich heraus, besitzen Architekten keine Lizenzen.<br>  Da verrieten mich die Karten, auf die höflichste Art. Sie waren immer noch genau, und jede Straße stand da, wo ich sie eingezeichnet hatte. Aber eine Karte beschreibt ein Gebiet, das zugestimmt hat, kartografiert zu werden, und meines hatte damit aufgehört. Ich hielt ein perfekt präzises Dokument über einen Ort in der Hand, der in der Form, in der ich ihn festgehalten hatte, nicht mehr existierte, und ich wusste nicht, was ich damit anfangen sollte. Jeder weiß, die Karte ist nicht das Gebiet. Weniger Leute erwähnen, dass es weit schlimmer ist, wenn man seine Kindheit damit verbracht hat, die Karte zu lieben."
+            },
+            {
+              "type": "text",
+              "content": "  Man beachte, wie sauber es sich fügte. Der Autor eines Handbuchs zur Ausbildung von Architekten wurde kein Architekt. Das Buch blieb unvollendet, und der Beruf auch. Hätte ich den Plot erfunden, hätte ein Lektor das Manuskript mit dem Vermerk „zu plump“ zurückgeschickt.<br>  Die folgenden Jahre verbrachte ich im falschen Raum. Ich studierte ein technisches Fach, und das Problem war nicht das Wissen. Gleichungen sind geduldig, und sie verzeihen alles außer Nachlässigkeit. Das Problem war die Umgebung. Technische Menschen, schien mir, reflektieren und fühlen nicht gerne, und in dem Alter ist Scheinen dasselbe wie Sein. Ich lernte zu rechnen, und ich lernte es gut. Was ich nicht lernen konnte, war vorzugeben, dass Rechnen alles ist. Ich sollte der Fairness halber hinzufügen, dass der Raum nicht vergeudet war. Er lehrte mich, was eine Last ist, was eine Toleranz ist und was mit einer schönen Idee geschieht, wenn sie auf die Schwerkraft trifft, was sich als das meiste herausstellt, was ein Magazinredakteur braucht.<br>  Leute sagen oft, man müsse finden, was man liebt. Niemand erwähnt die zweite Option, in der das, was man liebt, einen später findet, über einen Seitenweg, in Form eines zufälligen Videos. Irgendwann Ende 2023 stieß ich auf einen Blog auf YouTube, der buchstäblich <em>Masha Peut</em> hieß. Für diejenigen, die kein Französisch lesen (ich kaum), bedeutet <em>peut</em> „kann“ und auch „darf“, genau jenes kleine Wörtchen, das meine Stadt mir zehn Jahre zuvor stillschweigend abgenommen hatte."
+            },
+            {
+              "type": "text",
+              "content": "  Der Blog wurde von Maria betrieben. Sie hatte ein Journal, das in Telegram und als Blog erschien – also in einer leichten, schnellen, fast schwerelosen Form, dem Gegenentwurf zu einem Denkmal. 2025 schlug ich vor, das Konzept dieses Journals weiterzuentwickeln, und es geschah. Ich brachte das Einzige ein, was ich hatte: die Architektengewohnheit zu fragen, wofür ein Ding gut ist, wer hineingehen wird und wie es in zehn Jahren dastehen wird. So begann das EPRIS Journal. Es ist die kürzeste Wiedererzählung in diesem Essay und die wichtigste, denn jahrelang hatte ich über Dinge geschrieben, die nicht geschahen. Es stellt sich heraus: ‚Könnte‘ wirkt noch immer, wenn man es zum richtigen Menschen sagt."
+            },
+            {
+              "type": "header",
+              "content": "Dritte Geschichte. Was die Last trägt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Jünger hat es präziser formuliert, als ich es könnte. Solange das Wasser läuft, das Licht brennt und ein Anruf die Feuerwehr bringt, gewöhnt sich ein Mensch daran, auf fremde Hilfe zu zählen, und ist hilflos an dem Tag, an dem sie nicht kommt. In meinem Buch brachte ich Eltern bei, für ihr Kind einen Hobbykreis und eine Fremdsprache auszuwählen – also es auf ein Leben vorzubereiten, in dem alles funktioniert. Dass das Gebäude selbst eines Tages aufhören könnte zu funktionieren, zusammen mit der Feuerwache und allen, die kommen sollten, wenn man anruft, stand in keinem Kapitel.<br>  Es hörte auf. Und dann zeigte sich, dass Ordnung an zwei Orten wohnt. Draußen ist sie ein Haus, eine Straße, ein Gesetz, ein Vertrag. Drinnen ist sie die Gewohnheit, eine gerade Linie zu ziehen, wenn niemand um einen herum eine zieht. Die äußere Ordnung wurde für mich aufgehoben, ganz entschieden. Die innere blieb, und sie trug weit mehr, als ich berechnet hatte, während ich über den Parthenon schrieb.<br>  So wurde ‚die Kunst, Mensch zu sein‘ für mich zu einem architektonischen Problem im Kleinen, ohne Auftraggeber, ohne Budget und ohne Recht auf eine zweite Option. Man muss herausarbeiten, was in einem tragend ist und was Dekoration, und sie nicht verwechseln, wenn der Druck kommt. Man muss eine Leere in sich lassen für einen anderen Menschen – also eine Pause, eine andere Meinung, einen Platz am Tisch. Man darf nicht weggeben, was zählt, im Tausch gegen Bequemlichkeit. Jünger nennt den Preis, und er steigt ohne Rücksprache.<br>  Noch etwas über Gebäude, das ich spät lernte. Ein Gebäude ist nicht am Eröffnungstag fertig. Es wird jeden Tag danach instand gehalten, von jemandem, der Glühbirnen wechselt, das Dach flickt und den Abfluss freimacht, und es steht genau so lange, wie dieser Mensch auftaucht. Menschen sind gleich. Mensch sein ist kein Zustand, den man erreicht, sondern ein Stück Instandhaltung, das man vollzieht, still, an den Versprechen, die man gab, und den Menschen, die darauf vertrauen. Niemand fotografiert es, und es hält alles oben."
+            },
+            {
+              "type": "text",
+              "content": "  EPRIS Journal ist kein Ausgleich für einen Beruf, der nicht stattfand (das klingt wie eine Entschuldigung, und ich habe nichts zu entschuldigen). Es ist dieselbe Arbeit mit anderen Mitteln, ein Raum für Stimmen, ein Fundament aus Menschen, Fenster in Form von Fragen. Wenn mir ein Fotograf erzählt, warum er einen Rahmen leer lässt, oder ein Designer, warum er ein Loch in die Mitte eines Tisches schneidet, spüre ich, dass ich endlich tue, was ich mir als Kind versprach: dafür zu sorgen, dass Menschen einen Ort haben, an dem sie sein können. Nur ohne Ziegel."
+            },
+            {
+              "type": "header",
+              "content": "Windmühlen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Es gibt ein Lied, zu dem ich immer wieder zurückkehre, „Windmills of Your Mind“. Ich werde es nicht zitieren, denn ein Lied ist ein Haus, das jemand anderem gehört, und man sollte klopfen, bevor man eintritt. Aber ich kann dir sagen, warum es hierher passt. Eine Windmühle ist das ehrlichste Gebäude, das ich kenne. Sie streitet nicht mit der Luft und verlangt keine Lizenz von ihr. Sie steht im Freien, lässt den Wind hindurch und verwandelt, was vorübergeht, in Brot.<br>  Ein Müller kann den Wind nicht wählen. Er wählt den Winkel der Flügel. Ich glaube, das ist die ganze praktische Weisheit, und ich wünschte, jemand hätte es dem Jungen mit den Karten gesagt. Du darfst nicht entscheiden, welches Wetter in deiner Stadt, in deinem Jahrzehnt oder in deinem Leben ankommt. Du entscheidest, wie du dich ihm entgegenstellst, damit das, was durch dich hindurchgeht, zu etwas wird, das andere essen können.<br>  Ich dachte früher, mein Leben verlaufe in einer geraden Linie, und dass diese Linie 2014 brach. Jetzt denke ich, es war immer ein Kreis, und was ich für einen Bruch hielt, war ein Drehen des Flügels.<br>  Am Ende seiner Rede wünschte Jobs den Absolventen, hungrig und töricht zu bleiben. Mein Wunsch ist bescheidener und vielleicht ehrlicher. Bleib unfertig. Ein unfertiges Buch ist einfach eine Mühle, die noch nicht ihren Wind getroffen hat. Und das Kind aus <em>Your Child Is an Architect</em> ist, nach meiner Beobachtung, schließlich doch erwachsen geworden. Sein Haus ist nur nicht aus Backstein. Es besteht aus dem, was sich dreht."
+            },
+            {
+              "type": "header",
+              "content": "Danke",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "  Danke an alle, die in diesen Jahren an meiner Seite waren. Denen, die nah blieben, als die Karten nicht mehr zum Boden passten, denen, die „vielleicht“ sagten, als das Wort knapp war, und denen, die einfach blieben und keine Erklärung verlangten. Was auch immer ich bauen konnte, ruht auf euch. Ich vergesse es nicht."
+            }
+          ],
+          "updatedAt": "2026-10-28T00:08:11.123Z"
         }
       ],
       "reviews": [
