@@ -23356,7 +23356,7 @@
         },
         {
           "type": "text",
-          "content": "The origins of this image reveal Bacon’s fascination with cinema, particularly Sergei Eisenstein’s silent film *Battleship Potemkin* (1925). Bacon was deeply affected by the famous Odessa Steps sequence, especially the close-up of a screaming nurse wearing shattered pince-nez glasses. The image became one of his most important visual references, contributing to his recurring fascination with the open mouth as an expression of extreme physical and psychological intensity."
+          "content": "The origins of this image reveal Bacon’s fascination with cinema, particularly Sergei Eisenstein’s silent film \"Battleship Potemkin* (1925). Bacon was deeply affected by the famous Odessa Steps sequence, especially the close-up of a screaming nurse wearing shattered pince-nez glasses. The image became one of his most important visual references, contributing to his recurring fascination with the open mouth as an expression of extreme physical and psychological intensity."
         },
         {
           "type": "text",
@@ -23368,7 +23368,10 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mvtbetsoqxe6kv.webp",
+            "https://api.eprisjournal.com/uploads/mvtbf0359j8ahe.webp"
+          ],
           "caption": ""
         },
         {
@@ -23392,7 +23395,7 @@
           "content": ""
         }
       ],
-      "updatedAt": "2026-10-29T09:02:01.617Z"
+      "updatedAt": "2026-10-29T09:02:58.189Z"
     }
   ],
   "reviews": [
