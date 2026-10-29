@@ -23357,7 +23357,10 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvtbetsoqxe6kv.webp",
-          "caption": ""
+          "caption": "",
+          "width": 65,
+          "stretched": false,
+          "align": "left"
         },
         {
           "type": "text",
@@ -23374,7 +23377,10 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvtbf0359j8ahe.webp",
-          "caption": ""
+          "caption": "",
+          "width": 50,
+          "stretched": false,
+          "align": "right"
         },
         {
           "type": "text",
@@ -23506,7 +23512,7 @@
           "content": "Their relationship ended in tragedy when Lacy died in Tangier in 1962, reportedly from complications related to alcoholism. Bacon received the news around the time of his major retrospective at Tate in London. The loss deeply affected him, and Lacy's presence continued to haunt his artistic imagination."
         }
       ],
-      "updatedAt": "2026-10-29T09:13:02.461Z"
+      "updatedAt": "2026-10-29T09:13:26.949Z"
     }
   ],
   "reviews": [
