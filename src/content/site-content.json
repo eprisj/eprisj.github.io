@@ -43461,6 +43461,24 @@
             }
           ],
           "updatedAt": "2026-10-28T00:23:56.802Z"
+        },
+        {
+          "id": 80,
+          "title": "Жизнь на воздухе: Томас Сарасено и искусство парить вместе",
+          "excerpt": "Паутинные сети, отсканированные в трёх измерениях, города, парящие как облака, шар, перенёсший женщину над солончаком только на солнечном свете, и водное святилище, созданное против литийной лихорадки: двадцать пять лет Томаса Сарасено и его крупнейшая выставка в Германии, в Haus der Kunst в Мюнхене до 7 февраля 2027 года.",
+          "category": "Искусство"
+        },
+        {
+          "id": 81,
+          "title": "После Баухауза: десять лет, переформировавших немецкую архитектуру",
+          "excerpt": "Волна из стекла на гамбургском складе, бетонный куб в Веймаре, чёрный куб, парящий в Дессау, кристалл на Шпрее, храм, разобранный и собранный заново, и деревянная башня: девять проектов, показывающих, куда движется немецкая архитектура с Эльбфилармони — и куда она движется дальше.",
+          "category": "Архитектура"
+        },
+        {
+          "id": 82,
+          "title": "Бассейн и вилла: другая столица французского ар-деко",
+          "excerpt": "В 1932 году, всего в нескольких километрах друг от друга на окраине Рубе, социалистический мэр завершил строительство самого красивого бассейна во Франции для текстильных рабочих, а владелец ткацкой фабрики переехал в шестидесятиметровую виллу из жёлтого кирпича по проекту Роберта Малье-Стевенса. Оба здания едва не исчезли; оба были спасены. Двадцать пять лет спустя после того, как бассейн стал музеем, история французского ар-деко рассказана через два здания.",
+          "category": "Архитектура"
         }
       ],
       "reviews": [
@@ -44694,6 +44712,13 @@
           ],
           "featured": false,
           "updatedAt": "2026-10-12T09:05:44.945Z"
+        },
+        {
+          "id": 14,
+          "title": "Ужин под планетарием",
+          "category": "ДИЗАЙН И УЖИН",
+          "verdict": "Alchemist отдаёт почти всю свою архитектуру восемнадцатиметровому проецируемому куполу и превращает ужин для пятидесяти двух незнакомцев в единое совместное представление. Это самый полный пример пространственного сторителлинга в европейской ресторанной индустрии — и, учитывая пятимесячный антракт, начинающийся в декабре, ноябрь 2026 года станет последним шансом увидеть его в текущем виде.",
+          "subject": "Alchemist · Рефшалевей 173C, Копенгаген · Расмус Мунк и Studio Duncalf"
         }
       ],
       "libraryItems": [
@@ -63882,6 +63907,24 @@
             }
           ],
           "updatedAt": "2026-10-27T00:19:33.208Z"
+        },
+        {
+          "id": 80,
+          "title": "Життя в повітрі: Томас Сараценко та мистецтво парення разом",
+          "excerpt": "Павутинні павутини, відскановані в трьох вимірах, міста, що парять як хмари, аеростат, що переніс жінку над соляним рівнинном лише за енергії сонця, та водний санктуарий, створений у відповідь на літійовий бум: двадцять п'ять років Томаса Сараценка й його найбільша виставка в Німеччині, у Haus der Kunst у Мюнхені до 7 лютого 2027 року.",
+          "category": "Мистецтво"
+        },
+        {
+          "id": 81,
+          "title": "Після Баухаузу: Десять років, що перетворили німецьку архітектуру",
+          "excerpt": "Хвиля скла на гамбурзькому склади, бетонний куб у Веймарі, чорна коробка, що висить у Десау, кришталь на Шпрей, храм, розібраний і зібраний знову, і вежа з дерева: дев'ять проєктів, що показують, куди йшла німецька архітектура від часу Ельбфілармонії — і куди вона йде далі.",
+          "category": "Архітектура"
+        },
+        {
+          "id": 82,
+          "title": "Басейн і віла: Інша столиця французького ар-деко",
+          "excerpt": "У 1932 році, всього в кількох кілометрах один від одного на околиці Рубе, соціалістичний мер завершив будівництво найкращого басейну во Франції для текстильних робітників, а власник фабрики переїхав у шістдесятиметровувілу з жовтого цегли за проєктом Роберта Мальє-Стьєвенса. Обидва майже зникли; обидва були врятовані. Двадцять п'ять років після того, як басейн став музеєм, історія французького ар-деко розповідається через дві будівлі.",
+          "category": "Архітектура"
         }
       ],
       "reviews": [
@@ -65115,6 +65158,13 @@
           ],
           "featured": false,
           "updatedAt": "2026-10-12T09:05:46.222Z"
+        },
+        {
+          "id": 14,
+          "title": "Вечеря під планетарієм",
+          "category": "ДИЗАЙН ТА ГАСТРОНОМІЯ",
+          "verdict": "Alchemist віддає майже всю свою архітектуру вісімнадцятиметровому проекційному куполу, перетворюючи вечерю для п'ятдесяти двох незнайомців на єдине спільне виступ. Це найповніший приклад просторового сторителлінгу в європейській гастрономії — і, з п'ятьма місяцями перерви Intermission, що починається в грудні, листопад 2026 року стає останнім шансом побачити це в поточному форматі.",
+          "subject": "Alchemist · Refshalevej 173C, Copenhagen · Rasmus Munk та Studio Duncalf"
         }
       ],
       "libraryItems": [
@@ -84309,6 +84359,24 @@
             }
           ],
           "updatedAt": "2026-10-28T00:08:11.123Z"
+        },
+        {
+          "id": 80,
+          "title": "Leben in der Luft: Tomás Saraceno und die Kunst des gemeinsamen Schwebens",
+          "excerpt": "In drei Dimensionen gescannte Spinnennetze, Städte, die wie Wolken schweben, ein Ballon, der eine Frau nur durch Sonnenlicht über eine Salzwüste trug, und ein Wasserschutzgebiet, errichtet gegen den Lithium-Boom: fünfundzwanzig Jahre Tomás Saraceno und seine größte Ausstellung in Deutschland im Haus der Kunst in München bis zum 7. Februar 2027.",
+          "category": "Kunst"
+        },
+        {
+          "id": 81,
+          "title": "Nach dem Bauhaus: Zehn Jahre, die die deutsche Architektur neu formten",
+          "excerpt": "Eine Welle aus Glas auf einem Hamburger Lagerhaus, ein Betonwürfel in Weimar, eine schwebende schwarze Box in Dessau, ein Kristall an der Spree, ein Tempel, der auseinandergenommen und wieder zusammengesetzt wurde, und ein Turm aus Holz: neun Projekte, die zeigen, wohin die deutsche Architektur seit der Elbphilharmonie gegangen ist – und wohin sie als Nächstes geht.",
+          "category": "Architektur"
+        },
+        {
+          "id": 82,
+          "title": "Das Schwimmbad und die Villa: Die andere Hauptstadt des französischen Art Déco",
+          "excerpt": "1932, nur wenige Kilometer voneinander entfernt am Rande von Roubaix, vollendete ein sozialistischer Bürgermeister das schönste Schwimmbad Frankreichs für Textilarbeiter, und ein Mühlenbesitzer zog in eine sechzig Meter lange Villa aus gelbem Backstein von Robert Mallet-Stevens ein. Beide drohten zu verschwinden; beide wurden gerettet. Fünfundzwanzig Jahre nachdem das Schwimmbad zum Museum wurde, wird die Geschichte des französischen Art Déco in zwei Gebäuden erzählt.",
+          "category": "Architektur"
         }
       ],
       "reviews": [
@@ -104906,6 +104974,24 @@
             }
           ],
           "updatedAt": "2026-10-26T18:39:08.728Z"
+        },
+        {
+          "id": 80,
+          "title": "Vivir en el aire: Tomás Saraceno y el arte de flotar juntos",
+          "excerpt": "Telas de araña escaneadas en tres dimensiones, ciudades que flotan como nubes, un globo que transportó a una mujer sobre un salar solo con la luz del sol, y un santuario de agua construido contra la fiebre del litio: veinticinco años de Tomás Saraceno, y su exposición más grande en Alemania, en Haus der Kunst en Múnich hasta el 7 de febrero de 2027.",
+          "category": "Arte"
+        },
+        {
+          "id": 81,
+          "title": "Después de la Bauhaus: Diez años que redefinieron la arquitectura alemana",
+          "excerpt": "Una ola de vidrio sobre un almacén de Hamburgo, un cubo de hormigón en Weimar, una caja negra flotando en Dessau, un cristal en el Spree, un templo desmontado y vuelto a montar, y una torre de madera: nueve proyectos que muestran a dónde ha llegado la arquitectura alemana desde la Elbphilharmonie – y hacia dónde va a continuación.",
+          "category": "Arquitectura"
+        },
+        {
+          "id": 82,
+          "title": "La piscina y la villa: La otra capital del Art Déco francés",
+          "excerpt": "En 1932, a pocos kilómetros de distancia en las afueras de Roubaix, un alcalde socialista terminó la piscina más bella de Francia para los trabajadores textiles y un propietario de fábrica se mudó a una villa de sesenta metros de ladrillo amarillo diseñada por Robert Mallet-Stevens. Ambas casi desaparecieron; ambas han sido salvadas. Veinticinco años después de que la piscina se convirtiera en museo, la historia del Art Déco francés contada en dos edificios.",
+          "category": "Arquitectura"
         }
       ],
       "reviews": [
@@ -133200,6 +133286,24 @@
             }
           ],
           "updatedAt": "2026-10-26T18:41:24.189Z"
+        },
+        {
+          "id": 80,
+          "title": "Vivere nell'aria: Tomás Saraceno e l'arte di fluttuare insieme",
+          "excerpt": "Ragnatele scansionate in tre dimensioni, città che fluttuano come nuvole, un pallone che ha trasportato una donna su una distesa salata solo con la luce del sole, e un santuario d'acqua costruito contro la corsa al litio: venticinque anni di Tomás Saraceno, e la sua più grande mostra in Germania, all'Haus der Kunst di Monaco fino al 7 febbraio 2027.",
+          "category": "Arte"
+        },
+        {
+          "id": 81,
+          "title": "Dopo il Bauhaus: Dieci anni che hanno ridisegnato l'architettura tedesca",
+          "excerpt": "Un'onda di vetro su un magazzino di Amburgo, un cubo di cemento a Weimar, una scatola nera fluttuante a Dessau, un cristallo sulla Sprea, un tempio smontato e rimontato, e una torre di legno: nove progetti che mostrano dove è andata l'architettura tedesca dall'Elbphilharmonie – e dove sta andando dopo.",
+          "category": "Architettura"
+        },
+        {
+          "id": 82,
+          "title": "La Piscina e la Villa: l'Altra Capitale dell'Art Déco Francese",
+          "excerpt": "Nel 1932, a pochi chilometri di distanza alla periferia di Roubaix, un sindaco socialista completò la piscina più bella di Francia per gli operai tessili e un proprietario di filanda si trasferì in una villa di sessanta metri in mattoni gialli di Robert Mallet-Stevens. Entrambe rischiarono di scomparire; entrambe sono state salvate. Venticinque anni dopo che la piscina divenne un museo, la storia dell'Art Déco francese raccontata in due edifici.",
+          "category": "Architettura"
         }
       ],
       "reviews": [
@@ -152296,6 +152400,12 @@
             }
           ],
           "updatedAt": "2026-10-27T00:11:51.827Z"
+        },
+        {
+          "id": 82,
+          "title": "La Piscine et la Villa : l'autre capitale de l'Art déco français",
+          "excerpt": "En 1932, à quelques kilomètres l'un de l'autre en bordure de Roubaix, un maire socialiste fit achever la plus belle piscine de France pour les ouvriers du textile, tandis qu'un patron de filature s'installa dans une villa de brique jaune de soixante mètres signée Robert Mallet-Stevens. Toutes deux ont failli disparaître ; toutes deux ont été sauvées. Vingt-cinq ans après la transformation de la piscine en musée, l'histoire de l'Art déco français racontée à travers deux bâtiments.",
+          "category": "Architecture"
         }
       ],
       "reviews": [
@@ -153484,6 +153594,13 @@
           ],
           "featured": false,
           "updatedAt": "2026-10-12T09:05:51.560Z"
+        },
+        {
+          "id": 14,
+          "title": "Dîner sous un planétarium",
+          "category": "DESIGN & RESTAURATION",
+          "verdict": "Alchemist confie presque toute son architecture à un dôme projeté de dix-huit mètres et transforme un dîner pour cinquante-deux inconnus en une seule performance partagée. C'est la pièce de narration spatiale la plus aboutie de la restauration européenne – et, avec cinq mois d'Intermission à partir de décembre, novembre 2026 est la dernière chance de le voir dans sa forme actuelle.",
+          "subject": "Alchemist · Refshalevej 173C, Copenhague · Rasmus Munk & Studio Duncalf"
         }
       ],
       "libraryItems": []
