@@ -23292,14 +23292,16 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvtaycx8u6ihmj.png",
-          "caption": ""
+          "caption": "",
+          "credit": "© The Estate of Francis Bacon",
+          "sourceUrl": "https://www.francis-bacon.com/artworks/paintings/crucifixion"
         },
         {
           "type": "text",
           "content": ""
         }
       ],
-      "updatedAt": "2026-10-29T08:49:55.090Z"
+      "updatedAt": "2026-10-29T08:50:35.653Z"
     }
   ],
   "reviews": [
