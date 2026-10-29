@@ -23047,7 +23047,15 @@
       "content": [
         {
           "type": "text",
-          "content": "<br>"
+          "content": "Francis Bacon (1909–1992)"
+        },
+        {
+          "type": "text",
+          "content": "Francis Bacon was an Irish-born British painter and one of the most influential figures in twentieth-century art. Best known for his distorted human bodies, screaming faces, and psychologically charged compositions, he developed a distinctive visual language that existed on the boundary between figuration and abstraction."
+        },
+        {
+          "type": "text",
+          "content": "Although his paintings often approach abstraction, Bacon never entirely abandoned the human figure. Instead, he pushed it beyond conventional representation, using distortion, violent brushwork, and unexpected combinations of colour to express the intensity of human experience. His work explored themes of mortality, desire, isolation, violence, and the vulnerability of the body, challenging traditional ideas of beauty and representation.<br>"
         },
         {
           "type": "text",
@@ -23270,7 +23278,7 @@
           "content": "The contrast between recognisable human proportions and radical anatomical distortion intensified the unsettling effect of his paintings, making even his most abstracted figures feel disturbingly real."
         }
       ],
-      "updatedAt": "2026-10-29T08:34:27.267Z"
+      "updatedAt": "2026-10-29T08:40:12.163Z"
     }
   ],
   "reviews": [
