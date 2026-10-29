@@ -21583,7 +21583,7 @@
       "content": [
         {
           "type": "text",
-          "content": "Federica Gioffredi ferma l’istante che sembrava qualunque: un lenzuolo gonfiato dal vento in un vicolo, un cappuccio bianco sollevato durante una processione, una scalinata vista dall’alto, il portico di Parigi riflesso in una sfera d’acciaio. È nata a Napoli nel 1972. Per circa dieci anni ha lavorato a Milano come negoziatrice di borsa; poi è partita per Bali per una vacanza e, come ha raccontato, ci è rimasta quattro anni. Oggi la fotografia è il suo mestiere."
+          "content": "Federica Gioffredi ferma l’istante che sembrava qualunque: un lenzuolo gonfiato dal vento in un vicolo, un cappuccio bianco sollevato durante una processione, una scala a chiocciola vista dal basso, il colonnato di un palazzo di Parigi riflesso in sfere di metallo lucido. È nata a Napoli nel 1972. Per circa dieci anni ha lavorato a Milano come negoziatrice di borsa; poi è partita per Bali per una vacanza e, come ha raccontato, ci è rimasta quattro anni. Oggi la fotografia è il suo mestiere."
         },
         {
           "type": "text",
@@ -21591,7 +21591,7 @@
         },
         {
           "type": "text",
-          "content": "Le abbiamo scritto domande lunghe, e lei ha risposto a modo suo: con semplicità, in poche righe, senza spiegazioni di troppo. Una frase ci è rimasta più delle altre: «Se dovessi scegliere tra cuore, mente e occhio, metterei sicuramente al primo posto il cuore». Ecco la conversazione, con nove fotografie scelte da lei."
+          "content": "Le abbiamo scritto domande lunghe, e lei ha risposto a modo suo: con semplicità, in poche righe, senza spiegazioni di troppo. Una frase ci è rimasta più delle altre: «Se dovessi scegliere tra cuore, mente e occhio, metterei sicuramente al primo posto il cuore». Ecco la conversazione, con le fotografie che ci ha mandato e altre prese dalle sue serie online."
         },
         {
           "type": "header",
@@ -21613,7 +21613,26 @@
         },
         {
           "type": "text",
-          "content": "<b>Federica Gioffredi [FG]:</b> In realtà, credo che la velocità e la fotografia siano due mondi molto diversi, quasi in contrapposizione. La velocità è movimento, è qualcosa che sfugge, mentre la fotografia è proprio il desiderio di fermare un istante, di sottrarlo al tempo. Forse l’unico punto d’incontro è proprio questo: l’attimo. Quello che sicuramente accomuna queste due dimensioni è un modo particolare di guardare la vita, una prospettiva diversa da quella degli altri. In fondo, credo che sia nella velocità sia nella fotografia ci sia la capacità di percepire qualcosa che non tutti riescono a cogliere. E forse è proprio questo il legame più autentico: non tanto la velocità o l’immobilità, quanto il modo in cui scegliamo di guardare il mondo."
+          "content": "<b>Federica Gioffredi [FG]:</b> In realtà, credo che la velocità e la fotografia siano due mondi molto diversi, quasi in contrapposizione. La velocità è movimento, è qualcosa che sfugge, mentre la fotografia è proprio il desiderio di fermare un istante, di sottrarlo al tempo. Forse l’unico punto d’incontro è proprio questo: l’attimo."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq2fzqt3dy2.webp",
+          "caption": "Fontana. Monaco di Baviera, 2017. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Bambini giocano tra gli spruzzi di una grande fontana davanti a un palazzo, una figura seduta a sinistra, in bianco e nero",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "text",
+          "content": "Quello che sicuramente accomuna queste due dimensioni è un modo particolare di guardare la vita, una prospettiva diversa da quella degli altri. In fondo, credo che sia nella velocità sia nella fotografia ci sia la capacità di percepire qualcosa che non tutti riescono a cogliere. E forse è proprio questo il legame più autentico: non tanto la velocità o l’immobilità, quanto il modo in cui scegliamo di guardare il mondo."
+        },
+        {
+          "type": "quote",
+          "content": "Non tanto la velocità o l’immobilità, quanto il modo in cui scegliamo di guardare il mondo.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -21626,7 +21645,30 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Quando parlo di nascondere il mio sguardo dietro la macchina fotografica, non intendo nascondermi dal mondo, ma semplicemente mettermi dietro un obiettivo. È proprio quel gesto a regalarmi una grandissima sensazione di pace. Guardare il mondo, la vita, le persone che passano attraverso quel piccolo rettangolo è qualcosa di profondamente intimo. È come se, in quello spazio così ristretto, tutto acquistasse un significato diverso. Scelgo un istante, lo fermo nel tempo e cerco di trasformarlo in un’emozione. Non è quindi un modo per sparire dal mondo, ma forse per entrarci ancora più profondamente, attraverso il mio sguardo e la mia sensibilità. Il mondo esterno rimane lì, nell’immagine, ma inevitabilmente si intreccia con quello che sento dentro di me."
+          "content": "<b>FG:</b> Quando parlo di nascondere il mio sguardo dietro la macchina fotografica, non intendo nascondermi dal mondo, ma semplicemente mettermi dietro un obiettivo. È proprio quel gesto a regalarmi una grandissima sensazione di pace."
+        },
+        {
+          "type": "text",
+          "content": "Guardare il mondo, la vita, le persone che passano attraverso quel piccolo rettangolo è qualcosa di profondamente intimo. È come se, in quello spazio così ristretto, tutto acquistasse un significato diverso. Scelgo un istante, lo fermo nel tempo e cerco di trasformarlo in un’emozione."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq0iuh0ff5s.webp",
+          "caption": "La bicicletta. Monaco di Baviera, 2017. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Persone e un ciclista attraversano una piazza davanti a una chiesa barocca, riflessi in una pozza d’acqua, in bianco e nero",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "text",
+          "content": "Non è quindi un modo per sparire dal mondo, ma forse per entrarci ancora più profondamente, attraverso il mio sguardo e la mia sensibilità. Il mondo esterno rimane lì, nell’immagine, ma inevitabilmente si intreccia con quello che sento dentro di me."
+        },
+        {
+          "type": "quote",
+          "content": "Non è quindi un modo per sparire dal mondo, ma forse per entrarci ancora più profondamente, attraverso il mio sguardo e la mia sensibilità.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -21639,7 +21681,26 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Credo che la borsa e la fotografia siano due mondi apparentemente molto lontani, ma che abbiano qualcosa in comune: i numeri, il tempo e soprattutto l’importanza dell’attimo. In borsa ogni secondo può fare la differenza, così come nella fotografia, dove tutto si gioca in una frazione di secondo. Bali, invece, mi ha regalato una dimensione completamente diversa da quella che avevo vissuto a Milano. Poi sono tornata a Napoli, perché credo che Napoli abbia qualcosa di unico: è una città dalla quale puoi allontanarti, anche per molti anni, ma che in qualche modo continua ad appartenerti. Ti resta dentro, nel cuore, nei ricordi, nelle emozioni."
+          "content": "<b>FG:</b> Credo che la borsa e la fotografia siano due mondi apparentemente molto lontani, ma che abbiano qualcosa in comune: i numeri, il tempo e soprattutto l’importanza dell’attimo. In borsa ogni secondo può fare la differenza, così come nella fotografia, dove tutto si gioca in una frazione di secondo."
+        },
+        {
+          "type": "text",
+          "content": "Bali, invece, mi ha regalato una dimensione completamente diversa da quella che avevo vissuto a Milano. Poi sono tornata a Napoli, perché credo che Napoli abbia qualcosa di unico: è una città dalla quale puoi allontanarti, anche per molti anni, ma che in qualche modo continua ad appartenerti. Ti resta dentro, nel cuore, nei ricordi, nelle emozioni."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq0yi2p8w1m.webp",
+          "caption": "Cerimonia. Bali, 2010. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Persone portano offerte sotto parasoli cerimoniali frangiati durante una processione a Bali",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "quote",
+          "content": "È una città dalla quale puoi allontanarti, anche per molti anni, ma che in qualche modo continua ad appartenerti.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -21661,7 +21722,26 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Se dovessi scegliere tra cuore, mente e occhio, metterei sicuramente al primo posto il cuore, poi la mente e infine l’occhio. Può sembrare un paradosso, perché nella fotografia l’occhio dovrebbe essere il protagonista, ma per me non è così. È il cuore che sente, la mente che interpreta e solo dopo l’occhio che traduce tutto questo in un’immagine. Per quanto riguarda il bianco e nero, non l’ho mai considerato una fotografia priva di colori. Al contrario, credo che nelle infinite sfumature di grigio si nasconda un universo di colori e di emozioni. Ogni tonalità racconta qualcosa."
+          "content": "<b>FG:</b> Se dovessi scegliere tra cuore, mente e occhio, metterei sicuramente al primo posto il cuore, poi la mente e infine l’occhio. Può sembrare un paradosso, perché nella fotografia l’occhio dovrebbe essere il protagonista, ma per me non è così. È il cuore che sente, la mente che interpreta e solo dopo l’occhio che traduce tutto questo in un’immagine."
+        },
+        {
+          "type": "text",
+          "content": "Per quanto riguarda il bianco e nero, non l’ho mai considerato una fotografia priva di colori. Al contrario, credo che nelle infinite sfumature di grigio si nasconda un universo di colori e di emozioni. Ogni tonalità racconta qualcosa."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq5jio51a95.webp",
+          "caption": "Vesuvio. Napoli, 2020. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Palazzi sul lungomare e un castello sul mare con il Vesuvio e una grande nuvola sullo sfondo, in bianco e nero",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "quote",
+          "content": "Credo che nelle infinite sfumature di grigio si nasconda un universo di colori e di emozioni.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -21674,7 +21754,15 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Prediligo il bianco e nero perché è quello in cui mi riconosco maggiormente, quello che sento più vicino alla mia sensibilità. Per me il bianco e nero non è affatto privo di colori: nelle infinite sfumature di grigio ritrovo una profondità e un’intensità emotiva particolari, come se attraverso quelle tonalità riuscissi a entrare dentro l’immagine, quasi a toccarla. Ci sono però fotografie che hanno bisogno del colore, perché è proprio il colore a raccontarne l’essenza. Nella mia mostra dedicata al Giappone, ad esempio, c’è la fotografia di un uomo anziano seduto su una scalinata, con un volto profondamente segnato dal tempo. Quell’immagine, per me, non potrebbe che essere in bianco e nero. Ogni ruga, ogni segno del suo viso acquista una forza straordinaria, quasi tattile. È come se potessi sfiorare quella pelle e sentire la storia che racconta."
+          "content": "<b>FG:</b> Prediligo il bianco e nero perché è quello in cui mi riconosco maggiormente, quello che sento più vicino alla mia sensibilità. Per me il bianco e nero non è affatto privo di colori: nelle infinite sfumature di grigio ritrovo una profondità e un’intensità emotiva particolari, come se attraverso quelle tonalità riuscissi a entrare dentro l’immagine, quasi a toccarla."
+        },
+        {
+          "type": "text",
+          "content": "Ci sono però fotografie che hanno bisogno del colore, perché è proprio il colore a raccontarne l’essenza."
+        },
+        {
+          "type": "text",
+          "content": "Nella mia mostra dedicata al Giappone, ad esempio, c’è la fotografia di un uomo anziano seduto su una scalinata, con un volto profondamente segnato dal tempo. Quell’immagine, per me, non potrebbe che essere in bianco e nero. Ogni ruga, ogni segno del suo viso acquista una forza straordinaria, quasi tattile. È come se potessi sfiorare quella pelle e sentire la storia che racconta."
         },
         {
           "type": "image",
@@ -21699,6 +21787,16 @@
           "width": 60
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq5pc1jyu5o.webp",
+          "caption": "Wagasa. Tokyo. Da Il Giappone. Equilibrio nel tempo.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Grandi ombrelli di carta rossi ripresi dal basso, con la raggiera in vista e vegetazione sullo sfondo",
+          "align": "center",
+          "width": 70,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/giappone-equilibrio-nel-tempo/"
+        },
+        {
           "type": "header",
           "content": "<span class=\"kicker\">Parte III</span>Il viaggio e la memoria",
           "level": 2
@@ -21718,7 +21816,38 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> I milleduecento scatti sono il risultato delle diverse tappe del mio viaggio, dei luoghi attraversati e dei momenti che ho voluto catturare. Spesso mi sono soffermata sullo stesso soggetto, fotografandolo più volte, da angolazioni e prospettive differenti, cercando ogni volta qualcosa di diverso. La parte più difficile è stata sicuramente la selezione, perché dovevo riuscire a racchiudere la storia e l’essenza di un luogo attraverso pochissime immagini. Ho dovuto quindi fare una prima scelta delle fotografie che sentivo più rappresentative e, successivamente, continuare a selezionarle, fino ad arrivare a quelle che meglio riuscivano a raccontare ciò che avevo visto e vissuto. Per quanto riguarda il fotografare la mia città, mi piace definirmi sempre una “turista in città”. Amo girare per Napoli, scoprirne angoli nuovi, conoscere luoghi che ancora non avevo esplorato e guardarli ogni volta con occhi diversi. Napoli è una città che ha tantissimo da raccontare e da mostrare, e credo che non si finisca mai davvero di scoprirla. È un’abitudine a cui tengo molto e alla quale dedico del tempo almeno una o due volte alla settimana. Mi piace perdermi tra le sue strade, osservare, lasciarmi sorprendere e naturalmente fotografare. In fondo, per me viaggiare non significa necessariamente andare lontano. A volte basta uscire di casa e guardare la propria città con la curiosità di chi la vede per la prima volta."
+          "content": "<b>FG:</b> I milleduecento scatti sono il risultato delle diverse tappe del mio viaggio, dei luoghi attraversati e dei momenti che ho voluto catturare. Spesso mi sono soffermata sullo stesso soggetto, fotografandolo più volte, da angolazioni e prospettive differenti, cercando ogni volta qualcosa di diverso."
+        },
+        {
+          "type": "text",
+          "content": "La parte più difficile è stata sicuramente la selezione, perché dovevo riuscire a racchiudere la storia e l’essenza di un luogo attraverso pochissime immagini. Ho dovuto quindi fare una prima scelta delle fotografie che sentivo più rappresentative e, successivamente, continuare a selezionarle, fino ad arrivare a quelle che meglio riuscivano a raccontare ciò che avevo visto e vissuto."
+        },
+        {
+          "type": "text",
+          "content": "Per quanto riguarda il fotografare la mia città, mi piace definirmi sempre una “turista in città”. Amo girare per Napoli, scoprirne angoli nuovi, conoscere luoghi che ancora non avevo esplorato e guardarli ogni volta con occhi diversi."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq1cwlk4xho.webp",
+          "caption": "Un vicolo, un ciclista. Da Due secoli dopo, da Napoli a Martina Franca.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Un ciclista percorre un vicolo lastricato tra vecchi lampioni e panni stesi ai balconi, in bianco e nero",
+          "align": "center",
+          "width": 60,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/due-secoli-dopo/"
+        },
+        {
+          "type": "text",
+          "content": "Napoli è una città che ha tantissimo da raccontare e da mostrare, e credo che non si finisca mai davvero di scoprirla. È un’abitudine a cui tengo molto e alla quale dedico del tempo almeno una o due volte alla settimana. Mi piace perdermi tra le sue strade, osservare, lasciarmi sorprendere e naturalmente fotografare."
+        },
+        {
+          "type": "text",
+          "content": "In fondo, per me viaggiare non significa necessariamente andare lontano. A volte basta uscire di casa e guardare la propria città con la curiosità di chi la vede per la prima volta."
+        },
+        {
+          "type": "quote",
+          "content": "In fondo, per me viaggiare non significa necessariamente andare lontano.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -21744,7 +21873,21 @@
         },
         {
           "type": "text",
-          "content": "Per rappresentare l’aria, invece, ho scelto soprattutto fotografie di alberi, perché mi piaceva l’idea di raccontare qualcosa che non possiamo vedere direttamente, ma di cui possiamo percepire la presenza. Ho pensato al vento che attraversa le foglie, al loro movimento, e mi è sembrato il modo più naturale per dare forma, attraverso la fotografia, a un elemento invisibile. Fa eccezione una fotografia scattata a Rocca Calascio, in Abruzzo, dove è il cielo ad essere protagonista."
+          "content": "Per rappresentare l’aria, invece, ho scelto soprattutto fotografie di alberi, perché mi piaceva l’idea di raccontare qualcosa che non possiamo vedere direttamente, ma di cui possiamo percepire la presenza. Ho pensato al vento che attraversa le foglie, al loro movimento, e mi è sembrato il modo più naturale per dare forma, attraverso la fotografia, a un elemento invisibile."
+        },
+        {
+          "type": "text",
+          "content": "Fa eccezione una fotografia scattata a Rocca Calascio, in Abruzzo, dove è il cielo ad essere protagonista."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq4b5vlyqa2.webp",
+          "caption": "Abruzzo, Rocca Calascio. Da Kosmo.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Un muro in pietra diroccato con un’apertura, ripreso dal suolo tra erba secca, con nuvole e montagne sullo sfondo, in bianco e nero",
+          "align": "center",
+          "width": 72,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/kosmo/"
         },
         {
           "type": "header",
@@ -21757,7 +21900,26 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Sono sempre stata affascinata dai panni stesi, tanto da aver dedicato loro un progetto fotografico intitolato Mollette e panni. Non li ho fotografati soltanto a Napoli, ma anche in tante altre città, come Barletta, Martina Franca, Roma e Venezia. È un soggetto che mi attrae particolarmente, forse perché riesce a raccontare la quotidianità e la vita delle persone attraverso qualcosa di così semplice. Quanto tempo sono disposta ad aspettare un colpo di vento? Anche parecchio! Ricordo una fotografia scattata a Napoli, nel Rione Sanità. Ero ferma sotto un palazzo, con lo sguardo rivolto verso l’alto, e osservavo tutti quei panni stesi che si gonfiavano e si sgonfiavano al passaggio del vento. Alla fine è successo, ed è nata la fotografia che avevo immaginato."
+          "content": "<b>FG:</b> Sono sempre stata affascinata dai panni stesi, tanto da aver dedicato loro un progetto fotografico intitolato Mollette e panni. Non li ho fotografati soltanto a Napoli, ma anche in tante altre città, come Barletta, Martina Franca, Roma e Venezia. È un soggetto che mi attrae particolarmente, forse perché riesce a raccontare la quotidianità e la vita delle persone attraverso qualcosa di così semplice."
+        },
+        {
+          "type": "text",
+          "content": "Quanto tempo sono disposta ad aspettare un colpo di vento? Anche parecchio! Ricordo una fotografia scattata a Napoli, nel Rione Sanità. Ero ferma sotto un palazzo, con lo sguardo rivolto verso l’alto, e osservavo tutti quei panni stesi che si gonfiavano e si sgonfiavano al passaggio del vento. Alla fine è successo, ed è nata la fotografia che avevo immaginato."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq44ujyf8dq.webp",
+          "caption": "Valentina, Rione Sanità. Napoli. Da FRIENDS.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Panni stesi ad asciugare su più fili, ripresi in controluce dal basso contro il cielo chiaro, in bianco e nero",
+          "align": "center",
+          "width": 55,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/friends/"
+        },
+        {
+          "type": "quote",
+          "content": "Quanto tempo sono disposta ad aspettare un colpo di vento? Anche parecchio!",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "image",
@@ -21779,7 +21941,40 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Il lago di Annecy, in Alta Savoia, mi trasmette una sensazione di pace assoluta. È un luogo che conosco molto bene, perché ci torno spesso grazie a un’amica che mi ospita. Il paesaggio sembra quasi un dipinto, con i suoi colori tenui, il lago calmo, le persone che passeggiano e un’atmosfera di grande serenità. Ogni volta che sono lì provo una sensazione di tranquillità così profonda che mi viene spontaneo associarlo all’immagine del paradiso. Il Lago d’Averno, invece, mi trasmette sensazioni completamente diverse. È un luogo che, nonostante le sue dimensioni contenute, possiede un’energia straordinaria, quasi misteriosa. Un’energia che ritrovo anche nei versi dei tanti autori che lo hanno raccontato e che, secondo me, si riesce a percepire realmente quando ci si trova lì. Non a caso Virgilio lo descrive come la porta d’accesso agli Inferi. È un luogo intenso, carico di suggestioni, che mi ha portata naturalmente ad associarlo all’inferno. Da qui è nata l’idea di mettere a confronto questi due laghi, utilizzando proprio l’acqua, l’elemento a cui mi sento più legata, per raccontare due mondi completamente opposti."
+          "content": "<b>FG:</b> Il lago di Annecy, in Alta Savoia, mi trasmette una sensazione di pace assoluta. È un luogo che conosco molto bene, perché ci torno spesso grazie a un’amica che mi ospita. Il paesaggio sembra quasi un dipinto, con i suoi colori tenui, il lago calmo, le persone che passeggiano e un’atmosfera di grande serenità. Ogni volta che sono lì provo una sensazione di tranquillità così profonda che mi viene spontaneo associarlo all’immagine del paradiso."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfpzrdn8dc7w.webp",
+          "caption": "Paradiso. Lago di Annecy. Da Sinestesie d’acqua. Tra cielo e terra.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Lago dalle acque turchesi con un castello su un promontorio alberato",
+          "align": "center",
+          "width": 80,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/sinestesie-dacqua/"
+        },
+        {
+          "type": "text",
+          "content": "Il Lago d’Averno, invece, mi trasmette sensazioni completamente diverse. È un luogo che, nonostante le sue dimensioni contenute, possiede un’energia straordinaria, quasi misteriosa. Un’energia che ritrovo anche nei versi dei tanti autori che lo hanno raccontato e che, secondo me, si riesce a percepire realmente quando ci si trova lì. Non a caso Virgilio lo descrive come la porta d’accesso agli Inferi. È un luogo intenso, carico di suggestioni, che mi ha portata naturalmente ad associarlo all’inferno."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq05p2ar4xt.webp",
+          "caption": "Averno. Lago d’Averno. Da Sinestesie d’acqua. Tra cielo e terra.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Un sentiero coperto di foglie che conduce all’ingresso buio di una grotta tra rocce e vegetazione, in bianco e nero",
+          "align": "center",
+          "width": 80,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/sinestesie-dacqua/"
+        },
+        {
+          "type": "quote",
+          "content": "Non a caso Virgilio lo descrive come la porta d’accesso agli Inferi.",
+          "caption": "Federica Gioffredi"
+        },
+        {
+          "type": "text",
+          "content": "Da qui è nata l’idea di mettere a confronto questi due laghi, utilizzando proprio l’acqua, l’elemento a cui mi sento più legata, per raccontare due mondi completamente opposti."
         },
         {
           "type": "header",
@@ -21814,7 +22009,40 @@
         },
         {
           "type": "text",
-          "content": "Proprio per questo, una delle esperienze che mi ha colpita maggiormente è stata fotografare lo stadio Diego Armando Maradona completamente vuoto. Inizialmente mi sono chiesta come avrei potuto raccontare attraverso un’immagine un luogo così grande, ma privo delle persone e delle emozioni che normalmente lo animano. E invece è stata una sorpresa incredibile. Ho percepito una forza pazzesca, un’energia che sembrava essere presente anche nel silenzio, anche in assenza dei tifosi. Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti. La stessa intensità l’ho ritrovata nei murales dedicati a Maradona, che a Napoli sono diventati vere e proprie icone, parte dell’identità e della cultura della città."
+          "content": "Proprio per questo, una delle esperienze che mi ha colpita maggiormente è stata fotografare lo stadio Diego Armando Maradona completamente vuoto. Inizialmente mi sono chiesta come avrei potuto raccontare attraverso un’immagine un luogo così grande, ma privo delle persone e delle emozioni che normalmente lo animano."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq4zjl6l5kr.webp",
+          "caption": "Stadio Diego Armando Maradona, Napoli. Da Documento > Monumento, volume V, Napoli 100.",
+          "credit": "© Federica Gioffredi",
+          "alt": "La scritta NAPOLI sugli spalti dello stadio, riflessa capovolta in una pozza d’acqua a bordo campo, in bianco e nero",
+          "align": "center",
+          "width": 55,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/documento-monumento-5/"
+        },
+        {
+          "type": "text",
+          "content": "E invece è stata una sorpresa incredibile. Ho percepito una forza pazzesca, un’energia che sembrava essere presente anche nel silenzio, anche in assenza dei tifosi. Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti."
+        },
+        {
+          "type": "quote",
+          "content": "Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti.",
+          "caption": "Federica Gioffredi"
+        },
+        {
+          "type": "text",
+          "content": "La stessa intensità l’ho ritrovata nei murales dedicati a Maradona, che a Napoli sono diventati vere e proprie icone, parte dell’identità e della cultura della città."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq3xk0xgpip.webp",
+          "caption": "Il murale di Jorit a San Giovanni a Teduccio, Napoli. Da Documento > Monumento, volume V, Napoli 100.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Il murale con il volto di Maradona su una torre di edilizia popolare, tra i balconi, in bianco e nero",
+          "align": "center",
+          "width": 55,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/documento-monumento-5/"
         },
         {
           "type": "header",
@@ -21827,7 +22055,15 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Ardite invenzioni nasce proprio dal mio essere, come dico sempre, una “turista in città”. Un giorno passeggiavo per il Rione Sanità, a Napoli, e mi sono ritrovata davanti a due palazzi straordinari: Palazzo dello Spagnolo e Palazzo Sanfelice. Il primo, per molto tempo attribuito a Ferdinando Sanfelice, si è poi scoperto, attraverso documenti storici, non essere una sua opera, anche se ne richiama fortemente lo stile architettonico. Da quell’incontro casuale è nata una vera e propria passione per questo architetto, un personaggio che ho trovato assolutamente straordinario, tanto da essere soprannominato “Ferdinando, lievete ’a sotto”, per il timore che le sue ardite costruzioni potessero crollare. Ho approfondito la sua storia e ho cominciato a studiare i suoi palazzi, le sue opere, le scalinate e le cancellate, scoprendo dettagli architettonici che mi hanno profondamente affascinata. Tra le fotografie nate da questa ricerca ce n’è una, intitolata Gelosia, che ritrae proprio una cancellata ed è una delle mie preferite. Dedicata al mio lupo cecoslovacco."
+          "content": "<b>FG:</b> Ardite invenzioni nasce proprio dal mio essere, come dico sempre, una “turista in città”. Un giorno passeggiavo per il Rione Sanità, a Napoli, e mi sono ritrovata davanti a due palazzi straordinari: Palazzo dello Spagnolo e Palazzo Sanfelice. Il primo, per molto tempo attribuito a Ferdinando Sanfelice, si è poi scoperto, attraverso documenti storici, non essere una sua opera, anche se ne richiama fortemente lo stile architettonico."
+        },
+        {
+          "type": "text",
+          "content": "Da quell’incontro casuale è nata una vera e propria passione per questo architetto, un personaggio che ho trovato assolutamente straordinario, tanto da essere soprannominato “Ferdinando, lievete ’a sotto”, per il timore che le sue ardite costruzioni potessero crollare."
+        },
+        {
+          "type": "text",
+          "content": "Ho approfondito la sua storia e ho cominciato a studiare i suoi palazzi, le sue opere, le scalinate e le cancellate, scoprendo dettagli architettonici che mi hanno profondamente affascinata. Tra le fotografie nate da questa ricerca ce n’è una, intitolata Gelosia, che ritrae proprio una cancellata ed è una delle mie preferite. Dedicata al mio lupo cecoslovacco."
         },
         {
           "type": "image",
@@ -21843,6 +22079,16 @@
           "content": "Da allora è cambiato il mio modo di guardare la città. La guardo molto più in verticale. Assolutamente sì!"
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq4s12f4pnp.webp",
+          "caption": "Scala a doppia rampa elicoidale. Palazzo Sanfelice, Napoli. Da Ardite invenzioni.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Una scala in pietra ripresa dal basso sotto volte ad arco, con una stella in rilievo e una finestrella, in bianco e nero",
+          "align": "center",
+          "width": 72,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/ardite-invenzioni/"
+        },
+        {
           "type": "header",
           "content": "Amici, non ritratti",
           "level": 3
@@ -21853,14 +22099,27 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Amo tantissimo questa mostra, perché l’amicizia è una parte fondamentale della mia vita e io credo profondamente in questo sentimento. Ho voluto dedicare le fotografie a tutte quelle persone che, in un modo o nell’altro, sono state importanti per me: alcune hanno fatto parte della mia vita per un periodo, altre sono ancora oggi grandi amici e grandi amiche. Ho dedicato una fotografia anche al mio lupo cecoslovacco. Come ho già raccontato prima, si tratta di Gelosia, la fotografia di una cancellata di Ferdinando Sanfelice. Come ho scelto le fotografie, visto che non sono ritratti? Alcune le ho scattate proprio mentre ero insieme alla persona a cui poi le ho dedicate, altre invece le ho scelte perché c’era qualcosa nell’immagine che mi faceva pensare a quella persona."
+          "content": "<b>FG:</b> Amo tantissimo questa mostra, perché l’amicizia è una parte fondamentale della mia vita e io credo profondamente in questo sentimento. Ho voluto dedicare le fotografie a tutte quelle persone che, in un modo o nell’altro, sono state importanti per me: alcune hanno fatto parte della mia vita per un periodo, altre sono ancora oggi grandi amici e grandi amiche."
+        },
+        {
+          "type": "quote",
+          "content": "L’amicizia è una parte fondamentale della mia vita e io credo profondamente in questo sentimento.",
+          "caption": "Federica Gioffredi"
+        },
+        {
+          "type": "text",
+          "content": "Ho dedicato una fotografia anche al mio lupo cecoslovacco. Come ho già raccontato prima, si tratta di Gelosia, la fotografia di una cancellata di Ferdinando Sanfelice."
+        },
+        {
+          "type": "text",
+          "content": "Come ho scelto le fotografie, visto che non sono ritratti? Alcune le ho scattate proprio mentre ero insieme alla persona a cui poi le ho dedicate, altre invece le ho scelte perché c’era qualcosa nell’immagine che mi faceva pensare a quella persona."
         },
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvo9dsp12tgxao.webp",
           "caption": "Carolina, Scalinata. Certosa di Padula, 2024. Da FRIENDS.",
           "credit": "© Federica Gioffredi",
-          "alt": "Una scala a chiocciola in pietra vista dall’alto, in bianco e nero",
+          "alt": "Una scala a chiocciola in pietra vista dal basso, i gradini si avvolgono a spirale attorno al vuoto centrale, in bianco e nero",
           "align": "center",
           "width": 72
         },
@@ -21891,6 +22150,21 @@
           "width": 100
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq2p6qmnalo.webp",
+          "caption": "Roccia vulcanica. Da Materia Materica.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Superficie scura e porosa di roccia vulcanica costellata di cavità e riflessi luminosi",
+          "align": "center",
+          "width": 66,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/materia-materica/"
+        },
+        {
+          "type": "quote",
+          "content": "Mi piace proprio questa sensazione di rendere la materia quasi tangibile, come se attraverso la fotografia si potesse arrivare a toccarla.",
+          "caption": "Federica Gioffredi"
+        },
+        {
           "type": "header",
           "content": "Una casa piena di fotografie",
           "level": 3
@@ -21901,7 +22175,48 @@
         },
         {
           "type": "text",
-          "content": "<b>FG:</b> Sono due cose completamente diverse. Il museo è un luogo aperto al pubblico, mentre casa mia è uno spazio più intimo, dove accolgo amici e persone con cui mi fa piacere condividere quello che faccio. Il mio appartamento è diventato una home gallery e ormai vivo completamente immersa nelle mie fotografie. Ne ho ovunque, grandi, piccole, ricordi di viaggi, immagini del Giappone, del Marocco, di Venezia, le Boules di Parigi in formato enorme… Un giorno magari mi metterò a contarle! Mi piace aprire casa, organizzare cene, stare con gli amici, fare mostre e invitare altri artisti. Mi piace proprio l’idea di condividere una parte della mia vita privata attraverso la fotografia. Esporre in un museo è sicuramente un’altra cosa, ha un valore enorme per il pubblico e per un artista, ma sono due esperienze completamente diverse. A casa mia le fotografie fanno parte della mia vita quotidiana e mi piace che entrino anche nella vita delle persone che vengono a trovarmi. Il criterio con cui scelgo una foto da appendere a casa è molto semplice: o è legata a un bel ricordo oppure mi suscita una grande emozione. Non seguo altre regole, deve essere qualcosa che mi piace avere intorno e che mi fa stare bene."
+          "content": "<b>FG:</b> Sono due cose completamente diverse. Il museo è un luogo aperto al pubblico, mentre casa mia è uno spazio più intimo, dove accolgo amici e persone con cui mi fa piacere condividere quello che faccio."
+        },
+        {
+          "type": "text",
+          "content": "Il mio appartamento è diventato una home gallery e ormai vivo completamente immersa nelle mie fotografie. Ne ho ovunque, grandi, piccole, ricordi di viaggi, immagini del Giappone, del Marocco, di Venezia, le Boules di Parigi in formato enorme… Un giorno magari mi metterò a contarle!"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq55rhe8yeh.webp",
+          "caption": "Le tre signore. Marrakech, 2014. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Donne con il velo sedute contro un muro assolato screziato di ombre, in bianco e nero",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mvtfq5cq43rqdy.webp",
+          "caption": "Venice. Venezia, 2016. Da In viaggio con me.",
+          "credit": "© Federica Gioffredi",
+          "alt": "Un canale fiancheggiato da vecchi edifici e barche ormeggiate a Venezia, in bianco e nero",
+          "align": "center",
+          "width": 90,
+          "sourceUrl": "https://www.federicagioffredi.it/galleria/in-viaggio-con-me/"
+        },
+        {
+          "type": "text",
+          "content": "Mi piace aprire casa, organizzare cene, stare con gli amici, fare mostre e invitare altri artisti. Mi piace proprio l’idea di condividere una parte della mia vita privata attraverso la fotografia."
+        },
+        {
+          "type": "text",
+          "content": "Esporre in un museo è sicuramente un’altra cosa, ha un valore enorme per il pubblico e per un artista, ma sono due esperienze completamente diverse. A casa mia le fotografie fanno parte della mia vita quotidiana e mi piace che entrino anche nella vita delle persone che vengono a trovarmi."
+        },
+        {
+          "type": "quote",
+          "content": "A casa mia le fotografie fanno parte della mia vita quotidiana e mi piace che entrino anche nella vita delle persone che vengono a trovarmi.",
+          "caption": "Federica Gioffredi"
+        },
+        {
+          "type": "text",
+          "content": "Il criterio con cui scelgo una foto da appendere a casa è molto semplice: o è legata a un bel ricordo oppure mi suscita una grande emozione. Non seguo altre regole, deve essere qualcosa che mi piace avere intorno e che mi fa stare bene."
         },
         {
           "type": "header",
@@ -21941,14 +22256,14 @@
         },
         {
           "type": "text",
-          "content": "Fotografie © Federica Gioffredi; pubblicate con il consenso dell’autrice."
+          "content": "Fotografie © Federica Gioffredi. Le nove fotografie inviate dall’autrice sono pubblicate per sua gentile concessione; le altre provengono dal suo sito federicagioffredi.it, e la didascalia rimanda alla serie d’origine."
         },
         {
           "type": "note",
-          "content": "Intervista di Viacheslav Munister. Risposte di Federica Gioffredi, lievemente riviste per punteggiatura e chiarezza. Le domande sono state accorciate. Tutte le fotografie per gentile concessione dell’autrice."
+          "content": "Intervista di Viacheslav Munister. Risposte di Federica Gioffredi, lievemente riviste per punteggiatura e chiarezza. Le domande sono state accorciate. I titoli e gli anni delle fotografie sono quelli indicati da Federica Gioffredi e sul suo sito."
         }
       ],
-      "updatedAt": "2026-10-25T20:33:44.183Z"
+      "updatedAt": "2026-10-29T11:03:16.814Z"
     },
     {
       "id": 78,
