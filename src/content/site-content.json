@@ -21561,12 +21561,12 @@
     },
     {
       "id": 77,
-      "draft": true,
+      "draft": false,
       "title": "Federica Gioffredi: prima il cuore, poi la mente, infine l’occhio",
       "author": "Viacheslav Munister & Federica Gioffredi",
       "role": "Author",
       "authorId": "author-1784732936927-kw554",
-      "date": "Oct 25, 2026",
+      "date": "Oct 29, 2026",
       "excerpt": "La fotografa napoletana Federica Gioffredi su una Olympus e un padre campione di offshore, sul bianco e nero che nasconde un universo di colori, sui panni stesi che aspettano il vento, su Sanfelice visto dal basso, sulla casa-galleria di Parco Margherita e su un progetto nato durante il Covid.",
       "category": "interview",
       "subcategory": "Interview",
@@ -21631,7 +21631,7 @@
         },
         {
           "type": "quote",
-          "content": "Non tanto la velocità o l’immobilità, quanto il modo in cui scegliamo di guardare il mondo.",
+          "content": "Forse l’unico punto d’incontro è proprio questo: l’attimo.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21667,7 +21667,7 @@
         },
         {
           "type": "quote",
-          "content": "Non è quindi un modo per sparire dal mondo, ma forse per entrarci ancora più profondamente, attraverso il mio sguardo e la mia sensibilità.",
+          "content": "È come se, in quello spazio così ristretto, tutto acquistasse un significato diverso.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21699,7 +21699,7 @@
         },
         {
           "type": "quote",
-          "content": "È una città dalla quale puoi allontanarti, anche per molti anni, ma che in qualche modo continua ad appartenerti.",
+          "content": "In borsa ogni secondo può fare la differenza, così come nella fotografia, dove tutto si gioca in una frazione di secondo.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21740,7 +21740,7 @@
         },
         {
           "type": "quote",
-          "content": "Credo che nelle infinite sfumature di grigio si nasconda un universo di colori e di emozioni.",
+          "content": "È il cuore che sente, la mente che interpreta e solo dopo l’occhio che traduce tutto questo in un’immagine.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21793,7 +21793,7 @@
           "credit": "© Federica Gioffredi",
           "alt": "Grandi ombrelli di carta rossi ripresi dal basso, con la raggiera in vista e vegetazione sullo sfondo",
           "align": "center",
-          "width": 70,
+          "width": 56,
           "sourceUrl": "https://www.federicagioffredi.it/galleria/giappone-equilibrio-nel-tempo/"
         },
         {
@@ -21846,7 +21846,7 @@
         },
         {
           "type": "quote",
-          "content": "In fondo, per me viaggiare non significa necessariamente andare lontano.",
+          "content": "Napoli è una città che ha tantissimo da raccontare e da mostrare, e credo che non si finisca mai davvero di scoprirla.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21918,7 +21918,7 @@
         },
         {
           "type": "quote",
-          "content": "Quanto tempo sono disposta ad aspettare un colpo di vento? Anche parecchio!",
+          "content": "Sono sempre stata affascinata dai panni stesi.",
           "caption": "Federica Gioffredi"
         },
         {
@@ -21968,13 +21968,13 @@
           "sourceUrl": "https://www.federicagioffredi.it/galleria/sinestesie-dacqua/"
         },
         {
+          "type": "text",
+          "content": "Da qui è nata l’idea di mettere a confronto questi due laghi, utilizzando proprio l’acqua, l’elemento a cui mi sento più legata, per raccontare due mondi completamente opposti."
+        },
+        {
           "type": "quote",
           "content": "Non a caso Virgilio lo descrive come la porta d’accesso agli Inferi.",
           "caption": "Federica Gioffredi"
-        },
-        {
-          "type": "text",
-          "content": "Da qui è nata l’idea di mettere a confronto questi due laghi, utilizzando proprio l’acqua, l’elemento a cui mi sento più legata, per raccontare due mondi completamente opposti."
         },
         {
           "type": "header",
@@ -22026,11 +22026,6 @@
           "content": "E invece è stata una sorpresa incredibile. Ho percepito una forza pazzesca, un’energia che sembrava essere presente anche nel silenzio, anche in assenza dei tifosi. Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti."
         },
         {
-          "type": "quote",
-          "content": "Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti.",
-          "caption": "Federica Gioffredi"
-        },
-        {
           "type": "text",
           "content": "La stessa intensità l’ho ritrovata nei murales dedicati a Maradona, che a Napoli sono diventati vere e proprie icone, parte dell’identità e della cultura della città."
         },
@@ -22043,6 +22038,11 @@
           "align": "center",
           "width": 55,
           "sourceUrl": "https://www.federicagioffredi.it/galleria/documento-monumento-5/"
+        },
+        {
+          "type": "quote",
+          "content": "Era come se tutto l’amore che Napoli prova per il calcio fosse rimasto lì, tra gli spalti vuoti.",
+          "caption": "Federica Gioffredi"
         },
         {
           "type": "header",
@@ -22102,13 +22102,13 @@
           "content": "<b>FG:</b> Amo tantissimo questa mostra, perché l’amicizia è una parte fondamentale della mia vita e io credo profondamente in questo sentimento. Ho voluto dedicare le fotografie a tutte quelle persone che, in un modo o nell’altro, sono state importanti per me: alcune hanno fatto parte della mia vita per un periodo, altre sono ancora oggi grandi amici e grandi amiche."
         },
         {
+          "type": "text",
+          "content": "Ho dedicato una fotografia anche al mio lupo cecoslovacco. Come ho già raccontato prima, si tratta di Gelosia, la fotografia di una cancellata di Ferdinando Sanfelice."
+        },
+        {
           "type": "quote",
           "content": "L’amicizia è una parte fondamentale della mia vita e io credo profondamente in questo sentimento.",
           "caption": "Federica Gioffredi"
-        },
-        {
-          "type": "text",
-          "content": "Ho dedicato una fotografia anche al mio lupo cecoslovacco. Come ho già raccontato prima, si tratta di Gelosia, la fotografia di una cancellata di Ferdinando Sanfelice."
         },
         {
           "type": "text",
@@ -22210,13 +22210,13 @@
           "content": "Esporre in un museo è sicuramente un’altra cosa, ha un valore enorme per il pubblico e per un artista, ma sono due esperienze completamente diverse. A casa mia le fotografie fanno parte della mia vita quotidiana e mi piace che entrino anche nella vita delle persone che vengono a trovarmi."
         },
         {
+          "type": "text",
+          "content": "Il criterio con cui scelgo una foto da appendere a casa è molto semplice: o è legata a un bel ricordo oppure mi suscita una grande emozione. Non seguo altre regole, deve essere qualcosa che mi piace avere intorno e che mi fa stare bene."
+        },
+        {
           "type": "quote",
           "content": "A casa mia le fotografie fanno parte della mia vita quotidiana e mi piace che entrino anche nella vita delle persone che vengono a trovarmi.",
           "caption": "Federica Gioffredi"
-        },
-        {
-          "type": "text",
-          "content": "Il criterio con cui scelgo una foto da appendere a casa è molto semplice: o è legata a un bel ricordo oppure mi suscita una grande emozione. Non seguo altre regole, deve essere qualcosa che mi piace avere intorno e che mi fa stare bene."
         },
         {
           "type": "header",
@@ -22256,14 +22256,16 @@
         },
         {
           "type": "text",
-          "content": "Fotografie © Federica Gioffredi. Le nove fotografie inviate dall’autrice sono pubblicate per sua gentile concessione; le altre provengono dal suo sito federicagioffredi.it, e la didascalia rimanda alla serie d’origine."
+          "content": "Fotografie © Federica Gioffredi, pubblicate con il consenso dell’autrice."
         },
         {
           "type": "note",
-          "content": "Intervista di Viacheslav Munister. Risposte di Federica Gioffredi, lievemente riviste per punteggiatura e chiarezza. Le domande sono state accorciate. I titoli e gli anni delle fotografie sono quelli indicati da Federica Gioffredi e sul suo sito."
+          "content": "Intervista di Viacheslav Munister. Risposte di Federica Gioffredi, lievemente riviste per punteggiatura e chiarezza. Le domande sono state accorciate. Le fotografie vengono dall’archivio dell’autrice e dal suo sito federicagioffredi.it; ogni didascalia rimanda alla serie d’origine. Titoli e anni sono quelli indicati da lei."
         }
       ],
-      "updatedAt": "2026-10-29T11:03:16.814Z"
+      "publishAt": "2026-10-29T11:06:08.000Z",
+      "publishedAt": "2026-10-29T11:06:08.000Z",
+      "updatedAt": "2026-10-29T11:06:09.123Z"
     },
     {
       "id": 78,
