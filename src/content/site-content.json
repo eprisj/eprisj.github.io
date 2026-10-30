@@ -23960,15 +23960,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria:</b> Your sneaker paintings were an important early series. Where did they"
+          "content": "<b>Maria:</b> Your sneaker paintings were an important early series. Where did they come from?"
         },
         {
           "type": "text",
-          "content": "come from?"
-        },
-        {
-          "type": "text",
-          "content": "Adam: During the pandemic, I was walking through streets with fewer people."
+          "content": "<b>Adam: </b>During the pandemic, I was walking through streets with fewer people."
         },
         {
           "type": "text",
@@ -24039,7 +24035,7 @@
           "content": "painting figures and faces that don’t clearly reveal a gender. They recall fashion"
         }
       ],
-      "updatedAt": "2026-10-30T22:32:07.766Z"
+      "updatedAt": "2026-10-30T22:32:18.135Z"
     }
   ],
   "reviews": [
