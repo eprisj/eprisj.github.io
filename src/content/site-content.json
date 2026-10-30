@@ -23908,54 +23908,8 @@
         "editorial"
       ],
       "imageSeed": "in-conversatiob-with-dora-adam",
-      "content": [
-        {
-          "type": "text",
-          "content": "Start with the strongest scene, fact, or observation. Keep this first block tight and specific."
-        },
-        {
-          "type": "image",
-          "content": "in-conversatiob-with-dora-adam-2",
-          "caption": "Lead image"
-        },
-        {
-          "type": "quote",
-          "content": "Add a line worth remembering here."
-        },
-        {
-          "type": "note",
-          "content": "Editorial note, source context, or a short aside."
-        },
-        {
-          "type": "checklist",
-          "caption": "What to cover",
-          "content": {
-            "items": [
-              "Context",
-              "Key detail",
-              "Human angle",
-              "What changes next"
-            ]
-          }
-        },
-        {
-          "type": "poll",
-          "content": {
-            "question": "What should we explore next?",
-            "options": [
-              {
-                "label": "More context",
-                "votes": 0
-              },
-              {
-                "label": "Practical guide",
-                "votes": 0
-              }
-            ]
-          }
-        }
-      ],
-      "updatedAt": "2026-10-30T22:24:31.448Z"
+      "content": [],
+      "updatedAt": "2026-10-30T22:25:45.127Z"
     }
   ],
   "reviews": [
