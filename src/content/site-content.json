@@ -23952,11 +23952,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria:</b> You seem to enjoy the process as much as the finished painting."
+          "content": "<b>Maria:</b> You seem to enjoy the process as much as the finished painting. "
         },
         {
           "type": "text",
-          "content": "Adam: Absolutely. That’s the core of my work. Painting has a powerful energy, and"
+          "content": "<b>Adam: </b>Absolutely. That’s the core of my work. Painting has a powerful energy, and"
         },
         {
           "type": "text",
@@ -24051,7 +24051,7 @@
           "content": "painting figures and faces that don’t clearly reveal a gender. They recall fashion"
         }
       ],
-      "updatedAt": "2026-10-30T22:31:20.290Z"
+      "updatedAt": "2026-10-30T22:31:37.578Z"
     }
   ],
   "reviews": [
