@@ -23932,15 +23932,15 @@
         },
         {
           "type": "text",
-          "content": "Maria: Then what is necessary?"
-        },
-        {
-          "type": "text",
-          "content": "Adam: Sensitivity, and finding a way to deepen it. Everyone has their own"
+          "content": "<b>Maria:</b> Then what is necessary?"
         },
         {
           "type": "text",
           "content": "personality. How you touch a material and transform it into a picture or a sculpture"
+        },
+        {
+          "type": "text",
+          "content": "<b>Adam:</b> Sensitivity, and finding a way to deepen it. Everyone has their own"
         },
         {
           "type": "text",
@@ -23959,7 +23959,7 @@
           "content": "more recognizable things appear. How did you develop that language?"
         }
       ],
-      "updatedAt": "2026-10-30T22:28:53.452Z"
+      "updatedAt": "2026-10-30T22:29:07.732Z"
     }
   ],
   "reviews": [
