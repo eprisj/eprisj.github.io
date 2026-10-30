@@ -24060,10 +24060,14 @@
         },
         {
           "type": "text",
-          "content": "**Maria:** Do viewers need to know the artist to understand the work?"
+          "content": "<b>Maria: </b>Do viewers need to know the artist to understand the work?"
+        },
+        {
+          "type": "text",
+          "content": ""
         }
       ],
-      "updatedAt": "2026-10-30T23:16:24.320Z"
+      "updatedAt": "2026-10-30T23:16:39.940Z"
     }
   ],
   "reviews": [
