@@ -23369,8 +23369,9 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mvuappwck1vpbf.jpg",
-          "caption": "Three Studies for Self-Portrait",
-          "credit": "© 2026 Artists Rights Society (ARS), New York"
+          "caption": "Three Studies for Self-Portrait, 1979",
+          "credit": "© 2026 Artists Rights Society (ARS), New York",
+          "sourceUrl": "https://www.metmuseum.org/art/collection/search/489966"
         },
         {
           "type": "text",
@@ -23837,7 +23838,7 @@
           "content": "Their relationship ended in tragedy when Lacy died in Tangier in 1962, reportedly from complications related to alcoholism. Bacon received the news around the time of his major retrospective at Tate in London. The loss deeply affected him, and Lacy's presence continued to haunt his artistic imagination."
         }
       ],
-      "updatedAt": "2026-10-30T01:32:14.983Z",
+      "updatedAt": "2026-10-30T01:32:29.493Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvuali053q8oki.webp"
     }
   ],
