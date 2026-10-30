@@ -23349,8 +23349,8 @@
     {
       "id": 83,
       "title": "Francis Bacon: Life and Legacy",
-      "author": "EPRIS Journal",
-      "role": "Editorial Desk",
+      "author": "Maria Ivanova",
+      "role": "Author",
       "date": "Oct 28, 2026",
       "excerpt": "To mark the recent anniversary of Francis Bacon’s birth, we look back at the life and legacy of one of the most influential painters of the 20th century. Through key moments from his biography, the people and experiences that shaped his artistic vision, and a selection of seven paintings, we explore the world of an artist whose work continues to fascinate and challenge audiences today.",
       "category": "art",
@@ -23887,10 +23887,11 @@
           "content": "Their relationship ended in tragedy when Lacy died in Tangier in 1962, reportedly from complications related to alcoholism. Bacon received the news around the time of his major retrospective at Tate in London. The loss deeply affected him, and Lacy's presence continued to haunt his artistic imagination."
         }
       ],
-      "updatedAt": "2026-10-30T22:24:08.822Z",
+      "updatedAt": "2026-10-30T22:08:12.209Z",
       "imageUrl": "https://api.eprisjournal.com/uploads/mvuali053q8oki.webp",
       "previewToken": "cd306cfd524474d1c4a4a810",
-      "publishAt": "2026-10-30T21:41:14.888Z"
+      "publishAt": "2026-10-30T21:41:14.888Z",
+      "authorId": "author-1784896384236-4fokw"
     },
     {
       "id": 84,
@@ -23923,11 +23924,11 @@
         },
         {
           "type": "text",
-          "content": "Adam: From childhood. I was always interested in pictures – stickers, postcards,"
+          "content": "Adam: From childhood. I was always interested in pictures—stickers, postcards,"
         },
         {
           "type": "text",
-          "content": "anything around me – and I was always drawing. At some point I realized that if"
+          "content": "anything around me—and I was always drawing. At some point I realized that if"
         },
         {
           "type": "text",
@@ -24003,7 +24004,7 @@
         },
         {
           "type": "text",
-          "content": " – that’s magic. It starts as just material, and then it becomes something."
+          "content": "—that’s magic. It starts as just material, and then it becomes something."
         },
         {
           "type": "text",
@@ -24018,7 +24019,7 @@
           "content": "more recognizable things appear. How did you develop that language?"
         }
       ],
-      "updatedAt": "2026-10-30T22:25:50.505Z"
+      "updatedAt": "2026-10-30T22:24:29.276Z"
     }
   ],
   "reviews": [
