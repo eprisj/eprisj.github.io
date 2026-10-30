@@ -23912,23 +23912,19 @@
       "content": [
         {
           "type": "text",
-          "content": "A conversation with Maria Ivanova"
-        },
-        {
-          "type": "text",
           "content": "Finding a way into art"
         },
         {
           "type": "text",
-          "content": "Maria: How did you come into art?"
+          "content": "<b><i>Maria:</i> </b>How did you come into art?"
         },
         {
           "type": "text",
-          "content": "Adam: From childhood. I was always interested in pictures—stickers, postcards,"
+          "content": "Adam: From childhood. I was always interested in pictures – stickers, postcards,"
         },
         {
           "type": "text",
-          "content": "anything around me—and I was always drawing. At some point I realized that if"
+          "content": "anything around me – and I was always drawing. At some point I realized that if"
         },
         {
           "type": "text",
@@ -24004,7 +24000,7 @@
         },
         {
           "type": "text",
-          "content": "—that’s magic. It starts as just material, and then it becomes something."
+          "content": " – that’s magic. It starts as just material, and then it becomes something."
         },
         {
           "type": "text",
@@ -24019,7 +24015,7 @@
           "content": "more recognizable things appear. How did you develop that language?"
         }
       ],
-      "updatedAt": "2026-10-30T22:24:29.276Z"
+      "updatedAt": "2026-10-30T22:27:07.687Z"
     }
   ],
   "reviews": [
