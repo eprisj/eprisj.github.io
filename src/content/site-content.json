@@ -24024,15 +24024,15 @@
         },
         {
           "type": "text",
-          "content": "**Maria: What function does art have today?"
+          "content": "<b>Maria:</b> What function does art have today?"
         },
         {
           "type": "text",
-          "content": "**Adam:** Imagine life without colours, shapes, stories, reading or music. Art has always been part of being human. It creates little caves of wonder. Technology and AI are changing things, but that makes the human gesture and human sensitivity even more important to me. That’s why I believe in painting."
+          "content": "<b>Adam:</b> Imagine life without colours, shapes, stories, reading or music. Art has always been part of being human. It creates little caves of wonder. Technology and AI are changing things, but that makes the human gesture and human sensitivity even more important to me. That’s why I believe in painting."
         },
         {
           "type": "text",
-          "content": "**Maria:** How do you feel about AI-generated art?"
+          "content": "<b>Maria: </b>How do you feel about AI-generated art?"
         },
         {
           "type": "text",
@@ -24047,7 +24047,7 @@
           "content": "**Maria"
         }
       ],
-      "updatedAt": "2026-10-30T22:38:13.625Z"
+      "updatedAt": "2026-10-30T22:38:36.990Z"
     }
   ],
   "reviews": [
