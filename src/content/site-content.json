@@ -45053,6 +45053,27 @@
           "publishedAt": "2026-10-29T11:06:08.000Z",
           "locked": true,
           "updatedAt": "2026-10-29T11:22:35.698Z"
+        },
+        {
+          "id": 79,
+          "title": "Jj",
+          "author": "Vyacheslaw Munister",
+          "date": "27 окт. 2026",
+          "excerpt": "",
+          "category": "",
+          "imageSeed": "",
+          "tags": [],
+          "content": [
+            {
+              "content": "",
+              "type": "text"
+            }
+          ],
+          "draft": true,
+          "createdBy": "apple-9e51e6a7-9067-4343-99c5-0fa55a936bd5",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvr0nc1jdamo8e.jpg",
+          "previewToken": "7c68d2890cf969f879d9ae67",
+          "updatedAt": "2026-10-31T00:06:49.559Z"
         }
       ],
       "reviews": [
@@ -65817,6 +65838,27 @@
           "title": "Басейн і віла: Інша столиця французького ар-деко",
           "excerpt": "У 1932 році, всього в кількох кілометрах один від одного на околиці Рубе, соціалістичний мер завершив будівництво найкращого басейну во Франції для текстильних робітників, а власник фабрики переїхав у шістдесятиметровувілу з жовтого цегли за проєктом Роберта Мальє-Стьєвенса. Обидва майже зникли; обидва були врятовані. Двадцять п'ять років після того, як басейн став музеєм, історія французького ар-деко розповідається через дві будівлі.",
           "category": "Архітектура"
+        },
+        {
+          "id": 79,
+          "title": "Jj",
+          "author": "Vyacheslaw Munister",
+          "date": "27 жовтня 2026",
+          "excerpt": "",
+          "category": "",
+          "imageSeed": "",
+          "tags": [],
+          "content": [
+            {
+              "content": "",
+              "type": "text"
+            }
+          ],
+          "draft": true,
+          "createdBy": "apple-9e51e6a7-9067-4343-99c5-0fa55a936bd5",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvr0nc1jdamo8e.jpg",
+          "previewToken": "7c68d2890cf969f879d9ae67",
+          "updatedAt": "2026-10-31T00:06:41.423Z"
         }
       ],
       "reviews": [
