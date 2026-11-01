@@ -108423,9 +108423,357 @@
         },
         {
           "id": 80,
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "28 oct 2026",
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvruhsdwet74gt.webp",
+          "previewToken": "ccba0f91821cbd99490ffaad",
           "title": "Vivir en el aire: Tomás Saraceno y el arte de flotar juntos",
-          "excerpt": "Telas de araña escaneadas en tres dimensiones, ciudades que flotan como nubes, un globo que transportó a una mujer sobre un salar solo con la luz del sol, y un santuario de agua construido contra la fiebre del litio: veinticinco años de Tomás Saraceno, y su exposición más grande en Alemania, en Haus der Kunst en Múnich hasta el 7 de febrero de 2027.",
-          "category": "Arte"
+          "author": "Viacheslav Munister",
+          "category": "Arte",
+          "subcategory": "Perfil",
+          "excerpt": "Redes de araña escaneadas en tres dimensiones, ciudades que flotan como nubes, un globo que llevó a una mujer sobre un salar solo con la luz del sol, y un santuario de agua construido contra la fiebre del litio: veinticinco años de Tomás Saraceno, y su mayor exposición en Alemania, en Haus der Kunst en Múnich hasta el 7 de febrero de 2027.",
+          "tags": [
+            "Tomás Saraceno",
+            "Aeroceno",
+            "Aracnofilia",
+            "Ciudades Nube",
+            "En Órbita",
+            "Haus der Kunst",
+            "Futuros Ancestrales",
+            "redes de araña",
+            "arte contemporáneo",
+            "ecología"
+          ],
+          "content": [
+            {
+              "type": "text",
+              "content": "La mayoría de los artistas se preguntan cómo debería ser una obra. Tomás Saraceno se pregunta para quién debería ser. Sus respuestas siguen ampliando el círculo: personas, pero también arañas, polvo, nubes, perros, el aire mismo y las comunidades que viven en la tierra de donde provienen nuestras baterías. El resultado es uno de los cuerpos de obra más extraños y generosos del arte contemporáneo – parte arquitectura, parte laboratorio científico, parte escuela de vuelo utópica – y, este año, un museo vuelto del revés para contenerlo."
+            },
+            {
+              "type": "text",
+              "content": "Saraceno nació en 1973 en San Miguel de Tucumán, Argentina, y vive y trabaja en Berlín. Se formó primero como arquitecto en la Universidad Nacional de Buenos Aires, antes de realizar estudios de posgrado en arte y arquitectura en Buenos Aires y en la Städelschule de Fráncfort, bajo la tutela de Thomas Bayrle y Ben van Berkel. El arquitecto nunca se fue. Casi todo lo que hace es una estructura en la que se puede entrar, trepar, respirar en su interior o lanzar al cielo – y casi cada estructura es una pregunta sobre cómo podríamos vivir de manera distinta en un planeta abarrotado y sobrecalentado."
+            },
+            {
+              "type": "header",
+              "content": "I · Una telaraña es una arquitectura",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La araña llegó primero. El estudio de Saraceno ha pasado años conviviendo con arañas, observándolas construir y formulando la pregunta que haría un arquitecto: ¿cómo un cuerpo de apenas unos milímetros de largo crea una estructura tan ligera, tan fuerte y tan precisamente adaptada a su emplazamiento? Para responder adecuadamente, el estudio trabajó con investigadores del Instituto Fotogramétrico de la TU Darmstadt en un método tomográfico, Spider/Web Scan, que produjo por primera vez modelos tridimensionales precisos de complejas telarañas. Resultó que una telaraña no es una red plana sino una nube de líneas en el espacio."
+            },
+            {
+              "type": "text",
+              "content": "Ese descubrimiento recorre la obra que le dio fama. En la 53ª Bienal de Venecia de 2009, Making Worlds, comisariada por Daniel Birnbaum, llenó una sala con Galaxies Forming along Filaments, like Droplets along the Strands of a Spider's Web: cordones elásticos anudados en una vasta, colgante y astronómica telaraña que los visitantes tenían que agacharse y retorcerse para atravesar. Ese mismo año recibió el Premio Calder. El título resume todo el programa de una sola vez: la estructura de una red, la estructura del universo y la estructura de una ciudad podrían ser la misma estructura vista a diferentes escalas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruhbc5c3apmj.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Galaxies Forming along Filaments, like Droplets along the Strands of a Spider's Web, 53ª Bienal de Venecia, Making Worlds, 2009. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Una sala blanca cruzada por miles de cordones elásticos negros anudados en esferas semejantes a telarañas."
+            },
+            {
+              "type": "quote",
+              "content": "Una telaraña resultó ser no una red plana, sino una nube de líneas en el espacio."
+            },
+            {
+              "type": "text",
+              "content": "Desde entonces, las arañas se han convertido en colaboradoras más que en modelos. La serie Webs of At-tent(s)ion, que lleva una década en marcha, muestra telas tejidas por varias especies dentro de cajas de cristal, a veces por más de una especie en el mismo marco. Arachnophilia, la comunidad de investigación sin ánimo de lucro que fundó el estudio, recopila conocimientos sobre arañas de científicos y de personas que crecieron con arañas como oráculos y vecinas, con un objetivo declarado: cambiar cómo percibimos a las arañas y sus telas en un momento de crisis ecológica. En una cultura que recurre a la zapatilla, es una propuesta radical en silencio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruhxrxcmbiyz.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Redes de aten-tent(s)ión: telarañas en cajas iluminadas en una galería oscura. Ancestral Futures, Haus der Kunst, Múnich, 2026. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Una galería oscura con filas de cajas de vidrio suavemente iluminadas que contienen telarañas."
+            },
+            {
+              "type": "header",
+              "content": "II · Caminar sobre el aire",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Luego la red creció lo suficiente para sostener personas. In Orbit se inauguró en junio de 2013 en K21 Ständehaus en Düsseldorf, comisariada por Marion Ackermann y Susanne Meyer-Büser: tres niveles de malla de acero casi transparente, unos 2.500 metros cuadrados en total, suspendidos a 25 metros sobre la plaza del edificio bajo su cúpula de vidrio, con enormes esferas llenas de aire atrapadas en ella como gotas. Los visitantes subían, se tumbaban y se movían sobre ella. Cada paso recorría toda la red, así que todos en ella sentían a todos los demás: una lección de interdependencia que se aprendía con las rodillas antes que con la cabeza. Planeada para unos meses, permaneció diez años, hasta enero de 2024, y más de 400.000 personas la recorrieron."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrui05h44nqj9.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "In Orbit, K21 Ständehaus, Düsseldorf, 2013–2024: visitantes en la red de malla de acero bajo la cúpula de vidrio. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Personas tumbadas y trepando en una red transparente con grandes esferas plateadas, en lo alto bajo un techo de vidrio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrui34e231g59.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Escalando entre las esferas llenas de aire de In Orbit, a 25 metros sobre la plaza del museo. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Un visitante moviéndose a través de una red casi invisible entre enormes esferas reflectantes."
+            },
+            {
+              "type": "text",
+              "content": "Poco antes, en HangarBicocca en Milán, de octubre de 2012 a febrero de 2013, On Space Time Foam extendió tres niveles de película transparente fina a lo largo de unos 400 metros cuadrados, entre 14 y 20 metros sobre el suelo. Su curador fue Andrea Lissoni – quien, años después, como director artístico de Haus der Kunst, invitaría a Saraceno a hacerse cargo del museo de Múnich. A principios de 2012 había instalado Cloud City en la azotea del Metropolitan Museum of Art de Nueva York, un conjunto de módulos entrelazados y espejados a través de los cuales Central Park y el horizonte de Manhattan aparecían fragmentados en facetas y al revés."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrui5hau5750p.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "On Space Time Foam, HangarBicocca, Milán, 2012–13: visitantes sobre capas de película transparente fina muy por encima del suelo. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Personas sentadas y tumbadas sobre membranas transparentes hinchadas dentro de una gran nave industrial."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrui7w2jhv906.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Cloud City, On the Roof, The Metropolitan Museum of Art, Nueva York, 2012: Central Park y el horizonte vistos a través de los módulos. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Visitantes sentados dentro de una estructura poliédrica espejada con Central Park y las torres de Manhattan al fondo."
+            },
+            {
+              "type": "header",
+              "content": "III · Ciudades Nube",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Cloud City fue un capítulo de un experimento mental mucho más amplio, Cloud Cities: ¿qué pasaría si la arquitectura soltara el suelo? Los módulos – poliedros, burbujas, redes – son prototipos de hábitats que podrían flotar algún día, unidos entre sí como células en una espuma o arañas en una colonia. Están deliberadamente inacabados, más cercanos a una hipótesis de trabajo que a un diseño. En Barcelona en 2022, Cloud Cities Barcelona colgaba dentro de la Torre Glòries; la versión actual del estudio se describe como una nube con espacios de convivencia para veinticuatro especies."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruid5fzypjn3.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Cloud City en el jardín de la azotea del Met: módulos entrelazados, espejados y transparentes. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Un grupo de módulos poliedrales espejados en una azotea bajo un cielo azul, con personas de pie encima."
+            },
+            {
+              "type": "text",
+              "content": "Esa última frase marca el cambio en la obra posterior de Saraceno. La ciudad flotante ya no se imagina solo para humanos. Es una casa compartida, donde la pregunta no es cuántas personas caben, sino cuántos tipos de vida pueden vivir juntos sin que uno de ellos se apodere de todo."
+            },
+            {
+              "type": "header",
+              "content": "IV · Aeroceno: volar con la luz del sol",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Si las Cloud Cities son un sueño de flotar, Aeroceno es el intento de hacerlo realidad – sin combustible, helio, baterías ni paneles solares. La idea es disarmantemente simple. Un globo hecho de un envoltorio fino y oscuro se calienta con el sol; el aire de su interior se vuelve más ligero que el aire exterior; el globo asciende. Sin combustión, sin emisiones. En 2015, Saraceno fundó la Aerocene Foundation, una comunidad sin ánimo de lucro y de código abierto que comparte diseños, lanza globos por todo el mundo e imagina una era – el Aeroceno – que sucedería al Antropoceno y sus combustibles fósiles."
+            },
+            {
+              "type": "text",
+              "content": "Su momento más famoso llegó en enero de 2020 en las Salinas Grandes, un salar a más de 3.000 metros sobre el nivel del mar en Jujuy, norte de Argentina. Fly with Aerocene Pacha elevó a la piloto Leticia Noemí Marqués solo con la luz del sol. El vuelo duró solo unos minutos, recorrió unos dos kilómetros y medio y se elevó un poco más de 270 metros – y la Fédération Aéronautique Internationale reconoció 32 récords mundiales. El globo llevaba una frase escrita con las comunidades locales: «El agua y la vida valen más que el litio»."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruhsdwet74gt.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Fly with Aerocene Pacha, Salinas Grandes, Jujuy, Argentina, enero de 2020: el globo solar y su reflejo en el salar inundado. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Un globo negro flotando sobre un salar espejado, perfectamente reflejado debajo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruif23n2y1g8.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Aerocene Pacha en vuelo, llevando las palabras ‘El agua y la vida valen más que el litio’ – el agua y la vida valen más que el litio. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Un globo aerostático negro con letras blancas flotando junto a una pequeña nube en un cielo azul."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruihogsnbjfd.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Esculturas Aeroceno sobre las Salinas Grandes, con mensajes escritos con las comunidades locales. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Grandes formas negras llenas de aire con lemas blancos flotando sobre una multitud en un salar blanco."
+            },
+            {
+              "type": "text",
+              "content": "Su proyecto hermano está hecho de basura. Museo Aero Solar, comenzado en 2007, es una escultura volante ensamblada colectivamente a partir de bolsas de plástico reutilizadas, unidas con cinta por voluntarios en cada ciudad que visita, y creciendo con cada parada. Se exhibió en la Bienal de Arquitectura de Venecia en 2021 y ha viajado a docenas de lugares alrededor del mundo. Es lo más democrático en la obra de Saraceno: cualquiera con una bolsa y una tarde puede convertirse en uno de sus autores."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruijwvc2fc23.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dentro del Museo Aero Solar: una escultura volante hecha de bolsas de plástico reutilizadas. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Visitantes de pie dentro de un enorme patchwork inflado de bolsas de plástico coloridas."
+            },
+            {
+              "type": "quote",
+              "content": "El agua y la vida valen más que el litio."
+            },
+            {
+              "type": "header",
+              "content": "V · Del cielo a la tierra",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El vuelo de la Pacha explica hacia dónde ha ido el trabajo desde entonces. La cuenca de Salinas Grandes se encuentra en una de las regiones más ricas en litio del mundo, el llamado triángulo del litio que alimenta las baterías de la transición energética. La extracción de litio allí utiliza enormes cantidades de agua en un lugar donde el agua es vida. Las comunidades de la cuenca se han resistido. La colaboración de Saraceno con ellas transformó el arte de una especulación sobre el futuro en una posición sobre el presente: que un futuro verde construido sobre tierras ancestrales secas no es verde en absoluto."
+            },
+            {
+              "type": "text",
+              "content": "La respuesta es El Santuario del Agua, una obra de land art permanente concebida con once comunidades indígenas de la red Red Atacama en Salinas Grandes. En su centro hay un gran estanque reflectante que espeja el cielo. Está destinado a pertenecer a las comunidades que lo iniciaron, y representa, en palabras del museo que lo co-comisionó, la solidaridad con la resistencia local a la minería del litio. Para un artista que comenzó intentando dejar el suelo, es un regreso sorprendente: una obra que no flota en absoluto, sino que retiene el agua en su lugar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruinf92tefq8.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El Santuario del Agua, Salinas Grandes: una representación del trabajo de tierra, 2026. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Una representación digital de esferas blancas y una piscina reflectante en un salar bajo un cielo nublado."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruipi2oqpeyf.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Hacia el Santuario del Agua: esferas flotantes y sus reflejos en una habitación oscurecida. Futuros Ancestrales, Haus der Kunst, Múnich, 2026. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Esferas transparentes y oscuras colgadas en una habitación negra sobre un suelo reflectante."
+            },
+            {
+              "type": "header",
+              "content": "VI · 2026: Futuros Ancestrales en Múnich",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Todo esto ha llegado ahora a un solo edificio. Tomás Saraceno en Colaboración: Futuros Ancestrales se inauguró en Haus der Kunst en Múnich el 17 de julio de 2026 y se extiende hasta el 7 de febrero de 2027. Comisariada por Sarah Johanna Theurer y Andrea Lissoni, es su mayor exposición en Alemania hasta la fecha, y su premisa está en el título: el conocimiento que necesitamos para construir un futuro compartido puede ser muy antiguo."
+            },
+            {
+              "type": "text",
+              "content": "La exposición entrelaza las dos largas líneas de investigación, Aeroceno y Arachnophilia, con el nuevo co-encargo. Redes de At-tent(s)ión están allí, tejidas en vivo por varias especies de araña. En Algo-R(h)i(y)tmos, las vibraciones de las arañas tejedoras se emparejan con señales electromagnéticas de galaxias distantes, de modo que se escucha la red y el cosmos en la misma sala. Hay grandes estructuras similares a redes por las que gatear, y una caverna de bolsas de plástico donadas que los visitantes inflan ellos mismos pedaleando bicicletas estáticas. Hay pinturas hechas de olor, para perros. Galerías de arena, sal y agua de las Salinas Grandes traen el paisaje del Santuario a Baviera, y once tejedoras de las comunidades de la Red Atacama prestaron mantas hechas a mano que formaron un lugar para sentarse y tumbarse en la inauguración."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruixnh2ofmqw.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Dentro de la caverna de bolsas de plástico donadas, mantenida inflada por los visitantes. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Una persona de pie dentro de un vasto espacio inflado forrado con bolsas de plástico de colores."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruj0p1oi4i7y.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Pedaleando una bicicleta estática para inflar la caverna de bolsas de plástico. Ancestral Futures, Haus der Kunst. Imagen: studiotomassaraceno.org, © Studio Tomás Saraceno.",
+              "alt": "Un hombre pedaleando una bicicleta junto a una pared de bolsas de plástico unidas con cinta."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruivhiahz45t.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Mantas hechas a mano prestadas por tejedoras de las comunidades de la Red Atacama, vistas desde arriba. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Visitantes tumbados sobre una colcha de retazos de mantas tejidas con vivos estampados en un suelo de piedra, vistos desde arriba."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruisg3pqvygu.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Una galería de mapas y diagramas dedicada al Santuario del Agua. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Una galería blanca con un gran mapa mural en azul y un panel autoportante de dibujos y diagramas."
+            },
+            {
+              "type": "text",
+              "content": "El propio museo ha sido transformado. En la terraza este, Cloud Cities: Species of Spaces and Other Pieces cuelga doce cámaras suspendidas, similares a nubes, como hábitats para especies urbanas, sobre un nuevo jardín comunitario alrededor del edificio. Incluso la fontanería forma parte de la exposición: Flashing Toilets redirige el agua del lavado de manos para la cisterna de los inodoros, lo que el museo espera que ahorre alrededor de un millón de litros al año. Y un nuevo Museo Aero Solar se está ensamblando para un lanzamiento este otoño."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruj8rsqzmlsr.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Fuera del museo: el nuevo jardín comunitario, con una de las coloridas obras instaladas en el edificio. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "La fachada de piedra de Haus der Kunst vista a través de un jardín verde, con una colorida escultura en la terraza."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruj3hyhxlnn9.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Un Museo Aero Solar ocupa una de las salas del museo. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Un enorme globo inflado de bolsas de plástico de retazos yace en una sala con suelo de mármol."
+            },
+            {
+              "type": "text",
+              "content": "Es fácil burlarse de una exposición que incluye pinturas para perros y un rediseño de los baños. Es más difícil salir de ella sin la sensación de que la broma va sobre nosotros: que el museo, la ciudad y la economía en la que vivimos fueron todos diseñados para una sola especie, y que los diseños podrían ser de otro modo. El don de Saraceno es hacer que ese pensamiento no se sienta como una conferencia, sino como un juego al que quieres jugar: tumbado en una red, pedaleando una bicicleta, observando a una araña trabajando."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruj5jbgpc8bq.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La sala de pinturas olfativas hechas para perros. Ancestral Futures, Haus der Kunst. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Un hombre sosteniendo a un niño se agacha junto a un collie en una habitación blanca con paneles de madera clara en las paredes."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrujch9u2kb8j.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Niños gateando entre estructuras telaraña. Ancestral Futures, Haus der Kunst, Múnich, 2026. Foto: Agostino Osio, © Haus der Kunst München.",
+              "alt": "Niños y adultos en un suelo blanco bajo densos hilos negros que forman esferas telaraña."
+            },
+            {
+              "type": "header",
+              "content": "VII · Una carrera, en breve",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Además del Premio Calder en 2009, Saraceno recibió el Kunstpreis 1822 en 2010 y el Premio Konex de Platino en 2022 por su trabajo de la década anterior. Regresó a la Bienal de Venecia en 2019, en May You Live in Interesting Times de Ralph Rugoff, y tuvo importantes exposiciones individuales en el Palais de Tokyo en París (ON AIR, 2018), la Serpentine en Londres (Web(s) of Life, 2023) y, esta primavera y verano, en el Museo de Arte de la Ciudad de Nuevo Taipéi (Interwoven, 21 de marzo–5 de septiembre de 2026), su primera gran exposición en Taiwán."
+            },
+            {
+              "type": "text",
+              "content": "Vista desde la distancia, la carrera parece una línea que va de una red anudada en Venecia a un estanque en un salar. Mirada de cerca, es un argumento sostenido: que la arquitectura no es cuestión de muros sino de relaciones; que las estructuras más fuertes son las más ligeras; y que un futuro que valga la pena construir tendrá que construirse con otros – otras personas, otras especies, otras formas de saber. Muy pocos artistas que trabajan hoy hacen que el futuro parezca tan físico, tan juguetón y tan cercano."
+            },
+            {
+              "type": "header",
+              "content": "Verlo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Ancestral Futures está en Haus der Kunst, Prinzregentenstraße 1, Múnich, hasta el 7 de febrero de 2027; el museo abre de miércoles a lunes, de 10 a.m. a 8 p.m., cerrado los martes, con entrada gratuita el último viernes de cada mes de 4 a 10 p.m. Para volar tu propio globo, la Fundación Aerocene publica sus diseños y guías de lanzamiento abiertamente."
+            },
+            {
+              "type": "note",
+              "content": "Este artículo se basa en los materiales de prensa de Haus der Kunst München para Ancestral Futures (curadores, fechas, el Santuario del Agua y sus créditos), el sitio web de Studio Tomás Saraceno (historial de exposiciones, Cloud Cities, Fly with Pacha), la Aerocene Foundation y la Fédération Aéronautique Internationale (el vuelo de 2020 y sus récords), informes de exposiciones en Colossal y designboom (obras y salas en Múnich), y biografías publicadas del artista (educación, premios). Fotografías: Studio Tomás Saraceno (studiotomassaraceno.org) y, para la exposición de Múnich, Agostino Osio para Haus der Kunst München."
+            },
+            {
+              "type": "link",
+              "content": "Tomás Saraceno in Collaboration: Ancestral Futures – Haus der Kunst, Múnich (hasta el 7 de febrero de 2027)",
+              "url": "https://www.hausderkunst.de/en/presse/current-exhibitions/tomás-saraceno"
+            },
+            {
+              "type": "link",
+              "content": "Studio Tomás Saraceno – sitio web oficial",
+              "url": "https://studiotomassaraceno.org/"
+            },
+            {
+              "type": "link",
+              "content": "Aerocene Foundation",
+              "url": "https://aerocene.org/"
+            },
+            {
+              "type": "link",
+              "content": "Vuela con Aerocene Pacha",
+              "url": "https://aerocene.org/pacha/"
+            }
+          ],
+          "updatedAt": "2026-11-01T00:15:05.211Z",
+          "publishAt": "2026-10-28T08:26:46.195Z"
         },
         {
           "id": 81,
