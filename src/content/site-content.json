@@ -88217,6 +88217,214 @@
           "imageUrl": "https://api.eprisjournal.com/uploads/mvr0nc1jdamo8e.jpg",
           "previewToken": "7c68d2890cf969f879d9ae67",
           "updatedAt": "2026-10-31T00:05:21.204Z"
+        },
+        {
+          "id": 84,
+          "draft": true,
+          "title": "Im Gespräch mit Dora Adam",
+          "author": "EPRIS Journal",
+          "role": "Redaktion",
+          "date": "30. Okt. 2026",
+          "excerpt": "Ein fokussierter Eröffnungsabsatz für eine neue redaktionelle Geschichte.",
+          "category": "Kultur",
+          "subcategory": "Besonderheit",
+          "tags": [
+            "Geschichte",
+            "Kultur",
+            "Leitartikel"
+          ],
+          "imageSeed": "in-conversatiob-with-dora-adam",
+          "content": [
+            {
+              "type": "text",
+              "content": "Einen Weg in die Kunst finden"
+            },
+            {
+              "type": "text",
+              "content": "<b><i>Maria:</i> </b>Wie bist du zur Kunst gekommen?"
+            },
+            {
+              "type": "text",
+              "content": "<b><i>Adam:</i></b> Von Kindheit an. Ich habe mich immer für Bilder interessiert – Aufkleber, Postkarten, alles um mich herum – und ich habe immer gezeichnet. Irgendwann wurde mir klar, dass es das ist, was man Künstler nennt, wenn man ständig Bilder machen will. Aber das wusste ich vorher nicht. Es war einfach ein Teil des Erwachsenwerdens. Meine Eltern brachten mich zum Unterricht bei einem klassischen Porträtmaler und so begann mein beruflicher Weg. Später ging ich zur Universität."
+            },
+            {
+              "type": "text",
+              "content": "<b><i>Maria: </i></b>Ist ein Abschluss für einen Künstler unerlässlich?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Ich habe eine klassische Ausbildung, kenne aber viele gute Künstler ohne formale Ausbildung. Sie können Fähigkeiten, Techniken, Kunstgeschichte und Ästhetik erlernen. Es ist wunderbar, die eigene Kultur und Geschichte zu kennen, aber ein guter Künstler zu sein, kann man nicht lehren. Bildung ist ein Plus, keine Voraussetzung."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Was ist dann nötig?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Sensibilität und einen Weg finden, sie zu vertiefen. Jeder hat seine eigene Persönlichkeit. Wie man ein Material berührt und es in ein Bild oder eine Skulptur verwandelt – das ist Magie. Es beginnt einfach als Material und wird dann zu etwas."
+            },
+            {
+              "type": "text",
+              "content": "Zwischen Abstraktion und Alltäglichkeit"
+            },
+            {
+              "type": "text",
+              "content": "Maria: Auf den ersten Blick sehen deine Bilder abstrakt aus, aber je länger man hinschaut, desto erkennbarer werden die Dinge. Wie haben Sie diese Sprache entwickelt?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Schon als Kind fühlte ich mich zur Abstraktion hingezogen. Ich könnte mit Stöcken, Blättern oder Spritzwasser spielen. Sie sehen Formen und Farben und Ihr Gehirn verknüpft sie mit etwas. Das war schon immer ein Teil von mir. Aber ich kann nicht völlig abstrakt sein, weil ich es liebe, Dinge zu betrachten und zu analysieren, was ich sehe. Mein Gehirn beginnt, Abstraktion in einen Kontext umzuwandeln. Malerei ist auch wie Architektur: Sie konstruieren eine Komposition aus Farbe, Material und Textur."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Du scheinst den Prozess genauso zu genießen wie das fertige Gemälde."
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam: </b>Absolut. Das ist der Kern meiner Arbeit. Malerei hat eine starke Energie, und manchmal kommt eine Geste durch und beschreibt sich fast von selbst. Gleichzeitig befassen sich meine Projekte und Ausstellungen ernsthaft mit zeitgenössischen Themen. Diese beiden Seiten gleichen sich gegenseitig aus."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Deine Sneaker-Gemälde waren eine wichtige frühe Serie. Woher kamen sie?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam: </b>Während der Pandemie bin ich mit weniger Menschen durch die Straßen gelaufen. Als ich aus der U-Bahn kam, fielen mir vereinzelte Details auf: ein Fuß, ein Schuh. Ein Schuh verbindet uns mit dem Boden und gibt uns Sicherheit, daher hat er eine große Bedeutung. Das Sammeln von Sneakern entwickelte sich zu einem Trend, der auch mich interessierte. Ich war schon immer fasziniert von Kleidung – wie wir unseren Körper verpacken. Diese Idee zieht sich durch meine Arbeit."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria: </b>Und was ist mit Fast Train to Happiness?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam: </b>Ich habe diese Serie in Barcelona gemacht. Es brachte mediterrane Landschaften und Fast Food zusammen – Hamburger, Strandobjekte, kleine Details aus der Nähe. Da ist etwas von Pop-Art drin, aber auch eine sehr ausdrucksstarke Sensibilität. Ich mag es, unerwartete Objekte in eine malerische Sprache zu bringen. Das Projekt entstand auch aus einer persönlichen Erfahrung: am Strand zu sein, ein Glas, ein Handtuch, Farben und Formen wahrzunehmen. Diese gewöhnlichen Dinge werden Teil einer anderen Erzählung."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria</b>: Woran arbeitest du gerade?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam: </b>Eine neue Serie mit Objektiven. Mich interessiert, wie wir durch Telefone, Brillen und andere Linsen sehen und wie diese Geräte die Wahrnehmung beeinflussen. Ich male auch Figuren und Gesichter, die kein eindeutiges Geschlecht erkennen lassen. Sie erinnern sich an Modewerbung und Bilder aus sozialen Medien. Man nimmt diese Bilder auf, ohne es zu merken, und ich bin gespannt, was passiert, wenn sie in die Malerei eintreten."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Ihre Ausstellung *Personal Belongings* wurde von einem Fitnessclub inspiriert. Was hat Sie an diesem Setting gereizt?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Ein Fitnessstudio hat eine ganz besondere Atmosphäre: seine Möbel, Lichter, Farben, Eisen- und Plastikgegenstände. Ich begann dort die gleichen Kompositionen zu sehen, die ich bei Essen und Landschaften bemerkt hatte. In der Ausstellung wurde ein Mann vorgestellt, der alleine trainiert, aber auf den Gemälden sind keine Menschen zu sehen – nur Anordnungen von Objekten. Mich interessiert, wie man jemandem das Gefühl von Raum auf einer ebenen Fläche vermitteln kann, und ich interessiere mich für die Spannung zwischen sehr kleinen und sehr großen Dingen."
+            },
+            {
+              "type": "text",
+              "content": "Maria: Sie haben auch eine Ausstellung mit dem Titel „Ich male, was ich nicht sehen will“ gemacht. Woher kam diese Idee?"
+            },
+            {
+              "type": "text",
+              "content": "Adam: Während eines Sommeraufenthalts in Barcelona las ich über Philip Guston und sein Buch I Paint What I Want to See. Ich kochte viel und begann, Zusammenhänge zwischen dem Mischen von Soßen in der Küche und dem Mischen von Farben im Studio zu erkennen. Die Ausstellung entstand aus diesen alltäglichen Erfahrungen und der Art und Weise, wie sie in die Malerei einfließen."
+            },
+            {
+              "type": "text",
+              "content": "Selbstvertrauen, Versagen und Disziplin"
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Sie scheinen von Ihrer Praxis überzeugt zu sein. Warst du schon immer so?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Ich glaube, ich war immer zuversichtlich, aber auch hinterfragend – und das ist immer noch dasselbe. Sie gehen zusammen. Selbstvertrauen ist wichtig, weil es einem Energie gibt, aber es muss dadurch entstehen, dass man Dinge ausprobiert, sich Problemen stellt und aus Fehlern lernt. Im Studio teste ich ständig Dinge. Ich würde es nicht einmal als Misserfolg bezeichnen; es ist ein Rhythmus der Erfahrung. Sie müssen sich selbst gegenüber kritisch sein, um weiter zu wachsen."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Achten Sie auf Kritik an Ihrer Arbeit?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> I like hearing what people think. Ein Kompliment ist natürlich schön, aber Feedback, das zum Nachdenken anregt und ein Gespräch anregt, kann noch nützlicher sein. Es bietet eine andere Perspektive auf das Gemälde, und das ist mir wichtig."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria</b>: Arbeiten Sie jemals ohne Inspiration?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Natürlich. Aber auf Inspiration kann man nicht einfach warten. Ich denke, es kommt, wenn man arbeitet. Ich arbeite gerne kontinuierlich, auch wenn sich meine Energie ändert. Es ist ähnlich wie beim Sport: Ein Sportler fühlt sich nicht an jedem Trainingstag gleich, sondern macht wegen des langfristigen Ziels weiter. Sie können sich darin üben, in verschiedenen Stimmungen zu arbeiten."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Und wie wichtig ist Ruhe? "
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Ausruhen zu lernen ist Teil der Praxis. In die Sauna zu gehen oder schwimmen zu gehen gibt mir neue Energie, hilft aber auch beim Malen. Es klärt meinen Blick. Wenn ich ins Studio zurückkomme, kann sich eine Farbe oder Geste wieder frisch anfühlen. Gleichzeitig liege ich vielleicht um Mitternacht im Bett und suche online nach etwas, das mit einem Gemälde in Verbindung steht. Die Forschung hört nie wirklich auf."
+            },
+            {
+              "type": "text",
+              "content": "Kunst, KI und die menschliche Geste"
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Welche Funktion hat Kunst heute?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Stellen Sie sich ein Leben ohne Farben, Formen, Geschichten, Lesen oder Musik vor. Kunst gehörte schon immer zum Menschsein. Es entstehen kleine Höhlen voller Wunder. Technologie und KI verändern die Dinge, aber das macht die menschliche Geste und die menschliche Sensibilität für mich noch wichtiger. Deshalb glaube ich an die Malerei."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria: </b>Wie stehen Sie zu KI-generierter Kunst?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam</b>: Ich bin nicht dagegen, KI als Werkzeug zu nutzen. Es kann bei der Recherche helfen und Zeit sparen. Aber ich benutze es nicht, um Bilder zu generieren. Was ich in einem Gemälde suche, ist meiner Meinung nach nichts, was ein Algorithmus reproduzieren kann: woher es kommt, warum es existiert, die Zufälligkeit eines menschlichen Geistes. Ich habe einfach kein Interesse an KI-generierten Bildern als Medium für meine eigene Arbeit. Es ist ähnlich wie ich über NFTs dachte. Ich möchte Materialien berühren – Holz, Textil, Farbe – und diese physische Verbindung herstellen. Zeit, Material und persönliche Energie sind mir wichtig."
+            },
+            {
+              "type": "text",
+              "content": "Was macht ein Kunstwerk für sich allein?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Wenn Sie jungen Künstlern eine kurze Checkliste geben könnten, was würde darauf stehen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Neugier zuerst. Dann konsequent arbeiten. Und ehrlich: Die Arbeit sollte bei Ihnen Anklang finden und zu Ihrer Denkweise passen. Andernfalls riskieren Sie, Trends zu folgen, die nicht aus einer echten Quelle stammen. Wichtig ist auch, das richtige Medium für Ihre Idee zu finden. Ein großartiges Konzept kann scheitern, wenn es nicht durch das Material vermittelt wird."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria</b>: Woran erkennt man, ob das Medium das Richtige ist?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b>Üben. Viel Übung und Erfahrung. Als bildende Künstler kommunizieren wir durch Farben, Formen, Texturen, Größen und die Art und Weise, wie Objekte den Raum einnehmen. Die Bildsprache muss die Idee tragen."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Was passiert, wenn ein Künstler ein starkes Konzept hat, das Werk es aber nicht kommuniziert?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam: </b>Ich sehe manchmal eine interessante Idee, aber die Objekte fühlen sich nicht miteinander verbunden. Als bildender Künstler kommunizieren Sie durch Materialien, Farben, Maßstäbe und die Art und Weise, wie Dinge einen Raum einnehmen. Das Konzept muss durch diese Entscheidungen entstehen, nicht nur durch eine schriftliche Erklärung."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria: </b>Muss der Betrachter den Künstler kennen, um das Werk zu verstehen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Ich hoffe nicht. Ich interessiere mich mehr für das Objekt als für die Erklärung meiner Stimmung oder Persönlichkeit. Ich kann nicht jeden treffen, der meine Bilder sieht, und das möchte ich auch nicht müssen. Diese Energie möchte ich in die Arbeit stecken. Selbst ein sehr konzeptionelles Stück muss für sich allein stehen. Der Text kann einem Kontext, Geschichte und Referenzen liefern, und ich liebe Theorie – aber das Kunstwerk braucht eine eigene Aura, ohne dass der Künstler daneben steht."
+            },
+            {
+              "type": "text",
+              "content": "<b>Maria:</b> Was würdest du deinem jüngeren Ich sagen?"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam:</b> Vielleicht um weniger Arbeit zu zeigen. Es gibt Dinge, die ich ausgestellt habe, von denen ich jetzt denke, dass sie noch nicht fertig waren. Aber das gehört zum Wachstum dazu: Man lernt seine Praxis und manchmal wünscht man sich, man könnte etwas aus der Vergangenheit löschen. Dennoch ist es ein Teil von dir. Vielleicht sage ich mir auch, ich solle mehr Techniken als die Malerei erlernen. Ich bin mir aber nicht ganz sicher: Andere Künstler sagen mir, dass mein Fokus genau meine Stärke ist."
+            }
+          ],
+          "updatedAt": "2026-11-02T21:15:08.783Z"
         }
       ],
       "reviews": [
