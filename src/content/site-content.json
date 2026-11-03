@@ -87692,9 +87692,341 @@
         },
         {
           "id": 81,
+          "previewToken": "12f491b8c53844b6d825bfd7",
           "title": "Nach dem Bauhaus: Zehn Jahre, die die deutsche Architektur neu formten",
-          "excerpt": "Eine Welle aus Glas auf einem Hamburger Lagerhaus, ein Betonwürfel in Weimar, eine schwebende schwarze Box in Dessau, ein Kristall an der Spree, ein Tempel, der auseinandergenommen und wieder zusammengesetzt wurde, und ein Turm aus Holz: neun Projekte, die zeigen, wohin die deutsche Architektur seit der Elbphilharmonie gegangen ist – und wohin sie als Nächstes geht.",
-          "category": "Architektur"
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "Architektur",
+          "subcategory": "Feature",
+          "date": "29. Okt. 2026",
+          "excerpt": "Eine Welle aus Glas auf einem Hamburger Speicher, ein Betonwürfel in Weimar, eine schwebende schwarze Box in Dessau, ein Kristall an der Spree, ein Tempel, der auseinandergenommen und wieder zusammengesetzt wurde, und ein Turm aus Holz: neun Projekte, die zeigen, wohin die deutsche Architektur seit der Elbphilharmonie gegangen ist – und wohin sie als Nächstes geht.",
+          "tags": [
+            "Deutsche Architektur",
+            "Elbphilharmonie",
+            "Herzog & de Meuron",
+            "Bauhaus",
+            "Bauhaus-Museum Weimar",
+            "Bauhaus Museum Dessau",
+            "Futurium",
+            "David Chipperfield",
+            "Neue Nationalgalerie",
+            "Roots Hamburg",
+            "Holzarchitektur",
+            "Berlin Modern"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
+          "publishAt": "2026-10-29T04:00:00.000Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Die meiste Zeit des zwanzigsten Jahrhunderts wurde die deutsche Architektur durch ein einziges Wort erklärt: Bauhaus. Ein Jahrhundert nach der Eröffnung der Schule in Weimar ist dieses Wort immer noch überall – auf Baumwolltaschen, an Museums­wänden, in Maklerbroschüren – doch die Gebäude, die in den letzten zehn Jahren in ganz Deutschland entstanden sind, erzählen eine andere und interessantere Geschichte. Es sind keine weißen Würfel. Es sind Glaswellen auf einem Backsteinlagerhaus, ein Betonwürfel, der sich nicht zur Schau stellt, ein schwarzer Schlauch, der in einer Glashalle hängt, ein Gebäude, das aussieht wie eine Wolke aus Diamanten, und, ganz aktuell, ein Wohnturm aus Holz."
+            },
+            {
+              "type": "text",
+              "content": "Dies ist ein Spaziergang durch dieses Jahrzehnt: acht Gebäude und eines, das noch im Bau ist, von Hamburg nach Weimar und von Mannheim nach Berlin, die zeigen, was deutsche Architektur heute tut – und was sie beschlossen hat, nicht mehr zu tun."
+            },
+            {
+              "type": "header",
+              "content": "I · Die Welle auf dem Lagerhaus",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Beginnen Sie in Hamburg, wo das Jahrzehnt mit dem teuersten und meistdiskutierten Gebäude des Landes begann. Die Elbphilharmonie, entworfen vom Basler Büro Herzog & de Meuron, wurde am 11. Januar 2017 eröffnet, Jahre zu spät und ein Vielfaches des ursprünglichen Budgets. Innerhalb weniger Wochen hatten die Streitigkeiten mehr oder weniger aufgehört. Das Gebäude sitzt auf dem Kaispeicher A, einem schweren Backsteinlagerhaus aus den 1960er Jahren an der Spitze des alten Hafens, und ragt darüber in einem Glasvolumen auf, dessen Dach sich wie eine Reihe von Wellen kräuselt und etwa 110 Meter erreicht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux0wk2fb2bd.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Elbphilharmonie ragt über der HafenCity auf, mit der Kaiserkai-Promenade im Vordergrund, 2022. Foto: Axel Tschentscher, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein Glasgebäude mit wellenförmigem Dach, das auf einem Ziegelsockel am Ende eines Hafenbeckens steht, das von neuen Wohnblöcken gesäumt wird, bei Sonnenuntergang."
+            },
+            {
+              "type": "text",
+              "content": "Der Trick liegt in der Fuge zwischen Alt und Neu. Zwischen dem Ziegelsockel und dem Glasaufbau liegt die Plaza, eine öffentliche Terrasse 37 Meter über dem Wasser, die jeder umrunden kann, mit oder ohne Konzertkarte. Das Glas selbst besteht aus mehr als tausend Paneelen, viele davon gewölbt und mit einem Punktmuster bedruckt, einige nach außen gezogen zu Öffnungen, die wie Muschelmäuler aussehen. Aus der Nähe gesehen ist die Fassade weniger eine Wand als ein Feld von Reflexionen: Himmel, Fluss, Kräne."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux35db6rjub.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Nordfassade: gewölbte Glaspanels mit ausgeschnittenen Öffnungen über dem Backstein des Kaispeichers A, 2023. Foto: Dietmar Rabich, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Nahansicht einer Glasfassade aus Panels mit gewölbten, mundartigen Öffnungen, über einem roten Ziegelsockel."
+            },
+            {
+              "type": "quote",
+              "content": "Das Gebäude ist weniger eine Wand als ein Feld von Reflexionen: Himmel, Fluss, Kräne."
+            },
+            {
+              "type": "text",
+              "content": "Die Elbphilharmonie tat etwas Seltenes: Sie verwandelte ein Gebäude, das die Stadt während des Baus zu hassen gelernt hatte, in das Bild der Stadt selbst. Sie stellte auch eine Falle für alles, was folgte. Nach der Welle sollte jedes deutsche Museum und jede Konzerthalle eine Ikone sein. Die interessantesten Architekten des Jahrzehnts verbrachten einen Großteil ihrer Energie damit, Wege zu finden, nein zu sagen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux5eu1v3xcz.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Elbphilharmonie vom Wasser aus gesehen, neben dem Museumsschiff Cap San Diego, 2019. Foto: JoachimKohler-HB, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein weißes Schiff liegt an der Elbe vor einem hohen Glasgebäude mit gewelltem Dach auf einem Backsteinsockel."
+            },
+            {
+              "type": "header",
+              "content": "II · Eine Stadt in der Stadt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Der erste von ihnen war in Mannheim. Der Neubau der Kunsthalle Mannheim, von dem Hamburger Büro gmp (von Gerkan, Marg und Partner), wurde am 1. Juni 2018 neben dem Jugendstil-Stammhaus des Museums am Friedrichsplatz eröffnet. Die Architekten beschrieben ihn als eine Stadt in der Stadt: ein Cluster von Ausstellungskuben um ein hohes zentrales Atrium, verbunden durch Brücken und Terrassen, wie Straßen und Plätze im Miniaturformat – ein Verweis auf Mannheims berühmten Schachbrett-Grundriss."
+            },
+            {
+              "type": "text",
+              "content": "Von außen ist all dies in einen einzigen Schleier gehüllt. Ein bronzefarbenes Edelstahlnetz hängt gut einen Meter vor der Gebäudehaut, sodass die dahinter liegenden Kuben je nach Licht erscheinen und verschwinden. Bei Tag liest sich das Museum als ein ruhiger Volumenkörper; bei Nacht wird das Netz durchscheinend und die Räume scheinen hindurch. Es ist eine elegante Antwort auf das Problem, das die Elbphilharmonie schuf: wie man ein Gebäude erschafft, das wiedererkennbar ist, ohne zu schreien."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxbuian8lec.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Neubau der Kunsthalle Mannheim von gmp, gesehen vom Osten, 2018: ein bronzefarbenes Metallnetz über den Galerievolumen. Foto: Immanuel Giel, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Eine lange Museumsfassade, verhüllt in goldenem Metallnetz, mit hohen verglasten Abschnitten und Baumschatten, im frühen Morgenlicht."
+            },
+            {
+              "type": "header",
+              "content": "III · Zwei Museen für eine Schule",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Das Bauhaus-Jubiläum 2019 brachte zwei neue Museen hervor, und sie könnten kaum unterschiedlicher sein. In Weimar, wo Walter Gropius die Schule 1919 gründete, eröffnete das Bauhaus-Museum im April 2019. Seine Architektin Heike Hanada hatte 2012 einen offenen internationalen Wettbewerb gewonnen; es war ihr erstes realisiertes Werk. Sie studierte und lehrte an der Bauhaus-Universität Weimar, und ihr Gebäude ist das Gegenteil einer Hommage in vertrautem Stil. Es ist ein geschlossener, beinahe strenger Betonwürfel, dessen Oberfläche von feinen horizontalen Rillen durchzogen ist, mit sehr wenigen Fenstern."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzn57cvhbwc.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das neue Bauhaus-Museum Weimar von Heike Hanada, April 2019, Tage nach der Eröffnung. Foto: Geolina163, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein blassgrauer kubischer Bau mit feinen horizontalen Linien und einer einzelnen hohen Eingangsoffnung, unter blauem Himmel."
+            },
+            {
+              "type": "text",
+              "content": "Der Kubus wurde als bunkergleich kritisiert, und es stimmt, dass er wenig preisgibt. Aber genau das ist der Punkt. Hanada lehnte es ab, ein Bauhaus-Pastiche aus weißen Wänden und Bandfenstern zu bauen; sie baute eine Box, die man betreten muss, um sie zu verstehen, in der das Licht dort hineinfällt, wo es gebraucht wird, und die Exponate die Farbe tragen. In einem von Fassaden besessenen Jahrzehnt ist es ein Gebäude, das seine Geheimnisse bewahrt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxgchbis8x5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Museum gesehen von Nordwesten, mit jungen Bäumen davor, September 2019. Foto: Steffen Schmitz, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein grauer Betonwürfel mit wenigen kleinen quadratischen Fenstern, stehend hinter einem Streifen Bepflanzung und jungen Bäumen."
+            },
+            {
+              "type": "text",
+              "content": "Wenige Monate später antwortete Dessau. Das Bauhaus Museum Dessau eröffnete im September 2019, entworfen von addenda architects aus Barcelona, die sich 2015 in einem offenen Wettbewerb gegen mehr als 830 weitere Einreichungen durchgesetzt hatten. Wo Weimar geschlossen ist, ist Dessau transparent: ein langes, niedriges Gebäude, das auf allen vier Seiten mit Dreifachverglasungspanelen auf einem 2,1-Meter-Raster umhüllt ist, mit einem Gründach. Im Glaskasten hängt ein zweiter Baukörper, ein Betonvolumen von etwa 100 Metern Länge, das über dem Erdgeschoss schwebt. Die Sammlung befindet sich dort oben, im Dunkeln, vor Tageslicht geschützt; das Erdgeschoss darunter ist offen, frei und flexibel."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxjk5ds75sv.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Bauhaus Museum Dessau von addenda architects, Westseite, Januar 2024: die Glasfassade und dahinter der dunkle Volumenkörper der Black Box. Foto: Dirk Bindmann, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Eine lange Glasfassade, die einen kahlen Baum spiegelt, mit Schriftzug auf dem Glas und einem dunklen horizontalen Volumen, das im Inneren sichtbar ist."
+            },
+            {
+              "type": "text",
+              "content": "Zwischen ihnen markieren die beiden Museen das Spektrum der deutschen Architektur heute: das Massive und das Transparente, der Kubus und die Halle. Keiner von ihnen sieht aus wie das Bauhaus von den Postkarten. Beide sind auf ihre Weise ihm treuer als jede Imitation sein könnte – weil sie vom Problem ausgehen, nicht vom Stil."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxnh8g0ntz3.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Museum erstreckt sich entlang des Mies-van-der-Rohe-Platzes in Dessau, September 2020. Foto: Gunnar Klack, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Eine weite Ansicht eines langen, niedrigen Glasgebäudes neben einem Platz mit geschwungenem Weg, Fahrrädern und Laternen."
+            },
+            {
+              "type": "header",
+              "content": "IV · Ein Haus für Zukünfte",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Berlins Beitrag zum Jahr 2019 hatte gar nichts mit der Vergangenheit zu tun. Das Futurium, ein Museum und Forum möglicher Zukunftsvisionen, in Auftrag gegeben vom Bundesministerium für Bildung und Forschung, wurde am 5. September 2019 am Ufer der Spree eröffnet, zwischen Hauptbahnhof und Reichstag. Die Berliner Architekten Richter Musikowski, in Zusammenarbeit mit JUCA Landschaftsarchitekten, gewannen den zweistufigen Wettbewerb mit 163 Einreichungen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxr378yjbhu.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Futurium an der Spree am Abend, Februar 2021. Foto: Lgrb, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein dunkles, facettiertes Gebäude mit großen auskragenden Enden und einer beleuchteten Glasfront, gespiegelt in einem Fluss in der Dämmerung."
+            },
+            {
+              "type": "text",
+              "content": "Das Gebäude ist ein Polygon mit zwei tiefen Auskragungen, von denen eine den Eingang unter einem etwa 18 Meter tiefen Vordach schützt, sodass ein öffentlicher Platz unter dem Haus hindurchführt. Seine Haut ist das eigentliche Ereignis. Tausende Fassadenelemente, jeweils etwa 70 mal 70 Zentimeter groß und diagonal montiert, kombinieren Glas mit Metallpaneelen und bedruckten Mustern, sodass das Gebäude bei jedem Lichtwechsel von Silber zu Schwarz, von undurchsichtig zu schimmernd changiert. Im Inneren verteilen sich mehr als 5.000 Quadratmeter Ausstellungsfläche auf drei Etagen, und für seine ersten drei Jahre war der Eintritt frei."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxvco1y9udg.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Detail der diagonalen Fassadenelemente an der Westseite des Futuriums, 2019. Foto: Boonekamp, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Nahaufnahme von rautenförmigen Glas- und perforierten Metallpaneelen in einem diagonalen Raster, mit grünen Reflexionen."
+            },
+            {
+              "type": "text",
+              "content": "Wenn die Elbphilharmonie eine Welle ist, ist das Futurium ein Kristall: ein Objekt, das aus jedem Winkel anders aussieht und sich weigert, sich in ein einziges Bild zu fügen. Es ist auch eine Erinnerung daran, dass ein öffentliches Gebäude in Deutschland immer noch ein öffentlicher Raum sein soll – ein Dach, unter dem man steht, ein Platz, den man überquert – bevor es ein Bild ist."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzoth6n3ffb.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Futurium spät abends, Oktober 2019: der Eingang unter dem Kragarm. Foto: Chatchamp, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein dunkles Gebäude in der Nacht, dessen beleuchtetes Erdgeschoss verglast ist und dessen oberer Teil sich nach außen über den Eingang neigt."
+            },
+            {
+              "type": "header",
+              "content": "V · Eine Kolonnade für die Insel",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Auf Berlins Museumsinsel, nur wenige hundert Meter entfernt, vollendete der britische Architekt David Chipperfield ein Gebäude, das fast das Gegenteil tut. Die James-Simon-Galerie, die im Sommer 2019 eröffnet wurde, ist das neue Eingangsgebäude für die Museen der Insel. Sie steht am Kanal zwischen dem Neuen Museum, das Chipperfield selbst wiederaufbaute, und dem Pergamon, und besteht aus kaum mehr als einem Sockel und einer langen, schlanken Kolonnade aus hellem Kunststein – eine stille Fortsetzung der Kolonnaden, die Friedrich August Stüler im neunzehnten Jahrhundert auf der Insel errichtete."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxzt16ymmr5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die James-Simon-Galerie auf der Museumsinsel, Berlin, mit ihrer Kolonnade und der breiten Außentreppe, 2021. Foto: Leonhard Lenz, Wikimedia Commons (CC0).",
+              "alt": "Ein helles Steinbauwerk mit einer Reihe schlanker Säulen auf einem hohen Sockel und einer breiten Treppe, neben einem historischen Museum."
+            },
+            {
+              "type": "text",
+              "content": "Die größte Geste des Gebäudes ist eine Treppe: eine breite Außentreppe, die von der Straße zur Kolonnade hinaufführt und zu einem der beliebtesten Sitzplätze der Stadt geworden ist. Alles andere ist Zurückhaltung. In einem Land, das siebzig Jahre darüber gestritten hat, wie man neben der Geschichte baut, ist Chipperfields Antwort, den Neubau so ruhig zu gestalten, dass die alten atmen können."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruy253yhfssx.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die James-Simon-Galerie neben dem Neuen Museum, Juli 2019, dem Monat ihrer Eröffnung. Foto: A.Savin, Wikimedia Commons (Free Art License).",
+              "alt": "Ein langes weißes kolonniertes Gebäude auf einem Sockel neben einer klassischen Museumsfront, mit Menschen, die auf der Straße davor spazieren."
+            },
+            {
+              "type": "header",
+              "content": "VI · Einen Tempel auseinandernehmen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Chipperfields anderes Berliner Projekt des Jahrzehnts beinhaltete gar keinen Neubau. Die Neue Nationalgalerie, Ludwig Mies van der Rohes Stahl- und Glastempel von 1968 am Kulturforum, schloss 2015 für ihre erste vollständige Sanierung. Sechs Jahre lang nahm Chipperfields Büro das Gebäude auseinander: etwa 35.000 originale Bauteile wurden entfernt, restauriert und wieder an ihren Platz gesetzt, während die technischen Anlagen darunter erneuert wurden. Die Kosten beliefen sich auf rund 140 Millionen Euro. Als das Museum am 22. August 2021 wiedereröffnet wurde, lag der Punkt darin, dass es genau gleich aussah."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Neue Nationalgalerie in der Dämmerung, November 2021, mit Henry Moores Three Way Piece No. 2: The Archer vor der Glashalle. Foto: A.Savin, Wikimedia Commons (Free Art License).",
+              "alt": "Ein Glaspavillon unter einem breiten flachen schwarzen Stahldach, von innen beleuchtet in der blauen Stunde, mit einer dunklen Bronzeskulptur auf der Granitterrasse davor."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruyxdulclfqq.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Neue Nationalgalerie nach ihrer Sanierung, November 2021, mit Alexander Calders Têtes et Queue auf der Terrasse. Foto: A.Savin, Wikimedia Commons (Free Art License).",
+              "alt": "Ein Glaspavillon unter einem riesigen flachen schwarzen Stahldach in der Dämmerung, mit einer schwarzen abstrakten Skulptur davor."
+            },
+            {
+              "type": "text",
+              "content": "Dies ist vielleicht das deutscheste Projekt von allen: ein enormer Aufwand, um unsichtbar zu werden. Es zeigt eine Baukultur, die sich um das, was sie bereits hat, ebenso sorgfältig kümmert wie um das, was sie neu baut – eine Gewohnheit, die in einem Jahrzehnt immer wichtiger wird, in dem das grünste Gebäude oft das ist, das man nicht abricht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruyzc6vcq38h.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Neue Nationalgalerie und ihre Granitterrasse, September 2021, wenige Tage nach der Wiedereröffnung. Foto: Gunnar Klack, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Eine weite Panoramaaufnahme eines flachdachigen Glaspavillons auf einer großen gepflasterten Terrasse unter blauem Himmel."
+            },
+            {
+              "type": "header",
+              "content": "VII · Der Turm aus Bäumen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Das neueste Kapitel ist in Holz geschrieben. Im Elbbrückenquartier, am östlichen Ende der HafenCity, wurde Roots 2024 fertiggestellt: ein Wohnturm von etwa 65 Metern Höhe, entworfen von Störmer Murphy and Partners für den Projektentwickler Garbe, und das höchste Holzhochhaus Deutschlands. Nur das Untergeschoss, das Erdgeschoss und die Kerne, die Aufzüge und Treppen aufnehmen, sind aus Stahlbeton; die darüberliegenden Geschosse bestehen aus Holz, rund 5.500 Kubikmeter davon. Das Gebäude beherbergt 181 Wohnungen, und die Deutsche Wildtier Stiftung nutzt die unteren Etagen für Büros und eine Ausstellung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzqwtkpexkp.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Roots am Baakenhafen in Hamburgs Elbbrückenquartier, Februar 2025. Foto: Enter, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Ein hoher, schlanker Wohnturm neben einem Hafenbecken, mit Baukränen und neuen Blöcken drumherum."
+            },
+            {
+              "type": "text",
+              "content": "Roots steht nur wenige Kilometer von der Elbphilharmonie entfernt, und die beiden Gebäude bilden ein perfektes Paar. Das erste steht für das Bild: eine Ikone, die veränderte, wie die Welt Hamburg sieht. Das zweite steht für die Substanz: ein Gebäude, dessen wichtigste Qualität – der in seiner Struktur gebundene Kohlenstoff statt der durch Beton und Stahl freigesetzten – von der Straße aus unsichtbar ist. Wenn das letzte Jahrzehnt deutscher Architektur eine Richtung hatte, dann führte es vom ersten zum zweiten."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Weiter: die Scheune",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die Geschichte ist noch nicht zu Ende. Am Kulturforum in Berlin, gegenüber der Neuen Nationalgalerie, bauen Herzog & de Meuron das berlin modern, ein Museum für Kunst des zwanzigsten Jahrhunderts, lange bekannt als Museum des 20. Jahrhunderts und wegen seines langen Satteldachs als Scheune verspottet. Sein Grundstein wurde im Februar 2024 gelegt, das Richtfest feierte man am 17. Oktober 2025, und die Eröffnung ist für 2030 geplant. Es wird einen Kreis schließen, der mit der Elbphilharmonie begann: dieselben Architekten, dieselbe Frage, wie man ein öffentliches Gebäude schafft, das Bedeutung hat – und, zehn Jahre später, eine ganz andere Reihe von Antworten."
+            },
+            {
+              "type": "header",
+              "content": "IX · Was das Jahrzehnt sagt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Stellt man diese Gebäude nebeneinander, zeichnet sich ein Muster ab. Die deutsche Architektur hat aufgehört, ein einziges Ding sein zu wollen. Sie kann Welle oder Würfel sein, Kristall oder Kolonnade, eine so behutsame Sanierung, dass man sie nicht sieht, oder einen Holzturm. Was sie zusammenhält, ist kein Stil, sondern eine Reihe von Prioritäten: Gebäude, die zugleich öffentliche Räume sind, Neubauten, die alte respektieren, und das wachsende Bewusstsein, dass Materialien und Energie Teil des Entwurfs sind, kein nachträglicher Einfall. Ein Jahrhundert nach dem Bauhaus ist das vielleicht die bauhausmäßigste Idee von allen."
+            },
+            {
+              "type": "header",
+              "content": "Sehen Sie es",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die Elbphilharmonie Plaza in Hamburg ist für alle mit einem kostenlosen Zeitfenster-Ticket zugänglich; Roots liegt eine kurze Fahrt östlich, im Baakenhafen nahe dem Bahnhof Elbbrücken. In Berlin lassen sich Futurium, James-Simon-Galerie und Neue Nationalgalerie in einem einzigen Nachmittag besichtigen, und die Baustelle von berlin modern befindet sich direkt neben dem Letztgenannten. Beide Bauhaus-Museen in Weimar und Dessau sind von Berlin aus bequem als Tagesausflug mit dem Zug erreichbar, und die Kunsthalle Mannheim liegt nur wenige Gehminuten vom Mannheimer Hauptbahnhof entfernt."
+            },
+            {
+              "type": "note",
+              "content": "Dieser Beitrag stützt sich auf Pressematerial des Futuriums (Eröffnungsdatum, Größe), der Staatlichen Museen zu Berlin und David Chipperfield Architects (Sanierung und Wiedereröffnung der Neuen Nationalgalerie), der Stiftung Preußischer Kulturbesitz und berlin.de (berlin modern: Richtfest und geplante Eröffnung 2030), gmp und The Art Newspaper (Kunsthalle Mannheim), Dezeen und Architectural Record (die Bauhaus-Museen in Weimar und Dessau) sowie Fachberichte von Entwicklern, Ingenieuren und Lieferanten zu Roots (Höhe, Holzvolumen, Wohnungen; die Angaben weichen leicht zwischen den Quellen ab). Fotografien: Wikimedia Commons, unter den in den jeweiligen Bildunterschriften genannten Lizenzen."
+            },
+            {
+              "type": "link",
+              "content": "Elbphilharmonie, Hamburg",
+              "url": "https://www.elbphilharmonie.de/en/"
+            },
+            {
+              "type": "link",
+              "content": "Futurium, Berlin",
+              "url": "https://futurium.de/en"
+            },
+            {
+              "type": "link",
+              "content": "Neue Nationalgalerie – Sanierung 2015–2021",
+              "url": "https://www.smb.museum/en/museums-institutions/neue-nationalgalerie/about-us/refurbishment/"
+            },
+            {
+              "type": "link",
+              "content": "berlin modern – Stiftung Preußischer Kulturbesitz",
+              "url": "https://www.preussischer-kulturbesitz.de/en/news-detail/article/2025/10/17/milestone-for-a-new-cultural-forum-berlin-modern-celebrates-topping-out-ceremony.html"
+            }
+          ],
+          "updatedAt": "2026-11-03T00:10:09.249Z"
         },
         {
           "id": 82,
