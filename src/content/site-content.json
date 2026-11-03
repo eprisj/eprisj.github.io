@@ -48084,6 +48084,24 @@
           "title": "Все интенсивы: Миша Кан и как туда добраться",
           "excerpt": "Стол из оникса, который притворяется мусором, обеденный стол, отлитый из беспорядка после аперитива, стена из глянцевых зеркал: новое шоу Миши Кана в Friedman Benda в Нью-Йорке - это портрет того, как на самом деле сделан современный дизайн.",
           "category": "Проектное значение"
+        },
+        {
+          "id": 88,
+          "title": "Художник, который покидает комнату: Пьер Гюйге, от головы улья до машины, которая мечтает",
+          "excerpt": "Собака с розовой лапой, ледовый каток, выдолбленный в землю, безликое тело в Венеции и, теперь в Саду скульптур MoMA, нейронная сеть, пытающаяся представить чьи-то мысли: французский художник Пьер Юиг создает искусство, которое живет без него.",
+          "category": "Изобразительное искусство"
+        },
+        {
+          "id": 89,
+          "title": "Настоящее время Рима: бетон, облака и новая архитектура города",
+          "excerpt": "От бетонного купола Пантеона до MAXXI Захи Хадид, трех концертных залов Ренцо Пиано, Колизея на площади EUR и облака Фуксаса в стеклянном кубе: как Вечный город научился строить в настоящем времени.",
+          "category": "Архитектура"
+        },
+        {
+          "id": 90,
+          "title": "Вещи, которые исчезают при прикосновении: Акико Хираи и красота незавершенного",
+          "excerpt": "Кувшины в форме луны, трескающиеся, как речной лед, цилиндры со множеством внутренних отверстий, белая глазурь на темной глине: новая выставка лондонской гончарки Акико Хираи — это тихий манифест хрупкости и одна из самых вдумчивых выставок британской осени.",
+          "category": "Изобразительное искусство"
         }
       ],
       "reviews": [
@@ -69235,6 +69253,30 @@
           "title": "Усі інтенсивні цілі: Міша Кан та дизайн досягнення мети",
           "excerpt": "Оніксовий стіл, що вдає з себе мотлох, обідній стіл, відлитий з безладу після аперитиву, стіна з цукрово-глянцевих дзеркал: нова виставка Міші Кана у Friedman Benda в Нью-Йорку є портретом того, як насправді створюється сучасний дизайн.",
           "category": "Дизайн"
+        },
+        {
+          "id": 85,
+          "title": "Богині-мотузки: Мріналіні Мукерджі та жінки, які сформували скульптуру Південної Азії",
+          "excerpt": "Ручні фігури з конопель, які виглядають вирощеними, а не різьбленими: ретроспектива Hepworth Wakefield Мріналіні Мукерджі, показана поруч з чотирма жінками-скульпторами Індії та Бангладеш, щойно закрилася. Прогулянка кімнатами.",
+          "category": "Арт"
+        },
+        {
+          "id": 88,
+          "title": "Художник, який залишає кімнату: П&#39;єр Юїге, від голови вулика до машини, яка мріє",
+          "excerpt": "Собака з рожевою лапою, ковзанка, вирубана в землі, безлике тіло у Венеції та, тепер у Саду скульптур Музею сучасного мистецтва, нейронна мережа, яка намагається зобразити чиїсь думки: французький художник П&#39;єр Юїге створює мистецтво, яке живе без нього.",
+          "category": "Арт"
+        },
+        {
+          "id": 89,
+          "title": "Сучасний час Риму: бетон, хмари та нова архітектура міста",
+          "excerpt": "Від бетонного купола Пантеону до MAXXI Захи Хадід, трьох концертних залів Ренцо П&#39;яно, квадратного Колізею EUR та хмари Фуксаса у скляній коробці: як Вічне місто навчилося будувати в теперішньому часі.",
+          "category": "Архітектура"
+        },
+        {
+          "id": 90,
+          "title": "Речі, які зникають при дотику: Акіко Хірай і краса незакінченого",
+          "excerpt": "Місячні глечики, що тріскаються, немов річковий лід, циліндри з безліччю центрів, біла ковзанка по темній глині: нова виставка лондонської гончарки Акіко Хірай — це тихий маніфест крихкості та одна з найвдумливіших виставок британської осені.",
+          "category": "Арт"
         }
       ],
       "reviews": [
@@ -91438,6 +91480,12 @@
           "id": 90,
           "title": "Dinge, die bei Berührung verschwinden: Akiko Hirai und die Schönheit des Unvollendeten",
           "excerpt": "Mondgläser, die wie Flusseis knacken, Zylinder mit vielen Zentren, weißer Schlupf über dunklen Lehm: Die neue Ausstellung der Londoner Töpferin Akiko Hirai ist ein ruhiges Manifest für Zerbrechlichkeit – und eine der nachdenklichsten Shows des britischen Herbstes.",
+          "category": "Kunst"
+        },
+        {
+          "id": 85,
+          "title": "Seilgöttinnen: Mrinalini Mukherjee und die Frauen, die die südasiatische Skulptur geformt haben",
+          "excerpt": "Handgeknüpfte Hanffiguren, die eher gewachsen als geschnitzt wirken: Die Retrospektive von Mrinalini Mukherjee im Hepworth Wakefield, in der Werke von vier Bildhauerinnen aus Indien und Bangladesch gezeigt wurden, ist gerade zu Ende gegangen. Ein Rundgang durch die Räume.",
           "category": "Kunst"
         }
       ],
@@ -143910,6 +143958,12 @@
           "title": "Usa il presente dei verbi",
           "excerpt": "Dalla cupola in cemento del Pantheon al MAXXI di Zaha Hadid, dalle tre sale da concerto di Renzo Piano al Colosseo Quadrato dell&#39;EUR e alla nuvola in una scatola di vetro di Fuksas: come la Città Eterna ha imparato a costruire nel presente.",
           "category": "Architettura"
+        },
+        {
+          "id": 85,
+          "title": "Dee della corda: Mrinalini Mukherjee e le donne che hanno plasmato la scultura dell'Asia meridionale",
+          "excerpt": "Figure di canapa annodate a mano che sembrano cresciute piuttosto che scolpite: la retrospettiva di Mrinalini Mukherjee all&#39;Hepworth Wakefield, esposta accanto a quattro scultrici indiane e del Bangladesh, si è appena conclusa. Una passeggiata tra le sale.",
+          "category": "Arte"
         }
       ],
       "reviews": [
