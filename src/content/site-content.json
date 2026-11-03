@@ -48066,6 +48066,24 @@
           "title": "Фрэнсис Бэкон: Жизнь и наследие",
           "excerpt": "В честь недавней годовщины рождения Фрэнсиса Бэкона мы оглядываем жизнь и наследие одного из самых влиятельных художников XX века. Через ключевые моменты его биографии, людей и переживания, сформировавшие его художественное видение, и подборку из семи картин мы исследуем мир художника, чье творчество продолжает очаровывать и бросать вызов зрителям по сей день.",
           "category": "искусство"
+        },
+        {
+          "id": 85,
+          "title": "Радуйтесь прогрессу, равенству и женщинам, которые нас вдохновляют. ",
+          "excerpt": "Фигурки из конопли, связанные вручную, выглядят скорее выращенными, чем вырезанными: только что завершилась ретроспектива работ Мриналини Мукерджи в музее Хепворт Уэйкфилд, представленная рядом с работами четырех женщин-скульпторов из Индии и Бангладеш. Прогулка по залам.",
+          "category": "Изобразительное искусство"
+        },
+        {
+          "id": 86,
+          "title": "Слои света: как Севилья строила восемь веков один на другом.",
+          "excerpt": "Минарет, превратившийся в колокольню, мечеть, ставшая крупнейшим готическим собором в мире, мусульманский дворец, построенный для христианского короля, кирпичная фантазия 1929 года и деревянные конструкции над римской улицей: прогулка по слоям архитектуры Севильи.",
+          "category": "Архитектура"
+        },
+        {
+          "id": 87,
+          "title": "Все интенсивы: Миша Кан и как туда добраться",
+          "excerpt": "Стол из оникса, который притворяется мусором, обеденный стол, отлитый из беспорядка после аперитива, стена из глянцевых зеркал: новое шоу Миши Кана в Friedman Benda в Нью-Йорке - это портрет того, как на самом деле сделан современный дизайн.",
+          "category": "Проектное значение"
         }
       ],
       "reviews": [
@@ -69205,6 +69223,18 @@
           "title": "Френсіс Бейкон: Життя та Спадщина",
           "excerpt": "На честь нещодавньої річниці від дня народження Френсіса Бейкона ми згадуємо життя та спадщину одного з найвпливовіших художників 20-го століття. Через ключові моменти його біографії, людей та переживання, що сформували його художню візію, а також вибірку з семи картин, ми досліджуємо світ художника, чия робота продовжує захоплювати та викликати виклик сучасними аудиторіям.",
           "category": "мистецтво"
+        },
+        {
+          "id": 86,
+          "title": "Шари світла: як Севілья будувала вісім століть один на одному",
+          "excerpt": "Мінарет, що став дзвіницею, мечеть, що стала найбільшим готичним собором у світі, мусульманський палац, збудований для християнського короля, цегляна фантазія 1929 року та дерев&#39;яні гриби над римською вулицею: прогулянка шарами архітектури Севільї.",
+          "category": "Архітектура"
+        },
+        {
+          "id": 87,
+          "title": "Усі інтенсивні цілі: Міша Кан та дизайн досягнення мети",
+          "excerpt": "Оніксовий стіл, що вдає з себе мотлох, обідній стіл, відлитий з безладу після аперитиву, стіна з цукрово-глянцевих дзеркал: нова виставка Міші Кана у Friedman Benda в Нью-Йорку є портретом того, як насправді створюється сучасний дизайн.",
+          "category": "Дизайн"
         }
       ],
       "reviews": [
@@ -91379,6 +91409,36 @@
             }
           ],
           "updatedAt": "2026-11-02T21:15:08.783Z"
+        },
+        {
+          "id": 86,
+          "title": "Lichtschichten: Wie Sevilla acht Jahrhunderte übereinander gebaut wurde",
+          "excerpt": "Ein Minarett, das zum Glockenturm wurde, eine Moschee, die zur größten gotischen Kathedrale der Welt wurde, ein muslimischer Palast, der für einen christlichen König erbaut wurde, eine Backsteinfantasie aus dem Jahr 1929 und hölzerne Pilze über einer römischen Straße: ein Spaziergang durch die Schichten der Architektur Sevillas.",
+          "category": "Architektur"
+        },
+        {
+          "id": 87,
+          "title": "Alle intensiven Zwecke: Misha Kahn und das Design, um dorthin zu gelangen",
+          "excerpt": "Ein Onyxtisch, der vorgibt, Schrott zu sein, ein Esstisch, der aus dem Chaos nach dem Aperitif zusammengestellt wurde, eine Wand aus zuckerglänzenden Spiegeln: Misha Kahns neue Ausstellung bei Friedman Benda in New York ist ein Porträt davon, wie zeitgenössisches Design wirklich entsteht.",
+          "category": "Gestaltung"
+        },
+        {
+          "id": 88,
+          "title": "Der Künstler, der den Raum verlässt: Pierre Huyghe, vom Bienenkorbkopf zur Traummaschine",
+          "excerpt": "Ein Hund mit einem rosa Bein, eine bis zur Erde aufgeschnittene Eisbahn, ein gesichtsloser Körper in Venedig und, jetzt im Skulpturengarten des MoMA, ein neuronales Netzwerk, das versucht, sich die Gedanken eines Menschen vorzustellen: Der französische Künstler Pierre Huyghe schafft Kunst, die ohne ihn lebt.",
+          "category": "Kunst"
+        },
+        {
+          "id": 89,
+          "title": "Rom im Hier und Jetzt: Beton, Wolken und die neue Architektur der Stadt",
+          "excerpt": "Von der Betonkuppel des Pantheons bis zu Zaha Hadids MAXXI, den drei Konzertsälen von Renzo Piano, dem quadratischen Kolosseum von EUR und der Fuksas-Wolke in einer Glasbox: Wie die Ewige Stadt lernte, in der Gegenwart zu bauen.",
+          "category": "Architektur"
+        },
+        {
+          "id": 90,
+          "title": "Dinge, die bei Berührung verschwinden: Akiko Hirai und die Schönheit des Unvollendeten",
+          "excerpt": "Mondgläser, die wie Flusseis knacken, Zylinder mit vielen Zentren, weißer Schlupf über dunklen Lehm: Die neue Ausstellung der Londoner Töpferin Akiko Hirai ist ein ruhiges Manifest für Zerbrechlichkeit – und eine der nachdenklichsten Shows des britischen Herbstes.",
+          "category": "Kunst"
         }
       ],
       "reviews": [
@@ -113768,6 +113828,24 @@
             }
           ],
           "updatedAt": "2026-11-02T21:16:05.799Z"
+        },
+        {
+          "id": 87,
+          "title": "Para todos los fines intensivos: Misha Kahn y el diseño para llegar allí.",
+          "excerpt": "Una mesa de ónix que simula ser chatarra, una mesa de comedor hecha con los restos del aperitivo, una pared de espejos brillantes como el azúcar: la nueva exposición de Misha Kahn en Friedman Benda en Nueva York es un retrato de cómo se crea realmente el diseño contemporáneo.",
+          "category": "Diseño"
+        },
+        {
+          "id": 88,
+          "title": "El artista que abandona la habitación: Pierre Huyghe, de un peinado con forma de colmena a una máquina que sueña.",
+          "excerpt": "Un perro con una pata rosa, una pista de hielo abierta a la tierra, un cuerpo sin rostro en Venecia y, ahora en el Jardín de Esculturas del MoMA, una red neuronal que intenta imaginar los pensamientos de alguien: el artista francés Pierre Huyghe crea arte que vive sin él.",
+          "category": "Arte"
+        },
+        {
+          "id": 89,
+          "title": "El presente de Roma: hormigón, nubes y la nueva arquitectura de la ciudad.",
+          "excerpt": "Desde la cúpula de hormigón del Panteón hasta el MAXXI de Zaha Hadid, las tres salas de conciertos de Renzo Piano, el Coliseo Cuadrado del EUR y la nube de Fuksas en una caja de cristal: cómo la Ciudad Eterna aprendió a construir en tiempo presente.",
+          "category": "Arquitectura"
         }
       ],
       "reviews": [
@@ -143814,6 +143892,24 @@
           "title": "Francis Bacon: Vita ed Eredità",
           "excerpt": "Per celebrare il recente anniversario della nascita di Francis Bacon, ripercorriamo la vita e l'eredità di uno dei pittori più influenti del XX secolo. Attraverso i momenti chiave della sua biografia, le persone e le esperienze che hanno plasmato la sua visione artistica, e una selezione di sette dipinti, esploriamo il mondo di un artista la cui opera continua ad affascinare e sfidare il pubblico ancora oggi.",
           "category": "arte"
+        },
+        {
+          "id": 87,
+          "title": "Per tutti gli scopi intensivi: Misha Kahn e la progettazione per arrivarci",
+          "excerpt": "Un tavolo in onice che finge di essere un mucchio di cianfrusaglie, un tavolo da pranzo ricavato dai resti dell&#39;aperitivo, una parete di specchi lucidi come zucchero: la nuova mostra di Misha Kahn alla Friedman Benda di New York è un ritratto di come nasce realmente il design contemporaneo.",
+          "category": "Progetto"
+        },
+        {
+          "id": 88,
+          "title": "L&#39;artista che esce dalla stanza: Pierre Huyghe, da una testa a forma di alveare a una macchina che sogna",
+          "excerpt": "Un cane con una zampa rosa, una pista di pattinaggio sul ghiaccio aperta fino alla terra, un corpo senza volto a Venezia e, ora nel Giardino delle Sculture del MoMA, una rete neurale che cerca di visualizzare i pensieri di qualcuno: l&#39;artista francese Pierre Huyghe crea opere d&#39;arte che vivono senza di lui.",
+          "category": "Arte"
+        },
+        {
+          "id": 89,
+          "title": "Usa il presente dei verbi",
+          "excerpt": "Dalla cupola in cemento del Pantheon al MAXXI di Zaha Hadid, dalle tre sale da concerto di Renzo Piano al Colosseo Quadrato dell&#39;EUR e alla nuvola in una scatola di vetro di Fuksas: come la Città Eterna ha imparato a costruire nel presente.",
+          "category": "Architettura"
         }
       ],
       "reviews": [
@@ -163621,6 +163717,24 @@
           "title": "Francis Bacon : Vie et héritage",
           "excerpt": "Pour marquer le récent anniversaire de la naissance de Francis Bacon, nous revenons sur la vie et l'héritage de l'un des peintres les plus influents du XXe siècle. À travers les moments clés de sa biographie, les personnes et les expériences qui ont façonné sa vision artistique, et une sélection de sept peintures, nous explorons l'univers d'un artiste dont l'œuvre continue de fasciner et de défier le public aujourd'hui.",
           "category": "art"
+        },
+        {
+          "id": 85,
+          "title": "16 : Les hommes qui ont vu les résultats (et les femmes qui les adorent) !",
+          "excerpt": "Des figures de chanvre nouées à la main qui ont l'air cultivées plutôt que sculptées : la rétrospective de Mrinalini Mukherjee à Hepworth Wakefield, présentée aux côtés de quatre sculptrices indiennes et bangladaises, vient de se terminer. Une promenade dans les chambres.",
+          "category": "l’art ;"
+        },
+        {
+          "id": 87,
+          "title": "Tous les objectifs intensifs : Misha Kahn et la conception du chemin à suivre",
+          "excerpt": "Une table en onyx qui se fait passer pour un déchet, une table à manger fabriquée à partir des restes de l&#39;apéritif, un mur de miroirs à la brillance sucrée : la nouvelle exposition de Misha Kahn chez Friedman Benda à New York dresse le portrait de la véritable fabrication du design contemporain.",
+          "category": "Design"
+        },
+        {
+          "id": 88,
+          "title": "L&#39;artiste qui quitte la pièce : Pierre Huyghe, d&#39;une tête de ruche à une machine qui rêve",
+          "excerpt": "Un chien à la patte rose, une patinoire ouverte sur le sol, un corps sans visage à Venise et, désormais au jardin de sculptures du MoMA, un réseau neuronal tentant de se représenter les pensées de quelqu&#39;un : l&#39;artiste français Pierre Huyghe crée un art qui vit sans lui.",
+          "category": "l’art ;"
         }
       ],
       "reviews": [
