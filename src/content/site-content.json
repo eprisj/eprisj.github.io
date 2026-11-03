@@ -25123,6 +25123,269 @@
         }
       ],
       "updatedAt": "2026-11-03T08:28:18.523Z"
+    },
+    {
+      "id": 89,
+      "draft": false,
+      "title": "The Present Tense of Rome: Concrete, Clouds and the City’s New Architecture",
+      "author": "Viacheslav Munister",
+      "role": "Author",
+      "authorId": "author-1784732936927-kw554",
+      "date": "Nov 6, 2026",
+      "excerpt": "From the Pantheon’s concrete dome to Zaha Hadid’s MAXXI, Renzo Piano’s three concert halls, the Square Colosseum of EUR and the Fuksas cloud in a glass box: how the Eternal City learned to build in the present tense.",
+      "category": "Architecture",
+      "subcategory": "Feature",
+      "tags": [
+        "Rome",
+        "Roma",
+        "contemporary architecture",
+        "MAXXI",
+        "Zaha Hadid",
+        "Renzo Piano",
+        "Auditorium Parco della Musica",
+        "La Nuvola",
+        "Fuksas",
+        "EUR",
+        "Palazzo della Civiltà Italiana",
+        "Pantheon",
+        "Italy"
+      ],
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+      "previewToken": "35dd818d25a48f3ff33449e1",
+      "publishAt": "2026-11-06T01:00:00.000Z",
+      "publishedAt": "2026-11-06T01:00:00.000Z",
+      "content": [
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "MAXXI, National Museum of 21st Century Arts, by Zaha Hadid Architects, 2010: the cantilevered upper gallery ends in a window onto the old city. Photo: Kurt Cotoaga / Unsplash.",
+          "alt": "A long grey concrete museum building whose top floor cantilevers out over the entrance, ending in a wide window that reflects ochre and yellow Roman apartment buildings."
+        },
+        {
+          "type": "text",
+          "content": "Rome is the city that invented concrete, and then spent fifteen centuries building in stone and brick as if it had forgotten. It is also the European capital most often accused of having no contemporary architecture at all – a city so full of the past that the present cannot find a place to stand. Both ideas are wrong. Over the last thirty years Rome has quietly acquired some of the most daring buildings in Italy: a museum that pours itself through a neighbourhood like a river, three concert halls shaped like beetles, a congress centre with a cloud trapped in a glass box. To see them is to see the city from the other end of its history."
+        },
+        {
+          "type": "header",
+          "content": "I · The first concrete",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fnysxgwzfmn.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The Pantheon, rebuilt under Hadrian around AD 125: behind the classical portico stands the largest unreinforced concrete dome in the world. Photo: Gabriella Clare Marino / Unsplash.",
+          "alt": "The columned portico of the Pantheon with its inscription M. AGRIPPA L.F. COS TERTIVM FECIT, the grey dome behind, and an Egyptian obelisk on the fountain in front."
+        },
+        {
+          "type": "text",
+          "content": "Every modern building in Rome is in conversation with this one. The Pantheon’s portico is Greek in manner, but what stands behind it is Roman engineering: a dome of concrete forty-three metres across, cast in rings that grow lighter towards the top, open to the sky at the centre. Nearly two thousand years later it is still the largest unreinforced concrete dome on earth. When Zaha Hadid and Renzo Piano came to build in Rome, they were not importing a foreign material. They were bringing concrete home."
+        },
+        {
+          "type": "header",
+          "content": "II · The square Colosseum",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo064hp5hhc.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Palazzo della Civiltà Italiana, EUR, designed by Giovanni Guerrini, Ernesto Bruno La Padula and Mario Romano, begun 1938: six storeys of nine arches. Since 2015, the headquarters of Fendi. Photo: Jan Zinnbauer / Unsplash.",
+          "alt": "A tall, square white travertine building with six rows of nine identical round arches each, against a deep blue sky, with statues at the base."
+        },
+        {
+          "type": "text",
+          "content": "The first modern Rome was built for an exhibition that never happened. In the late 1930s the Fascist regime laid out a new district south of the city for a world’s fair planned for 1942 – the Esposizione Universale di Roma, which gave the area its name, EUR. The war cancelled the fair. The buildings remained, white and empty, and were finished slowly in the 1950s, when EUR became a business district."
+        },
+        {
+          "type": "text",
+          "content": "Its icon is the Palazzo della Civiltà Italiana, nicknamed the Square Colosseum: a white travertine cube whose four façades are each pierced by six rows of nine arches. It is propaganda in stone, and its inscription praises the Italians as a people of poets, artists, heroes, saints, thinkers, scientists, navigators and migrants. It is also, undeniably, one of the most hypnotic buildings of the twentieth century, a metaphysical painting by de Chirico made real. In 2015 the fashion house Fendi moved its headquarters inside, and the building finally found a peaceful use."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo1azjjoybi.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The upper arcades of the Palazzo della Civiltà Italiana, with the inscription on the attic. Photo: Karina Halley / Unsplash.",
+          "alt": "Looking up at a corner of the white arcaded building, the rows of round arches receding, with a long carved inscription along the top under a pale sky."
+        },
+        {
+          "type": "quote",
+          "content": "A metaphysical painting by de Chirico, made real in travertine."
+        },
+        {
+          "type": "header",
+          "content": "III · Three beetles in a park",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0foap4ulx4zw.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Auditorium Parco della Musica, by Renzo Piano Building Workshop, opened 2002: one of the three lead-clad concert halls. Photo: Erin Doering / Unsplash.",
+          "alt": "A huge rounded shell of a concert hall, its roof clad in long lead panels weathered to dark blue-grey, rising above wide steps."
+        },
+        {
+          "type": "text",
+          "content": "Modern Rome’s cultural revival began in music. In 2002 the city opened the Auditorium Parco della Musica, designed by Renzo Piano, on the edge of the Flaminio district. Piano split the programme into three separate concert halls of different sizes – the largest seats about 2,800 people – and gave each its own shell, roofed in lead and lined with American cherry wood inside. Romans compare them to beetles, or to giant lutes laid face down in the grass."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fobsp1jaytr.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The cavea, the open-air amphitheatre between the three halls, with the red underside of one of the shells. Photo: Massimo Virgilio / Unsplash.",
+          "alt": "A large red-brick open-air amphitheatre with people sitting on the steps under the curving grey and red underbelly of a concert hall."
+        },
+        {
+          "type": "text",
+          "content": "Between the halls Piano placed a fourth space that belongs to everyone: the cavea, an open-air amphitheatre of brick, where people sit in the evening sun even when nothing is playing. During construction the builders found the remains of a Roman villa on the site; Piano shifted the plan and the ruins now sit inside the complex, with a small museum. It is the Roman way: the new building moves aside to make room for the old one."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0focyihyacty.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The shells seen from the side: lead panels, weathered over two decades, against a summer sky. Photo: Massimo Virgilio / Unsplash.",
+          "alt": "A close, low-angle view of a curving roof of overlapping grey-blue lead strips under a blue sky with white clouds."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0foe7ghshofl.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Evening at the Auditorium: the brick terraces as a public square. Photo: Piermanuele Sberni / Unsplash.",
+          "alt": "A tall vertical view of a concert hall shell over brick terraces where a lone skateboarder rides."
+        },
+        {
+          "type": "header",
+          "content": "IV · MAXXI: a museum like a river",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo2965nm6lt.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "MAXXI: the cantilevered gallery and its window, framing the ochre houses of the Flaminio district. Photo: Mimmo Sigismondi / Unsplash.",
+          "alt": "A sharp-edged grey concrete volume projecting into a deep blue sky, its long window reflecting orange and yellow Roman houses."
+        },
+        {
+          "type": "text",
+          "content": "The building that changed Rome’s image of itself opened in 2010. MAXXI, the National Museum of 21st Century Arts, was designed by Zaha Hadid on the site of former army barracks in Flaminio. It won the RIBA Stirling Prize that year; Hadid won it again the following year, the first architect to take the prize twice in a row."
+        },
+        {
+          "type": "text",
+          "content": "From outside it looks like several concrete channels laid on top of each other and twisted in plan, so that the building seems to flow around the corner of the block. Hadid described it as a field of currents rather than a container. There are no closed rooms and no single route: the galleries are long curving streams of space, lit from above by fins in the roof, that cross, split and join again. At the very top, the last gallery shoots out over the entrance and ends in a huge window, framing a view of the Roman houses opposite – as if the museum had to look back at the city it came from."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo8bikzrapi.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Inside MAXXI: black stairs and bridges float through the white atrium. Photo: Marius George Oprea / Unsplash.",
+          "alt": "A white interior with sweeping black staircases and walkways crossing overhead, with light from roof fins and a long white floor."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo9k38m2kso.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The atrium from above: the black stair ribbons cross the full height of the building. Photo: Marius George Oprea / Unsplash.",
+          "alt": "A view down through the atrium of the museum with black steel staircases zig-zagging between white walls and people far below."
+        },
+        {
+          "type": "text",
+          "content": "The interior is in black and white. The concrete walls are pale and smooth, poured with a precision almost unknown in Italian construction at the time. Through the atrium run black steel stairs and bridges, light as drawn lines. Walking in MAXXI is less like visiting a museum than like moving inside a diagram of movement itself."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo4c81j8cmy.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "MAXXI: a cantilevered gallery seen from below. Photo: Manuel Szkolnik / Unsplash.",
+          "alt": "A vertical view of a heavy concrete gallery cantilevering over a lower volume, with glass and white clouds above."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo5lh03xz3k.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "Concrete planes meeting at sharp angles: the kind of surface the museum is made of. Photo: Manuel Szkolnik / Unsplash.",
+          "alt": "An abstract close-up of smooth grey concrete walls meeting at sharp angles with deep shadows."
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fo6xnfop6x0.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "The cantilever over the street, with the apartment blocks of Flaminio. Photo: Manuel Szkolnik / Unsplash.",
+          "alt": "A grey concrete gallery projecting above orange and yellow apartment buildings under a blue sky."
+        },
+        {
+          "type": "header",
+          "content": "V · A cloud in a box",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw0fofxucnmpoh.jpg",
+          "align": "center",
+          "width": 100,
+          "caption": "La Nuvola, Rome Convention Center, by Massimiliano and Doriana Fuksas, opened 2016: the ‘cloud’ suspended inside a glass box. Photo: Massimo Virgilio / Unsplash.",
+          "alt": "Black-and-white view inside a glass hall where a vast curving structure of steel ribs and stretched membrane – the ‘cloud’ – hangs between floors."
+        },
+        {
+          "type": "text",
+          "content": "The most recent of Rome’s landmarks is back in EUR, a short walk from the Square Colosseum. La Nuvola, the convention centre designed by Massimiliano and Doriana Fuksas and opened in 2016 after nearly two decades of planning and construction, takes a simple idea to its limit. Outside is a box of glass and steel. Inside, suspended in the air, is a cloud: a free-form auditorium wrapped in a translucent membrane over a skeleton of steel ribs, apparently floating between the floors."
+        },
+        {
+          "type": "text",
+          "content": "The contrast with its neighbour could not be sharper. The Palazzo della Civiltà is all certainty: a grid of identical arches, a slogan carved in stone. The Nuvola is all doubt: a form that will not settle, a building inside a building. Together they make a small history of how architecture changed in Rome in eighty years."
+        },
+        {
+          "type": "header",
+          "content": "VI · And elsewhere",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "The tour has other stops. At the Ara Pacis, Richard Meier’s glass pavilion of 2006 encloses the altar of peace of Augustus; Romans argued about it for years, and it is still the most controversial modern building in the historic centre. In the eastern suburb of Tor Tre Teste, Meier also built the Jubilee Church, Dives in Misericordia (2003), whose three white concrete shells rise like sails over a housing estate. And on the way to the Auditorium you pass Pier Luigi Nervi’s Palazzetto dello Sport of 1957, a ribbed concrete dome that is the true ancestor of everything in this article."
+        },
+        {
+          "type": "header",
+          "content": "VII · The present tense",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "Rome will never be a city of modern architecture in the way that Rotterdam or Shanghai are. It does not need to be. Its best new buildings work the way its old ones always did: by sitting next to what is already there and changing how you see it. Hadid’s window looks back at the old houses; Piano’s halls make room for a Roman villa; the Fuksas cloud floats a few hundred metres from a Fascist dream of eternity. The present tense in Rome is never alone. That is exactly what makes it interesting."
+        },
+        {
+          "type": "quote",
+          "content": "The present tense in Rome is never alone."
+        },
+        {
+          "type": "header",
+          "content": "See it",
+          "level": 2
+        },
+        {
+          "type": "text",
+          "content": "MAXXI is on Via Guido Reni in Flaminio, and the Auditorium Parco della Musica is a short walk away on Viale Pietro de Coubertin; combine them in one afternoon, with the Palazzetto dello Sport on the way. EUR, with the Palazzo della Civiltà Italiana and La Nuvola, is a few stops south on Metro line B. The Ara Pacis museum is on the Tiber near Piazza del Popolo."
+        },
+        {
+          "type": "note",
+          "content": "Dates, architects and descriptions follow published accounts of the buildings and the architects’ own project descriptions. Photographs are reproduced under the Unsplash licence, with each photographer credited in the caption."
+        }
+      ],
+      "updatedAt": "2026-11-03T08:36:20.903Z"
     }
   ],
   "reviews": [
