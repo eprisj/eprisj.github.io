@@ -110029,9 +110029,341 @@
         },
         {
           "id": 81,
-          "title": "Después de la Bauhaus: Diez años que redefinieron la arquitectura alemana",
-          "excerpt": "Una ola de vidrio sobre un almacén de Hamburgo, un cubo de hormigón en Weimar, una caja negra flotando en Dessau, un cristal en el Spree, un templo desmontado y vuelto a montar, y una torre de madera: nueve proyectos que muestran a dónde ha llegado la arquitectura alemana desde la Elbphilharmonie – y hacia dónde va a continuación.",
-          "category": "Arquitectura"
+          "previewToken": "12f491b8c53844b6d825bfd7",
+          "title": "Después de la Bauhaus: Diez años que transformaron la arquitectura alemana",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "category": "Arquitectura",
+          "subcategory": "Reportaje",
+          "date": "29 de oct de 2026",
+          "excerpt": "Una ola de cristal en un almacén de Hamburgo, un cubo de hormigón en Weimar, una caja negra flotando en Dessau, un cristal en el Spree, un templo desmontado y vuelto a montar, y una torre de madera: nueve proyectos que muestran a dónde ha llegado la arquitectura alemana desde la Elbphilharmonie – y hacia dónde va a continuación.",
+          "tags": [
+            "Arquitectura alemana",
+            "Elbphilharmonie",
+            "Herzog & de Meuron",
+            "Bauhaus",
+            "Museo Bauhaus Weimar",
+            "Museo Bauhaus Dessau",
+            "Futurium",
+            "David Chipperfield",
+            "Neue Nationalgalerie",
+            "Roots Hamburg",
+            "arquitectura en madera",
+            "Berlín moderno"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
+          "publishAt": "2026-10-29T04:00:00.000Z",
+          "content": [
+            {
+              "type": "text",
+              "content": "Durante la mayor parte del siglo XX, la arquitectura alemana se explicaba con una sola palabra: Bauhaus. Un siglo después de que la escuela abriera en Weimar, esa palabra sigue estando en todas partes – en bolsas de tela, en paredes de museos, en folletos de inmobiliarias – pero los edificios que se han levantado por toda Alemania en los últimos diez años cuentan una historia distinta y más interesante. No son cajas blancas. Son olas de cristal sobre un almacén de ladrillo, un cubo de hormigón que se niega a presumir, un tubo negro colgado en un vestíbulo de cristal, un edificio que parece una nube de diamantes y, más recientemente, una torre residencial hecha de madera."
+            },
+            {
+              "type": "text",
+              "content": "Este es un recorrido por esa década: ocho edificios y uno aún en construcción, desde Hamburgo hasta Weimar y desde Mannheim hasta Berlín, que muestran lo que está haciendo la arquitectura alemana ahora – y lo que ha decidido dejar de hacer."
+            },
+            {
+              "type": "header",
+              "content": "I · La ola sobre el almacén",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Comencemos en Hamburgo, donde la década empezó con el edificio más caro y más discutido del país. La Elbphilharmonie, diseñada por el estudio de Basilea Herzog & de Meuron, abrió el 11 de enero de 2017, años tarde y multiplicando muchas veces su presupuesto original. En pocas semanas las discusiones habían cesado más o menos. El edificio se asienta sobre el Kaispeicher A, un pesado almacén de ladrillo de los años sesenta en la punta del puerto viejo, y se alza sobre él en un volumen de cristal cuyo techo se riza como una hilera de olas, alcanzando unos 110 metros."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux0wk2fb2bd.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El Elbphilharmonie se eleva sobre la HafenCity, con el paseo Kaiserkai en primer plano, 2022. Foto: Axel Tschentscher, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un edificio de cristal con un techo en forma de onda sobre una base de ladrillo al final de una dársena portuaria bordeada de nuevos bloques de apartamentos, al atardecer."
+            },
+            {
+              "type": "text",
+              "content": "El truco está en la unión entre lo viejo y lo nuevo. Entre la base de ladrillo y la cúspide de cristal se encuentra la Plaza, una terraza pública a 37 metros sobre el agua que cualquiera puede recorrer, tenga o no entrada para un concierto. El propio cristal está compuesto por más de mil paneles, muchos de ellos curvos e impresos con un patrón de puntos, algunos proyectados hacia el exterior formando aberturas que parecen bocas de conchas. Vista de cerca, la fachada es menos un muro que un campo de reflejos: cielo, río, grúas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux35db6rjub.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La fachada norte: paneles de cristal curvo con aberturas recortadas sobre el ladrillo del Kaispeicher A, 2023. Foto: Dietmar Rabich, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Vista cercana de una fachada de cristal compuesta por paneles con aberturas curvas en forma de boca, situada sobre una base de ladrillo rojo."
+            },
+            {
+              "type": "quote",
+              "content": "El edificio es menos un muro que un campo de reflejos: cielo, río, grúas."
+            },
+            {
+              "type": "text",
+              "content": "La Elbphilharmonie hizo algo raro: convirtió un edificio que la ciudad había aprendido a odiar durante su construcción en la imagen de la propia ciudad. También tendió una trampa para todo lo que siguió. Tras la oleada, se esperaba que cada museo y sala de conciertos alemán fuera un icono. Los arquitectos más interesantes de la década dedicaron gran parte de su energía a encontrar formas de decir no."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrux5eu1v3xcz.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La Elbphilharmonie vista desde el agua, junto al barco museo Cap San Diego, 2019. Foto: JoachimKohler-HB, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un barco blanco amarrado en el Elba frente a un alto edificio de cristal con un techo ondulado sobre una base de ladrillo."
+            },
+            {
+              "type": "header",
+              "content": "II · Una ciudad en la ciudad",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El primero de ellos fue en Mannheim. El nuevo edificio de la Kunsthalle Mannheim, del estudio hamburgués gmp (von Gerkan, Marg and Partners), abrió al público el 1 de junio de 2018 junto a la sede modernista del museo en la Friedrichsplatz. Los arquitectos lo describieron como una ciudad en la ciudad: un grupo de cubos expositivos alrededor de un alto atrio central, conectados por puentes y terrazas, como calles y plazas en miniatura – una referencia al famoso plano en cuadrícula de Mannheim."
+            },
+            {
+              "type": "text",
+              "content": "Desde el exterior, todo esto está envuelto en un único velo. Una malla de acero inoxidable de tono bronce cuelga a poco más de un metro frente a la piel del edificio, de modo que los cubos detrás de ella aparecen y desaparecen según la luz. De día, el museo se lee como un único volumen tranquilo; de noche, la malla se vuelve translúcida y se dejan ver las salas. Es una respuesta elegante al problema que creó la Elbphilharmonie: cómo hacer un edificio que sea reconocible sin gritar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxbuian8lec.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El nuevo edificio de la Kunsthalle Mannheim por gmp, visto desde el este, 2018: una malla metálica de tono bronce sobre los volúmenes de la galería. Foto: Immanuel Giel, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Una larga fachada de museo velada en malla metálica dorada, con altos tramos acristalados y sombras de árboles, en la luz de la mañana temprana."
+            },
+            {
+              "type": "header",
+              "content": "III · Dos museos para una escuela",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El centenario de la Bauhaus en 2019 produjo dos nuevos museos, y difícilmente podrían ser más diferentes. En Weimar, donde Walter Gropius fundó la escuela en 1919, el Bauhaus-Museum abrió en abril de 2019. Su arquitecta, Heike Hanada, ganó un concurso internacional abierto en 2012; fue su primera obra construida. Estudió y enseñó en la Universidad Bauhaus en Weimar, y su edificio es lo opuesto a un homenaje en un estilo familiar. Es un cubo de hormigón cerrado, casi severo, su superficie cortada por finas ranuras horizontales, con muy pocas ventanas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzn57cvhbwc.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El nuevo Museo Bauhaus Weimar de Heike Hanada, abril de 2019, días después de su inauguración. Foto: Geolina163, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un edificio cúbico de color gris pálido con finas líneas horizontales y una única abertura de entrada alta, bajo un cielo azul."
+            },
+            {
+              "type": "text",
+              "content": "El cubo ha sido criticado por parecerse a un búnker, y es cierto que no revela mucho. Pero ese es el punto. Hanada se negó a construir un pastiche de Bauhaus de paredes blancas y ventanas en cinta; construyó una caja que hay que entrar para comprender, en la que la luz entra donde se necesita y las piezas expuestas aportan el color. En una década obsesionada con las fachadas, es un edificio que guarda sus secretos."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxgchbis8x5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El museo visto desde el noroeste, con árboles jóvenes delante, septiembre de 2019. Foto: Steffen Schmitz, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un cubo de hormigón gris con unas pocas pequeñas ventanas cuadradas, situado detrás de una franja de plantación y árboles jóvenes."
+            },
+            {
+              "type": "text",
+              "content": "Unos meses más tarde, Dessau respondió. El Museo Bauhaus Dessau se inauguró en septiembre de 2019, diseñado por addenda architects de Barcelona, que habían ganado a más de 830 propuestas en un concurso abierto en 2015. Donde Weimar es cerrado, Dessau es transparente: un edificio largo y bajo envuelto en sus cuatro lados por paneles de triple acristalamiento sobre una cuadrícula de 2,1 metros, con una cubierta verde. Dentro de la caja de cristal cuelga un segundo edificio, un volumen de hormigón de unos 100 metros de largo que flota sobre la planta baja. La colección vive allí arriba, en la oscuridad, protegida de la luz del día; la planta baja es abierta, libre y flexible."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxjk5ds75sv.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El Museo Bauhaus Dessau de addenda architects, lado oeste, enero de 2024: el envoltorio de vidrio y, detrás de él, el volumen oscuro de la caja negra. Foto: Dirk Bindmann, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Una larga fachada de vidrio que refleja un árbol desnudo, con letras en el vidrio y un volumen horizontal oscuro visible en el interior."
+            },
+            {
+              "type": "text",
+              "content": "Entre ellos, los dos museos marcan el abanico de la arquitectura alemana actual: lo sólido y lo transparente, el cubo y el hangar. Ninguno parece el Bauhaus de las postales. Ambos son, a su manera, más fieles a él que cualquier imitación – porque parten del problema, no del estilo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxnh8g0ntz3.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El museo se extiende a lo largo de la Mies-van-der-Rohe-Platz en Dessau, septiembre de 2020. Foto: Gunnar Klack, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Una vista amplia de un edificio largo y bajo de vidrio junto a una plaza con un sendero curvo, bicicletas y farolas."
+            },
+            {
+              "type": "header",
+              "content": "IV · Una casa para futuros",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La contribución de Berlín a 2019 no trataba en absoluto sobre el pasado. El Futurium, un museo y foro de futuros posibles encargado por el Ministerio Federal de Educación e Investigación, abrió el 5 de septiembre de 2019 a orillas del Spree, entre la Hauptbahnhof y el Reichstag. Los arquitectos berlineses Richter Musikowski, trabajando con los arquitectos paisajistas JUCA, lo ganaron en un concurso en dos fases con 163 propuestas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxr378yjbhu.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El Futurium en el Spree al atardecer, febrero de 2021. Foto: Lgrb, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un edificio oscuro, facetado, con grandes voladizos en los extremos y una fachada de vidrio iluminada, reflejado en un río al anochecer."
+            },
+            {
+              "type": "text",
+              "content": "El edificio es un polígono con dos voladizos profundos, uno de ellos cobijando la entrada bajo una marquesina de unos 18 metros de profundidad, de modo que una plaza pública continúa debajo de la casa. Su piel es el verdadero acontecimiento. Miles de elementos de fachada, cada uno de unos 70 por 70 centímetros y montados en diagonal, combinan vidrio con paneles metálicos y patrones impresos, de modo que el edificio cambia de plateado a negro, de opaco a centelleante, con cada cambio de luz. En el interior, más de 5.000 metros cuadrados de espacio expositivo se extienden en tres plantas, y durante sus primeros tres años la entrada fue gratuita."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxvco1y9udg.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Detalle de los elementos de fachada diagonales en el lado oeste del Futurium, 2019. Foto: Boonekamp, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Primer plano de paneles de vidrio con forma de diamante y paneles metálicos perforados dispuestos en una cuadrícula diagonal, con reflejos verdes."
+            },
+            {
+              "type": "text",
+              "content": "Si la Elbphilharmonie es una ola, el Futurium es un cristal: un objeto que se ve diferente desde cada ángulo y se niega a conformarse en una sola imagen. También es un recordatorio de que en Alemania aún se espera que un edificio público sea un espacio público – un techo bajo el que cobijarse, una plaza que cruzar – antes que una imagen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzoth6n3ffb.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "El Futurium al caer la tarde, octubre de 2019: la entrada bajo el voladizo. Foto: Chatchamp, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Un edificio oscuro de noche, su planta baja iluminada y acristalada y su parte superior inclinada hacia afuera sobre la entrada."
+            },
+            {
+              "type": "header",
+              "content": "V · Una columnata para la isla",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "En la Isla de los Museos de Berlín, a unos cientos de metros, el arquitecto británico David Chipperfield completó un edificio que hace casi lo contrario. La James-Simon-Galerie, inaugurada en el verano de 2019, es el nuevo edificio de entrada a los museos de la isla. Se alza sobre el canal entre el Neues Museum, que el propio Chipperfield reconstruyó, y el Pergamon, y consta de poco más que un zócalo y una larga y esbelta columnata de piedra fundida pálida – una tranquila continuación de las columnatas que Friedrich August Stüler construyó en la isla en el siglo XIX."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruxzt16ymmr5.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La James-Simon-Galerie en la Isla de los Museos, Berlín, con su columnata y la amplia escalinata exterior, 2021. Foto: Leonhard Lenz, Wikimedia Commons (CC0).",
+              "alt": "Un edificio de piedra clara con una fila de esbeltas columnas sobre un alto zócalo y una amplia escalinata, junto a un museo histórico."
+            },
+            {
+              "type": "text",
+              "content": "El mayor gesto del edificio es una escalera: una amplia escalinata exterior que asciende desde la calle hasta la columnata y se ha convertido en uno de los lugares favoritos de la ciudad para sentarse. Todo lo demás es contención. En un país que ha pasado setenta años discutiendo sobre cómo construir junto a la historia, la respuesta de Chipperfield es hacer el nuevo edificio tan sereno que los antiguos puedan respirar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruy253yhfssx.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La James-Simon-Galerie junto al Neues Museum, julio de 2019, el mes de su inauguración. Foto: A.Savin, Wikimedia Commons (Licencia de Arte Libre).",
+              "alt": "Un largo edificio blanco con columnata sobre un zócalo junto a una fachada de museo clásico, con gente caminando por la calle delante."
+            },
+            {
+              "type": "header",
+              "content": "VI · Desmontar un templo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El otro proyecto de Chipperfield en Berlín de la década no implicó ninguna construcción nueva. La Neue Nationalgalerie, el templo de acero y vidrio de 1968 de Ludwig Mies van der Rohe en el Kulturforum, cerró en 2015 para su primera remodelación completa. Durante seis años, la oficina de Chipperfield desmontó el edificio: unos 35.000 componentes originales fueron retirados, restaurados y vueltos a colocar, mientras que los sistemas técnicos subyacentes se renovaron. El costo fue de unos 140 millones de euros. Cuando el museo reabrió el 22 de agosto de 2021, lo importante era que tenía exactamente el mismo aspecto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvrv5llsm8b5nu.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La Neue Nationalgalerie al anochecer, noviembre de 2021, con la obra Three Way Piece No. 2: The Archer de Henry Moore frente al vestíbulo de cristal. Foto: A.Savin, Wikimedia Commons (Licencia de Arte Libre).",
+              "alt": "Un pabellón de cristal bajo un amplio techo plano de acero negro, iluminado desde el interior en la hora azul, con una escultura de bronce oscuro en la terraza de granito delantera."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruyxdulclfqq.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La Neue Nationalgalerie tras su remodelación, noviembre de 2021, con Têtes et Queue de Alexander Calder en la terraza. Foto: A.Savin, Wikimedia Commons (Licencia de Arte Libre).",
+              "alt": "Un pabellón de cristal bajo un vasto techo plano de acero negro al anochecer, con una escultura abstracta negra delante."
+            },
+            {
+              "type": "text",
+              "content": "Este es quizá el proyecto más alemán de todos: un enorme esfuerzo dedicado a volverse invisible. Muestra una cultura arquitectónica que cuida lo que ya tiene con la misma seriedad con que construye lo nuevo – un hábito que importa cada vez más en una década en la que el edificio más ecológico suele ser el que no se derriba."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruyzc6vcq38h.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "La Neue Nationalgalerie y su terraza de granito, septiembre de 2021, pocos días después de su reapertura. Foto: Gunnar Klack, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Una amplia panorámica de un pabellón de cristal de techo plano sobre una gran terraza pavimentada bajo un cielo azul."
+            },
+            {
+              "type": "header",
+              "content": "VII · La torre hecha de árboles",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "El capítulo más reciente está escrito en madera. En el Elbbrückenquartier, en el extremo oriental de la HafenCity, Roots se completó en 2024: una torre residencial de unos 65 metros, diseñada por Störmer Murphy and Partners para el promotor Garbe, y el rascacielos de madera más alto de Alemania. Solo el sótano, la planta baja y los núcleos que albergan ascensores y escaleras son de hormigón armado; los pisos superiores están construidos en madera, unos 5.500 metros cúbicos de ella. El edificio alberga 181 apartamentos, y la Deutsche Wildtier Stiftung, una fundación de vida silvestre, utiliza sus plantas bajas para oficinas y una exposición."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mvruzqwtkpexkp.webp",
+              "align": "center",
+              "width": 100,
+              "caption": "Roots en el Baakenhafen en el Elbbrückenquartier de Hamburgo, febrero de 2025. Foto: Enter, Wikimedia Commons (CC BY-SA 4.0).",
+              "alt": "Una alta y esbelta torre residencial junto a una dársena portuaria, con grúas de construcción y nuevos bloques a su alrededor."
+            },
+            {
+              "type": "text",
+              "content": "Roots se encuentra a unos pocos kilómetros de la Elbphilharmonie, y los dos edificios forman una pareja perfecta. El primero trata de imagen: un icono que cambió cómo el mundo ve Hamburgo. El segundo trata de materia: un edificio cuya cualidad más importante – el carbono almacenado en su estructura en lugar de liberado por el hormigón y el acero – es invisible desde la calle. Si la última década de la arquitectura alemana tuviera una dirección, iría del primero al segundo."
+            },
+            {
+              "type": "header",
+              "content": "VIII · A continuación: el granero",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La historia no ha terminado. En el Kulturforum de Berlín, frente a la Neue Nationalgalerie, Herzog & de Meuron están construyendo berlin modern, un museo de arte del siglo XX conocido durante mucho tiempo como el Museo del Siglo XX y apodado el granero por su larga cubierta a dos aguas. Su primera piedra se colocó en febrero de 2024, celebró su coronación el 17 de octubre de 2025 y está previsto que abra en 2030. Cerrará un círculo que comenzó con la Elbphilharmonie: los mismos arquitectos, la misma pregunta de cómo hacer un edificio público que importe – y, diez años después, un conjunto de respuestas muy diferente."
+            },
+            {
+              "type": "header",
+              "content": "IX · Lo que dice la década",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Si se colocan estos edificios uno al lado del otro, aparece un patrón. La arquitectura alemana ha dejado de intentar ser una sola cosa. Puede ser una ola o un cubo, un cristal o una columnata, una rehabilitación tan cuidadosa que no se nota o una torre de madera. Lo que las une no es un estilo, sino un conjunto de prioridades: edificios que también son espacios públicos, nuevos edificios que respetan los antiguos, y una creciente conciencia de que los materiales y la energía forman parte del diseño, no son una ocurrencia tardía. Un siglo después de la Bauhaus, esa puede ser la idea más bauhaus de todas."
+            },
+            {
+              "type": "header",
+              "content": "Véalo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La Plaza de la Elbphilharmonie en Hamburgo está abierta a todos con una entrada gratuita con horario asignado; Roots está a un corto trayecto hacia el este, en el Baakenhafen, cerca de la estación de Elbbrücken. En Berlín, el Futurium, la James-Simon-Galerie y la Neue Nationalgalerie pueden verse en una sola tarde, y el sitio de construcción de berlin modern está justo al lado de este último. Ambos museos de la Bauhaus, en Weimar y Dessau, son una excursión de un día fácil desde Berlín en tren, y la Kunsthalle Mannheim está a pocos minutos a pie de la estación principal de Mannheim."
+            },
+            {
+              "type": "note",
+              "content": "Este reportaje se basa en los materiales de prensa del Futurium (fecha de apertura, dimensiones), los Staatliche Museen zu Berlin y David Chipperfield Architects (la rehabilitación de la Neue Nationalgalerie y su reapertura), la Fundación del Patrimonio Cultural Prusiano y berlin.de (berlin modern: coronación y la apertura prevista para 2030), gmp y The Art Newspaper (Kunsthalle Mannheim), Dezeen y Architectural Record (los museos de la Bauhaus en Weimar y Dessau), e informes sectoriales de promotores, ingenieros y proveedores sobre Roots (altura, volumen de madera, apartamentos; las cifras difieren ligeramente entre fuentes). Fotografías: Wikimedia Commons, bajo las licencias indicadas en cada pie de foto."
+            },
+            {
+              "type": "link",
+              "content": "Elbphilharmonie, Hamburgo",
+              "url": "https://www.elbphilharmonie.de/en/"
+            },
+            {
+              "type": "link",
+              "content": "Futurium, Berlín",
+              "url": "https://futurium.de/en"
+            },
+            {
+              "type": "link",
+              "content": "Neue Nationalgalerie – renovación 2015–2021",
+              "url": "https://www.smb.museum/en/museums-institutions/neue-nationalgalerie/about-us/refurbishment/"
+            },
+            {
+              "type": "link",
+              "content": "berlin modern – Fundación del Patrimonio Cultural Prusiano",
+              "url": "https://www.preussischer-kulturbesitz.de/en/news-detail/article/2025/10/17/milestone-for-a-new-cultural-forum-berlin-modern-celebrates-topping-out-ceremony.html"
+            }
+          ],
+          "updatedAt": "2026-11-03T00:16:22.895Z"
         },
         {
           "id": 82,
