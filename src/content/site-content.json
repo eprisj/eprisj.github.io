@@ -25843,6 +25843,11 @@
           "level": 3
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<b>AD:</b> This was my latest solo exhibition at a Hungarian gallery, Personal Belongings. The exhibition explores the environment of a fitness club through abstraction."
         },
@@ -26126,7 +26131,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:07:13.270Z",
+      "updatedAt": "2026-11-04T20:10:28.972Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
