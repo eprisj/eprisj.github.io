@@ -25651,11 +25651,11 @@
     {
       "id": 91,
       "draft": true,
-      "title": "Adam Dora: Chaos Is Structured",
+      "title": "Adam Dora: It Has to Stand on Its Own",
       "author": "Maria Ivanova",
       "role": "Interview",
       "date": "Nov 3, 2026",
-      "excerpt": "The Hungarian painter Adam Dora on a childhood of stickers and postcards, a pandemic spent looking at shoes, hamburgers built like towers, gyms and kitchens, Matisse and Guston, AI, honesty – and why art is not self-expression.",
+      "excerpt": "The Hungarian painter Adam Dora on a childhood of stickers and postcards, organised life and wild studio, gyms and kitchens, Philip Guston, AI, honesty – and why a work has to stand on its own.",
       "category": "interview",
       "subcategory": "Interview",
       "tags": [
@@ -25673,25 +25673,20 @@
       "content": [
         {
           "type": "text",
-          "content": "Adam Dora’s paintings look abstract for about three seconds. Then a shoe appears, or a hamburger built like a tower, a pair of earbuds, the iron frame of a gym machine, a towel on a Mediterranean beach. The Hungarian painter, who divides his time between Budapest and an artists’ house in Barcelona, works on the border between gesture and object, with big formats, bold colour and a very physical idea of paint."
+          "content": "Adam Dora’s paintings look abstract for about three seconds. Then a hamburger appears, built like a tower, or a pair of earbuds, the iron frame of a gym machine, a face seen through a lens. The Hungarian painter, who divides his time between Budapest and an artists’ house in Barcelona, works on the border between gesture and object, with big formats, bold colour and a very physical idea of paint."
         },
         {
           "type": "text",
-          "content": "Maria Ivanova met him twice: first in the crowd after an awards ceremony, then on a long walk that ended in a café. Here are both conversations in full, as they happened – childhood and discipline, sneakers and hamburgers, gyms and kitchens, Matisse and Guston, AI, honesty and the cities he loves."
-        },
-        {
-          "type": "quote",
-          "content": "Chaos is structured.",
-          "caption": "Adam Dora"
+          "content": "Maria Ivanova talked to him about a childhood full of stickers and postcards, discipline and confidence, gyms and kitchens, Philip Guston, AI, honesty, the cities he loves – and why a work has to stand on its own."
         },
         {
           "type": "header",
-          "content": "<span class=\"kicker\">Part I</span>The first conversation",
+          "content": "<span class=\"kicker\">Part I</span>The studio",
           "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">After the awards: childhood, education, style, the series, confidence, AI, the art scene, and a walk through his gallery.</span>"
+          "content": "<span class=\"dek\">Childhood, education, style, confidence, AI, and two exhibitions.</span>"
         },
         {
           "type": "header",
@@ -25700,103 +25695,39 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t know, honestly, if you’ll be able to hear anything after the awards, because it’s so crowded here. But I hope so."
+          "content": "<b>Maria Ivanova [MI]: How did you come into art?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Okay. Now it’s on. Of course, when I’m done I’ll send you the article and you can edit everything. Thank you for meeting me in the first place.</b>"
+          "content": "<b>Adam Dora [AD]:</b> From childhood. When I was a kid, I was always interested in pictures of all kinds. I collected pictures, stickers, postcards, everything around me, and I was always drawing, like any kid."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Of course, it’s a pleasure."
+          "content": "At a certain point, I realised that if you want to be connected to this all the time, if it’s the main practice you enjoy and you take making pictures seriously, then that’s what we call being an artist. But I didn’t know that before. It was just there as I was growing up."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I really like your art, because it’s so bold, so emotional and so confident.</b>"
+          "content": "Then my parents started taking me to an artist, a classical portrait painter, so my education was very classical, focused on the study of painting. I started attending her classes, and that’s how my professional journey began. Then I realised I wanted to study art, and I went to university."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Thank you."
+          "content": "<b>Maria Ivanova [MI]: Weren’t you afraid you wouldn’t be able to make a living from it?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: You’re welcome. How did you come into art? Was it part of your life from childhood, or did you find your way to it later?</b>"
+          "content": "<b>Adam Dora [AD]:</b> It’s the basic worry of all parents, and of everybody. Statistics say that 99% of artists are starving or have a chaotic life."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> From childhood. When I was a kid I was always interested in pictures, any kind of pictures. I collected pictures, stickers, postcards, everything around me, and I was always drawing, like any kid. Then, little by little, it was always with me. At a certain point I realized that if you want to connect to this all the time, and it’s the main practice you enjoy, and you make pictures seriously, then that is what we call an artist. But I didn’t know that before. It was just there while I was growing up. Then my parents started taking me to an artist, a classical portrait painter, so it was very classical, educational studies in painting. I started attending her classes, and that’s how the professional line began. Then I realized I wanted to study this, and I went to university."
+          "content": "But for me, it’s different, because I come from another kind of habit: I like to be very focused and very organised, and that’s how I can create these very expressive things. All the other parts of my life are super organised. I like to be tidy and clean, and organised with my time. That kind of balance in life gives me freedom in the studio. They balance each other."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Is your family connected to art somehow?</b>"
+          "content": "I truly believe that if you know yourself and go through a process of self-modelling, you can achieve anything. It’s not something very spiritual. If you are strong enough to go your own way… because the biggest problem in life is that 99% of people don’t go their own way."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No. My parents are teachers. My father teaches grammar and history in a high school, and my mother is a kindergarten teacher. They’re educated people, from a middle-class background, they’ve travelled and know things, and both of them are interested in culture in general, but not in the visual. I’m the only one in the family who lives with this."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Very interesting. So you don’t remember a starting point; it was always in your life, you were always interested in visuals?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Oh, that’s nice. And then you pursued a fine-art degree?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So there wasn’t really a choice for you, you only had one path.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I only had one path, but I’m interested in many things. I really love gastronomy, clothing, materials, textiles, fabrics. But the main line, which was always very strong in my life, was painting, and within the pictorial, painting is more intense than drawing or graphics."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: But weren’t you afraid you wouldn’t be able to make a living from it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s the basic worry of all parents, and of everybody. The statistics say 99% of artists are starving or have a chaotic life. But for me it’s different, because I come from another kind of habit: I like to be very focused and very organized, and that’s how I can create these very expressive things. All the other parts of my life are super organized. I like to be tidy and clean and organized in time. That kind of life balance gives me freedom in the studio, if you know what I mean. They balance each other."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So the discipline you have in the rest of your life helps you pursue this. It’s a kind of chaotic path; it can’t be directly structured, I guess. What do you think?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Chaos is structured."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: No, you can’t predict anything. You don’t know exactly what it’s going to be when you pursue an artistic career, right?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I have some ideas. But I truly believe that if you know yourself, and you go through a process of self-modelling, getting to know yourself more and more, you can achieve anything. I truly believe this. It’s not something very spiritual. It’s a little spiritual, but more than that it’s a clear thing in life. If you are strong enough to go your own way… because the biggest problem in life is that 99% of people don’t go their own way. I see that around me. I’m very, very grateful that I have the chance to go down this line. It’s a very big possibility, and we are very gifted, as artists."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I understand. So the fact that you’re so structured helps you work consistently and get results.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> That’s how it works. It’s a lot of work and a lot of study, but you only realize it afterwards, when the result comes. If you like watching the work grow, it doesn’t feel like hard work. I do get exhausted after painting a huge piece, but the best works come very naturally, like an energy that flows into you. You don’t have to force yourself, as you would with a job, you know?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Yes, I know. So it comes naturally, as you said. That’s amazing.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Absolutely. When I first started, before university and before the studies, as a kid or an early teenager, I didn’t even know what it meant to be a painter, or an artist, or what contemporary art was. I just had this path to follow, and the people around me started to validate it. That’s important, because you’re not doing it for validation, you do it for yourself."
+          "content": "I’m very, very grateful that I have the chance to follow this path."
         },
         {
           "type": "header",
@@ -25805,11 +25736,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Thank you. Is it essential for an artist to have a degree?</b>"
+          "content": "<b>Maria Ivanova [MI]: Is it essential for an artist to have a degree?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t know. I come from a classical education, so I have that background, but I know a lot of artists who have no formal education, and I think being a good artist isn’t something you can teach. You can learn skills, techniques, art history, aesthetics. It’s nice to be educated, to know your culture, art history, world history. But to make good art it isn’t necessary. It’s a plus."
+          "content": "<b>Adam Dora [AD]:</b> I don’t know. I come from a classical education, so I have that background, but I know a lot of artists who have no formal education. I think being a good artist isn’t something you can teach. You can learn skills, techniques, art history and aesthetics. It’s nice to be educated, to know your culture, art history and world history. But to make good art, it isn’t necessary. It’s a plus."
         },
         {
           "type": "text",
@@ -25817,48 +25748,32 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think tension, and deepening your sensitivity, in your own way. It could be anything; it’s very personal. In my work there’s a personal part that comes from the themes, from inspiration, from the collective memory that I put into my work. But the other part is the sensitivity. It’s very personal: you were born, you came out into this world, and everyone has their own personality. And how you touch a material, how you transform it into a picture or a sculpture or a three-dimensional thing, that’s magic, because it’s just material, and then it becomes something."
+          "content": "<b>Adam Dora [AD]:</b> I think tension, and deepening your sensitivity in your own way. It could be anything; it’s very personal. In my work, there’s a personal part that comes from the themes, from inspiration, from the collective memory that I put into my work. But the other part is sensitivity. It’s very personal: you were born, you came into this world, and everyone has their own personality."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How did you develop your style? Maybe it was before your education, or while you were studying. Maybe you copied an artist, or liked an artist and were influenced by them. How did you find this quite expressive, powerful style, balancing between abstraction and figuration? It’s very interesting. I can’t stop being amazed by how you do this. When I look at your paintings, at first glance they’re abstract, but then you go deeper and understand that they’re not at all. It’s fabulous.</b>"
+          "content": "How you touch a material and transform it into a picture, a sculpture or a three-dimensional object — that’s magic, because it’s just material, and then it becomes something."
+        },
+        {
+          "type": "quote",
+          "content": "It’s just material, and then it becomes something.",
+          "caption": "Adam Dora"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Thank you so much. It’s very hard to describe. I was really into abstraction all the time as a kid. I could play with anything: sticks I found, leaves, splashing water. That’s an abstract thing: you have the sensory experience, you see shapes and colours, and your brain connects them to something. It’s always been with me, and it’s really hard to put into words, because it’s part of me. But I think it’s both. You see things, you hear things, you study things, and even if you don’t go to art school you see a lot of stuff around you, and it affects your memory for sure. That’s why I can’t be totally abstract: I really like seeing things, analyzing what you see and having a connection to it. And in the abstract, my brain starts to turn it into a context. It’s like architecture, you have to construct something. Even on a canvas you construct a composition, colour, material, texture and so on."
+          "content": "<b>Maria Ivanova [MI]: How did you develop your style? I can’t stop being amazed by how you do this. When I look at your paintings, at first glance they’re abstract, but then you go deeper and understand that they’re not abstract at all. It’s fabulous.</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s beautiful, you’ve already answered my question about why you don’t go totally into abstraction. I was analyzing your practice from the beginning, on your website, and I saw that sometimes you have a series that is totally abstract, but then you keep coming back to abstraction...</b>"
+          "content": "<b>Adam Dora [AD]:</b> Thank you so much. It’s very hard to describe. I was really into abstraction as a kid. I could play with anything: sticks I found, leaves, splashing water. That’s an abstract experience: you have the sensory experience, you see shapes and colours, and your brain connects them to something."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Not abstraction, to figuration."
+          "content": "It’s always been with me, and it’s really hard to put into words because it’s part of me. But I think it’s both. You see things, you hear things, you study things, and even if you don’t go to art school, you see a lot of things around you, and they definitely affect your memory."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s interesting. Thank you.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s not easy to put it that way. In the past, being abstract or figurative was a narrative for an artist. Nowadays everything is mixed. There are so many semi-abstract artists, each in a different way. For me, being abstract means having my own structure of things. But I can’t focus only on imagined shapes and colours and put them on a canvas; for me that’s too chaotic, too much discipline at the same time. And if I can’t connect to memories, it doesn’t work."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Is your major inspiration memory?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think so. Things I see, things I imagine. But imagination also comes from memory. It’s very difficult to explain."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So you mean you can’t really know the rules of your imagination exactly. You just know it comes from what you consumed before and what you had in your past.</b>"
-        },
-        {
-          "type": "header",
-          "content": "What he is working on now",
-          "level": 3
+          "content": "That’s why I can’t be totally abstract: I really like seeing things, analysing what you see and having a connection to them. And in the abstract, my brain starts to turn it into a context. It’s like architecture: you have to construct something. Even on a canvas, you construct a composition through colour, material, texture and so on."
         },
         {
           "type": "text",
@@ -25866,128 +25781,27 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Right now? You’ve probably seen the series with lenses. That’s the new series. I showed three pieces at the Budapest Contemporary Art Fair with my Hungarian gallery, and I also have a series with my Barcelona gallery. They’re figures and faces where you can’t tell the sex. They’re like figures from fashion advertising, things I saw on Instagram or social media. That affects me a lot, not directly, but it goes into your brain somehow, and I’m really interested in how it affects painting. And I have this older theme: most of my paintings come from lenses, phones, eyewear. I’m really interested in lenses, in how we see through these things. There’s a lot of meaning in that, but it’s also a compositional element in the new world."
+          "content": "<b>Adam Dora [AD]:</b> Right now? You’ve probably seen the series with lenses. That’s the new series. I showed three pieces at the Budapest Contemporary Art Fair with my Hungarian gallery, and I also have a series with my Barcelona gallery."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I have a feeling, whenever I go through one of your paintings, that you don’t enjoy only the result. You enjoy the process as much as the result. I can feel that it’s not forced, as you said. I can feel that every gesture was a pleasure and sincere. It’s so clear, like an open book, in a good way, and you enjoy it so much. I think it’s a pleasure to see that in artworks. Am I right?</b>"
+          "content": "They’re figures and faces where you can’t tell the sex. They’re like figures from fashion advertising, things I’ve seen on Instagram or social media. That affects me a lot, not directly, but somehow it goes into your brain, and I’m really interested in how it affects painting."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> You’re totally right. That’s really important, that’s the most important core of my work. Painting has a very powerful, big energy, and sometimes, no matter what is in the picture (of course it matters, because it’s selected), it isn’t a strong concept; the thing just comes through and describes itself. But on the other hand, if you look at my projects and exhibitions, all of them deal seriously with contemporary themes. The two balance each other."
+          "content": "I also have this older theme: most of my paintings come from lenses, phones and eyewear. I’m really interested in lenses, in how we see through these things. There’s a lot of meaning in that, but it’s also a compositional element in the new work."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So sometimes the work comes out of the work itself, out of your process?</b>"
+          "content": "<b>Maria Ivanova [MI]: I have a feeling, whenever I look through one of your paintings, that you enjoy not only the result but the process as much as the result. I can feel that it’s not forced, as you said. I can feel that every gesture was a pleasure and was sincere. It’s so clear, like an open book, in a good way, and you enjoy it so much. I think it’s a pleasure to see that in artworks. Am I right?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Absolutely. One word makes another, like walking into a labyrinth, with waves, and seeing pictures on the walls of the labyrinth, all together."
-        },
-        {
-          "type": "header",
-          "content": "The sneakers series",
-          "level": 3
+          "content": "<b>Adam Dora [AD]:</b> You’re totally right. That’s really important, the most important core of my work. Painting has a very powerful energy, and sometimes, no matter what is in the picture (of course it matters, because it’s selected), it isn’t a strong concept; the thing just comes through and describes itself."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s amazing. I want to focus on the series with sneakers and shoes. You decided to focus on this idea in college, during the pandemic, right? Can you tell me more about it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes. This was the first bigger series that caught the attention of collectors, galleries and museum exhibitions in Hungary. The concept was very plain. I was going out on the streets and there were fewer people, so you could easily see what was going on. Coming out of the metro, I started to notice these elements: in the empty streets, just a foot, a shoe. The shoe is a very important thing, because we connect to the ground through it, it keeps us safe, and it has a lot of meanings. At that time sneaker collecting was also starting to pop up and get into trends, which was interesting for me too. And I’ve always been fascinated by clothing: how we pack ourselves into clothes, like a package for our body. That has always been with me and is part of my work."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s nice. I like it.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Thank you so much. You can ask me anything, there are so many things I can tell you."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: About this project, or about everything?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I’d be happy to elaborate on every project. We can go through them right now."
-        },
-        {
-          "type": "header",
-          "content": "Fast Train to Happiness",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I really like this one, “Fast Train to Happiness”. Can you tell me more about it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Oh yes. This series was created in Barcelona in 2024, I think, and the exhibition was in 2025. There’s a nice text by Zita, the curator of the exhibition. These works are more about a Mediterranean landscape with fast food, in a very gastro way. I had a series of hamburgers. What I’ve always been interested in, and still am, is putting small, close-up elements into the canvases. That still comes from pop art, which has a heritage and a long history. So my work is pop in a way, but also very expressive, which is a different kind of sensitivity. I like to put different things together on the canvas. These works were meant to show super simple gestures or objects that you don’t expect in this kind of painting, you know how it’s made. So they’re unpredictable objects in a particular narrative. That’s what makes it special, I think. That was the core concept, but the whole project also tells a personal story about my vacation there, my eyes catching things along the beach. This work is about a beach, but also reflects a Picasso book cover, Mediterranean landscapes. This one is a glass and a towel, in a very abstract way. And this one, called “Residential Artist Back”, is from when I went there for an artist residency. I had so much stuff together in a corner of the studio before I left, and it was the last picture I made, a still life. The whole exhibition was about still life, reinterpreting it."
-        },
-        {
-          "type": "header",
-          "content": "Sensitivity, abstraction and music",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: You mentioned this sensitivity several times. I always wonder whether the sensitivity to the world and to colours can be developed, or whether it’s innate, something you’re born with.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t know, it’s not easy to say. You can learn colours, you can learn shapes, but how you touch them is your signature touch, like a sign. You can fake it, but it has to be personal; it’s the moment when you touch it."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I really like abstraction, I don’t know why, and I know many people don’t, because they can’t understand it. But I think the most important point of abstraction is not to understand but to feel. I think some people have the ability to understand these things and some don’t, and that’s not offensive, it’s just how they listen. I always draw a correlation between abstract art and classical, instrumental music. In instrumental music you don’t have a narrative, a story, words, and still everyone can resonate with it. With abstract art, instead of sounds we use colours, so we need a different part of the brain to interpret the expression, and not everybody can do that. So I was wondering whether it can be developed. Maybe you should be more open-minded and let it affect you. What do you think?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think you have to... I think it depends on the person. If you’re more imaginative, it could also be figurative or more concrete things. For example, I have a friend in Spain who makes very surrealistic, very detailed paintings. They also switch on your brain in an imaginative way, but you can see exactly what’s in the paintings, from real life. But yes, classical music, any music without lyrics, is very abstract. Actually all music is very abstract, but instrumental or classical especially. That’s why they most often go together with abstract art."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: You really like bold colours, I guess.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes."
-        },
-        {
-          "type": "header",
-          "content": "Childhood and inspiration",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: And I always wonder, I think we all come from childhood, not always, sometimes we get influences later. But can you remember if your childhood home was somehow packed with colours? Where do you get this sensitivity to colour? Maybe your mother or grandfather liked to dress up, and you were a child with this visual attachment to colours, and you developed it.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Maybe."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Yes?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t know. I’d need to research this, because I have a lot of memories and I can’t name only one thing. But I do have clear memories of walls and furniture and textiles. And it’s interesting to go back sometimes and see these objects from your childhood. I don’t really like to put everything on childhood memories and traumas, but it’s a fact."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s true. What was your biggest art inspiration? Maybe a Renaissance artist, or maybe an abstract one?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> There are many, but from the beginning there are some works that inspired me a lot, because I saw them as a kid. One was a Picasso painting with an ironing board, a very thin person ironing. I loved that composition: very curved, everything in a beautiful composition, stretching out the painting. There was also Titian’s portrait of a man, in the National Gallery in London, and some Matisse paintings, but that came later, when I was fifteen or sixteen. Matisse is my number-one inspiration, as he is for David Hockney. Later, in my university years, I was more into German expressionism and German figurative painting, and then contemporary German painters like Daniel Richter and, and Baselitz. That’s figurative abstraction, very gestural, very expressive painting. These references have a very similar approach to the painting: how to deal with the canvas, how to think about this borderline between abstract and figurative narrative."
-        },
-        {
-          "type": "header",
-          "content": "Confidence",
-          "level": 3
+          "content": "But on the other hand, if you look at my projects and exhibitions, all of them deal seriously with contemporary themes. The two balance each other."
         },
         {
           "type": "text",
@@ -26003,97 +25817,19 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think so too. Confidence is important in everything. It makes you serious, and it’s not only for other people, it’s for you too. If you’re confident in something, you can do it with the best energy and power. But in my personal opinion, you can only be confident in the right way if you’ve gone through many problems, or failures, and tried different strategies. For example, I’m confident about what I want to do and what I show as an artist, but in the studio there’s a lot of process all the time, and a lot of failure, though “failure” isn’t the best word. It’s trying out things, tests, a rhythm of experience. But if you’re confident in your goal, or rather your main path, the passion of your being as a human and as an artist, and you do it and you have this energy, it makes the work well, pulsating. You asked whether it’s necessary for all artists. I think it means a lot in life, but I don’t think it’s necessary for everyone, because there are so many people who maybe want to be artists but don’t want to show up. They like to stay in the background."
+          "content": "<b>Adam Dora [AD]:</b> I think so too. Confidence is important in everything. It makes you serious, and it’s not only for other people, but for yourself too. If you’re confident in something, you can do it with the best energy and power."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I was also asking whether you were always confident in your art, from the beginning, or whether it takes time to become as confident as you are now.</b>"
+          "content": "But in my personal opinion, you can only be confident in the right way if you’ve gone through many problems or failures and tried different strategies."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think I was always confident, but always questioning, and it’s the same now. They come together. You can be confident because you want to try and keep this rhythm going, but you should also be critical about yourself in order to grow. That’s important, because without it the work is done, and without critique there’s no more passion to do it. If you don’t have more questions or more interests..."
+          "content": "For example, I’m confident about what I want to do and what I show as an artist, but in the studio, there’s a lot of process all the time and a lot of failure, though “failure” isn’t the best word. It’s about trying things out, testing, a rhythm of experience."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Do you read critics of your artworks, or do you rely more on yourself and your own critique?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I really like to listen to what other people say, and it’s nice if someone gives a good compliment on the work, because it’s good feedback to continue, and you can feel it interests someone. But I think it’s also important, maybe more important, to get feedback that makes you think and creates a conversation, a critical approach, and I mean critical in the sense of starting a conversation about what’s happening. It gives a new perspective. With painting it’s very interesting, because you have a flat thing, and here is the artist, and if you stand in a museum in front of the painting, you stand exactly where the painter stood and you see the same vision. But if you stand somewhere else, you see the same picture, not from the best angle, and the whole picture can change, and it can make no sense. Then you have to flip the painting, or destroy it, or take another canvas. I’m saying this theoretically. That’s why I’m interested in pictures: it’s like having this kind of vision, but totally pure imagination, with no end. That’s very interesting."
-        },
-        {
-          "type": "header",
-          "content": "Museums, and advice to his younger self",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Thank you so much. What is your favourite museum so far?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I can’t name one. I’m very lucky to have travelled a lot in the last decade, and I’ve been in many nice museums, so it depends which city or country you ask."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Let’s say France.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> France? I really like the Centre Pompidou, I’ve been there many times. In Paris I also really like the Rodin Museum. It’s amazing, and the garden with the sculptures is beautiful. I like a lot of things, from many ages, even if it’s not visible in my work. When I go to a museum I love to go to many different places. And in France, if I can name something outside the capital, it’s the Picasso Museum in Antibes. It’s fantastic. And also a foundation in Antibes. I was there when it wasn’t open to the public like now, only by appointment, ten years ago or so. Now it’s open one or two times a week, so it’s easy to go. It’s very nice."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: What would you advise your younger self, from where you are now, when you started to pursue this career?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Maybe show less work."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Less work?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes. There are works I produced and exhibited somewhere that I now think it wasn’t necessary to show, or they weren’t finished. But I think it’s part of the game: you grow, you study, you learn yourself, your practice and your goals, and then you’d like to delete things from the past. But it’s also you, so I’m fine with it. Or maybe the other advice is to learn something else as well. I like it when people who studied architecture, interior design or any kind of design turn that into art with those skills. I’m mostly talking about skills. For example, one of my friends is a sculptor, but he had a past in ceramics and interior design, and a lot of it is knowledge of techniques and materials. Sometimes I feel that, for example, to make sculptures I don’t have the technical skills. I can hire people, or I can start studying now, but it’s different from learning as a kid."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So your advice is to be more diverse in your practice and to learn more, because it will help.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes, but I can’t say it 100%, because the people I know tell me the opposite: that they’re focused on one thing, and that it’s good for me that I’m focused on one thing. And that’s not entirely true either, because I worked in fashion and I have experience with other things."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Can we talk a bit about your background? How did you work in fashion? When was it? How did it affect you?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It was only part-time during the university years, working in a store, so nothing special. But I was more into the visual side, and I was very into menswear, the classic kind, and materials, and I did workshops for my colleagues. So it’s basic, but it was a long journey, so I have knowledge of it."
-        },
-        {
-          "type": "header",
-          "content": "Art, AI and NFTs",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Do you think art has a function, or doesn’t it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think it does. Everything has a function in a way."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: And what function can you imagine for art?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s not a rusty old function. Imagine life without colours, without shapes, without telling stories with them; or imagine your life without reading or listening to music. It’s not just about visual arts; it has always been a part of being human. It’s like little caves of wonder. Without it, it’s impossible. And if you look at art history, art often came before technological invention, it was more visionary. Nowadays that’s changed, because we know so much, and with AI it’s changing. But maybe that is also an answer, or maybe another question, I don’t know. That’s why the human gesture and this kind of human sensitivity are very, very important. And that’s why I believe in the painting practice I’m doing. AI is nice for things, and I’m not against it, we can use it for many things. But this is a territory that has to stay alive."
+          "content": "But if you’re confident in your goal, or rather, your main path — the passion of your being as a human and as an artist — and you follow it with this energy, it makes the work come alive, makes it pulsate."
         },
         {
           "type": "text",
@@ -26101,92 +25837,19 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> A lot. A lot of artists use it, and I use it to search for things. If I have a question about a topic, or want to look up something in art history, I use Google or anything. Everything is integrating. I’m not against it, because it helps a lot and saves a lot of time. But I don’t use it to generate pictures. I hate that, I think it’s terrible, maybe it will get better later. But what I’m searching for in pictures is impossible to replicate with AI. If it were possible, my practice would be over, but I truly believe it isn’t. Where it comes from, what it’s for, what the goal of the work is: that’s not possible with an algorithm. It isn’t human, and it lacks the randomness a human brain has. I’m not a professional in this, but I believe it."
+          "content": "<b>Adam Dora [AD]:</b> A lot. A lot of artists use it, and I use it to search for things. If I have a question about a topic or want to look something up in art history, I use Google or whatever else is available. Everything is becoming integrated."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How do you feel about AI-generated art? Some artists use AI as a medium. What do you think about it?</b>"
+          "content": "I’m not against it, because it helps a lot and saves a lot of time. But I don’t use it to generate pictures. I hate that. I think it’s terrible, although maybe it will get better in the future."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I’m not interested at all. I don’t want to say I hate it, because maybe I’ve seen some that looks great. But I’m not interested, because what I’m searching for in an art piece or an object isn’t there. It’s the same with NFTs. When NFTs started, many people asked me to make them, and I didn’t give a damn about it. Even the whole system, everything connected to it, I’m not interested in for a single minute. What I’m interested in is touching things, having this human connection with a piece of wood or a piece of textile, applying paint, having that sense. Dealing with time and the sustainability of materials and personal energies. That’s it."
-        },
-        {
-          "type": "header",
-          "content": "The contemporary art scene",
-          "level": 3
+          "content": "But what I’m searching for in pictures is impossible to replicate with AI. If it were possible, my practice would be over, but I truly believe it isn’t."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Thank you. How do you see the contemporary art scene right now? How do you think it will be described in fifteen or sixteen years?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think it’s diverse. There are so many artists in the world, almost everyone is an artist somehow, with social media, and there’s a thin line between a professional artist and other people who are artists. I don’t think that’s a problem, but it isn’t easy to decide what is serious and what isn’t. In contemporary art there are so many decorative things, so many critical things, and works somewhere in between. It’s also still a big business, for washing money and things like that. There’s a lot going on in the art world, but there are still many nice, amazing young artists coming up."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I asked because in my country, about a month ago, we had an art fair. More than a hundred galleries took part, and there was even Vincenzo De Cotiis furniture. Do you know Vincenzo De Cotiis? He’s a designer from Italy.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think I know him."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Yes, he’s very famous, he works together with his wife. Even their furniture was there. And after the fair, a lot of critics wrote about the safety of art, that Russian artists play it safe and try to please the audience, because they’re trying to sell, and don’t want to challenge it. But honestly, I think it’s different from other countries. I’ve researched a lot about art, and many artists challenge the audience. It isn’t their goal to change the audience; it’s what they do, what they find critical right now, and they work on it. Do you have any thoughts about this?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes, it’s a very specific question, because you can’t really say something about the world in general, especially about art, and especially now. I think it’s more diverse than ever. There were many artists in different eras, but not as many as now."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: What do you think is the difference between professional and non-professional artists?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> That’s an interesting question. I think professional artists go with a concept, they know the context, they know what they want to achieve with it. And they can always keep a standard quality in everything. The unprofessional artist is more like “I’m expressing myself.”"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Decorative?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Not just decorative, because decorative art can be very professional. There are many decorative artists, and they’re professional: if they get an order for hundreds of pieces, they can deliver the same quality across hundreds. That’s decorative art done professionally. I’m not a decorator, but it’s no shame. I know decorators, and it’s a nice job, just at another scale. They’re not unprofessional. You know that sentence, “I’m doing art because I want to express myself”? That’s the worst sentence I could hear about art, even outside art. Expressing yourself, what is that? You don’t have to express yourself, it’s not about that. And when I hear it in an interview from someone who’s a professional artist, I think: man, that’s not true, you’re doing serious work, and it isn’t self-expression."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So why do you do it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Because I have questions. There are many things I’m fascinated by, and I can’t live without searching for answers, and creating decisions to show them, in such a way that I’m inside a created world."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: But don’t you think that answering your questions with art, elaborating on these questions, is an expression of yourself?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No. These questions are not about my personal problems. If you experience something and answer something, or find a resolution, you express something that’s part of a collective thing, and it isn’t just for yourself. It’s not a selfish thing. Another matter is that you can see in a picture, or a painting, that it was created with passion, or fun, or playful elements, however you feel it. It’s nice to see that the creator enjoyed that moment. It’s the same in design, or if you go to a restaurant: you can feel that whoever created it enjoyed making it. But whether that makes something professional is another question. I’m trying to explain it in English."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: No, it’s more than okay. How long have we been recording?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think about 51 minutes."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Wow, that’s so long.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think I can go through some more, you can ask."
+          "content": "Where it comes from, what it’s for, what the goal of the work is — that’s not something an algorithm can achieve. It isn’t human, and it lacks the randomness of the human brain. I’m not an expert in this field, but that’s what I believe."
         },
         {
           "type": "header",
@@ -26195,195 +25858,97 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Is this your apartment?</b>"
+          "content": "<b>Adam Dora [AD]:</b> This is my Hungarian gallery, and this was my last solo show, <i>Personal Belongings</i>. The exhibition is about a fitness club, in an abstract way."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No, this is my gallery, but it looks totally the same. I’ll show you my apartment later. This is my Hungarian gallery, and this was my last solo show, “Personal Belongings”. The exhibition is about a fitness club, in an abstract way. Before it I had these food elements, landscape, and still-life elements with little things, and I started to realize the same scenarios in the gym and became fascinated with them. A fitness club is a special place, with an atmosphere that exists only there: the furniture, the colours, the lights, the iron things, the plastic things. It’s an abstraction. I imagined some of the places, but also things I saw, and my brain turned them into a picture. I really liked that the exhibition space matched the interior, the colours matched. The show was about an imaginary story of a man alone, who worked out, and it appears in the painting. There are no figures, no other humans in the pictures, just scenarios of objects. This is the most abstract work, just iron pieces, and the only figurative work is the AirPods. It’s also playing with the measurements of small and big things. I’m really interested in how you can feel space and put it into a flat thing. That’s always part of the painting."
+          "content": "Before this, I had been working with food elements, landscapes and still-life elements with small objects. Then I started noticing similar scenarios in the gym and became fascinated by them."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Do you think artists should provide a description for every painting?</b>"
+          "content": "A fitness club is a special place, with an atmosphere that exists only there: the furniture, the colours, the lights, the iron objects, the plastic objects. It’s an abstraction. I imagined some of these places, but also incorporated things I had seen, and my brain turned them into pictures."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No, not at all. I like to talk about it, but it’s just an addition to the works."
+          "content": "I really liked how the exhibition space matched the interior and how the colours worked together."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: And for titles? How do you create titles for a work?</b>"
+          "content": "The show was about the imaginary story of a man alone, working out, which is reflected in the paintings. There are no figures, no other people in the pictures, just scenarios made up of objects."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Simply: I sit, see it and say something. But I’m not a good title-giver. I don’t think it’s that important."
+          "content": "This is the most abstract work, consisting only of pieces of iron, and the only figurative work is the AirPods."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: What do you think?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Not very much. If it gives another meaning to the context, it’s nice. But what I do isn’t necessary, because I like to keep an open context. If you see a painting, maybe your first impression isn’t that it’s about a gym. But you can get into it and realize some elements that connect to it."
+          "content": "It’s also about playing with the proportions of small and big things. I’m really interested in how you can experience space and translate it into something flat. That’s always part of painting."
         },
         {
           "type": "header",
-          "content": "I Paint What I Want to See",
+          "content": "I Paint What I Don’t Want to See",
           "level": 3
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Can we talk about this one? “I Paint What I Don’t Want to See”, I know the press release is everywhere, but I want to hear it from you.</b>"
+          "content": "<b>Maria Ivanova [MI]: Can we talk about <i>I Paint What I Don’t Want to See</i>?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes, this was in Barcelona, in Gràcia. I had a summer residency program and I created this exhibition line. The concept: I read a book about Philip Guston, “I Paint What I Want to See”, and that was the main concept and the title of the book. After the abstract part of his life, he started making figurative things, imaginary but around an artist, the studio and so on. This was before the gym series; it’s where it started. I was cooking, and for example this painting came from mixing colours on the palette while I was also making food, and I realized the whole thing was one. I’m always making sauces and sticks, fries or something, always mixing things in colours, and it’s connected. The cloud is a playful thing, fluffy, like making dough in the kitchen. So it’s much more about the kitchen experience. And it’s nice, because a collector placed it in the dining room, so it’s fantastic with the atmosphere. I have a photo somewhere."
+          "content": "<b>Adam Dora [AD]:</b> Yes, this was in Barcelona, in Gràcia. I had a summer residency programme, and I developed this series of works for the exhibition."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So you connected several canvases here?</b>"
+          "content": "The concept came from a book about Philip Guston, <i>I Paint What I Want to See</i>. That was the main concept and the title of the book. After the abstract period of his life, he started making figurative works, imaginary scenes centred around an artist, the studio and so on."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes, he has four of them in these sizes, like the size of a table. I have bigger ones too. It’s about composition."
+          "content": "This was before the gym series; it’s where it all started."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Is it your first time combining them?</b>"
+          "content": "I was cooking, and, for example, this painting came from mixing colours on the palette while I was also preparing food. I realised that the whole thing was connected. I’m always making sauces, cutting things into sticks, making fries or something like that, constantly mixing things and colours. It’s all connected."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Not really, but this exhibition was more about medium-size and smaller pieces, so it was more airy."
+          "content": "The cloud is a playful element, fluffy, like making dough in the kitchen. So it’s much more about the experience of being in the kitchen."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Was the concept of the exhibition curated by you or by a curator?</b>"
+          "content": "<b>Maria Ivanova [MI]: And again, we see the AirPods here. I really like it. Not everyone can understand abstraction, but when they find an element they can relate to, they become fascinated by the whole artwork. It’s kind of a hook for them.</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> With the curator, the title too. We had a long conversation, and my first idea was to call it “Side Effect”, because there are so many meanings: how this scenario goes on in the studio and the kitchen, but also in the painting. Every exact element has a side effect. Then we started to talk, this book came into the conversation, and we landed on this title."
+          "content": "<b>Adam Dora [AD]:</b> Absolutely. And I put it there because it’s not about including an exact product in the work. Some older people, or even young people, might not recognise this product. It’s purely compositional."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: And again we see the AirPods here. I really like it. I was discussing some of your works with a friend and he was so fascinated by these AirPods, because not everyone can get abstraction, but when they find one element they can comprehend, they start to be fascinated by the whole artwork. It’s kind of a hook for them.</b>"
+          "content": "When I started painting it, I had seen this object on my table and thought: that’s nice, because I need something round like this — four circles, two white and two black. It’s abstract thinking within a picture."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Absolutely. And I put it like this because it isn’t about putting an exact product in the work. For example, some older people, or even some young people, don’t know this product. It’s just compositional. When I started to paint it, I’d seen this object on my table, and I thought: that’s nice, because I need something round like this, four rounds, two white and two black. It’s abstract thinking in a picture. Then your brain connects it to another product, so it also reflects how I think while making an abstract painterly language, but a brain washed by commercials goes in a commercial direction. It was the same with the hamburgers. I was building a tower of colours and shapes, and it’s an abstract painting, but seen the other way it’s a giant hamburger. You go close and it feels very powerful and intense. One of them is still with me. It hangs at the entrance of my house, where there’s a narrow space and a bigger place for a big table, and I put it in a very tiny, narrow hall, on the whole wall, two metres by 180 or so. This enormous burger. It changes how you approach the space: if you walk through, you see just gastro-abstraction, but if you sit at the table you can see a bird. Two opposites. I have a photograph."
+          "content": "Then your brain connects it to another product. So it also reflects how I think when creating an abstract painterly language, while a brain conditioned by commercials goes in a commercial direction."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s amazing, honestly. I really like how you think in an abstract way and then it turns into a creative part.</b>"
+          "content": "It was the same with the hamburgers. I was building a tower of colours and shapes. It’s an abstract painting, but seen from another perspective, it’s a giant hamburger. When you get close, it feels very powerful and intense."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Sometimes it surprises me too, because I don’t know how it works. I mean, I know how it works, it’s very natural for me, but you can’t control it. The concept and everything I do control a lot; you can see the works are very interlaced and follow a conceptual line, the way you think, the way things come into a line. This is a bar, this is the entrance and the narrow space, and this is my favourite one. This is my studio in Hungary."
+          "content": "One of them is still with me. It hangs at the entrance to my house, where there’s a narrow space leading into a larger area with a big table. I placed it in a very narrow hallway, covering the whole wall — about two metres by 180 centimetres. This enormous burger."
+        },
+        {
+          "type": "text",
+          "content": "It changes how you approach the space: when you walk through, you see just gastro-abstraction, but when you sit at the table, you can see a bird. Two opposites."
         },
         {
           "type": "header",
-          "content": "Collecting, and artist friends",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I wanted to ask you before: are there any canvases you don’t want to sell?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Of course. Many of them. But now I’ve started not to show them. In every series there are some that I want to keep for myself. I have a lot of collectors and I work with galleries. I’ve lived only from this for five years, and it works well. But it always happens, only with the big stars, that they want to buy up the whole series. So I have a series, and my favourite ones I don’t show to collectors, and they stay with me. So I have my own collection, and also a collection of other artists. I have maybe fifty or sixty paintings, some photographs, some little sculptures. I started an Instagram for it."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Really?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes, it’s the Wet Paint Collection. It’s just started."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So it’s everything you buy, not the whole collection?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I bought some and exchanged some, some Spanish ones."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Yes, with other artists.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> With friends, with friends, yes."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I’ve never thought about it from this perspective, because I’m not an artist and I have nothing to do with it. I really like this one.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Thanks."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How do you know you want to buy an artwork? Is it just a feeling?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s a feeling. Most of them I got or exchanged, some I bought. This is one of my favourites. This guy is very talented, but he’s doing so many things."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: These ones are amazing. What country is he from?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> He’s Hungarian. We were at the same university. But to be honest, my problem with him is that he’s so chaotic, a classic crazy artist. I’m always telling him: damn it, you have to be focused, you’re super talented, but he’s always wandering and not focused at all. I think I have the best painting of his in the world. I’m always telling him, and always showing it to other collectors. But the problem is that he’s…"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Not consistent?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No. And the big collectors want to see consistency, and a vision going forward. It’s not easy for him, but I’m crossing my fingers. I’m always telling him to keep going."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: So good.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Can I…?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Of course, thank you. I have to go to the bathroom, do you want to eat something or have something more?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: No, thank you. Go if you want.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> No, I have lunch. Check it, and I’ll come back in a minute."
-        },
-        {
-          "type": "quote",
-          "content": "These questions are not about my personal problems. It’s not a selfish thing.",
-          "caption": "Adam Dora"
-        },
-        {
-          "type": "header",
-          "content": "<span class=\"kicker\">Part II</span>The second conversation",
+          "content": "<span class=\"kicker\">Part II</span>The cities",
           "level": 2
         },
         {
           "type": "text",
-          "content": "<span class=\"dek\">Favourite places, residencies, discipline and rest, a checklist for artists, and why a work has to stand on its own.</span>"
+          "content": "<span class=\"dek\">Favourite places, discipline, a checklist for artists, and looking back.</span>"
         },
         {
           "type": "header",
@@ -26392,23 +25957,23 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I would like to ask you about your favourite places in different cities. Let’s start with your hometown. What is your favourite place there? It doesn’t have to be related to art; maybe it’s just a street, or a café, anything that comes to mind.</b>"
+          "content": "<b>Maria Ivanova [MI]: I would like to ask you about your favourite places in different cities. Let’s start with your hometown. What’s your favourite place there? It doesn’t have to be related to art; anything that comes to mind.</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I’ll start with a special place that isn’t really connected to art, maybe only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there nearly every week, or every two weeks when I’m in Hungary. It’s a historical bath, built when the Turks were in Hungary, and it still has some of the original walls and the original roof. I love it because it’s beautiful, and the mineral water comes up from under the hills."
+          "content": "<b>Adam Dora [AD]:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I also like the Museum of Fine Arts, which everyone connected to art has to visit. I don’t know many coffee shops and restaurants to recommend, but I could recommend contemporary galleries."
+          "content": "It’s a historic bath, built when the Turks were in Hungary, and it still has some of its original walls and roof. I love it because it’s beautiful, and the mineral water comes up from beneath the hills."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Please do, we want to include everything. You’re a local there, and we are thinking of a focus on travel, so that travelling isn’t a boring thing.</b>"
+          "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Sure. There are two favourites that I also work with: Heart and Cherry and Spagh Fine Art and Photography. I’ll write it down for you. There are also some great galleries, like Erica and a vintage one. These are really nice galleries. That’s Budapest. Ask me about other cities."
+          "content": "There are also some great galleries, like Erica, and a vintage gallery."
         },
         {
           "type": "header",
@@ -26421,140 +25986,74 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Well, in Barcelona I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery. They put on exhibitions for the artists living in the house, and they have a huge collection too: they started collecting artists back in the eighties and nineties. It’s amazing to be part of that community."
+          "content": "<b>Adam Dora [AD]:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> What I would really recommend in Barcelona is the Picasso Museum and the Miró Foundation on Montjuïc. It’s amazing, and so beautiful. For design lovers I would recommend the Side Gallery. It’s a very extraordinary space focused on collectible design and unique experiences. Louise, the owner, once gave a tour to a friend and me. It’s a huge, quite industrial space with beautiful plants, and they organise very nice permanent exhibitions of collectible design. They sell things too, so it’s really nice."
+          "content": "They organise exhibitions featuring the artists who live there, and they also have a huge collection. They started collecting works by artists back in the eighties and nineties. It’s amazing to be part of that community."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Among contemporary galleries, the one I work with is of course number one for me. It’s a growing gallery with two spaces, one in Trafalgar and one in Hospitalet. It’s really cool. And some other galleries: Majoral, Alzueta, Sanda. These are really nice galleries."
+          "content": "What I would really recommend in Barcelona is the Picasso Museum and the Miró Foundation on Montjuïc. It’s amazing and so beautiful."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Thank you so much. Is there another city you would like to point out? I know you travel so much.</b>"
+          "content": "For design lovers, I would recommend Side Gallery. It’s a very extraordinary space, focused on collectible design and unique experiences."
+        },
+        {
+          "type": "text",
+          "content": "Among contemporary galleries, the one I work with is, of course, number one for me. It’s a growing gallery with two spaces, one in Trafalgar and one in L’Hospitalet. It’s really cool."
+        },
+        {
+          "type": "text",
+          "content": "And some other galleries: Majoral, Alzueta and Sanda. These are really nice galleries."
         },
         {
           "type": "header",
-          "content": "New York and the collector’s foundation",
+          "content": "Discipline",
           "level": 3
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> This year I had the chance to go to New York on an invitation from one of my collectors. In New York I would first recommend MoMA, with such a nice collection. The Whitney Museum of American Art is really nice too. And if you want to learn about human culture and have a bigger perspective on it, you have to go to the Met, for a minimum of three or four days. You should plan a week for the Met."
+          "content": "<b>Maria Ivanova [MI]: Do you ever have periods when you lack inspiration or don’t feel like working?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How many days were you there?</b>"
+          "content": "<b>Adam Dora [AD]:</b> Of course, everyone does. I travel, but inspiration is something you cannot expect. I think it comes when you work."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Three weeks, I think. It was a short residency, but without a studio, so more of a study trip. I would like to extend it with a studio, and I’m actually applying now for a studio grant, a funded residency. Fingers crossed."
+          "content": "If you work as a professional artist, you work continuously, and I like to work continuously. If I’m in the studio and I find my rhythm, it works. Sometimes there are ups and downs, of course. I don’t have the same energy level all the time, but you can train it."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Can you tell me more about this tour? Who takes artists to other cities?</b>"
+          "content": "It’s very similar to being a professional athlete. Sport and art are very different, but the discipline of training yourself to work in any mood is the same."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It was organised by a collector. I have a lot of collectors, but one of them sometimes buys and has a foundation. The foundation offers this programme: they invite some artists chosen from the collection to New York, and sometimes to Buffalo, to have an experience in the US. It’s a short residency, usually two weeks to one month, for artists who want to explore the culture, go to museums, see other artists’ galleries, the whole art scene and the heritage over there. It’s really nice."
+          "content": "Someone preparing for the Olympic Games has to focus on many things, and not every training day is the same: sometimes you have more energy, sometimes you’re more exhausted. But if you know your goal and keep following that path, then in the long term, you’re moving upwards."
+        },
+        {
+          "type": "quote",
+          "content": "Inspiration is something you cannot expect. I think it comes when you work.",
+          "caption": "Adam Dora"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That’s great. Where else have you been with these tours?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Only New York with this one."
+          "content": "That’s my vision of life, not only of art."
         },
         {
           "type": "header",
-          "content": "Residencies",
+          "content": "Advice for young artists",
           "level": 3
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> But I have attended some artist residencies in my life. My favourite is the Barcelona one, and I go back there every summer. I was also invited once through a prize: I was nominated and shortlisted for the Strabag prize. You may know the company; it’s a huge construction company that builds big infrastructure. They have an art prize, they nominated me, and then invited me to the Austrian countryside, among the hills. It was much more of a hideaway for artists: you are almost alone with a few other people, and the whole village is two or three streets."
+          "content": "<b>Maria Ivanova [MI]: If I asked you to make a checklist for artists, what should an artist have?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: That sounds nice.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Yes. It’s much more of an inner thing."
-        },
-        {
-          "type": "header",
-          "content": "Inspiration, discipline and the privilege of being an artist",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Do you have times when you don’t have inspiration, or you don’t work?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Of course, everyone has. I travel, but inspiration is a thing you cannot expect. I think it comes when you work. There are ups and downs, but it’s not about being without inspiration. If you work as a professional artist, you work continuously, and I like to work continuously. If I’m in the studio and I feel the rhythm, it works. Sometimes there are ups and downs, of course; I don’t have the same energy level all the time. But you can train it. It’s very similar to a professional in sport. Sport and art are so different, but the discipline of training yourself to work in any mood is the same. Someone preparing for the Olympic Games has to focus on many things, and not every training day is the same: sometimes you have more energy, sometimes you are more exhausted. But if you know the goal and you go along that path, then in the long term it’s going up. That’s my vision of life, not only of art."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I agree totally. I think you are the same: I don’t want to work for anyone, because, as you said, in that circle you can’t grow. You just have to take a risk and go on your own, because the sky is the limit. You only have to be disciplined and work.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Absolutely. When you have self-control and you achieve something through self-control, not through restrictions and deadlines, it’s a different type of achievement. With every achievement you become stronger and have more reasons to go further."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I haven’t achieved anything yet, but I agree. Do you give deadlines to yourself?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think it’s necessary. Otherwise it’s too blurred and a mess, chaotic."
-        },
-        {
-          "type": "header",
-          "content": "Rest, research and structure",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> But it’s also part of the passion to learn how to rest. We are talking about an artistic practice, which is a little outside the system, but sometimes going to rest helps. That’s why I told you about the bath: when I go to the sauna or swimming, it’s a kind of recharging, and the work benefits from it later, not only my body and mind but the work itself. It clears your mind and your eye, and then when I mix a colour or make a gesture it’s fresher, with another point of view. You have to integrate rest."
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> But sometimes it happens that it’s midnight on Saturday, I’m in bed, and I’m still searching the internet for something that clicks in my mind and connects to the paintings I’m working on."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: What kind of research have you done recently for your artworks?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Art-historical backgrounds, for example, paintings I saw, or some objects that I want to look up. Sometimes it feels like useless information, but it isn’t. It’s not directly usable, but it’s enriching. In art it’s not black and white. For the kind of work I’m doing, it gives a wider and more open-minded vision."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I really like how structured you are, and your perspective on life. Have you always been like this, or did you develop it?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I think I was always like this. I never read a book about how to be structured. It’s not how it came to me. It’s not the way someone goes to business school and learns it, which is nice, because some jobs and life paths need it. As an artist you have to have it from an inner path, I guess."
-        },
-        {
-          "type": "header",
-          "content": "A checklist for artists",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: If I ask you to make a checklist for artists, what should an artist have?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Curiosity. That’s number one. Then work consistently on your practice, number two."
+          "content": "<b>Adam Dora [AD]:</b> Curiosity. That’s number one. Then, number two, work consistently on your practice."
         },
         {
           "type": "text",
@@ -26562,182 +26061,96 @@
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> To be honest, it’s very important that the artworks resonate with you, that they fit your practice. Otherwise at a certain point you start following trends, and that can collapse when it’s not coming from a true source. Even if there is a lot of fake in the world, I think it’s important, like karma: you have to be honest with yourself and with everyone else. It’s not just what we say to each other, it’s also what we do, and an artwork has to be honest too. That opens very good possibilities in life. I have experience with this: when you listen to yourself, it’s the only thing you can do. I’m telling you this as a young person, and let’s see in twenty years. I hope nothing will change and I’ll feel the same. It’s nice to change sometimes, but not in this."
+          "content": "<b>Adam Dora [AD]:</b> To be honest, it’s very important that the artworks resonate with you and fit your practice. Otherwise, at a certain point, you start following trends, and that can collapse when it’s not coming from a genuine source."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s connected to honesty that you make the kind of art that fits your way of thinking, and choose the right medium. I know very good artists, among my friends and people I like, and it affects a lot whether they choose the right medium for their work. That’s why it’s nice that artists communicate with each other, because we can help each other with this. Some people have a very nice concept but don’t choose a good medium for it, and the concept doesn’t reach the audience. It can also be the opposite: a very nice medium, but the concept is not that strong. In visual arts, the piece has to have an immediate impact on you. Otherwise it’s not visual art. What is it, then? Bad visual art, or not well constructed."
+          "content": "Even if there’s a lot of fakeness in the world, I think it’s important, like karma, to be honest with yourself and with everyone else. It’s not just about what we say to each other, but also what we do. An artwork has to be honest too. That opens up very good possibilities in life."
+        },
+        {
+          "type": "text",
+          "content": "I have experience with this: listening to yourself is the only thing you can do. I’m telling you this as a young person, and let’s see where I am in twenty years. I hope nothing will change and I’ll feel the same. It’s nice to change sometimes, but not in this respect."
+        },
+        {
+          "type": "text",
+          "content": "<b>Adam Dora [AD]:</b> It’s also connected to honesty that you make the kind of art that fits your way of thinking and choose the right medium. I know very good artists, among my friends and people whose work I like, and the choice of the right medium makes a big difference in their work."
+        },
+        {
+          "type": "text",
+          "content": "That’s why it’s nice for artists to communicate with each other, because we can help each other with this. Some people have a very nice concept but don’t choose the right medium for it, so the concept doesn’t reach the audience. It can also be the opposite: a very nice medium, but the concept isn’t that strong."
+        },
+        {
+          "type": "text",
+          "content": "In visual arts, a piece has to have an immediate impact on you. Otherwise, it’s not visual art. What is it, then? Bad visual art, or something that isn’t well constructed."
+        },
+        {
+          "type": "text",
+          "content": "<b>Adam Dora [AD]:</b> If you want to add one more item to that checklist, I would say this: it has to stand on its own. Even if it’s the most conceptual thing ever, it has to stand on its own."
+        },
+        {
+          "type": "text",
+          "content": "It could be a very simple object or an empty space, but it has to have an aura that gives you something through its visual vocabulary, without the artist being present and without any text."
+        },
+        {
+          "type": "text",
+          "content": "If you need text to create that impact, then, I mean, additional elements are very important, and I love theory very much, but the work has to stand without them. If it doesn’t, I think it’s not good art."
+        },
+        {
+          "type": "quote",
+          "content": "Even if it’s the most conceptual thing ever, it has to stand on its own.",
+          "caption": "Adam Dora"
+        },
+        {
+          "type": "text",
+          "content": "<b>Adam Dora [AD]:</b> If you go back through art history and look at the conceptual classics, from Joseph Kosuth to Beuys and Kiefer, up to contemporary artists, all of them have this energy without the text."
+        },
+        {
+          "type": "text",
+          "content": "Maybe you need the text to understand the context, the historical background, the cultural story or the references. But if, without it, the work doesn’t look like an artwork, that’s a problem."
         },
         {
           "type": "header",
-          "content": "Medium, concept and impact",
+          "content": "Looking back",
           "level": 3
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How can you understand that the medium is right and the concept is conveyed in a good way?</b>"
+          "content": "<b>Maria Ivanova [MI]: What’s your favourite museum? Let’s say in France.</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s practice. A lot of practice and experience."
+          "content": "<b>Adam Dora [AD]:</b> France? I really like the Centre Pompidou. I’ve been there many times. In Paris, I also really like the Rodin Museum. It’s amazing, and the sculpture garden is beautiful."
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: How would you give feedback to a friend when you see that the concept isn’t transferred to the audience correctly?</b>"
+          "content": "If I can name somewhere outside the capital, it’s the Picasso Museum in Antibes. It’s fantastic. And there’s also a foundation in Antibes. I went there about ten years ago, when it wasn’t open to the public as it is now and visits were by appointment only. Now it’s open once or twice a week, so it’s easier to visit. It’s very nice."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> For example, I talk with someone and I see they have a very nice concept, quotes and ideas, but I can’t see this in the objects, or the objects aren’t consistent with each other. There are some very nice conceptual artists I know where, if I don’t read the text, and I see an object somewhere, I can’t connect it with the same person: one work is of one type, the next could have been made by a totally different person in a totally different part of the world. Okay, the concept is great, but I don’t get it. It’s about how you communicate as an artist. As a visual artist, whether painter, sculptor or anything else, you communicate with visual elements: colours, shapes, textures, measurements, sizes, how you put something into a space. That’s what the exhibition we saw was about."
+          "content": "<b>Maria Ivanova [MI]: What advice would you give your younger self, looking back from where you are now, when you were just starting to pursue this career?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: When you see a whole exhibition, do you try to dig into the concept, or do you just explore it and interpret it as you can?</b>"
+          "content": "<b>Adam Dora [AD]:</b> Maybe show less work."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It depends on the project. For me, when I start a new series, a new concept or a new perspective, I start with tests: material tests, colour tests, something experimental. Then you find something and start to make more of it, and that becomes the production part of the work. I enjoy the production. It isn’t production like in a factory, but production of making objects. Painting has this part too: when you make it as an object, it’s a flat object, but I like that it has a body. It’s really important which kind of wood or frame or textile you use, and which type of paint. I like that."
-        },
-        {
-          "type": "header",
-          "content": "Conceptual art and the artist’s personality",
-          "level": 3
+          "content": "<b>Maria Ivanova [MI]: Less work?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I wanted to ask how you perceive the contemporary art exhibitions you visit. You see the exhibition, but the artists don’t really explain the concept. Maybe they explain it at the opening, but most of the time conceptual artists leave things unanswered and unsaid. Do you always understand conceptual art?</b>"
+          "content": "<b>Adam Dora [AD]:</b> Yes. There are works I produced and exhibited that I now think didn’t need to be shown, or simply weren’t finished. But I think it’s part of the game: you grow, you study, you learn about yourself, your practice and your goals, and then you’d like to delete things from the past. But they’re also part of you, so I’m fine with it."
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t always understand everything. But if you don’t understand everything, you don’t have to."
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Something else I want to say: to make this kind of work, paintings that are big and very material, I have to be connected with my body. I always try to put into the works how I feel in my body, the connection between the object, the material and my body while the process is going on. That’s why I’m unhappy that I’ve skipped training and stretching for a week now. I love training and stretching."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Can you paint in a bad mood?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Of course. Maybe it has an impact on the art, like things that you try to hide. Some artists don’t want to hide it; some have the concept of showing the mood of what happens to them. For myself, my mood and what’s in my soul isn’t very interesting. I think those personal things aren’t very interesting for others. What I told you about, the sensitivity, how I treat the material and how I touch it, I think that’s more interesting. But it’s just my point of view. When I go to an exhibition I don’t really care what the artist’s mood is, and sometimes I don’t even care who made it. Sometimes it’s interesting, of course, if you have a personal connection. But in a museum, when you don’t know the artist personally, I just want to see objects that affect me and drive me somewhere."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: For me it’s a bit different. To understand art better I always need to go as deep as possible. I read all the interviews and the quotations, and find everything the person likes. When I see an artwork and I don’t know much about the artist, part of the work is missing for me. But I know there are two different perspectives: some artists want to be present in their work, and some want to detach themselves from it. They say, my work is not me, so you don’t need to look at me, perceive me or feel me in there, because it’s a different object.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I’m more like that. But I have a question. If you see my artworks, and you were also curious about me and the process, what do you feel about my works now that you know me a bit? Is it different from your first perspective?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: No, it’s not different. It matches completely.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Really?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Yes. Sometimes the artworks and the artists are different, and that’s not strange, but it means you haven’t seen something in the artwork, because the person who created it had something else in mind, or they are different people. With you and your personality and your artworks, after knowing you for some time your artworks became much brighter, and now I can perceive them more extensively. But even without knowing you, just looking at the artworks, it’s the same energy.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Is it a good one?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: It’s a very good one.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> That’s important, because I cannot meet everyone, and I don’t want to meet everyone. I want to put it into the works. That’s my job."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: It means they’re honest.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Thank you, it’s a really nice compliment. Do you think meeting me gives a plus, or doesn’t it matter? Do you have to meet me and talk about the works, or do they stand on their own?"
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: They stand on their own, a hundred percent. Two hundred percent.</b>"
-        },
-        {
-          "type": "header",
-          "content": "Does a work stand on its own",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> If you want one more item for that checklist, I would say this: it has to stand on its own. Even if it’s the most conceptual thing ever, it has to stand on its own. It could be a very simple object or an empty space, but it has to have an aura that gives you something through the visual vocabulary, without the artist and without any text. If you need text to give that impact, then, I mean, the additional things are very important and I love theory very much, but the work has to stand without it. If it doesn’t, I think it’s not good art."
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> If you go back through art history and look at the conceptual classics, from Joseph Kosuth to Beuys and Kiefer, up to the contemporary ones, all of them have this energy without the text. Maybe you need the text to get the context, the historical background, the cultural story or the references. But without it, if it doesn’t look like an artwork, that’s a problem."
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> My master at the university, now an avant-garde conceptual master of Hungary, always said that something that looks like trash is trash. There was a problem at the university: a cleaning lady would come and throw away things that were trash, but someone thought they were an artwork and wanted it accepted as one. He said that if the audience thinks it has to go in the trash, it’s trash. It’s strange; I think it was a little anarchist, a bit of punching at the students. But I agree with this. Sorry to talk so much."
-        },
-        {
-          "type": "header",
-          "content": "A break: food, cooking and a walk to a café",
-          "level": 3
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Now that I’m on track, I’m starting to get tired. Maybe we can have another coffee, or something else, and I want to go to the bathroom as well. This park is so beautiful. I wouldn’t mind a croissant; I’ve only had breakfast."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Have you had lunch?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I had a big breakfast around ten: four eggs, bread and vegetables. Then lunch, with dumplings and two big bowls. But I’m starving again. I’m quite thin, and usually I exercise a lot and need to eat, otherwise I would look like skin and bone. I need a lot of protein, and I usually eat four or five times a day, not big meals: a sushi, or a little pasta, in separate portions. It’s the healthiest way to eat."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Do you like cooking?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I have to cook, because I really like to eat healthy, so I can’t just go anywhere and eat anything. I like it if it’s quick and very simple. What I really like is baking; that’s maybe my favourite part. Right now I enjoy cooking something in tomato sauce with cheese. In the daytime I do fifteen-minute recipes, like a piece of meat with a salad, put on a grill. It’s so easy."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Let’s look at the cafés here. They may have an exhibition now; I saw a painting there.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I don’t mind. I’m quite a gourmet, but I love very simple things as well, and I love going to the simplest places sometimes; it gives a very nice vibe. Everything here is nice, and it’s perfect weather. And you know what I see here? Like in many big cities, but here the men are so elegant, and you can see a lot of stores for men. In Budapest I never buy clothes, or only sometimes, because we don’t have a great selection for men: some luxury stores, but otherwise basic ones and very cheap fast fashion. Here you have the best, so maybe at the weekend I will go and check them. Yesterday I bought beautiful trousers, wool and cashmere, from Marni."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: What colour?</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Dark blue, but more grey, a flannel. Not baggy, very classic, with a high waist. I have to go to a tailor because they’re too long, but in Budapest I have a man for that, a friend of mine."
-        },
-        {
-          "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I think this is the one. Do you want tea or something? Let’s see what they have.</b>"
-        },
-        {
-          "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> Perfect. Is it okay to sit a little first, or do you want to take it to go?"
+          "content": "Or maybe the other advice would be to learn something else as well. I like it when people who have studied architecture, interior design or any kind of design bring those skills into their art. I’m mostly talking about practical skills."
         },
         {
           "type": "note",
-          "content": "Interview by Maria Ivanova, recorded in two conversations (about 66 and 40 minutes). The dialogue is published in full, lightly edited from the transcript; one remark the artist asked to keep off the record is left out, and a few names that could not be made out on the recording are omitted."
+          "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-03T09:05:48.248Z"
+      "updatedAt": "2026-11-04T08:56:03.538Z"
     }
   ],
   "reviews": [
