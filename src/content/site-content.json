@@ -26091,11 +26091,6 @@
           "content": "<b>MI: Do you ever have periods when you lack inspiration or don’t feel like working?</b>"
         },
         {
-          "type": "header",
-          "content": "Favourite places in Budapest",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "<b>AD:</b> Of course, everyone does. I travel, but inspiration is something you cannot expect. I think it comes when you work."
         },
@@ -26131,6 +26126,11 @@
         {
           "type": "text",
           "content": "<b>AD:</b> Curiosity. That’s number one. Then, number two, work consistently on your practice."
+        },
+        {
+          "type": "header",
+          "content": "Favourite places in Budapest",
+          "level": 3
         },
         {
           "type": "text",
@@ -26247,7 +26247,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:59:14.701Z",
+      "updatedAt": "2026-11-04T21:59:26.486Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
