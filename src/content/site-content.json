@@ -26104,10 +26104,6 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What’s your favourite place in Budapest, your hometown? It doesn’t have to be related to art, anything that comes to mind.</b><b>AD:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary.It’s a historic bath, built when the Turks were in Hungary, and it still has some of its original walls and roof. I love it because it’s beautiful, and the mineral water comes up from beneath the hills.I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you.There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
-        },
-        {
-          "type": "text",
           "content": "That’s my vision of life, not only of art."
         },
         {
@@ -26134,6 +26130,10 @@
         {
           "type": "text",
           "content": "<b>AD:</b> To be honest, it’s very important that the artworks resonate with you and fit your practice. Otherwise, at a certain point, you start following trends, and that can collapse when it’s not coming from a genuine source."
+        },
+        {
+          "type": "text",
+          "content": "<b>MI: What’s your favourite place in Budapest, your hometown? It doesn’t have to be related to art, anything that comes to mind.</b><b>AD:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary.It’s a historic bath, built when the Turks were in Hungary, and it still has some of its original walls and roof. I love it because it’s beautiful, and the mineral water comes up from beneath the hills.I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you.There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
         },
         {
           "type": "text",
@@ -26247,7 +26247,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:00:20.014Z",
+      "updatedAt": "2026-11-04T22:00:45.276Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
