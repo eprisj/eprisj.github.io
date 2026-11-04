@@ -26230,13 +26230,13 @@
           "level": 3
         },
         {
-          "type": "text",
-          "content": "<b>MI: What’s your favourite museum in France?</b>"
-        },
-        {
           "type": "header",
           "content": "Barcelona",
           "level": 3
+        },
+        {
+          "type": "text",
+          "content": "<b>MI: What’s your favourite museum in France?</b>"
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:55:00.184Z",
+      "updatedAt": "2026-11-04T21:55:06.810Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
