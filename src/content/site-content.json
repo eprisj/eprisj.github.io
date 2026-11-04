@@ -25825,6 +25825,11 @@
           "content": "I’m very, very grateful that I have the chance to follow this path."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "header",
           "content": "Education and style",
           "level": 3
@@ -26260,7 +26265,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T21:06:48.880Z",
+      "updatedAt": "2026-11-04T21:08:22.824Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
