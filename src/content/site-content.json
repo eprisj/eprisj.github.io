@@ -25975,7 +25975,7 @@
           "alts": [
             "Photo by Dávid Bíró",
             null,
-            "Photo by Sarvari Zita"
+            ""
           ]
         },
         {
@@ -25994,7 +25994,7 @@
         {
           "type": "image",
           "content": "https://api.eprisjournal.com/uploads/mw2kkirdk8nyxr.jpg",
-          "caption": ""
+          "caption": "Photo by Sarvari Zita"
         },
         {
           "type": "text",
@@ -26256,7 +26256,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:30:30.520Z",
+      "updatedAt": "2026-11-04T20:30:48.520Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
