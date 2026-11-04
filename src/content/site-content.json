@@ -25952,11 +25952,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: I would like to ask you about your favourite places in different cities. Let’s start with your hometown. What’s your favourite place there? It doesn’t have to be related to art; anything that comes to mind.</b>"
+          "content": "<b>MI: I would like to ask you about your favourite places in different cities. Let’s start with your hometown. What’s your favourite place there? It doesn’t have to be related to art; anything that comes to mind.</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary."
+          "content": "<b>AD:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary."
         },
         {
           "type": "text",
@@ -26145,7 +26145,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T17:52:55.635Z"
+      "updatedAt": "2026-11-04T17:56:28.088Z"
     }
   ],
   "reviews": [
