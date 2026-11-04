@@ -26177,11 +26177,6 @@
           "content": "<b>AD:</b> Curiosity. That’s number one. Then, number two, work consistently on your practice."
         },
         {
-          "type": "header",
-          "content": "Barcelona",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "<b>MI: What else?</b>"
         },
@@ -26224,6 +26219,11 @@
         {
           "type": "text",
           "content": "AD: If you look back through art history, from artists like Joseph Kosuth, Beuys and Kiefer to contemporary artists, their works all have this energy, even without any accompanying text."
+        },
+        {
+          "type": "header",
+          "content": "Barcelona",
+          "level": 3
         },
         {
           "type": "quote",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:54:32.362Z",
+      "updatedAt": "2026-11-04T21:54:51.185Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
