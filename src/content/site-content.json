@@ -26153,10 +26153,6 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What about Barcelona?</b>"
-        },
-        {
-          "type": "text",
           "content": "That’s my vision of life, not only of art."
         },
         {
@@ -26199,6 +26195,10 @@
         {
           "type": "text",
           "content": "That’s why it’s nice for artists to communicate with each other, because we can help each other with this. Some people have a very nice concept but don’t choose the right medium for it, so the concept doesn’t reach the audience. It can also be the opposite: a very nice medium, but the concept isn’t that strong."
+        },
+        {
+          "type": "text",
+          "content": "<b>MI: What about Barcelona?</b>"
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:55:30.714Z",
+      "updatedAt": "2026-11-04T21:55:45.096Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
