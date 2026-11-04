@@ -3469,6 +3469,46 @@
       "picsOfWeek": true,
       "picsReleaseId": "PICS-WEEK-2026-007",
       "updatedAt": "2026-11-04T20:29:22.909Z"
+    },
+    {
+      "id": 63,
+      "picsId": "PICS-2026-060",
+      "fig": "FIG. 23",
+      "homeCategory": "design",
+      "title": "René Lalique: Frogs and Lily Pads",
+      "subtitle": "Design",
+      "description": "Moulded glass where the pond is part of the body of the vase: lily pads at the base, frogs climbing the shoulder. Lalique moved from jewellery to glass and made it a mass-produced art.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2klbxvpazmic.webp",
+      "homeLabel": "René Lalique · Frogs and Lily Pads · moulded glass vase · 1909–12",
+      "homeTitle": "Frogs and Lily Pads",
+      "homeSubtitle": "René Lalique · moulded glass vase · 1909–12",
+      "homeDescription": "A glass vase with the pond built into its body: lily pads below, frogs climbing the shoulder.",
+      "homeCredit": "René Lalique · Cleveland Museum of Art · CC0 · clevelandart.org",
+      "homeSourceUrl": "https://clevelandart.org/art/2007.180",
+      "imageSeed": "epris-daily-pick-63",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-11-04T20:29:25.615Z"
+    },
+    {
+      "id": 64,
+      "picsId": "PICS-2026-061",
+      "fig": "FIG. 24",
+      "homeCategory": "photography",
+      "title": "Eugène Atget: Fountain of Enceladus",
+      "subtitle": "Photography",
+      "description": "An empty garden at the hour before visitors. Atget worked early to have the park alone, and the statues, trees and water read as one quiet set.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2klesrb2j43r.webp",
+      "homeLabel": "Eugène Atget · Versailles · albumen print · 1922–23",
+      "homeTitle": "Fountain of Enceladus",
+      "homeSubtitle": "Eugène Atget · albumen print · 1922–23",
+      "homeDescription": "Versailles before the visitors: statues, trees and water as one quiet set.",
+      "homeCredit": "Eugène Atget · Cleveland Museum of Art · CC0 · clevelandart.org",
+      "homeSourceUrl": "https://clevelandart.org/art/1985.117",
+      "imageSeed": "epris-daily-pick-64",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-11-04T20:29:30.217Z"
     }
   ],
   "articles": [
@@ -25933,7 +25973,9 @@
           ],
           "caption": "Exhibition Personal Belongings, Heart and Cherry Gallery, Budapest.",
           "alts": [
-            "Photo by Dávid Bíró"
+            "Photo by Dávid Bíró",
+            null,
+            "Photo by Sarvari Zita"
           ]
         },
         {
@@ -26209,7 +26251,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:29:12.338Z",
+      "updatedAt": "2026-11-04T20:29:26.877Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
