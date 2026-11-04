@@ -114226,6 +114226,24 @@
           "title": "El presente de Roma: hormigón, nubes y la nueva arquitectura de la ciudad.",
           "excerpt": "Desde la cúpula de hormigón del Panteón hasta el MAXXI de Zaha Hadid, las tres salas de conciertos de Renzo Piano, el Coliseo Cuadrado del EUR y la nube de Fuksas en una caja de cristal: cómo la Ciudad Eterna aprendió a construir en tiempo presente.",
           "category": "Arquitectura"
+        },
+        {
+          "id": 85,
+          "title": "Diosas de cuerda: Mrinalini Mukherjee y las mujeres que moldearon la escultura del sur de Asia",
+          "excerpt": "Figuras de cáñamo anudadas a mano que parecen cultivadas en lugar de talladas: la retrospectiva de Mrinalini Mukherjee en The Hepworth Wakefield, exhibida junto a cuatro escultoras de India y Bangladesh, acaba de cerrar. Un recorrido por las salas.",
+          "category": "Arte"
+        },
+        {
+          "id": 86,
+          "title": "Capas de luz: cómo Sevilla construyó ocho siglos uno sobre otro",
+          "excerpt": "Un alminar que se convirtió en campanario, una mezquita que se convirtió en la catedral gótica más grande del mundo, un palacio musulmán construido para un rey cristiano, una fantasía de ladrillo de 1929 y setas de madera sobre una calle romana: un paseo por las capas de la arquitectura de Sevilla.",
+          "category": "Arquitectura"
+        },
+        {
+          "id": 90,
+          "title": "Cosas que desaparecen al ser tocadas: Akiko Hirai y la belleza de lo inacabado",
+          "excerpt": "Jarras luna que se agrietan como el hielo del río, cilindros con muchos centros, engobe blanco sobre arcilla oscura: la nueva exposición de la alfarera londinense Akiko Hirai es un manifiesto silencioso por la fragilidad – y una de las muestras más reflexivas del otoño británico.",
+          "category": "Arte"
         }
       ],
       "reviews": [
@@ -144296,6 +144314,18 @@
           "title": "Dee della corda: Mrinalini Mukherjee e le donne che hanno plasmato la scultura dell'Asia meridionale",
           "excerpt": "Figure di canapa annodate a mano che sembrano cresciute piuttosto che scolpite: la retrospettiva di Mrinalini Mukherjee all&#39;Hepworth Wakefield, esposta accanto a quattro scultrici indiane e del Bangladesh, si è appena conclusa. Una passeggiata tra le sale.",
           "category": "Arte"
+        },
+        {
+          "id": 86,
+          "title": "Strati di luce: come Siviglia ha costruito otto secoli uno sull'altro",
+          "excerpt": "Un minareto diventato campanile, una moschea diventata la più grande cattedrale gotica del mondo, un palazzo musulmano costruito per un re cristiano, una fantasia in mattoni del 1929 e funghi di legno sopra una strada romana: una passeggiata attraverso gli strati dell'architettura di Siviglia.",
+          "category": "Architettura"
+        },
+        {
+          "id": 90,
+          "title": "Cose che scompaiono quando toccate: Akiko Hirai e la bellezza dell'incompiuto",
+          "excerpt": "Vasi luna che si incrinano come ghiaccio di fiume, cilindri con molti centri, ingobbio bianco su argilla scura: la nuova mostra della ceramista londinese Akiko Hirai è un silenzioso manifesto per la fragilità – e una delle esposizioni più riflessive dell'autunno britannico.",
+          "category": "Arte"
         }
       ],
       "reviews": [
@@ -164453,6 +164483,24 @@
           "title": "L&#39;artiste qui quitte la pièce : Pierre Huyghe, d&#39;une tête de ruche à une machine qui rêve",
           "excerpt": "Un chien à la patte rose, une patinoire ouverte sur le sol, un corps sans visage à Venise et, désormais au jardin de sculptures du MoMA, un réseau neuronal tentant de se représenter les pensées de quelqu&#39;un : l&#39;artiste français Pierre Huyghe crée un art qui vit sans lui.",
           "category": "l’art ;"
+        },
+        {
+          "id": 86,
+          "title": "Strates de lumière : Comment Séville a construit huit siècles les uns sur les autres",
+          "excerpt": "Un minaret devenu clocher, une mosquée devenue la plus grande cathédrale gothique du monde, un palais musulman construit pour un roi chrétien, une fantaisie en brique de 1929 et des champignons en bois au-dessus d'une rue romaine : une promenade à travers les strates de l'architecture de Séville.",
+          "category": "Architecture"
+        },
+        {
+          "id": 89,
+          "title": "Rome au présent : Béton, nuages et la nouvelle architecture de la ville",
+          "excerpt": "Du dôme en béton du Panthéon au MAXXI de Zaha Hadid, aux trois salles de concert de Renzo Piano, au Colisée Carré de l'EUR et au nuage de Fuksas dans une boîte de verre : comment la Ville éternelle a appris à construire au présent.",
+          "category": "Architecture"
+        },
+        {
+          "id": 90,
+          "title": "Ce qui disparaît au toucher : Akiko Hirai et la beauté de l'inachevé",
+          "excerpt": "Des jarres de lune qui se fendent comme la glace d'une rivière, des cylindres aux multiples centres, de l'engobe blanc sur argile sombre : la nouvelle exposition de la potière londonienne Akiko Hirai est un manifeste silenciel pour la fragilité – et l'une des expositions les plus réfléchies de l'automne britannique.",
+          "category": "Art"
         }
       ],
       "reviews": [
