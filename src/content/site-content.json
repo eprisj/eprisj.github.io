@@ -26111,11 +26111,6 @@
           "content": "<b>AD:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
         },
         {
-          "type": "header",
-          "content": "Barcelona",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "They organise exhibitions featuring the artists who live there, and they also have a huge collection. They started collecting works by artists back in the eighties and nineties. It’s amazing to be part of that community."
         },
@@ -26151,6 +26146,11 @@
         {
           "type": "text",
           "content": "If you work as a professional artist, you work continuously, and I like to work continuously. If I’m in the studio and I find my rhythm, it works. Sometimes there are ups and downs, of course. I don’t have the same energy level all the time, but you can train it."
+        },
+        {
+          "type": "header",
+          "content": "Barcelona",
+          "level": 3
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:51:19.171Z",
+      "updatedAt": "2026-11-04T21:54:15.867Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
