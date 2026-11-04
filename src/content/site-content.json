@@ -26197,8 +26197,12 @@
         },
         {
           "type": "header",
-          "content": "Favourite places in Budapest",
+          "content": "Favourite places",
           "level": 3
+        },
+        {
+          "type": "text",
+          "content": "Budapest"
         },
         {
           "type": "text",
@@ -26290,7 +26294,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:45:39.511Z",
+      "updatedAt": "2026-11-04T22:46:03.269Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
