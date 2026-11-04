@@ -25865,6 +25865,11 @@
           "content": "I really liked how the exhibition space matched the interior and how the colours worked together."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "The show was about the imaginary story of a man alone, working out, which is reflected in the paintings. There are no figures, no other people in the pictures, just scenarios made up of objects."
         },
@@ -26132,7 +26137,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:24:04.048Z",
+      "updatedAt": "2026-11-04T20:24:41.167Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
