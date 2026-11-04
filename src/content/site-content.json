@@ -26063,7 +26063,12 @@
         },
         {
           "type": "text",
-          "content": "When I started painting it, I had seen this object on my table and thought: that’s nice, because I need something round like this – four circles, two white and two black. It’s abstract thinking within a picture."
+          "content": "When I started painting it, I had seen this object on my table and thought: that’s nice, because I need something round like this - four circles, two white and two black. It’s abstract thinking within a picture."
+        },
+        {
+          "type": "image",
+          "content": "",
+          "caption": ""
         },
         {
           "type": "text",
@@ -26275,7 +26280,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:35:05.440Z",
+      "updatedAt": "2026-11-04T22:35:44.822Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
