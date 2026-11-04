@@ -26232,7 +26232,7 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What’s your favourite museum? Let’s say in France.</b>"
+          "content": "<b>MI: What’s your favourite museum in France</b>"
         },
         {
           "type": "text",
@@ -26267,7 +26267,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:26:18.694Z",
+      "updatedAt": "2026-11-04T21:26:58.334Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
