@@ -25866,7 +25866,9 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mw2kfhawl7mcj9.jpg"
+          ],
           "caption": ""
         },
         {
@@ -26142,7 +26144,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:24:48.776Z",
+      "updatedAt": "2026-11-04T20:25:13.301Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
