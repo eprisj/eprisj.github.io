@@ -26298,11 +26298,16 @@
           "content": "<b>AD: </b>Maybe it’s too simple, but follow your own path. Many people say this, but many of them don’t take it seriously."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw2m50xfz6slvm.webp",
+          "caption": ""
+        },
+        {
           "type": "note",
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:58:37.351Z",
+      "updatedAt": "2026-11-04T22:58:53.274Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
