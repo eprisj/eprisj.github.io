@@ -26010,7 +26010,11 @@
         },
         {
           "type": "gallery",
-          "content": [],
+          "content": [
+            "https://api.eprisjournal.com/uploads/mw2l8zoubmjacu.jpg",
+            "https://api.eprisjournal.com/uploads/mw2l98acsww4yz.jpg",
+            "https://api.eprisjournal.com/uploads/mw2l9d8cq98qx1.jpg"
+          ],
           "caption": ""
         },
         {
@@ -26256,7 +26260,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:47:40.234Z",
+      "updatedAt": "2026-11-04T20:48:24.966Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
