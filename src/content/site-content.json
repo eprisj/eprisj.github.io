@@ -26125,6 +26125,11 @@
           "content": "It’s very similar to being a professional athlete. Sport and art are very different, but the discipline of training yourself to work in any mood is the same."
         },
         {
+          "type": "image",
+          "content": "https://api.eprisjournal.com/uploads/mw2p8c0blanwnz.jpg",
+          "caption": ""
+        },
+        {
           "type": "header",
           "content": "Advice for young artists",
           "level": 3
@@ -26280,7 +26285,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:38:38.577Z",
+      "updatedAt": "2026-11-04T22:39:21.569Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
