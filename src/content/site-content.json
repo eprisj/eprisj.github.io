@@ -26195,7 +26195,11 @@
         },
         {
           "type": "text",
-          "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you.There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
+          "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. "
+        },
+        {
+          "type": "text",
+          "content": "There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
         },
         {
           "type": "header",
@@ -26259,7 +26263,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:01:47.044Z",
+      "updatedAt": "2026-11-04T22:02:05.933Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
