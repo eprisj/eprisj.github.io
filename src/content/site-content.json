@@ -25865,6 +25865,11 @@
           "content": "I really liked how the exhibition space matched the interior and how the colours worked together."
         },
         {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
+        },
+        {
           "type": "image",
           "content": "",
           "caption": ""
@@ -26137,7 +26142,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:24:41.167Z",
+      "updatedAt": "2026-11-04T20:24:48.776Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
