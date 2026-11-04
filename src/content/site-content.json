@@ -26153,7 +26153,11 @@
         },
         {
           "type": "text",
-          "content": "If you want to add one more item to that checklist, I would say this: it has to stand on its own. Even if it’s the most conceptual thing ever, it has to stand on its own."
+          "content": "If you want to add one more item to that checklist, I would say this: "
+        },
+        {
+          "type": "quote",
+          "content": "it has to stand on its own. Even if it’s the most conceptual thing ever, it has to stand on its own."
         },
         {
           "type": "text",
@@ -26266,7 +26270,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:09:24.292Z",
+      "updatedAt": "2026-11-04T22:09:42.064Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
