@@ -25799,6 +25799,11 @@
           "content": "Then my parents started taking me to an artist, a classical portrait painter, so my education was very classical, focused on the study of painting. I started attending her classes, and that’s how my professional journey began. Then I realised I wanted to study art, and I went to university."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<b>MI: Weren’t you afraid you might not be able to make a living from it?</b>"
         },
@@ -26254,7 +26259,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T21:04:05.449Z",
+      "updatedAt": "2026-11-04T21:05:03.091Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
