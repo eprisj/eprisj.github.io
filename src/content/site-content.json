@@ -26078,10 +26078,6 @@
           "content": "It changes how you approach the space: when you walk through, you see just gastro-abstraction, but when you sit at the table, you can see a bird. Two opposites."
         },
         {
-          "type": "text",
-          "content": "There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
-        },
-        {
           "type": "header",
           "content": "Favourite places in Budapest",
           "level": 3
@@ -26101,6 +26097,10 @@
         {
           "type": "text",
           "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you."
+        },
+        {
+          "type": "text",
+          "content": "There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
         },
         {
           "type": "header",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:50:27.122Z",
+      "updatedAt": "2026-11-04T21:50:46.526Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
