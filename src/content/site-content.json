@@ -26079,15 +26079,11 @@
         },
         {
           "type": "text",
-          "content": "It’s a historic bath, built when the Turks were in Hungary, and it still has some of its original walls and roof. I love it because it’s beautiful, and the mineral water comes up from beneath the hills."
-        },
-        {
-          "type": "text",
-          "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you."
-        },
-        {
-          "type": "text",
           "content": "There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
+        },
+        {
+          "type": "text",
+          "content": "It’s a historic bath, built when the Turks were in Hungary, and it still has some of its original walls and roof. I love it because it’s beautiful, and the mineral water comes up from beneath the hills."
         },
         {
           "type": "header",
@@ -26101,6 +26097,10 @@
         {
           "type": "text",
           "content": "<b>AD:</b> I’ll start with a special place that isn’t really connected to art, perhaps only architecturally. It’s called Rudas, a Turkish bath on the Buda side. I used to go there almost every week, or every two weeks when I’m in Hungary."
+        },
+        {
+          "type": "text",
+          "content": "I also like the Museum of Fine Arts, which everyone connected to art should visit. I could also recommend some contemporary galleries. There are two favourites that I work with as well: Heart and Cherry and Spagh Fine Art and Photography. I’ll write the names down for you."
         },
         {
           "type": "header",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:49:59.029Z",
+      "updatedAt": "2026-11-04T21:50:16.536Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
