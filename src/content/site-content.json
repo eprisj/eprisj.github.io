@@ -167764,397 +167764,72 @@
       "releaseId": "PICS-WEEK-2026-007",
       "label": "Daily Picks · selected works · 3 Oct 2026",
       "publishedAt": "2026-10-03T15:00:00Z",
-      "signature": "sculpture:PICS-2026-053|painting:PICS-2026-054|architecture:PICS-2026-049|design:PICS-2026-055|photography:PICS-2026-056",
+      "signature": "sculpture:PICS-2026-057|painting:PICS-2026-058|architecture:PICS-2026-059|design:PICS-2026-060|photography:PICS-2026-061",
       "cards": [
         {
-          "id": 56,
-          "picsId": "PICS-2026-053",
+          "id": 60,
+          "picsId": "PICS-2026-057",
           "category": "sculpture",
           "categoryLabel": "Sculpture",
-          "title": "Woman's Head",
-          "subtitle": "Amedeo Modigliani · limestone · 1912",
-          "description": "A long, calm face on a column of a neck, cut straight into limestone: one of the few sculptures Modigliani made before he gave up carving.",
-          "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-          "imageSeed": "epris-daily-pick-56",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp",
-          "localized": {
-            "RU": {
-              "title": "Голова женщины",
-              "subtitle": "Amedeo Modigliani · известняк · 1912",
-              "description": "Длинное спокойное лицо на колонне шеи, вырезанное прямо в известняке: одна из немногих скульптур Modigliani, сделанных до того, как он бросил резьбу.",
-              "credit": "Amedeo Modigliani · Метрополитен-музей · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "UA": {
-              "title": "Голова жінки",
-              "subtitle": "Amedeo Modigliani · вапняк · 1912",
-              "description": "Довге спокійне обличчя на колоні шиї, вирізане прямо у вапняку: одна з небагатьох скульптур Modigliani, зроблених до того, як він кинув різьблення.",
-              "credit": "Amedeo Modigliani · Метрополітен-музей · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "DE": {
-              "title": "Frauenkopf",
-              "subtitle": "Amedeo Modigliani · Kalkstein · 1912",
-              "description": "Ein langes, ruhiges Gesicht auf einer Halssäule, direkt in Kalkstein gehauen: eine der wenigen Skulpturen Modiglianis, bevor er das Bildhauern aufgab.",
-              "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "ES": {
-              "title": "Cabeza de mujer",
-              "subtitle": "Amedeo Modigliani · piedra caliza · 1912",
-              "description": "Un rostro largo y sereno sobre una columna de cuello, tallado directamente en caliza: una de las pocas esculturas de Modigliani antes de dejar de tallar.",
-              "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "TR": {
-              "title": "Kadın Başı",
-              "subtitle": "Amedeo Modigliani · kireçtaşı · 1912",
-              "description": "Bir boyun sütunu üzerinde uzun, sakin bir yüz, doğrudan kireçtaşına oyulmuş: Modigliani'nin oymacılığı bırakmadan önce yaptığı az sayıdaki heykelden biri.",
-              "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "IT": {
-              "title": "Testa di donna",
-              "subtitle": "Amedeo Modigliani · calcare · 1912",
-              "description": "Un volto lungo e calmo su una colonna di collo, scolpito direttamente nel calcare: una delle poche sculture di Modigliani prima che smettesse di scolpire.",
-              "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            },
-            "FR": {
-              "title": "Tête de femme",
-              "subtitle": "Amedeo Modigliani · calcaire · 1912",
-              "description": "Un long visage calme sur une colonne de cou, taillé directement dans le calcaire : l'une des rares sculptures de Modigliani avant qu'il renonce à tailler.",
-              "credit": "Amedeo Modigliani · The Metropolitan Museum of Art · CC0 · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman%27s_Head_MET_DT203051.jpg",
-              "imageSeed": "epris-daily-pick-56",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf5pbkyilom2x.webp"
-            }
-          }
+          "title": "The Age of Bronze",
+          "subtitle": "Auguste Rodin · bronze · 1875–76",
+          "description": "A bronze figure waking, one arm over the head: so true to life that the Salon suspected a cast from the model.",
+          "credit": "Auguste Rodin · Cleveland Museum of Art · CC0 · clevelandart.org",
+          "sourceUrl": "https://clevelandart.org/art/1918.328",
+          "imageSeed": "epris-daily-pick-60",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl22e0mzw5l.webp"
         },
         {
-          "id": 57,
-          "picsId": "PICS-2026-054",
+          "id": 61,
+          "picsId": "PICS-2026-058",
           "category": "painting",
           "categoryLabel": "Painting",
-          "title": "The Ten Largest, No. 7, Adulthood",
-          "subtitle": "Hilma af Klint · tempera · 1907",
-          "description": "Two yellow forms meeting at a point on a lilac ground: an abstract picture of adulthood, painted years before abstraction had a name.",
-          "credit": "Hilma af Klint · The Hilma af Klint Foundation · public domain · Wikimedia Commons",
-          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-          "imageSeed": "epris-daily-pick-57",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp",
-          "localized": {
-            "RU": {
-              "title": "Десять величайших, № 7, Зрелость",
-              "subtitle": "Hilma af Klint · темпера · 1907",
-              "description": "Две жёлтые формы, сходящиеся в одной точке на сиреневом фоне: абстрактный образ зрелости, написанный за годы до того, как у абстракции появилось имя.",
-              "credit": "Hilma af Klint · Фонд Hilma af Klint · общественное достояние · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "UA": {
-              "title": "Десять найбільших, № 7, Зрілість",
-              "subtitle": "Hilma af Klint · темпера · 1907",
-              "description": "Дві жовті форми, що сходяться в одній точці на бузковому тлі: абстрактний образ зрілості, написаний за роки до того, як у абстракції з'явилася назва.",
-              "credit": "Hilma af Klint · Фонд Hilma af Klint · суспільне надбання · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "DE": {
-              "title": "Die zehn Größten, Nr. 7, Erwachsenenalter",
-              "subtitle": "Hilma af Klint · Tempera · 1907",
-              "description": "Zwei gelbe Formen, die sich in einem Punkt treffen, auf fliederfarbenem Grund: ein abstraktes Bild des Erwachsenseins, Jahre vor dem Namen „Abstraktion“.",
-              "credit": "Hilma af Klint · Hilma af Klint Foundation · gemeinfrei · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "ES": {
-              "title": "Los Diez Mayores, n.º 7, Edad adulta",
-              "subtitle": "Hilma af Klint · témpera · 1907",
-              "description": "Dos formas amarillas que se encuentran en un punto sobre un fondo lila: una imagen abstracta de la edad adulta, años antes de que la abstracción tuviera nombre.",
-              "credit": "Hilma af Klint · Hilma af Klint Foundation · dominio público · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "TR": {
-              "title": "On Büyük, No. 7, Yetişkinlik",
-              "subtitle": "Hilma af Klint · tempera · 1907",
-              "description": "Bir noktada buluşan iki sarı form, mor zemin üzerinde: bir yetişkinlik soyut resmi, soyutlamanın bir adı bile konmadan yıllar önce yapılmış.",
-              "credit": "Hilma af Klint · The Hilma af Klint Foundation · kamu malı · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "IT": {
-              "title": "I Dieci Più Grandi, n. 7, Età adulta",
-              "subtitle": "Hilma af Klint · tempera · 1907",
-              "description": "Due forme gialle che si incontrano in un punto su un fondo lilla: un'immagine astratta dell'età adulta, anni prima che l'astrazione avesse un nome.",
-              "credit": "Hilma af Klint · Hilma af Klint Foundation · pubblico dominio · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            },
-            "FR": {
-              "title": "Les Dix Plus Grands, n° 7, L'âge adulte",
-              "subtitle": "Hilma af Klint · détrempe · 1907",
-              "description": "Deux formes jaunes qui se rejoignent en un point sur fond lilas : une image abstraite de l'âge adulte, des années avant que l'abstraction ait un nom.",
-              "credit": "Hilma af Klint · Hilma af Klint Foundation · domaine public · Wikimedia Commons",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_%E2%80%94_The_Ten_Largest_%E2%80%94_Number_7_Adulthood.jpg",
-              "imageSeed": "epris-daily-pick-57",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4i9ufr9g34g.webp"
-            }
-          }
+          "title": "The Large Plane Trees",
+          "subtitle": "Vincent van Gogh · oil on canvas · 1889",
+          "description": "Two huge trunks as columns, road menders small beneath them: Saint-Rémy, autumn 1889.",
+          "credit": "Vincent van Gogh · Cleveland Museum of Art · CC0 · clevelandart.org",
+          "sourceUrl": "https://clevelandart.org/art/1947.209",
+          "imageSeed": "epris-daily-pick-61",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl62kxug4c4.webp"
         },
         {
-          "id": 52,
-          "picsId": "PICS-2026-049",
+          "id": 62,
+          "picsId": "PICS-2026-059",
           "category": "architecture",
           "categoryLabel": "Architecture",
-          "title": "Treppen V",
-          "subtitle": "Manuel Heywinkel · photograph · 2025",
-          "description": "Looking down a spiral stair: at the centre, a small disc of cool light in a white well; around it, pale timber treads winding outward, and a thin line of warm light along the outer wall. The pick of the twenty-eight Treppen photographs on view at the EPRIS Museum.",
-          "credit": "Manuel Heywinkel · EPRIS Museum · © 2025 Manuel Heywinkel, EPRIS display licence",
-          "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-          "imageSeed": "epris-daily-pick-52",
-          "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp",
-          "localized": {
-            "RU": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · фотография · 2025",
-              "description": "Спиральная лестница, вид сверху: в центре — маленький диск холодного света в белом колодце; вокруг расходятся бледные деревянные ступени, а вдоль внешней стены тянется тонкая линия тёплого света. Лучшая из двадцати восьми фотографий Treppen, представленных в EPRIS Museum.",
-              "credit": "Manuel Heywinkel · EPRIS Museum · © 2025 Manuel Heywinkel, лицензия на экспозицию EPRIS",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "UA": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · фотографія · 2025",
-              "description": "Спіральні сходи, вигляд згори: у центрі — маленький диск холодного світла в білому колодязі; навколо розходяться блідо-дерев’яні сходинки, а вздовж зовнішньої стіни тягнеться тонка лінія теплого світла. Найкраща з двадцяти восьми фотографій Treppen, представлених у музеї EPRIS.",
-              "credit": "Manuel Heywinkel · EPRIS Museum · © 2025 Manuel Heywinkel, EPRIS display licence",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "DE": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · Fotografie · 2025",
-              "description": "Eine Spiraltreppe von oben gesehen: In der Mitte eine kleine Scheibe kühlen Lichts in einem weißen Schacht; darum winden sich blasse Holzstufen nach außen, und entlang der Außenwand zieht sich eine dünne Linie warmen Lichts. Die beste der achtundzwanzig Treppen-Fotografien, die im EPRIS Museum gezeigt werden.",
-              "credit": "Manuel Heywinkel · EPRIS Museum · © 2025 Manuel Heywinkel, EPRIS Ausstellungslizenz",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "ES": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · fotografía · 2025",
-              "description": "Una escalera de caracol vista desde arriba: en el centro, un pequeño disco de luz fría en un pozo blanco; a su alrededor se despliegan peldaños de madera pálida, y una fina línea de luz cálida recorre el muro exterior. La mejor de las veintiocho fotografías de Treppen en exhibición en el Museo EPRIS.",
-              "credit": "Manuel Heywinkel · Museo EPRIS · © 2025 Manuel Heywinkel, licencia de exhibición EPRIS",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "TR": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · fotoğraf · 2025",
-              "description": "Yukarıdan görülen bir spiral merdiven: ortada beyaz bir boşlukta küçük, soğuk ışıklı bir disk; çevresinde soluk ahşap basamaklar dışarıya doğru dolanıyor, dış duvar boyunca ince bir sıcak ışık çizgisi uzanıyor. EPRIS Müzesi'nde sergilenen yirmi sekiz Treppen fotoğrafından en iyisi.",
-              "credit": "Manuel Heywinkel · EPRIS Müzesi · © 2025 Manuel Heywinkel, EPRIS gösterim lisansı",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "IT": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · fotografia · 2025",
-              "description": "Una scala a chiocciola vista dall'alto: al centro, un piccolo disco di luce fredda in un pozzo bianco; attorno, gradini in legno chiaro si aprono a spirale e una sottile linea di luce calda segue il muro esterno. La migliore delle ventotto fotografie Treppen in mostra al Museo EPRIS.",
-              "credit": "Manuel Heywinkel · Museo EPRIS · © 2025 Manuel Heywinkel, licenza di esposizione EPRIS",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            },
-            "FR": {
-              "title": "Treppen V",
-              "subtitle": "Manuel Heywinkel · photographie · 2025",
-              "description": "Un escalier en colimaçon vu d'en haut : au centre, un petit disque de lumière froide dans un puits blanc ; autour, des marches de bois clair s'ouvrent en spirale et un mince filet de lumière chaude longe le mur extérieur. La meilleure des vingt-huit photographies de Treppen au Musée EPRIS.",
-              "credit": "Manuel Heywinkel · Musée EPRIS · © 2025 Manuel Heywinkel, EPRIS display licence",
-              "sourceUrl": "https://museum.eprisjournal.com/works/1792138139636/",
-              "imageSeed": "epris-daily-pick-52",
-              "imageUrl": "https://museum.eprisjournal.com/img/1792138139636.webp"
-            }
-          }
+          "title": "Nave, Southwest Corner",
+          "subtitle": "Frederick H. Evans · platinum print · c. 1899",
+          "description": "A cathedral nave in platinum, no people: stone, a column and the light on it.",
+          "credit": "Frederick H. Evans · Cleveland Museum of Art · CC0 · clevelandart.org",
+          "sourceUrl": "https://clevelandart.org/art/1987.27",
+          "imageSeed": "epris-daily-pick-62",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl9cr6uw2n3.webp"
         },
         {
-          "id": 58,
-          "picsId": "PICS-2026-055",
+          "id": 63,
+          "picsId": "PICS-2026-060",
           "category": "design",
           "categoryLabel": "Design",
-          "title": "Eiffel Tower Chair",
-          "subtitle": "Carlo Bugatti · parchment, wood, brass · 1902",
-          "description": "A chair standing like a tower: four arched legs, painted parchment and brass, somewhere between a throne and architecture.",
-          "credit": "Carlo Bugatti · Art Institute of Chicago · public domain, CC0 · artic.edu",
-          "sourceUrl": "https://www.artic.edu/artworks/214107",
-          "imageSeed": "epris-daily-pick-58",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp",
-          "localized": {
-            "RU": {
-              "title": "Стул «Эйфелева башня»",
-              "subtitle": "Carlo Bugatti · пергамент, дерево, латунь · 1902",
-              "description": "Стул, стоящий как башня: четыре арочные ножки, расписной пергамент и латунь, нечто среднее между троном и архитектурой.",
-              "credit": "Carlo Bugatti · Художественный институт Чикаго · общественное достояние, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "UA": {
-              "title": "Стілець «Ейфелева вежа»",
-              "subtitle": "Carlo Bugatti · пергамент, дерево, латунь · 1902",
-              "description": "Стілець, що стоїть як вежа: чотири арочні ніжки, розписаний пергамент і латунь, щось середнє між троном і архітектурою.",
-              "credit": "Carlo Bugatti · Інститут мистецтв Чикаго · суспільне надбання, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "DE": {
-              "title": "Eiffelturm-Stuhl",
-              "subtitle": "Carlo Bugatti · Pergament, Holz, Messing · 1902",
-              "description": "Ein Stuhl, der wie ein Turm steht: vier gewölbte Beine, bemaltes Pergament und Messing, irgendwo zwischen Thron und Architektur.",
-              "credit": "Carlo Bugatti · Art Institute of Chicago · gemeinfrei, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "ES": {
-              "title": "Silla Torre Eiffel",
-              "subtitle": "Carlo Bugatti · pergamino, madera, latón · 1902",
-              "description": "Una silla que se alza como una torre: cuatro patas arqueadas, pergamino pintado y latón, entre trono y arquitectura.",
-              "credit": "Carlo Bugatti · Art Institute of Chicago · dominio público, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "TR": {
-              "title": "Eiffel Tower Chair",
-              "subtitle": "Carlo Bugatti · parşömen, ahşap, pirinç · 1902",
-              "description": "Bir kule gibi duran bir sandalye: dört kemerli ayak, boyanmış parşömen ve pirinç, bir taht ve mimarlık arasında bir yerde.",
-              "credit": "Carlo Bugatti · Art Institute of Chicago · kamu alanı, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "IT": {
-              "title": "Sedia Torre Eiffel",
-              "subtitle": "Carlo Bugatti · pergamena, legno, ottone · 1902",
-              "description": "Una sedia che sta in piedi come una torre: quattro gambe arcuate, pergamena dipinta e ottone, a metà tra un trono e un'architettura.",
-              "credit": "Carlo Bugatti · Art Institute of Chicago · pubblico dominio, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            },
-            "FR": {
-              "title": "Chaise Tour Eiffel",
-              "subtitle": "Carlo Bugatti · parchemin, bois, laiton · 1902",
-              "description": "Une chaise dressée comme une tour : quatre pieds arqués, parchemin peint et laiton, entre trône et architecture.",
-              "credit": "Carlo Bugatti · Art Institute of Chicago · domaine public, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/214107",
-              "imageSeed": "epris-daily-pick-58",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4ecvie4dq5w.webp"
-            }
-          }
+          "title": "Frogs and Lily Pads",
+          "subtitle": "René Lalique · moulded glass vase · 1909–12",
+          "description": "A glass vase with the pond built into its body: lily pads below, frogs climbing the shoulder.",
+          "credit": "René Lalique · Cleveland Museum of Art · CC0 · clevelandart.org",
+          "sourceUrl": "https://clevelandart.org/art/2007.180",
+          "imageSeed": "epris-daily-pick-63",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2klbxvpazmic.webp"
         },
         {
-          "id": 59,
-          "picsId": "PICS-2026-056",
+          "id": 64,
+          "picsId": "PICS-2026-061",
           "category": "photography",
           "categoryLabel": "Photography",
-          "title": "The Great Wave, Sète",
-          "subtitle": "Gustave Le Gray · albumen print · 1857",
-          "description": "A heavy sea under a storm sky, sea and clouds printed from two negatives: the most dramatic seascape of the early camera.",
-          "credit": "Gustave Le Gray · Art Institute of Chicago · public domain, CC0 · artic.edu",
-          "sourceUrl": "https://www.artic.edu/artworks/36848",
-          "imageSeed": "epris-daily-pick-59",
-          "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp",
-          "localized": {
-            "RU": {
-              "title": "Великая волна, Сет",
-              "subtitle": "Gustave Le Gray · альбуминовый отпечаток · 1857",
-              "description": "Тяжёлое море под грозовым небом, море и облака напечатаны с двух негативов: самый драматичный морской пейзаж ранней фотографии.",
-              "credit": "Gustave Le Gray · Художественный институт Чикаго · общественное достояние, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "UA": {
-              "title": "Велика хвиля, Сет",
-              "subtitle": "Gustave Le Gray · альбумінний відбиток · 1857",
-              "description": "Важке море під грозовим небом, море й хмари надруковано з двох негативів: найдраматичніший морський пейзаж ранньої фотографії.",
-              "credit": "Gustave Le Gray · Інститут мистецтв Чикаго · суспільне надбання, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "DE": {
-              "title": "Die große Welle, Sète",
-              "subtitle": "Gustave Le Gray · Albuminabzug · 1857",
-              "description": "Schwere See unter Sturmhimmel, Meer und Wolken von zwei Negativen kopiert: die dramatischste Seelandschaft der frühen Kamera.",
-              "credit": "Gustave Le Gray · Art Institute of Chicago · gemeinfrei, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "ES": {
-              "title": "La gran ola, Sète",
-              "subtitle": "Gustave Le Gray · copia a la albúmina · 1857",
-              "description": "Un mar pesado bajo un cielo de tormenta, mar y nubes copiados de dos negativos: la marina más dramática de la primera fotografía.",
-              "credit": "Gustave Le Gray · Art Institute of Chicago · dominio público, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "TR": {
-              "title": "Büyük Dalga, Sète",
-              "subtitle": "Gustave Le Gray · albumen baskı · 1857",
-              "description": "Fırtına gökyüzü altında ağır bir deniz, deniz ve bulutlar iki negatiften basılmış: erken kamera döneminin en dramatik deniz manzarası.",
-              "credit": "Gustave Le Gray · Art Institute of Chicago · kamu malı, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "IT": {
-              "title": "La grande onda, Sète",
-              "subtitle": "Gustave Le Gray · stampa all'albumina · 1857",
-              "description": "Un mare pesante sotto un cielo di tempesta, mare e nuvole stampati da due negativi: la marina più drammatica della prima fotografia.",
-              "credit": "Gustave Le Gray · Art Institute of Chicago · pubblico dominio, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            },
-            "FR": {
-              "title": "La grande vague, Sète",
-              "subtitle": "Gustave Le Gray · épreuve à l'albumine · 1857",
-              "description": "Une mer lourde sous un ciel d'orage, mer et nuages tirés de deux négatifs : la marine la plus dramatique de la première photographie.",
-              "credit": "Gustave Le Gray · Art Institute of Chicago · domaine public, CC0 · artic.edu",
-              "sourceUrl": "https://www.artic.edu/artworks/36848",
-              "imageSeed": "epris-daily-pick-59",
-              "imageUrl": "https://api.eprisjournal.com/uploads/mvf4edx2zadxbr.webp"
-            }
-          }
+          "title": "Fountain of Enceladus",
+          "subtitle": "Eugène Atget · albumen print · 1922–23",
+          "description": "Versailles before the visitors: statues, trees and water as one quiet set.",
+          "credit": "Eugène Atget · Cleveland Museum of Art · CC0 · clevelandart.org",
+          "sourceUrl": "https://clevelandart.org/art/1985.117",
+          "imageSeed": "epris-daily-pick-64",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2klesrb2j43r.webp"
         }
       ],
       "publicArchive": false,
