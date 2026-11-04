@@ -26103,17 +26103,17 @@
           "content": "There are also some great galleries, like Erika Deák Gallery, and a Vintage Galéria."
         },
         {
-          "type": "header",
-          "content": "Barcelona",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "<b>MI: What about Barcelona?</b>"
         },
         {
           "type": "text",
           "content": "<b>AD:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
+        },
+        {
+          "type": "header",
+          "content": "Barcelona",
+          "level": 3
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:50:46.526Z",
+      "updatedAt": "2026-11-04T21:51:19.171Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
