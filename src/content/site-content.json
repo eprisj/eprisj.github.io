@@ -26148,11 +26148,6 @@
           "content": "If you work as a professional artist, you work continuously, and I like to work continuously. If I’m in the studio and I find my rhythm, it works. Sometimes there are ups and downs, of course. I don’t have the same energy level all the time, but you can train it."
         },
         {
-          "type": "header",
-          "content": "Barcelona",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "It’s very similar to being a professional athlete. Sport and art are very different, but the discipline of training yourself to work in any mood is the same."
         },
@@ -26180,6 +26175,11 @@
         {
           "type": "text",
           "content": "<b>AD:</b> Curiosity. That’s number one. Then, number two, work consistently on your practice."
+        },
+        {
+          "type": "header",
+          "content": "Barcelona",
+          "level": 3
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:54:15.867Z",
+      "updatedAt": "2026-11-04T21:54:32.362Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
