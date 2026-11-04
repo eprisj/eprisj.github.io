@@ -26198,10 +26198,6 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What about Barcelona?</b>"
-        },
-        {
-          "type": "text",
           "content": "In visual arts, a piece has to have an immediate impact on you. Otherwise, it’s not visual art. What is it, then? Bad visual art, or something that isn’t well constructed."
         },
         {
@@ -26233,6 +26229,10 @@
           "type": "header",
           "content": "Barcelona",
           "level": 3
+        },
+        {
+          "type": "text",
+          "content": "<b>MI: What about Barcelona?</b>"
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:55:45.096Z",
+      "updatedAt": "2026-11-04T21:55:55.931Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
