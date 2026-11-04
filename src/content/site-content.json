@@ -26009,6 +26009,11 @@
           "content": "<b>AD:</b> Yes, this was in Barcelona, in Gràcia. I had a summer residency programme, and I developed this series of works for the exhibition."
         },
         {
+          "type": "gallery",
+          "content": [],
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "The concept came from a book about Philip Guston, <i>I Paint What I Want to See</i>. That was the main concept and the title of the book. After the abstract period of his life, he started making figurative works, imaginary scenes centred around an artist, the studio and so on."
         },
@@ -26251,7 +26256,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:46:55.484Z",
+      "updatedAt": "2026-11-04T20:47:40.234Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
