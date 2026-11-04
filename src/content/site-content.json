@@ -26104,10 +26104,6 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What about Barcelona?</b>"
-        },
-        {
-          "type": "text",
           "content": "<b>AD:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
         },
         {
@@ -26154,6 +26150,10 @@
         {
           "type": "text",
           "content": "Someone preparing for the Olympic Games has to focus on many things, and not every training day is the same: sometimes you have more energy, sometimes you’re more exhausted. But if you know your goal and keep following that path, then in the long term, you’re moving upwards."
+        },
+        {
+          "type": "text",
+          "content": "<b>MI: What about Barcelona?</b>"
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:55:06.810Z",
+      "updatedAt": "2026-11-04T21:55:30.714Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
