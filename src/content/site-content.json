@@ -26227,6 +26227,10 @@
           "content": "There are also some other great galleries, like Mayoral, Alzueta and Senda. They're all really nice."
         },
         {
+          "type": "header",
+          "content": "France"
+        },
+        {
           "type": "text",
           "content": "<b>MI: What’s your favourite museum in France?</b>"
         },
@@ -26263,7 +26267,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:06:40.751Z",
+      "updatedAt": "2026-11-04T22:07:14.347Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
