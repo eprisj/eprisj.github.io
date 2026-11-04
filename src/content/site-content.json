@@ -3409,6 +3409,66 @@
       "picsOfWeek": true,
       "picsReleaseId": "PICS-WEEK-2026-007",
       "updatedAt": "2026-10-19T10:37:30.975Z"
+    },
+    {
+      "id": 60,
+      "picsId": "PICS-2026-057",
+      "fig": "FIG. 20",
+      "homeCategory": "sculpture",
+      "title": "Auguste Rodin: The Age of Bronze",
+      "subtitle": "Sculpture",
+      "description": "A young man stirs: one arm raised to the head, weight on one leg, no pose to hide behind. It was so lifelike that critics suspected Rodin of casting it from a living body.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl22e0mzw5l.webp",
+      "homeLabel": "Auguste Rodin · The Age of Bronze · bronze · 1875–76",
+      "homeTitle": "The Age of Bronze",
+      "homeSubtitle": "Auguste Rodin · bronze · 1875–76",
+      "homeDescription": "A bronze figure waking, one arm over the head: so true to life that the Salon suspected a cast from the model.",
+      "homeCredit": "Auguste Rodin · Cleveland Museum of Art · CC0 · clevelandart.org",
+      "homeSourceUrl": "https://clevelandart.org/art/1918.328",
+      "imageSeed": "epris-daily-pick-60",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-11-04T20:29:15.288Z"
+    },
+    {
+      "id": 61,
+      "picsId": "PICS-2026-058",
+      "fig": "FIG. 21",
+      "homeCategory": "painting",
+      "title": "Vincent van Gogh: The Large Plane Trees",
+      "subtitle": "Painting",
+      "description": "Two trunks cut the picture like columns and the workers shrink to figures below them. Painted at Saint-Rémy in the autumn of 1889, a year before his death.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl62kxug4c4.webp",
+      "homeLabel": "Vincent van Gogh · Road Menders at Saint-Rémy · oil on canvas · 1889",
+      "homeTitle": "The Large Plane Trees",
+      "homeSubtitle": "Vincent van Gogh · oil on canvas · 1889",
+      "homeDescription": "Two huge trunks as columns, road menders small beneath them: Saint-Rémy, autumn 1889.",
+      "homeCredit": "Vincent van Gogh · Cleveland Museum of Art · CC0 · clevelandart.org",
+      "homeSourceUrl": "https://clevelandart.org/art/1947.209",
+      "imageSeed": "epris-daily-pick-61",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-11-04T20:29:19.614Z"
+    },
+    {
+      "id": 62,
+      "picsId": "PICS-2026-059",
+      "fig": "FIG. 22",
+      "homeCategory": "architecture",
+      "title": "Ely Cathedral: Nave, Southwest Corner",
+      "subtitle": "Architecture",
+      "description": "Evans photographed cathedrals with a platinum print and no people: stone, a column and the light that falls on it. A building seen as a single held breath.",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2kl9cr6uw2n3.webp",
+      "homeLabel": "Frederick H. Evans · Nave, Southwest Corner · platinum print · c. 1899",
+      "homeTitle": "Nave, Southwest Corner",
+      "homeSubtitle": "Frederick H. Evans · platinum print · c. 1899",
+      "homeDescription": "A cathedral nave in platinum, no people: stone, a column and the light on it.",
+      "homeCredit": "Frederick H. Evans · Cleveland Museum of Art · CC0 · clevelandart.org",
+      "homeSourceUrl": "https://clevelandart.org/art/1987.27",
+      "imageSeed": "epris-daily-pick-62",
+      "picsOfWeek": true,
+      "picsReleaseId": "PICS-WEEK-2026-007",
+      "updatedAt": "2026-11-04T20:29:22.909Z"
     }
   ],
   "articles": [
@@ -26149,7 +26209,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T20:28:55.912Z",
+      "updatedAt": "2026-11-04T20:29:12.338Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
