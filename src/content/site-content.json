@@ -26078,11 +26078,6 @@
           "content": "It changes how you approach the space: when you walk through, you see just gastro-abstraction, but when you sit at the table, you can see a bird. Two opposites."
         },
         {
-          "type": "header",
-          "content": "Favourite places in Budapest",
-          "level": 3
-        },
-        {
           "type": "text",
           "content": "<b>MI: What’s your favourite place in Budapest, your hometown? It doesn’t have to be related to art, anything that comes to mind.</b>"
         },
@@ -26114,6 +26109,11 @@
         {
           "type": "text",
           "content": "<b>AD:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
+        },
+        {
+          "type": "header",
+          "content": "Favourite places in Budapest",
+          "level": 3
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:46:40.690Z",
+      "updatedAt": "2026-11-04T21:47:07.997Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
