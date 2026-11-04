@@ -26099,6 +26099,11 @@
         },
         {
           "type": "header",
+          "content": "Favourite places in Budapest",
+          "level": 3
+        },
+        {
+          "type": "header",
           "content": "Barcelona",
           "level": 3
         },
@@ -26109,11 +26114,6 @@
         {
           "type": "text",
           "content": "<b>AD:</b> Well, in Barcelona, I always stay at Piramidón, a huge building with four floors of artists’ studios and one floor of gallery space. It’s a hybrid between a studio house and a gallery."
-        },
-        {
-          "type": "header",
-          "content": "Favourite places in Budapest",
-          "level": 3
         },
         {
           "type": "text",
@@ -26271,7 +26271,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:47:33.758Z",
+      "updatedAt": "2026-11-04T21:47:48.806Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
