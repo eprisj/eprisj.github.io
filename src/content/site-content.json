@@ -26068,15 +26068,6 @@
         },
         {
           "type": "header",
-          "content": "The cities",
-          "level": 2
-        },
-        {
-          "type": "text",
-          "content": "<span class=\"dek\">Favourite places, discipline, a checklist for artists, and looking back.</span>"
-        },
-        {
-          "type": "header",
           "content": "Favourite places in Budapest",
           "level": 3
         },
@@ -26265,7 +26256,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T21:02:58.151Z",
+      "updatedAt": "2026-11-04T21:03:12.552Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
