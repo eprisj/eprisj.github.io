@@ -25901,6 +25901,11 @@
           "content": "I also have this older theme: most of my paintings come from lenses, phones and eyewear. I’m really interested in lenses, in how we see through these things. There’s a lot of meaning in that, but it’s also a compositional element in the new work."
         },
         {
+          "type": "image",
+          "content": "",
+          "caption": ""
+        },
+        {
           "type": "text",
           "content": "<b>MI:Whenever I look at your paintings, I get the feeling that you enjoy the creative process just as much as the final result. There is something very sincere and unforced about every gesture, as though the pleasure of painting itself is visible in the work. I find that particularly fascinating. Would you say that's true?</b>"
         },
@@ -26278,7 +26283,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T22:18:27.608Z",
+      "updatedAt": "2026-11-04T22:19:15.216Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
