@@ -25765,8 +25765,8 @@
         "Barcelona",
         "art"
       ],
-      "imageSeed": "adam-dora",
-      "imageUrl": "",
+      "imageSeed": "",
+      "imageUrl": "https://api.eprisjournal.com/uploads/mw2m50xfz6slvm.webp",
       "previewToken": "0ed9dc38f2fd809ab4b6bb8c",
       "content": [
         {
@@ -26267,7 +26267,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T21:11:41.664Z",
+      "updatedAt": "2026-11-04T21:12:51.688Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
