@@ -25711,11 +25711,11 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Weren’t you afraid you wouldn’t be able to make a living from it?</b>"
+          "content": "<b>MI: Weren’t you afraid you wouldn’t be able to make a living from it?</b>"
         },
         {
           "type": "text",
-          "content": "<b>Adam Dora [AD]:</b> It’s the basic worry of all parents, and of everybody. Statistics say that 99% of artists are starving or have a chaotic life."
+          "content": "<b>AD:</b> It’s the basic worry of all parents, and of everybody. Statistics say that 99% of artists are starving or have a chaotic life."
         },
         {
           "type": "text",
@@ -25736,7 +25736,7 @@
         },
         {
           "type": "text",
-          "content": "<b>Maria Ivanova [MI]: Is it essential for an artist to have a degree?</b>"
+          "content": "<b>MMI]: Is it essential for an artist to have a degree?</b>"
         },
         {
           "type": "text",
@@ -26150,7 +26150,7 @@
           "content": "Interview by Maria Ivanova, edited for publication."
         }
       ],
-      "updatedAt": "2026-11-04T17:47:46.831Z"
+      "updatedAt": "2026-11-04T17:48:28.260Z"
     }
   ],
   "reviews": [
