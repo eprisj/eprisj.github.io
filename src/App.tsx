@@ -2893,7 +2893,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   return (
                     <Tag
                       key={index}
-                      className={`rich-text font-normal text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}
+                      className={`rich-text font-normal text-[var(--c-accent)] mt-10 mb-4 ${lvl === 3 ? 'text-xl sm:text-2xl' : 'text-[26px] leading-[1.2] sm:text-[34px]'}`}
                       style={{ fontFamily: "var(--font-display)" }}
                       dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }}
                     />
@@ -2902,7 +2902,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (
-                    <blockquote key={index} className="my-10 sm:my-14 font-serif text-[22px] leading-[1.35] text-[var(--c-accent)] sm:text-[30px] sm:leading-[1.3]">
+                    <blockquote key={index} className="my-10 sm:my-14 font-serif italic text-[19px] leading-[1.45] text-[var(--c-accent)] border-l-2 border-[var(--c-gold)] pl-4 sm:pl-6 sm:text-[24px] sm:leading-[1.4]">
                       <span className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />
                     </blockquote>
                   );
