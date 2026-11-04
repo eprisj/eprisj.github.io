@@ -26232,11 +26232,11 @@
         },
         {
           "type": "text",
-          "content": "<b>MI: What’s your favourite museum in France</b>"
+          "content": "<b>MI: What’s your favourite museum in France?</b>"
         },
         {
           "type": "text",
-          "content": "<b>AD:</b> France? I really like the Centre Pompidou. I’ve been there many times. In Paris, I also really like the Rodin Museum. It’s amazing, and the sculpture garden is beautiful."
+          "content": "<b>AD:</b> I really like the Centre Pompidou. I’ve been there many times. In Paris, I also really like the Rodin Museum. It’s amazing, and the sculpture garden is beautiful."
         },
         {
           "type": "text",
@@ -26267,7 +26267,7 @@
           "content": "Interview by Maria Ivanova, edited for publication. Cover photo by Victor Marosi."
         }
       ],
-      "updatedAt": "2026-11-04T21:27:11.047Z",
+      "updatedAt": "2026-11-04T21:27:32.145Z",
       "authorId": "author-1784896384236-4fokw"
     }
   ],
