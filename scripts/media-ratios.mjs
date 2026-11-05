@@ -1,15 +1,18 @@
 // Writes src/content/media-ratios.json: width-over-height of every picture in
-// public/uploads, read from file headers (no decoding, no dependencies).
+// the uploads folder, read from file headers (no decoding, no dependencies).
+// The photographs are data, not code: they live with the CMS (/opt/epris-content/uploads on the server),
+// not in git. EPRIS_UPLOADS_DIR points at them; without it (a plain checkout) the folder is empty and the
+// ratios already committed in media-ratios.json stay as they are.
 //
 // The article page uses it to reserve each photograph's box before the file
 // arrives. Without it an <img> with `height: auto` is 0px tall until it loads,
 // and everything below it jumps down mid-scroll.
-import { readdirSync, readFileSync, writeFileSync, openSync, readSync, closeSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, openSync, readSync, closeSync, statSync, existsSync } from 'node:fs';
 import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const dir = join(root, 'public', 'uploads');
+const dir = process.env.EPRIS_UPLOADS_DIR || join(root, 'public', 'uploads');
 const out = join(root, 'src', 'content', 'media-ratios.json');
 
 function head(file, bytes) {
@@ -69,6 +72,7 @@ function size(file) {
   return null;
 }
 
+if (!existsSync(dir)) { console.log('media-ratios: no uploads folder, keeping the committed file'); process.exit(0); }
 const ratios = {};
 for (const name of readdirSync(dir).sort()) {
   const file = join(dir, name);

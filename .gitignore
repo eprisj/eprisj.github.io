@@ -3,3 +3,6 @@ dist
 .DS_Store
 .env.local
 assets/
+
+# Photographs belong to the CMS data (/opt/epris-content/uploads on the server), not to the code.
+public/uploads/
