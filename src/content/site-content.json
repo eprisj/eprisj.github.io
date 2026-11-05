@@ -145026,9 +145026,352 @@
         },
         {
           "id": 86,
-          "title": "Strati di luce: come Siviglia ha costruito otto secoli uno sull'altro",
-          "excerpt": "Un minareto diventato campanile, una moschea diventata la più grande cattedrale gotica del mondo, un palazzo musulmano costruito per un re cristiano, una fantasia in mattoni del 1929 e funghi di legno sopra una strada romana: una passeggiata attraverso gli strati dell'architettura di Siviglia.",
-          "category": "Architettura"
+          "draft": false,
+          "title": "Strati di luce: come Siviglia si è sviluppata nel corso di otto secoli, uno sopra l’altro",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "date": "4 novembre 2026",
+          "excerpt": "Un minareto trasformato in campanile, una moschea diventata la più grande cattedrale gotica del mondo, un palazzo musulmano costruito per un re cristiano, una fantasia in mattoni del 1929 e funghi di legno su una strada romana: una passeggiata attraverso gli strati dell’architettura di Siviglia.",
+          "category": "Architettura",
+          "subcategory": "Caratteristica",
+          "tags": [
+            "Siviglia",
+            "Siviglia",
+            "architettura",
+            "Giralda",
+            "Cattedrale di Siviglia",
+            "Alcázar Reale",
+            "Mudéjar",
+            "Casa di Pilato",
+            "piastrelle",
+            "Piazza di Spagna",
+            "Metropol Parasol",
+            "Triana",
+            "Andalusia",
+            "Spagna"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+          "previewToken": "7ab1df30fdc4dce94d53d71d",
+          "publishAt": "2026-11-04T01:00:00.000Z",
+          "publishedAt": "2026-11-04T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda e la cattedrale al tramonto, viste oltre i tetti del centro storico. Foto: Henrique Ferreira / Unsplash.",
+              "alt": "La luce dorata del tramonto sui tetti di Siviglia, con l&#x27;alto campanile della Giralda sulla sinistra e le cupole e i pinnacoli della cattedrale accanto ad esso."
+            },
+            {
+              "type": "text",
+              "content": "Alcune città vengono costruite in un unico stile e poi difese da tutti gli altri. Siviglia ha fatto il contrario. Per otto secoli ha permesso a ogni nuovo potere di costruire sopra quello precedente – e poi ha conservato il risultato. Un minareto è diventato un campanile. Una moschea è diventata la più grande cattedrale gotica del mondo. Un re cristiano commissionò un palazzo in stile musulmano ad artigiani di Granada e Toledo. I nobili del Rinascimento copiarono i patii dei Mori; gli architetti del XX secolo inventarono un intero stile nazionale a base di mattoni e piastrelle; e nel 2011 un architetto tedesco ha disposto una foresta di funghi in legno su una strada romana."
+            },
+            {
+              "type": "text",
+              "content": "Il risultato non è un museo di stili, ma una città unica e stratificata, dotata di una propria logica: l’ombra prima della facciata, l’acqua prima dell’ornamento, il patio prima della strada. Per comprendere l’architettura di Siviglia bisogna leggerla come un palinsesto, in cui ogni strato è visibile attraverso quello successivo. Questo è un percorso attraverso quei livelli, dalla torre almohade agli ombrelloni illuminati di notte dell’Encarnación."
+            },
+            {
+              "type": "header",
+              "content": "I · La torre che ha cambiato la religione",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exopzjjcsc9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda: un minareto almohade risalente agli anni ’80 del XII secolo, sormontato nel XVI secolo da un campanile rinascimentale. Foto: JP Files / Unsplash.",
+              "alt": "Il campanile della Giralda che si staglia contro un cielo azzurro e limpido, con il suo fusto in mattoni decorato da motivi a traliccio e sormontato da un campanile rinascimentale bianco e ocra."
+            },
+            {
+              "type": "text",
+              "content": "A Siviglia tutto parte dalla Giralda. Alla fine del XII secolo la città era la capitale occidentale degli Almohadi, una dinastia berbera che governava da Marrakech, e qui costruirono una grande moschea con un minareto abbinato. Il fusto della torre è quasi interamente quello che ci hanno lasciato: un prisma quadrato in mattoni, alto circa cento metri con la sua sommità aggiunta in epoca successiva, le cui facciate sono ricoperte da una rete di archi lobati e motivi a rombi intrecciati chiamati sebka. All’interno non ci sono scale, ma trentacinque rampe, abbastanza larghe, secondo la tradizione, da consentire a un cavaliere a cavallo di raggiungere la cima."
+            },
+            {
+              "type": "text",
+              "content": "Quando Ferdinando III conquistò Siviglia nel 1248, i cristiani conservarono il minareto. Negli anni ’60 del XVI secolo l’architetto Hernán Ruiz il Giovane aggiunse un campanile rinascimentale e la banderuola della Fede – il Giraldillo – che dà il nome alla torre. Il punto di congiunzione tra i due mondi è ancora visibile dalla strada: mattoni islamici nella parte inferiore, pietra bianca e campane nella parte superiore. È l’immagine più emblematica della filosofia della città: nulla viene demolito se può essere riadattato."
+            },
+            {
+              "type": "quote",
+              "content": "Nulla viene demolito se può essere riadattato."
+            },
+            {
+              "type": "header",
+              "content": "II · Una cattedrale grande quanto una decisione",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exrecqmwfrj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cattedrale vista attraverso un arco dal cortile della vecchia moschea, il Patio de los Naranjos. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Un arco scuro in pietra a forma di ferro di cavallo che incornicia i pinnacoli e i contrafforti gotici della Cattedrale di Siviglia sullo sfondo di un cielo di un blu intenso, con gli alberi di arancio in primo piano."
+            },
+            {
+              "type": "text",
+              "content": "La moschea stessa continuò a fungere da cattedrale fino all’inizio del XV secolo. Poi, secondo una frase spesso ripetuta e attribuita al capitolo, i canonici decisero di costruire una chiesa così grande che chi l’avesse vista li avrebbe ritenuti pazzi. I lavori iniziarono nel 1434 sull’impronta della moschea, e il risultato è ancora oggi la più grande cattedrale gotica del mondo in termini di volume. Il cortile degli aranci, dove un tempo i fedeli si lavavano prima della preghiera, fu conservato insieme alla sua fontana, così come la porta almohade sul lato nord."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exq9wpzp2wv.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La navata centrale della Cattedrale di Siviglia: pilastri gotici e volte a costoloni, con una volta rinascimentale di epoca successiva che risplende d’oro nel punto di incrocio delle navate. Foto: Toni Pomar / Unsplash.",
+              "alt": "Guardando verso l&#x27;alto all&#x27;interno della cattedrale: alti pilastri di pietra raggruppati che si innalzano verso volte a costoloni grigie, una volta decorata in oro sulla destra e vetrate colorate in alto sulle pareti."
+            },
+            {
+              "type": "text",
+              "content": "All’interno, le proporzioni assumono un carattere quasi astratto. Cinque navate, pilastri simili a tronchi d’albero, volte che si perdono nell’oscurità – e poi, nel transetto e nelle cappelle laterali, l’oro del XVI secolo. Gli architetti successivi non cercarono di completare l’edificio gotico in stile gotico. Aggiunsero volte rinascimentali, una Cappella Reale in stile plateresco e la vasta pala d’altare scolpita della cappella maggiore, una delle più grandi della cristianità. La cattedrale è diventata ciò che è la città: una sequenza di secoli sotto un unico tetto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyf82gjuswc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una navata laterale: la struttura gotica e, oltre, una volta e una finestra rinascimentali dorate. Foto: Timur Seyfelmlyukov / Unsplash.",
+              "alt": "Una navata alta e in penombra della cattedrale, con pilastri in pietra che incorniciano una volta dorata riccamente scolpita e una vetrata colorata."
+            },
+            {
+              "type": "header",
+              "content": "III · L’Alcázar: un palazzo musulmano per un re cristiano",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exuk3slyxig.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il Patio de las Doncellas, Palazzo di Pedro I, Real Alcázar, la cui costruzione iniziò negli anni ’60 del XIV secolo: una lunga vasca tra giardini incassati, incorniciata da portici in stucco. Foto: Fadi Al Shami / Unsplash.",
+              "alt": "Un lungo bacino rettangolare riflettente che si estende verso un portale scolpito, affiancato da giardini incassati con alberi di arancio e da due ordini di portici con archi lobati e decorazioni in gesso simili a merletti."
+            },
+            {
+              "type": "text",
+              "content": "A pochi passi dalla cattedrale sorge l’edificio che meglio incarna l’immaginario sivigliano. Il Real Alcázar nacque come fortezza-palazzo islamico, ma il suo cuore è il Palazzo di Pedro I, costruito a partire dagli anni ’60 del Trecento per un re castigliano. Pedro fece arrivare artigiani dalla Granada musulmana e da Toledo, i quali gli costruirono un’opera dall’aspetto interamente islamico: archi a lobi, stucchi intagliati delicati come merletti, zoccoli in maiolica, soffitti in legno intagliato, iscrizioni in caratteri arabi che lodavano – tra gli altri – lo stesso sultano cristiano."
+            },
+            {
+              "type": "text",
+              "content": "Questa è l’architettura mudéjar: la tradizione artigianale islamica al servizio di committenti cristiani. Non era uno stile di conquista, ma di ammirazione. Nel Patio de las Doncellas la pianta è quella tipica del giardino andaluso: una lunga vasca sull’asse centrale, aiuole incassate su entrambi i lati, in modo che chi camminava lungo i sentieri vedesse le cime degli aranci all’altezza degli occhi. La galleria superiore è un&#x27;aggiunta rinascimentale del XVI secolo, e la giuntura tra le due è così discreta che la maggior parte dei visitatori non se ne accorge nemmeno."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exx8r3w3ow2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Intagli in gesso, colonne di marmo e archi lobati nel Real Alcázar: i due livelli del palazzo, uno sopra l’altro. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Uno scorcio di un angolo del cortile di un palazzo: archi inferiori con ricchi intagli in gesso, una galleria superiore con colonne slanciate e un lucernario in alto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exw2ooibtii.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cupola del Salone degli Ambasciatori (Salón de Embajadores): un soffitto in legno intagliato e dorato risalente al 1427, il cui motivo è costituito da stelle intrecciate. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Guardando dritto verso l’alto, si vede una cupola in legno scuro ricoperta da un fitto motivo di stelle intrecciate e dorate, che si erge dalle pareti rivestite di piastrelle colorate e stucco."
+            },
+            {
+              "type": "text",
+              "content": "Al centro del palazzo, la Sala degli Ambasciatori si eleva verso una cupola in legno del 1427, dorata e intagliata con un motivo di stelle intrecciate così fitto da sembrare un cielo notturno. È l’interno più bello in assoluto della città. Basta osservarlo a lungo per capire perché Siviglia non abbia mai davvero scelto tra Oriente e Occidente: la cupola fu realizzata per una corte cristiana da artigiani che avevano appreso la geometria dai maestri islamici, e nessuno all’epoca vi vide una contraddizione."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exz5nbg9weu.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Terme di Doña María de Padilla, Real Alcázar: una lunga cisterna sotto volte a costoloni gotiche, situata sotto il giardino. Foto: Despina Galani / Unsplash.",
+              "alt": "Una piscina sotterranea lunga e stretta, illuminata da una luce ambrata, con volte a costoloni appuntite che si riflettono perfettamente nell’acqua immobile, tanto che il tunnel sembra proseguire verso il basso."
+            },
+            {
+              "type": "text",
+              "content": "Sotto i giardini si trova lo spazio più suggestivo del palazzo. Le cosiddette “Terme di Doña María de Padilla” – che prendono il nome dall’amante di Pedro, sebbene in realtà fossero una cisterna per l’acqua piovana – sono una vasca lunga e stretta sotto una volta a costoloni gotica. L’acqua immobile trasforma la volta in un tunnel senza fine. È l’architettura come illusione: qui non c’è nulla di decorato, eppure nulla nell’Alcázar è più bello di questo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey0pmew9oi9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "I giardini dell&#x27;Alcázar: la Piscina di Mercurio e la Galleria del Grottesco, un antico muro decorato nei secoli XVI e XVII. Foto: Andrea Huls Pareja / Unsplash.",
+              "alt": "Una grande piscina in un giardino ombreggiato da palme, con una fontana al centro e, accanto, un muro ad arcate dipinto di ocra con archi grezzi simili a quelli di una grotta."
+            },
+            {
+              "type": "text",
+              "content": "I giardini completano il quadro. Nel corso dei secoli sono stati progettati, riprogettati e ampliati: frutteti islamici, parterre rinascimentali, fontane manieriste, un romantico giardino all’inglese. L’acqua scorre in tutti questi spazi. È la chiave dell’architettura andalusa: in una città dove le temperature estive superano i quaranta gradi, un edificio è innanzitutto una macchina per l’ombra e una piscina è un sistema di climatizzazione."
+            },
+            {
+              "type": "quote",
+              "content": "A Siviglia un edificio è innanzitutto una macchina per fare ombra, e una piscina è un sistema climatico."
+            },
+            {
+              "type": "header",
+              "content": "IV · Il patio come stile di vita",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey1yvmryf2m.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Casa de Pilatos, il cortile principale, inizio del XVI secolo: archi mudéjar e stucchi, fontana in marmo italiano e statue romane. Foto: Jessa Lundquist / Unsplash.",
+              "alt": "Un cortile soleggiato di un palazzo con colonne di marmo bianco, archi lobati con stucchi scolpiti, una galleria superiore, un pavimento in pietra decorato e una statua classica in un angolo."
+            },
+            {
+              "type": "text",
+              "content": "Ciò che l’Alcázar rappresentava per i re, la Casa de Pilatos lo era per l’aristocrazia. Costruita a partire dalla fine del XV secolo dalla famiglia Enríquez de Ribera e completata negli anni ’30 del XVI secolo, racchiude in sé tutto ciò che Siviglia aveva da offrire nel momento in cui la città divenne la porta d’accesso alle Americhe: archi mudéjar e stucchi, balaustre gotiche, una fontana in marmo genovese, statue romane e rinascimentali e decine di migliaia di piastrelle smaltate. La leggenda secondo cui imiterebbe la casa di Pilato a Gerusalemme è solo una leggenda. Il suo vero modello è l’Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey3qugg3pn3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una scala rivestita di piastrelle smaltate (azulejos): i motivi geometrici della tradizione mudéjar, realizzati nelle botteghe di ceramica di Siviglia. Foto: Felicia Varzari / Unsplash.",
+              "alt": "Una parete della scala interamente rivestita di piastrelle smaltate con motivi a stelle e nodi nei colori arancione, verde e blu, sormontata da una ringhiera in ferro nero."
+            },
+            {
+              "type": "text",
+              "content": "Qui e in centinaia di case più modeste si può ammirare il materiale architettonico preferito della città: l’azulejo. Le botteghe di ceramica di Siviglia, molte delle quali situate dall’altra parte del fiume, a Triana, hanno prodotto piastrelle per cinquecento anni – dapprima con motivi geometrici islamici, poi con figure del Rinascimento italiano e infine con disegni in stile neoclassico del XIX secolo. Una piastrella è fresca al tatto, facile da lavare e trasforma una parete in un tappeto. È la risposta sivigliana all’affresco."
+            },
+            {
+              "type": "text",
+              "content": "Il patio è l’altra costante. Dal palazzo di Pedro I ai corrales de vecinos, i cortili comuni del quartiere popolare di Triana, la casa sivigliana volta le spalle alla strada e si apre verso l’interno su un patio con piante, acqua e un porticato. Le strade del centro storico sono strette e tortuose proprio per lo stesso motivo: prima l’ombra, poi la vista."
+            },
+            {
+              "type": "header",
+              "content": "V · L&#x27;oro del fiume",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exsnqlbarwb.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Torre del Oro sul Guadalquivir, costruita dagli Almohadi intorno al 1220–21 come parte delle difese fluviali. Foto: JP Files / Unsplash.",
+              "alt": "Una torre in pietra a dodici lati con merli, sormontata da una torretta più piccola e da una cupola dorata, situata accanto a un viale lungo il fiume fiancheggiato da palme, immersa in una luce calda."
+            },
+            {
+              "type": "text",
+              "content": "Il fiume spiega il resto. La Torre del Oro, una torre almohade a dodici lati risalente agli anni ’20 del XIII secolo, un tempo serviva da punto di ancoraggio per una catena che attraversava il Guadalquivir a protezione del porto. Tre secoli dopo, quel porto divenne il più trafficato d’Europa. Nel 1503 la Corona concesse a Siviglia il monopolio del commercio con le Americhe e, per quasi duecento anni, ogni flotta che trasportava argento dal Nuovo Mondo risaliva questo fiume."
+            },
+            {
+              "type": "text",
+              "content": "Il denaro ha costruito la città che vediamo oggi. La Casa Lonja, la borsa dei mercanti progettata da Juan de Herrera e iniziata nel 1584, oggi sede dell’Archivio delle Indie; il Palazzo Comunale in stile plateresco; e, più tardi, le chiese barocche i cui altari dorati sono quasi accecanti. Quando nel XVIII secolo il commercio si trasferì a Cadice, Siviglia conservò i suoi edifici ma perse la sua fortuna. Il suo edificio industriale più famoso, la Regia Fabbrica del Tabacco, completata negli anni ’70 del Settecento e in seguito teatro dell’opera *Carmen*, è oggi sede dell’università."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eydz01des88.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Torre del Oro al tramonto. Foto: Lucía Saura Prieto / Unsplash.",
+              "alt": "La sagoma della Torre del Oro e delle palme che si staglia contro un cielo serale di un blu intenso, con le luci che brillano sulla riva del fiume."
+            },
+            {
+              "type": "header",
+              "content": "VI · 1929: l&#x27;invenzione di uno stile nazionale",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey5wmnn642r.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Plaza de España, opera di Aníbal González, realizzata in occasione dell’Esposizione Iberoamericana del 1929. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Un imponente edificio semicircolare in mattoni con portici e un&#x27;alta torre decorata, sotto un cielo azzurro, con un&#x27;ampia piazza lastricata e alcune persone davanti."
+            },
+            {
+              "type": "text",
+              "content": "Nel XX secolo Siviglia compì un’impresa inaspettata: si costruì un passato. In occasione dell’Esposizione Iberoamericana del 1929, la città fece sorgere una serie di padiglioni nel Parco María Luisa, mentre l’architetto Aníbal González progettò il suo fulcro, la Plaza de España. Un vasto semicerchio di mattoni, largo circa duecento metri, abbraccia una piazza e un canale sinuoso; due torri in stile barocco ne segnano le estremità; ponti attraversano l’acqua."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey7hwop1c0q.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il canale e i ponti di Plaza de España. Il semicerchio era inteso come un abbraccio della Spagna alle sue ex colonie americane. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Un canale sinuoso con una barca a remi, ponti decorati con balaustre piastrellate e lampioni, i portici in mattoni della Plaza de España sullo sfondo e alberi in fiore dai fiori rosa."
+            },
+            {
+              "type": "text",
+              "content": "Lo stile si chiama Regionalismo ed è un collage voluto: mattoni in stile mudéjar, portici rinascimentali, torri barocche e, soprattutto, piastrelle. Lungo la base si snoda una serie di nicchie piastrellate, una per ogni provincia spagnola, con mappe e scene storiche realizzate in azulejos. Fu concepito come un abbraccio della Spagna alle Americhe. Un secolo dopo è l’edificio più fotografato della città, nonché il più sincero: una struttura moderna che ammette di essere fatta di ricordi."
+            },
+            {
+              "type": "header",
+              "content": "VII · Attraverso il fiume",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eybtwwnpuse.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Case a Triana, l’antico quartiere dei vasai e dei marinai sulla riva occidentale del Guadalquivir. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Una fila di case a tre piani dipinte di bianco, giallo e azzurro chiaro, con infissi color ocra, balconi in ferro battuto e persiane."
+            },
+            {
+              "type": "text",
+              "content": "Triana, sulla riva opposta, è la Siviglia senza monumenti. Le sue case sono dipinte di bianco e ocra, con cornici gialle alle finestre, balconi in ferro battuto e numeri in piastrelle; le sue strade un tempo ospitavano vasai, marinai, cantanti di flamenco e toreri. Questo linguaggio architettonico popolare – calce, colore, ferro, piastrelle – è parte integrante dell’architettura di Siviglia tanto quanto l’Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eycvww9mn2d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il ponte Isabella II, noto come ponte di Triana (1852), il primo ponte permanente in ferro della città. Foto: Taisia Karaseva / Unsplash.",
+              "alt": "Un ponte ad arco in ferro con ornamenti circolari, illuminato dai caldi riflettori durante l’ora blu, che si riflette nel fiume scuro."
+            },
+            {
+              "type": "text",
+              "content": "Le due sponde sono collegate dal Ponte Isabella II del 1852, il primo ponte permanente che attraversa il fiume in città – prima di allora esisteva solo un ponte di barche. I suoi archi in ghisa, decorati con anelli, sono stati realizzati sulla base di un progetto parigino. Di notte, con le sue luci che si riflettono nell’acqua, è la struttura più romantica di Siviglia."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Funghi su una strada romana",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey9kmj9vn69.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Metropol Parasol (“I Funghi”), Plaza de la Encarnación, opera di J. Mayer H., inaugurato nel 2011. Foto: Dmitry Romanoff / Unsplash.",
+              "alt": "Un’enorme struttura ondulata a nido d’ape in legno chiaro che si erge sopra un’ampia scalinata in pietra sotto un cielo azzurro."
+            },
+            {
+              "type": "text",
+              "content": "Per molto tempo la Plaza de la Encarnación è stata un buco nel cuore del centro storico: un mercato demolito, poi un progetto di parcheggio abbandonato, interrotto quando gli scavi hanno portato alla luce resti romani e moreschi. La soluzione, ideata dall’architetto berlinese Jürgen Mayer H., è stata quella di lasciare le rovine al loro posto e di farvi aleggiare sopra una tettoia. Il Metropol Parasol, inaugurato nel 2011, è una struttura a griglia in legno lamellare che forma sei giganteschi ombrelloni. Gli abitanti del posto li hanno soprannominati quasi subito «las setas», ovvero «i funghi»."
+            },
+            {
+              "type": "text",
+              "content": "Sotto, un museo archeologico espone le case romane riportate alla luce; a livello della strada, il mercato è tornato; in alto, una passerella si snoda lungo le curve del tetto. È stato un progetto costoso e controverso, e ancora oggi è oggetto di dibattito. Ma è anche profondamente sivigliano: una struttura il cui scopo principale è quello di fornire ombra, costruita sui resti di città precedenti senza cancellarli."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyawlf32sox.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Di notte, sul tetto del Metropol Parasol, con la cattedrale e la Giralda illuminate all’orizzonte. Foto: María López Jorge / Unsplash.",
+              "alt": "Una vista notturna da una passerella sinuosa sul tetto, illuminata di rosso e arancione, che si affaccia sulla città immersa nell’oscurità verso la cattedrale illuminata e la Giralda in lontananza."
+            },
+            {
+              "type": "text",
+              "content": "Salite sulla passerella di notte e potrete ammirare l’intera storia della città in un unico panorama. Sotto i vostri piedi, un tetto del XXI secolo. Sotto di esso, fondamenta romane. All’orizzonte, illuminato d’oro, un campanile cristiano su un minareto almohade accanto a una cattedrale gotica costruita su una moschea. Siviglia non ha mai dovuto scegliere tra i suoi passati. Si limita a costruire lo strato successivo, lasciando una finestra aperta su quello sottostante."
+            },
+            {
+              "type": "header",
+              "content": "Guardalo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Prenotate in anticipo il Real Alcázar e andateci presto, prima che arrivi il caldo e si affollino i gruppi; per gli appartamenti reali superiori è necessario un biglietto separato. Salite sulla Giralda nel tardo pomeriggio, quando la luce sui tetti assume una tonalità dorata. Visita la Plaza de España al mattino, quando i mattoni assumono una tonalità di rosa tenue, e il Metropol Parasol dopo il tramonto. Raggiungi Triana a piedi attraversando il Ponte Isabel II e vai alla scoperta dei laboratori di ceramica e del Centro Cerámica Triana nella vecchia fabbrica di ceramiche di Santa Ana."
+            },
+            {
+              "type": "note",
+              "content": "Le date e le attribuzioni seguono le fonti standard sulla storia dell&#x27;architettura di Siviglia e i siti ufficiali del Real Alcázar, della cattedrale e del Metropol Parasol. La frase attribuita al capitolo della cattedrale è di tradizione popolare e la sua origine è incerta. Le fotografie sono riprodotte in base alla licenza Unsplash, con l&#x27;indicazione del nome di ciascun fotografo nella didascalia."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:21:16.544Z"
         },
         {
           "id": 90,
