@@ -91801,9 +91801,352 @@
         },
         {
           "id": 86,
-          "title": "Lichtschichten: Wie Sevilla acht Jahrhunderte übereinander gebaut wurde",
-          "excerpt": "Ein Minarett, das zum Glockenturm wurde, eine Moschee, die zur größten gotischen Kathedrale der Welt wurde, ein muslimischer Palast, der für einen christlichen König erbaut wurde, eine Backsteinfantasie aus dem Jahr 1929 und hölzerne Pilze über einer römischen Straße: ein Spaziergang durch die Schichten der Architektur Sevillas.",
-          "category": "Architektur"
+          "draft": false,
+          "title": "Schichten des Lichts: Wie Sevilla acht Jahrhunderte übereinander baute",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "4. November 2026",
+          "excerpt": "Ein Minarett, das zum Glockenturm wurde, eine Moschee, aus der die größte gotische Kathedrale der Welt entstand, ein muslimischer Palast, der für einen christlichen König erbaut wurde, eine Backstein-Fantasie aus dem Jahr 1929 und Holzpilze über einer römischen Straße: ein Spaziergang durch die verschiedenen Schichten der Architektur Sevillas.",
+          "category": "Architektur",
+          "subcategory": "Funktion",
+          "tags": [
+            "Sevilla",
+            "Sevilla",
+            "Architektur",
+            "Giralda",
+            "Kathedrale von Sevilla",
+            "Real Alcázar",
+            "Mudéjar",
+            "Pilatus-Haus",
+            "Fliesen",
+            "Plaza de España",
+            "Metropol Parasol",
+            "Triana",
+            "Andalusien",
+            "Spanien"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+          "previewToken": "7ab1df30fdc4dce94d53d71d",
+          "publishAt": "2026-11-04T01:00:00.000Z",
+          "publishedAt": "2026-11-04T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Giralda und die Kathedrale bei Sonnenuntergang, gesehen über die Dächer der Altstadt hinweg. Foto: Henrique Ferreira / Unsplash.",
+              "alt": "Goldenes Abendlicht auf den Dächern von Sevilla, links der hohe Glockenturm Giralda und daneben die Kuppeln und Turmspitzen der Kathedrale."
+            },
+            {
+              "type": "text",
+              "content": "Manche Städte werden in einem Stil erbaut und dann gegen alle anderen verteidigt. Sevilla tat das Gegenteil. Acht Jahrhunderte lang ließ die Stadt jede neue Macht auf der vorherigen aufbauen – und behielt das Ergebnis schließlich bei. Ein Minarett wurde zum Glockenturm. Eine Moschee wurde zur größten gotischen Kathedrale der Welt. Ein christlicher König ließ von Handwerkern aus Granada und Toledo einen Palast im muslimischen Stil errichten. Adlige der Renaissance ahmten die Innenhöfe der Mauren nach; Architekten des 20. Jahrhunderts schufen aus Ziegeln und Kacheln einen ganz eigenen nationalen Stil; und im Jahr 2011 errichtete ein deutscher Architekt einen Wald aus Holzpilzen über einer römischen Straße."
+            },
+            {
+              "type": "text",
+              "content": "Das Ergebnis ist kein Museum der Stile, sondern eine einzige, vielschichtige Stadt mit ihrer eigenen Logik: Schatten vor Fassade, Wasser vor Ornament, der Innenhof vor der Straße. Um die Architektur Sevillas zu verstehen, muss man sie wie ein Palimpsest lesen – jede Schicht ist durch die nächste hindurch sichtbar. Dies ist ein Spaziergang durch diese Schichten, vom Almohaden-Turm bis zu den nächtlich beleuchteten Sonnenschirmen der Encarnación."
+            },
+            {
+              "type": "header",
+              "content": "I · Der Turm, der die Religion veränderte",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exopzjjcsc9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Giralda: ein Minarett aus der Zeit der Almohaden aus den 1180er Jahren, das im 16. Jahrhundert mit einem Glockenturm im Renaissancestil gekrönt wurde. Foto: JP Files / Unsplash.",
+              "alt": "Der Glockenturm der Giralda ragt vor einem strahlend blauen Himmel empor; sein Backsteinschaft ist mit Gittermustern verziert und wird von einem weiß-ockerfarbenen Glockenstuhl im Renaissancestil gekrönt."
+            },
+            {
+              "type": "text",
+              "content": "In Sevilla dreht sich alles um die Giralda. Im späten 12. Jahrhundert war die Stadt die westliche Hauptstadt der Almohaden, einer Berberdynastie, die von Marrakesch aus herrschte, und sie errichteten hier eine große Moschee mit einem dazu passenden Minarett. Der Turmschaft ist fast vollständig so erhalten, wie sie ihn hinterlassen haben: ein quadratisches Backsteinprisma, etwa hundert Meter hoch einschließlich der späteren Spitze, dessen Seitenflächen mit einem Netz aus Lappenbögen und ineinander verschlungenen Rautenmustern, sogenannten „Sebka“, bedeckt sind. Im Inneren gibt es keine Treppen, sondern fünfunddreißig Rampen, die der Überlieferung zufolge breit genug sind, damit ein Reiter auf seinem Pferd bis ganz nach oben gelangen kann."
+            },
+            {
+              "type": "text",
+              "content": "Als Ferdinand III. im Jahr 1248 Sevilla eroberte, behielten die Christen das Minarett bei. In den 1560er Jahren fügte der Architekt Hernán Ruiz der Jüngere einen Glockenturm im Renaissancestil sowie die Wetterfahne des Glaubens – den Giraldillo – hinzu, die dem Turm seinen Namen gibt. Die Verbindung zwischen den beiden Welten ist von der Straße aus noch immer sichtbar: islamische Ziegel unten, weißer Stein und Glocken oben. Es ist das beste Einzelbild für die Vorgehensweise der Stadt. Nichts wird abgerissen, wenn es umgebaut werden kann."
+            },
+            {
+              "type": "quote",
+              "content": "Nichts wird abgerissen, wenn es umgebaut werden kann."
+            },
+            {
+              "type": "header",
+              "content": "II · Eine Kathedrale von der Größe einer Entscheidung",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exrecqmwfrj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Kathedrale, gesehen durch einen Bogen vom Innenhof der alten Moschee, dem „Patio de los Naranjos“, aus. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Ein dunkler, hufeisenförmiger Steinbogen, der die gotischen Zinnen und Strebepfeiler der Kathedrale von Sevilla vor einem tiefblauen Himmel einrahmt, darunter Orangenbäume."
+            },
+            {
+              "type": "text",
+              "content": "Die Moschee selbst bestand bis ins frühe 15. Jahrhundert als Kathedrale fort. Dann beschlossen die Kanoniker – so lautet eine oft wiederholte, dem Domkapitel zugeschriebene Aussage – eine Kirche zu errichten, die so groß sein sollte, dass diejenigen, die sie sähen, sie für verrückt hielten. Die Arbeiten begannen 1434 auf dem Grundriss der Moschee, und das Ergebnis ist bis heute die volumenmäßig größte gotische Kathedrale der Welt. Der Orangenbaumhof, in dem sich die Gläubigen einst vor dem Gebet wuschen, blieb mit seinem Brunnen erhalten, ebenso wie das Almohaden-Tor an seiner Nordseite."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exq9wpzp2wv.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Hauptschiff der Kathedrale von Sevilla: gotische Pfeiler und Rippengewölbe, mit einem späteren Renaissancegewölbe, das am Querschiff golden schimmert. Foto: Toni Pomar / Unsplash.",
+              "alt": "Blick hinauf in die Kathedrale: hohe, dicht beieinander stehende Steinpfeiler, die zu grauen Rippengewölben emporragen, ein golden verziertes Gewölbe auf der rechten Seite und Buntglasfenster hoch oben an den Wänden."
+            },
+            {
+              "type": "text",
+              "content": "Im Inneren wirkt die Dimension fast abstrakt. Fünf Schiffe, Pfeiler wie Baumstämme, Gewölbe, die in der Dunkelheit verschwinden – und dann, im Querschiff und in den Seitenkapellen, das Gold des 16. Jahrhunderts. Spätere Architekten versuchten nicht, das gotische Bauwerk im gotischen Stil zu vollenden. Sie fügten Renaissancegewölbe, eine königliche Kapelle im Platereskstil und den gewaltigen, geschnitzten Altaraufsatz der Hauptkapelle hinzu, einen der größten in der Christenheit. Die Kathedrale wurde zu dem, was die Stadt ausmacht: eine Abfolge von Jahrhunderten unter einem Dach."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyf82gjuswc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein Seitenschiff: die gotische Bauweise und dahinter ein vergoldetes Renaissance-Gewölbe sowie ein Fenster. Foto: Timur Seyfelmlyukov / Unsplash.",
+              "alt": "Ein hoher, schummriger Seitenschiff der Kathedrale mit Steinpfeilern, die ein reich verziertes goldenes Gewölbe und ein Buntglasfenster einrahmen."
+            },
+            {
+              "type": "header",
+              "content": "III · Der Alcázar: Ein muslimischer Palast für einen christlichen König",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exuk3slyxig.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der „Patio de las Doncellas“ im Palast von Pedro I., Real Alcázar, dessen Bau in den 1360er Jahren begann: ein langgestrecktes Wasserbecken zwischen versunkenen Gärten, eingerahmt von Stuckarkaden. Foto: Fadi Al Shami / Unsplash.",
+              "alt": "Ein langer, rechteckiger Spiegelteich, der auf ein geschnitztes Tor zuläuft, flankiert von versenkten Gärten mit Orangenbäumen und zwei Stockwerken Arkaden mit Lappenbögen und spitzenartigen Stuckverzierungen."
+            },
+            {
+              "type": "text",
+              "content": "Nur wenige Schritte von der Kathedrale entfernt steht das Gebäude, das die Fantasie der Sevillaner am besten verkörpert. Der Real Alcázar entstand ursprünglich als islamische Festungsanlage, doch sein Herzstück ist der Palast von Pedro I., der ab den 1360er Jahren für einen kastilischen König erbaut wurde. Pedro holte Handwerker aus dem muslimischen Granada und aus Toledo, und sie errichteten ihm ein Bauwerk, das durch und durch islamisch anmutet: Lappenbögen, geschnitzter Putz, fein wie Spitze, Wandverkleidungen aus glasierten Kacheln, geschnitzte Holzdecken sowie Inschriften in arabischer Schrift, die unter anderem den christlichen Sultan selbst preisen."
+            },
+            {
+              "type": "text",
+              "content": "Das ist Mudéjar-Architektur: die islamische Handwerkstradition im Dienste christlicher Auftraggeber. Es war kein Stil der Eroberung, sondern der Bewunderung. Im „Patio de las Doncellas“ entspricht der Grundriss einem typisch andalusischen Garten: ein langes Wasserbecken auf der Mittelachse, zu beiden Seiten versenkte Blumenbeete, sodass die Menschen, die auf den Wegen spazieren gingen, die Kronen der Orangenbäume auf Augenhöhe sehen konnten. Die obere Galerie ist ein Anbau aus der Renaissance des 16. Jahrhunderts, und der Übergang zwischen den beiden ist so harmonisch, dass die meisten Besucher ihn gar nicht bemerken."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exx8r3w3ow2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Geschnitzter Putz, Marmorsäulen und Lappenbögen im Real Alcázar: zwei übereinanderliegende Ebenen des Palastes. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Blick in eine Ecke eines Palasthofs: untere Bögen mit aufwendigen Stuckverzierungen, eine obere Galerie mit schlanken Säulen und darüber ein Oberlicht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exw2ooibtii.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Kuppel des Botschafter saals (Salón de Embajadores): eine geschnitzte und vergoldete Holzdecke aus dem Jahr 1427, deren Muster aus ineinander verschlungenen Sternen besteht. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Der Blick richtet sich direkt nach oben auf eine dunkle Holzkuppel, die mit einem dichten Muster aus vergoldeten, ineinander verschlungenen Sternen verziert ist und sich aus den Wänden aus bunten Fliesen und Stuck erhebt."
+            },
+            {
+              "type": "text",
+              "content": "Im Zentrum des Palastes erhebt sich der Botschafter-Saal mit einer Holzkuppel aus dem Jahr 1427, die vergoldet und mit einem Muster aus ineinander verschlungenen Sternen verziert ist, das so dicht ist, dass es wie ein Nachthimmel wirkt. Es ist der schönste Innenraum der ganzen Stadt. Wenn man ihn lange genug betrachtet, versteht man, warum Sevilla sich nie wirklich zwischen Ost und West entscheiden musste: Die Kuppel wurde für einen christlichen Hof von Handwerkern geschaffen, die ihre Geometrie von islamischen Meistern gelernt hatten, und niemand sah darin damals einen Widerspruch."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exz5nbg9weu.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Bäder der Doña María de Padilla, Real Alcázar: eine lange Zisterne unter gotischen Rippengewölben, unterhalb des Gartens. Foto: Despina Galani / Unsplash.",
+              "alt": "Ein langer, schmaler, unterirdischer Pool, der in bernsteinfarbenem Licht erstrahlt; die spitzen Rippengewölbe spiegeln sich perfekt im stillen Wasser wider, sodass der Tunnel sich scheinbar weiter nach unten erstreckt."
+            },
+            {
+              "type": "text",
+              "content": "Unterhalb der Gärten befindet sich der filmischste Raum des Palasts. Die sogenannten Bäder der Doña María de Padilla – benannt nach Pedros Geliebter, obwohl es sich in Wirklichkeit um eine Regenwasserzisterne handelte – sind ein langes, schmales Becken unter einem gotischen Rippengewölbe. Das stille Wasser lässt das Gewölbe wie einen endlosen Tunnel erscheinen. Es ist Architektur als Illusion: Nichts hier ist verziert, und doch gibt es im Alcázar nichts Schöneres."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey0pmew9oi9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Gärten des Alcázar: der Merkur-Brunnen und die Arkadengalerie der Grotesken, eine alte Mauer, die im 16. und 17. Jahrhundert neu gestaltet wurde. Foto: Andrea Huls Pareja / Unsplash.",
+              "alt": "Ein großer Pool in einem von Palmen beschatteten Garten, mit einem Springbrunnen in der Mitte und einer ockerfarbenen Arkadenmauer mit groben, grottenartigen Bögen daneben."
+            },
+            {
+              "type": "text",
+              "content": "Die Gärten runden das Bild ab. Im Laufe der Jahrhunderte wurden sie angelegt, umgestaltet und erweitert – islamische Obstgärten, Parterres der Renaissance, manieristische Brunnen, ein romantischer englischer Garten. Durch alle fließt Wasser. Es ist der Schlüssel zur andalusischen Architektur: In einer Stadt, in der die Sommertemperaturen über vierzig Grad steigen, ist ein Gebäude in erster Linie eine Maschine, die Schatten spendet, und ein Wasserbecken ein Klimasystem."
+            },
+            {
+              "type": "quote",
+              "content": "In Sevilla ist ein Gebäude in erster Linie eine Maschine, die Schatten spendet, und ein Pool ist ein Klimasystem."
+            },
+            {
+              "type": "header",
+              "content": "IV · Die Terrasse als Lebensart",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey1yvmryf2m.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Casa de Pilatos, der Hauptinnenhof, Anfang des 16. Jahrhunderts: Mudéjar-Bögen und Stuck, ein Brunnen aus italienischem Marmor und römische Statuen. Foto: Jessa Lundquist / Unsplash.",
+              "alt": "Ein sonnendurchfluteter Palastinnenhof mit Säulen aus weißem Marmor, Laubbögen mit verziertem Stuck, einer oberen Galerie, einem gemusterten Steinboden und einer klassischen Statue in einer Ecke."
+            },
+            {
+              "type": "text",
+              "content": "Was der Alcázar für die Könige war, war die Casa de Pilatos für den Adel. Das Gebäude wurde ab dem späten 15. Jahrhundert von der Familie Enríquez de Ribera erbaut und in den 1530er Jahren fertiggestellt; es vereint alles, was Sevilla zu der Zeit zu bieten hatte, als die Stadt zum Tor nach Amerika wurde: Mudéjar-Bögen und Stuck, gotische Balustraden, einen Brunnen aus genuesischem Marmor, römische und Renaissance-Statuen sowie Zehntausende glasierter Kacheln. Die Legende, dass es das Haus des Pilatus in Jerusalem nachahmt, ist nur eine Legende. Sein eigentliches Vorbild ist der Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey3qugg3pn3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Eine mit glasierten Fliesen (Azulejos) verkleidete Treppe: die geometrischen Muster der Mudéjar-Tradition, hergestellt in den Töpfereien von Sevilla. Foto: Felicia Varzari / Unsplash.",
+              "alt": "Eine Treppenwand, die vollständig mit glasierten Fliesen mit orangefarbenen, grünen und blauen Stern- und Knotenmustern verkleidet ist, darüber ein schwarzes Eisengeländer."
+            },
+            {
+              "type": "text",
+              "content": "Hier und in Hunderten bescheidenerer Häuser sieht man den beliebtesten Baustoff der Stadt: das Azulejo. Die Töpfereien Sevillas, von denen sich viele jenseits des Flusses in Triana befinden, stellten fünfhundert Jahre lang Kacheln her – zunächst mit islamischen geometrischen Mustern, später mit Figuren der italienischen Renaissance und schließlich mit Motiven im Stil der Neorenaissance des 19. Jahrhunderts. Eine Kachel fühlt sich kühl an, lässt sich leicht reinigen und verwandelt eine Wand in einen Teppich. Sie ist die sevillanische Antwort auf das Fresko."
+            },
+            {
+              "type": "text",
+              "content": "Der Innenhof ist die andere Konstante. Vom Palast Pedros I. bis hin zu den „Corrales de vecinos“, den Gemeinschaftshöfen des Arbeiterviertels Triana: Das sevillanische Haus wendet der Straße den Rücken zu und öffnet sich nach innen hin zu einem Innenhof mit Pflanzen, Wasser und einer Arkade. Die Straßen der Altstadt sind aus demselben Grund eng und verwinkelt: Erst kommt der Schatten, dann die Aussicht."
+            },
+            {
+              "type": "header",
+              "content": "V · Gold aus dem Fluss",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exsnqlbarwb.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Torre del Oro am Guadalquivir, der um 1220–21 von den Almohaden als Teil der Flussbefestigung erbaut wurde. Foto: JP Files / Unsplash.",
+              "alt": "Ein zwölfseitiger, mit Zinnen versehener Steinturm mit einem kleineren Aufsatz und einer goldenen Kuppel, direkt an einer von Palmen gesäumten Uferpromenade im warmen Licht."
+            },
+            {
+              "type": "text",
+              "content": "Der Fluss erklärt den Rest. Der Torre del Oro, ein zwölfseitiger Almohaden-Turm aus den 1220er Jahren, diente einst dazu, eine Kette über den Guadalquivir zu spannen, um den Hafen zu schützen. Drei Jahrhunderte später wurde dieser Hafen zum verkehrsreichsten Europas. Im Jahr 1503 gewährte die Krone Sevilla das Monopol für den Handel mit Amerika, und fast zweihundert Jahre lang fuhr jede Flotte, die Silber aus der Neuen Welt transportierte, diesen Fluss hinauf."
+            },
+            {
+              "type": "text",
+              "content": "Das Geld schuf die Stadt, die wir heute sehen: die Casa Lonja, die von Juan de Herrera entworfene Handelsbörse, deren Bau 1584 begann und die heute das Archiv der Indias beherbergt; das Rathaus im Platereskstil; und später die barocken Kirchen, deren vergoldete Altarbilder fast schon blendend wirken. Als der Handel im 18. Jahrhundert nach Cádiz verlagert wurde, behielt Sevilla seine Gebäude, verlor aber sein Vermögen. Sein berühmtestes Industriegebäude, die Königliche Tabakfabrik, die in den 1770er Jahren fertiggestellt wurde und später Schauplatz der Oper „Carmen“ war, beherbergt heute die Universität."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eydz01des88.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Torre del Oro in der Abenddämmerung. Foto: Lucía Saura Prieto / Unsplash.",
+              "alt": "Die Silhouette des Torre del Oro und der Palmen vor einem tiefblauen Abendhimmel, während am Flussufer die Lichter leuchten."
+            },
+            {
+              "type": "header",
+              "content": "VI · 1929: Die Erfindung eines nationalen Stils",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey5wmnn642r.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Plaza de España, von Aníbal González, erbaut für die Iberoamerikanische Ausstellung von 1929. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Ein riesiges, halbkreisförmiges Backsteingebäude mit Arkaden und einem hohen, kunstvoll verzierten Turm vor blauem Himmel, davor ein weitläufiger, gepflasterter Platz mit einigen wenigen Menschen."
+            },
+            {
+              "type": "text",
+              "content": "Im 20. Jahrhundert tat Sevilla etwas Unerwartetes: Es schuf sich eine Vergangenheit. Für die Iberoamerikanische Ausstellung von 1929 errichtete die Stadt Pavillons im María-Luisa-Park, und der Architekt Aníbal González entwarf deren Herzstück, die Plaza de España. Ein riesiger Halbkreis aus Backstein mit einem Durchmesser von etwa zweihundert Metern umschließt einen Platz und einen geschwungenen Kanal; zwei Türme im Barockstil markieren die Enden; Brücken führen über das Wasser."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey7hwop1c0q.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Kanal und die Brücken der Plaza de España. Der Halbkreis sollte eine Umarmung Spaniens an seine ehemaligen amerikanischen Kolonien symbolisieren. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Ein geschwungener Kanal mit einem Ruderboot, kunstvoll verzierte Brücken mit gekachelten Balustraden und Laternenpfählen, dahinter die Backsteinarkaden der Plaza de España und rosa blühende Bäume."
+            },
+            {
+              "type": "text",
+              "content": "Der Stil wird als Regionalismus bezeichnet und ist eine bewusste Collage: Ziegel im Mudéjar-Stil, Arkaden aus der Renaissance, barocke Türme und vor allem Kacheln. Entlang des Sockels verläuft eine Reihe von gekachelten Nischen, eine für jede spanische Provinz, mit Landkarten und historischen Szenen aus Azulejos. Das Gebäude wurde als eine Umarmung Spaniens an Amerika konzipiert. Ein Jahrhundert später ist es das meistfotografierte Gebäude der Stadt und zugleich ihr ehrlichstes: ein modernes Bauwerk, das zugibt, aus Erinnerungen zu bestehen."
+            },
+            {
+              "type": "header",
+              "content": "VII · Über den Fluss",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eybtwwnpuse.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Häuser in Triana, dem alten Töpfer- und Seemannsviertel am Westufer des Guadalquivir. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Eine Reihe dreistöckiger Häuser, die weiß, gelb und hellblau gestrichen sind, mit ockerfarbenen Fensterrahmen, schmiedeeisernen Balkonen und Fensterläden."
+            },
+            {
+              "type": "text",
+              "content": "Triana, am anderen Ufer gelegen, ist das Sevilla ohne Denkmäler. Die Häuser sind weiß und ockerfarben gestrichen, mit gelben Fensterrahmen, Eisenbalkonen und Hausnummern aus Kacheln; in diesen Straßen lebten einst Töpfer, Seeleute, Flamencosänger und Stierkämpfer. Diese traditionelle Bauweise – Kalk, Farbe, Eisen, Kacheln – gehört ebenso zur Architektur Sevillas wie der Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eycvww9mn2d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Isabel-II.-Brücke, auch bekannt als Triana-Brücke (1852), die erste feste Eisenbrücke der Stadt. Foto: Taisia Karaseva / Unsplash.",
+              "alt": "Eine eiserne Bogenbrücke mit kreisförmigen Verzierungen, die in der blauen Stunde von warmen Straßenlaternen beleuchtet wird und sich im dunklen Fluss spiegelt."
+            },
+            {
+              "type": "text",
+              "content": "Die beiden Ufer werden durch die Isabel-II.-Brücke aus dem Jahr 1852 verbunden, die erste feste Brücke über den Fluss in der Stadt – zuvor gab es dort lediglich eine Pontonbrücke. Ihre mit Ringen verzierten gusseisernen Bögen wurden nach einem Pariser Vorbild gestaltet. Nachts, wenn sich ihre Lichter im Wasser spiegeln, ist sie das romantischste Bauwerk Sevillas."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Pilze über einer römischen Straße",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey9kmj9vn69.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Metropol Parasol („Las Setas“), Plaza de la Encarnación, entworfen von J. Mayer H., eröffnet im Jahr 2011. Foto: Dmitry Romanoff / Unsplash.",
+              "alt": "Eine riesige, wellenförmige Wabenstruktur aus hellem Holz, die sich unter blauem Himmel über breite Steinstufen erhebt."
+            },
+            {
+              "type": "text",
+              "content": "Lange Zeit war die Plaza de la Encarnación ein Loch mitten in der Altstadt: erst ein abgerissener Markt, dann ein aufgegebenes Parkhausprojekt, das gestoppt wurde, als bei Ausgrabungen römische und maurische Überreste zutage traten. Die Lösung des Berliner Architekten Jürgen Mayer H. bestand darin, die Ruinen an Ort und Stelle zu belassen und ein Vordach darüber zu spannen. Der 2011 eröffnete „Metropol Parasol“ besteht aus einem Gitterwerk aus Brettschichtholz, das zu sechs riesigen Sonnenschirmen geformt ist. Die Einheimischen nannten sie fast sofort „las setas“ – die Pilze."
+            },
+            {
+              "type": "text",
+              "content": "Darunter zeigt ein archäologisches Museum die ausgegrabenen römischen Häuser; auf Straßenebene ist der Markt zurückgekehrt; oben schlängelt sich ein Fußweg über die Rundungen des Daches. Es war teuer und umstritten, und es wird immer noch darüber diskutiert. Aber es ist auch zutiefst sevillanisch: ein Bauwerk, dessen Hauptaufgabe darin besteht, Schatten zu spenden, und das über den Überresten früherer Städte errichtet wurde, ohne diese zu verdecken."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyawlf32sox.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Nachts auf dem Dach des Metropol Parasol, mit der beleuchteten Kathedrale und der Giralda am Horizont. Foto: María López Jorge / Unsplash.",
+              "alt": "Ein Nachtblick von einem geschwungenen, in Rot und Orange beleuchteten Dachgang, der über die dunkle Stadt hinweg auf die beleuchtete Kathedrale und die Giralda in der Ferne führt."
+            },
+            {
+              "type": "text",
+              "content": "Steigt man nachts auf die Aussichtsplattform, sieht man das gesamte Spektrum der Stadt auf einen Blick. Unter den Füßen ein Dach aus dem 21. Jahrhundert. Darunter römische Fundamente. Am Horizont, in goldenes Licht getaucht, ein christlicher Glockenturm auf einem Almohaden-Minarett neben einer gotischen Kathedrale, die auf einer Moschee errichtet wurde. Sevilla musste sich nie zwischen seinen verschiedenen Vergangenheiten entscheiden. Es baut einfach die nächste Schicht darauf und lässt ein Fenster offen, durch das man auf die darunterliegende blicken kann."
+            },
+            {
+              "type": "header",
+              "content": "Schau es dir an",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Buchen Sie den Real Alcázar im Voraus und kommen Sie früh, bevor die Hitze einsetzt und die Reisegruppen eintreffen; für die oberen königlichen Gemächer benötigen Sie eine separate Eintrittskarte. Besteigen Sie die Giralda am späten Nachmittag, wenn das Licht auf den Dächern golden schimmert. Besuchen Sie die Plaza de España am Morgen, wenn die Ziegel ein zartes Rosa annehmen, und den Metropol Parasol nach Einbruch der Dunkelheit. Überqueren Sie die Isabel-II-Brücke zu Fuß nach Triana und suchen Sie die Keramikwerkstätten sowie das Centro Cerámica Triana in der alten Töpferei Santa Ana auf."
+            },
+            {
+              "type": "note",
+              "content": "Die Datierungen und Quellenangaben orientieren sich an den gängigen Architekturgeschichten Sevillas sowie an den offiziellen Websites des Real Alcázar, der Kathedrale und des Metropol Parasol. Der dem Domkapitel zugeschriebene Satz ist überliefert, seine Quelle ist jedoch ungewiss. Die Fotos werden unter der Unsplash-Lizenz wiedergegeben, wobei jeder Fotograf in der Bildunterschrift genannt wird."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:20:33.239Z"
         },
         {
           "id": 87,
