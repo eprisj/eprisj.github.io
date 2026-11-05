@@ -114593,9 +114593,352 @@
         },
         {
           "id": 86,
-          "title": "Capas de luz: cómo Sevilla construyó ocho siglos uno sobre otro",
-          "excerpt": "Un alminar que se convirtió en campanario, una mezquita que se convirtió en la catedral gótica más grande del mundo, un palacio musulmán construido para un rey cristiano, una fantasía de ladrillo de 1929 y setas de madera sobre una calle romana: un paseo por las capas de la arquitectura de Sevilla.",
-          "category": "Arquitectura"
+          "draft": false,
+          "title": "Capas de luz: cómo Sevilla se fue construyendo a lo largo de ocho siglos, una sobre otra",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "4 de noviembre de 2026",
+          "excerpt": "Un minarete que se convirtió en campanario, una mezquita que se transformó en la catedral gótica más grande del mundo, un palacio musulmán construido para un rey cristiano, una fantasía de ladrillo de 1929 y setas de madera sobre una calle romana: un paseo por las capas de la arquitectura de Sevilla.",
+          "category": "Arquitectura",
+          "subcategory": "Característica",
+          "tags": [
+            "Sevilla",
+            "Sevilla",
+            "arquitectura",
+            "Giralda",
+            "Catedral de Sevilla",
+            "Real Alcázar",
+            "Mudéjar",
+            "Casa de Pilatos",
+            "azulejos",
+            "Plaza de España",
+            "Metropol Parasol",
+            "Triana",
+            "Andalucía",
+            "España"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+          "previewToken": "7ab1df30fdc4dce94d53d71d",
+          "publishAt": "2026-11-04T01:00:00.000Z",
+          "publishedAt": "2026-11-04T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda y la catedral al atardecer, vistas desde los tejados del casco antiguo. Foto: Henrique Ferreira / Unsplash.",
+              "alt": "La luz dorada del atardecer sobre los tejados de Sevilla, con la alta Giralda a la izquierda y las cúpulas y pináculos de la catedral junto a ella."
+            },
+            {
+              "type": "text",
+              "content": "Algunas ciudades se construyen siguiendo un único estilo y luego se defienden frente a todos los demás. Sevilla hizo lo contrario. Durante ocho siglos, dejó que cada nuevo poder construyera sobre lo que había dejado el anterior… y luego conservó el resultado. Un minarete se convirtió en un campanario. Una mezquita se convirtió en la catedral gótica más grande del mundo. Un rey cristiano encargó un palacio de estilo musulmán a artesanos de Granada y Toledo. Los nobles del Renacimiento copiaron los patios de los moros; los arquitectos del siglo XX inventaron todo un estilo nacional a partir del ladrillo y los azulejos; y en 2011, un arquitecto alemán colocó un bosque de setas de madera sobre una calle romana."
+            },
+            {
+              "type": "text",
+              "content": "El resultado no es un museo de estilos, sino una ciudad única, compuesta por múltiples capas y con su propia lógica: la sombra antes que la fachada, el agua antes que la ornamentación, el patio antes que la calle. Para comprender la arquitectura de Sevilla hay que leerla como un palimpsesto: cada capa se vislumbra a través de la siguiente. Este es un recorrido por esas capas, desde la torre almohade hasta las sombrillas iluminadas por la noche de la Encarnación."
+            },
+            {
+              "type": "header",
+              "content": "I · La torre que cambió la religión",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exopzjjcsc9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda: un minarete almohade de la década de 1180, coronado por un campanario renacentista en el siglo XVI. Foto: JP Files / Unsplash.",
+              "alt": "El campanario de la Giralda se alza contra un cielo azul y despejado, con su fuste de ladrillo cubierto de motivos enrejados y coronado por una galería renacentista de color blanco y ocre."
+            },
+            {
+              "type": "text",
+              "content": "En Sevilla, todo empieza por la Giralda. A finales del siglo XII, la ciudad era la capital occidental de los almohades, una dinastía bereber que gobernaba desde Marrakech, y construyeron aquí una gran mezquita con un minarete a juego. El fuste de la torre es casi en su totalidad lo que ellos dejaron: un prisma cuadrado de ladrillo, de unos cien metros de altura con su remate posterior, cuyas caras están cubiertas por una red de arcos lobulados y motivos entrelazados en forma de rombo llamados «sebka». En el interior no hay escaleras, sino treinta y cinco rampas, lo suficientemente anchas, según cuenta la leyenda, como para que un jinete a caballo pudiera llegar hasta la cima."
+            },
+            {
+              "type": "text",
+              "content": "Cuando Fernando III tomó Sevilla en 1248, los cristianos conservaron el minarete. En la década de 1560, el arquitecto Hernán Ruiz el Joven añadió un campanario renacentista y la veleta de la Fe —el Giraldillo—, que da nombre a la torre. La unión entre ambos mundos sigue siendo visible desde la calle: ladrillo islámico en la parte inferior, piedra blanca y campanas en la superior. Es la mejor imagen que ilustra el enfoque de la ciudad: no se derriba nada si se puede reconvertir."
+            },
+            {
+              "type": "quote",
+              "content": "No se derriba nada si se puede reformar."
+            },
+            {
+              "type": "header",
+              "content": "II · Una catedral del tamaño de una decisión",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exrecqmwfrj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La catedral vista a través de un arco desde el patio de la antigua mezquita, el Patio de los Naranjos. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Un arco de piedra oscura en forma de herradura que enmarca los pináculos y contrafuertes góticos de la catedral de Sevilla contra un cielo azul intenso, con naranjos a sus pies."
+            },
+            {
+              "type": "text",
+              "content": "La propia mezquita se conservó como catedral hasta principios del siglo XV. Entonces, según una frase muy repetida atribuida al cabildo, los canónigos decidieron construir una iglesia tan grande que quienes la vieran pensarían que estaban locos. Las obras comenzaron en 1434 sobre la planta de la mezquita, y el resultado sigue siendo, en volumen, la catedral gótica más grande del mundo. Se conservó el patio de los naranjos, donde antaño los fieles se lavaban antes de la oración, con su fuente, al igual que la puerta almohade situada en su lado norte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exq9wpzp2wv.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La nave de la catedral de Sevilla: pilares góticos y bóvedas de crucería, con una bóveda renacentista posterior que resplandece con tonos dorados en el crucero. Foto: Toni Pomar / Unsplash.",
+              "alt": "Al levantar la vista hacia el interior de la catedral: altos pilares de piedra agrupados que se elevan hasta las bóvedas de crucería grises, una bóveda decorada en dorado a la derecha y vidrieras en lo alto de las paredes."
+            },
+            {
+              "type": "text",
+              "content": "En el interior, la escala resulta casi abstracta. Cinco naves, pilares como troncos de árbol, bóvedas que se pierden en la penumbra… y luego, en el crucero y las capillas laterales, el oro del siglo XVI. Los arquitectos posteriores no intentaron terminar el edificio gótico en estilo gótico. Añadieron bóvedas renacentistas, una Capilla Real plateresca y el enorme retablo tallado de la capilla mayor, uno de los más grandes de la cristiandad. La catedral se convirtió en lo que es la ciudad: una sucesión de siglos bajo un mismo techo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyf82gjuswc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una nave lateral: la estructura gótica y, más allá, una bóveda y una ventana renacentistas doradas. Foto: Timur Seyfelmlyukov / Unsplash.",
+              "alt": "Un pasillo alto y en penumbra de la catedral, con pilares de piedra que enmarcan una bóveda dorada ricamente tallada y una vidriera."
+            },
+            {
+              "type": "header",
+              "content": "III · El Alcázar: un palacio musulmán para un rey cristiano",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exuk3slyxig.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El Patio de las Doncellas, del Palacio de Pedro I, en el Real Alcázar, cuya construcción se inició en la década de 1360: un largo estanque entre jardines hundidos, enmarcado por arcadas de estuco. Foto: Fadi Al Shami / Unsplash.",
+              "alt": "Un largo estanque rectangular reflectante que se extiende hacia una puerta tallada, flanqueado por jardines hundidos de naranjos y dos plantas de arcadas con arcos lobulados y decoraciones de yeso con motivos de encaje."
+            },
+            {
+              "type": "text",
+              "content": "A pocos pasos de la catedral se alza el edificio que mejor refleja el imaginario sevillano. El Real Alcázar comenzó siendo una fortaleza-palacio islámica, pero su corazón es el Palacio de Pedro I, construido a partir de la década de 1360 para un rey castellano. Pedro trajo artesanos de la Granada musulmana y de Toledo, y estos le construyeron algo que parece totalmente islámico: arcos lobulados, yeso tallado tan delicado como el encaje, zócalos de azulejos vidriados, techos de madera tallada e inscripciones en escritura árabe que alaban —entre otros— al propio sultán cristiano."
+            },
+            {
+              "type": "text",
+              "content": "Esto es arquitectura mudéjar: la tradición artesanal islámica al servicio de mecenas cristianos. No fue un estilo de conquista, sino de admiración. En el Patio de las Doncellas, la planta es la de un auténtico jardín andaluz: un largo estanque en el eje central, parterres hundidos a ambos lados, de modo que quienes caminaban por los senderos veían las copas de los naranjos a la altura de los ojos. La galería superior es una adición renacentista del siglo XVI, y la unión entre ambas es tan discreta que la mayoría de los visitantes ni siquiera se da cuenta."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exx8r3w3ow2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Yesos tallados, columnas de mármol y arcos lobulados en el Real Alcázar: dos niveles del palacio, uno encima del otro. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Vista de un rincón del patio de un palacio: arcos inferiores con abundantes decoraciones talladas en yeso, una galería superior de columnas esbeltas y una claraboya en lo alto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exw2ooibtii.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cúpula del Salón de los Embajadores: un techo de madera tallada y dorada de 1427, cuyo diseño se compone de estrellas entrelazadas. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Al levantar la vista hacia una cúpula de madera oscura, cubierta por un denso entramado de estrellas entrelazadas y doradas, que se eleva desde las paredes de azulejos de colores y yeso."
+            },
+            {
+              "type": "text",
+              "content": "En el centro del palacio, el Salón de los Embajadores se eleva hasta una cúpula de madera de 1427, dorada y tallada con un motivo de estrellas entrelazadas tan denso que parece un cielo nocturno. Es, sin duda, el interior más bello de la ciudad. Si lo contemplas con detenimiento, comprenderás por qué Sevilla nunca se decantó realmente entre Oriente y Occidente: la cúpula fue construida para una corte cristiana por artesanos que habían aprendido geometría de maestros islámicos, y nadie en aquella época vio en ello ninguna contradicción."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exz5nbg9weu.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Las termas de Doña María de Padilla, en el Real Alcázar: una larga cisterna bajo bóvedas góticas de crucería, situada debajo del jardín. Foto: Despina Galani / Unsplash.",
+              "alt": "Una piscina subterránea larga y estrecha, iluminada con luz ámbar, con bóvedas ojivales que se reflejan perfectamente en el agua tranquila, de modo que el túnel parece prolongarse hacia abajo."
+            },
+            {
+              "type": "text",
+              "content": "Debajo de los jardines se encuentra el espacio más «cinematográfico» del palacio. Los llamados «Baños de Doña María de Padilla» —que reciben su nombre de la amante de Pedro, aunque en realidad se trataba de una cisterna de agua de lluvia— son una piscina larga y estrecha situada bajo una bóveda de crucería gótica. El agua tranquila convierte la bóveda en un túnel sin fin. Es arquitectura como ilusión: aquí no hay nada decorado y, sin embargo, nada en el Alcázar es más bello."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey0pmew9oi9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Los jardines del Alcázar: la Piscina de Mercurio y la Galería de los Grotescos, una antigua muralla decorada en los siglos XVI y XVII. Foto: Andrea Huls Pareja / Unsplash.",
+              "alt": "Una gran piscina en un jardín a la sombra de las palmeras, con una fuente en el centro y, junto a ella, un muro con arcadas pintado de ocre y con arcos irregulares que recuerdan a una gruta."
+            },
+            {
+              "type": "text",
+              "content": "Los jardines completan la lección. A lo largo de los siglos se han diseñado, rediseñado y ampliado: huertos islámicos, parterres renacentistas, fuentes manieristas, un jardín inglés romántico. El agua discurre por todos ellos. Es la clave de la arquitectura andaluza: en una ciudad donde las temperaturas en verano superan los cuarenta grados, un edificio es, ante todo, una máquina de sombra, y una piscina es un sistema de climatización."
+            },
+            {
+              "type": "quote",
+              "content": "En Sevilla, un edificio es, ante todo, una máquina de dar sombra, y una piscina es un sistema climático."
+            },
+            {
+              "type": "header",
+              "content": "IV · El patio como estilo de vida",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey1yvmryf2m.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Casa de Pilatos, el patio principal, principios del siglo XVI: arcos mudéjares y estuco, fuente de mármol italiano y estatuas romanas. Foto: Jessa Lundquist / Unsplash.",
+              "alt": "Un patio soleado de un palacio con columnas de mármol blanco, arcos lobulados con yeso tallado, una galería superior, un suelo de piedra con motivos decorativos y una estatua clásica en una esquina."
+            },
+            {
+              "type": "text",
+              "content": "Lo que el Alcázar fue para los reyes, la Casa de Pilatos lo fue para la aristocracia. Construida a partir de finales del siglo XV por la familia Enríquez de Ribera y terminada en la década de 1530, combina todo lo que Sevilla tenía para ofrecer en el momento en que la ciudad se convirtió en la puerta de entrada a las Américas: arcos y yeserías mudéjares, balaustradas góticas, una fuente de mármol genovés, estatuas romanas y renacentistas, y decenas de miles de azulejos esmaltados. La leyenda de que imita la casa de Pilato en Jerusalén no es más que una leyenda. Su verdadero modelo es el Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey3qugg3pn3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Una escalera revestida de azulejos: los motivos geométricos de la tradición mudéjar, elaborados en las alfarerías de Sevilla. Foto: Felicia Varzari / Unsplash.",
+              "alt": "Una pared de la escalera totalmente revestida de azulejos esmaltados con motivos de estrellas y nudos en tonos naranja, verde y azul, con una barandilla de hierro negro en la parte superior."
+            },
+            {
+              "type": "text",
+              "content": "Aquí y en cientos de casas más modestas se puede ver el material arquitectónico preferido de la ciudad: el azulejo. Las alfarerías de Sevilla, muchas de ellas al otro lado del río, en Triana, fabricaron azulejos durante quinientos años: primero con motivos geométricos islámicos, después con figuras del Renacimiento italiano y, más tarde, con diseños neorrenacentistas del siglo XIX. Un azulejo es fresco al tacto, fácil de limpiar y convierte una pared en una alfombra. Es la respuesta sevillana al fresco."
+            },
+            {
+              "type": "text",
+              "content": "El patio es la otra constante. Desde el palacio de Pedro I hasta los corrales de vecinos, los patios comunitarios del barrio obrero de Triana, la casa sevillana da la espalda a la calle y se abre hacia el interior, a un patio con plantas, agua y una arcada. Las calles del casco antiguo son estrechas y sinuosas por la misma razón: primero la sombra, luego las vistas."
+            },
+            {
+              "type": "header",
+              "content": "V · Oro del río",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exsnqlbarwb.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Torre del Oro, situada a orillas del Guadalquivir, fue construida por los almohades hacia 1220-1221 como parte de las defensas fluviales. Foto: JP Files / Unsplash.",
+              "alt": "Una torre de piedra de doce lados con almenas, con una torre superior más pequeña y una cúpula dorada, junto a un paseo ribereño bordeado de palmeras, bañado por una luz cálida."
+            },
+            {
+              "type": "text",
+              "content": "El río explica el resto. La Torre del Oro, una torre almohade de doce lados de la década de 1220, servía antiguamente para sujetar una cadena que cruzaba el Guadalquivir con el fin de proteger el puerto. Tres siglos más tarde, ese puerto se convirtió en el más activo de Europa. En 1503, la Corona concedió a Sevilla el monopolio del comercio con América y, durante casi doscientos años, todas las flotas que transportaban plata desde el Nuevo Mundo remontaban este río."
+            },
+            {
+              "type": "text",
+              "content": "El dinero construyó la ciudad que vemos. La Casa de la Lonja, la bolsa de comerciantes diseñada por Juan de Herrera y cuya construcción se inició en 1584, hoy Archivo de Indias; el Ayuntamiento plateresco; y, más tarde, las iglesias barrocas cuyos retablos dorados son casi deslumbrantes. Cuando el comercio se trasladó a Cádiz en el siglo XVIII, Sevilla conservó sus edificios y perdió su fortuna. Su edificio industrial más famoso, la Real Fábrica de Tabacos, terminada en la década de 1770 y que más tarde sirvió de escenario para *El Carmen*, es hoy la universidad."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eydz01des88.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "The Torre del Oro at dusk. Photo: Lucía Saura Prieto / Unsplash.",
+              "alt": "La silueta de la Torre del Oro y las palmeras recortadas contra un cielo azul intenso al atardecer, con las luces brillando a orillas del río."
+            },
+            {
+              "type": "header",
+              "content": "VI · 1929: la invención de un estilo nacional",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey5wmnn642r.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Plaza de España, obra de Aníbal González, construida con motivo de la Exposición Iberoamericana de 1929. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Un enorme edificio semicircular de ladrillo con arcadas y una alta torre ornamentada, bajo un cielo azul, con una amplia plaza empedrada y unas pocas personas delante."
+            },
+            {
+              "type": "text",
+              "content": "En el siglo XX, Sevilla hizo algo inesperado: se construyó un pasado. Para la Exposición Iberoamericana de 1929, la ciudad dispuso una serie de pabellones a lo largo del Parque de María Luisa, y el arquitecto Aníbal González diseñó su pieza central, la Plaza de España. Un enorme semicírculo de ladrillo, de unos doscientos metros de diámetro, rodea una plaza y un canal sinuoso; dos torres de estilo barroco marcan los extremos; varios puentes cruzan el agua."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey7hwop1c0q.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El canal y los puentes de la Plaza de España. El semicírculo simbolizaba el abrazo de España a sus antiguas colonias americanas. Foto: Tânia Mousinho / Unsplash.",
+              "alt": "Un canal sinuoso con una barca de remos, puentes ornamentados con balaustradas de azulejos y farolas, las arcadas de ladrillo de la Plaza de España al fondo y árboles en flor de color rosa."
+            },
+            {
+              "type": "text",
+              "content": "El estilo se denomina «regionalismo» y consiste en un collage deliberado: ladrillo mudéjar, arcadas renacentistas, torres barrocas y, sobre todo, azulejos. A lo largo de la base discurre una serie de nichos embellecidos con azulejos, uno por cada provincia española, con mapas y escenas históricas representadas en azulejos. Se concibió como un abrazo de España a las Américas. Un siglo después, es el edificio más fotografiado de la ciudad y también el más sincero: una estructura moderna que reconoce estar hecha de recuerdos."
+            },
+            {
+              "type": "header",
+              "content": "VII · Al otro lado del río",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eybtwwnpuse.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Casas en Triana, el antiguo barrio de alfareros y marineros situado en la margen oeste del Guadalquivir. Foto: Lothar Boris Piltz / Unsplash.",
+              "alt": "Una hilera de casas de tres plantas pintadas de blanco, amarillo y azul claro, con marcos de ventanas de color ocre, balcones de hierro forjado y contraventanas."
+            },
+            {
+              "type": "text",
+              "content": "Triana, en la orilla opuesta, es Sevilla sin monumentos. Sus casas están pintadas de blanco y ocre, con marcos amarillos alrededor de las ventanas, balcones de hierro y números de azulejos; sus calles albergaban a alfareros, marineros, cantaores y toreros. Este estilo vernáculo —cal, color, hierro, azulejos— forma parte de la arquitectura de Sevilla tanto como el Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eycvww9mn2d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "El puente de Isabel II, conocido como el puente de Triana (1852), el primer puente de hierro permanente de la ciudad. Foto: Taisia Karaseva / Unsplash.",
+              "alt": "Un puente de hierro con arcos y adornos circulares, iluminado por cálidas farolas a la hora azul, que se refleja en el río oscuro."
+            },
+            {
+              "type": "text",
+              "content": "Las dos orillas están unidas por el Puente de Isabel II, construido en 1852, el primer puente permanente que cruzaba el río en la ciudad; antes de él solo había un puente de barcas. Sus arcos de hierro fundido, decorados con anillos, se inspiraron en un diseño parisino. Por la noche, con sus farolas reflejadas en el agua, es la estructura más romántica de Sevilla."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Setas sobre una calle romana",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey9kmj9vn69.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Metropol Parasol (‘Las Setas’), Plaza de la Encarnación, by J. Mayer H., opened in 2011. Photo: Dmitry Romanoff / Unsplash.",
+              "alt": "Una enorme estructura ondulada en forma de panal, construida con madera clara, que se eleva sobre unos amplios escalones de piedra bajo un cielo azul."
+            },
+            {
+              "type": "text",
+              "content": "Durante mucho tiempo, la Plaza de la Encarnación fue un agujero en medio del casco antiguo: un mercado demolido y, posteriormente, un proyecto de aparcamiento abandonado que se paralizó cuando las excavaciones sacaron a la luz restos romanos y árabes. La solución, obra del arquitecto berlinés Jürgen Mayer H., consistió en dejar las ruinas en su sitio y colocar una cubierta flotante sobre ellas. El Metropol Parasol, inaugurado en 2011, es una estructura de madera laminada dispuesta en forma de seis sombrillas gigantes. Los vecinos las bautizaron como «las setas» casi de inmediato."
+            },
+            {
+              "type": "text",
+              "content": "Debajo, un museo arqueológico muestra las casas romanas excavadas; a pie de calle, ha vuelto el mercado; en la parte superior, una pasarela serpentea sobre las curvas del tejado. Fue un proyecto costoso y polémico, y sigue siendo objeto de debate. Pero también es profundamente sevillano: una estructura cuya función principal es dar sombra, construida sobre los restos de ciudades anteriores sin borrar su huella."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyawlf32sox.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "En la azotea del Metropol Parasol por la noche, con la catedral y la Giralda iluminadas en el horizonte. Foto: María López Jorge / Unsplash.",
+              "alt": "Una vista nocturna desde una pasarela sinuosa en la azotea, iluminada en tonos rojos y naranjas, con vistas a la ciudad a oscuras y, a lo lejos, a la catedral iluminada y a la Giralda."
+            },
+            {
+              "type": "text",
+              "content": "Si subes a la pasarela por la noche, podrás contemplar toda la ciudad de un solo vistazo. Bajo tus pies, un tejado del siglo XXI. Debajo de él, cimientos romanos. En el horizonte, iluminado en tonos dorados, un campanario cristiano sobre un minarete almohade junto a una catedral gótica construida sobre una mezquita. Sevilla nunca ha tenido que elegir entre sus pasados. Simplemente construye la siguiente capa y deja una ventana abierta hacia la que hay debajo."
+            },
+            {
+              "type": "header",
+              "content": "Échale un vistazo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Reserva con antelación la visita al Real Alcázar y ve temprano, antes de que haga calor y lleguen los grupos; para acceder a los aposentos reales superiores se necesita una entrada aparte. Sube a la Giralda a última hora de la tarde, cuando la luz sobre los tejados se tiñe de dorado. Visita la Plaza de España por la mañana, cuando el ladrillo adquiere un tono rosa suave, y el Metropol Parasol al caer la noche. Cruza a pie a Triana por el Puente de Isabel II y busca los talleres de cerámica y el Centro Cerámica Triana en la antigua alfarería de Santa Ana."
+            },
+            {
+              "type": "note",
+              "content": "Las fechas y las atribuciones se ajustan a las historias arquitectónicas habituales de Sevilla y a las páginas web oficiales del Real Alcázar, la catedral y el Metropol Parasol. La frase atribuida al cabildo de la catedral es tradicional y su origen es incierto. Las fotografías se reproducen bajo la licencia de Unsplash, y en el pie de foto se indica el nombre de cada fotógrafo."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:20:56.106Z"
         },
         {
           "id": 90,
