@@ -165538,9 +165538,352 @@
         },
         {
           "id": 86,
-          "title": "Strates de lumière : Comment Séville a construit huit siècles les uns sur les autres",
-          "excerpt": "Un minaret devenu clocher, une mosquée devenue la plus grande cathédrale gothique du monde, un palais musulman construit pour un roi chrétien, une fantaisie en brique de 1929 et des champignons en bois au-dessus d'une rue romaine : une promenade à travers les strates de l'architecture de Séville.",
-          "category": "Architecture"
+          "draft": false,
+          "title": "Les couches de lumière : comment Séville s&#x27;est construite au fil de huit siècles, couche après couche",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "4 novembre 2026",
+          "excerpt": "Un minaret devenu clocher, une mosquée devenue la plus grande cathédrale gothique du monde, un palais musulman construit pour un roi chrétien, une fantaisie en briques datant de 1929 et des « champignons » en bois surplombant une rue romaine : une promenade à travers les différentes couches de l’architecture de Séville.",
+          "category": "Architecture",
+          "subcategory": "Fonctionnalité",
+          "tags": [
+            "Séville",
+            "Séville",
+            "architecture",
+            "Giralda",
+            "Cathédrale de Séville",
+            "Alcázar royal",
+            "Mudéjar",
+            "Maison de Pilate",
+            "carreaux",
+            "Place d&#x27;Espagne",
+            "Metropol Parasol",
+            "Triana",
+            "Andalousie",
+            "Espagne"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+          "previewToken": "7ab1df30fdc4dce94d53d71d",
+          "publishAt": "2026-11-04T01:00:00.000Z",
+          "publishedAt": "2026-11-04T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exnd1u4rdj4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda et la cathédrale au coucher du soleil, vues par-dessus les toits de la vieille ville. Photo : Henrique Ferreira / Unsplash.",
+              "alt": "La lumière dorée du soir sur les toits de Séville, avec le haut clocher de la Giralda à gauche et les coupoles et flèches de la cathédrale à côté."
+            },
+            {
+              "type": "text",
+              "content": "Certaines villes sont construites dans un style unique, puis défendues contre tous les autres. Séville a fait le contraire. Pendant huit siècles, elle a laissé chaque nouvelle puissance bâtir par-dessus la précédente – puis a conservé le résultat. Un minaret est devenu un clocher. Une mosquée est devenue la plus grande cathédrale gothique du monde. Un roi chrétien a commandé un palais de style musulman à des artisans de Grenade et de Tolède. Les nobles de la Renaissance ont copié les patios des Maures ; les architectes du XXe siècle ont inventé tout un style national à partir de briques et de tuiles ; et en 2011, un architecte allemand a fait surgir une forêt de « champignons » en bois au-dessus d’une rue romaine."
+            },
+            {
+              "type": "text",
+              "content": "Le résultat n’est pas un musée des styles, mais une ville unique, composée de plusieurs couches et obéissant à sa propre logique : l’ombre avant la façade, l’eau avant l’ornement, le patio avant la rue. Pour comprendre l’architecture de Séville, il faut la lire comme un palimpseste – chaque couche étant visible à travers la suivante. Voici une promenade à travers ces couches, de la tour almohade aux parasols illuminés de l’Encarnación."
+            },
+            {
+              "type": "header",
+              "content": "I · La tour qui a changé la religion",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exopzjjcsc9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Giralda : un minaret almohade datant des années 1180, surmonté d&#x27;un beffroi de style Renaissance ajouté au XVIe siècle. Photo : JP Files / Unsplash.",
+              "alt": "Le clocher de la Giralda se détache sur un ciel d&#x27;un bleu limpide, avec son corps en briques orné de motifs en treillis et surmonté d&#x27;un beffroi Renaissance blanc et ocre."
+            },
+            {
+              "type": "text",
+              "content": "À Séville, tout commence par la Giralda. À la fin du XIIe siècle, la ville était la capitale occidentale des Almohades, une dynastie berbère qui régnait depuis Marrakech, et ceux-ci y construisirent une grande mosquée dotée d’un minaret à la hauteur de celle-ci. Le corps de la tour est presque entièrement celui qu’ils ont laissé : un prisme carré en briques, haut d’une centaine de mètres avec son sommet ajouté par la suite, dont les faces sont recouvertes d’un réseau d’arcs lobés et de motifs entrelacés en losanges appelés « sebka ». À l’intérieur, il n’y a pas d’escaliers, mais trente-cinq rampes, suffisamment larges, selon la légende, pour qu’un cavalier puisse atteindre le sommet."
+            },
+            {
+              "type": "text",
+              "content": "Lorsque Ferdinand III s’empara de Séville en 1248, les chrétiens conservèrent le minaret. Dans les années 1560, l’architecte Hernán Ruiz le Jeune y ajouta un beffroi de style Renaissance, ainsi que la girouette de la Foi – le Giraldillo – qui donne son nom à la tour. La jonction entre ces deux mondes est encore visible depuis la rue : la brique islamique en bas, la pierre blanche et les cloches au-dessus. C&#x27;est la meilleure illustration de la philosophie de la ville. Rien n&#x27;est démoli si cela peut être réaménagé."
+            },
+            {
+              "type": "quote",
+              "content": "On ne démolit rien si cela peut être réaménagé."
+            },
+            {
+              "type": "header",
+              "content": "II · Une cathédrale aussi grande qu’une décision",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exrecqmwfrj.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cathédrale vue à travers une arche depuis la cour de l&#x27;ancienne mosquée, le Patio de los Naranjos. Photo : Lothar Boris Piltz / Unsplash.",
+              "alt": "Une arcade en pierre sombre en forme de fer à cheval encadrant les pinacles et les contreforts gothiques de la cathédrale de Séville, sur fond de ciel d&#x27;un bleu profond, avec des orangers en contrebas."
+            },
+            {
+              "type": "text",
+              "content": "La mosquée elle-même a conservé sa fonction de cathédrale jusqu’au début du XVe siècle. Puis, selon une phrase souvent répétée et attribuée au chapitre, les chanoines décidèrent de construire une église si grande que ceux qui la verraient les prendraient pour des fous. Les travaux débutèrent en 1434 sur l&#x27;emplacement de la mosquée, et le résultat reste aujourd&#x27;hui encore la plus grande cathédrale gothique du monde en termes de volume. La cour aux orangers, où les fidèles se lavaient autrefois avant la prière, fut conservée, avec sa fontaine, tout comme la porte almohade située sur son flanc nord."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exq9wpzp2wv.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La nef de la cathédrale de Séville : des piliers gothiques et des voûtes à nervures, avec une voûte de style Renaissance, ajoutée ultérieurement, qui brille de mille feux à la croisée du transept. Photo : Toni Pomar / Unsplash.",
+              "alt": "En levant les yeux vers l&#x27;intérieur de la cathédrale : de hauts piliers en pierre regroupés s&#x27;élèvent vers des voûtes à nervures grises, une voûte ornée de motifs dorés à droite et des vitraux haut placés sur les murs."
+            },
+            {
+              "type": "text",
+              "content": "À l’intérieur, les proportions frôlent l’abstrait. Cinq nefs, des piliers semblables à des troncs d’arbres, des voûtes qui se perdent dans la pénombre – puis, au croisement et dans les chapelles latérales, l’or du XVIe siècle. Les architectes qui leur ont succédé n’ont pas cherché à achever cet édifice gothique dans le style gothique. Ils y ont ajouté des voûtes de la Renaissance, une chapelle royale de style plateresque et le vaste retable sculpté de la chapelle principale, l’un des plus grands de la chrétienté. La cathédrale est devenue ce qu’est la ville : une succession de siècles réunis sous un même toit."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyf82gjuswc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un bas-côté : la structure gothique et, au-delà, une voûte et une fenêtre Renaissance dorées. Photo : Timur Seyfelmlyukov / Unsplash.",
+              "alt": "Une haute nef sombre de la cathédrale, avec des piliers en pierre encadrant une voûte dorée richement sculptée et un vitrail."
+            },
+            {
+              "type": "header",
+              "content": "III · L&#x27;Alcázar : un palais musulman pour un roi chrétien",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exuk3slyxig.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Patio de las Doncellas, au palais de Pierre Ier, dans le Real Alcázar, dont la construction a débuté dans les années 1360 : un long bassin situé entre des jardins en contrebas, encadré par des arcades en stuc. Photo : Fadi Al Shami / Unsplash.",
+              "alt": "Un long bassin rectangulaire réfléchissant s&#x27;étendant vers une porte sculptée, flanqué de jardins en contrebas plantés d&#x27;orangers et de deux rangées d&#x27;arcades aux arcs lobés, ornées de moulures en plâtre aux motifs ajourés."
+            },
+            {
+              "type": "text",
+              "content": "À quelques pas de la cathédrale se dresse l’édifice qui illustre le mieux l’imaginaire sévillan. Le Real Alcázar était à l’origine un palais-forteresse islamique, mais son cœur est le palais de Pierre Ier, construit à partir des années 1360 pour un roi castillan. Pierre fit venir des artisans de Grenade, alors musulmane, et de Tolède, qui lui construisirent un édifice d’allure entièrement islamique : des arcs lobés, du plâtre sculpté aussi fin que de la dentelle, des lambris en carreaux vernissés, des plafonds en bois sculpté, ainsi que des inscriptions en caractères arabes rendant hommage, entre autres, au sultan chrétien lui-même."
+            },
+            {
+              "type": "text",
+              "content": "C&#x27;est là l&#x27;architecture mudéjar : la tradition artisanale islamique au service de commanditaires chrétiens. Ce n&#x27;était pas un style de conquête, mais d&#x27;admiration. Dans le Patio de las Doncellas, le plan est celui d’un pur jardin andalou : un long bassin sur l’axe central, des parterres en contrebas de chaque côté, de sorte que les personnes marchant sur les allées voient la cime des orangers à hauteur des yeux. La galerie supérieure est un ajout Renaissance datant du XVIe siècle, et la jonction entre les deux éléments est si harmonieuse que la plupart des visiteurs ne la remarquent même pas."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exx8r3w3ow2.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Plâtre sculpté, colonnes de marbre et arcs lobés au Real Alcázar : les deux niveaux du palais, superposés. Photo : Tânia Mousinho / Unsplash.",
+              "alt": "Vue vers le haut d&#x27;un coin de la cour d&#x27;un palais : des arcades inférieures ornées de moulures sculptées très denses, une galerie supérieure composée de colonnes élancées et une verrière au-dessus."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exw2ooibtii.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La coupole du Salon des Ambassadeurs (Salón de Embajadores) : un plafond en bois sculpté et doré datant de 1427, dont le motif est constitué d&#x27;étoiles entrelacées. Photo : Lothar Boris Piltz / Unsplash.",
+              "alt": "En levant les yeux, on découvre une coupole en bois sombre recouverte d&#x27;un motif dense d&#x27;étoiles entrelacées et dorées, qui s&#x27;élève depuis des murs de carreaux colorés et de plâtre."
+            },
+            {
+              "type": "text",
+              "content": "Au cœur du palais, la Salle des Ambassadeurs s&#x27;élève sous une coupole en bois datant de 1427, dorée et sculptée d&#x27;un motif d&#x27;étoiles entrelacées si dense qu&#x27;il évoque un ciel nocturne. C&#x27;est sans conteste le plus bel intérieur de la ville. En le contemplant suffisamment longtemps, on comprend pourquoi Séville n’a jamais vraiment eu à choisir entre l’Orient et l’Occident : cette coupole a été réalisée pour une cour chrétienne, par des artisans qui avaient appris la géométrie auprès de maîtres islamiques, et personne à l’époque n’y voyait de contradiction."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exz5nbg9weu.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Les bains de Doña María de Padilla, Real Alcázar : une longue citerne sous des voûtes gothiques à nervures, située sous le jardin. Photo : Despina Galani / Unsplash.",
+              "alt": "Une longue piscine souterraine étroite, baignée d&#x27;une lumière ambrée, dont les voûtes à nervures pointues se reflètent parfaitement dans l&#x27;eau calme, donnant l&#x27;impression que le tunnel se prolonge vers le bas."
+            },
+            {
+              "type": "text",
+              "content": "En contrebas des jardins se trouve l’espace le plus « cinématographique » du palais. Les « bains de Doña María de Padilla » – qui tirent leur nom de la maîtresse de Pedro, bien qu’il s’agisse en réalité d’une citerne d’eau de pluie – constituent un bassin long et étroit situé sous une voûte gothique à nervures. L&#x27;eau immobile transforme la voûte en un tunnel sans fin. C&#x27;est l&#x27;architecture comme illusion : rien ici n&#x27;est décoré, et pourtant rien dans l&#x27;Alcázar n&#x27;est plus beau."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey0pmew9oi9.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Les jardins de l&#x27;Alcázar : le bassin de Mercure et la galerie à arcades des Grotesques, un ancien mur réaménagé aux XVIe et XVIIe siècles. Photo : Andrea Huls Pareja / Unsplash.",
+              "alt": "Une grande piscine dans un jardin ombragé de palmiers, avec une fontaine au centre et, à côté, un mur à arcades peint en ocre, dont les arches brutes rappellent celles d&#x27;une grotte."
+            },
+            {
+              "type": "text",
+              "content": "Les jardins viennent compléter cette leçon. Au fil des siècles, ils ont été aménagés, réaménagés et agrandis : vergers islamiques, parterres de la Renaissance, fontaines maniéristes, jardin anglais romantique. L’eau les traverse tous. C’est la clé de l’architecture andalouse : dans une ville où les températures estivales dépassent les quarante degrés, un bâtiment est avant tout une machine à ombre et un bassin, un système de climatisation."
+            },
+            {
+              "type": "quote",
+              "content": "À Séville, un bâtiment est avant tout une machine à ombre, et une piscine est un système de climatisation."
+            },
+            {
+              "type": "header",
+              "content": "IV · Le patio, un art de vivre",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey1yvmryf2m.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Casa de Pilatos, le patio principal, début du XVIe siècle : arches mudéjares et stucs, fontaine en marbre italien et statues romaines. Photo : Jessa Lundquist / Unsplash.",
+              "alt": "Une cour de palais baignée de soleil, avec des colonnes de marbre blanc, des arcs lobés ornés de plâtre sculpté, une galerie supérieure, un sol en pierre à motifs et une statue classique dans un coin."
+            },
+            {
+              "type": "text",
+              "content": "Ce que l’Alcázar a été pour les rois, la Casa de Pilatos l’a été pour l’aristocratie. Construite à partir de la fin du XVe siècle par la famille Enríquez de Ribera et achevée dans les années 1530, elle rassemble tout ce que Séville avait à offrir au moment où la ville est devenue la porte d’entrée vers les Amériques : des arcs mudéjars et du plâtre, des balustrades gothiques, une fontaine en marbre génois, des statues romaines et de la Renaissance, ainsi que des dizaines de milliers de carreaux vernissés. La légende selon laquelle elle imiterait la maison de Pilate à Jérusalem n’est qu’une légende. Son véritable modèle est l’Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey3qugg3pn3.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Un escalier orné de carreaux émaillés (azulejos) : les motifs géométriques de la tradition mudéjar, fabriqués dans les ateliers de céramique de Séville. Photo : Felicia Varzari / Unsplash.",
+              "alt": "Un mur d&#x27;escalier entièrement recouvert de carreaux émaillés représentant des motifs d&#x27;étoiles et de nœuds orange, verts et bleus, surmonté d&#x27;une rampe en fer noir."
+            },
+            {
+              "type": "text",
+              "content": "Ici, comme dans des centaines d’habitations plus modestes, on retrouve le matériau architectural de prédilection de la ville : l’azulejo. Les ateliers de céramique de Séville, dont beaucoup se trouvent de l’autre côté du fleuve, à Triana, ont produit des carreaux pendant cinq cents ans – d’abord avec des motifs géométriques islamiques, puis avec des figures de la Renaissance italienne, et enfin avec des motifs néo-classiques du XIXe siècle. Un carreau est frais au toucher, facile à nettoyer et transforme un mur en tapis. C&#x27;est la réponse sévillane à la fresque."
+            },
+            {
+              "type": "text",
+              "content": "Le patio est l&#x27;autre constante. Du palais de Pedro Ier aux « corrales de vecinos », ces cours communes du quartier populaire de Triana, la maison sévillane tourne le dos à la rue et s&#x27;ouvre vers l&#x27;intérieur sur un patio agrémenté de plantes, d&#x27;un point d&#x27;eau et d&#x27;une arcade. Les rues de la vieille ville sont étroites et sinueuses pour la même raison : l&#x27;ombre d&#x27;abord, la vue ensuite."
+            },
+            {
+              "type": "header",
+              "content": "V · L&#x27;or de la rivière",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0exsnqlbarwb.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Torre del Oro, sur le Guadalquivir, construite par les Almohades vers 1220-1221 dans le cadre des fortifications fluviales. Photo : JP Files / Unsplash.",
+              "alt": "Une tour en pierre à douze côtés crénelée, surmontée d&#x27;une tour plus petite et d&#x27;un dôme doré, située au bord d&#x27;une promenade fluviale bordée de palmiers, baignée d&#x27;une lumière chaude."
+            },
+            {
+              "type": "text",
+              "content": "Le fleuve explique le reste. La Torre del Oro, une tour almohade à douze côtés datant des années 1220, servait autrefois à ancrer une chaîne en travers du Guadalquivir afin de protéger le port. Trois siècles plus tard, ce port devint le plus actif d’Europe. En 1503, la Couronne accorda à Séville le monopole du commerce avec les Amériques, et pendant près de deux cents ans, toutes les flottes transportant de l’argent en provenance du Nouveau Monde remontèrent ce fleuve."
+            },
+            {
+              "type": "text",
+              "content": "C’est l’argent qui a bâti la ville que nous voyons aujourd’hui. La Casa Lonja, la bourse des marchands conçue par Juan de Herrera et dont la construction débuta en 1584, qui abrite aujourd’hui les Archives des Indes ; l’hôtel de ville de style plateresque ; et, plus tard, les églises baroques dont les retables dorés sont presque éblouissants. Lorsque le commerce s&#x27;est déplacé vers Cadix au XVIIIe siècle, Séville a conservé ses bâtiments mais a perdu sa fortune. Son édifice industriel le plus célèbre, la Manufacture royale de tabac, achevée dans les années 1770 et qui servit plus tard de décor à *Carmen*, abrite aujourd’hui l’université."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eydz01des88.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Torre del Oro au crépuscule. Photo : Lucía Saura Prieto / Unsplash.",
+              "alt": "La silhouette de la Torre del Oro et des palmiers se détache sur un ciel du soir d&#x27;un bleu profond, tandis que les lumières scintillent sur les berges du fleuve."
+            },
+            {
+              "type": "header",
+              "content": "VI · 1929 : l&#x27;invention d&#x27;un style national",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey5wmnn642r.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Plaza de España, œuvre d&#x27;Aníbal González, construite à l&#x27;occasion de l&#x27;Exposition ibéro-américaine de 1929. Photo : Tânia Mousinho / Unsplash.",
+              "alt": "Un immense bâtiment semi-circulaire en briques, doté d&#x27;arcades et d&#x27;une haute tour richement décorée, sous un ciel bleu, avec une grande place pavée et quelques personnes devant."
+            },
+            {
+              "type": "text",
+              "content": "Au XXe siècle, Séville a fait quelque chose d’inattendu : elle s’est construit un passé. À l’occasion de l’Exposition ibéro-américaine de 1929, la ville a fait ériger des pavillons dans le parc María Luisa, et l’architecte Aníbal González a conçu sa pièce maîtresse, la Plaza de España. Un vaste demi-cercle de briques, d&#x27;environ deux cents mètres de diamètre, entoure une place et un canal sinueux ; deux tours de style baroque en marquent les extrémités ; des ponts enjambent le cours d&#x27;eau."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey7hwop1c0q.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le canal et les ponts de la Plaza de España. Ce demi-cercle symbolisait l&#x27;étreinte de l&#x27;Espagne envers ses anciennes colonies américaines. Photo : Tânia Mousinho / Unsplash.",
+              "alt": "Un canal sinueux où navigue une barque à rames, des ponts richement décorés avec des balustrades carrelées et des lampadaires, les arcades en briques de la Plaza de España en arrière-plan, et des arbres en fleurs aux teintes roses."
+            },
+            {
+              "type": "text",
+              "content": "Ce style, appelé « régionalisme », est un collage délibéré : briques de style mudéjar, arcades de la Renaissance, tours baroques et, surtout, des azulejos. Le long de la base s’étend une série de niches carrelées, une pour chaque province espagnole, ornées de cartes et de scènes historiques en azulejos. Ce bâtiment a été conçu comme une étreinte de l’Espagne vers les Amériques. Un siècle plus tard, c&#x27;est le bâtiment le plus photographié de la ville, mais aussi le plus sincère : une structure moderne qui reconnaît être faite de souvenirs."
+            },
+            {
+              "type": "header",
+              "content": "VII · De l&#x27;autre côté du fleuve",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eybtwwnpuse.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Maisons de Triana, l&#x27;ancien quartier des potiers et des marins situé sur la rive ouest du Guadalquivir. Photo : Lothar Boris Piltz / Unsplash.",
+              "alt": "Une rangée de maisons à trois étages peintes en blanc, jaune et bleu pâle, avec des encadrements de fenêtres ocre, des balcons en fer forgé et des volets."
+            },
+            {
+              "type": "text",
+              "content": "Triana, sur la rive opposée, c’est Séville sans ses monuments. Ses maisons sont peintes en blanc et en ocre, avec des encadrements de fenêtres jaunes, des balcons en fer forgé et des numéros en carreaux ; ses rues abritaient autrefois des potiers, des marins, des chanteurs de flamenco et des toreros. Ce style vernaculaire – chaux, couleur, fer, carreaux – fait tout autant partie de l&#x27;architecture de Séville que l&#x27;Alcázar."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eycvww9mn2d.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le pont Isabelle II, également appelé pont de Triana (1852), premier pont en fer permanent de la ville. Photo : Taisia Karaseva / Unsplash.",
+              "alt": "Un pont en fer en arc, orné de motifs circulaires, éclairé par la lumière chaleureuse des lampadaires à l&#x27;heure bleue, se reflétant dans la rivière sombre."
+            },
+            {
+              "type": "text",
+              "content": "Les deux rives sont reliées par le pont Isabelle II, construit en 1852, qui fut le premier pont permanent enjambant le fleuve dans la ville – avant lui, il n’existait qu’un pont de bateaux. Ses arches en fonte, ornées d’anneaux, s’inspirent d’un modèle parisien. La nuit, avec ses lampadaires se reflétant dans l&#x27;eau, c&#x27;est l&#x27;ouvrage le plus romantique de Séville."
+            },
+            {
+              "type": "header",
+              "content": "VIII · Des champignons au-dessus d&#x27;une rue romaine",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0ey9kmj9vn69.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Metropol Parasol (« Les Champignons »), Plaza de la Encarnación, œuvre de J. Mayer H., inauguré en 2011. Photo : Dmitry Romanoff / Unsplash.",
+              "alt": "Une immense structure en nid d&#x27;abeille aux lignes ondulantes, faite de bois clair, s&#x27;élevant au-dessus de larges marches en pierre sous un ciel bleu."
+            },
+            {
+              "type": "text",
+              "content": "Pendant longtemps, la Plaza de la Encarnación a été un trou au cœur de la vieille ville : un marché démoli, puis un projet de parking abandonné, interrompu lorsque des fouilles ont mis au jour des vestiges romains et mauresques. La solution, imaginée par l’architecte berlinois Jürgen Mayer H., a consisté à laisser les ruines en place et à y superposer une verrière. Inauguré en 2011, le Metropol Parasol est une structure en bois lamellé-collé formant six parasols géants. Les habitants les ont presque aussitôt surnommés « las setas » – les champignons."
+            },
+            {
+              "type": "text",
+              "content": "En sous-sol, un musée archéologique expose les maisons romaines mises au jour ; au niveau de la rue, le marché a réouvert ses portes ; tout en haut, une passerelle serpente le long des courbes du toit. Ce projet a coûté cher et a suscité la polémique ; il fait encore l’objet de débats. Mais c’est aussi un projet profondément sévillan : une structure dont la fonction première est de fournir de l’ombre, construite sur les vestiges de cités antérieures sans les effacer."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0eyawlf32sox.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Sur le toit du Metropol Parasol, la nuit, avec la cathédrale et la Giralda illuminées à l&#x27;horizon. Photo : María López Jorge / Unsplash.",
+              "alt": "Une vue nocturne depuis une passerelle sinueuse sur le toit, éclairée de rouge et d&#x27;orange, donnant sur la ville plongée dans l&#x27;obscurité, avec, au loin, la cathédrale et la Giralda illuminées."
+            },
+            {
+              "type": "text",
+              "content": "Montez sur la passerelle la nuit et vous verrez d’un seul coup d’œil toute la complexité de la ville. Sous vos pieds, un toit du XXIe siècle. En dessous, des fondations romaines. À l’horizon, baigné d’une lumière dorée, un clocher chrétien surmontant un minaret almohade, à côté d’une cathédrale gothique construite sur les fondations d’une mosquée. Séville n’a jamais eu à choisir entre ses différents passés. Elle se contente d’ajouter une nouvelle couche, tout en laissant une fenêtre ouverte sur celle d’en dessous."
+            },
+            {
+              "type": "header",
+              "content": "Regardez ça",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Réservez votre visite du Real Alcázar à l&#x27;avance et arrivez tôt, avant la chaleur et l&#x27;affluence ; les appartements royaux du haut nécessitent un billet séparé. Montez à la Giralda en fin d&#x27;après-midi, lorsque la lumière sur les toits prend des teintes dorées. Découvrez la Plaza de España le matin, lorsque la brique prend une teinte rose pâle, et le Metropol Parasol à la tombée de la nuit. Traversez à pied vers Triana en empruntant le pont Isabel II, et partez à la découverte des ateliers de céramique et du Centro Cerámica Triana, dans l&#x27;ancienne poterie de Santa Ana."
+            },
+            {
+              "type": "note",
+              "content": "Les dates et les attributions sont conformes aux ouvrages historiques consacrés à l&#x27;architecture de Séville ainsi qu&#x27;aux sites officiels du Real Alcázar, de la cathédrale et du Metropol Parasol. La citation attribuée au chapitre de la cathédrale est traditionnelle et sa source est incertaine. Les photographies sont reproduites sous licence Unsplash, chaque photographe étant mentionné dans la légende."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:21:38.345Z"
         },
         {
           "id": 89,
