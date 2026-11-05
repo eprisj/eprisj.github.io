@@ -75424,6 +75424,14 @@
           "description": "Ein leerer Garten in der Stunde vor den Besuchern. Atget arbeitete früh, um den Park für sich allein zu haben, und die Statuen, Bäume und das Wasser bilden eine einzige stille Komposition.",
           "homeTitle": "Enceladus-Brunnen",
           "homeDescription": "Versailles vor den Besuchern: Statuen, Bäume und Wasser als eine stille Komposition."
+        },
+        {
+          "id": 63,
+          "title": "René Lalique: Frösche und Seerosenpads",
+          "subtitle": "Gestaltung",
+          "description": "Geformtes Glas, bei dem der Teich Teil des Körpers der Vase ist: Seerosenblöcke am Boden, Frösche klettern über die Schulter. Lalique wechselte von Schmuck zu Glas und machte es zu einer massenproduzierten Kunst.",
+          "homeTitle": "Frosch- und Seerosenpads",
+          "homeDescription": "Eine Glasvase mit dem in ihren Körper eingebauten Teich: Seerosenblöcke darunter, Frösche klettern über die Schulter."
         }
       ],
       "articles": [
@@ -99490,6 +99498,46 @@
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
           "updatedAt": "2026-10-19T10:38:03.289Z"
+        },
+        {
+          "id": 60,
+          "title": "Auguste Rodin: La edad de bronce",
+          "subtitle": "Escultura",
+          "description": "Un joven se agita: un brazo elevado a la cabeza, peso sobre una pierna, ninguna pose detrás de la cual esconderse. Era tan realista que los críticos sospechaban que Rodin la había expulsado de un cuerpo vivo.",
+          "homeTitle": "La Edad del Bronce",
+          "homeDescription": "Una figura de bronce despertando, un brazo sobre la cabeza: tan fiel a la vida que el Salón sospechó un yeso de la modelo."
+        },
+        {
+          "id": 61,
+          "title": "Vincent van Gogh: los grandes árboles de avión",
+          "subtitle": "pintado",
+          "description": "Dos troncos cortan la imagen como columnas y los trabajadores se encogen a figuras debajo de ellos. Pintado en Saint-Rémy en el otoño de 1889, un año antes de su muerte.",
+          "homeTitle": "Los grandes árboles planos",
+          "homeDescription": "Dos enormes troncos como columnas, remendadores de caminos pequeños debajo de ellos: Saint-Rémy, otoño de 1889."
+        },
+        {
+          "id": 62,
+          "title": "Catedral de Ely: Nave, esquina suroeste",
+          "subtitle": "Arquitectura",
+          "description": "Evans fotografió catedrales con una impresión de platino y sin gente: piedra, una columna y la luz que cae sobre ella. Un edificio visto como una sola respiración contenida.",
+          "homeTitle": "Esquina suroeste",
+          "homeDescription": "Una nave catedral en platino, sin gente: piedra, una columna y la luz sobre ella."
+        },
+        {
+          "id": 63,
+          "title": "René Lalique: Ranas y nenúfares",
+          "subtitle": "Diseño",
+          "description": "Vidrio moldeado donde el estanque forma parte del cuerpo del jarrón: nenúfares en la base, ranas trepando por el hombro. Lalique pasó de la joyería al vidrio y lo convirtió en un arte producido en masa.",
+          "homeTitle": "Ranas y nenúfares",
+          "homeDescription": "Un jarrón de vidrio con el estanque incorporado en su cuerpo: nenúfares debajo, ranas subiendo por el hombro."
+        },
+        {
+          "id": 64,
+          "title": "Eugène Atget: Fuente de Encélado",
+          "subtitle": "Fotografía",
+          "description": "Un jardín vacío a la hora antes de los visitantes. Atget trabajó temprano para tener el parque solo, y las estatuas, los árboles y el agua se leían como un conjunto tranquilo.",
+          "homeTitle": "Fuente de Encélado",
+          "homeDescription": "Versalles ante los visitantes: estatuas, árboles y agua como un conjunto tranquilo."
         }
       ],
       "articles": [
@@ -132233,6 +132281,38 @@
           "description": "Due tronchi tagliano la scena come colonne e i lavoratori si riducono a figure ai loro piedi. Dipinto a Saint-Rémy nell'autunno del 1889, un anno prima della sua morte.",
           "homeTitle": "I grandi platani",
           "homeDescription": "Due enormi tronchi come colonne, gli stradini piccoli sotto di essi: Saint-Rémy, autunno 1889."
+        },
+        {
+          "id": 60,
+          "title": "Auguste Rodin: L'età del bronzo",
+          "subtitle": "Sculpture",
+          "description": "Un giovane si agita: un braccio alzato alla testa, peso su una gamba, nessuna posa dietro cui nascondersi. Era così realistico che i critici sospettavano che Rodin l'avesse gettato da un corpo vivente.",
+          "homeTitle": "L'Età del Bronzo",
+          "homeDescription": "Una figura bronzea al risveglio, un braccio sopra la testa: così fedele alla vita che il Salone sospettava un calco della modella."
+        },
+        {
+          "id": 62,
+          "title": "Cattedrale di Ely: Nave, angolo sud-ovest",
+          "subtitle": "Architettura",
+          "description": "Evans ha fotografato cattedrali con una stampa al platino e senza persone: pietra, una colonna e la luce che cade su di essa. Un edificio visto come un unico respiro trattenuto.",
+          "homeTitle": "Angolo sud-ovest",
+          "homeDescription": "Una navata cattedrale in platino, senza persone: pietra, una colonna e la luce su di essa."
+        },
+        {
+          "id": 63,
+          "title": "René Lalique: rane e cuscinetti di giglio",
+          "subtitle": "Progetto",
+          "description": "Vetro modellato dove lo stagno fa parte del corpo del vaso: cuscinetti di giglio alla base, rane che si arrampicano sulla spalla. Lalique passò dai gioielli al vetro e ne fece un'arte prodotta in serie.",
+          "homeTitle": "Cuscinetti per rane e gigli",
+          "homeDescription": "Un vaso di vetro con lo stagno incassato nel corpo: dei gigli sotto, delle rane che si arrampicano sulla spalla."
+        },
+        {
+          "id": 64,
+          "title": "Eugène Atget: Fontana di Encelado",
+          "subtitle": "Fotografia",
+          "description": "Un giardino vuoto all'ora prima dei visitatori. Atget lavorò presto per avere il parco da solo, e le statue, gli alberi e l'acqua si leggevano come un unico insieme tranquillo.",
+          "homeTitle": "Fontana di Encelado",
+          "homeDescription": "Versailles davanti ai visitatori: statue, alberi e acqua come un unico ambiente tranquillo."
         }
       ],
       "articles": [
@@ -154875,6 +154955,46 @@
           "picsOfWeek": true,
           "picsReleaseId": "PICS-WEEK-2026-007",
           "updatedAt": "2026-10-19T10:38:10.639Z"
+        },
+        {
+          "id": 60,
+          "title": "Auguste Rodin : L'âge du bronze",
+          "subtitle": "Sculpture",
+          "description": "Un jeune homme remue : un bras levé vers la tête, poids sur une jambe, pas de pose pour se cacher derrière. C'était tellement réaliste que les critiques soupçonnaient Rodin de le couler à partir d'un corps vivant.",
+          "homeTitle": "L'âge du bronze",
+          "homeDescription": "Une silhouette en bronze se réveillant, un bras au-dessus de la tête : si fidèle à la vie que le Salon soupçonnait un plâtre du modèle."
+        },
+        {
+          "id": 61,
+          "title": "Vincent van Gogh : Les grands arbres",
+          "subtitle": "Peinture",
+          "description": "Deux troncs coupent l'image comme des colonnes et les travailleurs se réduisent à des chiffres en dessous d'eux. Peint à Saint-Rémy à l'automne 1889, un an avant sa mort.",
+          "homeTitle": "The Large Plane Trees",
+          "homeDescription": "Deux immenses troncs en colonnes, des réparateurs routiers petits sous eux : Saint-Rémy, automne 1889."
+        },
+        {
+          "id": 62,
+          "title": "Cathédrale d'Ely : Nef, coin sud-ouest",
+          "subtitle": "Architecture",
+          "description": "Evans a photographié des cathédrales avec un imprimé en platine et sans personne : de la pierre, une colonne et la lumière qui tombe dessus. Un bâtiment vu comme un seul souffle retenu.",
+          "homeTitle": "Coin sud-ouest",
+          "homeDescription": "Une nef cathédrale en platine, pas de peuple : de la pierre, une colonne et la lumière dessus."
+        },
+        {
+          "id": 63,
+          "title": "René Lalique : Coussinets de grenouilles et de lys",
+          "subtitle": "Design",
+          "description": "Verre moulé où l'étang fait partie du corps du vase : nénuphars à la base, grenouilles grimpant à l'épaule. Lalique est passé de la joaillerie au verre et en a fait un art produit en série.",
+          "homeTitle": "Coussinets de grenouilles et de lys",
+          "homeDescription": "Un vase en verre avec l'étang intégré dans son corps : nénuphars en dessous, grenouilles grimpant à l'épaule."
+        },
+        {
+          "id": 64,
+          "title": "Eugène Atget : Fontaine d'Encelade",
+          "subtitle": "Photo",
+          "description": "Un jardin vide à l'heure qui précède les visiteurs. Atget a travaillé tôt pour que le parc soit seul, et les statues, les arbres et l'eau se lisent comme un ensemble calme.",
+          "homeTitle": "Fontaine d'Encelade",
+          "homeDescription": "Versailles devant les visiteurs : statues, arbres et eau dans un cadre paisible."
         }
       ],
       "articles": [
