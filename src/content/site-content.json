@@ -168970,9 +168970,266 @@
         },
         {
           "id": 89,
-          "title": "Rome au présent : Béton, nuages et la nouvelle architecture de la ville",
-          "excerpt": "Du dôme en béton du Panthéon au MAXXI de Zaha Hadid, aux trois salles de concert de Renzo Piano, au Colisée Carré de l'EUR et au nuage de Fuksas dans une boîte de verre : comment la Ville éternelle a appris à construire au présent.",
-          "category": "Architecture"
+          "draft": false,
+          "title": "Rome au présent : béton, nuages et nouvelle architecture de la ville",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "6 novembre 2026",
+          "excerpt": "De la coupole en béton du Panthéon au MAXXI de Zaha Hadid, en passant par les trois salles de concert de Renzo Piano, le Colisée carré de l’EUR et le « nuage » de Fuksas dans une boîte de verre : comment la Ville éternelle a appris à construire au présent.",
+          "category": "Architecture",
+          "subcategory": "Fonctionnalité",
+          "tags": [
+            "Rome",
+            "Rome",
+            "architecture contemporaine",
+            "MAXXI",
+            "Zaha Hadid",
+            "Renzo Piano",
+            "Auditorium Parco della Musica",
+            "Le Nuage",
+            "Fuksas",
+            "euro",
+            "Palais de la Civilisation italienne",
+            "Panthéon",
+            "Italie"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+          "previewToken": "35dd818d25a48f3ff33449e1",
+          "publishAt": "2026-11-06T01:00:00.000Z",
+          "publishedAt": "2026-11-06T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI, Musée national des arts du XXIe siècle, conçu par Zaha Hadid Architects, 2010 : la galerie supérieure en porte-à-faux se termine par une baie vitrée donnant sur la vieille ville. Photo : Kurt Cotoaga / Unsplash.",
+              "alt": "Un long bâtiment muséal en béton gris dont le dernier étage est en porte-à-faux au-dessus de l&#x27;entrée et se termine par une large baie vitrée dans laquelle se reflètent les immeubles d&#x27;habitation romains aux teintes ocre et jaune."
+            },
+            {
+              "type": "text",
+              "content": "Rome est la ville qui a inventé le béton, puis qui a passé quinze siècles à construire en pierre et en brique comme si elle l’avait oublié. C’est aussi la capitale européenne la plus souvent accusée de ne posséder aucune architecture contemporaine – une ville tellement imprégnée du passé que le présent ne trouve pas sa place. Ces deux idées sont fausses. Au cours des trente dernières années, Rome s’est discrètement dotée de certains des bâtiments les plus audacieux d’Italie : un musée qui se déverse à travers un quartier comme un fleuve, trois salles de concert en forme de coléoptères, un centre de congrès abritant un nuage emprisonné dans une boîte de verre. Les contempler, c’est voir la ville depuis l’autre extrémité de son histoire."
+            },
+            {
+              "type": "header",
+              "content": "I · Le premier béton",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fnysxgwzfmn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Panthéon, reconstruit sous Hadrien vers 125 apr. J.-C. : derrière le portique de style classique se dresse la plus grande coupole en béton non armé au monde. Photo : Gabriella Clare Marino / Unsplash.",
+              "alt": "Le portique à colonnes du Panthéon, avec son inscription « M. AGRIPPA L.F. COS TERTIVM FECIT », le dôme gris en arrière-plan et un obélisque égyptien sur la fontaine située devant."
+            },
+            {
+              "type": "text",
+              "content": "Chaque bâtiment moderne de Rome dialogue avec celui-ci. Le portique du Panthéon est de style grec, mais ce qui se cache derrière relève de l’ingénierie romaine : une coupole en béton de quarante-trois mètres de diamètre, coulée en anneaux dont l’épaisseur diminue vers le sommet, ouverte sur le ciel en son centre. Près de deux mille ans plus tard, il reste le plus grand dôme en béton non armé au monde. Lorsque Zaha Hadid et Renzo Piano sont venus construire à Rome, ils n’ont pas importé un matériau étranger. Ils ont ramené le béton chez lui."
+            },
+            {
+              "type": "header",
+              "content": "II · Le Colisée carré",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo064hp5hhc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le Palazzo della Civiltà Italiana, dans le quartier de l&#x27;EUR, conçu par Giovanni Guerrini, Ernesto Bruno La Padula et Mario Romano, dont la construction a débuté en 1938 : six étages composés de neuf arcades. Depuis 2015, siège social de la maison Fendi. Photo : Jan Zinnbauer / Unsplash.",
+              "alt": "Un grand bâtiment carré en travertin blanc, comportant six rangées de neuf arcs en plein cintre identiques chacune, se détachant sur un ciel d&#x27;un bleu profond, avec des statues à sa base."
+            },
+            {
+              "type": "text",
+              "content": "La première Rome moderne a été construite pour une exposition qui n’a jamais eu lieu. À la fin des années 1930, le régime fasciste a aménagé un nouveau quartier au sud de la ville en vue d’une exposition universelle prévue pour 1942 : l’Esposizione Universale di Roma, qui a donné son nom au quartier, l’EUR. La guerre a entraîné l’annulation de l’exposition. Les bâtiments sont restés là, blancs et vides, et ont été achevés petit à petit dans les années 1950, lorsque l’EUR est devenu un quartier d’affaires."
+            },
+            {
+              "type": "text",
+              "content": "Son emblème est le Palazzo della Civiltà Italiana, surnommé le « Colisée carré » : un cube de travertin blanc dont chacune des quatre façades est percée de six rangées de neuf arcades. C’est de la propagande sculptée dans la pierre, et son inscription rend hommage aux Italiens, présentés comme un peuple de poètes, d’artistes, de héros, de saints, de penseurs, de scientifiques, de navigateurs et de migrants. C’est aussi, indéniablement, l’un des édifices les plus envoûtants du XXe siècle, un tableau métaphysique de de Chirico devenu réalité. En 2015, la maison de couture Fendi y a installé son siège social, et le bâtiment a enfin trouvé une vocation paisible."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo1azjjoybi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Les arcades supérieures du Palazzo della Civiltà Italiana, avec l&#x27;inscription sur l&#x27;attique. Photo : Karina Halley / Unsplash.",
+              "alt": "Le regard levé vers un angle du bâtiment blanc à arcades, les rangées d’arcs en plein cintre s’éloignant peu à peu, avec une longue inscription sculptée tout en haut, sous un ciel pâle."
+            },
+            {
+              "type": "quote",
+              "content": "Une peinture métaphysique de de Chirico, transposée dans la réalité en travertin."
+            },
+            {
+              "type": "header",
+              "content": "III · Trois coléoptères dans un parc",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foap4ulx4zw.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L&#x27;Auditorium Parco della Musica, conçu par Renzo Piano Building Workshop, a ouvert ses portes en 2002 : l&#x27;une des trois salles de concert recouvertes de plomb. Photo : Erin Doering / Unsplash.",
+              "alt": "Une immense salle de concert aux formes arrondies, dont le toit, recouvert de longs panneaux de plomb patinés d&#x27;un bleu-gris foncé, s&#x27;élève au-dessus d&#x27;un large escalier."
+            },
+            {
+              "type": "text",
+              "content": "La renaissance culturelle de la Rome moderne a commencé par la musique. En 2002, la ville a inauguré l’Auditorium Parco della Musica, conçu par Renzo Piano, à la lisière du quartier du Flaminio. Piano a divisé le complexe en trois salles de concert distinctes de tailles différentes – la plus grande pouvant accueillir environ 2 800 personnes – et a doté chacune d’une coque propre, recouverte d’un toit en plomb et revêtue à l’intérieur de bois de cerisier américain. Les Romains les comparent à des coléoptères, ou à des luths géants posés à l’envers dans l’herbe."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fobsp1jaytr.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cavea, cet amphithéâtre à ciel ouvert situé entre les trois salles, où l&#x27;on aperçoit la face inférieure rouge de l&#x27;une des coques. Photo : Massimo Virgilio / Unsplash.",
+              "alt": "Un grand amphithéâtre en plein air, construit en briques rouges, où des gens sont assis sur les marches, à l&#x27;ombre de la voûte incurvée, grise et rouge, d&#x27;une salle de concert."
+            },
+            {
+              "type": "text",
+              "content": "Entre les salles, Piano a aménagé un quatrième espace qui appartient à tous : la cavea, un amphithéâtre en plein air construit en briques, où les gens s&#x27;assoient sous le soleil du soir, même lorsqu&#x27;il n&#x27;y a pas de spectacle. Au cours des travaux, les ouvriers ont découvert les vestiges d’une villa romaine sur le site ; Piano a modifié les plans et les ruines se trouvent désormais à l’intérieur du complexe, où un petit musée a été aménagé. C’est la manière romaine : le nouveau bâtiment s’efface pour laisser la place à l’ancien."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0focyihyacty.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Les coques vues de profil : des panneaux de plomb, patinés par deux décennies d&#x27;exposition aux intempéries, se détachant sur un ciel d&#x27;été. Photo : Massimo Virgilio / Unsplash.",
+              "alt": "Gros plan pris en contre-plongée sur un toit incurvé, formé de bandes de plomb gris-bleu superposées, sous un ciel bleu parsemé de nuages blancs."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foe7ghshofl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Soirée à l&#x27;Auditorium : les terrasses en briques font office de place publique. Photo : Piermanuele Sberni / Unsplash.",
+              "alt": "Vue verticale plongeante sur la structure brute d&#x27;une salle de concert surplombant des terrasses en briques où évolue un skateur solitaire."
+            },
+            {
+              "type": "header",
+              "content": "IV · MAXXI : un musée comme un fleuve",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo2965nm6lt.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI : la galerie en porte-à-faux et sa fenêtre, qui encadrent les maisons ocres du quartier du Flaminio. Photo : Mimmo Sigismondi / Unsplash.",
+              "alt": "Un volume de béton gris aux arêtes vives se détachant sur un ciel d&#x27;un bleu profond, dont la longue fenêtre reflète les maisons romaines aux teintes orange et jaunes."
+            },
+            {
+              "type": "text",
+              "content": "Le bâtiment qui a transformé l&#x27;image que Rome avait d&#x27;elle-même a ouvert ses portes en 2010. Le MAXXI, Musée national des arts du XXIe siècle, a été conçu par Zaha Hadid sur le site d’une ancienne caserne militaire du quartier du Flaminio. Il a remporté le prix Stirling du RIBA cette année-là ; Zaha Hadid l’a remporté à nouveau l’année suivante, devenant ainsi la première architecte à remporter ce prix deux fois de suite."
+            },
+            {
+              "type": "text",
+              "content": "De l&#x27;extérieur, on dirait plusieurs canaux en béton superposés et tordus en plan, de sorte que le bâtiment semble contourner l&#x27;angle de l&#x27;îlot. Zaha Hadid l&#x27;a décrit comme un champ de courants plutôt que comme un conteneur. Il n’y a ni pièces fermées ni parcours unique : les galeries sont de longs cours d’eau sinueux, éclairés par le haut grâce à des ailettes dans le toit, qui se croisent, se divisent et se rejoignent à nouveau. Tout en haut, la dernière galerie s&#x27;avance au-dessus de l&#x27;entrée et se termine par une immense baie vitrée, encadrant la vue sur les maisons romaines situées en face – comme si le musée devait se retourner vers la ville dont il est issu."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo8bikzrapi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "À l&#x27;intérieur du MAXXI : des escaliers et des passerelles noirs semblent flotter dans l&#x27;atrium blanc. Photo : Marius George Oprea / Unsplash.",
+              "alt": "Un intérieur blanc, avec de vastes escaliers noirs et des passerelles qui le surplombent, baigné par la lumière provenant des ailettes du toit et doté d&#x27;un long sol blanc."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo9k38m2kso.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L&#x27;atrium vu d&#x27;en haut : les rubans d&#x27;escaliers noirs s&#x27;étendent sur toute la hauteur du bâtiment. Photo : Marius George Oprea / Unsplash.",
+              "alt": "Une vue plongeante sur l&#x27;atrium du musée, où des escaliers en acier noir serpentent entre les murs blancs, tandis que des personnes se trouvent bien en contrebas."
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;intérieur est tout en noir et blanc. Les murs en béton, pâles et lisses, ont été coulés avec une précision presque inconnue dans le secteur du bâtiment italien de l&#x27;époque. Des escaliers et des passerelles en acier noir, légers comme des traits dessinés, traversent l&#x27;atrium. Se promener au MAXXI, ce n&#x27;est pas tant visiter un musée que se déplacer à l&#x27;intérieur d&#x27;un schéma représentant le mouvement lui-même."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo4c81j8cmy.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI : une galerie en porte-à-faux vue d&#x27;en bas. Photo : Manuel Szkolnik / Unsplash.",
+              "alt": "Vue de face d&#x27;une galerie en béton massif en porte-à-faux au-dessus d&#x27;un volume situé plus bas, avec du verre et des nuages blancs au-dessus."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo5lh03xz3k.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Des plans en béton se rejoignant à angle droit : c&#x27;est le type de surface qui compose le musée. Photo : Manuel Szkolnik / Unsplash.",
+              "alt": "Gros plan abstrait sur des murs en béton gris lisses qui se rejoignent à angle droit, avec des ombres profondes."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo6xnfop6x0.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Le porte-à-faux surplombant la rue, avec les immeubles d&#x27;habitation du Flaminio. Photo : Manuel Szkolnik / Unsplash.",
+              "alt": "Une galerie en béton gris surplombant des immeubles d&#x27;habitation orange et jaunes, sous un ciel bleu."
+            },
+            {
+              "type": "header",
+              "content": "V · Un nuage dans une boîte",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fofxucnmpoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Nuvola, centre de congrès de Rome, conçu par Massimiliano et Doriana Fuksas, inauguré en 2016 : le « nuage » suspendu à l&#x27;intérieur d&#x27;un cube de verre. Photo : Massimo Virgilio / Unsplash.",
+              "alt": "Vue en noir et blanc de l&#x27;intérieur d&#x27;un hall vitré où une immense structure incurvée, composée de nervures en acier et d&#x27;une membrane tendue – le « nuage » –, est suspendue entre les étages."
+            },
+            {
+              "type": "text",
+              "content": "Le plus récent des monuments emblématiques de Rome a fait son retour dans le quartier de l’EUR, à quelques pas de la place du Colisée. « La Nuvola », le centre de congrès conçu par Massimiliano et Doriana Fuksas et inauguré en 2016 après près de deux décennies de conception et de construction, pousse une idée simple à son paroxysme. À l’extérieur, c’est un cube de verre et d’acier. À l’intérieur, suspendu dans les airs, se trouve un nuage : un auditorium aux formes libres, enveloppé d’une membrane translucide tendue sur une ossature de nervures en acier, qui semble flotter entre les étages."
+            },
+            {
+              "type": "text",
+              "content": "Le contraste avec son voisin ne pourrait être plus marqué. Le Palazzo della Civiltà incarne la certitude : une grille d’arcades identiques, un slogan gravé dans la pierre. La Nuvola incarne le doute : une forme qui ne trouve pas sa place, un bâtiment à l’intérieur d’un autre bâtiment. Ensemble, ils retracent brièvement l’évolution de l’architecture à Rome en quatre-vingts ans."
+            },
+            {
+              "type": "header",
+              "content": "VI · Et ailleurs",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "La visite comporte d’autres étapes. À l’Ara Pacis, le pavillon de verre conçu par Richard Meier en 2006 abrite l’autel de la paix d’Auguste ; les Romains s’en sont disputés pendant des années, et il reste aujourd’hui encore le bâtiment moderne le plus controversé du centre historique. Dans la banlieue est de Tor Tre Teste, Meier a également construit l’église du Jubilé, Dives in Misericordia (2003), dont les trois coques en béton blanc s’élèvent comme des voiles au-dessus d’un ensemble immobilier. Et sur le chemin menant à l’Auditorium, on passe devant le Palazzetto dello Sport de Pier Luigi Nervi, datant de 1957, un dôme en béton nervuré qui est le véritable ancêtre de tout ce qui est évoqué dans cet article."
+            },
+            {
+              "type": "header",
+              "content": "VII · Le présent",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Rome ne sera jamais une ville d’architecture moderne au sens où le sont Rotterdam ou Shanghai. Elle n’en a d’ailleurs pas besoin. Ses plus beaux bâtiments récents fonctionnent comme les anciens l’ont toujours fait : en s’installant à côté de ce qui existe déjà et en modifiant la façon dont on le perçoit. La fenêtre d’Hadid fait face aux vieilles maisons ; les halls de Piano laissent place à une villa romaine ; le « nuage » de Fuksas flotte à quelques centaines de mètres d’un rêve fasciste d’éternité. À Rome, le présent n’est jamais seul. C’est précisément ce qui rend la ville si intéressante."
+            },
+            {
+              "type": "quote",
+              "content": "À Rome, le présent n&#x27;est jamais seul."
+            },
+            {
+              "type": "header",
+              "content": "Regardez ça",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le MAXXI se trouve sur la Via Guido Reni, dans le quartier du Flaminio, et l&#x27;Auditorium Parco della Musica est à quelques pas de là, sur le Viale Pietro de Coubertin ; vous pouvez les visiter tous les deux au cours d&#x27;un même après-midi, en passant par le Palazzetto dello Sport en chemin. L&#x27;EUR, avec le Palazzo della Civiltà Italiana et La Nuvola, se trouve à quelques stations au sud sur la ligne B du métro. Le musée de l&#x27;Ara Pacis se trouve au bord du Tibre, près de la Piazza del Popolo."
+            },
+            {
+              "type": "note",
+              "content": "Les dates, les noms des architectes et les descriptions s&#x27;appuient sur des comptes rendus publiés concernant les bâtiments ainsi que sur les descriptions des projets fournies par les architectes eux-mêmes. Les photographies sont reproduites sous licence Unsplash, chaque photographe étant mentionné dans la légende."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:25:29.599Z"
         },
         {
           "id": 90,
