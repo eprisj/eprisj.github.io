@@ -119325,6 +119325,568 @@
             }
           ],
           "updatedAt": "2026-11-05T07:26:39.232Z"
+        },
+        {
+          "id": 91,
+          "draft": true,
+          "title": "Adam Dora: La disciplina de ser artista",
+          "author": "Maria Ivanova",
+          "role": "Autor",
+          "date": "3 de noviembre de 2026",
+          "excerpt": "Adam Dora habla sobre la intersección entre la abstracción y la vida cotidiana, el papel de la disciplina en la libertad creativa y la importancia de mantenerse fiel a la propia visión artística.",
+          "category": "entrevista",
+          "subcategory": "Entrevista",
+          "tags": [
+            "Entrevista",
+            "abstracción",
+            "Budapest",
+            "Barcelona",
+            "art"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw2m8pken4vyzd.jpg",
+          "previewToken": "0ed9dc38f2fd809ab4b6bb8c",
+          "content": [
+            {
+              "type": "text",
+              "content": "Las pinturas de Adam Dora se sitúan en un espacio entre la abstracción y la representación. Lo que en un principio parece una combinación de colores, texturas y trazos va revelando poco a poco objetos familiares extraídos de la vida cotidiana. Desde alimentos y aparatos de gimnasia hasta tecnología contemporánea, estos elementos pasan a formar parte de un lenguaje visual en el que la observación y la experimentación pictórica están estrechamente entrelazadas."
+            },
+            {
+              "type": "text",
+              "content": "María Ivanova habló con Adam Dora sobre su práctica artística, el papel de la disciplina en la libertad creativa, la importancia de mantenerse fiel a la propia visión artística y sus lugares favoritos en distintas ciudades europeas."
+            },
+            {
+              "type": "header",
+              "content": "Cómo convertirse en artista",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>María Ivanova [MI]: ¿Cómo te iniciaste en el arte?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>Adam Dora [AD]:</b> Desde pequeño. Cuando era niño, siempre me interesaron las imágenes de todo tipo. Coleccionaba imágenes, pegatinas, postales, todo lo que tenía a mi alrededor, y siempre estaba dibujando, como cualquier niño."
+            },
+            {
+              "type": "text",
+              "content": "En un momento dado, me di cuenta de que, si quieres estar conectado a todo esto todo el tiempo, si es la actividad principal que te gusta y te tomas en serio el hecho de hacer fotos, entonces eso es lo que llamamos ser artista. Pero antes no lo sabía. Simplemente estaba ahí mientras crecía."
+            },
+            {
+              "type": "text",
+              "content": "Entonces mis padres empezaron a llevarme a ver a una artista, una retratista clásica, así que mi formación fue muy clásica, centrada en el estudio de la pintura. Empecé a asistir a sus clases, y así fue como comenzó mi trayectoria profesional. Más tarde me di cuenta de que quería estudiar arte, y fui a la universidad."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2lv8kyx8leku.webp",
+              "caption": "Dora Adam en el Piramidon Centre Studio, Barcelona",
+              "sourceUrl": "https://www.instagram.com/p/C8ePrM0IJTO/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿No te daba miedo no poder ganarte la vida con eso?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Es la preocupación fundamental de todos los padres y de todo el mundo. Las estadísticas indican que el 99 % de los artistas pasan penurias o llevan una vida caótica."
+            },
+            {
+              "type": "text",
+              "content": "Pero para mí es diferente, porque vengo de otro tipo de hábitos: me gusta estar muy concentrada y muy organizada, y así es como puedo crear estas cosas tan expresivas. El resto de aspectos de mi vida están súper organizados. Me gusta tener todo ordenado y limpio, y organizar bien mi tiempo. Ese equilibrio en la vida me da libertad en el estudio. Se complementan entre sí."
+            },
+            {
+              "type": "text",
+              "content": "Creo firmemente que, si te conoces a ti mismo y pasas por un proceso de auto-modelado, puedes conseguir cualquier cosa. No es algo muy espiritual. Si eres lo suficientemente fuerte como para seguir tu propio camino… porque el mayor problema de la vida es que el 99 % de la gente no sigue su propio camino."
+            },
+            {
+              "type": "text",
+              "content": "Estoy muy, muy agradecido por tener la oportunidad de seguir este camino."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2lzimkr7lsmb.webp",
+              "caption": "El estudio de Dora Adam en Budapest",
+              "sourceUrl": "https://www.instagram.com/p/Dewd1P_tm_s/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+              "credit": ""
+            },
+            {
+              "type": "header",
+              "content": "Educación y estilo",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Es imprescindible que un artista tenga un título universitario?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> No lo sé. Yo tengo una formación clásica, así que cuento con esa base, pero conozco a muchos artistas que no tienen formación académica. Creo que ser un buen artista no es algo que se pueda enseñar. Se pueden aprender habilidades, técnicas, historia del arte y estética. Está bien tener formación, conocer tu cultura, la historia del arte y la historia universal. Pero para crear buen arte, no es necesario. Es un plus."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Y qué es lo que hace falta?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Creo que la tensión y el hecho de profundizar en tu sensibilidad a tu manera. Puede ser cualquier cosa; es algo muy personal. En mi obra hay una parte personal que proviene de los temas, de la inspiración, de la memoria colectiva que plasmo en ella. Pero la otra parte es la sensibilidad. Es algo muy personal: naciste, llegaste a este mundo, y cada uno tiene su propia personalidad."
+            },
+            {
+              "type": "text",
+              "content": "La forma en que tocas un material y lo transformas en un cuadro, una escultura o un objeto tridimensional… eso es magia, porque no es más que material, y de repente se convierte en algo."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2obczona11yw.webp",
+              "caption": "El estudio de Dora Adam en Budapest",
+              "sourceUrl": "https://www.instagram.com/p/Ddb53EKDbzS/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+              "credit": "@doraadam_"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Cómo has desarrollado tu estilo? No dejo de sorprenderme con tu forma de trabajar. Cuando miro tus cuadros, a primera vista parecen abstractos, pero luego, al profundizar, te das cuenta de que no lo son en absoluto. Es fabuloso.</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Muchísimas gracias. Es muy difícil de describir. De niño me apasionaba la abstracción. Podía jugar con cualquier cosa: palos que encontraba, hojas, salpicaduras de agua. Esa es una experiencia abstracta: tienes la experiencia sensorial, ves formas y colores, y tu cerebro los relaciona con algo."
+            },
+            {
+              "type": "text",
+              "content": "Siempre ha estado presente en mí, y me cuesta mucho expresarlo con palabras porque forma parte de mí. Pero creo que son ambas cosas. Ves cosas, oyes cosas, estudias cosas, y aunque no vayas a una escuela de arte, ves muchas cosas a tu alrededor, y sin duda influyen en tu memoria."
+            },
+            {
+              "type": "text",
+              "content": "Por eso no puedo ser totalmente abstracto: Me gusta mucho observar las cosas, analizar lo que veo y establecer una conexión con ellas. Y, en lo abstracto, mi mente empieza a convertirlo en un contexto. Es como la arquitectura: hay que construir algo. Incluso en un lienzo, se construye una composición a través del color, el material, la textura, etc."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2oefvnlg3zja.jpg",
+              "caption": "«Right Angle Step II», óleo, barra de óleo y acrílico sobre lienzo, 2023"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿En qué estás trabajando ahora mismo? </b>[entrevista realizada a principios de octubre de 2026]"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> ¿Ahora mismo? Probablemente hayas visto la serie con las lentes. Esa es la nueva serie. Expuse tres obras en la Feria de Arte Contemporáneo de Budapest con mi galería húngara, y también tengo una serie con mi galería de Barcelona."
+            },
+            {
+              "type": "text",
+              "content": "Son figuras y rostros en los que no se distingue el sexo. Son como las figuras de los anuncios de moda, cosas que he visto en Instagram o en las redes sociales. Eso me influye mucho, no de forma directa, pero de alguna manera se te queda grabado en la mente, y me interesa mucho cómo influye en la pintura."
+            },
+            {
+              "type": "text",
+              "content": "También tengo esta temática más antigua: la mayoría de mis cuadros se inspiran en lentes, teléfonos y gafas. Me interesan mucho las lentes, cómo vemos a través de ellas. Hay mucho significado en ello, pero también es un elemento compositivo en mi nueva obra."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2ok8l5buflm1.webp",
+              "caption": "El estudio de Dora Adam en Budapest"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Cada vez que contemplo tus cuadros, tengo la sensación de que disfrutas tanto del proceso creativo como del resultado final. Hay algo muy sincero y natural en cada trazo, como si el placer de pintar en sí mismo se reflejara en la obra. Eso me parece especialmente fascinante. ¿Dirías que es así?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Tienes toda la razón. Eso es realmente importante, es la esencia misma de mi obra. La pintura tiene una energía muy poderosa y, a veces, independientemente de lo que aparezca en el cuadro (por supuesto que importa, porque está seleccionado), no se trata de un concepto fuerte; simplemente, la imagen se impone y se describe a sí misma."
+            },
+            {
+              "type": "text",
+              "content": "Pero, por otro lado, si te fijas en mis proyectos y exposiciones, todos ellos abordan con seriedad temas contemporáneos. Ambos aspectos se equilibran entre sí."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Creo que todo el mundo necesita tener confianza en lo que hace, pero quizá sea especialmente importante que los artistas crean en su propia obra. Pareces tener mucha confianza en tu trabajo. ¿De dónde te viene esa confianza?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> La confianza es importante en todo. Te hace tomarte las cosas en serio, y no solo ante los demás, sino también ante ti mismo. Si tienes confianza en algo, puedes hacerlo con la máxima energía y fuerza."
+            },
+            {
+              "type": "quote",
+              "content": "Pero, en mi opinión personal, solo se puede tener confianza en uno mismo de la forma adecuada si se han superado muchos problemas o fracasos y se han probado diferentes estrategias."
+            },
+            {
+              "type": "text",
+              "content": "Por ejemplo, tengo claro lo que quiero hacer y lo que muestro como artista, pero en el taller hay un proceso constante y muchos fracasos, aunque «fracaso» quizá no sea la palabra más adecuada. Se trata de probar cosas, de experimentar, de un ritmo de experiencia."
+            },
+            {
+              "type": "text",
+              "content": "Pero si tienes confianza en tu objetivo, o mejor dicho, en tu camino principal —la pasión de tu ser como persona y como artista— y lo sigues con esa energía, eso hace que la obra cobre vida, que palpite."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Cómo crees que influye la IA en la práctica artística?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Mucho. Muchos artistas lo utilizan, y yo lo uso para buscar cosas. Si tengo alguna duda sobre un tema o quiero consultar algo sobre historia del arte, utilizo Google o cualquier otro recurso que haya disponible. Todo se está integrando cada vez más."
+            },
+            {
+              "type": "text",
+              "content": "No estoy en contra, porque ayuda mucho y ahorra mucho tiempo. Pero no lo uso para generar imágenes. Lo detesto. Me parece horrible, aunque quizá mejore en el futuro."
+            },
+            {
+              "type": "text",
+              "content": "Pero lo que busco en las imágenes es imposible de reproducir con la IA. Si fuera posible, mi trabajo habría llegado a su fin, pero estoy convencido de que no lo es."
+            },
+            {
+              "type": "text",
+              "content": "De dónde viene, para qué sirve, cuál es el objetivo de la obra… eso no es algo que un algoritmo pueda lograr. No es humano y carece de la aleatoriedad del cerebro humano. No soy un experto en este campo, pero eso es lo que creo."
+            },
+            {
+              "type": "header",
+              "content": "Objetos personales: la serie del gimnasio",
+              "level": 3
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2jxa3wkbmdcv.jpg",
+              "caption": "Exposición «Personal Belongings», Galería Heart and Cherry, Budapest. Foto de Dávid Bíró",
+              "sourceUrl": "https://www.instagram.com/p/DXHMMDrDf7_/?utm_source=ig_web_copy_link&vrfl=NTc4MTIwNjQ2YQ=="
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Esta fue mi última exposición individual en una galería húngara [Heart&amp;Cherry], titulada «Personal Belongings». La exposición explora el entorno de un gimnasio a través de la abstracción."
+            },
+            {
+              "type": "text",
+              "content": "Antes de esto, había estado trabajando con elementos culinarios, paisajes y bodegones con objetos pequeños. Entonces empecé a fijarme en situaciones similares en el gimnasio y me fascinaron."
+            },
+            {
+              "type": "text",
+              "content": "Un gimnasio es un lugar especial, con un ambiente que solo se respira allí: el mobiliario, los colores, las luces, los objetos de hierro, los de plástico. Es una abstracción. Me imaginé algunos de estos lugares, pero también incorporé cosas que había visto, y mi mente las convirtió en imágenes."
+            },
+            {
+              "type": "text",
+              "content": "Me gustó mucho cómo el espacio expositivo encajaba con el interior y cómo combinaban los colores."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mw2kfhawl7mcj9.jpg",
+                "https://api.eprisjournal.com/uploads/mw2kj4447zaz7l.jpg",
+                "https://api.eprisjournal.com/uploads/mw2kkirdk8nyxr.jpg"
+              ],
+              "caption": "Exposición «Personal Belongings», Galería Heart and Cherry, Budapest.",
+              "alts": [
+                "Foto de Dávid Bíró",
+                null,
+                "Foto de Dávid Bíró"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "La exposición versaba sobre la historia imaginaria de un hombre solo, haciendo ejercicio, lo cual se refleja en los cuadros. No hay figuras ni otras personas en las imágenes, solo escenarios formados por objetos."
+            },
+            {
+              "type": "text",
+              "content": "Esta es la obra más abstracta, compuesta únicamente por piezas de hierro, y la única obra figurativa son los AirPods."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2kp3c4s2j5da.jpg",
+              "caption": "Foto de Dávid Bíró"
+            },
+            {
+              "type": "text",
+              "content": "También se trata de jugar con las proporciones entre lo pequeño y lo grande. Me interesa mucho cómo se puede percibir el espacio y plasmarlo en algo plano. Eso siempre forma parte de la pintura."
+            },
+            {
+              "type": "header",
+              "content": "Pinto lo que no quiero ver",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Podemos hablar de tu exposición <i>«Pinto lo que no quiero ver</i>»? </b>[Piramidón Centre D&#x27;art Contemporani, Barcelona]"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Sí, fue en Barcelona, en Gràcia. Participé en un programa de residencia de verano y desarrollé esta serie de obras para la exposición."
+            },
+            {
+              "type": "gallery",
+              "content": [
+                "https://api.eprisjournal.com/uploads/mw2l8zoubmjacu.jpg",
+                "https://api.eprisjournal.com/uploads/mw2l98acsww4yz.jpg",
+                "https://api.eprisjournal.com/uploads/mw2l9d8cq98qx1.jpg"
+              ],
+              "caption": "Exposición «Pinto lo que n̶o̶ q̶u̶e̶r̶o̶ ver». Fuente de la imagen: Instagram @piramidoncentre"
+            },
+            {
+              "type": "text",
+              "content": "La idea surgió de un libro sobre Philip Guston, titulado <i>*I Paint What I Want to See</i>*. Ese era el concepto principal y el título del libro. Tras su etapa abstracta, empezó a crear obras figurativas, escenas imaginarias centradas en un artista, el estudio, etc."
+            },
+            {
+              "type": "text",
+              "content": "Esto fue antes de la serie del gimnasio; ahí es donde empezó todo."
+            },
+            {
+              "type": "text",
+              "content": "Estaba cocinando y, por ejemplo, este cuadro surgió al mezclar colores en la paleta mientras preparaba la comida. Me di cuenta de que todo estaba relacionado. Siempre estoy haciendo salsas, cortando cosas en tiras, haciendo patatas fritas o cosas por el estilo, mezclando constantemente ingredientes y colores. Todo está relacionado."
+            },
+            {
+              "type": "text",
+              "content": "La nube es un elemento lúdico, esponjoso, como cuando se amasa en la cocina. Así que se trata más bien de la experiencia de estar en la cocina."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Y, de nuevo, aquí vemos los AirPods. Me gusta mucho. No todo el mundo es capaz de entender la abstracción, pero cuando encuentran un elemento con el que pueden identificarse, les fascina toda la obra de arte. Es como un gancho para ellos.</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Por supuesto. Y lo he incluido ahí porque no se trata de incorporar un producto concreto en la obra. Es posible que algunas personas mayores, o incluso jóvenes, no reconozcan este producto. Es una cuestión puramente compositiva."
+            },
+            {
+              "type": "text",
+              "content": "Cuando empecé a pintarlo, había visto este objeto en mi mesa y pensé: «Qué bonito, porque necesito algo redondo como esto: cuatro círculos, dos blancos y dos negros». Es un pensamiento abstracto dentro de un cuadro."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2p3yaosyj8wi.jpg",
+              "caption": "«Workout Balance», acrílico sobre lienzo, 2025"
+            },
+            {
+              "type": "text",
+              "content": "Entonces, tu cerebro lo relaciona con otro producto. Así que también refleja mi forma de pensar a la hora de crear un lenguaje pictórico abstracto, mientras que un cerebro condicionado por los anuncios se decanta por una dirección comercial."
+            },
+            {
+              "type": "text",
+              "content": "Lo mismo ocurría con las hamburguesas. Estaba construyendo una torre de colores y formas. Es un cuadro abstracto, pero visto desde otra perspectiva, es una hamburguesa gigante. Cuando te acercas, te transmite una sensación muy potente e intensa."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2li51emrl0gu.webp",
+              "caption": "HOT STUFF / Exposición colectiva en la Galería Escat, Barcelona. Fuente de la imagen: adamdora.com"
+            },
+            {
+              "type": "text",
+              "content": "Una de ellas todavía la tengo. Está colgada a la entrada de mi casa, donde hay un espacio estrecho que da a una zona más amplia con una mesa grande. La coloqué en un pasillo muy estrecho, ocupando toda la pared: mide unos dos metros por 180 centímetros. Esa hamburguesa enorme."
+            },
+            {
+              "type": "text",
+              "content": "Cambia la forma en que percibes el espacio: cuando pasas por allí, solo ves «gastro-abstracción», pero cuando te sientas a la mesa, puedes ver un pájaro. Dos polos opuestos."
+            },
+            {
+              "type": "header",
+              "content": "Disciplina",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Alguna vez tienes épocas en las que te falta inspiración o no te apetece trabajar?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Claro, a todo el mundo le pasa. Yo viajo, pero la inspiración es algo que no se puede esperar. Creo que llega cuando trabajas."
+            },
+            {
+              "type": "text",
+              "content": "Si trabajas como artista profesional, trabajas sin parar, y a mí me gusta trabajar sin parar. Si estoy en el estudio y encuentro mi ritmo, todo va bien. A veces hay altibajos, claro. No tengo el mismo nivel de energía todo el tiempo, pero es algo que se puede entrenar."
+            },
+            {
+              "type": "text",
+              "content": "Es muy parecido a ser un deportista profesional. El deporte y el arte son muy diferentes, pero la disciplina que supone entrenarse para trabajar en cualquier estado de ánimo es la misma."
+            },
+            {
+              "type": "text",
+              "content": "Alguien que se prepara para los Juegos Olímpicos tiene que centrarse en muchas cosas, y no todos los días de entrenamiento son iguales: a veces tienes más energía, otras veces estás más agotado. Pero si conoces tu objetivo y sigues por ese camino, a la larga irás mejorando."
+            },
+            {
+              "type": "text",
+              "content": "Esa es mi visión de la vida, no solo del arte."
+            },
+            {
+              "type": "quote",
+              "content": "Es muy parecido a ser un deportista profesional. El deporte y el arte son muy diferentes, pero la disciplina que supone entrenarse para trabajar en cualquier estado de ánimo es la misma."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2p8c0blanwnz.jpg",
+              "caption": "«Trío», acrílico sobre lienzo, 2025",
+              "sourceUrl": "https://www.instagram.com/p/DPTt_3-Dd2F/?utm_source=ig_web_copy_link&exln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
+            },
+            {
+              "type": "header",
+              "content": "Lo esencial para ser artista",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: Si tuvieras que elaborar una lista de consejos para artistas, ¿qué incluirías en ella?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> La curiosidad. Eso es lo primero. Y, en segundo lugar, trabajar de forma constante en tu práctica."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Qué más?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> <u><b>Para ser sincero</b></u>, es muy importante que las obras de arte te lleguen y encajen con tu forma de trabajar. De lo contrario, llega un momento en el que empiezas a seguir las modas, y eso puede venirte abajo si no surge de una fuente auténtica."
+            },
+            {
+              "type": "text",
+              "content": "Aunque haya mucha falsedad en el mundo, creo que es importante, al igual que el karma, ser sincero contigo mismo y con los demás. No se trata solo de lo que nos decimos unos a otros, sino también de lo que hacemos. Una obra de arte también tiene que ser sincera. Eso abre muy buenas posibilidades en la vida."
+            },
+            {
+              "type": "quote",
+              "content": "Tengo experiencia en esto: lo único que puedes hacer es escucharte a ti mismo. "
+            },
+            {
+              "type": "text",
+              "content": "Te digo esto como joven, y ya veremos dónde estoy dentro de veinte años. Espero que nada cambie y que siga sintiendo lo mismo. A veces está bien cambiar, pero no en este aspecto."
+            },
+            {
+              "type": "text",
+              "content": "<b><u>También tiene que ver con la honestidad el hecho de crear el tipo de arte que se ajusta a tu forma de pensar y elegir el medio adecuado. </u></b>"
+            },
+            {
+              "type": "text",
+              "content": "Por eso es bueno que los artistas se comuniquen entre sí, porque así podemos ayudarnos mutuamente en esto. Hay quien tiene una idea muy buena, pero no elige el medio adecuado para plasmarla, por lo que la idea no llega al público. También puede ocurrir lo contrario: un medio muy bueno, pero la idea no es tan sólida."
+            },
+            {
+              "type": "quote",
+              "content": "En las artes plásticas, una obra tiene que causarte un impacto inmediato. De lo contrario, no es arte plástico. "
+            },
+            {
+              "type": "text",
+              "content": "Si quieres añadir un punto más a esa lista de comprobación, yo diría lo siguiente: "
+            },
+            {
+              "type": "quote",
+              "content": "<b><u>Tiene que valerse por sí misma</u></b>. Aunque sea lo más conceptual que haya existido jamás, tiene que valerse por sí misma."
+            },
+            {
+              "type": "text",
+              "content": "Podría tratarse de un objeto muy sencillo o de un espacio vacío, pero debe tener un aura que te transmita algo a través de su lenguaje visual, sin que el artista esté presente y sin ningún texto."
+            },
+            {
+              "type": "text",
+              "content": "Si echamos la vista atrás a lo largo de la historia del arte, desde artistas como Joseph Kosuth, Beuys y Kiefer hasta los artistas contemporáneos, todas sus obras tienen esta energía, incluso sin ningún texto que las acompañe."
+            },
+            {
+              "type": "quote",
+              "content": "<i>Quizá necesites el texto para comprender el contexto, los antecedentes históricos, el trasfondo cultural o las referencias. Pero si, sin él, la obra no parece una obra de arte, eso ya es un problema.</i>"
+            },
+            {
+              "type": "header",
+              "content": "Lugares favoritos",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "Budapest"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Cuál es tu lugar favorito de Budapest, tu ciudad natal? No tiene por qué estar relacionado con el arte, cualquier cosa que se te ocurra.</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Empezaré por un lugar especial que, en realidad, no tiene mucho que ver con el arte, quizá solo desde el punto de vista arquitectónico. Se llama Rudas, un baño turco situado en el lado de Buda. Solía ir allí casi todas las semanas, o cada dos semanas, cuando estoy en Hungría."
+            },
+            {
+              "type": "text",
+              "content": "Es un baño histórico, construido cuando los turcos estaban en Hungría, y aún conserva parte de sus paredes y techo originales. Me encanta porque es precioso y el agua mineral brota de debajo de las colinas."
+            },
+            {
+              "type": "text",
+              "content": "También me gusta el Museo de Bellas Artes, que debería visitar todo aquel que esté relacionado con el arte. Además, podría recomendar algunas galerías de arte contemporáneo. Hay dos de mis favoritas con las que también colaboro: Heart and Cherry y Einspach Fine Art &amp; Photography. "
+            },
+            {
+              "type": "text",
+              "content": "También hay algunas galerías estupendas, como la Galería Erika Deák y la Vintage Galéria."
+            },
+            {
+              "type": "header",
+              "content": "Barcelona",
+              "level": 3
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Y qué hay de Barcelona?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Bueno, en Barcelona siempre me alojo en el Piramidón, un edificio enorme con cuatro plantas de estudios de artistas y una planta dedicada a la galería. Es una mezcla entre una casa-estudio y una galería."
+            },
+            {
+              "type": "text",
+              "content": "Organizan exposiciones con los artistas que viven allí y, además, cuentan con una colección enorme. Empezaron a coleccionar obras de artistas allá por los años ochenta y noventa. Es increíble formar parte de esa comunidad. Lo que realmente recomendaría en Barcelona es el Museo Picasso y la Fundación Miró, en Montjuïc. Es increíble y precioso."
+            },
+            {
+              "type": "text",
+              "content": "Para los amantes del diseño, recomendaría Side Gallery. Es un espacio extraordinario, dedicado al diseño coleccionable y a las experiencias únicas. Entre las galerías de arte contemporáneo, la que me representa, Escat Gallery, es, por supuesto, mi favorita. Es una galería en expansión que cuenta con dos espacios, uno en la calle Trafalgar y otro en L’Hospitalet de Llobregat. Es realmente genial."
+            },
+            {
+              "type": "text",
+              "content": "También hay otras galerías estupendas, como Mayoral, Alzueta y Senda. Todas son muy bonitas."
+            },
+            {
+              "type": "header",
+              "content": "Francia"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Cuál es tu museo favorito de Francia?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Me gusta mucho el Centro Pompidou. He estado allí muchas veces. En París, también me gusta mucho el Museo Rodin. Es impresionante, y el jardín de esculturas es precioso."
+            },
+            {
+              "type": "text",
+              "content": "Si tuviera que nombrar algún lugar fuera de la capital, sería el Museo Picasso de Antibes. Es fantástico. Y también hay una fundación en Antibes. Fui allí hace unos diez años, cuando aún no estaba abierto al público como lo está ahora y las visitas solo se podían realizar con cita previa. Ahora abre una o dos veces por semana, así que es más fácil visitarlo. Es muy bonito."
+            },
+            {
+              "type": "header",
+              "content": "Reflexiones finales"
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Qué consejo le darías a tu yo más joven, mirando atrás desde donde estás ahora, cuando acababas de empezar a dedicarte a esta profesión?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Quizá deberías enseñar menos trabajo."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI: ¿Menos trabajo?</b>"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD:</b> Sí. Hay obras que creé y expuse y que ahora creo que no hacía falta mostrar, o que simplemente no estaban terminadas. Pero creo que forma parte del proceso: creces, estudias, aprendes sobre ti mismo, sobre tu práctica y tus objetivos, y entonces te gustaría borrar cosas del pasado. Pero también forman parte de ti, así que no me importa."
+            },
+            {
+              "type": "text",
+              "content": "O quizá otro consejo sería aprender también algo más. Me gusta cuando las personas que han estudiado arquitectura, diseño de interiores o cualquier tipo de diseño incorporan esas habilidades a su arte. Me refiero sobre todo a habilidades prácticas."
+            },
+            {
+              "type": "text",
+              "content": "<b>MI:</b> ¿Qué consejo darías a todo el mundo?"
+            },
+            {
+              "type": "text",
+              "content": "<b>AD: </b>Quizá sea demasiado sencillo, pero sigue tu propio camino. Mucha gente lo dice, pero muchos de ellos no se lo toman en serio."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw2m50xfz6slvm.webp",
+              "caption": "Foto de Botond Wertán"
+            },
+            {
+              "type": "note",
+              "content": "Entrevista realizada por María Ivanova, editada para su publicación. Foto de portada de Víctor Marosi."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:29:12.467Z",
+          "authorId": "author-1784896384236-4fokw"
         }
       ],
       "reviews": [
