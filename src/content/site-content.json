@@ -93661,9 +93661,266 @@
         },
         {
           "id": 89,
-          "title": "Rom im Hier und Jetzt: Beton, Wolken und die neue Architektur der Stadt",
-          "excerpt": "Von der Betonkuppel des Pantheons bis zu Zaha Hadids MAXXI, den drei Konzertsälen von Renzo Piano, dem quadratischen Kolosseum von EUR und der Fuksas-Wolke in einer Glasbox: Wie die Ewige Stadt lernte, in der Gegenwart zu bauen.",
-          "category": "Architektur"
+          "draft": false,
+          "title": "Rom in der Gegenwart: Beton, Wolken und die neue Architektur der Stadt",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "6. November 2026",
+          "excerpt": "Von der Betonkuppel des Pantheons über Zaha Hadids MAXXI, Renzo Pianos drei Konzertsäle, das „Square Colosseum“ im EUR-Viertel bis hin zur „Fuksas-Wolke“ in einem Glaskasten: Wie die Ewige Stadt lernte, in der Gegenwart zu bauen.",
+          "category": "Architektur",
+          "subcategory": "Funktion",
+          "tags": [
+            "Rom",
+            "Rom",
+            "zeitgenössische Architektur",
+            "MAXXI",
+            "Zaha Hadid",
+            "Renzo Piano",
+            "Auditorium Parco della Musica",
+            "Die Wolke",
+            "Fuksas",
+            "Euro",
+            "Palazzo della Civiltà Italiana",
+            "Pantheon",
+            "Italien"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+          "previewToken": "35dd818d25a48f3ff33449e1",
+          "publishAt": "2026-11-06T01:00:00.000Z",
+          "publishedAt": "2026-11-06T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI, Nationalmuseum für Kunst des 21. Jahrhunderts, von Zaha Hadid Architects, 2010: Die auskragende obere Galerie mündet in ein Fenster mit Blick auf die Altstadt. Foto: Kurt Cotoaga / Unsplash.",
+              "alt": "Ein langes, graues Museumsgebäude aus Beton, dessen oberste Etage über den Eingang hinausragt und in einem breiten Fenster endet, in dem sich ockerfarbene und gelbe römische Wohnhäuser spiegeln."
+            },
+            {
+              "type": "text",
+              "content": "Rom ist die Stadt, die den Beton erfunden hat und dann fünfzehn Jahrhunderte lang mit Stein und Ziegeln baute, als hätte sie dies vergessen. Es ist auch die europäische Hauptstadt, der am häufigsten vorgeworfen wird, überhaupt keine zeitgenössische Architektur zu haben – eine Stadt, die so sehr von der Vergangenheit geprägt ist, dass die Gegenwart keinen Platz findet. Beide Vorstellungen sind falsch. In den letzten dreißig Jahren hat Rom still und leise einige der gewagtesten Gebäude Italiens erhalten: ein Museum, das sich wie ein Fluss durch ein Stadtviertel schlängelt, drei Konzertsäle in Form von Käfern, ein Kongresszentrum mit einer in einem Glaskasten gefangenen Wolke. Wer sie betrachtet, sieht die Stadt vom anderen Ende ihrer Geschichte aus."
+            },
+            {
+              "type": "header",
+              "content": "I · Der erste Beton",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fnysxgwzfmn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Pantheon, das unter Hadrian um 125 n. Chr. wieder aufgebaut wurde: Hinter dem klassischen Säulengang erhebt sich die größte Kuppel aus unbewehrtem Beton der Welt. Foto: Gabriella Clare Marino / Unsplash.",
+              "alt": "Der Säulenportikus des Pantheons mit der Inschrift „M. AGRIPPA L.F. COS TERTIVM FECIT“, die graue Kuppel im Hintergrund und ein ägyptischer Obelisk auf dem Brunnen davor."
+            },
+            {
+              "type": "text",
+              "content": "Jedes moderne Gebäude in Rom steht im Dialog mit diesem. Der Portikus des Pantheons ist griechisch anmutend, doch was dahinter steht, ist römische Ingenieurskunst: eine Betonkuppel mit einem Durchmesser von dreiundvierzig Metern, gegossen in Ringen, die nach oben hin leichter werden und in der Mitte zum Himmel hin offen sind. Fast zweitausend Jahre später ist sie immer noch die größte Kuppel aus unbewehrtem Beton auf der Welt. Als Zaha Hadid und Renzo Piano in Rom bauten, führten sie kein fremdes Material ein. Sie brachten den Beton nach Hause."
+            },
+            {
+              "type": "header",
+              "content": "II · Das quadratische Kolosseum",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo064hp5hhc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Palazzo della Civiltà Italiana, EUR, entworfen von Giovanni Guerrini, Ernesto Bruno La Padula und Mario Romano, Baubeginn 1938: sechs Stockwerke mit neun Bögen. Seit 2015 Hauptsitz von Fendi. Foto: Jan Zinnbauer / Unsplash.",
+              "alt": "Ein hohes, quadratisches Gebäude aus weißem Travertin mit sechs Reihen zu je neun identischen Rundbögen, das sich vor einem tiefblauen Himmel abhebt und an dessen Sockel Statuen stehen."
+            },
+            {
+              "type": "text",
+              "content": "Das erste moderne Rom wurde für eine Ausstellung erbaut, die nie stattfand. Ende der 1930er Jahre ließ das faschistische Regime südlich der Stadt ein neues Stadtviertel für eine für 1942 geplante Weltausstellung anlegen – die „Esposizione Universale di Roma“, die dem Gebiet seinen Namen gab: EUR. Der Krieg machte die Ausstellung zunichte. Die Gebäude blieben stehen, weiß und leer, und wurden in den 1950er Jahren nach und nach fertiggestellt, als sich das EUR zu einem Geschäftsviertel entwickelte."
+            },
+            {
+              "type": "text",
+              "content": "Sein Wahrzeichen ist der Palazzo della Civiltà Italiana, auch „quadratisches Kolosseum“ genannt: ein weißer Travertin-Würfel, dessen vier Fassaden jeweils von sechs Reihen mit je neun Bögen durchbrochen sind. Es ist Propaganda in Stein, und seine Inschrift preist die Italiener als ein Volk von Dichtern, Künstlern, Helden, Heiligen, Denkern, Wissenschaftlern, Seefahrern und Auswanderern. Es ist zudem unbestreitbar eines der faszinierendsten Gebäude des 20. Jahrhunderts, ein metaphysisches Gemälde von de Chirico, das Wirklichkeit geworden ist. Im Jahr 2015 verlegte das Modehaus Fendi seinen Hauptsitz dorthin, und das Gebäude fand endlich eine friedliche Nutzung."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo1azjjoybi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die oberen Arkaden des Palazzo della Civiltà Italiana mit der Inschrift im Attika. Foto: Karina Halley / Unsplash.",
+              "alt": "Der Blick richtete sich auf eine Ecke des weißen Gebäudes mit Arkaden, dessen Reihen runder Bögen sich in die Ferne erstreckten, während sich oben unter einem blassen Himmel eine lange, eingemeißelte Inschrift entlangzog."
+            },
+            {
+              "type": "quote",
+              "content": "Ein metaphysisches Gemälde von de Chirico, in Travertin verwirklicht."
+            },
+            {
+              "type": "header",
+              "content": "III · Drei Käfer im Park",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foap4ulx4zw.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Das „Auditorium Parco della Musica“ vom Renzo Piano Building Workshop, eröffnet im Jahr 2002: einer der drei mit Blei verkleideten Konzertsäle. Foto: Erin Doering / Unsplash.",
+              "alt": "Eine riesige, gewölbte Konzertsaalhülle, deren Dach mit langen, zu einem dunklen Blaugrau verwitterten Bleiplatten bedeckt ist und sich über breite Stufen erhebt."
+            },
+            {
+              "type": "text",
+              "content": "Die kulturelle Renaissance des modernen Roms begann mit der Musik. Im Jahr 2002 eröffnete die Stadt das von Renzo Piano entworfene „Auditorium Parco della Musica“ am Rande des Stadtteils Flaminio. Piano teilte das Programm in drei separate Konzertsäle unterschiedlicher Größe auf – der größte bietet Platz für etwa 2.800 Personen – und gab jedem seine eigene Hülle, die mit Blei überdacht und innen mit amerikanischem Kirschholz ausgekleidet ist. Die Römer vergleichen sie mit Käfern oder mit riesigen Lauten, die mit der Vorderseite nach unten im Gras liegen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fobsp1jaytr.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Cavea, das Freiluft-Amphitheater zwischen den drei Sälen, mit der roten Unterseite einer der Muscheln. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Ein großes Open-Air-Amphitheater aus rotem Backstein, in dem Menschen auf den Stufen sitzen, unter dem geschwungenen, grau-roten Unterbau eines Konzertsaals."
+            },
+            {
+              "type": "text",
+              "content": "Zwischen den Hallen schuf Piano einen vierten Raum, der allen gehört: die „Cavea“, ein Open-Air-Amphitheater aus Ziegelsteinen, in dem die Menschen in der Abendsonne sitzen, auch wenn gerade keine Vorstellung stattfindet. Während der Bauarbeiten stießen die Bauarbeiter auf die Überreste einer römischen Villa; Piano passte den Entwurf an, sodass die Ruinen nun zusammen mit einem kleinen Museum innerhalb des Komplexes liegen. Das ist die römische Art: Das neue Gebäude macht Platz für das alte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0focyihyacty.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Die Muscheln von der Seite gesehen: Bleiplatten, die über zwei Jahrzehnte hinweg der Witterung ausgesetzt waren, vor einem sommerlichen Himmel. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Eine Nahaufnahme aus tiefem Blickwinkel eines geschwungenen Daches aus sich überlappenden graublauen Bleibändern unter einem blauen Himmel mit weißen Wolken."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foe7ghshofl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein Abend im Auditorium: Die gemauerten Terrassen als öffentlicher Platz. Foto: Piermanuele Sberni / Unsplash.",
+              "alt": "Eine vertikale Totale auf die Rohbauhülle eines Konzertsaals über Ziegelterrassen, auf denen ein einzelner Skateboarder fährt."
+            },
+            {
+              "type": "header",
+              "content": "IV · MAXXI: Ein Museum wie ein Fluss",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo2965nm6lt.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI: Die auskragende Galerie und ihr Fenster, das die ockerfarbenen Häuser des Stadtteils Flaminio einrahmt. Foto: Mimmo Sigismondi / Unsplash.",
+              "alt": "Ein scharfkantiger grauer Betonbau, der sich gegen den tiefblauen Himmel abhebt; in seinem langen Fenster spiegeln sich orangefarbene und gelbe römische Häuser wider."
+            },
+            {
+              "type": "text",
+              "content": "Das Gebäude, das das Selbstbild Roms verändert hat, wurde 2010 eröffnet. Das MAXXI, das Nationale Museum für Kunst des 21. Jahrhunderts, wurde von Zaha Hadid auf dem Gelände einer ehemaligen Kaserne im Stadtteil Flaminio entworfen. Es wurde in jenem Jahr mit dem RIBA-Stirling-Preis ausgezeichnet; Hadid gewann ihn im folgenden Jahr erneut und war damit die erste Architektin, die den Preis zweimal in Folge erhielt."
+            },
+            {
+              "type": "text",
+              "content": "Von außen sieht es aus wie mehrere übereinanderliegende Betonkanäle, die im Grundriss verdreht sind, sodass das Gebäude scheinbar um die Ecke des Blocks fließt. Hadid beschrieb es eher als ein Feld von Strömungen denn als einen Behälter. Es gibt keine geschlossenen Räume und keinen festgelegten Rundgang: Die Galerien sind lange, geschwungene Raumströme, die von oben durch Lamellen im Dach beleuchtet werden und sich kreuzen, teilen und wieder vereinen. Ganz oben ragt die letzte Galerie über den Eingang hinaus und endet in einem riesigen Fenster, das den Blick auf die gegenüberliegenden römischen Häuser einrahmt – als müsse das Museum auf die Stadt zurückblicken, aus der es stammt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo8bikzrapi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Im Inneren des MAXXI: Schwarze Treppen und Brücken schweben durch das weiße Atrium. Foto: Marius George Oprea / Unsplash.",
+              "alt": "Ein weißer Innenraum mit geschwungenen schwarzen Treppen und darüber verlaufenden Laufstegen, beleuchtet durch Dachlamellen und mit einem langen weißen Boden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo9k38m2kso.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Das Atrium von oben: Die schwarzen Treppenbänder erstrecken sich über die gesamte Höhe des Gebäudes. Foto: Marius George Oprea / Unsplash.",
+              "alt": "Ein Blick hinunter durch das Atrium des Museums, in dem sich schwarze Stahltreppen im Zickzack zwischen weißen Wänden hindurchschlängeln und weit unten Menschen zu sehen sind."
+            },
+            {
+              "type": "text",
+              "content": "Der Innenraum ist in Schwarz und Weiß gehalten. Die Betonwände sind hell und glatt und wurden mit einer Präzision gegossen, die im italienischen Bauwesen jener Zeit nahezu unbekannt war. Durch das Atrium verlaufen schwarze Stahltreppen und -brücken, leicht wie gezeichnete Linien. Ein Rundgang durch das MAXXI gleicht weniger einem Museumsbesuch als vielmehr dem Bewegen innerhalb eines Diagramms der Bewegung selbst."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo4c81j8cmy.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI: eine auskragende Galerie von unten gesehen. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Eine vertikale Ansicht einer massiven Betongalerie, die über einem darunterliegenden Baukörper auskragt, darüber Glas und weiße Wolken."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo5lh03xz3k.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Betonflächen, die in spitzen Winkeln aufeinandertreffen: Genau aus solchen Flächen besteht das Museum. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Eine abstrakte Nahaufnahme von glatten, grauen Betonwänden, die in spitzen Winkeln aufeinandertreffen und tiefe Schatten werfen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo6xnfop6x0.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Der Überhang über der Straße mit den Wohnblocks von Flaminio. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Eine graue Betongalerie, die unter blauem Himmel über orangefarbene und gelbe Wohnhäuser hinausragt."
+            },
+            {
+              "type": "header",
+              "content": "V · Eine Wolke in einer Schachtel",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fofxucnmpoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Nuvola, das Kongresszentrum in Rom, entworfen von Massimiliano und Doriana Fuksas, wurde 2016 eröffnet: die „Wolke“, die in einem gläsernen Kubus schwebt. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Schwarz-Weiß-Aufnahme aus dem Inneren einer Glashalle, in der eine riesige, geschwungene Konstruktion aus Stahlrippen und einer gespannten Membran – die „Wolke“ – zwischen den Etagen hängt."
+            },
+            {
+              "type": "text",
+              "content": "Das jüngste Wahrzeichen Roms befindet sich im Stadtteil EUR, nur einen kurzen Fußweg vom Kolosseumplatz entfernt. „La Nuvola“, das von Massimiliano und Doriana Fuksas entworfene Kongresszentrum, das 2016 nach fast zwei Jahrzehnten der Planung und Bauzeit eröffnet wurde, treibt eine einfache Idee auf die Spitze. Von außen ist es ein Kasten aus Glas und Stahl. Im Inneren schwebt eine Wolke in der Luft: ein frei geformtes Auditorium, umhüllt von einer durchscheinenden Membran über einem Gerüst aus Stahlrippen, das scheinbar zwischen den Etagen schwebt."
+            },
+            {
+              "type": "text",
+              "content": "Der Kontrast zu seinem Nachbarn könnte nicht größer sein. Der Palazzo della Civiltà steht ganz im Zeichen der Gewissheit: ein Raster aus identischen Bögen, ein in Stein gemeißelter Slogan. Die Nuvola steht ganz im Zeichen des Zweifels: eine Form, die keinen festen Platz findet, ein Gebäude im Gebäude. Zusammen bilden sie eine kleine Geschichte darüber, wie sich die Architektur in Rom in achtzig Jahren gewandelt hat."
+            },
+            {
+              "type": "header",
+              "content": "VI · Und an anderer Stelle",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die Tour hat noch weitere Stationen. An der Ara Pacis umschließt Richard Meiers Glaspavillon aus dem Jahr 2006 den Friedensaltar des Augustus; die Römer stritten jahrelang darüber, und er ist nach wie vor das umstrittenste moderne Gebäude in der Altstadt. Im östlichen Vorort Tor Tre Teste errichtete Meier zudem die Jubiläumskirche „Dives in Misericordia“ (2003), deren drei weiße Betonschalen wie Segel über einer Wohnsiedlung emporragen. Und auf dem Weg zum Auditorium kommt man an Pier Luigi Nervis „Palazzetto dello Sport“ aus dem Jahr 1957 vorbei, einer gerippten Betonkuppel, die der eigentliche Vorläufer aller in diesem Artikel vorgestellten Bauwerke ist."
+            },
+            {
+              "type": "header",
+              "content": "VII · Das Präsens",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Rom wird niemals eine Stadt der modernen Architektur sein, so wie es Rotterdam oder Shanghai sind. Das muss es auch nicht sein. Seine besten neuen Gebäude funktionieren so, wie es die alten schon immer taten: Sie fügen sich in das Bestehende ein und verändern die Sichtweise darauf. Hadids Fenster blickt auf die alten Häuser zurück; Pianos Säle schaffen Platz für eine römische Villa; die „Wolke“ von Fuksas schwebt ein paar hundert Meter entfernt von einem faschistischen Traum von Ewigkeit. Die Gegenwart in Rom ist niemals allein. Genau das macht sie so interessant."
+            },
+            {
+              "type": "quote",
+              "content": "Die Gegenwart ist in Rom niemals allein."
+            },
+            {
+              "type": "header",
+              "content": "Schau es dir an",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Das MAXXI befindet sich in der Via Guido Reni im Stadtteil Flaminio, und das Auditorium Parco della Musica ist nur einen kurzen Fußweg entfernt in der Viale Pietro de Coubertin; verbinden Sie beide Besuche an einem Nachmittag und schauen Sie unterwegs beim Palazzetto dello Sport vorbei. Das EUR-Viertel mit dem Palazzo della Civiltà Italiana und „La Nuvola“ liegt ein paar Stationen weiter südlich an der U-Bahn-Linie B. Das Ara-Pacis-Museum befindet sich am Tiber in der Nähe der Piazza del Popolo."
+            },
+            {
+              "type": "note",
+              "content": "Daten, Architekten und Beschreibungen basieren auf veröffentlichten Berichten über die Gebäude sowie auf den Projektbeschreibungen der Architekten selbst. Die Fotos werden unter der Unsplash-Lizenz wiedergegeben, wobei jeder Fotograf in der Bildunterschrift genannt wird."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:24:39.605Z"
         },
         {
           "id": 90,
