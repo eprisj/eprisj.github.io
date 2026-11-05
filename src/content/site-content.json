@@ -170512,9 +170512,264 @@
         },
         {
           "id": 90,
-          "title": "Ce qui disparaît au toucher : Akiko Hirai et la beauté de l'inachevé",
-          "excerpt": "Des jarres de lune qui se fendent comme la glace d'une rivière, des cylindres aux multiples centres, de l'engobe blanc sur argile sombre : la nouvelle exposition de la potière londonienne Akiko Hirai est un manifeste silenciel pour la fragilité – et l'une des expositions les plus réfléchies de l'automne britannique.",
-          "category": "Art"
+          "draft": false,
+          "title": "Ce qui disparaît au contact : Akiko Hirai et la beauté de l&#x27;inachevé",
+          "author": "Viacheslav Munister",
+          "role": "Auteur",
+          "authorId": "author-1784732936927-kw554",
+          "date": "7 novembre 2026",
+          "excerpt": "Des pots en forme de lune qui se fissurent comme la glace d’une rivière, des cylindres aux multiples centres, un engobe blanc sur de l’argile sombre : la nouvelle exposition de la céramiste londonienne Akiko Hirai est un manifeste discret en faveur de la fragilité – et l’une des expositions les plus réfléchies de cet automne britannique.",
+          "category": "Genre",
+          "subcategory": "Critique",
+          "tags": [
+            "Akiko Hirai",
+            "céramique",
+            "poterie",
+            "Je voudrais",
+            "Céramique contemporaine",
+            "Londres",
+            "poterie d&#x27;atelier",
+            "Le soleil brille.",
+            "art contemporain",
+            "critique d&#x27;exposition"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fysvelpxlc4.jpg",
+          "previewToken": "495901958a5937af8d305651",
+          "publishAt": "2026-11-07T01:00:00.000Z",
+          "publishedAt": "2026-11-07T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fysvelpxlc4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "« Moon Jar » extra-large, bleu et blanc. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un grand pot rond en grès, photographié sur fond gris, dont la surface est recouverte d’épaisses couches craquelées et croûtées de glaçure blanche, bleu pâle et grise, avec des fragments qui s’élèvent comme de la glace brisée autour du bord."
+            },
+            {
+              "type": "text",
+              "content": "Dans cette exposition, on trouve un pot qui semble avoir survécu à quelque chose. Son corps est rond et plein, la forme classique d’un pot de lune coréen, mais sa surface s’est fissurée : des couches de glaçure blanche et bleu pâle se fissurent, s’enroulent et se soulèvent comme de la glace qui se brise sur une rivière, et autour du rebord, l’argile remonte par fragments. Il est beau, à la manière dont une ruine est belle. On dirait aussi qu’il risque de s’effondrer si on le touche – et c’est précisément là tout l’intérêt."
+            },
+            {
+              "type": "text",
+              "content": "Le pot est l’œuvre d’Akiko Hirai, et l’exposition s’intitule « Things that disappear when touched ». Elle se termine aujourd’hui, le 7 novembre, à Contemporary Ceramics, la galerie londonienne de la Craft Potters Association, après trois semaines au cours desquelles elle a discrètement démontré que certaines des œuvres d’art les plus sérieuses de Grande-Bretagne sont réalisées sur un tour de potier."
+            },
+            {
+              "type": "header",
+              "content": "I · Un potier entre deux îles",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Hirai est née au Japon et vit et travaille à Londres depuis plus de deux décennies. Ses poteries reflètent ces deux lieux. Les traditions japonaises et coréennes – bols à thé, flacons à saké, jarres de la lune, engobe blanc appelé « kohiki » – constituent son vocabulaire. Son approche s’inscrit dans la lignée de la poterie d’atelier britannique contemporaine, une tradition qui s’étend de Bernard Leach et Lucie Rie jusqu’à nos jours : la poterie comme objet sérieux, à la fois utilitaire et sculptural. Ses œuvres sont exposées au Victoria and Albert Museum, au Fitzwilliam Museum de Cambridge, au Musée national d’Irlande et à l’Everson Museum of Art de Syracuse, dans l’État de New York."
+            },
+            {
+              "type": "text",
+              "content": "La galerie la décrit comme une créatrice d&#x27;objets à la fois utilitaires et décoratifs, et l&#x27;exposition en apporte la preuve. On y trouve des cruches et des services à saké que l&#x27;on pourrait utiliser dès ce soir au dîner, mais aussi des jarres qui auraient leur place dans une vitrine de musée. Ce qui les unit, c&#x27;est une même vision de l&#x27;argile."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fys374u6m47.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "« Kohiki Moon Jar ». Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un pot en grès blanc, aux formes lisses et arrondies, doté d&#x27;un col court et large, recouvert d&#x27;un émail blanc laiteux et doux, photographié sur un fond gris."
+            },
+            {
+              "type": "header",
+              "content": "II · La beauté de l&#x27;étrange",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Le texte d’Hirai pour l’exposition est bref et précis. Les œuvres, écrit-elle, expriment un équilibre serein : des formes fragiles et changeantes qui existent dans un état de délicat déséquilibre, dont la quiétude est facilement perturbée, « comme si le fait de les serrer trop fort risquait de faire disparaître quelque chose d’essentiel ». Elles résistent à la perfection et restent légèrement inachevées, instables, « et discrètement vivantes »."
+            },
+            {
+              "type": "quote",
+              "content": "Comme si le fait de s&#x27;y accrocher trop fort risquait de faire disparaître quelque chose d&#x27;essentiel."
+            },
+            {
+              "type": "text",
+              "content": "Derrière cela se cache un concept japonais pour lequel il n’existe pas d’équivalent satisfaisant en anglais : le « getemono », ces objets considérés comme étranges, grossiers, voire grotesques, qu’un œil averti apprend à apprécier. Un bol à thé qui penche, un vase dont la glaçure a trop coulé, un pot qui s&#x27;est fissuré dans le four : dans cette tradition, ces accidents ne sont pas des défauts, mais des traces de vie. Hirai en a fait son sujet."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyln7lcp4wf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Grand vase à col étroit. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Une bouteille en grès au ventre arrondi et au col étroit, dont la surface gris pâle est parsemée de taches de glaçure ocre, rouille et blanche qui coulent depuis l&#x27;épaule."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fykojkbcidf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Grand vase à col étroit. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Une bouteille trapue et arrondie en grès, en argile d&#x27;un brun chaud, ornée de coulures de glaçure brun foncé et de deux marques rondes foncées sur son corps."
+            },
+            {
+              "type": "header",
+              "content": "III · De nombreux centres",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Pour cette exposition, Hirai a travaillé un grès de couleur plus claire, cuit dans un four à réduction. Sa méthode est inhabituelle. Lorsqu’elle façonne une forme haute au tour, le centre du récipient se déplace au fur et à mesure qu’elle travaille le haut ou le bas, de sorte qu’un même récipient se retrouve avec plusieurs centres au lieu d’un seul. C’est pourquoi ses cylindres semblent osciller légèrement lorsque l’on en fait le tour, et pourquoi ses bouteilles se penchent comme des personnes à l’écoute."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyq0ojbsf3p.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vase cylindrique, haut. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un cylindre haut en grès blanc, de forme légèrement irrégulière, présentant des taches de glaçure et de cendre de couleur ocre pâle et grise, reposant sur une surface blanche."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyo9a4nj10y.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vase cylindrique, cendres. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un large cylindre blanc au bord légèrement ondulé, dont la moitié supérieure est tachée de jaune pâle et de gris, avec des coulures qui descendent depuis de petits trous situés près du sommet."
+            },
+            {
+              "type": "text",
+              "content": "Les surfaces sont réalisées de la même manière, en laissant les choses se faire naturellement. À mesure que l’argile sèche, le grog – de l’argile cuite réduite en grains – remonte à la surface et la rend rugueuse. Le fer présent dans la pâte transparaît à travers l’engobe blanc sous forme de mouchetures. La cendre de bois se dépose et se fond en petits ruisseaux pâles. Il en résulte une surface qui semble patinée par les intempéries plutôt que décorée, comme si les pots avaient été déterrés plutôt que fabriqués."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyp59kwayb6.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Récipient cylindrique court et large, cendre. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un récipient cylindrique blanc, bas et large, au bord irrégulier, dont la surface est marquée par des coulures de glaçure cendrée jaune pâle."
+            },
+            {
+              "type": "header",
+              "content": "IV · Blanc sur blanc",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyuihmyr3f5.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Vase cylindrique « Kohiki ». Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un grand cylindre en grès, dans des tons doux de gris pâle et de céladon, dont l&#x27;engobe blanc s&#x27;est aminci pour laisser apparaître l&#x27;argile plus foncée près de la base."
+            },
+            {
+              "type": "text",
+              "content": "Les œuvres les plus discrètes de l’exposition sont celles réalisées en « kohiki ». Le kohiki – littéralement « recouvert de poudre » – consiste en une couche d’engobe blanc appliquée sur de l’argile foncée, une technique importée de Corée au Japon au XVIe siècle et très prisée des maîtres de thé pour son éclat doux et crayeux. Sur les cylindres d’Hirai, l’engobe s’amincit et se fissure, laissant transparaître la masse grise comme une ombre sous la neige. Sur sa cruche et son bol peu profond, il forme une surface que l’on a envie de toucher, même si le titre de l’exposition nous invite à ne pas le faire."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyqm9rft5a7.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Cruche « Kohiki ». Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Une cruche arrondie en grès, munie d&#x27;une anse, recouverte d&#x27;un engobe blanc crayeux craquelé qui s&#x27;use par endroits, laissant apparaître l&#x27;argile grise et rose près de la base."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fytqlkoed55.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Bol peu profond Kohiki (hachi). Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un grand bol blanc crème, peu profond, à la surface légèrement mouchetée et muni d&#x27;une petite anse sur le bord, photographié légèrement en plongée."
+            },
+            {
+              "type": "header",
+              "content": "V · Le pot de la lune",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fync1k63fwl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Moon Jar. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un pot rond recouvert de couches épaisses, craquelées et écaillées de glaçure blanche, bleu-gris et marron, avec des fragments irréguliers autour du col, sur un fond gris."
+            },
+            {
+              "type": "text",
+              "content": "Le « moon jar » est la forme qui a fait la renommée de Hirai, et son histoire est particulière en Grande-Bretagne. Les « moon jars » originaux ont été fabriqués en Corée aux XVIIe et XVIIIe siècles : il s’agissait de grands pots en porcelaine blanche tournés en deux moitiés puis assemblés au milieu, ce qui les empêchait d’être parfaitement ronds. En 1935, Bernard Leach en acheta un à Séoul et l&#x27;apporta en Angleterre, où il passa plus tard entre les mains de Lucie Rie, puis fut finalement acquis par le British Museum. Pour les potiers britanniques, il devint une sorte d&#x27;icône : l&#x27;objet imparfait le plus célèbre au monde."
+            },
+            {
+              "type": "text",
+              "content": "Les jarres « de lune » de Hirai poussent cette imperfection bien plus loin. La jarre lisse « kohiki » se rapproche de l’idéal coréen. Les grands pots bleus et blancs et ceux recouverts d’un émail à la cendre sont d’un tout autre genre : la forme ronde est toujours présente, mais on a laissé la surface se fissurer, s’écailler et se déchirer, de sorte que le pot semble être au cœur d’un phénomène géologique. Ils comptent parmi les objets en céramique les plus saisissants créés aujourd’hui en Grande-Bretagne."
+            },
+            {
+              "type": "quote",
+              "content": "Un « moon jar » au cœur d&#x27;un phénomène géologique."
+            },
+            {
+              "type": "header",
+              "content": "VI · Petits rituels",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyma2cnuzm8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ensemble « Tokkuri » et « choko » : une carafe à saké et deux tasses. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Une petite flasque à saké en grès gris, accompagnée de deux petites tasses dont la glaçure présente des stries grises, lavande et rouille."
+            },
+            {
+              "type": "text",
+              "content": "Autour des grandes œuvres se trouvent les petites : des flacons à saké (tokkuri) accompagnés de leurs coupes (choko), des bols à thé, ainsi qu’un ensemble de trois petites pièces murales intitulé « Natsukusa Fuyumushi », du nom japonais d’un champignon qui pousse à partir d’un insecte en hiver et ressemble à une plante en été. Ces pièces véhiculent les mêmes idées à l&#x27;échelle de la main. Une tasse est l&#x27;objet que l&#x27;on touche le plus souvent ; c&#x27;est aussi celui qui montre le plus clairement si son créateur maîtrise le toucher."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyrj0eng37l.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "« Natsukusa Fuyumushi » : trois petites formes blanches montées sur bois. Akiko Hirai, 2026. Avec l’aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Trois petits panneaux carrés en bois disposés côte à côte, chacun supportant une petite forme en porcelaine blanche ramifiée, semblable à une brindille ou à une racine."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fymsu2y6fkn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Bol à thé « Mudai » n° 6. Akiko Hirai, 2026. Avec l&#x27;aimable autorisation de Contemporary Ceramics, Londres.",
+              "alt": "Un bol à thé profond et arrondi, recouvert d&#x27;un émail blanc crème aux teintes chaudes, parsemé de quelques taches sombres sur fond blanc."
+            },
+            {
+              "type": "header",
+              "content": "VII · Pourquoi c&#x27;est important",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;art britannique a toujours entretenu une relation complexe avec la poterie. Pendant la majeure partie du XXe siècle, elle a été classée dans une catégorie distincte appelée « artisanat », exposée dans des galeries à part et chroniquée dans des magazines spécifiques. Cette frontière s’est estompée depuis vingt ans, à mesure que les musées collectionnent la céramique au même titre que la sculpture et que des artistes, de Grayson Perry à Magdalene Odundo, ont montré à quel point un pot peut être éloquent. L’exposition de Hirai s’inscrit dans cette évolution. Elle est sobre, elle est commerciale – toutes les œuvres sont à vendre – et c’est également l’une des expositions les plus réfléchies sur la fragilité, le temps et l’attention que Londres ait accueillies cet automne."
+            },
+            {
+              "type": "text",
+              "content": "« Des choses qui disparaissent quand on les touche » : voilà un titre parfait pour cette exposition. Ces œuvres exigent un regard qui ne s’empare pas de l’objet : lent, attentif, un peu hésitant. Dans une ville aussi trépidante que Londres, c’est une exigence radicale."
+            },
+            {
+              "type": "header",
+              "content": "Regardez ça",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;exposition « Akiko Hirai : Things that disappear when touched » se tient à la galerie Contemporary Ceramics, au 63 Great Russell Street, à Londres, en face du British Museum, jusqu&#x27;au samedi 7 novembre 2026. L&#x27;entrée est gratuite. Les œuvres peuvent également être admirées sur le site Internet de la galerie."
+            },
+            {
+              "type": "note",
+              "content": "La déclaration de l’artiste, les collections et les détails de l’exposition sont tirés de *Contemporary Ceramics*. Les descriptions de l’argile, de la cuisson et de la technique de tournage s’appuient sur les notes publiées à propos de l’exposition. Les titres sont ceux de la galerie. L’histoire du « moon jar » de Leach est tirée du compte rendu publié par le British Museum sur cet objet. Les photographies des œuvres sont une gracieuseté de *Contemporary Ceramics*."
+            },
+            {
+              "type": "link",
+              "content": "Akiko Hirai : Des objets qui disparaissent au toucher — Céramique contemporaine",
+              "url": "https://www.contemporaryceramics.uk/exhibitions/akiko-hirai-things-that-disappear-when-touched/"
+            }
+          ],
+          "updatedAt": "2026-11-05T07:27:13.483Z"
         }
       ],
       "reviews": [
