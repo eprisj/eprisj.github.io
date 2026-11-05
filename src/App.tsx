@@ -2810,6 +2810,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 data-original-src={heroSource}
                 alt={article.title}
                 className="w-full h-full object-cover"
+                style={article.imageFocus ? { objectPosition: article.imageFocus } : undefined}
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 decoding="async"

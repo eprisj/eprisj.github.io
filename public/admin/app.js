@@ -7087,6 +7087,14 @@ function renderVisualForm() {
         </div>
 
         <div class="meta-field-group">
+          <label>Кадрирование обложки</label>
+          <select id="vf-imageFocus">
+            ${[['', 'по умолчанию (центр)'], ['center top', 'верх: лица и головы не обрезаются'], ['center center', 'центр'], ['center bottom', 'низ'], ['left center', 'слева'], ['right center', 'справа']]
+              .map(([value, label]) => `<option value="${escapeHtml(value)}"${value === String(entry.imageFocus || '') ? ' selected' : ''}>${escapeHtml(label)}</option>`).join('')}
+          </select>
+        </div>
+
+        <div class="meta-field-group">
           <label>Категория</label>
           <input id="vf-category" value="${escapeHtml(entry.category || '')}" placeholder="Culture, Travel..." />
         </div>
@@ -7237,6 +7245,7 @@ function buildEntryFromVisualForm(section, current) {
       tags,
       imageSeed: getFieldValue('vf-imageSeed').trim(),
       imageUrl: getOptionalString(getFieldValue('vf-imageUrl')),
+      imageFocus: getOptionalString(getFieldValue('vf-imageFocus')),
       content: parsedContent
     };
   }

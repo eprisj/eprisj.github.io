@@ -245,6 +245,13 @@ export interface Article {
   tags: string[];
   imageSeed: string;
   imageUrl?: string;
+  /**
+   * Focal point of the cover in the article's hero, as an object-position
+   * value (`center top`, `50% 20%`). The hero is a wide strip (up to 21:8)
+   * and covers rarely are, so the default centre crop cut the face off a
+   * portrait. Not translated: the picture is the same in every language.
+   */
+  imageFocus?: string;
   content: ContentBlock[];
   /** Hidden from the public site until unset. */
   draft?: boolean;
@@ -993,7 +1000,7 @@ const BASE_AUTHORITATIVE_FIELDS = new Set([
   // A person's name is identity, not translated copy. Keeping both author
   // fields base-owned prevents a stale locale from showing a different writer
   // (or an old placeholder) on the same article/review.
-  'id', 'picsId', 'imageSeed', 'imageUrl', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
+  'id', 'picsId', 'imageSeed', 'imageUrl', 'imageFocus', 'author', 'authorId', 'draft', 'publishAt', 'updatedAt',
   // The other credits are identities too, and the translator, handed a
   // locale's copy, may return their ids "translated".
   'contributorId', 'coAuthorIds', 'hideSupport', 'contributorFirst',
