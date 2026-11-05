@@ -94438,9 +94438,264 @@
         },
         {
           "id": 90,
-          "title": "Dinge, die bei Berührung verschwinden: Akiko Hirai und die Schönheit des Unvollendeten",
-          "excerpt": "Mondgläser, die wie Flusseis knacken, Zylinder mit vielen Zentren, weißer Schlupf über dunklen Lehm: Die neue Ausstellung der Londoner Töpferin Akiko Hirai ist ein ruhiges Manifest für Zerbrechlichkeit – und eine der nachdenklichsten Shows des britischen Herbstes.",
-          "category": "Kunst"
+          "draft": false,
+          "title": "Dinge, die verschwinden, wenn man sie berührt: Akiko Hirai und die Schönheit des Unvollendeten",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "7. November 2026",
+          "excerpt": "Mondgefäße, die wie Fluss-Eis zerbrechen, Zylinder mit vielen Mittelpunkten, weiße Engobe auf dunklem Ton: Die neue Ausstellung der Londoner Töpferin Akiko Hirai ist ein stilles Manifest der Zerbrechlichkeit – und eine der nachdenklichsten Ausstellungen des britischen Herbstes.",
+          "category": "Art",
+          "subcategory": "Rezension",
+          "tags": [
+            "Akiko Hirai",
+            "Keramik",
+            "Töpferei",
+            "Ich möchte",
+            "Zeitgenössische Keramik",
+            "London",
+            "Töpferei",
+            "Das Kohiki",
+            "zeitgenössische Kunst",
+            "Ausstellungsrezension"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fysvelpxlc4.jpg",
+          "previewToken": "495901958a5937af8d305651",
+          "publishAt": "2026-11-07T01:00:00.000Z",
+          "publishedAt": "2026-11-07T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fysvelpxlc4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Extra großes „Moon Jar“, blau und weiß. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein großes, rundes Steingutgefäß, fotografiert auf grauem Hintergrund; seine Oberfläche ist bedeckt mit dicken, krustigen, rissigen Schichten aus weißer, hellblauer und grauer Glasur, wobei sich am Rand Fragmente wie zerbrochenes Eis erheben."
+            },
+            {
+              "type": "text",
+              "content": "In dieser Ausstellung ist ein Gefäß zu sehen, das aussieht, als hätte es etwas überstanden. Sein Körper ist rund und voll – die klassische Form eines koreanischen Mondgefäßes –, doch die Oberfläche ist aufgebrochen: Schichten aus weißer und hellblauer Glasur sind rissig, wellig und lösen sich ab wie Eis, das auf einem Fluss bricht, und am Rand ragt der Ton in Fragmenten empor. Es ist schön, so wie eine Ruine schön ist. Es sieht auch so aus, als würde es auseinanderfallen, wenn man es berührt – und genau darum geht es."
+            },
+            {
+              "type": "text",
+              "content": "Das Gefäß stammt von Akiko Hirai, und die Ausstellung trägt den Titel „Things that disappear when touched“. Sie endet heute, am 7. November, bei „Contemporary Ceramics“, der Londoner Galerie der Craft Potters Association, nachdem sie drei Wochen lang auf unaufdringliche Weise deutlich gemacht hat, dass einige der bedeutendsten Kunstwerke Großbritanniens auf der Töpferscheibe entstehen."
+            },
+            {
+              "type": "header",
+              "content": "I · Ein Töpfer zwischen zwei Inseln",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Hirai wurde in Japan geboren und lebt und arbeitet seit mehr als zwei Jahrzehnten in London. Ihre Keramikwerke spiegeln beide Orte wider. Die japanischen und koreanischen Traditionen – Teeschalen, Sake-Flaschen, Mondkrüge, weißer Engobe namens „Kohiki“ – bilden das Vokabular. Die Herangehensweise entspricht der zeitgenössischen britischen Atelierkeramik, einer Tradition, die von Bernard Leach und Lucie Rie bis in die Gegenwart reicht: Die Keramik als ernstzunehmendes Objekt, das zugleich nützlich und skulptural ist. Ihre Werke befinden sich im Victoria and Albert Museum, im Fitzwilliam Museum in Cambridge, im National Museum of Ireland und im Everson Museum of Art in Syracuse, New York."
+            },
+            {
+              "type": "text",
+              "content": "Die Galerie beschreibt sie als Künstlerin, die sowohl Gebrauchsgegenstände als auch Dekorationsgegenstände herstellt, und die Ausstellung belegt dies. Es gibt Krüge und Sake-Sets, die man schon heute Abend beim Abendessen verwenden könnte, und es gibt Gefäße, die in eine Museumsvitrine gehören. Was sie verbindet, ist eine ganz eigene Sichtweise auf Ton."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fys374u6m47.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Kohiki Moon Jar“. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein glattes, rundes Gefäß aus weißem Steingut mit einem kurzen, breiten Hals, glasiert in zartem Milchweiß, fotografiert vor grauem Hintergrund."
+            },
+            {
+              "type": "header",
+              "content": "II · Die Schönheit des Ungewöhnlichen",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Hirais Statement zur Ausstellung ist kurz und prägnant. Die Werke, so schreibt sie, drücken ein stilles Gleichgewicht aus: zerbrechliche, sich wandelnde Formen, die in einem Zustand zarter Unausgeglichenheit existieren und deren Stille leicht gestört werden kann, „als ob der Akt des zu festen Festhaltens dazu führen könnte, dass etwas Wesentliches verschwindet“. Sie widersetzen sich der Perfektion und bleiben leicht unvollendet, unruhig, „und still lebendig“."
+            },
+            {
+              "type": "quote",
+              "content": "Als ob das zu feste Festhalten dazu führen könnte, dass etwas Wesentliches verschwindet."
+            },
+            {
+              "type": "text",
+              "content": "Dahinter verbirgt sich ein japanischer Begriff, für den es keine passende englische Entsprechung gibt: „Getemono“ – Dinge, die als seltsam, ungeschliffen oder sogar grotesk gelten, die ein geschultes Auge jedoch zu schätzen lernt. Eine schräge Teeschale, eine Vase, deren Glasur zu weit verlaufen ist, ein Krug, der im Brennofen Risse bekommen hat – in dieser Tradition sind solche Zufälle keine Mängel, sondern Zeichen des Lebens. Hirai hat sie zu ihrem Thema gemacht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyln7lcp4wf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Große Vase mit Enghals. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Eine rundbauchige Steingutflasche mit schmalem Hals, deren hellgraue Oberfläche mit ockerfarbenen, rostroten und weißen Glasurstreifen übersät ist, die von der Schulter herablaufen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fykojkbcidf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Große Vase mit Enghals. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Eine gedrungene, runde Steingutflasche aus warmbraunem Ton mit dunkelbraunen Glasurverläufen und zwei dunklen, runden Markierungen am Flaschenkörper."
+            },
+            {
+              "type": "header",
+              "content": "III · Viele Zentren",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Für diese Ausstellung arbeitete Hirai mit einem helleren Steinzeug, das in einem Reduktionsofen gebrannt wurde. Ihre Arbeitsweise ist ungewöhnlich. Wenn sie eine hohe Form dreht, verschiebt sich der Mittelpunkt des Gefäßes, während sie den oberen oder unteren Teil bearbeitet, sodass ein einzelnes Gefäß am Ende mehrere Mittelpunkte statt nur eines aufweist. Deshalb scheinen ihre Zylinder leicht zu schwanken, wenn man um sie herumgeht, und ihre Flaschen neigen sich wie Menschen, die zuhören."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyq0ojbsf3p.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Hohe zylindrische Vase. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein hoher, leicht unregelmäßiger Zylinder aus weißem Steingut mit hellockerfarbenen und grauen Glasur- und Ascheflecken, der auf einer weißen Unterlage steht."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyo9a4nj10y.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Zylinderförmiges Gefäß, Asche. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein breiter weißer Zylinder mit einem sanft gewellten Rand, dessen obere Hälfte in blassgelb und grau gefärbt ist, wobei aus kleinen Löchern nahe der Oberkante Farbtropfen herunterlaufen."
+            },
+            {
+              "type": "text",
+              "content": "Die Oberflächen entstehen auf dieselbe Weise, indem man den Dingen ihren Lauf lässt. Während der Ton trocknet, wird Grog – gebrannter, zu Sand gemahlener Ton – an die Oberfläche gedrückt und verleiht ihr eine raue Struktur. Eisen im Ton kommt durch die weiße Engobe als Sprenkel zum Vorschein. Holzasche setzt sich ab und verschmilzt zu blassen Rinnsalen. Das Ergebnis ist eine Oberfläche, die eher verwittert als verziert wirkt, als wären die Gefäße ausgegraben und nicht hergestellt worden."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyp59kwayb6.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Kurzes, breites Zylindergefäß, Esche. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein niedriges, breites, weißes, zylindrisches Gefäß mit unregelmäßigem Rand, dessen Oberfläche von blassgelben Ascheglasur-Läufen durchzogen ist."
+            },
+            {
+              "type": "header",
+              "content": "IV · Weiß auf Weiß",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyuihmyr3f5.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Zylindervase „Kohiki“. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein hoher Zylinder aus Steinzeug in zartem Hellgrau und Seladon, wobei die weiße Engobe zum Boden hin dünner wird und den dunkleren Ton darunter zum Vorschein bringt."
+            },
+            {
+              "type": "text",
+              "content": "Die ruhigsten Werke der Ausstellung sind die „Kohiki“-Stücke. „Kohiki“ – wörtlich „pulverbeschichtet“ – ist eine weiße Engobe auf dunklem Ton, eine Technik, die im 16. Jahrhundert aus Korea nach Japan kam und von Teemeistern wegen ihres sanften, kreidigen Schimmers geschätzt wurde. Auf Hirais Zylindern wird die Engobe dünner und bricht auf, sodass der graue Tonkörper wie ein Schatten unter dem Schnee durchscheint. Auf ihrem Krug und ihrer flachen Schale wird sie zu einer Oberfläche, die man gerne berühren möchte, obwohl der Titel der Ausstellung davor warnt, dies zu tun."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyqm9rft5a7.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Kohiki-Krug. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein rundlicher Krug aus Steingut mit Henkel, überzogen mit einer kreideweißen, rissigen Engobe, die an der Unterseite abgetragen ist und den grauen und rosafarbenen Ton darunter zum Vorschein bringt."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fytqlkoed55.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Flache Schale „Kohiki“ (Hachi). Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Eine breite, flache, cremeweiße Schale mit leicht gesprenkelter Oberfläche und einem kleinen Henkel am Rand, von etwas oberhalb fotografiert."
+            },
+            {
+              "type": "header",
+              "content": "V · Das Mondgefäß",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fync1k63fwl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Moon Jar“. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Ein rundes Gefäß, das mit dicken, rissigen, abblätternden Schichten aus weißer, blaugrauer und brauner Glasur überzogen ist, mit gezackten Fragmenten am Rand, auf grauem Hintergrund."
+            },
+            {
+              "type": "text",
+              "content": "Das Mondgefäß ist die Form, für die Hirai am bekanntesten ist, und es hat in Großbritannien eine besondere Geschichte. Die ursprünglichen Mondgefäße wurden im 17. und 18. Jahrhundert in Korea hergestellt: große weiße Porzellangefäße, die in zwei Hälften gedreht und in der Mitte zusammengefügt wurden, sodass sie niemals vollkommen rund sind. Im Jahr 1935 kaufte Bernard Leach eines davon in Seoul und brachte es nach England, wo es später an Lucie Rie und schließlich an das British Museum überging. Für britische Töpfer wurde es zu einer Art Ikone: das berühmteste unvollkommene Objekt der Welt."
+            },
+            {
+              "type": "text",
+              "content": "Hirais Mondgefäße treiben diese Unvollkommenheit noch viel weiter. Das glatte Kohiki-Gefäß kommt dem koreanischen Ideal sehr nahe. Die großen blau-weißen und die mit Ascheglasur versehenen Krüge sind etwas ganz anderes: Die runde Form ist zwar noch vorhanden, doch die Oberfläche darf reißen, abblättern und aufbrechen, sodass der Krug den Anschein erweckt, als befände er sich mitten in einem geologischen Ereignis. Sie gehören zu den auffälligsten Keramikobjekten, die heute in Großbritannien hergestellt werden."
+            },
+            {
+              "type": "quote",
+              "content": "Ein Mondgefäß inmitten eines geologischen Ereignisses."
+            },
+            {
+              "type": "header",
+              "content": "VI · Kleine Rituale",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyma2cnuzm8.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Tokkuri- und Choko-Set: eine Sake-Flasche und zwei Becher. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Eine kleine Sake-Flasche aus grauem Steingut, daneben zwei kleine Becher, deren Glasur graue, lavendelfarbene und rostrote Streifen aufweist."
+            },
+            {
+              "type": "text",
+              "content": "Um die großen Werke herum befinden sich die kleinen: Sake-Flaschen (Tokkuri) mit ihren Bechern (Choko), Teeschalen sowie ein Set aus drei kleinen Wandobjekten namens „Natsukusa Fuyumushi“ – benannt nach dem japanischen Namen für einen Pilz, der im Winter aus einem Insekt wächst und im Sommer wie eine Pflanze aussieht. Diese Stücke verkörpern dieselben Ideen im Maßstab einer Hand. Ein Becher ist das, was wir am häufigsten berühren; er ist auch das, woran sich am deutlichsten zeigt, ob sein Schöpfer ein Gespür für Haptik hat."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fyrj0eng37l.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Natsukusa Fuyumushi“: drei kleine weiße Formen, auf Holz montiert. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Drei kleine quadratische Holztafeln nebeneinander, auf denen jeweils eine kleine weiße, verzweigte Porzellanform steht, die an einen Zweig oder eine Wurzel erinnert."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fymsu2y6fkn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Teeschale „Mudai“ 6. Akiko Hirai, 2026. Mit freundlicher Genehmigung von Contemporary Ceramics, London.",
+              "alt": "Eine tiefe, runde Teeschale mit warmer, cremeweißer Glasur und einigen dunklen Sprenkeln auf weißem Hintergrund."
+            },
+            {
+              "type": "header",
+              "content": "VII · Warum das wichtig ist",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Die britische Kunst hatte schon immer ein gespanntes Verhältnis zur Keramik. Während des größten Teils des 20. Jahrhunderts gehörte sie zu einer eigenen Kategorie namens „Kunsthandwerk“, wurde in separaten Galerien ausgestellt und in eigenen Zeitschriften rezensiert. Diese Grenze löst sich seit zwanzig Jahren auf, da Museen Keramik als Skulptur sammeln und Künstler von Grayson Perry bis Magdalene Odundo gezeigt haben, wie viel ein Gefäß aussagen kann. Hirais Ausstellung ist Teil dieses Wandels. Sie ist ruhig, sie ist kommerziell – alles steht zum Verkauf – und sie ist zugleich eine der nachdenklichsten Ausstellungen über Zerbrechlichkeit, Zeit und Aufmerksamkeit, die London in diesem Herbst zu bieten hat."
+            },
+            {
+              "type": "text",
+              "content": "„Dinge, die verschwinden, wenn man sie berührt“ ist ein perfekter Titel dafür. Die Werke erfordern eine Art des Betrachtens, bei der man nicht nachgreift: langsam, aus der Nähe, ein wenig unsicher. In einer Stadt, die so schnell pulsiert wie London, ist das eine radikale Forderung."
+            },
+            {
+              "type": "header",
+              "content": "Schau es dir an",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Akiko Hirai: „Things that disappear when touched“ ist bis Samstag, den 7. November 2026, in der Galerie „Contemporary Ceramics“, 63 Great Russell Street, London, gegenüber dem British Museum, zu sehen. Der Eintritt ist frei. Die Werke können auch auf der Website der Galerie besichtigt werden."
+            },
+            {
+              "type": "note",
+              "content": "Das Künstlerstatement, die Sammlungen und die Ausstellungsdetails stammen aus „Contemporary Ceramics“. Die Beschreibungen des Tons, des Brennverfahrens und der Drehtechnik folgen den veröffentlichten Anmerkungen zur Ausstellung. Die Titel stammen von der Galerie. Die Geschichte des Leach-Mondgefäßes basiert auf der vom British Museum veröffentlichten Beschreibung des Objekts. Die Fotos der Werke wurden freundlicherweise von „Contemporary Ceramics“ zur Verfügung gestellt."
+            },
+            {
+              "type": "link",
+              "content": "Akiko Hirai: Dinge, die verschwinden, wenn man sie berührt – Zeitgenössische Keramik",
+              "url": "https://www.contemporaryceramics.uk/exhibitions/akiko-hirai-things-that-disappear-when-touched/"
+            }
+          ],
+          "updatedAt": "2026-11-05T07:26:22.073Z"
         },
         {
           "id": 85,
