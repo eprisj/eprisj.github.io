@@ -7039,13 +7039,14 @@ function renderVisualForm() {
           </div>
           <div class="style-helper-grid">
             <span><b>Обычный текст</b> – блок Paragraph. Вставка очищается автоматически: чужой шрифт, размер и цвет из Word/Instagram не должны переноситься в статью.</span>
-            <span><b>Заголовок</b> – добавьте блок Heading, а не увеличивайте Paragraph вручную. Так сайт сохранит правильный шрифт, размер и SEO-структуру.</span>
+            <span><b>Заголовок</b> – добавьте блок Heading, а не увеличивайте Paragraph вручную. Так сайт сохранит правильный шрифт, размер и SEO-структуру. Название раздела – H2; в интервью H3 рисуется как вопрос (мелкая строка с полосой слева).</span>
             <span><b>Переводы</b> – текущий язык становится источником. «Сохранить + языки» одновременно переводит текст, сохраняет абзацы, ссылки, фото и порядок блоков во всех версиях.</span>
           </div>
         </div>
         <input id="vf-title" class="canvas-title" placeholder="Заголовок статьи..." value="${escapeHtml(entry.title || '')}" />
         <textarea id="vf-excerpt" class="canvas-excerpt" placeholder="Введите краткое описание (лид) статьи...">${escapeHtml(entry.excerpt || '')}</textarea>
         <div class="vf-quick-insert"><button type="button" id="vf-insert-photo" class="btn btn-sm">▣ Добавить фото</button></div>
+        <p class="vf-header-hint" id="vf-header-hint" role="status" hidden></p>
         <div class="block-editor" id="vf-block-editor"></div>
       </div>
 
@@ -19459,6 +19460,23 @@ class ImgAlignTune {
   save() { return this.data; }
 }
 
+/* В интервью сайт рисует заголовок уровня 3 как вопрос (мелкий, с полосой слева).
+   Если такой «вопрос» не кончается знаком вопроса, скорее всего это название
+   раздела, и его место – H2. Подсказка, не запрет. */
+function __updateInterviewHeaderHint() {
+  const el = document.getElementById('vf-header-hint');
+  if (!el) return;
+  const kind = `${document.getElementById('vf-category')?.value || ''} ${document.getElementById('vf-subcategory')?.value || ''}`;
+  const blocks = Array.isArray(window.__modernBlocksCache) ? window.__modernBlocksCache : [];
+  const odd = /interview|интервью/i.test(kind)
+    ? blocks.filter((b) => b && b.type === 'header' && Number(b.level) === 3 && !/[?？]\s*(<[^>]*>\s*)*$/.test(String(b.content || '').trim()))
+    : [];
+  if (!odd.length) { el.hidden = true; el.textContent = ''; return; }
+  const names = odd.slice(0, 3).map((b) => '«' + String(b.content).replace(/<[^>]*>/g, '').trim().slice(0, 40) + '»').join(', ');
+  el.textContent = `В интервью заголовок H3 рисуется как вопрос (мелкая строка с полосой, как цитата). Заголовков H3 без вопросительного знака: ${odd.length} (${names}${odd.length > 3 ? '…' : ''}). Названия разделов ставьте как H2.`;
+  el.hidden = false;
+}
+
 function __buildEditorTools() {
   const t = {};
   if (__hasTool('Header')) t.header = { class: window.Header, inlineToolbar: true, config: { levels: [2, 3], defaultLevel: 2, placeholder: 'Заголовок' } };
@@ -19508,11 +19526,27 @@ function mountModernEditor(blocks) {
       autofocus: false,
       minHeight: 120,
       placeholder: 'Начните писать или нажмите Tab для блоков…',
+      /* Уровни заголовка названы по тому, как их рисует сайт. В интервью H3 –
+         это ВОПРОС (мелкая строка с золотой полосой, как у цитаты), а название
+         раздела – H2. Из-за «Heading 3» названия разделов в трёх интервью
+         выглядели как цитаты. */
+      i18n: { messages: { tools: { header: {
+        'Heading 2': 'H2 · заголовок раздела',
+        'Heading 3': 'H3 · подзаголовок (в интервью – вопрос)'
+      } } } },
       tools: __buildEditorTools(),
       data: { blocks: __blocksToEditor(blocks) },
-      onReady: () => { window.__modernEditorActive = true; },
+      onReady: () => {
+        window.__modernEditorActive = true;
+        ['vf-category', 'vf-subcategory'].forEach((id) => {
+          const input = document.getElementById(id);
+          if (input && !input.dataset.hhBound) { input.dataset.hhBound = '1'; input.addEventListener('input', __updateInterviewHeaderHint); }
+        });
+        __updateInterviewHeaderHint();
+      },
       onChange: async () => {
         try { const d = await __modernEditor.save(); window.__modernBlocksCache = __editorToBlocks(d); } catch (e) { /* ignore */ }
+        __updateInterviewHeaderHint();
         if (typeof window._schedulePreviewRefresh === 'function') window._schedulePreviewRefresh(150);
       }
     });
