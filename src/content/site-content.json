@@ -147569,9 +147569,266 @@
         },
         {
           "id": 89,
-          "title": "Usa il presente dei verbi",
-          "excerpt": "Dalla cupola in cemento del Pantheon al MAXXI di Zaha Hadid, dalle tre sale da concerto di Renzo Piano al Colosseo Quadrato dell&#39;EUR e alla nuvola in una scatola di vetro di Fuksas: come la Città Eterna ha imparato a costruire nel presente.",
-          "category": "Architettura"
+          "draft": false,
+          "title": "Il presente di Roma: cemento, nuvole e la nuova architettura della città",
+          "author": "Viacheslav Munister",
+          "role": "Autore",
+          "authorId": "author-1784732936927-kw554",
+          "date": "6 novembre 2026",
+          "excerpt": "Dalla cupola in cemento del Pantheon al MAXXI di Zaha Hadid, alle tre sale da concerto di Renzo Piano, al Colosseo quadrato dell’EUR e alla “nuvola” dei Fuksas racchiusa in una scatola di vetro: come la Città Eterna ha imparato a costruire al presente.",
+          "category": "Architettura",
+          "subcategory": "Caratteristica",
+          "tags": [
+            "Roma",
+            "Roma",
+            "architettura contemporanea",
+            "MAXXI",
+            "Zaha Hadid",
+            "Renzo Piano",
+            "Auditorium Parco della Musica",
+            "La Nuvola",
+            "Fuksas",
+            "Euro",
+            "Palazzo della Civiltà Italiana",
+            "Pantheon",
+            "Italia"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+          "previewToken": "35dd818d25a48f3ff33449e1",
+          "publishAt": "2026-11-06T01:00:00.000Z",
+          "publishedAt": "2026-11-06T01:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo3bdne5c72.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI, Museo Nazionale delle Arti del XXI Secolo, progettato da Zaha Hadid Architects, 2010: la galleria superiore a sbalzo termina con una finestra affacciata sulla città vecchia. Foto: Kurt Cotoaga / Unsplash.",
+              "alt": "Un lungo edificio museale in cemento grigio, il cui ultimo piano sporge a sbalzo sull’ingresso, terminando con un’ampia finestra che riflette i colori ocra e giallo dei palazzi romani."
+            },
+            {
+              "type": "text",
+              "content": "Roma è la città che ha inventato il cemento, per poi passare quindici secoli a costruire in pietra e mattoni come se se ne fosse dimenticata. È anche la capitale europea più spesso accusata di non avere alcuna architettura contemporanea – una città così piena di passato che il presente non riesce a trovare spazio. Entrambe le idee sono sbagliate. Negli ultimi trent’anni Roma ha acquisito in sordina alcuni degli edifici più audaci d’Italia: un museo che si riversa in un quartiere come un fiume, tre sale da concerto a forma di coleottero, un centro congressi con una nuvola intrappolata in una scatola di vetro. Vederli significa osservare la città dall’altra estremità della sua storia."
+            },
+            {
+              "type": "header",
+              "content": "I · Il primo concreto",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fnysxgwzfmn.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il Pantheon, ricostruito sotto Adriano intorno al 125 d.C.: dietro il portico classico si erge la cupola in calcestruzzo non armato più grande del mondo. Foto: Gabriella Clare Marino / Unsplash.",
+              "alt": "Il portico colonnato del Pantheon con la scritta “M. AGRIPPA L.F. COS TERTIVM FECIT”, la cupola grigia sullo sfondo e un obelisco egizio sulla fontana antistante."
+            },
+            {
+              "type": "text",
+              "content": "Ogni edificio moderno di Roma dialoga con questo. Il portico del Pantheon è di stile greco, ma ciò che si erge alle sue spalle è ingegneria romana: una cupola in cemento armato di quarantatré metri di diametro, realizzata con anelli che diventano più leggeri man mano che salgono verso l’alto, aperta verso il cielo al centro. A distanza di quasi duemila anni, è ancora la più grande cupola in cemento armato non rinforzato del mondo. Quando Zaha Hadid e Renzo Piano sono venuti a costruire a Roma, non stavano importando un materiale straniero. Stavano riportando il cemento a casa."
+            },
+            {
+              "type": "header",
+              "content": "II · Il Colosseo quadrato",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo064hp5hhc.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Palazzo della Civiltà Italiana, EUR, progettato da Giovanni Guerrini, Ernesto Bruno La Padula e Mario Romano, i cui lavori iniziarono nel 1938: sei piani con nove archi. Dal 2015 è la sede di Fendi. Foto: Jan Zinnbauer / Unsplash.",
+              "alt": "Un edificio alto e squadrato in travertino bianco, con sei file di nove archi a tutto sesto identici ciascuna, che si staglia contro un cielo di un blu intenso, con statue alla base."
+            },
+            {
+              "type": "text",
+              "content": "La prima Roma moderna fu costruita per un’esposizione che non ebbe mai luogo. Alla fine degli anni ’30 il regime fascista progettò un nuovo quartiere a sud della città in vista di un’esposizione universale prevista per il 1942: l’Esposizione Universale di Roma, da cui l’area prese il nome, EUR. La guerra fece saltare l’esposizione. Gli edifici rimasero lì, bianchi e vuoti, e furono completati gradualmente negli anni ’50, quando l’EUR divenne un quartiere degli affari."
+            },
+            {
+              "type": "text",
+              "content": "Il suo simbolo è il Palazzo della Civiltà Italiana, soprannominato il “Colosseo quadrato”: un cubo di travertino bianco le cui quattro facciate sono ciascuna attraversata da sei file di nove archi. È propaganda scolpita nella pietra, e la sua iscrizione esalta gli italiani come un popolo di poeti, artisti, eroi, santi, pensatori, scienziati, navigatori e migranti. È anche, innegabilmente, uno degli edifici più ipnotici del XX secolo, un dipinto metafisico di de Chirico diventato realtà. Nel 2015 la casa di moda Fendi vi ha trasferito la propria sede, e l’edificio ha finalmente trovato una destinazione d’uso serena."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo1azjjoybi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "I portici superiori del Palazzo della Civiltà Italiana, con l&#x27;iscrizione sull&#x27;attico. Foto: Karina Halley / Unsplash.",
+              "alt": "Alzando lo sguardo verso un angolo dell’edificio bianco con le arcate, le file di archi a tutto sesto che si allontanano, con una lunga iscrizione scolpita lungo la sommità sotto un cielo pallido."
+            },
+            {
+              "type": "quote",
+              "content": "Un dipinto metafisico di de Chirico, trasposto nella realtà grazie al travertino."
+            },
+            {
+              "type": "header",
+              "content": "III · Tre coleotteri in un parco",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foap4ulx4zw.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L&#x27;Auditorium Parco della Musica, progettato dallo studio Renzo Piano Building Workshop e inaugurato nel 2002: una delle tre sale da concerto rivestite in piombo. Foto: Erin Doering / Unsplash.",
+              "alt": "Un’enorme sala da concerto dalla forma arrotondata, con il tetto rivestito da lunghi pannelli di piombo ormai ossidati in una tonalità di grigio-blu scuro, che si erge sopra un’ampia scalinata."
+            },
+            {
+              "type": "text",
+              "content": "La rinascita culturale della Roma moderna è iniziata dalla musica. Nel 2002 la città ha inaugurato l’Auditorium Parco della Musica, progettato da Renzo Piano, ai margini del quartiere Flaminio. Piano ha suddiviso il complesso in tre sale da concerto separate di diverse dimensioni – la più grande può ospitare circa 2.800 persone – e ha dotato ciascuna di una propria struttura a conchiglia, con tetto in piombo e interni rivestiti in legno di ciliegio americano. I romani le paragonano a coleotteri o a liuti giganti adagiati a faccia in giù sull’erba."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fobsp1jaytr.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La cavea, l’anfiteatro all’aperto situato tra le tre sale, con la parte inferiore rossa di una delle conchiglie. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Un grande anfiteatro all’aperto in mattoni rossi, con persone sedute sui gradini sotto la volta ricurva, grigia e rossa, di una sala da concerto."
+            },
+            {
+              "type": "text",
+              "content": "Tra le sale, Piano ha inserito un quarto spazio che appartiene a tutti: la cavea, un anfiteatro all’aperto in mattoni, dove la gente si siede al sole della sera anche quando non c’è nessuno spettacolo. Durante i lavori di costruzione, gli operai hanno rinvenuto sul sito i resti di una villa romana; Piano ha modificato il progetto e ora le rovine si trovano all’interno del complesso, insieme a un piccolo museo. È lo stile romano: l’edificio nuovo si fa da parte per lasciare spazio a quello antico."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0focyihyacty.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "I gusci visti di profilo: pannelli di piombo, consumati dal tempo nel corso di due decenni, sullo sfondo di un cielo estivo. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Una ripresa ravvicinata, da angolazione bassa, di un tetto ricurvo formato da strisce di piombo grigio-blu sovrapposte, sotto un cielo blu punteggiato di nuvole bianche."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0foe7ghshofl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Serata all’Auditorium: le terrazze in mattoni come piazza pubblica. Foto: Piermanuele Sberni / Unsplash.",
+              "alt": "Una vista verticale dall’alto della struttura grezza di una sala da concerto che sovrasta delle terrazze in mattoni, dove un unico skateboarder sta scendendo."
+            },
+            {
+              "type": "header",
+              "content": "IV · MAXXI: un museo come un fiume",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo2965nm6lt.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI: la galleria a sbalzo e la sua vetrata, che incorniciano le case color ocra del quartiere Flaminio. Foto: Mimmo Sigismondi / Unsplash.",
+              "alt": "Un volume di cemento grigio dai contorni netti che si protende verso un cielo di un blu intenso, con la sua lunga finestra che riflette le case romane dai colori arancioni e gialli."
+            },
+            {
+              "type": "text",
+              "content": "L&#x27;edificio che ha cambiato l&#x27;immagine che Roma ha di sé è stato inaugurato nel 2010. Il MAXXI, il Museo Nazionale delle Arti del XXI Secolo, è stato progettato da Zaha Hadid sul sito di una ex caserma militare nel quartiere del Flaminio. Quell’anno ha vinto il RIBA Stirling Prize; Hadid lo ha vinto nuovamente l’anno successivo, diventando la prima architetta a aggiudicarsi il premio per due volte consecutive."
+            },
+            {
+              "type": "text",
+              "content": "Dall’esterno sembra costituito da diversi canali di cemento sovrapposti e contorti in pianta, tanto che l’edificio sembra scorrere intorno all’angolo dell’isolato. Hadid lo ha descritto come un campo di correnti piuttosto che come un contenitore. Non ci sono stanze chiuse né un unico percorso: le gallerie sono lunghi flussi di spazio sinuosi, illuminati dall’alto da alette nel tetto, che si incrociano, si dividono e si ricongiungono. In cima, l’ultima galleria si protende oltre l’ingresso e termina in un’enorme finestra, incorniciando la vista delle case romane di fronte – come se il museo dovesse volgere lo sguardo alla città da cui proviene."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo8bikzrapi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "All’interno del MAXXI: scale e ponti neri fluttuano nell’atrio bianco. Foto: Marius George Oprea / Unsplash.",
+              "alt": "Un interno bianco con ampie scale nere e passerelle che lo attraversano in alto, illuminato dalla luce che filtra dalle alette del tetto e caratterizzato da un lungo pavimento bianco."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo9k38m2kso.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "L&#x27;atrio visto dall&#x27;alto: le scale a nastro nere attraversano l&#x27;intera altezza dell&#x27;edificio. Foto: Marius George Oprea / Unsplash.",
+              "alt": "Una vista dall’alto verso il basso attraverso l’atrio del museo, con scale in acciaio nero che si snodano a zig-zag tra le pareti bianche e le persone in fondo."
+            },
+            {
+              "type": "text",
+              "content": "Gli interni sono in bianco e nero. Le pareti in cemento sono chiare e lisce, realizzate con una precisione quasi inaudita nell’edilizia italiana dell’epoca. Attraverso l’atrio si snodano scale e passerelle in acciaio nero, leggere come linee disegnate. Camminare nel MAXXI non è tanto come visitare un museo, quanto piuttosto come muoversi all’interno di uno schema che rappresenta il movimento stesso."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo4c81j8cmy.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "MAXXI: una galleria a sbalzo vista dal basso. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Una vista in elevazione di una galleria in cemento armato che si protende a sbalzo su un volume sottostante, con vetrate e nuvole bianche in alto."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo5lh03xz3k.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Piani di cemento che si incrociano ad angoli acuti: il tipo di superficie con cui è realizzato il museo. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Un primo piano astratto di pareti lisce in cemento grigio che si incontrano ad angoli acuti, con ombre profonde."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fo6xnfop6x0.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Il ponte a sbalzo sulla strada, con i condomini del Flaminio. Foto: Manuel Szkolnik / Unsplash.",
+              "alt": "Una galleria in cemento grigio che si protende sopra condomini dai colori arancioni e gialli, sotto un cielo blu."
+            },
+            {
+              "type": "header",
+              "content": "V · Una nuvola in una scatola",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fofxucnmpoh.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "La Nuvola, centro congressi di Roma, opera di Massimiliano e Doriana Fuksas, inaugurata nel 2016: la “nuvola” sospesa all’interno di una scatola di vetro. Foto: Massimo Virgilio / Unsplash.",
+              "alt": "Vista in bianco e nero all’interno di una sala vetrata dove una vasta struttura curva composta da nervature in acciaio e una membrana tesa – la “nuvola” – è sospesa tra i piani."
+            },
+            {
+              "type": "text",
+              "content": "Il più recente tra i punti di riferimento di Roma è tornato nell’EUR, a pochi passi dalla Piazza del Colosseo. La Nuvola, il centro congressi progettato da Massimiliano e Doriana Fuksas e inaugurato nel 2016 dopo quasi due decenni di progettazione e costruzione, porta un’idea semplice al suo limite estremo. All’esterno si presenta come una scatola di vetro e acciaio. All’interno, sospesa nell’aria, c’è una nuvola: un auditorium dalla forma libera avvolto da una membrana traslucida che ricopre un’ossatura di nervature in acciaio, che sembra fluttuare tra i piani."
+            },
+            {
+              "type": "text",
+              "content": "Il contrasto con l’edificio adiacente non potrebbe essere più netto. Il Palazzo della Civiltà è tutta certezza: una griglia di archi identici, uno slogan scolpito nella pietra. La Nuvola è tutta incertezza: una forma che non trova pace, un edificio dentro un altro edificio. Insieme raccontano una piccola storia di come l’architettura sia cambiata a Roma nell’arco di ottant’anni."
+            },
+            {
+              "type": "header",
+              "content": "VI · E altrove",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Il percorso prevede altre tappe. All’Ara Pacis, il padiglione di vetro realizzato da Richard Meier nel 2006 racchiude l’altare della pace di Augusto; i romani ne hanno discusso per anni, e rimane tuttora l’edificio moderno più controverso del centro storico. Nel quartiere periferico orientale di Tor Tre Teste, Meier ha realizzato anche la Chiesa del Giubileo, Dives in Misericordia (2003), le cui tre conchiglie in cemento bianco si ergono come vele sopra un complesso residenziale. E lungo il percorso verso l’Auditorium si passa davanti al Palazzetto dello Sport di Pier Luigi Nervi del 1957, una cupola in cemento nervato che è il vero antenato di tutto ciò di cui si parla in questo articolo."
+            },
+            {
+              "type": "header",
+              "content": "VII · Il presente",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Roma non sarà mai una città dall’architettura moderna come lo sono Rotterdam o Shanghai. E non ha bisogno di esserlo. I suoi migliori edifici moderni funzionano proprio come hanno sempre fatto quelli antichi: si affiancano a ciò che già esiste e ne modificano la percezione. La finestra di Hadid guarda alle case antiche; le sale di Piano fanno spazio a una villa romana; la «nuvola» di Fuksas fluttua a poche centinaia di metri da un sogno fascista di eternità. Il presente a Roma non è mai solo. Ed è proprio questo che lo rende interessante."
+            },
+            {
+              "type": "quote",
+              "content": "Il presente a Roma non è mai solo."
+            },
+            {
+              "type": "header",
+              "content": "Guardalo",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Il MAXXI si trova in Via Guido Reni, nel quartiere del Flaminio, mentre l’Auditorium Parco della Musica è a pochi passi di distanza, in Viale Pietro de Coubertin; potete visitarli entrambi in un unico pomeriggio, passando per il Palazzetto dello Sport lungo il percorso. L’EUR, con il Palazzo della Civiltà Italiana e La Nuvola, si trova a poche fermate più a sud sulla linea B della metropolitana. Il museo dell’Ara Pacis si trova sul Tevere, vicino a Piazza del Popolo."
+            },
+            {
+              "type": "note",
+              "content": "Le date, i nomi degli architetti e le descrizioni si basano sui resoconti pubblicati relativi agli edifici e sulle descrizioni dei progetti fornite dagli stessi architetti. Le fotografie sono riprodotte in base alla licenza Unsplash, con l’indicazione del nome di ciascun fotografo nella didascalia."
+            }
+          ],
+          "updatedAt": "2026-11-05T07:25:13.306Z"
         },
         {
           "id": 85,
