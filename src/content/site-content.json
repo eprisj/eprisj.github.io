@@ -92842,9 +92842,280 @@
         },
         {
           "id": 88,
-          "title": "Der Künstler, der den Raum verlässt: Pierre Huyghe, vom Bienenkorbkopf zur Traummaschine",
-          "excerpt": "Ein Hund mit einem rosa Bein, eine bis zur Erde aufgeschnittene Eisbahn, ein gesichtsloser Körper in Venedig und, jetzt im Skulpturengarten des MoMA, ein neuronales Netzwerk, das versucht, sich die Gedanken eines Menschen vorzustellen: Der französische Künstler Pierre Huyghe schafft Kunst, die ohne ihn lebt.",
-          "category": "Kunst"
+          "draft": false,
+          "title": "Der Künstler, der den Raum verlässt: Pierre Huyghe – vom Bienenstockkopf bis zur Maschine, die träumt",
+          "author": "Viacheslav Munister",
+          "role": "Autor",
+          "authorId": "author-1784732936927-kw554",
+          "date": "5. November 2026",
+          "excerpt": "Ein Hund mit einem rosa Bein, eine bis auf den Boden aufgeschnittene Eislaufbahn, ein gesichtsloser Körper in Venedig und nun im Skulpturengarten des MoMA ein neuronales Netzwerk, das versucht, die Gedanken eines Menschen darzustellen: Der französische Künstler Pierre Huyghe schafft Kunst, die ohne ihn weiterlebt.",
+          "category": "Art",
+          "subcategory": "Profil",
+          "tags": [
+            "Pierre Huyghe",
+            "UUmwelt",
+            "Museum für moderne Kunst",
+            "zeitgenössische Kunst",
+            "Französische Kunst",
+            "künstliche Intelligenz",
+            "Unbearbeitet",
+            "Nach „ALife Ahead“",
+            "Liminal",
+            "Ökosysteme"
+          ],
+          "imageSeed": "",
+          "imageUrl": "https://api.eprisjournal.com/uploads/mw0fe1njuzyqxy.jpg",
+          "previewToken": "fb05bd43fec472659f2cec1f",
+          "publishAt": "2026-11-05T17:00:00.000Z",
+          "publishedAt": "2026-11-05T17:00:00.000Z",
+          "content": [
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe1njuzyqxy.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein von einer Maschine erdachtes Gesicht auf einem freistehenden Bildschirm inmitten der Weiden im Skulpturengarten des MoMA. Installationsansicht: Pierre Huyghe: UUmwelt, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Ein großer, freistehender LED-Bildschirm in einem mit Marmor gepflasterten Garten unter weinenden Bäumen, auf dem ein verschwommenes, geisterhaftes Bild eines blassen Gesichts mit dunklen Augen zu sehen ist; dahinter stehen Bronzeskulpturen und eine Steinmauer."
+            },
+            {
+              "type": "text",
+              "content": "Gerade jetzt, mitten in Manhattan, versucht eine Maschine, Ihre Gedanken zu lesen. Nicht genau Ihre – sondern die Gedanken einer Person in Kyoto, die sich einst in einen Gehirnscanner gelegt und sich ein paar einfache Bilder vorgestellt hat. Seitdem versucht ein neuronales Netzwerk zu erraten, um welche Bilder es sich dabei handelte. Seine Vermutungen erscheinen in Echtzeit auf riesigen Bildschirmen, die zwischen den Weiden und Rodin-Skulpturen im Skulpturengarten des MoMA aufgestellt sind: Halbgesichter, schmelzende Tiere, Objekte, bei denen man nie so recht weiß, was sie eigentlich sind. Wenn man stehenbleibt, um hinzuschauen, registriert ein Sensor dies, und die Bilder wechseln."
+            },
+            {
+              "type": "text",
+              "content": "Das Werk trägt den Titel „UUmwelt“, und sein Schöpfer ist Pierre Huyghe, der französische Künstler, der seit dreißig Jahren Kunst schafft, die nicht ganz von ihm selbst stammt. Er schafft Situationen – Gärten, Teiche, Eislaufbahnen, Aquarien, Computersimulationen – und überlässt es dann Bienen, Hunden, Krabben, Krebszellen, Algorithmen und Besuchern, diese zu vollenden. Er ist in jeder Hinsicht einer der ungewöhnlichsten lebenden Künstler. Da „UUmwelt“ noch bis zum 29. November in New York zu sehen ist, ist dies ein guter Zeitpunkt, um einen Blick darauf zu werfen, wie er dorthin gekommen ist."
+            },
+            {
+              "type": "header",
+              "content": "I · Ein Künstler, der den Raum verlässt",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Huyghe wurde 1962 in Paris geboren und studierte an der École nationale supérieure des arts décoratifs. In den 1990er Jahren gehörte er zu einer Generation französischer Künstler – Philippe Parreno, Dominique Gonzalez-Foerster, Liam Gillick –, die Ausstellungen weniger als Präsentationen, sondern vielmehr als Drehbücher, Spiele und zeitbasierte Ereignisse betrachteten. Zusammen mit Parreno erwarb er die Rechte an einer billigen japanischen Manga-Figur, einem Mädchen namens Annlee, und verlieh sie anderen Künstlern, damit diese sie zum Leben erwecken konnten: eine Figur ohne eigene Geschichte, die darauf wartete, eine zu erhalten."
+            },
+            {
+              "type": "text",
+              "content": "Der Durchbruch kam schnell. Im Jahr 2001 vertrat er Frankreich auf der Biennale in Venedig mit „Le Château de Turing“ und gewann einen Sonderpreis der Jury; 2002 erhielt er den Hugo-Boss-Preis. Doch der Wendepunkt, der ihn einzigartig machte, kam erst später, als er aufhörte, Veranstaltungen für Menschen zu inszenieren, und begann, Umgebungen zu schaffen, die auch ohne sie weiterleben würden."
+            },
+            {
+              "type": "header",
+              "content": "II · Unbearbeitet: Der Komposthaufen auf der documenta",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdyamuf3ogp.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Untilled“, 2011–12, documenta 13, Kassel: ein liegender Akt, dessen Kopf ein lebender Bienenstock ist, und ein weißer Hund mit einem rosa Bein. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "In einer schlammigen, verwilderten Ecke eines Parks steht eine graue, liegende Frauenstatue aus Beton, deren Kopf von einem großen, lebenden Bienenstock bedeckt ist; in der Nähe läuft ein schlanker weißer Hund mit einem leuchtend rosa Bein herum."
+            },
+            {
+              "type": "text",
+              "content": "Auf der documenta 13 in Kassel im Jahr 2012 fanden Besucher, die bis zum hinteren Ende des Karlsaue-Parks gingen, etwas vor, das wie eine Baustelle aussah: einen Komposthaufen, Schlamm, entwurzelte Bäume, Brennnesseln. In der Mitte stand eine Betonstatue eines liegenden Aktes, dessen Kopf ein lebender Bienenstock war. Ein schlanker weißer Hund namens „Human“, dessen eines Bein leuchtend pink gefärbt war, streifte zwischen den Besuchern umher. Es wurde nichts erklärt. Die Dinge wuchsen, wimmelten und verfaulten einfach den ganzen Sommer über."
+            },
+            {
+              "type": "text",
+              "content": "„Untilled“ wurde zum prägenden Bild von Huyghes Werk und zu einem der meistdiskutierten Kunstwerke des bisherigen Jahrhunderts. Es warf eine einfache, radikale Frage auf: Was wäre, wenn ein Kunstwerk kein Objekt für Menschen wäre, sondern ein Ort, an dem viele Arten – und viele Prozesse – ihr Leben weiterführen, ganz gleich, ob jemand zusieht oder nicht?"
+            },
+            {
+              "type": "quote",
+              "content": "Was wäre, wenn ein Kunstwerk kein Objekt für Menschen wäre, sondern ein Ort, an dem viele Arten ihr Leben führen?"
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdw19i6pztl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Retrospektive, Museum Ludwig, Köln, 2014: ein Aquarium-Ökosystem neben einer Projektion. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Ein schummriger Ausstellungsraum mit einem großen Glasaquarium auf einem Betonsockel, in dem sich Felsen und Lebewesen befinden, einer rot beleuchteten Projektion an der gegenüberliegenden Wand und handbeschrifteten Blättern an einer weißen Wand."
+            },
+            {
+              "type": "text",
+              "content": "Eine Retrospektive im Centre Pompidou in Paris im Jahr 2013 wanderte anschließend ins Museum Ludwig in Köln und ins LACMA in Los Angeles weiter und war anders als alle Retrospektiven zuvor. In den Ausstellungsräumen lebten Spinnen und Ameisen, und in einem Aquarium trug eine Einsiedlerkrebs eine Nachbildung eines Brancusi-Kopfes als Panzer. Auch der Hund Human war dabei. Aquarien – abgeschlossene Welten aus Felsen, Wasser und Tieren – standen wie kleine Planeten da. Die Ausstellung war weniger eine Übersicht als vielmehr ein Ökosystem."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdwkmpkt9x4.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Roof Garden Commission“, The Metropolitan Museum of Art, New York, 2015: Der Bodenbelag wurde angehoben, um die darunterliegende Erde freizulegen; im Hintergrund sind ein Aquarium und der Central Park zu sehen. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Eine Dachterrasse an einem nebligen Tag, auf der die Steinplatten angehoben und gekippt sind, sodass die Erde darunter zum Vorschein kommt, ein Glasaquarium auf einem Ständer sowie die Bäume des Central Parks und die Hochhäuser von Manhattan im Nebel."
+            },
+            {
+              "type": "text",
+              "content": "Im Jahr 2015 übernahm er das Dach des Metropolitan Museum of Art. Er hob die Pflastersteine an, als würde das Gebäude ausgegraben, und stellte ein Aquarium auf die Terrasse mit Blick auf den Central Park. Auf einer Dachterrasse, die eigentlich für Drinks und die Aussicht gedacht war, tauchte plötzlich wieder der Boden auf."
+            },
+            {
+              "type": "header",
+              "content": "III · Nach „ALife Ahead“: eine Eislaufbahn, die denkt",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdxpx0hf8gf.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Nach „ALife Ahead“, 2017, Skulptur Projekte Münster: Der Betonboden einer ehemaligen Eislaufbahn ist bis auf den Erdboden aufgeschnitten; eine pyramidenförmige Öffnung in der Decke. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Das Innere einer stillgelegten Eislaufbahn: Der Betonboden ist aufgebrochen und bildet Hügel und Gräben aus Sand und Lehm; in der Ferne steht ein Aquarium, und über dem Ganzen befindet sich eine schwarze, geometrische Öffnung in der Decke."
+            },
+            {
+              "type": "text",
+              "content": "Sein bislang ambitioniertestes Werk entstand 2017 für die „Skulptur Projekte Münster“. Huyghe mietete eine stillgelegte Eislaufbahn am Rande der Stadt und schnitt deren Betonboden bis auf den Erdboden auf, wodurch eine Landschaft aus Hügeln, Schluchten und Pfützen entstand. Darin lebten Bienen, Algen, Bakterien und ein Aquarium mit einer giftigen Kegelschnecke. In einem Inkubator wuchsen Krebszellen; ihre Teilung wurde überwacht, und die Daten steuerten eine Augmented-Reality-Ebene sowie das Öffnen und Schließen pyramidenförmiger Luken im Dach."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdx6ta36wdl.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Nach „ALife Ahead“, 2017: der freigelegte Boden mit dem Aquarium und den Tribünen der alten Eislaufbahn. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Ein Weitwinkelblick auf eine freigelegte ehemalige Eislaufbahn mit einem Betonweg, der sich durch Erdhügel schlängelt, einem Aquarium und alten Tribünen unter einer Decke mit herabhängenden schwarzen geometrischen Schraffuren."
+            },
+            {
+              "type": "text",
+              "content": "Das Werk hatte weder einen Anfang noch ein Ende und auch keinen einheitlichen Blickwinkel. Es handelte sich um einen geschlossenen Kreislauf aus lebenden und computergestützten Systemen, die sich gegenseitig beeinflussten, wobei die menschlichen Besucher nur ein Faktor unter vielen waren. Viele Kritiker bezeichneten es als den Höhepunkt der Ausstellung. Es wies zudem den Weg, der direkt zu „UUmwelt“ führt: Biologie und Informatik als zwei Arten des Wachstums, die sich beide der Kontrolle des Künstlers entziehen."
+            },
+            {
+              "type": "header",
+              "content": "IV · UUmwelt: Was sich eine Maschine vorstellt",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe0y01si12h.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„UUmwelt“ im Skulpturengarten des MoMA: Bildschirme zwischen den Bäumen, zwischen den Glasfassaden des Museums. Installationsansicht, Pierre Huyghe: „UUmwelt“, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Ein mit Marmor gepflasterter Garten zwischen modernen Glasgebäuden, mit hängenden Bäumen und zwei freistehenden Bildschirmen, auf denen verschwommene, farbenfrohe, von KI erzeugte Bilder zu sehen sind."
+            },
+            {
+              "type": "text",
+              "content": "„UUmwelt“ wurde erstmals 2018 in den Serpentine Galleries in London gezeigt. Die Version im MoMA verlegt die Installation ins Freie. In Zusammenarbeit mit Neurowissenschaftlern des Kamitani-Labors an der Universität Kyoto und ATR bat Huyghe eine Testperson, sich eine Reihe von Bildern vorzustellen, während ein fMRT-Scanner deren Gehirnaktivität aufzeichnete. Ein neuronales Netzwerk nutzte die Scans anschließend, um Tausende visueller Interpretationen dessen zu generieren, was sich die Person möglicherweise vorgestellt hatte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe2kz7smh6e.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Auf einem Bildschirm im Garten ist ein rötliches Wesen zu sehen, das sich in eine nicht identifizierbare Form auflöst. Installationsansicht, Pierre Huyghe: UUmwelt, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Ein hoher LED-Bildschirm, der schräg auf grauem Marmorpflaster vor weinenden Bäumen und einer Steinmauer steht und eine rötliche Gestalt zeigt, halb Tier, halb Objekt, die im Licht verschmilzt."
+            },
+            {
+              "type": "text",
+              "content": "Die Ergebnisse sind halluzinatorisch und fragmentarisch – keine Bilder, sondern Versuche, Bilder zu schaffen. Die Abfolge ist niemals fest vorgegeben. Sie wird in Echtzeit von zwei Faktoren gesteuert: dem Blick der Besucher, der von einem Sensor erfasst wird, und Daten aus virtuellen Simulationen von Mutationen in Krebszellen. Der Text des MoMA führt diese Metapher weiter aus: die endlose Vermehrung algorithmischer Bilder und das unkontrollierte Wachstum von Metastasen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe37li29ezm.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„UUmwelt“ inmitten der Skulpturen des Gartens. Ausstellungsansicht, Pierre Huyghe: „UUmwelt“, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Ein Bildschirm mit einem verschwommenen rot-grauen Bild neben einer weißen Wand in einem Garten mit einer schwarzen abstrakten Bronzeskulptur und einer liegenden Bronzefigur am Rande eines Spiegelteichs."
+            },
+            {
+              "type": "text",
+              "content": "Der Titel spielt auf den Begriff „Umwelt“ an, den der deutsche Biologe Jakob von Uexküll für die Welt verwendete, wie sie von der jeweiligen Spezies wahrgenommen wird – die Welt einer Zecke aus Wärme und Geruch, die Welt einer Fledermaus aus Echos. Das zusätzliche „U“ macht ihn instabil. Huyghe bezeichnet das Ergebnis als „eine kollektive Produktion der Vorstellungskraft zwischen zwei Arten von Intelligenz“. Wenn man im Garten steht, beobachtet man, wie eine Maschine die Gedanken eines anderen träumt, inmitten der Bronzeskulpturen von Rodin und Miró. Die moderne Skulptur, die sie umgibt, wirkt plötzlich sehr selbstbewusst."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe3vcpe0r1w.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Ein Bild einer Glasschale, die mit etwas Rotem gefüllt ist und nach einem Regenschauer im Skulpturengarten auf dem Wasser schwimmt. Installationsansicht, Pierre Huyghe: UUmwelt, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Auf dem nassen, spiegelnden Marmorpflaster ist eine Glasschale zu sehen, die mit einer roten Substanz gefüllt ist und auf blauem Wasser schwebt; daneben steht eine schwarze, an Miró erinnernde Bronzeskulptur."
+            },
+            {
+              "type": "header",
+              "content": "V · Liminal: Der Körper ohne Gesicht",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdz3i3p1mts.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Liminal“, Punta della Dogana, Venedig, 2024: Eine gesichtslose humanoide Gestalt auf einer riesigen Leinwand in den abgedunkelten Backsteinhallen. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Eine abgedunkelte Lagerhalle aus Backstein mit einer einzigen großen Leinwand, auf der eine blasse, gesichtslose, menschenähnliche Gestalt in rosafarbenem Licht zu sehen ist; im Vordergrund hockt eine schemenhafte Gestalt."
+            },
+            {
+              "type": "text",
+              "content": "Im Jahr 2024 überließ die Pinault-Sammlung Huyghe die gesamte Punta della Dogana in Venedig. Er verwandelte sie in „Liminal“: Das alte Zollhaus lag in fast völliger Dunkelheit, Aquarien leuchteten, und auf riesigen Bildschirmen bewegte sich ein gesichtsloser menschlicher Körper – dessen Kopf eine Höhle war – durch eine karge Landschaft und lernte, ohne die Sinne zu existieren, die wir für selbstverständlich halten. Die Besucher wurden von Darstellern empfangen, die LED-Masken trugen und in einer maschinengenerierten Sprache sprachen."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdzpypfl7fo.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Liminal, Venedig, 2024: Maskierte Gestalten im Dunkeln, unter Lichtstrahlen. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Zwei dunkle Silhouetten in einem schwarzen Raum, eine stehend und eine sitzend, vor weißen Lichtstrahlen, die durch den Dunst von einer Reihe von Lampen fallen."
+            },
+            {
+              "type": "text",
+              "content": "Die Ausstellung ging anschließend auf Wanderschaft, und die Bildschirme sowie die Masken fanden neue Schauplätze – darunter die LAS Art Foundation in Berlin, die Huyghes „Liminals“ mit einer neuen, auf Quantencomputern basierenden Ebene präsentierte. An einem anderen Ort, in Kistefos in Norwegen, zeigte sein Werk „Variants“ auf einem Bildschirm im Wald eine simulierte Version des Waldes selbst, die sich langsam veränderte."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdvlyi170xz.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„Liminals“, LAS Art Foundation, Berlin: eine dunkle Industriehalle und eine einzige Leinwand. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Ein riesiger, dunkler Industrie-Innenraum, in dessen hinterem Bereich ein einzelner großer Bildschirm steht, auf dem eine graue, unscharfe Nahaufnahme eines Gesichts zu sehen ist, und in dessen Nähe eine kleine runde Lampe leuchtet."
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fdupcza8fdz.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "Variants, Kistefos, Norwegen: Ein Bildschirm im Wald zeigt eine Simulation des umliegenden Waldes. © Pierre Huyghe. Mit freundlicher Genehmigung des Künstlers und von Esther Schipper.",
+              "alt": "Ein großer schwarzer Bildschirm, der zwischen hohen Waldbäumen steht und ein Gewirr aus blassen, astartigen Linien sowie eine rosafarbene Gestalt zeigt, als würde der Wald immer wieder neu gezeichnet."
+            },
+            {
+              "type": "header",
+              "content": "VI · Warum er wichtig ist",
+              "level": 2
+            },
+            {
+              "type": "image",
+              "content": "https://api.eprisjournal.com/uploads/mw0fe06gc8blmi.jpg",
+              "align": "center",
+              "width": 100,
+              "caption": "„UUmwelt“ in der Abenddämmerung, unter den Hochhäusern von Midtown. Installationsansicht, Pierre Huyghe: „UUmwelt“, The Museum of Modern Art, New York, 2026. Mit freundlicher Genehmigung des MoMA.",
+              "alt": "Ein kleiner, leuchtender Bildschirm im langsam dunkler werdenden Skulpturengarten, der neben den Wolkenkratzern, die im Nebel verschwinden, winzig wirkt."
+            },
+            {
+              "type": "text",
+              "content": "Die meisten Kunstwerke zum Thema Technologie sind entweder begeistert oder alarmiert. Huyghe ist weder das eine noch das andere. Er behandelt ein neuronales Netzwerk so, wie er einen Bienenstock oder eine Kegelschnecke behandelt: als eine andere Art von Geist, mit einer eigenen Art der Wahrnehmung, dem Raum gegeben werden muss. Seine Werke sind keine Illustrationen von Vorstellungen über das Posthumane. Sie sind Orte, an denen dieser Zustand tatsächlich stattfindet – langsam, mit Schlamm, Fehlern und einem Hund mit einem rosa Bein."
+            },
+            {
+              "type": "text",
+              "content": "Deshalb wirkt sein Werk so fremd und zugleich so notwendig. In einem Jahrzehnt, in dem sich alle fragen, was Maschinen mit uns machen werden, stellt Huyghe eine bessere Frage: Wie sieht die Welt aus der Perspektive all dessen aus, was nicht wir selbst sind – und kann uns die Kunst für einen Moment in diese Perspektive versetzen?"
+            },
+            {
+              "type": "header",
+              "content": "Schau es dir an",
+              "level": 2
+            },
+            {
+              "type": "text",
+              "content": "Pierre Huyghe: „UUmwelt“ ist bis zum 29. November 2026 im Abby Aldrich Rockefeller Sculpture Garden des Museum of Modern Art in New York zu sehen. Am 30. November veranstaltet das MoMA einen Vortrag zu diesem Werk."
+            },
+            {
+              "type": "note",
+              "content": "Die Beschreibung von „UUmwelt“, die wissenschaftliche Zusammenarbeit und das zitierte Zitat stammen aus dem Ausstellungstext des MoMA. Biografische Angaben sowie die Entstehungsgeschichten von „Untilled“, der Retrospektive im Centre Pompidou, dem Auftragswerk für den Dachgarten des Met, „After ALife Ahead“ und „Liminal“ folgen auf die veröffentlichten Beschreibungen der Werke. Installationsansichten aus dem MoMA mit freundlicher Genehmigung des Museum of Modern Art; weitere Bilder mit freundlicher Genehmigung des Künstlers und von Esther Schipper, © Pierre Huyghe."
+            },
+            {
+              "type": "link",
+              "content": "Pierre Huyghe: UUmwelt — MoMA",
+              "url": "https://www.moma.org/calendar/exhibitions/5912"
+            },
+            {
+              "type": "link",
+              "content": "Pierre Huyghe — Esther Schipper",
+              "url": "https://www.estherschipper.com/artists/41-pierre-huyghe/"
+            }
+          ],
+          "updatedAt": "2026-11-05T07:22:47.274Z"
         },
         {
           "id": 89,
