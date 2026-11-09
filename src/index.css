@@ -246,6 +246,15 @@ select {
 .home-carousel-slot > * { grid-area: 1 / 1; width: 100%; }
 .home-carousel-slot .home-carousel-card { width: 100%; }
 
+/* The side cards sit on the vertical centre of the selected work's image, not
+   on its top edge. Offset = half the height difference of the two images:
+   0.625 (4:5 image) / 5.35 (sum of the column fractions) * (centre scale * 1.75
+   - side scale * 0.9) * the width left after the four gaps. */
+.home-carousel { container-type: inline-size; }
+.home-carousel-slot--side {
+  margin-top: calc((100cqw - 4 * max(1.25rem, var(--home-carousel-gap, 1.75rem))) * .11682 * (1.75 * var(--home-carousel-center-scale, 1) - .9 * var(--home-carousel-side-scale, 1)));
+}
+
 .home-carousel::-webkit-scrollbar {
   display: none;
 }
@@ -518,6 +527,7 @@ select {
 
   .home-carousel-slot {
     display: none;
+    margin-top: 0;
   }
 
   .home-carousel-slot.home-carousel-slot--center {
