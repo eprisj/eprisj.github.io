@@ -8,6 +8,9 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   /* Тот же язык, что на самом сайте (снято живьём с eprisjournal.com, не с
      устаревшего брендбука): чёрно-белая гамма, Crimson Text прямым
@@ -43,25 +46,20 @@
   html, body { margin: 0; padding: 0; }
   body {
     background: var(--paper); color: var(--ink);
-    font-family: 'PT Serif', Georgia, serif;
+    font-family: 'Nunito', 'PT Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     padding-bottom: 40px;
     transition: background .15s, color .15s;
   }
-  @font-face {
-    font-family: 'Crimson Text';
-    src: local('Crimson Text');
-    font-weight: 400 600;
-  }
-  .title { font-family: 'Crimson Text', 'PT Serif', serif; }
-  .mono { font-family: 'PT Mono', 'PT Serif', monospace; letter-spacing: 0.06em; }
+  .title { font-family: 'Cousine', 'Courier New', monospace; }
+  .mono { font-family: 'Cousine', 'Courier New', monospace; letter-spacing: 0.06em; }
 
   header.bar {
     background: var(--header-bg); color: var(--header-fg);
     padding: 18px 20px; position: sticky; top: 0; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
   }
-  header.bar .logo { font-family: 'PT Serif', serif; font-size: 18px; letter-spacing: 4px; }
+  header.bar .logo { font-family: 'Nunito', sans-serif; font-size: 18px; letter-spacing: 4px; }
   header.bar .right { display: flex; align-items: center; gap: 14px; }
   header.bar .tag { font-size: 10px; letter-spacing: 2px; opacity: 0.6; text-transform: uppercase; }
   header.bar .refresh { font-size: 16px; opacity: 0.75; cursor: pointer; line-height: 1; padding: 4px; }
@@ -91,19 +89,19 @@
   }
   .cb-stat:last-child { border-right: none; }
   .cb-stat.tappable { cursor: pointer; }
-  .cb-stat .n { font-family: 'Crimson Text', serif; font-size: 25px; line-height: 1; }
+  .cb-stat .n { font-family: 'Cousine', monospace; font-size: 25px; line-height: 1; }
   .cb-stat .l { font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
   .cb-actions { display: flex; border-top: 1px solid var(--ink); }
   .cb-action {
     flex: 1; padding: 13px 4px; border: none; background: none; cursor: pointer; border-right: 1px solid var(--ink);
-    font-family: 'PT Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink);
+    font-family: 'Cousine', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink);
   }
   .cb-action:last-child { border-right: none; }
   .cb-action:active { background: var(--tint); }
 
   .search {
     width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--ink);
-    background: none; font-family: 'PT Serif', serif; font-size: 15px; color: var(--ink);
+    background: none; font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--ink);
     margin-bottom: 12px; outline: none;
   }
   .search::placeholder { color: var(--muted); }
@@ -114,7 +112,7 @@
     cursor: pointer;
   }
   .row .cat { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .row .ttl { font-family: 'Crimson Text', serif; font-size: 19px; margin-top: 2px; line-height: 1.25; }
+  .row .ttl { font-family: 'Cousine', monospace; font-size: 19px; margin-top: 2px; line-height: 1.25; }
   .row .prev {
     font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.35;
     display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
@@ -159,7 +157,7 @@
   }
   .field input[type=text], .field input[type=datetime-local], .field textarea, .field select {
     width: 100%; border: none; border-bottom: 1px solid var(--ink); padding: 8px 0;
-    font-family: 'PT Serif', serif; font-size: 16px; line-height: 1.5; color: var(--ink); background: none; outline: none;
+    font-family: 'Nunito', sans-serif; font-size: 16px; line-height: 1.5; color: var(--ink); background: none; outline: none;
     resize: vertical; border-radius: 0; -webkit-appearance: none; appearance: none;
   }
   /* datetime-local без своего значения на iOS красится в системный серый
@@ -205,7 +203,7 @@
   body.kb-open header.bar { display: none; }
   .btn {
     flex: 1; border: 1px solid var(--ink); background: none; padding: 13px 10px;
-    font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: 'Cousine', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--ink); cursor: pointer; text-align: center;
   }
   .btn.primary { background: var(--ink); color: var(--paper); }
@@ -226,7 +224,7 @@
   #bf-bar {
     display: flex; align-items: center; justify-content: space-between;
     padding: 12px 16px; border-bottom: 1px solid var(--rule); flex-shrink: 0;
-    font-family: 'PT Mono', monospace; font-size: 12px; letter-spacing: 1.5px;
+    font-family: 'Cousine', monospace; font-size: 12px; letter-spacing: 1.5px;
     text-transform: uppercase; background: var(--paper);
   }
   #bf-done { cursor: pointer; padding: 4px 2px; }
@@ -237,7 +235,7 @@
   #bf-nav span.disabled { opacity: 0.22; pointer-events: none; }
   #bf-text {
     flex: 1; width: 100%; border: none; outline: none; background: none; resize: none;
-    padding: 16px 16px 24px; font-family: 'PT Serif', serif;
+    padding: 16px 16px 24px; font-family: 'Nunito', sans-serif;
     font-size: 17px; line-height: 1.6; color: var(--ink);
     -webkit-appearance: none; border-radius: 0;
   }
@@ -265,7 +263,7 @@
   .block-card:focus-within { border-color: var(--ink); border-width: 1.5px; }
   .block-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .block-type {
-    font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    font-family: 'Cousine', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
     color: var(--muted);
   }
   .block-ctrls { display: flex; gap: 10px; }
@@ -278,29 +276,29 @@
        can opt out of otherwise). These are the most-used fields in the
        editor, so the zoom-and-snap-back on every single tap was the main
        thing making text editing on iPhone feel broken. */
-    font-family: 'PT Serif', serif; font-size: 16px; line-height: 1.5; color: var(--ink); background: none; outline: none; resize: vertical;
+    font-family: 'Nunito', sans-serif; font-size: 16px; line-height: 1.5; color: var(--ink); background: none; outline: none; resize: vertical;
   }
   .block-card textarea { min-height: 60px; }
   .block-card select {
-    border: 1px solid var(--rule); background: none; font-family: 'PT Mono', monospace; font-size: 11px;
+    border: 1px solid var(--rule); background: none; font-family: 'Cousine', monospace; font-size: 11px;
     padding: 4px 6px; color: var(--ink);
   }
   .block-card .cap-input { margin-top: 8px; }
   /* Превью текста блока в списке: три строки, дальше – многоточие. */
   .block-preview {
-    font-family: 'PT Serif', serif; font-size: 15px; line-height: 1.45; color: var(--ink);
+    font-family: 'Nunito', sans-serif; font-size: 15px; line-height: 1.45; color: var(--ink);
     white-space: pre-wrap; overflow: hidden; cursor: text;
     display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
   }
-  .block-preview.is-head { font-family: 'Crimson Text', 'PT Serif', serif; font-size: 17px; -webkit-line-clamp: 2; }
-  .block-preview.empty { color: var(--muted); font-style: normal; font-family: "Courier New", Courier, monospace; }
+  .block-preview.is-head { font-family: 'Cousine', 'Courier New', monospace; font-size: 17px; -webkit-line-clamp: 2; }
+  .block-preview.empty { color: var(--muted); font-style: normal; font-family: "Nunito", sans-serif; }
   .block-locked-preview { font-size: 13px; color: var(--muted); line-height: 1.4; }
   .block-img {
     width: 100%; max-height: 160px; object-fit: cover; margin-bottom: 8px; cursor: pointer; display: block;
   }
   .add-block-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 22px; }
   .add-block-btn {
-    border: 1px solid var(--ink); background: none; padding: 8px 12px; font-family: 'PT Mono', monospace;
+    border: 1px solid var(--ink); background: none; padding: 8px 12px; font-family: 'Cousine', monospace;
     font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); cursor: pointer;
   }
 
@@ -308,7 +306,7 @@
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
   .chip {
     border: 1px solid var(--ink); padding: 4px 8px 4px 10px; font-size: 12px;
-    display: flex; align-items: center; gap: 6px; font-family: 'PT Serif', serif;
+    display: flex; align-items: center; gap: 6px; font-family: 'Nunito', sans-serif;
   }
   .chip .x { cursor: pointer; opacity: 0.55; font-size: 12px; }
 
@@ -316,7 +314,7 @@
   .new-row { display: flex; gap: 10px; margin: 4px 0 20px; }
   .new-btn {
     flex: 1; border: 1px dashed var(--ink); background: none; padding: 12px 10px;
-    font-family: 'PT Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    font-family: 'Cousine', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
     color: var(--ink); cursor: pointer; text-align: center;
   }
 
@@ -339,7 +337,7 @@
     padding: 14px 0; border-bottom: 1px solid var(--rule); cursor: pointer;
     display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
   }
-  .crm-row .ttl { font-family: 'Crimson Text', serif; font-size: 19px; line-height: 1.25; }
+  .crm-row .ttl { font-family: 'Cousine', monospace; font-size: 19px; line-height: 1.25; }
   .crm-row .meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
   .status-badge {
     font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--ink);
@@ -352,21 +350,21 @@
 
   .note-card { border: 1px solid var(--rule); padding: 12px; margin-bottom: 10px; position: relative; }
   .note-card textarea {
-    width: 100%; border: none; background: none; font-family: 'PT Serif', serif; font-size: 16px; line-height: 1.5;
+    width: 100%; border: none; background: none; font-family: 'Nunito', sans-serif; font-size: 16px; line-height: 1.5;
     color: var(--ink); outline: none; resize: vertical; min-height: 50px;
   }
   .note-card .note-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
   .note-card .note-date { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
   .note-card .note-actions { display: flex; align-items: center; gap: 14px; }
   .note-card .note-done {
-    font-family: 'PT Mono', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+    font-family: 'Cousine', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
     color: var(--success); cursor: pointer;
   }
   .note-card .note-del { font-size: 13px; color: var(--muted); cursor: pointer; }
 
   #crm-editor .field select {
     width: 100%; border: none; border-bottom: 1px solid var(--ink); padding: 8px 0;
-    font-family: 'PT Serif', serif; font-size: 16px; color: var(--ink); background: none; outline: none;
+    font-family: 'Nunito', sans-serif; font-size: 16px; color: var(--ink); background: none; outline: none;
   }
 </style>
 </head>
