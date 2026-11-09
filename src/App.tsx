@@ -5215,7 +5215,7 @@ export default function App() {
       />
 
       <RouteTransition routeKey={routeKey} direction={routeDirection}>
-      <div className={activeTab === 'gallery' ? '' : 'lg:pr-12'}>
+      <div>
         {activeTab === 'issue' ? (
           <LazyTab>
             <IssuePage archive={issueArchive} t={t} lang={currentLang} onArticleClick={(article) => handleSelectArticle(article.id, article)} onOpenArticleId={(id) => handleSelectArticle(id)} />
@@ -5296,7 +5296,6 @@ export default function App() {
       </RouteTransition>
       
       <AnimatePresence initial={false}>
-        {activeTab !== 'gallery' && <Sidebar key="section-sidebar" t={t} />}
       </AnimatePresence>
 
       <AnimatePresence>
