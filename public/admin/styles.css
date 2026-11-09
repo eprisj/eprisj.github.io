@@ -1,3 +1,19 @@
+/* Daily Picks is hidden on the site for now (2026-11-09): its admin cards are
+   hidden too. Remove this block to bring them back. The homepage layout and
+   showcase editors stay. */
+#tab-homepage .homepage-admin-hero,
+#tab-homepage .homepage-published-now,
+#tab-homepage #homepageCardEditor,
+#tab-homepage .homepage-archive-admin,
+#tab-homepage .homepage-quickstart,
+#tab-homepage #homepageAdminStatus,
+#tab-homepage .homepage-control-card,
+#tab-homepage .homepage-carousel-layout-card,
+#tab-homepage .homepage-composer,
+#tab-homepage #homepageGalleryMeta,
+#tab-homepage #homepageGalleryList,
+#tab-homepage .homepage-layout-option-group:has(#homepagePicsCaptionPlacement) { display: none !important; }
+
 @import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ══════════════════════════════════════════════════════════
@@ -11188,19 +11204,3 @@ textarea { min-height: 112px; }
 /* Подсказка про уровни заголовков в интервью (см. __updateInterviewHeaderHint). */
 .vf-header-hint { margin: 0 0 10px; padding: 8px 12px; border-left: 3px solid #b8892b; background: rgba(184,137,43,.1); font-size: 13px; line-height: 1.45; }
 .vf-header-hint[hidden] { display: none; }
-
-/* Daily Picks is hidden on the site for now (2026-11-09): its admin cards are
-   hidden too. Remove this block to bring them back. The homepage layout and
-   showcase editors stay. */
-#tab-homepage .homepage-admin-hero,
-#tab-homepage .homepage-published-now,
-#tab-homepage #homepageCardEditor,
-#tab-homepage .homepage-archive-admin,
-#tab-homepage .homepage-quickstart,
-#tab-homepage #homepageAdminStatus,
-#tab-homepage .homepage-control-card,
-#tab-homepage .homepage-carousel-layout-card,
-#tab-homepage .homepage-composer,
-#tab-homepage #homepageGalleryMeta,
-#tab-homepage #homepageGalleryList,
-#tab-homepage .homepage-layout-option-group:has(#homepagePicsCaptionPlacement) { display: none !important; }
