@@ -33,7 +33,7 @@ export default {
         // same reason.
         crimson: ['Crimson Text', 'PT Serif', 'serif'],
         display: ['Playfair Display', 'PT Serif', 'serif'],
-        sans: ['PT Sans', 'sans-serif'],
+        sans: ['Nunito', 'PT Sans', 'sans-serif'],
         /* `font-serif` was left at Tailwind's default stack, which resolves to
            whatever serif the OS keeps in ui-serif: Iowan Old Style on a Mac,
            Georgia elsewhere. It is also the most used type class on the site
@@ -42,7 +42,8 @@ export default {
            up in a handful of spots and Playfair in the headings. Three serifs
            on one page, none of them chosen. Pointing `serif` at the same stack
            as `crimson` harmonises all of it without touching the markup. */
-        serif: ['Crimson Text', 'PT Serif', 'serif'],
+        // Body text is Nunito since 2026-11-09 (`serif` is the most used type class).
+        serif: ['Nunito', 'PT Sans', 'sans-serif'],
         /* Курсиву в журналі немає: усе, що раніше виділялося нахилом, набрано
            звичайним Courier (2026-10-03). */
         courier: ['"Courier New"', 'Courier', 'monospace'],

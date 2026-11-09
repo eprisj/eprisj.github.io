@@ -38,7 +38,7 @@
   /* Основной текст журнала набирается антиквой: заголовки, цитаты и врезки
      уже Crimson Text / PT Serif, и гротеск в основном тексте ломал строй
      страницы. PT Serif держит кириллицу, которой у Crimson Text нет. */
-  --font-body: 'Crimson Text', 'PT Serif', serif;
+  --font-body: 'Nunito', 'PT Sans', sans-serif;   /* body text: Nunito (2026-11-09); headings stay on --font-display until chosen */
   --bg-image: none;          /* optional page background image (admin Appearance) */
 
   font-family: var(--font-body);
@@ -65,7 +65,7 @@
    untouched – the fallback chain up top still applies there. */
 :root:lang(ru), :root:lang(uk) {
   --font-display: 'PT Serif', serif;
-  --font-body: 'PT Serif', serif;
+  --font-body: 'Nunito', 'PT Sans', sans-serif; /* Nunito has Cyrillic */
 }
 
 /* The variables above don't reach `font-serif`/`font-crimson`/`font-display`

@@ -410,7 +410,7 @@ function hexToRgbChannels(hex: string): string | null {
 const __loadedFonts = new Set<string>();
 function ensureGoogleFont(name: string) {
   const fam = String(name || '').trim();
-  if (!fam || fam === 'Playfair Display' || fam.startsWith('Iowan')) return; // defaults already present
+  if (!fam || fam === 'Playfair Display' || fam === 'Nunito' || fam.startsWith('Iowan')) return; // defaults already present
   const key = fam.toLowerCase();
   if (__loadedFonts.has(key)) return;
   __loadedFonts.add(key);
@@ -449,7 +449,10 @@ function applySiteTheme(theme: SiteTheme) {
      страница проваливалась в PT Sans, то есть в гротеск. Один и тот же текст
      читался антиквой у одного посетителя и гротеском у другого. Теперь за
      выбором идут загруженные шрифты журнала. */
-  if (theme.fontBody) { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', 'Crimson Text', 'PT Serif', serif`); }
+  /* Тема в админке до сих пор хранит старый «Crimson Text»: это не выбор, а
+     прежний дефолт. Основной шрифт теперь Nunito (index.css), поэтому старое
+     значение его не перебивает; любой другой выбранный шрифт работает как раньше. */
+  if (theme.fontBody && theme.fontBody !== 'Crimson Text') { ensureGoogleFont(theme.fontBody); root.setProperty('--font-body', `'${theme.fontBody}', 'Nunito', 'PT Sans', sans-serif`); }
   if (theme.bgImage) { root.setProperty('--bg-image', `url("${theme.bgImage}")`); } else { root.removeProperty('--bg-image'); }
   /* Фоновая картинка тянется во весь экран только когда она есть. Постоянный
      background-attachment: fixed на iOS оставляет неокрашенную полосу у нижней
@@ -4945,6 +4948,8 @@ export default function App() {
     // Обзоры на главной подчиняются той же галочке раздела, что и вкладка:
     // выключили раздел в админке – он исчезает целиком, а не наполовину.
     if (section === 'reviews' && !isSectionEnabled('reviews')) return false;
+    // Daily Picks (carousel and its archive) are hidden for now, 2026-11-09.
+    if (section === 'pics' || section === 'archive') return false;
     return homepageLayout.visibility?.[section as HomepageSectionKey] !== false;
   };
   const homepageArticleLayout = homepageLayout.articles || {};
