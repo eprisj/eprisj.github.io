@@ -1076,7 +1076,7 @@ function NavBar({
   return (
     <>
       {/* ── Mobile header: menu · centred wordmark · language + issue ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] border-b border-[var(--c-accent)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -1127,7 +1127,7 @@ function NavBar({
       </nav>
 
       {/* ── Desktop header ── */}
-      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] text-xs font-mono lowercase tracking-widest text-[var(--c-accent)] h-16">
+      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono lowercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
         <div className={`w-64 px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
           <a href="/" className="flex items-center font-mono text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} – home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
@@ -3444,7 +3444,7 @@ function EditorialListCard({
           data-original-src={card.imageSrc}
           onError={recoverOriginalImage}
           alt={card.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover grayscale"
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
           referrerPolicy="no-referrer"
           loading="lazy"
