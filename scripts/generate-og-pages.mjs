@@ -161,8 +161,13 @@ function prerenderStyle() {
   const accent = theme.accent || '#111111';
   const gold = theme.gold || '#c9a690';
   const bg = theme.bg || '#ffffff';
-  const display = `'${theme.fontDisplay || 'Playfair Display'}', 'PT Serif', serif`;
-  const body = `'${theme.fontBody || 'Crimson Text'}', 'PT Serif', serif`;
+  // 09.11.2026: заголовки Cousine, текст Nunito; прежние значения темы
+  // (Playfair Display / Crimson Text) - старый дефолт, а не выбор.
+  const legacy = new Set(['Playfair Display', 'Crimson Text']);
+  const fd = theme.fontDisplay && !legacy.has(theme.fontDisplay) ? theme.fontDisplay : 'Cousine';
+  const fb = theme.fontBody && !legacy.has(theme.fontBody) ? theme.fontBody : 'Nunito';
+  const display = `'${fd}', 'PT Sans', monospace`;
+  const body = `'${fb}', 'PT Sans', sans-serif`;
   return `<style>
     /* Виден только до монтирования React (createRoot затирает содержимое
        #root), и с задержкой.

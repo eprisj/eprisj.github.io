@@ -1623,12 +1623,6 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
           <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an independent Italian publication founded in Milan on 5 June 2024. It is a digital space for contemporary art, architecture and interior design, bringing together long-form essays, interviews, exhibition reviews and close readings of the places, objects and ideas shaping visual culture. Edited in Milan and read internationally, EPRIS follows culture where it is made and where it is lived – with curiosity, clarity and an eye for lasting work.</p>
         </div>
       </Reveal>
-      {/* The patron's plaque closes the journal's introduction, before the team. */}
-      <Reveal delay={0.08}>
-        <div className="mb-16">
-          <PatronPlaque lang={currentLang} />
-        </div>
-      </Reveal>
       {team.length > 0 && (
         <Reveal>
           <div className="mb-16">
@@ -1721,6 +1715,13 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
           <div className="mt-10 font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.45)]">
             Milan, Italy
           </div>
+        </div>
+      </Reveal>
+
+      {/* The patron's plaque is the last thing on the page. */}
+      <Reveal delay={0.1}>
+        <div className="mt-24 mb-8">
+          <PatronPlaque lang={currentLang} />
         </div>
       </Reveal>
     </div>
