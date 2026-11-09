@@ -3910,7 +3910,7 @@ function Sidebar({ t }: { t: (key: string) => string }) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 32 }}
       transition={{ duration: 0.26, ease: EASE }}
-      className="hidden lg:flex w-12 border-l border-[var(--c-accent)] flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[var(--c-bg)] z-40 pt-24"
+      className="hidden lg:flex w-12 flex-col justify-between items-center py-8 fixed right-0 top-0 h-full bg-[var(--c-bg)] z-40 pt-24"
     >
       <div className="h-full w-full relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-max h-full pt-4">
