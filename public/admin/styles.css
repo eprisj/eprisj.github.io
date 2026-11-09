@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* Daily Picks is hidden on the site for now (2026-11-09): its admin cards are
    hidden too. Remove this block to bring them back. The homepage layout and
    showcase editors stay. */
@@ -13,8 +15,6 @@
 #tab-homepage #homepageGalleryMeta,
 #tab-homepage #homepageGalleryList,
 #tab-homepage .homepage-layout-option-group:has(#homepagePicsCaptionPlacement) { display: none !important; }
-
-@import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ══════════════════════════════════════════════════════════
    EPRIS ADMIN — Design tokens
