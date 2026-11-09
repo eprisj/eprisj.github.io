@@ -70,7 +70,7 @@ export function ShowcaseTeaser() {
             <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)]">
               {eyebrow}
             </p>
-            <h2 className="mt-4 max-w-[16ch] font-serif text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 max-w-[16ch] font-display text-3xl leading-tight text-[var(--c-accent)] sm:text-4xl md:text-5xl">
               {title}
             </h2>
             <p className="mt-5 max-w-[52ch] font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.72)] sm:text-lg">

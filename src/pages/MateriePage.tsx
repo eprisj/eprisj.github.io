@@ -809,7 +809,7 @@ function ChronicleTool({ onBack, t }: { onBack: () => void; t: T }) {
                 {/* Headline block */}
                 <div className="bg-[var(--c-accent)] text-[var(--c-bg)] px-6 py-6">
                   <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[rgb(var(--c-gold-rgb)_/_0.5)] mb-2">Chronicle / Editorial</p>
-                  <h2 className="font-serif text-2xl md:text-3xl leading-tight text-[var(--c-bg)] mb-2">{report.headline}</h2>
+                  <h2 className="font-display text-2xl md:text-3xl leading-tight text-[var(--c-bg)] mb-2">{report.headline}</h2>
                   <p className="text-sm font-courier text-[rgb(var(--c-bg-rgb)_/_0.55)] leading-snug">{report.subheadline}</p>
                 </div>
 

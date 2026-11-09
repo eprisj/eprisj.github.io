@@ -34,7 +34,7 @@
      Google Fonts link and already the intended fallback in
      tailwind.config.js's `display` stack - this var had drifted from
      that and dropped it. */
-  --font-display: 'Playfair Display', 'PT Serif', serif;       /* headings */
+  --font-display: 'Cousine', 'PT Sans', monospace;       /* headings: Cousine (2026-11-09) */
   /* Основной текст журнала набирается антиквой: заголовки, цитаты и врезки
      уже Crimson Text / PT Serif, и гротеск в основном тексте ломал строй
      страницы. PT Serif держит кириллицу, которой у Crimson Text нет. */
@@ -64,7 +64,7 @@
    the one typeface that actually has both scripts. English pages are
    untouched – the fallback chain up top still applies there. */
 :root:lang(ru), :root:lang(uk) {
-  --font-display: 'PT Serif', serif;
+  --font-display: 'Cousine', 'PT Sans', monospace;
   --font-body: 'Nunito', 'PT Sans', sans-serif; /* Nunito has Cyrillic */
 }
 

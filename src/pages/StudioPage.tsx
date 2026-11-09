@@ -95,7 +95,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
         </button>
         <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-8 md:px-16 pb-6 md:pb-10">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)] mb-2">{project.category}</p>
-          <h1 className="font-serif text-4xl md:text-6xl text-[var(--c-bg)] leading-none">{project.title}</h1>
+          <h1 className="font-display text-4xl md:text-6xl text-[var(--c-bg)] leading-none">{project.title}</h1>
         </div>
       </div>
 
@@ -155,7 +155,7 @@ function CaseView({ project, t, onBack }: { project: StudioProject; t: T; onBack
                     <div key={i} className="flex gap-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)] pt-4">
                       <span className="font-mono text-[11px] text-[var(--c-gold)] shrink-0 mt-1">0{i + 1}</span>
                       <div>
-                        <h4 className="font-serif text-lg text-[var(--c-accent)] mb-1">{step.title}</h4>
+                        <h4 className="font-display text-lg text-[var(--c-accent)] mb-1">{step.title}</h4>
                         <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.65)] leading-relaxed">{step.detail}</p>
                       </div>
                     </div>
@@ -244,7 +244,7 @@ function BriefForm({ studio, t }: { studio: Studio; t: T }) {
     <section className="px-6 sm:px-10 md:px-16 py-16 md:py-28 border-t border-[rgb(var(--c-accent-rgb)_/_0.15)] bg-[#E8DED5]/40">
       <Reveal className="max-w-3xl mx-auto">
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-3">{t('studio.brief.kicker')}</p>
-        <h2 className="font-serif text-3xl md:text-5xl text-[var(--c-accent)] mb-3 leading-tight">{t('studio.brief.title')}</h2>
+        <h2 className="font-display text-3xl md:text-5xl text-[var(--c-accent)] mb-3 leading-tight">{t('studio.brief.title')}</h2>
         <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-10">{t('studio.brief.desc')}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -372,7 +372,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
           className="relative z-10 px-6 sm:px-10 md:px-16 pt-20 pb-16 md:pt-32 md:pb-28"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-5">{t('studio.kicker')}</p>
-          <h1 className="font-serif text-[15vw] md:text-[10vw] leading-[0.85] text-[var(--c-accent)] mb-6">{studio.name}</h1>
+          <h1 className="font-display text-[15vw] md:text-[10vw] leading-[0.85] text-[var(--c-accent)] mb-6">{studio.name}</h1>
           <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-[var(--c-gold)] max-w-xl">{t('studio.tagline')}</p>
           <div className="flex items-center gap-2 mt-14 font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.4)]">
             <ArrowDown size={13} className="animate-bounce" /> Scroll
@@ -417,7 +417,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
               <Reveal key={n} delay={i * 0.08}>
                 <div className="border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-5">
                   <span className="font-mono text-[10px] text-[var(--c-gold)]">0{n}</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mt-3 mb-4">{t(`studio.principle.${n}.title`)}</h3>
+                  <h3 className="font-display text-2xl md:text-3xl text-[var(--c-accent)] mt-3 mb-4">{t(`studio.principle.${n}.title`)}</h3>
                   <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.65)] leading-relaxed">{t(`studio.principle.${n}.desc`)}</p>
                 </div>
               </Reveal>
@@ -453,7 +453,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-3">{o.title}</h3>
+                      <h3 className="font-display text-2xl md:text-3xl text-[var(--c-accent)] mb-3">{o.title}</h3>
                       <p className="font-serif text-base text-[rgb(var(--c-accent-rgb)_/_0.65)] leading-relaxed mb-5">{o.summary}</p>
                       {o.items && o.items.length > 0 && (
                         <>
@@ -494,7 +494,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                     <span>{featured.category}</span>
                     {featured.location && <span className="text-[var(--c-gold)]">· {featured.location}</span>}
                   </div>
-                  <h2 className="font-serif text-4xl md:text-5xl text-[var(--c-accent)] mb-5 group-hover:text-[var(--c-gold)] transition-colors">{featured.title}</h2>
+                  <h2 className="font-display text-4xl md:text-5xl text-[var(--c-accent)] mb-5 group-hover:text-[var(--c-gold)] transition-colors">{featured.title}</h2>
                   {featured.description && (
                     <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-6">{featured.description}</p>
                   )}
@@ -561,7 +561,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
                       </div>
                     </div>
                     <div className="mt-3 flex items-baseline justify-between gap-3">
-                      <h3 className="font-serif text-xl md:text-2xl text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors">{project.title}</h3>
+                      <h3 className="font-display text-xl md:text-2xl text-[var(--c-accent)] group-hover:text-[var(--c-gold)] transition-colors">{project.title}</h3>
                       <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.35)] shrink-0">{project.year}</span>
                     </div>
                     {project.location && (
@@ -586,7 +586,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
               <Reveal key={n} delay={i * 0.08}>
                 <div className="border-t border-[rgb(var(--c-bg-rgb)_/_0.2)] pt-5">
                   <span className="font-mono text-[10px] text-[var(--c-gold)]">0{n}</span>
-                  <h3 className="font-serif text-2xl text-[var(--c-bg)] mt-3 mb-4">{t(`studio.process.${n}.title`)}</h3>
+                  <h3 className="font-display text-2xl text-[var(--c-bg)] mt-3 mb-4">{t(`studio.process.${n}.title`)}</h3>
                   <p className="font-serif text-sm text-[rgb(var(--c-bg-rgb)_/_0.6)] leading-relaxed">{t(`studio.process.${n}.desc`)}</p>
                 </div>
               </Reveal>
@@ -607,7 +607,7 @@ export function StudioPage({ studio, t }: { studio: Studio; t: T }) {
               {studio.packages.map((pkg, i) => (
                 <Reveal key={i} delay={i * 0.08}>
                   <div className={`h-full flex flex-col p-6 md:p-8 ${pkg.highlight ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'}`}>
-                    <h3 className="font-serif text-2xl mb-1">{t(pkg.name)}</h3>
+                    <h3 className="font-display text-2xl mb-1">{t(pkg.name)}</h3>
                     <p className={`font-mono text-[11px] uppercase tracking-widest mb-4 ${pkg.highlight ? 'text-[var(--c-gold)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.5)]'}`}>{pkg.price}</p>
                     <p className={`font-serif text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-[rgb(var(--c-bg-rgb)_/_0.7)]' : 'text-[rgb(var(--c-accent-rgb)_/_0.65)]'}`}>{t(pkg.desc)}</p>
                     <ul className="space-y-2 mt-auto">

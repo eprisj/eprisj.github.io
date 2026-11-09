@@ -31,8 +31,9 @@ export default {
         // (see index.html's font link) and is the site's designated
         // Cyrillic-serif partner - `display` below uses it for exactly the
         // same reason.
-        crimson: ['Crimson Text', 'PT Serif', 'serif'],
-        display: ['Playfair Display', 'PT Serif', 'serif'],
+        // Headings are Cousine since 2026-11-09 (Cousine has Cyrillic).
+        crimson: ['Cousine', 'PT Sans', 'monospace'],
+        display: ['Cousine', 'PT Sans', 'monospace'],
         sans: ['Nunito', 'PT Sans', 'sans-serif'],
         /* `font-serif` was left at Tailwind's default stack, which resolves to
            whatever serif the OS keeps in ui-serif: Iowan Old Style on a Mac,

@@ -84,7 +84,7 @@ function EpisodeCard({ ep, onClick, t }: { ep: Podcast; onClick: () => void; t: 
         )}
       </div>
       <div className="p-4 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)]">
-        <h3 className="font-serif text-lg text-[var(--c-accent)] mb-1 leading-tight">{ep.title}</h3>
+        <h3 className="font-display text-lg text-[var(--c-accent)] mb-1 leading-tight">{ep.title}</h3>
         <div className="flex items-center justify-between mt-2">
           <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]">
             {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -153,7 +153,7 @@ function EpisodeDetail({ ep, onClose, t }: { ep: Podcast; onClose: () => void; t
                 {ep.season ? `${ep.season} · ` : ''}{t('podcasts.episode_label')} {ep.episode_number}
               </p>
             )}
-            <h1 className="font-serif text-4xl md:text-5xl text-[var(--c-accent)] mb-6 leading-tight">{ep.title}</h1>
+            <h1 className="font-display text-4xl md:text-5xl text-[var(--c-accent)] mb-6 leading-tight">{ep.title}</h1>
             <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-8">
               {new Date(ep.published_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
@@ -191,7 +191,7 @@ function AnnouncementCard({ ann }: { ann: Announcement }) {
             {ann.location && ` · ${ann.location}`}
           </p>
         )}
-        <h3 className="font-serif text-2xl text-[var(--c-accent)] mb-3">{ann.title}</h3>
+        <h3 className="font-display text-2xl text-[var(--c-accent)] mb-3">{ann.title}</h3>
         {ann.body && <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] leading-relaxed mb-4">{ann.body}</p>}
         {ann.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
@@ -240,7 +240,7 @@ export function PodcastsPage({ t }: { t: (k: string) => string }) {
           <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[var(--c-gold)] mb-4">{t('podcasts.eyebrow')}</p>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h1 className="font-serif text-5xl md:text-7xl text-[var(--c-bg)] leading-none mb-4">{t('podcasts.title')}</h1>
+              <h1 className="font-display text-5xl md:text-7xl text-[var(--c-bg)] leading-none mb-4">{t('podcasts.title')}</h1>
               <p className="font-serif text-lg text-[rgb(var(--c-bg-rgb)_/_0.6)] max-w-lg leading-relaxed">{t('podcasts.intro')}</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">

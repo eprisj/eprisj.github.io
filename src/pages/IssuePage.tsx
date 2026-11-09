@@ -251,7 +251,7 @@ export function IssuePage({
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.55)] mb-2">
                     {article.category}
                   </span>
-                  <h3 className="font-serif text-xl md:text-2xl text-[var(--c-accent)] leading-tight mb-3">
+                  <h3 className="font-display text-xl md:text-2xl text-[var(--c-accent)] leading-tight mb-3">
                     {article.title}
                   </h3>
                   <p className="font-serif text-sm md:text-base text-[rgb(var(--c-accent-rgb)_/_0.62)] leading-relaxed">

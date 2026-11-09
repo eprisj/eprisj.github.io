@@ -105,7 +105,7 @@ function LeadDetail({ lead, onClose }: { lead: Lead; onClose: () => void }) {
               <span className={`rounded-full border px-3 py-1 font-mono text-[9px] uppercase tracking-[0.15em] ${statusClass(lead.status)}`}>{lead.status || 'New'}</span>
               {lead.priority && <span className="rounded-full border border-[#a65346]/20 bg-[#a65346]/10 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-[#7a3027]">{lead.priority}</span>}
             </div>
-            <h2 className="font-serif text-3xl leading-[1.05] text-[#28151b] sm:text-5xl">{lead.name}</h2>
+            <h2 className="font-display text-3xl leading-[1.05] text-[#28151b] sm:text-5xl">{lead.name}</h2>
             <p className="mt-3 flex items-center gap-2 text-sm text-[#735f66]"><MapPin size={15} /> {[lead.city, lead.country].filter(Boolean).join(', ') || 'Location not specified'}</p>
           </div>
         </div>
@@ -166,7 +166,7 @@ function AddCandidate({ onClose, onAdded }: { onClose: () => void; onAdded: (lea
 
   return <ModalShell title="Suggest a candidate" onClose={onClose} wide>
     <form onSubmit={submit} className="p-5 sm:p-8">
-      <div className="mb-7 max-w-xl"><h2 className="font-serif text-3xl text-[#28151b] sm:text-4xl">Add a new creative voice</h2><p className="mt-3 text-sm leading-relaxed text-[#715f65]">Public suggestions appear with “Under review” status. The EPRIS editorial team verifies every profile before outreach.</p></div>
+      <div className="mb-7 max-w-xl"><h2 className="font-display text-3xl text-[#28151b] sm:text-4xl">Add a new creative voice</h2><p className="mt-3 text-sm leading-relaxed text-[#715f65]">Public suggestions appear with “Under review” status. The EPRIS editorial team verifies every profile before outreach.</p></div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name / studio" required><input className={inputClass} value={draft.name} onChange={(e) => set('name', e.target.value)} maxLength={120} required autoFocus /></Field>
         <Field label="Instagram" required><input className={inputClass} value={draft.instagram} onChange={(e) => set('instagram', e.target.value)} maxLength={80} required placeholder="@handle" autoCapitalize="none" /></Field>
@@ -274,7 +274,7 @@ export function CollaborationPage() {
               <p className="mb-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.24em] text-[#9f4f42]">
                 <span className="h-px w-8 bg-current" aria-hidden="true" /> Open editorial registry
               </p>
-              <h1 className="max-w-6xl font-serif text-[clamp(3.55rem,8.9vw,9.4rem)] leading-[0.79] tracking-[-0.06em]">
+              <h1 className="max-w-6xl font-display text-[clamp(3.55rem,8.9vw,9.4rem)] leading-[0.79] tracking-[-0.06em]">
                 People worth<br />
                 <em className="font-normal text-[#a34f42]">a conversation.</em>
               </h1>
@@ -364,7 +364,7 @@ export function CollaborationPage() {
             </div>
 
             <div className="grid gap-3 pt-4 lg:hidden">{visible.map((lead) => <button key={lead.id} type="button" onClick={() => setSelected(lead)} className="rounded-2xl border border-[#28151b]/10 bg-[#fbf8f4] p-5 text-left shadow-[0_10px_35px_rgba(40,21,27,0.04)] transition-transform active:scale-[0.99]">
-              <div className="flex items-start justify-between gap-4"><div className="flex min-w-0 gap-3"><span className="text-2xl" aria-hidden="true">{flag(lead.countryCode)}</span><div className="min-w-0"><h2 className="font-serif text-xl leading-tight">{lead.name}</h2><p className="mt-1 text-xs text-[#745f66]">{[lead.city, lead.country].filter(Boolean).join(', ') || 'Location not specified'}</p></div></div><ArrowUpRight size={17} className="shrink-0 text-[#9f4f42]" /></div>
+              <div className="flex items-start justify-between gap-4"><div className="flex min-w-0 gap-3"><span className="text-2xl" aria-hidden="true">{flag(lead.countryCode)}</span><div className="min-w-0"><h2 className="font-display text-xl leading-tight">{lead.name}</h2><p className="mt-1 text-xs text-[#745f66]">{[lead.city, lead.country].filter(Boolean).join(', ') || 'Location not specified'}</p></div></div><ArrowUpRight size={17} className="shrink-0 text-[#9f4f42]" /></div>
               <div className="mt-4 flex flex-wrap gap-2"><span className="rounded-full bg-[#eee6de] px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.12em]">{lead.discipline || 'Creative'}</span><span className={`rounded-full border px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.12em] ${statusClass(lead.status)}`}>{lead.status || 'New'}</span>{typeof lead.score === 'number' && <span className="ml-auto font-serif text-lg">{lead.score}<small className="text-xs text-[#8b757d]">/100</small></span>}</div>
               <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-[#67545a]">{lead.why || 'Editorial description is being prepared.'}</p>
             </button>)}</div>
@@ -374,7 +374,7 @@ export function CollaborationPage() {
         </div>
       </section>
 
-      <section className="border-t border-[#28151b]/10 bg-[#28151b] px-4 py-16 text-[#f5f0ea] sm:px-8 sm:py-24 lg:px-12"><div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#d39a88]">Know someone exceptional?</p><h2 className="mt-5 max-w-4xl font-serif text-4xl leading-none sm:text-6xl lg:text-7xl">Help us find the next essential voice.</h2></div><button type="button" onClick={() => setAdding(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5f0ea] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#28151b] hover:bg-white"><Plus size={17} /> Suggest candidate</button></div></section>
+      <section className="border-t border-[#28151b]/10 bg-[#28151b] px-4 py-16 text-[#f5f0ea] sm:px-8 sm:py-24 lg:px-12"><div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#d39a88]">Know someone exceptional?</p><h2 className="mt-5 max-w-4xl font-display text-4xl leading-none sm:text-6xl lg:text-7xl">Help us find the next essential voice.</h2></div><button type="button" onClick={() => setAdding(true)} className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5f0ea] px-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#28151b] hover:bg-white"><Plus size={17} /> Suggest candidate</button></div></section>
     </main>
 
     <footer className="border-t border-white/10 bg-[#28151b] px-4 py-7 text-[#f5f0ea] sm:px-8 lg:px-12"><div className="mx-auto flex max-w-[1600px] flex-col gap-3 font-mono text-[8px] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between"><span>© 2026 EPRIS Journal</span><a href="/" className="inline-flex min-h-11 items-center gap-2 text-white/70 hover:text-white">Return to journal <ArrowUpRight size={13} /></a></div></footer>

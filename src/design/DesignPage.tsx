@@ -94,7 +94,7 @@ function DarkProductCard({ item, data, index, onOpen }: {
         </div>
         <div className="mt-3 px-0.5">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--c-gold)] mb-1">{item.category}</p>
-          <h3 className="font-serif text-[14px] font-medium text-white leading-snug line-clamp-2 group-hover:text-[var(--c-gold)] transition-colors">
+          <h3 className="font-display text-[14px] font-medium text-white leading-snug line-clamp-2 group-hover:text-[var(--c-gold)] transition-colors">
             {loading ? item.name : data!.title}
           </h3>
         </div>

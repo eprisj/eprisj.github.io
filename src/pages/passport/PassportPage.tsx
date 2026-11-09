@@ -564,7 +564,7 @@ export function PassportPage({ viewCode, onBack }: { viewCode: string | null; on
       </button>
 
       <div className="mb-6 sm:mb-8 text-center lg:text-left">
-        <h1 className="font-serif text-3xl sm:text-4xl text-[var(--pp-burgundy)]">{isEditing ? 'Edit Your EPRIS Digital Member Passport' : 'EPRIS Digital Member Passport'}</h1>
+        <h1 className="font-display text-3xl sm:text-4xl text-[var(--pp-burgundy)]">{isEditing ? 'Edit Your EPRIS Digital Member Passport' : 'EPRIS Digital Member Passport'}</h1>
         <p className="font-crimson text-sm sm:text-base text-[var(--pp-ink)]/70 mt-3 max-w-2xl mx-auto lg:mx-0">
           {isEditing
             ? 'Update your published passport below. Changes are saved in place at the same link – nothing is duplicated.'

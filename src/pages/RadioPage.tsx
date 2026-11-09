@@ -579,7 +579,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[var(--c-gold)] mb-3">{t('radio.eyebrow')}</p>
-              <h1 className="font-serif text-4xl md:text-6xl text-[var(--c-bg)] leading-none mb-3">
+              <h1 className="font-display text-4xl md:text-6xl text-[var(--c-bg)] leading-none mb-3">
                 {joined ? t('radio.on_air') : members.length > 0 ? t('radio.broadcast_active') : 'EPRIS Live'}
               </h1>
               <p className="font-serif text-base text-[rgb(var(--c-bg-rgb)_/_0.5)] max-w-lg leading-relaxed">{t('radio.concept')}</p>
@@ -655,7 +655,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
             <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl md:text-5xl text-[var(--c-accent)] mb-5 leading-tight">{t('radio.idle_title')}</h2>
+                  <h2 className="font-display text-4xl md:text-5xl text-[var(--c-accent)] mb-5 leading-tight">{t('radio.idle_title')}</h2>
                   <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] leading-relaxed mb-8">{t('radio.idle_desc')}</p>
                   <div className="flex flex-wrap gap-3">
                     <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
@@ -704,7 +704,7 @@ export function RadioPage({ t }: { t: (k: string) => string }) {
             <motion.div key="watching" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <div className="grid md:grid-cols-2 gap-14 items-start">
                 <div>
-                  <h2 className="font-serif text-4xl text-[var(--c-accent)] mb-4">{t('radio.broadcast_active')}</h2>
+                  <h2 className="font-display text-4xl text-[var(--c-accent)] mb-4">{t('radio.broadcast_active')}</h2>
                   <p className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-8">{members.map(m => m.nickname).join(', ')}</p>
                   <button onClick={() => setShowNickPrompt(true)} disabled={connecting}
                     className="border border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-bg)] font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-[#3d1220] transition-colors disabled:opacity-50">

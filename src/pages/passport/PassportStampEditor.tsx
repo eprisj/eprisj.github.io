@@ -85,7 +85,7 @@ export function PassportStampEditor({
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--pp-burgundy)]/55">Editorial stamp desk</p>
-            <h2 className="mt-2 font-serif text-xl text-[var(--pp-burgundy)]">Штампы и отметки</h2>
+            <h2 className="mt-2 font-display text-xl text-[var(--pp-burgundy)]">Штампы и отметки</h2>
             <p className="mt-2 max-w-md font-serif text-sm leading-relaxed text-[var(--pp-ink)]/65">Одна подтверждённая редакцией отметка на страницу. После сохранения она появится в веб-паспорте, PDF и печатной версии.</p>
           </div>
           <div className="grid h-11 min-w-11 place-items-center rounded-full border border-[var(--pp-burgundy)]/15 bg-white/60 text-[var(--pp-burgundy)]">

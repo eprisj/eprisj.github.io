@@ -19609,7 +19609,7 @@ async function flushModernEditor() {
 // APPEARANCE — site customizer (colors + fonts → content.theme → publish to VPS)
 // ════════════════════════════════════════════════════════════════════════════
 (function () {
-  const FONTS_DISPLAY = ['Playfair Display', 'Cormorant Garamond', 'EB Garamond', 'Libre Baskerville', 'Lora', 'Fraunces', 'Spectral', 'Bodoni Moda', 'Cinzel', 'Crimson Pro', 'Cardo'];
+  const FONTS_DISPLAY = ['Cousine', 'Playfair Display', 'Cormorant Garamond', 'EB Garamond', 'Libre Baskerville', 'Lora', 'Fraunces', 'Spectral', 'Bodoni Moda', 'Cinzel', 'Crimson Pro', 'Cardo'];
   const FONTS_BODY = ['Nunito', 'Iowan Old Style', 'Lora', 'EB Garamond', 'Spectral', 'Source Serif 4', 'PT Serif', 'Inter', 'Work Sans', 'Karla', 'Nunito Sans', 'Mulish', 'Crimson Pro'];
   const DEF = { accent: '#111111', gold: '#c9a690', bg: '#f5f0eb', bgImage: '', fontDisplay: 'Playfair Display', fontBody: 'Iowan Old Style' };
   const SITE_DEF = {

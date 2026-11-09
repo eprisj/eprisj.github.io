@@ -410,7 +410,7 @@ function hexToRgbChannels(hex: string): string | null {
 const __loadedFonts = new Set<string>();
 function ensureGoogleFont(name: string) {
   const fam = String(name || '').trim();
-  if (!fam || fam === 'Playfair Display' || fam === 'Nunito' || fam.startsWith('Iowan')) return; // defaults already present
+  if (!fam || fam === 'Playfair Display' || fam === 'Nunito' || fam === 'Cousine' || fam.startsWith('Iowan')) return; // defaults already present
   const key = fam.toLowerCase();
   if (__loadedFonts.has(key)) return;
   __loadedFonts.add(key);
@@ -442,7 +442,8 @@ function applySiteTheme(theme: SiteTheme) {
   // page. PT Serif/PT Sans are this site's own Cyrillic-native pair -
   // not a guarantee the chosen font's *style* matches, but a real font
   // instead of whatever the browser's default serif happens to be.
-  if (theme.fontDisplay) { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', 'PT Serif', serif`); }
+  // «Playfair Display» в теме – прежний дефолт, а не выбор: заголовки теперь Cousine (index.css).
+  if (theme.fontDisplay && theme.fontDisplay !== 'Playfair Display') { ensureGoogleFont(theme.fontDisplay); root.setProperty('--font-display', `'${theme.fontDisplay}', 'Cousine', 'PT Sans', monospace`); }
   /* Фолбэк за выбранным шрифтом должен быть той же природы, что и сам выбор,
      иначе сайт выглядит по-разному на разных машинах. Тема стоит на «Iowan
      Old Style»: на Mac это антиква, а везде ещё, где такого шрифта нет,
@@ -1075,7 +1076,7 @@ function NavBar({
   return (
     <>
       {/* ── Mobile header: menu · centred wordmark · language + issue ── */}
-      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
+      <nav className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[rgb(var(--c-bg-rgb)_/_0.94)] h-16 flex items-center justify-between px-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[rgb(var(--c-bg-rgb)_/_0.78)]">
         <button
           type="button"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -1126,9 +1127,9 @@ function NavBar({
       </nav>
 
       {/* ── Desktop header ── */}
-      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] border-b border-[var(--c-accent)] text-xs font-mono uppercase tracking-widest text-[var(--c-accent)] h-16">
+      <nav className="hidden lg:flex fixed top-0 left-0 w-full z-50 bg-[var(--c-bg)] text-xs font-mono lowercase tracking-widest text-[var(--c-accent)] h-16">
         {/* Logo Section */}
-        <div className={`w-64 border-r border-[var(--c-accent)] px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
+        <div className={`w-64 px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
           <a href="/" className="flex items-center font-mono text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} – home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
             <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>
           </a>
@@ -1137,7 +1138,7 @@ function NavBar({
         {/* Desktop Navigation */}
         <LayoutGroup id="nav-tabs">
           <div
-            className="grid flex-1 divide-x divide-[var(--c-accent)]"
+            className="grid flex-1"
             style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + 1, 2)}, minmax(0, 1fr))` }}
           >
             {tabs.map((tab) => (
@@ -1171,7 +1172,7 @@ function NavBar({
         </LayoutGroup>
 
         {/* Desktop Right Section */}
-        <div className="flex divide-x divide-[var(--c-accent)] border-l border-[var(--c-accent)]">
+        <div className="flex">
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
@@ -1359,7 +1360,7 @@ function NavBar({
                 hidden: { transition: { staggerChildren: 0.018, staggerDirection: -1 } },
                 show: { transition: { delayChildren: 0.035, staggerChildren: 0.035 } },
               }}
-              className="flex flex-col divide-y divide-[var(--c-accent)] border-b border-[var(--c-accent)]"
+              className="flex flex-col"
             >
               <motion.a
                 href={tabHref('gallery')}
@@ -1378,7 +1379,7 @@ function NavBar({
                   activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                 }`}
               >
-                <span className="font-serif font-normal text-xl leading-tight">{t('nav.home')}</span>
+                <span className="font-serif font-normal text-xl leading-tight lowercase">{t('nav.home')}</span>
               </motion.a>
               {tabs.map((tab) => (
                 <motion.a
@@ -1394,7 +1395,7 @@ function NavBar({
                     activeTab === tab.id ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : ''
                   }`}
                 >
-                  <span className="font-serif font-normal text-xl leading-tight">{tab.label}</span>
+                  <span className="font-serif font-normal text-xl leading-tight lowercase">{tab.label}</span>
                 </motion.a>
               ))}
               <motion.a
@@ -1406,15 +1407,15 @@ function NavBar({
                 onClick={() => setIsMenuOpen(false)}
                 className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
               >
-                <span className="font-serif font-normal text-xl leading-tight">Museum</span>
+                <span className="font-serif font-normal text-xl leading-tight lowercase">Museum</span>
               </motion.a>
             </motion.div>
             
-            <div className="mt-auto border-t border-[var(--c-accent)]">
+            <div className="mt-auto">
               <button
                 type="button"
                 onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
-                className="w-full min-h-14 px-5 border-b border-[var(--c-accent)] flex items-center justify-between text-left"
+                className="w-full min-h-14 px-5 flex items-center justify-between text-left"
               >
                 <span className="flex items-center gap-3 font-serif text-lg"><Globe size={20} /> {LANG_LABELS[currentLang] || currentLang}</span>
                 <span className="font-mono text-xs font-bold tracking-widest">{currentLang}</span>
@@ -1529,7 +1530,7 @@ function TeamMemberCard({
         </div>
       )}
       <div className="text-center sm:text-left">
-        <h4 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{author.name}</h4>
+        <h4 className="font-display text-2xl md:text-3xl text-[var(--c-accent)] mb-1">{author.name}</h4>
         <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.6)] mb-4">
           {roleLabel}
           {locationBadge && (
@@ -1631,7 +1632,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
       {team.length > 0 && (
         <Reveal>
           <div className="mb-16">
-            <h3 className="font-serif text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
+            <h3 className="font-display text-3xl md:text-4xl text-[var(--c-accent)] mb-12 text-center">{t('about.team')}</h3>
             <div className="flex flex-col gap-16 sm:gap-20">
               {team.map((member) => {
                 const isEditor = member.id === 'author-1784896384236-4fokw';
@@ -1683,7 +1684,7 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
       {collaborators.length > 0 && (
         <Reveal>
           <div className="mb-16">
-            <h3 className="font-serif text-2xl md:text-3xl text-[var(--c-accent)] mb-12 text-center">{contributorLabel(currentLang)}</h3>
+            <h3 className="font-display text-2xl md:text-3xl text-[var(--c-accent)] mb-12 text-center">{contributorLabel(currentLang)}</h3>
             <div className="flex flex-col gap-16 sm:gap-20">
               {collaborators.map((member) => (
                 <TeamMemberCard
@@ -1736,7 +1737,7 @@ function ManifestPage({ t, currentLang }: { t: (key: string) => string; currentL
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-6 text-center">
           EPRIS Journal
         </div>
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-[var(--c-accent)] mb-10 sm:mb-16 text-center leading-tight">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl text-[var(--c-accent)] mb-10 sm:mb-16 text-center leading-tight">
           {title}
         </h1>
       </Reveal>
@@ -2469,7 +2470,7 @@ function PollBlock({ question, options, t, pollKey }: { question: string, option
 
   return (
     <div className="my-12 border-y border-[rgb(var(--c-accent-rgb)_/_0.24)] py-8">
-      <h4 className="mb-8 font-serif text-[24px] leading-[1.3] sm:text-[28px]">
+      <h4 className="mb-8 font-display text-[24px] leading-[1.3] sm:text-[28px]">
         {question}
       </h4>
       <div className="space-y-4">
@@ -2832,7 +2833,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                   </>
                 )}
               </div>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl text-[var(--c-accent)] mb-8 leading-tight">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-7xl text-[var(--c-accent)] mb-8 leading-tight">
                 {article.title}
               </h1>
               <div className="flex justify-center gap-2 flex-wrap">
@@ -3288,7 +3289,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       />
                     </div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--c-gold)] mb-2">{rel.category}</p>
-                    <h3 className="font-serif text-lg sm:text-xl leading-snug text-[var(--c-accent)] group-hover:opacity-70 transition-opacity">{rel.title}</h3>
+                    <h3 className="font-display text-lg sm:text-xl leading-snug text-[var(--c-accent)] group-hover:opacity-70 transition-opacity">{rel.title}</h3>
                   </button>
                 ))}
               </div>
@@ -3421,7 +3422,7 @@ function EditorialListCard({
   return (
     <motion.button
       type="button"
-      className="w-full border border-[var(--c-accent)] bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
+      className="w-full bg-transparent p-0 text-left group cursor-pointer grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch overflow-hidden"
       onClick={onOpen}
       aria-label={ariaLabel}
       whileHover={{ x: 4 }}
@@ -3475,7 +3476,7 @@ function EditorialListCard({
           </p>
         )}
         {showByline && card.byline && (
-          <div className="mt-auto border-t border-[rgb(var(--c-accent-rgb)_/_0.14)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
+          <div className="mt-auto pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.58)]">
             {card.byline}
           </div>
         )}
@@ -3650,7 +3651,7 @@ function LinkCard({ block }: { block: ContentBlock }) {
       </div>
       <div className="flex flex-1 flex-col justify-center gap-2 p-5 sm:p-7">
         {block.credit && <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[rgb(var(--c-accent-rgb)_/_0.55)]">{block.credit}</p>}
-        <h3 className="font-serif text-2xl leading-tight sm:text-3xl">{name}</h3>
+        <h3 className="font-display text-2xl leading-tight sm:text-3xl">{name}</h3>
         {block.caption && <p className="font-serif text-base leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] sm:text-lg">{block.caption}</p>}
         {host && (
           <span className="mt-1 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--c-accent)] group-hover:text-[var(--c-gold)]">
@@ -3667,7 +3668,7 @@ function ReviewBody({ content, t }: { content: Review['content']; t: (key: strin
   if (typeof content === 'string') return <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.78)] whitespace-pre-line">{content}</p>;
   return <div className="space-y-7 sm:space-y-10">{reviewBlocks(content).map((block, index) => {
     const text = typeof block.content === 'string' ? block.content : '';
-    if (block.type === 'header' && text) return <h2 key={index} className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight">{text}</h2>;
+    if (block.type === 'header' && text) return <h2 key={index} className="font-display text-2xl sm:text-3xl md:text-4xl leading-tight">{text}</h2>;
     if (block.type === 'quote' && text) return <blockquote key={index} className="my-10 font-serif text-[22px] leading-[1.35] sm:text-[30px] sm:leading-[1.3]">{text}</blockquote>;
     if (block.type === 'note' && text) return <aside key={index} className="border-y border-[rgb(var(--c-accent-rgb)_/_.18)] py-5 font-courier text-xl">{text}</aside>;
     if (block.type === 'image' && text) return <figure key={index} className="space-y-2"><img src={text} alt={block.alt || block.caption || ''} className="w-full object-cover" />{block.caption && <figcaption className="font-mono text-[10px] uppercase tracking-widest opacity-60">{block.caption}</figcaption>}</figure>;
@@ -3769,7 +3770,7 @@ function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages
       {review.imageUrl && <img src={review.imageUrl} alt={review.title} className="mb-10 aspect-[16/8] w-full object-cover" />}
       <header className="mx-auto mb-12 max-w-3xl border-b border-[var(--c-accent)] pb-10">
         <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--c-gold)]">{review.category || 'Review'}</p>
-        <h1 className="mt-4 font-serif text-3xl sm:text-4xl md:text-7xl leading-tight md:leading-[.94]">{review.title}</h1>
+        <h1 className="mt-4 font-display text-3xl sm:text-4xl md:text-7xl leading-tight md:leading-[.94]">{review.title}</h1>
         <p className="mt-5 font-mono text-[11px] uppercase tracking-widest opacity-60">{review.subject}</p>
         <div className="mt-5 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--c-accent-rgb)_/_0.56)]">
           {review.date && <><span>{review.date}</span><span aria-hidden="true" className="h-1 w-1 rounded-full bg-[rgb(var(--c-accent-rgb)_/_0.3)]" /></>}
@@ -4157,7 +4158,7 @@ function SearchResults({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8 pb-6 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)]" aria-live="polite">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)] mb-1">{t('search.results')}</p>
-          <h2 className="font-serif text-2xl text-[var(--c-accent)]">
+          <h2 className="font-display text-2xl text-[var(--c-accent)]">
             "{query}" – <span className="text-[var(--c-gold)]">{results.length}</span>
           </h2>
         </div>
@@ -4198,7 +4199,7 @@ function SearchResults({
                   <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--c-gold)]">{t(SEARCH_KIND_KEY[hit.kind])}</span>
                   {hit.meta && <span className="font-mono text-[9px] uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.4)]">{hit.meta}</span>}
                 </div>
-                <h3 className="font-serif text-lg sm:text-xl text-[var(--c-accent)] line-clamp-2">{hit.title}</h3>
+                <h3 className="font-display text-lg sm:text-xl text-[var(--c-accent)] line-clamp-2">{hit.title}</h3>
                 {hit.excerpt && (
                   <p className="font-serif text-sm text-[rgb(var(--c-accent-rgb)_/_0.65)] line-clamp-1 mt-0.5">{hit.excerpt}</p>
                 )}
@@ -4638,7 +4639,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
       <div className="hidden md:block max-w-[1600px] mx-auto">
         <div className="grid gap-12 md:gap-10 md:grid-cols-[1.35fr_.75fr_1fr]">
           <div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight">{title}</h2>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight">{title}</h2>
             <p className="mt-6 max-w-[44ch] text-lg sm:text-xl leading-relaxed text-white/85">{description || about.line}</p>
             <p className="mt-6 font-mono text-[12.5px] uppercase tracking-[0.2em] text-white/75">{about.place}</p>
           </div>
@@ -5329,7 +5330,7 @@ export default function App() {
           >
             <div className="text-center max-w-md">
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">EPRIS</p>
-              <h1 className="font-serif text-2xl sm:text-3xl text-[var(--c-accent)] mb-4">{t('article.loading')}</h1>
+              <h1 className="font-display text-2xl sm:text-3xl text-[var(--c-accent)] mb-4">{t('article.loading')}</h1>
               <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)]">{t('article.loading.body')}</p>
             </div>
           </motion.div>
@@ -5346,7 +5347,7 @@ export default function App() {
           >
             <div className="text-center max-w-md">
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
-              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
+              <h1 className="font-display text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
               <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">{t('article.notFound.body')}</p>
               <div className="flex flex-wrap gap-3 justify-center">
                 {/* Чаще всего это не сломанная ссылка, а неудачная загрузка:
@@ -5381,7 +5382,7 @@ export default function App() {
           >
             <div className="text-center max-w-md">
               <p className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">404</p>
-              <h1 className="font-serif text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
+              <h1 className="font-display text-3xl sm:text-4xl text-[var(--c-accent)] mb-4">{t('article.notFound')}</h1>
               <p className="font-serif text-[rgb(var(--c-accent-rgb)_/_0.7)] mb-8">{t('article.notFound.body')}</p>
               <button
                 type="button"
