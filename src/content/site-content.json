@@ -252,7 +252,7 @@
       "about.techDirector.role": "Technical & Creative Director",
       "nav.manifest": "Manifesto",
       "manifest.empty": "The manifesto will appear here soon.",
-      "about.techDirector.bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
+      "about.techDirector.bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler, and of Europa Nostra, the European voice of civil society committed to cultural heritage. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
       "hero.exploreLatest": "Explore our latest article",
       "about.website": "Website",
       "about.readManifest": "Read our manifesto",
@@ -287,7 +287,7 @@
       "about.team.author-1788563282904-7a43p.role": "Director of Communications (USA)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov is EPRIS Journal's Director of Communications and the magazine's representative for the United States and Western Europe. He builds relationships with partners, institutions and contributors across those regions, connecting EPRIS to the people and stories that shape its international voice.",
       "about.team.author-1784732936927-kw554.role": "Author",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler, and of Europa Nostra, the European voice of civil society committed to cultural heritage. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies."
     },
     "RU": {
       "nav.gallery": "Галерея",
@@ -1119,7 +1119,7 @@
       "about.techDirector.role": "Teknik ve Yaratıcı Direktör",
       "nav.manifest": "Manifesto",
       "manifest.empty": "Manifesto yakında burada görünecek.",
-      "about.techDirector.bio": "Viacheslav Munister bir yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d’en Parler miras derneklerinin üyesidir. Çalışmaları mimarlık, kentsel kültür, kolektif hafıza ve dijital teknolojiler aracılığıyla kültürel mirasın korunması ve yeniden yorumlanmasına odaklanmaktadır.",
+      "about.techDirector.bio": "Viacheslav Munister bir yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d’en Parler miras derneklerinin ve kültürel mirasa bağlı Avrupa sivil toplum sesi Europa Nostra’nın üyesidir. Çalışmaları mimarlık, kentsel kültür, kolektif hafıza ve dijital teknolojiler aracılığıyla kültürel mirasın korunması ve yeniden yorumlanmasına odaklanmaktadır.",
       "hero.exploreLatest": "En son makalemizi keşfedin",
       "about.website": "Web Sitesi",
       "about.readManifest": "Manifestomuzu okuyun",
@@ -1154,7 +1154,7 @@
       "about.team.author-1788563282904-7a43p.role": "İletişim Direktörü (ABD)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov, EPRIS Dergisi'nin İletişim Direktörü ve derginin Amerika Birleşik Devletleri ve Batı Avrupa temsilcisidir. O, bu bölgelerdeki ortaklar, kurumlar ve katkıda bulunanlarla ilişkiler kurar, EPRIS'i uluslararası sesini şekillendiren insanlar ve hikayelerle bağlar.",
       "about.team.author-1784732936927-kw554.role": "Yazar",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister bir yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d'en Parler miras derneklerinin bir üyesidir. Çalışmaları mimarlık, kent kültürü, kolektif bellek ve kültürel mirasın dijital teknolojiler aracılığıyla korunması ve yeniden yorumlanması üzerine odaklanmaktadır."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister bir yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d'en Parler miras derneklerinin ve kültürel mirasa bağlı Avrupa sivil toplum sesi Europa Nostra’nın bir üyesidir. Çalışmaları mimarlık, kent kültürü, kolektif bellek ve kültürel mirasın dijital teknolojiler aracılığıyla korunması ve yeniden yorumlanması üzerine odaklanmaktadır."
     },
     "DE": {
       "nav.gallery": "Galerie",
@@ -1408,7 +1408,7 @@
       "about.techDirector.role": "Technischer & Kreativdirektor",
       "nav.manifest": "Manifest",
       "manifest.empty": "Das Manifest erscheint bald hier.",
-      "about.techDirector.bio": "Viacheslav Munister ist ein Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Heritage-Verbände En Quête de Patrimoine und Histoire d’en Parler. Seine Arbeit konzentriert sich auf Architektur, urbane Kultur, kollektives Gedächtnis sowie die Bewahrung und Neuauslegung kulturellen Erbes durch digitale Technologien.",
+      "about.techDirector.bio": "Viacheslav Munister ist ein Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Heritage-Verbände En Quête de Patrimoine und Histoire d’en Parler sowie von Europa Nostra, der europäischen Stimme der Zivilgesellschaft für das kulturelle Erbe. Seine Arbeit konzentriert sich auf Architektur, urbane Kultur, kollektives Gedächtnis sowie die Bewahrung und Neuauslegung kulturellen Erbes durch digitale Technologien.",
       "hero.exploreLatest": "Entdecke unseren neuesten Artikel",
       "about.website": "Webseite",
       "about.readManifest": "Lies unser Manifest",
@@ -1443,7 +1443,7 @@
       "about.team.author-1788563282904-7a43p.role": "Leiter der Kommunikation (USA)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov ist Leiter der Kommunikation des EPRIS Journal und der Vertreter der Zeitschrift für die Vereinigten Staaten und Westeuropa. Er baut Beziehungen zu Partnern, Institutionen und Mitwirkenden in diesen Regionen auf, verbindet EPRIS mit den Menschen und Geschichten, die seine internationale Stimme prägen.",
       "about.team.author-1784732936927-kw554.role": "Verfasser",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister ist Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Kulturerbevereine En Quête de Patrimoine und Histoire d'en Parler. Seine Arbeit konzentriert sich auf Architektur, Stadtkultur, kollektives Gedächtnis und die Bewahrung und Neuinterpretation des kulturellen Erbes durch digitale Technologien."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister ist Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Kulturerbevereine En Quête de Patrimoine und Histoire d'en Parler sowie von Europa Nostra, der europäischen Stimme der Zivilgesellschaft für das kulturelle Erbe. Seine Arbeit konzentriert sich auf Architektur, Stadtkultur, kollektives Gedächtnis und die Bewahrung und Neuinterpretation des kulturellen Erbes durch digitale Technologien."
     },
     "IT": {
       "nav.gallery": "Galleria",
@@ -1697,7 +1697,7 @@
       "about.techDirector.role": "Direttore Tecnico & Creativo",
       "nav.manifest": "Manifesto",
       "manifest.empty": "Il manifesto apparirà qui presto.",
-      "about.techDirector.bio": "Viacheslav Munister è un autore, ricercatore e specialista di patrimonio digitale. È membro delle associazioni di patrimonio En Quête de Patrimoine e Histoire d’en Parler. Il suo lavoro si concentra su architettura, cultura urbana, memoria collettiva e la conservazione e reinterpretazione del patrimonio culturale attraverso tecnologie digitali.",
+      "about.techDirector.bio": "Viacheslav Munister è un autore, ricercatore e specialista di patrimonio digitale. È membro delle associazioni di patrimonio En Quête de Patrimoine e Histoire d’en Parler e di Europa Nostra, la voce europea della società civile impegnata per il patrimonio culturale. Il suo lavoro si concentra su architettura, cultura urbana, memoria collettiva e la conservazione e reinterpretazione del patrimonio culturale attraverso tecnologie digitali.",
       "hero.exploreLatest": "Esplora il nostro ultimo articolo",
       "about.website": "Sito Web",
       "about.readManifest": "Leggi il nostro manifesto",
@@ -1732,7 +1732,7 @@
       "about.team.author-1788563282904-7a43p.role": "Direttore delle Comunicazioni (USA)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov è il Direttore delle Comunicazioni di EPRIS Journal e il rappresentante della rivista per gli Stati Uniti e l'Europa Occidentale. Costruisce relazioni con partner, istituzioni e collaboratori in quelle regioni, collegando EPRIS alle persone e alle storie che plasmano la sua voce internazionale.",
       "about.team.author-1784732936927-kw554.role": "Autore",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister è autore, ricercatore e specialista in patrimonio digitale. È membro delle associazioni per la tutela del patrimonio En Quête de Patrimoine e Histoire d&#39;en Parler. Il suo lavoro si concentra su architettura, cultura urbana, memoria collettiva e conservazione e reinterpretazione del patrimonio culturale attraverso le tecnologie digitali."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister è autore, ricercatore e specialista in patrimonio digitale. È membro delle associazioni per la tutela del patrimonio En Quête de Patrimoine e Histoire d&#39;en Parler e di Europa Nostra, la voce europea della società civile impegnata per il patrimonio culturale. Il suo lavoro si concentra su architettura, cultura urbana, memoria collettiva e conservazione e reinterpretazione del patrimonio culturale attraverso le tecnologie digitali."
     },
     "ES": {
       "nav.gallery": "Galería",
@@ -1986,7 +1986,7 @@
       "about.techDirector.role": "Director Técnico y Creativo",
       "nav.manifest": "Manifiesto",
       "manifest.empty": "El manifiesto aparecerá aquí pronto.",
-      "about.techDirector.bio": "Viacheslav Munister es un autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones de patrimonio En Quête de Patrimoine y Histoire d’en Parler. Su trabajo se centra en arquitectura, cultura urbana, memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de tecnologías digitales.",
+      "about.techDirector.bio": "Viacheslav Munister es un autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones de patrimonio En Quête de Patrimoine y Histoire d’en Parler y de Europa Nostra, la voz europea de la sociedad civil comprometida con el patrimonio cultural. Su trabajo se centra en arquitectura, cultura urbana, memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de tecnologías digitales.",
       "hero.exploreLatest": "Explora nuestro último artículo",
       "about.website": "Sitio web",
       "about.readManifest": "Lee nuestro manifiesto",
@@ -2021,7 +2021,7 @@
       "about.team.author-1788563282904-7a43p.role": "Director de Comunicaciones (EE.UU.)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov es el Director de Comunicaciones de EPRIS Journal y el representante de la revista para los Estados Unidos y Europa Occidental. Él construye relaciones con socios, instituciones y colaboradores en esas regiones, conectando EPRIS con las personas y las historias que dan forma a su voz internacional.",
       "about.team.author-1784732936927-kw554.role": "Autor",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister es autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones patrimoniales En Quête de Patrimoine e Histoire d'en Parler. Su trabajo se centra en la arquitectura, la cultura urbana, la memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de las tecnologías digitales."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister es autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones patrimoniales En Quête de Patrimoine e Histoire d'en Parler y de Europa Nostra, la voz europea de la sociedad civil comprometida con el patrimonio cultural. Su trabajo se centra en la arquitectura, la cultura urbana, la memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de las tecnologías digitales."
     },
     "FR": {
       "nav.gallery": "Galerie",
@@ -2275,7 +2275,7 @@
       "about.techDirector.role": "Directeur Technique & Créatif",
       "nav.manifest": "Manifeste",
       "manifest.empty": "Le manifeste apparaîtra ici bientôt.",
-      "about.techDirector.bio": "Viacheslav Munister est un auteur, chercheur, et spécialiste du patrimoine numérique. Il est membre des associations patrimoniales En Quête de Patrimoine et Histoire d’en Parler. Son travail se concentre sur l'architecture, la culture urbaine, la mémoire collective, et la préservation et la réinterprétation du patrimoine culturel à travers les technologies numériques.",
+      "about.techDirector.bio": "Viacheslav Munister est un auteur, chercheur, et spécialiste du patrimoine numérique. Il est membre des associations patrimoniales En Quête de Patrimoine et Histoire d’en Parler, ainsi que d’Europa Nostra, la voix européenne de la société civile engagée pour le patrimoine culturel. Son travail se concentre sur l'architecture, la culture urbaine, la mémoire collective, et la préservation et la réinterprétation du patrimoine culturel à travers les technologies numériques.",
       "hero.exploreLatest": "Découvrez notre dernier article",
       "about.website": "Site web",
       "about.readManifest": "Lisez notre manifeste",
@@ -2310,7 +2310,7 @@
       "about.team.author-1788563282904-7a43p.role": "Directeur de la communication (États-Unis)",
       "about.team.author-1788563282904-7a43p.bio": "Edward Nesterov est le Directeur de la communication du journal EPRIS et le représentant du magazine pour les États-Unis et l'Europe de l'Ouest. Il établit des relations avec des partenaires, des institutions et des contributeurs dans ces régions, connectant EPRIS aux personnes et aux histoires qui façonnent sa voix internationale.",
       "about.team.author-1784732936927-kw554.role": "Auteur",
-      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister est auteur, chercheur et spécialiste du patrimoine numérique. Il est membre des associations patrimoniales En Quête de Patrimoine et Histoire d'en Parler. Son travail porte sur l'architecture, la culture urbaine, la mémoire collective, la préservation et la réinterprétation du patrimoine culturel à travers les technologies numériques."
+      "about.team.author-1784732936927-kw554.bio": "Viacheslav Munister est auteur, chercheur et spécialiste du patrimoine numérique. Il est membre des associations patrimoniales En Quête de Patrimoine et Histoire d'en Parler, ainsi que d’Europa Nostra, la voix européenne de la société civile engagée pour le patrimoine culturel. Son travail porte sur l'architecture, la culture urbaine, la mémoire collective, la préservation et la réinterprétation du patrimoine culturel à travers les technologies numériques."
     }
   },
   "items": [
@@ -176321,7 +176321,7 @@
       "id": "author-1784732936927-kw554",
       "name": "Viacheslav Munister",
       "role": "Author",
-      "bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
+      "bio": "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler, and of Europa Nostra, the European voice of civil society committed to cultural heritage. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
       "photoUrl": "https://api.eprisjournal.com/uploads/viacheslav-munister-portrait-sq.jpg",
       "website": "https://munister.com.ua/",
       "instagram": "@vmunister",
