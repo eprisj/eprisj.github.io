@@ -3007,7 +3007,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                 case 'quote': {
                   if (typeof block.content !== 'string') return null;
                   return (
-                    <blockquote key={index} className="my-10 sm:my-14 font-serif italic text-[19px] leading-[1.45] text-[var(--c-accent)] border-l-2 border-[var(--c-gold)] pl-4 sm:pl-6 sm:text-[24px] sm:leading-[1.4]">
+                    <blockquote key={index} className="my-10 sm:my-14 font-serif text-[19px] leading-[1.45] text-[var(--c-accent)] border-l-2 border-[var(--c-gold)] pl-4 sm:pl-6 sm:text-[24px] sm:leading-[1.4]">
                       <span className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizeRichText(block.content) }} />
                     </blockquote>
                   );
@@ -3544,7 +3544,7 @@ function EditorialListCard({
           data-original-src={card.imageSrc}
           onError={recoverOriginalImage}
           alt={card.title}
-          className="w-full h-full object-cover grayscale"
+          className={`w-full h-full object-cover ${isDailySite() ? "" : "grayscale"}`}
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
           referrerPolicy="no-referrer"
           loading="lazy"
