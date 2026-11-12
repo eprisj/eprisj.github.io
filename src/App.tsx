@@ -1642,6 +1642,56 @@ function ContactCard({ lang }: { lang: string }) {
   );
 }
 
+function DailyAbout() {
+  const kick = 'font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)]';
+  const body = 'font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed';
+  const facts: [string, string][] = [
+    ['Founded', '5 June 2024, Milan'],
+    ['Covers', 'Contemporary art, architecture and interior design'],
+    ['Formats', 'Long-form essays, interviews, exhibition reviews'],
+    ['Guests', 'Established names, museums, studios, major shows'],
+    ['Languages', 'Several; Daily is English only'],
+    ['Also', 'Museum, iOS app, Reader Passport'],
+  ];
+  return (
+    <>
+      <Reveal>
+        <div className="mb-14 text-center max-w-xl mx-auto">
+          <div className={`${kick} mb-4`}>About Daily</div>
+          <h2 className="font-display text-4xl sm:text-5xl leading-tight text-[var(--c-accent)] mb-6">Short reads on art, architecture and design</h2>
+          <p className={body}>Daily is the quick edition of EPRIS Journal. Every piece is short enough to read over a coffee: a new show, a building, an object, a conversation with an artist, an architect or a designer you may not have heard of yet.</p>
+        </div>
+      </Reveal>
+      <Reveal>
+        <div className="mb-14 max-w-xl mx-auto space-y-5">
+          <h3 className="font-display text-2xl text-[var(--c-accent)]">What it is for</h3>
+          <p className={body}>The journal takes its time: long essays and interviews with established names. Daily is where the rest of the field goes: emerging artists, small studios, young designers and the shows of the week. It keeps the same editors and the same standards, with a lighter touch, plainer language and a fast pace.</p>
+          <p className={body}>It is a website only, written in English, with no account and no paywall.</p>
+        </div>
+      </Reveal>
+      <Reveal>
+        <div className="mb-16 max-w-xl mx-auto">
+          <div className={`${kick} mb-4`}>The publication behind it</div>
+          <h3 className="font-display text-3xl text-[var(--c-accent)] mb-4">EPRIS Journal</h3>
+          <p className={`${body} mb-8`}>An independent Italian publication, edited in Milan and read internationally.</p>
+          <dl className="border-t border-[rgb(var(--c-accent-rgb)_/_0.14)]">
+            {facts.map(([k, v]) => (
+              <div key={k} className="grid grid-cols-[7rem_1fr] gap-4 py-3.5 border-b border-[rgb(var(--c-accent-rgb)_/_0.14)]">
+                <dt className={`${kick} pt-1`}>{k}</dt>
+                <dd className="font-serif text-lg text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-snug">{v}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[13px] uppercase tracking-[0.14em]">
+            <a href="https://eprisjournal.com/" className="underline underline-offset-4 decoration-1 hover:text-[var(--c-gold)] transition-colors">Read the journal →</a>
+            <a href="https://museum.eprisjournal.com/" className="underline underline-offset-4 decoration-1 hover:text-[var(--c-gold)] transition-colors">Museum →</a>
+          </div>
+        </div>
+      </Reveal>
+    </>
+  );
+}
+
 function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => string; currentLang: string; onOpenManifest: () => void }) {
   const listed = getAuthors()
     .filter((author) => author.active !== false && author.showOnTeam !== false)
@@ -1663,12 +1713,14 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
         first card in it. A link to the manifesto closes out the "who we
         are" story with "what we believe".
       */}
+      {isDailySite() ? <DailyAbout /> : (
       <Reveal>
         <div className="mb-10 text-center max-w-xl mx-auto">
           <div className="font-mono text-xs uppercase tracking-widest text-[rgb(var(--c-accent-rgb)_/_0.5)] mb-4">Milan, Italy · Founded 5 June 2024</div>
           <p className="font-serif text-lg sm:text-xl text-[rgb(var(--c-accent-rgb)_/_0.85)] leading-relaxed">EPRIS Journal is an independent Italian publication founded in Milan on 5 June 2024. It is a digital space for contemporary art, architecture and interior design, bringing together long-form essays, interviews, exhibition reviews and close readings of the places, objects and ideas shaping visual culture. Edited in Milan and read internationally, EPRIS follows culture where it is made and where it is lived – with curiosity, clarity and an eye for lasting work.</p>
         </div>
       </Reveal>
+      )}
       {team.length > 0 && (
         <Reveal>
           <div className="mb-16">
