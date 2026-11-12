@@ -4424,7 +4424,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
   const SITE = siteOrigin();
   const defaultDescription = String(settings.seoDescription || '').trim();
   const defaultKeywords = String(settings.seoKeywords || '').trim() || `${publicationName}, contemporary art, architecture, interior design, design journal, art interviews, design interviews, cultural journalism`;
-  const defaultOgImage = safeExternalUrl(settings.ogImage) || 'https://eprisjournal.com/images/featured.png';
+  const defaultOgImage = daily ? 'https://daily.eprisjournal.com/og/daily.jpg' : (safeExternalUrl(settings.ogImage) || 'https://eprisjournal.com/images/featured.png');
   const siteNode = {
     '@type': 'WebSite',
     name: publicationName,

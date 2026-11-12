@@ -25614,7 +25614,7 @@ document.getElementById('formsList')?.addEventListener('click', (event) => {
 const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
 let anDays = 30;
 /* all — eprisjournal.com и daily.eprisjournal.com вместе, main / daily — одно издание. */
-let anSite = 'all';
+let anSite = IS_DAILY_ADMIN ? 'daily' : 'all';
 
 const anNum = (n) => (n || 0).toLocaleString('ru-RU');
 /* Секунды читаются плохо: 515 с это «8 мин 35 с». */
@@ -25774,6 +25774,8 @@ function anDevices(host, rows) {
 async function loadAnalytics() {
   const cards = byId('anCards');
   if (!cards) return;
+  // The switch shows which slice is open (Daily's room opens on Daily).
+  document.querySelectorAll('#anSite [data-site]').forEach((b) => b.classList.toggle('is-on', b.dataset.site === anSite));
   cards.innerHTML = '<p class="an-empty">Загружаем…</p>';
   let data;
   try {

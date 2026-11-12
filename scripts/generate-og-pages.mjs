@@ -28,6 +28,7 @@ const DAILY_META = {
    daily.eprisjournal.com serves /article/… from there. */
 const DAILY_CONTENT_PATH = process.env.EPRIS_DAILY_CONTENT_PATH
   || (existsSync('/opt/epris-content/daily/site-content.json') ? '/opt/epris-content/daily/site-content.json' : '');
+const DAILY_IMAGE = `${DAILY_ORIGIN}/og/daily.jpg`;
 const isDaily = (article) => article && article.edition === 'daily';
 const originOf = (article) => (isDaily(article) ? DAILY_ORIGIN : SITE_ORIGIN);
 const nameOf = (article) => (isDaily(article) ? DAILY_NAME : 'EPRIS Journal');
@@ -767,7 +768,8 @@ for (const f of FORM_PAGES) {
       <h2>Latest articles</h2><ul>${articleLinks}</ul>
       <h2>Reviews</h2><ul>${reviewLinks}</ul>
       <h2>Sections</h2><ul>${sectionLinks}
-      <li><a href="https://museum.eprisjournal.com/">EPRIS Museum</a></li></ul>
+      <li><a href="https://museum.eprisjournal.com/">EPRIS Museum</a></li>
+      <li><a href="${DAILY_ORIGIN}/">Daily</a></li></ul>
     </main>`);
   writeFileSync(join(distDir, 'index.html'), indexHtml.replace('<div id="root"></div>', homeBody));
   console.log('Generated: / (prerendered home)');
@@ -877,7 +879,7 @@ console.log('Generated: IndexNow key + url list');
     <link rel="alternate" type="application/rss+xml" title="${DAILY_NAME}" href="${DAILY_ORIGIN}/rss.xml" />
     <meta property="og:title" content="${escapeAttr(DAILY_META.title)}" />
     <meta property="og:description" content="${escapeAttr(DAILY_META.description)}" />
-    <meta property="og:image" content="${SITE_ORIGIN}/og/home.jpg" />
+    <meta property="og:image" content="${DAILY_IMAGE}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
@@ -886,7 +888,7 @@ console.log('Generated: IndexNow key + url list');
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeAttr(DAILY_META.title)}" />
     <meta name="twitter:description" content="${escapeAttr(DAILY_META.description)}" />
-    <meta name="twitter:image" content="${SITE_ORIGIN}/og/home.jpg" />
+    <meta name="twitter:image" content="${DAILY_IMAGE}" />
     <script type="application/ld+json">${safeJson(dailySchema)}</script>`;
   const dailyBody = prerenderBody(`<main>
       <h1>${escapeHtml(DAILY_NAME)}</h1>
@@ -897,9 +899,49 @@ console.log('Generated: IndexNow key + url list');
   writeFileSync(join(dailyDir, 'index.html'),
     template.replace('<!--TITLE-->', dailyHead).replace('<div id="root"></div>', dailyBody));
 
+  /* Section pages of Daily get their own title, description and canonical,
+     so /articles/ is not indexed as a copy of the home page. */
+  const DAILY_SECTIONS = {
+    articles: ['Articles', 'Short articles and interviews with artists, architects and designers, newest first.', dailyLinks],
+    about: ['About', 'Daily publishes short articles and interviews on art, architecture and design.', ''],
+    manifest: ['Manifesto', 'The editorial principles Daily shares with EPRIS Journal.', ''],
+  };
+  for (const [route, [label, description, list]] of Object.entries(DAILY_SECTIONS)) {
+    const url = `${DAILY_ORIGIN}/${route}/`;
+    const head = `<title>${label} | ${DAILY_NAME}</title>
+    <meta name="description" content="${escapeAttr(description)}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="${url}" />
+    <link rel="alternate" type="application/rss+xml" title="${DAILY_NAME}" href="${DAILY_ORIGIN}/rss.xml" />
+    <meta property="og:title" content="${label} | ${DAILY_NAME}" />
+    <meta property="og:description" content="${escapeAttr(description)}" />
+    <meta property="og:image" content="${DAILY_IMAGE}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:site_name" content="${DAILY_NAME}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${label} | ${DAILY_NAME}" />
+    <meta name="twitter:description" content="${escapeAttr(description)}" />
+    <meta name="twitter:image" content="${DAILY_IMAGE}" />
+    <script type="application/ld+json">${safeJson(breadcrumbSchema([{ name: DAILY_NAME, url: `${DAILY_ORIGIN}/` }, { name: label, url }]))}</script>`;
+    const body = prerenderBody(`<main>
+      <h1>${escapeHtml(label)}</h1>
+      <p>${escapeHtml(description)}</p>
+      ${list ? `<ul>${list}</ul>` : ''}
+      <p><a href="${DAILY_ORIGIN}/">${DAILY_NAME}</a> · <a href="${SITE_ORIGIN}/">EPRIS Journal</a></p>
+    </main>`);
+    mkdirSync(join(dailyDir, route), { recursive: true });
+    writeFileSync(join(dailyDir, route, 'index.html'),
+      template.replace('<!--TITLE-->', head).replace('<div id="root"></div>', body));
+  }
+
   const dailyEntries = [
     { loc: `${DAILY_ORIGIN}/`, priority: '1.0', changefreq: 'daily' },
-    { loc: `${DAILY_ORIGIN}/articles`, priority: '0.7', changefreq: 'daily' },
+    { loc: `${DAILY_ORIGIN}/articles/`, priority: '0.7', changefreq: 'daily' },
+    { loc: `${DAILY_ORIGIN}/about/`, priority: '0.4', changefreq: 'monthly' },
+    { loc: `${DAILY_ORIGIN}/manifest/`, priority: '0.3', changefreq: 'yearly' },
     ...dailyArticles.map((article) => ({ loc: `${DAILY_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '' })),
   ];
   writeFileSync(join(dailyDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${dailyEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`);
@@ -914,11 +956,15 @@ console.log('Generated: IndexNow key + url list');
   <description>${escapeXml(DAILY_META.description)}</description>
   <language>en</language>
   <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <image><url>${DAILY_IMAGE}</url><title>${escapeXml(DAILY_NAME)}</title><link>${DAILY_ORIGIN}/</link></image>
 ${feedItemsFor(dailyArticles)}
 </channel>
 </rss>
 `;
   writeFileSync(join(dailyDir, 'rss.xml'), dailyFeed);
+  // IndexNow for daily.eprisjournal.com: the deploy and the hourly refresh
+  // submit this list under host daily.eprisjournal.com (same key file).
+  writeFileSync(join(dailyDir, 'indexnow-urls.txt'), dailyEntries.map((e) => e.loc).join('\n') + '\n');
   writeFileSync(join(dailyDir, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${DAILY_ORIGIN}/sitemap.xml\n`);
   console.log(`Generated: /daily/ (home, sitemap, rss) – ${dailyArticles.length} Daily pieces`);
 }
