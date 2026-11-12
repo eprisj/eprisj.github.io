@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* Daily admin keeps only what Daily has: publications, order, photos, About,
+   manifest, analytics, history, settings. Journal-only sections are hidden
+   (the nodes stay: app.js looks every section button up by data-tab). */
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="reviews-shortcut"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="issues"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="homepage"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="visibility"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="studio"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="transcripts"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="radio"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="podcasts"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="translations"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="polls"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="forms"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="crm"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="appaccess"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="passports"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="showcase"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="brandbook"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="design"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="appearance"]),
+html.is-daily-admin .sb-item:has(> .tab-btn[data-tab="monitor"]),
+html.is-daily-admin .sb-group.is-daily-empty,
+html.is-daily-admin .dash-stat-card:has(#dashCountReviews),
+html.is-daily-admin .dash-stat-card:has(#dashCountIssues),
+html.is-daily-admin .dash-stat-card:has(#dashCountLangs),
+html.is-daily-admin .dash-stat-card:has(#dashIssueStatus),
+html.is-daily-admin .card:has(#dashTranslCoverage),
+html.is-daily-admin .card:has(#dashIssueTimeline),
+html.is-daily-admin #anSite { display: none !important; }
+html.is-daily-admin .dash-main-grid { grid-template-columns: 1fr; }
+
 /* Daily Picks is hidden on the site for now (2026-11-09): its admin cards are
    hidden too. Remove this block to bring them back. The homepage layout and
    showcase editors stay. */

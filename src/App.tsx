@@ -2864,7 +2864,8 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
             <ArrowLeft size={16} /> {t('back')}
           </button>
 
-          <div className="relative">
+          {/* Daily is English only: no language pill on its articles. */}
+          <div className="relative" style={isDailySite() ? { display: 'none' } : undefined}>
             <button
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
@@ -3550,7 +3551,7 @@ function EditorialListCard({
           decoding="async"
         />
       </div>
-      <div className="flex flex-col p-4 sm:p-6">
+      <div className="flex flex-col px-0 pt-5 pb-2 sm:p-6">
         {card.eyebrow && (
           <span className="font-mono text-[10px] text-[rgb(var(--c-accent-rgb)_/_0.55)] uppercase tracking-widest mb-1">
             {card.eyebrow}
@@ -3605,7 +3606,7 @@ function EditorialList({ children, columns = 1 }: { children: React.ReactNode; c
   // opacity:0. animate fires on mount regardless, no observer involved.
   return (
     <div>
-      <div className="max-w-4xl mx-auto px-5 sm:px-0 pt-8 sm:pt-10">
+      <div className="max-w-4xl mx-auto pt-8 sm:pt-10">
         <motion.div variants={staggerContainer} initial="hidden" animate="show" className={listClass}>
           {children}
         </motion.div>
@@ -5085,13 +5086,14 @@ export default function App() {
     }
     if (section === 'articles') {
       if (!homepageArticles.length) return null;
-      return <section className="homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="homepage-articles-title">
+      // Daily opens straight on its list: no rule and no 180px gap above it on a phone.
+      return <section className={daily ? "homepage-articles pt-2 sm:pt-6" : "homepage-articles mt-12 border-t border-[rgb(var(--c-accent-rgb)_/_0.24)] pt-10 sm:mt-16 sm:pt-12"} aria-labelledby="homepage-articles-title">
         <div className="mb-8 flex flex-col gap-2 border-b border-[rgb(var(--c-accent-rgb)_/_0.24)] pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{t('homepage.articlesEyebrow')}</p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[rgb(var(--c-accent-rgb)_/_0.5)]">{daily ? 'Daily / editorial' : t('homepage.articlesEyebrow')}</p>
             <h2 id="homepage-articles-title" className="mt-2 font-crimson text-3xl text-[var(--c-accent)] sm:text-4xl">{t('homepage.articlesTitle')}</h2>
           </div>
-          <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>
+          {!daily && <p className="max-w-[34ch] font-serif text-sm leading-relaxed text-[rgb(var(--c-accent-rgb)_/_0.68)] sm:text-right">{t('homepage.articlesDescription')}</p>}
         </div>
         <ArticlesSection
           articles={homepageArticles}

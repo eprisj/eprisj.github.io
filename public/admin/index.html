@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=7.16" />
+    <link rel="stylesheet" href="./styles.css?v=7.17" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./mobile-polish.css?v=1.3" />
@@ -2746,7 +2746,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
     <script src="../brandbook/data.js?v=1.0"></script><script src="../brandbook/data-en.js?v=1.0"></script>
-    <script src="./app.js?v=6.81" type="module"></script>
+    <script src="./app.js?v=6.82" type="module"></script>
     <script src="./brandbook-editor.js?v=2.0" type="module"></script>
     <script>
       // Tab switching + page title update
@@ -2800,6 +2800,12 @@
         var NO_AUTO_REOPEN = ['order'];
         /* The section the admin opens on when the URL does not say otherwise. */
         var DEFAULT_TAB = 'homepage';
+        /* Daily admin: journal-only sections are hidden (styles.css), so it
+           opens on Publications and never pins or deep-links a hidden one. */
+        var IS_DAILY = document.documentElement.classList.contains('is-daily-admin');
+        var DAILY_HIDDEN = ["reviews-shortcut", "issues", "homepage", "visibility", "studio", "transcripts", "radio", "podcasts", "translations", "polls", "forms", "crm", "appaccess", "passports", "showcase", "brandbook", "design", "appearance", "monitor"];
+        if (IS_DAILY) DEFAULT_TAB = 'content';
+        function hiddenHere(tab) { return IS_DAILY && DAILY_HIDDEN.indexOf(tab) !== -1; }
         /* ── Навигация: группы, закрепления, поиск ──────────────────────
            Разделов 25, и раньше они лежали одним списком: поиск по нему был
            не удобством, а единственным способом что-то найти. Теперь список
@@ -2809,7 +2815,7 @@
            по всему app.js рассчитывают ровно на одну кнопку раздела. */
         var GROUPS_KEY = 'epris_admin_nav_groups';
         var PINS_KEY = 'epris_admin_nav_pins';
-        var DEFAULT_PINS = ['homepage', 'content', 'order', 'visibility'];
+        var DEFAULT_PINS = IS_DAILY ? ['content', 'order'] : ['homepage', 'content', 'order', 'visibility'];
         var pinnedBox = document.getElementById('navPinned');
         var pinHint = document.getElementById('sbPinHint');
         var navRoot = document.getElementById('sbNav');
@@ -2827,6 +2833,7 @@
         }
 
         function itemOf(tab) {
+          if (hiddenHere(tab)) return null;
           var btn = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
           return btn ? btn.closest('.sb-item') : null;
         }
@@ -2877,7 +2884,11 @@
         function updateCounts() {
           navRoot && navRoot.querySelectorAll('.sb-group').forEach(function (section) {
             var badge = section.querySelector('.sb-count');
-            if (badge) badge.textContent = section.querySelectorAll('.sb-item').length;
+            var shown = Array.prototype.filter.call(section.querySelectorAll('.sb-item'), function (item) {
+              return !hiddenHere(item.querySelector('.tab-btn').dataset.tab);
+            }).length;
+            if (badge) badge.textContent = shown;
+            section.classList.toggle('is-daily-empty', IS_DAILY && shown === 0 && section.dataset.group !== 'pinned');
           });
         }
 
@@ -2993,6 +3004,7 @@
         // wins over the remembered last tab.
         window.addEventListener('hashchange', function () {
           var tab = window.location.hash.replace(/^#/, '');
+          if (hiddenHere(tab)) return;
           var btn = tab && document.querySelector('.tab-btn[data-tab="' + tab + '"]');
           if (btn && !btn.classList.contains('active')) btn.click();
         });
@@ -3021,7 +3033,7 @@
            empty. */
         try {
           var hashTab = window.location.hash.replace(/^#/, '');
-          if (hashTab && NO_AUTO_REOPEN.indexOf(hashTab) !== -1) {
+          if (hashTab && (NO_AUTO_REOPEN.indexOf(hashTab) !== -1 || hiddenHere(hashTab))) {
             hashTab = '';
             history.replaceState(null, '', window.location.pathname + window.location.search);
           }

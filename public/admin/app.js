@@ -25,6 +25,9 @@ if (IS_DAILY_ADMIN) {
   document.documentElement.classList.add('is-daily-admin');
   document.title = 'DAILY · Редакция';
   for (const el of document.querySelectorAll('.auth-logo-epris, .sb-wordmark')) el.textContent = 'DAILY';
+  // The «Journal» group here holds Daily's own About and Manifest.
+  const journalHead = document.querySelector('.sb-group[data-group="journal"] .sb-group-head span');
+  if (journalHead) { journalHead.removeAttribute('data-i18n'); journalHead.textContent = 'Daily'; }
 }
 
 const I18N_LANG_KEY = 'epris_admin_lang';
