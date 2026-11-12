@@ -3544,7 +3544,7 @@ function EditorialListCard({
           data-original-src={card.imageSrc}
           onError={recoverOriginalImage}
           alt={card.title}
-          className={`w-full h-full object-cover ${isDailySite() ? "" : "grayscale"}`}
+          className="w-full h-full object-cover grayscale"
           style={card.imageFocus ? { objectPosition: card.imageFocus } : undefined}
           referrerPolicy="no-referrer"
           loading="lazy"
