@@ -1134,7 +1134,7 @@ function NavBar({
           className="absolute left-1/2 -translate-x-1/2 leading-none font-display px-3 py-2 text-[var(--c-accent)]"
         >
           {isDailySite()
-            ? <span className="inline-flex items-center gap-2.5"><DailyMark className="h-7 w-7" /><span className="whitespace-nowrap text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span></span>
+            ? <span className="inline-flex items-center gap-2.5"><DailyMark className="h-7 w-7" /><span className="whitespace-nowrap normal-case text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span></span>
             : <span className="whitespace-nowrap text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>}
         </a>
         {/* Language is the only control that earns a place beside the wordmark
@@ -4988,7 +4988,7 @@ export default function App() {
   const siteSettings = getSiteSettings();
   const daily = isDailySite();
   const baseBrandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
-  const brandName = daily ? 'DAILY' : baseBrandName;
+  const brandName = daily ? 'daily' : baseBrandName;
   const publicationName = daily ? 'Daily' : (/journal/i.test(baseBrandName) ? baseBrandName : `${baseBrandName} Journal`);
   // The footer title/description in the CMS describe the journal; Daily has its own.
   const footerTitle = daily ? publicationName : (String(siteSettings.footerTitle || publicationName).trim() || publicationName);
