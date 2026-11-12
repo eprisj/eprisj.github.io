@@ -309,6 +309,14 @@ export interface Article {
    * records with an identical shape.
    */
   desk?: 'music';
+  /**
+   * Which edition the piece belongs to. Absent = the main journal
+   * (eprisjournal.com). 'daily' = EPRIS Daily (daily.eprisjournal.com): the
+   * same kind of articles and interviews, lighter, with less famous guests.
+   * Same collection, same editor, same reader – each host simply shows its
+   * own edition (see siteEdition / getContentForLanguage).
+   */
+  edition?: 'daily';
 }
 
 export interface Review {
@@ -890,6 +898,70 @@ export function isMusicHost(): boolean {
   }
 }
 
+/* ── Editions: main journal vs EPRIS Daily ─────────────────────────────
+   One build serves both hosts. daily.eprisjournal.com shows only pieces
+   marked edition: 'daily'; eprisjournal.com shows everything else. Locally
+   (localhost, previews) `?edition=daily` switches to the Daily view for the
+   tab's session, `?edition=main` switches back. */
+export type Edition = 'main' | 'daily';
+export const DAILY_HOST = 'daily.eprisjournal.com';
+export const EDITION_ORIGIN: Record<Edition, string> = {
+  main: 'https://eprisjournal.com',
+  daily: 'https://daily.eprisjournal.com',
+};
+
+export function articleEdition(entry: { edition?: string } | null | undefined): Edition {
+  return entry && entry.edition === 'daily' ? 'daily' : 'main';
+}
+
+let cachedEdition: Edition | null = null;
+export function siteEdition(): Edition {
+  if (cachedEdition) return cachedEdition;
+  let edition: Edition = 'main';
+  try {
+    const host = window.location.hostname;
+    if (host === DAILY_HOST) {
+      edition = 'daily';
+    } else if (host !== 'eprisjournal.com' && host !== 'www.eprisjournal.com') {
+      const param = new URLSearchParams(window.location.search).get('edition');
+      if (param === 'daily' || param === 'main') {
+        try { sessionStorage.setItem('epris_edition', param); } catch { /* storage may be unavailable */ }
+      }
+      let stored: string | null = null;
+      try { stored = sessionStorage.getItem('epris_edition'); } catch { /* storage may be unavailable */ }
+      if ((param || stored) === 'daily') edition = 'daily';
+    }
+  } catch { /* no window (build scripts) */ }
+  cachedEdition = edition;
+  return edition;
+}
+
+export function isDailySite(): boolean {
+  return siteEdition() === 'daily';
+}
+
+/** Canonical origin of the site being viewed (no trailing slash). */
+export function siteOrigin(): string {
+  return EDITION_ORIGIN[siteEdition()];
+}
+
+/**
+ * An article that belongs to the OTHER edition, matched by numeric id or by
+ * a slug predicate. Used to send a reader who followed a link to the wrong
+ * host over to the right one instead of showing "not found".
+ */
+export function findArticleInOtherEdition(match: (article: Article) => boolean): Article | null {
+  const mine = siteEdition();
+  const list = Array.isArray(src().articles) ? src().articles : [];
+  return list.find((a) => articleEdition(a) !== mine && isEntityLive(a) && match(a)) || null;
+}
+
+/** True once at least one Daily piece is live: the journal links to Daily only then. */
+export function hasLiveDailyArticles(): boolean {
+  const list = Array.isArray(src().articles) ? src().articles : [];
+  return list.some((a) => articleEdition(a) === 'daily' && !matchesPreviewToken(a) && !a.draft && isEntityLive(a));
+}
+
 export function isSectionEnabled(key: VisibilitySectionKey): boolean {
   if (key === 'music' && isMusicHost()) return true;
   return getSectionVisibility(key).page;
@@ -1282,7 +1354,15 @@ export function getContentForLanguage(lang: string): LanguageContent {
   const items = mergeLocalizedItems(bucket.items, liveBase(c.items));
   const libraryItems = mergeLocalizedArray(bucket.libraryItems, liveBase(c.libraryItems));
 
-  const liveArticles = isPreview() ? articles : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id));
+  // Each host shows its own edition. A draft opened by its preview link is
+  // shown on either host, so editors can proofread a Daily piece anywhere.
+  // The edition is read from the BASE entry: a translation may not carry it.
+  const edition = siteEdition();
+  const baseEdition = new Map((c.articles || []).map((a) => [Number(a.id), articleEdition(a)]));
+  const liveArticles = isPreview()
+    ? articles
+    : articles.filter((entry) => isEntityLive(entry) && isEntityVisible('articles', entry.id)
+      && ((baseEdition.get(Number(entry.id)) || articleEdition(entry)) === edition || matchesPreviewToken(entry)));
   const liveItems = isPreview() ? items : items.filter((entry) => isEntityLive(entry) && isEntityVisible('items', entry.id));
 
   return {

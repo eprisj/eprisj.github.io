@@ -57,7 +57,13 @@ import {
   isMusicReview,
   itemReviewedType,
   loadLiveContent,
-  subscribeContent
+  subscribeContent,
+  isDailySite,
+  siteOrigin,
+  EDITION_ORIGIN,
+  articleEdition,
+  findArticleInOtherEdition,
+  hasLiveDailyArticles
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
 import { SupportJournal } from './components/SupportJournal';
@@ -1052,7 +1058,17 @@ function NavBar({
     { id: 'studio', label: t('nav.studio') },
     { id: 'radio', label: t('nav.radio') },
     { id: 'podcasts', label: t('nav.podcasts') },
-  ] as { id: VisibilitySectionKey; label: string }[]).filter((tab) => isSectionInNavigation(tab.id));
+  ] as { id: VisibilitySectionKey; label: string }[]).filter((tab) => isSectionInNavigation(tab.id)
+    // EPRIS Daily is articles and interviews only; the rest lives on the journal.
+    && (!isDailySite() || DAILY_TABS.includes(tab.id)));
+  /* Cross-links between the two editions sit where Museum sits: the journal
+     points to Daily, Daily points back to the journal and the museum. */
+  const externalLinks = isDailySite()
+    ? [{ href: 'https://eprisjournal.com/', label: 'Journal' }, { href: 'https://museum.eprisjournal.com/', label: 'Museum' }]
+    : [
+      ...(hasLiveDailyArticles() ? [{ href: 'https://daily.eprisjournal.com/', label: 'Daily' }] : []),
+      { href: 'https://museum.eprisjournal.com/', label: 'Museum' },
+    ];
 
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
@@ -1103,7 +1119,7 @@ function NavBar({
           aria-current={activeTab === 'gallery' ? 'page' : undefined}
           className="absolute left-1/2 -translate-x-1/2 leading-none font-display px-3 py-2 text-[var(--c-accent)]"
         >
-          <span className="text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>
+          <span className="whitespace-nowrap text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>
         </a>
         {/* Language is the only control that earns a place beside the wordmark
             here. Issue used to sit next to it as a filled pill, which made the
@@ -1139,7 +1155,7 @@ function NavBar({
         <LayoutGroup id="nav-tabs">
           <div
             className="grid flex-1"
-            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + 1, 2)}, minmax(0, 1fr))` }}
+            style={{ gridTemplateColumns: `repeat(${Math.max(tabs.length + externalLinks.length, 2)}, minmax(0, 1fr))` }}
           >
             {tabs.map((tab) => (
               <a
@@ -1162,12 +1178,15 @@ function NavBar({
                 )}
               </a>
             ))}
-            <a
-              href="https://museum.eprisjournal.com/"
-              className="relative flex h-full flex-col items-center justify-center overflow-hidden text-[var(--c-accent)] transition-colors duration-200 hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]"
-            >
-              <span className="relative z-10 font-normal">Museum</span>
-            </a>
+            {externalLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="relative flex h-full flex-col items-center justify-center overflow-hidden text-[var(--c-accent)] transition-colors duration-200 hover:bg-[rgb(var(--c-accent-rgb)_/_0.08)]"
+              >
+                <span className="relative z-10 font-normal">{link.label}</span>
+              </a>
+            ))}
           </div>
         </LayoutGroup>
 
@@ -1398,17 +1417,20 @@ function NavBar({
                   <span className="font-display font-normal text-xl leading-tight lowercase">{tab.label}</span>
                 </motion.a>
               ))}
-              <motion.a
-                href="https://museum.eprisjournal.com/"
-                variants={{
-                  hidden: { opacity: 0, x: -14 },
-                  show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
-                }}
-                onClick={() => setIsMenuOpen(false)}
-                className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
-              >
-                <span className="font-display font-normal text-xl leading-tight lowercase">Museum</span>
-              </motion.a>
+              {externalLinks.map((link) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  variants={{
+                    hidden: { opacity: 0, x: -14 },
+                    show: { opacity: 1, x: 0, transition: { duration: 0.22, ease: EASE } },
+                  }}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="min-h-[64px] px-6 py-4 flex items-center justify-between text-left transition-colors active:scale-[0.99]"
+                >
+                  <span className="font-display font-normal text-xl leading-tight lowercase">{link.label}</span>
+                </motion.a>
+              ))}
             </motion.div>
             
             <div className="mt-auto">
@@ -4215,6 +4237,8 @@ function SearchResults({
 
 
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
+/** The only sections EPRIS Daily has; everything else belongs to the journal. */
+const DAILY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'about', 'manifest'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
 function buildSlugMap(): Map<string, number> {
@@ -4335,6 +4359,13 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
   return {};
 }
 
+/* Home of daily.eprisjournal.com. Kept in step with DAILY_META in
+   scripts/generate-og-pages.mjs, which prerenders the same page. */
+const DAILY_HOME_META = {
+  title: 'EPRIS Daily | Art, Architecture & Design, Every Day',
+  description: 'The daily edition of EPRIS Journal: short articles and interviews with artists, architects and designers.',
+};
+
 const ROUTE_META: Record<string, { title: string; description: string }> = {
   gallery: { title: 'EPRIS Journal | Contemporary Art, Architecture & Interior Design', description: 'Independent international journal and cultural platform exploring contemporary art, architecture, interior design and cities in context.' },
   articles: { title: 'Articles | EPRIS Journal', description: 'Editorial stories, interviews and research on contemporary art, architecture, interiors, design and cultural cities.' },
@@ -4386,18 +4417,20 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     document.querySelector<HTMLScriptElement>(`script[type="application/ld+json"][data-epris-id="${id}"]`)?.remove();
   };
   const brandName = String(settings.brandName || 'EPRIS').trim() || 'EPRIS';
-  const publicationName = /journal/i.test(brandName) ? brandName : `${brandName} Journal`;
+  const daily = isDailySite();
+  const publicationName = daily ? 'EPRIS Daily' : (/journal/i.test(brandName) ? brandName : `${brandName} Journal`);
+  const SITE = siteOrigin();
   const defaultDescription = String(settings.seoDescription || '').trim();
   const defaultKeywords = String(settings.seoKeywords || '').trim() || `${publicationName}, contemporary art, architecture, interior design, design journal, art interviews, design interviews, cultural journalism`;
   const defaultOgImage = safeExternalUrl(settings.ogImage) || 'https://eprisjournal.com/images/featured.png';
   const siteNode = {
     '@type': 'WebSite',
     name: publicationName,
-    url: 'https://eprisjournal.com/',
-    publisher: { '@type': 'Organization', name: publicationName, url: 'https://eprisjournal.com/', logo: defaultOgImage },
+    url: `${SITE}/`,
+    publisher: { '@type': 'Organization', name: publicationName, url: `${SITE}/`, logo: defaultOgImage },
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://eprisjournal.com/search?q={search_term_string}',
+      target: `${SITE}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };
@@ -4411,7 +4444,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     // it should never be what search engines treat as canonical.
     const canonicalUrl = onMusicDesk
       ? `https://music.eprisjournal.com/article/${getSlugForArticle(article)}/`
-      : `https://eprisjournal.com/article/${getSlugForArticle(article)}`;
+      : `${EDITION_ORIGIN[articleEdition(article)]}/article/${getSlugForArticle(article)}`;
     const keywords = Array.from(new Set([...(article.tags || []), article.category, article.subcategory, publicationName, 'architecture', 'design', 'contemporary art'].filter(Boolean))).join(', ');
     // `date` is free-typed editorial copy ("Jul 30, 2026", "15 серпня 2026") -
     // schema.org wants ISO 8601 here. publishedAt is the machine-readable
@@ -4454,10 +4487,10 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
         {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
+            { '@type': 'ListItem', position: 1, name: publicationName, item: `${SITE}/` },
             onMusicDesk
               ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://music.eprisjournal.com/' }
-              : { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://eprisjournal.com/articles' },
+              : { '@type': 'ListItem', position: 2, name: 'Articles', item: `${SITE}/articles` },
             { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
           ],
         },
@@ -4503,7 +4536,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
         {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
+            { '@type': 'ListItem', position: 1, name: publicationName, item: `${SITE}/` },
             onMusicDesk
               ? { '@type': 'ListItem', position: 2, name: 'Music', item: 'https://music.eprisjournal.com/' }
               : { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://eprisjournal.com/reviews' },
@@ -4528,13 +4561,16 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
     setMeta('description', description);
     setMeta('keywords', `${publicationName} search, art search, design search, architecture search`);
     setMeta('robots', 'noindex, follow');
-    setCanonical('https://eprisjournal.com/search');
+    setCanonical(`${SITE}/search`);
     clearJsonLd('runtime-seo');
   } else {
-    const routeMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
-    const routeTitle = activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
-    const routeDescription = activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
-    const canonicalUrl = activeTab === 'gallery' ? 'https://eprisjournal.com/' : `https://eprisjournal.com/${activeTab}`;
+    const baseRouteMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
+    const routeMeta = daily
+      ? (activeTab === 'gallery' ? DAILY_HOME_META : { ...baseRouteMeta, title: baseRouteMeta.title.replace('EPRIS Journal', 'EPRIS Daily') })
+      : baseRouteMeta;
+    const routeTitle = !daily && activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
+    const routeDescription = !daily && activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
+    const canonicalUrl = activeTab === 'gallery' ? `${SITE}/` : `${SITE}/${activeTab}`;
     document.title = routeTitle;
     setMeta('og:title', routeTitle);
     setMeta('og:description', routeDescription);
@@ -4564,7 +4600,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
         ...(activeTab === 'gallery' ? [] : [{
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'EPRIS Journal', item: 'https://eprisjournal.com/' },
+            { '@type': 'ListItem', position: 1, name: publicationName, item: `${SITE}/` },
             { '@type': 'ListItem', position: 2, name: routeLabel, item: canonicalUrl },
           ],
         }]),
@@ -4921,8 +4957,10 @@ export default function App() {
     : [];
   const t = (key: string) => getTranslation(currentLang, key);
   const siteSettings = getSiteSettings();
-  const brandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
-  const publicationName = /journal/i.test(brandName) ? brandName : `${brandName} Journal`;
+  const daily = isDailySite();
+  const baseBrandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
+  const brandName = daily ? `${baseBrandName.replace(/\s*journal$/i, '')} DAILY` : baseBrandName;
+  const publicationName = daily ? 'EPRIS Daily' : (/journal/i.test(baseBrandName) ? baseBrandName : `${baseBrandName} Journal`);
   const footerTitle = String(siteSettings.footerTitle || publicationName).trim() || publicationName;
   const footerDescription = String(siteSettings.footerDescription || '').trim();
   const instagramUrl = safeExternalUrl(siteSettings.instagramUrl);
@@ -4950,6 +4988,8 @@ export default function App() {
     // Обзоры на главной подчиняются той же галочке раздела, что и вкладка:
     // выключили раздел в админке – он исчезает целиком, а не наполовину.
     if (section === 'reviews' && !isSectionEnabled('reviews')) return false;
+    // Reviews belong to the journal; EPRIS Daily is articles and interviews.
+    if (section === 'reviews' && daily) return false;
     // Daily Picks (carousel and its archive) are hidden for now, 2026-11-09.
     if (section === 'pics' || section === 'archive') return false;
     return homepageLayout.visibility?.[section as HomepageSectionKey] !== false;
@@ -5192,6 +5232,34 @@ export default function App() {
     window.history.replaceState(null, '', fallbackTab === 'gallery' ? '/' : `/${fallbackTab}`);
   }, [activeTab, contentVersion, fallbackTab]);
 
+  /* Two editions, one build. A journal section opened on daily.eprisjournal.com
+     (/reviews, /studio, a review…) belongs to the journal: send the reader
+     there with the same address instead of showing an empty Daily page. */
+  useEffect(() => {
+    if (!daily) return;
+    const onJournalOnlyTab = activeTab !== 'gallery' && !DAILY_TABS.includes(activeTab as VisibilitySectionKey)
+      && activeTab !== 'articles';
+    if (onJournalOnlyTab || selectedReviewId !== null) {
+      window.location.replace(`${EDITION_ORIGIN.main}${window.location.pathname}${window.location.search}`);
+    }
+  }, [daily, activeTab, selectedReviewId]);
+
+  /* A piece of the other edition opened on this host (an old link, a share
+     from the wrong domain): move to the host it belongs to. Checked only once
+     live content has answered, the same moment "not found" would show. */
+  const articleInOtherEdition = (articleIdNotFound || articleSlugNotFound)
+    ? findArticleInOtherEdition((a) => {
+      if (selectedArticleId !== null) return Number(a.id) === Number(selectedArticleId);
+      const m = window.location.pathname.match(/^\/article\/([^/]+)\/?$/);
+      return Boolean(m) && generateSlug(a.title) === decodeURIComponent(m![1]);
+    })
+    : null;
+  useEffect(() => {
+    if (!articleInOtherEdition) return;
+    const target = EDITION_ORIGIN[articleEdition(articleInOtherEdition)];
+    window.location.replace(`${target}/article/${generateSlug(articleInOtherEdition.title)}${window.location.search}`);
+  }, [articleInOtherEdition]);
+
   const routeKey = activeSearch ? `search-${activeSearch}` : activeTab;
   const previousRouteKey = useRef(routeKey);
   const routeDirection = routePosition(routeKey) >= routePosition(previousRouteKey.current) ? 1 : -1;
@@ -5289,7 +5357,9 @@ export default function App() {
           rights={t('footer.rights')}
           instagramUrl={instagramUrl ?? undefined}
           contactEmail={contactEmail || 'eprisjournal@outlook.com'}
-          links={[['articles', t('nav.articles')], ['reviews', t('nav.reviews')], ['issue', t('nav.issue')], ['about', t('nav.about')], ['museum', 'Museum']]}
+          links={(daily
+            ? [['articles', t('nav.articles')], ['about', t('nav.about')], ['museum', 'Museum']]
+            : [['articles', t('nav.articles')], ['reviews', t('nav.reviews')], ['issue', t('nav.issue')], ['about', t('nav.about')], ['museum', 'Museum']]) as [string, string][]}
           onNavigate={handleSetTab}
         />}
       </div>
@@ -5338,7 +5408,7 @@ export default function App() {
       </AnimatePresence>
 
       <AnimatePresence>
-        {articleIdNotFound && (
+        {articleIdNotFound && !articleInOtherEdition && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -5373,7 +5443,7 @@ export default function App() {
       </AnimatePresence>
 
       <AnimatePresence>
-        {articleSlugNotFound && (
+        {articleSlugNotFound && !articleInOtherEdition && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -74,6 +74,9 @@
                ширине показывает, с чего на самом деле читают. */
             var body = JSON.stringify({
               path: location.pathname,
+              /* eprisjournal.com или daily.eprisjournal.com: одна сборка
+                 обслуживает оба издания, статистика общая с разбивкой. */
+              host: location.hostname,
               ref: document.referrer || "",
               title: (document.title || "").slice(0, 200),
               w: window.screen ? window.screen.width : 0

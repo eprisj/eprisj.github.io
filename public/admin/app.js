@@ -46,6 +46,7 @@ const I18N_STRINGS = {
     'nav.content': 'Publications',
     'nav.order': 'Article order',
     'nav.reviews-shortcut': 'Reviews',
+    'nav.daily-shortcut': 'EPRIS Daily',
     'nav.issues': 'Issues',
     'nav.homepage': 'Homepage / Gallery',
     'nav.visibility': 'Visibility',
@@ -140,6 +141,7 @@ const I18N_STRINGS = {
     'nav.content': 'Публикации',
     'nav.order': 'Порядок статей',
     'nav.reviews-shortcut': 'Обзоры',
+    'nav.daily-shortcut': 'EPRIS Daily',
     'nav.issues': 'Выпуски',
     'nav.homepage': 'Главная / Галерея',
     'nav.visibility': 'Видимость',
@@ -234,6 +236,7 @@ const I18N_STRINGS = {
     'nav.content': 'Публікації',
     'nav.order': 'Порядок статей',
     'nav.reviews-shortcut': 'Огляди',
+    'nav.daily-shortcut': 'EPRIS Daily',
     'nav.issues': 'Випуски',
     'nav.homepage': 'Головна / Галерея',
     'nav.visibility': 'Видимість',
@@ -407,6 +410,14 @@ const visualLangSelect = byId('visualLang');
 const visualEntrySelect = byId('visualEntry');
 const visualSearchInput = byId('visualSearch');
 const visualStatusFilter = byId('visualStatusFilter');
+/* Издание статьи: основной журнал (eprisjournal.com) или EPRIS Daily
+   (daily.eprisjournal.com). Одна коллекция articles, один редактор; различает
+   их поле edition: 'daily'. Фильтр показывает одно издание, а новая статья,
+   созданная при выбранном Daily, сразу получает edition: 'daily'. */
+const visualEditionFilter = byId('visualEditionFilter');
+const entryEdition = (entry) => (entry && entry.edition === 'daily' ? 'daily' : 'main');
+const currentEditionFilter = () => (visualEditionFilter && visualSectionSelect?.value === 'articles'
+  ? visualEditionFilter.value || 'all' : 'all');
 const visualSort = byId('visualSort');
 const visualPublicationSummary = byId('visualPublicationSummary');
 const visualPublishBtn = byId('visualPublishBtn');
@@ -1252,6 +1263,12 @@ function bindEvents() {
   });
 
   visualStatusFilter.addEventListener('change', () => {
+    pendingVisualEntryId = null;
+    pendingHomepageCategory = null;
+    refreshVisualEditor();
+  });
+
+  visualEditionFilter?.addEventListener('change', () => {
     pendingVisualEntryId = null;
     pendingHomepageCategory = null;
     refreshVisualEditor();
@@ -5180,6 +5197,9 @@ function describeEntryReach(data, section, entry) {
   if (entry.desk === 'music' && !entry.draft) {
     notes.push('раздел «Музыка»: материал на music.eprisjournal.com, в общем списке журнала его нет');
   }
+  if (section === 'articles' && entry.edition === 'daily') {
+    notes.push('EPRIS Daily: материал на daily.eprisjournal.com, на eprisjournal.com его нет');
+  }
 
   if (section === 'articles' && !entry.draft && entry.desk !== 'music') {
     const items = Array.isArray(data.items) ? data.items : [];
@@ -6188,6 +6208,8 @@ function stageCanonicalDraft(data, section, entry) {
   }
 
   const draft = { ...entry, draft: true, updatedAt: new Date().toISOString() };
+  // Создана при выбранном фильтре «Daily» — значит, это материал Daily.
+  if (section === 'articles' && !draft.edition && currentEditionFilter() === 'daily') draft.edition = 'daily';
   canonical.push(draft);
 
   // A new draft must never be hidden by the previous search/status filter.
@@ -6503,6 +6525,7 @@ function refreshVisualEditor() {
       return {
         id: enEntry.id,
         _entry: localizedEntry || enEntry,
+        _edition: entryEdition(enEntry),
         _hasTranslation: localizedIds.has(Number(enEntry.id)),
         _enTitle: getEntryTitle(section, enEntry)
       };
@@ -6511,14 +6534,18 @@ function refreshVisualEditor() {
     dropdownEntries = entries.map(entry => ({
       id: entry.id,
       _entry: entry,
+      _edition: entryEdition(entry),
       _hasTranslation: true,
       _enTitle: getEntryTitle(section, entry)
     }));
   }
 
+  const editionFilter = currentEditionFilter();
+  if (visualEditionFilter) visualEditionFilter.closest('.toolbar-field').hidden = section !== 'articles';
   const filteredDropdown = dropdownEntries.filter((item) => {
       const publicationState = getPublicationState(data, section, item._entry);
       if (statusFilter !== 'all' && publicationState !== statusFilter) return false;
+      if (editionFilter !== 'all' && item._edition !== editionFilter) return false;
       if (!search) return true;
       const idText = String(item.id || '').toLowerCase();
       const title = getEntryTitle(section, item._entry).toLowerCase();
@@ -6546,6 +6573,7 @@ function refreshVisualEditor() {
         : item._enTitle + ' (не переведено)';
       const e = item._entry || {};
       label += ` ${publicationStateIcon(publicationState)} ${publicationStateLabel(publicationState).toUpperCase()}`;
+      if (section === 'articles' && item._edition === 'daily' && editionFilter !== 'daily') label += ' · DAILY';
       return `<option value="${id}">#${id} - ${escapeHtml(label)}</option>`;
     })
     .join('');
@@ -21319,6 +21347,11 @@ async function flushModernEditor() {
          редактором: отличается только полкой, на которой лежит. Флаг уводит
          его из /articles в /music, адрес самого материала не меняется. */
       `<label class="wys-meta-check"><input type="checkbox" data-mdesk ${_model.desk === 'music' ? 'checked' : ''}><span>Раздел «Музыка» — материал уходит на /music</span></label>` +
+      /* Издание: тот же материал, та же вёрстка, другой сайт. */
+      `<label class="wys-meta-field"><span>Издание</span><select data-medition>` +
+        `<option value="main" ${_model.edition !== 'daily' ? 'selected' : ''}>EPRIS Journal — eprisjournal.com</option>` +
+        `<option value="daily" ${_model.edition === 'daily' ? 'selected' : ''}>EPRIS Daily — daily.eprisjournal.com</option>` +
+      `</select></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
       `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
     const viewsEl = drawerBody.querySelector('[data-views]');
@@ -21341,6 +21374,11 @@ async function flushModernEditor() {
     const deskInp = drawerBody.querySelector('[data-mdesk]');
     deskInp && deskInp.addEventListener('change', () => {
       if (deskInp.checked) _model.desk = 'music'; else delete _model.desk;
+      scheduleCommit();
+    });
+    const editionInp = drawerBody.querySelector('[data-medition]');
+    editionInp && editionInp.addEventListener('change', () => {
+      if (editionInp.value === 'daily') _model.edition = 'daily'; else delete _model.edition;
       scheduleCommit();
     });
     const pubInp = drawerBody.querySelector('[data-mpublishat]');
@@ -23104,6 +23142,31 @@ async function flushModernEditor() {
       sectionSelect.dispatchEvent(new Event('change'));
       scheduleRender();
     }, 0);
+  });
+
+  // EPRIS Daily — тот же приём: «Публикации» со статьями издания Daily.
+  // Обычные «Публикации» снова показывают все издания.
+  const editionSelect = document.getElementById('visualEditionFilter');
+  document.querySelector('.tab-btn[data-tab="daily-shortcut"]')?.addEventListener('click', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+      document.getElementById('tab-content')?.classList.add('active');
+      document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+      document.querySelector('.tab-btn[data-tab="daily-shortcut"]')?.classList.add('active');
+      const title = document.getElementById('pageTitle');
+      if (title) title.textContent = 'EPRIS Daily';
+      sectionSelect.value = 'articles';
+      if (editionSelect) editionSelect.value = 'daily';
+      sectionSelect.dispatchEvent(new Event('change'));
+      editionSelect?.dispatchEvent(new Event('change'));
+      scheduleRender();
+    }, 0);
+  });
+  document.querySelector('.tab-btn[data-tab="content"]')?.addEventListener('click', () => {
+    if (editionSelect && editionSelect.value !== 'all') {
+      editionSelect.value = 'all';
+      editionSelect.dispatchEvent(new Event('change'));
+    }
   });
 
   render();
@@ -25565,6 +25628,8 @@ document.getElementById('formsList')?.addEventListener('click', (event) => {
    статикой, тянуть ради неё графическую библиотеку незачем. */
 const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
 let anDays = 30;
+/* all — eprisjournal.com и daily.eprisjournal.com вместе, main / daily — одно издание. */
+let anSite = 'all';
 
 const anNum = (n) => (n || 0).toLocaleString('ru-RU');
 /* Секунды читаются плохо: 515 с это «8 мин 35 с». */
@@ -25727,7 +25792,7 @@ async function loadAnalytics() {
   cards.innerHTML = '<p class="an-empty">Загружаем…</p>';
   let data;
   try {
-    const res = await fetch(`${ANALYTICS_API}?days=${anDays}`, {
+    const res = await fetch(`${ANALYTICS_API}?days=${anDays}&site=${anSite}`, {
       headers: { 'X-Admin-Password': getAdminPassword() },
       cache: 'no-store',
     });
@@ -25737,6 +25802,20 @@ async function loadAnalytics() {
   } catch (err) {
     cards.innerHTML = `<p class="an-empty">Не удалось получить статистику. ${anEsc(err.message || '')}</p>`;
     return;
+  }
+
+  /* Общая картина по изданиям: всегда оба сайта, какой бы срез ни был выбран. */
+  const sitesEl = byId('anSites');
+  if (sitesEl) {
+    const sites = data.by_site || [];
+    const total = sites.reduce((n, r) => n + (r.hits || 0), 0) || 1;
+    const names = { main: 'EPRIS Journal · eprisjournal.com', daily: 'EPRIS Daily · daily.eprisjournal.com' };
+    sitesEl.innerHTML = sites.map((r) => `<div class="an-site">
+      <div class="an-site-name">${anEsc(names[r.site] || r.host)}</div>
+      <div class="an-site-value">${anNum(r.hits)}</div>
+      <div class="an-site-sub">${anNum(r.unique)} посетителей за ${data.span_days} дн. · сегодня ${anNum(r.today_hits)}</div>
+      <div class="an-site-bar"><span style="width:${Math.round((r.hits || 0) / total * 100)}%"></span></div>
+    </div>`).join('');
   }
 
   const s = data.summary;
@@ -25803,14 +25882,26 @@ async function loadAnalytics() {
   }), 'Соберётся за пару дней: сигнал появился только сейчас.');
   const titleByPath = {};
   (data.page_titles || []).forEach(t => { titleByPath[t.path] = t.title; });
-  anList(byId('anPaths'), (data.top_paths_30d || []).map(r => ({
-    name: titleByPath[r.path] ? titleByPath[r.path].replace(/ — EPRIS Journal$/, '') + '  ·  ' + r.path : r.path,
-    hits: r.hits, unique: r.unique })), 'Пока нет просмотров.');
+  (data.page_titles || []).forEach(t => { titleByPath[(t.host || '') + t.path] = t.title; });
+  anList(byId('anPaths'), (data.top_paths_30d || []).map(r => {
+    const title = titleByPath[(r.host || '') + r.path] || titleByPath[r.path];
+    const mark = r.host === 'daily.eprisjournal.com' ? 'Daily · ' : '';
+    return {
+      name: mark + (title ? title.replace(/ [—|] EPRIS (Journal|Daily)$/, '') + '  ·  ' + r.path : r.path),
+      hits: r.hits, unique: r.unique };
+  }), 'Пока нет просмотров.');
 }
 
 document.addEventListener('click', (e) => {
   if (e.target.closest('#anRefresh')) loadAnalytics();
   if (e.target.closest('[data-tab="analytics"]')) setTimeout(loadAnalytics, 50);
+  const siteBtn = e.target.closest('#anSite [data-site]');
+  if (siteBtn) {
+    anSite = siteBtn.dataset.site || 'all';
+    document.querySelectorAll('#anSite [data-site]').forEach(b =>
+      b.classList.toggle('is-on', b === siteBtn));
+    loadAnalytics();
+  }
   const range = e.target.closest('#anRange [data-days]');
   if (range) {
     anDays = parseInt(range.dataset.days, 10) || 30;

@@ -13,6 +13,19 @@ const LIVE_CONTENT = '/opt/epris-content/site-content.json';
 const contentPath = process.env.EPRIS_CONTENT_PATH
   || (existsSync(LIVE_CONTENT) ? LIVE_CONTENT : join(rootDir, 'src', 'content', 'site-content.json'));
 const SITE_ORIGIN = 'https://eprisjournal.com';
+/* EPRIS Daily (daily.eprisjournal.com) is served from this same build: nginx
+   on that host answers / with daily/index.html and maps its sitemap, feed and
+   robots to daily/. A piece belongs to Daily when it carries edition: 'daily'
+   (kept in step with siteEdition()/articleEdition() in src/data.ts). */
+const DAILY_ORIGIN = 'https://daily.eprisjournal.com';
+const DAILY_NAME = 'EPRIS Daily';
+const DAILY_META = {
+  title: 'EPRIS Daily | Art, Architecture & Design, Every Day',
+  description: 'The daily edition of EPRIS Journal: short articles and interviews with artists, architects and designers.',
+};
+const isDaily = (article) => article && article.edition === 'daily';
+const originOf = (article) => (isDaily(article) ? DAILY_ORIGIN : SITE_ORIGIN);
+const nameOf = (article) => (isDaily(article) ? DAILY_NAME : 'EPRIS Journal');
 const DEFAULT_IMAGE = `${SITE_ORIGIN}/og/default.jpg`;
 /* Карточки превью разделов (1200×630) лежат в public/og/<раздел>.jpg и
    рисуются ~/epris-tools/og_cards.py. Раньше у всех разделов было одно и то
@@ -242,14 +255,16 @@ function escapeHtml(value) {
 
 
 function relatedLinks(current) {
-  const same = publicArticles.filter((a) =>
+  // "Read next" stays inside the edition the reader is in.
+  const pool = publicArticles.filter((a) => isDaily(a) === isDaily(current));
+  const same = pool.filter((a) =>
     a.id !== current.id && a.category && a.category === current.category);
-  const rest = publicArticles.filter((a) =>
+  const rest = pool.filter((a) =>
     a.id !== current.id && !same.includes(a));
   const picked = [...same, ...rest].slice(0, 6);
   if (!picked.length) return '';
   return `<h2>Read next</h2><ul>${picked.map((a) =>
-    `<li><a href="${SITE_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a></li>`
+    `<li><a href="${originOf(a)}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a></li>`
   ).join('')}</ul>`;
 }
 
@@ -326,6 +341,10 @@ function isPublicEntry(entry) {
   return !(Number.isFinite(publishAt) && publishAt > Date.now());
 }
 const publicArticles = (content.articles || []).filter(isPublicEntry);
+// The journal's own lists (home, /articles, sitemap, RSS) leave Daily out;
+// Daily gets its own set under dist/daily/ further down.
+const mainArticles = publicArticles.filter((a) => !isDaily(a));
+const dailyArticles = publicArticles.filter(isDaily);
 const publicReviews = (content.reviews || []).filter(isPublicEntry);
 
 // Schema.org type for a review's itemReviewed. Kept in sync with
@@ -364,7 +383,9 @@ for (const article of publicArticles) {
   // усе, що показується як сніпет чи картка, обрізане metaDescription().
   const excerpt = escapeAttr(metaDescription(article.excerpt));
   const title = escapeAttr(article.title);
-  const url = `${SITE_ORIGIN}/article/${slug}/`;
+  const ORIGIN = originOf(article);
+  const PUB = nameOf(article);
+  const url = `${ORIGIN}/article/${slug}/`;
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -383,18 +404,18 @@ for (const article of publicArticles) {
     mainEntityOfPage: url,
     publisher: {
       '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_ORIGIN,
+      name: PUB,
+      url: ORIGIN,
       logo: { '@type': 'ImageObject', url: DEFAULT_IMAGE },
     },
   };
   const breadcrumbs = breadcrumbSchema([
-    { name: 'EPRIS Journal', url: `${SITE_ORIGIN}/` },
-    { name: 'Articles', url: `${SITE_ORIGIN}/articles` },
+    { name: PUB, url: `${ORIGIN}/` },
+    { name: 'Articles', url: `${ORIGIN}/articles` },
     { name: article.title, url },
   ]);
 
-  const headBlock = `<title>${article.title} | EPRIS Journal</title>
+  const headBlock = `<title>${article.title} | ${PUB}</title>
     ${imageUrl ? `<link rel="preload" as="image" href="${escapeAttr(imageUrl)}" fetchpriority="high" />` : ''}
     <meta name="description" content="${excerpt}" />
     <meta name="keywords" content="${escapeAttr(articleKeywords(article))}" />
@@ -406,7 +427,7 @@ for (const article of publicArticles) {
     <meta property="og:image:alt" content="${title}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="${url}" />
-    <meta property="og:site_name" content="EPRIS Journal" />
+    <meta property="og:site_name" content="${PUB}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${excerpt}" />
@@ -423,7 +444,7 @@ for (const article of publicArticles) {
       ${imageUrl ? `<p><img src="${escapeAttr(imageUrl)}" alt="${title}" width="1200" height="800" /></p>` : ''}
       ${articleParagraphs(article)}
       ${relatedLinks(article)}
-      <nav><a href="${SITE_ORIGIN}/articles/">All articles</a> · <a href="${SITE_ORIGIN}/">EPRIS Journal</a></nav>
+      <nav><a href="${ORIGIN}/articles/">All articles</a> · <a href="${ORIGIN}/">${PUB}</a></nav>
     </article>`);
   const pageHtml = template
     .replace('<!--TITLE-->', headBlock)
@@ -653,7 +674,7 @@ function routeHead(route, label) {
     ${breadcrumbs ? `<script type="application/ld+json">${safeJson(breadcrumbs)}</script>` : ''}`;
 }
 
-const articleLinks = publicArticles.map((a) =>
+const articleLinks = mainArticles.map((a) =>
   `<li><a href="${SITE_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a>` +
   `${a.excerpt ? `: ${escapeHtml(String(a.excerpt).slice(0, 140))}` : ''}</li>`).join('\n');
 const reviewLinks = publicReviews.map((r) => {
@@ -758,7 +779,7 @@ const sitemapEntries = [
   // без нього відповідає 301. Карта з редиректами марно витрачає обхід
   // і світиться помилкою в Search Console.
   ...sitemapRoutes.map((route) => ({ loc: route ? `${SITE_ORIGIN}/${route}/` : `${SITE_ORIGIN}/`, priority: route ? '0.7' : '1.0', changefreq: route === 'articles' ? 'daily' : 'weekly', image: route ? '' : DEFAULT_IMAGE })),
-  ...publicArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
+  ...mainArticles.map((article) => ({ loc: `${SITE_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '', image: resolveImage(article), imageTitle: article.title })),
   ...publicReviews.map((review) => ({ loc: `${SITE_ORIGIN}/review/${generateSlug(review.title || '') || review.id}/`, priority: '0.7', changefreq: 'monthly', lastmod: formatDate(review.updatedAt) || formatDate(review.date) || '', image: resolveImage(review), imageTitle: review.title })),
   ...STATIC_PAGES.map((page) => ({ loc: `${SITE_ORIGIN}/${page}/`, priority: page === 'app' ? '0.6' : '0.3', changefreq: 'yearly' })),
 ];
@@ -770,9 +791,9 @@ console.log(`Generated: /sitemap.xml (${sitemapEntries.length} URLs)`);
    Повний текст у <content:encoded>, а не лише анонс: агрегатори й
    читалки беруть матеріал цілком, і сторінка встигає розійтись раніше,
    ніж її обійде пошуковик. */
-const feedItems = publicArticles.slice(0, 30).map((article) => {
+const feedItemsFor = (list) => list.slice(0, 30).map((article) => {
   const slug = generateSlug(article.title);
-  const link = `${SITE_ORIGIN}/article/${slug}/`;
+  const link = `${originOf(article)}/article/${slug}/`;
   const pub = formatDate(article.date) || formatDate(article.updatedAt);
   const body = articleParagraphs(article);
   const img = resolveImage(article);
@@ -788,6 +809,7 @@ const feedItems = publicArticles.slice(0, 30).map((article) => {
     <content:encoded><![CDATA[${img ? `<p><img src="${img}" alt="${escapeAttr(article.title)}" /></p>` : ''}${body}]]></content:encoded>
   </item>`;
 }).join('\n');
+const feedItems = feedItemsFor(mainArticles);
 
 const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -806,7 +828,7 @@ ${feedItems}
 `;
 writeFileSync(join(distDir, 'rss.xml'), feedXml);
 writeFileSync(join(distDir, 'feed.xml'), feedXml);
-console.log(`Generated: /rss.xml (${publicArticles.slice(0, 30).length} items)`);
+console.log(`Generated: /rss.xml (${mainArticles.slice(0, 30).length} items)`);
 
 /* IndexNow: Bing, Yandex, Seznam і Naver забирають адресу за хвилини,
    а не чекають наступного обходу. Ключ лежить файлом у корені сайту,
@@ -816,6 +838,77 @@ writeFileSync(join(distDir, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
 writeFileSync(join(distDir, 'indexnow-urls.txt'),
   sitemapEntries.map((e) => e.loc).join('\n') + '\n');
 console.log('Generated: IndexNow key + url list');
+
+/* ── EPRIS Daily: its own home, sitemap, feed and robots under dist/daily/ ──
+   nginx on daily.eprisjournal.com serves daily/index.html for / and for any
+   address that is not a real file, and maps /sitemap.xml, /rss.xml,
+   /feed.xml and /robots.txt to the files below. */
+{
+  const dailyDir = join(distDir, 'daily');
+  mkdirSync(dailyDir, { recursive: true });
+  const dailyLinks = dailyArticles.map((a) =>
+    `<li><a href="${DAILY_ORIGIN}/article/${generateSlug(a.title)}/">${escapeHtml(a.title)}</a>` +
+    `${a.excerpt ? `: ${escapeHtml(String(a.excerpt).slice(0, 140))}` : ''}</li>`).join('\n');
+  const dailySchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: DAILY_NAME,
+    url: `${DAILY_ORIGIN}/`,
+    description: DAILY_META.description,
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_ORIGIN, logo: DEFAULT_IMAGE },
+  };
+  const dailyHead = `<title>${DAILY_META.title}</title>
+    <meta name="description" content="${escapeAttr(DAILY_META.description)}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="${DAILY_ORIGIN}/" />
+    <link rel="alternate" type="application/rss+xml" title="${DAILY_NAME}" href="${DAILY_ORIGIN}/rss.xml" />
+    <meta property="og:title" content="${escapeAttr(DAILY_META.title)}" />
+    <meta property="og:description" content="${escapeAttr(DAILY_META.description)}" />
+    <meta property="og:image" content="${SITE_ORIGIN}/og/home.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${DAILY_ORIGIN}/" />
+    <meta property="og:site_name" content="${DAILY_NAME}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(DAILY_META.title)}" />
+    <meta name="twitter:description" content="${escapeAttr(DAILY_META.description)}" />
+    <meta name="twitter:image" content="${SITE_ORIGIN}/og/home.jpg" />
+    <script type="application/ld+json">${safeJson(dailySchema)}</script>`;
+  const dailyBody = prerenderBody(`<main>
+      <h1>${escapeHtml(DAILY_NAME)}</h1>
+      <p>${escapeHtml(DAILY_META.description)}</p>
+      <h2>Latest</h2><ul>${dailyLinks}</ul>
+      <p><a href="${SITE_ORIGIN}/">EPRIS Journal</a> · <a href="https://museum.eprisjournal.com/">EPRIS Museum</a></p>
+    </main>`);
+  writeFileSync(join(dailyDir, 'index.html'),
+    template.replace('<!--TITLE-->', dailyHead).replace('<div id="root"></div>', dailyBody));
+
+  const dailyEntries = [
+    { loc: `${DAILY_ORIGIN}/`, priority: '1.0', changefreq: 'daily' },
+    { loc: `${DAILY_ORIGIN}/articles`, priority: '0.7', changefreq: 'daily' },
+    ...dailyArticles.map((article) => ({ loc: `${DAILY_ORIGIN}/article/${generateSlug(article.title)}/`, priority: '0.8', changefreq: 'monthly', lastmod: formatDate(article.updatedAt) || formatDate(article.date) || '' })),
+  ];
+  writeFileSync(join(dailyDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${dailyEntries.map((entry) => `  <url>\n    <loc>${entry.loc}</loc>${entry.lastmod ? `\n    <lastmod>${String(entry.lastmod).slice(0, 10)}</lastmod>` : ''}\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`);
+
+  const dailyFeed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${escapeXml(DAILY_NAME)}</title>
+  <link>${DAILY_ORIGIN}/</link>
+  <atom:link href="${DAILY_ORIGIN}/rss.xml" rel="self" type="application/rss+xml" />
+  <description>${escapeXml(DAILY_META.description)}</description>
+  <language>en</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${feedItemsFor(dailyArticles)}
+</channel>
+</rss>
+`;
+  writeFileSync(join(dailyDir, 'rss.xml'), dailyFeed);
+  writeFileSync(join(dailyDir, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${DAILY_ORIGIN}/sitemap.xml\n`);
+  console.log(`Generated: /daily/ (home, sitemap, rss) – ${dailyArticles.length} Daily pieces`);
+}
 
 // Catch-all 404 (also a copy of the shell) for any unmatched path.
 const notFoundHtml = template.replace('<!--TITLE-->', routeHead('', 'EPRIS Journal'));
