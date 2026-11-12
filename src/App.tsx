@@ -1004,7 +1004,7 @@ const LANG_LABELS: Record<string, string> = {
   FR: 'Français'
 };
 
-/* Daily's logo: the EPRIS flower (public/daily-logo.svg) beside the DAILY
+/* Daily's logo: the EPRIS flower (public/daily-flower.svg; a new name, never reuse one: .svg is cached as immutable) beside the DAILY
    wordmark. Drawn through a CSS mask so it takes the header's text colour:
    dark on the light bar, light on the dark home cell. */
 function DailyMark({ className = '' }: { className?: string }) {
@@ -1013,7 +1013,7 @@ function DailyMark({ className = '' }: { className?: string }) {
       aria-hidden="true"
       className={`inline-block shrink-0 bg-current ${className}`}
       style={{
-        WebkitMaskImage: 'url(/daily-logo.svg)', maskImage: 'url(/daily-logo.svg)',
+        WebkitMaskImage: 'url(/daily-flower.svg)', maskImage: 'url(/daily-flower.svg)',
         WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
         WebkitMaskPosition: 'center', maskPosition: 'center',
         WebkitMaskSize: 'contain', maskSize: 'contain',
