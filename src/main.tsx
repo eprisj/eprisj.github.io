@@ -3,16 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { startImageReveal } from './lib/imageReveal';
-import { isDailySite } from './data';
-
-// Daily's tab icon is its own mark (the flower with a quarter cut away).
-if (isDailySite()) {
-  document.querySelectorAll<HTMLLinkElement>('link[rel~="icon"]').forEach((l) => l.remove());
-  const icon = document.createElement('link');
-  icon.rel = 'icon'; icon.type = 'image/svg+xml'; icon.href = '/daily-logo.svg';
-  document.head.appendChild(icon);
-}
-
 // Last-resort safety net: App.tsx has its own boundary around each lazy tab
 // for the specific "stale JS chunk after a redeploy" case, but ANY other
 // uncaught render error anywhere in the tree (a malformed content entry, a

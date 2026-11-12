@@ -1004,15 +1004,14 @@ const LANG_LABELS: Record<string, string> = {
   FR: 'Français'
 };
 
-/* Daily's mark: the EPRIS flower with its upper-right quarter cut away
-   (public/daily-logo.svg). Drawn through a CSS mask so it takes the header's
-   text colour: dark on the light bar, light on the dark home cell. */
+/* Daily's logo: the EPRIS flower (public/daily-logo.svg) beside the DAILY
+   wordmark. Drawn through a CSS mask so it takes the header's text colour:
+   dark on the light bar, light on the dark home cell. */
 function DailyMark({ className = '' }: { className?: string }) {
   return (
     <span
-      role="img"
-      aria-label="Daily"
-      className={`inline-block bg-current ${className}`}
+      aria-hidden="true"
+      className={`inline-block shrink-0 bg-current ${className}`}
       style={{
         WebkitMaskImage: 'url(/daily-logo.svg)', maskImage: 'url(/daily-logo.svg)',
         WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
@@ -1135,7 +1134,7 @@ function NavBar({
           className="absolute left-1/2 -translate-x-1/2 leading-none font-display px-3 py-2 text-[var(--c-accent)]"
         >
           {isDailySite()
-            ? <DailyMark className="h-9 w-9" />
+            ? <span className="inline-flex items-center gap-2.5"><DailyMark className="h-7 w-7" /><span className="whitespace-nowrap text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span></span>
             : <span className="whitespace-nowrap text-lg min-[360px]:text-xl tracking-[0.22em] pl-[0.22em]">{brandName}</span>}
         </a>
         {/* Language is the only control that earns a place beside the wordmark
@@ -1167,7 +1166,7 @@ function NavBar({
         <div className={`w-64 px-6 flex items-center shrink-0 z-50 ${activeTab === 'gallery' ? 'bg-[var(--c-accent)] text-[var(--c-bg)]' : 'bg-[var(--c-bg)] text-[var(--c-accent)]'} transition-colors duration-200`}>
           <a href="/" className="flex items-center font-display text-current" onClick={(event) => { event.preventDefault(); onHome(); }} aria-label={`${brandName} – home`} aria-current={activeTab === 'gallery' ? 'page' : undefined}>
             {isDailySite()
-              ? <DailyMark className="h-10 w-10" />
+              ? <span className="inline-flex items-center gap-3"><DailyMark className="h-8 w-8" /><span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span></span>
               : <span className="text-xl tracking-[0.2em] pl-[0.2em] normal-case leading-none">{brandName}</span>}
           </a>
         </div>
