@@ -59,7 +59,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-F3F5GCXFBF');
+      /* Один ресурс GA на оба сайта; группа контента делит отчёты на
+         журнал и Daily (Engagement → Pages and screens → Content group). */
+      gtag('config', 'G-F3F5GCXFBF', {
+        content_group: location.hostname === 'daily.eprisjournal.com' ? 'Daily' : 'Journal'
+      });
     </script>
 
     <!-- Власний лічильник (легший за GA, для швидкого приватного числа
@@ -67,34 +71,98 @@
          SPA, бо React Router міняє URL без перезавантаження сторінки. -->
     <script>
       (function () {
-        var send = function () {
+        /* Точность. Роботов маячок не шлёт: их запросы к страницам пишет лог
+           nginx, и счётчик показывает их отдельно (иначе Googlebot, который
+           исполняет JS, считался бы дважды). Просмотр по ссылке предпросмотра
+           записывается с пометкой «редакция». Тот же адрес повторно не
+           засчитывается: сайт сам нормализует /article/12 в слаг через
+           replaceState, и раньше это давало два просмотра вместо одного. */
+        var ua = navigator.userAgent || "";
+        if (navigator.webdriver || /bot|crawl|spider|headless|lighthouse|pagespeed|preview/i.test(ua)) return;
+        var API = "https://api.eprisjournal.com/analytics/";
+        var post = function (route, data) {
           try {
-            /* Заголовок страницы и ширина экрана нужны отчёту: путь вроде
-               /article/23 ничего не говорит редакции, а разбивка по
-               ширине показывает, с чего на самом деле читают. */
-            var body = JSON.stringify({
-              path: location.pathname,
-              /* eprisjournal.com или daily.eprisjournal.com: одна сборка
-                 обслуживает оба издания, статистика общая с разбивкой. */
-              host: location.hostname,
-              ref: document.referrer || "",
-              title: (document.title || "").slice(0, 200),
-              w: window.screen ? window.screen.width : 0
-            });
+            var body = JSON.stringify(data);
+            /* text/plain, а не application/json: sendBeacon шлёт запрос
+               с credentials и не умеет preflight, поэтому любой
+               несупростой Content-Type он молча роняет на CORS.
+               Сервер разбирает тело как JSON независимо от заголовка. */
             if (navigator.sendBeacon) {
-              /* text/plain, а не application/json: sendBeacon шлёт запрос
-                 с credentials и не умеет preflight, поэтому любой
-                 несупростой Content-Type он молча роняет на CORS.
-                 Сервер разбирает тело как JSON независимо от заголовка. */
-              navigator.sendBeacon("https://api.eprisjournal.com/analytics/hit",
-                new Blob([body], { type: "text/plain;charset=UTF-8" }));
+              navigator.sendBeacon(API + route, new Blob([body], { type: "text/plain;charset=UTF-8" }));
             } else {
-              fetch("https://api.eprisjournal.com/analytics/hit", {
-                method: "POST", body: body, keepalive: true,
-                headers: { "Content-Type": "application/json" },
-              }).catch(function () {});
+              fetch(API + route, { method: "POST", body: body, keepalive: true,
+                headers: { "Content-Type": "text/plain;charset=UTF-8" } }).catch(function () {});
             }
           } catch (e) {}
+        };
+        /* Визит = вкладка: идентификатор живёт в sessionStorage, без cookie. */
+        var sid = "";
+        try {
+          sid = sessionStorage.getItem("epris_sid") || "";
+          if (!sid) { sid = Math.random().toString(36).slice(2, 12) + Date.now().toString(36); sessionStorage.setItem("epris_sid", sid); }
+        } catch (e) {}
+        var isPreview = function () { return /[?&]preview=/.test(location.search); };
+
+        /* Вовлечённость: сколько страница была ВИДНА и как глубоко её
+           прокрутили. Статьи читаются в оверлее со своей прокруткой, поэтому
+           глубина берётся из любого прокручиваемого элемента, а не только окна. */
+        var cur = null;
+        var start = function () {
+          cur = { path: location.pathname, host: location.hostname, ms: 0,
+                  since: document.visibilityState === "visible" ? Date.now() : 0, depth: 0 };
+        };
+        var flush = function () {
+          if (!cur) return;
+          if (cur.since) { cur.ms += Date.now() - cur.since; cur.since = 0; }
+          if (cur.ms >= 1000 && !isPreview()) {
+            post("engage", { path: cur.path, host: cur.host, sid: sid, ms: Math.round(cur.ms), depth: Math.round(cur.depth) });
+          }
+          cur.ms = 0;
+        };
+        var measure = function (el) {
+          if (!cur) return;
+          var top, max;
+          if (!el || el === document || el === document.documentElement || el === document.body) {
+            top = window.scrollY || 0; max = (document.documentElement.scrollHeight || 0) - window.innerHeight;
+          } else {
+            top = el.scrollTop; max = el.scrollHeight - el.clientHeight;
+          }
+          if (max > 40) cur.depth = Math.max(cur.depth, Math.min(100, (top / max) * 100));
+          else cur.depth = Math.max(cur.depth, 100);
+        };
+        addEventListener("scroll", function (ev) { measure(ev.target); }, { capture: true, passive: true });
+
+        var lastSent = "";
+        /* Внутри сайта источником перехода считается предыдущая страница,
+           а не исходный referrer, который у SPA не меняется. */
+        var prevUrl = document.referrer || "";
+        var send = function () {
+          var key = location.hostname + location.pathname;
+          if (key === lastSent) return;
+          flush();
+          lastSent = key;
+          start();
+          setTimeout(function () { measure(document); }, 1500);
+          var path = location.pathname, host = location.hostname, ref = prevUrl;
+          prevUrl = location.href;
+          var preview = isPreview();
+          /* Заголовок страницы и ширина экрана нужны отчёту: путь вроде
+             /article/23 ничего не говорит редакции, а разбивка по
+             ширине показывает, с чего на самом деле читают. Заголовок
+             берём чуть позже: приложение ставит его после смены адреса. */
+          setTimeout(function () {
+            post("hit", {
+              path: path,
+              /* eprisjournal.com или daily.eprisjournal.com: одна сборка
+                 обслуживает оба сайта, статистика общая с разбивкой. */
+              host: host,
+              ref: ref,
+              title: (document.title || "").slice(0, 200),
+              w: window.screen ? window.screen.width : 0,
+              sid: sid,
+              preview: preview
+            });
+          }, 400);
         };
         send();
         ["pushState", "replaceState"].forEach(function (m) {
@@ -106,6 +174,12 @@
           };
         });
         addEventListener("popstate", send);
+        document.addEventListener("visibilitychange", function () {
+          if (!cur) return;
+          if (document.visibilityState === "hidden") flush();
+          else if (!cur.since) cur.since = Date.now();
+        });
+        addEventListener("pagehide", flush);
       })();
     </script>
 

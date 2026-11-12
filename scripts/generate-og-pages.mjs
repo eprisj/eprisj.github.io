@@ -406,10 +406,13 @@ for (const article of [...mainArticles, ...dailyArticles]) {
     headline: article.title,
     alternativeHeadline: article.subcategory || undefined,
     description: article.excerpt || '',
-    image: [imageUrl],
-    datePublished: formatDate(article.date),
-    dateModified: formatDate(article.updatedAt) || formatDate(article.date),
-    author: { '@type': 'Person', name: article.author || 'EPRIS Editorial' },
+    // Google reads an ISO publication time and an author that is a Person
+    // with a URL; the free-text `date` is display only.
+    image: imageUrl ? [imageUrl] : undefined,
+    datePublished: formatDate(article.publishedAt || article.publishAt) || formatDate(article.date),
+    dateModified: formatDate(article.updatedAt) || formatDate(article.publishedAt) || formatDate(article.date),
+    author: { '@type': 'Person', name: article.author || 'EPRIS Editorial', url: `${ORIGIN}/about/` },
+    isAccessibleForFree: true,
     articleSection: article.category || undefined,
     keywords: articleKeywords(article),
     articleBody: articleBody(article) || undefined,
@@ -420,7 +423,7 @@ for (const article of [...mainArticles, ...dailyArticles]) {
       '@type': 'Organization',
       name: PUB,
       url: ORIGIN,
-      logo: { '@type': 'ImageObject', url: DEFAULT_IMAGE },
+      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/favicon-512.png`, width: 512, height: 512 },
     },
   };
   const breadcrumbs = breadcrumbSchema([

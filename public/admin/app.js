@@ -25615,6 +25615,8 @@ const ANALYTICS_API = 'https://api.eprisjournal.com/analytics/stats';
 let anDays = 30;
 /* all — eprisjournal.com и daily.eprisjournal.com вместе, main / daily — одно издание. */
 let anSite = IS_DAILY_ADMIN ? 'daily' : 'all';
+/* human — читатели (по умолчанию), bot — роботы, all — все записи. */
+let anWho = 'human';
 
 const anNum = (n) => (n || 0).toLocaleString('ru-RU');
 /* Секунды читаются плохо: 515 с это «8 мин 35 с». */
@@ -25658,56 +25660,254 @@ function anCard(label, value, sub, delta, spark) {
   </div>`;
 }
 
-/* Площадной график: две линии с заливкой. Строится руками, потому что
-   ради одного графика подключать библиотеку в статичную панель незачем. */
-function anArea(host, rows) {
-  if (!rows.length) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
-  const W = 1000, H = 260, padL = 44, padR = 12, padT = 14, padB = 30;
-  const max = Math.max(4, ...rows.map(r => r.hits));
-  const x = (i) => padL + (rows.length === 1 ? (W - padL - padR) / 2
-    : i * (W - padL - padR) / (rows.length - 1));
-  const y = (v) => H - padB - (v / max) * (H - padT - padB);
+/* ── Графики посещаемости ───────────────────────────────────────────────
+   Рисуются руками (SVG), панель статичная. Правила: одна ось, тонкие линии,
+   легенда при двух сериях, подсказка с перекрестием на линиях и на каждом
+   столбце, цвета серий из CSS-переменных (--an-s1 / --an-s2, своя пара для
+   тёмной темы), текст всегда цветом текста, не цветом серии. */
 
-  const line = (key) => rows.map((r, i) => `${x(i).toFixed(1)},${y(r[key]).toFixed(1)}`).join(' ');
-  const area = (key) => `${x(0).toFixed(1)},${(H - padB).toFixed(1)} ` + line(key) +
-    ` ${x(rows.length - 1).toFixed(1)},${(H - padB).toFixed(1)}`;
+/* Дни периода подряд, включая пустые: сервер отдаёт только дни с данными,
+   а пропуск на графике выглядел бы как линия через ноль без отметки. */
+function anFillDays(rows, days, endOffsetDays = 0) {
+  const byDate = new Map((rows || []).map(r => [r.date, r]));
+  const out = [];
+  const end = new Date(Date.now() - endOffsetDays * 86400000);
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(end.getTime() - i * 86400000).toISOString().slice(0, 10);
+    const r = byDate.get(d) || {};
+    out.push({ ...r, date: d, hits: r.hits || 0, unique: r.unique || 0 });
+  }
+  return out;
+}
 
-  /* Четыре линии сетки: больше превращает график в бумагу в клетку. */
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => {
-    const v = Math.round(max * f);
+/* Ось с круглыми делениями: шаг 1/2/2.5/5 × 10ⁿ, верх кратен шагу. */
+function anScale(max, steps = 4) {
+  const raw = Math.max(1, max) / steps;
+  const p = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * p).find(v => v >= raw);
+  const s = step < 1 ? 1 : step;
+  const top = Math.ceil(Math.max(1, max) / s) * s;
+  const ticks = [];
+  for (let v = 0; v <= top + 1e-9; v += s) ticks.push(Math.round(v));
+  return { top, ticks };
+}
+/* Подписи дат: через равный шаг, последняя — только если не налезает. */
+function anDateTicks(n) {
+  const every = Math.max(1, Math.ceil(n / 8));
+  const set = new Set();
+  for (let i = 0; i < n; i += every) set.add(i);
+  if ((n - 1) % every >= every / 2 || n - 1 === 0) set.add(n - 1);
+  return set;
+}
+
+const anDateLabel = (iso) => new Date(iso + 'T12:00:00Z')
+  .toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', weekday: 'short' });
+
+/* Одна подсказка на график: значение крупно, подпись серии мельче,
+   ключ серии — короткий штрих её цвета. Текст только через textContent. */
+function anTip(host) {
+  let tip = host.querySelector(':scope > .an-tip');
+  if (!tip) { tip = document.createElement('div'); tip.className = 'an-tip'; tip.hidden = true; host.appendChild(tip); }
+  return {
+    show(x, y, title, rows) {
+      tip.replaceChildren();
+      const h = document.createElement('div'); h.className = 'an-tip-title'; h.textContent = title; tip.appendChild(h);
+      for (const r of rows) {
+        const row = document.createElement('div'); row.className = 'an-tip-row';
+        const key = document.createElement('i'); key.className = 'an-tip-key' + (r.dashed ? ' is-dashed' : '');
+        key.style.setProperty('--k', r.color);
+        const v = document.createElement('b'); v.textContent = r.value;
+        const l = document.createElement('span'); l.textContent = r.label;
+        row.append(key, v, l); tip.appendChild(row);
+      }
+      tip.hidden = false;
+      const hw = host.clientWidth, tw = tip.offsetWidth;
+      tip.style.left = Math.max(4, Math.min(hw - tw - 4, x + 14)) + 'px';
+      tip.style.top = Math.max(4, y - 10) + 'px';
+    },
+    hide() { tip.hidden = true; },
+  };
+}
+
+/* Динамика: просмотры и посетители за период, пунктиром — просмотры за
+   прошлый период той же длины, день в день. Перекрестие находит день по X. */
+function anArea(host, rows, prevRows) {
+  if (!rows.some(r => r.hits)) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const W = 1000, H = 280, padL = 44, padR = 14, padT = 16, padB = 30;
+  const prev = prevRows && prevRows.length === rows.length ? prevRows : null;
+  const scale = anScale(Math.max(4, ...rows.map(r => r.hits), ...(prev ? prev.map(r => r.hits) : [])));
+  const nice = scale.top;
+  const x = (i) => padL + (rows.length === 1 ? (W - padL - padR) / 2 : i * (W - padL - padR) / (rows.length - 1));
+  const y = (v) => H - padB - (v / nice) * (H - padT - padB);
+  const pts = (list, key) => list.map((r, i) => `${x(i).toFixed(1)},${y(r[key]).toFixed(1)}`).join(' ');
+  const ticks = scale.ticks.map(v => {
     return `<line class="an-grid-line" x1="${padL}" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}"/>
-            <text class="an-axis" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${anNum(v)}</text>`;
+      <text class="an-axis" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${anNum(v)}</text>`;
   }).join('');
-
-  /* Подписи дат прореживаем: на 90 днях они иначе слипаются в полосу. */
-  const every = Math.max(1, Math.ceil(rows.length / 10));
-  const labels = rows.map((r, i) => (i % every === 0 || i === rows.length - 1)
+  const dateTicks = anDateTicks(rows.length);
+  const labels = rows.map((r, i) => dateTicks.has(i)
     ? `<text class="an-axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">${r.date.slice(8)}.${r.date.slice(5, 7)}</text>` : '').join('');
+  const area = `${x(0)},${H - padB} ${pts(rows, 'hits')} ${x(rows.length - 1)},${H - padB}`;
+  host.innerHTML = `<div class="an-legend-row">
+      <span><i class="an-key" style="--k:var(--an-s1)"></i>просмотры</span>
+      <span><i class="an-key" style="--k:var(--an-s2)"></i>посетители</span>
+      ${prev ? '<span><i class="an-key is-dashed" style="--k:var(--an-s1)"></i>просмотры, прошлый период</span>' : ''}
+    </div>
+    <svg viewBox="0 0 ${W} ${H}" class="an-area-svg" preserveAspectRatio="none" role="img"
+      aria-label="Просмотры и посетители по дням">
+      ${ticks}
+      <polygon points="${area}" class="an-fill-s1"/>
+      ${prev ? `<polyline points="${pts(prev, 'hits')}" class="an-line an-line--prev"/>` : ''}
+      <polyline points="${pts(rows, 'hits')}" class="an-line an-line--s1"/>
+      <polyline points="${pts(rows, 'unique')}" class="an-line an-line--s2"/>
+      ${labels}
+      <line class="an-cross" x1="0" x2="0" y1="${padT}" y2="${H - padB}" visibility="hidden"/>
+      <circle class="an-cross-dot an-cross-dot--s1" r="5" visibility="hidden"/>
+      <circle class="an-cross-dot an-cross-dot--s2" r="5" visibility="hidden"/>
+      <rect class="an-hitbox" x="${padL}" y="0" width="${W - padL - padR}" height="${H}" fill="transparent" tabindex="0"/>
+    </svg>`;
+  const svg = host.querySelector('svg');
+  const cross = svg.querySelector('.an-cross');
+  const d1 = svg.querySelector('.an-cross-dot--s1'), d2 = svg.querySelector('.an-cross-dot--s2');
+  const tip = anTip(host);
+  let current = -1;
+  const show = (i) => {
+    current = i;
+    const r = rows[i];
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
+    d1.setAttribute('cx', x(i)); d1.setAttribute('cy', y(r.hits)); d1.setAttribute('visibility', 'visible');
+    d2.setAttribute('cx', x(i)); d2.setAttribute('cy', y(r.unique)); d2.setAttribute('visibility', 'visible');
+    const box = svg.getBoundingClientRect(), hb = host.getBoundingClientRect();
+    const items = [
+      { color: 'var(--an-s1)', value: anNum(r.hits), label: 'просмотров' },
+      { color: 'var(--an-s2)', value: anNum(r.unique), label: 'посетителей' },
+    ];
+    if (prev) items.push({ color: 'var(--an-s1)', dashed: true, value: anNum(prev[i].hits), label: 'просмотров ' + anDateLabel(prev[i].date) });
+    tip.show(box.left - hb.left + x(i) / W * box.width, box.top - hb.top + y(Math.max(r.hits, r.unique)) / H * box.height,
+      anDateLabel(r.date), items);
+  };
+  const hide = () => { current = -1; tip.hide(); [cross, d1, d2].forEach(el => el.setAttribute('visibility', 'hidden')); };
+  const hit = svg.querySelector('.an-hitbox');
+  hit.addEventListener('pointermove', (e) => {
+    const box = svg.getBoundingClientRect();
+    const vx = (e.clientX - box.left) / box.width * W;
+    const i = Math.max(0, Math.min(rows.length - 1, Math.round((vx - padL) / ((W - padL - padR) / Math.max(1, rows.length - 1)))));
+    if (i !== current) show(i);
+  });
+  hit.addEventListener('pointerleave', hide);
+  hit.addEventListener('focus', () => show(rows.length - 1));
+  hit.addEventListener('blur', hide);
+  hit.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(Math.max(0, (current < 0 ? rows.length : current) - 1)); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(Math.min(rows.length - 1, current + 1)); }
+  });
+}
 
-  const dots = rows.map((r, i) =>
-    `<circle class="an-hit" cx="${x(i)}" cy="${y(r.hits)}" r="9" fill="transparent">
-       <title>${r.date}: ${r.hits} просмотров, ${r.unique} посетителей</title></circle>`).join('');
+/* Журнал и Daily по дням: сложенные столбцы, у каждого свой ховер. */
+function anSitesChart(host, rows, opts = {}) {
+  const single = opts.single || null;   // { label, aria }: одна серия без легенды
+  if (!rows.some(r => r.main || r.daily)) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  const W = 1000, H = 220, padL = 44, padR = 10, padT = 12, padB = 28, gap = 2;
+  const scale = anScale(Math.max(4, ...rows.map(r => r.main + r.daily)), 2);
+  const nice = scale.top;
+  const slot = (W - padL - padR) / rows.length;
+  const bw = Math.max(2, Math.min(28, slot - 4));
+  const y = (v) => H - padB - (v / nice) * (H - padT - padB);
+  const ticks = scale.ticks.map(v => {
+    return `<line class="an-grid-line" x1="${padL}" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}"/>
+      <text class="an-axis" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${anNum(v)}</text>`;
+  }).join('');
+  const dateTicks = anDateTicks(rows.length);
+  const bars = rows.map((r, i) => {
+    const cx = padL + slot * i + slot / 2, x0 = cx - bw / 2;
+    const yMain = y(r.main), yTop = y(r.main + r.daily);
+    const hMain = H - padB - yMain, hDaily = yMain - yTop;
+    const label = dateTicks.has(i)
+      ? `<text class="an-axis" x="${cx}" y="${H - 8}" text-anchor="middle">${r.date.slice(8)}.${r.date.slice(5, 7)}</text>` : '';
+    return `<g class="an-col" data-i="${i}" tabindex="0">
+      <rect x="${padL + slot * i}" y="${padT}" width="${slot}" height="${H - padT - padB}" fill="transparent"/>
+      ${hMain > 0 ? `<rect class="an-bar-s1" x="${x0}" y="${yMain}" width="${bw}" height="${hMain}" rx="${Math.min(2, bw / 2)}"/>` : ''}
+      ${hDaily > gap ? `<rect class="an-bar-s2" x="${x0}" y="${yTop}" width="${bw}" height="${hDaily - gap}" rx="${Math.min(2, bw / 2)}"/>` : ''}
+      ${label}</g>`;
+  }).join('');
+  host.innerHTML = `${single ? '' : `<div class="an-legend-row">
+      <span><i class="an-key is-box" style="--k:var(--an-s1)"></i>журнал</span>
+      <span><i class="an-key is-box" style="--k:var(--an-s2)"></i>Daily</span>
+    </div>`}
+    <svg viewBox="0 0 ${W} ${H}" class="an-cols-svg" preserveAspectRatio="none" role="img"
+      aria-label="${single ? anEsc(single.aria) : 'Просмотры журнала и Daily по дням'}">${ticks}${bars}</svg>`;
+  const svg = host.querySelector('svg');
+  const tip = anTip(host);
+  svg.querySelectorAll('.an-col').forEach((g) => {
+    const show = () => {
+      const r = rows[Number(g.dataset.i)];
+      svg.querySelectorAll('.an-col.is-hover').forEach(el => el.classList.remove('is-hover'));
+      g.classList.add('is-hover');
+      const box = svg.getBoundingClientRect(), hb = host.getBoundingClientRect();
+      const cx = padL + slot * Number(g.dataset.i) + slot / 2;
+      tip.show(box.left - hb.left + cx / W * box.width, box.top - hb.top + y(r.main + r.daily) / H * box.height, anDateLabel(r.date),
+        single ? [{ color: 'var(--an-s1)', value: anNum(r.main), label: single.label }] : [
+          { color: 'var(--an-s1)', value: anNum(r.main), label: 'журнал' },
+          { color: 'var(--an-s2)', value: anNum(r.daily), label: 'Daily' },
+        ]);
+    };
+    const hide = () => { g.classList.remove('is-hover'); tip.hide(); };
+    g.addEventListener('pointerenter', show); g.addEventListener('focus', show);
+    g.addEventListener('pointerleave', hide); g.addEventListener('blur', hide);
+  });
+}
 
-  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="an-area-svg" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="anFillHits" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#5b6b7a" stop-opacity=".28"/>
-        <stop offset="100%" stop-color="#5b6b7a" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="anFillUniq" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#c8a15a" stop-opacity=".30"/>
-        <stop offset="100%" stop-color="#c8a15a" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    ${ticks}
-    <polygon points="${area('hits')}" fill="url(#anFillHits)"/>
-    <polyline points="${line('hits')}" fill="none" stroke="#5b6b7a" stroke-width="2"
-      stroke-linejoin="round" stroke-linecap="round"/>
-    <polygon points="${area('unique')}" fill="url(#anFillUniq)"/>
-    <polyline points="${line('unique')}" fill="none" stroke="#c8a15a" stroke-width="2"
-      stroke-linejoin="round" stroke-linecap="round"/>
-    ${labels}${dots}
-  </svg>`;
+/* Каналы: откуда начинаются визиты. Одна серия — без легенды. */
+const AN_CHANNELS = {
+  search: 'Поиск', social: 'Соцсети', ai: 'AI-ассистенты', referral: 'Ссылки с сайтов',
+  direct: 'Прямые заходы', epris: 'Переходы журнал ↔ Daily и музей',
+};
+function anChannels(host, rows) {
+  const total = rows.reduce((a, r) => a + r.sessions, 0);
+  if (!total) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  host.innerHTML = rows.map(r => {
+    const pct = Math.round(r.sessions / total * 100);
+    return `<div class="an-dev" title="${anEsc(AN_CHANNELS[r.channel] || r.channel)}: ${r.sessions}">
+      <div class="an-dev-top"><span>${anEsc(AN_CHANNELS[r.channel] || r.channel)}</span><b>${pct}%</b></div>
+      <div class="an-dev-track"><i class="is-s1" style="width:${pct}%"></i></div>
+      <span class="an-dev-sub">${anNum(r.sessions)} визитов</span>
+    </div>`;
+  }).join('');
+}
+
+/* Что читают: таблица, а не полоски — у материала пять чисел, и сравнивать
+   их нужно по столбцам. Сортировка по клику на заголовок. */
+function anPagesTable(host, rows, titleOf) {
+  if (!rows.length) { host.innerHTML = '<p class="an-empty">Пока нет просмотров.</p>'; return; }
+  let sortKey = 'hits';
+  const cols = [
+    ['name', 'Страница'], ['hits', 'Просмотры'], ['unique', 'Посетители'], ['avg_sec', 'Время'], ['avg_depth', 'Глубина'],
+  ];
+  const render = () => {
+    const list = rows.slice().sort((a, b) => sortKey === 'name'
+      ? String(titleOf(a)).localeCompare(String(titleOf(b))) : (b[sortKey] || 0) - (a[sortKey] || 0));
+    const table = document.createElement('table'); table.className = 'an-table';
+    const thead = table.createTHead().insertRow();
+    for (const [key, label] of cols) {
+      const th = document.createElement('th'); th.scope = 'col';
+      const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = label + (key === sortKey ? ' ↓' : '');
+      btn.addEventListener('click', () => { sortKey = key; render(); });
+      th.appendChild(btn); if (key !== 'name') th.className = 'is-num'; thead.appendChild(th);
+    }
+    const body = table.createTBody();
+    for (const r of list) {
+      const tr = body.insertRow();
+      const name = tr.insertCell();
+      if (r.host === 'daily.eprisjournal.com') { const tag = document.createElement('span'); tag.className = 'an-tag'; tag.textContent = 'Daily'; name.appendChild(tag); }
+      const t = document.createElement('span'); t.className = 'an-table-title'; t.textContent = titleOf(r); name.appendChild(t);
+      const p = document.createElement('span'); p.className = 'an-table-path'; p.textContent = r.path; name.appendChild(p);
+      for (const [key, fmt] of [['hits', anNum], ['unique', anNum], ['avg_sec', (v) => v ? anMin(v) : '–'], ['avg_depth', (v) => v ? v + '%' : '–']]) {
+        const td = tr.insertCell(); td.className = 'is-num'; td.textContent = fmt(r[key] || 0);
+      }
+    }
+    host.replaceChildren(table);
+  };
+  render();
 }
 
 /* Тепловая карта: день недели против часа. Показывает ритм чтения,
@@ -25771,15 +25971,63 @@ function anDevices(host, rows) {
   }).join('');
 }
 
+/* Роботы: кто ходит, какого рода, когда был последний раз, что обходит. */
+const AN_BOT_CATS = { search: 'Поисковики', ai: 'AI-роботы', social: 'Превью соцсетей и мессенджеров', seo: 'SEO-сервисы', tools: 'Скрипты и мониторинг', other: 'Прочие' };
+function anBots(data) {
+  const b = data.bots || { agents: [], by_day: [], paths: [], total: 0 };
+  const catsHost = byId('anBotCats'), tableHost = byId('anBotAgents'), pathsHost = byId('anBotPaths'), dayHost = byId('anBotDays');
+  if (!catsHost) return;
+  const byCat = {};
+  for (const a of b.agents) byCat[a.category] = (byCat[a.category] || 0) + a.hits;
+  const total = Object.values(byCat).reduce((x, y) => x + y, 0);
+  catsHost.innerHTML = total ? Object.entries(byCat).sort((x, y) => y[1] - x[1]).map(([c, n]) => {
+    const pct = Math.round(n / total * 100);
+    return `<div class="an-dev"><div class="an-dev-top"><span>${anEsc(AN_BOT_CATS[c] || c)}</span><b>${pct}%</b></div>
+      <div class="an-dev-track"><i class="is-s1" style="width:${pct}%"></i></div><span class="an-dev-sub">${anNum(n)} запросов</span></div>`;
+  }).join('') : '<p class="an-empty">Роботов пока не видно — лог роботов собирается каждые 5 минут.</p>';
+  if (tableHost) {
+    if (!b.agents.length) { tableHost.innerHTML = ''; }
+    else {
+      const table = document.createElement('table'); table.className = 'an-table';
+      const head = table.createTHead().insertRow();
+      [['Робот', ''], ['Род', ''], ['Запросы', 'is-num'], ['Страниц', 'is-num'], ['Последний раз', 'is-num']].forEach(([t, c]) => {
+        const th = document.createElement('th'); th.scope = 'col'; th.className = c; th.style.padding = '6px 8px'; th.textContent = t; head.appendChild(th);
+      });
+      const body = table.createTBody();
+      for (const a of b.agents) {
+        const tr = body.insertRow();
+        tr.insertCell().textContent = a.agent;
+        tr.insertCell().textContent = AN_BOT_CATS[a.category] || a.category;
+        const c1 = tr.insertCell(); c1.className = 'is-num'; c1.textContent = anNum(a.hits);
+        const c2 = tr.insertCell(); c2.className = 'is-num'; c2.textContent = anNum(a.pages);
+        const c3 = tr.insertCell(); c3.className = 'is-num';
+        c3.textContent = a.last ? new Date(a.last * 1000).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '–';
+      }
+      tableHost.replaceChildren(table);
+    }
+  }
+  if (pathsHost) anList(pathsHost, (b.paths || []).map(p => ({ name: (p.host === 'daily.eprisjournal.com' ? 'Daily · ' : '') + p.path, hits: p.hits })), 'Пока нет данных.');
+  if (dayHost) {
+    const rows = anFillDays(b.by_day || [], data.span_days || anDays).map(r => ({ date: r.date, main: r.hits || 0, daily: 0 }));
+    anBotDays(dayHost, rows);
+  }
+}
+/* Роботы по дням: одна серия, столбцы с подсказкой. */
+function anBotDays(host, rows) {
+  if (!rows.some(r => r.main)) { host.innerHTML = '<p class="an-empty">Пока нет данных.</p>'; return; }
+  anSitesChart(host, rows, { single: { label: 'запросов роботов', aria: 'Запросы роботов по дням' } });
+}
+
 async function loadAnalytics() {
   const cards = byId('anCards');
   if (!cards) return;
   // The switch shows which slice is open (Daily's room opens on Daily).
   document.querySelectorAll('#anSite [data-site]').forEach((b) => b.classList.toggle('is-on', b.dataset.site === anSite));
+  document.querySelectorAll('#anWho [data-who]').forEach((b) => b.classList.toggle('is-on', b.dataset.who === anWho));
   cards.innerHTML = '<p class="an-empty">Загружаем…</p>';
   let data;
   try {
-    const res = await fetch(`${ANALYTICS_API}?days=${anDays}&site=${anSite}`, {
+    const res = await fetch(`${ANALYTICS_API}?days=${anDays}&site=${anSite}&who=${anWho}`, {
       headers: { 'X-Admin-Password': getAdminPassword() },
       cache: 'no-store',
     });
@@ -25819,9 +26067,16 @@ async function loadAnalytics() {
            data.pages_per_session + ' страниц за визит'),
     anCard('Дочитывают', (100 - (data.bounce_pct || 0)) + '%',
            'смотрят больше одной страницы'),
+    anCard('Время чтения', data.engagement && data.engagement.reads ? anMin(data.engagement.avg_sec) : '–',
+           'вкладка на экране, в среднем за страницу',
+           data.engagement && data.engagement.reads ? anDelta(data.engagement.avg_sec, data.engagement.prev_avg_sec) : null),
+    anCard('Глубина', data.engagement && data.engagement.reads ? data.engagement.avg_depth + '%' : '–',
+           data.engagement && data.engagement.reads ? `до конца: ${data.engagement.finished_pct}% прочтений` : 'соберётся после первых визитов'),
     anCard('Средний визит', anMin(data.avg_session_sec || 0), 'от первой до последней страницы'),
     anCard('Новых за неделю', anNum(data.new_visitors_7d), 'впервые на сайте'),
     anCard('Всего за всё время', anNum(s.all.hits), anNum(s.all.unique) + ' посетителей'),
+    anCard('Роботы', anNum(data.bots ? data.bots.total : 0), `за ${data.span_days} дн., сегодня ${anNum(data.bots ? data.bots.today : 0)}`),
+    anCard('Предпросмотры', anNum(data.previews || 0), 'редакция по ссылке предпросмотра'),
   ].join('');
 
   const since = byId('anSince');
@@ -25841,7 +26096,17 @@ async function loadAnalytics() {
   const note = byId('anPathsNote');
   if (note) note.textContent = 'за ' + data.span_days + ' дней';
 
-  anArea(byId('anArea'), days);
+  const filled = anFillDays(days, data.span_days || anDays);
+  const filledPrev = anFillDays(data.prev_by_day || [], data.span_days || anDays, data.span_days || anDays);
+  anArea(byId('anArea'), filled, (data.prev_by_day || []).length ? filledPrev : null);
+  const sitesBox = byId('anSitesBox');
+  if (sitesBox) {
+    sitesBox.hidden = anSite !== 'all';
+    if (anSite === 'all') anSitesChart(byId('anSitesChart'), anFillDays(data.by_site_day || [], data.span_days || anDays)
+      .map(r => ({ date: r.date, main: r.main || 0, daily: r.daily || 0 })));
+  }
+  anChannels(byId('anChannels'), data.channels || []);
+  anBots(data);
   anHeat(byId('anHeat'), data.heatmap || []);
   anDevices(byId('anDevices'), data.devices || []);
 
@@ -25868,20 +26133,16 @@ async function loadAnalytics() {
     return { name: (langNames[base] || r.lang) + ' (' + r.lang + ')', hits: r.hits };
   }), 'Соберётся за пару дней: сигнал появился только сейчас.');
   const titleByPath = {};
-  (data.page_titles || []).forEach(t => { titleByPath[t.path] = t.title; });
   (data.page_titles || []).forEach(t => { titleByPath[(t.host || '') + t.path] = t.title; });
-  anList(byId('anPaths'), (data.top_paths_30d || []).map(r => {
-    const title = titleByPath[(r.host || '') + r.path] || titleByPath[r.path];
-    const mark = r.host === 'daily.eprisjournal.com' ? 'Daily · ' : '';
-    return {
-      name: mark + (title ? title.replace(/ [—|] EPRIS (Journal|Daily)$/, '') + '  ·  ' + r.path : r.path),
-      hits: r.hits, unique: r.unique };
-  }), 'Пока нет просмотров.');
+  const clean = (t) => String(t || '').replace(/\s+[—|–]\s+(EPRIS Journal|Daily)$/, '').replace(/\s+\|\s+(EPRIS Journal|Daily).*$/, '');
+  anPagesTable(byId('anPaths'), data.top_paths_30d || [], (r) => clean(titleByPath[(r.host || '') + r.path]) || r.path);
 }
 
 document.addEventListener('click', (e) => {
   if (e.target.closest('#anRefresh')) loadAnalytics();
   if (e.target.closest('[data-tab="analytics"]')) setTimeout(loadAnalytics, 50);
+  const whoBtn = e.target.closest('#anWho [data-who]');
+  if (whoBtn) { anWho = whoBtn.dataset.who || 'human'; loadAnalytics(); }
   const siteBtn = e.target.closest('#anSite [data-site]');
   if (siteBtn) {
     anSite = siteBtn.dataset.site || 'all';

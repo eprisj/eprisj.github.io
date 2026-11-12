@@ -16,7 +16,7 @@
          Playfair Display (headlines/quotes) + Orbit (kicker/mono labels,
          the site's own font-mono) + IBM Plex Mono (inline code). -->
     <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=7.15" />
+    <link rel="stylesheet" href="./styles.css?v=7.16" />
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./mobile-polish.css?v=1.3" />
@@ -540,6 +540,12 @@
                   <button type="button" data-site="main">Журнал</button>
                   <button type="button" data-site="daily">Daily</button>
                 </div>
+                <!-- Кого считаем: читатели, роботы или все записи. -->
+                <div class="an-range" id="anWho" role="group" aria-label="Кого считать">
+                  <button type="button" data-who="human" class="is-on">Люди</button>
+                  <button type="button" data-who="bot">Роботы</button>
+                  <button type="button" data-who="all">Все</button>
+                </div>
                 <span class="an-updated" id="anUpdated"></span>
                 <button class="btn btn-secondary" type="button" id="anRefresh">Обновить</button>
               </div>
@@ -551,9 +557,14 @@
             <section class="an-box an-box--hero">
               <header class="an-box-head">
                 <h3>Динамика</h3>
-                <span class="an-legend"><i class="an-dot an-dot--hits"></i>просмотры <i class="an-dot an-dot--uniq"></i>посетители</span>
+                <span class="an-note">наведите на график — значения по дню; ← → с клавиатуры</span>
               </header>
-              <div class="an-area" id="anArea"></div>
+              <div class="an-area an-plot" id="anArea"></div>
+            </section>
+
+            <section class="an-box an-box--hero" id="anSitesBox">
+              <header class="an-box-head"><h3>Журнал и Daily</h3><span class="an-note">просмотры по дням</span></header>
+              <div class="an-plot" id="anSitesChart"></div>
             </section>
 
             <div class="an-grid">
@@ -568,7 +579,12 @@
               </section>
 
               <section class="an-box">
-                <header class="an-box-head"><h3>Откуда приходят</h3></header>
+                <header class="an-box-head"><h3>Каналы</h3><span class="an-note">чем начинается визит</span></header>
+                <div class="an-devices" id="anChannels"></div>
+              </section>
+
+              <section class="an-box">
+                <header class="an-box-head"><h3>Откуда приходят</h3><span class="an-note">сайты-источники</span></header>
                 <div class="an-list" id="anRefs"></div>
               </section>
 
@@ -588,12 +604,36 @@
               </section>
 
               <section class="an-box an-box--wide">
+                <header class="an-box-head"><h3>Роботы по дням</h3><span class="an-note">запросы страниц, sitemap, robots.txt, RSS</span></header>
+                <div class="an-plot" id="anBotDays"></div>
+              </section>
+
+              <section class="an-box">
+                <header class="an-box-head"><h3>Роботы: кто</h3><span class="an-note">по роду</span></header>
+                <div class="an-devices" id="anBotCats"></div>
+              </section>
+
+              <section class="an-box">
+                <header class="an-box-head"><h3>Что обходят роботы</h3></header>
+                <div class="an-list" id="anBotPaths"></div>
+              </section>
+
+              <section class="an-box an-box--wide">
+                <header class="an-box-head"><h3>Роботы поимённо</h3><span class="an-note">Googlebot, Bing, GPTBot, превью мессенджеров…</span></header>
+                <div class="an-table-wrap" id="anBotAgents"></div>
+              </section>
+
+              <section class="an-box an-box--wide">
                 <header class="an-box-head"><h3>Что читают</h3><span class="an-note" id="anPathsNote"></span></header>
-                <div class="an-list an-list--paths" id="anPaths"></div>
+                <div class="an-table-wrap" id="anPaths"></div>
               </section>
             </div>
 
-            <p class="an-foot">Считает собственный счётчик на сервере журнала. Адрес посетителя не хранится:
+            <p class="an-foot">«Люди» — читатели; роботы (поисковики, AI, превью мессенджеров, SEO-сервисы, скрипты) видны
+              отдельно и переключателем «Роботы», их приносит лог сервера раз в 5 минут; просмотры по ссылке предпросмотра
+              помечены как редакция и входят только в «Все». Смена адреса самим сайтом не даёт второго просмотра. Время чтения — сколько страница была видна,
+              глубина — доля прокрученного текста; эти два показателя собираются с 12 ноября 2026.
+              Считает собственный счётчик на сервере журнала. Адрес посетителя не хранится:
               вместо него записывается необратимый отпечаток, по нему и считаются уникальные.
               История до 19 августа не сохранилась – логи сервера тогда хранились 10 дней.
               Параллельно работает Google Analytics (G-F3F5GCXFBF), его отчёты в интерфейсе Google.</p>
@@ -2706,7 +2746,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.4.0/dist/marker.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@1.2.1/dist/underline.umd.min.js"></script>
     <script src="../brandbook/data.js?v=1.0"></script><script src="../brandbook/data-en.js?v=1.0"></script>
-    <script src="./app.js?v=6.79" type="module"></script>
+    <script src="./app.js?v=6.81" type="module"></script>
     <script src="./brandbook-editor.js?v=2.0" type="module"></script>
     <script>
       // Tab switching + page title update

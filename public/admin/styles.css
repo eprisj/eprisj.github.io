@@ -28,6 +28,51 @@
 .an-site-sub { font-size: 12px; color: var(--text-muted, #6b6b6b); margin-top: 2px; }
 .an-site-bar { height: 4px; background: var(--line, #e5e2dd); margin-top: 10px; }
 .an-site-bar > span { display: block; height: 100%; background: #2c3440; }
+/* Analytics charts (12.11.2026): series colours validated for light and dark
+   (dataviz validator: CVD ΔE 24.7 / 26.8). Text stays text-coloured. */
+#tab-analytics { --an-s1: #2a78d6; --an-s2: #eb6834; }
+[data-theme="dark"] #tab-analytics { --an-s1: #3987e5; --an-s2: #d95926; }
+.an-plot { position: relative; }
+.an-cols-svg { display: block; width: 100%; height: 220px; }
+.an-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.an-line--s1 { stroke: var(--an-s1); }
+.an-line--s2 { stroke: var(--an-s2); }
+.an-line--prev { stroke: var(--an-s1); opacity: .45; stroke-dasharray: 5 5; stroke-width: 1.5; }
+.an-fill-s1 { fill: var(--an-s1); opacity: .1; }
+.an-cross { stroke: var(--text-muted, #8b8b8b); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.an-cross-dot { stroke: var(--bg-card, #fff); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.an-cross-dot--s1 { fill: var(--an-s1); }
+.an-cross-dot--s2 { fill: var(--an-s2); }
+.an-hitbox { cursor: crosshair; outline: none; }
+.an-bar-s1 { fill: var(--an-s1); }
+.an-bar-s2 { fill: var(--an-s2); }
+.an-col { outline: none; cursor: default; }
+.an-col.is-hover rect:not([fill="transparent"]) { opacity: .75; }
+.an-legend-row { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--text-muted, #6b6b6b); margin: 0 0 8px; }
+.an-legend-row span { display: inline-flex; align-items: center; gap: 6px; }
+.an-key { display: inline-block; width: 16px; height: 0; border-top: 2px solid var(--k); }
+.an-key.is-dashed { border-top-style: dashed; opacity: .6; }
+.an-key.is-box { width: 10px; height: 10px; border: 0; background: var(--k); border-radius: 2px; }
+.an-tip { position: absolute; z-index: 5; pointer-events: none; min-width: 150px; padding: 8px 10px;
+  background: var(--bg-card, #fff); border: 1px solid var(--line, #e5e2dd); box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  font-size: 12px; color: var(--text, #1a1a1a); }
+.an-tip-title { font-size: 11px; color: var(--text-muted, #6b6b6b); margin-bottom: 4px; }
+.an-tip-row { display: flex; align-items: center; gap: 7px; line-height: 1.6; }
+.an-tip-row b { font-variant-numeric: tabular-nums; font-weight: 600; }
+.an-tip-row span { color: var(--text-muted, #6b6b6b); }
+.an-tip-key { width: 12px; height: 0; border-top: 2px solid var(--k); }
+.an-tip-key.is-dashed { border-top-style: dashed; opacity: .6; }
+.an-dev-track i.is-s1 { background: var(--an-s1); }
+.an-table-wrap { overflow-x: auto; }
+.an-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.an-table th { text-align: left; font-weight: 500; color: var(--text-muted, #6b6b6b); border-bottom: 1px solid var(--line, #e5e2dd); padding: 0; }
+.an-table th button { font: inherit; color: inherit; background: none; border: 0; padding: 6px 8px; cursor: pointer; width: 100%; text-align: inherit; }
+.an-table th.is-num, .an-table td.is-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.an-table td { padding: 7px 8px; border-bottom: 1px solid var(--line, #f0eee9); vertical-align: top; }
+.an-table-title { display: block; }
+.an-table-path { display: block; font-size: 11px; color: var(--text-muted, #8b8b8b); }
+.an-tag { display: inline-block; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line, #e5e2dd); padding: 0 5px; margin-right: 6px; color: var(--text-muted, #6b6b6b); }
+
 /* Daily admin (daily.eprisjournal.com/admin): the same panel on Daily's own
    data. A strip across the top so the two editorial rooms are never confused. */
 html.is-daily-admin body { border-top: 4px solid #c8a15a; }
