@@ -4961,8 +4961,9 @@ export default function App() {
   const baseBrandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
   const brandName = daily ? `${baseBrandName.replace(/\s*journal$/i, '')} DAILY` : baseBrandName;
   const publicationName = daily ? 'EPRIS Daily' : (/journal/i.test(baseBrandName) ? baseBrandName : `${baseBrandName} Journal`);
-  const footerTitle = String(siteSettings.footerTitle || publicationName).trim() || publicationName;
-  const footerDescription = String(siteSettings.footerDescription || '').trim();
+  // The footer title/description in the CMS describe the journal; Daily has its own.
+  const footerTitle = daily ? publicationName : (String(siteSettings.footerTitle || publicationName).trim() || publicationName);
+  const footerDescription = daily ? DAILY_HOME_META.description : String(siteSettings.footerDescription || '').trim();
   const instagramUrl = safeExternalUrl(siteSettings.instagramUrl);
   const contactEmail = String(siteSettings.contactEmail || '').trim();
   const fallbackTab = VISIBILITY_TABS.find((tab) => isSectionEnabled(tab)) || 'gallery';
