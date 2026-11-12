@@ -18,10 +18,10 @@ const SITE_ORIGIN = 'https://eprisjournal.com';
    robots to daily/. A piece belongs to Daily when it carries edition: 'daily'
    (kept in step with siteEdition()/articleEdition() in src/data.ts). */
 const DAILY_ORIGIN = 'https://daily.eprisjournal.com';
-const DAILY_NAME = 'EPRIS Daily';
+const DAILY_NAME = 'Daily';
 const DAILY_META = {
-  title: 'EPRIS Daily | Art, Architecture & Design, Every Day',
-  description: 'The daily edition of EPRIS Journal: short articles and interviews with artists, architects and designers.',
+  title: 'Daily | Art, Architecture & Design, Every Day',
+  description: 'Short articles and interviews with artists, architects and designers.',
 };
 const isDaily = (article) => article && article.edition === 'daily';
 const originOf = (article) => (isDaily(article) ? DAILY_ORIGIN : SITE_ORIGIN);

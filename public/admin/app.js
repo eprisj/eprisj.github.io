@@ -46,7 +46,7 @@ const I18N_STRINGS = {
     'nav.content': 'Publications',
     'nav.order': 'Article order',
     'nav.reviews-shortcut': 'Reviews',
-    'nav.daily-shortcut': 'EPRIS Daily',
+    'nav.daily-shortcut': 'Daily',
     'nav.issues': 'Issues',
     'nav.homepage': 'Homepage / Gallery',
     'nav.visibility': 'Visibility',
@@ -141,7 +141,7 @@ const I18N_STRINGS = {
     'nav.content': 'Публикации',
     'nav.order': 'Порядок статей',
     'nav.reviews-shortcut': 'Обзоры',
-    'nav.daily-shortcut': 'EPRIS Daily',
+    'nav.daily-shortcut': 'Daily',
     'nav.issues': 'Выпуски',
     'nav.homepage': 'Главная / Галерея',
     'nav.visibility': 'Видимость',
@@ -236,7 +236,7 @@ const I18N_STRINGS = {
     'nav.content': 'Публікації',
     'nav.order': 'Порядок статей',
     'nav.reviews-shortcut': 'Огляди',
-    'nav.daily-shortcut': 'EPRIS Daily',
+    'nav.daily-shortcut': 'Daily',
     'nav.issues': 'Випуски',
     'nav.homepage': 'Головна / Галерея',
     'nav.visibility': 'Видимість',
@@ -5198,7 +5198,7 @@ function describeEntryReach(data, section, entry) {
     notes.push('раздел «Музыка»: материал на music.eprisjournal.com, в общем списке журнала его нет');
   }
   if (section === 'articles' && entry.edition === 'daily') {
-    notes.push('EPRIS Daily: материал на daily.eprisjournal.com, на eprisjournal.com его нет');
+    notes.push('Daily: материал на daily.eprisjournal.com, на eprisjournal.com его нет');
   }
 
   if (section === 'articles' && !entry.draft && entry.desk !== 'music') {
@@ -21350,7 +21350,7 @@ async function flushModernEditor() {
       /* Издание: тот же материал, та же вёрстка, другой сайт. */
       `<label class="wys-meta-field"><span>Издание</span><select data-medition>` +
         `<option value="main" ${_model.edition !== 'daily' ? 'selected' : ''}>EPRIS Journal — eprisjournal.com</option>` +
-        `<option value="daily" ${_model.edition === 'daily' ? 'selected' : ''}>EPRIS Daily — daily.eprisjournal.com</option>` +
+        `<option value="daily" ${_model.edition === 'daily' ? 'selected' : ''}>Daily — daily.eprisjournal.com</option>` +
       `</select></label>` +
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>` +
       `<div class="wys-meta-field"><span>Просмотры</span><div class="wys-meta-views" data-views>…</div></div>`;
@@ -23154,7 +23154,7 @@ async function flushModernEditor() {
       document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
       document.querySelector('.tab-btn[data-tab="daily-shortcut"]')?.classList.add('active');
       const title = document.getElementById('pageTitle');
-      if (title) title.textContent = 'EPRIS Daily';
+      if (title) title.textContent = 'Daily';
       sectionSelect.value = 'articles';
       if (editionSelect) editionSelect.value = 'daily';
       sectionSelect.dispatchEvent(new Event('change'));
@@ -25809,7 +25809,7 @@ async function loadAnalytics() {
   if (sitesEl) {
     const sites = data.by_site || [];
     const total = sites.reduce((n, r) => n + (r.hits || 0), 0) || 1;
-    const names = { main: 'EPRIS Journal · eprisjournal.com', daily: 'EPRIS Daily · daily.eprisjournal.com' };
+    const names = { main: 'EPRIS Journal · eprisjournal.com', daily: 'Daily · daily.eprisjournal.com' };
     sitesEl.innerHTML = sites.map((r) => `<div class="an-site">
       <div class="an-site-name">${anEsc(names[r.site] || r.host)}</div>
       <div class="an-site-value">${anNum(r.hits)}</div>

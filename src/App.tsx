@@ -4362,8 +4362,8 @@ function parsePath(pathname: string, search = ''): { tab?: string; articleId?: n
 /* Home of daily.eprisjournal.com. Kept in step with DAILY_META in
    scripts/generate-og-pages.mjs, which prerenders the same page. */
 const DAILY_HOME_META = {
-  title: 'EPRIS Daily | Art, Architecture & Design, Every Day',
-  description: 'The daily edition of EPRIS Journal: short articles and interviews with artists, architects and designers.',
+  title: 'Daily | Art, Architecture & Design, Every Day',
+  description: 'Short articles and interviews with artists, architects and designers.',
 };
 
 const ROUTE_META: Record<string, { title: string; description: string }> = {
@@ -4418,7 +4418,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
   };
   const brandName = String(settings.brandName || 'EPRIS').trim() || 'EPRIS';
   const daily = isDailySite();
-  const publicationName = daily ? 'EPRIS Daily' : (/journal/i.test(brandName) ? brandName : `${brandName} Journal`);
+  const publicationName = daily ? 'Daily' : (/journal/i.test(brandName) ? brandName : `${brandName} Journal`);
   const SITE = siteOrigin();
   const defaultDescription = String(settings.seoDescription || '').trim();
   const defaultKeywords = String(settings.seoKeywords || '').trim() || `${publicationName}, contemporary art, architecture, interior design, design journal, art interviews, design interviews, cultural journalism`;
@@ -4566,7 +4566,7 @@ function updateMetaTags(article: Article | null, review: Review | null, activeTa
   } else {
     const baseRouteMeta = ROUTE_META[activeTab] || ROUTE_META.gallery;
     const routeMeta = daily
-      ? (activeTab === 'gallery' ? DAILY_HOME_META : { ...baseRouteMeta, title: baseRouteMeta.title.replace('EPRIS Journal', 'EPRIS Daily') })
+      ? (activeTab === 'gallery' ? DAILY_HOME_META : { ...baseRouteMeta, title: baseRouteMeta.title.replace('EPRIS Journal', 'Daily') })
       : baseRouteMeta;
     const routeTitle = !daily && activeTab === 'gallery' && settings.seoTitle?.trim() ? settings.seoTitle.trim() : routeMeta.title;
     const routeDescription = !daily && activeTab === 'gallery' && defaultDescription ? defaultDescription : routeMeta.description;
@@ -4959,8 +4959,8 @@ export default function App() {
   const siteSettings = getSiteSettings();
   const daily = isDailySite();
   const baseBrandName = String(siteSettings.brandName || 'EPRIS').trim().slice(0, 32) || 'EPRIS';
-  const brandName = daily ? `${baseBrandName.replace(/\s*journal$/i, '')} DAILY` : baseBrandName;
-  const publicationName = daily ? 'EPRIS Daily' : (/journal/i.test(baseBrandName) ? baseBrandName : `${baseBrandName} Journal`);
+  const brandName = daily ? 'DAILY' : baseBrandName;
+  const publicationName = daily ? 'Daily' : (/journal/i.test(baseBrandName) ? baseBrandName : `${baseBrandName} Journal`);
   // The footer title/description in the CMS describe the journal; Daily has its own.
   const footerTitle = daily ? publicationName : (String(siteSettings.footerTitle || publicationName).trim() || publicationName);
   const footerDescription = daily ? DAILY_HOME_META.description : String(siteSettings.footerDescription || '').trim();
