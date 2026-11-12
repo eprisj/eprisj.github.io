@@ -62,8 +62,7 @@ import {
   siteOrigin,
   EDITION_ORIGIN,
   articleEdition,
-  findArticleInOtherEdition,
-  hasLiveDailyArticles
+  findArticleInOtherEdition
 } from './data';
 import { DEFAULT_HOMEPAGE_PICS_CATEGORIES } from './data';
 import { SupportJournal } from './components/SupportJournal';
@@ -1065,10 +1064,7 @@ function NavBar({
      points to Daily, Daily points back to the journal and the museum. */
   const externalLinks = isDailySite()
     ? [{ href: 'https://eprisjournal.com/', label: 'Journal' }, { href: 'https://museum.eprisjournal.com/', label: 'Museum' }]
-    : [
-      ...(hasLiveDailyArticles() ? [{ href: 'https://daily.eprisjournal.com/', label: 'Daily' }] : []),
-      { href: 'https://museum.eprisjournal.com/', label: 'Museum' },
-    ];
+    : [{ href: 'https://daily.eprisjournal.com/', label: 'Daily' }, { href: 'https://museum.eprisjournal.com/', label: 'Museum' }];
 
   const tabHref = (tab: string) => tab === 'gallery' ? '/' : `/${tab}`;
   const handleTabLink = (event: MouseEvent<HTMLAnchorElement>, tab: string) => {
@@ -1131,6 +1127,8 @@ function NavBar({
           <button
             type="button"
             onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
+            /* Daily is English only: no language switch. */
+            style={isDailySite() ? { display: 'none' } : undefined}
             aria-label={`${LANG_LABELS[currentLang] || currentLang}. Select language`}
             aria-haspopup="dialog"
             aria-expanded={isLangOpen}
@@ -1206,6 +1204,8 @@ function NavBar({
               type="button"
               className="w-full h-full flex items-center justify-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               onClick={() => setIsLangOpen(!isLangOpen)}
+              /* Daily is English only: no language switch. */
+              style={isDailySite() ? { display: 'none' } : undefined}
               aria-label="Select language"
             >
               {currentLang}
@@ -1437,6 +1437,8 @@ function NavBar({
               <button
                 type="button"
                 onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
+                /* Daily is English only: no language switch. */
+                style={isDailySite() ? { display: 'none' } : undefined}
                 className="w-full min-h-14 px-5 flex items-center justify-between text-left"
               >
                 <span className="flex items-center gap-3 font-serif text-lg"><Globe size={20} /> {LANG_LABELS[currentLang] || currentLang}</span>
@@ -2728,7 +2730,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
       if (sessionStorage.getItem(key)) return;
       sessionStorage.setItem(key, '1');
     } catch { /* private mode etc. – just count every time */ }
-    fetch('https://api.eprisjournal.com/view', {
+    fetch(isDailySite() ? 'https://api.eprisjournal.com/daily/view' : 'https://api.eprisjournal.com/view', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: article.id }),
@@ -4788,6 +4790,7 @@ export default function App() {
     /* ?lang=IT в адресе главнее сохранённого выбора: ссылкой на материал на
        другом языке (например, интервью на итальянском для героя) читатель
        сразу попадает на сайт на этом языке, а не на английский. */
+    if (isDailySite()) return DEFAULT_LANGUAGE;   // Daily is English only
     try {
       const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
       if (fromUrl && getAvailableLanguages().includes(fromUrl)) return fromUrl;

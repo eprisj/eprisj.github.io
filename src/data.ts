@@ -723,7 +723,11 @@ const content = normaliseDashes(rawContent) as SiteContent;
 // The admin saves content to the VPS API, and the public site fetches it live
 // on startup via loadLiveContent(). The bundled `content` above is the offline
 // fallback: if the VPS is unreachable, the site keeps rendering the last build.
+/* Daily keeps its own document (api.eprisjournal.com/daily/content): own
+   records, own ids, English only. The journal reads /content as before. */
 export const CONTENT_API = 'https://api.eprisjournal.com/content';
+export const DAILY_CONTENT_API = 'https://api.eprisjournal.com/daily/content';
+const contentApi = (): string => (siteEdition() === 'daily' ? DAILY_CONTENT_API : CONTENT_API);
 
 let liveContent: SiteContent | null = null;
 /* ETag свой на каждый языковой срез: у /content?lang=UA и ?lang=DE разные тела,
@@ -756,6 +760,16 @@ function notifyContentChanged(): void {
    удалённой статьи никуда не всплывёт. */
 export function applyLiveContent(json: SiteContent): void {
   normaliseDashes(json);
+  if (siteEdition() === 'daily') {
+    /* Daily's own document: every record in it is a Daily piece, and nothing
+       of the journal's bundled translations may be merged into it (ids of the
+       two publications overlap). English only. */
+    for (const a of json.articles || []) (a as Article).edition = 'daily';
+    json.localizedCollections = {};
+    liveContent = { ...json };
+    notifyContentChanged();
+    return;
+  }
   const previous = liveContent || content;
   const merged: SiteContent = { ...json };
   merged.localizedCollections = {
@@ -785,7 +799,8 @@ export async function loadLiveContent(timeoutMs = 12000, lang?: string): Promise
      решает, откроется ли страница вообще: см. таймауты предпросмотра в
      App.tsx. Без параметра сервер по-прежнему отдаёт всё целиком. */
   const code = String(lang || '').trim().toUpperCase();
-  const url = /^[A-Z]{2}$/.test(code) ? `${CONTENT_API}?lang=${code}` : CONTENT_API;
+  const api = contentApi();
+  const url = /^[A-Z]{2}$/.test(code) ? `${api}?lang=${code}` : api;
   const etagKey = /^[A-Z]{2}$/.test(code) ? code : '*';
   try {
     const known = liveContentEtags[etagKey];
@@ -952,14 +967,11 @@ export function siteOrigin(): string {
  */
 export function findArticleInOtherEdition(match: (article: Article) => boolean): Article | null {
   const mine = siteEdition();
-  const list = Array.isArray(src().articles) ? src().articles : [];
+  // On Daily the journal is only known from the bundled snapshot; the journal
+  // site does not load Daily's document, so it never redirects there.
+  const pool = mine === 'daily' ? content : src();
+  const list = Array.isArray(pool.articles) ? pool.articles : [];
   return list.find((a) => articleEdition(a) !== mine && isEntityLive(a) && match(a)) || null;
-}
-
-/** True once at least one Daily piece is live: the journal links to Daily only then. */
-export function hasLiveDailyArticles(): boolean {
-  const list = Array.isArray(src().articles) ? src().articles : [];
-  return list.some((a) => articleEdition(a) === 'daily' && !matchesPreviewToken(a) && !a.draft && isEntityLive(a));
 }
 
 export function isSectionEnabled(key: VisibilitySectionKey): boolean {
@@ -1270,6 +1282,7 @@ function mergeLocalizedItems<T extends { id: number }>(value: T[] | undefined, f
 }
 
 export function getAvailableLanguages(): string[] {
+  if (siteEdition() === 'daily') return [DEFAULT_LANGUAGE];   // Daily is English only
   /* В языковом срезе translations урезаны до своего языка плюс EN, поэтому
      список берётся из явного поля `languages`. Без него (полный ответ или
      собранный бандл) остаётся прежний путь – по ключам словаря. */

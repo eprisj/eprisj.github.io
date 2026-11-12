@@ -23,6 +23,11 @@ const DAILY_META = {
   title: 'Daily | Art, Architecture & Design, Every Day',
   description: 'Short articles and interviews with artists, architects and designers.',
 };
+/* Daily keeps its own document (the Daily content API writes it); its records
+   have their own ids, so their pages go under dist/daily/article/ and nginx on
+   daily.eprisjournal.com serves /article/… from there. */
+const DAILY_CONTENT_PATH = process.env.EPRIS_DAILY_CONTENT_PATH
+  || (existsSync('/opt/epris-content/daily/site-content.json') ? '/opt/epris-content/daily/site-content.json' : '');
 const isDaily = (article) => article && article.edition === 'daily';
 const originOf = (article) => (isDaily(article) ? DAILY_ORIGIN : SITE_ORIGIN);
 const nameOf = (article) => (isDaily(article) ? DAILY_NAME : 'EPRIS Journal');
@@ -256,7 +261,7 @@ function escapeHtml(value) {
 
 function relatedLinks(current) {
   // "Read next" stays inside the edition the reader is in.
-  const pool = publicArticles.filter((a) => isDaily(a) === isDaily(current));
+  const pool = isDaily(current) ? dailyArticles : mainArticles;
   const same = pool.filter((a) =>
     a.id !== current.id && a.category && a.category === current.category);
   const rest = pool.filter((a) =>
@@ -344,7 +349,14 @@ const publicArticles = (content.articles || []).filter(isPublicEntry);
 // The journal's own lists (home, /articles, sitemap, RSS) leave Daily out;
 // Daily gets its own set under dist/daily/ further down.
 const mainArticles = publicArticles.filter((a) => !isDaily(a));
-const dailyArticles = publicArticles.filter(isDaily);
+let dailyContent = { articles: [] };
+if (DAILY_CONTENT_PATH) {
+  try { dailyContent = JSON.parse(readFileSync(DAILY_CONTENT_PATH, 'utf-8').replace(/\u2014/g, '\u2013').replace(/&mdash;/g, '&ndash;')); }
+  catch (e) { console.warn(`Daily content unreadable (${DAILY_CONTENT_PATH}): ${e.message}`); }
+}
+const dailyArticles = (dailyContent.articles || []).filter(isPublicEntry)
+  .map((a) => ({ ...a, edition: 'daily' }))
+  .sort((a, b) => (Date.parse(b.publishedAt || b.publishAt || b.date || '') || 0) - (Date.parse(a.publishedAt || a.publishAt || a.date || '') || 0) || Number(b.id) - Number(a.id));
 const publicReviews = (content.reviews || []).filter(isPublicEntry);
 
 // Schema.org type for a review's itemReviewed. Kept in sync with
@@ -376,8 +388,9 @@ let template = indexHtml
   .replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
   .replace(/\n\s*\n/g, '\n');
 
-for (const article of publicArticles) {
+for (const article of [...mainArticles, ...dailyArticles]) {
   const slug = generateSlug(article.title);
+  const pagesRoot = isDaily(article) ? join(distDir, 'daily') : distDir;
   const imageUrl = resolveImage(article);
   // Повний текст іде тільки в structured data (нижче, articleSchema.description);
   // усе, що показується як сніпет чи картка, обрізане metaDescription().
@@ -451,12 +464,12 @@ for (const article of publicArticles) {
     .replace('<div id="root"></div>', bodyHtml);
 
   // Write slug-based path
-  const slugDir = join(distDir, 'article', slug);
+  const slugDir = join(pagesRoot, 'article', slug);
   mkdirSync(slugDir, { recursive: true });
   writeFileSync(join(slugDir, 'index.html'), pageHtml);
 
   // Also write numeric ID path for backward compatibility
-  const idDir = join(distDir, 'article', String(article.id));
+  const idDir = join(pagesRoot, 'article', String(article.id));
   mkdirSync(idDir, { recursive: true });
   writeFileSync(join(idDir, 'index.html'), pageHtml);
 

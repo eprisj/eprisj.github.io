@@ -28,6 +28,15 @@
 .an-site-sub { font-size: 12px; color: var(--text-muted, #6b6b6b); margin-top: 2px; }
 .an-site-bar { height: 4px; background: var(--line, #e5e2dd); margin-top: 10px; }
 .an-site-bar > span { display: block; height: 100%; background: #2c3440; }
+/* Daily admin (daily.eprisjournal.com/admin): the same panel on Daily's own
+   data. A strip across the top so the two editorial rooms are never confused. */
+html.is-daily-admin body { border-top: 4px solid #c8a15a; }
+html.is-daily-admin body::before {
+  content: "DAILY · daily.eprisjournal.com — отдельные материалы, только английский";
+  position: fixed; top: 4px; left: 50%; transform: translateX(-50%); z-index: 10000;
+  background: #c8a15a; color: #1a1a1a; font: 600 11px/1 var(--font-mono, monospace);
+  letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; pointer-events: none;
+}
 
 /* ══════════════════════════════════════════════════════════
    EPRIS ADMIN — Design tokens
