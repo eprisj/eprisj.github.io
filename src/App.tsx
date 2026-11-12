@@ -4687,8 +4687,8 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
           редакции: разделы и так в меню, а длинный подвал на узком экране
           листается дольше самой статьи. */}
       <div className="md:hidden flex flex-col items-center gap-5 text-center">
-        <p className="font-serif text-3xl leading-none tracking-tight uppercase inline-flex items-center gap-3">
-          {isDailySite() && <DailyMark className="h-8 w-8" />}{title}
+        <p className="font-serif text-3xl leading-none tracking-tight inline-flex normal-case items-center gap-3">
+          {isDailySite() && <DailyMark className="h-8 w-8" />}{isDailySite() ? title.toLowerCase() : title}
         </p>
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
           className="inline-block leading-none">
@@ -4703,7 +4703,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
         <div className="grid gap-12 md:gap-10 md:grid-cols-[1.35fr_.75fr_1fr]">
           <div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-none tracking-tight flex items-center gap-4">
-              {isDailySite() && <DailyMark className="h-12 w-12 md:h-14 md:w-14" />}{title}
+              {isDailySite() && <DailyMark className="h-12 w-12 md:h-14 md:w-14" />}{isDailySite() ? title.toLowerCase() : title}
             </h2>
             <p className="mt-6 max-w-[44ch] text-lg sm:text-xl leading-relaxed text-white/85">{description || about.line}</p>
             <p className="mt-6 font-mono text-[12.5px] uppercase tracking-[0.2em] text-white/75">{about.place}</p>
