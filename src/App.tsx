@@ -4687,7 +4687,7 @@ function SiteFooter({ lang, title, description, publicationName, rights, instagr
           редакции: разделы и так в меню, а длинный подвал на узком экране
           листается дольше самой статьи. */}
       <div className="md:hidden flex flex-col items-center gap-5 text-center">
-        <p className="font-serif text-3xl leading-none tracking-tight inline-flex normal-case items-center gap-3">
+        <p className={`font-serif text-3xl leading-none tracking-tight inline-flex items-center gap-3 ${isDailySite() ? "normal-case" : "uppercase"}`}>
           {isDailySite() && <DailyMark className="h-8 w-8" />}{isDailySite() ? title.toLowerCase() : title}
         </p>
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download EPRIS Journal on the App Store"
