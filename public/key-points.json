@@ -1,0 +1,83 @@
+{
+  "about": "In brief: a short summary shown at the end of a piece in the EPRIS app. Keyed by article id. Each text is a plain English string or {\"EN\": …, \"UA\": …}. Set \"hidden\": true to pull one.",
+  "pieces": {
+    "97": {
+      "name": "Yayoi Kusama",
+      "who": "Japanese artist, 1929–2026; painter, sculptor and maker of rooms",
+      "did": [
+        "Infinity Nets: huge canvases of tiny looping strokes, painted in New York from 1958",
+        "Soft sculptures and the first mirrored room, Phalli’s Field (1965)",
+        "Narcissus Garden at the 1966 Venice Biennale: 1,500 mirrored balls, sold at $2 each",
+        "The Obliteration Room (2002), which visitors cover with coloured dots",
+        "The yellow pumpkin on Naoshima, rebuilt in 2022 after a typhoon"
+      ],
+      "themes": ["the dot", "repetition and infinity", "self-obliteration", "hallucination", "art in the street"],
+      "why": "She made the most repeatable picture in the art world and it never wore out. Her last retrospective is at the Stedelijk, Amsterdam, until 17 January 2027.",
+      "new": "Instead of showing infinity on a canvas, she built rooms that put the viewer inside it – small, multiplied, and not afraid."
+    },
+    "96": {
+      "name": "Ryoji Ikeda",
+      "who": "Japanese composer and visual artist, born in Gifu in 1966; works in Paris and Kyoto",
+      "did": [
+        "Records of pure sine tones and glitches; matrix won the Golden Nica at Ars Electronica (2001)",
+        "spectra: 49 searchlights forming one column of light, in Hobart (2013) and over the Thames (2014)",
+        "test pattern: any data turned into barcode stripes laid across a floor",
+        "A residency at CERN (2014–15), then supersymmetry and micro | macro",
+        "data-verse, a trilogy built from NASA, CERN and Human Genome Project data"
+      ],
+      "themes": ["data as material", "sound and light", "the limits of perception", "science and art"],
+      "why": "Winner of the 2026 Nam June Paik Prize; a solo exhibition follows at the Nam June Paik Art Center in 2027.",
+      "new": "Most data art decorates its numbers. Ikeda strips a data set to its simplest signal – a stripe, a dot, a tone – and makes it so large you stand inside it."
+    },
+    "94": {
+      "name": "Tomás Saraceno",
+      "who": "Argentine artist and trained architect, born in Tucumán in 1973; based in Berlin",
+      "did": [
+        "Cloud Cities: habitable structures you climb into, among them one on the roof of the Met (2012)",
+        "Arachnophilia: research with scientists into how spiders build and sense through silk",
+        "Aerocene: a balloon flown by sunlight alone rose 272 metres in 2020 and set 32 world records",
+        "The Sanctuary of Water, built with eleven Indigenous communities of Salinas Grandes"
+      ],
+      "themes": ["air and flight without fuel", "spiders and webs", "climate", "lithium mining and water", "working with communities"],
+      "why": "His largest show in Germany, Ancestral Futures, is at Haus der Kunst, Munich, until 7 February 2027.",
+      "new": "His utopias can be measured: a balloon in metres, a flush in litres, a sanctuary in whether the people who asked for it will keep it."
+    },
+    "93": {
+      "name": "Javier Ordóñez",
+      "who": "Basque painter and sculptor, born in Bilbao in 1960; studios in Bilbao and Cantabria",
+      "did": [
+        "Escorias de Hierro (Iron Slag): paintings and sculpted Blocks in honour of the miners and foundry workers of Bizkaia, his great-grandfather among them",
+        "Figuraciones Cromáticas: landscapes of Cantabria, Lanzarote and the Asón valley reduced to masses of colour",
+        "Migraciones (2025): both series together, more than sixty works, at La Vidriera, Camargo"
+      ],
+      "themes": ["industrial memory", "landscape as abstraction", "sand, rust and slag as paint", "abstraction as jazz", "tiredness as an engine for change"],
+      "why": "He carries the Basque abstract tradition – Oteiza, Chillida, Sistiaga – into the materials of Bizkaia’s own industry.",
+      "new": "The paint itself is the memory: tinted sand, metal powder and Corten steel rust on handmade stretchers, so the work is the residue of the work it remembers."
+    },
+    "92": {
+      "name": "Rosaria Valenti",
+      "who": "Self-taught abstract painter from Stoke-on-Trent, now in Somerset, with Sicilian roots",
+      "did": [
+        "Paints without a plan: starts from a feeling, makes a mark and answers the canvas",
+        "Within, a journey in three parts: Held, Unbound, Echo",
+        "Freedom, the painting she will never part with, made after a hard time in her family’s life"
+      ],
+      "themes": ["feeling before form", "layers painted over", "joy and darkness in one frame", "vulnerability", "colour"],
+      "why": "Her paintings show how abstraction can hold a feeling too hard to put into words – and leave the viewer feeling a little less alone.",
+      "new": "Nothing is thrown away: covered marks stay in the painting, “like old wounds that have healed”."
+    },
+    "90": {
+      "name": "Akiko Hirai",
+      "who": "Japanese-born potter, working in London for more than twenty years",
+      "did": [
+        "Moon jars whose glaze cracks and lifts like river ice",
+        "Tall cylinders thrown with several centres, so they seem to sway",
+        "Kohiki pieces: white slip over dark clay that thins to show the body beneath",
+        "The exhibition Things that disappear when touched at Contemporary Ceramics, London (2026)"
+      ],
+      "themes": ["fragility", "imperfection (getemono)", "Japanese and Korean tradition", "British studio pottery", "touch"],
+      "why": "Her work belongs to the change that has taken pottery from ‘craft’ into the museum as sculpture.",
+      "new": "She takes the moon jar’s old imperfection much further, until the jar looks caught in the middle of a geological event."
+    }
+  }
+}
