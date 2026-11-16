@@ -222,6 +222,19 @@ function GalleryItemView({ item, onClose, articles, onReadArticle }: { item: Ite
   );
 }
 
+// The VPS copy of this bio is re-snapshotted nightly and lost Europa Nostra, so
+// the text is owned here; it replaces the server bio when that one lacks it.
+const MUNISTER_BIO: Record<string, string> = {
+  EN: "Viacheslav Munister is an author, researcher, and digital heritage specialist. He is a member of the heritage associations En Quête de Patrimoine and Histoire d’en Parler, and of Europa Nostra, the European voice of civil society committed to cultural heritage. His work focuses on architecture, urban culture, collective memory, and the preservation and reinterpretation of cultural heritage through digital technologies.",
+  RU: "Вячеслав Мунистер - автор, исследователь и специалист по цифровому наследию. Он является членом ассоциаций наследия En Quête de Patrimoine и Histoire d’en Parler, а также Europa Nostra, европейского голоса гражданского общества, преданного культурному наследию. Его работы посвящены архитектуре, городской культуре, коллективной памяти, а также сохранению и переосмыслению культурного наследия с помощью цифровых технологий.",
+  UA: "В’ячеслав Муністер - автор, дослідник та фахівець з цифрової спадщини. Він є членом асоціацій спадщини En Quête de Patrimoine та Histoire d’en Parler, а також Europa Nostra, європейського голосу громадянського суспільства, відданого культурній спадщині. Його робота зосереджена на архітектурі, міській культурі, колективній пам’яті, а також збереженні та переосмисленні культурної спадщини за допомогою цифрових технологій.",
+  DE: "Viacheslav Munister ist Autor, Forscher und Spezialist für digitales Erbe. Er ist Mitglied der Kulturerbevereine En Quête de Patrimoine und Histoire d’en Parler sowie von Europa Nostra, der europäischen Stimme der Zivilgesellschaft für das kulturelle Erbe. Seine Arbeit konzentriert sich auf Architektur, Stadtkultur, kollektives Gedächtnis und die Bewahrung und Neuinterpretation des kulturellen Erbes durch digitale Technologien.",
+  IT: "Viacheslav Munister è autore, ricercatore e specialista in patrimonio digitale. È membro delle associazioni per la tutela del patrimonio En Quête de Patrimoine e Histoire d’en Parler e di Europa Nostra, la voce europea della società civile impegnata per il patrimonio culturale. Il suo lavoro si concentra su architettura, cultura urbana, memoria collettiva e conservazione e reinterpretazione del patrimonio culturale attraverso le tecnologie digitali.",
+  ES: "Viacheslav Munister es autor, investigador y especialista en patrimonio digital. Es miembro de las asociaciones patrimoniales En Quête de Patrimoine e Histoire d’en Parler y de Europa Nostra, la voz europea de la sociedad civil comprometida con el patrimonio cultural. Su trabajo se centra en la arquitectura, la cultura urbana, la memoria colectiva y la preservación y reinterpretación del patrimonio cultural a través de las tecnologías digitales.",
+  TR: "Viacheslav Munister bir yazar, araştırmacı ve dijital miras uzmanıdır. En Quête de Patrimoine ve Histoire d’en Parler miras derneklerinin ve kültürel mirasa bağlı Avrupa sivil toplum sesi Europa Nostra’nın bir üyesidir. Çalışmaları mimarlık, kent kültürü, kolektif bellek ve kültürel mirasın dijital teknolojiler aracılığıyla korunması ve yeniden yorumlanması üzerine odaklanmaktadır.",
+  FR: "Viacheslav Munister est auteur, chercheur et spécialiste du patrimoine numérique. Il est membre des associations patrimoniales En Quête de Patrimoine et Histoire d’en Parler, ainsi que d’Europa Nostra, la voix européenne de la société civile engagée pour le patrimoine culturel. Son travail porte sur l’architecture, la culture urbaine, la mémoire collective, la préservation et la réinterprétation du patrimoine culturel à travers les technologies numériques.",
+};
+
 // UI strings introduced in code, before the editable translation table on the
 // server has an entry for them. Content (site-content.json) is owned by the VPS
 // and re-snapshotted nightly, so a key added to the repo copy would be
@@ -1752,7 +1765,8 @@ function AboutSection({ t, currentLang, onOpenManifest }: { t: (key: string) => 
                 } else if (isTechDirector) {
                   roleLabel = t('about.techDirector.role');
                   const localizedBio = t('about.techDirector.bio');
-                  bioText = <p>{localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio}</p>;
+                  const serverBio = localizedBio !== 'about.techDirector.bio' ? localizedBio : member.bio;
+                  bioText = <p>{/Europa Nostra/.test(serverBio || '') ? serverBio : (MUNISTER_BIO[currentLang] || serverBio)}</p>;
                 } else if (translatedBio !== bioKey || member.bio) {
                   bioText = <p>{translatedBio !== bioKey ? translatedBio : member.bio}</p>;
                 }
