@@ -733,6 +733,8 @@ const FORM_PAGES = [
     description: 'Un entretien avec le photographe Nicolas Delarre sur le « photographisme », l’architecture, la nature et les miroirs de la ville.' },
   { slug: 'interview-miguel-angel-romero', lang: 'en_US', title: 'Miguel Ángel Romero – interview for EPRIS Journal',
     description: 'Questions for the sculptor Miguel Ángel Romero: small figures in rusted steel boxes, heads on ladders, childhood, the niche and the city.' },
+  { slug: 'entretien-julia-bokomo', lang: 'fr_FR', title: 'Julia Bokomo – entretien pour EPRIS Journal',
+    description: 'Un entretien avec la sculptrice textile Julia Bokomo : tissus devenus troncs et racines, noms isiZulu, mémoire des matières, atelier à Paris.' },
 ];
 for (const f of FORM_PAGES) {
   for (const base of ['f', 'form']) {
