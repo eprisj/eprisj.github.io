@@ -5432,6 +5432,16 @@ async function copyEntryPreviewLink() {
   }
 }
 
+/* Опубликованную запись в черновик одним кликом не уводим: статья пропадает
+   с сайта (ссылка даёт 404), а кнопка и галочка стоят рядом с остальными.
+   Для записей, которые и так скрыты, черновика или ждут даты — без вопроса. */
+function confirmUnpublishLive(entry, what) {
+  if (!entry || entry.draft) return true;
+  if (entry.publishAt && new Date(entry.publishAt).getTime() > Date.now()) return true;
+  const title = String(entry.title || ('#' + entry.id)).slice(0, 90);
+  return window.confirm(`«${title}» сейчас опубликована.\n\nПеревести ${what} в черновик и скрыть с сайта?`);
+}
+
 async function updateSelectedPublicationState(nextState) {
   const data = parseEditorJsonSafe();
   if (!data) { setStatus('error', 'Сначала загрузите корректный контент.'); return; }
@@ -5440,6 +5450,7 @@ async function updateSelectedPublicationState(nextState) {
   const entries = getSectionArray(data, section, DEFAULT_LANGUAGE, false);
   const entry = entries.find((item) => Number(item.id) === selectedId);
   if (!entry) { setStatus('error', 'Выберите запись.'); return; }
+  if (nextState === 'draft' && !confirmUnpublishLive(entry, 'запись')) return;
 
   if (!data.visibility || typeof data.visibility !== 'object' || Array.isArray(data.visibility)) data.visibility = {};
   if (!data.visibility.entities || typeof data.visibility.entities !== 'object' || Array.isArray(data.visibility.entities)) data.visibility.entities = {};
@@ -21369,6 +21380,7 @@ async function flushModernEditor() {
     });
     const draftInp = drawerBody.querySelector('[data-mdraft]');
     draftInp && draftInp.addEventListener('change', () => {
+      if (draftInp.checked && !confirmUnpublishLive(_model, 'запись')) { draftInp.checked = false; return; }
       if (draftInp.checked) _model.draft = true; else delete _model.draft;
       updateDraftBadge();
       scheduleCommit();
@@ -21752,6 +21764,7 @@ async function flushModernEditor() {
       `<label class="wys-meta-field"><span>Отложенная публикация (скрыта до этого момента)</span><input type="datetime-local" data-mpublishat value="${esc(isoToLocalInput(_model.publishAt))}"></label>`;
     const draftInp = drawerBody.querySelector('[data-mdraft]');
     draftInp && draftInp.addEventListener('change', () => {
+      if (draftInp.checked && !confirmUnpublishLive(_model, 'запись')) { draftInp.checked = false; return; }
       if (draftInp.checked) _model.draft = true; else delete _model.draft;
       updateDraftBadge();
       scheduleCommit();
