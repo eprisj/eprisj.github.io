@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbit&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* 17.11.2026: all articles are English only for now. Language pickers, translation state, sync buttons and the
+   Translations section are hidden in the editor (the nodes stay: app.js looks them up by id). Remove this block to bring them back. */
+.toolbar-field:has(> #visualLang),
+.preview-pane-select:has(> #previewLanguageSelect),
+#entryLangBar,
+.toolbar-sync-panel[aria-label="Синхронизация языков"],
+#findMissingLangBtn,
+.sb-item:has(> .tab-btn[data-tab="translations"]),
+.tab-btn[data-tab="translations"] { display: none !important; }
+
 /* Daily admin keeps only what Daily has: publications, order, photos, About,
    manifest, analytics, history, settings. Journal-only sections are hidden
    (the nodes stay: app.js looks every section button up by data-tab). */

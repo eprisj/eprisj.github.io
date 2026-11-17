@@ -6500,7 +6500,7 @@ function appendArticlePreset(kind) {
 
 function renderVisualLanguageOptions(data) {
   const options = getLanguageOptions(data);
-  const current = visualLangSelect.value || DEFAULT_LANGUAGE;
+  const current = DEFAULT_LANGUAGE;   // 17.11.2026: editor is English only
 
   visualLangSelect.innerHTML = options
     .map((lang) => `<option value="${escapeHtml(lang)}">${escapeHtml(lang)}</option>`)

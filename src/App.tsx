@@ -1161,7 +1161,7 @@ function NavBar({
             type="button"
             onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
             /* Daily is English only: no language switch. */
-            style={isDailySite() ? { display: 'none' } : undefined}
+            style={ENGLISH_ONLY || isDailySite() ? { display: 'none' } : undefined}
             aria-label={`${LANG_LABELS[currentLang] || currentLang}. Select language`}
             aria-haspopup="dialog"
             aria-expanded={isLangOpen}
@@ -1240,7 +1240,7 @@ function NavBar({
               className="w-full h-full flex items-center justify-center hover:bg-[var(--c-accent)] hover:text-[var(--c-bg)] transition-colors"
               onClick={() => setIsLangOpen(!isLangOpen)}
               /* Daily is English only: no language switch. */
-              style={isDailySite() ? { display: 'none' } : undefined}
+              style={ENGLISH_ONLY || isDailySite() ? { display: 'none' } : undefined}
               aria-label="Select language"
             >
               {currentLang}
@@ -1473,7 +1473,7 @@ function NavBar({
                 type="button"
                 onClick={() => { setIsMenuOpen(false); setIsLangOpen(true); }}
                 /* Daily is English only: no language switch. */
-                style={isDailySite() ? { display: 'none' } : undefined}
+                style={ENGLISH_ONLY || isDailySite() ? { display: 'none' } : undefined}
                 className="w-full min-h-14 px-5 flex items-center justify-between text-left"
               >
                 <span className="flex items-center gap-3 font-serif text-lg"><Globe size={20} /> {LANG_LABELS[currentLang] || currentLang}</span>
@@ -2879,7 +2879,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           </button>
 
           {/* Daily is English only: no language pill on its articles. */}
-          <div className="relative" style={isDailySite() ? { display: 'none' } : undefined}>
+          <div className="relative" style={ENGLISH_ONLY || isDailySite() ? { display: 'none' } : undefined}>
             <button
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
@@ -3852,7 +3852,7 @@ function ReviewView({ review, t, onClose, currentLang, setCurrentLang, languages
         <ArrowLeft size={16} /> {t('nav.reviews')}
       </button>
       {availableLanguages.length > 1 && (
-        <div className="relative">
+        <div className="relative" style={ENGLISH_ONLY ? { display: 'none' } : undefined}>
           <button
             type="button"
             onClick={() => setIsReviewLangOpen(!isReviewLangOpen)}
@@ -4329,6 +4329,9 @@ function SearchResults({
 
 const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'studio', 'radio', 'podcasts', 'design', 'museum', 'passport'];
 /** The only sections EPRIS Daily has; everything else belongs to the journal. */
+/* 17.11.2026: every article is English only for now. The language pill is hidden everywhere and the language is forced to EN; saved translations stay in the data. Set to false to bring the switch back. */
+const ENGLISH_ONLY = true;
+
 const DAILY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'about', 'manifest'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
 
@@ -4883,7 +4886,7 @@ export default function App() {
     /* ?lang=IT в адресе главнее сохранённого выбора: ссылкой на материал на
        другом языке (например, интервью на итальянском для героя) читатель
        сразу попадает на сайт на этом языке, а не на английский. */
-    if (isDailySite()) return DEFAULT_LANGUAGE;   // Daily is English only
+    if (ENGLISH_ONLY || isDailySite()) return DEFAULT_LANGUAGE;   // English only
     try {
       const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
       if (fromUrl && getAvailableLanguages().includes(fromUrl)) return fromUrl;
