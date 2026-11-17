@@ -7386,12 +7386,23 @@ const CONTENT_META_API = `${CONTENT_API_BASE}/meta`;
    Версия контента у сервера уже есть (её спрашивают при сохранении ради
    проверки конфликта) — надо всего лишь запомнить свою и сравнивать. */
 let loadedContentVersion = null;
+/* Для защиты от сохранения устаревшей копии: серверное время последней
+   загрузки «с VPS» и штампы, которые сервер выдал этой вкладке за её же
+   сохранения. Сервер сравнивает их с датой записи и отказывает (412), если
+   запись после этого менял кто-то другой. updatedAt самой записи для этого не
+   годится: админка ставит его сама при каждой правке. Черновик, поднятый из
+   памяти браузера, отметку не получает: его сохранение сервер не примет, пока
+   не нажато «Загрузить с VPS». */
+let loadedContentModified = null;
+const ownEntityStamps = new Map();
 
 async function rememberLoadedVersion() {
   try {
     const res = await fetch(CONTENT_META_API, { cache: 'no-store' });
     const meta = await res.json().catch(() => null);
     if (meta && meta.version) loadedContentVersion = meta.version;
+    if (meta && meta.modified) loadedContentModified = meta.modified;
+    ownEntityStamps.clear();
     hideStaleContentBanner();
   } catch { /* нет сети — просто не обновляем отметку */ }
 }
@@ -7451,6 +7462,7 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
   if (!pw) throw new Error('Нет пароля редакции — войдите заново.');
   const serverEntity = normalizeEntityForServer(section, entity);
   const retries = Number.isInteger(options.retries) ? options.retries : 2;
+  const stampKey = `${lang || ''}|${section}|${serverEntity.id}`;
 
   // The live article/review canvas and the toolbar can both save legitimately
   // within one second. Retry a fresh version check instead of treating this
@@ -7464,12 +7476,18 @@ async function saveEntityToServer(section, lang, entity, options = {}) {
     const res = await fetch(CONTENT_ENTITY_API, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Password': pw },
-      body: JSON.stringify({ section, id: serverEntity.id, entity: serverEntity, lang, expectedVersion: meta.version }),
+      body: JSON.stringify({
+        section, id: serverEntity.id, entity: serverEntity, lang, expectedVersion: meta.version,
+        baseLoadedAt: loadedContentModified || undefined,
+        baseEntityStamp: ownEntityStamps.get(stampKey) || undefined,
+      }),
     });
     const data = await res.json().catch(() => ({}));
+    if (res.status === 412 && data.code === 'stale_entity') showStaleContentBanner();
     if (res.status === 409 && attempt < retries) continue;
     if (res.status === 409) throw new Error('Контент изменился несколько раз подряд. Нажмите «Загрузить» и повторите сохранение.');
     if (!res.ok || !data.ok) throw new Error(data.error || ('VPS вернул статус ' + res.status));
+    if (data.entityUpdatedAt) ownEntityStamps.set(stampKey, data.entityUpdatedAt);
     return data;
   }
 
