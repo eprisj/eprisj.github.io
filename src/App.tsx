@@ -4903,7 +4903,7 @@ export default function App() {
       try {
         const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
         const id = initialRoute.articleId;
-        if (fromUrl && id !== undefined && LANG_SWITCH_ARTICLES[id]?.includes(fromUrl) && getAvailableLanguages().includes(fromUrl)) return fromUrl;
+        if (fromUrl && id !== undefined && LANG_SWITCH_ARTICLES[id]?.includes(fromUrl)) return fromUrl;   // список языков с сервера может прийти позже страницы
       } catch { /* адрес не разобрать – английский */ }
       return DEFAULT_LANGUAGE;
     }
