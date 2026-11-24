@@ -2742,8 +2742,10 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
   // an absent one.
   const availableLanguages = useMemo(() => {
     const translated = new Set(getAvailableLanguagesForEntity('articles', article.id));
-    return languages.filter((lang) => translated.has(lang));
+    const allowed = ENGLISH_ONLY ? LANG_SWITCH_ARTICLES[article.id] : undefined;
+    return languages.filter((lang) => translated.has(lang) && (!ENGLISH_ONLY || lang === DEFAULT_LANGUAGE || allowed?.includes(lang)));
   }, [languages, article.id]);
+  const langSwitchOn = !ENGLISH_ONLY || availableLanguages.length > 1;
 
   // Resolve the linked author record (by authorId or name) so the byline can
   // show a real photo + bio; falls back to the plain author/role strings.
@@ -2879,7 +2881,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
           </button>
 
           {/* Daily is English only: no language pill on its articles. */}
-          <div className="relative" style={ENGLISH_ONLY || isDailySite() ? { display: 'none' } : undefined}>
+          <div className="relative" style={!langSwitchOn || isDailySite() ? { display: 'none' } : undefined}>
             <button
               type="button"
               onClick={() => setIsArticleLangOpen(!isArticleLangOpen)}
@@ -4335,6 +4337,10 @@ const VALID_TABS = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issu
 /** The only sections EPRIS Daily has; everything else belongs to the journal. */
 /* 17.11.2026: every article is English only for now. The language pill is hidden everywhere and the language is forced to EN; saved translations stay in the data. Set to false to bring the switch back. */
 const ENGLISH_ONLY = true;
+/* Исключение из английского: у этих статей остаётся переключатель языка, и
+   только на перечисленные языки (кроме EN). Ключ – id статьи. Ordóñez, 93: интервью
+   на испанском – на нём его и читает герой. */
+const LANG_SWITCH_ARTICLES: Record<number, string[]> = { 93: ['ES'] };
 
 const DAILY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'about', 'manifest'];
 const VISIBILITY_TABS: VisibilitySectionKey[] = ['gallery', 'articles', 'reviews', 'about', 'manifest', 'issue', 'design', 'studio', 'radio', 'podcasts'];
@@ -4890,7 +4896,17 @@ export default function App() {
     /* ?lang=IT в адресе главнее сохранённого выбора: ссылкой на материал на
        другом языке (например, интервью на итальянском для героя) читатель
        сразу попадает на сайт на этом языке, а не на английский. */
-    if (ENGLISH_ONLY || isDailySite()) return DEFAULT_LANGUAGE;   // English only
+    if (isDailySite()) return DEFAULT_LANGUAGE;   // English only
+    if (ENGLISH_ONLY) {
+      /* Английский везде, кроме статей из LANG_SWITCH_ARTICLES: ссылка с ?lang=ES
+         открывает такую статью сразу на этом языке. */
+      try {
+        const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
+        const id = initialRoute.articleId;
+        if (fromUrl && id !== undefined && LANG_SWITCH_ARTICLES[id]?.includes(fromUrl) && getAvailableLanguages().includes(fromUrl)) return fromUrl;
+      } catch { /* адрес не разобрать – английский */ }
+      return DEFAULT_LANGUAGE;
+    }
     try {
       const fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toUpperCase();
       if (fromUrl && getAvailableLanguages().includes(fromUrl)) return fromUrl;
@@ -4970,6 +4986,13 @@ export default function App() {
     // языка, который был активен при подписке.
   }, [activeTab, contentVersion, currentLang]);
   const languageOptions = getAvailableLanguages();
+  /* Английский вернётся сам, как только читатель уйдёт со статьи, у которой есть
+     свой переключатель: язык сайта целиком не должен застревать на испанском. */
+  useEffect(() => {
+    if (!ENGLISH_ONLY || currentLang === DEFAULT_LANGUAGE) return;
+    const keep = selectedArticleId !== null && LANG_SWITCH_ARTICLES[selectedArticleId]?.includes(currentLang);
+    if (!keep) setCurrentLang(DEFAULT_LANGUAGE);
+  }, [selectedArticleId, currentLang]);
   useEffect(() => {
     try { localStorage.setItem('epris_language', currentLang); } catch { /* storage may be unavailable */ }
     const languageTags: Record<string, string> = { EN: 'en', RU: 'ru', UA: 'uk', TR: 'tr', DE: 'de', IT: 'it', ES: 'es', FR: 'fr' };
