@@ -161,6 +161,8 @@ export interface ContentBlock {
   align?: 'left' | 'center' | 'right' | 'full';
   width?: number;
   alts?: string[]; // per-photo alt text for gallery blocks, index-aligned with content
+  /** `gallery` blocks only: `full` shows every photo whole, in its own proportions (no square crop). */
+  fit?: 'full';
 }
 
 export interface Author {

@@ -3165,10 +3165,13 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       </div>
                     </figure>
                   );
-                case 'gallery':
+                case 'gallery': {
+                  /* fit: 'full' – снимки работ показываются целиком, в своих
+                     пропорциях; без него плитки остаются квадратами с обрезкой. */
+                  const fullFit = block.fit === 'full';
                   return (
                     <figure key={index} className="my-8 sm:my-12 -mx-4 sm:mx-0">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
+                      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4${fullFit ? ' items-start' : ''}`}>
                         {Array.isArray(block.content) &&
                           block.content.map((img, i) => {
                             if (typeof img !== 'string') return null;
@@ -3179,11 +3182,11 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                             const altText = rawAlt || `Gallery image ${i + 1}`;
                             return (
                               <div key={i} className="flex flex-col gap-1.5">
-                                <div className="aspect-square bg-[#E8DED5] overflow-hidden cursor-pointer" onClick={() => onImageClick(gallerySource, altText)}>
+                                <div className={`${fullFit ? '' : 'aspect-square '}bg-[#E8DED5] overflow-hidden cursor-pointer`} onClick={() => onImageClick(gallerySource, altText)}>
                                   <img
                                     src={gallerySource}
                                     alt={altText}
-                                    className="w-full h-full object-cover transition-all duration-500"
+                                    className={`w-full ${fullFit ? 'h-auto block' : 'h-full object-cover'} transition-all duration-500`}
                                     referrerPolicy="no-referrer"
                                   />
                                 </div>
@@ -3203,6 +3206,7 @@ function ArticleView({ article, related, onArticleClick, onTagClick, onClose, on
                       )}
                     </figure>
                   );
+                }
                 case 'mosaic': {
                   const tiles = Array.isArray(block.content) ? block.content : [];
                   return (
