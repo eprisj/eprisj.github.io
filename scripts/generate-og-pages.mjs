@@ -735,6 +735,8 @@ const FORM_PAGES = [
     description: 'Questions for the sculptor Miguel Ángel Romero: small figures in rusted steel boxes, heads on ladders, childhood, the niche and the city.' },
   { slug: 'entretien-julia-bokomo', lang: 'fr_FR', title: 'Julia Bokomo – entretien pour EPRIS Journal',
     description: 'Un entretien avec la sculptrice textile Julia Bokomo : tissus devenus troncs et racines, noms isiZulu, mémoire des matières, atelier à Paris.' },
+  { slug: 'interview-milene-sanchez', lang: 'en_US', title: 'Milene Sanchez – interview for EPRIS Journal',
+    description: 'Questions for the painter Milene Sanchez: flowers, fleeting moments, colour, the studio and what we overlook every day.' },
 ];
 for (const f of FORM_PAGES) {
   for (const base of ['f', 'form']) {
